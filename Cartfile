@@ -1,0 +1,14 @@
+# Tests
+
+github "Quick/Quick"
+github "Quick/Nimble"
+
+# AtlasMockAPI
+
+github "httpswift/swifter" "stable"
+
+# AtlasCheckoutDemo
+
+github "Haneke/HanekeSwift"
+github "SwiftyJSON/SwiftyJSON"
+github "Alamofire/Alamofire"

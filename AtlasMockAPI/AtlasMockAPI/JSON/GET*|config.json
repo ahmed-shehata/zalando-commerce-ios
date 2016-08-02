@@ -1,0 +1,11 @@
+{
+    "atlas-catalog-api": {
+        "url": "http://localhost:9080"
+    },
+    "atlas-checkout-api": {
+        "url": "http://localhost:9080"
+    },
+    "oauth2-provider": {
+        "url": "http://localhost:9080/oauth2/authorize?realm=/customers&response_type=token&client_id=CLIENT_ID&redirect_uri=http://com.atlas.app/redirect"
+    }
+}

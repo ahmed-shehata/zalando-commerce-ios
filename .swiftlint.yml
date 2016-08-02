@@ -1,0 +1,26 @@
+line_length: 140
+
+variable_name:
+  min_length: 2
+
+type_body_length:
+  warning: 150
+  error: 300
+
+disabled_rules:
+  - valid_docs # there's bug in swiftlint probably
+  - missing_docs # remove it when writing docs
+
+excluded:
+  - Carthage
+    # Unfortunately swiftlint checks directory only in relation to the script run,
+    # so we need all the combinations of SwiftyJSON path here
+  - AtlasSDK/AtlasCommons/SwiftyJSON
+  - AtlasCommons/SwiftyJSON
+  - SwiftyJSON
+
+opt_in_rules:
+  - force_unwrapping
+  - empty_count
+  - missing_docs
+

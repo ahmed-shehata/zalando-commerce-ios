@@ -1,0 +1,9 @@
+module: AtlasCheckout
+author: Atlas
+github_url: https://github.bus.zalan.do/Atlas/atlas-ios
+clean: true
+podspec: AtlasSDK.podspec
+output: Documentation/Atlas
+skip_undocumented: true
+hide_documentation_coverage: true
+theme: apple
