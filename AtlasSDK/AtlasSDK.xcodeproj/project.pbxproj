@@ -137,6 +137,7 @@
 		E837A7571D34F88200FC52C9 /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837A7561D34F88200FC52C9 /* RequestBuilder.swift */; };
 		E837A75C1D34F89C00FC52C9 /* AtlasAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837A7591D34F89C00FC52C9 /* AtlasAPIError.swift */; };
 		E837A75D1D34F89C00FC52C9 /* HTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837A75A1D34F89C00FC52C9 /* HTTPError.swift */; };
+		E848CBDC1D50ED3700FAA9C3 /* PublicAtlasSDKSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E848CBDB1D50ED3700FAA9C3 /* PublicAtlasSDKSpec.swift */; };
 		E8DD4C481D38DFAD00C822B2 /* CartRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DD4C471D38DFAD00C822B2 /* CartRequest.swift */; };
 		E8DD4C4A1D38EA2900C822B2 /* CartItemRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DD4C491D38EA2900C822B2 /* CartItemRequest.swift */; };
 		E8DD4C521D3F7D1A00C822B2 /* CheckoutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DD4C511D3F7D1A00C822B2 /* CheckoutRequest.swift */; };
@@ -337,6 +338,7 @@
 		E837A7581D34F89C00FC52C9 /* APIAccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIAccessToken.swift; path = AtlasSDK/APIAccessToken.swift; sourceTree = SOURCE_ROOT; };
 		E837A7591D34F89C00FC52C9 /* AtlasAPIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AtlasAPIError.swift; path = AtlasSDK/AtlasAPIError.swift; sourceTree = SOURCE_ROOT; };
 		E837A75A1D34F89C00FC52C9 /* HTTPError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPError.swift; path = AtlasSDK/HTTPError.swift; sourceTree = SOURCE_ROOT; };
+		E848CBDB1D50ED3700FAA9C3 /* PublicAtlasSDKSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PublicAtlasSDKSpec.swift; path = AtlasSDKTests/PublicAtlasSDKSpec.swift; sourceTree = SOURCE_ROOT; };
 		E8DD4C471D38DFAD00C822B2 /* CartRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartRequest.swift; sourceTree = "<group>"; };
 		E8DD4C491D38EA2900C822B2 /* CartItemRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartItemRequest.swift; sourceTree = "<group>"; };
 		E8DD4C511D3F7D1A00C822B2 /* CheckoutRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutRequest.swift; sourceTree = "<group>"; };
@@ -436,9 +438,8 @@
 				6D68DE741D19625D00CA8DAF /* CheckoutPresentationController.swift */,
 				811CC43F1D2173F000BB8A6F /* CheckoutSummaryViewController.swift */,
 				6D68DE781D19651600CA8DAF /* CheckoutTransitioningDelegate.swift */,
-				811CC4421D21748100BB8A6F /* CheckoutSummaryRow.swift */,
+				E848CBDA1D50EC5300FAA9C3 /* Rows */,
 				811CC4431D21748100BB8A6F /* PaymentProcessingViewController.swift */,
-				811CC4441D21748100BB8A6F /* PaymentSummaryRow.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -503,6 +504,7 @@
 				812C16CE1D48A3E2001BFCF0 /* URLAuthorizationSpec.swift */,
 				81F6FBDD1D35614B006662E8 /* ConfigServiceResponse.json */,
 				81F6FBDE1D35614B006662E8 /* Info.plist */,
+				E848CBDB1D50ED3700FAA9C3 /* PublicAtlasSDKSpec.swift */,
 			);
 			path = AtlasSDKTests;
 			sourceTree = "<group>";
@@ -801,6 +803,15 @@
 			);
 			name = Client;
 			path = AtlasSDK/API;
+			sourceTree = "<group>";
+		};
+		E848CBDA1D50EC5300FAA9C3 /* Rows */ = {
+			isa = PBXGroup;
+			children = (
+				811CC4421D21748100BB8A6F /* CheckoutSummaryRow.swift */,
+				811CC4441D21748100BB8A6F /* PaymentSummaryRow.swift */,
+			);
+			name = Rows;
 			sourceTree = "<group>";
 		};
 		E8DD4C461D38DF7C00C822B2 /* RequestModels */ = {
@@ -1322,6 +1333,7 @@
 				81F6FBEE1D3561B9006662E8 /* APICustomerSpec.swift in Sources */,
 				81F6FBEC1D3561B3006662E8 /* URLSessionMock.swift in Sources */,
 				812C16D01D48A48F001BFCF0 /* URLAuthorizationSpec.swift in Sources */,
+				E848CBDC1D50ED3700FAA9C3 /* PublicAtlasSDKSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

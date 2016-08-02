@@ -80,7 +80,7 @@ final class PaymentSummaryRow: UIView {
         shippingTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         shippingTitleLabel.font = shippingTitleLabel.font.fontWithSize(13)
         shippingTitleLabel.textColor = UIColor.grayColor()
-        shippingTitleLabel.heightAnchor.constraintEqualToConstant(10).active = true
+        shippingTitleLabel.heightAnchor.constraintEqualToConstant(15).active = true
         shippingTitleLabel.topAnchor.constraintEqualToAnchor(self.topAnchor, constant: 5).active = true
         shippingTitleLabel.leadingAnchor.constraintEqualToAnchor(self.leadingAnchor, constant: 110).active = true
     }

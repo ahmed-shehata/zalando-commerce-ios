@@ -61,6 +61,10 @@ extension AtlasSDK {
         AtlasSDK.sharedInstance.apiClient?.customer(completion)
     }
 
+    public static func isUserLoggedIn() -> Bool {
+        return APIAccessToken.retrieve() != nil
+    }
+
     public static func logoutCustomer() {
         APIAccessToken.delete()
     }

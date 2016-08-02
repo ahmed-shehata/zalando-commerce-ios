@@ -14,11 +14,13 @@ final class CheckoutSummaryViewController: UIViewController {
     private let paymentSummaryTableview = UITableView()
     private let shippingAmount: Float = 0
     private let stackView: UIStackView = UIStackView()
-    private let customer: Customer
+    private var customer: Customer? = nil
     private let checkoutViewModel: CheckoutViewModel
 
-    init(customer: Customer, checkoutView: CheckoutViewModel) {
-        self.customer = customer
+    init(customer: Customer?, checkoutView: CheckoutViewModel) {
+        if let customer = customer {
+            self.customer = customer
+        }
         self.checkoutViewModel = checkoutView
         super.init(nibName: nil, bundle: nil)
     }
