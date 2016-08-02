@@ -62,7 +62,7 @@ final class SizeListSelectionViewController: UITableViewController {
         tableView.userInteractionEnabled = false
 
         if !AtlasSDK.isUserLoggedIn() {
-            var checkout = CheckoutViewModel(shippingAddressText: nil, paymentMethodText: nil, discountText: nil,
+            let checkout = CheckoutViewModel(shippingAddressText: nil, paymentMethodText: nil, discountText: nil,
                 shippingPrice: nil, totalPrice: self.article.units[indexPath.row].price, articleUnitIndex: indexPath.row,
                 checkout: nil, articleUnit: self.article.units[indexPath.row], article: self.article)
 
