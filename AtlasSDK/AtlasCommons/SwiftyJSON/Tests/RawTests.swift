@@ -21,7 +21,7 @@
 //  THE SOFTWARE.
 
 import XCTest
-@testable import AtlasCommons
+@testable import AtlasSDK
 
 class RawTests: XCTestCase {
 
@@ -41,7 +41,7 @@ class RawTests: XCTestCase {
         do {
             try json.rawData()
         } catch let error as NSError {
-            XCTAssertEqual(error.code, ErrorInvalidJSON)
+            XCTAssertEqual(error.code, JSONError.InvalidJSON.rawValue)
         }
     }
 

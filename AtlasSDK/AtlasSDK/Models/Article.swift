@@ -54,6 +54,9 @@ public struct Article {
     public struct Price {
         public let currency: String
         public let amount: Float
+        public var amountFormatted: String? {
+            return Localizer.sharedLocalizer!.fmtPrice(amount)
+        }
     }
 
     public struct Partner {

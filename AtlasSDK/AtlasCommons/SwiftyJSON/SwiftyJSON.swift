@@ -31,14 +31,16 @@ import Foundation
 // MARK: - Error
 
 ///Error domain
-public let ErrorDomain: String = "SwiftyJSONErrorDomain"
+let ErrorDomain: String = "SwiftyJSONErrorDomain"
 
 ///Error code
-public let ErrorUnsupportedType: Int = 999
-public let ErrorIndexOutOfBounds: Int = 900
-public let ErrorWrongType: Int = 901
-public let ErrorNotExist: Int = 500
-public let ErrorInvalidJSON: Int = 490
+enum JSONError: Int {
+    case UnsupportedType = 999
+    case IndexOutOfBounds = 900
+    case WrongType = 901
+    case NotExist = 500
+    case InvalidJSON = 490
+}
 
 // MARK: - JSON Type
 
@@ -47,7 +49,7 @@ public let ErrorInvalidJSON: Int = 490
 
  See http://www.json.org
  */
-public enum Type: Int {
+enum Type: Int {
 
     case Number
     case String
@@ -71,7 +73,7 @@ public struct JSON {
 
      - returns: The created JSON
      */
-    public init(data: NSData, options opt: NSJSONReadingOptions = .AllowFragments, error: NSErrorPointer = nil) {
+    init(data: NSData, options opt: NSJSONReadingOptions = .AllowFragments, error: NSErrorPointer = nil) {
         do {
             let object: AnyObject = try NSJSONSerialization.JSONObjectWithData(data, options: opt)
             self.init(object)
@@ -101,7 +103,7 @@ public struct JSON {
 
      - returns: The created JSON
      */
-    public init(_ object: AnyObject) {
+    init(_ object: AnyObject) {
         self.object = object
     }
 
@@ -112,7 +114,7 @@ public struct JSON {
 
      - returns: The created JSON
      */
-    public init(_ jsonArray: [JSON]) {
+    init(_ jsonArray: [JSON]) {
         self.init(jsonArray.map { $0.object })
     }
 
@@ -123,7 +125,7 @@ public struct JSON {
 
      - returns: The created JSON
      */
-    public init(_ jsonDictionary: [String: JSON]) {
+    init(_ jsonDictionary: [String: JSON]) {
         var dictionary = [String: AnyObject]()
         for (key, json) in jsonDictionary {
             dictionary[key] = json.object
@@ -143,7 +145,7 @@ public struct JSON {
     private var _error: NSError? = nil
 
     /// Object in JSON
-    public var object: AnyObject {
+    var object: AnyObject {
         get {
             switch self.type {
             case .Array:
@@ -183,21 +185,22 @@ public struct JSON {
                 self.rawDictionary = dictionary
             default:
                 _type = .Unknown
-                _error = NSError(domain: ErrorDomain, code: ErrorUnsupportedType, userInfo: [NSLocalizedDescriptionKey: "It is a unsupported type"])
+                _error = NSError(domain: ErrorDomain, jsonError: JSONError.UnsupportedType,
+                    userInfo: [NSLocalizedDescriptionKey: "It is a unsupported type"])
             }
         }
     }
 
     /// json type
-    public var type: Type { get { return _type } }
+    var type: Type { get { return _type } }
 
     /// Error in JSON
-    public var error: NSError? { get { return self._error } }
+    var error: NSError? { get { return self._error } }
 
     /// The static null json
     @available( *, unavailable, renamed = "null")
-    public static var nullJSON: JSON { get { return null } }
-    public static var null: JSON { get { return JSON(NSNull()) } }
+    static var nullJSON: JSON { get { return null } }
+    static var null: JSON { get { return JSON(NSNull()) } }
 }
 
 // MARK: - CollectionType, SequenceType, Indexable
@@ -398,7 +401,7 @@ public struct JSONGenerator: GeneratorType {
         }
     }
 
-    public mutating func next() -> JSONGenerator.Element? {
+    mutating public func next() -> JSONGenerator.Element? {
         switch self.type {
         case .Array:
             if let o = self.arrayGenerate?.next() {
@@ -453,13 +456,15 @@ extension JSON {
         get {
             if self.type != .Array {
                 var r = JSON.null
-                r._error = self._error ?? NSError(domain: ErrorDomain, code: ErrorWrongType, userInfo: [NSLocalizedDescriptionKey: "Array[\(index)] failure, It is not an array"])
+                r._error = self._error ?? NSError(domain: ErrorDomain, jsonError: JSONError.WrongType,
+                    userInfo: [NSLocalizedDescriptionKey: "Array[\(index)] failure, It is not an array"])
                 return r
             } else if index >= 0 && index < self.rawArray.count {
                 return JSON(self.rawArray[index])
             } else {
                 var r = JSON.null
-                r._error = NSError(domain: ErrorDomain, code: ErrorIndexOutOfBounds, userInfo: [NSLocalizedDescriptionKey: "Array[\(index)] is out of bounds"])
+                r._error = NSError(domain: ErrorDomain, jsonError: JSONError.IndexOutOfBounds,
+                    userInfo: [NSLocalizedDescriptionKey: "Array[\(index)] is out of bounds"])
                 return r
             }
         }
@@ -480,10 +485,12 @@ extension JSON {
                 if let o = self.rawDictionary[key] {
                     r = JSON(o)
                 } else {
-                    r._error = NSError(domain: ErrorDomain, code: ErrorNotExist, userInfo: [NSLocalizedDescriptionKey: "Dictionary[\"\(key)\"] does not exist"])
+                    r._error = NSError(domain: ErrorDomain, jsonError: JSONError.NotExist,
+                        userInfo: [NSLocalizedDescriptionKey: "Dictionary[\"\(key)\"] does not exist"])
                 }
             } else {
-                r._error = self._error ?? NSError(domain: ErrorDomain, code: ErrorWrongType, userInfo: [NSLocalizedDescriptionKey: "Dictionary[\"\(key)\"] failure, It is not an dictionary"])
+                r._error = self._error ?? NSError(domain: ErrorDomain, jsonError: JSONError.WrongType,
+                    userInfo: [NSLocalizedDescriptionKey: "Dictionary[\"\(key)\"] failure, It is not an dictionary"])
             }
             return r
         }
@@ -642,15 +649,16 @@ extension JSON: Swift.RawRepresentable {
         return self.object
     }
 
-    public func rawData(options opt: NSJSONWritingOptions = NSJSONWritingOptions(rawValue: 0)) throws -> NSData {
+    func rawData(options opt: NSJSONWritingOptions = NSJSONWritingOptions(rawValue: 0)) throws -> NSData {
         guard NSJSONSerialization.isValidJSONObject(self.object) else {
-            throw NSError(domain: ErrorDomain, code: ErrorInvalidJSON, userInfo: [NSLocalizedDescriptionKey: "JSON is invalid"])
+            throw NSError(domain: ErrorDomain, jsonError: JSONError.InvalidJSON,
+                userInfo: [NSLocalizedDescriptionKey: "JSON is invalid"])
         }
 
         return try NSJSONSerialization.dataWithJSONObject(self.object, options: opt)
     }
 
-    public func rawString(encoding: UInt = NSUTF8StringEncoding, options opt: NSJSONWritingOptions = .PrettyPrinted) -> String? {
+    func rawString(encoding: UInt = NSUTF8StringEncoding, options opt: NSJSONWritingOptions = .PrettyPrinted) -> String? {
         switch self.type {
         case .Array, .Dictionary:
             do {
@@ -913,7 +921,7 @@ extension JSON {
         }
     }
     public func isExists() -> Bool {
-        if let errorValue = error where errorValue.code == ErrorNotExist {
+        if let errorValue = error where errorValue.code == JSONError.NotExist.rawValue {
             return false
         }
         return true
@@ -1381,4 +1389,12 @@ func >= (lhs: NSNumber, rhs: NSNumber) -> Bool {
     default:
         return lhs.compare(rhs) != NSComparisonResult.OrderedAscending
     }
+}
+
+extension NSError {
+
+    convenience init(domain: String, jsonError: JSONError, userInfo dict: [NSObject: AnyObject]?) {
+        self.init(domain: domain, code: jsonError.rawValue, userInfo: dict)
+    }
+
 }

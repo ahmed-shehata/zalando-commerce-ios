@@ -5,9 +5,8 @@
 import Foundation
 import AtlasSDK
 import AtlasCommons
-import AtlasCommonsUI
 
-public typealias GenerateCheckoutCompletion = Result<CheckoutViewModel> -> Void
+public typealias GenerateCheckoutCompletion = AtlasResult<CheckoutViewModel> -> Void
 
 public class CheckoutService {
 
@@ -20,7 +19,7 @@ public class CheckoutService {
         AtlasSDK.createCart(cartItemRequest) { result in
             switch result {
             case .failure(let error):
-                logError(error)
+                AtlasLogger.logError(error)
                 completion(.failure(error))
             case .success(let cart):
                 completion(.success(cart))
@@ -32,7 +31,7 @@ public class CheckoutService {
         AtlasSDK.createCheckout(cartId, billingAddressId: nil, shippingAddressId: nil, completion: { result in
             switch result {
             case .failure(let error):
-                logError(error)
+                AtlasLogger.logError(error)
                 completion(.failure(error))
             case .success(let checkout):
                 completion(.success(checkout))
@@ -44,7 +43,7 @@ public class CheckoutService {
         AtlasSDK.createOrder(checkoutId, completion: { result in
             switch result {
             case .failure(let error):
-                logError(error)
+                AtlasLogger.logError(error)
                 completion(.failure(error))
             case .success(let order):
                 completion(.success(order))
@@ -58,7 +57,7 @@ public class CheckoutService {
         self.createCart(selectedArticle.id) { (result) in
             switch result {
             case .failure(let error):
-                logError(error)
+                AtlasLogger.logError(error)
                 UserMessage.showOK(title: "Fatal Error".loc, message: String(error))
                 completion(.failure(error))
             case .success(let cart):
@@ -66,7 +65,7 @@ public class CheckoutService {
                 self.createCheckout(cart.id) { result in
                     switch result {
                     case .failure(let error):
-                        logError(error)
+                        AtlasLogger.logError(error)
                         completion(.failure(error))
                     case .success(let checkout):
                         var checkoutObj = CheckoutViewModel()

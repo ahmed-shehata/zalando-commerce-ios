@@ -21,7 +21,7 @@
 //  THE SOFTWARE.
 
 import XCTest
-@testable import AtlasCommons
+@testable import AtlasSDK
 
 class BaseTests: XCTestCase {
 
@@ -238,18 +238,18 @@ class BaseTests: XCTestCase {
         if let _ = json["wrong-type"].string {
             XCTFail("Should not run into here")
         } else {
-            XCTAssertEqual(json["wrong-type"].error!.code, AtlasCommons.ErrorWrongType)
+            XCTAssertEqual(json["wrong-type"].error!.code, JSONError.WrongType.rawValue)
         }
 
         if let _ = json[0]["not-exist"].string {
             XCTFail("Should not run into here")
         } else {
-            XCTAssertEqual(json[0]["not-exist"].error!.code, AtlasCommons.ErrorNotExist)
+            XCTAssertEqual(json[0]["not-exist"].error!.code, JSONError.NotExist.rawValue)
         }
 
         let wrongJSON = JSON(NSObject())
         if let error = wrongJSON.error {
-            XCTAssertEqual(error.code, AtlasCommons.ErrorUnsupportedType)
+            XCTAssertEqual(error.code, JSONError.UnsupportedType.rawValue)
         }
     }
 

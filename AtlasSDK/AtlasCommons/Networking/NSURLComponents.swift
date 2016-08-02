@@ -4,7 +4,7 @@
 
 import Foundation
 
-public extension NSURLComponents {
+extension NSURLComponents {
 
     public convenience init(validUrlString urlString: String) {
         self.init(string: urlString)! // swiftlint:disable:this force_unwrapping

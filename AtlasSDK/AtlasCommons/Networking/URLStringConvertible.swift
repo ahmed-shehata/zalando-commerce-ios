@@ -4,24 +4,24 @@
 
 import Foundation
 
-public protocol URLStringConvertible {
+protocol URLStringConvertible {
     var URLString: String { get }
 }
 
 extension String: URLStringConvertible {
-    public var URLString: String {
+    var URLString: String {
         return self
     }
 }
 
 extension NSURL: URLStringConvertible {
-    public var URLString: String {
+    var URLString: String {
         return absoluteString
     }
 }
 
 extension NSURLComponents: URLStringConvertible {
-    public var URLString: String {
+    var URLString: String {
         return validURL.URLString
     }
 }

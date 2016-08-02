@@ -4,22 +4,22 @@
 
 import Foundation
 
-public struct Injector {
+struct Injector {
 
     enum Error: ErrorType {
         case NotFound
     }
 
-    public init() {}
+    init() {}
 
     private var factories: [TypeKey: Void -> Any] = [:]
 
-    public mutating func register<T>(factory: Void -> T) {
+    mutating func register<T>(factory: Void -> T) {
         let key = TypeKey(type: T.self)
         factories[key] = factory
     }
 
-    public func provide<T>() throws -> T {
+    func provide<T>() throws -> T {
         let key = TypeKey(type: T.self)
         guard let factory = factories[key]?() as? T else {
             throw Error.NotFound

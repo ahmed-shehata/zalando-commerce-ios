@@ -3,7 +3,7 @@
 //
 
 import UIKit
-import AtlasCommons
+import AtlasSDK
 
 extension UIImageView {
 

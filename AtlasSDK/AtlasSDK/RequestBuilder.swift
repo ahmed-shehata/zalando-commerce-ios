@@ -4,7 +4,7 @@
 
 import AtlasCommons
 
-typealias ResponseCompletion = Result<JSONResponse> -> Void
+typealias ResponseCompletion = AtlasResult<JSONResponse> -> Void
 typealias RequestTaskCompletion = (RequestBuilder) -> Void
 
 class RequestBuilder: Equatable {

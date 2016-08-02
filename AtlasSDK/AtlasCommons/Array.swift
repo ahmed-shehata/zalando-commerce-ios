@@ -6,7 +6,7 @@ import Foundation
 
 extension Array where Element: Equatable {
 
-    public mutating func remove<Element: Equatable>(item: Element) -> Array {
+    mutating func remove<Element: Equatable>(item: Element) -> Array {
         self = self.filter { $0 as? Element != item }
         return self
     }

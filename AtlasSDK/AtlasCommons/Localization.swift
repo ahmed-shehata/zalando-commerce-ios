@@ -4,7 +4,7 @@
 
 import Foundation
 
-public protocol Localizable {
+protocol Localizable {
 
     var localeIdentifier: String { get }
     var localizedStringsBundle: NSBundle { get }
@@ -13,7 +13,7 @@ public protocol Localizable {
 
 public struct Localizer {
 
-    public static var sharedLocalizer: Localizer?
+    public internal(set) static var sharedLocalizer: Localizer?
 
     let locale: NSLocale
     let localizationProvider: Localizable
@@ -27,7 +27,7 @@ public struct Localizer {
 
     private var localizedStringsBundle: NSBundle!
 
-    public static func initShared(localizationProvider: Localizable) {
+    static func initShared(localizationProvider: Localizable) {
         sharedLocalizer = Localizer(localizationProvider: localizationProvider)
     }
 
@@ -37,7 +37,7 @@ public struct Localizer {
         self.localizedStringsBundle = findLocalizedStringsBundle()
     }
 
-    func localizedString(key: String, formatArguments: [CVarArgType]? = nil) -> String {
+    public func localizedString(key: String, formatArguments: [CVarArgType]? = nil) -> String {
         let localizedString = NSLocalizedString(key, bundle: self.localizedStringsBundle, comment: "")
 
         guard let formatArguments = formatArguments where !formatArguments.isEmpty else {
@@ -47,7 +47,7 @@ public struct Localizer {
         return String(format: localizedString, arguments: formatArguments)
     }
 
-    public func fmtPrice(number: NSNumber) -> String? {
+    func fmtPrice(number: NSNumber) -> String? {
         return priceFormatter.stringFromNumber(number)
     }
 
@@ -69,18 +69,6 @@ public struct Localizer {
     private func path(forResourceNamed resourceName: String, forLocalization localizationName: String) -> NSString? {
         return localizationProvider.localizedStringsBundle.pathForResource(resourceName,
             ofType: nil, inDirectory: nil, forLocalization: localizationName) as NSString?
-    }
-
-}
-
-public extension String {
-
-    var loc: String {
-        return Localizer.sharedLocalizer?.localizedString(self) ?? self
-    }
-
-    func loc(formatArguments: CVarArgType...) -> String {
-        return Localizer.sharedLocalizer?.localizedString(self, formatArguments: formatArguments) ?? self
     }
 
 }

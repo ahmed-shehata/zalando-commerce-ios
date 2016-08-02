@@ -5,17 +5,17 @@
 import Foundation
 import Security
 
-public struct Keychain {
+struct Keychain {
 
-    public static func delete(key key: String) -> Bool {
+    static func delete(key key: String) -> Bool {
         return write(nil, forKey: key)
     }
 
-    public static func write(value: String?, forKey key: String) -> Bool {
+    static func write(value: String?, forKey key: String) -> Bool {
         var status: OSStatus
         defer {
             if status != errSecSuccess {
-                logError("Error saving in Keychain:", status.description)
+                AtlasLogger.logError("Error saving in Keychain:", status.description)
             }
         }
 
@@ -38,7 +38,7 @@ public struct Keychain {
         return status == errSecSuccess
     }
 
-    public static func read(forKey key: String) -> String? {
+    static func read(forKey key: String) -> String? {
         var query = prepareItemQuery(key)
         query[kSecReturnData] = true
         query[kSecReturnAttributes] = true

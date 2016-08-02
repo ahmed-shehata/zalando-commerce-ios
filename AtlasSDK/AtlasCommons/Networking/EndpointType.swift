@@ -4,7 +4,7 @@
 
 import Foundation
 
-public protocol EndpointType {
+protocol EndpointType {
 
     var baseURL: NSURL { get }
     var method: HTTPMethod { get }
@@ -20,7 +20,7 @@ public protocol EndpointType {
 
 extension EndpointType {
 
-    public var URL: NSURL {
+    var URL: NSURL {
         let urlComponents = NSURLComponents(validURL: baseURL)
         urlComponents.queryItems = self.queryItems
         if let path = self.path {

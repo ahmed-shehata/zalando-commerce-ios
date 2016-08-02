@@ -3,11 +3,10 @@
 //
 
 import AtlasSDK
-import AtlasCommons
 import AtlasMockAPI
 import Alamofire
 
-typealias ArticlesCompletion = AtlasCommons.Result<[DemoArticle]> -> Void
+typealias ArticlesCompletion = AtlasResult<[DemoArticle]> -> Void
 
 enum ArticlesError: ErrorType {
     case NoData

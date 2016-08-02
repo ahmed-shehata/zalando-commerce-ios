@@ -6,7 +6,7 @@ import Foundation
 
 import Quick
 import Nimble
-@testable import AtlasCommons
+@testable import AtlasSDK
 
 private protocol NumberType {
     var value: Int { get }

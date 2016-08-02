@@ -45,8 +45,8 @@ final class SizeSelectionViewController: UIViewController {
         AtlasSDK.fetchCustomer { result in
             switch result {
             case .failure(let error):
-                let alert = UIAlertController(title: "Error".loc, message: "\(error)", preferredStyle: .Alert)
-                self.presentViewController(alert, animated: true, completion: nil)
+                AtlasLogger.logError(error)
+                UserMessage.showError(title: "Error".loc, error: error)
             case .success(let customer):
                 self.generateCheckout(withArticle: article, customer: customer, animated: animated)
             }
@@ -58,7 +58,7 @@ final class SizeSelectionViewController: UIViewController {
             articleUnitIndex: 0) { (result) in
                 switch result {
                 case .failure(let error):
-                    logError(error)
+                    AtlasLogger.logError(error)
                     self.dismissViewControllerAnimated(true) {
                         UserMessage.showError(title: "Fatal Error".loc, error: error)
                     }
