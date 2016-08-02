@@ -16,23 +16,23 @@ extension HttpServer {
     func start(url: NSURL, forceIPv4: Bool, timeout: NSTimeInterval) throws {
         let port = UInt16(url.port!.unsignedIntegerValue) // swiftlint:disable:this force_unwrapping
         try self.start(port, forceIPv4: forceIPv4)
-        try wait(timeout, forStatus: .Running)
+        try wait(timeout, isRunning: true)
     }
 
     func stop(timeout: NSTimeInterval) throws {
         self.stop()
-        try wait(timeout, forStatus: .Stopped)
+        try wait(timeout, isRunning: false)
     }
 
-    private func wait(timeout: NSTimeInterval, forStatus expectedStatus: Swifter.HttpServerIO.ServerStatus) throws {
+    private func wait(timeout: NSTimeInterval, isRunning: Bool) throws {
         var waiting = 0.0
         let waitStep = 0.1
-        while self.status != expectedStatus && waiting < timeout {
+        while self.running != isRunning && waiting < timeout {
             NSThread.sleepForTimeInterval(waitStep)
             waiting += waitStep
         }
 
-        if self.status != expectedStatus {
+        if self.running != isRunning {
             throw HttpServerError.TimeoutOnStop(timeout)
         }
     }
