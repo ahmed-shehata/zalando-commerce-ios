@@ -13,7 +13,8 @@ final class CheckoutSummaryViewController: UIViewController {
     private let shippingPrice: Float = 0
     private let stackView: UIStackView = UIStackView()
     private var customer: Customer? = nil
-    private let checkoutViewModel: CheckoutViewModel
+    private var checkoutViewModel: CheckoutViewModel
+    private let checkoutService = CheckoutService()
 
     init(customer: Customer?, checkoutView: CheckoutViewModel) {
         if let customer = customer {
@@ -33,10 +34,10 @@ final class CheckoutSummaryViewController: UIViewController {
         Async.main {
             self.setupViews()
         }
-
     }
 
     private func setupViews() {
+        self.view.removeAllSubviews()
         self.title = "Summary".loc
         self.view.backgroundColor = UIColor.clearColor()
         self.view.opaque = false
@@ -55,21 +56,23 @@ final class CheckoutSummaryViewController: UIViewController {
     }
 
     @objc private func connectToZalandoButtonTapped(sender: UIButton) {
-        AtlasSDK.fetchCustomer { result in
-            switch result {
-            case .failure(let error):
-                let alert = UIAlertController(title: "Error".loc, message: "\(error)", preferredStyle: .Alert)
-                self.presentViewController(alert, animated: true, completion: nil)
-
-            case .success(let customer):
-                self.customer = customer
-                self.setupViews()
-            }
-        }
+        connectToZalando()
     }
 
     @objc private func cancelCheckoutTapped(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+
+    private func showLoadingView() {
+        let indicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+        let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height))
+        backgroundView.backgroundColor = .grayColor()
+        backgroundView.alpha = 0.2
+        indicator.center = CGPoint(x: self.view.bounds.size.width / 2, y: (self.view.bounds.size.height) / 2)
+        indicator.color = .blackColor()
+        indicator.startAnimating()
+        self.view.addSubview(backgroundView)
+        self.view.addSubview(indicator)
     }
 
     private func setupNavBar() {
@@ -82,6 +85,36 @@ final class CheckoutSummaryViewController: UIViewController {
         let cancelButton = UIBarButtonItem(title: "Cancel".loc, style: UIBarButtonItemStyle.Plain,
             target: self, action: #selector(CheckoutSummaryViewController.cancelCheckoutTapped(_:)))
         navigationItem.rightBarButtonItem = cancelButton
+    }
+
+    private func connectToZalando() {
+        AtlasSDK.fetchCustomer { result in
+            switch result {
+            case .failure(let error):
+                let alert = UIAlertController(title: "Error".loc, message: "\(error)", preferredStyle: .Alert)
+                self.presentViewController(alert, animated: true, completion: nil)
+
+            case .success(let customer):
+                self.showLoadingView()
+
+                if let article = self.checkoutViewModel.article, articleIndex = self.checkoutViewModel.articleUnitIndex {
+                    self.checkoutService.generateCheckout(withArticle: article, articleUnitIndex: articleIndex) { result in
+                        switch result {
+                        case .failure(let error):
+                            self.dismissViewControllerAnimated(true) {
+                                UserMessage.showError(title: "Fatal Error".loc, error: error)
+                            }
+                        case .success(let checkout):
+                            self.checkoutViewModel = checkout
+                            self.customer = customer
+                            self.setupViews()
+
+                        }
+                    }
+                }
+
+            }
+        }
     }
 
     private func setupProductImageView() {
@@ -117,7 +150,6 @@ final class CheckoutSummaryViewController: UIViewController {
         productNameLabel.translatesAutoresizingMaskIntoConstraints = false
         productNameLabel.textAlignment = .Center
         productNameLabel.font = productNameLabel.font.fontWithSize(12)
-
         productNameLabel.widthAnchor.constraintEqualToAnchor(productImageView.widthAnchor, multiplier: 2).active = true
         productNameLabel.heightAnchor.constraintEqualToConstant(20).active = true
         productNameLabel.topAnchor.constraintEqualToAnchor(productImageView.bottomAnchor).active = true
@@ -202,13 +234,13 @@ final class CheckoutSummaryViewController: UIViewController {
 extension CheckoutSummaryViewController {
 
     private func setupStackView() {
+        self.stackView.removeAllSubviews()
         self.view.addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .Vertical
         stackView.distribution = .Fill
         stackView.alignment = .Center
         stackView.spacing = 2
-
         stackView.trailingAnchor.constraintEqualToAnchor(self.view.trailingAnchor).active = true
         stackView.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor).active = true
         stackView.bottomAnchor.constraintLessThanOrEqualToAnchor(self.view.bottomAnchor).active = true
@@ -312,4 +344,12 @@ private extension UIStackView {
             viewAnchor2.constraintEqualToAnchor(stackAnchor2).active = true
     }
 
+}
+
+private extension UIView {
+    private func removeAllSubviews() {
+        for view in self.subviews {
+            view.removeFromSuperview()
+        }
+    }
 }
