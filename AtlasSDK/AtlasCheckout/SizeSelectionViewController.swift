@@ -4,8 +4,6 @@
 
 import UIKit
 import AtlasSDK
-import AtlasCommons
-import AtlasCommonsUI
 
 final class SizeSelectionViewController: UIViewController {
 
@@ -69,7 +67,7 @@ final class SizeSelectionViewController: UIViewController {
             articleUnitIndex: 0) { (result) in
                 switch result {
                 case .failure(let error):
-                    logError(error)
+                    AtlasLogger.logError(error)
                     self.dismissViewControllerAnimated(true) {
                         UserMessage.showError(title: "Fatal Error".loc, error: error)
                     }

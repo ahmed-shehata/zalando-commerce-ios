@@ -4,8 +4,6 @@
 
 import Foundation
 import AtlasSDK
-import AtlasCommons
-import AtlasCommonsUI
 
 final class SizeListSelectionViewController: UITableViewController {
 

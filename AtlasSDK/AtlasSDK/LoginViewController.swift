@@ -3,9 +3,8 @@
 //
 
 import UIKit
-import AtlasCommons
 
-typealias LoginCompletion = Result<String> -> Void
+typealias LoginCompletion = AtlasResult<String> -> Void
 
 final class LoginViewController: UIViewController, UIWebViewDelegate {
 
@@ -75,7 +74,7 @@ final class LoginViewController: UIViewController, UIWebViewDelegate {
         return dismissViewController(.failure(LoginError(code: code)), animated: animated)
     }
 
-    private func dismissViewController(result: Result<String>, animated: Bool = true) -> Bool {
+    private func dismissViewController(result: AtlasResult<String>, animated: Bool = true) -> Bool {
         dismissViewControllerAnimated(animated) {
             self.loginCompletion?(result)
         }

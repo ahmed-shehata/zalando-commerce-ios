@@ -3,10 +3,9 @@
 //
 
 import Foundation
-import AtlasCommons
 
-public typealias ArticlesCompletion = Result<Article> -> Void
-public typealias AddressesCompletion = Result<AddressList> -> Void
+public typealias ArticlesCompletion = AtlasResult<Article> -> Void
+public typealias AddressesCompletion = AtlasResult<AddressList> -> Void
 
 struct APIClient {
 
@@ -52,7 +51,7 @@ struct APIClient {
         fetch(makeFetchAddressListEndpoint(config.salesChannel), completion: completion)
     }
 
-    private mutating func fetch<Model: JSONInitializable>(endpoint: EndpointType, completion: Result<Model> -> Void) {
+    private mutating func fetch<Model: JSONInitializable>(endpoint: EndpointType, completion: AtlasResult<Model> -> Void) {
         builder(forEndpoint: endpoint).execute { result in
             switch result {
             case .failure(let error):

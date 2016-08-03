@@ -2,9 +2,9 @@
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
-import AtlasCommons
+import Foundation
 
-typealias ResponseCompletion = Result<JSONResponse> -> Void
+typealias ResponseCompletion = AtlasResult<JSONResponse> -> Void
 typealias RequestTaskCompletion = (RequestBuilder) -> Void
 
 class RequestBuilder: Equatable {

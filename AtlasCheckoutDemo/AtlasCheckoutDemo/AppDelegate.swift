@@ -5,7 +5,6 @@
 import UIKit
 
 import AtlasSDK
-import AtlasCommons
 import AtlasMockAPI
 
 @UIApplicationMain

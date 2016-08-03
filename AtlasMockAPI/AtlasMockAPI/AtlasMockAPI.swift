@@ -4,14 +4,13 @@
 
 import Foundation
 import Swifter
-import AtlasCommons
 
 public final class AtlasMockAPI {
 
     public static let isEnabledFlag = "ATLAS_MOCK_API_ENABLED"
 
     private static let server = HttpServer()
-    private static let serverURL = NSURL(validUrl: "http://localhost:9080")
+    private static let serverURL = NSURL(string: "http://localhost:9080")! // swiftlint:disable:this force_unwrapping
 
     public static func startServer(wait timeout: NSTimeInterval = 15) throws {
         server.addRootResponse()

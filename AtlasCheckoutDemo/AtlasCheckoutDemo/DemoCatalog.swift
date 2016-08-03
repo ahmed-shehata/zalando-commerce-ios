@@ -2,7 +2,7 @@
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
-import AtlasCommons
+import AtlasSDK
 
 public struct DemoCatalog {
 
