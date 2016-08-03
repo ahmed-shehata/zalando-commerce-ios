@@ -280,29 +280,6 @@
 			name = Options;
 			sourceTree = "<group>";
 		};
-		811CC4411D21748100BB8A6F /* CustomViews */ = {
-			isa = PBXGroup;
-			children = (
-				81F0A2EB1D1AD8C800B26FE3 /* SizeSelectionViewController.swift */,
-				81DA80BD1D491BB70071C891 /* SizeListSelectionViewController.swift */,
-				6D68DE741D19625D00CA8DAF /* CheckoutPresentationController.swift */,
-				811CC43F1D2173F000BB8A6F /* CheckoutSummaryViewController.swift */,
-				6D68DE781D19651600CA8DAF /* CheckoutTransitioningDelegate.swift */,
-				E848CBDA1D50EC5300FAA9C3 /* Rows */,
-				811CC4431D21748100BB8A6F /* PaymentProcessingViewController.swift */,
-			);
-			path = CustomViews;
-			sourceTree = "<group>";
-		};
-		812095251D48EE06009E647A /* Others */ = {
-			isa = PBXGroup;
-			children = (
-				81F5F3A11D12D0A100A72AEF /* AtlasCommonsUI.h */,
-				81F5F3A31D12D0A100A72AEF /* Info.plist */,
-			);
-			name = Others;
-			sourceTree = "<group>";
-		};
 		814B7F011D0FD8D70073AF52 = {
 			isa = PBXGroup;
 			children = (
@@ -537,15 +514,6 @@
 			path = AtlasSDK/API;
 			sourceTree = "<group>";
 		};
-		E848CBDA1D50EC5300FAA9C3 /* Rows */ = {
-			isa = PBXGroup;
-			children = (
-				811CC4421D21748100BB8A6F /* CheckoutSummaryRow.swift */,
-				811CC4441D21748100BB8A6F /* PaymentSummaryRow.swift */,
-			);
-			name = Rows;
-			sourceTree = "<group>";
-		};
 		E8DD4C461D38DF7C00C822B2 /* RequestModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -594,10 +562,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 814B7F221D0FD8D70073AF52 /* Build configuration list for PBXNativeTarget "AtlasSDKTests" */;
 			buildPhases = (
+				8175FB881D2FD71F009EDE7E /* Swift Lint */,
 				B09412911D17FA8F005A4213 /* Copy Quick and Nimble */,
 				814B7F111D0FD8D70073AF52 /* Sources */,
 				814B7F121D0FD8D70073AF52 /* Frameworks */,
-				8175FB881D2FD71F009EDE7E /* Swift Lint */,
 				81F6FBF01D3561C8006662E8 /* Resources */,
 			);
 			buildRules = (
