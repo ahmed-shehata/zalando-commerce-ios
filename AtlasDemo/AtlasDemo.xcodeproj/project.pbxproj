@@ -64,8 +64,8 @@
 /* Begin PBXFileReference section */
 		811089001D4F6A5B00DEEDF9 /* XCTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTestCase.swift; sourceTree = "<group>"; };
 		811089021D4F6A7D00DEEDF9 /* XCUIElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCUIElement.swift; sourceTree = "<group>"; };
-		81405F951D3E982700B01483 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = ../Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		81405F981D3E9AEB00B01483 /* Haneke.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Haneke.framework; path = ../Carthage/Build/iOS/Haneke.framework; sourceTree = "<group>"; };
+		81405F951D3E982700B01483 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = ../../Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		81405F981D3E9AEB00B01483 /* Haneke.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Haneke.framework; path = ../../Carthage/Build/iOS/Haneke.framework; sourceTree = "<group>"; };
 		8178A1D41D3FA88800E7050A /* AtlasMockAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AtlasMockAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8178A1D71D3FA88800E7050A /* AtlasSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AtlasSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8178A1DA1D3FA88900E7050A /* AtlasCheckout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AtlasCheckout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,7 +170,6 @@
 				B09434471D17FBA70092A7DE /* ProfileViewController.swift */,
 				B09434481D17FBA70092A7DE /* CatalogViewController.swift */,
 			);
-			name = AtlasDemo;
 			path = AtlasDemo;
 			sourceTree = "<group>";
 		};
@@ -182,7 +181,6 @@
 				811089001D4F6A5B00DEEDF9 /* XCTestCase.swift */,
 				811089021D4F6A7D00DEEDF9 /* XCUIElement.swift */,
 			);
-			name = AtlasDemoUITests;
 			path = AtlasDemoUITests;
 			sourceTree = "<group>";
 		};
@@ -197,7 +195,6 @@
 				81405F951D3E982700B01483 /* Alamofire.framework */,
 			);
 			name = Frameworks;
-			path = ..;
 			sourceTree = "<group>";
 		};
 		E8000DE81D2D349E00A2D3C7 /* CustomViews */ = {
@@ -439,6 +436,10 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../Carthage/Build/iOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -486,6 +487,10 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../Carthage/Build/iOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

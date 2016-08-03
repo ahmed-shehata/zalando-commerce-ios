@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		810916071D522E4A006101AD /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 810916051D522E4A006101AD /* Nimble.framework */; };
+		810916081D522E4A006101AD /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 810916061D522E4A006101AD /* Quick.framework */; };
+		8109160A1D522E7D006101AD /* Nimble.framework in Copy Quick and Nimble frameworks */ = {isa = PBXBuildFile; fileRef = 810916051D522E4A006101AD /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8109160B1D522E7D006101AD /* Quick.framework in Copy Quick and Nimble frameworks */ = {isa = PBXBuildFile; fileRef = 810916061D522E4A006101AD /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8186B11E1D51EE2F0068EE37 /* AtlasUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 8186B11D1D51EE2F0068EE37 /* AtlasUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8186B1251D51EE2F0068EE37 /* AtlasUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8186B11A1D51EE2F0068EE37 /* AtlasUI.framework */; };
 		8186B12A1D51EE2F0068EE37 /* AtlasUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B1291D51EE2F0068EE37 /* AtlasUITests.swift */; };
@@ -40,7 +44,24 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		810916091D522E5E006101AD /* Copy Quick and Nimble frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8109160A1D522E7D006101AD /* Nimble.framework in Copy Quick and Nimble frameworks */,
+				8109160B1D522E7D006101AD /* Quick.framework in Copy Quick and Nimble frameworks */,
+			);
+			name = "Copy Quick and Nimble frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		810916051D522E4A006101AD /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = ../../Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
+		810916061D522E4A006101AD /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = ../../Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		8186B11A1D51EE2F0068EE37 /* AtlasUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AtlasUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8186B11D1D51EE2F0068EE37 /* AtlasUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtlasUI.h; sourceTree = "<group>"; };
 		8186B11F1D51EE2F0068EE37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -80,6 +101,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				810916071D522E4A006101AD /* Nimble.framework in Frameworks */,
+				810916081D522E4A006101AD /* Quick.framework in Frameworks */,
 				8186B1251D51EE2F0068EE37 /* AtlasUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -87,6 +110,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8109160C1D522E93006101AD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				810916051D522E4A006101AD /* Nimble.framework */,
+				810916061D522E4A006101AD /* Quick.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8186B1101D51EE2F0068EE37 = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +163,7 @@
 		8186B1281D51EE2F0068EE37 /* AtlasUITests */ = {
 			isa = PBXGroup;
 			children = (
+				8109160C1D522E93006101AD /* Frameworks */,
 				8186B1291D51EE2F0068EE37 /* AtlasUITests.swift */,
 				8186B12B1D51EE2F0068EE37 /* Info.plist */,
 			);
@@ -172,7 +205,6 @@
 				8186B1601D51EF980068EE37 /* AtlasSDK.framework */,
 			);
 			name = Frameworks;
-			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,6 +245,7 @@
 			buildConfigurationList = 8186B1311D51EE2F0068EE37 /* Build configuration list for PBXNativeTarget "AtlasUITests" */;
 			buildPhases = (
 				8186B1201D51EE2F0068EE37 /* Sources */,
+				810916091D522E5E006101AD /* Copy Quick and Nimble frameworks */,
 				8186B1211D51EE2F0068EE37 /* Frameworks */,
 				8186B1221D51EE2F0068EE37 /* Resources */,
 			);
@@ -364,6 +397,10 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../Carthage/Build/iOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -413,6 +450,10 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../Carthage/Build/iOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -502,6 +543,7 @@
 				8186B1301D51EE2F0068EE37 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8186B1311D51EE2F0068EE37 /* Build configuration list for PBXNativeTarget "AtlasUITests" */ = {
 			isa = XCConfigurationList;
@@ -510,6 +552,7 @@
 				8186B1331D51EE2F0068EE37 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
