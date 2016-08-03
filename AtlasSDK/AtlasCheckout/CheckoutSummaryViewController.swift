@@ -12,7 +12,7 @@ final class CheckoutSummaryViewController: UIViewController {
     private let productNameLabel = UILabel()
     private let purchasedObjectSummaryLabel = UILabel()
     private let paymentSummaryTableview = UITableView()
-    private let shippingAmount: Float = 0
+    private let shippingPrice: Float = 0
     private let stackView: UIStackView = UIStackView()
     private var customer: Customer? = nil
     private let checkoutViewModel: CheckoutViewModel
@@ -33,23 +33,41 @@ final class CheckoutSummaryViewController: UIViewController {
         super.viewDidLoad()
 
         Async.main {
-            self.title = "Summary".loc
-            self.view.backgroundColor = UIColor.clearColor()
-            self.view.opaque = false
-            self.setupNavBar()
-            self.setupBlurView()
-            self.setupProductImageView()
-            self.setupViewLabels()
-            self.setupStackView()
-            self.setupBuyButton()
+            self.setupViews()
         }
 
+    }
+
+    private func setupViews() {
+        self.title = "Summary".loc
+        self.view.backgroundColor = UIColor.clearColor()
+        self.view.opaque = false
+        self.setupNavBar()
+        self.setupBlurView()
+        self.setupProductImageView()
+        self.setupViewLabels()
+        self.setupStackView()
+        self.setupBuyButton()
     }
 
     @objc private func buyButtonTapped(sender: UIButton) {
         let paymentProcessingViewController = PaymentProcessingViewController(checkoutView: self.checkoutViewModel)
 
         self.showViewController(paymentProcessingViewController, sender: self)
+    }
+
+    @objc private func connectToZalandoButtonTapped(sender: UIButton) {
+        AtlasSDK.fetchCustomer { result in
+            switch result {
+            case .failure(let error):
+                let alert = UIAlertController(title: "Error".loc, message: "\(error)", preferredStyle: .Alert)
+                self.presentViewController(alert, animated: true, completion: nil)
+
+            case .success(let customer):
+                self.customer = customer
+                self.setupViews()
+            }
+        }
     }
 
     @objc private func cancelCheckoutTapped(sender: UIBarButtonItem) {
@@ -127,8 +145,15 @@ final class CheckoutSummaryViewController: UIViewController {
         buyButton.topAnchor.constraintEqualToAnchor(self.view.bottomAnchor, constant: -60).active = true
         buyButton.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor, constant: 10).active = true
         buyButton.trailingAnchor.constraintEqualToAnchor(self.view.trailingAnchor, constant: -10).active = true
+        if customer != nil {
+            buyButton.backgroundColor = UIColor.orangeColor()
+            buyButton.userInteractionEnabled = true
+        } else {
+            buyButton.backgroundColor = UIColor.grayColor()
+            buyButton.userInteractionEnabled = false
+            setupConnectToZalandoButton(buyButton)
+        }
 
-        buyButton.backgroundColor = UIColor.orangeColor()
         buyButton.layer.cornerRadius = 5
 
         if let article = self.checkoutViewModel.articleUnit, price = AtlasSDK.localizer?.fmtPrice(article.price.amount) {
@@ -136,6 +161,26 @@ final class CheckoutSummaryViewController: UIViewController {
         }
 
         buyButton.addTarget(self, action: #selector(CheckoutSummaryViewController.buyButtonTapped(_:)), forControlEvents: .TouchUpInside)
+    }
+
+    private func setupConnectToZalandoButton(buyButton: UIButton) {
+        let connectButton = UIButton()
+        self.view.addSubview(connectButton)
+        connectButton.translatesAutoresizingMaskIntoConstraints = false
+
+        connectButton.heightAnchor.constraintEqualToConstant(50).active = true
+        connectButton.bottomAnchor.constraintEqualToAnchor(buyButton.topAnchor, constant: -10).active = true
+        connectButton.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor, constant: 10).active = true
+        connectButton.trailingAnchor.constraintEqualToAnchor(self.view.trailingAnchor, constant: -10).active = true
+        connectButton.layer.cornerRadius = 5
+
+        connectButton.backgroundColor = UIColor.orangeColor()
+        connectButton.userInteractionEnabled = true
+
+        connectButton.setTitle("Connect To Zalando".loc, forState: .Normal)
+
+        connectButton.addTarget(self, action: #selector(CheckoutSummaryViewController.connectToZalandoButtonTapped(_:)),
+            forControlEvents: .TouchUpInside)
     }
 
     private func setupBlurView() {
@@ -230,7 +275,12 @@ extension CheckoutSummaryViewController {
 
     private func paymentSummaryRow() -> UIView? {
         if let article = self.checkoutViewModel.articleUnit {
-            let paymentSummaryRow = PaymentSummaryRow.init(shippingAmount: shippingAmount,
+            var shippingPrice: Float? = nil
+            if customer != nil {
+                shippingPrice = self.shippingPrice
+            }
+
+            let paymentSummaryRow = PaymentSummaryRow.init(shippingPrice: shippingPrice,
                 itemPrice: article.price)
             paymentSummaryRow.translatesAutoresizingMaskIntoConstraints = false
 

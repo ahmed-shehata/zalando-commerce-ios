@@ -68,9 +68,7 @@ final class SizeListSelectionViewController: UITableViewController {
 
             let checkoutSummaryVC = CheckoutSummaryViewController(customer: nil, checkoutView: checkout)
             self.showViewController(checkoutSummaryVC, sender: self)
-        }
-
-        else {
+        } else {
             AtlasSDK.fetchCustomer { result in
                 switch result {
                 case .failure(let error):
