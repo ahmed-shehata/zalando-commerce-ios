@@ -19,6 +19,8 @@
 		815099751D51D34F00557CCB /* LoggerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8150996F1D51D34F00557CCB /* LoggerSpec.swift */; };
 		815099781D51D54700557CCB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8150997A1D51D54700557CCB /* Localizable.strings */; };
 		8168B0A61D40A2890088B112 /* APIAccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837A7581D34F89C00FC52C9 /* APIAccessToken.swift */; };
+		8168EB071D523434003A3C4B /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8168EB051D523434003A3C4B /* Nimble.framework */; };
+		8168EB081D523434003A3C4B /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8168EB061D523434003A3C4B /* Quick.framework */; };
 		817292641D362A2C00803B74 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817292541D362A2C00803B74 /* Address.swift */; };
 		817292651D362A2C00803B74 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817292551D362A2C00803B74 /* Article.swift */; };
 		817292661D362A2C00803B74 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817292561D362A2C00803B74 /* Cart.swift */; };
@@ -81,10 +83,6 @@
 		819F8AAC1D3689E3008E2AB1 /* Catalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817292581D362A2C00803B74 /* Catalog.swift */; };
 		81E01D071D48E85F00ED4701 /* JSONInitializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E01D061D48E85F00ED4701 /* JSONInitializable.swift */; };
 		81F6FBDA1D356104006662E8 /* AtlasSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 81F8C2741D35609C00996E95 /* AtlasSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		81F6FBE71D35618B006662E8 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 814FE5381D2D67E000F754DD /* Nimble.framework */; };
-		81F6FBE81D35618B006662E8 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 814FE5391D2D67E000F754DD /* Quick.framework */; };
-		81F6FBE91D356197006662E8 /* Nimble.framework in Copy Quick and Nimble */ = {isa = PBXBuildFile; fileRef = 814FE5381D2D67E000F754DD /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		81F6FBEA1D356197006662E8 /* Quick.framework in Copy Quick and Nimble */ = {isa = PBXBuildFile; fileRef = 814FE5391D2D67E000F754DD /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		81F6FBEC1D3561B3006662E8 /* URLSessionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F6FBE01D35614B006662E8 /* URLSessionMock.swift */; };
 		81F6FBED1D3561B9006662E8 /* APIClientSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F6FBDB1D35614B006662E8 /* APIClientSpec.swift */; };
 		81F6FBEE1D3561B9006662E8 /* APICustomerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F6FBDC1D35614B006662E8 /* APICustomerSpec.swift */; };
@@ -131,8 +129,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				81F6FBE91D356197006662E8 /* Nimble.framework in Copy Quick and Nimble */,
-				81F6FBEA1D356197006662E8 /* Quick.framework in Copy Quick and Nimble */,
 			);
 			name = "Copy Quick and Nimble";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -145,8 +141,6 @@
 		812C16CE1D48A3E2001BFCF0 /* URLAuthorizationSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLAuthorizationSpec.swift; path = AtlasSDKTests/URLAuthorizationSpec.swift; sourceTree = SOURCE_ROOT; };
 		814B7F0B1D0FD8D70073AF52 /* AtlasSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AtlasSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		814B7F151D0FD8D70073AF52 /* AtlasSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AtlasSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		814FE5381D2D67E000F754DD /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = ../Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
-		814FE5391D2D67E000F754DD /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = ../Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		814FE59E1D2D70E600F754DD /* ArrayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayTests.swift; sourceTree = "<group>"; };
 		814FE59F1D2D70E600F754DD /* BaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTests.swift; sourceTree = "<group>"; };
 		814FE5A01D2D70E600F754DD /* ComparableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComparableTests.swift; sourceTree = "<group>"; };
@@ -169,6 +163,8 @@
 		8150996F1D51D34F00557CCB /* LoggerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoggerSpec.swift; path = AtlasSDKTests/LoggerSpec.swift; sourceTree = SOURCE_ROOT; };
 		815099791D51D54700557CCB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8150997B1D51D54900557CCB /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8168EB051D523434003A3C4B /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = ../Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
+		8168EB061D523434003A3C4B /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = ../Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		817292541D362A2C00803B74 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		817292551D362A2C00803B74 /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		817292561D362A2C00803B74 /* Cart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
@@ -254,9 +250,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81F6FBE71D35618B006662E8 /* Nimble.framework in Frameworks */,
-				81F6FBE81D35618B006662E8 /* Quick.framework in Frameworks */,
 				814B7F161D0FD8D70073AF52 /* AtlasSDK.framework in Frameworks */,
+				8168EB071D523434003A3C4B /* Nimble.framework in Frameworks */,
+				8168EB081D523434003A3C4B /* Quick.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,7 +314,7 @@
 		814B7F191D0FD8D70073AF52 /* AtlasSDKTests */ = {
 			isa = PBXGroup;
 			children = (
-				814FE53D1D2D67E900F754DD /* Frameworks */,
+				8168EB001D523318003A3C4B /* Frameworks */,
 				814FE59D1D2D70E600F754DD /* SwiftyJSON */,
 				8150996A1D51D34F00557CCB /* AsyncSpec.swift */,
 				8150996B1D51D34F00557CCB /* DatesSpec.swift */,
@@ -336,16 +332,6 @@
 			);
 			name = AtlasSDKTests;
 			path = AtlasSDK/AtlasSDKTests;
-			sourceTree = "<group>";
-		};
-		814FE53D1D2D67E900F754DD /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				814FE5381D2D67E000F754DD /* Nimble.framework */,
-				814FE5391D2D67E000F754DD /* Quick.framework */,
-			);
-			name = Frameworks;
-			path = ../..;
 			sourceTree = "<group>";
 		};
 		814FE59D1D2D70E600F754DD /* SwiftyJSON */ = {
@@ -369,6 +355,15 @@
 			name = SwiftyJSON;
 			path = AtlasSDKTests/SwiftyJSON;
 			sourceTree = SOURCE_ROOT;
+		};
+		8168EB001D523318003A3C4B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8168EB051D523434003A3C4B /* Nimble.framework */,
+				8168EB061D523434003A3C4B /* Quick.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
 		};
 		817292531D362A2C00803B74 /* Models */ = {
 			isa = PBXGroup;
