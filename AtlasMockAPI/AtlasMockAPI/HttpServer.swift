@@ -4,7 +4,6 @@
 
 import Foundation
 import Swifter
-import AtlasCommons
 
 enum HttpServerError: ErrorType {
     case TimeoutOnStart(NSTimeInterval)
@@ -74,6 +73,26 @@ extension HttpServer {
     func respond(forPath path: String, withText text: String) {
         self[path] = { _ in
             return .OK(.Text(text))
+        }
+    }
+
+}
+
+extension NSBundle {
+
+    func pathsForResources(containingInName pattern: String? = nil) throws -> [String]? {
+        guard let resourcesPath = self.resourcePath else { return nil }
+
+        let allResources = try NSFileManager.defaultManager().contentsOfDirectoryAtPath(resourcesPath)
+
+        guard let pattern = pattern else {
+            return allResources
+        }
+
+        let matchingNames = allResources.filter { $0.containsString(pattern) }
+
+        return matchingNames.flatMap {
+            self.pathForResource($0, ofType: "")
         }
     }
 

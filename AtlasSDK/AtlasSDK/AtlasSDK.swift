@@ -3,7 +3,6 @@
 //
 
 import Foundation
-import AtlasCommons
 
 final public class AtlasSDK: CustomStringConvertible {
 
@@ -20,7 +19,7 @@ final public class AtlasSDK: CustomStringConvertible {
 
     public private(set) var status: Status = .NotInitialized {
         didSet {
-            logDebug("SDK Status changed:", status)
+            AtlasLogger.logDebug("SDK Status changed:", status)
         }
     }
 
@@ -74,7 +73,7 @@ final public class AtlasSDK: CustomStringConvertible {
             requestConfigurator { result in
                 switch result {
                 case .failure(let error):
-                    logError(error)
+                    AtlasLogger.logError(error)
                     self.status = .InitFailed
                 case .success(let config):
                     self.status = .ConfigurationOK
@@ -86,7 +85,7 @@ final public class AtlasSDK: CustomStringConvertible {
                 self.status = .NotInitialized
                 return
             }
-            logError(error)
+            AtlasLogger.logError(error)
             self.status = .InitFailed
         }
     }

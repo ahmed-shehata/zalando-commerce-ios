@@ -7,28 +7,26 @@ module Calypso
   WORKSPACE = BASE_DIR + 'AtlasSDK.xcworkspace'
 
   PROJECT_MOCK_SERVER = 'AtlasMockAPI'.freeze
-  PROJECT_CHECKOUT_DEMO = 'AtlasCheckoutDemo'.freeze
+  PROJECT_CHECKOUT_DEMO = 'AtlasDemo'.freeze
 
   PRODUCT_MOCK_SERVER = "#{PROJECT_MOCK_SERVER}.framework".freeze
   PRODUCT_CHECKOUT_DEMO = "#{PROJECT_CHECKOUT_DEMO}.app".freeze
 
   PROJECT_PATH_SDK = BASE_DIR + 'AtlasSDK' + 'AtlasSDK.xcodeproj'
-  PROJECT_PATH_CHECKOUT_DEMO = BASE_DIR + 'AtlasCheckoutDemo' + 'AtlasCheckoutDemo.xcodeproj'
+  PROJECT_PATH_CHECKOUT_DEMO = BASE_DIR + 'AtlasDemo' + 'AtlasDemo.xcodeproj'
 
   SCHEME_SDK = 'AtlasSDK'.freeze
   SCHEME_MOCK_SERVER = 'AtlasMockAPI'.freeze
-  SCHEME_COMMONS = 'AtlasCommons'.freeze
-  SCHEME_COMMONS_UI = 'AtlasCommonsUI'.freeze
   SCHEME_CHECKOUT = 'AtlasCheckout'.freeze
-  SCHEME_CHECKOUT_DEMO = 'AtlasCheckoutDemo'.freeze
-  SCHEME_CHECKOUT_DEMO_UNIT_TESTS = 'AtlasCheckoutDemoUnitTests'.freeze
+  SCHEME_CHECKOUT_DEMO = 'AtlasDemo'.freeze
+  SCHEME_CHECKOUT_DEMO_UNIT_TESTS = 'AtlasDemoUnitTests'.freeze
 
   SCHEME_ALL_TESTS = SCHEME_CHECKOUT_DEMO
   SCHEME_ALL_UNIT_TESTS = SCHEME_CHECKOUT_DEMO_UNIT_TESTS
 
   PLATFORM_DEFAULT = 'iOS Simulator,name=iPhone 6s'.freeze
 
-  PROJECT_DIRS = [BASE_DIR + 'AtlasSDK', BASE_DIR + 'AtlasCheckoutDemo'].freeze
+  PROJECT_DIRS = [BASE_DIR + 'AtlasSDK', BASE_DIR + 'AtlasDemo'].freeze
 
   MIN_CODE_COVERAGE = 70
   COV_THRESHOLD_WARN = -0.5

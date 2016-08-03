@@ -10,7 +10,6 @@
 		8116FF171D3E910000C750C6 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8116FF141D3E8FFC00C750C6 /* Alamofire.framework */; };
 		81405F931D3E941D00B01483 /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 8116FF141D3E8FFC00C750C6 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		81405F941D3E942900B01483 /* Swifter.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = E893B5BF1D2E861A004D9547 /* Swifter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8198F28C1D3E39BF0059EE87 /* AtlasCommons.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8198F28B1D3E39BF0059EE87 /* AtlasCommons.framework */; };
 		8198F2901D3E3C000059EE87 /* NSProcessInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8198F28F1D3E3C000059EE87 /* NSProcessInfo.swift */; };
 		8198F2921D3E3C950059EE87 /* HttpServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8198F2911D3E3C950059EE87 /* HttpServer.swift */; };
 		81C5A3E21D427F5E00508B14 /* SwiftyJSON.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 81C5A3E11D427F5E00508B14 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -73,7 +72,6 @@
 
 /* Begin PBXFileReference section */
 		8116FF141D3E8FFC00C750C6 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = ../../Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		8198F28B1D3E39BF0059EE87 /* AtlasCommons.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AtlasCommons.framework; path = "/Volumes/RAMDrive/AtlasSDK-dzjaikoqpgflzpfctpqwcbwxveqk/Build/Products/Debug-iphoneos/AtlasCommons.framework"; sourceTree = "<absolute>"; };
 		8198F28F1D3E3C000059EE87 /* NSProcessInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSProcessInfo.swift; sourceTree = "<group>"; };
 		8198F2911D3E3C950059EE87 /* HttpServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpServer.swift; sourceTree = "<group>"; };
 		81C5A3E11D427F5E00508B14 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = ../../Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
@@ -92,7 +90,7 @@
 		E893B5911D2E707A004D9547 /* AtlasMockAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtlasMockAPI.h; sourceTree = "<group>"; };
 		E893B5931D2E707A004D9547 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E893B5A91D2E70BE004D9547 /* AtlasMockAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasMockAPI.swift; sourceTree = "<group>"; };
-		E893B5BF1D2E861A004D9547 /* Swifter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swifter.framework; path = ../Carthage/Build/iOS/Swifter.framework; sourceTree = "<group>"; };
+		E893B5BF1D2E861A004D9547 /* Swifter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swifter.framework; path = ../../Carthage/Build/iOS/Swifter.framework; sourceTree = "<group>"; };
 		E8B1307D1D2FB411007D4F17 /* GET*|articles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles.json"; sourceTree = "<group>"; };
 		E8E1ACE71D48FA28007D4BE8 /* GET*|customer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|customer.json"; sourceTree = "<group>"; };
 		E8E542021D38246200FB59F5 /* GET*|articles|GU121D08Z-Q11.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles|GU121D08Z-Q11.json"; sourceTree = "<group>"; };
@@ -113,7 +111,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8198F28C1D3E39BF0059EE87 /* AtlasCommons.framework in Frameworks */,
 				E893B5C01D2E861A004D9547 /* Swifter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -188,8 +185,8 @@
 		E893B5901D2E707A004D9547 /* AtlasMockAPI */ = {
 			isa = PBXGroup;
 			children = (
-				8198F2931D3E3CA90059EE87 /* Others */,
 				E893B5D11D2E8AAC004D9547 /* Frameworks */,
+				8198F2931D3E3CA90059EE87 /* Others */,
 				E837A7601D34FFBA00FC52C9 /* JSON */,
 				E893B5A91D2E70BE004D9547 /* AtlasMockAPI.swift */,
 				8198F28F1D3E3C000059EE87 /* NSProcessInfo.swift */,
@@ -201,11 +198,9 @@
 		E893B5D11D2E8AAC004D9547 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8198F28B1D3E39BF0059EE87 /* AtlasCommons.framework */,
 				E893B5BF1D2E861A004D9547 /* Swifter.framework */,
 			);
 			name = Frameworks;
-			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

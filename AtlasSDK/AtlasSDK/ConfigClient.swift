@@ -3,9 +3,8 @@
 //
 
 import Foundation
-import AtlasCommons
 
-typealias ConfigCompletion = Result<Config> -> Void
+typealias ConfigCompletion = AtlasResult<Config> -> Void
 
 protocol Configurator {
 
