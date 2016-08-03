@@ -3,6 +3,9 @@ language: objective-c
 before_install:
   - bundle update
 
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+
 branches:
   only:
     - master
@@ -15,3 +18,4 @@ xcode_sdk: iphonesimulator9.3
 
 script:
   - xcodebuild -workspace AtlasSDK.xcworkspace -parallelizeTargets clean build test -scheme AtlasCheckoutDemo -enableCodeCoverage YES
+
