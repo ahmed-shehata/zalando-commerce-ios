@@ -5,7 +5,7 @@
 import Foundation
 import UIKit
 import AtlasSDK
-import AtlasCheckout
+import AtlasUI
 
 class ProductCollectionViewCell: UICollectionViewCell {
 

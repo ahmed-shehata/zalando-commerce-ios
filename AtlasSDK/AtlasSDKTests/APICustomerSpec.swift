@@ -10,7 +10,7 @@ import Nimble
 class APICustomerSpec: QuickSpec {
 
     // swiftlint:disable:next line_length
-    private let atlas = AtlasSDK(options: Options(clientId: "clientId", salesChannel: "SALES_CHANNEL", useSandbox: true))
+    private let atlas = AtlasSDK(options: Options(clientId: "atlas_Y2M1MzA", salesChannel: "SALES_CHANNEL", useSandbox: true))
 
     override func spec() { // swiftlint:disable:this function_body_length
 

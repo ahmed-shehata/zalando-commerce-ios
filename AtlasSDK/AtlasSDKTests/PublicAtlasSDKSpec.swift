@@ -5,7 +5,6 @@
 import Foundation
 import Quick
 import Nimble
-import AtlasCommons
 import AtlasMockAPI
 
 @testable import AtlasSDK
@@ -27,7 +26,7 @@ class PublicAtlasSDKSpec: QuickSpec {
     override func spec() {
 
         beforeEach {
-            let opts = Options(clientId: "clientId", salesChannel: "SALES_CHANNEL_ID", useSandbox: true)
+            let opts = Options(clientId: "atlas_Y2M1MzA", salesChannel: "SALES_CHANNEL_ID", useSandbox: true)
             let configURL = AtlasMockAPI.endpointURL(forPath: "/config")
             self.atlas = AtlasSDK()
             self.atlas.register { ConfigClient(options: opts, endpointURL: configURL) as Configurator }

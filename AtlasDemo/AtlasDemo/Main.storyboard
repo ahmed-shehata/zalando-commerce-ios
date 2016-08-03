@@ -9,7 +9,7 @@
         <!--AtlasSDK Demo-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="CatalogViewController" customModule="AtlasCheckoutDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CatalogViewController" customModule="AtlasDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -37,7 +37,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProductCollectionViewCell" id="hVR-sn-iEc" customClass="ProductCollectionViewCell" customModule="AtlasCheckoutDemo" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProductCollectionViewCell" id="hVR-sn-iEc" customClass="ProductCollectionViewCell" customModule="AtlasDemo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="179" height="229"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -116,7 +116,7 @@
         <!--Profile View Controller-->
         <scene sceneID="qtY-YE-HIe">
             <objects>
-                <viewController storyboardIdentifier="Profile" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4dE-k4-8mF" customClass="ProfileViewController" customModule="AtlasCheckoutDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Profile" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4dE-k4-8mF" customClass="ProfileViewController" customModule="AtlasDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Cew-DZ-oSf"/>
                         <viewControllerLayoutGuide type="bottom" id="SNu-FN-JOB"/>
