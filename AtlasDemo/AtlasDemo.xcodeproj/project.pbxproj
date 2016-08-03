@@ -170,7 +170,6 @@
 				B09434471D17FBA70092A7DE /* ProfileViewController.swift */,
 				B09434481D17FBA70092A7DE /* CatalogViewController.swift */,
 			);
-			name = AtlasDemo;
 			path = AtlasDemo;
 			sourceTree = "<group>";
 		};
@@ -182,7 +181,6 @@
 				811089001D4F6A5B00DEEDF9 /* XCTestCase.swift */,
 				811089021D4F6A7D00DEEDF9 /* XCUIElement.swift */,
 			);
-			name = AtlasDemoUITests;
 			path = AtlasDemoUITests;
 			sourceTree = "<group>";
 		};
@@ -439,6 +437,10 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../Carthage/Build/iOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -486,6 +488,10 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../Carthage/Build/iOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
