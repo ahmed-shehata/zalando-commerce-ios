@@ -4,7 +4,7 @@
 
 import Foundation
 import UIKit
-import AtlasCommons
+import AtlasSDK
 
 public typealias ButtonActionHandler = ((UIAlertAction) -> Void)
 

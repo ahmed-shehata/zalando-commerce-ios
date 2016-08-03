@@ -6,13 +6,13 @@ import Foundation
 
 extension NSData {
 
-    public convenience init?(json: [String: AnyObject]?) throws {
+    convenience init?(json: [String: AnyObject]?) throws {
         guard let json = json else { return nil }
         do {
             let data = try NSJSONSerialization.dataWithJSONObject(json, options: [])
             self.init(data: data)
         } catch let e {
-            logError(e)
+            AtlasLogger.logError(e)
             throw e
         }
     }

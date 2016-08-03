@@ -5,7 +5,7 @@
 /**
  Simple enum that reprensents the result of in completion block for every API call.
  */
-public enum Result<T> {
+public enum AtlasResult<T> {
 
     case success(T)
     case failure(ErrorType)

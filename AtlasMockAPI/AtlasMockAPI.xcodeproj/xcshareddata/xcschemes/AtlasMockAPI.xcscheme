@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E81E82191D33C1F300ADD0E6"
+               BuildableName = "AtlasMockAPITests.xctest"
+               BlueprintName = "AtlasMockAPITests"
+               ReferencedContainer = "container:AtlasMockAPI.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "E893B58D1D2E707A004D9547"
+            BuildableName = "AtlasMockAPI.framework"
+            BlueprintName = "AtlasMockAPI"
+            ReferencedContainer = "container:AtlasMockAPI.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>

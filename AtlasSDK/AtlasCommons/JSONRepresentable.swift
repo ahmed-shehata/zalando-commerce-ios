@@ -4,7 +4,7 @@
 
 import Foundation
 
-public protocol JSONRepresentable {
+protocol JSONRepresentable {
 
     func toJSON() -> [String: AnyObject]
 

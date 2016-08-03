@@ -4,7 +4,7 @@
 
 import Quick
 import Nimble
-@testable import AtlasCommons
+@testable import AtlasSDK
 
 class LoggerSpec: QuickSpec {
 
@@ -36,7 +36,7 @@ class LoggerSpec: QuickSpec {
             it("Writes error message for Error severity") {
                 AtlasLogger.logger.severity = .Error
 
-                logError(loggedMessage)
+                AtlasLogger.logError(loggedMessage)
 
                 expect(loggerOutput).to(contain(loggedMessage))
             }
@@ -44,7 +44,7 @@ class LoggerSpec: QuickSpec {
             it("Writes message for Message severity") {
                 AtlasLogger.logger.severity = .Message
 
-                logMessage(loggedMessage)
+                AtlasLogger.logMessage(loggedMessage)
 
                 expect(loggerOutput).to(contain(loggedMessage))
             }
@@ -52,7 +52,7 @@ class LoggerSpec: QuickSpec {
             it("Skips message for Error severity") {
                 AtlasLogger.logger.severity = .Error
 
-                logMessage(loggedMessage)
+                AtlasLogger.logMessage(loggedMessage)
 
                 expect(loggerOutput).toNot(contain(loggedMessage))
             }
@@ -60,7 +60,7 @@ class LoggerSpec: QuickSpec {
             it("Writes debug message for Debug severity") {
                 AtlasLogger.logger.severity = .Debug
 
-                logDebug(loggedMessage)
+                AtlasLogger.logDebug(loggedMessage)
 
                 expect(loggerOutput).to(contain(loggedMessage))
             }
@@ -68,7 +68,7 @@ class LoggerSpec: QuickSpec {
             it("Skips debug message for Error severity") {
                 AtlasLogger.logger.severity = .Error
 
-                logDebug(loggedMessage)
+                AtlasLogger.logDebug(loggedMessage)
 
                 expect(loggerOutput).toNot(contain(loggedMessage))
             }
@@ -76,7 +76,7 @@ class LoggerSpec: QuickSpec {
             it("Skips debug message for Error severity") {
                 AtlasLogger.logger.severity = .Message
 
-                logDebug(loggedMessage)
+                AtlasLogger.logDebug(loggedMessage)
 
                 expect(loggerOutput).toNot(contain(loggedMessage))
             }
@@ -84,7 +84,7 @@ class LoggerSpec: QuickSpec {
             it("Shows name of called function and file in verbose mode") {
                 AtlasLogger.logger.severity = .Debug
 
-                logDebug(loggedMessage, verbose: true)
+                AtlasLogger.logDebug(loggedMessage, verbose: true)
 
                 expect(loggerOutput).to(contain("spec()"))
                 expect(loggerOutput).to(contain("LoggerSpec.swift"))

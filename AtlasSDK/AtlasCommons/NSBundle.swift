@@ -4,9 +4,9 @@
 
 import Foundation
 
-public extension NSBundle {
+extension NSBundle {
 
-    public func pathsForResources(containingInName pattern: String? = nil) throws -> [String]? {
+    func pathsForResources(containingInName pattern: String? = nil) throws -> [String]? {
         guard let resourcesPath = self.resourcePath else { return nil }
 
         let allResources = try NSFileManager.defaultManager().contentsOfDirectoryAtPath(resourcesPath)

@@ -22,7 +22,7 @@
 //  THE SOFTWARE.
 
 import XCTest
-@testable import AtlasCommons
+@testable import AtlasSDK
 
 class SequenceTypeTests: XCTestCase {
 

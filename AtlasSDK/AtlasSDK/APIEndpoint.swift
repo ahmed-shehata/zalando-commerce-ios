@@ -5,17 +5,17 @@
 import Foundation
 import AtlasCommons
 
-public struct APIEndpoint: EndpointType {
+struct APIEndpoint: EndpointType {
 
-    public let baseURL: NSURL
+    let baseURL: NSURL
 
-    public let method: HTTPMethod
-    public let contentType: String
+    let method: HTTPMethod
+    let contentType: String
 
-    public let acceptedContentType: String?
-    public let path: String?
-    public let queryItems: [NSURLQueryItem]?
-    public let parameters: [String: AnyObject]?
+    let acceptedContentType: String?
+    let path: String?
+    let queryItems: [NSURLQueryItem]?
+    let parameters: [String: AnyObject]?
 
     init(baseURL: NSURL,
         method: HTTPMethod = .GET,

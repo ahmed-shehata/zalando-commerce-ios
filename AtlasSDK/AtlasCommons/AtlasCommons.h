@@ -10,6 +10,6 @@ FOUNDATION_EXPORT double AtlasCommonsVersionNumber;
 //! Project version string for AtlasCommons.
 FOUNDATION_EXPORT const unsigned char AtlasCommonsVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <AtlasCommons/PublicHeader.h>
+// In this header, you should import all the headers of your framework using statements like #import <AtlasCommons/PublicHeader.h>
 
 

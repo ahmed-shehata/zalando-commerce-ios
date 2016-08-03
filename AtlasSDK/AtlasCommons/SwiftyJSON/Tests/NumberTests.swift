@@ -21,7 +21,7 @@
 //  THE SOFTWARE.
 
 import XCTest
-@testable import AtlasCommons
+@testable import AtlasSDK
 class NumberTests: XCTestCase {
 
     func testNumber() {

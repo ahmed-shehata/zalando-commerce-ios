@@ -71,7 +71,7 @@ final class SizeListSelectionViewController: UITableViewController {
                 self.checkoutService.generateCheckout(withArticle: self.article, articleUnitIndex: indexPath.row) { result in
                     switch result {
                     case .failure(let error):
-                        logError(error)
+                        AtlasLogger.logError(error)
                         self.dismissViewControllerAnimated(true) {
                             UserMessage.showError(title: "Fatal Error".loc, error: error)
                         }

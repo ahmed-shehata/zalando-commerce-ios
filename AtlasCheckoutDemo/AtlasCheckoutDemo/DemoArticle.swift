@@ -3,7 +3,7 @@
 //
 
 import Foundation
-import AtlasCommons
+import AtlasSDK
 
 public struct DemoArticle {
 

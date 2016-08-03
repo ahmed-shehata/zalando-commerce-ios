@@ -6,35 +6,31 @@ import Foundation
 import AtlasCommons
 
 /**
- Completion block `Result` with the `Customer` struct as a success value
+ Completion block `AtlasResult` with the `Customer` struct as a success value
  */
-public typealias CustomerCompletion = Result<Customer> -> Void
+public typealias CustomerCompletion = AtlasResult<Customer> -> Void
 
 /**
- Completion block `Result` with the `Article` struct as a success value
+ Completion block `AtlasResult` with the `Article` struct as a success value
  */
-public typealias ArticleCompletion = Result<Article> -> Void
+public typealias ArticleCompletion = AtlasResult<Article> -> Void
 
 /**
- Completion block `Result` with the `Cart` struct as a success value
+ Completion block `AtlasResult` with the `Cart` struct as a success value
  */
-public typealias CartCompletion = Result<Cart> -> Void
+public typealias CartCompletion = AtlasResult<Cart> -> Void
 
 /**
- Completion block `Result` with the `Checkout` struct as a success value
+ Completion block `AtlasResult` with the `Checkout` struct as a success value
  */
-public typealias CheckoutCompletion = Result<Checkout> -> Void
+public typealias CheckoutCompletion = AtlasResult<Checkout> -> Void
 
 /**
- Completion block `Result` with the `Order` struct as a success value
+ Completion block `AtlasResult` with the `Order` struct as a success value
  */
-public typealias OrderCompletion = Result<Order> -> Void
+public typealias OrderCompletion = AtlasResult<Order> -> Void
 
 extension AtlasSDK {
-
-    public static var localizer: Localizer? {
-        return Localizer.sharedLocalizer
-    }
 
     public static func configure(options: Options, configurationURL: NSURL? = nil) {
         if let configurationURL = configurationURL {
@@ -66,7 +62,7 @@ extension AtlasSDK {
     }
 
     /**
-     Fetches the `Result` of `Catalog` for the articles with the given sku
+     Fetches the `AtlasResult` of `Catalog` for the articles with the given sku
      and configured sales_cahnnel and executes the __completion block__ provided.
 
      - parameter sku: Article SKU
@@ -100,7 +96,7 @@ extension AtlasSDK {
         AtlasSDK.sharedInstance.apiClient?.fetchAddressList(completion)
     }
 
-    private static func isAtlasSetupCorrectly<T>(completion: Result<T> -> Void) -> Bool {
+    private static func isAtlasSetupCorrectly<T>(completion: AtlasResult<T> -> Void) -> Bool {
         guard AtlasSDK.sharedInstance.status == .ConfigurationOK else {
             let error = AtlasConfigurationError(status: AtlasSDK.sharedInstance.status)
             completion(.failure(error))

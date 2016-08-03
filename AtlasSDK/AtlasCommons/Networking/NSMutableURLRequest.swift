@@ -30,19 +30,19 @@ extension NSMutableURLRequest {
         return curlComponents.joinWithSeparator(" \\\n\t")
     }
 
-    public func debugLog() -> NSMutableURLRequest {
-        logDebug(curlCommandRepresentation())
+    func debugLog() -> NSMutableURLRequest {
+        AtlasLogger.logDebug(curlCommandRepresentation())
         return self
     }
 
-    public func authorize(withToken token: String?) -> NSMutableURLRequest {
+    func authorize(withToken token: String?) -> NSMutableURLRequest {
         if let token = token {
             self.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         }
         return self
     }
 
-    public convenience init(endpoint: EndpointType) throws {
+    convenience init(endpoint: EndpointType) throws {
         self.init(URL: endpoint.URL)
         self.HTTPMethod = endpoint.method.rawValue
         self.setValue(endpoint.contentType, forHTTPHeaderField: "Content-Type")

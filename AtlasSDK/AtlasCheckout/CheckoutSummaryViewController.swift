@@ -129,7 +129,7 @@ final class CheckoutSummaryViewController: UIViewController {
         buyButton.backgroundColor = UIColor.orangeColor()
         buyButton.layer.cornerRadius = 5
 
-        if let article = self.checkoutViewModel.articleUnit, price = AtlasSDK.localizer?.fmtPrice(article.price.amount) {
+        if let article = self.checkoutViewModel.articleUnit, price = article.price.amountFormatted {
             buyButton.setTitle("Pay %@".loc(price), forState: .Normal)
         }
 

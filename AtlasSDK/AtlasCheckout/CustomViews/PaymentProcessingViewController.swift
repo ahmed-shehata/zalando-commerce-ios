@@ -3,7 +3,7 @@
 //
 
 import UIKit
-import AtlasCommons
+import AtlasSDK
 import AtlasCommonsUI
 
 internal final class PaymentProcessingViewController: UIViewController {
@@ -78,7 +78,7 @@ internal final class PaymentProcessingViewController: UIViewController {
         checkoutService.createOrder(checkout.id) { (result) in
             switch result {
             case .failure(let error):
-                logError(error)
+                AtlasLogger.logError(error)
                 UserMessage.showOK(title: "Fatal Error".loc, message: String(error))
             case .success(let order):
                 print(order)

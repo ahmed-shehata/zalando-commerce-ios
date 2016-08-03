@@ -4,11 +4,11 @@
 
 import Foundation
 
-public let ISO8601DateFormatter = NSDateFormatter(dateFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS")
+let ISO8601DateFormatter = NSDateFormatter(dateFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS")
 
 extension NSDateFormatter {
 
-    public convenience init(dateFormat: String, localeIdentifier: String = "en_US_POSIX", timeZone: String = "GMT") {
+    convenience init(dateFormat: String, localeIdentifier: String = "en_US_POSIX", timeZone: String = "GMT") {
         self.init()
         self.locale = NSLocale(localeIdentifier: localeIdentifier)
         self.timeZone = NSTimeZone(abbreviation: timeZone)
@@ -19,7 +19,7 @@ extension NSDateFormatter {
 
 extension String {
 
-    public init?(fromDate date: NSDate?, formatter: NSDateFormatter) {
+    init?(fromDate date: NSDate?, formatter: NSDateFormatter) {
         guard let d = date else {
             return nil
         }
@@ -30,7 +30,7 @@ extension String {
 
 extension NSDate {
 
-    public convenience init?(object: AnyObject?, formatter: NSDateFormatter) {
+    convenience init?(object: AnyObject?, formatter: NSDateFormatter) {
         guard let string = object as? String, date = formatter.dateFromString(string) else {
             return nil
         }

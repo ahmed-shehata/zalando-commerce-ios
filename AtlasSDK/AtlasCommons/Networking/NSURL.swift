@@ -4,9 +4,9 @@
 
 import Foundation
 
-public extension NSURL {
+extension NSURL {
 
-    public convenience init(validUrl stringConvertible: URLStringConvertible) {
+    convenience init(validUrl stringConvertible: URLStringConvertible) {
         self.init(string: stringConvertible.URLString)! // swiftlint:disable:this force_unwrapping
     }
 

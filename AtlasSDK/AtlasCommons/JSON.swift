@@ -6,11 +6,11 @@ import Foundation
 
 extension JSON {
 
-    public static func parse(contentsOfFile path: String) -> JSON {
+    static func parse(contentsOfFile path: String) -> JSON {
         do {
             return parse(try String(contentsOfFile: path))
         } catch let e {
-            logError(e)
+            AtlasLogger.logError(e)
             return JSON(NSNull())
         }
     }
