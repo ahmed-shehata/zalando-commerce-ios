@@ -21,7 +21,7 @@
 		81A115311D42621F007B20B4 /* AtlasMockAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8178A1D41D3FA88800E7050A /* AtlasMockAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		81FCA8E31D0FE05D00209E9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81FCA8E21D0FE05D00209E9B /* Assets.xcassets */; };
 		81FCA8E61D0FE05D00209E9B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81FCA8E41D0FE05D00209E9B /* LaunchScreen.storyboard */; };
-		81FCA8F11D0FE05D00209E9B /* AtlasCheckoutDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FCA8F01D0FE05D00209E9B /* AtlasCheckoutDemoUITests.swift */; };
+		81FCA8F11D0FE05D00209E9B /* AtlasDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FCA8F01D0FE05D00209E9B /* AtlasDemoUITests.swift */; };
 		B032DE171D367CED00117765 /* ArticlesClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032DE161D367CED00117765 /* ArticlesClient.swift */; };
 		B032DE1E1D37C26700117765 /* DemoArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032DE1D1D37C26700117765 /* DemoArticle.swift */; };
 		B032DE201D37C34900117765 /* SizeMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032DE1F1D37C34900117765 /* SizeMap.swift */; };
@@ -39,7 +39,7 @@
 			containerPortal = 81FCA8D01D0FE05D00209E9B /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 81FCA8D71D0FE05D00209E9B;
-			remoteInfo = AtlasCheckoutDemo;
+			remoteInfo = AtlasDemo;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -69,13 +69,13 @@
 		8178A1D41D3FA88800E7050A /* AtlasMockAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AtlasMockAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8178A1D71D3FA88800E7050A /* AtlasSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AtlasSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8178A1DA1D3FA88900E7050A /* AtlasCheckout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AtlasCheckout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		81983BD51D51F262006E9696 /* AtlasUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = AtlasUI.framework; path = "AtlasUI.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		81FCA8D81D0FE05D00209E9B /* AtlasCheckoutDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AtlasCheckoutDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		81983BD51D51F262006E9696 /* AtlasUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AtlasUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		81FCA8D81D0FE05D00209E9B /* AtlasDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AtlasDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81FCA8E21D0FE05D00209E9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		81FCA8E51D0FE05D00209E9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		81FCA8E71D0FE05D00209E9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		81FCA8EC1D0FE05D00209E9B /* AtlasCheckoutDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AtlasCheckoutDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		81FCA8F01D0FE05D00209E9B /* AtlasCheckoutDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtlasCheckoutDemoUITests.swift; sourceTree = "<group>"; };
+		81FCA8EC1D0FE05D00209E9B /* AtlasDemo.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AtlasDemo.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		81FCA8F01D0FE05D00209E9B /* AtlasDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtlasDemoUITests.swift; sourceTree = "<group>"; };
 		81FCA8F21D0FE05D00209E9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B032DE161D367CED00117765 /* ArticlesClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticlesClient.swift; sourceTree = "<group>"; };
 		B032DE1D1D37C26700117765 /* DemoArticle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoArticle.swift; sourceTree = "<group>"; };
@@ -143,8 +143,8 @@
 		81FCA8CF1D0FE05D00209E9B = {
 			isa = PBXGroup;
 			children = (
-				81FCA8DA1D0FE05D00209E9B /* AtlasCheckoutDemo */,
-				81FCA8EF1D0FE05D00209E9B /* AtlasCheckoutDemoUITests */,
+				81FCA8DA1D0FE05D00209E9B /* AtlasDemo */,
+				81FCA8EF1D0FE05D00209E9B /* AtlasDemoUITests */,
 				81FCA8D91D0FE05D00209E9B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -152,13 +152,13 @@
 		81FCA8D91D0FE05D00209E9B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				81FCA8D81D0FE05D00209E9B /* AtlasCheckoutDemo.app */,
-				81FCA8EC1D0FE05D00209E9B /* AtlasCheckoutDemoUITests.xctest */,
+				81FCA8D81D0FE05D00209E9B /* AtlasDemo.app */,
+				81FCA8EC1D0FE05D00209E9B /* AtlasDemo.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		81FCA8DA1D0FE05D00209E9B /* AtlasCheckoutDemo */ = {
+		81FCA8DA1D0FE05D00209E9B /* AtlasDemo */ = {
 			isa = PBXGroup;
 			children = (
 				B094345D1D1802D70092A7DE /* Frameworks */,
@@ -170,18 +170,20 @@
 				B09434471D17FBA70092A7DE /* ProfileViewController.swift */,
 				B09434481D17FBA70092A7DE /* CatalogViewController.swift */,
 			);
-			path = AtlasCheckoutDemo;
+			name = AtlasDemo;
+			path = AtlasDemo;
 			sourceTree = "<group>";
 		};
-		81FCA8EF1D0FE05D00209E9B /* AtlasCheckoutDemoUITests */ = {
+		81FCA8EF1D0FE05D00209E9B /* AtlasDemoUITests */ = {
 			isa = PBXGroup;
 			children = (
-				81FCA8F01D0FE05D00209E9B /* AtlasCheckoutDemoUITests.swift */,
+				81FCA8F01D0FE05D00209E9B /* AtlasDemoUITests.swift */,
 				81FCA8F21D0FE05D00209E9B /* Info.plist */,
 				811089001D4F6A5B00DEEDF9 /* XCTestCase.swift */,
 				811089021D4F6A7D00DEEDF9 /* XCUIElement.swift */,
 			);
-			path = AtlasCheckoutDemoUITests;
+			name = AtlasDemoUITests;
+			path = AtlasDemoUITests;
 			sourceTree = "<group>";
 		};
 		B094345D1D1802D70092A7DE /* Frameworks */ = {
@@ -219,9 +221,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		81FCA8D71D0FE05D00209E9B /* AtlasCheckoutDemo */ = {
+		81FCA8D71D0FE05D00209E9B /* AtlasDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 81FCA8F51D0FE05D00209E9B /* Build configuration list for PBXNativeTarget "AtlasCheckoutDemo" */;
+			buildConfigurationList = 81FCA8F51D0FE05D00209E9B /* Build configuration list for PBXNativeTarget "AtlasDemo" */;
 			buildPhases = (
 				8175FB841D2FD5BB009EDE7E /* Swift Lint */,
 				B09434561D17FE950092A7DE /* Carthage */,
@@ -235,14 +237,14 @@
 			);
 			dependencies = (
 			);
-			name = AtlasCheckoutDemo;
-			productName = AtlasCheckoutDemo;
-			productReference = 81FCA8D81D0FE05D00209E9B /* AtlasCheckoutDemo.app */;
+			name = AtlasDemo;
+			productName = AtlasDemo;
+			productReference = 81FCA8D81D0FE05D00209E9B /* AtlasDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		81FCA8EB1D0FE05D00209E9B /* AtlasCheckoutDemoUITests */ = {
+		81FCA8EB1D0FE05D00209E9B /* AtlasDemoUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 81FCA8F81D0FE05D00209E9B /* Build configuration list for PBXNativeTarget "AtlasCheckoutDemoUITests" */;
+			buildConfigurationList = 81FCA8F81D0FE05D00209E9B /* Build configuration list for PBXNativeTarget "AtlasDemoUITests" */;
 			buildPhases = (
 				8175FB891D2FD79E009EDE7E /* Swift Lint */,
 				81FCA8E81D0FE05D00209E9B /* Sources */,
@@ -254,9 +256,9 @@
 			dependencies = (
 				81FCA8EE1D0FE05D00209E9B /* PBXTargetDependency */,
 			);
-			name = AtlasCheckoutDemoUITests;
-			productName = AtlasCheckoutDemoUITests;
-			productReference = 81FCA8EC1D0FE05D00209E9B /* AtlasCheckoutDemoUITests.xctest */;
+			name = AtlasDemoUITests;
+			productName = AtlasDemoUITests;
+			productReference = 81FCA8EC1D0FE05D00209E9B /* AtlasDemo.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -279,7 +281,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 81FCA8D31D0FE05D00209E9B /* Build configuration list for PBXProject "AtlasCheckoutDemo" */;
+			buildConfigurationList = 81FCA8D31D0FE05D00209E9B /* Build configuration list for PBXProject "AtlasDemo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -292,8 +294,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				81FCA8D71D0FE05D00209E9B /* AtlasCheckoutDemo */,
-				81FCA8EB1D0FE05D00209E9B /* AtlasCheckoutDemoUITests */,
+				81FCA8D71D0FE05D00209E9B /* AtlasDemo */,
+				81FCA8EB1D0FE05D00209E9B /* AtlasDemoUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -388,7 +390,7 @@
 			files = (
 				811089011D4F6A5B00DEEDF9 /* XCTestCase.swift in Sources */,
 				811089031D4F6A7D00DEEDF9 /* XCUIElement.swift in Sources */,
-				81FCA8F11D0FE05D00209E9B /* AtlasCheckoutDemoUITests.swift in Sources */,
+				81FCA8F11D0FE05D00209E9B /* AtlasDemoUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,7 +399,7 @@
 /* Begin PBXTargetDependency section */
 		81FCA8EE1D0FE05D00209E9B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 81FCA8D71D0FE05D00209E9B /* AtlasCheckoutDemo */;
+			target = 81FCA8D71D0FE05D00209E9B /* AtlasDemo */;
 			targetProxy = 81FCA8ED1D0FE05D00209E9B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -509,10 +511,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/../Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = AtlasCheckoutDemo/Info.plist;
+				INFOPLIST_FILE = AtlasDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.zalando.atlas.AtlasCheckoutDemo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = de.zalando.atlas.AtlasDemo;
+				PRODUCT_NAME = AtlasDemo;
 			};
 			name = Debug;
 		};
@@ -525,39 +527,39 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/../Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = AtlasCheckoutDemo/Info.plist;
+				INFOPLIST_FILE = AtlasDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.zalando.atlas.AtlasCheckoutDemo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = de.zalando.atlas.AtlasDemo;
+				PRODUCT_NAME = AtlasDemo;
 			};
 			name = Release;
 		};
 		81FCA8F91D0FE05D00209E9B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = AtlasCheckoutDemoUITests/Info.plist;
+				INFOPLIST_FILE = AtlasDemoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.zalando.atlas.AtlasCheckoutDemoUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = AtlasCheckoutDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = de.zalando.atlas.AtlasDemoUITests;
+				PRODUCT_NAME = AtlasDemo;
+				TEST_TARGET_NAME = AtlasDemo;
 			};
 			name = Debug;
 		};
 		81FCA8FA1D0FE05D00209E9B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = AtlasCheckoutDemoUITests/Info.plist;
+				INFOPLIST_FILE = AtlasDemoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.zalando.atlas.AtlasCheckoutDemoUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = AtlasCheckoutDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = de.zalando.atlas.AtlasDemoUITests;
+				PRODUCT_NAME = AtlasDemo;
+				TEST_TARGET_NAME = AtlasDemo;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		81FCA8D31D0FE05D00209E9B /* Build configuration list for PBXProject "AtlasCheckoutDemo" */ = {
+		81FCA8D31D0FE05D00209E9B /* Build configuration list for PBXProject "AtlasDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				81FCA8F31D0FE05D00209E9B /* Debug */,
@@ -566,7 +568,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		81FCA8F51D0FE05D00209E9B /* Build configuration list for PBXNativeTarget "AtlasCheckoutDemo" */ = {
+		81FCA8F51D0FE05D00209E9B /* Build configuration list for PBXNativeTarget "AtlasDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				81FCA8F61D0FE05D00209E9B /* Debug */,
@@ -575,7 +577,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		81FCA8F81D0FE05D00209E9B /* Build configuration list for PBXNativeTarget "AtlasCheckoutDemoUITests" */ = {
+		81FCA8F81D0FE05D00209E9B /* Build configuration list for PBXNativeTarget "AtlasDemoUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				81FCA8F91D0FE05D00209E9B /* Debug */,

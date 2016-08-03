@@ -11,6 +11,6 @@
       location = "group:AtlasUI/AtlasUI.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:AtlasCheckoutDemo/AtlasCheckoutDemo.xcodeproj">
+      location = "group:AtlasDemo/AtlasDemo.xcodeproj">
    </FileRef>
 </Workspace>

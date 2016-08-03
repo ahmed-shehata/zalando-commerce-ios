@@ -5,7 +5,7 @@
 import XCTest
 import AtlasMockAPI
 
-class AtlasCheckoutDemoUITests: XCTestCase {
+class AtlasDemoUITests: XCTestCase {
 
     let app = XCUIApplication()
 

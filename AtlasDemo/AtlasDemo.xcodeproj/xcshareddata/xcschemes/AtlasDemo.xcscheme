@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "81FCA8D71D0FE05D00209E9B"
-               BuildableName = "AtlasCheckoutDemo.app"
-               BlueprintName = "AtlasCheckoutDemo"
-               ReferencedContainer = "container:AtlasCheckoutDemo.xcodeproj">
+               BuildableName = "AtlasDemo.app"
+               BlueprintName = "AtlasDemo"
+               ReferencedContainer = "container:AtlasDemo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,9 +34,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "81FCA8EB1D0FE05D00209E9B"
-               BuildableName = "AtlasCheckoutDemoUITests.xctest"
-               BlueprintName = "AtlasCheckoutDemoUITests"
-               ReferencedContainer = "container:AtlasCheckoutDemo.xcodeproj">
+               BuildableName = "AtlasDemo.xctest"
+               BlueprintName = "AtlasDemoUITests"
+               ReferencedContainer = "container:AtlasDemo.xcodeproj">
             </BuildableReference>
             <LocationScenarioReference
                identifier = "com.apple.dt.IDEFoundation.CurrentLocationScenarioIdentifier"
@@ -78,9 +78,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "81FCA8D71D0FE05D00209E9B"
-            BuildableName = "AtlasCheckoutDemo.app"
-            BlueprintName = "AtlasCheckoutDemo"
-            ReferencedContainer = "container:AtlasCheckoutDemo.xcodeproj">
+            BuildableName = "AtlasDemo.app"
+            BlueprintName = "AtlasDemo"
+            ReferencedContainer = "container:AtlasDemo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -101,9 +101,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "81FCA8D71D0FE05D00209E9B"
-            BuildableName = "AtlasCheckoutDemo.app"
-            BlueprintName = "AtlasCheckoutDemo"
-            ReferencedContainer = "container:AtlasCheckoutDemo.xcodeproj">
+            BuildableName = "AtlasDemo.app"
+            BlueprintName = "AtlasDemo"
+            ReferencedContainer = "container:AtlasDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -120,9 +120,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "81FCA8D71D0FE05D00209E9B"
-            BuildableName = "AtlasCheckoutDemo.app"
-            BlueprintName = "AtlasCheckoutDemo"
-            ReferencedContainer = "container:AtlasCheckoutDemo.xcodeproj">
+            BuildableName = "AtlasDemo.app"
+            BlueprintName = "AtlasDemo"
+            ReferencedContainer = "container:AtlasDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
