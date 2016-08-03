@@ -11,7 +11,6 @@
 		812BB4D71D34C0910018C321 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812BB4D11D34C0910018C321 /* APIClient.swift */; };
 		812C16D01D48A48F001BFCF0 /* URLAuthorizationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812C16CE1D48A3E2001BFCF0 /* URLAuthorizationSpec.swift */; };
 		814B7F161D0FD8D70073AF52 /* AtlasSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 814B7F0B1D0FD8D70073AF52 /* AtlasSDK.framework */; };
-		815099701D51D34F00557CCB /* AsyncSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8150996A1D51D34F00557CCB /* AsyncSpec.swift */; };
 		815099711D51D34F00557CCB /* DatesSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8150996B1D51D34F00557CCB /* DatesSpec.swift */; };
 		815099721D51D34F00557CCB /* InjectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8150996C1D51D34F00557CCB /* InjectorTests.swift */; };
 		815099731D51D34F00557CCB /* KeychainSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8150996D1D51D34F00557CCB /* KeychainSpec.swift */; };
@@ -37,7 +36,6 @@
 		817292731D362A2C00803B74 /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817292631D362A2C00803B74 /* Unit.swift */; };
 		8176630A1D3CE1D600B32F9A /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817663091D3CE1D600B32F9A /* APIEndpoint.swift */; };
 		8186B0F41D51ECC10068EE37 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B0D61D51ECC10068EE37 /* Array.swift */; };
-		8186B0F51D51ECC10068EE37 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B0D71D51ECC10068EE37 /* Async.swift */; };
 		8186B0F61D51ECC10068EE37 /* AtlasLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B0D81D51ECC10068EE37 /* AtlasLogger.swift */; };
 		8186B0F71D51ECC10068EE37 /* AtlasResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B0D91D51ECC10068EE37 /* AtlasResult.swift */; };
 		8186B0F81D51ECC10068EE37 /* Dates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B0DA1D51ECC10068EE37 /* Dates.swift */; };
@@ -155,7 +153,6 @@
 		814FE5A91D2D70E600F754DD /* StringTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringTests.swift; sourceTree = "<group>"; };
 		814FE5AA1D2D70E600F754DD /* SubscriptTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptTests.swift; sourceTree = "<group>"; };
 		814FE5AB1D2D70E600F754DD /* Tests.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Tests.json; sourceTree = "<group>"; };
-		8150996A1D51D34F00557CCB /* AsyncSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AsyncSpec.swift; path = AtlasSDKTests/AsyncSpec.swift; sourceTree = SOURCE_ROOT; };
 		8150996B1D51D34F00557CCB /* DatesSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatesSpec.swift; path = AtlasSDKTests/DatesSpec.swift; sourceTree = SOURCE_ROOT; };
 		8150996C1D51D34F00557CCB /* InjectorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InjectorTests.swift; path = AtlasSDKTests/InjectorTests.swift; sourceTree = SOURCE_ROOT; };
 		8150996D1D51D34F00557CCB /* KeychainSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainSpec.swift; path = AtlasSDKTests/KeychainSpec.swift; sourceTree = SOURCE_ROOT; };
@@ -182,7 +179,6 @@
 		817292631D362A2C00803B74 /* Unit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		817663091D3CE1D600B32F9A /* APIEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIEndpoint.swift; path = AtlasSDK/APIEndpoint.swift; sourceTree = SOURCE_ROOT; };
 		8186B0D61D51ECC10068EE37 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
-		8186B0D71D51ECC10068EE37 /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
 		8186B0D81D51ECC10068EE37 /* AtlasLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasLogger.swift; sourceTree = "<group>"; };
 		8186B0D91D51ECC10068EE37 /* AtlasResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasResult.swift; sourceTree = "<group>"; };
 		8186B0DA1D51ECC10068EE37 /* Dates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dates.swift; sourceTree = "<group>"; };
@@ -316,7 +312,6 @@
 			children = (
 				8168EB001D523318003A3C4B /* Frameworks */,
 				814FE59D1D2D70E600F754DD /* SwiftyJSON */,
-				8150996A1D51D34F00557CCB /* AsyncSpec.swift */,
 				8150996B1D51D34F00557CCB /* DatesSpec.swift */,
 				8150996C1D51D34F00557CCB /* InjectorTests.swift */,
 				8150996D1D51D34F00557CCB /* KeychainSpec.swift */,
@@ -417,7 +412,6 @@
 			isa = PBXGroup;
 			children = (
 				8186B0D61D51ECC10068EE37 /* Array.swift */,
-				8186B0D71D51ECC10068EE37 /* Async.swift */,
 				8186B0D81D51ECC10068EE37 /* AtlasLogger.swift */,
 				8186B0D91D51ECC10068EE37 /* AtlasResult.swift */,
 				8186B0DA1D51ECC10068EE37 /* Dates.swift */,
@@ -696,7 +690,6 @@
 				81F8C2581D355E5E00996E95 /* PublicAtlasSDK.swift in Sources */,
 				E8DD4C521D3F7D1A00C822B2 /* CheckoutRequest.swift in Sources */,
 				81F8C24B1D355D1800996E95 /* Options.swift in Sources */,
-				8186B0F51D51ECC10068EE37 /* Async.swift in Sources */,
 				8186B0FC1D51ECC10068EE37 /* JSONRepresentable.swift in Sources */,
 				819F8AAC1D3689E3008E2AB1 /* Catalog.swift in Sources */,
 				8186B0F71D51ECC10068EE37 /* AtlasResult.swift in Sources */,
@@ -770,7 +763,6 @@
 				8192838F1D50E8E30009DB60 /* PrintableTests.swift in Sources */,
 				819283911D50E8E30009DB60 /* RawTests.swift in Sources */,
 				81F6FBEE1D3561B9006662E8 /* APICustomerSpec.swift in Sources */,
-				815099701D51D34F00557CCB /* AsyncSpec.swift in Sources */,
 				815099721D51D34F00557CCB /* InjectorTests.swift in Sources */,
 				81F6FBEC1D3561B3006662E8 /* URLSessionMock.swift in Sources */,
 				819283901D50E8E30009DB60 /* RawRepresentableTests.swift in Sources */,

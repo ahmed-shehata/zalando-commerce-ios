@@ -2,7 +2,6 @@
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
-
 final class APIRequestBuilder: RequestBuilder {
 
     private let loginURL: NSURL
@@ -19,20 +18,16 @@ final class APIRequestBuilder: RequestBuilder {
             switch result {
             case .failure(let error):
                 if let error = error as? AtlasAPIError where error.code == HTTPStatus.Unauthorized {
-                    Async.main { [weak self] in
-                        guard let strongSelf = self else { return }
-                        strongSelf.loginAndExecute(completion)
-                    }
+                    guard let strongSelf = self else { return }
+                    strongSelf.loginAndExecute(completion)
                 } else {
                     completion(.failure(error))
                     strongSelf.executionFinished?(strongSelf)
                 }
             case .success(let response):
-                Async.main { [weak self] in
-                    guard let strongSelf = self else { return }
-                    completion(.success(response))
-                    strongSelf.executionFinished?(strongSelf)
-                }
+                guard let strongSelf = self else { return }
+                completion(.success(response))
+                strongSelf.executionFinished?(strongSelf)
             }
         }
     }
@@ -58,7 +53,7 @@ final class APIRequestBuilder: RequestBuilder {
 
         let loginViewController = LoginViewController(loginURL: self.loginURL, completion: completion)
         let navigationController = UINavigationController(rootViewController: loginViewController)
-        Async.main {
+        dispatch_async(dispatch_get_main_queue()) {
             navigationController.modalPresentationStyle = .OverCurrentContext
             sourceApp.navigationController?.presentViewController(navigationController, animated: true, completion: nil)
         }
