@@ -7,18 +7,22 @@ import AtlasSDK
 
 final class PaymentSummaryRow: UIView {
 
+    @available( *, deprecated, message = "Switch to article formatter.")
     private let priceFormatter: NSNumberFormatter = {
         let formatter = NSNumberFormatter()
-        formatter.locale = NSLocale(localeIdentifier: "es_ES")
+        formatter.locale = NSLocale(localeIdentifier: "en_DE")
         formatter.numberStyle = .CurrencyStyle
         return formatter
     }()
 
-    var shippingPrice: Float = 0
+    var shippingPrice: Float?
     private var itemPrice: Article.Price
 
     var totalPrice: Float {
-        return shippingPrice + itemPrice.amount
+        if let shippingPrice = shippingPrice {
+            return shippingPrice + itemPrice.amount
+        }
+        return itemPrice.amount
     }
 
     private let totalPriceTitleLabel = UILabel()
@@ -45,8 +49,11 @@ final class PaymentSummaryRow: UIView {
         self.setupItemPriceLabel()
     }
 
-    init(shippingAmount: Float, itemPrice: Article.Price) {
-        self.shippingPrice = shippingAmount
+    init(shippingPrice: Float?, itemPrice: Article.Price) {
+        if let shippingPrice = shippingPrice {
+            self.shippingPrice = shippingPrice
+        }
+
         self.itemPrice = itemPrice
         super.init(frame: CGRect.zero)
     }
@@ -80,13 +87,18 @@ final class PaymentSummaryRow: UIView {
         shippingTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         shippingTitleLabel.font = shippingTitleLabel.font.fontWithSize(13)
         shippingTitleLabel.textColor = UIColor.grayColor()
-        shippingTitleLabel.heightAnchor.constraintEqualToConstant(10).active = true
+        shippingTitleLabel.heightAnchor.constraintEqualToConstant(15).active = true
         shippingTitleLabel.topAnchor.constraintEqualToAnchor(self.topAnchor, constant: 5).active = true
         shippingTitleLabel.leadingAnchor.constraintEqualToAnchor(self.leadingAnchor, constant: 110).active = true
     }
 
     private func setupShippingPriceLabel() {
-        shippingPriceLabel.text = priceFormatter.stringFromNumber(shippingPrice)
+        if let shippingPrice = shippingPrice {
+            shippingPriceLabel.text = priceFormatter.stringFromNumber(shippingPrice)
+        } else {
+            shippingPriceLabel.text = "---"
+        }
+
         shippingPriceLabel.translatesAutoresizingMaskIntoConstraints = false
         shippingPriceLabel.text = shippingPriceLabel.text?.uppercaseString
         shippingPriceLabel.font = shippingPriceLabel.font.fontWithSize(13)
