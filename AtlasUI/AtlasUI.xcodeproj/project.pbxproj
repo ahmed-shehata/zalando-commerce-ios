@@ -11,6 +11,8 @@
 		810916081D522E4A006101AD /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 810916061D522E4A006101AD /* Quick.framework */; };
 		8109160A1D522E7D006101AD /* Nimble.framework in Copy Quick and Nimble frameworks */ = {isa = PBXBuildFile; fileRef = 810916051D522E4A006101AD /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8109160B1D522E7D006101AD /* Quick.framework in Copy Quick and Nimble frameworks */ = {isa = PBXBuildFile; fileRef = 810916061D522E4A006101AD /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		810916021D522BD6006101AD /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810916011D522BD6006101AD /* Async.swift */; };
+		810916041D522C66006101AD /* AsyncSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810916031D522C66006101AD /* AsyncSpec.swift */; };
 		8186B11E1D51EE2F0068EE37 /* AtlasUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 8186B11D1D51EE2F0068EE37 /* AtlasUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8186B1251D51EE2F0068EE37 /* AtlasUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8186B11A1D51EE2F0068EE37 /* AtlasUI.framework */; };
 		8186B12A1D51EE2F0068EE37 /* AtlasUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B1291D51EE2F0068EE37 /* AtlasUITests.swift */; };
@@ -62,6 +64,10 @@
 /* Begin PBXFileReference section */
 		810916051D522E4A006101AD /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = ../../Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		810916061D522E4A006101AD /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = ../../Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
+		810916051D522E4A006101AD /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = ../Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
+		810916061D522E4A006101AD /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = ../Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
+		810916011D522BD6006101AD /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
+		810916031D522C66006101AD /* AsyncSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncSpec.swift; sourceTree = "<group>"; };
 		8186B11A1D51EE2F0068EE37 /* AtlasUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AtlasUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8186B11D1D51EE2F0068EE37 /* AtlasUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtlasUI.h; sourceTree = "<group>"; };
 		8186B11F1D51EE2F0068EE37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -165,6 +171,7 @@
 			children = (
 				8109160C1D522E93006101AD /* Frameworks */,
 				8186B1291D51EE2F0068EE37 /* AtlasUITests.swift */,
+				810916031D522C66006101AD /* AsyncSpec.swift */,
 				8186B12B1D51EE2F0068EE37 /* Info.plist */,
 			);
 			path = AtlasUITests;
@@ -182,6 +189,7 @@
 		8186B13A1D51EE930068EE37 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				810916011D522BD6006101AD /* Async.swift */,
 				8186B1351D51EE930068EE37 /* UIConstants.swift */,
 				8186B1361D51EE930068EE37 /* UIImage.swift */,
 				8186B1371D51EE930068EE37 /* UIImageView.swift */,
@@ -338,6 +346,7 @@
 				8186B1531D51EE930068EE37 /* CheckoutViewModel.swift in Sources */,
 				8186B1501D51EE930068EE37 /* UserMessage.swift in Sources */,
 				8186B1571D51EE930068EE37 /* CheckoutSummaryViewController.swift in Sources */,
+				810916021D522BD6006101AD /* Async.swift in Sources */,
 				8186B14D1D51EE930068EE37 /* UIConstants.swift in Sources */,
 				8186B1591D51EE930068EE37 /* CheckoutSummaryRow.swift in Sources */,
 				8186B15B1D51EE930068EE37 /* PaymentSummaryRow.swift in Sources */,
@@ -359,6 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8186B12A1D51EE2F0068EE37 /* AtlasUITests.swift in Sources */,
+				810916041D522C66006101AD /* AsyncSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
