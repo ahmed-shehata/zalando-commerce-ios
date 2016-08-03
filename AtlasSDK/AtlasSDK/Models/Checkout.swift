@@ -13,7 +13,7 @@ public struct Checkout {
     public let billingAddress: BillingAddress?
     public let shippingAddress: ShippingAddress?
     public let delivery: Delivery
-    public let payment: Payment?
+    public let payment: Payment
 }
 
 extension Checkout: Hashable {
@@ -45,6 +45,7 @@ extension Checkout: JSONInitializable {
         id = json[Keys.id].string,
             customerNumber = json[Keys.customerNumber].string,
             cartId = json[Keys.cartId].string,
+            payment = Payment(json: json[Keys.payment]),
             delivery = Delivery(json: json[Keys.delivery]) else { return nil }
         self.init(id: id,
             customerNumber: customerNumber,
@@ -54,6 +55,6 @@ extension Checkout: JSONInitializable {
             billingAddress: BillingAddress(json: json[Keys.billingAddress]),
             shippingAddress: ShippingAddress(json: json[Keys.shippingAddress]),
             delivery: delivery,
-            payment: Payment(json: json[Keys.payment]))
+            payment: payment)
     }
 }

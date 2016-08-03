@@ -71,8 +71,8 @@ public class CheckoutService {
                         checkoutObj.articleUnitIndex = articleUnitIndex
                         checkoutObj.checkout = checkout
                         checkoutObj.article = article
-                        if let payment = checkout.payment {
-                            checkoutObj.paymentMethodText = payment.method
+                        if let paymentMethod = checkout.payment.selected {
+                            checkoutObj.paymentMethodText = paymentMethod.method
                         }
                         if let shippingAddress = checkout.shippingAddress {
                             checkoutObj.shippingAddressText = shippingAddress.fullAddress()
