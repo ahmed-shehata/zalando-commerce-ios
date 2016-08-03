@@ -86,7 +86,7 @@ Public Checkout functionality provided to customers.
 ```
 brew install swiftlint carthage
 gem install bundler
-bundle
+bundle install
 ```
 
 ### Start developing
