@@ -40,15 +40,26 @@ final class SizeSelectionViewController: UIViewController {
     }
 
     private func showCheckoutScreen(article: Article, selectedUnitIndex: Int, animated: Bool) {
-        AtlasSDK.fetchCustomer { result in
-            switch result {
-            case .failure(let error):
-                AtlasLogger.logError(error)
-                UserMessage.showError(title: "Error".loc, error: error)
-            case .success(let customer):
-                self.generateCheckout(withArticle: article, customer: customer, animated: animated)
+
+        if !AtlasSDK.isUserLoggedIn() {
+            let checkout = CheckoutViewModel(shippingAddressText: nil, paymentMethodText: nil, discountText: nil,
+                shippingPrice: nil, totalPrice: article.units[0].price, articleUnitIndex: 0,
+                checkout: nil, articleUnit: article.units[0], article: article)
+
+            let checkoutSummaryVC = CheckoutSummaryViewController(customer: nil, checkoutView: checkout)
+            self.showViewController(checkoutSummaryVC, sender: self)
+        } else {
+            AtlasSDK.fetchCustomer { result in
+                switch result {
+                case .failure(let error):
+                    let alert = UIAlertController(title: "Error".loc, message: "\(error)", preferredStyle: .Alert)
+                    self.presentViewController(alert, animated: true, completion: nil)
+                case .success(let customer):
+                    self.generateCheckout(withArticle: article, customer: customer, animated: animated)
+                }
             }
         }
+
     }
 
     private func generateCheckout(withArticle article: Article, customer: Customer, animated: Bool) {
