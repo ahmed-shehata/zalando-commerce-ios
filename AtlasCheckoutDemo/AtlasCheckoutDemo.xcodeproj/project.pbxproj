@@ -15,8 +15,8 @@
 		8178A1D31D3FA87600E7050A /* Haneke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81405F981D3E9AEB00B01483 /* Haneke.framework */; };
 		8178A1D81D3FA88800E7050A /* AtlasSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8178A1D71D3FA88800E7050A /* AtlasSDK.framework */; };
 		8178A1D91D3FA88800E7050A /* AtlasSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8178A1D71D3FA88800E7050A /* AtlasSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8178A1DB1D3FA88900E7050A /* AtlasCheckout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8178A1DA1D3FA88900E7050A /* AtlasCheckout.framework */; };
-		8178A1DC1D3FA88900E7050A /* AtlasCheckout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8178A1DA1D3FA88900E7050A /* AtlasCheckout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		81983BD61D51F262006E9696 /* AtlasUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81983BD51D51F262006E9696 /* AtlasUI.framework */; };
+		81983BD71D51F262006E9696 /* AtlasUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 81983BD51D51F262006E9696 /* AtlasUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		81A115301D42621F007B20B4 /* AtlasMockAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8178A1D41D3FA88800E7050A /* AtlasMockAPI.framework */; };
 		81A115311D42621F007B20B4 /* AtlasMockAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8178A1D41D3FA88800E7050A /* AtlasMockAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		81FCA8E31D0FE05D00209E9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81FCA8E21D0FE05D00209E9B /* Assets.xcassets */; };
@@ -50,8 +50,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8178A1DC1D3FA88900E7050A /* AtlasCheckout.framework in Embed Frameworks */,
 				81405F991D3E9AEB00B01483 /* Haneke.framework in Embed Frameworks */,
+				81983BD71D51F262006E9696 /* AtlasUI.framework in Embed Frameworks */,
 				81A115311D42621F007B20B4 /* AtlasMockAPI.framework in Embed Frameworks */,
 				8178A1D91D3FA88800E7050A /* AtlasSDK.framework in Embed Frameworks */,
 				81405F971D3E982700B01483 /* Alamofire.framework in Embed Frameworks */,
@@ -69,7 +69,7 @@
 		8178A1D41D3FA88800E7050A /* AtlasMockAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AtlasMockAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8178A1D71D3FA88800E7050A /* AtlasSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AtlasSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8178A1DA1D3FA88900E7050A /* AtlasCheckout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AtlasCheckout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8198F2A61D3E57A30059EE87 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = ../Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		81983BD51D51F262006E9696 /* AtlasUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = AtlasUI.framework; path = "AtlasUI.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81FCA8D81D0FE05D00209E9B /* AtlasCheckoutDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AtlasCheckoutDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81FCA8E21D0FE05D00209E9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		81FCA8E51D0FE05D00209E9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -93,11 +93,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8178A1DB1D3FA88900E7050A /* AtlasCheckout.framework in Frameworks */,
+				81405F961D3E982700B01483 /* Alamofire.framework in Frameworks */,
+				81983BD61D51F262006E9696 /* AtlasUI.framework in Frameworks */,
 				8178A1D31D3FA87600E7050A /* Haneke.framework in Frameworks */,
 				81A115301D42621F007B20B4 /* AtlasMockAPI.framework in Frameworks */,
 				8178A1D81D3FA88800E7050A /* AtlasSDK.framework in Frameworks */,
-				81405F961D3E982700B01483 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,12 +187,12 @@
 		B094345D1D1802D70092A7DE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				81983BD51D51F262006E9696 /* AtlasUI.framework */,
 				8178A1DA1D3FA88900E7050A /* AtlasCheckout.framework */,
 				8178A1D71D3FA88800E7050A /* AtlasSDK.framework */,
 				8178A1D41D3FA88800E7050A /* AtlasMockAPI.framework */,
 				81405F981D3E9AEB00B01483 /* Haneke.framework */,
 				81405F951D3E982700B01483 /* Alamofire.framework */,
-				8198F2A61D3E57A30059EE87 /* SwiftyJSON.framework */,
 			);
 			name = Frameworks;
 			path = ..;
