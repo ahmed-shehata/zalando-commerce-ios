@@ -3,7 +3,6 @@
 //
 
 import Foundation
-import AtlasCommons
 
 public struct Cart {
     public let id: String

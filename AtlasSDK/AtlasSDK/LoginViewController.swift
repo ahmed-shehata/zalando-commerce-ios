@@ -3,7 +3,6 @@
 //
 
 import UIKit
-import AtlasCommons
 
 typealias LoginCompletion = AtlasResult<String> -> Void
 

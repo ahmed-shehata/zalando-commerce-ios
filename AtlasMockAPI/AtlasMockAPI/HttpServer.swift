@@ -4,7 +4,6 @@
 
 import Foundation
 import Swifter
-import AtlasCommons
 
 enum HttpServerError: ErrorType {
     case TimeoutOnStart(NSTimeInterval)

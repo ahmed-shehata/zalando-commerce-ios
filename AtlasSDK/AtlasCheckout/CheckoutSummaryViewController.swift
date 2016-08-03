@@ -3,8 +3,6 @@
 //
 
 import AtlasSDK
-import AtlasCommons
-import AtlasCommonsUI
 
 final class CheckoutSummaryViewController: UIViewController {
 

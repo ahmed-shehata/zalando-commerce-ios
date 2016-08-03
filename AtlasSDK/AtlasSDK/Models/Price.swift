@@ -3,7 +3,6 @@
 //
 
 import Foundation
-import AtlasCommons
 
 public struct Price {
     public let amount: NSDecimalNumber

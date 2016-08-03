@@ -4,7 +4,6 @@
 
 import Foundation
 import AtlasSDK
-import AtlasCommons
 
 public typealias GenerateCheckoutCompletion = AtlasResult<CheckoutViewModel> -> Void
 

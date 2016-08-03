@@ -2,7 +2,6 @@
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
-import AtlasCommons
 
 public struct Payment {
     public let method: String?

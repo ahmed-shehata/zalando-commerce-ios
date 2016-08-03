@@ -3,7 +3,6 @@
 //
 
 import Foundation
-import AtlasCommons
 
 /**
  Completion block `AtlasResult` with the `Customer` struct as a success value

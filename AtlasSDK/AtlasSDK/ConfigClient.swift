@@ -3,7 +3,6 @@
 //
 
 import Foundation
-import AtlasCommons
 
 typealias ConfigCompletion = AtlasResult<Config> -> Void
 

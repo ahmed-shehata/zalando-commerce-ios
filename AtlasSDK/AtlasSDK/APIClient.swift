@@ -3,7 +3,6 @@
 //
 
 import Foundation
-import AtlasCommons
 
 public typealias ArticlesCompletion = AtlasResult<Article> -> Void
 public typealias AddressesCompletion = AtlasResult<AddressList> -> Void
