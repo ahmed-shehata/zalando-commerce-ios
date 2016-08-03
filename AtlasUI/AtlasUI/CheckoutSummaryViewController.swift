@@ -241,7 +241,6 @@ extension CheckoutSummaryViewController {
         stackView.distribution = .Fill
         stackView.alignment = .Center
         stackView.spacing = 2
-
         stackView.trailingAnchor.constraintEqualToAnchor(self.view.trailingAnchor).active = true
         stackView.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor).active = true
         stackView.bottomAnchor.constraintLessThanOrEqualToAnchor(self.view.bottomAnchor).active = true
