@@ -17,8 +17,6 @@ module Calypso
 
   SCHEME_SDK = 'AtlasSDK'.freeze
   SCHEME_MOCK_SERVER = 'AtlasMockAPI'.freeze
-  SCHEME_COMMONS = 'AtlasCommons'.freeze
-  SCHEME_COMMONS_UI = 'AtlasCommonsUI'.freeze
   SCHEME_CHECKOUT = 'AtlasCheckout'.freeze
   SCHEME_CHECKOUT_DEMO = 'AtlasCheckoutDemo'.freeze
   SCHEME_CHECKOUT_DEMO_UNIT_TESTS = 'AtlasCheckoutDemoUnitTests'.freeze

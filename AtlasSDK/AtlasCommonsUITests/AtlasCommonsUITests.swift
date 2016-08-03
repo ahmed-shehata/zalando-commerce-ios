@@ -3,7 +3,6 @@
 //
 
 import XCTest
-@testable import AtlasCommonsUI
 
 class AtlasCommonsUITests: XCTestCase {
 

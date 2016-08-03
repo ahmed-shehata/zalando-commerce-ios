@@ -2,8 +2,6 @@
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
-import AtlasCommons
-import AtlasCommonsUI
 
 final class APIRequestBuilder: RequestBuilder {
 

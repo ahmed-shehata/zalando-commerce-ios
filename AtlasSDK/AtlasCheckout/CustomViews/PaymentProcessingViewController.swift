@@ -4,7 +4,6 @@
 
 import UIKit
 import AtlasSDK
-import AtlasCommonsUI
 
 internal final class PaymentProcessingViewController: UIViewController {
 

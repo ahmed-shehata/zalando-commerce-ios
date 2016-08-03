@@ -3,7 +3,6 @@
 //
 
 import Foundation
-import AtlasCommons
 
 /**
  Represents Zalando Config Service Config model

@@ -4,8 +4,6 @@
 
 import UIKit
 import AtlasSDK
-import AtlasCommons
-import AtlasCommonsUI
 
 final class SizeSelectionViewController: UIViewController {
 

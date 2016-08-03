@@ -3,7 +3,6 @@
 //
 
 import Foundation
-import AtlasCommons
 
 final public class AtlasSDK: CustomStringConvertible {
 

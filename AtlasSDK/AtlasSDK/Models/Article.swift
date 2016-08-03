@@ -3,7 +3,6 @@
 //
 
 import Foundation
-import AtlasCommons
 
 /**
  Represents a single article
