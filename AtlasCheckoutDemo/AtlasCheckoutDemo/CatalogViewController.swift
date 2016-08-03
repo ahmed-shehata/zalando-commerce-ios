@@ -4,7 +4,7 @@
 
 import UIKit
 import AtlasSDK
-import AtlasCheckout
+import AtlasUI
 
 class CatalogViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 

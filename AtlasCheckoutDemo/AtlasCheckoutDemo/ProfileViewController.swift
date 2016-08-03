@@ -4,7 +4,7 @@
 
 import UIKit
 import AtlasSDK
-import AtlasCheckout
+import AtlasUI
 import Haneke
 
 class ProfileViewController: UIViewController {

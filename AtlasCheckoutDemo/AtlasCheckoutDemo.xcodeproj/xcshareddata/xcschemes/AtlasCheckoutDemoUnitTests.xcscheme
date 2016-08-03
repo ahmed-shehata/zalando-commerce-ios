@@ -33,26 +33,6 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "81F5F3111D12CB9A00A72AEF"
-               BuildableName = "AtlasCheckoutTests.xctest"
-               BlueprintName = "AtlasCheckoutTests"
-               ReferencedContainer = "container:../AtlasSDK/AtlasSDK.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "81F5F3441D12CC4900A72AEF"
-               BuildableName = "AtlasCommonsTests.xctest"
-               BlueprintName = "AtlasCommonsTests"
-               ReferencedContainer = "container:../AtlasSDK/AtlasSDK.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "814B7F141D0FD8D70073AF52"
                BuildableName = "AtlasSDKTests.xctest"
                BlueprintName = "AtlasSDKTests"
@@ -73,10 +53,10 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "81F5F3A71D12D0A100A72AEF"
-               BuildableName = "AtlasCommonsUITests.xctest"
-               BlueprintName = "AtlasCommonsUITests"
-               ReferencedContainer = "container:../AtlasSDK/AtlasSDK.xcodeproj">
+               BlueprintIdentifier = "8186B1231D51EE2F0068EE37"
+               BuildableName = "AtlasUITests.xctest"
+               BlueprintName = "AtlasUITests"
+               ReferencedContainer = "container:../AtlasUI/AtlasUI.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>

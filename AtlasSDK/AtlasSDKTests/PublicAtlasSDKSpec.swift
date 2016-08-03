@@ -5,7 +5,6 @@
 import Foundation
 import Quick
 import Nimble
-import AtlasCommons
 import AtlasMockAPI
 
 @testable import AtlasSDK
