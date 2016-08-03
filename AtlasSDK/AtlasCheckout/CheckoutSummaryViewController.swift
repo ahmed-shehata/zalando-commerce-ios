@@ -14,6 +14,7 @@ final class CheckoutSummaryViewController: UIViewController {
     private let stackView: UIStackView = UIStackView()
     private var customer: Customer? = nil
     private let checkoutViewModel: CheckoutViewModel
+    private let checkoutService = CheckoutService()
 
     init(customer: Customer?, checkoutView: CheckoutViewModel) {
         if let customer = customer {
@@ -62,8 +63,19 @@ final class CheckoutSummaryViewController: UIViewController {
                 self.presentViewController(alert, animated: true, completion: nil)
 
             case .success(let customer):
+                let indicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+                let backgroundView = UIView(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
+                backgroundView.backgroundColor = .grayColor()
+                backgroundView.alpha = 0.2
+                indicator.center = CGPointMake(self.view.bounds.size.width / 2, (self.view.bounds.size.height) / 2)
+                indicator.color = .blackColor()
+                indicator.startAnimating()
+
+
                 self.customer = customer
-                self.setupViews()
+
+                self.view.addSubview(backgroundView)
+                self.view.addSubview(indicator)
             }
         }
     }
