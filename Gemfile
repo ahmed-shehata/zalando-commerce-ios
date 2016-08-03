@@ -11,6 +11,7 @@ gem 'xcov'
 gem 'xcpretty'
 
 gem 'rubocop'
+gem 'travis'
 
 gem 'ghi'
 
