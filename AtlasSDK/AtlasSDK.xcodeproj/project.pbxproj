@@ -1203,8 +1203,8 @@
 				81F6FBEC1D3561B3006662E8 /* URLSessionMock.swift in Sources */,
 				819283901D50E8E30009DB60 /* RawRepresentableTests.swift in Sources */,
 				812C16D01D48A48F001BFCF0 /* URLAuthorizationSpec.swift in Sources */,
-				E848CBDC1D50ED3700FAA9C3 /* PublicAtlasSDKSpec.swift in Sources */,
 				8192838A1D50E8E30009DB60 /* ComparableTests.swift in Sources */,
+				E848CBDC1D50ED3700FAA9C3 /* PublicAtlasSDKSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
