@@ -29,7 +29,7 @@ class APIClientSpec: QuickSpec {
     override func spec() {
 
         beforeEach {
-            let opts = Options(clientId: "clientId", salesChannel: "SALES_CHANNEL", useSandbox: true)
+            let opts = Options(clientId: "atlas_Y2M1MzA", salesChannel: "SALES_CHANNEL", useSandbox: true)
             let configURL = AtlasMockAPI.endpointURL(forPath: "/config")
             self.atlas = AtlasSDK()
             self.atlas.register { ConfigClient(options: opts, endpointURL: configURL) as Configurator }
