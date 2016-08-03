@@ -71,8 +71,13 @@ public class CheckoutService {
                         checkoutObj.articleUnitIndex = articleUnitIndex
                         checkoutObj.checkout = checkout
                         checkoutObj.article = article
-                        checkoutObj.paymentMethodText = "Card **** **** **** 1212"
-                        checkoutObj.shippingAddressText = "John Doe, Mollstr 1, 10178 Berlin"
+                        if let paymentMethod = checkout.payment.selected {
+                            checkoutObj.paymentMethodText = paymentMethod.method
+                        }
+                        if let shippingAddress = checkout.shippingAddress {
+                            checkoutObj.shippingAddressText = shippingAddress.fullAddress()
+                        }
+
                         completion(.success(checkoutObj))
                     }
                 }
