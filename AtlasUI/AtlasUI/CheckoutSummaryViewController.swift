@@ -9,6 +9,7 @@ final class CheckoutSummaryViewController: UIViewController {
     private let productImageView = UIImageView()
     private let productNameLabel = UILabel()
     private let purchasedObjectSummaryLabel = UILabel()
+    private let termsAndConditionsButton = UIButton()
     private let paymentSummaryTableview = UITableView()
     private let shippingPrice: Float = 0
     private let stackView: UIStackView = UIStackView()
@@ -46,6 +47,7 @@ final class CheckoutSummaryViewController: UIViewController {
         self.setupProductImageView()
         self.setupViewLabels()
         self.setupStackView()
+        self.setupTermsAndConditionsButton()
         self.setupBuyButton()
     }
 
@@ -166,13 +168,31 @@ final class CheckoutSummaryViewController: UIViewController {
         purchasedObjectSummaryLabel.centerXAnchor.constraintEqualToAnchor(productImageView.centerXAnchor).active = true
     }
 
+    private func setupTermsAndConditionsButton() {
+        self.view.addSubview(termsAndConditionsButton)
+        termsAndConditionsButton.translatesAutoresizingMaskIntoConstraints = false
+        let attrs = [NSFontAttributeName: UIFont.systemFontOfSize(12.0),
+            NSForegroundColorAttributeName: UIColor.grayColor(),
+            NSUnderlineStyleAttributeName: 1]
+
+        termsAndConditionsButton.setAttributedTitle(NSMutableAttributedString(string:
+                "Zalando terms, conditions and cancellation policy apply to all orders".loc, attributes: attrs), forState: .Normal)
+
+        termsAndConditionsButton.heightAnchor.constraintEqualToConstant(30).active = true
+        termsAndConditionsButton.titleLabel?.lineBreakMode = .ByWordWrapping
+        termsAndConditionsButton.topAnchor.constraintEqualToAnchor(self.view.bottomAnchor, constant: -30).active = true
+        termsAndConditionsButton.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor, constant: 10).active = true
+        termsAndConditionsButton.trailingAnchor.constraintEqualToAnchor(self.view.trailingAnchor, constant: -10).active = true
+
+    }
+
     private func setupBuyButton() {
         let buyButton = UIButton()
         self.view.addSubview(buyButton)
         buyButton.translatesAutoresizingMaskIntoConstraints = false
 
         buyButton.heightAnchor.constraintEqualToConstant(50).active = true
-        buyButton.topAnchor.constraintEqualToAnchor(self.view.bottomAnchor, constant: -60).active = true
+        buyButton.topAnchor.constraintEqualToAnchor(self.termsAndConditionsButton.bottomAnchor, constant: -80).active = true
         buyButton.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor, constant: 10).active = true
         buyButton.trailingAnchor.constraintEqualToAnchor(self.view.trailingAnchor, constant: -10).active = true
         if customer != nil {
