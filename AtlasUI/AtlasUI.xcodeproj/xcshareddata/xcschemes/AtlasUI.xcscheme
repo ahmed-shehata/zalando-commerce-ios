@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0800"
+   LastUpgradeVersion = "0730"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "81F5F3081D12CB9900A72AEF"
-               BuildableName = "AtlasCheckout.framework"
-               BlueprintName = "AtlasCheckout"
-               ReferencedContainer = "container:AtlasSDK.xcodeproj">
+               BlueprintIdentifier = "8186B1191D51EE2F0068EE37"
+               BuildableName = "AtlasUI.framework"
+               BlueprintName = "AtlasUI"
+               ReferencedContainer = "container:AtlasUI.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -26,27 +26,26 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      codeCoverageEnabled = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "81F5F3111D12CB9A00A72AEF"
-               BuildableName = "AtlasCheckoutTests.xctest"
-               BlueprintName = "AtlasCheckoutTests"
-               ReferencedContainer = "container:AtlasSDK.xcodeproj">
+               BlueprintIdentifier = "8186B1231D51EE2F0068EE37"
+               BuildableName = "AtlasUITests.xctest"
+               BlueprintName = "AtlasUITests"
+               ReferencedContainer = "container:AtlasUI.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "81F5F3081D12CB9900A72AEF"
-            BuildableName = "AtlasCheckout.framework"
-            BlueprintName = "AtlasCheckout"
-            ReferencedContainer = "container:AtlasSDK.xcodeproj">
+            BlueprintIdentifier = "8186B1191D51EE2F0068EE37"
+            BuildableName = "AtlasUI.framework"
+            BlueprintName = "AtlasUI"
+            ReferencedContainer = "container:AtlasUI.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -65,10 +64,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "81F5F3081D12CB9900A72AEF"
-            BuildableName = "AtlasCheckout.framework"
-            BlueprintName = "AtlasCheckout"
-            ReferencedContainer = "container:AtlasSDK.xcodeproj">
+            BlueprintIdentifier = "8186B1191D51EE2F0068EE37"
+            BuildableName = "AtlasUI.framework"
+            BlueprintName = "AtlasUI"
+            ReferencedContainer = "container:AtlasUI.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -83,10 +82,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "81F5F3081D12CB9900A72AEF"
-            BuildableName = "AtlasCheckout.framework"
-            BlueprintName = "AtlasCheckout"
-            ReferencedContainer = "container:AtlasSDK.xcodeproj">
+            BlueprintIdentifier = "8186B1191D51EE2F0068EE37"
+            BuildableName = "AtlasUI.framework"
+            BlueprintName = "AtlasUI"
+            ReferencedContainer = "container:AtlasUI.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

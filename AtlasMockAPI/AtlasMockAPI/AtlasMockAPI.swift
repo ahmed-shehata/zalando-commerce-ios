@@ -17,11 +17,10 @@ public final class AtlasMockAPI {
         do {
             try server.registerAvailableJSONMocks()
             try server.start(serverURL, forceIPv4: false, timeout: timeout)
-
-        } catch (let error) {
+            print("AtlasMockAPI server started")
+        } catch let error {
             print(error)
         }
-        print("AtlasMockAPI server started")
     }
 
     public static func stopServer(wait timeout: NSTimeInterval = 15) throws {
