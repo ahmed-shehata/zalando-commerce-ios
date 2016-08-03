@@ -11,6 +11,7 @@ gem 'xcov'
 gem 'xcpretty'
 
 gem 'rubocop'
+gem 'travis'
 
 # activesupport is used by cocoapods, which is used by jazzy
 # newer activesupport is not compatible with ruby 2.0 used on on buddybuild
