@@ -10,7 +10,10 @@
 		6D0483931D50CF2F005F4EAE /* AddressList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0483921D50CF2F005F4EAE /* AddressList.swift */; };
 		812BB4D71D34C0910018C321 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812BB4D11D34C0910018C321 /* APIClient.swift */; };
 		812C16D01D48A48F001BFCF0 /* URLAuthorizationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812C16CE1D48A3E2001BFCF0 /* URLAuthorizationSpec.swift */; };
+		812C6A0A1D534D460003B2DC /* AtlasMockAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812C6A091D534D460003B2DC /* AtlasMockAPI.framework */; };
 		814B7F161D0FD8D70073AF52 /* AtlasSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 814B7F0B1D0FD8D70073AF52 /* AtlasSDK.framework */; };
+		814D9DF11D534F3800E8AD4D /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 814D9DEF1D534F3800E8AD4D /* Nimble.framework */; };
+		814D9DF21D534F3800E8AD4D /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 814D9DF01D534F3800E8AD4D /* Quick.framework */; };
 		815099711D51D34F00557CCB /* DatesSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8150996B1D51D34F00557CCB /* DatesSpec.swift */; };
 		815099721D51D34F00557CCB /* InjectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8150996C1D51D34F00557CCB /* InjectorTests.swift */; };
 		815099731D51D34F00557CCB /* KeychainSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8150996D1D51D34F00557CCB /* KeychainSpec.swift */; };
@@ -18,8 +21,6 @@
 		815099751D51D34F00557CCB /* LoggerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8150996F1D51D34F00557CCB /* LoggerSpec.swift */; };
 		815099781D51D54700557CCB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8150997A1D51D54700557CCB /* Localizable.strings */; };
 		8168B0A61D40A2890088B112 /* APIAccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837A7581D34F89C00FC52C9 /* APIAccessToken.swift */; };
-		8168EB071D523434003A3C4B /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8168EB051D523434003A3C4B /* Nimble.framework */; };
-		8168EB081D523434003A3C4B /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8168EB061D523434003A3C4B /* Quick.framework */; };
 		817292641D362A2C00803B74 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817292541D362A2C00803B74 /* Address.swift */; };
 		817292651D362A2C00803B74 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817292551D362A2C00803B74 /* Article.swift */; };
 		817292661D362A2C00803B74 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817292561D362A2C00803B74 /* Cart.swift */; };
@@ -124,14 +125,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		B09412911D17FA8F005A4213 /* Copy Quick and Nimble */ = {
+		B09412911D17FA8F005A4213 /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
 			);
-			name = "Copy Quick and Nimble";
+			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -140,8 +141,11 @@
 		6D0483921D50CF2F005F4EAE /* AddressList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressList.swift; sourceTree = "<group>"; };
 		812BB4D11D34C0910018C321 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIClient.swift; path = AtlasSDK/APIClient.swift; sourceTree = SOURCE_ROOT; };
 		812C16CE1D48A3E2001BFCF0 /* URLAuthorizationSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLAuthorizationSpec.swift; path = AtlasSDKTests/URLAuthorizationSpec.swift; sourceTree = SOURCE_ROOT; };
+		812C6A091D534D460003B2DC /* AtlasMockAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AtlasMockAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		814B7F0B1D0FD8D70073AF52 /* AtlasSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AtlasSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		814B7F151D0FD8D70073AF52 /* AtlasSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AtlasSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		814D9DEF1D534F3800E8AD4D /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = ../Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
+		814D9DF01D534F3800E8AD4D /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = ../Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		814FE59E1D2D70E600F754DD /* ArrayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayTests.swift; sourceTree = "<group>"; };
 		814FE59F1D2D70E600F754DD /* BaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTests.swift; sourceTree = "<group>"; };
 		814FE5A01D2D70E600F754DD /* ComparableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComparableTests.swift; sourceTree = "<group>"; };
@@ -163,8 +167,6 @@
 		8150996F1D51D34F00557CCB /* LoggerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoggerSpec.swift; path = AtlasSDKTests/LoggerSpec.swift; sourceTree = SOURCE_ROOT; };
 		815099791D51D54700557CCB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8150997B1D51D54900557CCB /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		8168EB051D523434003A3C4B /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = ../Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
-		8168EB061D523434003A3C4B /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = ../Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		817292541D362A2C00803B74 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		817292551D362A2C00803B74 /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		817292561D362A2C00803B74 /* Cart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
@@ -252,9 +254,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				814D9DF21D534F3800E8AD4D /* Quick.framework in Frameworks */,
+				814D9DF11D534F3800E8AD4D /* Nimble.framework in Frameworks */,
+				812C6A0A1D534D460003B2DC /* AtlasMockAPI.framework in Frameworks */,
 				814B7F161D0FD8D70073AF52 /* AtlasSDK.framework in Frameworks */,
-				8168EB071D523434003A3C4B /* Nimble.framework in Frameworks */,
-				8168EB081D523434003A3C4B /* Quick.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,8 +363,9 @@
 		8168EB001D523318003A3C4B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8168EB051D523434003A3C4B /* Nimble.framework */,
-				8168EB061D523434003A3C4B /* Quick.framework */,
+				814D9DEF1D534F3800E8AD4D /* Nimble.framework */,
+				814D9DF01D534F3800E8AD4D /* Quick.framework */,
+				812C6A091D534D460003B2DC /* AtlasMockAPI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -561,7 +565,7 @@
 			buildConfigurationList = 814B7F221D0FD8D70073AF52 /* Build configuration list for PBXNativeTarget "AtlasSDKTests" */;
 			buildPhases = (
 				8175FB881D2FD71F009EDE7E /* Swift Lint */,
-				B09412911D17FA8F005A4213 /* Copy Quick and Nimble */,
+				B09412911D17FA8F005A4213 /* Copy Frameworks */,
 				814B7F111D0FD8D70073AF52 /* Sources */,
 				814B7F121D0FD8D70073AF52 /* Frameworks */,
 				81F6FBF01D3561C8006662E8 /* Resources */,
