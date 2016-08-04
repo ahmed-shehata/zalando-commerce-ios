@@ -32,8 +32,7 @@ xcuserdata
 timeline.xctimeline
 playground.xcworkspace
 
-Carthage/Build
-Carthage/Checkouts
+Carthage
 
 fastlane/report.xml
 fastlane/screenshots
