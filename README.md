@@ -1,5 +1,7 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=57711240116bda01005c1cca&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/57711240116bda01005c1cca/build/latest)
+[![codebeat badge](https://codebeat.co/badges/85202868-c550-46c0-9423-f71467f0fabf)](https://codebeat.co/projects/github-com-zalando-incubator-atlas-ios)
+[![Build Status](https://travis-ci.org/zalando-incubator/atlas-ios.svg?branch=master)](https://travis-ci.org/zalando-incubator/atlas-ios)
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.github.bus.zalan.do/Atlas/atlas-ios/master/LICENSE)
 
 # Atlas iOS SDK
