@@ -10,3 +10,4 @@
 "Shipping" = "Versand";
 "Pay %@" = "Zahlen %@";
 "Connect to Zalando" = "Mit Zalando verbinden";
+"CheckoutSummaryViewController.terms" = "Zalando terms, conditions and cancellation policy apply to all orders";

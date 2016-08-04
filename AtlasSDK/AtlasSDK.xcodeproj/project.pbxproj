@@ -39,7 +39,6 @@
 		8186B0F41D51ECC10068EE37 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B0D61D51ECC10068EE37 /* Array.swift */; };
 		8186B0F61D51ECC10068EE37 /* AtlasLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B0D81D51ECC10068EE37 /* AtlasLogger.swift */; };
 		8186B0F71D51ECC10068EE37 /* AtlasResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B0D91D51ECC10068EE37 /* AtlasResult.swift */; };
-		8186B0F81D51ECC10068EE37 /* Dates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B0DA1D51ECC10068EE37 /* Dates.swift */; };
 		8186B0F91D51ECC10068EE37 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B0DB1D51ECC10068EE37 /* Debug.swift */; };
 		8186B0FA1D51ECC10068EE37 /* Injector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B0DC1D51ECC10068EE37 /* Injector.swift */; };
 		8186B0FB1D51ECC10068EE37 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B0DD1D51ECC10068EE37 /* JSON.swift */; };
@@ -107,6 +106,7 @@
 		E87C16781D5226E600E12E98 /* ShippingAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87C16771D5226E600E12E98 /* ShippingAddress.swift */; };
 		E87C167A1D5226FA00E12E98 /* BillingAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87C16791D5226FA00E12E98 /* BillingAddress.swift */; };
 		E87C167C1D5231E300E12E98 /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87C167B1D5231E300E12E98 /* PaymentMethod.swift */; };
+		E87C167D1D536F7400E12E98 /* Dates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B0DA1D51ECC10068EE37 /* Dates.swift */; };
 		E8DD4C481D38DFAD00C822B2 /* CartRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DD4C471D38DFAD00C822B2 /* CartRequest.swift */; };
 		E8DD4C4A1D38EA2900C822B2 /* CartItemRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DD4C491D38EA2900C822B2 /* CartItemRequest.swift */; };
 		E8DD4C521D3F7D1A00C822B2 /* CheckoutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DD4C511D3F7D1A00C822B2 /* CheckoutRequest.swift */; };
@@ -730,6 +730,7 @@
 				8172926E1D362A2C00803B74 /* Money.swift in Sources */,
 				817292691D362A2C00803B74 /* Checkout.swift in Sources */,
 				8168B0A61D40A2890088B112 /* APIAccessToken.swift in Sources */,
+				E87C167D1D536F7400E12E98 /* Dates.swift in Sources */,
 				81E01D071D48E85F00ED4701 /* JSONInitializable.swift in Sources */,
 				E837A75D1D34F89C00FC52C9 /* HTTPError.swift in Sources */,
 				E8E1B7291D460C96005666F3 /* OrderRequest.swift in Sources */,
@@ -750,7 +751,6 @@
 				812BB4D71D34C0910018C321 /* APIClient.swift in Sources */,
 				E87C16781D5226E600E12E98 /* ShippingAddress.swift in Sources */,
 				E87C167C1D5231E300E12E98 /* PaymentMethod.swift in Sources */,
-				8186B0F81D51ECC10068EE37 /* Dates.swift in Sources */,
 				B068B8571D34F246009F738C /* APIRequestBuilder.swift in Sources */,
 				8186B10B1D51ECC10068EE37 /* OutputStreams.swift in Sources */,
 				8172926C1D362A2C00803B74 /* Delivery.swift in Sources */,

@@ -18,16 +18,20 @@ final class APIRequestBuilder: RequestBuilder {
             switch result {
             case .failure(let error):
                 if let error = error as? AtlasAPIError where error.code == HTTPStatus.Unauthorized {
-                    guard let strongSelf = self else { return }
-                    strongSelf.loginAndExecute(completion)
+                    dispatch_async(dispatch_get_main_queue()) { [weak self] in
+                        guard let strongSelf = self else { return }
+                        strongSelf.loginAndExecute(completion)
+                    }
                 } else {
                     completion(.failure(error))
                     strongSelf.executionFinished?(strongSelf)
                 }
             case .success(let response):
-                guard let strongSelf = self else { return }
-                completion(.success(response))
-                strongSelf.executionFinished?(strongSelf)
+                dispatch_async(dispatch_get_main_queue()) { [weak self] in
+                    guard let strongSelf = self else { return }
+                    completion(.success(response))
+                    strongSelf.executionFinished?(strongSelf)
+                }
             }
         }
     }

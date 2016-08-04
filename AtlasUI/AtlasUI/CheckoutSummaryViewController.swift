@@ -31,24 +31,23 @@ final class CheckoutSummaryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        Async.main {
-            self.setupViews()
-        }
+        self.setupViews()
     }
 
     private func setupViews() {
-        self.view.removeAllSubviews()
-        self.title = "Summary".loc
-        self.view.backgroundColor = UIColor.clearColor()
-        self.view.opaque = false
-        self.setupNavBar()
-        self.setupBlurView()
-        self.setupProductImageView()
-        self.setupViewLabels()
-        self.setupStackView()
-        self.setupTermsAndConditionsButton()
-        self.setupBuyButton()
+        Async.main {
+            self.view.removeAllSubviews()
+            self.title = "Summary".loc
+            self.view.backgroundColor = UIColor.clearColor()
+            self.view.opaque = false
+            self.setupNavBar()
+            self.setupBlurView()
+            self.setupProductImageView()
+            self.setupViewLabels()
+            self.setupStackView()
+            self.setupTermsAndConditionsButton()
+            self.setupBuyButton()
+        }
     }
 
     @objc private func buyButtonTapped(sender: UIButton) {
@@ -72,9 +71,11 @@ final class CheckoutSummaryViewController: UIViewController {
         backgroundView.alpha = 0.2
         indicator.center = CGPoint(x: self.view.bounds.size.width / 2, y: (self.view.bounds.size.height) / 2)
         indicator.color = .blackColor()
-        indicator.startAnimating()
-        self.view.addSubview(backgroundView)
-        self.view.addSubview(indicator)
+        Async.main {
+            indicator.startAnimating()
+            self.view.addSubview(backgroundView)
+            self.view.addSubview(indicator)
+        }
     }
 
     private func setupNavBar() {
@@ -91,30 +92,33 @@ final class CheckoutSummaryViewController: UIViewController {
 
     private func connectToZalando() {
         AtlasSDK.fetchCustomer { result in
+            Async.main {
+                switch result {
+                case .failure(let error):
+                    UserMessage.showError(title: "Fatal Error".loc, error: error)
+
+                case .success(let customer):
+                    self.showLoadingView()
+                    self.generateCheckoutAndRefreshViews(customer)
+                }
+            }
+        }
+    }
+
+    private func generateCheckoutAndRefreshViews(customer: Customer) {
+        guard let article = self.checkoutViewModel.article,
+            articleIndex = self.checkoutViewModel.articleUnitIndex else { return }
+
+        self.checkoutService.generateCheckout(withArticle: article, articleUnitIndex: articleIndex) { result in
             switch result {
             case .failure(let error):
-                let alert = UIAlertController(title: "Error".loc, message: "\(error)", preferredStyle: .Alert)
-                self.presentViewController(alert, animated: true, completion: nil)
-
-            case .success(let customer):
-                self.showLoadingView()
-
-                if let article = self.checkoutViewModel.article, articleIndex = self.checkoutViewModel.articleUnitIndex {
-                    self.checkoutService.generateCheckout(withArticle: article, articleUnitIndex: articleIndex) { result in
-                        switch result {
-                        case .failure(let error):
-                            self.dismissViewControllerAnimated(true) {
-                                UserMessage.showError(title: "Fatal Error".loc, error: error)
-                            }
-                        case .success(let checkout):
-                            self.checkoutViewModel = checkout
-                            self.customer = customer
-                            self.setupViews()
-
-                        }
-                    }
+                self.dismissViewControllerAnimated(true) {
+                    UserMessage.showError(title: "Fatal Error".loc, error: error)
                 }
-
+            case .success(let checkout):
+                self.checkoutViewModel = checkout
+                self.customer = customer
+                self.setupViews()
             }
         }
     }
@@ -139,7 +143,6 @@ final class CheckoutSummaryViewController: UIViewController {
         productImageView.heightAnchor.constraintEqualToAnchor(productImageView.widthAnchor).active = true
         productImageView.topAnchor.constraintEqualToAnchor(view.topAnchor, constant: 50).active = true
         productImageView.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
-
     }
 
     private func setupViewLabels() {
@@ -176,14 +179,13 @@ final class CheckoutSummaryViewController: UIViewController {
             NSUnderlineStyleAttributeName: 1]
 
         termsAndConditionsButton.setAttributedTitle(NSMutableAttributedString(string:
-                "Zalando terms, conditions and cancellation policy apply to all orders".loc, attributes: attrs), forState: .Normal)
+                "CheckoutSummaryViewController.terms".loc, attributes: attrs), forState: .Normal)
 
         termsAndConditionsButton.heightAnchor.constraintEqualToConstant(30).active = true
         termsAndConditionsButton.titleLabel?.lineBreakMode = .ByWordWrapping
         termsAndConditionsButton.topAnchor.constraintEqualToAnchor(self.view.bottomAnchor, constant: -30).active = true
         termsAndConditionsButton.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor, constant: 10).active = true
         termsAndConditionsButton.trailingAnchor.constraintEqualToAnchor(self.view.trailingAnchor, constant: -10).active = true
-
     }
 
     private func setupBuyButton() {
@@ -274,7 +276,6 @@ extension CheckoutSummaryViewController {
         if let cardText = checkoutViewModel.paymentMethodText, cardView = cardView(cardText) {
             stackView.addArrangedSubviewSideFilled(cardView)
             cardView.heightAnchor.constraintEqualToConstant(40).active = true
-
         }
 
         if let discountViewText = checkoutViewModel.discountText, discountView = discountView(discountViewText) {

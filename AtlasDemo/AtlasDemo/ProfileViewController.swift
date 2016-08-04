@@ -5,7 +5,6 @@
 import UIKit
 import AtlasSDK
 import AtlasUI
-import Haneke
 
 class ProfileViewController: UIViewController {
 
@@ -28,12 +27,10 @@ class ProfileViewController: UIViewController {
         AtlasSDK.fetchCustomer { result in
             switch result {
             case .failure(let error):
-                let alert = UIAlertController(title: "Error", message: "\(error)", preferredStyle: .Alert)
-                self.presentViewController(alert, animated: true, completion: nil)
+                UserMessage.showError(title: "Error", error: error)
 
             case .success(let customer):
-                guard let url = NSURL(string: "http://lorempixel.com/80/80/fashion") else { return }
-                self.avatar.hnk_setImageFromURL(url)
+                self.avatar.image = UIImage(named: "user")
                 self.avatar.layer.cornerRadius = self.avatar.frame.size.width / 2
                 self.avatar.clipsToBounds = true
                 self.name.text = "\(customer.firstName) \(customer.lastName)"
@@ -51,6 +48,5 @@ class ProfileViewController: UIViewController {
         AtlasSDK.logoutCustomer()
         self.navigationController?.popViewControllerAnimated(true)
     }
-
 
 }

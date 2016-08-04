@@ -9,6 +9,5 @@ github "httpswift/swifter" "stable"
 
 # AtlasDemo
 
-github "Haneke/HanekeSwift"
 github "SwiftyJSON/SwiftyJSON"
 github "Alamofire/Alamofire"

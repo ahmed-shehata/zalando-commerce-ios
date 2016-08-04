@@ -53,12 +53,7 @@ class RequestBuilder: Equatable {
                     return
                 }
 
-                guard let httpResponse = response as? NSHTTPURLResponse else {
-                    completion(.failure(AtlasAPIError(code: .NoData)))
-                    return
-                }
-
-                guard let data = data else {
+                guard let httpResponse = response as? NSHTTPURLResponse, data = data else {
                     completion(.failure(AtlasAPIError(code: .NoData)))
                     return
                 }

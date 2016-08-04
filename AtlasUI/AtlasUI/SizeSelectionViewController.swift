@@ -63,24 +63,23 @@ final class SizeSelectionViewController: UIViewController {
     }
 
     private func generateCheckout(withArticle article: Article, customer: Customer, animated: Bool) {
-        checkoutService.generateCheckout(withArticle: article,
-            articleUnitIndex: 0) { (result) in
-                switch result {
-                case .failure(let error):
-                    AtlasLogger.logError(error)
-                    self.dismissViewControllerAnimated(true) {
-                        UserMessage.showError(title: "Fatal Error".loc, error: error)
-                    }
-                case .success(let checkout):
-                    let checkoutSummaryVC = CheckoutSummaryViewController(customer: customer, checkoutView: checkout)
-                    if animated {
+        checkoutService.generateCheckout(withArticle: article, articleUnitIndex: 0) { result in
+            switch result {
+            case .failure(let error):
+                AtlasLogger.logError(error)
+                self.dismissViewControllerAnimated(true) {
+                    UserMessage.showError(title: "Fatal Error".loc, error: error)
+                }
+            case .success(let checkout):
+                let checkoutSummaryVC = CheckoutSummaryViewController(customer: customer, checkoutView: checkout)
+                if animated {
+                    self.showViewController(checkoutSummaryVC, sender: self)
+                } else {
+                    UIView.performWithoutAnimation {
                         self.showViewController(checkoutSummaryVC, sender: self)
-                    } else {
-                        UIView.performWithoutAnimation {
-                            self.showViewController(checkoutSummaryVC, sender: self)
-                        }
                     }
                 }
+            }
         }
     }
 
