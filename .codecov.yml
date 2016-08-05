@@ -8,3 +8,5 @@ coverage:
 
   ignore:
     - .*/SwiftyJSON.*
+    - AtlasDemo/.*
+    - AtlasMockAPI/.*
