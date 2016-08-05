@@ -5,14 +5,33 @@
 import Foundation
 import Quick
 import Nimble
+import AtlasMockAPI
 @testable import AtlasSDK
 
 class APICustomerSpec: QuickSpec {
 
     // swiftlint:disable:next line_length
-    private let atlas = AtlasSDK(options: Options(clientId: "atlas_Y2M1MzA", salesChannel: "SALES_CHANNEL", useSandbox: true))
+    private var atlas: AtlasSDK! = nil
+
+    override class func setUp() {
+        super.setUp()
+        try! AtlasMockAPI.startServer() // swiftlint:disable:this force_try
+    }
+
+    override class func tearDown() {
+        super.tearDown()
+        try! AtlasMockAPI.stopServer() // swiftlint:disable:this force_try
+    }
 
     override func spec() { // swiftlint:disable:this function_body_length
+
+        beforeEach {
+            let opts = Options(clientId: "atlas_Y2M1MzA", salesChannel: "SALES_CHANNEL", useSandbox: true)
+            let configURL = AtlasMockAPI.endpointURL(forPath: "/config")
+            self.atlas = AtlasSDK()
+            self.atlas.register { ConfigClient(options: opts, endpointURL: configURL) as Configurator }
+            self.atlas.setup(opts)
+        }
 
         describe("Customer API") {
 
