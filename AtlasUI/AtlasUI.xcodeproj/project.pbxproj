@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		810916021D522BD6006101AD /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810916011D522BD6006101AD /* Async.swift */; };
+		810916041D522C66006101AD /* AsyncSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810916031D522C66006101AD /* AsyncSpec.swift */; };
 		810916071D522E4A006101AD /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 810916051D522E4A006101AD /* Nimble.framework */; };
 		810916081D522E4A006101AD /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 810916061D522E4A006101AD /* Quick.framework */; };
 		8109160A1D522E7D006101AD /* Nimble.framework in Copy Quick and Nimble frameworks */ = {isa = PBXBuildFile; fileRef = 810916051D522E4A006101AD /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8109160B1D522E7D006101AD /* Quick.framework in Copy Quick and Nimble frameworks */ = {isa = PBXBuildFile; fileRef = 810916061D522E4A006101AD /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		810916021D522BD6006101AD /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810916011D522BD6006101AD /* Async.swift */; };
-		810916041D522C66006101AD /* AsyncSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810916031D522C66006101AD /* AsyncSpec.swift */; };
 		8186B11E1D51EE2F0068EE37 /* AtlasUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 8186B11D1D51EE2F0068EE37 /* AtlasUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8186B1251D51EE2F0068EE37 /* AtlasUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8186B11A1D51EE2F0068EE37 /* AtlasUI.framework */; };
 		8186B12A1D51EE2F0068EE37 /* AtlasUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B1291D51EE2F0068EE37 /* AtlasUITests.swift */; };
@@ -62,10 +62,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		810916051D522E4A006101AD /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = ../../Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
-		810916061D522E4A006101AD /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = ../../Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		810916011D522BD6006101AD /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
 		810916031D522C66006101AD /* AsyncSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncSpec.swift; sourceTree = "<group>"; };
+		810916051D522E4A006101AD /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = ../../Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
+		810916061D522E4A006101AD /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = ../../Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		8186B11A1D51EE2F0068EE37 /* AtlasUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AtlasUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8186B11D1D51EE2F0068EE37 /* AtlasUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtlasUI.h; sourceTree = "<group>"; };
 		8186B11F1D51EE2F0068EE37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -250,6 +250,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8186B1311D51EE2F0068EE37 /* Build configuration list for PBXNativeTarget "AtlasUITests" */;
 			buildPhases = (
+				81776CE31D54AD9900924500 /* Swift Lint */,
 				8186B1201D51EE2F0068EE37 /* Sources */,
 				810916091D522E5E006101AD /* Copy Quick and Nimble frameworks */,
 				8186B1211D51EE2F0068EE37 /* Frameworks */,
@@ -320,6 +321,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		81776CE31D54AD9900924500 /* Swift Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Swift Lint";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ -z \"$BUDDYBUILD_APP_ID\" ]]; then\n  eval \"$(/usr/bin/which -s rbenv && rbenv init -)\"\n  ${PROJECT_DIR}/../calypso.rb lint check ${PROJECT_DIR}/${TARGET_NAME}\nfi";
+			showEnvVarsInLog = 0;
+		};
 		8186B1631D51F0050068EE37 /* Swift Lint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -332,7 +348,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "eval \"$(/usr/bin/which -s rbenv && rbenv init -)\"\n${PROJECT_DIR}/../calypso.rb lint check ${PROJECT_DIR}/${TARGET_NAME}";
+			shellScript = "if [[ -z \"$BUDDYBUILD_APP_ID\" ]]; then\n  eval \"$(/usr/bin/which -s rbenv && rbenv init -)\"\n  ${PROJECT_DIR}/../calypso.rb lint check ${PROJECT_DIR}/${TARGET_NAME}\nfi";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 

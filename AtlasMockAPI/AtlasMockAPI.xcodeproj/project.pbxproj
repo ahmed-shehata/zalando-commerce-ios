@@ -221,6 +221,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E81E82221D33C1F300ADD0E6 /* Build configuration list for PBXNativeTarget "AtlasMockAPITests" */;
 			buildPhases = (
+				81776CE21D54AD5F00924500 /* Swift Lint */,
 				8116FF121D3E888600C750C6 /* Copy Frameworks */,
 				E81E82161D33C1F300ADD0E6 /* Sources */,
 				E81E82171D33C1F300ADD0E6 /* Frameworks */,
@@ -335,7 +336,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "eval \"$(/usr/bin/which -s rbenv && rbenv init -)\"\n${PROJECT_DIR}/../calypso.rb lint check ${PROJECT_DIR}/${TARGET_NAME}";
+			shellScript = "if [[ -z \"$BUDDYBUILD_APP_ID\" ]]; then\n  eval \"$(/usr/bin/which -s rbenv && rbenv init -)\"\n  ${PROJECT_DIR}/../calypso.rb lint check ${PROJECT_DIR}/${TARGET_NAME}\nfi";
+			showEnvVarsInLog = 0;
+		};
+		81776CE21D54AD5F00924500 /* Swift Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Swift Lint";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ -z \"$BUDDYBUILD_APP_ID\" ]]; then\n  eval \"$(/usr/bin/which -s rbenv && rbenv init -)\"\n  ${PROJECT_DIR}/../calypso.rb lint check ${PROJECT_DIR}/${TARGET_NAME}\nfi";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 

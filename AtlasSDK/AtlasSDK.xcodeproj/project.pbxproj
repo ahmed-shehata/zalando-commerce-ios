@@ -661,7 +661,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "eval \"$(/usr/bin/which -s rbenv && rbenv init -)\"\n${PROJECT_DIR}/../calypso.rb lint check ${PROJECT_DIR}/${TARGET_NAME}";
+			shellScript = "if [[ -z \"$BUDDYBUILD_APP_ID\" ]]; then\n  eval \"$(/usr/bin/which -s rbenv && rbenv init -)\"\n  ${PROJECT_DIR}/../calypso.rb lint check ${PROJECT_DIR}/${TARGET_NAME}\nfi";
 			showEnvVarsInLog = 0;
 		};
 		8175FB881D2FD71F009EDE7E /* Swift Lint */ = {
@@ -676,7 +676,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "eval \"$(/usr/bin/which -s rbenv && rbenv init -)\"\n${PROJECT_DIR}/../calypso.rb lint check ${PROJECT_DIR}/${TARGET_NAME}";
+			shellScript = "if [[ -z \"$BUDDYBUILD_APP_ID\" ]]; then\n  eval \"$(/usr/bin/which -s rbenv && rbenv init -)\"\n  ${PROJECT_DIR}/../calypso.rb lint check ${PROJECT_DIR}/${TARGET_NAME}\nfi";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
