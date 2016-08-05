@@ -7,10 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F730C0A154B49DE965210FB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540FFAEB5857AB56ED1127B1 /* SystemConfiguration.framework */; };
+		264A3188265C6A07528B2EAF /* BuddyBuildSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A08A1BF2D09F7736709B9179 /* BuddyBuildSDK.framework */; };
+		2726BD723DC543D61214DE2C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF747AE171CEF0BEEE6A7B7D /* CoreTelephony.framework */; };
+		3617C653FBE11D53FFD3CE20 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9B98C1F222CEFFBD2BB3D1 /* QuartzCore.framework */; };
+		79CF557E0732E6D794340071 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4B7E2A4341F58FD0552F5D1 /* CoreMedia.framework */; };
 		811089011D4F6A5B00DEEDF9 /* XCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811089001D4F6A5B00DEEDF9 /* XCTestCase.swift */; };
 		811089031D4F6A7D00DEEDF9 /* XCUIElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811089021D4F6A7D00DEEDF9 /* XCUIElement.swift */; };
 		81405F961D3E982700B01483 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81405F951D3E982700B01483 /* Alamofire.framework */; };
 		81405F971D3E982700B01483 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 81405F951D3E982700B01483 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		81495A4F52CFE3DAB4AA235F /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED04FA2DC64E12600A022FCE /* CoreText.framework */; };
 		8178A1D81D3FA88800E7050A /* AtlasSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8178A1D71D3FA88800E7050A /* AtlasSDK.framework */; };
 		8178A1D91D3FA88800E7050A /* AtlasSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8178A1D71D3FA88800E7050A /* AtlasSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		81983BD61D51F262006E9696 /* AtlasUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81983BD51D51F262006E9696 /* AtlasUI.framework */; };
@@ -20,6 +26,8 @@
 		81FCA8E31D0FE05D00209E9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81FCA8E21D0FE05D00209E9B /* Assets.xcassets */; };
 		81FCA8E61D0FE05D00209E9B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81FCA8E41D0FE05D00209E9B /* LaunchScreen.storyboard */; };
 		81FCA8F11D0FE05D00209E9B /* AtlasDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FCA8F01D0FE05D00209E9B /* AtlasDemoUITests.swift */; };
+		83B7098528945BCBF3E64BFC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F30730D69FEFA59F85F638D0 /* AVFoundation.framework */; };
+		86576EED380328BB4E04D1E5 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01B1BF87BC943FD548C9FCE7 /* AssetsLibrary.framework */; };
 		B032DE171D367CED00117765 /* ArticlesClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032DE161D367CED00117765 /* ArticlesClient.swift */; };
 		B032DE1E1D37C26700117765 /* DemoArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032DE1D1D37C26700117765 /* DemoArticle.swift */; };
 		B032DE201D37C34900117765 /* SizeMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032DE1F1D37C34900117765 /* SizeMap.swift */; };
@@ -28,6 +36,7 @@
 		B094344A1D17FBA70092A7DE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09434471D17FBA70092A7DE /* ProfileViewController.swift */; };
 		B094344B1D17FBA70092A7DE /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09434481D17FBA70092A7DE /* CatalogViewController.swift */; };
 		B094344D1D17FBBD0092A7DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B094344C1D17FBBD0092A7DE /* Main.storyboard */; };
+		BB10F387BAB526C15F99E9D5 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90B7188E828C7BE2370ADB9D /* CoreVideo.framework */; };
 		E8000DEA1D2D34AB00A2D3C7 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8000DE91D2D34AB00A2D3C7 /* ProductCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +68,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		01B1BF87BC943FD548C9FCE7 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		11ABCEAE7140A05250DA6AC7 /* Bridging-Header.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		4D9B98C1F222CEFFBD2BB3D1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		540FFAEB5857AB56ED1127B1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		811089001D4F6A5B00DEEDF9 /* XCTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTestCase.swift; sourceTree = "<group>"; };
 		811089021D4F6A7D00DEEDF9 /* XCUIElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCUIElement.swift; sourceTree = "<group>"; };
 		81405F951D3E982700B01483 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = ../../Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
@@ -73,6 +86,9 @@
 		81FCA8EC1D0FE05D00209E9B /* AtlasDemo.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AtlasDemo.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		81FCA8F01D0FE05D00209E9B /* AtlasDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtlasDemoUITests.swift; sourceTree = "<group>"; };
 		81FCA8F21D0FE05D00209E9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		90B7188E828C7BE2370ADB9D /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		A08A1BF2D09F7736709B9179 /* BuddyBuildSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BuddyBuildSDK.framework; sourceTree = "<group>"; };
+		AF747AE171CEF0BEEE6A7B7D /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		B032DE161D367CED00117765 /* ArticlesClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticlesClient.swift; sourceTree = "<group>"; };
 		B032DE1D1D37C26700117765 /* DemoArticle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoArticle.swift; sourceTree = "<group>"; };
 		B032DE1F1D37C34900117765 /* SizeMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeMap.swift; sourceTree = "<group>"; };
@@ -81,7 +97,10 @@
 		B09434471D17FBA70092A7DE /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B09434481D17FBA70092A7DE /* CatalogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
 		B094344C1D17FBBD0092A7DE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		B4B7E2A4341F58FD0552F5D1 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		E8000DE91D2D34AB00A2D3C7 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
+		ED04FA2DC64E12600A022FCE /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		F30730D69FEFA59F85F638D0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +112,15 @@
 				81983BD61D51F262006E9696 /* AtlasUI.framework in Frameworks */,
 				81A115301D42621F007B20B4 /* AtlasMockAPI.framework in Frameworks */,
 				8178A1D81D3FA88800E7050A /* AtlasSDK.framework in Frameworks */,
+				264A3188265C6A07528B2EAF /* BuddyBuildSDK.framework in Frameworks */,
+				86576EED380328BB4E04D1E5 /* AssetsLibrary.framework in Frameworks */,
+				81495A4F52CFE3DAB4AA235F /* CoreText.framework in Frameworks */,
+				2726BD723DC543D61214DE2C /* CoreTelephony.framework in Frameworks */,
+				0F730C0A154B49DE965210FB /* SystemConfiguration.framework in Frameworks */,
+				3617C653FBE11D53FFD3CE20 /* QuartzCore.framework in Frameworks */,
+				83B7098528945BCBF3E64BFC /* AVFoundation.framework in Frameworks */,
+				79CF557E0732E6D794340071 /* CoreMedia.framework in Frameworks */,
+				BB10F387BAB526C15F99E9D5 /* CoreVideo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +169,8 @@
 				81FCA8DA1D0FE05D00209E9B /* AtlasDemo */,
 				81FCA8EF1D0FE05D00209E9B /* AtlasDemoUITests */,
 				81FCA8D91D0FE05D00209E9B /* Products */,
+				97C905B1244FF39B3892C221 /* Frameworks */,
+				11ABCEAE7140A05250DA6AC7 /* Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -177,6 +207,22 @@
 				811089021D4F6A7D00DEEDF9 /* XCUIElement.swift */,
 			);
 			path = AtlasDemoUITests;
+			sourceTree = "<group>";
+		};
+		97C905B1244FF39B3892C221 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A08A1BF2D09F7736709B9179 /* BuddyBuildSDK.framework */,
+				01B1BF87BC943FD548C9FCE7 /* AssetsLibrary.framework */,
+				ED04FA2DC64E12600A022FCE /* CoreText.framework */,
+				AF747AE171CEF0BEEE6A7B7D /* CoreTelephony.framework */,
+				540FFAEB5857AB56ED1127B1 /* SystemConfiguration.framework */,
+				4D9B98C1F222CEFFBD2BB3D1 /* QuartzCore.framework */,
+				F30730D69FEFA59F85F638D0 /* AVFoundation.framework */,
+				B4B7E2A4341F58FD0552F5D1 /* CoreMedia.framework */,
+				90B7188E828C7BE2370ADB9D /* CoreVideo.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		B094345D1D1802D70092A7DE /* Frameworks */ = {
@@ -492,11 +538,13 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/../Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = AtlasDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.zalando.atlas.AtlasDemo;
 				PRODUCT_NAME = AtlasDemo;
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -508,11 +556,13 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/../Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = AtlasDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.zalando.atlas.AtlasDemo;
 				PRODUCT_NAME = AtlasDemo;
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 			};
 			name = Release;
 		};
