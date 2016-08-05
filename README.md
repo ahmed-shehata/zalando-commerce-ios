@@ -1,9 +1,14 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=57711240116bda01005c1cca&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/57711240116bda01005c1cca/build/latest)
-[![Build Status](https://travis-ci.org/zalando-incubator/atlas-ios.svg?branch=master)](https://travis-ci.org/zalando-incubator/atlas-ios)
+[![CocoaPods](https://img.shields.io/cocoapods/v/AtlasSDK.svg?maxAge=2592000)]()
+[![CocoaPods](https://img.shields.io/cocoapods/at/AtlasSDK.svg?maxAge=2592000)]()
+[![CocoaPods](https://img.shields.io/cocoapods/p/AtlasSDK.svg?maxAge=2592000)]()
+[![CocoaPods](https://img.shields.io/cocoapods/metrics/doc-percent/AtlasSDK.svg?maxAge=2592000)]()
+[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.github.bus.zalan.do/Atlas/atlas-ios/master/LICENSE)
+
 [![codebeat badge](https://codebeat.co/badges/85202868-c550-46c0-9423-f71467f0fabf)](https://codebeat.co/projects/github-com-zalando-incubator-atlas-ios)
 [![codecov](https://codecov.io/gh/zalando-incubator/atlas-ios/branch/master/graph/badge.svg)](https://codecov.io/gh/zalando-incubator/atlas-ios)
-[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.github.bus.zalan.do/Atlas/atlas-ios/master/LICENSE)
+[![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=57711240116bda01005c1cca&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/57711240116bda01005c1cca/build/latest)
+[![Build Status](https://travis-ci.org/zalando-incubator/atlas-ios.svg?branch=master)](https://travis-ci.org/zalando-incubator/atlas-ios)
 
 # Atlas iOS SDK
 Atlas iOS SDK for Zalando Checkout and Catalog APIs.

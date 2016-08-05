@@ -1,2 +1,3 @@
 *.pbxproj merge=union
 xcov_report/report.json merge=theirs
+.dummy-commit merge=ours
