@@ -4,6 +4,7 @@
 
 import Foundation
 
+@available( *, deprecated, message = "To be replaced by Atlas.configure")
 final public class AtlasSDK: CustomStringConvertible {
 
     public enum Status: Int {

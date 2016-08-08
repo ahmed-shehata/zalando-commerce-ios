@@ -8,7 +8,9 @@ extension AtlasSDK {
 
     public static func configure(options: Options, configurationURL: NSURL? = nil) {
         if let configurationURL = configurationURL {
-            AtlasSDK.sharedInstance.register { ConfigClient(options: options, endpointURL: configurationURL) as Configurator }
+            var options = options
+            options.configurationURL = configurationURL
+            AtlasSDK.sharedInstance.register { ConfigClient(options: options) as Configurator }
         }
         AtlasSDK.sharedInstance.setup(options)
     }

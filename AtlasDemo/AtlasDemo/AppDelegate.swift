@@ -14,18 +14,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         BuddyBuildSDK.setup()
-        
-        let opts = Options(clientId: "atlas_Y2M1MzA",
-            salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
-            useSandbox: true,
-            interfaceLanguage: "en_DE")
 
+        let opts: Options
         if NSProcessInfo.hasMockedAPIEnabled {
-            let configURL = AtlasMockAPI.endpointURL(forPath: "/config")
-            AtlasSDK.configure(opts, configurationURL: configURL)
+            opts = Options(clientId: "atlas_Y2M1MzA",
+                salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
+                useSandbox: true, interfaceLanguage: "en_DE")
         } else {
-            AtlasSDK.configure(opts)
+            opts = Options(clientId: "atlas_Y2M1MzA",
+                salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
+                useSandbox: true, interfaceLanguage: "en_DE",
+                configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
         }
+
+        AtlasSDK.configure(opts)
 
         return true
     }
