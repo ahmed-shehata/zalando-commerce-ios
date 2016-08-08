@@ -1,20 +1,24 @@
 source 'https://rubygems.org'
 
-gem 'jazzy'
-gem 'github_changelog_generator'
+group :build do
+  gem 'thor'
+  gem 'xcpretty'
+  gem 'github_api'
+end
 
-# calypso:
-gem 'thor'
-gem 'github_api'
-gem 'daemons'
-gem 'xcov'
-gem 'xcpretty'
+group :development do
+  gem 'rubocop'
+  gem 'travis'
+  gem 'ghi'
+  gem 'reek'
+  gem 'daemons'
+  gem 'xcov'
+end
 
-gem 'rubocop'
-gem 'travis'
-
-gem 'ghi'
-
-# activesupport is used by cocoapods, which is used by jazzy
-# newer activesupport is not compatible with ruby 2.0 used on on buddybuild
-gem 'activesupport', '~> 4.0'
+group :doc do
+  gem 'jazzy'
+  gem 'github_changelog_generator'
+  # activesupport is used by cocoapods, which is used by jazzy
+  # newer activesupport is not compatible with ruby 2.0 used on on buddybuild / travis
+  gem 'activesupport', '~> 4.0'
+end

@@ -4,31 +4,6 @@
 
 import Foundation
 
-/**
- Completion block `AtlasResult` with the `Customer` struct as a success value
- */
-public typealias CustomerCompletion = AtlasResult<Customer> -> Void
-
-/**
- Completion block `AtlasResult` with the `Article` struct as a success value
- */
-public typealias ArticleCompletion = AtlasResult<Article> -> Void
-
-/**
- Completion block `AtlasResult` with the `Cart` struct as a success value
- */
-public typealias CartCompletion = AtlasResult<Cart> -> Void
-
-/**
- Completion block `AtlasResult` with the `Checkout` struct as a success value
- */
-public typealias CheckoutCompletion = AtlasResult<Checkout> -> Void
-
-/**
- Completion block `AtlasResult` with the `Order` struct as a success value
- */
-public typealias OrderCompletion = AtlasResult<Order> -> Void
-
 extension AtlasSDK {
 
     public static func configure(options: Options, configurationURL: NSURL? = nil) {

@@ -23,10 +23,16 @@ extension Options {
     }
 
     var configurationURL: NSURL {
-        return configurationURL(inFormat: .json)
+        get {
+            return configurationURL ?? configurationURL(inFormat: .json)
+        }
+        set {
+            configurationURL = newValue
+        }
     }
 
-    func configurationURL(inFormat format: ResponseFormat) -> NSURL {
+    @available( *, deprecated, message = "Should be moved to Atlas.configure()")
+    private func configurationURL(inFormat format: ResponseFormat) -> NSURL {
         let urlComponents = NSURLComponents(validUrlString: "https://atlas-config-api.dc.zalan.do/api/config/")
         let basePath = (urlComponents.path ?? "/")
 

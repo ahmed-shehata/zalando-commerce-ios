@@ -19,8 +19,8 @@ struct ConfigClient: Configurator {
     @available( *, deprecated, message = "Temporary. Waiting for config service to return all data")
     private let options: Options
 
-    init(options: Options, endpointURL: NSURL? = nil) {
-        let endpoint = APIEndpoint(baseURL: endpointURL ?? options.configurationURL)
+    init(options: Options) {
+        let endpoint = APIEndpoint(baseURL: options.configurationURL)
         self.options = options
         self.requestBuilder = RequestBuilder(endpoint: endpoint)
     }

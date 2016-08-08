@@ -11,6 +11,10 @@ public struct Options {
     var salesChannel: String
     var interfaceLanguage: String
 
+    @available( *, deprecated, message = "Temporary for Atlas.configuration(...)")
+    var configureURL: NSURL?
+
+    @available( *, deprecated, message = "Might be superflous...")
     init() {
         self.init(clientId: "", salesChannel: "")
     }
@@ -39,15 +43,16 @@ public struct Options {
 extension Options: CustomStringConvertible {
 
     public var description: String {
-        func fmt(text: String?, defaultText: String = "<NONE>") -> String {
+        func formatOptional(text: String?, defaultText: String = "<NONE>") -> String {
             guard let text = text else { return defaultText }
             return "'\(text)'"
         }
 
         return "\(self.dynamicType) { "
-            + "\n\tclientId = \(fmt(clientId))"
+            + "\n\tclientId = \(formatOptional(clientId))"
             + ",\n\tuseSandboxEnvironment = \(useSandboxEnvironment)"
-            + ",\n\tsalesChannel = \(fmt(salesChannel))"
+            + ",\n\tsalesChannel = \(formatOptional(salesChannel))"
+            + ",\n\tinterfaceLanguage = \(interfaceLanguage)"
             + " }"
     }
 
