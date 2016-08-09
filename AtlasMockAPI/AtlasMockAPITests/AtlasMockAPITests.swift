@@ -14,12 +14,12 @@ class AtlasMockAPITests: XCTestCase {
 
     override static func setUp() {
         super.setUp()
-        try! AtlasMockAPI.startServer()
+        try! AtlasMockAPI.startServer() // swiftlint:disable:this force_try
     }
 
     override static func tearDown() {
         super.tearDown()
-        try! AtlasMockAPI.stopServer()
+        try! AtlasMockAPI.stopServer() // swiftlint:disable:this force_try
     }
 
     func testRootEndpoint() {
@@ -38,27 +38,28 @@ class AtlasMockAPITests: XCTestCase {
         }
     }
 
-    private func assertSuccessfulResponse(method: Alamofire.Method = .GET, forEndpoint endpoint: String, completion: JSONCompletion? = nil) {
-        let expectation = expectationWithDescription("assertSuccessfulResponse \(endpoint)")
+    private func assertSuccessfulResponse(method: Alamofire.Method = .GET,
+        forEndpoint endpoint: String, completion: JSONCompletion? = nil) {
+            let expectation = expectationWithDescription("assertSuccessfulResponse \(endpoint)")
 
-        let url = AtlasMockAPI.endpointURL(forPath: endpoint)
-        Alamofire.request(method, url).responseString { response in
+            let url = AtlasMockAPI.endpointURL(forPath: endpoint)
+            Alamofire.request(method, url).responseString { response in
 
-            guard let data = response.data else {
-                XCTFail()
-                return
+                guard let data = response.data else {
+                    XCTFail()
+                    return
+                }
+
+                if let completion = completion {
+                    let json = SwiftyJSON.JSON(data: data)
+                    completion(json)
+                }
+
+                XCTAssertTrue(response.result.isSuccess)
+                expectation.fulfill()
             }
 
-            if let completion = completion {
-                let json = SwiftyJSON.JSON(data: data)
-                completion(json)
-            }
-
-            XCTAssertTrue(response.result.isSuccess)
-            expectation.fulfill()
-        }
-
-        self.waitForExpectationsWithTimeout(10, handler: nil)
+            self.waitForExpectationsWithTimeout(10, handler: nil)
     }
 
 }

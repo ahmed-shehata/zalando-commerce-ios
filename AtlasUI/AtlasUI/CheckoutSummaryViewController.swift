@@ -11,17 +11,19 @@ final class CheckoutSummaryViewController: UIViewController {
     private let purchasedObjectSummaryLabel = UILabel()
     private let termsAndConditionsButton = UIButton()
     private let paymentSummaryTableview = UITableView()
-    private let shippingPrice: Float = 0
     private let stackView: UIStackView = UIStackView()
+
+    private let shippingPrice: Float = 0
     private var customer: Customer? = nil
     private var checkoutViewModel: CheckoutViewModel
-    private let checkoutService = CheckoutService()
 
-    init(customer: Customer?, checkoutView: CheckoutViewModel) {
-        if let customer = customer {
-            self.customer = customer
-        }
-        self.checkoutViewModel = checkoutView
+    private var checkout: AtlasCheckout
+
+    init(checkout: AtlasCheckout, customer: Customer?, checkoutViewModel: CheckoutViewModel) {
+        self.checkout = checkout
+        self.customer = customer
+        self.checkoutViewModel = checkoutViewModel
+
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -51,7 +53,7 @@ final class CheckoutSummaryViewController: UIViewController {
     }
 
     @objc private func buyButtonTapped(sender: UIButton) {
-        let paymentProcessingViewController = PaymentProcessingViewController(checkoutView: self.checkoutViewModel)
+        let paymentProcessingViewController = PaymentProcessingViewController(checkout: checkout, checkoutViewModel: self.checkoutViewModel)
 
         self.showViewController(paymentProcessingViewController, sender: self)
     }
@@ -87,11 +89,12 @@ final class CheckoutSummaryViewController: UIViewController {
 
         let cancelButton = UIBarButtonItem(title: "Cancel".loc, style: UIBarButtonItemStyle.Plain,
             target: self, action: #selector(CheckoutSummaryViewController.cancelCheckoutTapped(_:)))
+
         navigationItem.rightBarButtonItem = cancelButton
     }
 
     private func connectToZalando() {
-        AtlasSDK.fetchCustomer { result in
+        checkout.client.customer { result in
             Async.main {
                 switch result {
                 case .failure(let error):
@@ -109,7 +112,7 @@ final class CheckoutSummaryViewController: UIViewController {
         guard let article = self.checkoutViewModel.article,
             articleIndex = self.checkoutViewModel.articleUnitIndex else { return }
 
-        self.checkoutService.generateCheckout(withArticle: article, articleUnitIndex: articleIndex) { result in
+        checkout.createCheckout(withArticle: article, articleUnitIndex: articleIndex) { result in
             switch result {
             case .failure(let error):
                 self.dismissViewControllerAnimated(true) {
@@ -208,7 +211,7 @@ final class CheckoutSummaryViewController: UIViewController {
 
         buyButton.layer.cornerRadius = 5
 
-        if let article = self.checkoutViewModel.articleUnit, price = article.price.amountFormatted {
+        if let article = self.checkoutViewModel.articleUnit, price = checkout.localizer.fmtPrice(article.price.amount) {
             buyButton.setTitle("Pay %@".loc(price), forState: .Normal)
         }
 

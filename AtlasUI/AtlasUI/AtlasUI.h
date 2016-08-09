@@ -1,8 +1,4 @@
 //
-//  AtlasUI.h
-//  AtlasUI
-//
-//  Created by Daniel Bauke on 03/08/16.
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 

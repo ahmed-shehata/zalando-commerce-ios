@@ -10,7 +10,7 @@ cache:
   - Carthage
 
 install:
-  - bundle install
+  - bundle install --without=tools
   - travis_wait 30 ./calypso.rb deps uncached
 
 script:

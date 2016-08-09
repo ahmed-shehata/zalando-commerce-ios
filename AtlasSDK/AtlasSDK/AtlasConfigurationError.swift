@@ -6,8 +6,16 @@ import Foundation
 
 public class AtlasConfigurationError: AtlasError {
 
-    init(status: AtlasSDK.Status, message: String? = nil) {
-        super.init(code: status.rawValue, message: message ?? "\(status)")
+    public enum ErrorCode: Int {
+        case IncorrectConfigServiceResponse = -5
+        case MissingClientId = -4
+        case MissingSalesChannel = -3
+        case MissingInterfaceLanguage = -2
+        case Unknown = -1
+    }
+
+    init(code: ErrorCode, message: String? = nil) {
+        super.init(code: code.rawValue, message: message ?? "\(code)")
     }
 
 }

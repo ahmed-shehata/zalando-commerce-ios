@@ -7,11 +7,13 @@ import AtlasSDK
 extension String {
 
     var loc: String {
-        return Localizer.sharedLocalizer?.localizedString(self) ?? self
+        // TODO: fix localizer
+        return self // Localizer.sharedLocalizer?.localizedString(self) ?? self
     }
 
     func loc(formatArguments: CVarArgType...) -> String {
-        return Localizer.sharedLocalizer?.localizedString(self, formatArguments: formatArguments) ?? self
+        // TODO: fix localizer
+        return self // Localizer.sharedLocalizer?.localizedString(self, formatArguments: formatArguments) ?? self
     }
 
 }

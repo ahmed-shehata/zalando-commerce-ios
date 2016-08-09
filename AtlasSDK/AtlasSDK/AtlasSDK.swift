@@ -4,8 +4,10 @@
 
 import Foundation
 
+@available( *, deprecated, message = "To be replaced by Atlas.configure")
 final public class AtlasSDK: CustomStringConvertible {
 
+    @available( *, deprecated, message = "To be replaced by AtlasError")
     public enum Status: Int {
         case SetupFromOptions = 3
         case SetupFromBundle = 2

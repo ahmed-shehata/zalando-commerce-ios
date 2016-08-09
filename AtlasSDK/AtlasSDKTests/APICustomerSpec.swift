@@ -5,53 +5,25 @@
 import Foundation
 import Quick
 import Nimble
-import AtlasMockAPI
+
 @testable import AtlasSDK
 
-class APICustomerSpec: QuickSpec {
+class APICustomerSpec: APIClientBaseSpec {
 
-    // swiftlint:disable:next line_length
-    private var atlas: AtlasSDK! = nil
-
-    override class func setUp() {
-        super.setUp()
-        try! AtlasMockAPI.startServer() // swiftlint:disable:this force_try
-    }
-
-    override class func tearDown() {
-        super.tearDown()
-        try! AtlasMockAPI.stopServer() // swiftlint:disable:this force_try
-    }
-
-    override func spec() { // swiftlint:disable:this function_body_length
-
-        beforeEach {
-            let opts = Options(clientId: "atlas_Y2M1MzA", salesChannel: "SALES_CHANNEL", useSandbox: true)
-            let configURL = AtlasMockAPI.endpointURL(forPath: "/config")
-            self.atlas = AtlasSDK()
-            self.atlas.register { ConfigClient(options: opts, endpointURL: configURL) as Configurator }
-            self.atlas.setup(opts)
-        }
+    override func spec() {
 
         describe("Customer API") {
 
-            guard let customerUrl = NSURL(string: "https://atlas-sdk.api/api/customer")
-            else { fail("Cannot initialize customerUrl"); return }
+            let customerUrl = NSURL(validUrl: "https://atlas-sdk.api/api/customer")
 
             it("should make successful request") {
-                do {
-                    let customerResponse = try NSJSONSerialization.dataWithJSONObject([
-                        "customer_number": "12345678",
-                        "gender": "MALE",
-                        "email": "aaa@a.a",
-                        "first_name": "John",
-                        "last_name": "Doe"
-                        ], options: [])
+                let json = ["customer_number": "12345678", "gender": "MALE", "email": "aaa@a.a",
+                    "first_name": "John", "last_name": "Doe"]
+                let customerResponse = self.dataWithJSONObject(json)
+                let client = self.mockedAPIClient(forURL: customerUrl, data: customerResponse, statusCode: 200)
 
-                    self.atlas.apiClient?.urlSession = URLSessionMock(data: customerResponse,
-                        response: NSHTTPURLResponse(URL: customerUrl, statusCode: 200),
-                        error: nil)
-                    self.atlas.apiClient?.customer { result in
+                waitUntil(timeout: 10) { done in
+                    client.customer { result in
                         switch result {
                         case .failure: break
                         case .success(let customer):
@@ -61,26 +33,20 @@ class APICustomerSpec: QuickSpec {
                             expect(customer.firstName).to(equal("John"))
                             expect(customer.lastName).to(equal("Doe"))
                         }
+                        done()
                     }
-                } catch { fail("Cannot create NSData from json") }
+                }
             }
 
             it("should return error when request is unsuccessful") {
-                let json = [
-                    "type": "http://httpstatus.es/401",
-                    "title": "unauthorized",
-                    "status": 401,
-                    "detail": "Full authentication is required to access this resource"
-                ]
+                let json = ["type": "http://httpstatus.es/401", "title": "unauthorized",
+                    "status": 401, "detail": "Full authentication is required to access this resource"]
 
-                do {
-                    let errorResponse = try NSJSONSerialization.dataWithJSONObject(json, options: [])
+                let errorResponse = self.dataWithJSONObject(json)
+                let client = self.mockedAPIClient(forURL: customerUrl, data: errorResponse, statusCode: 401)
 
-                    self.atlas.apiClient?.urlSession = URLSessionMock(data: errorResponse,
-                        response: NSHTTPURLResponse(URL: customerUrl,
-                            statusCode: 401), error: nil)
-
-                    self.atlas.apiClient?.customer { result in
+                waitUntil(timeout: 10) { done in
+                    client.customer { result in
                         switch result {
                         case .failure(let error as AtlasAPIError):
                             expect(error.message).to(equal(json["title"]))
@@ -89,24 +55,24 @@ class APICustomerSpec: QuickSpec {
                         default:
                             fail("Should emit AtlasAPIError")
                         }
+                        done()
                     }
-                } catch { fail("Cannot create NSData from json") }
+                }
             }
 
             it("should return error when response has NSURLDomainError") {
-                let sessionMock = URLSessionMock(data: nil,
-                    response: NSHTTPURLResponse(URL: customerUrl, statusCode: 401),
-                    error: NSError(domain: "NSURLErrorDomain", code: NSURLErrorBadURL, userInfo: nil))
+                let client = self.mockedAPIClient(forURL: customerUrl, data: nil, statusCode: 401, errorCode: NSURLErrorBadURL)
 
-                self.atlas.apiClient?.urlSession = sessionMock
-
-                self.atlas.apiClient?.customer { result in
-                    switch result {
-                    case .failure(let error as HTTPError):
-                        expect(error.code).to(equal(NSURLErrorBadURL))
-                        expect(error.message).to(contain("The operation couldn’t be completed"))
-                    default:
-                        fail("Should emit HTTPError")
+                waitUntil(timeout: 10) { done in
+                    client.customer { result in
+                        switch result {
+                        case .failure(let error as HTTPError):
+                            expect(error.code).to(equal(NSURLErrorBadURL))
+                            expect(error.message).to(contain("The operation couldn’t be completed"))
+                        default:
+                            fail("Should emit HTTPError")
+                        }
+                        done()
                     }
                 }
             }

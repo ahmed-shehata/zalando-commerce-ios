@@ -10,10 +10,12 @@ internal final class PaymentProcessingViewController: UIViewController {
     private let currentCheckoutViewModel: CheckoutViewModel
     private let progressIndicator = UIActivityIndicatorView()
     private let successImageView = UIImageView()
-    private let checkoutService = CheckoutService()
 
-    init(checkoutView: CheckoutViewModel) {
-        self.currentCheckoutViewModel = checkoutView
+    private var checkout: AtlasCheckout
+
+    init(checkout: AtlasCheckout, checkoutViewModel: CheckoutViewModel) {
+        self.checkout = checkout
+        self.currentCheckoutViewModel = checkoutViewModel
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -28,10 +30,6 @@ internal final class PaymentProcessingViewController: UIViewController {
         view.opaque = false
         setupViews()
         processOrder()
-    }
-
-    private func setupViews() {
-        setupBlurView()
     }
 
     @objc private func doneButtonTapped(sender: UIBarButtonItem) {
@@ -56,7 +54,6 @@ internal final class PaymentProcessingViewController: UIViewController {
         successImageView.topAnchor.constraintEqualToAnchor(self.view.topAnchor, constant: 100).active = true
         successImageView.widthAnchor.constraintEqualToConstant(150).active = true
         successImageView.heightAnchor.constraintEqualToConstant(150).active = true
-
     }
 
     private func showSuccessImage() {
@@ -74,7 +71,7 @@ internal final class PaymentProcessingViewController: UIViewController {
         setupLoadingIndicator()
         guard let checkout = self.currentCheckoutViewModel.checkout else { return }
 
-        checkoutService.createOrder(checkout.id) { (result) in
+        self.checkout.client.createOrder(checkout.id) { result in
             switch result {
             case .failure(let error):
                 AtlasLogger.logError(error)
@@ -86,7 +83,7 @@ internal final class PaymentProcessingViewController: UIViewController {
         }
     }
 
-    private func setupBlurView() {
+    private func setupViews() {
         let blurEffect = UIBlurEffect(style: .ExtraLight)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         self.view.addSubview(blurEffectView)
@@ -100,7 +97,6 @@ internal final class PaymentProcessingViewController: UIViewController {
         vibrancyView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         let extraLightVibrancyView = vibrancyView
         blurEffectView.contentView.addSubview(extraLightVibrancyView)
-
     }
 
 }

@@ -25,8 +25,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
 
     @IBAction func buyNowButtonTapped(sender: AnyObject) {
         if let article = self.article {
-            AtlasCheckout.presentCheckout(sku: article.id)
+            AtlasCheckoutInstance?.presentCheckoutView(sku: article.id)
         }
-
     }
 }

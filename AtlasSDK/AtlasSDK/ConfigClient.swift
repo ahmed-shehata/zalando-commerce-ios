@@ -15,12 +15,10 @@ protocol Configurator {
 struct ConfigClient: Configurator {
 
     private let requestBuilder: RequestBuilder
-
-    @available( *, deprecated, message = "Temporary. Waiting for config service to return all data")
     private let options: Options
 
-    init(options: Options, endpointURL: NSURL? = nil) {
-        let endpoint = APIEndpoint(baseURL: endpointURL ?? options.configurationURL)
+    init(options: Options) {
+        let endpoint = APIEndpoint(baseURL: options.configurationURL)
         self.options = options
         self.requestBuilder = RequestBuilder(endpoint: endpoint)
     }
@@ -32,10 +30,9 @@ struct ConfigClient: Configurator {
                 completion(.failure(error))
             case .success(let response):
                 guard let config = Config(json: response.body, options: self.options) else {
-                    completion(.failure(AtlasConfigurationError(status: .ConfigurationFailed)))
+                    completion(.failure(AtlasConfigurationError(code: .IncorrectConfigServiceResponse)))
                     return
                 }
-
                 completion(.success(config))
             }
         }
