@@ -24,7 +24,7 @@ class ProfileViewController: UIViewController {
 
         self.email.textColor = UIColor.grayColor()
 
-        AtlasSDK.fetchCustomer { result in
+        AtlasCheckoutInstance?.client.customer { result in
             switch result {
             case .failure(let error):
                 UserMessage.showError(title: "Error", error: error)
@@ -45,7 +45,7 @@ class ProfileViewController: UIViewController {
 //        showPaymentScreen()
     }
     @IBAction func logoutButtonTapped(sender: AnyObject) {
-        AtlasSDK.logoutCustomer()
+        Atlas.logoutCustomer()
         self.navigationController?.popViewControllerAnimated(true)
     }
 

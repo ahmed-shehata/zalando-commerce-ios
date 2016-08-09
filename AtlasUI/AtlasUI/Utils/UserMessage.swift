@@ -31,6 +31,7 @@ public struct UserMessage {
     }
 
     public static func showError(title title: String, error: ErrorType) {
+        AtlasLogger.logError(error)
         UserMessage.show(title: title, message: String(error), actions: ButtonAction(text: "OK"))
     }
 

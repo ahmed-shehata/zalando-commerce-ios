@@ -5,45 +5,22 @@
 import Foundation
 import Quick
 import Nimble
-import AtlasMockAPI
 
 @testable import AtlasSDK
 
-class APIClientSpec: QuickSpec {
-
-    private var atlas: AtlasSDK!
+class APICheckoutSpec: APIClientBaseSpec {
 
     private let cartId = "CART_ID"
     private let checkoutId = "CHECKOUT_ID"
 
-    override class func setUp() {
-        super.setUp()
-        try! AtlasMockAPI.startServer() // swiftlint:disable:this force_try
-    }
-
-    override class func tearDown() {
-        super.tearDown()
-        try! AtlasMockAPI.stopServer() // swiftlint:disable:this force_try
-    }
-
     override func spec() {
 
-        beforeEach {
-            let opts = Options(clientId: "atlas_Y2M1MzA", salesChannel: "SALES_CHANNEL",
-                useSandbox: true, configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
-            self.atlas = AtlasSDK()
-            self.atlas.setup(opts)
-        }
-
-        describe("AtlasAPI") {
+        describe("Checkout API") {
 
             it("should create cart successfully") {
-                self.expectStatusToEqualOK()
-
-                let cartItemRequests = [CartItemRequest(sku: "EV451G023-Q110ONE000", quantity: 1)]
-
-                waitUntil(timeout: 10) { done in
-                    self.atlas.apiClient?.createCart(cartItemRequests) { result in
+                self.waitUntilAPIClientIsConfigured { done, client in
+                    let cartItemRequest = CartItemRequest(sku: "EV451G023-Q110ONE000", quantity: 1)
+                    client.createCart(cartItemRequest) { result in
                         switch result {
                         case .failure(let error):
                             fail(String(error))
@@ -56,10 +33,8 @@ class APIClientSpec: QuickSpec {
             }
 
             it("should create checkout successfully") {
-                self.expectStatusToEqualOK()
-
-                waitUntil(timeout: 10) { done in
-                    self.atlas.apiClient?.createCheckout(self.cartId) { result in
+                self.waitUntilAPIClientIsConfigured { done, client in
+                    client.createCheckout(self.cartId) { result in
                         switch result {
                         case .failure(let error):
                             fail(String(error))
@@ -72,10 +47,8 @@ class APIClientSpec: QuickSpec {
             }
 
             it("should create an order successfully") {
-                self.expectStatusToEqualOK()
-
-                waitUntil(timeout: 10) { done in
-                    self.atlas.apiClient?.createOrder(self.checkoutId) { result in
+                self.waitUntilAPIClientIsConfigured { done, client in
+                    client.createOrder(self.checkoutId) { result in
                         switch result {
                         case .failure(let error):
                             fail(String(error))
@@ -88,10 +61,6 @@ class APIClientSpec: QuickSpec {
             }
 
         }
-    }
-
-    private func expectStatusToEqualOK() {
-        expect(self.atlas.status).toEventually(equal(AtlasSDK.Status.ConfigurationOK), timeout: 5)
     }
 
 }

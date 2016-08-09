@@ -8,9 +8,10 @@ import AtlasSDK
 final class SizeListSelectionViewController: UITableViewController {
 
     private let article: Article
-    private let checkoutService = CheckoutService()
+    private var checkout: AtlasCheckout
 
-    init(article: Article) {
+    init(checkout: AtlasCheckout, article: Article) {
+        self.checkout = checkout
         self.article = article
         super.init(nibName: nil, bundle: nil)
     }
@@ -59,29 +60,29 @@ final class SizeListSelectionViewController: UITableViewController {
         spinner.startAnimating()
         tableView.userInteractionEnabled = false
 
-        if !AtlasSDK.isUserLoggedIn() {
-            let checkout = CheckoutViewModel(shippingAddressText: nil, paymentMethodText: nil, discountText: nil,
+        if !Atlas.isUserLoggedIn() {
+            // TODO: introduce simplified init
+            let checkoutModel = CheckoutViewModel(shippingAddressText: nil, paymentMethodText: nil, discountText: nil,
                 shippingPrice: nil, totalPrice: self.article.units[indexPath.row].price, articleUnitIndex: indexPath.row,
                 checkout: nil, articleUnit: self.article.units[indexPath.row], article: self.article)
 
-            let checkoutSummaryVC = CheckoutSummaryViewController(customer: nil, checkoutView: checkout)
+            let checkoutSummaryVC = CheckoutSummaryViewController(checkout: checkout, customer: nil, checkoutViewModel: checkoutModel)
             self.showViewController(checkoutSummaryVC, sender: self)
         } else {
-            AtlasSDK.fetchCustomer { result in
+            self.checkout.client.customer { result in
                 switch result {
                 case .failure(let error):
-                    let alert = UIAlertController(title: "Error".loc, message: "\(error)", preferredStyle: .Alert)
-                    self.presentViewController(alert, animated: true, completion: nil)
+                    UserMessage.showError(title: "Error".loc, error: error)
 
                 case .success(let customer):
-                    self.checkoutService.generateCheckout(withArticle: self.article, articleUnitIndex: indexPath.row) { result in
+                    self.checkout.createCheckout(withArticle: self.article, articleUnitIndex: indexPath.row) { result in
                         switch result {
                         case .failure(let error):
                             self.dismissViewControllerAnimated(true) {
                                 UserMessage.showError(title: "Fatal Error".loc, error: error)
                             }
-                        case .success(let checkout):
-                            let checkoutSummaryVC = CheckoutSummaryViewController(customer: customer, checkoutView: checkout)
+                        case .success(let checkoutViewModel):
+                            let checkoutSummaryVC = CheckoutSummaryViewController(checkout: self.checkout, customer: customer, checkoutViewModel: checkoutViewModel)
                             self.showViewController(checkoutSummaryVC, sender: self)
                         }
                     }

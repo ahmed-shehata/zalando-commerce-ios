@@ -32,13 +32,13 @@ public struct Options {
 
     public func validate() throws {
         if self.clientId.isEmpty {
-            throw AtlasConfigurationError(status: .InitFailed, message: "Missing client ID")
+            throw AtlasConfigurationError(code: .MissingClientId, message: "Missing client ID")
         }
         if self.salesChannel.isEmpty {
-            throw AtlasConfigurationError(status: .InitFailed, message: "Missing sales channel")
+            throw AtlasConfigurationError(code: .MissingSalesChannel, message: "Missing sales channel")
         }
         if self.interfaceLanguage.isEmpty {
-            throw AtlasConfigurationError(status: .InitFailed, message: "Missing interface language")
+            throw AtlasConfigurationError(code: .MissingInterfaceLanguage, message: "Missing interface language")
         }
     }
 

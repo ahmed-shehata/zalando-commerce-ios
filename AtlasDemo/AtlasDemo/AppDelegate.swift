@@ -5,12 +5,17 @@
 import UIKit
 
 import AtlasSDK
+import AtlasUI
 import AtlasMockAPI
+
+// TODO: might be temporary, but might be not. we'll see
+var AtlasCheckoutInstance: AtlasCheckout? // swiftlint:disable:this variable_name
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    static var atlasCheckout: AtlasCheckout?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         BuddyBuildSDK.setup()
@@ -27,7 +32,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
         }
 
-        AtlasSDK.configure(opts)
+        AtlasCheckout.configure(opts) { result in
+            if case let .success(checkout) = result {
+                AtlasCheckoutInstance = checkout
+            }
+        }
 
         return true
     }

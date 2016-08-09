@@ -29,7 +29,6 @@ final class URLSessionMock: NSURLSession {
     }
 
     final private class URLSessionDataTaskMock: NSURLSessionDataTask {
-
         typealias CompletionHandler = (NSData!, NSURLResponse!, NSError!) -> Void
         var completionHandler: CompletionHandler?
         var taskResponse: (NSData?, NSURLResponse?, NSError?)?

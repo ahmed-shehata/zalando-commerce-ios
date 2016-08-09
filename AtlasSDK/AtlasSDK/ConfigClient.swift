@@ -15,8 +15,6 @@ protocol Configurator {
 struct ConfigClient: Configurator {
 
     private let requestBuilder: RequestBuilder
-
-    @available( *, deprecated, message = "Temporary. Waiting for config service to return all data")
     private let options: Options
 
     init(options: Options) {
@@ -32,10 +30,9 @@ struct ConfigClient: Configurator {
                 completion(.failure(error))
             case .success(let response):
                 guard let config = Config(json: response.body, options: self.options) else {
-                    completion(.failure(AtlasConfigurationError(status: .ConfigurationFailed)))
+                    completion(.failure(AtlasConfigurationError(code: .IncorrectConfigServiceResponse)))
                     return
                 }
-
                 completion(.success(config))
             }
         }

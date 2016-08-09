@@ -54,7 +54,8 @@ public struct Article {
         public let currency: String
         public let amount: Float
         public var amountFormatted: String? {
-            return Localizer.sharedLocalizer!.fmtPrice(amount)
+            // TODO: Setup localizer correctly in Atlas.configure or AtlasCheckout.configure
+            return Localizer.sharedLocalizer?.fmtPrice(amount)
         }
     }
 
@@ -63,6 +64,7 @@ public struct Article {
         public let name: String
         public let detailsURL: String
     }
+
 }
 
 extension Article: JSONInitializable {

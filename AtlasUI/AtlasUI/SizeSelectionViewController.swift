@@ -8,12 +8,12 @@ import AtlasSDK
 final class SizeSelectionViewController: UIViewController {
 
     private let sku: String
-    private let checkoutService = CheckoutService()
+    private var checkout: AtlasCheckout
 
-    init(sku: String) {
+    init(checkout: AtlasCheckout, sku: String) {
+        self.checkout = checkout
         self.sku = sku
         super.init(nibName: nil, bundle: nil)
-
     }
 
     required init?(coder decoder: NSCoder) {
@@ -39,45 +39,41 @@ final class SizeSelectionViewController: UIViewController {
         fetchSizes()
     }
 
-    private func showCheckoutScreen(article: Article, selectedUnitIndex: Int, animated: Bool) {
-
-        if !AtlasSDK.isUserLoggedIn() {
-            let checkout = CheckoutViewModel(shippingAddressText: nil, paymentMethodText: nil, discountText: nil,
+    private func showCheckoutScreen(article: Article, selectedUnitIndex: Int) {
+        guard Atlas.isUserLoggedIn() else {
+            let checkoutViewModel = CheckoutViewModel(shippingAddressText: nil, paymentMethodText: nil, discountText: nil,
                 shippingPrice: nil, totalPrice: article.units[0].price, articleUnitIndex: 0,
                 checkout: nil, articleUnit: article.units[0], article: article)
 
-            let checkoutSummaryVC = CheckoutSummaryViewController(customer: nil, checkoutView: checkout)
+            let checkoutSummaryVC = CheckoutSummaryViewController(checkout: checkout, customer: nil, checkoutViewModel: checkoutViewModel)
             self.showViewController(checkoutSummaryVC, sender: self)
-        } else {
-            AtlasSDK.fetchCustomer { result in
-                switch result {
-                case .failure(let error):
-                    let alert = UIAlertController(title: "Error".loc, message: "\(error)", preferredStyle: .Alert)
-                    self.presentViewController(alert, animated: true, completion: nil)
-                case .success(let customer):
-                    self.generateCheckout(withArticle: article, customer: customer, animated: animated)
-                }
-            }
+            return
         }
 
+        checkout.client.customer { result in
+            switch result {
+            case .failure(let error):
+                UserMessage.showError(title: "Error".loc, error: error)
+            case .success(let customer):
+                self.generateCheckout(withArticle: article, customer: customer)
+            }
+        }
     }
 
-    private func generateCheckout(withArticle article: Article, customer: Customer, animated: Bool) {
-        checkoutService.generateCheckout(withArticle: article, articleUnitIndex: 0) { result in
+    private func generateCheckout(withArticle article: Article, customer: Customer) {
+        checkout.createCheckout(withArticle: article, articleUnitIndex: 0) { result in
             switch result {
             case .failure(let error):
                 AtlasLogger.logError(error)
                 self.dismissViewControllerAnimated(true) {
-                    UserMessage.showError(title: "Fatal Error".loc, error: error)
+                    UserMessage.showError(title: "Error".loc, error: error)
                 }
-            case .success(let checkout):
-                let checkoutSummaryVC = CheckoutSummaryViewController(customer: customer, checkoutView: checkout)
-                if animated {
+            case .success(let checkoutViewModel):
+                let checkoutSummaryVC = CheckoutSummaryViewController(checkout: self.checkout,
+                    customer: customer, checkoutViewModel: checkoutViewModel)
+
+                UIView.performWithoutAnimation {
                     self.showViewController(checkoutSummaryVC, sender: self)
-                } else {
-                    UIView.performWithoutAnimation {
-                        self.showViewController(checkoutSummaryVC, sender: self)
-                    }
                 }
             }
         }
@@ -85,7 +81,8 @@ final class SizeSelectionViewController: UIViewController {
 
     private func fetchSizes() {
         activityIndicatorView.startAnimating()
-        AtlasSDK.fetchArticle(sku: sku) { [weak self] result in
+
+        checkout.client.article(forSKU: sku) { [weak self] result in
             guard let strongSelf = self else { return }
             Async.main {
                 switch result {
@@ -100,18 +97,17 @@ final class SizeSelectionViewController: UIViewController {
 
     private func displaySizes(forArticle article: Article) {
         if article.hasSingleUnit {
-            showCheckoutScreen(article, selectedUnitIndex: 0, animated: false)
+            showCheckoutScreen(article, selectedUnitIndex: 0)
         } else {
             Async.main {
                 self.activityIndicatorView.stopAnimating()
             }
             self.showSizeListViewController(article)
         }
-
     }
 
     private func showSizeListViewController(article: Article) {
-        let sizeListSelectionViewController = SizeListSelectionViewController(article: article)
+        let sizeListSelectionViewController = SizeListSelectionViewController(checkout: checkout, article: article)
         addChildViewController(sizeListSelectionViewController)
         sizeListSelectionViewController.view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(sizeListSelectionViewController.view)
@@ -121,4 +117,5 @@ final class SizeSelectionViewController: UIViewController {
         sizeListSelectionViewController.view.bottomAnchor.constraintEqualToAnchor(bottomLayoutGuide.topAnchor).active = true
         sizeListSelectionViewController.didMoveToParentViewController(self)
     }
+
 }

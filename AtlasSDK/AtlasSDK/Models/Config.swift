@@ -7,7 +7,7 @@ import Foundation
 /**
  Represents Zalando Config Service Config model
  */
-struct Config {
+public struct Config {
 
     let catalogAPIURL: NSURL
     let checkoutAPIURL: NSURL
@@ -35,12 +35,25 @@ extension Config {
 
 }
 
+extension Config {
+
+    init(catalogAPIURL: String, checkoutAPIURL: String, loginURL: String, options: Options) {
+        self.catalogAPIURL = NSURL(validUrl: catalogAPIURL)
+        self.checkoutAPIURL = NSURL(validUrl: checkoutAPIURL)
+        self.loginURL = NSURL(validUrl: loginURL)
+        self.salesChannel = options.salesChannel
+        self.clientId = options.clientId
+    }
+
+}
+
 extension Config: CustomStringConvertible {
-    var description: String {
+    public var description: String {
         return "Config: { catalogAPIURL: \(self.catalogAPIURL)"
             + ", checkoutAPIURL: \(self.checkoutAPIURL)"
             + ", loginURL: \(self.loginURL)"
             + ", salesChannel: \(self.salesChannel)"
+            + ", clientId: \(self.clientId)"
             + " }"
     }
 }

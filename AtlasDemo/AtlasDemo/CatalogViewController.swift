@@ -42,8 +42,7 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
             case .success(let articles):
                 self.articles = articles
             case .failure(let error):
-                let alert = UIAlertController(title: "Error", message: "\(error)", preferredStyle: .Alert)
-                self.presentViewController(alert, animated: true, completion: nil)
+                UserMessage.showError(title: "Error", error: error)
             }
         }
     }
@@ -64,7 +63,7 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
 
     @IBAction private func buyButtonTapped(sender: UIButton) {
-        AtlasCheckout.presentCheckout(sku: "N1242A0WI-K13")
+        AtlasCheckoutInstance?.presentCheckoutView(sku: "N1242A0WI-K13")
     }
 
 }
