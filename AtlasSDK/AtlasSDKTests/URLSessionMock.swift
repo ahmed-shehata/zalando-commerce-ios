@@ -4,37 +4,40 @@
 
 import Foundation
 
+typealias CompletionHandler = (NSData?, NSURLResponse?, NSError?) -> Void
+typealias TaskResponse = (data: NSData?, response: NSURLResponse?, error: NSError?)
+
 final class URLSessionMock: NSURLSession {
     var url: NSURL?
     var request: NSURLRequest?
     private let dataTaskMock: URLSessionDataTaskMock
 
     init(data: NSData?, response: NSURLResponse?, error: NSError?) {
-        dataTaskMock = URLSessionDataTaskMock()
-        dataTaskMock.taskResponse = (data, response, error)
+        dataTaskMock = URLSessionDataTaskMock(taskResponse: (data, response, error))
     }
 
-    override func dataTaskWithURL(url: NSURL,
-        completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionDataTask {
-            self.url = url
-            self.dataTaskMock.completionHandler = completionHandler
-            return self.dataTaskMock
+    override func dataTaskWithURL(url: NSURL, completionHandler: CompletionHandler) -> NSURLSessionDataTask {
+        self.url = url
+        self.dataTaskMock.completionHandler = completionHandler
+        return self.dataTaskMock
     }
 
-    override func dataTaskWithRequest(request: NSURLRequest,
-        completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionDataTask {
-            self.request = request
-            self.dataTaskMock.completionHandler = completionHandler
-            return self.dataTaskMock
+    override func dataTaskWithRequest(request: NSURLRequest, completionHandler: CompletionHandler) -> NSURLSessionDataTask {
+        self.request = request
+        self.dataTaskMock.completionHandler = completionHandler
+        return self.dataTaskMock
     }
 
     final private class URLSessionDataTaskMock: NSURLSessionDataTask {
-        typealias CompletionHandler = (NSData!, NSURLResponse!, NSError!) -> Void
         var completionHandler: CompletionHandler?
-        var taskResponse: (NSData?, NSURLResponse?, NSError?)?
+        var taskResponse: TaskResponse
+
+        init(taskResponse: TaskResponse) {
+            self.taskResponse = taskResponse
+        }
 
         override func resume() {
-            completionHandler?(taskResponse?.0, taskResponse?.1, taskResponse?.2)
+            completionHandler?(taskResponse.data, taskResponse.response, taskResponse.error)
         }
     }
 }

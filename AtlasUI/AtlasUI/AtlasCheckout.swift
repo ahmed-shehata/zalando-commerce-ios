@@ -12,9 +12,13 @@ public typealias CreateCheckoutCompletion = AtlasResult<CheckoutViewModel> -> Vo
 public struct AtlasCheckout {
 
     public let client: APIClient
+    public let options: Options
 
-    init(client: APIClient) {
+    lazy private(set) var localizer: Localizer = Localizer(localizationProvider: self)
+
+    init(client: APIClient, options: Options) {
         self.client = client
+        self.options = options
     }
 
     public static func configure(options: Options, completion: AtlasCheckoutConfigurationCompletion) {
@@ -24,7 +28,7 @@ public struct AtlasCheckout {
                 completion(.failure(error))
 
             case .success(let client):
-                completion(.success(AtlasCheckout(client: client)))
+                completion(.success(AtlasCheckout(client: client, options: options)))
             }
         }
     }
@@ -78,6 +82,18 @@ public struct AtlasCheckout {
                 }
             }
         }
+    }
+
+}
+
+extension AtlasCheckout: Localizable {
+
+    public var localizedStringsBundle: NSBundle {
+        return NSBundle(forClass: SizeSelectionViewController.self)
+    }
+
+    public var localeIdentifier: String {
+        return options.interfaceLanguage
     }
 
 }

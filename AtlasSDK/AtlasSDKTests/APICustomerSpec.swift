@@ -22,15 +22,18 @@ class APICustomerSpec: APIClientBaseSpec {
                 let customerResponse = self.dataWithJSONObject(json)
                 let client = self.mockedAPIClient(forURL: customerUrl, data: customerResponse, statusCode: 200)
 
-                client.customer { result in
-                    switch result {
-                    case .failure: break
-                    case .success(let customer):
-                        expect(customer.customerNumber).to(equal("12345678"))
-                        expect(customer.gender).to(equal(Customer.Gender.Male))
-                        expect(customer.email).to(equal("aaa@a.a"))
-                        expect(customer.firstName).to(equal("John"))
-                        expect(customer.lastName).to(equal("Doe"))
+                waitUntil(timeout: 10) { done in
+                    client.customer { result in
+                        switch result {
+                        case .failure: break
+                        case .success(let customer):
+                            expect(customer.customerNumber).to(equal("12345678"))
+                            expect(customer.gender).to(equal(Customer.Gender.Male))
+                            expect(customer.email).to(equal("aaa@a.a"))
+                            expect(customer.firstName).to(equal("John"))
+                            expect(customer.lastName).to(equal("Doe"))
+                        }
+                        done()
                     }
                 }
             }
@@ -42,14 +45,17 @@ class APICustomerSpec: APIClientBaseSpec {
                 let errorResponse = self.dataWithJSONObject(json)
                 let client = self.mockedAPIClient(forURL: customerUrl, data: errorResponse, statusCode: 401)
 
-                client.customer { result in
-                    switch result {
-                    case .failure(let error as AtlasAPIError):
-                        expect(error.message).to(equal(json["title"]))
-                        expect(error.code).to(equal(json["status"]))
-                        expect(error.extraDetails).to(equal(json["detail"]))
-                    default:
-                        fail("Should emit AtlasAPIError")
+                waitUntil(timeout: 10) { done in
+                    client.customer { result in
+                        switch result {
+                        case .failure(let error as AtlasAPIError):
+                            expect(error.message).to(equal(json["title"]))
+                            expect(error.code).to(equal(json["status"]))
+                            expect(error.extraDetails).to(equal(json["detail"]))
+                        default:
+                            fail("Should emit AtlasAPIError")
+                        }
+                        done()
                     }
                 }
             }
@@ -57,13 +63,16 @@ class APICustomerSpec: APIClientBaseSpec {
             it("should return error when response has NSURLDomainError") {
                 let client = self.mockedAPIClient(forURL: customerUrl, data: nil, statusCode: 401, errorCode: NSURLErrorBadURL)
 
-                client.customer { result in
-                    switch result {
-                    case .failure(let error as HTTPError):
-                        expect(error.code).to(equal(NSURLErrorBadURL))
-                        expect(error.message).to(contain("The operation couldn’t be completed"))
-                    default:
-                        fail("Should emit HTTPError")
+                waitUntil(timeout: 10) { done in
+                    client.customer { result in
+                        switch result {
+                        case .failure(let error as HTTPError):
+                            expect(error.code).to(equal(NSURLErrorBadURL))
+                            expect(error.message).to(contain("The operation couldn’t be completed"))
+                        default:
+                            fail("Should emit HTTPError")
+                        }
+                        done()
                     }
                 }
             }

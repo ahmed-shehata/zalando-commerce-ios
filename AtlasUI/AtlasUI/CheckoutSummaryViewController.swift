@@ -211,7 +211,7 @@ final class CheckoutSummaryViewController: UIViewController {
 
         buyButton.layer.cornerRadius = 5
 
-        if let article = self.checkoutViewModel.articleUnit, price = article.price.amountFormatted {
+        if let article = self.checkoutViewModel.articleUnit, price = checkout.localizer.fmtPrice(article.price.amount) {
             buyButton.setTitle("Pay %@".loc(price), forState: .Normal)
         }
 

@@ -38,9 +38,16 @@ extension Config {
 extension Config {
 
     init(catalogAPIURL: String, checkoutAPIURL: String, loginURL: String, options: Options) {
-        self.catalogAPIURL = NSURL(validUrl: catalogAPIURL)
-        self.checkoutAPIURL = NSURL(validUrl: checkoutAPIURL)
-        self.loginURL = NSURL(validUrl: loginURL)
+        self.init(catalogAPIURL: NSURL(validUrl: catalogAPIURL),
+            checkoutAPIURL: NSURL(validUrl: checkoutAPIURL),
+            loginURL: NSURL(validUrl: loginURL),
+            options: options)
+    }
+
+    init(catalogAPIURL: NSURL, checkoutAPIURL: NSURL, loginURL: NSURL, options: Options) {
+        self.catalogAPIURL = catalogAPIURL
+        self.checkoutAPIURL = checkoutAPIURL
+        self.loginURL = loginURL
         self.salesChannel = options.salesChannel
         self.clientId = options.clientId
     }

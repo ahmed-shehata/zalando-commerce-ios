@@ -33,6 +33,9 @@
 		8186B15E1D51EE930068EE37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8186B14B1D51EE930068EE37 /* Assets.xcassets */; };
 		8186B15F1D51EE930068EE37 /* AtlasCheckout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B14C1D51EE930068EE37 /* AtlasCheckout.swift */; };
 		8186B1611D51EF980068EE37 /* AtlasSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8186B1601D51EF980068EE37 /* AtlasSDK.framework */; };
+		81F3B4671D5A0988007BCF6F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 81F3B4691D5A0988007BCF6F /* Localizable.strings */; };
+		81F3B46D1D5A0A36007BCF6F /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F3B46C1D5A0A36007BCF6F /* Localization.swift */; };
+		81F3B46F1D5A0A7D007BCF6F /* LocalizationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F3B46E1D5A0A7D007BCF6F /* LocalizationSpec.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +91,10 @@
 		8186B14B1D51EE930068EE37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8186B14C1D51EE930068EE37 /* AtlasCheckout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasCheckout.swift; sourceTree = "<group>"; };
 		8186B1601D51EF980068EE37 /* AtlasSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AtlasSDK.framework; path = "../AtlasSDK/build/Debug-iphoneos/AtlasSDK.framework"; sourceTree = "<group>"; };
+		81F3B4681D5A0988007BCF6F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		81F3B46A1D5A098B007BCF6F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		81F3B46C1D5A0A36007BCF6F /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		81F3B46E1D5A0A7D007BCF6F /* LocalizationSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizationSpec.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,7 +152,6 @@
 				8186B1621D51EFF20068EE37 /* Frameworks */,
 				8186B1341D51EE490068EE37 /* Others */,
 				8186B13A1D51EE930068EE37 /* Utils */,
-				8186B1471D51EE930068EE37 /* Views */,
 				8186B14B1D51EE930068EE37 /* Assets.xcassets */,
 				8186B13F1D51EE930068EE37 /* SizeSelectionViewController.swift */,
 				8186B1401D51EE930068EE37 /* SizeListSelectionViewController.swift */,
@@ -157,6 +163,7 @@
 				8186B1461D51EE930068EE37 /* PaymentSummaryRow.swift */,
 				8186B13D1D51EE930068EE37 /* CheckoutViewModel.swift */,
 				8186B14C1D51EE930068EE37 /* AtlasCheckout.swift */,
+				81F3B4691D5A0988007BCF6F /* Localizable.strings */,
 			);
 			path = AtlasUI;
 			sourceTree = "<group>";
@@ -167,6 +174,7 @@
 				8109160C1D522E93006101AD /* Frameworks */,
 				8186B1291D51EE2F0068EE37 /* AtlasUITests.swift */,
 				810916031D522C66006101AD /* AsyncSpec.swift */,
+				81F3B46E1D5A0A7D007BCF6F /* LocalizationSpec.swift */,
 				8186B12B1D51EE2F0068EE37 /* Info.plist */,
 			);
 			path = AtlasUITests;
@@ -189,17 +197,10 @@
 				8186B1361D51EE930068EE37 /* UIImage.swift */,
 				8186B1371D51EE930068EE37 /* UIImageView.swift */,
 				8186B1381D51EE930068EE37 /* UserMessage.swift */,
+				81F3B46C1D5A0A36007BCF6F /* Localization.swift */,
 				8186B1391D51EE930068EE37 /* String.swift */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		8186B1471D51EE930068EE37 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Views;
-			path = CustomViews;
 			sourceTree = "<group>";
 		};
 		8186B1621D51EFF20068EE37 /* Frameworks */ = {
@@ -287,6 +288,8 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				de,
+				global,
 			);
 			mainGroup = 8186B1101D51EE2F0068EE37;
 			productRefGroup = 8186B11B1D51EE2F0068EE37 /* Products */;
@@ -305,6 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8186B15E1D51EE930068EE37 /* Assets.xcassets in Resources */,
+				81F3B4671D5A0988007BCF6F /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +360,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8186B1531D51EE930068EE37 /* CheckoutViewModel.swift in Sources */,
+				81F3B46D1D5A0A36007BCF6F /* Localization.swift in Sources */,
 				8186B1501D51EE930068EE37 /* UserMessage.swift in Sources */,
 				8186B1571D51EE930068EE37 /* CheckoutSummaryViewController.swift in Sources */,
 				810916021D522BD6006101AD /* Async.swift in Sources */,
@@ -380,6 +385,7 @@
 			files = (
 				8186B12A1D51EE2F0068EE37 /* AtlasUITests.swift in Sources */,
 				810916041D522C66006101AD /* AsyncSpec.swift in Sources */,
+				81F3B46F1D5A0A7D007BCF6F /* LocalizationSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,6 +398,18 @@
 			targetProxy = 8186B1261D51EE2F0068EE37 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		81F3B4691D5A0988007BCF6F /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				81F3B4681D5A0988007BCF6F /* en */,
+				81F3B46A1D5A098B007BCF6F /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		8186B12C1D51EE2F0068EE37 /* Debug */ = {

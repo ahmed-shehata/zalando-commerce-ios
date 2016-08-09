@@ -11,9 +11,7 @@ protocol Localizable {
 
 }
 
-public struct Localizer {
-
-    public internal(set) static var sharedLocalizer: Localizer?
+struct Localizer {
 
     let locale: NSLocale
     let localizationProvider: Localizable
@@ -27,17 +25,13 @@ public struct Localizer {
 
     private var localizedStringsBundle: NSBundle!
 
-    static func initShared(localizationProvider: Localizable) {
-        sharedLocalizer = Localizer(localizationProvider: localizationProvider)
-    }
-
     init(localizationProvider: Localizable) {
         self.localizationProvider = localizationProvider
         self.locale = NSLocale(localeIdentifier: localizationProvider.localeIdentifier)
         self.localizedStringsBundle = findLocalizedStringsBundle()
     }
 
-    public func localizedString(key: String, formatArguments: [CVarArgType]? = nil) -> String {
+    func localizedString(key: String, formatArguments: [CVarArgType]? = nil) -> String {
         let localizedString = NSLocalizedString(key, bundle: self.localizedStringsBundle, comment: "")
 
         guard let formatArguments = formatArguments where !formatArguments.isEmpty else {

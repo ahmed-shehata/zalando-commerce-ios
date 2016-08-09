@@ -6,11 +6,11 @@ import Foundation
 
 public struct Options {
 
-    var useSandboxEnvironment: Bool
-    var clientId: String
-    var salesChannel: String
-    var interfaceLanguage: String
-    var configurationURL: NSURL
+    public let useSandboxEnvironment: Bool
+    public let clientId: String
+    public let salesChannel: String
+    public let interfaceLanguage: String
+    public let configurationURL: NSURL
 
     @available( *, deprecated, message = "To be removed with AtlasSDK")
     init() {
