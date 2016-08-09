@@ -30,7 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             opts = Options(clientId: "atlas_Y2M1MzA",
                 salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
                 useSandbox: true, interfaceLanguage: "en_DE")
-
         }
 
         AtlasCheckout.configure(opts) { result in
