@@ -41,9 +41,9 @@ public struct AtlasCheckout {
             }
 
             let sizeSelectionViewController = SizeSelectionViewController(checkout: self, sku: sku)
-
+            let checkoutTransitioning = CheckoutTransitioningDelegate()
             let navigationController = UINavigationController(rootViewController: sizeSelectionViewController)
-            navigationController.transitioningDelegate = CheckoutTransitioningDelegate()
+            navigationController.transitioningDelegate = checkoutTransitioning
             navigationController.modalPresentationStyle = .Custom
 
             viewController.presentViewController(navigationController, animated: true, completion: nil)
