@@ -225,8 +225,6 @@
 		81F8C24E1D355E2400996E95 /* LoginError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginError.swift; path = AtlasSDK/LoginError.swift; sourceTree = SOURCE_ROOT; };
 		81F8C24F1D355E2400996E95 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = AtlasSDK/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
 		81F8C2531D355E5E00996E95 /* AtlasConfigurationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AtlasConfigurationError.swift; path = AtlasSDK/AtlasConfigurationError.swift; sourceTree = SOURCE_ROOT; };
-		81F8C2541D355E5E00996E95 /* AtlasSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AtlasSDK.swift; path = AtlasSDK/AtlasSDK.swift; sourceTree = SOURCE_ROOT; };
-		81F8C2551D355E5E00996E95 /* PublicAtlasSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PublicAtlasSDK.swift; path = AtlasSDK/PublicAtlasSDK.swift; sourceTree = SOURCE_ROOT; };
 		81F8C2591D355E7D00996E95 /* AtlasError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AtlasError.swift; path = AtlasSDK/AtlasError.swift; sourceTree = SOURCE_ROOT; };
 		81F8C25A1D355E7D00996E95 /* AtlasErrorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AtlasErrorType.swift; path = AtlasSDK/AtlasErrorType.swift; sourceTree = SOURCE_ROOT; };
 		81F8C25B1D355E7D00996E95 /* NSErrorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSErrorExtensions.swift; path = AtlasSDK/NSErrorExtensions.swift; sourceTree = SOURCE_ROOT; };
@@ -310,8 +308,6 @@
 				B068B8611D350A1E009F738C /* Client */,
 				8117C4381D1D647D002786F3 /* Options */,
 				81F8C2521D355E2D00996E95 /* LoginController */,
-				81F8C2541D355E5E00996E95 /* AtlasSDK.swift */,
-				81F8C2551D355E5E00996E95 /* PublicAtlasSDK.swift */,
 				8101EB931D587F04008E2A1A /* Atlas.swift */,
 			);
 			name = AtlasSDK;

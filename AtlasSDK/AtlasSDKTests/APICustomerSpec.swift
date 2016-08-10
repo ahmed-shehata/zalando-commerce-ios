@@ -25,20 +25,21 @@ class APICustomerSpec: APIClientBaseSpec {
                 waitUntil(timeout: 10) { done in
                     client.customer { result in
                         switch result {
-                        case .failure: break
                         case .success(let customer):
                             expect(customer.customerNumber).to(equal("12345678"))
                             expect(customer.gender).to(equal(Customer.Gender.Male))
                             expect(customer.email).to(equal("aaa@a.a"))
                             expect(customer.firstName).to(equal("John"))
                             expect(customer.lastName).to(equal("Doe"))
+                        default:
+                            fail("Should return Customer")
                         }
                         done()
                     }
                 }
             }
 
-            it("should return error when request is unsuccessful") {
+            it("should return error on unauthenticated request") {
                 let json = ["type": "http://httpstatus.es/401", "title": "unauthorized",
                     "status": 401, "detail": "Full authentication is required to access this resource"]
 

@@ -13,13 +13,14 @@ final class APIRequestBuildersContainer {
         self.config = config
     }
 
-    func createBuilder(forEndpoint endpoint: EndpointType) -> RequestBuilder {
-        let builder = APIRequestBuilder(loginURL: self.config.loginURL, endpoint: endpoint)
-        builder.executionFinished = {
-            self.requestBuilders.remove($0)
-        }
-        requestBuilders.append(builder)
-        return builder
+    func createBuilder(forEndpoint endpoint: EndpointType,
+        urlSession: NSURLSession = NSURLSession.sharedSession()) -> RequestBuilder {
+            let builder = APIRequestBuilder(loginURL: self.config.loginURL, urlSession: urlSession, endpoint: endpoint)
+            builder.executionFinished = {
+                self.requestBuilders.remove($0)
+            }
+            requestBuilders.append(builder)
+            return builder
     }
 
 }
