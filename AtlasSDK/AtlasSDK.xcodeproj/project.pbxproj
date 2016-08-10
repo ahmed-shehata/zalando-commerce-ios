@@ -308,6 +308,8 @@
 				B068B8611D350A1E009F738C /* Client */,
 				8117C4381D1D647D002786F3 /* Options */,
 				81F8C2521D355E2D00996E95 /* LoginController */,
+				81F8C2541D355E5E00996E95 /* AtlasSDK.swift */,
+				81F8C2551D355E5E00996E95 /* PublicAtlasSDK.swift */,
 				8101EB931D587F04008E2A1A /* Atlas.swift */,
 			);
 			name = AtlasSDK;
