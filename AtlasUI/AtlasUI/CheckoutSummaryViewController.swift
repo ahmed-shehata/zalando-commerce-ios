@@ -132,68 +132,19 @@ final class CheckoutSummaryViewController: UIViewController {
     }
 
     private func setupProductImageView() {
-
-        if let article = self.checkoutViewModel.article {
-            productImageView.setImage(fromUrl: article.media.images.first?.catalogUrl)
-        }
-
-        productImageView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
-        productImageView.image = UIImage(named: "default-user", bundledWith: CheckoutSummaryViewController.self)
-
-        productImageView.layer.cornerRadius = productImageView.frame.size.width / 2
-        productImageView.clipsToBounds = true
-
-        productImageView.layer.borderWidth = 0.5
-        productImageView.layer.borderColor = UIColor.grayColor().CGColor
         view.addSubview(productImageView)
-        productImageView.translatesAutoresizingMaskIntoConstraints = false
-        productImageView.widthAnchor.constraintEqualToConstant(50).active = true
-        productImageView.heightAnchor.constraintEqualToAnchor(productImageView.widthAnchor).active = true
-        productImageView.topAnchor.constraintEqualToAnchor(view.topAnchor, constant: 50).active = true
-        productImageView.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
+
     }
 
     private func setupViewLabels() {
         if let article = self.checkoutViewModel.article {
-            productNameLabel.text = article.brand.name
-            purchasedObjectSummaryLabel.text = article.name
             view.addSubview(productNameLabel)
+            view.addSubview(purchasedObjectSummaryLabel)
         }
-
-        productNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        productNameLabel.textAlignment = .Center
-        productNameLabel.font = productNameLabel.font.fontWithSize(12)
-        productNameLabel.widthAnchor.constraintEqualToAnchor(productImageView.widthAnchor, multiplier: 2).active = true
-        productNameLabel.heightAnchor.constraintEqualToConstant(20).active = true
-        productNameLabel.topAnchor.constraintEqualToAnchor(productImageView.bottomAnchor).active = true
-        productNameLabel.centerXAnchor.constraintEqualToAnchor(productImageView.centerXAnchor).active = true
-
-        view.addSubview(purchasedObjectSummaryLabel)
-
-        purchasedObjectSummaryLabel.translatesAutoresizingMaskIntoConstraints = false
-        purchasedObjectSummaryLabel.textAlignment = .Center
-        purchasedObjectSummaryLabel.font = purchasedObjectSummaryLabel.font.fontWithSize(10)
-
-        purchasedObjectSummaryLabel.heightAnchor.constraintEqualToConstant(15).active = true
-        purchasedObjectSummaryLabel.topAnchor.constraintEqualToAnchor(productNameLabel.bottomAnchor).active = true
-        purchasedObjectSummaryLabel.centerXAnchor.constraintEqualToAnchor(productImageView.centerXAnchor).active = true
     }
 
     private func setupTermsAndConditionsButton() {
         self.view.addSubview(termsAndConditionsButton)
-        termsAndConditionsButton.translatesAutoresizingMaskIntoConstraints = false
-        let attrs = [NSFontAttributeName: UIFont.systemFontOfSize(12.0),
-            NSForegroundColorAttributeName: UIColor.grayColor(),
-            NSUnderlineStyleAttributeName: 1]
-
-        termsAndConditionsButton.setAttributedTitle(NSMutableAttributedString(string:
-                "CheckoutSummaryViewController.terms".loc, attributes: attrs), forState: .Normal)
-
-        termsAndConditionsButton.heightAnchor.constraintEqualToConstant(30).active = true
-        termsAndConditionsButton.titleLabel?.lineBreakMode = .ByWordWrapping
-        termsAndConditionsButton.topAnchor.constraintEqualToAnchor(self.view.bottomAnchor, constant: -30).active = true
-        termsAndConditionsButton.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor, constant: 10).active = true
-        termsAndConditionsButton.trailingAnchor.constraintEqualToAnchor(self.view.trailingAnchor, constant: -10).active = true
     }
 
     private func setupBuyButton() {
@@ -316,4 +267,3 @@ extension CheckoutSummaryViewController {
     }
 
 }
-
