@@ -11,7 +11,7 @@ final class CheckoutSummaryViewController: UIViewController {
     private let purchasedObjectSummaryLabel = UILabel()
     private let termsAndConditionsButton = UIButton()
     private let paymentSummaryTableview = UITableView()
-    private let stackView: UIStackView = UIStackView()
+    internal let stackView: UIStackView = UIStackView()
 
     private let shippingPrice: Float = 0
     private var customer: Customer? = nil
@@ -46,7 +46,7 @@ final class CheckoutSummaryViewController: UIViewController {
             self.setupBlurView()
             self.setupProductImageView()
             self.setupViewLabels()
-            self.setupStackView()
+            self.view.addSubview(stackView)
             self.setupTermsAndConditionsButton()
             self.setupBuyButton()
         }
@@ -258,48 +258,6 @@ final class CheckoutSummaryViewController: UIViewController {
 
 extension CheckoutSummaryViewController {
 
-    private func setupStackView() {
-        self.stackView.removeAllSubviews()
-        self.view.addSubview(stackView)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .Vertical
-        stackView.distribution = .Fill
-        stackView.alignment = .Center
-        stackView.spacing = 2
-        stackView.trailingAnchor.constraintEqualToAnchor(self.view.trailingAnchor).active = true
-        stackView.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor).active = true
-        stackView.bottomAnchor.constraintLessThanOrEqualToAnchor(self.view.bottomAnchor).active = true
-        stackView.topAnchor.constraintEqualToAnchor(purchasedObjectSummaryLabel.bottomAnchor, constant: 10).active = true
-
-        if let shippingViewText = checkoutViewModel.shippingAddressText, shippingView = shippingView(shippingViewText) {
-            stackView.addArrangedSubviewSideFilled(shippingView)
-            shippingView.heightAnchor.constraintEqualToConstant(55).active = true
-        }
-
-        if let cardText = checkoutViewModel.paymentMethodText, cardView = cardView(cardText) {
-            stackView.addArrangedSubviewSideFilled(cardView)
-            cardView.heightAnchor.constraintEqualToConstant(40).active = true
-        }
-
-        if let discountViewText = checkoutViewModel.discountText, discountView = discountView(discountViewText) {
-            stackView.addArrangedSubviewSideFilled(discountView)
-            discountView.heightAnchor.constraintEqualToConstant(40).active = true
-        }
-
-        if let paymentSummaryRow = paymentSummaryRow() {
-            stackView.addArrangedSubviewSideFilled(paymentSummaryRow)
-            paymentSummaryRow.heightAnchor.constraintEqualToConstant(60).active = true
-        }
-
-        if let topSeparatorView = topSeparatorView() {
-            stackView.addSubview(topSeparatorView)
-            topSeparatorView.heightAnchor.constraintEqualToConstant(1).active = true
-            topSeparatorView.widthAnchor.constraintEqualToAnchor(stackView.widthAnchor, multiplier: 0.95).active = true
-            topSeparatorView.bottomAnchor.constraintEqualToAnchor(stackView.topAnchor).active = true
-            topSeparatorView.centerXAnchor.constraintEqualToAnchor(stackView.centerXAnchor).active = true
-        }
-    }
-
     private func shippingView(text: String) -> UIView? {
         let shippingView = CheckoutSummaryRow()
         shippingView.translatesAutoresizingMaskIntoConstraints = false
@@ -350,22 +308,6 @@ extension CheckoutSummaryViewController {
             print("Payment")
         }
         return cardView
-    }
-
-}
-
-private extension UIStackView {
-
-    private func addArrangedSubviewSideFilled(view: UIView) {
-        addArrangedSubview(view: view, viewAnchor1: view.trailingAnchor, stackAnchor1: self.trailingAnchor,
-            viewAnchor2: view.leadingAnchor, stackAnchor2: self.leadingAnchor)
-    }
-
-    private func addArrangedSubview(view view: UIView, viewAnchor1: NSLayoutAnchor, stackAnchor1: NSLayoutAnchor,
-        viewAnchor2: NSLayoutAnchor, stackAnchor2: NSLayoutAnchor) {
-            self.addArrangedSubview(view)
-            viewAnchor1.constraintEqualToAnchor(stackAnchor1).active = true
-            viewAnchor2.constraintEqualToAnchor(stackAnchor2).active = true
     }
 
 }
