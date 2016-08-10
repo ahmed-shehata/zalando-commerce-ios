@@ -17,6 +17,7 @@ class CheckoutSummaryStyler {
         stylizeProductImageView()
         stylizeViewLabels()
         stylizeTermsButton()
+        stylizeBuyButton()
     }
 
     private func stylizeStackView() {
@@ -109,7 +110,8 @@ class CheckoutSummaryStyler {
         viewController.purchasedObjectSummaryLabel.font = viewController.purchasedObjectSummaryLabel.font.fontWithSize(10)
 
         viewController.purchasedObjectSummaryLabel.heightAnchor.constraintEqualToConstant(15).active = true
-        viewController.purchasedObjectSummaryLabel.topAnchor.constraintEqualToAnchor(viewController.productNameLabel.bottomAnchor).active = true
+        viewController.purchasedObjectSummaryLabel.topAnchor.constraintEqualToAnchor(
+            viewController.productNameLabel.bottomAnchor).active = true
         viewController.purchasedObjectSummaryLabel.centerXAnchor.constraintEqualToAnchor(
             viewController.productImageView.centerXAnchor).active = true
 
@@ -132,6 +134,23 @@ class CheckoutSummaryStyler {
             constant: 10).active = true
         viewController.termsAndConditionsButton.trailingAnchor.constraintEqualToAnchor(viewController.view.trailingAnchor,
             constant: -10).active = true
+    }
+
+    private func stylizeBuyButton() {
+        viewController.buyButton.translatesAutoresizingMaskIntoConstraints = false
+
+        viewController.buyButton.heightAnchor.constraintEqualToConstant(50).active = true
+        viewController.buyButton.topAnchor.constraintEqualToAnchor(viewController.termsAndConditionsButton.bottomAnchor,
+            constant: -80).active = true
+        viewController.buyButton.leadingAnchor.constraintEqualToAnchor(viewController.view.leadingAnchor, constant: 10).active = true
+        viewController.buyButton.trailingAnchor.constraintEqualToAnchor(viewController.view.trailingAnchor, constant: -10).active = true
+        if viewController.customer != nil {
+            viewController.buyButton.setTitle("Buy Now", forState: .Normal)
+        } else {
+            viewController.buyButton.setTitle("Connect To Zalando".loc, forState: .Normal)
+        }
+        viewController.buyButton.backgroundColor = UIColor.orangeColor()
+        viewController.buyButton.layer.cornerRadius = 5
     }
 
 }
