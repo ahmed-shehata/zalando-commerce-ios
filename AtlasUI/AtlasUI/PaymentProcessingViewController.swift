@@ -5,13 +5,13 @@
 import UIKit
 import AtlasSDK
 
-internal final class PaymentProcessingViewController: UIViewController {
+internal final class PaymentProcessingViewController: UIViewController, CheckoutProviderType {
 
     private let currentCheckoutViewModel: CheckoutViewModel
     private let progressIndicator = UIActivityIndicatorView()
     private let successImageView = UIImageView()
 
-    private var checkout: AtlasCheckout
+    internal var checkout: AtlasCheckout
 
     init(checkout: AtlasCheckout, checkoutViewModel: CheckoutViewModel) {
         self.checkout = checkout
@@ -25,7 +25,7 @@ internal final class PaymentProcessingViewController: UIViewController {
 
     internal override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Payment".loc
+        title = loc("Payment")
         view.backgroundColor = UIColor.clearColor()
         view.opaque = false
         setupViews()
@@ -57,7 +57,7 @@ internal final class PaymentProcessingViewController: UIViewController {
     }
 
     private func showSuccessImage() {
-        let doneButton = UIBarButtonItem(title: "Done".loc, style: UIBarButtonItemStyle.Plain,
+        let doneButton = UIBarButtonItem(title: loc("Done"), style: UIBarButtonItemStyle.Plain,
             target: self, action: #selector(PaymentProcessingViewController.doneButtonTapped(_:)))
 
         Async.main {
@@ -75,7 +75,7 @@ internal final class PaymentProcessingViewController: UIViewController {
             switch result {
             case .failure(let error):
                 AtlasLogger.logError(error)
-                UserMessage.showOK(title: "Fatal Error".loc, message: String(error))
+                UserMessage.showOK(title: self.loc("Fatal Error"), message: String(error))
             case .success(let order):
                 print(order)
                 self.showSuccessImage()

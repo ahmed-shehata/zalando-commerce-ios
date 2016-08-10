@@ -9,7 +9,7 @@ import AtlasSDK
 public typealias AtlasCheckoutConfigurationCompletion = AtlasResult<AtlasCheckout> -> Void
 public typealias CreateCheckoutCompletion = AtlasResult<CheckoutViewModel> -> Void
 
-public struct AtlasCheckout {
+public class AtlasCheckout: LocalizerProviderType {
 
     public let client: APIClient
     public let options: Options
@@ -51,7 +51,7 @@ public struct AtlasCheckout {
             return true
     }
 
-    mutating func createCheckout(withArticle article: Article, articleUnitIndex: Int, completion: CreateCheckoutCompletion) {
+    func createCheckout(withArticle article: Article, articleUnitIndex: Int, completion: CreateCheckoutCompletion) {
         let articleSKU = article.units[articleUnitIndex].id
         let cartItemRequest = CartItemRequest(sku: articleSKU, quantity: 1)
 
@@ -59,24 +59,18 @@ public struct AtlasCheckout {
             switch result {
 
             case .failure(let error):
-                UserMessage.showError(title: "Fatal Error".loc, error: error)
+                UserMessage.showError(title: self.loc("Fatal Error"), error: error)
                 completion(.failure(error))
 
             case .success(let cart):
                 self.client.createCheckout(cart.id) { result in
                     switch result {
                     case .failure(let error):
-                        UserMessage.showError(title: "Fatal Error".loc, error: error)
+                        UserMessage.showError(title: self.loc("Fatal Error"), error: error)
                         completion(.failure(error))
 
                     case .success(let checkout):
-                        var checkoutModel = CheckoutViewModel()
-                        checkoutModel.articleUnitIndex = articleUnitIndex
-                        checkoutModel.checkout = checkout
-                        checkoutModel.article = article
-                        checkoutModel.paymentMethodText = checkout.payment.selected?.method
-                        checkoutModel.shippingAddressText = checkout.shippingAddress?.fullAddress()
-
+                        let checkoutModel = CheckoutViewModel(article: article, selectedUnitIndex: articleUnitIndex, checkout: checkout)
                         completion(.success(checkoutModel))
                     }
                 }

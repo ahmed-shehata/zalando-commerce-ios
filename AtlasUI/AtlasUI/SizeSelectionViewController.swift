@@ -5,10 +5,10 @@
 import UIKit
 import AtlasSDK
 
-final class SizeSelectionViewController: UIViewController {
+final class SizeSelectionViewController: UIViewController, CheckoutProviderType {
 
     private let sku: String
-    private var checkout: AtlasCheckout
+    internal var checkout: AtlasCheckout
 
     init(checkout: AtlasCheckout, sku: String) {
         self.checkout = checkout
@@ -24,7 +24,7 @@ final class SizeSelectionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Pick a size".loc
+        title = loc("Pick a size")
         view.backgroundColor = UIColor.clearColor()
         view.opaque = false
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
@@ -41,11 +41,8 @@ final class SizeSelectionViewController: UIViewController {
 
     private func showCheckoutScreen(article: Article, selectedUnitIndex: Int) {
         guard Atlas.isUserLoggedIn() else {
-            let checkoutViewModel = CheckoutViewModel(shippingAddressText: nil, paymentMethodText: nil, discountText: nil,
-                shippingPrice: nil, totalPrice: article.units[0].price, articleUnitIndex: 0,
-                checkout: nil, articleUnit: article.units[0], article: article)
-
-            let checkoutSummaryVC = CheckoutSummaryViewController(checkout: checkout, customer: nil, checkoutViewModel: checkoutViewModel)
+            let checkoutModel = CheckoutViewModel(article: article, selectedUnitIndex: 0)
+            let checkoutSummaryVC = CheckoutSummaryViewController(checkout: checkout, customer: nil, checkoutViewModel: checkoutModel)
             self.showViewController(checkoutSummaryVC, sender: self)
             return
         }
@@ -53,7 +50,7 @@ final class SizeSelectionViewController: UIViewController {
         checkout.client.customer { result in
             switch result {
             case .failure(let error):
-                UserMessage.showError(title: "Error".loc, error: error)
+                UserMessage.showError(title: self.loc("Error"), error: error)
             case .success(let customer):
                 self.generateCheckout(withArticle: article, customer: customer)
             }
@@ -66,7 +63,7 @@ final class SizeSelectionViewController: UIViewController {
             case .failure(let error):
                 AtlasLogger.logError(error)
                 self.dismissViewControllerAnimated(true) {
-                    UserMessage.showError(title: "Error".loc, error: error)
+                    UserMessage.showError(title: self.loc("Error"), error: error)
                 }
             case .success(let checkoutViewModel):
                 let checkoutSummaryVC = CheckoutSummaryViewController(checkout: self.checkout,
@@ -87,7 +84,7 @@ final class SizeSelectionViewController: UIViewController {
             Async.main {
                 switch result {
                 case .failure(let error):
-                    UserMessage.showError(title: "Fatal Error".loc, error: error)
+                    UserMessage.showError(title: strongSelf.loc("Fatal Error"), error: error)
                 case .success(let article):
                     strongSelf.displaySizes(forArticle: article)
                 }
