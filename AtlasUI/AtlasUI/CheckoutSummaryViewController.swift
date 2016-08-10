@@ -6,18 +6,18 @@ import AtlasSDK
 
 final class CheckoutSummaryViewController: UIViewController {
 
-    private let productImageView = UIImageView()
-    private let productNameLabel = UILabel()
-    private let purchasedObjectSummaryLabel = UILabel()
-    private let termsAndConditionsButton = UIButton()
-    private let paymentSummaryTableview = UITableView()
+    internal let productImageView = UIImageView()
+    internal let productNameLabel = UILabel()
+    internal let purchasedObjectSummaryLabel = UILabel()
+    internal let termsAndConditionsButton = UIButton()
+    internal let paymentSummaryTableview = UITableView()
     internal let stackView: UIStackView = UIStackView()
+    private var styler: CheckoutSummaryStyler?
+    internal let shippingPrice: Float = 0
+    internal var customer: Customer? = nil
+    internal var checkoutViewModel: CheckoutViewModel
 
-    private let shippingPrice: Float = 0
-    private var customer: Customer? = nil
-    private var checkoutViewModel: CheckoutViewModel
-
-    private var checkout: AtlasCheckout
+    internal var checkout: AtlasCheckout
 
     init(checkout: AtlasCheckout, customer: Customer?, checkoutViewModel: CheckoutViewModel) {
         self.checkout = checkout
@@ -33,6 +33,7 @@ final class CheckoutSummaryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        styler = CheckoutSummaryStyler(checkoutSummaryViewController: self)
         self.setupViews()
     }
 
@@ -46,9 +47,13 @@ final class CheckoutSummaryViewController: UIViewController {
             self.setupBlurView()
             self.setupProductImageView()
             self.setupViewLabels()
-            self.view.addSubview(stackView)
+            self.view.addSubview(self.stackView)
             self.setupTermsAndConditionsButton()
             self.setupBuyButton()
+
+            if let styler = self.styler {
+                styler.stylize()
+            }
         }
     }
 
@@ -258,7 +263,7 @@ final class CheckoutSummaryViewController: UIViewController {
 
 extension CheckoutSummaryViewController {
 
-    private func shippingView(text: String) -> UIView? {
+    internal func shippingView(text: String) -> UIView? {
         let shippingView = CheckoutSummaryRow()
         shippingView.translatesAutoresizingMaskIntoConstraints = false
         shippingView.initWith("Shipping".loc, detail: text) {
@@ -267,7 +272,7 @@ extension CheckoutSummaryViewController {
         return shippingView
     }
 
-    private func topSeparatorView() -> UIView? {
+    internal func topSeparatorView() -> UIView? {
         let topSeparatorView = UIView()
         topSeparatorView.layer.borderWidth = 5
         topSeparatorView.layer.borderColor = UIColor.blackColor().CGColor
@@ -276,7 +281,7 @@ extension CheckoutSummaryViewController {
         return topSeparatorView
     }
 
-    private func discountView(text: String) -> UIView? {
+    internal func discountView(text: String) -> UIView? {
         let discountView = CheckoutSummaryRow()
         discountView.translatesAutoresizingMaskIntoConstraints = false
         discountView.initWith("Discount".loc, detail: text) {
@@ -285,7 +290,7 @@ extension CheckoutSummaryViewController {
         return discountView
     }
 
-    private func paymentSummaryRow() -> UIView? {
+    internal func paymentSummaryRow() -> UIView? {
         if let article = self.checkoutViewModel.articleUnit {
             var shippingPrice: Float? = nil
             if customer != nil {
@@ -301,7 +306,7 @@ extension CheckoutSummaryViewController {
         return nil
     }
 
-    private func cardView(text: String) -> UIView? {
+    internal func cardView(text: String) -> UIView? {
         let cardView = CheckoutSummaryRow()
         cardView.translatesAutoresizingMaskIntoConstraints = false
         cardView.initWith("Payment".loc, detail: text) {
@@ -312,10 +317,3 @@ extension CheckoutSummaryViewController {
 
 }
 
-private extension UIView {
-    private func removeAllSubviews() {
-        for view in self.subviews {
-            view.removeFromSuperview()
-        }
-    }
-}

@@ -18,43 +18,43 @@ class CheckoutSummaryStyler {
 
     private func setupStackView() {
         self.viewController.stackView.removeAllSubviews()
-
         self.viewController.stackView.translatesAutoresizingMaskIntoConstraints = false
         self.viewController.stackView.axis = .Vertical
         self.viewController.stackView.distribution = .Fill
         self.viewController.stackView.alignment = .Center
         self.viewController.stackView.spacing = 2
-        self.viewController.stackView.trailingAnchor.constraintEqualToAnchor(self.view.trailingAnchor).active = true
-        self.viewController.stackView.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor).active = true
-        self.viewController.stackView.bottomAnchor.constraintLessThanOrEqualToAnchor(self.view.bottomAnchor).active = true
-        self.viewController.stackView.topAnchor.constraintEqualToAnchor(purchasedObjectSummaryLabel.bottomAnchor, constant: 10).active = true
+        self.viewController.stackView.trailingAnchor.constraintEqualToAnchor(self.viewController.view.trailingAnchor).active = true
+        self.viewController.stackView.leadingAnchor.constraintEqualToAnchor(self.viewController.view.leadingAnchor).active = true
+        self.viewController.stackView.bottomAnchor.constraintLessThanOrEqualToAnchor(self.viewController.view.bottomAnchor).active = true
+        self.viewController.stackView.topAnchor.constraintEqualToAnchor(self.viewController.purchasedObjectSummaryLabel.bottomAnchor,
+            constant: 10).active = true
 
-        if let shippingViewText = checkoutViewModel.shippingAddressText, shippingView = shippingView(shippingViewText) {
+        if let shippingViewText = self.viewController.checkoutViewModel.shippingAddressText, shippingView = self.viewController.shippingView(shippingViewText) {
             self.viewController.stackView.addArrangedSubviewSideFilled(shippingView)
             shippingView.heightAnchor.constraintEqualToConstant(55).active = true
         }
 
-        if let cardText = checkoutViewModel.paymentMethodText, cardView = cardView(cardText) {
+        if let cardText = self.viewController.checkoutViewModel.paymentMethodText, cardView = self.viewController.cardView(cardText) {
             self.viewController.stackView.addArrangedSubviewSideFilled(cardView)
             cardView.heightAnchor.constraintEqualToConstant(40).active = true
         }
 
-        if let discountViewText = checkoutViewModel.discountText, discountView = discountView(discountViewText) {
+        if let discountViewText = self.viewController.checkoutViewModel.discountText, discountView = self.viewController.discountView(discountViewText) {
             self.viewController.stackView.addArrangedSubviewSideFilled(discountView)
             discountView.heightAnchor.constraintEqualToConstant(40).active = true
         }
 
-        if let paymentSummaryRow = paymentSummaryRow() {
+        if let paymentSummaryRow = self.viewController.paymentSummaryRow() {
             self.viewController.stackView.addArrangedSubviewSideFilled(paymentSummaryRow)
             paymentSummaryRow.heightAnchor.constraintEqualToConstant(60).active = true
         }
 
-        if let topSeparatorView = topSeparatorView() {
+        if let topSeparatorView = self.viewController.topSeparatorView() {
             self.viewController.stackView.addSubview(topSeparatorView)
             topSeparatorView.heightAnchor.constraintEqualToConstant(1).active = true
-            topSeparatorView.widthAnchor.constraintEqualToAnchor(stackView.widthAnchor, multiplier: 0.95).active = true
-            topSeparatorView.bottomAnchor.constraintEqualToAnchor(stackView.topAnchor).active = true
-            topSeparatorView.centerXAnchor.constraintEqualToAnchor(stackView.centerXAnchor).active = true
+            topSeparatorView.widthAnchor.constraintEqualToAnchor(self.viewController.stackView.widthAnchor, multiplier: 0.95).active = true
+            topSeparatorView.bottomAnchor.constraintEqualToAnchor(self.viewController.stackView.topAnchor).active = true
+            topSeparatorView.centerXAnchor.constraintEqualToAnchor(self.viewController.stackView.centerXAnchor).active = true
         }
     }
 
