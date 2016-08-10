@@ -4,7 +4,7 @@
 
 import AtlasSDK
 
-final class CheckoutSummaryViewController: UIViewController {
+final class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
 
     private let productImageView = UIImageView()
     private let productNameLabel = UILabel()
@@ -17,7 +17,7 @@ final class CheckoutSummaryViewController: UIViewController {
     private var customer: Customer? = nil
     private var checkoutViewModel: CheckoutViewModel
 
-    private var checkout: AtlasCheckout
+    internal let checkout: AtlasCheckout
 
     init(checkout: AtlasCheckout, customer: Customer?, checkoutViewModel: CheckoutViewModel) {
         self.checkout = checkout
@@ -39,7 +39,7 @@ final class CheckoutSummaryViewController: UIViewController {
     private func setupViews() {
         Async.main {
             self.view.removeAllSubviews()
-            self.title = "Summary".loc
+            self.title = self.loc("Summary")
             self.view.backgroundColor = UIColor.clearColor()
             self.view.opaque = false
             self.setupNavBar()
@@ -87,7 +87,7 @@ final class CheckoutSummaryViewController: UIViewController {
             self.navigationItem.setHidesBackButton(true, animated: false)
         }
 
-        let cancelButton = UIBarButtonItem(title: "Cancel".loc, style: UIBarButtonItemStyle.Plain,
+        let cancelButton = UIBarButtonItem(title: loc("Cancel"), style: UIBarButtonItemStyle.Plain,
             target: self, action: #selector(CheckoutSummaryViewController.cancelCheckoutTapped(_:)))
 
         navigationItem.rightBarButtonItem = cancelButton
@@ -98,7 +98,7 @@ final class CheckoutSummaryViewController: UIViewController {
             Async.main {
                 switch result {
                 case .failure(let error):
-                    UserMessage.showError(title: "Fatal Error".loc, error: error)
+                    UserMessage.showError(title: self.loc("Fatal Error"), error: error)
 
                 case .success(let customer):
                     self.showLoadingView()
@@ -110,13 +110,13 @@ final class CheckoutSummaryViewController: UIViewController {
 
     private func generateCheckoutAndRefreshViews(customer: Customer) {
         guard let article = self.checkoutViewModel.article,
-            articleIndex = self.checkoutViewModel.articleUnitIndex else { return }
+            articleIndex = self.checkoutViewModel.selectedUnitIndex else { return }
 
         checkout.createCheckout(withArticle: article, articleUnitIndex: articleIndex) { result in
             switch result {
             case .failure(let error):
                 self.dismissViewControllerAnimated(true) {
-                    UserMessage.showError(title: "Fatal Error".loc, error: error)
+                    UserMessage.showError(title: self.loc("Fatal Error"), error: error)
                 }
             case .success(let checkout):
                 self.checkoutViewModel = checkout
@@ -182,7 +182,7 @@ final class CheckoutSummaryViewController: UIViewController {
             NSUnderlineStyleAttributeName: 1]
 
         termsAndConditionsButton.setAttributedTitle(NSMutableAttributedString(string:
-                "CheckoutSummaryViewController.terms".loc, attributes: attrs), forState: .Normal)
+                loc("CheckoutSummaryViewController.terms"), attributes: attrs), forState: .Normal)
 
         termsAndConditionsButton.heightAnchor.constraintEqualToConstant(30).active = true
         termsAndConditionsButton.titleLabel?.lineBreakMode = .ByWordWrapping
@@ -211,8 +211,8 @@ final class CheckoutSummaryViewController: UIViewController {
 
         buyButton.layer.cornerRadius = 5
 
-        if let article = self.checkoutViewModel.articleUnit, price = checkout.localizer.fmtPrice(article.price.amount) {
-            buyButton.setTitle("Pay %@".loc(price), forState: .Normal)
+        if let article = self.checkoutViewModel.selectedUnit, price = checkout.localizer.fmtPrice(article.price.amount) {
+            buyButton.setTitle(loc("Pay %@", price), forState: .Normal)
         }
 
         buyButton.addTarget(self, action: #selector(CheckoutSummaryViewController.buyButtonTapped(_:)), forControlEvents: .TouchUpInside)
@@ -232,7 +232,7 @@ final class CheckoutSummaryViewController: UIViewController {
         connectButton.backgroundColor = UIColor.orangeColor()
         connectButton.userInteractionEnabled = true
 
-        connectButton.setTitle("Connect To Zalando".loc, forState: .Normal)
+        connectButton.setTitle(loc("Connect To Zalando"), forState: .Normal)
 
         connectButton.addTarget(self, action: #selector(CheckoutSummaryViewController.connectToZalandoButtonTapped(_:)),
             forControlEvents: .TouchUpInside)
@@ -303,7 +303,7 @@ extension CheckoutSummaryViewController {
     private func shippingView(text: String) -> UIView? {
         let shippingView = CheckoutSummaryRow()
         shippingView.translatesAutoresizingMaskIntoConstraints = false
-        shippingView.initWith("Shipping".loc, detail: text) {
+        shippingView.initWith(loc("Shipping"), detail: text) {
             print("Shipping")
         }
         return shippingView
@@ -321,21 +321,21 @@ extension CheckoutSummaryViewController {
     private func discountView(text: String) -> UIView? {
         let discountView = CheckoutSummaryRow()
         discountView.translatesAutoresizingMaskIntoConstraints = false
-        discountView.initWith("Discount".loc, detail: text) {
+        discountView.initWith(loc("Discount"), detail: text) {
             print("Discount")
         }
         return discountView
     }
 
     private func paymentSummaryRow() -> UIView? {
-        if let article = self.checkoutViewModel.articleUnit {
+        if let article = self.checkoutViewModel.selectedUnit {
             var shippingPrice: Float? = nil
             if customer != nil {
                 shippingPrice = self.shippingPrice
             }
 
-            let paymentSummaryRow = PaymentSummaryRow.init(shippingPrice: shippingPrice,
-                itemPrice: article.price)
+            let paymentSummaryRow = PaymentSummaryRow(shippingPrice: shippingPrice,
+                itemPrice: article.price, localizerProvider: checkout)
             paymentSummaryRow.translatesAutoresizingMaskIntoConstraints = false
 
             return paymentSummaryRow
@@ -346,7 +346,7 @@ extension CheckoutSummaryViewController {
     private func cardView(text: String) -> UIView? {
         let cardView = CheckoutSummaryRow()
         cardView.translatesAutoresizingMaskIntoConstraints = false
-        cardView.initWith("Payment".loc, detail: text) {
+        cardView.initWith(loc("Payment"), detail: text) {
             print("Payment")
         }
         return cardView

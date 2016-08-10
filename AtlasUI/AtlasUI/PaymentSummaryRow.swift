@@ -5,17 +5,11 @@
 import UIKit
 import AtlasSDK
 
-final class PaymentSummaryRow: UIView {
+final class PaymentSummaryRow: UIView, LocalizerProviderType {
 
-    @available( *, deprecated, message = "Switch to article formatter.")
-    private let priceFormatter: NSNumberFormatter = {
-        let formatter = NSNumberFormatter()
-        formatter.locale = NSLocale(localeIdentifier: "en_DE")
-        formatter.numberStyle = .CurrencyStyle
-        return formatter
-    }()
+    internal var localizer: Localizer
 
-    var shippingPrice: Float?
+    private var shippingPrice: Float?
     private var itemPrice: Article.Price
 
     var totalPrice: Float {
@@ -30,6 +24,20 @@ final class PaymentSummaryRow: UIView {
     private let shippingTitleLabel = UILabel()
     private let shippingPriceLabel = UILabel()
     private let itemPriceLabel = UILabel()
+
+    init(shippingPrice: Float?, itemPrice: Article.Price, localizerProvider: LocalizerProviderType) {
+        if let shippingPrice = shippingPrice {
+            self.shippingPrice = shippingPrice
+        }
+
+        self.itemPrice = itemPrice
+        self.localizer = localizerProvider.localizer
+        super.init(frame: CGRect.zero)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func willMoveToSuperview(newSuperview: UIView?) {
         guard let _ = newSuperview else { return }
@@ -49,20 +57,8 @@ final class PaymentSummaryRow: UIView {
         self.setupItemPriceLabel()
     }
 
-    init(shippingPrice: Float?, itemPrice: Article.Price) {
-        if let shippingPrice = shippingPrice {
-            self.shippingPrice = shippingPrice
-        }
-
-        self.itemPrice = itemPrice
-        super.init(frame: CGRect.zero)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     private func setupTotalPriceTitleLabel() {
-        totalPriceTitleLabel.text = "Total".loc
+        totalPriceTitleLabel.text = loc("Total")
         totalPriceTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         totalPriceTitleLabel.font = totalPriceTitleLabel.font.fontWithSize(18)
         totalPriceTitleLabel.textColor = UIColor.grayColor()
@@ -83,7 +79,7 @@ final class PaymentSummaryRow: UIView {
     }
 
     private func setupShippingTitleLabel() {
-        shippingTitleLabel.text = "Shipping".loc
+        shippingTitleLabel.text = loc("Shipping")
         shippingTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         shippingTitleLabel.font = shippingTitleLabel.font.fontWithSize(13)
         shippingTitleLabel.textColor = UIColor.grayColor()
@@ -94,7 +90,7 @@ final class PaymentSummaryRow: UIView {
 
     private func setupShippingPriceLabel() {
         if let shippingPrice = shippingPrice {
-            shippingPriceLabel.text = priceFormatter.stringFromNumber(shippingPrice)
+            shippingPriceLabel.text = localizer.fmtPrice(shippingPrice)
         } else {
             shippingPriceLabel.text = "---"
         }
@@ -109,7 +105,7 @@ final class PaymentSummaryRow: UIView {
     }
 
     private func setupItemPriceLabel() {
-        itemPriceLabel.text = priceFormatter.stringFromNumber(totalPrice)
+        itemPriceLabel.text = localizer.fmtPrice(totalPrice)
         itemPriceLabel.translatesAutoresizingMaskIntoConstraints = false
         itemPriceLabel.text = itemPriceLabel.text?.uppercaseString
         itemPriceLabel.font = itemPriceLabel.font.fontWithSize(18)
