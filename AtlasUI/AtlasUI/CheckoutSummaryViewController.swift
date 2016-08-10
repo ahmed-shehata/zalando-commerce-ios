@@ -17,7 +17,7 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
     private var customer: Customer? = nil
     private var checkoutViewModel: CheckoutViewModel
 
-    internal var checkout: AtlasCheckout
+    internal let checkout: AtlasCheckout
 
     init(checkout: AtlasCheckout, customer: Customer?, checkoutViewModel: CheckoutViewModel) {
         self.checkout = checkout

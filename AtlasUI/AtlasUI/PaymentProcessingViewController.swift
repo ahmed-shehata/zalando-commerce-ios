@@ -11,7 +11,7 @@ internal final class PaymentProcessingViewController: UIViewController, Checkout
     private let progressIndicator = UIActivityIndicatorView()
     private let successImageView = UIImageView()
 
-    internal var checkout: AtlasCheckout
+    internal let checkout: AtlasCheckout
 
     init(checkout: AtlasCheckout, checkoutViewModel: CheckoutViewModel) {
         self.checkout = checkout

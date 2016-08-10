@@ -8,7 +8,7 @@ import AtlasSDK
 final class SizeListSelectionViewController: UITableViewController, CheckoutProviderType {
 
     private let article: Article
-    internal var checkout: AtlasCheckout
+    internal let checkout: AtlasCheckout
 
     init(checkout: AtlasCheckout, article: Article) {
         self.checkout = checkout
