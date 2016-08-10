@@ -39,5 +39,10 @@ final class URLSessionMock: NSURLSession {
         override func resume() {
             completionHandler?(taskResponse.data, taskResponse.response, taskResponse.error)
         }
+
+        override func cancel() {
+            // do nothing
+        }
+
     }
 }
