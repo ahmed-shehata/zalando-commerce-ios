@@ -9,18 +9,18 @@ Our goal is to allow end developer integrate and run Zalando checkout in minutes
 
 If you want to have a full control over the UI and manage checkout flow by yourself there is a low level AtlasSDK framework that covers all Checkout API calls and provide you high-level business objects to deal with.
                    DESC
-
-  s.homepage     = 'https://github.bus.zalan.do/Atlas/atlas-ios'
+  s.homepage     = 'https://github.com/zalando-incubator/atlas-ios'
   s.license      = { type: 'MIT', file: 'LICENSE' }
-
-  s.author             = { 'Gleb Galkin' => 'gleb.galkin@zalando.de' }
-  s.social_media_url   = 'https://www.linkedin.com/in/artdaw'
-
+  s.authors      = {
+                    'Gleb Galkin' => 'gleb.galkin@zalando.de',
+                    'Ahmed Shehata' => 'ahmed.shehata@zalando.de',
+                    'Daniel Bauke' => 'daniel.bauke@zalando.de',
+                    'Haldun Bayhantopcu' => 'haldun.bayhantopcu@zalando.de'
+                    }
   s.platform     = :ios, '9.0'
-
-  s.source       = { git: 'https://github.bus.zalan.do/Atlas/atlas-ios.git', tag: s.version.to_s }
-  s.source_files = 'AtlasSDK', 'AtlasSDK/**/*.{h,m,swift}'
-  s.resources = ['AtlasSDK/**/*.{storyboard}', 'AtlasSDK/**/Assets.xcassets']
+  s.source       = { git: 'https://github.com/zalando-incubator/atlas-ios.git', tag: s.version.to_s }
+  s.source_files = 'AtlasSDK/AtlasSDK/**/*.{h,m,swift}', 'AtlasUI/AtlasUI/**/*.{h,m,swift}'
   s.frameworks = 'Foundation'
   s.requires_arc = true
+
 end
