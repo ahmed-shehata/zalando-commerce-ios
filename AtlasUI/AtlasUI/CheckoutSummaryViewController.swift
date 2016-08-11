@@ -15,6 +15,9 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
     internal let buyButton = UIButton()
     internal let connectToZalandoButton = UIButton()
     internal let shippingPrice: Float = 0
+
+    internal let shippingView = CheckoutSummaryRow()
+    internal let paymentMethodView = CheckoutSummaryRow()
     internal private(set) var customer: Customer?
     internal private(set) var checkoutViewModel: CheckoutViewModel
 
@@ -40,6 +43,7 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
     private func setupViews() {
         Async.main {
             self.view.removeAllSubviews()
+            self.stackView.removeAllSubviews()
             self.title = self.loc("Summary")
             self.view.backgroundColor = UIColor.clearColor()
             self.view.opaque = false
@@ -50,7 +54,8 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
             self.setupStackView()
             self.setupTermsAndConditionsButton()
             self.setupButtons()
-
+            self.setupShippingView()
+            self.setupPaymentMethodView()
             CheckoutSummaryStyler(checkoutSummaryViewController: self).stylize()
         }
     }
@@ -176,18 +181,31 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
         blurEffectView.contentView.addSubview(extraLightVibrancyView)
     }
 
+    private func setupShippingView() {
+        shippingView.initWith(loc("Shipping"), detail: loc("No Shipping Address")) {
+            print("Shipping")
+        }
+        stackView.addArrangedSubview(shippingView)
+
+        if let shippingViewText = self.checkoutViewModel.shippingAddressText {
+            shippingView.detailTextLabel.text = shippingViewText
+        }
+    }
+
+    private func setupPaymentMethodView() {
+        paymentMethodView.initWith(loc("Payment"), detail: loc("No Payment Method")) {
+            print("Payment Method")
+        }
+
+        if let paymentMethodText = self.checkoutViewModel.paymentMethodText {
+            paymentMethodView.detailTextLabel.text = paymentMethodText
+        }
+        stackView.addArrangedSubview(paymentMethodView)
+    }
+
 }
 
 extension CheckoutSummaryViewController {
-
-    internal func shippingView(text: String) -> UIView? {
-        let shippingView = CheckoutSummaryRow()
-        shippingView.translatesAutoresizingMaskIntoConstraints = false
-        shippingView.initWith(loc("Shipping"), detail: text) {
-            print("Shipping")
-        }
-        return shippingView
-    }
 
     internal func topSeparatorView() -> UIView? {
         let topSeparatorView = UIView()
@@ -196,15 +214,6 @@ extension CheckoutSummaryViewController {
         topSeparatorView.alpha = 0.2
         topSeparatorView.translatesAutoresizingMaskIntoConstraints = false
         return topSeparatorView
-    }
-
-    internal func discountView(text: String) -> UIView? {
-        let discountView = CheckoutSummaryRow()
-        discountView.translatesAutoresizingMaskIntoConstraints = false
-        discountView.initWith(loc("Discount"), detail: text) {
-            print("Discount")
-        }
-        return discountView
     }
 
     internal func paymentSummaryRow() -> UIView? {
@@ -217,15 +226,6 @@ extension CheckoutSummaryViewController {
         paymentSummaryRow.translatesAutoresizingMaskIntoConstraints = false
 
         return paymentSummaryRow
-    }
-
-    internal func cardView(text: String) -> UIView? {
-        let cardView = CheckoutSummaryRow()
-        cardView.translatesAutoresizingMaskIntoConstraints = false
-        cardView.initWith(loc("Payment"), detail: text) {
-            print("Payment")
-        }
-        return cardView
     }
 
 }
