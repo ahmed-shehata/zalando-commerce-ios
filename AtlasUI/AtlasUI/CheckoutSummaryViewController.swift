@@ -47,7 +47,7 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
             self.setupBlurView()
             self.setupProductImageView()
             self.setupViewLabels()
-            self.view.addSubview(self.stackView)
+            self.setupStackView()
             self.setupTermsAndConditionsButton()
             self.setupButtons()
 
@@ -155,6 +155,9 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
         connectToZalandoButton.addTarget(self, action: #selector(CheckoutSummaryViewController.connectToZalandoButtonTapped(_:)),
             forControlEvents: .TouchUpInside)
 
+    }
+    private func setupStackView() {
+        self.view.addSubview(self.stackView)
     }
 
     private func setupBlurView() {
