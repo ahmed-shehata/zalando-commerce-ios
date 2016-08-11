@@ -18,6 +18,10 @@ final class APIRequestBuilder: RequestBuilder {
             switch result {
             case .failure(let error):
                 if let error = error as? AtlasAPIError where error.code == HTTPStatus.Unauthorized {
+                    guard UIApplication.hasTopViewController else {
+                        completion(.failure(error))
+                        return
+                    }
                     dispatch_async(dispatch_get_main_queue()) { [weak self] in
                         guard let strongSelf = self else { return }
                         strongSelf.loginAndExecute(completion)
@@ -53,7 +57,11 @@ final class APIRequestBuilder: RequestBuilder {
     }
 
     private func askUserToLogin(completion: LoginCompletion) {
-        guard let sourceApp = UIApplication.topViewController() else { return }
+        guard let sourceApp = UIApplication.topViewController() else {
+            let error = AtlasAPIError(code: .Unauthorized, message: "Missing controller to present login form")
+            completion(.failure(error))
+            return
+        }
 
         let loginViewController = LoginViewController(loginURL: self.loginURL, completion: completion)
         let navigationController = UINavigationController(rootViewController: loginViewController)

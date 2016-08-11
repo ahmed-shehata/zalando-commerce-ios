@@ -4,8 +4,8 @@ variable_name:
   min_length: 2
 
 type_body_length:
-  warning: 150
-  error: 300
+  warning: 100
+  error: 200
 
 disabled_rules:
   - valid_docs # there's bug in swiftlint probably
