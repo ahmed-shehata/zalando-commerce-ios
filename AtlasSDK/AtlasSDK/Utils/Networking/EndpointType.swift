@@ -24,7 +24,7 @@ extension EndpointType {
         let urlComponents = NSURLComponents(validURL: baseURL)
         urlComponents.queryItems = self.queryItems
         if let path = self.path {
-            return urlComponents.validURL.URLByAppendingPathComponent(path)
+            return urlComponents.validURL.URLByAppending(pathComponent: path)
         } else {
             return urlComponents.validURL
         }

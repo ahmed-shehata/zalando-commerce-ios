@@ -29,7 +29,11 @@ public final class AtlasMockAPI {
     }
 
     public static func endpointURL(forPath path: String) -> NSURL {
-        return serverURL.URLByAppendingPathComponent(path)
+        #if swift(>=2.3)
+            return serverURL.URLByAppendingPathComponent(path)! // swiftlint:disable:this force_unwrapping
+        #else
+            return serverURL.URLByAppendingPathComponent(path)
+        #endif
     }
 
 }

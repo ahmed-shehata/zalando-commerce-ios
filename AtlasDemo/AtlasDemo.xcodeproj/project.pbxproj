@@ -310,9 +310,11 @@
 					81FCA8D71D0FE05D00209E9B = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = J67E9B6234;
+						LastSwiftMigration = 0800;
 					};
 					81FCA8EB1D0FE05D00209E9B = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 81FCA8D71D0FE05D00209E9B;
 					};
 				};
@@ -546,6 +548,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = de.zalando.atlas.AtlasDemo;
 				PRODUCT_NAME = AtlasDemo;
 				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -564,6 +567,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = de.zalando.atlas.AtlasDemo;
 				PRODUCT_NAME = AtlasDemo;
 				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -574,6 +578,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.zalando.atlas.AtlasDemoUITests;
 				PRODUCT_NAME = AtlasDemo;
+				SWIFT_VERSION = 2.3;
 				TEST_TARGET_NAME = AtlasDemo;
 			};
 			name = Debug;
@@ -585,6 +590,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.zalando.atlas.AtlasDemoUITests;
 				PRODUCT_NAME = AtlasDemo;
+				SWIFT_VERSION = 2.3;
 				TEST_TARGET_NAME = AtlasDemo;
 			};
 			name = Release;
