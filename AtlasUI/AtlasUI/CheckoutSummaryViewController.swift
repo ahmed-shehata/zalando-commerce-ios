@@ -13,7 +13,7 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
     internal let paymentSummaryTableview = UITableView()
     internal let stackView: UIStackView = UIStackView()
     internal let buyButton = UIButton()
-
+    internal let connectToZalandoButton = UIButton()
     internal let shippingPrice: Float = 0
     internal private(set) var customer: Customer?
     internal private(set) var checkoutViewModel: CheckoutViewModel
@@ -49,7 +49,7 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
             self.setupViewLabels()
             self.view.addSubview(self.stackView)
             self.setupTermsAndConditionsButton()
-            self.setupBuyButton()
+            self.setupButtons()
 
             CheckoutSummaryStyler(checkoutSummaryViewController: self).stylize()
         }
@@ -144,13 +144,17 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
         self.view.addSubview(termsAndConditionsButton)
     }
 
-    private func setupBuyButton() {
+    private func setupButtons() {
         self.view.addSubview(buyButton)
+        self.view.addSubview(connectToZalandoButton)
+        buyButton.hidden = true
+        connectToZalandoButton.hidden = true
 
-        let selector = customer != nil
-            ? #selector(CheckoutSummaryViewController.buyButtonTapped(_:))
-            : #selector(CheckoutSummaryViewController.connectToZalandoButtonTapped(_:))
-        buyButton.addTarget(self, action: selector, forControlEvents: .TouchUpInside)
+        buyButton.addTarget(self, action: #selector(CheckoutSummaryViewController.buyButtonTapped(_:)),
+            forControlEvents: .TouchUpInside)
+        connectToZalandoButton.addTarget(self, action: #selector(CheckoutSummaryViewController.connectToZalandoButtonTapped(_:)),
+            forControlEvents: .TouchUpInside)
+
     }
 
     private func setupBlurView() {

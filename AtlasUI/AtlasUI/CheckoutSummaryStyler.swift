@@ -18,7 +18,9 @@ class CheckoutSummaryStyler: LocalizerProviderType {
         stylizeProductImageView()
         stylizeViewLabels()
         stylizeTermsButton()
-        stylizeBuyButton()
+
+        let mainButton = viewController.customer != nil ? viewController.buyButton : viewController.connectToZalandoButton
+        stylizeMainButton(mainButton)
     }
 
     private func stylizeStackView() {
@@ -137,18 +139,18 @@ class CheckoutSummaryStyler: LocalizerProviderType {
             constant: -10).active = true
     }
 
-    private func stylizeBuyButton() {
-        viewController.buyButton.translatesAutoresizingMaskIntoConstraints = false
-
-        viewController.buyButton.heightAnchor.constraintEqualToConstant(50).active = true
-        viewController.buyButton.topAnchor.constraintEqualToAnchor(viewController.termsAndConditionsButton.bottomAnchor,
+    private func stylizeMainButton(button: UIButton) {
+        button.hidden = false
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.heightAnchor.constraintEqualToConstant(50).active = true
+        button.topAnchor.constraintEqualToAnchor(viewController.termsAndConditionsButton.bottomAnchor,
             constant: -80).active = true
-        viewController.buyButton.leadingAnchor.constraintEqualToAnchor(viewController.view.leadingAnchor, constant: 10).active = true
-        viewController.buyButton.trailingAnchor.constraintEqualToAnchor(viewController.view.trailingAnchor, constant: -10).active = true
+        button.leadingAnchor.constraintEqualToAnchor(viewController.view.leadingAnchor, constant: 10).active = true
+        button.trailingAnchor.constraintEqualToAnchor(viewController.view.trailingAnchor, constant: -10).active = true
         let title = viewController.customer != nil ? "Buy Now" : "Connect To Zalando"
-        viewController.buyButton.setTitle(title, forState: .Normal)
-        viewController.buyButton.backgroundColor = UIColor.orangeColor()
-        viewController.buyButton.layer.cornerRadius = 5
+        button.setTitle(title, forState: .Normal)
+        button.backgroundColor = UIColor.orangeColor()
+        button.layer.cornerRadius = 5
     }
 
 }
