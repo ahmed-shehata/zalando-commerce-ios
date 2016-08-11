@@ -11,23 +11,23 @@ module Calypso
       run base_build_cmd(WORKSPACE, '-list')
     end
 
-    desc 'test [scheme]', "Runs tests for given scheme or #{SCHEME_ALL_TESTS}"
-    def test(scheme = SCHEME_ALL_TESTS)
+    desc 'test [scheme]', "Runs tests for given scheme or #{SCHEME_UI_UNIT_TESTS}"
+    def test(scheme = SCHEME_UI_UNIT_TESTS)
       exec_tests scheme
     end
 
     desc 'build [scheme]', 'Builds given scheme'
-    def build(scheme = SCHEME_ALL_TESTS)
+    def build(scheme = SCHEME_UI_UNIT_TESTS)
       exec_build scheme
     end
 
     desc 'analyze [scheme]', 'Analyzes given scheme'
-    def analyze(scheme = SCHEME_ALL_TESTS)
+    def analyze(scheme = SCHEME_UI_UNIT_TESTS)
       exec_analyze scheme
     end
 
     desc 'clean [scheme]', 'Cleans given scheme'
-    def clean(scheme = SCHEME_ALL_TESTS)
+    def clean(scheme = SCHEME_UI_UNIT_TESTS)
       exec_clean scheme
     end
 
