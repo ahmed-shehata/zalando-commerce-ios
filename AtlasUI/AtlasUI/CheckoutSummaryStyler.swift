@@ -145,11 +145,8 @@ class CheckoutSummaryStyler: LocalizerProviderType {
             constant: -80).active = true
         viewController.buyButton.leadingAnchor.constraintEqualToAnchor(viewController.view.leadingAnchor, constant: 10).active = true
         viewController.buyButton.trailingAnchor.constraintEqualToAnchor(viewController.view.trailingAnchor, constant: -10).active = true
-        if viewController.customer != nil {
-            viewController.buyButton.setTitle("Buy Now", forState: .Normal)
-        } else {
-            viewController.buyButton.setTitle(loc("Connect To Zalando"), forState: .Normal)
-        }
+        let title = viewController.customer != nil ? "Buy Now" : "Connect To Zalando"
+        viewController.buyButton.setTitle(title, forState: .Normal)
         viewController.buyButton.backgroundColor = UIColor.orangeColor()
         viewController.buyButton.layer.cornerRadius = 5
     }
