@@ -11,7 +11,7 @@ module Calypso
   class Coverage < Thor
 
     desc 'check [fast] [scheme]', 'Runs test coverage'
-    def check(fast = nil, scheme = SCHEME_ALL_UNIT_TESTS)
+    def check(fast = nil, scheme = SCHEME_UNIT_TESTS)
       unless fast == 'fast'
         Xcode.new.invoke(:clean, [scheme])
         Xcode.new.invoke(:test, [scheme])
@@ -21,7 +21,7 @@ module Calypso
     end
 
     desc 'view [scheme]', 'Opens test coverage'
-    def view(scheme = SCHEME_ALL_UNIT_TESTS)
+    def view(scheme = SCHEME_UNIT_TESTS)
       invoke :check, scheme
       run 'open xcov_report/index.html'
     end

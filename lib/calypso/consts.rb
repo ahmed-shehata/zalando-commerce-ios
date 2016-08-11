@@ -19,10 +19,8 @@ module Calypso
   SCHEME_MOCK_SERVER = 'AtlasMockAPI'.freeze
   SCHEME_CHECKOUT = 'AtlasCheckout'.freeze
   SCHEME_CHECKOUT_DEMO = 'AtlasDemo'.freeze
-  SCHEME_CHECKOUT_DEMO_UNIT_TESTS = 'AtlasDemoUnitTests'.freeze
-
-  SCHEME_ALL_TESTS = SCHEME_CHECKOUT_DEMO
-  SCHEME_ALL_UNIT_TESTS = SCHEME_CHECKOUT_DEMO_UNIT_TESTS
+  SCHEME_UNIT_TESTS = 'UnitTests'.freeze
+  SCHEME_UI_UNIT_TESTS = 'UI+UnitTests'.freeze
 
   PLATFORM_DEFAULT = 'iOS Simulator,name=iPhone 6s'.freeze
 
