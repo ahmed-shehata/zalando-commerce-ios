@@ -4,9 +4,10 @@
 
 import Foundation
 
-class CheckoutSummaryStyler {
+class CheckoutSummaryStyler: LocalizerProviderType {
 
     private let viewController: CheckoutSummaryViewController
+    var localizer: Localizer { return viewController.localizer }
 
     init(checkoutSummaryViewController: CheckoutSummaryViewController) {
         viewController = checkoutSummaryViewController
@@ -124,7 +125,7 @@ class CheckoutSummaryStyler {
             NSUnderlineStyleAttributeName: 1]
 
         viewController.termsAndConditionsButton.setAttributedTitle(NSMutableAttributedString(string:
-                "CheckoutSummaryViewController.terms".loc, attributes: attrs), forState: .Normal)
+                loc("CheckoutSummaryViewController.terms"), attributes: attrs), forState: .Normal)
 
         viewController.termsAndConditionsButton.heightAnchor.constraintEqualToConstant(30).active = true
         viewController.termsAndConditionsButton.titleLabel?.lineBreakMode = .ByWordWrapping
@@ -147,7 +148,7 @@ class CheckoutSummaryStyler {
         if viewController.customer != nil {
             viewController.buyButton.setTitle("Buy Now", forState: .Normal)
         } else {
-            viewController.buyButton.setTitle("Connect To Zalando".loc, forState: .Normal)
+            viewController.buyButton.setTitle(loc("Connect To Zalando"), forState: .Normal)
         }
         viewController.buyButton.backgroundColor = UIColor.orangeColor()
         viewController.buyButton.layer.cornerRadius = 5

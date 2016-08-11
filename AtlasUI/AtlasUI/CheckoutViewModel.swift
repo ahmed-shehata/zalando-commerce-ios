@@ -25,6 +25,10 @@ public struct CheckoutViewModel {
         }
     }
 
+    public var hasArticle: Bool {
+        return article != nil
+    }
+
     init(article: Article, selectedUnitIndex: Int? = nil, shippingPrice: Article.Price? = nil, checkout: Checkout? = nil,
         shippingAddressText: String? = nil, paymentMethodText: String? = nil, discountText: String? = nil) {
             self.article = article

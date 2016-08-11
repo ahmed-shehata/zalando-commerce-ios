@@ -46,7 +46,7 @@ class APICustomerSpec: APIClientBaseSpec {
                 let errorResponse = self.dataWithJSONObject(json)
                 let client = self.mockedAPIClient(forURL: customerUrl, data: errorResponse, statusCode: 401)
 
-                waitUntil(timeout: 500) { done in
+                waitUntil(timeout: 10) { done in
                     client.customer { result in
                         switch result {
                         case .failure(let error as AtlasAPIError):

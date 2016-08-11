@@ -4,7 +4,7 @@
 
 import AtlasSDK
 
-final class CheckoutSummaryViewController: UIViewController {
+final class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
 
     internal let productImageView = UIImageView()
     internal let productNameLabel = UILabel()
@@ -12,12 +12,11 @@ final class CheckoutSummaryViewController: UIViewController {
     internal let termsAndConditionsButton = UIButton()
     internal let paymentSummaryTableview = UITableView()
     internal let stackView: UIStackView = UIStackView()
-    internal let shippingPrice: Float = 0
-    internal var customer: Customer? = nil
-    internal var buyButton = UIButton()
-    internal var checkoutViewModel: CheckoutViewModel
+    internal let buyButton = UIButton()
 
-    private var styler: CheckoutSummaryStyler?
+    internal let shippingPrice: Float = 0
+    internal private(set) var customer: Customer?
+    internal private(set) var checkoutViewModel: CheckoutViewModel
 
     internal var checkout: AtlasCheckout
 
@@ -35,14 +34,13 @@ final class CheckoutSummaryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        styler = CheckoutSummaryStyler(checkoutSummaryViewController: self)
         self.setupViews()
     }
 
     private func setupViews() {
         Async.main {
             self.view.removeAllSubviews()
-            self.title = "Summary".loc
+            self.title = self.loc("Summary")
             self.view.backgroundColor = UIColor.clearColor()
             self.view.opaque = false
             self.setupNavBar()
@@ -53,9 +51,7 @@ final class CheckoutSummaryViewController: UIViewController {
             self.setupTermsAndConditionsButton()
             self.setupBuyButton()
 
-            if let styler = self.styler {
-                styler.stylize()
-            }
+            CheckoutSummaryStyler(checkoutSummaryViewController: self).stylize()
         }
     }
 
@@ -94,7 +90,7 @@ final class CheckoutSummaryViewController: UIViewController {
             self.navigationItem.setHidesBackButton(true, animated: false)
         }
 
-        let cancelButton = UIBarButtonItem(title: "Cancel".loc, style: UIBarButtonItemStyle.Plain,
+        let cancelButton = UIBarButtonItem(title: loc("Cancel"), style: UIBarButtonItemStyle.Plain,
             target: self, action: #selector(CheckoutSummaryViewController.cancelCheckoutTapped(_:)))
 
         navigationItem.rightBarButtonItem = cancelButton
@@ -105,7 +101,7 @@ final class CheckoutSummaryViewController: UIViewController {
             Async.main {
                 switch result {
                 case .failure(let error):
-                    UserMessage.showError(title: "Fatal Error".loc, error: error)
+                    UserMessage.showError(title: self.loc("Fatal Error"), error: error)
 
                 case .success(let customer):
                     self.showLoadingView()
@@ -117,13 +113,13 @@ final class CheckoutSummaryViewController: UIViewController {
 
     private func generateCheckoutAndRefreshViews(customer: Customer) {
         guard let article = self.checkoutViewModel.article,
-            articleIndex = self.checkoutViewModel.articleUnitIndex else { return }
+            articleIndex = self.checkoutViewModel.selectedUnitIndex else { return }
 
         checkout.createCheckout(withArticle: article, articleUnitIndex: articleIndex) { result in
             switch result {
             case .failure(let error):
                 self.dismissViewControllerAnimated(true) {
-                    UserMessage.showError(title: "Fatal Error".loc, error: error)
+                    UserMessage.showError(title: self.loc("Fatal Error"), error: error)
                 }
             case .success(let checkout):
                 self.checkoutViewModel = checkout
@@ -135,11 +131,10 @@ final class CheckoutSummaryViewController: UIViewController {
 
     private func setupProductImageView() {
         view.addSubview(productImageView)
-
     }
 
     private func setupViewLabels() {
-        if let _ = self.checkoutViewModel.article {
+        if checkoutViewModel.hasArticle {
             view.addSubview(productNameLabel)
             view.addSubview(purchasedObjectSummaryLabel)
         }
@@ -152,14 +147,10 @@ final class CheckoutSummaryViewController: UIViewController {
     private func setupBuyButton() {
         self.view.addSubview(buyButton)
 
-        if customer != nil {
-            buyButton.addTarget(self, action: #selector(CheckoutSummaryViewController.buyButtonTapped(_:)),
-                forControlEvents: .TouchUpInside)
-        } else {
-            buyButton.addTarget(self, action: #selector(CheckoutSummaryViewController.connectToZalandoButtonTapped(_:)),
-                forControlEvents: .TouchUpInside)
-        }
-
+        let selector = customer != nil
+            ? #selector(CheckoutSummaryViewController.buyButtonTapped(_:))
+            : #selector(CheckoutSummaryViewController.connectToZalandoButtonTapped(_:))
+        buyButton.addTarget(self, action: selector, forControlEvents: .TouchUpInside)
     }
 
     private func setupBlurView() {
@@ -185,7 +176,7 @@ extension CheckoutSummaryViewController {
     internal func shippingView(text: String) -> UIView? {
         let shippingView = CheckoutSummaryRow()
         shippingView.translatesAutoresizingMaskIntoConstraints = false
-        shippingView.initWith("Shipping".loc, detail: text) {
+        shippingView.initWith(loc("Shipping"), detail: text) {
             print("Shipping")
         }
         return shippingView
@@ -203,32 +194,28 @@ extension CheckoutSummaryViewController {
     internal func discountView(text: String) -> UIView? {
         let discountView = CheckoutSummaryRow()
         discountView.translatesAutoresizingMaskIntoConstraints = false
-        discountView.initWith("Discount".loc, detail: text) {
+        discountView.initWith(loc("Discount"), detail: text) {
             print("Discount")
         }
         return discountView
     }
 
     internal func paymentSummaryRow() -> UIView? {
-        if let article = self.checkoutViewModel.articleUnit {
-            var shippingPrice: Float? = nil
-            if customer != nil {
-                shippingPrice = self.shippingPrice
-            }
-
-            let paymentSummaryRow = PaymentSummaryRow.init(shippingPrice: shippingPrice,
-                itemPrice: article.price)
-            paymentSummaryRow.translatesAutoresizingMaskIntoConstraints = false
-
-            return paymentSummaryRow
+        guard let article = self.checkoutViewModel.selectedUnit else {
+            return nil
         }
-        return nil
+
+        let shippingPrice: Float? = customer != nil ? self.shippingPrice : nil
+        let paymentSummaryRow = PaymentSummaryRow(shippingPrice: shippingPrice, itemPrice: article.price, localizerProvider: self)
+        paymentSummaryRow.translatesAutoresizingMaskIntoConstraints = false
+
+        return paymentSummaryRow
     }
 
     internal func cardView(text: String) -> UIView? {
         let cardView = CheckoutSummaryRow()
         cardView.translatesAutoresizingMaskIntoConstraints = false
-        cardView.initWith("Payment".loc, detail: text) {
+        cardView.initWith(loc("Payment"), detail: text) {
             print("Payment")
         }
         return cardView
