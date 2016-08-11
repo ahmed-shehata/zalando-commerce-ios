@@ -39,11 +39,10 @@ class AtlasDemoUITests: XCTestCase {
     }
 
     func testBuyQuicklyProductWithoutSizes() {
-        let payButton = app.buttons["Pay €109,95"]
-
         tapBuyNow("MICHAEL Michael Kors")
 
-        waitForElementToAppearAndTap(payButton)
+        waitForElementToAppearAndTap(connectButton)
+        waitForElementToAppearAndTap(buyNowButton)
         waitForElementToAppearAndTap(doneButton)
     }
 
@@ -79,6 +78,29 @@ class AtlasDemoUITests: XCTestCase {
 
     private var doneButton: XCUIElement {
         return app.navigationBars["Payment"].buttons["Done"]
+    }
+
+    private var connectButton: XCUIElement {
+        return app.buttons["Connect To Zalando"]
+    }
+
+    private var buyNowButton: XCUIElement {
+        return app.buttons["Buy Now"]
+    }
+
+    private func fillInLogin() {
+        let zalandoLoginElement = app.otherElements["Zalando Login"]
+        let element = zalandoLoginElement.childrenMatchingType(.Other).elementBoundByIndex(4)
+        element.childrenMatchingType(.TextField).element.tap()
+        element.childrenMatchingType(.TextField).element.typeText("john.doe.lucky@zalando.de")
+        element.childrenMatchingType(.TextField).element
+
+        let element2 = zalandoLoginElement.childrenMatchingType(.Other).elementBoundByIndex(7)
+        element2.childrenMatchingType(.SecureTextField).element.tap()
+        element.childrenMatchingType(.TextField).element.typeText("1234568")
+        element2.childrenMatchingType(.SecureTextField).element
+        app.buttons["LOGIN"].tap()
+
     }
 
     private func tapBuyNow(identifier: String) {
