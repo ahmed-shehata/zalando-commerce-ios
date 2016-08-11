@@ -66,9 +66,19 @@ final class LoginViewController: UIViewController, UIWebViewDelegate {
             return dismissViewController(.success(token))
     }
 
+    #if swift(>=2.3)
+
+    func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
+    self.dismissViewController(withFailureCode: .RequestFailed)
+    }
+
+    #else
+
     func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
         self.dismissViewController(withFailureCode: .RequestFailed)
     }
+
+    #endif
 
     private func dismissViewController(withFailureCode code: LoginError.Code, animated: Bool = true) -> Bool {
         return dismissViewController(.failure(LoginError(code: code)), animated: animated)
