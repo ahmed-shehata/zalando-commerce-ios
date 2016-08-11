@@ -18,7 +18,7 @@ public struct APIClient {
     }
 
     func fetch<Model: JSONInitializable>(endpoint: EndpointType, completion: AtlasResult<Model> -> Void) {
-        self.requestBuilders.createBuilder(forEndpoint: endpoint).execute { result in
+        self.requestBuilders.createBuilder(forEndpoint: endpoint, urlSession: urlSession).execute { result in
             switch result {
             case .failure(let error):
                 completion(.failure(error))

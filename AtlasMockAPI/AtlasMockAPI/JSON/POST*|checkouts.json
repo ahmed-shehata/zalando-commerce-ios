@@ -9,6 +9,6 @@
         "latest" : "2016-07-25T16:51:34.142Z"
     },
     "payment" : {
-        "selection_page_url" : "https://payment-gateway.kohle-integration.zalan.do/payment-method-selection-session/710067ea-464a-40b4-9dec-f6a623a86f99/selection"
+        "selection_page_url" : "https://pay.zalando.de/ae45f19"
     }
 }

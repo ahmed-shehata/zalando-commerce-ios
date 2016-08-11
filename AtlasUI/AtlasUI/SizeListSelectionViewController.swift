@@ -5,10 +5,10 @@
 import Foundation
 import AtlasSDK
 
-final class SizeListSelectionViewController: UITableViewController {
+final class SizeListSelectionViewController: UITableViewController, CheckoutProviderType {
 
     private let article: Article
-    private var checkout: AtlasCheckout
+    internal let checkout: AtlasCheckout
 
     init(checkout: AtlasCheckout, article: Article) {
         self.checkout = checkout
@@ -61,28 +61,25 @@ final class SizeListSelectionViewController: UITableViewController {
         tableView.userInteractionEnabled = false
 
         if !Atlas.isUserLoggedIn() {
-            // TODO: introduce simplified init
-            let checkoutModel = CheckoutViewModel(shippingAddressText: nil, paymentMethodText: nil, discountText: nil,
-                shippingPrice: nil, totalPrice: self.article.units[indexPath.row].price, articleUnitIndex: indexPath.row,
-                checkout: nil, articleUnit: self.article.units[indexPath.row], article: self.article)
-
+            let checkoutModel = CheckoutViewModel(article: self.article, selectedUnitIndex: indexPath.row)
             let checkoutSummaryVC = CheckoutSummaryViewController(checkout: checkout, customer: nil, checkoutViewModel: checkoutModel)
             self.showViewController(checkoutSummaryVC, sender: self)
         } else {
             self.checkout.client.customer { result in
                 switch result {
                 case .failure(let error):
-                    UserMessage.showError(title: "Error".loc, error: error)
+                    UserMessage.showError(title: self.loc("Error"), error: error)
 
                 case .success(let customer):
                     self.checkout.createCheckout(withArticle: self.article, articleUnitIndex: indexPath.row) { result in
                         switch result {
                         case .failure(let error):
                             self.dismissViewControllerAnimated(true) {
-                                UserMessage.showError(title: "Fatal Error".loc, error: error)
+                                UserMessage.showError(title: self.loc("Fatal Error"), error: error)
                             }
                         case .success(let checkoutViewModel):
-                            let checkoutSummaryVC = CheckoutSummaryViewController(checkout: self.checkout, customer: customer, checkoutViewModel: checkoutViewModel)
+                            let checkoutSummaryVC = CheckoutSummaryViewController(checkout: self.checkout,
+                                customer: customer, checkoutViewModel: checkoutViewModel)
                             self.showViewController(checkoutSummaryVC, sender: self)
                         }
                     }
