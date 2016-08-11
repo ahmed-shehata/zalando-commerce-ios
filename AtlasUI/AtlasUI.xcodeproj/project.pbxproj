@@ -225,9 +225,9 @@
 		E85D38DD1D5B34B4008A42C2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E85D38DF1D5B4EE5008A42C2 /* Checkout */,
 				E85D38EA1D5C78EC008A42C2 /* Transitions */,
 				E85D38E01D5B4EF0008A42C2 /* Payment Processing */,
-				E85D38DF1D5B4EE5008A42C2 /* Checkout */,
 				E85D38DE1D5B4EDD008A42C2 /* Size Selection */,
 			);
 			name = Views;

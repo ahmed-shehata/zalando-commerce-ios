@@ -58,8 +58,8 @@ class CheckoutSummaryStyler: LocalizerProviderType {
     }
 
     private func stylizeCardView() {
-        if let cardText = viewController.checkoutViewModel.paymentMethodText,
-            cardView = viewController.cardView(cardText) {
+        if let paymentMethodText = viewController.checkoutViewModel.paymentMethodText,
+            cardView = viewController.cardView(paymentMethodText) {
                 viewController.stackView.addArrangedSubviewSideFilled(cardView)
                 cardView.heightAnchor.constraintEqualToConstant(40).active = true
         }
