@@ -12,6 +12,7 @@ module Calypso
     desc 'build', 'Build dependencies'
     def build
       run 'carthage bootstrap --platform iOS'
+      run 'carthage build --platform Mac swifter'
     end
 
     desc 'update', 'Update dependencies'

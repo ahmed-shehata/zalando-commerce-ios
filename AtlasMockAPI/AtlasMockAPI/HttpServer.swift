@@ -12,6 +12,8 @@ enum HttpServerError: ErrorType {
 
 extension HttpServer {
 
+    var serverBundle: NSBundle { return NSBundle(forClass: AtlasMockAPI.self) }
+
     func start(url: NSURL, forceIPv4: Bool, timeout: NSTimeInterval) throws {
         let port = UInt16(url.port!.unsignedIntegerValue) // swiftlint:disable:this force_unwrapping
         try self.start(port, forceIPv4: forceIPv4)
@@ -21,6 +23,12 @@ extension HttpServer {
     func stop(timeout: NSTimeInterval) throws {
         self.stop()
         try wait(timeout, isRunning: false)
+    }
+
+    func registerEndpoints() throws {
+        addRootResponse()
+        try addCustomerEndpoint()
+        try registerAvailableJSONMocks()
     }
 
     private func wait(timeout: NSTimeInterval, isRunning: Bool) throws {
@@ -36,12 +44,28 @@ extension HttpServer {
         }
     }
 
-    func addRootResponse() {
+    private func addRootResponse() {
         self.respond(forPath: "/", withText: "AtlasMockAPI server ready")
     }
 
-    func registerAvailableJSONMocks() throws {
-        let serverBundle = NSBundle(forClass: AtlasMockAPI.self)
+    private func addCustomerEndpoint() throws {
+        let path = "/customer"
+        guard let authorizedFilePath = try serverBundle.pathsForResources(containingInName: "!customer-auth.json")?.first,
+            unauthorizedFilePath = try serverBundle.pathsForResources(containingInName: "!customer-not-auth.json")?.first
+        else { return }
+
+        let authorizedContents = try String(contentsOfFile: authorizedFilePath)
+        let unauthorizedContents = try String(contentsOfFile: unauthorizedFilePath)
+
+        self[path] = { request in
+            let isAuthorized = request.headers["authorization"]?.containsString("Bearer ") ?? false
+            let content = isAuthorized ? authorizedContents : unauthorizedContents
+            return .OK(.Text(content))
+        }
+        print("Registered endpoint: GET", path)
+    }
+
+    private func registerAvailableJSONMocks() throws {
         let jsonExt = ".json"
 
         guard let jsonFiles = try serverBundle.pathsForResources(containingInName: jsonExt) else { return }
@@ -49,7 +73,9 @@ extension HttpServer {
         for filePath in jsonFiles {
             guard let fullFilePath = NSURL(fileURLWithPath: filePath).lastPathComponent?
                 .stringByReplacingOccurrencesOfString(jsonExt, withString: "")
-                .replace("|", "/") else { continue }
+                .replace("|", "/")
+            where !fullFilePath.containsString("!")
+            else { continue }
 
             let contents = try String(contentsOfFile: filePath)
             let method = fullFilePath.componentsSeparatedByString("*")[0]
