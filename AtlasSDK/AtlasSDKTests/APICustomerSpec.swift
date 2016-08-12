@@ -22,7 +22,7 @@ class APICustomerSpec: APIClientBaseSpec {
                 let customerResponse = self.dataWithJSONObject(json)
                 let client = self.mockedAPIClient(forURL: customerUrl, data: customerResponse, statusCode: 200)
 
-                waitUntil(timeout: 10) { done in
+                waitUntil(timeout: 60) { done in
                     client.customer { result in
                         switch result {
                         case .success(let customer):
@@ -46,7 +46,7 @@ class APICustomerSpec: APIClientBaseSpec {
                 let errorResponse = self.dataWithJSONObject(json)
                 let client = self.mockedAPIClient(forURL: customerUrl, data: errorResponse, statusCode: 401)
 
-                waitUntil(timeout: 10) { done in
+                waitUntil(timeout: 60) { done in
                     client.customer { result in
                         switch result {
                         case .failure(let error as AtlasAPIError):
@@ -64,7 +64,7 @@ class APICustomerSpec: APIClientBaseSpec {
             it("should return error when response has NSURLDomainError") {
                 let client = self.mockedAPIClient(forURL: customerUrl, data: nil, statusCode: 401, errorCode: NSURLErrorBadURL)
 
-                waitUntil(timeout: 10) { done in
+                waitUntil(timeout: 60) { done in
                     client.customer { result in
                         switch result {
                         case .failure(let error as HTTPError):
