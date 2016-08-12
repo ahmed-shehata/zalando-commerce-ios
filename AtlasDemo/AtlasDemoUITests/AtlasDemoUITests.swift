@@ -42,6 +42,7 @@ class AtlasDemoUITests: XCTestCase {
         tapBuyNow("MICHAEL Michael Kors")
 
         waitForElementToAppearAndTap(connectButton)
+        fillInLogin()
         waitForElementToAppearAndTap(buyNowButton)
         waitForElementToAppearAndTap(doneButton)
     }
@@ -89,18 +90,19 @@ class AtlasDemoUITests: XCTestCase {
     }
 
     private func fillInLogin() {
+        NSThread.sleepForTimeInterval(2)
+
         let zalandoLoginElement = app.otherElements["Zalando Login"]
         let element = zalandoLoginElement.childrenMatchingType(.Other).elementBoundByIndex(4)
         element.childrenMatchingType(.TextField).element.tap()
-        element.childrenMatchingType(.TextField).element.typeText("john.doe.lucky@zalando.de")
+        element.childrenMatchingType(.TextField).element.typeText("atlas-testing@mailinator.com")
         element.childrenMatchingType(.TextField).element
 
-        let element2 = zalandoLoginElement.childrenMatchingType(.Other).elementBoundByIndex(7)
+        let element2 = zalandoLoginElement.childrenMatchingType(.Other).elementBoundByIndex(6)
         element2.childrenMatchingType(.SecureTextField).element.tap()
         element.childrenMatchingType(.TextField).element.typeText("1234568")
         element2.childrenMatchingType(.SecureTextField).element
         app.buttons["LOGIN"].tap()
-
     }
 
     private func tapBuyNow(identifier: String) {
