@@ -200,7 +200,7 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
         paymentMethodView.setupWith(loc("Payment"), detail: loc("No Payment Method"))
 
         if let paymentURL = self.checkoutViewModel.checkout?.payment.selectionPageUrl {
-            let paymentVC = PaymentSelectionViewController(paymentSelectionURL: paymentURL) { result in
+            let paymentVC = PaymentSelectionViewController(paymentSelectionURL: paymentURL) { _ in
                 self.loadCustomerData()
             }
             paymentMethodView.tapAction = { self.showViewController(paymentVC, sender: self) }
