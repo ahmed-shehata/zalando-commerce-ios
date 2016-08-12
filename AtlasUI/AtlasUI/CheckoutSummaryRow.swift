@@ -6,10 +6,10 @@ import UIKit
 
 internal final class CheckoutSummaryRow: UIView, UIGestureRecognizerDelegate {
 
-    private let detailTextLabel = UILabel()
-    private let titleTextLabel = UILabel()
-    private let arrowImageView = UIImageView()
-    private var tapAction: (() -> Void)?
+    let detailTextLabel = UILabel()
+    let titleTextLabel = UILabel()
+    let arrowImageView = UIImageView()
+    var tapAction: (() -> Void)?
 
     override init(frame: CGRect) {
         super.init(frame: frame)

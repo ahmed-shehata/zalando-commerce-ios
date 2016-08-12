@@ -18,13 +18,11 @@ class CheckoutSummaryStyler: LocalizerProviderType {
         stylizeProductImageView()
         stylizeViewLabels()
         stylizeTermsButton()
-
         let mainButton = viewController.customer != nil ? viewController.buyButton : viewController.connectToZalandoButton
         stylizeMainButton(mainButton)
     }
 
     private func stylizeStackView() {
-        viewController.stackView.removeAllSubviews()
         viewController.stackView.translatesAutoresizingMaskIntoConstraints = false
         viewController.stackView.axis = .Vertical
         viewController.stackView.distribution = .Fill
@@ -37,7 +35,7 @@ class CheckoutSummaryStyler: LocalizerProviderType {
             constant: 10).active = true
 
         stylizeShippingView()
-        stylizeCardView()
+        stylizePaymentMethodView()
         stylizePaymentSummary()
 
         if let topSeparatorView = viewController.topSeparatorView() {
@@ -50,19 +48,14 @@ class CheckoutSummaryStyler: LocalizerProviderType {
     }
 
     private func stylizeShippingView() {
-        if let shippingViewText = viewController.checkoutViewModel.shippingAddressText,
-            shippingView = viewController.shippingView(shippingViewText) {
-                viewController.stackView.addArrangedSubviewSideFilled(shippingView)
-                shippingView.heightAnchor.constraintEqualToConstant(55).active = true
-        }
-    }
+        viewController.shippingView.translatesAutoresizingMaskIntoConstraints = false
+        viewController.shippingView.heightAnchor.constraintEqualToConstant(55).active = true
 
-    private func stylizeCardView() {
-        if let cardText = viewController.checkoutViewModel.paymentMethodText,
-            cardView = viewController.cardView(cardText) {
-                viewController.stackView.addArrangedSubviewSideFilled(cardView)
-                cardView.heightAnchor.constraintEqualToConstant(40).active = true
-        }
+    }
+    private func stylizePaymentMethodView() {
+        viewController.paymentMethodView.translatesAutoresizingMaskIntoConstraints = false
+        viewController.paymentMethodView.heightAnchor.constraintEqualToConstant(40).active = true
+
     }
 
     private func stylizePaymentSummary() {
