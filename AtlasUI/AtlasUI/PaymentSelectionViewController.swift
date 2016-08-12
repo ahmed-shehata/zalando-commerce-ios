@@ -61,7 +61,7 @@ final class PaymentSelectionViewController: UIViewController, UIWebViewDelegate 
 
     private func dismissViewController(result: Result<String>, animated: Bool = true) {
         navigationController?.popViewControllerAnimated(animated)
-        self.paymentCompletion?(result)
+        paymentCompletion?(result)
     }
 
 }
