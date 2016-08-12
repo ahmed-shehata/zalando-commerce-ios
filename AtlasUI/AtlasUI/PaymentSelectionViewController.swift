@@ -53,12 +53,10 @@ final class PaymentSelectionViewController: UIViewController, UIWebViewDelegate 
 
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest,
         navigationType: UIWebViewNavigationType) -> Bool {
-            print(request.URL)
             return true
     }
 
     func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
-        print(error)
         dismissViewController(.failure(), animated: true)
     }
 
