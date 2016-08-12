@@ -186,9 +186,8 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
     }
 
     private func setupShippingView() {
-        shippingView.setupWith(loc("Shipping"), detail: loc("No Shipping Address")) {
-            print("Shipping")
-        }
+        shippingView.titleTextLabel.text = loc("Shipping")
+        shippingView.detailTextLabel.text = loc("No Shipping Address")
         stackView.addArrangedSubview(shippingView)
 
         if let shippingViewText = self.checkoutViewModel.shippingAddressText {
@@ -197,13 +196,17 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
     }
 
     private func setupPaymentMethodView() {
-        paymentMethodView.setupWith(loc("Payment"), detail: loc("No Payment Method"))
+        paymentMethodView.titleTextLabel.text = loc("Payment")
+        paymentMethodView.detailTextLabel.text = loc("No Payment Method")
 
         if let paymentURL = self.checkoutViewModel.checkout?.payment.selectionPageUrl {
-            let paymentVC = PaymentSelectionViewController(paymentSelectionURL: paymentURL) { _ in
+            let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
+            paymentSelectionViewController.paymentCompletion = { _ in
                 self.loadCustomerData()
             }
-            paymentMethodView.tapAction = { self.showViewController(paymentVC, sender: self) }
+            paymentMethodView.tapAction = {
+                self.showViewController(paymentSelectionViewController, sender: self)
+            }
         }
 
         if let paymentMethodText = self.checkoutViewModel.paymentMethodText {

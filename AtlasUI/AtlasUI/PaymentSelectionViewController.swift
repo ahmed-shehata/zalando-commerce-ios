@@ -17,7 +17,7 @@ final class PaymentSelectionViewController: UIViewController, UIWebViewDelegate 
 
     private let paymentSelectionURL: NSURL
 
-    private let paymentCompletion: PaymentCompletion?
+    var paymentCompletion: PaymentCompletion?
 
     private lazy var webView: UIWebView = {
         let webView = UIWebView()
@@ -27,9 +27,8 @@ final class PaymentSelectionViewController: UIViewController, UIWebViewDelegate 
         return webView
     }()
 
-    init(paymentSelectionURL: NSURL, completion: PaymentCompletion? = nil) {
+    init(paymentSelectionURL: NSURL) {
         self.paymentSelectionURL = paymentSelectionURL
-        self.paymentCompletion = completion
         super.init(nibName: nil, bundle: nil)
     }
 

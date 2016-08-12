@@ -17,11 +17,11 @@ internal final class CheckoutSummaryRow: UIView, UIGestureRecognizerDelegate {
         let tap = UITapGestureRecognizer(target: self, action: #selector(CheckoutSummaryRow.handleTap(_:)))
         tap.delegate = self
         self.addGestureRecognizer(tap)
+        setup()
     }
 
-    func setupWith(title: String, detail: String, onTap: (() -> Void)? = nil) {
-        tapAction = onTap
-        titleTextLabel.text = title
+    func setup () {
+
         titleTextLabel.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(titleTextLabel)
         titleTextLabel.text = titleTextLabel.text?.uppercaseString
@@ -31,7 +31,6 @@ internal final class CheckoutSummaryRow: UIView, UIGestureRecognizerDelegate {
         titleTextLabel.heightAnchor.constraintEqualToConstant(10).active = true
         titleTextLabel.topAnchor.constraintEqualToAnchor(self.topAnchor, constant: 5).active = true
 
-        detailTextLabel.text = detail
         detailTextLabel.translatesAutoresizingMaskIntoConstraints = false
 
         self.addSubview(detailTextLabel)
@@ -42,7 +41,7 @@ internal final class CheckoutSummaryRow: UIView, UIGestureRecognizerDelegate {
         detailTextLabel.topAnchor.constraintEqualToAnchor(self.topAnchor).active = true
         detailTextLabel.bottomAnchor.constraintEqualToAnchor(self.bottomAnchor).active = true
 
-        if onTap != nil {
+        if tapAction != nil {
             arrowImageView.image = UIImage(named: "arrow", bundledWith: CheckoutSummaryRow.self)
             arrowImageView.translatesAutoresizingMaskIntoConstraints = false
             self.addSubview(arrowImageView)
