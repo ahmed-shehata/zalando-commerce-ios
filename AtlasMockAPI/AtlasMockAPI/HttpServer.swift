@@ -54,13 +54,18 @@ extension HttpServer {
             unauthorizedFilePath = try serverBundle.pathsForResources(containingInName: "!customer-not-auth.json")?.first
         else { return }
 
-        let authorizedContents = try String(contentsOfFile: authorizedFilePath)
-        let unauthorizedContents = try String(contentsOfFile: unauthorizedFilePath)
+        let authorizedContent = try String(contentsOfFile: authorizedFilePath)
 
         self[path] = { request in
             let isAuthorized = request.headers["authorization"]?.containsString("Bearer ") ?? false
-            let content = isAuthorized ? authorizedContents : unauthorizedContents
-            return .OK(.Text(content))
+            if isAuthorized {
+                return .OK(.Text(authorizedContent))
+            } else {
+                return HttpResponse.RAW(401, "Unauthorized", nil) { writer in
+                    let unauthorizedFile = try File.openForReading(unauthorizedFilePath)
+                    try writer.write(unauthorizedFile)
+                }
+            }
         }
         print("Registered endpoint: GET", path)
     }
