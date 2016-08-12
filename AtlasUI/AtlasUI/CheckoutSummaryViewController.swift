@@ -199,6 +199,7 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
         paymentMethodView.titleTextLabel.text = loc("Payment")
         paymentMethodView.detailTextLabel.text = loc("No Payment Method")
 
+        stackView.addArrangedSubview(paymentMethodView)
         if let paymentURL = self.checkoutViewModel.checkout?.payment.selectionPageUrl {
             let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
             paymentSelectionViewController.paymentCompletion = { _ in
@@ -212,7 +213,7 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
         if let paymentMethodText = self.checkoutViewModel.paymentMethodText {
             paymentMethodView.detailTextLabel.text = paymentMethodText
         }
-        stackView.addArrangedSubview(paymentMethodView)
+
     }
 
 }

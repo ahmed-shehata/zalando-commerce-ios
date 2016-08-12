@@ -9,7 +9,19 @@ internal final class CheckoutSummaryRow: UIView, UIGestureRecognizerDelegate {
     let detailTextLabel = UILabel()
     let titleTextLabel = UILabel()
     let arrowImageView = UIImageView()
-    var tapAction: (() -> Void)?
+    var tapAction: (() -> Void)? {
+        didSet {
+            if tapAction != nil {
+                arrowImageView.image = UIImage(named: "arrow", bundledWith: CheckoutSummaryRow.self)
+                arrowImageView.translatesAutoresizingMaskIntoConstraints = false
+                self.addSubview(arrowImageView)
+                arrowImageView.trailingAnchor.constraintEqualToAnchor(self.trailingAnchor, constant: -10).active = true
+                arrowImageView.heightAnchor.constraintEqualToAnchor(self.widthAnchor, multiplier: 0.04).active = true
+                arrowImageView.widthAnchor.constraintEqualToAnchor(arrowImageView.heightAnchor, multiplier: 0.60).active = true
+                arrowImageView.centerYAnchor.constraintEqualToAnchor(self.centerYAnchor).active = true
+            }
+        }
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -17,11 +29,13 @@ internal final class CheckoutSummaryRow: UIView, UIGestureRecognizerDelegate {
         let tap = UITapGestureRecognizer(target: self, action: #selector(CheckoutSummaryRow.handleTap(_:)))
         tap.delegate = self
         self.addGestureRecognizer(tap)
+    }
+
+    override func willMoveToSuperview(newSuperview: UIView?) {
         setup()
     }
 
-    func setup () {
-
+    func setup() {
         titleTextLabel.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(titleTextLabel)
         titleTextLabel.text = titleTextLabel.text?.uppercaseString
@@ -40,16 +54,6 @@ internal final class CheckoutSummaryRow: UIView, UIGestureRecognizerDelegate {
         detailTextLabel.leadingAnchor.constraintEqualToAnchor(self.titleTextLabel.leadingAnchor, constant: 100).active = true
         detailTextLabel.topAnchor.constraintEqualToAnchor(self.topAnchor).active = true
         detailTextLabel.bottomAnchor.constraintEqualToAnchor(self.bottomAnchor).active = true
-
-        if tapAction != nil {
-            arrowImageView.image = UIImage(named: "arrow", bundledWith: CheckoutSummaryRow.self)
-            arrowImageView.translatesAutoresizingMaskIntoConstraints = false
-            self.addSubview(arrowImageView)
-            arrowImageView.trailingAnchor.constraintEqualToAnchor(self.trailingAnchor, constant: -10).active = true
-            arrowImageView.heightAnchor.constraintEqualToAnchor(self.widthAnchor, multiplier: 0.04).active = true
-            arrowImageView.widthAnchor.constraintEqualToAnchor(arrowImageView.heightAnchor, multiplier: 0.60).active = true
-            arrowImageView.centerYAnchor.constraintEqualToAnchor(self.centerYAnchor).active = true
-        }
 
         let bottomSeparatorView = UIView()
         bottomSeparatorView.layer.borderWidth = 5
