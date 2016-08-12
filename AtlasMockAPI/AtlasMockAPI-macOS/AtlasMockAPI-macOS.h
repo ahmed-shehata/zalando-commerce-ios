@@ -1,8 +1,4 @@
 //
-//  AtlasMockAPI-macOS.h
-//  AtlasMockAPI-macOS
-//
-//  Created by Daniel Bauke on 11/08/16.
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 

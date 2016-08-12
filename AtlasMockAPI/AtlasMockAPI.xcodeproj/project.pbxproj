@@ -31,6 +31,16 @@
 		811479101D5DBBEC0073A183 /* Swifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8114790F1D5DBBEC0073A183 /* Swifter.framework */; };
 		811479121D5DC2040073A183 /* Swifter.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 8114790F1D5DBBEC0073A183 /* Swifter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8116FF171D3E910000C750C6 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8116FF141D3E8FFC00C750C6 /* Alamofire.framework */; };
+		812AAFC91D5DED3C0040B1F1 /* root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812AAFC81D5DED3C0040B1F1 /* root.swift */; };
+		812AAFCA1D5DED3C0040B1F1 /* root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812AAFC81D5DED3C0040B1F1 /* root.swift */; };
+		812AAFCC1D5DED930040B1F1 /* customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812AAFCB1D5DED930040B1F1 /* customer.swift */; };
+		812AAFCD1D5DED930040B1F1 /* customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812AAFCB1D5DED930040B1F1 /* customer.swift */; };
+		812AAFCF1D5DEDAC0040B1F1 /* login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812AAFCE1D5DEDAC0040B1F1 /* login.swift */; };
+		812AAFD01D5DEDAC0040B1F1 /* login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812AAFCE1D5DEDAC0040B1F1 /* login.swift */; };
+		812AAFD21D5DEDF30040B1F1 /* static-jsons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812AAFD11D5DEDF30040B1F1 /* static-jsons.swift */; };
+		812AAFD31D5DEDF30040B1F1 /* static-jsons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812AAFD11D5DEDF30040B1F1 /* static-jsons.swift */; };
+		812AAFD51D5DEE1F0040B1F1 /* NSBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812AAFD41D5DEE1F0040B1F1 /* NSBundle.swift */; };
+		812AAFD61D5DEE1F0040B1F1 /* NSBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812AAFD41D5DEE1F0040B1F1 /* NSBundle.swift */; };
 		81405F931D3E941D00B01483 /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 8116FF141D3E8FFC00C750C6 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8198F2901D3E3C000059EE87 /* NSProcessInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8198F28F1D3E3C000059EE87 /* NSProcessInfo.swift */; };
 		8198F2921D3E3C950059EE87 /* HttpServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8198F2911D3E3C950059EE87 /* HttpServer.swift */; };
@@ -119,6 +129,11 @@
 		810BA0301D5CCF59004BDAD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8114790F1D5DBBEC0073A183 /* Swifter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swifter.framework; path = ../../Carthage/Build/Mac/Swifter.framework; sourceTree = "<group>"; };
 		8116FF141D3E8FFC00C750C6 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = ../../Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		812AAFC81D5DED3C0040B1F1 /* root.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = root.swift; sourceTree = "<group>"; };
+		812AAFCB1D5DED930040B1F1 /* customer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customer.swift; sourceTree = "<group>"; };
+		812AAFCE1D5DEDAC0040B1F1 /* login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = login.swift; sourceTree = "<group>"; };
+		812AAFD11D5DEDF30040B1F1 /* static-jsons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "static-jsons.swift"; sourceTree = "<group>"; };
+		812AAFD41D5DEE1F0040B1F1 /* NSBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSBundle.swift; sourceTree = "<group>"; };
 		8198F28F1D3E3C000059EE87 /* NSProcessInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSProcessInfo.swift; sourceTree = "<group>"; };
 		8198F2911D3E3C950059EE87 /* HttpServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpServer.swift; sourceTree = "<group>"; };
 		81C5A3E11D427F5E00508B14 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = ../../Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
@@ -208,6 +223,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		812AAFC71D5DED090040B1F1 /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				812AAFD11D5DEDF30040B1F1 /* static-jsons.swift */,
+				812AAFCB1D5DED930040B1F1 /* customer.swift */,
+				812AAFCE1D5DEDAC0040B1F1 /* login.swift */,
+				812AAFC81D5DED3C0040B1F1 /* root.swift */,
+			);
+			path = Endpoints;
+			sourceTree = "<group>";
+		};
 		8198F2931D3E3CA90059EE87 /* Others */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,9 +300,11 @@
 				E893B5D11D2E8AAC004D9547 /* Frameworks */,
 				8198F2931D3E3CA90059EE87 /* Others */,
 				E837A7601D34FFBA00FC52C9 /* JSON */,
+				812AAFC71D5DED090040B1F1 /* Endpoints */,
 				E893B5A91D2E70BE004D9547 /* AtlasMockAPI.swift */,
 				8198F28F1D3E3C000059EE87 /* NSProcessInfo.swift */,
 				8198F2911D3E3C950059EE87 /* HttpServer.swift */,
+				812AAFD41D5DEE1F0040B1F1 /* NSBundle.swift */,
 			);
 			path = AtlasMockAPI;
 			sourceTree = "<group>";
@@ -529,6 +557,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				810BA0411D5CCF73004BDAD9 /* NSProcessInfo.swift in Sources */,
+				812AAFD01D5DEDAC0040B1F1 /* login.swift in Sources */,
+				812AAFD31D5DEDF30040B1F1 /* static-jsons.swift in Sources */,
+				812AAFCD1D5DED930040B1F1 /* customer.swift in Sources */,
+				812AAFD61D5DEE1F0040B1F1 /* NSBundle.swift in Sources */,
+				812AAFCA1D5DED3C0040B1F1 /* root.swift in Sources */,
 				810BA0401D5CCF73004BDAD9 /* AtlasMockAPI.swift in Sources */,
 				810BA0421D5CCF73004BDAD9 /* HttpServer.swift in Sources */,
 			);
@@ -547,6 +580,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8198F2901D3E3C000059EE87 /* NSProcessInfo.swift in Sources */,
+				812AAFCF1D5DEDAC0040B1F1 /* login.swift in Sources */,
+				812AAFD21D5DEDF30040B1F1 /* static-jsons.swift in Sources */,
+				812AAFCC1D5DED930040B1F1 /* customer.swift in Sources */,
+				812AAFD51D5DEE1F0040B1F1 /* NSBundle.swift in Sources */,
+				812AAFC91D5DED3C0040B1F1 /* root.swift in Sources */,
 				E893B5AA1D2E70BE004D9547 /* AtlasMockAPI.swift in Sources */,
 				8198F2921D3E3C950059EE87 /* HttpServer.swift in Sources */,
 			);
