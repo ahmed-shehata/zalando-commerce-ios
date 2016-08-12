@@ -194,7 +194,15 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
 
     private func setupPaymentMethodView() {
         paymentMethodView.initWith(loc("Payment"), detail: loc("No Payment Method")) {
+
             print("Payment Method")
+        }
+
+        if let paymentURL = self.checkoutViewModel.checkout?.payment.selectionPageUrl {
+            let paymentVC = PaymentSelectionViewController(loginURL: paymentURL, completion: { result in
+                print(result)
+            })
+            self.showViewController(paymentVC, sender: self)
         }
 
         if let paymentMethodText = self.checkoutViewModel.paymentMethodText {
