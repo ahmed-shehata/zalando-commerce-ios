@@ -100,7 +100,7 @@ class AtlasDemoUITests: XCTestCase {
 
         let element2 = zalandoLoginElement.childrenMatchingType(.Other).elementBoundByIndex(6)
         element2.childrenMatchingType(.SecureTextField).element.tap()
-        element.childrenMatchingType(.TextField).element.typeText("1234568")
+        element2.childrenMatchingType(.SecureTextField).element.typeText("12345678")
         element2.childrenMatchingType(.SecureTextField).element
         app.buttons["LOGIN"].tap()
     }
