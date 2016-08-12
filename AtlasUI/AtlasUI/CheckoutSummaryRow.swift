@@ -19,7 +19,7 @@ internal final class CheckoutSummaryRow: UIView, UIGestureRecognizerDelegate {
         self.addGestureRecognizer(tap)
     }
 
-    func initWith(title: String, detail: String, onTap: (() -> Void)?) {
+    func setupWith(title: String, detail: String, onTap: (() -> Void)? = nil) {
         tapAction = onTap
         titleTextLabel.text = title
         titleTextLabel.translatesAutoresizingMaskIntoConstraints = false

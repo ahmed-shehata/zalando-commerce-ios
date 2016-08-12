@@ -101,7 +101,7 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
         navigationItem.rightBarButtonItem = cancelButton
     }
 
-    private func connectToZalando() {
+    private func loadCustomerData() {
         checkout.client.customer { result in
             Async.main {
                 switch result {
@@ -114,6 +114,10 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
                 }
             }
         }
+    }
+
+    private func connectToZalando() {
+        loadCustomerData()
     }
 
     private func generateCheckoutAndRefreshViews(customer: Customer) {
@@ -182,7 +186,7 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
     }
 
     private func setupShippingView() {
-        shippingView.initWith(loc("Shipping"), detail: loc("No Shipping Address")) {
+        shippingView.setupWith(loc("Shipping"), detail: loc("No Shipping Address")) {
             print("Shipping")
         }
         stackView.addArrangedSubview(shippingView)
@@ -193,16 +197,13 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
     }
 
     private func setupPaymentMethodView() {
-        paymentMethodView.initWith(loc("Payment"), detail: loc("No Payment Method")) {
-
-            print("Payment Method")
-        }
+        paymentMethodView.setupWith(loc("Payment"), detail: loc("No Payment Method"))
 
         if let paymentURL = self.checkoutViewModel.checkout?.payment.selectionPageUrl {
-            let paymentVC = PaymentSelectionViewController(loginURL: paymentURL, completion: { result in
-                print(result)
-            })
-            self.showViewController(paymentVC, sender: self)
+            let paymentVC = PaymentSelectionViewController(paymentSelectionURL: paymentURL) { result in
+                self.loadCustomerData()
+            }
+            paymentMethodView.tapAction = { self.showViewController(paymentVC, sender: self) }
         }
 
         if let paymentMethodText = self.checkoutViewModel.paymentMethodText {

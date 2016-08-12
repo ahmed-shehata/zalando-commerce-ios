@@ -4,20 +4,10 @@
 
 import UIKit
 
-private enum Result<T> {
+enum Result<T> {
 
     case success(T)
-    case failure(ErrorType)
-
-}
-
-private enum ErrorCode: Int {
-
-    case Unknown = -1
-    case MissingURL = 1
-    case AccessDenied = 2
-    case RequestFailed = 3
-    case NoAccessToken = 4
+    case failure()
 
 }
 
@@ -25,7 +15,7 @@ typealias PaymentCompletion = Result<String> -> Void
 
 final class PaymentSelectionViewController: UIViewController, UIWebViewDelegate {
 
-    private let loginURL: NSURL
+    private let paymentSelectionURL: NSURL
 
     private let paymentCompletion: PaymentCompletion?
 
@@ -37,8 +27,8 @@ final class PaymentSelectionViewController: UIViewController, UIWebViewDelegate 
         return webView
     }()
 
-    init(loginURL: NSURL, completion: PaymentCompletion? = nil) {
-        self.loginURL = loginURL
+    init(paymentSelectionURL: NSURL, completion: PaymentCompletion? = nil) {
+        self.paymentSelectionURL = paymentSelectionURL
         self.paymentCompletion = completion
         super.init(nibName: nil, bundle: nil)
     }
@@ -48,10 +38,6 @@ final class PaymentSelectionViewController: UIViewController, UIWebViewDelegate 
     }
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel,
-            target: self,
-            action: .cancelButtonTapped)
         automaticallyAdjustsScrollViewInsets = false
 
         view.backgroundColor = .whiteColor()
@@ -62,7 +48,7 @@ final class PaymentSelectionViewController: UIViewController, UIWebViewDelegate 
         webView.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor).active = true
         webView.trailingAnchor.constraintEqualToAnchor(self.view.trailingAnchor).active = true
 
-        webView.loadRequest(NSURLRequest(URL: loginURL))
+        webView.loadRequest(NSURLRequest(URL: paymentSelectionURL))
     }
 
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest,
@@ -73,32 +59,12 @@ final class PaymentSelectionViewController: UIViewController, UIWebViewDelegate 
 
     func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
         print(error)
-        // self.dismissViewController(withFailureCode: .RequestFailed)
+        dismissViewController(.failure(), animated: true)
     }
 
-//    private func dismissViewController(withFailureCode code: ErrorCode, animated: Bool = true) -> Bool {
-//        // return dismissViewController(.failure(ErrorCode(rawValue: code)), animated: animated)
-//    }
-
-    private func dismissViewController(result: AtlasResult<String>, animated: Bool = true) -> Bool {
-        dismissViewControllerAnimated(animated) {
-            self.paymentCompletion?(result)
-        }
-        switch result {
-        case .success:
-            return true
-        default:
-            return false
-        }
+    private func dismissViewController(result: Result<String>, animated: Bool = true) {
+        navigationController?.popViewControllerAnimated(animated)
+        self.paymentCompletion?(result)
     }
-
-    @objc private func cancelButtonTapped(sender: UIBarButtonItem) {
-        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-    }
-}
-
-private extension Selector {
-
-    static let cancelButtonTapped = #selector(PaymentSelectionViewController.cancelButtonTapped(_:))
 
 }
