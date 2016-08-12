@@ -101,7 +101,7 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
         navigationItem.rightBarButtonItem = cancelButton
     }
 
-    private func connectToZalando() {
+    private func loadCustomerData() {
         checkout.client.customer { result in
             Async.main {
                 switch result {
@@ -114,6 +114,10 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
                 }
             }
         }
+    }
+
+    private func connectToZalando() {
+        loadCustomerData()
     }
 
     private func generateCheckoutAndRefreshViews(customer: Customer) {
@@ -182,9 +186,8 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
     }
 
     private func setupShippingView() {
-        shippingView.initWith(loc("Shipping"), detail: loc("No Shipping Address")) {
-            print("Shipping")
-        }
+        shippingView.titleTextLabel.text = loc("Shipping")
+        shippingView.detailTextLabel.text = loc("No Shipping Address")
         stackView.addArrangedSubview(shippingView)
 
         if let shippingViewText = self.checkoutViewModel.shippingAddressText {
@@ -193,14 +196,24 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
     }
 
     private func setupPaymentMethodView() {
-        paymentMethodView.initWith(loc("Payment"), detail: loc("No Payment Method")) {
-            print("Payment Method")
+        paymentMethodView.titleTextLabel.text = loc("Payment")
+        paymentMethodView.detailTextLabel.text = loc("No Payment Method")
+
+        stackView.addArrangedSubview(paymentMethodView)
+        if let paymentURL = self.checkoutViewModel.checkout?.payment.selectionPageUrl {
+            let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
+            paymentSelectionViewController.paymentCompletion = { _ in
+                self.loadCustomerData()
+            }
+            paymentMethodView.tapAction = {
+                self.showViewController(paymentSelectionViewController, sender: self)
+            }
         }
 
         if let paymentMethodText = self.checkoutViewModel.paymentMethodText {
             paymentMethodView.detailTextLabel.text = paymentMethodText
         }
-        stackView.addArrangedSubview(paymentMethodView)
+
     }
 
 }

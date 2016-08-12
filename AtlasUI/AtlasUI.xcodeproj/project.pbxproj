@@ -37,6 +37,7 @@
 		81F3B46D1D5A0A36007BCF6F /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F3B46C1D5A0A36007BCF6F /* Localization.swift */; };
 		81F3B46F1D5A0A7D007BCF6F /* LocalizationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F3B46E1D5A0A7D007BCF6F /* LocalizationSpec.swift */; };
 		81F7944D1D5B09A800C73859 /* CheckoutProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F7944C1D5B09A800C73859 /* CheckoutProviderType.swift */; };
+		E85BE3531D5DF60C009EF7BA /* PaymentSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85BE3521D5DF60C009EF7BA /* PaymentSelectionViewController.swift */; };
 		E85D38E41D5B4F74008A42C2 /* CheckoutSummaryStyler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85D38E31D5B4F74008A42C2 /* CheckoutSummaryStyler.swift */; };
 		E85D38E61D5B7182008A42C2 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85D38E51D5B7182008A42C2 /* UIStackView.swift */; };
 		E85D38E81D5B78A1008A42C2 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85D38E71D5B78A1008A42C2 /* UIView.swift */; };
@@ -100,6 +101,7 @@
 		81F3B46C1D5A0A36007BCF6F /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		81F3B46E1D5A0A7D007BCF6F /* LocalizationSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizationSpec.swift; sourceTree = "<group>"; };
 		81F7944C1D5B09A800C73859 /* CheckoutProviderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutProviderType.swift; sourceTree = "<group>"; };
+		E85BE3521D5DF60C009EF7BA /* PaymentSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentSelectionViewController.swift; sourceTree = "<group>"; };
 		E85D38E31D5B4F74008A42C2 /* CheckoutSummaryStyler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryStyler.swift; sourceTree = "<group>"; };
 		E85D38E51D5B7182008A42C2 /* UIStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		E85D38E71D5B78A1008A42C2 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -222,9 +224,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E85BE3511D5DF5EB009EF7BA /* Payment Selection */ = {
+			isa = PBXGroup;
+			children = (
+				E85BE3521D5DF60C009EF7BA /* PaymentSelectionViewController.swift */,
+			);
+			name = "Payment Selection";
+			sourceTree = "<group>";
+		};
 		E85D38DD1D5B34B4008A42C2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E85BE3511D5DF5EB009EF7BA /* Payment Selection */,
 				E85D38DF1D5B4EE5008A42C2 /* Checkout */,
 				E85D38EA1D5C78EC008A42C2 /* Transitions */,
 				E85D38E01D5B4EF0008A42C2 /* Payment Processing */,
@@ -459,6 +470,7 @@
 				8186B1551D51EE930068EE37 /* SizeListSelectionViewController.swift in Sources */,
 				8186B15F1D51EE930068EE37 /* AtlasCheckout.swift in Sources */,
 				8186B14F1D51EE930068EE37 /* UIImageView.swift in Sources */,
+				E85BE3531D5DF60C009EF7BA /* PaymentSelectionViewController.swift in Sources */,
 				8186B1581D51EE930068EE37 /* CheckoutTransitioningDelegate.swift in Sources */,
 				8172776F1D5B174E001394BF /* LocalizerProviderType.swift in Sources */,
 				8186B1561D51EE930068EE37 /* CheckoutPresentationController.swift in Sources */,

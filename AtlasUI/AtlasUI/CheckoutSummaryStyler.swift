@@ -50,11 +50,13 @@ class CheckoutSummaryStyler: LocalizerProviderType {
     private func stylizeShippingView() {
         viewController.shippingView.translatesAutoresizingMaskIntoConstraints = false
         viewController.shippingView.heightAnchor.constraintEqualToConstant(55).active = true
+        viewController.shippingView.leadingAnchor.constraintEqualToAnchor(viewController.stackView.leadingAnchor).active = true
 
     }
     private func stylizePaymentMethodView() {
         viewController.paymentMethodView.translatesAutoresizingMaskIntoConstraints = false
         viewController.paymentMethodView.heightAnchor.constraintEqualToConstant(40).active = true
+        viewController.paymentMethodView.leadingAnchor.constraintEqualToAnchor(viewController.stackView.leadingAnchor).active = true
 
     }
 
