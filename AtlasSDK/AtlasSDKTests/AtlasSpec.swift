@@ -23,7 +23,7 @@ class AtlasSpec: QuickSpec {
 
     override func spec() {
 
-        describe("PublicAtlasSDKSpec") {
+        describe("Atlas") {
 
             it("should save user token successfully") {
                 self.loginUser()
@@ -44,7 +44,7 @@ class AtlasSpec: QuickSpec {
                     useSandbox: true, interfaceLanguage: "en_DE",
                     configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
 
-                waitUntil(timeout: 10) { done in
+                waitUntil(timeout: 60) { done in
                     Atlas.configure(opts) { result in
                         switch result {
                         case .failure(let error):

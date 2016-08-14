@@ -6,18 +6,22 @@ import AtlasSDK
 
 final class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
 
-    private let productImageView = UIImageView()
-    private let productNameLabel = UILabel()
-    private let purchasedObjectSummaryLabel = UILabel()
-    private let termsAndConditionsButton = UIButton()
-    private let paymentSummaryTableview = UITableView()
-    private let stackView: UIStackView = UIStackView()
+    internal let productImageView = UIImageView()
+    internal let productNameLabel = UILabel()
+    internal let purchasedObjectSummaryLabel = UILabel()
+    internal let termsAndConditionsButton = UIButton()
+    internal let paymentSummaryTableview = UITableView()
+    internal let stackView: UIStackView = UIStackView()
+    internal let buyButton = UIButton()
+    internal let connectToZalandoButton = UIButton()
+    internal let shippingPrice: Float = 0
 
-    private let shippingPrice: Float = 0
-    private var customer: Customer? = nil
-    private var checkoutViewModel: CheckoutViewModel
+    internal let shippingView = CheckoutSummaryRow()
+    internal let paymentMethodView = CheckoutSummaryRow()
+    internal private(set) var customer: Customer?
+    internal private(set) var checkoutViewModel: CheckoutViewModel
 
-    internal let checkout: AtlasCheckout
+    internal var checkout: AtlasCheckout
 
     init(checkout: AtlasCheckout, customer: Customer?, checkoutViewModel: CheckoutViewModel) {
         self.checkout = checkout
@@ -39,6 +43,7 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
     private func setupViews() {
         Async.main {
             self.view.removeAllSubviews()
+            self.stackView.removeAllSubviews()
             self.title = self.loc("Summary")
             self.view.backgroundColor = UIColor.clearColor()
             self.view.opaque = false
@@ -48,17 +53,20 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
             self.setupViewLabels()
             self.setupStackView()
             self.setupTermsAndConditionsButton()
-            self.setupBuyButton()
+            self.setupButtons()
+            self.setupShippingView()
+            self.setupPaymentMethodView()
+            CheckoutSummaryStyler(checkoutSummaryViewController: self).stylize()
         }
     }
 
-    @objc private func buyButtonTapped(sender: UIButton) {
+    @objc internal func buyButtonTapped(sender: UIButton) {
         let paymentProcessingViewController = PaymentProcessingViewController(checkout: checkout, checkoutViewModel: self.checkoutViewModel)
 
         self.showViewController(paymentProcessingViewController, sender: self)
     }
 
-    @objc private func connectToZalandoButtonTapped(sender: UIButton) {
+    @objc internal func connectToZalandoButtonTapped(sender: UIButton) {
         connectToZalando()
     }
 
@@ -93,7 +101,7 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
         navigationItem.rightBarButtonItem = cancelButton
     }
 
-    private func connectToZalando() {
+    private func loadCustomerData() {
         checkout.client.customer { result in
             Async.main {
                 switch result {
@@ -106,6 +114,10 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
                 }
             }
         }
+    }
+
+    private func connectToZalando() {
+        loadCustomerData()
     }
 
     private func generateCheckoutAndRefreshViews(customer: Customer) {
@@ -127,115 +139,34 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
     }
 
     private func setupProductImageView() {
-
-        if let article = self.checkoutViewModel.article {
-            productImageView.setImage(fromUrl: article.media.images.first?.catalogUrl)
-        }
-
-        productImageView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
-        productImageView.image = UIImage(named: "default-user", bundledWith: CheckoutSummaryViewController.self)
-
-        productImageView.layer.cornerRadius = productImageView.frame.size.width / 2
-        productImageView.clipsToBounds = true
-
-        productImageView.layer.borderWidth = 0.5
-        productImageView.layer.borderColor = UIColor.grayColor().CGColor
         view.addSubview(productImageView)
-        productImageView.translatesAutoresizingMaskIntoConstraints = false
-        productImageView.widthAnchor.constraintEqualToConstant(50).active = true
-        productImageView.heightAnchor.constraintEqualToAnchor(productImageView.widthAnchor).active = true
-        productImageView.topAnchor.constraintEqualToAnchor(view.topAnchor, constant: 50).active = true
-        productImageView.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
     }
 
     private func setupViewLabels() {
-        if let article = self.checkoutViewModel.article {
-            productNameLabel.text = article.brand.name
-            purchasedObjectSummaryLabel.text = article.name
+        if checkoutViewModel.hasArticle {
             view.addSubview(productNameLabel)
+            view.addSubview(purchasedObjectSummaryLabel)
         }
-
-        productNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        productNameLabel.textAlignment = .Center
-        productNameLabel.font = productNameLabel.font.fontWithSize(12)
-        productNameLabel.widthAnchor.constraintEqualToAnchor(productImageView.widthAnchor, multiplier: 2).active = true
-        productNameLabel.heightAnchor.constraintEqualToConstant(20).active = true
-        productNameLabel.topAnchor.constraintEqualToAnchor(productImageView.bottomAnchor).active = true
-        productNameLabel.centerXAnchor.constraintEqualToAnchor(productImageView.centerXAnchor).active = true
-
-        view.addSubview(purchasedObjectSummaryLabel)
-
-        purchasedObjectSummaryLabel.translatesAutoresizingMaskIntoConstraints = false
-        purchasedObjectSummaryLabel.textAlignment = .Center
-        purchasedObjectSummaryLabel.font = purchasedObjectSummaryLabel.font.fontWithSize(10)
-
-        purchasedObjectSummaryLabel.heightAnchor.constraintEqualToConstant(15).active = true
-        purchasedObjectSummaryLabel.topAnchor.constraintEqualToAnchor(productNameLabel.bottomAnchor).active = true
-        purchasedObjectSummaryLabel.centerXAnchor.constraintEqualToAnchor(productImageView.centerXAnchor).active = true
     }
 
     private func setupTermsAndConditionsButton() {
         self.view.addSubview(termsAndConditionsButton)
-        termsAndConditionsButton.translatesAutoresizingMaskIntoConstraints = false
-        let attrs = [NSFontAttributeName: UIFont.systemFontOfSize(12.0),
-            NSForegroundColorAttributeName: UIColor.grayColor(),
-            NSUnderlineStyleAttributeName: 1]
-
-        termsAndConditionsButton.setAttributedTitle(NSMutableAttributedString(string:
-                loc("CheckoutSummaryViewController.terms"), attributes: attrs), forState: .Normal)
-
-        termsAndConditionsButton.heightAnchor.constraintEqualToConstant(30).active = true
-        termsAndConditionsButton.titleLabel?.lineBreakMode = .ByWordWrapping
-        termsAndConditionsButton.topAnchor.constraintEqualToAnchor(self.view.bottomAnchor, constant: -30).active = true
-        termsAndConditionsButton.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor, constant: 10).active = true
-        termsAndConditionsButton.trailingAnchor.constraintEqualToAnchor(self.view.trailingAnchor, constant: -10).active = true
     }
 
-    private func setupBuyButton() {
-        let buyButton = UIButton()
+    private func setupButtons() {
         self.view.addSubview(buyButton)
-        buyButton.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(connectToZalandoButton)
+        buyButton.hidden = true
+        connectToZalandoButton.hidden = true
 
-        buyButton.heightAnchor.constraintEqualToConstant(50).active = true
-        buyButton.topAnchor.constraintEqualToAnchor(self.termsAndConditionsButton.bottomAnchor, constant: -80).active = true
-        buyButton.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor, constant: 10).active = true
-        buyButton.trailingAnchor.constraintEqualToAnchor(self.view.trailingAnchor, constant: -10).active = true
-        if customer != nil {
-            buyButton.backgroundColor = UIColor.orangeColor()
-            buyButton.userInteractionEnabled = true
-        } else {
-            buyButton.backgroundColor = UIColor.grayColor()
-            buyButton.userInteractionEnabled = false
-            setupConnectToZalandoButton(buyButton)
-        }
-
-        buyButton.layer.cornerRadius = 5
-
-        if let article = self.checkoutViewModel.selectedUnit, price = checkout.localizer.fmtPrice(article.price.amount) {
-            buyButton.setTitle(loc("Pay %@", price), forState: .Normal)
-        }
-
-        buyButton.addTarget(self, action: #selector(CheckoutSummaryViewController.buyButtonTapped(_:)), forControlEvents: .TouchUpInside)
-    }
-
-    private func setupConnectToZalandoButton(buyButton: UIButton) {
-        let connectButton = UIButton()
-        self.view.addSubview(connectButton)
-        connectButton.translatesAutoresizingMaskIntoConstraints = false
-
-        connectButton.heightAnchor.constraintEqualToConstant(50).active = true
-        connectButton.bottomAnchor.constraintEqualToAnchor(buyButton.topAnchor, constant: -10).active = true
-        connectButton.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor, constant: 10).active = true
-        connectButton.trailingAnchor.constraintEqualToAnchor(self.view.trailingAnchor, constant: -10).active = true
-        connectButton.layer.cornerRadius = 5
-
-        connectButton.backgroundColor = UIColor.orangeColor()
-        connectButton.userInteractionEnabled = true
-
-        connectButton.setTitle(loc("Connect To Zalando"), forState: .Normal)
-
-        connectButton.addTarget(self, action: #selector(CheckoutSummaryViewController.connectToZalandoButtonTapped(_:)),
+        buyButton.addTarget(self, action: #selector(CheckoutSummaryViewController.buyButtonTapped(_:)),
             forControlEvents: .TouchUpInside)
+        connectToZalandoButton.addTarget(self, action: #selector(CheckoutSummaryViewController.connectToZalandoButtonTapped(_:)),
+            forControlEvents: .TouchUpInside)
+
+    }
+    private func setupStackView() {
+        self.view.addSubview(self.stackView)
     }
 
     private func setupBlurView() {
@@ -254,62 +185,42 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
         blurEffectView.contentView.addSubview(extraLightVibrancyView)
     }
 
+    private func setupShippingView() {
+        shippingView.titleTextLabel.text = loc("Shipping")
+        shippingView.detailTextLabel.text = loc("No Shipping Address")
+        stackView.addArrangedSubview(shippingView)
+
+        if let shippingViewText = self.checkoutViewModel.shippingAddressText {
+            shippingView.detailTextLabel.text = shippingViewText
+        }
+    }
+
+    private func setupPaymentMethodView() {
+        paymentMethodView.titleTextLabel.text = loc("Payment")
+        paymentMethodView.detailTextLabel.text = loc("No Payment Method")
+
+        stackView.addArrangedSubview(paymentMethodView)
+        if let paymentURL = self.checkoutViewModel.checkout?.payment.selectionPageUrl {
+            let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
+            paymentSelectionViewController.paymentCompletion = { _ in
+                self.loadCustomerData()
+            }
+            paymentMethodView.tapAction = {
+                self.showViewController(paymentSelectionViewController, sender: self)
+            }
+        }
+
+        if let paymentMethodText = self.checkoutViewModel.paymentMethodText {
+            paymentMethodView.detailTextLabel.text = paymentMethodText
+        }
+
+    }
+
 }
 
 extension CheckoutSummaryViewController {
 
-    private func setupStackView() {
-        self.stackView.removeAllSubviews()
-        self.view.addSubview(stackView)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .Vertical
-        stackView.distribution = .Fill
-        stackView.alignment = .Center
-        stackView.spacing = 2
-        stackView.trailingAnchor.constraintEqualToAnchor(self.view.trailingAnchor).active = true
-        stackView.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor).active = true
-        stackView.bottomAnchor.constraintLessThanOrEqualToAnchor(self.view.bottomAnchor).active = true
-        stackView.topAnchor.constraintEqualToAnchor(purchasedObjectSummaryLabel.bottomAnchor, constant: 10).active = true
-
-        if let shippingViewText = checkoutViewModel.shippingAddressText, shippingView = shippingView(shippingViewText) {
-            stackView.addArrangedSubviewSideFilled(shippingView)
-            shippingView.heightAnchor.constraintEqualToConstant(55).active = true
-        }
-
-        if let cardText = checkoutViewModel.paymentMethodText, cardView = cardView(cardText) {
-            stackView.addArrangedSubviewSideFilled(cardView)
-            cardView.heightAnchor.constraintEqualToConstant(40).active = true
-        }
-
-        if let discountViewText = checkoutViewModel.discountText, discountView = discountView(discountViewText) {
-            stackView.addArrangedSubviewSideFilled(discountView)
-            discountView.heightAnchor.constraintEqualToConstant(40).active = true
-        }
-
-        if let paymentSummaryRow = paymentSummaryRow() {
-            stackView.addArrangedSubviewSideFilled(paymentSummaryRow)
-            paymentSummaryRow.heightAnchor.constraintEqualToConstant(60).active = true
-        }
-
-        if let topSeparatorView = topSeparatorView() {
-            stackView.addSubview(topSeparatorView)
-            topSeparatorView.heightAnchor.constraintEqualToConstant(1).active = true
-            topSeparatorView.widthAnchor.constraintEqualToAnchor(stackView.widthAnchor, multiplier: 0.95).active = true
-            topSeparatorView.bottomAnchor.constraintEqualToAnchor(stackView.topAnchor).active = true
-            topSeparatorView.centerXAnchor.constraintEqualToAnchor(stackView.centerXAnchor).active = true
-        }
-    }
-
-    private func shippingView(text: String) -> UIView? {
-        let shippingView = CheckoutSummaryRow()
-        shippingView.translatesAutoresizingMaskIntoConstraints = false
-        shippingView.initWith(loc("Shipping"), detail: text) {
-            print("Shipping")
-        }
-        return shippingView
-    }
-
-    private func topSeparatorView() -> UIView? {
+    internal func topSeparatorView() -> UIView? {
         let topSeparatorView = UIView()
         topSeparatorView.layer.borderWidth = 5
         topSeparatorView.layer.borderColor = UIColor.blackColor().CGColor
@@ -318,62 +229,16 @@ extension CheckoutSummaryViewController {
         return topSeparatorView
     }
 
-    private func discountView(text: String) -> UIView? {
-        let discountView = CheckoutSummaryRow()
-        discountView.translatesAutoresizingMaskIntoConstraints = false
-        discountView.initWith(loc("Discount"), detail: text) {
-            print("Discount")
+    internal func paymentSummaryRow() -> UIView? {
+        guard let article = self.checkoutViewModel.selectedUnit else {
+            return nil
         }
-        return discountView
+
+        let shippingPrice: Float? = customer != nil ? self.shippingPrice : nil
+        let paymentSummaryRow = PaymentSummaryRow(shippingPrice: shippingPrice, itemPrice: article.price, localizerProvider: self)
+        paymentSummaryRow.translatesAutoresizingMaskIntoConstraints = false
+
+        return paymentSummaryRow
     }
 
-    private func paymentSummaryRow() -> UIView? {
-        if let article = self.checkoutViewModel.selectedUnit {
-            var shippingPrice: Float? = nil
-            if customer != nil {
-                shippingPrice = self.shippingPrice
-            }
-
-            let paymentSummaryRow = PaymentSummaryRow(shippingPrice: shippingPrice,
-                itemPrice: article.price, localizerProvider: checkout)
-            paymentSummaryRow.translatesAutoresizingMaskIntoConstraints = false
-
-            return paymentSummaryRow
-        }
-        return nil
-    }
-
-    private func cardView(text: String) -> UIView? {
-        let cardView = CheckoutSummaryRow()
-        cardView.translatesAutoresizingMaskIntoConstraints = false
-        cardView.initWith(loc("Payment"), detail: text) {
-            print("Payment")
-        }
-        return cardView
-    }
-
-}
-
-private extension UIStackView {
-
-    private func addArrangedSubviewSideFilled(view: UIView) {
-        addArrangedSubview(view: view, viewAnchor1: view.trailingAnchor, stackAnchor1: self.trailingAnchor,
-            viewAnchor2: view.leadingAnchor, stackAnchor2: self.leadingAnchor)
-    }
-
-    private func addArrangedSubview(view view: UIView, viewAnchor1: NSLayoutAnchor, stackAnchor1: NSLayoutAnchor,
-        viewAnchor2: NSLayoutAnchor, stackAnchor2: NSLayoutAnchor) {
-            self.addArrangedSubview(view)
-            viewAnchor1.constraintEqualToAnchor(stackAnchor1).active = true
-            viewAnchor2.constraintEqualToAnchor(stackAnchor2).active = true
-    }
-
-}
-
-private extension UIView {
-    private func removeAllSubviews() {
-        for view in self.subviews {
-            view.removeFromSuperview()
-        }
-    }
 }

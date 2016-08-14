@@ -13,14 +13,9 @@ public final class AtlasMockAPI {
     private static let serverURL = NSURL(string: "http://localhost:9080")! // swiftlint:disable:this force_unwrapping
 
     public static func startServer(wait timeout: NSTimeInterval = 15) throws {
-        server.addRootResponse()
-        do {
-            try server.registerAvailableJSONMocks()
-            try server.start(serverURL, forceIPv4: false, timeout: timeout)
-            print("AtlasMockAPI server started")
-        } catch let error {
-            print(error)
-        }
+        try server.registerEndpoints()
+        try server.start(serverURL, forceIPv4: false, timeout: timeout)
+        print("AtlasMockAPI server started")
     }
 
     public static func stopServer(wait timeout: NSTimeInterval = 15) throws {

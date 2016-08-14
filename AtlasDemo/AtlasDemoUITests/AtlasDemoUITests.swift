@@ -29,22 +29,21 @@ class AtlasDemoUITests: XCTestCase {
 
     func testBuyQuicklyProductWithSizes() {
         let sizeText = app.tables.staticTexts["42"]
-        let payButton = app.buttons["Pay €74,95"]
 
         tapBuyNow("Lamica")
 
         waitForElementToAppearAndTap(sizeText)
-        waitForElementToAppearAndTap(payButton)
-        waitForElementToAppearAndTap(doneButton)
+        tapConnectAndLogin()
+        tapBuyNow()
+        tapDone()
     }
 
     func testBuyQuicklyProductWithoutSizes() {
-        let payButton = app.buttons["Pay €109,95"]
-
         tapBuyNow("MICHAEL Michael Kors")
 
-        waitForElementToAppearAndTap(payButton)
-        waitForElementToAppearAndTap(doneButton)
+        tapConnectAndLogin()
+        tapBuyNow()
+        tapDone()
     }
 
     func testBuyProductWithSizesAndNavigatingBack() {
@@ -52,8 +51,6 @@ class AtlasDemoUITests: XCTestCase {
         let backButton = summaryNavigationBar.buttons["Back"]
         let cancelButton = summaryNavigationBar.buttons["Cancel"]
         let sizeText = app.tables.staticTexts["XS"]
-
-        let payButton = app.buttons["Pay €38,45"]
 
         tapBuyNow("Guess")
 
@@ -65,20 +62,39 @@ class AtlasDemoUITests: XCTestCase {
         tapBuyNow("Guess")
 
         waitForElementToAppearAndTap(sizeText)
-        waitForElementToAppearAndTap(payButton)
-        waitForElementToAppearAndTap(doneButton)
+
+        tapConnectAndLogin()
+        tapBuyNow()
+        tapDone()
     }
 
-    private var navigationController: XCUIElementQuery {
-        return app.otherElements.containingType(.NavigationBar, identifier: "AtlasSDK Demo")
+    private func tapConnectAndLogin() {
+        waitForElementToAppearAndTap(app.buttons["Connect To Zalando"])
+        fillInLogin()
     }
 
-    private var collectionView: XCUIElement {
-        return navigationController.descendantsMatchingType(.CollectionView).element
+    private func tapBuyNow() {
+        waitForElementToAppearAndTap(app.buttons["Buy Now"])
     }
 
-    private var doneButton: XCUIElement {
-        return app.navigationBars["Payment"].buttons["Done"]
+    private func tapDone() {
+        waitForElementToAppearAndTap(app.navigationBars["Payment"].buttons["Done"])
+    }
+
+    private func fillInLogin() {
+        NSThread.sleepForTimeInterval(2)
+
+        let zalandoLoginElement = app.otherElements["Zalando Login"]
+        let element = zalandoLoginElement.childrenMatchingType(.Other).elementBoundByIndex(4)
+        element.childrenMatchingType(.TextField).element.tap()
+        element.childrenMatchingType(.TextField).element.typeText("atlas-testing@mailinator.com")
+        element.childrenMatchingType(.TextField).element
+
+        let element2 = zalandoLoginElement.childrenMatchingType(.Other).elementBoundByIndex(6)
+        element2.childrenMatchingType(.SecureTextField).element.tap()
+        element2.childrenMatchingType(.SecureTextField).element.typeText("12345678")
+        element2.childrenMatchingType(.SecureTextField).element
+        app.buttons["LOGIN"].tap()
     }
 
     private func tapBuyNow(identifier: String) {
@@ -87,6 +103,14 @@ class AtlasDemoUITests: XCTestCase {
         collectionView.scrollToElement(buyNowButton)
         NSThread.sleepForTimeInterval(0.5)
         waitForElementToAppearAndTap(buyNowButton)
+    }
+
+    private var navigationController: XCUIElementQuery {
+        return app.otherElements.containingType(.NavigationBar, identifier: "AtlasSDK Demo")
+    }
+
+    private var collectionView: XCUIElement {
+        return navigationController.descendantsMatchingType(.CollectionView).element
     }
 
 }

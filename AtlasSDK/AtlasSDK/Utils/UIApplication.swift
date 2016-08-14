@@ -6,6 +6,10 @@ import UIKit
 
 public extension UIApplication {
 
+    public class var hasTopViewController: Bool {
+        return topViewController() != nil
+    }
+
     public class func topViewController(baseController: UIViewController? = nil) -> UIViewController? {
         let baseController = baseController ?? UIApplication.sharedApplication().keyWindow?.rootViewController
         if let navigationController = baseController as? UINavigationController {
