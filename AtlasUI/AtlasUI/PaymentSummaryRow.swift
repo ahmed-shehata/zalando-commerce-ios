@@ -9,14 +9,11 @@ final class PaymentSummaryRow: UIView, LocalizerProviderType {
 
     internal var localizer: Localizer
 
-    private var shippingPrice: Float?
+    private var shippingPrice: Float
     private var itemPrice: Article.Price
 
     var totalPrice: Float {
-        if let shippingPrice = shippingPrice {
-            return shippingPrice + itemPrice.amount
-        }
-        return itemPrice.amount
+        return shippingPrice + itemPrice.amount
     }
 
     private let totalPriceTitleLabel = UILabel()
@@ -25,11 +22,8 @@ final class PaymentSummaryRow: UIView, LocalizerProviderType {
     private let shippingPriceLabel = UILabel()
     private let itemPriceLabel = UILabel()
 
-    init(shippingPrice: Float?, itemPrice: Article.Price, localizerProvider: LocalizerProviderType) {
-        if let shippingPrice = shippingPrice {
-            self.shippingPrice = shippingPrice
-        }
-
+    init(shippingPrice: Float = 0, itemPrice: Article.Price, localizerProvider: LocalizerProviderType) {
+        self.shippingPrice = shippingPrice
         self.itemPrice = itemPrice
         self.localizer = localizerProvider.localizer
         super.init(frame: CGRect.zero)
@@ -89,12 +83,7 @@ final class PaymentSummaryRow: UIView, LocalizerProviderType {
     }
 
     private func setupShippingPriceLabel() {
-        if let shippingPrice = shippingPrice {
-            shippingPriceLabel.text = localizer.fmtPrice(shippingPrice)
-        } else {
-            shippingPriceLabel.text = "---"
-        }
-
+        shippingPriceLabel.text = localizer.fmtPrice(shippingPrice)
         shippingPriceLabel.translatesAutoresizingMaskIntoConstraints = false
         shippingPriceLabel.text = shippingPriceLabel.text?.uppercaseString
         shippingPriceLabel.font = shippingPriceLabel.font.fontWithSize(13)

@@ -13,17 +13,19 @@ class CheckoutSummaryStyler: LocalizerProviderType {
         viewController = checkoutSummaryViewController
     }
 
-    private var noPaymentSelected: Bool {
-        return viewController.customer != nil && viewController.checkoutViewModel.checkout?.payment.selected == nil
-    }
-
     func stylize () {
         stylizeStackView()
+
+        stylizeShippingView()
+        stylizePaymentMethodView()
+        stylizePaymentSummary()
+
         stylizeProductImageView()
         stylizeViewLabels()
         stylizeTermsButton()
-        let mainButton = viewController.customer != nil ? viewController.buyButton : viewController.connectToZalandoButton
-        stylizeMainButton(mainButton)
+
+        stylizeBuyButton()
+        stylizeConnectToZalandoButton()
     }
 
     private func stylizeStackView() {
@@ -38,16 +40,8 @@ class CheckoutSummaryStyler: LocalizerProviderType {
         viewController.stackView.topAnchor.constraintEqualToAnchor(viewController.purchasedObjectSummaryLabel.bottomAnchor,
             constant: 10).active = true
 
-        stylizeShippingView()
-        stylizePaymentMethodView()
-        stylizePaymentSummary()
-
-        if let topSeparatorView = viewController.topSeparatorView() {
+        if let topSeparatorView = createTopSeparatorView() {
             viewController.stackView.addSubview(topSeparatorView)
-            topSeparatorView.heightAnchor.constraintEqualToConstant(1).active = true
-            topSeparatorView.widthAnchor.constraintEqualToAnchor(viewController.stackView.widthAnchor, multiplier: 0.95).active = true
-            topSeparatorView.bottomAnchor.constraintEqualToAnchor(viewController.stackView.topAnchor).active = true
-            topSeparatorView.centerXAnchor.constraintEqualToAnchor(viewController.stackView.centerXAnchor).active = true
         }
     }
 
@@ -61,21 +55,15 @@ class CheckoutSummaryStyler: LocalizerProviderType {
         viewController.paymentMethodView.translatesAutoresizingMaskIntoConstraints = false
         viewController.paymentMethodView.heightAnchor.constraintEqualToConstant(40).active = true
         viewController.paymentMethodView.leadingAnchor.constraintEqualToAnchor(viewController.stackView.leadingAnchor).active = true
-
     }
 
     private func stylizePaymentSummary() {
-        if let paymentSummaryRow = viewController.paymentSummaryRow() {
-            viewController.stackView.addArrangedSubviewSideFilled(paymentSummaryRow)
-            paymentSummaryRow.heightAnchor.constraintEqualToConstant(60).active = true
-        }
+        guard let paymentSummaryRow = createPaymentSummaryRow() else { return }
+        viewController.stackView.addArrangedSubviewSideFilled(paymentSummaryRow)
+        paymentSummaryRow.heightAnchor.constraintEqualToConstant(60).active = true
     }
 
     private func stylizeProductImageView () {
-        if let article = viewController.checkoutViewModel.article {
-            viewController.productImageView.setImage(fromUrl: article.media.images.first?.catalogUrl)
-        }
-
         viewController.productImageView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         viewController.productImageView.image = UIImage(named: "default-user", bundledWith: CheckoutSummaryViewController.self)
 
@@ -93,10 +81,8 @@ class CheckoutSummaryStyler: LocalizerProviderType {
     }
 
     private func stylizeViewLabels() {
-        if let article = viewController.checkoutViewModel.article {
-            viewController.productNameLabel.text = article.brand.name
-            viewController.purchasedObjectSummaryLabel.text = article.name
-        }
+        viewController.productNameLabel.text = viewController.checkoutViewModel.article.brand.name
+        viewController.purchasedObjectSummaryLabel.text = viewController.checkoutViewModel.article.name
 
         viewController.productNameLabel.translatesAutoresizingMaskIntoConstraints = false
         viewController.productNameLabel.textAlignment = .Center
@@ -138,24 +124,48 @@ class CheckoutSummaryStyler: LocalizerProviderType {
             constant: -10).active = true
     }
 
-    private func stylizeMainButton(button: UIButton) {
+    private func stylizeBuyButton() {
+        stylizeMainButton(viewController.buyButton, isActive: viewController.checkoutViewModel.isPaymentSelected)
+    }
+
+    private func stylizeConnectToZalandoButton() {
+        stylizeMainButton(viewController.connectToZalandoButton)
+    }
+
+    private func stylizeMainButton(button: UIButton, isActive: Bool = true) {
+        button.layer.cornerRadius = 5
         button.hidden = false
-        button.backgroundColor = UIColor.orangeColor()
-        button.enabled = true
         button.translatesAutoresizingMaskIntoConstraints = false
+
         button.heightAnchor.constraintEqualToConstant(50).active = true
         button.topAnchor.constraintEqualToAnchor(viewController.termsAndConditionsButton.bottomAnchor,
             constant: -80).active = true
         button.leadingAnchor.constraintEqualToAnchor(viewController.view.leadingAnchor, constant: 10).active = true
         button.trailingAnchor.constraintEqualToAnchor(viewController.view.trailingAnchor, constant: -10).active = true
-        let title = viewController.customer != nil ? "Buy Now" : "Connect To Zalando"
 
-        if noPaymentSelected {
-            button.backgroundColor = UIColor.grayColor()
-            button.enabled = false
-        }
-        button.setTitle(title, forState: .Normal)
-        button.layer.cornerRadius = 5
+        button.backgroundColor = isActive ? .grayColor() : .orangeColor()
+        button.enabled = isActive
+    }
+
+    internal func createTopSeparatorView() -> UIView? {
+        let topSeparatorView = UIView()
+        topSeparatorView.layer.borderWidth = 5
+        topSeparatorView.layer.borderColor = UIColor.blackColor().CGColor
+        topSeparatorView.alpha = 0.2
+        topSeparatorView.translatesAutoresizingMaskIntoConstraints = false
+
+        topSeparatorView.heightAnchor.constraintEqualToConstant(1).active = true
+        topSeparatorView.widthAnchor.constraintEqualToAnchor(viewController.stackView.widthAnchor, multiplier: 0.95).active = true
+        topSeparatorView.bottomAnchor.constraintEqualToAnchor(viewController.stackView.topAnchor).active = true
+        topSeparatorView.centerXAnchor.constraintEqualToAnchor(viewController.stackView.centerXAnchor).active = true
+
+        return topSeparatorView
+    }
+
+    internal func createPaymentSummaryRow() -> UIView? {
+        let paymentSummaryRow = PaymentSummaryRow(itemPrice: viewController.checkoutViewModel.unitPrice, localizerProvider: self)
+        paymentSummaryRow.translatesAutoresizingMaskIntoConstraints = false
+        return paymentSummaryRow
     }
 
 }
