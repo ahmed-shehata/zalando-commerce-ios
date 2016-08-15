@@ -136,6 +136,8 @@ class CheckoutSummaryStyler: LocalizerProviderType {
 
     private func stylizeMainButton(button: UIButton) {
         button.hidden = false
+        button.backgroundColor = UIColor.orangeColor()
+        button.enabled = true
         button.translatesAutoresizingMaskIntoConstraints = false
         button.heightAnchor.constraintEqualToConstant(50).active = true
         button.topAnchor.constraintEqualToAnchor(viewController.termsAndConditionsButton.bottomAnchor,
@@ -143,8 +145,12 @@ class CheckoutSummaryStyler: LocalizerProviderType {
         button.leadingAnchor.constraintEqualToAnchor(viewController.view.leadingAnchor, constant: 10).active = true
         button.trailingAnchor.constraintEqualToAnchor(viewController.view.trailingAnchor, constant: -10).active = true
         let title = viewController.customer != nil ? "Buy Now" : "Connect To Zalando"
+
+        if (viewController.customer != nil) && (viewController.checkoutViewModel.checkout?.payment.selected == nil) {
+            button.backgroundColor = UIColor.grayColor()
+            button.enabled = false
+        }
         button.setTitle(title, forState: .Normal)
-        button.backgroundColor = UIColor.orangeColor()
         button.layer.cornerRadius = 5
     }
 
