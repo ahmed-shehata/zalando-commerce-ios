@@ -13,6 +13,10 @@ class CheckoutSummaryStyler: LocalizerProviderType {
         viewController = checkoutSummaryViewController
     }
 
+    private var isPaymentChosen: Bool {
+        return viewController.customer != nil && viewController.checkoutViewModel.checkout?.payment.selected != nil
+    }
+
     func stylize () {
         stylizeStackView()
         stylizeProductImageView()
@@ -146,7 +150,7 @@ class CheckoutSummaryStyler: LocalizerProviderType {
         button.trailingAnchor.constraintEqualToAnchor(viewController.view.trailingAnchor, constant: -10).active = true
         let title = viewController.customer != nil ? "Buy Now" : "Connect To Zalando"
 
-        if (viewController.customer != nil) && (viewController.checkoutViewModel.checkout?.payment.selected == nil) {
+        if isPaymentChosen {
             button.backgroundColor = UIColor.grayColor()
             button.enabled = false
         }
