@@ -3,7 +3,7 @@
 //
 
 import Foundation
-
+import AtlasSDK
 class CheckoutSummaryStyler: LocalizerProviderType {
 
     private let viewController: CheckoutSummaryViewController
@@ -24,8 +24,11 @@ class CheckoutSummaryStyler: LocalizerProviderType {
         stylizeViewLabels()
         stylizeTermsButton()
 
-        stylizeBuyButton()
-        stylizeConnectToZalandoButton()
+        if Atlas.isUserLoggedIn() {
+            stylizeBuyButton()
+        } else {
+            stylizeConnectToZalandoButton()
+        }
     }
 
     private func stylizeStackView() {
@@ -42,7 +45,15 @@ class CheckoutSummaryStyler: LocalizerProviderType {
 
         if let topSeparatorView = createTopSeparatorView() {
             viewController.stackView.addSubview(topSeparatorView)
+            stylizeTopSeparatorView(topSeparatorView)
         }
+    }
+
+    private func stylizeTopSeparatorView(topSeparatorView: UIView) {
+        topSeparatorView.heightAnchor.constraintEqualToConstant(1).active = true
+        topSeparatorView.widthAnchor.constraintEqualToAnchor(viewController.stackView.widthAnchor, multiplier: 0.95).active = true
+        topSeparatorView.bottomAnchor.constraintEqualToAnchor(viewController.stackView.topAnchor).active = true
+        topSeparatorView.centerXAnchor.constraintEqualToAnchor(viewController.stackView.centerXAnchor).active = true
     }
 
     private func stylizeShippingView() {
@@ -143,7 +154,7 @@ class CheckoutSummaryStyler: LocalizerProviderType {
         button.leadingAnchor.constraintEqualToAnchor(viewController.view.leadingAnchor, constant: 10).active = true
         button.trailingAnchor.constraintEqualToAnchor(viewController.view.trailingAnchor, constant: -10).active = true
 
-        button.backgroundColor = isActive ? .grayColor() : .orangeColor()
+        button.backgroundColor = isActive ? .orangeColor() : .grayColor()
         button.enabled = isActive
     }
 
@@ -153,11 +164,6 @@ class CheckoutSummaryStyler: LocalizerProviderType {
         topSeparatorView.layer.borderColor = UIColor.blackColor().CGColor
         topSeparatorView.alpha = 0.2
         topSeparatorView.translatesAutoresizingMaskIntoConstraints = false
-
-        topSeparatorView.heightAnchor.constraintEqualToConstant(1).active = true
-        topSeparatorView.widthAnchor.constraintEqualToAnchor(viewController.stackView.widthAnchor, multiplier: 0.95).active = true
-        topSeparatorView.bottomAnchor.constraintEqualToAnchor(viewController.stackView.topAnchor).active = true
-        topSeparatorView.centerXAnchor.constraintEqualToAnchor(viewController.stackView.centerXAnchor).active = true
 
         return topSeparatorView
     }

@@ -59,6 +59,7 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
             self.setupButtons()
             self.setupShippingView()
             self.setupPaymentMethodView()
+            self.updateData()
             CheckoutSummaryStyler(checkoutSummaryViewController: self).stylize()
         }
     }
@@ -154,16 +155,15 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
     }
 
     private func setupButtons() {
-        self.view.addSubview(buyButton)
-        buyButton.hidden = true
-        buyButton.setTitle(loc("Buy Now"), forState: .Normal)
-        buyButton.addTarget(self, action: #selector(CheckoutSummaryViewController.buyButtonTapped(_:)),
-            forControlEvents: .TouchUpInside)
-
         self.view.addSubview(connectToZalandoButton)
         connectToZalandoButton.hidden = true
         connectToZalandoButton.setTitle(loc("Connect To Zalando"), forState: .Normal)
         connectToZalandoButton.addTarget(self, action: #selector(CheckoutSummaryViewController.connectToZalandoButtonTapped(_:)),
+            forControlEvents: .TouchUpInside)
+        self.view.addSubview(buyButton)
+        buyButton.hidden = true
+        buyButton.setTitle(loc("Buy Now"), forState: .Normal)
+        buyButton.addTarget(self, action: #selector(CheckoutSummaryViewController.buyButtonTapped(_:)),
             forControlEvents: .TouchUpInside)
     }
 
@@ -215,8 +215,7 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
 
         productImageView.setImage(fromUrl: checkoutViewModel.article.thumbnailUrl)
 
-        shippingView.detailTextLabel.text = self.checkoutViewModel.shippingAddressText
+        shippingView.detailTextLabel.text = self.checkoutViewModel.shippingAddressText ?? loc("No Shipping Address")
     }
 
 }
-
