@@ -45,7 +45,7 @@ module Calypso
         try += 1
         exitstatus = run(build_cmd, false)
         break if exitstatus.zero?
-        exit(exitstatus) if try >= tries
+        exit(exitstatus) if try >= tries.to_i
       end
     end
 
