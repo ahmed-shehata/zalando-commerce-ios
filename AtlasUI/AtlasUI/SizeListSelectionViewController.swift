@@ -76,8 +76,8 @@ final class SizeListSelectionViewController: UITableViewController, CheckoutProv
 
             case .success(let customer):
                 self.checkout.createCheckout(withArticle: self.article, articleUnitIndex: indexPath.row) { result in
+                    spinner.stopAnimating()
                     switch result {
-                        spinner.stopAnimating()
                     case .failure(let error):
                         self.dismissViewControllerAnimated(true) {
                             UserMessage.showError(title: self.loc("Fatal Error"), error: error)
