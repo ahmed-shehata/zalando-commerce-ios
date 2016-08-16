@@ -5,9 +5,9 @@ github "Quick/Nimble"
 
 # AtlasMockAPI
 
-github "httpswift/swifter" "stable"
+github "bonkey/swifter" "stable"
 
 # AtlasDemo
 
-github "SwiftyJSON/SwiftyJSON"
-github "Alamofire/Alamofire"
+github "bonkey/SwiftyJSON" "master"
+github "Alamofire/Alamofire" "swift2.3"
