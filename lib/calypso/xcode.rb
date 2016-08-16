@@ -11,9 +11,9 @@ module Calypso
       run base_build_cmd(WORKSPACE, '-list')
     end
 
-    desc 'test [scheme]', "Runs tests for given scheme or #{SCHEME_UI_UNIT_TESTS}"
-    def test(scheme = SCHEME_UI_UNIT_TESTS)
-      exec_tests scheme
+    desc 'test [scheme] [tries]', "Runs tests for given scheme or #{SCHEME_UI_UNIT_TESTS}"
+    def test(scheme = SCHEME_UI_UNIT_TESTS, tries = 1)
+      exec_tests scheme, tries
     end
 
     desc 'build [scheme]', 'Builds given scheme'
@@ -35,10 +35,18 @@ module Calypso
 
     include Run
 
-    def exec_tests(scheme, platform = PLATFORM_DEFAULT)
-      run format_build_cmd('test', scheme,
-                           '-destination', "'platform=#{platform}'",
-                           '-enableCodeCoverage', 'YES')
+    def exec_tests(scheme, tries, platform = PLATFORM_DEFAULT)
+      build_cmd = format_build_cmd('test', scheme,
+                                   '-destination', "'platform=#{platform}'",
+                                   '-enableCodeCoverage', 'YES')
+      exitstatus = 0
+      try = 0
+      loop do
+        try += 1
+        exitstatus = run(build_cmd, false)
+        break if exitstatus.zero?
+        exit(exitstatus) if try >= tries
+      end
     end
 
     def exec_clean(scheme)

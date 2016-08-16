@@ -14,5 +14,5 @@ install:
   - travis_wait 30 ./calypso.rb deps uncached
 
 script:
-  - ./calypso.rb xcode test
+  - ./calypso.rb xcode test 3
   - bash <(curl -s https://codecov.io/bash) -J AtlasSDK -J AtlasUI
