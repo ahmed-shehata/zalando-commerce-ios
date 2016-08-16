@@ -20,7 +20,7 @@ public struct CheckoutViewModel {
     public let article: Article
 
     public var isPaymentSelected: Bool {
-        return customer != nil || checkout?.payment.selected != nil
+        return customer != nil && checkout?.payment.selected?.method != nil
     }
 
     public var selectedUnit: Article.Unit {

@@ -151,16 +151,16 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
     }
 
     private func setupTermsAndConditionsButton() {
-        self.view.addSubview(termsAndConditionsButton)
+        view.addSubview(termsAndConditionsButton)
     }
 
     private func setupButtons() {
-        self.view.addSubview(connectToZalandoButton)
+        view.addSubview(connectToZalandoButton)
         connectToZalandoButton.hidden = true
         connectToZalandoButton.setTitle(loc("Connect To Zalando"), forState: .Normal)
         connectToZalandoButton.addTarget(self, action: #selector(CheckoutSummaryViewController.connectToZalandoButtonTapped(_:)),
             forControlEvents: .TouchUpInside)
-        self.view.addSubview(buyButton)
+        view.addSubview(buyButton)
         buyButton.hidden = true
         buyButton.setTitle(loc("Buy Now"), forState: .Normal)
         buyButton.addTarget(self, action: #selector(CheckoutSummaryViewController.buyButtonTapped(_:)),
@@ -168,13 +168,13 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
     }
 
     private func setupStackView() {
-        self.view.addSubview(self.stackView)
+        view.addSubview(self.stackView)
     }
 
     private func setupBlurView() {
         let blurEffect = UIBlurEffect(style: .ExtraLight)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        self.view.addSubview(blurEffectView)
+        view.addSubview(blurEffectView)
 
         blurEffectView.frame = self.view.bounds
         blurEffectView.frame.makeIntegralInPlace()
