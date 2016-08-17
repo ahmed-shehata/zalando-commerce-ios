@@ -43,6 +43,7 @@ module Calypso
       try = 0
       loop do
         try += 1
+        puts "Running tests (try: #{try}/#{tries})"
         exitstatus = run(build_cmd, false)
         break if exitstatus.zero?
         exit(exitstatus) if try >= tries.to_i
