@@ -95,7 +95,6 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
     private func setupNavBar() {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
 
-        // TODO: Handle single unit case inside AtlasCheckout.presentCheckoutView and present either SizeSelection or CheckoutSummary
         if checkoutViewModel.article.hasSingleUnit {
             self.navigationItem.setHidesBackButton(true, animated: false)
         }
