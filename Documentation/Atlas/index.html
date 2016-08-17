@@ -28,27 +28,13 @@
       <nav class="sidebar">
         <ul class="nav-groups">
           <li class="nav-group-name">
-            <a href="Global Variables.html">Global Variables</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Global Variables.html#/s:v8AtlasSDK11ErrorDomainSS">ErrorDomain</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Global Variables.html#/s:v8AtlasSDK20ErrorUnsupportedTypeSi">ErrorUnsupportedType</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
             <a href="Enums.html">Enums</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="Enums.html#/s:O8AtlasSDK11AtlasResult">AtlasResult</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Enums.html#/s:O8AtlasSDK7JSONKey">JSONKey</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Enums.html#/s:O8AtlasSDK6Result">Result</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Enums.html#/s:O8AtlasSDK4Type">Type</a>
               </li>
             </ul>
           </li>
@@ -56,19 +42,7 @@
             <a href="Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Extensions.html#/s:Sa">Array</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="Extensions.html#/s:Si">Int</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Extensions.html#/c:objc(cs)NSData">NSData</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Extensions.html#/c:objc(cs)NSHTTPURLResponse">NSHTTPURLResponse</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Extensions.html#/c:objc(cs)NSMutableURLRequest">NSMutableURLRequest</a>
               </li>
               <li class="nav-group-task">
                 <a href="Extensions.html#/s:SS">String</a>
@@ -89,6 +63,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="Structs/Article.html#/s:VV8AtlasSDK7Article5Price">– Price</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs.html#/s:V8AtlasSDK6Config">Config</a>
               </li>
               <li class="nav-group-task">
                 <a href="Structs.html#/s:V8AtlasSDK8Customer">Customer</a>
@@ -122,8 +99,16 @@
           <section class="section">
             
             <p><a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible"></a>
-<a href="https://dashboard.buddybuild.com/apps/57711240116bda01005c1cca/build/latest"><img src="https://dashboard.buddybuild.com/api/statusImage?appID=57711240116bda01005c1cca&amp;branch=master&amp;build=latest" alt="BuddyBuild"></a>
+<a href=""><img src="https://img.shields.io/cocoapods/v/AtlasSDK.svg?maxAge=2592000" alt="CocoaPods"></a>
+<a href=""><img src="https://img.shields.io/cocoapods/at/AtlasSDK.svg?maxAge=2592000" alt="CocoaPods"></a>
+<a href=""><img src="https://img.shields.io/cocoapods/p/AtlasSDK.svg?maxAge=2592000" alt="CocoaPods"></a>
+<a href=""><img src="https://img.shields.io/cocoapods/metrics/doc-percent/AtlasSDK.svg?maxAge=2592000" alt="CocoaPods"></a>
 <a href="https://raw.github.bus.zalan.do/Atlas/atlas-ios/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT licensed"></a></p>
+
+<p><a href="https://codebeat.co/projects/github-com-zalando-incubator-atlas-ios"><img src="https://codebeat.co/badges/85202868-c550-46c0-9423-f71467f0fabf" alt="codebeat badge"></a>
+<a href="https://codecov.io/gh/zalando-incubator/atlas-ios"><img src="https://codecov.io/gh/zalando-incubator/atlas-ios/branch/master/graph/badge.svg" alt="codecov"></a>
+<a href="https://dashboard.buddybuild.com/apps/57a305cb34a9450100595b71/build/latest"><img src="https://dashboard.buddybuild.com/api/statusImage?appID=57a305cb34a9450100595b71&amp;branch=master&amp;build=latest" alt="BuddyBuild"></a>
+<a href="https://travis-ci.org/zalando-incubator/atlas-ios"><img src="https://travis-ci.org/zalando-incubator/atlas-ios.svg?branch=master" alt="Build Status"></a></p>
 <a href='#atlas-ios-sdk' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='atlas-ios-sdk'>Atlas iOS SDK</h1>
 
 <p>Atlas iOS SDK for Zalando Checkout and Catalog APIs.</p>
@@ -197,7 +182,7 @@ high-level business objects to deal with.</p>
 </ul>
 <pre class="highlight plaintext"><code>brew install swiftlint carthage
 gem install bundler
-bundle
+bundle install
 </code></pre>
 <a href='#start-developing' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='start-developing'>Start developing</h3>
 <pre class="highlight plaintext"><code>git clone git@github.bus.zalan.do:Atlas/atlas-ios.git &amp;&amp; cd $_
@@ -229,7 +214,7 @@ to the <a href="https://help.github.com/articles/creating-an-access-token-for-co
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2016 <a class="link" href="https://github.bus.zalan.do/Atlas/atlas-ios" target="_blank" rel="external">Atlas</a>. All rights reserved. (Last updated: 2016-08-02)</p>
+          <p>&copy; 2016 <a class="link" href="https://github.com/zalando-incubator/atlas-ios" target="_blank" rel="external">Atlas</a>. All rights reserved. (Last updated: 2016-08-17)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

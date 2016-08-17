@@ -28,27 +28,13 @@
       <nav class="sidebar">
         <ul class="nav-groups">
           <li class="nav-group-name">
-            <a href="Global Variables.html">Global Variables</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Global Variables.html#/s:v8AtlasSDK11ErrorDomainSS">ErrorDomain</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Global Variables.html#/s:v8AtlasSDK20ErrorUnsupportedTypeSi">ErrorUnsupportedType</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
             <a href="Enums.html">Enums</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="Enums.html#/s:O8AtlasSDK11AtlasResult">AtlasResult</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Enums.html#/s:O8AtlasSDK7JSONKey">JSONKey</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Enums.html#/s:O8AtlasSDK6Result">Result</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Enums.html#/s:O8AtlasSDK4Type">Type</a>
               </li>
             </ul>
           </li>
@@ -56,19 +42,7 @@
             <a href="Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Extensions.html#/s:Sa">Array</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="Extensions.html#/s:Si">Int</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Extensions.html#/c:objc(cs)NSData">NSData</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Extensions.html#/c:objc(cs)NSHTTPURLResponse">NSHTTPURLResponse</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Extensions.html#/c:objc(cs)NSMutableURLRequest">NSMutableURLRequest</a>
               </li>
               <li class="nav-group-task">
                 <a href="Extensions.html#/s:SS">String</a>
@@ -89,6 +63,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="Structs/Article.html#/s:VV8AtlasSDK7Article5Price">– Price</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs.html#/s:V8AtlasSDK6Config">Config</a>
               </li>
               <li class="nav-group-task">
                 <a href="Structs.html#/s:V8AtlasSDK8Customer">Customer</a>
@@ -130,9 +107,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:8AtlasSDK18CheckoutCompletion"></a>
-                    <a name="//apple_ref/swift/Alias/CheckoutCompletion" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8AtlasSDK18CheckoutCompletion">CheckoutCompletion</a>
+                    <a name="/s:8AtlasSDK17ArticleCompletion"></a>
+                    <a name="//apple_ref/swift/Alias/ArticleCompletion" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8AtlasSDK17ArticleCompletion">ArticleCompletion</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -140,14 +117,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Completion block <code><a href="Enums.html#/s:O8AtlasSDK6Result">Result</a></code> with the <code>Checkout</code> struct as a success value</p>
+                        <p>Completion block <code><a href="Enums.html#/s:O8AtlasSDK11AtlasResult">AtlasResult</a></code> with the <code><a href="Structs/Article.html">Article</a></code> struct as a success value</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">CheckoutCompletion</span> <span class="o">=</span> <span class="kt"><a href="Enums.html#/s:O8AtlasSDK6Result">Result</a></span><span class="o">&lt;</span><span class="kt">Checkout</span><span class="o">&gt;</span> <span class="o">-&gt;</span> <span class="kt">Void</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">ArticleCompletion</span> <span class="o">=</span> <span class="kt"><a href="Enums.html#/s:O8AtlasSDK11AtlasResult">AtlasResult</a></span><span class="o">&lt;</span><span class="kt"><a href="Structs/Article.html">Article</a></span><span class="o">&gt;</span> <span class="o">-&gt;</span> <span class="kt">Void</span></code></pre>
 
                         </div>
                       </div>
@@ -167,14 +144,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Completion block <code><a href="Enums.html#/s:O8AtlasSDK6Result">Result</a></code> with the <code><a href="Structs.html#/s:V8AtlasSDK8Customer">Customer</a></code> struct as a success value</p>
+                        <p>Completion block <code><a href="Enums.html#/s:O8AtlasSDK11AtlasResult">AtlasResult</a></code> with the <code><a href="Structs.html#/s:V8AtlasSDK8Customer">Customer</a></code> struct as a success value</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">CustomerCompletion</span> <span class="o">=</span> <span class="kt"><a href="Enums.html#/s:O8AtlasSDK6Result">Result</a></span><span class="o">&lt;</span><span class="kt"><a href="Structs.html#/s:V8AtlasSDK8Customer">Customer</a></span><span class="o">&gt;</span> <span class="o">-&gt;</span> <span class="kt">Void</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">CustomerCompletion</span> <span class="o">=</span> <span class="kt"><a href="Enums.html#/s:O8AtlasSDK11AtlasResult">AtlasResult</a></span><span class="o">&lt;</span><span class="kt"><a href="Structs.html#/s:V8AtlasSDK8Customer">Customer</a></span><span class="o">&gt;</span> <span class="o">-&gt;</span> <span class="kt">Void</span></code></pre>
 
                         </div>
                       </div>
@@ -194,14 +171,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Completion block <code><a href="Enums.html#/s:O8AtlasSDK6Result">Result</a></code> with the <code>Order</code> struct as a success value</p>
+                        <p>Completion block <code><a href="Enums.html#/s:O8AtlasSDK11AtlasResult">AtlasResult</a></code> with the <code>Order</code> struct as a success value</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">OrderCompletion</span> <span class="o">=</span> <span class="kt"><a href="Enums.html#/s:O8AtlasSDK6Result">Result</a></span><span class="o">&lt;</span><span class="kt">Order</span><span class="o">&gt;</span> <span class="o">-&gt;</span> <span class="kt">Void</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">OrderCompletion</span> <span class="o">=</span> <span class="kt"><a href="Enums.html#/s:O8AtlasSDK11AtlasResult">AtlasResult</a></span><span class="o">&lt;</span><span class="kt">Order</span><span class="o">&gt;</span> <span class="o">-&gt;</span> <span class="kt">Void</span></code></pre>
 
                         </div>
                       </div>
@@ -211,9 +188,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:8AtlasSDK17ArticleCompletion"></a>
-                    <a name="//apple_ref/swift/Alias/ArticleCompletion" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8AtlasSDK17ArticleCompletion">ArticleCompletion</a>
+                    <a name="/s:8AtlasSDK18CheckoutCompletion"></a>
+                    <a name="//apple_ref/swift/Alias/CheckoutCompletion" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8AtlasSDK18CheckoutCompletion">CheckoutCompletion</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -221,14 +198,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Completion block <code><a href="Enums.html#/s:O8AtlasSDK6Result">Result</a></code> with the <code><a href="Structs/Article.html">Article</a></code> struct as a success value</p>
+                        <p>Completion block <code><a href="Enums.html#/s:O8AtlasSDK11AtlasResult">AtlasResult</a></code> with the <code>Checkout</code> struct as a success value</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">ArticleCompletion</span> <span class="o">=</span> <span class="kt"><a href="Enums.html#/s:O8AtlasSDK6Result">Result</a></span><span class="o">&lt;</span><span class="kt"><a href="Structs/Article.html">Article</a></span><span class="o">&gt;</span> <span class="o">-&gt;</span> <span class="kt">Void</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">CheckoutCompletion</span> <span class="o">=</span> <span class="kt"><a href="Enums.html#/s:O8AtlasSDK11AtlasResult">AtlasResult</a></span><span class="o">&lt;</span><span class="kt">Checkout</span><span class="o">&gt;</span> <span class="o">-&gt;</span> <span class="kt">Void</span></code></pre>
 
                         </div>
                       </div>
@@ -248,14 +225,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Completion block <code><a href="Enums.html#/s:O8AtlasSDK6Result">Result</a></code> with the <code>Cart</code> struct as a success value</p>
+                        <p>Completion block <code><a href="Enums.html#/s:O8AtlasSDK11AtlasResult">AtlasResult</a></code> with the <code>Cart</code> struct as a success value</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">CartCompletion</span> <span class="o">=</span> <span class="kt"><a href="Enums.html#/s:O8AtlasSDK6Result">Result</a></span><span class="o">&lt;</span><span class="kt">Cart</span><span class="o">&gt;</span> <span class="o">-&gt;</span> <span class="kt">Void</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">CartCompletion</span> <span class="o">=</span> <span class="kt"><a href="Enums.html#/s:O8AtlasSDK11AtlasResult">AtlasResult</a></span><span class="o">&lt;</span><span class="kt">Cart</span><span class="o">&gt;</span> <span class="o">-&gt;</span> <span class="kt">Void</span></code></pre>
 
                         </div>
                       </div>
@@ -267,7 +244,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2016 <a class="link" href="https://github.bus.zalan.do/Atlas/atlas-ios" target="_blank" rel="external">Atlas</a>. All rights reserved. (Last updated: 2016-08-02)</p>
+          <p>&copy; 2016 <a class="link" href="https://github.com/zalando-incubator/atlas-ios" target="_blank" rel="external">Atlas</a>. All rights reserved. (Last updated: 2016-08-17)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
