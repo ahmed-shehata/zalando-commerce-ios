@@ -36,6 +36,7 @@ internal final class CheckoutSummaryRow: UIView, UIGestureRecognizerDelegate {
     }
 
     func setup() {
+        self.removeAllSubviews()
         titleTextLabel.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(titleTextLabel)
         titleTextLabel.text = titleTextLabel.text?.uppercaseString

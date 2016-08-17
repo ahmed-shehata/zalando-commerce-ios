@@ -1,5 +1,6 @@
 codecov:
   branch: master
+  bot: bonkey
 
 coverage:
   precision: 2
