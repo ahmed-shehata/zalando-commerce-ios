@@ -78,7 +78,6 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 
-    // TODO: change to closure.
     private func showLoadingView() {
         let indicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
         let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height))

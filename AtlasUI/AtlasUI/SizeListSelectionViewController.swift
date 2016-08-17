@@ -55,7 +55,7 @@ final class SizeListSelectionViewController: UITableViewController, CheckoutProv
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         guard let cell = tableView.cellForRowAtIndexPath(indexPath) else { return }
 
-        let spinner = UIActivityIndicatorView(activityIndicatorStyle: .Gray) // TODO: implement generic "WaitIndicator" everywhere
+        let spinner = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
         cell.accessoryView = spinner
         spinner.startAnimating()
         tableView.userInteractionEnabled = false
