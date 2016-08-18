@@ -43,7 +43,9 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
         guard Atlas.isUserLoggedIn() else {
             let checkoutModel = CheckoutViewModel(article: article, selectedUnitIndex: 0)
             let checkoutSummaryVC = CheckoutSummaryViewController(checkout: checkout, checkoutViewModel: checkoutModel)
-            self.showViewController(checkoutSummaryVC, sender: self)
+            UIView.performWithoutAnimation {
+                self.showViewController(checkoutSummaryVC, sender: self)
+            }
             return
         }
 

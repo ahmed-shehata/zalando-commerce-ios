@@ -34,7 +34,7 @@ extension HttpServer {
 
     private func wait(seconds timeout: NSTimeInterval, forState state: HttpServerIOState) throws {
         var waiting = 0.0
-        let waitStep = 0.1
+        let waitStep = 0.5
         while self.state != state && waiting < timeout {
             NSThread.sleepForTimeInterval(waitStep)
             waiting += waitStep
