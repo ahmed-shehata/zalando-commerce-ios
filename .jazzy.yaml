@@ -5,5 +5,5 @@ clean: true
 podspec: AtlasSDK.podspec
 output: Documentation/Atlas
 skip_undocumented: true
-hide_documentation_coverage: true
+hide_documentation_coverage: false
 theme: apple
