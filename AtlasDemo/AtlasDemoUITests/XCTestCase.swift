@@ -24,7 +24,7 @@ extension XCTestCase {
     func waitForElementToAppearAndTap(element: XCUIElement, timeout: NSTimeInterval = 10,
         file: String = #file, line: UInt = #line) {
             waitForElementToAppear(element, timeout: timeout, file: file, line: line) { element in
-                element.tap()
+                element.coordinateWithNormalizedOffset(CGVector(dx: 0.5, dy: 0.5)).tap()
             }
     }
 
