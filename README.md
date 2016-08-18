@@ -1,8 +1,8 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![CocoaPods](https://img.shields.io/cocoapods/v/AtlasSDK.svg?maxAge=2592000)](https://github.com/zalando-incubator/atlas-ios)
-[![CocoaPods](https://img.shields.io/cocoapods/at/AtlasSDK.svg?maxAge=2592000)](https://github.com/zalando-incubator/atlas-ios)
-[![CocoaPods](https://img.shields.io/cocoapods/p/AtlasSDK.svg?maxAge=2592000)](https://github.com/zalando-incubator/atlas-ios)
-[![CocoaPods](https://img.shields.io/cocoapods/metrics/doc-percent/AtlasSDK.svg?maxAge=2592000)](https://github.com/zalando-incubator/atlas-ios)
+[![CocoaPods](https://img.shields.io/cocoapods/v/AtlasSDK.svg?maxAge=2592000)]()
+[![CocoaPods](https://img.shields.io/cocoapods/at/AtlasSDK.svg?maxAge=2592000)]()
+[![CocoaPods](https://img.shields.io/cocoapods/p/AtlasSDK.svg?maxAge=2592000)]()
+[![CocoaPods](https://img.shields.io/cocoapods/metrics/doc-percent/AtlasSDK.svg?maxAge=2592000)]()
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.github.bus.zalan.do/Atlas/atlas-ios/master/LICENSE)
 
 [![codebeat badge](https://codebeat.co/badges/85202868-c550-46c0-9423-f71467f0fabf)](https://codebeat.co/projects/github-com-zalando-incubator-atlas-ios)
