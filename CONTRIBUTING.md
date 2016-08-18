@@ -7,10 +7,10 @@ Pull requests should only be merged after all discussions have been concluded an
 
 ## Workflow
 
-1. Create an issue and describe your idea
-2. Create your feature branch (git checkout -b my-new-feature)
+1. Create an issue and describe your idea (use its number)
+2. Create your feature branch (git checkout -b issue-NUMBER)
 3. Commit your changes (git commit -am 'Add some feature')
-4. Publish the branch (git push origin my-new-feature)
+4. Publish the branch (git push origin issue-NUMBER)
 5. Create a new Pull Request
 
 ## Guidelines

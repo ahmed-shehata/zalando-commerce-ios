@@ -115,7 +115,7 @@ extension LoginViewController: UIWebViewDelegate {
 
         override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
             if motion == .MotionShake {
-                self.login(email: "john.doe.lucky@zalando.de", password: "12345678")
+                self.login(email: "atlas-testing@mailinator.com", password: "12345678")
             }
         }
 
@@ -148,7 +148,7 @@ extension LoginViewController {
             + "document.getElementsByClassName('z-button-submit')[0].click() "
 
         let ret = webView.stringByEvaluatingJavaScriptFromString(loginJS)
-        print("SUMBIT: ", ret)
+        print("SUMBIT RESULT: ", ret)
     }
 
 }

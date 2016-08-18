@@ -42,7 +42,7 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
     private func showCheckoutScreen(article: Article, selectedUnitIndex: Int) {
         guard Atlas.isUserLoggedIn() else {
             let checkoutModel = CheckoutViewModel(article: article, selectedUnitIndex: 0)
-            let checkoutSummaryVC = CheckoutSummaryViewController(checkout: checkout, customer: nil, checkoutViewModel: checkoutModel)
+            let checkoutSummaryVC = CheckoutSummaryViewController(checkout: checkout, checkoutViewModel: checkoutModel)
             UIView.performWithoutAnimation {
                 self.showViewController(checkoutSummaryVC, sender: self)
             }
@@ -68,8 +68,7 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
                     UserMessage.showError(title: self.loc("Error"), error: error)
                 }
             case .success(let checkoutViewModel):
-                let checkoutSummaryVC = CheckoutSummaryViewController(checkout: self.checkout,
-                    customer: customer, checkoutViewModel: checkoutViewModel)
+                let checkoutSummaryVC = CheckoutSummaryViewController(checkout: self.checkout, checkoutViewModel: checkoutViewModel)
 
                 UIView.performWithoutAnimation {
                     self.showViewController(checkoutSummaryVC, sender: self)

@@ -19,6 +19,10 @@ public struct Article {
         return units.count == 1
     }
 
+    public var thumbnailUrl: NSURL? {
+        return media.images.first?.catalogUrl
+    }
+
     public struct Brand {
         public let name: String
     }
