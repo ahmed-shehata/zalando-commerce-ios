@@ -1,13 +1,13 @@
+[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/zalando-incubator/atlas-ios/master/LICENSE)]()
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CocoaPods](https://img.shields.io/cocoapods/v/AtlasSDK.svg?maxAge=3600)]()
-[![CocoaPods](https://img.shields.io/cocoapods/at/AtlasSDK.svg?maxAge=3600)]()
 [![CocoaPods](https://img.shields.io/cocoapods/p/AtlasSDK.svg?maxAge=3600)]()
-[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.github.bus.zalan.do/Atlas/atlas-ios/master/LICENSE)
+[![CocoaPods](https://img.shields.io/cocoapods/at/AtlasSDK.svg?maxAge=3600)]()
 
-[![codebeat badge](https://codebeat.co/badges/85202868-c550-46c0-9423-f71467f0fabf)](https://codebeat.co/projects/github-com-zalando-incubator-atlas-ios)
-[![codecov](https://codecov.io/gh/zalando-incubator/atlas-ios/branch/master/graph/badge.svg)](https://codecov.io/gh/zalando-incubator/atlas-ios)
-[![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=57a305cb34a9450100595b71&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/57a305cb34a9450100595b71/build/latest)
 [![Build Status](https://travis-ci.org/zalando-incubator/atlas-ios.svg?branch=master)](https://travis-ci.org/zalando-incubator/atlas-ios)
+[![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=57a305cb34a9450100595b71&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/57a305cb34a9450100595b71/build/latest)
+[![codecov](https://codecov.io/gh/zalando-incubator/atlas-ios/branch/master/graph/badge.svg)](https://codecov.io/gh/zalando-incubator/atlas-ios)
+[![codebeat badge](https://codebeat.co/badges/85202868-c550-46c0-9423-f71467f0fabf)](https://codebeat.co/projects/github-com-zalando-incubator-atlas-ios)
 
 # Atlas iOS SDK
 Atlas iOS SDK for Zalando Checkout and Catalog APIs.
@@ -82,42 +82,6 @@ Public Checkout functionality provided to customers.
     ```
 
 3. No third step :)
-
-## Development environment setup
-
-### Requirements
-
-- Carthage
-- SwiftLint
-
-```
-brew install swiftlint carthage
-gem install bundler
-bundle install
-```
-
-### Start developing
-
-```
-git clone git@github.bus.zalan.do:Atlas/atlas-ios.git && cd $_
-./calypso.rb deps build
-open Atlas.xcworkspace
-```
-
-### SwiftLint
-
-There's `./calypso.rb lint check` for check and `./calypso.rb lint fix` to apply rules tasks manually.
-
-The same `check` task is included into the build targets.
-
-
-### Changelog generation
-
-Sometime it is very helpful to have a full changelog.
-In order to generate a new one you need to set environment variable CHANGELOG_GITHUB_TOKEN pointing
-to the [GitHub access token for command-line use](https://help.github.com/articles/creating-an-access-token-for-command-line-use/)
-
-After that simply run `./calypso.rb docs changelog` to generate new CHANGELOG.md file.
 
 ## LICENSE
 
