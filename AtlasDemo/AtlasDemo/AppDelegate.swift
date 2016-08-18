@@ -8,7 +8,6 @@ import AtlasSDK
 import AtlasUI
 import AtlasMockAPI
 
-// TODO: might be temporary, but might be not. we'll see
 var AtlasCheckoutInstance: AtlasCheckout? // swiftlint:disable:this variable_name
 
 @UIApplicationMain

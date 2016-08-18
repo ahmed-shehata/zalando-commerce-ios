@@ -14,18 +14,21 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
     internal let stackView: UIStackView = UIStackView()
     internal let buyButton = UIButton()
     internal let connectToZalandoButton = UIButton()
-    internal let shippingPrice: Float = 0
 
+    internal let shippingPrice: Float = 0
     internal let shippingView = CheckoutSummaryRow()
     internal let paymentMethodView = CheckoutSummaryRow()
-    internal private(set) var customer: Customer?
-    internal private(set) var checkoutViewModel: CheckoutViewModel
+
+    internal private(set) var checkoutViewModel: CheckoutViewModel {
+        didSet {
+            updateData()
+        }
+    }
 
     internal var checkout: AtlasCheckout
 
-    init(checkout: AtlasCheckout, customer: Customer?, checkoutViewModel: CheckoutViewModel) {
+    init(checkout: AtlasCheckout, checkoutViewModel: CheckoutViewModel) {
         self.checkout = checkout
-        self.customer = customer
         self.checkoutViewModel = checkoutViewModel
 
         super.init(nibName: nil, bundle: nil)
@@ -56,6 +59,7 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
             self.setupButtons()
             self.setupShippingView()
             self.setupPaymentMethodView()
+            self.updateData()
             CheckoutSummaryStyler(checkoutSummaryViewController: self).stylize()
         }
     }
@@ -91,7 +95,7 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
     private func setupNavBar() {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
 
-        if let article = self.checkoutViewModel.article where article.hasSingleUnit {
+        if checkoutViewModel.article.hasSingleUnit {
             self.navigationItem.setHidesBackButton(true, animated: false)
         }
 
@@ -99,6 +103,10 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
             target: self, action: #selector(CheckoutSummaryViewController.cancelCheckoutTapped(_:)))
 
         navigationItem.rightBarButtonItem = cancelButton
+    }
+
+    private func connectToZalando() {
+        loadCustomerData()
     }
 
     private func loadCustomerData() {
@@ -116,23 +124,16 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
         }
     }
 
-    private func connectToZalando() {
-        loadCustomerData()
-    }
-
     private func generateCheckoutAndRefreshViews(customer: Customer) {
-        guard let article = self.checkoutViewModel.article,
-            articleIndex = self.checkoutViewModel.selectedUnitIndex else { return }
-
-        checkout.createCheckout(withArticle: article, articleUnitIndex: articleIndex) { result in
+        checkout.createCheckout(withArticle: checkoutViewModel.article, articleUnitIndex: checkoutViewModel.selectedUnitIndex) { result in
             switch result {
             case .failure(let error):
                 self.dismissViewControllerAnimated(true) {
                     UserMessage.showError(title: self.loc("Fatal Error"), error: error)
                 }
-            case .success(let checkout):
+            case .success(var checkout):
+                checkout.customer = customer
                 self.checkoutViewModel = checkout
-                self.customer = customer
                 self.setupViews()
             }
         }
@@ -143,36 +144,35 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
     }
 
     private func setupViewLabels() {
-        if checkoutViewModel.hasArticle {
-            view.addSubview(productNameLabel)
-            view.addSubview(purchasedObjectSummaryLabel)
-        }
+        view.addSubview(productNameLabel)
+        view.addSubview(purchasedObjectSummaryLabel)
     }
 
     private func setupTermsAndConditionsButton() {
-        self.view.addSubview(termsAndConditionsButton)
+        view.addSubview(termsAndConditionsButton)
     }
 
     private func setupButtons() {
-        self.view.addSubview(buyButton)
-        self.view.addSubview(connectToZalandoButton)
-        buyButton.hidden = true
+        view.addSubview(connectToZalandoButton)
         connectToZalandoButton.hidden = true
-
-        buyButton.addTarget(self, action: #selector(CheckoutSummaryViewController.buyButtonTapped(_:)),
-            forControlEvents: .TouchUpInside)
+        connectToZalandoButton.setTitle(loc("Connect To Zalando"), forState: .Normal)
         connectToZalandoButton.addTarget(self, action: #selector(CheckoutSummaryViewController.connectToZalandoButtonTapped(_:)),
             forControlEvents: .TouchUpInside)
-
+        view.addSubview(buyButton)
+        buyButton.hidden = true
+        buyButton.setTitle(loc("Buy Now"), forState: .Normal)
+        buyButton.addTarget(self, action: #selector(CheckoutSummaryViewController.buyButtonTapped(_:)),
+            forControlEvents: .TouchUpInside)
     }
+
     private func setupStackView() {
-        self.view.addSubview(self.stackView)
+        view.addSubview(self.stackView)
     }
 
     private func setupBlurView() {
         let blurEffect = UIBlurEffect(style: .ExtraLight)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        self.view.addSubview(blurEffectView)
+        view.addSubview(blurEffectView)
 
         blurEffectView.frame = self.view.bounds
         blurEffectView.frame.makeIntegralInPlace()
@@ -189,56 +189,31 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
         shippingView.titleTextLabel.text = loc("Shipping")
         shippingView.detailTextLabel.text = loc("No Shipping Address")
         stackView.addArrangedSubview(shippingView)
-
-        if let shippingViewText = self.checkoutViewModel.shippingAddressText {
-            shippingView.detailTextLabel.text = shippingViewText
-        }
     }
 
     private func setupPaymentMethodView() {
-        paymentMethodView.titleTextLabel.text = loc("Payment")
-        paymentMethodView.detailTextLabel.text = loc("No Payment Method")
-
         stackView.addArrangedSubview(paymentMethodView)
-        if let paymentURL = self.checkoutViewModel.checkout?.payment.selectionPageUrl {
+
+        paymentMethodView.tapAction = {
+            guard let paymentURL = self.checkoutViewModel.checkout?.payment.selectionPageUrl else { return }
             let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
             paymentSelectionViewController.paymentCompletion = { _ in
                 self.loadCustomerData()
             }
-            paymentMethodView.tapAction = {
-                self.showViewController(paymentSelectionViewController, sender: self)
-            }
+            self.showViewController(paymentSelectionViewController, sender: self)
         }
-
-        if let paymentMethodText = self.checkoutViewModel.paymentMethodText {
-            paymentMethodView.detailTextLabel.text = paymentMethodText
-        }
-
     }
 
-}
+    private func updateData() {
+        paymentMethodView.titleTextLabel.text = loc("Payment")
+        paymentMethodView.detailTextLabel.text = self.checkoutViewModel.paymentMethodText ?? loc("No Payment Method")
 
-extension CheckoutSummaryViewController {
+        productNameLabel.text = checkoutViewModel.article.brand.name
+        purchasedObjectSummaryLabel.text = checkoutViewModel.article.name
 
-    internal func topSeparatorView() -> UIView? {
-        let topSeparatorView = UIView()
-        topSeparatorView.layer.borderWidth = 5
-        topSeparatorView.layer.borderColor = UIColor.blackColor().CGColor
-        topSeparatorView.alpha = 0.2
-        topSeparatorView.translatesAutoresizingMaskIntoConstraints = false
-        return topSeparatorView
-    }
+        productImageView.setImage(fromUrl: checkoutViewModel.article.thumbnailUrl)
 
-    internal func paymentSummaryRow() -> UIView? {
-        guard let article = self.checkoutViewModel.selectedUnit else {
-            return nil
-        }
-
-        let shippingPrice: Float? = customer != nil ? self.shippingPrice : nil
-        let paymentSummaryRow = PaymentSummaryRow(shippingPrice: shippingPrice, itemPrice: article.price, localizerProvider: self)
-        paymentSummaryRow.translatesAutoresizingMaskIntoConstraints = false
-
-        return paymentSummaryRow
+        shippingView.detailTextLabel.text = self.checkoutViewModel.shippingAddressText ?? loc("No Shipping Address")
     }
 
 }

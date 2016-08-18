@@ -71,6 +71,7 @@ class AtlasDemoUITests: XCTestCase {
     private func tapConnectAndLogin() {
         waitForElementToAppearAndTap(app.buttons["Connect To Zalando"])
         fillInLogin()
+        NSThread.sleepForTimeInterval(2)
     }
 
     private func tapBuyNow() {

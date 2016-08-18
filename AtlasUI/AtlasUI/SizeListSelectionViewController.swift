@@ -55,37 +55,40 @@ final class SizeListSelectionViewController: UITableViewController, CheckoutProv
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         guard let cell = tableView.cellForRowAtIndexPath(indexPath) else { return }
 
-        let spinner: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+        let spinner = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
         cell.accessoryView = spinner
         spinner.startAnimating()
         tableView.userInteractionEnabled = false
 
-        if !Atlas.isUserLoggedIn() {
+        guard Atlas.isUserLoggedIn() else {
             let checkoutModel = CheckoutViewModel(article: self.article, selectedUnitIndex: indexPath.row)
-            let checkoutSummaryVC = CheckoutSummaryViewController(checkout: checkout, customer: nil, checkoutViewModel: checkoutModel)
+            let checkoutSummaryVC = CheckoutSummaryViewController(checkout: checkout, checkoutViewModel: checkoutModel)
             self.showViewController(checkoutSummaryVC, sender: self)
-        } else {
-            self.checkout.client.customer { result in
-                switch result {
-                case .failure(let error):
-                    UserMessage.showError(title: self.loc("Error"), error: error)
+            spinner.stopAnimating()
+            return
+        }
 
-                case .success(let customer):
-                    self.checkout.createCheckout(withArticle: self.article, articleUnitIndex: indexPath.row) { result in
-                        switch result {
-                        case .failure(let error):
-                            self.dismissViewControllerAnimated(true) {
-                                UserMessage.showError(title: self.loc("Fatal Error"), error: error)
-                            }
-                        case .success(let checkoutViewModel):
-                            let checkoutSummaryVC = CheckoutSummaryViewController(checkout: self.checkout,
-                                customer: customer, checkoutViewModel: checkoutViewModel)
-                            self.showViewController(checkoutSummaryVC, sender: self)
+        self.checkout.client.customer { result in
+
+            switch result {
+            case .failure(let error):
+                UserMessage.showError(title: self.loc("Error"), error: error)
+
+            case .success(let customer):
+                self.checkout.createCheckout(withArticle: self.article, articleUnitIndex: indexPath.row) { result in
+                    spinner.stopAnimating()
+                    switch result {
+                    case .failure(let error):
+                        self.dismissViewControllerAnimated(true) {
+                            UserMessage.showError(title: self.loc("Fatal Error"), error: error)
                         }
+                    case .success(var checkoutViewModel):
+                        checkoutViewModel.customer = customer
+                        let checkoutSummaryVC = CheckoutSummaryViewController(checkout: self.checkout, checkoutViewModel: checkoutViewModel)
+                        self.showViewController(checkoutSummaryVC, sender: self)
                     }
                 }
             }
         }
     }
-
 }
