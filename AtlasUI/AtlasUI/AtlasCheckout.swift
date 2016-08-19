@@ -7,7 +7,8 @@ import UIKit
 import AtlasSDK
 
 public typealias AtlasCheckoutConfigurationCompletion = AtlasResult<AtlasCheckout> -> Void
-public typealias CreateCheckoutCompletion = AtlasResult<CheckoutViewModel> -> Void
+
+typealias CreateCheckoutCompletion = AtlasResult<CheckoutViewModel> -> Void
 
 public class AtlasCheckout: LocalizerProviderType {
 
@@ -82,11 +83,11 @@ public class AtlasCheckout: LocalizerProviderType {
 
 extension AtlasCheckout: Localizable {
 
-    public var localizedStringsBundle: NSBundle {
+    var localizedStringsBundle: NSBundle {
         return NSBundle(forClass: SizeSelectionViewController.self)
     }
 
-    public var localeIdentifier: String {
+    var localeIdentifier: String {
         return options.interfaceLanguage
     }
 

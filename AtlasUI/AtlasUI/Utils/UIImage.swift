@@ -6,7 +6,7 @@ import UIKit
 
 extension UIImage {
 
-    public convenience init?(named imageName: String, bundledWith anyClass: AnyClass,
+    convenience init?(named imageName: String, bundledWith anyClass: AnyClass,
         compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) {
             let bundle = NSBundle(forClass: anyClass)
             self.init(named: imageName, inBundle: bundle, compatibleWithTraitCollection: traitCollection)

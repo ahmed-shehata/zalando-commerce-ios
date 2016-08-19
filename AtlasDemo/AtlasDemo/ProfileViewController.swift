@@ -27,7 +27,7 @@ class ProfileViewController: UIViewController {
         AtlasCheckoutInstance?.client.customer { result in
             switch result {
             case .failure(let error):
-                UserMessage.showError(title: "Error", error: error)
+                self.showError(title: "Error", error: error)
 
             case .success(let customer):
                 self.avatar.image = UIImage(named: "user")

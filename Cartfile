@@ -11,3 +11,4 @@ github "httpswift/swifter" "stable"
 
 github "SwiftyJSON/SwiftyJSON"
 github "Alamofire/Alamofire"
+github "Alamofire/AlamofireImage"
