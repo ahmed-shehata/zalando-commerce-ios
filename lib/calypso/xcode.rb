@@ -70,7 +70,8 @@ module Calypso
       scheme = scheme.nil? ? nil : "-scheme #{scheme}"
       cmd = base_build_cmd(WORKSPACE, cmd, scheme, args)
 
-      "set -o pipefail && #{cmd} | xcpretty"
+      # "set -o pipefail && #{cmd} | xcpretty"
+      cmd
     end
 
   end
