@@ -6,13 +6,24 @@ notifications:
 
 cache:
   bundler: true
-  directories:
-  - Carthage
-
-install:
-  - bundle install --without=tools
-  - travis_wait 30 ./calypso.rb deps uncached
 
 script:
-  - ./calypso.rb xcode test
+  - bundle exec ./calypso.rb xcode test UnitTests 3
+
+after_script:
   - bash <(curl -s https://codecov.io/bash) -J AtlasSDK -J AtlasUI
+
+# CARTHAGE: automatic release
+
+# env:
+#   global:
+#     - FRAMEWORK_NAME=AtlasSDK
+
+# before_deploy:
+#   - carthage build --no-skip-current --platform iOS
+#   - carthage archive $FRAMEWORK_NAME
+
+# skip_cleanup: true
+# on:
+#   repo: repo/repo
+#   tags: true

@@ -5,29 +5,29 @@
 import Foundation
 import AtlasSDK
 
-public struct CheckoutViewModel {
+struct CheckoutViewModel {
 
-    public let shippingAddressText: String?
-    public let paymentMethodText: String?
-    public let discountText: String?
-    public let shippingPrice: Article.Price?
-    public let checkout: Checkout?
+    let shippingAddressText: String?
+    let paymentMethodText: String?
+    let discountText: String?
+    let shippingPrice: Article.Price?
+    let checkout: Checkout?
 
-    public internal(set) var customer: Customer?
+    internal(set) var customer: Customer?
 
-    public let selectedUnitIndex: Int
+    let selectedUnitIndex: Int
 
-    public let article: Article
+    let article: Article
 
-    public var isPaymentSelected: Bool {
+    var isPaymentSelected: Bool {
         return customer != nil && checkout?.payment.selected?.method != nil
     }
 
-    public var selectedUnit: Article.Unit {
+    var selectedUnit: Article.Unit {
         return article.units[selectedUnitIndex]
     }
 
-    public var unitPrice: Article.Price {
+    var unitPrice: Article.Price {
         return self.article.units[selectedUnitIndex].price
     }
 

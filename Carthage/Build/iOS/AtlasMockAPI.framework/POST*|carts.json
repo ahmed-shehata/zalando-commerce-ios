@@ -1,0 +1,21 @@
+{
+    "id" : "CART_ID",
+    "sales_channel" : "SALES_CHANNEL_ID",
+    "items" : [ {
+               "sku" : "EV451G023-Q110ONE000",
+               "quantity" : 1
+               } ],
+    "items_out_of_stock" : [ ],
+    "delivery" : {
+        "earliest" : "2016-07-23T16:51:34.142Z",
+        "latest" : "2016-07-25T16:51:34.142Z"
+    },
+    "gross_total" : {
+        "amount" : 10.45,
+        "currency" : "EUR"
+    },
+    "tax_total" : {
+        "amount" : 1.67,
+        "currency" : "EUR"
+    }
+}

@@ -37,11 +37,14 @@ class ArticlesClient {
             return AtlasMockAPI.endpointURL(forPath: "/articles")
         }
 
-        let urlComponents = NSURLComponents(validUrlString: "https://api.zalando.com/articles")
+        // swiftlint:disable:next force_unwrapping
+        let urlComponents = NSURLComponents(string: "https://api.zalando.com/articles")!
         urlComponents.queryItems = skus.map {
             NSURLQueryItem(name: "articleId", value: $0)
         }
-        return urlComponents.validURL
+
+        // swiftlint:disable:next force_unwrapping
+        return urlComponents.URL!
     }
 
 }

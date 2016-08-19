@@ -1,0 +1,10 @@
+framework module AtlasSDK {
+  umbrella header "AtlasSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module AtlasSDK.Swift {
+    header "AtlasSDK-Swift.h"
+}

@@ -1,0 +1,10 @@
+framework module AtlasMockAPI {
+  umbrella header "AtlasMockAPI.h"
+
+  export *
+  module * { export * }
+}
+
+module AtlasMockAPI.Swift {
+    header "AtlasMockAPI-Swift.h"
+}
