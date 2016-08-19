@@ -1,26 +1,33 @@
 language: objective-c
 osx_image: xcode7.3
 
+xcode_workspace: AtlasSDK.xcworkspace
+xcode_scheme: UnitTests
+xcode_sdk: iphonesimulator9.3
+
 notifications:
   email: false
 
 cache:
   bundler: true
-  # Temporarily disabled to test binary frameworks in repo
+  # BIN FRAMEWORKS: Temporarily disabled to test binary frameworks in repo
   # directories:
   #   - Carthage
 
-# Temporarily disabled to test binary frameworks in repo
+# BIN FRAMEWORKS: Temporarily disabled to test binary frameworks in repo
 # before_install:
 #   - bundle install --without=tools
 # before_script:
 #   - travis_wait 30 ./calypso.rb deps uncached
 
-script:
-  - bundle exec ./calypso.rb xcode test UnitTests 3
+# XCTOOL: let's try with native xctool
+# script:
+#   - bundle exec ./calypso.rb xcode test UnitTests 3
+
+after_script:
   - bash <(curl -s https://codecov.io/bash) -J AtlasSDK -J AtlasUI
 
-# Carthage automatic release
+# CARTHAGE: automatic release
 
 # env:
 #   global:
