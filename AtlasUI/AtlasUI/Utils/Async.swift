@@ -28,7 +28,7 @@ private struct Queues {
 
 }
 
-public struct Async {
+struct Async {
 
     private let block: dispatch_block_t
 
@@ -36,23 +36,23 @@ public struct Async {
         self.block = block
     }
 
-    public static func main(block: dispatch_block_t) -> Async {
+    static func main(block: dispatch_block_t) -> Async {
         return run(inQueue: Queues.main(), block: block)
     }
 
-    public static func userInteractive(block: dispatch_block_t) -> Async {
+    static func userInteractive(block: dispatch_block_t) -> Async {
         return run(inQueue: Queues.userInteractive(), block: block)
     }
 
-    public static func userInitiated(block: dispatch_block_t) -> Async {
+    static func userInitiated(block: dispatch_block_t) -> Async {
         return run(inQueue: Queues.userInitiated(), block: block)
     }
 
-    public static func utility(block: dispatch_block_t) -> Async {
+    static func utility(block: dispatch_block_t) -> Async {
         return run(inQueue: Queues.utility(), block: block)
     }
 
-    public static func background(block: dispatch_block_t) -> Async {
+    static func background(block: dispatch_block_t) -> Async {
         return run(inQueue: Queues.background(), block: block)
     }
 

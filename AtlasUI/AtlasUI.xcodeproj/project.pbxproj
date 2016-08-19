@@ -17,7 +17,6 @@
 		8186B11E1D51EE2F0068EE37 /* AtlasUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 8186B11D1D51EE2F0068EE37 /* AtlasUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8186B1251D51EE2F0068EE37 /* AtlasUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8186B11A1D51EE2F0068EE37 /* AtlasUI.framework */; };
 		8186B12A1D51EE2F0068EE37 /* AtlasUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B1291D51EE2F0068EE37 /* AtlasUITests.swift */; };
-		8186B14D1D51EE930068EE37 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B1351D51EE930068EE37 /* UIConstants.swift */; };
 		8186B14E1D51EE930068EE37 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B1361D51EE930068EE37 /* UIImage.swift */; };
 		8186B14F1D51EE930068EE37 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B1371D51EE930068EE37 /* UIImageView.swift */; };
 		8186B1501D51EE930068EE37 /* UserMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B1381D51EE930068EE37 /* UserMessage.swift */; };
@@ -80,7 +79,6 @@
 		8186B1241D51EE2F0068EE37 /* AtlasUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AtlasUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8186B1291D51EE2F0068EE37 /* AtlasUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtlasUITests.swift; sourceTree = "<group>"; };
 		8186B12B1D51EE2F0068EE37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8186B1351D51EE930068EE37 /* UIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
 		8186B1361D51EE930068EE37 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		8186B1371D51EE930068EE37 /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		8186B1381D51EE930068EE37 /* UserMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMessage.swift; sourceTree = "<group>"; };
@@ -205,7 +203,6 @@
 			isa = PBXGroup;
 			children = (
 				810916011D522BD6006101AD /* Async.swift */,
-				8186B1351D51EE930068EE37 /* UIConstants.swift */,
 				8186B1361D51EE930068EE37 /* UIImage.swift */,
 				8186B1371D51EE930068EE37 /* UIImageView.swift */,
 				8186B1381D51EE930068EE37 /* UserMessage.swift */,
@@ -460,7 +457,6 @@
 				8186B1501D51EE930068EE37 /* UserMessage.swift in Sources */,
 				8186B1571D51EE930068EE37 /* CheckoutSummaryViewController.swift in Sources */,
 				810916021D522BD6006101AD /* Async.swift in Sources */,
-				8186B14D1D51EE930068EE37 /* UIConstants.swift in Sources */,
 				E85D38E61D5B7182008A42C2 /* UIStackView.swift in Sources */,
 				8186B1591D51EE930068EE37 /* CheckoutSummaryRow.swift in Sources */,
 				8186B15B1D51EE930068EE37 /* PaymentSummaryRow.swift in Sources */,

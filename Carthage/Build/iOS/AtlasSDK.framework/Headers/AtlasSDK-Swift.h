@@ -160,9 +160,6 @@ typedef int swift_int4  __attribute__((__ext_vector_type__(4)));
 
 
 @interface NSURLComponents (SWIFT_EXTENSION(AtlasSDK))
-- (nonnull instancetype)initWithValidUrlString:(NSString * _Nonnull)urlString;
-- (nonnull instancetype)initWithValidURL:(NSURL * _Nonnull)url;
-@property (nonatomic, readonly, strong) NSURL * _Nonnull validURL;
 @end
 
 

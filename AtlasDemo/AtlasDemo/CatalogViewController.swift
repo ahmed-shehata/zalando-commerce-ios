@@ -42,7 +42,7 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
             case .success(let articles):
                 self.articles = articles
             case .failure(let error):
-                UserMessage.showError(title: "Error", error: error)
+                self.showError(title: "Error", error: error)
             }
         }
     }

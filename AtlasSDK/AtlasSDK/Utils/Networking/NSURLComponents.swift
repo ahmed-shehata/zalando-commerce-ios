@@ -6,15 +6,15 @@ import Foundation
 
 extension NSURLComponents {
 
-    public convenience init(validUrlString urlString: String) {
+    convenience init(validUrlString urlString: String) {
         self.init(string: urlString)! // swiftlint:disable:this force_unwrapping
     }
 
-    public convenience init(validURL url: NSURL) {
+    convenience init(validURL url: NSURL) {
         self.init(URL: url, resolvingAgainstBaseURL: false)! // swiftlint:disable:this force_unwrapping
     }
 
-    public var validURL: NSURL {
+    var validURL: NSURL {
         return self.URL! // swiftlint:disable:this force_unwrapping
     }
 
