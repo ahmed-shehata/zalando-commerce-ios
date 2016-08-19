@@ -1,7 +1,7 @@
 .DS_Store
 
 ## Build generated
-build/
+./build
 DerivedData
 
 ## Various settings
@@ -32,7 +32,10 @@ xcuserdata
 timeline.xctimeline
 playground.xcworkspace
 
-Carthage
+# Carthage
+Carthage/Checkouts
+*.bcsymbolmap
+*.dSYM
 
 fastlane/report.xml
 fastlane/screenshots
