@@ -45,3 +45,4 @@ fastlane/screenshots
 .DS_Store
 xcov_report
 /.bundle
+/vendor

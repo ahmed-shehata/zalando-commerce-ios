@@ -1,9 +1,0 @@
-inherit_from: .rubocop_todo.yml
-
-# Offense count: 5
-Encoding:
-  Enabled: false
-
-# Enforce trailing comma after last item of multiline hashes.
-Style/TrailingComma:
-  EnforcedStyleForMultiline: comma
