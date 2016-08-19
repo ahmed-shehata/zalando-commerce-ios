@@ -1,0 +1,11 @@
+{
+    "atlas-catalog-api": {
+        "url": "http://localhost:9080"
+    },
+    "atlas-checkout-api": {
+        "url": "http://localhost:9080"
+    },
+    "oauth2-provider": {
+        "url": "https://planb-provider-test.greendale-questionmark.zalan.do/oauth2/authorize?realm=/customers&response_type=token&client_id=atlas_Y2M1MzA&redirect_uri=http://de.zalando.atlas.AtlasCheckoutDemo/redirect"
+    }
+}
