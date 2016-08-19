@@ -17,7 +17,7 @@
                BlueprintIdentifier = "814B7F0A1D0FD8D70073AF52"
                BuildableName = "AtlasSDK.framework"
                BlueprintName = "AtlasSDK"
-               ReferencedContainer = "container:AtlasSDK.xcodeproj">
+               ReferencedContainer = "container:../AtlasSDK/AtlasSDK.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -92,7 +92,7 @@
                BlueprintIdentifier = "814B7F141D0FD8D70073AF52"
                BuildableName = "AtlasSDKTests.xctest"
                BlueprintName = "AtlasSDKTests"
-               ReferencedContainer = "container:AtlasSDK.xcodeproj">
+               ReferencedContainer = "container:../AtlasSDK/AtlasSDK.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -119,10 +119,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "814B7F0A1D0FD8D70073AF52"
-            BuildableName = "AtlasSDK.framework"
-            BlueprintName = "AtlasSDK"
-            ReferencedContainer = "container:AtlasSDK.xcodeproj">
+            BlueprintIdentifier = "81FCA8D71D0FE05D00209E9B"
+            BuildableName = "AtlasDemo.app"
+            BlueprintName = "AtlasDemo"
+            ReferencedContainer = "container:AtlasDemo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -130,23 +130,14 @@
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
-      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
-      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      selectedDebuggerIdentifier = ""
+      selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "814B7F0A1D0FD8D70073AF52"
-            BuildableName = "AtlasSDK.framework"
-            BlueprintName = "AtlasSDK"
-            ReferencedContainer = "container:AtlasSDK.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -162,7 +153,7 @@
             BlueprintIdentifier = "814B7F0A1D0FD8D70073AF52"
             BuildableName = "AtlasSDK.framework"
             BlueprintName = "AtlasSDK"
-            ReferencedContainer = "container:AtlasSDK.xcodeproj">
+            ReferencedContainer = "container:../AtlasSDK/AtlasSDK.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

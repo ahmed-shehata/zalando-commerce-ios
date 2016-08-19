@@ -6,22 +6,14 @@ notifications:
 
 cache:
   bundler: true
-  # Temporarily disabled to test binary frameworks in repo
-  # directories:
-  #   - Carthage
-
-before_install:
-  - bundle install --without=tools
-
-# Temporarily disabled to test binary frameworks in repo
-# before_script:
-#   - travis_wait 30 ./calypso.rb deps uncached
 
 script:
-  - ./calypso.rb xcode test UnitTests 3
+  - bundle exec ./calypso.rb xcode test UnitTests 3
+
+after_script:
   - bash <(curl -s https://codecov.io/bash) -J AtlasSDK -J AtlasUI
 
-# Carthage automatic release
+# CARTHAGE: automatic release
 
 # env:
 #   global:
