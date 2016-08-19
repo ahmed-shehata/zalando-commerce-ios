@@ -10,10 +10,9 @@ cache:
   # directories:
   #   - Carthage
 
-before_install:
-  - bundle install --without=tools
-
 # Temporarily disabled to test binary frameworks in repo
+# before_install:
+#   - bundle install --without=tools
 # before_script:
 #   - travis_wait 30 ./calypso.rb deps uncached
 
