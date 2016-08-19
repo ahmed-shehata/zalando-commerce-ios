@@ -17,7 +17,7 @@ cache:
 #   - travis_wait 30 ./calypso.rb deps uncached
 
 script:
-  - ./calypso.rb xcode test UnitTests 3
+  - bundle exec ./calypso.rb xcode test UnitTests 3
   - bash <(curl -s https://codecov.io/bash) -J AtlasSDK -J AtlasUI
 
 # Carthage automatic release
