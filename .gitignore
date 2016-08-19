@@ -41,3 +41,4 @@ fastlane/screenshots
 *.sw[po]
 .DS_Store
 xcov_report
+/.bundle
