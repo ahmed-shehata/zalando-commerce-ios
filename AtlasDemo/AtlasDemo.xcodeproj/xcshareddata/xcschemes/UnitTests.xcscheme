@@ -138,16 +138,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "81FCA8D71D0FE05D00209E9B"
-            BuildableName = "AtlasDemo.app"
-            BlueprintName = "AtlasDemo"
-            ReferencedContainer = "container:AtlasDemo.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
