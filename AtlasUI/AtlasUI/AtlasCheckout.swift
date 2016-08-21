@@ -60,14 +60,12 @@ public class AtlasCheckout: LocalizerProviderType {
             switch result {
 
             case .failure(let error):
-                UserMessage.showError(title: self.loc("Fatal Error"), error: error)
                 completion(.failure(error))
 
             case .success(let cart):
                 self.client.createCheckout(cart.id) { result in
                     switch result {
                     case .failure(let error):
-                        UserMessage.showError(title: self.loc("Fatal Error"), error: error)
                         completion(.failure(error))
 
                     case .success(let checkout):
@@ -75,6 +73,17 @@ public class AtlasCheckout: LocalizerProviderType {
                         completion(.success(checkoutModel))
                     }
                 }
+            }
+        }
+    }
+
+    func fetchAddressList(completion: AddressesCompletion) {
+        client.fetchAddressList { result in
+            switch result {
+            case .failure(let error):
+                completion(.failure(error))
+            case .success(let addressList):
+                completion(.success(addressList))
             }
         }
     }
