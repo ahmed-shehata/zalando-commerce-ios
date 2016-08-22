@@ -58,21 +58,33 @@ public class AtlasCheckout: LocalizerProviderType {
 
         client.createCart(cartItemRequest) { result in
             switch result {
-
             case .failure(let error):
                 completion(.failure(error))
 
             case .success(let cart):
-                self.client.createCheckout(cart.id) { result in
-                    switch result {
+                self.fetchAddressList({ addressListResult in
+                    switch addressListResult {
                     case .failure(let error):
                         completion(.failure(error))
-
-                    case .success(let checkout):
-                        let checkoutModel = CheckoutViewModel(article: article, selectedUnitIndex: articleUnitIndex, checkout: checkout)
-                        completion(.success(checkoutModel))
+                    case .success(let addressList):
+                        if !addressList.addresses.isEmpty {
+                            self.client.createCheckout(cart.id) { result in
+                                switch result {
+                                case .failure(let error):
+                                    completion(.failure(error))
+                                case .success(let checkout):
+                                    let checkoutModel = CheckoutViewModel(article: article, selectedUnitIndex: articleUnitIndex,
+                                        checkout: checkout)
+                                    completion(.success(checkoutModel))
+                                }
+                            }
+                        }
+                        else {
+                            let checkoutModel = CheckoutViewModel(article: article, selectedUnitIndex: articleUnitIndex, checkout: nil)
+                            completion(.success(checkoutModel))
+                        }
                     }
-                }
+                })
             }
         }
     }
