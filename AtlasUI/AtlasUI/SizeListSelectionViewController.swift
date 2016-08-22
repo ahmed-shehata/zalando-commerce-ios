@@ -69,15 +69,6 @@ final class SizeListSelectionViewController: UITableViewController, CheckoutProv
         }
 
         self.checkout.client.customer { result in
-            self.checkout.fetchAddressList { result in
-                switch result {
-                case .failure(let error):
-                    print(error)
-                case .success(let addressList):
-                    print(addressList)
-                }
-            }
-
             switch result {
             case .failure(let error):
                 UserMessage.showError(title: self.loc("Error"), error: error)
