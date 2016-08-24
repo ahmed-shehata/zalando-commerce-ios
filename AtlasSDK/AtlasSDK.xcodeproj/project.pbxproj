@@ -402,13 +402,13 @@
 			isa = PBXGroup;
 			children = (
 				812BB4D11D34C0910018C321 /* APIClient.swift */,
+				8139B6061D59B5DD00187984 /* PublicAPIClient.swift */,
 				B02CA0A71D3511B60030CC64 /* ConfigClient.swift */,
 				B068B8561D34F246009F738C /* APIRequestBuilder.swift */,
 				81F8C2641D355F6700996E95 /* APIClientQueryItems.swift */,
 				817663091D3CE1D600B32F9A /* APIEndpoint.swift */,
 				8198F2A91D3E72B20059EE87 /* APIEndpoints.swift */,
 				8139B6041D59B58700187984 /* APIRequestBuildersContainer.swift */,
-				8139B6061D59B5DD00187984 /* PublicAPIClient.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";

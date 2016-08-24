@@ -60,7 +60,7 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
     }
 
     private func generateCheckout(withArticle article: Article, customer: Customer) {
-        checkout.createCheckout(withArticle: article, articleUnitIndex: 0) { result in
+        checkout.createCheckout(withArticle: article, selectedUnitIndex: 0) { result in
             switch result {
             case .failure(let error):
                 AtlasLogger.logError(error)

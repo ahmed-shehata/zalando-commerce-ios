@@ -52,50 +52,25 @@ public class AtlasCheckout: LocalizerProviderType {
             return true
     }
 
-    func createCheckout(withArticle article: Article, articleUnitIndex: Int, completion: CreateCheckoutCompletion) {
-        let articleSKU = article.units[articleUnitIndex].id
-        let cartItemRequest = CartItemRequest(sku: articleSKU, quantity: 1)
+    func createCheckout(withArticle article: Article, selectedUnitIndex: Int, completion: CreateCheckoutCompletion) {
+        client.createCheckout(withArticle: article, selectedUnitIndex: selectedUnitIndex) { checkoutResult in
+            switch checkoutResult {
+            case .failure(let error as AtlasAPIError):
+                if error.code == AtlasAPIError.Code.EmptyAddressList {
+                    let checkoutModel = CheckoutViewModel(article: article,
+                        selectedUnitIndex: selectedUnitIndex)
+                    completion(.success(checkoutModel))
+                    return
+                }
+                completion(.failure(error))
 
-        client.createCart(cartItemRequest) { result in
-            switch result {
             case .failure(let error):
                 completion(.failure(error))
 
-            case .success(let cart):
-                self.fetchAddressList({ addressListResult in
-                    switch addressListResult {
-                    case .failure(let error):
-                        completion(.failure(error))
-                    case .success(let addressList):
-                        if !addressList.addresses.isEmpty {
-                            self.client.createCheckout(cart.id) { result in
-                                switch result {
-                                case .failure(let error):
-                                    completion(.failure(error))
-                                case .success(let checkout):
-                                    let checkoutModel = CheckoutViewModel(article: article, selectedUnitIndex: articleUnitIndex,
-                                        checkout: checkout)
-                                    completion(.success(checkoutModel))
-                                }
-                            }
-                        }
-                        else {
-                            let checkoutModel = CheckoutViewModel(article: article, selectedUnitIndex: articleUnitIndex, checkout: nil)
-                            completion(.success(checkoutModel))
-                        }
-                    }
-                })
-            }
-        }
-    }
-
-    func fetchAddressList(completion: AddressesCompletion) {
-        client.fetchAddressList { result in
-            switch result {
-            case .failure(let error):
-                completion(.failure(error))
-            case .success(let addressList):
-                completion(.success(addressList))
+            case .success(let checkout):
+                let checkoutModel = CheckoutViewModel(article: article,
+                    selectedUnitIndex: selectedUnitIndex, checkout: checkout)
+                completion(.success(checkoutModel))
             }
         }
     }

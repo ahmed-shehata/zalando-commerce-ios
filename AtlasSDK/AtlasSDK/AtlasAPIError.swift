@@ -40,8 +40,13 @@ public extension AtlasAPIError {
 
         case Unknown = -1
         case NoData = 1
+        case EmptyAddressList = 2
         case Unauthorized = 401
 
     }
 
+}
+
+public func == (lhs: Int, rhs: AtlasAPIError.Code) -> Bool {
+    return lhs == rhs.rawValue
 }
