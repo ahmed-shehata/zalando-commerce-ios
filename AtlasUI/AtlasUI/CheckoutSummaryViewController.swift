@@ -125,7 +125,7 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
     }
 
     private func generateCheckoutAndRefreshViews(customer: Customer) {
-        checkout.createCheckout(withArticle: checkoutViewModel.article, articleUnitIndex: checkoutViewModel.selectedUnitIndex) { result in
+        checkout.createCheckout(withArticle: checkoutViewModel.article, selectedUnitIndex: checkoutViewModel.selectedUnitIndex) { result in
             switch result {
             case .failure(let error):
                 self.dismissViewControllerAnimated(true) {
