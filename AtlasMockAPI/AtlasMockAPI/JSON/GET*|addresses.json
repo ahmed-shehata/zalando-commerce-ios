@@ -1,0 +1,40 @@
+[{
+    "id" : "6702759",
+    "customer_number" : "3036553496",
+    "gender" : "FEMALE",
+    "first_name" : "Erika",
+    "last_name" : "Mustermann",
+    "street" : "Mollstr. 1",
+    "additional" : "EG",
+    "zip" : "10178",
+    "city" : "Berlin",
+    "country_code" : "DE",
+    "default_billing" : true,
+    "default_shipping" : true
+}, {
+    "id" : "6702748",
+    "customer_number" : "3036553496",
+    "gender" : "FEMALE",
+    "first_name" : "Jane",
+    "last_name" : "Doe",
+    "street" : "Mollstr. 1",
+    "additional" : "EG",
+    "zip" : "10178",
+    "city" : "Berlin",
+    "country_code" : "DE",
+    "default_billing" : false,
+    "default_shipping" : false
+}, {
+    "id" : "6616154",
+    "customer_number" : "3036553496",
+    "gender" : "MALE",
+    "first_name" : "John",
+    "last_name" : "Doe",
+    "street" : "Mollstr. 1",
+    "additional" : "EG",
+    "zip" : "10178",
+    "city" : "Berlin",
+    "country_code" : "DE",
+    "default_billing" : false,
+    "default_shipping" : false
+}]
