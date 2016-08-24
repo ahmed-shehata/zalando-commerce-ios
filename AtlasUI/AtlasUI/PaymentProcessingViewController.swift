@@ -45,7 +45,23 @@ internal final class PaymentProcessingViewController: UIViewController, Checkout
                 UserMessage.showOK(title: self.loc("Fatal Error"), message: String(error))
             case .success(let order):
                 print(order)
-                self.showSuccessImage()
+                guard let paymentURL = order.externalPaymentUrl else {
+                    self.showSuccessImage()
+                    return
+                }
+                let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
+                paymentSelectionViewController.paymentCompletion = { _ in
+                    self.showSuccessImage()
+                }
+
+                guard let sourceApp = UIApplication.topViewController() else { return }
+
+                let navigationController = UINavigationController(rootViewController: paymentSelectionViewController)
+                dispatch_async(dispatch_get_main_queue()) {
+                    navigationController.modalPresentationStyle = .OverCurrentContext
+                    sourceApp.navigationController?.presentViewController(navigationController, animated: true, completion: nil)
+                }
+
             }
         }
     }
