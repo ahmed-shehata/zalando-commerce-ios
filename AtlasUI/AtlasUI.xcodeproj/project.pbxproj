@@ -16,7 +16,6 @@
 		8172776F1D5B174E001394BF /* LocalizerProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8172776E1D5B174E001394BF /* LocalizerProviderType.swift */; };
 		8186B11E1D51EE2F0068EE37 /* AtlasUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 8186B11D1D51EE2F0068EE37 /* AtlasUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8186B1251D51EE2F0068EE37 /* AtlasUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8186B11A1D51EE2F0068EE37 /* AtlasUI.framework */; };
-		8186B12A1D51EE2F0068EE37 /* AtlasUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B1291D51EE2F0068EE37 /* AtlasUITests.swift */; };
 		8186B14E1D51EE930068EE37 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B1361D51EE930068EE37 /* UIImage.swift */; };
 		8186B14F1D51EE930068EE37 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B1371D51EE930068EE37 /* UIImageView.swift */; };
 		8186B1501D51EE930068EE37 /* UserMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B1381D51EE930068EE37 /* UserMessage.swift */; };
@@ -77,7 +76,6 @@
 		8186B11D1D51EE2F0068EE37 /* AtlasUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtlasUI.h; sourceTree = "<group>"; };
 		8186B11F1D51EE2F0068EE37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8186B1241D51EE2F0068EE37 /* AtlasUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AtlasUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8186B1291D51EE2F0068EE37 /* AtlasUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtlasUITests.swift; sourceTree = "<group>"; };
 		8186B12B1D51EE2F0068EE37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8186B1361D51EE930068EE37 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		8186B1371D51EE930068EE37 /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
@@ -182,7 +180,6 @@
 			isa = PBXGroup;
 			children = (
 				8109160C1D522E93006101AD /* Frameworks */,
-				8186B1291D51EE2F0068EE37 /* AtlasUITests.swift */,
 				810916031D522C66006101AD /* AsyncSpec.swift */,
 				81F3B46E1D5A0A7D007BCF6F /* LocalizationSpec.swift */,
 				8186B12B1D51EE2F0068EE37 /* Info.plist */,
@@ -479,7 +476,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8186B12A1D51EE2F0068EE37 /* AtlasUITests.swift in Sources */,
 				810916041D522C66006101AD /* AsyncSpec.swift in Sources */,
 				81F3B46F1D5A0A7D007BCF6F /* LocalizationSpec.swift in Sources */,
 			);
