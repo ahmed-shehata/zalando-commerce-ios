@@ -4,19 +4,17 @@
 
 import Foundation
 
-public struct BillingAddress {
+public struct BillingAddress: Addressable {
+
     public let gender: Gender
     public let firstName: String
     public let lastName: String
-    public let street: String
+    public let street: String?
     public let additional: String?
     public let zip: String
     public let city: String
     public let countryCode: String
 
-    public func fullAddress() -> String {
-        return "\(firstName) \(lastName), \(street), \(zip) \(city)"
-    }
 }
 
 extension BillingAddress: JSONInitializable {

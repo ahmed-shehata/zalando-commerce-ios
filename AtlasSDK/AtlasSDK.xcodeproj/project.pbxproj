@@ -81,6 +81,7 @@
 		819283951D50E8E90009DB60 /* Tests.json in Resources */ = {isa = PBXBuildFile; fileRef = 814FE5AB1D2D70E600F754DD /* Tests.json */; };
 		8198F2AA1D3E72B20059EE87 /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8198F2A91D3E72B20059EE87 /* APIEndpoints.swift */; };
 		819F8AAC1D3689E3008E2AB1 /* Catalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817292581D362A2C00803B74 /* Catalog.swift */; };
+		81A572901D6F326C00148A92 /* Addressable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A5728F1D6F326C00148A92 /* Addressable.swift */; };
 		81E01D071D48E85F00ED4701 /* JSONInitializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E01D061D48E85F00ED4701 /* JSONInitializable.swift */; };
 		81F6FBDA1D356104006662E8 /* AtlasSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 81F8C2741D35609C00996E95 /* AtlasSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		81F6FBEC1D3561B3006662E8 /* URLSessionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F6FBE01D35614B006662E8 /* URLSessionMock.swift */; };
@@ -213,6 +214,7 @@
 		8186B0F21D51ECC10068EE37 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		8186B0F31D51ECC10068EE37 /* UIApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		8198F2A91D3E72B20059EE87 /* APIEndpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIEndpoints.swift; path = AtlasSDK/APIEndpoints.swift; sourceTree = SOURCE_ROOT; };
+		81A5728F1D6F326C00148A92 /* Addressable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Addressable.swift; sourceTree = "<group>"; };
 		81E01D061D48E85F00ED4701 /* JSONInitializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONInitializable.swift; sourceTree = "<group>"; };
 		81F6FBDB1D35614B006662E8 /* APICheckoutSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APICheckoutSpec.swift; path = AtlasSDKTests/APICheckoutSpec.swift; sourceTree = SOURCE_ROOT; };
 		81F6FBDC1D35614B006662E8 /* APICustomerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APICustomerSpec.swift; path = AtlasSDKTests/APICustomerSpec.swift; sourceTree = SOURCE_ROOT; };
@@ -372,8 +374,7 @@
 			isa = PBXGroup;
 			children = (
 				E8DD4C461D38DF7C00C822B2 /* RequestModels */,
-				817292541D362A2C00803B74 /* Address.swift */,
-				6D0483921D50CF2F005F4EAE /* AddressList.swift */,
+				81A5728E1D6F31D000148A92 /* Addresses */,
 				817292551D362A2C00803B74 /* Article.swift */,
 				817292561D362A2C00803B74 /* Cart.swift */,
 				817292571D362A2C00803B74 /* CartItem.swift */,
@@ -391,8 +392,6 @@
 				817292601D362A2C00803B74 /* PickupPoint.swift */,
 				817292611D362A2C00803B74 /* Price.swift */,
 				817292631D362A2C00803B74 /* Unit.swift */,
-				E87C16771D5226E600E12E98 /* ShippingAddress.swift */,
-				E87C16791D5226FA00E12E98 /* BillingAddress.swift */,
 			);
 			name = Models;
 			path = AtlasSDK/Models;
@@ -461,6 +460,18 @@
 				8186B0F21D51ECC10068EE37 /* SwiftyJSON.swift */,
 			);
 			path = SwiftyJSON;
+			sourceTree = "<group>";
+		};
+		81A5728E1D6F31D000148A92 /* Addresses */ = {
+			isa = PBXGroup;
+			children = (
+				6D0483921D50CF2F005F4EAE /* AddressList.swift */,
+				817292541D362A2C00803B74 /* Address.swift */,
+				E87C16771D5226E600E12E98 /* ShippingAddress.swift */,
+				E87C16791D5226FA00E12E98 /* BillingAddress.swift */,
+				81A5728F1D6F326C00148A92 /* Addressable.swift */,
+			);
+			name = Addresses;
 			sourceTree = "<group>";
 		};
 		81F8C2521D355E2D00996E95 /* LoginController */ = {
@@ -684,6 +695,7 @@
 				8172926F1D362A2C00803B74 /* Payment.swift in Sources */,
 				8198F2AA1D3E72B20059EE87 /* APIEndpoints.swift in Sources */,
 				8186B1011D51ECC10068EE37 /* EndpointType.swift in Sources */,
+				81A572901D6F326C00148A92 /* Addressable.swift in Sources */,
 				8186B0FA1D51ECC10068EE37 /* Injector.swift in Sources */,
 				81F8C24C1D355D1800996E95 /* OptionsInfoPlist.swift in Sources */,
 				8186B10C1D51ECC10068EE37 /* PrintLogger.swift in Sources */,

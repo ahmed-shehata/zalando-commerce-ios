@@ -213,7 +213,7 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
 
         productImageView.setImage(fromUrl: checkoutViewModel.article.thumbnailUrl)
 
-        shippingView.detailTextLabel.text = self.checkoutViewModel.shippingAddressText ?? loc("No Shipping Address")
+        shippingView.detailTextLabel.text = self.checkoutViewModel.shippingAddress(formattedWith: self.checkout)
     }
 
 }
