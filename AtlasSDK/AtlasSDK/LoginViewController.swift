@@ -52,8 +52,8 @@ final class LoginViewController: UIViewController {
         webView.loadRequest(NSURLRequest(URL: loginURL))
     }
 
-    private func dismissViewController(withFailureCode code: LoginError.Code, animated: Bool = true) -> Bool {
-        return dismissViewController(.failure(LoginError(code: code)), animated: animated)
+    private func dismissViewController(withFailure error: LoginError, animated: Bool = true) -> Bool {
+        return dismissViewController(.failure(error), animated: animated)
     }
 
     private func dismissViewController(result: AtlasResult<String>, animated: Bool = true) -> Bool {
@@ -85,11 +85,11 @@ extension LoginViewController: UIWebViewDelegate {
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest,
         navigationType: UIWebViewNavigationType) -> Bool {
             guard let url = request.URL else {
-                return dismissViewController(withFailureCode: .MissingURL)
+                return dismissViewController(withFailure: .MissingURL)
             }
 
             guard !url.isAccessDenied else {
-                return dismissViewController(withFailureCode: .AccessDenied)
+                return dismissViewController(withFailure: .AccessDenied)
             }
 
             guard let token = url.accessToken else {
@@ -100,7 +100,7 @@ extension LoginViewController: UIWebViewDelegate {
     }
 
     func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
-        self.dismissViewController(withFailureCode: .RequestFailed)
+        self.dismissViewController(withFailure: .RequestFailed)
     }
 
     func webViewDidFinishLoad(webView: UIWebView) {

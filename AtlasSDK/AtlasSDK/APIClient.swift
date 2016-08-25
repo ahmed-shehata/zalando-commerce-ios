@@ -26,7 +26,7 @@ public struct APIClient {
                 if let model = Model(json: response.body) {
                     completion(.success(model))
                 } else {
-                    completion(.failure(Error.invalidResponseFormat))
+                    completion(.failure(AtlasAPIError.InvalidResponseFormat))
                 }
             }
         }

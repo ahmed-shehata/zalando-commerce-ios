@@ -91,18 +91,12 @@
 		81F8C24A1D355D1800996E95 /* AppInfoConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F8C2471D355D1800996E95 /* AppInfoConfig.swift */; };
 		81F8C24B1D355D1800996E95 /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F8C2481D355D1800996E95 /* Options.swift */; };
 		81F8C24C1D355D1800996E95 /* OptionsInfoPlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F8C2491D355D1800996E95 /* OptionsInfoPlist.swift */; };
-		81F8C2501D355E2400996E95 /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F8C24E1D355E2400996E95 /* LoginError.swift */; };
 		81F8C2511D355E2400996E95 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F8C24F1D355E2400996E95 /* LoginViewController.swift */; };
-		81F8C2561D355E5E00996E95 /* AtlasConfigurationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F8C2531D355E5E00996E95 /* AtlasConfigurationError.swift */; };
-		81F8C25C1D355E7D00996E95 /* AtlasError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F8C2591D355E7D00996E95 /* AtlasError.swift */; };
-		81F8C25D1D355E7D00996E95 /* AtlasErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F8C25A1D355E7D00996E95 /* AtlasErrorType.swift */; };
-		81F8C25E1D355E7D00996E95 /* NSErrorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F8C25B1D355E7D00996E95 /* NSErrorExtensions.swift */; };
+		81F8C25C1D355E7D00996E95 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F8C2591D355E7D00996E95 /* Errors.swift */; };
 		81F8C2651D355F6700996E95 /* APIClientQueryItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F8C2641D355F6700996E95 /* APIClientQueryItems.swift */; };
 		B02CA0A81D3511B60030CC64 /* ConfigClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02CA0A71D3511B60030CC64 /* ConfigClient.swift */; };
 		B068B8571D34F246009F738C /* APIRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B068B8561D34F246009F738C /* APIRequestBuilder.swift */; };
 		E837A7571D34F88200FC52C9 /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837A7561D34F88200FC52C9 /* RequestBuilder.swift */; };
-		E837A75C1D34F89C00FC52C9 /* AtlasAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837A7591D34F89C00FC52C9 /* AtlasAPIError.swift */; };
-		E837A75D1D34F89C00FC52C9 /* HTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837A75A1D34F89C00FC52C9 /* HTTPError.swift */; };
 		E848CBDC1D50ED3700FAA9C3 /* AtlasSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E848CBDB1D50ED3700FAA9C3 /* AtlasSpec.swift */; };
 		E87C16781D5226E600E12E98 /* ShippingAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87C16771D5226E600E12E98 /* ShippingAddress.swift */; };
 		E87C167A1D5226FA00E12E98 /* BillingAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87C16791D5226FA00E12E98 /* BillingAddress.swift */; };
@@ -226,10 +220,7 @@
 		81F8C2491D355D1800996E95 /* OptionsInfoPlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OptionsInfoPlist.swift; path = AtlasSDK/OptionsInfoPlist.swift; sourceTree = SOURCE_ROOT; };
 		81F8C24E1D355E2400996E95 /* LoginError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginError.swift; path = AtlasSDK/LoginError.swift; sourceTree = SOURCE_ROOT; };
 		81F8C24F1D355E2400996E95 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = AtlasSDK/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
-		81F8C2531D355E5E00996E95 /* AtlasConfigurationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AtlasConfigurationError.swift; path = AtlasSDK/AtlasConfigurationError.swift; sourceTree = SOURCE_ROOT; };
-		81F8C2591D355E7D00996E95 /* AtlasError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AtlasError.swift; path = AtlasSDK/AtlasError.swift; sourceTree = SOURCE_ROOT; };
-		81F8C25A1D355E7D00996E95 /* AtlasErrorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AtlasErrorType.swift; path = AtlasSDK/AtlasErrorType.swift; sourceTree = SOURCE_ROOT; };
-		81F8C25B1D355E7D00996E95 /* NSErrorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSErrorExtensions.swift; path = AtlasSDK/NSErrorExtensions.swift; sourceTree = SOURCE_ROOT; };
+		81F8C2591D355E7D00996E95 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Errors.swift; path = AtlasSDK/Errors.swift; sourceTree = SOURCE_ROOT; };
 		81F8C2641D355F6700996E95 /* APIClientQueryItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIClientQueryItems.swift; path = AtlasSDK/APIClientQueryItems.swift; sourceTree = SOURCE_ROOT; };
 		81F8C2741D35609C00996E95 /* AtlasSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AtlasSDK.h; path = AtlasSDK/AtlasSDK.h; sourceTree = SOURCE_ROOT; };
 		81F8C2751D35609C00996E95 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = AtlasSDK/Info.plist; sourceTree = SOURCE_ROOT; };
@@ -237,8 +228,6 @@
 		B068B8561D34F246009F738C /* APIRequestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIRequestBuilder.swift; path = AtlasSDK/APIRequestBuilder.swift; sourceTree = SOURCE_ROOT; };
 		E837A7561D34F88200FC52C9 /* RequestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestBuilder.swift; path = AtlasSDK/RequestBuilder.swift; sourceTree = SOURCE_ROOT; };
 		E837A7581D34F89C00FC52C9 /* APIAccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIAccessToken.swift; path = AtlasSDK/APIAccessToken.swift; sourceTree = SOURCE_ROOT; };
-		E837A7591D34F89C00FC52C9 /* AtlasAPIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AtlasAPIError.swift; path = AtlasSDK/AtlasAPIError.swift; sourceTree = SOURCE_ROOT; };
-		E837A75A1D34F89C00FC52C9 /* HTTPError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPError.swift; path = AtlasSDK/HTTPError.swift; sourceTree = SOURCE_ROOT; };
 		E848CBDB1D50ED3700FAA9C3 /* AtlasSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AtlasSpec.swift; path = AtlasSDKTests/AtlasSpec.swift; sourceTree = SOURCE_ROOT; };
 		E87C16771D5226E600E12E98 /* ShippingAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShippingAddress.swift; sourceTree = "<group>"; };
 		E87C16791D5226FA00E12E98 /* BillingAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingAddress.swift; sourceTree = "<group>"; };
@@ -311,6 +300,7 @@
 				8117C4381D1D647D002786F3 /* Options */,
 				81F8C2521D355E2D00996E95 /* LoginController */,
 				8101EB931D587F04008E2A1A /* Atlas.swift */,
+				81F8C2591D355E7D00996E95 /* Errors.swift */,
 			);
 			name = AtlasSDK;
 			path = AtlasSDK/AtlasSDK;
@@ -486,12 +476,6 @@
 		81F8C25F1D355E8200996E95 /* Errors */ = {
 			isa = PBXGroup;
 			children = (
-				81F8C2591D355E7D00996E95 /* AtlasError.swift */,
-				81F8C25A1D355E7D00996E95 /* AtlasErrorType.swift */,
-				E837A7591D34F89C00FC52C9 /* AtlasAPIError.swift */,
-				81F8C2531D355E5E00996E95 /* AtlasConfigurationError.swift */,
-				E837A75A1D34F89C00FC52C9 /* HTTPError.swift */,
-				81F8C25B1D355E7D00996E95 /* NSErrorExtensions.swift */,
 			);
 			name = Errors;
 			sourceTree = "<group>";
@@ -710,9 +694,7 @@
 				8176630A1D3CE1D600B32F9A /* APIEndpoint.swift in Sources */,
 				6D0483931D50CF2F005F4EAE /* AddressList.swift in Sources */,
 				8186B0F91D51ECC10068EE37 /* Debug.swift in Sources */,
-				E837A75C1D34F89C00FC52C9 /* AtlasAPIError.swift in Sources */,
 				8186B10D1D51ECC10068EE37 /* String.swift in Sources */,
-				81F8C25D1D355E7D00996E95 /* AtlasErrorType.swift in Sources */,
 				8186B1061D51ECC10068EE37 /* NSURLComponents.swift in Sources */,
 				817292731D362A2C00803B74 /* Unit.swift in Sources */,
 				8186B0FB1D51ECC10068EE37 /* JSON.swift in Sources */,
@@ -720,7 +702,7 @@
 				8186B1021D51ECC10068EE37 /* HTTP.swift in Sources */,
 				8186B1001D51ECC10068EE37 /* LoggerType.swift in Sources */,
 				8186B1041D51ECC10068EE37 /* NSMutableURLRequest.swift in Sources */,
-				81F8C25C1D355E7D00996E95 /* AtlasError.swift in Sources */,
+				81F8C25C1D355E7D00996E95 /* Errors.swift in Sources */,
 				817292641D362A2C00803B74 /* Address.swift in Sources */,
 				8186B1071D51ECC10068EE37 /* NSURLQueryItem.swift in Sources */,
 				81F8C24A1D355D1800996E95 /* AppInfoConfig.swift in Sources */,
@@ -730,18 +712,14 @@
 				8168B0A61D40A2890088B112 /* APIAccessToken.swift in Sources */,
 				E87C167D1D536F7400E12E98 /* Dates.swift in Sources */,
 				81E01D071D48E85F00ED4701 /* JSONInitializable.swift in Sources */,
-				E837A75D1D34F89C00FC52C9 /* HTTPError.swift in Sources */,
 				E8E1B7291D460C96005666F3 /* OrderRequest.swift in Sources */,
 				E8E1B72B1D460E8E005666F3 /* Order.swift in Sources */,
 				8186B1081D51ECC10068EE37 /* URLStringConvertible.swift in Sources */,
 				8186B0F61D51ECC10068EE37 /* AtlasLogger.swift in Sources */,
 				8172926D1D362A2C00803B74 /* Gender.swift in Sources */,
-				81F8C25E1D355E7D00996E95 /* NSErrorExtensions.swift in Sources */,
 				E87C167A1D5226FA00E12E98 /* BillingAddress.swift in Sources */,
 				8186B0F41D51ECC10068EE37 /* Array.swift in Sources */,
-				81F8C2561D355E5E00996E95 /* AtlasConfigurationError.swift in Sources */,
 				8101EB941D587F04008E2A1A /* Atlas.swift in Sources */,
-				81F8C2501D355E2400996E95 /* LoginError.swift in Sources */,
 				817292701D362A2C00803B74 /* PickupPoint.swift in Sources */,
 				8172926A1D362A2C00803B74 /* Config.swift in Sources */,
 				8186B0FE1D51ECC10068EE37 /* Keychain.swift in Sources */,
