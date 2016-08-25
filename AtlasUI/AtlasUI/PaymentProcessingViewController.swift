@@ -57,7 +57,7 @@ internal final class PaymentProcessingViewController: UIViewController, Checkout
                 guard let sourceApp = UIApplication.topViewController() else { return }
 
                 let navigationController = UINavigationController(rootViewController: paymentSelectionViewController)
-                dispatch_async(dispatch_get_main_queue()) {
+                Async.main {
                     navigationController.modalPresentationStyle = .OverCurrentContext
                     sourceApp.navigationController?.presentViewController(navigationController, animated: true, completion: nil)
                 }
