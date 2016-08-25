@@ -36,12 +36,12 @@ struct CheckoutViewModel {
 
 extension CheckoutViewModel {
 
-    func shippingAddress(formattedWith localizer: LocalizerProviderType) -> String {
-        return checkout?.shippingAddress?.fullAddress() ?? localizer.loc("No Shipping Address")
+    func shippingAddress(localizedWith localizer: LocalizerProviderType) -> String {
+        return checkout?.shippingAddress?.fullAddress ?? localizer.loc("No Shipping Address")
     }
 
-    func bililngAddress(formattedWith localizer: LocalizerProviderType) -> String {
-        return checkout?.billingAddress?.fullAddress() ?? localizer.loc("No Billing Address")
+    func billingAddress(localizedWith localizer: LocalizerProviderType) -> String {
+        return checkout?.billingAddress?.fullAddress ?? localizer.loc("No Billing Address")
     }
 
     var isPaymentSelected: Bool {
@@ -49,7 +49,7 @@ extension CheckoutViewModel {
     }
 
     var selectedUnit: Article.Unit {
-        return self.article.units[selectedUnitIndex]
+        return article.units[selectedUnitIndex]
     }
 
 }

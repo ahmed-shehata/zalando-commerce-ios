@@ -20,12 +20,12 @@ public protocol Addressable {
 
 extension Addressable {
 
-    public func fullAddress() -> String {
-        let parts = [formatContact(), formatAddress()]
+    public var fullAddress: String {
+        let parts = [formattedContact, formattedAddress]
         return parts.flatMap({ $0 }).joinWithSeparator(", ")
     }
 
-    public func formatContact() -> String? {
+    public var formattedContact: String? {
         let contactFormatter = CNContactFormatter()
         let contact = CNMutableContact()
 
@@ -35,7 +35,7 @@ extension Addressable {
         return contactFormatter.stringFromContact(contact)
     }
 
-    public func formatAddress() -> String {
+    public var formattedAddress: String {
         let postalFormatter = CNPostalAddressFormatter()
         let postalAddress = CNMutablePostalAddress()
 
