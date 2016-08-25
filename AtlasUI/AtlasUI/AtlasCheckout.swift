@@ -84,7 +84,7 @@ public class AtlasCheckout: LocalizerProviderType {
 extension AtlasCheckout: Localizable {
 
     var localizedStringsBundle: NSBundle {
-        return NSBundle(forClass: SizeSelectionViewController.self)
+        return NSBundle(forClass: AtlasCheckout.self)
     }
 
     var localeIdentifier: String {
