@@ -7,7 +7,6 @@ import AtlasSDK
 
 struct CheckoutViewModel {
 
-    let shippingAddressText: String?
     let paymentMethodText: String?
     let discountText: String?
     let shippingPrice: Article.Price?
@@ -19,31 +18,38 @@ struct CheckoutViewModel {
 
     let article: Article
 
+    init(article: Article, selectedUnitIndex: Int = 0, shippingPrice: Article.Price? = nil,
+        checkout: Checkout? = nil, customer: Customer? = nil,
+        paymentMethodText: String? = nil, discountText: String? = nil) {
+            self.article = article
+            self.shippingPrice = shippingPrice
+            self.checkout = checkout
+            self.customer = customer
+
+            self.paymentMethodText = paymentMethodText ?? checkout?.payment.selected?.method
+            self.discountText = discountText
+
+            self.selectedUnitIndex = selectedUnitIndex
+    }
+
+}
+
+extension CheckoutViewModel {
+
+    func shippingAddress(localizedWith localizer: LocalizerProviderType) -> String {
+        return checkout?.shippingAddress?.fullAddress ?? localizer.loc("No Shipping Address")
+    }
+
+    func billingAddress(localizedWith localizer: LocalizerProviderType) -> String {
+        return checkout?.billingAddress?.fullAddress ?? localizer.loc("No Billing Address")
+    }
+
     var isPaymentSelected: Bool {
         return customer != nil && checkout?.payment.selected?.method != nil
     }
 
     var selectedUnit: Article.Unit {
         return article.units[selectedUnitIndex]
-    }
-
-    var unitPrice: Article.Price {
-        return self.article.units[selectedUnitIndex].price
-    }
-
-    init(article: Article, selectedUnitIndex: Int = 0, shippingPrice: Article.Price? = nil,
-        checkout: Checkout? = nil, customer: Customer? = nil,
-        shippingAddressText: String? = nil, paymentMethodText: String? = nil, discountText: String? = nil) {
-            self.article = article
-            self.shippingPrice = shippingPrice
-            self.checkout = checkout
-            self.customer = customer
-
-            self.shippingAddressText = shippingAddressText ?? checkout?.shippingAddress?.fullAddress()
-            self.paymentMethodText = paymentMethodText ?? checkout?.payment.selected?.method
-            self.discountText = discountText
-
-            self.selectedUnitIndex = selectedUnitIndex
     }
 
 }
