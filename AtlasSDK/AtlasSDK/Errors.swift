@@ -6,13 +6,13 @@ import Foundation
 
 public protocol AtlasErrorType: ErrorType {
 
-    var localizedDescription: String { get }
+    var localizedDescriptionKey: String { get }
 
 }
 
 public extension AtlasErrorType {
 
-    var localizedDescription: String { return "AtlasError.\(self)" }
+    var localizedDescriptionKey: String { return "AtlasError.\(self)" }
 
 }
 
