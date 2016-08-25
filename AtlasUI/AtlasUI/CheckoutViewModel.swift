@@ -7,7 +7,6 @@ import AtlasSDK
 
 struct CheckoutViewModel {
 
-    let shippingAddress: ShippingAddress?
     let paymentMethodText: String?
     let discountText: String?
     let shippingPrice: Article.Price?
@@ -27,7 +26,6 @@ struct CheckoutViewModel {
             self.checkout = checkout
             self.customer = customer
 
-            self.shippingAddress = checkout?.shippingAddress
             self.paymentMethodText = paymentMethodText ?? checkout?.payment.selected?.method
             self.discountText = discountText
 
@@ -39,7 +37,11 @@ struct CheckoutViewModel {
 extension CheckoutViewModel {
 
     func shippingAddress(formattedWith localizer: LocalizerProviderType) -> String {
-        return shippingAddress?.fullAddress() ?? localizer.loc("No Shipping Address")
+        return checkout?.shippingAddress?.fullAddress() ?? localizer.loc("No Shipping Address")
+    }
+
+    func bililngAddress(formattedWith localizer: LocalizerProviderType) -> String {
+        return checkout?.billingAddress?.fullAddress() ?? localizer.loc("No Billing Address")
     }
 
     var isPaymentSelected: Bool {

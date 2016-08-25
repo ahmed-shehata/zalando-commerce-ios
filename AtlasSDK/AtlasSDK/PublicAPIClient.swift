@@ -61,13 +61,14 @@ extension APIClient {
                         completion(.failure(error))
 
                     case .success(let addressList):
-                        if addressList.isEmpty {
-                            completion(.failure(AtlasAPIError(code: .EmptyAddressList)))
-                            return
-                        }
-
                         self.createCheckout(cart.id) { checkoutResult in
-                            completion(checkoutResult)
+                            switch checkoutResult {
+                            case .failure(let error):
+                                completion(.failure(error))
+                            case .success(var checkout):
+                                checkout.availableAddresses = addressList.addresses
+                                completion(.success(checkout))
+                            }
                         }
                     }
                 }

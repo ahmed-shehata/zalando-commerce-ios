@@ -5,6 +5,7 @@
 import Foundation
 
 public struct Checkout {
+
     public let id: String
     public let customerNumber: String
     public let cartId: String
@@ -14,6 +15,9 @@ public struct Checkout {
     public let shippingAddress: ShippingAddress?
     public let delivery: Delivery
     public let payment: Payment
+
+    public var availableAddresses: [Address]?
+
 }
 
 extension Checkout: Hashable {
@@ -55,6 +59,8 @@ extension Checkout: JSONInitializable {
             billingAddress: BillingAddress(json: json[Keys.billingAddress]),
             shippingAddress: ShippingAddress(json: json[Keys.shippingAddress]),
             delivery: delivery,
-            payment: payment)
+            payment: payment,
+            availableAddresses: nil
+        )
     }
 }
