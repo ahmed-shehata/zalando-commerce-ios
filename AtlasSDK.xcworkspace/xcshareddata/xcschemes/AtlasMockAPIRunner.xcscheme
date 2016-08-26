@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E893B58D1D2E707A004D9547"
-               BuildableName = "AtlasMockAPI.framework"
-               BlueprintName = "AtlasMockAPI"
-               ReferencedContainer = "container:AtlasMockAPI.xcodeproj">
+               BlueprintIdentifier = "810BA01E1D5CCE4B004BDAD9"
+               BuildableName = "AtlasMockAPIRunner"
+               BlueprintName = "AtlasMockAPIRunner"
+               ReferencedContainer = "container:AtlasMockAPI/AtlasMockAPI.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -26,27 +26,16 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      codeCoverageEnabled = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E81E82191D33C1F300ADD0E6"
-               BuildableName = "AtlasMockAPITests.xctest"
-               BlueprintName = "AtlasMockAPITests"
-               ReferencedContainer = "container:AtlasMockAPI.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E893B58D1D2E707A004D9547"
-            BuildableName = "AtlasMockAPI.framework"
-            BlueprintName = "AtlasMockAPI"
-            ReferencedContainer = "container:AtlasMockAPI.xcodeproj">
+            BlueprintIdentifier = "810BA01E1D5CCE4B004BDAD9"
+            BuildableName = "AtlasMockAPIRunner"
+            BlueprintName = "AtlasMockAPIRunner"
+            ReferencedContainer = "container:AtlasMockAPI/AtlasMockAPI.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -62,15 +51,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E893B58D1D2E707A004D9547"
-            BuildableName = "AtlasMockAPI.framework"
-            BlueprintName = "AtlasMockAPI"
-            ReferencedContainer = "container:AtlasMockAPI.xcodeproj">
+            BlueprintIdentifier = "810BA01E1D5CCE4B004BDAD9"
+            BuildableName = "AtlasMockAPIRunner"
+            BlueprintName = "AtlasMockAPIRunner"
+            ReferencedContainer = "container:AtlasMockAPI/AtlasMockAPI.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -80,15 +70,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E893B58D1D2E707A004D9547"
-            BuildableName = "AtlasMockAPI.framework"
-            BlueprintName = "AtlasMockAPI"
-            ReferencedContainer = "container:AtlasMockAPI.xcodeproj">
+            BlueprintIdentifier = "810BA01E1D5CCE4B004BDAD9"
+            BuildableName = "AtlasMockAPIRunner"
+            BlueprintName = "AtlasMockAPIRunner"
+            ReferencedContainer = "container:AtlasMockAPI/AtlasMockAPI.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
