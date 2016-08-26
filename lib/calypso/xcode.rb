@@ -71,7 +71,11 @@ module Calypso
       scheme = scheme.nil? ? nil : "-scheme #{scheme}"
       cmd = base_build_cmd(WORKSPACE, cmd, scheme, args)
 
-      env_skip_xcpretty? ? cmd : "set -o pipefail && #{cmd} | xcpretty"
+      if env_skip_xcpretty?
+        cmd
+      else
+        "set -o pipefail && #{cmd} | xcpretty -f #{`xcpretty-travis-formatter`}"
+      end
     end
 
     include Env
