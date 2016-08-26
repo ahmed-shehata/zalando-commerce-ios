@@ -67,6 +67,8 @@ class RequestBuilder: Equatable {
                         error = AtlasAPIError.HTTP(
                             status: HTTPStatus(statusCode: httpResponse.statusCode),
                             details: nil)
+                    } else if httpResponse.status == .Unauthorized {
+                        error = AtlasAPIError.Unauthorized
                     } else {
                         error = AtlasAPIError.Backend(
                             status: json["status"].int,

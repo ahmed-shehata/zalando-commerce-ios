@@ -49,15 +49,36 @@ class APICustomerSpec: APIClientBaseSpec {
                 waitUntil(timeout: 60) { done in
                     client.customer { result in
                         defer { done() }
+                        guard case let .failure(error) = result else {
+                            fail("Should emit AtlasAPIError.Unauthorized")
+                            return
+                        }
+
+                        expect("\(error)").to(equal("\(AtlasAPIError.Unauthorized)"))
+                    }
+                }
+            }
+
+            it("should return error on backend error") {
+                let statusCode = HTTPStatus.Forbidden
+                let json = ["type": "http://httpstatus.es/401", "title": "unauthorized",
+                    "status": statusCode.rawValue, "detail": ""]
+
+                let errorResponse = self.dataWithJSONObject(json)
+                let client = self.mockedAPIClient(forURL: customerUrl, data: errorResponse, statusCode: statusCode.rawValue)
+
+                waitUntil(timeout: 60) { done in
+                    client.customer { result in
+                        defer { done() }
                         guard case let .failure(error) = result,
                             AtlasAPIError.Backend(let status, let title, let details) = error else {
                                 fail("Should emit AtlasAPIError.Backend")
                                 return
                         }
 
-                        expect(title).to(equal(json["title"]))
-                        expect(status).to(equal(json["status"]))
-                        expect(details).to(equal(json["detail"]))
+                        expect(status).to(equal(statusCode.rawValue))
+                        expect(title).to(equal(json["title"] as? String))
+                        expect(details).to(equal(json["detail"] as? String))
                     }
                 }
             }
