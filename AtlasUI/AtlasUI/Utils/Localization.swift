@@ -31,14 +31,14 @@ struct Localizer {
         self.localizedStringsBundle = findLocalizedStringsBundle()
     }
 
-    func localizedString(key: String, formatArguments: [CVarArgType]? = nil) -> String {
+    func localizedString(key: String, formatArguments: [CVarArgType?]? = nil) -> String {
         let localizedString = NSLocalizedString(key, bundle: self.localizedStringsBundle, comment: "")
 
         guard let formatArguments = formatArguments where !formatArguments.isEmpty else {
             return localizedString
         }
 
-        return String(format: localizedString, arguments: formatArguments)
+        return String(format: localizedString, arguments: formatArguments.flatMap { $0 })
     }
 
     func fmtPrice(number: NSNumber) -> String? {

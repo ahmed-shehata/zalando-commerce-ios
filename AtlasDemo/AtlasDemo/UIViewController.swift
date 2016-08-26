@@ -21,10 +21,6 @@ extension UIViewController {
 
     }
 
-    func showOK(title title: String, message: String) {
-        showMessage(title: title, message: message, actions: ButtonAction(text: "OK"))
-    }
-
     func showError(title title: String, error: ErrorType) {
         showMessage(title: title, message: String(error), actions: ButtonAction(text: "OK"))
     }

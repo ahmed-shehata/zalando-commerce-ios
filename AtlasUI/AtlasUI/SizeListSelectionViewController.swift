@@ -71,7 +71,7 @@ final class SizeListSelectionViewController: UITableViewController, CheckoutProv
         self.checkout.client.customer { result in
             switch result {
             case .failure(let error):
-                UserMessage.showError(title: self.loc("Error"), error: error)
+                self.userMessage.show(error: error)
 
             case .success(let customer):
                 self.checkout.createCheckout(withArticle: self.article, selectedUnitIndex: indexPath.row) { result in
@@ -79,7 +79,7 @@ final class SizeListSelectionViewController: UITableViewController, CheckoutProv
                     switch result {
                     case .failure(let error):
                         self.dismissViewControllerAnimated(true) {
-                            UserMessage.showError(title: self.loc("Fatal Error"), error: error)
+                            self.userMessage.show(error: error)
                         }
                     case .success(var checkoutViewModel):
                         checkoutViewModel.customer = customer

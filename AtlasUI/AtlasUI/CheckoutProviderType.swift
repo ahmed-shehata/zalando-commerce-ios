@@ -16,4 +16,8 @@ extension CheckoutProviderType {
         return checkout.localizer
     }
 
+    var userMessage: UserMessage {
+        return UserMessage(localizerProvider: checkout)
+    }
+
 }
