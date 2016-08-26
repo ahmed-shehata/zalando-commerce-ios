@@ -1,8 +1,8 @@
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/zalando-incubator/atlas-ios/master/LICENSE)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![CocoaPods](https://img.shields.io/cocoapods/v/AtlasSDK.svg?maxAge=3600)]()
-[![CocoaPods](https://img.shields.io/cocoapods/p/AtlasSDK.svg?maxAge=3600)]()
-[![CocoaPods](https://img.shields.io/cocoapods/at/AtlasSDK.svg?maxAge=3600)]()
+[![CocoaPods](https://img.shields.io/cocoapods/v/AtlasSDK.svg?maxAge=3600)](http://cocoadocs.org/docsets/AtlasSDK)
+[![CocoaPods](https://img.shields.io/cocoapods/p/AtlasSDK.svg?maxAge=3600)](http://cocoadocs.org/docsets/AtlasSDK)
+[![CocoaPods](https://img.shields.io/cocoapods/at/AtlasSDK.svg?maxAge=3600)](http://cocoadocs.org/docsets/AtlasSDK)
 
 [![Build Status](https://travis-ci.org/zalando-incubator/atlas-ios.svg?branch=master)](https://travis-ci.org/zalando-incubator/atlas-ios)
 [![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=57a305cb34a9450100595b71&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/57a305cb34a9450100595b71/build/latest)
@@ -14,7 +14,7 @@
 Atlas iOS SDK for Zalando Checkout and Catalog APIs.
 
 The purpose of this project is to provide seamless experience of Zalando
-articles checkout integration to the 3rd party iOS app in few minue
+articles checkout integration to the 3rd party iOS app in few minutes.
 
 Our goal is to allow iOS developer integrate and run Zalando checkout in
 minutes using a few lines of code.
@@ -30,6 +30,12 @@ which could be used with a single fire-and-forget call.
 
 ### Cocoapods
 
+```
+use_frameworks!
+
+pod 'AtlasSDK'
+```
+
 ### Carthage
 
 1. Add Atlas SDK to your `Cartfile.private`:
@@ -42,36 +48,62 @@ which could be used with a single fire-and-forget call.
 
 ## Configuration
 
-1. Configure Atlas SDK first in the AppDelegate:
+Configure Atlas SDK first in the AppDelegate and create shared instance to be used across your application:
 
     ```swift
     import AtlasSDK
 
+	var AtlasCheckoutInstance: AtlasCheckout?
+
     @UIApplicationMain
     class AppDelegate: UIResponder, UIApplicationDelegate {
        func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-            AtlasSDK.configure(Options(clientId: "CLIENT_ID", salesChannel: "SALES_CHANNEL_ID"))
-            return true
+				 let opts = Options(clientId: "CLIENT_ID", salesChannel: "SALES_CHANNEL")
+				 AtlasCheckout.configure(opts) { result in
+					 if case let .success(checkout) = result {
+						 AtlasCheckoutInstance = checkout
+					 }
+				 }
+
+				 return true
         }
     }
     ```
 
-2. Start checkout somewhere in your view controller, e.g. when a user tap on a buy button:
+## Usage
 
-    ```swift
-    import UIKit
-    import AtlasCheckout
+Using shared instance previously created you can interact with SDK, for example:
 
-    class ViewController: UIViewController {
-        @IBAction private func buyButtonTapped(sender: UIButton) {
-            let sku = "sku-123"
-            AtlasCheckout.presentCheckout(sku: sku)
-        }
-    }
-    ```
+* Get customer information
+	```swift
 
-3. No third step :)
+	import AtlasSDK
 
+	class ViewController: UIViewController {
+		@IBAction private func getCustomerTapped(sender: UIButton) {
+			AtlasCheckoutInstance?.client.customer { result in
+				switch result {
+				case .failure(let error):
+						print("Error: \(error)")
+
+				case .success(let customer):
+						print(customer)
+				}
+			}
+		}
+	}
+	```
+* Start checkout somewhere in your view controller, e.g. when a user tap on a buy button:
+	```swift
+
+	import AtlasSDK
+
+	class ViewController: UIViewController {
+		@IBAction func buyButtonTapped(sender: AnyObject) {
+        AtlasCheckoutInstance?.presentCheckoutView(sku: "N1242A0WI-K13")
+  	}
+	}
+	```
 
 ## Atlas SDK Structure
 
