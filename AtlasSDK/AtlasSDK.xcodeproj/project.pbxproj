@@ -263,6 +263,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		810348831D7031300021E95D /* APIClient */ = {
+			isa = PBXGroup;
+			children = (
+				8139B60C1D59BCC400187984 /* APIClientBaseSpec.swift */,
+				81F6FBDB1D35614B006662E8 /* APICheckoutSpec.swift */,
+				81F6FBDC1D35614B006662E8 /* APICustomerSpec.swift */,
+				810348801D702E180021E95D /* APIClientErrorsSpec.swift */,
+			);
+			name = APIClient;
+			sourceTree = "<group>";
+		};
+		810348841D7031420021E95D /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				81F6FBDD1D35614B006662E8 /* ConfigServiceResponse.json */,
+				81F6FBDE1D35614B006662E8 /* Info.plist */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
 		8117C4381D1D647D002786F3 /* Options */ = {
 			isa = PBXGroup;
 			children = (
@@ -311,20 +331,16 @@
 		814B7F191D0FD8D70073AF52 /* AtlasSDKTests */ = {
 			isa = PBXGroup;
 			children = (
+				810348841D7031420021E95D /* Other */,
 				8168EB001D523318003A3C4B /* Frameworks */,
 				814FE59D1D2D70E600F754DD /* SwiftyJSON */,
+				810348831D7031300021E95D /* APIClient */,
 				8150996B1D51D34F00557CCB /* DatesSpec.swift */,
 				8150996C1D51D34F00557CCB /* InjectorTests.swift */,
 				8150996D1D51D34F00557CCB /* KeychainSpec.swift */,
 				8150996F1D51D34F00557CCB /* LoggerSpec.swift */,
 				81F6FBE01D35614B006662E8 /* URLSessionMock.swift */,
-				8139B60C1D59BCC400187984 /* APIClientBaseSpec.swift */,
-				81F6FBDB1D35614B006662E8 /* APICheckoutSpec.swift */,
-				81F6FBDC1D35614B006662E8 /* APICustomerSpec.swift */,
-				810348801D702E180021E95D /* APIClientErrorsSpec.swift */,
 				812C16CE1D48A3E2001BFCF0 /* URLAuthorizationSpec.swift */,
-				81F6FBDD1D35614B006662E8 /* ConfigServiceResponse.json */,
-				81F6FBDE1D35614B006662E8 /* Info.plist */,
 				E848CBDB1D50ED3700FAA9C3 /* AtlasSpec.swift */,
 			);
 			name = AtlasSDKTests;

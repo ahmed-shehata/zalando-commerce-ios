@@ -66,7 +66,7 @@ class RequestBuilder: Equatable {
                     if json == JSON.null {
                         error = AtlasAPIError.http(
                             status: HTTPStatus(statusCode: httpResponse.statusCode),
-                            details: nil)
+                            details: NSHTTPURLResponse.localizedStringForStatusCode(httpResponse.statusCode))
                     } else if httpResponse.status == .Unauthorized {
                         error = AtlasAPIError.unauthorized
                     } else {
