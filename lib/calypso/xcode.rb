@@ -64,7 +64,7 @@ module Calypso
     end
 
     def base_build_cmd(workspace = WORKSPACE, *args)
-      "xcodebuild -workspace #{workspace} -parallelizeTargets -sdk iphonesimulator #{args.join ' '}"
+      "xcodebuild -workspace #{workspace} -sdk iphonesimulator #{args.join ' '}"
     end
 
     def format_build_cmd(cmd, scheme = nil, *args)
