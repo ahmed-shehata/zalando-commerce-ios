@@ -1,6 +1,7 @@
 require 'thor'
 require_relative 'consts'
 require_relative 'run'
+require_relative 'env'
 
 module Calypso
 
@@ -70,8 +71,10 @@ module Calypso
       scheme = scheme.nil? ? nil : "-scheme #{scheme}"
       cmd = base_build_cmd(WORKSPACE, cmd, scheme, args)
 
-      "set -o pipefail && #{cmd} | xcpretty"
+      env_skip_xcpretty? ? cmd : "set -o pipefail && #{cmd} | xcpretty"
     end
+
+    include Env
 
   end
 
