@@ -8,7 +8,7 @@ cache:
   bundler: true
 
 before_install:
-  - SIMULATOR_ID=$(xcrun instruments -s | grep -o "${ATLAS_TEST_SIMULATOR} \[.*\]" | sed "s/.*\[\(.*\)\]$/\1/"
+  - SIMULATOR_ID=$(xcrun instruments -s | grep -o "${ATLAS_TEST_SIMULATOR} \[.*\]" | sed "s/.*\[\(.*\)\]$/\1/")
 
 script:
   - open -a "simulator" --args -CurrentDeviceUDID "${SIMULATOR_ID}"
