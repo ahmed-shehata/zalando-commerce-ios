@@ -52,7 +52,7 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
         checkout.client.customer { result in
             switch result {
             case .failure(let error):
-                UserMessage.showError(title: self.loc("Error"), error: error)
+                self.userMessage.show(error: error)
             case .success(let customer):
                 self.generateCheckout(withArticle: article, customer: customer)
             }
@@ -63,9 +63,8 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
         checkout.createCheckout(withArticle: article, selectedUnitIndex: 0) { result in
             switch result {
             case .failure(let error):
-                AtlasLogger.logError(error)
                 self.dismissViewControllerAnimated(true) {
-                    UserMessage.showError(title: self.loc("Error"), error: error)
+                    self.userMessage.show(error: error)
                 }
             case .success(let checkoutViewModel):
                 let checkoutSummaryVC = CheckoutSummaryViewController(checkout: self.checkout, checkoutViewModel: checkoutViewModel)
@@ -85,7 +84,7 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
             Async.main {
                 switch result {
                 case .failure(let error):
-                    UserMessage.showError(title: strongSelf.loc("Fatal Error"), error: error)
+                    strongSelf.userMessage.show(error: error)
                 case .success(let article):
                     strongSelf.displaySizes(forArticle: article)
                 }

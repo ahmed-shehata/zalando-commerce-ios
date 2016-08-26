@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		810348861D7053050021E95D /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810348851D7053050021E95D /* Errors.swift */; };
 		810916021D522BD6006101AD /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810916011D522BD6006101AD /* Async.swift */; };
 		810916041D522C66006101AD /* AsyncSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810916031D522C66006101AD /* AsyncSpec.swift */; };
 		810916071D522E4A006101AD /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 810916051D522E4A006101AD /* Nimble.framework */; };
@@ -67,6 +68,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		810348851D7053050021E95D /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		810916011D522BD6006101AD /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
 		810916031D522C66006101AD /* AsyncSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncSpec.swift; sourceTree = "<group>"; };
 		810916051D522E4A006101AD /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = ../../Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				8186B14C1D51EE930068EE37 /* AtlasCheckout.swift */,
 				81F7944C1D5B09A800C73859 /* CheckoutProviderType.swift */,
 				8172776E1D5B174E001394BF /* LocalizerProviderType.swift */,
+				810348851D7053050021E95D /* Errors.swift */,
 			);
 			path = AtlasUI;
 			sourceTree = "<group>";
@@ -466,6 +469,7 @@
 				E85BE3531D5DF60C009EF7BA /* PaymentSelectionViewController.swift in Sources */,
 				8186B1581D51EE930068EE37 /* CheckoutTransitioningDelegate.swift in Sources */,
 				8172776F1D5B174E001394BF /* LocalizerProviderType.swift in Sources */,
+				810348861D7053050021E95D /* Errors.swift in Sources */,
 				8186B1561D51EE930068EE37 /* CheckoutPresentationController.swift in Sources */,
 				8186B14E1D51EE930068EE37 /* UIImage.swift in Sources */,
 				8186B15A1D51EE930068EE37 /* PaymentProcessingViewController.swift in Sources */,

@@ -114,7 +114,7 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
             Async.main {
                 switch result {
                 case .failure(let error):
-                    UserMessage.showError(title: self.loc("Fatal Error"), error: error)
+                    self.userMessage.show(error: error)
 
                 case .success(let customer):
                     self.showLoadingView()
@@ -129,7 +129,7 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
             switch result {
             case .failure(let error):
                 self.dismissViewControllerAnimated(true) {
-                    UserMessage.showError(title: self.loc("Fatal Error"), error: error)
+                    self.userMessage.show(error: error)
                 }
             case .success(var checkout):
                 checkout.customer = customer

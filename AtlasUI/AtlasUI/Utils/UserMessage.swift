@@ -10,32 +10,40 @@ typealias ButtonActionHandler = ((UIAlertAction) -> Void)
 
 struct ButtonAction {
 
-    var text: String
-    var handler: ButtonActionHandler?
+    let text: String
+    let handler: ButtonActionHandler?
+    let style: UIAlertActionStyle
 
-    init(text: String, handler: ButtonActionHandler? = nil) {
+    init(text: String, style: UIAlertActionStyle = .Default, handler: ButtonActionHandler? = nil) {
         self.text = text
         self.handler = handler
+        self.style = style
     }
 
 }
 
 struct UserMessage {
 
-    static func showOK(title title: String, message: String) {
-        UserMessage.show(title: title, message: message, actions: ButtonAction(text: "OK"))
-    }
+    let localizerProvider: LocalizerProviderType
 
-    static func showError(title title: String, error: ErrorType) {
+    func show(error error: ErrorType, title: String? = nil) {
         AtlasLogger.logError(error)
-        UserMessage.show(title: title, message: String(error), actions: ButtonAction(text: "OK"))
+        let message: String
+        if let atlasError = error as? AtlasErrorType {
+            message = atlasError.message(localizedWith: localizerProvider)
+        } else {
+            message = String(error)
+        }
+        show(title: title ?? localizerProvider.loc("Error"),
+            message: message, actions: ButtonAction(text: "OK"))
     }
 
-    static func show(title title: String, message: String, actions: ButtonAction...) {
+    func show(title title: String, message: String, actions: ButtonAction...) {
         guard let topViewController = UIApplication.topViewController() else { return }
         let alertView = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         for button in actions {
-            alertView.addAction(UIAlertAction(title: button.text, style: .Default, handler: button.handler))
+            let title = localizerProvider.loc(button.text)
+            alertView.addAction(UIAlertAction(title: title, style: button.style, handler: button.handler))
         }
         Async.main {
             topViewController.presentViewController(alertView, animated: true, completion: nil)
