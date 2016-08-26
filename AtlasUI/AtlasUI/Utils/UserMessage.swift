@@ -26,10 +26,6 @@ struct UserMessage {
 
     let localizerProvider: LocalizerProviderType
 
-    init(localizerProvider: LocalizerProviderType) {
-        self.localizerProvider = localizerProvider
-    }
-
     func show(error error: ErrorType, title: String? = nil) {
         AtlasLogger.logError(error)
         let message: String
