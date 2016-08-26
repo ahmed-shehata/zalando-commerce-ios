@@ -78,6 +78,30 @@ class APICustomerSpec: APIClientBaseSpec {
                                 expect(code).to(equal(NSURLErrorBadURL))
                                 expect(details).to(contain("The operation couldn’t be completed"))
                             default:
+                                fail("Should emit AtlasAPIError.NSURLError")
+                            }
+                        default:
+                            fail("Should emit HTTPError")
+                        }
+                        done()
+                    }
+                }
+            }
+
+            it("should return error when response has mangled json") {
+                let errorStatus = HTTPStatus.ServiceUnavailable
+                let errorResponse = "Some text error".dataUsingEncoding(NSUTF8StringEncoding)
+
+                let client = self.mockedAPIClient(forURL: customerUrl, data: errorResponse, statusCode: errorStatus.rawValue)
+
+                waitUntil(timeout: 60) { done in
+                    client.customer { result in
+                        switch result {
+                        case .failure(let error as AtlasAPIError):
+                            switch error {
+                            case .HTTP(let status, _):
+                                expect(status).to(equal(errorStatus))
+                            default:
                                 fail("Should emit AtlasAPIError.HTTP")
                             }
                         default:
