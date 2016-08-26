@@ -12,11 +12,6 @@ public struct Options {
     public let interfaceLanguage: String
     public let configurationURL: NSURL
 
-    @available( *, deprecated, message = "To be removed with AtlasSDK")
-    init() {
-        self.init(clientId: "", salesChannel: "")
-    }
-
     public init(clientId: String, salesChannel: String, useSandbox: Bool = false,
         interfaceLanguage: String = "de_DE", configurationURL: NSURL? = nil) {
             self.clientId = clientId
