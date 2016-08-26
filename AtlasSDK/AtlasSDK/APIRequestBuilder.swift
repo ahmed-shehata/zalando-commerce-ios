@@ -18,7 +18,7 @@ final class APIRequestBuilder: RequestBuilder {
             switch result {
             case .failure(let error):
                 switch error {
-                case AtlasAPIError.Unauthorized:
+                case AtlasAPIError.unauthorized:
                     guard UIApplication.hasTopViewController else {
                         completion(.failure(error))
                         return
@@ -62,7 +62,7 @@ final class APIRequestBuilder: RequestBuilder {
 
     private func askUserToLogin(completion: LoginCompletion) {
         guard let sourceApp = UIApplication.topViewController() else {
-            completion(.failure(LoginError.MissingViewControllerToShowLoginForm))
+            completion(.failure(LoginError.missingViewControllerToShowLoginForm))
             return
         }
 

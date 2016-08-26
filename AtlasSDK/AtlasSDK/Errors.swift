@@ -16,36 +16,34 @@ public extension AtlasErrorType {
 
 }
 
-// TODO: rename all cases to camel case
-
 public enum AtlasConfigurationError: AtlasErrorType {
 
-    case IncorrectConfigServiceResponse
-    case MissingClientId
-    case MissingSalesChannel
-    case MissingInterfaceLanguage
+    case incorrectConfigServiceResponse
+    case missingClientId
+    case missingSalesChannel
+    case missingInterfaceLanguage
 
 }
 
 public enum AtlasAPIError: AtlasErrorType {
 
-    case NoData
-    case InvalidResponseFormat
-    case NSURLError(code: Int, details: String?)
-    case HTTP(status: HTTPStatus, details: String?)
-    case Backend(status: Int?, title: String?, details: String?)
-    case Unauthorized
-    case Unknown(details: String?)
+    case noData
+    case invalidResponseFormat
+    case nsURLError(code: Int, details: String?)
+    case http(status: HTTPStatus, details: String?)
+    case backend(status: Int?, title: String?, details: String?)
+    case unauthorized
+    case unknown(details: String?)
 
 }
 
 public enum LoginError: AtlasErrorType {
 
-    case Unknown
-    case MissingURL
-    case AccessDenied
-    case RequestFailed
-    case NoAccessToken
-    case MissingViewControllerToShowLoginForm
+    case unknown
+    case missingURL
+    case accessDenied
+    case requestFailed
+    case noAccessToken
+    case missingViewControllerToShowLoginForm
 
 }

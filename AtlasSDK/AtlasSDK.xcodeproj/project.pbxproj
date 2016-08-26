@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6D0483931D50CF2F005F4EAE /* AddressList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0483921D50CF2F005F4EAE /* AddressList.swift */; };
 		8101EB941D587F04008E2A1A /* Atlas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8101EB931D587F04008E2A1A /* Atlas.swift */; };
+		810348821D702E810021E95D /* APIClientErrorsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810348801D702E180021E95D /* APIClientErrorsSpec.swift */; };
 		812BB4D71D34C0910018C321 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812BB4D11D34C0910018C321 /* APIClient.swift */; };
 		812C16D01D48A48F001BFCF0 /* URLAuthorizationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812C16CE1D48A3E2001BFCF0 /* URLAuthorizationSpec.swift */; };
 		812C6A0A1D534D460003B2DC /* AtlasMockAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812C6A091D534D460003B2DC /* AtlasMockAPI.framework */; };
@@ -137,6 +138,7 @@
 /* Begin PBXFileReference section */
 		6D0483921D50CF2F005F4EAE /* AddressList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressList.swift; sourceTree = "<group>"; };
 		8101EB931D587F04008E2A1A /* Atlas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Atlas.swift; path = AtlasSDK/Atlas.swift; sourceTree = SOURCE_ROOT; };
+		810348801D702E180021E95D /* APIClientErrorsSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIClientErrorsSpec.swift; path = AtlasSDKTests/APIClientErrorsSpec.swift; sourceTree = SOURCE_ROOT; };
 		812BB4D11D34C0910018C321 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIClient.swift; path = AtlasSDK/APIClient.swift; sourceTree = SOURCE_ROOT; };
 		812C16CE1D48A3E2001BFCF0 /* URLAuthorizationSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLAuthorizationSpec.swift; path = AtlasSDKTests/URLAuthorizationSpec.swift; sourceTree = SOURCE_ROOT; };
 		812C6A091D534D460003B2DC /* AtlasMockAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AtlasMockAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -323,6 +325,7 @@
 				81F6FBDD1D35614B006662E8 /* ConfigServiceResponse.json */,
 				81F6FBDE1D35614B006662E8 /* Info.plist */,
 				E848CBDB1D50ED3700FAA9C3 /* AtlasSpec.swift */,
+				810348801D702E180021E95D /* APIClientErrorsSpec.swift */,
 			);
 			name = AtlasSDKTests;
 			path = AtlasSDK/AtlasSDKTests;
@@ -753,6 +756,7 @@
 				815099731D51D34F00557CCB /* KeychainSpec.swift in Sources */,
 				8192838C1D50E8E30009DB60 /* LiteralConvertibleTests.swift in Sources */,
 				815099751D51D34F00557CCB /* LoggerSpec.swift in Sources */,
+				810348821D702E810021E95D /* APIClientErrorsSpec.swift in Sources */,
 				819283891D50E8E30009DB60 /* BaseTests.swift in Sources */,
 				8192838F1D50E8E30009DB60 /* PrintableTests.swift in Sources */,
 				819283911D50E8E30009DB60 /* RawTests.swift in Sources */,

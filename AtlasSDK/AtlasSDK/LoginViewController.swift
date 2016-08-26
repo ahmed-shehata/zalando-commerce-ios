@@ -85,11 +85,11 @@ extension LoginViewController: UIWebViewDelegate {
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest,
         navigationType: UIWebViewNavigationType) -> Bool {
             guard let url = request.URL else {
-                return dismissViewController(withFailure: .MissingURL)
+                return dismissViewController(withFailure: .missingURL)
             }
 
             guard !url.isAccessDenied else {
-                return dismissViewController(withFailure: .AccessDenied)
+                return dismissViewController(withFailure: .accessDenied)
             }
 
             guard let token = url.accessToken else {
@@ -100,7 +100,7 @@ extension LoginViewController: UIWebViewDelegate {
     }
 
     func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
-        self.dismissViewController(withFailure: .RequestFailed)
+        self.dismissViewController(withFailure: .requestFailed)
     }
 
     func webViewDidFinishLoad(webView: UIWebView) {
