@@ -321,11 +321,11 @@
 				8139B60C1D59BCC400187984 /* APIClientBaseSpec.swift */,
 				81F6FBDB1D35614B006662E8 /* APICheckoutSpec.swift */,
 				81F6FBDC1D35614B006662E8 /* APICustomerSpec.swift */,
+				810348801D702E180021E95D /* APIClientErrorsSpec.swift */,
 				812C16CE1D48A3E2001BFCF0 /* URLAuthorizationSpec.swift */,
 				81F6FBDD1D35614B006662E8 /* ConfigServiceResponse.json */,
 				81F6FBDE1D35614B006662E8 /* Info.plist */,
 				E848CBDB1D50ED3700FAA9C3 /* AtlasSpec.swift */,
-				810348801D702E180021E95D /* APIClientErrorsSpec.swift */,
 			);
 			name = AtlasSDKTests;
 			path = AtlasSDK/AtlasSDKTests;

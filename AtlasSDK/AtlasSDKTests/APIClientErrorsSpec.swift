@@ -17,11 +17,12 @@ class APIClientErrorsSpec: APIClientBaseSpec {
             let clientUrl = NSURL(validUrl: "https://atlas-sdk.api/api/any_endpoint")
 
             it("should return error on unauthenticated request") {
+                let status = HTTPStatus.Unauthorized
                 let json = ["type": "http://httpstatus.es/401", "title": "unauthorized",
-                    "status": 401, "detail": "Full authentication is required to access this resource"]
+                    "status": status.rawValue, "detail": "Full authentication is required to access this resource"]
 
                 let errorResponse = self.dataWithJSONObject(json)
-                let client = self.mockedAPIClient(forURL: clientUrl, data: errorResponse, statusCode: 401)
+                let client = self.mockedAPIClient(forURL: clientUrl, data: errorResponse, status: status)
 
                 waitUntil(timeout: 60) { done in
                     client.customer { result in
@@ -37,23 +38,23 @@ class APIClientErrorsSpec: APIClientBaseSpec {
             }
 
             it("should return error on backend error") {
-                let statusCode = HTTPStatus.Forbidden
+                let status = HTTPStatus.Forbidden
                 let json = ["type": "http://httpstatus.es/401", "title": "unauthorized",
-                    "status": statusCode.rawValue, "detail": ""]
+                    "status": status.rawValue, "detail": ""]
 
                 let errorResponse = self.dataWithJSONObject(json)
-                let client = self.mockedAPIClient(forURL: clientUrl, data: errorResponse, statusCode: statusCode.rawValue)
+                let client = self.mockedAPIClient(forURL: clientUrl, data: errorResponse, status: status)
 
                 waitUntil(timeout: 60) { done in
                     client.customer { result in
                         defer { done() }
                         guard case let .failure(error) = result,
-                            AtlasAPIError.backend(let status, let title, let details) = error else {
+                            AtlasAPIError.backend(let errorStatus, let title, let details) = error else {
                                 fail("Should emit AtlasAPIError.Backend")
                                 return
                         }
 
-                        expect(status).to(equal(statusCode.rawValue))
+                        expect(errorStatus).to(equal(status.rawValue))
                         expect(title).to(equal(json["title"] as? String))
                         expect(details).to(equal(json["detail"] as? String))
                     }
