@@ -50,9 +50,14 @@ class APICustomerSpec: APIClientBaseSpec {
                     client.customer { result in
                         switch result {
                         case .failure(let error as AtlasAPIError):
-                            expect(error.message).to(equal(json["title"]))
-                            expect(error.code).to(equal(json["status"]))
-                            expect(error.extraDetails).to(equal(json["detail"]))
+                            switch error {
+                            case .Backend(let status, let title, let details):
+                                expect(title).to(equal(json["title"]))
+                                expect(status).to(equal(json["status"]))
+                                expect(details).to(equal(json["detail"]))
+                            default:
+                                fail("Should emit AtlasAPIError.Backend")
+                            }
                         default:
                             fail("Should emit AtlasAPIError")
                         }
@@ -67,9 +72,14 @@ class APICustomerSpec: APIClientBaseSpec {
                 waitUntil(timeout: 60) { done in
                     client.customer { result in
                         switch result {
-                        case .failure(let error as HTTPError):
-                            expect(error.code).to(equal(NSURLErrorBadURL))
-                            expect(error.message).to(contain("The operation couldn’t be completed"))
+                        case .failure(let error as AtlasAPIError):
+                            switch error {
+                            case .NSURLError(let code, let details):
+                                expect(code).to(equal(NSURLErrorBadURL))
+                                expect(details).to(contain("The operation couldn’t be completed"))
+                            default:
+                                fail("Should emit AtlasAPIError.HTTP")
+                            }
                         default:
                             fail("Should emit HTTPError")
                         }

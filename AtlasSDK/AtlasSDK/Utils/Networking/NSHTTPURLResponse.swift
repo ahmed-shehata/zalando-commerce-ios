@@ -7,7 +7,7 @@ import Foundation
 extension NSHTTPURLResponse {
 
     var isSuccessful: Bool {
-        return (200..<400).contains(self.statusCode)
+        return HTTPStatus(statusCode: self.statusCode).isSuccessful
     }
 
     convenience init?(URL: NSURL, statusCode: Int) {

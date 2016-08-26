@@ -34,6 +34,9 @@ public enum HTTPStatus: Int {
         self = HTTPStatus(rawValue: statusCode) ?? .Unknown
     }
 
+    var isSuccessful: Bool {
+        return (OK.rawValue..<BadRequest.rawValue).contains(rawValue)
+    }
 }
 
 func == (lhs: Int, rhs: HTTPStatus) -> Bool {

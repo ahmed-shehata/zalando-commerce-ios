@@ -31,6 +31,7 @@ public enum AtlasAPIError: AtlasErrorType {
 
     case NoData
     case InvalidResponseFormat
+    case NSURLError(code: Int, details: String?)
     case HTTP(status: HTTPStatus, details: String?)
     case Backend(status: Int?, title: String?, details: String?)
     case Unauthorized

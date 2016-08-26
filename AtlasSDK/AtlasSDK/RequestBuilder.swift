@@ -49,8 +49,7 @@ class RequestBuilder: Equatable {
         dataTask = self.urlSession.dataTaskWithRequest(request,
             completionHandler: { data, response, error in
                 if let error = error {
-                    let httpStatus = HTTPStatus(statusCode: error.code)
-                    let httpError = AtlasAPIError.HTTP(status: httpStatus, details: error.localizedDescription)
+                    let httpError = AtlasAPIError.NSURLError(code: error.code, details: error.localizedDescription)
                     completion(.failure(httpError))
                     return
                 }
@@ -63,9 +62,18 @@ class RequestBuilder: Equatable {
                 let json = JSON(data: data)
 
                 guard httpResponse.isSuccessful else {
-                    let backendError = AtlasAPIError.Backend(status: json["status"].int,
-                        title: json["title"].string, details: json["detail"].string)
-                    completion(.failure(backendError))
+                    let error: AtlasAPIError
+                    if json == JSON.null {
+                        error = AtlasAPIError.HTTP(
+                            status: HTTPStatus(statusCode: httpResponse.statusCode),
+                            details: nil)
+                    } else {
+                        error = AtlasAPIError.Backend(
+                            status: json["status"].int,
+                            title: json["title"].string,
+                            details: json["detail"].string)
+                    }
+                    completion(.failure(error))
                     return
                 }
 
