@@ -24,17 +24,17 @@ class APICustomerSpec: APIClientBaseSpec {
 
                 waitUntil(timeout: 60) { done in
                     client.customer { result in
-                        switch result {
-                        case .success(let customer):
-                            expect(customer.customerNumber).to(equal("12345678"))
-                            expect(customer.gender).to(equal(Customer.Gender.Male))
-                            expect(customer.email).to(equal("aaa@a.a"))
-                            expect(customer.firstName).to(equal("John"))
-                            expect(customer.lastName).to(equal("Doe"))
-                        default:
+                        defer { done() }
+                        guard case let .success(customer) = result else {
                             fail("Should return Customer")
+                            return
                         }
-                        done()
+
+                        expect(customer.customerNumber).to(equal("12345678"))
+                        expect(customer.gender).to(equal(Customer.Gender.Male))
+                        expect(customer.email).to(equal("aaa@a.a"))
+                        expect(customer.firstName).to(equal("John"))
+                        expect(customer.lastName).to(equal("Doe"))
                     }
                 }
             }
@@ -48,20 +48,16 @@ class APICustomerSpec: APIClientBaseSpec {
 
                 waitUntil(timeout: 60) { done in
                     client.customer { result in
-                        switch result {
-                        case .failure(let error as AtlasAPIError):
-                            switch error {
-                            case .Backend(let status, let title, let details):
-                                expect(title).to(equal(json["title"]))
-                                expect(status).to(equal(json["status"]))
-                                expect(details).to(equal(json["detail"]))
-                            default:
+                        defer { done() }
+                        guard case let .failure(error) = result,
+                            AtlasAPIError.Backend(let status, let title, let details) = error else {
                                 fail("Should emit AtlasAPIError.Backend")
-                            }
-                        default:
-                            fail("Should emit AtlasAPIError")
+                                return
                         }
-                        done()
+
+                        expect(title).to(equal(json["title"]))
+                        expect(status).to(equal(json["status"]))
+                        expect(details).to(equal(json["detail"]))
                     }
                 }
             }
@@ -71,19 +67,15 @@ class APICustomerSpec: APIClientBaseSpec {
 
                 waitUntil(timeout: 60) { done in
                     client.customer { result in
-                        switch result {
-                        case .failure(let error as AtlasAPIError):
-                            switch error {
-                            case .NSURLError(let code, let details):
-                                expect(code).to(equal(NSURLErrorBadURL))
-                                expect(details).to(contain("The operation couldn’t be completed"))
-                            default:
-                                fail("Should emit AtlasAPIError.NSURLError")
-                            }
-                        default:
-                            fail("Should emit HTTPError")
+                        defer { done() }
+                        guard case let .failure(error) = result,
+                            AtlasAPIError.NSURLError(let code, let details) = error else {
+                                fail("Should emit NSURLError")
+                                return
                         }
-                        done()
+
+                        expect(code).to(equal(NSURLErrorBadURL))
+                        expect(details).to(contain("The operation couldn’t be completed"))
                     }
                 }
             }
@@ -96,18 +88,14 @@ class APICustomerSpec: APIClientBaseSpec {
 
                 waitUntil(timeout: 60) { done in
                     client.customer { result in
-                        switch result {
-                        case .failure(let error as AtlasAPIError):
-                            switch error {
-                            case .HTTP(let status, _):
-                                expect(status).to(equal(errorStatus))
-                            default:
+                        defer { done() }
+                        guard case let .failure(error) = result,
+                            AtlasAPIError.HTTP(let status, _) = error else {
                                 fail("Should emit AtlasAPIError.HTTP")
-                            }
-                        default:
-                            fail("Should emit HTTPError")
+                                return
                         }
-                        done()
+
+                        expect(status).to(equal(errorStatus))
                     }
                 }
             }
