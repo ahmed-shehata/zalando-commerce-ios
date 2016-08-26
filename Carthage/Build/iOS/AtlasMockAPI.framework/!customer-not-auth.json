@@ -1,6 +1,0 @@
-{
-    "type" : "http://httpstatus.es/401",
-    "title" : "unauthorized",
-    "status" : 401,
-    "detail" : "Full authentication is required to access this resource"
-}
