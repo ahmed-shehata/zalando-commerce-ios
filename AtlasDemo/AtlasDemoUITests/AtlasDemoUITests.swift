@@ -35,7 +35,7 @@ class AtlasDemoUITests: XCTestCase {
         waitForElementToAppearAndTap(sizeText)
         tapConnectAndLogin()
         tapBuyNow()
-        tapDone()
+        tapBackToShop()
     }
 
     func testBuyQuicklyProductWithoutSizes() {
@@ -43,7 +43,7 @@ class AtlasDemoUITests: XCTestCase {
 
         tapConnectAndLogin()
         tapBuyNow()
-        tapDone()
+        tapBackToShop()
     }
 
     func testBuyProductWithSizesAndNavigatingBack() {
@@ -65,21 +65,21 @@ class AtlasDemoUITests: XCTestCase {
 
         tapConnectAndLogin()
         tapBuyNow()
-        tapDone()
+        tapBackToShop()
     }
 
     private func tapConnectAndLogin() {
-        waitForElementToAppearAndTap(app.buttons["Connect To Zalando"])
+        waitForElementToAppearAndTap(app.buttons["order.place"])
         fillInLogin()
         NSThread.sleepForTimeInterval(2)
     }
 
     private func tapBuyNow() {
-        waitForElementToAppearAndTap(app.buttons["Buy Now"])
+        waitForElementToAppearAndTap(app.buttons["Place order"])
     }
 
-    private func tapDone() {
-        waitForElementToAppearAndTap(app.navigationBars["Payment"].buttons["Done"])
+    private func tapBackToShop() {
+        waitForElementToAppearAndTap(app.buttons["navigation.back.shop"])
     }
 
     private func fillInLogin() {

@@ -52,4 +52,12 @@ extension CheckoutViewModel {
         return article.units[selectedUnitIndex]
     }
 
+    var shippingPriceValue: Float {
+        return shippingPrice?.amount ?? 0
+    }
+
+    var totalPriceValue: Float {
+        return shippingPriceValue + selectedUnit.price.amount
+    }
+
 }

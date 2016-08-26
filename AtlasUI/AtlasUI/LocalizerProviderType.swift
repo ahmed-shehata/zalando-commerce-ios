@@ -5,7 +5,7 @@
 import Foundation
 import AtlasSDK
 
-protocol LocalizerProviderType {
+protocol LocalizerProviderType: class {
 
     var localizer: Localizer { get }
 

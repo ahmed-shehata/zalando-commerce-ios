@@ -8,7 +8,7 @@ import AtlasSDK
 final class SizeListSelectionViewController: UITableViewController, CheckoutProviderType {
 
     private let article: Article
-    internal let checkout: AtlasCheckout
+    internal let checkout: AtlasCheckout!
 
     init(checkout: AtlasCheckout, article: Article) {
         self.checkout = checkout
@@ -61,9 +61,8 @@ final class SizeListSelectionViewController: UITableViewController, CheckoutProv
         tableView.userInteractionEnabled = false
 
         guard Atlas.isUserLoggedIn() else {
-            let checkoutModel = CheckoutViewModel(article: self.article, selectedUnitIndex: indexPath.row)
-            let checkoutSummaryVC = CheckoutSummaryViewController(checkout: checkout, checkoutViewModel: checkoutModel)
-            self.showViewController(checkoutSummaryVC, sender: self)
+            let checkoutViewModel = CheckoutViewModel(article: self.article, selectedUnitIndex: indexPath.row)
+            displayCheckoutSummaryViewController(checkoutViewModel)
             spinner.stopAnimating()
             return
         }
@@ -83,11 +82,16 @@ final class SizeListSelectionViewController: UITableViewController, CheckoutProv
                         }
                     case .success(var checkoutViewModel):
                         checkoutViewModel.customer = customer
-                        let checkoutSummaryVC = CheckoutSummaryViewController(checkout: self.checkout, checkoutViewModel: checkoutViewModel)
-                        self.showViewController(checkoutSummaryVC, sender: self)
+                        self.displayCheckoutSummaryViewController(checkoutViewModel)
                     }
                 }
             }
+        }
+    }
+
+    private func displayCheckoutSummaryViewController(checkoutViewModel: CheckoutViewModel) {
+        if let checkoutSummaryVC = CheckoutSummaryStoryboardViewController.instantiateFromStoryBoard(checkout, checkoutViewModel: checkoutViewModel) {
+            self.showViewController(checkoutSummaryVC, sender: self)
         }
     }
 }
