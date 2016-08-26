@@ -33,13 +33,11 @@ public enum AtlasAPIError: AtlasErrorType {
     case http(status: HTTPStatus, details: String?)
     case backend(status: Int?, title: String?, details: String?)
     case unauthorized
-    case unknown(details: String?)
 
 }
 
 public enum LoginError: AtlasErrorType {
 
-    case unknown
     case missingURL
     case accessDenied
     case requestFailed
