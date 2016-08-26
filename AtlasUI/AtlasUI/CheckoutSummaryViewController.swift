@@ -25,7 +25,7 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
         }
     }
 
-    internal var checkout: AtlasCheckout
+    internal var checkout: AtlasCheckout!
 
     init(checkout: AtlasCheckout, checkoutViewModel: CheckoutViewModel) {
         self.checkout = checkout
@@ -155,7 +155,7 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
     private func setupButtons() {
         view.addSubview(connectToZalandoButton)
         connectToZalandoButton.hidden = true
-        connectToZalandoButton.setTitle(loc("Connect To Zalando"), forState: .Normal)
+        connectToZalandoButton.setTitle(loc("Zalando.Connect"), forState: .Normal)
         connectToZalandoButton.addTarget(self, action: #selector(CheckoutSummaryViewController.connectToZalandoButtonTapped(_:)),
             forControlEvents: .TouchUpInside)
         view.addSubview(buyButton)

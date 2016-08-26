@@ -8,6 +8,7 @@ import AtlasSDK
 struct CheckoutViewModel {
 
     let shippingAddressText: String?
+    let billingAddressText: String?
     let paymentMethodText: String?
     let discountText: String?
     let shippingPrice: Article.Price?
@@ -31,15 +32,24 @@ struct CheckoutViewModel {
         return self.article.units[selectedUnitIndex].price
     }
 
+    var shippingPriceValue: Float {
+        return shippingPrice?.amount ?? 0
+    }
+
+    var totalPriceValue: Float {
+        return shippingPriceValue + unitPrice.amount
+    }
+
     init(article: Article, selectedUnitIndex: Int = 0, shippingPrice: Article.Price? = nil,
         checkout: Checkout? = nil, customer: Customer? = nil,
-        shippingAddressText: String? = nil, paymentMethodText: String? = nil, discountText: String? = nil) {
+        shippingAddressText: String? = nil, billingAddressText: String? = nil, paymentMethodText: String? = nil, discountText: String? = nil) {
             self.article = article
             self.shippingPrice = shippingPrice
             self.checkout = checkout
             self.customer = customer
 
             self.shippingAddressText = shippingAddressText ?? checkout?.shippingAddress?.fullAddress()
+            self.billingAddressText = billingAddressText ?? checkout?.billingAddress?.fullAddress()
             self.paymentMethodText = paymentMethodText ?? checkout?.payment.selected?.method
             self.discountText = discountText
 

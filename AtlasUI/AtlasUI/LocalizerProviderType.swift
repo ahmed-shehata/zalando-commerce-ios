@@ -4,7 +4,7 @@
 
 import Foundation
 
-protocol LocalizerProviderType {
+protocol LocalizerProviderType: class {
 
     var localizer: Localizer { get }
 
