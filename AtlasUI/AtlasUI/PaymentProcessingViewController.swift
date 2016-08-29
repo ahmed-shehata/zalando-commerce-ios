@@ -44,7 +44,21 @@ internal final class PaymentProcessingViewController: UIViewController, Checkout
                 self.userMessage.show(error: error)
             case .success(let order):
                 print(order)
-                self.showSuccessImage()
+                guard let paymentURL = order.externalPaymentUrl else {
+                    self.showSuccessImage()
+                    return
+                }
+                let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
+                paymentSelectionViewController.paymentCompletion = { _ in
+                    self.showSuccessImage()
+                }
+
+                let navigationController = UINavigationController(rootViewController: paymentSelectionViewController)
+                Async.main {
+                    navigationController.modalPresentationStyle = .OverCurrentContext
+                    self.navigationController?.presentViewController(navigationController, animated: true, completion: nil)
+                }
+
             }
         }
     }
