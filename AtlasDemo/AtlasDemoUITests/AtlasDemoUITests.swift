@@ -69,7 +69,7 @@ class AtlasDemoUITests: XCTestCase {
     }
 
     private func tapConnectAndLogin() {
-        waitForElementToAppearAndTap(app.buttons["order.place"])
+        waitForElementToAppearAndTap(app.buttons["Checkout with Zalando"])
         fillInLogin()
         NSThread.sleepForTimeInterval(2)
     }
@@ -79,7 +79,7 @@ class AtlasDemoUITests: XCTestCase {
     }
 
     private func tapBackToShop() {
-        waitForElementToAppearAndTap(app.buttons["navigation.back.shop"])
+        waitForElementToAppearAndTap(app.buttons["Back to shop"])
     }
 
     private func fillInLogin() {

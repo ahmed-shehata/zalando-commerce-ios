@@ -11,5 +11,5 @@ extension UIView {
             view.removeFromSuperview()
         }
     }
-    
+
 }
