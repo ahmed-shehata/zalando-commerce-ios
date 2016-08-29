@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		810348861D7053050021E95D /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810348851D7053050021E95D /* Errors.swift */; };
 		810916021D522BD6006101AD /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810916011D522BD6006101AD /* Async.swift */; };
 		810916041D522C66006101AD /* AsyncSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810916031D522C66006101AD /* AsyncSpec.swift */; };
 		810916071D522E4A006101AD /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 810916051D522E4A006101AD /* Nimble.framework */; };
@@ -16,7 +17,6 @@
 		8172776F1D5B174E001394BF /* LocalizerProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8172776E1D5B174E001394BF /* LocalizerProviderType.swift */; };
 		8186B11E1D51EE2F0068EE37 /* AtlasUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 8186B11D1D51EE2F0068EE37 /* AtlasUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8186B1251D51EE2F0068EE37 /* AtlasUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8186B11A1D51EE2F0068EE37 /* AtlasUI.framework */; };
-		8186B12A1D51EE2F0068EE37 /* AtlasUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B1291D51EE2F0068EE37 /* AtlasUITests.swift */; };
 		8186B14E1D51EE930068EE37 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B1361D51EE930068EE37 /* UIImage.swift */; };
 		8186B14F1D51EE930068EE37 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B1371D51EE930068EE37 /* UIImageView.swift */; };
 		8186B1501D51EE930068EE37 /* UserMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B1381D51EE930068EE37 /* UserMessage.swift */; };
@@ -75,6 +75,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		810348851D7053050021E95D /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		810916011D522BD6006101AD /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
 		810916031D522C66006101AD /* AsyncSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncSpec.swift; sourceTree = "<group>"; };
 		810916051D522E4A006101AD /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = ../../Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
@@ -84,7 +85,6 @@
 		8186B11D1D51EE2F0068EE37 /* AtlasUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtlasUI.h; sourceTree = "<group>"; };
 		8186B11F1D51EE2F0068EE37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8186B1241D51EE2F0068EE37 /* AtlasUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AtlasUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8186B1291D51EE2F0068EE37 /* AtlasUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtlasUITests.swift; sourceTree = "<group>"; };
 		8186B12B1D51EE2F0068EE37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8186B1361D51EE930068EE37 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		8186B1371D51EE930068EE37 /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
@@ -188,6 +188,7 @@
 				8186B14C1D51EE930068EE37 /* AtlasCheckout.swift */,
 				81F7944C1D5B09A800C73859 /* CheckoutProviderType.swift */,
 				8172776E1D5B174E001394BF /* LocalizerProviderType.swift */,
+				810348851D7053050021E95D /* Errors.swift */,
 			);
 			path = AtlasUI;
 			sourceTree = "<group>";
@@ -196,7 +197,6 @@
 			isa = PBXGroup;
 			children = (
 				8109160C1D522E93006101AD /* Frameworks */,
-				8186B1291D51EE2F0068EE37 /* AtlasUITests.swift */,
 				810916031D522C66006101AD /* AsyncSpec.swift */,
 				81F3B46E1D5A0A7D007BCF6F /* LocalizationSpec.swift */,
 				8186B12B1D51EE2F0068EE37 /* Info.plist */,
@@ -505,6 +505,7 @@
 				E85BE3531D5DF60C009EF7BA /* PaymentSelectionViewController.swift in Sources */,
 				8186B1581D51EE930068EE37 /* CheckoutTransitioningDelegate.swift in Sources */,
 				8172776F1D5B174E001394BF /* LocalizerProviderType.swift in Sources */,
+				810348861D7053050021E95D /* Errors.swift in Sources */,
 				8186B1561D51EE930068EE37 /* CheckoutPresentationController.swift in Sources */,
 				8186B14E1D51EE930068EE37 /* UIImage.swift in Sources */,
 				8186B15A1D51EE930068EE37 /* PaymentProcessingViewController.swift in Sources */,
@@ -515,7 +516,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8186B12A1D51EE2F0068EE37 /* AtlasUITests.swift in Sources */,
 				810916041D522C66006101AD /* AsyncSpec.swift in Sources */,
 				81F3B46F1D5A0A7D007BCF6F /* LocalizationSpec.swift in Sources */,
 			);

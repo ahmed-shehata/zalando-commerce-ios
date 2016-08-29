@@ -139,9 +139,9 @@ extension CheckoutSummaryStoryboardViewController {
         articleNameLabel.text = checkoutViewModel.article.name
         unitSizeLabel.text = loc("Size: %@", checkoutViewModel.selectedUnit.size)
         shippingAddressTitleLabel.text = loc("Address.Shipping")
-        shippingAddressValueLabel.text = checkoutViewModel.shippingAddressText
+        shippingAddressValueLabel.text = checkoutViewModel.shippingAddress(localizedWith: self)
         billingAddressTitleLabel.text = loc("Address.Billing")
-        billingAddressValueLabel.text = checkoutViewModel.billingAddressText
+        billingAddressValueLabel.text = checkoutViewModel.billingAddress(localizedWith: self)
         paymentTitleLabel.text = loc("Payment")
         paymentValueLabel.text = checkoutViewModel.paymentMethodText
         shippingTitleLabel.text = loc("Shipping")

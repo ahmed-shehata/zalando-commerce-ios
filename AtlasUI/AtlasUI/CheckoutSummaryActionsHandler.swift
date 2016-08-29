@@ -24,7 +24,7 @@ extension CheckoutSummaryActionsHandler {
         viewController.checkout.client.createOrder(checkout.id) { result in
             self.viewController.hideLoader()
             switch result {
-            case .failure(let error): UserMessage.showError(title: self.viewController.loc("Fatal Error"), error: error)
+            case .failure(let error): self.viewController.userMessage.show(error: error)
             case .success: self.viewController.viewState = .OrderPlaced
             }
         }
@@ -38,7 +38,7 @@ extension CheckoutSummaryActionsHandler {
         viewController.checkout.client.customer { result in
             Async.main {
                 switch result {
-                case .failure(let error): UserMessage.showError(title: self.viewController.loc("Fatal Error"), error: error)
+                case .failure(let error): self.viewController.userMessage.show(error: error)
                 case .success(let customer): self.generateCheckout(customer)
                 }
             }
@@ -47,18 +47,19 @@ extension CheckoutSummaryActionsHandler {
 
     private func generateCheckout(customer: Customer) {
         viewController.showLoader()
-        viewController.checkout.createCheckout(withArticle: viewController.checkoutViewModel.article, articleUnitIndex: viewController.checkoutViewModel.selectedUnitIndex) { result in
-            self.viewController.hideLoader()
-            switch result {
-            case .failure(let error):
-                self.viewController.dismissViewControllerAnimated(true) {
-                    UserMessage.showError(title: self.viewController.loc("Fatal Error"), error: error)
+        viewController.checkout.createCheckout(withArticle: viewController.checkoutViewModel.article,
+            selectedUnitIndex: viewController.checkoutViewModel.selectedUnitIndex) { result in
+                self.viewController.hideLoader()
+                switch result {
+                case .failure(let error):
+                    self.viewController.dismissViewControllerAnimated(true) {
+                        self.viewController.userMessage.show(error: error)
+                    }
+                case .success(var checkout):
+                    checkout.customer = customer
+                    self.viewController.checkoutViewModel = checkout
+                    self.viewController.viewState = .LoggedIn
                 }
-            case .success(var checkout):
-                checkout.customer = customer
-                self.viewController.checkoutViewModel = checkout
-                self.viewController.viewState = .LoggedIn
-            }
         }
     }
 

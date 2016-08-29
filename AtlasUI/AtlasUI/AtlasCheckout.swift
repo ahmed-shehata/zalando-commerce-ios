@@ -52,29 +52,16 @@ public class AtlasCheckout: LocalizerProviderType {
             return true
     }
 
-    func createCheckout(withArticle article: Article, articleUnitIndex: Int, completion: CreateCheckoutCompletion) {
-        let articleSKU = article.units[articleUnitIndex].id
-        let cartItemRequest = CartItemRequest(sku: articleSKU, quantity: 1)
-
-        client.createCart(cartItemRequest) { result in
-            switch result {
-
+    func createCheckout(withArticle article: Article, selectedUnitIndex: Int, completion: CreateCheckoutCompletion) {
+        client.createCheckout(withArticle: article, selectedUnitIndex: selectedUnitIndex) { checkoutResult in
+            switch checkoutResult {
             case .failure(let error):
-                UserMessage.showError(title: self.loc("Fatal Error"), error: error)
                 completion(.failure(error))
 
-            case .success(let cart):
-                self.client.createCheckout(cart.id) { result in
-                    switch result {
-                    case .failure(let error):
-                        UserMessage.showError(title: self.loc("Fatal Error"), error: error)
-                        completion(.failure(error))
-
-                    case .success(let checkout):
-                        let checkoutModel = CheckoutViewModel(article: article, selectedUnitIndex: articleUnitIndex, checkout: checkout)
-                        completion(.success(checkoutModel))
-                    }
-                }
+            case .success(let checkout):
+                let checkoutModel = CheckoutViewModel(article: article,
+                    selectedUnitIndex: selectedUnitIndex, checkout: checkout)
+                completion(.success(checkoutModel))
             }
         }
     }

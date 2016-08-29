@@ -41,8 +41,7 @@ internal final class PaymentProcessingViewController: UIViewController, Checkout
         self.checkout.client.createOrder(checkout.id) { result in
             switch result {
             case .failure(let error):
-                AtlasLogger.logError(error)
-                UserMessage.showOK(title: self.loc("Fatal Error"), message: String(error))
+                self.userMessage.show(error: error)
             case .success(let order):
                 print(order)
                 self.showSuccessImage()

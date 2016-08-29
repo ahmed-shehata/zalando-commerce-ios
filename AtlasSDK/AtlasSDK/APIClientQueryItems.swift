@@ -15,10 +15,6 @@ extension APIClient {
         case accessDenied = "access_denied"
     }
 
-    enum Error: ErrorType {
-        case invalidResponseFormat
-    }
-
 }
 
 extension NSURL {

@@ -1,6 +1,7 @@
 require 'thor'
 require_relative 'consts'
 require_relative 'run'
+require_relative 'env'
 
 module Calypso
 
@@ -63,15 +64,21 @@ module Calypso
     end
 
     def base_build_cmd(workspace = WORKSPACE, *args)
-      "xcodebuild -workspace #{workspace} -parallelizeTargets -sdk iphonesimulator #{args.join ' '}"
+      "xcodebuild -workspace #{workspace} -sdk iphonesimulator #{args.join ' '}"
     end
 
     def format_build_cmd(cmd, scheme = nil, *args)
       scheme = scheme.nil? ? nil : "-scheme #{scheme}"
       cmd = base_build_cmd(WORKSPACE, cmd, scheme, args)
 
-      "set -o pipefail && #{cmd} | xcpretty"
+      if env_skip_xcpretty?
+        cmd
+      else
+        "#{cmd} | xcpretty -f #{`xcpretty-travis-formatter`} -c && exit ${PIPESTATUS[0]}"
+      end
     end
+
+    include Env
 
   end
 

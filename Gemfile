@@ -12,6 +12,7 @@ group :calypso do
   gem 'github_changelog_generator'
   gem 'activesupport'
   gem 'rack'
+  gem 'xcpretty-travis-formatter'
 end
 
 group :tools do
