@@ -7,9 +7,6 @@ notifications:
 cache:
   bundler: true
 
-before_install:
-  - SIMULATOR_ID=$(xcrun instruments -s | grep -o "${ATLAS_TEST_SIMULATOR} \[.*\]" | sed "s/.*\[\(.*\)\]$/\1/")
-
 script:
   - bundle exec ./calypso.rb xcode test UnitTests 3
 
