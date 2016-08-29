@@ -25,7 +25,8 @@ extension CheckoutSummaryActionsHandler {
             self.viewController.hideLoader()
             switch result {
             case .failure(let error): self.viewController.userMessage.show(error: error)
-            case .success: self.viewController.viewState = .OrderPlaced
+            case .success (let order):
+                self.handleOrderConfirmation(order)
             }
         }
     }
@@ -74,6 +75,19 @@ extension CheckoutSummaryActionsHandler {
         let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
         paymentSelectionViewController.paymentCompletion = { _ in
             self.loadCustomerData()
+        }
+        viewController.showViewController(paymentSelectionViewController, sender: viewController)
+    }
+
+    internal func handleOrderConfirmation(order: Order) {
+        guard let paymentURL = order.externalPaymentUrl else {
+            self.viewController.viewState = .OrderPlaced
+            return
+        }
+
+        let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
+        paymentSelectionViewController.paymentCompletion = { _ in
+            self.viewController.viewState = .OrderPlaced
         }
         viewController.showViewController(paymentSelectionViewController, sender: viewController)
     }
