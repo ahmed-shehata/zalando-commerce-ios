@@ -6,7 +6,8 @@ module Calypso
   class SimCtl
 
     def run_with_simulator(device_name, runtime_name)
-      udid = create_simulator(device_name, runtime_name) # 'iPhone 6s', 'iOS 9.3'
+      udid = create_simulator(device_name, runtime_name)
+      open_simulator udid
       yield udid
       delete_simulator udid
     end
@@ -24,14 +25,14 @@ module Calypso
 
     def delete_simulators(name)
       find_devices(name).each do |dev|
-        udid = dev['udid']
-        delete_simulator udid
+        delete_simulator dev['udid']
       end
     end
 
     def delete_simulator(udid)
       dev = find_device(udid)
       shutdown_simulator(udid) unless dev['state'] == 'Shutdown'
+      `killall -9 Simulator`
       run_simctl('delete', udid)
       puts "Simulator #{udid} deleted"
     end
@@ -39,6 +40,11 @@ module Calypso
     def boot_simulator(udid)
       puts "Simulator #{udid} booting"
       run_simctl('boot', udid)
+    end
+
+    def open_simulator(udid)
+      puts "Simulator #{udid} starting"
+      %(open -a "simulator" --args -CurrentDeviceUDID #{udid})
     end
 
     def shutdown_simulator(udid)
@@ -75,7 +81,6 @@ module Calypso
     end
 
     def run_simctl(*args)
-      # puts "xcrun simctl #{args.join ' '}"
       `xcrun simctl #{args.join ' '}`
     end
 
