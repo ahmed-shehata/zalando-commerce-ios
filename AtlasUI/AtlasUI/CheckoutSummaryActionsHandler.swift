@@ -25,7 +25,7 @@ extension CheckoutSummaryActionsHandler {
             self.viewController.hideLoader()
             switch result {
             case .failure(let error): self.viewController.userMessage.show(error: error)
-            case .success(let order): self.viewController.viewState = .OrderPlaced
+            case .success: self.viewController.viewState = .OrderPlaced
             }
         }
     }

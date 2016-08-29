@@ -38,5 +38,5 @@ class BorderView: UIView {
         view.backgroundColor = borderColor
         addSubview(view)
     }
-    
+
 }
