@@ -64,5 +64,5 @@ class RoundedButton: UIButton {
         layer.borderWidth = borderWidth
         layer.borderColor = borderColor.CGColor
     }
-    
+
 }

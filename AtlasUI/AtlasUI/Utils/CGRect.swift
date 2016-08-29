@@ -9,5 +9,5 @@ extension CGRect {
     var maximumCornerRadius: CGFloat {
         return min(width, height) / 2.0
     }
-    
+
 }

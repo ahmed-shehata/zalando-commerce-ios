@@ -43,7 +43,7 @@ class CheckoutSummaryStoryboardViewController: UIViewController, CheckoutProvide
     @IBOutlet private weak var submitButton: UIButton!
     @IBOutlet private weak var stackView: UIStackView! {
         didSet {
-            stackView.subviews.flatMap{ $0 as? UIStackView }.forEach{
+            stackView.subviews.flatMap { $0 as? UIStackView }.forEach {
                 $0.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
                 $0.layoutMarginsRelativeArrangement = true
             }
@@ -104,7 +104,7 @@ class CheckoutSummaryStoryboardViewController: UIViewController, CheckoutProvide
 }
 
 extension CheckoutSummaryStoryboardViewController {
-    
+
     private func setupViewState() {
         if Atlas.isUserLoggedIn() {
             viewState = .LoggedIn
@@ -149,10 +149,10 @@ extension CheckoutSummaryStoryboardViewController {
         totalTitleLabel.text = loc("Total")
         totalPriceLabel.text = localizer.fmtPrice(checkoutViewModel.totalPriceValue)
         footerLabel.text = loc("CheckoutSummaryViewController.terms")
-        
+
         priceStackView.hidden = !viewState.showPrice
         footerStackView.hidden = !viewState.showFooter
-        arrowImageViews.forEach{ $0.hidden = !viewState.showDetailArrow }
+        arrowImageViews.forEach { $0.hidden = !viewState.showDetailArrow }
     }
 
 }

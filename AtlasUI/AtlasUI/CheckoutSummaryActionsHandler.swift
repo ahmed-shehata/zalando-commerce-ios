@@ -24,8 +24,8 @@ extension CheckoutSummaryActionsHandler {
         viewController.checkout.client.createOrder(checkout.id) { result in
             self.viewController.hideLoader()
             switch result {
-            case .failure(let error): UserMessage.showOK(title: self.viewController.loc("Fatal Error"), message: String(error))
-            case .success(let order): self.viewController.viewState = .OrderPlaced
+            case .failure(let error): UserMessage.showError(title: self.viewController.loc("Fatal Error"), error: error)
+            case .success: self.viewController.viewState = .OrderPlaced
             }
         }
     }
