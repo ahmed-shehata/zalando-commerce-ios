@@ -2,6 +2,7 @@ require 'thor'
 require_relative 'consts'
 require_relative 'run'
 require_relative 'env'
+require_relative 'simctl'
 
 module Calypso
 
@@ -36,16 +37,20 @@ module Calypso
 
     include Run
 
-    def exec_tests(scheme, tries, platform = PLATFORM_DEFAULT)
-      build_cmd = format_build_cmd('test', scheme,
-                                   '-destination', "'platform=#{platform}'",
-                                   '-enableCodeCoverage', 'YES')
+    def exec_tests(scheme, tries)
       exitstatus = 0
       try = 0
       loop do
         try += 1
         puts "Running tests (try: #{try}/#{tries})"
-        exitstatus = run(build_cmd, false)
+
+        SimCtl.new.run_with_simulator(TEST_DEVICE, TEST_RUNTIME) do |simulator_udid|
+          build_cmd = format_build_cmd('test', scheme,
+                                       '-destination', "'platform=iOS Simulator,id=#{simulator_udid}'",
+                                       '-enableCodeCoverage', 'YES')
+          exitstatus = run(build_cmd, false)
+        end
+
         break if exitstatus.zero?
         exit(exitstatus) if try >= tries.to_i
       end
