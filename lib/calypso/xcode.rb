@@ -79,7 +79,7 @@ module Calypso
       if env_skip_xcpretty?
         cmd
       else
-        "#{cmd} | xcpretty -f #{`xcpretty-travis-formatter`} -c && exit ${PIPESTATUS[0]}"
+        "#{cmd} | xcpretty -f #{`xcpretty-travis-profiler-formatter`} -c && exit ${PIPESTATUS[0]}"
       end
     end
 
