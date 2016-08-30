@@ -1,8 +1,4 @@
 //
-//  CheckoutSummaryActionsHandler.swift
-//  AtlasUI
-//
-//  Created by Hani Ibrahim Ibrahim Eloksh on 26/08/16.
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
@@ -25,8 +21,7 @@ extension CheckoutSummaryActionsHandler {
             self.viewController.hideLoader()
             switch result {
             case .failure(let error): self.viewController.userMessage.show(error: error)
-            case .success (let order):
-                self.handleOrderConfirmation(order)
+            case .success (let order): self.handleOrderConfirmation(order)
             }
         }
     }

@@ -90,14 +90,20 @@ class CheckoutSummaryStoryboardViewController: UIViewController, CheckoutProvide
     }
 
     @IBAction private func shippingAddressTapped() {
-        // TODO when addresses are implemented
+        guard viewState.showDetailArrow else { return }
+
+        userMessage.notImplemented()
     }
 
     @IBAction private func billingAddressTapped() {
-        // TODO when addresses are implemented
+        guard viewState.showDetailArrow else { return }
+
+        userMessage.notImplemented()
     }
 
     @IBAction private func paymentAddressTapped() {
+        guard viewState.showDetailArrow else { return }
+
         actionsHandler.showPaymentSelectionScreen()
     }
 
@@ -139,9 +145,9 @@ extension CheckoutSummaryStoryboardViewController {
         articleNameLabel.text = checkoutViewModel.article.name
         unitSizeLabel.text = loc("Size: %@", checkoutViewModel.selectedUnit.size)
         shippingAddressTitleLabel.text = loc("Address.Shipping")
-        shippingAddressValueLabel.text = checkoutViewModel.shippingAddress(localizedWith: self)
+        shippingAddressValueLabel.text = checkoutViewModel.shippingAddress(localizedWith: self).trimmed
         billingAddressTitleLabel.text = loc("Address.Billing")
-        billingAddressValueLabel.text = checkoutViewModel.billingAddress(localizedWith: self)
+        billingAddressValueLabel.text = checkoutViewModel.billingAddress(localizedWith: self).trimmed
         paymentTitleLabel.text = loc("Payment")
         paymentValueLabel.text = checkoutViewModel.paymentMethodText
         shippingTitleLabel.text = loc("Shipping")
