@@ -81,6 +81,7 @@
 		810916031D522C66006101AD /* AsyncSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncSpec.swift; sourceTree = "<group>"; };
 		810916051D522E4A006101AD /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = ../../Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		810916061D522E4A006101AD /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = ../../Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
+		812D78AE1D75A78800462C6D /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		8172776E1D5B174E001394BF /* LocalizerProviderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizerProviderType.swift; sourceTree = "<group>"; };
 		8186B11A1D51EE2F0068EE37 /* AtlasUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AtlasUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8186B11D1D51EE2F0068EE37 /* AtlasUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtlasUI.h; sourceTree = "<group>"; };
@@ -229,6 +230,7 @@
 				E9325D501D6767E8004C29DC /* BorderView.swift */,
 				E9325D381D674752004C29DC /* CGRect.swift */,
 				E9D510051D757031008D28E7 /* String.swift */,
+				812D78AE1D75A78800462C6D /* String.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";

@@ -5,7 +5,19 @@
 import Foundation
 import AtlasSDK
 
-extension AtlasErrorType {
+protocol UserPresentable: AtlasErrorType {
+
+    func title(localizedWith provider: LocalizerProviderType, formatArguments: CVarArgType?...) -> String
+
+    func message(localizedWith provider: LocalizerProviderType, formatArguments: CVarArgType?...) -> String
+
+}
+
+extension UserPresentable {
+
+    func title(localizedWith provider: LocalizerProviderType, formatArguments: CVarArgType?...) -> String {
+        return provider.localizer.localizedString("\(self.dynamicType).title", formatArguments: formatArguments)
+    }
 
     func message(localizedWith provider: LocalizerProviderType, formatArguments: CVarArgType?...) -> String {
         return provider.localizer.localizedString(self.localizedDescriptionKey, formatArguments: formatArguments)
@@ -13,21 +25,23 @@ extension AtlasErrorType {
 
 }
 
-extension AtlasAPIError {
+extension AtlasAPIError: UserPresentable {
 
-    func message(localizedWith provider: LocalizerProviderType) -> String {
-        let errorType = self as AtlasErrorType
+    func message(localizedWith provider: LocalizerProviderType, formatArguments: CVarArgType?...) -> String {
         switch self {
         case .nsURLError(let code, let details):
-            return errorType.message(localizedWith: provider, formatArguments: "\(details) (#\(code))")
+            return "\(details) (#\(code))"
         case .http(let status, let details):
-            return errorType.message(localizedWith: provider, formatArguments: "\(details) (#\(status))")
-        case .backend(_, let title, let details):
-            return errorType.message(localizedWith: provider, formatArguments: title, details)
+            return "\(details~?) (#\(status~?))"
+        case .backend(let status, _, let details):
+            return "\(details~?) (#\(status~?))"
         default:
-            return errorType.message(localizedWith: provider)
+            return provider.localizer.localizedString(self.localizedDescriptionKey)
         }
-
     }
 
 }
+
+extension AtlasConfigurationError: UserPresentable { }
+
+extension LoginError: UserPresentable { }

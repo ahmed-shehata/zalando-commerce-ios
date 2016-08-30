@@ -7,7 +7,17 @@ import Foundation
 extension String {
 
     var trimmed: String {
-        return self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        return self.stringByTrimmingCharactersInSet(.whitespaceAndNewlineCharacterSet())
     }
 
+}
+
+postfix operator ~? { }
+
+postfix func ~?<T> (val: T?) -> String {
+    if let val = val {
+        return String(val)
+    } else {
+        return ""
+    }
 }
