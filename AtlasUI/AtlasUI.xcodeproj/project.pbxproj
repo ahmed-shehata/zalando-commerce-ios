@@ -40,6 +40,7 @@
 		E85D38E41D5B4F74008A42C2 /* CheckoutSummaryStyler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85D38E31D5B4F74008A42C2 /* CheckoutSummaryStyler.swift */; };
 		E85D38E61D5B7182008A42C2 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85D38E51D5B7182008A42C2 /* UIStackView.swift */; };
 		E85D38E81D5B78A1008A42C2 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85D38E71D5B78A1008A42C2 /* UIView.swift */; };
+		E8C97A451D7591B700AE5997 /* ShippingAddressSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C97A441D7591B700AE5997 /* ShippingAddressSelectionViewController.swift */; };
 		E9325D371D674305004C29DC /* RoundedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9325D361D674305004C29DC /* RoundedViews.swift */; };
 		E9325D391D674752004C29DC /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9325D381D674752004C29DC /* CGRect.swift */; };
 		E9325D511D6767E8004C29DC /* BorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9325D501D6767E8004C29DC /* BorderView.swift */; };
@@ -110,6 +111,7 @@
 		E85D38E31D5B4F74008A42C2 /* CheckoutSummaryStyler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryStyler.swift; sourceTree = "<group>"; };
 		E85D38E51D5B7182008A42C2 /* UIStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		E85D38E71D5B78A1008A42C2 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		E8C97A441D7591B700AE5997 /* ShippingAddressSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShippingAddressSelectionViewController.swift; sourceTree = "<group>"; };
 		E9325D361D674305004C29DC /* RoundedViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedViews.swift; sourceTree = "<group>"; };
 		E9325D381D674752004C29DC /* CGRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
 		E9325D501D6767E8004C29DC /* BorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderView.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 		E85D38DD1D5B34B4008A42C2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E8C97A431D75918F00AE5997 /* Address Selection */,
 				E963286F1D6EFDEA00BDAE06 /* Checkout Summay */,
 				E85BE3511D5DF5EB009EF7BA /* Payment Selection */,
 				E85D38DF1D5B4EE5008A42C2 /* Checkout */,
@@ -319,6 +322,14 @@
 				8186B1411D51EE930068EE37 /* CheckoutPresentationController.swift */,
 			);
 			name = Transitions;
+			sourceTree = "<group>";
+		};
+		E8C97A431D75918F00AE5997 /* Address Selection */ = {
+			isa = PBXGroup;
+			children = (
+				E8C97A441D7591B700AE5997 /* ShippingAddressSelectionViewController.swift */,
+			);
+			name = "Address Selection";
 			sourceTree = "<group>";
 		};
 		E963286F1D6EFDEA00BDAE06 /* Checkout Summay */ = {
@@ -490,6 +501,7 @@
 				E9325D391D674752004C29DC /* CGRect.swift in Sources */,
 				E9325D511D6767E8004C29DC /* BorderView.swift in Sources */,
 				E973CF611D70329900B706E8 /* CheckoutSummaryActionsHandler.swift in Sources */,
+				E8C97A451D7591B700AE5997 /* ShippingAddressSelectionViewController.swift in Sources */,
 				E9325D371D674305004C29DC /* RoundedViews.swift in Sources */,
 				E85D38E61D5B7182008A42C2 /* UIStackView.swift in Sources */,
 				8186B1591D51EE930068EE37 /* CheckoutSummaryRow.swift in Sources */,

@@ -70,10 +70,11 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
     }
 
     private func displayCheckoutSummaryViewController(checkoutViewModel: CheckoutViewModel) {
-        if let checkoutSummaryVC = CheckoutSummaryStoryboardViewController.instantiateFromStoryBoard(checkout, checkoutViewModel: checkoutViewModel) {
-            UIView.performWithoutAnimation {
-                self.showViewController(checkoutSummaryVC, sender: self)
-            }
+        if let checkoutSummaryVC = CheckoutSummaryStoryboardViewController.instantiateFromStoryBoard(checkout, checkoutViewModel:
+                checkoutViewModel) {
+                    UIView.performWithoutAnimation {
+                        self.showViewController(checkoutSummaryVC, sender: self)
+                    }
         }
     }
 
