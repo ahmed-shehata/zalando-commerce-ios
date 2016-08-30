@@ -1,5 +1,3 @@
-.DS_Store
-
 ## Build generated
 ./build
 DerivedData
@@ -33,16 +31,18 @@ timeline.xctimeline
 playground.xcworkspace
 
 # Carthage
-Carthage/Checkouts
 *.bcsymbolmap
 *.dSYM
+/Carthage/Checkouts
+/Carthage/Build/iOS/AtlasUI.framework
+/Carthage/Build/iOS/AtlasSDK.framework
 
-fastlane/report.xml
-fastlane/screenshots
-
+# Temporary files
 .rake_tasks
 *.sw[po]
 .DS_Store
+
+# Local caches
 xcov_report
 /.bundle
 /vendor

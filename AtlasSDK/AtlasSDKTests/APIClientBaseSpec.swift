@@ -29,7 +29,7 @@ class APIClientBaseSpec: QuickSpec {
         configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
 
     func waitUntilAPIClientIsConfigured(actions: (done: () -> Void, client: APIClient) -> Void) {
-        waitUntil(timeout: 60) { done in
+        waitUntil(timeout: 10) { done in
             Atlas.configure(self.clientOptions) { result in
                 switch result {
                 case .failure(let error):

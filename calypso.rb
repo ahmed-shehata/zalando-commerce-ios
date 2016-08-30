@@ -13,6 +13,8 @@ require_relative 'lib/calypso/ci'
 require_relative 'lib/calypso/xcode'
 require_relative 'lib/calypso/coverage'
 
+$stdout.sync = $stderr.sync = true
+
 module Calypso
   class CLI < Thor
     include Calypso
