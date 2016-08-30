@@ -94,7 +94,7 @@ class CheckoutSummaryStoryboardViewController: UIViewController, CheckoutProvide
     }
 
     @IBAction private func shippingAddressTapped() {
-        // TODO when addresses are implemented
+        actionsHandler.showShippingAddressSelectionScreen()
     }
 
     @IBAction private func billingAddressTapped() {

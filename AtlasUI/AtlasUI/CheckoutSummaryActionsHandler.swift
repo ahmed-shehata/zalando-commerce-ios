@@ -1,8 +1,4 @@
 //
-//  CheckoutSummaryActionsHandler.swift
-//  AtlasUI
-//
-//  Created by Hani Ibrahim Ibrahim Eloksh on 26/08/16.
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
@@ -77,6 +73,11 @@ extension CheckoutSummaryActionsHandler {
             self.loadCustomerData()
         }
         viewController.showViewController(paymentSelectionViewController, sender: viewController)
+    }
+
+    internal func showShippingAddressSelectionScreen() {
+        let addressSelectionViewController = AddressPickerViewController(checkout: viewController.checkout, addressType: .shipping)
+        viewController.showViewController(addressSelectionViewController, sender: viewController)
     }
 
     internal func handleOrderConfirmation(order: Order) {
