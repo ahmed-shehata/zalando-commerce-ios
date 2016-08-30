@@ -50,4 +50,11 @@ struct UserMessage {
         }
     }
 
+    func notImplemented() {
+        AtlasLogger.logError("Not Implemented")
+        let title = localizerProvider.loc("feature.notImplemented.title")
+        let message = localizerProvider.loc("feature.notImplemented.message")
+        show(title: title, message: message, actions: ButtonAction(text: "OK"))
+    }
+
 }
