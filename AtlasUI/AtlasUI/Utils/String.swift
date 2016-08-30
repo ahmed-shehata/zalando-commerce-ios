@@ -4,14 +4,14 @@
 
 import Foundation
 
-<<<<<<< Updated upstream
 extension String {
 
     var trimmed: String {
-        return self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        return self.stringByTrimmingCharactersInSet(.whitespaceAndNewlineCharacterSet())
     }
 
-=======
+}
+
 postfix operator ~? { }
 
 postfix func ~?<T> (val: T?) -> String {
@@ -20,5 +20,4 @@ postfix func ~?<T> (val: T?) -> String {
     } else {
         return ""
     }
->>>>>>> Stashed changes
 }
