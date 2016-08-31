@@ -20,8 +20,10 @@ extension CheckoutSummaryActionsHandler {
         viewController.checkout.client.createOrder(checkout.id) { result in
             self.viewController.hideLoader()
             switch result {
-            case .failure(let error): self.viewController.userMessage.show(error: error)
-            case .success (let order): self.handleOrderConfirmation(order)
+            case .failure(let error):
+                self.viewController.userMessage.show(error: error)
+            case .success (let order):
+                self.handleOrderConfirmation(order)
             }
         }
     }
@@ -34,8 +36,10 @@ extension CheckoutSummaryActionsHandler {
         viewController.checkout.client.customer { result in
             Async.main {
                 switch result {
-                case .failure(let error): self.viewController.userMessage.show(error: error)
-                case .success(let customer): self.generateCheckout(customer)
+                case .failure(let error):
+                    self.viewController.userMessage.show(error: error)
+                case .success(let customer):
+                    self.generateCheckout(customer)
                 }
             }
         }
@@ -51,10 +55,10 @@ extension CheckoutSummaryActionsHandler {
                     self.viewController.dismissViewControllerAnimated(true) {
                         self.viewController.userMessage.show(error: error)
                     }
-                case .success(var checkout):
-                    checkout.customer = customer
-                    self.viewController.checkoutViewModel = checkout
-                    self.viewController.viewState = .LoggedIn
+                case .success(var checkoutViewModel):
+                    checkoutViewModel.customer = customer
+                    self.viewController.checkoutViewModel = checkoutViewModel
+                    self.viewController.viewState = checkoutViewModel.checkoutViewState
                 }
         }
     }
@@ -72,6 +76,11 @@ extension CheckoutSummaryActionsHandler {
             self.loadCustomerData()
         }
         viewController.showViewController(paymentSelectionViewController, sender: viewController)
+    }
+
+    internal func showShippingAddressSelectionScreen() {
+        let addressSelectionViewController = AddressPickerViewController(checkout: viewController.checkout, addressType: .shipping)
+        viewController.showViewController(addressSelectionViewController, sender: viewController)
     }
 
     internal func handleOrderConfirmation(order: Order) {

@@ -25,7 +25,7 @@ public typealias CartCompletion = AtlasResult<Cart> -> Void
 /**
  Completion block `AtlasResult` with the `Checkout` struct as a success value
  */
-public typealias CheckoutCompletion = AtlasResult<Checkout> -> Void
+public typealias CheckoutCompletion = AtlasResult<CheckoutType> -> Void
 
 /**
  Completion block `AtlasResult` with the `Order` struct as a success value
@@ -61,12 +61,16 @@ extension APIClient {
                         completion(.failure(error))
 
                     case .success(let addressList):
+                        guard !addressList.isEmpty else {
+                            completion(.success(IncompleteCheckout(cartId: cart.id)))
+                            return
+                        }
+
                         self.createCheckout(cart.id) { checkoutResult in
                             switch checkoutResult {
                             case .failure(let error):
                                 completion(.failure(error))
-                            case .success(var checkout):
-                                checkout.availableAddresses = addressList.addresses
+                            case .success(let checkout):
                                 completion(.success(checkout))
                             }
                         }
@@ -77,8 +81,10 @@ extension APIClient {
     }
 
     public func createCheckout(cartId: String, billingAddressId: String? = nil,
-        shippingAddressId: String? = nil, checkoutCompletion: CheckoutCompletion) {
-            let checkoutRequest = CheckoutRequest(cartId: cartId, billingAddressId: billingAddressId, shippingAddressId: shippingAddressId)
+        shippingAddressId: String? = nil, checkoutCompletion: AtlasResult<Checkout> -> Void) {
+            let checkoutRequest = CreateCheckoutRequest(cartId: cartId,
+                billingAddressId: billingAddressId,
+                shippingAddressId: shippingAddressId)
             let parameters = checkoutRequest.toJSON()
             fetch(createCheckout(parameters: parameters), completion: checkoutCompletion)
     }

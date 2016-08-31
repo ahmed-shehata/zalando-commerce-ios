@@ -7,29 +7,19 @@ import AtlasSDK
 
 struct CheckoutViewModel {
 
-    let paymentMethodText: String?
-    let discountText: String?
+    let article: Article
+    let selectedUnitIndex: Int
     let shippingPrice: Article.Price?
-    let checkout: Checkout?
-
+    let checkout: CheckoutType?
     internal(set) var customer: Customer?
 
-    let selectedUnitIndex: Int
-
-    let article: Article
-
     init(article: Article, selectedUnitIndex: Int = 0, shippingPrice: Article.Price? = nil,
-        checkout: Checkout? = nil, customer: Customer? = nil,
-        paymentMethodText: String? = nil, discountText: String? = nil) {
+        checkout: CheckoutType? = nil, customer: Customer? = nil) {
             self.article = article
+            self.selectedUnitIndex = selectedUnitIndex
             self.shippingPrice = shippingPrice
             self.checkout = checkout
             self.customer = customer
-
-            self.paymentMethodText = paymentMethodText ?? checkout?.payment.selected?.method
-            self.discountText = discountText
-
-            self.selectedUnitIndex = selectedUnitIndex
     }
 
 }
@@ -45,7 +35,7 @@ extension CheckoutViewModel {
     }
 
     var isPaymentSelected: Bool {
-        return customer != nil && checkout?.payment.selected?.method != nil
+        return customer != nil && selectedPaymentMethod != nil
     }
 
     var selectedUnit: Article.Unit {
@@ -58,6 +48,18 @@ extension CheckoutViewModel {
 
     var totalPriceValue: Float {
         return shippingPriceValue + selectedUnit.price.amount
+    }
+
+    var selectedPaymentMethod: String? {
+        return checkout?.payment.selected?.method
+    }
+
+    var checkoutViewState: CheckoutViewState {
+        guard let checkout = checkout where checkout.isValid() else {
+            return .IncompleteCheckout
+        }
+
+        return .LoggedIn
     }
 
 }
