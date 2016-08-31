@@ -49,6 +49,10 @@ There's `./calypso.rb lint check` for check and `./calypso.rb lint fix` to apply
 
 The same `check` task is included into the build targets.
 
+### ZenHub
+
+We use [ZenHub](https://www.zenhub.com/), a project management tool on a top of GitHub, you can easily install as a browser extension and use. Unfortunately it works for Chrome and Firefox only.
+
 
 ### Changelog generation
 
@@ -57,4 +61,3 @@ In order to generate a new one you need to set environment variable CHANGELOG_GI
 to the [GitHub access token for command-line use](https://help.github.com/articles/creating-an-access-token-for-command-line-use/)
 
 After that simply run `./calypso.rb docs changelog` to generate new CHANGELOG.md file.
-
