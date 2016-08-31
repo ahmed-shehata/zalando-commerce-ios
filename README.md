@@ -55,33 +55,30 @@ pod 'AtlasSDK'
 
 ## Configuration
 
-Configure Atlas SDK first in the AppDelegate and create shared instance to be used across your application:
+Configure Atlas SDK first and use instance variable:
 
 ```swift
 import AtlasSDK
 import AtlasUI
 
-var AtlasCheckoutInstance: AtlasCheckout?
+var atlasCheckout: AtlasCheckout?
 
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        let opts = Options(clientId: "CLIENT_ID", salesChannel: "SALES_CHANNEL")
+override func viewDidLoad() {
+	super.viewDidLoad()
 
-        AtlasCheckout.configure(opts) { result in
-            if case let .success(checkout) = result {
-                AtlasCheckoutInstance = checkout
-            }
-        }
+	let opts = Options(clientId: "CLIENT_ID", salesChannel: "SALES_CHANNEL")
 
-        return true
+	AtlasCheckout.configure(opts) { result in
+		if case let .success(checkout) = result {
+    	self.atlasCheckout = checkout
     }
+  }
 }
 ```
 
 ## Usage
 
-Using shared instance previously created you can interact with SDK, for example:
+Using AtlasSDK instance configured previously you can interact with SDK, for example:
 
 * Get customer information
 
@@ -90,8 +87,9 @@ import AtlasSDK
 import AtlasUI
 
  class ViewController: UIViewController {
+
     @IBAction private func getCustomerTapped(sender: UIButton) {
-        AtlasCheckoutInstance?.client.customer { result in
+        atlasCheckout?.client.customer { result in
             switch result {
                 case .failure(let error):
                     print("Error: \(error)")
@@ -112,7 +110,7 @@ import AtlasUI
 
  class ViewController: UIViewController {
 	@IBAction func buyButtonTapped(sender: AnyObject) {
-      AtlasCheckoutInstance?.presentCheckoutView(sku: "N1242A0WI-K13")
+      atlasCheckout?.presentCheckoutView(sku: "N1242A0WI-K13")
 	}
 }
     ```
