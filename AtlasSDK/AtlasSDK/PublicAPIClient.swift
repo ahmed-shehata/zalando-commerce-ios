@@ -61,6 +61,10 @@ extension APIClient {
                         completion(.failure(error))
 
                     case .success(let addressList):
+                        if addressList.isEmpty {
+                            completion(.failure(AtlasAPIError.emptyAddressList))
+                            return
+                        }
                         self.createCheckout(cart.id) { checkoutResult in
                             switch checkoutResult {
                             case .failure(let error):

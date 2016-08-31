@@ -55,6 +55,15 @@ public class AtlasCheckout: LocalizerProviderType {
     func createCheckout(withArticle article: Article, selectedUnitIndex: Int, completion: CreateCheckoutCompletion) {
         client.createCheckout(withArticle: article, selectedUnitIndex: selectedUnitIndex) { checkoutResult in
             switch checkoutResult {
+            case .failure(let error as AtlasAPIError):
+                if error == AtlasAPIError.emptyAddressList {
+                    let checkoutModel = CheckoutViewModel(article: article,
+                        selectedUnitIndex: selectedUnitIndex)
+                    completion(.success(checkoutModel))
+                    return
+                }
+                completion(.failure(error))
+
             case .failure(let error):
                 completion(.failure(error))
 

@@ -33,6 +33,7 @@ public enum AtlasAPIError: AtlasErrorType {
     case http(status: HTTPStatus, details: String?)
     case backend(status: Int?, title: String?, details: String?)
     case unauthorized
+    case emptyAddressList
 
 }
 
@@ -44,4 +45,8 @@ public enum LoginError: AtlasErrorType {
     case noAccessToken
     case missingViewControllerToShowLoginForm
 
+}
+
+public func == (lhs: AtlasAPIError, rhs: AtlasAPIError) -> Bool {
+    return lhs._code == rhs._code
 }
