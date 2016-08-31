@@ -6,11 +6,11 @@ import UIKit
 
 class BorderView: UIView {
 
-    @IBInspectable var topBorder: Bool = false
-    @IBInspectable var rightBorder: Bool = false
-    @IBInspectable var bottomBorder: Bool = false
-    @IBInspectable var leftBorder: Bool = false
-    @IBInspectable var borderColor: UIColor = .blackColor()
+    var topBorder: Bool = false
+    var rightBorder: Bool = false
+    var bottomBorder: Bool = false
+    var leftBorder: Bool = false
+    var borderColor: UIColor = .blackColor()
 
     private let onePixel = 1 / UIScreen.mainScreen().scale
 

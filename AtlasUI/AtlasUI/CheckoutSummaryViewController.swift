@@ -11,11 +11,15 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
     internal var checkoutViewModel: CheckoutViewModel
     internal var viewState: CheckoutViewState = .NotLoggedIn {
         didSet {
-//            setupSubmitButton()
-//            setupNavigationBar()
-//            refreshView()
+            refreshView()
         }
     }
+    lazy private var uiStyler: CheckoutSummaryUIStyler = {
+        CheckoutSummaryUIStyler(viewController: self)
+    }()
+    lazy private var uiBuilder: CheckoutSummaryUIBuilder = {
+        CheckoutSummaryUIBuilder(viewController: self, uiStyler: self.uiStyler)
+    }()
     lazy private var actionsHandler: CheckoutSummaryActionsHandler = {
         CheckoutSummaryActionsHandler(viewController: self)
     }()
@@ -26,7 +30,7 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
 
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -73,11 +77,12 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
 //        return checkoutSummaryViewController
 //    }
 
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        setupViewState()
-//    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        uiBuilder.setupView()
+        setupViewState()
+    }
 
 //    internal func showLoader() {
 //        loaderView.hidden = false
@@ -125,13 +130,13 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
 
 extension CheckoutSummaryViewController {
 
-//    private func setupViewState() {
-//        if Atlas.isUserLoggedIn() {
-//            viewState = .LoggedIn
-//        } else {
-//            viewState = .NotLoggedIn
-//        }
-//    }
+    private func setupViewState() {
+        if Atlas.isUserLoggedIn() {
+            viewState = .LoggedIn
+        } else {
+            viewState = .NotLoggedIn
+        }
+    }
 //
 //    private func setupSubmitButton() {
 //        submitButton.setTitle(loc(viewState.submitButtonTitleLocalizedKey), forState: .Normal)
@@ -155,15 +160,20 @@ extension CheckoutSummaryViewController {
 //        }
 //    }
 //
-//    private func refreshView() {
+    private func refreshView() {
 //        hideLoader()
-//
-//        articleImageView.setImage(fromUrl: checkoutViewModel.article.thumbnailUrl)
-//        brandNameLabel.text = checkoutViewModel.article.brand.name
-//        articleNameLabel.text = checkoutViewModel.article.name
-//        unitSizeLabel.text = loc("Size: %@", checkoutViewModel.selectedUnit.size)
-//        shippingAddressTitleLabel.text = loc("Address.Shipping")
-//        shippingAddressValueLabel.text = checkoutViewModel.shippingAddress(localizedWith: self).trimmed
+
+        uiStyler.footerLabel.text = loc("CheckoutSummaryViewController.terms")
+        uiStyler.submitButton.setTitle(loc(viewState.submitButtonTitleLocalizedKey), forState: .Normal)
+        uiStyler.submitButton.backgroundColor = viewState.submitButtonBackgroundColor
+
+        uiStyler.articleImageView.setImage(fromUrl: checkoutViewModel.article.thumbnailUrl)
+        uiStyler.brandNameLabel.text = checkoutViewModel.article.brand.name
+        uiStyler.articleNameLabel.text = checkoutViewModel.article.name
+        uiStyler.unitSizeLabel.text = loc("Size: %@", checkoutViewModel.selectedUnit.size)
+
+        uiStyler.shippingAddressTitleLabel.text = loc("Address.Shipping")
+        uiStyler.shippingAddressValueLabel.text = checkoutViewModel.shippingAddress(localizedWith: self).trimmed
 //        billingAddressTitleLabel.text = loc("Address.Billing")
 //        billingAddressValueLabel.text = checkoutViewModel.billingAddress(localizedWith: self).trimmed
 //        paymentTitleLabel.text = loc("Payment")
@@ -172,11 +182,11 @@ extension CheckoutSummaryViewController {
 //        shippingPriceLabel.text = localizer.fmtPrice(checkoutViewModel.shippingPriceValue)
 //        totalTitleLabel.text = loc("Total")
 //        totalPriceLabel.text = localizer.fmtPrice(checkoutViewModel.totalPriceValue)
-//        footerLabel.text = loc("CheckoutSummaryViewController.terms")
+//
 //
 //        priceStackView.hidden = !viewState.showPrice
 //        footerLabel.hidden = !viewState.showFooterLabel
 //        arrowImageViews.forEach { $0.hidden = !viewState.showDetailArrow }
-//    }
+    }
 
 }

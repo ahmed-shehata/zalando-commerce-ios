@@ -47,6 +47,9 @@
 		E96328911D6EFF0600BDAE06 /* CheckoutSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E963288D1D6EFF0600BDAE06 /* CheckoutSummaryViewController.swift */; };
 		E96328921D6EFF0600BDAE06 /* CheckoutViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E963288E1D6EFF0600BDAE06 /* CheckoutViewState.swift */; };
 		E973CF611D70329900B706E8 /* CheckoutSummaryActionsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E973CF601D70329900B706E8 /* CheckoutSummaryActionsHandler.swift */; };
+		E9C84CEA1D77036900510549 /* CheckoutSummaryUIBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C84CE91D77036900510549 /* CheckoutSummaryUIBuilder.swift */; };
+		E9C84CF01D77194200510549 /* CheckoutSummaryUIStyler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C84CEF1D77194200510549 /* CheckoutSummaryUIStyler.swift */; };
+		E9C84CF21D771CD700510549 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C84CF11D771CD700510549 /* UIColor.swift */; };
 		E9D510061D757031008D28E7 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D510051D757031008D28E7 /* String.swift */; };
 /* End PBXBuildFile section */
 
@@ -119,6 +122,9 @@
 		E963288D1D6EFF0600BDAE06 /* CheckoutSummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryViewController.swift; sourceTree = "<group>"; };
 		E963288E1D6EFF0600BDAE06 /* CheckoutViewState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutViewState.swift; sourceTree = "<group>"; };
 		E973CF601D70329900B706E8 /* CheckoutSummaryActionsHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryActionsHandler.swift; sourceTree = "<group>"; };
+		E9C84CE91D77036900510549 /* CheckoutSummaryUIBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryUIBuilder.swift; sourceTree = "<group>"; };
+		E9C84CEF1D77194200510549 /* CheckoutSummaryUIStyler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryUIStyler.swift; sourceTree = "<group>"; };
+		E9C84CF11D771CD700510549 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		E9D510051D757031008D28E7 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -231,6 +237,7 @@
 				E9325D381D674752004C29DC /* CGRect.swift */,
 				E9D510051D757031008D28E7 /* String.swift */,
 				812D78AE1D75A78800462C6D /* String.swift */,
+				E9C84CF11D771CD700510549 /* UIColor.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -332,6 +339,8 @@
 				E963288C1D6EFF0600BDAE06 /* CheckoutSummaryStoryboard.storyboard */,
 				E963288D1D6EFF0600BDAE06 /* CheckoutSummaryViewController.swift */,
 				E963288E1D6EFF0600BDAE06 /* CheckoutViewState.swift */,
+				E9C84CE91D77036900510549 /* CheckoutSummaryUIBuilder.swift */,
+				E9C84CEF1D77194200510549 /* CheckoutSummaryUIStyler.swift */,
 				E973CF601D70329900B706E8 /* CheckoutSummaryActionsHandler.swift */,
 			);
 			name = "Checkout Summay";
@@ -491,6 +500,7 @@
 				8186B1531D51EE930068EE37 /* CheckoutViewModel.swift in Sources */,
 				81F3B46D1D5A0A36007BCF6F /* Localization.swift in Sources */,
 				8186B1501D51EE930068EE37 /* UserMessage.swift in Sources */,
+				E9C84CF21D771CD700510549 /* UIColor.swift in Sources */,
 				8186B1571D51EE930068EE37 /* CheckoutSummaryOldViewController.swift in Sources */,
 				810916021D522BD6006101AD /* Async.swift in Sources */,
 				E9325D391D674752004C29DC /* CGRect.swift in Sources */,
@@ -502,10 +512,12 @@
 				8186B15B1D51EE930068EE37 /* PaymentSummaryRow.swift in Sources */,
 				E96328911D6EFF0600BDAE06 /* CheckoutSummaryViewController.swift in Sources */,
 				E85D38E41D5B4F74008A42C2 /* CheckoutSummaryStyler.swift in Sources */,
+				E9C84CF01D77194200510549 /* CheckoutSummaryUIStyler.swift in Sources */,
 				81F7944D1D5B09A800C73859 /* CheckoutProviderType.swift in Sources */,
 				8186B1541D51EE930068EE37 /* SizeSelectionViewController.swift in Sources */,
 				8186B1551D51EE930068EE37 /* SizeListSelectionViewController.swift in Sources */,
 				E96328921D6EFF0600BDAE06 /* CheckoutViewState.swift in Sources */,
+				E9C84CEA1D77036900510549 /* CheckoutSummaryUIBuilder.swift in Sources */,
 				8186B15F1D51EE930068EE37 /* AtlasCheckout.swift in Sources */,
 				8186B14F1D51EE930068EE37 /* UIImageView.swift in Sources */,
 				E85BE3531D5DF60C009EF7BA /* PaymentSelectionViewController.swift in Sources */,

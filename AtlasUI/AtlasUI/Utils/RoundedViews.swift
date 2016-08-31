@@ -6,10 +6,10 @@ import UIKit
 
 class RoundedView: UIView {
 
-    @IBInspectable var cornerRadius: CGFloat = 0
-    @IBInspectable var isCircle: Bool = false
-    @IBInspectable var borderWidth: CGFloat = 0
-    @IBInspectable var borderColor: UIColor = .clearColor()
+    var cornerRadius: CGFloat = 0
+    var isCircle: Bool = false
+    var borderWidth: CGFloat = 0
+    var borderColor: UIColor = .clearColor()
 
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -27,10 +27,10 @@ class RoundedView: UIView {
 
 class RoundedImageView: UIImageView {
 
-    @IBInspectable var cornerRadius: CGFloat = 0
-    @IBInspectable var isCircle: Bool = false
-    @IBInspectable var borderWidth: CGFloat = 0
-    @IBInspectable var borderColor: UIColor = .clearColor()
+    var cornerRadius: CGFloat = 0
+    var isCircle: Bool = false
+    var borderWidth: CGFloat = 0
+    var borderColor: UIColor = .clearColor()
 
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -48,10 +48,10 @@ class RoundedImageView: UIImageView {
 
 class RoundedButton: UIButton {
 
-    @IBInspectable var cornerRadius: CGFloat = 0
-    @IBInspectable var isCircle: Bool = false
-    @IBInspectable var borderWidth: CGFloat = 0
-    @IBInspectable var borderColor: UIColor = .clearColor()
+    var cornerRadius: CGFloat = 0
+    var isCircle: Bool = false
+    var borderWidth: CGFloat = 0
+    var borderColor: UIColor = .clearColor()
 
     override func layoutSubviews() {
         super.layoutSubviews()
