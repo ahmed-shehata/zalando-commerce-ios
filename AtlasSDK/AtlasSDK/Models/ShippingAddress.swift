@@ -4,7 +4,8 @@
 
 import Foundation
 
-public struct ShippingAddress {
+public struct ShippingAddress: Addressable {
+
     public let gender: Gender
     public let firstName: String
     public let lastName: String
@@ -15,13 +16,6 @@ public struct ShippingAddress {
     public let countryCode: String
     public let pickupPoint: PickupPoint?
 
-    public func fullAddress() -> String {
-        if let street = street {
-            return "\(firstName) \(lastName), \(street), \(zip) \(city)"
-
-        }
-        return "\(firstName) \(lastName), \(zip) \(city)"
-    }
 }
 
 extension ShippingAddress: JSONInitializable {
@@ -47,6 +41,7 @@ extension ShippingAddress: JSONInitializable {
             zip = json[Keys.zip].string,
             city = json[Keys.city].string,
             countryCode = json[Keys.countryCode].string else { return nil }
+
         let pickupPoint = PickupPoint(json: json[Keys.pickupPoint])
         self.init(gender: gender,
             firstName: firstName,

@@ -25,7 +25,7 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
         }
     }
 
-    internal var checkout: AtlasCheckout
+    internal var checkout: AtlasCheckout!
 
     init(checkout: AtlasCheckout, checkoutViewModel: CheckoutViewModel) {
         self.checkout = checkout
@@ -114,7 +114,7 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
             Async.main {
                 switch result {
                 case .failure(let error):
-                    UserMessage.showError(title: self.loc("Fatal Error"), error: error)
+                    self.userMessage.show(error: error)
 
                 case .success(let customer):
                     self.showLoadingView()
@@ -125,11 +125,11 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
     }
 
     private func generateCheckoutAndRefreshViews(customer: Customer) {
-        checkout.createCheckout(withArticle: checkoutViewModel.article, articleUnitIndex: checkoutViewModel.selectedUnitIndex) { result in
+        checkout.createCheckout(withArticle: checkoutViewModel.article, selectedUnitIndex: checkoutViewModel.selectedUnitIndex) { result in
             switch result {
             case .failure(let error):
                 self.dismissViewControllerAnimated(true) {
-                    UserMessage.showError(title: self.loc("Fatal Error"), error: error)
+                    self.userMessage.show(error: error)
                 }
             case .success(var checkout):
                 checkout.customer = customer
@@ -155,7 +155,7 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
     private func setupButtons() {
         view.addSubview(connectToZalandoButton)
         connectToZalandoButton.hidden = true
-        connectToZalandoButton.setTitle(loc("Connect To Zalando"), forState: .Normal)
+        connectToZalandoButton.setTitle(loc("Zalando.Connect"), forState: .Normal)
         connectToZalandoButton.addTarget(self, action: #selector(CheckoutSummaryViewController.connectToZalandoButtonTapped(_:)),
             forControlEvents: .TouchUpInside)
         view.addSubview(buyButton)
@@ -213,7 +213,7 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
 
         productImageView.setImage(fromUrl: checkoutViewModel.article.thumbnailUrl)
 
-        shippingView.detailTextLabel.text = self.checkoutViewModel.shippingAddressText ?? loc("No Shipping Address")
+        shippingView.detailTextLabel.text = self.checkoutViewModel.shippingAddress(localizedWith: self.checkout)
     }
 
 }

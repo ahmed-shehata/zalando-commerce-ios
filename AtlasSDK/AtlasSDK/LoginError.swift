@@ -4,6 +4,7 @@
 
 import Foundation
 
+// TODO: remove the file
 public class LoginError: AtlasError {
 
     init(code: LoginError.Code, message: String = "") {

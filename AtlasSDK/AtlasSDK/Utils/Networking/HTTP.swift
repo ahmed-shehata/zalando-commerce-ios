@@ -4,11 +4,15 @@
 
 import Foundation
 
-enum HTTPMethod: String {
+public enum HTTPMethod: String {
+
     case GET, POST, PUT, DELETE, PATCH
+
 }
 
-enum HTTPStatus: Int {
+public enum HTTPStatus: Int {
+
+    case Unknown = -1
     case OK = 200
     case MovedPermanently = 301
     case Found = 302
@@ -25,6 +29,14 @@ enum HTTPStatus: Int {
     case BadGateway = 502
     case ServiceUnavailable = 503
     case GatewayTimeout = 504
+
+    public init(statusCode: Int) {
+        self = HTTPStatus(rawValue: statusCode) ?? .Unknown
+    }
+
+    var isSuccessful: Bool {
+        return (OK.rawValue..<BadRequest.rawValue).contains(rawValue)
+    }
 }
 
 func == (lhs: Int, rhs: HTTPStatus) -> Bool {

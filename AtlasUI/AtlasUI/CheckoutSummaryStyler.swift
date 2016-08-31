@@ -169,7 +169,8 @@ class CheckoutSummaryStyler: LocalizerProviderType {
     }
 
     internal func createPaymentSummaryRow() -> UIView? {
-        let paymentSummaryRow = PaymentSummaryRow(itemPrice: viewController.checkoutViewModel.unitPrice, localizerProvider: self)
+        let paymentSummaryRow = PaymentSummaryRow(itemPrice: viewController.checkoutViewModel.selectedUnit.price,
+            localizerProvider: self)
         paymentSummaryRow.translatesAutoresizingMaskIntoConstraints = false
         return paymentSummaryRow
     }

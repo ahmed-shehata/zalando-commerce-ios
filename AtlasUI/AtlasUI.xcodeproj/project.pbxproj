@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		810348861D7053050021E95D /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810348851D7053050021E95D /* Errors.swift */; };
 		810916021D522BD6006101AD /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810916011D522BD6006101AD /* Async.swift */; };
 		810916041D522C66006101AD /* AsyncSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810916031D522C66006101AD /* AsyncSpec.swift */; };
 		810916071D522E4A006101AD /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 810916051D522E4A006101AD /* Nimble.framework */; };
@@ -16,7 +17,6 @@
 		8172776F1D5B174E001394BF /* LocalizerProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8172776E1D5B174E001394BF /* LocalizerProviderType.swift */; };
 		8186B11E1D51EE2F0068EE37 /* AtlasUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 8186B11D1D51EE2F0068EE37 /* AtlasUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8186B1251D51EE2F0068EE37 /* AtlasUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8186B11A1D51EE2F0068EE37 /* AtlasUI.framework */; };
-		8186B12A1D51EE2F0068EE37 /* AtlasUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B1291D51EE2F0068EE37 /* AtlasUITests.swift */; };
 		8186B14E1D51EE930068EE37 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B1361D51EE930068EE37 /* UIImage.swift */; };
 		8186B14F1D51EE930068EE37 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B1371D51EE930068EE37 /* UIImageView.swift */; };
 		8186B1501D51EE930068EE37 /* UserMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B1381D51EE930068EE37 /* UserMessage.swift */; };
@@ -40,6 +40,14 @@
 		E85D38E41D5B4F74008A42C2 /* CheckoutSummaryStyler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85D38E31D5B4F74008A42C2 /* CheckoutSummaryStyler.swift */; };
 		E85D38E61D5B7182008A42C2 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85D38E51D5B7182008A42C2 /* UIStackView.swift */; };
 		E85D38E81D5B78A1008A42C2 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85D38E71D5B78A1008A42C2 /* UIView.swift */; };
+		E9325D371D674305004C29DC /* RoundedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9325D361D674305004C29DC /* RoundedViews.swift */; };
+		E9325D391D674752004C29DC /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9325D381D674752004C29DC /* CGRect.swift */; };
+		E9325D511D6767E8004C29DC /* BorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9325D501D6767E8004C29DC /* BorderView.swift */; };
+		E96328901D6EFF0600BDAE06 /* CheckoutSummaryStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E963288C1D6EFF0600BDAE06 /* CheckoutSummaryStoryboard.storyboard */; };
+		E96328911D6EFF0600BDAE06 /* CheckoutSummaryStoryboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E963288D1D6EFF0600BDAE06 /* CheckoutSummaryStoryboardViewController.swift */; };
+		E96328921D6EFF0600BDAE06 /* CheckoutViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E963288E1D6EFF0600BDAE06 /* CheckoutViewState.swift */; };
+		E973CF611D70329900B706E8 /* CheckoutSummaryActionsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E973CF601D70329900B706E8 /* CheckoutSummaryActionsHandler.swift */; };
+		E9D510061D757031008D28E7 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D510051D757031008D28E7 /* String.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,16 +76,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		810348851D7053050021E95D /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		810916011D522BD6006101AD /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
 		810916031D522C66006101AD /* AsyncSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncSpec.swift; sourceTree = "<group>"; };
 		810916051D522E4A006101AD /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = ../../Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		810916061D522E4A006101AD /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = ../../Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
+		812D78AE1D75A78800462C6D /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		8172776E1D5B174E001394BF /* LocalizerProviderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizerProviderType.swift; sourceTree = "<group>"; };
 		8186B11A1D51EE2F0068EE37 /* AtlasUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AtlasUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8186B11D1D51EE2F0068EE37 /* AtlasUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtlasUI.h; sourceTree = "<group>"; };
 		8186B11F1D51EE2F0068EE37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8186B1241D51EE2F0068EE37 /* AtlasUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AtlasUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8186B1291D51EE2F0068EE37 /* AtlasUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtlasUITests.swift; sourceTree = "<group>"; };
 		8186B12B1D51EE2F0068EE37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8186B1361D51EE930068EE37 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		8186B1371D51EE930068EE37 /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
@@ -103,6 +112,14 @@
 		E85D38E31D5B4F74008A42C2 /* CheckoutSummaryStyler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryStyler.swift; sourceTree = "<group>"; };
 		E85D38E51D5B7182008A42C2 /* UIStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		E85D38E71D5B78A1008A42C2 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		E9325D361D674305004C29DC /* RoundedViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedViews.swift; sourceTree = "<group>"; };
+		E9325D381D674752004C29DC /* CGRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
+		E9325D501D6767E8004C29DC /* BorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderView.swift; sourceTree = "<group>"; };
+		E963288C1D6EFF0600BDAE06 /* CheckoutSummaryStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CheckoutSummaryStoryboard.storyboard; sourceTree = "<group>"; };
+		E963288D1D6EFF0600BDAE06 /* CheckoutSummaryStoryboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryStoryboardViewController.swift; sourceTree = "<group>"; };
+		E963288E1D6EFF0600BDAE06 /* CheckoutViewState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutViewState.swift; sourceTree = "<group>"; };
+		E973CF601D70329900B706E8 /* CheckoutSummaryActionsHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryActionsHandler.swift; sourceTree = "<group>"; };
+		E9D510051D757031008D28E7 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +191,7 @@
 				8186B14C1D51EE930068EE37 /* AtlasCheckout.swift */,
 				81F7944C1D5B09A800C73859 /* CheckoutProviderType.swift */,
 				8172776E1D5B174E001394BF /* LocalizerProviderType.swift */,
+				810348851D7053050021E95D /* Errors.swift */,
 			);
 			path = AtlasUI;
 			sourceTree = "<group>";
@@ -182,7 +200,6 @@
 			isa = PBXGroup;
 			children = (
 				8109160C1D522E93006101AD /* Frameworks */,
-				8186B1291D51EE2F0068EE37 /* AtlasUITests.swift */,
 				810916031D522C66006101AD /* AsyncSpec.swift */,
 				81F3B46E1D5A0A7D007BCF6F /* LocalizationSpec.swift */,
 				8186B12B1D51EE2F0068EE37 /* Info.plist */,
@@ -209,6 +226,11 @@
 				81F3B46C1D5A0A36007BCF6F /* Localization.swift */,
 				E85D38E51D5B7182008A42C2 /* UIStackView.swift */,
 				E85D38E71D5B78A1008A42C2 /* UIView.swift */,
+				E9325D361D674305004C29DC /* RoundedViews.swift */,
+				E9325D501D6767E8004C29DC /* BorderView.swift */,
+				E9325D381D674752004C29DC /* CGRect.swift */,
+				E9D510051D757031008D28E7 /* String.swift */,
+				812D78AE1D75A78800462C6D /* String.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -232,6 +254,7 @@
 		E85D38DD1D5B34B4008A42C2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E963286F1D6EFDEA00BDAE06 /* Checkout Summay */,
 				E85BE3511D5DF5EB009EF7BA /* Payment Selection */,
 				E85D38DF1D5B4EE5008A42C2 /* Checkout */,
 				E85D38EA1D5C78EC008A42C2 /* Transitions */,
@@ -301,6 +324,17 @@
 				8186B1411D51EE930068EE37 /* CheckoutPresentationController.swift */,
 			);
 			name = Transitions;
+			sourceTree = "<group>";
+		};
+		E963286F1D6EFDEA00BDAE06 /* Checkout Summay */ = {
+			isa = PBXGroup;
+			children = (
+				E963288C1D6EFF0600BDAE06 /* CheckoutSummaryStoryboard.storyboard */,
+				E963288D1D6EFF0600BDAE06 /* CheckoutSummaryStoryboardViewController.swift */,
+				E963288E1D6EFF0600BDAE06 /* CheckoutViewState.swift */,
+				E973CF601D70329900B706E8 /* CheckoutSummaryActionsHandler.swift */,
+			);
+			name = "Checkout Summay";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -400,6 +434,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8186B15E1D51EE930068EE37 /* Assets.xcassets in Resources */,
+				E96328901D6EFF0600BDAE06 /* CheckoutSummaryStoryboard.storyboard in Resources */,
 				81F3B4671D5A0988007BCF6F /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -451,24 +486,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9D510061D757031008D28E7 /* String.swift in Sources */,
 				E85D38E81D5B78A1008A42C2 /* UIView.swift in Sources */,
 				8186B1531D51EE930068EE37 /* CheckoutViewModel.swift in Sources */,
 				81F3B46D1D5A0A36007BCF6F /* Localization.swift in Sources */,
 				8186B1501D51EE930068EE37 /* UserMessage.swift in Sources */,
 				8186B1571D51EE930068EE37 /* CheckoutSummaryViewController.swift in Sources */,
 				810916021D522BD6006101AD /* Async.swift in Sources */,
+				E9325D391D674752004C29DC /* CGRect.swift in Sources */,
+				E9325D511D6767E8004C29DC /* BorderView.swift in Sources */,
+				E973CF611D70329900B706E8 /* CheckoutSummaryActionsHandler.swift in Sources */,
+				E9325D371D674305004C29DC /* RoundedViews.swift in Sources */,
 				E85D38E61D5B7182008A42C2 /* UIStackView.swift in Sources */,
 				8186B1591D51EE930068EE37 /* CheckoutSummaryRow.swift in Sources */,
 				8186B15B1D51EE930068EE37 /* PaymentSummaryRow.swift in Sources */,
+				E96328911D6EFF0600BDAE06 /* CheckoutSummaryStoryboardViewController.swift in Sources */,
 				E85D38E41D5B4F74008A42C2 /* CheckoutSummaryStyler.swift in Sources */,
 				81F7944D1D5B09A800C73859 /* CheckoutProviderType.swift in Sources */,
 				8186B1541D51EE930068EE37 /* SizeSelectionViewController.swift in Sources */,
 				8186B1551D51EE930068EE37 /* SizeListSelectionViewController.swift in Sources */,
+				E96328921D6EFF0600BDAE06 /* CheckoutViewState.swift in Sources */,
 				8186B15F1D51EE930068EE37 /* AtlasCheckout.swift in Sources */,
 				8186B14F1D51EE930068EE37 /* UIImageView.swift in Sources */,
 				E85BE3531D5DF60C009EF7BA /* PaymentSelectionViewController.swift in Sources */,
 				8186B1581D51EE930068EE37 /* CheckoutTransitioningDelegate.swift in Sources */,
 				8172776F1D5B174E001394BF /* LocalizerProviderType.swift in Sources */,
+				810348861D7053050021E95D /* Errors.swift in Sources */,
 				8186B1561D51EE930068EE37 /* CheckoutPresentationController.swift in Sources */,
 				8186B14E1D51EE930068EE37 /* UIImage.swift in Sources */,
 				8186B15A1D51EE930068EE37 /* PaymentProcessingViewController.swift in Sources */,
@@ -479,7 +522,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8186B12A1D51EE2F0068EE37 /* AtlasUITests.swift in Sources */,
 				810916041D522C66006101AD /* AsyncSpec.swift in Sources */,
 				81F3B46F1D5A0A7D007BCF6F /* LocalizationSpec.swift in Sources */,
 			);

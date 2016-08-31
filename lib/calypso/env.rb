@@ -35,6 +35,10 @@ module Calypso
       ENV['BUDDYBUILD_APP_ID']
     end
 
+    def env_skip_xcpretty?
+      ENV['ATLAS_SKIP_XCPRETTY'] == 'true'
+    end
+
   end
 
 end

@@ -49,19 +49,33 @@ class RequestBuilder: Equatable {
         dataTask = self.urlSession.dataTaskWithRequest(request,
             completionHandler: { data, response, error in
                 if let error = error {
-                    completion(.failure(HTTPError(error: error)))
+                    let httpError = AtlasAPIError.nsURLError(code: error.code, details: error.localizedDescription)
+                    completion(.failure(httpError))
                     return
                 }
 
                 guard let httpResponse = response as? NSHTTPURLResponse, data = data else {
-                    completion(.failure(AtlasAPIError(code: .NoData)))
+                    completion(.failure(AtlasAPIError.noData))
                     return
                 }
 
                 let json = JSON(data: data)
 
                 guard httpResponse.isSuccessful else {
-                    completion(.failure(AtlasAPIError(json: json)))
+                    let error: AtlasAPIError
+                    if json == JSON.null {
+                        error = AtlasAPIError.http(
+                            status: HTTPStatus(statusCode: httpResponse.statusCode),
+                            details: NSHTTPURLResponse.localizedStringForStatusCode(httpResponse.statusCode))
+                    } else if httpResponse.status == .Unauthorized {
+                        error = AtlasAPIError.unauthorized
+                    } else {
+                        error = AtlasAPIError.backend(
+                            status: json["status"].int,
+                            title: json["title"].string,
+                            details: json["detail"].string)
+                    }
+                    completion(.failure(error))
                     return
                 }
 

@@ -8,7 +8,7 @@ import AtlasSDK
 final class SizeListSelectionViewController: UITableViewController, CheckoutProviderType {
 
     private let article: Article
-    internal let checkout: AtlasCheckout
+    internal let checkout: AtlasCheckout!
 
     init(checkout: AtlasCheckout, article: Article) {
         self.checkout = checkout
@@ -61,34 +61,37 @@ final class SizeListSelectionViewController: UITableViewController, CheckoutProv
         tableView.userInteractionEnabled = false
 
         guard Atlas.isUserLoggedIn() else {
-            let checkoutModel = CheckoutViewModel(article: self.article, selectedUnitIndex: indexPath.row)
-            let checkoutSummaryVC = CheckoutSummaryViewController(checkout: checkout, checkoutViewModel: checkoutModel)
-            self.showViewController(checkoutSummaryVC, sender: self)
+            let checkoutViewModel = CheckoutViewModel(article: self.article, selectedUnitIndex: indexPath.row)
+            displayCheckoutSummaryViewController(checkoutViewModel)
             spinner.stopAnimating()
             return
         }
 
         self.checkout.client.customer { result in
-
             switch result {
             case .failure(let error):
-                UserMessage.showError(title: self.loc("Error"), error: error)
+                self.userMessage.show(error: error)
 
             case .success(let customer):
-                self.checkout.createCheckout(withArticle: self.article, articleUnitIndex: indexPath.row) { result in
+                self.checkout.createCheckout(withArticle: self.article, selectedUnitIndex: indexPath.row) { result in
                     spinner.stopAnimating()
                     switch result {
                     case .failure(let error):
                         self.dismissViewControllerAnimated(true) {
-                            UserMessage.showError(title: self.loc("Fatal Error"), error: error)
+                            self.userMessage.show(error: error)
                         }
                     case .success(var checkoutViewModel):
                         checkoutViewModel.customer = customer
-                        let checkoutSummaryVC = CheckoutSummaryViewController(checkout: self.checkout, checkoutViewModel: checkoutViewModel)
-                        self.showViewController(checkoutSummaryVC, sender: self)
+                        self.displayCheckoutSummaryViewController(checkoutViewModel)
                     }
                 }
             }
+        }
+    }
+
+    private func displayCheckoutSummaryViewController(checkoutViewModel: CheckoutViewModel) {
+        if let checkoutSummaryVC = CheckoutSummaryStoryboardViewController.instantiateFromStoryBoard(checkout, checkoutViewModel: checkoutViewModel) {
+            self.showViewController(checkoutSummaryVC, sender: self)
         }
     }
 }

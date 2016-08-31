@@ -11,7 +11,7 @@ internal final class PaymentProcessingViewController: UIViewController, Checkout
     private let progressIndicator = UIActivityIndicatorView()
     private let successImageView = UIImageView()
 
-    internal let checkout: AtlasCheckout
+    internal let checkout: AtlasCheckout!
 
     init(checkout: AtlasCheckout, checkoutViewModel: CheckoutViewModel) {
         self.checkout = checkout
@@ -41,11 +41,24 @@ internal final class PaymentProcessingViewController: UIViewController, Checkout
         self.checkout.client.createOrder(checkout.id) { result in
             switch result {
             case .failure(let error):
-                AtlasLogger.logError(error)
-                UserMessage.showOK(title: self.loc("Fatal Error"), message: String(error))
+                self.userMessage.show(error: error)
             case .success(let order):
                 print(order)
-                self.showSuccessImage()
+                guard let paymentURL = order.externalPaymentUrl else {
+                    self.showSuccessImage()
+                    return
+                }
+                let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
+                paymentSelectionViewController.paymentCompletion = { _ in
+                    self.showSuccessImage()
+                }
+
+                let navigationController = UINavigationController(rootViewController: paymentSelectionViewController)
+                Async.main {
+                    navigationController.modalPresentationStyle = .OverCurrentContext
+                    self.navigationController?.presentViewController(navigationController, animated: true, completion: nil)
+                }
+
             }
         }
     }
