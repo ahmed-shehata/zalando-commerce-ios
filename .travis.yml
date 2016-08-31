@@ -7,12 +7,7 @@ notifications:
 cache:
   bundler: true
 
-before_install:
-  - SIMULATOR_ID=$(xcrun instruments -s | grep -o "${ATLAS_TEST_SIMULATOR} \[.*\]" | sed "s/.*\[\(.*\)\]$/\1/")
-
 script:
-  - 'echo "Simulator: ${ATLAS_TEST_SIMULATOR} / ${SIMULATOR_ID}"'
-  - open -a "simulator" --args -CurrentDeviceUDID "${SIMULATOR_ID}"
   - bundle exec ./calypso.rb xcode test UnitTests 3
 
 after_script:

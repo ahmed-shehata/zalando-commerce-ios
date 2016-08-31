@@ -15,7 +15,7 @@ public final class AtlasMockAPI {
     public static func startServer(wait timeout: NSTimeInterval = 15) throws {
         try server.registerEndpoints()
         try server.start(serverURL, forceIPv4: false, timeout: timeout)
-        print("AtlasMockAPI server started")
+        print("AtlasMockAPI server started @ \(serverURL)")
     }
 
     public static func stopServer(wait timeout: NSTimeInterval = 15) throws {

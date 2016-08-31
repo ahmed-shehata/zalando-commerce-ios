@@ -105,6 +105,16 @@
                ReferencedContainer = "container:AtlasUI/AtlasUI.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E81E82191D33C1F300ADD0E6"
+               BuildableName = "AtlasMockAPITests.xctest"
+               BlueprintName = "AtlasMockAPITests"
+               ReferencedContainer = "container:AtlasMockAPI/AtlasMockAPI.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

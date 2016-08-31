@@ -18,3 +18,10 @@
 "order.place" = "Place order";
 "navigation.back.shop" = "Back to shop";
 "order.placed" = "Order placed";
+
+"feature.notImplemented.title" = "Not implemented";
+"feature.notImplemented.message" = "This feature is currently not implemented";
+
+"AtlasAPIError.title" = "API Error";
+"LoginError.title" = "Login Error";
+"AtlasConfigurationError.title" = "Configuration Error";
