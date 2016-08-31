@@ -4,7 +4,7 @@
 
 import Foundation
 
-public struct Checkout {
+public struct Checkout: CheckoutType {
 
     public let id: String
     public let customerNumber: String
@@ -15,8 +15,6 @@ public struct Checkout {
     public let shippingAddress: ShippingAddress?
     public let delivery: Delivery
     public let payment: Payment
-
-    public var availableAddresses: [Address]?
 
 }
 
