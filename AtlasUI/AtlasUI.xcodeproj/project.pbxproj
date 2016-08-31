@@ -41,6 +41,8 @@
 		E8B183201D77233C001CF8BC /* CheckoutSummaryStyler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85D38E31D5B4F74008A42C2 /* CheckoutSummaryStyler.swift */; };
 		E8B183211D77233C001CF8BC /* CheckoutSummaryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B1441D51EE930068EE37 /* CheckoutSummaryRow.swift */; };
 		E8B183221D77233C001CF8BC /* PaymentSummaryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B1461D51EE930068EE37 /* PaymentSummaryRow.swift */; };
+		E8B183241D772B82001CF8BC /* AddressRowViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B183231D772B82001CF8BC /* AddressRowViewCell.swift */; };
+		E8B183261D772BB0001CF8BC /* AddressListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B183251D772BB0001CF8BC /* AddressListViewController.swift */; };
 		E9325D371D674305004C29DC /* RoundedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9325D361D674305004C29DC /* RoundedViews.swift */; };
 		E9325D391D674752004C29DC /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9325D381D674752004C29DC /* CGRect.swift */; };
 		E9325D511D6767E8004C29DC /* BorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9325D501D6767E8004C29DC /* BorderView.swift */; };
@@ -114,6 +116,8 @@
 		E85D38E51D5B7182008A42C2 /* UIStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		E85D38E71D5B78A1008A42C2 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		E8B183131D75C5B4001CF8BC /* AddressPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressPickerViewController.swift; sourceTree = "<group>"; };
+		E8B183231D772B82001CF8BC /* AddressRowViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressRowViewCell.swift; sourceTree = "<group>"; };
+		E8B183251D772BB0001CF8BC /* AddressListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressListViewController.swift; sourceTree = "<group>"; };
 		E9325D361D674305004C29DC /* RoundedViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedViews.swift; sourceTree = "<group>"; };
 		E9325D381D674752004C29DC /* CGRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
 		E9325D501D6767E8004C29DC /* BorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderView.swift; sourceTree = "<group>"; };
@@ -325,6 +329,8 @@
 			isa = PBXGroup;
 			children = (
 				E8B183131D75C5B4001CF8BC /* AddressPickerViewController.swift */,
+				E8B183231D772B82001CF8BC /* AddressRowViewCell.swift */,
+				E8B183251D772BB0001CF8BC /* AddressListViewController.swift */,
 			);
 			name = "Address Selection";
 			sourceTree = "<group>";
@@ -504,6 +510,7 @@
 				E85D38E61D5B7182008A42C2 /* UIStackView.swift in Sources */,
 				E96328911D6EFF0600BDAE06 /* CheckoutSummaryStoryboardViewController.swift in Sources */,
 				81F7944D1D5B09A800C73859 /* CheckoutProviderType.swift in Sources */,
+				E8B183241D772B82001CF8BC /* AddressRowViewCell.swift in Sources */,
 				8186B1541D51EE930068EE37 /* SizeSelectionViewController.swift in Sources */,
 				8186B1551D51EE930068EE37 /* SizeListSelectionViewController.swift in Sources */,
 				E96328921D6EFF0600BDAE06 /* CheckoutViewState.swift in Sources */,
@@ -515,6 +522,7 @@
 				8186B1581D51EE930068EE37 /* CheckoutTransitioningDelegate.swift in Sources */,
 				8172776F1D5B174E001394BF /* LocalizerProviderType.swift in Sources */,
 				E8B1831F1D772332001CF8BC /* CheckoutSummaryViewController.swift in Sources */,
+				E8B183261D772BB0001CF8BC /* AddressListViewController.swift in Sources */,
 				810348861D7053050021E95D /* Errors.swift in Sources */,
 				8186B1561D51EE930068EE37 /* CheckoutPresentationController.swift in Sources */,
 				8186B14E1D51EE930068EE37 /* UIImage.swift in Sources */,
