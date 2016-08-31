@@ -46,92 +46,94 @@ pod 'AtlasSDK'
 1. From your `Carthage/Build/iOS/` directory, add `AtlasSDK` and `AtlasUI` to your "Embedded Binaries":
 ![Embedded Binaries](Documentation/installation/carthage-embed.png)
 
+### Manually
+1. Drag AtlasSDK.xcodeproj and AtlasUI.xcodeproj to your project in the __Project Navigator__.
+1. Select your project, your app target, and open the __Build Phases__ panel.
+1. Open the __Target Dependencies__ group, and add AtlasSDK.framework and AtlasUI.framework.
+1. Click on the __+__ button at the top left of the panel and select __New Copy Files Phase__. Set Destination to __Frameworks__, and add AtlasSDK.framework and AtlasUI.framework.
+1. Import AtlasSDK and AtlasUI where you use AtlasSDK.
+
 ## Configuration
 
 Configure Atlas SDK first in the AppDelegate and create shared instance to be used across your application:
 
-    ```swift
-    import AtlasSDK
+```swift
+import AtlasSDK
+import AtlasUI
 
-	var AtlasCheckoutInstance: AtlasCheckout?
+var AtlasCheckoutInstance: AtlasCheckout?
 
-    @UIApplicationMain
-    class AppDelegate: UIResponder, UIApplicationDelegate {
-       func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-				 let opts = Options(clientId: "CLIENT_ID", salesChannel: "SALES_CHANNEL")
-				 AtlasCheckout.configure(opts) { result in
-					 if case let .success(checkout) = result {
-						 AtlasCheckoutInstance = checkout
-					 }
-				 }
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        let opts = Options(clientId: "CLIENT_ID", salesChannel: "SALES_CHANNEL")
 
-				 return true
+        AtlasCheckout.configure(opts) { result in
+            if case let .success(checkout) = result {
+                AtlasCheckoutInstance = checkout
+            }
         }
+
+        return true
     }
-    ```
+}
+```
 
 ## Usage
 
 Using shared instance previously created you can interact with SDK, for example:
 
 * Get customer information
-	```swift
 
-	import AtlasSDK
+    ```swift
+import AtlasSDK
+import AtlasUI
 
-	class ViewController: UIViewController {
-		@IBAction private func getCustomerTapped(sender: UIButton) {
-			AtlasCheckoutInstance?.client.customer { result in
-				switch result {
-				case .failure(let error):
-						print("Error: \(error)")
+ class ViewController: UIViewController {
+    @IBAction private func getCustomerTapped(sender: UIButton) {
+        AtlasCheckoutInstance?.client.customer { result in
+            switch result {
+                case .failure(let error):
+                    print("Error: \(error)")
 
-				case .success(let customer):
-						print(customer)
-				}
-			}
-		}
-	}
-	```
+                case .success(let customer):
+                    print(customer)
+            }
+        }
+     }
+}
+    ```
+
 * Start checkout somewhere in your view controller, e.g. when a user tap on a buy button:
-	```swift
 
-	import AtlasSDK
+    ```swift
+import AtlasSDK
+import AtlasUI
 
-	class ViewController: UIViewController {
-		@IBAction func buyButtonTapped(sender: AnyObject) {
-        AtlasCheckoutInstance?.presentCheckoutView(sku: "N1242A0WI-K13")
-  	}
+ class ViewController: UIViewController {
+	@IBAction func buyButtonTapped(sender: AnyObject) {
+      AtlasCheckoutInstance?.presentCheckoutView(sku: "N1242A0WI-K13")
 	}
-	```
+}
+    ```
 
 ## Atlas SDK Structure
 
-1. Provides main entry point for basic functions for Atlas SDK
-1. Keeps entities used in all sub-projects.
-1. Doesn't contain UI related calls
-
 ![structure](Documentation/AtlasSDK Structure.png)
 
-### Commons
+### AtlasSDK
 
-Contains all the generic methods used internally within Atlas SDK. Think about it as Cocoa Touch Foundation.
+AtlasSDK framework is the core framework (think about Cocoa Touch Foundation) that contains:
 
-### Commons UI
+* all the generic methods
+* public models used for API calls
+* APIClient that provides all API network calls.
 
-Contains all the generic UI methods used internally within Atlas SDK. Think about it as Cocoa Touch UIKit.
+### AtlasUI
 
-### API Client
+AtlasUI uses AtlasSDK as the foundation and provides public checkout functionality to customers.
+AtlasUI also contains all the generic UI methods used internally within Atlas SDK. Think about it as Cocoa Touch UIKit.
 
-Provides all API network calls. Shouldn't be used externally.
-
-### Models
-
-Contains all public models used for API calls.
-
-### Checkout
-
-Public Checkout functionality provided to customers.
 
 ## LICENSE
 
