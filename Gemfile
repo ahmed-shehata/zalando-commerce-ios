@@ -10,13 +10,9 @@ group :calypso do
   gem 'xcov'
   gem 'jazzy'
   gem 'github_changelog_generator'
-  gem 'activesupport'
-  gem 'rack'
+  gem 'rubocop'
 end
 
 group :tools do
-  gem 'rubocop'
   gem 'travis'
-  gem 'ghi'
-  gem 'reek'
 end

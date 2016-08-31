@@ -17,7 +17,7 @@
                BlueprintIdentifier = "81FCA8D71D0FE05D00209E9B"
                BuildableName = "AtlasDemo.app"
                BlueprintName = "AtlasDemo"
-               ReferencedContainer = "container:AtlasDemo.xcodeproj">
+               ReferencedContainer = "container:AtlasDemo/AtlasDemo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -36,7 +36,7 @@
                BlueprintIdentifier = "81FCA8EB1D0FE05D00209E9B"
                BuildableName = "AtlasDemo.xctest"
                BlueprintName = "AtlasDemoUITests"
-               ReferencedContainer = "container:AtlasDemo.xcodeproj">
+               ReferencedContainer = "container:AtlasDemo/AtlasDemo.xcodeproj">
             </BuildableReference>
             <LocationScenarioReference
                identifier = "com.apple.dt.IDEFoundation.CurrentLocationScenarioIdentifier"
@@ -80,7 +80,7 @@
             BlueprintIdentifier = "81FCA8D71D0FE05D00209E9B"
             BuildableName = "AtlasDemo.app"
             BlueprintName = "AtlasDemo"
-            ReferencedContainer = "container:AtlasDemo.xcodeproj">
+            ReferencedContainer = "container:AtlasDemo/AtlasDemo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -103,7 +103,7 @@
             BlueprintIdentifier = "81FCA8D71D0FE05D00209E9B"
             BuildableName = "AtlasDemo.app"
             BlueprintName = "AtlasDemo"
-            ReferencedContainer = "container:AtlasDemo.xcodeproj">
+            ReferencedContainer = "container:AtlasDemo/AtlasDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -122,7 +122,7 @@
             BlueprintIdentifier = "81FCA8D71D0FE05D00209E9B"
             BuildableName = "AtlasDemo.app"
             BlueprintName = "AtlasDemo"
-            ReferencedContainer = "container:AtlasDemo.xcodeproj">
+            ReferencedContainer = "container:AtlasDemo/AtlasDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
