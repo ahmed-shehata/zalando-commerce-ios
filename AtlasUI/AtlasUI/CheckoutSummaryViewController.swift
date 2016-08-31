@@ -4,6 +4,7 @@
 
 import AtlasSDK
 
+@available( *, deprecated)
 final class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
 
     internal let productImageView = UIImageView()

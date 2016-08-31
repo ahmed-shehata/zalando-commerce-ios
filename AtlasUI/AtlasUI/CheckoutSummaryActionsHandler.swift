@@ -21,8 +21,9 @@ extension CheckoutSummaryActionsHandler {
             self.viewController.hideLoader()
             switch result {
             case .failure(let error):
-self.viewController.userMessage.show(error: error)
-            case .success (let order): self.handleOrderConfirmation(order)
+                self.viewController.userMessage.show(error: error)
+            case .success (let order):
+                self.handleOrderConfirmation(order)
             }
         }
     }
@@ -35,8 +36,10 @@ extension CheckoutSummaryActionsHandler {
         viewController.checkout.client.customer { result in
             Async.main {
                 switch result {
-                case .failure(let error): self.viewController.userMessage.show(error: error)
-                case .success(let customer): self.generateCheckout(customer)
+                case .failure(let error):
+                    self.viewController.userMessage.show(error: error)
+                case .success(let customer):
+                    self.generateCheckout(customer)
                 }
             }
         }
@@ -52,10 +55,10 @@ extension CheckoutSummaryActionsHandler {
                     self.viewController.dismissViewControllerAnimated(true) {
                         self.viewController.userMessage.show(error: error)
                     }
-                case .success(var checkout):
-                    checkout.customer = customer
-                    self.viewController.checkoutViewModel = checkout
-                    self.viewController.viewState = .LoggedIn
+                case .success(var checkoutViewModel):
+                    checkoutViewModel.customer = customer
+                    self.viewController.checkoutViewModel = checkoutViewModel
+                    self.viewController.viewState = checkoutViewModel.checkoutViewState
                 }
         }
     }

@@ -20,7 +20,7 @@ public protocol CheckoutType {
 extension CheckoutType {
 
     public func isValid() -> Bool {
-        return billingAddress != nil && shippingAddress != nil && !id.isEmpty
+        return billingAddress != nil && shippingAddress != nil && !id.isEmpty && payment.selected?.method != nil
     }
 
 }

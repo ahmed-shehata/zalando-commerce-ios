@@ -54,4 +54,12 @@ extension CheckoutViewModel {
         return checkout?.payment.selected?.method
     }
 
+    var checkoutViewState: CheckoutViewState {
+        guard let checkout = checkout where checkout.isValid() else {
+            return .IncompleteCheckout
+        }
+
+        return .LoggedIn
+    }
+
 }

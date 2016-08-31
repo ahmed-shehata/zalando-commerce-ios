@@ -90,6 +90,7 @@ class CheckoutSummaryStoryboardViewController: UIViewController, CheckoutProvide
         case .NotLoggedIn: actionsHandler.loadCustomerData()
         case .LoggedIn: actionsHandler.handleBuyAction()
         case .OrderPlaced: dismissView()
+        case .IncompleteCheckout: break
         }
     }
 
@@ -115,7 +116,7 @@ extension CheckoutSummaryStoryboardViewController {
 
     private func setupViewState() {
         if Atlas.isUserLoggedIn() {
-            viewState = .LoggedIn
+            viewState = checkoutViewModel.checkoutViewState
         } else {
             viewState = .NotLoggedIn
         }
