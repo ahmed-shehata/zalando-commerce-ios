@@ -7,7 +7,7 @@ import AtlasSDK
 
 struct CheckoutSummaryActionsHandler {
 
-    internal unowned let viewController: CheckoutSummaryStoryboardViewController
+    internal unowned let viewController: CheckoutSummaryViewController
 
 }
 
@@ -16,9 +16,9 @@ extension CheckoutSummaryActionsHandler {
     internal func handleBuyAction() {
         guard let checkout = viewController.checkoutViewModel.checkout else { return }
 
-        viewController.showLoader()
+//        viewController.showLoader()
         viewController.checkout.client.createOrder(checkout.id) { result in
-            self.viewController.hideLoader()
+//            self.viewController.hideLoader()
             switch result {
             case .failure(let error): self.viewController.userMessage.show(error: error)
             case .success (let order): self.handleOrderConfirmation(order)
@@ -42,10 +42,10 @@ extension CheckoutSummaryActionsHandler {
     }
 
     private func generateCheckout(customer: Customer) {
-        viewController.showLoader()
+//        viewController.showLoader()
         viewController.checkout.createCheckout(withArticle: viewController.checkoutViewModel.article,
             selectedUnitIndex: viewController.checkoutViewModel.selectedUnitIndex) { result in
-                self.viewController.hideLoader()
+//                self.viewController.hideLoader()
                 switch result {
                 case .failure(let error):
                     self.viewController.dismissViewControllerAnimated(true) {

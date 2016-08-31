@@ -6,10 +6,10 @@ import Foundation
 import AtlasSDK
 class CheckoutSummaryStyler: LocalizerProviderType {
 
-    private let viewController: CheckoutSummaryViewController
+    private let viewController: CheckoutSummaryOldViewController
     var localizer: Localizer { return viewController.localizer }
 
-    init(checkoutSummaryViewController: CheckoutSummaryViewController) {
+    init(checkoutSummaryViewController: CheckoutSummaryOldViewController) {
         viewController = checkoutSummaryViewController
     }
 
@@ -76,7 +76,7 @@ class CheckoutSummaryStyler: LocalizerProviderType {
 
     private func stylizeProductImageView () {
         viewController.productImageView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
-        viewController.productImageView.image = UIImage(named: "default-user", bundledWith: CheckoutSummaryViewController.self)
+        viewController.productImageView.image = UIImage(named: "default-user", bundledWith: CheckoutSummaryOldViewController.self)
 
         viewController.productImageView.layer.cornerRadius = viewController.productImageView.frame.size.width / 2
         viewController.productImageView.clipsToBounds = true
