@@ -220,7 +220,6 @@
 		81F8C2471D355D1800996E95 /* AppInfoConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppInfoConfig.swift; path = AtlasSDK/AppInfoConfig.swift; sourceTree = SOURCE_ROOT; };
 		81F8C2481D355D1800996E95 /* Options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Options.swift; path = AtlasSDK/Options.swift; sourceTree = SOURCE_ROOT; };
 		81F8C2491D355D1800996E95 /* OptionsInfoPlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OptionsInfoPlist.swift; path = AtlasSDK/OptionsInfoPlist.swift; sourceTree = SOURCE_ROOT; };
-		81F8C24E1D355E2400996E95 /* LoginError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginError.swift; path = AtlasSDK/LoginError.swift; sourceTree = SOURCE_ROOT; };
 		81F8C24F1D355E2400996E95 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = AtlasSDK/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
 		81F8C2591D355E7D00996E95 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Errors.swift; path = AtlasSDK/Errors.swift; sourceTree = SOURCE_ROOT; };
 		81F8C2641D355F6700996E95 /* APIClientQueryItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIClientQueryItems.swift; path = AtlasSDK/APIClientQueryItems.swift; sourceTree = SOURCE_ROOT; };
@@ -486,7 +485,6 @@
 		81F8C2521D355E2D00996E95 /* LoginController */ = {
 			isa = PBXGroup;
 			children = (
-				81F8C24E1D355E2400996E95 /* LoginError.swift */,
 				81F8C24F1D355E2400996E95 /* LoginViewController.swift */,
 			);
 			name = LoginController;
