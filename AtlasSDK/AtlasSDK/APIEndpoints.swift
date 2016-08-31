@@ -51,15 +51,6 @@ extension APIClient {
             parameters: parameters)
     }
 
-    func updateCheckout(checkoutId: String, parameters parameters: [String: AnyObject]) -> EndpointType {
-        return APIEndpoint(baseURL: self.config.checkoutAPIURL,
-            method: .PUT,
-            contentType: "application/x.zalando.customer.checkout.update+json",
-            acceptedContentType: "application/x.zalando.customer.checkout.update.response+json",
-            path: "checkouts/\(checkoutId)",
-            parameters: parameters)
-    }
-
     func makeFetchAddressListEndpoint(salesChannel: String) -> EndpointType {
         return APIEndpoint(baseURL: self.config.checkoutAPIURL,
             method: .GET,

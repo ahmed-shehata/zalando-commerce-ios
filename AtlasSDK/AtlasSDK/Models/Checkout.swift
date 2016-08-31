@@ -9,12 +9,12 @@ public struct Checkout: CheckoutType {
     public let id: String
     public let customerNumber: String
     public let cartId: String
-    public let billingAddressId: String?
-    public let shippingAddressId: String?
-    public let billingAddress: BillingAddress?
-    public let shippingAddress: ShippingAddress?
+
     public let delivery: Delivery
     public let payment: Payment
+
+    public let billingAddress: BillingAddress?
+    public let shippingAddress: ShippingAddress?
 
 }
 
@@ -34,8 +34,6 @@ extension Checkout: JSONInitializable {
         static let id = "id"
         static let customerNumber = "customer_number"
         static let cartId = "cart_id"
-        static let billingAddressId = "billing_address_id"
-        static let shippingAddressId = "shipping_address_id"
         static let shippingAddress = "shipping_address"
         static let billingAddress = "billing_address"
         static let delivery = "delivery"
@@ -52,13 +50,10 @@ extension Checkout: JSONInitializable {
         self.init(id: id,
             customerNumber: customerNumber,
             cartId: cartId,
-            billingAddressId: json[Keys.billingAddressId].string,
-            shippingAddressId: json[Keys.shippingAddressId].string,
-            billingAddress: BillingAddress(json: json[Keys.billingAddress]),
-            shippingAddress: ShippingAddress(json: json[Keys.shippingAddress]),
             delivery: delivery,
             payment: payment,
-            availableAddresses: nil
+            billingAddress: BillingAddress(json: json[Keys.billingAddress]),
+            shippingAddress: ShippingAddress(json: json[Keys.shippingAddress])
         )
     }
 }

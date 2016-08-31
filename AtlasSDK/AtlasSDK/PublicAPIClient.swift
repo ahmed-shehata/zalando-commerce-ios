@@ -62,7 +62,7 @@ extension APIClient {
 
                     case .success(let addressList):
                         guard !addressList.isEmpty else {
-                            completion(.success(IncompleteCheckout()))
+                            completion(.success(IncompleteCheckout(cartId: cart.id)))
                             return
                         }
 
@@ -70,7 +70,7 @@ extension APIClient {
                             switch checkoutResult {
                             case .failure(let error):
                                 completion(.failure(error))
-                            case .success(var checkout):
+                            case .success(let checkout):
                                 completion(.success(checkout))
                             }
                         }
@@ -81,14 +81,12 @@ extension APIClient {
     }
 
     public func createCheckout(cartId: String, billingAddressId: String? = nil,
-        shippingAddressId: String? = nil, checkoutCompletion: CheckoutCompletion) {
-            let checkoutRequest = CreateCheckoutRequest(cartId: cartId, billingAddressId: billingAddressId, shippingAddressId: shippingAddressId)
+        shippingAddressId: String? = nil, checkoutCompletion: AtlasResult<Checkout> -> Void) {
+            let checkoutRequest = CreateCheckoutRequest(cartId: cartId,
+                billingAddressId: billingAddressId,
+                shippingAddressId: shippingAddressId)
             let parameters = checkoutRequest.toJSON()
             fetch(createCheckout(parameters: parameters), completion: checkoutCompletion)
-    }
-
-    public func updateCheckout(checkoutId: String, updateCheckoutRequest: UpdateCheckoutRequest, completion: CheckoutCompletion) {
-        fetch(updateCheckout(checkoutId, parameters: updateCheckoutRequest.toJSON()), completion: completion)
     }
 
     public func createOrder(checkoutId: String, orderCompletion: OrderCompletion) {

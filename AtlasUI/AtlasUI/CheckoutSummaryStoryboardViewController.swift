@@ -152,7 +152,7 @@ extension CheckoutSummaryStoryboardViewController {
         billingAddressTitleLabel.text = loc("Address.Billing")
         billingAddressValueLabel.text = checkoutViewModel.billingAddress(localizedWith: self).trimmed
         paymentTitleLabel.text = loc("Payment")
-        paymentValueLabel.text = checkoutViewModel.paymentMethodText
+        paymentValueLabel.text = checkoutViewModel.selectedPaymentMethod
         shippingTitleLabel.text = loc("Shipping")
         shippingPriceLabel.text = localizer.fmtPrice(checkoutViewModel.shippingPriceValue)
         totalTitleLabel.text = loc("Total")

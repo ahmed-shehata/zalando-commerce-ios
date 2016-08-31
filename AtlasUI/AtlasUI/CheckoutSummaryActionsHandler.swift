@@ -20,7 +20,8 @@ extension CheckoutSummaryActionsHandler {
         viewController.checkout.client.createOrder(checkout.id) { result in
             self.viewController.hideLoader()
             switch result {
-            case .failure(let error): self.viewController.userMessage.show(error: error)
+            case .failure(let error):
+self.viewController.userMessage.show(error: error)
             case .success (let order): self.handleOrderConfirmation(order)
             }
         }

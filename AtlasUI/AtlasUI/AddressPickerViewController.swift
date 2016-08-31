@@ -11,7 +11,7 @@ protocol AddressPickerViewControllerDelegate: class {
         forAddressType addressType: AddressPickerViewController.AddressType)
 }
 
-final class AddressPickerViewController: UIViewController {
+final class AddressPickerViewController: UIViewController, CheckoutProviderType {
 
     enum AddressType {
         case shipping
@@ -20,12 +20,12 @@ final class AddressPickerViewController: UIViewController {
 
     weak var delegate: AddressPickerViewControllerDelegate?
 
-    private let checkoutService: AtlasCheckout
+    internal var checkout: AtlasCheckout!
 
     private let addressType: AddressType
 
     init(checkout: AtlasCheckout, addressType: AddressType) {
-        self.checkoutService = checkout
+        self.checkout = checkout
         self.addressType = addressType
         super.init(nibName: nil, bundle: nil)
     }
@@ -60,16 +60,14 @@ final class AddressPickerViewController: UIViewController {
     }
 
     private func fetchAddresses() {
-        checkoutService.client.fetchAddressList { [weak self] result in
+        checkout.client.fetchAddressList { [weak self] result in
             guard let strongSelf = self else { return }
-            dispatch_async(dispatch_get_main_queue()) {
+            Async.main {
                 switch result {
+                case .failure(let error):
+                    strongSelf.userMessage.show(error: error)
                 case .success(let addressList):
                     strongSelf.showAddressListViewController(addressList.addresses)
-                case .failure(let error):
-                    print("failed to fetch address list \(error)")
-                    // TODO: Bubble up the error
-                    // UserMessage.showError(title: strongSelf.checkoutService.loc("Fatal Error"), error: error)
                 }
             }
         }

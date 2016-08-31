@@ -206,7 +206,7 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
 
     private func updateData() {
         paymentMethodView.titleTextLabel.text = loc("Payment")
-        paymentMethodView.detailTextLabel.text = self.checkoutViewModel.paymentMethodText ?? loc("No Payment Method")
+        paymentMethodView.detailTextLabel.text = self.checkoutViewModel.selectedPaymentMethod ?? loc("No Payment Method")
 
         productNameLabel.text = checkoutViewModel.article.brand.name
         purchasedObjectSummaryLabel.text = checkoutViewModel.article.name

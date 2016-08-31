@@ -5,30 +5,20 @@
 import Foundation
 
 public struct IncompleteCheckout: CheckoutType {
+
     public let id: String
-    public let customerNumber: String
-    public let cartId: String
-    public let billingAddressId: String?
-    public let shippingAddressId: String?
-    public let billingAddress: BillingAddress?
-    public let shippingAddress: ShippingAddress?
-    public let delivery: Delivery
     public let payment: Payment
 
-    public func isValid () -> Bool {
-        return billingAddressId != nil && shippingAddressId != nil
-    }
+    public let cartId: String
+    public let billingAddress: BillingAddress?
+    public let shippingAddress: ShippingAddress?
 
-    init() {
-        id = ""
-        customerNumber = ""
-        cartId = ""
-        delivery = Delivery(earliest: "", latest: "")
-        payment = Payment(selected: nil, externalPayment: nil, selectionPageUrl: nil)
-        billingAddressId = nil
-        billingAddress = nil
-        shippingAddressId = nil
-        shippingAddress = nil 
+    init(cartId: String) {
+        self.id = ""
+        self.cartId = cartId
+        self.billingAddress = nil
+        self.shippingAddress = nil
+        self.payment = Payment()
     }
 
 }
