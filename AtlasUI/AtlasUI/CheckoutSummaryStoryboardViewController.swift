@@ -34,13 +34,13 @@ class CheckoutSummaryStoryboardViewController: UIViewController, CheckoutProvide
     @IBOutlet private weak var shippingPriceLabel: UILabel!
     @IBOutlet private weak var totalTitleLabel: UILabel!
     @IBOutlet private weak var totalPriceLabel: UILabel!
+
     @IBOutlet private weak var footerLabel: UILabel!
+    @IBOutlet private weak var submitButton: UIButton!
+    @IBOutlet private weak var loaderView: UIView!
 
     @IBOutlet private var arrowImageViews: [UIImageView] = []
     @IBOutlet private weak var priceStackView: UIStackView!
-    @IBOutlet private weak var footerStackView: UIStackView!
-    @IBOutlet private weak var loaderView: UIView!
-    @IBOutlet private weak var submitButton: UIButton!
     @IBOutlet private weak var stackView: UIStackView! {
         didSet {
             stackView.subviews.flatMap { $0 as? UIStackView }.forEach {
@@ -50,9 +50,12 @@ class CheckoutSummaryStoryboardViewController: UIViewController, CheckoutProvide
         }
     }
 
-    internal static func instantiateFromStoryBoard(checkout: AtlasCheckout, checkoutViewModel: CheckoutViewModel) -> CheckoutSummaryStoryboardViewController? {
-        let storyboard = UIStoryboard(name: "CheckoutSummaryStoryboard", bundle: NSBundle(forClass: CheckoutSummaryStoryboardViewController.self))
-        guard let checkoutSummaryViewController = storyboard.instantiateInitialViewController() as? CheckoutSummaryStoryboardViewController else { return nil }
+    internal static func instantiateFromStoryBoard(checkout: AtlasCheckout,
+                                                   checkoutViewModel: CheckoutViewModel) -> CheckoutSummaryStoryboardViewController? {
+        let storyboard = UIStoryboard(name: "CheckoutSummaryStoryboard",
+                                      bundle: NSBundle(forClass: CheckoutSummaryStoryboardViewController.self))
+        guard let checkoutSummaryViewController = storyboard.instantiateInitialViewController()
+            as? CheckoutSummaryStoryboardViewController else { return nil }
 
         checkoutSummaryViewController.checkout = checkout
         checkoutSummaryViewController.checkoutViewModel = checkoutViewModel
@@ -131,7 +134,11 @@ extension CheckoutSummaryStoryboardViewController {
         navigationItem.setHidesBackButton(viewState.hideBackButton(hasSingleUnit), animated: false)
 
         if viewState.showCancelButton {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(title: loc("Cancel"), style: .Plain, target: self, action: #selector(CheckoutSummaryStoryboardViewController.cancelCheckoutTapped))
+            let button = UIBarButtonItem(title: loc("Cancel"),
+                                         style: .Plain,
+                                         target: self,
+                                         action: #selector(CheckoutSummaryStoryboardViewController.cancelCheckoutTapped))
+            navigationItem.rightBarButtonItem = button
         } else {
             navigationItem.rightBarButtonItem = nil
         }
@@ -157,7 +164,7 @@ extension CheckoutSummaryStoryboardViewController {
         footerLabel.text = loc("CheckoutSummaryViewController.terms")
 
         priceStackView.hidden = !viewState.showPrice
-        footerStackView.hidden = !viewState.showFooter
+        footerLabel.hidden = !viewState.showFooterLabel
         arrowImageViews.forEach { $0.hidden = !viewState.showDetailArrow }
     }
 

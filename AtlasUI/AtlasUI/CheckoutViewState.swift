@@ -46,7 +46,7 @@ enum CheckoutViewState {
         }
     }
 
-    var showFooter: Bool {
+    var showFooterLabel: Bool {
         switch self {
         case .NotLoggedIn, .LoggedIn: return true
         case .OrderPlaced: return false
