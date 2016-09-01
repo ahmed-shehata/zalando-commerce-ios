@@ -23,6 +23,13 @@ extension UIView {
         leftAnchor.constraintEqualToAnchor(superview.leftAnchor).active = true
     }
 
+    func centerInSuperView() {
+        guard let superview = superview else { return }
+        translatesAutoresizingMaskIntoConstraints = false
+        centerXAnchor.constraintEqualToAnchor(superview.centerXAnchor).active = true
+        centerYAnchor.constraintEqualToAnchor(superview.centerYAnchor).active = true
+    }
+
     func setSquareAspectRatio() {
         translatesAutoresizingMaskIntoConstraints = false
         widthAnchor.constraintEqualToAnchor(heightAnchor, multiplier: 1).active = true
@@ -56,7 +63,7 @@ extension UIView {
         heightAnchor.constraintEqualToAnchor(view.heightAnchor, multiplier: multiplier).active = true
     }
 
-    func setHeightAsSuperViewWidth(multiplier: CGFloat = 1) {
+    func setHeightAsSuperViewHeight(multiplier: CGFloat = 1) {
         guard let superview = superview else { return }
         setHeightEqualToView(superview, multiplier: multiplier)
     }

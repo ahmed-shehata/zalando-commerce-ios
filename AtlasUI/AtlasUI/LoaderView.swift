@@ -11,9 +11,25 @@ import UIKit
 class LoaderView: UIView {
 
     internal let activityIndicator: UIActivityIndicatorView = {
-        let loader = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
-
-        return loader
+        return UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
     }()
+
+    override var hidden: Bool {
+        didSet {
+            hidden ? activityIndicator.stopAnimating() : activityIndicator.startAnimating()
+        }
+    }
+}
+
+extension LoaderView: UIBuilder {
+
+    func configureView() {
+        addSubview(activityIndicator)
+    }
+
+    func configureConstraints() {
+        fillInSuperView()
+        activityIndicator.centerInSuperView()
+    }
 
 }

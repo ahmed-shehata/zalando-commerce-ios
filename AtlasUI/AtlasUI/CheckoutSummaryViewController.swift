@@ -155,7 +155,6 @@ extension CheckoutSummaryViewController {
         rootStackView.mainStackView.shippingStackView.arrowImageView.hidden = !viewState.showDetailArrow
         rootStackView.mainStackView.billingStackView.arrowImageView.hidden = !viewState.showDetailArrow
         rootStackView.mainStackView.paymentStackView.arrowImageView.hidden = !viewState.showDetailArrow
-        
     }
 
 }
