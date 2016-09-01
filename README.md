@@ -3,8 +3,6 @@
 [![CocoaPods](https://img.shields.io/cocoapods/v/AtlasSDK.svg?maxAge=3600)](http://cocoadocs.org/docsets/AtlasSDK)
 [![CocoaPods](https://img.shields.io/cocoapods/p/AtlasSDK.svg?maxAge=3600)](http://cocoadocs.org/docsets/AtlasSDK)
 [![CocoaPods](https://img.shields.io/cocoapods/at/AtlasSDK.svg?maxAge=3600)](http://cocoadocs.org/docsets/AtlasSDK)
-
-[![Build Status](https://travis-ci.org/zalando-incubator/atlas-ios.svg?branch=master)](https://travis-ci.org/zalando-incubator/atlas-ios)
 [![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=57a305cb34a9450100595b71&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/57a305cb34a9450100595b71/build/latest)
 [![codecov](https://codecov.io/gh/zalando-incubator/atlas-ios/branch/master/graph/badge.svg)](https://codecov.io/gh/zalando-incubator/atlas-ios)
 [![codebeat badge](https://codebeat.co/badges/85202868-c550-46c0-9423-f71467f0fabf)](https://codebeat.co/projects/github-com-zalando-incubator-atlas-ios)
@@ -16,7 +14,7 @@ Atlas iOS SDK for Zalando Checkout and Catalog APIs.
 The purpose of this project is to provide seamless experience of Zalando
 articles checkout integration to the 3rd party iOS app in few minutes.
 
-Our goal is to allow iOS developer integrate and run Zalando checkout in
+Our goal is to allow iOS developer integrate and run Zalando Сheckout in
 minutes using a few lines of code.
 
 The project consists of 2 frameworks:
@@ -44,7 +42,7 @@ pod 'AtlasSDK'
 	```
 1. Run `carthage update --platform iOS`
 1. From your `Carthage/Build/iOS/` directory, add `AtlasSDK` and `AtlasUI` to your "Embedded Binaries":
-![Embedded Binaries](Documentation/installation/carthage-embed.png)
+![Embedded Binaries](https://raw.githubusercontent.com/zalando-incubator/atlas-ios/master/Documentation/carthage-embed.png)
 
 ### Manually
 1. Drag AtlasSDK.xcodeproj and AtlasUI.xcodeproj to your project in the __Project Navigator__.
@@ -55,7 +53,11 @@ pod 'AtlasSDK'
 
 ## Configuration
 
-Configure Atlas SDK first and use instance variable:
+You need to configure Atlas SDK first and use configured instance variable to interact with AtlasSDK.
+
+### Manual configuration
+
+In order to configure AtlasCheckout manually create an `Options` instance with at least 2 mandatory parameters `clientId` and `salesChannel`:
 
 ```swift
 import AtlasSDK
@@ -76,48 +78,75 @@ override func viewDidLoad() {
 }
 ```
 
+### Configuration using Info.plist
+
+You can provide all configuration options application wide using `Info.plist` with the following keys:
+- `ATLASSDK_CLIENT_ID`: String - Client Id (required)
+- `ATLASSDK_SALES_CHANNEL`: String - Sales Channel (required)
+- `ATLASSDK_USE_SANDBOX`: Bool - Indicates whether sandbox environment should be used
+- `ATLASSDK_INTERFACE_LANGUAGE`: String - Checkout interface language
+
+In that case AtlasCheckout configuration is even simpler:
+
+```swift
+import AtlasSDK
+import AtlasUI
+
+var atlasCheckout: AtlasCheckout?
+
+override func viewDidLoad() {
+  super.viewDidLoad()
+
+  AtlasCheckout.configure { result in
+    if case let .success(checkout) = result {
+      self.atlasCheckout = checkout
+    }
+  }
+}
+```
+
 ## Usage
 
-Using AtlasSDK instance configured previously you can interact with SDK, for example:
+Using AtlasCheckout instance configured previously you can interact with SDK, for example:
 
 * Get customer information
 
-    ```swift
-import AtlasSDK
-import AtlasUI
+ ```swift
+ import AtlasSDK
+ import AtlasUI
 
  class ViewController: UIViewController {
 
     @IBAction private func getCustomerTapped(sender: UIButton) {
-        atlasCheckout?.client.customer { result in
-            switch result {
-                case .failure(let error):
-                    print("Error: \(error)")
+      atlasCheckout?.client.customer { result in
+        switch result {
+          case .failure(let error):
+            print("Error: \(error)")
 
-                case .success(let customer):
-                    print(customer)
-            }
+          case .success(let customer):
+            print(customer)
         }
-     }
-}
-    ```
+      }
+    }
+ }
+ ```
 
 * Start checkout somewhere in your view controller, e.g. when a user tap on a buy button:
 
-    ```swift
-import AtlasSDK
-import AtlasUI
+ ```swift
+ import AtlasSDK
+ import AtlasUI
 
  class ViewController: UIViewController {
-	@IBAction func buyButtonTapped(sender: AnyObject) {
-      atlasCheckout?.presentCheckoutView(sku: "N1242A0WI-K13")
-	}
-}
-    ```
+	 @IBAction func buyButtonTapped(sender: AnyObject) {
+		 atlasCheckout?.presentCheckoutView(sku: "N1242A0WI-K13")
+	 } 
+ }
+ ```
 
-## Atlas SDK Structure
+## AtlasSDK Structure
 
-![structure](Documentation/AtlasSDK Structure.png)
+![structure](https://raw.githubusercontent.com/zalando-incubator/atlas-ios/master/Documentation/AtlasSDK%20Structure.png)
 
 ### AtlasSDK
 
@@ -132,6 +161,9 @@ AtlasSDK framework is the core framework (think about Cocoa Touch Foundation) th
 AtlasUI uses AtlasSDK as the foundation and provides public checkout functionality to customers.
 AtlasUI also contains all the generic UI methods used internally within Atlas SDK. Think about it as Cocoa Touch UIKit.
 
+## AtlasSDK Documentation
+
+[AtlasSDK Reference Documentation](http://cocoadocs.org/docsets/AtlasSDK) is generated automatically during the Pod deployment.
 
 ## LICENSE
 
