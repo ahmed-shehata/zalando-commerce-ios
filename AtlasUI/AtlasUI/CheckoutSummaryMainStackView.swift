@@ -139,7 +139,7 @@ extension CheckoutSummaryMainStackView: UIDataBuilder {
 
         paymentStackView.configureData(CheckoutSummaryActionViewModel(
             title: viewModel.loc("Payment"),
-            value: viewModel.checkoutViewModel.paymentMethodText ?? "",
+            value: viewModel.checkoutViewModel.selectedPaymentMethod ?? "",
             showArrow: viewModel.viewState.showDetailArrow)
         )
     }

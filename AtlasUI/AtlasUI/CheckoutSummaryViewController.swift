@@ -81,6 +81,7 @@ extension CheckoutSummaryViewController {
         case .NotLoggedIn: actionsHandler.loadCustomerData()
         case .LoggedIn: actionsHandler.handleBuyAction()
         case .OrderPlaced: dismissView()
+        case .CheckoutIncomplete: break
         }
     }
 
