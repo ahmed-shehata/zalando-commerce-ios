@@ -5,7 +5,10 @@ codecov:
 coverage:
   precision: 2
   round: down
-  range: 70...100
+  range: 50...80
 
   ignore:
     - .*/SwiftyJSON.*
+
+comment:
+  behavior: new
