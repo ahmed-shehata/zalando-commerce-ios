@@ -1,5 +1,5 @@
-github "Alamofire/Alamofire" "1ac83593aaea0bb31c5d22c86d5a2cf90498ee71"
+github "Alamofire/Alamofire" "383efdfa68fff8ebb52748c9b22034b326d70459"
 github "Quick/Nimble" "v4.1.0"
 github "Quick/Quick" "v0.9.3"
 github "bonkey/SwiftyJSON" "6388ef49187705ec6c5de9b539d980942cc97aa6"
-github "bonkey/swifter" "b08c4954863e56f34ad6bf3a33c82af07069e5d9"
+github "bonkey/swifter" "b250a0d27fb91abebbf3efe458e0f56ef04e6861"
