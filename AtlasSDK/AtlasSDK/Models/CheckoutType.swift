@@ -4,6 +4,12 @@
 
 import Foundation
 
+enum CheckoutCompletness {
+    case Address
+    case Payment
+    case Valid
+}
+
 public protocol CheckoutType {
 
     var id: String { get }

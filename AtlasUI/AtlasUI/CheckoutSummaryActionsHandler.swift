@@ -80,6 +80,7 @@ extension CheckoutSummaryActionsHandler {
 
     internal func showShippingAddressSelectionScreen() {
         let addressSelectionViewController = AddressPickerViewController(checkout: viewController.checkout, addressType: .shipping)
+        addressSelectionViewController.delegate = viewController
         viewController.showViewController(addressSelectionViewController, sender: viewController)
     }
 

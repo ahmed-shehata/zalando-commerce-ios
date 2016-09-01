@@ -1,5 +1,6 @@
 import Foundation
 import AtlasSDK
+
 final class AddressListViewController: UITableViewController {
 
     var delegate: AddressListViewControllerDelegate?

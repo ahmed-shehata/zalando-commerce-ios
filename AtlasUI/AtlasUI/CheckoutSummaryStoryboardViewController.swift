@@ -5,7 +5,7 @@
 import UIKit
 import AtlasSDK
 
-class CheckoutSummaryStoryboardViewController: UIViewController, CheckoutProviderType {
+class CheckoutSummaryStoryboardViewController: UIViewController, CheckoutProviderType, AddressPickerViewControllerDelegate {
 
     internal var checkout: AtlasCheckout!
     internal var checkoutViewModel: CheckoutViewModel!
@@ -165,4 +165,12 @@ extension CheckoutSummaryStoryboardViewController {
         arrowImageViews.forEach { $0.hidden = !viewState.showDetailArrow }
     }
 
+}
+
+extension CheckoutSummaryStoryboardViewController {
+    func addressPickerViewController(viewController: AddressPickerViewController,
+        pickedAddress address: Address,
+        forAddressType addressType: AddressPickerViewController.AddressType) {
+            print(address.id)
+    }
 }

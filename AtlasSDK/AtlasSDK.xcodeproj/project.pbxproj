@@ -392,15 +392,13 @@
 		817292531D362A2C00803B74 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E8063CB71D78276500783A21 /* Checkout */,
 				E8DD4C461D38DF7C00C822B2 /* RequestModels */,
 				81A5728E1D6F31D000148A92 /* Addresses */,
 				817292551D362A2C00803B74 /* Article.swift */,
 				817292561D362A2C00803B74 /* Cart.swift */,
 				817292571D362A2C00803B74 /* CartItem.swift */,
 				817292581D362A2C00803B74 /* Catalog.swift */,
-				E8B1831D1D76E8BC001CF8BC /* CheckoutType.swift */,
-				817292591D362A2C00803B74 /* Checkout.swift */,
-				E8B1831B1D75E6C9001CF8BC /* IncompleteCheckout.swift */,
 				8172925A1D362A2C00803B74 /* Config.swift */,
 				8172925B1D362A2C00803B74 /* Customer.swift */,
 				8172925C1D362A2C00803B74 /* Delivery.swift */,
@@ -529,6 +527,16 @@
 			);
 			name = Client;
 			path = AtlasSDK/API;
+			sourceTree = "<group>";
+		};
+		E8063CB71D78276500783A21 /* Checkout */ = {
+			isa = PBXGroup;
+			children = (
+				E8B1831D1D76E8BC001CF8BC /* CheckoutType.swift */,
+				817292591D362A2C00803B74 /* Checkout.swift */,
+				E8B1831B1D75E6C9001CF8BC /* IncompleteCheckout.swift */,
+			);
+			name = Checkout;
 			sourceTree = "<group>";
 		};
 		E8DD4C461D38DF7C00C822B2 /* RequestModels */ = {

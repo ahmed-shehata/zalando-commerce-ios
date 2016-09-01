@@ -105,4 +105,3 @@ protocol AddressListViewControllerDelegate: class {
     func addressListViewController(viewController: AddressListViewController,
         didSelectAddress address: Address)
 }
-
