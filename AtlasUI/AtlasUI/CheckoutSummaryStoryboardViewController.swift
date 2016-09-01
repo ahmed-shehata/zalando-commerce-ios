@@ -90,7 +90,7 @@ class CheckoutSummaryStoryboardViewController: UIViewController, CheckoutProvide
         case .NotLoggedIn: actionsHandler.loadCustomerData()
         case .LoggedIn: actionsHandler.handleBuyAction()
         case .OrderPlaced: dismissView()
-        case .IncompleteCheckout: break
+        case .CheckoutIncomplete: break
         }
     }
 

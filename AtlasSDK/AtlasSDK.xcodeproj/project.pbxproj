@@ -106,8 +106,6 @@
 		E8B183171D75DA45001CF8BC /* CreateAddressRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B183151D75DA45001CF8BC /* CreateAddressRequest.swift */; };
 		E8B183181D75DA45001CF8BC /* UpdateAddressRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B183161D75DA45001CF8BC /* UpdateAddressRequest.swift */; };
 		E8B1831A1D75DB54001CF8BC /* UpdateCheckoutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B183191D75DB54001CF8BC /* UpdateCheckoutRequest.swift */; };
-		E8B1831C1D75E6C9001CF8BC /* IncompleteCheckout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B1831B1D75E6C9001CF8BC /* IncompleteCheckout.swift */; };
-		E8B1831E1D76E8BC001CF8BC /* CheckoutType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B1831D1D76E8BC001CF8BC /* CheckoutType.swift */; };
 		E8DD4C481D38DFAD00C822B2 /* CartRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DD4C471D38DFAD00C822B2 /* CartRequest.swift */; };
 		E8DD4C4A1D38EA2900C822B2 /* CartItemRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DD4C491D38EA2900C822B2 /* CartItemRequest.swift */; };
 		E8DD4C521D3F7D1A00C822B2 /* CreateCheckoutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DD4C511D3F7D1A00C822B2 /* CreateCheckoutRequest.swift */; };
@@ -225,7 +223,6 @@
 		81F8C2471D355D1800996E95 /* AppInfoConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppInfoConfig.swift; path = AtlasSDK/AppInfoConfig.swift; sourceTree = SOURCE_ROOT; };
 		81F8C2481D355D1800996E95 /* Options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Options.swift; path = AtlasSDK/Options.swift; sourceTree = SOURCE_ROOT; };
 		81F8C2491D355D1800996E95 /* OptionsInfoPlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OptionsInfoPlist.swift; path = AtlasSDK/OptionsInfoPlist.swift; sourceTree = SOURCE_ROOT; };
-		81F8C24E1D355E2400996E95 /* LoginError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginError.swift; path = AtlasSDK/LoginError.swift; sourceTree = SOURCE_ROOT; };
 		81F8C24F1D355E2400996E95 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = AtlasSDK/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
 		81F8C2591D355E7D00996E95 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Errors.swift; path = AtlasSDK/Errors.swift; sourceTree = SOURCE_ROOT; };
 		81F8C2641D355F6700996E95 /* APIClientQueryItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIClientQueryItems.swift; path = AtlasSDK/APIClientQueryItems.swift; sourceTree = SOURCE_ROOT; };
@@ -242,8 +239,6 @@
 		E8B183151D75DA45001CF8BC /* CreateAddressRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAddressRequest.swift; sourceTree = "<group>"; };
 		E8B183161D75DA45001CF8BC /* UpdateAddressRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateAddressRequest.swift; sourceTree = "<group>"; };
 		E8B183191D75DB54001CF8BC /* UpdateCheckoutRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateCheckoutRequest.swift; sourceTree = "<group>"; };
-		E8B1831B1D75E6C9001CF8BC /* IncompleteCheckout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncompleteCheckout.swift; sourceTree = "<group>"; };
-		E8B1831D1D76E8BC001CF8BC /* CheckoutType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutType.swift; sourceTree = "<group>"; };
 		E8DD4C471D38DFAD00C822B2 /* CartRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartRequest.swift; sourceTree = "<group>"; };
 		E8DD4C491D38EA2900C822B2 /* CartItemRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartItemRequest.swift; sourceTree = "<group>"; };
 		E8DD4C511D3F7D1A00C822B2 /* CreateCheckoutRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCheckoutRequest.swift; sourceTree = "<group>"; };
@@ -398,9 +393,7 @@
 				817292561D362A2C00803B74 /* Cart.swift */,
 				817292571D362A2C00803B74 /* CartItem.swift */,
 				817292581D362A2C00803B74 /* Catalog.swift */,
-				E8B1831D1D76E8BC001CF8BC /* CheckoutType.swift */,
 				817292591D362A2C00803B74 /* Checkout.swift */,
-				E8B1831B1D75E6C9001CF8BC /* IncompleteCheckout.swift */,
 				8172925A1D362A2C00803B74 /* Config.swift */,
 				8172925B1D362A2C00803B74 /* Customer.swift */,
 				8172925C1D362A2C00803B74 /* Delivery.swift */,
@@ -498,7 +491,6 @@
 		81F8C2521D355E2D00996E95 /* LoginController */ = {
 			isa = PBXGroup;
 			children = (
-				81F8C24E1D355E2400996E95 /* LoginError.swift */,
 				81F8C24F1D355E2400996E95 /* LoginViewController.swift */,
 			);
 			name = LoginController;
@@ -734,7 +726,6 @@
 				E8B1831A1D75DB54001CF8BC /* UpdateCheckoutRequest.swift in Sources */,
 				817292731D362A2C00803B74 /* Unit.swift in Sources */,
 				8186B0FB1D51ECC10068EE37 /* JSON.swift in Sources */,
-				E8B1831E1D76E8BC001CF8BC /* CheckoutType.swift in Sources */,
 				8139B6071D59B5DD00187984 /* PublicAPIClient.swift in Sources */,
 				8186B1021D51ECC10068EE37 /* HTTP.swift in Sources */,
 				8186B1001D51ECC10068EE37 /* LoggerType.swift in Sources */,
@@ -757,7 +748,6 @@
 				E87C167A1D5226FA00E12E98 /* BillingAddress.swift in Sources */,
 				8186B0F41D51ECC10068EE37 /* Array.swift in Sources */,
 				8101EB941D587F04008E2A1A /* Atlas.swift in Sources */,
-				E8B1831C1D75E6C9001CF8BC /* IncompleteCheckout.swift in Sources */,
 				817292701D362A2C00803B74 /* PickupPoint.swift in Sources */,
 				8172926A1D362A2C00803B74 /* Config.swift in Sources */,
 				8186B0FE1D51ECC10068EE37 /* Keychain.swift in Sources */,

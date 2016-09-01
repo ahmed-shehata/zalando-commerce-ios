@@ -190,6 +190,7 @@
 				8186B14B1D51EE930068EE37 /* Assets.xcassets */,
 				817277711D5B1786001394BF /* Resources */,
 				E85D38DD1D5B34B4008A42C2 /* Views */,
+				8186B13D1D51EE930068EE37 /* CheckoutViewModel.swift */,
 				8186B14C1D51EE930068EE37 /* AtlasCheckout.swift */,
 				81F7944C1D5B09A800C73859 /* CheckoutProviderType.swift */,
 				8172776E1D5B174E001394BF /* LocalizerProviderType.swift */,
