@@ -56,8 +56,7 @@ final class PaymentSelectionViewController: UIViewController, UIWebViewDelegate 
     }
 
     func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
-        print("webView error: \(error)")
-//        dismissViewController(.failure(), animated: true)
+        dismissViewController(.failure(), animated: true)
     }
 
     private func dismissViewController(result: Result<String>, animated: Bool = true) {
