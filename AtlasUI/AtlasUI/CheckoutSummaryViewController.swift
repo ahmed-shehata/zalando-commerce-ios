@@ -14,11 +14,11 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
             refreshView()
         }
     }
-    lazy private var uiStyler: CheckoutSummaryUIStyler = {
-        CheckoutSummaryUIStyler(viewController: self)
-    }()
-    lazy private var uiBuilder: CheckoutSummaryUIBuilder = {
-        CheckoutSummaryUIBuilder(viewController: self, uiStyler: self.uiStyler)
+    internal let rootStackView: CheckoutSummaryRootStackView = {
+        let stackView = CheckoutSummaryRootStackView()
+        stackView.axis = .Vertical
+        stackView.spacing = 5
+        return stackView
     }()
     lazy private var actionsHandler: CheckoutSummaryActionsHandler = {
         CheckoutSummaryActionsHandler(viewController: self)
@@ -80,7 +80,7 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        uiBuilder.setupView()
+        setupView()
         setupViewState()
     }
 
@@ -130,6 +130,12 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
 
 extension CheckoutSummaryViewController {
 
+    private func setupView() {
+        view.backgroundColor = .whiteColor()
+        view.addSubview(rootStackView)
+        rootStackView.buildView()
+    }
+
     private func setupViewState() {
         if Atlas.isUserLoggedIn() {
             viewState = .LoggedIn
@@ -163,21 +169,27 @@ extension CheckoutSummaryViewController {
     private func refreshView() {
 //        hideLoader()
 
-        uiStyler.footerLabel.text = loc("CheckoutSummaryViewController.terms")
-        uiStyler.submitButton.setTitle(loc(viewState.submitButtonTitleLocalizedKey), forState: .Normal)
-        uiStyler.submitButton.backgroundColor = viewState.submitButtonBackgroundColor
+        rootStackView.mainStackView.productStackView.articleImageView.setImage(fromUrl: checkoutViewModel.article.thumbnailUrl)
+        rootStackView.mainStackView.productStackView.brandNameLabel.text = checkoutViewModel.article.brand.name
+        rootStackView.mainStackView.productStackView.articleNameLabel.text = checkoutViewModel.article.name
+        rootStackView.mainStackView.productStackView.unitSizeLabel.text = loc("Size: %@", checkoutViewModel.selectedUnit.size)
 
-        uiStyler.articleImageView.setImage(fromUrl: checkoutViewModel.article.thumbnailUrl)
-        uiStyler.brandNameLabel.text = checkoutViewModel.article.brand.name
-        uiStyler.articleNameLabel.text = checkoutViewModel.article.name
-        uiStyler.unitSizeLabel.text = loc("Size: %@", checkoutViewModel.selectedUnit.size)
+        rootStackView.mainStackView.shippingStackView.titleLabel.text = loc("Address.Shipping")
+        rootStackView.mainStackView.shippingStackView.valueLabel.text = checkoutViewModel.shippingAddress(localizedWith: self).trimmed
 
-        uiStyler.shippingAddressTitleLabel.text = loc("Address.Shipping")
-        uiStyler.shippingAddressValueLabel.text = checkoutViewModel.shippingAddress(localizedWith: self).trimmed
-//        billingAddressTitleLabel.text = loc("Address.Billing")
-//        billingAddressValueLabel.text = checkoutViewModel.billingAddress(localizedWith: self).trimmed
-//        paymentTitleLabel.text = loc("Payment")
-//        paymentValueLabel.text = checkoutViewModel.paymentMethodText
+        rootStackView.mainStackView.billingStackView.titleLabel.text = loc("Address.Billing")
+        rootStackView.mainStackView.billingStackView.valueLabel.text = checkoutViewModel.billingAddress(localizedWith: self).trimmed
+
+        rootStackView.mainStackView.paymentStackView.titleLabel.text = loc("Payment")
+        rootStackView.mainStackView.paymentStackView.valueLabel.text = checkoutViewModel.paymentMethodText
+
+
+
+        rootStackView.footerStackView.footerLabel.text = loc("CheckoutSummaryViewController.terms")
+        rootStackView.footerStackView.submitButton.setTitle(loc(viewState.submitButtonTitleLocalizedKey), forState: .Normal)
+        rootStackView.footerStackView.backgroundColor = viewState.submitButtonBackgroundColor
+
+
 //        shippingTitleLabel.text = loc("Shipping")
 //        shippingPriceLabel.text = localizer.fmtPrice(checkoutViewModel.shippingPriceValue)
 //        totalTitleLabel.text = loc("Total")
