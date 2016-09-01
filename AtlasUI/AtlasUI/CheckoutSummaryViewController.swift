@@ -25,6 +25,11 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
         stackView.spacing = 5
         return stackView
     }()
+    internal let loaderView: LoaderView = {
+        let view = LoaderView()
+        view.hidden = true
+        return view
+    }()
 
     init(checkout: AtlasCheckout, checkoutViewModel: CheckoutViewModel) {
         self.checkout = checkout
@@ -44,13 +49,13 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
         setupViewState()
     }
 
-//    internal func showLoader() {
-//        loaderView.hidden = false
-//    }
-//
-//    internal func hideLoader() {
-//        loaderView.hidden = true
-//    }
+    internal func showLoader() {
+        loaderView.hidden = false
+    }
+
+    internal func hideLoader() {
+        loaderView.hidden = true
+    }
 }
 
 extension CheckoutSummaryViewController {
@@ -96,6 +101,7 @@ extension CheckoutSummaryViewController {
     private func setupView() {
         view.backgroundColor = .whiteColor()
         view.addSubview(rootStackView)
+        view.addSubview(loaderView)
         rootStackView.buildView()
     }
 
@@ -125,7 +131,7 @@ extension CheckoutSummaryViewController {
     }
 
     private func refreshView() {
-//        hideLoader()
+        hideLoader()
 
         rootStackView.mainStackView.productStackView.articleImageView.setImage(fromUrl: checkoutViewModel.article.thumbnailUrl)
         rootStackView.mainStackView.productStackView.brandNameLabel.text = checkoutViewModel.article.brand.name

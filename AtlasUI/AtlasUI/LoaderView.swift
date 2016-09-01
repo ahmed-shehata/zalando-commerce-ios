@@ -24,6 +24,7 @@ class LoaderView: UIView {
 extension LoaderView: UIBuilder {
 
     func configureView() {
+        backgroundColor = UIColor(white: 0, alpha: 0.3)
         addSubview(activityIndicator)
     }
 
