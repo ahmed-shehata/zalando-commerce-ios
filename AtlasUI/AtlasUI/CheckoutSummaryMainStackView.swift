@@ -37,6 +37,7 @@ class CheckoutSummaryMainStackView: UIStackView {
     internal let shippingSeparatorView: BorderView = {
         let view = BorderView()
         view.bottomBorder = true
+        view.leadingMargin = 15
         view.borderColor = UIColor(netHex: 0xE5E5E5)
         return view
     }()
@@ -52,6 +53,7 @@ class CheckoutSummaryMainStackView: UIStackView {
     internal let billingSeparatorView: BorderView = {
         let view = BorderView()
         view.bottomBorder = true
+        view.leadingMargin = 15
         view.borderColor = UIColor(netHex: 0xE5E5E5)
         return view
     }()
@@ -71,6 +73,14 @@ class CheckoutSummaryMainStackView: UIStackView {
         return view
     }()
 
+    internal let priceStackView: CheckoutSummaryPriceStackView = {
+        let stackView = CheckoutSummaryPriceStackView()
+        stackView.axis = .Vertical
+        stackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+        stackView.layoutMarginsRelativeArrangement = true
+        return stackView
+    }()
+
 }
 
 extension CheckoutSummaryMainStackView: UIBuilder {
@@ -87,6 +97,8 @@ extension CheckoutSummaryMainStackView: UIBuilder {
 
         addArrangedSubview(paymentStackView)
         addArrangedSubview(paymentSeparatorView)
+
+        addArrangedSubview(priceStackView)
     }
 
     func configureConstraints() {
@@ -103,7 +115,7 @@ extension CheckoutSummaryMainStackView: UIBuilder {
     }
 
     func builderSubViews() -> [UIBuilder] {
-        return [productStackView, shippingStackView, billingStackView, paymentStackView]
+        return [productStackView, shippingStackView, billingStackView, paymentStackView, priceStackView]
     }
 
 }
