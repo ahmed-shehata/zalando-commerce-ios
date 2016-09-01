@@ -81,10 +81,10 @@ override func viewDidLoad() {
 ### Configuration using Info.plist
 
 You can provide all configuration options application wide using `Info.plist` with the following keys:
-- ATLASSDK_CLIENT_ID: String - Client Id (required)
-- ATLASSDK_SALES_CHANNEL: String - Sales Channel (required)
-- ATLASSDK_USE_SANDBOX: Bool - Indicates whether sandbox environment should be used
-- ATLASSDK_INTERFACE_LANGUAGE: String - Checkout interface language
+- `ATLASSDK_CLIENT_ID`: String - Client Id (required)
+- `ATLASSDK_SALES_CHANNEL`: String - Sales Channel (required)
+- `ATLASSDK_USE_SANDBOX`: Bool - Indicates whether sandbox environment should be used
+- `ATLASSDK_INTERFACE_LANGUAGE`: String - Checkout interface language
 
 In that case AtlasCheckout configuration is even simpler:
 
@@ -95,11 +95,11 @@ import AtlasUI
 var atlasCheckout: AtlasCheckout?
 
 override func viewDidLoad() {
-	super.viewDidLoad()
+  super.viewDidLoad()
 
-	AtlasCheckout.configure { result in
-		if case let .success(checkout) = result {
-    	self.atlasCheckout = checkout
+  AtlasCheckout.configure { result in
+    if case let .success(checkout) = result {
+      self.atlasCheckout = checkout
     }
   }
 }
@@ -111,38 +111,38 @@ Using AtlasCheckout instance configured previously you can interact with SDK, fo
 
 * Get customer information
 
-    ```swift
-import AtlasSDK
-import AtlasUI
+ ```swift
+ import AtlasSDK
+ import AtlasUI
 
  class ViewController: UIViewController {
 
     @IBAction private func getCustomerTapped(sender: UIButton) {
-        atlasCheckout?.client.customer { result in
-            switch result {
-                case .failure(let error):
-                    print("Error: \(error)")
+      atlasCheckout?.client.customer { result in
+        switch result {
+          case .failure(let error):
+            print("Error: \(error)")
 
-                case .success(let customer):
-                    print(customer)
-            }
+          case .success(let customer):
+            print(customer)
         }
-     }
-}
-    ```
+      }
+    }
+ }
+ ```
 
 * Start checkout somewhere in your view controller, e.g. when a user tap on a buy button:
 
-    ```swift
-import AtlasSDK
-import AtlasUI
+ ```swift
+ import AtlasSDK
+ import AtlasUI
 
  class ViewController: UIViewController {
-	@IBAction func buyButtonTapped(sender: AnyObject) {
-      atlasCheckout?.presentCheckoutView(sku: "N1242A0WI-K13")
-	}
-}
-    ```
+	 @IBAction func buyButtonTapped(sender: AnyObject) {
+		 atlasCheckout?.presentCheckoutView(sku: "N1242A0WI-K13")
+	 } 
+ }
+ ```
 
 ## AtlasSDK Structure
 
