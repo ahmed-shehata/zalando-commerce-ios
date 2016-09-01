@@ -50,13 +50,17 @@ class CheckoutSummaryStoryboardViewController: UIViewController, CheckoutProvide
         }
     }
 
-    internal static func instantiateFromStoryBoard(checkout: AtlasCheckout, checkoutViewModel: CheckoutViewModel) -> CheckoutSummaryStoryboardViewController? {
-        let storyboard = UIStoryboard(name: "CheckoutSummaryStoryboard", bundle: NSBundle(forClass: CheckoutSummaryStoryboardViewController.self))
-        guard let checkoutSummaryViewController = storyboard.instantiateInitialViewController() as? CheckoutSummaryStoryboardViewController else { return nil }
+    internal static func instantiateFromStoryBoard(checkout: AtlasCheckout,
+        checkoutViewModel: CheckoutViewModel) -> CheckoutSummaryStoryboardViewController? {
+            let storyboard = UIStoryboard(name: "CheckoutSummaryStoryboard", bundle:
+                    NSBundle(forClass: CheckoutSummaryStoryboardViewController.self))
+            guard let checkoutSummaryViewController = storyboard.instantiateInitialViewController()
+            as? CheckoutSummaryStoryboardViewController
+            else { return nil }
 
-        checkoutSummaryViewController.checkout = checkout
-        checkoutSummaryViewController.checkoutViewModel = checkoutViewModel
-        return checkoutSummaryViewController
+            checkoutSummaryViewController.checkout = checkout
+            checkoutSummaryViewController.checkoutViewModel = checkoutViewModel
+            return checkoutSummaryViewController
     }
 
     override func viewDidLoad() {
@@ -86,13 +90,12 @@ class CheckoutSummaryStoryboardViewController: UIViewController, CheckoutProvide
         case .NotLoggedIn: actionsHandler.loadCustomerData()
         case .LoggedIn: actionsHandler.handleBuyAction()
         case .OrderPlaced: dismissView()
+        case .IncompleteCheckout: break
         }
     }
 
     @IBAction private func shippingAddressTapped() {
-        guard viewState.showDetailArrow else { return }
-
-        userMessage.notImplemented()
+        actionsHandler.showShippingAddressSelectionScreen()
     }
 
     @IBAction private func billingAddressTapped() {
@@ -113,7 +116,7 @@ extension CheckoutSummaryStoryboardViewController {
 
     private func setupViewState() {
         if Atlas.isUserLoggedIn() {
-            viewState = .LoggedIn
+            viewState = checkoutViewModel.checkoutViewState
         } else {
             viewState = .NotLoggedIn
         }
@@ -131,7 +134,8 @@ extension CheckoutSummaryStoryboardViewController {
         navigationItem.setHidesBackButton(viewState.hideBackButton(hasSingleUnit), animated: false)
 
         if viewState.showCancelButton {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(title: loc("Cancel"), style: .Plain, target: self, action: #selector(CheckoutSummaryStoryboardViewController.cancelCheckoutTapped))
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: loc("Cancel"), style: .Plain, target: self, action:
+                    #selector(CheckoutSummaryStoryboardViewController.cancelCheckoutTapped))
         } else {
             navigationItem.rightBarButtonItem = nil
         }
@@ -149,7 +153,7 @@ extension CheckoutSummaryStoryboardViewController {
         billingAddressTitleLabel.text = loc("Address.Billing")
         billingAddressValueLabel.text = checkoutViewModel.billingAddress(localizedWith: self).trimmed
         paymentTitleLabel.text = loc("Payment")
-        paymentValueLabel.text = checkoutViewModel.paymentMethodText
+        paymentValueLabel.text = checkoutViewModel.selectedPaymentMethod
         shippingTitleLabel.text = loc("Shipping")
         shippingPriceLabel.text = localizer.fmtPrice(checkoutViewModel.shippingPriceValue)
         totalTitleLabel.text = loc("Total")

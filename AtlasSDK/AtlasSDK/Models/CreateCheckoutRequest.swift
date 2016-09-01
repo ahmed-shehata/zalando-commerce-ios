@@ -4,7 +4,7 @@
 
 import Foundation
 
-public struct CheckoutRequest: JSONRepresentable {
+public struct CreateCheckoutRequest: JSONRepresentable {
 
     public let cartId: String
     public let billingAddressId: String?

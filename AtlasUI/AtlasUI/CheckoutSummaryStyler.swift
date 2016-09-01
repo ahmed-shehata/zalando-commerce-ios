@@ -4,6 +4,7 @@
 
 import Foundation
 import AtlasSDK
+
 class CheckoutSummaryStyler: LocalizerProviderType {
 
     private let viewController: CheckoutSummaryViewController

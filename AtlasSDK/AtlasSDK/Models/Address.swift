@@ -4,7 +4,7 @@
 
 import Foundation
 
-public struct Address: Addressable {
+public struct Address: Addressable, Equatable {
     public let id: String
     public let customerNumber: String
     public let gender: Gender
@@ -24,6 +24,12 @@ public func == (lhs: Address, rhs: Address) -> Bool {
     return lhs.id == rhs.id
 }
 
+extension Address: Hashable {
+    public var hashValue: Int {
+        return id.hashValue
+    }
+
+}
 extension Address: JSONInitializable {
 
     private struct Keys {
