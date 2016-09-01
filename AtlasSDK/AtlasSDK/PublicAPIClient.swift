@@ -25,7 +25,7 @@ public typealias CartCompletion = AtlasResult<Cart> -> Void
 /**
  Completion block `AtlasResult` with the `Checkout` struct as a success value
  */
-public typealias CheckoutCompletion = AtlasResult<CheckoutType> -> Void
+public typealias CheckoutCompletion = AtlasResult<Checkout> -> Void
 
 /**
  Completion block `AtlasResult` with the `Order` struct as a success value
@@ -61,15 +61,11 @@ extension APIClient {
                         completion(.failure(error))
 
                     case .success(let addressList):
-                        guard !addressList.isEmpty else {
-                            completion(.success(IncompleteCheckout(cartId: cart.id)))
-                            return
-                        }
-
                         self.createCheckout(cart.id) { checkoutResult in
                             switch checkoutResult {
                             case .failure(let error):
-                                completion(.failure(error))
+                                let checkoutError = AtlasAPIError.checkoutFailed(addresses: addressList, cartId: cart.id, error: error)
+                                completion(.failure(checkoutError))
                             case .success(let checkout):
                                 completion(.success(checkout))
                             }
