@@ -1,8 +1,4 @@
 //
-//  CheckoutSummaryFooterStackView.swift
-//  AtlasUI
-//
-//  Created by Hani Ibrahim Ibrahim Eloksh on 01/09/16.
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
@@ -35,6 +31,19 @@ extension CheckoutSummaryFooterStackView: UIBuilder {
     func configureView() {
         addArrangedSubview(footerLabel)
         addArrangedSubview(submitButton)
+    }
+
+}
+
+extension CheckoutSummaryFooterStackView: UIDataBuilder {
+
+    typealias T = CheckoutSummaryViewController
+
+    func configureData(viewModel: T) {
+        footerLabel.text = viewModel.loc("CheckoutSummaryViewController.terms")
+        footerLabel.hidden = !viewModel.viewState.showFooterLabel
+        submitButton.setTitle(viewModel.loc(viewModel.viewState.submitButtonTitleLocalizedKey), forState: .Normal)
+        submitButton.backgroundColor = viewModel.viewState.submitButtonBackgroundColor
     }
 
 }

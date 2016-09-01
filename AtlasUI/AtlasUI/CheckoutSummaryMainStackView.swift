@@ -1,8 +1,4 @@
 //
-//  CheckoutSummaryMainStackView.swift
-//  AtlasUI
-//
-//  Created by Hani Ibrahim Ibrahim Eloksh on 01/09/16.
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
@@ -26,7 +22,7 @@ class CheckoutSummaryMainStackView: UIStackView {
         return view
     }()
 
-    internal let shippingStackView: CheckoutSummaryActionRowStackView = {
+    internal let shippingAddressStackView: CheckoutSummaryActionRowStackView = {
         let stackView = CheckoutSummaryActionRowStackView()
         stackView.axis = .Horizontal
         stackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
@@ -34,7 +30,7 @@ class CheckoutSummaryMainStackView: UIStackView {
         return stackView
     }()
 
-    internal let shippingSeparatorView: BorderView = {
+    internal let shippingAddressSeparatorView: BorderView = {
         let view = BorderView()
         view.bottomBorder = true
         view.leadingMargin = 15
@@ -42,7 +38,7 @@ class CheckoutSummaryMainStackView: UIStackView {
         return view
     }()
 
-    internal let billingStackView: CheckoutSummaryActionRowStackView = {
+    internal let billingAddressStackView: CheckoutSummaryActionRowStackView = {
         let stackView = CheckoutSummaryActionRowStackView()
         stackView.axis = .Horizontal
         stackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
@@ -50,7 +46,7 @@ class CheckoutSummaryMainStackView: UIStackView {
         return stackView
     }()
 
-    internal let billingSeparatorView: BorderView = {
+    internal let billingAddressSeparatorView: BorderView = {
         let view = BorderView()
         view.bottomBorder = true
         view.leadingMargin = 15
@@ -89,11 +85,11 @@ extension CheckoutSummaryMainStackView: UIBuilder {
         addArrangedSubview(productStackView)
         addArrangedSubview(productSeparatorView)
 
-        addArrangedSubview(shippingStackView)
-        addArrangedSubview(shippingSeparatorView)
+        addArrangedSubview(shippingAddressStackView)
+        addArrangedSubview(shippingAddressSeparatorView)
 
-        addArrangedSubview(billingStackView)
-        addArrangedSubview(billingSeparatorView)
+        addArrangedSubview(billingAddressStackView)
+        addArrangedSubview(billingAddressSeparatorView)
 
         addArrangedSubview(paymentStackView)
         addArrangedSubview(paymentSeparatorView)
@@ -105,17 +101,47 @@ extension CheckoutSummaryMainStackView: UIBuilder {
         fillInSuperView()
         setWidthAsSuperViewWidth()
 
-        shippingStackView.setHeightEqualToView(billingStackView)
-        shippingStackView.setHeightEqualToView(paymentStackView)
+        shippingAddressStackView.setHeightEqualToView(billingAddressStackView)
+        shippingAddressStackView.setHeightEqualToView(paymentStackView)
 
         productSeparatorView.setHeightToConstant(10)
-        shippingSeparatorView.setHeightToConstant(1)
-        billingSeparatorView.setHeightToConstant(1)
+        shippingAddressSeparatorView.setHeightToConstant(1)
+        billingAddressSeparatorView.setHeightToConstant(1)
         paymentSeparatorView.setHeightToConstant(1)
     }
 
     func builderSubViews() -> [UIBuilder] {
-        return [productStackView, shippingStackView, billingStackView, paymentStackView, priceStackView]
+        return [productStackView, shippingAddressStackView, billingAddressStackView, paymentStackView, priceStackView]
+    }
+
+}
+
+extension CheckoutSummaryMainStackView: UIDataBuilder {
+
+    typealias T = CheckoutSummaryViewController
+
+    func configureData(viewModel: T) {
+        productStackView.configureData(viewModel)
+        priceStackView.configureData(viewModel)
+        priceStackView.hidden = !viewModel.viewState.showPrice
+
+        shippingAddressStackView.configureData(CheckoutSummaryActionViewModel(
+            title: viewModel.loc("Address.Shipping"),
+            value: viewModel.checkoutViewModel.shippingAddress(localizedWith: viewModel).trimmed,
+            showArrow: viewModel.viewState.showDetailArrow)
+        )
+
+        billingAddressStackView.configureData(CheckoutSummaryActionViewModel(
+            title: viewModel.loc("Address.Billing"),
+            value: viewModel.checkoutViewModel.billingAddress(localizedWith: viewModel).trimmed,
+            showArrow: viewModel.viewState.showDetailArrow)
+        )
+
+        paymentStackView.configureData(CheckoutSummaryActionViewModel(
+            title: viewModel.loc("Payment"),
+            value: viewModel.checkoutViewModel.paymentMethodText ?? "",
+            showArrow: viewModel.viewState.showDetailArrow)
+        )
     }
 
 }

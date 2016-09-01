@@ -1,8 +1,4 @@
 //
-//  CheckoutSummaryProductStackView.swift
-//  AtlasUI
-//
-//  Created by Hani Ibrahim Ibrahim Eloksh on 01/09/16.
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
@@ -63,6 +59,19 @@ extension CheckoutSummaryProductStackView: UIBuilder {
     func configureConstraints() {
         articleImageView.setSquareAspectRatio()
         articleImageView.setWidthAsSuperViewWidth(0.2)
+    }
+
+}
+
+extension CheckoutSummaryProductStackView: UIDataBuilder {
+
+    typealias T = CheckoutSummaryViewController
+
+    func configureData(viewModel: T) {
+        articleImageView.setImage(fromUrl: viewModel.checkoutViewModel.article.thumbnailUrl)
+        brandNameLabel.text = viewModel.checkoutViewModel.article.brand.name
+        articleNameLabel.text = viewModel.checkoutViewModel.article.name
+        unitSizeLabel.text = viewModel.loc("Size: %@", viewModel.checkoutViewModel.selectedUnit.size)
     }
 
 }

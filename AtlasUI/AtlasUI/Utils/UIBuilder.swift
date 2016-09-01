@@ -1,8 +1,4 @@
 //
-//  UIBuilder.swift
-//  AtlasUI
-//
-//  Created by Hani Ibrahim Ibrahim Eloksh on 01/09/16.
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
@@ -27,5 +23,13 @@ extension UIBuilder {
         configureConstraints()
         builderSubViews().forEach { $0.buildView() }
     }
+
+}
+
+protocol UIDataBuilder {
+
+    associatedtype T
+
+    func configureData(viewModel: T)
 
 }

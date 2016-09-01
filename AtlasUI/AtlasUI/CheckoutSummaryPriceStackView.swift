@@ -1,8 +1,4 @@
 //
-//  CheckoutSummaryPriceStackView.swift
-//  AtlasUI
-//
-//  Created by Hani Ibrahim Ibrahim Eloksh on 01/09/16.
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
@@ -76,6 +72,19 @@ extension CheckoutSummaryPriceStackView: UIBuilder {
 
         totalStackView.addArrangedSubview(totalTitleLabel)
         totalStackView.addArrangedSubview(totalValueLabel)
+    }
+
+}
+
+extension CheckoutSummaryPriceStackView: UIDataBuilder {
+
+    typealias T = CheckoutSummaryViewController
+
+    func configureData(viewModel: T) {
+        shippingTitleLabel.text = viewModel.loc("Shipping")
+        shippingValueLabel.text = viewModel.localizer.fmtPrice(viewModel.checkoutViewModel.shippingPriceValue)
+        totalTitleLabel.text = viewModel.loc("Total")
+        totalValueLabel.text = viewModel.localizer.fmtPrice(viewModel.checkoutViewModel.totalPriceValue)
     }
 
 }

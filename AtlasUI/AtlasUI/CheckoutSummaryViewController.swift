@@ -12,7 +12,8 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
     internal var viewState: CheckoutViewState = .NotLoggedIn {
         didSet {
             setupNavigationBar()
-            refreshView()
+            loaderView.hide()
+            rootStackView.configureData(self)
         }
     }
     lazy private var actionsHandler: CheckoutSummaryActionsHandler = {
@@ -47,18 +48,25 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
 
         setupView()
         setupViewState()
-    }
-
-    internal func showLoader() {
-        loaderView.hidden = false
-    }
-
-    internal func hideLoader() {
-        loaderView.hidden = true
+        setupActions()
     }
 }
 
 extension CheckoutSummaryViewController {
+
+    private func setupActions() {
+        rootStackView.footerStackView.submitButton.addGestureRecognizer(UITapGestureRecognizer(target: self,
+            action: #selector(CheckoutSummaryViewController.submitButtonTapped)))
+
+        rootStackView.mainStackView.shippingAddressStackView.addGestureRecognizer(UITapGestureRecognizer(target: self,
+            action: #selector(CheckoutSummaryViewController.shippingAddressTapped)))
+
+        rootStackView.mainStackView.billingAddressStackView.addGestureRecognizer(UITapGestureRecognizer(target: self,
+            action: #selector(CheckoutSummaryViewController.billingAddressTapped)))
+
+        rootStackView.mainStackView.paymentStackView.addGestureRecognizer(UITapGestureRecognizer(target: self,
+            action: #selector(CheckoutSummaryViewController.paymentAddressTapped)))
+    }
 
     dynamic private func cancelCheckoutTapped() {
         dismissView()
@@ -68,7 +76,7 @@ extension CheckoutSummaryViewController {
         dismissViewControllerAnimated(true, completion: nil)
     }
 
-    private func submitButtonTapped() {
+    dynamic private func submitButtonTapped() {
         switch viewState {
         case .NotLoggedIn: actionsHandler.loadCustomerData()
         case .LoggedIn: actionsHandler.handleBuyAction()
@@ -76,19 +84,19 @@ extension CheckoutSummaryViewController {
         }
     }
 
-    private func shippingAddressTapped() {
+    dynamic private func shippingAddressTapped() {
         guard viewState.showDetailArrow else { return }
 
         userMessage.notImplemented()
     }
 
-    private func billingAddressTapped() {
+    dynamic private func billingAddressTapped() {
         guard viewState.showDetailArrow else { return }
 
         userMessage.notImplemented()
     }
 
-    private func paymentAddressTapped() {
+    dynamic private func paymentAddressTapped() {
         guard viewState.showDetailArrow else { return }
 
         actionsHandler.showPaymentSelectionScreen()
@@ -103,6 +111,7 @@ extension CheckoutSummaryViewController {
         view.addSubview(rootStackView)
         view.addSubview(loaderView)
         rootStackView.buildView()
+        loaderView.buildView()
     }
 
     private func setupViewState() {
@@ -128,39 +137,6 @@ extension CheckoutSummaryViewController {
         } else {
             navigationItem.rightBarButtonItem = nil
         }
-    }
-
-    private func refreshView() {
-        hideLoader()
-
-        rootStackView.mainStackView.productStackView.articleImageView.setImage(fromUrl: checkoutViewModel.article.thumbnailUrl)
-        rootStackView.mainStackView.productStackView.brandNameLabel.text = checkoutViewModel.article.brand.name
-        rootStackView.mainStackView.productStackView.articleNameLabel.text = checkoutViewModel.article.name
-        rootStackView.mainStackView.productStackView.unitSizeLabel.text = loc("Size: %@", checkoutViewModel.selectedUnit.size)
-
-        rootStackView.mainStackView.shippingStackView.titleLabel.text = loc("Address.Shipping")
-        rootStackView.mainStackView.shippingStackView.valueLabel.text = checkoutViewModel.shippingAddress(localizedWith: self).trimmed
-
-        rootStackView.mainStackView.billingStackView.titleLabel.text = loc("Address.Billing")
-        rootStackView.mainStackView.billingStackView.valueLabel.text = checkoutViewModel.billingAddress(localizedWith: self).trimmed
-
-        rootStackView.mainStackView.paymentStackView.titleLabel.text = loc("Payment")
-        rootStackView.mainStackView.paymentStackView.valueLabel.text = checkoutViewModel.paymentMethodText
-
-        rootStackView.mainStackView.priceStackView.shippingTitleLabel.text = loc("Shipping")
-        rootStackView.mainStackView.priceStackView.shippingValueLabel.text = localizer.fmtPrice(checkoutViewModel.shippingPriceValue)
-        rootStackView.mainStackView.priceStackView.totalTitleLabel.text = loc("Total")
-        rootStackView.mainStackView.priceStackView.totalValueLabel.text = localizer.fmtPrice(checkoutViewModel.totalPriceValue)
-
-        rootStackView.footerStackView.footerLabel.text = loc("CheckoutSummaryViewController.terms")
-        rootStackView.footerStackView.submitButton.setTitle(loc(viewState.submitButtonTitleLocalizedKey), forState: .Normal)
-        rootStackView.footerStackView.submitButton.backgroundColor = viewState.submitButtonBackgroundColor
-
-        rootStackView.mainStackView.priceStackView.hidden = !viewState.showPrice
-        rootStackView.footerStackView.footerLabel.hidden = !viewState.showFooterLabel
-        rootStackView.mainStackView.shippingStackView.arrowImageView.hidden = !viewState.showDetailArrow
-        rootStackView.mainStackView.billingStackView.arrowImageView.hidden = !viewState.showDetailArrow
-        rootStackView.mainStackView.paymentStackView.arrowImageView.hidden = !viewState.showDetailArrow
     }
 
 }

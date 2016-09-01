@@ -1,8 +1,4 @@
 //
-//  CheckoutSummaryRootStackView.swift
-//  AtlasUI
-//
-//  Created by Hani Ibrahim Ibrahim Eloksh on 01/09/16.
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
@@ -28,7 +24,7 @@ class CheckoutSummaryRootStackView: UIStackView {
         let stackView = CheckoutSummaryFooterStackView()
         stackView.axis = .Vertical
         stackView.spacing = 5
-        stackView.layoutMargins = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
+        stackView.layoutMargins = UIEdgeInsets(top: 0, left: 20, bottom: 10, right: 20)
         stackView.layoutMarginsRelativeArrangement = true
         return stackView
     }()
@@ -49,6 +45,17 @@ extension CheckoutSummaryRootStackView: UIBuilder {
 
     func builderSubViews() -> [UIBuilder] {
         return [mainStackView, footerStackView]
+    }
+
+}
+
+extension CheckoutSummaryRootStackView: UIDataBuilder {
+
+    typealias T = CheckoutSummaryViewController
+
+    func configureData(viewModel: T) {
+        mainStackView.configureData(viewModel)
+        footerStackView.configureData(viewModel)
     }
 
 }

@@ -1,12 +1,14 @@
 //
-//  CheckoutSummaryActionRowStackView.swift
-//  AtlasUI
-//
-//  Created by Hani Ibrahim Ibrahim Eloksh on 01/09/16.
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
 import UIKit
+
+struct CheckoutSummaryActionViewModel {
+    let title: String
+    let value: String
+    let showArrow: Bool
+}
 
 class CheckoutSummaryActionRowStackView: UIStackView {
 
@@ -54,6 +56,18 @@ extension CheckoutSummaryActionRowStackView: UIBuilder {
 
     func configureConstraints() {
         arrowImageView.setWidthToConstant(20)
+    }
+
+}
+
+extension CheckoutSummaryActionRowStackView: UIDataBuilder {
+
+    typealias T = CheckoutSummaryActionViewModel
+
+    func configureData(viewModel: T) {
+        titleLabel.text = viewModel.title
+        valueLabel.text = viewModel.value
+        arrowImageView.alpha = viewModel.showArrow ? 1 : 0
     }
 
 }
