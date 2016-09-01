@@ -93,10 +93,13 @@ extension CheckoutSummaryMainStackView: UIBuilder {
         fillInSuperView()
         setWidthAsSuperViewWidth()
 
-        productSeparatorView.setWidthToConstant(10)
-        shippingSeparatorView.setWidthToConstant(1)
-        billingSeparatorView.setWidthToConstant(1)
-        paymentSeparatorView.setWidthToConstant(1)
+        shippingStackView.setHeightEqualToView(billingStackView)
+        shippingStackView.setHeightEqualToView(paymentStackView)
+
+        productSeparatorView.setHeightToConstant(10)
+        shippingSeparatorView.setHeightToConstant(1)
+        billingSeparatorView.setHeightToConstant(1)
+        paymentSeparatorView.setHeightToConstant(1)
     }
 
     func builderSubViews() -> [UIBuilder] {

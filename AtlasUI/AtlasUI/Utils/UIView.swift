@@ -23,25 +23,47 @@ extension UIView {
         leftAnchor.constraintEqualToAnchor(superview.leftAnchor).active = true
     }
 
-    func setWidthAsSuperViewWidth(multiplier: CGFloat = 1) {
-        guard let superview = superview else { return }
-        translatesAutoresizingMaskIntoConstraints = false
-        widthAnchor.constraintEqualToAnchor(superview.widthAnchor, multiplier: multiplier).active = true
-    }
-
     func setSquareAspectRatio() {
         translatesAutoresizingMaskIntoConstraints = false
         widthAnchor.constraintEqualToAnchor(heightAnchor, multiplier: 1).active = true
     }
 
-    func setHeightToConstant(height: CGFloat) {
+}
+
+extension UIView {
+
+    func setWidthEqualToView(view: UIView, multiplier: CGFloat = 1) {
         translatesAutoresizingMaskIntoConstraints = false
-        heightAnchor.constraintEqualToConstant(height).active = true
+        widthAnchor.constraintEqualToAnchor(view.widthAnchor, multiplier: multiplier).active = true
+    }
+
+    func setWidthAsSuperViewWidth(multiplier: CGFloat = 1) {
+        guard let superview = superview else { return }
+        setWidthEqualToView(superview, multiplier: multiplier)
     }
 
     func setWidthToConstant(width: CGFloat) {
         translatesAutoresizingMaskIntoConstraints = false
         widthAnchor.constraintEqualToConstant(width).active = true
+    }
+
+}
+
+extension UIView {
+
+    func setHeightEqualToView(view: UIView, multiplier: CGFloat = 1) {
+        translatesAutoresizingMaskIntoConstraints = false
+        heightAnchor.constraintEqualToAnchor(view.heightAnchor, multiplier: multiplier).active = true
+    }
+
+    func setHeightAsSuperViewWidth(multiplier: CGFloat = 1) {
+        guard let superview = superview else { return }
+        setHeightEqualToView(superview, multiplier: multiplier)
+    }
+
+    func setHeightToConstant(height: CGFloat) {
+        translatesAutoresizingMaskIntoConstraints = false
+        heightAnchor.constraintEqualToConstant(height).active = true
     }
 
 }
