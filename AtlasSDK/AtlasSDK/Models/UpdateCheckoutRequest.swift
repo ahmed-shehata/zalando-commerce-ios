@@ -19,12 +19,19 @@ extension UpdateCheckoutRequest: JSONRepresentable {
     func toJSON() -> [String: AnyObject] {
         var result = [String: AnyObject]()
 
-        if let billingAddressId = billingAddressId {
+        if let billingAddressId = billingAddressId where !billingAddressId.isEmpty {
             result[Keys.billingAddressId] = billingAddressId
         }
-        if let shippingAddressId = shippingAddressId {
+        if let shippingAddressId = shippingAddressId where !shippingAddressId.isEmpty {
             result[Keys.shippingAddressId] = shippingAddressId
         }
         return result
+    }
+}
+
+extension UpdateCheckoutRequest {
+    public init(billingAddressId: String, shippingAddressId: String) {
+        self.shippingAddressId = shippingAddressId
+        self.billingAddressId = billingAddressId
     }
 }

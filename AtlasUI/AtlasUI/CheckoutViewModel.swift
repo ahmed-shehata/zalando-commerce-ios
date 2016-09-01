@@ -17,6 +17,9 @@ struct CheckoutViewModel {
     var selectedBillingAddress: BillingAddress?
     var selectedShippingAddress: ShippingAddress?
 
+    var selectedBillingAddressId: String = ""
+    var selectedShippingAddressId: String = ""
+
     init(article: Article, selectedUnitIndex: Int = 0,
         shippingPrice: Article.Price? = nil,
         checkout: Checkout? = nil,

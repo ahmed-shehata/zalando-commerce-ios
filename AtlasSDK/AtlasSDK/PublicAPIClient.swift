@@ -85,6 +85,10 @@ extension APIClient {
             fetch(createCheckout(parameters: parameters), completion: checkoutCompletion)
     }
 
+    public func updateCheckout(checkoutId: String, updateCheckoutRequest: UpdateCheckoutRequest, completion: CheckoutCompletion) {
+        fetch(updateCheckout(checkoutId, parameters: updateCheckoutRequest.toJSON()), completion: completion)
+    }
+
     public func createOrder(checkoutId: String, orderCompletion: OrderCompletion) {
         let checkoutRequest = OrderRequest(checkoutId: checkoutId)
         let parameters = checkoutRequest.toJSON()

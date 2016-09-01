@@ -17,7 +17,27 @@ extension CheckoutSummaryActionsHandler {
         guard let checkout = viewController.checkoutViewModel.checkout else { return }
 
         viewController.showLoader()
-        viewController.checkout.client.createOrder(checkout.id) { result in
+        if let billingAddress = viewController.checkoutViewModel.selectedBillingAddress,
+            shippingAddress = viewController.checkoutViewModel.selectedShippingAddress where
+        shippingAddress == checkout.shippingAddress &&
+        billingAddress == checkout.billingAddress {
+            createOrder(checkout.id)
+        } else {
+            let updateCheckoutRequest = UpdateCheckoutRequest(billingAddressId: viewController.checkoutViewModel.selectedBillingAddressId, shippingAddressId: viewController.checkoutViewModel.selectedShippingAddressId)
+            viewController.checkout.client.updateCheckout(checkout.id, updateCheckoutRequest: updateCheckoutRequest) { result in
+                switch result {
+                case .failure(let error):
+                    self.viewController.userMessage.show(error: error)
+                case .success(let checkout):
+                    self.createOrder(checkout.id)
+                }
+            }
+        }
+
+    }
+
+    internal func createOrder (checkoutId: String) {
+        viewController.checkout.client.createOrder(checkoutId) { result in
             self.viewController.hideLoader()
             switch result {
             case .failure(let error):

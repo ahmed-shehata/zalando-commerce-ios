@@ -18,6 +18,10 @@ public protocol Addressable {
 
 }
 
+public func == (lhs: Addressable, rhs: Addressable) -> Bool {
+    return lhs.formattedAddress == rhs.formattedAddress
+}
+
 extension Addressable {
 
     public var fullAddress: String {

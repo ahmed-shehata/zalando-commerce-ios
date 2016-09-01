@@ -172,12 +172,14 @@ extension CheckoutSummaryStoryboardViewController {
     func addressPickerViewController(viewController: AddressPickerViewController,
         pickedAddress address: Address,
         forAddressType addressType: AddressPickerViewController.AddressType) {
-       
+
             switch addressType {
             case AddressPickerViewController.AddressType.billing:
                 self.checkoutViewModel.selectedBillingAddress = BillingAddress(address: address)
+                self.checkoutViewModel.selectedBillingAddressId = address.id
             case AddressPickerViewController.AddressType.shipping:
                 self.checkoutViewModel.selectedShippingAddress = ShippingAddress(address: address)
+                self.checkoutViewModel.selectedShippingAddressId = address.id
             }
             refreshView()
     }
