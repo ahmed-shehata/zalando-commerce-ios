@@ -1,5 +1,6 @@
 codecov:
   branch: master
+  bot: bonkey
 
 coverage:
   precision: 2
@@ -8,5 +9,3 @@ coverage:
 
   ignore:
     - .*/SwiftyJSON.*
-    - AtlasDemo/.*
-    - AtlasMockAPI/.*

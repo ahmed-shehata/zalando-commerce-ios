@@ -4,10 +4,13 @@ module Calypso
 
   module Run
 
-    def run(cmd)
+    def run(cmd, exit_on_failure = true)
       puts "CMD: #{cmd}"
+
       system(cmd)
-      exit($CHILD_STATUS.exitstatus) unless $CHILD_STATUS.success?
+      exitstatus = $CHILD_STATUS.exitstatus
+      exit(exitstatus) if exit_on_failure && !$CHILD_STATUS.success?
+      exitstatus
     end
 
   end

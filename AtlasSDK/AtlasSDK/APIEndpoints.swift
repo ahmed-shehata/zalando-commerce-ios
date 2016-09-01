@@ -53,11 +53,11 @@ extension APIClient {
 
     func makeFetchAddressListEndpoint(salesChannel: String) -> EndpointType {
         return APIEndpoint(baseURL: self.config.checkoutAPIURL,
-                           method: .GET,
-                           acceptedContentType: "application/x.zalando.customer.addresses+json",
-                           path: "addresses",
-                           queryItems: [
-                             NSURLQueryItem(name: "sales_channel", value: salesChannel)
-                           ])
+            method: .GET,
+            acceptedContentType: "application/x.zalando.customer.addresses+json",
+            path: "addresses",
+            queryItems: [
+                NSURLQueryItem(name: "sales_channel", value: salesChannel)
+        ])
     }
 }

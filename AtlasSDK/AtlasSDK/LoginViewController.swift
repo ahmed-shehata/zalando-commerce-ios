@@ -52,8 +52,8 @@ final class LoginViewController: UIViewController {
         webView.loadRequest(NSURLRequest(URL: loginURL))
     }
 
-    private func dismissViewController(withFailureCode code: LoginError.Code, animated: Bool = true) -> Bool {
-        return dismissViewController(.failure(LoginError(code: code)), animated: animated)
+    private func dismissViewController(withFailure error: LoginError, animated: Bool = true) -> Bool {
+        return dismissViewController(.failure(error), animated: animated)
     }
 
     private func dismissViewController(result: AtlasResult<String>, animated: Bool = true) -> Bool {
@@ -85,11 +85,11 @@ extension LoginViewController: UIWebViewDelegate {
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest,
         navigationType: UIWebViewNavigationType) -> Bool {
             guard let url = request.URL else {
-                return dismissViewController(withFailureCode: .MissingURL)
+                return dismissViewController(withFailure: .missingURL)
             }
 
             guard !url.isAccessDenied else {
-                return dismissViewController(withFailureCode: .AccessDenied)
+                return dismissViewController(withFailure: .accessDenied)
             }
 
             guard let token = url.accessToken else {
@@ -100,7 +100,7 @@ extension LoginViewController: UIWebViewDelegate {
     }
 
     func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
-        self.dismissViewController(withFailureCode: .RequestFailed)
+        self.dismissViewController(withFailure: .requestFailed)
     }
 
     func webViewDidFinishLoad(webView: UIWebView) {
@@ -111,11 +111,11 @@ extension LoginViewController: UIWebViewDelegate {
 }
 
 #if DEBUG
-    private extension LoginViewController {
+    extension LoginViewController {
 
-        override internal func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
+        override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
             if motion == .MotionShake {
-                self.login(email: "john.doe.lucky@zalando.de", password: "12345678")
+                self.login(email: "atlas-testing@mailinator.com", password: "12345678")
             }
         }
 
@@ -148,7 +148,7 @@ extension LoginViewController {
             + "document.getElementsByClassName('z-button-submit')[0].click() "
 
         let ret = webView.stringByEvaluatingJavaScriptFromString(loginJS)
-        print("SUMBIT: ", loginJS, self.loginURL)
+        print("SUMBIT RESULT: ", ret)
     }
 
 }

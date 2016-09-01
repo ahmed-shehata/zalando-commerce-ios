@@ -61,6 +61,7 @@
 		E893B5C01D2E861A004D9547 /* Swifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E893B5BF1D2E861A004D9547 /* Swifter.framework */; };
 		E893B5C71D2E872B004D9547 /* Swifter.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = E893B5BF1D2E861A004D9547 /* Swifter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E8B1307E1D2FB411007D4F17 /* GET*|articles.json in Resources */ = {isa = PBXBuildFile; fileRef = E8B1307D1D2FB411007D4F17 /* GET*|articles.json */; };
+		E8C97A421D6E335000AE5997 /* GET*|addresses.json in Resources */ = {isa = PBXBuildFile; fileRef = E8C97A411D6E335000AE5997 /* GET*|addresses.json */; };
 		E8E1ACE81D48FA28007D4BE8 /* !customer-auth.json in Resources */ = {isa = PBXBuildFile; fileRef = E8E1ACE71D48FA28007D4BE8 /* !customer-auth.json */; };
 		E8E542031D38246200FB59F5 /* GET*|articles|GU121D08Z-Q11.json in Resources */ = {isa = PBXBuildFile; fileRef = E8E542021D38246200FB59F5 /* GET*|articles|GU121D08Z-Q11.json */; };
 /* End PBXBuildFile section */
@@ -154,6 +155,7 @@
 		E893B5A91D2E70BE004D9547 /* AtlasMockAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasMockAPI.swift; sourceTree = "<group>"; };
 		E893B5BF1D2E861A004D9547 /* Swifter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swifter.framework; path = ../../Carthage/Build/iOS/Swifter.framework; sourceTree = "<group>"; };
 		E8B1307D1D2FB411007D4F17 /* GET*|articles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles.json"; sourceTree = "<group>"; };
+		E8C97A411D6E335000AE5997 /* GET*|addresses.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|addresses.json"; sourceTree = "<group>"; };
 		E8E1ACE71D48FA28007D4BE8 /* !customer-auth.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "!customer-auth.json"; sourceTree = "<group>"; };
 		E8E542021D38246200FB59F5 /* GET*|articles|GU121D08Z-Q11.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles|GU121D08Z-Q11.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -268,6 +270,7 @@
 				B0D57C601D478F46008DD03B /* POST*|orders.json */,
 				E8E1ACE71D48FA28007D4BE8 /* !customer-auth.json */,
 				810BA0191D5CC584004BDAD9 /* !customer-not-auth.json */,
+				E8C97A411D6E335000AE5997 /* GET*|addresses.json */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
@@ -504,6 +507,7 @@
 				E845BDA01D476DCA00F410B0 /* POST*|carts.json in Resources */,
 				E8B1307E1D2FB411007D4F17 /* GET*|articles.json in Resources */,
 				E80998D11D367825007FD218 /* GET*|articles|EV451G023-Q11.json in Resources */,
+				E8C97A421D6E335000AE5997 /* GET*|addresses.json in Resources */,
 				E8E542031D38246200FB59F5 /* GET*|articles|GU121D08Z-Q11.json in Resources */,
 				810BA01A1D5CC584004BDAD9 /* !customer-not-auth.json in Resources */,
 			);

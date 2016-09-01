@@ -6,44 +6,68 @@ import Foundation
 import UIKit
 import AtlasSDK
 
-public typealias ButtonActionHandler = ((UIAlertAction) -> Void)
+typealias ButtonActionHandler = ((UIAlertAction) -> Void)
 
-public struct ButtonAction {
+struct ButtonAction {
 
-    public var text: String
-    public var handler: ButtonActionHandler?
+    let text: String
+    let handler: ButtonActionHandler?
+    let style: UIAlertActionStyle
 
-    public init(text: String) {
-        self.text = text
-    }
-
-    public init(text: String, handler: ButtonActionHandler) {
+    init(text: String, style: UIAlertActionStyle = .Default, handler: ButtonActionHandler? = nil) {
         self.text = text
         self.handler = handler
+        self.style = style
     }
 
 }
 
-public struct UserMessage {
+struct UserMessage {
 
-    public static func showOK(title title: String, message: String) {
-        UserMessage.show(title: title, message: message, actions: ButtonAction(text: "OK"))
-    }
+    let localizerProvider: LocalizerProviderType
 
-    public static func showError(title title: String, error: ErrorType) {
+    func show(error error: ErrorType) {
         AtlasLogger.logError(error)
-        UserMessage.show(title: title, message: String(error), actions: ButtonAction(text: "OK"))
+
+        let title: String
+        let message: String
+        if let userPresentable = error as? UserPresentable {
+            message = userPresentable.message(localizedWith: localizerProvider)
+            title = userPresentable.title(localizedWith: localizerProvider)
+        } else {
+            message = String(error)
+            title = localizerProvider.loc("Error")
+        }
+
+        show(title: title, message: message, actions: ButtonAction(text: "OK"))
     }
 
-    public static func show(title title: String, message: String, actions: ButtonAction...) {
+    func show(title title: String, message: String, actions: ButtonAction...) {
         guard let topViewController = UIApplication.topViewController() else { return }
         let alertView = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        for button in actions {
-            alertView.addAction(UIAlertAction(title: button.text, style: .Default, handler: button.handler))
-        }
+
+        actions.forEach { alertView.addAction($0, localizerProvider: localizerProvider) }
+
         Async.main {
             topViewController.presentViewController(alertView, animated: true, completion: nil)
         }
+    }
+
+    func notImplemented() {
+        AtlasLogger.logError("Not Implemented")
+        let title = localizerProvider.loc("feature.notImplemented.title")
+        let message = localizerProvider.loc("feature.notImplemented.message")
+        show(title: title, message: message, actions: ButtonAction(text: "OK"))
+    }
+
+}
+
+private extension UIAlertController {
+
+    func addAction(button: ButtonAction, localizerProvider: LocalizerProviderType) {
+        let title = localizerProvider.loc(button.text)
+        let action = UIAlertAction(title: title, style: button.style, handler: button.handler)
+        self.addAction(action)
     }
 
 }

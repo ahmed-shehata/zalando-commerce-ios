@@ -12,11 +12,6 @@ public struct Options {
     public let interfaceLanguage: String
     public let configurationURL: NSURL
 
-    @available( *, deprecated, message = "To be removed with AtlasSDK")
-    init() {
-        self.init(clientId: "", salesChannel: "")
-    }
-
     public init(clientId: String, salesChannel: String, useSandbox: Bool = false,
         interfaceLanguage: String = "de_DE", configurationURL: NSURL? = nil) {
             self.clientId = clientId
@@ -32,13 +27,13 @@ public struct Options {
 
     public func validate() throws {
         if self.clientId.isEmpty {
-            throw AtlasConfigurationError(code: .MissingClientId, message: "Missing client ID")
+            throw AtlasConfigurationError.missingClientId
         }
         if self.salesChannel.isEmpty {
-            throw AtlasConfigurationError(code: .MissingSalesChannel, message: "Missing sales channel")
+            throw AtlasConfigurationError.missingSalesChannel
         }
         if self.interfaceLanguage.isEmpty {
-            throw AtlasConfigurationError(code: .MissingInterfaceLanguage, message: "Missing interface language")
+            throw AtlasConfigurationError.missingInterfaceLanguage
         }
     }
 

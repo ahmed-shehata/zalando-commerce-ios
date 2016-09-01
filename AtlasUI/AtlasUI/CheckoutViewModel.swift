@@ -5,48 +5,75 @@
 import Foundation
 import AtlasSDK
 
-public struct CheckoutViewModel {
+struct CheckoutViewModel {
 
-    public let shippingAddressText: String?
-    public let paymentMethodText: String?
-    public let discountText: String?
-    public let shippingPrice: Article.Price?
-    public let totalPrice: Article.Price?
-    public let checkout: Checkout?
+    let article: Article
+    let selectedUnitIndex: Int
+    let shippingPrice: Article.Price?
 
-    public private(set) var selectedUnit: Article.Unit?
-    public let selectedUnitIndex: Int?
+    let checkout: Checkout?
+    internal(set) var customer: Customer?
 
-    public var article: Article? {
-        didSet {
-            if let index = selectedUnitIndex {
-                selectedUnit = article?.units[index]
-            }
-        }
-    }
+    private let selectedBillingAddress: BillingAddress?
+    private let selectedShippingAddress: ShippingAddress?
 
-    public var hasArticle: Bool {
-        return article != nil
-    }
-
-    init(article: Article, selectedUnitIndex: Int? = nil, shippingPrice: Article.Price? = nil, checkout: Checkout? = nil,
-        shippingAddressText: String? = nil, paymentMethodText: String? = nil, discountText: String? = nil) {
+    init(article: Article, selectedUnitIndex: Int = 0,
+        shippingPrice: Article.Price? = nil,
+        checkout: Checkout? = nil,
+        customer: Customer? = nil,
+        billingAddress: BillingAddress? = nil,
+        shippingAddress: ShippingAddress? = nil) {
             self.article = article
+            self.selectedUnitIndex = selectedUnitIndex
             self.shippingPrice = shippingPrice
             self.checkout = checkout
+            self.customer = customer
+            self.selectedBillingAddress = billingAddress
+            self.selectedShippingAddress = shippingAddress
+    }
 
-            self.shippingAddressText = shippingAddressText ?? checkout?.shippingAddress?.fullAddress()
-            self.paymentMethodText = paymentMethodText ?? checkout?.payment.selected?.method
-            self.discountText = discountText
+}
 
-            if let unitIndex = selectedUnitIndex {
-                self.selectedUnitIndex = unitIndex
-                self.selectedUnit = self.article?.units[unitIndex]
-                self.totalPrice = self.article?.units[unitIndex].price
-            } else {
-                self.totalPrice = nil
-                self.selectedUnitIndex = nil
-            }
+extension CheckoutViewModel {
+
+    var billingAddress: BillingAddress? {
+        return checkout?.billingAddress ?? selectedBillingAddress
+    }
+
+    var shippingAddress: ShippingAddress? {
+        return checkout?.shippingAddress ?? selectedShippingAddress
+    }
+
+    func shippingAddress(localizedWith localizer: LocalizerProviderType) -> String {
+        return checkout?.shippingAddress.fullAddress ?? localizer.loc("No Shipping Address")
+    }
+
+    func billingAddress(localizedWith localizer: LocalizerProviderType) -> String {
+        return checkout?.billingAddress.fullAddress ?? localizer.loc("No Billing Address")
+    }
+
+    var isPaymentSelected: Bool {
+        return customer != nil && selectedPaymentMethod != nil
+    }
+
+    var selectedUnit: Article.Unit {
+        return article.units[selectedUnitIndex]
+    }
+
+    var shippingPriceValue: Float {
+        return shippingPrice?.amount ?? 0
+    }
+
+    var totalPriceValue: Float {
+        return shippingPriceValue + selectedUnit.price.amount
+    }
+
+    var selectedPaymentMethod: String? {
+        return checkout?.payment.selected?.method
+    }
+
+    var checkoutViewState: CheckoutViewState {
+        return checkout == nil ? .CheckoutIncomplete : .LoggedIn
     }
 
 }

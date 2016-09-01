@@ -29,7 +29,7 @@ class APIClientBaseSpec: QuickSpec {
         configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
 
     func waitUntilAPIClientIsConfigured(actions: (done: () -> Void, client: APIClient) -> Void) {
-        waitUntil(timeout: 60) { done in
+        waitUntil(timeout: 10) { done in
             Atlas.configure(self.clientOptions) { result in
                 switch result {
                 case .failure(let error):
@@ -43,6 +43,10 @@ class APIClientBaseSpec: QuickSpec {
 
     func dataWithJSONObject(object: AnyObject) -> NSData {
         return try! NSJSONSerialization.dataWithJSONObject(object, options: []) // swiftlint:disable:this force_try
+    }
+
+    func mockedAPIClient(forURL url: NSURL, data: NSData?, status: HTTPStatus, errorCode: Int? = nil) -> APIClient {
+        return mockedAPIClient(forURL: url, data: data, statusCode: status.rawValue, errorCode: errorCode)
     }
 
     func mockedAPIClient(forURL url: NSURL, data: NSData?, statusCode: Int, errorCode: Int? = nil) -> APIClient {

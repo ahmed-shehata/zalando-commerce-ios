@@ -11,7 +11,7 @@ internal final class PaymentProcessingViewController: UIViewController, Checkout
     private let progressIndicator = UIActivityIndicatorView()
     private let successImageView = UIImageView()
 
-    internal let checkout: AtlasCheckout
+    internal let checkout: AtlasCheckout!
 
     init(checkout: AtlasCheckout, checkoutViewModel: CheckoutViewModel) {
         self.checkout = checkout
@@ -28,12 +28,39 @@ internal final class PaymentProcessingViewController: UIViewController, Checkout
         title = loc("Payment")
         view.backgroundColor = UIColor.clearColor()
         view.opaque = false
-        setupViews()
+        setupBlur()
+        setupSuccessImage()
+
         processOrder()
     }
 
-    @objc private func doneButtonTapped(sender: UIBarButtonItem) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    private func processOrder() {
+        setupLoadingIndicator()
+        guard let checkout = self.currentCheckoutViewModel.checkout else { return }
+
+        self.checkout.client.createOrder(checkout.id) { result in
+            switch result {
+            case .failure(let error):
+                self.userMessage.show(error: error)
+            case .success(let order):
+                print(order)
+                guard let paymentURL = order.externalPaymentUrl else {
+                    self.showSuccessImage()
+                    return
+                }
+                let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
+                paymentSelectionViewController.paymentCompletion = { _ in
+                    self.showSuccessImage()
+                }
+
+                let navigationController = UINavigationController(rootViewController: paymentSelectionViewController)
+                Async.main {
+                    navigationController.modalPresentationStyle = .OverCurrentContext
+                    self.navigationController?.presentViewController(navigationController, animated: true, completion: nil)
+                }
+
+            }
+        }
     }
 
     private func setupLoadingIndicator() {
@@ -44,7 +71,9 @@ internal final class PaymentProcessingViewController: UIViewController, Checkout
 
         progressIndicator.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor).active = true
         progressIndicator.topAnchor.constraintEqualToAnchor(self.view.topAnchor, constant: 100).active = true
+    }
 
+    private func setupSuccessImage() {
         successImageView.translatesAutoresizingMaskIntoConstraints = false
         successImageView.image = UIImage(named: "success", bundledWith: PaymentProcessingViewController.self)
         successImageView.hidden = true
@@ -67,23 +96,11 @@ internal final class PaymentProcessingViewController: UIViewController, Checkout
         }
     }
 
-    private func processOrder() {
-        setupLoadingIndicator()
-        guard let checkout = self.currentCheckoutViewModel.checkout else { return }
-
-        self.checkout.client.createOrder(checkout.id) { result in
-            switch result {
-            case .failure(let error):
-                AtlasLogger.logError(error)
-                UserMessage.showOK(title: self.loc("Fatal Error"), message: String(error))
-            case .success(let order):
-                print(order)
-                self.showSuccessImage()
-            }
-        }
+    @objc private func doneButtonTapped(sender: UIBarButtonItem) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 
-    private func setupViews() {
+    private func setupBlur() {
         let blurEffect = UIBlurEffect(style: .ExtraLight)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         self.view.addSubview(blurEffectView)

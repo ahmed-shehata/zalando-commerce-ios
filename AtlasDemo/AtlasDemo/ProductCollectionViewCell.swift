@@ -6,6 +6,7 @@ import Foundation
 import UIKit
 import AtlasSDK
 import AtlasUI
+import AlamofireImage
 
 class ProductCollectionViewCell: UICollectionViewCell {
 
@@ -19,7 +20,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
         self.backgroundColor = .whiteColor()
         self.productNameLabel.text = article.brand.name
         if let imageUrl = article.imageThumbURL {
-            self.thumbImageView.setImage(fromUrl: imageUrl)
+            self.thumbImageView.af_setImageWithURL(imageUrl)
         }
     }
 

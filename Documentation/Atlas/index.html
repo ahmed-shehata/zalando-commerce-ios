@@ -14,7 +14,7 @@
     <header>
       <div class="content-wrapper">
         <p><a href="index.html">AtlasCheckout Docs</a></p>
-        <p class="header-right"><a href="https://github.bus.zalan.do/Atlas/atlas-ios"><img src="img/gh.png"/>View on GitHub</a></p>
+        <p class="header-right"><a href="https://github.com/zalando-incubator/atlas-ios"><img src="img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -28,27 +28,13 @@
       <nav class="sidebar">
         <ul class="nav-groups">
           <li class="nav-group-name">
-            <a href="Global Variables.html">Global Variables</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Global Variables.html#/s:v8AtlasSDK11ErrorDomainSS">ErrorDomain</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Global Variables.html#/s:v8AtlasSDK20ErrorUnsupportedTypeSi">ErrorUnsupportedType</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
             <a href="Enums.html">Enums</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="Enums.html#/s:O8AtlasSDK11AtlasResult">AtlasResult</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Enums.html#/s:O8AtlasSDK7JSONKey">JSONKey</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Enums.html#/s:O8AtlasSDK6Result">Result</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Enums.html#/s:O8AtlasSDK4Type">Type</a>
               </li>
             </ul>
           </li>
@@ -56,19 +42,7 @@
             <a href="Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Extensions.html#/s:Sa">Array</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="Extensions.html#/s:Si">Int</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Extensions.html#/c:objc(cs)NSData">NSData</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Extensions.html#/c:objc(cs)NSHTTPURLResponse">NSHTTPURLResponse</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Extensions.html#/c:objc(cs)NSMutableURLRequest">NSMutableURLRequest</a>
               </li>
               <li class="nav-group-task">
                 <a href="Extensions.html#/s:SS">String</a>
@@ -89,6 +63,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="Structs/Article.html#/s:VV8AtlasSDK7Article5Price">– Price</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs.html#/s:V8AtlasSDK6Config">Config</a>
               </li>
               <li class="nav-group-task">
                 <a href="Structs.html#/s:V8AtlasSDK8Customer">Customer</a>
@@ -121,9 +98,16 @@
         <section>
           <section class="section">
             
-            <p><a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible"></a>
-<a href="https://dashboard.buddybuild.com/apps/57711240116bda01005c1cca/build/latest"><img src="https://dashboard.buddybuild.com/api/statusImage?appID=57711240116bda01005c1cca&amp;branch=master&amp;build=latest" alt="BuddyBuild"></a>
-<a href="https://raw.github.bus.zalan.do/Atlas/atlas-ios/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT licensed"></a></p>
+            <p><a href="https://raw.githubusercontent.com/zalando-incubator/atlas-ios/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT licensed"></a>]()
+<a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible"></a>
+<a href=""><img src="https://img.shields.io/cocoapods/v/AtlasSDK.svg?maxAge=3600" alt="CocoaPods"></a>
+<a href=""><img src="https://img.shields.io/cocoapods/p/AtlasSDK.svg?maxAge=3600" alt="CocoaPods"></a>
+<a href=""><img src="https://img.shields.io/cocoapods/at/AtlasSDK.svg?maxAge=3600" alt="CocoaPods"></a></p>
+
+<p><a href="https://travis-ci.org/zalando-incubator/atlas-ios"><img src="https://travis-ci.org/zalando-incubator/atlas-ios.svg?branch=master" alt="Build Status"></a>
+<a href="https://dashboard.buddybuild.com/apps/57a305cb34a9450100595b71/build/latest"><img src="https://dashboard.buddybuild.com/api/statusImage?appID=57a305cb34a9450100595b71&amp;branch=master&amp;build=latest" alt="BuddyBuild"></a>
+<a href="https://codecov.io/gh/zalando-incubator/atlas-ios"><img src="https://codecov.io/gh/zalando-incubator/atlas-ios/branch/master/graph/badge.svg" alt="codecov"></a>
+<a href="https://codebeat.co/projects/github-com-zalando-incubator-atlas-ios"><img src="https://codebeat.co/badges/85202868-c550-46c0-9423-f71467f0fabf" alt="codebeat badge"></a></p>
 <a href='#atlas-ios-sdk' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='atlas-ios-sdk'>Atlas iOS SDK</h1>
 
 <p>Atlas iOS SDK for Zalando Checkout and Catalog APIs.</p>
@@ -188,34 +172,6 @@ high-level business objects to deal with.</p>
 </code></pre></li>
 <li><p>No third step :)</p></li>
 </ol>
-<a href='#development-environment-setup' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='development-environment-setup'>Development environment setup</h2>
-<a href='#requirements' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='requirements'>Requirements</h3>
-
-<ul>
-<li>Carthage</li>
-<li>SwiftLint</li>
-</ul>
-<pre class="highlight plaintext"><code>brew install swiftlint carthage
-gem install bundler
-bundle
-</code></pre>
-<a href='#start-developing' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='start-developing'>Start developing</h3>
-<pre class="highlight plaintext"><code>git clone git@github.bus.zalan.do:Atlas/atlas-ios.git &amp;&amp; cd $_
-./calypso.rb deps build
-open Atlas.xcworkspace
-</code></pre>
-<a href='#swiftlint' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='swiftlint'>SwiftLint</h3>
-
-<p>There&rsquo;s <code>./calypso.rb lint check</code> for check and <code>./calypso.rb lint fix</code> to apply rules tasks manually.</p>
-
-<p>The same <code>check</code> task is included into the build targets.</p>
-<a href='#changelog-generation' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='changelog-generation'>Changelog generation</h3>
-
-<p>Sometime it is very helpful to have a full changelog.
-In order to generate a new one you need to set environment variable CHANGELOG_GITHUB_TOKEN pointing
-to the <a href="https://help.github.com/articles/creating-an-access-token-for-command-line-use/">GitHub access token for command-line use</a></p>
-
-<p>After that simply run <code>./calypso.rb docs changelog</code> to generate new CHANGELOG.md file.</p>
 <a href='#license' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='license'>LICENSE</h2>
 
 <p>The MIT License (MIT) Copyright © 2016 Zalando SE, <a href="https://tech.zalando.com">https://tech.zalando.com</a></p>
@@ -229,7 +185,7 @@ to the <a href="https://help.github.com/articles/creating-an-access-token-for-co
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2016 <a class="link" href="https://github.bus.zalan.do/Atlas/atlas-ios" target="_blank" rel="external">Atlas</a>. All rights reserved. (Last updated: 2016-08-02)</p>
+          <p>&copy; 2016 <a class="link" href="https://github.com/zalando-incubator/atlas-ios" target="_blank" rel="external">Atlas</a>. All rights reserved. (Last updated: 2016-08-18)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

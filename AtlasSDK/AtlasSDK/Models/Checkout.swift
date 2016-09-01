@@ -5,15 +5,17 @@
 import Foundation
 
 public struct Checkout {
+
     public let id: String
     public let customerNumber: String
     public let cartId: String
-    public let billingAddressId: String?
-    public let shippingAddressId: String?
-    public let billingAddress: BillingAddress?
-    public let shippingAddress: ShippingAddress?
+
     public let delivery: Delivery
     public let payment: Payment
+
+    public let billingAddress: BillingAddress
+    public let shippingAddress: ShippingAddress
+
 }
 
 extension Checkout: Hashable {
@@ -32,8 +34,6 @@ extension Checkout: JSONInitializable {
         static let id = "id"
         static let customerNumber = "customer_number"
         static let cartId = "cart_id"
-        static let billingAddressId = "billing_address_id"
-        static let shippingAddressId = "shipping_address_id"
         static let shippingAddress = "shipping_address"
         static let billingAddress = "billing_address"
         static let delivery = "delivery"
@@ -46,15 +46,17 @@ extension Checkout: JSONInitializable {
             customerNumber = json[Keys.customerNumber].string,
             cartId = json[Keys.cartId].string,
             payment = Payment(json: json[Keys.payment]),
-            delivery = Delivery(json: json[Keys.delivery]) else { return nil }
+            delivery = Delivery(json: json[Keys.delivery]),
+            billingAddress = BillingAddress(json: json[Keys.billingAddress]),
+            shippingAddress = ShippingAddress(json: json[Keys.shippingAddress])
+        else { return nil }
         self.init(id: id,
             customerNumber: customerNumber,
             cartId: cartId,
-            billingAddressId: json[Keys.billingAddressId].string,
-            shippingAddressId: json[Keys.shippingAddressId].string,
-            billingAddress: BillingAddress(json: json[Keys.billingAddress]),
-            shippingAddress: ShippingAddress(json: json[Keys.shippingAddress]),
             delivery: delivery,
-            payment: payment)
+            payment: payment,
+            billingAddress: billingAddress,
+            shippingAddress: shippingAddress
+        )
     }
 }

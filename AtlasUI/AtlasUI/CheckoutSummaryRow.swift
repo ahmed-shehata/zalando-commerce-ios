@@ -36,13 +36,14 @@ internal final class CheckoutSummaryRow: UIView, UIGestureRecognizerDelegate {
     }
 
     func setup() {
+        self.removeAllSubviews()
         titleTextLabel.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(titleTextLabel)
         titleTextLabel.text = titleTextLabel.text?.uppercaseString
         titleTextLabel.font = titleTextLabel.font.fontWithSize(13)
         titleTextLabel.textColor = UIColor.grayColor()
         titleTextLabel.leadingAnchor.constraintEqualToAnchor(self.leadingAnchor, constant: 10).active = true
-        titleTextLabel.heightAnchor.constraintEqualToConstant(10).active = true
+        titleTextLabel.heightAnchor.constraintEqualToConstant(15).active = true
         titleTextLabel.topAnchor.constraintEqualToAnchor(self.topAnchor, constant: 5).active = true
 
         detailTextLabel.translatesAutoresizingMaskIntoConstraints = false

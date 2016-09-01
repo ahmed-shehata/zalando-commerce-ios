@@ -3,8 +3,9 @@
 //
 
 import Foundation
+import AtlasSDK
 
-protocol LocalizerProviderType {
+protocol LocalizerProviderType: class {
 
     var localizer: Localizer { get }
 
@@ -12,7 +13,7 @@ protocol LocalizerProviderType {
 
 extension LocalizerProviderType {
 
-    func loc(text: String, _ formatArguments: CVarArgType...) -> String {
+    func loc(text: String, _ formatArguments: CVarArgType?...) -> String {
         return localizer.localizedString(text, formatArguments: formatArguments)
     }
 

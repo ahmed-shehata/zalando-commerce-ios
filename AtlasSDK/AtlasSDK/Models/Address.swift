@@ -4,7 +4,7 @@
 
 import Foundation
 
-public struct Address {
+public struct Address: Addressable, Equatable {
     public let id: String
     public let customerNumber: String
     public let gender: Gender
@@ -16,17 +16,24 @@ public struct Address {
     public let city: String
     public let countryCode: String
     public let pickupPoint: PickupPoint?
-    public let defaultBilling: Bool
-    public let defaultShipping: Bool
+    public let isDefaultBilling: Bool
+    public let isDefaultShipping: Bool
 }
 
 public func == (lhs: Address, rhs: Address) -> Bool {
     return lhs.id == rhs.id
 }
 
+extension Address: Hashable {
+    public var hashValue: Int {
+        return id.hashValue
+    }
+
+}
 extension Address: JSONInitializable {
 
     private struct Keys {
+
         static let id = "id"
         static let customerNumber = "customer_number"
         static let gender = "gender"
@@ -40,11 +47,12 @@ extension Address: JSONInitializable {
         static let pickupPoint = "pickup_point"
         static let defaultBilling = "default_billing"
         static let defaultShipping = "default_shipping"
+
     }
 
     init?(json: JSON) {
         guard let
-            id = json[Keys.id].string,
+        id = json[Keys.id].string,
             customerNumber = json[Keys.customerNumber].string,
             genderRaw = json[Keys.gender].string,
             gender = Gender(rawValue: genderRaw),
@@ -53,8 +61,8 @@ extension Address: JSONInitializable {
             zip = json[Keys.zip].string,
             city = json[Keys.city].string,
             countryCode = json[Keys.countryCode].string,
-            defaultBilling = json[Keys.defaultBilling].bool,
-            defaultShipping = json[Keys.defaultShipping].bool else { return nil }
+            isDefaultBilling = json[Keys.defaultBilling].bool,
+            isDefaultShipping = json[Keys.defaultShipping].bool else { return nil }
 
         self.init(id: id,
             customerNumber: customerNumber,
@@ -67,7 +75,7 @@ extension Address: JSONInitializable {
             city: city,
             countryCode: countryCode,
             pickupPoint: PickupPoint(json: json[Keys.pickupPoint]),
-            defaultBilling: defaultBilling,
-            defaultShipping: defaultShipping)
+            isDefaultBilling: isDefaultBilling,
+            isDefaultShipping: isDefaultShipping)
     }
 }

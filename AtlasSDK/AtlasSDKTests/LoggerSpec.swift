@@ -20,8 +20,6 @@ class LoggerSpec: QuickSpec {
                 AtlasLogger.logger.outputStream = StdoutOutputStream()
             }
 
-            // MARK:- Helper variables
-
             let loggedMessage = "Logged message"
             var loggerOutput: String? {
                 guard let output = AtlasLogger.logger.outputStream as? String else {
@@ -30,8 +28,6 @@ class LoggerSpec: QuickSpec {
                 }
                 return output
             }
-
-            // MARK:- Tests
 
             it("Writes error message for Error severity") {
                 AtlasLogger.logger.severity = .Error
