@@ -271,7 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				E8C97A431D75918F00AE5997 /* Address Selection */,
-				E963286F1D6EFDEA00BDAE06 /* Checkout Summay */,
+				E963286F1D6EFDEA00BDAE06 /* Checkout Summary */,
 				E85BE3511D5DF5EB009EF7BA /* Payment Selection */,
 				E85D38EA1D5C78EC008A42C2 /* Transitions */,
 				E85D38E01D5B4EF0008A42C2 /* Payment Processing */,
@@ -314,7 +314,7 @@
 			name = "Address Selection";
 			sourceTree = "<group>";
 		};
-		E963286F1D6EFDEA00BDAE06 /* Checkout Summay */ = {
+		E963286F1D6EFDEA00BDAE06 /* Checkout Summary */ = {
 			isa = PBXGroup;
 			children = (
 				E963288D1D6EFF0600BDAE06 /* CheckoutSummaryViewController.swift */,
@@ -323,7 +323,7 @@
 				E973CF601D70329900B706E8 /* CheckoutSummaryActionsHandler.swift */,
 				E9676B161D78245500ED7D8D /* StackViews */,
 			);
-			name = "Checkout Summay";
+			name = "Checkout Summary";
 			sourceTree = "<group>";
 		};
 		E9676B161D78245500ED7D8D /* StackViews */ = {
@@ -491,7 +491,6 @@
 				E9D510061D757031008D28E7 /* String.swift in Sources */,
 				E85D38E81D5B78A1008A42C2 /* UIView.swift in Sources */,
 				E9676B131D78242600ED7D8D /* CheckoutSummaryActionRowStackView.swift in Sources */,
-				8186B1531D51EE930068EE37 /* CheckoutViewModel.swift in Sources */,
 				81F3B46D1D5A0A36007BCF6F /* Localization.swift in Sources */,
 				E8B183211D77233C001CF8BC /* (null) in Sources */,
 				8186B1501D51EE930068EE37 /* UserMessage.swift in Sources */,
