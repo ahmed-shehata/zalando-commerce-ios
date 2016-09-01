@@ -61,7 +61,7 @@ final class APIRequestBuilder: RequestBuilder {
     }
 
     private func askUserToLogin(completion: LoginCompletion) {
-        guard let sourceApp = UIApplication.topViewController() else {
+        guard let topViewController = UIApplication.topViewController() else {
             completion(.failure(LoginError.missingViewControllerToShowLoginForm))
             return
         }
@@ -70,7 +70,7 @@ final class APIRequestBuilder: RequestBuilder {
         let navigationController = UINavigationController(rootViewController: loginViewController)
         dispatch_async(dispatch_get_main_queue()) {
             navigationController.modalPresentationStyle = .OverCurrentContext
-            sourceApp.navigationController?.presentViewController(navigationController, animated: true, completion: nil)
+            topViewController.presentViewController(navigationController, animated: true, completion: nil)
         }
     }
 

@@ -45,3 +45,7 @@ public enum LoginError: AtlasErrorType {
     case missingViewControllerToShowLoginForm
 
 }
+
+public func == (lhs: AtlasAPIError, rhs: AtlasAPIError) -> Bool {
+    return lhs._code == rhs._code
+}

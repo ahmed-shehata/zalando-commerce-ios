@@ -2,10 +2,11 @@
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
-
 public struct Delivery {
+
     public let earliest: String?
     public let latest: String
+
 }
 
 extension Delivery: JSONInitializable {
