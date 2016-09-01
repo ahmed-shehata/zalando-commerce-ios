@@ -73,7 +73,7 @@ final class SizeListSelectionViewController: UITableViewController, CheckoutProv
                 self.userMessage.show(error: error)
 
             case .success(let customer):
-                self.checkout.createCheckout(withArticle: self.article, selectedUnitIndex: indexPath.row) { result in
+                self.checkout.createCheckoutViewModel(withArticle: self.article, selectedUnitIndex: indexPath.row) { result in
                     spinner.stopAnimating()
                     switch result {
                     case .failure(let error):
@@ -90,8 +90,9 @@ final class SizeListSelectionViewController: UITableViewController, CheckoutProv
     }
 
     private func displayCheckoutSummaryViewController(checkoutViewModel: CheckoutViewModel) {
-        if let checkoutSummaryVC = CheckoutSummaryStoryboardViewController.instantiateFromStoryBoard(checkout, checkoutViewModel: checkoutViewModel) {
-            self.showViewController(checkoutSummaryVC, sender: self)
+        if let checkoutSummaryVC = CheckoutSummaryStoryboardViewController.instantiateFromStoryBoard(checkout,
+            checkoutViewModel: checkoutViewModel) {
+                self.showViewController(checkoutSummaryVC, sender: self)
         }
     }
 }

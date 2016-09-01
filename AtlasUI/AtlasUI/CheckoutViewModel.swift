@@ -10,16 +10,26 @@ struct CheckoutViewModel {
     let article: Article
     let selectedUnitIndex: Int
     let shippingPrice: Article.Price?
-    let checkout: CheckoutType?
+
+    let checkout: Checkout?
     internal(set) var customer: Customer?
 
-    init(article: Article, selectedUnitIndex: Int = 0, shippingPrice: Article.Price? = nil,
-        checkout: CheckoutType? = nil, customer: Customer? = nil) {
+    var selectedBillingAddress: BillingAddress?
+    var selectedShippingAddress: ShippingAddress?
+
+    init(article: Article, selectedUnitIndex: Int = 0,
+        shippingPrice: Article.Price? = nil,
+        checkout: Checkout? = nil,
+        customer: Customer? = nil,
+        billingAddress: BillingAddress? = nil,
+        shippingAddress: ShippingAddress? = nil) {
             self.article = article
             self.selectedUnitIndex = selectedUnitIndex
             self.shippingPrice = shippingPrice
             self.checkout = checkout
             self.customer = customer
+            self.selectedBillingAddress = checkout?.billingAddress
+            self.selectedShippingAddress = checkout?.shippingAddress
     }
 
 }
@@ -27,11 +37,11 @@ struct CheckoutViewModel {
 extension CheckoutViewModel {
 
     func shippingAddress(localizedWith localizer: LocalizerProviderType) -> String {
-        return checkout?.shippingAddress?.fullAddress ?? localizer.loc("No Shipping Address")
+        return selectedShippingAddress?.fullAddress ?? localizer.loc("No Shipping Address")
     }
 
     func billingAddress(localizedWith localizer: LocalizerProviderType) -> String {
-        return checkout?.billingAddress?.fullAddress ?? localizer.loc("No Billing Address")
+        return selectedBillingAddress?.fullAddress ?? localizer.loc("No Billing Address")
     }
 
     var isPaymentSelected: Bool {
@@ -55,11 +65,7 @@ extension CheckoutViewModel {
     }
 
     var checkoutViewState: CheckoutViewState {
-        guard let checkout = checkout where checkout.isValid() else {
-            return .IncompleteCheckout
-        }
-
-        return .LoggedIn
+        return checkout == nil ? .CheckoutIncomplete : .LoggedIn
     }
 
 }

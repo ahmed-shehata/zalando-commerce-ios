@@ -52,7 +52,7 @@ public class AtlasCheckout: LocalizerProviderType {
             return true
     }
 
-    func createCheckout(withArticle article: Article, selectedUnitIndex: Int, completion: CreateCheckoutCompletion) {
+    func createCheckoutViewModel(withArticle article: Article, selectedUnitIndex: Int, completion: CreateCheckoutCompletion) {
         client.createCheckout(withArticle: article, selectedUnitIndex: selectedUnitIndex) { checkoutResult in
             switch checkoutResult {
             case .failure(let error):

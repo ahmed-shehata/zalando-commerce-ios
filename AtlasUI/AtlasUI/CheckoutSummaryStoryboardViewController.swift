@@ -90,7 +90,7 @@ class CheckoutSummaryStoryboardViewController: UIViewController, CheckoutProvide
         case .NotLoggedIn: actionsHandler.loadCustomerData()
         case .LoggedIn: actionsHandler.handleBuyAction()
         case .OrderPlaced: dismissView()
-        case .IncompleteCheckout: break
+        case .CheckoutIncomplete: break
         }
     }
 
@@ -101,7 +101,8 @@ class CheckoutSummaryStoryboardViewController: UIViewController, CheckoutProvide
     @IBAction private func billingAddressTapped() {
         guard viewState.showDetailArrow else { return }
 
-        userMessage.notImplemented()
+        actionsHandler.showBillingAddressSelectionScreen()
+
     }
 
     @IBAction private func paymentAddressTapped() {
@@ -171,6 +172,13 @@ extension CheckoutSummaryStoryboardViewController {
     func addressPickerViewController(viewController: AddressPickerViewController,
         pickedAddress address: Address,
         forAddressType addressType: AddressPickerViewController.AddressType) {
-            print(address.id)
+       
+            switch addressType {
+            case AddressPickerViewController.AddressType.billing:
+                self.checkoutViewModel.selectedBillingAddress = BillingAddress(address: address)
+            case AddressPickerViewController.AddressType.shipping:
+                self.checkoutViewModel.selectedShippingAddress = ShippingAddress(address: address)
+            }
+            refreshView()
     }
 }

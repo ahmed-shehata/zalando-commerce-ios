@@ -47,7 +47,7 @@ extension CheckoutSummaryActionsHandler {
 
     private func generateCheckout(customer: Customer) {
         viewController.showLoader()
-        viewController.checkout.createCheckout(withArticle: viewController.checkoutViewModel.article,
+        viewController.checkout.createCheckoutViewModel(withArticle: viewController.checkoutViewModel.article,
             selectedUnitIndex: viewController.checkoutViewModel.selectedUnitIndex) { result in
                 self.viewController.hideLoader()
                 switch result {
@@ -80,6 +80,12 @@ extension CheckoutSummaryActionsHandler {
 
     internal func showShippingAddressSelectionScreen() {
         let addressSelectionViewController = AddressPickerViewController(checkout: viewController.checkout, addressType: .shipping)
+        addressSelectionViewController.delegate = viewController
+        viewController.showViewController(addressSelectionViewController, sender: viewController)
+    }
+
+    internal func showBillingAddressSelectionScreen() {
+        let addressSelectionViewController = AddressPickerViewController(checkout: viewController.checkout, addressType: .billing)
         addressSelectionViewController.delegate = viewController
         viewController.showViewController(addressSelectionViewController, sender: viewController)
     }

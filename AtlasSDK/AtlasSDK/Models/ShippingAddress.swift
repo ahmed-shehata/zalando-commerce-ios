@@ -54,3 +54,19 @@ extension ShippingAddress: JSONInitializable {
             pickupPoint: pickupPoint)
     }
 }
+
+extension ShippingAddress {
+
+    public init?(address: Address) {
+        self.init(gender: address.gender,
+            firstName: address.firstName,
+            lastName: address.lastName,
+            street: address.street,
+            additional: address.additional,
+            zip: address.zip,
+            city: address.city,
+            countryCode: address.countryCode,
+            pickupPoint: address.pickupPoint)
+    }
+
+}

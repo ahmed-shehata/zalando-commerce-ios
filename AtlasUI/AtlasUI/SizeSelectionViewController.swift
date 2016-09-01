@@ -57,7 +57,7 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
     }
 
     private func generateCheckout(withArticle article: Article, customer: Customer) {
-        checkout.createCheckout(withArticle: article, selectedUnitIndex: 0) { result in
+        checkout.createCheckoutViewModel(withArticle: article, selectedUnitIndex: 0) { result in
             switch result {
             case .failure(let error):
                 self.dismissViewControllerAnimated(true) {

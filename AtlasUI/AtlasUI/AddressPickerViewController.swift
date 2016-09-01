@@ -74,14 +74,7 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
     }
 
     private func showAddressListViewController(addresses: [Address]) {
-        let selectedAddress: Address?
-
-        switch addressType {
-        case .billing:
-            selectedAddress = addresses.filter { $0.isDefaultBilling }.first
-        case .shipping:
-            selectedAddress = addresses.filter { $0.isDefaultShipping }.first
-        }
+        let selectedAddress: Address? = nil
 
         let addressListViewController = AddressListViewController(addresses: addresses, selectedAddress: selectedAddress)
         addressListViewController.delegate = self
