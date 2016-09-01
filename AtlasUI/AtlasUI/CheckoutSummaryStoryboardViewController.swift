@@ -181,6 +181,25 @@ extension CheckoutSummaryStoryboardViewController {
                 self.checkoutViewModel.selectedShippingAddress = ShippingAddress(address: address)
                 self.checkoutViewModel.selectedShippingAddressId = address.id
             }
-            refreshView()
+
+            if checkoutViewModel.checkout == nil &&
+            !checkoutViewModel.selectedBillingAddressId.isEmpty &&
+            !checkoutViewModel.selectedShippingAddressId.isEmpty {
+                showLoader()
+                checkout.client.createCheckout(checkoutViewModel.cartId, billingAddressId: checkoutViewModel.selectedBillingAddressId, shippingAddressId: checkoutViewModel.selectedShippingAddressId) { result in
+                    self.hideLoader()
+                    switch result {
+
+                    case .failure(let error):
+                        self.dismissViewControllerAnimated(true) {
+                            self.userMessage.show(error: error)
+                        }
+                    case .success(let checkout):
+                        self.checkoutViewModel.checkout = checkout
+                    }
+                    self.refreshView()
+                }
+            }
+
     }
 }
