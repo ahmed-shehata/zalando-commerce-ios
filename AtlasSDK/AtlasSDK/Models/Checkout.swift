@@ -4,7 +4,7 @@
 
 import Foundation
 
-public struct Checkout: CheckoutType {
+public struct Checkout {
 
     public let id: String
     public let customerNumber: String
@@ -13,8 +13,8 @@ public struct Checkout: CheckoutType {
     public let delivery: Delivery
     public let payment: Payment
 
-    public let billingAddress: BillingAddress?
-    public let shippingAddress: ShippingAddress?
+    public let billingAddress: BillingAddress
+    public let shippingAddress: ShippingAddress
 
 }
 
@@ -46,14 +46,17 @@ extension Checkout: JSONInitializable {
             customerNumber = json[Keys.customerNumber].string,
             cartId = json[Keys.cartId].string,
             payment = Payment(json: json[Keys.payment]),
-            delivery = Delivery(json: json[Keys.delivery]) else { return nil }
+            delivery = Delivery(json: json[Keys.delivery]),
+            billingAddress = BillingAddress(json: json[Keys.billingAddress]),
+            shippingAddress = ShippingAddress(json: json[Keys.shippingAddress])
+        else { return nil }
         self.init(id: id,
             customerNumber: customerNumber,
             cartId: cartId,
             delivery: delivery,
             payment: payment,
-            billingAddress: BillingAddress(json: json[Keys.billingAddress]),
-            shippingAddress: ShippingAddress(json: json[Keys.shippingAddress])
+            billingAddress: billingAddress,
+            shippingAddress: shippingAddress
         )
     }
 }
