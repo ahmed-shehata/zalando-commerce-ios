@@ -26,6 +26,13 @@ final class AddressRowViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    private struct Metrics {
+        static let topPadding: CGFloat = 10
+        static let bottomPadding: CGFloat = 10
+        static let leadingPadding: CGFloat = 15
+        static let trailingPadding: CGFloat = 15
+    }
+
     private func setupViews() {
         contentView.backgroundColor = .clearColor()
 
@@ -33,14 +40,17 @@ final class AddressRowViewCell: UITableViewCell {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.numberOfLines = 0
         contentView.addSubview(titleLabel)
-        titleLabel.layoutMargins = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
+        titleLabel.topAnchor.constraintEqualToAnchor(contentView.topAnchor, constant: Metrics.topPadding).active = true
+        titleLabel.leadingAnchor.constraintEqualToAnchor(contentView.leadingAnchor, constant: Metrics.leadingPadding).active = true
+        titleLabel.trailingAnchor.constraintEqualToAnchor(contentView.trailingAnchor, constant: -Metrics.trailingPadding).active = true
+
         streetLabel.translatesAutoresizingMaskIntoConstraints = false
         streetLabel.numberOfLines = 0
         contentView.addSubview(streetLabel)
         streetLabel.topAnchor.constraintEqualToAnchor(titleLabel.bottomAnchor).active = true
         streetLabel.leadingAnchor.constraintEqualToAnchor(titleLabel.leadingAnchor).active = true
         streetLabel.trailingAnchor.constraintEqualToAnchor(titleLabel.trailingAnchor).active = true
-        streetLabel.bottomAnchor.constraintEqualToAnchor(contentView.bottomAnchor, constant: -10).active = true
+        streetLabel.bottomAnchor.constraintEqualToAnchor(contentView.bottomAnchor, constant: -Metrics.bottomPadding).active = true
     }
 
     private func updateViews() {
@@ -49,4 +59,5 @@ final class AddressRowViewCell: UITableViewCell {
             streetLabel.text = [street, "\(address.zip) \(address.city)", address.countryCode].flatMap { $0 }.joinWithSeparator("\n")
         }
     }
+
 }
