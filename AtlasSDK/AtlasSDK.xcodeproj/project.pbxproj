@@ -59,7 +59,6 @@
 		8186B1061D51ECC10068EE37 /* NSURLComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B0E91D51ECC10068EE37 /* NSURLComponents.swift */; };
 		8186B1071D51ECC10068EE37 /* NSURLQueryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B0EA1D51ECC10068EE37 /* NSURLQueryItem.swift */; };
 		8186B1081D51ECC10068EE37 /* URLStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B0EB1D51ECC10068EE37 /* URLStringConvertible.swift */; };
-		8186B1091D51ECC10068EE37 /* NSBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B0EC1D51ECC10068EE37 /* NSBundle.swift */; };
 		8186B10A1D51ECC10068EE37 /* NSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B0ED1D51ECC10068EE37 /* NSData.swift */; };
 		8186B10B1D51ECC10068EE37 /* OutputStreams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B0EE1D51ECC10068EE37 /* OutputStreams.swift */; };
 		8186B10C1D51ECC10068EE37 /* PrintLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B0EF1D51ECC10068EE37 /* PrintLogger.swift */; };
@@ -205,7 +204,6 @@
 		8186B0E91D51ECC10068EE37 /* NSURLComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLComponents.swift; sourceTree = "<group>"; };
 		8186B0EA1D51ECC10068EE37 /* NSURLQueryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLQueryItem.swift; sourceTree = "<group>"; };
 		8186B0EB1D51ECC10068EE37 /* URLStringConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLStringConvertible.swift; sourceTree = "<group>"; };
-		8186B0EC1D51ECC10068EE37 /* NSBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSBundle.swift; sourceTree = "<group>"; };
 		8186B0ED1D51ECC10068EE37 /* NSData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSData.swift; sourceTree = "<group>"; };
 		8186B0EE1D51ECC10068EE37 /* OutputStreams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutputStreams.swift; sourceTree = "<group>"; };
 		8186B0EF1D51ECC10068EE37 /* PrintLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintLogger.swift; sourceTree = "<group>"; };
@@ -443,7 +441,6 @@
 				8186B0DF1D51ECC10068EE37 /* JSONResponse.swift */,
 				8186B0E01D51ECC10068EE37 /* Keychain.swift */,
 				8186B0E21D51ECC10068EE37 /* LoggerType.swift */,
-				8186B0EC1D51ECC10068EE37 /* NSBundle.swift */,
 				8186B0ED1D51ECC10068EE37 /* NSData.swift */,
 				8186B0EE1D51ECC10068EE37 /* OutputStreams.swift */,
 				8186B0EF1D51ECC10068EE37 /* PrintLogger.swift */,
@@ -762,7 +759,6 @@
 				817292701D362A2C00803B74 /* PickupPoint.swift in Sources */,
 				8172926A1D362A2C00803B74 /* Config.swift in Sources */,
 				8186B0FE1D51ECC10068EE37 /* Keychain.swift in Sources */,
-				8186B1091D51ECC10068EE37 /* NSBundle.swift in Sources */,
 				B02CA0A81D3511B60030CC64 /* ConfigClient.swift in Sources */,
 				812BB4D71D34C0910018C321 /* APIClient.swift in Sources */,
 				E87C16781D5226E600E12E98 /* ShippingAddress.swift in Sources */,
