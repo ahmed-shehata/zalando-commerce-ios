@@ -28,8 +28,8 @@ extension Address: Hashable {
     public var hashValue: Int {
         return id.hashValue
     }
-
 }
+
 extension Address: JSONInitializable {
 
     private struct Keys {

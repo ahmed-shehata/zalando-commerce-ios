@@ -74,11 +74,15 @@ public class AtlasCheckout: LocalizerProviderType {
             return true
     }
 
-    func createCheckout(withArticle article: Article, selectedUnitIndex: Int, completion: CreateCheckoutCompletion) {
+    func createCheckoutViewModel(withArticle article: Article, selectedUnitIndex: Int, completion: CreateCheckoutCompletion) {
         client.createCheckout(withArticle: article, selectedUnitIndex: selectedUnitIndex) { checkoutResult in
             switch checkoutResult {
             case .failure(let error):
-                completion(.failure(error))
+                if case let AtlasAPIError.checkoutFailed(_, cartId, _) = error {
+                    let checkoutModel = CheckoutViewModel(article: article,
+                        selectedUnitIndex: selectedUnitIndex, cartId: cartId, checkout: nil)
+                    completion(.success(checkoutModel))
+                }
 
             case .success(let checkout):
                 let checkoutModel = CheckoutViewModel(article: article,

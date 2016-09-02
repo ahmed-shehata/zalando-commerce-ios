@@ -22,6 +22,20 @@
 "feature.notImplemented.title" = "Not implemented";
 "feature.notImplemented.message" = "This feature is currently not implemented";
 
-"AtlasAPIError.title" = "API Error";
 "LoginError.title" = "Login Error";
+"LoginError.message.missingURL" = "Missing login URL";
+"LoginError.message.accessDenied" = "Access denied";
+"LoginError.message.requestFailed" = "Request failed";
+"LoginError.message.missingViewControllerToShowLoginForm" = "Cannot show login form";
+
+"AtlasAPIError.title" = "Server Error";
+"AtlasAPIError.message.invalidResponseFormat" = "Incorrect response format";
+"AtlasAPIError.message.noData" = "Empty response";
+"AtlasAPIError.message.unauthorized" = "Access denied";
+"AtlasAPIError.message.checkoutFailed" = "Unknown checkout error";
+
 "AtlasConfigurationError.title" = "Configuration Error";
+"AtlasConfigurationError.message.incorrectConfigServiceResponse" = "Server returned unknown response";
+"AtlasConfigurationError.message.missingClientId" = "Missing client identifier";
+"AtlasConfigurationError.message.missingSalesChannel" = "Missing sales channel";
+"AtlasConfigurationError.message.missingInterfaceLanguage" = "Missing interface language";

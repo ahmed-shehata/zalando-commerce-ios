@@ -50,3 +50,20 @@ extension BillingAddress: JSONInitializable {
             countryCode: countryCode)
     }
 }
+
+extension BillingAddress {
+
+    public init?(address: Address) {
+        guard address.pickupPoint == nil else {
+            return nil
+        }
+        self.init(gender: address.gender,
+            firstName: address.firstName,
+            lastName: address.lastName,
+            street: address.street,
+            additional: address.additional,
+            zip: address.zip,
+            city: address.city,
+            countryCode: address.countryCode)
+    }
+}
