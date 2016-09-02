@@ -17,8 +17,8 @@ struct CheckoutViewModel {
     var selectedBillingAddress: BillingAddress?
     var selectedShippingAddress: ShippingAddress?
 
-    var selectedBillingAddressId: String = ""
-    var selectedShippingAddressId: String = ""
+    var selectedBillingAddressId: String?
+    var selectedShippingAddressId: String?
 
     init(article: Article, selectedUnitIndex: Int = 0,
         shippingPrice: Article.Price? = nil,
@@ -78,8 +78,6 @@ extension CheckoutViewModel {
 
 extension CheckoutViewModel {
     func isReadyToCreateCheckout () -> Bool {
-        return self.checkout == nil &&
-        !self.selectedBillingAddressId.isEmpty &&
-        !self.selectedShippingAddressId.isEmpty
+        return self.checkout == nil && self.selectedBillingAddressId != nil && self.selectedShippingAddressId != nil
     }
 }
