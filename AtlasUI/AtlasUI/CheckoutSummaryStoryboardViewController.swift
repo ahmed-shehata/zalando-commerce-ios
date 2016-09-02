@@ -70,11 +70,15 @@ class CheckoutSummaryStoryboardViewController: UIViewController, CheckoutProvide
     }
 
     internal func showLoader() {
-        loaderView.hidden = false
+        Async.main {
+            self.loaderView.hidden = false
+        }
     }
 
     internal func hideLoader() {
-        loaderView.hidden = true
+        Async.main {
+            self.loaderView.hidden = true
+        }
     }
 
     dynamic private func cancelCheckoutTapped() {
@@ -95,6 +99,7 @@ class CheckoutSummaryStoryboardViewController: UIViewController, CheckoutProvide
     }
 
     @IBAction private func shippingAddressTapped() {
+        guard viewState.showDetailArrow else { return }
         actionsHandler.showShippingAddressSelectionScreen()
     }
 
@@ -181,6 +186,7 @@ extension CheckoutSummaryStoryboardViewController {
                 self.checkoutViewModel.selectedShippingAddress = ShippingAddress(address: address)
                 self.checkoutViewModel.selectedShippingAddressId = address.id
             }
+            refreshView()
 
             if checkoutViewModel.checkout == nil &&
             !checkoutViewModel.selectedBillingAddressId.isEmpty &&
@@ -196,8 +202,9 @@ extension CheckoutSummaryStoryboardViewController {
                         }
                     case .success(let checkout):
                         self.checkoutViewModel.checkout = checkout
+                        self.refreshView()
                     }
-                    self.refreshView()
+
                 }
             }
 

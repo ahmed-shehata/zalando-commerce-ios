@@ -56,9 +56,9 @@ public class AtlasCheckout: LocalizerProviderType {
         client.createCheckout(withArticle: article, selectedUnitIndex: selectedUnitIndex) { checkoutResult in
             switch checkoutResult {
             case .failure(let error):
-                if case let AtlasAPIError.checkoutFailed(addresses, cartId, error) = error {
+                if case let AtlasAPIError.checkoutFailed(_, cartId, _) = error {
                     let checkoutModel = CheckoutViewModel(article: article,
-                                                          selectedUnitIndex: selectedUnitIndex, cartId: cartId, checkout: nil)
+                        selectedUnitIndex: selectedUnitIndex, cartId: cartId, checkout: nil)
                     completion(.success(checkoutModel))
                 }
 
