@@ -9,10 +9,9 @@ final class AddressListViewController: UITableViewController {
 
     private var selectedAddress: Address? {
         didSet {
-            if let selectedAddress = selectedAddress {
-                Async.main {
-                    self.delegate?.addressListViewController(self, didSelectAddress: selectedAddress)
-                }
+            guard let selectedAddress = selectedAddress else { return }
+            Async.main {
+                self.delegate?.addressListViewController(self, didSelectAddress: selectedAddress)
             }
         }
     }
