@@ -78,3 +78,11 @@ extension CheckoutViewModel {
     }
 
 }
+
+extension CheckoutViewModel {
+    func isReadyToCreateCheckout () -> Bool {
+        return self.checkout == nil &&
+        !self.selectedBillingAddressId.isEmpty &&
+        !self.selectedShippingAddressId.isEmpty
+    }
+}

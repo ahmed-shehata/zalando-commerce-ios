@@ -1,10 +1,10 @@
 import Foundation
 import AtlasSDK
 
-final class AddressListViewController: UITableViewController {
+final class AddressListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var delegate: AddressListViewControllerDelegate?
-
+    let tableView: UITableView
     private let addresses: [Address]
 
     private var selectedAddress: Address? {
@@ -19,6 +19,7 @@ final class AddressListViewController: UITableViewController {
     init(addresses: [Address], selectedAddress: Address?) {
         self.addresses = addresses
         self.selectedAddress = selectedAddress
+        self.tableView = UITableView()
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -28,22 +29,25 @@ final class AddressListViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.addSubview(tableView)
+        tableView.delegate = self
+        tableView.dataSource = self
         tableView.registerClass(AddressRowViewCell.self, forCellReuseIdentifier: String(AddressRowViewCell))
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return addresses.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(
             String(AddressRowViewCell), forIndexPath: indexPath) as! AddressRowViewCell
         let address = addresses[indexPath.item]
         cell.address = address
 
-        if let selectedAddress = selectedAddress where selectedAddress == address {
+        if selectedAddress == address {
             cell.accessoryType = .Checkmark
         } else {
             cell.accessoryType = .None
@@ -52,7 +56,7 @@ final class AddressListViewController: UITableViewController {
         return cell
     }
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var indexPathsToReload = [indexPath]
 
         if let selectedAddress = selectedAddress, index = addresses.indexOf(selectedAddress) {
