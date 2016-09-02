@@ -15,7 +15,7 @@ final class AddressRowViewCell: UITableViewCell {
 
     private let titleLabel = UILabel()
 
-    private let streetLabel = UILabel()
+    private let fullAddressLabel = UILabel()
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -44,20 +44,18 @@ final class AddressRowViewCell: UITableViewCell {
         titleLabel.leadingAnchor.constraintEqualToAnchor(contentView.leadingAnchor, constant: Metrics.leadingPadding).active = true
         titleLabel.trailingAnchor.constraintEqualToAnchor(contentView.trailingAnchor, constant: -Metrics.trailingPadding).active = true
 
-        streetLabel.translatesAutoresizingMaskIntoConstraints = false
-        streetLabel.numberOfLines = 0
-        contentView.addSubview(streetLabel)
-        streetLabel.topAnchor.constraintEqualToAnchor(titleLabel.bottomAnchor).active = true
-        streetLabel.leadingAnchor.constraintEqualToAnchor(titleLabel.leadingAnchor).active = true
-        streetLabel.trailingAnchor.constraintEqualToAnchor(titleLabel.trailingAnchor).active = true
-        streetLabel.bottomAnchor.constraintEqualToAnchor(contentView.bottomAnchor, constant: -Metrics.bottomPadding).active = true
+        fullAddressLabel.translatesAutoresizingMaskIntoConstraints = false
+        fullAddressLabel.numberOfLines = 0
+        contentView.addSubview(fullAddressLabel)
+        fullAddressLabel.topAnchor.constraintEqualToAnchor(titleLabel.bottomAnchor).active = true
+        fullAddressLabel.leadingAnchor.constraintEqualToAnchor(titleLabel.leadingAnchor).active = true
+        fullAddressLabel.trailingAnchor.constraintEqualToAnchor(titleLabel.trailingAnchor).active = true
+        fullAddressLabel.bottomAnchor.constraintEqualToAnchor(contentView.bottomAnchor, constant: -Metrics.bottomPadding).active = true
     }
 
     private func updateViews() {
         titleLabel.text = address.firstName
-        if let street = address.street {
-            streetLabel.text = [street, "\(address.zip) \(address.city)", address.countryCode].flatMap { $0 }.joinWithSeparator("\n")
-        }
+        fullAddressLabel.text = address.fullAddress
     }
 
 }
