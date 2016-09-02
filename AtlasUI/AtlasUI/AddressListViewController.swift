@@ -39,10 +39,8 @@ final class AddressListViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCellWithIdentifier(
-            String(AddressRowViewCell), forIndexPath: indexPath) as? AddressRowViewCell else {
-                fatalError("Failed to dequeue an AddressRowViewCell")
-        }
+        let cell = tableView.dequeueReusableCellWithIdentifier(
+            String(AddressRowViewCell), forIndexPath: indexPath) as! AddressRowViewCell
         let address = addresses[indexPath.item]
         cell.address = address
 
