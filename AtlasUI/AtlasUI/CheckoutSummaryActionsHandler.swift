@@ -12,7 +12,8 @@ struct CheckoutSummaryActionsHandler {
 }
 
 extension Checkout {
-    func hasSameAddressAs (checkoutViewModel: CheckoutViewModel) -> Bool {
+
+    func hasSameAddress(like checkoutViewModel: CheckoutViewModel) -> Bool {
         if let billingAddress = checkoutViewModel.selectedBillingAddress,
             shippingAddress = checkoutViewModel.selectedShippingAddress {
                 return shippingAddress == self.shippingAddress &&
@@ -20,6 +21,7 @@ extension Checkout {
         }
         return false
     }
+
 }
 
 extension CheckoutSummaryActionsHandler {
@@ -28,21 +30,21 @@ extension CheckoutSummaryActionsHandler {
         guard let checkout = viewController.checkoutViewModel.checkout else { return }
 
         viewController.showLoader()
-        if checkout.hasSameAddressAs(viewController.checkoutViewModel) {
+        if checkout.hasSameAddress(like: viewController.checkoutViewModel) {
             createOrder(checkout.id)
-        } else {
-            let updateCheckoutRequest = UpdateCheckoutRequest(billingAddressId: viewController.checkoutViewModel.selectedBillingAddressId,
-                shippingAddressId: viewController.checkoutViewModel.selectedShippingAddressId)
-            viewController.checkout.client.updateCheckout(checkout.id, updateCheckoutRequest: updateCheckoutRequest) { result in
-                switch result {
-                case .failure(let error):
-                    self.viewController.userMessage.show(error: error)
-                case .success(let checkout):
-                    self.createOrder(checkout.id)
-                }
-            }
+            return
         }
 
+        let updateCheckoutRequest = UpdateCheckoutRequest(billingAddressId: viewController.checkoutViewModel.selectedBillingAddressId,
+            shippingAddressId: viewController.checkoutViewModel.selectedShippingAddressId)
+        viewController.checkout.client.updateCheckout(checkout.id, updateCheckoutRequest: updateCheckoutRequest) { result in
+            switch result {
+            case .failure(let error):
+                self.viewController.userMessage.show(error: error)
+            case .success(let checkout):
+                self.createOrder(checkout.id)
+            }
+        }
     }
 
     internal func createOrder (checkoutId: String) {
