@@ -12,14 +12,6 @@ struct CheckoutSummaryActionViewModel {
 
 class CheckoutSummaryActionRowStackView: UIStackView {
 
-    internal let labelsStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .Horizontal
-        stackView.distribution = .FillEqually
-        stackView.spacing = 10
-        return stackView
-    }()
-
     internal let titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
@@ -47,14 +39,13 @@ class CheckoutSummaryActionRowStackView: UIStackView {
 extension CheckoutSummaryActionRowStackView: UIBuilder {
 
     func configureView() {
-        addArrangedSubview(labelsStackView)
+        addArrangedSubview(titleLabel)
+        addArrangedSubview(valueLabel)
         addArrangedSubview(arrowImageView)
-
-        labelsStackView.addArrangedSubview(titleLabel)
-        labelsStackView.addArrangedSubview(valueLabel)
     }
 
     func configureConstraints() {
+        titleLabel.setWidthEqualToView(valueLabel)
         arrowImageView.setWidthToConstant(20)
     }
 

@@ -25,6 +25,7 @@ class CheckoutSummaryMainStackView: UIStackView {
     internal let shippingAddressStackView: CheckoutSummaryActionRowStackView = {
         let stackView = CheckoutSummaryActionRowStackView()
         stackView.axis = .Horizontal
+        stackView.spacing = 5
         stackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         stackView.layoutMarginsRelativeArrangement = true
         return stackView
@@ -41,6 +42,7 @@ class CheckoutSummaryMainStackView: UIStackView {
     internal let billingAddressStackView: CheckoutSummaryActionRowStackView = {
         let stackView = CheckoutSummaryActionRowStackView()
         stackView.axis = .Horizontal
+        stackView.spacing = 5
         stackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         stackView.layoutMarginsRelativeArrangement = true
         return stackView
@@ -57,6 +59,7 @@ class CheckoutSummaryMainStackView: UIStackView {
     internal let paymentStackView: CheckoutSummaryActionRowStackView = {
         let stackView = CheckoutSummaryActionRowStackView()
         stackView.axis = .Horizontal
+        stackView.spacing = 5
         stackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         stackView.layoutMarginsRelativeArrangement = true
         return stackView

@@ -88,7 +88,7 @@ extension CheckoutSummaryViewController {
     dynamic private func shippingAddressTapped() {
         guard viewState.showDetailArrow else { return }
 
-        userMessage.notImplemented()
+        actionsHandler.showShippingAddressSelectionScreen()
     }
 
     dynamic private func billingAddressTapped() {
@@ -117,7 +117,7 @@ extension CheckoutSummaryViewController {
 
     private func setupViewState() {
         if Atlas.isUserLoggedIn() {
-            viewState = .LoggedIn
+            viewState = checkoutViewModel.checkoutViewState
         } else {
             viewState = .NotLoggedIn
         }
