@@ -71,8 +71,7 @@ final class AddressListViewController: UIViewController, UITableViewDelegate, UI
             indexPathsToReload.append(NSIndexPath(forItem: index, inSection: 0))
         }
 
-        let address = addresses[indexPath.item]
-        selectedAddress = address
+        selectedAddress = addresses[indexPath.item]
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         tableView.reloadRowsAtIndexPaths(indexPathsToReload, withRowAnimation: .Automatic)
     }
