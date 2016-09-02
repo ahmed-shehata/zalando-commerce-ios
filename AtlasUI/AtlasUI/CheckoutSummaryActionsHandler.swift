@@ -11,19 +11,28 @@ struct CheckoutSummaryActionsHandler {
 
 }
 
+extension Checkout {
+    func hasSameAddressAs (checkoutViewModel: CheckoutViewModel) -> Bool {
+        if let billingAddress = checkoutViewModel.selectedBillingAddress,
+            shippingAddress = checkoutViewModel.selectedShippingAddress {
+                return shippingAddress == self.shippingAddress &&
+                billingAddress == self.billingAddress
+        }
+        return false
+    }
+}
+
 extension CheckoutSummaryActionsHandler {
 
     internal func handleBuyAction() {
         guard let checkout = viewController.checkoutViewModel.checkout else { return }
 
         viewController.showLoader()
-        if let billingAddress = viewController.checkoutViewModel.selectedBillingAddress,
-            shippingAddress = viewController.checkoutViewModel.selectedShippingAddress where
-        shippingAddress == checkout.shippingAddress &&
-        billingAddress == checkout.billingAddress {
+        if checkout.hasSameAddressAs(viewController.checkoutViewModel) {
             createOrder(checkout.id)
         } else {
-            let updateCheckoutRequest = UpdateCheckoutRequest(billingAddressId: viewController.checkoutViewModel.selectedBillingAddressId, shippingAddressId: viewController.checkoutViewModel.selectedShippingAddressId)
+            let updateCheckoutRequest = UpdateCheckoutRequest(billingAddressId: viewController.checkoutViewModel.selectedBillingAddressId,
+                shippingAddressId: viewController.checkoutViewModel.selectedShippingAddressId)
             viewController.checkout.client.updateCheckout(checkout.id, updateCheckoutRequest: updateCheckoutRequest) { result in
                 switch result {
                 case .failure(let error):
