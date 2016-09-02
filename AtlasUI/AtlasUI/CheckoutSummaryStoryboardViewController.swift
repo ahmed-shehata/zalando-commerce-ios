@@ -188,11 +188,10 @@ extension CheckoutSummaryStoryboardViewController {
             }
             refreshView()
 
-            if checkoutViewModel.checkout == nil &&
-            !checkoutViewModel.selectedBillingAddressId.isEmpty &&
-            !checkoutViewModel.selectedShippingAddressId.isEmpty {
+            if checkoutViewModel.isReadyToCreateCheckout() {
                 showLoader()
-                checkout.client.createCheckout(checkoutViewModel.cartId, billingAddressId: checkoutViewModel.selectedBillingAddressId, shippingAddressId: checkoutViewModel.selectedShippingAddressId) { result in
+                guard let cartId = checkoutViewModel.cartId else { return }
+                checkout.client.createCheckout(cartId, billingAddressId: checkoutViewModel.selectedBillingAddressId, shippingAddressId: checkoutViewModel.selectedShippingAddressId) { result in
                     self.hideLoader()
                     switch result {
 
@@ -207,6 +206,5 @@ extension CheckoutSummaryStoryboardViewController {
 
                 }
             }
-
     }
 }

@@ -10,8 +10,7 @@ struct CheckoutViewModel {
     let article: Article
     let selectedUnitIndex: Int
     let shippingPrice: Article.Price?
-    var cartId: String = ""
-
+    let cartId: String?
     var checkout: Checkout?
     internal(set) var customer: Customer?
 
@@ -35,9 +34,7 @@ struct CheckoutViewModel {
             self.customer = customer
             self.selectedBillingAddress = checkout?.billingAddress
             self.selectedShippingAddress = checkout?.shippingAddress
-            if let cartId = cartId {
-                self.cartId = cartId
-            }
+            self.cartId = cartId
 
     }
 
