@@ -10,7 +10,7 @@ final class AddressListViewController: UITableViewController {
     private var selectedAddress: Address? {
         didSet {
             if let selectedAddress = selectedAddress {
-                dispatch_async(dispatch_get_main_queue()) {
+                Async.main {
                     self.delegate?.addressListViewController(self, didSelectAddress: selectedAddress)
                 }
             }
