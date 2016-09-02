@@ -7,6 +7,11 @@ import Foundation
 public struct UpdateCheckoutRequest {
     public let billingAddressId: String?
     public let shippingAddressId: String?
+
+    public init(billingAddressId: String?, shippingAddressId: String?) {
+        self.shippingAddressId = shippingAddressId
+        self.billingAddressId = billingAddressId
+    }
 }
 
 extension UpdateCheckoutRequest: JSONRepresentable {
@@ -26,12 +31,5 @@ extension UpdateCheckoutRequest: JSONRepresentable {
             result[Keys.shippingAddressId] = shippingAddressId
         }
         return result
-    }
-}
-
-extension UpdateCheckoutRequest {
-    public init(billingAddressId: String, shippingAddressId: String) {
-        self.shippingAddressId = shippingAddressId
-        self.billingAddressId = billingAddressId
     }
 }

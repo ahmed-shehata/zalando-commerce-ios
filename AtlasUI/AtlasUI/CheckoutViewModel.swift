@@ -51,7 +51,7 @@ extension CheckoutViewModel {
     }
 
     var isPaymentSelected: Bool {
-        return customer != nil && selectedPaymentMethod != nil
+        return customer != nil && selectedPaymentMethod != nil  
     }
 
     var selectedUnit: Article.Unit {
