@@ -41,10 +41,9 @@ final class AddressListViewController: UIViewController, UITableViewDelegate, UI
         tableView.topAnchor.constraintEqualToAnchor(view.topAnchor, constant: 0).active = true
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.registerClass(AddressRowViewCell.self, forCellReuseIdentifier: String(AddressRowViewCell))
+        tableView.registerReusableCell(AddressRowViewCell.self)
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
-
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -52,18 +51,17 @@ final class AddressListViewController: UIViewController, UITableViewDelegate, UI
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(
-            String(AddressRowViewCell), forIndexPath: indexPath) as! AddressRowViewCell
-        let address = addresses[indexPath.item]
-        cell.address = address
-
-        if selectedAddress == address {
-            cell.accessoryType = .Checkmark
-        } else {
-            cell.accessoryType = .None
+        return tableView.dequeueReusableCell(AddressRowViewCell.self, forIndexPath: indexPath) { result in
+            switch result {
+            case let .dequeuedCell(addressRowCell):
+                let address = self.addresses[indexPath.item]
+                addressRowCell.address = address
+                addressRowCell.accessoryType = self.selectedAddress == address ? .Checkmark : .None
+                return addressRowCell
+            case let .defaultCell(cell):
+                return cell
+            }
         }
-
-        return cell
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
