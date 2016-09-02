@@ -10,15 +10,19 @@ struct CheckoutViewModel {
     let article: Article
     let selectedUnitIndex: Int
     let shippingPrice: Article.Price?
-
-    let checkout: Checkout?
+    let cartId: String?
+    var checkout: Checkout?
     internal(set) var customer: Customer?
 
-    private let selectedBillingAddress: BillingAddress?
-    private let selectedShippingAddress: ShippingAddress?
+    var selectedBillingAddress: BillingAddress?
+    var selectedShippingAddress: ShippingAddress?
+
+    var selectedBillingAddressId: String?
+    var selectedShippingAddressId: String?
 
     init(article: Article, selectedUnitIndex: Int = 0,
         shippingPrice: Article.Price? = nil,
+        cartId: String? = nil,
         checkout: Checkout? = nil,
         customer: Customer? = nil,
         billingAddress: BillingAddress? = nil,
@@ -28,28 +32,22 @@ struct CheckoutViewModel {
             self.shippingPrice = shippingPrice
             self.checkout = checkout
             self.customer = customer
-            self.selectedBillingAddress = billingAddress
-            self.selectedShippingAddress = shippingAddress
+            self.selectedBillingAddress = checkout?.billingAddress
+            self.selectedShippingAddress = checkout?.shippingAddress
+            self.cartId = cartId
+
     }
 
 }
 
 extension CheckoutViewModel {
 
-    var billingAddress: BillingAddress? {
-        return checkout?.billingAddress ?? selectedBillingAddress
-    }
-
-    var shippingAddress: ShippingAddress? {
-        return checkout?.shippingAddress ?? selectedShippingAddress
-    }
-
     func shippingAddress(localizedWith localizer: LocalizerProviderType) -> String {
-        return checkout?.shippingAddress.fullAddress ?? localizer.loc("No Shipping Address")
+        return selectedShippingAddress?.fullAddress ?? localizer.loc("No Shipping Address")
     }
 
     func billingAddress(localizedWith localizer: LocalizerProviderType) -> String {
-        return checkout?.billingAddress.fullAddress ?? localizer.loc("No Billing Address")
+        return selectedBillingAddress?.fullAddress ?? localizer.loc("No Billing Address")
     }
 
     var isPaymentSelected: Bool {
@@ -73,7 +71,13 @@ extension CheckoutViewModel {
     }
 
     var checkoutViewState: CheckoutViewState {
-        return checkout == nil ? .CheckoutIncomplete : .LoggedIn
+        return (checkout == nil || checkout?.payment.selected?.method == nil) ? .CheckoutIncomplete : .LoggedIn
     }
 
+}
+
+extension CheckoutViewModel {
+    func isReadyToCreateCheckout () -> Bool {
+        return self.checkout == nil && self.selectedBillingAddressId != nil && self.selectedShippingAddressId != nil
+    }
 }

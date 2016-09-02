@@ -11,13 +11,44 @@ struct CheckoutSummaryActionsHandler {
 
 }
 
+extension Checkout {
+
+    func hasSameAddress(like checkoutViewModel: CheckoutViewModel) -> Bool {
+        if let billingAddress = checkoutViewModel.selectedBillingAddress,
+            shippingAddress = checkoutViewModel.selectedShippingAddress {
+                return shippingAddress == self.shippingAddress &&
+                billingAddress == self.billingAddress
+        }
+        return false
+    }
+
+}
+
 extension CheckoutSummaryActionsHandler {
 
     internal func handleBuyAction() {
         guard let checkout = viewController.checkoutViewModel.checkout else { return }
 
         viewController.showLoader()
-        viewController.checkout.client.createOrder(checkout.id) { result in
+        if checkout.hasSameAddress(like: viewController.checkoutViewModel) {
+            createOrder(checkout.id)
+            return
+        }
+
+        let updateCheckoutRequest = UpdateCheckoutRequest(billingAddressId: viewController.checkoutViewModel.selectedBillingAddressId,
+            shippingAddressId: viewController.checkoutViewModel.selectedShippingAddressId)
+        viewController.checkout.client.updateCheckout(checkout.id, updateCheckoutRequest: updateCheckoutRequest) { result in
+            switch result {
+            case .failure(let error):
+                self.viewController.userMessage.show(error: error)
+            case .success(let checkout):
+                self.createOrder(checkout.id)
+            }
+        }
+    }
+
+    internal func createOrder (checkoutId: String) {
+        viewController.checkout.client.createOrder(checkoutId) { result in
             self.viewController.hideLoader()
             switch result {
             case .failure(let error):
@@ -47,7 +78,7 @@ extension CheckoutSummaryActionsHandler {
 
     private func generateCheckout(customer: Customer) {
         viewController.showLoader()
-        viewController.checkout.createCheckout(withArticle: viewController.checkoutViewModel.article,
+        viewController.checkout.createCheckoutViewModel(withArticle: viewController.checkoutViewModel.article,
             selectedUnitIndex: viewController.checkoutViewModel.selectedUnitIndex) { result in
                 self.viewController.hideLoader()
                 switch result {
@@ -80,6 +111,13 @@ extension CheckoutSummaryActionsHandler {
 
     internal func showShippingAddressSelectionScreen() {
         let addressSelectionViewController = AddressPickerViewController(checkout: viewController.checkout, addressType: .shipping)
+        addressSelectionViewController.delegate = viewController
+        viewController.showViewController(addressSelectionViewController, sender: viewController)
+    }
+
+    internal func showBillingAddressSelectionScreen() {
+        let addressSelectionViewController = AddressPickerViewController(checkout: viewController.checkout, addressType: .billing)
+        addressSelectionViewController.delegate = viewController
         viewController.showViewController(addressSelectionViewController, sender: viewController)
     }
 

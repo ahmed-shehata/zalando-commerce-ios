@@ -5,7 +5,7 @@
 import UIKit
 import AtlasSDK
 
-class CheckoutSummaryStoryboardViewController: UIViewController, CheckoutProviderType {
+class CheckoutSummaryStoryboardViewController: UIViewController, CheckoutProviderType, AddressPickerViewControllerDelegate {
 
     internal var checkout: AtlasCheckout!
     internal var checkoutViewModel: CheckoutViewModel!
@@ -70,11 +70,15 @@ class CheckoutSummaryStoryboardViewController: UIViewController, CheckoutProvide
     }
 
     internal func showLoader() {
-        loaderView.hidden = false
+        Async.main {
+            self.loaderView.hidden = false
+        }
     }
 
     internal func hideLoader() {
-        loaderView.hidden = true
+        Async.main {
+            self.loaderView.hidden = true
+        }
     }
 
     dynamic private func cancelCheckoutTapped() {
@@ -95,13 +99,15 @@ class CheckoutSummaryStoryboardViewController: UIViewController, CheckoutProvide
     }
 
     @IBAction private func shippingAddressTapped() {
+        guard viewState.showDetailArrow else { return }
         actionsHandler.showShippingAddressSelectionScreen()
     }
 
     @IBAction private func billingAddressTapped() {
         guard viewState.showDetailArrow else { return }
 
-        userMessage.notImplemented()
+        actionsHandler.showBillingAddressSelectionScreen()
+
     }
 
     @IBAction private func paymentAddressTapped() {
@@ -165,4 +171,40 @@ extension CheckoutSummaryStoryboardViewController {
         arrowImageViews.forEach { $0.hidden = !viewState.showDetailArrow }
     }
 
+}
+
+extension CheckoutSummaryStoryboardViewController {
+    func addressPickerViewController(viewController: AddressPickerViewController,
+        pickedAddress address: Address,
+        forAddressType addressType: AddressPickerViewController.AddressType) {
+
+            switch addressType {
+            case AddressPickerViewController.AddressType.billing:
+                self.checkoutViewModel.selectedBillingAddress = BillingAddress(address: address)
+                self.checkoutViewModel.selectedBillingAddressId = address.id
+            case AddressPickerViewController.AddressType.shipping:
+                self.checkoutViewModel.selectedShippingAddress = ShippingAddress(address: address)
+                self.checkoutViewModel.selectedShippingAddressId = address.id
+            }
+            refreshView()
+
+            if checkoutViewModel.isReadyToCreateCheckout() {
+                showLoader()
+                guard let cartId = checkoutViewModel.cartId else { return }
+                checkout.client.createCheckout(cartId, billingAddressId: checkoutViewModel.selectedBillingAddressId, shippingAddressId: checkoutViewModel.selectedShippingAddressId) { result in
+                    self.hideLoader()
+                    switch result {
+
+                    case .failure(let error):
+                        self.dismissViewControllerAnimated(true) {
+                            self.userMessage.show(error: error)
+                        }
+                    case .success(let checkout):
+                        self.checkoutViewModel.checkout = checkout
+                        self.refreshView()
+                    }
+
+                }
+            }
+    }
 }
