@@ -3,7 +3,6 @@ import AtlasSDK
 
 final class AddressListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var delegate: AddressListViewControllerDelegate?
     let tableView: UITableView
     private let addresses: [Address]
     private let addressType: AddressType

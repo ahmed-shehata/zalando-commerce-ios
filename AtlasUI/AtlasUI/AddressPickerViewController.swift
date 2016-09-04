@@ -5,12 +5,6 @@
 import UIKit
 import AtlasSDK
 
-protocol AddressPickerViewControllerDelegate: class {
-    func addressPickerViewController(viewController: AddressPickerViewController,
-        pickedAddress address: Address,
-        forAddressType addressType: AddressType)
-}
-
 enum AddressType {
     case shipping
     case billing
@@ -18,7 +12,6 @@ enum AddressType {
 
 final class AddressPickerViewController: UIViewController, CheckoutProviderType {
 
-    weak var delegate: AddressPickerViewControllerDelegate?
     internal var checkout: AtlasCheckout
     private let addressType: AddressType
     private let selectionCompletion: (pickedAddress: Address, pickedAddressType: AddressType) -> Void
@@ -77,7 +70,8 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
     private func showAddressListViewController(addresses: [Address]) {
         let selectedAddress: Address? = nil
 
-        let addressListViewController = AddressListViewController(addresses: addresses, selectedAddress: selectedAddress, addressType: addressType, addressSelectionCompletion: selectionCompletion)
+        let addressListViewController = AddressListViewController(addresses: addresses, selectedAddress: selectedAddress,
+            addressType: addressType, addressSelectionCompletion: selectionCompletion)
 
         addChildViewController(addressListViewController)
         addressListViewController.view.translatesAutoresizingMaskIntoConstraints = false
@@ -90,12 +84,3 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
     }
 }
 
-extension AddressPickerViewController: AddressListViewControllerDelegate {
-    internal func addressListViewController(viewController: AddressListViewController, didSelectAddress address: Address) {
-        delegate?.addressPickerViewController(self, pickedAddress: address, forAddressType: addressType)
-    }
-}
-protocol AddressListViewControllerDelegate: class {
-    func addressListViewController(viewController: AddressListViewController,
-        didSelectAddress address: Address)
-}
