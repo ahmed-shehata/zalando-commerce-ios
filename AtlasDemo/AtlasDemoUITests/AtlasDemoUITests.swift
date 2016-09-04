@@ -68,6 +68,29 @@ class AtlasDemoUITests: XCTestCase {
         tapBackToShop()
     }
 
+    func testChangeShippingAddress() {
+        let sizeText = app.tables.staticTexts["42"]
+
+        tapBuyNow("Lamica")
+
+        waitForElementToAppearAndTap(sizeText)
+        tapConnectAndLogin()
+        changeShippingAddress()
+        tapBackToSummaryButton()
+        tapBuyNow()
+        tapBackToShop()
+
+    }
+
+    private func changeShippingAddress() {
+        let tablesQuery = app.tables
+
+        let scrollViewsQuery = app.scrollViews
+        scrollViewsQuery.childrenMatchingType(.Other)
+            .element.childrenMatchingType(.Other).elementBoundByIndex(2).staticTexts["Erika Mustermann, Mollstr. 1 10178 Berlin"].tap()
+        tablesQuery.staticTexts["Jane Doe, Mollstr. 1 10178 Berlin "] .tap()
+    }
+
     private func tapConnectAndLogin() {
         waitForElementToAppearAndTap(app.buttons["Checkout with Zalando"])
         fillInLogin()
@@ -76,6 +99,10 @@ class AtlasDemoUITests: XCTestCase {
 
     private func tapBuyNow() {
         waitForElementToAppearAndTap(app.buttons["Place order"])
+    }
+
+    private func tapBackToSummaryButton() {
+        waitForElementToAppearAndTap(app.buttons["Summary"])
     }
 
     private func tapBackToShop() {
@@ -88,7 +115,7 @@ class AtlasDemoUITests: XCTestCase {
         let zalandoLoginElement = app.otherElements["Zalando Login"]
         let element = zalandoLoginElement.childrenMatchingType(.Other).elementBoundByIndex(4)
         element.childrenMatchingType(.TextField).element.tap()
-        element.childrenMatchingType(.TextField).element.typeText("atlas-testing@mailinator.com")
+        element.childrenMatchingType(.TextField).element.typeText("john.doe.lucky@zalando.de")
         element.childrenMatchingType(.TextField).element
 
         let element2 = zalandoLoginElement.childrenMatchingType(.Other).elementBoundByIndex(6)

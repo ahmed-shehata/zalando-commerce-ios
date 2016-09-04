@@ -77,10 +77,10 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
         addressListViewController.view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(addressListViewController.view)
         addressListViewController.view.topAnchor.constraintEqualToAnchor(topLayoutGuide.bottomAnchor).active = true
+
         addressListViewController.view.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
         addressListViewController.view.bottomAnchor.constraintEqualToAnchor(bottomLayoutGuide.topAnchor).active = true
         addressListViewController.view.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
         addressListViewController.didMoveToParentViewController(self)
     }
 }
-
