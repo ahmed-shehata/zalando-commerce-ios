@@ -8,26 +8,27 @@ import AtlasSDK
 protocol AddressPickerViewControllerDelegate: class {
     func addressPickerViewController(viewController: AddressPickerViewController,
         pickedAddress address: Address,
-        forAddressType addressType: AddressPickerViewController.AddressType)
+        forAddressType addressType: AddressType)
+}
+
+enum AddressType {
+    case shipping
+    case billing
 }
 
 final class AddressPickerViewController: UIViewController, CheckoutProviderType {
 
-    enum AddressType {
-        case shipping
-        case billing
-    }
-
     weak var delegate: AddressPickerViewControllerDelegate?
-
     internal var checkout: AtlasCheckout
-
     private let addressType: AddressType
+    private let selectionCompletion: (pickedAddress: Address, pickedAddressType: AddressType) -> Void
 
-    init(checkout: AtlasCheckout, addressType: AddressType) {
-        self.checkout = checkout
-        self.addressType = addressType
-        super.init(nibName: nil, bundle: nil)
+    init(checkout: AtlasCheckout, addressType: AddressType,
+        addressSelectionCompletion: (pickedAddress: Address, pickedAddressType: AddressType) -> Void) {
+            self.checkout = checkout
+            self.addressType = addressType
+            self.selectionCompletion = addressSelectionCompletion
+            super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -76,8 +77,8 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
     private func showAddressListViewController(addresses: [Address]) {
         let selectedAddress: Address? = nil
 
-        let addressListViewController = AddressListViewController(addresses: addresses, selectedAddress: selectedAddress)
-        addressListViewController.delegate = self
+        let addressListViewController = AddressListViewController(addresses: addresses, selectedAddress: selectedAddress, addressType: addressType, addressSelectionCompletion: selectionCompletion)
+
         addChildViewController(addressListViewController)
         addressListViewController.view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(addressListViewController.view)

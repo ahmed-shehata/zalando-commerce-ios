@@ -6,21 +6,27 @@ final class AddressListViewController: UIViewController, UITableViewDelegate, UI
     var delegate: AddressListViewControllerDelegate?
     let tableView: UITableView
     private let addresses: [Address]
+    private let addressType: AddressType
+
+    private let selectionCompletion: (pickedAddress: Address, pickedAddressType: AddressType) -> Void
 
     private var selectedAddress: Address? {
         didSet {
             guard let selectedAddress = selectedAddress else { return }
             Async.main {
-                self.delegate?.addressListViewController(self, didSelectAddress: selectedAddress)
+                self.selectionCompletion(pickedAddress: selectedAddress, pickedAddressType: self.addressType)
             }
         }
     }
 
-    init(addresses: [Address], selectedAddress: Address?) {
-        self.addresses = addresses
-        self.selectedAddress = selectedAddress
-        self.tableView = UITableView()
-        super.init(nibName: nil, bundle: nil)
+    init(addresses: [Address], selectedAddress: Address?, addressType: AddressType,
+        addressSelectionCompletion: (pickedAddress: Address, pickedAddressType: AddressType) -> Void) {
+            self.addresses = addresses
+            self.selectedAddress = selectedAddress
+            self.tableView = UITableView()
+            self.addressType = addressType
+            self.selectionCompletion = addressSelectionCompletion
+            super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder aDecoder: NSCoder) {

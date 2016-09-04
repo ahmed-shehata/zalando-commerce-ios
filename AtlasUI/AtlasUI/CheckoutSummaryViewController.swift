@@ -5,7 +5,7 @@
 import UIKit
 import AtlasSDK
 
-class CheckoutSummaryViewController: UIViewController, CheckoutProviderType, AddressPickerViewControllerDelegate {
+class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
 
     internal var checkout: AtlasCheckout
     internal var checkoutViewModel: CheckoutViewModel
@@ -131,52 +131,13 @@ extension CheckoutSummaryViewController {
 
         if viewState.showCancelButton {
             let button = UIBarButtonItem(title: loc("Cancel"),
-                                         style: .Plain,
-                                         target: self,
-                                         action: #selector(CheckoutSummaryViewController.cancelCheckoutTapped))
+                style: .Plain,
+                target: self,
+                action: #selector(CheckoutSummaryViewController.cancelCheckoutTapped))
             navigationItem.rightBarButtonItem = button
         } else {
             navigationItem.rightBarButtonItem = nil
         }
     }
 
-}
-
-extension CheckoutSummaryViewController {
-    func addressPickerViewController(viewController: AddressPickerViewController,
-                                     pickedAddress address: Address,
-                                                   forAddressType addressType: AddressPickerViewController.AddressType) {
-
-        switch addressType {
-        case AddressPickerViewController.AddressType.billing:
-            self.checkoutViewModel.selectedBillingAddress = BillingAddress(address: address)
-            self.checkoutViewModel.selectedBillingAddressId = address.id
-        case AddressPickerViewController.AddressType.shipping:
-            self.checkoutViewModel.selectedShippingAddress = ShippingAddress(address: address)
-            self.checkoutViewModel.selectedShippingAddressId = address.id
-        }
-        loaderView.hide()
-        rootStackView.configureData(self)
-
-
-        if checkoutViewModel.isReadyToCreateCheckout() {
-            loaderView.show()
-            guard let cartId = checkoutViewModel.cartId else { return }
-            checkout.client.createCheckout(cartId, billingAddressId: checkoutViewModel.selectedBillingAddressId,
-                                           shippingAddressId: checkoutViewModel.selectedShippingAddressId) { result in
-                self.loaderView.hide()
-                switch result {
-
-                case .failure(let error):
-                    self.dismissViewControllerAnimated(true) {
-                        self.userMessage.show(error: error)
-                    }
-                case .success(let checkout):
-                    self.checkoutViewModel.checkout = checkout
-                    self.rootStackView.configureData(self)
-                }
-
-            }
-        }
-    }
 }
