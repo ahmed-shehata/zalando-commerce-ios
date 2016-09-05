@@ -1,7 +1,7 @@
 import Foundation
 import AtlasSDK
 
-final class AddressListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+final class AddressListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CheckoutProviderType {
 
     private let tableView = UITableView()
     private var addresses: [Address]
@@ -74,7 +74,7 @@ final class AddressListViewController: UIViewController, UITableViewDelegate, UI
                         self.addresses.removeAtIndex(indexPath.item)
                         tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
                     case .failure(let error):
-                        AtlasLogger.logError(error)
+                        self.userMessage.show(error: error)
                     }
                 }
             }
