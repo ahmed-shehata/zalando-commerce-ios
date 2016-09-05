@@ -35,6 +35,7 @@ final class AddressListViewController: UIViewController, UITableViewDelegate, UI
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .whiteColor()
         self.view.addSubview(tableView)
         setupTableView()
     }
