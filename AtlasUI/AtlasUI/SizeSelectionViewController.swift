@@ -8,7 +8,7 @@ import AtlasSDK
 final class SizeSelectionViewController: UIViewController, CheckoutProviderType {
 
     private let sku: String
-    internal let checkout: AtlasCheckout!
+    internal let checkout: AtlasCheckout
 
     init(checkout: AtlasCheckout, sku: String) {
         self.checkout = checkout
@@ -70,13 +70,12 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
     }
 
     private func displayCheckoutSummaryViewController(checkoutViewModel: CheckoutViewModel) {
-        if let checkoutSummaryVC = CheckoutSummaryStoryboardViewController.instantiateFromStoryBoard(checkout, checkoutViewModel:
-                checkoutViewModel) {
-                    UIView.performWithoutAnimation {
-                        Async.main {
-                            self.showViewController(checkoutSummaryVC, sender: self)
-                        }
-                    }
+        let checkoutSummaryVC = CheckoutSummaryViewController(checkout: checkout, checkoutViewModel: checkoutViewModel)
+
+        Async.main {
+            UIView.performWithoutAnimation {
+                self.showViewController(checkoutSummaryVC, sender: self)
+            }
         }
     }
 

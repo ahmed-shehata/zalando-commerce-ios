@@ -43,11 +43,11 @@ struct CheckoutViewModel {
 extension CheckoutViewModel {
 
     func shippingAddress(localizedWith localizer: LocalizerProviderType) -> String {
-        return selectedShippingAddress?.fullAddress ?? localizer.loc("No Shipping Address")
+        return selectedShippingAddress?.fullContactPostalAddress ?? localizer.loc("No Shipping Address")
     }
 
     func billingAddress(localizedWith localizer: LocalizerProviderType) -> String {
-        return selectedBillingAddress?.fullAddress ?? localizer.loc("No Billing Address")
+        return selectedBillingAddress?.fullContactPostalAddress ?? localizer.loc("No Billing Address")
     }
 
     var isPaymentSelected: Bool {
@@ -77,7 +77,7 @@ extension CheckoutViewModel {
 }
 
 extension CheckoutViewModel {
-    func isReadyToCreateCheckout () -> Bool {
+    var isReadyToCreateCheckout: Bool? {
         return self.checkout == nil && self.selectedBillingAddressId != nil && self.selectedShippingAddressId != nil
     }
 }

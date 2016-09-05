@@ -7,7 +7,7 @@ import AtlasSDK
 
 struct CheckoutSummaryActionsHandler {
 
-    internal unowned let viewController: CheckoutSummaryStoryboardViewController
+    internal unowned let viewController: CheckoutSummaryViewController
 
 }
 
@@ -29,7 +29,7 @@ extension CheckoutSummaryActionsHandler {
     internal func handleBuyAction() {
         guard let checkout = viewController.checkoutViewModel.checkout else { return }
 
-        viewController.showLoader()
+        viewController.loaderView.show()
         if checkout.hasSameAddress(like: viewController.checkoutViewModel) {
             createOrder(checkout.id)
             return
@@ -49,7 +49,7 @@ extension CheckoutSummaryActionsHandler {
 
     internal func createOrder (checkoutId: String) {
         viewController.checkout.client.createOrder(checkoutId) { result in
-            self.viewController.hideLoader()
+            self.viewController.loaderView.show()
             switch result {
             case .failure(let error):
                 self.viewController.userMessage.show(error: error)
@@ -77,10 +77,10 @@ extension CheckoutSummaryActionsHandler {
     }
 
     private func generateCheckout(customer: Customer) {
-        viewController.showLoader()
+        viewController.loaderView.show()
         viewController.checkout.createCheckoutViewModel(withArticle: viewController.checkoutViewModel.article,
             selectedUnitIndex: viewController.checkoutViewModel.selectedUnitIndex) { result in
-                self.viewController.hideLoader()
+                self.viewController.loaderView.hide()
                 switch result {
                 case .failure(let error):
                     self.viewController.dismissViewControllerAnimated(true) {
@@ -110,14 +110,14 @@ extension CheckoutSummaryActionsHandler {
     }
 
     internal func showShippingAddressSelectionScreen() {
-        let addressSelectionViewController = AddressPickerViewController(checkout: viewController.checkout, addressType: .shipping)
-        addressSelectionViewController.delegate = viewController
+        let addressSelectionViewController = AddressPickerViewController(checkout: viewController.checkout,
+            addressType: .shipping, addressSelectionCompletion: pickedAddressCompletion)
         viewController.showViewController(addressSelectionViewController, sender: viewController)
     }
 
     internal func showBillingAddressSelectionScreen() {
-        let addressSelectionViewController = AddressPickerViewController(checkout: viewController.checkout, addressType: .billing)
-        addressSelectionViewController.delegate = viewController
+        let addressSelectionViewController = AddressPickerViewController(checkout: viewController.checkout, addressType: .billing,
+            addressSelectionCompletion: pickedAddressCompletion)
         viewController.showViewController(addressSelectionViewController, sender: viewController)
     }
 
@@ -134,4 +134,42 @@ extension CheckoutSummaryActionsHandler {
         viewController.showViewController(paymentSelectionViewController, sender: viewController)
     }
 
+}
+
+extension CheckoutSummaryActionsHandler {
+    func pickedAddressCompletion(pickedAddress address: Address,
+        forAddressType addressType: AddressType) {
+
+            switch addressType {
+            case AddressType.billing:
+                viewController.checkoutViewModel.selectedBillingAddress = BillingAddress(address: address)
+                viewController.checkoutViewModel.selectedBillingAddressId = address.id
+            case AddressType.shipping:
+                viewController.checkoutViewModel.selectedShippingAddress = ShippingAddress(address: address)
+                viewController.checkoutViewModel.selectedShippingAddressId = address.id
+            }
+            viewController.loaderView.hide()
+            viewController.rootStackView.configureData(viewController)
+
+            guard let ready = viewController.checkoutViewModel.isReadyToCreateCheckout where ready == true
+            else { return }
+            viewController.loaderView.show()
+            guard let cartId = viewController.checkoutViewModel.cartId else { return }
+            viewController.checkout.client.createCheckout(cartId,
+                billingAddressId: viewController.checkoutViewModel.selectedBillingAddressId,
+                shippingAddressId: viewController.checkoutViewModel.selectedShippingAddressId) { result in
+                    self.viewController.loaderView.hide()
+                    switch result {
+
+                    case .failure(let error):
+                        self.viewController.dismissViewControllerAnimated(true) {
+                            self.viewController.userMessage.show(error: error)
+                        }
+                    case .success(let checkout):
+                        self.viewController.checkoutViewModel.checkout = checkout
+                        self.viewController.rootStackView.configureData(self.viewController)
+                    }
+
+            }
+    }
 }

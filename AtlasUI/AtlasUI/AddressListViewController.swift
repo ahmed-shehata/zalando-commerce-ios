@@ -3,24 +3,28 @@ import AtlasSDK
 
 final class AddressListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var delegate: AddressListViewControllerDelegate?
-    let tableView: UITableView
+    private let tableView = UITableView()
     private let addresses: [Address]
+    private let addressType: AddressType
+
+    private let selectionCompletion: AddressSelectionCompletion
 
     private var selectedAddress: Address? {
         didSet {
-            guard let selectedAddress = selectedAddress else { return }
-            Async.main {
-                self.delegate?.addressListViewController(self, didSelectAddress: selectedAddress)
+            Async.main { [weak self] in
+                guard let strongSelf = self, selectedAddress = strongSelf.selectedAddress else { return }
+                strongSelf.selectionCompletion(pickedAddress: selectedAddress, pickedAddressType: strongSelf.addressType)
             }
         }
     }
 
-    init(addresses: [Address], selectedAddress: Address?) {
-        self.addresses = addresses
-        self.selectedAddress = selectedAddress
-        self.tableView = UITableView()
-        super.init(nibName: nil, bundle: nil)
+    init(addresses: [Address], selectedAddress: Address?, addressType: AddressType,
+        addressSelectionCompletion: AddressSelectionCompletion) {
+            self.addresses = addresses
+            self.selectedAddress = selectedAddress
+            self.addressType = addressType
+            self.selectionCompletion = addressSelectionCompletion
+            super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder aDecoder: NSCoder) {

@@ -2,31 +2,35 @@
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
+import UIKit
 import AtlasSDK
 
-@available( *, deprecated)
-final class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
+class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
 
-    internal let productImageView = UIImageView()
-    internal let productNameLabel = UILabel()
-    internal let purchasedObjectSummaryLabel = UILabel()
-    internal let termsAndConditionsButton = UIButton()
-    internal let paymentSummaryTableview = UITableView()
-    internal let stackView: UIStackView = UIStackView()
-    internal let buyButton = UIButton()
-    internal let connectToZalandoButton = UIButton()
-
-    internal let shippingPrice: Float = 0
-    internal let shippingView = CheckoutSummaryRow()
-    internal let paymentMethodView = CheckoutSummaryRow()
-
-    internal private(set) var checkoutViewModel: CheckoutViewModel {
+    internal var checkout: AtlasCheckout
+    internal var checkoutViewModel: CheckoutViewModel
+    internal var viewState: CheckoutViewState = .NotLoggedIn {
         didSet {
-            updateData()
+            setupNavigationBar()
+            loaderView.hide()
+            rootStackView.configureData(self)
         }
     }
+    lazy private var actionsHandler: CheckoutSummaryActionsHandler = {
+        CheckoutSummaryActionsHandler(viewController: self)
+    }()
 
-    internal var checkout: AtlasCheckout!
+    internal let rootStackView: CheckoutSummaryRootStackView = {
+        let stackView = CheckoutSummaryRootStackView()
+        stackView.axis = .Vertical
+        stackView.spacing = 5
+        return stackView
+    }()
+    internal let loaderView: LoaderView = {
+        let view = LoaderView()
+        view.hidden = true
+        return view
+    }()
 
     init(checkout: AtlasCheckout, checkoutViewModel: CheckoutViewModel) {
         self.checkout = checkout
@@ -41,181 +45,99 @@ final class CheckoutSummaryViewController: UIViewController, CheckoutProviderTyp
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupViews()
+
+        setupView()
+        setupViewState()
+        setupActions()
+    }
+}
+
+extension CheckoutSummaryViewController {
+
+    private func setupActions() {
+        rootStackView.footerStackView.submitButton.addGestureRecognizer(UITapGestureRecognizer(target: self,
+            action: #selector(CheckoutSummaryViewController.submitButtonTapped)))
+
+        rootStackView.mainStackView.shippingAddressStackView.addGestureRecognizer(UITapGestureRecognizer(target: self,
+            action: #selector(CheckoutSummaryViewController.shippingAddressTapped)))
+
+        rootStackView.mainStackView.billingAddressStackView.addGestureRecognizer(UITapGestureRecognizer(target: self,
+            action: #selector(CheckoutSummaryViewController.billingAddressTapped)))
+
+        rootStackView.mainStackView.paymentStackView.addGestureRecognizer(UITapGestureRecognizer(target: self,
+            action: #selector(CheckoutSummaryViewController.paymentAddressTapped)))
     }
 
-    private func setupViews() {
-        Async.main {
-            self.view.removeAllSubviews()
-            self.stackView.removeAllSubviews()
-            self.title = self.loc("Summary")
-            self.view.backgroundColor = UIColor.clearColor()
-            self.view.opaque = false
-            self.setupNavBar()
-            self.setupBlurView()
-            self.setupProductImageView()
-            self.setupViewLabels()
-            self.setupStackView()
-            self.setupTermsAndConditionsButton()
-            self.setupButtons()
-            self.setupShippingView()
-            self.setupPaymentMethodView()
-            self.updateData()
-            CheckoutSummaryStyler(checkoutSummaryViewController: self).stylize()
+    dynamic private func cancelCheckoutTapped() {
+        dismissView()
+    }
+
+    private func dismissView() {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+
+    dynamic private func submitButtonTapped() {
+        switch viewState {
+        case .NotLoggedIn: actionsHandler.loadCustomerData()
+        case .LoggedIn: actionsHandler.handleBuyAction()
+        case .OrderPlaced: dismissView()
+        case .CheckoutIncomplete: break
         }
     }
 
-    @objc internal func buyButtonTapped(sender: UIButton) {
-        let paymentProcessingViewController = PaymentProcessingViewController(checkout: checkout, checkoutViewModel: self.checkoutViewModel)
+    dynamic private func shippingAddressTapped() {
+        guard viewState.showDetailArrow else { return }
 
-        self.showViewController(paymentProcessingViewController, sender: self)
+        actionsHandler.showShippingAddressSelectionScreen()
     }
 
-    @objc internal func connectToZalandoButtonTapped(sender: UIButton) {
-        connectToZalando()
+    dynamic private func billingAddressTapped() {
+        guard viewState.showDetailArrow else { return }
+
+        actionsHandler.showBillingAddressSelectionScreen()
     }
 
-    @objc private func cancelCheckoutTapped(sender: UIBarButtonItem) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    dynamic private func paymentAddressTapped() {
+        guard viewState.showDetailArrow else { return }
+
+        actionsHandler.showPaymentSelectionScreen()
     }
 
-    private func showLoadingView() {
-        let indicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
-        let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height))
-        backgroundView.backgroundColor = .grayColor()
-        backgroundView.alpha = 0.2
-        indicator.center = CGPoint(x: self.view.bounds.size.width / 2, y: (self.view.bounds.size.height) / 2)
-        indicator.color = .blackColor()
-        Async.main {
-            indicator.startAnimating()
-            self.view.addSubview(backgroundView)
-            self.view.addSubview(indicator)
+}
+
+extension CheckoutSummaryViewController {
+
+    private func setupView() {
+        view.backgroundColor = .whiteColor()
+        view.addSubview(rootStackView)
+        view.addSubview(loaderView)
+        rootStackView.buildView()
+        loaderView.buildView()
+    }
+
+    private func setupViewState() {
+        if Atlas.isUserLoggedIn() {
+            viewState = checkoutViewModel.checkoutViewState
+        } else {
+            viewState = .NotLoggedIn
         }
     }
 
-    private func setupNavBar() {
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+    private func setupNavigationBar() {
+        title = loc(viewState.navigationBarTitleLocalizedKey)
 
-        if checkoutViewModel.article.hasSingleUnit {
-            self.navigationItem.setHidesBackButton(true, animated: false)
+        let hasSingleUnit = checkoutViewModel.article.hasSingleUnit
+        navigationItem.setHidesBackButton(viewState.hideBackButton(hasSingleUnit), animated: false)
+
+        if viewState.showCancelButton {
+            let button = UIBarButtonItem(title: loc("Cancel"),
+                style: .Plain,
+                target: self,
+                action: #selector(CheckoutSummaryViewController.cancelCheckoutTapped))
+            navigationItem.rightBarButtonItem = button
+        } else {
+            navigationItem.rightBarButtonItem = nil
         }
-
-        let cancelButton = UIBarButtonItem(title: loc("Cancel"), style: UIBarButtonItemStyle.Plain,
-            target: self, action: #selector(CheckoutSummaryViewController.cancelCheckoutTapped(_:)))
-
-        navigationItem.rightBarButtonItem = cancelButton
-    }
-
-    private func connectToZalando() {
-        loadCustomerData()
-    }
-
-    private func loadCustomerData() {
-        checkout.client.customer { result in
-            Async.main {
-                switch result {
-                case .failure(let error):
-                    self.userMessage.show(error: error)
-
-                case .success(let customer):
-                    self.showLoadingView()
-                    self.generateCheckoutAndRefreshViews(customer)
-                }
-            }
-        }
-    }
-
-    private func generateCheckoutAndRefreshViews(customer: Customer) {
-        checkout.createCheckoutViewModel(withArticle: checkoutViewModel.article, selectedUnitIndex: checkoutViewModel.selectedUnitIndex) {
-            result in
-            switch result {
-            case .failure(let error):
-                self.dismissViewControllerAnimated(true) {
-                    self.userMessage.show(error: error)
-                }
-            case .success(var checkoutViewModel):
-                checkoutViewModel.customer = customer
-                self.checkoutViewModel = checkoutViewModel
-                self.setupViews()
-            }
-        }
-    }
-
-    private func setupProductImageView() {
-        view.addSubview(productImageView)
-    }
-
-    private func setupViewLabels() {
-        view.addSubview(productNameLabel)
-        view.addSubview(purchasedObjectSummaryLabel)
-    }
-
-    private func setupTermsAndConditionsButton() {
-        view.addSubview(termsAndConditionsButton)
-    }
-
-    private func setupButtons() {
-        view.addSubview(connectToZalandoButton)
-        connectToZalandoButton.hidden = true
-        connectToZalandoButton.setTitle(loc("Zalando.Connect"), forState: .Normal)
-        connectToZalandoButton.addTarget(self, action: #selector(CheckoutSummaryViewController.connectToZalandoButtonTapped(_:)),
-            forControlEvents: .TouchUpInside)
-        view.addSubview(buyButton)
-        buyButton.hidden = true
-        buyButton.setTitle(loc("Buy Now"), forState: .Normal)
-        buyButton.addTarget(self, action: #selector(CheckoutSummaryViewController.buyButtonTapped(_:)),
-            forControlEvents: .TouchUpInside)
-    }
-
-    private func setupStackView() {
-        view.addSubview(self.stackView)
-    }
-
-    private func setupBlurView() {
-        let blurEffect = UIBlurEffect(style: .ExtraLight)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        view.addSubview(blurEffectView)
-
-        blurEffectView.frame = self.view.bounds
-        blurEffectView.frame.makeIntegralInPlace()
-
-        let vibrancy = UIVibrancyEffect(forBlurEffect: blurEffect)
-        let vibrancyView = UIVisualEffectView(effect: vibrancy)
-        vibrancyView.frame = blurEffectView.bounds
-        vibrancyView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-        let extraLightVibrancyView = vibrancyView
-        blurEffectView.contentView.addSubview(extraLightVibrancyView)
-    }
-
-    private func setupShippingView() {
-        shippingView.titleTextLabel.text = loc("Shipping")
-        shippingView.detailTextLabel.text = loc("No Shipping Address")
-        stackView.addArrangedSubview(shippingView)
-    }
-
-    private func setupPaymentMethodView() {
-        stackView.addArrangedSubview(paymentMethodView)
-
-        paymentMethodView.tapAction = {
-            guard let paymentURL = self.checkoutViewModel.checkout?.payment.selectionPageUrl else { return }
-            let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
-            paymentSelectionViewController.paymentCompletion = { _ in
-                self.loadCustomerData()
-            }
-            self.showViewController(paymentSelectionViewController, sender: self)
-        }
-    }
-
-    private func updateData() {
-        paymentMethodView.titleTextLabel.text = loc("Payment")
-        paymentMethodView.detailTextLabel.text = self.checkoutViewModel.selectedPaymentMethod ?? loc("No Payment Method")
-
-        productNameLabel.text = checkoutViewModel.article.brand.name
-        purchasedObjectSummaryLabel.text = checkoutViewModel.article.name
-
-        productImageView.setImage(fromUrl: checkoutViewModel.article.thumbnailUrl)
-
-        shippingView.detailTextLabel.text = self.checkoutViewModel.shippingAddress(localizedWith: self.checkout)
     }
 
 }

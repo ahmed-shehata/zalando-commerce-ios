@@ -55,7 +55,7 @@ final class AddressRowViewCell: UITableViewCell {
 
     private func updateViews() {
         titleLabel.text = address.firstName
-        fullAddressLabel.text = address.fullAddress
+        fullAddressLabel.text = address.formattedPostalAddress
     }
 
 }
