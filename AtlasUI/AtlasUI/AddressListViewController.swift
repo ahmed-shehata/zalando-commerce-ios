@@ -7,7 +7,7 @@ final class AddressListViewController: UIViewController, UITableViewDelegate, UI
     private let addresses: [Address]
     private let addressType: AddressType
 
-    private let selectionCompletion: (pickedAddress: Address, pickedAddressType: AddressType) -> Void
+    private let selectionCompletion: AddressSelectionCompletion
 
     private var selectedAddress: Address? {
         didSet {

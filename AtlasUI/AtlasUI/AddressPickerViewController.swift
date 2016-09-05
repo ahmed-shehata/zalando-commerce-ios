@@ -10,14 +10,16 @@ enum AddressType {
     case billing
 }
 
+typealias AddressSelectionCompletion = (pickedAddress: Address, pickedAddressType: AddressType) -> Void
+
 final class AddressPickerViewController: UIViewController, CheckoutProviderType {
 
     internal var checkout: AtlasCheckout
     private let addressType: AddressType
-    private let selectionCompletion: (pickedAddress: Address, pickedAddressType: AddressType) -> Void
+    private let selectionCompletion: AddressSelectionCompletion
 
     init(checkout: AtlasCheckout, addressType: AddressType,
-        addressSelectionCompletion: (pickedAddress: Address, pickedAddressType: AddressType) -> Void) {
+        addressSelectionCompletion: AddressSelectionCompletion) {
             self.checkout = checkout
             self.addressType = addressType
             self.selectionCompletion = addressSelectionCompletion

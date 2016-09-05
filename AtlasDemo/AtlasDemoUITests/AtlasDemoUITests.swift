@@ -97,9 +97,8 @@ class AtlasDemoUITests: XCTestCase {
 
     private func changeShippingAddress() {
         let tablesQuery = app.tables
-        let scrollViewsQuery = app.scrollViews
 
-        scrollViewsQuery.childrenMatchingType(.Other)
+        app.scrollViews.childrenMatchingType(.Other)
             .element.childrenMatchingType(.Other).elementBoundByIndex(2).staticTexts["Erika Mustermann, Mollstr. 1 10178 Berlin"].tap()
         tablesQuery.staticTexts["Jane Doe, Mollstr. 1 10178 Berlin "] .tap()
     }
@@ -107,8 +106,9 @@ class AtlasDemoUITests: XCTestCase {
     private func changeBillingAddress() {
         let tablesQuery = app.tables
 
-        app.scrollViews.childrenMatchingType(.Other).element.childrenMatchingType(.Other).elementBoundByIndex(4).staticTexts["Erika Mustermann, Mollstr. 1 10178 Berlin"].tap()
-        tablesQuery.staticTexts["John Doe, Mollstr. 1 10178 Berlin "]        .tap()
+        app.scrollViews.childrenMatchingType(.Other)
+            .element.childrenMatchingType(.Other).elementBoundByIndex(4).staticTexts["Erika Mustermann, Mollstr. 1 10178 Berlin"].tap()
+        tablesQuery.staticTexts["John Doe, Mollstr. 1 10178 Berlin "] .tap()
     }
 
     private func tapConnectAndLogin() {

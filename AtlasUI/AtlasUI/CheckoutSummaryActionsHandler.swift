@@ -110,7 +110,8 @@ extension CheckoutSummaryActionsHandler {
     }
 
     internal func showShippingAddressSelectionScreen() {
-        let addressSelectionViewController = AddressPickerViewController(checkout: viewController.checkout, addressType: .shipping, addressSelectionCompletion: pickedAddressCompletion)
+        let addressSelectionViewController = AddressPickerViewController(checkout: viewController.checkout,
+            addressType: .shipping, addressSelectionCompletion: pickedAddressCompletion)
         viewController.showViewController(addressSelectionViewController, sender: viewController)
     }
 
@@ -150,25 +151,25 @@ extension CheckoutSummaryActionsHandler {
             viewController.loaderView.hide()
             viewController.rootStackView.configureData(viewController)
 
-            if viewController.checkoutViewModel.isReadyToCreateCheckout() {
-                viewController.loaderView.show()
-                guard let cartId = viewController.checkoutViewModel.cartId else { return }
-                viewController.checkout.client.createCheckout(cartId,
-                    billingAddressId: viewController.checkoutViewModel.selectedBillingAddressId,
-                    shippingAddressId: viewController.checkoutViewModel.selectedShippingAddressId) { result in
-                        self.viewController.loaderView.hide()
-                        switch result {
+            guard let ready = viewController.checkoutViewModel.isReadyToCreateCheckout where ready == true
+            else { return }
+            viewController.loaderView.show()
+            guard let cartId = viewController.checkoutViewModel.cartId else { return }
+            viewController.checkout.client.createCheckout(cartId,
+                billingAddressId: viewController.checkoutViewModel.selectedBillingAddressId,
+                shippingAddressId: viewController.checkoutViewModel.selectedShippingAddressId) { result in
+                    self.viewController.loaderView.hide()
+                    switch result {
 
-                        case .failure(let error):
-                            self.viewController.dismissViewControllerAnimated(true) {
-                                self.viewController.userMessage.show(error: error)
-                            }
-                        case .success(let checkout):
-                            self.viewController.checkoutViewModel.checkout = checkout
-                            self.viewController.rootStackView.configureData(self.viewController)
+                    case .failure(let error):
+                        self.viewController.dismissViewControllerAnimated(true) {
+                            self.viewController.userMessage.show(error: error)
                         }
+                    case .success(let checkout):
+                        self.viewController.checkoutViewModel.checkout = checkout
+                        self.viewController.rootStackView.configureData(self.viewController)
+                    }
 
-                }
             }
     }
 }
