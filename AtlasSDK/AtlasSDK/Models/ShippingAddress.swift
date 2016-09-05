@@ -6,6 +6,7 @@ import Foundation
 
 public struct ShippingAddress: Addressable {
 
+    public let id: String
     public let gender: Gender
     public let firstName: String
     public let lastName: String
@@ -21,6 +22,7 @@ public struct ShippingAddress: Addressable {
 extension ShippingAddress: JSONInitializable {
 
     private struct Keys {
+        static let id = "id"
         static let gender = "gender"
         static let firstName = "first_name"
         static let lastName = "last_name"
@@ -34,7 +36,8 @@ extension ShippingAddress: JSONInitializable {
 
     init?(json: JSON) {
         guard let
-        genderRaw = json[Keys.gender].string,
+        id = json[Keys.id].string,
+            genderRaw = json[Keys.gender].string,
             gender = Gender(rawValue: genderRaw),
             firstName = json[Keys.firstName].string,
             lastName = json[Keys.lastName].string,
@@ -43,7 +46,9 @@ extension ShippingAddress: JSONInitializable {
             countryCode = json[Keys.countryCode].string else { return nil }
 
         let pickupPoint = PickupPoint(json: json[Keys.pickupPoint])
-        self.init(gender: gender,
+
+        self.init(id: id,
+            gender: gender,
             firstName: firstName,
             lastName: lastName,
             street: json[Keys.street].string,
@@ -57,8 +62,9 @@ extension ShippingAddress: JSONInitializable {
 
 extension ShippingAddress {
 
-    public init?(address: Address) {
-        self.init(gender: address.gender,
+    public init(address: Address) {
+        self.init(id: address.id,
+            gender: address.gender,
             firstName: address.firstName,
             lastName: address.lastName,
             street: address.street,
