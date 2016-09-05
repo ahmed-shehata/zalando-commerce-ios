@@ -46,6 +46,17 @@ class AtlasDemoUITests: XCTestCase {
         tapBackToShop()
     }
 
+    func testDeleteAddress() {
+        let sizeText = app.tables.staticTexts["42"]
+        tapBuyNow("Lamica")
+        waitForElementToAppearAndTap(sizeText)
+        tapConnectAndLogin()
+        app.scrollViews.childrenMatchingType(.Other)
+            .element.childrenMatchingType(.Other).elementBoundByIndex(2).staticTexts["Erika Mustermann, Mollstr. 1 10178 Berlin"].tap()
+        deleteAddresses()
+        app.navigationBars["Summary"].buttons["Cancel"].tap()
+    }
+
     func testBuyProductWithSizesAndNavigatingBack() {
         let summaryNavigationBar = app.navigationBars["Summary"]
         let backButton = summaryNavigationBar.buttons["Back"]
@@ -93,17 +104,6 @@ class AtlasDemoUITests: XCTestCase {
         tapBuyNow()
         tapBackToShop()
 
-    }
-
-    func testDeleteAddress() {
-        let sizeText = app.tables.staticTexts["42"]
-        tapBuyNow("Lamica")
-        waitForElementToAppearAndTap(sizeText)
-        tapConnectAndLogin()
-        app.scrollViews.childrenMatchingType(.Other)
-            .element.childrenMatchingType(.Other).elementBoundByIndex(2).staticTexts["Erika Mustermann, Mollstr. 1 10178 Berlin"].tap()
-        deleteAddresses()
-        app.navigationBars["Summary"].buttons["Cancel"].tap()
     }
 
     private func changeShippingAddress() {
