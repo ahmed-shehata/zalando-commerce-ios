@@ -77,7 +77,7 @@ extension CheckoutViewModel {
 }
 
 extension CheckoutViewModel {
-    func isReadyToCreateCheckout () -> Bool {
+    var isReadyToCreateCheckout: Bool? {
         return self.checkout == nil && self.selectedBillingAddressId != nil && self.selectedShippingAddressId != nil
     }
 }

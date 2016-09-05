@@ -5,29 +5,25 @@
 import UIKit
 import AtlasSDK
 
-protocol AddressPickerViewControllerDelegate: class {
-    func addressPickerViewController(viewController: AddressPickerViewController,
-        pickedAddress address: Address,
-        forAddressType addressType: AddressPickerViewController.AddressType)
+enum AddressType {
+    case shipping
+    case billing
 }
+
+typealias AddressSelectionCompletion = (pickedAddress: Address, pickedAddressType: AddressType) -> Void
 
 final class AddressPickerViewController: UIViewController, CheckoutProviderType {
 
-    enum AddressType {
-        case shipping
-        case billing
-    }
-
-    weak var delegate: AddressPickerViewControllerDelegate?
-
-    internal var checkout: AtlasCheckout!
-
+    internal var checkout: AtlasCheckout
     private let addressType: AddressType
+    private let selectionCompletion: AddressSelectionCompletion
 
-    init(checkout: AtlasCheckout, addressType: AddressType) {
-        self.checkout = checkout
-        self.addressType = addressType
-        super.init(nibName: nil, bundle: nil)
+    init(checkout: AtlasCheckout, addressType: AddressType,
+        addressSelectionCompletion: AddressSelectionCompletion) {
+            self.checkout = checkout
+            self.addressType = addressType
+            self.selectionCompletion = addressSelectionCompletion
+            super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -76,25 +72,17 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
     private func showAddressListViewController(addresses: [Address]) {
         let selectedAddress: Address? = nil
 
-        let addressListViewController = AddressListViewController(addresses: addresses, selectedAddress: selectedAddress)
-        addressListViewController.delegate = self
+        let addressListViewController = AddressListViewController(addresses: addresses, selectedAddress: selectedAddress,
+            addressType: addressType, addressSelectionCompletion: selectionCompletion)
+
         addChildViewController(addressListViewController)
         addressListViewController.view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(addressListViewController.view)
         addressListViewController.view.topAnchor.constraintEqualToAnchor(topLayoutGuide.bottomAnchor).active = true
+
         addressListViewController.view.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
         addressListViewController.view.bottomAnchor.constraintEqualToAnchor(bottomLayoutGuide.topAnchor).active = true
         addressListViewController.view.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
         addressListViewController.didMoveToParentViewController(self)
     }
-}
-
-extension AddressPickerViewController: AddressListViewControllerDelegate {
-    internal func addressListViewController(viewController: AddressListViewController, didSelectAddress address: Address) {
-        delegate?.addressPickerViewController(self, pickedAddress: address, forAddressType: addressType)
-    }
-}
-protocol AddressListViewControllerDelegate: class {
-    func addressListViewController(viewController: AddressListViewController,
-        didSelectAddress address: Address)
 }

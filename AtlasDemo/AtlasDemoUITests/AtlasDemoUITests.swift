@@ -68,6 +68,49 @@ class AtlasDemoUITests: XCTestCase {
         tapBackToShop()
     }
 
+    func testChangeShippingAddress() {
+        let sizeText = app.tables.staticTexts["42"]
+
+        tapBuyNow("Lamica")
+
+        waitForElementToAppearAndTap(sizeText)
+        tapConnectAndLogin()
+        changeShippingAddress()
+        tapBackToSummaryButton()
+        tapBuyNow()
+        tapBackToShop()
+
+    }
+
+    func testChangeBillingAddress() {
+        let sizeText = app.tables.staticTexts["42"]
+
+        tapBuyNow("Lamica")
+        waitForElementToAppearAndTap(sizeText)
+        tapConnectAndLogin()
+        changeBillingAddress()
+        tapBackToSummaryButton()
+        tapBuyNow()
+        tapBackToShop()
+
+    }
+
+    private func changeShippingAddress() {
+        let tablesQuery = app.tables
+
+        app.scrollViews.childrenMatchingType(.Other)
+            .element.childrenMatchingType(.Other).elementBoundByIndex(2).staticTexts["Erika Mustermann, Mollstr. 1 10178 Berlin"].tap()
+        tablesQuery.staticTexts["Jane Doe, Mollstr. 1 10178 Berlin "] .tap()
+    }
+
+    private func changeBillingAddress() {
+        let tablesQuery = app.tables
+
+        app.scrollViews.childrenMatchingType(.Other)
+            .element.childrenMatchingType(.Other).elementBoundByIndex(4).staticTexts["Erika Mustermann, Mollstr. 1 10178 Berlin"].tap()
+        tablesQuery.staticTexts["John Doe, Mollstr. 1 10178 Berlin "] .tap()
+    }
+
     private func tapConnectAndLogin() {
         waitForElementToAppearAndTap(app.buttons["Checkout with Zalando"])
         fillInLogin()
@@ -76,6 +119,10 @@ class AtlasDemoUITests: XCTestCase {
 
     private func tapBuyNow() {
         waitForElementToAppearAndTap(app.buttons["Place order"])
+    }
+
+    private func tapBackToSummaryButton() {
+        waitForElementToAppearAndTap(app.buttons["Summary"])
     }
 
     private func tapBackToShop() {

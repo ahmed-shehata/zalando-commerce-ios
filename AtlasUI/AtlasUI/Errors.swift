@@ -62,4 +62,3 @@ extension LoginError: UserPresentable {
 }
 
 extension AtlasConfigurationError: UserPresentable { }
-
