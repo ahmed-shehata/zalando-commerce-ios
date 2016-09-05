@@ -60,6 +60,15 @@ extension APIClient {
             parameters: parameters)
     }
 
+    func deleteAddress(addressId: String) -> EndpointType {
+        let queryItems = NSURLQueryItem.build(
+            ["sales_channel": self.config.salesChannel, "address_id": addressId])
+        return APIEndpoint(baseURL: self.config.checkoutAPIURL,
+            method: .DELETE,
+            path: "addresses/\(addressId)",
+            queryItems: queryItems)
+    }
+
     func makeFetchAddressListEndpoint(salesChannel: String) -> EndpointType {
         return APIEndpoint(baseURL: self.config.checkoutAPIURL,
             method: .GET,

@@ -72,7 +72,7 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
     private func showAddressListViewController(addresses: [Address]) {
         let selectedAddress: Address? = nil
 
-        let addressListViewController = AddressListViewController(addresses: addresses, selectedAddress: selectedAddress,
+        let addressListViewController = AddressListViewController(checkout: checkout, addresses: addresses, selectedAddress: selectedAddress,
             addressType: addressType, addressSelectionCompletion: selectionCompletion)
 
         addChildViewController(addressListViewController)

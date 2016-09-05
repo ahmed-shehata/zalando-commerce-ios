@@ -168,6 +168,8 @@ extension CheckoutSummaryActionsHandler {
                     case .success(let checkout):
                         self.viewController.checkoutViewModel.checkout = checkout
                         self.viewController.rootStackView.configureData(self.viewController)
+                        self.viewController.refreshViewData()
+
                     }
 
             }
