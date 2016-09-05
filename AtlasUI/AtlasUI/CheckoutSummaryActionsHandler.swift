@@ -169,9 +169,7 @@ extension CheckoutSummaryActionsHandler {
                         self.viewController.checkoutViewModel.checkout = checkout
                         self.viewController.rootStackView.configureData(self.viewController)
                         self.viewController.refreshViewData()
-
                     }
-
             }
     }
 }
