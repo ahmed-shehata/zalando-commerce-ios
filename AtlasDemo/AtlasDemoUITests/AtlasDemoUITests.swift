@@ -95,6 +95,17 @@ class AtlasDemoUITests: XCTestCase {
 
     }
 
+    func testDeleteAddress() {
+        let sizeText = app.tables.staticTexts["42"]
+        tapBuyNow("Lamica")
+        waitForElementToAppearAndTap(sizeText)
+        tapConnectAndLogin()
+        app.scrollViews.childrenMatchingType(.Other)
+            .element.childrenMatchingType(.Other).elementBoundByIndex(2).staticTexts["Erika Mustermann, Mollstr. 1 10178 Berlin"].tap()
+        deleteAddresses()
+        app.navigationBars["Summary"].buttons["Cancel"].tap()
+    }
+
     private func changeShippingAddress() {
         let tablesQuery = app.tables
 
@@ -109,6 +120,19 @@ class AtlasDemoUITests: XCTestCase {
         app.scrollViews.childrenMatchingType(.Other)
             .element.childrenMatchingType(.Other).elementBoundByIndex(4).staticTexts["Erika Mustermann, Mollstr. 1 10178 Berlin"].tap()
         tablesQuery.staticTexts["John Doe, Mollstr. 1 10178 Berlin "] .tap()
+    }
+
+    private func deleteAddresses() {
+        let shippingAddressNavigationBar = app.navigationBars["Shipping Address"]
+        shippingAddressNavigationBar.buttons["Edit"].tap()
+        app.tables.buttons["Delete Jane, Jane Doe, Mollstr. 1 10178 Berlin"] .tap()
+
+        let deleteButton = app.tables.buttons["Delete"]
+        deleteButton.tap()
+        app.tables.buttons["Delete John, John Doe, Mollstr. 1 10178 Berlin"] .tap()
+        deleteButton.tap()
+        shippingAddressNavigationBar.buttons["Done"].tap()
+        shippingAddressNavigationBar.buttons["Summary"].tap()
     }
 
     private func tapConnectAndLogin() {

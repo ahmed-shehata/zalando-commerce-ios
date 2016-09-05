@@ -40,11 +40,9 @@ final class AddressListViewController: UIViewController, UITableViewDelegate, UI
     }
 
     func setupTableView() {
+
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor, constant: 0).active = true
-        tableView.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor, constant: 0).active = true
-        tableView.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor, constant: 0).active = true
-        tableView.topAnchor.constraintEqualToAnchor(view.topAnchor, constant: 0).active = true
+        tableView.fillInSuperView()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerReusableCell(AddressRowViewCell.self)
