@@ -39,17 +39,13 @@ extension UIView {
 
 extension UIView {
 
-    func setWidthEqualToView(view: UIView, multiplier: CGFloat = 1) {
+    func setWidth(equalToView view: UIView?, multiplier: CGFloat = 1) {
+        guard let view = view else { return }
         translatesAutoresizingMaskIntoConstraints = false
         widthAnchor.constraintEqualToAnchor(view.widthAnchor, multiplier: multiplier).active = true
     }
 
-    func setWidthAsSuperViewWidth(multiplier: CGFloat = 1) {
-        guard let superview = superview else { return }
-        setWidthEqualToView(superview, multiplier: multiplier)
-    }
-
-    func setWidthToConstant(width: CGFloat) {
+    func setWidth(equalToConstant width: CGFloat) {
         translatesAutoresizingMaskIntoConstraints = false
         widthAnchor.constraintEqualToConstant(width).active = true
     }
@@ -58,17 +54,13 @@ extension UIView {
 
 extension UIView {
 
-    func setHeightEqualToView(view: UIView, multiplier: CGFloat = 1) {
+    func setHeight(equalToView view: UIView?, multiplier: CGFloat = 1) {
+        guard let view = view else { return }
         translatesAutoresizingMaskIntoConstraints = false
         heightAnchor.constraintEqualToAnchor(view.heightAnchor, multiplier: multiplier).active = true
     }
 
-    func setHeightAsSuperViewHeight(multiplier: CGFloat = 1) {
-        guard let superview = superview else { return }
-        setHeightEqualToView(superview, multiplier: multiplier)
-    }
-
-    func setHeightToConstant(height: CGFloat) {
+    func setHeight(equalToConstant height: CGFloat) {
         translatesAutoresizingMaskIntoConstraints = false
         heightAnchor.constraintEqualToConstant(height).active = true
     }

@@ -102,15 +102,15 @@ extension CheckoutSummaryMainStackView: UIBuilder {
 
     func configureConstraints() {
         fillInSuperView()
-        setWidthAsSuperViewWidth()
+        setWidth(equalToView: superview)
 
-        shippingAddressStackView.setHeightEqualToView(billingAddressStackView)
-        shippingAddressStackView.setHeightEqualToView(paymentStackView)
+        shippingAddressStackView.setHeight(equalToView: billingAddressStackView)
+        shippingAddressStackView.setHeight(equalToView: paymentStackView)
 
-        productSeparatorView.setHeightToConstant(10)
-        shippingAddressSeparatorView.setHeightToConstant(1)
-        billingAddressSeparatorView.setHeightToConstant(1)
-        paymentSeparatorView.setHeightToConstant(1)
+        productSeparatorView.setHeight(equalToConstant: 10)
+        shippingAddressSeparatorView.setHeight(equalToConstant: 1)
+        billingAddressSeparatorView.setHeight(equalToConstant: 1)
+        paymentSeparatorView.setHeight(equalToConstant: 1)
     }
 
     func builderSubviews() -> [UIBuilder] {

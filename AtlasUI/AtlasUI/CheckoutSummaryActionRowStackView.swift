@@ -45,8 +45,8 @@ extension CheckoutSummaryActionRowStackView: UIBuilder {
     }
 
     func configureConstraints() {
-        titleLabel.setWidthEqualToView(valueLabel)
-        arrowImageView.setWidthToConstant(20)
+        titleLabel.setWidth(equalToView: valueLabel)
+        arrowImageView.setWidth(equalToConstant: 20)
     }
 
 }

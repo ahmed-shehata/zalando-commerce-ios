@@ -58,7 +58,7 @@ extension CheckoutSummaryProductStackView: UIBuilder {
 
     func configureConstraints() {
         articleImageView.setSquareAspectRatio()
-        articleImageView.setWidthAsSuperViewWidth(0.2)
+        articleImageView.setWidth(equalToView: superview, multiplier: 0.2)
     }
 
 }
