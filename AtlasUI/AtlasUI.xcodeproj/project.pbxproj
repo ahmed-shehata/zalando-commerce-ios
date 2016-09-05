@@ -51,6 +51,7 @@
 		E96328911D6EFF0600BDAE06 /* CheckoutSummaryStoryboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E963288D1D6EFF0600BDAE06 /* CheckoutSummaryStoryboardViewController.swift */; };
 		E96328921D6EFF0600BDAE06 /* CheckoutViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E963288E1D6EFF0600BDAE06 /* CheckoutViewState.swift */; };
 		E973CF611D70329900B706E8 /* CheckoutSummaryActionsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E973CF601D70329900B706E8 /* CheckoutSummaryActionsHandler.swift */; };
+		E976DEE01D7D6D8D00DD84E7 /* EditAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E976DEDF1D7D6D8D00DD84E7 /* EditAddressViewController.swift */; };
 		E9D510061D757031008D28E7 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D510051D757031008D28E7 /* String.swift */; };
 /* End PBXBuildFile section */
 
@@ -127,6 +128,7 @@
 		E963288D1D6EFF0600BDAE06 /* CheckoutSummaryStoryboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryStoryboardViewController.swift; sourceTree = "<group>"; };
 		E963288E1D6EFF0600BDAE06 /* CheckoutViewState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutViewState.swift; sourceTree = "<group>"; };
 		E973CF601D70329900B706E8 /* CheckoutSummaryActionsHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryActionsHandler.swift; sourceTree = "<group>"; };
+		E976DEDF1D7D6D8D00DD84E7 /* EditAddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAddressViewController.swift; sourceTree = "<group>"; };
 		E9D510051D757031008D28E7 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -334,6 +336,7 @@
 				E8B183131D75C5B4001CF8BC /* AddressPickerViewController.swift */,
 				E8B183231D772B82001CF8BC /* AddressRowViewCell.swift */,
 				E8B183251D772BB0001CF8BC /* AddressListViewController.swift */,
+				E976DEDF1D7D6D8D00DD84E7 /* EditAddressViewController.swift */,
 			);
 			name = "Address Selection";
 			sourceTree = "<group>";
@@ -521,6 +524,7 @@
 				8186B15F1D51EE930068EE37 /* AtlasCheckout.swift in Sources */,
 				8186B14F1D51EE930068EE37 /* UIImageView.swift in Sources */,
 				E8B183221D77233C001CF8BC /* PaymentSummaryRow.swift in Sources */,
+				E976DEE01D7D6D8D00DD84E7 /* EditAddressViewController.swift in Sources */,
 				E85BE3531D5DF60C009EF7BA /* PaymentSelectionViewController.swift in Sources */,
 				E8B183141D75C5B4001CF8BC /* AddressPickerViewController.swift in Sources */,
 				8186B1581D51EE930068EE37 /* CheckoutTransitioningDelegate.swift in Sources */,
