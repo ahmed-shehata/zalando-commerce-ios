@@ -18,7 +18,7 @@ class CheckoutSummaryMainStackView: UIStackView {
     internal let productSeparatorView: BorderView = {
         let view = BorderView()
         view.bottomBorder = true
-        view.borderColor = UIColor(netHex: 0xE5E5E5)
+        view.borderColor = UIColor(hex: 0xE5E5E5)
         return view
     }()
 
@@ -35,7 +35,7 @@ class CheckoutSummaryMainStackView: UIStackView {
         let view = BorderView()
         view.bottomBorder = true
         view.leadingMargin = 15
-        view.borderColor = UIColor(netHex: 0xE5E5E5)
+        view.borderColor = UIColor(hex: 0xE5E5E5)
         return view
     }()
 
@@ -52,7 +52,7 @@ class CheckoutSummaryMainStackView: UIStackView {
         let view = BorderView()
         view.bottomBorder = true
         view.leadingMargin = 15
-        view.borderColor = UIColor(netHex: 0xE5E5E5)
+        view.borderColor = UIColor(hex: 0xE5E5E5)
         return view
     }()
 
@@ -68,7 +68,7 @@ class CheckoutSummaryMainStackView: UIStackView {
     internal let paymentSeparatorView: BorderView = {
         let view = BorderView()
         view.bottomBorder = true
-        view.borderColor = UIColor(netHex: 0xE5E5E5)
+        view.borderColor = UIColor(hex: 0xE5E5E5)
         return view
     }()
 
