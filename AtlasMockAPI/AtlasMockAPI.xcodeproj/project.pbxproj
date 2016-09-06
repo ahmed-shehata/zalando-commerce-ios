@@ -56,6 +56,7 @@
 		E837A75F1D34FFB400FC52C9 /* GET*|articles|AD541L009-G11.json in Resources */ = {isa = PBXBuildFile; fileRef = E837A75E1D34FFB400FC52C9 /* GET*|articles|AD541L009-G11.json */; };
 		E845BDA01D476DCA00F410B0 /* POST*|carts.json in Resources */ = {isa = PBXBuildFile; fileRef = E845BD9D1D4767B500F410B0 /* POST*|carts.json */; };
 		E845BDA21D4773B400F410B0 /* POST*|checkouts.json in Resources */ = {isa = PBXBuildFile; fileRef = E845BDA11D4773B400F410B0 /* POST*|checkouts.json */; };
+		E88FD7A01D7F00B30053795D /* PUT*|checkouts|CHECKOUT_ID.json in Resources */ = {isa = PBXBuildFile; fileRef = E88FD79F1D7F00B30053795D /* PUT*|checkouts|CHECKOUT_ID.json */; };
 		E893B5921D2E707A004D9547 /* AtlasMockAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = E893B5911D2E707A004D9547 /* AtlasMockAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E893B5AA1D2E70BE004D9547 /* AtlasMockAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E893B5A91D2E70BE004D9547 /* AtlasMockAPI.swift */; };
 		E893B5C01D2E861A004D9547 /* Swifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E893B5BF1D2E861A004D9547 /* Swifter.framework */; };
@@ -151,6 +152,7 @@
 		E837A75E1D34FFB400FC52C9 /* GET*|articles|AD541L009-G11.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles|AD541L009-G11.json"; sourceTree = "<group>"; };
 		E845BD9D1D4767B500F410B0 /* POST*|carts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "POST*|carts.json"; sourceTree = "<group>"; };
 		E845BDA11D4773B400F410B0 /* POST*|checkouts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "POST*|checkouts.json"; sourceTree = "<group>"; };
+		E88FD79F1D7F00B30053795D /* PUT*|checkouts|CHECKOUT_ID.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "PUT*|checkouts|CHECKOUT_ID.json"; sourceTree = "<group>"; };
 		E893B58E1D2E707A004D9547 /* AtlasMockAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AtlasMockAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E893B5911D2E707A004D9547 /* AtlasMockAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtlasMockAPI.h; sourceTree = "<group>"; };
 		E893B5931D2E707A004D9547 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 				E8C97A411D6E335000AE5997 /* GET*|addresses.json */,
 				E898E3141D7D9BF900A2F427 /* DELETE*|addresses|6616154.json */,
 				E898E3161D7D9C1200A2F427 /* DELETE*|addresses|6702748.json */,
+				E88FD79F1D7F00B30053795D /* PUT*|checkouts|CHECKOUT_ID.json */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 				E8B1307E1D2FB411007D4F17 /* GET*|articles.json in Resources */,
 				E80998D11D367825007FD218 /* GET*|articles|EV451G023-Q11.json in Resources */,
 				E8C97A421D6E335000AE5997 /* GET*|addresses.json in Resources */,
+				E88FD7A01D7F00B30053795D /* PUT*|checkouts|CHECKOUT_ID.json in Resources */,
 				E8E542031D38246200FB59F5 /* GET*|articles|GU121D08Z-Q11.json in Resources */,
 				810BA01A1D5CC584004BDAD9 /* !customer-not-auth.json in Resources */,
 			);
