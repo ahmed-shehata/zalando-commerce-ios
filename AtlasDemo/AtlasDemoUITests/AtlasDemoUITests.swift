@@ -16,7 +16,7 @@ class AtlasDemoUITests: XCTestCase {
 
     override class func tearDown() {
         super.tearDown()
-        try! AtlasMockAPI.stopServer() // swiftlint:disable:this force_try
+         try! AtlasMockAPI.stopServer() // swiftlint:disable:this force_try
     }
 
     override func setUp() {
@@ -106,33 +106,36 @@ class AtlasDemoUITests: XCTestCase {
 
     }
 
-    private func changeShippingAddress() {
+    func changeShippingAddress() {
         let tablesQuery = app.tables
 
         app.scrollViews.childrenMatchingType(.Other)
             .element.childrenMatchingType(.Other).elementBoundByIndex(2).staticTexts["Erika Mustermann, Mollstr. 1 10178 Berlin"].tap()
-        tablesQuery.staticTexts["Jane Doe, Mollstr. 1 10178 Berlin "] .tap()
+        tablesQuery.cells.containingType(.StaticText, identifier: "Jane").staticTexts["Mollstr. 1 10178 Berlin "].tap()
     }
 
-    private func changeBillingAddress() {
+    func changeBillingAddress() {
         let tablesQuery = app.tables
 
         app.scrollViews.childrenMatchingType(.Other)
             .element.childrenMatchingType(.Other).elementBoundByIndex(4).staticTexts["Erika Mustermann, Mollstr. 1 10178 Berlin"].tap()
-        tablesQuery.staticTexts["John Doe, Mollstr. 1 10178 Berlin "] .tap()
+        tablesQuery.cells.containingType(.StaticText, identifier: "Jane").staticTexts["Mollstr. 1 10178 Berlin "].tap()
+
     }
 
     private func deleteAddresses() {
         let shippingAddressNavigationBar = app.navigationBars["Shipping Address"]
         shippingAddressNavigationBar.buttons["Edit"].tap()
-        app.tables.buttons["Delete Jane, Jane Doe, Mollstr. 1 10178 Berlin"] .tap()
+        let tablesQuery = app.tables
 
-        let deleteButton = app.tables.buttons["Delete"]
-        deleteButton.tap()
-        app.tables.buttons["Delete John, John Doe, Mollstr. 1 10178 Berlin"] .tap()
-        deleteButton.tap()
-        shippingAddressNavigationBar.buttons["Done"].tap()
+        tablesQuery.buttons["Delete Jane, Mollstr. 1 10178 Berlin"]        .tap()
+        tablesQuery.buttons["Delete"]        .tap()
+
+        tablesQuery.buttons["Delete John, Mollstr. 1 10178 Berlin"]        .tap()
+        tablesQuery.buttons["Delete"]        .tap()
+        app.navigationBars["Shipping Address"].buttons["Done"].tap()
         shippingAddressNavigationBar.buttons["Summary"].tap()
+
     }
 
     private func tapConnectAndLogin() {

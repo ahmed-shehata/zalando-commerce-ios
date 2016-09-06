@@ -59,7 +59,8 @@ extension AddressListTableViewDelegate: UITableViewDelegate {
 
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle,
         forRowAtIndexPath indexPath: NSIndexPath) {
-            if editingStyle == .Delete {
+            switch editingStyle {
+            case .Delete:
                 let address = self.addresses[indexPath.item]
                 checkout.client.deleteAddress(address.id) { result in
                     switch result {
@@ -70,6 +71,8 @@ extension AddressListTableViewDelegate: UITableViewDelegate {
                         AtlasLogger.logError(error)
                     }
                 }
+            default:
+                break
             }
     }
 
