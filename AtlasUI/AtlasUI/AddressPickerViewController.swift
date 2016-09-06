@@ -133,19 +133,4 @@ final class AddressPickerViewController: UIViewController, UITableViewDelegate, 
         tableView.reloadData()
     }
 
-    private func showAddressListViewController(addresses: [Address]) {
-        let addressListViewController = AddressListViewController(checkout: checkout, addresses: addresses,
-            addressType: addressType, addressSelectionCompletion: selectionCompletion)
-        addressListViewController.selectedAddress = selectedAddress
-        addChildViewController(addressListViewController)
-        addressListViewController.view.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(addressListViewController.view)
-        addressListViewController.view.topAnchor.constraintEqualToAnchor(topLayoutGuide.bottomAnchor).active = true
-
-        addressListViewController.view.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
-        addressListViewController.view.bottomAnchor.constraintEqualToAnchor(bottomLayoutGuide.topAnchor).active = true
-        addressListViewController.view.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
-        addressListViewController.didMoveToParentViewController(self)
-    }
-
 }
