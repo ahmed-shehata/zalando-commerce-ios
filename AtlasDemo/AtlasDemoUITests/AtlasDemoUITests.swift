@@ -16,7 +16,7 @@ class AtlasDemoUITests: XCTestCase {
 
     override class func tearDown() {
         super.tearDown()
-        // try! AtlasMockAPI.stopServer() // swiftlint:disable:this force_try
+         try! AtlasMockAPI.stopServer() // swiftlint:disable:this force_try
     }
 
     override func setUp() {
