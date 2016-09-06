@@ -37,6 +37,7 @@
 		E85BE3531D5DF60C009EF7BA /* PaymentSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85BE3521D5DF60C009EF7BA /* PaymentSelectionViewController.swift */; };
 		E85D38E61D5B7182008A42C2 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85D38E51D5B7182008A42C2 /* UIStackView.swift */; };
 		E85D38E81D5B78A1008A42C2 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85D38E71D5B78A1008A42C2 /* UIView.swift */; };
+		E88FD79C1D7ED1110053795D /* AddressListTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88FD79B1D7ED1110053795D /* AddressListTableViewDelegate.swift */; };
 		E8B183141D75C5B4001CF8BC /* AddressPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B183131D75C5B4001CF8BC /* AddressPickerViewController.swift */; };
 		E8B1831F1D772332001CF8BC /* (null) in Sources */ = {isa = PBXBuildFile; };
 		E8B183241D772B82001CF8BC /* AddressRowViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B183231D772B82001CF8BC /* AddressRowViewCell.swift */; };
@@ -116,6 +117,7 @@
 		E85BE3521D5DF60C009EF7BA /* PaymentSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentSelectionViewController.swift; sourceTree = "<group>"; };
 		E85D38E51D5B7182008A42C2 /* UIStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		E85D38E71D5B78A1008A42C2 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		E88FD79B1D7ED1110053795D /* AddressListTableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressListTableViewDelegate.swift; sourceTree = "<group>"; };
 		E8B183131D75C5B4001CF8BC /* AddressPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressPickerViewController.swift; sourceTree = "<group>"; };
 		E8B183231D772B82001CF8BC /* AddressRowViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressRowViewCell.swift; sourceTree = "<group>"; };
 		E9325D361D674305004C29DC /* RoundedViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedViews.swift; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 			children = (
 				E8B183131D75C5B4001CF8BC /* AddressPickerViewController.swift */,
 				E8B183231D772B82001CF8BC /* AddressRowViewCell.swift */,
+				E88FD79B1D7ED1110053795D /* AddressListTableViewDelegate.swift */,
 			);
 			name = "Address Selection";
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 				E973CF611D70329900B706E8 /* CheckoutSummaryActionsHandler.swift in Sources */,
 				E9325D371D674305004C29DC /* RoundedViews.swift in Sources */,
 				E85D38E61D5B7182008A42C2 /* UIStackView.swift in Sources */,
+				E88FD79C1D7ED1110053795D /* AddressListTableViewDelegate.swift in Sources */,
 				E9676B091D7820AD00ED7D8D /* UIBuilder.swift in Sources */,
 				E96328911D6EFF0600BDAE06 /* CheckoutSummaryViewController.swift in Sources */,
 				E9676B0F1D7823D600ED7D8D /* CheckoutSummaryProductStackView.swift in Sources */,
