@@ -1,3 +1,7 @@
+//
+//  Copyright © 2016 Zalando SE. All rights reserved.
+//
+
 import Foundation
 import AtlasSDK
 
@@ -10,7 +14,7 @@ final class AddressListViewController: UIViewController, UITableViewDelegate, UI
 
     private let selectionCompletion: AddressSelectionCompletion
 
-    private var selectedAddress: Address? {
+    var selectedAddress: Addressable? {
         didSet {
             Async.main { [weak self] in
                 guard let strongSelf = self, selectedAddress = strongSelf.selectedAddress else { return }
@@ -19,10 +23,9 @@ final class AddressListViewController: UIViewController, UITableViewDelegate, UI
         }
     }
 
-    init(checkout: AtlasCheckout, addresses: [Address], selectedAddress: Address?, addressType: AddressType,
+    init(checkout: AtlasCheckout, addresses: [Address], addressType: AddressType,
         addressSelectionCompletion: AddressSelectionCompletion) {
             self.addresses = addresses
-            self.selectedAddress = selectedAddress
             self.addressType = addressType
             self.selectionCompletion = addressSelectionCompletion
             self.checkout = checkout
@@ -87,7 +90,7 @@ final class AddressListViewController: UIViewController, UITableViewDelegate, UI
             case let .dequeuedCell(addressRowCell):
                 let address = self.addresses[indexPath.item]
                 addressRowCell.address = address
-                addressRowCell.accessoryType = self.selectedAddress == address ? .Checkmark : .None
+                addressRowCell.accessoryType = self.selectedAddress?.id == address.id ? .Checkmark : .None
                 return addressRowCell
             case let .defaultCell(cell):
                 return cell
@@ -96,13 +99,9 @@ final class AddressListViewController: UIViewController, UITableViewDelegate, UI
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var indexPathsToReload = [indexPath]
-
-        if let selectedAddress = selectedAddress, index = addresses.indexOf(selectedAddress) {
-            indexPathsToReload.append(NSIndexPath(forItem: index, inSection: 0))
-        }
         selectedAddress = addresses[indexPath.item]
+
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        tableView.reloadRowsAtIndexPaths(indexPathsToReload, withRowAnimation: .Automatic)
+        tableView.reloadData()
     }
 }

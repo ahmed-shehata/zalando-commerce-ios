@@ -10,13 +10,14 @@ enum AddressType {
     case billing
 }
 
-typealias AddressSelectionCompletion = (pickedAddress: Address, pickedAddressType: AddressType) -> Void
+typealias AddressSelectionCompletion = (pickedAddress: Addressable, pickedAddressType: AddressType) -> Void
 
 final class AddressPickerViewController: UIViewController, CheckoutProviderType {
 
     internal var checkout: AtlasCheckout
     private let addressType: AddressType
     private let selectionCompletion: AddressSelectionCompletion
+    var selectedAddress: Addressable? = nil
 
     init(checkout: AtlasCheckout, addressType: AddressType,
         addressSelectionCompletion: AddressSelectionCompletion) {
@@ -70,11 +71,9 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
     }
 
     private func showAddressListViewController(addresses: [Address]) {
-        let selectedAddress: Address? = nil
-
-        let addressListViewController = AddressListViewController(checkout: checkout, addresses: addresses, selectedAddress: selectedAddress,
+        let addressListViewController = AddressListViewController(checkout: checkout, addresses: addresses,
             addressType: addressType, addressSelectionCompletion: selectionCompletion)
-
+        addressListViewController.selectedAddress = selectedAddress
         addChildViewController(addressListViewController)
         addressListViewController.view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(addressListViewController.view)

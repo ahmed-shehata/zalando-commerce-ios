@@ -62,7 +62,8 @@ extension ShippingAddress: JSONInitializable {
 
 extension ShippingAddress {
 
-    public init(address: Address) {
+    public init?(address: Addressable) {
+        guard let address = address as? Address else { return nil }
         self.init(id: address.id,
             gender: address.gender,
             firstName: address.firstName,

@@ -35,8 +35,10 @@ extension CheckoutSummaryActionsHandler {
             return
         }
 
-        let updateCheckoutRequest = UpdateCheckoutRequest(billingAddressId: viewController.checkoutViewModel.selectedBillingAddressId,
-            shippingAddressId: viewController.checkoutViewModel.selectedShippingAddressId)
+        let updateCheckoutRequest = UpdateCheckoutRequest(billingAddressId:
+                viewController.checkoutViewModel.selectedBillingAddress?.id,
+            shippingAddressId: viewController.checkoutViewModel.selectedShippingAddress?.id)
+
         viewController.checkout.client.updateCheckout(checkout.id, updateCheckoutRequest: updateCheckoutRequest) { result in
             switch result {
             case .failure(let error):
@@ -113,6 +115,7 @@ extension CheckoutSummaryActionsHandler {
         guard Atlas.isUserLoggedIn() else { return loadCustomerData() }
         let addressSelectionViewController = AddressPickerViewController(checkout: viewController.checkout,
             addressType: .shipping, addressSelectionCompletion: pickedAddressCompletion)
+        addressSelectionViewController.selectedAddress = viewController.checkoutViewModel.selectedShippingAddress
         viewController.showViewController(addressSelectionViewController, sender: viewController)
     }
 
@@ -120,6 +123,7 @@ extension CheckoutSummaryActionsHandler {
         guard Atlas.isUserLoggedIn() else { return loadCustomerData() }
         let addressSelectionViewController = AddressPickerViewController(checkout: viewController.checkout, addressType: .billing,
             addressSelectionCompletion: pickedAddressCompletion)
+        addressSelectionViewController.selectedAddress = viewController.checkoutViewModel.selectedBillingAddress
         viewController.showViewController(addressSelectionViewController, sender: viewController)
     }
 
@@ -139,27 +143,27 @@ extension CheckoutSummaryActionsHandler {
 }
 
 extension CheckoutSummaryActionsHandler {
-    func pickedAddressCompletion(pickedAddress address: Address,
+    func pickedAddressCompletion(pickedAddress address: Addressable,
         forAddressType addressType: AddressType) {
 
             switch addressType {
             case AddressType.billing:
-                viewController.checkoutViewModel.selectedBillingAddress = BillingAddress(address: address)
-                viewController.checkoutViewModel.selectedBillingAddressId = address.id
+                guard let billingAddress = BillingAddress(address: address) else { return }
+                viewController.checkoutViewModel.selectedBillingAddress = billingAddress
             case AddressType.shipping:
-                viewController.checkoutViewModel.selectedShippingAddress = ShippingAddress(address: address)
-                viewController.checkoutViewModel.selectedShippingAddressId = address.id
+                guard let shippingAddress = ShippingAddress(address: address) else { return }
+                viewController.checkoutViewModel.selectedShippingAddress = shippingAddress
             }
             viewController.loaderView.hide()
             viewController.rootStackView.configureData(viewController)
-
+            viewController.refreshViewData()
             guard let ready = viewController.checkoutViewModel.isReadyToCreateCheckout where ready == true
             else { return }
             viewController.loaderView.show()
             guard let cartId = viewController.checkoutViewModel.cartId else { return }
             viewController.checkout.client.createCheckout(cartId,
-                billingAddressId: viewController.checkoutViewModel.selectedBillingAddressId,
-                shippingAddressId: viewController.checkoutViewModel.selectedShippingAddressId) { result in
+                billingAddressId: viewController.checkoutViewModel.selectedBillingAddress?.id,
+                shippingAddressId: viewController.checkoutViewModel.selectedShippingAddress?.id) { result in
                     self.viewController.loaderView.hide()
                     switch result {
 

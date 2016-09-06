@@ -17,9 +17,6 @@ struct CheckoutViewModel {
     var selectedBillingAddress: BillingAddress?
     var selectedShippingAddress: ShippingAddress?
 
-    var selectedBillingAddressId: String?
-    var selectedShippingAddressId: String?
-
     init(article: Article, selectedUnitIndex: Int = 0,
         shippingPrice: Article.Price? = nil,
         cartId: String? = nil,
@@ -78,6 +75,6 @@ extension CheckoutViewModel {
 
 extension CheckoutViewModel {
     var isReadyToCreateCheckout: Bool? {
-        return self.checkout == nil && self.selectedBillingAddressId != nil && self.selectedShippingAddressId != nil
+        return self.checkout == nil && self.selectedBillingAddress != nil && self.selectedShippingAddress != nil
     }
 }
