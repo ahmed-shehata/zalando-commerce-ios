@@ -67,7 +67,7 @@ extension TextFieldInputStackView: UIBuilder {
     }
 
     private func configureTextField() {
-        textField.addTarget(self, action: #selector(textFieldValueChanged), forControlEvents: .ValueChanged)
+        textField.addTarget(self, action: #selector(textFieldValueChanged), forControlEvents: .EditingChanged)
     }
 
 }
