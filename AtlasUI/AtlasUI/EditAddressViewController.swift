@@ -16,7 +16,7 @@ class EditAddressViewController: UIViewController {
     internal let addressStackView: EditAddressStackView = {
         let stackView = EditAddressStackView()
         stackView.axis = .Vertical
-        stackView.layoutMargins = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+        stackView.layoutMargins = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
         stackView.layoutMarginsRelativeArrangement = true
         return stackView
     }()
