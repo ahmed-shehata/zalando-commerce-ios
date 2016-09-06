@@ -45,6 +45,7 @@
 		E9325D391D674752004C29DC /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9325D381D674752004C29DC /* CGRect.swift */; };
 		E9325D511D6767E8004C29DC /* BorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9325D501D6767E8004C29DC /* BorderView.swift */; };
 		E939AA571D7EC7FA00B7244C /* KeyboardScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E939AA561D7EC7FA00B7244C /* KeyboardScrollView.swift */; };
+		E939AA591D7EED6A00B7244C /* EditAddressType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E939AA581D7EED6A00B7244C /* EditAddressType.swift */; };
 		E96328911D6EFF0600BDAE06 /* CheckoutSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E963288D1D6EFF0600BDAE06 /* CheckoutSummaryViewController.swift */; };
 		E96328921D6EFF0600BDAE06 /* CheckoutViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E963288E1D6EFF0600BDAE06 /* CheckoutViewState.swift */; };
 		E9676B071D78206C00ED7D8D /* CheckoutSummaryRootStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9676B061D78206C00ED7D8D /* CheckoutSummaryRootStackView.swift */; };
@@ -129,6 +130,7 @@
 		E9325D381D674752004C29DC /* CGRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
 		E9325D501D6767E8004C29DC /* BorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderView.swift; sourceTree = "<group>"; };
 		E939AA561D7EC7FA00B7244C /* KeyboardScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardScrollView.swift; sourceTree = "<group>"; };
+		E939AA581D7EED6A00B7244C /* EditAddressType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAddressType.swift; sourceTree = "<group>"; };
 		E963288D1D6EFF0600BDAE06 /* CheckoutSummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryViewController.swift; sourceTree = "<group>"; };
 		E963288E1D6EFF0600BDAE06 /* CheckoutViewState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutViewState.swift; sourceTree = "<group>"; };
 		E9676B061D78206C00ED7D8D /* CheckoutSummaryRootStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryRootStackView.swift; sourceTree = "<group>"; };
@@ -362,6 +364,7 @@
 			children = (
 				E976DEDF1D7D6D8D00DD84E7 /* EditAddressViewController.swift */,
 				E976DEE11D7D92CA00DD84E7 /* EditAddressStackView.swift */,
+				E939AA581D7EED6A00B7244C /* EditAddressType.swift */,
 			);
 			name = "Edit Address";
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				E9676B131D78242600ED7D8D /* CheckoutSummaryActionRowStackView.swift in Sources */,
 				81F3B46D1D5A0A36007BCF6F /* Localization.swift in Sources */,
 				8186B1501D51EE930068EE37 /* UserMessage.swift in Sources */,
+				E939AA591D7EED6A00B7244C /* EditAddressType.swift in Sources */,
 				E9C84CF21D771CD700510549 /* UIColor.swift in Sources */,
 				8131E39E1D798EFA00EA186F /* UITableView.swift in Sources */,
 				E976DEE51D7D94BA00DD84E7 /* TextFieldInputStackView.swift in Sources */,

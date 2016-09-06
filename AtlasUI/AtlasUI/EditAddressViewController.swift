@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import AtlasSDK
 
 class EditAddressViewController: UIViewController {
 
@@ -11,11 +12,24 @@ class EditAddressViewController: UIViewController {
         scrollView.keyboardDismissMode = .Interactive
         return scrollView
     }()
+
     internal let addressStackView: EditAddressStackView = {
         let stackView = EditAddressStackView()
         stackView.axis = .Vertical
         return stackView
     }()
+
+    var address: Address
+    
+
+    init(address: Address) {
+        self.address = address
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
