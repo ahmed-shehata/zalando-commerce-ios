@@ -14,7 +14,6 @@
 		812C16D01D48A48F001BFCF0 /* URLAuthorizationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812C16CE1D48A3E2001BFCF0 /* URLAuthorizationSpec.swift */; };
 		812C6A0A1D534D460003B2DC /* AtlasMockAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812C6A091D534D460003B2DC /* AtlasMockAPI.framework */; };
 		8139B6051D59B58700187984 /* APIRequestBuildersContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8139B6041D59B58700187984 /* APIRequestBuildersContainer.swift */; };
-		8139B6071D59B5DD00187984 /* PublicAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8139B6061D59B5DD00187984 /* PublicAPIClient.swift */; };
 		8139B60D1D59BCC400187984 /* APIClientBaseSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8139B60C1D59BCC400187984 /* APIClientBaseSpec.swift */; };
 		814B7F161D0FD8D70073AF52 /* AtlasSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 814B7F0B1D0FD8D70073AF52 /* AtlasSDK.framework */; };
 		815099711D51D34F00557CCB /* DatesSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8150996B1D51D34F00557CCB /* DatesSpec.swift */; };
@@ -40,7 +39,6 @@
 		817292701D362A2C00803B74 /* PickupPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817292601D362A2C00803B74 /* PickupPoint.swift */; };
 		817292711D362A2C00803B74 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817292611D362A2C00803B74 /* Price.swift */; };
 		817292731D362A2C00803B74 /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817292631D362A2C00803B74 /* Unit.swift */; };
-		8176630A1D3CE1D600B32F9A /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817663091D3CE1D600B32F9A /* APIEndpoint.swift */; };
 		8186B0F41D51ECC10068EE37 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B0D61D51ECC10068EE37 /* Array.swift */; };
 		8186B0F61D51ECC10068EE37 /* AtlasLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B0D81D51ECC10068EE37 /* AtlasLogger.swift */; };
 		8186B0F71D51ECC10068EE37 /* AtlasResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B0D91D51ECC10068EE37 /* AtlasResult.swift */; };
@@ -51,7 +49,6 @@
 		8186B0FD1D51ECC10068EE37 /* JSONResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B0DF1D51ECC10068EE37 /* JSONResponse.swift */; };
 		8186B0FE1D51ECC10068EE37 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B0E01D51ECC10068EE37 /* Keychain.swift */; };
 		8186B1001D51ECC10068EE37 /* LoggerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B0E21D51ECC10068EE37 /* LoggerType.swift */; };
-		8186B1011D51ECC10068EE37 /* EndpointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B0E41D51ECC10068EE37 /* EndpointType.swift */; };
 		8186B1021D51ECC10068EE37 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B0E51D51ECC10068EE37 /* HTTP.swift */; };
 		8186B1031D51ECC10068EE37 /* NSHTTPURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B0E61D51ECC10068EE37 /* NSHTTPURLResponse.swift */; };
 		8186B1041D51ECC10068EE37 /* NSMutableURLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B0E71D51ECC10068EE37 /* NSMutableURLRequest.swift */; };
@@ -79,8 +76,19 @@
 		819283931D50E8E30009DB60 /* StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814FE5A91D2D70E600F754DD /* StringTests.swift */; };
 		819283941D50E8E30009DB60 /* SubscriptTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814FE5AA1D2D70E600F754DD /* SubscriptTests.swift */; };
 		819283951D50E8E90009DB60 /* Tests.json in Resources */ = {isa = PBXBuildFile; fileRef = 814FE5AB1D2D70E600F754DD /* Tests.json */; };
-		8198F2AA1D3E72B20059EE87 /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8198F2A91D3E72B20059EE87 /* APIEndpoints.swift */; };
 		819F8AAC1D3689E3008E2AB1 /* Catalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817292581D362A2C00803B74 /* Catalog.swift */; };
+		81A301631D7EC55500182260 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A301611D7EC55500182260 /* Endpoint.swift */; };
+		81A301691D7ED1D600182260 /* PublicAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8139B6061D59B5DD00187984 /* PublicAPIClient.swift */; };
+		81A3016B1D7EEDAB00182260 /* ConfigurableEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A3016A1D7EEDAB00182260 /* ConfigurableEndpoint.swift */; };
+		81A301741D7EEE8300182260 /* CreateCartEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A3016C1D7EEE8300182260 /* CreateCartEndpoint.swift */; };
+		81A301751D7EEE8300182260 /* CreateCheckoutEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A3016D1D7EEE8300182260 /* CreateCheckoutEndpoint.swift */; };
+		81A301761D7EEE8300182260 /* CreateOrderEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A3016E1D7EEE8300182260 /* CreateOrderEndpoint.swift */; };
+		81A301771D7EEE8300182260 /* DeleteAddressEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A3016F1D7EEE8300182260 /* DeleteAddressEndpoint.swift */; };
+		81A301781D7EEE8300182260 /* GetAddressesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A301701D7EEE8300182260 /* GetAddressesEndpoint.swift */; };
+		81A301791D7EEE8300182260 /* GetArticlesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A301711D7EEE8300182260 /* GetArticlesEndpoint.swift */; };
+		81A3017A1D7EEE8300182260 /* GetCustomerEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A301721D7EEE8300182260 /* GetCustomerEndpoint.swift */; };
+		81A3017B1D7EEE8300182260 /* UpdateCheckoutEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A301731D7EEE8300182260 /* UpdateCheckoutEndpoint.swift */; };
+		81A3017D1D7EEEA600182260 /* GetConfigEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A3017C1D7EEEA600182260 /* GetConfigEndpoint.swift */; };
 		81A572901D6F326C00148A92 /* Addressable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A5728F1D6F326C00148A92 /* Addressable.swift */; };
 		81E01D071D48E85F00ED4701 /* JSONInitializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E01D061D48E85F00ED4701 /* JSONInitializable.swift */; };
 		81F6FBDA1D356104006662E8 /* AtlasSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 81F8C2741D35609C00996E95 /* AtlasSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -185,7 +193,6 @@
 		817292601D362A2C00803B74 /* PickupPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickupPoint.swift; sourceTree = "<group>"; };
 		817292611D362A2C00803B74 /* Price.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
 		817292631D362A2C00803B74 /* Unit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
-		817663091D3CE1D600B32F9A /* APIEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIEndpoint.swift; path = AtlasSDK/APIEndpoint.swift; sourceTree = SOURCE_ROOT; };
 		8186B0D61D51ECC10068EE37 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		8186B0D81D51ECC10068EE37 /* AtlasLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasLogger.swift; sourceTree = "<group>"; };
 		8186B0D91D51ECC10068EE37 /* AtlasResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasResult.swift; sourceTree = "<group>"; };
@@ -197,7 +204,6 @@
 		8186B0DF1D51ECC10068EE37 /* JSONResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONResponse.swift; sourceTree = "<group>"; };
 		8186B0E01D51ECC10068EE37 /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		8186B0E21D51ECC10068EE37 /* LoggerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggerType.swift; sourceTree = "<group>"; };
-		8186B0E41D51ECC10068EE37 /* EndpointType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndpointType.swift; sourceTree = "<group>"; };
 		8186B0E51D51ECC10068EE37 /* HTTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
 		8186B0E61D51ECC10068EE37 /* NSHTTPURLResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSHTTPURLResponse.swift; sourceTree = "<group>"; };
 		8186B0E71D51ECC10068EE37 /* NSMutableURLRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSMutableURLRequest.swift; sourceTree = "<group>"; };
@@ -211,7 +217,17 @@
 		8186B0F01D51ECC10068EE37 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		8186B0F21D51ECC10068EE37 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		8186B0F31D51ECC10068EE37 /* UIApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
-		8198F2A91D3E72B20059EE87 /* APIEndpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIEndpoints.swift; path = AtlasSDK/APIEndpoints.swift; sourceTree = SOURCE_ROOT; };
+		81A301611D7EC55500182260 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		81A3016A1D7EEDAB00182260 /* ConfigurableEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableEndpoint.swift; sourceTree = "<group>"; };
+		81A3016C1D7EEE8300182260 /* CreateCartEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCartEndpoint.swift; sourceTree = "<group>"; };
+		81A3016D1D7EEE8300182260 /* CreateCheckoutEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCheckoutEndpoint.swift; sourceTree = "<group>"; };
+		81A3016E1D7EEE8300182260 /* CreateOrderEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrderEndpoint.swift; sourceTree = "<group>"; };
+		81A3016F1D7EEE8300182260 /* DeleteAddressEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteAddressEndpoint.swift; sourceTree = "<group>"; };
+		81A301701D7EEE8300182260 /* GetAddressesEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetAddressesEndpoint.swift; sourceTree = "<group>"; };
+		81A301711D7EEE8300182260 /* GetArticlesEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetArticlesEndpoint.swift; sourceTree = "<group>"; };
+		81A301721D7EEE8300182260 /* GetCustomerEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCustomerEndpoint.swift; sourceTree = "<group>"; };
+		81A301731D7EEE8300182260 /* UpdateCheckoutEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateCheckoutEndpoint.swift; sourceTree = "<group>"; };
+		81A3017C1D7EEEA600182260 /* GetConfigEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetConfigEndpoint.swift; sourceTree = "<group>"; };
 		81A5728F1D6F326C00148A92 /* Addressable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Addressable.swift; sourceTree = "<group>"; };
 		81E01D061D48E85F00ED4701 /* JSONInitializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONInitializable.swift; sourceTree = "<group>"; };
 		81F6FBDB1D35614B006662E8 /* APICheckoutSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APICheckoutSpec.swift; path = AtlasSDKTests/APICheckoutSpec.swift; sourceTree = SOURCE_ROOT; };
@@ -416,13 +432,12 @@
 		817662F61D3913BA00B32F9A /* API */ = {
 			isa = PBXGroup;
 			children = (
+				81A301601D7EC55500182260 /* Endpoints */,
 				812BB4D11D34C0910018C321 /* APIClient.swift */,
 				8139B6061D59B5DD00187984 /* PublicAPIClient.swift */,
 				B02CA0A71D3511B60030CC64 /* ConfigClient.swift */,
 				B068B8561D34F246009F738C /* APIRequestBuilder.swift */,
 				81F8C2641D355F6700996E95 /* APIClientQueryItems.swift */,
-				817663091D3CE1D600B32F9A /* APIEndpoint.swift */,
-				8198F2A91D3E72B20059EE87 /* APIEndpoints.swift */,
 				8139B6041D59B58700187984 /* APIRequestBuildersContainer.swift */,
 			);
 			name = API;
@@ -457,7 +472,6 @@
 		8186B0E31D51ECC10068EE37 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				8186B0E41D51ECC10068EE37 /* EndpointType.swift */,
 				8186B0E51D51ECC10068EE37 /* HTTP.swift */,
 				8186B0E61D51ECC10068EE37 /* NSHTTPURLResponse.swift */,
 				8186B0E71D51ECC10068EE37 /* NSMutableURLRequest.swift */,
@@ -475,6 +489,81 @@
 				8186B0F21D51ECC10068EE37 /* SwiftyJSON.swift */,
 			);
 			path = SwiftyJSON;
+			sourceTree = "<group>";
+		};
+		81A301601D7EC55500182260 /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				81A301611D7EC55500182260 /* Endpoint.swift */,
+				81A3016A1D7EEDAB00182260 /* ConfigurableEndpoint.swift */,
+				81A301821D7EEEED00182260 /* Address */,
+				81A301831D7EEF0A00182260 /* Article */,
+				81A3017F1D7EEEDD00182260 /* Cart */,
+				81A301801D7EEEE200182260 /* Checkout */,
+				81A3017E1D7EEECD00182260 /* Config */,
+				81A301841D7EEF1800182260 /* Customer */,
+				81A301811D7EEEE700182260 /* Order */,
+			);
+			name = Endpoints;
+			path = AtlasSDK/Endpoints;
+			sourceTree = SOURCE_ROOT;
+		};
+		81A3017E1D7EEECD00182260 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				81A3017C1D7EEEA600182260 /* GetConfigEndpoint.swift */,
+			);
+			name = Config;
+			sourceTree = "<group>";
+		};
+		81A3017F1D7EEEDD00182260 /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				81A3016C1D7EEE8300182260 /* CreateCartEndpoint.swift */,
+			);
+			name = Cart;
+			sourceTree = "<group>";
+		};
+		81A301801D7EEEE200182260 /* Checkout */ = {
+			isa = PBXGroup;
+			children = (
+				81A3016D1D7EEE8300182260 /* CreateCheckoutEndpoint.swift */,
+				81A301731D7EEE8300182260 /* UpdateCheckoutEndpoint.swift */,
+			);
+			name = Checkout;
+			sourceTree = "<group>";
+		};
+		81A301811D7EEEE700182260 /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				81A3016E1D7EEE8300182260 /* CreateOrderEndpoint.swift */,
+			);
+			name = Order;
+			sourceTree = "<group>";
+		};
+		81A301821D7EEEED00182260 /* Address */ = {
+			isa = PBXGroup;
+			children = (
+				81A301701D7EEE8300182260 /* GetAddressesEndpoint.swift */,
+				81A3016F1D7EEE8300182260 /* DeleteAddressEndpoint.swift */,
+			);
+			name = Address;
+			sourceTree = "<group>";
+		};
+		81A301831D7EEF0A00182260 /* Article */ = {
+			isa = PBXGroup;
+			children = (
+				81A301711D7EEE8300182260 /* GetArticlesEndpoint.swift */,
+			);
+			name = Article;
+			sourceTree = "<group>";
+		};
+		81A301841D7EEF1800182260 /* Customer */ = {
+			isa = PBXGroup;
+			children = (
+				81A301721D7EEE8300182260 /* GetCustomerEndpoint.swift */,
+			);
+			name = Customer;
 			sourceTree = "<group>";
 		};
 		81A5728E1D6F31D000148A92 /* Addresses */ = {
@@ -703,17 +792,18 @@
 				81F8C2511D355E2400996E95 /* LoginViewController.swift in Sources */,
 				E837A7571D34F88200FC52C9 /* RequestBuilder.swift in Sources */,
 				E8B183181D75DA45001CF8BC /* UpdateAddressRequest.swift in Sources */,
+				81A301751D7EEE8300182260 /* CreateCheckoutEndpoint.swift in Sources */,
 				E8DD4C481D38DFAD00C822B2 /* CartRequest.swift in Sources */,
+				81A3016B1D7EEDAB00182260 /* ConfigurableEndpoint.swift in Sources */,
 				E8DD4C4A1D38EA2900C822B2 /* CartItemRequest.swift in Sources */,
 				817292711D362A2C00803B74 /* Price.swift in Sources */,
 				8186B1031D51ECC10068EE37 /* NSHTTPURLResponse.swift in Sources */,
 				81F8C2651D355F6700996E95 /* APIClientQueryItems.swift in Sources */,
 				8172926B1D362A2C00803B74 /* Customer.swift in Sources */,
 				817292661D362A2C00803B74 /* Cart.swift in Sources */,
+				81A301741D7EEE8300182260 /* CreateCartEndpoint.swift in Sources */,
 				8186B10A1D51ECC10068EE37 /* NSData.swift in Sources */,
 				8172926F1D362A2C00803B74 /* Payment.swift in Sources */,
-				8198F2AA1D3E72B20059EE87 /* APIEndpoints.swift in Sources */,
-				8186B1011D51ECC10068EE37 /* EndpointType.swift in Sources */,
 				81A572901D6F326C00148A92 /* Addressable.swift in Sources */,
 				8186B0FA1D51ECC10068EE37 /* Injector.swift in Sources */,
 				81F8C24C1D355D1800996E95 /* OptionsInfoPlist.swift in Sources */,
@@ -722,26 +812,31 @@
 				8186B0FD1D51ECC10068EE37 /* JSONResponse.swift in Sources */,
 				E8DD4C521D3F7D1A00C822B2 /* CreateCheckoutRequest.swift in Sources */,
 				81F8C24B1D355D1800996E95 /* Options.swift in Sources */,
+				81A301761D7EEE8300182260 /* CreateOrderEndpoint.swift in Sources */,
 				8186B0FC1D51ECC10068EE37 /* JSONRepresentable.swift in Sources */,
+				81A3017D1D7EEEA600182260 /* GetConfigEndpoint.swift in Sources */,
 				819F8AAC1D3689E3008E2AB1 /* Catalog.swift in Sources */,
 				8186B0F71D51ECC10068EE37 /* AtlasResult.swift in Sources */,
+				81A301771D7EEE8300182260 /* DeleteAddressEndpoint.swift in Sources */,
 				E8DAE09E1D7D8F82008824D3 /* EmptyResponse.swift in Sources */,
 				817292671D362A2C00803B74 /* CartItem.swift in Sources */,
-				8176630A1D3CE1D600B32F9A /* APIEndpoint.swift in Sources */,
 				6D0483931D50CF2F005F4EAE /* AddressList.swift in Sources */,
 				8186B0F91D51ECC10068EE37 /* Debug.swift in Sources */,
 				8186B10D1D51ECC10068EE37 /* String.swift in Sources */,
+				81A301691D7ED1D600182260 /* PublicAPIClient.swift in Sources */,
 				8186B1061D51ECC10068EE37 /* NSURLComponents.swift in Sources */,
 				E8B1831A1D75DB54001CF8BC /* UpdateCheckoutRequest.swift in Sources */,
+				81A3017A1D7EEE8300182260 /* GetCustomerEndpoint.swift in Sources */,
+				81A301631D7EC55500182260 /* Endpoint.swift in Sources */,
 				817292731D362A2C00803B74 /* Unit.swift in Sources */,
 				8186B0FB1D51ECC10068EE37 /* JSON.swift in Sources */,
-				8139B6071D59B5DD00187984 /* PublicAPIClient.swift in Sources */,
 				8186B1021D51ECC10068EE37 /* HTTP.swift in Sources */,
 				8186B1001D51ECC10068EE37 /* LoggerType.swift in Sources */,
 				8186B1041D51ECC10068EE37 /* NSMutableURLRequest.swift in Sources */,
 				81F8C25C1D355E7D00996E95 /* Errors.swift in Sources */,
 				817292641D362A2C00803B74 /* Address.swift in Sources */,
 				8186B1071D51ECC10068EE37 /* NSURLQueryItem.swift in Sources */,
+				81A301781D7EEE8300182260 /* GetAddressesEndpoint.swift in Sources */,
 				81F8C24A1D355D1800996E95 /* AppInfoConfig.swift in Sources */,
 				817292651D362A2C00803B74 /* Article.swift in Sources */,
 				8172926E1D362A2C00803B74 /* Money.swift in Sources */,
@@ -753,6 +848,7 @@
 				E8E1B72B1D460E8E005666F3 /* Order.swift in Sources */,
 				8186B1081D51ECC10068EE37 /* URLStringConvertible.swift in Sources */,
 				8186B0F61D51ECC10068EE37 /* AtlasLogger.swift in Sources */,
+				81A3017B1D7EEE8300182260 /* UpdateCheckoutEndpoint.swift in Sources */,
 				8172926D1D362A2C00803B74 /* Gender.swift in Sources */,
 				E87C167A1D5226FA00E12E98 /* BillingAddress.swift in Sources */,
 				8186B0F41D51ECC10068EE37 /* Array.swift in Sources */,
@@ -769,6 +865,7 @@
 				8186B10B1D51ECC10068EE37 /* OutputStreams.swift in Sources */,
 				8172926C1D362A2C00803B74 /* Delivery.swift in Sources */,
 				8186B10E1D51ECC10068EE37 /* SwiftyJSON.swift in Sources */,
+				81A301791D7EEE8300182260 /* GetArticlesEndpoint.swift in Sources */,
 				E8B183171D75DA45001CF8BC /* CreateAddressRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
