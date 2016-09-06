@@ -53,6 +53,13 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
         activityIndicatorView.startAnimating()
 
         fetchAddresses()
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .Plain, target: self, action: #selector(showAddAddress))
+    }
+
+    dynamic private func showAddAddress() {
+        let viewController = EditAddressViewController()
+        showViewController(viewController, sender: nil)
     }
 
     private func fetchAddresses() {

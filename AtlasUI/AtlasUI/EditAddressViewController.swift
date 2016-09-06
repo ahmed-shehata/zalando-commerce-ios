@@ -1,8 +1,4 @@
 //
-//  EditAddressViewController.swift
-//  AtlasUI
-//
-//  Created by Hani Ibrahim Ibrahim Eloksh on 05/09/16.
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
@@ -10,20 +6,22 @@ import UIKit
 
 class EditAddressViewController: UIViewController {
 
-    internal let scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
+    internal let scrollView: KeyboardScrollView = {
+        let scrollView = KeyboardScrollView()
+        scrollView.keyboardDismissMode = .Interactive
         return scrollView
     }()
     internal let addressStackView: EditAddressStackView = {
         let stackView = EditAddressStackView()
-        
+        stackView.axis = .Vertical
         return stackView
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = .whiteColor()
         buildView()
+        addressStackView.configureData(true)
     }
 
 }
@@ -33,6 +31,7 @@ extension EditAddressViewController: UIBuilder {
     func configureView() {
         view.addSubview(scrollView)
         scrollView.addSubview(addressStackView)
+        scrollView.registerForKeyboardNotifications()
     }
 
     func configureConstraints() {
@@ -44,4 +43,5 @@ extension EditAddressViewController: UIBuilder {
     func builderSubviews() -> [UIBuilder] {
         return [addressStackView]
     }
+
 }
