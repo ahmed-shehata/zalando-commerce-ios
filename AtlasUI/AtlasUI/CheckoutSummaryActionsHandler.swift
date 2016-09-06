@@ -110,12 +110,14 @@ extension CheckoutSummaryActionsHandler {
     }
 
     internal func showShippingAddressSelectionScreen() {
+        guard Atlas.isUserLoggedIn() else { return loadCustomerData() }
         let addressSelectionViewController = AddressPickerViewController(checkout: viewController.checkout,
             addressType: .shipping, addressSelectionCompletion: pickedAddressCompletion)
         viewController.showViewController(addressSelectionViewController, sender: viewController)
     }
 
     internal func showBillingAddressSelectionScreen() {
+        guard Atlas.isUserLoggedIn() else { return loadCustomerData() }
         let addressSelectionViewController = AddressPickerViewController(checkout: viewController.checkout, addressType: .billing,
             addressSelectionCompletion: pickedAddressCompletion)
         viewController.showViewController(addressSelectionViewController, sender: viewController)
