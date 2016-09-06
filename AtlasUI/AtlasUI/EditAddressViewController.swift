@@ -26,7 +26,6 @@ class EditAddressViewController: UIViewController {
 //    init(address: Address = Address()) {
 //        self.address = address
 //        super.init(nibName: nil, bundle: nil)
-//    
 //    }
 //
 //    required init?(coder aDecoder: NSCoder) {
