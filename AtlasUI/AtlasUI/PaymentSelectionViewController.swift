@@ -42,11 +42,7 @@ final class PaymentSelectionViewController: UIViewController, UIWebViewDelegate 
         view.backgroundColor = .whiteColor()
         view.addSubview(webView)
 
-        webView.topAnchor.constraintEqualToAnchor(self.topLayoutGuide.bottomAnchor).active = true
-        webView.bottomAnchor.constraintEqualToAnchor(self.bottomLayoutGuide.topAnchor).active = true
-        webView.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor).active = true
-        webView.trailingAnchor.constraintEqualToAnchor(self.view.trailingAnchor).active = true
-
+        webView.fillInSuperView()
         webView.loadRequest(NSURLRequest(URL: paymentSelectionURL))
     }
 
