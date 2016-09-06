@@ -11,7 +11,7 @@ class CheckoutSummaryFooterStackView: UIStackView {
         label.numberOfLines = 0
         label.textAlignment = .Center
         label.font = .systemFontOfSize(12, weight: UIFontWeightLight)
-        label.textColor = UIColor(netHex: 0xB2B2B2)
+        label.textColor = UIColor(hex: 0xB2B2B2)
         return label
     }()
 
@@ -20,7 +20,7 @@ class CheckoutSummaryFooterStackView: UIStackView {
         button.cornerRadius = 5
         button.titleLabel?.font = .systemFontOfSize(15)
         button.setTitleColor(.whiteColor(), forState: .Normal)
-        button.backgroundColor = UIColor(netHex: 0x519415)
+        button.backgroundColor = UIColor(hex: 0x519415)
         return button
     }()
 

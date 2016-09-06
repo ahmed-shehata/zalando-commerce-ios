@@ -8,7 +8,7 @@ protocol UIBuilder {
 
     func configureView()
     func configureConstraints()
-    func builderSubViews() -> [UIBuilder]
+    func builderSubviews() -> [UIBuilder]
 
 }
 
@@ -16,12 +16,12 @@ extension UIBuilder {
 
     func configureView() {}
     func configureConstraints() {}
-    func builderSubViews() -> [UIBuilder] { return [] }
+    func builderSubviews() -> [UIBuilder] { return [] }
 
     func buildView() {
         configureView()
         configureConstraints()
-        builderSubViews().forEach { $0.buildView() }
+        builderSubviews().forEach { $0.buildView() }
     }
 
 }

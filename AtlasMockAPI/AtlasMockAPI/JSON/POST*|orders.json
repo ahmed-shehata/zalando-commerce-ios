@@ -2,6 +2,7 @@
     "order_number":"ORDER_NUMBER",
     "customer_number":"CUSTOMER_NUMBER",
     "billing_address":{
+        "id": "11",
         "gender":"MALE",
         "first_name":"John",
         "last_name":"Doe",
@@ -12,6 +13,7 @@
         "country_code":"DE"
     },
     "shipping_address":{
+        "id": "10",
         "gender":"MALE",
         "first_name":"John",
         "last_name":"Doe",

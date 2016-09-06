@@ -16,7 +16,7 @@ class CheckoutSummaryPriceStackView: UIStackView {
     internal let shippingTitleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFontOfSize(14, weight: UIFontWeightLight)
-        label.textColor = UIColor(netHex: 0x7F7F7F)
+        label.textColor = UIColor(hex: 0x7F7F7F)
         label.textAlignment = .Right
         return label
     }()
@@ -24,7 +24,7 @@ class CheckoutSummaryPriceStackView: UIStackView {
     internal let shippingValueLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFontOfSize(14, weight: UIFontWeightLight)
-        label.textColor = UIColor(netHex: 0x7F7F7F)
+        label.textColor = UIColor(hex: 0x7F7F7F)
         label.textAlignment = .Right
         return label
     }()

@@ -43,7 +43,7 @@ extension CheckoutSummaryRootStackView: UIBuilder {
         fillInSuperView()
     }
 
-    func builderSubViews() -> [UIBuilder] {
+    func builderSubviews() -> [UIBuilder] {
         return [mainStackView, footerStackView]
     }
 

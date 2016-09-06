@@ -11,7 +11,7 @@ class CheckoutSummaryProductStackView: UIStackView {
         imageView.contentMode = .ScaleAspectFit
         imageView.isCircle = true
         imageView.borderWidth = 1
-        imageView.borderColor = UIColor(netHex: 0xE5E5E5)
+        imageView.borderColor = UIColor(hex: 0xE5E5E5)
         return imageView
     }()
 
@@ -58,7 +58,7 @@ extension CheckoutSummaryProductStackView: UIBuilder {
 
     func configureConstraints() {
         articleImageView.setSquareAspectRatio()
-        articleImageView.setWidthAsSuperViewWidth(0.2)
+        articleImageView.setWidth(equalToView: superview, multiplier: 0.2)
     }
 
 }
