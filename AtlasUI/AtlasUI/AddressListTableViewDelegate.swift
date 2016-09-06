@@ -71,6 +71,8 @@ extension AddressListTableViewDelegate: UITableViewDelegate {
                         AtlasLogger.logError(error)
                     }
                 }
+            default:
+                break
             }
     }
 
