@@ -52,6 +52,7 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
         case .shipping:
             self.title = "Shipping Address"
         }
+        self.navigationItem.rightBarButtonItem = self.editButtonItem()
         self.setupTableView()
         fetchAddresses()
     }
@@ -88,7 +89,7 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
         tableView.reloadData()
-        self.parentViewController?.navigationItem.rightBarButtonItem = self.editButtonItem()
+
     }
 
 }
