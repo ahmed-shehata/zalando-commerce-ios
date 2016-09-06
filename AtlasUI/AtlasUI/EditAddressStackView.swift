@@ -59,14 +59,14 @@ extension EditAddressStackView: UIDataBuilder {
     typealias T = Bool
 
     func configureData(viewModel: T) {
-        titleTextFieldInput.configureData(TextFieldInputViewModel(title: "Title", value: nil, error: nil))
-        firstNameTextFieldInput.configureData(TextFieldInputViewModel(title: "First Name", value: nil, error: nil))
-        lastNameTextFieldInput.configureData(TextFieldInputViewModel(title: "Last Name", value: nil, error: nil))
-        streetTextFieldInput.configureData(TextFieldInputViewModel(title: "Street", value: nil, error: nil))
-        additionalAddressTextFieldInput.configureData(TextFieldInputViewModel(title: "Additional", value: nil, error: nil))
-        zipcodeTextFieldInput.configureData(TextFieldInputViewModel(title: "Zipcode", value: nil, error: nil))
-        cityTextFieldInput.configureData(TextFieldInputViewModel(title: "City", value: nil, error: nil))
-        countryTextFieldInput.configureData(TextFieldInputViewModel(title: "Country", value: nil, error: nil))
+        titleTextFieldInput.configureData(TextFieldInputViewModel(title: "Title", value: nil, error: nil, nextTextField: firstNameTextFieldInput))
+        firstNameTextFieldInput.configureData(TextFieldInputViewModel(title: "First Name", value: nil, error: nil, nextTextField: lastNameTextFieldInput))
+        lastNameTextFieldInput.configureData(TextFieldInputViewModel(title: "Last Name", value: nil, error: nil, nextTextField: streetTextFieldInput))
+        streetTextFieldInput.configureData(TextFieldInputViewModel(title: "Street", value: nil, error: nil, nextTextField: additionalAddressTextFieldInput))
+        additionalAddressTextFieldInput.configureData(TextFieldInputViewModel(title: "Additional", value: nil, error: nil, nextTextField: zipcodeTextFieldInput))
+        zipcodeTextFieldInput.configureData(TextFieldInputViewModel(title: "Zipcode", value: nil, error: nil, nextTextField: cityTextFieldInput))
+        cityTextFieldInput.configureData(TextFieldInputViewModel(title: "City", value: nil, error: nil, nextTextField: countryTextFieldInput))
+        countryTextFieldInput.configureData(TextFieldInputViewModel(title: "Country", value: nil, error: nil, nextTextField: nil))
         submitButton.setTitle("Save Address", forState: .Normal)
     }
 

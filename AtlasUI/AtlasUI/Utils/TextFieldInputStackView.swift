@@ -8,6 +8,7 @@ struct TextFieldInputViewModel {
     let title: String
     let value: String?
     let error: String?
+    let nextTextField: TextFieldInputStackView?
 }
 
 class TextFieldInputStackView: UIStackView {
@@ -41,6 +42,8 @@ class TextFieldInputStackView: UIStackView {
         label.textColor = .redColor()
         return label
     }()
+
+    weak var nextTextField: TextFieldInputStackView?
 
 }
 
@@ -79,6 +82,8 @@ extension TextFieldInputStackView: UIDataBuilder {
     typealias T = TextFieldInputViewModel
 
     func configureData(viewModel: T) {
+        self.nextTextField = viewModel.nextTextField
+        textField.returnKeyType = nextTextField == nil ? .Default : .Next
         textField.text = viewModel.value
         textField.placeholder = viewModel.title
         errorLabel.text = viewModel.error ?? " "
@@ -105,6 +110,12 @@ extension TextFieldInputStackView: UITextFieldDelegate {
     func textFieldDidEndEditing(textField: UITextField) {
         separatorView.borderColor = .blackColor()
         titleLabel.textColor = UIColor(hex: 0x9D9D9D)
+    }
+
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        resignFirstResponder()
+        nextTextField?.textField.becomeFirstResponder()
+        return true
     }
 
 }
