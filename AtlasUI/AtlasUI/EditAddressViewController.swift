@@ -16,20 +16,22 @@ class EditAddressViewController: UIViewController {
     internal let addressStackView: EditAddressStackView = {
         let stackView = EditAddressStackView()
         stackView.axis = .Vertical
+        stackView.layoutMargins = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+        stackView.layoutMarginsRelativeArrangement = true
         return stackView
     }()
 
-    var address: Address
-    
-
-    init(address: Address) {
-        self.address = address
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+//    var address: Address
+//    
+//
+//    init(address: Address = Address()) {
+//        self.address = address
+//        super.init(nibName: nil, bundle: nil)
+//    }
+//    
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

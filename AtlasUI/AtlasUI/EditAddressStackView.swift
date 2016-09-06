@@ -59,14 +59,14 @@ extension EditAddressStackView: UIDataBuilder {
     typealias T = Bool
 
     func configureData(viewModel: T) {
-        titleTextFieldInput.configureData(TextFieldInputViewModel(title: "Title", value: nil, placeholder: "Mrs"))
-        firstNameTextFieldInput.configureData(TextFieldInputViewModel(title: "First Name", value: nil, placeholder: "John"))
-        lastNameTextFieldInput.configureData(TextFieldInputViewModel(title: "Last Name", value: nil, placeholder: "Doe"))
-        streetTextFieldInput.configureData(TextFieldInputViewModel(title: "Street", value: nil, placeholder: "Mollstr. 1"))
-        additionalAddressTextFieldInput.configureData(TextFieldInputViewModel(title: "Additional", value: nil, placeholder: "Zalando BMO"))
-        zipcodeTextFieldInput.configureData(TextFieldInputViewModel(title: "Zipcode", value: nil, placeholder: "12345"))
-        cityTextFieldInput.configureData(TextFieldInputViewModel(title: "City", value: nil, placeholder: "Berlin"))
-        countryTextFieldInput.configureData(TextFieldInputViewModel(title: "Country", value: nil, placeholder: "Deutschland"))
+        titleTextFieldInput.configureData(TextFieldInputViewModel(title: "Title", value: nil, error: nil))
+        firstNameTextFieldInput.configureData(TextFieldInputViewModel(title: "First Name", value: nil, error: nil))
+        lastNameTextFieldInput.configureData(TextFieldInputViewModel(title: "Last Name", value: nil, error: nil))
+        streetTextFieldInput.configureData(TextFieldInputViewModel(title: "Street", value: nil, error: nil))
+        additionalAddressTextFieldInput.configureData(TextFieldInputViewModel(title: "Additional", value: nil, error: nil))
+        zipcodeTextFieldInput.configureData(TextFieldInputViewModel(title: "Zipcode", value: nil, error: nil))
+        cityTextFieldInput.configureData(TextFieldInputViewModel(title: "City", value: nil, error: nil))
+        countryTextFieldInput.configureData(TextFieldInputViewModel(title: "Country", value: nil, error: nil))
         submitButton.setTitle("Save Address", forState: .Normal)
     }
 
