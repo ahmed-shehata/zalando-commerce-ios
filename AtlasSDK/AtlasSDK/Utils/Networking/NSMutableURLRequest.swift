@@ -42,7 +42,7 @@ extension NSMutableURLRequest {
         return self
     }
 
-    convenience init(endpoint: EndpointType) throws {
+    convenience init(endpoint: Endpoint) throws {
         self.init(URL: endpoint.URL)
         self.HTTPMethod = endpoint.method.rawValue
         self.setValue(endpoint.contentType, forHTTPHeaderField: "Content-Type")

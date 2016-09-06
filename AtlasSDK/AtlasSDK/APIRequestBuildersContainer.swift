@@ -13,9 +13,9 @@ final class APIRequestBuildersContainer {
         self.config = config
     }
 
-    func createBuilder(forEndpoint endpoint: EndpointType,
+    func createBuilder(forEndpoint endpoint: Endpoint,
         urlSession: NSURLSession = NSURLSession.sharedSession()) -> RequestBuilder {
-            let builder = APIRequestBuilder(loginURL: self.config.loginURL, urlSession: urlSession, endpoint: endpoint)
+            let builder = APIRequestBuilder(loginURL: config.loginURL, urlSession: urlSession, endpoint: endpoint)
             builder.executionFinished = {
                 self.requestBuilders.remove($0)
             }
