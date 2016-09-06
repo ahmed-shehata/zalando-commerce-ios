@@ -16,7 +16,7 @@ class AtlasDemoUITests: XCTestCase {
 
     override class func tearDown() {
         super.tearDown()
-         try! AtlasMockAPI.stopServer() // swiftlint:disable:this force_try
+        try! AtlasMockAPI.stopServer() // swiftlint:disable:this force_try
     }
 
     override func setUp() {
@@ -51,8 +51,8 @@ class AtlasDemoUITests: XCTestCase {
         tapBuyNow("Lamica")
         waitForElementToAppearAndTap(sizeText)
         tapConnectAndLogin()
-        app.scrollViews.childrenMatchingType(.Other)
-            .element.childrenMatchingType(.Other).elementBoundByIndex(2).staticTexts["Erika Mustermann, Mollstr. 1 10178 Berlin"].tap()
+        app.scrollViews.childrenMatchingType(.Any)
+            .element.childrenMatchingType(.Any).elementBoundByIndex(2).staticTexts["Erika Mustermann, Mollstr. 1 10178 Berlin"].tap()
         deleteAddresses()
         app.navigationBars["Summary"].buttons["Cancel"].tap()
     }
@@ -128,11 +128,11 @@ class AtlasDemoUITests: XCTestCase {
         shippingAddressNavigationBar.buttons["Edit"].tap()
         let tablesQuery = app.tables
 
-        tablesQuery.buttons["Delete Jane, Mollstr. 1 10178 Berlin"]        .tap()
-        tablesQuery.buttons["Delete"]        .tap()
+        tablesQuery.buttons["Delete Jane, Mollstr. 1 10178 Berlin"] .tap()
+        tablesQuery.buttons["Delete"] .tap()
 
-        tablesQuery.buttons["Delete John, Mollstr. 1 10178 Berlin"]        .tap()
-        tablesQuery.buttons["Delete"]        .tap()
+        tablesQuery.buttons["Delete John, Mollstr. 1 10178 Berlin"] .tap()
+        tablesQuery.buttons["Delete"] .tap()
         app.navigationBars["Shipping Address"].buttons["Done"].tap()
         shippingAddressNavigationBar.buttons["Summary"].tap()
 
