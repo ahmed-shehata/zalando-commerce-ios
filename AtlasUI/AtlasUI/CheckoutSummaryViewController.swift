@@ -144,4 +144,12 @@ extension CheckoutSummaryViewController {
         }
     }
 
+    func createCheckout(cartId: String, completion: CheckoutCompletion) {
+        checkout.client.createCheckout(cartId,
+            billingAddressId: checkoutViewModel.selectedShippingAddress?.id,
+            shippingAddressId: checkoutViewModel.selectedBillingAddress?.id) { checkout in
+                completion(checkout)
+        }
+    }
+
 }

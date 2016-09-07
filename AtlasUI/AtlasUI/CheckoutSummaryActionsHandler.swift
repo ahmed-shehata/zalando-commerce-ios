@@ -161,21 +161,20 @@ extension CheckoutSummaryActionsHandler {
             else { return }
             viewController.loaderView.show()
             guard let cartId = viewController.checkoutViewModel.cartId else { return }
-            viewController.checkout.client.createCheckout(cartId,
-                billingAddressId: viewController.checkoutViewModel.selectedBillingAddress?.id,
-                shippingAddressId: viewController.checkoutViewModel.selectedShippingAddress?.id) { result in
-                    self.viewController.loaderView.hide()
-                    switch result {
 
-                    case .failure(let error):
-                        self.viewController.dismissViewControllerAnimated(true) {
-                            self.viewController.userMessage.show(error: error)
-                        }
-                    case .success(let checkout):
-                        self.viewController.checkoutViewModel.checkout = checkout
-                        self.viewController.rootStackView.configureData(self.viewController)
-                        self.viewController.refreshViewData()
+            viewController.createCheckout(cartId) { result in
+                self.viewController.loaderView.hide()
+                switch result {
+
+                case .failure(let error):
+                    self.viewController.dismissViewControllerAnimated(true) {
+                        self.viewController.userMessage.show(error: error)
                     }
+                case .success(let checkout):
+                    self.viewController.checkoutViewModel.checkout = checkout
+                    self.viewController.rootStackView.configureData(self.viewController)
+                    self.viewController.refreshViewData()
+                }
             }
     }
 }
