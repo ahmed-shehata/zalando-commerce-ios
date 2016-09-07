@@ -29,22 +29,6 @@ class CheckoutSummaryPriceStackView: UIStackView {
         return label
     }()
 
-    internal let vatTitleLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFontOfSize(14, weight: UIFontWeightLight)
-        label.textColor = UIColor(hex: 0x7F7F7F)
-        label.textAlignment = .Right
-        return label
-    }()
-
-    internal let vatDummyValueLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFontOfSize(14, weight: UIFontWeightLight)
-        label.textColor = UIColor(hex: 0x7F7F7F)
-        label.textAlignment = .Right
-        return label
-    }()
-
     private let dummySeparatorLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFontOfSize(4)
@@ -53,13 +37,6 @@ class CheckoutSummaryPriceStackView: UIStackView {
     }()
 
     internal let totalStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .Horizontal
-        stackView.distribution = .FillEqually
-        return stackView
-    }()
-
-    internal let vatStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .Horizontal
         stackView.distribution = .FillEqually
@@ -81,6 +58,15 @@ class CheckoutSummaryPriceStackView: UIStackView {
         label.textAlignment = .Right
         return label
     }()
+
+    internal let vatTitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFontOfSize(14, weight: UIFontWeightLight)
+        label.textColor = UIColor(hex: 0x7F7F7F)
+        label.textAlignment = .Right
+        return label
+    }()
+
 }
 
 extension CheckoutSummaryPriceStackView: UIBuilder {
@@ -89,7 +75,7 @@ extension CheckoutSummaryPriceStackView: UIBuilder {
         addArrangedSubview(shippingStackView)
         addArrangedSubview(dummySeparatorLabel)
         addArrangedSubview(totalStackView)
-        addArrangedSubview(vatStackView)
+        addArrangedSubview(vatTitleLabel)
 
         shippingStackView.addArrangedSubview(shippingTitleLabel)
         shippingStackView.addArrangedSubview(shippingValueLabel)
@@ -97,8 +83,6 @@ extension CheckoutSummaryPriceStackView: UIBuilder {
         totalStackView.addArrangedSubview(totalTitleLabel)
         totalStackView.addArrangedSubview(totalValueLabel)
 
-        vatStackView.addArrangedSubview(vatTitleLabel)
-        vatStackView.addArrangedSubview(vatDummyValueLabel)
     }
 
 }
@@ -112,7 +96,7 @@ extension CheckoutSummaryPriceStackView: UIDataBuilder {
         shippingValueLabel.text = viewModel.localizer.fmtPrice(viewModel.checkoutViewModel.shippingPriceValue)
         totalTitleLabel.text = viewModel.loc("Total")
         totalValueLabel.text = viewModel.localizer.fmtPrice(viewModel.checkoutViewModel.totalPriceValue)
-        vatDummyValueLabel.text = viewModel.loc("vat.included")
+        vatTitleLabel.text = viewModel.loc("vat.included")
     }
 
 }
