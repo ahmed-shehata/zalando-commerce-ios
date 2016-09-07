@@ -61,9 +61,9 @@ class CheckoutSummaryPriceStackView: UIStackView {
 
     internal let vatTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFontOfSize(14, weight: UIFontWeightLight)
+        label.font = .systemFontOfSize(10, weight: UIFontWeightLight)
         label.textColor = UIColor(hex: 0x7F7F7F)
-        label.textAlignment = .Right
+        label.textAlignment = .Center
         return label
     }()
 
@@ -82,7 +82,6 @@ extension CheckoutSummaryPriceStackView: UIBuilder {
 
         totalStackView.addArrangedSubview(totalTitleLabel)
         totalStackView.addArrangedSubview(totalValueLabel)
-
     }
 
 }
