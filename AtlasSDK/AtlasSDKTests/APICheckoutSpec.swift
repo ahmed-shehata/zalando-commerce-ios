@@ -10,27 +10,11 @@ import Nimble
 
 class APICheckoutSpec: APIClientBaseSpec {
 
-    private let cartId = "CART_ID"
-    private let checkoutId = "CHECKOUT_ID"
+    private let addressId = "6702759"
 
     override func spec() {
 
-        describe("Checkout API") {
-
-            it("should create cart successfully") {
-                self.waitUntilAPIClientIsConfigured { done, client in
-                    let cartItemRequest = CartItemRequest(sku: "EV451G023-Q110ONE000", quantity: 1)
-                    client.createCart(cartItemRequest) { result in
-                        switch result {
-                        case .failure(let error):
-                            fail(String(error))
-                        case .success(let cart):
-                            expect(cart.id).to(equal(self.cartId))
-                        }
-                        done()
-                    }
-                }
-            }
+        describe("Checkout") {
 
             it("should create checkout successfully") {
                 self.waitUntilAPIClientIsConfigured { done, client in
@@ -46,14 +30,49 @@ class APICheckoutSpec: APIClientBaseSpec {
                 }
             }
 
-            it("should create an order successfully") {
+            it("should update billing address in checkout successfully") {
                 self.waitUntilAPIClientIsConfigured { done, client in
-                    client.createOrder(self.checkoutId) { result in
+                    let updateRequest = UpdateCheckoutRequest(billingAddressId: self.addressId)
+                    client.updateCheckout(self.checkoutId, updateCheckoutRequest: updateRequest) { result in
                         switch result {
                         case .failure(let error):
                             fail(String(error))
-                        case .success(let order):
-                            expect(order.orderNumber).to(equal("ORDER_NUMBER"))
+                        case .success(let checkout):
+                            expect(checkout.id).to(equal(self.checkoutId))
+                            expect(checkout.billingAddress.id).to(equal(self.addressId))
+                        }
+                        done()
+                    }
+                }
+            }
+
+            it("should update shipping address in checkout successfully") {
+                self.waitUntilAPIClientIsConfigured { done, client in
+                    let updateRequest = UpdateCheckoutRequest(shippingAddressId: self.addressId)
+                    client.updateCheckout(self.checkoutId, updateCheckoutRequest: updateRequest) { result in
+                        switch result {
+                        case .failure(let error):
+                            fail(String(error))
+                        case .success(let checkout):
+                            expect(checkout.id).to(equal(self.checkoutId))
+                            expect(checkout.shippingAddress.id).to(equal(self.addressId))
+                        }
+                        done()
+                    }
+                }
+            }
+
+            it("should update billing and shipping addresses in checkout successfully") {
+                self.waitUntilAPIClientIsConfigured { done, client in
+                    let updateRequest = UpdateCheckoutRequest(billingAddressId: self.addressId, shippingAddressId: self.addressId)
+                    client.updateCheckout(self.checkoutId, updateCheckoutRequest: updateRequest) { result in
+                        switch result {
+                        case .failure(let error):
+                            fail(String(error))
+                        case .success(let checkout):
+                            expect(checkout.id).to(equal(self.checkoutId))
+                            expect(checkout.billingAddress.id).to(equal(self.addressId))
+                            expect(checkout.shippingAddress.id).to(equal(self.addressId))
                         }
                         done()
                     }
