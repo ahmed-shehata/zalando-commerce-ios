@@ -7,7 +7,7 @@ module Calypso
 
     COPYRIGHT = <<EOT.freeze
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © #{Date.today.year} Zalando SE. All rights reserved.
 //
 EOT
 
