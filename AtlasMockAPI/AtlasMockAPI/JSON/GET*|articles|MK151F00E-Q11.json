@@ -1,56 +1,117 @@
 {
-    "id" : "MK151F00E-Q11",
-    "name" : "JET SET TRAVEL  - Geldbörse - black",
-    "brand" : {
-        "name" : "MICHAEL Michael Kors"
+  "id" : "MK151F00E-Q11",
+  "name" : "JET SET TRAVEL  - Geldbörse - black",
+  "brand" : {
+    "name" : "MICHAEL Michael Kors"
+  },
+  "units" : [ {
+    "id" : "MK151F00E-Q110ONE000",
+    "size" : "One Size",
+    "price" : {
+      "amount" : 109.95,
+      "currency" : "EUR"
     },
-    "units" : [ {
-               "id" : "MK151F00E-Q110ONE000",
-               "size" : "One Size",
-               "price" : {
-               "amount" : 109.95,
-               "currency" : "EUR"
-               },
-               "original_price" : {
-               "amount" : 109.95,
-               "currency" : "EUR"
-               },
-               "available" : true,
-               "stock" : 3
-               } ],
-    "media" : {
-        "images" : [ {
-                    "order" : 1,
-                    "catalog" : "https://i3.ztat.net/catalog/MK/15/1F/00/EQ/11/MK151F00E-Q11@4.jpg",
-                    "catalog_hd" : "https://i3.ztat.net/catalog_hd/MK/15/1F/00/EQ/11/MK151F00E-Q11@4.jpg",
-                    "detail" : "https://i3.ztat.net/detail/MK/15/1F/00/EQ/11/MK151F00E-Q11@4.jpg",
-                    "detail_hd" : "https://i3.ztat.net/detail_hd/MK/15/1F/00/EQ/11/MK151F00E-Q11@4.jpg",
-                    "large" : "https://i3.ztat.net/large/MK/15/1F/00/EQ/11/MK151F00E-Q11@4.jpg",
-                    "large_hd" : "https://i3.ztat.net/large_hd/MK/15/1F/00/EQ/11/MK151F00E-Q11@4.jpg"
-                    }, {
-                    "order" : 2,
-                    "catalog" : "https://i2.ztat.net/catalog/MK/15/1F/00/EQ/11/MK151F00E-Q11@3.jpg",
-                    "catalog_hd" : "https://i2.ztat.net/catalog_hd/MK/15/1F/00/EQ/11/MK151F00E-Q11@3.jpg",
-                    "detail" : "https://i2.ztat.net/detail/MK/15/1F/00/EQ/11/MK151F00E-Q11@3.jpg",
-                    "detail_hd" : "https://i2.ztat.net/detail_hd/MK/15/1F/00/EQ/11/MK151F00E-Q11@3.jpg",
-                    "large" : "https://i2.ztat.net/large/MK/15/1F/00/EQ/11/MK151F00E-Q11@3.jpg",
-                    "large_hd" : "https://i2.ztat.net/large_hd/MK/15/1F/00/EQ/11/MK151F00E-Q11@3.jpg"
-                    }, {
-                    "order" : 3,
-                    "catalog" : "https://i1.ztat.net/catalog/MK/15/1F/00/EQ/11/MK151F00E-Q11@2.jpg",
-                    "catalog_hd" : "https://i1.ztat.net/catalog_hd/MK/15/1F/00/EQ/11/MK151F00E-Q11@2.jpg",
-                    "detail" : "https://i1.ztat.net/detail/MK/15/1F/00/EQ/11/MK151F00E-Q11@2.jpg",
-                    "detail_hd" : "https://i1.ztat.net/detail_hd/MK/15/1F/00/EQ/11/MK151F00E-Q11@2.jpg",
-                    "large" : "https://i1.ztat.net/large/MK/15/1F/00/EQ/11/MK151F00E-Q11@2.jpg",
-                    "large_hd" : "https://i1.ztat.net/large_hd/MK/15/1F/00/EQ/11/MK151F00E-Q11@2.jpg"
-                    }, {
-                    "order" : 4,
-                    "catalog" : "https://i4.ztat.net/catalog/MK/15/1F/00/EQ/11/MK151F00E-Q11@1.jpg",
-                    "catalog_hd" : "https://i4.ztat.net/catalog_hd/MK/15/1F/00/EQ/11/MK151F00E-Q11@1.jpg",
-                    "detail" : "https://i4.ztat.net/detail/MK/15/1F/00/EQ/11/MK151F00E-Q11@1.jpg",
-                    "detail_hd" : "https://i4.ztat.net/detail_hd/MK/15/1F/00/EQ/11/MK151F00E-Q11@1.jpg",
-                    "large" : "https://i4.ztat.net/large/MK/15/1F/00/EQ/11/MK151F00E-Q11@1.jpg",
-                    "large_hd" : "https://i4.ztat.net/large_hd/MK/15/1F/00/EQ/11/MK151F00E-Q11@1.jpg"
-                    } ]
-    }
+    "original_price" : {
+      "amount" : 109.95,
+      "currency" : "EUR"
+    },
+    "available" : true,
+    "stock" : 3
+  } ],
+  "media" : {
+    "images" : [ {
+      "order" : 1,
+      "catalog" : "https://i3.ztat.net/catalog/MK/15/1F/00/EQ/11/MK151F00E-Q11@4.jpg",
+      "catalog_hd" : "https://i3.ztat.net/catalog_hd/MK/15/1F/00/EQ/11/MK151F00E-Q11@4.jpg",
+      "detail" : "https://i3.ztat.net/detail/MK/15/1F/00/EQ/11/MK151F00E-Q11@4.jpg",
+      "detail_hd" : "https://i3.ztat.net/detail_hd/MK/15/1F/00/EQ/11/MK151F00E-Q11@4.jpg",
+      "large" : "https://i3.ztat.net/large/MK/15/1F/00/EQ/11/MK151F00E-Q11@4.jpg",
+      "large_hd" : "https://i3.ztat.net/large_hd/MK/15/1F/00/EQ/11/MK151F00E-Q11@4.jpg"
+    }, {
+      "order" : 2,
+      "catalog" : "https://i2.ztat.net/catalog/MK/15/1F/00/EQ/11/MK151F00E-Q11@3.jpg",
+      "catalog_hd" : "https://i2.ztat.net/catalog_hd/MK/15/1F/00/EQ/11/MK151F00E-Q11@3.jpg",
+      "detail" : "https://i2.ztat.net/detail/MK/15/1F/00/EQ/11/MK151F00E-Q11@3.jpg",
+      "detail_hd" : "https://i2.ztat.net/detail_hd/MK/15/1F/00/EQ/11/MK151F00E-Q11@3.jpg",
+      "large" : "https://i2.ztat.net/large/MK/15/1F/00/EQ/11/MK151F00E-Q11@3.jpg",
+      "large_hd" : "https://i2.ztat.net/large_hd/MK/15/1F/00/EQ/11/MK151F00E-Q11@3.jpg"
+    }, {
+      "order" : 3,
+      "catalog" : "https://i1.ztat.net/catalog/MK/15/1F/00/EQ/11/MK151F00E-Q11@2.jpg",
+      "catalog_hd" : "https://i1.ztat.net/catalog_hd/MK/15/1F/00/EQ/11/MK151F00E-Q11@2.jpg",
+      "detail" : "https://i1.ztat.net/detail/MK/15/1F/00/EQ/11/MK151F00E-Q11@2.jpg",
+      "detail_hd" : "https://i1.ztat.net/detail_hd/MK/15/1F/00/EQ/11/MK151F00E-Q11@2.jpg",
+      "large" : "https://i1.ztat.net/large/MK/15/1F/00/EQ/11/MK151F00E-Q11@2.jpg",
+      "large_hd" : "https://i1.ztat.net/large_hd/MK/15/1F/00/EQ/11/MK151F00E-Q11@2.jpg"
+    }, {
+      "order" : 4,
+      "catalog" : "https://i4.ztat.net/catalog/MK/15/1F/00/EQ/11/MK151F00E-Q11@1.jpg",
+      "catalog_hd" : "https://i4.ztat.net/catalog_hd/MK/15/1F/00/EQ/11/MK151F00E-Q11@1.jpg",
+      "detail" : "https://i4.ztat.net/detail/MK/15/1F/00/EQ/11/MK151F00E-Q11@1.jpg",
+      "detail_hd" : "https://i4.ztat.net/detail_hd/MK/15/1F/00/EQ/11/MK151F00E-Q11@1.jpg",
+      "large" : "https://i4.ztat.net/large/MK/15/1F/00/EQ/11/MK151F00E-Q11@1.jpg",
+      "large_hd" : "https://i4.ztat.net/large_hd/MK/15/1F/00/EQ/11/MK151F00E-Q11@1.jpg"
+    } ]
+  },
+  "reviews" : {
+    "summary" : {
+      "total" : 5,
+      "rating" : {
+        "average" : 4.2,
+        "distribution" : [ {
+          "level" : "5",
+          "count" : 2
+        }, {
+          "level" : "4",
+          "count" : 2
+        }, {
+          "level" : "3",
+          "count" : 1
+        }, {
+          "level" : "2",
+          "count" : 0
+        }, {
+          "level" : "1",
+          "count" : 0
+        } ]
+      },
+      "recommendations" : {
+        "total" : 4,
+        "positive" : 4
+      }
+    },
+    "entries" : [ {
+      "title" : "Perfekt",
+      "description" : "SEHR GUT! I LOVE IT :)",
+      "rating" : 5,
+      "recommends" : true,
+      "created" : "2016-05-23T13:52:18.602Z"
+    }, {
+      "name" : "Anna-Lena",
+      "title" : "Endlich eine Geldbörse mit Druckknopfverschluss",
+      "description" : "Eine schöne Geldbörse mit Druckknopfverschluss,  was bei mk wirklich selten ist da er sonst mit Reißverschlüssen arbeitet, die ich persönlich nicht so praktisch finde. Einen stern Abzug, da die Geldbörse doch recht klein ist.",
+      "rating" : 4,
+      "recommends" : true,
+      "created" : "2016-01-26T05:38:21.111Z"
+    }, {
+      "title" : "Super Produkt ",
+      "description" : "Super Produkt, welches eine sehr gute Qualität, eine intensive seltene Farbe& keinerlei Mängel aufweist. \n(gekauft in Navy) \n\nKaufempfehlung! ",
+      "rating" : 5,
+      "recommends" : true,
+      "created" : "2015-12-31T12:01:12.589Z"
+    }, {
+      "name" : "Cornelia",
+      "title" : "SChönes Stück",
+      "description" : "Schöne Geldbörse zu einem guten Preis. Aber nicht für Leute geeignet, die alles in ihrer Geldbörse ablegen. Dafür hat sie eindeutig zu wenig Platz.",
+      "rating" : 4,
+      "recommends" : true,
+      "created" : "2015-12-21T14:39:16.943Z"
+    }, {
+      "title" : "Schade! :(",
+      "description" : "Er sah auf dem Bilder richtig toll aus, und für dein Preis musste ich ihn einfach sofort bestellen!! Allerdings ist er was man auf dem Bild gar nicht sieht, ehr länglich und sehr flach. Sieht nicht so gut aus. Da lohnt es 20 - 30 Euro drauf zu legen für einen anderen Michael Kors Geldbeutel.",
+      "rating" : 3,
+      "recommends" : false,
+      "created" : "2014-01-29T18:56:24.397Z"
+    } ]
+  }
 }

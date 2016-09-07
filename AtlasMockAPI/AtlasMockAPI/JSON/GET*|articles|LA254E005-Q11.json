@@ -1,0 +1,64 @@
+{
+  "id" : "LA254E005-Q11",
+  "name" : "Sonnenbrille - black/brown",
+  "brand" : {
+    "name" : "Lacoste"
+  },
+  "units" : [ {
+    "id" : "LA254E005-Q110055000",
+    "size" : "55",
+    "price" : {
+      "amount" : 129.95,
+      "currency" : "EUR"
+    },
+    "original_price" : {
+      "amount" : 129.95,
+      "currency" : "EUR"
+    },
+    "available" : true,
+    "stock" : 3
+  } ],
+  "media" : {
+    "images" : [ {
+      "order" : 1,
+      "catalog" : "https://i2.ztat.net/catalog/LA/25/4E/00/5Q/11/LA254E005-Q11@7.jpg",
+      "catalog_hd" : "https://i2.ztat.net/catalog_hd/LA/25/4E/00/5Q/11/LA254E005-Q11@7.jpg",
+      "detail" : "https://i2.ztat.net/detail/LA/25/4E/00/5Q/11/LA254E005-Q11@7.jpg",
+      "detail_hd" : "https://i2.ztat.net/detail_hd/LA/25/4E/00/5Q/11/LA254E005-Q11@7.jpg",
+      "large" : "https://i2.ztat.net/large/LA/25/4E/00/5Q/11/LA254E005-Q11@7.jpg",
+      "large_hd" : "https://i2.ztat.net/large_hd/LA/25/4E/00/5Q/11/LA254E005-Q11@7.jpg"
+    }, {
+      "order" : 2,
+      "catalog" : "https://i4.ztat.net/catalog/LA/25/4E/00/5Q/11/LA254E005-Q11@3.jpg",
+      "catalog_hd" : "https://i4.ztat.net/catalog_hd/LA/25/4E/00/5Q/11/LA254E005-Q11@3.jpg",
+      "detail" : "https://i4.ztat.net/detail/LA/25/4E/00/5Q/11/LA254E005-Q11@3.jpg",
+      "detail_hd" : "https://i4.ztat.net/detail_hd/LA/25/4E/00/5Q/11/LA254E005-Q11@3.jpg",
+      "large" : "https://i4.ztat.net/large/LA/25/4E/00/5Q/11/LA254E005-Q11@3.jpg",
+      "large_hd" : "https://i4.ztat.net/large_hd/LA/25/4E/00/5Q/11/LA254E005-Q11@3.jpg"
+    }, {
+      "order" : 3,
+      "catalog" : "https://i1.ztat.net/catalog/LA/25/4E/00/5Q/11/LA254E005-Q11@8.jpg",
+      "catalog_hd" : "https://i1.ztat.net/catalog_hd/LA/25/4E/00/5Q/11/LA254E005-Q11@8.jpg",
+      "detail" : "https://i1.ztat.net/detail/LA/25/4E/00/5Q/11/LA254E005-Q11@8.jpg",
+      "detail_hd" : "https://i1.ztat.net/detail_hd/LA/25/4E/00/5Q/11/LA254E005-Q11@8.jpg",
+      "large" : "https://i1.ztat.net/large/LA/25/4E/00/5Q/11/LA254E005-Q11@8.jpg",
+      "large_hd" : "https://i1.ztat.net/large_hd/LA/25/4E/00/5Q/11/LA254E005-Q11@8.jpg"
+    }, {
+      "order" : 4,
+      "catalog" : "https://i2.ztat.net/catalog/LA/25/4E/00/5Q/11/LA254E005-Q11@5.jpg",
+      "catalog_hd" : "https://i2.ztat.net/catalog_hd/LA/25/4E/00/5Q/11/LA254E005-Q11@5.jpg",
+      "detail" : "https://i2.ztat.net/detail/LA/25/4E/00/5Q/11/LA254E005-Q11@5.jpg",
+      "detail_hd" : "https://i2.ztat.net/detail_hd/LA/25/4E/00/5Q/11/LA254E005-Q11@5.jpg",
+      "large" : "https://i2.ztat.net/large/LA/25/4E/00/5Q/11/LA254E005-Q11@5.jpg",
+      "large_hd" : "https://i2.ztat.net/large_hd/LA/25/4E/00/5Q/11/LA254E005-Q11@5.jpg"
+    }, {
+      "order" : 5,
+      "catalog" : "https://i3.ztat.net/catalog/LA/25/4E/00/5Q/11/LA254E005-Q11@6.jpg",
+      "catalog_hd" : "https://i3.ztat.net/catalog_hd/LA/25/4E/00/5Q/11/LA254E005-Q11@6.jpg",
+      "detail" : "https://i3.ztat.net/detail/LA/25/4E/00/5Q/11/LA254E005-Q11@6.jpg",
+      "detail_hd" : "https://i3.ztat.net/detail_hd/LA/25/4E/00/5Q/11/LA254E005-Q11@6.jpg",
+      "large" : "https://i3.ztat.net/large/LA/25/4E/00/5Q/11/LA254E005-Q11@6.jpg",
+      "large_hd" : "https://i3.ztat.net/large_hd/LA/25/4E/00/5Q/11/LA254E005-Q11@6.jpg"
+    } ]
+  }
+}
