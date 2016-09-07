@@ -103,4 +103,8 @@ extension APIClient {
         fetch(makeFetchAddressListEndpoint(config.salesChannel), completion: completion)
     }
 
+    public func deleteAddress(addressId: String, completion: AtlasResult<EmptyResponse> -> Void) {
+        fetch(deleteAddress(addressId), completion: completion)
+    }
+
 }

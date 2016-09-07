@@ -107,6 +107,10 @@ extension CheckoutSummaryViewController {
 
 extension CheckoutSummaryViewController {
 
+    func refreshViewData() {
+        setupViewState()
+    }
+
     private func setupView() {
         view.backgroundColor = .whiteColor()
         view.addSubview(rootStackView)

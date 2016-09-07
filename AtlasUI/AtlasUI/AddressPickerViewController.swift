@@ -10,7 +10,7 @@ enum AddressType {
     case billing
 }
 
-typealias AddressSelectionCompletion = (pickedAddress: Address, pickedAddressType: AddressType) -> Void
+typealias AddressSelectionCompletion = (pickedAddress: Addressable, pickedAddressType: AddressType) -> Void
 
 final class AddressPickerViewController: UIViewController, CheckoutProviderType {
 
@@ -18,11 +18,24 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
     private let addressType: AddressType
     private let selectionCompletion: AddressSelectionCompletion
 
+    private let tableView = UITableView()
+    private var addresses: [Address] = []
+    let tableviewDelegate: AddressListTableViewDelegate?
+
+    var selectedAddress: Addressable? {
+        didSet {
+            tableviewDelegate?.selectedAddress = selectedAddress
+        }
+    }
+
     init(checkout: AtlasCheckout, addressType: AddressType,
         addressSelectionCompletion: AddressSelectionCompletion) {
             self.checkout = checkout
             self.addressType = addressType
-            self.selectionCompletion = addressSelectionCompletion
+            selectionCompletion = addressSelectionCompletion
+            tableviewDelegate = AddressListTableViewDelegate(checkout: checkout,
+                addressType: addressType, addressSelectionCompletion: selectionCompletion)
+
             super.init(nibName: nil, bundle: nil)
     }
 
@@ -30,28 +43,17 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
         fatalError("init(coder:) has not been implemented")
     }
 
-    private lazy var activityIndicatorView: UIActivityIndicatorView = {
-        let activityIndicatorView = UIActivityIndicatorView()
-        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
-        activityIndicatorView.hidesWhenStopped = true
-        return activityIndicatorView
-    }()
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.view.addSubview(tableView)
         switch addressType {
         case .billing:
             self.title = "Billing Address"
         case .shipping:
             self.title = "Shipping Address"
         }
-
-        view.addSubview(activityIndicatorView)
-        activityIndicatorView.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
-        activityIndicatorView.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor).active = true
-        activityIndicatorView.startAnimating()
-
+        self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.setupTableView()
         fetchAddresses()
     }
 
@@ -63,26 +65,31 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
                 case .failure(let error):
                     strongSelf.userMessage.show(error: error)
                 case .success(let addressList):
-                    strongSelf.showAddressListViewController(addressList.addresses)
+                    strongSelf.addresses = addressList.addresses
+                    strongSelf.tableviewDelegate?.addresses = addressList.addresses
+                    strongSelf.tableView.reloadData()
                 }
             }
         }
     }
 
-    private func showAddressListViewController(addresses: [Address]) {
-        let selectedAddress: Address? = nil
-
-        let addressListViewController = AddressListViewController(addresses: addresses, selectedAddress: selectedAddress,
-            addressType: addressType, addressSelectionCompletion: selectionCompletion)
-
-        addChildViewController(addressListViewController)
-        addressListViewController.view.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(addressListViewController.view)
-        addressListViewController.view.topAnchor.constraintEqualToAnchor(topLayoutGuide.bottomAnchor).active = true
-
-        addressListViewController.view.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
-        addressListViewController.view.bottomAnchor.constraintEqualToAnchor(bottomLayoutGuide.topAnchor).active = true
-        addressListViewController.view.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
-        addressListViewController.didMoveToParentViewController(self)
+    override func setEditing(editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        tableView.setEditing(editing, animated: animated)
     }
+
+    func setupTableView() {
+
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.fillInSuperView()
+
+        tableView.delegate = tableviewDelegate
+        tableView.dataSource = tableviewDelegate
+        tableView.registerReusableCell(AddressRowViewCell.self)
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 100
+        tableView.reloadData()
+
+    }
+
 }

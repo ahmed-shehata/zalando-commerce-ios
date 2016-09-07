@@ -105,6 +105,7 @@
 		E8B183171D75DA45001CF8BC /* CreateAddressRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B183151D75DA45001CF8BC /* CreateAddressRequest.swift */; };
 		E8B183181D75DA45001CF8BC /* UpdateAddressRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B183161D75DA45001CF8BC /* UpdateAddressRequest.swift */; };
 		E8B1831A1D75DB54001CF8BC /* UpdateCheckoutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B183191D75DB54001CF8BC /* UpdateCheckoutRequest.swift */; };
+		E8DAE09E1D7D8F82008824D3 /* EmptyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DAE09D1D7D8F82008824D3 /* EmptyResponse.swift */; };
 		E8DD4C481D38DFAD00C822B2 /* CartRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DD4C471D38DFAD00C822B2 /* CartRequest.swift */; };
 		E8DD4C4A1D38EA2900C822B2 /* CartItemRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DD4C491D38EA2900C822B2 /* CartItemRequest.swift */; };
 		E8DD4C521D3F7D1A00C822B2 /* CreateCheckoutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DD4C511D3F7D1A00C822B2 /* CreateCheckoutRequest.swift */; };
@@ -237,6 +238,7 @@
 		E8B183151D75DA45001CF8BC /* CreateAddressRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAddressRequest.swift; sourceTree = "<group>"; };
 		E8B183161D75DA45001CF8BC /* UpdateAddressRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateAddressRequest.swift; sourceTree = "<group>"; };
 		E8B183191D75DB54001CF8BC /* UpdateCheckoutRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateCheckoutRequest.swift; sourceTree = "<group>"; };
+		E8DAE09D1D7D8F82008824D3 /* EmptyResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyResponse.swift; sourceTree = "<group>"; };
 		E8DD4C471D38DFAD00C822B2 /* CartRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartRequest.swift; sourceTree = "<group>"; };
 		E8DD4C491D38EA2900C822B2 /* CartItemRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartItemRequest.swift; sourceTree = "<group>"; };
 		E8DD4C511D3F7D1A00C822B2 /* CreateCheckoutRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCheckoutRequest.swift; sourceTree = "<group>"; };
@@ -405,6 +407,7 @@
 				817292601D362A2C00803B74 /* PickupPoint.swift */,
 				817292611D362A2C00803B74 /* Price.swift */,
 				817292631D362A2C00803B74 /* Unit.swift */,
+				E8DAE09D1D7D8F82008824D3 /* EmptyResponse.swift */,
 			);
 			name = Models;
 			path = AtlasSDK/Models;
@@ -524,9 +527,6 @@
 		E8063CB71D78276500783A21 /* Checkout */ = {
 			isa = PBXGroup;
 			children = (
-				E8B1831D1D76E8BC001CF8BC /* CheckoutType.swift */,
-				817292591D362A2C00803B74 /* Checkout.swift */,
-				E8B1831B1D75E6C9001CF8BC /* IncompleteCheckout.swift */,
 			);
 			name = Checkout;
 			sourceTree = "<group>";
@@ -725,6 +725,7 @@
 				8186B0FC1D51ECC10068EE37 /* JSONRepresentable.swift in Sources */,
 				819F8AAC1D3689E3008E2AB1 /* Catalog.swift in Sources */,
 				8186B0F71D51ECC10068EE37 /* AtlasResult.swift in Sources */,
+				E8DAE09E1D7D8F82008824D3 /* EmptyResponse.swift in Sources */,
 				817292671D362A2C00803B74 /* CartItem.swift in Sources */,
 				8176630A1D3CE1D600B32F9A /* APIEndpoint.swift in Sources */,
 				6D0483931D50CF2F005F4EAE /* AddressList.swift in Sources */,

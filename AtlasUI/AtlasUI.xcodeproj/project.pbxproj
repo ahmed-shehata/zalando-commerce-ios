@@ -37,10 +37,10 @@
 		E85BE3531D5DF60C009EF7BA /* PaymentSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85BE3521D5DF60C009EF7BA /* PaymentSelectionViewController.swift */; };
 		E85D38E61D5B7182008A42C2 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85D38E51D5B7182008A42C2 /* UIStackView.swift */; };
 		E85D38E81D5B78A1008A42C2 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85D38E71D5B78A1008A42C2 /* UIView.swift */; };
+		E88FD79C1D7ED1110053795D /* AddressListTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88FD79B1D7ED1110053795D /* AddressListTableViewDelegate.swift */; };
 		E8B183141D75C5B4001CF8BC /* AddressPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B183131D75C5B4001CF8BC /* AddressPickerViewController.swift */; };
-		E8B1831F1D772332001CF8BC /* CheckoutSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B1421D51EE930068EE37 /* CheckoutSummaryViewController.swift */; };
+		E8B1831F1D772332001CF8BC /* (null) in Sources */ = {isa = PBXBuildFile; };
 		E8B183241D772B82001CF8BC /* AddressRowViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B183231D772B82001CF8BC /* AddressRowViewCell.swift */; };
-		E8B183261D772BB0001CF8BC /* AddressListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B183251D772BB0001CF8BC /* AddressListViewController.swift */; };
 		E9325D371D674305004C29DC /* RoundedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9325D361D674305004C29DC /* RoundedViews.swift */; };
 		E9325D391D674752004C29DC /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9325D381D674752004C29DC /* CGRect.swift */; };
 		E9325D511D6767E8004C29DC /* BorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9325D501D6767E8004C29DC /* BorderView.swift */; };
@@ -90,7 +90,6 @@
 		810916031D522C66006101AD /* AsyncSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncSpec.swift; sourceTree = "<group>"; };
 		810916051D522E4A006101AD /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = ../../Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		810916061D522E4A006101AD /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = ../../Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
-		812D78AE1D75A78800462C6D /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		8131E39D1D798EFA00EA186F /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		8172776E1D5B174E001394BF /* LocalizerProviderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizerProviderType.swift; sourceTree = "<group>"; };
 		8186B11A1D51EE2F0068EE37 /* AtlasUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AtlasUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,9 +117,9 @@
 		E85BE3521D5DF60C009EF7BA /* PaymentSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentSelectionViewController.swift; sourceTree = "<group>"; };
 		E85D38E51D5B7182008A42C2 /* UIStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		E85D38E71D5B78A1008A42C2 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		E88FD79B1D7ED1110053795D /* AddressListTableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressListTableViewDelegate.swift; sourceTree = "<group>"; };
 		E8B183131D75C5B4001CF8BC /* AddressPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressPickerViewController.swift; sourceTree = "<group>"; };
 		E8B183231D772B82001CF8BC /* AddressRowViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressRowViewCell.swift; sourceTree = "<group>"; };
-		E8B183251D772BB0001CF8BC /* AddressListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressListViewController.swift; sourceTree = "<group>"; };
 		E9325D361D674305004C29DC /* RoundedViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedViews.swift; sourceTree = "<group>"; };
 		E9325D381D674752004C29DC /* CGRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
 		E9325D501D6767E8004C29DC /* BorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderView.swift; sourceTree = "<group>"; };
@@ -247,7 +246,6 @@
 				E9325D501D6767E8004C29DC /* BorderView.swift */,
 				E9325D381D674752004C29DC /* CGRect.swift */,
 				E9D510051D757031008D28E7 /* String.swift */,
-				812D78AE1D75A78800462C6D /* String.swift */,
 				E9C84CF11D771CD700510549 /* UIColor.swift */,
 				E9676B081D7820AD00ED7D8D /* UIBuilder.swift */,
 				E9676B1B1D78456400ED7D8D /* LoaderView.swift */,
@@ -316,7 +314,7 @@
 			children = (
 				E8B183131D75C5B4001CF8BC /* AddressPickerViewController.swift */,
 				E8B183231D772B82001CF8BC /* AddressRowViewCell.swift */,
-				E8B183251D772BB0001CF8BC /* AddressListViewController.swift */,
+				E88FD79B1D7ED1110053795D /* AddressListTableViewDelegate.swift */,
 			);
 			name = "Address Selection";
 			sourceTree = "<group>";
@@ -508,6 +506,7 @@
 				E973CF611D70329900B706E8 /* CheckoutSummaryActionsHandler.swift in Sources */,
 				E9325D371D674305004C29DC /* RoundedViews.swift in Sources */,
 				E85D38E61D5B7182008A42C2 /* UIStackView.swift in Sources */,
+				E88FD79C1D7ED1110053795D /* AddressListTableViewDelegate.swift in Sources */,
 				E9676B091D7820AD00ED7D8D /* UIBuilder.swift in Sources */,
 				E96328911D6EFF0600BDAE06 /* CheckoutSummaryViewController.swift in Sources */,
 				E9676B0F1D7823D600ED7D8D /* CheckoutSummaryProductStackView.swift in Sources */,
@@ -522,8 +521,7 @@
 				E8B183141D75C5B4001CF8BC /* AddressPickerViewController.swift in Sources */,
 				8186B1581D51EE930068EE37 /* CheckoutTransitioningDelegate.swift in Sources */,
 				8172776F1D5B174E001394BF /* LocalizerProviderType.swift in Sources */,
-				E8B1831F1D772332001CF8BC /* CheckoutSummaryViewController.swift in Sources */,
-				E8B183261D772BB0001CF8BC /* AddressListViewController.swift in Sources */,
+				E8B1831F1D772332001CF8BC /* (null) in Sources */,
 				810348861D7053050021E95D /* Errors.swift in Sources */,
 				8186B1561D51EE930068EE37 /* CheckoutPresentationController.swift in Sources */,
 				E9676B071D78206C00ED7D8D /* CheckoutSummaryRootStackView.swift in Sources */,

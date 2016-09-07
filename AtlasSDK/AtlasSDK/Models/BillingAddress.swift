@@ -56,8 +56,8 @@ extension BillingAddress: JSONInitializable {
 
 extension BillingAddress {
 
-    public init?(address: Address) {
-        guard address.pickupPoint == nil else { return nil }
+    public init?(address: Addressable) {
+        guard let address = address as? Address else { return nil }
         self.init(
             id: address.id,
             gender: address.gender,

@@ -46,6 +46,17 @@ class AtlasDemoUITests: XCTestCase {
         tapBackToShop()
     }
 
+    func testDeleteAddress() {
+        let sizeText = app.tables.staticTexts["42"]
+        tapBuyNow("Lamica")
+        waitForElementToAppearAndTap(sizeText)
+        tapConnectAndLogin()
+        app.scrollViews.childrenMatchingType(.Any)
+            .element.childrenMatchingType(.Any).elementBoundByIndex(2).staticTexts["Erika Mustermann, Mollstr. 1 10178 Berlin"].tap()
+        deleteAddresses()
+        app.navigationBars["Summary"].buttons["Cancel"].tap()
+    }
+
     func testBuyProductWithSizesAndNavigatingBack() {
         let summaryNavigationBar = app.navigationBars["Summary"]
         let backButton = summaryNavigationBar.buttons["Back"]
@@ -95,20 +106,36 @@ class AtlasDemoUITests: XCTestCase {
 
     }
 
-    private func changeShippingAddress() {
+    func changeShippingAddress() {
         let tablesQuery = app.tables
 
         app.scrollViews.childrenMatchingType(.Other)
             .element.childrenMatchingType(.Other).elementBoundByIndex(2).staticTexts["Erika Mustermann, Mollstr. 1 10178 Berlin"].tap()
-        tablesQuery.staticTexts["Jane Doe, Mollstr. 1 10178 Berlin "] .tap()
+        tablesQuery.cells.containingType(.StaticText, identifier: "Jane").staticTexts["Mollstr. 1 10178 Berlin "].tap()
     }
 
-    private func changeBillingAddress() {
+    func changeBillingAddress() {
         let tablesQuery = app.tables
 
         app.scrollViews.childrenMatchingType(.Other)
             .element.childrenMatchingType(.Other).elementBoundByIndex(4).staticTexts["Erika Mustermann, Mollstr. 1 10178 Berlin"].tap()
-        tablesQuery.staticTexts["John Doe, Mollstr. 1 10178 Berlin "] .tap()
+        tablesQuery.cells.containingType(.StaticText, identifier: "Jane").staticTexts["Mollstr. 1 10178 Berlin "].tap()
+
+    }
+
+    private func deleteAddresses() {
+        let shippingAddressNavigationBar = app.navigationBars["Shipping Address"]
+        shippingAddressNavigationBar.buttons["Edit"].tap()
+        let tablesQuery = app.tables
+
+        tablesQuery.buttons["Delete Jane, Mollstr. 1 10178 Berlin"] .tap()
+        tablesQuery.buttons["Delete"] .tap()
+
+        tablesQuery.buttons["Delete John, Mollstr. 1 10178 Berlin"] .tap()
+        tablesQuery.buttons["Delete"] .tap()
+        app.navigationBars["Shipping Address"].buttons["Done"].tap()
+        shippingAddressNavigationBar.buttons["Summary"].tap()
+
     }
 
     private func tapConnectAndLogin() {

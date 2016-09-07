@@ -14,6 +14,7 @@ public enum HTTPStatus: Int {
 
     case Unknown = -1
     case OK = 200
+    case NoContent = 204
     case MovedPermanently = 301
     case Found = 302
     case NotModified = 304

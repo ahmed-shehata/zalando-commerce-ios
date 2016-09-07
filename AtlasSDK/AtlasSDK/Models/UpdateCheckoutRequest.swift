@@ -8,7 +8,7 @@ public struct UpdateCheckoutRequest {
     public let billingAddressId: String?
     public let shippingAddressId: String?
 
-    public init(billingAddressId: String?, shippingAddressId: String?) {
+    public init(billingAddressId: String? = nil, shippingAddressId: String? = nil) {
         self.shippingAddressId = shippingAddressId
         self.billingAddressId = billingAddressId
     }

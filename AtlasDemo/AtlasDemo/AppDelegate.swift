@@ -12,37 +12,36 @@ var AtlasCheckoutInstance: AtlasCheckout? // swiftlint:disable:this variable_nam
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
     static var atlasCheckout: AtlasCheckout?
-
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         BuddyBuildSDK.setup()
-
+        
         let opts: Options
         if NSProcessInfo.hasMockedAPIEnabled {
             resetApp()
             opts = Options(clientId: "atlas_Y2M1MzA",
-                salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
-                useSandbox: true, interfaceLanguage: "en_DE",
-                configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
+                           salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
+                           useSandbox: true, interfaceLanguage: "en_DE",
+                           configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
         } else {
             opts = Options(clientId: "atlas_Y2M1MzA",
-                salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
-                useSandbox: true, interfaceLanguage: "en_DE")
+                           salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
+                           useSandbox: true, interfaceLanguage: "en_DE")
         }
-
+        
         AtlasCheckout.configure(opts) { result in
             if case let .success(checkout) = result {
                 AtlasCheckoutInstance = checkout
             }
         }
-
         return true
     }
-
+    
     private func resetApp() {
         Atlas.logoutCustomer()
     }
-
+    
 }
