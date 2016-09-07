@@ -62,7 +62,7 @@ extension APIClient {
                 completion(.failure(error))
 
             case .success(let cart):
-                self.fetchAddressList { addressListResult in
+                self.addresses { addressListResult in
                     switch addressListResult {
                     case .failure(let error):
                         completion(.failure(error))
@@ -120,7 +120,7 @@ extension APIClient {
         fetch(from: endpoint, completion: completion)
     }
 
-    public func fetchAddressList(completion: AddressesCompletion) {
+    public func addresses(completion: AddressesCompletion) {
         let endpoint = GetAddressesEndpoint(serviceURL: config.checkoutAPIURL,
             salesChannel: config.salesChannel)
 

@@ -58,7 +58,7 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
     }
 
     private func fetchAddresses() {
-        checkout.client.fetchAddressList { [weak self] result in
+        checkout.client.addresses { [weak self] result in
             guard let strongSelf = self else { return }
             Async.main {
                 switch result {
