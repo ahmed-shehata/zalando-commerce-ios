@@ -14,7 +14,7 @@ class APIArticleSpec: APIClientBaseSpec {
 
         describe("Article") {
 
-            it("should fetch Article object successfully") {
+            it("should fetch article successfully") {
                 self.waitUntilAPIClientIsConfigured { done, client in
                     let sku = "AD541L009-G11"
                     client.article(forSKU: sku) { result in
