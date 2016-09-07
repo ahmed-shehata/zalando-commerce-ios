@@ -109,16 +109,16 @@ class AtlasDemoUITests: XCTestCase {
     func changeShippingAddress() {
         let tablesQuery = app.tables
 
-        app.scrollViews.childrenMatchingType(.Other)
-            .element.childrenMatchingType(.Other).elementBoundByIndex(2).staticTexts["Erika Mustermann, Mollstr. 1 10178 Berlin"].tap()
+        app.scrollViews.childrenMatchingType(.Any)
+            .element.childrenMatchingType(.Any).elementBoundByIndex(2).staticTexts["Erika Mustermann, Mollstr. 1 10178 Berlin"].tap()
         tablesQuery.cells.containingType(.StaticText, identifier: "Jane").staticTexts["Mollstr. 1 10178 Berlin "].tap()
     }
 
     func changeBillingAddress() {
         let tablesQuery = app.tables
 
-        app.scrollViews.childrenMatchingType(.Other)
-            .element.childrenMatchingType(.Other).elementBoundByIndex(4).staticTexts["Erika Mustermann, Mollstr. 1 10178 Berlin"].tap()
+        app.scrollViews.childrenMatchingType(.Any)
+            .element.childrenMatchingType(.Any).elementBoundByIndex(4).staticTexts["Erika Mustermann, Mollstr. 1 10178 Berlin"].tap()
         tablesQuery.cells.containingType(.StaticText, identifier: "Jane").staticTexts["Mollstr. 1 10178 Berlin "].tap()
 
     }
@@ -160,12 +160,12 @@ class AtlasDemoUITests: XCTestCase {
         NSThread.sleepForTimeInterval(2)
 
         let zalandoLoginElement = app.otherElements["Zalando Login"]
-        let element = zalandoLoginElement.childrenMatchingType(.Other).elementBoundByIndex(4)
+        let element = zalandoLoginElement.childrenMatchingType(.Any).elementBoundByIndex(4)
         element.childrenMatchingType(.TextField).element.tap()
         element.childrenMatchingType(.TextField).element.typeText("atlas-testing@mailinator.com")
         element.childrenMatchingType(.TextField).element
 
-        let element2 = zalandoLoginElement.childrenMatchingType(.Other).elementBoundByIndex(6)
+        let element2 = zalandoLoginElement.childrenMatchingType(.Any).elementBoundByIndex(6)
         element2.childrenMatchingType(.SecureTextField).element.tap()
         element2.childrenMatchingType(.SecureTextField).element.typeText("12345678")
         element2.childrenMatchingType(.SecureTextField).element
