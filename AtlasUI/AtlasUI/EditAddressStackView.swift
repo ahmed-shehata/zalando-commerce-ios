@@ -6,23 +6,16 @@ import UIKit
 
 class EditAddressStackView: UIStackView {
 
-    internal let titleTextFieldInput = TextFieldInputStackView()
-    internal let firstNameTextFieldInput = TextFieldInputStackView()
-    internal let lastNameTextFieldInput = TextFieldInputStackView()
-    internal let streetTextFieldInput = TextFieldInputStackView()
-    internal let additionalAddressTextFieldInput = TextFieldInputStackView()
-    internal let zipcodeTextFieldInput = TextFieldInputStackView()
-    internal let cityTextFieldInput = TextFieldInputStackView()
-    internal let countryTextFieldInput = TextFieldInputStackView()
+    private var textFields: [(type: EditAddressField, textField: TextFieldInputStackView)]
 
-    internal let submitButtonStackView: UIStackView = {
+    private let submitButtonStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.layoutMargins = UIEdgeInsets(top: 40, left: 30, bottom: 20, right: 30)
         stackView.layoutMarginsRelativeArrangement = true
         return stackView
     }()
 
-    internal let submitButton: RoundedButton = {
+    private let submitButton: RoundedButton = {
         let button = RoundedButton(type: .Custom)
         button.cornerRadius = 5
         button.titleLabel?.font = .systemFontOfSize(15)
@@ -31,34 +24,43 @@ class EditAddressStackView: UIStackView {
         return button
     }()
 
+    private let addressType: EditAddressType
+
+    init(addressType: EditAddressType) {
+        self.addressType = addressType
+        self.textFields = []
+        super.init(arrangedSubviews: [])
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
 }
 
 extension EditAddressStackView: UIBuilder {
 
     func configureView() {
-        addArrangedSubview(titleTextFieldInput)
-        addArrangedSubview(firstNameTextFieldInput)
-        addArrangedSubview(lastNameTextFieldInput)
-        addArrangedSubview(streetTextFieldInput)
-        addArrangedSubview(additionalAddressTextFieldInput)
-        addArrangedSubview(zipcodeTextFieldInput)
-        addArrangedSubview(cityTextFieldInput)
-        addArrangedSubview(countryTextFieldInput)
-        addArrangedSubview(submitButtonStackView)
+        addressType.fields.forEach {
+            let textField = TextFieldInputStackView()
+            self.textFields.append((type: $0, textField: textField))
+            self.addArrangedSubview(textField)
+        }
         submitButtonStackView.addArrangedSubview(submitButton)
     }
 
     func builderSubviews() -> [UIBuilder] {
-        return [titleTextFieldInput, firstNameTextFieldInput, lastNameTextFieldInput, streetTextFieldInput, additionalAddressTextFieldInput, zipcodeTextFieldInput, cityTextFieldInput, countryTextFieldInput]
+        return textFields.map { $0.textField }
     }
 
 }
 
 extension EditAddressStackView: UIDataBuilder {
 
-    typealias T = Bool
+    typealias T = EditAddressViewModel
 
     func configureData(viewModel: T) {
+        
         titleTextFieldInput.configureData(TextFieldInputViewModel(title: "Title", value: nil, error: nil, nextTextFieldInput: firstNameTextFieldInput))
         firstNameTextFieldInput.configureData(TextFieldInputViewModel(title: "First Name", value: nil, error: nil, nextTextFieldInput: lastNameTextFieldInput))
         lastNameTextFieldInput.configureData(TextFieldInputViewModel(title: "Last Name", value: nil, error: nil, nextTextFieldInput: streetTextFieldInput))

@@ -13,24 +13,26 @@ class EditAddressViewController: UIViewController {
         return scrollView
     }()
 
-    internal let addressStackView: EditAddressStackView = {
-        let stackView = EditAddressStackView()
+    internal lazy var addressStackView: EditAddressStackView = {
+        let stackView = EditAddressStackView(addressType: self.addressType)
         stackView.axis = .Vertical
         stackView.layoutMargins = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
         stackView.layoutMarginsRelativeArrangement = true
         return stackView
     }()
 
-//    var address: Address
-//
-//    init(address: Address = Address()) {
-//        self.address = address
-//        super.init(nibName: nil, bundle: nil)
-//    }
-//
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
+    let addressType: EditAddressType
+    let addressViewModel: EditAddressViewModel
+
+    init(addressType: EditAddressType, addressViewModel: EditAddressViewModel = EditAddressViewModel()) {
+        self.addressType = addressType
+        self.addressViewModel = addressViewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

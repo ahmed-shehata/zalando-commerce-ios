@@ -7,7 +7,20 @@
 //
 
 import Foundation
+import AtlasSDK
 
-struct EditAddressViewModel {
+class EditAddressViewModel {
+
+    var id: String?
+    var customerNumber: String?
+    var gender: Gender?
+    var firstName: String?
+    var lastName: String?
+    var street: String??
+    var additional: String?
+    var zip: String?
+    var city: String?
+    var countryCode: String?
+    var pickupPoint: PickupPoint?
 
 }
