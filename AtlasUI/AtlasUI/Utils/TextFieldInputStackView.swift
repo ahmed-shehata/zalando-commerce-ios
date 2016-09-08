@@ -8,7 +8,7 @@ struct TextFieldInputViewModel {
     let title: String
     let value: String?
     let error: String?
-    let nextTextField: TextFieldInputStackView?
+    let nextTextFieldInput: TextFieldInputStackView?
 }
 
 class TextFieldInputStackView: UIStackView {
@@ -16,15 +16,16 @@ class TextFieldInputStackView: UIStackView {
     internal let titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = .systemFontOfSize(14, weight: UIFontWeightLight)
-        label.textColor = UIColor(hex: 0x9D9D9D)
+        label.alpha = 0
+        label.font = .systemFontOfSize(11)
+        label.textColor = UIColor(hex: 0xADADAD)
         return label
     }()
 
     internal let textField: UITextField = {
         let textField = UITextField()
-        textField.font = .systemFontOfSize(16, weight: UIFontWeightLight)
-        textField.textColor = UIColor(hex: 0x1C1C1C)
+        textField.font = .systemFontOfSize(15)
+        textField.textColor = UIColor(hex: 0x333333)
         return textField
     }()
 
@@ -38,8 +39,8 @@ class TextFieldInputStackView: UIStackView {
     internal let errorLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = .systemFontOfSize(12)
-        label.textColor = .redColor()
+        label.font = .systemFontOfSize(11)
+        label.textColor = UIColor(hex: 0xDB2D2D)
         return label
     }()
 
@@ -50,11 +51,11 @@ class TextFieldInputStackView: UIStackView {
 extension TextFieldInputStackView: UIBuilder {
 
     func configureView() {
-        configureThisView()
         addArrangedSubview(titleLabel)
         addArrangedSubview(textField)
         addArrangedSubview(separatorView)
         addArrangedSubview(errorLabel)
+        configureStackView()
         configureTextField()
     }
 
@@ -62,7 +63,7 @@ extension TextFieldInputStackView: UIBuilder {
         separatorView.setHeight(equalToConstant: 1)
     }
 
-    private func configureThisView() {
+    private func configureStackView() {
         axis = .Vertical
         spacing = 2
         layoutMargins = UIEdgeInsets(top: 5, left: 16, bottom: 0, right: 16)
@@ -82,16 +83,22 @@ extension TextFieldInputStackView: UIDataBuilder {
     typealias T = TextFieldInputViewModel
 
     func configureData(viewModel: T) {
-        self.nextTextField = viewModel.nextTextField
-        textField.returnKeyType = nextTextField == nil ? .Default : .Next
+        titleLabel.text = viewModel.title.uppercaseString
+
+        nextTextField = viewModel.nextTextFieldInput
         textField.text = viewModel.value
         textField.placeholder = viewModel.title
+        textField.returnKeyType = nextTextField == nil ? .Default : .Next
+
         errorLabel.text = viewModel.error ?? " "
+
         configureTitleLabel()
     }
 
     private func configureTitleLabel() {
-        titleLabel.text = textField.text?.length > 0 ? textField.placeholder : " "
+        UIView.animateWithDuration(0.3) {
+            self.titleLabel.alpha = self.textField.text?.length > 0 ? 1 : 0
+        }
     }
 
 }
@@ -103,13 +110,13 @@ extension TextFieldInputStackView: UITextFieldDelegate {
     }
 
     func textFieldDidBeginEditing(textField: UITextField) {
-        separatorView.borderColor = UIColor(hex: 0xFB5108)
-        titleLabel.textColor = UIColor(hex: 0xFB5108)
+        separatorView.borderColor = UIColor(hex: 0xFF6900)
+        titleLabel.textColor = UIColor(hex: 0xFF6900)
     }
 
     func textFieldDidEndEditing(textField: UITextField) {
         separatorView.borderColor = .blackColor()
-        titleLabel.textColor = UIColor(hex: 0x9D9D9D)
+        titleLabel.textColor = UIColor(hex: 0xADADAD)
     }
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {

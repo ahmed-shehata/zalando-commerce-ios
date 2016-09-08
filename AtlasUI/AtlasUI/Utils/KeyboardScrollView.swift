@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import AtlasSDK
 
 class KeyboardScrollView: UIScrollView {
 
@@ -19,11 +20,12 @@ class KeyboardScrollView: UIScrollView {
     }
 
     func keyboardWillShow(notification: NSNotification) {
-        guard let frame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey]?.CGRectValue() else { return }
+        guard let keyboardHeight = notification.userInfo?[UIKeyboardFrameEndUserInfoKey]?.CGRectValue().height else { return }
 
         UIView.animateWithDuration(0.3) {
-            self.contentInset.bottom = frame.height
-            self.scrollIndicatorInsets.bottom = frame.height
+            self.contentInset.bottom = keyboardHeight
+            self.scrollIndicatorInsets.bottom = keyboardHeight
+            self.scrollToCurrentFirstResponder(withKeyboardHeight: keyboardHeight)
         }
     }
 
@@ -31,6 +33,14 @@ class KeyboardScrollView: UIScrollView {
         UIView.animateWithDuration(0.3) {
             self.contentInset.bottom = 0
             self.scrollIndicatorInsets.bottom = 0
+        }
+    }
+
+    private func scrollToCurrentFirstResponder(withKeyboardHeight keyboardHeight: CGFloat) {
+        if let firstResponder = UIApplication.window?.findFirstResponder() {
+            let frame = firstResponder.convertRect(firstResponder.bounds, toView: self)
+            let newOffset = frame.origin.y - (bounds.height - keyboardHeight) / 2.0
+            contentOffset.y = max(-contentInset.top, newOffset)
         }
     }
 
