@@ -22,6 +22,28 @@ public class AtlasCheckout: LocalizerProviderType {
         self.options = options
     }
 
+    /**
+    Configure AtlasCheckout using Info.plist with the following keys available:
+     - ATLASSDK_CLIENT_ID: String - Client Id (required)
+     - ATLASSDK_SALES_CHANNEL: String - Sales Channel (required)
+     - ATLASSDK_USE_SANDBOX: Bool - Indicates whether sandbox environment should be used
+     - ATLASSDK_INTERFACE_LANGUAGE: String - Checkout interface language
+
+     - Parameters:
+        - completion `AtlasCheckoutConfigurationCompletion`: `AtlasResult` with success result as `AtlasCheckout` initialized
+     */
+    public static func configure(completion: AtlasCheckoutConfigurationCompletion) {
+        let options = Options(bundle: NSBundle.mainBundle())
+        AtlasCheckout.configure(options, completion: completion)
+    }
+
+    /**
+     Configure AtlasCheckout manually.
+
+     - Parameters:
+        - options `Options`: provide an `Options` instance with at least 2 mandatory parameters **clientId** and **salesChannel**
+        - completion `AtlasCheckoutConfigurationCompletion`: `AtlasResult` with success result as `AtlasCheckout` initialized
+    */
     public static func configure(options: Options, completion: AtlasCheckoutConfigurationCompletion) {
         Atlas.configure(options) { result in
             switch result {
@@ -52,11 +74,15 @@ public class AtlasCheckout: LocalizerProviderType {
             return true
     }
 
-    func createCheckout(withArticle article: Article, selectedUnitIndex: Int, completion: CreateCheckoutCompletion) {
+    func createCheckoutViewModel(withArticle article: Article, selectedUnitIndex: Int, completion: CreateCheckoutCompletion) {
         client.createCheckout(withArticle: article, selectedUnitIndex: selectedUnitIndex) { checkoutResult in
             switch checkoutResult {
             case .failure(let error):
-                completion(.failure(error))
+                if case let AtlasAPIError.checkoutFailed(_, cartId, _) = error {
+                    let checkoutModel = CheckoutViewModel(article: article,
+                        selectedUnitIndex: selectedUnitIndex, cartId: cartId, checkout: nil)
+                    completion(.success(checkoutModel))
+                }
 
             case .success(let checkout):
                 let checkoutModel = CheckoutViewModel(article: article,
@@ -71,7 +97,7 @@ public class AtlasCheckout: LocalizerProviderType {
 extension AtlasCheckout: Localizable {
 
     var localizedStringsBundle: NSBundle {
-        return NSBundle(forClass: SizeSelectionViewController.self)
+        return NSBundle(forClass: AtlasCheckout.self)
     }
 
     var localeIdentifier: String {

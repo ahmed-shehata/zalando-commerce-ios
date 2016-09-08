@@ -6,7 +6,7 @@ import Foundation
 
 protocol CheckoutProviderType: LocalizerProviderType {
 
-    var checkout: AtlasCheckout! { get }
+    var checkout: AtlasCheckout { get }
 
 }
 

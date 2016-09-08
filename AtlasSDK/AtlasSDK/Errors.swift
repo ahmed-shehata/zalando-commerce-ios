@@ -12,7 +12,7 @@ public protocol AtlasErrorType: ErrorType {
 
 public extension AtlasErrorType {
 
-    var localizedDescriptionKey: String { return "AtlasError.\(self)" }
+    var localizedDescriptionKey: String { return "\(self.dynamicType).message.\(self)" }
 
 }
 
@@ -29,10 +29,13 @@ public enum AtlasAPIError: AtlasErrorType {
 
     case noData
     case invalidResponseFormat
+    case unauthorized
+
     case nsURLError(code: Int, details: String?)
     case http(status: HTTPStatus, details: String?)
     case backend(status: Int?, title: String?, details: String?)
-    case unauthorized
+
+    case checkoutFailed(addresses: AddressList?, cartId: String?, error: ErrorType)
 
 }
 
@@ -40,8 +43,12 @@ public enum LoginError: AtlasErrorType {
 
     case missingURL
     case accessDenied
-    case requestFailed
-    case noAccessToken
     case missingViewControllerToShowLoginForm
 
+    case requestFailed(error: NSError?)
+
+}
+
+public func == (lhs: AtlasAPIError, rhs: AtlasAPIError) -> Bool {
+    return lhs._code == rhs._code
 }

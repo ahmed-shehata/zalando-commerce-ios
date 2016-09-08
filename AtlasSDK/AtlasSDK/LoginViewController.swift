@@ -100,7 +100,7 @@ extension LoginViewController: UIWebViewDelegate {
     }
 
     func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
-        self.dismissViewController(withFailure: .requestFailed)
+        self.dismissViewController(withFailure: .requestFailed(error: error))
     }
 
     func webViewDidFinishLoad(webView: UIWebView) {

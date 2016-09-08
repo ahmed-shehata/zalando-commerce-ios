@@ -7,6 +7,7 @@ import Contacts
 
 public protocol Addressable {
 
+    var id: String { get }
     var gender: Gender { get }
     var firstName: String { get }
     var lastName: String { get }
@@ -18,10 +19,14 @@ public protocol Addressable {
 
 }
 
+public func == (lhs: Addressable, rhs: Addressable) -> Bool {
+    return lhs.id == rhs.id
+}
+
 extension Addressable {
 
-    public var fullAddress: String {
-        let parts = [formattedContact, formattedAddress]
+    public var fullContactPostalAddress: String {
+        let parts = [formattedContact, formattedPostalAddress]
         return parts.flatMap({ $0 }).joinWithSeparator(", ")
     }
 
@@ -35,7 +40,7 @@ extension Addressable {
         return contactFormatter.stringFromContact(contact)
     }
 
-    public var formattedAddress: String {
+    public var formattedPostalAddress: String {
         let postalFormatter = CNPostalAddressFormatter()
         let postalAddress = CNMutablePostalAddress()
 

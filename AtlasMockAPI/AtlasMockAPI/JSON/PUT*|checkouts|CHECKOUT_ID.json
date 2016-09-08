@@ -1,0 +1,44 @@
+{
+    "id" : "CHECKOUT_ID",
+    "customer_number" : "CUSTOMER_NUMBER",
+    "cart_id" : "CART_ID",
+    "billing_address_id" : "6702759",
+    "billing_address" : {
+        "id" : "6702759",
+        "gender" : "FEMALE",
+        "first_name" : "Erika",
+        "last_name" : "Mustermann",
+        "street" : "Mollstr. 1",
+        "additional" : "EG",
+        "zip" : "10178",
+        "city" : "Berlin",
+        "country_code" : "DE"
+    },
+    "shipping_address_id" : "6702759",
+    "shipping_address" : {
+        "id" : "6702759",
+        "gender" : "FEMALE",
+        "first_name" : "Erika",
+        "last_name" : "Mustermann",
+        "street" : "Mollstr. 1",
+        "additional" : "EG",
+        "zip" : "10178",
+        "city" : "Berlin",
+        "country_code" : "DE"
+    },
+    
+    "delivery" : {
+        "earliest" : "2016-07-23T16:51:34.142Z",
+        "latest" : "2016-07-25T16:51:34.142Z"
+    },
+    "payment" : {
+        "selected" : {
+            "method" : "PREPAYMENT",
+            "metadata" : {
+                "DEPRECATED_cpm_id" : "7770885"
+            },
+            "external_payment" : false
+        },
+        "selection_page_url" : "https://payment-gateway.kohle-integration.zalan.do/payment-method-selection-session/595f8ebf-8525-4f66-91cf-5fb3b9ad86c1/selection"
+    }
+}

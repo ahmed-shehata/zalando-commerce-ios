@@ -6,30 +6,33 @@ import UIKit
 
 class BorderView: UIView {
 
-    @IBInspectable var topBorder: Bool = false
-    @IBInspectable var rightBorder: Bool = false
-    @IBInspectable var bottomBorder: Bool = false
-    @IBInspectable var leftBorder: Bool = false
-    @IBInspectable var borderColor: UIColor = .blackColor()
+    var topBorder: Bool = false
+    var rightBorder: Bool = false
+    var bottomBorder: Bool = false
+    var leftBorder: Bool = false
+    var leadingMargin: CGFloat = 0
+    var trailingMarging: CGFloat = 0
+    var borderColor: UIColor = .blackColor()
 
     private let onePixel = 1 / UIScreen.mainScreen().scale
 
     override func layoutSubviews() {
         super.layoutSubviews()
-
         removeAllSubviews()
 
+        let totalMargin = leadingMargin + trailingMarging
+
         if topBorder {
-            addView(CGRect(x: 0, y: 0, width: bounds.width, height: onePixel))
+            addView(CGRect(x: leadingMargin, y: 0, width: bounds.width - totalMargin, height: onePixel))
         }
         if rightBorder {
-            addView(CGRect(x: bounds.width - onePixel, y: 0, width: onePixel, height: bounds.height))
+            addView(CGRect(x: bounds.width - onePixel, y: leadingMargin, width: onePixel, height: bounds.height - totalMargin))
         }
         if bottomBorder {
-            addView(CGRect(x: 0, y: bounds.height - onePixel, width: bounds.width, height: onePixel))
+            addView(CGRect(x: leadingMargin, y: bounds.height - onePixel, width: bounds.width - totalMargin, height: onePixel))
         }
         if leftBorder {
-            addView(CGRect(x: 0, y: 0, width: onePixel, height: bounds.height))
+            addView(CGRect(x: 0, y: leadingMargin, width: onePixel, height: bounds.height - totalMargin))
         }
     }
 

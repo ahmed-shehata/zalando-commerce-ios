@@ -6,6 +6,7 @@ import Foundation
 
 public struct BillingAddress: Addressable {
 
+    public let id: String
     public let gender: Gender
     public let firstName: String
     public let lastName: String
@@ -18,8 +19,8 @@ public struct BillingAddress: Addressable {
 }
 
 extension BillingAddress: JSONInitializable {
-
     private struct Keys {
+        static let id = "id"
         static let gender = "gender"
         static let firstName = "first_name"
         static let lastName = "last_name"
@@ -31,8 +32,8 @@ extension BillingAddress: JSONInitializable {
     }
 
     init?(json: JSON) {
-        guard let
-        genderRaw = json[Keys.gender].string,
+        guard let id = json[Keys.id].string,
+            genderRaw = json[Keys.gender].string,
             gender = Gender(rawValue: genderRaw),
             firstName = json[Keys.firstName].string,
             lastName = json[Keys.lastName].string,
@@ -40,7 +41,9 @@ extension BillingAddress: JSONInitializable {
             zip = json[Keys.zip].string,
             city = json[Keys.city].string,
             countryCode = json[Keys.countryCode].string else { return nil }
-        self.init(gender: gender,
+
+        self.init(id: id,
+            gender: gender,
             firstName: firstName,
             lastName: lastName,
             street: street,
@@ -48,5 +51,22 @@ extension BillingAddress: JSONInitializable {
             zip: zip,
             city: city,
             countryCode: countryCode)
+    }
+}
+
+extension BillingAddress {
+
+    public init?(address: Addressable) {
+        guard let address = address as? Address else { return nil }
+        self.init(
+            id: address.id,
+            gender: address.gender,
+            firstName: address.firstName,
+            lastName: address.lastName,
+            street: address.street,
+            additional: address.additional,
+            zip: address.zip,
+            city: address.city,
+            countryCode: address.countryCode)
     }
 }

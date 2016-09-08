@@ -64,9 +64,9 @@ extension APIClient {
                         self.createCheckout(cart.id) { checkoutResult in
                             switch checkoutResult {
                             case .failure(let error):
-                                completion(.failure(error))
-                            case .success(var checkout):
-                                checkout.availableAddresses = addressList.addresses
+                                let checkoutError = AtlasAPIError.checkoutFailed(addresses: addressList, cartId: cart.id, error: error)
+                                completion(.failure(checkoutError))
+                            case .success(let checkout):
                                 completion(.success(checkout))
                             }
                         }
@@ -77,10 +77,16 @@ extension APIClient {
     }
 
     public func createCheckout(cartId: String, billingAddressId: String? = nil,
-        shippingAddressId: String? = nil, checkoutCompletion: CheckoutCompletion) {
-            let checkoutRequest = CheckoutRequest(cartId: cartId, billingAddressId: billingAddressId, shippingAddressId: shippingAddressId)
+        shippingAddressId: String? = nil, checkoutCompletion: AtlasResult<Checkout> -> Void) {
+            let checkoutRequest = CreateCheckoutRequest(cartId: cartId,
+                billingAddressId: billingAddressId,
+                shippingAddressId: shippingAddressId)
             let parameters = checkoutRequest.toJSON()
             fetch(createCheckout(parameters: parameters), completion: checkoutCompletion)
+    }
+
+    public func updateCheckout(checkoutId: String, updateCheckoutRequest: UpdateCheckoutRequest, completion: CheckoutCompletion) {
+        fetch(updateCheckout(checkoutId, parameters: updateCheckoutRequest.toJSON()), completion: completion)
     }
 
     public func createOrder(checkoutId: String, orderCompletion: OrderCompletion) {
@@ -95,6 +101,10 @@ extension APIClient {
 
     public func fetchAddressList(completion: AddressesCompletion) {
         fetch(makeFetchAddressListEndpoint(config.salesChannel), completion: completion)
+    }
+
+    public func deleteAddress(addressId: String, completion: AtlasResult<EmptyResponse> -> Void) {
+        fetch(deleteAddress(addressId), completion: completion)
     }
 
 }

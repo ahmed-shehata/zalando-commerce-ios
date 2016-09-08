@@ -7,29 +7,32 @@ import AtlasSDK
 
 struct CheckoutViewModel {
 
-    let paymentMethodText: String?
-    let discountText: String?
+    let article: Article
+    let selectedUnitIndex: Int
     let shippingPrice: Article.Price?
-    let checkout: Checkout?
-
+    let cartId: String?
+    var checkout: Checkout?
     internal(set) var customer: Customer?
 
-    let selectedUnitIndex: Int
+    var selectedBillingAddress: BillingAddress?
+    var selectedShippingAddress: ShippingAddress?
 
-    let article: Article
-
-    init(article: Article, selectedUnitIndex: Int = 0, shippingPrice: Article.Price? = nil,
-        checkout: Checkout? = nil, customer: Customer? = nil,
-        paymentMethodText: String? = nil, discountText: String? = nil) {
+    init(article: Article, selectedUnitIndex: Int = 0,
+        shippingPrice: Article.Price? = nil,
+        cartId: String? = nil,
+        checkout: Checkout? = nil,
+        customer: Customer? = nil,
+        billingAddress: BillingAddress? = nil,
+        shippingAddress: ShippingAddress? = nil) {
             self.article = article
+            self.selectedUnitIndex = selectedUnitIndex
             self.shippingPrice = shippingPrice
             self.checkout = checkout
             self.customer = customer
+            self.selectedBillingAddress = checkout?.billingAddress
+            self.selectedShippingAddress = checkout?.shippingAddress
+            self.cartId = cartId
 
-            self.paymentMethodText = paymentMethodText ?? checkout?.payment.selected?.method
-            self.discountText = discountText
-
-            self.selectedUnitIndex = selectedUnitIndex
     }
 
 }
@@ -37,15 +40,15 @@ struct CheckoutViewModel {
 extension CheckoutViewModel {
 
     func shippingAddress(localizedWith localizer: LocalizerProviderType) -> String {
-        return checkout?.shippingAddress?.fullAddress ?? localizer.loc("No Shipping Address")
+        return selectedShippingAddress?.fullContactPostalAddress ?? localizer.loc("No Shipping Address")
     }
 
     func billingAddress(localizedWith localizer: LocalizerProviderType) -> String {
-        return checkout?.billingAddress?.fullAddress ?? localizer.loc("No Billing Address")
+        return selectedBillingAddress?.fullContactPostalAddress ?? localizer.loc("No Billing Address")
     }
 
     var isPaymentSelected: Bool {
-        return customer != nil && checkout?.payment.selected?.method != nil
+        return customer != nil && selectedPaymentMethod != nil
     }
 
     var selectedUnit: Article.Unit {
@@ -60,4 +63,18 @@ extension CheckoutViewModel {
         return shippingPriceValue + selectedUnit.price.amount
     }
 
+    var selectedPaymentMethod: String? {
+        return checkout?.payment.selected?.method
+    }
+
+    var checkoutViewState: CheckoutViewState {
+        return (checkout == nil || checkout?.payment.selected?.method == nil) ? .CheckoutIncomplete : .LoggedIn
+    }
+
+}
+
+extension CheckoutViewModel {
+    var isReadyToCreateCheckout: Bool? {
+        return self.checkout == nil && self.selectedBillingAddress != nil && self.selectedShippingAddress != nil
+    }
 }

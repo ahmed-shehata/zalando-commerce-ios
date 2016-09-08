@@ -42,6 +42,15 @@ extension APIClient {
             parameters: parameters)
     }
 
+    func updateCheckout(checkoutId: String, parameters: [String: AnyObject]) -> EndpointType {
+        return APIEndpoint(baseURL: self.config.checkoutAPIURL,
+            method: .PUT,
+            contentType: "application/x.zalando.customer.checkout.update+json",
+            acceptedContentType: "application/x.zalando.customer.checkout.update.response+json",
+            path: "checkouts/\(checkoutId)",
+            parameters: parameters)
+    }
+
     func createOrder(parameters parameters: [String: AnyObject]) -> EndpointType {
         return APIEndpoint(baseURL: self.config.checkoutAPIURL,
             method: .POST,
@@ -51,13 +60,22 @@ extension APIClient {
             parameters: parameters)
     }
 
+    func deleteAddress(addressId: String) -> EndpointType {
+        let queryItems = NSURLQueryItem.build(
+            ["sales_channel": self.config.salesChannel, "address_id": addressId])
+        return APIEndpoint(baseURL: self.config.checkoutAPIURL,
+            method: .DELETE,
+            path: "addresses/\(addressId)",
+            queryItems: queryItems)
+    }
+
     func makeFetchAddressListEndpoint(salesChannel: String) -> EndpointType {
         return APIEndpoint(baseURL: self.config.checkoutAPIURL,
-                           method: .GET,
-                           acceptedContentType: "application/x.zalando.customer.addresses+json",
-                           path: "addresses",
-                           queryItems: [
-                             NSURLQueryItem(name: "sales_channel", value: salesChannel)
-                           ])
+            method: .GET,
+            acceptedContentType: "application/x.zalando.customer.addresses+json",
+            path: "addresses",
+            queryItems: [
+                NSURLQueryItem(name: "sales_channel", value: salesChannel)
+        ])
     }
 }
