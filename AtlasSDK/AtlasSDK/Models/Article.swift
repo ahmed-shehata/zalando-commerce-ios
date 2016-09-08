@@ -7,6 +7,19 @@ import Foundation
 /**
  Represents a single article
  */
+
+public struct SelectedArticleUnit {
+    public let article: Article
+    public let selectedUnitIndex: Int
+
+    public init(article: Article,
+        selectedUnitIndex: Int) {
+            self.article = article
+            self.selectedUnitIndex = selectedUnitIndex
+    }
+
+}
+
 public struct Article {
 
     public let id: String

@@ -6,7 +6,7 @@ import Foundation
 
 public struct ShippingAddress: Addressable {
 
-    public let id: String
+    public let id: String?
     public let gender: Gender
     public let firstName: String
     public let lastName: String
@@ -36,8 +36,7 @@ extension ShippingAddress: JSONInitializable {
 
     init?(json: JSON) {
         guard let
-        id = json[Keys.id].string,
-            genderRaw = json[Keys.gender].string,
+        genderRaw = json[Keys.gender].string,
             gender = Gender(rawValue: genderRaw),
             firstName = json[Keys.firstName].string,
             lastName = json[Keys.lastName].string,
@@ -47,7 +46,7 @@ extension ShippingAddress: JSONInitializable {
 
         let pickupPoint = PickupPoint(json: json[Keys.pickupPoint])
 
-        self.init(id: id,
+        self.init(id: json[Keys.id].string,
             gender: gender,
             firstName: firstName,
             lastName: lastName,

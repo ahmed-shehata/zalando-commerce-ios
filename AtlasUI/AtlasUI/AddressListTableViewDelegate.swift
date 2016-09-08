@@ -62,7 +62,8 @@ extension AddressListTableViewDelegate: UITableViewDelegate {
             switch editingStyle {
             case .Delete:
                 let address = self.addresses[indexPath.item]
-                checkout.client.deleteAddress(address.id) { result in
+                guard let addressId = address.id else { return }
+                checkout.client.deleteAddress(addressId) { result in
                     switch result {
                     case .success(_):
                         self.addresses.removeAtIndex(indexPath.item)
