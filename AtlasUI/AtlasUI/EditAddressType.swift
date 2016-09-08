@@ -42,19 +42,4 @@ enum EditAddressField {
         case .Country: return localizer.loc("Address.edit.title.country")
         }
     }
-
-    func placeholder(localizer: LocalizerProviderType) -> String {
-        switch self {
-        case .Title: return localizer.loc("Address.edit.placeholder.title")
-        case .FirstName: return localizer.loc("Address.edit.placeholder.firstName")
-        case .LastName: return localizer.loc("Address.edit.placeholder.lastName")
-        case .Street: return localizer.loc("Address.edit.placeholder.street")
-        case .Additional: return localizer.loc("Address.edit.placeholder.additional")
-        case .Packstation: return localizer.loc("Address.edit.placeholder.packstation")
-        case .MemberID: return localizer.loc("Address.edit.placeholder.memberID")
-        case .Zipcode: return localizer.loc("Address.edit.placeholder.zipcode")
-        case .City: return localizer.loc("Address.edit.placeholder.city")
-        case .Country: return localizer.loc("Address.edit.placeholder.country")
-        }
-    }
 }

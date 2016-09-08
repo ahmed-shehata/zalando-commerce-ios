@@ -37,32 +37,39 @@ struct Async {
     }
 
     static func main(block: dispatch_block_t) -> Async {
-        return run(inQueue: Queues.main(), block: block)
+        return dispatchAsync(Queues.main(), block: block)
+    }
+
+    static func delay(delay: NSTimeInterval, block: dispatch_block_t) -> Async {
+        return dispatchAsyncDelay(delay, queue: Queues.main(), block: block)
     }
 
     static func userInteractive(block: dispatch_block_t) -> Async {
-        return run(inQueue: Queues.userInteractive(), block: block)
+        return dispatchAsync(Queues.userInteractive(), block: block)
     }
 
     static func userInitiated(block: dispatch_block_t) -> Async {
-        return run(inQueue: Queues.userInitiated(), block: block)
+        return dispatchAsync(Queues.userInitiated(), block: block)
     }
 
     static func utility(block: dispatch_block_t) -> Async {
-        return run(inQueue: Queues.utility(), block: block)
+        return dispatchAsync(Queues.utility(), block: block)
     }
 
     static func background(block: dispatch_block_t) -> Async {
-        return run(inQueue: Queues.background(), block: block)
-    }
-
-    private static func run(inQueue queue: dispatch_queue_t, block: dispatch_block_t) -> Async {
-        return Async.dispatchAsync(queue, block: block)
+        return dispatchAsync(Queues.background(), block: block)
     }
 
     private static func dispatchAsync(queue: dispatch_queue_t, block: dispatch_block_t) -> Async {
         let _block = dispatch_block_create(DISPATCH_BLOCK_INHERIT_QOS_CLASS, block)
         dispatch_async(queue, _block)
+        return Async(_block)
+    }
+
+    private static func dispatchAsyncDelay(delay: NSTimeInterval, queue: dispatch_queue_t, block: dispatch_block_t) -> Async {
+        let _block = dispatch_block_create(DISPATCH_BLOCK_INHERIT_QOS_CLASS, block)
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
+        dispatch_after(delayTime, queue, _block)
         return Async(_block)
     }
 

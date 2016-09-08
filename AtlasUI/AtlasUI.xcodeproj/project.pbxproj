@@ -41,6 +41,7 @@
 		E8B1831F1D772332001CF8BC /* (null) in Sources */ = {isa = PBXBuildFile; };
 		E8B183241D772B82001CF8BC /* AddressRowViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B183231D772B82001CF8BC /* AddressRowViewCell.swift */; };
 		E8B183261D772BB0001CF8BC /* AddressListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B183251D772BB0001CF8BC /* AddressListViewController.swift */; };
+		E910AEFD1D815F4900CE3E84 /* EditAddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E910AEFC1D815F4900CE3E84 /* EditAddressViewModel.swift */; };
 		E9325D371D674305004C29DC /* RoundedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9325D361D674305004C29DC /* RoundedViews.swift */; };
 		E9325D391D674752004C29DC /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9325D381D674752004C29DC /* CGRect.swift */; };
 		E9325D511D6767E8004C29DC /* BorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9325D501D6767E8004C29DC /* BorderView.swift */; };
@@ -126,6 +127,7 @@
 		E8B183131D75C5B4001CF8BC /* AddressPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressPickerViewController.swift; sourceTree = "<group>"; };
 		E8B183231D772B82001CF8BC /* AddressRowViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressRowViewCell.swift; sourceTree = "<group>"; };
 		E8B183251D772BB0001CF8BC /* AddressListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressListViewController.swift; sourceTree = "<group>"; };
+		E910AEFC1D815F4900CE3E84 /* EditAddressViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAddressViewModel.swift; sourceTree = "<group>"; };
 		E9325D361D674305004C29DC /* RoundedViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedViews.swift; sourceTree = "<group>"; };
 		E9325D381D674752004C29DC /* CGRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
 		E9325D501D6767E8004C29DC /* BorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderView.swift; sourceTree = "<group>"; };
@@ -365,6 +367,7 @@
 				E976DEDF1D7D6D8D00DD84E7 /* EditAddressViewController.swift */,
 				E976DEE11D7D92CA00DD84E7 /* EditAddressStackView.swift */,
 				E939AA581D7EED6A00B7244C /* EditAddressType.swift */,
+				E910AEFC1D815F4900CE3E84 /* EditAddressViewModel.swift */,
 			);
 			name = "Edit Address";
 			sourceTree = "<group>";
@@ -554,6 +557,7 @@
 				E8B183261D772BB0001CF8BC /* AddressListViewController.swift in Sources */,
 				810348861D7053050021E95D /* Errors.swift in Sources */,
 				8186B1561D51EE930068EE37 /* CheckoutPresentationController.swift in Sources */,
+				E910AEFD1D815F4900CE3E84 /* EditAddressViewModel.swift in Sources */,
 				E9676B071D78206C00ED7D8D /* CheckoutSummaryRootStackView.swift in Sources */,
 				E9676B1A1D783F5500ED7D8D /* CheckoutSummaryPriceStackView.swift in Sources */,
 				8186B14E1D51EE930068EE37 /* UIImage.swift in Sources */,

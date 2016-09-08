@@ -7,6 +7,8 @@ import AtlasSDK
 
 class KeyboardScrollView: UIScrollView {
 
+    private var allowHideAnimation: Bool = true
+
     func registerForKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self,
                                                          selector: #selector(keyboardWillShow(_:)),
@@ -22,6 +24,7 @@ class KeyboardScrollView: UIScrollView {
     func keyboardWillShow(notification: NSNotification) {
         guard let keyboardHeight = notification.userInfo?[UIKeyboardFrameEndUserInfoKey]?.CGRectValue().height else { return }
 
+        allowHideAnimation = false
         UIView.animateWithDuration(0.3) {
             self.contentInset.bottom = keyboardHeight
             self.scrollIndicatorInsets.bottom = keyboardHeight
@@ -30,9 +33,15 @@ class KeyboardScrollView: UIScrollView {
     }
 
     func keyboardWillHide(notification: NSNotification) {
-        UIView.animateWithDuration(0.3) {
-            self.contentInset.bottom = 0
-            self.scrollIndicatorInsets.bottom = 0
+        Async.delay(0.01) { [weak self] in
+            if let hideAnimation = self?.allowHideAnimation where hideAnimation {
+                UIView.animateWithDuration(0.3) {
+                    self?.contentInset.bottom = 0
+                    self?.scrollIndicatorInsets.bottom = 0
+                }
+            } else {
+                self?.allowHideAnimation = true
+            }
         }
     }
 
