@@ -1,0 +1,270 @@
+{
+  "id" : "AZ711N007-Q11",
+  "name" : "Stiefelette - nero",
+  "brand" : {
+    "name" : "Alberto Zago"
+  },
+  "units" : [ {
+    "id" : "AZ711N007-Q110400000",
+    "size" : "40",
+    "price" : {
+      "amount" : 139.95,
+      "currency" : "EUR"
+    },
+    "original_price" : {
+      "amount" : 199.95,
+      "currency" : "EUR"
+    },
+    "available" : false,
+    "stock" : 0
+  }, {
+    "id" : "AZ711N007-Q110380000",
+    "size" : "38",
+    "price" : {
+      "amount" : 139.95,
+      "currency" : "EUR"
+    },
+    "original_price" : {
+      "amount" : 199.95,
+      "currency" : "EUR"
+    },
+    "available" : false,
+    "stock" : 0
+  }, {
+    "id" : "AZ711N007-Q110375000",
+    "size" : "37.5",
+    "price" : {
+      "amount" : 139.95,
+      "currency" : "EUR"
+    },
+    "original_price" : {
+      "amount" : 199.95,
+      "currency" : "EUR"
+    },
+    "available" : false,
+    "stock" : 0
+  }, {
+    "id" : "AZ711N007-Q110420000",
+    "size" : "42",
+    "price" : {
+      "amount" : 139.95,
+      "currency" : "EUR"
+    },
+    "original_price" : {
+      "amount" : 199.95,
+      "currency" : "EUR"
+    },
+    "available" : false,
+    "stock" : 0
+  }, {
+    "id" : "AZ711N007-Q110385000",
+    "size" : "38.5",
+    "price" : {
+      "amount" : 139.95,
+      "currency" : "EUR"
+    },
+    "original_price" : {
+      "amount" : 199.95,
+      "currency" : "EUR"
+    },
+    "available" : false,
+    "stock" : 0
+  }, {
+    "id" : "AZ711N007-Q110405000",
+    "size" : "40.5",
+    "price" : {
+      "amount" : 139.95,
+      "currency" : "EUR"
+    },
+    "original_price" : {
+      "amount" : 199.95,
+      "currency" : "EUR"
+    },
+    "available" : true,
+    "stock" : 1
+  }, {
+    "id" : "AZ711N007-Q110370000",
+    "size" : "37",
+    "price" : {
+      "amount" : 139.95,
+      "currency" : "EUR"
+    },
+    "original_price" : {
+      "amount" : 199.95,
+      "currency" : "EUR"
+    },
+    "available" : false,
+    "stock" : 0
+  }, {
+    "id" : "AZ711N007-Q110395000",
+    "size" : "39.5",
+    "price" : {
+      "amount" : 139.95,
+      "currency" : "EUR"
+    },
+    "original_price" : {
+      "amount" : 199.95,
+      "currency" : "EUR"
+    },
+    "available" : false,
+    "stock" : 0
+  }, {
+    "id" : "AZ711N007-Q110410000",
+    "size" : "41",
+    "price" : {
+      "amount" : 139.95,
+      "currency" : "EUR"
+    },
+    "original_price" : {
+      "amount" : 199.95,
+      "currency" : "EUR"
+    },
+    "available" : true,
+    "stock" : 1
+  }, {
+    "id" : "AZ711N007-Q110390000",
+    "size" : "39",
+    "price" : {
+      "amount" : 139.95,
+      "currency" : "EUR"
+    },
+    "original_price" : {
+      "amount" : 199.95,
+      "currency" : "EUR"
+    },
+    "available" : false,
+    "stock" : 0
+  }, {
+    "id" : "AZ711N007-Q110360000",
+    "size" : "36",
+    "price" : {
+      "amount" : 139.95,
+      "currency" : "EUR"
+    },
+    "original_price" : {
+      "amount" : 199.95,
+      "currency" : "EUR"
+    },
+    "available" : false,
+    "stock" : 0
+  }, {
+    "id" : "AZ711N007-Q110350000",
+    "size" : "35",
+    "price" : {
+      "amount" : 139.95,
+      "currency" : "EUR"
+    },
+    "original_price" : {
+      "amount" : 199.95,
+      "currency" : "EUR"
+    },
+    "available" : false,
+    "stock" : 0
+  } ],
+  "media" : {
+    "images" : [ {
+      "order" : 1,
+      "catalog" : "https://i3.ztat.net/catalog/AZ/71/1N/00/7Q/11/AZ711N007-Q11@2.jpg",
+      "catalog_hd" : "https://i3.ztat.net/catalog_hd/AZ/71/1N/00/7Q/11/AZ711N007-Q11@2.jpg",
+      "detail" : "https://i3.ztat.net/detail/AZ/71/1N/00/7Q/11/AZ711N007-Q11@2.jpg",
+      "detail_hd" : "https://i3.ztat.net/detail_hd/AZ/71/1N/00/7Q/11/AZ711N007-Q11@2.jpg",
+      "large" : "https://i3.ztat.net/large/AZ/71/1N/00/7Q/11/AZ711N007-Q11@2.jpg",
+      "large_hd" : "https://i3.ztat.net/large_hd/AZ/71/1N/00/7Q/11/AZ711N007-Q11@2.jpg"
+    }, {
+      "order" : 2,
+      "catalog" : "https://i3.ztat.net/catalog/AZ/71/1N/00/7Q/11/AZ711N007-Q11@11.jpg",
+      "catalog_hd" : "https://i3.ztat.net/catalog_hd/AZ/71/1N/00/7Q/11/AZ711N007-Q11@11.jpg",
+      "detail" : "https://i3.ztat.net/detail/AZ/71/1N/00/7Q/11/AZ711N007-Q11@11.jpg",
+      "detail_hd" : "https://i3.ztat.net/detail_hd/AZ/71/1N/00/7Q/11/AZ711N007-Q11@11.jpg",
+      "large" : "https://i3.ztat.net/large/AZ/71/1N/00/7Q/11/AZ711N007-Q11@11.jpg",
+      "large_hd" : "https://i3.ztat.net/large_hd/AZ/71/1N/00/7Q/11/AZ711N007-Q11@11.jpg"
+    }, {
+      "order" : 3,
+      "catalog" : "https://i2.ztat.net/catalog/AZ/71/1N/00/7Q/11/AZ711N007-Q11@10.jpg",
+      "catalog_hd" : "https://i2.ztat.net/catalog_hd/AZ/71/1N/00/7Q/11/AZ711N007-Q11@10.jpg",
+      "detail" : "https://i2.ztat.net/detail/AZ/71/1N/00/7Q/11/AZ711N007-Q11@10.jpg",
+      "detail_hd" : "https://i2.ztat.net/detail_hd/AZ/71/1N/00/7Q/11/AZ711N007-Q11@10.jpg",
+      "large" : "https://i2.ztat.net/large/AZ/71/1N/00/7Q/11/AZ711N007-Q11@10.jpg",
+      "large_hd" : "https://i2.ztat.net/large_hd/AZ/71/1N/00/7Q/11/AZ711N007-Q11@10.jpg"
+    }, {
+      "order" : 4,
+      "catalog" : "https://i2.ztat.net/catalog/AZ/71/1N/00/7Q/11/AZ711N007-Q11@9.jpg",
+      "catalog_hd" : "https://i2.ztat.net/catalog_hd/AZ/71/1N/00/7Q/11/AZ711N007-Q11@9.jpg",
+      "detail" : "https://i2.ztat.net/detail/AZ/71/1N/00/7Q/11/AZ711N007-Q11@9.jpg",
+      "detail_hd" : "https://i2.ztat.net/detail_hd/AZ/71/1N/00/7Q/11/AZ711N007-Q11@9.jpg",
+      "large" : "https://i2.ztat.net/large/AZ/71/1N/00/7Q/11/AZ711N007-Q11@9.jpg",
+      "large_hd" : "https://i2.ztat.net/large_hd/AZ/71/1N/00/7Q/11/AZ711N007-Q11@9.jpg"
+    }, {
+      "order" : 5,
+      "catalog" : "https://i3.ztat.net/catalog/AZ/71/1N/00/7Q/11/AZ711N007-Q11@8.jpg",
+      "catalog_hd" : "https://i3.ztat.net/catalog_hd/AZ/71/1N/00/7Q/11/AZ711N007-Q11@8.jpg",
+      "detail" : "https://i3.ztat.net/detail/AZ/71/1N/00/7Q/11/AZ711N007-Q11@8.jpg",
+      "detail_hd" : "https://i3.ztat.net/detail_hd/AZ/71/1N/00/7Q/11/AZ711N007-Q11@8.jpg",
+      "large" : "https://i3.ztat.net/large/AZ/71/1N/00/7Q/11/AZ711N007-Q11@8.jpg",
+      "large_hd" : "https://i3.ztat.net/large_hd/AZ/71/1N/00/7Q/11/AZ711N007-Q11@8.jpg"
+    }, {
+      "order" : 6,
+      "catalog" : "https://i6.ztat.net/catalog/AZ/71/1N/00/7Q/11/AZ711N007-Q11@7.jpg",
+      "catalog_hd" : "https://i6.ztat.net/catalog_hd/AZ/71/1N/00/7Q/11/AZ711N007-Q11@7.jpg",
+      "detail" : "https://i6.ztat.net/detail/AZ/71/1N/00/7Q/11/AZ711N007-Q11@7.jpg",
+      "detail_hd" : "https://i6.ztat.net/detail_hd/AZ/71/1N/00/7Q/11/AZ711N007-Q11@7.jpg",
+      "large" : "https://i6.ztat.net/large/AZ/71/1N/00/7Q/11/AZ711N007-Q11@7.jpg",
+      "large_hd" : "https://i6.ztat.net/large_hd/AZ/71/1N/00/7Q/11/AZ711N007-Q11@7.jpg"
+    } ]
+  },
+  "reviews" : {
+    "summary" : {
+      "total" : 4,
+      "rating" : {
+        "average" : 4.75,
+        "distribution" : [ {
+          "level" : "5",
+          "count" : 3
+        }, {
+          "level" : "4",
+          "count" : 1
+        }, {
+          "level" : "3",
+          "count" : 0
+        }, {
+          "level" : "2",
+          "count" : 0
+        }, {
+          "level" : "1",
+          "count" : 0
+        } ]
+      },
+      "recommendations" : {
+        "total" : 4,
+        "positive" : 4
+      }
+    },
+    "entries" : [ {
+      "name" : "Angela",
+      "title" : "******",
+      "description" : "Super schöne und bequeme Stiefelette :-))",
+      "rating" : 5,
+      "recommends" : true,
+      "created" : "2016-04-07T05:52:56.691Z"
+    }, {
+      "name" : "Barbara",
+      "title" : "Sehr gute Wahl - die Stiefelette ist ihren Preis absolut wert!",
+      "description" : "Tolle Stiefelette, sieht sehr edel aus, so dass sie - unter anderem - auch perfekt zum Business Outfit passt. Fällt sehr klein aus, mindestens eine halbe Nummer größer bestellen! ",
+      "rating" : 5,
+      "recommends" : true,
+      "created" : "2015-12-07T14:53:09.841Z"
+    }, {
+      "title" : " Sehr,sehr schöner Schuh, einen Punkt Abzug gibt's wegen des relativ hohen Preises.",
+      "description" : "Passt genau, Absatz hat eine gute Höhe.",
+      "rating" : 4,
+      "recommends" : true,
+      "created" : "2015-09-14T11:29:10.062Z"
+    }, {
+      "title" : "Eine halbe bzw. ganze Nummer größer bestellen.",
+      "description" : "Sehr schöne Stiefelette. Trage normal 38/5 waren mir aber  zu klein. Mindestens 1/2 Nr.größer bestellen.",
+      "rating" : 5,
+      "recommends" : true,
+      "created" : "2015-07-06T18:11:48.306Z"
+    } ]
+  }
+}

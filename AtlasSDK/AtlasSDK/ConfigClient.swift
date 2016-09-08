@@ -18,7 +18,7 @@ struct ConfigClient: Configurator {
     private let options: Options
 
     init(options: Options) {
-        let endpoint = APIEndpoint(baseURL: options.configurationURL)
+        let endpoint = GetConfigEndpoint(URL: options.configurationURL)
         self.options = options
         self.requestBuilder = RequestBuilder(endpoint: endpoint)
     }

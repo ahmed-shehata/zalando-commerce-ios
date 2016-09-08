@@ -12,11 +12,11 @@ class APICustomerSpec: APIClientBaseSpec {
 
     override func spec() {
 
-        describe("Customer API") {
+        describe("Customer") {
 
             let customerUrl = NSURL(validUrl: "https://atlas-sdk.api/api/customer")
 
-            it("should make successful request") {
+            it("should return customer") {
                 let json = ["customer_number": "12345678", "gender": "MALE", "email": "aaa@a.a",
                     "first_name": "John", "last_name": "Doe"]
                 let customerResponse = self.dataWithJSONObject(json)

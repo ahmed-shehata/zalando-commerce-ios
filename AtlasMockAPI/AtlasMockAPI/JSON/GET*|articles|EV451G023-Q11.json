@@ -1,92 +1,318 @@
 {
-    "id" : "EV451G023-Q11",
-    "modelId" : "EV451G023",
-    "name" : "Snood - black",
-    "shopUrl" : "https://www.zalando.co.uk/even-odd-snood-black-ev451g023-q11.html",
-    "color" : "Black",
-    "available" : false,
-    "season" : "WINTER",
-    "seasonYear" : "2015",
-    "activationDate" : "2014-08-08T09:05:13+02:00",
-    "additionalInfos" : [ ],
-    "genders" : [ "FEMALE" ],
-    "ageGroups" : [ "ADULT" ],
-    "brand" : {
-        "key" : "EV4",
-        "name" : "Even&Odd",
-        "logoUrl" : "https://i3.ztat.net/brand/even-odd-3.jpg",
-        "logoLargeUrl" : "https://i3.ztat.net/brandxl/even-odd-3.jpg",
-        "brandFamily" : {
-            "key" : "EV00",
-            "name" : "Even&Odd",
-            "shopUrl" : "https://www.zalando.co.uk/evenandodd-online-shop"
-        },
-        "shopUrl" : "https://www.zalando.co.uk/even-odd"
+  "id" : "EV451G023-Q11",
+  "name" : "Schlauchschal - black",
+  "brand" : {
+    "name" : "Even&Odd"
+  },
+  "units" : [ {
+    "id" : "EV451G023-Q110ONE000",
+    "size" : "One Size",
+    "price" : {
+      "amount" : 10.45,
+      "currency" : "EUR"
     },
-    "categoryKeys" : [ "catalog", "women", "bags-accessories-womens", "bags-accessories-womens-scarves-shawls", "all", "accessories" ],
-    "attributes" : [ {
-                    "name" : "Outer fabric material",
-                    "values" : [ "100% polyacrylic" ]
-                    }, {
-                    "name" : "length",
-                    "values" : [ "59.0 \"" ]
-                    }, {
-                    "name" : "Pattern",
-                    "values" : [ "plain" ]
-                    }, {
-                    "name" : "Width",
-                    "values" : [ "15.5 \"" ]
-                    }, {
-                    "name" : "Washing instructions",
-                    "values" : [ "Do not tumble dry", "Machine wash at 30°C" ]
-                    } ],
-    "units" : [ {
-               "id" : "EV451G023-Q110ONE000",
-               "size" : "One Size",
-               "price" : {
-               "currency" : "GBP",
-               "value" : 7.7,
-               "formatted" : "£7.70"
-               },
-               "originalPrice" : {
-               "currency" : "GBP",
-               "value" : 11.0,
-               "formatted" : "£11.00"
-               },
-               "available" : false,
-               "stock" : 0
-               } ],
-    "media" : {
-        "images" : [ {
-                    "orderNumber" : 1,
-                    "type" : "NON_MODEL",
-                    "thumbnailHdUrl" : "https://i5.ztat.net/thumb_hd/EV/45/1G/02/3Q/11/EV451G023-Q11@2.jpg",
-                    "smallUrl" : "https://i5.ztat.net/catalog/EV/45/1G/02/3Q/11/EV451G023-Q11@2.jpg",
-                    "smallHdUrl" : "https://i5.ztat.net/catalog_hd/EV/45/1G/02/3Q/11/EV451G023-Q11@2.jpg",
-                    "mediumUrl" : "https://i5.ztat.net/detail/EV/45/1G/02/3Q/11/EV451G023-Q11@2.jpg",
-                    "mediumHdUrl" : "https://i5.ztat.net/detail_hd/EV/45/1G/02/3Q/11/EV451G023-Q11@2.jpg",
-                    "largeUrl" : "https://i5.ztat.net/large/EV/45/1G/02/3Q/11/EV451G023-Q11@2.jpg",
-                    "largeHdUrl" : "https://i5.ztat.net/large_hd/EV/45/1G/02/3Q/11/EV451G023-Q11@2.jpg"
-                    }, {
-                    "orderNumber" : 2,
-                    "type" : "MODEL",
-                    "thumbnailHdUrl" : "https://i2.ztat.net/thumb_hd/EV/45/1G/02/3Q/11/EV451G023-Q11@5.jpg",
-                    "smallUrl" : "https://i2.ztat.net/catalog/EV/45/1G/02/3Q/11/EV451G023-Q11@5.jpg",
-                    "smallHdUrl" : "https://i2.ztat.net/catalog_hd/EV/45/1G/02/3Q/11/EV451G023-Q11@5.jpg",
-                    "mediumUrl" : "https://i2.ztat.net/detail/EV/45/1G/02/3Q/11/EV451G023-Q11@5.jpg",
-                    "mediumHdUrl" : "https://i2.ztat.net/detail_hd/EV/45/1G/02/3Q/11/EV451G023-Q11@5.jpg",
-                    "largeUrl" : "https://i2.ztat.net/large/EV/45/1G/02/3Q/11/EV451G023-Q11@5.jpg",
-                    "largeHdUrl" : "https://i2.ztat.net/large_hd/EV/45/1G/02/3Q/11/EV451G023-Q11@5.jpg"
-                    }, {
-                    "orderNumber" : 3,
-                    "type" : "NON_MODEL",
-                    "thumbnailHdUrl" : "https://i1.ztat.net/thumb_hd/EV/45/1G/02/3Q/11/EV451G023-Q11@4.jpg",
-                    "smallUrl" : "https://i1.ztat.net/catalog/EV/45/1G/02/3Q/11/EV451G023-Q11@4.jpg",
-                    "smallHdUrl" : "https://i1.ztat.net/catalog_hd/EV/45/1G/02/3Q/11/EV451G023-Q11@4.jpg",
-                    "mediumUrl" : "https://i1.ztat.net/detail/EV/45/1G/02/3Q/11/EV451G023-Q11@4.jpg",
-                    "mediumHdUrl" : "https://i1.ztat.net/detail_hd/EV/45/1G/02/3Q/11/EV451G023-Q11@4.jpg",
-                    "largeUrl" : "https://i1.ztat.net/large/EV/45/1G/02/3Q/11/EV451G023-Q11@4.jpg",
-                    "largeHdUrl" : "https://i1.ztat.net/large_hd/EV/45/1G/02/3Q/11/EV451G023-Q11@4.jpg"
-                    } ]
-    }
+    "original_price" : {
+      "amount" : 14.95,
+      "currency" : "EUR"
+    },
+    "available" : false,
+    "stock" : 0
+  } ],
+  "media" : {
+    "images" : [ {
+      "order" : 1,
+      "catalog" : "https://i5.ztat.net/catalog/EV/45/1G/02/3Q/11/EV451G023-Q11@2.jpg",
+      "catalog_hd" : "https://i5.ztat.net/catalog_hd/EV/45/1G/02/3Q/11/EV451G023-Q11@2.jpg",
+      "detail" : "https://i5.ztat.net/detail/EV/45/1G/02/3Q/11/EV451G023-Q11@2.jpg",
+      "detail_hd" : "https://i5.ztat.net/detail_hd/EV/45/1G/02/3Q/11/EV451G023-Q11@2.jpg",
+      "large" : "https://i5.ztat.net/large/EV/45/1G/02/3Q/11/EV451G023-Q11@2.jpg",
+      "large_hd" : "https://i5.ztat.net/large_hd/EV/45/1G/02/3Q/11/EV451G023-Q11@2.jpg"
+    }, {
+      "order" : 2,
+      "catalog" : "https://i2.ztat.net/catalog/EV/45/1G/02/3Q/11/EV451G023-Q11@5.jpg",
+      "catalog_hd" : "https://i2.ztat.net/catalog_hd/EV/45/1G/02/3Q/11/EV451G023-Q11@5.jpg",
+      "detail" : "https://i2.ztat.net/detail/EV/45/1G/02/3Q/11/EV451G023-Q11@5.jpg",
+      "detail_hd" : "https://i2.ztat.net/detail_hd/EV/45/1G/02/3Q/11/EV451G023-Q11@5.jpg",
+      "large" : "https://i2.ztat.net/large/EV/45/1G/02/3Q/11/EV451G023-Q11@5.jpg",
+      "large_hd" : "https://i2.ztat.net/large_hd/EV/45/1G/02/3Q/11/EV451G023-Q11@5.jpg"
+    }, {
+      "order" : 3,
+      "catalog" : "https://i1.ztat.net/catalog/EV/45/1G/02/3Q/11/EV451G023-Q11@4.jpg",
+      "catalog_hd" : "https://i1.ztat.net/catalog_hd/EV/45/1G/02/3Q/11/EV451G023-Q11@4.jpg",
+      "detail" : "https://i1.ztat.net/detail/EV/45/1G/02/3Q/11/EV451G023-Q11@4.jpg",
+      "detail_hd" : "https://i1.ztat.net/detail_hd/EV/45/1G/02/3Q/11/EV451G023-Q11@4.jpg",
+      "large" : "https://i1.ztat.net/large/EV/45/1G/02/3Q/11/EV451G023-Q11@4.jpg",
+      "large_hd" : "https://i1.ztat.net/large_hd/EV/45/1G/02/3Q/11/EV451G023-Q11@4.jpg"
+    } ]
+  },
+  "reviews" : {
+    "summary" : {
+      "total" : 37,
+      "rating" : {
+        "average" : 4.3783784,
+        "distribution" : [ {
+          "level" : "5",
+          "count" : 26
+        }, {
+          "level" : "4",
+          "count" : 5
+        }, {
+          "level" : "3",
+          "count" : 3
+        }, {
+          "level" : "2",
+          "count" : 0
+        }, {
+          "level" : "1",
+          "count" : 3
+        } ]
+      },
+      "recommendations" : {
+        "total" : 34,
+        "positive" : 25
+      }
+    },
+    "entries" : [ {
+      "name" : "Christina",
+      "title" : "Schön",
+      "description" : "Sehr schöner Schal, sehr kuschelig und angenehmes Material. Allerdings ist er nicht rein beige/creme, sondern er enthält feine, dunkle Streifen. Diese sind auf dem Foto nur sehr schwer ersichtlich (man muss sehr genau schauen, dann sieht man sie). ",
+      "rating" : 5,
+      "recommends" : false,
+      "created" : "2016-02-09T15:05:35.151Z"
+    }, {
+      "title" : "mein derzeitiges Lieblingsstück",
+      "description" : "Toller Schal, kuschelig weich, prima Länge",
+      "rating" : 5,
+      "recommends" : true,
+      "created" : "2016-02-05T07:37:32.203Z"
+    }, {
+      "title" : "toller Schal",
+      "description" : "schöner, kuscheliger Schal. Tolles Muster und die richtige Länge",
+      "rating" : 5,
+      "recommends" : true,
+      "created" : "2016-01-29T16:19:28.263Z"
+    }, {
+      "title" : "schöner Schal",
+      "description" : "Ich bin zufrieden. Er ist weich und hält warm. ",
+      "rating" : 5,
+      "recommends" : true,
+      "created" : "2015-12-08T22:44:14.252Z"
+    }, {
+      "name" : "Miriam",
+      "title" : "ok",
+      "description" : "Preis Leistung top, Material gefällt mir jedoch nicht. daher retoure",
+      "rating" : 3,
+      "recommends" : false,
+      "created" : "2015-11-17T11:39:38.822Z"
+    }, {
+      "title" : "wiederkauf",
+      "description" : "super weich und angenehm zu trgen",
+      "rating" : 5,
+      "recommends" : true,
+      "created" : "2015-11-09T06:38:15.468Z"
+    }, {
+      "name" : "Nina",
+      "title" : "Super Accesoire",
+      "description" : "Sehr schöner Kuschelschal, tolles Design",
+      "rating" : 4,
+      "recommends" : false,
+      "created" : "2015-11-05T13:29:13.439Z"
+    }, {
+      "name" : "Angelika",
+      "title" : "Sehr empfehlenswert ",
+      "description" : "Ist super ",
+      "rating" : 5,
+      "recommends" : false,
+      "created" : "2015-10-31T13:44:02.204Z"
+    }, {
+      "name" : "Gabriele",
+      "title" : "...hätte den Schal zu gern auch noch in mauve, puderrosa und blau...",
+      "description" : "Lang, warm, weich und kuschelig - prima!",
+      "rating" : 5,
+      "recommends" : true,
+      "created" : "2015-10-30T17:07:17.674Z"
+    }, {
+      "name" : "Hannah",
+      "title" : "Nix für mich. ",
+      "description" : "Vielleicht hatte ich ein Montagsprodukt erwischt, aber der Schal hat fürchterlich gestunken. Musste umgehen zurück da eine Nacht auslüften nichts gebracht hat. Gefühl und Länge waren in Ordnung. ",
+      "rating" : 1,
+      "recommends" : false,
+      "created" : "2015-10-27T20:51:11.294Z"
+    }, {
+      "title" : "Farbe ist nicht entsprechend wie dem abgebildeten \"creme\"",
+      "description" : "Habe den Schal nochmal in einer anderen Farbe bestellt, hoffentlich sieht der nicht so dreckig aus wie in dem creme Ton.",
+      "rating" : 1,
+      "recommends" : false,
+      "created" : "2015-10-25T17:55:26.498Z"
+    }, {
+      "name" : "Sam",
+      "title" : "schön",
+      "description" : "Schön groß, kratzt nicht!",
+      "rating" : 5,
+      "recommends" : false,
+      "created" : "2015-10-16T06:45:12.324Z"
+    }, {
+      "title" : "Sehr guter Kauf",
+      "description" : "Sehr schöner weicher Schal.\nPreis/Leistung großartig",
+      "rating" : 5,
+      "recommends" : true,
+      "created" : "2015-10-15T07:45:18.485Z"
+    }, {
+      "name" : "Agnieszka",
+      "title" : "Perfekt",
+      "description" : "Perfekt",
+      "rating" : 5,
+      "recommends" : true,
+      "created" : "2015-03-25T14:53:28.397Z"
+    }, {
+      "title" : "schöner schal",
+      "description" : "sehr schöner schal",
+      "rating" : 5,
+      "recommends" : true,
+      "created" : "2015-03-19T09:58:12.161Z"
+    }, {
+      "title" : "jederzeit wieder",
+      "description" : "super kuscheliger, dicke Schal, kratzt überhaupt nicht. Bin sehr zufrieden mit dem Kauf!",
+      "rating" : 5,
+      "recommends" : true,
+      "created" : "2015-03-17T08:58:07.278Z"
+    }, {
+      "name" : "Katharina",
+      "title" : "Empfehlenswert",
+      "description" : "Passt super bei zweimal um den Hals gewickelt, ist sehr warm und kratzt nur ganz minimal.",
+      "rating" : 5,
+      "recommends" : true,
+      "created" : "2015-02-14T19:12:24.096Z"
+    }, {
+      "title" : "Genauso wie auf dem Bild ",
+      "description" : "Super kuschelig ",
+      "rating" : 4,
+      "recommends" : true,
+      "created" : "2015-02-06T10:08:49.277Z"
+    }, {
+      "title" : "Toll",
+      "description" : "Gefällt mir gut, schön kuschelig für den Winter und schönes Strickmuster",
+      "rating" : 5,
+      "recommends" : true,
+      "created" : "2015-01-26T21:39:25.994Z"
+    }, {
+      "title" : "nicht meins",
+      "description" : "für mich war´s leider nichts, mir ist der Schal nicht weich genug. Ein Loop sollte sich am Hals anschmiegen, dieser steht am Hals wie ein Brett. Kuschelfaktor leider gleich Null.",
+      "rating" : 3,
+      "recommends" : false,
+      "created" : "2015-01-11T00:35:00.231Z"
+    }, {
+      "title" : "Würde ich wieder kaufen.",
+      "description" : "Wunderbar weich und kuschelig und vor allem gut zu drapieren.",
+      "rating" : 5,
+      "recommends" : true,
+      "created" : "2015-01-06T14:00:15.892Z"
+    }, {
+      "title" : "Super toller schal! Kratzt nicht, perfekte größe/dicke.",
+      "description" : "Ich würde ihn direkt wieder bestellen, echt empfehlenswert auch für sensiblere Haut. ",
+      "rating" : 5,
+      "recommends" : true,
+      "created" : "2015-01-05T18:06:19.873Z"
+    }, {
+      "name" : "Beate",
+      "title" : "Möchte ich nicht mehr missen :)",
+      "description" : "Weich, wärmend, gemütlich.",
+      "rating" : 1,
+      "recommends" : true,
+      "created" : "2014-12-29T17:00:47.150Z"
+    }, {
+      "name" : "Cathrin",
+      "title" : "Coole Optik",
+      "description" : "Sehr gutes Material, angenehm zu tragen",
+      "rating" : 5,
+      "recommends" : true,
+      "created" : "2014-12-27T16:41:42.791Z"
+    }, {
+      "name" : "Iris",
+      "title" : "gutes Preis-Leistungsverhältnis!!",
+      "description" : "gute Qualität, schön warm und weich!!",
+      "rating" : 4,
+      "recommends" : true,
+      "created" : "2014-12-26T19:43:34.742Z"
+    }, {
+      "name" : "Andrea",
+      "title" : "Schöner Schal",
+      "description" : "Sehr schöner Schal. Die Länge ist genau optimal und die Optik mit den zwei verschiedenen Seiten sehr schön!",
+      "rating" : 5,
+      "recommends" : true,
+      "created" : "2014-12-18T13:34:29.577Z"
+    }, {
+      "name" : "Heidrun",
+      "title" : "Preis /Leistung stimmt",
+      "description" : "sieht gut aus .",
+      "rating" : 5,
+      "recommends" : true,
+      "created" : "2014-12-17T13:54:31.052Z"
+    }, {
+      "name" : "Frances",
+      "title" : "klasse! ",
+      "description" : "Der Schal ist total schick und kuschelig warm. Ich liebe ihn. und trage ihn momentan ständig. ☺️\uD83D\uDE09",
+      "rating" : 5,
+      "recommends" : true,
+      "created" : "2014-12-16T21:12:41.289Z"
+    }, {
+      "title" : "Schöner Schal",
+      "description" : "Sieht super aus, besonders mit schwarzen Sachen kombiniert. Sehr angenehm und wärmender Stoff :)",
+      "rating" : 5,
+      "recommends" : true,
+      "created" : "2014-11-20T17:08:27.778Z"
+    }, {
+      "name" : "Anastasia",
+      "title" : "toller Schal",
+      "description" : "Toller, warmer Schal, sieht schön aus, aber ein wenig kratzig.",
+      "rating" : 4,
+      "recommends" : false,
+      "created" : "2014-11-14T06:02:49.569Z"
+    }, {
+      "title" : "Schönes Produkt!",
+      "description" : "Sehr schöner Schal, sieht super aus, kratzt nur ganz leicht.",
+      "rating" : 4,
+      "recommends" : true,
+      "created" : "2014-11-11T11:43:16.032Z"
+    }, {
+      "title" : "super Preis-Leistungsverhältnis",
+      "description" : "sehr angenehm zu tragen",
+      "rating" : 5,
+      "recommends" : true,
+      "created" : "2014-10-21T18:00:54.150Z"
+    }, {
+      "name" : "Ina",
+      "title" : "Note 1",
+      "description" : "Ich habe mir direkt zwei bestellt (creme und grau). Ich bin sehr zufrieden! Beide sehen wunderschön aus und trotz des weichen Materials flusen sie nicht. Kann ich nur weiterempfehlen ;-)",
+      "rating" : 5,
+      "recommends" : true,
+      "created" : "2014-10-01T06:08:16.201Z"
+    }, {
+      "name" : "Ina",
+      "title" : "Note 1",
+      "description" : "Ich habe mir direkt zwei bestellt (creme und grau). Ich bin sehr zufrieden! Beide sehen wunderschön aus und trotz des weichen Materials flusen sie nicht. Kann ich nur weiterempfehlen ;-)",
+      "rating" : 5,
+      "recommends" : true,
+      "created" : "2014-10-01T06:07:36.386Z"
+    }, {
+      "title" : "Geht so...",
+      "description" : "Der Schal ist ein wenig dunkler als auf dem Foto. Er kratzt leider auch ein bisschen beim Tragen. Hab ihn wieder retour geschickt. ",
+      "rating" : 3,
+      "recommends" : false,
+      "created" : "2014-09-17T04:12:39.452Z"
+    }, {
+      "title" : "Empfehlenswert!",
+      "description" : "Der Schal ist warm und weich, sieht super aus zur schwarzen Lederjacke! \r\nDie Farbe creme  sieht bei mir am PC relativ hell aus, der Schal ist in Natur etwas dunkler, eher beige. \r\nIch bin sehr zufrieden mit dem Einkauf!",
+      "rating" : 5,
+      "recommends" : false,
+      "created" : "2014-09-13T20:59:27.253Z"
+    }, {
+      "name" : "Vanessa",
+      "title" : "Angenehm zu tragen.",
+      "description" : "Der Schal ist weich & dadurch angenehm zu tragen.\r\nDie Farbe entspricht auch dem Bild.\r\nSo solls sein, ich bin zufrieden. :)",
+      "rating" : 5,
+      "recommends" : false,
+      "created" : "2014-08-26T04:28:35.446Z"
+    } ]
+  }
 }

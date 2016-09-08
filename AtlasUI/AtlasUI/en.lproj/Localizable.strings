@@ -17,6 +17,7 @@
 "Size: %@" = "Size: %@";
 "Zalando.Checkout" = "Checkout with Zalando";
 "order.place" = "Place order";
+"order.place.paypal" = "Confirm and pay with PayPal";
 "navigation.back.shop" = "Back to shop";
 "order.placed" = "Order placed";
 

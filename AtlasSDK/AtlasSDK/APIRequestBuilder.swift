@@ -6,7 +6,7 @@ final class APIRequestBuilder: RequestBuilder {
 
     private let loginURL: NSURL
 
-    init(loginURL: NSURL, urlSession: NSURLSession = NSURLSession.sharedSession(), endpoint: EndpointType) {
+    init(loginURL: NSURL, urlSession: NSURLSession = NSURLSession.sharedSession(), endpoint: Endpoint) {
         self.loginURL = loginURL
         super.init(urlSession: urlSession, endpoint: endpoint)
     }

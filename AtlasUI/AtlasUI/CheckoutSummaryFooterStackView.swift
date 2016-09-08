@@ -42,7 +42,7 @@ extension CheckoutSummaryFooterStackView: UIDataBuilder {
     func configureData(viewModel: T) {
         footerLabel.text = viewModel.loc("CheckoutSummaryViewController.terms")
         footerLabel.hidden = !viewModel.viewState.showFooterLabel
-        submitButton.setTitle(viewModel.loc(viewModel.viewState.submitButtonTitleLocalizedKey), forState: .Normal)
+        submitButton.setTitle(viewModel.loc(viewModel.checkoutViewModel.submitButtonTitle), forState: .Normal)
         submitButton.backgroundColor = viewModel.viewState.submitButtonBackgroundColor
     }
 

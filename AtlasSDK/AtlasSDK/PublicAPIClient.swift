@@ -32,82 +32,109 @@ public typealias CheckoutCompletion = AtlasResult<Checkout> -> Void
  */
 public typealias OrderCompletion = AtlasResult<Order> -> Void
 
+@available( *, deprecated, message = "Should be deleted")
+public typealias EmptyCompletion = AtlasResult<EmptyResponse> -> Void
+
 extension APIClient {
 
     public func customer(completion: CustomerCompletion) {
-        fetch(customer(), completion: completion)
+        let endpoint = GetCustomerEndpoint(serviceURL: config.checkoutAPIURL)
+
+        fetch(from: endpoint, completion: completion)
     }
 
     public func createCart(cartItemRequests: CartItemRequest..., completion: CartCompletion) {
-        let cartRequest = CartRequest(salesChannel: self.config.salesChannel, items: cartItemRequests, replaceItems: true)
-        let parameters = cartRequest.toJSON()
+        let parameters = CartRequest(salesChannel: config.salesChannel,
+            items: cartItemRequests,
+            replaceItems: true).toJSON()
+        let endpoint = CreateCartEndpoint(serviceURL: config.checkoutAPIURL, parameters: parameters)
 
-        fetch(createCart(parameters: parameters), completion: completion)
+        fetch(from: endpoint, completion: completion)
     }
 
     public func createCheckout(withSelectedArticleUnit selectedArticleUnit: SelectedArticleUnit,
         billingAddressId: String? = nil, shippingAddressId: String? = nil, completion: CheckoutCompletion) {
             let articleSKU = selectedArticleUnit.article.units[selectedArticleUnit.selectedUnitIndex].id
-            let cartItemRequest = CartItemRequest(sku: articleSKU, quantity: 1)
+        let cartItemRequest = CartItemRequest(sku: articleSKU, quantity: 1)
 
-            createCart(cartItemRequest) { cartResult in
-                switch cartResult {
-                case .failure(let error):
-                    completion(.failure(error))
+        createCart(cartItemRequest) { cartResult in
+            switch cartResult {
+            case .failure(let error):
+                completion(.failure(error))
 
-                case .success(let cart):
-                    self.fetchAddressList { addressListResult in
-                        switch addressListResult {
-                        case .failure(let error):
-                            completion(.failure(error))
+            case .success(let cart):
+                self.addresses { addressListResult in
+                    switch addressListResult {
+                    case .failure(let error):
+                        completion(.failure(error))
 
-                        case .success(let addressList):
+                    case .success(let addressList):
                             self.createCheckout(cart.id, billingAddressId: billingAddressId,
                                 shippingAddressId: shippingAddressId) { checkoutResult in
-                                    switch checkoutResult {
-                                    case .failure(let error):
+                            switch checkoutResult {
+                            case .failure(let error):
                                         let checkoutError = AtlasAPIError.checkoutFailed(addresses: addressList,
                                             cartId: cart.id, error: error)
-                                        completion(.failure(checkoutError))
-                                    case .success(let checkout):
-                                        completion(.success(checkout))
-                                    }
+                                completion(.failure(checkoutError))
+                            case .success(let checkout):
+                                completion(.success(checkout))
                             }
                         }
                     }
                 }
             }
+        }
     }
 
     public func createCheckout(cartId: String, billingAddressId: String? = nil,
-        shippingAddressId: String? = nil, checkoutCompletion: AtlasResult<Checkout> -> Void) {
-            let checkoutRequest = CreateCheckoutRequest(cartId: cartId,
+        shippingAddressId: String? = nil, completion: CheckoutCompletion) {
+            let parameters = CreateCheckoutRequest(cartId: cartId,
                 billingAddressId: billingAddressId,
-                shippingAddressId: shippingAddressId)
-            let parameters = checkoutRequest.toJSON()
-            fetch(createCheckout(parameters: parameters), completion: checkoutCompletion)
+                shippingAddressId: shippingAddressId).toJSON()
+            let endpoint = CreateCheckoutEndpoint(serviceURL: config.checkoutAPIURL, parameters: parameters)
+
+            fetch(from: endpoint, completion: completion)
     }
 
     public func updateCheckout(checkoutId: String, updateCheckoutRequest: UpdateCheckoutRequest, completion: CheckoutCompletion) {
-        fetch(updateCheckout(checkoutId, parameters: updateCheckoutRequest.toJSON()), completion: completion)
+        let endpoint = UpdateCheckoutEndpoint(serviceURL: config.checkoutAPIURL,
+            parameters: updateCheckoutRequest.toJSON(),
+            checkoutId: checkoutId)
+
+        fetch(from: endpoint, completion: completion)
     }
 
-    public func createOrder(checkoutId: String, orderCompletion: OrderCompletion) {
-        let checkoutRequest = OrderRequest(checkoutId: checkoutId)
-        let parameters = checkoutRequest.toJSON()
-        fetch(createOrder(parameters: parameters), completion: orderCompletion)
+    public func createOrder(checkoutId: String, completion: OrderCompletion) {
+        let parameters = OrderRequest(checkoutId: checkoutId).toJSON()
+        let endpoint = CreateOrderEndpoint(serviceURL: config.checkoutAPIURL,
+            parameters: parameters,
+            checkoutId: checkoutId)
+
+        fetch(from: endpoint, completion: completion)
     }
 
     public func article(forSKU sku: String, completion: ArticlesCompletion) {
-        fetch(articles(forSKUs: sku), completion: completion)
+        let endpoint = GetArticlesEndpoint(serviceURL: config.catalogAPIURL,
+            skus: [sku],
+            salesChannel: config.salesChannel,
+            clientId: config.clientId,
+            fields: nil)
+
+        fetch(from: endpoint, completion: completion)
     }
 
-    public func fetchAddressList(completion: AddressesCompletion) {
-        fetch(makeFetchAddressListEndpoint(config.salesChannel), completion: completion)
+    public func addresses(completion: AddressesCompletion) {
+        let endpoint = GetAddressesEndpoint(serviceURL: config.checkoutAPIURL,
+            salesChannel: config.salesChannel)
+
+        fetch(from: endpoint, completion: completion)
     }
 
-    public func deleteAddress(addressId: String, completion: AtlasResult<EmptyResponse> -> Void) {
-        fetch(deleteAddress(addressId), completion: completion)
+    public func deleteAddress(addressId: String, completion: EmptyCompletion) {
+        let endpoint = DeleteAddressEndpoint(serviceURL: config.checkoutAPIURL,
+            addressId: addressId,
+            salesChannel: config.salesChannel)
+        fetch(from: endpoint, completion: completion)
     }
 
 }

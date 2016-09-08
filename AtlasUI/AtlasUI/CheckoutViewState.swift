@@ -11,14 +11,6 @@ enum CheckoutViewState {
     case OrderPlaced
     case CheckoutIncomplete
 
-    var submitButtonTitleLocalizedKey: String {
-        switch self {
-        case .NotLoggedIn: return "Zalando.Checkout"
-        case .CheckoutIncomplete, .LoggedIn: return "order.place"
-        case .OrderPlaced: return "navigation.back.shop"
-        }
-    }
-
     var submitButtonBackgroundColor: UIColor {
         switch self {
         case .NotLoggedIn, .LoggedIn: return .orangeColor()

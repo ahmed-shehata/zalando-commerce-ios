@@ -1,140 +1,236 @@
 {
-    "id" : "GU121D08Z-Q11",
-    "name" : "SERRALI - Top - jet black",
-    "brand" : {
-        "name" : "Guess"
+  "id" : "GU121D08Z-Q11",
+  "name" : "SERRALI - Top - jet black",
+  "brand" : {
+    "name" : "Guess"
+  },
+  "units" : [ {
+    "id" : "GU121D08Z-Q11000S000",
+    "size" : "S",
+    "price" : {
+      "amount" : 38.45,
+      "currency" : "EUR"
     },
-    "units" : [ {
-               "id" : "GU121D08Z-Q11000S000",
-               "size" : "S",
-               "price" : {
-               "amount" : 38.45,
-               "currency" : "EUR"
-               },
-               "original_price" : {
-               "amount" : 54.95,
-               "currency" : "EUR"
-               },
-               "available" : false,
-               "stock" : 0
-               }, {
-               "id" : "GU121D08Z-Q11000M000",
-               "size" : "M",
-               "price" : {
-               "amount" : 38.45,
-               "currency" : "EUR"
-               },
-               "original_price" : {
-               "amount" : 54.95,
-               "currency" : "EUR"
-               },
-               "available" : true,
-               "stock" : 3
-               }, {
-               "id" : "GU121D08Z-Q1100XS000",
-               "size" : "XS",
-               "price" : {
-               "amount" : 38.45,
-               "currency" : "EUR"
-               },
-               "original_price" : {
-               "amount" : 54.95,
-               "currency" : "EUR"
-               },
-               "available" : false,
-               "stock" : 0
-               }, {
-               "id" : "GU121D08Z-Q1100XL000",
-               "size" : "XL",
-               "price" : {
-               "amount" : 38.45,
-               "currency" : "EUR"
-               },
-               "original_price" : {
-               "amount" : 54.95,
-               "currency" : "EUR"
-               },
-               "available" : true,
-               "stock" : 3
-               }, {
-               "id" : "GU121D08Z-Q11000L000",
-               "size" : "L",
-               "price" : {
-               "amount" : 38.45,
-               "currency" : "EUR"
-               },
-               "original_price" : {
-               "amount" : 54.95,
-               "currency" : "EUR"
-               },
-               "available" : true,
-               "stock" : 3
-               } ],
-    "media" : {
-        "images" : [ {
-                    "order" : 1,
-                    "catalog" : "https://i1.ztat.net/catalog/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@16.jpg",
-                    "catalog_hd" : "https://i1.ztat.net/catalog_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@16.jpg",
-                    "detail" : "https://i1.ztat.net/detail/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@16.jpg",
-                    "detail_hd" : "https://i1.ztat.net/detail_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@16.jpg",
-                    "large" : "https://i1.ztat.net/large/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@16.jpg",
-                    "large_hd" : "https://i1.ztat.net/large_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@16.jpg"
-                    }, {
-                    "order" : 2,
-                    "catalog" : "https://i4.ztat.net/catalog/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@15.jpg",
-                    "catalog_hd" : "https://i4.ztat.net/catalog_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@15.jpg",
-                    "detail" : "https://i4.ztat.net/detail/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@15.jpg",
-                    "detail_hd" : "https://i4.ztat.net/detail_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@15.jpg",
-                    "large" : "https://i4.ztat.net/large/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@15.jpg",
-                    "large_hd" : "https://i4.ztat.net/large_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@15.jpg"
-                    }, {
-                    "order" : 3,
-                    "catalog" : "https://i5.ztat.net/catalog/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@14.jpg",
-                    "catalog_hd" : "https://i5.ztat.net/catalog_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@14.jpg",
-                    "detail" : "https://i5.ztat.net/detail/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@14.jpg",
-                    "detail_hd" : "https://i5.ztat.net/detail_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@14.jpg",
-                    "large" : "https://i5.ztat.net/large/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@14.jpg",
-                    "large_hd" : "https://i5.ztat.net/large_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@14.jpg"
-                    }, {
-                    "order" : 4,
-                    "catalog" : "https://i6.ztat.net/catalog/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@13.jpg",
-                    "catalog_hd" : "https://i6.ztat.net/catalog_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@13.jpg",
-                    "detail" : "https://i6.ztat.net/detail/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@13.jpg",
-                    "detail_hd" : "https://i6.ztat.net/detail_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@13.jpg",
-                    "large" : "https://i6.ztat.net/large/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@13.jpg",
-                    "large_hd" : "https://i6.ztat.net/large_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@13.jpg"
-                    }, {
-                    "order" : 5,
-                    "catalog" : "https://i3.ztat.net/catalog/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@12.jpg",
-                    "catalog_hd" : "https://i3.ztat.net/catalog_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@12.jpg",
-                    "detail" : "https://i3.ztat.net/detail/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@12.jpg",
-                    "detail_hd" : "https://i3.ztat.net/detail_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@12.jpg",
-                    "large" : "https://i3.ztat.net/large/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@12.jpg",
-                    "large_hd" : "https://i3.ztat.net/large_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@12.jpg"
-                    }, {
-                    "order" : 6,
-                    "catalog" : "https://i2.ztat.net/catalog/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@11.jpg",
-                    "catalog_hd" : "https://i2.ztat.net/catalog_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@11.jpg",
-                    "detail" : "https://i2.ztat.net/detail/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@11.jpg",
-                    "detail_hd" : "https://i2.ztat.net/detail_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@11.jpg",
-                    "large" : "https://i2.ztat.net/large/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@11.jpg",
-                    "large_hd" : "https://i2.ztat.net/large_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@11.jpg"
-                    }, {
-                    "order" : 7,
-                    "catalog" : "https://i1.ztat.net/catalog/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@10.jpg",
-                    "catalog_hd" : "https://i1.ztat.net/catalog_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@10.jpg",
-                    "detail" : "https://i1.ztat.net/detail/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@10.jpg",
-                    "detail_hd" : "https://i1.ztat.net/detail_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@10.jpg",
-                    "large" : "https://i1.ztat.net/large/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@10.jpg",
-                    "large_hd" : "https://i1.ztat.net/large_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@10.jpg"
-                    }, {
-                    "order" : 8,
-                    "catalog" : "https://i1.ztat.net/catalog/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@9.jpg",
-                    "catalog_hd" : "https://i1.ztat.net/catalog_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@9.jpg",
-                    "detail" : "https://i1.ztat.net/detail/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@9.jpg",
-                    "detail_hd" : "https://i1.ztat.net/detail_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@9.jpg",
-                    "large" : "https://i1.ztat.net/large/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@9.jpg",
-                    "large_hd" : "https://i1.ztat.net/large_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@9.jpg"
-                    } ]
-    }
+    "original_price" : {
+      "amount" : 54.95,
+      "currency" : "EUR"
+    },
+    "available" : false,
+    "stock" : 0
+  }, {
+    "id" : "GU121D08Z-Q11000M000",
+    "size" : "M",
+    "price" : {
+      "amount" : 38.45,
+      "currency" : "EUR"
+    },
+    "original_price" : {
+      "amount" : 54.95,
+      "currency" : "EUR"
+    },
+    "available" : false,
+    "stock" : 0
+  }, {
+    "id" : "GU121D08Z-Q1100XS000",
+    "size" : "XS",
+    "price" : {
+      "amount" : 38.45,
+      "currency" : "EUR"
+    },
+    "original_price" : {
+      "amount" : 54.95,
+      "currency" : "EUR"
+    },
+    "available" : false,
+    "stock" : 0
+  }, {
+    "id" : "GU121D08Z-Q1100XL000",
+    "size" : "XL",
+    "price" : {
+      "amount" : 38.45,
+      "currency" : "EUR"
+    },
+    "original_price" : {
+      "amount" : 54.95,
+      "currency" : "EUR"
+    },
+    "available" : true,
+    "stock" : 3
+  }, {
+    "id" : "GU121D08Z-Q11000L000",
+    "size" : "L",
+    "price" : {
+      "amount" : 38.45,
+      "currency" : "EUR"
+    },
+    "original_price" : {
+      "amount" : 54.95,
+      "currency" : "EUR"
+    },
+    "available" : true,
+    "stock" : 3
+  } ],
+  "media" : {
+    "images" : [ {
+      "order" : 1,
+      "catalog" : "https://i1.ztat.net/catalog/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@16.jpg",
+      "catalog_hd" : "https://i1.ztat.net/catalog_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@16.jpg",
+      "detail" : "https://i1.ztat.net/detail/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@16.jpg",
+      "detail_hd" : "https://i1.ztat.net/detail_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@16.jpg",
+      "large" : "https://i1.ztat.net/large/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@16.jpg",
+      "large_hd" : "https://i1.ztat.net/large_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@16.jpg"
+    }, {
+      "order" : 2,
+      "catalog" : "https://i4.ztat.net/catalog/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@15.jpg",
+      "catalog_hd" : "https://i4.ztat.net/catalog_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@15.jpg",
+      "detail" : "https://i4.ztat.net/detail/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@15.jpg",
+      "detail_hd" : "https://i4.ztat.net/detail_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@15.jpg",
+      "large" : "https://i4.ztat.net/large/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@15.jpg",
+      "large_hd" : "https://i4.ztat.net/large_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@15.jpg"
+    }, {
+      "order" : 3,
+      "catalog" : "https://i5.ztat.net/catalog/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@14.jpg",
+      "catalog_hd" : "https://i5.ztat.net/catalog_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@14.jpg",
+      "detail" : "https://i5.ztat.net/detail/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@14.jpg",
+      "detail_hd" : "https://i5.ztat.net/detail_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@14.jpg",
+      "large" : "https://i5.ztat.net/large/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@14.jpg",
+      "large_hd" : "https://i5.ztat.net/large_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@14.jpg"
+    }, {
+      "order" : 4,
+      "catalog" : "https://i6.ztat.net/catalog/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@13.jpg",
+      "catalog_hd" : "https://i6.ztat.net/catalog_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@13.jpg",
+      "detail" : "https://i6.ztat.net/detail/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@13.jpg",
+      "detail_hd" : "https://i6.ztat.net/detail_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@13.jpg",
+      "large" : "https://i6.ztat.net/large/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@13.jpg",
+      "large_hd" : "https://i6.ztat.net/large_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@13.jpg"
+    }, {
+      "order" : 5,
+      "catalog" : "https://i3.ztat.net/catalog/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@12.jpg",
+      "catalog_hd" : "https://i3.ztat.net/catalog_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@12.jpg",
+      "detail" : "https://i3.ztat.net/detail/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@12.jpg",
+      "detail_hd" : "https://i3.ztat.net/detail_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@12.jpg",
+      "large" : "https://i3.ztat.net/large/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@12.jpg",
+      "large_hd" : "https://i3.ztat.net/large_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@12.jpg"
+    }, {
+      "order" : 6,
+      "catalog" : "https://i2.ztat.net/catalog/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@11.jpg",
+      "catalog_hd" : "https://i2.ztat.net/catalog_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@11.jpg",
+      "detail" : "https://i2.ztat.net/detail/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@11.jpg",
+      "detail_hd" : "https://i2.ztat.net/detail_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@11.jpg",
+      "large" : "https://i2.ztat.net/large/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@11.jpg",
+      "large_hd" : "https://i2.ztat.net/large_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@11.jpg"
+    }, {
+      "order" : 7,
+      "catalog" : "https://i1.ztat.net/catalog/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@10.jpg",
+      "catalog_hd" : "https://i1.ztat.net/catalog_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@10.jpg",
+      "detail" : "https://i1.ztat.net/detail/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@10.jpg",
+      "detail_hd" : "https://i1.ztat.net/detail_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@10.jpg",
+      "large" : "https://i1.ztat.net/large/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@10.jpg",
+      "large_hd" : "https://i1.ztat.net/large_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@10.jpg"
+    }, {
+      "order" : 8,
+      "catalog" : "https://i1.ztat.net/catalog/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@9.jpg",
+      "catalog_hd" : "https://i1.ztat.net/catalog_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@9.jpg",
+      "detail" : "https://i1.ztat.net/detail/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@9.jpg",
+      "detail_hd" : "https://i1.ztat.net/detail_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@9.jpg",
+      "large" : "https://i1.ztat.net/large/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@9.jpg",
+      "large_hd" : "https://i1.ztat.net/large_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@9.jpg"
+    } ]
+  },
+  "reviews" : {
+    "summary" : {
+      "total" : 10,
+      "rating" : {
+        "average" : 4.4,
+        "distribution" : [ {
+          "level" : "5",
+          "count" : 8
+        }, {
+          "level" : "4",
+          "count" : 0
+        }, {
+          "level" : "3",
+          "count" : 1
+        }, {
+          "level" : "2",
+          "count" : 0
+        }, {
+          "level" : "1",
+          "count" : 1
+        } ]
+      },
+      "recommendations" : {
+        "total" : 10,
+        "positive" : 7
+      }
+    },
+    "entries" : [ {
+      "name" : "Sandra",
+      "title" : "Gefällt mir :-)",
+      "description" : "Schönes Top, sitzt gut und Stoff ist angenehm",
+      "rating" : 5,
+      "recommends" : false,
+      "created" : "2016-01-26T08:58:01.677Z"
+    }, {
+      "name" : "Petra",
+      "title" : "jetzt noch in weiß für den Sommer",
+      "description" : "Heißes Oberteil ist ideal am Körper und sowas von elegant wow ich bin begeistert",
+      "rating" : 5,
+      "recommends" : true,
+      "created" : "2016-01-20T18:08:36.913Z"
+    }, {
+      "name" : "Yeliz",
+      "title" : "Preis Leistung stimmt nicht",
+      "description" : "Nicht so schön wie auf dem Bild ",
+      "rating" : 1,
+      "recommends" : false,
+      "created" : "2016-01-14T03:32:21.406Z"
+    }, {
+      "title" : "guter Kauf",
+      "description" : "schönes Oberteil",
+      "rating" : 5,
+      "recommends" : true,
+      "created" : "2016-01-08T10:37:56.362Z"
+    }, {
+      "name" : "Jennifer",
+      "title" : "toller schnitt und sitzt in meiner grösse perfekt, der stoff ist auch super ",
+      "description" : "super schönes top",
+      "rating" : 5,
+      "recommends" : true,
+      "created" : "2016-01-01T21:47:58.954Z"
+    }, {
+      "name" : "Catarina",
+      "title" : "!!Super!!",
+      "description" : "Bin 175, bei 58 kg, Oberw. 75B. und es sitzt einfach perfekt!!! Schaut sehr Chic aus, kann man sehr gut kombinieren. ",
+      "rating" : 5,
+      "recommends" : true,
+      "created" : "2015-12-13T20:31:54.579Z"
+    }, {
+      "title" : "Liebe auf den ersten Blick!",
+      "description" : "Perfekt sitzendes, stylishes must have! Hab beide Farben behalten!",
+      "rating" : 5,
+      "recommends" : true,
+      "created" : "2015-12-04T14:40:09.754Z"
+    }, {
+      "name" : "Vanessa",
+      "title" : "Evtl kleiner bestellen",
+      "description" : "Größe M bestellt, leider zu groß.\nTrotz meiner Größe von 1.76m\n",
+      "rating" : 3,
+      "recommends" : false,
+      "created" : "2015-12-03T09:19:08.245Z"
+    }, {
+      "name" : "Franziska",
+      "title" : "OK.",
+      "description" : "Sehr schön..doch am Hals ein wenig zu weit..",
+      "rating" : 5,
+      "recommends" : true,
+      "created" : "2015-11-23T10:15:00.998Z"
+    }, {
+      "title" : "Schick",
+      "description" : "Sehr schickes Top, möchte ich im Moment unter Blazer Tragen.  ",
+      "rating" : 5,
+      "recommends" : true,
+      "created" : "2015-11-14T08:04:13.353Z"
+    } ]
+  }
 }
