@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-
+require 'date'
 require 'thor'
 require 'fileutils'
 require 'pathname'
