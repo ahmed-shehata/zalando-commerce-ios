@@ -7,8 +7,7 @@ import AtlasSDK
 
 struct CheckoutViewModel {
 
-    let article: Article
-    let selectedUnitIndex: Int
+    let selectedArticleUnit: SelectedArticleUnit
     let shippingPrice: Article.Price?
     let cartId: String?
     var checkout: Checkout?
@@ -17,18 +16,14 @@ struct CheckoutViewModel {
     var selectedBillingAddress: BillingAddress?
     var selectedShippingAddress: ShippingAddress?
 
-    var selectedBillingAddressId: String?
-    var selectedShippingAddressId: String?
-
-    init(article: Article, selectedUnitIndex: Int = 0,
+    init(selectedArticleUnit: SelectedArticleUnit,
         shippingPrice: Article.Price? = nil,
         cartId: String? = nil,
         checkout: Checkout? = nil,
         customer: Customer? = nil,
         billingAddress: BillingAddress? = nil,
         shippingAddress: ShippingAddress? = nil) {
-            self.article = article
-            self.selectedUnitIndex = selectedUnitIndex
+            self.selectedArticleUnit = selectedArticleUnit
             self.shippingPrice = shippingPrice
             self.checkout = checkout
             self.customer = customer
@@ -50,12 +45,32 @@ extension CheckoutViewModel {
         return selectedBillingAddress?.fullContactPostalAddress ?? localizer.loc("No Billing Address")
     }
 
+    var submitButtonTitle: String {
+        switch self.checkoutViewState {
+            case .NotLoggedIn: return "Zalando.Checkout"
+            case .CheckoutIncomplete, .LoggedIn:
+                if let paymentMethod = checkout?.payment.selected where paymentMethod.isPaypal() {
+                    return "order.place.paypal"
+                }
+                return "order.place"
+            case .OrderPlaced: return "navigation.back.shop"
+        }
+    }
+
     var isPaymentSelected: Bool {
         return customer != nil && selectedPaymentMethod != nil
     }
 
     var selectedUnit: Article.Unit {
-        return article.units[selectedUnitIndex]
+        return article.units[selectedArticleUnit.selectedUnitIndex]
+    }
+
+    var selectedUnitIndex: Int {
+        return selectedArticleUnit.selectedUnitIndex
+    }
+
+    var article: Article {
+        return selectedArticleUnit.article
     }
 
     var shippingPriceValue: Float {
@@ -71,6 +86,9 @@ extension CheckoutViewModel {
     }
 
     var checkoutViewState: CheckoutViewState {
+        if customer == nil {
+            return .NotLoggedIn
+        }
         return (checkout == nil || checkout?.payment.selected?.method == nil) ? .CheckoutIncomplete : .LoggedIn
     }
 
@@ -78,6 +96,6 @@ extension CheckoutViewModel {
 
 extension CheckoutViewModel {
     var isReadyToCreateCheckout: Bool? {
-        return self.checkout == nil && self.selectedBillingAddressId != nil && self.selectedShippingAddressId != nil
+        return self.checkout == nil && self.selectedBillingAddress != nil && self.selectedShippingAddress != nil
     }
 }

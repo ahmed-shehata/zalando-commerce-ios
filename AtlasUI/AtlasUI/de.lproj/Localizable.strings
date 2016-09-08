@@ -7,6 +7,7 @@
 "Payment" = "Zahlung";
 "Done" = "Erledigt";
 "Total" = "Gesamt";
+"vat.included" = "(Incl. MwST)";
 "Shipping" = "Versand";
 "Pay %@" = "Zahlen %@";
 "Zalando.Connect" = "Mit Zalando verbinden";
@@ -16,6 +17,7 @@
 "Size: %@" = "Size: %@";
 "Zalando.Checkout" = "Checkout with Zalando";
 "order.place" = "Place order";
+"order.place.paypal" = "Bestätigen und zahlen mit PayPal";
 "navigation.back.shop" = "Back to shop";
 "order.placed" = "Order placed";
 

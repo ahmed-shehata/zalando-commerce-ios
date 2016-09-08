@@ -7,7 +7,7 @@ import Contacts
 
 public protocol Addressable {
 
-    var id: String { get }
+    var id: String? { get }
     var gender: Gender { get }
     var firstName: String { get }
     var lastName: String { get }

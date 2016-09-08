@@ -68,7 +68,9 @@ final class SizeListSelectionViewController: UITableViewController, CheckoutProv
         tableView.userInteractionEnabled = false
 
         guard Atlas.isUserLoggedIn() else {
-            let checkoutViewModel = CheckoutViewModel(article: self.article, selectedUnitIndex: indexPath.row)
+            let selectedArticleUnit = SelectedArticleUnit(article: article,
+                selectedUnitIndex: 0)
+            let checkoutViewModel = CheckoutViewModel(selectedArticleUnit: selectedArticleUnit)
             displayCheckoutSummaryViewController(checkoutViewModel)
             spinner.stopAnimating()
             return
@@ -80,7 +82,9 @@ final class SizeListSelectionViewController: UITableViewController, CheckoutProv
                 self.userMessage.show(error: error)
 
             case .success(let customer):
-                self.checkout.createCheckoutViewModel(withArticle: self.article, selectedUnitIndex: indexPath.row) { result in
+                let selectedArticleUnit = SelectedArticleUnit(article: self.article,
+                    selectedUnitIndex: indexPath.row)
+                self.checkout.updateCheckoutViewModel(selectedArticleUnit) { result in
                     spinner.stopAnimating()
                     switch result {
                     case .failure(let error):

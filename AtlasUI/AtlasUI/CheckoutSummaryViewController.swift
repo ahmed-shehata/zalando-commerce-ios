@@ -107,6 +107,10 @@ extension CheckoutSummaryViewController {
 
 extension CheckoutSummaryViewController {
 
+    func refreshViewData() {
+        setupViewState()
+    }
+
     private func setupView() {
         view.backgroundColor = .whiteColor()
         view.addSubview(rootStackView)
@@ -135,8 +139,18 @@ extension CheckoutSummaryViewController {
                 target: self,
                 action: #selector(CheckoutSummaryViewController.cancelCheckoutTapped))
             navigationItem.rightBarButtonItem = button
+
+            navigationController?.navigationBar.translucent = false
         } else {
             navigationItem.rightBarButtonItem = nil
+        }
+    }
+
+    func createCheckout(cartId: String, completion: CheckoutCompletion) {
+        checkout.client.createCheckout(cartId,
+            billingAddressId: checkoutViewModel.selectedShippingAddress?.id,
+            shippingAddressId: checkoutViewModel.selectedBillingAddress?.id) { checkout in
+                completion(checkout)
         }
     }
 

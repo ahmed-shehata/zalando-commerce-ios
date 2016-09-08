@@ -17,7 +17,7 @@ public struct APIClient {
         self.requestBuilders = APIRequestBuildersContainer(config: config)
     }
 
-    func fetch<Model: JSONInitializable>(endpoint: EndpointType, completion: AtlasResult<Model> -> Void) {
+    func fetch<Model: JSONInitializable>(from endpoint: Endpoint, completion: AtlasResult<Model> -> Void) {
         self.requestBuilders.createBuilder(forEndpoint: endpoint, urlSession: urlSession).execute { result in
             switch result {
             case .failure(let error):
