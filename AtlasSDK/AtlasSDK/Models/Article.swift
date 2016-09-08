@@ -9,13 +9,13 @@ import Foundation
  */
 
 public struct SelectedArticleUnit {
+
     public let article: Article
     public let selectedUnitIndex: Int
 
-    public init(article: Article,
-        selectedUnitIndex: Int) {
-            self.article = article
-            self.selectedUnitIndex = selectedUnitIndex
+    public init(article: Article, selectedUnitIndex: Int) {
+        self.article = article
+        self.selectedUnitIndex = selectedUnitIndex
     }
 
 }

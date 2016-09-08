@@ -13,6 +13,9 @@ import AtlasMockAPI
 
 class APIClientBaseSpec: QuickSpec {
 
+    let cartId = "CART_ID"
+    let checkoutId = "CHECKOUT_ID"
+
     override class func setUp() {
         super.setUp()
         try! AtlasMockAPI.startServer() // swiftlint:disable:this force_try

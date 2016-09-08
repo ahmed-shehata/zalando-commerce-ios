@@ -7,7 +7,7 @@ module Calypso
 
     COPYRIGHT = <<EOT.freeze
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © #{Date.today.year} Zalando SE. All rights reserved.
 //
 EOT
 
@@ -16,6 +16,7 @@ EOT
       invoke :copyrights
       Lint.new.invoke(:fix)
       invoke :fix_ruby
+      invoke :xunique
     end
 
     desc 'copyrights', 'Clean copyright headers'
@@ -26,6 +27,14 @@ EOT
     desc 'fix_ruby', 'Clean ruby sources'
     def fix_ruby
       run 'rubocop -a calypso.rb lib/calypso/*.rb'
+    end
+
+    desc 'xunique', 'Run xunique on all pbxproj files'
+    def xunique
+      project_files = Dir['**/*.pbxproj'].select { |f| !f.include? 'Carthage' }
+      project_files.each do |pbxproj|
+        run("xunique -p #{pbxproj}", false)
+      end
     end
 
     private

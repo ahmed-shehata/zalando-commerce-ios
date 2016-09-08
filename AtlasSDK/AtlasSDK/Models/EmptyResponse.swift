@@ -4,6 +4,7 @@
 
 import Foundation
 
+@available( *, deprecated, message = "APIClient should not try deserialize empty response")
 public struct EmptyResponse {
 
 }
