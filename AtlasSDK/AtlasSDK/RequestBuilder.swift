@@ -48,11 +48,6 @@ class RequestBuilder: Equatable {
 
         dataTask = self.urlSession.dataTaskWithRequest(request,
             completionHandler: { data, response, error in
-                print("\n\n\n=============================================================")
-                print("\nurl: \(response?.URL ?? NSURL())")
-                print("header: \((response as? NSHTTPURLResponse)?.allHeaderFields ?? [:])")
-                print("\ndata: \(NSString(data: data ?? NSData(), encoding: NSUTF8StringEncoding)?.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet()).joinWithSeparator("") ?? "")")
-                print("\n============================================================\n\n\n")
                 if let error = error {
                     let httpError = AtlasAPIError.nsURLError(code: error.code, details: error.localizedDescription)
                     completion(.failure(httpError))

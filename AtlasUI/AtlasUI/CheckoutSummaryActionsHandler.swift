@@ -104,8 +104,15 @@ extension CheckoutSummaryActionsHandler {
         guard let paymentURL = viewController.checkoutViewModel.checkout?.payment.selectionPageUrl else { return }
 
         let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
-        paymentSelectionViewController.paymentCompletion = { _ in
-            self.loadCustomerData()
+        paymentSelectionViewController.paymentCompletion = { result in
+            switch result {
+            case .success:
+                self.loadCustomerData()
+            case .failure(let error):
+                if let error = error {
+                    self.viewController.userMessage.show(error: error)
+                }
+            }
         }
         viewController.showViewController(paymentSelectionViewController, sender: viewController)
     }
@@ -133,8 +140,15 @@ extension CheckoutSummaryActionsHandler {
         }
 
         let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
-        paymentSelectionViewController.paymentCompletion = { _ in
-            self.viewController.viewState = .OrderPlaced
+        paymentSelectionViewController.paymentCompletion = { result in
+            switch result {
+            case .success:
+                self.viewController.viewState = .OrderPlaced
+            case .failure(let error):
+                if let error = error {
+                    self.viewController.userMessage.show(error: error)
+                }
+            }
         }
         viewController.showViewController(paymentSelectionViewController, sender: viewController)
     }

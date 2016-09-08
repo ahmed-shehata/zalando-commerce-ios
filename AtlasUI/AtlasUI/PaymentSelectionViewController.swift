@@ -4,20 +4,18 @@
 
 import UIKit
 
-enum Result<T> {
-
-    case success(T)
-    case failure()
-
+enum Result {
+    case success
+    case failure(error: NSError?)
 }
 
-typealias PaymentCompletion = Result<String> -> Void
+typealias PaymentCompletion = Result -> Void
 
 final class PaymentSelectionViewController: UIViewController, UIWebViewDelegate {
 
-    private let paymentSelectionURL: NSURL
-
     var paymentCompletion: PaymentCompletion?
+    private let paymentSelectionURL: NSURL
+    private let successURL = "http://de.zalando.atlas.atlascheckoutdemo/redirect"
 
     private lazy var webView: UIWebView = {
         let webView = UIWebView()
@@ -37,8 +35,6 @@ final class PaymentSelectionViewController: UIViewController, UIWebViewDelegate 
     }
 
     override func viewDidLoad() {
-        automaticallyAdjustsScrollViewInsets = false
-
         view.backgroundColor = .whiteColor()
         view.addSubview(webView)
 
@@ -46,16 +42,22 @@ final class PaymentSelectionViewController: UIViewController, UIWebViewDelegate 
         webView.loadRequest(NSURLRequest(URL: paymentSelectionURL))
     }
 
-    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest,
-        navigationType: UIWebViewNavigationType) -> Bool {
-            return true
+    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        guard let success = request.URL?.absoluteString.hasPrefix(successURL) where success else { return true }
+        dismissViewController(.success)
+        return false
     }
 
     func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
-        dismissViewController(.failure(), animated: true)
+        guard !errorBecuaseRequestCancelled(error) else { return }
+        dismissViewController(.failure(error: error), animated: true)
     }
 
-    private func dismissViewController(result: Result<String>, animated: Bool = true) {
+    private func errorBecuaseRequestCancelled(error: NSError?) -> Bool {
+        return error?.domain == "WebKitErrorDomain"
+    }
+
+    private func dismissViewController(result: Result, animated: Bool = true) {
         navigationController?.popViewControllerAnimated(animated)
         paymentCompletion?(result)
     }
