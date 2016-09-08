@@ -8,49 +8,13 @@ import Nimble
 
 @testable import AtlasSDK
 
-class APICheckoutSpec: APIClientBaseSpec {
+class APIUpdateCheckoutSpec: APIClientBaseSpec {
 
     private let addressId = "6702759"
 
     override func spec() {
 
-        describe("Checkout") {
-
-            it("should create checkout from article successfully") {
-                self.waitUntilAPIClientIsConfigured { done, client in
-                    let sku = "AD541L009-G11"
-                    client.article(forSKU: sku) { result in
-                        switch result {
-                        case .failure(let error):
-                            fail(String(error))
-                        case .success(let article):
-                            client.createCheckout(withArticle: article, selectedUnitIndex: 0) { result in
-                                switch result {
-                                case .failure(let error):
-                                    fail(String(error))
-                                case .success(let checkout):
-                                    expect(checkout.id).to(equal(self.checkoutId))
-                                }
-                                done()
-                            }
-                        }
-                    }
-                }
-            }
-
-            it("should create checkout from cart successfully") {
-                self.waitUntilAPIClientIsConfigured { done, client in
-                    client.createCheckout(self.cartId) { result in
-                        switch result {
-                        case .failure(let error):
-                            fail(String(error))
-                        case .success(let checkout):
-                            expect(checkout.id).to(equal(self.checkoutId))
-                        }
-                        done()
-                    }
-                }
-            }
+        describe("Update checkout") {
 
             it("should update billing address in checkout successfully") {
                 self.waitUntilAPIClientIsConfigured { done, client in
