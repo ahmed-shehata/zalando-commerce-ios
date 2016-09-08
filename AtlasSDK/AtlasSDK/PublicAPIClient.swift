@@ -52,8 +52,9 @@ extension APIClient {
         fetch(from: endpoint, completion: completion)
     }
 
-    public func createCheckout(withArticle article: Article, selectedUnitIndex: Int, completion: CheckoutCompletion) {
-        let articleSKU = article.units[selectedUnitIndex].id
+    public func createCheckout(withSelectedArticleUnit selectedArticleUnit: SelectedArticleUnit,
+        billingAddressId: String? = nil, shippingAddressId: String? = nil, completion: CheckoutCompletion) {
+            let articleSKU = selectedArticleUnit.article.units[selectedArticleUnit.selectedUnitIndex].id
         let cartItemRequest = CartItemRequest(sku: articleSKU, quantity: 1)
 
         createCart(cartItemRequest) { cartResult in
@@ -68,10 +69,12 @@ extension APIClient {
                         completion(.failure(error))
 
                     case .success(let addressList):
-                        self.createCheckout(cart.id) { checkoutResult in
+                            self.createCheckout(cart.id, billingAddressId: billingAddressId,
+                                shippingAddressId: shippingAddressId) { checkoutResult in
                             switch checkoutResult {
                             case .failure(let error):
-                                let checkoutError = AtlasAPIError.checkoutFailed(addresses: addressList, cartId: cart.id, error: error)
+                                        let checkoutError = AtlasAPIError.checkoutFailed(addresses: addressList,
+                                            cartId: cart.id, error: error)
                                 completion(.failure(checkoutError))
                             case .success(let checkout):
                                 completion(.success(checkout))

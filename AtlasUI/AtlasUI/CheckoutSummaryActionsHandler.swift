@@ -35,9 +35,7 @@ extension CheckoutSummaryActionsHandler {
             return
         }
 
-        let updateCheckoutRequest = UpdateCheckoutRequest(billingAddressId:
-                viewController.checkoutViewModel.selectedBillingAddress?.id,
-            shippingAddressId: viewController.checkoutViewModel.selectedShippingAddress?.id)
+        let updateCheckoutRequest = UpdateCheckoutRequest(checkoutViewModel: viewController.checkoutViewModel)
 
         viewController.checkout.client.updateCheckout(checkout.id, updateCheckoutRequest: updateCheckoutRequest) { result in
             switch result {
@@ -80,8 +78,8 @@ extension CheckoutSummaryActionsHandler {
 
     private func generateCheckout(customer: Customer) {
         viewController.loaderView.show()
-        viewController.checkout.createCheckoutViewModel(withArticle: viewController.checkoutViewModel.article,
-            selectedUnitIndex: viewController.checkoutViewModel.selectedUnitIndex) { result in
+        viewController.checkout.updateCheckoutViewModel(viewController.checkoutViewModel.selectedArticleUnit,
+            checkoutViewModel: viewController.checkoutViewModel) { result in
                 self.viewController.loaderView.hide()
                 switch result {
                 case .failure(let error):
@@ -157,7 +155,8 @@ extension CheckoutSummaryActionsHandler {
             viewController.loaderView.hide()
             viewController.rootStackView.configureData(viewController)
             viewController.refreshViewData()
-            guard let ready = viewController.checkoutViewModel.isReadyToCreateCheckout where ready == true
+
+            guard let readyToCreateCheckout = viewController.checkoutViewModel.isReadyToCreateCheckout where readyToCreateCheckout == true
             else { return }
             viewController.loaderView.show()
             guard let cartId = viewController.checkoutViewModel.cartId else { return }
@@ -176,5 +175,12 @@ extension CheckoutSummaryActionsHandler {
                     self.viewController.refreshViewData()
                 }
             }
+    }
+}
+
+extension UpdateCheckoutRequest {
+    init (checkoutViewModel: CheckoutViewModel) {
+        self.init(billingAddressId: checkoutViewModel.selectedBillingAddress?.id,
+            shippingAddressId: checkoutViewModel.selectedBillingAddress?.id)
     }
 }

@@ -7,6 +7,7 @@
 "Payment" = "Payment";
 "Done" = "Done";
 "Total" = "Total";
+"vat.included" = "(VAT Included)";
 "Shipping" = "Shipping";
 "Pay %@" = "Pay %@";
 "Zalando.Connect" = "Connect to Zalando";

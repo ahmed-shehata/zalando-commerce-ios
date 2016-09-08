@@ -41,7 +41,9 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
 
     private func showCheckoutScreen(article: Article, selectedUnitIndex: Int) {
         guard Atlas.isUserLoggedIn() else {
-            let checkoutViewModel = CheckoutViewModel(article: article, selectedUnitIndex: 0)
+            let selectedArticleUnit = SelectedArticleUnit(article: article,
+                selectedUnitIndex: 0)
+            let checkoutViewModel = CheckoutViewModel(selectedArticleUnit: selectedArticleUnit)
             displayCheckoutSummaryViewController(checkoutViewModel)
             return
         }
@@ -57,7 +59,9 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
     }
 
     private func generateCheckout(withArticle article: Article, customer: Customer) {
-        checkout.createCheckoutViewModel(withArticle: article, selectedUnitIndex: 0) { result in
+        let selectedArticleUnit = SelectedArticleUnit(article: article,
+            selectedUnitIndex: 0)
+        checkout.updateCheckoutViewModel(selectedArticleUnit) { result in
             switch result {
             case .failure(let error):
                 self.dismissViewControllerAnimated(true) {

@@ -58,6 +58,15 @@ class CheckoutSummaryPriceStackView: UIStackView {
         label.textAlignment = .Right
         return label
     }()
+
+    internal let vatTitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFontOfSize(10, weight: UIFontWeightLight)
+        label.textColor = UIColor(hex: 0x7F7F7F)
+        label.textAlignment = .Center
+        return label
+    }()
+
 }
 
 extension CheckoutSummaryPriceStackView: UIBuilder {
@@ -66,6 +75,7 @@ extension CheckoutSummaryPriceStackView: UIBuilder {
         addArrangedSubview(shippingStackView)
         addArrangedSubview(dummySeparatorLabel)
         addArrangedSubview(totalStackView)
+        addArrangedSubview(vatTitleLabel)
 
         shippingStackView.addArrangedSubview(shippingTitleLabel)
         shippingStackView.addArrangedSubview(shippingValueLabel)
@@ -85,6 +95,7 @@ extension CheckoutSummaryPriceStackView: UIDataBuilder {
         shippingValueLabel.text = viewModel.localizer.fmtPrice(viewModel.checkoutViewModel.shippingPriceValue)
         totalTitleLabel.text = viewModel.loc("Total")
         totalValueLabel.text = viewModel.localizer.fmtPrice(viewModel.checkoutViewModel.totalPriceValue)
+        vatTitleLabel.text = viewModel.loc("vat.included")
     }
 
 }
