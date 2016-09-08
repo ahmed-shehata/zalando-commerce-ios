@@ -40,6 +40,20 @@ class APIAddressesSpec: APIClientBaseSpec {
                 }
             }
 
+            it("should delete address successfully") {
+                self.waitUntilAPIClientIsConfigured { done, client in
+                    client.deleteAddress("6702748") { result in
+                        switch result {
+                        case .failure(let error):
+                            fail(String(error))
+                        case .success(let emptyResponse):
+                            expect(emptyResponse).notTo(beNil())
+                        }
+                        done()
+                    }
+                }
+            }
+
         }
 
     }
