@@ -33,7 +33,7 @@ class ArticlesClient {
     }
 
     private func endpointURL(forSKUs skus: [String]) -> NSURL {
-        if NSProcessInfo.hasMockedAPIEnabled {
+        if AtlasMockAPI.hasMockedAPIEnabled {
             return AtlasMockAPI.endpointURL(forPath: "/articles")
         }
 

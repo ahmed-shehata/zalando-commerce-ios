@@ -159,17 +159,7 @@ class AtlasDemoUITests: XCTestCase {
     private func fillInLogin() {
         NSThread.sleepForTimeInterval(2)
 
-        let zalandoLoginElement = app.otherElements["Zalando Login"]
-        let element = zalandoLoginElement.childrenMatchingType(.Any).elementBoundByIndex(4)
-        element.childrenMatchingType(.TextField).element.tap()
-        element.childrenMatchingType(.TextField).element.typeText("atlas-testing@mailinator.com")
-        element.childrenMatchingType(.TextField).element
-
-        let element2 = zalandoLoginElement.childrenMatchingType(.Any).elementBoundByIndex(6)
-        element2.childrenMatchingType(.SecureTextField).element.tap()
-        element2.childrenMatchingType(.SecureTextField).element.typeText("12345678")
-        element2.childrenMatchingType(.SecureTextField).element
-        app.buttons["LOGIN"].tap()
+        app.buttons["Login"].tap()
     }
 
     private func tapBuyNow(identifier: String) {
