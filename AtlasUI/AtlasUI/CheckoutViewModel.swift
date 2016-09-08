@@ -7,8 +7,7 @@ import AtlasSDK
 
 struct CheckoutViewModel {
 
-    let article: Article
-    let selectedUnitIndex: Int
+    let selectedArticleUnit: SelectedArticleUnit
     let shippingPrice: Article.Price?
     let cartId: String?
     var checkout: Checkout?
@@ -17,15 +16,14 @@ struct CheckoutViewModel {
     var selectedBillingAddress: BillingAddress?
     var selectedShippingAddress: ShippingAddress?
 
-    init(article: Article, selectedUnitIndex: Int = 0,
+    init(selectedArticleUnit: SelectedArticleUnit,
         shippingPrice: Article.Price? = nil,
         cartId: String? = nil,
         checkout: Checkout? = nil,
         customer: Customer? = nil,
         billingAddress: BillingAddress? = nil,
         shippingAddress: ShippingAddress? = nil) {
-            self.article = article
-            self.selectedUnitIndex = selectedUnitIndex
+            self.selectedArticleUnit = selectedArticleUnit
             self.shippingPrice = shippingPrice
             self.checkout = checkout
             self.customer = customer
@@ -52,7 +50,15 @@ extension CheckoutViewModel {
     }
 
     var selectedUnit: Article.Unit {
-        return article.units[selectedUnitIndex]
+        return article.units[selectedArticleUnit.selectedUnitIndex]
+    }
+
+    var selectedUnitIndex: Int {
+        return selectedArticleUnit.selectedUnitIndex
+    }
+
+    var article: Article {
+        return selectedArticleUnit.article
     }
 
     var shippingPriceValue: Float {

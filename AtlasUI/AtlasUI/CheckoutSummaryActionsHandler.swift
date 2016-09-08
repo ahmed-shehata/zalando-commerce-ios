@@ -78,9 +78,8 @@ extension CheckoutSummaryActionsHandler {
 
     private func generateCheckout(customer: Customer) {
         viewController.loaderView.show()
-        viewController.checkout.createCheckoutViewModel(withArticle: viewController.checkoutViewModel.article,
-            selectedUnitIndex: viewController.checkoutViewModel.selectedUnitIndex,
-            checkoutViewModel: self.viewController.checkoutViewModel) { result in
+        viewController.checkout.updateCheckoutViewModel(viewController.checkoutViewModel.selectedArticleUnit,
+            checkoutViewModel: viewController.checkoutViewModel) { result in
                 self.viewController.loaderView.hide()
                 switch result {
                 case .failure(let error):

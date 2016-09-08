@@ -45,9 +45,9 @@ extension APIClient {
         fetch(createCart(parameters: parameters), completion: completion)
     }
 
-    public func createCheckout(withArticle article: Article, selectedUnitIndex: Int,
+    public func createCheckout(withSelectedArticleUnit selectedArticleUnit: SelectedArticleUnit,
         billingAddressId: String? = nil, shippingAddressId: String? = nil, completion: CheckoutCompletion) {
-            let articleSKU = article.units[selectedUnitIndex].id
+            let articleSKU = selectedArticleUnit.article.units[selectedArticleUnit.selectedUnitIndex].id
             let cartItemRequest = CartItemRequest(sku: articleSKU, quantity: 1)
 
             createCart(cartItemRequest) { cartResult in

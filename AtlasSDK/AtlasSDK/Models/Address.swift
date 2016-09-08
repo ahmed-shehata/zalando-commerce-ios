@@ -5,7 +5,8 @@
 import Foundation
 
 public struct Address: Addressable, Equatable {
-    public let id: String
+
+    public let id: String?
     public let customerNumber: String
     public let gender: Gender
     public let firstName: String
@@ -21,11 +22,14 @@ public struct Address: Addressable, Equatable {
 }
 
 public func == (lhs: Address, rhs: Address) -> Bool {
-    return lhs.id == rhs.id
+    return lhs.hashValue == rhs.hashValue
 }
 
 extension Address: Hashable {
     public var hashValue: Int {
+        guard let id = id else {
+            return (customerNumber + firstName + lastName + zip + city + countryCode).hashValue
+        }
         return id.hashValue
     }
 }
@@ -52,8 +56,7 @@ extension Address: JSONInitializable {
 
     init?(json: JSON) {
         guard let
-        id = json[Keys.id].string,
-            customerNumber = json[Keys.customerNumber].string,
+        customerNumber = json[Keys.customerNumber].string,
             genderRaw = json[Keys.gender].string,
             gender = Gender(rawValue: genderRaw),
             firstName = json[Keys.firstName].string,
@@ -64,7 +67,7 @@ extension Address: JSONInitializable {
             isDefaultBilling = json[Keys.defaultBilling].bool,
             isDefaultShipping = json[Keys.defaultShipping].bool else { return nil }
 
-        self.init(id: id,
+        self.init(id: json[Keys.id].string,
             customerNumber: customerNumber,
             gender: gender,
             firstName: firstName,

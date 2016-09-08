@@ -8,7 +8,7 @@ import AtlasSDK
 
 public typealias AtlasCheckoutConfigurationCompletion = AtlasResult<AtlasCheckout> -> Void
 
-typealias CreateCheckoutCompletion = AtlasResult<CheckoutViewModel> -> Void
+typealias CreateCheckoutViewModelCompletion = AtlasResult<CheckoutViewModel> -> Void
 
 public class AtlasCheckout: LocalizerProviderType {
 
@@ -74,22 +74,20 @@ public class AtlasCheckout: LocalizerProviderType {
             return true
     }
 
-    func createCheckoutViewModel(withArticle article: Article, selectedUnitIndex: Int, checkoutViewModel: CheckoutViewModel? = nil,
-        completion: CreateCheckoutCompletion) {
-            client.createCheckout(withArticle: article, selectedUnitIndex: selectedUnitIndex,
+    func updateCheckoutViewModel(selectedArticleUnit: SelectedArticleUnit, checkoutViewModel: CheckoutViewModel? = nil,
+        completion: CreateCheckoutViewModelCompletion) {
+            client.createCheckout(withSelectedArticleUnit: selectedArticleUnit,
                 billingAddressId: checkoutViewModel?.selectedBillingAddress?.id,
                 shippingAddressId: checkoutViewModel?.selectedShippingAddress?.id) { checkoutResult in
                     switch checkoutResult {
                     case .failure(let error):
                         if case let AtlasAPIError.checkoutFailed(_, cartId, _) = error {
-                            let checkoutModel = CheckoutViewModel(article: article,
-                                selectedUnitIndex: selectedUnitIndex, cartId: cartId, checkout: nil)
+                            let checkoutModel = CheckoutViewModel(selectedArticleUnit: selectedArticleUnit, cartId: cartId, checkout: nil)
                             completion(.success(checkoutModel))
                         }
 
                     case .success(let checkout):
-                        let checkoutModel = CheckoutViewModel(article: article,
-                            selectedUnitIndex: selectedUnitIndex, checkout: checkout)
+                        let checkoutModel = CheckoutViewModel(selectedArticleUnit: selectedArticleUnit, checkout: checkout)
                         completion(.success(checkoutModel))
                     }
             }
