@@ -45,35 +45,38 @@ extension APIClient {
         fetch(createCart(parameters: parameters), completion: completion)
     }
 
-    public func createCheckout(withArticle article: Article, selectedUnitIndex: Int, completion: CheckoutCompletion) {
-        let articleSKU = article.units[selectedUnitIndex].id
-        let cartItemRequest = CartItemRequest(sku: articleSKU, quantity: 1)
+    public func createCheckout(withArticle article: Article, selectedUnitIndex: Int,
+        billingAddressId: String? = nil, shippingAddressId: String? = nil, completion: CheckoutCompletion) {
+            let articleSKU = article.units[selectedUnitIndex].id
+            let cartItemRequest = CartItemRequest(sku: articleSKU, quantity: 1)
 
-        createCart(cartItemRequest) { cartResult in
-            switch cartResult {
-            case .failure(let error):
-                completion(.failure(error))
+            createCart(cartItemRequest) { cartResult in
+                switch cartResult {
+                case .failure(let error):
+                    completion(.failure(error))
 
-            case .success(let cart):
-                self.fetchAddressList { addressListResult in
-                    switch addressListResult {
-                    case .failure(let error):
-                        completion(.failure(error))
+                case .success(let cart):
+                    self.fetchAddressList { addressListResult in
+                        switch addressListResult {
+                        case .failure(let error):
+                            completion(.failure(error))
 
-                    case .success(let addressList):
-                        self.createCheckout(cart.id) { checkoutResult in
-                            switch checkoutResult {
-                            case .failure(let error):
-                                let checkoutError = AtlasAPIError.checkoutFailed(addresses: addressList, cartId: cart.id, error: error)
-                                completion(.failure(checkoutError))
-                            case .success(let checkout):
-                                completion(.success(checkout))
+                        case .success(let addressList):
+                            self.createCheckout(cart.id, billingAddressId: billingAddressId,
+                                shippingAddressId: shippingAddressId) { checkoutResult in
+                                    switch checkoutResult {
+                                    case .failure(let error):
+                                        let checkoutError = AtlasAPIError.checkoutFailed(addresses: addressList,
+                                            cartId: cart.id, error: error)
+                                        completion(.failure(checkoutError))
+                                    case .success(let checkout):
+                                        completion(.success(checkout))
+                                    }
                             }
                         }
                     }
                 }
             }
-        }
     }
 
     public func createCheckout(cartId: String, billingAddressId: String? = nil,

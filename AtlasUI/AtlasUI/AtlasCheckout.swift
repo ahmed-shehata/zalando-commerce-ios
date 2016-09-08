@@ -74,22 +74,25 @@ public class AtlasCheckout: LocalizerProviderType {
             return true
     }
 
-    func createCheckoutViewModel(withArticle article: Article, selectedUnitIndex: Int, completion: CreateCheckoutCompletion) {
-        client.createCheckout(withArticle: article, selectedUnitIndex: selectedUnitIndex) { checkoutResult in
-            switch checkoutResult {
-            case .failure(let error):
-                if case let AtlasAPIError.checkoutFailed(_, cartId, _) = error {
-                    let checkoutModel = CheckoutViewModel(article: article,
-                        selectedUnitIndex: selectedUnitIndex, cartId: cartId, checkout: nil)
-                    completion(.success(checkoutModel))
-                }
+    func createCheckoutViewModel(withArticle article: Article, selectedUnitIndex: Int, checkoutViewModel: CheckoutViewModel? = nil,
+        completion: CreateCheckoutCompletion) {
+            client.createCheckout(withArticle: article, selectedUnitIndex: selectedUnitIndex,
+                billingAddressId: checkoutViewModel?.selectedBillingAddress?.id,
+                shippingAddressId: checkoutViewModel?.selectedShippingAddress?.id) { checkoutResult in
+                    switch checkoutResult {
+                    case .failure(let error):
+                        if case let AtlasAPIError.checkoutFailed(_, cartId, _) = error {
+                            let checkoutModel = CheckoutViewModel(article: article,
+                                selectedUnitIndex: selectedUnitIndex, cartId: cartId, checkout: nil)
+                            completion(.success(checkoutModel))
+                        }
 
-            case .success(let checkout):
-                let checkoutModel = CheckoutViewModel(article: article,
-                    selectedUnitIndex: selectedUnitIndex, checkout: checkout)
-                completion(.success(checkoutModel))
+                    case .success(let checkout):
+                        let checkoutModel = CheckoutViewModel(article: article,
+                            selectedUnitIndex: selectedUnitIndex, checkout: checkout)
+                        completion(.success(checkoutModel))
+                    }
             }
-        }
     }
 
 }
