@@ -47,6 +47,20 @@ extension CheckoutViewModel {
         return selectedBillingAddress?.fullContactPostalAddress ?? localizer.loc("No Billing Address")
     }
 
+    var submitButtonTitle: String {
+        switch self.checkoutViewState {
+            case .NotLoggedIn: return "Zalando.Checkout"
+            case .CheckoutIncomplete, .LoggedIn:
+                if let paymentMethod = checkout?.payment.selected {
+                    if paymentMethod.isPaypal() {
+                        return "order.place.paypal"
+                    }
+                }
+                return "order.place"
+            case .OrderPlaced: return "navigation.back.shop"
+        }
+    }
+
     var isPaymentSelected: Bool {
         return customer != nil && selectedPaymentMethod != nil
     }
