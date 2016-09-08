@@ -43,18 +43,19 @@ extension CheckoutSummaryActionsHandler {
             switch result {
             case .failure(let error):
                 self.viewController.userMessage.show(error: error)
+                self.viewController.loaderView.hide()
             case .success(let checkout):
                 self.createOrder(checkout.id)
             }
         }
     }
 
-    internal func createOrder (checkoutId: String) {
+    internal func createOrder(checkoutId: String) {
         viewController.checkout.client.createOrder(checkoutId) { result in
-            self.viewController.loaderView.show()
             switch result {
             case .failure(let error):
                 self.viewController.userMessage.show(error: error)
+                self.viewController.loaderView.hide()
             case .success (let order):
                 self.handleOrderConfirmation(order)
             }
