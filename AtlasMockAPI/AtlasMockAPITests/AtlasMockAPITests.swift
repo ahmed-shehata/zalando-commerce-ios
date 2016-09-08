@@ -34,7 +34,7 @@ class AtlasMockAPITests: XCTestCase {
 
     func testArticleEndpoint() {
         assertSuccessfulResponse(forEndpoint: "/articles/AD541L009-G11") { json in
-            XCTAssertEqual(json["activationDate"].stringValue, "2015-07-04T10:25:19+02:00")
+            XCTAssertEqual(json["units", 0, "id"].stringValue, "AD541L009-G11000S000")
         }
     }
 
