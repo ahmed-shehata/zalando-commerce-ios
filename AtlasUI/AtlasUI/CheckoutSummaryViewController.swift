@@ -139,6 +139,8 @@ extension CheckoutSummaryViewController {
                 target: self,
                 action: #selector(CheckoutSummaryViewController.cancelCheckoutTapped))
             navigationItem.rightBarButtonItem = button
+
+            navigationController?.navigationBar.translucent = false
         } else {
             navigationItem.rightBarButtonItem = nil
         }

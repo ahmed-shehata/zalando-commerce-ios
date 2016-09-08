@@ -51,10 +51,8 @@ extension CheckoutViewModel {
         switch self.checkoutViewState {
             case .NotLoggedIn: return "Zalando.Checkout"
             case .CheckoutIncomplete, .LoggedIn:
-                if let paymentMethod = checkout?.payment.selected {
-                    if paymentMethod.isPaypal() {
-                        return "order.place.paypal"
-                    }
+                if let paymentMethod = checkout?.payment.selected where paymentMethod.isPaypal() {
+                    return "order.place.paypal"
                 }
                 return "order.place"
             case .OrderPlaced: return "navigation.back.shop"
@@ -82,6 +80,9 @@ extension CheckoutViewModel {
     }
 
     var checkoutViewState: CheckoutViewState {
+        if customer == nil {
+            return .NotLoggedIn
+        }
         return (checkout == nil || checkout?.payment.selected?.method == nil) ? .CheckoutIncomplete : .LoggedIn
     }
 

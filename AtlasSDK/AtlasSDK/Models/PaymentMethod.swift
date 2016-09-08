@@ -23,7 +23,7 @@ extension PaymentMethod: JSONInitializable {
     }
 
     public func isPaypal() -> Bool {
-        return self.method?.caseInsensitiveCompare("paypal") == NSComparisonResult.OrderedSame
+        return self.method?.caseInsensitiveCompare("paypal") == .OrderedSame
     }
 
 }
