@@ -56,6 +56,7 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
         self.setupTableView()
         fetchAddresses()
 
+        // TODO: JUST TO TEST
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .Plain, target: self, action: #selector(showAddAddress))
     }
 

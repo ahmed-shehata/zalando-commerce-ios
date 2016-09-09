@@ -46,20 +46,26 @@ class EditAddressViewController: UIViewController, CheckoutProviderType {
         view.backgroundColor = .whiteColor()
         buildView()
         addressStackView.configureData(addressViewModel)
-        configureSubmitButton()
+        configureNavigation()
     }
 
 }
 
 extension EditAddressViewController {
 
-    func configureSubmitButton() {
+    private func configureNavigation() {
         let saveButton = UIBarButtonItem(title: loc("Save"), style: .Plain, target: self, action: #selector(submitButtonPressed))
+        let cancelButton = UIBarButtonItem(title: loc("Cancel"), style: .Plain, target: self, action: #selector(cancelButtonPressed))
         navigationItem.rightBarButtonItem = saveButton
+        navigationItem.leftBarButtonItem = cancelButton
     }
 
-    func submitButtonPressed() {
+    private dynamic func submitButtonPressed() {
         completion?(UserAddress(addressViewModel: addressViewModel))
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+
+    private dynamic func cancelButtonPressed() {
         dismissViewControllerAnimated(true, completion: nil)
     }
 
