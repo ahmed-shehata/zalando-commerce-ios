@@ -127,8 +127,11 @@ extension TextFieldInputStackView: UITextFieldDelegate {
     }
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        nextTextField?.textField.becomeFirstResponder()
+        if let nextTextField = nextTextField {
+            nextTextField.textField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
         return true
     }
 

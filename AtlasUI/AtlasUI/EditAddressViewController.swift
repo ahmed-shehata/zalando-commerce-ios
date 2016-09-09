@@ -5,6 +5,8 @@
 import UIKit
 import AtlasSDK
 
+typealias EditAddressCompletion = UserAddress? -> Void
+
 class EditAddressViewController: UIViewController, CheckoutProviderType {
 
     internal let scrollView: KeyboardScrollView = {
@@ -24,13 +26,14 @@ class EditAddressViewController: UIViewController, CheckoutProviderType {
     }()
 
     private let addressType: EditAddressType
-    private let addressViewModel: EditAddressViewModel
     internal let checkout: AtlasCheckout
+    private let addressViewModel: EditAddressViewModel
+    internal var completion: EditAddressCompletion?
 
-    init(addressType: EditAddressType, checkout: AtlasCheckout, addressViewModel: EditAddressViewModel = EditAddressViewModel()) {
+    init(addressType: EditAddressType, checkout: AtlasCheckout, address: UserAddress?) {
         self.addressType = addressType
         self.checkout = checkout
-        self.addressViewModel = addressViewModel
+        self.addressViewModel = EditAddressViewModel(userAddress: address)
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -43,6 +46,21 @@ class EditAddressViewController: UIViewController, CheckoutProviderType {
         view.backgroundColor = .whiteColor()
         buildView()
         addressStackView.configureData(addressViewModel)
+        configureSubmitButton()
+    }
+
+}
+
+extension EditAddressViewController {
+
+    func configureSubmitButton() {
+        let saveButton = UIBarButtonItem(title: loc("Save"), style: .Plain, target: self, action: #selector(submitButtonPressed))
+        navigationItem.rightBarButtonItem = saveButton
+    }
+
+    func submitButtonPressed() {
+        completion?(UserAddress(addressViewModel: addressViewModel))
+        dismissViewControllerAnimated(true, completion: nil)
     }
 
 }

@@ -6,22 +6,6 @@ import UIKit
 
 class EditAddressStackView: UIStackView {
 
-    private let submitButtonStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.layoutMargins = UIEdgeInsets(top: 40, left: 30, bottom: 20, right: 30)
-        stackView.layoutMarginsRelativeArrangement = true
-        return stackView
-    }()
-
-    private let submitButton: RoundedButton = {
-        let button = RoundedButton(type: .Custom)
-        button.cornerRadius = 5
-        button.titleLabel?.font = .systemFontOfSize(15)
-        button.setTitleColor(.whiteColor(), forState: .Normal)
-        button.backgroundColor = UIColor(hex: 0x519415)
-        return button
-    }()
-
     internal var addressType: EditAddressType!
     internal var checkoutProviderType: CheckoutProviderType!
     internal var textFields: [TextFieldInputStackView] = []
@@ -36,7 +20,6 @@ extension EditAddressStackView: UIBuilder {
             self.textFields.append(textField)
             self.addArrangedSubview(textField)
         }
-        submitButtonStackView.addArrangedSubview(submitButton)
     }
 
     func builderSubviews() -> [UIBuilder] {
@@ -58,7 +41,6 @@ extension EditAddressStackView: UIDataBuilder {
             let viewModel = TextFieldInputViewModel(title: title, value: value, nextTextFieldInput: nextTextField)
             textField.configureData(viewModel)
         }
-        submitButton.setTitle("Save Address", forState: .Normal)
     }
 
 }

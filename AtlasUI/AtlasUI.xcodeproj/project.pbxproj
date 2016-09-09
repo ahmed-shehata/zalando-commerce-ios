@@ -219,16 +219,12 @@
 		4C97964529F3E380DC0D91E7093919D9 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				E9C19A571D82F111001898FF /* Generic Views */,
 				971465BF293DCFB809C2B0F1512B4CE3 /* Async.swift */,
-				7213EB38DBC235984A41709E643C8EE8 /* BorderView.swift */,
 				D4F1679B8BB8A951B60D19AD947CD5BA /* CGRect.swift */,
 				E9C19A551D82ABA5001898FF /* Gender.swift */,
-				E9E00C311D81BD100052FD83 /* KeyboardScrollView.swift */,
-				68E9C6572D2F4F6481B6389BDF69F18B /* LoaderView.swift */,
 				01745B4995023182267D504707E4A241 /* Localization.swift */,
-				3F015820E6D686C7BA3004F60826859A /* RoundedViews.swift */,
 				0B6F508180606FB22E1A4FCC91997E48 /* String.swift */,
-				E9E00C321D81BD100052FD83 /* TextFieldInputStackView.swift */,
 				640810DC34806DF7B0FBAEA4DB0123CD /* UIBuilder.swift */,
 				27ADC182F5F2F24D9AF740830B9B50A9 /* UIColor.swift */,
 				417B9ADA720A948E8E1F8F875F349D62 /* UIImage.swift */,
@@ -329,6 +325,18 @@
 				E9E00C3D1D81BD4B0052FD83 /* Add Address */,
 			);
 			name = "Address Selection";
+			sourceTree = "<group>";
+		};
+		E9C19A571D82F111001898FF /* Generic Views */ = {
+			isa = PBXGroup;
+			children = (
+				7213EB38DBC235984A41709E643C8EE8 /* BorderView.swift */,
+				E9E00C311D81BD100052FD83 /* KeyboardScrollView.swift */,
+				68E9C6572D2F4F6481B6389BDF69F18B /* LoaderView.swift */,
+				3F015820E6D686C7BA3004F60826859A /* RoundedViews.swift */,
+				E9E00C321D81BD100052FD83 /* TextFieldInputStackView.swift */,
+			);
+			name = "Generic Views";
 			sourceTree = "<group>";
 		};
 		E9E00C3D1D81BD4B0052FD83 /* Add Address */ = {

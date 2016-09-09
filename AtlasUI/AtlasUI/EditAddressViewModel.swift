@@ -22,22 +22,54 @@ class EditAddressViewModel {
     var city: String?
     var countryCode: String?
     var pickupPoint: PickupPoint?
+    var isDefaultBilling: Bool = false
+    var isDefaultShipping: Bool = false
 
+    init (userAddress: UserAddress?) {
+        guard let userAddress = userAddress else { return }
+        id = userAddress.id
+        customerNumber = userAddress.customerNumber
+        gender = userAddress.gender
+        firstName = userAddress.firstName
+        lastName = userAddress.lastName
+        street = userAddress.street
+        additional = userAddress.additional
+        zip = userAddress.zip
+        city = userAddress.city
+        countryCode = userAddress.countryCode
+        pickupPoint = userAddress.pickupPoint
+        isDefaultBilling = userAddress.isDefaultBilling
+        isDefaultShipping = userAddress.isDefaultShipping
+    }
 }
 
-infix operator --> { associativity left precedence 140 }
-func --> (left: UserAddress, right: EditAddressViewModel.Type) -> EditAddressViewModel {
-    let addressViewModel = EditAddressViewModel()
-    addressViewModel.id = left.id
-    addressViewModel.customerNumber = left.customerNumber
-    addressViewModel.gender = left.gender
-    addressViewModel.firstName = left.firstName
-    addressViewModel.lastName = left.lastName
-    addressViewModel.street = left.street
-    addressViewModel.additional = left.additional
-    addressViewModel.zip = left.zip
-    addressViewModel.city = left.city
-    addressViewModel.countryCode = left.countryCode
-    addressViewModel.pickupPoint = left.pickupPoint
-    return addressViewModel
+extension UserAddress {
+
+    init? (addressViewModel: EditAddressViewModel) {
+
+        guard let
+            id = addressViewModel.id,
+            customerNumber = addressViewModel.customerNumber,
+            gender = addressViewModel.gender,
+            firstName = addressViewModel.firstName,
+            lastName = addressViewModel.lastName,
+            zip = addressViewModel.zip,
+            city = addressViewModel.city,
+            countryCode = addressViewModel.countryCode else { return nil }
+
+        self.id = id
+        self.customerNumber = customerNumber
+        self.gender = gender
+        self.firstName = firstName
+        self.lastName = lastName
+        self.street = addressViewModel.street
+        self.additional = addressViewModel.additional
+        self.zip = zip
+        self.city = city
+        self.countryCode = countryCode
+        self.pickupPoint = addressViewModel.pickupPoint
+        self.isDefaultBilling = addressViewModel.isDefaultBilling
+        self.isDefaultShipping = addressViewModel.isDefaultShipping
+    }
+
 }
