@@ -8,14 +8,14 @@ public struct AddressList {
         return addresses.isEmpty
     }
 
-    public let addresses: [Address]
+    public let addresses: [UserAddress]
 
 }
 
 extension AddressList: JSONInitializable {
 
     init?(json: JSON) {
-        let addresses = json.arrayValue.flatMap { Address(json: $0) }
+        let addresses = json.arrayValue.flatMap { UserAddress(json: $0) }
         self.init(addresses: addresses)
     }
 

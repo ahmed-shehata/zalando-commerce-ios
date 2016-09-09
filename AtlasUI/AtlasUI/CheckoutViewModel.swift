@@ -13,16 +13,16 @@ struct CheckoutViewModel {
     var checkout: Checkout?
     internal(set) var customer: Customer?
 
-    var selectedBillingAddress: BillingAddress?
-    var selectedShippingAddress: ShippingAddress?
+    var selectedBillingAddress: CheckoutAddress?
+    var selectedShippingAddress: CheckoutAddress?
 
     init(selectedArticleUnit: SelectedArticleUnit,
         shippingPrice: Article.Price? = nil,
         cartId: String? = nil,
         checkout: Checkout? = nil,
         customer: Customer? = nil,
-        billingAddress: BillingAddress? = nil,
-        shippingAddress: ShippingAddress? = nil) {
+        billingAddress: CheckoutAddress? = nil,
+        shippingAddress: CheckoutAddress? = nil) {
             self.selectedArticleUnit = selectedArticleUnit
             self.shippingPrice = shippingPrice
             self.checkout = checkout
@@ -47,13 +47,13 @@ extension CheckoutViewModel {
 
     var submitButtonTitle: String {
         switch self.checkoutViewState {
-            case .NotLoggedIn: return "Zalando.Checkout"
-            case .CheckoutIncomplete, .LoggedIn:
-                if let paymentMethod = checkout?.payment.selected where paymentMethod.isPaypal() {
-                    return "order.place.paypal"
-                }
-                return "order.place"
-            case .OrderPlaced: return "navigation.back.shop"
+        case .NotLoggedIn: return "Zalando.Checkout"
+        case .CheckoutIncomplete, .LoggedIn:
+            if let paymentMethod = checkout?.payment.selected where paymentMethod.isPaypal() {
+                return "order.place.paypal"
+            }
+            return "order.place"
+        case .OrderPlaced: return "navigation.back.shop"
         }
     }
 

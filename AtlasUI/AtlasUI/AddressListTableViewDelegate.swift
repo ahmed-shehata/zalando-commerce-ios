@@ -11,8 +11,9 @@ class AddressListTableViewDelegate: NSObject {
     private let addressType: AddressType
     private let selectionCompletion: AddressSelectionCompletion
 
-    var addresses: [Address] = []
-    var selectedAddress: Addressable? {
+    var addresses: [UserAddress] = []
+    var selectedAddressId: String?
+    var selectedAddress: UserAddress? {
         didSet {
             Async.main { [weak self] in
                 guard let strongSelf = self, selectedAddress = strongSelf.selectedAddress else { return }
@@ -41,7 +42,10 @@ extension AddressListTableViewDelegate: UITableViewDataSource {
             case let .dequeuedCell(addressRowCell):
                 let address = self.addresses[indexPath.item]
                 addressRowCell.address = address
-                addressRowCell.accessoryType = self.selectedAddress?.id == address.id ? .Checkmark : .None
+                if let selectedAddressId = self.selectedAddressId {
+                    addressRowCell.accessoryType = selectedAddressId == address.id ? .Checkmark : .None
+                }
+
                 return addressRowCell
             case let .defaultCell(cell):
                 return cell
@@ -62,8 +66,7 @@ extension AddressListTableViewDelegate: UITableViewDelegate {
             switch editingStyle {
             case .Delete:
                 let address = self.addresses[indexPath.item]
-                guard let addressId = address.id else { return }
-                checkout.client.deleteAddress(addressId) { result in
+                checkout.client.deleteAddress(address.id) { result in
                     switch result {
                     case .success(_):
                         self.addresses.removeAtIndex(indexPath.item)
@@ -79,7 +82,7 @@ extension AddressListTableViewDelegate: UITableViewDelegate {
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         selectedAddress = addresses[indexPath.item]
-
+        selectedAddressId = selectedAddress?.id
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         tableView.reloadData()
     }
