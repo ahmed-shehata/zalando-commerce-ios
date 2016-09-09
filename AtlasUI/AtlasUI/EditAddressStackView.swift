@@ -6,8 +6,6 @@ import UIKit
 
 class EditAddressStackView: UIStackView {
 
-    private var textFields: [(type: EditAddressField, textField: TextFieldInputStackView)]
-
     private let submitButtonStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.layoutMargins = UIEdgeInsets(top: 40, left: 30, bottom: 20, right: 30)
@@ -24,33 +22,25 @@ class EditAddressStackView: UIStackView {
         return button
     }()
 
-    private let addressType: EditAddressType
-
-    init(addressType: EditAddressType) {
-        self.addressType = addressType
-        self.textFields = []
-        super.init(arrangedSubviews: [])
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    internal var addressType: EditAddressType!
+    internal var checkoutProviderType: CheckoutProviderType!
+    internal var textFields: [TextFieldInputStackView] = []
 
 }
 
 extension EditAddressStackView: UIBuilder {
 
     func configureView() {
-        addressType.fields.forEach {
+        addressType.fields.forEach { _ in
             let textField = TextFieldInputStackView()
-            self.textFields.append((type: $0, textField: textField))
+            self.textFields.append(textField)
             self.addArrangedSubview(textField)
         }
         submitButtonStackView.addArrangedSubview(submitButton)
     }
 
     func builderSubviews() -> [UIBuilder] {
-        return textFields.map { $0.textField }
+        return textFields.map { $0 }
     }
 
 }
@@ -60,15 +50,14 @@ extension EditAddressStackView: UIDataBuilder {
     typealias T = EditAddressViewModel
 
     func configureData(viewModel: T) {
-        
-        titleTextFieldInput.configureData(TextFieldInputViewModel(title: "Title", value: nil, error: nil, nextTextFieldInput: firstNameTextFieldInput))
-        firstNameTextFieldInput.configureData(TextFieldInputViewModel(title: "First Name", value: nil, error: nil, nextTextFieldInput: lastNameTextFieldInput))
-        lastNameTextFieldInput.configureData(TextFieldInputViewModel(title: "Last Name", value: nil, error: nil, nextTextFieldInput: streetTextFieldInput))
-        streetTextFieldInput.configureData(TextFieldInputViewModel(title: "Street", value: nil, error: nil, nextTextFieldInput: additionalAddressTextFieldInput))
-        additionalAddressTextFieldInput.configureData(TextFieldInputViewModel(title: "Additional", value: nil, error: nil, nextTextFieldInput: zipcodeTextFieldInput))
-        zipcodeTextFieldInput.configureData(TextFieldInputViewModel(title: "Zipcode", value: nil, error: nil, nextTextFieldInput: cityTextFieldInput))
-        cityTextFieldInput.configureData(TextFieldInputViewModel(title: "City", value: nil, error: nil, nextTextFieldInput: countryTextFieldInput))
-        countryTextFieldInput.configureData(TextFieldInputViewModel(title: "Country", value: nil, error: nil, nextTextFieldInput: nil))
+        for (idx, textField) in textFields.enumerate() {
+            let fieldType = addressType.fields[idx]
+            let title = fieldType.title(checkoutProviderType)
+            let value = fieldType.value(viewModel, localizer: checkoutProviderType)
+            let nextTextField: TextFieldInputStackView? = textFields.count > idx+1 ? textFields[idx+1] : nil
+            let viewModel = TextFieldInputViewModel(title: title, value: value, nextTextFieldInput: nextTextField)
+            textField.configureData(viewModel)
+        }
         submitButton.setTitle("Save Address", forState: .Normal)
     }
 

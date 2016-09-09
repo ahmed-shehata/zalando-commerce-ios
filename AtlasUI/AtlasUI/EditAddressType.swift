@@ -30,16 +30,31 @@ enum EditAddressField {
 
     func title(localizer: LocalizerProviderType) -> String {
         switch self {
-        case .Title: return localizer.loc("Address.edit.title.title")
-        case .FirstName: return localizer.loc("Address.edit.title.firstName")
-        case .LastName: return localizer.loc("Address.edit.title.lastName")
-        case .Street: return localizer.loc("Address.edit.title.street")
-        case .Additional: return localizer.loc("Address.edit.title.additional")
-        case .Packstation: return localizer.loc("Address.edit.title.packstation")
-        case .MemberID: return localizer.loc("Address.edit.title.memberID")
-        case .Zipcode: return localizer.loc("Address.edit.title.zipcode")
-        case .City: return localizer.loc("Address.edit.title.city")
-        case .Country: return localizer.loc("Address.edit.title.country")
+        case .Title: return localizer.loc("Address.edit.title")
+        case .FirstName: return localizer.loc("Address.edit.firstName")
+        case .LastName: return localizer.loc("Address.edit.lastName")
+        case .Street: return localizer.loc("Address.edit.street")
+        case .Additional: return localizer.loc("Address.edit.additional")
+        case .Packstation: return localizer.loc("Address.edit.packstation")
+        case .MemberID: return localizer.loc("Address.edit.memberID")
+        case .Zipcode: return localizer.loc("Address.edit.zipcode")
+        case .City: return localizer.loc("Address.edit.city")
+        case .Country: return localizer.loc("Address.edit.country")
+        }
+    }
+
+    func value(viewModel: EditAddressViewModel, localizer: LocalizerProviderType) -> String? {
+        switch self {
+        case .Title: return viewModel.gender?.addressFormTitle(localizer)
+        case .FirstName: return viewModel.firstName
+        case .LastName: return viewModel.lastName
+        case .Street: return viewModel.street
+        case .Additional: return viewModel.additional
+        case .Packstation: return viewModel.pickupPoint?.name
+        case .MemberID: return viewModel.pickupPoint?.memberId
+        case .Zipcode: return viewModel.zip
+        case .City: return viewModel.city
+        case .Country: return viewModel.countryCode
         }
     }
 }

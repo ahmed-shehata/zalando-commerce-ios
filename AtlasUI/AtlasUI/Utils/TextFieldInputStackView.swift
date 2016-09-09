@@ -9,6 +9,13 @@ struct TextFieldInputViewModel {
     let value: String?
     let error: String?
     let nextTextFieldInput: TextFieldInputStackView?
+
+    init (title: String, value: String? = nil, error: String? = nil, nextTextFieldInput: TextFieldInputStackView? = nil) {
+        self.title = title
+        self.value = value
+        self.error = error
+        self.nextTextFieldInput = nextTextFieldInput
+    }
 }
 
 class TextFieldInputStackView: UIStackView {

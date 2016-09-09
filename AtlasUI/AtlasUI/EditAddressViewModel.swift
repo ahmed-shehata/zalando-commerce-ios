@@ -16,7 +16,7 @@ class EditAddressViewModel {
     var gender: Gender?
     var firstName: String?
     var lastName: String?
-    var street: String??
+    var street: String?
     var additional: String?
     var zip: String?
     var city: String?
@@ -24,3 +24,8 @@ class EditAddressViewModel {
     var pickupPoint: PickupPoint?
 
 }
+
+//infix operator --> { associativity left precedence 140 }
+//func -->(left: EditAddressViewModel, right: [Int]) -> [Int] { // 2
+//
+//}

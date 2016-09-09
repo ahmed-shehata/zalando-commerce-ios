@@ -42,24 +42,16 @@
 "AtlasConfigurationError.message.missingSalesChannel" = "Missing sales channel";
 "AtlasConfigurationError.message.missingInterfaceLanguage" = "Missing interface language";
 
-"Address.edit.title.title" = "Title";
-"Address.edit.title.firstName" = "First Name";
-"Address.edit.title.lastName" = "Last Name";
-"Address.edit.title.street" = "Street";
-"Address.edit.title.additional" = "Additional";
-"Address.edit.title.packstation" = "Packstation";
-"Address.edit.title.memberID" = "Member ID";
-"Address.edit.title.zipcode" = "Zipcode";
-"Address.edit.title.city" = "City";
-"Address.edit.title.country" = "Country";
+"Address.edit.title" = "Title";
+"Address.edit.firstName" = "First Name";
+"Address.edit.lastName" = "Last Name";
+"Address.edit.street" = "Street";
+"Address.edit.additional" = "Additional";
+"Address.edit.packstation" = "Packstation";
+"Address.edit.memberID" = "Member ID";
+"Address.edit.zipcode" = "Zipcode";
+"Address.edit.city" = "City";
+"Address.edit.country" = "Country";
 
-"Address.edit.placeholder.title" = "Mrs";
-"Address.edit.placeholder.firstName" = "John";
-"Address.edit.placeholder.lastName" = "Doe";
-"Address.edit.placeholder.street" = "Mollstr. 1";
-"Address.edit.placeholder.additional" = "C/O Zalando SE - BMO";
-"Address.edit.placeholder.packstation" = "152";
-"Address.edit.placeholder.memberID" = "23456765432";
-"Address.edit.placeholder.zipcode" = "10178";
-"Address.edit.placeholder.city" = "Berlin";
-"Address.edit.placeholder.country" = "Deutschland";
+"Address.edit.gender.male" = "Mr";
+"Address.edit.gender.female" = "Mrs";

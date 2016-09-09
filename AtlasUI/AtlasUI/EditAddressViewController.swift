@@ -5,7 +5,7 @@
 import UIKit
 import AtlasSDK
 
-class EditAddressViewController: UIViewController {
+class EditAddressViewController: UIViewController, CheckoutProviderType {
 
     internal let scrollView: KeyboardScrollView = {
         let scrollView = KeyboardScrollView()
@@ -14,18 +14,22 @@ class EditAddressViewController: UIViewController {
     }()
 
     internal lazy var addressStackView: EditAddressStackView = {
-        let stackView = EditAddressStackView(addressType: self.addressType)
+        let stackView = EditAddressStackView()
+        stackView.addressType = self.addressType
+        stackView.checkoutProviderType = self
         stackView.axis = .Vertical
         stackView.layoutMargins = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
         stackView.layoutMarginsRelativeArrangement = true
         return stackView
     }()
 
-    let addressType: EditAddressType
-    let addressViewModel: EditAddressViewModel
+    private let addressType: EditAddressType
+    private let addressViewModel: EditAddressViewModel
+    internal let checkout: AtlasCheckout
 
-    init(addressType: EditAddressType, addressViewModel: EditAddressViewModel = EditAddressViewModel()) {
+    init(addressType: EditAddressType, checkout: AtlasCheckout, addressViewModel: EditAddressViewModel = EditAddressViewModel()) {
         self.addressType = addressType
+        self.checkout = checkout
         self.addressViewModel = addressViewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -38,7 +42,7 @@ class EditAddressViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .whiteColor()
         buildView()
-        addressStackView.configureData(true)
+        addressStackView.configureData(EditAddressViewModel())
     }
 
 }
