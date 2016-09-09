@@ -60,7 +60,8 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
     }
 
     dynamic private func showAddAddress() {
-        let viewController = EditAddressViewController(addressType: .NormalAddress, checkout: checkout)
+        let viewController = EditAddressViewController(addressType: .NormalAddress, checkout: checkout,
+                                                       addressViewModel: addresses[0] --> EditAddressViewModel.self)
         showViewController(viewController, sender: nil)
     }
 

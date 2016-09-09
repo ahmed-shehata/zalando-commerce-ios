@@ -42,7 +42,7 @@ class EditAddressViewController: UIViewController, CheckoutProviderType {
         super.viewDidLoad()
         view.backgroundColor = .whiteColor()
         buildView()
-        addressStackView.configureData(EditAddressViewModel())
+        addressStackView.configureData(addressViewModel)
     }
 
 }
