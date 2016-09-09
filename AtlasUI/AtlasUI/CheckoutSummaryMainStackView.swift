@@ -22,8 +22,8 @@ class CheckoutSummaryMainStackView: UIStackView {
         return view
     }()
 
-    internal let shippingAddressStackView: CheckoutSummaryActionRowStackView = {
-        let stackView = CheckoutSummaryActionRowStackView()
+    internal let shippingAddressStackView: CheckoutSummaryAddressActionRowStackView = {
+        let stackView = CheckoutSummaryAddressActionRowStackView()
         stackView.axis = .Horizontal
         stackView.spacing = 5
         stackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
@@ -39,8 +39,8 @@ class CheckoutSummaryMainStackView: UIStackView {
         return view
     }()
 
-    internal let billingAddressStackView: CheckoutSummaryActionRowStackView = {
-        let stackView = CheckoutSummaryActionRowStackView()
+    internal let billingAddressStackView: CheckoutSummaryAddressActionRowStackView = {
+        let stackView = CheckoutSummaryAddressActionRowStackView()
         stackView.axis = .Horizontal
         stackView.spacing = 5
         stackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
@@ -56,8 +56,8 @@ class CheckoutSummaryMainStackView: UIStackView {
         return view
     }()
 
-    internal let paymentStackView: CheckoutSummaryActionRowStackView = {
-        let stackView = CheckoutSummaryActionRowStackView()
+    internal let paymentStackView: CheckoutSummaryPaymentActionRowStackView = {
+        let stackView = CheckoutSummaryPaymentActionRowStackView()
         stackView.axis = .Horizontal
         stackView.spacing = 5
         stackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
@@ -128,19 +128,24 @@ extension CheckoutSummaryMainStackView: UIDataBuilder {
         priceStackView.configureData(viewModel)
         priceStackView.hidden = !viewModel.viewState.showPrice
 
-        shippingAddressStackView.configureData(CheckoutSummaryActionViewModel(
+        let shippingAddress = viewModel.checkoutViewModel.shippingAddress(localizedWith: viewModel)
+        let billingAddress = viewModel.checkoutViewModel.shippingAddress(localizedWith: viewModel)
+
+        shippingAddressStackView.configureData(CheckoutSummaryAddressActionViewModel(
             title: viewModel.loc("Address.Shipping"),
-            value: viewModel.checkoutViewModel.shippingAddress(localizedWith: viewModel).trimmed,
+            firstLineValue: shippingAddress[0].trimmed,
+            secondLineValue: shippingAddress.count > 1 ? shippingAddress[1].trimmed : nil,
             showArrow: viewModel.viewState.showDetailArrow)
         )
 
-        billingAddressStackView.configureData(CheckoutSummaryActionViewModel(
+        billingAddressStackView.configureData(CheckoutSummaryAddressActionViewModel(
             title: viewModel.loc("Address.Billing"),
-            value: viewModel.checkoutViewModel.billingAddress(localizedWith: viewModel).trimmed,
+            firstLineValue: billingAddress[0].trimmed,
+            secondLineValue: billingAddress.count > 1 ? billingAddress[1].trimmed : nil,
             showArrow: viewModel.viewState.showDetailArrow)
         )
 
-        paymentStackView.configureData(CheckoutSummaryActionViewModel(
+        paymentStackView.configureData(CheckoutSummaryPaymentActionViewModel(
             title: viewModel.loc("Payment"),
             value: viewModel.checkoutViewModel.selectedPaymentMethod ?? "",
             showArrow: viewModel.viewState.showDetailArrow)
