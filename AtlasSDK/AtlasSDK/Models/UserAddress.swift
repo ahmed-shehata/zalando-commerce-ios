@@ -29,7 +29,7 @@ extension UserAddress: JSONInitializable {
 
         static let id = "id"
         static let gender = "gender"
-        static let customerNumber = "customerNumber"
+        static let customerNumber = "customer_number"
         static let firstName = "first_name"
         static let lastName = "last_name"
         static let street = "street"
