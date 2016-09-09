@@ -7,7 +7,7 @@ import AtlasSDK
 
 final class AddressRowViewCell: UITableViewCell {
 
-    var address: Address! {
+    var address: UserAddress! {
         didSet {
             updateViews()
         }
