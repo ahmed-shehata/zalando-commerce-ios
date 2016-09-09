@@ -113,7 +113,7 @@ extension CheckoutSummaryActionsHandler {
         guard Atlas.isUserLoggedIn() else { return loadCustomerData() }
         let addressSelectionViewController = AddressPickerViewController(checkout: viewController.checkout,
             addressType: .shipping, addressSelectionCompletion: pickedAddressCompletion)
-        addressSelectionViewController.selectedAddressId = viewController.checkoutViewModel.selectedShippingAddress?.id
+        addressSelectionViewController.selectedAddress = viewController.checkoutViewModel.selectedShippingAddress
         viewController.showViewController(addressSelectionViewController, sender: viewController)
     }
 
@@ -121,7 +121,7 @@ extension CheckoutSummaryActionsHandler {
         guard Atlas.isUserLoggedIn() else { return loadCustomerData() }
         let addressSelectionViewController = AddressPickerViewController(checkout: viewController.checkout, addressType: .billing,
             addressSelectionCompletion: pickedAddressCompletion)
-        addressSelectionViewController.selectedAddressId = viewController.checkoutViewModel.selectedBillingAddress?.id
+        addressSelectionViewController.selectedAddress = viewController.checkoutViewModel.selectedBillingAddress
         viewController.showViewController(addressSelectionViewController, sender: viewController)
     }
 
@@ -141,16 +141,14 @@ extension CheckoutSummaryActionsHandler {
 }
 
 extension CheckoutSummaryActionsHandler {
-    func pickedAddressCompletion(pickedAddress address: FormattableAddress,
+    func pickedAddressCompletion(pickedAddress address: EquatableAddress,
         forAddressType addressType: AddressType) {
 
             switch addressType {
             case AddressType.billing:
-                guard let billingAddress = CheckoutAddress(address: address) else { return }
-                viewController.checkoutViewModel.selectedBillingAddress = billingAddress
+                viewController.checkoutViewModel.selectedBillingAddress = address
             case AddressType.shipping:
-                guard let shippingAddress = CheckoutAddress(address: address) else { return }
-                viewController.checkoutViewModel.selectedShippingAddress = shippingAddress
+                viewController.checkoutViewModel.selectedShippingAddress = address
             }
             viewController.loaderView.hide()
             viewController.rootStackView.configureData(viewController)

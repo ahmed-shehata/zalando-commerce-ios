@@ -12,8 +12,7 @@ class AddressListTableViewDelegate: NSObject {
     private let selectionCompletion: AddressSelectionCompletion
 
     var addresses: [UserAddress] = []
-    var selectedAddressId: String?
-    var selectedAddress: UserAddress? {
+    var selectedAddress: EquatableAddress? {
         didSet {
             Async.main { [weak self] in
                 guard let strongSelf = self, selectedAddress = strongSelf.selectedAddress else { return }
@@ -42,8 +41,8 @@ extension AddressListTableViewDelegate: UITableViewDataSource {
             case let .dequeuedCell(addressRowCell):
                 let address = self.addresses[indexPath.item]
                 addressRowCell.address = address
-                if let selectedAddressId = self.selectedAddressId {
-                    addressRowCell.accessoryType = selectedAddressId == address.id ? .Checkmark : .None
+                if let selectedAddress = self.selectedAddress {
+                    addressRowCell.accessoryType = selectedAddress == address ? .Checkmark : .None
                 }
 
                 return addressRowCell
@@ -82,7 +81,6 @@ extension AddressListTableViewDelegate: UITableViewDelegate {
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         selectedAddress = addresses[indexPath.item]
-        selectedAddressId = selectedAddress?.id
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         tableView.reloadData()
     }

@@ -10,7 +10,7 @@ enum AddressType {
     case billing
 }
 
-typealias AddressSelectionCompletion = (pickedAddress: FormattableAddress, pickedAddressType: AddressType) -> Void
+typealias AddressSelectionCompletion = (pickedAddress: EquatableAddress, pickedAddressType: AddressType) -> Void
 
 final class AddressPickerViewController: UIViewController, CheckoutProviderType {
 
@@ -22,9 +22,9 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
     private var addresses: [UserAddress] = []
     let tableviewDelegate: AddressListTableViewDelegate?
 
-    var selectedAddressId: String? {
+    var selectedAddress: EquatableAddress? {
         didSet {
-            tableviewDelegate?.selectedAddressId = selectedAddressId
+            tableviewDelegate?.selectedAddress = selectedAddress
         }
     }
 

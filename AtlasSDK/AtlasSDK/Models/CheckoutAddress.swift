@@ -4,7 +4,7 @@
 
 import Foundation
 
-public struct CheckoutAddress: FormattableAddress, EquatableAddress {
+public struct CheckoutAddress: EquatableAddress {
     public let id: String
     public let gender: Gender
     public let firstName: String

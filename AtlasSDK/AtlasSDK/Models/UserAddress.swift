@@ -4,9 +4,10 @@
 
 import Foundation
 
-public struct UserAddress: FormattableAddress, EquatableAddress {
+public struct UserAddress: EquatableAddress {
 
     public let id: String
+    public let customerNumber: String
     public let gender: Gender
     public let firstName: String
     public let lastName: String
@@ -28,6 +29,7 @@ extension UserAddress: JSONInitializable {
 
         static let id = "id"
         static let gender = "gender"
+        static let customerNumber = "customerNumber"
         static let firstName = "first_name"
         static let lastName = "last_name"
         static let street = "street"
@@ -45,6 +47,7 @@ extension UserAddress: JSONInitializable {
         guard let
         id = json[Keys.id].string,
             genderRaw = json[Keys.gender].string,
+            customerNumber = json[Keys.customerNumber].string,
             gender = Gender(rawValue: genderRaw),
             firstName = json[Keys.firstName].string,
             lastName = json[Keys.lastName].string,
@@ -55,6 +58,7 @@ extension UserAddress: JSONInitializable {
             isDefaultShipping = json[Keys.defaultShipping].bool else { return nil }
 
         self.init(id: id,
+            customerNumber: customerNumber,
             gender: gender,
             firstName: firstName,
             lastName: lastName,

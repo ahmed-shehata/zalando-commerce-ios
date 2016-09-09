@@ -13,16 +13,16 @@ struct CheckoutViewModel {
     var checkout: Checkout?
     internal(set) var customer: Customer?
 
-    var selectedBillingAddress: CheckoutAddress?
-    var selectedShippingAddress: CheckoutAddress?
+    var selectedBillingAddress: EquatableAddress?
+    var selectedShippingAddress: EquatableAddress?
 
     init(selectedArticleUnit: SelectedArticleUnit,
         shippingPrice: Article.Price? = nil,
         cartId: String? = nil,
         checkout: Checkout? = nil,
         customer: Customer? = nil,
-        billingAddress: CheckoutAddress? = nil,
-        shippingAddress: CheckoutAddress? = nil) {
+        billingAddress: EquatableAddress? = nil,
+        shippingAddress: EquatableAddress? = nil) {
             self.selectedArticleUnit = selectedArticleUnit
             self.shippingPrice = shippingPrice
             self.checkout = checkout

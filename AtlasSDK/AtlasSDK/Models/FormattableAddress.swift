@@ -5,12 +5,6 @@
 import Foundation
 import Contacts
 
-public protocol EquatableAddress {
-
-    var id: String { get }
-
-}
-
 public protocol FormattableAddress: StreetAddress {
 
     var gender: Gender { get }
@@ -21,6 +15,10 @@ public protocol FormattableAddress: StreetAddress {
     var city: String { get }
     var countryCode: String { get }
 
+}
+
+public protocol EquatableAddress: FormattableAddress {
+    var id: String { get }
 }
 
 public func == (lhs: EquatableAddress, rhs: EquatableAddress) -> Bool {
