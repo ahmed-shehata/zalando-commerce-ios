@@ -22,7 +22,8 @@ class CheckoutSummaryActionRowStackView: UIStackView {
 
     internal let valueLabel: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 0
+        label.numberOfLines = 2
+        label.lineBreakMode = .ByTruncatingTail
         label.font = .systemFontOfSize(14, weight: UIFontWeightLight)
         label.textColor = UIColor(hex: 0x7F7F7F)
         return label

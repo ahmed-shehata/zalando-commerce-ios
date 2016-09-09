@@ -55,6 +55,7 @@ extension CheckoutSummaryActionsHandler {
                 self.viewController.userMessage.show(error: error)
             case .success (let order):
                 self.handleOrderConfirmation(order)
+                self.viewController.loaderView.hide()
             }
         }
     }
