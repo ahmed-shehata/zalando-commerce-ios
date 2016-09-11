@@ -55,6 +55,7 @@ extension CheckoutSummaryActionsHandler {
                 self.viewController.userMessage.show(error: error)
             case .success (let order):
                 self.handleOrderConfirmation(order)
+                self.viewController.loaderView.hide()
             }
         }
     }
@@ -141,16 +142,14 @@ extension CheckoutSummaryActionsHandler {
 }
 
 extension CheckoutSummaryActionsHandler {
-    func pickedAddressCompletion(pickedAddress address: Addressable,
+    func pickedAddressCompletion(pickedAddress address: EquatableAddress,
         forAddressType addressType: AddressType) {
 
             switch addressType {
             case AddressType.billing:
-                guard let billingAddress = BillingAddress(address: address) else { return }
-                viewController.checkoutViewModel.selectedBillingAddress = billingAddress
+                viewController.checkoutViewModel.selectedBillingAddress = address
             case AddressType.shipping:
-                guard let shippingAddress = ShippingAddress(address: address) else { return }
-                viewController.checkoutViewModel.selectedShippingAddress = shippingAddress
+                viewController.checkoutViewModel.selectedShippingAddress = address
             }
             viewController.loaderView.hide()
             viewController.rootStackView.configureData(viewController)

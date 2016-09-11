@@ -1,46 +1,35 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+// Copyright © 2016 Zalando SE. All rights reserved.
 //
 
 import Foundation
 
-public struct Address: Addressable, Equatable {
+public struct UserAddress: EquatableAddress {
 
-    public let id: String?
+    public let id: String
     public let customerNumber: String
     public let gender: Gender
     public let firstName: String
     public let lastName: String
     public let street: String?
+
     public let additional: String?
     public let zip: String
     public let city: String
     public let countryCode: String
+
     public let pickupPoint: PickupPoint?
     public let isDefaultBilling: Bool
     public let isDefaultShipping: Bool
 }
 
-public func == (lhs: Address, rhs: Address) -> Bool {
-    return lhs.hashValue == rhs.hashValue
-}
-
-extension Address: Hashable {
-    public var hashValue: Int {
-        guard let id = id else {
-            return (customerNumber + firstName + lastName + zip + city + countryCode).hashValue
-        }
-        return id.hashValue
-    }
-}
-
-extension Address: JSONInitializable {
+extension UserAddress: JSONInitializable {
 
     private struct Keys {
 
         static let id = "id"
-        static let customerNumber = "customer_number"
         static let gender = "gender"
+        static let customerNumber = "customer_number"
         static let firstName = "first_name"
         static let lastName = "last_name"
         static let street = "street"
@@ -56,8 +45,9 @@ extension Address: JSONInitializable {
 
     init?(json: JSON) {
         guard let
-        customerNumber = json[Keys.customerNumber].string,
+        id = json[Keys.id].string,
             genderRaw = json[Keys.gender].string,
+            customerNumber = json[Keys.customerNumber].string,
             gender = Gender(rawValue: genderRaw),
             firstName = json[Keys.firstName].string,
             lastName = json[Keys.lastName].string,
@@ -67,7 +57,7 @@ extension Address: JSONInitializable {
             isDefaultBilling = json[Keys.defaultBilling].bool,
             isDefaultShipping = json[Keys.defaultShipping].bool else { return nil }
 
-        self.init(id: json[Keys.id].string,
+        self.init(id: id,
             customerNumber: customerNumber,
             gender: gender,
             firstName: firstName,

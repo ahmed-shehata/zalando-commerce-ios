@@ -8,8 +8,8 @@ public struct Order {
 
     public let orderNumber: String
     public let customerNumber: String
-    public let billingAddress: BillingAddress
-    public let shippingAddress: ShippingAddress
+    public let billingAddress: OrderAddress
+    public let shippingAddress: OrderAddress
     public let grossTotal: Price
     public let taxTotal: Price
     public let created: NSDate?
@@ -36,8 +36,8 @@ extension Order: JSONInitializable {
         guard let
         orderNumber = json[Keys.orderNumber].string,
             customerNumber = json[Keys.customerNumber].string,
-            billingAddress = BillingAddress(json: json[Keys.billingAddress]),
-            shippingAddress = ShippingAddress(json: json[Keys.shippingAddress]),
+            billingAddress = OrderAddress(json: json[Keys.billingAddress]),
+            shippingAddress = OrderAddress(json: json[Keys.shippingAddress]),
             grossTotal = Price(json: json[Keys.grossTotal]),
             taxTotal = Price(json: json[Keys.taxTotal]) else { return nil }
 

@@ -54,6 +54,15 @@ enum CheckoutViewState {
         }
     }
 
+    func submitButtonTitle(isPaypal: Bool) -> String {
+        switch self {
+        case .NotLoggedIn: return "Zalando.Checkout"
+        case .CheckoutIncomplete, .LoggedIn:
+            return isPaypal ? "order.place.paypal" : "order.place"
+        case .OrderPlaced: return "navigation.back.shop"
+        }
+    }
+
     func hideBackButton(hasSingleUnit: Bool) -> Bool {
         guard !hasSingleUnit else { return true }
         switch self {
