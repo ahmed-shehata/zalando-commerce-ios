@@ -170,10 +170,11 @@ extension CheckoutSummaryActionsHandler {
             viewController.rootStackView.configureData(viewController)
             viewController.refreshViewData()
 
-            guard let readyToCreateCheckout = viewController.checkoutViewModel.isReadyToCreateCheckout where readyToCreateCheckout == true
+            guard let
+                cartId = viewController.checkoutViewModel.cartId,
+                readyToCreateCheckout = viewController.checkoutViewModel.isReadyToCreateCheckout where readyToCreateCheckout == true
             else { return }
             viewController.loaderView.show()
-            guard let cartId = viewController.checkoutViewModel.cartId else { return }
 
             viewController.createCheckout(cartId) { result in
                 self.viewController.loaderView.hide()
