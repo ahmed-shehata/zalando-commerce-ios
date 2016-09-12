@@ -63,7 +63,7 @@ final class LoginViewController: UIViewController {
         switch result {
         case .success:
             return true
-        default:
+        case .failure:
             return false
         }
     }
