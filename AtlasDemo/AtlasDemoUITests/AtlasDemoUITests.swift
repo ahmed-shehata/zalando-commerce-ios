@@ -28,11 +28,9 @@ class AtlasDemoUITests: XCTestCase {
     }
 
     func testBuyQuicklyProductWithSizes() {
-        let sizeText = app.tables.staticTexts["42"]
-
         tapBuyNow("Lamica")
 
-        waitForElementToAppearAndTap(sizeText)
+        waitForElementToAppearAndTap(app.tables.cells["size-cell-1"])
         tapConnectAndLogin()
         tapBuyNow()
         tapBackToShop()
@@ -47,21 +45,21 @@ class AtlasDemoUITests: XCTestCase {
     }
 
     func testDeleteAddress() {
-        let sizeText = app.tables.staticTexts["42"]
+        let sizeText = app.tables.staticTexts["42"] // TODO: change to accesibilityLabel
         tapBuyNow("Lamica")
         waitForElementToAppearAndTap(sizeText)
         tapConnectAndLogin()
         app.scrollViews.childrenMatchingType(.Any)
-            .element.childrenMatchingType(.Any).elementBoundByIndex(2).staticTexts["Erika Mustermann, Mollstr. 1 10178 Berlin"].tap()
+            .element.childrenMatchingType(.Any).elementBoundByIndex(2).staticTexts["Erika Mustermann, Mollstr. 1 10178 Berlin"].tap() // TODO: change to accesibilityLabel
         deleteAddresses()
-        app.navigationBars["Summary"].buttons["Cancel"].tap()
+        app.navigationBars["Summary"].buttons["Cancel"].tap() // TODO: change to accesibilityLabel
     }
 
     func testBuyProductWithSizesAndNavigatingBack() {
-        let summaryNavigationBar = app.navigationBars["Summary"]
-        let backButton = summaryNavigationBar.buttons["Back"]
-        let cancelButton = summaryNavigationBar.buttons["Cancel"]
-        let sizeText = app.tables.staticTexts["XS"]
+        let summaryNavigationBar = app.navigationBars["Summary"] // TODO: change to accesibilityLabel
+        let backButton = summaryNavigationBar.buttons["Back"] // TODO: change to accesibilityLabel
+        let cancelButton = summaryNavigationBar.buttons["Cancel"] // TODO: change to accesibilityLabel
+        let sizeText = app.tables.staticTexts["XS"] // TODO: change to accesibilityLabel
 
         tapBuyNow("Guess")
 
@@ -80,7 +78,7 @@ class AtlasDemoUITests: XCTestCase {
     }
 
     func testChangeShippingAddress() {
-        let sizeText = app.tables.staticTexts["42"]
+        let sizeText = app.tables.staticTexts["42"] // TODO: change to accesibilityLabel
 
         tapBuyNow("Lamica")
 
@@ -94,7 +92,7 @@ class AtlasDemoUITests: XCTestCase {
     }
 
     func testChangeBillingAddress() {
-        let sizeText = app.tables.staticTexts["42"]
+        let sizeText = app.tables.staticTexts["42"] // TODO: change to accesibilityLabel
 
         tapBuyNow("Lamica")
         waitForElementToAppearAndTap(sizeText)
@@ -103,75 +101,74 @@ class AtlasDemoUITests: XCTestCase {
         tapBackToSummaryButton()
         tapBuyNow()
         tapBackToShop()
-
     }
 
     func changeShippingAddress() {
         let tablesQuery = app.tables
 
         app.scrollViews.childrenMatchingType(.Any)
-            .element.childrenMatchingType(.Any).elementBoundByIndex(2).staticTexts["Erika Mustermann, Mollstr. 1 10178 Berlin"].tap()
-        tablesQuery.cells.containingType(.StaticText, identifier: "Jane").staticTexts["Mollstr. 1 10178 Berlin "].tap()
+            .element.childrenMatchingType(.Any).elementBoundByIndex(2).staticTexts["Erika Mustermann, Mollstr. 1 10178 Berlin"].tap() // TODO: change to accesibilityLabel
+        tablesQuery.cells.containingType(.StaticText, identifier: "Jane Doe").staticTexts["Mollstr. 1 10178 Berlin"].tap() // TODO: change to accesibilityLabel
     }
 
     func changeBillingAddress() {
         let tablesQuery = app.tables
 
         app.scrollViews.childrenMatchingType(.Any)
-            .element.childrenMatchingType(.Any).elementBoundByIndex(4).staticTexts["Erika Mustermann, Mollstr. 1 10178 Berlin"].tap()
-        tablesQuery.cells.containingType(.StaticText, identifier: "Jane").staticTexts["Mollstr. 1 10178 Berlin "].tap()
+            .element.childrenMatchingType(.Any).elementBoundByIndex(4).staticTexts["Erika Mustermann, Mollstr. 1 10178 Berlin"].tap() // TODO: change to accesibilityLabel
+        tablesQuery.cells.containingType(.StaticText, identifier: "Jane Doe").staticTexts["Mollstr. 1 10178 Berlin"].tap() // TODO: change to accesibilityLabel
 
     }
 
     private func deleteAddresses() {
-        let shippingAddressNavigationBar = app.navigationBars["Shipping Address"]
-        shippingAddressNavigationBar.buttons["Edit"].tap()
+        let shippingAddressNavigationBar = app.navigationBars["Shipping Address"] // TODO: change to accesibilityLabel
+        shippingAddressNavigationBar.buttons["Edit"].tap() // TODO: change to accesibilityLabel
         let tablesQuery = app.tables
 
-        tablesQuery.buttons["Delete Jane, Mollstr. 1 10178 Berlin"] .tap()
-        tablesQuery.buttons["Delete"] .tap()
+        tablesQuery.buttons["Delete Jane, Mollstr. 1 10178 Berlin"].tap() // TODO: change to accesibilityLabel
+        tablesQuery.buttons["Delete"].tap() // TODO: change to accesibilityLabel
 
-        tablesQuery.buttons["Delete John, Mollstr. 1 10178 Berlin"] .tap()
-        tablesQuery.buttons["Delete"] .tap()
-        app.navigationBars["Shipping Address"].buttons["Done"].tap()
-        shippingAddressNavigationBar.buttons["Summary"].tap()
+        tablesQuery.buttons["Delete John, Mollstr. 1 10178 Berlin"].tap() // TODO: change to accesibilityLabel
+        tablesQuery.buttons["Delete"].tap() // TODO: change to accesibilityLabel
+        app.navigationBars["Shipping Address"].buttons["Done"].tap() // TODO: change to accesibilityLabel
+        shippingAddressNavigationBar.buttons["Summary"].tap() // TODO: change to accesibilityLabel
 
     }
 
     private func tapConnectAndLogin() {
-        waitForElementToAppearAndTap(app.buttons["Checkout with Zalando"])
+        waitForElementToAppearAndTap(app.buttons["Checkout with Zalando"]) // TODO: change to accesibilityLabel
         fillInLogin()
         NSThread.sleepForTimeInterval(2)
     }
 
     private func tapBuyNow() {
-        waitForElementToAppearAndTap(app.buttons["Place order"])
+        waitForElementToAppearAndTap(app.buttons["Place order"]) // TODO: change to accesibilityLabel
     }
 
     private func tapBackToSummaryButton() {
-        waitForElementToAppearAndTap(app.buttons["Summary"])
+        waitForElementToAppearAndTap(app.buttons["Summary"]) // TODO: change to accesibilityLabel
     }
 
     private func tapBackToShop() {
-        waitForElementToAppearAndTap(app.buttons["Back to shop"])
+        waitForElementToAppearAndTap(app.buttons["Back to shop"]) // TODO: change to accesibilityLabel
     }
 
     private func fillInLogin() {
         NSThread.sleepForTimeInterval(2)
 
-        app.buttons["Login"].tap()
+        app.buttons["Login"].tap() // TODO: change to accesibilityLabel
     }
 
     private func tapBuyNow(identifier: String) {
         let cell = collectionView.cells.otherElements.containingType(.StaticText, identifier: identifier)
-        let buyNowButton = cell.buttons["BUY NOW"]
+        let buyNowButton = cell.buttons["BUY NOW"] // TODO: change to accesibilityLabel
         collectionView.scrollToElement(buyNowButton)
         NSThread.sleepForTimeInterval(0.5)
         waitForElementToAppearAndTap(buyNowButton)
     }
 
     private var navigationController: XCUIElementQuery {
-        return app.otherElements.containingType(.NavigationBar, identifier: "AtlasSDK Demo")
+        return app.otherElements.containingType(.NavigationBar, identifier: "AtlasSDK Demo") // TODO: change to accesibilityLabel
     }
 
     private var collectionView: XCUIElement {
