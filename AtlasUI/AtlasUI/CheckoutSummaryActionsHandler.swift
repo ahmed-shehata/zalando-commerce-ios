@@ -14,12 +14,11 @@ struct CheckoutSummaryActionsHandler {
 extension Checkout {
 
     func hasSameAddress(like checkoutViewModel: CheckoutViewModel) -> Bool {
-        if let billingAddress = checkoutViewModel.selectedBillingAddress,
-            shippingAddress = checkoutViewModel.selectedShippingAddress {
-                return shippingAddress == self.shippingAddress &&
-                billingAddress == self.billingAddress
+        guard let billingAddress = checkoutViewModel.selectedBillingAddress,
+            shippingAddress = checkoutViewModel.selectedShippingAddress else {
+                return false
         }
-        return false
+        return shippingAddress == self.shippingAddress && billingAddress == self.billingAddress
     }
 
 }
