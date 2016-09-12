@@ -32,7 +32,7 @@ class AtlasDemoUITests: XCTestCase {
 
         waitForElementToAppearAndTap(app.tables.cells["size-cell-1"])
         tapConnectAndLogin()
-        tapBuyNow()
+        tapPlaceOrder()
         tapBackToShop()
     }
 
@@ -40,7 +40,7 @@ class AtlasDemoUITests: XCTestCase {
         tapBuyNow("MICHAEL Michael Kors")
 
         tapConnectAndLogin()
-        tapBuyNow()
+        tapPlaceOrder()
         tapBackToShop()
     }
 
@@ -73,7 +73,7 @@ class AtlasDemoUITests: XCTestCase {
         waitForElementToAppearAndTap(sizeText)
 
         tapConnectAndLogin()
-        tapBuyNow()
+        tapPlaceOrder()
         tapBackToShop()
     }
 
@@ -86,7 +86,7 @@ class AtlasDemoUITests: XCTestCase {
         tapConnectAndLogin()
         changeShippingAddress()
         tapBackToSummaryButton()
-        tapBuyNow()
+        tapPlaceOrder()
         tapBackToShop()
 
     }
@@ -99,7 +99,7 @@ class AtlasDemoUITests: XCTestCase {
         tapConnectAndLogin()
         changeBillingAddress()
         tapBackToSummaryButton()
-        tapBuyNow()
+        tapPlaceOrder()
         tapBackToShop()
     }
 
@@ -138,10 +138,9 @@ class AtlasDemoUITests: XCTestCase {
     private func tapConnectAndLogin() {
         waitForElementToAppearAndTap(app.buttons["Checkout with Zalando"]) // TODO: change to accesibilityLabel
         fillInLogin()
-        NSThread.sleepForTimeInterval(2)
     }
 
-    private func tapBuyNow() {
+    private func tapPlaceOrder() {
         waitForElementToAppearAndTap(app.buttons["Place order"]) // TODO: change to accesibilityLabel
     }
 
@@ -154,14 +153,14 @@ class AtlasDemoUITests: XCTestCase {
     }
 
     private func fillInLogin() {
-        NSThread.sleepForTimeInterval(2)
+        NSThread.sleepForTimeInterval(1)
 
-        app.buttons["Login"].tap() // TODO: change to accesibilityLabel
+        app.buttons["Login"].tap()
     }
 
     private func tapBuyNow(identifier: String) {
         let cell = collectionView.cells.otherElements.containingType(.StaticText, identifier: identifier)
-        let buyNowButton = cell.buttons["BUY NOW"] // TODO: change to accesibilityLabel
+        let buyNowButton = cell.buttons["buy-now"]
         collectionView.scrollToElement(buyNowButton)
         NSThread.sleepForTimeInterval(0.5)
         waitForElementToAppearAndTap(buyNowButton)
