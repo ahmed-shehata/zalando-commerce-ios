@@ -4,14 +4,14 @@
 
 import UIKit
 
-struct CheckoutSummaryAddressActionViewModel {
+struct CheckoutSummaryAddressViewModel {
     let title: String
     let firstLineValue: String
     let secondLineValue: String?
     let showArrow: Bool
 }
 
-class CheckoutSummaryAddressActionRowStackView: UIStackView {
+class CheckoutSummaryAddressStackView: UIStackView {
 
     internal let titleLabel: UILabel = {
         let label = UILabel()
@@ -47,14 +47,14 @@ class CheckoutSummaryAddressActionRowStackView: UIStackView {
     }()
 
     internal let arrowImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "tableArrow", bundledWith: CheckoutSummaryAddressActionRowStackView.self))
+        let imageView = UIImageView(image: UIImage(named: "tableArrow", bundledWith: CheckoutSummaryAddressStackView.self))
         imageView.contentMode = .Center
         return imageView
     }()
 
 }
 
-extension CheckoutSummaryAddressActionRowStackView: UIBuilder {
+extension CheckoutSummaryAddressStackView: UIBuilder {
 
     func configureView() {
         addArrangedSubview(titleLabel)
@@ -71,9 +71,9 @@ extension CheckoutSummaryAddressActionRowStackView: UIBuilder {
 
 }
 
-extension CheckoutSummaryAddressActionRowStackView: UIDataBuilder {
+extension CheckoutSummaryAddressStackView: UIDataBuilder {
 
-    typealias T = CheckoutSummaryAddressActionViewModel
+    typealias T = CheckoutSummaryAddressViewModel
 
     func configureData(viewModel: T) {
         titleLabel.text = viewModel.title
