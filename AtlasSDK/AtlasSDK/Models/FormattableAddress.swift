@@ -1,30 +1,31 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+// Copyright © 2016 Zalando SE. All rights reserved.
 //
 
 import Foundation
 import Contacts
 
-public protocol Addressable {
+public protocol FormattableAddress: StreetAddress {
 
-    var id: String? { get }
     var gender: Gender { get }
     var firstName: String { get }
     var lastName: String { get }
-    var street: String? { get }
-    var additional: String? { get }
+
     var zip: String { get }
     var city: String { get }
     var countryCode: String { get }
 
 }
 
-public func == (lhs: Addressable, rhs: Addressable) -> Bool {
+public protocol EquatableAddress: FormattableAddress {
+    var id: String { get }
+}
+
+public func == (lhs: EquatableAddress, rhs: EquatableAddress) -> Bool {
     return lhs.id == rhs.id
 }
 
-extension Addressable {
-
+extension FormattableAddress {
     public var fullContactPostalAddress: String {
         let parts = [formattedContact, formattedPostalAddress]
         return parts.flatMap({ $0 }).joinWithSeparator(", ")
@@ -48,15 +49,11 @@ extension Addressable {
         postalAddress.postalCode = self.zip
         postalAddress.ISOCountryCode = self.countryCode
 
-        if let street = self.street {
-            postalAddress.street = street
-        }
-
-        if let additional = self.additional {
-            postalAddress.state = additional
-        }
+        postalAddress.street = addressLine1
+        postalAddress.state = addressLine2
 
         return postalFormatter.stringFromPostalAddress(postalAddress)
     }
 
 }
+

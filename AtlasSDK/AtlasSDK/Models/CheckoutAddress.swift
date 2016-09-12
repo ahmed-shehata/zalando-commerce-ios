@@ -1,12 +1,11 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+// Copyright © 2016 Zalando SE. All rights reserved.
 //
 
 import Foundation
 
-public struct ShippingAddress: Addressable {
-
-    public let id: String?
+public struct CheckoutAddress: EquatableAddress {
+    public let id: String
     public let gender: Gender
     public let firstName: String
     public let lastName: String
@@ -15,13 +14,14 @@ public struct ShippingAddress: Addressable {
     public let zip: String
     public let city: String
     public let countryCode: String
-    public let pickupPoint: PickupPoint?
 
+    public let pickupPoint: PickupPoint?
 }
 
-extension ShippingAddress: JSONInitializable {
+extension CheckoutAddress: JSONInitializable {
 
     private struct Keys {
+
         static let id = "id"
         static let gender = "gender"
         static let firstName = "first_name"
@@ -36,17 +36,17 @@ extension ShippingAddress: JSONInitializable {
 
     init?(json: JSON) {
         guard let
-        genderRaw = json[Keys.gender].string,
+        id = json[Keys.id].string,
+            genderRaw = json[Keys.gender].string,
             gender = Gender(rawValue: genderRaw),
             firstName = json[Keys.firstName].string,
             lastName = json[Keys.lastName].string,
             zip = json[Keys.zip].string,
             city = json[Keys.city].string,
-            countryCode = json[Keys.countryCode].string else { return nil }
+            countryCode = json[Keys.countryCode].string
+        else { return nil }
 
-        let pickupPoint = PickupPoint(json: json[Keys.pickupPoint])
-
-        self.init(id: json[Keys.id].string,
+        self.init(id: id,
             gender: gender,
             firstName: firstName,
             lastName: lastName,
@@ -55,14 +55,12 @@ extension ShippingAddress: JSONInitializable {
             zip: zip,
             city: city,
             countryCode: countryCode,
-            pickupPoint: pickupPoint)
+            pickupPoint: PickupPoint(json: json[Keys.pickupPoint]))
     }
 }
-
-extension ShippingAddress {
-
-    public init?(address: Addressable) {
-        guard let address = address as? Address else { return nil }
+extension CheckoutAddress {
+    public init?(address: FormattableAddress) {
+        guard let address = address as? UserAddress else { return nil }
         self.init(id: address.id,
             gender: address.gender,
             firstName: address.firstName,
@@ -74,5 +72,4 @@ extension ShippingAddress {
             countryCode: address.countryCode,
             pickupPoint: address.pickupPoint)
     }
-
 }

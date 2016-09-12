@@ -13,8 +13,8 @@ public struct Checkout {
     public let delivery: Delivery
     public let payment: Payment
 
-    public let billingAddress: BillingAddress
-    public let shippingAddress: ShippingAddress
+    public let billingAddress: CheckoutAddress
+    public let shippingAddress: CheckoutAddress
 
 }
 
@@ -47,8 +47,8 @@ extension Checkout: JSONInitializable {
             cartId = json[Keys.cartId].string,
             payment = Payment(json: json[Keys.payment]),
             delivery = Delivery(json: json[Keys.delivery]),
-            billingAddress = BillingAddress(json: json[Keys.billingAddress]),
-            shippingAddress = ShippingAddress(json: json[Keys.shippingAddress])
+            billingAddress = CheckoutAddress(json: json[Keys.billingAddress]),
+            shippingAddress = CheckoutAddress(json: json[Keys.shippingAddress])
         else { return nil }
         self.init(id: id,
             customerNumber: customerNumber,

@@ -42,7 +42,10 @@ extension CheckoutSummaryFooterStackView: UIDataBuilder {
     func configureData(viewModel: T) {
         footerLabel.text = viewModel.loc("CheckoutSummaryViewController.terms")
         footerLabel.hidden = !viewModel.viewState.showFooterLabel
-        submitButton.setTitle(viewModel.loc(viewModel.checkoutViewModel.submitButtonTitle), forState: .Normal)
+
+        let isPaypal = viewModel.checkoutViewModel.checkout?.payment.selected?.isPaypal() ?? false
+
+        submitButton.setTitle(viewModel.loc(viewModel.viewState.submitButtonTitle(isPaypal)), forState: .Normal)
         submitButton.backgroundColor = viewModel.viewState.submitButtonBackgroundColor
     }
 
