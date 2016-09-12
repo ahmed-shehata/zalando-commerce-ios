@@ -50,6 +50,14 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
         setupViewState()
         setupActions()
     }
+
+    internal func showLoader() {
+        loaderView.show()
+    }
+
+    internal func hideLoader() {
+        loaderView.hide()
+    }
 }
 
 extension CheckoutSummaryViewController {

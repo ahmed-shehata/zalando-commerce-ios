@@ -29,7 +29,7 @@ extension CheckoutSummaryActionsHandler {
     internal func handleBuyAction() {
         guard let checkout = viewController.checkoutViewModel.checkout else { return }
 
-        viewController.loaderView.show()
+        viewController.showLoader()
         if checkout.hasSameAddress(like: viewController.checkoutViewModel) {
             createOrder(checkout.id)
             return
@@ -41,7 +41,7 @@ extension CheckoutSummaryActionsHandler {
             switch result {
             case .failure(let error):
                 self.viewController.userMessage.show(error: error)
-                self.viewController.loaderView.hide()
+                self.viewController.hideLoader()
             case .success(let checkout):
                 self.createOrder(checkout.id)
             }
@@ -53,10 +53,10 @@ extension CheckoutSummaryActionsHandler {
             switch result {
             case .failure(let error):
                 self.viewController.userMessage.show(error: error)
-                self.viewController.loaderView.hide()
+                self.viewController.hideLoader()
             case .success (let order):
                 self.handleOrderConfirmation(order)
-                self.viewController.loaderView.hide()
+                self.viewController.hideLoader()
             }
         }
     }
@@ -79,10 +79,10 @@ extension CheckoutSummaryActionsHandler {
     }
 
     private func generateCheckout(customer: Customer) {
-        viewController.loaderView.show()
+        viewController.showLoader()
         viewController.checkout.updateCheckoutViewModel(viewController.checkoutViewModel.selectedArticleUnit,
             checkoutViewModel: viewController.checkoutViewModel) { result in
-                self.viewController.loaderView.hide()
+                self.viewController.hideLoader()
                 switch result {
                 case .failure(let error):
                     self.viewController.dismissViewControllerAnimated(true) {
@@ -110,9 +110,7 @@ extension CheckoutSummaryActionsHandler {
             case .success:
                 self.loadCustomerData()
             case .failure(let error):
-                if let error = error {
-                    self.viewController.userMessage.show(error: error)
-                }
+                self.viewController.userMessage.show(error: error)
             }
         }
         viewController.showViewController(paymentSelectionViewController, sender: viewController)
@@ -146,9 +144,7 @@ extension CheckoutSummaryActionsHandler {
             case .success:
                 self.viewController.viewState = .OrderPlaced
             case .failure(let error):
-                if let error = error {
-                    self.viewController.userMessage.show(error: error)
-                }
+                self.viewController.userMessage.show(error: error)
             }
         }
         viewController.showViewController(paymentSelectionViewController, sender: viewController)
@@ -166,7 +162,7 @@ extension CheckoutSummaryActionsHandler {
             case AddressType.shipping:
                 viewController.checkoutViewModel.selectedShippingAddress = address
             }
-            viewController.loaderView.hide()
+            viewController.hideLoader()
             viewController.rootStackView.configureData(viewController)
             viewController.refreshViewData()
 
@@ -174,10 +170,10 @@ extension CheckoutSummaryActionsHandler {
                 cartId = viewController.checkoutViewModel.cartId,
                 readyToCreateCheckout = viewController.checkoutViewModel.isReadyToCreateCheckout where readyToCreateCheckout == true
             else { return }
-            viewController.loaderView.show()
+            viewController.showLoader()
 
             viewController.createCheckout(cartId) { result in
-                self.viewController.loaderView.hide()
+                self.viewController.hideLoader()
                 switch result {
 
                 case .failure(let error):

@@ -3,13 +3,9 @@
 //
 
 import UIKit
+import AtlasSDK
 
-enum Result {
-    case success
-    case failure(error: NSError?)
-}
-
-typealias PaymentCompletion = Result -> Void
+typealias PaymentCompletion = AtlasResult<Bool> -> Void
 
 final class PaymentSelectionViewController: UIViewController, UIWebViewDelegate {
 
@@ -21,6 +17,7 @@ final class PaymentSelectionViewController: UIViewController, UIWebViewDelegate 
         let webView = UIWebView()
         webView.backgroundColor = .whiteColor()
         webView.delegate = self
+        webView.scalesPageToFit = true
         webView.translatesAutoresizingMaskIntoConstraints = false
         return webView
     }()
@@ -44,20 +41,20 @@ final class PaymentSelectionViewController: UIViewController, UIWebViewDelegate 
 
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         guard let success = request.URL?.absoluteString.hasPrefix(successURL) where success else { return true }
-        dismissViewController(.success)
+        dismissViewController(.success(true))
         return false
     }
 
     func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
-        guard !errorBecuaseRequestCancelled(error) else { return }
-        dismissViewController(.failure(error: error), animated: true)
+        guard let error = error where !errorBecuaseRequestCancelled(error) else { return }
+        dismissViewController(.failure(error), animated: true)
     }
 
-    private func errorBecuaseRequestCancelled(error: NSError?) -> Bool {
-        return error?.domain == "WebKitErrorDomain"
+    private func errorBecuaseRequestCancelled(error: NSError) -> Bool {
+        return error.domain == "WebKitErrorDomain"
     }
 
-    private func dismissViewController(result: Result, animated: Bool = true) {
+    private func dismissViewController(result: AtlasResult<Bool>, animated: Bool = true) {
         navigationController?.popViewControllerAnimated(animated)
         paymentCompletion?(result)
     }
