@@ -45,12 +45,12 @@ class AtlasDemoUITests: XCTestCase {
     }
 
     func testDeleteAddress() {
-        let sizeText = app.tables.staticTexts["42"] // TODO: change to accesibilityLabel
+        let size = app.cells["size-cell-1"]
         tapBuyNow("Lamica")
-        waitForElementToAppearAndTap(sizeText)
+        waitForElementToAppearAndTap(size)
         tapConnectAndLogin()
         app.scrollViews.childrenMatchingType(.Any)
-            .element.childrenMatchingType(.Any).elementBoundByIndex(2).staticTexts["Erika Mustermann, Mollstr. 1 10178 Berlin"].tap() // TODO: change to accesibilityLabel
+            .element.childrenMatchingType(.Any).elementBoundByIndex(2).tap()
         deleteAddresses()
         app.navigationBars["Summary"].buttons["Cancel"].tap() // TODO: change to accesibilityLabel
     }
@@ -78,11 +78,11 @@ class AtlasDemoUITests: XCTestCase {
     }
 
     func testChangeShippingAddress() {
-        let sizeText = app.tables.staticTexts["42"] // TODO: change to accesibilityLabel
+        let size = app.cells["size-cell-1"]
 
         tapBuyNow("Lamica")
 
-        waitForElementToAppearAndTap(sizeText)
+        waitForElementToAppearAndTap(size)
         tapConnectAndLogin()
         changeShippingAddress()
         tapBackToSummaryButton()
@@ -92,10 +92,10 @@ class AtlasDemoUITests: XCTestCase {
     }
 
     func testChangeBillingAddress() {
-        let sizeText = app.tables.staticTexts["42"] // TODO: change to accesibilityLabel
+        let size = app.cells["size-cell-1"]
 
         tapBuyNow("Lamica")
-        waitForElementToAppearAndTap(sizeText)
+        waitForElementToAppearAndTap(size)
         tapConnectAndLogin()
         changeBillingAddress()
         tapBackToSummaryButton()
@@ -104,20 +104,13 @@ class AtlasDemoUITests: XCTestCase {
     }
 
     func changeShippingAddress() {
-        let tablesQuery = app.tables
-
-        app.scrollViews.childrenMatchingType(.Any)
-            .element.childrenMatchingType(.Any).elementBoundByIndex(2).staticTexts["Erika Mustermann, Mollstr. 1 10178 Berlin"].tap() // TODO: change to accesibilityLabel
-        tablesQuery.cells.containingType(.StaticText, identifier: "Jane Doe").staticTexts["Mollstr. 1 10178 Berlin"].tap() // TODO: change to accesibilityLabel
+        app.otherElements["shipping-stack-view"].tap()
+        app.cells["address-selection-row-1"].tap()
     }
 
     func changeBillingAddress() {
-        let tablesQuery = app.tables
-
-        app.scrollViews.childrenMatchingType(.Any)
-            .element.childrenMatchingType(.Any).elementBoundByIndex(4).staticTexts["Erika Mustermann, Mollstr. 1 10178 Berlin"].tap() // TODO: change to accesibilityLabel
-        tablesQuery.cells.containingType(.StaticText, identifier: "Jane Doe").staticTexts["Mollstr. 1 10178 Berlin"].tap() // TODO: change to accesibilityLabel
-
+        app.otherElements["billing-stack-view"].tap()
+        app.cells["address-selection-row-1"].tap()
     }
 
     private func deleteAddresses() {
@@ -125,18 +118,17 @@ class AtlasDemoUITests: XCTestCase {
         shippingAddressNavigationBar.buttons["Edit"].tap() // TODO: change to accesibilityLabel
         let tablesQuery = app.tables
 
-        tablesQuery.buttons["Delete Jane, Mollstr. 1 10178 Berlin"].tap() // TODO: change to accesibilityLabel
-        tablesQuery.buttons["Delete"].tap() // TODO: change to accesibilityLabel
+        tablesQuery.buttons.elementBoundByIndex(1).tap()
+        tablesQuery.buttons["Delete"].tap()
 
-        tablesQuery.buttons["Delete John, Mollstr. 1 10178 Berlin"].tap() // TODO: change to accesibilityLabel
-        tablesQuery.buttons["Delete"].tap() // TODO: change to accesibilityLabel
-        app.navigationBars["Shipping Address"].buttons["Done"].tap() // TODO: change to accesibilityLabel
-        shippingAddressNavigationBar.buttons["Summary"].tap() // TODO: change to accesibilityLabel
-
+        tablesQuery.buttons.elementBoundByIndex(1).tap()
+        tablesQuery.buttons["Delete"].tap()
+        app.navigationBars["Shipping Address"].buttons["Done"].tap()
+        shippingAddressNavigationBar.buttons["Summary"].tap()
     }
 
     private func tapConnectAndLogin() {
-        waitForElementToAppearAndTap(app.buttons["Checkout with Zalando"]) // TODO: change to accesibilityLabel
+        waitForElementToAppearAndTap(app.buttons["checkout-with-zalando-button"])
         fillInLogin()
         NSThread.sleepForTimeInterval(2)
     }
@@ -161,7 +153,7 @@ class AtlasDemoUITests: XCTestCase {
 
     private func tapBuyNow(identifier: String) {
         let cell = collectionView.cells.otherElements.containingType(.StaticText, identifier: identifier)
-        let buyNowButton = cell.buttons["BUY NOW"] // TODO: change to accesibilityLabel
+        let buyNowButton = cell.buttons.elementBoundByIndex(0)
         collectionView.scrollToElement(buyNowButton)
         NSThread.sleepForTimeInterval(0.5)
         waitForElementToAppearAndTap(buyNowButton)
