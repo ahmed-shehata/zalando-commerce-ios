@@ -6,8 +6,7 @@ import UIKit
 
 struct CheckoutSummaryAddressViewModel {
     let title: String
-    let firstLineValue: String
-    let secondLineValue: String?
+    let addressLines: [String]
     let showArrow: Bool
 }
 
@@ -77,8 +76,8 @@ extension CheckoutSummaryAddressStackView: UIDataBuilder {
 
     func configureData(viewModel: T) {
         titleLabel.text = viewModel.title
-        firstLineValueLabel.text = viewModel.firstLineValue
-        secondLineValueLabel.text = viewModel.secondLineValue
+        firstLineValueLabel.text = viewModel.addressLines[0].trimmed
+        secondLineValueLabel.text = viewModel.addressLines.count > 1 ? viewModel.addressLines[1].trimmed : nil
         arrowImageView.alpha = viewModel.showArrow ? 1 : 0
     }
 

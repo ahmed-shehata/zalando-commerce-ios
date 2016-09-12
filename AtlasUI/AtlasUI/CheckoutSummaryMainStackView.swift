@@ -128,20 +128,15 @@ extension CheckoutSummaryMainStackView: UIDataBuilder {
         priceStackView.configureData(viewModel)
         priceStackView.hidden = !viewModel.viewState.showPrice
 
-        let shippingAddress = viewModel.checkoutViewModel.shippingAddress(localizedWith: viewModel)
-        let billingAddress = viewModel.checkoutViewModel.shippingAddress(localizedWith: viewModel)
-
         shippingAddressStackView.configureData(CheckoutSummaryAddressViewModel(
             title: viewModel.loc("Address.Shipping"),
-            firstLineValue: shippingAddress[0].trimmed,
-            secondLineValue: shippingAddress.count > 1 ? shippingAddress[1].trimmed : nil,
+            addressLines: viewModel.checkoutViewModel.shippingAddress(localizedWith: viewModel),
             showArrow: viewModel.viewState.showDetailArrow)
         )
 
         billingAddressStackView.configureData(CheckoutSummaryAddressViewModel(
             title: viewModel.loc("Address.Billing"),
-            firstLineValue: billingAddress[0].trimmed,
-            secondLineValue: billingAddress.count > 1 ? billingAddress[1].trimmed : nil,
+            addressLines: viewModel.checkoutViewModel.billingAddress(localizedWith: viewModel),
             showArrow: viewModel.viewState.showDetailArrow)
         )
 
