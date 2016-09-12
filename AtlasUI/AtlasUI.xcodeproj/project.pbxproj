@@ -51,6 +51,9 @@
 		DB2470DB4F51D75862D73B20254CB0A7 /* CheckoutSummaryActionsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4E23134230FC0873B95CF6C403C333 /* CheckoutSummaryActionsHandler.swift */; };
 		DE4482A9091E62348223761D4C58D008 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA19C45C79A94472331D134BC9895CA /* UIView.swift */; };
 		E9C19A561D82ABA5001898FF /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C19A551D82ABA5001898FF /* Gender.swift */; };
+		E9C9F1CA1D86CC2900CEBA80 /* PickerKeyboardInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C9F1C91D86CC2800CEBA80 /* PickerKeyboardInputView.swift */; };
+		E9C9F1CC1D86FDB600CEBA80 /* TextFieldInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C9F1CB1D86FDB600CEBA80 /* TextFieldInputViewModel.swift */; };
+		E9C9F1CE1D87129A00CEBA80 /* ActionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C9F1CD1D87129A00CEBA80 /* ActionTextField.swift */; };
 		E9E00C331D81BD100052FD83 /* KeyboardScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E00C311D81BD100052FD83 /* KeyboardScrollView.swift */; };
 		E9E00C341D81BD100052FD83 /* TextFieldInputStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E00C321D81BD100052FD83 /* TextFieldInputStackView.swift */; };
 		E9E00C391D81BD420052FD83 /* EditAddressStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E00C351D81BD420052FD83 /* EditAddressStackView.swift */; };
@@ -140,6 +143,9 @@
 		D4F1679B8BB8A951B60D19AD947CD5BA /* CGRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
 		DB583604F0F19D75AFE9FB25FD4D89E1 /* CheckoutPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutPresentationController.swift; sourceTree = "<group>"; };
 		E9C19A551D82ABA5001898FF /* Gender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
+		E9C9F1C91D86CC2800CEBA80 /* PickerKeyboardInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerKeyboardInputView.swift; sourceTree = "<group>"; };
+		E9C9F1CB1D86FDB600CEBA80 /* TextFieldInputViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldInputViewModel.swift; sourceTree = "<group>"; };
+		E9C9F1CD1D87129A00CEBA80 /* ActionTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionTextField.swift; sourceTree = "<group>"; };
 		E9E00C311D81BD100052FD83 /* KeyboardScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardScrollView.swift; sourceTree = "<group>"; };
 		E9E00C321D81BD100052FD83 /* TextFieldInputStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldInputStackView.swift; sourceTree = "<group>"; };
 		E9E00C351D81BD420052FD83 /* EditAddressStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAddressStackView.swift; sourceTree = "<group>"; };
@@ -335,6 +341,9 @@
 				68E9C6572D2F4F6481B6389BDF69F18B /* LoaderView.swift */,
 				3F015820E6D686C7BA3004F60826859A /* RoundedViews.swift */,
 				E9E00C321D81BD100052FD83 /* TextFieldInputStackView.swift */,
+				E9C9F1CD1D87129A00CEBA80 /* ActionTextField.swift */,
+				E9C9F1CB1D86FDB600CEBA80 /* TextFieldInputViewModel.swift */,
+				E9C9F1C91D86CC2800CEBA80 /* PickerKeyboardInputView.swift */,
 			);
 			name = "Generic Views";
 			sourceTree = "<group>";
@@ -540,6 +549,7 @@
 				8F555E1D55F47DFE66BD5CF593E6C6DE /* AddressListTableViewDelegate.swift in Sources */,
 				5A6C401EC4AC8D133366523A81A14C63 /* AddressPickerViewController.swift in Sources */,
 				271C74EFD455C9953DB58ED7A2B107CE /* AddressRowViewCell.swift in Sources */,
+				E9C9F1CC1D86FDB600CEBA80 /* TextFieldInputViewModel.swift in Sources */,
 				CB5E9906914C3BF8E9E5DA01DD7F16F7 /* Async.swift in Sources */,
 				10AE2E191C6E6A0E3B8041DD7EC4452F /* AtlasCheckout.swift in Sources */,
 				F7E648B7FC1C50B6731E832353AF2084 /* BorderView.swift in Sources */,
@@ -575,12 +585,14 @@
 				BC1ECCD35BAA9A66EA505B1C454025E3 /* UIBuilder.swift in Sources */,
 				79175AD49456E48DC6B393EB6F62053A /* UIColor.swift in Sources */,
 				170D032BE739B3A96834CDAF3CA1D22C /* UIImage.swift in Sources */,
+				E9C9F1CE1D87129A00CEBA80 /* ActionTextField.swift in Sources */,
 				E9E00C3C1D81BD420052FD83 /* EditAddressViewModel.swift in Sources */,
 				E9E00C3B1D81BD420052FD83 /* EditAddressViewController.swift in Sources */,
 				4434BCFA43868F4DBFCFF8980581F9AC /* UIImageView.swift in Sources */,
 				FE2A3356031A3EE41940E824A2E6E1D3 /* UIStackView.swift in Sources */,
 				F3F62025EFDB47B5637DC3C928D69264 /* UITableView.swift in Sources */,
 				DE4482A9091E62348223761D4C58D008 /* UIView.swift in Sources */,
+				E9C9F1CA1D86CC2900CEBA80 /* PickerKeyboardInputView.swift in Sources */,
 				8EB96C51E439F0E511A696F28FE216B1 /* UserMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

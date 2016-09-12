@@ -73,4 +73,27 @@ enum EditAddressField {
         case .Country: viewModel.countryCode = value
         }
     }
+
+    func isActive() -> Bool {
+        switch self {
+        case .Country: return false
+        default: return true
+        }
+    }
+
+    func returnKeyDismissKeyboard() -> Bool {
+        switch self {
+        case .City, .Country: return true
+        default: return false
+        }
+    }
+
+    func customView(viewModel: EditAddressViewModel, localizer: LocalizerProviderType, completion: TextFieldChangedHandler) -> UIView? {
+        switch self {
+        case .Title:
+            return PickerKeyboardInputView(pickerData: viewModel.titles(localizer), completion: completion)
+        default:
+            return nil
+        }
+    }
 }

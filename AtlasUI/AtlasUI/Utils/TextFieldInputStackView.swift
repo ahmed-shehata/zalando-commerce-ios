@@ -4,29 +4,6 @@
 
 import UIKit
 
-typealias TextFieldInputValueChangedHandler = String? -> Void
-
-struct TextFieldInputViewModel {
-    let title: String
-    let value: String?
-    let error: String?
-    let nextTextFieldInput: TextFieldInputStackView?
-    let valueChangedHandler: TextFieldInputValueChangedHandler?
-
-    init (title: String,
-          value: String? = nil,
-          error: String? = nil,
-          nextTextFieldInput: TextFieldInputStackView? = nil,
-          valueChangedHandler: TextFieldInputValueChangedHandler? = nil) {
-
-        self.title = title
-        self.value = value
-        self.error = error
-        self.nextTextFieldInput = nextTextFieldInput
-        self.valueChangedHandler = valueChangedHandler
-    }
-}
-
 class TextFieldInputStackView: UIStackView {
 
     internal let titleLabel: UILabel = {
@@ -38,8 +15,8 @@ class TextFieldInputStackView: UIStackView {
         return label
     }()
 
-    internal let textField: UITextField = {
-        let textField = UITextField()
+    internal let textField: ActionTextField = {
+        let textField = ActionTextField()
         textField.font = .systemFontOfSize(15)
         textField.textColor = UIColor(hex: 0x333333)
         return textField
@@ -61,7 +38,7 @@ class TextFieldInputStackView: UIStackView {
     }()
 
     private weak var nextTextField: TextFieldInputStackView?
-    private var valueChangedHandler: TextFieldInputValueChangedHandler?
+    private var valueChangedHandler: TextFieldChangedHandler?
 
 }
 
@@ -106,6 +83,13 @@ extension TextFieldInputStackView: UIDataBuilder {
         textField.text = viewModel.value
         textField.placeholder = viewModel.title
         textField.returnKeyType = nextTextField == nil ? .Default : .Next
+        textField.userInteractionEnabled = viewModel.isActive
+        textField.inputView = viewModel.customInputView
+        if viewModel.customInputView != nil {
+            textField.tintColor = .clearColor()
+            textField.canCopy = false
+            textField.canPaste = false
+        }
 
         errorLabel.text = viewModel.error ?? " "
         valueChangedHandler = viewModel.valueChangedHandler

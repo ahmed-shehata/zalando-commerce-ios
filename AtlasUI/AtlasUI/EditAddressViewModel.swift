@@ -43,11 +43,15 @@ class EditAddressViewModel {
         isDefaultBilling = userAddress.isDefaultBilling
         isDefaultShipping = userAddress.isDefaultShipping
     }
+
+    internal func titles(localizer: LocalizerProviderType) -> [String] {
+        return [Gender.male.title(localizer), Gender.female.title(localizer)]
+    }
 }
 
 extension UserAddress {
 
-    init? (addressViewModel: EditAddressViewModel) {
+    internal init? (addressViewModel: EditAddressViewModel) {
 
         guard let
             id = addressViewModel.id,
@@ -78,7 +82,7 @@ extension UserAddress {
 
 extension PickupPoint {
 
-    init? (addressViewModel: EditAddressViewModel) {
+    internal init? (addressViewModel: EditAddressViewModel) {
 
         guard let
             pickupPointName = addressViewModel.pickupPointName,
