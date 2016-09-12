@@ -1,5 +1,5 @@
 //
-// Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
 import Foundation
@@ -56,4 +56,3 @@ extension FormattableAddress {
     }
 
 }
-
