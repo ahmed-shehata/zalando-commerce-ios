@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import AtlasSDK
 
 enum EditAddressType {
     case NormalAddress
@@ -45,16 +46,31 @@ enum EditAddressField {
 
     func value(viewModel: EditAddressViewModel, localizer: LocalizerProviderType) -> String? {
         switch self {
-        case .Title: return viewModel.gender?.addressFormTitle(localizer)
+        case .Title: return viewModel.gender?.title(localizer)
         case .FirstName: return viewModel.firstName
         case .LastName: return viewModel.lastName
         case .Street: return viewModel.street
         case .Additional: return viewModel.additional
-        case .Packstation: return viewModel.pickupPoint?.name
-        case .MemberID: return viewModel.pickupPoint?.memberId
+        case .Packstation: return viewModel.pickupPointName
+        case .MemberID: return viewModel.pickupPointMemberId
         case .Zipcode: return viewModel.zip
         case .City: return viewModel.city
         case .Country: return viewModel.countryCode
+        }
+    }
+
+    func updateModel(viewModel: EditAddressViewModel, withValue value: String?, localizer: LocalizerProviderType) {
+        switch self {
+        case .Title: viewModel.gender = Gender(localizedGenderText: value, localizer: localizer)
+        case .FirstName: viewModel.firstName = value
+        case .LastName: viewModel.lastName = value
+        case .Street: viewModel.street = value
+        case .Additional: viewModel.additional = value
+        case .Packstation: viewModel.pickupPointName = value
+        case .MemberID: viewModel.pickupPointMemberId = value
+        case .Zipcode: viewModel.zip = value
+        case .City: viewModel.city = value
+        case .Country: viewModel.countryCode = value
         }
     }
 }

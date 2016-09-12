@@ -21,7 +21,8 @@ class EditAddressViewModel {
     var zip: String?
     var city: String?
     var countryCode: String?
-    var pickupPoint: PickupPoint?
+    var pickupPointName: String?
+    var pickupPointMemberId: String?
     var isDefaultBilling: Bool = false
     var isDefaultShipping: Bool = false
 
@@ -37,7 +38,8 @@ class EditAddressViewModel {
         zip = userAddress.zip
         city = userAddress.city
         countryCode = userAddress.countryCode
-        pickupPoint = userAddress.pickupPoint
+        pickupPointName = userAddress.pickupPoint?.name
+        pickupPointMemberId = userAddress.pickupPoint?.memberId
         isDefaultBilling = userAddress.isDefaultBilling
         isDefaultShipping = userAddress.isDefaultShipping
     }
@@ -67,9 +69,24 @@ extension UserAddress {
         self.zip = zip
         self.city = city
         self.countryCode = countryCode
-        self.pickupPoint = addressViewModel.pickupPoint
+        self.pickupPoint = PickupPoint(addressViewModel: addressViewModel)
         self.isDefaultBilling = addressViewModel.isDefaultBilling
         self.isDefaultShipping = addressViewModel.isDefaultShipping
+    }
+
+}
+
+extension PickupPoint {
+
+    init? (addressViewModel: EditAddressViewModel) {
+
+        guard let
+            pickupPointName = addressViewModel.pickupPointName,
+            pickupPointMemberId = addressViewModel.pickupPointMemberId else { return nil }
+
+        self.id = "" // TODO: May be Id is optional? ... or another model?
+        self.name = pickupPointName
+        self.memberId = pickupPointMemberId
     }
 
 }

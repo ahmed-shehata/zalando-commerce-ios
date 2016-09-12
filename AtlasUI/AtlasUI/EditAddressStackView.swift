@@ -38,7 +38,11 @@ extension EditAddressStackView: UIDataBuilder {
             let title = fieldType.title(checkoutProviderType)
             let value = fieldType.value(viewModel, localizer: checkoutProviderType)
             let nextTextField: TextFieldInputStackView? = textFields.count > idx+1 ? textFields[idx+1] : nil
-            let viewModel = TextFieldInputViewModel(title: title, value: value, nextTextFieldInput: nextTextField)
+            let valueChangedHandler = { fieldType.updateModel(viewModel, withValue: $0, localizer: self.checkoutProviderType) }
+            let viewModel = TextFieldInputViewModel(title: title,
+                                                    value: value,
+                                                    nextTextFieldInput: nextTextField,
+                                                    valueChangedHandler: valueChangedHandler)
             textField.configureData(viewModel)
         }
     }

@@ -7,10 +7,19 @@ import AtlasSDK
 
 extension Gender {
 
-    func addressFormTitle(localizer: LocalizerProviderType) -> String {
+    func title(localizer: LocalizerProviderType) -> String {
         switch self {
         case .male: return localizer.loc("Address.edit.gender.male")
         case .female: return localizer.loc("Address.edit.gender.female")
+        }
+    }
+
+    init?(localizedGenderText: String?, localizer: LocalizerProviderType) {
+        guard let text = localizedGenderText else { return nil }
+        switch text {
+        case Gender.male.title(localizer): self = .male
+        case Gender.female.title(localizer): self = .female
+        default: return nil
         }
     }
 

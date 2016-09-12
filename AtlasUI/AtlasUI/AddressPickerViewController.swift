@@ -63,6 +63,7 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
     dynamic private func showAddAddress() {
         let address: UserAddress? = !addresses.isEmpty ? addresses[0] : nil
         let viewController = EditAddressViewController(addressType: .NormalAddress, checkout: checkout, address: address)
+        viewController.completion = { print($0) }
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.modalPresentationStyle = .OverCurrentContext
         self.navigationController?.showViewController(navigationController, sender: nil)

@@ -4,17 +4,26 @@
 
 import UIKit
 
+typealias TextFieldInputValueChangedHandler = String? -> Void
+
 struct TextFieldInputViewModel {
     let title: String
     let value: String?
     let error: String?
     let nextTextFieldInput: TextFieldInputStackView?
+    let valueChangedHandler: TextFieldInputValueChangedHandler?
 
-    init (title: String, value: String? = nil, error: String? = nil, nextTextFieldInput: TextFieldInputStackView? = nil) {
+    init (title: String,
+          value: String? = nil,
+          error: String? = nil,
+          nextTextFieldInput: TextFieldInputStackView? = nil,
+          valueChangedHandler: TextFieldInputValueChangedHandler? = nil) {
+
         self.title = title
         self.value = value
         self.error = error
         self.nextTextFieldInput = nextTextFieldInput
+        self.valueChangedHandler = valueChangedHandler
     }
 }
 
@@ -51,7 +60,8 @@ class TextFieldInputStackView: UIStackView {
         return label
     }()
 
-    weak var nextTextField: TextFieldInputStackView?
+    private weak var nextTextField: TextFieldInputStackView?
+    private var valueChangedHandler: TextFieldInputValueChangedHandler?
 
 }
 
@@ -98,6 +108,7 @@ extension TextFieldInputStackView: UIDataBuilder {
         textField.returnKeyType = nextTextField == nil ? .Default : .Next
 
         errorLabel.text = viewModel.error ?? " "
+        valueChangedHandler = viewModel.valueChangedHandler
 
         configureTitleLabel()
     }
@@ -114,6 +125,7 @@ extension TextFieldInputStackView: UITextFieldDelegate {
 
     func textFieldValueChanged() {
         configureTitleLabel()
+        valueChangedHandler?(textField.text)
     }
 
     func textFieldDidBeginEditing(textField: UITextField) {
