@@ -39,6 +39,8 @@ extension AddressListTableViewDelegate: UITableViewDataSource {
         return tableView.dequeueReusableCell(AddressRowViewCell.self, forIndexPath: indexPath) { result in
             switch result {
             case let .dequeuedCell(addressRowCell):
+                addressRowCell.accessibilityIdentifier = "address-selection-row-\(indexPath.row)"
+
                 let address = self.addresses[indexPath.item]
                 addressRowCell.address = address
                 if let selectedAddress = self.selectedAddress {
