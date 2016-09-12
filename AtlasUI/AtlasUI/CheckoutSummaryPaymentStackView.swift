@@ -4,13 +4,13 @@
 
 import UIKit
 
-struct CheckoutSummaryActionViewModel {
+struct CheckoutSummaryPaymentViewModel {
     let title: String
     let value: String
     let showArrow: Bool
 }
 
-class CheckoutSummaryActionRowStackView: UIStackView {
+class CheckoutSummaryPaymentStackView: UIStackView {
 
     internal let titleLabel: UILabel = {
         let label = UILabel()
@@ -30,14 +30,14 @@ class CheckoutSummaryActionRowStackView: UIStackView {
     }()
 
     internal let arrowImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "tableArrow", bundledWith: CheckoutSummaryActionRowStackView.self))
+        let imageView = UIImageView(image: UIImage(named: "tableArrow", bundledWith: CheckoutSummaryPaymentStackView.self))
         imageView.contentMode = .Center
         return imageView
     }()
 
 }
 
-extension CheckoutSummaryActionRowStackView: UIBuilder {
+extension CheckoutSummaryPaymentStackView: UIBuilder {
 
     func configureView() {
         addArrangedSubview(titleLabel)
@@ -52,9 +52,9 @@ extension CheckoutSummaryActionRowStackView: UIBuilder {
 
 }
 
-extension CheckoutSummaryActionRowStackView: UIDataBuilder {
+extension CheckoutSummaryPaymentStackView: UIDataBuilder {
 
-    typealias T = CheckoutSummaryActionViewModel
+    typealias T = CheckoutSummaryPaymentViewModel
 
     func configureData(viewModel: T) {
         titleLabel.text = viewModel.title
