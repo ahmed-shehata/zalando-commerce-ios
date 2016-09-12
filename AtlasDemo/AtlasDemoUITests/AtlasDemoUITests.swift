@@ -116,7 +116,7 @@ class AtlasDemoUITests: XCTestCase {
 
     func changeBillingAddress() {
         let tablesQuery = app.tables
-
+        
         app.scrollViews.childrenMatchingType(.Any)
             .element.childrenMatchingType(.Any).elementBoundByIndex(4).staticTexts["Erika Mustermann, Mollstr. 1 10178 Berlin"].tap()
         tablesQuery.cells.containingType(.StaticText, identifier: "Jane").staticTexts["Mollstr. 1 10178 Berlin "].tap()

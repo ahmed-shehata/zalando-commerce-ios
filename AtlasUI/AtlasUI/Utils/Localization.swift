@@ -23,6 +23,13 @@ struct Localizer {
         return nf
     }
 
+    var dateFormatter: NSDateFormatter {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+        dateFormatter.locale = self.locale
+        return dateFormatter
+    }
+
     private var localizedStringsBundle: NSBundle!
 
     init(localizationProvider: Localizable) {
@@ -43,6 +50,10 @@ struct Localizer {
 
     func fmtPrice(number: NSNumber) -> String? {
         return priceFormatter.stringFromNumber(number)
+    }
+
+    func fmtDate(date: NSDate) -> String? {
+        return dateFormatter.stringFromDate(date)
     }
 
     private func findLocalizedStringsBundle(defaultLocalization: String = "en") -> NSBundle {
