@@ -27,7 +27,7 @@ class EditAddressViewModel {
     var isDefaultShipping: Bool = false
 
     init (userAddress: UserAddress?) {
-        guard let userAddress = userAddress else { return }
+        guard let userAddress = userAddress else { configureCountryCode(); return }
         id = userAddress.id
         customerNumber = userAddress.customerNumber
         gender = userAddress.gender
@@ -44,9 +44,24 @@ class EditAddressViewModel {
         isDefaultShipping = userAddress.isDefaultShipping
     }
 
+    private func configureCountryCode() {
+        // TODO: Need to move to DEMO
+        // TODO: Need to use a predefined sales channels for testing until we know the relation between the sales channel and the country
+        countryCode = "DE"
+    }
+
     internal func titles(localizer: LocalizerProviderType) -> [String] {
         return [Gender.male.title(localizer), Gender.female.title(localizer)]
     }
+
+    internal func updateTitle(localizedGenderText: String?, localizer: LocalizerProviderType) {
+        switch localizedGenderText {
+        case Gender.male.title(localizer)?: gender = .male
+        case Gender.female.title(localizer)?: gender = .female
+        default: gender = nil
+        }
+    }
+
 }
 
 extension UserAddress {
@@ -54,8 +69,6 @@ extension UserAddress {
     internal init? (addressViewModel: EditAddressViewModel) {
 
         guard let
-            id = addressViewModel.id,
-            customerNumber = addressViewModel.customerNumber,
             gender = addressViewModel.gender,
             firstName = addressViewModel.firstName,
             lastName = addressViewModel.lastName,
@@ -63,8 +76,8 @@ extension UserAddress {
             city = addressViewModel.city,
             countryCode = addressViewModel.countryCode else { return nil }
 
-        self.id = id
-        self.customerNumber = customerNumber
+        self.id = addressViewModel.id ?? "" // TODO: May be Id is optional? ... or another model?
+        self.customerNumber = addressViewModel.customerNumber ?? "" // TODO: Need to get customer number
         self.gender = gender
         self.firstName = firstName
         self.lastName = lastName
@@ -91,6 +104,17 @@ extension PickupPoint {
         self.id = "" // TODO: May be Id is optional? ... or another model?
         self.name = pickupPointName
         self.memberId = pickupPointMemberId
+    }
+
+}
+
+extension Gender {
+
+    internal func title(localizer: LocalizerProviderType) -> String {
+        switch self {
+        case .male: return localizer.loc("Address.edit.gender.male")
+        case .female: return localizer.loc("Address.edit.gender.female")
+        }
     }
 
 }

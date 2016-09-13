@@ -61,7 +61,7 @@ enum EditAddressField {
 
     func updateModel(viewModel: EditAddressViewModel, withValue value: String?, localizer: LocalizerProviderType) {
         switch self {
-        case .Title: viewModel.gender = Gender(localizedGenderText: value, localizer: localizer)
+        case .Title: viewModel.updateTitle(value, localizer: localizer)
         case .FirstName: viewModel.firstName = value
         case .LastName: viewModel.lastName = value
         case .Street: viewModel.street = value

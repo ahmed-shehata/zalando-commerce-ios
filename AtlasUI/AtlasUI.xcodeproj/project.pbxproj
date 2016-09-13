@@ -52,7 +52,6 @@
 		DB2470DB4F51D75862D73B20254CB0A7 /* CheckoutSummaryActionsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4E23134230FC0873B95CF6C403C333 /* CheckoutSummaryActionsHandler.swift */; };
 		DE4482A9091E62348223761D4C58D008 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA19C45C79A94472331D134BC9895CA /* UIView.swift */; };
 		E96C42961D87FD1D00BF7892 /* AddAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96C42951D87FD1D00BF7892 /* AddAddressTableViewCell.swift */; };
-		E9C19A561D82ABA5001898FF /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C19A551D82ABA5001898FF /* Gender.swift */; };
 		E9C9F1CA1D86CC2900CEBA80 /* PickerKeyboardInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C9F1C91D86CC2800CEBA80 /* PickerKeyboardInputView.swift */; };
 		E9C9F1CC1D86FDB600CEBA80 /* TextFieldInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C9F1CB1D86FDB600CEBA80 /* TextFieldInputViewModel.swift */; };
 		E9C9F1CE1D87129A00CEBA80 /* ActionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C9F1CD1D87129A00CEBA80 /* ActionTextField.swift */; };
@@ -146,7 +145,6 @@
 		D4F1679B8BB8A951B60D19AD947CD5BA /* CGRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
 		DB583604F0F19D75AFE9FB25FD4D89E1 /* CheckoutPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutPresentationController.swift; sourceTree = "<group>"; };
 		E96C42951D87FD1D00BF7892 /* AddAddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAddressTableViewCell.swift; sourceTree = "<group>"; };
-		E9C19A551D82ABA5001898FF /* Gender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		E9C9F1C91D86CC2800CEBA80 /* PickerKeyboardInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerKeyboardInputView.swift; sourceTree = "<group>"; };
 		E9C9F1CB1D86FDB600CEBA80 /* TextFieldInputViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldInputViewModel.swift; sourceTree = "<group>"; };
 		E9C9F1CD1D87129A00CEBA80 /* ActionTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionTextField.swift; sourceTree = "<group>"; };
@@ -232,7 +230,6 @@
 				E9C19A571D82F111001898FF /* Generic Views */,
 				971465BF293DCFB809C2B0F1512B4CE3 /* Async.swift */,
 				D4F1679B8BB8A951B60D19AD947CD5BA /* CGRect.swift */,
-				E9C19A551D82ABA5001898FF /* Gender.swift */,
 				01745B4995023182267D504707E4A241 /* Localization.swift */,
 				0B6F508180606FB22E1A4FCC91997E48 /* String.swift */,
 				640810DC34806DF7B0FBAEA4DB0123CD /* UIBuilder.swift */,
@@ -559,7 +556,6 @@
 				CB5E9906914C3BF8E9E5DA01DD7F16F7 /* Async.swift in Sources */,
 				10AE2E191C6E6A0E3B8041DD7EC4452F /* AtlasCheckout.swift in Sources */,
 				F7E648B7FC1C50B6731E832353AF2084 /* BorderView.swift in Sources */,
-				E9C19A561D82ABA5001898FF /* Gender.swift in Sources */,
 				30788EA71B54F0C0BCC51AA46C0C6D09 /* CGRect.swift in Sources */,
 				536FFA0EF451B723E43BDE2C8B097700 /* CheckoutPresentationController.swift in Sources */,
 				AF322CCC9D260BCD3FC64A7F610E1F35 /* CheckoutProviderType.swift in Sources */,

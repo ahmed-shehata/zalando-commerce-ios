@@ -10,7 +10,7 @@ extension String {
         return stringByTrimmingCharactersInSet(.whitespaceAndNewlineCharacterSet())
     }
 
-    var length: Int {
+    var trimmedLength: Int {
         return trimmed.characters.count
     }
 
