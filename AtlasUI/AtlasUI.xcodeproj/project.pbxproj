@@ -330,8 +330,8 @@
 		E7B8FD94F5B37D0CD471CC2CC01B2A93 /* Address Selection */ = {
 			isa = PBXGroup;
 			children = (
-				6FC391339AB40C212901806139F6FC2B /* AddressListTableViewDelegate.swift */,
 				9CC30D3206CE11A3DB6F12F72BC8DB31 /* AddressPickerViewController.swift */,
+				6FC391339AB40C212901806139F6FC2B /* AddressListTableViewDelegate.swift */,
 				FCDAB74F0608C1A0ABE505D7D3498B40 /* AddressRowViewCell.swift */,
 				E96C42951D87FD1D00BF7892 /* AddAddressTableViewCell.swift */,
 				E9E00C3D1D81BD4B0052FD83 /* Add Address */,

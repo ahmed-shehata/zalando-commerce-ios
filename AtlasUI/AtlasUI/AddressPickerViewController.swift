@@ -11,6 +11,7 @@ enum AddressType {
 }
 
 typealias AddressSelectionCompletion = (pickedAddress: EquatableAddress, pickedAddressType: AddressType) -> Void
+typealias AddAddressHandler = Void -> Void
 
 final class AddressPickerViewController: UIViewController, CheckoutProviderType {
 
@@ -55,11 +56,13 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
         self.setupTableView()
         fetchAddresses()
+        tableviewDelegate?.addAddressHandler = { [weak self] in
+            self?.showAddAddress()
+        }
     }
 
     dynamic private func showAddAddress() {
-        let address: UserAddress? = !addresses.isEmpty ? addresses[0] : nil
-        let viewController = EditAddressViewController(addressType: .NormalAddress, checkout: checkout, address: address)
+        let viewController = EditAddressViewController(addressType: .NormalAddress, checkout: checkout, address: nil)
         viewController.completion = { print($0) }
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.modalPresentationStyle = .OverCurrentContext
@@ -93,6 +96,7 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
         tableView.delegate = tableviewDelegate
         tableView.dataSource = tableviewDelegate
         tableView.registerReusableCell(AddressRowViewCell.self)
+        tableView.registerReusableCell(AddAddressTableViewCell.self)
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
         tableView.reloadData()

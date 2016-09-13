@@ -37,12 +37,12 @@ class KeyboardScrollView: UIScrollView {
     }
 
     private func scrollToCurrentFirstResponder(withKeyboardHeight keyboardHeight: CGFloat) {
-        if let firstResponder = UIApplication.window?.findFirstResponder() {
-            let frame = firstResponder.convertRect(firstResponder.bounds, toView: self)
-            let newOffset = frame.origin.y - (bounds.height - keyboardHeight) / 2.0
-            let maxOffset = contentSize.height + keyboardHeight - bounds.height
-            contentOffset.y = max(-contentInset.top, min(newOffset, maxOffset))
-        }
+        guard let firstResponder = UIApplication.window?.findFirstResponder() else { return }
+
+        let frame = firstResponder.convertRect(firstResponder.bounds, toView: self)
+        let newOffset = frame.origin.y - (bounds.height - keyboardHeight) / 2.0
+        let maxOffset = contentSize.height + keyboardHeight - bounds.height
+        contentOffset.y = max(-contentInset.top, min(newOffset, maxOffset))
     }
 
 }

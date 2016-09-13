@@ -10,6 +10,7 @@ class AddressListTableViewDelegate: NSObject {
     internal var checkout: AtlasCheckout
     private let addressType: AddressType
     private let selectionCompletion: AddressSelectionCompletion
+    internal var addAddressHandler: AddAddressHandler?
 
     var addresses: [UserAddress] = []
     var selectedAddress: EquatableAddress? {
@@ -32,10 +33,22 @@ class AddressListTableViewDelegate: NSObject {
 extension AddressListTableViewDelegate: UITableViewDataSource {
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return addresses.count
+        return addresses.count + 1
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        guard indexPath.row < addresses.count else {
+            return tableView.dequeueReusableCell(AddAddressTableViewCell.self, forIndexPath: indexPath, completion: { result in
+                switch result {
+                case .dequeuedCell(let cell):
+                    cell.configureData(self.checkout)
+                    return cell
+                case .defaultCell(let cell):
+                    return cell
+                }
+            })
+        }
+
         return tableView.dequeueReusableCell(AddressRowViewCell.self, forIndexPath: indexPath) { result in
             switch result {
             case let .dequeuedCell(addressRowCell):
@@ -57,6 +70,7 @@ extension AddressListTableViewDelegate: UITableViewDataSource {
 extension AddressListTableViewDelegate: UITableViewDelegate {
 
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        guard indexPath.row < addresses.count else { return false }
         return true
     }
 
@@ -80,8 +94,13 @@ extension AddressListTableViewDelegate: UITableViewDelegate {
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        selectedAddress = addresses[indexPath.item]
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        guard indexPath.row < addresses.count else {
+            addAddressHandler?()
+            return
+        }
+
+        selectedAddress = addresses[indexPath.item]
         tableView.reloadData()
     }
 
