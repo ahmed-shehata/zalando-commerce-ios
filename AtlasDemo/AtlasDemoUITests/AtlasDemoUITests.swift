@@ -151,19 +151,12 @@ class AtlasDemoUITests: XCTestCase {
     }
 
     private func tapBuyNow(identifier: String) {
+        let collectionView = app.collectionViews.elementBoundByIndex(0)
         let cell = collectionView.cells.otherElements.containingType(.StaticText, identifier: identifier)
         let buyNowButton = cell.buttons["buy-now"]
         collectionView.scrollToElement(buyNowButton)
         NSThread.sleepForTimeInterval(0.5)
         waitForElementToAppearAndTap(buyNowButton)
-    }
-
-    private var navigationController: XCUIElementQuery {
-        return app.otherElements.containingType(.NavigationBar, identifier: "AtlasSDK Demo") // TODO: change to accesibilityLabel
-    }
-
-    private var collectionView: XCUIElement {
-        return navigationController.descendantsMatchingType(.CollectionView).element
     }
 
 }
