@@ -53,8 +53,10 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
             self.title = "Shipping Address"
         }
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.navigationItem.rightBarButtonItem?.accessibilityIdentifier = "address-picker-right-button"
         self.setupTableView()
         fetchAddresses()
+        self.navigationController?.navigationBar.accessibilityIdentifier = "address-picker-navigation-bar"
     }
 
     private func fetchAddresses() {

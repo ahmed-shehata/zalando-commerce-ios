@@ -28,6 +28,7 @@ final class SizeListSelectionViewController: UITableViewController, CheckoutProv
         view.backgroundColor = UIColor.clearColor()
         view.opaque = false
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        self.navigationController?.navigationBar.accessibilityIdentifier = "size-selection-navigation-bar"
     }
 
     override func viewDidAppear(animated: Bool) {

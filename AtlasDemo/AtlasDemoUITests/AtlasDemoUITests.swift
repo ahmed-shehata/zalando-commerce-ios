@@ -49,16 +49,14 @@ class AtlasDemoUITests: XCTestCase {
         tapBuyNow("Lamica")
         waitForElementToAppearAndTap(size)
         tapConnectAndLogin()
-        app.scrollViews.childrenMatchingType(.Any)
-            .element.childrenMatchingType(.Any).elementBoundByIndex(2).tap()
+        app.otherElements["shipping-stack-view"].tap()
         deleteAddresses()
-        app.navigationBars["Summary"].buttons["Cancel"].tap() // TODO: change to accesibilityLabel
+        app.buttons["navigation-bar-cancel-button"].tap()
     }
 
     func testBuyProductWithSizesAndNavigatingBack() {
-        let summaryNavigationBar = app.navigationBars["Summary"] // TODO: change to accesibilityLabel
-        let backButton = summaryNavigationBar.buttons["Back"] // TODO: change to accesibilityLabel
-        let cancelButton = summaryNavigationBar.buttons["Cancel"] // TODO: change to accesibilityLabel
+        let backButton = app.navigationBars["catalog-navigation-controller"].buttons["Back"]
+        let cancelButton = app.navigationBars["catalog-navigation-controller"].buttons["Cancel"]
         let sizeText = app.tables.staticTexts["XS"] // TODO: change to accesibilityLabel
 
         tapBuyNow("Guess")
@@ -114,34 +112,38 @@ class AtlasDemoUITests: XCTestCase {
     }
 
     private func deleteAddresses() {
-        let shippingAddressNavigationBar = app.navigationBars["Shipping Address"] // TODO: change to accesibilityLabel
-        shippingAddressNavigationBar.buttons["Edit"].tap() // TODO: change to accesibilityLabel
+        let rightButton = app.navigationBars.buttons["address-picker-right-button"]
+        rightButton.tap()
+
         let tablesQuery = app.tables
 
+        app.cells["address-selection-row-1"].tap()
         tablesQuery.buttons.elementBoundByIndex(1).tap()
         tablesQuery.buttons["Delete"].tap()
 
         tablesQuery.buttons.elementBoundByIndex(1).tap()
         tablesQuery.buttons["Delete"].tap()
-        app.navigationBars["Shipping Address"].buttons["Done"].tap()
-        shippingAddressNavigationBar.buttons["Summary"].tap()
+
+        rightButton.tap()
+        app.navigationBars["address-picker-navigation-bar"].buttons["Back"].tap()
     }
 
     private func tapConnectAndLogin() {
-        waitForElementToAppearAndTap(app.buttons["checkout-with-zalando-button"])
+        waitForElementToAppearAndTap(app.buttons["checkout-footer-button"])
         fillInLogin()
+        NSThread.sleepForTimeInterval(1)
     }
 
     private func tapPlaceOrder() {
-        waitForElementToAppearAndTap(app.buttons["Place order"]) // TODO: change to accesibilityLabel
+        waitForElementToAppearAndTap(app.buttons["checkout-footer-button"])
     }
 
     private func tapBackToSummaryButton() {
-        waitForElementToAppearAndTap(app.buttons["Summary"]) // TODO: change to accesibilityLabel
+        waitForElementToAppearAndTap(app.navigationBars["address-picker-navigation-bar"].buttons["Back"])
     }
 
     private func tapBackToShop() {
-        waitForElementToAppearAndTap(app.buttons["Back to shop"]) // TODO: change to accesibilityLabel
+        waitForElementToAppearAndTap(app.buttons["checkout-footer-button"])
     }
 
     private func fillInLogin() {
@@ -159,4 +161,11 @@ class AtlasDemoUITests: XCTestCase {
         waitForElementToAppearAndTap(buyNowButton)
     }
 
+    private var navigationController: XCUIElementQuery {
+        return app.otherElements.containingType(.NavigationBar, identifier: "catalog-navigation-controller")
+    }
+
+    private var collectionView: XCUIElement {
+        return navigationController.descendantsMatchingType(.CollectionView).element
+    }
 }

@@ -31,6 +31,8 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
         exampleImageView.image = UIImage(named: "example")
         productCollectionView.delegate = self
         productCollectionView.dataSource = self
+
+        self.navigationController?.navigationBar.accessibilityIdentifier = "catalog-navigation-controller"
     }
 
     override func viewDidAppear(animated: Bool) {
