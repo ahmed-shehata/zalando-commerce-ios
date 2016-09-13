@@ -55,7 +55,7 @@ enum EditAddressField {
         case .MemberID: return viewModel.pickupPointMemberId
         case .Zipcode: return viewModel.zip
         case .City: return viewModel.city
-        case .Country: return viewModel.countryCode
+        case .Country: return localizer.localizer.countryName(forCountryCode: viewModel.countryCode)
         }
     }
 
@@ -70,7 +70,7 @@ enum EditAddressField {
         case .MemberID: viewModel.pickupPointMemberId = value
         case .Zipcode: viewModel.zip = value
         case .City: viewModel.city = value
-        case .Country: viewModel.countryCode = value
+        case .Country: break
         }
     }
 
