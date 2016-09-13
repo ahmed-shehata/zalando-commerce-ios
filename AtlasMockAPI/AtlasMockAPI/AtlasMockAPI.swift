@@ -29,8 +29,8 @@ public final class AtlasMockAPI {
         return serverURL.URLByAppendingPathComponent(path)
     }
 
-    public static var hasMockedAPIEnabled: Bool {
-        return NSProcessInfo.processInfo().arguments.contains(AtlasMockAPI.isEnabledFlag) || AtlasMockAPI.isStarted
+    public static var hasMockedAPIStarted: Bool {
+        return isStarted || NSProcessInfo.processInfo().arguments.contains(AtlasMockAPI.isEnabledFlag)
     }
 
 }
