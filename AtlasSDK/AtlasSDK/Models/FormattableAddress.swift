@@ -56,4 +56,19 @@ extension FormattableAddress {
         return postalFormatter.stringFromPostalAddress(postalAddress)
     }
 
+    public var splittedPostalAddress: [String] {
+        let postalFormatter = CNPostalAddressFormatter()
+        let firstLineAddress = CNMutablePostalAddress()
+        let secondLineAddress = CNMutablePostalAddress()
+
+        firstLineAddress.street = addressLine1
+
+        secondLineAddress.city = self.city
+        secondLineAddress.postalCode = self.zip
+        secondLineAddress.ISOCountryCode = self.countryCode
+        secondLineAddress.state = addressLine2
+
+        return [postalFormatter.stringFromPostalAddress(firstLineAddress), postalFormatter.stringFromPostalAddress(secondLineAddress)]
+    }
+
 }
