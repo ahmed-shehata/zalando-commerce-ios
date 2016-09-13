@@ -16,25 +16,22 @@ struct Localizer {
     let locale: NSLocale
     let localizationProvider: Localizable
 
-    var priceFormatter: NSNumberFormatter {
-        let nf = NSNumberFormatter()
-        nf.numberStyle = .CurrencyStyle
-        nf.locale = self.locale
-        return nf
-    }
-
-    var dateFormatter: NSDateFormatter {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-        dateFormatter.locale = self.locale
-        return dateFormatter
-    }
-
+    private let priceFormatter: NSNumberFormatter
+    private let dateFormatter: NSDateFormatter
     private var localizedStringsBundle: NSBundle!
 
     init(localizationProvider: Localizable) {
         self.localizationProvider = localizationProvider
         self.locale = NSLocale(localeIdentifier: localizationProvider.localeIdentifier)
+
+        dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = .MediumStyle
+        dateFormatter.locale = self.locale
+
+        priceFormatter = NSNumberFormatter()
+        priceFormatter.numberStyle = .CurrencyStyle
+        priceFormatter.locale = self.locale
+
         self.localizedStringsBundle = findLocalizedStringsBundle()
     }
 
