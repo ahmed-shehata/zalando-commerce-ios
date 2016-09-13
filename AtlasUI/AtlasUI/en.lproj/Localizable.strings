@@ -57,4 +57,7 @@
 "Address.edit.gender.male" = "Mr";
 "Address.edit.gender.female" = "Mrs";
 
+"Address.Add.type.title" = "Address Type";
+"Address.Add.type.standard" = "Standard";
+"Address.Add.type.pickupPoint" = "Pickup Point";
 "Address.Add.cellTitle" = "Add new address...";

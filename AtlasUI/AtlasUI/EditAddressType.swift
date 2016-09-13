@@ -6,12 +6,12 @@ import Foundation
 import AtlasSDK
 
 enum EditAddressType {
-    case NormalAddress
+    case StandardAddress
     case PickupPoint
 
     var fields: [EditAddressField] {
         switch self {
-        case .NormalAddress: return [.Title, .FirstName, .LastName, .Street, .Additional, .Zipcode, .City, .Country]
+        case .StandardAddress: return [.Title, .FirstName, .LastName, .Street, .Additional, .Zipcode, .City, .Country]
         case .PickupPoint: return [.Title, .FirstName, .LastName, .Packstation, .MemberID, .Zipcode, .City, .Country]
         }
     }

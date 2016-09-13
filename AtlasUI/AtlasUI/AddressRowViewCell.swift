@@ -46,6 +46,7 @@ final class AddressRowViewCell: UITableViewCell {
 extension AddressRowViewCell: UIBuilder {
 
     func configureView() {
+        editingAccessoryType = .DisclosureIndicator
         contentView.addSubview(stackView)
         stackView.addArrangedSubview(titleLabel)
         stackView.addArrangedSubview(addressLabel)

@@ -12,7 +12,6 @@ import AtlasSDK
 class EditAddressViewModel {
 
     var id: String?
-    var customerNumber: String?
     var gender: Gender?
     var firstName: String?
     var lastName: String?
@@ -26,10 +25,9 @@ class EditAddressViewModel {
     var isDefaultBilling: Bool = false
     var isDefaultShipping: Bool = false
 
-    init (userAddress: UserAddress?) {
+    init (userAddress: EquatableAddress?) {
         guard let userAddress = userAddress else { configureCountryCode(); return }
         id = userAddress.id
-        customerNumber = userAddress.customerNumber
         gender = userAddress.gender
         firstName = userAddress.firstName
         lastName = userAddress.lastName
@@ -40,8 +38,6 @@ class EditAddressViewModel {
         countryCode = userAddress.countryCode
         pickupPointName = userAddress.pickupPoint?.name
         pickupPointMemberId = userAddress.pickupPoint?.memberId
-        isDefaultBilling = userAddress.isDefaultBilling
-        isDefaultShipping = userAddress.isDefaultShipping
     }
 
     private func configureCountryCode() {
@@ -60,50 +56,6 @@ class EditAddressViewModel {
         case Gender.female.title(localizer)?: gender = .female
         default: gender = nil
         }
-    }
-
-}
-
-extension UserAddress {
-
-    internal init? (addressViewModel: EditAddressViewModel) {
-
-        guard let
-            gender = addressViewModel.gender,
-            firstName = addressViewModel.firstName,
-            lastName = addressViewModel.lastName,
-            zip = addressViewModel.zip,
-            city = addressViewModel.city,
-            countryCode = addressViewModel.countryCode else { return nil }
-
-        self.id = addressViewModel.id ?? "" // TODO: May be Id is optional? ... or another model?
-        self.customerNumber = addressViewModel.customerNumber ?? "" // TODO: Need to get customer number
-        self.gender = gender
-        self.firstName = firstName
-        self.lastName = lastName
-        self.street = addressViewModel.street
-        self.additional = addressViewModel.additional
-        self.zip = zip
-        self.city = city
-        self.countryCode = countryCode
-        self.pickupPoint = PickupPoint(addressViewModel: addressViewModel)
-        self.isDefaultBilling = addressViewModel.isDefaultBilling
-        self.isDefaultShipping = addressViewModel.isDefaultShipping
-    }
-
-}
-
-extension PickupPoint {
-
-    internal init? (addressViewModel: EditAddressViewModel) {
-
-        guard let
-            pickupPointName = addressViewModel.pickupPointName,
-            pickupPointMemberId = addressViewModel.pickupPointMemberId else { return nil }
-
-        self.id = "" // TODO: May be Id is optional? ... or another model?
-        self.name = pickupPointName
-        self.memberId = pickupPointMemberId
     }
 
 }

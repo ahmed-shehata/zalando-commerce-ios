@@ -5,7 +5,7 @@
 import UIKit
 import AtlasSDK
 
-typealias EditAddressCompletion = UserAddress? -> Void
+typealias EditAddressCompletion = EditAddressViewModel -> Void
 
 class EditAddressViewController: UIViewController, CheckoutProviderType {
 
@@ -28,12 +28,13 @@ class EditAddressViewController: UIViewController, CheckoutProviderType {
     private let addressType: EditAddressType
     internal let checkout: AtlasCheckout
     private let addressViewModel: EditAddressViewModel
-    internal var completion: EditAddressCompletion?
+    internal let completion: EditAddressCompletion
 
-    init(addressType: EditAddressType, checkout: AtlasCheckout, address: UserAddress?) {
+    init(addressType: EditAddressType, checkout: AtlasCheckout, address: EquatableAddress?, completion: EditAddressCompletion) {
         self.addressType = addressType
         self.checkout = checkout
         self.addressViewModel = EditAddressViewModel(userAddress: address)
+        self.completion = completion
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -61,7 +62,7 @@ extension EditAddressViewController {
     }
 
     private dynamic func submitButtonPressed() {
-        completion?(UserAddress(addressViewModel: addressViewModel))
+        completion(addressViewModel)
         dismissViewControllerAnimated(true, completion: nil)
     }
 

@@ -11,6 +11,7 @@ class AddressListTableViewDelegate: NSObject {
     private let addressType: AddressType
     private let selectionCompletion: AddressSelectionCompletion
     internal var addAddressHandler: AddAddressHandler?
+    internal var editAddressSelectionHandler: EditAddressSelectionHandler?
 
     var addresses: [UserAddress] = []
     var selectedAddress: EquatableAddress? {
@@ -54,8 +55,10 @@ extension AddressListTableViewDelegate: UITableViewDataSource {
             case let .dequeuedCell(addressRowCell):
                 let address = self.addresses[indexPath.item]
                 addressRowCell.configureData(address)
-                if let selectedAddress = self.selectedAddress {
-                    addressRowCell.accessoryType = selectedAddress == address ? .Checkmark : .None
+                if let selectedAddress = self.selectedAddress where selectedAddress == address {
+                    addressRowCell.accessoryType = .Checkmark
+                } else {
+                    addressRowCell.accessoryType = .None
                 }
 
                 return addressRowCell
@@ -100,8 +103,12 @@ extension AddressListTableViewDelegate: UITableViewDelegate {
             return
         }
 
-        selectedAddress = addresses[indexPath.item]
-        tableView.reloadData()
+        if tableView.editing {
+            editAddressSelectionHandler?(address: addresses[indexPath.item])
+        } else {
+            selectedAddress = addresses[indexPath.item]
+            tableView.reloadData()
+        }
     }
 
 }
