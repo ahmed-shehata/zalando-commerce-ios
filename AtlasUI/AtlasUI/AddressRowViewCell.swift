@@ -62,7 +62,7 @@ extension AddressRowViewCell: UIDataBuilder {
     typealias T = UserAddress
 
     func configureData(viewModel: T) {
-        titleLabel.text = viewModel.firstName
+        titleLabel.text = viewModel.formattedContact
         addressLabel.text = viewModel.formattedPostalAddress.trimmed
     }
 
