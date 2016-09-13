@@ -47,7 +47,7 @@ extension Order: JSONInitializable {
             shippingAddress: shippingAddress,
             grossTotal: grossTotal,
             taxTotal: taxTotal,
-            created: ISO8601DateFormatter.dateFromString(json[Keys.created].string),
+            created: RFC3339DateFormatter().dateFromString(json[Keys.created].string),
             detailUrl: json[Keys.detailUrl].URL,
             externalPaymentUrl: json[Keys.externalPaymentUrl].URL)
     }

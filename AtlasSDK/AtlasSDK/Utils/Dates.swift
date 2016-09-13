@@ -4,9 +4,6 @@
 
 import Foundation
 
-let ISO8601DateFormatter = DoubleFormatDateFormatter(defaultDateFormat: "yyyy-MM-dd'T'HH:mm:ssZ",
-    backupDateFormat: "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
-
 extension NSDateFormatter {
 
     convenience init(dateFormat: String, localeIdentifier: String = "en_US_POSIX", timeZoneName: String = "GMT") {
@@ -22,23 +19,30 @@ extension NSDateFormatter {
 
 }
 
-struct DoubleFormatDateFormatter {
+class RFC3339DateFormatter: NSDateFormatter {
 
-    let defaultFormatter: NSDateFormatter
-    let backupFormatter: NSDateFormatter
+    private let noMillisecondsFormatter: NSDateFormatter
 
-    init(defaultDateFormat: String, backupDateFormat: String, localeIdentifier: String = "en_US_POSIX", timeZoneName: String = "GMT") {
-        self.defaultFormatter = NSDateFormatter(dateFormat: defaultDateFormat,
-            localeIdentifier: localeIdentifier,
-            timeZoneName: timeZoneName)
-        self.backupFormatter = NSDateFormatter(dateFormat: backupDateFormat, localeIdentifier: localeIdentifier, timeZoneName: timeZoneName)
+    override init() {
+        let locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        let timeZone = NSTimeZone(abbreviation: "GMT")
+        self.noMillisecondsFormatter = NSDateFormatter(dateFormat: "yyyy-MM-dd'T'HH:mm:ssZ",
+            localeIdentifier: locale.localeIdentifier,
+            timeZone: timeZone)
+        super.init()
+        self.locale = locale
+        self.timeZone = timeZone
+        self.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
     }
 
-    func dateFromString(string: String?) -> NSDate? {
+    required convenience init?(coder aDecoder: NSCoder) {
+        self.init()
+    }
+
+    override func dateFromString(string: String?) -> NSDate? {
         guard let string = string else { return nil }
-        return defaultFormatter.dateFromString(string) ?? backupFormatter.dateFromString(string)
+        return super.dateFromString(string) ?? noMillisecondsFormatter.dateFromString(string)
     }
-
 }
 
 extension String {
