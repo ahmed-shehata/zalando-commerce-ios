@@ -40,7 +40,7 @@ extension AddressListTableViewDelegate: UITableViewDataSource {
             switch result {
             case let .dequeuedCell(addressRowCell):
                 let address = self.addresses[indexPath.item]
-                addressRowCell.address = address
+                addressRowCell.configureData(address)
                 if let selectedAddress = self.selectedAddress {
                     addressRowCell.accessoryType = selectedAddress == address ? .Checkmark : .None
                 }

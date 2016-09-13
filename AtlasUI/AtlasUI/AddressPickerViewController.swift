@@ -55,9 +55,6 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
         self.setupTableView()
         fetchAddresses()
-
-        // TODO: JUST TO TEST
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .Plain, target: self, action: #selector(showAddAddress))
     }
 
     dynamic private func showAddAddress() {
@@ -91,8 +88,6 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
     }
 
     func setupTableView() {
-
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.fillInSuperView()
 
         tableView.delegate = tableviewDelegate
