@@ -15,7 +15,8 @@ class DatesSpec: QuickSpec {
                 let expectedFormattedDate = "2016-07-06T16:33:10.000"
 
                 let date = NSDate(timeIntervalSince1970: 1467822790)
-                let formattedDate = ISO8601DateFormatter.stringFromDate(date)
+                
+                let formattedDate = RFC3339DateFormatter().stringFromDate(date)
 
                 expect(expectedFormattedDate).to(equal(formattedDate))
             }
@@ -24,7 +25,7 @@ class DatesSpec: QuickSpec {
                 let expectedDate = NSDate(timeIntervalSince1970: 1467822790)
 
                 let textDate = "2016-07-06T16:33:10.000"
-                let parsedDate = ISO8601DateFormatter.dateFromString(textDate)
+                let parsedDate = RFC3339DateFormatter().dateFromString(textDate)
 
                 expect(expectedDate).to(equal(parsedDate))
             }
