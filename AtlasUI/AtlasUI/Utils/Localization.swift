@@ -25,7 +25,7 @@ struct Localizer {
 
     var dateFormatter: NSDateFormatter {
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
+        dateFormatter.dateStyle = .MediumStyle
         dateFormatter.locale = self.locale
         return dateFormatter
     }
