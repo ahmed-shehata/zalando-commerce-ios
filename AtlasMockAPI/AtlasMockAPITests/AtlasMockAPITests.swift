@@ -38,6 +38,12 @@ class AtlasMockAPITests: XCTestCase {
         }
     }
 
+    func testAuthorizeEndpoint() {
+        assertSuccessfulResponse(forEndpoint: "/articles") { json in
+            XCTAssertEqual(json["content", 0, "id"].stringValue, "L2711E002-Q11")
+        }
+    }
+
     private func assertSuccessfulResponse(method: Alamofire.Method = .GET,
         forEndpoint endpoint: String, completion: JSONCompletion? = nil) {
             let expectation = expectationWithDescription("assertSuccessfulResponse \(endpoint)")
