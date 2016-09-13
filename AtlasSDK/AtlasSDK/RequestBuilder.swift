@@ -49,8 +49,8 @@ class RequestBuilder: Equatable {
         dataTask = self.urlSession.dataTaskWithRequest(request,
             completionHandler: { data, response, error in
                 if let error = error {
-                    let httpError = AtlasAPIError.nsURLError(code: error.code, details: error.localizedDescription)
-                    completion(.failure(httpError))
+                    let nsURLError = AtlasAPIError.nsURLError(code: error.code, details: error.localizedDescription)
+                    completion(.failure(nsURLError))
                     return
                 }
 

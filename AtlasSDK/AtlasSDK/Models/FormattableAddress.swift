@@ -1,5 +1,5 @@
 //
-// Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
 import Foundation
@@ -26,6 +26,7 @@ public func == (lhs: EquatableAddress, rhs: EquatableAddress) -> Bool {
 }
 
 extension FormattableAddress {
+
     public var fullContactPostalAddress: String {
         let parts = [formattedContact, formattedPostalAddress]
         return parts.flatMap({ $0 }).joinWithSeparator(", ")

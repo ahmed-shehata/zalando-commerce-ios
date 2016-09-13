@@ -3,26 +3,21 @@
 //
 
 import UIKit
+import AtlasSDK
 
-enum Result<T> {
-
-    case success(T)
-    case failure()
-
-}
-
-typealias PaymentCompletion = Result<String> -> Void
+typealias PaymentCompletion = AtlasResult<Bool> -> Void
 
 final class PaymentSelectionViewController: UIViewController, UIWebViewDelegate {
 
-    private let paymentSelectionURL: NSURL
-
     var paymentCompletion: PaymentCompletion?
+    private let paymentSelectionURL: NSURL
+    private let successURL = "http://de.zalando.atlas.atlascheckoutdemo/redirect"
 
     private lazy var webView: UIWebView = {
         let webView = UIWebView()
         webView.backgroundColor = .whiteColor()
         webView.delegate = self
+        webView.scalesPageToFit = true
         webView.translatesAutoresizingMaskIntoConstraints = false
         return webView
     }()
@@ -37,8 +32,6 @@ final class PaymentSelectionViewController: UIViewController, UIWebViewDelegate 
     }
 
     override func viewDidLoad() {
-        automaticallyAdjustsScrollViewInsets = false
-
         view.backgroundColor = .whiteColor()
         view.addSubview(webView)
 
@@ -46,16 +39,22 @@ final class PaymentSelectionViewController: UIViewController, UIWebViewDelegate 
         webView.loadRequest(NSURLRequest(URL: paymentSelectionURL))
     }
 
-    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest,
-        navigationType: UIWebViewNavigationType) -> Bool {
-            return true
+    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        guard let success = request.URL?.absoluteString.hasPrefix(successURL) where success else { return true }
+        dismissViewController(.success(true))
+        return false
     }
 
     func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
-        dismissViewController(.failure(), animated: true)
+        guard let error = error where !errorBecuaseRequestCancelled(error) else { return }
+        dismissViewController(.failure(error), animated: true)
     }
 
-    private func dismissViewController(result: Result<String>, animated: Bool = true) {
+    private func errorBecuaseRequestCancelled(error: NSError) -> Bool {
+        return error.domain == "WebKitErrorDomain"
+    }
+
+    private func dismissViewController(result: AtlasResult<Bool>, animated: Bool = true) {
         navigationController?.popViewControllerAnimated(animated)
         paymentCompletion?(result)
     }
