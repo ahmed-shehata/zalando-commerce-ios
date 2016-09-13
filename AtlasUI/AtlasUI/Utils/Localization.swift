@@ -20,7 +20,7 @@ struct Localizer {
     private let dateFormatter: NSDateFormatter
     private var localizedStringsBundle: NSBundle!
 
-    init(localizationProvider: Localizable) {
+    init(localizationProvider: Localizable, defaultLocalization: String = "en") {
         self.localizationProvider = localizationProvider
         self.locale = NSLocale(localeIdentifier: localizationProvider.localeIdentifier)
 
@@ -32,7 +32,7 @@ struct Localizer {
         priceFormatter.numberStyle = .CurrencyStyle
         priceFormatter.locale = self.locale
 
-        self.localizedStringsBundle = findLocalizedStringsBundle()
+        self.localizedStringsBundle = findLocalizedStringsBundle(defaultLocalization)
     }
 
     func localizedString(key: String, formatArguments: [CVarArgType?]? = nil) -> String {
@@ -53,7 +53,7 @@ struct Localizer {
         return dateFormatter.stringFromDate(date)
     }
 
-    private func findLocalizedStringsBundle(defaultLocalization: String = "en") -> NSBundle {
+    private func findLocalizedStringsBundle(defaultLocalization: String) -> NSBundle {
         let localizationKeys = [NSLocaleIdentifier, NSLocaleLanguageCode, defaultLocalization]
 
         for key in localizationKeys {
