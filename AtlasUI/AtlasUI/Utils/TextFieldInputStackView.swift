@@ -83,7 +83,12 @@ extension TextFieldInputStackView: UIDataBuilder {
         textField.text = viewModel.value
         textField.placeholder = viewModel.title
         textField.returnKeyType = nextTextField == nil ? .Default : .Next
+
         textField.userInteractionEnabled = viewModel.isActive
+        if !viewModel.isActive {
+            textField.textColor = UIColor(hex: 0xADADAD)
+        }
+
         textField.inputView = viewModel.customInputView
         if viewModel.customInputView != nil {
             textField.tintColor = .clearColor()
