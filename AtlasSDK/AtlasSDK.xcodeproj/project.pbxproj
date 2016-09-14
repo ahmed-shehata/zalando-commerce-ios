@@ -574,7 +574,6 @@
 		DFE4E09245E4C2D081775266DC9E3364 /* Addresses */ = {
 			isa = PBXGroup;
 			children = (
-				EC3C0A42BE110710B9F226DB6EB283D9 /* AddressList.swift */,
 				88C730D69D82840A7774CF4846D833BC /* CheckoutAddress.swift */,
 				34A2E3D95B370914C7B19A3B81E80190 /* FormattableAddress.swift */,
 				73A02961F55508B3B15CEC53112BFE4D /* OrderAddress.swift */,
@@ -807,7 +806,6 @@
 				461345630A9887128F425200934B54E4 /* APIClientQueryItems.swift in Sources */,
 				9E75A99E678771AE3DC2AEABFDCE44E6 /* APIRequestBuilder.swift in Sources */,
 				7C15ECFBDA7DC082335117DCC91F6A0D /* APIRequestBuildersContainer.swift in Sources */,
-				DCEC44E0793F113D059AB18E8C204E02 /* AddressList.swift in Sources */,
 				46E0BCA1B6C2F639FBEBA1BE9ED11DE0 /* AppInfoConfig.swift in Sources */,
 				0123B138E910C18A68155F01C56F8C02 /* Array.swift in Sources */,
 				B760B0603070F9558115F9AF15FEF6B1 /* Article.swift in Sources */,
