@@ -23,11 +23,10 @@ class AddAddressTableViewCell: UITableViewCell {
         return label
     }()
 
-    internal let addAddressImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "addButton", bundledWith: AddAddressTableViewCell.self)
-        imageView.contentMode = .ScaleAspectFit
-        return imageView
+    internal let addAddressButton: UIButton = {
+        let button = UIButton(type: .ContactAdd)
+        button.userInteractionEnabled = false
+        return button
     }()
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -46,13 +45,13 @@ extension AddAddressTableViewCell: UIBuilder {
     func configureView() {
         contentView.addSubview(stackView)
         stackView.addArrangedSubview(addAddressLabel)
-        stackView.addArrangedSubview(addAddressImageView)
+        stackView.addArrangedSubview(addAddressButton)
     }
 
     func configureConstraints() {
         stackView.fillInSuperView()
-        addAddressImageView.setWidth(equalToConstant: 20)
-        addAddressImageView.setSquareAspectRatio()
+        addAddressButton.setSquareAspectRatio()
+        addAddressButton.setWidth(equalToConstant: 20)
     }
 
 }

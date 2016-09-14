@@ -43,6 +43,7 @@ extension EditAddressStackView: UIDataBuilder {
                 guard let strongSelf = self else { return }
                 fieldType.updateModel(viewModel, withValue: $0, localizer: strongSelf.checkoutProviderType)
                 textFieldInputView.textField.text = $0
+                textFieldInputView.configureTitleLabel()
             }
 
             var nextTextField: TextFieldInputStackView?
