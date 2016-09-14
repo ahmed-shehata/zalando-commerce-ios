@@ -66,21 +66,21 @@ class RequestBuilder: Equatable {
             return completion(.failure(AtlasAPIError.noData))
         }
 
-        let json = JSON(data: data)
+        let json: JSON? = data.length > 0 ? JSON(data: data) : nil
 
         guard httpResponse.isSuccessful else {
             let error: AtlasAPIError
-            if json == JSON.null {
-                error = AtlasAPIError.http(
-                    status: HTTPStatus(statusCode: httpResponse.statusCode),
-                    details: NSHTTPURLResponse.localizedStringForStatusCode(httpResponse.statusCode))
-            } else if httpResponse.status == .Unauthorized {
+            if httpResponse.status == .Unauthorized {
                 error = AtlasAPIError.unauthorized
-            } else {
+            } else if let json = json where json != JSON.null {
                 error = AtlasAPIError.backend(
                     status: json["status"].int,
                     title: json["title"].string,
                     details: json["detail"].string)
+            } else {
+                error = AtlasAPIError.http(
+                    status: HTTPStatus(statusCode: httpResponse.statusCode),
+                    details: NSHTTPURLResponse.localizedStringForStatusCode(httpResponse.statusCode))
             }
             return completion(.failure(error))
         }

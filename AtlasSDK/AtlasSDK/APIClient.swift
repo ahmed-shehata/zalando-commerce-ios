@@ -17,16 +17,28 @@ public struct APIClient {
         self.requestBuilders = APIRequestBuildersContainer(config: config)
     }
 
-    func fetch<Model: JSONInitializable>(from endpoint: Endpoint, completion: AtlasResult<Model> -> Void) {
-        fetch(from: endpoint, completion: completion) { successfulResponse in
-            return Model(json: successfulResponse.body)
+    func touch(endpoint: Endpoint, successStatus: HTTPStatus = .NoContent, completion: AtlasResult<Bool> -> Void) {
+        touch(endpoint, completion: completion) { response in
+            return response.statusCode == successStatus
         }
     }
 
+    func touch(endpoint: Endpoint, completion: AtlasResult<Bool> -> Void, successCompletion: JSONResponse -> Bool) {
+        fetch(from: endpoint, completion: completion) { response in
+            return successCompletion(response)
+        }
+    }
+
+    func fetch<Model: JSONInitializable>(from endpoint: Endpoint, completion: AtlasResult<Model> -> Void) {
+        fetch(from: endpoint, completion: completion) { response in
+            guard let json = response.body else { return nil }
+            return Model(json: json)
+        }
+    }
 
     func fetch<Model: JSONInitializable>(from endpoint: Endpoint, completion: AtlasResult<[Model]> -> Void) {
-        fetch(from: endpoint, completion: completion) { successfulResponse in
-            guard let jsons = successfulResponse.body.array.flatMap({ $0 }) else { return nil }
+        fetch(from: endpoint, completion: completion) { response in
+            guard let json = response.body, jsons = json.array.flatMap({ $0 }) else { return nil }
             return jsons.flatMap { Model(json: $0) }
         }
     }
