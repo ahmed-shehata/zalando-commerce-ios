@@ -51,6 +51,7 @@ extension AddressListTableViewDelegate: UITableViewDataSource {
                 cell.accessoryType = selectedAddress == address ? .Checkmark : .None
             }
 
+            cell.accessibilityIdentifier = "address-selection-row-\(indexPath.row)"
             return cell
         }
     }

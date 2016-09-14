@@ -59,6 +59,9 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
         tableviewDelegate?.addAddressHandler = { [weak self] in
             self?.showAddAddress()
         }
+
+        self.navigationController?.navigationBar.accessibilityIdentifier = "address-picker-navigation-bar"
+        self.navigationItem.rightBarButtonItem?.accessibilityIdentifier = "address-picker-right-button"
     }
 
     dynamic private func showAddAddress() {
