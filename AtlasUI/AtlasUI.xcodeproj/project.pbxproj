@@ -51,6 +51,16 @@
 		D5D8A7E27A96BEAA8D3EEED93BE86D30 /* CheckoutViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2653612BC3DBC05157000E6790084A05 /* CheckoutViewState.swift */; };
 		DB2470DB4F51D75862D73B20254CB0A7 /* CheckoutSummaryActionsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4E23134230FC0873B95CF6C403C333 /* CheckoutSummaryActionsHandler.swift */; };
 		DE4482A9091E62348223761D4C58D008 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA19C45C79A94472331D134BC9895CA /* UIView.swift */; };
+		E96C42961D87FD1D00BF7892 /* AddAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96C42951D87FD1D00BF7892 /* AddAddressTableViewCell.swift */; };
+		E9C9F1CA1D86CC2900CEBA80 /* PickerKeyboardInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C9F1C91D86CC2800CEBA80 /* PickerKeyboardInputView.swift */; };
+		E9C9F1CC1D86FDB600CEBA80 /* TextFieldInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C9F1CB1D86FDB600CEBA80 /* TextFieldInputViewModel.swift */; };
+		E9C9F1CE1D87129A00CEBA80 /* ActionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C9F1CD1D87129A00CEBA80 /* ActionTextField.swift */; };
+		E9E00C331D81BD100052FD83 /* KeyboardScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E00C311D81BD100052FD83 /* KeyboardScrollView.swift */; };
+		E9E00C341D81BD100052FD83 /* TextFieldInputStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E00C321D81BD100052FD83 /* TextFieldInputStackView.swift */; };
+		E9E00C391D81BD420052FD83 /* EditAddressStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E00C351D81BD420052FD83 /* EditAddressStackView.swift */; };
+		E9E00C3A1D81BD420052FD83 /* EditAddressType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E00C361D81BD420052FD83 /* EditAddressType.swift */; };
+		E9E00C3B1D81BD420052FD83 /* EditAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E00C371D81BD420052FD83 /* EditAddressViewController.swift */; };
+		E9E00C3C1D81BD420052FD83 /* EditAddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E00C381D81BD420052FD83 /* EditAddressViewModel.swift */; };
 		EF570993CFA4FDF0361679E931D55B8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94F33C041120EF12B441AE2E84A48050 /* Assets.xcassets */; };
 		F22B10157E2B91A8BF9D3AB7B354E6CC /* Nimble.framework in Copy Quick and Nimble frameworks */ = {isa = PBXBuildFile; fileRef = 2E89A529CD1D470F15B857AF1031CB61 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F3F62025EFDB47B5637DC3C928D69264 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F13460B6B17606CC65E38CE6A4716C /* UITableView.swift */; };
@@ -134,6 +144,16 @@
 		D00CFC93C09DD7AD63A6C85F7CE29032 /* LocalizationSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizationSpec.swift; sourceTree = "<group>"; };
 		D4F1679B8BB8A951B60D19AD947CD5BA /* CGRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
 		DB583604F0F19D75AFE9FB25FD4D89E1 /* CheckoutPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutPresentationController.swift; sourceTree = "<group>"; };
+		E96C42951D87FD1D00BF7892 /* AddAddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAddressTableViewCell.swift; sourceTree = "<group>"; };
+		E9C9F1C91D86CC2800CEBA80 /* PickerKeyboardInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerKeyboardInputView.swift; sourceTree = "<group>"; };
+		E9C9F1CB1D86FDB600CEBA80 /* TextFieldInputViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldInputViewModel.swift; sourceTree = "<group>"; };
+		E9C9F1CD1D87129A00CEBA80 /* ActionTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionTextField.swift; sourceTree = "<group>"; };
+		E9E00C311D81BD100052FD83 /* KeyboardScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardScrollView.swift; sourceTree = "<group>"; };
+		E9E00C321D81BD100052FD83 /* TextFieldInputStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldInputStackView.swift; sourceTree = "<group>"; };
+		E9E00C351D81BD420052FD83 /* EditAddressStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAddressStackView.swift; sourceTree = "<group>"; };
+		E9E00C361D81BD420052FD83 /* EditAddressType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAddressType.swift; sourceTree = "<group>"; };
+		E9E00C371D81BD420052FD83 /* EditAddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAddressViewController.swift; sourceTree = "<group>"; };
+		E9E00C381D81BD420052FD83 /* EditAddressViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAddressViewModel.swift; sourceTree = "<group>"; };
 		EAF268B630147E557D2C826B01EADCBD /* CheckoutProviderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutProviderType.swift; sourceTree = "<group>"; };
 		FCDAB74F0608C1A0ABE505D7D3498B40 /* AddressRowViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressRowViewCell.swift; sourceTree = "<group>"; };
 		FFAA3A40B92B64CE46E74B153ABE8C52 /* CheckoutSummaryFooterStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryFooterStackView.swift; sourceTree = "<group>"; };
@@ -207,12 +227,10 @@
 		4C97964529F3E380DC0D91E7093919D9 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				E9C19A571D82F111001898FF /* Generic Views */,
 				971465BF293DCFB809C2B0F1512B4CE3 /* Async.swift */,
-				7213EB38DBC235984A41709E643C8EE8 /* BorderView.swift */,
 				D4F1679B8BB8A951B60D19AD947CD5BA /* CGRect.swift */,
-				68E9C6572D2F4F6481B6389BDF69F18B /* LoaderView.swift */,
 				01745B4995023182267D504707E4A241 /* Localization.swift */,
-				3F015820E6D686C7BA3004F60826859A /* RoundedViews.swift */,
 				0B6F508180606FB22E1A4FCC91997E48 /* String.swift */,
 				640810DC34806DF7B0FBAEA4DB0123CD /* UIBuilder.swift */,
 				27ADC182F5F2F24D9AF740830B9B50A9 /* UIColor.swift */,
@@ -309,11 +327,39 @@
 		E7B8FD94F5B37D0CD471CC2CC01B2A93 /* Address Selection */ = {
 			isa = PBXGroup;
 			children = (
-				6FC391339AB40C212901806139F6FC2B /* AddressListTableViewDelegate.swift */,
 				9CC30D3206CE11A3DB6F12F72BC8DB31 /* AddressPickerViewController.swift */,
+				6FC391339AB40C212901806139F6FC2B /* AddressListTableViewDelegate.swift */,
 				FCDAB74F0608C1A0ABE505D7D3498B40 /* AddressRowViewCell.swift */,
+				E96C42951D87FD1D00BF7892 /* AddAddressTableViewCell.swift */,
+				E9E00C3D1D81BD4B0052FD83 /* Add Address */,
 			);
 			name = "Address Selection";
+			sourceTree = "<group>";
+		};
+		E9C19A571D82F111001898FF /* Generic Views */ = {
+			isa = PBXGroup;
+			children = (
+				7213EB38DBC235984A41709E643C8EE8 /* BorderView.swift */,
+				E9E00C311D81BD100052FD83 /* KeyboardScrollView.swift */,
+				68E9C6572D2F4F6481B6389BDF69F18B /* LoaderView.swift */,
+				3F015820E6D686C7BA3004F60826859A /* RoundedViews.swift */,
+				E9E00C321D81BD100052FD83 /* TextFieldInputStackView.swift */,
+				E9C9F1CD1D87129A00CEBA80 /* ActionTextField.swift */,
+				E9C9F1CB1D86FDB600CEBA80 /* TextFieldInputViewModel.swift */,
+				E9C9F1C91D86CC2800CEBA80 /* PickerKeyboardInputView.swift */,
+			);
+			name = "Generic Views";
+			sourceTree = "<group>";
+		};
+		E9E00C3D1D81BD4B0052FD83 /* Add Address */ = {
+			isa = PBXGroup;
+			children = (
+				E9E00C371D81BD420052FD83 /* EditAddressViewController.swift */,
+				E9E00C381D81BD420052FD83 /* EditAddressViewModel.swift */,
+				E9E00C351D81BD420052FD83 /* EditAddressStackView.swift */,
+				E9E00C361D81BD420052FD83 /* EditAddressType.swift */,
+			);
+			name = "Add Address";
 			sourceTree = "<group>";
 		};
 		ECBC67CCC5E72798CEB556243DC767A4 /* Views */ = {
@@ -506,6 +552,7 @@
 				8F555E1D55F47DFE66BD5CF593E6C6DE /* AddressListTableViewDelegate.swift in Sources */,
 				5A6C401EC4AC8D133366523A81A14C63 /* AddressPickerViewController.swift in Sources */,
 				271C74EFD455C9953DB58ED7A2B107CE /* AddressRowViewCell.swift in Sources */,
+				E9C9F1CC1D86FDB600CEBA80 /* TextFieldInputViewModel.swift in Sources */,
 				CB5E9906914C3BF8E9E5DA01DD7F16F7 /* Async.swift in Sources */,
 				10AE2E191C6E6A0E3B8041DD7EC4452F /* AtlasCheckout.swift in Sources */,
 				F7E648B7FC1C50B6731E832353AF2084 /* BorderView.swift in Sources */,
@@ -513,6 +560,8 @@
 				536FFA0EF451B723E43BDE2C8B097700 /* CheckoutPresentationController.swift in Sources */,
 				AF322CCC9D260BCD3FC64A7F610E1F35 /* CheckoutProviderType.swift in Sources */,
 				14FE809FB385706F26267467E91D751F /* CheckoutSummaryPaymentStackView.swift in Sources */,
+				E9E00C3A1D81BD420052FD83 /* EditAddressType.swift in Sources */,
+				E9E00C341D81BD100052FD83 /* TextFieldInputStackView.swift in Sources */,
 				DB2470DB4F51D75862D73B20254CB0A7 /* CheckoutSummaryActionsHandler.swift in Sources */,
 				A9E4450E0E6519516F7B93DD9EC4A616 /* CheckoutSummaryFooterStackView.swift in Sources */,
 				1B44638F3D6077F3586EC16ECD50D647 /* CheckoutSummaryMainStackView.swift in Sources */,
@@ -522,14 +571,17 @@
 				B38C79AC7967CA0C0249132BA67FC54D /* CheckoutSummaryViewController.swift in Sources */,
 				62397CD3313BF2E11BF45ED92B6276B4 /* CheckoutTransitioningDelegate.swift in Sources */,
 				5A766973CBD72D26BAC8A4376771F535 /* CheckoutViewModel.swift in Sources */,
+				E9E00C391D81BD420052FD83 /* EditAddressStackView.swift in Sources */,
 				D5D8A7E27A96BEAA8D3EEED93BE86D30 /* CheckoutViewState.swift in Sources */,
 				B030113D1D830C9100AA8298 /* CheckoutSummaryAddressStackView.swift in Sources */,
 				551957A5EB5E575C77598BCEF6462D40 /* Errors.swift in Sources */,
 				83F843D0CD3476E3C2ACFCE643478649 /* LoaderView.swift in Sources */,
+				E96C42961D87FD1D00BF7892 /* AddAddressTableViewCell.swift in Sources */,
 				FD0035C9551735C4B0988C4769495FFF /* Localization.swift in Sources */,
 				6B341730306B04AD89EC6702E85A5077 /* LocalizerProviderType.swift in Sources */,
 				17324CD06CD2DD5514B78F465B354759 /* PaymentProcessingViewController.swift in Sources */,
 				34160EED7155A39B7F8EBDE762263F17 /* PaymentSelectionViewController.swift in Sources */,
+				E9E00C331D81BD100052FD83 /* KeyboardScrollView.swift in Sources */,
 				D4AE291C091C1AD7A4ADA34DFC5D645D /* RoundedViews.swift in Sources */,
 				AC2A991E658A6F0E4A4E5435ABE3BB84 /* SizeListSelectionViewController.swift in Sources */,
 				6AD690A77903B1887A46218251970A9D /* SizeSelectionViewController.swift in Sources */,
@@ -537,10 +589,14 @@
 				BC1ECCD35BAA9A66EA505B1C454025E3 /* UIBuilder.swift in Sources */,
 				79175AD49456E48DC6B393EB6F62053A /* UIColor.swift in Sources */,
 				170D032BE739B3A96834CDAF3CA1D22C /* UIImage.swift in Sources */,
+				E9C9F1CE1D87129A00CEBA80 /* ActionTextField.swift in Sources */,
+				E9E00C3C1D81BD420052FD83 /* EditAddressViewModel.swift in Sources */,
+				E9E00C3B1D81BD420052FD83 /* EditAddressViewController.swift in Sources */,
 				4434BCFA43868F4DBFCFF8980581F9AC /* UIImageView.swift in Sources */,
 				FE2A3356031A3EE41940E824A2E6E1D3 /* UIStackView.swift in Sources */,
 				F3F62025EFDB47B5637DC3C928D69264 /* UITableView.swift in Sources */,
 				DE4482A9091E62348223761D4C58D008 /* UIView.swift in Sources */,
+				E9C9F1CA1D86CC2900CEBA80 /* PickerKeyboardInputView.swift in Sources */,
 				8EB96C51E439F0E511A696F28FE216B1 /* UserMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
