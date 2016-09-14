@@ -42,8 +42,7 @@ class RequestBuilder: Equatable {
         do {
             request = try buildRequest().debugLog()
         } catch let e {
-            completion(.failure(e))
-            return
+            return completion(.failure(e))
         }
 
         dataTask = self.urlSession.dataTaskWithRequest(request,

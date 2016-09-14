@@ -30,8 +30,7 @@ struct ConfigClient: Configurator {
                 completion(.failure(error))
             case .success(let response):
                 guard let config = Config(json: response.body, options: self.options) else {
-                    completion(.failure(AtlasConfigurationError.incorrectConfigServiceResponse))
-                    return
+                    return completion(.failure(AtlasConfigurationError.incorrectConfigServiceResponse))
                 }
                 completion(.success(config))
             }

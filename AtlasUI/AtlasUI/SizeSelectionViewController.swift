@@ -44,8 +44,7 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
             let selectedArticleUnit = SelectedArticleUnit(article: article,
                 selectedUnitIndex: 0)
             let checkoutViewModel = CheckoutViewModel(selectedArticleUnit: selectedArticleUnit)
-            displayCheckoutSummaryViewController(checkoutViewModel)
-            return
+            return displayCheckoutSummaryViewController(checkoutViewModel)
         }
 
         checkout.client.customer { result in

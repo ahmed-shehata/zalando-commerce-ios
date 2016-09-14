@@ -30,8 +30,7 @@ extension CheckoutSummaryActionsHandler {
 
         viewController.showLoader()
         if checkout.hasSameAddress(like: viewController.checkoutViewModel) {
-            createOrder(checkout.id)
-            return
+            return createOrder(checkout.id)
         }
 
         let updateCheckoutRequest = UpdateCheckoutRequest(checkoutViewModel: viewController.checkoutViewModel)
