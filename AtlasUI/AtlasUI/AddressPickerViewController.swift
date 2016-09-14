@@ -76,9 +76,9 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
                 switch result {
                 case .failure(let error):
                     strongSelf.userMessage.show(error: error)
-                case .success(let addressList):
-                    strongSelf.addresses = addressList.addresses
-                    strongSelf.tableviewDelegate?.addresses = addressList.addresses
+                case .success(let addresses):
+                    strongSelf.addresses = addresses
+                    strongSelf.tableviewDelegate?.addresses = addresses
                     strongSelf.tableView.reloadData()
                 }
             }

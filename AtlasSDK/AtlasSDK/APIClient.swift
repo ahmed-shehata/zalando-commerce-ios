@@ -32,4 +32,20 @@ public struct APIClient {
         }
     }
 
+    func fetch<Model: JSONInitializable>(from endpoint: Endpoint, completion: AtlasResult<[Model]> -> Void) {
+        self.requestBuilders.createBuilder(forEndpoint: endpoint, urlSession: urlSession).execute { result in
+            switch result {
+            case .failure(let error):
+                completion(.failure(error))
+            case .success(let response):
+                if let jsons = response.body.array.flatMap({ $0 }) {
+                    let models = jsons.flatMap { Model(json: $0) }
+                    completion(.success(models))
+                } else {
+                    completion(.failure(AtlasAPIError.invalidResponseFormat))
+                }
+            }
+        }
+    }
+
 }
