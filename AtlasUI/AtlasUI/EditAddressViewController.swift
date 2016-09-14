@@ -33,7 +33,7 @@ class EditAddressViewController: UIViewController, CheckoutProviderType {
     init(addressType: EditAddressType, checkout: AtlasCheckout, address: EquatableAddress?, completion: EditAddressCompletion) {
         self.addressType = addressType
         self.checkout = checkout
-        self.addressViewModel = EditAddressViewModel(userAddress: address)
+        self.addressViewModel = EditAddressViewModel(userAddress: address, defaultCountryCode: checkout.client.config.countryCode)
         self.completion = completion
         super.init(nibName: nil, bundle: nil)
     }

@@ -25,8 +25,10 @@ class EditAddressViewModel {
     var isDefaultBilling: Bool = false
     var isDefaultShipping: Bool = false
 
-    init (userAddress: EquatableAddress?) {
-        guard let userAddress = userAddress else { configureCountryCode(); return }
+    init (userAddress: EquatableAddress?, defaultCountryCode: String) {
+        countryCode = defaultCountryCode
+        guard let userAddress = userAddress else { return }
+
         id = userAddress.id
         gender = userAddress.gender
         firstName = userAddress.firstName
@@ -35,15 +37,8 @@ class EditAddressViewModel {
         additional = userAddress.additional
         zip = userAddress.zip
         city = userAddress.city
-        countryCode = userAddress.countryCode
         pickupPointName = userAddress.pickupPoint?.name
         pickupPointMemberId = userAddress.pickupPoint?.memberId
-    }
-
-    private func configureCountryCode() {
-        // TODO: Need to move to DEMO
-        // TODO: Need to use a predefined sales channels for testing until we know the relation between the sales channel and the country
-        countryCode = "DE"
     }
 
     internal func titles(localizer: LocalizerProviderType) -> [String] {

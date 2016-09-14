@@ -6,7 +6,7 @@ import Foundation
 
 public struct APIClient {
 
-    let config: Config
+    public let config: Config
 
     var urlSession: NSURLSession = NSURLSession.sharedSession()
 
