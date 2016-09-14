@@ -85,7 +85,8 @@ extension AddressListTableViewDelegate: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         guard indexPath.row < addresses.count else {
-            return addAddressHandler?()
+            addAddressHandler?()
+            return
         }
 
         selectedAddress = addresses[indexPath.item]
