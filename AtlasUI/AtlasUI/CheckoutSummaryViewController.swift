@@ -51,6 +51,7 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
         setupActions()
 
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        self.navigationController?.navigationBar.accessibilityIdentifier = "checkout-summary-navigation-bar"
     }
 
     internal func showLoader() {

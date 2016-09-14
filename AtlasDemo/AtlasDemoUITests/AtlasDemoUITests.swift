@@ -55,9 +55,9 @@ class AtlasDemoUITests: XCTestCase {
     }
 
     func testBuyProductWithSizesAndNavigatingBack() {
-        let backButton = app.navigationBars["catalog-navigation-controller"].buttons["Back"]
-        let cancelButton = app.navigationBars["catalog-navigation-controller"].buttons["Cancel"]
-        let sizeText = app.tables.staticTexts["XS"] // TODO: change to accesibilityLabel
+        let backButton = app.navigationBars["checkout-summary-navigation-bar"].buttons["Back"]
+        let cancelButton = app.navigationBars["checkout-summary-navigation-bar"].buttons["Cancel"]
+        let sizeText = app.cells["size-cell-XS"]
 
         tapBuyNow("Guess")
 
