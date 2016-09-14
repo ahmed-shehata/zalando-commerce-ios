@@ -10,5 +10,5 @@ github "bonkey/swifter" "stable"
 # AtlasDemo
 
 github "bonkey/SwiftyJSON" "master"
-github "Alamofire/Alamofire" "swift2.3"
-github "Alamofire/AlamofireImage"
+github "Alamofire/Alamofire" "3.5.0"
+github "Alamofire/AlamofireImage" "2.5.0"
