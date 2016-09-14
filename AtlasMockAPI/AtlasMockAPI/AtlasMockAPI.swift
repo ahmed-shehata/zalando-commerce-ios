@@ -7,6 +7,7 @@ import Swifter
 
 public final class AtlasMockAPI {
 
+    private static var isStarted = false
     public static let isEnabledFlag = "ATLAS_MOCK_API_ENABLED"
 
     private static let server = HttpServer()
@@ -15,6 +16,7 @@ public final class AtlasMockAPI {
     public static func startServer(wait timeout: NSTimeInterval = 15) throws {
         try server.registerEndpoints()
         try server.start(serverURL, forceIPv4: false, timeout: timeout)
+        AtlasMockAPI.isStarted = true
         print("AtlasMockAPI server started @ \(serverURL)")
     }
 
@@ -29,6 +31,10 @@ public final class AtlasMockAPI {
         #else
             return serverURL.URLByAppendingPathComponent(path)
         #endif
+    }
+
+    public static var hasMockedAPIStarted: Bool {
+        return isStarted || NSProcessInfo.processInfo().arguments.contains(AtlasMockAPI.isEnabledFlag)
     }
 
 }

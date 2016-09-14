@@ -7,49 +7,54 @@ import AtlasSDK
 
 struct CheckoutViewModel {
 
-    let article: Article
-    let selectedUnitIndex: Int
+    let selectedArticleUnit: SelectedArticleUnit
     let shippingPrice: Article.Price?
-
-    let checkout: Checkout?
+    let cartId: String?
+    var checkout: Checkout?
     internal(set) var customer: Customer?
 
-    private let selectedBillingAddress: BillingAddress?
-    private let selectedShippingAddress: ShippingAddress?
+    var selectedBillingAddress: EquatableAddress?
+    var selectedShippingAddress: EquatableAddress?
 
-    init(article: Article, selectedUnitIndex: Int = 0,
+    init(selectedArticleUnit: SelectedArticleUnit,
         shippingPrice: Article.Price? = nil,
+        cartId: String? = nil,
         checkout: Checkout? = nil,
         customer: Customer? = nil,
-        billingAddress: BillingAddress? = nil,
-        shippingAddress: ShippingAddress? = nil) {
-            self.article = article
-            self.selectedUnitIndex = selectedUnitIndex
+        billingAddress: EquatableAddress? = nil,
+        shippingAddress: EquatableAddress? = nil) {
+            self.selectedArticleUnit = selectedArticleUnit
             self.shippingPrice = shippingPrice
             self.checkout = checkout
             self.customer = customer
-            self.selectedBillingAddress = billingAddress
-            self.selectedShippingAddress = shippingAddress
+            self.selectedBillingAddress = checkout?.billingAddress
+            self.selectedShippingAddress = checkout?.shippingAddress
+            self.cartId = cartId
+
     }
 
 }
 
 extension CheckoutViewModel {
 
-    var billingAddress: BillingAddress? {
-        return checkout?.billingAddress ?? selectedBillingAddress
+    func shippingAddress(localizedWith localizer: LocalizerProviderType) -> [String] {
+        return selectedShippingAddress?.splittedPostalAddress ?? [localizer.loc("No Shipping Address")]
     }
 
-    var shippingAddress: ShippingAddress? {
-        return checkout?.shippingAddress ?? selectedShippingAddress
+    func billingAddress(localizedWith localizer: LocalizerProviderType) -> [String] {
+        return selectedBillingAddress?.splittedPostalAddress ?? [localizer.loc("No Billing Address")]
     }
 
-    func shippingAddress(localizedWith localizer: LocalizerProviderType) -> String {
-        return checkout?.shippingAddress.fullAddress ?? localizer.loc("No Shipping Address")
-    }
-
-    func billingAddress(localizedWith localizer: LocalizerProviderType) -> String {
-        return checkout?.billingAddress.fullAddress ?? localizer.loc("No Billing Address")
+    var submitButtonTitle: String {
+        switch self.checkoutViewState {
+        case .NotLoggedIn: return "Zalando.Checkout"
+        case .CheckoutIncomplete, .LoggedIn:
+            if let paymentMethod = checkout?.payment.selected where paymentMethod.isPaypal() {
+                return "order.place.paypal"
+            }
+            return "order.place"
+        case .OrderPlaced: return "navigation.back.shop"
+        }
     }
 
     var isPaymentSelected: Bool {
@@ -57,7 +62,15 @@ extension CheckoutViewModel {
     }
 
     var selectedUnit: Article.Unit {
-        return article.units[selectedUnitIndex]
+        return article.units[selectedArticleUnit.selectedUnitIndex]
+    }
+
+    var selectedUnitIndex: Int {
+        return selectedArticleUnit.selectedUnitIndex
+    }
+
+    var article: Article {
+        return selectedArticleUnit.article
     }
 
     var shippingPriceValue: Float {
@@ -73,7 +86,16 @@ extension CheckoutViewModel {
     }
 
     var checkoutViewState: CheckoutViewState {
-        return checkout == nil ? .CheckoutIncomplete : .LoggedIn
+        if customer == nil {
+            return .NotLoggedIn
+        }
+        return (checkout == nil || checkout?.payment.selected?.method == nil) ? .CheckoutIncomplete : .LoggedIn
     }
 
+}
+
+extension CheckoutViewModel {
+    var isReadyToCreateCheckout: Bool? {
+        return self.checkout == nil && self.selectedBillingAddress != nil && self.selectedShippingAddress != nil
+    }
 }

@@ -22,7 +22,9 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
     private let exampleImageView = UIImageView()
     private let sampleSKUs = ["L2711E002-Q11", "AZ711N007-Q11",
         "GU121D08Z-Q11", "AZ711N007-Q11",
-        "AZ711N008-G11", "AZ711M001-B11", "AZ711N00B-Q11", "MK151F00E-Q11", "LA254E005-Q11"]
+        "AZ711N008-G11", "AZ711M001-B11",
+        "AZ711N00B-Q11", "MK151F00E-Q11",
+        "LA254E005-Q11"]
 
     override func viewDidLoad() {
         super.viewDidLoad()

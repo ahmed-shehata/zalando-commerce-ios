@@ -7,6 +7,11 @@ import Foundation
 public struct UpdateCheckoutRequest {
     public let billingAddressId: String?
     public let shippingAddressId: String?
+
+    public init(billingAddressId: String? = nil, shippingAddressId: String? = nil) {
+        self.shippingAddressId = shippingAddressId
+        self.billingAddressId = billingAddressId
+    }
 }
 
 extension UpdateCheckoutRequest: JSONRepresentable {
@@ -19,10 +24,10 @@ extension UpdateCheckoutRequest: JSONRepresentable {
     func toJSON() -> [String: AnyObject] {
         var result = [String: AnyObject]()
 
-        if let billingAddressId = billingAddressId {
+        if let billingAddressId = billingAddressId where !billingAddressId.isEmpty {
             result[Keys.billingAddressId] = billingAddressId
         }
-        if let shippingAddressId = shippingAddressId {
+        if let shippingAddressId = shippingAddressId where !shippingAddressId.isEmpty {
             result[Keys.shippingAddressId] = shippingAddressId
         }
         return result

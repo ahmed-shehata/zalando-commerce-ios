@@ -11,10 +11,10 @@ class RequestBuilder: Equatable {
 
     var executionFinished: RequestTaskCompletion?
     var urlSession: NSURLSession
-    var endpoint: EndpointType
+    var endpoint: Endpoint
     private var dataTask: NSURLSessionDataTask?
 
-    init(urlSession: NSURLSession = NSURLSession.sharedSession(), endpoint: EndpointType) {
+    init(urlSession: NSURLSession = NSURLSession.sharedSession(), endpoint: Endpoint) {
         self.urlSession = urlSession
         self.endpoint = endpoint
     }
@@ -38,7 +38,7 @@ class RequestBuilder: Equatable {
     }
 
     func buildAndExecuteSessionTask(completion: ResponseCompletion) {
-        var request: NSMutableURLRequest!
+        let request: NSMutableURLRequest
         do {
             request = try buildRequest().debugLog()
         } catch let e {
@@ -49,8 +49,8 @@ class RequestBuilder: Equatable {
         dataTask = self.urlSession.dataTaskWithRequest(request,
             completionHandler: { data, response, error in
                 if let error = error {
-                    let httpError = AtlasAPIError.nsURLError(code: error.code, details: error.localizedDescription)
-                    completion(.failure(httpError))
+                    let nsURLError = AtlasAPIError.nsURLError(code: error.code, details: error.localizedDescription)
+                    completion(.failure(nsURLError))
                     return
                 }
 
@@ -92,5 +92,5 @@ class RequestBuilder: Equatable {
 }
 
 func == (lhs: RequestBuilder, rhs: RequestBuilder) -> Bool {
-    return unsafeAddressOf(lhs) == unsafeAddressOf(rhs)
+    return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
 }

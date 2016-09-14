@@ -29,19 +29,36 @@ extension AtlasAPIError: UserPresentable {
 
     func message(localizedWith provider: LocalizerProviderType, formatArguments: CVarArgType?...) -> String {
         switch self {
-        case .nsURLError(let code, let details):
-            return "\(details) (#\(code))"
-        case .http(let status, let details):
-            return "\(details~?) (#\(status~?))"
-        case .backend(let status, _, let details):
-            return "\(details~?) (#\(status~?))"
-        default:
+        case .invalidResponseFormat, .noData, .unauthorized:
             return provider.localizer.localizedString(self.localizedDescriptionKey)
+        case let .nsURLError(code, details):
+            return "\(details) (#\(code))"
+        case let .http(status, details):
+            return "\(details~?) (#\(status~?))"
+        case let .backend(status, _, details):
+            return "\(details~?) (#\(status~?))"
+        case let .checkoutFailed(_, _, error):
+            if case let AtlasAPIError.backend(_, _, details) = error {
+                return "\(details~?)"
+            } else {
+                return provider.localizer.localizedString("AtlasAPIError.message.checkoutFailed")
+            }
+        }
+    }
+
+}
+
+extension LoginError: UserPresentable {
+
+    func message(localizedWith provider: LocalizerProviderType, formatArguments: CVarArgType?...) -> String {
+        switch self {
+        case .missingURL, .accessDenied, .missingViewControllerToShowLoginForm:
+            return provider.localizer.localizedString(self.localizedDescriptionKey)
+        case let .requestFailed(error):
+            return "\(error?.localizedDescription~?)"
         }
     }
 
 }
 
 extension AtlasConfigurationError: UserPresentable { }
-
-extension LoginError: UserPresentable { }

@@ -63,7 +63,7 @@ final class LoginViewController: UIViewController {
         switch result {
         case .success:
             return true
-        default:
+        case .failure:
             return false
         }
     }
@@ -100,7 +100,7 @@ extension LoginViewController: UIWebViewDelegate {
     }
 
     func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
-        self.dismissViewController(withFailure: .requestFailed)
+        self.dismissViewController(withFailure: .requestFailed(error: error))
     }
 
     func webViewDidFinishLoad(webView: UIWebView) {

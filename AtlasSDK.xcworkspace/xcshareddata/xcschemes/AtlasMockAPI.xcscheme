@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E893B58D1D2E707A004D9547"
+               BlueprintIdentifier = "6EAF48CE510DEB8F61900BF8679179AD"
                BuildableName = "AtlasMockAPI.framework"
                BlueprintName = "AtlasMockAPI"
                ReferencedContainer = "container:AtlasMockAPI/AtlasMockAPI.xcodeproj">
@@ -33,7 +33,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E81E82191D33C1F300ADD0E6"
+               BlueprintIdentifier = "7A9DE536D7A7A1DEA013E619E317542B"
                BuildableName = "AtlasMockAPITests.xctest"
                BlueprintName = "AtlasMockAPITests"
                ReferencedContainer = "container:AtlasMockAPI/AtlasMockAPI.xcodeproj">
@@ -43,7 +43,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E893B58D1D2E707A004D9547"
+            BlueprintIdentifier = "6EAF48CE510DEB8F61900BF8679179AD"
             BuildableName = "AtlasMockAPI.framework"
             BlueprintName = "AtlasMockAPI"
             ReferencedContainer = "container:AtlasMockAPI/AtlasMockAPI.xcodeproj">
@@ -65,7 +65,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E893B58D1D2E707A004D9547"
+            BlueprintIdentifier = "6EAF48CE510DEB8F61900BF8679179AD"
             BuildableName = "AtlasMockAPI.framework"
             BlueprintName = "AtlasMockAPI"
             ReferencedContainer = "container:AtlasMockAPI/AtlasMockAPI.xcodeproj">
@@ -83,7 +83,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E893B58D1D2E707A004D9547"
+            BlueprintIdentifier = "6EAF48CE510DEB8F61900BF8679179AD"
             BuildableName = "AtlasMockAPI.framework"
             BlueprintName = "AtlasMockAPI"
             ReferencedContainer = "container:AtlasMockAPI/AtlasMockAPI.xcodeproj">

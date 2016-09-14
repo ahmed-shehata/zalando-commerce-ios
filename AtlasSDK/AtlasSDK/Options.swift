@@ -25,6 +25,16 @@ public struct Options {
             }
     }
 
+    public init(basedOn options: Options, clientId: String? = nil,
+        salesChannel: String? = nil, useSandbox: Bool? = nil,
+        interfaceLanguage: String? = nil, configurationURL: NSURL? = nil) {
+            self.clientId = clientId ?? options.clientId
+            self.salesChannel = salesChannel ?? options.salesChannel
+            self.useSandboxEnvironment = useSandbox ?? options.useSandboxEnvironment
+            self.interfaceLanguage = interfaceLanguage ?? options.interfaceLanguage
+            self.configurationURL = configurationURL ?? options.configurationURL
+    }
+
     public func validate() throws {
         if self.clientId.isEmpty {
             throw AtlasConfigurationError.missingClientId

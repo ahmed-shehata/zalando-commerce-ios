@@ -11,14 +11,6 @@ enum CheckoutViewState {
     case OrderPlaced
     case CheckoutIncomplete
 
-    var submitButtonTitleLocalizedKey: String {
-        switch self {
-        case .NotLoggedIn: return "Zalando.Checkout"
-        case .CheckoutIncomplete, .LoggedIn: return "order.place"
-        case .OrderPlaced: return "navigation.back.shop"
-        }
-    }
-
     var submitButtonBackgroundColor: UIColor {
         switch self {
         case .NotLoggedIn, .LoggedIn: return .orangeColor()
@@ -48,7 +40,7 @@ enum CheckoutViewState {
         }
     }
 
-    var showFooter: Bool {
+    var showFooterLabel: Bool {
         switch self {
         case .NotLoggedIn, .LoggedIn, .CheckoutIncomplete: return true
         case .OrderPlaced: return false
@@ -59,6 +51,15 @@ enum CheckoutViewState {
         switch self {
         case .NotLoggedIn, .LoggedIn, .CheckoutIncomplete: return true
         case .OrderPlaced: return false
+        }
+    }
+
+    func submitButtonTitle(isPaypal: Bool) -> String {
+        switch self {
+        case .NotLoggedIn: return "Zalando.Checkout"
+        case .CheckoutIncomplete, .LoggedIn:
+            return isPaypal ? "order.place.paypal" : "order.place"
+        case .OrderPlaced: return "navigation.back.shop"
         }
     }
 

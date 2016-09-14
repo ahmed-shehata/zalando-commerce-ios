@@ -8,7 +8,7 @@ import AtlasSDK
 final class SizeSelectionViewController: UIViewController, CheckoutProviderType {
 
     private let sku: String
-    internal let checkout: AtlasCheckout!
+    internal let checkout: AtlasCheckout
 
     init(checkout: AtlasCheckout, sku: String) {
         self.checkout = checkout
@@ -41,7 +41,9 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
 
     private func showCheckoutScreen(article: Article, selectedUnitIndex: Int) {
         guard Atlas.isUserLoggedIn() else {
-            let checkoutViewModel = CheckoutViewModel(article: article, selectedUnitIndex: 0)
+            let selectedArticleUnit = SelectedArticleUnit(article: article,
+                selectedUnitIndex: 0)
+            let checkoutViewModel = CheckoutViewModel(selectedArticleUnit: selectedArticleUnit)
             displayCheckoutSummaryViewController(checkoutViewModel)
             return
         }
@@ -57,7 +59,9 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
     }
 
     private func generateCheckout(withArticle article: Article, customer: Customer) {
-        checkout.createCheckout(withArticle: article, selectedUnitIndex: 0) { result in
+        let selectedArticleUnit = SelectedArticleUnit(article: article,
+            selectedUnitIndex: 0)
+        checkout.updateCheckoutViewModel(selectedArticleUnit) { result in
             switch result {
             case .failure(let error):
                 self.dismissViewControllerAnimated(true) {
@@ -70,11 +74,12 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
     }
 
     private func displayCheckoutSummaryViewController(checkoutViewModel: CheckoutViewModel) {
-        if let checkoutSummaryVC = CheckoutSummaryStoryboardViewController.instantiateFromStoryBoard(checkout, checkoutViewModel:
-                checkoutViewModel) {
-                    UIView.performWithoutAnimation {
-                        self.showViewController(checkoutSummaryVC, sender: self)
-                    }
+        let checkoutSummaryVC = CheckoutSummaryViewController(checkout: checkout, checkoutViewModel: checkoutViewModel)
+
+        Async.main {
+            UIView.performWithoutAnimation {
+                self.showViewController(checkoutSummaryVC, sender: self)
+            }
         }
     }
 

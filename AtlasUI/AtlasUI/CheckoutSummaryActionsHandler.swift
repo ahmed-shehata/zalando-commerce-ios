@@ -7,7 +7,19 @@ import AtlasSDK
 
 struct CheckoutSummaryActionsHandler {
 
-    internal unowned let viewController: CheckoutSummaryStoryboardViewController
+    internal unowned let viewController: CheckoutSummaryViewController
+
+}
+
+extension Checkout {
+
+    func hasSameAddress(like checkoutViewModel: CheckoutViewModel) -> Bool {
+        guard let billingAddress = checkoutViewModel.selectedBillingAddress,
+            shippingAddress = checkoutViewModel.selectedShippingAddress else {
+                return false
+        }
+        return shippingAddress == self.shippingAddress && billingAddress == self.billingAddress
+    }
 
 }
 
@@ -17,13 +29,33 @@ extension CheckoutSummaryActionsHandler {
         guard let checkout = viewController.checkoutViewModel.checkout else { return }
 
         viewController.showLoader()
-        viewController.checkout.client.createOrder(checkout.id) { result in
-            self.viewController.hideLoader()
+        if checkout.hasSameAddress(like: viewController.checkoutViewModel) {
+            createOrder(checkout.id)
+            return
+        }
+
+        let updateCheckoutRequest = UpdateCheckoutRequest(checkoutViewModel: viewController.checkoutViewModel)
+
+        viewController.checkout.client.updateCheckout(checkout.id, updateCheckoutRequest: updateCheckoutRequest) { result in
             switch result {
             case .failure(let error):
                 self.viewController.userMessage.show(error: error)
+                self.viewController.hideLoader()
+            case .success(let checkout):
+                self.createOrder(checkout.id)
+            }
+        }
+    }
+
+    internal func createOrder(checkoutId: String) {
+        viewController.checkout.client.createOrder(checkoutId) { result in
+            switch result {
+            case .failure(let error):
+                self.viewController.userMessage.show(error: error)
+                self.viewController.hideLoader()
             case .success (let order):
                 self.handleOrderConfirmation(order)
+                self.viewController.hideLoader()
             }
         }
     }
@@ -47,8 +79,8 @@ extension CheckoutSummaryActionsHandler {
 
     private func generateCheckout(customer: Customer) {
         viewController.showLoader()
-        viewController.checkout.createCheckout(withArticle: viewController.checkoutViewModel.article,
-            selectedUnitIndex: viewController.checkoutViewModel.selectedUnitIndex) { result in
+        viewController.checkout.updateCheckoutViewModel(viewController.checkoutViewModel.selectedArticleUnit,
+            checkoutViewModel: viewController.checkoutViewModel) { result in
                 self.viewController.hideLoader()
                 switch result {
                 case .failure(let error):
@@ -72,14 +104,30 @@ extension CheckoutSummaryActionsHandler {
         guard let paymentURL = viewController.checkoutViewModel.checkout?.payment.selectionPageUrl else { return }
 
         let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
-        paymentSelectionViewController.paymentCompletion = { _ in
-            self.loadCustomerData()
+        paymentSelectionViewController.paymentCompletion = { result in
+            switch result {
+            case .success:
+                self.loadCustomerData()
+            case .failure(let error):
+                self.viewController.userMessage.show(error: error)
+            }
         }
         viewController.showViewController(paymentSelectionViewController, sender: viewController)
     }
 
     internal func showShippingAddressSelectionScreen() {
-        let addressSelectionViewController = AddressPickerViewController(checkout: viewController.checkout, addressType: .shipping)
+        guard Atlas.isUserLoggedIn() else { return loadCustomerData() }
+        let addressSelectionViewController = AddressPickerViewController(checkout: viewController.checkout,
+            addressType: .shipping, addressSelectionCompletion: pickedAddressCompletion)
+        addressSelectionViewController.selectedAddress = viewController.checkoutViewModel.selectedShippingAddress
+        viewController.showViewController(addressSelectionViewController, sender: viewController)
+    }
+
+    internal func showBillingAddressSelectionScreen() {
+        guard Atlas.isUserLoggedIn() else { return loadCustomerData() }
+        let addressSelectionViewController = AddressPickerViewController(checkout: viewController.checkout, addressType: .billing,
+            addressSelectionCompletion: pickedAddressCompletion)
+        addressSelectionViewController.selectedAddress = viewController.checkoutViewModel.selectedBillingAddress
         viewController.showViewController(addressSelectionViewController, sender: viewController)
     }
 
@@ -90,10 +138,59 @@ extension CheckoutSummaryActionsHandler {
         }
 
         let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
-        paymentSelectionViewController.paymentCompletion = { _ in
-            self.viewController.viewState = .OrderPlaced
+        paymentSelectionViewController.paymentCompletion = { result in
+            switch result {
+            case .success:
+                self.viewController.viewState = .OrderPlaced
+            case .failure(let error):
+                self.viewController.userMessage.show(error: error)
+            }
         }
         viewController.showViewController(paymentSelectionViewController, sender: viewController)
     }
 
+}
+
+extension CheckoutSummaryActionsHandler {
+    func pickedAddressCompletion(pickedAddress address: EquatableAddress,
+        forAddressType addressType: AddressType) {
+
+            switch addressType {
+            case AddressType.billing:
+                viewController.checkoutViewModel.selectedBillingAddress = address
+            case AddressType.shipping:
+                viewController.checkoutViewModel.selectedShippingAddress = address
+            }
+            viewController.hideLoader()
+            viewController.rootStackView.configureData(viewController)
+            viewController.refreshViewData()
+
+            guard let
+                cartId = viewController.checkoutViewModel.cartId,
+                readyToCreateCheckout = viewController.checkoutViewModel.isReadyToCreateCheckout where readyToCreateCheckout == true
+            else { return }
+            viewController.showLoader()
+
+            viewController.createCheckout(cartId) { result in
+                self.viewController.hideLoader()
+                switch result {
+
+                case .failure(let error):
+                    self.viewController.dismissViewControllerAnimated(true) {
+                        self.viewController.userMessage.show(error: error)
+                    }
+                case .success(let checkout):
+                    self.viewController.checkoutViewModel.checkout = checkout
+                    self.viewController.rootStackView.configureData(self.viewController)
+                    self.viewController.refreshViewData()
+                }
+            }
+    }
+}
+
+extension UpdateCheckoutRequest {
+    init (checkoutViewModel: CheckoutViewModel) {
+        self.init(billingAddressId: checkoutViewModel.selectedBillingAddress?.id,
+            shippingAddressId: checkoutViewModel.selectedBillingAddress?.id)
+    }
 }

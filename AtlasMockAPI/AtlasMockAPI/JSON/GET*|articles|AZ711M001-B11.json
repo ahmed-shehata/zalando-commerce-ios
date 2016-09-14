@@ -1,0 +1,275 @@
+{
+  "id" : "AZ711M001-B11",
+  "name" : "Stiefel - fennec",
+  "brand" : {
+    "name" : "Alberto Zago"
+  },
+  "units" : [ {
+    "id" : "AZ711M001-B110370000",
+    "size" : "37",
+    "price" : {
+      "amount" : 209.95,
+      "currency" : "EUR"
+    },
+    "original_price" : {
+      "amount" : 299.95,
+      "currency" : "EUR"
+    },
+    "available" : true,
+    "stock" : 1
+  }, {
+    "id" : "AZ711M001-B110400000",
+    "size" : "40",
+    "price" : {
+      "amount" : 209.95,
+      "currency" : "EUR"
+    },
+    "original_price" : {
+      "amount" : 299.95,
+      "currency" : "EUR"
+    },
+    "available" : false,
+    "stock" : 0
+  }, {
+    "id" : "AZ711M001-B110405000",
+    "size" : "40.5",
+    "price" : {
+      "amount" : 209.95,
+      "currency" : "EUR"
+    },
+    "original_price" : {
+      "amount" : 299.95,
+      "currency" : "EUR"
+    },
+    "available" : false,
+    "stock" : 0
+  }, {
+    "id" : "AZ711M001-B110350000",
+    "size" : "35",
+    "price" : {
+      "amount" : 209.95,
+      "currency" : "EUR"
+    },
+    "original_price" : {
+      "amount" : 299.95,
+      "currency" : "EUR"
+    },
+    "available" : false,
+    "stock" : 0
+  }, {
+    "id" : "AZ711M001-B110375000",
+    "size" : "37.5",
+    "price" : {
+      "amount" : 209.95,
+      "currency" : "EUR"
+    },
+    "original_price" : {
+      "amount" : 299.95,
+      "currency" : "EUR"
+    },
+    "available" : false,
+    "stock" : 0
+  }, {
+    "id" : "AZ711M001-B110395000",
+    "size" : "39.5",
+    "price" : {
+      "amount" : 209.95,
+      "currency" : "EUR"
+    },
+    "original_price" : {
+      "amount" : 299.95,
+      "currency" : "EUR"
+    },
+    "available" : false,
+    "stock" : 0
+  }, {
+    "id" : "AZ711M001-B110410000",
+    "size" : "41",
+    "price" : {
+      "amount" : 209.95,
+      "currency" : "EUR"
+    },
+    "original_price" : {
+      "amount" : 299.95,
+      "currency" : "EUR"
+    },
+    "available" : true,
+    "stock" : 1
+  }, {
+    "id" : "AZ711M001-B110420000",
+    "size" : "42",
+    "price" : {
+      "amount" : 209.95,
+      "currency" : "EUR"
+    },
+    "original_price" : {
+      "amount" : 299.95,
+      "currency" : "EUR"
+    },
+    "available" : true,
+    "stock" : 1
+  }, {
+    "id" : "AZ711M001-B110380000",
+    "size" : "38",
+    "price" : {
+      "amount" : 209.95,
+      "currency" : "EUR"
+    },
+    "original_price" : {
+      "amount" : 299.95,
+      "currency" : "EUR"
+    },
+    "available" : false,
+    "stock" : 0
+  }, {
+    "id" : "AZ711M001-B110390000",
+    "size" : "39",
+    "price" : {
+      "amount" : 209.95,
+      "currency" : "EUR"
+    },
+    "original_price" : {
+      "amount" : 299.95,
+      "currency" : "EUR"
+    },
+    "available" : false,
+    "stock" : 0
+  }, {
+    "id" : "AZ711M001-B110340000",
+    "size" : "34",
+    "price" : {
+      "amount" : 209.95,
+      "currency" : "EUR"
+    },
+    "original_price" : {
+      "amount" : 299.95,
+      "currency" : "EUR"
+    },
+    "available" : false,
+    "stock" : 0
+  }, {
+    "id" : "AZ711M001-B110385000",
+    "size" : "38.5",
+    "price" : {
+      "amount" : 209.95,
+      "currency" : "EUR"
+    },
+    "original_price" : {
+      "amount" : 299.95,
+      "currency" : "EUR"
+    },
+    "available" : false,
+    "stock" : 0
+  }, {
+    "id" : "AZ711M001-B110360000",
+    "size" : "36",
+    "price" : {
+      "amount" : 209.95,
+      "currency" : "EUR"
+    },
+    "original_price" : {
+      "amount" : 299.95,
+      "currency" : "EUR"
+    },
+    "available" : false,
+    "stock" : 0
+  } ],
+  "media" : {
+    "images" : [ {
+      "order" : 1,
+      "catalog" : "https://i6.ztat.net/catalog/AZ/71/1M/00/1B/11/AZ711M001-B11@12.1.jpg",
+      "catalog_hd" : "https://i6.ztat.net/catalog_hd/AZ/71/1M/00/1B/11/AZ711M001-B11@12.1.jpg",
+      "detail" : "https://i6.ztat.net/detail/AZ/71/1M/00/1B/11/AZ711M001-B11@12.1.jpg",
+      "detail_hd" : "https://i6.ztat.net/detail_hd/AZ/71/1M/00/1B/11/AZ711M001-B11@12.1.jpg",
+      "large" : "https://i6.ztat.net/large/AZ/71/1M/00/1B/11/AZ711M001-B11@12.1.jpg",
+      "large_hd" : "https://i6.ztat.net/large_hd/AZ/71/1M/00/1B/11/AZ711M001-B11@12.1.jpg"
+    }, {
+      "order" : 2,
+      "catalog" : "https://i1.ztat.net/catalog/AZ/71/1M/00/1B/11/AZ711M001-B11@11.1.jpg",
+      "catalog_hd" : "https://i1.ztat.net/catalog_hd/AZ/71/1M/00/1B/11/AZ711M001-B11@11.1.jpg",
+      "detail" : "https://i1.ztat.net/detail/AZ/71/1M/00/1B/11/AZ711M001-B11@11.1.jpg",
+      "detail_hd" : "https://i1.ztat.net/detail_hd/AZ/71/1M/00/1B/11/AZ711M001-B11@11.1.jpg",
+      "large" : "https://i1.ztat.net/large/AZ/71/1M/00/1B/11/AZ711M001-B11@11.1.jpg",
+      "large_hd" : "https://i1.ztat.net/large_hd/AZ/71/1M/00/1B/11/AZ711M001-B11@11.1.jpg"
+    }, {
+      "order" : 3,
+      "catalog" : "https://i2.ztat.net/catalog/AZ/71/1M/00/1B/11/AZ711M001-B11@10.1.jpg",
+      "catalog_hd" : "https://i2.ztat.net/catalog_hd/AZ/71/1M/00/1B/11/AZ711M001-B11@10.1.jpg",
+      "detail" : "https://i2.ztat.net/detail/AZ/71/1M/00/1B/11/AZ711M001-B11@10.1.jpg",
+      "detail_hd" : "https://i2.ztat.net/detail_hd/AZ/71/1M/00/1B/11/AZ711M001-B11@10.1.jpg",
+      "large" : "https://i2.ztat.net/large/AZ/71/1M/00/1B/11/AZ711M001-B11@10.1.jpg",
+      "large_hd" : "https://i2.ztat.net/large_hd/AZ/71/1M/00/1B/11/AZ711M001-B11@10.1.jpg"
+    }, {
+      "order" : 4,
+      "catalog" : "https://i3.ztat.net/catalog/AZ/71/1M/00/1B/11/AZ711M001-B11@9.1.jpg",
+      "catalog_hd" : "https://i3.ztat.net/catalog_hd/AZ/71/1M/00/1B/11/AZ711M001-B11@9.1.jpg",
+      "detail" : "https://i3.ztat.net/detail/AZ/71/1M/00/1B/11/AZ711M001-B11@9.1.jpg",
+      "detail_hd" : "https://i3.ztat.net/detail_hd/AZ/71/1M/00/1B/11/AZ711M001-B11@9.1.jpg",
+      "large" : "https://i3.ztat.net/large/AZ/71/1M/00/1B/11/AZ711M001-B11@9.1.jpg",
+      "large_hd" : "https://i3.ztat.net/large_hd/AZ/71/1M/00/1B/11/AZ711M001-B11@9.1.jpg"
+    }, {
+      "order" : 5,
+      "catalog" : "https://i4.ztat.net/catalog/AZ/71/1M/00/1B/11/AZ711M001-B11@8.1.jpg",
+      "catalog_hd" : "https://i4.ztat.net/catalog_hd/AZ/71/1M/00/1B/11/AZ711M001-B11@8.1.jpg",
+      "detail" : "https://i4.ztat.net/detail/AZ/71/1M/00/1B/11/AZ711M001-B11@8.1.jpg",
+      "detail_hd" : "https://i4.ztat.net/detail_hd/AZ/71/1M/00/1B/11/AZ711M001-B11@8.1.jpg",
+      "large" : "https://i4.ztat.net/large/AZ/71/1M/00/1B/11/AZ711M001-B11@8.1.jpg",
+      "large_hd" : "https://i4.ztat.net/large_hd/AZ/71/1M/00/1B/11/AZ711M001-B11@8.1.jpg"
+    }, {
+      "order" : 6,
+      "catalog" : "https://i5.ztat.net/catalog/AZ/71/1M/00/1B/11/AZ711M001-B11@7.1.jpg",
+      "catalog_hd" : "https://i5.ztat.net/catalog_hd/AZ/71/1M/00/1B/11/AZ711M001-B11@7.1.jpg",
+      "detail" : "https://i5.ztat.net/detail/AZ/71/1M/00/1B/11/AZ711M001-B11@7.1.jpg",
+      "detail_hd" : "https://i5.ztat.net/detail_hd/AZ/71/1M/00/1B/11/AZ711M001-B11@7.1.jpg",
+      "large" : "https://i5.ztat.net/large/AZ/71/1M/00/1B/11/AZ711M001-B11@7.1.jpg",
+      "large_hd" : "https://i5.ztat.net/large_hd/AZ/71/1M/00/1B/11/AZ711M001-B11@7.1.jpg"
+    } ]
+  },
+  "reviews" : {
+    "summary" : {
+      "total" : 3,
+      "rating" : {
+        "average" : 4.0,
+        "distribution" : [ {
+          "level" : "5",
+          "count" : 0
+        }, {
+          "level" : "4",
+          "count" : 3
+        }, {
+          "level" : "3",
+          "count" : 0
+        }, {
+          "level" : "2",
+          "count" : 0
+        }, {
+          "level" : "1",
+          "count" : 0
+        } ]
+      },
+      "recommendations" : {
+        "total" : 3,
+        "positive" : 1
+      }
+    },
+    "entries" : [ {
+      "title" : "enger Schaft",
+      "description" : "Die Passweite am Fuß ist 100 % genau und sehr bequem, aber auch bei normalen Waden ist es nicht möglich, oben durch den Schaft zu kommen. Sie auf dem Bild \"weit\" aus, ist aber in Wirklichkeit überhaupt nicht. Aufpassen! Lieder zurück, hätte aber sehr gerne behalten, wenn die Stiefel mir gepasst hätten!!!!\n",
+      "rating" : 4,
+      "recommends" : false,
+      "created" : "2016-02-09T13:47:26.176Z"
+    }, {
+      "title" : "Schön!",
+      "description" : "Sehr schön aber zu eng für mich...",
+      "rating" : 4,
+      "recommends" : true,
+      "created" : "2015-09-07T09:27:30.861Z"
+    }, {
+      "title" : "Schön...",
+      "description" : "...aber nicht was ich gesucht habe. Ich wollte einen Stiefel der an der Wade locker und lässig sitzt. \nAm Knöchel locker, weiter oben liegt der Stiefel an der Wade doch an (wahrscheinlich hab ich zu kräftige Waden). Sonst recht bequem. \nErscheint mir in 38 allerdings doch größer als meine anderen Stiefel. ",
+      "rating" : 4,
+      "recommends" : false,
+      "created" : "2015-08-07T09:32:27.470Z"
+    } ]
+  }
+}
