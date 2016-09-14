@@ -26,8 +26,7 @@ class APICustomerSpec: APIClientBaseSpec {
                     client.customer { result in
                         defer { done() }
                         guard case let .success(customer) = result else {
-                            fail("Should return Customer")
-                            return
+                            return fail("Should return Customer")
                         }
 
                         expect(customer.customerNumber).to(equal("12345678"))

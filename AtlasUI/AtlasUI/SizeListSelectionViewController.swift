@@ -67,9 +67,8 @@ final class SizeListSelectionViewController: UITableViewController, CheckoutProv
             let selectedArticleUnit = SelectedArticleUnit(article: article,
                 selectedUnitIndex: 0)
             let checkoutViewModel = CheckoutViewModel(selectedArticleUnit: selectedArticleUnit)
-            displayCheckoutSummaryViewController(checkoutViewModel)
             spinner.stopAnimating()
-            return
+            return displayCheckoutSummaryViewController(checkoutViewModel)
         }
 
         self.checkout.client.customer { result in
