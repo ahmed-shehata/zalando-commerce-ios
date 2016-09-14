@@ -2,29 +2,20 @@
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
-import Foundation
-import AtlasSDK
+import UIKit
 
-final class AddressRowViewCell: UITableViewCell {
+class AddAddressTableViewCell: UITableViewCell {
 
     internal let stackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.axis = .Vertical
+        stackView.axis = .Horizontal
         stackView.spacing = 2
-        stackView.layoutMargins = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
+        stackView.layoutMargins = UIEdgeInsets(top: 20, left: 15, bottom: 20, right: 15)
         stackView.layoutMarginsRelativeArrangement = true
         return stackView
     }()
 
-    internal let titleLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.font = .systemFontOfSize(16)
-        label.textColor = .blackColor()
-        return label
-    }()
-
-    internal let addressLabel: UILabel = {
+    internal let addAddressLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.font = .systemFontOfSize(14, weight: UIFontWeightLight)
@@ -43,12 +34,11 @@ final class AddressRowViewCell: UITableViewCell {
 
 }
 
-extension AddressRowViewCell: UIBuilder {
+extension AddAddressTableViewCell: UIBuilder {
 
     func configureView() {
         contentView.addSubview(stackView)
-        stackView.addArrangedSubview(titleLabel)
-        stackView.addArrangedSubview(addressLabel)
+        stackView.addArrangedSubview(addAddressLabel)
     }
 
     func configureConstraints() {
@@ -57,13 +47,12 @@ extension AddressRowViewCell: UIBuilder {
 
 }
 
-extension AddressRowViewCell: UIDataBuilder {
 
-    typealias T = UserAddress
+extension AddAddressTableViewCell: UIDataBuilder {
+
+    typealias T = LocalizerProviderType
 
     func configureData(viewModel: T) {
-        titleLabel.text = viewModel.formattedContact
-        addressLabel.text = viewModel.formattedPostalAddress.trimmed
+        addAddressLabel.text = viewModel.loc("Address.Add.cellTitle")
     }
-
 }

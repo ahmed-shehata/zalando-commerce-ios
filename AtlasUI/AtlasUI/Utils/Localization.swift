@@ -41,6 +41,11 @@ struct Localizer {
         return String(format: localizedString, arguments: formatArguments.flatMap { $0 })
     }
 
+    func countryName(forCountryCode countryCode: String?) -> String? {
+        guard let countryCode = countryCode else { return nil }
+        return locale.displayNameForKey(NSLocaleCountryCode, value: countryCode)
+    }
+
     func fmtPrice(number: NSNumber) -> String? {
         return priceFormatter.stringFromNumber(number)
     }

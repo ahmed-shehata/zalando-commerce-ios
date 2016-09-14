@@ -59,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func prepareMockAPI() {
         if alwaysUseMockAPI && !AtlasMockAPI.hasMockedAPIStarted {
-            try! AtlasMockAPI.startServer() // swiftlint:disable:this force_unwrapping
+            try! AtlasMockAPI.startServer() // swiftlint:disable:this force_try
         }
     }
 

@@ -10,6 +10,16 @@ extension UIView {
         subviews.forEach { $0.removeFromSuperview() }
     }
 
+    func findFirstResponder() -> UIView? {
+        guard !isFirstResponder() else { return self }
+        for view in subviews {
+            if let subView = view.findFirstResponder() {
+                return subView
+            }
+        }
+        return nil
+    }
+
 }
 
 extension UIView {
