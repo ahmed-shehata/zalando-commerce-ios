@@ -11,6 +11,7 @@ enum AddressType {
 }
 
 typealias AddressSelectionCompletion = (pickedAddress: EquatableAddress, pickedAddressType: AddressType) -> Void
+typealias AddAddressHandler = Void -> Void
 
 final class AddressPickerViewController: UIViewController, CheckoutProviderType {
 
@@ -53,10 +54,22 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
             self.title = "Shipping Address"
         }
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        self.navigationItem.rightBarButtonItem?.accessibilityIdentifier = "address-picker-right-button"
         self.setupTableView()
         fetchAddresses()
+        tableviewDelegate?.addAddressHandler = { [weak self] in
+            self?.showAddAddress()
+        }
+
         self.navigationController?.navigationBar.accessibilityIdentifier = "address-picker-navigation-bar"
+        self.navigationItem.rightBarButtonItem?.accessibilityIdentifier = "address-picker-right-button"
+    }
+
+    dynamic private func showAddAddress() {
+        let viewController = EditAddressViewController(addressType: .NormalAddress, checkout: checkout, address: nil)
+        viewController.completion = { print($0) }
+        let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.modalPresentationStyle = .OverCurrentContext
+        self.navigationController?.showViewController(navigationController, sender: nil)
     }
 
     private func fetchAddresses() {
@@ -66,9 +79,9 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
                 switch result {
                 case .failure(let error):
                     strongSelf.userMessage.show(error: error)
-                case .success(let addressList):
-                    strongSelf.addresses = addressList.addresses
-                    strongSelf.tableviewDelegate?.addresses = addressList.addresses
+                case .success(let addresses):
+                    strongSelf.addresses = addresses
+                    strongSelf.tableviewDelegate?.addresses = addresses
                     strongSelf.tableView.reloadData()
                 }
             }
@@ -81,13 +94,12 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
     }
 
     func setupTableView() {
-
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.fillInSuperView()
 
         tableView.delegate = tableviewDelegate
         tableView.dataSource = tableviewDelegate
         tableView.registerReusableCell(AddressRowViewCell.self)
+        tableView.registerReusableCell(AddAddressTableViewCell.self)
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
         tableView.reloadData()

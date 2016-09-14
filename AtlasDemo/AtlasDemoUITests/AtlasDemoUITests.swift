@@ -83,7 +83,7 @@ class AtlasDemoUITests: XCTestCase {
         waitForElementToAppearAndTap(size)
         tapConnectAndLogin()
         changeShippingAddress()
-        tapBackToSummaryButton()
+        tapBackToSummaryFromPickingAddressButton()
         tapPlaceOrder()
         tapBackToShop()
 
@@ -96,7 +96,7 @@ class AtlasDemoUITests: XCTestCase {
         waitForElementToAppearAndTap(size)
         tapConnectAndLogin()
         changeBillingAddress()
-        tapBackToSummaryButton()
+        tapBackToSummaryFromPickingAddressButton()
         tapPlaceOrder()
         tapBackToShop()
     }
@@ -138,7 +138,7 @@ class AtlasDemoUITests: XCTestCase {
         waitForElementToAppearAndTap(app.buttons["checkout-footer-button"])
     }
 
-    private func tapBackToSummaryButton() {
+    private func tapBackToSummaryFromPickingAddressButton() {
         waitForElementToAppearAndTap(app.navigationBars["address-picker-navigation-bar"].buttons["Back"])
     }
 

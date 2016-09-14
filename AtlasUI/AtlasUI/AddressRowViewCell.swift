@@ -7,55 +7,63 @@ import AtlasSDK
 
 final class AddressRowViewCell: UITableViewCell {
 
-    var address: UserAddress! {
-        didSet {
-            updateViews()
-        }
-    }
+    internal let stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .Vertical
+        stackView.spacing = 2
+        stackView.layoutMargins = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
+        stackView.layoutMarginsRelativeArrangement = true
+        return stackView
+    }()
 
-    private let titleLabel = UILabel()
+    internal let titleLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.font = .systemFontOfSize(16)
+        label.textColor = .blackColor()
+        return label
+    }()
 
-    private let fullAddressLabel = UILabel()
+    internal let addressLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.font = .systemFontOfSize(14, weight: UIFontWeightLight)
+        label.textColor = UIColor(hex: 0x555555)
+        return label
+    }()
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupViews()
+        buildView()
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private struct Metrics {
-        static let topPadding: CGFloat = 10
-        static let bottomPadding: CGFloat = 10
-        static let leadingPadding: CGFloat = 15
-        static let trailingPadding: CGFloat = 15
+}
+
+extension AddressRowViewCell: UIBuilder {
+
+    func configureView() {
+        contentView.addSubview(stackView)
+        stackView.addArrangedSubview(titleLabel)
+        stackView.addArrangedSubview(addressLabel)
     }
 
-    private func setupViews() {
-        contentView.backgroundColor = .clearColor()
-
-        titleLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.numberOfLines = 0
-        contentView.addSubview(titleLabel)
-        titleLabel.topAnchor.constraintEqualToAnchor(contentView.topAnchor, constant: Metrics.topPadding).active = true
-        titleLabel.leadingAnchor.constraintEqualToAnchor(contentView.leadingAnchor, constant: Metrics.leadingPadding).active = true
-        titleLabel.trailingAnchor.constraintEqualToAnchor(contentView.trailingAnchor, constant: -Metrics.trailingPadding).active = true
-
-        fullAddressLabel.translatesAutoresizingMaskIntoConstraints = false
-        fullAddressLabel.numberOfLines = 0
-        contentView.addSubview(fullAddressLabel)
-        fullAddressLabel.topAnchor.constraintEqualToAnchor(titleLabel.bottomAnchor).active = true
-        fullAddressLabel.leadingAnchor.constraintEqualToAnchor(titleLabel.leadingAnchor).active = true
-        fullAddressLabel.trailingAnchor.constraintEqualToAnchor(titleLabel.trailingAnchor).active = true
-        fullAddressLabel.bottomAnchor.constraintEqualToAnchor(contentView.bottomAnchor, constant: -Metrics.bottomPadding).active = true
+    func configureConstraints() {
+        stackView.fillInSuperView()
     }
 
-    private func updateViews() {
-        titleLabel.text = address.formattedContact
-        fullAddressLabel.text = address.formattedPostalAddress
+}
+
+extension AddressRowViewCell: UIDataBuilder {
+
+    typealias T = UserAddress
+
+    func configureData(viewModel: T) {
+        titleLabel.text = viewModel.formattedContact
+        addressLabel.text = viewModel.formattedPostalAddress.trimmed
     }
 
 }
