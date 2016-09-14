@@ -49,6 +49,9 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
         setupView()
         setupViewState()
         setupActions()
+
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        self.navigationController?.navigationBar.accessibilityIdentifier = "checkout-summary-navigation-bar"
     }
 
     internal func showLoader() {
@@ -146,6 +149,7 @@ extension CheckoutSummaryViewController {
                 style: .Plain,
                 target: self,
                 action: #selector(CheckoutSummaryViewController.cancelCheckoutTapped))
+            button.accessibilityIdentifier = "navigation-bar-cancel-button"
             navigationItem.rightBarButtonItem = button
 
             navigationController?.navigationBar.translucent = false

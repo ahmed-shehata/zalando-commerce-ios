@@ -48,6 +48,8 @@ final class SizeListSelectionViewController: UITableViewController, CheckoutProv
             cell.backgroundColor = UIColor.clearColor()
             cell.opaque = false
             cell.accessoryView = nil
+            cell.accessibilityIdentifier = "size-cell-\(indexPath.row)"
+            cell.accessibilityLabel = "size-cell-\(unit.size)"
             return cell
         }
     }
