@@ -61,43 +61,8 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
     }
 
     private func configureTableviewDelegate() {
-        tableviewDelegate?.addAddressHandler = { [weak self] in
-            guard let strongSelf = self else { return }
-
-            let addAddressCompletion: EditAddressCompletion = {
-                // TODO: Call Add Webservice
-                print($0)
-            }
-
-            let title = strongSelf.loc("Address.Add.type.title")
-            let standardAction = ButtonAction(text: strongSelf.loc("Address.Add.type.standard"), style: .Default) { (UIAlertAction) in
-                strongSelf.showAddAddress(.StandardAddress, address: nil, completion: addAddressCompletion)
-            }
-            let pickupPointAction = ButtonAction(text: strongSelf.loc("Address.Add.type.pickupPoint"), style: .Default) { (UIAlertAction) in
-                strongSelf.showAddAddress(.PickupPoint, address: nil, completion: addAddressCompletion)
-            }
-            let cancelAction = ButtonAction(text: strongSelf.loc("Cancel"), style: .Cancel, handler: nil)
-
-            strongSelf.userMessage.show(title: title,
-                                        message: nil,
-                                        actions: standardAction, pickupPointAction, cancelAction,
-                                        preferredStyle: .ActionSheet)
-        }
-
-        tableviewDelegate?.editAddressSelectionHandler = { [weak self] (address) in
-            let addressType: EditAddressType = address.pickupPoint == nil ? .StandardAddress : .PickupPoint
-            self?.showAddAddress(addressType, address: address) {
-                // TODO: Call Edit Webservice
-                print($0)
-            }
-        }
-    }
-
-    private func showAddAddress(type: EditAddressType, address: EquatableAddress?, completion: EditAddressCompletion) {
-        let viewController = EditAddressViewController(addressType: type, checkout: checkout, address: address, completion: completion)
-        let navigationController = UINavigationController(rootViewController: viewController)
-        navigationController.modalPresentationStyle = .OverCurrentContext
-        self.navigationController?.showViewController(navigationController, sender: nil)
+        configureAddNewAddress()
+        configureEditAddress()
     }
 
     private func fetchAddresses() {
@@ -133,6 +98,57 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
         tableView.estimatedRowHeight = 100
         tableView.reloadData()
 
+    }
+
+}
+
+extension AddressPickerViewController {
+
+    private func showAddAddress(type: EditAddressType, address: EquatableAddress?, completion: EditAddressCompletion) {
+        let viewController = EditAddressViewController(addressType: type, checkout: checkout, address: address, completion: completion)
+        let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.modalPresentationStyle = .OverCurrentContext
+        self.navigationController?.showViewController(navigationController, sender: nil)
+    }
+
+    private func configureAddNewAddress() {
+        tableviewDelegate?.addAddressHandler = { [weak self] in
+            guard let strongSelf = self else { return }
+
+            let addAddressCompletion: EditAddressCompletion = {
+                // TODO: Call Add Webservice
+                print($0)
+            }
+
+            guard strongSelf.addressType == .shipping else {
+                strongSelf.showAddAddress(.StandardAddress, address: nil, completion: addAddressCompletion)
+                return
+            }
+
+            let title = strongSelf.loc("Address.Add.type.title")
+            let standardAction = ButtonAction(text: strongSelf.loc("Address.Add.type.standard"), style: .Default) { (UIAlertAction) in
+                strongSelf.showAddAddress(.StandardAddress, address: nil, completion: addAddressCompletion)
+            }
+            let pickupPointAction = ButtonAction(text: strongSelf.loc("Address.Add.type.pickupPoint"), style: .Default) { (UIAlertAction) in
+                strongSelf.showAddAddress(.PickupPoint, address: nil, completion: addAddressCompletion)
+            }
+            let cancelAction = ButtonAction(text: strongSelf.loc("Cancel"), style: .Cancel, handler: nil)
+
+            strongSelf.userMessage.show(title: title,
+                                        message: nil,
+                                        actions: standardAction, pickupPointAction, cancelAction,
+                                        preferredStyle: .ActionSheet)
+        }
+    }
+
+    private func configureEditAddress() {
+        tableviewDelegate?.editAddressSelectionHandler = { [weak self] (address) in
+            let addressType: EditAddressType = address.pickupPoint == nil ? .StandardAddress : .PickupPoint
+            self?.showAddAddress(addressType, address: address) {
+                // TODO: Call Edit Webservice
+                print($0)
+            }
+        }
     }
 
 }
