@@ -39,15 +39,10 @@ extension AddressListTableViewDelegate: UITableViewDataSource {
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         guard indexPath.row < addresses.count else {
-            return tableView.dequeueReusableCell(AddAddressTableViewCell.self, forIndexPath: indexPath, completion: { result in
-                switch result {
-                case .dequeuedCell(let cell):
-                    cell.configureData(self.checkout)
-                    return cell
-                case .defaultCell(let cell):
-                    return cell
-                }
-            })
+            return tableView.dequeueReusableCell(AddAddressTableViewCell.self, forIndexPath: indexPath) { cell in
+                cell.configureData(self.checkout)
+                return cell
+            }
         }
 
         return tableView.dequeueReusableCell(AddressRowViewCell.self, forIndexPath: indexPath) { result in
@@ -65,6 +60,8 @@ extension AddressListTableViewDelegate: UITableViewDataSource {
             case let .defaultCell(cell):
                 return cell
             }
+
+            return cell
         }
     }
 
@@ -73,8 +70,7 @@ extension AddressListTableViewDelegate: UITableViewDataSource {
 extension AddressListTableViewDelegate: UITableViewDelegate {
 
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        guard indexPath.row < addresses.count else { return false }
-        return true
+        return indexPath.row < addresses.count
     }
 
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle,

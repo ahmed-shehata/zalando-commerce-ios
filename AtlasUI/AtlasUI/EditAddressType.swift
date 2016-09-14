@@ -46,7 +46,7 @@ enum EditAddressField {
 
     func value(viewModel: EditAddressViewModel, localizer: LocalizerProviderType) -> String? {
         switch self {
-        case .Title: return viewModel.gender?.title(localizer)
+        case .Title: return viewModel.localizedTitle(localizer)
         case .FirstName: return viewModel.firstName
         case .LastName: return viewModel.lastName
         case .Street: return viewModel.street

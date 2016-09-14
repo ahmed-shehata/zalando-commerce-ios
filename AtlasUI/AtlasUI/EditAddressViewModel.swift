@@ -58,11 +58,15 @@ class EditAddressViewModel {
         }
     }
 
+    internal func localizedTitle(localizer: LocalizerProviderType) -> String? {
+        return gender?.title(localizer)
+    }
+
 }
 
 extension Gender {
 
-    internal func title(localizer: LocalizerProviderType) -> String {
+    private func title(localizer: LocalizerProviderType) -> String {
         switch self {
         case .male: return localizer.loc("Address.edit.gender.male")
         case .female: return localizer.loc("Address.edit.gender.female")
