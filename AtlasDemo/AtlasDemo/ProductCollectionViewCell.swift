@@ -22,6 +22,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
         if let imageUrl = article.imageThumbURL {
             self.thumbImageView.af_setImageWithURL(imageUrl)
         }
+        self.buyNowButton.accessibilityIdentifier = "buy-now"
     }
 
     @IBAction func buyNowButtonTapped(sender: AnyObject) {

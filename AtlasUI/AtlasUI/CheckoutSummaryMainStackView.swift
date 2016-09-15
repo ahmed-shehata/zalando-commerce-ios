@@ -22,12 +22,13 @@ class CheckoutSummaryMainStackView: UIStackView {
         return view
     }()
 
-    internal let shippingAddressStackView: CheckoutSummaryActionRowStackView = {
-        let stackView = CheckoutSummaryActionRowStackView()
+    internal let shippingAddressStackView: CheckoutSummaryAddressStackView = {
+        let stackView = CheckoutSummaryAddressStackView()
         stackView.axis = .Horizontal
         stackView.spacing = 5
         stackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         stackView.layoutMarginsRelativeArrangement = true
+        stackView.accessibilityIdentifier = "shipping-stack-view"
         return stackView
     }()
 
@@ -39,12 +40,13 @@ class CheckoutSummaryMainStackView: UIStackView {
         return view
     }()
 
-    internal let billingAddressStackView: CheckoutSummaryActionRowStackView = {
-        let stackView = CheckoutSummaryActionRowStackView()
+    internal let billingAddressStackView: CheckoutSummaryAddressStackView = {
+        let stackView = CheckoutSummaryAddressStackView()
         stackView.axis = .Horizontal
         stackView.spacing = 5
         stackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         stackView.layoutMarginsRelativeArrangement = true
+        stackView.accessibilityIdentifier = "billing-stack-view"
         return stackView
     }()
 
@@ -56,8 +58,8 @@ class CheckoutSummaryMainStackView: UIStackView {
         return view
     }()
 
-    internal let paymentStackView: CheckoutSummaryActionRowStackView = {
-        let stackView = CheckoutSummaryActionRowStackView()
+    internal let paymentStackView: CheckoutSummaryPaymentStackView = {
+        let stackView = CheckoutSummaryPaymentStackView()
         stackView.axis = .Horizontal
         stackView.spacing = 5
         stackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
@@ -128,19 +130,19 @@ extension CheckoutSummaryMainStackView: UIDataBuilder {
         priceStackView.configureData(viewModel)
         priceStackView.hidden = !viewModel.viewState.showPrice
 
-        shippingAddressStackView.configureData(CheckoutSummaryActionViewModel(
+        shippingAddressStackView.configureData(CheckoutSummaryAddressViewModel(
             title: viewModel.loc("Address.Shipping"),
-            value: viewModel.checkoutViewModel.shippingAddress(localizedWith: viewModel).trimmed,
+            addressLines: viewModel.checkoutViewModel.shippingAddress(localizedWith: viewModel),
             showArrow: viewModel.viewState.showDetailArrow)
         )
 
-        billingAddressStackView.configureData(CheckoutSummaryActionViewModel(
+        billingAddressStackView.configureData(CheckoutSummaryAddressViewModel(
             title: viewModel.loc("Address.Billing"),
-            value: viewModel.checkoutViewModel.billingAddress(localizedWith: viewModel).trimmed,
+            addressLines: viewModel.checkoutViewModel.billingAddress(localizedWith: viewModel),
             showArrow: viewModel.viewState.showDetailArrow)
         )
 
-        paymentStackView.configureData(CheckoutSummaryActionViewModel(
+        paymentStackView.configureData(CheckoutSummaryPaymentViewModel(
             title: viewModel.loc("Payment"),
             value: viewModel.checkoutViewModel.selectedPaymentMethod ?? "",
             showArrow: viewModel.viewState.showDetailArrow)

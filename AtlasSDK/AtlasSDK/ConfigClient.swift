@@ -29,9 +29,8 @@ struct ConfigClient: Configurator {
             case .failure(let error):
                 completion(.failure(error))
             case .success(let response):
-                guard let config = Config(json: response.body, options: self.options) else {
-                    completion(.failure(AtlasConfigurationError.incorrectConfigServiceResponse))
-                    return
+                guard let json = response.body, config = Config(json: json, options: self.options) else {
+                    return completion(.failure(AtlasConfigurationError.incorrectConfigServiceResponse))
                 }
                 completion(.success(config))
             }

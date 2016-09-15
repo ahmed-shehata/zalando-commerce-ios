@@ -5,7 +5,7 @@
 import Foundation
 
 public typealias ArticlesCompletion = AtlasResult<Article> -> Void
-public typealias AddressesCompletion = AtlasResult<AddressList> -> Void
+public typealias AddressesCompletion = AtlasResult<[UserAddress]> -> Void
 
 /**
  Completion block `AtlasResult` with the `Customer` struct as a success value
@@ -32,8 +32,7 @@ public typealias CheckoutCompletion = AtlasResult<Checkout> -> Void
  */
 public typealias OrderCompletion = AtlasResult<Order> -> Void
 
-@available( *, deprecated, message = "Should be deleted")
-public typealias EmptyCompletion = AtlasResult<EmptyResponse> -> Void
+public typealias NoContentCompletion = AtlasResult<Bool> -> Void
 
 extension APIClient {
 
@@ -55,35 +54,35 @@ extension APIClient {
     public func createCheckout(withSelectedArticleUnit selectedArticleUnit: SelectedArticleUnit,
         billingAddressId: String? = nil, shippingAddressId: String? = nil, completion: CheckoutCompletion) {
             let articleSKU = selectedArticleUnit.article.units[selectedArticleUnit.selectedUnitIndex].id
-        let cartItemRequest = CartItemRequest(sku: articleSKU, quantity: 1)
+            let cartItemRequest = CartItemRequest(sku: articleSKU, quantity: 1)
 
-        createCart(cartItemRequest) { cartResult in
-            switch cartResult {
-            case .failure(let error):
-                completion(.failure(error))
+            createCart(cartItemRequest) { cartResult in
+                switch cartResult {
+                case .failure(let error):
+                    completion(.failure(error))
 
-            case .success(let cart):
-                self.addresses { addressListResult in
-                    switch addressListResult {
-                    case .failure(let error):
-                        completion(.failure(error))
+                case .success(let cart):
+                    self.addresses { addressListResult in
+                        switch addressListResult {
+                        case .failure(let error):
+                            completion(.failure(error))
 
-                    case .success(let addressList):
+                        case .success(let addressList):
                             self.createCheckout(cart.id, billingAddressId: billingAddressId,
                                 shippingAddressId: shippingAddressId) { checkoutResult in
-                            switch checkoutResult {
-                            case .failure(let error):
+                                    switch checkoutResult {
+                                    case .failure(let error):
                                         let checkoutError = AtlasAPIError.checkoutFailed(addresses: addressList,
                                             cartId: cart.id, error: error)
-                                completion(.failure(checkoutError))
-                            case .success(let checkout):
-                                completion(.success(checkout))
+                                        completion(.failure(checkoutError))
+                                    case .success(let checkout):
+                                        completion(.success(checkout))
+                                    }
                             }
                         }
                     }
                 }
             }
-        }
     }
 
     public func createCheckout(cartId: String, billingAddressId: String? = nil,
@@ -130,11 +129,11 @@ extension APIClient {
         fetch(from: endpoint, completion: completion)
     }
 
-    public func deleteAddress(addressId: String, completion: EmptyCompletion) {
+    public func deleteAddress(addressId: String, completion: NoContentCompletion) {
         let endpoint = DeleteAddressEndpoint(serviceURL: config.checkoutAPIURL,
             addressId: addressId,
             salesChannel: config.salesChannel)
-        fetch(from: endpoint, completion: completion)
+        touch(endpoint, completion: completion)
     }
 
 }

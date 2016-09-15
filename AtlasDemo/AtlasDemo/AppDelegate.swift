@@ -14,34 +14,53 @@ var AtlasCheckoutInstance: AtlasCheckout? // swiftlint:disable:this variable_nam
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    static var atlasCheckout: AtlasCheckout?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         BuddyBuildSDK.setup()
 
-        let opts: Options
-        if NSProcessInfo.hasMockedAPIEnabled {
-            resetApp()
-            opts = Options(clientId: "atlas_Y2M1MzA",
-                           salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
-                           useSandbox: true, interfaceLanguage: "en_DE",
-                           configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
-        } else {
-            opts = Options(clientId: "atlas_Y2M1MzA",
-                           salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
-                           useSandbox: true, interfaceLanguage: "en_DE")
-        }
+        prepareMockAPI()
+        prepareApp()
 
+        let opts = prepareOptions()
         AtlasCheckout.configure(opts) { result in
             if case let .success(checkout) = result {
                 AtlasCheckoutInstance = checkout
             }
         }
+
         return true
     }
 
-    private func resetApp() {
-        Atlas.logoutCustomer()
+    private var alwaysUseMockAPI: Bool {
+        #if DEBUG
+            return true
+        #else
+            return false
+        #endif
+    }
+
+    private func prepareApp() {
+        if AtlasMockAPI.hasMockedAPIStarted {
+            Atlas.logoutCustomer()
+        }
+    }
+
+    private func prepareOptions() -> Options {
+        var opts = Options(clientId: "atlas_Y2M1MzA",
+            salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
+            useSandbox: true, interfaceLanguage: "en_DE")
+
+        if AtlasMockAPI.hasMockedAPIStarted {
+            opts = Options(basedOn: opts, configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
+        }
+
+        return opts
+    }
+
+    private func prepareMockAPI() {
+        if alwaysUseMockAPI && !AtlasMockAPI.hasMockedAPIStarted {
+            try! AtlasMockAPI.startServer() // swiftlint:disable:this force_try
+        }
     }
 
 }

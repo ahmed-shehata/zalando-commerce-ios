@@ -12,7 +12,11 @@ class BorderView: UIView {
     var leftBorder: Bool = false
     var leadingMargin: CGFloat = 0
     var trailingMarging: CGFloat = 0
-    var borderColor: UIColor = .blackColor()
+    var borderColor: UIColor = .blackColor() {
+        didSet {
+            subviews.forEach { $0.backgroundColor = borderColor }
+        }
+    }
 
     private let onePixel = 1 / UIScreen.mainScreen().scale
 

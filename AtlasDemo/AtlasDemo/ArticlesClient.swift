@@ -20,12 +20,10 @@ class ArticlesClient {
     func fetch(articlesForSKUs skus: [String], completion: ArticlesCompletion) {
         Alamofire.request(.GET, endpointURL(forSKUs: skus)).responseString { response in
             if let error = response.result.error {
-                completion(.failure(ArticlesError.Error(error)))
-                return
+                return completion(.failure(ArticlesError.Error(error)))
             }
             guard let responseString = response.result.value else {
-                completion(.failure(ArticlesError.NoData))
-                return
+                return completion(.failure(ArticlesError.NoData))
             }
             let articles = DemoCatalog(jsonString: responseString).articles
             completion(.success(articles))
@@ -33,7 +31,7 @@ class ArticlesClient {
     }
 
     private func endpointURL(forSKUs skus: [String]) -> NSURL {
-        if NSProcessInfo.hasMockedAPIEnabled {
+        if AtlasMockAPI.hasMockedAPIStarted {
             return AtlasMockAPI.endpointURL(forPath: "/articles")
         }
 

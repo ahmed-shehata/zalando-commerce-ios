@@ -4,13 +4,6 @@
 
 import Foundation
 
-enum DequeueResult<T> {
-
-    case dequeuedCell(T)
-    case defaultCell(UITableViewCell)
-
-}
-
 extension UITableView {
 
     private func reusableIdentifier(cellClass: AnyClass) -> String {
@@ -22,13 +15,12 @@ extension UITableView {
     }
 
     func dequeueReusableCell<T: UITableViewCell>(cellClass: T.Type, forIndexPath indexPath: NSIndexPath,
-        completion: DequeueResult<T> -> UITableViewCell) -> UITableViewCell {
+        completion: T -> UITableViewCell) -> UITableViewCell {
             let cellId = reusableIdentifier(cellClass)
             guard let cell = self.dequeueReusableCellWithIdentifier(cellId, forIndexPath: indexPath) as? T else {
-                let defaultCell = UITableViewCell(style: .Default, reuseIdentifier: cellId)
-                return completion(.defaultCell(defaultCell))
+                return UITableViewCell(style: .Default, reuseIdentifier: cellId)
             }
-            return completion(.dequeuedCell(cell))
+            return completion(cell)
     }
 
 }

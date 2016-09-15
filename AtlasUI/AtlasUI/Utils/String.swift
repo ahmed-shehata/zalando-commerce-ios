@@ -10,6 +10,10 @@ extension String {
         return stringByTrimmingCharactersInSet(.whitespaceAndNewlineCharacterSet())
     }
 
+    var trimmedLength: Int {
+        return trimmed.characters.count
+    }
+
 }
 
 postfix operator ~? { }

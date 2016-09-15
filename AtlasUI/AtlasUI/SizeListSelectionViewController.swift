@@ -42,19 +42,15 @@ final class SizeListSelectionViewController: UITableViewController, CheckoutProv
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(UITableViewCell.self, forIndexPath: indexPath) { result in
-            switch result {
-            case .dequeuedCell(let cell):
-                let unit = self.article.units[indexPath.item]
-                cell.textLabel?.text = unit.size
-                cell.backgroundColor = UIColor.clearColor()
-                cell.opaque = false
-                cell.accessoryView = nil
-                return cell
-            case .defaultCell(let cell):
-                return cell
-            }
-
+        return tableView.dequeueReusableCell(UITableViewCell.self, forIndexPath: indexPath) { cell in
+            let unit = self.article.units[indexPath.item]
+            cell.textLabel?.text = unit.size
+            cell.backgroundColor = UIColor.clearColor()
+            cell.opaque = false
+            cell.accessoryView = nil
+            cell.accessibilityIdentifier = "size-cell-\(indexPath.row)"
+            cell.accessibilityLabel = "size-cell-\(unit.size)"
+            return cell
         }
     }
 
@@ -71,9 +67,8 @@ final class SizeListSelectionViewController: UITableViewController, CheckoutProv
             let selectedArticleUnit = SelectedArticleUnit(article: article,
                 selectedUnitIndex: 0)
             let checkoutViewModel = CheckoutViewModel(selectedArticleUnit: selectedArticleUnit)
-            displayCheckoutSummaryViewController(checkoutViewModel)
             spinner.stopAnimating()
-            return
+            return displayCheckoutSummaryViewController(checkoutViewModel)
         }
 
         self.checkout.client.customer { result in
