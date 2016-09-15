@@ -104,21 +104,23 @@ extension CheckoutSummaryPriceStackView: UIDataBuilder {
         totalTitleLabel.text = viewModel.loc("Total")
         totalValueLabel.text = viewModel.localizer.fmtPrice(viewModel.checkoutViewModel.totalPriceValue)
         vatTitleLabel.text = viewModel.loc("vat.included")
-        let estimatedDelivery = viewModel.loc("estimated.delivery") + ": "
-        var datesString = ""
 
-        if (viewModel.checkoutViewModel.checkout?.delivery.earliest != viewModel.checkoutViewModel.checkout?.delivery.latest) {
-            if let earliest = viewModel.checkoutViewModel.checkout?.delivery.earliest, earliestString = viewModel.localizer.fmtDate(earliest) {
-                datesString += earliestString + " - "
-            }
+        formatDeliveryDates(viewModel)
+    }
+
+    private func formatDeliveryDates(viewModel: T) {
+        deliveryLabel.text = ""
+
+        guard let delivery = viewModel.checkoutViewModel.checkout?.delivery else { return }
+
+        if let earliest = delivery.earliest {
+            deliveryLabel.text = viewModel.loc("estimated.delivery.range",
+                viewModel.localizer.fmtDate(earliest),
+                viewModel.localizer.fmtDate(delivery.latest))
+        } else {
+            deliveryLabel.text = viewModel.loc("estimated.delivery.date",
+                viewModel.localizer.fmtDate(delivery.latest))
         }
-
-        if let latest = viewModel.checkoutViewModel.checkout?.delivery.latest,
-            latestString = viewModel.localizer.fmtDate(latest) {
-                datesString += latestString
-        }
-
-        deliveryLabel.text = datesString.isEmpty ? "" : estimatedDelivery + datesString
     }
 
 }
