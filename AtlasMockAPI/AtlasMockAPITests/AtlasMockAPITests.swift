@@ -52,8 +52,7 @@ class AtlasMockAPITests: XCTestCase {
             Alamofire.request(method, url).responseString { response in
 
                 guard let data = response.data else {
-                    XCTFail()
-                    return
+                    return XCTFail()
                 }
 
                 if let completion = completion {

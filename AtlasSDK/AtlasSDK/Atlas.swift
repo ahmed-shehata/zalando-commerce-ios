@@ -20,8 +20,7 @@ public struct Atlas {
             try options.validate()
         } catch let error {
             AtlasLogger.logError(error)
-            completion(.failure(error))
-            return
+            return completion(.failure(error))
         }
 
         var configurator = ConfigClient(options: options)

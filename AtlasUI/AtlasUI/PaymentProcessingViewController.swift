@@ -45,8 +45,7 @@ internal final class PaymentProcessingViewController: UIViewController, Checkout
             case .success(let order):
                 print(order)
                 guard let paymentURL = order.externalPaymentUrl else {
-                    self.showSuccessImage()
-                    return
+                    return self.showSuccessImage()
                 }
                 let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
                 paymentSelectionViewController.paymentCompletion = { _ in

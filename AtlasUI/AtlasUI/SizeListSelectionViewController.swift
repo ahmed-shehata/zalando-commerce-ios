@@ -48,6 +48,8 @@ final class SizeListSelectionViewController: UITableViewController, CheckoutProv
             cell.backgroundColor = UIColor.clearColor()
             cell.opaque = false
             cell.accessoryView = nil
+            cell.accessibilityIdentifier = "size-cell-\(indexPath.row)"
+            cell.accessibilityLabel = "size-cell-\(unit.size)"
             return cell
         }
     }
@@ -65,9 +67,8 @@ final class SizeListSelectionViewController: UITableViewController, CheckoutProv
             let selectedArticleUnit = SelectedArticleUnit(article: article,
                 selectedUnitIndex: 0)
             let checkoutViewModel = CheckoutViewModel(selectedArticleUnit: selectedArticleUnit)
-            displayCheckoutSummaryViewController(checkoutViewModel)
             spinner.stopAnimating()
-            return
+            return displayCheckoutSummaryViewController(checkoutViewModel)
         }
 
         self.checkout.client.customer { result in

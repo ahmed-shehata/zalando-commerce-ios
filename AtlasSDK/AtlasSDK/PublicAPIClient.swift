@@ -32,8 +32,7 @@ public typealias CheckoutCompletion = AtlasResult<Checkout> -> Void
  */
 public typealias OrderCompletion = AtlasResult<Order> -> Void
 
-@available( *, deprecated, message = "Should be deleted")
-public typealias EmptyCompletion = AtlasResult<EmptyResponse> -> Void
+public typealias NoContentCompletion = AtlasResult<Bool> -> Void
 
 extension APIClient {
 
@@ -130,11 +129,11 @@ extension APIClient {
         fetch(from: endpoint, completion: completion)
     }
 
-    public func deleteAddress(addressId: String, completion: EmptyCompletion) {
+    public func deleteAddress(addressId: String, completion: NoContentCompletion) {
         let endpoint = DeleteAddressEndpoint(serviceURL: config.checkoutAPIURL,
             addressId: addressId,
             salesChannel: config.salesChannel)
-        fetch(from: endpoint, completion: completion)
+        touch(endpoint, completion: completion)
     }
 
 }

@@ -31,6 +31,8 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
         exampleImageView.image = UIImage(named: "example")
         productCollectionView.delegate = self
         productCollectionView.dataSource = self
+
+        self.navigationController?.navigationBar.accessibilityIdentifier = "catalog-navigation-controller"
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -51,9 +53,12 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ProductCollectionViewCell", forIndexPath: indexPath)
-        (cell as? ProductCollectionViewCell)?.setupCell(withArticle: articles[indexPath.row])
+        guard let productCell = cell as? ProductCollectionViewCell else {
+            return cell
+        }
 
-        return cell
+        productCell.setupCell(withArticle: articles[indexPath.row])
+        return productCell
     }
 
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -62,10 +67,6 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return articles.count
-    }
-
-    @IBAction private func buyButtonTapped(sender: UIButton) {
-        AtlasCheckoutInstance?.presentCheckoutView(sku: "N1242A0WI-K13")
     }
 
 }
