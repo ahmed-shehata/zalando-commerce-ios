@@ -4,7 +4,7 @@
 
 import Foundation
 
-struct UpdateAddressEndPoint: ConfigurableEndpoint {
+struct UpdateAddressEndpoint: ConfigurableEndpoint {
 
     let serviceURL: NSURL
     let method: HTTPMethod = .PUT

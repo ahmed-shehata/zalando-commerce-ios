@@ -32,8 +32,8 @@ extension CreateAddressRequest: JSONRepresentable {
         static let defaultShipping = "default_shipping"
     }
 
-    func toJSON() -> [String : AnyObject] {
-        var result: [String : AnyObject] = [
+    func toJSON() -> [String: AnyObject] {
+        var result: [String: AnyObject] = [
             Keys.gender: gender.rawValue,
             Keys.firstName: firstName,
             Keys.lastName: lastName,

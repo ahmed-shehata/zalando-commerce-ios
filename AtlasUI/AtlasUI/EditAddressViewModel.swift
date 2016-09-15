@@ -57,6 +57,32 @@ class EditAddressViewModel {
 
 }
 
+extension CreateAddressRequest {
+
+    internal init? (addressViewModel: EditAddressViewModel) {
+
+        guard let
+            gender = addressViewModel.gender,
+            firstName = addressViewModel.firstName,
+            lastName = addressViewModel.lastName,
+            zip = addressViewModel.zip,
+            city = addressViewModel.city else { return nil }
+
+        self.gender = gender
+        self.firstName = firstName
+        self.lastName = lastName
+        self.street = addressViewModel.street
+        self.additional = addressViewModel.additional
+        self.zip = zip
+        self.city = city
+        self.countryCode = addressViewModel.countryCode
+        self.pickupPoint = PickupPoint(addressViewModel: addressViewModel)
+        self.defaultBilling = addressViewModel.isDefaultBilling
+        self.defaultShipping = addressViewModel.isDefaultShipping
+    }
+
+}
+
 extension UpdateAddressRequest {
 
     internal init? (addressViewModel: EditAddressViewModel) {

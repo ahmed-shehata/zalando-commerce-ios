@@ -10,8 +10,8 @@ class AddressListTableViewDelegate: NSObject {
     internal var checkout: AtlasCheckout
     private let addressType: AddressType
     private let selectionCompletion: AddressSelectionCompletion
-    internal var addAddressHandler: AddAddressHandler?
-    internal var editAddressSelectionHandler: EditAddressSelectionHandler?
+    internal var createAddressHandler: CreateAddressHandler?
+    internal var updateAddressHandler: UpdateAddressHandler?
 
     var addresses: [UserAddress] = []
     var selectedAddress: EquatableAddress? {
@@ -47,7 +47,7 @@ extension AddressListTableViewDelegate: UITableViewDataSource {
 
         return tableView.dequeueReusableCell(AddressRowViewCell.self, forIndexPath: indexPath) { cell in
             let address = self.addresses[indexPath.item]
-            cell.configureData(address)
+            cell.configureData(AddressRowCellViewModel(userAddress: address, localizer: self.checkout))
             if let selectedAddress = self.selectedAddress where selectedAddress == address {
                 cell.accessoryType = .Checkmark
             } else {
@@ -89,12 +89,12 @@ extension AddressListTableViewDelegate: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         guard indexPath.row < addresses.count else {
-            addAddressHandler?()
+            createAddressHandler?()
             return
         }
 
         if tableView.editing {
-            editAddressSelectionHandler?(address: addresses[indexPath.item])
+            updateAddressHandler?(address: addresses[indexPath.item])
         } else {
             selectedAddress = addresses[indexPath.item]
             tableView.reloadData()

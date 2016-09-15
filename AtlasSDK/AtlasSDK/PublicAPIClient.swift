@@ -4,8 +4,10 @@
 
 import Foundation
 
-public typealias ArticlesCompletion = AtlasResult<Article> -> Void
-public typealias AddressesCompletion = AtlasResult<[UserAddress]> -> Void
+/**
+ Completion block `AtlasResult` with the no content returned
+ */
+public typealias NoContentCompletion = AtlasResult<Bool> -> Void
 
 /**
  Completion block `AtlasResult` with the `Customer` struct as a success value
@@ -32,7 +34,21 @@ public typealias CheckoutCompletion = AtlasResult<Checkout> -> Void
  */
 public typealias OrderCompletion = AtlasResult<Order> -> Void
 
-public typealias NoContentCompletion = AtlasResult<Bool> -> Void
+/**
+ Completion block `AtlasResult` with the `Article` struct as a success value
+ */
+public typealias ArticlesCompletion = AtlasResult<Article> -> Void
+
+/**
+ Completion block `AtlasResult` with arry of the `UserAddress` struct as a success value
+ */
+public typealias AddressesCompletion = AtlasResult<[UserAddress]> -> Void
+
+/**
+ Completion block `AtlasResult` with the `UserAddress` struct as a success value
+ */
+public typealias AddressCreateUpdateCompletion = AtlasResult<UserAddress> -> Void
+
 
 extension APIClient {
 
@@ -136,8 +152,15 @@ extension APIClient {
         touch(endpoint, completion: completion)
     }
 
-    public func updateAddress(addressId: String, request: UpdateAddressRequest, completion: EmptyCompletion) {
-        let endpoint = UpdateAddressEndPoint(serviceURL: config.checkoutAPIURL,
+    public func createAddress(request: CreateAddressRequest, completion: AddressCreateUpdateCompletion) {
+        let endpoint = CreateAddressEndpoint(serviceURL: config.checkoutAPIURL,
+                                             createAddressRequest: request,
+                                             salesChannel: config.salesChannel)
+        fetch(from: endpoint, completion: completion)
+    }
+
+    public func updateAddress(addressId: String, request: UpdateAddressRequest, completion: AddressCreateUpdateCompletion) {
+        let endpoint = UpdateAddressEndpoint(serviceURL: config.checkoutAPIURL,
                                              addressId: addressId,
                                              updateAddressRequest: request,
                                              salesChannel: config.salesChannel)

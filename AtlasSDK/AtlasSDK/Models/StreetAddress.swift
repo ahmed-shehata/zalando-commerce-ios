@@ -12,11 +12,20 @@ public protocol StreetAddress {
 
 extension StreetAddress {
 
-    var addressLine1: String {
-        return street ?? pickupPoint?.name ?? ""
+    public var isPickupPoint: Bool {
+        return pickupPoint != nil
     }
-    var addressLine2: String {
-        return additional ?? pickupPoint?.memberId ?? ""
+
+    public var addressLine1: String {
+        return (isPickupPoint ? pickupPoint?.id : street) ?? ""
+    }
+
+    public var addressLine2: String {
+        return (isPickupPoint ? pickupPoint?.memberId : additional) ?? ""
+    }
+
+    public var shortAddressLine: String {
+        return [addressLine1, addressLine2].filter { !$0.isEmpty }.joinWithSeparator(", ")
     }
 
 }

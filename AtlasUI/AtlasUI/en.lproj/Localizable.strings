@@ -61,3 +61,7 @@
 "Address.Add.type.standard" = "Standard";
 "Address.Add.type.pickupPoint" = "Pickup Point";
 "Address.Add.cellTitle" = "Add new address...";
+
+"Address.prefix.packstation" = "Packstation";
+"Address.prefix.memberID" = "Member ID";
+"Address.prefix.packstation.abbreviation" = "P.S.";
