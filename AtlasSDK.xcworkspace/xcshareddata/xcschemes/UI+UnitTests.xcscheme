@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "81FCA8D71D0FE05D00209E9B"
+               BlueprintIdentifier = "2A09D0C5F782D7D824F5F39015890DE6"
                BuildableName = "AtlasDemo.app"
                BlueprintName = "AtlasDemo"
                ReferencedContainer = "container:AtlasDemo/AtlasDemo.xcodeproj">
@@ -33,7 +33,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "81FCA8EB1D0FE05D00209E9B"
+               BlueprintIdentifier = "67F9DDC7BA66504563712E65544C2F4E"
                BuildableName = "AtlasDemo.xctest"
                BlueprintName = "AtlasDemoUITests"
                ReferencedContainer = "container:AtlasDemo/AtlasDemo.xcodeproj">
@@ -47,7 +47,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "814B7F141D0FD8D70073AF52"
+               BlueprintIdentifier = "4850138AFD7E1EECC8F7F5FD3D02713F"
                BuildableName = "AtlasSDKTests.xctest"
                BlueprintName = "AtlasSDKTests"
                ReferencedContainer = "container:AtlasSDK/AtlasSDK.xcodeproj">
@@ -57,7 +57,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E81E82191D33C1F300ADD0E6"
+               BlueprintIdentifier = "7A9DE536D7A7A1DEA013E619E317542B"
                BuildableName = "AtlasMockAPITests.xctest"
                BlueprintName = "AtlasMockAPITests"
                ReferencedContainer = "container:AtlasMockAPI/AtlasMockAPI.xcodeproj">
@@ -67,7 +67,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8186B1231D51EE2F0068EE37"
+               BlueprintIdentifier = "05766597D649C37825AED617FB1045D0"
                BuildableName = "AtlasUITests.xctest"
                BlueprintName = "AtlasUITests"
                ReferencedContainer = "container:AtlasUI/AtlasUI.xcodeproj">
@@ -77,7 +77,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "81FCA8D71D0FE05D00209E9B"
+            BlueprintIdentifier = "2A09D0C5F782D7D824F5F39015890DE6"
             BuildableName = "AtlasDemo.app"
             BlueprintName = "AtlasDemo"
             ReferencedContainer = "container:AtlasDemo/AtlasDemo.xcodeproj">
@@ -100,7 +100,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "81FCA8D71D0FE05D00209E9B"
+            BlueprintIdentifier = "2A09D0C5F782D7D824F5F39015890DE6"
             BuildableName = "AtlasDemo.app"
             BlueprintName = "AtlasDemo"
             ReferencedContainer = "container:AtlasDemo/AtlasDemo.xcodeproj">
@@ -119,7 +119,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "81FCA8D71D0FE05D00209E9B"
+            BlueprintIdentifier = "2A09D0C5F782D7D824F5F39015890DE6"
             BuildableName = "AtlasDemo.app"
             BlueprintName = "AtlasDemo"
             ReferencedContainer = "container:AtlasDemo/AtlasDemo.xcodeproj">

@@ -40,15 +40,21 @@ final class PaymentSelectionViewController: UIViewController, UIWebViewDelegate 
     }
 
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        guard let success = request.URL?.absoluteString.hasPrefix(successURL) where success else { return true }
+        guard let success = request.URL?.validAbsoluteString.hasPrefix(successURL) where success else { return true }
         dismissViewController(.success(true))
         return false
     }
 
+    #if swift(>=2.3)
+    func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
+        dismissViewController(.failure(error), animated: true)
+    }
+    #else
     func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
         guard let error = error where !errorBecuaseRequestCancelled(error) else { return }
         dismissViewController(.failure(error), animated: true)
     }
+    #endif
 
     private func errorBecuaseRequestCancelled(error: NSError) -> Bool {
         return error.domain == "WebKitErrorDomain"
