@@ -44,16 +44,6 @@ class AtlasDemoUITests: XCTestCase {
         tapBackToShop()
     }
 
-    func testDeleteAddress() {
-        let size = app.cells["size-cell-1"]
-        tapBuyNow("Lamica")
-        waitForElementToAppearAndTap(size)
-        tapConnectAndLogin()
-        app.otherElements["shipping-stack-view"].tap()
-        deleteAddresses()
-        app.buttons["navigation-bar-cancel-button"].tap()
-    }
-
     func testBuyProductWithSizesAndNavigatingBack() {
         let backButton = app.navigationBars["checkout-summary-navigation-bar"].buttons["Back"]
         let cancelButton = app.navigationBars["checkout-summary-navigation-bar"].buttons["Cancel"]
@@ -109,6 +99,16 @@ class AtlasDemoUITests: XCTestCase {
     func changeBillingAddress() {
         app.otherElements["billing-stack-view"].tap()
         app.cells["address-selection-row-1"].tap()
+    }
+
+    func testDeleteAddress() {
+        let size = app.cells["size-cell-1"]
+        tapBuyNow("Lamica")
+        waitForElementToAppearAndTap(size)
+        tapConnectAndLogin()
+        app.otherElements["shipping-stack-view"].tap()
+        deleteAddresses()
+        app.buttons["navigation-bar-cancel-button"].tap()
     }
 
     private func deleteAddresses() {
