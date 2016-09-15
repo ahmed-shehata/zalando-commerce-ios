@@ -66,6 +66,13 @@ class CheckoutSummaryPriceStackView: UIStackView {
         label.textAlignment = .Center
         return label
     }()
+    internal let deliveryLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFontOfSize(10, weight: UIFontWeightLight)
+        label.textColor = .blackColor()
+        label.textAlignment = .Center
+        return label
+    }()
 
 }
 
@@ -76,6 +83,7 @@ extension CheckoutSummaryPriceStackView: UIBuilder {
         addArrangedSubview(dummySeparatorLabel)
         addArrangedSubview(totalStackView)
         addArrangedSubview(vatTitleLabel)
+        addArrangedSubview(deliveryLabel)
 
         shippingStackView.addArrangedSubview(shippingTitleLabel)
         shippingStackView.addArrangedSubview(shippingValueLabel)
@@ -96,6 +104,21 @@ extension CheckoutSummaryPriceStackView: UIDataBuilder {
         totalTitleLabel.text = viewModel.loc("Total")
         totalValueLabel.text = viewModel.localizer.fmtPrice(viewModel.checkoutViewModel.totalPriceValue)
         vatTitleLabel.text = viewModel.loc("vat.included")
+        let estimatedDelivery = viewModel.loc("estimated.delivery") + ": "
+        var datesString = ""
+
+        if (viewModel.checkoutViewModel.checkout?.delivery.earliest != viewModel.checkoutViewModel.checkout?.delivery.latest) {
+            if let earliest = viewModel.checkoutViewModel.checkout?.delivery.earliest, earliestString = viewModel.localizer.fmtDate(earliest) {
+                datesString += earliestString + " - "
+            }
+        }
+
+        if let latest = viewModel.checkoutViewModel.checkout?.delivery.latest,
+            latestString = viewModel.localizer.fmtDate(latest) {
+                datesString += latestString
+        }
+
+        deliveryLabel.text = datesString.isEmpty ? "" : estimatedDelivery + datesString
     }
 
 }

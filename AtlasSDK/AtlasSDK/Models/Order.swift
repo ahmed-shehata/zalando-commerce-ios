@@ -47,7 +47,7 @@ extension Order: JSONInitializable {
             shippingAddress: shippingAddress,
             grossTotal: grossTotal,
             taxTotal: taxTotal,
-            created: NSDate(object: json[Keys.created].string, formatter: ISO8601DateFormatter),
+            created: RFC3339DateFormatter().dateFromString(json[Keys.created].string),
             detailUrl: json[Keys.detailUrl].URL,
             externalPaymentUrl: json[Keys.externalPaymentUrl].URL)
     }
