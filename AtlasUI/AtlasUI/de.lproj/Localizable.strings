@@ -9,7 +9,8 @@
 "Done" = "Erledigt";
 "Total" = "Gesamt";
 "vat.included" = "(Incl. MwST)";
-"estimated.delivery" = "Voraussichtliche Lieferung";
+"estimated.delivery.date" = "Voraussichtliche Lieferung: %@";
+"estimated.delivery.range" = "Voraussichtliche Lieferung: %@ - %@";
 "Shipping" = "Versand";
 "Pay %@" = "Zahlen %@";
 "Zalando.Connect" = "Mit Zalando verbinden";

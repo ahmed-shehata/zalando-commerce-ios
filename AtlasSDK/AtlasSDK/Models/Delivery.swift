@@ -19,7 +19,7 @@ extension Delivery: JSONInitializable {
     init?(json: JSON) {
         guard let latest = RFC3339DateFormatter().dateFromString(json[Keys.latest].string)
         else { return nil }
-        let earliest = RFC3339DateFormatter().dateFromString(json[Keys.latest].string)
+        let earliest = RFC3339DateFormatter().dateFromString(json[Keys.earliest].string)
 
         self.init(earliest: earliest, latest: latest)
     }
