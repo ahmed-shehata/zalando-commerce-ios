@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0730"
+   LastUpgradeVersion = "0800"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "810BA01E1D5CCE4B004BDAD9"
+               BlueprintIdentifier = "14551B70B682E9E7A87A9DECCA0A62CB"
                BuildableName = "AtlasMockAPIRunner"
                BlueprintName = "AtlasMockAPIRunner"
                ReferencedContainer = "container:AtlasMockAPI/AtlasMockAPI.xcodeproj">
@@ -32,7 +32,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "810BA01E1D5CCE4B004BDAD9"
+            BlueprintIdentifier = "14551B70B682E9E7A87A9DECCA0A62CB"
             BuildableName = "AtlasMockAPIRunner"
             BlueprintName = "AtlasMockAPIRunner"
             ReferencedContainer = "container:AtlasMockAPI/AtlasMockAPI.xcodeproj">
@@ -55,7 +55,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "810BA01E1D5CCE4B004BDAD9"
+            BlueprintIdentifier = "14551B70B682E9E7A87A9DECCA0A62CB"
             BuildableName = "AtlasMockAPIRunner"
             BlueprintName = "AtlasMockAPIRunner"
             ReferencedContainer = "container:AtlasMockAPI/AtlasMockAPI.xcodeproj">
@@ -74,7 +74,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "810BA01E1D5CCE4B004BDAD9"
+            BlueprintIdentifier = "14551B70B682E9E7A87A9DECCA0A62CB"
             BuildableName = "AtlasMockAPIRunner"
             BlueprintName = "AtlasMockAPIRunner"
             ReferencedContainer = "container:AtlasMockAPI/AtlasMockAPI.xcodeproj">

@@ -6,12 +6,9 @@ import UIKit
 
 class CheckoutSummaryProductStackView: UIStackView {
 
-    internal let articleImageView: RoundedImageView = {
-        let imageView = RoundedImageView()
+    internal let articleImageView: UIImageView = {
+        let imageView = UIImageView()
         imageView.contentMode = .ScaleAspectFit
-        imageView.isCircle = true
-        imageView.borderWidth = 1
-        imageView.borderColor = UIColor(hex: 0xE5E5E5)
         return imageView
     }()
 
@@ -19,6 +16,7 @@ class CheckoutSummaryProductStackView: UIStackView {
         let stackView = UIStackView()
         stackView.axis = .Vertical
         stackView.spacing = 2
+        stackView.distribution = .FillProportionally
         return stackView
     }()
 
@@ -43,6 +41,13 @@ class CheckoutSummaryProductStackView: UIStackView {
         return label
     }()
 
+    internal let unitColorLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFontOfSize(14, weight: UIFontWeightLight)
+        label.textColor = .lightGrayColor()
+        return label
+    }()
+
 }
 
 extension CheckoutSummaryProductStackView: UIBuilder {
@@ -54,6 +59,7 @@ extension CheckoutSummaryProductStackView: UIBuilder {
         detailsStackView.addArrangedSubview(brandNameLabel)
         detailsStackView.addArrangedSubview(articleNameLabel)
         detailsStackView.addArrangedSubview(unitSizeLabel)
+        detailsStackView.addArrangedSubview(unitColorLabel)
     }
 
     func configureConstraints() {

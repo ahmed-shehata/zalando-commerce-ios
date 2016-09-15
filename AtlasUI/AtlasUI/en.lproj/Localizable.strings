@@ -9,6 +9,8 @@
 "Done" = "Done";
 "Total" = "Total";
 "vat.included" = "(VAT Included)";
+"estimated.delivery.date" = "Estimated Delivery: %@";
+"estimated.delivery.range" = "Estimated Delivery: %@ - %@";
 "Shipping" = "Shipping";
 "Pay %@" = "Pay %@";
 "Zalando.Connect" = "Connect to Zalando";

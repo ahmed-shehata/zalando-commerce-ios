@@ -1,6 +1,6 @@
 github "Alamofire/Alamofire" "3.5.0"
 github "Quick/Nimble" "v4.1.0"
 github "Quick/Quick" "v0.9.3"
-github "SwiftyJSON/SwiftyJSON" "2.3.3"
-github "httpswift/swifter" "9b09a2e5c39332624ef068cfcf9e5209175aceb6"
+github "bonkey/SwiftyJSON" "6388ef49187705ec6c5de9b539d980942cc97aa6"
+github "bonkey/swifter" "b250a0d27fb91abebbf3efe458e0f56ef04e6861"
 github "Alamofire/AlamofireImage" "2.5.0"

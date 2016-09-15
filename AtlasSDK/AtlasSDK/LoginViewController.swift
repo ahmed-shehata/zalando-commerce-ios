@@ -37,8 +37,8 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel,
-            target: self,
-            action: .cancelButtonTapped)
+                                                            target: self,
+                                                            action: .cancelButtonTapped)
         automaticallyAdjustsScrollViewInsets = false
 
         view.backgroundColor = .whiteColor()
@@ -83,25 +83,31 @@ private extension Selector {
 extension LoginViewController: UIWebViewDelegate {
 
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest,
-        navigationType: UIWebViewNavigationType) -> Bool {
-            guard let url = request.URL else {
-                return dismissViewController(withFailure: .missingURL)
-            }
+                 navigationType: UIWebViewNavigationType) -> Bool {
+        guard let url = request.URL else {
+            return dismissViewController(withFailure: .missingURL)
+        }
 
-            guard !url.isAccessDenied else {
-                return dismissViewController(withFailure: .accessDenied)
-            }
+        guard !url.isAccessDenied else {
+            return dismissViewController(withFailure: .accessDenied)
+        }
 
-            guard let token = url.accessToken else {
-                return true
-            }
+        guard let token = url.accessToken else {
+            return true
+        }
 
-            return dismissViewController(.success(token))
+        return dismissViewController(.success(token))
     }
 
+    #if swift(>=2.3)
+    func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
+        self.dismissViewController(withFailure: .requestFailed(error: error))
+    }
+    #else
     func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
         self.dismissViewController(withFailure: .requestFailed(error: error))
     }
+    #endif
 
     func webViewDidFinishLoad(webView: UIWebView) {
         webViewFinishedLoadCompletion?(webView)
@@ -136,16 +142,16 @@ extension LoginViewController {
 
     func submit(email email: String, password: String) {
         let loginJS =
-        // "$('input[type=\'email\']').value = '\(email)'"
-        // + "$('input[type=\'password\']').value = '\(password)'"
-        // "$('.z-button-submit').click()"
+            // "$('input[type=\'email\']').value = '\(email)'"
+            // + "$('input[type=\'password\']').value = '\(password)'"
+            // "$('.z-button-submit').click()"
 
-        "var inputFields = document.getElementsByTagName('input');"
-            + "for (var i = inputFields.length >>> 0; i--;) {"
-            + "  if (inputFields[i].type == 'email') inputFields[i].value = '\(email)';"
-            + "  if (inputFields[i].type == 'password') inputFields[i].value = '\(password)';"
-            + "};"
-            + "document.getElementsByClassName('z-button-submit')[0].click() "
+            "var inputFields = document.getElementsByTagName('input');"
+                + "for (var i = inputFields.length >>> 0; i--;) {"
+                + "  if (inputFields[i].type == 'email') inputFields[i].value = '\(email)';"
+                + "  if (inputFields[i].type == 'password') inputFields[i].value = '\(password)';"
+                + "};"
+                + "document.getElementsByClassName('z-button-submit')[0].click() "
 
         let ret = webView.stringByEvaluatingJavaScriptFromString(loginJS)
         print("SUMBIT RESULT: ", ret)
