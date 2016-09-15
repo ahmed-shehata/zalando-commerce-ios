@@ -21,7 +21,7 @@ class APIClientErrorsSpec: APIClientBaseSpec {
 
                 let client = self.mockedAPIClient(forURL: clientUrl, data: nil, status: status)
 
-                waitUntil(timeout: 60) { done in
+                waitUntil(timeout: 10) { done in
                     client.customer { result in
                         defer { done() }
                         guard case let .failure(error) = result else {
@@ -41,7 +41,8 @@ class APIClientErrorsSpec: APIClientBaseSpec {
                 let errorResponse = self.dataWithJSONObject(json)
                 let client = self.mockedAPIClient(forURL: clientUrl, data: errorResponse, status: status)
 
-                waitUntil(timeout: 60) { done in
+
+                waitUntil(timeout: 10) { done in
                     client.customer { result in
                         defer { done() }
                         guard case let .failure(error) = result else {
@@ -61,7 +62,7 @@ class APIClientErrorsSpec: APIClientBaseSpec {
                 let errorResponse = self.dataWithJSONObject(json)
                 let client = self.mockedAPIClient(forURL: clientUrl, data: errorResponse, status: status)
 
-                waitUntil(timeout: 60) { done in
+                waitUntil(timeout: 10) { done in
                     client.customer { result in
                         defer { done() }
                         guard case let .failure(error) = result,
@@ -79,7 +80,7 @@ class APIClientErrorsSpec: APIClientBaseSpec {
             it("should return error when response has NSURLDomainError") {
                 let client = self.mockedAPIClient(forURL: clientUrl, data: nil, statusCode: 401, errorCode: NSURLErrorBadURL)
 
-                waitUntil(timeout: 60) { done in
+                waitUntil(timeout: 10) { done in
                     client.customer { result in
                         defer { done() }
                         guard case let .failure(error) = result,
@@ -99,7 +100,7 @@ class APIClientErrorsSpec: APIClientBaseSpec {
 
                 let client = self.mockedAPIClient(forURL: clientUrl, data: errorResponse, statusCode: errorStatus.rawValue)
 
-                waitUntil(timeout: 60) { done in
+                waitUntil(timeout: 10) { done in
                     client.customer { result in
                         defer { done() }
                         guard case let .failure(error) = result,

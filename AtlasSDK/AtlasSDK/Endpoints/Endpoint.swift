@@ -2,7 +2,7 @@
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
-protocol Endpoint: CustomStringConvertible {
+protocol Endpoint: CustomStringConvertible, Equatable {
 
     var method: HTTPMethod { get }
 
@@ -25,6 +25,23 @@ extension Endpoint {
 
     var queryItems: [NSURLQueryItem]? { return nil }
     var parameters: [String: AnyObject]? { return nil }
+
+}
+
+func == (lhs: Endpoint, rhs: Endpoint) -> Bool {
+    let equal = lhs.method == rhs.method
+    && lhs.contentType == rhs.contentType
+    && lhs.acceptedContentType == rhs.acceptedContentType
+
+    guard equal else { return false }
+
+    let lqi = lhs.queryItems, rqi = rhs.queryItems
+
+    guard [lqi, rqi].flatMap({ $0 }).count != 1 else { return false }
+
+    let lp = lhs.parameters, rp = rhs.parameters
+    guard [lp, rp].flatMap({ $0 }).count != 1 else { return false }
+
 
 }
 

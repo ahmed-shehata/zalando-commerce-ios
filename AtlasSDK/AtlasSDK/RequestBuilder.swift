@@ -7,11 +7,23 @@ import Foundation
 typealias ResponseCompletion = AtlasResult<JSONResponse> -> Void
 typealias RequestTaskCompletion = (RequestBuilder) -> Void
 
-class RequestBuilder: Equatable {
+public typealias AtlasAuthorizationToken = String
+public typealias AtlasAuthorizationCompletion = AtlasResult<AtlasAuthorizationToken> -> Void
+
+public protocol AtlasAuthorizationHandler {
+
+    func authorizeTask(completion: AtlasAuthorizationCompletion)
+
+}
+
+struct RequestBuilder: Equatable {
 
     var executionFinished: RequestTaskCompletion?
-    var urlSession: NSURLSession
-    var endpoint: Endpoint
+    var authorizationHandler: AtlasAuthorizationHandler?
+
+    let urlSession: NSURLSession
+    let endpoint: Endpoint
+
     private var dataTask: NSURLSessionDataTask?
 
     init(urlSession: NSURLSession = NSURLSession.sharedSession(), endpoint: Endpoint) {
@@ -19,28 +31,44 @@ class RequestBuilder: Equatable {
         self.endpoint = endpoint
     }
 
-    deinit {
-        dataTask?.cancel()
-    }
-
-    func execute(completion: ResponseCompletion) {
-        buildAndExecuteSessionTask { [weak self] result in
-            guard let strongSelf = self else { return }
+    mutating func execute(completion: ResponseCompletion) {
+        buildAndExecuteSessionTask { result in
             switch result {
             case .failure(let error):
-                completion(.failure(error))
-                strongSelf.executionFinished?(strongSelf)
+                switch error {
+                case AtlasAPIError.unauthorized:
+                    guard let authorizationHandler = self.authorizationHandler else {
+                        return completion(.failure(error))
+                    }
+                    dispatch_async(dispatch_get_main_queue()) {
+                        authorizationHandler.authorizeTask { result in
+                            switch result {
+                            case .failure(let error):
+                                completion(.failure(error))
+                                self.executionFinished?(self)
+                            case .success(let accessToken):
+                                APIAccessToken.store(accessToken)
+                                self.execute(completion)
+                            }
+                            // TODO: strongSelf.executionFinished?(strongSelf) after authorizeTask
+                        }
+                    }
+                default:
+                    completion(.failure(error))
+                    self.executionFinished?(self)
+                }
+
             case .success(let response):
                 completion(.success(response))
-                strongSelf.executionFinished?(strongSelf)
+                self.executionFinished?(self)
             }
         }
     }
 
-    func buildAndExecuteSessionTask(completion: ResponseCompletion) {
+    mutating func buildAndExecuteSessionTask(completion: ResponseCompletion) {
         let request: NSMutableURLRequest
         do {
-            request = try buildRequest().debugLog()
+            request = try buildRequest()
         } catch let e {
             return completion(.failure(e))
         }
@@ -53,9 +81,11 @@ class RequestBuilder: Equatable {
     }
 
     func buildRequest() throws -> NSMutableURLRequest {
-        return try NSMutableURLRequest(endpoint: endpoint)
+        let request = try NSMutableURLRequest(endpoint: endpoint).debugLog()
+        return request.authorize(withToken: APIAccessToken.retrieve())
     }
 
+    // TODO: sepratated struct
     private func handleResponse(data: NSData?, _ response: NSURLResponse?, _ error: NSError?, _ completion: ResponseCompletion) {
         if let error = error {
             let nsURLError = AtlasAPIError.nsURLError(code: error.code, details: error.localizedDescription)
@@ -90,6 +120,6 @@ class RequestBuilder: Equatable {
 
 }
 
-func == (lhs: RequestBuilder, rhs: RequestBuilder) -> Bool {
-    return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
+func ==(lhs: RequestBuilder, rhs: RequestBuilder) -> Bool {
+    return lhs.endpoint == rhs.endpoint && lhs.urlSession == rhs.urlSession
 }

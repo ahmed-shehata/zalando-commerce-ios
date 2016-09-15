@@ -2,6 +2,9 @@
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
+
+/*
+@available(*, deprecated, message="Kill it with fire!")
 final class APIRequestBuilder: RequestBuilder {
 
     private let loginURL: NSURL
@@ -29,7 +32,6 @@ final class APIRequestBuilder: RequestBuilder {
                 default:
                     completion(.failure(error))
                     strongSelf.executionFinished?(strongSelf)
-
                 }
 
             case .success(let response):
@@ -41,10 +43,6 @@ final class APIRequestBuilder: RequestBuilder {
             }
 
         }
-    }
-
-    override func buildRequest() throws -> NSMutableURLRequest {
-        return try super.buildRequest().authorize(withToken: APIAccessToken.retrieve())
     }
 
     private func loginAndExecute(completion: ResponseCompletion) {
@@ -59,7 +57,7 @@ final class APIRequestBuilder: RequestBuilder {
         }
     }
 
-    private func askUserToLogin(completion: LoginCompletion) {
+    private func askUserToLogin(completion: AtlasAuthorizationCompletion) {
         guard let topViewController = UIApplication.topViewController() else {
             return completion(.failure(LoginError.missingViewControllerToShowLoginForm))
         }
@@ -73,3 +71,4 @@ final class APIRequestBuilder: RequestBuilder {
     }
 
 }
+ --*/

@@ -29,7 +29,8 @@ class APIClientBaseSpec: QuickSpec {
     private let clientOptions = Options(clientId: "atlas_Y2M1MzA",
         salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
         useSandbox: true, interfaceLanguage: "en_DE",
-        configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
+        configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"),
+        authorizationHandler: MockAuthorizationHandler())
 
     func waitUntilAPIClientIsConfigured(actions: (done: () -> Void, client: APIClient) -> Void) {
         waitUntil(timeout: 10) { done in
@@ -37,6 +38,7 @@ class APIClientBaseSpec: QuickSpec {
                 switch result {
                 case .failure(let error):
                     fail(String(error))
+                    done()
                 case .success(let client):
                     actions(done: done, client: client)
                 }
@@ -53,10 +55,8 @@ class APIClientBaseSpec: QuickSpec {
     }
 
     func mockedAPIClient(forURL url: NSURL, data: NSData?, statusCode: Int, errorCode: Int? = nil) -> APIClient {
-        let apiURL = AtlasMockAPI.endpointURL(forPath: "/")
-        let config = Config(catalogAPIURL: apiURL,
-            checkoutAPIURL: apiURL,
-            loginURL: apiURL, options: clientOptions)
+        let mockAPIURL = AtlasMockAPI.endpointURL(forPath: "/")
+        let config = Config(catalogAPIURL: mockAPIURL, checkoutAPIURL: mockAPIURL, loginURL: mockAPIURL, options: clientOptions)
         var client = APIClient(config: config)
 
         var error: NSError? = nil

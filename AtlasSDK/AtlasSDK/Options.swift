@@ -11,13 +11,17 @@ public struct Options {
     public let salesChannel: String
     public let interfaceLanguage: String
     public let configurationURL: NSURL
+    public let authorizationHandler: AtlasAuthorizationHandler?
 
     public init(clientId: String, salesChannel: String, useSandbox: Bool = false,
-        interfaceLanguage: String = "de_DE", configurationURL: NSURL? = nil) {
+        interfaceLanguage: String = "de_DE", configurationURL: NSURL? = nil,
+        authorizationHandler: AtlasAuthorizationHandler? = nil) {
             self.clientId = clientId
             self.salesChannel = salesChannel
             self.useSandboxEnvironment = useSandbox
             self.interfaceLanguage = interfaceLanguage
+            self.authorizationHandler = authorizationHandler
+
             if let url = configurationURL {
                 self.configurationURL = url
             } else {
@@ -27,12 +31,14 @@ public struct Options {
 
     public init(basedOn options: Options, clientId: String? = nil,
         salesChannel: String? = nil, useSandbox: Bool? = nil,
-        interfaceLanguage: String? = nil, configurationURL: NSURL? = nil) {
+        interfaceLanguage: String? = nil, configurationURL: NSURL? = nil,
+        authorizationHandler: AtlasAuthorizationHandler? = nil) {
             self.clientId = clientId ?? options.clientId
             self.salesChannel = salesChannel ?? options.salesChannel
             self.useSandboxEnvironment = useSandbox ?? options.useSandboxEnvironment
             self.interfaceLanguage = interfaceLanguage ?? options.interfaceLanguage
             self.configurationURL = configurationURL ?? options.configurationURL
+            self.authorizationHandler = authorizationHandler ?? options.authorizationHandler
     }
 
     public func validate() throws {
@@ -44,6 +50,9 @@ public struct Options {
         }
         if self.interfaceLanguage.isEmpty {
             throw AtlasConfigurationError.missingInterfaceLanguage
+        }
+        if self.authorizationHandler == nil {
+            throw AtlasConfigurationError.missingAuthorizationHandler
         }
     }
 

@@ -4,9 +4,6 @@
 
 import Foundation
 
-/**
- Represents Zalando Config Service Config model
- */
 public struct Config {
 
     let catalogAPIURL: NSURL
@@ -14,6 +11,7 @@ public struct Config {
     let loginURL: NSURL
     let salesChannel: String
     let clientId: String
+    let authorizationHandler: AtlasAuthorizationHandler?
 
 }
 
@@ -31,6 +29,7 @@ extension Config {
         self.loginURL = loginURL
         self.salesChannel = options.salesChannel
         self.clientId = options.clientId
+        self.authorizationHandler = options.authorizationHandler
     }
 
 }
@@ -50,6 +49,7 @@ extension Config {
         self.loginURL = loginURL
         self.salesChannel = options.salesChannel
         self.clientId = options.clientId
+        self.authorizationHandler = options.authorizationHandler
     }
 
 }

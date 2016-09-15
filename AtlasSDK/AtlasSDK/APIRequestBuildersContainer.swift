@@ -4,20 +4,23 @@
 
 import Foundation
 
+// TODO: Rename or even make it better
 final class APIRequestBuildersContainer {
 
-    private var requestBuilders = [APIRequestBuilder]()
-    private let config: Config
+    private var requestBuilders = [RequestBuilder]()
+    private let authorizationHandler: AtlasAuthorizationHandler?
 
     init(config: Config) {
-        self.config = config
+        self.authorizationHandler = config.authorizationHandler
     }
 
-    func createBuilder(forEndpoint endpoint: Endpoint,
-        urlSession: NSURLSession = NSURLSession.sharedSession()) -> RequestBuilder {
-            let builder = APIRequestBuilder(loginURL: config.loginURL, urlSession: urlSession, endpoint: endpoint)
-            builder.executionFinished = {
-                self.requestBuilders.remove($0)
+    func createBuilder(forEndpoint endpoint: Endpoint, urlSession: NSURLSession = NSURLSession.sharedSession()) -> RequestBuilder {
+            var builder = RequestBuilder(urlSession: urlSession, endpoint: endpoint)
+            builder.authorizationHandler = self.authorizationHandler
+            builder.executionFinished = { builder in
+                self.requestBuilders.re
+
+                }
             }
             requestBuilders.append(builder)
             return builder
