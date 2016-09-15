@@ -33,7 +33,15 @@ class EditAddressViewController: UIViewController, CheckoutProviderType {
     init(addressType: EditAddressType, checkout: AtlasCheckout, address: EquatableAddress?, completion: EditAddressCompletion) {
         self.addressType = addressType
         self.checkout = checkout
-        self.addressViewModel = EditAddressViewModel(userAddress: address, defaultCountryCode: checkout.client.config.countryCode)
+        if let userAddress = address as? UserAddress {
+            self.addressViewModel = EditAddressViewModel(userAddress: address,
+                                                         countryCode: checkout.client.config.countryCode,
+                                                         isDefaultBilling: userAddress.isDefaultBilling,
+                                                         isDefaultShipping: userAddress.isDefaultShipping)
+        } else {
+            self.addressViewModel = EditAddressViewModel(userAddress: address,
+                                                         countryCode: checkout.client.config.countryCode)
+        }
         self.completion = completion
         super.init(nibName: nil, bundle: nil)
     }

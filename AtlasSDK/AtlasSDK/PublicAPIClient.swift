@@ -137,4 +137,12 @@ extension APIClient {
         fetch(from: endpoint, completion: completion)
     }
 
+    public func updateAddress(addressId: String, request: UpdateAddressRequest, completion: EmptyCompletion) {
+        let endpoint = UpdateAddressEndPoint(serviceURL: config.checkoutAPIURL,
+                                             addressId: addressId,
+                                             updateAddressRequest: request,
+                                             salesChannel: config.salesChannel)
+        fetch(from: endpoint, completion: completion)
+    }
+
 }

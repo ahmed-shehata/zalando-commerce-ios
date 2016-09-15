@@ -112,11 +112,11 @@
 		D7D2C7C96BA089C4B5FC1B0C18AD1DAD /* APICustomerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D384CF27919A699692F45EA639AA1C5 /* APICustomerSpec.swift */; };
 		D94D2829787FA8F6D3C5042C77F7EED8 /* ComparableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F9DA72D80C2CB580677E56E879AE1F /* ComparableTests.swift */; };
 		DBE9C88D3DD0024583CF836916DFB48D /* NSURLQueryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0BEA5506515E8C01E8A33A6784C0E0 /* NSURLQueryItem.swift */; };
-		DCEC44E0793F113D059AB18E8C204E02 /* AddressList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3C0A42BE110710B9F226DB6EB283D9 /* AddressList.swift */; };
 		DE0AF749E2EBC194E568845A555A016C /* NSHTTPURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9E9C7158DC9EB44B6B05FF3E07CB1B /* NSHTTPURLResponse.swift */; };
 		DE440328FFB4FBA9B8527F3CBFF054BA /* APICreateCheckoutSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA906FCD07627E9180A5D9B2D2B8C88 /* APICreateCheckoutSpec.swift */; };
 		E3D4E771E6EAA199EBD2A41C4E6DC456 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B66EA647A1A4AA79C38D74EEA22B196 /* LoginViewController.swift */; };
 		E6A17887BC6BA4C25B2D758C44514B80 /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D788B8AFA05BF3BB7559752D777933 /* Money.swift */; };
+		E985A9141D899458009DD5FB /* UpdateAddressEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E985A9131D899458009DD5FB /* UpdateAddressEndpoint.swift */; };
 		EAB0FA06F2B1E48C0F3CB1E5A6814A84 /* DatesSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22F082ED7BC990710AC6E435B8EA1D0 /* DatesSpec.swift */; };
 		ECE8DEFDB2A85FBCD15B77C89EA5EF4A /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69384BDB0D3D26DA7967C229EF6CF14A /* Keychain.swift */; };
 		F499724C3A412FEB934CA669FD1B37A7 /* NSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C1683BDA5763B7066B8ED28FC0FB37 /* NSData.swift */; };
@@ -259,8 +259,8 @@
 		DADC12E6B53E16F78A334BBAF9ED3070 /* KeychainSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainSpec.swift; path = AtlasSDKTests/KeychainSpec.swift; sourceTree = SOURCE_ROOT; };
 		DD3D9D57D8A8EE4FD7D57EFE634240FB /* HTTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
 		E929ACF16D83C88A9F1FA314D691FFEE /* JSONRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONRepresentable.swift; sourceTree = "<group>"; };
+		E985A9131D899458009DD5FB /* UpdateAddressEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateAddressEndpoint.swift; sourceTree = "<group>"; };
 		EA97D05C1FC1C316CAA9F2EAEE6DFB89 /* Tests.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Tests.json; sourceTree = "<group>"; };
-		EC3C0A42BE110710B9F226DB6EB283D9 /* AddressList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressList.swift; sourceTree = "<group>"; };
 		EC4618CBD3A7F5BB4565EE718D48F852 /* LiteralConvertibleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiteralConvertibleTests.swift; sourceTree = "<group>"; };
 		EDA906FCD07627E9180A5D9B2D2B8C88 /* APICreateCheckoutSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APICreateCheckoutSpec.swift; path = AtlasSDKTests/APICreateCheckoutSpec.swift; sourceTree = SOURCE_ROOT; };
 		F4F1412AECA75E38BDC3B618E86AF5A3 /* CartItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
@@ -366,6 +366,7 @@
 			children = (
 				A9DF3E8B9779B15E601623F91DA3928B /* DeleteAddressEndpoint.swift */,
 				56DDD0F2EE81CAB5B00FDE3C5138AD7D /* GetAddressesEndpoint.swift */,
+				E985A9131D899458009DD5FB /* UpdateAddressEndpoint.swift */,
 			);
 			name = Address;
 			sourceTree = "<group>";
@@ -818,6 +819,7 @@
 				0763078B7D29A78A3D8AD544D36983A7 /* CartRequest.swift in Sources */,
 				613D8FF85E470947466AB8AC54D4F3DD /* Catalog.swift in Sources */,
 				433FAB30B47C347A6EF0F8DCC8F10589 /* Checkout.swift in Sources */,
+				E985A9141D899458009DD5FB /* UpdateAddressEndpoint.swift in Sources */,
 				AFA5480D32447A330ADEB69346021F8C /* CheckoutAddress.swift in Sources */,
 				6506392A605FACF4557D0FCDD47ED7E6 /* Config.swift in Sources */,
 				506DF446892A49EC75F6512627A24CF9 /* ConfigClient.swift in Sources */,

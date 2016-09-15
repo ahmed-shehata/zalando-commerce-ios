@@ -11,34 +11,36 @@ import AtlasSDK
 
 class EditAddressViewModel {
 
-    var id: String?
     var gender: Gender?
     var firstName: String?
     var lastName: String?
     var street: String?
     var additional: String?
+    var pickupPointId: String?
+    var pickupPointMemberId: String?
     var zip: String?
     var city: String?
-    var countryCode: String?
-    var pickupPointName: String?
-    var pickupPointMemberId: String?
-    var isDefaultBilling: Bool = false
-    var isDefaultShipping: Bool = false
 
-    init (userAddress: EquatableAddress?, defaultCountryCode: String) {
-        countryCode = defaultCountryCode
+    let countryCode: String
+    let isDefaultBilling: Bool
+    let isDefaultShipping: Bool
+
+    init (userAddress: EquatableAddress?, countryCode: String, isDefaultBilling: Bool = false, isDefaultShipping: Bool = false) {
+        self.countryCode = countryCode
+        self.isDefaultBilling = isDefaultBilling
+        self.isDefaultShipping = isDefaultShipping
+
         guard let userAddress = userAddress else { return }
 
-        id = userAddress.id
         gender = userAddress.gender
         firstName = userAddress.firstName
         lastName = userAddress.lastName
         street = userAddress.street
         additional = userAddress.additional
+        pickupPointId = userAddress.pickupPoint?.id
+        pickupPointMemberId = userAddress.pickupPoint?.memberId
         zip = userAddress.zip
         city = userAddress.city
-        pickupPointName = userAddress.pickupPoint?.name
-        pickupPointMemberId = userAddress.pickupPoint?.memberId
     }
 
     internal func titles(localizer: LocalizerProviderType) -> [String] {
@@ -55,6 +57,47 @@ class EditAddressViewModel {
 
     internal func localizedTitle(localizer: LocalizerProviderType) -> String? {
         return gender?.title(localizer)
+    }
+
+}
+
+extension UpdateAddressRequest {
+
+    internal init? (addressViewModel: EditAddressViewModel) {
+
+        guard let
+            gender = addressViewModel.gender,
+            firstName = addressViewModel.firstName,
+            lastName = addressViewModel.lastName,
+            zip = addressViewModel.zip,
+            city = addressViewModel.city else { return nil }
+
+        self.gender = gender
+        self.firstName = firstName
+        self.lastName = lastName
+        self.street = addressViewModel.street
+        self.additional = addressViewModel.additional
+        self.zip = zip
+        self.city = city
+        self.countryCode = addressViewModel.countryCode
+        self.pickupPoint = PickupPoint(addressViewModel: addressViewModel)
+        self.defaultBilling = addressViewModel.isDefaultBilling
+        self.defaultShipping = addressViewModel.isDefaultShipping
+    }
+
+}
+
+extension PickupPoint {
+
+    internal init? (addressViewModel: EditAddressViewModel) {
+
+        guard let
+            pickupPointId = addressViewModel.pickupPointId,
+            pickupPointMemberId = addressViewModel.pickupPointMemberId else { return nil }
+
+        self.id = pickupPointId
+        self.name = "PACKSTATION"
+        self.memberId = pickupPointMemberId
     }
 
 }

@@ -51,7 +51,7 @@ enum EditAddressField {
         case .LastName: return viewModel.lastName
         case .Street: return viewModel.street
         case .Additional: return viewModel.additional
-        case .Packstation: return viewModel.pickupPointName
+        case .Packstation: return viewModel.pickupPointId
         case .MemberID: return viewModel.pickupPointMemberId
         case .Zipcode: return viewModel.zip
         case .City: return viewModel.city
@@ -66,7 +66,7 @@ enum EditAddressField {
         case .LastName: viewModel.lastName = value
         case .Street: viewModel.street = value
         case .Additional: viewModel.additional = value
-        case .Packstation: viewModel.pickupPointName = value
+        case .Packstation: viewModel.pickupPointId = value
         case .MemberID: viewModel.pickupPointMemberId = value
         case .Zipcode: viewModel.zip = value
         case .City: viewModel.city = value

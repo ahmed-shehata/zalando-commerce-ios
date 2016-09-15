@@ -144,9 +144,14 @@ extension AddressPickerViewController {
     private func configureEditAddress() {
         tableviewDelegate?.editAddressSelectionHandler = { [weak self] (address) in
             let addressType: EditAddressType = address.pickupPoint == nil ? .StandardAddress : .PickupPoint
-            self?.showAddAddress(addressType, address: address) {
-                // TODO: Call Edit Webservice
-                print($0)
+            self?.showAddAddress(addressType, address: address) { [weak self] editAddressViewModel in
+                guard let
+                    strongSelf = self,
+                    request = UpdateAddressRequest(addressViewModel: editAddressViewModel) else { return }
+
+                strongSelf.checkout.client.updateAddress(address.id, request: request) { result in
+                    print(result)
+                }
             }
         }
     }
