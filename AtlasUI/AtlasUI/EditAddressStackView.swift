@@ -51,14 +51,16 @@ extension EditAddressStackView: UIDataBuilder {
                 nextTextField = textFields.count > idx+1 ? textFields[idx+1] : nil
             }
 
-            let valueChangedHandler: TextFieldChangedHandler = { [weak self] in
+            let valueChangedHandler: TextFieldChangedHandler = { [weak self] text in
                 guard let strongSelf = self else { return }
-                fieldType.updateModel(viewModel, withValue: $0, localizer: strongSelf.checkoutProviderType)
+                fieldType.updateModel(viewModel, withValue: text, localizer: strongSelf.checkoutProviderType)
             }
 
             let viewModel = TextFieldInputViewModel(title: title,
                                                     value: value,
                                                     isActive: isActive,
+                                                    validators: fieldType.formValidators,
+                                                    localizer: checkoutProviderType,
                                                     customInputView: customView,
                                                     nextTextFieldInput: nextTextField,
                                                     valueChangedHandler: valueChangedHandler)

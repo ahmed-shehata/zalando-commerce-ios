@@ -76,6 +76,11 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
         configureTableviewDelegate()
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        setEditing(false, animated: false)
+    }
+
     private func configureTableviewDelegate() {
         configureCreateAddress()
         configureUpdateAddress()

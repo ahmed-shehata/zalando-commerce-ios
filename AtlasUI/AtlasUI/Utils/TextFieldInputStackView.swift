@@ -34,11 +34,24 @@ class TextFieldInputStackView: UIStackView {
         label.numberOfLines = 0
         label.font = .systemFontOfSize(11)
         label.textColor = UIColor(hex: 0xDB2D2D)
+        label.text = " "
         return label
     }()
 
     private weak var nextTextField: TextFieldInputStackView?
     private var valueChangedHandler: TextFieldChangedHandler?
+    private var validators: [FormValidator] = []
+    private var localizer: LocalizerProviderType!
+
+    internal func validateForm() -> Bool {
+        let error = calculateFormError()
+        errorLabel.text = error ?? " "
+        return error == nil
+    }
+
+    private func calculateFormError() -> String? {
+        return validators.flatMap { $0.errorMessage(textField.text, localizer: localizer) }.first
+    }
 
 }
 
@@ -96,8 +109,9 @@ extension TextFieldInputStackView: UIDataBuilder {
             textField.canPaste = false
         }
 
-        errorLabel.text = viewModel.error ?? " "
         valueChangedHandler = viewModel.valueChangedHandler
+        validators = viewModel.validators
+        localizer = viewModel.localizer
 
         configureTitleLabel()
     }
@@ -115,6 +129,9 @@ extension TextFieldInputStackView: UITextFieldDelegate {
     func textFieldValueChanged() {
         configureTitleLabel()
         valueChangedHandler?(textField.text)
+        if calculateFormError() == nil {
+            errorLabel.text = " "
+        }
     }
 
     func textFieldDidBeginEditing(textField: UITextField) {
@@ -125,6 +142,7 @@ extension TextFieldInputStackView: UITextFieldDelegate {
     func textFieldDidEndEditing(textField: UITextField) {
         separatorView.borderColor = .blackColor()
         titleLabel.textColor = UIColor(hex: 0xADADAD)
+        validateForm()
     }
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -133,6 +151,7 @@ extension TextFieldInputStackView: UITextFieldDelegate {
         } else {
             textField.resignFirstResponder()
         }
+        validateForm()
         return true
     }
 

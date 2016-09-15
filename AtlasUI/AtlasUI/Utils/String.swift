@@ -14,6 +14,10 @@ extension String {
         return trimmed.characters.count
     }
 
+    var length: Int {
+        return characters.count
+    }
+
 }
 
 postfix operator ~? { }

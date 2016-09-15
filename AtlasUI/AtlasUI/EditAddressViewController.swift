@@ -73,8 +73,11 @@ extension EditAddressViewController {
     }
 
     private dynamic func submitButtonPressed() {
-        completion(addressViewModel)
-        dismissView()
+        let isValid = addressStackView.textFields.map { $0.validateForm() }.filter { $0 == false }.isEmpty
+        if isValid {
+            completion(addressViewModel)
+            dismissView()
+        }
     }
 
     private dynamic func cancelButtonPressed() {
@@ -83,7 +86,11 @@ extension EditAddressViewController {
 
     private func dismissView() {
         view.endEditing(true)
-        dismissViewControllerAnimated(true, completion: nil)
+        if navigationController?.viewControllers.count == 1 {
+            dismissViewControllerAnimated(true, completion: nil)
+        } else {
+            navigationController?.popViewControllerAnimated(true)
+        }
     }
 
 }

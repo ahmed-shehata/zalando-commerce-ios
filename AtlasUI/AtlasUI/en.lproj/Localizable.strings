@@ -65,3 +65,8 @@
 "Address.prefix.packstation" = "Packstation";
 "Address.prefix.memberID" = "Member ID";
 "Address.prefix.packstation.abbreviation" = "P.S.";
+
+"Form.validation.required" = "This field is required";
+"Form.validation.minLength: %@" = "Min length is %@";
+"Form.validation.maxLength: %@" = "Max length is %@";
+"Form.validation.pattern" = "Invalid value";

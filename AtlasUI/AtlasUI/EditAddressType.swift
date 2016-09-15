@@ -96,4 +96,45 @@ enum EditAddressField {
             return nil
         }
     }
+
+    var formValidators: [FormValidator] {
+        switch self {
+        case .Title:
+            return [.Required]
+        case .FirstName:
+            return [.Required,
+                    .MaxLength(maxLength: 50),
+                    .Pattern(pattern: "^["+FormValidator.anyCharacterPattern+"]'?[- "+FormValidator.anyCharacterPattern+"ß]+$")]
+        case .LastName:
+            return [.Required,
+                    .MaxLength(maxLength: 50),
+                    .Pattern(pattern: "^["+FormValidator.anyCharacterPattern+"]'?[- "+FormValidator.anyCharacterPattern+"ß]+$")]
+        case .Street:
+            return [.Required,
+                    .MaxLength(maxLength: 50),
+                    .Pattern(pattern: "^(?=.*[a-zA-Z])(?=.*[0-9]).*$")]
+        case .Additional:
+            return [.MaxLength(maxLength: 50)]
+        case .Packstation:
+            return [.Required,
+                    .MinLength(minLength: 3),
+                    .MaxLength(maxLength: 3),
+                    .Pattern(pattern: "[0-9]{3,3}$")]
+        case .MemberID:
+            return [.Required,
+                    .MinLength(minLength: 3),
+                    .Pattern(pattern: "[0-9]{3,}$")]
+        case .Zipcode:
+            return [.Required,
+                    .MaxLength(maxLength: 10),
+                    .Pattern(pattern: "^[0-9]{5}$")]
+        case .City:
+            return [.Required,
+                    .MaxLength(maxLength: 50),
+                    .Pattern(pattern: "^["+FormValidator.anyCharacterPattern+"]'?[-,;()' 0-9"+FormValidator.anyCharacterPattern+"ß]+$")]
+        case .Country:
+            return [.Required]
+        }
+    }
+
 }
