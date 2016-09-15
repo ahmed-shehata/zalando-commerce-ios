@@ -25,8 +25,7 @@ class APIClientErrorsSpec: APIClientBaseSpec {
                     client.customer { result in
                         defer { done() }
                         guard case let .failure(error) = result else {
-                            fail("Should emit \(AtlasAPIError.noData)")
-                            return
+                            return fail("Should emit \(AtlasAPIError.noData)")
                         }
 
                         expect("\(error)").to(equal("\(AtlasAPIError.noData)"))
@@ -46,8 +45,7 @@ class APIClientErrorsSpec: APIClientBaseSpec {
                     client.customer { result in
                         defer { done() }
                         guard case let .failure(error) = result else {
-                            fail("Should emit \(AtlasAPIError.unauthorized)")
-                            return
+                            return fail("Should emit \(AtlasAPIError.unauthorized)")
                         }
 
                         expect("\(error)").to(equal("\(AtlasAPIError.unauthorized)"))
@@ -68,8 +66,7 @@ class APIClientErrorsSpec: APIClientBaseSpec {
                         defer { done() }
                         guard case let .failure(error) = result,
                             AtlasAPIError.backend(let errorStatus, let title, let details) = error else {
-                                fail("Should emit \(AtlasAPIError.backend)")
-                                return
+                                return fail("Should emit AtlasAPIError.backend")
                         }
 
                         expect(errorStatus).to(equal(status.rawValue))
@@ -87,8 +84,7 @@ class APIClientErrorsSpec: APIClientBaseSpec {
                         defer { done() }
                         guard case let .failure(error) = result,
                             AtlasAPIError.nsURLError(let code, let details) = error else {
-                                fail("Should emit \(AtlasAPIError.nsURLError)")
-                                return
+                                return fail("Should emit AtlasAPIError.nsURLError")
                         }
 
                         expect(code).to(equal(NSURLErrorBadURL))
@@ -108,8 +104,7 @@ class APIClientErrorsSpec: APIClientBaseSpec {
                         defer { done() }
                         guard case let .failure(error) = result,
                             AtlasAPIError.http(let status, _) = error else {
-                                fail("Should emit \(AtlasAPIError.http)")
-                                return
+                                return fail("Should emit AtlasAPIError.http")
                         }
 
                         expect(status).to(equal(errorStatus))

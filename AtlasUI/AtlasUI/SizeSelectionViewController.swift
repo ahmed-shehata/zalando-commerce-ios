@@ -44,8 +44,7 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
             let selectedArticleUnit = SelectedArticleUnit(article: article,
                 selectedUnitIndex: 0)
             let checkoutViewModel = CheckoutViewModel(selectedArticleUnit: selectedArticleUnit)
-            displayCheckoutSummaryViewController(checkoutViewModel)
-            return
+            return displayCheckoutSummaryViewController(checkoutViewModel)
         }
 
         checkout.client.customer { result in
@@ -59,8 +58,8 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
     }
 
     private func generateCheckout(withArticle article: Article, customer: Customer) {
-        let selectedArticleUnit = SelectedArticleUnit(article: article,
-            selectedUnitIndex: 0)
+        let selectedArticleUnit = SelectedArticleUnit(article: article, selectedUnitIndex: 0)
+
         checkout.updateCheckoutViewModel(selectedArticleUnit) { result in
             switch result {
             case .failure(let error):
@@ -100,12 +99,11 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
     }
 
     private func displaySizes(forArticle article: Article) {
-        if article.hasSingleUnit {
-            showCheckoutScreen(article, selectedUnitIndex: 0)
-        } else {
-            Async.main {
-                self.activityIndicatorView.stopAnimating()
-            }
+        guard !article.hasSingleUnit else {
+            return showCheckoutScreen(article, selectedUnitIndex: 0)
+        }
+        Async.main {
+            self.activityIndicatorView.stopAnimating()
             self.showSizeListViewController(article)
         }
     }
@@ -113,8 +111,9 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
     private func showSizeListViewController(article: Article) {
         let sizeListSelectionViewController = SizeListSelectionViewController(checkout: checkout, article: article)
         addChildViewController(sizeListSelectionViewController)
-        sizeListSelectionViewController.view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(sizeListSelectionViewController.view)
+
+        sizeListSelectionViewController.view.translatesAutoresizingMaskIntoConstraints = false
         sizeListSelectionViewController.view.topAnchor.constraintEqualToAnchor(topLayoutGuide.bottomAnchor).active = true
         sizeListSelectionViewController.view.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
         sizeListSelectionViewController.view.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true

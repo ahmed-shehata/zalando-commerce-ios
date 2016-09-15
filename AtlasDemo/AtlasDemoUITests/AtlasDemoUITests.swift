@@ -28,13 +28,11 @@ class AtlasDemoUITests: XCTestCase {
     }
 
     func testBuyQuicklyProductWithSizes() {
-        let sizeText = app.tables.staticTexts["42"]
-
         tapBuyNow("Lamica")
 
-        waitForElementToAppearAndTap(sizeText)
+        waitForElementToAppearAndTap(app.tables.cells["size-cell-1"])
         tapConnectAndLogin()
-        tapBuyNow()
+        tapPlaceOrder()
         tapBackToShop()
     }
 
@@ -42,26 +40,24 @@ class AtlasDemoUITests: XCTestCase {
         tapBuyNow("MICHAEL Michael Kors")
 
         tapConnectAndLogin()
-        tapBuyNow()
+        tapPlaceOrder()
         tapBackToShop()
     }
 
     func testDeleteAddress() {
-        let sizeText = app.tables.staticTexts["42"]
+        let size = app.cells["size-cell-1"]
         tapBuyNow("Lamica")
-        waitForElementToAppearAndTap(sizeText)
+        waitForElementToAppearAndTap(size)
         tapConnectAndLogin()
-        app.scrollViews.childrenMatchingType(.Any)
-            .element.childrenMatchingType(.Any).elementBoundByIndex(2).staticTexts["Erika Mustermann, Mollstr. 1 10178 Berlin"].tap()
+        app.otherElements["shipping-stack-view"].tap()
         deleteAddresses()
-        app.navigationBars["Summary"].buttons["Cancel"].tap()
+        app.buttons["navigation-bar-cancel-button"].tap()
     }
 
     func testBuyProductWithSizesAndNavigatingBack() {
-        let summaryNavigationBar = app.navigationBars["Summary"]
-        let backButton = summaryNavigationBar.buttons["Back"]
-        let cancelButton = summaryNavigationBar.buttons["Cancel"]
-        let sizeText = app.tables.staticTexts["XS"]
+        let backButton = app.navigationBars["checkout-summary-navigation-bar"].buttons["Back"]
+        let cancelButton = app.navigationBars["checkout-summary-navigation-bar"].buttons["Cancel"]
+        let sizeText = app.cells["size-cell-XS"]
 
         tapBuyNow("Guess")
 
@@ -75,107 +71,101 @@ class AtlasDemoUITests: XCTestCase {
         waitForElementToAppearAndTap(sizeText)
 
         tapConnectAndLogin()
-        tapBuyNow()
+        tapPlaceOrder()
         tapBackToShop()
     }
 
     func testChangeShippingAddress() {
-        let sizeText = app.tables.staticTexts["42"]
+        let size = app.cells["size-cell-1"]
 
         tapBuyNow("Lamica")
 
-        waitForElementToAppearAndTap(sizeText)
+        waitForElementToAppearAndTap(size)
         tapConnectAndLogin()
         changeShippingAddress()
-        tapBackToSummaryButton()
-        tapBuyNow()
+        tapBackToSummaryFromPickingAddressButton()
+        tapPlaceOrder()
         tapBackToShop()
 
     }
 
     func testChangeBillingAddress() {
-        let sizeText = app.tables.staticTexts["42"]
+        let size = app.cells["size-cell-1"]
 
         tapBuyNow("Lamica")
-        waitForElementToAppearAndTap(sizeText)
+        waitForElementToAppearAndTap(size)
         tapConnectAndLogin()
         changeBillingAddress()
-        tapBackToSummaryButton()
-        tapBuyNow()
+        tapBackToSummaryFromPickingAddressButton()
+        tapPlaceOrder()
         tapBackToShop()
-
     }
 
     func changeShippingAddress() {
-        let tablesQuery = app.tables
-
-        app.scrollViews.childrenMatchingType(.Any)
-            .element.childrenMatchingType(.Any).elementBoundByIndex(2).staticTexts["Erika Mustermann, Mollstr. 1 10178 Berlin"].tap()
-        tablesQuery.cells.containingType(.StaticText, identifier: "Jane").staticTexts["Mollstr. 1 10178 Berlin "].tap()
+        app.otherElements["shipping-stack-view"].tap()
+        app.cells["address-selection-row-1"].tap()
     }
 
     func changeBillingAddress() {
-        let tablesQuery = app.tables
-
-        app.scrollViews.childrenMatchingType(.Any)
-            .element.childrenMatchingType(.Any).elementBoundByIndex(4).staticTexts["Erika Mustermann, Mollstr. 1 10178 Berlin"].tap()
-        tablesQuery.cells.containingType(.StaticText, identifier: "Jane").staticTexts["Mollstr. 1 10178 Berlin "].tap()
-
+        app.otherElements["billing-stack-view"].tap()
+        app.cells["address-selection-row-1"].tap()
     }
 
     private func deleteAddresses() {
-        let shippingAddressNavigationBar = app.navigationBars["Shipping Address"]
-        shippingAddressNavigationBar.buttons["Edit"].tap()
+        let rightButton = app.navigationBars.buttons["address-picker-right-button"]
+        rightButton.tap()
+
         let tablesQuery = app.tables
 
-        tablesQuery.buttons["Delete Jane, Mollstr. 1 10178 Berlin"] .tap()
-        tablesQuery.buttons["Delete"] .tap()
+        app.cells["address-selection-row-1"].tap()
+        tablesQuery.buttons.elementBoundByIndex(1).tap()
+        tablesQuery.buttons["Delete"].tap()
 
-        tablesQuery.buttons["Delete John, Mollstr. 1 10178 Berlin"] .tap()
-        tablesQuery.buttons["Delete"] .tap()
-        app.navigationBars["Shipping Address"].buttons["Done"].tap()
-        shippingAddressNavigationBar.buttons["Summary"].tap()
+        tablesQuery.buttons.elementBoundByIndex(1).tap()
+        tablesQuery.buttons["Delete"].tap()
 
+        rightButton.tap()
+        app.navigationBars["address-picker-navigation-bar"].buttons["Back"].tap()
     }
 
     private func tapConnectAndLogin() {
-        waitForElementToAppearAndTap(app.buttons["Checkout with Zalando"])
+        waitForElementToAppearAndTap(app.buttons["checkout-footer-button"])
         fillInLogin()
-        NSThread.sleepForTimeInterval(2)
+        NSThread.sleepForTimeInterval(1)
     }
 
-    private func tapBuyNow() {
-        waitForElementToAppearAndTap(app.buttons["Place order"])
+    private func tapPlaceOrder() {
+        waitForElementToAppearAndTap(app.buttons["checkout-footer-button"])
     }
 
-    private func tapBackToSummaryButton() {
-        waitForElementToAppearAndTap(app.buttons["Summary"])
+    private func tapBackToSummaryFromPickingAddressButton() {
+        waitForElementToAppearAndTap(app.navigationBars["address-picker-navigation-bar"].buttons["Back"])
     }
 
     private func tapBackToShop() {
-        waitForElementToAppearAndTap(app.buttons["Back to shop"])
+        waitForElementToAppearAndTap(app.buttons["checkout-footer-button"])
     }
 
     private func fillInLogin() {
-        NSThread.sleepForTimeInterval(2)
+        NSThread.sleepForTimeInterval(1)
 
         app.buttons["Login"].tap()
     }
 
     private func tapBuyNow(identifier: String) {
+        let collectionView = app.collectionViews.elementBoundByIndex(0)
         let cell = collectionView.cells.otherElements.containingType(.StaticText, identifier: identifier)
-        let buyNowButton = cell.buttons["BUY NOW"]
+        let buyNowButton = cell.buttons["buy-now"]
         collectionView.scrollToElement(buyNowButton)
         NSThread.sleepForTimeInterval(0.5)
         waitForElementToAppearAndTap(buyNowButton)
     }
 
     private var navigationController: XCUIElementQuery {
-        return app.otherElements.containingType(.NavigationBar, identifier: "AtlasSDK Demo")
+        return app.otherElements.containingType(.NavigationBar, identifier: "catalog-navigation-controller")
     }
 
     private var collectionView: XCUIElement {
         return navigationController.descendantsMatchingType(.CollectionView).element
     }
-
 }

@@ -28,6 +28,7 @@ class CheckoutSummaryMainStackView: UIStackView {
         stackView.spacing = 5
         stackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         stackView.layoutMarginsRelativeArrangement = true
+        stackView.accessibilityIdentifier = "shipping-stack-view"
         return stackView
     }()
 
@@ -45,6 +46,7 @@ class CheckoutSummaryMainStackView: UIStackView {
         stackView.spacing = 5
         stackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         stackView.layoutMarginsRelativeArrangement = true
+        stackView.accessibilityIdentifier = "billing-stack-view"
         return stackView
     }()
 
