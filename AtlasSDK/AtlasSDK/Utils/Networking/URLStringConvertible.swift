@@ -16,7 +16,11 @@ extension String: URLStringConvertible {
 
 extension NSURL: URLStringConvertible {
     var URLString: String {
-        return absoluteString
+        #if swift(>=2.3)
+            return absoluteString!  // swiftlint:disable:this force_unwrapping
+        #else
+            return absoluteString
+        #endif
     }
 }
 

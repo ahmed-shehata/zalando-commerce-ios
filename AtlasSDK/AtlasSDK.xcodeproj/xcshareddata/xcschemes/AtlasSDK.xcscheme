@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "814B7F0A1D0FD8D70073AF52"
+               BlueprintIdentifier = "E59A11A5E0347028AC04CEEACDF57D88"
                BuildableName = "AtlasSDK.framework"
                BlueprintName = "AtlasSDK"
                ReferencedContainer = "container:AtlasSDK.xcodeproj">
@@ -33,7 +33,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "814B7F141D0FD8D70073AF52"
+               BlueprintIdentifier = "4850138AFD7E1EECC8F7F5FD3D02713F"
                BuildableName = "AtlasSDKTests.xctest"
                BlueprintName = "AtlasSDKTests"
                ReferencedContainer = "container:AtlasSDK.xcodeproj">
@@ -43,7 +43,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "814B7F0A1D0FD8D70073AF52"
+            BlueprintIdentifier = "E59A11A5E0347028AC04CEEACDF57D88"
             BuildableName = "AtlasSDK.framework"
             BlueprintName = "AtlasSDK"
             ReferencedContainer = "container:AtlasSDK.xcodeproj">
@@ -65,7 +65,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "814B7F0A1D0FD8D70073AF52"
+            BlueprintIdentifier = "E59A11A5E0347028AC04CEEACDF57D88"
             BuildableName = "AtlasSDK.framework"
             BlueprintName = "AtlasSDK"
             ReferencedContainer = "container:AtlasSDK.xcodeproj">
@@ -83,7 +83,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "814B7F0A1D0FD8D70073AF52"
+            BlueprintIdentifier = "E59A11A5E0347028AC04CEEACDF57D88"
             BuildableName = "AtlasSDK.framework"
             BlueprintName = "AtlasSDK"
             ReferencedContainer = "container:AtlasSDK.xcodeproj">

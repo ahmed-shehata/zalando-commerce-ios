@@ -48,6 +48,8 @@
 		6B341730306B04AD89EC6702E85A5077 /* LocalizerProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F3F5AA9BF7A5EF9FA877EB394D09C7 /* LocalizerProviderType.swift */; };
 		F22B10157E2B91A8BF9D3AB7B354E6CC /* Nimble.framework in Copy Quick and Nimble frameworks */ = {isa = PBXBuildFile; fileRef = 2E89A529CD1D470F15B857AF1031CB61 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		80E9B317B4DF43290610E3DD8ED6802B /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E89A529CD1D470F15B857AF1031CB61 /* Nimble.framework */; };
+		8134E4BB1D8AB810006B5077 /* NSURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134E4BA1D8AB810006B5077 /* NSURL.swift */; };
+		83F843D0CD3476E3C2ACFCE643478649 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E9C6572D2F4F6481B6389BDF69F18B /* LoaderView.swift */; };
 		17324CD06CD2DD5514B78F465B354759 /* PaymentProcessingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A59BDDD17CB9FC140D927EA41EF75F /* PaymentProcessingViewController.swift */; };
 		34160EED7155A39B7F8EBDE762263F17 /* PaymentSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A26AACC32143945E59B862CBDB3626 /* PaymentSelectionViewController.swift */; };
 		54F18A56CF79CF25599259CA5EB5D394 /* PickerKeyboardInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7DF8A211B4CCC727F816767346EF3B /* PickerKeyboardInputView.swift */; };
@@ -98,6 +100,14 @@
 		19BDFF5745C6C2E352983C027B78A69C /* ActionTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionTextField.swift; sourceTree = "<group>"; };
 		C7EEA970F03A677415B3AC4CB774D953 /* AddAddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAddressTableViewCell.swift; sourceTree = "<group>"; };
 		6FC391339AB40C212901806139F6FC2B /* AddressListTableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressListTableViewDelegate.swift; sourceTree = "<group>"; };
+		7213EB38DBC235984A41709E643C8EE8 /* BorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderView.swift; sourceTree = "<group>"; };
+		724F293E73B6AEE65CFA30937C94D242 /* UIStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
+		764CDA794B49DC585B031C7C4F5776D5 /* UserMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMessage.swift; sourceTree = "<group>"; };
+		76F3F5AA9BF7A5EF9FA877EB394D09C7 /* LocalizerProviderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizerProviderType.swift; sourceTree = "<group>"; };
+		808C394E80E745736133ADBD0E2938C8 /* AtlasUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AtlasUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		80F13460B6B17606CC65E38CE6A4716C /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		8134E4BA1D8AB810006B5077 /* NSURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURL.swift; sourceTree = "<group>"; };
+		8C686045A1CFC18F21F295D0AD890463 /* AsyncSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncSpec.swift; sourceTree = "<group>"; };
 		9CC30D3206CE11A3DB6F12F72BC8DB31 /* AddressPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressPickerViewController.swift; sourceTree = "<group>"; };
 		FCDAB74F0608C1A0ABE505D7D3498B40 /* AddressRowViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressRowViewCell.swift; sourceTree = "<group>"; };
 		94F33C041120EF12B441AE2E84A48050 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -240,6 +250,7 @@
 				80F13460B6B17606CC65E38CE6A4716C /* UITableView.swift */,
 				0EA19C45C79A94472331D134BC9895CA /* UIView.swift */,
 				764CDA794B49DC585B031C7C4F5776D5 /* UserMessage.swift */,
+				8134E4BA1D8AB810006B5077 /* NSURL.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -549,6 +560,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8134E4BB1D8AB810006B5077 /* NSURL.swift in Sources */,
 				4342464869E446FBC18FE72A79CC55B5 /* ActionTextField.swift in Sources */,
 				65BCA936AE236A318847ECE6DCA4A3B0 /* AddAddressTableViewCell.swift in Sources */,
 				8F555E1D55F47DFE66BD5CF593E6C6DE /* AddressListTableViewDelegate.swift in Sources */,
@@ -687,6 +699,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -732,6 +745,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
