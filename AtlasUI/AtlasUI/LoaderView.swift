@@ -10,6 +10,13 @@ class LoaderView: UIView {
         return UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
     }()
 
+    private let backgroundView: RoundedView = {
+        let view = RoundedView()
+        view.cornerRadius = 10
+        view.backgroundColor = UIColor(white: 0, alpha: 0.7)
+        return view
+    }()
+
     internal func show() {
         Async.main {
             self.activityIndicator.startAnimating()
@@ -29,13 +36,16 @@ class LoaderView: UIView {
 extension LoaderView: UIBuilder {
 
     func configureView() {
-        userInteractionEnabled = false
-        backgroundColor = UIColor(white: 0, alpha: 0.3)
-        addSubview(activityIndicator)
+        userInteractionEnabled = true
+        addSubview(backgroundView)
+        backgroundView.addSubview(activityIndicator)
     }
 
     func configureConstraints() {
         fillInSuperView()
+        backgroundView.centerInSuperView()
+        backgroundView.setWidth(equalToConstant: 100)
+        backgroundView.setHeight(equalToConstant: 70)
         activityIndicator.centerInSuperView()
     }
 

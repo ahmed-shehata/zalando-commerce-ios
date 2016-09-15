@@ -64,17 +64,25 @@ extension EditAddressViewController {
 
     private func configureNavigation() {
         let saveButton = UIBarButtonItem(title: loc("Save"), style: .Plain, target: self, action: #selector(submitButtonPressed))
-        let cancelButton = UIBarButtonItem(title: loc("Cancel"), style: .Plain, target: self, action: #selector(cancelButtonPressed))
         navigationItem.rightBarButtonItem = saveButton
-        navigationItem.leftBarButtonItem = cancelButton
+
+        if navigationController?.viewControllers.count == 1 {
+            let cancelButton = UIBarButtonItem(title: loc("Cancel"), style: .Plain, target: self, action: #selector(cancelButtonPressed))
+            navigationItem.leftBarButtonItem = cancelButton
+        }
     }
 
     private dynamic func submitButtonPressed() {
         completion(addressViewModel)
-        dismissViewControllerAnimated(true, completion: nil)
+        dismissView()
     }
 
     private dynamic func cancelButtonPressed() {
+        dismissView()
+    }
+
+    private func dismissView() {
+        view.endEditing(true)
         dismissViewControllerAnimated(true, completion: nil)
     }
 

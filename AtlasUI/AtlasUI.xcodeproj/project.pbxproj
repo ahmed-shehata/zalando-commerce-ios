@@ -298,9 +298,9 @@
 		9600044DD903A76598D9412E4BA3C3A7 /* Edit Address */ = {
 			isa = PBXGroup;
 			children = (
+				E872C262ABD57DB62C4F0880E507B185 /* EditAddressViewController.swift */,
 				4A5830B773B2D20D4224CDF749410E8A /* EditAddressStackView.swift */,
 				A7267EA9A2261F756C94C761AB61ECCD /* EditAddressType.swift */,
-				E872C262ABD57DB62C4F0880E507B185 /* EditAddressViewController.swift */,
 				220A05CBDD6AE18789A69B04A2AE5590 /* EditAddressViewModel.swift */,
 			);
 			name = "Edit Address";
@@ -359,10 +359,10 @@
 		E7B8FD94F5B37D0CD471CC2CC01B2A93 /* Address Selection */ = {
 			isa = PBXGroup;
 			children = (
-				C7EEA970F03A677415B3AC4CB774D953 /* AddAddressTableViewCell.swift */,
-				6FC391339AB40C212901806139F6FC2B /* AddressListTableViewDelegate.swift */,
 				9CC30D3206CE11A3DB6F12F72BC8DB31 /* AddressPickerViewController.swift */,
+				6FC391339AB40C212901806139F6FC2B /* AddressListTableViewDelegate.swift */,
 				FCDAB74F0608C1A0ABE505D7D3498B40 /* AddressRowViewCell.swift */,
+				C7EEA970F03A677415B3AC4CB774D953 /* AddAddressTableViewCell.swift */,
 				9600044DD903A76598D9412E4BA3C3A7 /* Edit Address */,
 			);
 			name = "Address Selection";

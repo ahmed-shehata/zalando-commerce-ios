@@ -21,6 +21,13 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
     private let selectionCompletion: AddressSelectionCompletion
 
     private let tableView = UITableView()
+
+    internal let loaderView: LoaderView = {
+        let view = LoaderView()
+        view.hidden = true
+        return view
+    }()
+
     private var addresses: [UserAddress] = [] {
         didSet {
             tableviewDelegate?.addresses = addresses
@@ -53,6 +60,7 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(tableView)
+        self.view.addSubview(loaderView)
         switch addressType {
         case .billing:
             self.title = "Billing Address"
@@ -63,7 +71,7 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
         self.navigationController?.navigationBar.accessibilityIdentifier = "address-picker-navigation-bar"
         self.navigationItem.rightBarButtonItem?.accessibilityIdentifier = "address-picker-right-button"
 
-        setupTableView()
+        setupView()
         fetchAddresses()
         configureTableviewDelegate()
     }
@@ -74,8 +82,10 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
     }
 
     private func fetchAddresses() {
+        loaderView.show()
         checkout.client.addresses { [weak self] result in
             guard let strongSelf = self else { return }
+            strongSelf.loaderView.hide()
             Async.main {
                 switch result {
                 case .failure(let error):
@@ -92,8 +102,10 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
         tableView.setEditing(editing, animated: animated)
     }
 
-    func setupTableView() {
+    func setupView() {
         tableView.fillInSuperView()
+        loaderView.fillInSuperView()
+        loaderView.buildView()
 
         tableView.delegate = tableviewDelegate
         tableView.dataSource = tableviewDelegate
@@ -103,7 +115,6 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
         tableView.reloadData()
-
     }
 
 }
@@ -134,17 +145,13 @@ extension AddressPickerViewController {
         }
     }
 
-    private func configureUpdateAddress() {
-        tableviewDelegate?.updateAddressHandler = { [weak self] (address) in
-            self?.showUpdateAddress(address)
-        }
-    }
-
     private func showCreateAddress(addressType: EditAddressType) {
-        showEditAddressViewController(addressType, address: nil) { [weak self] editAddressViewModel in
+        showCreateAddressViewController(addressType) { [weak self] editAddressViewModel in
             guard let request = CreateAddressRequest(addressViewModel: editAddressViewModel) else { return }
+            self?.loaderView.show()
             self?.checkout.client.createAddress(request) { result in
                 guard let strongSelf = self else { return }
+                strongSelf.loaderView.hide()
                 Async.main {
                     switch result {
                     case .failure(let error):
@@ -157,12 +164,31 @@ extension AddressPickerViewController {
         }
     }
 
+    private func showCreateAddressViewController(type: EditAddressType, completion: EditAddressCompletion) {
+        let viewController = EditAddressViewController(addressType: type, checkout: checkout, address: nil, completion: completion)
+        let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.modalPresentationStyle = .OverCurrentContext
+        self.navigationController?.showViewController(navigationController, sender: nil)
+    }
+
+}
+
+extension AddressPickerViewController {
+
+    private func configureUpdateAddress() {
+        tableviewDelegate?.updateAddressHandler = { [weak self] (address) in
+            self?.showUpdateAddress(address)
+        }
+    }
+
     private func showUpdateAddress(address: EquatableAddress) {
         let addressType: EditAddressType = address.pickupPoint == nil ? .StandardAddress : .PickupPoint
-        showEditAddressViewController(addressType, address: address) { [weak self] editAddressViewModel in
+        showUpdateAddressViewController(addressType, address: address) { [weak self] editAddressViewModel in
             guard let request = UpdateAddressRequest(addressViewModel: editAddressViewModel) else { return }
+            self?.loaderView.show()
             self?.checkout.client.updateAddress(address.id, request: request) { result in
                 guard let strongSelf = self else { return }
+                strongSelf.loaderView.hide()
                 Async.main {
                     switch result {
                     case .failure(let error):
@@ -178,11 +204,9 @@ extension AddressPickerViewController {
         }
     }
 
-    private func showEditAddressViewController(type: EditAddressType, address: EquatableAddress?, completion: EditAddressCompletion) {
+    private func showUpdateAddressViewController(type: EditAddressType, address: EquatableAddress, completion: EditAddressCompletion) {
         let viewController = EditAddressViewController(addressType: type, checkout: checkout, address: address, completion: completion)
-        let navigationController = UINavigationController(rootViewController: viewController)
-        navigationController.modalPresentationStyle = .OverCurrentContext
-        self.navigationController?.showViewController(navigationController, sender: nil)
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 
 }
