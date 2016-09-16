@@ -10,6 +10,7 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
 
     @IBOutlet weak var productCollectionView: UICollectionView!
 
+    @IBOutlet weak var serverSwitch: UISwitch!
     var articles = [DemoArticle]() {
         didSet {
             dispatch_async(dispatch_get_main_queue()) {
@@ -31,6 +32,7 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
         exampleImageView.image = UIImage(named: "example")
         productCollectionView.delegate = self
         productCollectionView.dataSource = self
+        serverSwitch.on = false
 
         self.navigationController?.navigationBar.accessibilityIdentifier = "catalog-navigation-controller"
     }
@@ -51,6 +53,9 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
     }
 
+    @IBAction func serverSwitchTapped(serverSwitch: UISwitch) {
+        AppSetup.sharedInstance.switchEnvironment(useSandbox: !serverSwitch.on)
+    }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ProductCollectionViewCell", forIndexPath: indexPath)
         guard let productCell = cell as? ProductCollectionViewCell else {
