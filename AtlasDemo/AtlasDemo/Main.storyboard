@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="O9n-73-qiO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="O9n-73-qiO">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wHW-dw-RKm">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2uf-pE-tIX">
                                     <size key="itemSize" width="179" height="229"/>
@@ -82,10 +82,19 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="wHW-dw-RKm" secondAttribute="bottom" id="HXm-hV-Kf1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="wHW-dw-RKm" secondAttribute="trailing" constant="-20" id="h5b-rW-wqx"/>
                             <constraint firstItem="wHW-dw-RKm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="hjv-no-ecu"/>
-                            <constraint firstItem="wHW-dw-RKm" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="td5-zg-zPi"/>
+                            <constraint firstItem="wHW-dw-RKm" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-64" id="td5-zg-zPi"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="AtlasSDK Demo" id="Qtr-gt-Nf8">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="ega-UN-CNV">
+                            <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="4fn-Ge-VII">
+                                <rect key="frame" x="20" y="6" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="serverSwitchTapped:" destination="BYZ-38-t0r" eventType="valueChanged" id="6PI-d6-HKT"/>
+                                </connections>
+                            </switch>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="Profile" id="8NH-Un-PA1">
                             <connections>
                                 <segue destination="4dE-k4-8mF" kind="show" id="vDp-6b-SYC"/>
@@ -94,6 +103,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="productCollectionView" destination="wHW-dw-RKm" id="FKK-eQ-DOg"/>
+                        <outlet property="serverSwitch" destination="4fn-Ge-VII" id="ZJ5-3n-Lvl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
