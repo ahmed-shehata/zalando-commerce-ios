@@ -53,13 +53,12 @@ class APIClientBaseSpec: QuickSpec {
     func mockedAPIClient(forURL url: NSURL, options: Options? = nil, data: NSData?, status: HTTPStatus,
         authorizationError: ErrorType? = nil, errorCode: Int? = nil) -> APIClient {
             let mockURL = AtlasMockAPI.endpointURL(forPath: "/")
-
             let config = Config(catalogURL: mockURL, checkoutURL: mockURL, loginURL: mockURL, options: options ?? clientOptions)
             var client = APIClient(config: config)
 
             var error: NSError? = nil
             if let errorCode = errorCode {
-                error = NSError(domain: "NSURLErrorDomain", code: errorCode, userInfo: nil)
+at                error = NSError(domain: "NSURLErrorDomain", code: errorCode, userInfo: nil)
             }
 
             client.urlSession = URLSessionMock(data: data,

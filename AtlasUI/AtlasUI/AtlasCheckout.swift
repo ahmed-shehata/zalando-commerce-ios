@@ -45,15 +45,16 @@ public class AtlasCheckout: LocalizerProviderType {
         - completion `AtlasCheckoutConfigurationCompletion`: `AtlasResult` with success result as `AtlasCheckout` initialized
     */
     public static func configure(options: Options, completion: AtlasCheckoutConfigurationCompletion) {
-//        let authorizationHandler = LoginAuthorizationHandler(loginURL: options.l)
-//        let options = Options(basedOn: options, authorizationHandler: authorizationHandler)
-
         Atlas.configure(options) { result in
             switch result {
             case .failure(let error):
                 completion(.failure(error))
 
             case .success(let client):
+                // TODO: replace client without auth handler with one with auth handler
+                let authorizationHandler = LoginAuthorizationHandler(loginURL: client.config.loginURL)
+                let options = Options(basedOn: options, authorizationHandler: authorizationHandler)
+
                 completion(.success(AtlasCheckout(client: client, options: options)))
             }
         }
