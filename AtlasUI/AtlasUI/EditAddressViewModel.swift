@@ -40,7 +40,7 @@ class EditAddressViewModel {
     }
 
     internal func titles(localizer: LocalizerProviderType) -> [String] {
-        return [Gender.male.title(localizer), Gender.female.title(localizer)]
+        return ["", Gender.male.title(localizer), Gender.female.title(localizer)]
     }
 
     internal func updateTitle(localizedGenderText: String?, localizer: LocalizerProviderType) {

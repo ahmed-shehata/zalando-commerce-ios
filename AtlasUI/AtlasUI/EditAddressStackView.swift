@@ -44,6 +44,9 @@ extension EditAddressStackView: UIDataBuilder {
                 fieldType.updateModel(viewModel, withValue: $0, localizer: strongSelf.checkoutProviderType)
                 textFieldInputView.textField.text = $0
                 textFieldInputView.configureTitleLabel()
+                if $0?.trimmedLength > 0 {
+                    textFieldInputView.textField.resignFirstResponder()
+                }
             }
 
             var nextTextField: TextFieldInputStackView?
