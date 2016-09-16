@@ -22,12 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         prepareApp()
 
         let opts = prepareOptions()
-        AtlasCheckout.configure(opts) { result in
-            if case let .success(checkout) = result {
-                AtlasCheckoutInstance = checkout
-            }
-        }
-
+        setAppOptions(opts)
         return true
     }
 
@@ -42,6 +37,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func prepareApp() {
         if AtlasMockAPI.hasMockedAPIStarted {
             Atlas.logoutCustomer()
+        }
+    }
+
+    func setAppOptions(opts: Options, completion: (() -> Void)? = nil) {
+        AtlasCheckout.configure(opts) { result in
+            if case let .success(checkout) = result {
+                AtlasCheckoutInstance = checkout
+                if let completion = completion {
+                    completion()
+                }
+            }
         }
     }
 
