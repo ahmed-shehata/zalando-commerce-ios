@@ -50,25 +50,23 @@ class APIClientBaseSpec: QuickSpec {
         return try! NSJSONSerialization.dataWithJSONObject(object, options: []) // swiftlint:disable:this force_try
     }
 
-    func mockedAPIClient(forURL url: NSURL, data: NSData?, status: HTTPStatus, errorCode: Int? = nil) -> APIClient {
-        return mockedAPIClient(forURL: url, data: data, statusCode: status.rawValue, errorCode: errorCode)
-    }
+    func mockedAPIClient(forURL url: NSURL, options: Options? = nil, data: NSData?, status: HTTPStatus,
+        authorizationError: ErrorType? = nil, errorCode: Int? = nil) -> APIClient {
+            let mockURL = AtlasMockAPI.endpointURL(forPath: "/")
 
-    func mockedAPIClient(forURL url: NSURL, data: NSData?, statusCode: Int, errorCode: Int? = nil) -> APIClient {
-        let mockURL = AtlasMockAPI.endpointURL(forPath: "/")
-        let config = Config(catalogURL: mockURL, checkoutURL: mockURL, loginURL: mockURL, options: clientOptions)
-        var client = APIClient(config: config)
+            let config = Config(catalogURL: mockURL, checkoutURL: mockURL, loginURL: mockURL, options: options ?? clientOptions)
+            var client = APIClient(config: config)
 
-        var error: NSError? = nil
-        if let errorCode = errorCode {
-            error = NSError(domain: "NSURLErrorDomain", code: errorCode, userInfo: nil)
-        }
+            var error: NSError? = nil
+            if let errorCode = errorCode {
+                error = NSError(domain: "NSURLErrorDomain", code: errorCode, userInfo: nil)
+            }
 
-        client.urlSession = URLSessionMock(data: data,
-            response: NSHTTPURLResponse(URL: url, statusCode: statusCode),
-            error: error)
+            client.urlSession = URLSessionMock(data: data,
+                response: NSHTTPURLResponse(URL: url, statusCode: status.rawValue),
+                error: error)
 
-        return client
+            return client
     }
 
 }

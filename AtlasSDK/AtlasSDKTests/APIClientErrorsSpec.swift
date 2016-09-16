@@ -5,6 +5,7 @@
 import Foundation
 import Quick
 import Nimble
+import AtlasMockAPI
 
 @testable import AtlasSDK
 
@@ -39,8 +40,12 @@ class APIClientErrorsSpec: APIClientBaseSpec {
                     "status": status.rawValue, "detail": "Full authentication is required to access this resource"]
 
                 let errorResponse = self.dataWithJSONObject(json)
-                let client = self.mockedAPIClient(forURL: clientURL, data: errorResponse, status: status)
+                let options = Options(clientId: "atlas_Y2M1MzA",
+                    salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
+                    useSandbox: true, interfaceLanguage: "en_DE",
+                    configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
 
+                let client = self.mockedAPIClient(forURL: clientURL, options: options, data: errorResponse, status: status)
 
                 waitUntil(timeout: 10) { done in
                     client.customer { result in
@@ -78,7 +83,8 @@ class APIClientErrorsSpec: APIClientBaseSpec {
             }
 
             it("should return error when response has NSURLDomainError") {
-                let client = self.mockedAPIClient(forURL: clientURL, data: nil, statusCode: 401, errorCode: NSURLErrorBadURL)
+                let client = self.mockedAPIClient(forURL: clientURL, data: nil,
+                    status: HTTPStatus.Unauthorized, errorCode: NSURLErrorBadURL)
 
                 waitUntil(timeout: 10) { done in
                     client.customer { result in
@@ -98,7 +104,7 @@ class APIClientErrorsSpec: APIClientBaseSpec {
                 let errorStatus = HTTPStatus.ServiceUnavailable
                 let errorResponse = "Some text error".dataUsingEncoding(NSUTF8StringEncoding)
 
-                let client = self.mockedAPIClient(forURL: clientURL, data: errorResponse, statusCode: errorStatus.rawValue)
+                let client = self.mockedAPIClient(forURL: clientURL, data: errorResponse, status: errorStatus)
 
                 waitUntil(timeout: 10) { done in
                     client.customer { result in
