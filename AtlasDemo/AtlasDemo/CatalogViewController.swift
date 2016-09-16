@@ -54,7 +54,7 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
 
     @IBAction func serverSwitchTapped(serverSwitch: UISwitch) {
-        AppSetupInstance.switchEnvironment(useSandbox: !serverSwitch.on)
+        AppSetup.sharedInstance.switchEnvironment(useSandbox: !serverSwitch.on)
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ProductCollectionViewCell", forIndexPath: indexPath)

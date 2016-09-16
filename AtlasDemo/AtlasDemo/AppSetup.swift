@@ -10,6 +10,11 @@ import AtlasMockAPI
 class AppSetup {
     var checkout: AtlasCheckout?
 
+    static let sharedInstance = AppSetup()
+
+    init() {
+    }
+
     func configure() {
         prepareMockAPI()
         prepareApp()

@@ -4,7 +4,6 @@
 
 import UIKit
 
-var AppSetupInstance = AppSetup() // swiftlint:disable:this variable_name
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -12,7 +11,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         BuddyBuildSDK.setup()
-        AppSetupInstance.configure()
+        AppSetup.sharedInstance.configure()
         return true
     }
 
