@@ -55,8 +55,8 @@ class APIClientBaseSpec: QuickSpec {
     }
 
     func mockedAPIClient(forURL url: NSURL, data: NSData?, statusCode: Int, errorCode: Int? = nil) -> APIClient {
-        let mockAPIURL = AtlasMockAPI.endpointURL(forPath: "/")
-        let config = Config(catalogAPIURL: mockAPIURL, checkoutAPIURL: mockAPIURL, loginURL: mockAPIURL, options: clientOptions)
+        let mockURL = AtlasMockAPI.endpointURL(forPath: "/")
+        let config = Config(catalogURL: mockURL, checkoutURL: mockURL, loginURL: mockURL, options: clientOptions)
         var client = APIClient(config: config)
 
         var error: NSError? = nil

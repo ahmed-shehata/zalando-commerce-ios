@@ -13,8 +13,8 @@ public struct Order {
     public let grossTotal: Price
     public let taxTotal: Price
     public let created: NSDate?
-    public let detailUrl: NSURL?
-    public let externalPaymentUrl: NSURL?
+    public let detailURL: NSURL?
+    public let externalPaymentURL: NSURL?
 
 }
 
@@ -48,7 +48,7 @@ extension Order: JSONInitializable {
             grossTotal: grossTotal,
             taxTotal: taxTotal,
             created: RFC3339DateFormatter().dateFromString(json[Keys.created].string),
-            detailUrl: json[Keys.detailUrl].URL,
-            externalPaymentUrl: json[Keys.externalPaymentUrl].URL)
+            detailURL: json[Keys.detailUrl].URL,
+            externalPaymentURL: json[Keys.externalPaymentUrl].URL)
     }
 }

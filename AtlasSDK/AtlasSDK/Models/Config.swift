@@ -6,12 +6,12 @@ import Foundation
 
 public struct Config {
 
-    let catalogAPIURL: NSURL
-    let checkoutAPIURL: NSURL
-    let loginURL: NSURL
-    let salesChannel: String
-    let clientId: String
-    let authorizationHandler: AtlasAuthorizationHandler?
+    public let catalogURL: NSURL
+    public let checkoutURL: NSURL
+    public let loginURL: NSURL
+    public let salesChannel: String
+    public let clientId: String
+    public let authorizationHandler: AtlasAuthorizationHandler?
 
 }
 
@@ -19,13 +19,13 @@ extension Config {
 
     init?(json: JSON, options: Options) {
         guard let
-        catalogAPIURL = json["atlas-catalog-api"]["url"].URL,
-            checkoutAPIURL = json["atlas-checkout-api"]["url"].URL,
+        catalogURL = json["atlas-catalog-api"]["url"].URL,
+            checkoutURL = json["atlas-checkout-api"]["url"].URL,
             loginURL = json["oauth2-provider"]["url"].URL
         else { return nil }
 
-        self.catalogAPIURL = catalogAPIURL
-        self.checkoutAPIURL = checkoutAPIURL
+        self.catalogURL = catalogURL
+        self.checkoutURL = checkoutURL
         self.loginURL = loginURL
         self.salesChannel = options.salesChannel
         self.clientId = options.clientId
@@ -36,16 +36,16 @@ extension Config {
 
 extension Config {
 
-    init(catalogAPIURL: String, checkoutAPIURL: String, loginURL: String, options: Options) {
-        self.init(catalogAPIURL: NSURL(validUrl: catalogAPIURL),
-            checkoutAPIURL: NSURL(validUrl: checkoutAPIURL),
-            loginURL: NSURL(validUrl: loginURL),
+    init(catalogURL: String, checkoutURL: String, loginURL: String, options: Options) {
+        self.init(catalogURL: NSURL(validURL: catalogURL),
+            checkoutURL: NSURL(validURL: checkoutURL),
+            loginURL: NSURL(validURL: loginURL),
             options: options)
     }
 
-    init(catalogAPIURL: NSURL, checkoutAPIURL: NSURL, loginURL: NSURL, options: Options) {
-        self.catalogAPIURL = catalogAPIURL
-        self.checkoutAPIURL = checkoutAPIURL
+    init(catalogURL: NSURL, checkoutURL: NSURL, loginURL: NSURL, options: Options) {
+        self.catalogURL = catalogURL
+        self.checkoutURL = checkoutURL
         self.loginURL = loginURL
         self.salesChannel = options.salesChannel
         self.clientId = options.clientId
@@ -56,8 +56,8 @@ extension Config {
 
 extension Config: CustomStringConvertible {
     public var description: String {
-        return "Config: { catalogAPIURL: \(self.catalogAPIURL)"
-            + ", checkoutAPIURL: \(self.checkoutAPIURL)"
+        return "Config: { catalogURL: \(self.catalogURL)"
+            + ", checkoutURL: \(self.checkoutURL)"
             + ", loginURL: \(self.loginURL)"
             + ", salesChannel: \(self.salesChannel)"
             + ", clientId: \(self.clientId)"

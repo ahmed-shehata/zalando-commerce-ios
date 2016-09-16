@@ -15,15 +15,13 @@ final class APIRequestBuildersContainer {
     }
 
     func createBuilder(forEndpoint endpoint: Endpoint, urlSession: NSURLSession = NSURLSession.sharedSession()) -> RequestBuilder {
-            var builder = RequestBuilder(urlSession: urlSession, endpoint: endpoint)
-            builder.authorizationHandler = self.authorizationHandler
-            builder.executionFinished = { builder in
-                self.requestBuilders.re
-
-                }
-            }
-            requestBuilders.append(builder)
-            return builder
+        var builder = RequestBuilder(urlSession: urlSession, endpoint: endpoint)
+        builder.authorizationHandler = self.authorizationHandler
+        builder.executionFinished = { builder in
+            self.requestBuilders.remove(builder)
+        }
+        requestBuilders.append(builder)
+        return builder
     }
-
+    
 }

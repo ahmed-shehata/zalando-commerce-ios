@@ -14,7 +14,7 @@ protocol Configurator {
 
 struct ConfigClient: Configurator {
 
-    private let requestBuilder: RequestBuilder
+    private var requestBuilder: RequestBuilder
     private let options: Options
 
     init(options: Options) {

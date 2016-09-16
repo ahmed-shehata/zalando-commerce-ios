@@ -24,11 +24,13 @@ struct RequestBuilder: Equatable {
     let urlSession: NSURLSession
     let endpoint: Endpoint
 
+    private let identifier: UInt32
     private var dataTask: NSURLSessionDataTask?
 
     init(urlSession: NSURLSession = NSURLSession.sharedSession(), endpoint: Endpoint) {
         self.urlSession = urlSession
         self.endpoint = endpoint
+        self.identifier = arc4random()
     }
 
     mutating func execute(completion: ResponseCompletion) {
@@ -121,5 +123,5 @@ struct RequestBuilder: Equatable {
 }
 
 func ==(lhs: RequestBuilder, rhs: RequestBuilder) -> Bool {
-    return lhs.endpoint == rhs.endpoint && lhs.urlSession == rhs.urlSession
+    return lhs.identifier == rhs.identifier
 }
