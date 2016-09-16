@@ -14,7 +14,7 @@ class AppSetup {
         prepareMockAPI()
         prepareApp()
 
-        let opts = prepareOptions()
+        let opts = prepareOptions(useSandbox: true)
         setAppOptions(opts)
     }
 
@@ -32,7 +32,7 @@ class AppSetup {
         }
     }
 
-    func setAppOptions(opts: Options, completion: (() -> Void)? = nil) {
+    private func setAppOptions(opts: Options, completion: (() -> Void)? = nil) {
         AtlasCheckout.configure(opts) { result in
             if case let .success(checkout) = result {
                 self.checkout = checkout
@@ -43,10 +43,10 @@ class AppSetup {
         }
     }
 
-    private func prepareOptions() -> Options {
+    private func prepareOptions(useSandbox useSandbox: Bool) -> Options {
         var opts = Options(clientId: "atlas_Y2M1MzA",
             salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
-            useSandbox: true, interfaceLanguage: "en_DE")
+            useSandbox: useSandbox, interfaceLanguage: "en_DE")
 
         if AtlasMockAPI.hasMockedAPIStarted {
             opts = Options(basedOn: opts, configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
@@ -59,6 +59,10 @@ class AppSetup {
         if alwaysUseMockAPI && !AtlasMockAPI.hasMockedAPIStarted {
             try! AtlasMockAPI.startServer() // swiftlint:disable:this force_try
         }
+    }
+
+    func switchEnvironment(useSandbox useSandbox: Bool, completion: (() -> Void)? = nil) {
+        setAppOptions(prepareOptions(useSandbox: useSandbox), completion: completion)
     }
 
 }

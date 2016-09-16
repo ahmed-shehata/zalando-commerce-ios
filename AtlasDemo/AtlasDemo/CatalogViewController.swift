@@ -57,9 +57,9 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
         if let serverSwitch = sender as? UISwitch {
             switch serverSwitch.on {
             case true:
-                break
+                AppSetupInstance.switchEnvironment(useSandbox: false)
             default:
-                break
+                AppSetupInstance.switchEnvironment(useSandbox: true)
             }
         }
 
