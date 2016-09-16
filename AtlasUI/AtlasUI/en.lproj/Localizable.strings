@@ -72,3 +72,4 @@
 "Form.validation.minLength: %@" = "Min length is %@";
 "Form.validation.maxLength: %@" = "Max length is %@";
 "Form.validation.pattern" = "Invalid value";
+"Address.validation.notValid" = "Address not valid, please check the address";

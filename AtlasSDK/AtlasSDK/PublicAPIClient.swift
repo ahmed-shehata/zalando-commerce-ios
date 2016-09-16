@@ -49,6 +49,11 @@ public typealias AddressesCompletion = AtlasResult<[UserAddress]> -> Void
  */
 public typealias AddressCreateUpdateCompletion = AtlasResult<UserAddress> -> Void
 
+/**
+ Completion block `AtlasResult` with the `CheckAddressResponse` struct as a success value
+ */
+public typealias CheckAddressCompletion = AtlasResult<CheckAddressResponse> -> Void
+
 
 extension APIClient {
 
@@ -164,6 +169,12 @@ extension APIClient {
                                              addressId: addressId,
                                              updateAddressRequest: request,
                                              salesChannel: config.salesChannel)
+        fetch(from: endpoint, completion: completion)
+    }
+
+    public func checkAddress(request: CheckAddressRequest, completion: CheckAddressCompletion) {
+        let endpoint = CheckAddressEndpoint(serviceURL: config.checkoutAPIURL,
+                                            checkAddressRequest: request)
         fetch(from: endpoint, completion: completion)
     }
 

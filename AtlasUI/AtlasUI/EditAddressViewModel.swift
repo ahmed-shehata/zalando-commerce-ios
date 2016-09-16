@@ -109,6 +109,18 @@ extension UpdateAddressRequest {
 
 }
 
+extension CheckAddressRequest {
+
+    internal init? (addressViewModel: EditAddressViewModel) {
+
+        guard let address = CheckAddress(addressViewModel: addressViewModel) else { return nil }
+
+        self.address = address
+        self.pickupPoint = PickupPoint(addressViewModel: addressViewModel)
+    }
+
+}
+
 extension PickupPoint {
 
     internal init? (addressViewModel: EditAddressViewModel) {
@@ -120,6 +132,23 @@ extension PickupPoint {
         self.id = pickupPointId
         self.name = "PACKSTATION"
         self.memberId = pickupPointMemberId
+    }
+
+}
+
+extension CheckAddress {
+
+    internal init? (addressViewModel: EditAddressViewModel) {
+
+        guard let
+            zip = addressViewModel.zip,
+            city = addressViewModel.city else { return nil }
+
+        self.street = addressViewModel.street
+        self.additional = addressViewModel.additional
+        self.zip = zip
+        self.city = city
+        self.countryCode = addressViewModel.countryCode
     }
 
 }

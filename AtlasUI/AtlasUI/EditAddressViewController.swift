@@ -25,6 +25,12 @@ class EditAddressViewController: UIViewController, CheckoutProviderType {
         return stackView
     }()
 
+    internal let loaderView: LoaderView = {
+        let view = LoaderView()
+        view.hidden = true
+        return view
+    }()
+
     private let addressType: EditAddressType
     internal let checkout: AtlasCheckout
     private let addressViewModel: EditAddressViewModel
@@ -75,8 +81,26 @@ extension EditAddressViewController {
     private dynamic func submitButtonPressed() {
         let isValid = addressStackView.textFields.map { $0.validateForm() }.filter { $0 == false }.isEmpty
         if isValid {
-            completion(addressViewModel)
-            dismissView()
+            guard let request = CheckAddressRequest(addressViewModel: addressViewModel) else { return }
+            loaderView.show()
+            checkout.client.checkAddress(request) { [weak self] result in
+                guard let strongSelf = self else { return }
+                strongSelf.loaderView.hide()
+                Async.main {
+                    switch result {
+                    case .failure(let error):
+                        strongSelf.userMessage.show(error: error)
+                    case .success(let checkAddressResponse):
+                        if checkAddressResponse.status == .notCorrect {
+                            let title = strongSelf.loc("Address.validation.notValid")
+                            strongSelf.userMessage.show(title: title, message: nil, actions: ButtonAction(text: "OK"))
+                        } else {
+                            strongSelf.completion(strongSelf.addressViewModel)
+                            strongSelf.dismissView()
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -99,18 +123,20 @@ extension EditAddressViewController: UIBuilder {
 
     func configureView() {
         view.addSubview(scrollView)
+        view.addSubview(loaderView)
         scrollView.addSubview(addressStackView)
         scrollView.registerForKeyboardNotifications()
     }
 
     func configureConstraints() {
         scrollView.fillInSuperView()
+        loaderView.fillInSuperView()
         addressStackView.fillInSuperView()
         addressStackView.setWidth(equalToView: scrollView)
     }
 
     func builderSubviews() -> [UIBuilder] {
-        return [addressStackView]
+        return [addressStackView, loaderView]
     }
 
 }
