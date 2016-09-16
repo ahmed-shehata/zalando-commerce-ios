@@ -6,9 +6,9 @@ import Foundation
 
 public struct APIClient {
 
-    let config: Config
+    public let config: Config
 
-    var urlSession: NSURLSession = NSURLSession.sharedSession()
+    internal var urlSession: NSURLSession = NSURLSession.sharedSession()
 
     private let requestBuilders: APIRequestBuildersContainer
 
@@ -44,8 +44,7 @@ public struct APIClient {
     }
 
     private func fetch<T>(from endpoint: Endpoint, completion: AtlasResult<T> -> Void, successHandler: JSONResponse -> T?) {
-        var builder = self.requestBuilders.createBuilder(forEndpoint: endpoint, urlSession: urlSession)
-        builder.execute { result in
+        requestBuilders.createBuilder(forEndpoint: endpoint, urlSession: urlSession).execute { result in
             switch result {
             case .failure(let error):
                 completion(.failure(error))
@@ -57,7 +56,6 @@ public struct APIClient {
                 }
             }
         }
-
     }
 
 }

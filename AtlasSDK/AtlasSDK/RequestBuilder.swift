@@ -16,7 +16,7 @@ public protocol AtlasAuthorizationHandler {
 
 }
 
-struct RequestBuilder: Equatable {
+final class RequestBuilder: Equatable {
 
     var executionFinished: RequestTaskCompletion?
     var authorizationHandler: AtlasAuthorizationHandler?
@@ -33,7 +33,7 @@ struct RequestBuilder: Equatable {
         self.identifier = arc4random()
     }
 
-    mutating func execute(completion: ResponseCompletion) {
+    func execute(completion: ResponseCompletion) {
         buildAndExecuteSessionTask { result in
             switch result {
             case .failure(let error):
@@ -67,7 +67,7 @@ struct RequestBuilder: Equatable {
         }
     }
 
-    mutating func buildAndExecuteSessionTask(completion: ResponseCompletion) {
+    func buildAndExecuteSessionTask(completion: ResponseCompletion) {
         let request: NSMutableURLRequest
         do {
             request = try buildRequest()
@@ -122,6 +122,6 @@ struct RequestBuilder: Equatable {
 
 }
 
-func ==(lhs: RequestBuilder, rhs: RequestBuilder) -> Bool {
+func == (lhs: RequestBuilder, rhs: RequestBuilder) -> Bool {
     return lhs.identifier == rhs.identifier
 }
