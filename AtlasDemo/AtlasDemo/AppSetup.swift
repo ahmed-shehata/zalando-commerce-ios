@@ -8,9 +8,9 @@ import AtlasUI
 import AtlasMockAPI
 
 class AppSetup {
-    var checkout: AtlasCheckout? // swiftlint:disable:this variable_name
+    var checkout: AtlasCheckout?
 
-    func setupApp() {
+    func configure() {
         prepareMockAPI()
         prepareApp()
 
@@ -26,6 +26,12 @@ class AppSetup {
         #endif
     }
 
+    private func prepareMockAPI() {
+        if alwaysUseMockAPI && !AtlasMockAPI.hasMockedAPIStarted {
+            try! AtlasMockAPI.startServer() // swiftlint:disable:this force_try
+        }
+    }
+
     private func prepareApp() {
         if AtlasMockAPI.hasMockedAPIStarted {
             Atlas.logoutCustomer()
@@ -36,9 +42,7 @@ class AppSetup {
         AtlasCheckout.configure(opts) { result in
             if case let .success(checkout) = result {
                 self.checkout = checkout
-                if let completion = completion {
-                    completion()
-                }
+                completion?()
             }
         }
     }
@@ -53,12 +57,6 @@ class AppSetup {
         }
 
         return opts
-    }
-
-    private func prepareMockAPI() {
-        if alwaysUseMockAPI && !AtlasMockAPI.hasMockedAPIStarted {
-            try! AtlasMockAPI.startServer() // swiftlint:disable:this force_try
-        }
     }
 
     func switchEnvironment(useSandbox useSandbox: Bool, completion: (() -> Void)? = nil) {
