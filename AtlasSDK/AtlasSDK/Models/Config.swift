@@ -9,11 +9,11 @@ import Foundation
  */
 public struct Config {
 
-    let catalogAPIURL: NSURL
-    let checkoutAPIURL: NSURL
-    let loginURL: NSURL
-    let salesChannel: String
-    let clientId: String
+    public let catalogAPIURL: NSURL
+    public let checkoutAPIURL: NSURL
+    public let loginURL: NSURL
+    public let salesChannel: String
+    public let clientId: String
     public let countryCode: String
 
 }
