@@ -5,6 +5,7 @@
 import Foundation
 import AtlasSDK
 
+// TODO: Find more meaningful name
 struct LoginAuthorizationHandler: AtlasAuthorizationHandler {
 
     private let loginURL: NSURL
@@ -26,6 +27,5 @@ struct LoginAuthorizationHandler: AtlasAuthorizationHandler {
             topViewController.presentViewController(navigationController, animated: true, completion: nil)
         }
     }
-    
-}
 
+}

@@ -7,15 +7,6 @@ import Foundation
 typealias ResponseCompletion = AtlasResult<JSONResponse> -> Void
 typealias RequestTaskCompletion = (RequestBuilder) -> Void
 
-public typealias AtlasAuthorizationToken = String
-public typealias AtlasAuthorizationCompletion = AtlasResult<AtlasAuthorizationToken> -> Void
-
-public protocol AtlasAuthorizationHandler {
-
-    func authorizeTask(completion: AtlasAuthorizationCompletion)
-
-}
-
 final class RequestBuilder: Equatable {
 
     var executionFinished: RequestTaskCompletion?
@@ -33,6 +24,11 @@ final class RequestBuilder: Equatable {
         self.identifier = arc4random()
     }
 
+    deinit {
+        dataTask?.cancel()
+    }
+
+    // TODO: Find more meaningful name
     func execute(completion: ResponseCompletion) {
         buildAndExecuteSessionTask { result in
             switch result {
@@ -47,12 +43,11 @@ final class RequestBuilder: Equatable {
                             switch result {
                             case .failure(let error):
                                 completion(.failure(error))
-                                self.executionFinished?(self)
                             case .success(let accessToken):
                                 APIAccessToken.store(accessToken)
                                 self.execute(completion)
                             }
-                            // TODO: strongSelf.executionFinished?(strongSelf) after authorizeTask
+                            self.executionFinished?(self)
                         }
                     }
                 default:
@@ -67,7 +62,8 @@ final class RequestBuilder: Equatable {
         }
     }
 
-    func buildAndExecuteSessionTask(completion: ResponseCompletion) {
+    // TODO: Find more meaningful name
+    private func buildAndExecuteSessionTask(completion: ResponseCompletion) {
         let request: NSMutableURLRequest
         do {
             request = try buildRequest()
@@ -75,49 +71,16 @@ final class RequestBuilder: Equatable {
             return completion(.failure(e))
         }
 
-        dataTask = self.urlSession.dataTaskWithRequest(request) { data, response, error in
-            self.handleResponse(data, response, error, completion)
+        dataTask = self.urlSession.dataTaskWithRequest(request) { response in
+            ResponseParser(taskResponse: response).parse(completion)
         }
 
         dataTask?.resume()
     }
 
-    func buildRequest() throws -> NSMutableURLRequest {
+    private func buildRequest() throws -> NSMutableURLRequest {
         let request = try NSMutableURLRequest(endpoint: endpoint).debugLog()
         return request.authorize(withToken: APIAccessToken.retrieve())
-    }
-
-    // TODO: sepratated struct
-    private func handleResponse(data: NSData?, _ response: NSURLResponse?, _ error: NSError?, _ completion: ResponseCompletion) {
-        if let error = error {
-            let nsURLError = AtlasAPIError.nsURLError(code: error.code, details: error.localizedDescription)
-            return completion(.failure(nsURLError))
-        }
-
-        guard let httpResponse = response as? NSHTTPURLResponse, data = data else {
-            return completion(.failure(AtlasAPIError.noData))
-        }
-
-        let json: JSON? = data.length > 0 ? JSON(data: data) : nil
-
-        guard httpResponse.isSuccessful else {
-            let error: AtlasAPIError
-            if httpResponse.status == .Unauthorized {
-                error = AtlasAPIError.unauthorized
-            } else if let json = json where json != JSON.null {
-                error = AtlasAPIError.backend(
-                    status: json["status"].int,
-                    title: json["title"].string,
-                    details: json["detail"].string)
-            } else {
-                error = AtlasAPIError.http(
-                    status: HTTPStatus(statusCode: httpResponse.statusCode),
-                    details: NSHTTPURLResponse.localizedStringForStatusCode(httpResponse.statusCode))
-            }
-            return completion(.failure(error))
-        }
-
-        completion(.success(JSONResponse(response: httpResponse, body: json)))
     }
 
 }

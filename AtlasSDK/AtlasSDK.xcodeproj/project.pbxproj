@@ -70,6 +70,8 @@
 		7D9992E58F4E287BC6EE7AD30338862F /* FormattableAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A2E3D95B370914C7B19A3B81E80190 /* FormattableAddress.swift */; };
 		7FAD1B683AFF88F087D668CE6D3F6AD6 /* CreateCheckoutEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB0787C541A97B43726F9BA40CA8F22 /* CreateCheckoutEndpoint.swift */; };
 		8121410286D1482AE56315CCD5E2AC10 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42F187B2D3AF87F210E636B8FEB493D8 /* Nimble.framework */; };
+		8136C4A31D8C28CE00BEE588 /* ResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8136C4A21D8C28CE00BEE588 /* ResponseParser.swift */; };
+		8136C4A51D8C29C600BEE588 /* AtlasAuthorizationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8136C4A41D8C29C600BEE588 /* AtlasAuthorizationHandler.swift */; };
 		8181B15B2059E0C37F74FA1B0E4DAF8C /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D9D57D8A8EE4FD7D57EFE634240FB /* HTTP.swift */; };
 		81FB3EA91D8AFC950026797F /* MockAuthorizationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FB3EA71D8AFAD10026797F /* MockAuthorizationHandler.swift */; };
 		84BBE1AA8C2FCC873F1FED34FCE10AF7 /* CreateCartEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD3BF8459C91789124ED2200CC0A791 /* CreateCartEndpoint.swift */; };
@@ -211,6 +213,8 @@
 		7B40AEACC9AD78CAFFB98B61702CE25A /* LoggerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggerType.swift; sourceTree = "<group>"; };
 		7CDE9B266DF0DAFAF1BB3ED0A00D2609 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		812218FB3FA269E7294BC86C1E53B428 /* PrintLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintLogger.swift; sourceTree = "<group>"; };
+		8136C4A21D8C28CE00BEE588 /* ResponseParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResponseParser.swift; path = AtlasSDK/ResponseParser.swift; sourceTree = SOURCE_ROOT; };
+		8136C4A41D8C29C600BEE588 /* AtlasAuthorizationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AtlasAuthorizationHandler.swift; path = AtlasSDK/AtlasAuthorizationHandler.swift; sourceTree = SOURCE_ROOT; };
 		8150A309D5F4A77B58D92D5EFDB2EBD1 /* ConfigurableEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableEndpoint.swift; sourceTree = "<group>"; };
 		81FB3EA71D8AFAD10026797F /* MockAuthorizationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockAuthorizationHandler.swift; path = AtlasSDKTests/MockAuthorizationHandler.swift; sourceTree = SOURCE_ROOT; };
 		8702301BFF3A6A5E289463BB6931C0E8 /* AtlasMockAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AtlasMockAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -292,6 +296,8 @@
 				26C8E5912B00EFA43078DB0CE654BC5C /* API */,
 				FB99FAC8B79FF13FBB98F39FCB450EDD /* APIAccessToken.swift */,
 				2F9E6222E409F42BB339D75D9221D28C /* RequestBuilder.swift */,
+				8136C4A21D8C28CE00BEE588 /* ResponseParser.swift */,
+				8136C4A41D8C29C600BEE588 /* AtlasAuthorizationHandler.swift */,
 			);
 			name = Client;
 			path = AtlasSDK/API;
@@ -802,6 +808,7 @@
 				6506392A605FACF4557D0FCDD47ED7E6 /* Config.swift in Sources */,
 				506DF446892A49EC75F6512627A24CF9 /* ConfigClient.swift in Sources */,
 				113DBEF12BE3178D9A047FF181AE07ED /* ConfigurableEndpoint.swift in Sources */,
+				8136C4A31D8C28CE00BEE588 /* ResponseParser.swift in Sources */,
 				103947BC6E68F8EA6350A266D6573D4A /* CreateAddressRequest.swift in Sources */,
 				84BBE1AA8C2FCC873F1FED34FCE10AF7 /* CreateCartEndpoint.swift in Sources */,
 				7FAD1B683AFF88F087D668CE6D3F6AD6 /* CreateCheckoutEndpoint.swift in Sources */,
@@ -835,6 +842,7 @@
 				D19C72A140E006F0F91D3E54CC940DA4 /* NSURL.swift in Sources */,
 				57B50C98F5DAF689924D27E742BC4389 /* NSURLComponents.swift in Sources */,
 				DBE9C88D3DD0024583CF836916DFB48D /* NSURLQueryItem.swift in Sources */,
+				8136C4A51D8C29C600BEE588 /* AtlasAuthorizationHandler.swift in Sources */,
 				4ECD28F2D5A9072AB04B4E0EFEBB432D /* Options.swift in Sources */,
 				C901F2D613212D9147AF6B6140E8A4E1 /* OptionsInfoPlist.swift in Sources */,
 				240228124E25E1CCE455B8FD3E3F9A92 /* Order.swift in Sources */,
