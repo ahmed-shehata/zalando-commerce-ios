@@ -24,7 +24,7 @@ class ProfileViewController: UIViewController {
 
         self.email.textColor = UIColor.grayColor()
 
-        AtlasCheckoutInstance?.client.customer { result in
+        AppSetupInstance.checkout?.client.customer { result in
             switch result {
             case .failure(let error):
                 self.showError(title: "Error", error: error)
