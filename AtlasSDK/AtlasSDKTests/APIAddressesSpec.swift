@@ -33,7 +33,6 @@ class APIAddressesSpec: APIClientBaseSpec {
                             expect(addresses.first?.countryCode).to(equal("DE"))
                             expect(addresses.first?.isDefaultBilling).to(beTrue())
                             expect(addresses.first?.isDefaultShipping).to(beTrue())
-                            expect(addresses.first?.fullContactPostalAddress).to(equal("Erika Mustermann, Mollstr. 1\n10178 Berlin\n"))
                         }
                         done()
                     }
