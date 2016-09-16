@@ -34,9 +34,9 @@ class EditAddressViewController: UIViewController, CheckoutProviderType {
     private let addressType: EditAddressType
     internal let checkout: AtlasCheckout
     private let addressViewModel: EditAddressViewModel
-    internal let completion: EditAddressCompletion
+    internal var completion: EditAddressCompletion?
 
-    init(addressType: EditAddressType, checkout: AtlasCheckout, address: EquatableAddress?, completion: EditAddressCompletion) {
+    init(addressType: EditAddressType, checkout: AtlasCheckout, address: EquatableAddress?, completion: EditAddressCompletion?) {
         self.addressType = addressType
         self.checkout = checkout
         if let userAddress = address as? UserAddress {
@@ -95,7 +95,7 @@ extension EditAddressViewController {
                             let title = strongSelf.loc("Address.validation.notValid")
                             strongSelf.userMessage.show(title: title, message: nil, actions: ButtonAction(text: "OK"))
                         } else {
-                            strongSelf.completion(strongSelf.addressViewModel)
+                            strongSelf.completion?(strongSelf.addressViewModel)
                             strongSelf.dismissView()
                         }
                     }

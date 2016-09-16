@@ -42,20 +42,21 @@ extension Config {
 
 extension Config {
 
-    init(catalogAPIURL: String, checkoutAPIURL: String, loginURL: String, options: Options) {
+    init(catalogAPIURL: String, checkoutAPIURL: String, loginURL: String, countryCode: String, options: Options) {
         self.init(catalogAPIURL: NSURL(validUrl: catalogAPIURL),
             checkoutAPIURL: NSURL(validUrl: checkoutAPIURL),
             loginURL: NSURL(validUrl: loginURL),
+            countryCode: countryCode,
             options: options)
     }
 
-    init(catalogAPIURL: NSURL, checkoutAPIURL: NSURL, loginURL: NSURL, options: Options) {
+    init(catalogAPIURL: NSURL, checkoutAPIURL: NSURL, loginURL: NSURL, countryCode: String, options: Options) {
         self.catalogAPIURL = catalogAPIURL
         self.checkoutAPIURL = checkoutAPIURL
         self.loginURL = loginURL
         self.salesChannel = options.salesChannel
         self.clientId = options.clientId
-        self.countryCode = options.interfaceLanguage.componentsSeparatedByString("_").last ?? "DE"
+        self.countryCode = countryCode
     }
 
 }

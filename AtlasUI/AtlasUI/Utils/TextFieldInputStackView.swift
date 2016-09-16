@@ -44,12 +44,12 @@ class TextFieldInputStackView: UIStackView {
     private var localizer: LocalizerProviderType!
 
     internal func validateForm() -> Bool {
-        let error = calculateFormError()
+        let error = checkFormForError()
         errorLabel.text = error ?? " "
         return error == nil
     }
 
-    private func calculateFormError() -> String? {
+    private func checkFormForError() -> String? {
         return validators.flatMap { $0.errorMessage(textField.text, localizer: localizer) }.first
     }
 
@@ -129,7 +129,7 @@ extension TextFieldInputStackView: UITextFieldDelegate {
     func textFieldValueChanged() {
         configureTitleLabel()
         valueChangedHandler?(textField.text)
-        if calculateFormError() == nil {
+        if checkFormForError() == nil {
             errorLabel.text = " "
         }
     }

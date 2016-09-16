@@ -39,12 +39,12 @@ extension EditAddressStackView: UIDataBuilder {
             let value = fieldType.value(viewModel, localizer: checkoutProviderType)
             let isActive = fieldType.isActive()
 
-            let customView = fieldType.customView(viewModel, localizer: checkoutProviderType) { [weak self] in
+            let customView = fieldType.customView(viewModel, localizer: checkoutProviderType) { [weak self] text in
                 guard let strongSelf = self else { return }
-                fieldType.updateModel(viewModel, withValue: $0, localizer: strongSelf.checkoutProviderType)
-                textFieldInputView.textField.text = $0
+                fieldType.updateModel(viewModel, withValue: text, localizer: strongSelf.checkoutProviderType)
+                textFieldInputView.textField.text = text
                 textFieldInputView.configureTitleLabel()
-                if $0?.trimmedLength > 0 {
+                if text?.trimmedLength > 0 {
                     textFieldInputView.textField.resignFirstResponder()
                 }
             }

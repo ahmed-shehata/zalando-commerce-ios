@@ -42,7 +42,7 @@ struct UserMessage {
         show(title: title, message: message, actions: ButtonAction(text: "OK"))
     }
 
-    func show(title title: String, message: String?, actions: ButtonAction..., preferredStyle: UIAlertControllerStyle = .Alert) {
+    func show(title title: String, message: String?, preferredStyle: UIAlertControllerStyle = .Alert, actions: ButtonAction...) {
         guard let topViewController = UIApplication.topViewController() else { return }
         let alertView = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
 

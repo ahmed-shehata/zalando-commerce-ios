@@ -8,7 +8,7 @@ struct CheckAddressEndpoint: ConfigurableEndpoint {
 
     let serviceURL: NSURL
     let method: HTTPMethod = .POST
-    var path: String { return "address-checks" }
+    let path = "address-checks"
     let acceptedContentType = "application/x.zalando.address-check.create.response+json"
     let contentType = "application/x.zalando.address-check.create+json"
 

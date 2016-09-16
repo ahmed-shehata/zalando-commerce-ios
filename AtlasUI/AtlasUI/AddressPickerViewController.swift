@@ -11,7 +11,7 @@ enum AddressType {
 }
 
 typealias AddressSelectionCompletion = (pickedAddress: EquatableAddress, pickedAddressType: AddressType) -> Void
-typealias CreateAddressHandler = Void -> Void
+typealias CreateAddressHandler = () -> Void
 typealias UpdateAddressHandler = (address: EquatableAddress) -> Void
 
 final class AddressPickerViewController: UIViewController, CheckoutProviderType {
@@ -135,18 +135,18 @@ extension AddressPickerViewController {
             }
 
             let title = strongSelf.loc("Address.Add.type.title")
-            let standardAction = ButtonAction(text: strongSelf.loc("Address.Add.type.standard"), style: .Default) { (UIAlertAction) in
+            let standardAction = ButtonAction(text: "Address.Add.type.standard", style: .Default) { (UIAlertAction) in
                 strongSelf.showCreateAddress(.StandardAddress)
             }
-            let pickupPointAction = ButtonAction(text: strongSelf.loc("Address.Add.type.pickupPoint"), style: .Default) { (UIAlertAction) in
+            let pickupPointAction = ButtonAction(text: "Address.Add.type.pickupPoint", style: .Default) { (UIAlertAction) in
                 strongSelf.showCreateAddress(.PickupPoint)
             }
-            let cancelAction = ButtonAction(text: strongSelf.loc("Cancel"), style: .Cancel, handler: nil)
+            let cancelAction = ButtonAction(text: "Cancel", style: .Cancel, handler: nil)
 
             strongSelf.userMessage.show(title: title,
                                         message: nil,
-                                        actions: standardAction, pickupPointAction, cancelAction,
-                                        preferredStyle: .ActionSheet)
+                                        preferredStyle: .ActionSheet,
+                                        actions: standardAction, pickupPointAction, cancelAction)
         }
     }
 
