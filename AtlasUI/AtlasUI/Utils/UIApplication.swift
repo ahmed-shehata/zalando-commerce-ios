@@ -2,15 +2,15 @@
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-public extension UIApplication {
+extension UIApplication {
 
-    public static var hasTopViewController: Bool {
+    static var hasTopViewController: Bool {
         return topViewController() != nil
     }
 
-    public static func topViewController(baseController: UIViewController? = nil) -> UIViewController? {
+    static func topViewController(baseController: UIViewController? = nil) -> UIViewController? {
         let baseController = baseController ?? UIApplication.sharedApplication().keyWindow?.rootViewController
         if let navigationController = baseController as? UINavigationController {
             return topViewController(navigationController.visibleViewController)
@@ -24,7 +24,7 @@ public extension UIApplication {
         return baseController
     }
 
-    public static var window: UIWindow? {
+    static var window: UIWindow? {
         return UIApplication.sharedApplication().keyWindow
     }
 
