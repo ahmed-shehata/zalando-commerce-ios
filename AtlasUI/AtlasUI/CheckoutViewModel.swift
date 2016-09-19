@@ -38,11 +38,11 @@ struct CheckoutViewModel {
 extension CheckoutViewModel {
 
     func shippingAddress(localizedWith localizer: LocalizerProviderType) -> [String] {
-        return selectedShippingAddress?.splittedPostalAddress ?? [localizer.loc("No Shipping Address")]
+        return selectedShippingAddress?.splittedFormattedPostalAddress(localizedWith: localizer) ?? [localizer.loc("No Shipping Address")]
     }
 
     func billingAddress(localizedWith localizer: LocalizerProviderType) -> [String] {
-        return selectedBillingAddress?.splittedPostalAddress ?? [localizer.loc("No Billing Address")]
+        return selectedBillingAddress?.splittedFormattedPostalAddress(localizedWith: localizer) ?? [localizer.loc("No Billing Address")]
     }
 
     var submitButtonTitle: String {

@@ -23,6 +23,12 @@ class AddAddressTableViewCell: UITableViewCell {
         return label
     }()
 
+    internal let addAddressButton: UIButton = {
+        let button = UIButton(type: .ContactAdd)
+        button.userInteractionEnabled = false
+        return button
+    }()
+
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         buildView()
@@ -39,10 +45,13 @@ extension AddAddressTableViewCell: UIBuilder {
     func configureView() {
         contentView.addSubview(stackView)
         stackView.addArrangedSubview(addAddressLabel)
+        stackView.addArrangedSubview(addAddressButton)
     }
 
     func configureConstraints() {
         stackView.fillInSuperView()
+        addAddressButton.setSquareAspectRatio()
+        addAddressButton.setWidth(equalToConstant: 20)
     }
 
 }

@@ -50,10 +50,14 @@ class APIClientBaseSpec: QuickSpec {
         return try! NSJSONSerialization.dataWithJSONObject(object, options: []) // swiftlint:disable:this force_try
     }
 
-    func mockedAPIClient(forURL url: NSURL, options: Options? = nil, data: NSData?, status: HTTPStatus,
-        authorizationError: ErrorType? = nil, errorCode: Int? = nil) -> APIClient {
-            let mockURL = AtlasMockAPI.endpointURL(forPath: "/")
-            let config = Config(catalogURL: mockURL, checkoutURL: mockURL, loginURL: mockURL, options: options ?? clientOptions)
+
+    func mockedAPIClient(forURL url: NSURL, countryCode: String, data: NSData?, statusCode: Int, errorCode: Int? = nil) -> APIClient {
+        let apiURL = AtlasMockAPI.endpointURL(forPath: "/")
+        let config = Config(catalogURL: apiURL,
+            checkoutURL: apiURL,
+            loginURL: apiURL,
+            countryCode: countryCode,
+            options: clientOptions)
             var client = APIClient(config: config)
 
             var error: NSError? = nil

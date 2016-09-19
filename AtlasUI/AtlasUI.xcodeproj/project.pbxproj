@@ -39,12 +39,10 @@
 		79175AD49456E48DC6B393EB6F62053A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC182F5F2F24D9AF740830B9B50A9 /* UIColor.swift */; };
 		80E9B317B4DF43290610E3DD8ED6802B /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E89A529CD1D470F15B857AF1031CB61 /* Nimble.framework */; };
 		8134E4BB1D8AB810006B5077 /* NSURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134E4BA1D8AB810006B5077 /* NSURL.swift */; };
-		813F888F1D8FEE49002766CE /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813F888E1D8FEE49002766CE /* UIApplication.swift */; };
-		81D3C9AA1D8B060800DB2AD9 /* NSURLQueryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D3C9A91D8B060800DB2AD9 /* NSURLQueryItem.swift */; };
-		81D3C9AC1D8B067100DB2AD9 /* URLAuthorizationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D3C9AB1D8B067100DB2AD9 /* URLAuthorizationSpec.swift */; };
-		81FB3EAC1D8AFFFD0026797F /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FB3EAB1D8AFFFD0026797F /* LoginError.swift */; };
-		81FB3EAE1D8B00940026797F /* OAuth2LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FB3EAD1D8B00940026797F /* OAuth2LoginViewController.swift */; };
-		81FB3EB01D8B00BE0026797F /* OAuth2AuthorizationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FB3EAF1D8B00BE0026797F /* OAuth2AuthorizationHandler.swift */; };
+		8173B01C1D8FFF4A005DCEA8 /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8173B0191D8FFF4A005DCEA8 /* LoginError.swift */; };
+		8173B01D1D8FFF4A005DCEA8 /* OAuth2AuthorizationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8173B01A1D8FFF4A005DCEA8 /* OAuth2AuthorizationHandler.swift */; };
+		8173B01E1D8FFF4A005DCEA8 /* OAuth2LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8173B01B1D8FFF4A005DCEA8 /* OAuth2LoginViewController.swift */; };
+		8173B0201D8FFF6B005DCEA8 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8173B01F1D8FFF6B005DCEA8 /* UIApplication.swift */; };
 		86C648E6605921B9E132B657552DF6B4 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0EC11E22B5A08434A294F63B70C3BCC /* Quick.framework */; };
 		8EB96C51E439F0E511A696F28FE216B1 /* UserMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764CDA794B49DC585B031C7C4F5776D5 /* UserMessage.swift */; };
 		8F555E1D55F47DFE66BD5CF593E6C6DE /* AddressListTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC391339AB40C212901806139F6FC2B /* AddressListTableViewDelegate.swift */; };
@@ -69,6 +67,9 @@
 		DB2470DB4F51D75862D73B20254CB0A7 /* CheckoutSummaryActionsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4E23134230FC0873B95CF6C403C333 /* CheckoutSummaryActionsHandler.swift */; };
 		DE4482A9091E62348223761D4C58D008 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA19C45C79A94472331D134BC9895CA /* UIView.swift */; };
 		E97A33A7BE2D26CDE9B4C62EB5BD2661 /* CheckoutSummaryAddressStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9494F7947C24BD2087FE22EBE20BFCD /* CheckoutSummaryAddressStackView.swift */; };
+		E9A242401D8AB6BC0026A671 /* FormattableAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2423F1D8AB6BC0026A671 /* FormattableAddress.swift */; };
+		E9A242421D8AB81B0026A671 /* StreetAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A242411D8AB81B0026A671 /* StreetAddress.swift */; };
+		E9A242441D8AD46E0026A671 /* FormValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A242431D8AD46E0026A671 /* FormValidator.swift */; };
 		EF570993CFA4FDF0361679E931D55B8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94F33C041120EF12B441AE2E84A48050 /* Assets.xcassets */; };
 		F22B10157E2B91A8BF9D3AB7B354E6CC /* Nimble.framework in Copy Quick and Nimble frameworks */ = {isa = PBXBuildFile; fileRef = 2E89A529CD1D470F15B857AF1031CB61 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F3F62025EFDB47B5637DC3C928D69264 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F13460B6B17606CC65E38CE6A4716C /* UITableView.swift */; };
@@ -140,12 +141,10 @@
 		808C394E80E745736133ADBD0E2938C8 /* AtlasUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AtlasUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80F13460B6B17606CC65E38CE6A4716C /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		8134E4BA1D8AB810006B5077 /* NSURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURL.swift; sourceTree = "<group>"; };
-		813F888E1D8FEE49002766CE /* UIApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
-		81D3C9A91D8B060800DB2AD9 /* NSURLQueryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLQueryItem.swift; sourceTree = "<group>"; };
-		81D3C9AB1D8B067100DB2AD9 /* URLAuthorizationSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLAuthorizationSpec.swift; sourceTree = "<group>"; };
-		81FB3EAB1D8AFFFD0026797F /* LoginError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
-		81FB3EAD1D8B00940026797F /* OAuth2LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2LoginViewController.swift; sourceTree = "<group>"; };
-		81FB3EAF1D8B00BE0026797F /* OAuth2AuthorizationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2AuthorizationHandler.swift; sourceTree = "<group>"; };
+		8173B0191D8FFF4A005DCEA8 /* LoginError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
+		8173B01A1D8FFF4A005DCEA8 /* OAuth2AuthorizationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2AuthorizationHandler.swift; sourceTree = "<group>"; };
+		8173B01B1D8FFF4A005DCEA8 /* OAuth2LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2LoginViewController.swift; sourceTree = "<group>"; };
+		8173B01F1D8FFF6B005DCEA8 /* UIApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		828CB7B3C433014C119561A964D809BC /* TextFieldInputViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldInputViewModel.swift; sourceTree = "<group>"; };
 		87E590A91E14F2FED72589813043BEFD /* CheckoutSummaryPaymentStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryPaymentStackView.swift; sourceTree = "<group>"; };
 		8C686045A1CFC18F21F295D0AD890463 /* AsyncSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncSpec.swift; sourceTree = "<group>"; };
@@ -167,6 +166,9 @@
 		D4F1679B8BB8A951B60D19AD947CD5BA /* CGRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
 		DB583604F0F19D75AFE9FB25FD4D89E1 /* CheckoutPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutPresentationController.swift; sourceTree = "<group>"; };
 		E872C262ABD57DB62C4F0880E507B185 /* EditAddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAddressViewController.swift; sourceTree = "<group>"; };
+		E9A2423F1D8AB6BC0026A671 /* FormattableAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormattableAddress.swift; sourceTree = "<group>"; };
+		E9A242411D8AB81B0026A671 /* StreetAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreetAddress.swift; sourceTree = "<group>"; };
+		E9A242431D8AD46E0026A671 /* FormValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValidator.swift; sourceTree = "<group>"; };
 		EAF268B630147E557D2C826B01EADCBD /* CheckoutProviderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutProviderType.swift; sourceTree = "<group>"; };
 		F9494F7947C24BD2087FE22EBE20BFCD /* CheckoutSummaryAddressStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryAddressStackView.swift; sourceTree = "<group>"; };
 		FCDAB74F0608C1A0ABE505D7D3498B40 /* AddressRowViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressRowViewCell.swift; sourceTree = "<group>"; };
@@ -215,7 +217,7 @@
 		2256B0C1AAAE60580B37160C27B74A94 /* AtlasUI */ = {
 			isa = PBXGroup;
 			children = (
-				81FB3EAA1D8AFFE10026797F /* Authentication */,
+				8173B0181D8FFF27005DCEA8 /* Authorization */,
 				ED09699BF65A0BB23CB9575EF0C1ADF6 /* Frameworks */,
 				030AC42F0C3F5EF6C4EEE430622B1EAC /* Others */,
 				16528EE5F669261E669CCB1331591210 /* Resources */,
@@ -262,6 +264,7 @@
 				D4F1679B8BB8A951B60D19AD947CD5BA /* CGRect.swift */,
 				01745B4995023182267D504707E4A241 /* Localization.swift */,
 				0B6F508180606FB22E1A4FCC91997E48 /* String.swift */,
+				8173B01F1D8FFF6B005DCEA8 /* UIApplication.swift */,
 				640810DC34806DF7B0FBAEA4DB0123CD /* UIBuilder.swift */,
 				27ADC182F5F2F24D9AF740830B9B50A9 /* UIColor.swift */,
 				417B9ADA720A948E8E1F8F875F349D62 /* UIImage.swift */,
@@ -270,9 +273,10 @@
 				80F13460B6B17606CC65E38CE6A4716C /* UITableView.swift */,
 				0EA19C45C79A94472331D134BC9895CA /* UIView.swift */,
 				764CDA794B49DC585B031C7C4F5776D5 /* UserMessage.swift */,
+				E9A2423F1D8AB6BC0026A671 /* FormattableAddress.swift */,
+				E9A242411D8AB81B0026A671 /* StreetAddress.swift */,
+				E9A242431D8AD46E0026A671 /* FormValidator.swift */,
 				8134E4BA1D8AB810006B5077 /* NSURL.swift */,
-				81D3C9A91D8B060800DB2AD9 /* NSURLQueryItem.swift */,
-				813F888E1D8FEE49002766CE /* UIApplication.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -307,25 +311,25 @@
 			name = "Checkout Summary";
 			sourceTree = "<group>";
 		};
-		81FB3EAA1D8AFFE10026797F /* Authentication */ = {
+		8173B0181D8FFF27005DCEA8 /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
-				81FB3EAB1D8AFFFD0026797F /* LoginError.swift */,
-				81FB3EAD1D8B00940026797F /* OAuth2LoginViewController.swift */,
-				81FB3EAF1D8B00BE0026797F /* OAuth2AuthorizationHandler.swift */,
+				8173B0191D8FFF4A005DCEA8 /* LoginError.swift */,
+				8173B01A1D8FFF4A005DCEA8 /* OAuth2AuthorizationHandler.swift */,
+				8173B01B1D8FFF4A005DCEA8 /* OAuth2LoginViewController.swift */,
 			);
-			name = Authentication;
+			name = Authorization;
 			sourceTree = "<group>";
 		};
-		9600044DD903A76598D9412E4BA3C3A7 /* Add Address */ = {
+		9600044DD903A76598D9412E4BA3C3A7 /* Edit Address */ = {
 			isa = PBXGroup;
 			children = (
+				E872C262ABD57DB62C4F0880E507B185 /* EditAddressViewController.swift */,
 				4A5830B773B2D20D4224CDF749410E8A /* EditAddressStackView.swift */,
 				A7267EA9A2261F756C94C761AB61ECCD /* EditAddressType.swift */,
-				E872C262ABD57DB62C4F0880E507B185 /* EditAddressViewController.swift */,
 				220A05CBDD6AE18789A69B04A2AE5590 /* EditAddressViewModel.swift */,
 			);
-			name = "Add Address";
+			name = "Edit Address";
 			sourceTree = "<group>";
 		};
 		98C55DD91517239DC96E0518855FA6F6 /* Payment Selection */ = {
@@ -356,7 +360,6 @@
 				CAA68AC473B19357EB600179B707795D /* Frameworks */,
 				8C686045A1CFC18F21F295D0AD890463 /* AsyncSpec.swift */,
 				A754353C97F26BBC2E518BB80BB9F4BE /* Info.plist */,
-				81D3C9AB1D8B067100DB2AD9 /* URLAuthorizationSpec.swift */,
 				D00CFC93C09DD7AD63A6C85F7CE29032 /* LocalizationSpec.swift */,
 			);
 			path = AtlasUITests;
@@ -382,11 +385,11 @@
 		E7B8FD94F5B37D0CD471CC2CC01B2A93 /* Address Selection */ = {
 			isa = PBXGroup;
 			children = (
-				9600044DD903A76598D9412E4BA3C3A7 /* Add Address */,
-				C7EEA970F03A677415B3AC4CB774D953 /* AddAddressTableViewCell.swift */,
-				6FC391339AB40C212901806139F6FC2B /* AddressListTableViewDelegate.swift */,
 				9CC30D3206CE11A3DB6F12F72BC8DB31 /* AddressPickerViewController.swift */,
+				6FC391339AB40C212901806139F6FC2B /* AddressListTableViewDelegate.swift */,
 				FCDAB74F0608C1A0ABE505D7D3498B40 /* AddressRowViewCell.swift */,
+				C7EEA970F03A677415B3AC4CB774D953 /* AddAddressTableViewCell.swift */,
+				9600044DD903A76598D9412E4BA3C3A7 /* Edit Address */,
 			);
 			name = "Address Selection";
 			sourceTree = "<group>";
@@ -570,7 +573,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				991BFD47AE25FCB21C1D24292DD7650B /* AsyncSpec.swift in Sources */,
-				81D3C9AC1D8B067100DB2AD9 /* URLAuthorizationSpec.swift in Sources */,
 				354DA8B0D0E898D52E4F519EF046248C /* LocalizationSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -582,7 +584,7 @@
 				8134E4BB1D8AB810006B5077 /* NSURL.swift in Sources */,
 				4342464869E446FBC18FE72A79CC55B5 /* ActionTextField.swift in Sources */,
 				65BCA936AE236A318847ECE6DCA4A3B0 /* AddAddressTableViewCell.swift in Sources */,
-				813F888F1D8FEE49002766CE /* UIApplication.swift in Sources */,
+				E9A242441D8AD46E0026A671 /* FormValidator.swift in Sources */,
 				8F555E1D55F47DFE66BD5CF593E6C6DE /* AddressListTableViewDelegate.swift in Sources */,
 				5A6C401EC4AC8D133366523A81A14C63 /* AddressPickerViewController.swift in Sources */,
 				271C74EFD455C9953DB58ED7A2B107CE /* AddressRowViewCell.swift in Sources */,
@@ -591,6 +593,7 @@
 				936565C898CD719317957BA1ABCB9290 /* BorderView.swift in Sources */,
 				30788EA71B54F0C0BCC51AA46C0C6D09 /* CGRect.swift in Sources */,
 				536FFA0EF451B723E43BDE2C8B097700 /* CheckoutPresentationController.swift in Sources */,
+				8173B01D1D8FFF4A005DCEA8 /* OAuth2AuthorizationHandler.swift in Sources */,
 				AF322CCC9D260BCD3FC64A7F610E1F35 /* CheckoutProviderType.swift in Sources */,
 				DB2470DB4F51D75862D73B20254CB0A7 /* CheckoutSummaryActionsHandler.swift in Sources */,
 				E97A33A7BE2D26CDE9B4C62EB5BD2661 /* CheckoutSummaryAddressStackView.swift in Sources */,
@@ -604,16 +607,16 @@
 				62397CD3313BF2E11BF45ED92B6276B4 /* CheckoutTransitioningDelegate.swift in Sources */,
 				5A766973CBD72D26BAC8A4376771F535 /* CheckoutViewModel.swift in Sources */,
 				D5D8A7E27A96BEAA8D3EEED93BE86D30 /* CheckoutViewState.swift in Sources */,
-				81FB3EAE1D8B00940026797F /* OAuth2LoginViewController.swift in Sources */,
 				3D880D7F534BD210B379830ABBB296E4 /* EditAddressStackView.swift in Sources */,
+				8173B0201D8FFF6B005DCEA8 /* UIApplication.swift in Sources */,
 				B0BAF2A735AAAD8B0D1BB4F53F289E4A /* EditAddressType.swift in Sources */,
-				81FB3EB01D8B00BE0026797F /* OAuth2AuthorizationHandler.swift in Sources */,
 				1040D329975C4C3D5152C79A020B4978 /* EditAddressViewController.swift in Sources */,
 				4A288CD81BB5C7DB04A5683CA495CC37 /* EditAddressViewModel.swift in Sources */,
+				E9A242421D8AB81B0026A671 /* StreetAddress.swift in Sources */,
 				551957A5EB5E575C77598BCEF6462D40 /* Errors.swift in Sources */,
 				0FBF5C603EAAC10495E96E1E79EC75A0 /* KeyboardScrollView.swift in Sources */,
-				81D3C9AA1D8B060800DB2AD9 /* NSURLQueryItem.swift in Sources */,
 				97A8338792C92AC0C5C6E1B92A510F58 /* LoaderView.swift in Sources */,
+				E9A242401D8AB6BC0026A671 /* FormattableAddress.swift in Sources */,
 				FD0035C9551735C4B0988C4769495FFF /* Localization.swift in Sources */,
 				6B341730306B04AD89EC6702E85A5077 /* LocalizerProviderType.swift in Sources */,
 				17324CD06CD2DD5514B78F465B354759 /* PaymentProcessingViewController.swift in Sources */,
@@ -624,7 +627,8 @@
 				6AD690A77903B1887A46218251970A9D /* SizeSelectionViewController.swift in Sources */,
 				1FDCF52648E4E651726BFB2A6686B723 /* String.swift in Sources */,
 				D9CE3553FFE09F2A82794C7A9E45F4F1 /* TextFieldInputStackView.swift in Sources */,
-				81FB3EAC1D8AFFFD0026797F /* LoginError.swift in Sources */,
+				8173B01E1D8FFF4A005DCEA8 /* OAuth2LoginViewController.swift in Sources */,
+				8173B01C1D8FFF4A005DCEA8 /* LoginError.swift in Sources */,
 				D1597746177CEB8207EFB773413174DF /* TextFieldInputViewModel.swift in Sources */,
 				BC1ECCD35BAA9A66EA505B1C454025E3 /* UIBuilder.swift in Sources */,
 				79175AD49456E48DC6B393EB6F62053A /* UIColor.swift in Sources */,
