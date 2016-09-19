@@ -7,47 +7,40 @@ import AtlasSDK
 
 class EditAddressViewModel {
 
-    var id: String?
-    var customerNumber: String?
     var gender: Gender?
     var firstName: String?
     var lastName: String?
     var street: String?
     var additional: String?
+    var pickupPointId: String?
+    var pickupPointMemberId: String?
     var zip: String?
     var city: String?
-    var countryCode: String?
-    var pickupPointName: String?
-    var pickupPointMemberId: String?
-    var isDefaultBilling: Bool = false
-    var isDefaultShipping: Bool = false
 
-    init (userAddress: UserAddress?) {
-        guard let userAddress = userAddress else { configureCountryCode(); return }
-        id = userAddress.id
-        customerNumber = userAddress.customerNumber
+    let countryCode: String
+    let isDefaultBilling: Bool
+    let isDefaultShipping: Bool
+
+    init (userAddress: EquatableAddress?, countryCode: String, isDefaultBilling: Bool = false, isDefaultShipping: Bool = false) {
+        self.countryCode = countryCode
+        self.isDefaultBilling = isDefaultBilling
+        self.isDefaultShipping = isDefaultShipping
+
+        guard let userAddress = userAddress else { return }
+
         gender = userAddress.gender
         firstName = userAddress.firstName
         lastName = userAddress.lastName
         street = userAddress.street
         additional = userAddress.additional
+        pickupPointId = userAddress.pickupPoint?.id
+        pickupPointMemberId = userAddress.pickupPoint?.memberId
         zip = userAddress.zip
         city = userAddress.city
-        countryCode = userAddress.countryCode
-        pickupPointName = userAddress.pickupPoint?.name
-        pickupPointMemberId = userAddress.pickupPoint?.memberId
-        isDefaultBilling = userAddress.isDefaultBilling
-        isDefaultShipping = userAddress.isDefaultShipping
-    }
-
-    private func configureCountryCode() {
-        // TODO: Need to move to DEMO
-        // TODO: Need to use a predefined sales channels for testing until we know the relation between the sales channel and the country
-        countryCode = "DE"
     }
 
     internal func titles(localizer: LocalizerProviderType) -> [String] {
-        return [Gender.male.title(localizer), Gender.female.title(localizer)]
+        return ["", Gender.male.title(localizer), Gender.female.title(localizer)]
     }
 
     internal func updateTitle(localizedGenderText: String?, localizer: LocalizerProviderType) {
@@ -64,7 +57,7 @@ class EditAddressViewModel {
 
 }
 
-extension UserAddress {
+extension CreateAddressRequest {
 
     internal init? (addressViewModel: EditAddressViewModel) {
 
@@ -73,11 +66,8 @@ extension UserAddress {
             firstName = addressViewModel.firstName,
             lastName = addressViewModel.lastName,
             zip = addressViewModel.zip,
-            city = addressViewModel.city,
-            countryCode = addressViewModel.countryCode else { return nil }
+            city = addressViewModel.city else { return nil }
 
-        self.id = addressViewModel.id ?? "" // TODO: May be Id is optional? ... or another model?
-        self.customerNumber = addressViewModel.customerNumber ?? "" // TODO: Need to get customer number
         self.gender = gender
         self.firstName = firstName
         self.lastName = lastName
@@ -85,10 +75,48 @@ extension UserAddress {
         self.additional = addressViewModel.additional
         self.zip = zip
         self.city = city
-        self.countryCode = countryCode
+        self.countryCode = addressViewModel.countryCode
         self.pickupPoint = PickupPoint(addressViewModel: addressViewModel)
-        self.isDefaultBilling = addressViewModel.isDefaultBilling
-        self.isDefaultShipping = addressViewModel.isDefaultShipping
+        self.defaultBilling = addressViewModel.isDefaultBilling
+        self.defaultShipping = addressViewModel.isDefaultShipping
+    }
+
+}
+
+extension UpdateAddressRequest {
+
+    internal init? (addressViewModel: EditAddressViewModel) {
+
+        guard let
+            gender = addressViewModel.gender,
+            firstName = addressViewModel.firstName,
+            lastName = addressViewModel.lastName,
+            zip = addressViewModel.zip,
+            city = addressViewModel.city else { return nil }
+
+        self.gender = gender
+        self.firstName = firstName
+        self.lastName = lastName
+        self.street = addressViewModel.street
+        self.additional = addressViewModel.additional
+        self.zip = zip
+        self.city = city
+        self.countryCode = addressViewModel.countryCode
+        self.pickupPoint = PickupPoint(addressViewModel: addressViewModel)
+        self.defaultBilling = addressViewModel.isDefaultBilling
+        self.defaultShipping = addressViewModel.isDefaultShipping
+    }
+
+}
+
+extension CheckAddressRequest {
+
+    internal init? (addressViewModel: EditAddressViewModel) {
+
+        guard let address = CheckAddress(addressViewModel: addressViewModel) else { return nil }
+
+        self.address = address
+        self.pickupPoint = PickupPoint(addressViewModel: addressViewModel)
     }
 
 }
@@ -98,12 +126,29 @@ extension PickupPoint {
     internal init? (addressViewModel: EditAddressViewModel) {
 
         guard let
-            pickupPointName = addressViewModel.pickupPointName,
+            pickupPointId = addressViewModel.pickupPointId,
             pickupPointMemberId = addressViewModel.pickupPointMemberId else { return nil }
 
-        self.id = "" // TODO: May be Id is optional? ... or another model?
-        self.name = pickupPointName
+        self.id = pickupPointId
+        self.name = "PACKSTATION"
         self.memberId = pickupPointMemberId
+    }
+
+}
+
+extension CheckAddress {
+
+    internal init? (addressViewModel: EditAddressViewModel) {
+
+        guard let
+            zip = addressViewModel.zip,
+            city = addressViewModel.city else { return nil }
+
+        self.street = addressViewModel.street
+        self.additional = addressViewModel.additional
+        self.zip = zip
+        self.city = city
+        self.countryCode = addressViewModel.countryCode
     }
 
 }

@@ -9,14 +9,3 @@ public protocol StreetAddress {
     var additional: String? { get }
     var pickupPoint: PickupPoint? { get }
 }
-
-extension StreetAddress {
-
-    var addressLine1: String {
-        return street ?? pickupPoint?.name ?? ""
-    }
-    var addressLine2: String {
-        return additional ?? pickupPoint?.memberId ?? ""
-    }
-
-}

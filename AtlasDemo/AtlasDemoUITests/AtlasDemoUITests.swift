@@ -117,12 +117,11 @@ class AtlasDemoUITests: XCTestCase {
 
         let tablesQuery = app.tables
 
-        app.cells["address-selection-row-1"].tap()
-        tablesQuery.buttons.elementBoundByIndex(1).tap()
-        tablesQuery.buttons["Delete"].tap()
+        tablesQuery.buttons.elementBoundByIndex(0).tap()
+        tablesQuery.buttons.elementBoundByIndex(2).tap()
 
-        tablesQuery.buttons.elementBoundByIndex(1).tap()
-        tablesQuery.buttons["Delete"].tap()
+        tablesQuery.buttons.elementBoundByIndex(0).tap()
+        tablesQuery.buttons.elementBoundByIndex(2).tap()
 
         rightButton.tap()
         app.navigationBars["address-picker-navigation-bar"].buttons["Back"].tap()

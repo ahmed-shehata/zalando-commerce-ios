@@ -11,9 +11,11 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
     internal var checkoutViewModel: CheckoutViewModel
     internal var viewState: CheckoutViewState = .NotLoggedIn {
         didSet {
-            setupNavigationBar()
-            loaderView.hide()
-            rootStackView.configureData(self)
+            Async.main {
+                self.setupNavigationBar()
+                self.loaderView.hide()
+                self.rootStackView.configureData(self)
+            }
         }
     }
     lazy private var actionsHandler: CheckoutSummaryActionsHandler = {
