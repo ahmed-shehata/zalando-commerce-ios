@@ -42,9 +42,9 @@ struct UserMessage {
         show(title: title, message: message, actions: ButtonAction(text: "OK"))
     }
 
-    func show(title title: String, message: String, actions: ButtonAction...) {
+    func show(title title: String, message: String?, preferredStyle: UIAlertControllerStyle = .Alert, actions: ButtonAction...) {
         guard let topViewController = UIApplication.topViewController() else { return }
-        let alertView = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        let alertView = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
 
         actions.forEach { alertView.addAction($0, localizerProvider: localizerProvider) }
 

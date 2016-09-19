@@ -10,7 +10,8 @@ class AddressListTableViewDelegate: NSObject {
     internal var checkout: AtlasCheckout
     private let addressType: AddressType
     private let selectionCompletion: AddressSelectionCompletion
-    internal var addAddressHandler: AddAddressHandler?
+    internal var createAddressHandler: CreateAddressHandler?
+    internal var updateAddressHandler: UpdateAddressHandler?
 
     var addresses: [UserAddress] = []
     var selectedAddress: EquatableAddress? {
@@ -46,9 +47,11 @@ extension AddressListTableViewDelegate: UITableViewDataSource {
 
         return tableView.dequeueReusableCell(AddressRowViewCell.self, forIndexPath: indexPath) { cell in
             let address = self.addresses[indexPath.item]
-            cell.configureData(address)
-            if let selectedAddress = self.selectedAddress {
-                cell.accessoryType = selectedAddress == address ? .Checkmark : .None
+            cell.configureData(AddressRowCellViewModel(userAddress: address, localizer: self.checkout))
+            if let selectedAddress = self.selectedAddress where selectedAddress == address {
+                cell.accessoryType = .Checkmark
+            } else {
+                cell.accessoryType = .None
             }
 
             cell.accessibilityIdentifier = "address-selection-row-\(indexPath.row)"
@@ -86,12 +89,16 @@ extension AddressListTableViewDelegate: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         guard indexPath.row < addresses.count else {
-            addAddressHandler?()
+            createAddressHandler?()
             return
         }
 
-        selectedAddress = addresses[indexPath.item]
-        tableView.reloadData()
+        if tableView.editing {
+            updateAddressHandler?(address: addresses[indexPath.item])
+        } else {
+            selectedAddress = addresses[indexPath.item]
+            tableView.reloadData()
+        }
     }
 
 }

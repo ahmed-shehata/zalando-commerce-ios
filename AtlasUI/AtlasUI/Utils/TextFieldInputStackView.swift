@@ -34,11 +34,24 @@ class TextFieldInputStackView: UIStackView {
         label.numberOfLines = 0
         label.font = .systemFontOfSize(11)
         label.textColor = UIColor(hex: 0xDB2D2D)
+        label.text = " "
         return label
     }()
 
     private weak var nextTextField: TextFieldInputStackView?
     private var valueChangedHandler: TextFieldChangedHandler?
+    private var validators: [FormValidator] = []
+    private var localizer: LocalizerProviderType!
+
+    internal func validateForm() -> Bool {
+        let error = checkFormForError()
+        errorLabel.text = error ?? " "
+        return error == nil
+    }
+
+    private func checkFormForError() -> String? {
+        return validators.flatMap { $0.errorMessage(textField.text, localizer: localizer) }.first
+    }
 
 }
 
@@ -83,7 +96,12 @@ extension TextFieldInputStackView: UIDataBuilder {
         textField.text = viewModel.value
         textField.placeholder = viewModel.title
         textField.returnKeyType = nextTextField == nil ? .Default : .Next
+
         textField.userInteractionEnabled = viewModel.isActive
+        if !viewModel.isActive {
+            textField.textColor = UIColor(hex: 0xADADAD)
+        }
+
         textField.inputView = viewModel.customInputView
         if viewModel.customInputView != nil {
             textField.tintColor = .clearColor()
@@ -91,13 +109,14 @@ extension TextFieldInputStackView: UIDataBuilder {
             textField.canPaste = false
         }
 
-        errorLabel.text = viewModel.error ?? " "
         valueChangedHandler = viewModel.valueChangedHandler
+        validators = viewModel.validators
+        localizer = viewModel.localizer
 
         configureTitleLabel()
     }
 
-    private func configureTitleLabel() {
+    internal func configureTitleLabel() {
         UIView.animateWithDuration(0.3) {
             self.titleLabel.alpha = self.textField.text?.isEmpty == true ? 0 : 1
         }
@@ -110,6 +129,9 @@ extension TextFieldInputStackView: UITextFieldDelegate {
     func textFieldValueChanged() {
         configureTitleLabel()
         valueChangedHandler?(textField.text)
+        if checkFormForError() == nil {
+            errorLabel.text = " "
+        }
     }
 
     func textFieldDidBeginEditing(textField: UITextField) {
@@ -120,6 +142,7 @@ extension TextFieldInputStackView: UITextFieldDelegate {
     func textFieldDidEndEditing(textField: UITextField) {
         separatorView.borderColor = .blackColor()
         titleLabel.textColor = UIColor(hex: 0xADADAD)
+        validateForm()
     }
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -128,6 +151,7 @@ extension TextFieldInputStackView: UITextFieldDelegate {
         } else {
             textField.resignFirstResponder()
         }
+        validateForm()
         return true
     }
 
