@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -38,11 +38,11 @@
 		6B341730306B04AD89EC6702E85A5077 /* LocalizerProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F3F5AA9BF7A5EF9FA877EB394D09C7 /* LocalizerProviderType.swift */; };
 		79175AD49456E48DC6B393EB6F62053A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC182F5F2F24D9AF740830B9B50A9 /* UIColor.swift */; };
 		80E9B317B4DF43290610E3DD8ED6802B /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E89A529CD1D470F15B857AF1031CB61 /* Nimble.framework */; };
+		811088141D9000F60087F452 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811088131D9000F60087F452 /* UIApplication.swift */; };
 		8134E4BB1D8AB810006B5077 /* NSURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134E4BA1D8AB810006B5077 /* NSURL.swift */; };
-		8173B01C1D8FFF4A005DCEA8 /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8173B0191D8FFF4A005DCEA8 /* LoginError.swift */; };
-		8173B01D1D8FFF4A005DCEA8 /* OAuth2AuthorizationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8173B01A1D8FFF4A005DCEA8 /* OAuth2AuthorizationHandler.swift */; };
-		8173B01E1D8FFF4A005DCEA8 /* OAuth2LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8173B01B1D8FFF4A005DCEA8 /* OAuth2LoginViewController.swift */; };
-		8173B0201D8FFF6B005DCEA8 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8173B01F1D8FFF6B005DCEA8 /* UIApplication.swift */; };
+		8173B0251D9000A3005DCEA8 /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8173B0221D9000A3005DCEA8 /* LoginError.swift */; };
+		8173B0261D9000A3005DCEA8 /* OAuth2AuthorizationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8173B0231D9000A3005DCEA8 /* OAuth2AuthorizationHandler.swift */; };
+		8173B0271D9000A3005DCEA8 /* OAuth2LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8173B0241D9000A3005DCEA8 /* OAuth2LoginViewController.swift */; };
 		86C648E6605921B9E132B657552DF6B4 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0EC11E22B5A08434A294F63B70C3BCC /* Quick.framework */; };
 		8EB96C51E439F0E511A696F28FE216B1 /* UserMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764CDA794B49DC585B031C7C4F5776D5 /* UserMessage.swift */; };
 		8F555E1D55F47DFE66BD5CF593E6C6DE /* AddressListTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC391339AB40C212901806139F6FC2B /* AddressListTableViewDelegate.swift */; };
@@ -140,11 +140,11 @@
 		76F3F5AA9BF7A5EF9FA877EB394D09C7 /* LocalizerProviderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizerProviderType.swift; sourceTree = "<group>"; };
 		808C394E80E745736133ADBD0E2938C8 /* AtlasUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AtlasUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80F13460B6B17606CC65E38CE6A4716C /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		811088131D9000F60087F452 /* UIApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		8134E4BA1D8AB810006B5077 /* NSURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURL.swift; sourceTree = "<group>"; };
-		8173B0191D8FFF4A005DCEA8 /* LoginError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
-		8173B01A1D8FFF4A005DCEA8 /* OAuth2AuthorizationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2AuthorizationHandler.swift; sourceTree = "<group>"; };
-		8173B01B1D8FFF4A005DCEA8 /* OAuth2LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2LoginViewController.swift; sourceTree = "<group>"; };
-		8173B01F1D8FFF6B005DCEA8 /* UIApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
+		8173B0221D9000A3005DCEA8 /* LoginError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
+		8173B0231D9000A3005DCEA8 /* OAuth2AuthorizationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2AuthorizationHandler.swift; sourceTree = "<group>"; };
+		8173B0241D9000A3005DCEA8 /* OAuth2LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2LoginViewController.swift; sourceTree = "<group>"; };
 		828CB7B3C433014C119561A964D809BC /* TextFieldInputViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldInputViewModel.swift; sourceTree = "<group>"; };
 		87E590A91E14F2FED72589813043BEFD /* CheckoutSummaryPaymentStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryPaymentStackView.swift; sourceTree = "<group>"; };
 		8C686045A1CFC18F21F295D0AD890463 /* AsyncSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncSpec.swift; sourceTree = "<group>"; };
@@ -217,7 +217,7 @@
 		2256B0C1AAAE60580B37160C27B74A94 /* AtlasUI */ = {
 			isa = PBXGroup;
 			children = (
-				8173B0181D8FFF27005DCEA8 /* Authorization */,
+				8173B0211D900094005DCEA8 /* Authorization */,
 				ED09699BF65A0BB23CB9575EF0C1ADF6 /* Frameworks */,
 				030AC42F0C3F5EF6C4EEE430622B1EAC /* Others */,
 				16528EE5F669261E669CCB1331591210 /* Resources */,
@@ -264,7 +264,7 @@
 				D4F1679B8BB8A951B60D19AD947CD5BA /* CGRect.swift */,
 				01745B4995023182267D504707E4A241 /* Localization.swift */,
 				0B6F508180606FB22E1A4FCC91997E48 /* String.swift */,
-				8173B01F1D8FFF6B005DCEA8 /* UIApplication.swift */,
+				811088131D9000F60087F452 /* UIApplication.swift */,
 				640810DC34806DF7B0FBAEA4DB0123CD /* UIBuilder.swift */,
 				27ADC182F5F2F24D9AF740830B9B50A9 /* UIColor.swift */,
 				417B9ADA720A948E8E1F8F875F349D62 /* UIImage.swift */,
@@ -311,33 +311,16 @@
 			name = "Checkout Summary";
 			sourceTree = "<group>";
 		};
-		8173B0181D8FFF27005DCEA8 /* Authorization */ = {
+		8173B0211D900094005DCEA8 /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
-				8173B0191D8FFF4A005DCEA8 /* LoginError.swift */,
-				8173B01A1D8FFF4A005DCEA8 /* OAuth2AuthorizationHandler.swift */,
-				8173B01B1D8FFF4A005DCEA8 /* OAuth2LoginViewController.swift */,
+				8173B0221D9000A3005DCEA8 /* LoginError.swift */,
+				8173B0231D9000A3005DCEA8 /* OAuth2AuthorizationHandler.swift */,
+				8173B0241D9000A3005DCEA8 /* OAuth2LoginViewController.swift */,
 			);
 			name = Authorization;
-		81FB3EAA1D8AFFE10026797F /* Authentication */ = {
-			isa = PBXGroup;
-			children = (
-				81FB3EAB1D8AFFFD0026797F /* LoginError.swift */,
-				81FB3EAD1D8B00940026797F /* OAuth2LoginViewController.swift */,
-				81FB3EAF1D8B00BE0026797F /* OAuth2AuthorizationHandler.swift */,
-			);
-			name = Authentication;
 			sourceTree = "<group>";
 		};
-		9600044DD903A76598D9412E4BA3C3A7 /* Edit Address */ = {
-			isa = PBXGroup;
-			children = (
-				E872C262ABD57DB62C4F0880E507B185 /* EditAddressViewController.swift */,
-				4A5830B773B2D20D4224CDF749410E8A /* EditAddressStackView.swift */,
-				A7267EA9A2261F756C94C761AB61ECCD /* EditAddressType.swift */,
-				220A05CBDD6AE18789A69B04A2AE5590 /* EditAddressViewModel.swift */,
-			);
-			name = "Add Address";
 		9600044DD903A76598D9412E4BA3C3A7 /* Edit Address */ = {
 			isa = PBXGroup;
 			children = (
@@ -513,7 +496,7 @@
 				};
 			};
 			buildConfigurationList = 53B53D54D2940F04C3ECA93127E129D2 /* Build configuration list for PBXProject "AtlasUI" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -601,7 +584,6 @@
 				8134E4BB1D8AB810006B5077 /* NSURL.swift in Sources */,
 				4342464869E446FBC18FE72A79CC55B5 /* ActionTextField.swift in Sources */,
 				65BCA936AE236A318847ECE6DCA4A3B0 /* AddAddressTableViewCell.swift in Sources */,
-				813F888F1D8FEE49002766CE /* UIApplication.swift in Sources */,
 				E9A242441D8AD46E0026A671 /* FormValidator.swift in Sources */,
 				8F555E1D55F47DFE66BD5CF593E6C6DE /* AddressListTableViewDelegate.swift in Sources */,
 				5A6C401EC4AC8D133366523A81A14C63 /* AddressPickerViewController.swift in Sources */,
@@ -611,7 +593,7 @@
 				936565C898CD719317957BA1ABCB9290 /* BorderView.swift in Sources */,
 				30788EA71B54F0C0BCC51AA46C0C6D09 /* CGRect.swift in Sources */,
 				536FFA0EF451B723E43BDE2C8B097700 /* CheckoutPresentationController.swift in Sources */,
-				8173B01D1D8FFF4A005DCEA8 /* OAuth2AuthorizationHandler.swift in Sources */,
+				8173B0261D9000A3005DCEA8 /* OAuth2AuthorizationHandler.swift in Sources */,
 				AF322CCC9D260BCD3FC64A7F610E1F35 /* CheckoutProviderType.swift in Sources */,
 				DB2470DB4F51D75862D73B20254CB0A7 /* CheckoutSummaryActionsHandler.swift in Sources */,
 				E97A33A7BE2D26CDE9B4C62EB5BD2661 /* CheckoutSummaryAddressStackView.swift in Sources */,
@@ -626,7 +608,7 @@
 				5A766973CBD72D26BAC8A4376771F535 /* CheckoutViewModel.swift in Sources */,
 				D5D8A7E27A96BEAA8D3EEED93BE86D30 /* CheckoutViewState.swift in Sources */,
 				3D880D7F534BD210B379830ABBB296E4 /* EditAddressStackView.swift in Sources */,
-				8173B0201D8FFF6B005DCEA8 /* UIApplication.swift in Sources */,
+				811088141D9000F60087F452 /* UIApplication.swift in Sources */,
 				B0BAF2A735AAAD8B0D1BB4F53F289E4A /* EditAddressType.swift in Sources */,
 				1040D329975C4C3D5152C79A020B4978 /* EditAddressViewController.swift in Sources */,
 				4A288CD81BB5C7DB04A5683CA495CC37 /* EditAddressViewModel.swift in Sources */,
@@ -645,8 +627,8 @@
 				6AD690A77903B1887A46218251970A9D /* SizeSelectionViewController.swift in Sources */,
 				1FDCF52648E4E651726BFB2A6686B723 /* String.swift in Sources */,
 				D9CE3553FFE09F2A82794C7A9E45F4F1 /* TextFieldInputStackView.swift in Sources */,
-				8173B01E1D8FFF4A005DCEA8 /* OAuth2LoginViewController.swift in Sources */,
-				8173B01C1D8FFF4A005DCEA8 /* LoginError.swift in Sources */,
+				8173B0271D9000A3005DCEA8 /* OAuth2LoginViewController.swift in Sources */,
+				8173B0251D9000A3005DCEA8 /* LoginError.swift in Sources */,
 				D1597746177CEB8207EFB773413174DF /* TextFieldInputViewModel.swift in Sources */,
 				BC1ECCD35BAA9A66EA505B1C454025E3 /* UIBuilder.swift in Sources */,
 				79175AD49456E48DC6B393EB6F62053A /* UIColor.swift in Sources */,
