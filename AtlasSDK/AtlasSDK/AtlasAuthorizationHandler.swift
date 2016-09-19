@@ -9,7 +9,6 @@ public typealias AtlasAuthorizationCompletion = AtlasResult<AtlasAuthorizationTo
 
 public protocol AtlasAuthorizationHandler {
 
-    func authorizeTask(completion: AtlasAuthorizationCompletion) // TODO: Find more meaningful name
+    func authorize(completion: AtlasAuthorizationCompletion)
 
 }
-

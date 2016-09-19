@@ -5,8 +5,7 @@
 import Foundation
 import AtlasSDK
 
-// TODO: Find more meaningful name
-struct LoginAuthorizationHandler: AtlasAuthorizationHandler {
+struct OAuth2AuthorizationHandler: AtlasAuthorizationHandler {
 
     private let loginURL: NSURL
 
@@ -14,12 +13,12 @@ struct LoginAuthorizationHandler: AtlasAuthorizationHandler {
         self.loginURL = loginURL
     }
 
-    func authorizeTask(completion: AtlasAuthorizationCompletion) {
+    func authorize(completion: AtlasAuthorizationCompletion) {
         guard let topViewController = UIApplication.topViewController() else {
             return completion(.failure(LoginError.missingViewControllerToShowLoginForm))
         }
 
-        let loginViewController = LoginViewController(loginURL: self.loginURL, completion: completion)
+        let loginViewController = OAuth2LoginViewController(loginURL: self.loginURL, completion: completion)
         let navigationController = UINavigationController(rootViewController: loginViewController)
 
         Async.main {

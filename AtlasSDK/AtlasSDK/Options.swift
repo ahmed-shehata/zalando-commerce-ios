@@ -4,6 +4,7 @@
 
 import Foundation
 
+// TODO: Change all use as arguments to use it through Injector
 public struct Options {
 
     public let useSandboxEnvironment: Bool

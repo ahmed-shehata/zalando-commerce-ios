@@ -8,8 +8,7 @@ import AtlasSDK
 typealias WebViewFinishedLoadCompletion = UIWebView -> Void
 typealias AuthorizationResult = AtlasResult<AtlasAuthorizationToken>
 
-
-final class LoginViewController: UIViewController {
+final class OAuth2LoginViewController: UIViewController {
 
     private let loginURL: NSURL
 
@@ -78,11 +77,11 @@ final class LoginViewController: UIViewController {
 
 private extension Selector {
 
-    static let cancelButtonTapped = #selector(LoginViewController.cancelButtonTapped(_:))
+    static let cancelButtonTapped = #selector(OAuth2LoginViewController.cancelButtonTapped(_:))
 
 }
 
-extension LoginViewController: UIWebViewDelegate {
+extension OAuth2LoginViewController: UIWebViewDelegate {
 
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest,
         navigationType: UIWebViewNavigationType) -> Bool {
@@ -119,7 +118,7 @@ extension LoginViewController: UIWebViewDelegate {
 }
 
 #if DEBUG
-    extension LoginViewController {
+    extension OAuth2LoginViewController {
 
         override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
             if motion == .MotionShake {
@@ -130,7 +129,7 @@ extension LoginViewController: UIWebViewDelegate {
     }
 #endif
 
-extension LoginViewController {
+extension OAuth2LoginViewController {
 
     func login(email email: String, password: String) {
         if webViewDidFinishedLoad {

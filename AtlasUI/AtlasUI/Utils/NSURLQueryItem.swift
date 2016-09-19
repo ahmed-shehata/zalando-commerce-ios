@@ -13,6 +13,5 @@ extension NSURLQueryItem {
     convenience init(key: NSURL.QueryItemKey, value: NSURL.QueryItemValue) {
         self.init(name: key.rawValue, value: value.rawValue)
     }
-    
-}
 
+}

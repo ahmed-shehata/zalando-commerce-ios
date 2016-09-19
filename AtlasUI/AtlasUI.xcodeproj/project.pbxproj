@@ -42,8 +42,8 @@
 		81D3C9AA1D8B060800DB2AD9 /* NSURLQueryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D3C9A91D8B060800DB2AD9 /* NSURLQueryItem.swift */; };
 		81D3C9AC1D8B067100DB2AD9 /* URLAuthorizationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D3C9AB1D8B067100DB2AD9 /* URLAuthorizationSpec.swift */; };
 		81FB3EAC1D8AFFFD0026797F /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FB3EAB1D8AFFFD0026797F /* LoginError.swift */; };
-		81FB3EAE1D8B00940026797F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FB3EAD1D8B00940026797F /* LoginViewController.swift */; };
-		81FB3EB01D8B00BE0026797F /* LoginAuthorizationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FB3EAF1D8B00BE0026797F /* LoginAuthorizationHandler.swift */; };
+		81FB3EAE1D8B00940026797F /* OAuth2LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FB3EAD1D8B00940026797F /* OAuth2LoginViewController.swift */; };
+		81FB3EB01D8B00BE0026797F /* OAuth2AuthorizationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FB3EAF1D8B00BE0026797F /* OAuth2AuthorizationHandler.swift */; };
 		86C648E6605921B9E132B657552DF6B4 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0EC11E22B5A08434A294F63B70C3BCC /* Quick.framework */; };
 		8EB96C51E439F0E511A696F28FE216B1 /* UserMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764CDA794B49DC585B031C7C4F5776D5 /* UserMessage.swift */; };
 		8F555E1D55F47DFE66BD5CF593E6C6DE /* AddressListTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC391339AB40C212901806139F6FC2B /* AddressListTableViewDelegate.swift */; };
@@ -142,8 +142,8 @@
 		81D3C9A91D8B060800DB2AD9 /* NSURLQueryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLQueryItem.swift; sourceTree = "<group>"; };
 		81D3C9AB1D8B067100DB2AD9 /* URLAuthorizationSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLAuthorizationSpec.swift; sourceTree = "<group>"; };
 		81FB3EAB1D8AFFFD0026797F /* LoginError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
-		81FB3EAD1D8B00940026797F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		81FB3EAF1D8B00BE0026797F /* LoginAuthorizationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAuthorizationHandler.swift; sourceTree = "<group>"; };
+		81FB3EAD1D8B00940026797F /* OAuth2LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2LoginViewController.swift; sourceTree = "<group>"; };
+		81FB3EAF1D8B00BE0026797F /* OAuth2AuthorizationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2AuthorizationHandler.swift; sourceTree = "<group>"; };
 		828CB7B3C433014C119561A964D809BC /* TextFieldInputViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldInputViewModel.swift; sourceTree = "<group>"; };
 		87E590A91E14F2FED72589813043BEFD /* CheckoutSummaryPaymentStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryPaymentStackView.swift; sourceTree = "<group>"; };
 		8C686045A1CFC18F21F295D0AD890463 /* AsyncSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncSpec.swift; sourceTree = "<group>"; };
@@ -308,8 +308,8 @@
 			isa = PBXGroup;
 			children = (
 				81FB3EAB1D8AFFFD0026797F /* LoginError.swift */,
-				81FB3EAD1D8B00940026797F /* LoginViewController.swift */,
-				81FB3EAF1D8B00BE0026797F /* LoginAuthorizationHandler.swift */,
+				81FB3EAD1D8B00940026797F /* OAuth2LoginViewController.swift */,
+				81FB3EAF1D8B00BE0026797F /* OAuth2AuthorizationHandler.swift */,
 			);
 			name = Authentication;
 			sourceTree = "<group>";
@@ -600,10 +600,10 @@
 				62397CD3313BF2E11BF45ED92B6276B4 /* CheckoutTransitioningDelegate.swift in Sources */,
 				5A766973CBD72D26BAC8A4376771F535 /* CheckoutViewModel.swift in Sources */,
 				D5D8A7E27A96BEAA8D3EEED93BE86D30 /* CheckoutViewState.swift in Sources */,
-				81FB3EAE1D8B00940026797F /* LoginViewController.swift in Sources */,
+				81FB3EAE1D8B00940026797F /* OAuth2LoginViewController.swift in Sources */,
 				3D880D7F534BD210B379830ABBB296E4 /* EditAddressStackView.swift in Sources */,
 				B0BAF2A735AAAD8B0D1BB4F53F289E4A /* EditAddressType.swift in Sources */,
-				81FB3EB01D8B00BE0026797F /* LoginAuthorizationHandler.swift in Sources */,
+				81FB3EB01D8B00BE0026797F /* OAuth2AuthorizationHandler.swift in Sources */,
 				1040D329975C4C3D5152C79A020B4978 /* EditAddressViewController.swift in Sources */,
 				4A288CD81BB5C7DB04A5683CA495CC37 /* EditAddressViewModel.swift in Sources */,
 				551957A5EB5E575C77598BCEF6462D40 /* Errors.swift in Sources */,

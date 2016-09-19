@@ -39,7 +39,7 @@ final class RequestBuilder: Equatable {
                         return completion(.failure(error))
                     }
                     dispatch_async(dispatch_get_main_queue()) {
-                        authorizationHandler.authorizeTask { result in
+                        authorizationHandler.authorize { result in
                             switch result {
                             case .failure(let error):
                                 completion(.failure(error))

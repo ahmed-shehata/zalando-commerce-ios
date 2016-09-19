@@ -15,6 +15,7 @@ public class AtlasCheckout: LocalizerProviderType {
     public let client: APIClient
     public let options: Options
 
+    // TODO: Change all use as arguments to use it through Injector
     lazy private(set) var localizer: Localizer = Localizer(localizationProvider: self)
 
     init(client: APIClient, options: Options) {
@@ -51,8 +52,8 @@ public class AtlasCheckout: LocalizerProviderType {
                 completion(.failure(error))
 
             case .success(let client):
-                // TODO: replace client without auth handler with one with auth handler
-                let authorizationHandler = LoginAuthorizationHandler(loginURL: client.config.loginURL)
+                // TODO: !!! replace client without auth handler with one with auth handler
+                let authorizationHandler = OAuth2AuthorizationHandler(loginURL: client.config.loginURL)
                 let options = Options(basedOn: options, authorizationHandler: authorizationHandler)
 
                 completion(.success(AtlasCheckout(client: client, options: options)))
@@ -60,8 +61,8 @@ public class AtlasCheckout: LocalizerProviderType {
         }
     }
 
-    public func presentCheckoutView(onViewController viewController: UIViewController? = UIApplication.topViewController(),
-        sku: String) -> Bool {
+    public func presentCheckout(onViewController viewController: UIViewController? = UIApplication.topViewController(),
+        forProductSKU sku: String) -> Bool {
             guard let viewController = viewController else {
                 AtlasLogger.logError("No controller to present")
                 return false

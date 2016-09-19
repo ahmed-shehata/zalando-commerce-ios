@@ -28,7 +28,6 @@ extension NSURL {
         case accessDenied = "access_denied"
     }
 
-
     var accessToken: String? {
         return queryItemValue(.accessToken) ?? fragmentValue(.accessToken)
     }
@@ -62,4 +61,3 @@ extension NSURL {
     }
 
 }
-
