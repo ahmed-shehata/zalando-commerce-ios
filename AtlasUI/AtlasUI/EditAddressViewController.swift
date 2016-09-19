@@ -80,24 +80,22 @@ extension EditAddressViewController {
 
     private dynamic func submitButtonPressed() {
         let isValid = addressStackView.textFields.map { $0.validateForm() }.filter { $0 == false }.isEmpty
-        if isValid {
-            guard let request = CheckAddressRequest(addressViewModel: addressViewModel) else { return }
-            loaderView.show()
-            checkout.client.checkAddress(request) { [weak self] result in
-                guard let strongSelf = self else { return }
-                strongSelf.loaderView.hide()
-                Async.main {
-                    switch result {
-                    case .failure(let error):
-                        strongSelf.userMessage.show(error: error)
-                    case .success(let checkAddressResponse):
-                        if checkAddressResponse.status == .notCorrect {
-                            let title = strongSelf.loc("Address.validation.notValid")
-                            strongSelf.userMessage.show(title: title, message: nil, actions: ButtonAction(text: "OK"))
-                        } else {
-                            strongSelf.completion?(strongSelf.addressViewModel)
-                            strongSelf.dismissView()
-                        }
+        guard let request = CheckAddressRequest(addressViewModel: addressViewModel) where isValid else { return }
+        loaderView.show()
+        checkout.client.checkAddress(request) { [weak self] result in
+            guard let strongSelf = self else { return }
+            strongSelf.loaderView.hide()
+            Async.main {
+                switch result {
+                case .failure(let error):
+                    strongSelf.userMessage.show(error: error)
+                case .success(let checkAddressResponse):
+                    if checkAddressResponse.status == .notCorrect {
+                        let title = strongSelf.loc("Address.validation.notValid")
+                        strongSelf.userMessage.show(title: title, message: nil, actions: ButtonAction(text: "OK"))
+                    } else {
+                        strongSelf.completion?(strongSelf.addressViewModel)
+                        strongSelf.dismissView()
                     }
                 }
             }
