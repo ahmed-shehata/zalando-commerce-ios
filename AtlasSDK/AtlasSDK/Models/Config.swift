@@ -42,9 +42,9 @@ extension Config {
 extension Config {
 
     init(catalogURL: String, checkoutURL: String, loginURL: String, countryCode: String, options: Options) {
-        self.init(catalogURL: NSURL(validURL: catalogURL),
-            checkoutURL: NSURL(validURL: checkoutURL),
-            loginURL: NSURL(validURL: loginURL),
+        self.init(catalogURL: NSURL(validUrl: catalogURL),
+            checkoutURL: NSURL(validUrl: checkoutURL),
+            loginURL: NSURL(validUrl: loginURL),
             countryCode: countryCode,
             options: options)
     }
