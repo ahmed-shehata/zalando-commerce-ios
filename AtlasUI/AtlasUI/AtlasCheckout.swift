@@ -55,9 +55,6 @@ public class AtlasCheckout: LocalizerProviderType {
                 // TODO: !!! replace client without auth handler with one with auth handler
                 let authorizationHandler = OAuth2AuthorizationHandler(loginURL: client.config.loginURL)
                 let options = Options(basedOn: options, authorizationHandler: authorizationHandler)
-                Injector.register { options }
-                let o: Options? = try? Injector.provide()
-                print("opts:", o)
 
                 completion(.success(AtlasCheckout(client: client, options: options)))
             }

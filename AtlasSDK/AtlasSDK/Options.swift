@@ -4,23 +4,28 @@
 
 import Foundation
 
-// TODO: Change all use as arguments to use it through Injector
 public struct Options {
 
     public let useSandboxEnvironment: Bool
     public let clientId: String
-    public let salesChannel: String
     public let interfaceLanguage: String
+    public let countryCode: String
     public let configurationURL: NSURL
     public let authorizationHandler: AtlasAuthorizationHandler?
 
+    @available( *, deprecated, message = "Should be taken from config service, when ready")
+    public let salesChannel: String
+
     public init(clientId: String, salesChannel: String, useSandbox: Bool = false,
-        interfaceLanguage: String = "de_DE", configurationURL: NSURL? = nil,
+        countryCode: String,
+        interfaceLanguage: String = "de_DE",
+        configurationURL: NSURL? = nil,
         authorizationHandler: AtlasAuthorizationHandler? = nil) {
             self.clientId = clientId
             self.salesChannel = salesChannel
             self.useSandboxEnvironment = useSandbox
             self.interfaceLanguage = interfaceLanguage
+            self.countryCode = countryCode
             self.authorizationHandler = authorizationHandler
 
             if let url = configurationURL {
@@ -32,7 +37,7 @@ public struct Options {
 
     public init(basedOn options: Options, clientId: String? = nil,
         salesChannel: String? = nil, useSandbox: Bool? = nil,
-        interfaceLanguage: String? = nil, configurationURL: NSURL? = nil,
+        interfaceLanguage: String, configurationURL: NSURL? = nil,
         authorizationHandler: AtlasAuthorizationHandler? = nil) {
             self.clientId = clientId ?? options.clientId
             self.salesChannel = salesChannel ?? options.salesChannel
@@ -51,6 +56,9 @@ public struct Options {
         }
         if self.interfaceLanguage.isEmpty {
             throw AtlasConfigurationError.missingInterfaceLanguage
+        }
+        if self.authorizationHandler == nil {
+            throw AtlasConfigurationError.missingAuthorizationHandler
         }
         if self.authorizationHandler == nil {
             throw AtlasConfigurationError.missingAuthorizationHandler

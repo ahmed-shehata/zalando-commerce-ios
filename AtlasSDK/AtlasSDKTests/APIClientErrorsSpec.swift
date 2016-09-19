@@ -40,11 +40,11 @@ class APIClientErrorsSpec: APIClientBaseSpec {
                     "status": status.rawValue, "detail": "Full authentication is required to access this resource"]
 
                 let errorResponse = self.dataWithJSONObject(json)
-                let client = self.mockedAPIClient(forURL: clientURL, countryCode: "DE", data: errorResponse, status: status)
-                    salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
+                let options = self.mockedAPIClient(forURL: clientURL, countryCode: "DE", data: errorResponse, status: status)
+                salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
                     useSandbox: true, interfaceLanguage: "en_DE",
                     configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
-                waitUntil(timeout: 60) { done in
+            waitUntil(timeout: 60) { done in
 
                 let client = self.mockedAPIClient(forURL: clientURL, options: options, data: errorResponse, status: status)
 
@@ -85,45 +85,45 @@ class APIClientErrorsSpec: APIClientBaseSpec {
 
             it("should return error when response has NSURLDomainError") {
                 let client = self.mockedAPIClient(forURL: clientURL, countryCode: "DE", data: nil, statusCode: 401, errorCode: NSURLErrorBadURL)
-                    status: HTTPStatus.Unauthorized, errorCode: NSURLErrorBadURL)
+                status: HTTPStatus.Unauthorized, errorCode: NSURLErrorBadURL)
 
-                waitUntil(timeout: 10) { done in
-                    client.customer { result in
-                        defer { done() }
-                        guard case let .failure(error) = result,
-                            AtlasAPIError.nsURLError(let code, let details) = error else {
-                                return fail("Should emit AtlasAPIError.nsURLError")
-                        }
-
-                        expect(code).to(equal(NSURLErrorBadURL))
-                        expect(details).to(contain("The operation couldn’t be completed"))
+            waitUntil(timeout: 10) { done in
+                client.customer { result in
+                    defer { done() }
+                    guard case let .failure(error) = result,
+                        AtlasAPIError.nsURLError(let code, let details) = error else {
+                            return fail("Should emit AtlasAPIError.nsURLError")
                     }
+
+                    expect(code).to(equal(NSURLErrorBadURL))
+                    expect(details).to(contain("The operation couldn’t be completed"))
                 }
             }
-
-            it("should return error when response has mangled json") {
-                let errorStatus = HTTPStatus.ServiceUnavailable
-                let errorResponse = "Some text error".dataUsingEncoding(NSUTF8StringEncoding)
-
-                let client = self.mockedAPIClient(forURL: clientUrl,
-                                                  countryCode: "DE",
-                                                  data: errorResponse,
-                                                  statusCode: errorStatus.rawValue)
-
-                waitUntil(timeout: 10) { done in
-                    client.customer { result in
-                        defer { done() }
-                        guard case let .failure(error) = result,
-                            AtlasAPIError.http(let status, _) = error else {
-                                return fail("Should emit AtlasAPIError.http")
-                        }
-
-                        expect(status).to(equal(errorStatus))
-                    }
-                }
-            }
-
         }
+
+        it("should return error when response has mangled json") {
+            let errorStatus = HTTPStatus.ServiceUnavailable
+            let errorResponse = "Some text error".dataUsingEncoding(NSUTF8StringEncoding)
+
+            let client = self.mockedAPIClient(forURL: clientUrl,
+                countryCode: "DE",
+                data: errorResponse,
+                statusCode: errorStatus.rawValue)
+
+            waitUntil(timeout: 10) { done in
+                client.customer { result in
+                    defer { done() }
+                    guard case let .failure(error) = result,
+                        AtlasAPIError.http(let status, _) = error else {
+                            return fail("Should emit AtlasAPIError.http")
+                    }
+
+                    expect(status).to(equal(errorStatus))
+                }
+            }
+        }
+
     }
+}
 
 }

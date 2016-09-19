@@ -12,3 +12,9 @@ public protocol AtlasAuthorizationHandler {
     func authorize(completion: AtlasAuthorizationCompletion)
 
 }
+
+public protocol AtlasAuthorizationProvider {
+
+    func createHandler(completion: AtlasConfigCompletion)
+
+}

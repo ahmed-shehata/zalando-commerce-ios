@@ -4,11 +4,11 @@
 
 import Foundation
 
-typealias ConfigCompletion = AtlasResult<Config> -> Void
+public typealias AtlasConfigCompletion = AtlasResult<Config> -> Void
 
 protocol Configurator {
 
-    mutating func configure(completion: ConfigCompletion) -> Void
+    mutating func configure(completion: AtlasConfigCompletion) -> Void
 
 }
 
@@ -23,7 +23,7 @@ struct ConfigClient: Configurator {
         self.requestBuilder = RequestBuilder(endpoint: endpoint)
     }
 
-    mutating func configure(completion: ConfigCompletion) {
+    mutating func configure(completion: AtlasConfigCompletion) {
         self.requestBuilder.execute { result in
             switch result {
             case .failure(let error):

@@ -50,26 +50,25 @@ class APIClientBaseSpec: QuickSpec {
         return try! NSJSONSerialization.dataWithJSONObject(object, options: []) // swiftlint:disable:this force_try
     }
 
-
-    func mockedAPIClient(forURL url: NSURL, countryCode: String, data: NSData?, statusCode: Int, errorCode: Int? = nil) -> APIClient {
+    func mockedAPIClient(forURL url: NSURL, options: Options? = nil, countryCode: String, data: NSData?, status: HTTPStatus, errorCode: Int? = nil) -> APIClient {
         let apiURL = AtlasMockAPI.endpointURL(forPath: "/")
         let config = Config(catalogURL: apiURL,
             checkoutURL: apiURL,
             loginURL: apiURL,
             countryCode: countryCode,
             options: clientOptions)
-            var client = APIClient(config: config)
+        var client = APIClient(config: config)
 
-            var error: NSError? = nil
-            if let errorCode = errorCode {
-                error = NSError(domain: "NSURLErrorDomain", code: errorCode, userInfo: nil)
-            }
+        var error: NSError? = nil
+        if let errorCode = errorCode {
+            error = NSError(domain: "NSURLErrorDomain", code: errorCode, userInfo: nil)
+        }
 
-            client.urlSession = URLSessionMock(data: data,
-                response: NSHTTPURLResponse(URL: url, statusCode: status.rawValue),
-                error: error)
+        client.urlSession = URLSessionMock(data: data,
+            response: NSHTTPURLResponse(URL: url, statusCode: status.rawValue),
+            error: error)
 
-            return client
+        return client
     }
 
 }
