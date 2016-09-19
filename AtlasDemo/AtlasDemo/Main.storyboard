@@ -86,7 +86,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="AtlasSDK Demo" id="Qtr-gt-Nf8">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="ega-UN-CNV">
+                        <barButtonItem key="leftBarButtonItem" id="ega-UN-CNV">
                             <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="4fn-Ge-VII">
                                 <rect key="frame" x="20" y="6" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -204,15 +204,8 @@
                                     <constraint firstItem="4JT-7d-5gI" firstAttribute="width" secondItem="9dg-ts-9xB" secondAttribute="width" id="9Kd-UU-vq5"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A5Y-Dt-XWn">
-                                <rect key="frame" x="20" y="323" width="560" height="30"/>
-                                <state key="normal" title="Pay Now"/>
-                                <connections>
-                                    <action selector="payNowButtonTapped:" destination="4dE-k4-8mF" eventType="touchUpInside" id="xFR-M7-Ywf"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mas-9p-sdx">
-                                <rect key="frame" x="20" y="361" width="560" height="30"/>
+                                <rect key="frame" x="20" y="530" width="560" height="30"/>
                                 <state key="normal" title="Logout"/>
                                 <connections>
                                     <action selector="logoutButtonTapped:" destination="4dE-k4-8mF" eventType="touchUpInside" id="zTp-5V-W5o"/>
@@ -224,12 +217,9 @@
                             <constraint firstItem="cKW-p6-kGE" firstAttribute="top" secondItem="Cew-DZ-oSf" secondAttribute="bottom" constant="8" id="87g-7C-rIr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="cKW-p6-kGE" secondAttribute="trailing" constant="8" id="9E4-hY-2uQ"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Mas-9p-sdx" secondAttribute="leading" id="Bba-Hg-7Hx"/>
-                            <constraint firstItem="A5Y-Dt-XWn" firstAttribute="centerX" secondItem="Mfi-QH-Ey6" secondAttribute="centerX" id="NVC-Gh-i8I"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Mas-9p-sdx" secondAttribute="trailing" id="Umc-We-jKj"/>
                             <constraint firstItem="9dg-ts-9xB" firstAttribute="top" secondItem="cKW-p6-kGE" secondAttribute="bottom" constant="16" id="Yq0-jT-Q0M"/>
-                            <constraint firstItem="Mas-9p-sdx" firstAttribute="top" secondItem="A5Y-Dt-XWn" secondAttribute="bottom" constant="8" id="ahv-XT-VEz"/>
-                            <constraint firstItem="A5Y-Dt-XWn" firstAttribute="top" secondItem="Htc-6u-A4B" secondAttribute="bottom" constant="46" id="c3t-Lm-Yde"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="A5Y-Dt-XWn" secondAttribute="leading" id="e59-iZ-4qG"/>
+                            <constraint firstItem="SNu-FN-JOB" firstAttribute="top" secondItem="Mas-9p-sdx" secondAttribute="bottom" constant="40" id="jVT-Rs-Sm4"/>
                             <constraint firstItem="cKW-p6-kGE" firstAttribute="leading" secondItem="Mfi-QH-Ey6" secondAttribute="leadingMargin" constant="8" id="oFh-CM-QVK"/>
                             <constraint firstItem="9dg-ts-9xB" firstAttribute="width" secondItem="cKW-p6-kGE" secondAttribute="width" id="rh9-td-ok1"/>
                             <constraint firstItem="9dg-ts-9xB" firstAttribute="leading" secondItem="cKW-p6-kGE" secondAttribute="leading" id="suo-yN-9qD"/>

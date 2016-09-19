@@ -5,7 +5,7 @@
 import Foundation
 
 // TODO: Rename or even make it better
-final class APIRequestBuildersContainer {
+final class RequestBuildersContainer {
 
     private var requestBuilders = [RequestBuilder]()
     private let authorizationHandler: AtlasAuthorizationHandler?

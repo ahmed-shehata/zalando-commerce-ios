@@ -10,11 +10,11 @@ public struct APIClient {
 
     internal var urlSession: NSURLSession = NSURLSession.sharedSession()
 
-    private let requestBuilders: APIRequestBuildersContainer
+    private let requestBuilders: RequestBuildersContainer
 
     init(config: Config) {
         self.config = config
-        self.requestBuilders = APIRequestBuildersContainer(config: config)
+        self.requestBuilders = RequestBuildersContainer(config: config)
     }
 
     func touch(endpoint: Endpoint, successStatus: HTTPStatus = .NoContent, completion: AtlasResult<Bool> -> Void) {

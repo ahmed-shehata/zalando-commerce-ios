@@ -9,6 +9,7 @@ typealias RequestTaskCompletion = (RequestBuilder) -> Void
 
 final class RequestBuilder: Equatable {
 
+    // TODO: Could be dropped probably
     var executionFinished: RequestTaskCompletion?
     var authorizationHandler: AtlasAuthorizationHandler?
 
@@ -71,11 +72,10 @@ final class RequestBuilder: Equatable {
             return completion(.failure(e))
         }
 
-        dataTask = self.urlSession.dataTaskWithRequest(request) { response in
+        self.urlSession.dataTaskWithRequest(request) { response in
             ResponseParser(taskResponse: response).parse(completion)
-        }
+        }.resume()
 
-        dataTask?.resume()
     }
 
     private func buildRequest() throws -> NSMutableURLRequest {

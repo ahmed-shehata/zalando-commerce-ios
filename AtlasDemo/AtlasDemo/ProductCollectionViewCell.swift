@@ -26,8 +26,10 @@ class ProductCollectionViewCell: UICollectionViewCell {
     }
 
     @IBAction func buyNowButtonTapped(sender: AnyObject) {
-        if let article = self.article {
-            AppSetup.sharedInstance.checkout?.presentCheckout(forProductSKU: article.id)
+        if let rootController = UIApplication.sharedApplication().keyWindow?.rootViewController,
+            article = self.article {
+                AppSetup.checkout?.presentCheckout(onViewController: rootController,
+                    forProductSKU: article.id)
         }
     }
 }
