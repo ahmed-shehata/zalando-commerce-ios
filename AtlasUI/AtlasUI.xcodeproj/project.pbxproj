@@ -39,6 +39,7 @@
 		79175AD49456E48DC6B393EB6F62053A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC182F5F2F24D9AF740830B9B50A9 /* UIColor.swift */; };
 		80E9B317B4DF43290610E3DD8ED6802B /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E89A529CD1D470F15B857AF1031CB61 /* Nimble.framework */; };
 		8134E4BB1D8AB810006B5077 /* NSURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134E4BA1D8AB810006B5077 /* NSURL.swift */; };
+		813F888F1D8FEE49002766CE /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813F888E1D8FEE49002766CE /* UIApplication.swift */; };
 		81D3C9AA1D8B060800DB2AD9 /* NSURLQueryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D3C9A91D8B060800DB2AD9 /* NSURLQueryItem.swift */; };
 		81D3C9AC1D8B067100DB2AD9 /* URLAuthorizationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D3C9AB1D8B067100DB2AD9 /* URLAuthorizationSpec.swift */; };
 		81FB3EAC1D8AFFFD0026797F /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FB3EAB1D8AFFFD0026797F /* LoginError.swift */; };
@@ -139,6 +140,7 @@
 		808C394E80E745736133ADBD0E2938C8 /* AtlasUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AtlasUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80F13460B6B17606CC65E38CE6A4716C /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		8134E4BA1D8AB810006B5077 /* NSURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURL.swift; sourceTree = "<group>"; };
+		813F888E1D8FEE49002766CE /* UIApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		81D3C9A91D8B060800DB2AD9 /* NSURLQueryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLQueryItem.swift; sourceTree = "<group>"; };
 		81D3C9AB1D8B067100DB2AD9 /* URLAuthorizationSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLAuthorizationSpec.swift; sourceTree = "<group>"; };
 		81FB3EAB1D8AFFFD0026797F /* LoginError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				764CDA794B49DC585B031C7C4F5776D5 /* UserMessage.swift */,
 				8134E4BA1D8AB810006B5077 /* NSURL.swift */,
 				81D3C9A91D8B060800DB2AD9 /* NSURLQueryItem.swift */,
+				813F888E1D8FEE49002766CE /* UIApplication.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -579,6 +582,7 @@
 				8134E4BB1D8AB810006B5077 /* NSURL.swift in Sources */,
 				4342464869E446FBC18FE72A79CC55B5 /* ActionTextField.swift in Sources */,
 				65BCA936AE236A318847ECE6DCA4A3B0 /* AddAddressTableViewCell.swift in Sources */,
+				813F888F1D8FEE49002766CE /* UIApplication.swift in Sources */,
 				8F555E1D55F47DFE66BD5CF593E6C6DE /* AddressListTableViewDelegate.swift in Sources */,
 				5A6C401EC4AC8D133366523A81A14C63 /* AddressPickerViewController.swift in Sources */,
 				271C74EFD455C9953DB58ED7A2B107CE /* AddressRowViewCell.swift in Sources */,

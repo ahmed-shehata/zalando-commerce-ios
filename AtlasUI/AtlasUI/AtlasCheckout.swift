@@ -55,28 +55,24 @@ public class AtlasCheckout: LocalizerProviderType {
                 // TODO: !!! replace client without auth handler with one with auth handler
                 let authorizationHandler = OAuth2AuthorizationHandler(loginURL: client.config.loginURL)
                 let options = Options(basedOn: options, authorizationHandler: authorizationHandler)
+                Injector.register { options }
+                let o: Options? = try? Injector.provide()
+                print("opts:", o)
 
                 completion(.success(AtlasCheckout(client: client, options: options)))
             }
         }
     }
 
-    public func presentCheckout(onViewController viewController: UIViewController? = UIApplication.topViewController(),
-        forProductSKU sku: String) -> Bool {
-            guard let viewController = viewController else {
-                AtlasLogger.logError("No controller to present")
-                return false
-            }
+    public func presentCheckout(onViewController viewController: UIViewController, forProductSKU sku: String) {
+        let sizeSelectionViewController = SizeSelectionViewController(checkout: self, sku: sku)
+        let checkoutTransitioning = CheckoutTransitioningDelegate()
 
-            let sizeSelectionViewController = SizeSelectionViewController(checkout: self, sku: sku)
-            let checkoutTransitioning = CheckoutTransitioningDelegate()
-            let navigationController = UINavigationController(rootViewController: sizeSelectionViewController)
-            navigationController.transitioningDelegate = checkoutTransitioning
-            navigationController.modalPresentationStyle = .Custom
+        let navigationController = UINavigationController(rootViewController: sizeSelectionViewController)
+        navigationController.transitioningDelegate = checkoutTransitioning
+        navigationController.modalPresentationStyle = .Custom
 
-            viewController.presentViewController(navigationController, animated: true, completion: nil)
-
-            return true
+        viewController.presentViewController(navigationController, animated: true, completion: nil)
     }
 
     func updateCheckoutViewModel(selectedArticleUnit: SelectedArticleUnit, checkoutViewModel: CheckoutViewModel? = nil,

@@ -33,7 +33,7 @@ class AtlasSpec: QuickSpec {
 
             it("should logout user successfully") {
                 self.loginUser()
-                Atlas.logoutCustomer()
+                Atlas.logoutUser()
 
                 expect(Atlas.isUserLoggedIn()).to(beFalse())
             }

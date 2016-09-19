@@ -58,7 +58,7 @@ class APIClientBaseSpec: QuickSpec {
 
             var error: NSError? = nil
             if let errorCode = errorCode {
-at                error = NSError(domain: "NSURLErrorDomain", code: errorCode, userInfo: nil)
+                error = NSError(domain: "NSURLErrorDomain", code: errorCode, userInfo: nil)
             }
 
             client.urlSession = URLSessionMock(data: data,

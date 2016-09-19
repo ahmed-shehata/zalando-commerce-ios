@@ -25,8 +25,7 @@ struct MockAuthorizationHandler: AtlasAuthorizationHandler {
         self.error = error
     }
 
-
-    func authorizeTask(completion: AtlasAuthorizationCompletion) {
+    func authorize(completion: AtlasAuthorizationCompletion) {
         if let token = token {
             completion(.success(token))
         } else if let error = error {

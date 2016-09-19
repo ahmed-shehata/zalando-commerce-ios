@@ -40,7 +40,7 @@ public struct Atlas {
         return APIAccessToken.retrieve() != nil
     }
 
-    public static func logoutCustomer() {
+    public static func logoutUser() {
         APIAccessToken.delete()
     }
 
