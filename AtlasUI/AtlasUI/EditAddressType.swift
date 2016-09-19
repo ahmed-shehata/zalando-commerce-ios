@@ -117,17 +117,16 @@ enum EditAddressField {
             return [.MaxLength(maxLength: 50)]
         case .Packstation:
             return [.Required,
-                    .MinLength(minLength: 3),
-                    .MaxLength(maxLength: 3),
-                    .Pattern(pattern: "[0-9]{3,3}$")]
+                    .ExactLength(length: 3),
+                    .NumbersOnly]
         case .MemberID:
             return [.Required,
                     .MinLength(minLength: 3),
-                    .Pattern(pattern: "[0-9]{3,}$")]
+                    .NumbersOnly]
         case .Zipcode:
             return [.Required,
-                    .MaxLength(maxLength: 10),
-                    .Pattern(pattern: "^[0-9]{5}$")]
+                    .ExactLength(length: 5),
+                    .NumbersOnly]
         case .City:
             return [.Required,
                     .MaxLength(maxLength: 50),

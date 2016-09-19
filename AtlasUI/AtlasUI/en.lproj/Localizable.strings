@@ -71,5 +71,7 @@
 "Form.validation.required" = "This field is required";
 "Form.validation.minLength: %@" = "Min length is %@";
 "Form.validation.maxLength: %@" = "Max length is %@";
+"Form.validation.exactLength: %@" = "Required length is %@";
 "Form.validation.pattern" = "Invalid value";
+"Form.validation.numbersOnly" = "Only numbers are allowed";
 "Address.validation.notValid" = "Address not valid, please check the address";

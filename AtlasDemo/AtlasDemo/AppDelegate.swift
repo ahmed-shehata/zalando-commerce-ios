@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private var alwaysUseMockAPI: Bool {
         #if DEBUG
-            return false
+            return true
         #else
             return false
         #endif
