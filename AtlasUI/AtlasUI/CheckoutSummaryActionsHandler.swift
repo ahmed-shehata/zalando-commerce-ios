@@ -169,8 +169,7 @@ extension CheckoutSummaryActionsHandler {
             viewController.rootStackView.configureData(viewController)
             viewController.refreshViewData()
 
-            guard viewController.checkoutViewModel.isReadyToCreateCheckout == true
-            else { return }
+            guard viewController.checkoutViewModel.isReadyToCreateCheckout == true else { return }
             viewController.showLoader()
 
             viewController.checkout.prepareCheckoutViewModel(viewController.checkoutViewModel.selectedArticleUnit,
@@ -181,7 +180,8 @@ extension CheckoutSummaryActionsHandler {
                         self.viewController.dismissViewControllerAnimated(true) {
                             self.viewController.userMessage.show(error: error)
                         }
-                    case .success(let checkoutViewModel):
+                    case .success(var checkoutViewModel):
+                        checkoutViewModel.customer = self.viewController.checkoutViewModel.customer
                         self.viewController.checkoutViewModel = checkoutViewModel
                         self.viewController.rootStackView.configureData(self.viewController)
                         self.viewController.refreshViewData()

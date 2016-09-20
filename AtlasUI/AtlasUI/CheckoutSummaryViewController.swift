@@ -8,13 +8,7 @@ import AtlasSDK
 class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
 
     internal var checkout: AtlasCheckout
-    internal var checkoutViewModel: CheckoutViewModel {
-        didSet {
-            if oldValue.customer != nil && checkoutViewModel.customer == nil {
-                checkoutViewModel.customer = oldValue.customer
-            }
-        }
-    }
+    internal var checkoutViewModel: CheckoutViewModel
     internal var viewState: CheckoutViewState = .NotLoggedIn {
         didSet {
             Async.main {
