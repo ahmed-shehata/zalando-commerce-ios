@@ -13,6 +13,7 @@ enum AddressType {
 typealias AddressSelectionCompletion = (pickedAddress: EquatableAddress, pickedAddressType: AddressType) -> Void
 typealias CreateAddressHandler = () -> Void
 typealias UpdateAddressHandler = (address: EquatableAddress) -> Void
+typealias DeleteAddressHandler = () -> Void
 
 final class AddressPickerViewController: UIViewController, CheckoutProviderType {
 
@@ -32,6 +33,7 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
         didSet {
             tableviewDelegate?.addresses = addresses
             tableView.reloadData()
+            configureEditButton()
         }
     }
     let tableviewDelegate: AddressListTableViewDelegate?
@@ -67,7 +69,7 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
         case .shipping:
             self.title = "Shipping Address"
         }
-        self.navigationItem.rightBarButtonItem = self.editButtonItem()
+
         self.navigationController?.navigationBar.accessibilityIdentifier = "address-picker-navigation-bar"
         self.navigationItem.rightBarButtonItem?.accessibilityIdentifier = "address-picker-right-button"
 
@@ -84,6 +86,7 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
     private func configureTableviewDelegate() {
         configureCreateAddress()
         configureUpdateAddress()
+        configureDeleteAddress()
     }
 
     private func fetchAddresses() {
@@ -144,9 +147,9 @@ extension AddressPickerViewController {
             let cancelAction = ButtonAction(text: "Cancel", style: .Cancel, handler: nil)
 
             strongSelf.userMessage.show(title: title,
-                                        message: nil,
-                                        preferredStyle: .ActionSheet,
-                                        actions: standardAction, pickupPointAction, cancelAction)
+                message: nil,
+                preferredStyle: .ActionSheet,
+                actions: standardAction, pickupPointAction, cancelAction)
         }
     }
 
@@ -181,7 +184,7 @@ extension AddressPickerViewController {
 extension AddressPickerViewController {
 
     private func configureUpdateAddress() {
-        tableviewDelegate?.updateAddressHandler = { [weak self] (address) in
+        tableviewDelegate?.updateAddressHandler = { [weak self](address) in
             self?.showUpdateAddress(address)
         }
     }
@@ -214,4 +217,22 @@ extension AddressPickerViewController {
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 
+}
+
+extension AddressPickerViewController {
+
+    private func configureDeleteAddress() {
+        tableviewDelegate?.deleteAddressHandler = { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.configureEditButton()
+        }
+    }
+
+    private func configureEditButton() {
+        if let addressList = tableviewDelegate?.addresses where addressList.isEmpty {
+            self.navigationItem.rightBarButtonItem = nil
+        } else {
+            self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        }
+    }
 }
