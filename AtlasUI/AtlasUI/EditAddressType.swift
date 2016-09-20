@@ -34,7 +34,8 @@ enum EditAddressField: String {
     }
 
     func title(localizer: LocalizerProviderType) -> String {
-        return localizer.loc("Address.edit.\(rawValue.lowercaseString)")
+        let title = localizer.loc("Address.edit.\(rawValue.lowercaseString)")
+        return title + (formValidators.contains { $0 == .Required } ? "*" : "")
     }
 
     func value(viewModel: EditAddressViewModel, localizer: LocalizerProviderType) -> String? {
