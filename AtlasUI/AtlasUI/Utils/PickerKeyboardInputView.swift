@@ -18,13 +18,14 @@ class PickerKeyboardInputView: UIView {
     private let pickerData: [String]
     private let completion: TextFieldChangedHandler
 
-    init(pickerData: [String], completion: TextFieldChangedHandler) {
+    init(pickerData: [String], startingValueIndex: Int, completion: TextFieldChangedHandler) {
         self.pickerData = pickerData
         self.completion = completion
         let frame = CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: 216)
         super.init(frame: frame)
         buildView()
         pickerView.reloadAllComponents()
+        pickerView.selectRow(startingValueIndex, inComponent: 0, animated: false)
     }
 
     required init?(coder aDecoder: NSCoder) {
