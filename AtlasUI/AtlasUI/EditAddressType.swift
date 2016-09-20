@@ -29,6 +29,21 @@ enum EditAddressField {
     case City
     case Country
 
+    var accessibilityIdentifier: String {
+        switch self {
+        case .Title: return "title-textfield"
+        case .FirstName: return "firstName-textfield"
+        case .LastName: return "lastName-textfield"
+        case .Street: return "street-textfield"
+        case .Additional: return "additional-textfield"
+        case .Packstation: return "packstation-textfield"
+        case .MemberID: return "memberID-textfield"
+        case .Zipcode: return "zipcode-textfield"
+        case .City: return "city-textfield"
+        case .Country: return "country-textfield"
+        }
+    }
+
     func title(localizer: LocalizerProviderType) -> String {
         switch self {
         case .Title: return localizer.loc("Address.edit.title")

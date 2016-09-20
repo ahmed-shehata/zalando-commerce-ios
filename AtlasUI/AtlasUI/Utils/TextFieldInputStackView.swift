@@ -94,6 +94,7 @@ extension TextFieldInputStackView: UIDataBuilder {
 
         nextTextField = viewModel.nextTextFieldInput
         textField.text = viewModel.value
+        textField.accessibilityIdentifier = viewModel.accessibilityIdentifier
         textField.placeholder = viewModel.title
         textField.returnKeyType = nextTextField == nil ? .Default : .Next
 

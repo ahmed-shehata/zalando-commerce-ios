@@ -28,10 +28,7 @@ class AtlasDemoUITests: XCTestCase {
     }
 
     func testBuyQuicklyProductWithSizes() {
-        tapBuyNow("Lamica")
-
-        waitForElementToAppearAndTap(app.tables.cells["size-cell-1"])
-        tapConnectAndLogin()
+        proceedToLogin()
         tapPlaceOrder()
         tapBackToShop()
     }
@@ -66,12 +63,7 @@ class AtlasDemoUITests: XCTestCase {
     }
 
     func testChangeShippingAddress() {
-        let size = app.cells["size-cell-1"]
-
-        tapBuyNow("Lamica")
-
-        waitForElementToAppearAndTap(size)
-        tapConnectAndLogin()
+        proceedToLogin()
         changeShippingAddress()
         tapBackToSummaryFromPickingAddressButton()
         tapPlaceOrder()
@@ -80,35 +72,53 @@ class AtlasDemoUITests: XCTestCase {
     }
 
     func testChangeBillingAddress() {
-        let size = app.cells["size-cell-1"]
-
-        tapBuyNow("Lamica")
-        waitForElementToAppearAndTap(size)
-        tapConnectAndLogin()
+        proceedToLogin()
         changeBillingAddress()
         tapBackToSummaryFromPickingAddressButton()
         tapPlaceOrder()
         tapBackToShop()
     }
 
-    func changeShippingAddress() {
-        app.otherElements["shipping-stack-view"].tap()
-        app.cells["address-selection-row-1"].tap()
-    }
-
-    func changeBillingAddress() {
-        app.otherElements["billing-stack-view"].tap()
-        app.cells["address-selection-row-1"].tap()
-    }
-
     func testDeleteAddress() {
+        proceedToLogin()
+        app.otherElements["shipping-stack-view"].tap()
+        deleteAddresses()
+        app.buttons["navigation-bar-cancel-button"].tap()
+    }
+
+    func testEditAddress() {
+        proceedToLogin()
+        app.otherElements["shipping-stack-view"].tap()
+        editAddress()
+        app.buttons["navigation-bar-cancel-button"].tap()
+    }
+
+    func testCreateAddress() {
+        proceedToLogin()
+        app.otherElements["shipping-stack-view"].tap()
+        createAddress()
+        app.buttons["navigation-bar-cancel-button"].tap()
+    }
+
+}
+
+extension AtlasDemoUITests {
+
+    private func proceedToLogin() {
         let size = app.cells["size-cell-1"]
         tapBuyNow("Lamica")
         waitForElementToAppearAndTap(size)
         tapConnectAndLogin()
+    }
+
+    private func changeShippingAddress() {
         app.otherElements["shipping-stack-view"].tap()
-        deleteAddresses()
-        app.buttons["navigation-bar-cancel-button"].tap()
+        app.cells["address-selection-row-1"].tap()
+    }
+
+    private func changeBillingAddress() {
+        app.otherElements["billing-stack-view"].tap()
+        app.cells["address-selection-row-1"].tap()
     }
 
     private func deleteAddresses() {
@@ -125,6 +135,39 @@ class AtlasDemoUITests: XCTestCase {
 
         rightButton.tap()
         app.navigationBars["address-picker-navigation-bar"].buttons["Back"].tap()
+    }
+
+    private func editAddress() {
+        let rightButton = app.navigationBars.buttons["address-picker-right-button"]
+        rightButton.tap()
+        app.tables.buttons.elementBoundByIndex(1).tap()
+        app.navigationBars.buttons["address-edit-right-button"].tap()
+        app.navigationBars["address-picker-navigation-bar"].buttons["Back"].tap()
+    }
+
+    private func createAddress() {
+        app.cells["addresses-table-create-address-cell"].tap()
+        app.buttons["Standard"].tap()
+
+        app.textFields["title-textfield"].tap()
+        app.pickerWheels.element.adjustToPickerWheelValue("Mr")
+
+
+        app.textFields["firstName-textfield"].tap()
+        setTextFieldValue("firstName-textfield", value: "John")
+        setTextFieldValue("lastName-textfield", value: "Doe")
+        setTextFieldValue("street-textfield", value: "Mollstr. 1")
+        setTextFieldValue("additional-textfield", value: "")
+        setTextFieldValue("zipcode-textfield", value: "10178")
+        setTextFieldValue("city-textfield", value: "Berlin")
+
+        app.navigationBars.buttons["address-edit-right-button"].tap()
+        app.navigationBars["address-picker-navigation-bar"].buttons["Back"].tap()
+    }
+
+    private func setTextFieldValue(textFieldIdentifier: String, value: String) {
+        app.textFields[textFieldIdentifier].typeText(value)
+        app.textFields[textFieldIdentifier].typeText("\n")
     }
 
     private func tapConnectAndLogin() {
@@ -167,4 +210,5 @@ class AtlasDemoUITests: XCTestCase {
     private var collectionView: XCUIElement {
         return navigationController.descendantsMatchingType(.CollectionView).element
     }
+
 }
