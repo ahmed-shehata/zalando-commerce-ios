@@ -25,11 +25,16 @@ module Calypso
       write_new_version(new_version)
 
       invoke :lint_lib
+
+      run "git add -A && git commit -m 'Release #{new_version}.'"
+      run "git tag '#{new_version}'"
+      run "git push --tags"
     end
 
     desc 'deploy', 'Deploy new version to CocoaPods'
     def deploy
-      invoke :lint
+      invoke :lint_spec
+      run "pod repo push AtlasSDK.podspec"
     end
 
     private
