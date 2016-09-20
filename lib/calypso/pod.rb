@@ -1,7 +1,7 @@
 require 'thor'
 require_relative 'run'
 
-FILE_NAME = 'version.rb'
+VERSION_FILE = './lib/version.rb'.freeze
 
 module Calypso
 
@@ -20,21 +20,26 @@ module Calypso
     desc 'release', 'Release new version: create new tag and push to the GitHub'
     def release
       current_version = read_current_version
-      say "Pleae, add new AtlasSDK version (current #{current_version}):", :blue
+      say "Please, add new AtlasSDK version (current #{current_version}):", :blue
       new_version = ask 'Please, enter new version', :blue
       write_new_version(new_version)
 
       invoke :lint_lib
 
-      run "git add -A && git commit -m 'Release #{new_version}.'"
-      run "git tag '#{new_version}'"
-      run "git push --tags"
+      say 'Changing project version', :blue
+      run "/usr/libexec/PlistBuddy -c 'Set :CFBundleShortVersionString #{new_version}' AtlasSDK/AtlasSDK/Info.plist"
+      run "/usr/libexec/PlistBuddy -c 'Set :CFBundleShortVersionString #{new_version}' AtlasUI/AtlasUI/Info.plist"
+
+      say 'Check and execute the following commands:', :blue
+      say "git add -A && git commit -m 'Release #{new_version}.' \n"\
+          "git tag '#{new_version}' \n"\
+          'git push --tags', :yellow
     end
 
     desc 'deploy', 'Deploy new version to CocoaPods'
     def deploy
       invoke :lint_spec
-      run "pod repo push AtlasSDK.podspec"
+      run 'pod repo push AtlasSDK.podspec'
     end
 
     private
@@ -43,18 +48,15 @@ module Calypso
 
     def read_current_version
       file_str = ''
-      if File.exists?(FILE_NAME)
-          file_str = File.open(FILE_NAME, 'r') {|file| file.read }
+      if File.exist?(VERSION_FILE)
+        file_str = File.open(VERSION_FILE, 'r', &:read)
       end
 
-      return file_str.match(/[0-9\.]+/)[0]
+      file_str.match(/[0-9\.]+/)[0]
     end
 
     def write_new_version(new_version)
-      file_str = ''
-      if File.exists?(FILE_NAME)
-        File.open(FILE_NAME, 'w') {|file| file.write("VERSION='#{new_version}'") }
-      end
+      File.open(VERSION_FILE, 'w') { |file| file.write("VERSION='#{new_version}'") }
     end
 
   end
