@@ -28,15 +28,13 @@ class AtlasDemoUITests: XCTestCase {
     }
 
     func testBuyQuicklyProductWithSizes() {
-        proceedToLogin()
+        proceedToSummaryWithSizes()
         tapPlaceOrder()
         tapBackToShop()
     }
 
     func testBuyQuicklyProductWithoutSizes() {
-        tapBuyNow("MICHAEL Michael Kors")
-
-        tapConnectAndLogin()
+        proceedToSummaryWithoutSizes()
         tapPlaceOrder()
         tapBackToShop()
     }
@@ -63,7 +61,7 @@ class AtlasDemoUITests: XCTestCase {
     }
 
     func testChangeShippingAddress() {
-        proceedToLogin()
+        proceedToSummaryWithSizes()
         changeShippingAddress()
         tapBackToSummaryFromPickingAddressButton()
         tapPlaceOrder()
@@ -72,7 +70,7 @@ class AtlasDemoUITests: XCTestCase {
     }
 
     func testChangeBillingAddress() {
-        proceedToLogin()
+        proceedToSummaryWithSizes()
         changeBillingAddress()
         tapBackToSummaryFromPickingAddressButton()
         tapPlaceOrder()
@@ -80,21 +78,21 @@ class AtlasDemoUITests: XCTestCase {
     }
 
     func testDeleteAddress() {
-        proceedToLogin()
+        proceedToSummaryWithSizes()
         app.otherElements["shipping-stack-view"].tap()
         deleteAddresses()
         app.buttons["navigation-bar-cancel-button"].tap()
     }
 
     func testEditAddress() {
-        proceedToLogin()
+        proceedToSummaryWithSizes()
         app.otherElements["shipping-stack-view"].tap()
         editAddress()
         app.buttons["navigation-bar-cancel-button"].tap()
     }
 
     func testCreateAddress() {
-        proceedToLogin()
+        proceedToSummaryWithSizes()
         app.otherElements["shipping-stack-view"].tap()
         createAddress()
         app.buttons["navigation-bar-cancel-button"].tap()
@@ -104,10 +102,15 @@ class AtlasDemoUITests: XCTestCase {
 
 extension AtlasDemoUITests {
 
-    private func proceedToLogin() {
+    private func proceedToSummaryWithSizes() {
         let size = app.cells["size-cell-1"]
         tapBuyNow("Lamica")
         waitForElementToAppearAndTap(size)
+        tapConnectAndLogin()
+    }
+
+    private func proceedToSummaryWithoutSizes() {
+        tapBuyNow("MICHAEL Michael Kors")
         tapConnectAndLogin()
     }
 
@@ -153,9 +156,9 @@ extension AtlasDemoUITests {
         app.pickerWheels.element.adjustToPickerWheelValue("Mr")
 
 
-        app.textFields["firstName-textfield"].tap()
-        setTextFieldValue("firstName-textfield", value: "John")
-        setTextFieldValue("lastName-textfield", value: "Doe")
+        app.textFields["firstname-textfield"].tap()
+        setTextFieldValue("firstname-textfield", value: "John")
+        setTextFieldValue("lastname-textfield", value: "Doe")
         setTextFieldValue("street-textfield", value: "Mollstr. 1")
         setTextFieldValue("additional-textfield", value: "")
         setTextFieldValue("zipcode-textfield", value: "10178")
