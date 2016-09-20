@@ -5,7 +5,7 @@ github "Quick/Nimble"
 
 # AtlasMockAPI
 
-github "bonkey/swifter" "stable"
+github "httpswift/swifter" "stable"
 
 # AtlasDemo
 
