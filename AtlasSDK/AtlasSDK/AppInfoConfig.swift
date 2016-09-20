@@ -10,6 +10,7 @@ enum InfoKey: String {
     case clientId = "ATLASSDK_CLIENT_ID"
     case salesChannel = "ATLASSDK_SALES_CHANNEL"
     case interfaceLanguage = "ATLASSDK_INTERFACE_LANGUAGE"
+    case countryCode = "ATLASSDK_COUNTRY_CODE"
 
 }
 

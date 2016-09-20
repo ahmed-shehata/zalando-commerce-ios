@@ -15,6 +15,6 @@ public protocol AtlasAuthorizationHandler {
 
 public protocol AtlasAuthorizationProvider {
 
-    func createHandler(completion: AtlasConfigCompletion)
+    func createHandler(completion: AtlasConfigCompletion) // TODO: use it, please ;)
 
 }

@@ -8,24 +8,30 @@ public struct Options {
 
     public let useSandboxEnvironment: Bool
     public let clientId: String
-    public let interfaceLanguage: String
+    public let interfaceLanguage: String?
     public let countryCode: String
     public let configurationURL: NSURL
     public let authorizationHandler: AtlasAuthorizationHandler?
 
+    public var localeIdentifier: String {
+        return "\(interfaceLanguage ?? "")_\(countryCode)"
+    }
+
     @available( *, deprecated, message = "Should be taken from config service, when ready")
     public let salesChannel: String
 
-    public init(clientId: String, salesChannel: String, useSandbox: Bool = false,
+    public init(clientId: String,
+        salesChannel: String,
+        useSandbox: Bool = false,
         countryCode: String,
-        interfaceLanguage: String = "de_DE",
+        interfaceLanguage: String? = nil,
         configurationURL: NSURL? = nil,
         authorizationHandler: AtlasAuthorizationHandler? = nil) {
             self.clientId = clientId
             self.salesChannel = salesChannel
             self.useSandboxEnvironment = useSandbox
-            self.interfaceLanguage = interfaceLanguage
             self.countryCode = countryCode
+            self.interfaceLanguage = interfaceLanguage
             self.authorizationHandler = authorizationHandler
 
             if let url = configurationURL {
@@ -35,18 +41,6 @@ public struct Options {
             }
     }
 
-    public init(basedOn options: Options, clientId: String? = nil,
-        salesChannel: String? = nil, useSandbox: Bool? = nil,
-        interfaceLanguage: String, configurationURL: NSURL? = nil,
-        authorizationHandler: AtlasAuthorizationHandler? = nil) {
-            self.clientId = clientId ?? options.clientId
-            self.salesChannel = salesChannel ?? options.salesChannel
-            self.useSandboxEnvironment = useSandbox ?? options.useSandboxEnvironment
-            self.interfaceLanguage = interfaceLanguage ?? options.interfaceLanguage
-            self.configurationURL = configurationURL ?? options.configurationURL
-            self.authorizationHandler = authorizationHandler ?? options.authorizationHandler
-    }
-
     public func validate() throws {
         if self.clientId.isEmpty {
             throw AtlasConfigurationError.missingClientId
@@ -54,11 +48,8 @@ public struct Options {
         if self.salesChannel.isEmpty {
             throw AtlasConfigurationError.missingSalesChannel
         }
-        if self.interfaceLanguage.isEmpty {
-            throw AtlasConfigurationError.missingInterfaceLanguage
-        }
-        if self.authorizationHandler == nil {
-            throw AtlasConfigurationError.missingAuthorizationHandler
+        if self.countryCode.isEmpty {
+            throw AtlasConfigurationError.missingCountryCode
         }
         if self.authorizationHandler == nil {
             throw AtlasConfigurationError.missingAuthorizationHandler

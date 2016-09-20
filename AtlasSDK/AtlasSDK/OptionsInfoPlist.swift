@@ -8,9 +8,11 @@ public extension Options {
 
     public init(bundle: NSBundle) {
         self.init(clientId: bundle.string(.clientId) ?? "",
-                  salesChannel: bundle.string(.salesChannel) ?? "",
-                  interfaceLanguage: bundle.string(.interfaceLanguage) ?? "de_DE",
-                  useSandbox: bundle.bool(.useSandbox, defaultValue: false))
+            salesChannel: bundle.string(.salesChannel) ?? "",
+            useSandbox: bundle.bool(.useSandbox) ?? false,
+            countryCode: bundle.string(.countryCode) ?? "",
+            interfaceLanguage: bundle.string(.interfaceLanguage) ?? ""
+        )
     }
 
 }
@@ -21,8 +23,8 @@ extension NSBundle {
         return self.objectForInfoDictionaryKey(key.rawValue) as? String
     }
 
-    private func bool(key: InfoKey, defaultValue: Bool = false) -> Bool {
-        return self.objectForInfoDictionaryKey(key.rawValue) as? Bool ?? defaultValue
+    private func bool(key: InfoKey) -> Bool? {
+        return self.objectForInfoDictionaryKey(key.rawValue) as? Bool
     }
 
 }

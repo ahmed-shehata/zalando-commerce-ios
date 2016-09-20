@@ -20,7 +20,7 @@ class APICustomerSpec: APIClientBaseSpec {
                 let json = ["customer_number": "12345678", "gender": "MALE", "email": "aaa@a.a",
                     "first_name": "John", "last_name": "Doe"]
                 let customerResponse = self.dataWithJSONObject(json)
-                let client = self.mockedAPIClient(forURL: customerURL, countryCode: "DE", data: customerResponse, status: .OK)
+                let client = self.mockedAPIClient(forURL: customerURL, data: customerResponse, status: .OK)
 
                 waitUntil(timeout: 60) { done in
                     client.customer { result in

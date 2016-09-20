@@ -85,6 +85,7 @@ final class RequestBuilder: Equatable {
 
 }
 
+// TODO: Could be dropped probably
 func == (lhs: RequestBuilder, rhs: RequestBuilder) -> Bool {
     return lhs.identifier == rhs.identifier
 }

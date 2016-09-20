@@ -28,7 +28,9 @@ class APIClientBaseSpec: QuickSpec {
 
     private let clientOptions = Options(clientId: "atlas_Y2M1MzA",
         salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
-        useSandbox: true, interfaceLanguage: "en_DE",
+        useSandbox: true,
+        countryCode: "DE",
+        interfaceLanguage: "de",
         configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"),
         authorizationHandler: MockAuthorizationHandler())
 
@@ -50,25 +52,29 @@ class APIClientBaseSpec: QuickSpec {
         return try! NSJSONSerialization.dataWithJSONObject(object, options: []) // swiftlint:disable:this force_try
     }
 
-    func mockedAPIClient(forURL url: NSURL, options: Options? = nil, countryCode: String, data: NSData?, status: HTTPStatus, errorCode: Int? = nil) -> APIClient {
-        let apiURL = AtlasMockAPI.endpointURL(forPath: "/")
-        let config = Config(catalogURL: apiURL,
-            checkoutURL: apiURL,
-            loginURL: apiURL,
-            countryCode: countryCode,
-            options: clientOptions)
-        var client = APIClient(config: config)
+    func mockedAPIClient(forURL url: NSURL, options: Options? = nil, data: NSData?,
+        status: HTTPStatus, errorCode: Int? = nil) -> APIClient {
+            let apiURL = AtlasMockAPI.endpointURL(forPath: "/")
+            let loginURL = AtlasMockAPI.endpointURL(forPath: "/oauth2/authorize")
 
-        var error: NSError? = nil
-        if let errorCode = errorCode {
-            error = NSError(domain: "NSURLErrorDomain", code: errorCode, userInfo: nil)
-        }
+            let json = JSON(["sales-channels": [["locale": "de_DE", "sales-channel": "82fe2e7f-8c4f-4aa1-9019-b6bde5594456"]],
+                "atlas-catalog-api": ["url": apiURL.absoluteString],
+                "atlas-checkout-api": ["url": apiURL.absoluteString],
+                "oauth2-provider": ["url": loginURL.absoluteString]])
 
-        client.urlSession = URLSessionMock(data: data,
-            response: NSHTTPURLResponse(URL: url, statusCode: status.rawValue),
-            error: error)
+            let config = Config(json: json, options: options ?? clientOptions)! // swiftlint:disable:this force_unwrapping
+            var client = APIClient(config: config)
 
-        return client
+            var error: NSError? = nil
+            if let errorCode = errorCode {
+                error = NSError(domain: "NSURLErrorDomain", code: errorCode, userInfo: nil)
+            }
+
+            client.urlSession = URLSessionMock(data: data,
+                response: NSHTTPURLResponse(URL: url, statusCode: status.rawValue),
+                error: error)
+
+            return client
     }
 
 }
