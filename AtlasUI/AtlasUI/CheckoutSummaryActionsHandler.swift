@@ -169,8 +169,7 @@ extension CheckoutSummaryActionsHandler {
             viewController.rootStackView.configureData(viewController)
             viewController.refreshViewData()
 
-            guard let
-            readyToCreateCheckout = viewController.checkoutViewModel.isReadyToCreateCheckout where readyToCreateCheckout == true
+            guard viewController.checkoutViewModel.isReadyToCreateCheckout == true
             else { return }
             viewController.showLoader()
 
