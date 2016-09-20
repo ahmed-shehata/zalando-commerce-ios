@@ -1,6 +1,8 @@
+require_relative './lib/version'
+
 Pod::Spec.new do |s|
   s.name         = 'AtlasSDK'
-  s.version      = '0.1.0'
+  s.version      = VERSION
   s.summary      = 'Atlas iOS SDK for Zalando Checkout and Catalog APIs.'
   s.description  = <<-DESC
 The purpose of this project is to provide seamless experience of Zalando articles checkout integration to the 3rd party iOS apps.
@@ -15,7 +17,8 @@ If you want to have a full control over the UI and manage checkout flow by yours
                     'Gleb Galkin' => 'gleb.galkin@zalando.de',
                     'Ahmed Shehata' => 'ahmed.shehata@zalando.de',
                     'Daniel Bauke' => 'daniel.bauke@zalando.de',
-                    'Haldun Bayhantopcu' => 'haldun.bayhantopcu@zalando.de'
+                    'Haldun Bayhantopcu' => 'haldun.bayhantopcu@zalando.de',
+                    'Hani Ibrahim' => 'hani.eloksh@zalando.de'
                     }
   s.platform     = :ios, '9.0'
   s.source       = { git: 'https://github.com/zalando-incubator/atlas-ios.git', tag: s.version.to_s }

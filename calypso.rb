@@ -12,6 +12,7 @@ require_relative 'lib/calypso/docs'
 require_relative 'lib/calypso/ci'
 require_relative 'lib/calypso/xcode'
 require_relative 'lib/calypso/coverage'
+require_relative 'lib/calypso/pod'
 
 $stdout.sync = $stderr.sync = true
 
@@ -39,6 +40,9 @@ module Calypso
 
     desc 'coverage', 'Code coverage'
     subcommand 'coverage', Coverage
+
+    desc 'pod', 'CocoaPods commands'
+    subcommand 'pod', Pod
   end
 end
 
