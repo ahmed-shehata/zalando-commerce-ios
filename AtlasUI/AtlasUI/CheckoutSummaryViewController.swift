@@ -8,7 +8,13 @@ import AtlasSDK
 class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
 
     internal var checkout: AtlasCheckout
-    internal var checkoutViewModel: CheckoutViewModel
+    internal var checkoutViewModel: CheckoutViewModel {
+        didSet {
+            if oldValue.customer != nil && checkoutViewModel.customer == nil {
+                checkoutViewModel.customer = oldValue.customer
+            }
+        }
+    }
     internal var viewState: CheckoutViewState = .NotLoggedIn {
         didSet {
             Async.main {
@@ -49,7 +55,7 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
         super.viewDidLoad()
 
         setupView()
-        setupViewState()
+        setupInitialViewState()
         setupActions()
 
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
@@ -121,7 +127,7 @@ extension CheckoutSummaryViewController {
 extension CheckoutSummaryViewController {
 
     func refreshViewData() {
-        setupViewState()
+        viewState = checkoutViewModel.checkoutViewState
     }
 
     private func setupView() {
@@ -132,7 +138,7 @@ extension CheckoutSummaryViewController {
         loaderView.buildView()
     }
 
-    private func setupViewState() {
+    private func setupInitialViewState() {
         if Atlas.isUserLoggedIn() {
             viewState = checkoutViewModel.checkoutViewState
         } else {
