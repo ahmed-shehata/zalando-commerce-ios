@@ -9,21 +9,25 @@ import Foundation
  */
 public struct Config {
 
-    let catalogAPIURL: NSURL
-    let checkoutAPIURL: NSURL
-    let loginURL: NSURL
-    let salesChannel: String
-    let clientId: String
+    public let catalogAPIURL: NSURL
+    public let checkoutAPIURL: NSURL
+    public let loginURL: NSURL
+    public let salesChannel: String
+    public let clientId: String
+    public let countryCode: String
 
 }
 
 extension Config {
 
     init?(json: JSON, options: Options) {
+        let salesChannel = json["sales-channels"].arrayValue.filter { $0["sales-channel"].stringValue == options.salesChannel }
+
         guard let
         catalogAPIURL = json["atlas-catalog-api"]["url"].URL,
             checkoutAPIURL = json["atlas-checkout-api"]["url"].URL,
-            loginURL = json["oauth2-provider"]["url"].URL
+            loginURL = json["oauth2-provider"]["url"].URL,
+            countryCode = salesChannel.first?["locale"].string?.componentsSeparatedByString("_").last
         else { return nil }
 
         self.catalogAPIURL = catalogAPIURL
@@ -31,25 +35,28 @@ extension Config {
         self.loginURL = loginURL
         self.salesChannel = options.salesChannel
         self.clientId = options.clientId
+        self.countryCode = countryCode
     }
 
 }
 
 extension Config {
 
-    init(catalogAPIURL: String, checkoutAPIURL: String, loginURL: String, options: Options) {
+    init(catalogAPIURL: String, checkoutAPIURL: String, loginURL: String, countryCode: String, options: Options) {
         self.init(catalogAPIURL: NSURL(validUrl: catalogAPIURL),
             checkoutAPIURL: NSURL(validUrl: checkoutAPIURL),
             loginURL: NSURL(validUrl: loginURL),
+            countryCode: countryCode,
             options: options)
     }
 
-    init(catalogAPIURL: NSURL, checkoutAPIURL: NSURL, loginURL: NSURL, options: Options) {
+    init(catalogAPIURL: NSURL, checkoutAPIURL: NSURL, loginURL: NSURL, countryCode: String, options: Options) {
         self.catalogAPIURL = catalogAPIURL
         self.checkoutAPIURL = checkoutAPIURL
         self.loginURL = loginURL
         self.salesChannel = options.salesChannel
         self.clientId = options.clientId
+        self.countryCode = countryCode
     }
 
 }
@@ -61,6 +68,7 @@ extension Config: CustomStringConvertible {
             + ", loginURL: \(self.loginURL)"
             + ", salesChannel: \(self.salesChannel)"
             + ", clientId: \(self.clientId)"
+            + ", countryCode: \(self.countryCode)"
             + " }"
     }
 }
