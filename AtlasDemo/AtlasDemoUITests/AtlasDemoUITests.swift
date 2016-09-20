@@ -91,16 +91,6 @@ class AtlasDemoUITests: XCTestCase {
         tapBackToShop()
     }
 
-    func changeShippingAddress() {
-        app.otherElements["shipping-stack-view"].tap()
-        app.cells["address-selection-row-1"].tap()
-    }
-
-    func changeBillingAddress() {
-        app.otherElements["billing-stack-view"].tap()
-        app.cells["address-selection-row-1"].tap()
-    }
-
     func testDeleteAddress() {
         let size = app.cells["size-cell-1"]
         tapBuyNow("Lamica")
@@ -109,6 +99,29 @@ class AtlasDemoUITests: XCTestCase {
         app.otherElements["shipping-stack-view"].tap()
         deleteAddresses()
         app.buttons["navigation-bar-cancel-button"].tap()
+    }
+
+    func testDeletePreselectedAddress() {
+        let size = app.cells["size-cell-1"]
+        tapBuyNow("Lamica")
+        waitForElementToAppearAndTap(size)
+        tapConnectAndLogin()
+        app.otherElements["shipping-stack-view"].tap()
+        deleteAddresses()
+        changeShippingAddress()
+        tapBackToSummaryFromPickingAddressButton()
+        tapPlaceOrder()
+        tapBackToShop()
+    }
+
+    private func changeShippingAddress() {
+        app.otherElements["shipping-stack-view"].tap()
+        app.cells["address-selection-row-1"].tap()
+    }
+
+    private func changeBillingAddress() {
+        app.otherElements["billing-stack-view"].tap()
+        app.cells["address-selection-row-1"].tap()
     }
 
     private func deleteAddresses() {
