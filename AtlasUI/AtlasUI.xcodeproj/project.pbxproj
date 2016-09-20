@@ -38,7 +38,6 @@
 		6B341730306B04AD89EC6702E85A5077 /* LocalizerProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F3F5AA9BF7A5EF9FA877EB394D09C7 /* LocalizerProviderType.swift */; };
 		79175AD49456E48DC6B393EB6F62053A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC182F5F2F24D9AF740830B9B50A9 /* UIColor.swift */; };
 		80E9B317B4DF43290610E3DD8ED6802B /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E89A529CD1D470F15B857AF1031CB61 /* Nimble.framework */; };
-		8134E4BB1D8AB810006B5077 /* NSURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134E4BA1D8AB810006B5077 /* NSURL.swift */; };
 		8134E4BB1D8AB810006B5077 /* AtlasUINSURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134E4BA1D8AB810006B5077 /* AtlasUINSURL.swift */; };
 		86C648E6605921B9E132B657552DF6B4 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0EC11E22B5A08434A294F63B70C3BCC /* Quick.framework */; };
 		8EB96C51E439F0E511A696F28FE216B1 /* UserMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764CDA794B49DC585B031C7C4F5776D5 /* UserMessage.swift */; };
@@ -137,7 +136,6 @@
 		76F3F5AA9BF7A5EF9FA877EB394D09C7 /* LocalizerProviderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizerProviderType.swift; sourceTree = "<group>"; };
 		808C394E80E745736133ADBD0E2938C8 /* AtlasUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AtlasUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80F13460B6B17606CC65E38CE6A4716C /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
-		8134E4BA1D8AB810006B5077 /* NSURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURL.swift; sourceTree = "<group>"; };
 		8134E4BA1D8AB810006B5077 /* AtlasUINSURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasUINSURL.swift; sourceTree = "<group>"; };
 		828CB7B3C433014C119561A964D809BC /* TextFieldInputViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldInputViewModel.swift; sourceTree = "<group>"; };
 		87E590A91E14F2FED72589813043BEFD /* CheckoutSummaryPaymentStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryPaymentStackView.swift; sourceTree = "<group>"; };
