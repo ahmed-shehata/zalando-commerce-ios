@@ -101,7 +101,7 @@ extension AddressListTableViewDelegate: UITableViewDelegate {
             updateAddressHandler?(address: addresses[indexPath.item])
         } else {
             selectedAddress = addresses[indexPath.item]
-            self.selectionCompletion(pickedAddress: addresses[indexPath.item], pickedAddressType: self.addressType)
+            self.selectionCompletion(pickedAddress: addresses[indexPath.item], pickedAddressType: self.addressType, popBackToSummary: true)
             tableView.reloadData()
         }
     }

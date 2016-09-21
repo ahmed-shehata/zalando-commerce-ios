@@ -57,11 +57,15 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
     }
 
     internal func showLoader() {
-        loaderView.show()
+        Async.main {
+            self.loaderView.show()
+        }
     }
 
     internal func hideLoader() {
-        loaderView.hide()
+        Async.main {
+            self.loaderView.hide()
+        }
     }
 }
 

@@ -154,9 +154,11 @@ extension CheckoutSummaryActionsHandler {
 
 extension CheckoutSummaryActionsHandler {
     func pickedAddressCompletion(pickedAddress address: EquatableAddress?,
-        forAddressType addressType: AddressType) {
+        forAddressType addressType: AddressType, popBackToSummary: Bool) {
 
-            viewController.navigationController?.popViewControllerAnimated(true)
+            if popBackToSummary {
+                viewController.navigationController?.popViewControllerAnimated(true)
+            }
 
             switch addressType {
             case AddressType.billing:
@@ -165,13 +167,14 @@ extension CheckoutSummaryActionsHandler {
                 viewController.checkoutViewModel.selectedShippingAddress = address
             }
             if address == nil {
-                viewController.checkoutViewModel.checkout = nil
+                viewController.checkoutViewModel.resetState()
             }
             viewController.hideLoader()
             viewController.rootStackView.configureData(viewController)
             viewController.refreshViewData()
 
             guard viewController.checkoutViewModel.isReadyToCreateCheckout == true else { return }
+
             viewController.showLoader()
 
             viewController.checkout.prepareCheckoutViewModel(viewController.checkoutViewModel.selectedArticleUnit,
@@ -188,7 +191,6 @@ extension CheckoutSummaryActionsHandler {
                         self.viewController.rootStackView.configureData(self.viewController)
                         self.viewController.refreshViewData()
                     }
-
             }
     }
 }
