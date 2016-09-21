@@ -5,7 +5,7 @@
 import Foundation
 import AtlasSDK
 
-class EditAddressViewModel {
+class AddressFormViewModel {
 
     var gender: Gender?
     var firstName: String?
@@ -59,75 +59,75 @@ class EditAddressViewModel {
 
 extension CreateAddressRequest {
 
-    internal init? (addressViewModel: EditAddressViewModel) {
+    internal init? (addressFormViewModel: AddressFormViewModel) {
 
         guard let
-            gender = addressViewModel.gender,
-            firstName = addressViewModel.firstName,
-            lastName = addressViewModel.lastName,
-            zip = addressViewModel.zip,
-            city = addressViewModel.city else { return nil }
+            gender = addressFormViewModel.gender,
+            firstName = addressFormViewModel.firstName,
+            lastName = addressFormViewModel.lastName,
+            zip = addressFormViewModel.zip,
+            city = addressFormViewModel.city else { return nil }
 
         self.gender = gender
         self.firstName = firstName
         self.lastName = lastName
-        self.street = addressViewModel.street
-        self.additional = addressViewModel.additional
+        self.street = addressFormViewModel.street
+        self.additional = addressFormViewModel.additional
         self.zip = zip
         self.city = city
-        self.countryCode = addressViewModel.countryCode
-        self.pickupPoint = PickupPoint(addressViewModel: addressViewModel)
-        self.defaultBilling = addressViewModel.isDefaultBilling
-        self.defaultShipping = addressViewModel.isDefaultShipping
+        self.countryCode = addressFormViewModel.countryCode
+        self.pickupPoint = PickupPoint(addressFormViewModel: addressFormViewModel)
+        self.defaultBilling = addressFormViewModel.isDefaultBilling
+        self.defaultShipping = addressFormViewModel.isDefaultShipping
     }
 
 }
 
 extension UpdateAddressRequest {
 
-    internal init? (addressViewModel: EditAddressViewModel) {
+    internal init? (addressFormViewModel: AddressFormViewModel) {
 
         guard let
-            gender = addressViewModel.gender,
-            firstName = addressViewModel.firstName,
-            lastName = addressViewModel.lastName,
-            zip = addressViewModel.zip,
-            city = addressViewModel.city else { return nil }
+            gender = addressFormViewModel.gender,
+            firstName = addressFormViewModel.firstName,
+            lastName = addressFormViewModel.lastName,
+            zip = addressFormViewModel.zip,
+            city = addressFormViewModel.city else { return nil }
 
         self.gender = gender
         self.firstName = firstName
         self.lastName = lastName
-        self.street = addressViewModel.street
-        self.additional = addressViewModel.additional
+        self.street = addressFormViewModel.street
+        self.additional = addressFormViewModel.additional
         self.zip = zip
         self.city = city
-        self.countryCode = addressViewModel.countryCode
-        self.pickupPoint = PickupPoint(addressViewModel: addressViewModel)
-        self.defaultBilling = addressViewModel.isDefaultBilling
-        self.defaultShipping = addressViewModel.isDefaultShipping
+        self.countryCode = addressFormViewModel.countryCode
+        self.pickupPoint = PickupPoint(addressFormViewModel: addressFormViewModel)
+        self.defaultBilling = addressFormViewModel.isDefaultBilling
+        self.defaultShipping = addressFormViewModel.isDefaultShipping
     }
 
 }
 
 extension CheckAddressRequest {
 
-    internal init? (addressViewModel: EditAddressViewModel) {
+    internal init? (addressFormViewModel: AddressFormViewModel) {
 
-        guard let address = CheckAddress(addressViewModel: addressViewModel) else { return nil }
+        guard let address = CheckAddress(addressFormViewModel: addressFormViewModel) else { return nil }
 
         self.address = address
-        self.pickupPoint = PickupPoint(addressViewModel: addressViewModel)
+        self.pickupPoint = PickupPoint(addressFormViewModel: addressFormViewModel)
     }
 
 }
 
 extension PickupPoint {
 
-    internal init? (addressViewModel: EditAddressViewModel) {
+    internal init? (addressFormViewModel: AddressFormViewModel) {
 
         guard let
-            pickupPointId = addressViewModel.pickupPointId,
-            pickupPointMemberId = addressViewModel.pickupPointMemberId else { return nil }
+            pickupPointId = addressFormViewModel.pickupPointId,
+            pickupPointMemberId = addressFormViewModel.pickupPointMemberId else { return nil }
 
         self.id = pickupPointId
         self.name = "PACKSTATION"
@@ -138,17 +138,17 @@ extension PickupPoint {
 
 extension CheckAddress {
 
-    internal init? (addressViewModel: EditAddressViewModel) {
+    internal init? (addressFormViewModel: AddressFormViewModel) {
 
         guard let
-            zip = addressViewModel.zip,
-            city = addressViewModel.city else { return nil }
+            zip = addressFormViewModel.zip,
+            city = addressFormViewModel.city else { return nil }
 
-        self.street = addressViewModel.street
-        self.additional = addressViewModel.additional
+        self.street = addressFormViewModel.street
+        self.additional = addressFormViewModel.additional
         self.zip = zip
         self.city = city
-        self.countryCode = addressViewModel.countryCode
+        self.countryCode = addressFormViewModel.countryCode
     }
 
 }
@@ -156,10 +156,7 @@ extension CheckAddress {
 extension Gender {
 
     private func title(localizer: LocalizerProviderType) -> String {
-        switch self {
-        case .male: return localizer.loc("Address.edit.gender.male")
-        case .female: return localizer.loc("Address.edit.gender.female")
-        }
+        return localizer.loc("Address.form.gender.\(rawValue.lowercaseString)")
     }
 
 }

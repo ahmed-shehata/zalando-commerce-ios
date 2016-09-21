@@ -150,9 +150,9 @@ extension AddressPickerViewController {
         }
     }
 
-    private func showCreateAddress(addressType: EditAddressType) {
+    private func showCreateAddress(addressType: AddressFormType) {
         showCreateAddressViewController(addressType) { [weak self] editAddressViewModel in
-            guard let request = CreateAddressRequest(addressViewModel: editAddressViewModel) else { return }
+            guard let request = CreateAddressRequest(addressFormViewModel: editAddressViewModel) else { return }
             self?.loaderView.show()
             self?.checkout.client.createAddress(request) { result in
                 guard let strongSelf = self else { return }
@@ -169,8 +169,8 @@ extension AddressPickerViewController {
         }
     }
 
-    private func showCreateAddressViewController(type: EditAddressType, completion: EditAddressCompletion) {
-        let viewController = EditAddressViewController(addressType: type, checkout: checkout, address: nil, completion: completion)
+    private func showCreateAddressViewController(type: AddressFormType, completion: AddressFormCompletion) {
+        let viewController = AddressFormViewController(addressType: type, checkout: checkout, address: nil, completion: completion)
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.modalPresentationStyle = .OverCurrentContext
         self.navigationController?.showViewController(navigationController, sender: nil)
@@ -187,9 +187,9 @@ extension AddressPickerViewController {
     }
 
     private func showUpdateAddress(address: EquatableAddress) {
-        let addressType: EditAddressType = address.pickupPoint == nil ? .StandardAddress : .PickupPoint
+        let addressType: AddressFormType = address.pickupPoint == nil ? .StandardAddress : .PickupPoint
         showUpdateAddressViewController(addressType, address: address) { [weak self] editAddressViewModel in
-            guard let request = UpdateAddressRequest(addressViewModel: editAddressViewModel) else { return }
+            guard let request = UpdateAddressRequest(addressFormViewModel: editAddressViewModel) else { return }
             self?.loaderView.show()
             self?.checkout.client.updateAddress(address.id, request: request) { result in
                 guard let strongSelf = self else { return }
@@ -209,8 +209,8 @@ extension AddressPickerViewController {
         }
     }
 
-    private func showUpdateAddressViewController(type: EditAddressType, address: EquatableAddress, completion: EditAddressCompletion) {
-        let viewController = EditAddressViewController(addressType: type, checkout: checkout, address: address, completion: completion)
+    private func showUpdateAddressViewController(type: AddressFormType, address: EquatableAddress, completion: AddressFormCompletion) {
+        let viewController = AddressFormViewController(addressType: type, checkout: checkout, address: address, completion: completion)
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 
