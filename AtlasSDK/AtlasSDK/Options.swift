@@ -19,18 +19,19 @@ public struct Options {
     @available( *, deprecated, message = "Should be taken from config service, when ready")
     public let salesChannel: String
 
-    public init(clientId: String,
-        salesChannel: String,
-        useSandbox: Bool = false,
-        countryCode: String,
+    public init(clientId: String? = nil,
+        salesChannel: String? = nil,
+        useSandbox: Bool? = false,
+        countryCode: String? = nil,
         interfaceLanguage: String? = nil,
         configurationURL: NSURL? = nil,
-        authorizationHandler: AtlasAuthorizationHandler? = nil) {
-            self.clientId = clientId
-            self.salesChannel = salesChannel
-            self.useSandboxEnvironment = useSandbox
-            self.countryCode = countryCode
-            self.interfaceLanguage = interfaceLanguage
+        authorizationHandler: AtlasAuthorizationHandler? = nil,
+        infoBundle bundle: NSBundle = NSBundle.mainBundle()) {
+            self.clientId = clientId ?? bundle.string(.clientId)
+            self.salesChannel = salesChannel ?? bundle.string(.salesChannel)
+            self.useSandboxEnvironment = useSandbox ?? bundle.bool(.useSandbox)
+            self.countryCode = countryCode ?? bundle.string(.countryCode)
+            self.interfaceLanguage = interfaceLanguage ?? bundle.string(.interfaceLanguage)
 
             if let authorizationHandler = authorizationHandler {
                 Injector.register { authorizationHandler as AtlasAuthorizationHandler }

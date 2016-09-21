@@ -8,14 +8,8 @@ public typealias AtlasClientCompletion = AtlasResult<APIClient> -> Void
 
 public struct Atlas {
 
-    public static func configure(bundle: NSBundle = NSBundle.mainBundle(), completion: AtlasClientCompletion) {
-        let options = Options(bundle: bundle)
-        configure(options) { result in
-            completion(result)
-        }
-    }
-
-    public static func configure(options: Options, completion: AtlasClientCompletion) {
+    public static func configure(options: Options? = nil, completion: AtlasClientCompletion) {
+        let options = options ?? Options()
         do {
             try options.validate()
         } catch let error {

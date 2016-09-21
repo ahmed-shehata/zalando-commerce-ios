@@ -14,7 +14,7 @@ public class AtlasCheckout: LocalizerProviderType {
 
     public let client: APIClient
 
-    init(client: APIClient) {
+    private init(client: APIClient) {
         self.client = client
     }
 
@@ -34,7 +34,6 @@ public class AtlasCheckout: LocalizerProviderType {
         - completion `AtlasCheckoutConfigurationCompletion`: `AtlasResult` with success result as `AtlasCheckout` initialized
     */
     public static func configure(options: Options? = nil, completion: AtlasCheckoutConfigurationCompletion) {
-        let options = options ?? Options()
         Atlas.configure(options) { result in
             switch result {
             case .failure(let error):
