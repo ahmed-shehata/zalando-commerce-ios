@@ -39,7 +39,8 @@ enum AddressFormField: String {
     }
 
     func title(localizer: LocalizerProviderType) -> String {
-        return localizer.loc("Address.form.\(rawValue.lowercaseString)")
+        let title = localizer.loc("Address.form.\(rawValue.lowercaseString)")
+        return title + (formValidators.contains { $0 == .Required } ? "*" : "")
     }
 
     func value(viewModel: AddressFormViewModel, localizer: LocalizerProviderType) -> String? {
