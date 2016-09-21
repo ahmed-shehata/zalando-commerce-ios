@@ -156,6 +156,8 @@ extension CheckoutSummaryActionsHandler {
     func pickedAddressCompletion(pickedAddress address: EquatableAddress?,
         forAddressType addressType: AddressType) {
 
+            viewController.navigationController?.popViewControllerAnimated(true)
+
             switch addressType {
             case AddressType.billing:
                 viewController.checkoutViewModel.selectedBillingAddress = address

@@ -4,15 +4,15 @@
 
 import UIKit
 
-class EditAddressStackView: UIStackView {
+class AddressFormStackView: UIStackView {
 
-    internal var addressType: EditAddressType!
+    internal var addressType: AddressFormType!
     internal var checkoutProviderType: CheckoutProviderType!
     internal var textFields: [TextFieldInputStackView] = []
 
 }
 
-extension EditAddressStackView: UIBuilder {
+extension AddressFormStackView: UIBuilder {
 
     func configureView() {
         addressType.fields.forEach { _ in
@@ -28,9 +28,9 @@ extension EditAddressStackView: UIBuilder {
 
 }
 
-extension EditAddressStackView: UIDataBuilder {
+extension AddressFormStackView: UIDataBuilder {
 
-    typealias T = EditAddressViewModel
+    typealias T = AddressFormViewModel
 
     func configureData(viewModel: T) {
         for (idx, textFieldInputView) in textFields.enumerate() {

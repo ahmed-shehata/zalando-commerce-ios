@@ -63,7 +63,6 @@ class AtlasDemoUITests: XCTestCase {
     func testChangeShippingAddress() {
         proceedToSummaryWithSizes()
         changeShippingAddress()
-        tapBackToSummaryFromPickingAddressButton()
         tapPlaceOrder()
         tapBackToShop()
 
@@ -72,7 +71,6 @@ class AtlasDemoUITests: XCTestCase {
     func testChangeBillingAddress() {
         proceedToSummaryWithSizes()
         changeBillingAddress()
-        tapBackToSummaryFromPickingAddressButton()
         tapPlaceOrder()
         tapBackToShop()
     }
@@ -81,7 +79,6 @@ class AtlasDemoUITests: XCTestCase {
         proceedToSummaryWithSizes()
         app.otherElements["shipping-stack-view"].tap()
         createAddress()
-        app.buttons["navigation-bar-cancel-button"].tap()
     }
 
     func testDeleteAddress() {
@@ -186,10 +183,6 @@ class AtlasDemoUITests: XCTestCase {
 
     private func tapPlaceOrder() {
         waitForElementToAppearAndTap(app.buttons["checkout-footer-button"])
-    }
-
-    private func tapBackToSummaryFromPickingAddressButton() {
-        waitForElementToAppearAndTap(app.navigationBars["address-picker-navigation-bar"].buttons["Back"])
     }
 
     private func tapBackToShop() {

@@ -11,20 +11,20 @@ class EditAddressTypeSpec: QuickSpec {
 
     override func spec() {
         let localizer = LocalizerProviderTypeMock()
-        let viewModel = EditAddressViewModel(userAddress: nil, countryCode: "DE")
+        let viewModel = AddressFormViewModel(equatableAddress: nil, countryCode: "DE")
 
         describe("Edit Address") {
             it("should format field title") {
-                expect(EditAddressField.Title.title(localizer)).to(equal("Title*"))
-                expect(EditAddressField.FirstName.title(localizer)).to(equal("First Name*"))
-                expect(EditAddressField.LastName.title(localizer)).to(equal("Last Name*"))
-                expect(EditAddressField.Street.title(localizer)).to(equal("Street*"))
-                expect(EditAddressField.Additional.title(localizer)).to(equal("Additional"))
-                expect(EditAddressField.Packstation.title(localizer)).to(equal("Packstation*"))
-                expect(EditAddressField.MemberID.title(localizer)).to(equal("Member ID*"))
-                expect(EditAddressField.Zipcode.title(localizer)).to(equal("Zipcode*"))
-                expect(EditAddressField.City.title(localizer)).to(equal("City*"))
-                expect(EditAddressField.Country.title(localizer)).to(equal("Country*"))
+                expect(AddressFormField.Title.title(localizer)).to(equal("Title*"))
+                expect(AddressFormField.FirstName.title(localizer)).to(equal("First Name*"))
+                expect(AddressFormField.LastName.title(localizer)).to(equal("Last Name*"))
+                expect(AddressFormField.Street.title(localizer)).to(equal("Street*"))
+                expect(AddressFormField.Additional.title(localizer)).to(equal("Additional"))
+                expect(AddressFormField.Packstation.title(localizer)).to(equal("Packstation*"))
+                expect(AddressFormField.MemberID.title(localizer)).to(equal("Member ID*"))
+                expect(AddressFormField.Zipcode.title(localizer)).to(equal("Zipcode*"))
+                expect(AddressFormField.City.title(localizer)).to(equal("City*"))
+                expect(AddressFormField.Country.title(localizer)).to(equal("Country*"))
             }
 
             it("should set view model data") {
@@ -44,30 +44,30 @@ class EditAddressTypeSpec: QuickSpec {
             it("Should read from view model") {
                 self.updateModelData(localizer, viewModel: viewModel)
 
-                expect(EditAddressField.Title.value(viewModel, localizer: localizer)).to(equal("Mr"))
-                expect(EditAddressField.FirstName.value(viewModel, localizer: localizer)).to(equal("John"))
-                expect(EditAddressField.LastName.value(viewModel, localizer: localizer)).to(equal("Doe"))
-                expect(EditAddressField.Street.value(viewModel, localizer: localizer)).to(equal("Mollstr. 1"))
-                expect(EditAddressField.Additional.value(viewModel, localizer: localizer)).to(equal("C/O Zalando SE"))
-                expect(EditAddressField.Packstation.value(viewModel, localizer: localizer)).to(equal("123"))
-                expect(EditAddressField.MemberID.value(viewModel, localizer: localizer)).to(equal("12345"))
-                expect(EditAddressField.Zipcode.value(viewModel, localizer: localizer)).to(equal("10178"))
-                expect(EditAddressField.City.value(viewModel, localizer: localizer)).to(equal("Berlin"))
-                expect(EditAddressField.Country.value(viewModel, localizer: localizer)).to(equal("Germany"))
+                expect(AddressFormField.Title.value(viewModel, localizer: localizer)).to(equal("Mr"))
+                expect(AddressFormField.FirstName.value(viewModel, localizer: localizer)).to(equal("John"))
+                expect(AddressFormField.LastName.value(viewModel, localizer: localizer)).to(equal("Doe"))
+                expect(AddressFormField.Street.value(viewModel, localizer: localizer)).to(equal("Mollstr. 1"))
+                expect(AddressFormField.Additional.value(viewModel, localizer: localizer)).to(equal("C/O Zalando SE"))
+                expect(AddressFormField.Packstation.value(viewModel, localizer: localizer)).to(equal("123"))
+                expect(AddressFormField.MemberID.value(viewModel, localizer: localizer)).to(equal("12345"))
+                expect(AddressFormField.Zipcode.value(viewModel, localizer: localizer)).to(equal("10178"))
+                expect(AddressFormField.City.value(viewModel, localizer: localizer)).to(equal("Berlin"))
+                expect(AddressFormField.Country.value(viewModel, localizer: localizer)).to(equal("Germany"))
             }
         }
     }
 
-    private func updateModelData(localizer: LocalizerProviderType, viewModel: EditAddressViewModel) {
-        EditAddressField.Title.updateModel(viewModel, withValue: "Mr", localizer: localizer)
-        EditAddressField.FirstName.updateModel(viewModel, withValue: "John", localizer: localizer)
-        EditAddressField.LastName.updateModel(viewModel, withValue: "Doe", localizer: localizer)
-        EditAddressField.Street.updateModel(viewModel, withValue: "Mollstr. 1", localizer: localizer)
-        EditAddressField.Additional.updateModel(viewModel, withValue: "C/O Zalando SE", localizer: localizer)
-        EditAddressField.Packstation.updateModel(viewModel, withValue: "123", localizer: localizer)
-        EditAddressField.MemberID.updateModel(viewModel, withValue: "12345", localizer: localizer)
-        EditAddressField.Zipcode.updateModel(viewModel, withValue: "10178", localizer: localizer)
-        EditAddressField.City.updateModel(viewModel, withValue: "Berlin", localizer: localizer)
+    private func updateModelData(localizer: LocalizerProviderType, viewModel: AddressFormViewModel) {
+        AddressFormField.Title.updateModel(viewModel, withValue: "Mr", localizer: localizer)
+        AddressFormField.FirstName.updateModel(viewModel, withValue: "John", localizer: localizer)
+        AddressFormField.LastName.updateModel(viewModel, withValue: "Doe", localizer: localizer)
+        AddressFormField.Street.updateModel(viewModel, withValue: "Mollstr. 1", localizer: localizer)
+        AddressFormField.Additional.updateModel(viewModel, withValue: "C/O Zalando SE", localizer: localizer)
+        AddressFormField.Packstation.updateModel(viewModel, withValue: "123", localizer: localizer)
+        AddressFormField.MemberID.updateModel(viewModel, withValue: "12345", localizer: localizer)
+        AddressFormField.Zipcode.updateModel(viewModel, withValue: "10178", localizer: localizer)
+        AddressFormField.City.updateModel(viewModel, withValue: "Berlin", localizer: localizer)
     }
 
 }
