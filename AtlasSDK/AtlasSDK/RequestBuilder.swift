@@ -6,7 +6,7 @@ import Foundation
 
 typealias ResponseCompletion = AtlasResult<JSONResponse> -> Void
 
-final class RequestBuilder {
+struct RequestBuilder {
 
     let endpoint: Endpoint
     let urlSession: NSURLSession
