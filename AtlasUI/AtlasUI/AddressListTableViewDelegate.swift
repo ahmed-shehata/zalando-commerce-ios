@@ -94,7 +94,7 @@ extension AddressListTableViewDelegate: UITableViewDelegate {
         }
 
         self.deleteAddressHandler?()
-        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
