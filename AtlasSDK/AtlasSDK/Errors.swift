@@ -20,6 +20,7 @@ public enum AtlasConfigurationError: AtlasErrorType {
 
     case incorrectConfigServiceResponse
     case missingClientId
+    @available( *, deprecated, message = "Sales channel should be taken from config service, when ready")
     case missingSalesChannel
     case missingCountryCode
 

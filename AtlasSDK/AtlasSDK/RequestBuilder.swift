@@ -5,13 +5,11 @@
 import Foundation
 
 typealias ResponseCompletion = AtlasResult<JSONResponse> -> Void
-typealias RequestTaskCompletion = (RequestBuilder) -> Void
 
 final class RequestBuilder {
 
-    // TODO: Use injector for this
-    let urlSession: NSURLSession
     let endpoint: Endpoint
+    let urlSession: NSURLSession
 
     init(forEndpoint endpoint: Endpoint, urlSession: NSURLSession = NSURLSession.sharedSession()) {
         self.urlSession = urlSession
