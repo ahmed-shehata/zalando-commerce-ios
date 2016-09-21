@@ -11,7 +11,7 @@ class EditAddressTypeSpec: QuickSpec {
 
     override func spec() {
         let localizer = LocalizerProviderTypeMock()
-        let viewModel = AddressFormViewModel(userAddress: nil, countryCode: "DE")
+        let viewModel = AddressFormViewModel(equatableAddress: nil, countryCode: "DE")
 
         describe("Edit Address") {
             it("should format field title") {

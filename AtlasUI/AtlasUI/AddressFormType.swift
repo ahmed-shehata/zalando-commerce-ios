@@ -5,6 +5,11 @@
 import Foundation
 import AtlasSDK
 
+enum AddressFormMode {
+    case createAddress
+    case updateAddress(address: EquatableAddress)
+}
+
 enum AddressFormType {
     case StandardAddress
     case PickupPoint
@@ -34,7 +39,8 @@ enum AddressFormField: String {
     }
 
     func title(localizer: LocalizerProviderType) -> String {
-        return localizer.loc("Address.form.\(rawValue.lowercaseString)")
+        let title = localizer.loc("Address.form.\(rawValue.lowercaseString)")
+        return title + (formValidators.contains { $0 == .Required } ? "*" : "")
     }
 
     func value(viewModel: AddressFormViewModel, localizer: LocalizerProviderType) -> String? {
@@ -132,4 +138,12 @@ enum AddressFormField: String {
         }
     }
 
+}
+
+internal func == (lhs: AddressFormMode, rhs: AddressFormMode) -> Bool {
+    switch (lhs, rhs) {
+    case (.createAddress, .createAddress): return true
+    case (.updateAddress(let lhsAddress), .updateAddress(let rhsAddress)): return lhsAddress == rhsAddress
+    default: return false
+    }
 }
