@@ -63,7 +63,6 @@ class AtlasDemoUITests: XCTestCase {
     func testChangeShippingAddress() {
         proceedToSummaryWithSizes()
         changeShippingAddress()
-        tapBackToSummaryFromPickingAddressButton()
         tapPlaceOrder()
         tapBackToShop()
 
@@ -72,7 +71,6 @@ class AtlasDemoUITests: XCTestCase {
     func testChangeBillingAddress() {
         proceedToSummaryWithSizes()
         changeBillingAddress()
-        tapBackToSummaryFromPickingAddressButton()
         tapPlaceOrder()
         tapBackToShop()
     }
@@ -155,7 +153,6 @@ extension AtlasDemoUITests {
         app.textFields["title-textfield"].tap()
         app.pickerWheels.element.adjustToPickerWheelValue("Mr")
 
-
         app.textFields["firstname-textfield"].tap()
         setTextFieldValue("firstname-textfield", value: "John")
         setTextFieldValue("lastname-textfield", value: "Doe")
@@ -181,10 +178,6 @@ extension AtlasDemoUITests {
 
     private func tapPlaceOrder() {
         waitForElementToAppearAndTap(app.buttons["checkout-footer-button"])
-    }
-
-    private func tapBackToSummaryFromPickingAddressButton() {
-        waitForElementToAppearAndTap(app.navigationBars["address-picker-navigation-bar"].buttons["Back"])
     }
 
     private func tapBackToShop() {

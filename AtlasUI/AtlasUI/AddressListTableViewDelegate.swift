@@ -14,15 +14,7 @@ class AddressListTableViewDelegate: NSObject {
     internal var updateAddressHandler: UpdateAddressHandler?
 
     var addresses: [UserAddress] = []
-    var selectedAddress: EquatableAddress? {
-        didSet {
-            Async.main { [weak self] in
-                guard let strongSelf = self, selectedAddress = strongSelf.selectedAddress else { return }
-                strongSelf.selectionCompletion(pickedAddress: selectedAddress, pickedAddressType: strongSelf.addressType)
-            }
-        }
-    }
-
+    var selectedAddress: EquatableAddress?
     init(checkout: AtlasCheckout, addressType: AddressType,
         addressSelectionCompletion: AddressSelectionCompletion) {
             self.checkout = checkout
@@ -98,6 +90,7 @@ extension AddressListTableViewDelegate: UITableViewDelegate {
             updateAddressHandler?(address: addresses[indexPath.item])
         } else {
             selectedAddress = addresses[indexPath.item]
+            self.selectionCompletion(pickedAddress: addresses[indexPath.item], pickedAddressType: self.addressType)
             tableView.reloadData()
         }
     }
