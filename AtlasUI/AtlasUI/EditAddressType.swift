@@ -34,7 +34,8 @@ enum EditAddressField: String {
     }
 
     func title(localizer: LocalizerProviderType) -> String {
-        return localizer.loc("Address.edit.\(rawValue.lowercaseString)")
+        let title = localizer.loc("Address.edit.\(rawValue.lowercaseString)")
+        return title + (formValidators.contains { $0 == .Required } ? "*" : "")
     }
 
     func value(viewModel: EditAddressViewModel, localizer: LocalizerProviderType) -> String? {
@@ -84,7 +85,10 @@ enum EditAddressField: String {
     func customView(viewModel: EditAddressViewModel, localizer: LocalizerProviderType, completion: TextFieldChangedHandler) -> UIView? {
         switch self {
         case .Title:
-            return PickerKeyboardInputView(pickerData: viewModel.titles(localizer), completion: completion)
+            let titles = viewModel.titles(localizer)
+            let currentTitle = value(viewModel, localizer: localizer) ?? ""
+            let currentTitleIdx = titles.indexOf(currentTitle) ?? 0
+            return PickerKeyboardInputView(pickerData: titles, startingValueIndex: currentTitleIdx, completion: completion)
         default:
             return nil
         }
