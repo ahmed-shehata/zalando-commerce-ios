@@ -69,7 +69,7 @@ extension Options: CustomStringConvertible {
             + "\n\tclientId = \(formatOptional(clientId))"
             + ",\n\tuseSandboxEnvironment = \(useSandboxEnvironment)"
             + ",\n\tsalesChannel = \(formatOptional(salesChannel))"
-            + ",\n\tinterfaceLanguage = \(interfaceLanguage)"
+            + ",\n\tlocaleIdentifier = \(localeIdentifier)"
             + " }"
     }
 
