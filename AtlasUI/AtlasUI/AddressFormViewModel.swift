@@ -21,22 +21,27 @@ class AddressFormViewModel {
     let isDefaultBilling: Bool
     let isDefaultShipping: Bool
 
-    init (userAddress: EquatableAddress?, countryCode: String, isDefaultBilling: Bool = false, isDefaultShipping: Bool = false) {
+    init (equatableAddress: EquatableAddress?, countryCode: String) {
+        if let userAddress = equatableAddress as? UserAddress {
+            isDefaultBilling = userAddress.isDefaultBilling
+            isDefaultShipping = userAddress.isDefaultShipping
+        } else {
+            isDefaultBilling = false
+            isDefaultShipping = false
+        }
         self.countryCode = countryCode
-        self.isDefaultBilling = isDefaultBilling
-        self.isDefaultShipping = isDefaultShipping
 
-        guard let userAddress = userAddress else { return }
+        guard let equatableAddress = equatableAddress else { return }
 
-        gender = userAddress.gender
-        firstName = userAddress.firstName
-        lastName = userAddress.lastName
-        street = userAddress.street
-        additional = userAddress.additional
-        pickupPointId = userAddress.pickupPoint?.id
-        pickupPointMemberId = userAddress.pickupPoint?.memberId
-        zip = userAddress.zip
-        city = userAddress.city
+        gender = equatableAddress.gender
+        firstName = equatableAddress.firstName
+        lastName = equatableAddress.lastName
+        street = equatableAddress.street
+        additional = equatableAddress.additional
+        pickupPointId = equatableAddress.pickupPoint?.id
+        pickupPointMemberId = equatableAddress.pickupPoint?.memberId
+        zip = equatableAddress.zip
+        city = equatableAddress.city
     }
 
     internal func titles(localizer: LocalizerProviderType) -> [String] {

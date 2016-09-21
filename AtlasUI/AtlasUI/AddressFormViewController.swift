@@ -32,23 +32,24 @@ class AddressFormViewController: UIViewController, CheckoutProviderType {
     }()
 
     private let addressType: AddressFormType
+    private let addressMode: AddressFormMode
     internal let checkout: AtlasCheckout
     private let addressViewModel: AddressFormViewModel
     internal var completion: AddressFormCompletion?
 
-    init(addressType: AddressFormType, checkout: AtlasCheckout, address: EquatableAddress?, completion: AddressFormCompletion?) {
+    init(addressType: AddressFormType, addressMode: AddressFormMode, checkout: AtlasCheckout, completion: AddressFormCompletion?) {
         self.addressType = addressType
+        self.addressMode = addressMode
         self.checkout = checkout
-        if let userAddress = address as? UserAddress {
-            self.addressViewModel = AddressFormViewModel(userAddress: address,
-                                                         countryCode: checkout.client.config.countryCode,
-                                                         isDefaultBilling: userAddress.isDefaultBilling,
-                                                         isDefaultShipping: userAddress.isDefaultShipping)
-        } else {
-            self.addressViewModel = AddressFormViewModel(userAddress: address,
-                                                         countryCode: checkout.client.config.countryCode)
-        }
         self.completion = completion
+
+        switch addressMode {
+        case .createAddress:
+            self.addressViewModel = AddressFormViewModel(equatableAddress: nil, countryCode: checkout.client.config.countryCode)
+        case .updateAddress(let address):
+            self.addressViewModel = AddressFormViewModel(equatableAddress: address, countryCode: checkout.client.config.countryCode)
+        }
+
         super.init(nibName: nil, bundle: nil)
     }
 

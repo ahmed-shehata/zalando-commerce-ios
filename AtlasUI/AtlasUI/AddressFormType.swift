@@ -5,6 +5,11 @@
 import Foundation
 import AtlasSDK
 
+enum AddressFormMode {
+    case createAddress
+    case updateAddress(address: EquatableAddress)
+}
+
 enum AddressFormType {
     case StandardAddress
     case PickupPoint

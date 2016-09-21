@@ -170,7 +170,10 @@ extension AddressPickerViewController {
     }
 
     private func showCreateAddressViewController(type: AddressFormType, completion: AddressFormCompletion) {
-        let viewController = AddressFormViewController(addressType: type, checkout: checkout, address: nil, completion: completion)
+        let viewController = AddressFormViewController(addressType: type,
+                                                       addressMode: .createAddress,
+                                                       checkout: checkout,
+                                                       completion: completion)
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.modalPresentationStyle = .OverCurrentContext
         self.navigationController?.showViewController(navigationController, sender: nil)
@@ -210,7 +213,10 @@ extension AddressPickerViewController {
     }
 
     private func showUpdateAddressViewController(type: AddressFormType, address: EquatableAddress, completion: AddressFormCompletion) {
-        let viewController = AddressFormViewController(addressType: type, checkout: checkout, address: address, completion: completion)
+        let viewController = AddressFormViewController(addressType: type,
+                                                       addressMode: .updateAddress(address: address),
+                                                       checkout: checkout,
+                                                       completion: completion)
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 
