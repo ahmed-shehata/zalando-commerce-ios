@@ -10,7 +10,7 @@ enum AddressType {
     case billing
 }
 
-typealias AddressSelectionCompletion = (pickedAddress: EquatableAddress, pickedAddressType: AddressType) -> Void
+typealias AddressSelectionCompletion = (pickedAddress: EquatableAddress?, pickedAddressType: AddressType) -> Void
 typealias CreateAddressHandler = () -> Void
 typealias UpdateAddressHandler = (address: EquatableAddress) -> Void
 
@@ -144,9 +144,9 @@ extension AddressPickerViewController {
             let cancelAction = ButtonAction(text: "Cancel", style: .Cancel, handler: nil)
 
             strongSelf.userMessage.show(title: title,
-                                        message: nil,
-                                        preferredStyle: .ActionSheet,
-                                        actions: standardAction, pickupPointAction, cancelAction)
+                message: nil,
+                preferredStyle: .ActionSheet,
+                actions: standardAction, pickupPointAction, cancelAction)
         }
     }
 
@@ -184,7 +184,7 @@ extension AddressPickerViewController {
 extension AddressPickerViewController {
 
     private func configureUpdateAddress() {
-        tableviewDelegate?.updateAddressHandler = { [weak self] (address) in
+        tableviewDelegate?.updateAddressHandler = { [weak self](address) in
             self?.showUpdateAddress(address)
         }
     }
