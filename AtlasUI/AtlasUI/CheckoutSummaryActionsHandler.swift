@@ -171,10 +171,7 @@ extension CheckoutSummaryActionsHandler {
             viewController.rootStackView.configureData(viewController)
             viewController.refreshViewData()
 
-            guard let
-            cartId = viewController.checkoutViewModel.cartId,
-                readyToCreateCheckout = viewController.checkoutViewModel.isReadyToCreateCheckout where readyToCreateCheckout == true
-            else { return }
+            guard viewController.checkoutViewModel.isReadyToCreateCheckout == true else { return }
             viewController.showLoader()
 
             viewController.checkout.prepareCheckoutViewModel(viewController.checkoutViewModel.selectedArticleUnit,
