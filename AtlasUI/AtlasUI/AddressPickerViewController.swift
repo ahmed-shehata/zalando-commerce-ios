@@ -151,21 +151,9 @@ extension AddressPickerViewController {
     }
 
     private func showCreateAddress(addressType: AddressFormType) {
-        showCreateAddressViewController(addressType) { [weak self] editAddressViewModel in
-            guard let request = CreateAddressRequest(addressFormViewModel: editAddressViewModel) else { return }
-            self?.loaderView.show()
-            self?.checkout.client.createAddress(request) { result in
-                guard let strongSelf = self else { return }
-                strongSelf.loaderView.hide()
-                Async.main {
-                    switch result {
-                    case .failure(let error):
-                        strongSelf.userMessage.show(error: error)
-                    case .success(let address):
-                        strongSelf.addresses.append(address)
-                    }
-                }
-            }
+        showCreateAddressViewController(addressType) { [weak self] address in
+            self?.selectedAddress = address
+            self?.navigationController?.popViewControllerAnimated(false)
         }
     }
 
@@ -189,25 +177,12 @@ extension AddressPickerViewController {
         }
     }
 
-    private func showUpdateAddress(address: EquatableAddress) {
-        let addressType: AddressFormType = address.pickupPoint == nil ? .StandardAddress : .PickupPoint
-        showUpdateAddressViewController(addressType, address: address) { [weak self] editAddressViewModel in
-            guard let request = UpdateAddressRequest(addressFormViewModel: editAddressViewModel) else { return }
-            self?.loaderView.show()
-            self?.checkout.client.updateAddress(address.id, request: request) { result in
-                guard let strongSelf = self else { return }
-                strongSelf.loaderView.hide()
-                Async.main {
-                    switch result {
-                    case .failure(let error):
-                        strongSelf.userMessage.show(error: error)
-                    case .success(let address):
-                        let idx = strongSelf.addresses.indexOf { $0 == address }
-                        if let addressIdx = idx {
-                            strongSelf.addresses[addressIdx] = address
-                        }
-                    }
-                }
+    private func showUpdateAddress(originalAddress: EquatableAddress) {
+        let addressType: AddressFormType = originalAddress.pickupPoint == nil ? .StandardAddress : .PickupPoint
+        showUpdateAddressViewController(addressType, address: originalAddress) { [weak self] updatedAddress in
+            let idx = self?.addresses.indexOf { $0 == updatedAddress }
+            if let addressIdx = idx {
+                self?.addresses[addressIdx] = updatedAddress
             }
         }
     }
