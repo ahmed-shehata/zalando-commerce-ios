@@ -74,7 +74,7 @@ public class AtlasCheckout: LocalizerProviderType {
             return true
     }
 
-    func updateCheckoutViewModel(selectedArticleUnit: SelectedArticleUnit, checkoutViewModel: CheckoutViewModel? = nil,
+    func prepareCheckoutViewModel(selectedArticleUnit: SelectedArticleUnit, checkoutViewModel: CheckoutViewModel? = nil,
         completion: CreateCheckoutViewModelCompletion) {
             client.createCheckout(withSelectedArticleUnit: selectedArticleUnit,
                 billingAddressId: checkoutViewModel?.selectedBillingAddress?.id,
