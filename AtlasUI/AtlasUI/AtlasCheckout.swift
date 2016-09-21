@@ -18,7 +18,6 @@ public class AtlasCheckout: LocalizerProviderType {
         self.client = client
     }
 
-    // TODO: Change all use as arguments to use it through Injector
     lazy private(set) var localizer: Localizer = Localizer(localizationProvider: self)
 
     /**
