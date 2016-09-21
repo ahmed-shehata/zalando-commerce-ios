@@ -9,6 +9,7 @@ typealias RequestTaskCompletion = (RequestBuilder) -> Void
 
 final class RequestBuilder {
 
+    // TODO: Use injector for this
     let urlSession: NSURLSession
     let endpoint: Endpoint
 
@@ -26,15 +27,13 @@ final class RequestBuilder {
                     guard let authorizationHandler = try? Injector.provide() as AtlasAuthorizationHandler else {
                         return completion(.failure(error))
                     }
-                    dispatch_async(dispatch_get_main_queue()) {
-                        authorizationHandler.authorize { result in
-                            switch result {
-                            case .failure(let error):
-                                completion(.failure(error))
-                            case .success(let accessToken):
-                                APIAccessToken.store(accessToken)
-                                self.execute(completion)
-                            }
+                    authorizationHandler.authorize { result in
+                        switch result {
+                        case .failure(let error):
+                            completion(.failure(error))
+                        case .success(let accessToken):
+                            APIAccessToken.store(accessToken)
+                            self.execute(completion)
                         }
                     }
                 default:
