@@ -152,8 +152,9 @@ extension AddressPickerViewController {
 
     private func showCreateAddress(addressType: AddressFormType) {
         showCreateAddressViewController(addressType) { [weak self] address in
-            self?.selectedAddress = address
-            self?.navigationController?.popViewControllerAnimated(false)
+            guard let strongSelf = self else { return }
+            strongSelf.selectionCompletion(pickedAddress: address, pickedAddressType: strongSelf.addressType)
+            strongSelf.navigationController?.popViewControllerAnimated(false)
         }
     }
 
