@@ -42,7 +42,7 @@ class AtlasDemoUITests: XCTestCase {
     func testBuyProductWithSizesAndNavigatingBack() {
         let backButton = app.navigationBars["checkout-summary-navigation-bar"].buttons["Back"]
         let cancelButton = app.navigationBars["checkout-summary-navigation-bar"].buttons["Cancel"]
-        let sizeText = app.cells["size-cell-XS"]
+        let sizeText = app.cells["size-cell-XL"]
 
         tapBuyNow("Guess")
 
