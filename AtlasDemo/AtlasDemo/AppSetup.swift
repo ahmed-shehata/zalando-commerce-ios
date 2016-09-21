@@ -52,7 +52,7 @@ class AppSetup {
     }
 
     private static func prepareOptions(useSandbox useSandbox: Bool) -> Options {
-        let configurationURL = AtlasMockAPI.hasMockedAPIStarted ? AtlasMockAPI.endpointURL(forPath: "/config") : nil
+        let configurationURL: NSURL? = AtlasMockAPI.hasMockedAPIStarted ? AtlasMockAPI.endpointURL(forPath: "/config") : nil
         return Options(clientId: "atlas_Y2M1MzA",
             salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
             useSandbox: useSandbox,

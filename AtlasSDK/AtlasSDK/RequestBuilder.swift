@@ -11,11 +11,11 @@ final class RequestBuilder: Equatable {
 
     // TODO: Could be dropped probably
     var executionFinished: RequestTaskCompletion?
-    var authorizationHandler: AtlasAuthorizationHandler?
 
     let urlSession: NSURLSession
     let endpoint: Endpoint
 
+    @available( *, deprecated, message = "Kill it with fire?")
     private let identifier: UInt32
     private var dataTask: NSURLSessionDataTask?
 
@@ -36,7 +36,7 @@ final class RequestBuilder: Equatable {
             case .failure(let error):
                 switch error {
                 case AtlasAPIError.unauthorized:
-                    guard let authorizationHandler = self.authorizationHandler else {
+                    guard let authorizationHandler = try? Injector.provide() as AtlasAuthorizationHandler else {
                         return completion(.failure(error))
                     }
                     dispatch_async(dispatch_get_main_queue()) {

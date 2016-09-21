@@ -10,9 +10,17 @@ public struct Config {
     public let checkoutURL: NSURL
     public let loginURL: NSURL
     public let clientId: String
-    public let localeIdentifier: String
     public let salesChannel: String
-    public let authorizationHandler: AtlasAuthorizationHandler?
+
+    public let locale: NSLocale
+
+    public var countryCode: String {
+        return locale.countryCode
+    }
+
+    public var languageCode: String {
+        return locale.languageCode
+    }
 
 }
 
@@ -31,12 +39,11 @@ extension Config {
         self.catalogURL = catalogURL
         self.checkoutURL = checkoutURL
         self.loginURL = loginURL
+
         self.salesChannel = localeSalesChannel.salesChannel
-        self.localeIdentifier = localeSalesChannel.locale
+        self.locale = NSLocale(localeIdentifier: localeSalesChannel.locale)
 
         self.clientId = options.clientId
-
-        self.authorizationHandler = options.authorizationHandler
     }
 
     private static func localeSalesChannel(json: JSON, containingLocaleIdentifier identifier: String) -> LocaleSalesChannel? {
@@ -66,7 +73,7 @@ extension Config: CustomStringConvertible {
             + ", loginURL: \(self.loginURL)"
             + ", salesChannel: \(self.salesChannel)"
             + ", clientId: \(self.clientId)"
-            + ", localeIdentifier: \(self.localeIdentifier)"
+            + ", localeIdentifier: \(self.locale.localeIdentifier)"
             + " }"
     }
 }

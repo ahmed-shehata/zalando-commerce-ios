@@ -13,50 +13,36 @@ typealias CreateCheckoutViewModelCompletion = AtlasResult<CheckoutViewModel> -> 
 public class AtlasCheckout: LocalizerProviderType {
 
     public let client: APIClient
-    public let options: Options
+
+    init(client: APIClient) {
+        self.client = client
+    }
 
     // TODO: Change all use as arguments to use it through Injector
     lazy private(set) var localizer: Localizer = Localizer(localizationProvider: self)
 
-    init(client: APIClient, options: Options) {
-        self.client = client
-        self.options = options
-    }
-
     /**
-    Configure AtlasCheckout using Info.plist with the following keys available:
-     - ATLASSDK_CLIENT_ID: String - Client Id (required)
-     - ATLASSDK_SALES_CHANNEL: String - Sales Channel (required)
-     - ATLASSDK_USE_SANDBOX: Bool - Indicates whether sandbox environment should be used
-     - ATLASSDK_INTERFACE_LANGUAGE: String - Checkout interface language
-
-     - Parameters:
-        - completion `AtlasCheckoutConfigurationCompletion`: `AtlasResult` with success result as `AtlasCheckout` initialized
-     */
-    public static func configure(completion: AtlasCheckoutConfigurationCompletion) {
-        let options = Options(bundle: NSBundle.mainBundle())
-        AtlasCheckout.configure(options, completion: completion)
-    }
-
-    /**
-     Configure AtlasCheckout manually.
+     Configure AtlasCheckout.
 
      - Parameters:
         - options `Options`: provide an `Options` instance with at least 2 mandatory parameters **clientId** and **salesChannel**
+            options could be nil, then Info.plist configuration would be used:
+             - ATLASSDK_CLIENT_ID: String - Client Id (required)
+             - ATLASSDK_SALES_CHANNEL: String - Sales Channel (required)
+             - ATLASSDK_USE_SANDBOX: Bool - Indicates whether sandbox environment should be used
+             - ATLASSDK_INTERFACE_LANGUAGE: String - Checkout interface language
         - completion `AtlasCheckoutConfigurationCompletion`: `AtlasResult` with success result as `AtlasCheckout` initialized
     */
-    public static func configure(options: Options, completion: AtlasCheckoutConfigurationCompletion) {
+    public static func configure(options: Options? = nil, completion: AtlasCheckoutConfigurationCompletion) {
+        let options = options ?? Options()
         Atlas.configure(options) { result in
             switch result {
             case .failure(let error):
                 completion(.failure(error))
 
             case .success(let client):
-                // TODO: !!! replace client without auth handler with one with auth handler
-                let authorizationHandler = OAuth2AuthorizationHandler(loginURL: client.config.loginURL)
-                let options = Options(basedOn: options, authorizationHandler: authorizationHandler)
-
-                completion(.success(AtlasCheckout(client: client, options: options)))
+                Injector.register { OAuth2AuthorizationHandler(loginURL: client.config.loginURL) as AtlasAuthorizationHandler }
+                completion(.success(AtlasCheckout(client: client)))
             }
         }
     }
@@ -100,7 +86,7 @@ extension AtlasCheckout: Localizable {
     }
 
     var localeIdentifier: String {
-        return options.interfaceLanguage
+        return client.config.locale.localeIdentifier
     }
 
 }

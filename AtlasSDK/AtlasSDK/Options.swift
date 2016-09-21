@@ -11,7 +11,6 @@ public struct Options {
     public let interfaceLanguage: String?
     public let countryCode: String
     public let configurationURL: NSURL
-    public let authorizationHandler: AtlasAuthorizationHandler?
 
     public var localeIdentifier: String {
         return "\(interfaceLanguage ?? "")_\(countryCode)"
@@ -32,7 +31,10 @@ public struct Options {
             self.useSandboxEnvironment = useSandbox
             self.countryCode = countryCode
             self.interfaceLanguage = interfaceLanguage
-            self.authorizationHandler = authorizationHandler
+
+            if let authorizationHandler = authorizationHandler {
+                Injector.register { authorizationHandler as AtlasAuthorizationHandler }
+            }
 
             if let url = configurationURL {
                 self.configurationURL = url
@@ -50,9 +52,6 @@ public struct Options {
         }
         if self.countryCode.isEmpty {
             throw AtlasConfigurationError.missingCountryCode
-        }
-        if self.authorizationHandler == nil {
-            throw AtlasConfigurationError.missingAuthorizationHandler
         }
     }
 

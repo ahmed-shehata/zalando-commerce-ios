@@ -4,19 +4,13 @@
 
 import Foundation
 
-// TODO: Rename or even make it better
+@available( *, deprecated, message = "Rename, make it better, or just drop it")
 final class RequestBuildersContainer {
 
     private var requestBuilders = [RequestBuilder]()
-    private let authorizationHandler: AtlasAuthorizationHandler?
-
-    init(config: Config) {
-        self.authorizationHandler = config.authorizationHandler
-    }
 
     func createBuilder(forEndpoint endpoint: Endpoint, urlSession: NSURLSession = NSURLSession.sharedSession()) -> RequestBuilder {
         let builder = RequestBuilder(urlSession: urlSession, endpoint: endpoint)
-        builder.authorizationHandler = self.authorizationHandler
         builder.executionFinished = { builder in
             self.requestBuilders.remove(builder)
         }

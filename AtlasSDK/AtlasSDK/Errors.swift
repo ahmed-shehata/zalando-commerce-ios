@@ -22,7 +22,6 @@ public enum AtlasConfigurationError: AtlasErrorType {
     case missingClientId
     case missingSalesChannel
     case missingCountryCode
-    case missingAuthorizationHandler
 
 }
 
