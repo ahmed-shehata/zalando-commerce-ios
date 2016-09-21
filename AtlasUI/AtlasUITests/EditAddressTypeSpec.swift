@@ -15,16 +15,16 @@ class EditAddressTypeSpec: QuickSpec {
 
         describe("Edit Address") {
             it("should format field title") {
-                expect(AddressFormField.Title.title(localizer)).to(equal("Title"))
-                expect(AddressFormField.FirstName.title(localizer)).to(equal("First Name"))
-                expect(AddressFormField.LastName.title(localizer)).to(equal("Last Name"))
-                expect(AddressFormField.Street.title(localizer)).to(equal("Street"))
+                expect(AddressFormField.Title.title(localizer)).to(equal("Title*"))
+                expect(AddressFormField.FirstName.title(localizer)).to(equal("First Name*"))
+                expect(AddressFormField.LastName.title(localizer)).to(equal("Last Name*"))
+                expect(AddressFormField.Street.title(localizer)).to(equal("Street*"))
                 expect(AddressFormField.Additional.title(localizer)).to(equal("Additional"))
-                expect(AddressFormField.Packstation.title(localizer)).to(equal("Packstation"))
-                expect(AddressFormField.MemberID.title(localizer)).to(equal("Member ID"))
-                expect(AddressFormField.Zipcode.title(localizer)).to(equal("Zipcode"))
-                expect(AddressFormField.City.title(localizer)).to(equal("City"))
-                expect(AddressFormField.Country.title(localizer)).to(equal("Country"))
+                expect(AddressFormField.Packstation.title(localizer)).to(equal("Packstation*"))
+                expect(AddressFormField.MemberID.title(localizer)).to(equal("Member ID*"))
+                expect(AddressFormField.Zipcode.title(localizer)).to(equal("Zipcode*"))
+                expect(AddressFormField.City.title(localizer)).to(equal("City*"))
+                expect(AddressFormField.Country.title(localizer)).to(equal("Country*"))
             }
 
             it("should set view model data") {
