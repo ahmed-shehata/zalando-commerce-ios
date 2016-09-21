@@ -77,6 +77,13 @@ class AtlasDemoUITests: XCTestCase {
         tapBackToShop()
     }
 
+    func testCreateAddress() {
+        proceedToSummaryWithSizes()
+        app.otherElements["shipping-stack-view"].tap()
+        createAddress()
+        app.buttons["navigation-bar-cancel-button"].tap()
+    }
+
     func testDeleteAddress() {
         let size = app.cells["size-cell-1"]
         tapBuyNow("Lamica")
@@ -94,18 +101,23 @@ class AtlasDemoUITests: XCTestCase {
         tapConnectAndLogin()
     }
 
-    private func proceedToSummaryWithoutSizes() {
-        tapBuyNow("MICHAEL Michael Kors")
+    func testEditAddress() {
+        proceedToSummaryWithSizes()
+        app.otherElements["shipping-stack-view"].tap()
+        editAddress()
+        app.buttons["navigation-bar-cancel-button"].tap()
+    }
+
+    private func proceedToSummaryWithSizes() {
+        let size = app.cells["size-cell-1"]
+        tapBuyNow("Lamica")
+        waitForElementToAppearAndTap(size)
         tapConnectAndLogin()
     }
 
-    private func changeShippingAddress() {
-        app.otherElements["shipping-stack-view"].tap()
-        deleteAddresses()
-        changeShippingAddress()
-        tapBackToSummaryFromPickingAddressButton()
-        tapPlaceOrder()
-        tapBackToShop()
+    private func proceedToSummaryWithoutSizes() {
+        tapBuyNow("MICHAEL Michael Kors")
+        tapConnectAndLogin()
     }
 
     private func changeShippingAddress() {
@@ -148,7 +160,6 @@ class AtlasDemoUITests: XCTestCase {
 
         app.textFields["title-textfield"].tap()
         app.pickerWheels.element.adjustToPickerWheelValue("Mr")
-
 
         app.textFields["firstname-textfield"].tap()
         setTextFieldValue("firstname-textfield", value: "John")
