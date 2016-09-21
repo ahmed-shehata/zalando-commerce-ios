@@ -17,7 +17,7 @@ enum EditAddressType {
     }
 }
 
-enum EditAddressField {
+enum EditAddressField: String {
     case Title
     case FirstName
     case LastName
@@ -29,19 +29,12 @@ enum EditAddressField {
     case City
     case Country
 
+    var accessibilityIdentifier: String {
+        return "\(rawValue.lowercaseString)-textfield"
+    }
+
     func title(localizer: LocalizerProviderType) -> String {
-        switch self {
-        case .Title: return localizer.loc("Address.edit.title")
-        case .FirstName: return localizer.loc("Address.edit.firstName")
-        case .LastName: return localizer.loc("Address.edit.lastName")
-        case .Street: return localizer.loc("Address.edit.street")
-        case .Additional: return localizer.loc("Address.edit.additional")
-        case .Packstation: return localizer.loc("Address.edit.packstation")
-        case .MemberID: return localizer.loc("Address.edit.memberID")
-        case .Zipcode: return localizer.loc("Address.edit.zipcode")
-        case .City: return localizer.loc("Address.edit.city")
-        case .Country: return localizer.loc("Address.edit.country")
-        }
+        return localizer.loc("Address.edit.\(rawValue.lowercaseString)")
     }
 
     func value(viewModel: EditAddressViewModel, localizer: LocalizerProviderType) -> String? {

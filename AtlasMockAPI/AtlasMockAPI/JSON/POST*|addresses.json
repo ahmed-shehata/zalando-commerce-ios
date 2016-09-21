@@ -1,0 +1,13 @@
+{
+    "id": "6948960",
+    "customer_number": "3036553496",
+    "gender": "MALE",
+    "first_name": "John",
+    "last_name": "Doe",
+    "street": "Mollstr. 1",
+    "zip": "10178",
+    "city": "Berlin",
+    "country_code": "DE",
+    "default_billing": false,
+    "default_shipping": false
+}
