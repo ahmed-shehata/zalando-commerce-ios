@@ -5,9 +5,9 @@
 import UIKit
 import AtlasSDK
 
-typealias EditAddressCompletion = EditAddressViewModel -> Void
+typealias AddressFormCompletion = AddressFormViewModel -> Void
 
-class EditAddressViewController: UIViewController, CheckoutProviderType {
+class AddressFormViewController: UIViewController, CheckoutProviderType {
 
     internal let scrollView: KeyboardScrollView = {
         let scrollView = KeyboardScrollView()
@@ -15,8 +15,8 @@ class EditAddressViewController: UIViewController, CheckoutProviderType {
         return scrollView
     }()
 
-    internal lazy var addressStackView: EditAddressStackView = {
-        let stackView = EditAddressStackView()
+    internal lazy var addressStackView: AddressFormStackView = {
+        let stackView = AddressFormStackView()
         stackView.addressType = self.addressType
         stackView.checkoutProviderType = self
         stackView.axis = .Vertical
@@ -31,21 +31,21 @@ class EditAddressViewController: UIViewController, CheckoutProviderType {
         return view
     }()
 
-    private let addressType: EditAddressType
+    private let addressType: AddressFormType
     internal let checkout: AtlasCheckout
-    private let addressViewModel: EditAddressViewModel
-    internal var completion: EditAddressCompletion?
+    private let addressViewModel: AddressFormViewModel
+    internal var completion: AddressFormCompletion?
 
-    init(addressType: EditAddressType, checkout: AtlasCheckout, address: EquatableAddress?, completion: EditAddressCompletion?) {
+    init(addressType: AddressFormType, checkout: AtlasCheckout, address: EquatableAddress?, completion: AddressFormCompletion?) {
         self.addressType = addressType
         self.checkout = checkout
         if let userAddress = address as? UserAddress {
-            self.addressViewModel = EditAddressViewModel(userAddress: address,
+            self.addressViewModel = AddressFormViewModel(userAddress: address,
                                                          countryCode: checkout.client.config.countryCode,
                                                          isDefaultBilling: userAddress.isDefaultBilling,
                                                          isDefaultShipping: userAddress.isDefaultShipping)
         } else {
-            self.addressViewModel = EditAddressViewModel(userAddress: address,
+            self.addressViewModel = AddressFormViewModel(userAddress: address,
                                                          countryCode: checkout.client.config.countryCode)
         }
         self.completion = completion
@@ -67,7 +67,7 @@ class EditAddressViewController: UIViewController, CheckoutProviderType {
 
 }
 
-extension EditAddressViewController {
+extension AddressFormViewController {
 
     private func configureNavigation() {
         let saveButton = UIBarButtonItem(title: loc("Save"), style: .Plain, target: self, action: #selector(submitButtonPressed))
@@ -81,7 +81,7 @@ extension EditAddressViewController {
 
     private dynamic func submitButtonPressed() {
         let isValid = addressStackView.textFields.map { $0.validateForm() }.filter { $0 == false }.isEmpty
-        guard let request = CheckAddressRequest(addressViewModel: addressViewModel) where isValid else { return }
+        guard let request = CheckAddressRequest(addressFormViewModel: addressViewModel) where isValid else { return }
         loaderView.show()
         checkout.client.checkAddress(request) { [weak self] result in
             guard let strongSelf = self else { return }
@@ -118,7 +118,7 @@ extension EditAddressViewController {
 
 }
 
-extension EditAddressViewController: UIBuilder {
+extension AddressFormViewController: UIBuilder {
 
     func configureView() {
         view.addSubview(scrollView)
