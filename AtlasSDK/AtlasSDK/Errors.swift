@@ -38,7 +38,3 @@ public enum AtlasAPIError: AtlasErrorType {
     case checkoutFailed(addresses: [UserAddress]?, cartId: String?, error: ErrorType)
 
 }
-
-//public func == (lhs: AtlasAPIError, rhs: AtlasAPIError) -> Bool {
-//    return lhs._code == rhs._code
-//}
