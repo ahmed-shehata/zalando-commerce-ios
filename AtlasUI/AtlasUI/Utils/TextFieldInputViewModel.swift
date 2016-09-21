@@ -9,6 +9,7 @@ typealias TextFieldChangedHandler = String? -> Void
 struct TextFieldInputViewModel {
     let title: String
     let value: String?
+    let accessibilityIdentifier: String
     let isActive: Bool
     let validators: [FormValidator]
     let localizer: LocalizerProviderType
@@ -18,6 +19,7 @@ struct TextFieldInputViewModel {
 
     init (title: String,
           value: String? = nil,
+          accessibilityIdentifier: String,
           isActive: Bool = true,
           validators: [FormValidator] = [],
           localizer: LocalizerProviderType,
@@ -27,6 +29,7 @@ struct TextFieldInputViewModel {
 
         self.title = title
         self.value = value
+        self.accessibilityIdentifier = accessibilityIdentifier
         self.isActive = isActive
         self.validators = validators
         self.localizer = localizer

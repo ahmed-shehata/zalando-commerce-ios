@@ -41,6 +41,7 @@ extension AddressListTableViewDelegate: UITableViewDataSource {
         guard indexPath.row < addresses.count else {
             return tableView.dequeueReusableCell(AddAddressTableViewCell.self, forIndexPath: indexPath) { cell in
                 cell.configureData(self.checkout)
+                cell.accessibilityIdentifier = "addresses-table-create-address-cell"
                 return cell
             }
         }
