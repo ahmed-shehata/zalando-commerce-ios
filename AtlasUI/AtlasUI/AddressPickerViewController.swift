@@ -71,7 +71,6 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
         }
 
         self.navigationController?.navigationBar.accessibilityIdentifier = "address-picker-navigation-bar"
-        self.navigationItem.rightBarButtonItem?.accessibilityIdentifier = "address-picker-right-button"
 
         setupView()
         fetchAddresses()
@@ -233,6 +232,7 @@ extension AddressPickerViewController {
             self.navigationItem.rightBarButtonItem = nil
         } else {
             self.navigationItem.rightBarButtonItem = self.editButtonItem()
+            self.navigationItem.rightBarButtonItem?.accessibilityIdentifier = "address-picker-right-button"
         }
     }
 }
