@@ -62,6 +62,7 @@ class EditAddressViewController: UIViewController, CheckoutProviderType {
         buildView()
         addressStackView.configureData(addressViewModel)
         configureNavigation()
+        navigationItem.rightBarButtonItem?.accessibilityIdentifier = "address-edit-right-button"
     }
 
 }

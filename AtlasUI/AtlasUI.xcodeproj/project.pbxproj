@@ -62,6 +62,9 @@
 		D9CE3553FFE09F2A82794C7A9E45F4F1 /* TextFieldInputStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733421E924B47BF0FE5766446A269719 /* TextFieldInputStackView.swift */; };
 		DB2470DB4F51D75862D73B20254CB0A7 /* CheckoutSummaryActionsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4E23134230FC0873B95CF6C403C333 /* CheckoutSummaryActionsHandler.swift */; };
 		DE4482A9091E62348223761D4C58D008 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA19C45C79A94472331D134BC9895CA /* UIView.swift */; };
+		E96499001D916C5F006575F7 /* EditAddressTypeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96498FF1D916C5F006575F7 /* EditAddressTypeSpec.swift */; };
+		E96499021D916D86006575F7 /* LocalizerProviderTypeMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96499011D916D86006575F7 /* LocalizerProviderTypeMock.swift */; };
+		E96499041D9178DA006575F7 /* FormValidatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96499031D9178DA006575F7 /* FormValidatorSpec.swift */; };
 		E97A33A7BE2D26CDE9B4C62EB5BD2661 /* CheckoutSummaryAddressStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9494F7947C24BD2087FE22EBE20BFCD /* CheckoutSummaryAddressStackView.swift */; };
 		E9A242401D8AB6BC0026A671 /* AtlasUIFormattableAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2423F1D8AB6BC0026A671 /* AtlasUIFormattableAddress.swift */; };
 		E9A242421D8AB81B0026A671 /* AtlasUIStreetAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A242411D8AB81B0026A671 /* AtlasUIStreetAddress.swift */; };
@@ -158,6 +161,9 @@
 		D4F1679B8BB8A951B60D19AD947CD5BA /* CGRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
 		DB583604F0F19D75AFE9FB25FD4D89E1 /* CheckoutPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutPresentationController.swift; sourceTree = "<group>"; };
 		E872C262ABD57DB62C4F0880E507B185 /* EditAddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAddressViewController.swift; sourceTree = "<group>"; };
+		E96498FF1D916C5F006575F7 /* EditAddressTypeSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAddressTypeSpec.swift; sourceTree = "<group>"; };
+		E96499011D916D86006575F7 /* LocalizerProviderTypeMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizerProviderTypeMock.swift; sourceTree = "<group>"; };
+		E96499031D9178DA006575F7 /* FormValidatorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValidatorSpec.swift; sourceTree = "<group>"; };
 		E9A2423F1D8AB6BC0026A671 /* AtlasUIFormattableAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasUIFormattableAddress.swift; sourceTree = "<group>"; };
 		E9A242411D8AB81B0026A671 /* AtlasUIStreetAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasUIStreetAddress.swift; sourceTree = "<group>"; };
 		E9A242431D8AD46E0026A671 /* FormValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValidator.swift; sourceTree = "<group>"; };
@@ -341,6 +347,9 @@
 				8C686045A1CFC18F21F295D0AD890463 /* AsyncSpec.swift */,
 				A754353C97F26BBC2E518BB80BB9F4BE /* Info.plist */,
 				D00CFC93C09DD7AD63A6C85F7CE29032 /* LocalizationSpec.swift */,
+				E96499011D916D86006575F7 /* LocalizerProviderTypeMock.swift */,
+				E96498FF1D916C5F006575F7 /* EditAddressTypeSpec.swift */,
+				E96499031D9178DA006575F7 /* FormValidatorSpec.swift */,
 			);
 			path = AtlasUITests;
 			sourceTree = "<group>";
@@ -552,7 +561,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E96499041D9178DA006575F7 /* FormValidatorSpec.swift in Sources */,
 				991BFD47AE25FCB21C1D24292DD7650B /* AsyncSpec.swift in Sources */,
+				E96499001D916C5F006575F7 /* EditAddressTypeSpec.swift in Sources */,
+				E96499021D916D86006575F7 /* LocalizerProviderTypeMock.swift in Sources */,
 				354DA8B0D0E898D52E4F519EF046248C /* LocalizationSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

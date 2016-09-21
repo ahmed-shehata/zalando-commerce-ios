@@ -10,7 +10,7 @@ enum AddressType {
     case billing
 }
 
-typealias AddressSelectionCompletion = (pickedAddress: EquatableAddress, pickedAddressType: AddressType) -> Void
+typealias AddressSelectionCompletion = (pickedAddress: EquatableAddress?, pickedAddressType: AddressType) -> Void
 typealias CreateAddressHandler = () -> Void
 typealias UpdateAddressHandler = (address: EquatableAddress) -> Void
 typealias DeleteAddressHandler = () -> Void
