@@ -49,3 +49,15 @@ enum FormValidator {
     }
 
 }
+
+internal func == (lhs: FormValidator, rhs: FormValidator) -> Bool {
+    switch (lhs, rhs) {
+    case (.Required, .Required): return true
+    case (.MinLength(let lhsMinLength), .MinLength(let rhsMinLength)): return lhsMinLength == rhsMinLength
+    case (.MaxLength(let lhsMaxLength), .MaxLength(let rhsMaxLength)): return lhsMaxLength == rhsMaxLength
+    case (.ExactLength(let lhsLength), .ExactLength(let rhsLength)): return lhsLength == rhsLength
+    case (.Pattern(let lhsPattern), .Pattern(let rhsPattern)): return lhsPattern == rhsPattern
+    case (.NumbersOnly, .NumbersOnly): return true
+    default: return false
+    }
+}
