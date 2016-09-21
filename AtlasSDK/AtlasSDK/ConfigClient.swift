@@ -8,7 +8,7 @@ public typealias AtlasConfigCompletion = AtlasResult<Config> -> Void
 
 protocol Configurator {
 
-    mutating func configure(completion: AtlasConfigCompletion) -> Void
+    func configure(completion: AtlasConfigCompletion) -> Void
 
 }
 
@@ -18,12 +18,11 @@ struct ConfigClient: Configurator {
     private let options: Options
 
     init(options: Options) {
-        let endpoint = GetConfigEndpoint(URL: options.configurationURL)
         self.options = options
-        self.requestBuilder = RequestBuilder(endpoint: endpoint)
+        self.requestBuilder = RequestBuilder(forEndpoint: GetConfigEndpoint(URL: options.configurationURL))
     }
 
-    mutating func configure(completion: AtlasConfigCompletion) {
+    func configure(completion: AtlasConfigCompletion) {
         self.requestBuilder.execute { result in
             switch result {
             case .failure(let error):

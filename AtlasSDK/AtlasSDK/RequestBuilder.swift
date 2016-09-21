@@ -7,29 +7,16 @@ import Foundation
 typealias ResponseCompletion = AtlasResult<JSONResponse> -> Void
 typealias RequestTaskCompletion = (RequestBuilder) -> Void
 
-final class RequestBuilder: Equatable {
-
-    // TODO: Could be dropped probably
-    var executionFinished: RequestTaskCompletion?
+final class RequestBuilder {
 
     let urlSession: NSURLSession
     let endpoint: Endpoint
 
-    @available( *, deprecated, message = "Kill it with fire?")
-    private let identifier: UInt32
-    private var dataTask: NSURLSessionDataTask?
-
-    init(urlSession: NSURLSession = NSURLSession.sharedSession(), endpoint: Endpoint) {
+    init(forEndpoint endpoint: Endpoint, urlSession: NSURLSession = NSURLSession.sharedSession()) {
         self.urlSession = urlSession
         self.endpoint = endpoint
-        self.identifier = arc4random()
     }
 
-    deinit {
-        dataTask?.cancel()
-    }
-
-    // TODO: Find more meaningful name
     func execute(completion: ResponseCompletion) {
         buildAndExecuteSessionTask { result in
             switch result {
@@ -48,22 +35,18 @@ final class RequestBuilder: Equatable {
                                 APIAccessToken.store(accessToken)
                                 self.execute(completion)
                             }
-                            self.executionFinished?(self)
                         }
                     }
                 default:
                     completion(.failure(error))
-                    self.executionFinished?(self)
                 }
 
             case .success(let response):
                 completion(.success(response))
-                self.executionFinished?(self)
             }
         }
     }
 
-    // TODO: Find more meaningful name
     private func buildAndExecuteSessionTask(completion: ResponseCompletion) {
         let request: NSMutableURLRequest
         do {
@@ -75,7 +58,6 @@ final class RequestBuilder: Equatable {
         self.urlSession.dataTaskWithRequest(request) { response in
             ResponseParser(taskResponse: response).parse(completion)
         }.resume()
-
     }
 
     private func buildRequest() throws -> NSMutableURLRequest {
@@ -83,9 +65,4 @@ final class RequestBuilder: Equatable {
         return request.authorize(withToken: APIAccessToken.retrieve())
     }
 
-}
-
-// TODO: Could be dropped probably
-func == (lhs: RequestBuilder, rhs: RequestBuilder) -> Bool {
-    return lhs.identifier == rhs.identifier
 }

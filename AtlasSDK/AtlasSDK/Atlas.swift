@@ -23,8 +23,7 @@ public struct Atlas {
             return completion(.failure(error))
         }
 
-        var configurator = ConfigClient(options: options)
-        configurator.configure { result in
+        ConfigClient(options: options).configure { result in
             switch result {
             case .failure(let error):
                 AtlasLogger.logError(error)

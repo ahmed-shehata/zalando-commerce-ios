@@ -10,8 +10,6 @@ public struct APIClient {
 
     internal var urlSession: NSURLSession = NSURLSession.sharedSession()
 
-    private let requestBuilders = RequestBuildersContainer()
-
     init(config: Config) {
         self.config = config
     }
@@ -43,7 +41,7 @@ public struct APIClient {
     }
 
     private func fetch<T>(from endpoint: Endpoint, completion: AtlasResult<T> -> Void, successHandler: JSONResponse -> T?) {
-        requestBuilders.createBuilder(forEndpoint: endpoint, urlSession: urlSession).execute { result in
+        RequestBuilder(forEndpoint: endpoint, urlSession: urlSession).execute { result in
             switch result {
             case .failure(let error):
                 completion(.failure(error))

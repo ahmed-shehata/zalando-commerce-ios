@@ -26,13 +26,15 @@ class APIClientBaseSpec: QuickSpec {
         try! AtlasMockAPI.stopServer() // swiftlint:disable:this force_try
     }
 
-    private let clientOptions = Options(clientId: "atlas_Y2M1MzA",
-        salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
-        useSandbox: true,
-        countryCode: "DE",
-        interfaceLanguage: "de",
-        configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"),
-        authorizationHandler: MockAuthorizationHandler())
+    private var clientOptions: Options {
+        return Options(clientId: "atlas_Y2M1MzA",
+            salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
+            useSandbox: true,
+            countryCode: "DE",
+            interfaceLanguage: "de",
+            configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"),
+            authorizationHandler: MockAuthorizationHandler())
+    }
 
     func waitUntilAPIClientIsConfigured(actions: (done: () -> Void, client: APIClient) -> Void) {
         waitUntil(timeout: 10) { done in

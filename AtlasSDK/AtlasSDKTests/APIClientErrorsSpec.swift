@@ -45,6 +45,7 @@ class APIClientErrorsSpec: APIClientBaseSpec {
                     useSandbox: true,
                     countryCode: "DE",
                     interfaceLanguage: "de",
+                    authorizationHandler: MockAuthorizationHandler(error: AtlasAPIError.unauthorized),
                     configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
 
                 let client = self.mockedAPIClient(forURL: clientURL, options: options, data: errorResponse, status: status)
@@ -86,7 +87,7 @@ class APIClientErrorsSpec: APIClientBaseSpec {
 
             it("should return error when response has NSURLDomainError") {
                 let client = self.mockedAPIClient(forURL: clientURL, data: nil,
-                    status: HTTPStatus.Unauthorized, errorCode: NSURLErrorBadURL)
+                    status: .Unauthorized, errorCode: NSURLErrorBadURL)
 
                 waitUntil(timeout: 10) { done in
                     client.customer { result in
