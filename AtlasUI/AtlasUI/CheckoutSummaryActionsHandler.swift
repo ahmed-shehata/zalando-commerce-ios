@@ -65,20 +65,22 @@ extension CheckoutSummaryActionsHandler {
 
     internal func loadCustomerData() {
         viewController.checkout.client.customer { result in
-            Async.main {
-                switch result {
-                case .failure(let error):
+
+            switch result {
+            case .failure(let error):
+                Async.main {
                     self.viewController.userMessage.show(error: error)
-                case .success(let customer):
-                    self.generateCheckout(customer)
                 }
+            case .success(let customer):
+                self.generateCheckout(customer)
             }
+
         }
     }
 
     private func generateCheckout(customer: Customer) {
         viewController.showLoader()
-        viewController.checkout.updateCheckoutViewModel(viewController.checkoutViewModel.selectedArticleUnit,
+        viewController.checkout.prepareCheckoutViewModel(viewController.checkoutViewModel.selectedArticleUnit,
             checkoutViewModel: viewController.checkoutViewModel) { result in
                 self.viewController.hideLoader()
                 switch result {
@@ -151,7 +153,7 @@ extension CheckoutSummaryActionsHandler {
 }
 
 extension CheckoutSummaryActionsHandler {
-    func pickedAddressCompletion(pickedAddress address: EquatableAddress,
+    func pickedAddressCompletion(pickedAddress address: EquatableAddress?,
         forAddressType addressType: AddressType) {
 
             viewController.navigationController?.popViewControllerAnimated(true)
@@ -161,6 +163,9 @@ extension CheckoutSummaryActionsHandler {
                 viewController.checkoutViewModel.selectedBillingAddress = address
             case AddressType.shipping:
                 viewController.checkoutViewModel.selectedShippingAddress = address
+            }
+            if address == nil {
+                viewController.checkoutViewModel.checkout = nil
             }
             viewController.hideLoader()
             viewController.rootStackView.configureData(viewController)
@@ -172,19 +177,21 @@ extension CheckoutSummaryActionsHandler {
             else { return }
             viewController.showLoader()
 
-            viewController.createCheckout(cartId) { result in
-                self.viewController.hideLoader()
-                switch result {
-
-                case .failure(let error):
-                    self.viewController.dismissViewControllerAnimated(true) {
-                        self.viewController.userMessage.show(error: error)
+            viewController.checkout.prepareCheckoutViewModel(viewController.checkoutViewModel.selectedArticleUnit,
+                checkoutViewModel: viewController.checkoutViewModel) { result in
+                    self.viewController.hideLoader()
+                    switch result {
+                    case .failure(let error):
+                        self.viewController.dismissViewControllerAnimated(true) {
+                            self.viewController.userMessage.show(error: error)
+                        }
+                    case .success(var checkoutViewModel):
+                        checkoutViewModel.customer = self.viewController.checkoutViewModel.customer
+                        self.viewController.checkoutViewModel = checkoutViewModel
+                        self.viewController.rootStackView.configureData(self.viewController)
+                        self.viewController.refreshViewData()
                     }
-                case .success(let checkout):
-                    self.viewController.checkoutViewModel.checkout = checkout
-                    self.viewController.rootStackView.configureData(self.viewController)
-                    self.viewController.refreshViewData()
-                }
+
             }
     }
 }
