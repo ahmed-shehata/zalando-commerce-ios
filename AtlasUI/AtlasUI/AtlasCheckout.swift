@@ -72,7 +72,7 @@ public class AtlasCheckout: LocalizerProviderType {
         viewController.presentViewController(navigationController, animated: true, completion: nil)
     }
 
-    func updateCheckoutViewModel(selectedArticleUnit: SelectedArticleUnit, checkoutViewModel: CheckoutViewModel? = nil,
+    func prepareCheckoutViewModel(selectedArticleUnit: SelectedArticleUnit, checkoutViewModel: CheckoutViewModel? = nil,
         completion: CreateCheckoutViewModelCompletion) {
             client.createCheckout(withSelectedArticleUnit: selectedArticleUnit,
                 billingAddressId: checkoutViewModel?.selectedBillingAddress?.id,

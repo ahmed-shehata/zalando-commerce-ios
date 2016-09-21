@@ -61,6 +61,7 @@ extension EditAddressStackView: UIDataBuilder {
 
             let viewModel = TextFieldInputViewModel(title: title,
                                                     value: value,
+                                                    accessibilityIdentifier: fieldType.accessibilityIdentifier,
                                                     isActive: isActive,
                                                     validators: fieldType.formValidators,
                                                     localizer: checkoutProviderType,

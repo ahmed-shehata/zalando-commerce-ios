@@ -24,6 +24,7 @@ public struct Article {
 
     public let id: String
     public let name: String
+    public let color: String
     public let brand: Brand
     public let units: [Unit]
     public let media: Media
@@ -86,12 +87,14 @@ extension Article: JSONInitializable {
         guard let
         id = json["id"].string,
             name = json["name"].string,
+            color = json["color"].string,
             brand = Brand(json: json["brand"]),
             media = Media(json: json["media"])
         else { return nil }
 
         self.id = id
         self.name = name
+        self.color = color
         self.media = media
         self.brand = brand
         self.units = json["units"].arrayValue.flatMap { Article.Unit(json: $0) }
