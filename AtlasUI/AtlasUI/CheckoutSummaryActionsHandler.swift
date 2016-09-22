@@ -168,9 +168,10 @@ extension CheckoutSummaryActionsHandler {
 extension CheckoutSummaryActionsHandler {
     func pickedAddressCompletion(pickedAddress address: EquatableAddress?,
         forAddressType addressType: AddressType, popBackToSummaryOnFinish: Bool) {
+            guard let strongViewController = self.viewController else { return }
 
             if popBackToSummaryOnFinish {
-                viewController.navigationController?.popViewControllerAnimated(true)
+                strongViewController.navigationController?.popViewControllerAnimated(true)
             }
 
             switch addressType {
