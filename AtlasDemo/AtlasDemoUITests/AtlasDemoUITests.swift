@@ -131,13 +131,17 @@ class AtlasDemoUITests: XCTestCase {
         let rightButton = app.navigationBars.buttons["address-picker-right-button"]
         rightButton.tap()
 
-        let tablesQuery = app.tables
+        let table = app.tables
 
-        tablesQuery.buttons.elementBoundByIndex(0).tap()
-        tablesQuery.buttons.elementBoundByIndex(2).tap()
+        table.buttons.elementBoundByIndex(0).tap()
+        table.buttons.elementBoundByIndex(2).tap()
 
-        tablesQuery.buttons.elementBoundByIndex(0).tap()
-        tablesQuery.buttons.elementBoundByIndex(2).tap()
+        table.buttons.elementBoundByIndex(0).tap()
+        table.buttons.elementBoundByIndex(2).tap()
+
+        let existsPredicate = NSPredicate(format: "count == 2")
+        expectationForPredicate(existsPredicate, evaluatedWithObject: table.cells, handler: nil)
+        waitForExpectationsWithTimeout(5, handler: nil)
 
         rightButton.tap()
         app.navigationBars["address-picker-navigation-bar"].buttons["Back"].tap()
