@@ -17,6 +17,7 @@ class OptionsSpec: QuickSpec {
         let countryCode = "FR"
         let interfaceLanguage = "de"
         let useSandbox = true
+        let emptyBundle = NSBundle(forClass: OptionsSpec.self)
 
         describe("Options") {
 
@@ -58,15 +59,20 @@ class OptionsSpec: QuickSpec {
                 expect { try opts.validate() }.to(throwError(AtlasConfigurationError.missingCountryCode))
             }
 
-            it("should return correct localeIdentifier") {
+            it("should return correct language-country locale identifier") {
                 let opts = Options(countryCode: "DE", interfaceLanguage: "en")
 
                 expect(opts.localeIdentifier).to(equal("en_DE"))
             }
 
+            it("should return correct country locale identifier") {
+                let opts = Options(countryCode: "DE")
+
+                expect(opts.localeIdentifier).to(equal("DE"))
+            }
+
             it("should load Info.plist values automatically") {
-                let infoBundle = NSBundle(forClass: OptionsSpec.self)
-                let opts = Options(infoBundle: infoBundle)
+                let opts = Options(infoBundle: emptyBundle)
 
                 expect(opts.clientId).to(equal("CLIENT_ID_PLIST"))
                 expect(opts.salesChannel).to(equal("SALES_CHANNEL_PLIST"))
@@ -76,12 +82,11 @@ class OptionsSpec: QuickSpec {
             }
 
             it("should override values from Info.plist") {
-                let infoBundle = NSBundle(forClass: OptionsSpec.self)
                 let opts = Options(clientId: clientId, salesChannel: salesChannel,
                     useSandbox: useSandbox,
                     countryCode: countryCode,
                     interfaceLanguage: interfaceLanguage,
-                    infoBundle: infoBundle)
+                    infoBundle: emptyBundle)
 
                 expect(opts.clientId).to(equal(clientId))
                 expect(opts.salesChannel).to(equal(salesChannel))

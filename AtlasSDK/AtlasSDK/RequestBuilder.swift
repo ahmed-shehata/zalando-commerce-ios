@@ -20,6 +20,7 @@ struct RequestBuilder {
         buildAndExecuteSessionTask { result in
             switch result {
             case .failure(let error):
+                AtlasLogger.logError(error, verbose: true)
                 switch error {
                 case AtlasAPIError.unauthorized:
                     guard let authorizationHandler = try? Injector.provide() as AuthorizationHandler else {

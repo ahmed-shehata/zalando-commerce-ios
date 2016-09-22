@@ -14,7 +14,7 @@ public struct Options {
     public let salesChannel: String
 
     public var localeIdentifier: String {
-        guard let interfaceLanguage = interfaceLanguage else {
+        guard let interfaceLanguage = interfaceLanguage where !interfaceLanguage.isEmpty else {
             return countryCode
         }
         return "\(interfaceLanguage)_\(countryCode)"
