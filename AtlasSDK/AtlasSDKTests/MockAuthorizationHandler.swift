@@ -6,7 +6,7 @@ import Foundation
 
 @testable import AtlasSDK
 
-struct MockAuthorizationHandler: AtlasAuthorizationHandler {
+struct MockAuthorizationHandler: AuthorizationHandler {
 
     var token: String?
     var error: ErrorType?
@@ -25,7 +25,7 @@ struct MockAuthorizationHandler: AtlasAuthorizationHandler {
         self.error = error
     }
 
-    func authorize(completion: AtlasAuthorizationCompletion) {
+    func authorize(completion: AuthorizationCompletion) {
         if let token = token {
             completion(.success(token))
         } else if let error = error {

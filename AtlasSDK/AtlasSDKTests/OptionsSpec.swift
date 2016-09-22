@@ -35,7 +35,7 @@ class OptionsSpec: QuickSpec {
 
             it("should register authorization handler correctly in Injector") {
                 let _ = Options(authorizationHandler: MockAuthorizationHandler())
-                let authorizationHandler = try? Injector.provide() as AtlasAuthorizationHandler
+                let authorizationHandler = try? Injector.provide() as AuthorizationHandler
 
                 expect(authorizationHandler).toNot(beNil())
             }
