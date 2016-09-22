@@ -14,7 +14,10 @@ public struct Options {
     public let salesChannel: String
 
     public var localeIdentifier: String {
-        return "\(interfaceLanguage ?? "")_\(countryCode)"
+        guard let interfaceLanguage = interfaceLanguage else {
+            return countryCode
+        }
+        return "\(interfaceLanguage)_\(countryCode)"
     }
 
     public init(clientId: String? = nil,
@@ -61,15 +64,15 @@ extension Options: CustomStringConvertible {
     public var description: String {
         func formatOptional(text: String?, defaultText: String = "<NONE>") -> String {
             guard let text = text else { return defaultText }
-            return "'\(text)'"
+            return "'\(text) '"
         }
 
         return "\(self.dynamicType) { "
-            + "\n\tclientId = \(formatOptional(clientId))"
-            + ",\n\tuseSandboxEnvironment = \(useSandboxEnvironment)"
-            + ",\n\tsalesChannel = \(formatOptional(salesChannel))"
-            + ",\n\tlocaleIdentifier = \(localeIdentifier)"
-            + " }"
+            + "\n\tclientId = \(formatOptional(clientId)) "
+            + ", \n\tuseSandboxEnvironment = \(useSandboxEnvironment) "
+            + ", \n\tsalesChannel = \(formatOptional(salesChannel)) "
+            + ", \n\tlocaleIdentifier = \(localeIdentifier) "
+            + " } "
     }
 
 }
@@ -89,7 +92,7 @@ extension Options {
 
     private static func defaultConfigurationURL(clientId clientId: String, useSandbox: Bool,
         inFormat format: ResponseFormat = .json) -> NSURL {
-            let urlComponents = NSURLComponents(validUrlString: "https://atlas-config-api.dc.zalan.do/api/config/")
+            let urlComponents = NSURLComponents(validURL: "https://atlas-config-api.dc.zalan.do/api/config/")
             let basePath = (urlComponents.path ?? "/")
 
             let environment: Environment = useSandbox ? .staging : .production

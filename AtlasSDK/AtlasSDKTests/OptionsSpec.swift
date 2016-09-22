@@ -76,6 +76,18 @@ class OptionsSpec: QuickSpec {
             }
 
             it("should override values from Info.plist") {
+                let infoBundle = NSBundle(forClass: OptionsSpec.self)
+                let opts = Options(clientId: clientId, salesChannel: salesChannel,
+                    useSandbox: useSandbox,
+                    countryCode: countryCode,
+                    interfaceLanguage: interfaceLanguage,
+                    infoBundle: infoBundle)
+
+                expect(opts.clientId).to(equal(clientId))
+                expect(opts.salesChannel).to(equal(salesChannel))
+                expect(opts.countryCode).to(equal(countryCode))
+                expect(opts.useSandboxEnvironment).to(equal(useSandbox))
+                expect(opts.interfaceLanguage).to(equal(interfaceLanguage))
             }
 
         }
