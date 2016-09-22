@@ -79,7 +79,6 @@ class AtlasDemoUITests: XCTestCase {
         proceedToSummaryWithSizes()
         app.otherElements["shipping-stack-view"].tap()
         createAddress()
-        app.buttons["navigation-bar-cancel-button"].tap()
     }
 
     func testDeleteAddress() {
