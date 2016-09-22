@@ -11,7 +11,7 @@ enum AddressType {
 }
 
 typealias AddressSelectionCompletion = (pickedAddress: EquatableAddress?, pickedAddressType: AddressType,
-    popBackToSummary: Bool) -> Void
+    popBackToSummaryOnFinish: Bool) -> Void
 typealias CreateAddressHandler = () -> Void
 typealias UpdateAddressHandler = (address: EquatableAddress) -> Void
 typealias DeleteAddressHandler = () -> Void
@@ -156,7 +156,7 @@ extension AddressPickerViewController {
     private func showCreateAddress(addressType: AddressFormType) {
         showCreateAddressViewController(addressType) { [weak self] address in
             guard let strongSelf = self else { return }
-            strongSelf.selectionCompletion(pickedAddress: address, pickedAddressType: strongSelf.addressType, popBackToSummary: true)
+            strongSelf.selectionCompletion(pickedAddress: address, pickedAddressType: strongSelf.addressType, popBackToSummaryOnFinish: true)
             strongSelf.navigationController?.popViewControllerAnimated(false)
         }
     }
@@ -207,7 +207,7 @@ extension AddressPickerViewController {
         tableviewDelegate?.deleteAddressHandler = { [weak self] in
             guard let strongSelf = self else { return }
             strongSelf.configureEditButton()
-            strongSelf.selectionCompletion(pickedAddress: nil, pickedAddressType: strongSelf.addressType, popBackToSummary: false)
+            strongSelf.selectionCompletion(pickedAddress: nil, pickedAddressType: strongSelf.addressType, popBackToSummaryOnFinish: false)
         }
     }
 

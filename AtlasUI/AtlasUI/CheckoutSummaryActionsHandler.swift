@@ -154,9 +154,9 @@ extension CheckoutSummaryActionsHandler {
 
 extension CheckoutSummaryActionsHandler {
     func pickedAddressCompletion(pickedAddress address: EquatableAddress?,
-        forAddressType addressType: AddressType, popBackToSummary: Bool) {
+        forAddressType addressType: AddressType, popBackToSummaryOnFinish: Bool) {
 
-            if popBackToSummary {
+            if popBackToSummaryOnFinish {
                 viewController.navigationController?.popViewControllerAnimated(true)
             }
 
