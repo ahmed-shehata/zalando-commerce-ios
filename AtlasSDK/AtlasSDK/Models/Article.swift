@@ -97,7 +97,7 @@ extension Article: JSONInitializable {
         self.color = color
         self.media = media
         self.brand = brand
-        self.units = json["units"].arrayValue.flatMap { Article.Unit(json: $0) }
+        self.units = json["units"].arrayValue.flatMap { Article.Unit(json: $0) }.filter { $0.available }
     }
 
 }
