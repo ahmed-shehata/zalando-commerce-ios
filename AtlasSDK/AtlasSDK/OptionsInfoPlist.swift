@@ -10,7 +10,6 @@ extension Options {
 
         case useSandbox = "ATLASSDK_USE_SANDBOX"
         case clientId = "ATLASSDK_CLIENT_ID"
-        @available( *, deprecated, message = "To be removed when backend returns correct sales channel")
         case salesChannel = "ATLASSDK_SALES_CHANNEL"
         case interfaceLanguage = "ATLASSDK_INTERFACE_LANGUAGE"
         case countryCode = "ATLASSDK_COUNTRY_CODE"

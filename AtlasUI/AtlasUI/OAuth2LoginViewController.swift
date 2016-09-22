@@ -6,13 +6,13 @@ import UIKit
 import AtlasSDK
 
 typealias WebViewFinishedLoadCompletion = UIWebView -> Void
-typealias AuthorizationResult = AtlasResult<AtlasAuthorizationToken>
+typealias AuthorizationResult = AtlasResult<AuthorizationToken>
 
 final class OAuth2LoginViewController: UIViewController {
 
     private let loginURL: NSURL
 
-    private let loginCompletion: AtlasAuthorizationCompletion?
+    private let loginCompletion: AuthorizationCompletion?
     private var webViewFinishedLoadCompletion: WebViewFinishedLoadCompletion?
     private var webViewDidFinishedLoad = false
 
@@ -24,7 +24,7 @@ final class OAuth2LoginViewController: UIViewController {
         return webView
     }()
 
-    init(loginURL: NSURL, completion: AtlasAuthorizationCompletion? = nil) {
+    init(loginURL: NSURL, completion: AuthorizationCompletion? = nil) {
         self.loginURL = loginURL
         self.loginCompletion = completion
         super.init(nibName: nil, bundle: nil)

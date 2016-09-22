@@ -22,7 +22,7 @@ struct RequestBuilder {
             case .failure(let error):
                 switch error {
                 case AtlasAPIError.unauthorized:
-                    guard let authorizationHandler = try? Injector.provide() as AtlasAuthorizationHandler else {
+                    guard let authorizationHandler = try? Injector.provide() as AuthorizationHandler else {
                         return completion(.failure(error))
                     }
                     authorizationHandler.authorize { result in

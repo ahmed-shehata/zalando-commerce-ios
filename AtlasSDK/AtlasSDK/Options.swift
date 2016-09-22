@@ -11,13 +11,11 @@ public struct Options {
     public let interfaceLanguage: String?
     public let countryCode: String
     public let configurationURL: NSURL
+    public let salesChannel: String
 
     public var localeIdentifier: String {
         return "\(interfaceLanguage ?? "")_\(countryCode)"
     }
-
-    @available( *, deprecated, message = "Should be taken from config service, when ready")
-    public let salesChannel: String
 
     public init(clientId: String? = nil,
         salesChannel: String? = nil,
@@ -25,7 +23,7 @@ public struct Options {
         countryCode: String? = nil,
         interfaceLanguage: String? = nil,
         configurationURL: NSURL? = nil,
-        authorizationHandler: AtlasAuthorizationHandler? = nil,
+        authorizationHandler: AuthorizationHandler? = nil,
         infoBundle bundle: NSBundle = NSBundle.mainBundle()) {
             self.clientId = clientId ?? bundle.string(.clientId)
             self.salesChannel = salesChannel ?? bundle.string(.salesChannel)
@@ -34,7 +32,7 @@ public struct Options {
             self.interfaceLanguage = interfaceLanguage ?? bundle.string(.interfaceLanguage)
 
             if let authorizationHandler = authorizationHandler {
-                Injector.register { authorizationHandler as AtlasAuthorizationHandler }
+                Injector.register { authorizationHandler as AuthorizationHandler }
             }
 
             if let url = configurationURL {

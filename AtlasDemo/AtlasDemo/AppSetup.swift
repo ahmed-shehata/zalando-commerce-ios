@@ -8,6 +8,7 @@ import AtlasUI
 import AtlasMockAPI
 
 class AppSetup {
+
     private(set) static var checkout: AtlasCheckout?
 
     static func configure() {

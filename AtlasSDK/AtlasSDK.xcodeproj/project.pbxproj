@@ -79,7 +79,7 @@
 		963AE70DD87A3C9A75FB0231D2130E7F /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CF52ED3F20B2F59D5E6096E498A18B /* PaymentMethod.swift */; };
 		97B4EDF441C6E5F2F715844EAFD527CD /* LoggerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B40AEACC9AD78CAFFB98B61702CE25A /* LoggerType.swift */; };
 		9F91C29E6D4328AD2CE09BB975179C05 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECCE8130C31F3C04713FD6782E20E5A /* Price.swift */; };
-		9FAB429E7C8D5E49A2CADE220377C3E5 /* AtlasAuthorizationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6DA8307AF1840B824DA76DA06A7224 /* AtlasAuthorizationHandler.swift */; };
+		9FAB429E7C8D5E49A2CADE220377C3E5 /* AuthorizationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6DA8307AF1840B824DA76DA06A7224 /* AuthorizationHandler.swift */; };
 		9FBE1426643CB5DFC73CD66E9CE24856 /* SequenceTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702F998B9D457EBAA94E996DA15ABB64 /* SequenceTypeTests.swift */; };
 		A0EFD6474DCE215941273DBFE9FB064B /* OrderAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A02961F55508B3B15CEC53112BFE4D /* OrderAddress.swift */; };
 		A259CD2306CCF2869A51462415F62F50 /* PrintLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812218FB3FA269E7294BC86C1E53B428 /* PrintLogger.swift */; };
@@ -167,7 +167,7 @@
 		145D219AEA3C99EECCE083FFD133AF3D /* OrderRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderRequest.swift; sourceTree = "<group>"; };
 		15D788B8AFA05BF3BB7559752D777933 /* Money.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
 		1A2446B4C740C6F74391BE81BC5BBA66 /* ArrayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayTests.swift; sourceTree = "<group>"; };
-		1F6DA8307AF1840B824DA76DA06A7224 /* AtlasAuthorizationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AtlasAuthorizationHandler.swift; path = AtlasSDK/AtlasAuthorizationHandler.swift; sourceTree = SOURCE_ROOT; };
+		1F6DA8307AF1840B824DA76DA06A7224 /* AuthorizationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthorizationHandler.swift; path = AtlasSDK/AuthorizationHandler.swift; sourceTree = SOURCE_ROOT; };
 		1F74E6F0CBCE6D7E27184F239E9438F9 /* PickupPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickupPoint.swift; sourceTree = "<group>"; };
 		242685CD209A93BB1CF84C2C0E70E64F /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		26934C20A41F5AB6BFC6045486845D3C /* APIClientErrorsSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIClientErrorsSpec.swift; path = AtlasSDKTests/APIClientErrorsSpec.swift; sourceTree = SOURCE_ROOT; };
@@ -544,7 +544,7 @@
 		D0A44DF820B48B72657D0CBF91478353 /* RequestBuilder */ = {
 			isa = PBXGroup;
 			children = (
-				1F6DA8307AF1840B824DA76DA06A7224 /* AtlasAuthorizationHandler.swift */,
+				1F6DA8307AF1840B824DA76DA06A7224 /* AuthorizationHandler.swift */,
 				2E2FC7346C3D5DCD683DA25205186362 /* RequestBuilder.swift */,
 				9B6A4C00C24DD306C5586089AC728FFD /* ResponseParser.swift */,
 			);
@@ -806,7 +806,7 @@
 				0123B138E910C18A68155F01C56F8C02 /* Array.swift in Sources */,
 				B760B0603070F9558115F9AF15FEF6B1 /* Article.swift in Sources */,
 				7842AF368F906588908661C4E9C4DB74 /* Atlas.swift in Sources */,
-				9FAB429E7C8D5E49A2CADE220377C3E5 /* AtlasAuthorizationHandler.swift in Sources */,
+				9FAB429E7C8D5E49A2CADE220377C3E5 /* AuthorizationHandler.swift in Sources */,
 				4B3B5CF184BCF3B77D6F7D955158FD9F /* AtlasLogger.swift in Sources */,
 				D19E1280CB863B5FA29CE8F2B60898BC /* AtlasResult.swift in Sources */,
 				29B4ADC4DEE86B64B93A0035E4054C9B /* Cart.swift in Sources */,

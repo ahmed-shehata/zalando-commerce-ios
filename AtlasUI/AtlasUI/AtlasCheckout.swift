@@ -39,7 +39,7 @@ public class AtlasCheckout: LocalizerProviderType {
                 completion(.failure(error))
 
             case .success(let client):
-                Injector.register { OAuth2AuthorizationHandler(loginURL: client.config.loginURL) as AtlasAuthorizationHandler }
+                Injector.register { OAuth2AuthorizationHandler(loginURL: client.config.loginURL) as AuthorizationHandler }
                 completion(.success(AtlasCheckout(client: client)))
             }
         }
