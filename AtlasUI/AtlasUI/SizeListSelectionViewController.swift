@@ -79,6 +79,7 @@ extension SizeListSelectionViewController: UITableViewDataSource {
         return tableView.dequeueReusableCell(UnitSizeTableViewCell.self, forIndexPath: indexPath) { cell in
             let unit = self.article.units[indexPath.item]
             cell.configureData(UnitSizeTableViewCellViewModel(unit: unit, localizer: self.localizer))
+            cell.accessibilityIdentifier = "size-cell-\(indexPath.row)"
             return cell
         }
     }
