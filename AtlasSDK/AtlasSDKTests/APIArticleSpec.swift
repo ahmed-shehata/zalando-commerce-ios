@@ -29,7 +29,8 @@ class APIArticleSpec: APIClientBaseSpec {
                             expect(article.units.first?.id).to(equal("AD541L009-G11000S000"))
                             expect(article.units.first?.price.amount).to(equal(76.4499969))
 
-                            expect(article.media.images.first?.detailUrl).to(equal(NSURL(validUrl: "https://i6.ztat.net/detail/AD/54/1L/00/9G/11/AD541L009-G11@14.jpg")))
+                            let validUrl = "https://i6.ztat.net/detail/AD/54/1L/00/9G/11/AD541L009-G11@14.jpg"
+                            expect(article.media.images.first?.detailUrl).to(equal(NSURL(validUrl: validUrl)))
                             expect(article.media.images.first?.order).to(equal(1))
                         }
                         done()
