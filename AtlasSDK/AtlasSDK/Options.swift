@@ -21,7 +21,7 @@ public struct Options {
 
     public init(clientId: String? = nil,
         salesChannel: String? = nil,
-        useSandbox: Bool? = false,
+        useSandbox: Bool? = nil,
         countryCode: String? = nil,
         interfaceLanguage: String? = nil,
         configurationURL: NSURL? = nil,
