@@ -112,8 +112,8 @@ extension CheckoutSummaryActionsHandler {
         guard Atlas.isUserLoggedIn() else { return loadCustomerData() }
         guard let paymentURL = strongViewController.checkoutViewModel.checkout?.payment.selectionPageUrl else { return }
 
-        let paymentSelectionstrongViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
-        paymentSelectionstrongViewController.paymentCompletion = { result in
+        let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
+        paymentSelectionViewController.paymentCompletion = { result in
             switch result {
             case .success:
                 self.loadCustomerData()
@@ -121,26 +121,26 @@ extension CheckoutSummaryActionsHandler {
                 strongViewController.userMessage.show(error: error)
             }
         }
-        strongViewController.showViewController(paymentSelectionstrongViewController, sender: strongViewController)
+        strongViewController.showViewController(paymentSelectionViewController, sender: strongViewController)
     }
 
     internal func showShippingAddressSelectionScreen() {
         guard let strongViewController = self.viewController else { return }
         guard Atlas.isUserLoggedIn() else { return loadCustomerData() }
-        let addressSelectionstrongViewController = AddressPickerViewController(checkout: strongViewController.checkout,
+        let addressSelectionViewController = AddressPickerViewController(checkout: strongViewController.checkout,
             addressType: .shipping, addressSelectionCompletion: pickedAddressCompletion)
-        addressSelectionstrongViewController.selectedAddress = strongViewController.checkoutViewModel.selectedShippingAddress
-        strongViewController.showViewController(addressSelectionstrongViewController, sender: strongViewController)
+        addressSelectionViewController.selectedAddress = strongViewController.checkoutViewModel.selectedShippingAddress
+        strongViewController.showViewController(addressSelectionViewController, sender: strongViewController)
     }
 
     internal func showBillingAddressSelectionScreen() {
         guard let strongViewController = self.viewController else { return }
         guard Atlas.isUserLoggedIn() else { return loadCustomerData() }
-        let addressSelectionstrongViewController = AddressPickerViewController(checkout: strongViewController.checkout,
+        let addressSelectionViewController = AddressPickerViewController(checkout: strongViewController.checkout,
                                                                                addressType: .billing,
                                                                                addressSelectionCompletion: pickedAddressCompletion)
-        addressSelectionstrongViewController.selectedAddress = strongViewController.checkoutViewModel.selectedBillingAddress
-        strongViewController.showViewController(addressSelectionstrongViewController, sender: strongViewController)
+        addressSelectionViewController.selectedAddress = strongViewController.checkoutViewModel.selectedBillingAddress
+        strongViewController.showViewController(addressSelectionViewController, sender: strongViewController)
     }
 
     internal func handleOrderConfirmation(order: Order) {
@@ -151,8 +151,8 @@ extension CheckoutSummaryActionsHandler {
             return
         }
 
-        let paymentSelectionstrongViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
-        paymentSelectionstrongViewController.paymentCompletion = { result in
+        let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
+        paymentSelectionViewController.paymentCompletion = { result in
             switch result {
             case .success:
                 strongViewController.viewState = .OrderPlaced
@@ -160,7 +160,7 @@ extension CheckoutSummaryActionsHandler {
                 strongViewController.userMessage.show(error: error)
             }
         }
-        strongViewController.showViewController(paymentSelectionstrongViewController, sender: strongViewController)
+        strongViewController.showViewController(paymentSelectionViewController, sender: strongViewController)
     }
 
 }
