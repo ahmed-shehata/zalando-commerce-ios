@@ -13,6 +13,7 @@ enum AddressType {
 typealias AddressSelectionCompletion = (pickedAddress: EquatableAddress?, pickedAddressType: AddressType) -> Void
 typealias CreateAddressHandler = () -> Void
 typealias UpdateAddressHandler = (address: EquatableAddress) -> Void
+typealias DeleteAddressHandler = () -> Void
 
 final class AddressPickerViewController: UIViewController, CheckoutProviderType {
 
@@ -32,6 +33,7 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
         didSet {
             tableviewDelegate?.addresses = addresses
             tableView.reloadData()
+            configureEditButton()
         }
     }
     let tableviewDelegate: AddressListTableViewDelegate?
@@ -67,9 +69,8 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
         case .shipping:
             self.title = "Shipping Address"
         }
-        self.navigationItem.rightBarButtonItem = self.editButtonItem()
+
         self.navigationController?.navigationBar.accessibilityIdentifier = "address-picker-navigation-bar"
-        self.navigationItem.rightBarButtonItem?.accessibilityIdentifier = "address-picker-right-button"
 
         setupView()
         fetchAddresses()
@@ -84,6 +85,7 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
     private func configureTableviewDelegate() {
         configureCreateAddress()
         configureUpdateAddress()
+        configureDeleteAddress()
     }
 
     private func fetchAddresses() {
@@ -150,27 +152,19 @@ extension AddressPickerViewController {
         }
     }
 
-    private func showCreateAddress(addressType: EditAddressType) {
-        showCreateAddressViewController(addressType) { [weak self] editAddressViewModel in
-            guard let request = CreateAddressRequest(addressViewModel: editAddressViewModel) else { return }
-            self?.loaderView.show()
-            self?.checkout.client.createAddress(request) { result in
-                guard let strongSelf = self else { return }
-                strongSelf.loaderView.hide()
-                Async.main {
-                    switch result {
-                    case .failure(let error):
-                        strongSelf.userMessage.show(error: error)
-                    case .success(let address):
-                        strongSelf.addresses.append(address)
-                    }
-                }
-            }
+    private func showCreateAddress(addressType: AddressFormType) {
+        showCreateAddressViewController(addressType) { [weak self] address in
+            guard let strongSelf = self else { return }
+            strongSelf.selectionCompletion(pickedAddress: address, pickedAddressType: strongSelf.addressType)
+            strongSelf.navigationController?.popViewControllerAnimated(false)
         }
     }
 
-    private func showCreateAddressViewController(type: EditAddressType, completion: EditAddressCompletion) {
-        let viewController = EditAddressViewController(addressType: type, checkout: checkout, address: nil, completion: completion)
+    private func showCreateAddressViewController(type: AddressFormType, completion: AddressFormCompletion) {
+        let viewController = AddressFormViewController(addressType: type,
+                                                       addressMode: .createAddress,
+                                                       checkout: checkout,
+                                                       completion: completion)
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.modalPresentationStyle = .OverCurrentContext
         self.navigationController?.showViewController(navigationController, sender: nil)
@@ -181,37 +175,46 @@ extension AddressPickerViewController {
 extension AddressPickerViewController {
 
     private func configureUpdateAddress() {
-        tableviewDelegate?.updateAddressHandler = { [weak self](address) in
+        tableviewDelegate?.updateAddressHandler = { [weak self] address in
             self?.showUpdateAddress(address)
         }
     }
 
-    private func showUpdateAddress(address: EquatableAddress) {
-        let addressType: EditAddressType = address.pickupPoint == nil ? .StandardAddress : .PickupPoint
-        showUpdateAddressViewController(addressType, address: address) { [weak self] editAddressViewModel in
-            guard let request = UpdateAddressRequest(addressViewModel: editAddressViewModel) else { return }
-            self?.loaderView.show()
-            self?.checkout.client.updateAddress(address.id, request: request) { result in
-                guard let strongSelf = self else { return }
-                strongSelf.loaderView.hide()
-                Async.main {
-                    switch result {
-                    case .failure(let error):
-                        strongSelf.userMessage.show(error: error)
-                    case .success(let address):
-                        let idx = strongSelf.addresses.indexOf { $0 == address }
-                        if let addressIdx = idx {
-                            strongSelf.addresses[addressIdx] = address
-                        }
-                    }
-                }
+    private func showUpdateAddress(originalAddress: EquatableAddress) {
+        let addressType: AddressFormType = originalAddress.pickupPoint == nil ? .StandardAddress : .PickupPoint
+        showUpdateAddressViewController(addressType, address: originalAddress) { [weak self] updatedAddress in
+            let idx = self?.addresses.indexOf { $0 == updatedAddress }
+            if let addressIdx = idx {
+                self?.addresses[addressIdx] = updatedAddress
             }
         }
     }
 
-    private func showUpdateAddressViewController(type: EditAddressType, address: EquatableAddress, completion: EditAddressCompletion) {
-        let viewController = EditAddressViewController(addressType: type, checkout: checkout, address: address, completion: completion)
+    private func showUpdateAddressViewController(type: AddressFormType, address: EquatableAddress, completion: AddressFormCompletion) {
+        let viewController = AddressFormViewController(addressType: type,
+                                                       addressMode: .updateAddress(address: address),
+                                                       checkout: checkout,
+                                                       completion: completion)
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 
+}
+
+extension AddressPickerViewController {
+
+    private func configureDeleteAddress() {
+        tableviewDelegate?.deleteAddressHandler = { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.configureEditButton()
+        }
+    }
+
+    private func configureEditButton() {
+        if let addressList = tableviewDelegate?.addresses where addressList.isEmpty {
+            self.navigationItem.rightBarButtonItem = nil
+        } else {
+            self.navigationItem.rightBarButtonItem = self.editButtonItem()
+            self.navigationItem.rightBarButtonItem?.accessibilityIdentifier = "address-picker-right-button"
+        }
+    }
 }

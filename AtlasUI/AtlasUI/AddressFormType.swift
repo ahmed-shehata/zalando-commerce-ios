@@ -5,11 +5,16 @@
 import Foundation
 import AtlasSDK
 
-enum EditAddressType {
+enum AddressFormMode {
+    case createAddress
+    case updateAddress(address: EquatableAddress)
+}
+
+enum AddressFormType {
     case StandardAddress
     case PickupPoint
 
-    var fields: [EditAddressField] {
+    var fields: [AddressFormField] {
         switch self {
         case .StandardAddress: return [.Title, .FirstName, .LastName, .Street, .Additional, .Zipcode, .City, .Country]
         case .PickupPoint: return [.Title, .FirstName, .LastName, .Packstation, .MemberID, .Zipcode, .City, .Country]
@@ -17,7 +22,7 @@ enum EditAddressType {
     }
 }
 
-enum EditAddressField: String {
+enum AddressFormField: String {
     case Title
     case FirstName
     case LastName
@@ -34,11 +39,11 @@ enum EditAddressField: String {
     }
 
     func title(localizer: LocalizerProviderType) -> String {
-        let title = localizer.loc("Address.edit.\(rawValue.lowercaseString)")
+        let title = localizer.loc("Address.form.\(rawValue.lowercaseString)")
         return title + (formValidators.contains { $0 == .Required } ? "*" : "")
     }
 
-    func value(viewModel: EditAddressViewModel, localizer: LocalizerProviderType) -> String? {
+    func value(viewModel: AddressFormViewModel, localizer: LocalizerProviderType) -> String? {
         switch self {
         case .Title: return viewModel.localizedTitle(localizer)
         case .FirstName: return viewModel.firstName
@@ -53,7 +58,7 @@ enum EditAddressField: String {
         }
     }
 
-    func updateModel(viewModel: EditAddressViewModel, withValue value: String?, localizer: LocalizerProviderType) {
+    func updateModel(viewModel: AddressFormViewModel, withValue value: String?, localizer: LocalizerProviderType) {
         switch self {
         case .Title: viewModel.updateTitle(value, localizer: localizer)
         case .FirstName: viewModel.firstName = value
@@ -82,7 +87,7 @@ enum EditAddressField: String {
         }
     }
 
-    func customView(viewModel: EditAddressViewModel, localizer: LocalizerProviderType, completion: TextFieldChangedHandler) -> UIView? {
+    func customView(viewModel: AddressFormViewModel, localizer: LocalizerProviderType, completion: TextFieldChangedHandler) -> UIView? {
         switch self {
         case .Title:
             let titles = viewModel.titles(localizer)
@@ -133,4 +138,12 @@ enum EditAddressField: String {
         }
     }
 
+}
+
+internal func == (lhs: AddressFormMode, rhs: AddressFormMode) -> Bool {
+    switch (lhs, rhs) {
+    case (.createAddress, .createAddress): return true
+    case (.updateAddress(let lhsAddress), .updateAddress(let rhsAddress)): return lhsAddress == rhsAddress
+    default: return false
+    }
 }

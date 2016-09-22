@@ -45,19 +45,19 @@
 "AtlasConfigurationError.message.missingSalesChannel" = "Missing sales channel";
 "AtlasConfigurationError.message.missingInterfaceLanguage" = "Missing interface language";
 
-"Address.edit.title" = "Title";
-"Address.edit.firstname" = "First Name";
-"Address.edit.lastname" = "Last Name";
-"Address.edit.street" = "Street";
-"Address.edit.additional" = "Additional";
-"Address.edit.packstation" = "Packstation";
-"Address.edit.memberid" = "Member ID";
-"Address.edit.zipcode" = "Zipcode";
-"Address.edit.city" = "City";
-"Address.edit.country" = "Country";
+"Address.form.title" = "Title";
+"Address.form.firstname" = "First Name";
+"Address.form.lastname" = "Last Name";
+"Address.form.street" = "Street";
+"Address.form.additional" = "Additional";
+"Address.form.packstation" = "Packstation";
+"Address.form.memberid" = "Member ID";
+"Address.form.zipcode" = "Zipcode";
+"Address.form.city" = "City";
+"Address.form.country" = "Country";
 
-"Address.edit.gender.male" = "Mr";
-"Address.edit.gender.female" = "Mrs";
+"Address.form.gender.male" = "Mr";
+"Address.form.gender.female" = "Mrs";
 
 "Address.Add.type.title" = "Address Type";
 "Address.Add.type.standard" = "Standard";
