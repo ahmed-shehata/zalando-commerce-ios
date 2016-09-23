@@ -24,7 +24,7 @@ class ProfileViewController: UIViewController {
 
         self.email.textColor = UIColor.grayColor()
 
-        AppSetup.sharedInstance.checkout?.client.customer { result in
+        AppSetup.checkout?.client.customer { result in
             switch result {
             case .failure(let error):
                 self.showError(title: "Error", error: error)
@@ -41,11 +41,8 @@ class ProfileViewController: UIViewController {
         }
     }
 
-    @IBAction func payNowButtonTapped(sender: AnyObject) {
-//        showPaymentScreen()
-    }
     @IBAction func logoutButtonTapped(sender: AnyObject) {
-        Atlas.logoutCustomer()
+        Atlas.logoutUser()
         self.navigationController?.popViewControllerAnimated(true)
     }
 

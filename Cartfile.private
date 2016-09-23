@@ -1,14 +1,14 @@
 # Tests
 
 github "Quick/Quick"
-github "Quick/Nimble"
+github "Quick/Nimble" "v4.1.0"
 
 # AtlasMockAPI
 
-github "bonkey/swifter" "stable"
+github "httpswift/swifter" "stable"
 
 # AtlasDemo
 
-github "bonkey/SwiftyJSON" "master"
+github "SwiftyJSON/SwiftyJSON" "swift2"
 github "Alamofire/Alamofire" "3.5.0"
 github "Alamofire/AlamofireImage" "2.5.0"

@@ -33,16 +33,19 @@ class AtlasSpec: QuickSpec {
 
             it("should logout user successfully") {
                 self.loginUser()
-                Atlas.logoutCustomer()
+                Atlas.logoutUser()
 
-                expect(APIAccessToken.retrieve()).to(beNil())
+                expect(Atlas.isUserLoggedIn()).to(beFalse())
             }
 
             it("should successfully return API client") {
                 let opts = Options(clientId: "atlas_Y2M1MzA",
                     salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
-                    useSandbox: true, interfaceLanguage: "en_DE",
-                    configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
+                    useSandbox: true,
+                    countryCode: "DE",
+                    interfaceLanguage: "de",
+                    configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"),
+                    authorizationHandler: MockAuthorizationHandler())
 
                 waitUntil(timeout: 60) { done in
                     Atlas.configure(opts) { result in
