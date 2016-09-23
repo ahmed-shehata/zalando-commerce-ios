@@ -11,7 +11,7 @@ extension Options {
         case useSandbox = "ATLASSDK_USE_SANDBOX"
         case clientId = "ATLASSDK_CLIENT_ID"
         case salesChannel = "ATLASSDK_SALES_CHANNEL"
-        case localeIdentifier = "ATLASSDK_LOCALE_IDENTIFIER"
+        case interfaceLanguage = "ATLASSDK_INTERFACE_LANGUAGE"
 
     }
 

@@ -36,7 +36,11 @@ extension Config {
         self.salesChannel = localeSalesChannel.salesChannel
         self.salesChannelLocale = NSLocale(localeIdentifier: localeSalesChannel.locale)
 
-        self.interfaceLocale = options.locale ?? NSLocale(localeIdentifier: localeSalesChannel.locale)
+        if let interfaceLanguage = options.interfaceLanguage {
+            self.interfaceLocale = NSLocale(localeIdentifier: "\(interfaceLanguage)_\(salesChannelLocale.countryCode)")
+        } else {
+            self.interfaceLocale = salesChannelLocale
+        }
 
         self.clientId = options.clientId
     }

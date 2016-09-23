@@ -8,28 +8,21 @@ public struct Options {
 
     public let useSandboxEnvironment: Bool
     public let clientId: String
-    public let localeIdentifier: String?
-    public let configurationURL: NSURL
     public let salesChannel: String
-
-    internal var locale: NSLocale? {
-        guard let localeIdentifier = localeIdentifier else {
-            return nil
-        }
-        return NSLocale(localeIdentifier: localeIdentifier)
-    }
+    public let interfaceLanguage: String?
+    public let configurationURL: NSURL
 
     public init(clientId: String? = nil,
         salesChannel: String? = nil,
         useSandbox: Bool? = nil,
-        localeIdentifier: String? = nil,
+        interfaceLanguage: String? = nil,
         configurationURL: NSURL? = nil,
         authorizationHandler: AuthorizationHandler? = nil,
         infoBundle bundle: NSBundle = NSBundle.mainBundle()) {
             self.clientId = clientId ?? bundle.string(.clientId) ?? ""
             self.salesChannel = salesChannel ?? bundle.string(.salesChannel) ?? ""
             self.useSandboxEnvironment = useSandbox ?? bundle.bool(.useSandbox) ?? false
-            self.localeIdentifier = localeIdentifier ?? bundle.string(.localeIdentifier)
+            self.interfaceLanguage = interfaceLanguage ?? bundle.string(.interfaceLanguage)
 
             if let authorizationHandler = authorizationHandler {
                 Injector.register { authorizationHandler as AuthorizationHandler }
@@ -65,7 +58,7 @@ extension Options: CustomStringConvertible {
             + "\n\tclientId = \(formatOptional(clientId)) "
             + ", \n\tuseSandboxEnvironment = \(useSandboxEnvironment) "
             + ", \n\tsalesChannel = \(formatOptional(salesChannel)) "
-            + ", \n\tlocaleIdentifier = \(locale?.localeIdentifier) "
+            + ", \n\tinterfaceLanguage = \(interfaceLanguage) "
             + " } "
     }
 
