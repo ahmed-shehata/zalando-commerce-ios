@@ -216,6 +216,6 @@ extension CheckoutSummaryActionsHandler {
 extension UpdateCheckoutRequest {
     init (checkoutViewModel: CheckoutViewModel) {
         self.init(billingAddressId: checkoutViewModel.selectedBillingAddress?.id,
-            shippingAddressId: checkoutViewModel.selectedBillingAddress?.id)
+            shippingAddressId: checkoutViewModel.selectedShippingAddress?.id)
     }
 }

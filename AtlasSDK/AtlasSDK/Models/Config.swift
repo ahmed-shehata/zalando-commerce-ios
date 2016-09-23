@@ -12,14 +12,11 @@ public struct Config {
     public let clientId: String
     public let salesChannel: String
 
-    public let locale: NSLocale
+    public let salesChannelLocale: NSLocale
+    public let interfaceLocale: NSLocale
 
     public var countryCode: String {
-        return locale.countryCode
-    }
-
-    public var languageCode: String {
-        return locale.languageCode
+        return interfaceLocale.countryCode
     }
 
 }
@@ -33,7 +30,7 @@ extension Config {
         catalogURL = json["atlas-catalog-api"]["url"].URL,
             checkoutURL = json["atlas-checkout-api"]["url"].URL,
             loginURL = json["oauth2-provider"]["url"].URL,
-            localeSalesChannel = Config.localeSalesChannel(json, containingLocaleIdentifier: options.localeIdentifier)
+            localeSalesChannel = Config.findSalesChannel(json, channelId: options.salesChannel)
         else { return nil }
 
         self.catalogURL = catalogURL
@@ -41,13 +38,19 @@ extension Config {
         self.loginURL = loginURL
 
         self.salesChannel = localeSalesChannel.salesChannel
-        self.locale = NSLocale(localeIdentifier: localeSalesChannel.locale)
+        self.salesChannelLocale = NSLocale(localeIdentifier: localeSalesChannel.locale)
+
+        if let interfaceLanguage = options.interfaceLanguage {
+            self.interfaceLocale = NSLocale(localeIdentifier: "\(interfaceLanguage)_\(salesChannelLocale.countryCode)")
+        } else {
+            self.interfaceLocale = salesChannelLocale
+        }
 
         self.clientId = options.clientId
     }
 
-    private static func localeSalesChannel(json: JSON, containingLocaleIdentifier identifier: String) -> LocaleSalesChannel? {
-        guard let matchedChannel = firstMatchedChannel(json, containingLocaleIdentifier: identifier),
+    private static func findSalesChannel(json: JSON, channelId: String) -> LocaleSalesChannel? {
+        guard let matchedChannel = firstMatchedChannel(json, channelId: channelId),
             salesChannel = matchedChannel["sales-channel"]?.string,
             locale = matchedChannel["locale"]?.string
         else {
@@ -57,10 +60,14 @@ extension Config {
         return (salesChannel: salesChannel, locale: locale)
     }
 
-    private static func firstMatchedChannel(json: JSON, containingLocaleIdentifier identifier: String) -> [String: JSON]? {
-        let channel = json["sales-channels"].arrayValue.filter { channel in
-            return channel["locale"].stringValue.lowercaseString.containsString(identifier.lowercaseString)
+    private static func firstMatchedChannel(json: JSON, channelId: String) -> [String: JSON]? {
+        guard let availableChannels = json["sales-channels"].array else {
+            return nil
+        }
+        let channel = availableChannels.filter { channel in
+            return channel["sales-channel"].string?.lowercaseString.containsString(channelId) ?? false
         }.first
+
         return channel?.dictionary
     }
 
@@ -73,7 +80,8 @@ extension Config: CustomStringConvertible {
             + ", loginURL: \(self.loginURL)"
             + ", salesChannel: \(self.salesChannel)"
             + ", clientId: \(self.clientId)"
-            + ", localeIdentifier: \(self.locale.localeIdentifier)"
+            + ", salesChannelLocale: \(self.salesChannelLocale.localeIdentifier)"
+            + ", interfaceLocale: \(self.interfaceLocale.localeIdentifier)"
             + " }"
     }
 }
