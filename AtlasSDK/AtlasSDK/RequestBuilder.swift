@@ -40,9 +40,7 @@ struct RequestBuilder {
                 }
 
             case .success(let response):
-                dispatch_async(dispatch_get_main_queue()) {
-                    completion(.success(response))
-                }
+                completion(.success(response))
             }
         }
     }
