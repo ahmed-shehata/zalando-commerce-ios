@@ -78,7 +78,7 @@ extension RequestBuilder: CustomStringConvertible {
         var desc = ""
         if let request = request {
             desc += "REQUEST:\n"
-            desc += "\(request.HTTPMethod) \(request.URL!)\n\n"
+            desc += "\(request.HTTPMethod) \(request.URL!)\n\n" // swiftlint:disable:this force_unwrapping
             request.allHTTPHeaderFields?.forEach { key, val in
                 desc += "\(key): \(val)"
             }
