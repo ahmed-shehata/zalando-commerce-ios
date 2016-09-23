@@ -84,7 +84,7 @@ extension AtlasCheckout: Localizable {
     }
 
     var localeIdentifier: String {
-        return client.config.locale.localeIdentifier
+        return client.config.interfaceLocale.localeIdentifier
     }
 
 }

@@ -30,6 +30,7 @@ struct ResponseParser {
                 AtlasLogger.logDebug("JSON backend response", json)
                 error = AtlasAPIError.backend(
                     status: json["status"].int,
+                    type: json["type"].string,
                     title: json["title"].string,
                     details: json["detail"].string)
             } else {
