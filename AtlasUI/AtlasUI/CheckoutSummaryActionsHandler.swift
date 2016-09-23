@@ -73,9 +73,7 @@ extension CheckoutSummaryActionsHandler {
 
             switch result {
             case .failure(let error):
-                Async.main {
                     strongViewController.userMessage.show(error: error)
-                }
             case .success(let customer):
                 self.generateCheckout(customer)
             }
@@ -167,10 +165,10 @@ extension CheckoutSummaryActionsHandler {
 
 extension CheckoutSummaryActionsHandler {
     func pickedAddressCompletion(pickedAddress address: EquatableAddress?,
-
-        forAddressType addressType: AddressType, popBackToSummary: Bool) {
+        forAddressType addressType: AddressType, popBackToSummaryOnFinish: Bool) {
             guard let strongViewController = self.viewController else { return }
-            if popBackToSummary {
+
+            if popBackToSummaryOnFinish {
                 strongViewController.navigationController?.popViewControllerAnimated(true)
             }
 
@@ -181,13 +179,10 @@ extension CheckoutSummaryActionsHandler {
                 strongViewController.checkoutViewModel.selectedShippingAddress = address
             }
             if address == nil {
-
                 strongViewController.checkoutViewModel.resetState()
-
                 strongViewController.checkoutViewModel.checkout = nil
-
             }
-            strongViewController.hideLoader()
+
             strongViewController.rootStackView.configureData(strongViewController)
             strongViewController.refreshViewData()
 

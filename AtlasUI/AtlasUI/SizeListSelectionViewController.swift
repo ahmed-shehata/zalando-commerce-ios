@@ -97,8 +97,6 @@ final class SizeListSelectionViewController: UITableViewController, CheckoutProv
 
     private func displayCheckoutSummaryViewController(checkoutViewModel: CheckoutViewModel) {
         let checkoutSummaryVC = CheckoutSummaryViewController(checkout: checkout, checkoutViewModel: checkoutViewModel)
-        Async.main {
-            self.showViewController(checkoutSummaryVC, sender: self)
-        }
+        self.showViewController(checkoutSummaryVC, sender: self)
     }
 }

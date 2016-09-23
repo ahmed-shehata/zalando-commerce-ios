@@ -44,12 +44,18 @@ public struct APIClient {
         RequestBuilder(forEndpoint: endpoint, urlSession: urlSession).execute { result in
             switch result {
             case .failure(let error):
-                completion(.failure(error))
+                dispatch_async(dispatch_get_main_queue()) {
+                    completion(.failure(error))
+                }
             case .success(let response):
                 if let parsedResponse = successHandler(response) {
-                    completion(.success(parsedResponse))
+                    dispatch_async(dispatch_get_main_queue()) {
+                        completion(.success(parsedResponse))
+                    }
                 } else {
-                    completion(.failure(AtlasAPIError.invalidResponseFormat))
+                    dispatch_async(dispatch_get_main_queue()) {
+                        completion(.failure(AtlasAPIError.invalidResponseFormat))
+                    }
                 }
             }
         }

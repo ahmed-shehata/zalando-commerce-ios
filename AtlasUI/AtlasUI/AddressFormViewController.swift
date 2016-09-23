@@ -154,37 +154,31 @@ extension AddressFormViewController {
 
     private func checkAddressRequestCompletion(result: AtlasResult<CheckAddressResponse>) {
         loaderView.hide()
-        Async.main { [weak self] in
-            guard let strongSelf = self else { return }
-            switch result {
-            case .failure(let error):
-                strongSelf.userMessage.show(error: error)
-            case .success(let checkAddressResponse):
-                if checkAddressResponse.status == .notCorrect {
-                    let title = strongSelf.loc("Address.validation.notValid")
-                    strongSelf.userMessage.show(title: title, message: nil, actions: ButtonAction(text: "OK"))
-                } else {
-                    switch strongSelf.addressMode {
-                    case .createAddress: strongSelf.createAddressRequest()
-                    case .updateAddress(let address): strongSelf.updateAddressRequest(address)
-                    }
-                    strongSelf.dismissView()
+        switch result {
+        case .failure(let error):
+            self.userMessage.show(error: error)
+        case .success(let checkAddressResponse):
+            if checkAddressResponse.status == .notCorrect {
+                let title = self.loc("Address.validation.notValid")
+                self.userMessage.show(title: title, message: nil, actions: ButtonAction(text: "OK"))
+            } else {
+                switch self.addressMode {
+                case .createAddress: self.createAddressRequest()
+                case .updateAddress(let address): self.updateAddressRequest(address)
                 }
+                self.dismissView()
             }
         }
     }
 
     private func createUpdateAddressRequestCompletion(result: AtlasResult<UserAddress>) {
         loaderView.hide()
-        Async.main { [weak self] in
-            guard let strongSelf = self else { return }
-            switch result {
-            case .failure(let error):
-                strongSelf.userMessage.show(error: error)
-            case .success(let address):
-                strongSelf.dismissView()
-                strongSelf.completion?(address)
-            }
+        switch result {
+        case .failure(let error):
+            self.userMessage.show(error: error)
+        case .success(let address):
+            self.dismissView()
+            self.completion?(address)
         }
     }
 
