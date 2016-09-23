@@ -24,10 +24,8 @@
 	<string>CLIENT_ID_PLIST</string>
 	<key>ATLASSDK_SALES_CHANNEL</key>
 	<string>SALES_CHANNEL_PLIST</string>
-	<key>ATLASSDK_INTERFACE_LANGUAGE</key>
-	<string>en</string>
-	<key>ATLASSDK_COUNTRY_CODE</key>
-	<string>DE</string>
+	<key>ATLASSDK_LOCALE_IDENTIFIER</key>
+	<string>en_DE</string>
 	<key>ATLASSDK_USE_SANDBOX</key>
 	<true/>
 </dict>

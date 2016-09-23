@@ -11,8 +11,7 @@ extension Options {
         case useSandbox = "ATLASSDK_USE_SANDBOX"
         case clientId = "ATLASSDK_CLIENT_ID"
         case salesChannel = "ATLASSDK_SALES_CHANNEL"
-        case interfaceLanguage = "ATLASSDK_INTERFACE_LANGUAGE"
-        case countryCode = "ATLASSDK_COUNTRY_CODE"
+        case localeIdentifier = "ATLASSDK_LOCALE_IDENTIFIER"
 
     }
 
@@ -20,11 +19,11 @@ extension Options {
 
 extension NSBundle {
 
-    func string(key: Options.InfoKey, defaultValue: String = "") -> String {
+    func string(key: Options.InfoKey, defaultValue: String? = nil) -> String? {
         return self.infoObject(forKey: key) ?? defaultValue
     }
 
-    func bool(key: Options.InfoKey, defaultValue: Bool = false) -> Bool {
+    func bool(key: Options.InfoKey, defaultValue: Bool? = nil) -> Bool? {
         return self.infoObject(forKey: key) ?? defaultValue
     }
 

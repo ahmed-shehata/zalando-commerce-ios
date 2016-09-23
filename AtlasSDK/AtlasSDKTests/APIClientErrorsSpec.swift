@@ -11,6 +11,7 @@ import AtlasMockAPI
 
 class APIClientErrorsSpec: APIClientBaseSpec {
 
+    // swiftlint:disable:next function_body_length
     override func spec() {
 
         describe("API Client Errors") {
@@ -43,8 +44,7 @@ class APIClientErrorsSpec: APIClientBaseSpec {
                 let options = Options(clientId: "atlas_Y2M1MzA",
                     salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
                     useSandbox: true,
-                    countryCode: "DE",
-                    interfaceLanguage: "de",
+                    localeIdentifier: "de_DE",
                     authorizationHandler: MockAuthorizationHandler(error: AtlasAPIError.unauthorized),
                     configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
 
