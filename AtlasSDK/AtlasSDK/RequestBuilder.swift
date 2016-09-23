@@ -5,91 +5,64 @@
 import Foundation
 
 typealias ResponseCompletion = AtlasResult<JSONResponse> -> Void
-typealias RequestTaskCompletion = (RequestBuilder) -> Void
 
-class RequestBuilder: Equatable {
+struct RequestBuilder {
 
-    var executionFinished: RequestTaskCompletion?
-    var urlSession: NSURLSession
-    var endpoint: Endpoint
-    private var dataTask: NSURLSessionDataTask?
+    let endpoint: Endpoint
+    let urlSession: NSURLSession
 
-    init(urlSession: NSURLSession = NSURLSession.sharedSession(), endpoint: Endpoint) {
+    init(forEndpoint endpoint: Endpoint, urlSession: NSURLSession = NSURLSession.sharedSession()) {
         self.urlSession = urlSession
         self.endpoint = endpoint
     }
 
-    deinit {
-        dataTask?.cancel()
-    }
-
     func execute(completion: ResponseCompletion) {
-        buildAndExecuteSessionTask { [weak self] result in
-            guard let strongSelf = self else { return }
+        buildAndExecuteSessionTask { result in
             switch result {
             case .failure(let error):
-                completion(.failure(error))
-                strongSelf.executionFinished?(strongSelf)
+                AtlasLogger.logError(error, verbose: true)
+                switch error {
+                case AtlasAPIError.unauthorized:
+                    guard let authorizationHandler = try? Injector.provide() as AuthorizationHandler else {
+                        return completion(.failure(error))
+                    }
+                    authorizationHandler.authorize { result in
+                        switch result {
+                        case .failure(let error):
+                            completion(.failure(error))
+                        case .success(let accessToken):
+                            APIAccessToken.store(accessToken)
+                            self.execute(completion)
+                        }
+                    }
+                default:
+                    completion(.failure(error))
+                }
+
             case .success(let response):
-                completion(.success(response))
-                strongSelf.executionFinished?(strongSelf)
+                dispatch_async(dispatch_get_main_queue()) {
+                    completion(.success(response))
+                }
             }
         }
     }
 
-    func buildAndExecuteSessionTask(completion: ResponseCompletion) {
+    private func buildAndExecuteSessionTask(completion: ResponseCompletion) {
         let request: NSMutableURLRequest
         do {
-            request = try buildRequest().debugLog()
+            request = try buildRequest()
         } catch let e {
             return completion(.failure(e))
         }
 
-        dataTask = self.urlSession.dataTaskWithRequest(request) { data, response, error in
-            self.handleResponse(data, response, error, completion)
-        }
-
-        dataTask?.resume()
+        self.urlSession.dataTaskWithRequest(request) { response in
+            ResponseParser(taskResponse: response).parse(completion)
+        }.resume()
     }
 
-    func buildRequest() throws -> NSMutableURLRequest {
-        return try NSMutableURLRequest(endpoint: endpoint)
+    private func buildRequest() throws -> NSMutableURLRequest {
+        let request = try NSMutableURLRequest(endpoint: endpoint).debugLog()
+        return request.authorize(withToken: APIAccessToken.retrieve())
     }
 
-    private func handleResponse(data: NSData?, _ response: NSURLResponse?, _ error: NSError?, _ completion: ResponseCompletion) {
-        if let error = error {
-            let nsURLError = AtlasAPIError.nsURLError(code: error.code, details: error.localizedDescription)
-            return completion(.failure(nsURLError))
-        }
-
-        guard let httpResponse = response as? NSHTTPURLResponse, data = data else {
-            return completion(.failure(AtlasAPIError.noData))
-        }
-
-        let json: JSON? = data.length > 0 ? JSON(data: data) : nil
-
-        guard httpResponse.isSuccessful else {
-            let error: AtlasAPIError
-            if httpResponse.status == .Unauthorized {
-                error = AtlasAPIError.unauthorized
-            } else if let json = json where json != JSON.null {
-                error = AtlasAPIError.backend(
-                    status: json["status"].int,
-                    title: json["title"].string,
-                    details: json["detail"].string)
-            } else {
-                error = AtlasAPIError.http(
-                    status: HTTPStatus(statusCode: httpResponse.statusCode),
-                    details: NSHTTPURLResponse.localizedStringForStatusCode(httpResponse.statusCode))
-            }
-            return completion(.failure(error))
-        }
-
-        completion(.success(JSONResponse(response: httpResponse, body: json)))
-    }
-
-}
-
-func == (lhs: RequestBuilder, rhs: RequestBuilder) -> Bool {
-    return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
 }

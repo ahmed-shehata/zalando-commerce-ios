@@ -8,13 +8,10 @@ public struct APIClient {
 
     public let config: Config
 
-    var urlSession: NSURLSession = NSURLSession.sharedSession()
-
-    private let requestBuilders: APIRequestBuildersContainer
+    internal var urlSession: NSURLSession = NSURLSession.sharedSession()
 
     init(config: Config) {
         self.config = config
-        self.requestBuilders = APIRequestBuildersContainer(config: config)
     }
 
     func touch(endpoint: Endpoint, successStatus: HTTPStatus = .NoContent, completion: AtlasResult<Bool> -> Void) {
@@ -44,7 +41,7 @@ public struct APIClient {
     }
 
     private func fetch<T>(from endpoint: Endpoint, completion: AtlasResult<T> -> Void, successHandler: JSONResponse -> T?) {
-        self.requestBuilders.createBuilder(forEndpoint: endpoint, urlSession: urlSession).execute { result in
+        RequestBuilder(forEndpoint: endpoint, urlSession: urlSession).execute { result in
             switch result {
             case .failure(let error):
                 completion(.failure(error))
@@ -56,8 +53,6 @@ public struct APIClient {
                 }
             }
         }
-
     }
-
 
 }

@@ -33,8 +33,8 @@ public struct Article {
         return units.count == 1
     }
 
-    public var thumbnailUrl: NSURL? {
-        return media.images.first?.catalogUrl
+    public var thumbnailURL: NSURL? {
+        return media.images.first?.catalogURL
     }
 
     public struct Brand {
@@ -57,12 +57,12 @@ public struct Article {
 
     public struct Image {
         public let order: Int
-        public let catalogUrl: NSURL
-        public let catalogHDUrl: NSURL
-        public let detailUrl: NSURL
-        public let detailHDUrl: NSURL
-        public let largeUrl: NSURL
-        public let largeHDUrl: NSURL
+        public let catalogURL: NSURL
+        public let catalogHDURL: NSURL
+        public let detailURL: NSURL
+        public let detailHDURL: NSURL
+        public let largeURL: NSURL
+        public let largeHDURL: NSURL
     }
 
     /**
@@ -153,20 +153,20 @@ extension Article.Image: JSONInitializable {
     init?(json: JSON) {
         guard let
         order = json["order"].int,
-            catalogUrl = json["catalog"].URL,
-            catalogHDUrl = json["catalog_hd"].URL,
-            detailUrl = json["detail"].URL,
-            detailHDUrl = json["detail_hd"].URL,
-            largeUrl = json["large"].URL,
-            largeHDUrl = json["large_hd"].URL
+            catalogURL = json["catalog"].URL,
+            catalogHDURL = json["catalog_hd"].URL,
+            detailURL = json["detail"].URL,
+            detailHDURL = json["detail_hd"].URL,
+            largeURL = json["large"].URL,
+            largeHDURL = json["large_hd"].URL
         else { return nil }
         self.order = order
-        self.catalogUrl = catalogUrl
-        self.catalogHDUrl = catalogHDUrl
-        self.detailUrl = detailUrl
-        self.detailHDUrl = detailHDUrl
-        self.largeUrl = largeUrl
-        self.largeHDUrl = largeHDUrl
+        self.catalogURL = catalogURL
+        self.catalogHDURL = catalogHDURL
+        self.detailURL = detailURL
+        self.detailHDURL = detailHDURL
+        self.largeURL = largeURL
+        self.largeHDURL = largeHDURL
     }
 
 }
