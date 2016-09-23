@@ -15,6 +15,10 @@ public struct Config {
     public let salesChannelLocale: NSLocale
     public let interfaceLocale: NSLocale
 
+    public var countryCode: String {
+        return interfaceLocale.countryCode
+    }
+
 }
 
 private typealias LocaleSalesChannel = (salesChannel: String, locale: String)
