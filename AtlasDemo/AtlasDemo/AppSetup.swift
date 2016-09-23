@@ -25,7 +25,7 @@ class AppSetup {
 
     private static var alwaysUseMockAPI: Bool {
         #if DEBUG
-            return true
+            return false
         #else
             return false
         #endif
