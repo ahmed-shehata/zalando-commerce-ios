@@ -29,35 +29,37 @@ extension CheckoutSummaryActionsHandler {
         guard let strongViewController = self.viewController else { return }
         guard let checkout = strongViewController.checkoutViewModel.checkout else { return }
 
-        strongViewController.showLoader()
         if checkout.hasSameAddress(like: strongViewController.checkoutViewModel) {
             return createOrder(checkout.id)
         }
 
         let updateCheckoutRequest = UpdateCheckoutRequest(checkoutViewModel: strongViewController.checkoutViewModel)
 
-        strongViewController.checkout.client.updateCheckout(checkout.id, updateCheckoutRequest: updateCheckoutRequest) { result in
-            switch result {
-            case .failure(let error):
-                strongViewController.userMessage.show(error: error)
-                strongViewController.hideLoader()
-            case .success(let checkout):
-                self.createOrder(checkout.id)
+        strongViewController.makeNetworkRequestWithSpinner { done in
+            strongViewController.checkout.client.updateCheckout(checkout.id, updateCheckoutRequest: updateCheckoutRequest) { result in
+                switch result {
+                case .failure(let error):
+                    strongViewController.userMessage.show(error: error)
+                    done()
+                case .success(let checkout):
+                    self.createOrder(checkout.id)
+                }
             }
         }
     }
 
     internal func createOrder(checkoutId: String) {
         guard let strongViewController = self.viewController else { return }
-
-        strongViewController.checkout.client.createOrder(checkoutId) { result in
-            switch result {
-            case .failure(let error):
-                strongViewController.userMessage.show(error: error)
-                strongViewController.hideLoader()
-            case .success (let order):
-                self.handleOrderConfirmation(order)
-                strongViewController.hideLoader()
+        strongViewController.makeNetworkRequestWithSpinner { done in
+            strongViewController.checkout.client.createOrder(checkoutId) { result in
+                switch result {
+                case .failure(let error):
+                    strongViewController.userMessage.show(error: error)
+                    done()
+                case .success (let order):
+                    self.handleOrderConfirmation(order)
+                    done()
+                }
             }
         }
     }
@@ -73,7 +75,7 @@ extension CheckoutSummaryActionsHandler {
 
             switch result {
             case .failure(let error):
-                    strongViewController.userMessage.show(error: error)
+                strongViewController.userMessage.show(error: error)
             case .success(let customer):
                 self.generateCheckout(customer)
             }
@@ -84,20 +86,21 @@ extension CheckoutSummaryActionsHandler {
     private func generateCheckout(customer: Customer) {
         guard let strongViewController = self.viewController else { return }
 
-        strongViewController.showLoader()
-        strongViewController.checkout.prepareCheckoutViewModel(strongViewController.checkoutViewModel.selectedArticleUnit,
-            checkoutViewModel: strongViewController.checkoutViewModel) { result in
-                strongViewController.hideLoader()
-                switch result {
-                case .failure(let error):
-                    strongViewController.dismissViewControllerAnimated(true) {
-                        strongViewController.userMessage.show(error: error)
+        strongViewController.makeNetworkRequestWithSpinner { done in
+            strongViewController.checkout.prepareCheckoutViewModel(strongViewController.checkoutViewModel.selectedArticleUnit,
+                checkoutViewModel: strongViewController.checkoutViewModel) { result in
+                    done()
+                    switch result {
+                    case .failure(let error):
+                        strongViewController.dismissViewControllerAnimated(true) {
+                            strongViewController.userMessage.show(error: error)
+                        }
+                    case .success(var checkoutViewModel):
+                        checkoutViewModel.customer = customer
+                        strongViewController.checkoutViewModel = checkoutViewModel
+                        strongViewController.viewState = checkoutViewModel.checkoutViewState
                     }
-                case .success(var checkoutViewModel):
-                    checkoutViewModel.customer = customer
-                    strongViewController.checkoutViewModel = checkoutViewModel
-                    strongViewController.viewState = checkoutViewModel.checkoutViewState
-                }
+            }
         }
     }
 
@@ -188,22 +191,22 @@ extension CheckoutSummaryActionsHandler {
 
             guard strongViewController.checkoutViewModel.isReadyToCreateCheckout == true else { return }
 
-            strongViewController.showLoader()
-
-            strongViewController.checkout.prepareCheckoutViewModel(strongViewController.checkoutViewModel.selectedArticleUnit,
-                checkoutViewModel: strongViewController.checkoutViewModel) { result in
-                    strongViewController.hideLoader()
-                    switch result {
-                    case .failure(let error):
-                        strongViewController.dismissViewControllerAnimated(true) {
-                            strongViewController.userMessage.show(error: error)
+            strongViewController.makeNetworkRequestWithSpinner { done in
+                strongViewController.checkout.prepareCheckoutViewModel(strongViewController.checkoutViewModel.selectedArticleUnit,
+                    checkoutViewModel: strongViewController.checkoutViewModel) { result in
+                        done()
+                        switch result {
+                        case .failure(let error):
+                            strongViewController.dismissViewControllerAnimated(true) {
+                                strongViewController.userMessage.show(error: error)
+                            }
+                        case .success(var checkoutViewModel):
+                            checkoutViewModel.customer = strongViewController.checkoutViewModel.customer
+                            strongViewController.checkoutViewModel = checkoutViewModel
+                            strongViewController.rootStackView.configureData(strongViewController)
+                            strongViewController.refreshViewData()
                         }
-                    case .success(var checkoutViewModel):
-                        checkoutViewModel.customer = strongViewController.checkoutViewModel.customer
-                        strongViewController.checkoutViewModel = checkoutViewModel
-                        strongViewController.rootStackView.configureData(strongViewController)
-                        strongViewController.refreshViewData()
-                    }
+                }
             }
     }
 }

@@ -54,12 +54,17 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
         self.navigationController?.navigationBar.accessibilityIdentifier = "checkout-summary-navigation-bar"
     }
 
-    internal func showLoader() {
+    private func showLoader() {
         self.loaderView.show()
     }
 
-    internal func hideLoader() {
+    private func hideLoader() {
         self.loaderView.hide()
+    }
+
+    internal func makeNetworkRequestWithSpinner(requestToMake: (() -> Void) -> Void) {
+        showLoader()
+        requestToMake(hideLoader)
     }
 }
 

@@ -96,6 +96,15 @@ class AtlasDemoUITests: XCTestCase {
         tapBuyNow("Lamica")
         waitForElementToAppearAndTap(size)
         tapConnectAndLogin()
+
+        app.otherElements["shipping-stack-view"].tap()
+        deleteAddresses()
+        changeShippingAddress()
+        changeBillingAddress()
+
+        tapPlaceOrder()
+        tapBackToShop()
+
     }
 
     func testEditAddress() {
