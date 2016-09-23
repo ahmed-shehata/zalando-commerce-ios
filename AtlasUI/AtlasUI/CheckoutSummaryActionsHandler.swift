@@ -73,9 +73,7 @@ extension CheckoutSummaryActionsHandler {
 
             switch result {
             case .failure(let error):
-                Async.main {
                     strongViewController.userMessage.show(error: error)
-                }
             case .success(let customer):
                 self.generateCheckout(customer)
             }

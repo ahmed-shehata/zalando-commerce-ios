@@ -53,10 +53,8 @@ internal final class PaymentProcessingViewController: UIViewController, Checkout
                 }
 
                 let navigationController = UINavigationController(rootViewController: paymentSelectionViewController)
-                Async.main {
-                    navigationController.modalPresentationStyle = .OverCurrentContext
-                    self.navigationController?.presentViewController(navigationController, animated: true, completion: nil)
-                }
+                navigationController.modalPresentationStyle = .OverCurrentContext
+                self.navigationController?.presentViewController(navigationController, animated: true, completion: nil)
 
             }
         }

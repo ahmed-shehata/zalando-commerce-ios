@@ -94,14 +94,12 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
         checkout.client.addresses { [weak self] result in
             guard let strongSelf = self else { return }
             strongSelf.loaderView.hide()
-            Async.main {
                 switch result {
                 case .failure(let error):
                     strongSelf.userMessage.show(error: error)
                 case .success(let addresses):
                     strongSelf.addresses = addresses
                 }
-            }
         }
     }
 
