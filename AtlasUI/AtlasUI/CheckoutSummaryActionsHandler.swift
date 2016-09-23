@@ -181,13 +181,10 @@ extension CheckoutSummaryActionsHandler {
                 strongViewController.checkoutViewModel.selectedShippingAddress = address
             }
             if address == nil {
-
                 strongViewController.checkoutViewModel.resetState()
-
                 strongViewController.checkoutViewModel.checkout = nil
-
             }
-            strongViewController.hideLoader()
+
             strongViewController.rootStackView.configureData(strongViewController)
             strongViewController.refreshViewData()
 
