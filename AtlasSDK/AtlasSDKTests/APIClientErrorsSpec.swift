@@ -11,6 +11,7 @@ import AtlasMockAPI
 
 class APIClientErrorsSpec: APIClientBaseSpec {
 
+    // swiftlint:disable:next function_body_length
     override func spec() {
 
         describe("API Client Errors") {
@@ -43,7 +44,6 @@ class APIClientErrorsSpec: APIClientBaseSpec {
                 let options = Options(clientId: "atlas_Y2M1MzA",
                     salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
                     useSandbox: true,
-                    countryCode: "DE",
                     interfaceLanguage: "de",
                     authorizationHandler: MockAuthorizationHandler(error: AtlasAPIError.unauthorized),
                     configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
@@ -74,11 +74,12 @@ class APIClientErrorsSpec: APIClientBaseSpec {
                     client.customer { result in
                         defer { done() }
                         guard case let .failure(error) = result,
-                            AtlasAPIError.backend(let errorStatus, let title, let details) = error else {
+                            AtlasAPIError.backend(let errorStatus, let type, let title, let details) = error else {
                                 return fail("Should emit AtlasAPIError.backend")
                         }
 
                         expect(errorStatus).to(equal(status.rawValue))
+                        expect(type).to(equal(json["type"] as? String))
                         expect(title).to(equal(json["title"] as? String))
                         expect(details).to(equal(json["detail"] as? String))
                     }

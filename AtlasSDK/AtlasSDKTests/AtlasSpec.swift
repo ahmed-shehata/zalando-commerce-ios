@@ -42,7 +42,6 @@ class AtlasSpec: QuickSpec {
                 let opts = Options(clientId: "atlas_Y2M1MzA",
                     salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
                     useSandbox: true,
-                    countryCode: "DE",
                     interfaceLanguage: "de",
                     configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"),
                     authorizationHandler: MockAuthorizationHandler())

@@ -35,10 +35,10 @@ extension AtlasAPIError: UserPresentable {
             return "\(details) (#\(code))"
         case let .http(status, details):
             return "\(details~?) (#\(status~?))"
-        case let .backend(status, _, details):
+        case let .backend(status, _, _, details):
             return "\(details~?) (#\(status~?))"
         case let .checkoutFailed(_, _, error):
-            if case let AtlasAPIError.backend(_, _, details) = error {
+            if case let AtlasAPIError.backend(_, _, _, details) = error {
                 return "\(details~?)"
             } else {
                 return provider.localizer.localizedString("AtlasAPIError.message.checkoutFailed")
