@@ -13,8 +13,8 @@ module Calypso
       run base_build_cmd(WORKSPACE, '-list')
     end
 
-    desc 'test [scheme] [tries]', "Runs tests for given scheme or #{SCHEME_UNIT_TESTS}"
-    def test(scheme = SCHEME_UNIT_TESTS, tries = 1)
+    desc 'test [tries] [scheme]', "Runs tests for given scheme or #{SCHEME_UI_UNIT_TESTS}"
+    def test(tries = 1, scheme = SCHEME_UI_UNIT_TESTS)
       exec_tests scheme, tries
     end
 
@@ -42,7 +42,7 @@ module Calypso
       try = 0
       loop do
         try += 1
-        puts "Running tests (try: #{try}/#{tries})"
+        puts "Running tests (scheme: #{scheme}, try: #{try}/#{tries})"
 
         SimCtl.new.run_with_simulator(TEST_DEVICE, TEST_RUNTIME) do |simulator_udid|
           build_cmd = format_build_cmd('test', scheme,

@@ -26,10 +26,14 @@ class APIClientBaseSpec: QuickSpec {
         try! AtlasMockAPI.stopServer() // swiftlint:disable:this force_try
     }
 
-    private let clientOptions = Options(clientId: "atlas_Y2M1MzA",
-        salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
-        useSandbox: true, interfaceLanguage: "en_DE",
-        configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
+    private var clientOptions: Options {
+        return Options(clientId: "atlas_Y2M1MzA",
+            salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
+            useSandbox: true,
+            interfaceLanguage: "de",
+            configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"),
+            authorizationHandler: MockAuthorizationHandler())
+    }
 
     func waitUntilAPIClientIsConfigured(actions: (done: () -> Void, client: APIClient) -> Void) {
         waitUntil(timeout: 10) { done in
@@ -37,6 +41,7 @@ class APIClientBaseSpec: QuickSpec {
                 switch result {
                 case .failure(let error):
                     fail(String(error))
+                    done()
                 case .success(let client):
                     actions(done: done, client: client)
                 }
@@ -48,29 +53,29 @@ class APIClientBaseSpec: QuickSpec {
         return try! NSJSONSerialization.dataWithJSONObject(object, options: []) // swiftlint:disable:this force_try
     }
 
-    func mockedAPIClient(forURL url: NSURL, countryCode: String, data: NSData?, status: HTTPStatus, errorCode: Int? = nil) -> APIClient {
-        return mockedAPIClient(forURL: url, countryCode: countryCode, data: data, statusCode: status.rawValue, errorCode: errorCode)
-    }
+    func mockedAPIClient(forURL url: NSURL, options: Options? = nil, data: NSData?,
+        status: HTTPStatus, errorCode: Int? = nil) -> APIClient {
+            let apiURL = AtlasMockAPI.endpointURL(forPath: "/")
+            let loginURL = AtlasMockAPI.endpointURL(forPath: "/oauth2/authorize")
 
-    func mockedAPIClient(forURL url: NSURL, countryCode: String, data: NSData?, statusCode: Int, errorCode: Int? = nil) -> APIClient {
-        let apiURL = AtlasMockAPI.endpointURL(forPath: "/")
-        let config = Config(catalogAPIURL: apiURL,
-            checkoutAPIURL: apiURL,
-            loginURL: apiURL,
-            countryCode: countryCode,
-            options: clientOptions)
-        var client = APIClient(config: config)
+            let json = JSON(["sales-channels": [["locale": "de_DE", "sales-channel": "82fe2e7f-8c4f-4aa1-9019-b6bde5594456"]],
+                "atlas-catalog-api": ["url": apiURL.absoluteString],
+                "atlas-checkout-api": ["url": apiURL.absoluteString],
+                "oauth2-provider": ["url": loginURL.absoluteString]])
 
-        var error: NSError? = nil
-        if let errorCode = errorCode {
-            error = NSError(domain: "NSURLErrorDomain", code: errorCode, userInfo: nil)
-        }
+            let config = Config(json: json, options: options ?? clientOptions)! // swiftlint:disable:this force_unwrapping
+            var client = APIClient(config: config)
 
-        client.urlSession = URLSessionMock(data: data,
-            response: NSHTTPURLResponse(URL: url, statusCode: statusCode),
-            error: error)
+            var error: NSError? = nil
+            if let errorCode = errorCode {
+                error = NSError(domain: "NSURLErrorDomain", code: errorCode, userInfo: nil)
+            }
 
-        return client
+            client.urlSession = URLSessionMock(data: data,
+                response: NSHTTPURLResponse(URL: url, statusCode: status.rawValue),
+                error: error)
+
+            return client
     }
 
 }

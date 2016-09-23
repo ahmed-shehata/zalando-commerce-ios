@@ -16,11 +16,7 @@ extension ConfigurableEndpoint {
     var URL: NSURL {
         let urlComponents = NSURLComponents(validURL: serviceURL)
         urlComponents.queryItems = self.queryItems
-        #if swift(>=2.3)
-            return urlComponents.validURL.URLByAppendingPathComponent(path)! // swiftlint:disable:this force_unwrapping
-        #else
-            return urlComponents.validURL.URLByAppendingPathComponent(path)
-        #endif
+        return urlComponents.validURL.URLByAppending(pathComponent: path)
     }
 
 }

@@ -1,5 +1,5 @@
 language: objective-c
-osx_image: xcode8
+osx_image: xcode7.3
 
 notifications:
   email: false
@@ -8,7 +8,7 @@ cache:
   bundler: true
 
 script:
-  - bundle exec ./calypso.rb xcode test UnitTests 3
+  - bundle exec ./calypso.rb xcode test 3
 
 after_script:
   - bash <(curl -s https://codecov.io/bash) -J AtlasSDK -J AtlasUI

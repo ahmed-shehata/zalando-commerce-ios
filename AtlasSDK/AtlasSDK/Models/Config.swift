@@ -4,71 +4,84 @@
 
 import Foundation
 
-/**
- Represents Zalando Config Service Config model
- */
 public struct Config {
 
-    public let catalogAPIURL: NSURL
-    public let checkoutAPIURL: NSURL
+    public let catalogURL: NSURL
+    public let checkoutURL: NSURL
     public let loginURL: NSURL
-    public let salesChannel: String
     public let clientId: String
-    public let countryCode: String
+    public let salesChannel: String
+
+    public let salesChannelLocale: NSLocale
+    public let interfaceLocale: NSLocale
+
+    public var countryCode: String {
+        return interfaceLocale.countryCode
+    }
 
 }
+
+private typealias LocaleSalesChannel = (salesChannel: String, locale: String)
 
 extension Config {
 
     init?(json: JSON, options: Options) {
-        let salesChannel = json["sales-channels"].arrayValue.filter { $0["sales-channel"].stringValue == options.salesChannel }
-
         guard let
-        catalogAPIURL = json["atlas-catalog-api"]["url"].URL,
-            checkoutAPIURL = json["atlas-checkout-api"]["url"].URL,
+        catalogURL = json["atlas-catalog-api"]["url"].URL,
+            checkoutURL = json["atlas-checkout-api"]["url"].URL,
             loginURL = json["oauth2-provider"]["url"].URL,
-            countryCode = salesChannel.first?["locale"].string?.componentsSeparatedByString("_").last
+            localeSalesChannel = Config.findSalesChannel(json, channelId: options.salesChannel)
         else { return nil }
 
-        self.catalogAPIURL = catalogAPIURL
-        self.checkoutAPIURL = checkoutAPIURL
+        self.catalogURL = catalogURL
+        self.checkoutURL = checkoutURL
         self.loginURL = loginURL
-        self.salesChannel = options.salesChannel
+
+        self.salesChannel = localeSalesChannel.salesChannel
+        self.salesChannelLocale = NSLocale(localeIdentifier: localeSalesChannel.locale)
+
+        if let interfaceLanguage = options.interfaceLanguage {
+            self.interfaceLocale = NSLocale(localeIdentifier: "\(interfaceLanguage)_\(salesChannelLocale.countryCode)")
+        } else {
+            self.interfaceLocale = salesChannelLocale
+        }
+
         self.clientId = options.clientId
-        self.countryCode = countryCode
     }
 
-}
+    private static func findSalesChannel(json: JSON, channelId: String) -> LocaleSalesChannel? {
+        guard let matchedChannel = firstMatchedChannel(json, channelId: channelId),
+            salesChannel = matchedChannel["sales-channel"]?.string,
+            locale = matchedChannel["locale"]?.string
+        else {
+            return nil
+        }
 
-extension Config {
-
-    init(catalogAPIURL: String, checkoutAPIURL: String, loginURL: String, countryCode: String, options: Options) {
-        self.init(catalogAPIURL: NSURL(validUrl: catalogAPIURL),
-            checkoutAPIURL: NSURL(validUrl: checkoutAPIURL),
-            loginURL: NSURL(validUrl: loginURL),
-            countryCode: countryCode,
-            options: options)
+        return (salesChannel: salesChannel, locale: locale)
     }
 
-    init(catalogAPIURL: NSURL, checkoutAPIURL: NSURL, loginURL: NSURL, countryCode: String, options: Options) {
-        self.catalogAPIURL = catalogAPIURL
-        self.checkoutAPIURL = checkoutAPIURL
-        self.loginURL = loginURL
-        self.salesChannel = options.salesChannel
-        self.clientId = options.clientId
-        self.countryCode = countryCode
+    private static func firstMatchedChannel(json: JSON, channelId: String) -> [String: JSON]? {
+        guard let availableChannels = json["sales-channels"].array else {
+            return nil
+        }
+        let channel = availableChannels.filter { channel in
+            return channel["sales-channel"].string?.lowercaseString.containsString(channelId) ?? false
+        }.first
+
+        return channel?.dictionary
     }
 
 }
 
 extension Config: CustomStringConvertible {
     public var description: String {
-        return "Config: { catalogAPIURL: \(self.catalogAPIURL)"
-            + ", checkoutAPIURL: \(self.checkoutAPIURL)"
+        return "Config: { catalogURL: \(self.catalogURL)"
+            + ", checkoutURL: \(self.checkoutURL)"
             + ", loginURL: \(self.loginURL)"
             + ", salesChannel: \(self.salesChannel)"
             + ", clientId: \(self.clientId)"
-            + ", countryCode: \(self.countryCode)"
+            + ", salesChannelLocale: \(self.salesChannelLocale.localeIdentifier)"
+            + ", interfaceLocale: \(self.interfaceLocale.localeIdentifier)"
             + " }"
     }
 }

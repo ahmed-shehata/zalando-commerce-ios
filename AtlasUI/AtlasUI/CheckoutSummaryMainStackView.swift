@@ -106,8 +106,8 @@ extension CheckoutSummaryMainStackView: UIBuilder {
         fillInSuperView()
         setWidth(equalToView: superview)
 
-        shippingAddressStackView.setHeight(equalToView: billingAddressStackView)
-        shippingAddressStackView.setHeight(equalToView: paymentStackView)
+        paymentStackView.setHeight(equalToView: billingAddressStackView)
+        paymentStackView.setHeight(equalToView: shippingAddressStackView)
 
         productSeparatorView.setHeight(equalToConstant: 10)
         shippingAddressSeparatorView.setHeight(equalToConstant: 1)
