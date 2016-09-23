@@ -62,7 +62,7 @@ struct RequestBuilder {
 
     private func buildRequest() throws -> NSMutableURLRequest {
         let request = try NSMutableURLRequest(endpoint: endpoint).debugLog()
-        return request.authorize(withToken: APIAccessToken.retrieve())
+        return endpoint.isOAuth ? request.authorize(withToken: APIAccessToken.retrieve()) : request
     }
 
 }
