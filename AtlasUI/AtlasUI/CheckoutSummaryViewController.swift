@@ -162,8 +162,8 @@ extension CheckoutSummaryViewController {
 
     func createCheckout(cartId: String, completion: CheckoutCompletion) {
         checkout.client.createCheckout(cartId,
-            billingAddressId: checkoutViewModel.selectedShippingAddress?.id,
-            shippingAddressId: checkoutViewModel.selectedBillingAddress?.id) { checkout in
+            billingAddressId: checkoutViewModel.selectedBillingAddress?.id,
+            shippingAddressId: checkoutViewModel.selectedShippingAddress?.id) { checkout in
                 completion(checkout)
         }
     }
