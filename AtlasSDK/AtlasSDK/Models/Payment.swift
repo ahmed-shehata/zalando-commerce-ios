@@ -5,13 +5,13 @@
 public struct Payment {
 
     public let selected: PaymentMethod?
-    public let externalPayment: Bool?
-    public let selectionPageUrl: NSURL?
+    public let isExternalPayment: Bool?
+    public let selectionPageURL: NSURL?
 
-    init(selected: PaymentMethod? = nil, externalPayment: Bool? = nil, selectionPageUrl: NSURL? = nil) {
+    init(selected: PaymentMethod? = nil, isExternalPayment: Bool? = nil, selectionPageURL: NSURL? = nil) {
         self.selected = selected
-        self.externalPayment = externalPayment
-        self.selectionPageUrl = selectionPageUrl
+        self.isExternalPayment = isExternalPayment
+        self.selectionPageURL = selectionPageURL
     }
 
 }
@@ -26,8 +26,8 @@ extension Payment: JSONInitializable {
 
     init?(json: JSON) {
         self.init(selected: PaymentMethod(json: json[Keys.selected]),
-            externalPayment: json[Keys.externalPayment].bool,
-            selectionPageUrl: json[Keys.selectionPageUrl].URL)
+            isExternalPayment: json[Keys.externalPayment].bool,
+            selectionPageURL: json[Keys.selectionPageUrl].URL)
     }
 
 }

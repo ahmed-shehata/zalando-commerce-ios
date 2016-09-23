@@ -54,11 +54,10 @@ public typealias AddressCreateUpdateCompletion = AtlasResult<UserAddress> -> Voi
  */
 public typealias CheckAddressCompletion = AtlasResult<CheckAddressResponse> -> Void
 
-
 extension APIClient {
 
     public func customer(completion: CustomerCompletion) {
-        let endpoint = GetCustomerEndpoint(serviceURL: config.checkoutAPIURL)
+        let endpoint = GetCustomerEndpoint(serviceURL: config.checkoutURL)
 
         fetch(from: endpoint, completion: completion)
     }
@@ -67,7 +66,7 @@ extension APIClient {
         let parameters = CartRequest(salesChannel: config.salesChannel,
             items: cartItemRequests,
             replaceItems: true).toJSON()
-        let endpoint = CreateCartEndpoint(serviceURL: config.checkoutAPIURL, parameters: parameters)
+        let endpoint = CreateCartEndpoint(serviceURL: config.checkoutURL, parameters: parameters)
 
         fetch(from: endpoint, completion: completion)
     }
@@ -111,13 +110,13 @@ extension APIClient {
             let parameters = CreateCheckoutRequest(cartId: cartId,
                 billingAddressId: billingAddressId,
                 shippingAddressId: shippingAddressId).toJSON()
-            let endpoint = CreateCheckoutEndpoint(serviceURL: config.checkoutAPIURL, parameters: parameters)
+            let endpoint = CreateCheckoutEndpoint(serviceURL: config.checkoutURL, parameters: parameters)
 
             fetch(from: endpoint, completion: completion)
     }
 
     public func updateCheckout(checkoutId: String, updateCheckoutRequest: UpdateCheckoutRequest, completion: CheckoutCompletion) {
-        let endpoint = UpdateCheckoutEndpoint(serviceURL: config.checkoutAPIURL,
+        let endpoint = UpdateCheckoutEndpoint(serviceURL: config.checkoutURL,
             parameters: updateCheckoutRequest.toJSON(),
             checkoutId: checkoutId)
 
@@ -126,7 +125,7 @@ extension APIClient {
 
     public func createOrder(checkoutId: String, completion: OrderCompletion) {
         let parameters = OrderRequest(checkoutId: checkoutId).toJSON()
-        let endpoint = CreateOrderEndpoint(serviceURL: config.checkoutAPIURL,
+        let endpoint = CreateOrderEndpoint(serviceURL: config.checkoutURL,
             parameters: parameters,
             checkoutId: checkoutId)
 
@@ -134,7 +133,7 @@ extension APIClient {
     }
 
     public func article(forSKU sku: String, completion: ArticlesCompletion) {
-        let endpoint = GetArticlesEndpoint(serviceURL: config.catalogAPIURL,
+        let endpoint = GetArticlesEndpoint(serviceURL: config.catalogURL,
             skus: [sku],
             salesChannel: config.salesChannel,
             clientId: config.clientId,
@@ -144,37 +143,37 @@ extension APIClient {
     }
 
     public func addresses(completion: AddressesCompletion) {
-        let endpoint = GetAddressesEndpoint(serviceURL: config.checkoutAPIURL,
+        let endpoint = GetAddressesEndpoint(serviceURL: config.checkoutURL,
             salesChannel: config.salesChannel)
 
         fetch(from: endpoint, completion: completion)
     }
 
     public func deleteAddress(addressId: String, completion: NoContentCompletion) {
-        let endpoint = DeleteAddressEndpoint(serviceURL: config.checkoutAPIURL,
+        let endpoint = DeleteAddressEndpoint(serviceURL: config.checkoutURL,
             addressId: addressId,
             salesChannel: config.salesChannel)
         touch(endpoint, completion: completion)
     }
 
     public func createAddress(request: CreateAddressRequest, completion: AddressCreateUpdateCompletion) {
-        let endpoint = CreateAddressEndpoint(serviceURL: config.checkoutAPIURL,
-                                             createAddressRequest: request,
-                                             salesChannel: config.salesChannel)
+        let endpoint = CreateAddressEndpoint(serviceURL: config.checkoutURL,
+            createAddressRequest: request,
+            salesChannel: config.salesChannel)
         fetch(from: endpoint, completion: completion)
     }
 
     public func updateAddress(addressId: String, request: UpdateAddressRequest, completion: AddressCreateUpdateCompletion) {
-        let endpoint = UpdateAddressEndpoint(serviceURL: config.checkoutAPIURL,
-                                             addressId: addressId,
-                                             updateAddressRequest: request,
-                                             salesChannel: config.salesChannel)
+        let endpoint = UpdateAddressEndpoint(serviceURL: config.checkoutURL,
+            addressId: addressId,
+            updateAddressRequest: request,
+            salesChannel: config.salesChannel)
         fetch(from: endpoint, completion: completion)
     }
 
     public func checkAddress(request: CheckAddressRequest, completion: CheckAddressCompletion) {
-        let endpoint = CheckAddressEndpoint(serviceURL: config.checkoutAPIURL,
-                                            checkAddressRequest: request)
+        let endpoint = CheckAddressEndpoint(serviceURL: config.checkoutURL,
+            checkAddressRequest: request)
         fetch(from: endpoint, completion: completion)
     }
 

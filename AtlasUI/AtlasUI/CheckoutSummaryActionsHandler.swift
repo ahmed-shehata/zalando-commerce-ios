@@ -110,7 +110,7 @@ extension CheckoutSummaryActionsHandler {
     internal func showPaymentSelectionScreen() {
         guard let strongViewController = self.viewController else { return }
         guard Atlas.isUserLoggedIn() else { return loadCustomerData() }
-        guard let paymentURL = strongViewController.checkoutViewModel.checkout?.payment.selectionPageUrl else { return }
+        guard let paymentURL = strongViewController.checkoutViewModel.checkout?.payment.selectionPageURL else { return }
 
         let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
         paymentSelectionViewController.paymentCompletion = { result in
@@ -138,7 +138,7 @@ extension CheckoutSummaryActionsHandler {
         guard Atlas.isUserLoggedIn() else { return loadCustomerData() }
         let addressSelectionViewController = AddressPickerViewController(checkout: strongViewController.checkout,
                                                                                addressType: .billing,
-                                                                               addressSelectionCompletion: pickedAddressCompletion)
+            addressSelectionCompletion: pickedAddressCompletion)
         addressSelectionViewController.selectedAddress = strongViewController.checkoutViewModel.selectedBillingAddress
         strongViewController.showViewController(addressSelectionViewController, sender: strongViewController)
     }
@@ -146,7 +146,7 @@ extension CheckoutSummaryActionsHandler {
     internal func handleOrderConfirmation(order: Order) {
         guard let strongViewController = self.viewController else { return }
 
-        guard let paymentURL = order.externalPaymentUrl else {
+        guard let paymentURL = order.externalPaymentURL else {
             strongViewController.viewState = .OrderPlaced
             return
         }

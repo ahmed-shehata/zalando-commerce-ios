@@ -4,18 +4,12 @@
 
 import Foundation
 
-public typealias AtlasConfigurationCompletion = AtlasResult<APIClient> -> Void
+public typealias AtlasClientCompletion = AtlasResult<APIClient> -> Void
 
 public struct Atlas {
 
-    public static func configure(bundle: NSBundle = NSBundle.mainBundle(), completion: AtlasConfigurationCompletion) {
-        let options = Options(bundle: bundle)
-        configure(options) { result in
-            completion(result)
-        }
-    }
-
-    public static func configure(options: Options, completion: AtlasConfigurationCompletion) {
+    public static func configure(options: Options? = nil, completion: AtlasClientCompletion) {
+        let options = options ?? Options()
         do {
             try options.validate()
         } catch let error {
@@ -23,8 +17,7 @@ public struct Atlas {
             return completion(.failure(error))
         }
 
-        var configurator = ConfigClient(options: options)
-        configurator.configure { result in
+        ConfigClient(options: options).configure { result in
             switch result {
             case .failure(let error):
                 AtlasLogger.logError(error)
@@ -40,7 +33,7 @@ public struct Atlas {
         return APIAccessToken.retrieve() != nil
     }
 
-    public static func logoutCustomer() {
+    public static func logoutUser() {
         APIAccessToken.delete()
     }
 

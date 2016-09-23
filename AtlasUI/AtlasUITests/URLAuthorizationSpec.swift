@@ -6,7 +6,7 @@ import Foundation
 import Quick
 import Nimble
 
-@testable import AtlasSDK
+@testable import AtlasUI
 
 class URLAuthorizationSpec: QuickSpec {
 

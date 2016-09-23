@@ -21,7 +21,7 @@ public enum AtlasConfigurationError: AtlasErrorType {
     case incorrectConfigServiceResponse
     case missingClientId
     case missingSalesChannel
-    case missingInterfaceLanguage
+    case missingCountryCode
 
 }
 
@@ -37,18 +37,4 @@ public enum AtlasAPIError: AtlasErrorType {
 
     case checkoutFailed(addresses: [UserAddress]?, cartId: String?, error: ErrorType)
 
-}
-
-public enum LoginError: AtlasErrorType {
-
-    case missingURL
-    case accessDenied
-    case missingViewControllerToShowLoginForm
-
-    case requestFailed(error: NSError?)
-
-}
-
-public func == (lhs: AtlasAPIError, rhs: AtlasAPIError) -> Bool {
-    return lhs._code == rhs._code
 }

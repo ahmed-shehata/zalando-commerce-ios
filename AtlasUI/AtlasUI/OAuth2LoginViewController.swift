@@ -3,15 +3,16 @@
 //
 
 import UIKit
+import AtlasSDK
 
-typealias LoginCompletion = AtlasResult<String> -> Void
 typealias WebViewFinishedLoadCompletion = UIWebView -> Void
+typealias AuthorizationResult = AtlasResult<AuthorizationToken>
 
-final class LoginViewController: UIViewController {
+final class OAuth2LoginViewController: UIViewController {
 
     private let loginURL: NSURL
 
-    private let loginCompletion: LoginCompletion?
+    private let loginCompletion: AuthorizationCompletion?
     private var webViewFinishedLoadCompletion: WebViewFinishedLoadCompletion?
     private var webViewDidFinishedLoad = false
 
@@ -23,11 +24,11 @@ final class LoginViewController: UIViewController {
         return webView
     }()
 
-    init(loginURL: NSURL, completion: LoginCompletion? = nil) {
+    init(loginURL: NSURL, completion: AuthorizationCompletion? = nil) {
         self.loginURL = loginURL
         self.loginCompletion = completion
         super.init(nibName: nil, bundle: nil)
-        self.title = "Login with Zalando"
+        self.title = "Login with Zalando" // TODO: translate
     }
 
     required init?(coder decoder: NSCoder) {
@@ -37,8 +38,8 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel,
-                                                            target: self,
-                                                            action: .cancelButtonTapped)
+            target: self,
+            action: .cancelButtonTapped)
         automaticallyAdjustsScrollViewInsets = false
 
         view.backgroundColor = .whiteColor()
@@ -56,7 +57,7 @@ final class LoginViewController: UIViewController {
         return dismissViewController(.failure(error), animated: animated)
     }
 
-    private func dismissViewController(result: AtlasResult<String>, animated: Bool = true) -> Bool {
+    private func dismissViewController(result: AuthorizationResult, animated: Bool = true) -> Bool {
         dismissViewControllerAnimated(animated) {
             self.loginCompletion?(result)
         }
@@ -76,37 +77,37 @@ final class LoginViewController: UIViewController {
 
 private extension Selector {
 
-    static let cancelButtonTapped = #selector(LoginViewController.cancelButtonTapped(_:))
+    static let cancelButtonTapped = #selector(OAuth2LoginViewController.cancelButtonTapped(_:))
 
 }
 
-extension LoginViewController: UIWebViewDelegate {
+extension OAuth2LoginViewController: UIWebViewDelegate {
 
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest,
-                 navigationType: UIWebViewNavigationType) -> Bool {
-        guard let url = request.URL else {
-            return dismissViewController(withFailure: .missingURL)
-        }
+        navigationType: UIWebViewNavigationType) -> Bool {
+            guard let url = request.URL else {
+                return dismissViewController(withFailure: .missingURL)
+            }
 
-        guard !url.isAccessDenied else {
-            return dismissViewController(withFailure: .accessDenied)
-        }
+            guard !url.isAccessDenied else {
+                return dismissViewController(withFailure: .accessDenied)
+            }
 
-        guard let token = url.accessToken else {
-            return true
-        }
+            guard let token = url.accessToken else {
+                return true
+            }
 
-        return dismissViewController(.success(token))
+            return dismissViewController(.success(token))
     }
 
     #if swift(>=2.3)
-    func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
-        self.dismissViewController(withFailure: .requestFailed(error: error))
-    }
+        func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
+            self.dismissViewController(withFailure: .requestFailed(error: error))
+        }
     #else
-    func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
-        self.dismissViewController(withFailure: .requestFailed(error: error))
-    }
+        func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
+            self.dismissViewController(withFailure: .requestFailed(error: error))
+        }
     #endif
 
     func webViewDidFinishLoad(webView: UIWebView) {
@@ -117,7 +118,7 @@ extension LoginViewController: UIWebViewDelegate {
 }
 
 #if DEBUG
-    extension LoginViewController {
+    extension OAuth2LoginViewController {
 
         override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
             if motion == .MotionShake {
@@ -128,7 +129,7 @@ extension LoginViewController: UIWebViewDelegate {
     }
 #endif
 
-extension LoginViewController {
+extension OAuth2LoginViewController {
 
     func login(email email: String, password: String) {
         if webViewDidFinishedLoad {
@@ -142,16 +143,16 @@ extension LoginViewController {
 
     func submit(email email: String, password: String) {
         let loginJS =
-            // "$('input[type=\'email\']').value = '\(email)'"
-            // + "$('input[type=\'password\']').value = '\(password)'"
-            // "$('.z-button-submit').click()"
+        // "$('input[type=\'email\']').value = '\(email)'"
+        // + "$('input[type=\'password\']').value = '\(password)'"
+        // "$('.z-button-submit').click()"
 
-            "var inputFields = document.getElementsByTagName('input');"
-                + "for (var i = inputFields.length >>> 0; i--;) {"
-                + "  if (inputFields[i].type == 'email') inputFields[i].value = '\(email)';"
-                + "  if (inputFields[i].type == 'password') inputFields[i].value = '\(password)';"
-                + "};"
-                + "document.getElementsByClassName('z-button-submit')[0].click() "
+        "var inputFields = document.getElementsByTagName('input');"
+            + "for (var i = inputFields.length >>> 0; i--;) {"
+            + "  if (inputFields[i].type == 'email') inputFields[i].value = '\(email)';"
+            + "  if (inputFields[i].type == 'password') inputFields[i].value = '\(password)';"
+            + "};"
+            + "document.getElementsByClassName('z-button-submit')[0].click() "
 
         let ret = webView.stringByEvaluatingJavaScriptFromString(loginJS)
         print("SUMBIT RESULT: ", ret)

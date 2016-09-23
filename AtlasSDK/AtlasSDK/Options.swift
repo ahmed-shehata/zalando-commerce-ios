@@ -8,31 +8,41 @@ public struct Options {
 
     public let useSandboxEnvironment: Bool
     public let clientId: String
-    public let salesChannel: String
-    public let interfaceLanguage: String
+    public let interfaceLanguage: String?
+    public let countryCode: String
     public let configurationURL: NSURL
+    public let salesChannel: String
 
-    public init(clientId: String, salesChannel: String, useSandbox: Bool = false,
-        interfaceLanguage: String = "de_DE", configurationURL: NSURL? = nil) {
-            self.clientId = clientId
-            self.salesChannel = salesChannel
-            self.useSandboxEnvironment = useSandbox
-            self.interfaceLanguage = interfaceLanguage
+    public var localeIdentifier: String {
+        guard let interfaceLanguage = interfaceLanguage where !interfaceLanguage.isEmpty else {
+            return countryCode
+        }
+        return "\(interfaceLanguage)_\(countryCode)"
+    }
+
+    public init(clientId: String? = nil,
+        salesChannel: String? = nil,
+        useSandbox: Bool? = nil,
+        countryCode: String? = nil,
+        interfaceLanguage: String? = nil,
+        configurationURL: NSURL? = nil,
+        authorizationHandler: AuthorizationHandler? = nil,
+        infoBundle bundle: NSBundle = NSBundle.mainBundle()) {
+            self.clientId = clientId ?? bundle.string(.clientId)
+            self.salesChannel = salesChannel ?? bundle.string(.salesChannel)
+            self.useSandboxEnvironment = useSandbox ?? bundle.bool(.useSandbox)
+            self.countryCode = countryCode ?? bundle.string(.countryCode)
+            self.interfaceLanguage = interfaceLanguage ?? bundle.string(.interfaceLanguage)
+
+            if let authorizationHandler = authorizationHandler {
+                Injector.register { authorizationHandler as AuthorizationHandler }
+            }
+
             if let url = configurationURL {
                 self.configurationURL = url
             } else {
                 self.configurationURL = Options.defaultConfigurationURL(clientId: self.clientId, useSandbox: self.useSandboxEnvironment)
             }
-    }
-
-    public init(basedOn options: Options, clientId: String? = nil,
-        salesChannel: String? = nil, useSandbox: Bool? = nil,
-        interfaceLanguage: String? = nil, configurationURL: NSURL? = nil) {
-            self.clientId = clientId ?? options.clientId
-            self.salesChannel = salesChannel ?? options.salesChannel
-            self.useSandboxEnvironment = useSandbox ?? options.useSandboxEnvironment
-            self.interfaceLanguage = interfaceLanguage ?? options.interfaceLanguage
-            self.configurationURL = configurationURL ?? options.configurationURL
     }
 
     public func validate() throws {
@@ -42,8 +52,8 @@ public struct Options {
         if self.salesChannel.isEmpty {
             throw AtlasConfigurationError.missingSalesChannel
         }
-        if self.interfaceLanguage.isEmpty {
-            throw AtlasConfigurationError.missingInterfaceLanguage
+        if self.countryCode.isEmpty {
+            throw AtlasConfigurationError.missingCountryCode
         }
     }
 
@@ -54,15 +64,15 @@ extension Options: CustomStringConvertible {
     public var description: String {
         func formatOptional(text: String?, defaultText: String = "<NONE>") -> String {
             guard let text = text else { return defaultText }
-            return "'\(text)'"
+            return "'\(text) '"
         }
 
         return "\(self.dynamicType) { "
-            + "\n\tclientId = \(formatOptional(clientId))"
-            + ",\n\tuseSandboxEnvironment = \(useSandboxEnvironment)"
-            + ",\n\tsalesChannel = \(formatOptional(salesChannel))"
-            + ",\n\tinterfaceLanguage = \(interfaceLanguage)"
-            + " }"
+            + "\n\tclientId = \(formatOptional(clientId)) "
+            + ", \n\tuseSandboxEnvironment = \(useSandboxEnvironment) "
+            + ", \n\tsalesChannel = \(formatOptional(salesChannel)) "
+            + ", \n\tlocaleIdentifier = \(localeIdentifier) "
+            + " } "
     }
 
 }
@@ -82,7 +92,7 @@ extension Options {
 
     private static func defaultConfigurationURL(clientId clientId: String, useSandbox: Bool,
         inFormat format: ResponseFormat = .json) -> NSURL {
-            let urlComponents = NSURLComponents(validUrlString: "https://atlas-config-api.dc.zalan.do/api/config/")
+            let urlComponents = NSURLComponents(validURL: "https://atlas-config-api.dc.zalan.do/api/config/")
             let basePath = (urlComponents.path ?? "/")
 
             let environment: Environment = useSandbox ? .staging : .production
