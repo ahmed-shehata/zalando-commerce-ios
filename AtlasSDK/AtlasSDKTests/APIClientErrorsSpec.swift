@@ -74,11 +74,12 @@ class APIClientErrorsSpec: APIClientBaseSpec {
                     client.customer { result in
                         defer { done() }
                         guard case let .failure(error) = result,
-                            AtlasAPIError.backend(let errorStatus, let title, let details) = error else {
+                            AtlasAPIError.backend(let errorStatus, let type, let title, let details) = error else {
                                 return fail("Should emit AtlasAPIError.backend")
                         }
 
                         expect(errorStatus).to(equal(status.rawValue))
+                        expect(type).to(equal(json["type"] as? String))
                         expect(title).to(equal(json["title"] as? String))
                         expect(details).to(equal(json["detail"] as? String))
                     }
