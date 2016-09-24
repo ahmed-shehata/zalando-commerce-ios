@@ -79,7 +79,7 @@ final class SizeListSelectionViewController: UITableViewController, CheckoutProv
             case .success(let customer):
                 let selectedArticleUnit = SelectedArticleUnit(article: self.article,
                     selectedUnitIndex: indexPath.row)
-                self.checkout.prepareCheckoutViewModel(selectedArticleUnit) { result in
+                self.checkout.createCheckout(forArticleUnit: selectedArticleUnit) { result in
                     spinner.stopAnimating()
                     switch result {
                     case .failure(let error):

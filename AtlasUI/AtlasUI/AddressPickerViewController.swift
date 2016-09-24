@@ -94,12 +94,12 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
         checkout.client.addresses { [weak self] result in
             guard let strongSelf = self else { return }
             strongSelf.loaderView.hide()
-                switch result {
-                case .failure(let error):
-                    strongSelf.userMessage.show(error: error)
-                case .success(let addresses):
-                    strongSelf.addresses = addresses
-                }
+            switch result {
+            case .failure(let error):
+                strongSelf.userMessage.show(error: error)
+            case .success(let addresses):
+                strongSelf.addresses = addresses
+            }
         }
     }
 
@@ -154,7 +154,9 @@ extension AddressPickerViewController {
     private func showCreateAddress(addressType: AddressFormType) {
         showCreateAddressViewController(addressType) { [weak self] address in
             guard let strongSelf = self else { return }
-            strongSelf.selectionCompletion(pickedAddress: address, pickedAddressType: strongSelf.addressType, popBackToSummaryOnFinish: true)
+            strongSelf.selectionCompletion(pickedAddress: address,
+                pickedAddressType: strongSelf.addressType,
+                popBackToSummaryOnFinish: true)
             strongSelf.navigationController?.popViewControllerAnimated(false)
         }
     }

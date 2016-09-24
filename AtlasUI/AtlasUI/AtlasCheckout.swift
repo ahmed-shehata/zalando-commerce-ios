@@ -56,22 +56,26 @@ public class AtlasCheckout: LocalizerProviderType {
         viewController.presentViewController(navigationController, animated: true, completion: nil)
     }
 
-    func prepareCheckoutViewModel(selectedArticleUnit: SelectedArticleUnit, checkoutViewModel: CheckoutViewModel? = nil,
+    func createCheckout(fromModel checkoutViewModel: CheckoutViewModel,
         completion: CreateCheckoutViewModelCompletion) {
-            client.createCheckout(withSelectedArticleUnit: selectedArticleUnit,
-                billingAddressId: checkoutViewModel?.selectedBillingAddress?.id,
-                shippingAddressId: checkoutViewModel?.selectedShippingAddress?.id) { checkoutResult in
-                    switch checkoutResult {
-                    case .failure(let error):
-                        if case let AtlasAPIError.checkoutFailed(_, cartId, _) = error {
-                            let checkoutModel = CheckoutViewModel(selectedArticleUnit: selectedArticleUnit, cartId: cartId, checkout: nil)
-                            completion(.success(checkoutModel))
-                        }
+            createCheckout(forArticleUnit: checkoutViewModel.selectedArticleUnit,
+                addresses: checkoutViewModel.selectedAddresses, completion: completion)
+    }
 
-                    case .success(let checkout):
-                        let checkoutModel = CheckoutViewModel(selectedArticleUnit: selectedArticleUnit, checkout: checkout)
+    func createCheckout(forArticleUnit selectedArticleUnit: SelectedArticleUnit, addresses: CheckoutAddresses? = nil,
+        completion: CreateCheckoutViewModelCompletion) {
+            client.createCheckout(forArticleUnit: selectedArticleUnit, addresses: addresses) { checkoutResult in
+                switch checkoutResult {
+                case .failure(let error):
+                    if case let AtlasAPIError.checkoutFailed(_, cartId, _) = error {
+                        let checkoutModel = CheckoutViewModel(selectedArticleUnit: selectedArticleUnit, cartId: cartId, checkout: nil)
                         completion(.success(checkoutModel))
                     }
+
+                case .success(let checkout):
+                    let checkoutModel = CheckoutViewModel(selectedArticleUnit: selectedArticleUnit, checkout: checkout)
+                    completion(.success(checkoutModel))
+                }
             }
     }
 
