@@ -7,7 +7,7 @@ import AtlasSDK
 
 struct AddressRowCellViewModel {
     let userAddress: UserAddress
-    let localizer: LocalizerProviderType
+    let localizer: Localizer
 }
 
 final class AddressRowViewCell: UITableViewCell {

@@ -59,7 +59,7 @@ extension AddAddressTableViewCell: UIBuilder {
 
 extension AddAddressTableViewCell: UIDataBuilder {
 
-    typealias T = LocalizerProviderType
+    typealias T = Localizer
 
     func configureData(viewModel: T) {
         addAddressLabel.text = viewModel.loc("Address.Add.cellTitle")

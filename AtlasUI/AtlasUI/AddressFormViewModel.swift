@@ -44,11 +44,11 @@ class AddressFormViewModel {
         city = equatableAddress.city
     }
 
-    internal func titles(localizer: LocalizerProviderType) -> [String] {
+    internal func titles(localizer: Localizer) -> [String] {
         return ["", Gender.male.title(localizer), Gender.female.title(localizer)]
     }
 
-    internal func updateTitle(localizedGenderText: String?, localizer: LocalizerProviderType) {
+    internal func updateTitle(localizedGenderText: String?, localizer: Localizer) {
         switch localizedGenderText {
         case Gender.male.title(localizer)?: gender = .male
         case Gender.female.title(localizer)?: gender = .female
@@ -56,7 +56,7 @@ class AddressFormViewModel {
         }
     }
 
-    internal func localizedTitle(localizer: LocalizerProviderType) -> String? {
+    internal func localizedTitle(localizer: Localizer) -> String? {
         return gender?.title(localizer)
     }
 
@@ -160,7 +160,7 @@ extension CheckAddress {
 
 extension Gender {
 
-    private func title(localizer: LocalizerProviderType) -> String {
+    private func title(localizer: Localizer) -> String {
         return localizer.loc("Address.form.gender.\(rawValue.lowercaseString)")
     }
 

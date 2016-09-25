@@ -74,7 +74,7 @@ final class SizeListSelectionViewController: UITableViewController, CheckoutProv
         self.checkout.client.customer { result in
             switch result {
             case .failure(let error):
-                self.userMessage.show(error: error)
+                UserMessage.show(error: error)
 
             case .success(let customer):
                 let selectedArticleUnit = SelectedArticleUnit(article: self.article,
@@ -84,7 +84,7 @@ final class SizeListSelectionViewController: UITableViewController, CheckoutProv
                     switch result {
                     case .failure(let error):
                         self.dismissViewControllerAnimated(true) {
-                            self.userMessage.show(error: error)
+                            UserMessage.show(error: error)
                         }
                     case .success(var checkoutViewModel):
                         checkoutViewModel.customer = customer

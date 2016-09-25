@@ -96,7 +96,7 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
             Async.main {
                 switch result {
                 case .failure(let error):
-                    strongSelf.userMessage.show(error: error)
+                    UserMessage.show(error: error)
                 case .success(let addresses):
                     strongSelf.addresses = addresses
                 }
@@ -136,7 +136,7 @@ extension AddressPickerViewController {
                 return
             }
 
-            let title = strongSelf.loc("Address.Add.type.title")
+            let title = UILocalizer.str("Address.Add.type.title")
             let standardAction = ButtonAction(text: "Address.Add.type.standard", style: .Default) { (UIAlertAction) in
                 strongSelf.showCreateAddress(.StandardAddress)
             }
@@ -145,8 +145,7 @@ extension AddressPickerViewController {
             }
             let cancelAction = ButtonAction(text: "Cancel", style: .Cancel, handler: nil)
 
-            strongSelf.userMessage.show(title: title,
-                message: nil,
+            UserMessage.show(title: title,
                 preferredStyle: .ActionSheet,
                 actions: standardAction, pickupPointAction, cancelAction)
         }
@@ -162,9 +161,9 @@ extension AddressPickerViewController {
 
     private func showCreateAddressViewController(type: AddressFormType, completion: AddressFormCompletion) {
         let viewController = AddressFormViewController(addressType: type,
-                                                       addressMode: .createAddress,
-                                                       checkout: checkout,
-                                                       completion: completion)
+            addressMode: .createAddress,
+            checkout: checkout,
+            completion: completion)
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.modalPresentationStyle = .OverCurrentContext
         self.navigationController?.showViewController(navigationController, sender: nil)
@@ -192,9 +191,9 @@ extension AddressPickerViewController {
 
     private func showUpdateAddressViewController(type: AddressFormType, address: EquatableAddress, completion: AddressFormCompletion) {
         let viewController = AddressFormViewController(addressType: type,
-                                                       addressMode: .updateAddress(address: address),
-                                                       checkout: checkout,
-                                                       completion: completion)
+            addressMode: .updateAddress(address: address),
+            checkout: checkout,
+            completion: completion)
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 

@@ -10,15 +10,13 @@ public typealias AtlasCheckoutConfigurationCompletion = AtlasResult<AtlasCheckou
 
 typealias CreateCheckoutViewModelCompletion = AtlasResult<CheckoutViewModel> -> Void
 
-public class AtlasCheckout: LocalizerProviderType {
+public class AtlasCheckout {
 
     public let client: APIClient
 
     private init(client: APIClient) {
         self.client = client
     }
-
-    lazy private(set) var localizer: Localizer = Localizer(localizationProvider: self)
 
     /**
      Configure AtlasCheckout.
@@ -39,8 +37,15 @@ public class AtlasCheckout: LocalizerProviderType {
                 completion(.failure(error))
 
             case .success(let client):
-                Injector.register { OAuth2AuthorizationHandler(loginURL: client.config.loginURL) as AuthorizationHandler }
-                completion(.success(AtlasCheckout(client: client)))
+                let checkout = AtlasCheckout(client: client)
+                let localizer = UILocalizer(localeIdentifier: client.config.locale.localeIdentifier,
+                    localizedStringsBundle: NSBundle(forClass: AtlasCheckout.self))
+
+                Atlas.register { OAuth2AuthorizationHandler(loginURL: client.config.loginURL) as AuthorizationHandler }
+                Atlas.register { localizer }
+                Atlas.register { client }
+
+                completion(.success(checkout))
             }
         }
     }
@@ -77,14 +82,10 @@ public class AtlasCheckout: LocalizerProviderType {
 
 }
 
-extension AtlasCheckout: Localizable {
+extension APIClient {
 
-    var localizedStringsBundle: NSBundle {
-        return NSBundle(forClass: AtlasCheckout.self)
-    }
-
-    var localeIdentifier: String {
-        return client.config.locale.localeIdentifier
-    }
+    static var client: APIClient? = {
+        try? Atlas.provide() as APIClient
+    }()
 
 }

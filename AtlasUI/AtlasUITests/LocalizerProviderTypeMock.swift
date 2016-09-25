@@ -4,7 +4,7 @@
 
 @testable import AtlasUI
 
-internal class LocalizerProviderTypeMock: LocalizerProviderType {
+internal class LocalizerProviderTypeMock: Localizer {
 
     lazy var localizer: Localizer = {
         return Localizer(localizationProvider: UnitedKindom())

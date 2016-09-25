@@ -8,6 +8,8 @@ public typealias AtlasClientCompletion = AtlasResult<APIClient> -> Void
 
 public struct Atlas {
 
+    private static let injector = Injector()
+
     public static func configure(options: Options? = nil, completion: AtlasClientCompletion) {
         let options = options ?? Options()
         do {
@@ -35,6 +37,14 @@ public struct Atlas {
 
     public static func logoutUser() {
         APIAccessToken.delete()
+    }
+
+    public static func register<T>(factory: Void -> T) {
+        injector.register(factory)
+    }
+
+    public static func provide<T>() throws -> T {
+        return try injector.provide()
     }
 
 }

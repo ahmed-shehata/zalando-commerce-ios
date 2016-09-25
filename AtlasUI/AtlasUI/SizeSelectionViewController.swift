@@ -50,7 +50,7 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
         checkout.client.customer { result in
             switch result {
             case .failure(let error):
-                self.userMessage.show(error: error)
+                UserMessage.show(error: error)
             case .success(let customer):
                 self.generateCheckout(withArticle: article, customer: customer)
             }
@@ -64,7 +64,7 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
             switch result {
             case .failure(let error):
                 self.dismissViewControllerAnimated(true) {
-                    self.userMessage.show(error: error)
+                    UserMessage.show(error: error)
                 }
             case .success(let checkoutViewModel):
                 self.displayCheckoutSummaryViewController(checkoutViewModel)
@@ -90,7 +90,7 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
             Async.main {
                 switch result {
                 case .failure(let error):
-                    strongSelf.userMessage.show(error: error)
+                    UserMessage.show(error: error)
                 case .success(let article):
                     strongSelf.displaySizes(forArticle: article)
                 }

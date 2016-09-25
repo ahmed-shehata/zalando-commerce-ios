@@ -3,26 +3,51 @@
 //
 
 import Foundation
+import AtlasSDK
 
-protocol Localizable {
+protocol Localizer {
 
-    var localeIdentifier: String { get }
-    var localizedStringsBundle: NSBundle { get }
+    func countryName(forCountryCode countryCode: String?) -> String?
+    func string(key: String, formatArguments: [CVarArgType?]?) -> String
+    func price(price: NSNumber) -> String?
+    func date(date: NSDate) -> String?
 
 }
 
-struct Localizer {
+extension Localizer {
 
-    let locale: NSLocale
-    let localizationProvider: Localizable
+    func string(key: String, formatArguments: [CVarArgType?]? = nil) -> String {
+        return string(key, formatArguments: formatArguments)
+    }
 
+    static var instance: Localizer {
+        return (try? Atlas.provide() as Localizer) ?? UILocalizer(localeIdentifier: "en_US", localizedStringsBundle: NSBundle.mainBundle())
+    }
+
+    static func str(key: String, formatArguments: [CVarArgType?]? = nil) -> String {
+        return instance.string(key, formatArguments: formatArguments)
+    }
+
+    static func price(price: NSNumber) -> String? {
+        return instance.price(price)
+    }
+
+    static func date(date: NSDate) -> String? {
+        return instance.date(date)
+    }
+
+}
+
+struct UILocalizer: Localizer {
+
+    private let locale: NSLocale
     private let priceFormatter: NSNumberFormatter
     private let dateFormatter: NSDateFormatter
-    private var localizedStringsBundle: NSBundle!
+    private let localizedStringsBundle: NSBundle
 
-    init(localizationProvider: Localizable, defaultLocalization: String = "en") {
-        self.localizationProvider = localizationProvider
-        self.locale = NSLocale(localeIdentifier: localizationProvider.localeIdentifier)
+    init(localeIdentifier: String, localizedStringsBundle: NSBundle) {
+        self.locale = NSLocale(localeIdentifier: localeIdentifier)
+        self.localizedStringsBundle = localizedStringsBundle
 
         dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = .MediumStyle
@@ -31,11 +56,14 @@ struct Localizer {
         priceFormatter = NSNumberFormatter()
         priceFormatter.numberStyle = .CurrencyStyle
         priceFormatter.locale = self.locale
-
-        self.localizedStringsBundle = findLocalizedStringsBundle(defaultLocalization)
     }
 
-    func localizedString(key: String, formatArguments: [CVarArgType?]? = nil) -> String {
+    func countryName(forCountryCode countryCode: String?) -> String? {
+        guard let countryCode = countryCode else { return nil }
+        return locale.displayNameForKey(NSLocaleCountryCode, value: countryCode)
+    }
+
+    func string(key: String, formatArguments: [CVarArgType?]?) -> String {
         let localizedString = NSLocalizedString(key, bundle: self.localizedStringsBundle, comment: "")
 
         guard let formatArguments = formatArguments where !formatArguments.isEmpty else {
@@ -45,37 +73,12 @@ struct Localizer {
         return String(format: localizedString, arguments: formatArguments.flatMap { $0 })
     }
 
-    func countryName(forCountryCode countryCode: String?) -> String? {
-        guard let countryCode = countryCode else { return nil }
-        return locale.displayNameForKey(NSLocaleCountryCode, value: countryCode)
+    func price(price: NSNumber) -> String? {
+        return priceFormatter.stringFromNumber(price)
     }
 
-    func fmtPrice(number: NSNumber) -> String? {
-        return priceFormatter.stringFromNumber(number)
-    }
-
-    func fmtDate(date: NSDate) -> String? {
+    func date(date: NSDate) -> String? {
         return dateFormatter.stringFromDate(date)
-    }
-
-    private func findLocalizedStringsBundle(defaultLocalization: String) -> NSBundle {
-        let localizationKeys = [NSLocaleIdentifier, NSLocaleLanguageCode, defaultLocalization]
-
-        for key in localizationKeys {
-            guard let localization = locale.objectForKey(key) as? String else { continue }
-            let localizedStringsPath = path(forResourceNamed: "Localizable.strings", forLocalization: localization)
-            let localizedStringsFolder = localizedStringsPath?.stringByDeletingLastPathComponent
-            if let folder = localizedStringsFolder, bundle = NSBundle(path: folder) {
-                return bundle
-            }
-        }
-
-        return localizationProvider.localizedStringsBundle
-    }
-
-    private func path(forResourceNamed resourceName: String, forLocalization localizationName: String) -> NSString? {
-        return localizationProvider.localizedStringsBundle.pathForResource(resourceName,
-            ofType: nil, inDirectory: nil, forLocalization: localizationName) as NSString?
     }
 
 }

@@ -12,7 +12,7 @@ enum FormValidator {
     case Pattern(pattern: String)
     case NumbersOnly
 
-    internal func errorMessage(text: String?, localizer: LocalizerProviderType) -> String? {
+    internal func errorMessage(text: String?, localizer: Localizer) -> String? {
         guard !isValid(text) else { return nil }
         return errorMessage(localizer)
     }
@@ -37,7 +37,7 @@ enum FormValidator {
         return regex?.firstMatchInString(trimmedText, options: [], range: NSRange(location: 0, length: trimmedText.length)) != nil
     }
 
-    private func errorMessage(localizer: LocalizerProviderType) -> String {
+    private func errorMessage(localizer: Localizer) -> String {
         switch self {
         case .Required: return localizer.loc("Form.validation.required")
         case .MinLength(let minLength): return localizer.loc("Form.validation.minLength: %@", "\(minLength)")

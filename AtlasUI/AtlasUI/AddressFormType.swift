@@ -38,12 +38,12 @@ enum AddressFormField: String {
         return "\(rawValue.lowercaseString)-textfield"
     }
 
-    func title(localizer: LocalizerProviderType) -> String {
+    func title(localizer: Localizer) -> String {
         let title = localizer.loc("Address.form.\(rawValue.lowercaseString)")
         return title + (formValidators.contains { $0 == .Required } ? "*" : "")
     }
 
-    func value(viewModel: AddressFormViewModel, localizer: LocalizerProviderType) -> String? {
+    func value(viewModel: AddressFormViewModel, localizer: Localizer) -> String? {
         switch self {
         case .Title: return viewModel.localizedTitle(localizer)
         case .FirstName: return viewModel.firstName
@@ -58,7 +58,7 @@ enum AddressFormField: String {
         }
     }
 
-    func updateModel(viewModel: AddressFormViewModel, withValue value: String?, localizer: LocalizerProviderType) {
+    func updateModel(viewModel: AddressFormViewModel, withValue value: String?, localizer: Localizer) {
         switch self {
         case .Title: viewModel.updateTitle(value, localizer: localizer)
         case .FirstName: viewModel.firstName = value
@@ -87,7 +87,7 @@ enum AddressFormField: String {
         }
     }
 
-    func customView(viewModel: AddressFormViewModel, localizer: LocalizerProviderType, completion: TextFieldChangedHandler) -> UIView? {
+    func customView(viewModel: AddressFormViewModel, localizer: Localizer, completion: TextFieldChangedHandler) -> UIView? {
         switch self {
         case .Title:
             let titles = viewModel.titles(localizer)

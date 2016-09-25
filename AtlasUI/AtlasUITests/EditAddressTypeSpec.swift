@@ -58,7 +58,7 @@ class EditAddressTypeSpec: QuickSpec {
         }
     }
 
-    private func updateModelData(localizer: LocalizerProviderType, viewModel: AddressFormViewModel) {
+    private func updateModelData(localizer: Localizer, viewModel: AddressFormViewModel) {
         AddressFormField.Title.updateModel(viewModel, withValue: "Mr", localizer: localizer)
         AddressFormField.FirstName.updateModel(viewModel, withValue: "John", localizer: localizer)
         AddressFormField.LastName.updateModel(viewModel, withValue: "Doe", localizer: localizer)

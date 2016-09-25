@@ -8,7 +8,7 @@ import Contacts
 
 extension FormattableAddress {
 
-    internal func fullContactPostalAddress(localizedWith localizer: LocalizerProviderType) -> String {
+    internal func fullContactPostalAddress(localizedWith localizer: Localizer) -> String {
         let parts = [formattedContact, formattedPostalAddress(localizedWith: localizer)]
         return parts.flatMap { $0 }.joinWithSeparator(", ")
     }
@@ -23,7 +23,7 @@ extension FormattableAddress {
         return contactFormatter.stringFromContact(contact)
     }
 
-    internal func formattedPostalAddress(localizedWith localizer: LocalizerProviderType) -> String {
+    internal func formattedPostalAddress(localizedWith localizer: Localizer) -> String {
         let postalFormatter = CNPostalAddressFormatter()
         let postalAddress = CNMutablePostalAddress()
 
@@ -37,7 +37,7 @@ extension FormattableAddress {
         return postalFormatter.stringFromPostalAddress(postalAddress)
     }
 
-    internal func splittedFormattedPostalAddress(localizedWith localizer: LocalizerProviderType) -> [String] {
+    internal func splittedFormattedPostalAddress(localizedWith localizer: Localizer) -> [String] {
         let postalFormatter = CNPostalAddressFormatter()
         let firstLineAddress = CNMutablePostalAddress()
         let secondLineAddress = CNMutablePostalAddress()

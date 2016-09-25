@@ -41,7 +41,7 @@ class TextFieldInputStackView: UIStackView {
     private weak var nextTextField: TextFieldInputStackView?
     private var valueChangedHandler: TextFieldChangedHandler?
     private var validators: [FormValidator] = []
-    private var localizer: LocalizerProviderType!
+    private var localizer: Localizer!
 
     internal func validateForm() -> Bool {
         let error = checkFormForError()

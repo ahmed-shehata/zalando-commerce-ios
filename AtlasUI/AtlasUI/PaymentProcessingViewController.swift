@@ -41,7 +41,7 @@ internal final class PaymentProcessingViewController: UIViewController, Checkout
         self.checkout.client.createOrder(checkout.id) { result in
             switch result {
             case .failure(let error):
-                self.userMessage.show(error: error)
+                UserMessage.show(error: error)
             case .success(let order):
                 print(order)
                 guard let paymentURL = order.externalPaymentURL else {

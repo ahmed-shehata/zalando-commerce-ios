@@ -158,11 +158,11 @@ extension AddressFormViewController {
             guard let strongSelf = self else { return }
             switch result {
             case .failure(let error):
-                strongSelf.userMessage.show(error: error)
+                UserMessage.show(error: error)
             case .success(let checkAddressResponse):
                 if checkAddressResponse.status == .notCorrect {
-                    let title = strongSelf.loc("Address.validation.notValid")
-                    strongSelf.userMessage.show(title: title, message: nil, actions: ButtonAction(text: "OK"))
+                    let title = UILocalizer.str("Address.validation.notValid")
+                    UserMessage.showOK(title: title)
                 } else {
                     switch strongSelf.addressMode {
                     case .createAddress: strongSelf.createAddressRequest()
@@ -180,7 +180,7 @@ extension AddressFormViewController {
             guard let strongSelf = self else { return }
             switch result {
             case .failure(let error):
-                strongSelf.userMessage.show(error: error)
+                UserMessage.show(error: error)
             case .success(let address):
                 strongSelf.dismissView()
                 strongSelf.completion?(address)

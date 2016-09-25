@@ -39,7 +39,7 @@ extension CheckoutSummaryActionsHandler {
         strongViewController.checkout.client.updateCheckout(checkout.id, updateCheckoutRequest: updateCheckoutRequest) { result in
             switch result {
             case .failure(let error):
-                strongViewController.userMessage.show(error: error)
+                UserMessage.show(error: error)
                 strongViewController.hideLoader()
             case .success(let checkout):
                 self.createOrder(checkout.id)
@@ -53,7 +53,7 @@ extension CheckoutSummaryActionsHandler {
         strongViewController.checkout.client.createOrder(checkoutId) { result in
             switch result {
             case .failure(let error):
-                strongViewController.userMessage.show(error: error)
+                UserMessage.show(error: error)
                 strongViewController.hideLoader()
             case .success (let order):
                 self.handleOrderConfirmation(order)
@@ -74,7 +74,7 @@ extension CheckoutSummaryActionsHandler {
             switch result {
             case .failure(let error):
                 Async.main {
-                    strongViewController.userMessage.show(error: error)
+                    UserMessage.show(error: error)
                 }
             case .success(let customer):
                 self.generateCheckout(customer)
@@ -93,7 +93,7 @@ extension CheckoutSummaryActionsHandler {
                 switch result {
                 case .failure(let error):
                     strongViewController.dismissViewControllerAnimated(true) {
-                        strongViewController.userMessage.show(error: error)
+                        UserMessage.show(error: error)
                     }
                 case .success(var checkoutViewModel):
                     checkoutViewModel.customer = customer
@@ -118,7 +118,7 @@ extension CheckoutSummaryActionsHandler {
             case .success:
                 self.loadCustomerData()
             case .failure(let error):
-                strongViewController.userMessage.show(error: error)
+                UserMessage.show(error: error)
             }
         }
         strongViewController.showViewController(paymentSelectionViewController, sender: strongViewController)
@@ -137,7 +137,7 @@ extension CheckoutSummaryActionsHandler {
         guard let strongViewController = self.viewController else { return }
         guard Atlas.isUserLoggedIn() else { return loadCustomerData() }
         let addressSelectionViewController = AddressPickerViewController(checkout: strongViewController.checkout,
-                                                                               addressType: .billing,
+            addressType: .billing,
             addressSelectionCompletion: pickedAddressCompletion)
         addressSelectionViewController.selectedAddress = strongViewController.checkoutViewModel.selectedBillingAddress
         strongViewController.showViewController(addressSelectionViewController, sender: strongViewController)
@@ -157,7 +157,7 @@ extension CheckoutSummaryActionsHandler {
             case .success:
                 strongViewController.viewState = .OrderPlaced
             case .failure(let error):
-                strongViewController.userMessage.show(error: error)
+                UserMessage.show(error: error)
             }
         }
         strongViewController.showViewController(paymentSelectionViewController, sender: strongViewController)
@@ -194,7 +194,7 @@ extension CheckoutSummaryActionsHandler {
                     switch result {
                     case .failure(let error):
                         strongViewController.dismissViewControllerAnimated(true) {
-                            strongViewController.userMessage.show(error: error)
+                            UserMessage.show(error: error)
                         }
                     case .success(var checkoutViewModel):
                         checkoutViewModel.customer = strongViewController.checkoutViewModel.customer

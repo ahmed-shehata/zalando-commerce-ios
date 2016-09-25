@@ -12,7 +12,7 @@ struct TextFieldInputViewModel {
     let accessibilityIdentifier: String
     let isActive: Bool
     let validators: [FormValidator]
-    let localizer: LocalizerProviderType
+    let localizer: Localizer
     let customInputView: UIView?
     let nextTextFieldInput: TextFieldInputStackView?
     let valueChangedHandler: TextFieldChangedHandler?
@@ -22,7 +22,7 @@ struct TextFieldInputViewModel {
           accessibilityIdentifier: String,
           isActive: Bool = true,
           validators: [FormValidator] = [],
-          localizer: LocalizerProviderType,
+          localizer: Localizer,
           customInputView: UIView? = nil,
           nextTextFieldInput: TextFieldInputStackView? = nil,
           valueChangedHandler: TextFieldChangedHandler? = nil) {
