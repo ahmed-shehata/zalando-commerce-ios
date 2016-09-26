@@ -74,10 +74,8 @@ extension CheckoutSummaryActionsHandler {
         strongViewController.checkout.prepareCheckoutViewModel(strongViewController.checkoutViewModel.selectedArticleUnit,
             checkoutViewModel: strongViewController.checkoutViewModel) { result in
                 strongViewController.hideLoader()
-                guard var checkoutViewModel = result.handleError(checkoutProviderType: strongViewController) else {
-                    strongViewController.dismissViewControllerAnimated(true, completion: nil)
-                    return
-                }
+                guard var checkoutViewModel = result.handleError(checkoutProviderType: strongViewController,
+                                                                 type: .CancelCheckoutWithError) else { return }
 
                 checkoutViewModel.customer = customer
                 strongViewController.checkoutViewModel = checkoutViewModel
@@ -172,10 +170,8 @@ extension CheckoutSummaryActionsHandler {
                 checkoutViewModel: strongViewController.checkoutViewModel) { result in
                     strongViewController.hideLoader()
 
-                    guard var checkoutViewModel = result.handleError(checkoutProviderType: strongViewController) else {
-                        strongViewController.dismissViewControllerAnimated(true, completion: nil)
-                        return
-                    }
+                    guard var checkoutViewModel = result.handleError(checkoutProviderType: strongViewController,
+                                                                     type: .CancelCheckoutWithError) else { return }
 
                     checkoutViewModel.customer = strongViewController.checkoutViewModel.customer
                     strongViewController.checkoutViewModel = checkoutViewModel

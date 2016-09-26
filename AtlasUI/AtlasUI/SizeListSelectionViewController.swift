@@ -108,11 +108,7 @@ extension SizeListSelectionViewController: UITableViewDelegate {
             self.checkout.prepareCheckoutViewModel(selectedArticleUnit) { result in
                 self.loaderView.hide()
 
-                guard var checkoutViewModel = result.handleError(checkoutProviderType: self) else {
-                    self.dismissViewControllerAnimated(true, completion: nil)
-                    return
-                }
-
+                guard var checkoutViewModel = result.handleError(checkoutProviderType: self, type: .CancelCheckoutWithError) else { return }
                 checkoutViewModel.customer = customer
                 self.displayCheckoutSummaryViewController(checkoutViewModel)
             }

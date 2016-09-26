@@ -59,10 +59,7 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
 
         checkout.prepareCheckoutViewModel(selectedArticleUnit) { result in
 
-            guard let checkoutViewModel = result.handleError(checkoutProviderType: self) else {
-                self.dismissViewControllerAnimated(true, completion: nil)
-                return
-            }
+            guard let checkoutViewModel = result.handleError(checkoutProviderType: self, type: .CancelCheckoutWithError) else { return }
             self.displayCheckoutSummaryViewController(checkoutViewModel)
         }
     }
