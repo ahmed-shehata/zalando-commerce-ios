@@ -37,28 +37,20 @@ extension CheckoutSummaryActionsHandler {
         let updateCheckoutRequest = UpdateCheckoutRequest(checkoutViewModel: strongViewController.checkoutViewModel)
 
         strongViewController.checkout.client.updateCheckout(checkout.id, updateCheckoutRequest: updateCheckoutRequest) { result in
-            switch result {
-            case .failure(let error):
-                strongViewController.userMessage.show(error: error)
-                strongViewController.hideLoader()
-            case .success(let checkout):
-                self.createOrder(checkout.id)
-            }
+            strongViewController.hideLoader()
+            guard let checkout = result.handleError(checkoutProviderType: strongViewController) else { return }
+            self.createOrder(checkout.id)
         }
     }
 
     internal func createOrder(checkoutId: String) {
         guard let strongViewController = self.viewController else { return }
 
+        strongViewController.showLoader()
         strongViewController.checkout.client.createOrder(checkoutId) { result in
-            switch result {
-            case .failure(let error):
-                strongViewController.userMessage.show(error: error)
-                strongViewController.hideLoader()
-            case .success (let order):
-                self.handleOrderConfirmation(order)
-                strongViewController.hideLoader()
-            }
+            strongViewController.hideLoader()
+            guard let order = result.handleError(checkoutProviderType: strongViewController) else { return }
+            self.handleOrderConfirmation(order)
         }
     }
 
@@ -70,14 +62,8 @@ extension CheckoutSummaryActionsHandler {
         guard let strongViewController = self.viewController else { return }
 
         strongViewController.checkout.client.customer { result in
-
-            switch result {
-            case .failure(let error):
-                    strongViewController.userMessage.show(error: error)
-            case .success(let customer):
-                self.generateCheckout(customer)
-            }
-
+            guard let customer = result.handleError(checkoutProviderType: strongViewController) else { return }
+            self.generateCheckout(customer)
         }
     }
 
@@ -88,16 +74,14 @@ extension CheckoutSummaryActionsHandler {
         strongViewController.checkout.prepareCheckoutViewModel(strongViewController.checkoutViewModel.selectedArticleUnit,
             checkoutViewModel: strongViewController.checkoutViewModel) { result in
                 strongViewController.hideLoader()
-                switch result {
-                case .failure(let error):
-                    strongViewController.dismissViewControllerAnimated(true) {
-                        strongViewController.userMessage.show(error: error)
-                    }
-                case .success(var checkoutViewModel):
-                    checkoutViewModel.customer = customer
-                    strongViewController.checkoutViewModel = checkoutViewModel
-                    strongViewController.viewState = checkoutViewModel.checkoutViewState
+                guard var checkoutViewModel = result.handleError(checkoutProviderType: strongViewController) else {
+                    strongViewController.dismissViewControllerAnimated(true, completion: nil)
+                    return
                 }
+
+                checkoutViewModel.customer = customer
+                strongViewController.checkoutViewModel = checkoutViewModel
+                strongViewController.viewState = checkoutViewModel.checkoutViewState
         }
     }
 
@@ -112,12 +96,9 @@ extension CheckoutSummaryActionsHandler {
 
         let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
         paymentSelectionViewController.paymentCompletion = { result in
-            switch result {
-            case .success:
-                self.loadCustomerData()
-            case .failure(let error):
-                strongViewController.userMessage.show(error: error)
-            }
+
+            guard let _ = result.handleError(checkoutProviderType: strongViewController) else { return }
+            self.loadCustomerData()
         }
         strongViewController.showViewController(paymentSelectionViewController, sender: strongViewController)
     }
@@ -151,12 +132,9 @@ extension CheckoutSummaryActionsHandler {
 
         let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
         paymentSelectionViewController.paymentCompletion = { result in
-            switch result {
-            case .success:
-                strongViewController.viewState = .OrderPlaced
-            case .failure(let error):
-                strongViewController.userMessage.show(error: error)
-            }
+
+            guard let _ = result.handleError(checkoutProviderType: strongViewController) else { return }
+            strongViewController.viewState = .OrderPlaced
         }
         strongViewController.showViewController(paymentSelectionViewController, sender: strongViewController)
     }
@@ -193,17 +171,16 @@ extension CheckoutSummaryActionsHandler {
             strongViewController.checkout.prepareCheckoutViewModel(strongViewController.checkoutViewModel.selectedArticleUnit,
                 checkoutViewModel: strongViewController.checkoutViewModel) { result in
                     strongViewController.hideLoader()
-                    switch result {
-                    case .failure(let error):
-                        strongViewController.dismissViewControllerAnimated(true) {
-                            strongViewController.userMessage.show(error: error)
-                        }
-                    case .success(var checkoutViewModel):
-                        checkoutViewModel.customer = strongViewController.checkoutViewModel.customer
-                        strongViewController.checkoutViewModel = checkoutViewModel
-                        strongViewController.rootStackView.configureData(strongViewController)
-                        strongViewController.refreshViewData()
+
+                    guard var checkoutViewModel = result.handleError(checkoutProviderType: strongViewController) else {
+                        strongViewController.dismissViewControllerAnimated(true, completion: nil)
+                        return
                     }
+
+                    checkoutViewModel.customer = strongViewController.checkoutViewModel.customer
+                    strongViewController.checkoutViewModel = checkoutViewModel
+                    strongViewController.rootStackView.configureData(strongViewController)
+                    strongViewController.refreshViewData()
             }
     }
 }

@@ -99,24 +99,22 @@ extension SizeListSelectionViewController: UITableViewDelegate {
 
         loaderView.show()
         self.checkout.client.customer { result in
-            switch result {
-            case .failure(let error):
-                self.userMessage.show(error: error)
+            self.loaderView.hide()
 
-            case .success(let customer):
-                let selectedArticleUnit = SelectedArticleUnit(article: self.article, selectedUnitIndex: indexPath.row)
-                self.checkout.prepareCheckoutViewModel(selectedArticleUnit) { result in
-                    self.loaderView.hide()
-                    switch result {
-                    case .failure(let error):
-                        self.dismissViewControllerAnimated(true) {
-                            self.userMessage.show(error: error)
-                        }
-                    case .success(var checkoutViewModel):
-                        checkoutViewModel.customer = customer
-                        self.displayCheckoutSummaryViewController(checkoutViewModel)
-                    }
+            guard let customer = result.handleError(checkoutProviderType: self) else { return }
+            let selectedArticleUnit = SelectedArticleUnit(article: self.article, selectedUnitIndex: indexPath.row)
+
+            self.loaderView.show()
+            self.checkout.prepareCheckoutViewModel(selectedArticleUnit) { result in
+                self.loaderView.hide()
+
+                guard var checkoutViewModel = result.handleError(checkoutProviderType: self) else {
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                    return
                 }
+
+                checkoutViewModel.customer = customer
+                self.displayCheckoutSummaryViewController(checkoutViewModel)
             }
         }
     }

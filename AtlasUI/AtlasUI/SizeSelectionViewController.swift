@@ -48,12 +48,9 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
         }
 
         checkout.client.customer { result in
-            switch result {
-            case .failure(let error):
-                self.userMessage.show(error: error)
-            case .success(let customer):
-                self.generateCheckout(withArticle: article, customer: customer)
-            }
+
+            guard let customer = result.handleError(checkoutProviderType: self) else { return }
+            self.generateCheckout(withArticle: article, customer: customer)
         }
     }
 
@@ -61,14 +58,12 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
         let selectedArticleUnit = SelectedArticleUnit(article: article, selectedUnitIndex: 0)
 
         checkout.prepareCheckoutViewModel(selectedArticleUnit) { result in
-            switch result {
-            case .failure(let error):
-                self.dismissViewControllerAnimated(true) {
-                    self.userMessage.show(error: error)
-                }
-            case .success(let checkoutViewModel):
-                self.displayCheckoutSummaryViewController(checkoutViewModel)
+
+            guard let checkoutViewModel = result.handleError(checkoutProviderType: self) else {
+                self.dismissViewControllerAnimated(true, completion: nil)
+                return
             }
+            self.displayCheckoutSummaryViewController(checkoutViewModel)
         }
     }
 
@@ -87,13 +82,8 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
         checkout.client.article(forSKU: sku) { [weak self] result in
             guard let strongSelf = self else { return }
 
-            switch result {
-            case .failure(let error):
-                strongSelf.userMessage.show(error: error)
-            case .success(let article):
-                strongSelf.displaySizes(forArticle: article)
-            }
-
+            guard let article = result.handleError(checkoutProviderType: strongSelf) else { return }
+            strongSelf.displaySizes(forArticle: article)
         }
     }
 

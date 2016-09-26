@@ -6,12 +6,13 @@ import AtlasSDK
 
 extension AtlasResult {
 
-    internal func displayErrorOrPerformSuccess(checkoutProviderType: CheckoutProviderType, successCompletion: T -> Void) {
+    internal func handleError(checkoutProviderType checkoutProviderType: CheckoutProviderType) -> T? {
         switch self {
         case .failure(let error):
             displayError(error, checkoutProviderType: checkoutProviderType)
+            return nil
         case .success(let data):
-            successCompletion(data)
+            return data
         }
     }
 

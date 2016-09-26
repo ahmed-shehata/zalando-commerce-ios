@@ -10,17 +10,19 @@ class AddressListTableViewDelegate: NSObject {
     internal var checkout: AtlasCheckout
     private let addressType: AddressType
     private let selectionCompletion: AddressSelectionCompletion
+    private let checkoutProviderType: CheckoutProviderType
     internal var createAddressHandler: CreateAddressHandler?
     internal var updateAddressHandler: UpdateAddressHandler?
     internal var deleteAddressHandler: DeleteAddressHandler?
 
     var addresses: [UserAddress] = []
     var selectedAddress: EquatableAddress?
-    init(checkout: AtlasCheckout, addressType: AddressType,
+    init(checkout: AtlasCheckout, addressType: AddressType, checkoutProviderType: CheckoutProviderType,
         addressSelectionCompletion: AddressSelectionCompletion) {
             self.checkout = checkout
             self.addressType = addressType
             self.selectionCompletion = addressSelectionCompletion
+            self.checkoutProviderType = checkoutProviderType
     }
 }
 
@@ -63,20 +65,14 @@ extension AddressListTableViewDelegate: UITableViewDelegate {
 
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle,
         forRowAtIndexPath indexPath: NSIndexPath) {
-            switch editingStyle {
-            case .Delete:
-                let address = self.addresses[indexPath.item]
-                checkout.client.deleteAddress(address.id) { result in
-                    switch result {
-                    case .success(_):
-                        self.deleteAddress(indexPath, tableView: tableView)
-                    case .failure(let error):
-                        AtlasLogger.logError(error)
-                    }
-                }
-            default:
-                break
-            }
+
+        guard editingStyle == .Delete else { return }
+
+        let address = self.addresses[indexPath.item]
+        checkout.client.deleteAddress(address.id) { result in
+            guard let _ = result.handleError(checkoutProviderType: self.checkoutProviderType) else { return }
+            self.deleteAddress(indexPath, tableView: tableView)
+        }
     }
 
     private func deleteAddress(indexPath: NSIndexPath, tableView: UITableView) {
