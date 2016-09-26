@@ -14,7 +14,7 @@ protocol Endpoint: CustomStringConvertible {
     var queryItems: [NSURLQueryItem]? { get }
     var parameters: [String: AnyObject]? { get }
 
-    var isOAuth: Bool { get }
+    var requiresAuthorization: Bool { get }
 }
 
 extension Endpoint {
@@ -27,7 +27,7 @@ extension Endpoint {
     var queryItems: [NSURLQueryItem]? { return nil }
     var parameters: [String: AnyObject]? { return nil }
 
-    var isOAuth: Bool { return true }
+    var requiresAuthorization: Bool { return true }
 }
 
 extension Endpoint {

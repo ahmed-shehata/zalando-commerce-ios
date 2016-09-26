@@ -7,7 +7,5 @@ import Foundation
 struct GetConfigEndpoint: Endpoint {
 
     let URL: NSURL
-    var isOAuth: Bool {
-        return false
-    }
+    let requiresAuthorization = false
 }

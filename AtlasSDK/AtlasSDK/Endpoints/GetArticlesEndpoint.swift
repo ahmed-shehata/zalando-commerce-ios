@@ -18,7 +18,5 @@ struct GetArticlesEndpoint: ConfigurableEndpoint {
     let salesChannel: String
     let clientId: String
     let fields: [String]?
-    var isOAuth: Bool {
-        return false
-    }
+    let requiresAuthorization = false
 }
