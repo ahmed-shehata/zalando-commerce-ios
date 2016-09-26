@@ -21,29 +21,32 @@ public struct APIClient {
     }
 
     func touch(endpoint: Endpoint, completion: AtlasResult<Bool> -> Void, successCompletion: JSONResponse -> Bool) {
-        fetch(from: endpoint, completion: completion) { response in
+        call(from: endpoint, completion: completion) { response in
             return successCompletion(response)
         }
     }
 
     func fetch<Model: JSONInitializable>(from endpoint: Endpoint, completion: AtlasResult<Model> -> Void) {
-        fetch(from: endpoint, completion: completion) { response in
+        call(from: endpoint, completion: completion) { response in
             guard let json = response.body else { return nil }
             return Model(json: json)
         }
     }
 
     func fetch<Model: JSONInitializable>(from endpoint: Endpoint, completion: AtlasResult<[Model]> -> Void) {
-        fetch(from: endpoint, completion: completion) { response in
+        call(from: endpoint, completion: completion) { response in
             guard let json = response.body, jsons = json.array.flatMap({ $0 }) else { return nil }
             return jsons.flatMap { Model(json: $0) }
         }
     }
 
-    private func fetch<T>(from endpoint: Endpoint, completion: AtlasResult<T> -> Void, successHandler: JSONResponse -> T?) {
-        RequestBuilder(forEndpoint: endpoint, urlSession: urlSession).execute { result in
+    private func call<T>(from endpoint: Endpoint, completion: AtlasResult<T> -> Void, successHandler: JSONResponse -> T?) {
+        var builder = RequestBuilder(forEndpoint: endpoint, urlSession: urlSession)
+        builder.execute { result in
             switch result {
             case .failure(let error):
+                AtlasLogger.logError("FAILED CALL", builder)
+
                 dispatch_async(dispatch_get_main_queue()) {
                     completion(.failure(error))
                 }
