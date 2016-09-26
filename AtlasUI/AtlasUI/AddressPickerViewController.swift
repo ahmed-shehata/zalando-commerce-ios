@@ -37,7 +37,7 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
             configureEditButton()
         }
     }
-    weak var tableviewDelegate: AddressListTableViewDelegate?
+    var tableviewDelegate: AddressListTableViewDelegate?
 
     var selectedAddress: EquatableAddress? {
         didSet {
