@@ -35,7 +35,7 @@ extension CheckoutSummaryActionsHandler {
 
         let updateCheckoutRequest = UpdateCheckoutRequest(checkoutViewModel: strongViewController.checkoutViewModel)
 
-        strongViewController.makeNetworkRequestWithSpinner { done in
+        strongViewController.displayLoaderWithRequest { done in
             strongViewController.checkout.client.updateCheckout(checkout.id, updateCheckoutRequest: updateCheckoutRequest) { result in
                 switch result {
                 case .failure(let error):
@@ -50,7 +50,7 @@ extension CheckoutSummaryActionsHandler {
 
     internal func createOrder(checkoutId: String) {
         guard let strongViewController = self.viewController else { return }
-        strongViewController.makeNetworkRequestWithSpinner { done in
+        strongViewController.displayLoaderWithRequest { done in
             strongViewController.checkout.client.createOrder(checkoutId) { result in
                 switch result {
                 case .failure(let error):
@@ -86,7 +86,7 @@ extension CheckoutSummaryActionsHandler {
     private func generateCheckout(customer: Customer) {
         guard let strongViewController = self.viewController else { return }
 
-        strongViewController.makeNetworkRequestWithSpinner { done in
+        strongViewController.displayLoaderWithRequest { done in
             strongViewController.checkout.prepareCheckoutViewModel(strongViewController.checkoutViewModel.selectedArticleUnit,
                 checkoutViewModel: strongViewController.checkoutViewModel) { result in
                     done()
@@ -191,7 +191,7 @@ extension CheckoutSummaryActionsHandler {
 
             guard strongViewController.checkoutViewModel.isReadyToCreateCheckout == true else { return }
 
-            strongViewController.makeNetworkRequestWithSpinner { done in
+            strongViewController.displayLoaderWithRequest { done in
                 strongViewController.checkout.prepareCheckoutViewModel(strongViewController.checkoutViewModel.selectedArticleUnit,
                     checkoutViewModel: strongViewController.checkoutViewModel) { result in
                         done()

@@ -62,7 +62,7 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
         self.loaderView.hide()
     }
 
-    internal func makeNetworkRequestWithSpinner(requestToMake: (() -> Void) -> Void) {
+    internal func displayLoaderWithRequest(requestToMake: (() -> Void) -> Void) {
         showLoader()
         requestToMake(hideLoader)
     }
