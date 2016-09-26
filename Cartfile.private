@@ -1,11 +1,11 @@
 # Tests
 
-github "Quick/Quick"
+github "Quick/Quick" "v0.9.3"
 github "Quick/Nimble" "v4.1.0"
 
 # AtlasMockAPI
 
-github "httpswift/swifter" "stable"
+github "bonkey/swifter" "stable"
 
 # AtlasDemo
 
