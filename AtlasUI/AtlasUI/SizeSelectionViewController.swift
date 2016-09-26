@@ -60,7 +60,7 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
     private func generateCheckout(withArticle article: Article, customer: Customer) {
         let selectedArticleUnit = SelectedArticleUnit(article: article, selectedUnitIndex: 0)
 
-        checkout.createCheckout(forArticleUnit: selectedArticleUnit) { result in
+        checkout.createCheckoutViewModel(for: selectedArticleUnit) { result in
             switch result {
             case .failure(let error):
                 self.dismissViewControllerAnimated(true) {
@@ -101,8 +101,8 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
         guard !article.hasSingleUnit else {
             return showCheckoutScreen(article, selectedUnitIndex: 0)
         }
-            self.activityIndicatorView.stopAnimating()
-            self.showSizeListViewController(article)
+        self.activityIndicatorView.stopAnimating()
+        self.showSizeListViewController(article)
     }
 
     private func showSizeListViewController(article: Article) {

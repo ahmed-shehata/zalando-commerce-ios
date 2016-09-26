@@ -105,7 +105,7 @@ extension SizeListSelectionViewController: UITableViewDelegate {
 
             case .success(let customer):
                 let selectedArticleUnit = SelectedArticleUnit(article: self.article, selectedUnitIndex: indexPath.row)
-                self.checkout.prepareCheckoutViewModel(selectedArticleUnit) { result in
+                self.checkout.createCheckoutViewModel(for: selectedArticleUnit) { result in
                     self.loaderView.hide()
                     switch result {
                     case .failure(let error):

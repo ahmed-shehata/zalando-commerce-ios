@@ -85,7 +85,7 @@ extension CheckoutSummaryActionsHandler {
         guard let strongViewController = self.viewController else { return }
 
         strongViewController.showLoader()
-        strongViewController.checkout.createCheckout(fromModel: strongViewController.checkoutViewModel) { result in
+        strongViewController.checkout.createCheckoutViewModel(from: strongViewController.checkoutViewModel) { result in
             strongViewController.hideLoader()
             switch result {
             case .failure(let error):
@@ -189,7 +189,7 @@ extension CheckoutSummaryActionsHandler {
 
             strongViewController.showLoader()
 
-            strongViewController.checkout.createCheckout(fromModel: strongViewController.checkoutViewModel) { result in
+            strongViewController.checkout.createCheckoutViewModel(from: strongViewController.checkoutViewModel) { result in
                 strongViewController.hideLoader()
                 switch result {
                 case .failure(let error):
