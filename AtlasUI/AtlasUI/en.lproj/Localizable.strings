@@ -75,3 +75,6 @@
 "Form.validation.pattern" = "Invalid value";
 "Form.validation.numbersOnly" = "Only numbers are allowed";
 "Address.validation.notValid" = "Address not valid, please check the address";
+
+"Error.general.title" = "Oops"
+"Error.general.message" = "Sorry,Something went wrong!";

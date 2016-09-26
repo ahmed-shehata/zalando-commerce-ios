@@ -16,6 +16,7 @@ extension AtlasResult {
     }
 
     private func displayError(error: ErrorType, checkoutProviderType: CheckoutProviderType) {
-        checkoutProviderType.userMessage.show(error: error)
+        checkoutProviderType.userMessage.generalError()
     }
+    
 }
