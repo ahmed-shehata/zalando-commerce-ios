@@ -102,6 +102,8 @@ extension AddressListTableViewDelegate: UITableViewDelegate {
         } else {
             selectedAddress = addresses[indexPath.item]
             self.selectionCompletion(pickedAddress: selectedAddress, pickedAddressType: self.addressType, popBackToSummaryOnFinish: true)
+                pickedAddressType: self.addressType,
+                popBackToSummaryOnFinish: true)
             tableView.reloadData()
         }
     }
