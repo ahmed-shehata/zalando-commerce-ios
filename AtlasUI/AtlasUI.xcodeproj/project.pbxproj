@@ -374,13 +374,6 @@
 			path = AtlasUITests;
 			sourceTree = "<group>";
 		};
-		BF9929555672988290967B0500B378E9 /* Edit Address */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Edit Address";
-			sourceTree = "<group>";
-		};
 		CAA68AC473B19357EB600179B707795D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -401,7 +394,6 @@
 		E7B8FD94F5B37D0CD471CC2CC01B2A93 /* Address Selection */ = {
 			isa = PBXGroup;
 			children = (
-				BF9929555672988290967B0500B378E9 /* Edit Address */,
 				6FC391339AB40C212901806139F6FC2B /* AddressListTableViewDelegate.swift */,
 				9CC30D3206CE11A3DB6F12F72BC8DB31 /* AddressPickerViewController.swift */,
 				FCDAB74F0608C1A0ABE505D7D3498B40 /* AddressRowViewCell.swift */,
