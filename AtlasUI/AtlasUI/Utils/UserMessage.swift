@@ -51,15 +51,16 @@ struct UserMessage {
         show(title: title, message: nil, actions: ButtonAction(text: "OK"))
     }
 
-    static func show(title title: String, message: String? = nil, preferredStyle: UIAlertControllerStyle = .Alert, actions: ButtonAction...) {
-        guard let topViewController = UIApplication.topViewController() else { return }
-        let alertView = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
+    static func show(title title: String, message: String? = nil,
+        preferredStyle: UIAlertControllerStyle = .Alert, actions: ButtonAction...) {
+            guard let topViewController = UIApplication.topViewController() else { return }
+            let alertView = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
 
-        actions.forEach { alertView.addAction($0, localizer: UILocalizer.instance) }
+            actions.forEach { alertView.addAction($0, localizer: UILocalizer.instance) }
 
-        Async.main {
-            topViewController.presentViewController(alertView, animated: true, completion: nil)
-        }
+            Async.main {
+                topViewController.presentViewController(alertView, animated: true, completion: nil)
+            }
     }
 
 }
