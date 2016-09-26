@@ -75,11 +75,10 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
     private func displayCheckoutSummaryViewController(checkoutViewModel: CheckoutViewModel) {
         let checkoutSummaryVC = CheckoutSummaryViewController(checkout: checkout, checkoutViewModel: checkoutViewModel)
 
-        Async.main {
-            UIView.performWithoutAnimation {
-                self.showViewController(checkoutSummaryVC, sender: self)
-            }
+        UIView.performWithoutAnimation {
+            self.showViewController(checkoutSummaryVC, sender: self)
         }
+
     }
 
     private func fetchSizes() {
@@ -87,14 +86,14 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
 
         checkout.client.article(forSKU: sku) { [weak self] result in
             guard let strongSelf = self else { return }
-            Async.main {
-                switch result {
-                case .failure(let error):
-                    strongSelf.userMessage.show(error: error)
-                case .success(let article):
-                    strongSelf.displaySizes(forArticle: article)
-                }
+
+            switch result {
+            case .failure(let error):
+                strongSelf.userMessage.show(error: error)
+            case .success(let article):
+                strongSelf.displaySizes(forArticle: article)
             }
+
         }
     }
 
@@ -102,10 +101,8 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
         guard !article.hasSingleUnit else {
             return showCheckoutScreen(article, selectedUnitIndex: 0)
         }
-        Async.main {
             self.activityIndicatorView.stopAnimating()
             self.showSizeListViewController(article)
-        }
     }
 
     private func showSizeListViewController(article: Article) {

@@ -95,6 +95,14 @@ extension CheckoutViewModel {
 }
 
 extension CheckoutViewModel {
+    mutating func resetState() {
+        self.checkout = nil
+        self.selectedBillingAddress = nil
+        self.selectedShippingAddress = nil
+    }
+}
+
+extension CheckoutViewModel {
     var isReadyToCreateCheckout: Bool? {
         return self.checkout == nil && self.selectedBillingAddress != nil && self.selectedShippingAddress != nil
     }

@@ -73,9 +73,7 @@ extension CheckoutSummaryActionsHandler {
 
             switch result {
             case .failure(let error):
-                Async.main {
                     strongViewController.userMessage.show(error: error)
-                }
             case .success(let customer):
                 self.generateCheckout(customer)
             }
@@ -137,7 +135,7 @@ extension CheckoutSummaryActionsHandler {
         guard let strongViewController = self.viewController else { return }
         guard Atlas.isUserLoggedIn() else { return loadCustomerData() }
         let addressSelectionViewController = AddressPickerViewController(checkout: strongViewController.checkout,
-                                                                               addressType: .billing,
+            addressType: .billing,
             addressSelectionCompletion: pickedAddressCompletion)
         addressSelectionViewController.selectedAddress = strongViewController.checkoutViewModel.selectedBillingAddress
         strongViewController.showViewController(addressSelectionViewController, sender: strongViewController)
@@ -167,10 +165,12 @@ extension CheckoutSummaryActionsHandler {
 
 extension CheckoutSummaryActionsHandler {
     func pickedAddressCompletion(pickedAddress address: EquatableAddress?,
-        forAddressType addressType: AddressType) {
+        forAddressType addressType: AddressType, popBackToSummaryOnFinish: Bool) {
             guard let strongViewController = self.viewController else { return }
 
-            strongViewController.navigationController?.popViewControllerAnimated(true)
+            if popBackToSummaryOnFinish {
+                strongViewController.navigationController?.popViewControllerAnimated(true)
+            }
 
             switch addressType {
             case AddressType.billing:
@@ -179,13 +179,15 @@ extension CheckoutSummaryActionsHandler {
                 strongViewController.checkoutViewModel.selectedShippingAddress = address
             }
             if address == nil {
+                strongViewController.checkoutViewModel.resetState()
                 strongViewController.checkoutViewModel.checkout = nil
             }
-            strongViewController.hideLoader()
+
             strongViewController.rootStackView.configureData(strongViewController)
             strongViewController.refreshViewData()
 
             guard strongViewController.checkoutViewModel.isReadyToCreateCheckout == true else { return }
+
             strongViewController.showLoader()
 
             strongViewController.checkout.prepareCheckoutViewModel(strongViewController.checkoutViewModel.selectedArticleUnit,
@@ -202,7 +204,6 @@ extension CheckoutSummaryActionsHandler {
                         strongViewController.rootStackView.configureData(strongViewController)
                         strongViewController.refreshViewData()
                     }
-
             }
     }
 }
@@ -210,6 +211,6 @@ extension CheckoutSummaryActionsHandler {
 extension UpdateCheckoutRequest {
     init (checkoutViewModel: CheckoutViewModel) {
         self.init(billingAddressId: checkoutViewModel.selectedBillingAddress?.id,
-            shippingAddressId: checkoutViewModel.selectedBillingAddress?.id)
+            shippingAddressId: checkoutViewModel.selectedShippingAddress?.id)
     }
 }
