@@ -66,6 +66,9 @@ struct RequestBuilder {
 
     private func buildRequest() throws -> NSMutableURLRequest {
         let request = try NSMutableURLRequest(endpoint: endpoint)
+        guard endpoint.requiresAuthorization else {
+            return request.debugLog()
+        }
         return request.authorize(withToken: APIAccessToken.retrieve()).debugLog()
     }
 
@@ -102,7 +105,6 @@ extension RequestBuilder: CustomStringConvertible {
         }
 
         return desc
-
     }
 
 }
