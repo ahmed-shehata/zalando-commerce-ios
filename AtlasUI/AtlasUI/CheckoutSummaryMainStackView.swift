@@ -82,6 +82,23 @@ class CheckoutSummaryMainStackView: UIStackView {
         return stackView
     }()
 
+    internal let deliverySeparatorView: BorderView = {
+        let view = BorderView()
+        view.bottomBorder = true
+        view.leadingMargin = 15
+        view.borderColor = UIColor(hex: 0xE5E5E5)
+        return view
+    }()
+
+    internal let deliveryStackView: CheckoutSummaryDeliveryStackView = {
+        let stackView = CheckoutSummaryDeliveryStackView()
+        stackView.axis = .Horizontal
+        stackView.spacing = 5
+        stackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 40)
+        stackView.layoutMarginsRelativeArrangement = true
+        return stackView
+    }()
+
 }
 
 extension CheckoutSummaryMainStackView: UIBuilder {
@@ -92,6 +109,9 @@ extension CheckoutSummaryMainStackView: UIBuilder {
 
         addArrangedSubview(shippingAddressStackView)
         addArrangedSubview(shippingAddressSeparatorView)
+
+        addArrangedSubview(deliveryStackView)
+        addArrangedSubview(deliverySeparatorView)
 
         addArrangedSubview(billingAddressStackView)
         addArrangedSubview(billingAddressSeparatorView)
@@ -116,7 +136,7 @@ extension CheckoutSummaryMainStackView: UIBuilder {
     }
 
     func builderSubviews() -> [UIBuilder] {
-        return [productStackView, shippingAddressStackView, billingAddressStackView, paymentStackView, priceStackView]
+        return [productStackView, shippingAddressStackView, billingAddressStackView, paymentStackView, priceStackView, deliveryStackView]
     }
 
 }
@@ -128,6 +148,7 @@ extension CheckoutSummaryMainStackView: UIDataBuilder {
     func configureData(viewModel: T) {
         productStackView.configureData(viewModel)
         priceStackView.configureData(viewModel)
+        deliveryStackView.configureData(viewModel)
         priceStackView.hidden = !viewModel.viewState.showPrice
 
         shippingAddressStackView.configureData(CheckoutSummaryAddressViewModel(
