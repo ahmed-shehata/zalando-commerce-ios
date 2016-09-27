@@ -99,24 +99,20 @@ extension SizeListSelectionViewController: UITableViewDelegate {
 
         loaderView.show()
         self.checkout.client.customer { result in
-            switch result {
-            case .failure(let error):
-                self.userMessage.show(error: error)
+            self.loaderView.hide()
 
-            case .success(let customer):
-                let selectedArticleUnit = SelectedArticleUnit(article: self.article, selectedUnitIndex: indexPath.row)
-                self.checkout.createCheckoutViewModel(for: selectedArticleUnit) { result in
-                    self.loaderView.hide()
-                    switch result {
-                    case .failure(let error):
-                        self.dismissViewControllerAnimated(true) {
-                            self.userMessage.show(error: error)
-                        }
-                    case .success(var checkoutViewModel):
-                        checkoutViewModel.customer = customer
-                        self.displayCheckoutSummaryViewController(checkoutViewModel)
-                    }
-                }
+            guard let customer = result.success(errorHandlingType: .GeneralError(userMessage: self.userMessage)) else { return }
+            let selectedArticleUnit = SelectedArticleUnit(article: self.article, selectedUnitIndex: indexPath.row)
+
+            self.loaderView.show()
+            self.checkout.createCheckoutViewModel(for: selectedArticleUnit) { result in
+                self.loaderView.hide()
+
+                let errorType = AtlasUIError.CancelCheckout(userMessage: self.userMessage, viewController: self)
+                guard var checkoutViewModel = result.success(errorHandlingType: errorType) else { return }
+
+                checkoutViewModel.customer = customer
+                self.displayCheckoutSummaryViewController(checkoutViewModel)
             }
         }
     }

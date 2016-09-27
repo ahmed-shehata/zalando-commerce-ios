@@ -44,10 +44,12 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
             self.checkout = checkout
             self.addressType = addressType
             selectionCompletion = addressSelectionCompletion
-            tableviewDelegate = AddressListTableViewDelegate(checkout: checkout,
-                addressType: addressType, addressSelectionCompletion: selectionCompletion)
-
             super.init(nibName: nil, bundle: nil)
+
+            tableviewDelegate = AddressListTableViewDelegate(checkout: checkout,
+                                                             addressType: addressType,
+                                                             userMessage: userMessage,
+                                                             addressSelectionCompletion: selectionCompletion)
     }
 
     required init?(coder aDecoder: NSCoder) {
