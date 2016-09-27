@@ -92,11 +92,18 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
             case .failure(let error):
                 strongSelf.userMessage.show(error: error)
             case .success(let addresses):
-                strongSelf.tableviewDelegate?.addresses = addresses
-                strongSelf.tableView.reloadData()
-                strongSelf.configureEditButton()
+                strongSelf.setTableViewDataSource(addresses)
             }
         }
+    }
+
+    private func setTableViewDataSource(addresses: [UserAddress]) {
+        self.tableviewDelegate?.addresses = addresses
+        if addressType == AddressType.billing {
+            self.tableviewDelegate?.addresses = addresses.filter({ $0.pickupPoint == nil })
+        }
+        self.tableView.reloadData()
+        self.configureEditButton()
     }
 
     override func setEditing(editing: Bool, animated: Bool) {

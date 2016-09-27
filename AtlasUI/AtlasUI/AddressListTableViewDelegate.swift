@@ -14,13 +14,7 @@ class AddressListTableViewDelegate: NSObject {
     internal var updateAddressHandler: UpdateAddressHandler?
     internal var deleteAddressHandler: DeleteAddressHandler?
 
-    var addresses: [UserAddress] = [] {
-        didSet {
-            if addressType == AddressType.billing {
-                addresses = addresses.filter({ $0.pickupPoint == nil })
-            }
-        }
-    }
+    var addresses: [UserAddress] = []
     var selectedAddress: EquatableAddress?
     init(checkout: AtlasCheckout, addressType: AddressType,
         addressSelectionCompletion: AddressSelectionCompletion) {
