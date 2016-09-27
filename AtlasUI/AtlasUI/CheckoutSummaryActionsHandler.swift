@@ -71,8 +71,7 @@ extension CheckoutSummaryActionsHandler {
         guard let viewController = self.viewController else { return }
 
         viewController.showLoader()
-        viewController.checkout.prepareCheckoutViewModel(viewController.checkoutViewModel.selectedArticleUnit,
-            checkoutViewModel: viewController.checkoutViewModel) { result in
+        viewController.checkout.createCheckoutViewModel(from: viewController.checkoutViewModel) { result in
                 viewController.hideLoader()
 
                 let errorType = AtlasUIError.CancelCheckout(userMessage: viewController.userMessage, viewController: viewController)
@@ -167,8 +166,7 @@ extension CheckoutSummaryActionsHandler {
 
             viewController.showLoader()
 
-            viewController.checkout.prepareCheckoutViewModel(viewController.checkoutViewModel.selectedArticleUnit,
-                checkoutViewModel: viewController.checkoutViewModel) { result in
+            viewController.checkout.createCheckoutViewModel(from: viewController.checkoutViewModel) { result in
                     viewController.hideLoader()
 
                     let errorType = AtlasUIError.CancelCheckout(userMessage: viewController.userMessage, viewController: viewController)

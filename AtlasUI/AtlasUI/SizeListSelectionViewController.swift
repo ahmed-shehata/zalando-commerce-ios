@@ -105,7 +105,7 @@ extension SizeListSelectionViewController: UITableViewDelegate {
             let selectedArticleUnit = SelectedArticleUnit(article: self.article, selectedUnitIndex: indexPath.row)
 
             self.loaderView.show()
-            self.checkout.prepareCheckoutViewModel(selectedArticleUnit) { result in
+            self.checkout.createCheckoutViewModel(for: selectedArticleUnit) { result in
                 self.loaderView.hide()
 
                 let errorType = AtlasUIError.CancelCheckout(userMessage: self.userMessage, viewController: self)
