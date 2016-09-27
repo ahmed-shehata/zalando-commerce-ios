@@ -73,7 +73,7 @@ extension CheckoutSummaryActionsHandler {
 
             switch result {
             case .failure(let error):
-                    strongViewController.userMessage.show(error: error)
+                strongViewController.userMessage.show(error: error)
             case .success(let customer):
                 self.generateCheckout(customer)
             }
@@ -85,19 +85,18 @@ extension CheckoutSummaryActionsHandler {
         guard let strongViewController = self.viewController else { return }
 
         strongViewController.showLoader()
-        strongViewController.checkout.prepareCheckoutViewModel(strongViewController.checkoutViewModel.selectedArticleUnit,
-            checkoutViewModel: strongViewController.checkoutViewModel) { result in
-                strongViewController.hideLoader()
-                switch result {
-                case .failure(let error):
-                    strongViewController.dismissViewControllerAnimated(true) {
-                        strongViewController.userMessage.show(error: error)
-                    }
-                case .success(var checkoutViewModel):
-                    checkoutViewModel.customer = customer
-                    strongViewController.checkoutViewModel = checkoutViewModel
-                    strongViewController.viewState = checkoutViewModel.checkoutViewState
+        strongViewController.checkout.createCheckoutViewModel(from: strongViewController.checkoutViewModel) { result in
+            strongViewController.hideLoader()
+            switch result {
+            case .failure(let error):
+                strongViewController.dismissViewControllerAnimated(true) {
+                    strongViewController.userMessage.show(error: error)
                 }
+            case .success(var checkoutViewModel):
+                checkoutViewModel.customer = customer
+                strongViewController.checkoutViewModel = checkoutViewModel
+                strongViewController.viewState = checkoutViewModel.checkoutViewState
+            }
         }
     }
 
@@ -190,20 +189,19 @@ extension CheckoutSummaryActionsHandler {
 
             strongViewController.showLoader()
 
-            strongViewController.checkout.prepareCheckoutViewModel(strongViewController.checkoutViewModel.selectedArticleUnit,
-                checkoutViewModel: strongViewController.checkoutViewModel) { result in
-                    strongViewController.hideLoader()
-                    switch result {
-                    case .failure(let error):
-                        strongViewController.dismissViewControllerAnimated(true) {
-                            strongViewController.userMessage.show(error: error)
-                        }
-                    case .success(var checkoutViewModel):
-                        checkoutViewModel.customer = strongViewController.checkoutViewModel.customer
-                        strongViewController.checkoutViewModel = checkoutViewModel
-                        strongViewController.rootStackView.configureData(strongViewController)
-                        strongViewController.refreshViewData()
+            strongViewController.checkout.createCheckoutViewModel(from: strongViewController.checkoutViewModel) { result in
+                strongViewController.hideLoader()
+                switch result {
+                case .failure(let error):
+                    strongViewController.dismissViewControllerAnimated(true) {
+                        strongViewController.userMessage.show(error: error)
                     }
+                case .success(var checkoutViewModel):
+                    checkoutViewModel.customer = strongViewController.checkoutViewModel.customer
+                    strongViewController.checkoutViewModel = checkoutViewModel
+                    strongViewController.rootStackView.configureData(strongViewController)
+                    strongViewController.refreshViewData()
+                }
             }
     }
 }
