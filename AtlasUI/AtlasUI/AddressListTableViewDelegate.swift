@@ -27,7 +27,6 @@ class AddressListTableViewDelegate: NSObject {
             self.checkout = checkout
             self.addressType = addressType
             self.selectionCompletion = addressSelectionCompletion
-
     }
 }
 
@@ -58,6 +57,13 @@ extension AddressListTableViewDelegate: UITableViewDataSource {
             cell.accessibilityIdentifier = "address-selection-row-\(indexPath.row)"
             return cell
         }
+    }
+
+    func replaceUpdatedAddress(updatedAddress: UserAddress) {
+        guard let addressIdx = addresses.indexOf({ $0 == updatedAddress }) else {
+            return
+        }
+        addresses[addressIdx] = updatedAddress
     }
 
 }
