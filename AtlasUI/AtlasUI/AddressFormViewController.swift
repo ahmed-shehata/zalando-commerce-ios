@@ -154,32 +154,24 @@ extension AddressFormViewController {
 
     private func checkAddressRequestCompletion(result: AtlasResult<CheckAddressResponse>) {
         loaderView.hide()
-        switch result {
-        case .failure(let error):
-            self.userMessage.show(error: error)
-        case .success(let checkAddressResponse):
-            if checkAddressResponse.status == .notCorrect {
-                let title = self.loc("Address.validation.notValid")
-                self.userMessage.show(title: title, message: nil, actions: ButtonAction(text: "OK"))
-            } else {
-                switch self.addressMode {
-                case .createAddress: self.createAddressRequest()
-                case .updateAddress(let address): self.updateAddressRequest(address)
-                }
-                self.dismissView()
+        guard let checkAddressResponse = result.success(errorHandlingType: .GeneralError(userMessage: userMessage)) else { return }
+        if checkAddressResponse.status == .notCorrect {
+            let title = loc("Address.validation.notValid")
+            userMessage.show(title: title, message: nil, actions: ButtonAction(text: "OK"))
+        } else {
+            switch addressMode {
+            case .createAddress: createAddressRequest()
+            case .updateAddress(let address): updateAddressRequest(address)
             }
+            dismissView()
         }
     }
 
     private func createUpdateAddressRequestCompletion(result: AtlasResult<UserAddress>) {
         loaderView.hide()
-        switch result {
-        case .failure(let error):
-            self.userMessage.show(error: error)
-        case .success(let address):
-            self.dismissView()
-            self.completion?(address)
-        }
+        guard let address = result.success(errorHandlingType: .GeneralError(userMessage: userMessage)) else { return }
+        dismissView()
+        completion?(address)
     }
 
 }
