@@ -23,7 +23,7 @@ class ConfigSpec: QuickSpec {
         let configLocale = "\(configLanguage)_\(configCountry)"
         let salesChannelId = "82fe2e7f-8c4f-4aa1-9019-b6bde5594456"
         let clientId = "CLIENT_ID"
-        let tocURL = NSURL(validURL: "https://www.zalando.de/agb/")
+        let tocURL = "https://www.zalando.de/agb/"
 
         let json = JSON([
             "sales-channels": [
@@ -45,7 +45,7 @@ class ConfigSpec: QuickSpec {
                 expect(config?.loginURL).to(equal(loginURL))
                 expect(config?.clientId).to(equal(clientId))
                 expect(config?.salesChannel).to(equal(salesChannelId))
-                expect(config?.tocURL).to(equal(tocURL))
+                expect(config?.tocURL).to(equal(NSURL(validURL: tocURL)))
             }
 
             it("should use config locale when no interface lanugage given") {
