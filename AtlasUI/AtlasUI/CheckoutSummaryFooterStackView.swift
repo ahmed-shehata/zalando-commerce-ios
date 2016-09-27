@@ -6,13 +6,16 @@ import UIKit
 
 class CheckoutSummaryFooterStackView: UIStackView {
 
-    internal let footerLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.textAlignment = .Center
-        label.font = .systemFontOfSize(12, weight: UIFontWeightLight)
-        label.textColor = UIColor(hex: 0xB2B2B2)
-        return label
+    var tocURL: NSURL?
+
+    internal let footerButton: UIButton = {
+        let button = UIButton(type: .System)
+        button.titleLabel?.font = .systemFontOfSize(12)
+        button.titleLabel?.lineBreakMode = .ByWordWrapping
+        button.titleLabel?.numberOfLines = 2
+        button.titleLabel?.textAlignment = .Center
+        button.accessibilityIdentifier = "checkout-summary-toc-button"
+        return button
     }()
 
     internal let submitButton: RoundedButton = {
@@ -29,8 +32,16 @@ class CheckoutSummaryFooterStackView: UIStackView {
 extension CheckoutSummaryFooterStackView: UIBuilder {
 
     func configureView() {
-        addArrangedSubview(footerLabel)
+        footerButton.addTarget(self, action: #selector(CheckoutSummaryFooterStackView.tocPressed(_:)), forControlEvents: .TouchUpInside)
+        addArrangedSubview(footerButton)
         addArrangedSubview(submitButton)
+    }
+
+    @objc func tocPressed(sender: UIButton!) {
+        if let url = tocURL {
+            let controller = ToCViewController(tocURL: url)
+            UIApplication.topViewController()?.navigationController?.pushViewController(controller, animated: true)
+        }
     }
 
 }
@@ -40,8 +51,10 @@ extension CheckoutSummaryFooterStackView: UIDataBuilder {
     typealias T = CheckoutSummaryViewController
 
     func configureData(viewModel: T) {
-        footerLabel.text = viewModel.loc("CheckoutSummaryViewController.terms")
-        footerLabel.hidden = !viewModel.viewState.showFooterLabel
+        tocURL = viewModel.checkout.client.config.tocURL
+
+        footerButton.setTitle(viewModel.loc("CheckoutSummaryViewController.terms"), forState: .Normal)
+        footerButton.hidden = !viewModel.viewState.showFooterLabel
 
         let isPaypal = viewModel.checkoutViewModel.checkout?.payment.selected?.isPaypal() ?? false
 

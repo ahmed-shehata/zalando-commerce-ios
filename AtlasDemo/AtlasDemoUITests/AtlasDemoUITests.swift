@@ -105,6 +105,16 @@ class AtlasDemoUITests: XCTestCase {
         app.buttons["navigation-bar-cancel-button"].tap()
     }
 
+    func testToC() {
+        let size = app.cells["size-cell-1"]
+        let webView = app.otherElements["toc-webview"]
+        tapBuyNow("Lamica")
+        waitForElementToAppearAndTap(size)
+        app.buttons["checkout-summary-toc-button"].tap()
+        waitForElementToAppearAndTap(webView)
+        XCTAssert(app.staticTexts["AGB"].exists)
+    }
+
     private func proceedToSummaryWithSizes() {
         let size = app.cells["size-cell-1"]
         tapBuyNow("Lamica")
