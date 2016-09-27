@@ -18,7 +18,7 @@ class CheckoutSummaryDeliveryStackView: UIStackView {
         let label = UILabel()
         label.font = .systemFontOfSize(10, weight: UIFontWeightLight)
         label.textColor = UIColor(hex: 0x7F7F7F)
-        label.textAlignment = .Left
+        label.textAlignment = .Right
         return label
     }()
 
