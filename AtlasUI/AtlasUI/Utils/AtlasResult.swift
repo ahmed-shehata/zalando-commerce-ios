@@ -5,30 +5,29 @@
 import AtlasSDK
 
 enum AtlasUIError {
-    case GeneralError
-    case CancelCheckoutWithError
+    case GeneralError(userMessage: UserMessage)
+    case CancelCheckout(userMessage: UserMessage, viewController: UIViewController)
 }
 
 extension AtlasResult {
 
-    internal func handleError(checkoutProviderType checkoutProviderType: CheckoutProviderType, type: AtlasUIError = .GeneralError) -> T? {
+    internal func success(errorHandlingType errorHandling: AtlasUIError) -> T? {
         switch self {
         case .failure(let error):
-            displayError(error, checkoutProviderType: checkoutProviderType, type: type)
+            displayError(error, errorHandling: errorHandling)
             return nil
         case .success(let data):
             return data
         }
     }
 
-    private func displayError(error: ErrorType, checkoutProviderType: CheckoutProviderType, type: AtlasUIError) {
-        switch type {
-        case .GeneralError:
-            checkoutProviderType.userMessage.generalError()
-        case .CancelCheckoutWithError:
-            guard let viewController = checkoutProviderType as? UIViewController else { return }
+    private func displayError(error: ErrorType, errorHandling: AtlasUIError) {
+        switch errorHandling {
+        case .GeneralError(let userMessage):
+            userMessage.generalError()
+        case .CancelCheckout(let userMessage, let viewController):
             viewController.dismissViewControllerAnimated(true) {
-                checkoutProviderType.userMessage.generalError()
+                userMessage.generalError()
             }
         }
     }

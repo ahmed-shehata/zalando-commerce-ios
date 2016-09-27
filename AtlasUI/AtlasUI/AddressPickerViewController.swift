@@ -54,7 +54,7 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
 
             tableviewDelegate = AddressListTableViewDelegate(checkout: checkout,
                                                              addressType: addressType,
-                                                             checkoutProviderType: self,
+                                                             userMessage: userMessage,
                                                              addressSelectionCompletion: selectionCompletion)
     }
 
@@ -96,7 +96,7 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
         checkout.client.addresses { [weak self] result in
             guard let strongSelf = self else { return }
             strongSelf.loaderView.hide()
-            guard let addresses = result.handleError(checkoutProviderType: strongSelf) else { return }
+            guard let addresses = result.success(errorHandlingType: .GeneralError(userMessage: strongSelf.userMessage)) else { return }
             strongSelf.addresses = addresses
         }
     }

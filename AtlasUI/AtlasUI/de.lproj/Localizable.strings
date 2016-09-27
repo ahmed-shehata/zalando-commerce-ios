@@ -77,4 +77,4 @@
 "Address.validation.notValid" = "Address not valid, please check the address";
 
 "Error.general.title" = "Oops";
-"Error.general.message" = "Sorry, Something went wrong!";
+"Error.general.message" = "Sorry, Something went wrong";

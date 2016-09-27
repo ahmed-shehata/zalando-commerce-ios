@@ -26,30 +26,30 @@ extension Checkout {
 extension CheckoutSummaryActionsHandler {
 
     internal func handleBuyAction() {
-        guard let strongViewController = self.viewController else { return }
-        guard let checkout = strongViewController.checkoutViewModel.checkout else { return }
+        guard let viewController = self.viewController else { return }
+        guard let checkout = viewController.checkoutViewModel.checkout else { return }
 
-        strongViewController.showLoader()
-        if checkout.hasSameAddress(like: strongViewController.checkoutViewModel) {
+        viewController.showLoader()
+        if checkout.hasSameAddress(like: viewController.checkoutViewModel) {
             return createOrder(checkout.id)
         }
 
-        let updateCheckoutRequest = UpdateCheckoutRequest(checkoutViewModel: strongViewController.checkoutViewModel)
+        let updateCheckoutRequest = UpdateCheckoutRequest(checkoutViewModel: viewController.checkoutViewModel)
 
-        strongViewController.checkout.client.updateCheckout(checkout.id, updateCheckoutRequest: updateCheckoutRequest) { result in
-            strongViewController.hideLoader()
-            guard let checkout = result.handleError(checkoutProviderType: strongViewController) else { return }
+        viewController.checkout.client.updateCheckout(checkout.id, updateCheckoutRequest: updateCheckoutRequest) { result in
+            viewController.hideLoader()
+            guard let checkout = result.success(errorHandlingType: .GeneralError(userMessage: viewController.userMessage)) else { return }
             self.createOrder(checkout.id)
         }
     }
 
     internal func createOrder(checkoutId: String) {
-        guard let strongViewController = self.viewController else { return }
+        guard let viewController = self.viewController else { return }
 
-        strongViewController.showLoader()
-        strongViewController.checkout.client.createOrder(checkoutId) { result in
-            strongViewController.hideLoader()
-            guard let order = result.handleError(checkoutProviderType: strongViewController) else { return }
+        viewController.showLoader()
+        viewController.checkout.client.createOrder(checkoutId) { result in
+            viewController.hideLoader()
+            guard let order = result.success(errorHandlingType: .GeneralError(userMessage: viewController.userMessage)) else { return }
             self.handleOrderConfirmation(order)
         }
     }
@@ -59,27 +59,28 @@ extension CheckoutSummaryActionsHandler {
 extension CheckoutSummaryActionsHandler {
 
     internal func loadCustomerData() {
-        guard let strongViewController = self.viewController else { return }
+        guard let viewController = self.viewController else { return }
 
-        strongViewController.checkout.client.customer { result in
-            guard let customer = result.handleError(checkoutProviderType: strongViewController) else { return }
+        viewController.checkout.client.customer { result in
+            guard let customer = result.success(errorHandlingType: .GeneralError(userMessage: viewController.userMessage)) else { return }
             self.generateCheckout(customer)
         }
     }
 
     private func generateCheckout(customer: Customer) {
-        guard let strongViewController = self.viewController else { return }
+        guard let viewController = self.viewController else { return }
 
-        strongViewController.showLoader()
-        strongViewController.checkout.prepareCheckoutViewModel(strongViewController.checkoutViewModel.selectedArticleUnit,
-            checkoutViewModel: strongViewController.checkoutViewModel) { result in
-                strongViewController.hideLoader()
-                guard var checkoutViewModel = result.handleError(checkoutProviderType: strongViewController,
-                                                                 type: .CancelCheckoutWithError) else { return }
+        viewController.showLoader()
+        viewController.checkout.prepareCheckoutViewModel(viewController.checkoutViewModel.selectedArticleUnit,
+            checkoutViewModel: viewController.checkoutViewModel) { result in
+                viewController.hideLoader()
+
+                let errorType = AtlasUIError.CancelCheckout(userMessage: viewController.userMessage, viewController: viewController)
+                guard var checkoutViewModel = result.success(errorHandlingType: errorType) else { return }
 
                 checkoutViewModel.customer = customer
-                strongViewController.checkoutViewModel = checkoutViewModel
-                strongViewController.viewState = checkoutViewModel.checkoutViewState
+                viewController.checkoutViewModel = checkoutViewModel
+                viewController.viewState = checkoutViewModel.checkoutViewState
         }
     }
 
@@ -88,53 +89,53 @@ extension CheckoutSummaryActionsHandler {
 extension CheckoutSummaryActionsHandler {
 
     internal func showPaymentSelectionScreen() {
-        guard let strongViewController = self.viewController else { return }
+        guard let viewController = self.viewController else { return }
         guard Atlas.isUserLoggedIn() else { return loadCustomerData() }
-        guard let paymentURL = strongViewController.checkoutViewModel.checkout?.payment.selectionPageURL else { return }
+        guard let paymentURL = viewController.checkoutViewModel.checkout?.payment.selectionPageURL else { return }
 
         let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
         paymentSelectionViewController.paymentCompletion = { result in
 
-            guard let _ = result.handleError(checkoutProviderType: strongViewController) else { return }
+            guard let _ = result.success(errorHandlingType: .GeneralError(userMessage: viewController.userMessage)) else { return }
             self.loadCustomerData()
         }
-        strongViewController.showViewController(paymentSelectionViewController, sender: strongViewController)
+        viewController.showViewController(paymentSelectionViewController, sender: viewController)
     }
 
     internal func showShippingAddressSelectionScreen() {
-        guard let strongViewController = self.viewController else { return }
+        guard let viewController = self.viewController else { return }
         guard Atlas.isUserLoggedIn() else { return loadCustomerData() }
-        let addressSelectionViewController = AddressPickerViewController(checkout: strongViewController.checkout,
+        let addressSelectionViewController = AddressPickerViewController(checkout: viewController.checkout,
             addressType: .shipping, addressSelectionCompletion: pickedAddressCompletion)
-        addressSelectionViewController.selectedAddress = strongViewController.checkoutViewModel.selectedShippingAddress
-        strongViewController.showViewController(addressSelectionViewController, sender: strongViewController)
+        addressSelectionViewController.selectedAddress = viewController.checkoutViewModel.selectedShippingAddress
+        viewController.showViewController(addressSelectionViewController, sender: viewController)
     }
 
     internal func showBillingAddressSelectionScreen() {
-        guard let strongViewController = self.viewController else { return }
+        guard let viewController = self.viewController else { return }
         guard Atlas.isUserLoggedIn() else { return loadCustomerData() }
-        let addressSelectionViewController = AddressPickerViewController(checkout: strongViewController.checkout,
+        let addressSelectionViewController = AddressPickerViewController(checkout: viewController.checkout,
             addressType: .billing,
             addressSelectionCompletion: pickedAddressCompletion)
-        addressSelectionViewController.selectedAddress = strongViewController.checkoutViewModel.selectedBillingAddress
-        strongViewController.showViewController(addressSelectionViewController, sender: strongViewController)
+        addressSelectionViewController.selectedAddress = viewController.checkoutViewModel.selectedBillingAddress
+        viewController.showViewController(addressSelectionViewController, sender: viewController)
     }
 
     internal func handleOrderConfirmation(order: Order) {
-        guard let strongViewController = self.viewController else { return }
+        guard let viewController = self.viewController else { return }
 
         guard let paymentURL = order.externalPaymentURL else {
-            strongViewController.viewState = .OrderPlaced
+            viewController.viewState = .OrderPlaced
             return
         }
 
         let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
         paymentSelectionViewController.paymentCompletion = { result in
 
-            guard let _ = result.handleError(checkoutProviderType: strongViewController) else { return }
-            strongViewController.viewState = .OrderPlaced
+            guard let _ = result.success(errorHandlingType: .GeneralError(userMessage: viewController.userMessage)) else { return }
+            viewController.viewState = .OrderPlaced
         }
-        strongViewController.showViewController(paymentSelectionViewController, sender: strongViewController)
+        viewController.showViewController(paymentSelectionViewController, sender: viewController)
     }
 
 }
@@ -142,41 +143,41 @@ extension CheckoutSummaryActionsHandler {
 extension CheckoutSummaryActionsHandler {
     func pickedAddressCompletion(pickedAddress address: EquatableAddress?,
         forAddressType addressType: AddressType, popBackToSummaryOnFinish: Bool) {
-            guard let strongViewController = self.viewController else { return }
+            guard let viewController = self.viewController else { return }
 
             if popBackToSummaryOnFinish {
-                strongViewController.navigationController?.popViewControllerAnimated(true)
+                viewController.navigationController?.popViewControllerAnimated(true)
             }
 
             switch addressType {
             case AddressType.billing:
-                strongViewController.checkoutViewModel.selectedBillingAddress = address
+                viewController.checkoutViewModel.selectedBillingAddress = address
             case AddressType.shipping:
-                strongViewController.checkoutViewModel.selectedShippingAddress = address
+                viewController.checkoutViewModel.selectedShippingAddress = address
             }
             if address == nil {
-                strongViewController.checkoutViewModel.resetState()
-                strongViewController.checkoutViewModel.checkout = nil
+                viewController.checkoutViewModel.resetState()
+                viewController.checkoutViewModel.checkout = nil
             }
 
-            strongViewController.rootStackView.configureData(strongViewController)
-            strongViewController.refreshViewData()
+            viewController.rootStackView.configureData(viewController)
+            viewController.refreshViewData()
 
-            guard strongViewController.checkoutViewModel.isReadyToCreateCheckout == true else { return }
+            guard viewController.checkoutViewModel.isReadyToCreateCheckout == true else { return }
 
-            strongViewController.showLoader()
+            viewController.showLoader()
 
-            strongViewController.checkout.prepareCheckoutViewModel(strongViewController.checkoutViewModel.selectedArticleUnit,
-                checkoutViewModel: strongViewController.checkoutViewModel) { result in
-                    strongViewController.hideLoader()
+            viewController.checkout.prepareCheckoutViewModel(viewController.checkoutViewModel.selectedArticleUnit,
+                checkoutViewModel: viewController.checkoutViewModel) { result in
+                    viewController.hideLoader()
 
-                    guard var checkoutViewModel = result.handleError(checkoutProviderType: strongViewController,
-                                                                     type: .CancelCheckoutWithError) else { return }
+                    let errorType = AtlasUIError.CancelCheckout(userMessage: viewController.userMessage, viewController: viewController)
+                    guard var checkoutViewModel = result.success(errorHandlingType: errorType) else { return }
 
-                    checkoutViewModel.customer = strongViewController.checkoutViewModel.customer
-                    strongViewController.checkoutViewModel = checkoutViewModel
-                    strongViewController.rootStackView.configureData(strongViewController)
-                    strongViewController.refreshViewData()
+                    checkoutViewModel.customer = viewController.checkoutViewModel.customer
+                    viewController.checkoutViewModel = checkoutViewModel
+                    viewController.rootStackView.configureData(viewController)
+                    viewController.refreshViewData()
             }
     }
 }

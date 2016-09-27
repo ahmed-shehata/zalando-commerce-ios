@@ -10,19 +10,19 @@ class AddressListTableViewDelegate: NSObject {
     internal var checkout: AtlasCheckout
     private let addressType: AddressType
     private let selectionCompletion: AddressSelectionCompletion
-    private let checkoutProviderType: CheckoutProviderType
+    private let userMessage: UserMessage
     internal var createAddressHandler: CreateAddressHandler?
     internal var updateAddressHandler: UpdateAddressHandler?
     internal var deleteAddressHandler: DeleteAddressHandler?
 
     var addresses: [UserAddress] = []
     var selectedAddress: EquatableAddress?
-    init(checkout: AtlasCheckout, addressType: AddressType, checkoutProviderType: CheckoutProviderType,
+    init(checkout: AtlasCheckout, addressType: AddressType, userMessage: UserMessage,
         addressSelectionCompletion: AddressSelectionCompletion) {
             self.checkout = checkout
             self.addressType = addressType
             self.selectionCompletion = addressSelectionCompletion
-            self.checkoutProviderType = checkoutProviderType
+            self.userMessage = userMessage
     }
 }
 
@@ -70,7 +70,7 @@ extension AddressListTableViewDelegate: UITableViewDelegate {
 
         let address = self.addresses[indexPath.item]
         checkout.client.deleteAddress(address.id) { result in
-            guard let _ = result.handleError(checkoutProviderType: self.checkoutProviderType) else { return }
+            guard let _ = result.success(errorHandlingType: .GeneralError(userMessage: self.userMessage)) else { return }
             self.deleteAddress(indexPath, tableView: tableView)
         }
     }
