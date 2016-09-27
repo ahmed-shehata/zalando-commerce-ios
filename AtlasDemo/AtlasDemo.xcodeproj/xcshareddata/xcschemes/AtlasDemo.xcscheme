@@ -109,7 +109,7 @@
       <CommandLineArguments>
          <CommandLineArgument
             argument = "USE_MOCK_API"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>
       <AdditionalOptions>
