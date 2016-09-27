@@ -90,8 +90,8 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
         guard !article.hasSingleUnit else {
             return showCheckoutScreen(article, selectedUnitIndex: 0)
         }
-            self.activityIndicatorView.stopAnimating()
-            self.showSizeListViewController(article)
+        self.activityIndicatorView.stopAnimating()
+        self.showSizeListViewController(article)
     }
 
     private func showSizeListViewController(article: Article) {

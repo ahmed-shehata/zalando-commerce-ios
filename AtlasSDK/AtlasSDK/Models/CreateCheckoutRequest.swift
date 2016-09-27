@@ -10,10 +10,10 @@ public struct CreateCheckoutRequest: JSONRepresentable {
     public let billingAddressId: String?
     public let shippingAddressId: String?
 
-    public init(cartId: String, billingAddressId: String?, shippingAddressId: String?) {
+    public init(cartId: String, addresses: CheckoutAddresses? = nil) {
         self.cartId = cartId
-        self.billingAddressId = billingAddressId
-        self.shippingAddressId = shippingAddressId
+        self.billingAddressId = addresses?.billingAddress?.id
+        self.shippingAddressId = addresses?.shippingAddress?.id
     }
 
     public func toJSON() -> [String: AnyObject] {
