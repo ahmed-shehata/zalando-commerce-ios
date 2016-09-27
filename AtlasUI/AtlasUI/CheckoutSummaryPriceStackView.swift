@@ -17,7 +17,7 @@ class CheckoutSummaryPriceStackView: UIStackView {
         let label = UILabel()
         label.font = .systemFontOfSize(14, weight: UIFontWeightLight)
         label.textColor = UIColor(hex: 0x7F7F7F)
-        label.textAlignment = .Right
+        label.textAlignment = .Left
         return label
     }()
 
@@ -29,7 +29,7 @@ class CheckoutSummaryPriceStackView: UIStackView {
         return label
     }()
 
-    private let dummySeparatorLabel: UILabel = {
+    private let dummySeparator1Label: UILabel = {
         let label = UILabel()
         label.font = .systemFontOfSize(4)
         label.text = " "
@@ -47,7 +47,7 @@ class CheckoutSummaryPriceStackView: UIStackView {
         let label = UILabel()
         label.font = .systemFontOfSize(16)
         label.textColor = .blackColor()
-        label.textAlignment = .Right
+        label.textAlignment = .Left
         return label
     }()
 
@@ -63,10 +63,26 @@ class CheckoutSummaryPriceStackView: UIStackView {
         let label = UILabel()
         label.font = .systemFontOfSize(10, weight: UIFontWeightLight)
         label.textColor = UIColor(hex: 0x7F7F7F)
+        label.textAlignment = .Right
+        return label
+    }()
+
+    private let dummySeparator2Label: UILabel = {
+        let label = UILabel()
+        label.font = .systemFontOfSize(6)
+        label.text = " "
+        return label
+    }()
+
+    internal let deliveryTitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFontOfSize(10, weight: UIFontWeightLight)
+        label.textColor = UIColor(hex: 0x7F7F7F)
         label.textAlignment = .Center
         return label
     }()
-    internal let deliveryLabel: UILabel = {
+
+    internal let deliveryValueLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFontOfSize(10, weight: UIFontWeightLight)
         label.textColor = .blackColor()
@@ -80,10 +96,12 @@ extension CheckoutSummaryPriceStackView: UIBuilder {
 
     func configureView() {
         addArrangedSubview(shippingStackView)
-        addArrangedSubview(dummySeparatorLabel)
+        addArrangedSubview(dummySeparator1Label)
         addArrangedSubview(totalStackView)
         addArrangedSubview(vatTitleLabel)
-        addArrangedSubview(deliveryLabel)
+        addArrangedSubview(dummySeparator2Label)
+        addArrangedSubview(deliveryTitleLabel)
+        addArrangedSubview(deliveryValueLabel)
 
         shippingStackView.addArrangedSubview(shippingTitleLabel)
         shippingStackView.addArrangedSubview(shippingValueLabel)
@@ -109,17 +127,20 @@ extension CheckoutSummaryPriceStackView: UIDataBuilder {
     }
 
     private func formatDeliveryDates(viewModel: T) {
-        deliveryLabel.text = ""
+        guard let delivery = viewModel.checkoutViewModel.checkout?.delivery else {
+            deliveryTitleLabel.text = ""
+            deliveryValueLabel.text = ""
+            return
+        }
 
-        guard let delivery = viewModel.checkoutViewModel.checkout?.delivery else { return }
-
-        if let earliest = delivery.earliest {
-            deliveryLabel.text = viewModel.loc("estimated.delivery.range",
-                viewModel.localizer.fmtDate(earliest),
-                viewModel.localizer.fmtDate(delivery.latest))
+        deliveryTitleLabel.text = viewModel.loc("estimated.delivery.title")
+        if let
+            earliest = delivery.earliest,
+            earliestDateFormatted = viewModel.localizer.fmtDate(earliest),
+            latestDateFormatted = viewModel.localizer.fmtDate(delivery.latest) {
+            deliveryValueLabel.text = earliestDateFormatted + " - " + latestDateFormatted
         } else {
-            deliveryLabel.text = viewModel.loc("estimated.delivery.date",
-                viewModel.localizer.fmtDate(delivery.latest))
+            deliveryValueLabel.text = viewModel.localizer.fmtDate(delivery.latest)
         }
     }
 
