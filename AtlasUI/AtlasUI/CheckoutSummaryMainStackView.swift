@@ -108,7 +108,7 @@ extension CheckoutSummaryMainStackView: UIBuilder {
         addArrangedSubview(productSeparatorView)
 
         addArrangedSubview(shippingAddressStackView)
-        addArrangedSubview(shippingAddressSeparatorView)
+//        addArrangedSubview(shippingAddressSeparatorView)
 
         addArrangedSubview(deliveryStackView)
         addArrangedSubview(deliverySeparatorView)

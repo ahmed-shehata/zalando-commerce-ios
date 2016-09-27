@@ -6,24 +6,10 @@ import UIKit
 
 class CheckoutSummaryDeliveryStackView: UIStackView {
 
-    private let dummyLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFontOfSize(4)
-        label.text = " "
-        return label
-    }()
-
-    internal let verticalStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .Vertical
-        stackView.spacing = 2
-        return stackView
-    }()
-
     internal let deliveryTitleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFontOfSize(10, weight: UIFontWeightLight)
-        label.textColor = UIColor(hex: 0x7F7F7F)
+        label.textColor = .blackColor()
         label.textAlignment = .Left
         return label
     }()
@@ -31,7 +17,7 @@ class CheckoutSummaryDeliveryStackView: UIStackView {
     internal let deliveryValueLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFontOfSize(10, weight: UIFontWeightLight)
-        label.textColor = .blackColor()
+        label.textColor = UIColor(hex: 0x7F7F7F)
         label.textAlignment = .Left
         return label
     }()
@@ -41,14 +27,12 @@ class CheckoutSummaryDeliveryStackView: UIStackView {
 extension CheckoutSummaryDeliveryStackView: UIBuilder {
 
     func configureView() {
-        addArrangedSubview(dummyLabel)
-        addArrangedSubview(verticalStackView)
-        verticalStackView.addArrangedSubview(deliveryTitleLabel)
-        verticalStackView.addArrangedSubview(deliveryValueLabel)
+        addArrangedSubview(deliveryTitleLabel)
+        addArrangedSubview(deliveryValueLabel)
     }
 
     func configureConstraints() {
-        dummyLabel.setWidth(equalToView: verticalStackView)
+        deliveryTitleLabel.setWidth(equalToView: deliveryValueLabel)
     }
 
 }
