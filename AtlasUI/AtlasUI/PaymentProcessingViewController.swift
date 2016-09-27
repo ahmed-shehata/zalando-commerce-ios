@@ -39,24 +39,19 @@ internal final class PaymentProcessingViewController: UIViewController, Checkout
         guard let checkout = self.currentCheckoutViewModel.checkout else { return }
 
         self.checkout.client.createOrder(checkout.id) { result in
-            switch result {
-            case .failure(let error):
-                self.userMessage.show(error: error)
-            case .success(let order):
-                print(order)
-                guard let paymentURL = order.externalPaymentURL else {
-                    return self.showSuccessImage()
-                }
-                let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
-                paymentSelectionViewController.paymentCompletion = { _ in
-                    self.showSuccessImage()
-                }
 
-                let navigationController = UINavigationController(rootViewController: paymentSelectionViewController)
-                navigationController.modalPresentationStyle = .OverCurrentContext
-                self.navigationController?.presentViewController(navigationController, animated: true, completion: nil)
-
+            guard let order = result.success(errorHandlingType: .GeneralError(userMessage: self.userMessage)) else { return }
+            guard let paymentURL = order.externalPaymentURL else {
+                return self.showSuccessImage()
             }
+            let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
+            paymentSelectionViewController.paymentCompletion = { _ in
+                self.showSuccessImage()
+            }
+
+            let navigationController = UINavigationController(rootViewController: paymentSelectionViewController)
+            navigationController.modalPresentationStyle = .OverCurrentContext
+            self.navigationController?.presentViewController(navigationController, animated: true, completion: nil)
         }
     }
 
