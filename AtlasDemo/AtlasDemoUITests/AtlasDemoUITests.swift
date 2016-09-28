@@ -114,6 +114,22 @@ class AtlasDemoUITests: XCTestCase {
         waitForElementToAppearAndTap(webView)
     }
 
+    func testPickupPoints() {
+        proceedToSummaryWithSizes()
+        app.otherElements["shipping-stack-view"].tap()
+
+        let shippingPredicate = NSPredicate(format: "count == 4")
+        expectationForPredicate(shippingPredicate, evaluatedWithObject: app.tables.cells, handler: nil)
+        waitForExpectationsWithTimeout(5, handler: nil)
+
+        app.navigationBars["address-picker-navigation-bar"].buttons["Back"].tap()
+        app.otherElements["billing-stack-view"].tap()
+
+        let billingPredicate = NSPredicate(format: "count == 3")
+        expectationForPredicate(billingPredicate, evaluatedWithObject: app.tables.cells, handler: nil)
+        waitForExpectationsWithTimeout(5, handler: nil)
+    }
+
     private func proceedToSummaryWithSizes() {
         let size = app.cells["size-cell-1"]
         tapBuyNow("Lamica")

@@ -48,27 +48,22 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
         }
 
         checkout.client.customer { result in
-            switch result {
-            case .failure(let error):
-                self.userMessage.show(error: error)
-            case .success(let customer):
-                self.generateCheckout(withArticle: article, customer: customer)
-            }
+
+            guard let customer = result.success(errorHandlingType: .GeneralError(userMessage: self.userMessage)) else { return }
+            self.generateCheckout(withArticle: article, customer: customer)
         }
     }
 
     private func generateCheckout(withArticle article: Article, customer: Customer) {
         let selectedArticleUnit = SelectedArticleUnit(article: article, selectedUnitIndex: 0)
 
-        checkout.prepareCheckoutViewModel(selectedArticleUnit) { result in
-            switch result {
-            case .failure(let error):
-                self.dismissViewControllerAnimated(true) {
-                    self.userMessage.show(error: error)
-                }
-            case .success(let checkoutViewModel):
-                self.displayCheckoutSummaryViewController(checkoutViewModel)
-            }
+        checkout.createCheckoutViewModel(for: selectedArticleUnit) { result in
+
+            let errorType = AtlasUIError.CancelCheckout(userMessage: self.userMessage, viewController: self)
+            guard var checkoutViewModel = result.success(errorHandlingType: errorType) else { return }
+
+            checkoutViewModel.customer = customer
+            self.displayCheckoutSummaryViewController(checkoutViewModel)
         }
     }
 
@@ -87,13 +82,8 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
         checkout.client.article(forSKU: sku) { [weak self] result in
             guard let strongSelf = self else { return }
 
-            switch result {
-            case .failure(let error):
-                strongSelf.userMessage.show(error: error)
-            case .success(let article):
-                strongSelf.displaySizes(forArticle: article)
-            }
-
+            guard let article = result.success(errorHandlingType: .GeneralError(userMessage: strongSelf.userMessage)) else { return }
+            strongSelf.displaySizes(forArticle: article)
         }
     }
 
@@ -101,8 +91,8 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
         guard !article.hasSingleUnit else {
             return showCheckoutScreen(article, selectedUnitIndex: 0)
         }
-            self.activityIndicatorView.stopAnimating()
-            self.showSizeListViewController(article)
+        self.activityIndicatorView.stopAnimating()
+        self.showSizeListViewController(article)
     }
 
     private func showSizeListViewController(article: Article) {

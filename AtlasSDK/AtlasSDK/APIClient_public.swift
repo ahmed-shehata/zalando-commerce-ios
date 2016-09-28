@@ -71,8 +71,8 @@ extension APIClient {
         fetch(from: endpoint, completion: completion)
     }
 
-    public func createCheckout(withSelectedArticleUnit selectedArticleUnit: SelectedArticleUnit,
-        billingAddressId: String? = nil, shippingAddressId: String? = nil, completion: CheckoutCompletion) {
+    public func createCheckout(for selectedArticleUnit: SelectedArticleUnit,
+        addresses: CheckoutAddresses? = nil, completion: CheckoutCompletion) {
             let articleSKU = selectedArticleUnit.article.units[selectedArticleUnit.selectedUnitIndex].id
             let cartItemRequest = CartItemRequest(sku: articleSKU, quantity: 1)
 
@@ -88,16 +88,15 @@ extension APIClient {
                             completion(.failure(error))
 
                         case .success(let addressList):
-                            self.createCheckout(cart.id, billingAddressId: billingAddressId,
-                                shippingAddressId: shippingAddressId) { checkoutResult in
-                                    switch checkoutResult {
-                                    case .failure(let error):
-                                        let checkoutError = AtlasAPIError.checkoutFailed(addresses: addressList,
-                                            cartId: cart.id, error: error)
-                                        completion(.failure(checkoutError))
-                                    case .success(let checkout):
-                                        completion(.success(checkout))
-                                    }
+                            self.createCheckout(cart.id, addresses: addresses) { checkoutResult in
+                                switch checkoutResult {
+                                case .failure(let error):
+                                    let checkoutError = AtlasAPIError.checkoutFailed(addresses: addressList,
+                                        cartId: cart.id, error: error)
+                                    completion(.failure(checkoutError))
+                                case .success(let checkout):
+                                    completion(.success(checkout))
+                                }
                             }
                         }
                     }
@@ -105,14 +104,11 @@ extension APIClient {
             }
     }
 
-    public func createCheckout(cartId: String, billingAddressId: String? = nil,
-        shippingAddressId: String? = nil, completion: CheckoutCompletion) {
-            let parameters = CreateCheckoutRequest(cartId: cartId,
-                billingAddressId: billingAddressId,
-                shippingAddressId: shippingAddressId).toJSON()
-            let endpoint = CreateCheckoutEndpoint(serviceURL: config.checkoutURL, parameters: parameters)
+    public func createCheckout(cartId: String, addresses: CheckoutAddresses? = nil, completion: CheckoutCompletion) {
+        let parameters = CreateCheckoutRequest(cartId: cartId, addresses: addresses).toJSON()
+        let endpoint = CreateCheckoutEndpoint(serviceURL: config.checkoutURL, parameters: parameters)
 
-            fetch(from: endpoint, completion: completion)
+        fetch(from: endpoint, completion: completion)
     }
 
     public func updateCheckout(checkoutId: String, updateCheckoutRequest: UpdateCheckoutRequest, completion: CheckoutCompletion) {

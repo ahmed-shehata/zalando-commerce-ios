@@ -16,6 +16,10 @@ struct CheckoutViewModel {
     var selectedBillingAddress: EquatableAddress?
     var selectedShippingAddress: EquatableAddress?
 
+    var selectedAddresses: CheckoutAddresses {
+        return (billingAddress: selectedBillingAddress, shippingAddress: selectedShippingAddress)
+    }
+
     init(selectedArticleUnit: SelectedArticleUnit,
         shippingPrice: Article.Price? = nil,
         cartId: String? = nil,
@@ -89,7 +93,7 @@ extension CheckoutViewModel {
         if customer == nil {
             return .NotLoggedIn
         }
-        return (checkout == nil || checkout?.payment.selected?.method == nil) ? .CheckoutIncomplete : .LoggedIn
+        return (checkout?.payment.selected?.method == nil) ? .CheckoutIncomplete : .LoggedIn
     }
 
 }
