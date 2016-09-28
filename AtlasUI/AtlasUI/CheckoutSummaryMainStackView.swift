@@ -82,14 +82,6 @@ class CheckoutSummaryMainStackView: UIStackView {
         return stackView
     }()
 
-    internal let deliverySeparatorView: BorderView = {
-        let view = BorderView()
-        view.bottomBorder = true
-//        view.leadingMargin = 15
-        view.borderColor = UIColor(hex: 0xE5E5E5)
-        return view
-    }()
-
     internal let deliveryStackView: CheckoutSummaryDeliveryStackView = {
         let stackView = CheckoutSummaryDeliveryStackView()
         stackView.axis = .Horizontal
@@ -108,7 +100,6 @@ extension CheckoutSummaryMainStackView: UIBuilder {
         addArrangedSubview(productSeparatorView)
 
         addArrangedSubview(shippingAddressStackView)
-        addArrangedSubview(deliveryStackView)
         addArrangedSubview(shippingAddressSeparatorView)
 
         addArrangedSubview(billingAddressStackView)
@@ -117,10 +108,8 @@ extension CheckoutSummaryMainStackView: UIBuilder {
         addArrangedSubview(paymentStackView)
         addArrangedSubview(paymentSeparatorView)
 
-
-//        addArrangedSubview(deliverySeparatorView)
         addArrangedSubview(priceStackView)
-
+        addArrangedSubview(deliveryStackView)
     }
 
     func configureConstraints() {
