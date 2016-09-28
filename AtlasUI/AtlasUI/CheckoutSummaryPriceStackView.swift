@@ -17,7 +17,7 @@ class CheckoutSummaryPriceStackView: UIStackView {
         let label = UILabel()
         label.font = .systemFontOfSize(14, weight: UIFontWeightLight)
         label.textColor = UIColor(hex: 0x7F7F7F)
-        label.textAlignment = .Right
+        label.textAlignment = .Left
         return label
     }()
 
@@ -47,7 +47,7 @@ class CheckoutSummaryPriceStackView: UIStackView {
         let label = UILabel()
         label.font = .systemFontOfSize(16)
         label.textColor = .blackColor()
-        label.textAlignment = .Right
+        label.textAlignment = .Left
         return label
     }()
 
@@ -63,14 +63,7 @@ class CheckoutSummaryPriceStackView: UIStackView {
         let label = UILabel()
         label.font = .systemFontOfSize(10, weight: UIFontWeightLight)
         label.textColor = UIColor(hex: 0x7F7F7F)
-        label.textAlignment = .Center
-        return label
-    }()
-    internal let deliveryLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFontOfSize(10, weight: UIFontWeightLight)
-        label.textColor = .blackColor()
-        label.textAlignment = .Center
+        label.textAlignment = .Right
         return label
     }()
 
@@ -83,7 +76,6 @@ extension CheckoutSummaryPriceStackView: UIBuilder {
         addArrangedSubview(dummySeparatorLabel)
         addArrangedSubview(totalStackView)
         addArrangedSubview(vatTitleLabel)
-        addArrangedSubview(deliveryLabel)
 
         shippingStackView.addArrangedSubview(shippingTitleLabel)
         shippingStackView.addArrangedSubview(shippingValueLabel)
@@ -104,23 +96,6 @@ extension CheckoutSummaryPriceStackView: UIDataBuilder {
         totalTitleLabel.text = viewModel.loc("Total")
         totalValueLabel.text = viewModel.localizer.fmtPrice(viewModel.checkoutViewModel.totalPriceValue)
         vatTitleLabel.text = viewModel.loc("vat.included")
-
-        formatDeliveryDates(viewModel)
-    }
-
-    private func formatDeliveryDates(viewModel: T) {
-        deliveryLabel.text = ""
-
-        guard let delivery = viewModel.checkoutViewModel.checkout?.delivery else { return }
-
-        if let earliest = delivery.earliest {
-            deliveryLabel.text = viewModel.loc("estimated.delivery.range",
-                viewModel.localizer.fmtDate(earliest),
-                viewModel.localizer.fmtDate(delivery.latest))
-        } else {
-            deliveryLabel.text = viewModel.loc("estimated.delivery.date",
-                viewModel.localizer.fmtDate(delivery.latest))
-        }
     }
 
 }
