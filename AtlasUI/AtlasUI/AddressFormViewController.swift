@@ -154,38 +154,24 @@ extension AddressFormViewController {
 
     private func checkAddressRequestCompletion(result: AtlasResult<CheckAddressResponse>) {
         loaderView.hide()
-        Async.main { [weak self] in
-            guard let strongSelf = self else { return }
-            switch result {
-            case .failure(let error):
-                UserMessage.show(error: error)
-            case .success(let checkAddressResponse):
-                if checkAddressResponse.status == .notCorrect {
-                    let title = UILocalizer.str("Address.validation.notValid")
-                    UserMessage.showOK(title: title)
-                } else {
-                    switch strongSelf.addressMode {
-                    case .createAddress: strongSelf.createAddressRequest()
-                    case .updateAddress(let address): strongSelf.updateAddressRequest(address)
-                    }
-                    strongSelf.dismissView()
-                }
+        guard let checkAddressResponse = result.success(errorHandlingType: .GeneralError(userMessage: userMessage)) else { return }
+        if checkAddressResponse.status == .notCorrect {
+            let title = loc("Address.validation.notValid")
+            userMessage.show(title: title, message: nil, actions: ButtonAction(text: "OK"))
+        } else {
+            switch addressMode {
+            case .createAddress: createAddressRequest()
+            case .updateAddress(let address): updateAddressRequest(address)
             }
+            dismissView()
         }
     }
 
     private func createUpdateAddressRequestCompletion(result: AtlasResult<UserAddress>) {
         loaderView.hide()
-        Async.main { [weak self] in
-            guard let strongSelf = self else { return }
-            switch result {
-            case .failure(let error):
-                UserMessage.show(error: error)
-            case .success(let address):
-                strongSelf.dismissView()
-                strongSelf.completion?(address)
-            }
-        }
+        guard let address = result.success(errorHandlingType: .GeneralError(userMessage: userMessage)) else { return }
+        dismissView()
+        completion?(address)
     }
 
 }

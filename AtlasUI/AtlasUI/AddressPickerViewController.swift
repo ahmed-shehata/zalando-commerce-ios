@@ -10,7 +10,8 @@ enum AddressType {
     case billing
 }
 
-typealias AddressSelectionCompletion = (pickedAddress: EquatableAddress?, pickedAddressType: AddressType) -> Void
+typealias AddressSelectionCompletion = (pickedAddress: EquatableAddress?, pickedAddressType: AddressType,
+    popBackToSummaryOnFinish: Bool) -> Void
 typealias CreateAddressHandler = () -> Void
 typealias UpdateAddressHandler = (address: EquatableAddress) -> Void
 typealias DeleteAddressHandler = () -> Void
@@ -36,7 +37,7 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
             configureEditButton()
         }
     }
-    let tableviewDelegate: AddressListTableViewDelegate?
+    var tableviewDelegate: AddressListTableViewDelegate?
 
     var selectedAddress: EquatableAddress? {
         didSet {
@@ -49,10 +50,12 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
             self.checkout = checkout
             self.addressType = addressType
             selectionCompletion = addressSelectionCompletion
-            tableviewDelegate = AddressListTableViewDelegate(checkout: checkout,
-                addressType: addressType, addressSelectionCompletion: selectionCompletion)
-
             super.init(nibName: nil, bundle: nil)
+
+            tableviewDelegate = AddressListTableViewDelegate(checkout: checkout,
+                                                             addressType: addressType,
+                                                             userMessage: userMessage,
+                                                             addressSelectionCompletion: selectionCompletion)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -93,14 +96,8 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
         checkout.client.addresses { [weak self] result in
             guard let strongSelf = self else { return }
             strongSelf.loaderView.hide()
-            Async.main {
-                switch result {
-                case .failure(let error):
-                    UserMessage.show(error: error)
-                case .success(let addresses):
-                    strongSelf.addresses = addresses
-                }
-            }
+            guard let addresses = result.success(errorHandlingType: .GeneralError(userMessage: strongSelf.userMessage)) else { return }
+            strongSelf.addresses = addresses
         }
     }
 
@@ -136,7 +133,7 @@ extension AddressPickerViewController {
                 return
             }
 
-            let title = UILocalizer.str("Address.Add.type.title")
+            let title = strongSelf.loc("Address.Add.type.title")
             let standardAction = ButtonAction(text: "Address.Add.type.standard", style: .Default) { (UIAlertAction) in
                 strongSelf.showCreateAddress(.StandardAddress)
             }
@@ -145,7 +142,8 @@ extension AddressPickerViewController {
             }
             let cancelAction = ButtonAction(text: "Cancel", style: .Cancel, handler: nil)
 
-            UserMessage.show(title: title,
+            strongSelf.userMessage.show(title: title,
+                message: nil,
                 preferredStyle: .ActionSheet,
                 actions: standardAction, pickupPointAction, cancelAction)
         }
@@ -154,7 +152,9 @@ extension AddressPickerViewController {
     private func showCreateAddress(addressType: AddressFormType) {
         showCreateAddressViewController(addressType) { [weak self] address in
             guard let strongSelf = self else { return }
-            strongSelf.selectionCompletion(pickedAddress: address, pickedAddressType: strongSelf.addressType)
+            strongSelf.selectionCompletion(pickedAddress: address,
+                pickedAddressType: strongSelf.addressType,
+                popBackToSummaryOnFinish: true)
             strongSelf.navigationController?.popViewControllerAnimated(false)
         }
     }
@@ -205,6 +205,7 @@ extension AddressPickerViewController {
         tableviewDelegate?.deleteAddressHandler = { [weak self] in
             guard let strongSelf = self else { return }
             strongSelf.configureEditButton()
+            strongSelf.selectionCompletion(pickedAddress: nil, pickedAddressType: strongSelf.addressType, popBackToSummaryOnFinish: false)
         }
     }
 

@@ -63,6 +63,13 @@ struct UserMessage {
             }
     }
 
+    func generalError() {
+        AtlasLogger.logError("General Error")
+        let title = localizerProvider.loc("Error.general.title")
+        let message = localizerProvider.loc("Error.general.message")
+        show(title: title, message: message, actions: ButtonAction(text: "OK"))
+    }
+
 }
 
 private extension UIAlertController {

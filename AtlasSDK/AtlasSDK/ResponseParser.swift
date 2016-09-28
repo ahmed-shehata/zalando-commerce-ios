@@ -27,9 +27,9 @@ struct ResponseParser {
             if httpResponse.status == .Unauthorized {
                 error = AtlasAPIError.unauthorized
             } else if let json = json where json != JSON.null {
-                AtlasLogger.logDebug("JSON backend response", json)
                 error = AtlasAPIError.backend(
                     status: json["status"].int,
+                    type: json["type"].string,
                     title: json["title"].string,
                     details: json["detail"].string)
             } else {

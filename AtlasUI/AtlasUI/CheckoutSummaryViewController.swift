@@ -11,11 +11,9 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
     internal var checkoutViewModel: CheckoutViewModel
     internal var viewState: CheckoutViewState = .NotLoggedIn {
         didSet {
-            Async.main {
-                self.setupNavigationBar()
-                self.loaderView.hide()
-                self.rootStackView.configureData(self)
-            }
+            setupNavigationBar()
+            loaderView.hide()
+            rootStackView.configureData(self)
         }
     }
     lazy private var actionsHandler: CheckoutSummaryActionsHandler = {
@@ -57,11 +55,11 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
     }
 
     internal func showLoader() {
-        loaderView.show()
+        self.loaderView.show()
     }
 
     internal func hideLoader() {
-        loaderView.hide()
+        self.loaderView.hide()
     }
 }
 
@@ -157,14 +155,6 @@ extension CheckoutSummaryViewController {
             navigationController?.navigationBar.translucent = false
         } else {
             navigationItem.rightBarButtonItem = nil
-        }
-    }
-
-    func createCheckout(cartId: String, completion: CheckoutCompletion) {
-        checkout.client.createCheckout(cartId,
-            billingAddressId: checkoutViewModel.selectedBillingAddress?.id,
-            shippingAddressId: checkoutViewModel.selectedShippingAddress?.id) { checkout in
-                completion(checkout)
         }
     }
 

@@ -10,7 +10,7 @@ public typealias AtlasCheckoutConfigurationCompletion = AtlasResult<AtlasCheckou
 
 typealias CreateCheckoutViewModelCompletion = AtlasResult<CheckoutViewModel> -> Void
 
-public class AtlasCheckout {
+final public class AtlasCheckout {
 
     public let client: APIClient
 
@@ -61,7 +61,7 @@ public class AtlasCheckout {
         viewController.presentViewController(navigationController, animated: true, completion: nil)
     }
 
-    func prepareCheckoutViewModel(selectedArticleUnit: SelectedArticleUnit, checkoutViewModel: CheckoutViewModel? = nil,
+    private func prepareCheckoutViewModel(selectedArticleUnit: SelectedArticleUnit, checkoutViewModel: CheckoutViewModel? = nil,
         completion: CreateCheckoutViewModelCompletion) {
             client.createCheckout(withSelectedArticleUnit: selectedArticleUnit,
                 billingAddressId: checkoutViewModel?.selectedBillingAddress?.id,
@@ -69,8 +69,10 @@ public class AtlasCheckout {
                     switch checkoutResult {
                     case .failure(let error):
                         if case let AtlasAPIError.checkoutFailed(_, cartId, _) = error {
-                            let checkoutModel = CheckoutViewModel(selectedArticleUnit: selectedArticleUnit, cartId: cartId, checkout: nil)
+                            let checkoutModel = CheckoutViewModel(selectedArticleUnit: selectedArticleUnit, cartId: cartId)
                             completion(.success(checkoutModel))
+                        } else {
+                            completion(.failure(error))
                         }
 
                     case .success(let checkout):
@@ -79,13 +81,5 @@ public class AtlasCheckout {
                     }
             }
     }
-
-}
-
-extension APIClient {
-
-    static var client: APIClient? = {
-        try? Atlas.provide() as APIClient
-    }()
 
 }

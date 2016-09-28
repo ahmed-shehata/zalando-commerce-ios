@@ -14,16 +14,15 @@ protocol Configurator {
 
 struct ConfigClient: Configurator {
 
-    private var requestBuilder: RequestBuilder
     private let options: Options
 
     init(options: Options) {
         self.options = options
-        self.requestBuilder = RequestBuilder(forEndpoint: GetConfigEndpoint(URL: options.configurationURL))
     }
 
     func configure(completion: AtlasConfigCompletion) {
-        self.requestBuilder.execute { result in
+        var requestBuilder = RequestBuilder(forEndpoint: GetConfigEndpoint(URL: options.configurationURL))
+        requestBuilder.execute { result in
             switch result {
             case .failure(let error):
                 completion(.failure(error))

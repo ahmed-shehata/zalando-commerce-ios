@@ -8,30 +8,20 @@ public struct Options {
 
     public let useSandboxEnvironment: Bool
     public let clientId: String
-    public let interfaceLanguage: String?
-    public let countryCode: String
-    public let configurationURL: NSURL
     public let salesChannel: String
-
-    public var localeIdentifier: String {
-        guard let interfaceLanguage = interfaceLanguage where !interfaceLanguage.isEmpty else {
-            return countryCode
-        }
-        return "\(interfaceLanguage)_\(countryCode)"
-    }
+    public let interfaceLanguage: String?
+    public let configurationURL: NSURL
 
     public init(clientId: String? = nil,
         salesChannel: String? = nil,
         useSandbox: Bool? = nil,
-        countryCode: String? = nil,
         interfaceLanguage: String? = nil,
         configurationURL: NSURL? = nil,
         authorizationHandler: AuthorizationHandler? = nil,
         infoBundle bundle: NSBundle = NSBundle.mainBundle()) {
-            self.clientId = clientId ?? bundle.string(.clientId)
-            self.salesChannel = salesChannel ?? bundle.string(.salesChannel)
-            self.useSandboxEnvironment = useSandbox ?? bundle.bool(.useSandbox)
-            self.countryCode = countryCode ?? bundle.string(.countryCode)
+            self.clientId = clientId ?? bundle.string(.clientId) ?? ""
+            self.salesChannel = salesChannel ?? bundle.string(.salesChannel) ?? ""
+            self.useSandboxEnvironment = useSandbox ?? bundle.bool(.useSandbox) ?? false
             self.interfaceLanguage = interfaceLanguage ?? bundle.string(.interfaceLanguage)
 
             if let authorizationHandler = authorizationHandler {
@@ -52,9 +42,6 @@ public struct Options {
         if self.salesChannel.isEmpty {
             throw AtlasConfigurationError.missingSalesChannel
         }
-        if self.countryCode.isEmpty {
-            throw AtlasConfigurationError.missingCountryCode
-        }
     }
 
 }
@@ -71,7 +58,7 @@ extension Options: CustomStringConvertible {
             + "\n\tclientId = \(formatOptional(clientId)) "
             + ", \n\tuseSandboxEnvironment = \(useSandboxEnvironment) "
             + ", \n\tsalesChannel = \(formatOptional(salesChannel)) "
-            + ", \n\tlocaleIdentifier = \(localeIdentifier) "
+            + ", \n\tinterfaceLanguage = \(interfaceLanguage) "
             + " } "
     }
 
