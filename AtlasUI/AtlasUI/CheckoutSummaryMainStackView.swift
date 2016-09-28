@@ -108,6 +108,7 @@ extension CheckoutSummaryMainStackView: UIBuilder {
         addArrangedSubview(productSeparatorView)
 
         addArrangedSubview(shippingAddressStackView)
+        addArrangedSubview(deliveryStackView)
         addArrangedSubview(shippingAddressSeparatorView)
 
         addArrangedSubview(billingAddressStackView)
@@ -116,9 +117,10 @@ extension CheckoutSummaryMainStackView: UIBuilder {
         addArrangedSubview(paymentStackView)
         addArrangedSubview(paymentSeparatorView)
 
-        addArrangedSubview(deliveryStackView)
-        addArrangedSubview(deliverySeparatorView)
+
+//        addArrangedSubview(deliverySeparatorView)
         addArrangedSubview(priceStackView)
+
     }
 
     func configureConstraints() {

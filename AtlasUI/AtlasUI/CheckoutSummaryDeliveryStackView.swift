@@ -6,6 +6,13 @@ import UIKit
 
 class CheckoutSummaryDeliveryStackView: UIStackView {
 
+    private let dummyLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFontOfSize(4)
+        label.text = " "
+        return label
+    }()
+
     internal let deliveryTitleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFontOfSize(10, weight: UIFontWeightLight)
@@ -14,11 +21,17 @@ class CheckoutSummaryDeliveryStackView: UIStackView {
         return label
     }()
 
+    internal let deliveryIcon: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "truck", bundledWith: CheckoutSummaryDeliveryStackView.self))
+        imageView.contentMode = .Center
+        return imageView
+    }()
+
     internal let deliveryValueLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFontOfSize(10, weight: UIFontWeightLight)
         label.textColor = UIColor(hex: 0x7F7F7F)
-        label.textAlignment = .Right
+        label.textAlignment = .Left
         return label
     }()
 
@@ -27,12 +40,13 @@ class CheckoutSummaryDeliveryStackView: UIStackView {
 extension CheckoutSummaryDeliveryStackView: UIBuilder {
 
     func configureView() {
-        addArrangedSubview(deliveryTitleLabel)
+        addArrangedSubview(dummyLabel)
+        addArrangedSubview(deliveryIcon)
         addArrangedSubview(deliveryValueLabel)
     }
 
     func configureConstraints() {
-        deliveryTitleLabel.setWidth(equalToView: deliveryValueLabel)
+        dummyLabel.setWidth(equalToView: deliveryValueLabel)
     }
 
 }
