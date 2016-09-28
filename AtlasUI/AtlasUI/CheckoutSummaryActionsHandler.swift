@@ -38,7 +38,8 @@ extension CheckoutSummaryActionsHandler {
         viewController.displayLoader { done in
             viewController.checkout.client.updateCheckout(checkout.id, updateCheckoutRequest: updateCheckoutRequest) { result in
                 done()
-                guard let checkout = result.success(errorHandlingType: .GeneralError(userMessage: viewController.userMessage)) else { return }
+                guard let checkout = result.success(errorHandlingType: .GeneralError(userMessage: viewController.userMessage))
+                else { return }
                 self.createOrder(checkout.id)
             }
         }
@@ -46,12 +47,17 @@ extension CheckoutSummaryActionsHandler {
     internal func createOrder(checkoutId: String) {
         guard let viewController = self.viewController else { return }
         viewController.displayLoader { done in
-            viewController.checkout.client.createOrder(checkoutId) { result in
-
+            Async.delay(2) {
+                // TODO: Only disabled for bug-bashing session, please enable by this func
                 done()
-                guard let order = result.success(errorHandlingType: .GeneralError(userMessage: viewController.userMessage)) else { return }
-                self.handleOrderConfirmation(order)
+                self.handleFakeOrderConfirmation()
+                return
             }
+
+//            viewController.checkout.client.createOrder(checkoutId) { result in
+//                guard let order = result.success(errorHandlingType: .GeneralError(userMessage: viewController.userMessage)) else { return }
+//                self.handleOrderConfirmation(order)
+//            }
         }
 
     }
@@ -120,6 +126,11 @@ extension CheckoutSummaryActionsHandler {
             addressSelectionCompletion: pickedAddressCompletion)
         addressSelectionViewController.selectedAddress = viewController.checkoutViewModel.selectedBillingAddress
         viewController.showViewController(addressSelectionViewController, sender: viewController)
+    }
+
+    internal func handleFakeOrderConfirmation() { // TODO: Only used for bug-bashing session
+        guard let viewController = self.viewController else { return }
+        viewController.viewState = .OrderPlaced
     }
 
     internal func handleOrderConfirmation(order: Order) {
