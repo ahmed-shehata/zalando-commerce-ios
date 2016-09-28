@@ -12,4 +12,8 @@ extension String {
         self.init(contents)
     }
 
+    var newLineFreeString: String {
+        return componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet()).joinWithSeparator("")
+    }
+
 }

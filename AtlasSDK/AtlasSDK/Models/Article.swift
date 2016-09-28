@@ -27,6 +27,7 @@ public struct Article {
     public let color: String
     public let brand: Brand
     public let units: [Unit]
+    public let availableUnits: [Unit]
     public let media: Media
 
     public var hasSingleUnit: Bool {
@@ -97,7 +98,8 @@ extension Article: JSONInitializable {
         self.color = color
         self.media = media
         self.brand = brand
-        self.units = json["units"].arrayValue.flatMap { Article.Unit(json: $0) }.filter { $0.available }
+        self.units = json["units"].arrayValue.flatMap { Article.Unit(json: $0) }
+        self.availableUnits = units.filter { $0.available }
     }
 
 }
