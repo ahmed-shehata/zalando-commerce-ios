@@ -29,31 +29,38 @@ extension CheckoutSummaryActionsHandler {
         guard let viewController = self.viewController else { return }
         guard let checkout = viewController.checkoutViewModel.checkout else { return }
 
-        viewController.showLoader()
         if checkout.hasSameAddress(like: viewController.checkoutViewModel) {
             return createOrder(checkout.id)
         }
 
         let updateCheckoutRequest = UpdateCheckoutRequest(checkoutViewModel: viewController.checkoutViewModel)
 
-        viewController.checkout.client.updateCheckout(checkout.id, updateCheckoutRequest: updateCheckoutRequest) { result in
-            viewController.hideLoader()
-            guard let checkout = result.success(errorHandlingType: .GeneralError(userMessage: viewController.userMessage)) else { return }
-            self.createOrder(checkout.id)
+        viewController.displayLoader { done in
+            viewController.checkout.client.updateCheckout(checkout.id, updateCheckoutRequest: updateCheckoutRequest) { result in
+                done()
+                guard let checkout = result.success(errorHandlingType: .GeneralError(userMessage: viewController.userMessage))
+                else { return }
+                self.createOrder(checkout.id)
+            }
         }
     }
-
     internal func createOrder(checkoutId: String) {
         guard let viewController = self.viewController else { return }
+        viewController.displayLoader { done in
+            Async.delay(2) {
+                // TODO: Only in bug bashing session
+                done()
+                self.handleFakeOrderConfirmation()
+                return
+            }
 
-        viewController.showLoader()
-        viewController.checkout.client.createOrder(checkoutId) { result in
-            viewController.hideLoader()
-            guard let order = result.success(errorHandlingType: .GeneralError(userMessage: viewController.userMessage)) else { return }
-            self.handleOrderConfirmation(order)
+//            viewController.checkout.client.createOrder(checkoutId) { result in
+//                guard let order = result.success(errorHandlingType: .GeneralError(userMessage: viewController.userMessage)) else { return }
+//                self.handleOrderConfirmation(order)
+//            }
         }
-    }
 
+    }
 }
 
 extension CheckoutSummaryActionsHandler {
@@ -62,6 +69,7 @@ extension CheckoutSummaryActionsHandler {
         guard let viewController = self.viewController else { return }
 
         viewController.checkout.client.customer { result in
+
             guard let customer = result.success(errorHandlingType: .GeneralError(userMessage: viewController.userMessage)) else { return }
             self.generateCheckout(customer)
         }
@@ -70,16 +78,16 @@ extension CheckoutSummaryActionsHandler {
     private func generateCheckout(customer: Customer) {
         guard let viewController = self.viewController else { return }
 
-        viewController.showLoader()
-        viewController.checkout.createCheckoutViewModel(from: viewController.checkoutViewModel) { result in
-                viewController.hideLoader()
-
+        viewController.displayLoader { done in
+            viewController.checkout.createCheckoutViewModel(from: viewController.checkoutViewModel) { result in
+                done()
                 let errorType = AtlasUIError.CancelCheckout(userMessage: viewController.userMessage, viewController: viewController)
                 guard var checkoutViewModel = result.success(errorHandlingType: errorType) else { return }
 
                 checkoutViewModel.customer = customer
                 viewController.checkoutViewModel = checkoutViewModel
                 viewController.viewState = checkoutViewModel.checkoutViewState
+            }
         }
     }
 
@@ -118,6 +126,12 @@ extension CheckoutSummaryActionsHandler {
             addressSelectionCompletion: pickedAddressCompletion)
         addressSelectionViewController.selectedAddress = viewController.checkoutViewModel.selectedBillingAddress
         viewController.showViewController(addressSelectionViewController, sender: viewController)
+    }
+
+    @available( *, deprecated, message = "Only for Bug-Bashing session")
+    internal func handleFakeOrderConfirmation() { // TODO: Only used for bug-bashing session
+        guard let viewController = self.viewController else { return }
+        viewController.viewState = .OrderPlaced
     }
 
     internal func handleOrderConfirmation(order: Order) {
@@ -164,11 +178,10 @@ extension CheckoutSummaryActionsHandler {
 
             guard viewController.checkoutViewModel.isReadyToCreateCheckout == true else { return }
 
-            viewController.showLoader()
+            viewController.displayLoader { done in
 
-            viewController.checkout.createCheckoutViewModel(from: viewController.checkoutViewModel) { result in
-                    viewController.hideLoader()
-
+                viewController.checkout.createCheckoutViewModel(from: viewController.checkoutViewModel) { result in
+                    done()
                     let errorType = AtlasUIError.CancelCheckout(userMessage: viewController.userMessage, viewController: viewController)
                     guard var checkoutViewModel = result.success(errorHandlingType: errorType) else { return }
 
@@ -176,10 +189,10 @@ extension CheckoutSummaryActionsHandler {
                     viewController.checkoutViewModel = checkoutViewModel
                     viewController.rootStackView.configureData(viewController)
                     viewController.refreshViewData()
+                }
             }
     }
 }
-
 extension UpdateCheckoutRequest {
     init (checkoutViewModel: CheckoutViewModel) {
         self.init(billingAddressId: checkoutViewModel.selectedBillingAddress?.id,

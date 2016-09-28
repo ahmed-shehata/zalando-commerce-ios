@@ -24,7 +24,6 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = loc("Pick a size")
         view.backgroundColor = UIColor.clearColor()
         view.opaque = false
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
@@ -84,6 +83,7 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
 
             guard let article = result.success(errorHandlingType: .GeneralError(userMessage: strongSelf.userMessage)) else { return }
             strongSelf.displaySizes(forArticle: article)
+            strongSelf.title = strongSelf.loc("Pick a size")
         }
     }
 
