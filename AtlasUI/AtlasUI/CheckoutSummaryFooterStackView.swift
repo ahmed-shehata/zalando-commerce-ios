@@ -10,10 +10,10 @@ class CheckoutSummaryFooterStackView: UIStackView {
 
     internal let footerButton: UIButton = {
         let button = UIButton(type: .System)
-        button.titleLabel?.font = .systemFontOfSize(12)
-        button.titleLabel?.lineBreakMode = .ByWordWrapping
-        button.titleLabel?.numberOfLines = 2
+        button.titleLabel?.font = .systemFontOfSize(12, weight: UIFontWeightLight)
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.titleLabel?.textAlignment = .Center
+        button.titleLabel?.textColor = UIColor(hex: 0x7F7F7F)
         button.accessibilityIdentifier = "checkout-summary-toc-button"
         return button
     }()
@@ -55,7 +55,7 @@ extension CheckoutSummaryFooterStackView: UIDataBuilder {
     func configureData(viewModel: T) {
         tocURL = viewModel.checkout.client.config.tocURL
 
-        footerButton.setTitle(viewModel.loc("CheckoutSummaryViewController.terms"), forState: .Normal)
+        footerButton.setAttributedTitle(tocAttributedTitle(viewModel), forState: .Normal)
         footerButton.hidden = !viewModel.viewState.showFooterLabel
 
         let isPaypal = viewModel.checkoutViewModel.checkout?.payment.selected?.isPaypal() ?? false
@@ -63,6 +63,13 @@ extension CheckoutSummaryFooterStackView: UIDataBuilder {
         submitButton.setTitle(viewModel.loc(viewModel.viewState.submitButtonTitle(isPaypal)), forState: .Normal)
         submitButton.backgroundColor = viewModel.viewState.submitButtonBackgroundColor
         submitButton.accessibilityIdentifier = "checkout-footer-button"
+    }
+
+    private func tocAttributedTitle(localizer: LocalizerProviderType) -> NSAttributedString {
+        let attributedString = NSMutableAttributedString(string: localizer.loc("CheckoutSummaryViewController.terms"))
+        let range = NSRange(location: 0, length: attributedString.length)
+        attributedString.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.StyleSingle.rawValue, range: range)
+        return attributedString
     }
 
 }
