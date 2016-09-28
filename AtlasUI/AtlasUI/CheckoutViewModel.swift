@@ -93,7 +93,7 @@ extension CheckoutViewModel {
         if customer == nil {
             return .NotLoggedIn
         }
-        return (checkout == nil || checkout?.payment.selected?.method == nil) ? .CheckoutIncomplete : .LoggedIn
+        return (checkout?.payment.selected?.method == nil) ? .CheckoutIncomplete : .LoggedIn
     }
 
 }

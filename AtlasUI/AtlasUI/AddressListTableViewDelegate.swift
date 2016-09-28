@@ -55,6 +55,13 @@ extension AddressListTableViewDelegate: UITableViewDataSource {
         }
     }
 
+    func replaceUpdatedAddress(updatedAddress: UserAddress) {
+        guard let addressIdx = addresses.indexOf({ $0 == updatedAddress }) else {
+            return
+        }
+        addresses[addressIdx] = updatedAddress
+    }
+
 }
 
 extension AddressListTableViewDelegate: UITableViewDelegate {
