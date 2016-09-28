@@ -48,7 +48,7 @@ extension CheckoutSummaryActionsHandler {
         guard let viewController = self.viewController else { return }
         viewController.displayLoader { done in
             Async.delay(2) {
-                // TODO: Only disabled for bug-bashing session, please enable by removing this delay func
+                // TODO: Only in bug bashing session
                 done()
                 self.handleFakeOrderConfirmation()
                 return
@@ -128,6 +128,7 @@ extension CheckoutSummaryActionsHandler {
         viewController.showViewController(addressSelectionViewController, sender: viewController)
     }
 
+    @available( *, deprecated, message = "Only for Bug-Bashing session")
     internal func handleFakeOrderConfirmation() { // TODO: Only used for bug-bashing session
         guard let viewController = self.viewController else { return }
         viewController.viewState = .OrderPlaced
