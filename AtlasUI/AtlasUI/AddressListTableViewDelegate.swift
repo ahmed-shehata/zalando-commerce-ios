@@ -10,17 +10,19 @@ class AddressListTableViewDelegate: NSObject {
     internal var checkout: AtlasCheckout
     private let addressType: AddressType
     private let selectionCompletion: AddressSelectionCompletion
+    private let userMessage: UserMessage
     internal var createAddressHandler: CreateAddressHandler?
     internal var updateAddressHandler: UpdateAddressHandler?
     internal var deleteAddressHandler: DeleteAddressHandler?
 
     var addresses: [UserAddress] = []
     var selectedAddress: EquatableAddress?
-    init(checkout: AtlasCheckout, addressType: AddressType,
+    init(checkout: AtlasCheckout, addressType: AddressType, userMessage: UserMessage,
         addressSelectionCompletion: AddressSelectionCompletion) {
             self.checkout = checkout
             self.addressType = addressType
             self.selectionCompletion = addressSelectionCompletion
+            self.userMessage = userMessage
     }
 }
 
@@ -53,6 +55,13 @@ extension AddressListTableViewDelegate: UITableViewDataSource {
         }
     }
 
+    func replaceUpdatedAddress(updatedAddress: UserAddress) {
+        guard let addressIdx = addresses.indexOf({ $0 == updatedAddress }) else {
+            return
+        }
+        addresses[addressIdx] = updatedAddress
+    }
+
 }
 
 extension AddressListTableViewDelegate: UITableViewDelegate {
@@ -63,20 +72,14 @@ extension AddressListTableViewDelegate: UITableViewDelegate {
 
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle,
         forRowAtIndexPath indexPath: NSIndexPath) {
-            switch editingStyle {
-            case .Delete:
-                let address = self.addresses[indexPath.item]
-                checkout.client.deleteAddress(address.id) { result in
-                    switch result {
-                    case .success(_):
-                        self.deleteAddress(indexPath, tableView: tableView)
-                    case .failure(let error):
-                        AtlasLogger.logError(error)
-                    }
-                }
-            default:
-                break
-            }
+
+        guard editingStyle == .Delete else { return }
+
+        let address = self.addresses[indexPath.item]
+        checkout.client.deleteAddress(address.id) { result in
+            guard let _ = result.success(errorHandlingType: .GeneralError(userMessage: self.userMessage)) else { return }
+            self.deleteAddress(indexPath, tableView: tableView)
+        }
     }
 
     private func deleteAddress(indexPath: NSIndexPath, tableView: UITableView) {
@@ -101,7 +104,7 @@ extension AddressListTableViewDelegate: UITableViewDelegate {
             updateAddressHandler?(address: addresses[indexPath.item])
         } else {
             selectedAddress = addresses[indexPath.item]
-            self.selectionCompletion(pickedAddress: addresses[indexPath.item], pickedAddressType: self.addressType, popBackToSummaryOnFinish: true)
+            self.selectionCompletion(pickedAddress: selectedAddress, pickedAddressType: self.addressType, popBackToSummaryOnFinish: true)
             tableView.reloadData()
         }
     }

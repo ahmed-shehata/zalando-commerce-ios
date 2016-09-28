@@ -5,6 +5,7 @@
 import UIKit
 import AtlasSDK
 
+@available( *, deprecated, message = "Kill it with fire!")
 enum AddressType {
     case shipping
     case billing
@@ -30,14 +31,7 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
         return view
     }()
 
-    private var addresses: [UserAddress] = [] {
-        didSet {
-            tableviewDelegate?.addresses = addresses
-            tableView.reloadData()
-            configureEditButton()
-        }
-    }
-    let tableviewDelegate: AddressListTableViewDelegate?
+    var tableviewDelegate: AddressListTableViewDelegate?
 
     var selectedAddress: EquatableAddress? {
         didSet {
@@ -50,10 +44,12 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
             self.checkout = checkout
             self.addressType = addressType
             selectionCompletion = addressSelectionCompletion
-            tableviewDelegate = AddressListTableViewDelegate(checkout: checkout,
-                addressType: addressType, addressSelectionCompletion: selectionCompletion)
-
             super.init(nibName: nil, bundle: nil)
+            tableviewDelegate = AddressListTableViewDelegate(checkout: checkout,
+                addressType: addressType,
+                userMessage: userMessage,
+                addressSelectionCompletion: selectionCompletion)
+
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -66,9 +62,9 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
         self.view.addSubview(loaderView)
         switch addressType {
         case .billing:
-            self.title = "Billing Address"
+            self.title = "Billing Address" // TODO: translate
         case .shipping:
-            self.title = "Shipping Address"
+            self.title = "Shipping Address" // TODO: translate
         }
 
         self.navigationController?.navigationBar.accessibilityIdentifier = "address-picker-navigation-bar"
@@ -94,13 +90,18 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
         checkout.client.addresses { [weak self] result in
             guard let strongSelf = self else { return }
             strongSelf.loaderView.hide()
-                switch result {
-                case .failure(let error):
-                    strongSelf.userMessage.show(error: error)
-                case .success(let addresses):
-                    strongSelf.addresses = addresses
-                }
+            guard let addresses = result.success(errorHandlingType: .GeneralError(userMessage: strongSelf.userMessage)) else { return }
+            strongSelf.setTableViewDataSource(addresses)
         }
+    }
+
+    private func setTableViewDataSource(addresses: [UserAddress]) {
+        self.tableviewDelegate?.addresses = addresses
+        if addressType == AddressType.billing {
+            self.tableviewDelegate?.addresses = addresses.filter({ $0.pickupPoint == nil })
+        }
+        self.tableView.reloadData()
+        self.configureEditButton()
     }
 
     override func setEditing(editing: Bool, animated: Bool) {
@@ -154,7 +155,9 @@ extension AddressPickerViewController {
     private func showCreateAddress(addressType: AddressFormType) {
         showCreateAddressViewController(addressType) { [weak self] address in
             guard let strongSelf = self else { return }
-            strongSelf.selectionCompletion(pickedAddress: address, pickedAddressType: strongSelf.addressType, popBackToSummaryOnFinish: true)
+            strongSelf.selectionCompletion(pickedAddress: address,
+                pickedAddressType: strongSelf.addressType,
+                popBackToSummaryOnFinish: true)
             strongSelf.navigationController?.popViewControllerAnimated(false)
         }
     }
@@ -180,17 +183,15 @@ extension AddressPickerViewController {
     }
 
     private func showUpdateAddress(originalAddress: EquatableAddress) {
-        let addressType: AddressFormType = originalAddress.pickupPoint == nil ? .StandardAddress : .PickupPoint
-        showUpdateAddressViewController(addressType, address: originalAddress) { [weak self] updatedAddress in
-            let idx = self?.addresses.indexOf { $0 == updatedAddress }
-            if let addressIdx = idx {
-                self?.addresses[addressIdx] = updatedAddress
-            }
+        showUpdateAddressViewController(for: originalAddress) { [weak self] updatedAddress in
+            guard let strongSelf = self else { return }
+            strongSelf.tableviewDelegate?.replaceUpdatedAddress(updatedAddress)
         }
     }
 
-    private func showUpdateAddressViewController(type: AddressFormType, address: EquatableAddress, completion: AddressFormCompletion) {
-        let viewController = AddressFormViewController(addressType: type,
+    private func showUpdateAddressViewController(for address: EquatableAddress, completion: AddressFormCompletion) {
+        let addressType: AddressFormType = address.pickupPoint == nil ? .StandardAddress : .PickupPoint
+        let viewController = AddressFormViewController(addressType: addressType,
             addressMode: .updateAddress(address: address),
             checkout: checkout,
             completion: completion)

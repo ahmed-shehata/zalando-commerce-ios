@@ -5,10 +5,25 @@
 import Foundation
 import AtlasSDK
 
-final class SizeListSelectionViewController: UITableViewController, CheckoutProviderType {
+final class SizeListSelectionViewController: UIViewController, CheckoutProviderType {
 
     private let article: Article
     internal let checkout: AtlasCheckout
+
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.backgroundColor = UIColor.clearColor()
+        tableView.opaque = false
+        tableView.dataSource = self
+        tableView.delegate = self
+        return tableView
+    }()
+
+    private let loaderView: LoaderView = {
+        let view = LoaderView()
+        view.hidden = true
+        return view
+    }()
 
     init(checkout: AtlasCheckout, article: Article) {
         self.checkout = checkout
@@ -20,77 +35,84 @@ final class SizeListSelectionViewController: UITableViewController, CheckoutProv
         fatalError("init(coder:) has not been implemented")
     }
 
-    let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.registerReusableCell(UITableViewCell.self)
-        view.backgroundColor = UIColor.clearColor()
-        view.opaque = false
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        buildView()
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-
-        tableView.userInteractionEnabled = true
         tableView.reloadData()
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+}
+
+extension SizeListSelectionViewController: UIBuilder {
+
+    internal func configureView() {
+        view.addSubview(tableView)
+        view.addSubview(loaderView)
+        view.backgroundColor = .clearColor()
+        view.opaque = false
+        tableView.registerReusableCell(UnitSizeTableViewCell.self)
+    }
+
+    internal func configureConstraints() {
+        tableView.fillInSuperView()
+        loaderView.fillInSuperView()
+    }
+
+    internal func builderSubviews() -> [UIBuilder] {
+        return [loaderView]
+    }
+
+}
+
+extension SizeListSelectionViewController: UITableViewDataSource {
+
+    internal func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return article.units.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(UITableViewCell.self, forIndexPath: indexPath) { cell in
+    internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        return tableView.dequeueReusableCell(UnitSizeTableViewCell.self, forIndexPath: indexPath) { cell in
             let unit = self.article.units[indexPath.item]
-            cell.textLabel?.text = unit.size
-            cell.backgroundColor = UIColor.clearColor()
-            cell.opaque = false
-            cell.accessoryView = nil
+            cell.configureData(UnitSizeTableViewCellViewModel(unit: unit, localizer: self.localizer))
             cell.accessibilityIdentifier = "size-cell-\(indexPath.row)"
-            cell.accessibilityLabel = "size-cell-\(unit.size)"
             return cell
         }
     }
 
-    internal override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        guard let cell = tableView.cellForRowAtIndexPath(indexPath) else { return }
+}
 
-        let spinner = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
-        cell.accessoryView = spinner
-        spinner.startAnimating()
-        tableView.userInteractionEnabled = false
+extension SizeListSelectionViewController: UITableViewDelegate {
+
+    internal func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
 
         guard Atlas.isUserLoggedIn() else {
-            let selectedArticleUnit = SelectedArticleUnit(article: article,
-                selectedUnitIndex: 0)
+            let selectedArticleUnit = SelectedArticleUnit(article: article, selectedUnitIndex: 0)
             let checkoutViewModel = CheckoutViewModel(selectedArticleUnit: selectedArticleUnit)
-            spinner.stopAnimating()
             return displayCheckoutSummaryViewController(checkoutViewModel)
         }
 
+        loaderView.show()
         self.checkout.client.customer { result in
-            switch result {
-            case .failure(let error):
-                self.userMessage.show(error: error)
+            self.loaderView.hide()
 
-            case .success(let customer):
-                let selectedArticleUnit = SelectedArticleUnit(article: self.article,
-                    selectedUnitIndex: indexPath.row)
-                self.checkout.prepareCheckoutViewModel(selectedArticleUnit) { result in
-                    spinner.stopAnimating()
-                    switch result {
-                    case .failure(let error):
-                        self.dismissViewControllerAnimated(true) {
-                            self.userMessage.show(error: error)
-                        }
-                    case .success(var checkoutViewModel):
-                        checkoutViewModel.customer = customer
-                        self.displayCheckoutSummaryViewController(checkoutViewModel)
-                    }
-                }
+            guard let customer = result.success(errorHandlingType: .GeneralError(userMessage: self.userMessage)) else { return }
+            let selectedArticleUnit = SelectedArticleUnit(article: self.article, selectedUnitIndex: indexPath.row)
+
+            self.loaderView.show()
+            self.checkout.createCheckoutViewModel(for: selectedArticleUnit) { result in
+                self.loaderView.hide()
+
+                let errorType = AtlasUIError.CancelCheckout(userMessage: self.userMessage, viewController: self)
+                guard var checkoutViewModel = result.success(errorHandlingType: errorType) else { return }
+
+                checkoutViewModel.customer = customer
+                self.displayCheckoutSummaryViewController(checkoutViewModel)
             }
         }
     }
@@ -99,4 +121,5 @@ final class SizeListSelectionViewController: UITableViewController, CheckoutProv
         let checkoutSummaryVC = CheckoutSummaryViewController(checkout: checkout, checkoutViewModel: checkoutViewModel)
         self.showViewController(checkoutSummaryVC, sender: self)
     }
+
 }

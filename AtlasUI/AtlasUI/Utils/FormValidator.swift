@@ -17,7 +17,9 @@ enum FormValidator {
         return errorMessage(localizer)
     }
 
-    internal static let anyCharacterPattern = "a-zA-ZàÀâÂäÄáÁåÅéÉèÈêÊëËìÌîÎïÏòÒôÔöÖøØùÙûÛüÜçÇñœŒæÆíóúÍÓÚĄąĆćĘęŁłŃńŚśŻżŹź"
+    private static let anyCharacterPattern = "a-zA-ZàÀâÂäÄáÁåÅéÉèÈêÊëËìÌîÎïÏòÒôÔöÖøØùÙûÛüÜçÇñœŒæÆíóúÍÓÚĄąĆćĘęŁłŃńŚśŻżŹź"
+    internal static let namePattern = "^["+anyCharacterPattern+"]'?[- "+anyCharacterPattern+"ß]+$"
+    internal static let cityPattern = "^["+anyCharacterPattern+"]'?[-,;()' 0-9"+anyCharacterPattern+"ß]+$"
 
     private func isValid(text: String?) -> Bool {
         switch self {

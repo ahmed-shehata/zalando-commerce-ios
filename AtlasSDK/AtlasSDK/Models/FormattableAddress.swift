@@ -17,9 +17,15 @@ public protocol FormattableAddress: StreetAddress {
 }
 
 public protocol EquatableAddress: FormattableAddress {
+
     var id: String { get }
+
 }
 
 public func == (lhs: EquatableAddress, rhs: EquatableAddress) -> Bool {
+
     return lhs.id == rhs.id
+
 }
+
+public typealias CheckoutAddresses = (billingAddress: EquatableAddress?, shippingAddress: EquatableAddress?)

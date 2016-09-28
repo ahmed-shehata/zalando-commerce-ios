@@ -26,14 +26,14 @@ extension Checkout {
 extension CheckoutSummaryActionsHandler {
 
     internal func handleBuyAction() {
-        guard let strongViewController = self.viewController else { return }
-        guard let checkout = strongViewController.checkoutViewModel.checkout else { return }
+        guard let viewController = self.viewController else { return }
+        guard let checkout = viewController.checkoutViewModel.checkout else { return }
 
         if checkout.hasSameAddress(like: strongViewController.checkoutViewModel) {
             return createOrder(checkout.id)
         }
 
-        let updateCheckoutRequest = UpdateCheckoutRequest(checkoutViewModel: strongViewController.checkoutViewModel)
+        let updateCheckoutRequest = UpdateCheckoutRequest(checkoutViewModel: viewController.checkoutViewModel)
 
         strongViewController.displayLoaderWithRequest { done in
             strongViewController.checkout.client.updateCheckout(checkout.id, updateCheckoutRequest: updateCheckoutRequest) { result in
@@ -80,6 +80,9 @@ extension CheckoutSummaryActionsHandler {
                 self.generateCheckout(customer)
             }
 
+        viewController.checkout.client.customer { result in
+            guard let customer = result.success(errorHandlingType: .GeneralError(userMessage: viewController.userMessage)) else { return }
+            self.generateCheckout(customer)
         }
     }
 
@@ -109,59 +112,53 @@ extension CheckoutSummaryActionsHandler {
 extension CheckoutSummaryActionsHandler {
 
     internal func showPaymentSelectionScreen() {
-        guard let strongViewController = self.viewController else { return }
+        guard let viewController = self.viewController else { return }
         guard Atlas.isUserLoggedIn() else { return loadCustomerData() }
-        guard let paymentURL = strongViewController.checkoutViewModel.checkout?.payment.selectionPageURL else { return }
+        guard let paymentURL = viewController.checkoutViewModel.checkout?.payment.selectionPageURL else { return }
 
         let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
         paymentSelectionViewController.paymentCompletion = { result in
-            switch result {
-            case .success:
-                self.loadCustomerData()
-            case .failure(let error):
-                strongViewController.userMessage.show(error: error)
-            }
+
+            guard let _ = result.success(errorHandlingType: .GeneralError(userMessage: viewController.userMessage)) else { return }
+            self.loadCustomerData()
         }
-        strongViewController.showViewController(paymentSelectionViewController, sender: strongViewController)
+        viewController.showViewController(paymentSelectionViewController, sender: viewController)
     }
 
     internal func showShippingAddressSelectionScreen() {
-        guard let strongViewController = self.viewController else { return }
+        guard let viewController = self.viewController else { return }
         guard Atlas.isUserLoggedIn() else { return loadCustomerData() }
-        let addressSelectionViewController = AddressPickerViewController(checkout: strongViewController.checkout,
+        let addressSelectionViewController = AddressPickerViewController(checkout: viewController.checkout,
             addressType: .shipping, addressSelectionCompletion: pickedAddressCompletion)
-        addressSelectionViewController.selectedAddress = strongViewController.checkoutViewModel.selectedShippingAddress
-        strongViewController.showViewController(addressSelectionViewController, sender: strongViewController)
+        addressSelectionViewController.selectedAddress = viewController.checkoutViewModel.selectedShippingAddress
+        viewController.showViewController(addressSelectionViewController, sender: viewController)
     }
 
     internal func showBillingAddressSelectionScreen() {
-        guard let strongViewController = self.viewController else { return }
+        guard let viewController = self.viewController else { return }
         guard Atlas.isUserLoggedIn() else { return loadCustomerData() }
-        let addressSelectionViewController = AddressPickerViewController(checkout: strongViewController.checkout,
+        let addressSelectionViewController = AddressPickerViewController(checkout: viewController.checkout,
             addressType: .billing,
             addressSelectionCompletion: pickedAddressCompletion)
-        addressSelectionViewController.selectedAddress = strongViewController.checkoutViewModel.selectedBillingAddress
-        strongViewController.showViewController(addressSelectionViewController, sender: strongViewController)
+        addressSelectionViewController.selectedAddress = viewController.checkoutViewModel.selectedBillingAddress
+        viewController.showViewController(addressSelectionViewController, sender: viewController)
     }
 
     internal func handleOrderConfirmation(order: Order) {
-        guard let strongViewController = self.viewController else { return }
+        guard let viewController = self.viewController else { return }
 
         guard let paymentURL = order.externalPaymentURL else {
-            strongViewController.viewState = .OrderPlaced
+            viewController.viewState = .OrderPlaced
             return
         }
 
         let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
         paymentSelectionViewController.paymentCompletion = { result in
-            switch result {
-            case .success:
-                strongViewController.viewState = .OrderPlaced
-            case .failure(let error):
-                strongViewController.userMessage.show(error: error)
-            }
+
+            guard let _ = result.success(errorHandlingType: .GeneralError(userMessage: viewController.userMessage)) else { return }
+            viewController.viewState = .OrderPlaced
         }
-        strongViewController.showViewController(paymentSelectionViewController, sender: strongViewController)
+        viewController.showViewController(paymentSelectionViewController, sender: viewController)
     }
 
 }
@@ -169,21 +166,21 @@ extension CheckoutSummaryActionsHandler {
 extension CheckoutSummaryActionsHandler {
     func pickedAddressCompletion(pickedAddress address: EquatableAddress?,
         forAddressType addressType: AddressType, popBackToSummaryOnFinish: Bool) {
-            guard let strongViewController = self.viewController else { return }
+            guard let viewController = self.viewController else { return }
 
             if popBackToSummaryOnFinish {
-                strongViewController.navigationController?.popViewControllerAnimated(true)
+                viewController.navigationController?.popViewControllerAnimated(true)
             }
 
             switch addressType {
             case AddressType.billing:
-                strongViewController.checkoutViewModel.selectedBillingAddress = address
+                viewController.checkoutViewModel.selectedBillingAddress = address
             case AddressType.shipping:
-                strongViewController.checkoutViewModel.selectedShippingAddress = address
+                viewController.checkoutViewModel.selectedShippingAddress = address
             }
             if address == nil {
-                strongViewController.checkoutViewModel.resetState()
-                strongViewController.checkoutViewModel.checkout = nil
+                viewController.checkoutViewModel.resetState()
+                viewController.checkoutViewModel.checkout = nil
             }
 
             strongViewController.rootStackView.configureData(strongViewController)
