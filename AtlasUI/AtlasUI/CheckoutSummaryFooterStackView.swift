@@ -40,7 +40,11 @@ extension CheckoutSummaryFooterStackView: UIBuilder {
     @objc func tocPressed(sender: UIButton!) {
         if let url = tocURL {
             let controller = ToCViewController(tocURL: url)
-            UIApplication.topViewController()?.navigationController?.pushViewController(controller, animated: true)
+            guard let navController = UIApplication.topViewController()?.navigationController else {
+                UIApplication.sharedApplication().openURL(url)
+                return
+            }
+            navController.pushViewController(controller, animated: true)
         }
     }
 
