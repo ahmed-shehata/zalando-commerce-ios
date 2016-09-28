@@ -31,7 +31,7 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
         return view
     }()
 
-    let tableviewDelegate: AddressListTableViewDelegate?
+    var tableviewDelegate: AddressListTableViewDelegate?
 
     var selectedAddress: EquatableAddress? {
         didSet {
@@ -45,11 +45,11 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
             self.addressType = addressType
             selectionCompletion = addressSelectionCompletion
             super.init(nibName: nil, bundle: nil)
-
             tableviewDelegate = AddressListTableViewDelegate(checkout: checkout,
-                                                             addressType: addressType,
-                                                             userMessage: userMessage,
-                                                             addressSelectionCompletion: selectionCompletion)
+                addressType: addressType,
+                userMessage: userMessage,
+                addressSelectionCompletion: selectionCompletion)
+
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -90,12 +90,8 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
         checkout.client.addresses { [weak self] result in
             guard let strongSelf = self else { return }
             strongSelf.loaderView.hide()
-            switch result {
-            case .failure(let error):
-                strongSelf.userMessage.show(error: error)
-            case .success(let addresses):
-                strongSelf.setTableViewDataSource(addresses)
-            }
+            guard let addresses = result.success(errorHandlingType: .GeneralError(userMessage: strongSelf.userMessage)) else { return }
+            strongSelf.setTableViewDataSource(addresses)
         }
     }
 
