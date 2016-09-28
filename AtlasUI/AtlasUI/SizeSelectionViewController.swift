@@ -60,8 +60,9 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
         checkout.createCheckoutViewModel(for: selectedArticleUnit) { result in
 
             let errorType = AtlasUIError.CancelCheckout(userMessage: self.userMessage, viewController: self)
-            guard let checkoutViewModel = result.success(errorHandlingType: errorType) else { return }
+            guard var checkoutViewModel = result.success(errorHandlingType: errorType) else { return }
 
+            checkoutViewModel.customer = customer
             self.displayCheckoutSummaryViewController(checkoutViewModel)
         }
     }
