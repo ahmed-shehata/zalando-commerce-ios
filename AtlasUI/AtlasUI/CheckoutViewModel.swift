@@ -66,7 +66,7 @@ extension CheckoutViewModel {
     }
 
     var selectedUnit: Article.Unit {
-        return article.units[selectedArticleUnit.selectedUnitIndex]
+        return article.availableUnits[selectedArticleUnit.selectedUnitIndex]
     }
 
     var selectedUnitIndex: Int {

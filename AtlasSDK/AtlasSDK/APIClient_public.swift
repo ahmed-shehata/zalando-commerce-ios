@@ -73,7 +73,7 @@ extension APIClient {
 
     public func createCheckout(for selectedArticleUnit: SelectedArticleUnit,
         addresses: CheckoutAddresses? = nil, completion: CheckoutCompletion) {
-            let articleSKU = selectedArticleUnit.article.units[selectedArticleUnit.selectedUnitIndex].id
+            let articleSKU = selectedArticleUnit.article.availableUnits[selectedArticleUnit.selectedUnitIndex].id
             let cartItemRequest = CartItemRequest(sku: articleSKU, quantity: 1)
 
             createCart(cartItemRequest) { cartResult in
