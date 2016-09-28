@@ -48,7 +48,7 @@ extension CheckoutSummaryActionsHandler {
         guard let viewController = self.viewController else { return }
         viewController.displayLoader { done in
             Async.delay(2) {
-                // TODO: Only disabled for bug-bashing session, please enable by this func
+                // TODO: Only disabled for bug-bashing session, please enable by removing this delay func
                 done()
                 self.handleFakeOrderConfirmation()
                 return
