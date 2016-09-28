@@ -58,7 +58,8 @@ class APIClientBaseSpec: QuickSpec {
             let apiURL = AtlasMockAPI.endpointURL(forPath: "/")
             let loginURL = AtlasMockAPI.endpointURL(forPath: "/oauth2/authorize")
 
-            let json = JSON(["sales-channels": [["locale": "de_DE", "sales-channel": "82fe2e7f-8c4f-4aa1-9019-b6bde5594456"]],
+        let json = JSON(["sales-channels": [["locale": "de_DE", "sales-channel": "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
+            "toc_url": "https://www.zalando.de/agb/"]],
                 "atlas-catalog-api": ["url": apiURL.absoluteString],
                 "atlas-checkout-api": ["url": apiURL.absoluteString],
                 "oauth2-provider": ["url": loginURL.absoluteString]])

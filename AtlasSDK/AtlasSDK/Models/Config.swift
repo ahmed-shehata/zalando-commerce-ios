@@ -19,9 +19,11 @@ public struct Config {
         return interfaceLocale.countryCode
     }
 
+    public let tocURL: NSURL
+
 }
 
-private typealias LocaleSalesChannel = (salesChannel: String, locale: String)
+private typealias LocaleSalesChannel = (salesChannel: String, locale: String, tocURL: NSURL)
 
 extension Config {
 
@@ -39,7 +41,7 @@ extension Config {
 
         self.salesChannel = localeSalesChannel.salesChannel
         self.salesChannelLocale = NSLocale(localeIdentifier: localeSalesChannel.locale)
-
+        self.tocURL = localeSalesChannel.tocURL
         if let interfaceLanguage = options.interfaceLanguage {
             self.interfaceLocale = NSLocale(localeIdentifier: "\(interfaceLanguage)_\(salesChannelLocale.countryCode)")
         } else {
@@ -52,12 +54,13 @@ extension Config {
     private static func findSalesChannel(json: JSON, channelId: String) -> LocaleSalesChannel? {
         guard let matchedChannel = firstMatchedChannel(json, channelId: channelId),
             salesChannel = matchedChannel["sales-channel"]?.string,
-            locale = matchedChannel["locale"]?.string
+            locale = matchedChannel["locale"]?.string,
+            tocURL = matchedChannel["toc_url"]?.URL
         else {
             return nil
         }
 
-        return (salesChannel: salesChannel, locale: locale)
+        return (salesChannel: salesChannel, locale: locale, tocURL: tocURL)
     }
 
     private static func firstMatchedChannel(json: JSON, channelId: String) -> [String: JSON]? {
@@ -82,6 +85,7 @@ extension Config: CustomStringConvertible {
             + ", clientId: \(self.clientId)"
             + ", salesChannelLocale: \(self.salesChannelLocale.localeIdentifier)"
             + ", interfaceLocale: \(self.interfaceLocale.localeIdentifier)"
+            + ", tocURL: \(self.tocURL)"
             + " }"
     }
 }
