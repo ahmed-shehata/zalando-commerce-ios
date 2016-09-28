@@ -62,9 +62,9 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
         self.loaderView.hide()
     }
 
-    internal func displayLoader(requestToMake: (() -> Void) -> Void) {
+    internal func displayLoader(block: (() -> Void) -> Void) {
         showLoader()
-        requestToMake(hideLoader)
+        block(hideLoader)
     }
 }
 
