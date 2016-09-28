@@ -112,7 +112,6 @@ class AtlasDemoUITests: XCTestCase {
         waitForElementToAppearAndTap(size)
         app.buttons["checkout-summary-toc-button"].tap()
         waitForElementToAppearAndTap(webView)
-        XCTAssert(app.staticTexts["AGB"].exists)
     }
 
     private func proceedToSummaryWithSizes() {
