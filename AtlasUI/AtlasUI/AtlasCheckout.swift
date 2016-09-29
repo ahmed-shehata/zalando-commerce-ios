@@ -52,7 +52,6 @@ public class AtlasCheckout: LocalizerProviderType {
         atlasUIViewController.transitioningDelegate = checkoutTransitioning
         atlasUIViewController.modalPresentationStyle = .Custom
 
-        Injector.deregister(AtlasUIViewController.self)
         Injector.register { atlasUIViewController }
 
         viewController.presentViewController(atlasUIViewController, animated: true, completion: nil)
