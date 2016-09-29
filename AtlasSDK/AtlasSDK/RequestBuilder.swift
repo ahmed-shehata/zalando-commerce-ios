@@ -28,7 +28,7 @@ struct RequestBuilder {
                 AtlasLogger.logError("Failed request:", self.endpoint, "with error:", error)
                 switch error {
                 case AtlasAPIError.unauthorized:
-                    guard let authorizationHandler = try? Injector.provide() as AuthorizationHandler else {
+                    guard let authorizationHandler = try? Atlas.provide() as AuthorizationHandler else {
                         return completion(.failure(error))
                     }
                     authorizationHandler.authorize { result in

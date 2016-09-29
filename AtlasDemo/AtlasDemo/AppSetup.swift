@@ -14,7 +14,7 @@ class AppSetup {
     static var interfaceLanguage: String? {
         return checkout?.client.config.interfaceLocale.objectForKey(NSLocaleLanguageCode) as? String
     }
-    
+
     static func configure() {
         prepareMockAPI()
         prepareApp()

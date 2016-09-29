@@ -38,7 +38,7 @@ extension CheckoutSummaryActionsHandler {
         viewController.displayLoader { done in
             viewController.checkout.client.updateCheckout(checkout.id, updateCheckoutRequest: updateCheckoutRequest) { result in
                 done()
-                guard let checkout = result.success(errorHandlingType: .GeneralError(userMessage: viewController.userMessage)) else { return }
+                guard let checkout = result.success() else { return }
                 self.createOrder(checkout.id)
             }
         }
@@ -49,7 +49,7 @@ extension CheckoutSummaryActionsHandler {
             viewController.checkout.client.createOrder(checkoutId) { result in
 
                 done()
-                guard let order = result.success(errorHandlingType: .GeneralError(userMessage: viewController.userMessage)) else { return }
+                guard let order = result.success() else { return }
                 self.handleOrderConfirmation(order)
             }
         }
@@ -64,7 +64,7 @@ extension CheckoutSummaryActionsHandler {
 
         viewController.checkout.client.customer { result in
 
-            guard let customer = result.success(errorHandlingType: .GeneralError(userMessage: viewController.userMessage)) else { return }
+            guard let customer = result.success() else { return }
             self.generateCheckout(customer)
         }
     }
@@ -73,10 +73,10 @@ extension CheckoutSummaryActionsHandler {
         guard let viewController = self.viewController else { return }
 
         viewController.displayLoader { done in
-            viewController.checkout.createCheckoutViewModel(from: viewController.checkoutViewModel) { result in
+            viewController.checkout.createCheckoutViewModel(fromModel: viewController.checkoutViewModel) { result in
                 done()
-                let errorType = AtlasUIError.CancelCheckout(userMessage: viewController.userMessage, viewController: viewController)
-                guard var checkoutViewModel = result.success(errorHandlingType: errorType) else { return }
+                let errorBehaviour = ErrorBehaviour.CancelCheckout(viewController: viewController)
+                guard var checkoutViewModel = result.success(errorBehaviour: errorBehaviour) else { return }
 
                 checkoutViewModel.customer = customer
                 viewController.checkoutViewModel = checkoutViewModel
@@ -97,7 +97,7 @@ extension CheckoutSummaryActionsHandler {
         let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
         paymentSelectionViewController.paymentCompletion = { result in
 
-            guard let _ = result.success(errorHandlingType: .GeneralError(userMessage: viewController.userMessage)) else { return }
+            guard let _ = result.success() else { return }
             self.loadCustomerData()
         }
         viewController.showViewController(paymentSelectionViewController, sender: viewController)
@@ -133,7 +133,7 @@ extension CheckoutSummaryActionsHandler {
         let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
         paymentSelectionViewController.paymentCompletion = { result in
 
-            guard let _ = result.success(errorHandlingType: .GeneralError(userMessage: viewController.userMessage)) else { return }
+            guard let _ = result.success() else { return }
             viewController.viewState = .OrderPlaced
         }
         viewController.showViewController(paymentSelectionViewController, sender: viewController)
@@ -172,11 +172,10 @@ extension CheckoutSummaryActionsHandler {
             guard viewController.checkoutViewModel.isReadyToCreateCheckout == true else { return }
 
             viewController.displayLoader { done in
-
-                viewController.checkout.createCheckoutViewModel(from: viewController.checkoutViewModel) { result in
+                viewController.checkout.createCheckoutViewModel(fromModel: viewController.checkoutViewModel) { result in
                     done()
-                    let errorType = AtlasUIError.CancelCheckout(userMessage: viewController.userMessage, viewController: viewController)
-                    guard var checkoutViewModel = result.success(errorHandlingType: errorType) else { return }
+                    let errorBehaviour = ErrorBehaviour.CancelCheckout(viewController: viewController)
+                    guard var checkoutViewModel = result.success(errorBehaviour: errorBehaviour) else { return }
 
                     checkoutViewModel.customer = viewController.checkoutViewModel.customer
                     viewController.checkoutViewModel = checkoutViewModel

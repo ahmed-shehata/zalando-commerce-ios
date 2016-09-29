@@ -4,9 +4,7 @@
 
 import Foundation
 
-public class Injector {
-
-    private static let sharedInstance = Injector()
+class Injector {
 
     enum Error: ErrorType {
         case TypeNotRegistered
@@ -49,20 +47,4 @@ public class Injector {
 
 private func == (lhs: Injector.TypeKey, rhs: Injector.TypeKey) -> Bool {
     return lhs.type == rhs.type
-}
-
-extension Injector {
-
-    public static func register<T>(factory: Void -> T) {
-        sharedInstance.register(factory)
-    }
-
-    public static func provide<T>() throws -> T {
-        return try sharedInstance.provide()
-    }
-
-    public static func deregister<T>(type: T.Type) {
-        sharedInstance.deregister(type)
-    }
-
 }

@@ -47,8 +47,7 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
         }
 
         checkout.client.customer { result in
-
-            guard let customer = result.success(errorHandlingType: .GeneralError(userMessage: self.userMessage)) else { return }
+            guard let customer = result.success() else { return }
             self.generateCheckout(withArticle: article, customer: customer)
         }
     }
@@ -56,10 +55,10 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
     private func generateCheckout(withArticle article: Article, customer: Customer) {
         let selectedArticleUnit = SelectedArticleUnit(article: article, selectedUnitIndex: 0)
 
-        checkout.createCheckoutViewModel(for: selectedArticleUnit) { result in
+        checkout.createCheckoutViewModel(forArticleUnit: selectedArticleUnit) { result in
 
-            let errorType = AtlasUIError.CancelCheckout(userMessage: self.userMessage, viewController: self)
-            guard var checkoutViewModel = result.success(errorHandlingType: errorType) else { return }
+            let errorBehaviour = ErrorBehaviour.CancelCheckout(viewController: self)
+            guard var checkoutViewModel = result.success(errorBehaviour: errorBehaviour) else { return }
 
             checkoutViewModel.customer = customer
             self.displayCheckoutSummaryViewController(checkoutViewModel)
@@ -79,11 +78,9 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
         activityIndicatorView.startAnimating()
 
         checkout.client.article(forSKU: sku) { [weak self] result in
-            guard let strongSelf = self else { return }
-
-            guard let article = result.success(errorHandlingType: .GeneralError(userMessage: strongSelf.userMessage)) else { return }
+            guard let strongSelf = self, article = result.success() else { return }
             strongSelf.displaySizes(forArticle: article)
-            strongSelf.title = strongSelf.loc("Pick a size")
+            strongSelf.title = Localizer.string("Pick a size")
         }
     }
 

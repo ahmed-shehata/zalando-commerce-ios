@@ -4,20 +4,8 @@
 
 import Foundation
 
-protocol CheckoutProviderType: LocalizerProviderType {
+protocol CheckoutProviderType {
 
     var checkout: AtlasCheckout { get }
-
-}
-
-extension CheckoutProviderType {
-
-    var localizer: Localizer {
-        return checkout.localizer
-    }
-
-    var userMessage: UserMessage {
-        return UserMessage(localizerProvider: checkout)
-    }
 
 }

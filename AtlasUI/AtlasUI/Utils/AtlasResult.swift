@@ -4,30 +4,33 @@
 
 import AtlasSDK
 
-enum AtlasUIError {
-    case GeneralError(userMessage: UserMessage)
-    case CancelCheckout(userMessage: UserMessage, viewController: UIViewController)
+enum ErrorBehaviour {
+
+    case GeneralError
+    case CancelCheckout(viewController: UIViewController)
+
 }
 
 extension AtlasResult {
 
-    internal func success(errorHandlingType errorHandling: AtlasUIError) -> T? {
+    internal func success(errorBehaviour errorBehaviour: ErrorBehaviour = .GeneralError) -> T? {
         switch self {
         case .failure(let error):
-            displayError(error, errorHandling: errorHandling)
+            displayError(error, errorBehaviour: errorBehaviour)
             return nil
         case .success(let data):
             return data
         }
     }
 
-    private func displayError(error: ErrorType, errorHandling: AtlasUIError) {
-        switch errorHandling {
-        case .GeneralError(let userMessage):
-            userMessage.generalError()
-        case .CancelCheckout(let userMessage, let viewController):
+    private func displayError(error: ErrorType, errorBehaviour: ErrorBehaviour) {
+        switch errorBehaviour {
+        case .GeneralError:
+            UserMessage.unclasifiedError(error)
+            UserMessage.unclasifiedError(error)
+        case .CancelCheckout(let viewController):
             viewController.dismissViewControllerAnimated(true) {
-                userMessage.generalError()
+                UserMessage.unclasifiedError(error)
             }
         }
     }

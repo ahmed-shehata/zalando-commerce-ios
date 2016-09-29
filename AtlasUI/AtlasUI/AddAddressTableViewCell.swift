@@ -20,6 +20,7 @@ class AddAddressTableViewCell: UITableViewCell {
         label.numberOfLines = 0
         label.font = .systemFontOfSize(14, weight: UIFontWeightLight)
         label.textColor = UIColor(hex: 0x555555)
+        label.text = Localizer.string("Address.Add.cellTitle")
         return label
     }()
 
@@ -54,14 +55,4 @@ extension AddAddressTableViewCell: UIBuilder {
         addAddressButton.setWidth(equalToConstant: 20)
     }
 
-}
-
-
-extension AddAddressTableViewCell: UIDataBuilder {
-
-    typealias T = LocalizerProviderType
-
-    func configureData(viewModel: T) {
-        addAddressLabel.text = viewModel.loc("Address.Add.cellTitle")
-    }
 }

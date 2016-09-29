@@ -47,7 +47,6 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
             super.init(nibName: nil, bundle: nil)
             tableviewDelegate = AddressListTableViewDelegate(checkout: checkout,
                 addressType: addressType,
-                userMessage: userMessage,
                 addressSelectionCompletion: selectionCompletion)
 
     }
@@ -90,7 +89,7 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
         checkout.client.addresses { [weak self] result in
             guard let strongSelf = self else { return }
             strongSelf.loaderView.hide()
-            guard let addresses = result.success(errorHandlingType: .GeneralError(userMessage: strongSelf.userMessage)) else { return }
+            guard let addresses = result.success() else { return }
             strongSelf.setTableViewDataSource(addresses)
         }
     }
@@ -136,7 +135,7 @@ extension AddressPickerViewController {
                 return
             }
 
-            let title = strongSelf.loc("Address.Add.type.title")
+            let title = Localizer.string("Address.Add.type.title")
             let standardAction = ButtonAction(text: "Address.Add.type.standard", style: .Default) { (UIAlertAction) in
                 strongSelf.showCreateAddress(.StandardAddress)
             }
@@ -145,8 +144,7 @@ extension AddressPickerViewController {
             }
             let cancelAction = ButtonAction(text: "Cancel", style: .Cancel, handler: nil)
 
-            strongSelf.userMessage.show(title: title,
-                message: nil,
+            UserMessage.show(title: title,
                 preferredStyle: .ActionSheet,
                 actions: standardAction, pickupPointAction, cancelAction)
         }
