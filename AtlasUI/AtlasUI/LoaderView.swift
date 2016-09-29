@@ -7,12 +7,12 @@ import UIKit
 class LoaderView: UIView {
 
     private let activityIndicator: UIActivityIndicatorView = {
-        return UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+        return UIActivityIndicatorView(activityIndicatorStyle: .White)
     }()
 
     private let backgroundView: RoundedView = {
         let view = RoundedView()
-        view.cornerRadius = 10
+        view.cornerRadius = 20
         view.backgroundColor = UIColor(white: 0, alpha: 0.7)
         return view
     }()
@@ -40,8 +40,8 @@ extension LoaderView: UIBuilder {
     func configureConstraints() {
         fillInSuperView()
         backgroundView.centerInSuperView()
-        backgroundView.setWidth(equalToConstant: 100)
-        backgroundView.setHeight(equalToConstant: 70)
+        backgroundView.setWidth(equalToConstant: 40)
+        backgroundView.setHeight(equalToConstant: 40)
         activityIndicator.centerInSuperView()
     }
 
