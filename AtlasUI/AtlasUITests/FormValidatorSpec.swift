@@ -47,7 +47,7 @@ class FormValidatorSpec: QuickSpec {
             }
 
             it("Should check on Pattern") {
-                let validator = FormValidator.Pattern(pattern: "^[' \\w-]+$")
+                let validator = FormValidator.Pattern(pattern: FormValidator.namePattern, errorMessage: "Form.validation.pattern.name")
                 expect(validator.errorMessage("John", localizer: localizer)).to(beNil())
                 expect(validator.errorMessage("John Doe", localizer: localizer)).to(beNil())
                 expect(validator.errorMessage("John-Doe", localizer: localizer)).to(beNil())

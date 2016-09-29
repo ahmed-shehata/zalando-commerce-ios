@@ -71,7 +71,9 @@
 "Form.validation.minLength: %@" = "Min length is %@";
 "Form.validation.maxLength: %@" = "Max length is %@";
 "Form.validation.exactLength: %@" = "Required length is %@";
-"Form.validation.pattern" = "Invalid value";
+"Form.validation.pattern.name" = "Only letters, spaces and hyphens are allowed";
+"Form.validation.pattern.city" = "Only letters, numbers, spaces and -,;()' are allowed";
+"Form.validation.pattern.street" = "Must contains letters and numbers";
 "Form.validation.numbersOnly" = "Only numbers are allowed";
 "Address.validation.notValid" = "Address not valid, please check the address";
 
