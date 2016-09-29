@@ -47,13 +47,13 @@ class FormValidatorSpec: QuickSpec {
             }
 
             it("Should check on Pattern") {
-                let validator = FormValidator.Pattern(pattern: "^[' \\w-]+$")
+                let validator = FormValidator.Pattern(pattern: FormValidator.namePattern, errorMessage: "Form.validation.pattern.name")
                 expect(validator.errorMessage("John", localizer: localizer)).to(beNil())
                 expect(validator.errorMessage("John Doe", localizer: localizer)).to(beNil())
                 expect(validator.errorMessage("John-Doe", localizer: localizer)).to(beNil())
                 expect(validator.errorMessage("", localizer: localizer)).to(beNil())
                 expect(validator.errorMessage(nil, localizer: localizer)).to(beNil())
-                expect(validator.errorMessage("John*Doe", localizer: localizer)).to(equal("Invalid value"))
+                expect(validator.errorMessage("John*Doe", localizer: localizer)).to(equal("Please only use the characters (A-z) in this field"))
             }
 
             it("Should check on NumbersOnly") {
