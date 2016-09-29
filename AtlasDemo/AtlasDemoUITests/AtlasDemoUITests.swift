@@ -96,6 +96,15 @@ class AtlasDemoUITests: XCTestCase {
         tapBuyNow("Lamica")
         waitForElementToAppearAndTap(size)
         tapConnectAndLogin()
+
+        app.otherElements["shipping-stack-view"].tap()
+        deleteAddresses()
+        changeShippingAddress()
+        changeBillingAddress()
+
+        tapPlaceOrder()
+        tapBackToShop()
+
     }
 
     func testEditAddress() {
@@ -103,6 +112,31 @@ class AtlasDemoUITests: XCTestCase {
         app.otherElements["shipping-stack-view"].tap()
         editAddress()
         app.buttons["navigation-bar-cancel-button"].tap()
+    }
+
+    func testToC() {
+        let size = app.cells["size-cell-1"]
+        let webView = app.otherElements["toc-webview"]
+        tapBuyNow("Lamica")
+        waitForElementToAppearAndTap(size)
+        app.buttons["checkout-summary-toc-button"].tap()
+        waitForElementToAppearAndTap(webView)
+    }
+
+    func testPickupPoints() {
+        proceedToSummaryWithSizes()
+        app.otherElements["shipping-stack-view"].tap()
+
+        let shippingPredicate = NSPredicate(format: "count == 4")
+        expectationForPredicate(shippingPredicate, evaluatedWithObject: app.tables.cells, handler: nil)
+        waitForExpectationsWithTimeout(5, handler: nil)
+
+        app.navigationBars["address-picker-navigation-bar"].buttons["Back"].tap()
+        app.otherElements["billing-stack-view"].tap()
+
+        let billingPredicate = NSPredicate(format: "count == 3")
+        expectationForPredicate(billingPredicate, evaluatedWithObject: app.tables.cells, handler: nil)
+        waitForExpectationsWithTimeout(5, handler: nil)
     }
 
     private func proceedToSummaryWithSizes() {

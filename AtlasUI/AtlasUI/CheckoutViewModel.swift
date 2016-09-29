@@ -66,7 +66,7 @@ extension CheckoutViewModel {
     }
 
     var selectedUnit: Article.Unit {
-        return article.units[selectedArticleUnit.selectedUnitIndex]
+        return article.availableUnits[selectedArticleUnit.selectedUnitIndex]
     }
 
     var selectedUnitIndex: Int {
@@ -93,7 +93,7 @@ extension CheckoutViewModel {
         if customer == nil {
             return .NotLoggedIn
         }
-        return (checkout == nil || checkout?.payment.selected?.method == nil) ? .CheckoutIncomplete : .LoggedIn
+        return (checkout?.payment.selected?.method == nil) ? .CheckoutIncomplete : .LoggedIn
     }
 
 }

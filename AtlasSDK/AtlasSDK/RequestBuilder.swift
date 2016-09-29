@@ -60,6 +60,9 @@ struct RequestBuilder {
 
         self.urlSession.dataTaskWithRequest(request) { response in
             (self.responseData, self.response, self.responseError) = response
+            if NSProcessInfo.processInfo().arguments.contains("PRINT_REQUEST_DESCRIPTION") {
+                print(self.description)
+            }
             ResponseParser(taskResponse: response).parse(completion)
         }.resume()
     }
@@ -80,25 +83,25 @@ extension RequestBuilder: CustomStringConvertible {
 
         var desc = ""
         if let request = request {
-            desc += "REQUEST:\n"
-            desc += "\(request.HTTPMethod) \(request.URL!)\n\n" // swiftlint:disable:this force_unwrapping
+            desc += "\nREQUEST:\n"
+            desc += "Method: \(request.HTTPMethod ?? ""), URL: \(request.URL!)\n" // swiftlint:disable:this force_unwrapping
             request.allHTTPHeaderFields?.forEach { key, val in
-                desc += "\(key): \(val)"
+                desc += "\(key): \(val)\n"
             }
             if let bodyData = request.HTTPBody, body = String(data: bodyData, encoding: NSUTF8StringEncoding) {
-                desc += "\n\(body)"
+                desc += "\n\(body.newLineFreeString)"
             }
         } else {
             desc += "<NO REQUEST DATA>\n"
         }
 
         if let response = self.response as? NSHTTPURLResponse {
-            desc += "RESPONSE:\n"
+            desc += "\nRESPONSE:\n"
             response.allHeaderFields.forEach { key, val in
-                desc += "\(key): \(val)"
+                desc += "\(key): \(val)\n"
             }
             if let bodyData = responseData, body = String(data: bodyData, encoding: NSUTF8StringEncoding) {
-                desc += "\n\(body)"
+                desc += "\n\(body.newLineFreeString)"
             }
         } else {
             desc += "<NO RESPONSE DATA>\n"
