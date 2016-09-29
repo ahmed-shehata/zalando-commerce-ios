@@ -72,12 +72,12 @@ extension SizeListSelectionViewController: UIBuilder {
 extension SizeListSelectionViewController: UITableViewDataSource {
 
     internal func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return article.units.count
+        return article.availableUnits.count
     }
 
     internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         return tableView.dequeueReusableCell(UnitSizeTableViewCell.self, forIndexPath: indexPath) { cell in
-            let unit = self.article.units[indexPath.item]
+            let unit = self.article.availableUnits[indexPath.item]
             cell.configureData(UnitSizeTableViewCellViewModel(unit: unit, localizer: self.localizer))
             cell.accessibilityIdentifier = "size-cell-\(indexPath.row)"
             return cell
