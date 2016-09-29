@@ -29,7 +29,7 @@ extension AtlasAPIError: UserPresentable {
 
     func message(localizedWith provider: LocalizerProviderType, formatArguments: CVarArgType?...) -> String {
         switch self {
-        case .invalidResponseFormat, .noData, .unauthorized:
+        case .invalidResponseFormat, .noData, .outOfStock, .unauthorized:
             return provider.localizer.localizedString(self.localizedDescriptionKey)
         case let .nsURLError(code, details):
             return "\(details) (#\(code))"

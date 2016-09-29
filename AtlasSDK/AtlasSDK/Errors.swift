@@ -27,6 +27,7 @@ public enum AtlasConfigurationError: AtlasErrorType {
 public enum AtlasAPIError: AtlasErrorType {
 
     case noData
+    case outOfStock
     case invalidResponseFormat
     case unauthorized
 
