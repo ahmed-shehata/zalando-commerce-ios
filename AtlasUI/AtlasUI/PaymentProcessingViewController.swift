@@ -25,7 +25,7 @@ internal final class PaymentProcessingViewController: UIViewController, Checkout
 
     internal override func viewDidLoad() {
         super.viewDidLoad()
-        title = loc("Payment")
+        title = UILocalizer.string("Payment")
         view.backgroundColor = UIColor.clearColor()
         view.opaque = false
         setupBlur()
@@ -40,7 +40,7 @@ internal final class PaymentProcessingViewController: UIViewController, Checkout
 
         self.checkout.client.createOrder(checkout.id) { result in
 
-            guard let order = result.success(errorHandlingType: .GeneralError(userMessage: self.userMessage)) else { return }
+            guard let order = result.success() else { return }
             guard let paymentURL = order.externalPaymentURL else {
                 return self.showSuccessImage()
             }
@@ -78,7 +78,7 @@ internal final class PaymentProcessingViewController: UIViewController, Checkout
     }
 
     private func showSuccessImage() {
-        let doneButton = UIBarButtonItem(title: loc("Done"), style: UIBarButtonItemStyle.Plain,
+        let doneButton = UIBarButtonItem(title: UILocalizer.string("Done"), style: UIBarButtonItemStyle.Plain,
             target: self, action: #selector(PaymentProcessingViewController.doneButtonTapped(_:)))
 
         Async.main {

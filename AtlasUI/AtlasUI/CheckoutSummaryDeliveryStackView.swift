@@ -39,23 +39,23 @@ extension CheckoutSummaryDeliveryStackView: UIBuilder {
 
 extension CheckoutSummaryDeliveryStackView: UIDataBuilder {
 
-    typealias T = CheckoutSummaryViewController
+    typealias T = CheckoutViewModel
 
     func configureData(viewModel: T) {
-        guard let delivery = viewModel.checkoutViewModel.checkout?.delivery else {
+        guard let delivery = viewModel.checkout?.delivery else {
             deliveryTitleLabel.text = ""
             deliveryValueLabel.text = ""
             return
         }
 
-        deliveryTitleLabel.text = viewModel.loc("estimated.delivery.title")
-        if let
-            earliest = delivery.earliest,
-            earliestDateFormatted = viewModel.localizer.fmtDate(earliest),
-            latestDateFormatted = viewModel.localizer.fmtDate(delivery.latest) {
-            deliveryValueLabel.text = earliestDateFormatted + " - " + latestDateFormatted
+        deliveryTitleLabel.text = UILocalizer.string("estimated.delivery.title")
+
+        if let earliest = delivery.earliest,
+            earliestDateFormatted = UILocalizer.date(earliest),
+            latestDateFormatted = UILocalizer.date(delivery.latest) {
+                deliveryValueLabel.text = earliestDateFormatted + " - " + latestDateFormatted
         } else {
-            deliveryValueLabel.text = viewModel.localizer.fmtDate(delivery.latest)
+                deliveryValueLabel.text = UILocalizer.date(delivery.latest)
         }
     }
 

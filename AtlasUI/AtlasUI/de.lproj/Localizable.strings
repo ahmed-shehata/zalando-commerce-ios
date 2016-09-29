@@ -76,5 +76,5 @@
 "Form.validation.numbersOnly" = "Bitte nur Nummern eintragen";
 "Address.validation.notValid" = "Adresse nicht bekannt, bitte überprüfe sie.";
 
-"Error.general.title" = "Oops";
-"Error.general.message" = "Sorry, Something went wrong";
+"Error.unclasified.title" = "Oops";
+"Error.unclasified.message" = "Sorry, Something went wrong";

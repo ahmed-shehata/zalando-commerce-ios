@@ -38,12 +38,13 @@ final public class AtlasCheckout {
 
             case .success(let client):
                 let checkout = AtlasCheckout(client: client)
-                let localizer = UILocalizer(localeIdentifier: client.config.locale.localeIdentifier,
+                let localizer = UILocalizer(localeIdentifier: client.config.interfaceLocale.localeIdentifier,
                     localizedStringsBundle: NSBundle(forClass: AtlasCheckout.self))
 
                 Atlas.register { OAuth2AuthorizationHandler(loginURL: client.config.loginURL) as AuthorizationHandler }
                 Atlas.register { localizer }
                 Atlas.register { client }
+                Atlas.register { checkout }
 
                 completion(.success(checkout))
             }
@@ -61,24 +62,28 @@ final public class AtlasCheckout {
         viewController.presentViewController(navigationController, animated: true, completion: nil)
     }
 
-    private func prepareCheckoutViewModel(selectedArticleUnit: SelectedArticleUnit, checkoutViewModel: CheckoutViewModel? = nil,
+    func createCheckoutViewModel(fromModel checkoutViewModel: CheckoutViewModel,
         completion: CreateCheckoutViewModelCompletion) {
-            client.createCheckout(withSelectedArticleUnit: selectedArticleUnit,
-                billingAddressId: checkoutViewModel?.selectedBillingAddress?.id,
-                shippingAddressId: checkoutViewModel?.selectedShippingAddress?.id) { checkoutResult in
-                    switch checkoutResult {
-                    case .failure(let error):
-                        if case let AtlasAPIError.checkoutFailed(_, cartId, _) = error {
-                            let checkoutModel = CheckoutViewModel(selectedArticleUnit: selectedArticleUnit, cartId: cartId)
-                            completion(.success(checkoutModel))
-                        } else {
-                            completion(.failure(error))
-                        }
+            createCheckoutViewModel(forArticleUnit: checkoutViewModel.selectedArticleUnit,
+                addresses: checkoutViewModel.selectedAddresses, completion: completion)
+    }
 
-                    case .success(let checkout):
-                        let checkoutModel = CheckoutViewModel(selectedArticleUnit: selectedArticleUnit, checkout: checkout)
+    func createCheckoutViewModel(forArticleUnit selectedArticleUnit: SelectedArticleUnit, addresses: CheckoutAddresses? = nil,
+        completion: CreateCheckoutViewModelCompletion) {
+            client.createCheckout(for: selectedArticleUnit, addresses: addresses) { result in
+                switch result {
+                case .failure(let error):
+                    if case let AtlasAPIError.checkoutFailed(_, cartId, _) = error {
+                        let checkoutModel = CheckoutViewModel(selectedArticleUnit: selectedArticleUnit, cartId: cartId)
                         completion(.success(checkoutModel))
+                    } else {
+                        completion(.failure(error))
                     }
+
+                case .success(let checkout):
+                    let checkoutModel = CheckoutViewModel(selectedArticleUnit: selectedArticleUnit, checkout: checkout)
+                    completion(.success(checkoutModel))
+                }
             }
     }
 

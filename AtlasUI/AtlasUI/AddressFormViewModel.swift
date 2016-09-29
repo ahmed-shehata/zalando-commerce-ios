@@ -44,20 +44,20 @@ class AddressFormViewModel {
         city = equatableAddress.city
     }
 
-    internal func titles(localizer: Localizer) -> [String] {
-        return ["", Gender.male.title(localizer), Gender.female.title(localizer)]
+    internal var titles: [String] {
+        return ["", Gender.male.title, Gender.female.title]
     }
 
-    internal func updateTitle(localizedGenderText: String?, localizer: Localizer) {
+    internal func updateTitle(localizedGenderText: String?) {
         switch localizedGenderText {
-        case Gender.male.title(localizer)?: gender = .male
-        case Gender.female.title(localizer)?: gender = .female
+        case Gender.male.title?: gender = .male
+        case Gender.female.title?: gender = .female
         default: gender = nil
         }
     }
 
-    internal func localizedTitle(localizer: Localizer) -> String? {
-        return gender?.title(localizer)
+    internal func localizedTitle() -> String? {
+        return gender?.title
     }
 
 }
@@ -67,7 +67,7 @@ extension CreateAddressRequest {
     internal init? (addressFormViewModel: AddressFormViewModel) {
 
         guard let
-            gender = addressFormViewModel.gender,
+        gender = addressFormViewModel.gender,
             firstName = addressFormViewModel.firstName,
             lastName = addressFormViewModel.lastName,
             zip = addressFormViewModel.zip,
@@ -93,7 +93,7 @@ extension UpdateAddressRequest {
     internal init? (addressFormViewModel: AddressFormViewModel) {
 
         guard let
-            gender = addressFormViewModel.gender,
+        gender = addressFormViewModel.gender,
             firstName = addressFormViewModel.firstName,
             lastName = addressFormViewModel.lastName,
             zip = addressFormViewModel.zip,
@@ -131,7 +131,7 @@ extension PickupPoint {
     internal init? (addressFormViewModel: AddressFormViewModel) {
 
         guard let
-            pickupPointId = addressFormViewModel.pickupPointId,
+        pickupPointId = addressFormViewModel.pickupPointId,
             pickupPointMemberId = addressFormViewModel.pickupPointMemberId else { return nil }
 
         self.id = pickupPointId
@@ -146,7 +146,7 @@ extension CheckAddress {
     internal init? (addressFormViewModel: AddressFormViewModel) {
 
         guard let
-            zip = addressFormViewModel.zip,
+        zip = addressFormViewModel.zip,
             city = addressFormViewModel.city else { return nil }
 
         self.street = addressFormViewModel.street
@@ -160,8 +160,8 @@ extension CheckAddress {
 
 extension Gender {
 
-    private func title(localizer: Localizer) -> String {
-        return localizer.loc("Address.form.gender.\(rawValue.lowercaseString)")
+    private var title: String {
+        return UILocalizer.string("Address.form.gender.\(rawValue.lowercaseString)")
     }
 
 }

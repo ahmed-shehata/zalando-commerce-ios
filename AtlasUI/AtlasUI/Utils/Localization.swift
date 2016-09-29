@@ -16,16 +16,12 @@ protocol Localizer {
 
 extension Localizer {
 
-    func string(key: String, formatArguments: [CVarArgType?]? = nil) -> String {
-        return string(key, formatArguments: formatArguments)
-    }
-
     static var instance: Localizer {
         return (try? Atlas.provide() as Localizer) ?? UILocalizer(localeIdentifier: "en_US", localizedStringsBundle: NSBundle.mainBundle())
     }
 
-    static func str(key: String, formatArguments: [CVarArgType?]? = nil) -> String {
-        return instance.string(key, formatArguments: formatArguments)
+    static func string(key: String, _ formatArguments: Any?...) -> String {
+        return "" // TODO: return instance.string(key, formatArguments: formatArguments)
     }
 
     static func price(price: NSNumber) -> String? {
@@ -34,6 +30,10 @@ extension Localizer {
 
     static func date(date: NSDate) -> String? {
         return instance.date(date)
+    }
+
+    static func countryName(forCountryCode countryCode: String?) -> String? {
+        return instance.countryName(forCountryCode: countryCode)
     }
 
 }

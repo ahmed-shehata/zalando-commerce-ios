@@ -7,20 +7,20 @@ import AtlasSDK
 
 protocol UserPresentable: AtlasErrorType {
 
-    func title(localizedWith provider: Localizer, formatArguments: CVarArgType?...) -> String
+    func title(formatArguments: Any?...) -> String
 
-    func message(localizedWith provider: Localizer, formatArguments: CVarArgType?...) -> String
+    func message(formatArguments: Any?...) -> String
 
 }
 
 extension UserPresentable {
 
-    func title(localizedWith localizer: Localizer, formatArguments: CVarArgType?...) -> String {
-        return localizer.string("\(self.dynamicType).title", formatArguments: formatArguments)
+    func title(formatArguments: Any?...) -> String {
+        return UILocalizer.string("\(self.dynamicType).title", formatArguments)
     }
 
-    func message(localizedWith localizer: Localizer, formatArguments: CVarArgType?...) -> String {
-        return localizer.string(self.localizedDescriptionKey, formatArguments: formatArguments)
+    func message(formatArguments: Any?...) -> String {
+        return UILocalizer.string(self.localizedDescriptionKey, formatArguments)
     }
 
 }
@@ -30,7 +30,7 @@ extension AtlasAPIError: UserPresentable {
     func message(localizedWith localizer: Localizer, formatArguments: CVarArgType?...) -> String {
         switch self {
         case .invalidResponseFormat, .noData, .unauthorized:
-            return localizer.string(self.localizedDescriptionKey)
+            return UILocalizer.string(self.localizedDescriptionKey)
         case let .nsURLError(code, details):
             return "\(details) (#\(code))"
         case let .http(status, details):
@@ -41,7 +41,7 @@ extension AtlasAPIError: UserPresentable {
             if case let AtlasAPIError.backend(_, _, _, details) = error {
                 return "\(details~?)"
             } else {
-                return localizer.string("AtlasAPIError.message.checkoutFailed")
+                return UILocalizer.string("AtlasAPIError.message.checkoutFailed")
             }
         }
     }
@@ -50,10 +50,10 @@ extension AtlasAPIError: UserPresentable {
 
 extension LoginError: UserPresentable {
 
-    func message(localizedWith localizer: Localizer, formatArguments: CVarArgType?...) -> String {
+    func message(formatArguments: CVarArgType?...) -> String {
         switch self {
         case .missingURL, .accessDenied, .missingViewControllerToShowLoginForm:
-            return localizer.string(self.localizedDescriptionKey)
+            return UILocalizer.string(self.localizedDescriptionKey)
         case let .requestFailed(error):
             return "\(error?.localizedDescription~?)"
         }

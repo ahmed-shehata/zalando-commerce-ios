@@ -38,14 +38,14 @@ enum AddressFormField: String {
         return "\(rawValue.lowercaseString)-textfield"
     }
 
-    func title(localizer: Localizer) -> String {
-        let title = localizer.loc("Address.form.\(rawValue.lowercaseString)")
+    var title: String {
+        let title = UILocalizer.string("Address.form.\(rawValue.lowercaseString)")
         return title + (formValidators.contains { $0 == .Required } ? "*" : "")
     }
 
-    func value(viewModel: AddressFormViewModel, localizer: Localizer) -> String? {
+    func value(viewModel: AddressFormViewModel) -> String? {
         switch self {
-        case .Title: return viewModel.localizedTitle(localizer)
+        case .Title: return viewModel.localizedTitle()
         case .FirstName: return viewModel.firstName
         case .LastName: return viewModel.lastName
         case .Street: return viewModel.street
@@ -54,13 +54,13 @@ enum AddressFormField: String {
         case .MemberID: return viewModel.pickupPointMemberId
         case .Zipcode: return viewModel.zip
         case .City: return viewModel.city
-        case .Country: return localizer.localizer.countryName(forCountryCode: viewModel.countryCode)
+        case .Country: return UILocalizer.countryName(forCountryCode: viewModel.countryCode)
         }
     }
 
-    func updateModel(viewModel: AddressFormViewModel, withValue value: String?, localizer: Localizer) {
+    func updateModel(viewModel: AddressFormViewModel, withValue value: String?) {
         switch self {
-        case .Title: viewModel.updateTitle(value, localizer: localizer)
+        case .Title: viewModel.updateTitle(value)
         case .FirstName: viewModel.firstName = value
         case .LastName: viewModel.lastName = value
         case .Street: viewModel.street = value
@@ -74,10 +74,7 @@ enum AddressFormField: String {
     }
 
     func isActive() -> Bool {
-        switch self {
-        case .Country: return false
-        default: return true
-        }
+        return self != .Country
     }
 
     func returnKeyDismissKeyboard() -> Bool {
@@ -87,11 +84,11 @@ enum AddressFormField: String {
         }
     }
 
-    func customView(viewModel: AddressFormViewModel, localizer: Localizer, completion: TextFieldChangedHandler) -> UIView? {
+    func customView(viewModel: AddressFormViewModel, completion: TextFieldChangedHandler) -> UIView? {
         switch self {
         case .Title:
-            let titles = viewModel.titles(localizer)
-            let currentTitle = value(viewModel, localizer: localizer) ?? ""
+            let titles = viewModel.titles
+            let currentTitle = value(viewModel) ?? ""
             let currentTitleIdx = titles.indexOf(currentTitle) ?? 0
             return PickerKeyboardInputView(pickerData: titles, startingValueIndex: currentTitleIdx, completion: completion)
         default:

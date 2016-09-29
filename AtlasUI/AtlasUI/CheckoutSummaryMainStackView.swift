@@ -133,28 +133,28 @@ extension CheckoutSummaryMainStackView: UIBuilder {
 
 extension CheckoutSummaryMainStackView: UIDataBuilder {
 
-    typealias T = CheckoutSummaryViewController
+    typealias T = CheckoutSummaryViewController // TODO: create separated view model
 
     func configureData(viewModel: T) {
-        productStackView.configureData(viewModel)
-        priceStackView.configureData(viewModel)
-        deliveryStackView.configureData(viewModel)
+        productStackView.configureData(viewModel.checkoutViewModel)
+        priceStackView.configureData(viewModel.checkoutViewModel)
+        deliveryStackView.configureData(viewModel.checkoutViewModel)
         priceStackView.hidden = !viewModel.viewState.showPrice
 
         shippingAddressStackView.configureData(CheckoutSummaryAddressViewModel(
-            title: viewModel.loc("Address.Shipping"),
-            addressLines: viewModel.checkoutViewModel.shippingAddress(localizedWith: viewModel),
+            title: UILocalizer.string("Address.Shipping"),
+            addressLines: viewModel.checkoutViewModel.shippingAddress,
             showArrow: viewModel.viewState.showDetailArrow)
         )
 
         billingAddressStackView.configureData(CheckoutSummaryAddressViewModel(
-            title: viewModel.loc("Address.Billing"),
-            addressLines: viewModel.checkoutViewModel.billingAddress(localizedWith: viewModel),
+            title: UILocalizer.string("Address.Billing"),
+            addressLines: viewModel.checkoutViewModel.billingAddress,
             showArrow: viewModel.viewState.showDetailArrow)
         )
 
         paymentStackView.configureData(CheckoutSummaryPaymentViewModel(
-            title: viewModel.loc("Payment"),
+            title: UILocalizer.string("Payment"),
             value: viewModel.checkoutViewModel.selectedPaymentMethod ?? "",
             showArrow: viewModel.viewState.showDetailArrow)
         )
