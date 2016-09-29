@@ -7,16 +7,12 @@ import Foundation
 public protocol AtlasErrorType: ErrorType {
 
     var localizedDescriptionKey: String { get }
-    func shouldDisplayGeneralMessage() -> Bool
-    func shouldCancelCheckout() -> Bool
 
 }
 
 public extension AtlasErrorType {
 
     var localizedDescriptionKey: String { return "\(self.dynamicType).message.\(self)" }
-    func shouldDisplayGeneralMessage() -> Bool { return true }
-    func shouldCancelCheckout() -> Bool { return false }
 
 }
 
@@ -45,17 +41,5 @@ public enum AtlasAPIError: AtlasErrorType {
 public enum AtlasCatalogError: AtlasErrorType {
 
     case outOfStock
-
-    public func shouldDisplayGeneralMessage() -> Bool {
-        switch self {
-        case .outOfStock: return false
-        }
-    }
-
-    public func shouldCancelCheckout() -> Bool {
-        switch self {
-        case .outOfStock: return true
-        }
-    }
 
 }
