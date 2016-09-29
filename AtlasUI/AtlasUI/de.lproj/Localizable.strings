@@ -68,15 +68,15 @@
 "Address.prefix.memberID" = "PostNummer";
 "Address.prefix.packstation.abbreviation" = "P.S.";
 
-"Form.validation.required" = "This field is required";
-"Form.validation.minLength: %@" = "Min length is %@";
-"Form.validation.maxLength: %@" = "Max length is %@";
-"Form.validation.exactLength: %@" = "Required length is %@";
+"Form.validation.required" = "Dies ist ein Pflichtfeld";
+"Form.validation.minLength: %@" = "Eingabe muss mind. %@ Zeichen lang sein";
+"Form.validation.maxLength: %@" = "Eingabe darf max. %@ Zeichen lang sein";
+"Form.validation.exactLength: %@" = "Eingabe muss %@ Zeichen lang sein";
 "Form.validation.pattern.name" = "Only letters, spaces and hyphens are allowed";
 "Form.validation.pattern.city" = "Only letters, numbers, spaces and -,;()' are allowed";
 "Form.validation.pattern.street" = "Must contains letters and numbers";
-"Form.validation.numbersOnly" = "Only numbers are allowed";
-"Address.validation.notValid" = "Address not valid, please check the address";
+"Form.validation.numbersOnly" = "Bitte nur Nummern eintragen";
+"Address.validation.notValid" = "Adresse nicht bekannt, bitte überprüfe sie.";
 
 "Error.general.title" = "Oops";
 "Error.general.message" = "Sorry, Something went wrong";
