@@ -7,19 +7,19 @@ import AtlasSDK
 
 protocol UserPresentable: AtlasErrorType {
 
-    func title(formatArguments: Any?...) -> String
+    func title(formatArguments: CVarArgType?...) -> String
 
-    func message(formatArguments: Any?...) -> String
+    func message(formatArguments: CVarArgType?...) -> String
 
 }
 
 extension UserPresentable {
 
-    func title(formatArguments: Any?...) -> String {
+    func title(formatArguments: CVarArgType?...) -> String {
         return UILocalizer.string("\(self.dynamicType).title", formatArguments)
     }
 
-    func message(formatArguments: Any?...) -> String {
+    func message(formatArguments: CVarArgType?...) -> String {
         return UILocalizer.string(self.localizedDescriptionKey, formatArguments)
     }
 
@@ -27,7 +27,7 @@ extension UserPresentable {
 
 extension AtlasAPIError: UserPresentable {
 
-    func message(localizedWith localizer: Localizer, formatArguments: CVarArgType?...) -> String {
+    func message(formatArguments: CVarArgType?...) -> String {
         switch self {
         case .invalidResponseFormat, .noData, .unauthorized:
             return UILocalizer.string(self.localizedDescriptionKey)

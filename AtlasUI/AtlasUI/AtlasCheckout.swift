@@ -42,7 +42,7 @@ final public class AtlasCheckout {
                     localizedStringsBundle: NSBundle(forClass: AtlasCheckout.self))
 
                 Atlas.register { OAuth2AuthorizationHandler(loginURL: client.config.loginURL) as AuthorizationHandler }
-                Atlas.register { localizer }
+                Atlas.register { localizer as Localizer }
                 Atlas.register { client }
                 Atlas.register { checkout }
 

@@ -20,8 +20,12 @@ extension Localizer {
         return (try? Atlas.provide() as Localizer) ?? UILocalizer(localeIdentifier: "en_US", localizedStringsBundle: NSBundle.mainBundle())
     }
 
-    static func string(key: String, _ formatArguments: Any?...) -> String {
-        return "" // TODO: return instance.string(key, formatArguments: formatArguments)
+    static func string(key: String, _ formatArguments: [CVarArgType?]) -> String {
+        return string(key, formatArguments)
+    }
+
+    static func string(key: String, _ formatArguments: CVarArgType?...) -> String {
+        return instance.string(key, formatArguments: formatArguments)
     }
 
     static func price(price: NSNumber) -> String? {
@@ -63,7 +67,7 @@ struct UILocalizer: Localizer {
         return locale.displayNameForKey(NSLocaleCountryCode, value: countryCode)
     }
 
-    func string(key: String, formatArguments: [CVarArgType?]?) -> String {
+    func string(key: String, formatArguments: [CVarArgType?]? = nil) -> String {
         let localizedString = NSLocalizedString(key, bundle: self.localizedStringsBundle, comment: "")
 
         guard let formatArguments = formatArguments where !formatArguments.isEmpty else {
