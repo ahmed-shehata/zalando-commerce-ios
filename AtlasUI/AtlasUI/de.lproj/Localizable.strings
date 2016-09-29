@@ -72,9 +72,9 @@
 "Form.validation.minLength: %@" = "Eingabe muss mind. %@ Zeichen lang sein";
 "Form.validation.maxLength: %@" = "Eingabe darf max. %@ Zeichen lang sein";
 "Form.validation.exactLength: %@" = "Eingabe muss %@ Zeichen lang sein";
-"Form.validation.pattern.name" = "Only letters, spaces and hyphens are allowed";
-"Form.validation.pattern.city" = "Only letters, numbers, spaces and -,;()' are allowed";
-"Form.validation.pattern.street" = "Must contains letters and numbers";
+"Form.validation.pattern.name" = "Bitte in diesem Feld nur die Zeichen (A-z) eingeben.";
+"Form.validation.pattern.city" = "Bitte in diesem Feld nur die Zeichen (A-z) eingeben.";
+"Form.validation.pattern.street" = "Bitte Straße und Hausnummer eingeben.";
 "Form.validation.numbersOnly" = "Bitte nur Nummern eintragen";
 "Address.validation.notValid" = "Adresse nicht bekannt, bitte überprüfe sie.";
 
