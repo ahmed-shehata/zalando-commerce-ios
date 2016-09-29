@@ -142,19 +142,19 @@ extension CheckoutSummaryMainStackView: UIDataBuilder {
         priceStackView.hidden = !viewModel.viewState.showPrice
 
         shippingAddressStackView.configureData(CheckoutSummaryAddressViewModel(
-            title: UILocalizer.string("Address.Shipping"),
+            title: Localizer.string("Address.Shipping"),
             addressLines: viewModel.checkoutViewModel.shippingAddress,
             showArrow: viewModel.viewState.showDetailArrow)
         )
 
         billingAddressStackView.configureData(CheckoutSummaryAddressViewModel(
-            title: UILocalizer.string("Address.Billing"),
+            title: Localizer.string("Address.Billing"),
             addressLines: viewModel.checkoutViewModel.billingAddress,
             showArrow: viewModel.viewState.showDetailArrow)
         )
 
         paymentStackView.configureData(CheckoutSummaryPaymentViewModel(
-            title: UILocalizer.string("Payment"),
+            title: Localizer.string("Payment"),
             value: viewModel.checkoutViewModel.selectedPaymentMethod ?? "",
             showArrow: viewModel.viewState.showDetailArrow)
         )

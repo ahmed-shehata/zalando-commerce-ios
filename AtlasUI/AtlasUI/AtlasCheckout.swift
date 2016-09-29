@@ -38,11 +38,11 @@ final public class AtlasCheckout {
 
             case .success(let client):
                 let checkout = AtlasCheckout(client: client)
-                let localizer = UILocalizer(localeIdentifier: client.config.interfaceLocale.localeIdentifier,
+                let localizer = Localizer(localeIdentifier: client.config.interfaceLocale.localeIdentifier,
                     localizedStringsBundle: NSBundle(forClass: AtlasCheckout.self))
 
                 Atlas.register { OAuth2AuthorizationHandler(loginURL: client.config.loginURL) as AuthorizationHandler }
-                Atlas.register { localizer as Localizer }
+                Atlas.register { localizer }
                 Atlas.register { client }
                 Atlas.register { checkout }
 

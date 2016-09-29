@@ -25,7 +25,7 @@ internal final class PaymentProcessingViewController: UIViewController, Checkout
 
     internal override func viewDidLoad() {
         super.viewDidLoad()
-        title = UILocalizer.string("Payment")
+        title = Localizer.string("Payment")
         view.backgroundColor = UIColor.clearColor()
         view.opaque = false
         setupBlur()
@@ -78,7 +78,7 @@ internal final class PaymentProcessingViewController: UIViewController, Checkout
     }
 
     private func showSuccessImage() {
-        let doneButton = UIBarButtonItem(title: UILocalizer.string("Done"), style: UIBarButtonItemStyle.Plain,
+        let doneButton = UIBarButtonItem(title: Localizer.string("Done"), style: UIBarButtonItemStyle.Plain,
             target: self, action: #selector(PaymentProcessingViewController.doneButtonTapped(_:)))
 
         Async.main {

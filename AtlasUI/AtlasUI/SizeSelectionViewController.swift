@@ -80,7 +80,7 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
         checkout.client.article(forSKU: sku) { [weak self] result in
             guard let strongSelf = self, article = result.success() else { return }
             strongSelf.displaySizes(forArticle: article)
-            strongSelf.title = UILocalizer.string("Pick a size")
+            strongSelf.title = Localizer.string("Pick a size")
         }
     }
 

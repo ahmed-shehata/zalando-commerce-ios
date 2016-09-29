@@ -5,49 +5,17 @@
 import Foundation
 import AtlasSDK
 
-protocol Localizer {
-
-    func countryName(forCountryCode countryCode: String?) -> String?
-    func string(key: String, formatArguments: [CVarArgType?]?) -> String
-    func price(price: NSNumber) -> String?
-    func date(date: NSDate) -> String?
-
-}
-
-extension Localizer {
-
-    static var instance: Localizer {
-        return (try? Atlas.provide() as Localizer) ?? UILocalizer(localeIdentifier: "en_US", localizedStringsBundle: NSBundle.mainBundle())
-    }
-
-    static func string(key: String, _ formatArguments: [CVarArgType?]) -> String {
-        return string(key, formatArguments)
-    }
-
-    static func string(key: String, _ formatArguments: CVarArgType?...) -> String {
-        return instance.string(key, formatArguments: formatArguments)
-    }
-
-    static func price(price: NSNumber) -> String? {
-        return instance.price(price)
-    }
-
-    static func date(date: NSDate) -> String? {
-        return instance.date(date)
-    }
-
-    static func countryName(forCountryCode countryCode: String?) -> String? {
-        return instance.countryName(forCountryCode: countryCode)
-    }
-
-}
-
-struct UILocalizer: Localizer {
+struct Localizer {
 
     private let locale: NSLocale
     private let priceFormatter: NSNumberFormatter
     private let dateFormatter: NSDateFormatter
     private let localizedStringsBundle: NSBundle
+
+    init(localeIdentifier: String) {
+        self.init(localeIdentifier: localeIdentifier,
+            localizedStringsBundle: NSBundle(forClass: AtlasCheckout.self))
+    }
 
     init(localeIdentifier: String, localizedStringsBundle: NSBundle) {
         self.locale = NSLocale(localeIdentifier: localeIdentifier)
@@ -83,6 +51,34 @@ struct UILocalizer: Localizer {
 
     func date(date: NSDate) -> String? {
         return dateFormatter.stringFromDate(date)
+    }
+
+}
+
+extension Localizer {
+
+    private static var instance: Localizer {
+        return (try? Atlas.provide() as Localizer) ?? Localizer(localeIdentifier: "en_US", localizedStringsBundle: NSBundle.mainBundle())
+    }
+
+    static func string(key: String, _ formatArguments: [CVarArgType?]) -> String {
+        return string(key, formatArguments)
+    }
+
+    static func string(key: String, _ formatArguments: CVarArgType?...) -> String {
+        return instance.string(key, formatArguments: formatArguments)
+    }
+
+    static func price(price: NSNumber) -> String? {
+        return instance.price(price)
+    }
+
+    static func date(date: NSDate) -> String? {
+        return instance.date(date)
+    }
+
+    static func countryName(forCountryCode countryCode: String?) -> String? {
+        return instance.countryName(forCountryCode: countryCode)
     }
 
 }

@@ -135,7 +135,7 @@ extension AddressPickerViewController {
                 return
             }
 
-            let title = UILocalizer.string("Address.Add.type.title")
+            let title = Localizer.string("Address.Add.type.title")
             let standardAction = ButtonAction(text: "Address.Add.type.standard", style: .Default) { (UIAlertAction) in
                 strongSelf.showCreateAddress(.StandardAddress)
             }

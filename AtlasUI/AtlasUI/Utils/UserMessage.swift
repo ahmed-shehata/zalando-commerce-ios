@@ -34,7 +34,7 @@ struct UserMessage {
             title = userPresentable.title()
         } else {
             message = String(error)
-            title = UILocalizer.string("Error")
+            title = Localizer.string("Error")
         }
 
         show(title: title, message: message, actions: ButtonAction(text: "OK"))
@@ -42,8 +42,8 @@ struct UserMessage {
 
     static func notImplemented() {
         AtlasLogger.logError("Not Implemented")
-        let title = UILocalizer.string("feature.notImplemented.title")
-        let message = UILocalizer.string("feature.notImplemented.message")
+        let title = Localizer.string("feature.notImplemented.title")
+        let message = Localizer.string("feature.notImplemented.message")
         show(title: title, message: message, actions: ButtonAction(text: "OK"))
     }
 
@@ -66,8 +66,8 @@ struct UserMessage {
     static func unclasifiedError(error: ErrorType) {
         AtlasLogger.logError("Unclasified Error", error)
 
-        let title = UILocalizer.string("Error.unclasified.title")
-        let message = UILocalizer.string("Error.unclasified.message")
+        let title = Localizer.string("Error.unclasified.title")
+        let message = Localizer.string("Error.unclasified.message")
         show(title: title, message: message, actions: ButtonAction(text: "OK"))
     }
 
@@ -76,7 +76,7 @@ struct UserMessage {
 private extension UIAlertController {
 
     func addAction(button: ButtonAction) {
-        let title = UILocalizer.string(button.text)
+        let title = Localizer.string(button.text)
         let action = UIAlertAction(title: title, style: button.style, handler: button.handler)
         self.addAction(action)
     }

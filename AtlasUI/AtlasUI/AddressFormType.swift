@@ -39,7 +39,7 @@ enum AddressFormField: String {
     }
 
     var title: String {
-        let title = UILocalizer.string("Address.form.\(rawValue.lowercaseString)")
+        let title = Localizer.string("Address.form.\(rawValue.lowercaseString)")
         return title + (formValidators.contains { $0 == .Required } ? "*" : "")
     }
 
@@ -54,7 +54,7 @@ enum AddressFormField: String {
         case .MemberID: return viewModel.pickupPointMemberId
         case .Zipcode: return viewModel.zip
         case .City: return viewModel.city
-        case .Country: return UILocalizer.countryName(forCountryCode: viewModel.countryCode)
+        case .Country: return Localizer.countryName(forCountryCode: viewModel.countryCode)
         }
     }
 
