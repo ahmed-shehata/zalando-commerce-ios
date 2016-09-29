@@ -73,7 +73,7 @@ extension CheckoutSummaryActionsHandler {
         guard let viewController = self.viewController else { return }
 
         viewController.displayLoader { done in
-            viewController.checkout.createCheckoutViewModel(from: viewController.checkoutViewModel) { result in
+            viewController.checkout.createCheckoutViewModel(fromModel: viewController.checkoutViewModel) { result in
                 done()
                 guard var checkoutViewModel = result.success(viewController.userMessage) else { return }
 
@@ -149,15 +149,20 @@ extension CheckoutSummaryActionsHandler {
                 viewController.navigationController?.popViewControllerAnimated(true)
             }
 
+            if address == nil {
+                if let billingAddress = viewController.checkoutViewModel.selectedBillingAddress,
+                    shippingAddress = viewController.checkoutViewModel.selectedShippingAddress
+                where shippingAddress == billingAddress {
+                    viewController.checkoutViewModel.resetState()
+                }
+                viewController.checkoutViewModel.checkout = nil
+            }
+
             switch addressType {
             case AddressType.billing:
                 viewController.checkoutViewModel.selectedBillingAddress = address
             case AddressType.shipping:
                 viewController.checkoutViewModel.selectedShippingAddress = address
-            }
-            if address == nil {
-                viewController.checkoutViewModel.resetState()
-                viewController.checkoutViewModel.checkout = nil
             }
 
             viewController.rootStackView.configureData(viewController)
@@ -166,8 +171,7 @@ extension CheckoutSummaryActionsHandler {
             guard viewController.checkoutViewModel.isReadyToCreateCheckout == true else { return }
 
             viewController.displayLoader { done in
-
-                viewController.checkout.createCheckoutViewModel(from: viewController.checkoutViewModel) { result in
+                viewController.checkout.createCheckoutViewModel(fromModel: viewController.checkoutViewModel) { result in
                     done()
                     guard var checkoutViewModel = result.success(viewController.userMessage) else { return }
 

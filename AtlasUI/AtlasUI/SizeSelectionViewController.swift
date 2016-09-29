@@ -56,7 +56,7 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
     private func generateCheckout(withArticle article: Article, customer: Customer) {
         let selectedArticleUnit = SelectedArticleUnit(article: article, selectedUnitIndex: 0)
 
-        checkout.createCheckoutViewModel(for: selectedArticleUnit) { result in
+        checkout.createCheckoutViewModel(forArticleUnit: selectedArticleUnit) { result in
 
             guard var checkoutViewModel = result.success(self.userMessage) else { return }
 
@@ -82,7 +82,7 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
 
             guard let article = result.success(strongSelf.userMessage) else { return }
             strongSelf.displaySizes(forArticle: article)
-            strongSelf.title = strongSelf.loc("Pick a size")
+            strongSelf.title = Localizer.string("Pick a size")
         }
     }
 

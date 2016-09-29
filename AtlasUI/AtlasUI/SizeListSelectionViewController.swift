@@ -78,7 +78,7 @@ extension SizeListSelectionViewController: UITableViewDataSource {
     internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         return tableView.dequeueReusableCell(UnitSizeTableViewCell.self, forIndexPath: indexPath) { cell in
             let unit = self.article.availableUnits[indexPath.item]
-            cell.configureData(UnitSizeTableViewCellViewModel(unit: unit, localizer: self.localizer))
+            cell.configureData(unit)
             cell.accessibilityIdentifier = "size-cell-\(indexPath.row)"
             return cell
         }
@@ -105,7 +105,7 @@ extension SizeListSelectionViewController: UITableViewDelegate {
             let selectedArticleUnit = SelectedArticleUnit(article: self.article, selectedUnitIndex: indexPath.row)
 
             self.loaderView.show()
-            self.checkout.createCheckoutViewModel(for: selectedArticleUnit) { result in
+            self.checkout.createCheckoutViewModel(forArticleUnit: selectedArticleUnit) { result in
                 self.loaderView.hide()
 
                 guard var checkoutViewModel = result.success(self.userMessage) else { return }

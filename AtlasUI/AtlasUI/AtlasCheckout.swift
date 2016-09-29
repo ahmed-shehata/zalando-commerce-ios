@@ -10,15 +10,13 @@ public typealias AtlasCheckoutConfigurationCompletion = AtlasResult<AtlasCheckou
 
 typealias CreateCheckoutViewModelCompletion = AtlasResult<CheckoutViewModel> -> Void
 
-public class AtlasCheckout: LocalizerProviderType {
+final public class AtlasCheckout {
 
     public let client: APIClient
 
     private init(client: APIClient) {
         self.client = client
     }
-
-    lazy private(set) var localizer: Localizer = Localizer(localizationProvider: self)
 
     /**
      Configure AtlasCheckout.
@@ -39,8 +37,16 @@ public class AtlasCheckout: LocalizerProviderType {
                 completion(.failure(error))
 
             case .success(let client):
-                Injector.register { OAuth2AuthorizationHandler(loginURL: client.config.loginURL) as AuthorizationHandler }
-                completion(.success(AtlasCheckout(client: client)))
+                let checkout = AtlasCheckout(client: client)
+                let localizer = Localizer(localeIdentifier: client.config.interfaceLocale.localeIdentifier,
+                    localizedStringsBundle: NSBundle(forClass: AtlasCheckout.self))
+
+                Atlas.register { OAuth2AuthorizationHandler(loginURL: client.config.loginURL) as AuthorizationHandler }
+                Atlas.register { localizer }
+                Atlas.register { client }
+                Atlas.register { checkout }
+
+                completion(.success(checkout))
             }
         }
     }
@@ -57,16 +63,16 @@ public class AtlasCheckout: LocalizerProviderType {
         viewController.presentViewController(atlasUIViewController, animated: true, completion: nil)
     }
 
-    func createCheckoutViewModel(from checkoutViewModel: CheckoutViewModel,
+    func createCheckoutViewModel(fromModel checkoutViewModel: CheckoutViewModel,
         completion: CreateCheckoutViewModelCompletion) {
-            createCheckoutViewModel(for: checkoutViewModel.selectedArticleUnit,
+            createCheckoutViewModel(forArticleUnit: checkoutViewModel.selectedArticleUnit,
                 addresses: checkoutViewModel.selectedAddresses, completion: completion)
     }
 
-    func createCheckoutViewModel(for selectedArticleUnit: SelectedArticleUnit, addresses: CheckoutAddresses? = nil,
+    func createCheckoutViewModel(forArticleUnit selectedArticleUnit: SelectedArticleUnit, addresses: CheckoutAddresses? = nil,
         completion: CreateCheckoutViewModelCompletion) {
-            client.createCheckout(for: selectedArticleUnit, addresses: addresses) { checkoutResult in
-                switch checkoutResult {
+            client.createCheckout(for: selectedArticleUnit, addresses: addresses) { result in
+                switch result {
                 case .failure(let error):
                     if case let AtlasAPIError.checkoutFailed(_, cartId, _) = error {
                         let checkoutModel = CheckoutViewModel(selectedArticleUnit: selectedArticleUnit, cartId: cartId)
@@ -80,18 +86,6 @@ public class AtlasCheckout: LocalizerProviderType {
                     completion(.success(checkoutModel))
                 }
             }
-    }
-
-}
-
-extension AtlasCheckout: Localizable {
-
-    var localizedStringsBundle: NSBundle {
-        return NSBundle(forClass: AtlasCheckout.self)
-    }
-
-    var localeIdentifier: String {
-        return client.config.interfaceLocale.localeIdentifier
     }
 
 }

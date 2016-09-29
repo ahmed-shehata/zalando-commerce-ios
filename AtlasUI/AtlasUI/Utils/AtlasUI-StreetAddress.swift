@@ -23,19 +23,19 @@ extension StreetAddress {
         return [addressLine1, addressLine2].filter { !$0.isEmpty }.joinWithSeparator(", ")
     }
 
-    internal func prefixedAddressLine1(localizedWith localizer: LocalizerProviderType) -> String {
+    internal var prefixedAddressLine1: String {
         guard isPickupPoint && !addressLine1.isEmpty else { return addressLine1 }
-        return localizer.loc("Address.prefix.packstation") + ": " + addressLine1
+        return Localizer.string("Address.prefix.packstation") + ": " + addressLine1
     }
 
-    internal func prefixedAddressLine2(localizedWith localizer: LocalizerProviderType) -> String {
+    internal var prefixedAddressLine2: String {
         guard isPickupPoint && !addressLine2.isEmpty else { return addressLine2 }
-        return localizer.loc("Address.prefix.memberID") + ": " + addressLine2
+        return Localizer.string("Address.prefix.memberID") + ": " + addressLine2
     }
 
-    internal func prefixedShortAddressLine(localizedWith localizer: LocalizerProviderType) -> String {
+    internal var prefixedShortAddressLine: String {
         guard isPickupPoint && !shortAddressLine.isEmpty else { return shortAddressLine }
-        return localizer.loc("Address.prefix.packstation.abbreviation") + ": " + shortAddressLine
+        return Localizer.string("Address.prefix.packstation.abbreviation") + ": " + shortAddressLine
     }
 
 }

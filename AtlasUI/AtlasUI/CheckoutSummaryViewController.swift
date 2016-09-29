@@ -144,13 +144,13 @@ extension CheckoutSummaryViewController {
     }
 
     private func setupNavigationBar() {
-        title = loc(viewState.navigationBarTitleLocalizedKey)
+        title = Localizer.string(viewState.navigationBarTitleLocalizedKey)
 
         let hasSingleUnit = checkoutViewModel.article.hasSingleUnit
         navigationItem.setHidesBackButton(viewState.hideBackButton(hasSingleUnit), animated: false)
 
         if viewState.showCancelButton {
-            let button = UIBarButtonItem(title: loc("Cancel"),
+            let button = UIBarButtonItem(title: Localizer.string("Cancel"),
                 style: .Plain,
                 target: self,
                 action: #selector(CheckoutSummaryViewController.cancelCheckoutTapped))

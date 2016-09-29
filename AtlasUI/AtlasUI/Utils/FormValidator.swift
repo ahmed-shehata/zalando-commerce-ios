@@ -9,17 +9,26 @@ enum FormValidator {
     case MinLength(minLength: Int)
     case MaxLength(maxLength: Int)
     case ExactLength(length: Int)
-    case Pattern(pattern: String)
+    case Pattern(pattern: String, errorMessage: String)
     case NumbersOnly
 
-    internal func errorMessage(text: String?, localizer: LocalizerProviderType) -> String? {
+    internal func errorMessage(text: String?) -> String? {
         guard !isValid(text) else { return nil }
-        return errorMessage(localizer)
+
+        switch self {
+        case .Required: return Localizer.string("Form.validation.required")
+        case .MinLength(let minLength): return Localizer.string("Form.validation.minLength: %@", "\(minLength)")
+        case .MaxLength(let maxLength): return Localizer.string("Form.validation.maxLength: %@", "\(maxLength)")
+        case .ExactLength(let length): return Localizer.string("Form.validation.exactLength: %@", "\(length)")
+        case .Pattern(_, let errorMessage): return Localizer.string(errorMessage)
+        case .NumbersOnly: return Localizer.string("Form.validation.numbersOnly")
+        }
     }
 
     private static let anyCharacterPattern = "a-zA-ZàÀâÂäÄáÁåÅéÉèÈêÊëËìÌîÎïÏòÒôÔöÖøØùÙûÛüÜçÇñœŒæÆíóúÍÓÚĄąĆćĘęŁłŃńŚśŻżŹź"
-    internal static let namePattern = "^["+anyCharacterPattern+"]'?[- "+anyCharacterPattern+"ß]+$"
-    internal static let cityPattern = "^["+anyCharacterPattern+"]'?[-,;()' 0-9"+anyCharacterPattern+"ß]+$"
+    internal static let namePattern = "^[" + anyCharacterPattern + "]'?[- " + anyCharacterPattern + "ß]+$"
+    internal static let cityPattern = "^[" + anyCharacterPattern + "]'?[-,;()' 0-9" + anyCharacterPattern + "ß]+$"
+    internal static let streetPattern = "^(?=.*[a-zA-Z])(?=.*[0-9]).*$"
 
     private func isValid(text: String?) -> Bool {
         switch self {
@@ -27,7 +36,7 @@ enum FormValidator {
         case .MinLength(let minLength): return text?.trimmedLength >= minLength
         case .MaxLength(let maxLength): return text?.trimmedLength <= maxLength
         case .ExactLength(let length): return text?.trimmedLength == length
-        case .Pattern(let pattern): return isPatternValid(pattern, text: text)
+        case .Pattern(let pattern, _): return isPatternValid(pattern, text: text)
         case .NumbersOnly: return isPatternValid("[0-9]+", text: text)
         }
     }
@@ -37,17 +46,6 @@ enum FormValidator {
 
         let regex = try? NSRegularExpression(pattern: pattern, options: .CaseInsensitive)
         return regex?.firstMatchInString(trimmedText, options: [], range: NSRange(location: 0, length: trimmedText.length)) != nil
-    }
-
-    private func errorMessage(localizer: LocalizerProviderType) -> String {
-        switch self {
-        case .Required: return localizer.loc("Form.validation.required")
-        case .MinLength(let minLength): return localizer.loc("Form.validation.minLength: %@", "\(minLength)")
-        case .MaxLength(let maxLength): return localizer.loc("Form.validation.maxLength: %@", "\(maxLength)")
-        case .ExactLength(let length): return localizer.loc("Form.validation.exactLength: %@", "\(length)")
-        case .Pattern: return localizer.loc("Form.validation.pattern")
-        case .NumbersOnly: return localizer.loc("Form.validation.numbersOnly")
-        }
     }
 
 }

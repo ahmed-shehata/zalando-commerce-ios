@@ -13,6 +13,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var customerNumer: UILabel!
     @IBOutlet weak var gender: UILabel!
+    @IBOutlet weak var languageSwitcher: UISegmentedControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,8 +22,8 @@ class ProfileViewController: UIViewController {
         self.email.text = ""
         self.customerNumer.text = ""
         self.gender.text = ""
-
         self.email.textColor = UIColor.grayColor()
+        self.languageSwitcher.selectedSegmentIndex = getLanguageSwitcherSelectedIndex()
 
         AppSetup.checkout?.client.customer { result in
             switch result {
@@ -41,9 +42,25 @@ class ProfileViewController: UIViewController {
         }
     }
 
+    @IBAction func languageSwitched(sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 1:
+            AppSetup.switchLanguage("de")
+        case 0:
+            fallthrough
+        default:
+            AppSetup.switchLanguage("en")
+        }
+    }
+
     @IBAction func logoutButtonTapped(sender: AnyObject) {
         Atlas.logoutUser()
         self.navigationController?.popViewControllerAnimated(true)
+    }
+
+    private func getLanguageSwitcherSelectedIndex() -> Int {
+        guard let languageCode = AppSetup.interfaceLanguage else { return 0 }
+        return ["en", "de"].indexOf(languageCode) ?? 0
     }
 
 }

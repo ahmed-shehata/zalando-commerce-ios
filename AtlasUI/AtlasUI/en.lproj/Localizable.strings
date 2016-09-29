@@ -74,9 +74,11 @@
 "Form.validation.minLength: %@" = "Min length is %@";
 "Form.validation.maxLength: %@" = "Max length is %@";
 "Form.validation.exactLength: %@" = "Required length is %@";
-"Form.validation.pattern" = "Invalid value";
+"Form.validation.pattern.name" = "Please only use the characters (A-z) in this field";
+"Form.validation.pattern.city" = "Please only use the characters (A-z) in this field";
+"Form.validation.pattern.street" = "Please enter your street and house number";
 "Form.validation.numbersOnly" = "Only numbers are allowed";
 "Address.validation.notValid" = "Address not valid, please check the address";
 
-"Error.general.title" = "Oops";
-"Error.general.message" = "Sorry, Something went wrong";
+"Error.unclasified.title" = "Oops";
+"Error.unclasified.message" = "Sorry, Something went wrong";

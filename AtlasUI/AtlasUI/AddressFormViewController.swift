@@ -18,7 +18,6 @@ class AddressFormViewController: UIViewController, CheckoutProviderType {
     internal lazy var addressStackView: AddressFormStackView = {
         let stackView = AddressFormStackView()
         stackView.addressType = self.addressType
-        stackView.checkoutProviderType = self
         stackView.axis = .Vertical
         stackView.layoutMargins = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
         stackView.layoutMarginsRelativeArrangement = true
@@ -71,11 +70,13 @@ class AddressFormViewController: UIViewController, CheckoutProviderType {
 extension AddressFormViewController {
 
     private func configureNavigation() {
-        let saveButton = UIBarButtonItem(title: loc("Save"), style: .Plain, target: self, action: #selector(submitButtonPressed))
+        let saveButton = UIBarButtonItem(title: Localizer.string("Save"),
+            style: .Plain, target: self, action: #selector(submitButtonPressed))
         navigationItem.rightBarButtonItem = saveButton
 
         if addressMode == .createAddress {
-            let cancelButton = UIBarButtonItem(title: loc("Cancel"), style: .Plain, target: self, action: #selector(cancelButtonPressed))
+            let cancelButton = UIBarButtonItem(title: Localizer.string("Cancel"),
+                style: .Plain, target: self, action: #selector(cancelButtonPressed))
             navigationItem.leftBarButtonItem = cancelButton
         }
     }
@@ -156,8 +157,8 @@ extension AddressFormViewController {
         loaderView.hide()
         guard let checkAddressResponse = result.success(userMessage) else { return }
         if checkAddressResponse.status == .notCorrect {
-            let title = loc("Address.validation.notValid")
-            userMessage.show(title: title, message: nil, actions: ButtonAction(text: "OK"))
+            let title = Localizer.string("Address.validation.notValid")
+            UserMessage.show(title: title, message: nil, actions: ButtonAction(text: "OK"))
         } else {
             switch addressMode {
             case .createAddress: createAddressRequest()
