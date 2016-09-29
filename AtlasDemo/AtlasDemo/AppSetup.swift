@@ -23,6 +23,11 @@ class AppSetup {
         setAppOptions(prepareOptions(useSandbox: useSandbox), completion: completion)
     }
 
+    static func switchLanguage(language: String) {
+        let opts = prepareOptions(interfaceLanguage: language)
+        setAppOptions(opts)
+    }
+
     private static var alwaysUseMockAPI: Bool {
         return NSProcessInfo.processInfo().arguments.contains("USE_MOCK_API")
     }
@@ -48,12 +53,12 @@ class AppSetup {
         }
     }
 
-    private static func prepareOptions(useSandbox useSandbox: Bool) -> Options {
+    private static func prepareOptions(useSandbox useSandbox: Bool?=true, interfaceLanguage: String?="en") -> Options {
         let configurationURL: NSURL? = AtlasMockAPI.hasMockedAPIStarted ? AtlasMockAPI.endpointURL(forPath: "/config") : nil
         return Options(clientId: "atlas_Y2M1MzA",
             salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
             useSandbox: useSandbox,
-            interfaceLanguage: "en",
+            interfaceLanguage: interfaceLanguage,
             configurationURL: configurationURL)
     }
 
