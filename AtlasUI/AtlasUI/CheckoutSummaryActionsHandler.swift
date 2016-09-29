@@ -150,15 +150,20 @@ extension CheckoutSummaryActionsHandler {
                 viewController.navigationController?.popViewControllerAnimated(true)
             }
 
+            if address == nil {
+                if let billingAddress = viewController.checkoutViewModel.selectedBillingAddress,
+                    shippingAddress = viewController.checkoutViewModel.selectedShippingAddress
+                where shippingAddress == billingAddress {
+                    viewController.checkoutViewModel.resetState()
+                }
+                viewController.checkoutViewModel.checkout = nil
+            }
+
             switch addressType {
             case AddressType.billing:
                 viewController.checkoutViewModel.selectedBillingAddress = address
             case AddressType.shipping:
                 viewController.checkoutViewModel.selectedShippingAddress = address
-            }
-            if address == nil {
-                viewController.checkoutViewModel.resetState()
-                viewController.checkoutViewModel.checkout = nil
             }
 
             viewController.rootStackView.configureData(viewController)
