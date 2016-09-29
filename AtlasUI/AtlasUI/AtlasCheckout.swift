@@ -46,14 +46,16 @@ public class AtlasCheckout: LocalizerProviderType {
     }
 
     public func presentCheckout(onViewController viewController: UIViewController, forProductSKU sku: String) {
-        let sizeSelectionViewController = SizeSelectionViewController(checkout: self, sku: sku)
+        let atlasUIViewController = AtlasUIViewController(atlasCheckout: self, forProductSKU: sku)
+
         let checkoutTransitioning = CheckoutTransitioningDelegate()
+        atlasUIViewController.transitioningDelegate = checkoutTransitioning
+        atlasUIViewController.modalPresentationStyle = .Custom
 
-        let navigationController = UINavigationController(rootViewController: sizeSelectionViewController)
-        navigationController.transitioningDelegate = checkoutTransitioning
-        navigationController.modalPresentationStyle = .Custom
+        Injector.deregister(AtlasUIViewController.self)
+        Injector.register { atlasUIViewController }
 
-        viewController.presentViewController(navigationController, animated: true, completion: nil)
+        viewController.presentViewController(atlasUIViewController, animated: true, completion: nil)
     }
 
     func createCheckoutViewModel(from checkoutViewModel: CheckoutViewModel,

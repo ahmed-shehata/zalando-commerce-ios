@@ -4,31 +4,40 @@
 
 import AtlasSDK
 
-enum AtlasUIError {
-    case GeneralError(userMessage: UserMessage)
-    case CancelCheckout(userMessage: UserMessage, viewController: UIViewController)
-}
-
 extension AtlasResult {
 
-    internal func success(errorHandlingType errorHandling: AtlasUIError) -> T? {
+    internal func success(userMessage: UserMessage) -> T? {
         switch self {
         case .failure(let error):
-            displayError(error, errorHandling: errorHandling)
+            displayError(error, userMessage: userMessage)
             return nil
         case .success(let data):
             return data
         }
     }
 
-    private func displayError(error: ErrorType, errorHandling: AtlasUIError) {
-        switch errorHandling {
-        case .GeneralError(let userMessage):
+    private func displayError(error: ErrorType, userMessage: UserMessage) {
+        guard let atlasError = error as? AtlasErrorType else {
+            // TODO: Need to check for network errors and other types
             userMessage.generalError()
-        case .CancelCheckout(let userMessage, let viewController):
-            viewController.dismissViewControllerAnimated(true) {
-                userMessage.generalError()
+            return
+        }
+
+        let atlasUIViewController: AtlasUIViewController? = try? Injector.provide()
+        if let atlasUIViewController = atlasUIViewController where atlasError.shouldCancelCheckout() {
+            atlasUIViewController.dismissViewControllerAnimated(true) {
+                self.displayErrorMessage(atlasError, userMessage: userMessage)
             }
+        } else {
+            displayErrorMessage(atlasError, userMessage: userMessage)
+        }
+    }
+
+    private func displayErrorMessage(error: AtlasErrorType, userMessage: UserMessage) {
+        if error.shouldDisplayGeneralMessage() {
+            userMessage.generalError()
+        } else {
+            userMessage.show(error: error)
         }
     }
 

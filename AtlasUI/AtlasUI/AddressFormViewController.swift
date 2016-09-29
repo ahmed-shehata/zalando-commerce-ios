@@ -154,7 +154,7 @@ extension AddressFormViewController {
 
     private func checkAddressRequestCompletion(result: AtlasResult<CheckAddressResponse>) {
         loaderView.hide()
-        guard let checkAddressResponse = result.success(errorHandlingType: .GeneralError(userMessage: userMessage)) else { return }
+        guard let checkAddressResponse = result.success(userMessage) else { return }
         if checkAddressResponse.status == .notCorrect {
             let title = loc("Address.validation.notValid")
             userMessage.show(title: title, message: nil, actions: ButtonAction(text: "OK"))
@@ -169,7 +169,7 @@ extension AddressFormViewController {
 
     private func createUpdateAddressRequestCompletion(result: AtlasResult<UserAddress>) {
         loaderView.hide()
-        guard let address = result.success(errorHandlingType: .GeneralError(userMessage: userMessage)) else { return }
+        guard let address = result.success(userMessage) else { return }
         dismissView()
         completion?(address)
     }

@@ -84,7 +84,7 @@ extension APIClient {
                 case .success(let cart):
                     let itemExists = cart.items.contains { $0.sku == articleSKU } && !cart.itemsOutOfStock.contains(articleSKU)
                     guard itemExists else {
-                        completion(.failure(AtlasAPIError.outOfStock))
+                        completion(.failure(AtlasCatalogError.outOfStock))
                         return
                     }
                     self.addresses { addressListResult in

@@ -48,7 +48,7 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
 
         checkout.client.customer { result in
 
-            guard let customer = result.success(errorHandlingType: .GeneralError(userMessage: self.userMessage)) else { return }
+            guard let customer = result.success(self.userMessage) else { return }
             self.generateCheckout(withArticle: article, customer: customer)
         }
     }
@@ -58,8 +58,7 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
 
         checkout.createCheckoutViewModel(for: selectedArticleUnit) { result in
 
-            let errorType = AtlasUIError.CancelCheckout(userMessage: self.userMessage, viewController: self)
-            guard var checkoutViewModel = result.success(errorHandlingType: errorType) else { return }
+            guard var checkoutViewModel = result.success(self.userMessage) else { return }
 
             checkoutViewModel.customer = customer
             self.displayCheckoutSummaryViewController(checkoutViewModel)
@@ -81,7 +80,7 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
         checkout.client.article(forSKU: sku) { [weak self] result in
             guard let strongSelf = self else { return }
 
-            guard let article = result.success(errorHandlingType: .GeneralError(userMessage: strongSelf.userMessage)) else { return }
+            guard let article = result.success(strongSelf.userMessage) else { return }
             strongSelf.displaySizes(forArticle: article)
             strongSelf.title = strongSelf.loc("Pick a size")
         }

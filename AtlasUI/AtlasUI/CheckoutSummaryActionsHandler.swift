@@ -38,7 +38,7 @@ extension CheckoutSummaryActionsHandler {
         viewController.displayLoader { done in
             viewController.checkout.client.updateCheckout(checkout.id, updateCheckoutRequest: updateCheckoutRequest) { result in
                 done()
-                guard let checkout = result.success(errorHandlingType: .GeneralError(userMessage: viewController.userMessage)) else { return }
+                guard let checkout = result.success(viewController.userMessage) else { return }
                 self.createOrder(checkout.id)
             }
         }
@@ -49,7 +49,7 @@ extension CheckoutSummaryActionsHandler {
             viewController.checkout.client.createOrder(checkoutId) { result in
 
                 done()
-                guard let order = result.success(errorHandlingType: .GeneralError(userMessage: viewController.userMessage)) else { return }
+                guard let order = result.success(viewController.userMessage) else { return }
                 self.handleOrderConfirmation(order)
             }
         }
@@ -64,7 +64,7 @@ extension CheckoutSummaryActionsHandler {
 
         viewController.checkout.client.customer { result in
 
-            guard let customer = result.success(errorHandlingType: .GeneralError(userMessage: viewController.userMessage)) else { return }
+            guard let customer = result.success(viewController.userMessage) else { return }
             self.generateCheckout(customer)
         }
     }
@@ -75,8 +75,7 @@ extension CheckoutSummaryActionsHandler {
         viewController.displayLoader { done in
             viewController.checkout.createCheckoutViewModel(from: viewController.checkoutViewModel) { result in
                 done()
-                let errorType = AtlasUIError.CancelCheckout(userMessage: viewController.userMessage, viewController: viewController)
-                guard var checkoutViewModel = result.success(errorHandlingType: errorType) else { return }
+                guard var checkoutViewModel = result.success(viewController.userMessage) else { return }
 
                 checkoutViewModel.customer = customer
                 viewController.checkoutViewModel = checkoutViewModel
@@ -97,7 +96,7 @@ extension CheckoutSummaryActionsHandler {
         let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
         paymentSelectionViewController.paymentCompletion = { result in
 
-            guard let _ = result.success(errorHandlingType: .GeneralError(userMessage: viewController.userMessage)) else { return }
+            guard let _ = result.success(viewController.userMessage) else { return }
             self.loadCustomerData()
         }
         viewController.showViewController(paymentSelectionViewController, sender: viewController)
@@ -133,7 +132,7 @@ extension CheckoutSummaryActionsHandler {
         let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
         paymentSelectionViewController.paymentCompletion = { result in
 
-            guard let _ = result.success(errorHandlingType: .GeneralError(userMessage: viewController.userMessage)) else { return }
+            guard let _ = result.success(viewController.userMessage) else { return }
             viewController.viewState = .OrderPlaced
         }
         viewController.showViewController(paymentSelectionViewController, sender: viewController)
@@ -170,8 +169,7 @@ extension CheckoutSummaryActionsHandler {
 
                 viewController.checkout.createCheckoutViewModel(from: viewController.checkoutViewModel) { result in
                     done()
-                    let errorType = AtlasUIError.CancelCheckout(userMessage: viewController.userMessage, viewController: viewController)
-                    guard var checkoutViewModel = result.success(errorHandlingType: errorType) else { return }
+                    guard var checkoutViewModel = result.success(viewController.userMessage) else { return }
 
                     checkoutViewModel.customer = viewController.checkoutViewModel.customer
                     viewController.checkoutViewModel = checkoutViewModel
