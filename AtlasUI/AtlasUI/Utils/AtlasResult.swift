@@ -6,38 +6,38 @@ import AtlasSDK
 
 extension AtlasResult {
 
-    internal func success(userMessage: UserMessage) -> T? {
+    internal func success() -> T? {
         switch self {
         case .failure(let error):
-            displayError(error, userMessage: userMessage)
+            displayError(error)
             return nil
         case .success(let data):
             return data
         }
     }
 
-    private func displayError(error: ErrorType, userMessage: UserMessage) {
+    private func displayError(error: ErrorType) {
         guard let userPresentable = error as? UserPresentable else {
             // TODO: Need to check for network errors and other types
-            userMessage.generalError()
+            UserMessage.unclasifiedError(error)
             return
         }
 
-        let atlasUIViewController: AtlasUIViewController? = try? Injector.provide()
+        let atlasUIViewController: AtlasUIViewController? = try? Atlas.provide()
         if let atlasUIViewController = atlasUIViewController where userPresentable.shouldCancelCheckout() {
             atlasUIViewController.dismissViewControllerAnimated(true) {
-                self.displayErrorMessage(userPresentable, userMessage: userMessage)
+                self.displayErrorMessage(userPresentable)
             }
         } else {
-            displayErrorMessage(userPresentable, userMessage: userMessage)
+            displayErrorMessage(userPresentable)
         }
     }
 
-    private func displayErrorMessage(userPresentable: UserPresentable, userMessage: UserMessage) {
+    private func displayErrorMessage(userPresentable: UserPresentable) {
         if userPresentable.shouldDisplayGeneralMessage() {
-            userMessage.generalError()
+            UserMessage.unclasifiedError(userPresentable)
         } else {
-            userMessage.show(error: userPresentable)
+            UserMessage.show(error: userPresentable)
         }
     }
 

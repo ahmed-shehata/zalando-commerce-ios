@@ -40,7 +40,7 @@ internal final class PaymentProcessingViewController: UIViewController, Checkout
 
         self.checkout.client.createOrder(checkout.id) { result in
 
-            guard let order = result.success(self.userMessage) else { return }
+            guard let order = result.success() else { return }
             guard let paymentURL = order.externalPaymentURL else {
                 return self.showSuccessImage()
             }

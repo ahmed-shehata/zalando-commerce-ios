@@ -58,7 +58,7 @@ final public class AtlasCheckout {
         atlasUIViewController.transitioningDelegate = checkoutTransitioning
         atlasUIViewController.modalPresentationStyle = .Custom
 
-        Injector.register { atlasUIViewController }
+        Atlas.register { atlasUIViewController }
 
         viewController.presentViewController(atlasUIViewController, animated: true, completion: nil)
     }

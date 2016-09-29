@@ -72,11 +72,11 @@ extension AddressListTableViewDelegate: UITableViewDelegate {
 
             guard editingStyle == .Delete else { return }
 
-        let address = self.addresses[indexPath.item]
-        checkout.client.deleteAddress(address.id) { result in
-            guard let _ = result.success(self.userMessage) else { return }
-            self.deleteAddress(indexPath, tableView: tableView)
-        }
+            let address = self.addresses[indexPath.item]
+            checkout.client.deleteAddress(address.id) { result in
+                guard let _ = result.success() else { return }
+                self.deleteAddress(indexPath, tableView: tableView)
+            }
     }
 
     private func deleteAddress(indexPath: NSIndexPath, tableView: UITableView) {

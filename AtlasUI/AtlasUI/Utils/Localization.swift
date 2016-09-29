@@ -62,7 +62,7 @@ extension Localizer {
     }
 
     static func string(key: String, _ formatArguments: [CVarArgType?]) -> String {
-        return string(key, formatArguments)
+        return instance.string(key, formatArguments: formatArguments.flatMap { $0 })
     }
 
     static func string(key: String, _ formatArguments: CVarArgType?...) -> String {

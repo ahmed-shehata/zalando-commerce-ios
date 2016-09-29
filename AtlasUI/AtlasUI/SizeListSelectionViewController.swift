@@ -101,14 +101,14 @@ extension SizeListSelectionViewController: UITableViewDelegate {
         self.checkout.client.customer { result in
             self.loaderView.hide()
 
-            guard let customer = result.success(self.userMessage) else { return }
+            guard let customer = result.success() else { return }
             let selectedArticleUnit = SelectedArticleUnit(article: self.article, selectedUnitIndex: indexPath.row)
 
             self.loaderView.show()
             self.checkout.createCheckoutViewModel(forArticleUnit: selectedArticleUnit) { result in
                 self.loaderView.hide()
 
-                guard var checkoutViewModel = result.success(self.userMessage) else { return }
+                guard var checkoutViewModel = result.success() else { return }
 
                 checkoutViewModel.customer = customer
                 self.displayCheckoutSummaryViewController(checkoutViewModel)
