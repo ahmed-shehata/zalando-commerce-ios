@@ -15,6 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         setupBugScreenshot()
 
+        Lookback.setupWithAppToken("yxHNcPapi4XecJDit")
+        Lookback.sharedLookback().shakeToRecord = true
+        Lookback.sharedLookback().feedbackBubbleVisible = true
+
         return true
     }
 
