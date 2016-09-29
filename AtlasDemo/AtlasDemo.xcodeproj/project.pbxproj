@@ -48,6 +48,13 @@
 		D548A0F26A64DF4948FD1F8BC16CAFED /* AtlasMockAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B4AF978C21A97C681A423F5436C1C409 /* AtlasMockAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E283E83F8AB0B137D725B276F2A134E7 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4D539715BD2C9531ED72B24D9B4A98FF /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E615E3AFD0732A033AB3FE6884D12F2D /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 94BA4D648812766A2EF92CED9C8BFDF1 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E8BA56761D9D0063003ACFF7 /* Lookback.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E8BA56751D9D0063003ACFF7 /* Lookback.bundle */; };
+		E8BA56781D9D0EE6003ACFF7 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8BA56771D9D0EE6003ACFF7 /* AudioToolbox.framework */; };
+		E8BA567A1D9D0EF0003ACFF7 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8BA56791D9D0EF0003ACFF7 /* CoreImage.framework */; };
+		E8BA567C1D9D0EFE003ACFF7 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8BA567B1D9D0EFE003ACFF7 /* ImageIO.framework */; };
+		E8BA567E1D9D0F06003ACFF7 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8BA567D1D9D0F06003ACFF7 /* MediaPlayer.framework */; };
+		E8BA56801D9D0F15003ACFF7 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8BA567F1D9D0F15003ACFF7 /* MobileCoreServices.framework */; };
+		E8BA56821D9D0F20003ACFF7 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8BA56811D9D0F20003ACFF7 /* VideoToolbox.framework */; };
 		EAF6B18A76607DD0AC887AEF1371D19A /* SizeMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2531BE0ABE61D11C79EB23BABD7E11 /* SizeMap.swift */; };
 /* End PBXBuildFile section */
 
@@ -118,6 +125,13 @@
 		DE6D68AFDCE06CE5A1A54A8B3C37EA3A /* Bridging-Header.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		E4F833A4CE21235444066F2613EFB09A /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		E68BC11A4A9FD71255E1A93A12587B3D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		E8BA56751D9D0063003ACFF7 /* Lookback.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Lookback.bundle; sourceTree = "<group>"; };
+		E8BA56771D9D0EE6003ACFF7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		E8BA56791D9D0EF0003ACFF7 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		E8BA567B1D9D0EFE003ACFF7 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		E8BA567D1D9D0F06003ACFF7 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		E8BA567F1D9D0F15003ACFF7 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		E8BA56811D9D0F20003ACFF7 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		F71AFAF33E121C103808CE6C2F4B14B6 /* ArticlesClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticlesClient.swift; sourceTree = "<group>"; };
 		F726829F5154A9F85A931EAFC8D9E730 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F89FA499DC08F5C540C7FE44552F23A6 /* DemoCatalog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoCatalog.swift; sourceTree = "<group>"; };
@@ -137,6 +151,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8BA56821D9D0F20003ACFF7 /* VideoToolbox.framework in Frameworks */,
+				E8BA56801D9D0F15003ACFF7 /* MobileCoreServices.framework in Frameworks */,
+				E8BA567E1D9D0F06003ACFF7 /* MediaPlayer.framework in Frameworks */,
+				E8BA567C1D9D0EFE003ACFF7 /* ImageIO.framework in Frameworks */,
+				E8BA567A1D9D0EF0003ACFF7 /* CoreImage.framework in Frameworks */,
+				E8BA56781D9D0EE6003ACFF7 /* AudioToolbox.framework in Frameworks */,
 				B0A68AAB1D9A909100DA6073 /* MessageUI.framework in Frameworks */,
 				1AA9D877EA35733BB8F2821C4FB61915 /* AVFoundation.framework in Frameworks */,
 				A8AB545206533B55A05807242DD106F5 /* Alamofire.framework in Frameworks */,
@@ -204,6 +224,12 @@
 		40AD2A55265882FCC65FA2EF0FB2B6BC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E8BA56811D9D0F20003ACFF7 /* VideoToolbox.framework */,
+				E8BA567F1D9D0F15003ACFF7 /* MobileCoreServices.framework */,
+				E8BA567D1D9D0F06003ACFF7 /* MediaPlayer.framework */,
+				E8BA567B1D9D0EFE003ACFF7 /* ImageIO.framework */,
+				E8BA56791D9D0EF0003ACFF7 /* CoreImage.framework */,
+				E8BA56771D9D0EE6003ACFF7 /* AudioToolbox.framework */,
 				B0A68AAA1D9A909100DA6073 /* MessageUI.framework */,
 				2ADDB3FCDE4853A744F1F180EC295459 /* AVFoundation.framework */,
 				70D0DBF19E7CD929E402B3987A071587 /* AssetsLibrary.framework */,
@@ -267,6 +293,7 @@
 		A7C0347AEE4E5AD87CCAE5D9E11987B0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E8BA56741D9D0063003ACFF7 /* Lookback-Resources */,
 				4D539715BD2C9531ED72B24D9B4A98FF /* Alamofire.framework */,
 				A614269AAEE03BE9FE8D96766E4E3067 /* AlamofireImage.framework */,
 				277B8EB145D8CAB212763B99CCB70525 /* AtlasCheckout.framework */,
@@ -286,6 +313,15 @@
 			);
 			name = Resources;
 			sourceTree = "<group>";
+		};
+		E8BA56741D9D0063003ACFF7 /* Lookback-Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E8BA56751D9D0063003ACFF7 /* Lookback.bundle */,
+			);
+			name = "Lookback-Resources";
+			path = "lookback/Lookback-Resources";
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -386,6 +422,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A8421486CA5811AB6CF8978F401EA83 /* Assets.xcassets in Resources */,
+				E8BA56761D9D0063003ACFF7 /* Lookback.bundle in Resources */,
 				17774FD279D9D9972B447A118C17A4E4 /* LaunchScreen.storyboard in Resources */,
 				14B2EC592F7C57B3B77134AF2195AB15 /* Main.storyboard in Resources */,
 			);
@@ -549,9 +586,15 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/../Carthage/Build/iOS",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/lookback/Safe",
 				);
 				INFOPLIST_FILE = AtlasDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					Lookback,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.zalando.atlas.AtlasDemo;
 				PRODUCT_NAME = AtlasDemo;
 				PROVISIONING_PROFILE = "";
@@ -629,10 +672,16 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/../Carthage/Build/iOS",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/lookback/Safe",
 				);
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = AtlasDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					Lookback,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.zalando.atlas.AtlasDemo;
 				PRODUCT_NAME = AtlasDemo;
 				PROVISIONING_PROFILE = "";
