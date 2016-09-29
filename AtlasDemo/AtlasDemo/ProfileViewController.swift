@@ -44,10 +44,10 @@ class ProfileViewController: UIViewController {
 
     @IBAction func languageSwitched(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
-        case 0:
-            AppSetup.switchLanguage("en")
         case 1:
             AppSetup.switchLanguage("de")
+        case 0:
+            fallthrough
         default:
             AppSetup.switchLanguage("en")
         }
@@ -57,17 +57,10 @@ class ProfileViewController: UIViewController {
         Atlas.logoutUser()
         self.navigationController?.popViewControllerAnimated(true)
     }
-    
+
     private func getLanguageSwitcherSelectedIndex() -> Int {
-        guard let locale = AppSetup.checkout?.client.config.interfaceLocale.objectForKey(NSLocaleLanguageCode) as? String else { return 0 }
-        switch locale {
-        case "en":
-            return 0
-        case "de":
-            return 1
-        default:
-            return 0
-        }
+        guard let languageCode = AppSetup.interfaceLanguage else { return 0 }
+        return ["en", "de"].indexOf(languageCode) ?? 0
     }
 
 }

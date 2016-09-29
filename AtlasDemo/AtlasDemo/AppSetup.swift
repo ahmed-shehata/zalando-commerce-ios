@@ -11,6 +11,10 @@ class AppSetup {
 
     private(set) static var checkout: AtlasCheckout?
 
+    static var interfaceLanguage: String? {
+        return checkout?.client.config.interfaceLocale.objectForKey(NSLocaleLanguageCode) as? String
+    }
+    
     static func configure() {
         prepareMockAPI()
         prepareApp()
@@ -53,7 +57,7 @@ class AppSetup {
         }
     }
 
-    private static func prepareOptions(useSandbox useSandbox: Bool?=true, interfaceLanguage: String?="en") -> Options {
+    private static func prepareOptions(useSandbox useSandbox: Bool? = true, interfaceLanguage: String? = "en") -> Options {
         let configurationURL: NSURL? = AtlasMockAPI.hasMockedAPIStarted ? AtlasMockAPI.endpointURL(forPath: "/config") : nil
         return Options(clientId: "atlas_Y2M1MzA",
             salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",

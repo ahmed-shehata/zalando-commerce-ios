@@ -212,10 +212,10 @@
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qLo-Q0-jea">
-                                <rect key="frame" x="238" y="462" width="125" height="29"/>
+                                <rect key="frame" x="235" y="462" width="131" height="29"/>
                                 <segments>
                                     <segment title="English"/>
-                                    <segment title="German"/>
+                                    <segment title="Deutsch"/>
                                 </segments>
                                 <connections>
                                     <action selector="languageSwitched:" destination="4dE-k4-8mF" eventType="valueChanged" id="c0w-vr-f9c"/>
