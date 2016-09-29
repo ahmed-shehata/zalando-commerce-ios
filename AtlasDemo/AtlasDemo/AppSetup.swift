@@ -15,7 +15,7 @@ class AppSetup {
         prepareMockAPI()
         prepareApp()
 
-        let opts = prepareOptions(useSandbox: true)
+        let opts = prepareOptions(useSandbox: false)
         setAppOptions(opts)
     }
 
