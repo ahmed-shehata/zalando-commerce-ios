@@ -53,7 +53,7 @@ class FormValidatorSpec: QuickSpec {
                 expect(validator.errorMessage("John-Doe", localizer: localizer)).to(beNil())
                 expect(validator.errorMessage("", localizer: localizer)).to(beNil())
                 expect(validator.errorMessage(nil, localizer: localizer)).to(beNil())
-                expect(validator.errorMessage("John*Doe", localizer: localizer)).to(equal("Invalid value"))
+                expect(validator.errorMessage("John*Doe", localizer: localizer)).to(equal("Only letters, spaces and hyphens are allowed"))
             }
 
             it("Should check on NumbersOnly") {
