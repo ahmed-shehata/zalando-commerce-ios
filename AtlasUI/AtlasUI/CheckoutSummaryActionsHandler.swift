@@ -38,8 +38,7 @@ extension CheckoutSummaryActionsHandler {
         viewController.displayLoader { done in
             viewController.checkout.client.updateCheckout(checkout.id, updateCheckoutRequest: updateCheckoutRequest) { result in
                 done()
-                guard let checkout = result.success(errorHandlingType: .GeneralError(userMessage: viewController.userMessage))
-                else { return }
+                guard let checkout = result.success() else { return }
                 self.createOrder(checkout.id)
             }
         }
