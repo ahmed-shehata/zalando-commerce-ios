@@ -26,6 +26,9 @@
 "feature.notImplemented.title" = "Not implemented";
 "feature.notImplemented.message" = "This feature is currently not implemented";
 
+"AtlasCatalogError.title" = "Error";
+"AtlasCatalogError.message.outOfStock" = "Sorry this item is out of stock";
+
 "LoginError.title" = "Login Error";
 "LoginError.message.missingURL" = "Missing login URL";
 "LoginError.message.accessDenied" = "Access denied";
@@ -77,5 +80,5 @@
 "Form.validation.numbersOnly" = "Only numbers are allowed";
 "Address.validation.notValid" = "Address not valid, please check the address";
 
-"Error.general.title" = "Oops";
-"Error.general.message" = "Sorry, Something went wrong";
+"Error.unclasified.title" = "Oops";
+"Error.unclasified.message" = "Sorry, Something went wrong";

@@ -5,11 +5,6 @@
 import UIKit
 import AtlasSDK
 
-struct UnitSizeTableViewCellViewModel {
-    let unit: Article.Unit
-    let localizer: Localizer
-}
-
 class UnitSizeTableViewCell: UITableViewCell {
 
     internal let stackView: UIStackView = {
@@ -67,12 +62,12 @@ extension UnitSizeTableViewCell: UIBuilder {
 
 extension UnitSizeTableViewCell: UIDataBuilder {
 
-    typealias T = UnitSizeTableViewCellViewModel
+    typealias T = Article.Unit
 
     func configureData(viewModel: T) {
-        sizeLabel.text = viewModel.unit.size
-        priceLabel.text = viewModel.localizer.fmtPrice(viewModel.unit.price.amount)
-        accessibilityLabel = "size-cell-\(viewModel.unit.size)"
+        sizeLabel.text = viewModel.size
+        priceLabel.text = Localizer.price(viewModel.price.amount)
+        accessibilityLabel = "size-cell-\(viewModel.size)"
     }
 
 }

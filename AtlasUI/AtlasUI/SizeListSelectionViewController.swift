@@ -78,7 +78,7 @@ extension SizeListSelectionViewController: UITableViewDataSource {
     internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         return tableView.dequeueReusableCell(UnitSizeTableViewCell.self, forIndexPath: indexPath) { cell in
             let unit = self.article.availableUnits[indexPath.item]
-            cell.configureData(UnitSizeTableViewCellViewModel(unit: unit, localizer: self.localizer))
+            cell.configureData(unit)
             cell.accessibilityIdentifier = "size-cell-\(indexPath.row)"
             return cell
         }
@@ -101,15 +101,14 @@ extension SizeListSelectionViewController: UITableViewDelegate {
         self.checkout.client.customer { result in
             self.loaderView.hide()
 
-            guard let customer = result.success(errorHandlingType: .GeneralError(userMessage: self.userMessage)) else { return }
+            guard let customer = result.success() else { return }
             let selectedArticleUnit = SelectedArticleUnit(article: self.article, selectedUnitIndex: indexPath.row)
 
             self.loaderView.show()
-            self.checkout.createCheckoutViewModel(for: selectedArticleUnit) { result in
+            self.checkout.createCheckoutViewModel(forArticleUnit: selectedArticleUnit) { result in
                 self.loaderView.hide()
 
-                let errorType = AtlasUIError.CancelCheckout(userMessage: self.userMessage, viewController: self)
-                guard var checkoutViewModel = result.success(errorHandlingType: errorType) else { return }
+                guard var checkoutViewModel = result.success() else { return }
 
                 checkoutViewModel.customer = customer
                 self.displayCheckoutSummaryViewController(checkoutViewModel)

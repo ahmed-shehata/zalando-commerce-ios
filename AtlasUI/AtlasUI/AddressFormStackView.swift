@@ -7,7 +7,6 @@ import UIKit
 class AddressFormStackView: UIStackView {
 
     internal var addressType: AddressFormType!
-    internal var checkoutProviderType: CheckoutProviderType!
     internal var textFields: [TextFieldInputStackView] = []
 
 }
@@ -35,13 +34,12 @@ extension AddressFormStackView: UIDataBuilder {
     func configureData(viewModel: T) {
         for (idx, textFieldInputView) in textFields.enumerate() {
             let fieldType = addressType.fields[idx]
-            let title = fieldType.title(checkoutProviderType)
-            let value = fieldType.value(viewModel, localizer: checkoutProviderType)
+            let title = fieldType.title
+            let value = fieldType.value(viewModel)
             let isActive = fieldType.isActive()
 
-            let customView = fieldType.customView(viewModel, localizer: checkoutProviderType) { [weak self] text in
-                guard let strongSelf = self else { return }
-                fieldType.updateModel(viewModel, withValue: text, localizer: strongSelf.checkoutProviderType)
+            let customView = fieldType.customView(viewModel) { text in
+                fieldType.updateModel(viewModel, withValue: text)
                 textFieldInputView.textField.text = text
                 textFieldInputView.configureTitleLabel()
                 if text?.trimmedLength > 0 {
@@ -51,23 +49,21 @@ extension AddressFormStackView: UIDataBuilder {
 
             var nextTextField: TextFieldInputStackView?
             if !fieldType.returnKeyDismissKeyboard() {
-                nextTextField = textFields.count > idx+1 ? textFields[idx+1] : nil
+                nextTextField = textFields.count > idx + 1 ? textFields[idx + 1]: nil
             }
 
-            let valueChangedHandler: TextFieldChangedHandler = { [weak self] text in
-                guard let strongSelf = self else { return }
-                fieldType.updateModel(viewModel, withValue: text, localizer: strongSelf.checkoutProviderType)
+            let valueChangedHandler: TextFieldChangedHandler = { text in
+                fieldType.updateModel(viewModel, withValue: text)
             }
 
             let viewModel = TextFieldInputViewModel(title: title,
-                                                    value: value,
-                                                    accessibilityIdentifier: fieldType.accessibilityIdentifier,
-                                                    isActive: isActive,
-                                                    validators: fieldType.formValidators,
-                                                    localizer: checkoutProviderType,
-                                                    customInputView: customView,
-                                                    nextTextFieldInput: nextTextField,
-                                                    valueChangedHandler: valueChangedHandler)
+                value: value,
+                accessibilityIdentifier: fieldType.accessibilityIdentifier,
+                isActive: isActive,
+                validators: fieldType.formValidators,
+                customInputView: customView,
+                nextTextFieldInput: nextTextField,
+                valueChangedHandler: valueChangedHandler)
             textFieldInputView.configureData(viewModel)
         }
     }

@@ -12,8 +12,9 @@ extension String {
         self.init(contents)
     }
 
-    var newLineFreeString: String {
-        return componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet()).joinWithSeparator("")
+    var whiteCharactersFreeString: String {
+        let string = componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet()).joinWithSeparator("")
+        return string.stringByReplacingOccurrencesOfString("  ", withString: "")
     }
 
 }
