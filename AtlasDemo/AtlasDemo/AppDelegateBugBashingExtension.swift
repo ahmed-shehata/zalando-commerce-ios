@@ -55,7 +55,8 @@ extension AppDelegate: MFMailComposeViewControllerDelegate {
                                       message: text,
                                       preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: nil))
-        UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+        let atlasUIViewController: AtlasUIViewController? = try? Atlas.provide()
+        atlasUIViewController?.presentViewController(alert, animated: true, completion: nil)
     }
 
     private func dismissEmail(controller: MFMailComposeViewController) {
