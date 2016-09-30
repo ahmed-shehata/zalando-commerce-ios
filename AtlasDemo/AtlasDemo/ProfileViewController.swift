@@ -45,11 +45,11 @@ class ProfileViewController: UIViewController {
     @IBAction func languageSwitched(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 1:
-            AppSetup.switchLanguage("de")
+            AppSetup.change(interfaceLanguage: "de")
         case 0:
             fallthrough
         default:
-            AppSetup.switchLanguage("en")
+            AppSetup.change(interfaceLanguage: "en")
         }
     }
 
