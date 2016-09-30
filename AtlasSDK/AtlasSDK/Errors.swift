@@ -37,3 +37,9 @@ public enum AtlasAPIError: AtlasErrorType {
     case checkoutFailed(addresses: [UserAddress]?, cartId: String?, error: ErrorType)
 
 }
+
+public enum AtlasCatalogError: AtlasErrorType {
+
+    case outOfStock
+
+}

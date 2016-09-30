@@ -11,6 +11,10 @@ protocol UserPresentable: AtlasErrorType {
 
     func message(formatArguments: CVarArgType?...) -> String
 
+    func shouldDisplayGeneralMessage() -> Bool
+
+    func shouldCancelCheckout() -> Bool
+
 }
 
 extension UserPresentable {
@@ -21,6 +25,14 @@ extension UserPresentable {
 
     func message(formatArguments: CVarArgType?...) -> String {
         return Localizer.string(self.localizedDescriptionKey, formatArguments)
+    }
+
+    func shouldDisplayGeneralMessage() -> Bool {
+        return true
+    }
+
+    func shouldCancelCheckout() -> Bool {
+        return false
     }
 
 }
@@ -62,3 +74,19 @@ extension LoginError: UserPresentable {
 }
 
 extension AtlasConfigurationError: UserPresentable { }
+
+extension AtlasCatalogError: UserPresentable {
+
+    public func shouldDisplayGeneralMessage() -> Bool {
+        switch self {
+        case .outOfStock: return false
+        }
+    }
+
+    public func shouldCancelCheckout() -> Bool {
+        switch self {
+        case .outOfStock: return true
+        }
+    }
+
+}

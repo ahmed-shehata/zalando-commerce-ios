@@ -57,8 +57,7 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
 
         checkout.createCheckoutViewModel(forArticleUnit: selectedArticleUnit) { result in
 
-            let errorBehaviour = ErrorBehaviour.CancelCheckout(viewController: self)
-            guard var checkoutViewModel = result.success(errorBehaviour: errorBehaviour) else { return }
+            guard var checkoutViewModel = result.success() else { return }
 
             checkoutViewModel.customer = customer
             self.displayCheckoutSummaryViewController(checkoutViewModel)

@@ -74,6 +74,7 @@
 		E90FEDEB1D9404ED00143126 /* UnitSizeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90FEDEA1D9404ED00143126 /* UnitSizeTableViewCell.swift */; };
 		E97056391D9A9F020062FECD /* CheckoutSummaryDeliveryStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97056381D9A9F020062FECD /* CheckoutSummaryDeliveryStackView.swift */; };
 		E97A33A7BE2D26CDE9B4C62EB5BD2661 /* CheckoutSummaryAddressStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9494F7947C24BD2087FE22EBE20BFCD /* CheckoutSummaryAddressStackView.swift */; };
+		E9D8B2AC1D9D5013002EF9BC /* AtlasUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8B2AB1D9D5013002EF9BC /* AtlasUIViewController.swift */; };
 		EF570993CFA4FDF0361679E931D55B8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94F33C041120EF12B441AE2E84A48050 /* Assets.xcassets */; };
 		F22B10157E2B91A8BF9D3AB7B354E6CC /* Nimble.framework in Copy Quick and Nimble frameworks */ = {isa = PBXBuildFile; fileRef = 2E89A529CD1D470F15B857AF1031CB61 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F3F62025EFDB47B5637DC3C928D69264 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F13460B6B17606CC65E38CE6A4716C /* UITableView.swift */; };
@@ -177,6 +178,7 @@
 		E902CCFC1D991B02009E9122 /* AtlasResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasResult.swift; sourceTree = "<group>"; };
 		E90FEDEA1D9404ED00143126 /* UnitSizeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitSizeTableViewCell.swift; sourceTree = "<group>"; };
 		E97056381D9A9F020062FECD /* CheckoutSummaryDeliveryStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryDeliveryStackView.swift; sourceTree = "<group>"; };
+		E9D8B2AB1D9D5013002EF9BC /* AtlasUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasUIViewController.swift; sourceTree = "<group>"; };
 		EAF268B630147E557D2C826B01EADCBD /* CheckoutProviderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutProviderType.swift; sourceTree = "<group>"; };
 		F5BC3D0FCDE4649756A9FB6C987C9064 /* AtlasUI-StreetAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AtlasUI-StreetAddress.swift"; sourceTree = "<group>"; };
 		F9494F7947C24BD2087FE22EBE20BFCD /* CheckoutSummaryAddressStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryAddressStackView.swift; sourceTree = "<group>"; };
@@ -416,9 +418,18 @@
 			name = "Address Selection";
 			sourceTree = "<group>";
 		};
+		E9D8B2AA1D9D4FF7002EF9BC /* Atlas UI View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E9D8B2AB1D9D5013002EF9BC /* AtlasUIViewController.swift */,
+			);
+			name = "Atlas UI View Controller";
+			sourceTree = "<group>";
+		};
 		ECBC67CCC5E72798CEB556243DC767A4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E9D8B2AA1D9D4FF7002EF9BC /* Atlas UI View Controller */,
 				B0A68AA71D9A75E200DA6073 /* ToC */,
 				E7B8FD94F5B37D0CD471CC2CC01B2A93 /* Address Selection */,
 				76C39D0CB8D31C324232D17F5DDF4995 /* Checkout Summary */,
@@ -623,6 +634,7 @@
 				30788EA71B54F0C0BCC51AA46C0C6D09 /* CGRect.swift in Sources */,
 				536FFA0EF451B723E43BDE2C8B097700 /* CheckoutPresentationController.swift in Sources */,
 				AF322CCC9D260BCD3FC64A7F610E1F35 /* CheckoutProviderType.swift in Sources */,
+				E9D8B2AC1D9D5013002EF9BC /* AtlasUIViewController.swift in Sources */,
 				DB2470DB4F51D75862D73B20254CB0A7 /* CheckoutSummaryActionsHandler.swift in Sources */,
 				E97A33A7BE2D26CDE9B4C62EB5BD2661 /* CheckoutSummaryAddressStackView.swift in Sources */,
 				A9E4450E0E6519516F7B93DD9EC4A616 /* CheckoutSummaryFooterStackView.swift in Sources */,

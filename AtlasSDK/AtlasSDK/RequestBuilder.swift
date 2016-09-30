@@ -84,25 +84,26 @@ extension RequestBuilder: CustomStringConvertible {
 
         var desc = ""
         if let request = request {
-            desc += "\nREQUEST:\n"
-            desc += "Method: \(request.HTTPMethod ?? ""), URL: \(request.URL!)\n" // swiftlint:disable:this force_unwrapping
+            desc += "\n🔴 REQUEST:\n"
+            desc += "URL: \(request.URL!)\n" // swiftlint:disable:this force_unwrapping
+            desc += "Method: \(request.HTTPMethod ?? "")\n"
             request.allHTTPHeaderFields?.forEach { key, val in
                 desc += "\(key): \(val)\n"
             }
             if let bodyData = request.HTTPBody, body = String(data: bodyData, encoding: NSUTF8StringEncoding) {
-                desc += "\n\(body.newLineFreeString)"
+                desc += "⭕️ BODY: \(body.whiteCharactersFreeString)\n"
             }
         } else {
             desc += "<NO REQUEST DATA>\n"
         }
 
         if let response = self.response as? NSHTTPURLResponse {
-            desc += "\nRESPONSE:\n"
+            desc += "\n🔵 RESPONSE:\n"
             response.allHeaderFields.forEach { key, val in
                 desc += "\(key): \(val)\n"
             }
             if let bodyData = responseData, body = String(data: bodyData, encoding: NSUTF8StringEncoding) {
-                desc += "\n\(body.newLineFreeString)"
+                desc += "⭕️ BODY: \(body.whiteCharactersFreeString)\n"
             }
         } else {
             desc += "<NO RESPONSE DATA>\n"

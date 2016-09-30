@@ -75,8 +75,7 @@ extension CheckoutSummaryActionsHandler {
         viewController.displayLoader { done in
             viewController.checkout.createCheckoutViewModel(fromModel: viewController.checkoutViewModel) { result in
                 done()
-                let errorBehaviour = ErrorBehaviour.CancelCheckout(viewController: viewController)
-                guard var checkoutViewModel = result.success(errorBehaviour: errorBehaviour) else { return }
+                guard var checkoutViewModel = result.success() else { return }
 
                 checkoutViewModel.customer = customer
                 viewController.checkoutViewModel = checkoutViewModel
@@ -174,8 +173,7 @@ extension CheckoutSummaryActionsHandler {
             viewController.displayLoader { done in
                 viewController.checkout.createCheckoutViewModel(fromModel: viewController.checkoutViewModel) { result in
                     done()
-                    let errorBehaviour = ErrorBehaviour.CancelCheckout(viewController: viewController)
-                    guard var checkoutViewModel = result.success(errorBehaviour: errorBehaviour) else { return }
+                    guard var checkoutViewModel = result.success() else { return }
 
                     checkoutViewModel.customer = viewController.checkoutViewModel.customer
                     viewController.checkoutViewModel = checkoutViewModel
