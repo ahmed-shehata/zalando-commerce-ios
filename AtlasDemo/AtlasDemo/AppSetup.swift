@@ -10,7 +10,7 @@ import AtlasMockAPI
 class AppSetup {
 
     private(set) static var checkout: AtlasCheckout?
-    private static var options: Options?
+    private(set) static var options: Options?
 
     private static let defaultUseSandbox = false
     private static let defaultInterfaceLanguage = "en"

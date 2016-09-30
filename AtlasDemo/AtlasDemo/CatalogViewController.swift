@@ -43,8 +43,9 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
         exampleImageView.image = UIImage(named: "example")
         productCollectionView.delegate = self
         productCollectionView.dataSource = self
-        serverSwitch.on = false
-
+        if let useSandbox = AppSetup.options?.useSandboxEnvironment {
+            serverSwitch.on = useSandbox
+        }
         self.navigationController?.navigationBar.accessibilityIdentifier = "catalog-navigation-controller"
     }
 
