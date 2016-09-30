@@ -86,7 +86,7 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
         checkout.client.addresses { [weak self] result in
             guard let strongSelf = self else { return }
             strongSelf.loaderView.hide()
-            guard let addresses = result.success() else { return }
+            guard let addresses = result.process() else { return }
             strongSelf.setTableViewDataSource(addresses)
         }
     }

@@ -30,8 +30,8 @@ struct UserMessage {
         let title: String
         let message: String
         if let userPresentable = error as? UserPresentable {
-            message = userPresentable.message()
-            title = userPresentable.title()
+            message = userPresentable.displayedMessage
+            title = userPresentable.displayedTitle
         } else {
             message = String(error)
             title = Localizer.string("Error")
@@ -63,7 +63,7 @@ struct UserMessage {
             }
     }
 
-    static func unclasifiedError(error: ErrorType) {
+    static func unclassifiedError(error: ErrorType) {
         AtlasLogger.logError("Unclasified Error", error)
 
         let title = Localizer.string("Error.unclasified.title")

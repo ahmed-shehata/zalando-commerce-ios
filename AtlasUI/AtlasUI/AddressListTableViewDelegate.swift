@@ -74,7 +74,7 @@ extension AddressListTableViewDelegate: UITableViewDelegate {
 
             let address = self.addresses[indexPath.item]
             checkout.client.deleteAddress(address.id) { result in
-                guard let _ = result.success() else { return }
+                guard let _ = result.process() else { return }
                 self.deleteAddress(indexPath, tableView: tableView)
             }
     }
