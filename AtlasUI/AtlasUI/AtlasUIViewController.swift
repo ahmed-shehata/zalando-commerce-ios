@@ -4,7 +4,7 @@
 
 import UIKit
 
-class AtlasUIViewController: UIViewController {
+public class AtlasUIViewController: UIViewController {
 
     let mainNavigationController: UINavigationController
 
@@ -15,11 +15,11 @@ class AtlasUIViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public  init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         addChildViewController(mainNavigationController)
         view.addSubview(mainNavigationController.view)
         mainNavigationController.view.fillInSuperView()
