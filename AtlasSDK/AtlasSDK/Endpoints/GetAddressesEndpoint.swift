@@ -2,7 +2,7 @@
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
-struct GetAddressesEndpoint: ConfigurableEndpoint {
+struct GetAddressesEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
 
     let serviceURL: NSURL
     let path = "addresses"

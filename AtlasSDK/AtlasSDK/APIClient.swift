@@ -21,26 +21,26 @@ public struct APIClient {
     }
 
     func touch(endpoint: Endpoint, completion: AtlasResult<Bool> -> Void, successCompletion: JSONResponse -> Bool) {
-        call(from: endpoint, completion: completion) { response in
+        call(endpoint, completion: completion) { response in
             return successCompletion(response)
         }
     }
 
     func fetch<Model: JSONInitializable>(from endpoint: Endpoint, completion: AtlasResult<Model> -> Void) {
-        call(from: endpoint, completion: completion) { response in
+        call(endpoint, completion: completion) { response in
             guard let json = response.body else { return nil }
             return Model(json: json)
         }
     }
 
     func fetch<Model: JSONInitializable>(from endpoint: Endpoint, completion: AtlasResult<[Model]> -> Void) {
-        call(from: endpoint, completion: completion) { response in
+        call(endpoint, completion: completion) { response in
             guard let json = response.body, jsons = json.array.flatMap({ $0 }) else { return nil }
             return jsons.flatMap { Model(json: $0) }
         }
     }
 
-    private func call<T>(from endpoint: Endpoint, completion: AtlasResult<T> -> Void, successHandler: JSONResponse -> T?) {
+    private func call<T>(endpoint: Endpoint, completion: AtlasResult<T> -> Void, successHandler: JSONResponse -> T?) {
         var builder = RequestBuilder(forEndpoint: endpoint, urlSession: urlSession)
         builder.execute { result in
             switch result {
