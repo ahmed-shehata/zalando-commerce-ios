@@ -23,7 +23,7 @@ class AppSetup {
         prepareMockAPI()
         prepareApp()
 
-        setAppOptions(prepareOptions(useSandbox: true))
+        setAppOptions(prepareOptions())
     }
 
     static func change(environmentToSandbox useSandbox: Bool, completion: (() -> Void)? = nil) {
