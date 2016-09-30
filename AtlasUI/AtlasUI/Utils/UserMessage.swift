@@ -63,7 +63,7 @@ struct UserMessage {
             }
     }
 
-    static func unclasifiedError(error: ErrorType) {
+    static func unclassifiedError(error: ErrorType) {
         AtlasLogger.logError("Unclasified Error", error)
 
         let title = Localizer.string("Error.unclasified.title")

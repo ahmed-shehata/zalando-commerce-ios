@@ -20,7 +20,7 @@ extension AtlasResult {
         let viewController: AtlasUIViewController? = try? Atlas.provide()
         guard let userPresentable = error as? UserPresentable, atlasUIViewController = viewController else {
             // TODO: Need to check for network errors
-            UserMessage.unclasifiedError(error)
+            UserMessage.unclassifiedError(error)
             return
         }
 
