@@ -140,7 +140,14 @@ extension APIClient {
             clientId: config.clientId,
             fields: nil)
 
-        fetch(from: endpoint, completion: completion)
+        let fetchCompletion: ArticlesCompletion = { result in
+            if case let .success(article) = result where !article.hasAvailableUnits {
+                completion(.failure(AtlasCatalogError.outOfStock))
+            } else {
+                completion(result)
+            }
+        }
+        fetch(from: endpoint, completion: fetchCompletion)
     }
 
     public func addresses(completion: AddressesCompletion) {

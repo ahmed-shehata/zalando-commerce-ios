@@ -1,5 +1,7 @@
 import UIKit
 import MessageUI
+import AtlasUI
+import AtlasSDK
 
 extension AppDelegate: MFMailComposeViewControllerDelegate {
 
@@ -17,9 +19,9 @@ extension AppDelegate: MFMailComposeViewControllerDelegate {
                 messageController.addAttachmentData(data, mimeType: "image/jpeg", fileName: "Bug")
             }
 
-            let rootVC = UIApplication.sharedApplication().keyWindow?.rootViewController
-            rootVC?.dismissViewControllerAnimated(true, completion: nil)
-            rootVC?.presentViewController(messageController, animated: true, completion: nil)
+            let atlasUIViewController: AtlasUIViewController? = try? Atlas.provide()
+            messageController.modalPresentationStyle = .OverFullScreen
+            atlasUIViewController?.presentViewController(messageController, animated: true, completion: nil)
         }
 
     }
@@ -27,14 +29,14 @@ extension AppDelegate: MFMailComposeViewControllerDelegate {
     func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
         switch result {
         case MFMailComposeResultSent:
-            self.dismissEmail()
+            dismissEmail(controller)
             showAlert("Bug report sent successfully")
             break
         case MFMailComposeResultFailed:
             showAlert("Cannot send your bug report")
             break
         default:
-            dismissEmail()
+            dismissEmail(controller)
         }
     }
 
@@ -64,11 +66,12 @@ extension AppDelegate: MFMailComposeViewControllerDelegate {
                                       message: text,
                                       preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: nil))
-        UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+        let atlasUIViewController: AtlasUIViewController? = try? Atlas.provide()
+        atlasUIViewController?.presentViewController(alert, animated: true, completion: nil)
     }
 
-    private func dismissEmail() {
-        UIApplication.sharedApplication().keyWindow?.rootViewController?.dismissViewControllerAnimated(true, completion: nil)
+    private func dismissEmail(controller: MFMailComposeViewController) {
+        controller.dismissViewControllerAnimated(true, completion: nil)
     }
 
 }
