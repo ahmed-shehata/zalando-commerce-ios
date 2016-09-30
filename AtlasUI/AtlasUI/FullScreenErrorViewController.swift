@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import AtlasSDK
 
 class FullScreenErrorViewController: UIViewController {
 
@@ -21,12 +22,24 @@ class FullScreenErrorViewController: UIViewController {
         buildView()
     }
 
+    func cancelButtonPressed() {
+        let atlasUIViewController: AtlasUIViewController? = try? Atlas.provide()
+        if let atlasUIViewController = atlasUIViewController {
+            atlasUIViewController.dismissViewControllerAnimated(true, completion: nil)
+        }
+    }
+
 }
 
 extension FullScreenErrorViewController: UIBuilder {
 
     func configureView() {
         view.addSubview(messageLabel)
+        let cancelButton = UIBarButtonItem(title: Localizer.string("Cancel"),
+                                           style: .Plain,
+                                           target: self,
+                                           action: #selector(cancelButtonPressed))
+        navigationItem.rightBarButtonItem = cancelButton
     }
 
     func configureConstraints() {
