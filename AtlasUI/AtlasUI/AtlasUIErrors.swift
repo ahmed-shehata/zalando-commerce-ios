@@ -7,30 +7,42 @@ import AtlasSDK
 
 protocol UserPresentable: AtlasErrorType {
 
-    func title(localizedWith provider: LocalizerProviderType, formatArguments: CVarArgType?...) -> String
+    func title(formatArguments: CVarArgType?...) -> String
 
-    func message(localizedWith provider: LocalizerProviderType, formatArguments: CVarArgType?...) -> String
+    func message(formatArguments: CVarArgType?...) -> String
+
+    func shouldDisplayGeneralMessage() -> Bool
+
+    func shouldCancelCheckout() -> Bool
 
 }
 
 extension UserPresentable {
 
-    func title(localizedWith provider: LocalizerProviderType, formatArguments: CVarArgType?...) -> String {
-        return provider.localizer.localizedString("\(self.dynamicType).title", formatArguments: formatArguments)
+    func title(formatArguments: CVarArgType?...) -> String {
+        return Localizer.string("\(self.dynamicType).title", formatArguments)
     }
 
-    func message(localizedWith provider: LocalizerProviderType, formatArguments: CVarArgType?...) -> String {
-        return provider.localizer.localizedString(self.localizedDescriptionKey, formatArguments: formatArguments)
+    func message(formatArguments: CVarArgType?...) -> String {
+        return Localizer.string(self.localizedDescriptionKey, formatArguments)
+    }
+
+    func shouldDisplayGeneralMessage() -> Bool {
+        return true
+    }
+
+    func shouldCancelCheckout() -> Bool {
+        return false
     }
 
 }
 
 extension AtlasAPIError: UserPresentable {
 
-    func message(localizedWith provider: LocalizerProviderType, formatArguments: CVarArgType?...) -> String {
+    func message(formatArguments: CVarArgType?...) -> String {
         switch self {
         case .invalidResponseFormat, .noData, .unauthorized:
-            return provider.localizer.localizedString(self.localizedDescriptionKey)
+            return Localizer.string(self.localizedDescriptionKey)
         case let .nsURLError(code, details):
             return "\(details) (#\(code))"
         case let .http(status, details):
@@ -41,7 +53,7 @@ extension AtlasAPIError: UserPresentable {
             if case let AtlasAPIError.backend(_, _, _, details) = error {
                 return "\(details~?)"
             } else {
-                return provider.localizer.localizedString("AtlasAPIError.message.checkoutFailed")
+                return Localizer.string("AtlasAPIError.message.checkoutFailed")
             }
         }
     }
@@ -50,10 +62,10 @@ extension AtlasAPIError: UserPresentable {
 
 extension LoginError: UserPresentable {
 
-    func message(localizedWith provider: LocalizerProviderType, formatArguments: CVarArgType?...) -> String {
+    func message(formatArguments: CVarArgType?...) -> String {
         switch self {
         case .missingURL, .accessDenied, .missingViewControllerToShowLoginForm:
-            return provider.localizer.localizedString(self.localizedDescriptionKey)
+            return Localizer.string(self.localizedDescriptionKey)
         case let .requestFailed(error):
             return "\(error?.localizedDescription~?)"
         }
@@ -62,3 +74,19 @@ extension LoginError: UserPresentable {
 }
 
 extension AtlasConfigurationError: UserPresentable { }
+
+extension AtlasCatalogError: UserPresentable {
+
+    public func shouldDisplayGeneralMessage() -> Bool {
+        switch self {
+        case .outOfStock: return false
+        }
+    }
+
+    public func shouldCancelCheckout() -> Bool {
+        switch self {
+        case .outOfStock: return true
+        }
+    }
+
+}

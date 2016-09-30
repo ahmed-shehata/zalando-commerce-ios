@@ -25,7 +25,7 @@ public struct Options {
             self.interfaceLanguage = interfaceLanguage ?? bundle.string(.interfaceLanguage)
 
             if let authorizationHandler = authorizationHandler {
-                Injector.register { authorizationHandler as AuthorizationHandler }
+                Atlas.register { authorizationHandler as AuthorizationHandler }
             }
 
             if let url = configurationURL {

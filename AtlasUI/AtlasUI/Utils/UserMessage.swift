@@ -24,46 +24,50 @@ struct ButtonAction {
 
 struct UserMessage {
 
-    let localizerProvider: LocalizerProviderType
-
-    func show(error error: ErrorType) {
+    static func show(error error: ErrorType) {
         AtlasLogger.logError(error)
 
         let title: String
         let message: String
         if let userPresentable = error as? UserPresentable {
-            message = userPresentable.message(localizedWith: localizerProvider)
-            title = userPresentable.title(localizedWith: localizerProvider)
+            message = userPresentable.message()
+            title = userPresentable.title()
         } else {
             message = String(error)
-            title = localizerProvider.loc("Error")
+            title = Localizer.string("Error")
         }
 
         show(title: title, message: message, actions: ButtonAction(text: "OK"))
     }
 
-    func show(title title: String, message: String?, preferredStyle: UIAlertControllerStyle = .Alert, actions: ButtonAction...) {
-        guard let topViewController = UIApplication.topViewController() else { return }
-        let alertView = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
-
-        actions.forEach { alertView.addAction($0, localizerProvider: localizerProvider) }
-
-        Async.main {
-            topViewController.presentViewController(alertView, animated: true, completion: nil)
-        }
-    }
-
-    func notImplemented() {
+    static func notImplemented() {
         AtlasLogger.logError("Not Implemented")
-        let title = localizerProvider.loc("feature.notImplemented.title")
-        let message = localizerProvider.loc("feature.notImplemented.message")
+        let title = Localizer.string("feature.notImplemented.title")
+        let message = Localizer.string("feature.notImplemented.message")
         show(title: title, message: message, actions: ButtonAction(text: "OK"))
     }
 
-    func generalError() {
-        AtlasLogger.logError("General Error")
-        let title = localizerProvider.loc("Error.general.title")
-        let message = localizerProvider.loc("Error.general.message")
+    static func showOK(title title: String) {
+        show(title: title, message: nil, actions: ButtonAction(text: "OK"))
+    }
+
+    static func show(title title: String, message: String? = nil,
+        preferredStyle: UIAlertControllerStyle = .Alert, actions: ButtonAction...) {
+            guard let topViewController = UIApplication.topViewController() else { return }
+            let alertView = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
+
+            actions.forEach { alertView.addAction($0) }
+
+            Async.main {
+                topViewController.presentViewController(alertView, animated: true, completion: nil)
+            }
+    }
+
+    static func unclasifiedError(error: ErrorType) {
+        AtlasLogger.logError("Unclasified Error", error)
+
+        let title = Localizer.string("Error.unclasified.title")
+        let message = Localizer.string("Error.unclasified.message")
         show(title: title, message: message, actions: ButtonAction(text: "OK"))
     }
 
@@ -71,8 +75,8 @@ struct UserMessage {
 
 private extension UIAlertController {
 
-    func addAction(button: ButtonAction, localizerProvider: LocalizerProviderType) {
-        let title = localizerProvider.loc(button.text)
+    func addAction(button: ButtonAction) {
+        let title = Localizer.string(button.text)
         let action = UIAlertAction(title: title, style: button.style, handler: button.handler)
         self.addAction(action)
     }
