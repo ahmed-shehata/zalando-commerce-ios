@@ -65,7 +65,7 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
 
     @IBAction func serverSwitchTapped(serverSwitch: UISwitch) {
-        AppSetup.switchEnvironment(useSandbox: !serverSwitch.on)
+        AppSetup.change(environmentToSandbox: !serverSwitch.on)
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
