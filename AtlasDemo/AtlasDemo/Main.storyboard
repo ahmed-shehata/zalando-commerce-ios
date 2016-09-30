@@ -87,7 +87,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="AtlasSDK Demo" id="Qtr-gt-Nf8">
                         <barButtonItem key="leftBarButtonItem" id="ega-UN-CNV">
-                            <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="4fn-Ge-VII">
+                            <switch key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="4fn-Ge-VII">
                                 <rect key="frame" x="20" y="6" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
@@ -221,13 +221,25 @@
                                     <action selector="languageSwitched:" destination="4dE-k4-8mF" eventType="valueChanged" id="c0w-vr-f9c"/>
                                 </connections>
                             </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cqd-b7-hfW">
+                                <rect key="frame" x="240" y="421" width="121" height="29"/>
+                                <segments>
+                                    <segment title="Live"/>
+                                    <segment title="Staging"/>
+                                </segments>
+                                <connections>
+                                    <action selector="serverSwitched:" destination="4dE-k4-8mF" eventType="valueChanged" id="15I-PS-mp4"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="cKW-p6-kGE" firstAttribute="top" secondItem="Cew-DZ-oSf" secondAttribute="bottom" constant="8" id="87g-7C-rIr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="cKW-p6-kGE" secondAttribute="trailing" constant="8" id="9E4-hY-2uQ"/>
+                            <constraint firstItem="cqd-b7-hfW" firstAttribute="centerX" secondItem="Mfi-QH-Ey6" secondAttribute="centerX" id="AW8-GA-9Yk"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Mas-9p-sdx" secondAttribute="leading" id="Bba-Hg-7Hx"/>
                             <constraint firstItem="Mas-9p-sdx" firstAttribute="top" secondItem="qLo-Q0-jea" secondAttribute="bottom" constant="40" id="LvW-wO-yiQ"/>
+                            <constraint firstItem="qLo-Q0-jea" firstAttribute="top" secondItem="cqd-b7-hfW" secondAttribute="bottom" constant="13" id="R8a-x2-w9l"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Mas-9p-sdx" secondAttribute="trailing" id="Umc-We-jKj"/>
                             <constraint firstItem="qLo-Q0-jea" firstAttribute="centerX" secondItem="Mfi-QH-Ey6" secondAttribute="centerX" id="X5h-QE-qAP"/>
                             <constraint firstItem="9dg-ts-9xB" firstAttribute="top" secondItem="cKW-p6-kGE" secondAttribute="bottom" constant="16" id="Yq0-jT-Q0M"/>
@@ -245,6 +257,7 @@
                         <outlet property="gender" destination="l83-gi-coC" id="OI1-eH-Wu0"/>
                         <outlet property="languageSwitcher" destination="qLo-Q0-jea" id="JYI-M7-kdn"/>
                         <outlet property="name" destination="cPX-V4-a02" id="v4A-3Z-q9M"/>
+                        <outlet property="serverSegmentedControl" destination="cqd-b7-hfW" id="MKc-qU-tJQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2J9-Xl-zSa" userLabel="First Responder" sceneMemberID="firstResponder"/>

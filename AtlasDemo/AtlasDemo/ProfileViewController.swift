@@ -14,7 +14,9 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var customerNumer: UILabel!
     @IBOutlet weak var gender: UILabel!
     @IBOutlet weak var languageSwitcher: UISegmentedControl!
+    @IBOutlet weak var liveServerSwitch: UISwitch!
 
+    @IBOutlet weak var serverSegmentedControl: UISegmentedControl!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,6 +26,12 @@ class ProfileViewController: UIViewController {
         self.gender.text = ""
         self.email.textColor = UIColor.grayColor()
         self.languageSwitcher.selectedSegmentIndex = getLanguageSwitcherSelectedIndex()
+        serverSegmentedControl.selectedSegmentIndex = 0
+        if let useSandbox = AppSetup.options?.useSandboxEnvironment {
+            if useSandbox {
+                serverSegmentedControl.selectedSegmentIndex = 1
+            }
+        }
 
         AppSetup.checkout?.client.customer { result in
             switch result {
@@ -41,6 +49,18 @@ class ProfileViewController: UIViewController {
             }
         }
     }
+    @IBAction func serverSwitched(sender: UISegmentedControl) {
+
+        switch sender.selectedSegmentIndex {
+        case 1:
+            AppSetup.change(environmentToSandbox: true)
+        case 0:
+            fallthrough
+        default:
+            AppSetup.change(environmentToSandbox: false)
+        }
+
+    }
 
     @IBAction func languageSwitched(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
@@ -51,6 +71,9 @@ class ProfileViewController: UIViewController {
         default:
             AppSetup.change(interfaceLanguage: "en")
         }
+    }
+    @IBAction func liveServerSwitchChanged(serverSwitch: UISwitch) {
+        AppSetup.change(environmentToSandbox: !serverSwitch.on)
     }
 
     @IBAction func logoutButtonTapped(sender: AnyObject) {
