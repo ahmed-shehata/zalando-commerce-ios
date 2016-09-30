@@ -49,7 +49,7 @@ extension CheckoutSummaryActionsHandler {
             viewController.checkout.client.createOrder(checkoutId) { result in
 
                 done()
-                guard let order = result.process() else { return }
+                guard let order = AtlasResult<Order>.failure(AtlasAPIError.noData).process() else { return }
                 self.handleOrderConfirmation(order)
             }
         }

@@ -26,7 +26,7 @@ class BannerErrorViewController: UIViewController {
         label.numberOfLines = 0
         label.textColor = .whiteColor()
         label.textAlignment = .Left
-        label.font = .systemFontOfSize(12, weight: UIFontWeightRegular)
+        label.font = .systemFontOfSize(12, weight: UIFontWeightBold)
         label.backgroundColor = .clearColor()
         return label
     }()
@@ -37,6 +37,17 @@ class BannerErrorViewController: UIViewController {
         label.textColor = .whiteColor()
         label.textAlignment = .Left
         label.font = .systemFontOfSize(12, weight: UIFontWeightLight)
+        label.backgroundColor = .clearColor()
+        return label
+    }()
+
+    private let cancelIconLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 1
+        label.textColor = .blackColor()
+        label.textAlignment = .Right
+        label.text = "x"
+        label.font = .systemFontOfSize(10, weight: UIFontWeightLight)
         label.backgroundColor = .clearColor()
         return label
     }()
@@ -70,6 +81,7 @@ extension BannerErrorViewController: UIBuilder {
         view.userInteractionEnabled = true
         view.addSubview(containerView)
         containerView.addSubview(stackView)
+        containerView.addSubview(cancelIconLabel)
         containerView.addSubview(cancelButton)
         stackView.addArrangedSubview(titleLabel)
         stackView.addArrangedSubview(messageLabel)
@@ -81,6 +93,8 @@ extension BannerErrorViewController: UIBuilder {
         containerView.snapAnchorToSuperView(.right)
         containerView.snapAnchorToSuperView(.left)
         stackView.fillInSuperView()
+        cancelIconLabel.snapAnchorToSuperView(.top, constant: 10)
+        cancelIconLabel.snapAnchorToSuperView(.right, constant: -10)
         cancelButton.fillInSuperView()
     }
 
