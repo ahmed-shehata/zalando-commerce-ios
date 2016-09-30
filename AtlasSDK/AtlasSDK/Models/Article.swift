@@ -34,6 +34,10 @@ public struct Article {
         return units.count == 1
     }
 
+    public var hasAvailableUnits: Bool {
+        return !availableUnits.isEmpty
+    }
+
     public var thumbnailURL: NSURL? {
         return media.images.first?.catalogURL
     }
