@@ -44,11 +44,25 @@ extension NSMutableURLRequest {
 
     convenience init(endpoint: Endpoint) throws {
         self.init(URL: endpoint.URL)
+        self.setHeaders(from: endpoint)
         self.HTTPMethod = endpoint.method.rawValue
-        self.setValue(endpoint.contentType, forHTTPHeaderField: "Content-Type")
-        let acceptTypes = [endpoint.acceptedContentType, "application/x.problem+json"].flatMap { $0 }
-        self.setValue(acceptTypes.joinWithSeparator(","), forHTTPHeaderField: "Accept")
         self.HTTPBody = try NSData(json: endpoint.parameters)
+    }
+
+    private func setHeaders(from endpoint: Endpoint) {
+        var headers = [String: String]()
+
+        let acceptedContentTypes = [endpoint.acceptedContentType, "application/x.problem+json"].flatMap { $0 }
+        headers["Accept"] = acceptedContentTypes.joinWithSeparator(",")
+        headers["Content-Type"] = endpoint.contentType
+
+        headers.forEach { header, value in
+            self.setValue(value, forHTTPHeaderField: header)
+        }
+
+        endpoint.headers?.forEach { header, value in
+            self.setValue(String(value), forHTTPHeaderField: header)
+        }
     }
 
 }
