@@ -39,16 +39,13 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
         }
     }
 
-    init(checkout: AtlasCheckout, addressType: AddressType,
-        addressSelectionCompletion: AddressSelectionCompletion) {
-            self.checkout = checkout
-            self.addressType = addressType
-            selectionCompletion = addressSelectionCompletion
-            super.init(nibName: nil, bundle: nil)
-            tableviewDelegate = AddressListTableViewDelegate(checkout: checkout,
-                addressType: addressType,
-                addressSelectionCompletion: selectionCompletion)
-
+    init(checkout: AtlasCheckout, addressType: AddressType, addressSelectionCompletion: AddressSelectionCompletion) {
+        self.checkout = checkout
+        self.addressType = addressType
+        selectionCompletion = addressSelectionCompletion
+        super.init(nibName: nil, bundle: nil)
+        tableviewDelegate = AddressListTableViewDelegate(checkout: checkout, addressType: addressType,
+                                                         addressSelectionCompletion: selectionCompletion)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -61,9 +58,9 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
         self.view.addSubview(loaderView)
         switch addressType {
         case .billing:
-            self.title = "Billing Address" // TODO: translate
+            self.title = Localizer.string("Address.Billing")
         case .shipping:
-            self.title = "Shipping Address" // TODO: translate
+            self.title = Localizer.string("Address.Shipping")
         }
 
         self.navigationController?.navigationBar.accessibilityIdentifier = "address-picker-navigation-bar"

@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import AtlasSDK
 
 class CheckoutSummaryFooterStackView: UIStackView {
 
@@ -39,7 +40,8 @@ extension CheckoutSummaryFooterStackView: UIBuilder {
 
     @objc func tocPressed(sender: UIButton!) {
         guard let url = tocURL else { return }
-        guard let navController = UIApplication.topViewController()?.navigationController else {
+        let atlasUIViewController: AtlasUIViewController? = try? Atlas.provide()
+        guard let navController = atlasUIViewController?.mainNavigationController else {
             UIApplication.sharedApplication().openURL(url)
             return
         }

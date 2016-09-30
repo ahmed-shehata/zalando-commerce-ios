@@ -52,8 +52,8 @@ extension AddressFormStackView: UIDataBuilder {
                 nextTextField = textFields.count > idx + 1 ? textFields[idx + 1]: nil
             }
 
-            let valueChangedHandler: TextFieldChangedHandler = { [weak self] text in
-                fieldType.updateModel(viewModel, withValue: text) // TODO: localize text?
+            let valueChangedHandler: TextFieldChangedHandler = { text in
+                fieldType.updateModel(viewModel, withValue: text)
             }
 
             let viewModel = TextFieldInputViewModel(title: title,

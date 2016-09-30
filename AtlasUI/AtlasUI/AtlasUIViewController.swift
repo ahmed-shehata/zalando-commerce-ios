@@ -6,11 +6,11 @@ import UIKit
 
 class AtlasUIViewController: UIViewController {
 
-    let sizeSelectionNavigationController: UINavigationController
+    let mainNavigationController: UINavigationController
 
     init(atlasCheckout: AtlasCheckout, forProductSKU sku: String) {
         let sizeSelectionViewController = SizeSelectionViewController(checkout: atlasCheckout, sku: sku)
-        sizeSelectionNavigationController = UINavigationController(rootViewController: sizeSelectionViewController)
+        mainNavigationController = UINavigationController(rootViewController: sizeSelectionViewController)
 
         super.init(nibName: nil, bundle: nil)
     }
@@ -20,9 +20,9 @@ class AtlasUIViewController: UIViewController {
     }
 
     override func viewDidLoad() {
-        addChildViewController(sizeSelectionNavigationController)
-        view.addSubview(sizeSelectionNavigationController.view)
-        sizeSelectionNavigationController.view.fillInSuperView()
+        addChildViewController(mainNavigationController)
+        view.addSubview(mainNavigationController.view)
+        mainNavigationController.view.fillInSuperView()
     }
 
 }

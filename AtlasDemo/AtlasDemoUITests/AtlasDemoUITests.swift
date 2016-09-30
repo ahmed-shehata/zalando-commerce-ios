@@ -138,6 +138,9 @@ class AtlasDemoUITests: XCTestCase {
         expectationForPredicate(billingPredicate, evaluatedWithObject: app.tables.cells, handler: nil)
         waitForExpectationsWithTimeout(5, handler: nil)
     }
+}
+
+extension AtlasDemoUITests {
 
     private func proceedToSummaryWithSizes() {
         let size = app.cells["size-cell-1"]
