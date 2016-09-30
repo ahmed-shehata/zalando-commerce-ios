@@ -1,0 +1,47 @@
+//
+//  Copyright © 2016 Zalando SE. All rights reserved.
+//
+
+import UIKit
+
+class FullScreenErrorViewController: UIViewController {
+
+    private let messageLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.textColor = .blackColor()
+        label.textAlignment = .Center
+        label.font = .systemFontOfSize(14, weight: UIFontWeightRegular)
+        label.backgroundColor = UIColor(hex: 0xE5E5E5)
+        return label
+    }()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        buildView()
+    }
+
+}
+
+extension FullScreenErrorViewController: UIBuilder {
+
+    func configureView() {
+        view.addSubview(messageLabel)
+    }
+
+    func configureConstraints() {
+        messageLabel.fillInSuperView()
+    }
+
+}
+
+extension FullScreenErrorViewController: UIDataBuilder {
+
+    typealias T = UserPresentable
+
+    func configureData(viewModel: T) {
+        title = viewModel.displayedTitle
+        messageLabel.text = viewModel.displayedMessage.uppercaseString
+    }
+
+}

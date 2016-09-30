@@ -30,8 +30,8 @@ struct UserMessage {
         let title: String
         let message: String
         if let userPresentable = error as? UserPresentable {
-            message = userPresentable.message()
-            title = userPresentable.title()
+            message = userPresentable.displayedMessage
+            title = userPresentable.displayedTitle
         } else {
             message = String(error)
             title = Localizer.string("Error")

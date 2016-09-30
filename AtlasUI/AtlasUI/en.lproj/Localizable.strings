@@ -80,5 +80,5 @@
 "Form.validation.numbersOnly" = "Only numbers are allowed";
 "Address.validation.notValid" = "Address not valid, please check the address";
 
-"Error.unclasified.title" = "Oops";
-"Error.unclasified.message" = "Sorry, Something went wrong";
+"Error.unclassified.title" = "Oops";
+"Error.unclassified.message" = "Something went wrong.\nWe are fixing the issue.\nPlease come back later";

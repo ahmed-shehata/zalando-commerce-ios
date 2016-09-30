@@ -6,7 +6,7 @@ import AtlasSDK
 
 extension AtlasResult {
 
-    internal func success() -> T? {
+    internal func process() -> T? {
         switch self {
         case .failure(let error):
             displayError(error)
@@ -17,28 +17,31 @@ extension AtlasResult {
     }
 
     private func displayError(error: ErrorType) {
-        guard let userPresentable = error as? UserPresentable else {
-            // TODO: Need to check for network errors and other types
+        let viewController: AtlasUIViewController? = try? Atlas.provide()
+        guard let userPresentable = error as? UserPresentable, atlasUIViewController = viewController else {
+            // TODO: Need to check for network errors
             UserMessage.unclasifiedError(error)
             return
         }
 
-        let atlasUIViewController: AtlasUIViewController? = try? Atlas.provide()
-        if let atlasUIViewController = atlasUIViewController where userPresentable.shouldCancelCheckout() {
-            atlasUIViewController.dismissViewControllerAnimated(true) {
-                self.displayErrorMessage(userPresentable)
-            }
-        } else {
-            displayErrorMessage(userPresentable)
+        switch userPresentable.errorPresentationType() {
+        case .banner: displayBanner(userPresentable, atlasUIViewController: atlasUIViewController)
+        case .fullScreen: displayFullScreen(userPresentable, atlasUIViewController: atlasUIViewController)
         }
     }
 
-    private func displayErrorMessage(userPresentable: UserPresentable) {
-        if userPresentable.shouldDisplayGeneralMessage() {
-            UserMessage.unclasifiedError(userPresentable)
-        } else {
-            UserMessage.show(error: userPresentable)
-        }
+    private func displayBanner(error: UserPresentable, atlasUIViewController: AtlasUIViewController) {
+        // TODO: Show Banner
+        UserMessage.show(error: error)
+    }
+
+    private func displayFullScreen(error: UserPresentable, atlasUIViewController: AtlasUIViewController) {
+        let fullScreenErrorViewController = FullScreenErrorViewController()
+        let navigationController = UINavigationController(rootViewController: fullScreenErrorViewController)
+        atlasUIViewController.addChildViewController(navigationController)
+        atlasUIViewController.view.addSubview(navigationController.view)
+        navigationController.view.fillInSuperView()
+        fullScreenErrorViewController.configureData(error)
     }
 
 }
