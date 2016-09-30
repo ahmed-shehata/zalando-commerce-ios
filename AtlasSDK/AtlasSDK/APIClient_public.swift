@@ -142,7 +142,7 @@ extension APIClient {
 
         let fetchCompletion: ArticlesCompletion = { result in
             if case let .success(article) = result where !article.hasAvailableUnits {
-                completion(AtlasResult<Article>.failure(AtlasCatalogError.outOfStock))
+                completion(.failure(AtlasCatalogError.outOfStock))
             } else {
                 completion(result)
             }
