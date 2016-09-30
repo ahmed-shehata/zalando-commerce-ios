@@ -27,6 +27,7 @@ class AppSetup {
     }
 
     static func change(environmentToSandbox useSandbox: Bool, completion: (() -> Void)? = nil) {
+        Atlas.logoutUser()
         setAppOptions(prepareOptions(useSandbox: useSandbox), completion: completion)
     }
 
