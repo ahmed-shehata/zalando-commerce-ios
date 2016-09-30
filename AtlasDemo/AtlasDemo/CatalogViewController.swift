@@ -35,7 +35,7 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
         "K0052E012-D11", "AJ152H012-Q11", "6CA51L00B-D11",
         "C1551E00K-F11", "PS752G001-Q11", "PX652G005-K11",
         "YO152G00A-C11", "BO152F027-Q11", "TP822C00N-Q11",
-        "HU752E00G-A11", "TI522A03E-K11", "TI522D02K-A11", "PI952HA0J-O12"
+        "HU752E00G-A11", "TI522A03E-K11", "TI522D02K-A11", "yo152ha06-k11"
     ]
 
     override func viewDidLoad() {
