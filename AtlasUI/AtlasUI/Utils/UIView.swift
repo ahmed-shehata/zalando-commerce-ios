@@ -4,6 +4,23 @@
 
 import Foundation
 
+enum ViewAnchor {
+    case top
+    case right
+    case bottom
+    case left
+
+    func anchorForView(view: UIView) -> NSLayoutAnchor {
+        switch self {
+        case .top: return view.topAnchor
+        case .right: return view.rightAnchor
+        case .bottom: return view.bottomAnchor
+        case .left: return view.leftAnchor
+        }
+    }
+
+}
+
 extension UIView {
 
     func removeAllSubviews() {
@@ -31,6 +48,14 @@ extension UIView {
         bottomAnchor.constraintEqualToAnchor(superview.bottomAnchor).active = true
         rightAnchor.constraintEqualToAnchor(superview.rightAnchor).active = true
         leftAnchor.constraintEqualToAnchor(superview.leftAnchor).active = true
+    }
+
+    func snapAnchorToSuperView(anchor: ViewAnchor, constant: CGFloat = 0) {
+        guard let superview = superview else { return }
+        translatesAutoresizingMaskIntoConstraints = false
+        let constaint = anchor.anchorForView(self).constraintEqualToAnchor(anchor.anchorForView(superview))
+        constaint.constant = constant
+        constaint.active = true
     }
 
     func centerInSuperView() {
