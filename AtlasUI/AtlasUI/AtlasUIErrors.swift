@@ -5,6 +5,11 @@
 import Foundation
 import AtlasSDK
 
+public enum ErrorPresentationType {
+    case banner
+    case fullScreen
+}
+
 protocol UserPresentable: AtlasErrorType {
 
     func title(formatArguments: CVarArgType?...) -> String
@@ -13,7 +18,7 @@ protocol UserPresentable: AtlasErrorType {
 
     func shouldDisplayGeneralMessage() -> Bool
 
-    func shouldCancelCheckout() -> Bool
+    func errorPresentationType() -> ErrorPresentationType
 
 }
 
@@ -31,8 +36,16 @@ extension UserPresentable {
         return true
     }
 
-    func shouldCancelCheckout() -> Bool {
-        return false
+    func errorPresentationType() -> ErrorPresentationType {
+        return .banner
+    }
+
+    var displayedTitle: String {
+        return shouldDisplayGeneralMessage() ? Localizer.string("Error.unclassified.title") : title()
+    }
+
+    var displayedMessage: String {
+        return shouldDisplayGeneralMessage() ? Localizer.string("Error.unclassified.message") : message()
     }
 
 }
@@ -83,9 +96,9 @@ extension AtlasCatalogError: UserPresentable {
         }
     }
 
-    public func shouldCancelCheckout() -> Bool {
+    public func errorPresentationType() -> ErrorPresentationType {
         switch self {
-        case .outOfStock: return true
+        case .outOfStock: return .fullScreen
         }
     }
 

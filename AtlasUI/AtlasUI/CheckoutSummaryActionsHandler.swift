@@ -30,7 +30,7 @@ extension CheckoutSummaryActionsHandler {
         guard let checkout = viewController.checkoutViewModel.checkout else { return }
 
         if checkout.hasSameAddress(like: viewController.checkoutViewModel) {
-            return createOrder(checkout.id)
+            return fake_createOrder(forCheckoutId: checkout.id)
         }
 
         let updateCheckoutRequest = UpdateCheckoutRequest(checkoutViewModel: viewController.checkoutViewModel)
@@ -38,28 +38,23 @@ extension CheckoutSummaryActionsHandler {
         viewController.displayLoader { done in
             viewController.checkout.client.updateCheckout(checkout.id, updateCheckoutRequest: updateCheckoutRequest) { result in
                 done()
-                guard let checkout = result.success() else { return }
-                self.createOrder(checkout.id)
+                guard let checkout = result.process() else { return }
+                self.fake_createOrder(forCheckoutId: checkout.id)
             }
         }
     }
-    internal func createOrder(checkoutId: String) {
+
+    internal func createOrder(forCheckoutId checkoutId: String) {
         guard let viewController = self.viewController else { return }
         viewController.displayLoader { done in
-            Async.delay(2) {
-                // TODO: Only in bug bashing session
+            viewController.checkout.client.createOrder(checkoutId) { result in
                 done()
-                self.handleFakeOrderConfirmation()
-                return
+                guard let order = result.process() else { return }
+                self.handleOrderConfirmation(order)
             }
-
-//            viewController.checkout.client.createOrder(checkoutId) { result in
-//                guard let order = result.success(errorHandlingType: .GeneralError(userMessage: viewController.userMessage)) else { return }
-//                self.handleOrderConfirmation(order)
-//            }
         }
-
     }
+
 }
 
 extension CheckoutSummaryActionsHandler {
@@ -69,7 +64,7 @@ extension CheckoutSummaryActionsHandler {
 
         viewController.checkout.client.customer { result in
 
-            guard let customer = result.success() else { return }
+            guard let customer = result.process() else { return }
             self.generateCheckout(customer)
         }
     }
@@ -80,7 +75,7 @@ extension CheckoutSummaryActionsHandler {
         viewController.displayLoader { done in
             viewController.checkout.createCheckoutViewModel(fromModel: viewController.checkoutViewModel) { result in
                 done()
-                guard var checkoutViewModel = result.success() else { return }
+                guard var checkoutViewModel = result.process() else { return }
 
                 checkoutViewModel.customer = customer
                 viewController.checkoutViewModel = checkoutViewModel
@@ -101,7 +96,7 @@ extension CheckoutSummaryActionsHandler {
         let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
         paymentSelectionViewController.paymentCompletion = { result in
 
-            guard let _ = result.success() else { return }
+            guard let _ = result.process() else { return }
             self.loadCustomerData()
         }
         viewController.showViewController(paymentSelectionViewController, sender: viewController)
@@ -126,12 +121,6 @@ extension CheckoutSummaryActionsHandler {
         viewController.showViewController(addressSelectionViewController, sender: viewController)
     }
 
-    @available( *, deprecated, message = "Only for Bug-Bashing session")
-    internal func handleFakeOrderConfirmation() { // TODO: Only used for bug-bashing session
-        guard let viewController = self.viewController else { return }
-        viewController.viewState = .OrderPlaced
-    }
-
     internal func handleOrderConfirmation(order: Order) {
         guard let viewController = self.viewController else { return }
 
@@ -142,8 +131,7 @@ extension CheckoutSummaryActionsHandler {
 
         let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
         paymentSelectionViewController.paymentCompletion = { result in
-
-            guard let _ = result.success() else { return }
+            guard let _ = result.process() else { return }
             viewController.viewState = .OrderPlaced
         }
         viewController.showViewController(paymentSelectionViewController, sender: viewController)
@@ -152,6 +140,7 @@ extension CheckoutSummaryActionsHandler {
 }
 
 extension CheckoutSummaryActionsHandler {
+
     func pickedAddressCompletion(pickedAddress address: EquatableAddress?,
         forAddressType addressType: AddressType, popBackToSummaryOnFinish: Bool) {
             guard let viewController = self.viewController else { return }
@@ -184,7 +173,7 @@ extension CheckoutSummaryActionsHandler {
             viewController.displayLoader { done in
                 viewController.checkout.createCheckoutViewModel(fromModel: viewController.checkoutViewModel) { result in
                     done()
-                    guard var checkoutViewModel = result.success() else { return }
+                    guard var checkoutViewModel = result.process() else { return }
 
                     checkoutViewModel.customer = viewController.checkoutViewModel.customer
                     viewController.checkoutViewModel = checkoutViewModel
@@ -193,10 +182,33 @@ extension CheckoutSummaryActionsHandler {
                 }
             }
     }
+
 }
+
 extension UpdateCheckoutRequest {
+
     init (checkoutViewModel: CheckoutViewModel) {
         self.init(billingAddressId: checkoutViewModel.selectedBillingAddress?.id,
             shippingAddressId: checkoutViewModel.selectedShippingAddress?.id)
     }
+
+}
+
+extension CheckoutSummaryActionsHandler {
+
+    @available( *, deprecated, message = "Only for bug bashing session")
+    internal func fake_createOrder(forCheckoutId checkoutId: String) {
+        guard let viewController = self.viewController else { return }
+        viewController.displayLoader { done in
+            viewController.checkout.client.createOrder(checkoutId) { result in
+                Async.delay(2) {
+                    done()
+                    guard let viewController = self.viewController else { return }
+                    viewController.viewState = .OrderPlaced
+                    return
+                }
+            }
+        }
+    }
+
 }

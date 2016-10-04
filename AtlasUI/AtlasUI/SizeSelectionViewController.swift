@@ -47,7 +47,7 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
         }
 
         checkout.client.customer { result in
-            guard let customer = result.success() else { return }
+            guard let customer = result.process() else { return }
             self.generateCheckout(withArticle: article, customer: customer)
         }
     }
@@ -57,7 +57,7 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
 
         checkout.createCheckoutViewModel(forArticleUnit: selectedArticleUnit) { result in
 
-            guard var checkoutViewModel = result.success() else { return }
+            guard var checkoutViewModel = result.process() else { return }
 
             checkoutViewModel.customer = customer
             self.displayCheckoutSummaryViewController(checkoutViewModel)
@@ -77,7 +77,7 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
         activityIndicatorView.startAnimating()
 
         checkout.client.article(forSKU: sku) { [weak self] result in
-            guard let strongSelf = self, article = result.success() else { return }
+            guard let strongSelf = self, article = result.process() else { return }
             strongSelf.displaySizes(forArticle: article)
         }
     }
