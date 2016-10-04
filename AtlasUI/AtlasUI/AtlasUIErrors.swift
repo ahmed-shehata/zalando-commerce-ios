@@ -52,12 +52,19 @@ extension UserPresentable {
 
 extension AtlasAPIError: UserPresentable {
 
+    func shouldDisplayGeneralMessage() -> Bool {
+        switch self {
+        case let .nsURLError(_, details): return details == nil
+        default: return true
+        }
+    }
+
     func message(formatArguments: CVarArgType?...) -> String {
         switch self {
         case .invalidResponseFormat, .noData, .unauthorized:
             return Localizer.string(self.localizedDescriptionKey)
-        case let .nsURLError(code, details):
-            return "\(details) (#\(code))"
+        case let .nsURLError(_, details):
+            return "\(details~?)"
         case let .http(status, details):
             return "\(details~?) (#\(status~?))"
         case let .backend(status, _, _, details):
