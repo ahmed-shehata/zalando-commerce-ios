@@ -35,7 +35,6 @@ class ProfileViewController: UIViewController {
             }
         }
 
-        shakeCounter = 0
         fakeOrderSwitch.selectedSegmentIndex = atlasCheckoutUseRealOrderProcess ? 1 : 0
 
         AppSetup.checkout?.client.customer { result in
