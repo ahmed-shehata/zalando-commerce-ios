@@ -31,8 +31,11 @@ extension AtlasResult {
     }
 
     private func displayBanner(error: UserPresentable, atlasUIViewController: AtlasUIViewController) {
-        // TODO: Show Banner
-        UserMessage.show(error: error)
+        let bannerErrorViewController = BannerErrorViewController()
+        atlasUIViewController.addChildViewController(bannerErrorViewController)
+        atlasUIViewController.view.addSubview(bannerErrorViewController.view)
+        bannerErrorViewController.view.fillInSuperView()
+        bannerErrorViewController.configureData(error)
     }
 
     private func displayFullScreen(error: UserPresentable, atlasUIViewController: AtlasUIViewController) {

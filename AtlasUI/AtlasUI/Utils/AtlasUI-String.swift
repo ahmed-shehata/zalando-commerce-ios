@@ -18,6 +18,10 @@ extension String {
         return characters.count
     }
 
+    var oneLineString: String {
+        return stringByReplacingOccurrencesOfString("\n", withString: " ")
+    }
+
 }
 
 postfix operator ~? { }
