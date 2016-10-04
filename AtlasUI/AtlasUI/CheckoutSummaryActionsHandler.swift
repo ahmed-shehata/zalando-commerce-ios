@@ -35,9 +35,9 @@ extension CheckoutSummaryActionsHandler {
 
         let updateCheckoutRequest = UpdateCheckoutRequest(checkoutViewModel: viewController.checkoutViewModel)
 
-        viewController.displayLoader { done in
+        viewController.displayLoader { hideLoader in
             viewController.checkout.client.updateCheckout(checkout.id, updateCheckoutRequest: updateCheckoutRequest) { result in
-                done()
+                hideLoader()
                 guard let checkout = result.process() else { return }
                 self.fake_createOrder(forCheckoutId: checkout.id)
             }
@@ -46,9 +46,9 @@ extension CheckoutSummaryActionsHandler {
 
     internal func createOrder(forCheckoutId checkoutId: String) {
         guard let viewController = self.viewController else { return }
-        viewController.displayLoader { done in
+        viewController.displayLoader { hideLoader in
             viewController.checkout.client.createOrder(checkoutId) { result in
-                done()
+                hideLoader()
                 guard let order = result.process() else { return }
                 self.handleOrderConfirmation(order)
             }
@@ -199,12 +199,12 @@ extension CheckoutSummaryActionsHandler {
     @available( *, deprecated, message = "Only for bug bashing session")
     internal func fake_createOrder(forCheckoutId checkoutId: String) {
         guard let viewController = self.viewController else { return }
-        viewController.displayLoader { done in
+        viewController.displayLoader { hideLoader in
             viewController.checkout.client.createOrder(checkoutId) { result in
                 Async.delay(2) {
-                    guard let viewController = self.viewController else { return done() }
+                    guard let viewController = self.viewController else { return hideLoader() }
                     viewController.viewState = .OrderPlaced
-                    return done()
+                    return hideLoader()
                 }
             }
         }
