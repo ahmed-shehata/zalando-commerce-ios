@@ -5,7 +5,7 @@
 import Foundation
 import AtlasSDK
 
-public var AtlasCheckoutUseRealOrderProcess = false
+public var atlasCheckoutUseRealOrderProcess = false
 
 struct CheckoutSummaryActionsHandler {
 
@@ -47,7 +47,7 @@ extension CheckoutSummaryActionsHandler {
     }
 
     private func chooseCreateOrder(forCheckoutId checkoutId: String) {
-        if AtlasCheckoutUseRealOrderProcess {
+        if atlasCheckoutUseRealOrderProcess {
             self.createOrder(forCheckoutId: checkoutId)
         } else {
             self.fake_createOrder(forCheckoutId: checkoutId)
