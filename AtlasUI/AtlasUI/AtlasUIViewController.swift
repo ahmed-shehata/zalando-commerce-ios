@@ -8,7 +8,8 @@ import AtlasSDK
 public class AtlasUIViewController: UIViewController {
 
     let mainNavigationController: UINavigationController
-    var reachability: Reachability?
+    private var reachability: Reachability?
+    private let reachabilityErrorViewController = BannerErrorViewController()
 
     init(atlasCheckout: AtlasCheckout, forProductSKU sku: String) {
         let sizeSelectionViewController = SizeSelectionViewController(checkout: atlasCheckout, sku: sku)
@@ -44,29 +45,25 @@ extension AtlasUIViewController {
         } catch {
             AtlasLogger.logError("Reachability Configuration error")
         }
+
+        reachability?.whenReachable = { [weak self ]_ in
+            self?.removeBanner()
+        }
+
+        reachability?.whenUnreachable = { [weak self ]_ in
+            self?.displayBanner()
+        }
     }
 
-    private func displayBanner(error: UserPresentable) {
-        let bannerErrorViewController = BannerErrorViewController()
-        addChildViewController(bannerErrorViewController)
-        view.addSubview(bannerErrorViewController.view)
-        bannerErrorViewController.view.fillInSuperView()
-        bannerErrorViewController.configureData(error)
+    private func displayBanner() {
+        addChildViewController(reachabilityErrorViewController)
+        view.addSubview(reachabilityErrorViewController.view)
+        reachabilityErrorViewController.view.fillInSuperView()
+        reachabilityErrorViewController.configureData(ReachabilityUserPresentableError())
     }
 
-}
-
-struct ReachabilityUserPresentableError: UserPresentable {
-
-    func title(formatArguments: CVarArgType?...) -> String {
-        return Localizer.string("Error.reachability.title")
+    private func removeBanner() {
+        reachabilityErrorViewController.hideBanner()
     }
 
-    func message(formatArguments: CVarArgType?...) -> String {
-        return Localizer.string("Error.reachability.message")
-    }
-
-    func shouldDisplayGeneralMessage() -> Bool {
-        return false
-    }
 }
