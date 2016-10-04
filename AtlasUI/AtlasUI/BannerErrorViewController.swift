@@ -60,16 +60,37 @@ class BannerErrorViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        view.alpha = 0
         buildView()
     }
 
-    func cancelButtonPressed() {
-        UIView.animateWithDuration(0.3, animations: {  [weak self] in
-            self?.view.alpha = 0
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        showBanner()
+    }
+
+    func showBanner() {
+        containerView.transform = CGAffineTransformMakeTranslation(0, -containerView.bounds.height)
+        view.alpha = 1
+
+        UIView.animateWithDuration(0.5) { [weak self] in
+            self?.containerView.transform = CGAffineTransformIdentity
+        }
+    }
+
+    func hideBanner() {
+        let bannerHeight = containerView.bounds.height
+        UIView.animateWithDuration(0.5, animations: { [weak self] in
+            self?.containerView.transform = CGAffineTransformMakeTranslation(0, -bannerHeight)
         }) { [weak self] _ in
             self?.view.removeFromSuperview()
             self?.removeFromParentViewController()
         }
+    }
+
+    func cancelButtonPressed() {
+        hideBanner()
     }
 
 }
@@ -77,7 +98,7 @@ class BannerErrorViewController: UIViewController {
 extension BannerErrorViewController: UIBuilder {
 
     func configureView() {
-        view.alpha = 0
+        view.clipsToBounds = true
         view.userInteractionEnabled = true
         view.addSubview(containerView)
         containerView.addSubview(stackView)
@@ -107,10 +128,6 @@ extension BannerErrorViewController: UIDataBuilder {
     func configureData(viewModel: T) {
         titleLabel.text = viewModel.displayedTitle
         messageLabel.text = viewModel.displayedMessage.oneLineString
-
-        UIView.animateWithDuration(0.3) {  [weak self] in
-            self?.view.alpha = 1
-        }
     }
 
 }
