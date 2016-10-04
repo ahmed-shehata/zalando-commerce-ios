@@ -212,7 +212,7 @@
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qLo-Q0-jea">
-                                <rect key="frame" x="235" y="462" width="131" height="29"/>
+                                <rect key="frame" x="235" y="424" width="131" height="29"/>
                                 <segments>
                                     <segment title="English"/>
                                     <segment title="Deutsch"/>
@@ -221,8 +221,8 @@
                                     <action selector="languageSwitched:" destination="4dE-k4-8mF" eventType="valueChanged" id="c0w-vr-f9c"/>
                                 </connections>
                             </segmentedControl>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cqd-b7-hfW">
-                                <rect key="frame" x="240" y="421" width="121" height="29"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cqd-b7-hfW">
+                                <rect key="frame" x="239" y="376" width="123" height="29"/>
                                 <segments>
                                     <segment title="Live"/>
                                     <segment title="Staging"/>
@@ -232,7 +232,7 @@
                                 </connections>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="DEH-v0-WZe">
-                                <rect key="frame" x="240" y="498" width="121" height="29"/>
+                                <rect key="frame" x="240" y="472" width="121" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="121" id="O8b-8b-bnf"/>
                                 </constraints>
@@ -252,18 +252,23 @@
                             <constraint firstItem="cqd-b7-hfW" firstAttribute="centerX" secondItem="Mfi-QH-Ey6" secondAttribute="centerX" id="AW8-GA-9Yk"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Mas-9p-sdx" secondAttribute="leading" id="Bba-Hg-7Hx"/>
                             <constraint firstItem="Mas-9p-sdx" firstAttribute="top" secondItem="qLo-Q0-jea" secondAttribute="bottom" constant="40" id="LvW-wO-yiQ"/>
-                            <constraint firstItem="qLo-Q0-jea" firstAttribute="top" secondItem="cqd-b7-hfW" secondAttribute="bottom" constant="13" id="R8a-x2-w9l"/>
+                            <constraint firstItem="qLo-Q0-jea" firstAttribute="top" secondItem="cqd-b7-hfW" secondAttribute="bottom" constant="20" id="R8a-x2-w9l"/>
                             <constraint firstItem="DEH-v0-WZe" firstAttribute="centerX" secondItem="qLo-Q0-jea" secondAttribute="centerX" id="SaK-lR-lUk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Mas-9p-sdx" secondAttribute="trailing" id="Umc-We-jKj"/>
                             <constraint firstItem="qLo-Q0-jea" firstAttribute="centerX" secondItem="Mfi-QH-Ey6" secondAttribute="centerX" id="X5h-QE-qAP"/>
                             <constraint firstItem="9dg-ts-9xB" firstAttribute="top" secondItem="cKW-p6-kGE" secondAttribute="bottom" constant="16" id="Yq0-jT-Q0M"/>
-                            <constraint firstItem="Mas-9p-sdx" firstAttribute="top" secondItem="DEH-v0-WZe" secondAttribute="bottom" constant="4" id="h4W-iV-UgG"/>
+                            <constraint firstItem="Mas-9p-sdx" firstAttribute="top" secondItem="DEH-v0-WZe" secondAttribute="bottom" constant="30" id="h4W-iV-UgG"/>
                             <constraint firstItem="SNu-FN-JOB" firstAttribute="top" secondItem="Mas-9p-sdx" secondAttribute="bottom" constant="40" id="jVT-Rs-Sm4"/>
                             <constraint firstItem="cKW-p6-kGE" firstAttribute="leading" secondItem="Mfi-QH-Ey6" secondAttribute="leadingMargin" constant="8" id="oFh-CM-QVK"/>
-                            <constraint firstItem="DEH-v0-WZe" firstAttribute="top" secondItem="qLo-Q0-jea" secondAttribute="bottom" constant="8" id="pkJ-h1-ZNH"/>
+                            <constraint firstItem="DEH-v0-WZe" firstAttribute="top" secondItem="qLo-Q0-jea" secondAttribute="bottom" constant="20" id="pkJ-h1-ZNH"/>
                             <constraint firstItem="9dg-ts-9xB" firstAttribute="width" secondItem="cKW-p6-kGE" secondAttribute="width" id="rh9-td-ok1"/>
                             <constraint firstItem="9dg-ts-9xB" firstAttribute="leading" secondItem="cKW-p6-kGE" secondAttribute="leading" id="suo-yN-9qD"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="LvW-wO-yiQ"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="jmw-OU-ard"/>
                     <connections>
