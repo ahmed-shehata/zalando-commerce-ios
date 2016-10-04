@@ -202,10 +202,9 @@ extension CheckoutSummaryActionsHandler {
         viewController.displayLoader { done in
             viewController.checkout.client.createOrder(checkoutId) { result in
                 Async.delay(2) {
-                    done()
-                    guard let viewController = self.viewController else { return }
+                    guard let viewController = self.viewController else { return done() }
                     viewController.viewState = .OrderPlaced
-                    return
+                    return done()
                 }
             }
         }
