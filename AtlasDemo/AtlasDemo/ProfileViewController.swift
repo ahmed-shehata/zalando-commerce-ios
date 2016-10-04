@@ -14,10 +14,11 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var customerNumer: UILabel!
     @IBOutlet weak var gender: UILabel!
     @IBOutlet weak var languageSwitcher: UISegmentedControl!
-
     @IBOutlet weak var fakeOrderSwitch: UISegmentedControl!
-
     @IBOutlet weak var serverSegmentedControl: UISegmentedControl!
+
+    private var shakeCounter = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,6 +35,7 @@ class ProfileViewController: UIViewController {
             }
         }
 
+        shakeCounter = 0
         fakeOrderSwitch.selectedSegmentIndex = atlasCheckoutUseRealOrderProcess ? 1 : 0
 
         AppSetup.checkout?.client.customer { result in
@@ -96,6 +98,9 @@ class ProfileViewController: UIViewController {
 
     override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
         if motion == .MotionShake {
+            shakeCounter += 1
+        }
+        if shakeCounter >= 2 {
             self.fakeOrderSwitch.enabled = true
         }
     }
