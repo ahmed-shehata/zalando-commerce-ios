@@ -19,7 +19,6 @@ extension AtlasResult {
     private func displayError(error: ErrorType) {
         let viewController: AtlasUIViewController? = try? Atlas.provide()
         guard let userPresentable = error as? UserPresentable, atlasUIViewController = viewController else {
-            // TODO: Need to check for network errors
             UserMessage.unclassifiedError(error)
             return
         }
