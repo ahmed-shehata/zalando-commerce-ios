@@ -5,6 +5,8 @@
 import Foundation
 import AtlasSDK
 
+public var AtlasCheckoutUseRealOrderProcess = false
+
 struct CheckoutSummaryActionsHandler {
 
     internal weak var viewController: CheckoutSummaryViewController?
@@ -30,7 +32,7 @@ extension CheckoutSummaryActionsHandler {
         guard let checkout = viewController.checkoutViewModel.checkout else { return }
 
         if checkout.hasSameAddress(like: viewController.checkoutViewModel) {
-            return fake_createOrder(forCheckoutId: checkout.id)
+            return chooseCreateOrder(forCheckoutId: checkout.id)
         }
 
         let updateCheckoutRequest = UpdateCheckoutRequest(checkoutViewModel: viewController.checkoutViewModel)
@@ -39,8 +41,16 @@ extension CheckoutSummaryActionsHandler {
             viewController.checkout.client.updateCheckout(checkout.id, updateCheckoutRequest: updateCheckoutRequest) { result in
                 hideLoader()
                 guard let checkout = result.process() else { return }
-                self.fake_createOrder(forCheckoutId: checkout.id)
+                self.chooseCreateOrder(forCheckoutId: checkout.id)
             }
+        }
+    }
+
+    private func chooseCreateOrder(forCheckoutId checkoutId: String) {
+        if AtlasCheckoutUseRealOrderProcess {
+            self.createOrder(forCheckoutId: checkoutId)
+        } else {
+            self.fake_createOrder(forCheckoutId: checkoutId)
         }
     }
 

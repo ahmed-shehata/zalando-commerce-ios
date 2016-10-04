@@ -20,6 +20,8 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        AtlasCheckoutUseRealOrderProcess = false
+
         self.name.text = ""
         self.email.text = ""
         self.customerNumer.text = ""
