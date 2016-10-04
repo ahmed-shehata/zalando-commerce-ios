@@ -34,12 +34,7 @@ class ProfileViewController: UIViewController {
             }
         }
 
-        switch atlasCheckoutUseRealOrderProcess {
-        case false:
-            fakeOrderSwitch.selectedSegmentIndex = 0
-        case true:
-            fakeOrderSwitch.selectedSegmentIndex = 1
-        }
+        fakeOrderSwitch.selectedSegmentIndex = atlasCheckoutUseRealOrderProcess ? 1 : 0
 
         AppSetup.checkout?.client.customer { result in
             switch result {
@@ -82,14 +77,7 @@ class ProfileViewController: UIViewController {
     }
 
     @IBAction func fakeOrderSwitched(sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex {
-        case 1:
-            atlasCheckoutUseRealOrderProcess = true
-        case 0:
-            fallthrough
-        default:
-            atlasCheckoutUseRealOrderProcess = false
-        }
+        atlasCheckoutUseRealOrderProcess = sender.selectedSegmentIndex == 1
     }
 
     @IBAction func logoutButtonTapped(sender: AnyObject) {
