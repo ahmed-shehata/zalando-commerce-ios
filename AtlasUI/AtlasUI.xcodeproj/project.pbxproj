@@ -79,7 +79,7 @@
 		E96997501DA51E49000299C8 /* AtlasUI-Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E969974F1DA51E49000299C8 /* AtlasUI-Constants.swift */; };
 		E96997521DA5219A000299C8 /* AtlasReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96997511DA5219A000299C8 /* AtlasReachability.swift */; };
 		E97A33A7BE2D26CDE9B4C62EB5BD2661 /* CheckoutSummaryAddressStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9494F7947C24BD2087FE22EBE20BFCD /* CheckoutSummaryAddressStackView.swift */; };
-		E99548471DA3D96F001AF7DE /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99548461DA3D96F001AF7DE /* Reachability.swift */; };
+		E99548471DA3D96F001AF7DE /* AtlasUI_Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99548461DA3D96F001AF7DE /* AtlasUI_Reachability.swift */; };
 		EF570993CFA4FDF0361679E931D55B8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94F33C041120EF12B441AE2E84A48050 /* Assets.xcassets */; };
 		F22B10157E2B91A8BF9D3AB7B354E6CC /* Nimble.framework in Copy Quick and Nimble frameworks */ = {isa = PBXBuildFile; fileRef = 2E89A529CD1D470F15B857AF1031CB61 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F3F62025EFDB47B5637DC3C928D69264 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F13460B6B17606CC65E38CE6A4716C /* UITableView.swift */; };
@@ -188,7 +188,7 @@
 		E91BC0591D9EBF7800F4B381 /* BannerErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerErrorViewController.swift; sourceTree = "<group>"; };
 		E969974F1DA51E49000299C8 /* AtlasUI-Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AtlasUI-Constants.swift"; sourceTree = "<group>"; };
 		E96997511DA5219A000299C8 /* AtlasReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasReachability.swift; sourceTree = "<group>"; };
-		E99548461DA3D96F001AF7DE /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		E99548461DA3D96F001AF7DE /* AtlasUI_Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasUI_Reachability.swift; sourceTree = "<group>"; };
 		EAF268B630147E557D2C826B01EADCBD /* CheckoutProviderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutProviderType.swift; sourceTree = "<group>"; };
 		F5BC3D0FCDE4649756A9FB6C987C9064 /* AtlasUI-StreetAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AtlasUI-StreetAddress.swift"; sourceTree = "<group>"; };
 		F9494F7947C24BD2087FE22EBE20BFCD /* CheckoutSummaryAddressStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryAddressStackView.swift; sourceTree = "<group>"; };
@@ -435,7 +435,7 @@
 		E99548451DA3D953001AF7DE /* Reachability */ = {
 			isa = PBXGroup;
 			children = (
-				E99548461DA3D96F001AF7DE /* Reachability.swift */,
+				E99548461DA3D96F001AF7DE /* AtlasUI_Reachability.swift */,
 			);
 			name = Reachability;
 			sourceTree = "<group>";
@@ -713,7 +713,7 @@
 				F3F62025EFDB47B5637DC3C928D69264 /* UITableView.swift in Sources */,
 				DE4482A9091E62348223761D4C58D008 /* UIView.swift in Sources */,
 				7E9443B46A96E4C94DDF32C3B711C137 /* UnitSizeTableViewCell.swift in Sources */,
-				E99548471DA3D96F001AF7DE /* Reachability.swift in Sources */,
+				E99548471DA3D96F001AF7DE /* AtlasUI_Reachability.swift in Sources */,
 				8EB96C51E439F0E511A696F28FE216B1 /* UserMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
