@@ -10,7 +10,7 @@ import Nimble
 class FormValidatorSpec: QuickSpec {
 
     override func spec() {
-        Atlas.register { Localizer(localeIdentifier: "en_UK") as Localizer }
+        Atlas.register { try! Localizer(localeIdentifier: "en_UK") as Localizer } // swiftlint:disable:this force_try
 
         describe("FormValidator") {
             it("Should check on required value") {
