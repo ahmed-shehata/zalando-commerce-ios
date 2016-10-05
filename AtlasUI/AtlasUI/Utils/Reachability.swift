@@ -4,6 +4,7 @@
 // swiftlint:disable line_length
 // swiftlint:disable trailing_whitespace
 // swiftlint:disable force_unwrapping
+// swiftlint:disable type_name
 
 /*
 Copyright (c) 2014, Ashley Mills
@@ -37,17 +38,17 @@ POSSIBILITY OF SUCH DAMAGE.
 import SystemConfiguration
 import Foundation
 
-public enum ReachabilityError: ErrorType {
+internal enum AtlasUI_ReachabilityError: ErrorType {
     case FailedToCreateWithAddress(sockaddr_in)
     case FailedToCreateWithHostname(String)
     case UnableToSetCallback
     case UnableToSetDispatchQueue
 }
 
-public let ReachabilityChangedNotification = "ReachabilityChangedNotification"
+internal let AtlasUI_ReachabilityChangedNotification = "AtlasUI_ReachabilityChangedNotification"
 
-func callback(reachability:SCNetworkReachability, flags: SCNetworkReachabilityFlags, info: UnsafeMutablePointer<Void>) {
-    let reachability = Unmanaged<Reachability>.fromOpaque(COpaquePointer(info)).takeUnretainedValue()
+private func AtlasUI_callback(reachability:SCNetworkReachability, flags: SCNetworkReachabilityFlags, info: UnsafeMutablePointer<Void>) {
+    let reachability = Unmanaged<AtlasUI_Reachability>.fromOpaque(COpaquePointer(info)).takeUnretainedValue()
 
     dispatch_async(dispatch_get_main_queue()) {
         reachability.reachabilityChanged(flags)
@@ -55,16 +56,16 @@ func callback(reachability:SCNetworkReachability, flags: SCNetworkReachabilityFl
 }
 
 
-public class Reachability: NSObject {
+internal class AtlasUI_Reachability: NSObject {
 
-    public typealias NetworkReachable = (Reachability) -> ()
-    public typealias NetworkUnreachable = (Reachability) -> ()
+    internal typealias NetworkReachable = (AtlasUI_Reachability) -> ()
+    internal typealias NetworkUnreachable = (AtlasUI_Reachability) -> ()
 
-    public enum NetworkStatus: CustomStringConvertible {
+    internal enum NetworkStatus: CustomStringConvertible {
 
         case NotReachable, ReachableViaWiFi, ReachableViaWWAN
 
-        public var description: String {
+        internal var description: String {
             switch self {
             case .ReachableViaWWAN:
                 return "Cellular"
@@ -76,13 +77,13 @@ public class Reachability: NSObject {
         }
     }
 
-    // MARK: - *** Public properties ***
-    public var whenReachable: NetworkReachable?
-    public var whenUnreachable: NetworkUnreachable?
-    public var reachableOnWWAN: Bool
-    public var notificationCenter = NSNotificationCenter.defaultCenter()
+    // MARK: - *** internal properties ***
+    internal var whenReachable: NetworkReachable?
+    internal var whenUnreachable: NetworkUnreachable?
+    internal var reachableOnWWAN: Bool
+    internal var notificationCenter = NSNotificationCenter.defaultCenter()
 
-    public var currentReachabilityStatus: NetworkStatus {
+    internal var currentReachabilityStatus: NetworkStatus {
         if isReachable() {
             if isReachableViaWiFi() {
                 return .ReachableViaWiFi
@@ -94,7 +95,7 @@ public class Reachability: NSObject {
         return .NotReachable
     }
 
-    public var currentReachabilityString: String {
+    internal var currentReachabilityString: String {
         return "\(currentReachabilityStatus)"
     }
 
@@ -102,20 +103,20 @@ public class Reachability: NSObject {
     
     // MARK: - *** Initialisation methods ***
     
-    required public init(reachabilityRef: SCNetworkReachability) {
+    required internal init(reachabilityRef: SCNetworkReachability) {
         reachableOnWWAN = true
         self.reachabilityRef = reachabilityRef
     }
     
-    public convenience init(hostname: String) throws {
+    internal convenience init(hostname: String) throws {
         
         let nodename = (hostname as NSString).UTF8String
-        guard let ref = SCNetworkReachabilityCreateWithName(nil, nodename) else { throw ReachabilityError.FailedToCreateWithHostname(hostname) }
+        guard let ref = SCNetworkReachabilityCreateWithName(nil, nodename) else { throw AtlasUI_ReachabilityError.FailedToCreateWithHostname(hostname) }
 
         self.init(reachabilityRef: ref)
     }
 
-    public class func reachabilityForInternetConnection() throws -> Reachability {
+    internal class func reachabilityForInternetConnection() throws -> AtlasUI_Reachability {
         
         var zeroAddress = sockaddr_in()
         zeroAddress.sin_len = UInt8(sizeofValue(zeroAddress))
@@ -123,12 +124,12 @@ public class Reachability: NSObject {
         
         guard let ref = withUnsafePointer(&zeroAddress, {
             SCNetworkReachabilityCreateWithAddress(nil, UnsafePointer($0))
-        }) else { throw ReachabilityError.FailedToCreateWithAddress(zeroAddress) }
+        }) else { throw AtlasUI_ReachabilityError.FailedToCreateWithAddress(zeroAddress) }
         
-        return Reachability(reachabilityRef: ref)
+        return AtlasUI_Reachability(reachabilityRef: ref)
     }
 
-    public class func reachabilityForLocalWiFi() throws -> Reachability {
+    internal class func reachabilityForLocalWiFi() throws -> AtlasUI_Reachability {
 
         var localWifiAddress: sockaddr_in = sockaddr_in(sin_len: __uint8_t(0), sin_family: sa_family_t(0), sin_port: in_port_t(0), sin_addr: in_addr(s_addr: 0), sin_zero: (0, 0, 0, 0, 0, 0, 0, 0))
         localWifiAddress.sin_len = UInt8(sizeofValue(localWifiAddress))
@@ -140,27 +141,27 @@ public class Reachability: NSObject {
 
         guard let ref = withUnsafePointer(&localWifiAddress, {
             SCNetworkReachabilityCreateWithAddress(nil, UnsafePointer($0))
-        }) else { throw ReachabilityError.FailedToCreateWithAddress(localWifiAddress) }
+        }) else { throw AtlasUI_ReachabilityError.FailedToCreateWithAddress(localWifiAddress) }
         
-        return Reachability(reachabilityRef: ref)
+        return AtlasUI_Reachability(reachabilityRef: ref)
     }
 
     // MARK: - *** Notifier methods ***
-    public func startNotifier() throws {
+    internal func startNotifier() throws {
 
         guard !notifierRunning else { return }
         
         var context = SCNetworkReachabilityContext(version: 0, info: nil, retain: nil, release: nil, copyDescription: nil)
         context.info = UnsafeMutablePointer(Unmanaged.passUnretained(self).toOpaque())
         
-        if !SCNetworkReachabilitySetCallback(reachabilityRef!, callback, &context) {
+        if !SCNetworkReachabilitySetCallback(reachabilityRef!, AtlasUI_callback, &context) {
             stopNotifier()
-            throw ReachabilityError.UnableToSetCallback
+            throw AtlasUI_ReachabilityError.UnableToSetCallback
         }
 
         if !SCNetworkReachabilitySetDispatchQueue(reachabilityRef!, reachabilitySerialQueue) {
             stopNotifier()
-            throw ReachabilityError.UnableToSetDispatchQueue
+            throw AtlasUI_ReachabilityError.UnableToSetDispatchQueue
         }
 
         // Perform an intial check
@@ -172,7 +173,7 @@ public class Reachability: NSObject {
         notifierRunning = true
     }
 
-    public func stopNotifier() {
+    internal func stopNotifier() {
         defer { notifierRunning = false }
         guard let reachabilityRef = reachabilityRef else { return }
 
@@ -181,12 +182,12 @@ public class Reachability: NSObject {
     }
     
     // MARK: - *** Connection test methods ***
-    public func isReachable() -> Bool {
+    internal func isReachable() -> Bool {
         let flags = reachabilityFlags
         return isReachableWithFlags(flags)
     }
 
-    public func isReachableViaWWAN() -> Bool {
+    internal func isReachableViaWWAN() -> Bool {
         
         let flags = reachabilityFlags
         
@@ -194,7 +195,7 @@ public class Reachability: NSObject {
         return isRunningOnDevice && isReachable(flags) && isOnWWAN(flags)
     }
 
-    public func isReachableViaWiFi() -> Bool {
+    internal func isReachableViaWiFi() -> Bool {
         
         let flags = reachabilityFlags
         
@@ -223,7 +224,7 @@ public class Reachability: NSObject {
 
     private var notifierRunning = false
     private var reachabilityRef: SCNetworkReachability?
-    private let reachabilitySerialQueue = dispatch_queue_create("uk.co.ashleymills.reachability", DISPATCH_QUEUE_SERIAL)
+    private let reachabilitySerialQueue = dispatch_queue_create("com.atlasUI.reachability", DISPATCH_QUEUE_SERIAL)
 
     private func reachabilityChanged(flags: SCNetworkReachabilityFlags) {
         
@@ -239,7 +240,7 @@ public class Reachability: NSObject {
             }
         }
 
-        notificationCenter.postNotificationName(ReachabilityChangedNotification, object:self)
+        notificationCenter.postNotificationName(AtlasUI_ReachabilityChangedNotification, object:self)
 
         previousFlags = flags
     }
@@ -342,7 +343,7 @@ public class Reachability: NSObject {
         }
     }
 
-    override public var description: String {
+    override internal var description: String {
 
         var W: String
         if isRunningOnDevice {

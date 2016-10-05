@@ -3,14 +3,13 @@
 //
 
 import UIKit
-import AtlasSDK
 
 public class AtlasUIViewController: UIViewController {
 
     let mainNavigationController: UINavigationController
     internal let bannerErrorViewController = BannerErrorViewController()
     internal let fullScreenErrorViewController = FullScreenErrorViewController()
-    private var reachability: Reachability?
+    private let atlasReachability = AtlasReachability()
 
     init(atlasCheckout: AtlasCheckout, forProductSKU sku: String) {
         let sizeSelectionViewController = SizeSelectionViewController(checkout: atlasCheckout, sku: sku)
@@ -23,52 +22,11 @@ public class AtlasUIViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    deinit {
-        reachability?.stopNotifier()
-        reachability = nil
-    }
-
     override public func viewDidLoad() {
         addChildViewController(mainNavigationController)
         view.addSubview(mainNavigationController.view)
         mainNavigationController.view.fillInSuperView()
-        setupReachability()
-    }
-
-}
-
-extension AtlasUIViewController {
-
-    func setupReachability() {
-        do {
-            reachability = try Reachability.reachabilityForInternetConnection()
-            try reachability?.startNotifier()
-        } catch {
-            AtlasLogger.logError("Reachability Configuration error")
-        }
-
-        reachability?.whenReachable = { [weak self] _ in
-            Async.main {
-                self?.removeReachabilityBanner()
-            }
-        }
-
-        reachability?.whenUnreachable = { [weak self] _ in
-            Async.main {
-                self?.displayReachabilityBanner()
-            }
-        }
-    }
-
-    private func displayReachabilityBanner() {
-        addChildViewController(bannerErrorViewController)
-        view.addSubview(bannerErrorViewController.view)
-        bannerErrorViewController.view.fillInSuperView()
-        bannerErrorViewController.configureData(ReachabilityUserPresentableError())
-    }
-
-    private func removeReachabilityBanner() {
-        bannerErrorViewController.hideBanner()
+        atlasReachability.setupReachability()
     }
 
 }
