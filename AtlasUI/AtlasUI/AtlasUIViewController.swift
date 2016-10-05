@@ -17,7 +17,6 @@ public class AtlasUIViewController: UIViewController {
         mainNavigationController = UINavigationController(rootViewController: sizeSelectionViewController)
 
         super.init(nibName: nil, bundle: nil)
-        setupReachability()
     }
 
     required public  init?(coder aDecoder: NSCoder) {
@@ -33,6 +32,7 @@ public class AtlasUIViewController: UIViewController {
         addChildViewController(mainNavigationController)
         view.addSubview(mainNavigationController.view)
         mainNavigationController.view.fillInSuperView()
+        setupReachability()
     }
 
 }
@@ -47,12 +47,16 @@ extension AtlasUIViewController {
             AtlasLogger.logError("Reachability Configuration error")
         }
 
-        reachability?.whenReachable = { [weak self ]_ in
-            self?.removeReachabilityBanner()
+        reachability?.whenReachable = { [weak self] _ in
+            Async.main {
+                self?.removeReachabilityBanner()
+            }
         }
 
-        reachability?.whenUnreachable = { [weak self ]_ in
-            self?.displayReachabilityBanner()
+        reachability?.whenUnreachable = { [weak self] _ in
+            Async.main {
+                self?.displayReachabilityBanner()
+            }
         }
     }
 
