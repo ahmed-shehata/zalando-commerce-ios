@@ -60,7 +60,7 @@ class FormValidatorSpec: QuickSpec {
             it("Should check on NumbersOnly") {
                 let validator = FormValidator.NumbersOnly
                 expect(validator.errorMessage("12345")).to(beNil())
-                expect(validator.errorMessage("John")).to(equal("Only numbers are allowed"))
+                expect(validator.errorMessage("John1")).to(equal("Only numbers are allowed"))
             }
         }
     }
