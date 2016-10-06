@@ -96,7 +96,8 @@ extension CheckoutSummaryActionsHandler {
         guard let paymentURL = viewController.checkoutViewModel.checkout?.payment.selectionPageURL else {
             if viewController.checkoutViewModel.selectedShippingAddress == nil ||
                 viewController.checkoutViewModel.selectedBillingAddress == nil {
-                
+                let atlasUIViewController: AtlasUIViewController? = try? Atlas.provide()
+                atlasUIViewController?.displayError(MissingAddressError())
             }
             return
         }

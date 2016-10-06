@@ -85,3 +85,6 @@
 
 "Error.reachability.title" = "No internet connection";
 "Error.reachability.message" = "Please check you internet connection";
+
+"Error.missingAddress.title" = "No address selected";
+"Error.missingAddress.message" = "Please select shipping and billing addresses first";
