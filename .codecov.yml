@@ -9,3 +9,4 @@ coverage:
 
   ignore:
     - .*/SwiftyJSON.*
+    - AtlasUI/AtlasUI/Utils/Reachability.swift

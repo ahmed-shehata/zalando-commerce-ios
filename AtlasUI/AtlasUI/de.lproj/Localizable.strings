@@ -9,8 +9,7 @@
 "Done" = "Fertig";
 "Total" = "Gesamtsumme:";
 "vat.included" = "(Incl. MwST)";
-"estimated.delivery.date" = "Voraussichtliche Lieferung: %@";
-"estimated.delivery.range" = "Voraussichtliche Lieferung: %@ - %@";
+"estimated.delivery.title" = "Voraussichtliche Lieferung";
 "Shipping" = "Versand";
 "Pay %@" = "Zahlen %@";
 "Zalando.Connect" = "Mit Zalando verbinden";
@@ -83,3 +82,9 @@
 
 "Error.unclassified.title" = "Oops";
 "Error.unclassified.message" = "Something went wrong.\nWe are fixing the issue.\nPlease come back later";
+
+"Error.reachability.title" = "No internet connection";
+"Error.reachability.message" = "Please check you internet connection";
+
+"Error.missingAddress.title" = "No address selected";
+"Error.missingAddress.message" = "Please select shipping and billing addresses first";
