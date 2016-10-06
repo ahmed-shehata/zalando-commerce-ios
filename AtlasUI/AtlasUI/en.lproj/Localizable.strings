@@ -88,3 +88,6 @@
 
 "Error.missingAddress.title" = "No address selected";
 "Error.missingAddress.message" = "Please select shipping and billing addresses first";
+
+"Error.priceChanged.title" = "Price changed";
+"Error.priceChanged.message: %@" = "The price is now %@";

@@ -10,12 +10,14 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
     internal var checkout: AtlasCheckout
     internal var checkoutViewModel: CheckoutViewModel {
         didSet {
+            let viewController: AtlasUIViewController? = try? Atlas.provide()
             guard let
+                atlasUIViewController = viewController,
                 oldPrice = oldValue.cart?.grossTotal.amount,
                 newPrice = checkoutViewModel.cart?.grossTotal.amount else { return }
 
             if oldPrice != newPrice {
-                
+                atlasUIViewController.displayError(PriceChangedError(newPrice: newPrice))
             }
         }
     }
