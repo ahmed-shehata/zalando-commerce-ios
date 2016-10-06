@@ -8,7 +8,17 @@ import AtlasSDK
 class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
 
     internal var checkout: AtlasCheckout
-    internal var checkoutViewModel: CheckoutViewModel
+    internal var checkoutViewModel: CheckoutViewModel {
+        didSet {
+            guard let
+                oldPrice = oldValue.cart?.grossTotal.amount,
+                newPrice = checkoutViewModel.cart?.grossTotal.amount else { return }
+
+            if oldPrice != newPrice {
+                
+            }
+        }
+    }
     internal var viewState: CheckoutViewState = .NotLoggedIn {
         didSet {
             setupNavigationBar()
