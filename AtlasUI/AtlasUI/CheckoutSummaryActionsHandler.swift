@@ -43,6 +43,7 @@ extension CheckoutSummaryActionsHandler {
             }
         }
     }
+
     internal func createOrder(checkoutId: String) {
         guard let viewController = self.viewController else { return }
         viewController.displayLoader { done in
@@ -55,6 +56,7 @@ extension CheckoutSummaryActionsHandler {
         }
 
     }
+
 }
 
 extension CheckoutSummaryActionsHandler {
@@ -91,7 +93,13 @@ extension CheckoutSummaryActionsHandler {
     internal func showPaymentSelectionScreen() {
         guard let viewController = self.viewController else { return }
         guard Atlas.isUserLoggedIn() else { return loadCustomerData() }
-        guard let paymentURL = viewController.checkoutViewModel.checkout?.payment.selectionPageURL else { return }
+        guard let paymentURL = viewController.checkoutViewModel.checkout?.payment.selectionPageURL else {
+            if viewController.checkoutViewModel.selectedShippingAddress == nil ||
+                viewController.checkoutViewModel.selectedBillingAddress == nil {
+                
+            }
+            return
+        }
 
         let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
         paymentSelectionViewController.paymentCompletion = { result in
@@ -182,10 +190,14 @@ extension CheckoutSummaryActionsHandler {
                 }
             }
     }
+
 }
+
 extension UpdateCheckoutRequest {
+
     init (checkoutViewModel: CheckoutViewModel) {
         self.init(billingAddressId: checkoutViewModel.selectedBillingAddress?.id,
             shippingAddressId: checkoutViewModel.selectedShippingAddress?.id)
     }
+
 }
