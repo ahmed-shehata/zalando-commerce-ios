@@ -82,3 +82,6 @@
 
 "Error.unclassified.title" = "Oops";
 "Error.unclassified.message" = "Something went wrong.\nWe are fixing the issue.\nPlease come back later";
+
+"Error.reachability.title" = "No internet connection";
+"Error.reachability.message" = "Please check you internet connection";

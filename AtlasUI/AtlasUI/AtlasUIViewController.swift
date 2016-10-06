@@ -7,6 +7,9 @@ import UIKit
 public class AtlasUIViewController: UIViewController {
 
     let mainNavigationController: UINavigationController
+    internal let bannerErrorViewController = BannerErrorViewController()
+    internal let fullScreenErrorViewController = FullScreenErrorViewController()
+    private let atlasReachability = AtlasReachability()
 
     init(atlasCheckout: AtlasCheckout, forProductSKU sku: String) {
         let sizeSelectionViewController = SizeSelectionViewController(checkout: atlasCheckout, sku: sku)
@@ -23,6 +26,7 @@ public class AtlasUIViewController: UIViewController {
         addChildViewController(mainNavigationController)
         view.addSubview(mainNavigationController.view)
         mainNavigationController.view.fillInSuperView()
+        atlasReachability.setupReachability()
     }
 
 }
