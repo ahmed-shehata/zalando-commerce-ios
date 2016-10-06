@@ -8,8 +8,8 @@ import AtlasSDK
 struct CheckoutViewModel {
 
     let selectedArticleUnit: SelectedArticleUnit
-    let shippingPrice: Article.Price?
-    let cartId: String?
+    let shippingPrice: Money?
+    var cart: Cart?
     var checkout: Checkout?
     internal(set) var customer: Customer?
 
@@ -21,20 +21,19 @@ struct CheckoutViewModel {
     }
 
     init(selectedArticleUnit: SelectedArticleUnit,
-        shippingPrice: Article.Price? = nil,
-        cartId: String? = nil,
+        shippingPrice: Money? = nil,
+        cart: Cart? = nil,
         checkout: Checkout? = nil,
         customer: Customer? = nil,
         billingAddress: EquatableAddress? = nil,
         shippingAddress: EquatableAddress? = nil) {
             self.selectedArticleUnit = selectedArticleUnit
             self.shippingPrice = shippingPrice
+            self.cart = cart
             self.checkout = checkout
             self.customer = customer
             self.selectedBillingAddress = checkout?.billingAddress
             self.selectedShippingAddress = checkout?.shippingAddress
-            self.cartId = cartId
-
     }
 
 }
@@ -77,12 +76,12 @@ extension CheckoutViewModel {
         return selectedArticleUnit.article
     }
 
-    var shippingPriceValue: Float {
+    var shippingPriceValue: NSDecimalNumber {
         return shippingPrice?.amount ?? 0
     }
 
-    var totalPriceValue: Float {
-        return shippingPriceValue + selectedUnit.price.amount
+    var totalPriceValue: NSDecimalNumber {
+        return cart?.grossTotal.amount ?? 0
     }
 
     var selectedPaymentMethod: String? {

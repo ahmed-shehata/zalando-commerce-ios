@@ -29,8 +29,8 @@ class APICreateCheckoutSpec: APIClientBaseSpec {
                                 switch result {
                                 case .failure(let error):
                                     fail(String(error))
-                                case .success(let checkout):
-                                    expect(checkout.id).to(equal(self.checkoutId))
+                                case .success(let checkoutCart):
+                                    expect(checkoutCart.checkout.id).to(equal(self.checkoutId))
                                 }
                                 done()
                             }
@@ -45,8 +45,8 @@ class APICreateCheckoutSpec: APIClientBaseSpec {
                         switch result {
                         case .failure(let error):
                             fail(String(error))
-                        case .success(let checkout):
-                            expect(checkout.id).to(equal(self.checkoutId))
+                        case .success(let checkoutCart):
+                            expect(checkoutCart.checkout.id).to(equal(self.checkoutId))
                         }
                         done()
                     }
