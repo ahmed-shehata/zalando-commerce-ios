@@ -79,15 +79,17 @@ final public class AtlasCheckout {
             client.createCheckout(for: selectedArticleUnit, addresses: addresses) { result in
                 switch result {
                 case .failure(let error):
-                    if case let AtlasAPIError.checkoutFailed(_, cartId, _) = error {
-                        let checkoutModel = CheckoutViewModel(selectedArticleUnit: selectedArticleUnit, cartId: cartId)
+                    if case let AtlasAPIError.checkoutFailed(_, cart, _) = error {
+                        let checkoutModel = CheckoutViewModel(selectedArticleUnit: selectedArticleUnit, cart: cart)
                         completion(.success(checkoutModel))
                     } else {
                         completion(.failure(error))
                     }
 
-                case .success(let checkout):
-                    let checkoutModel = CheckoutViewModel(selectedArticleUnit: selectedArticleUnit, checkout: checkout)
+                case .success(let checkoutCart):
+                    let checkoutModel = CheckoutViewModel(selectedArticleUnit: selectedArticleUnit,
+                                                          cart: checkoutCart.cart,
+                                                          checkout: checkoutCart.checkout)
                     completion(.success(checkoutModel))
                 }
             }

@@ -34,12 +34,13 @@ public enum AtlasAPIError: AtlasErrorType {
     case http(status: HTTPStatus, details: String?)
     case backend(status: Int?, type: String?, title: String?, details: String?)
 
-    case checkoutFailed(addresses: [UserAddress]?, cartId: String?, error: ErrorType)
+    case checkoutFailed(addresses: [UserAddress]?, cart: Cart?, error: ErrorType)
 
 }
 
 public enum AtlasCatalogError: AtlasErrorType {
 
     case outOfStock
+    case priceChanged(newPrice: NSDecimalNumber)
 
 }

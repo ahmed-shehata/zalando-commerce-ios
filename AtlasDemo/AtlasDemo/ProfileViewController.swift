@@ -51,7 +51,7 @@ class ProfileViewController: UIViewController {
     }
 
     @IBAction func serverSwitched(sender: UISegmentedControl) {
-        
+
         switch sender.selectedSegmentIndex {
         case 1:
             AppSetup.change(environmentToSandbox: true)
@@ -60,7 +60,7 @@ class ProfileViewController: UIViewController {
         default:
             AppSetup.change(environmentToSandbox: false)
         }
-        
+
     }
     @IBAction func languageSwitched(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {

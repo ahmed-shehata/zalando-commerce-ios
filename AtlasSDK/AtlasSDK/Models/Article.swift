@@ -49,8 +49,8 @@ public struct Article {
     public struct Unit {
         public let id: String
         public let size: String
-        public let price: Price
-        public let originalPrice: Price
+        public let price: Money
+        public let originalPrice: Money
         public let available: Bool
         public let stock: Int
         public let partner: Partner?
@@ -68,14 +68,6 @@ public struct Article {
         public let detailHDURL: NSURL
         public let largeURL: NSURL
         public let largeHDURL: NSURL
-    }
-
-    /**
-     Represents a price of `Article`
-     */
-    public struct Price {
-        public let currency: String
-        public let amount: Float
     }
 
     public struct Partner {
@@ -114,8 +106,8 @@ extension Article.Unit: JSONInitializable {
         guard let
         id = json["id"].string,
             size = json["size"].string,
-            price = Article.Price(json: json["price"]),
-            originalPrice = Article.Price(json: json["original_price"]),
+            price = Money(json: json["price"]),
+            originalPrice = Money(json: json["original_price"]),
             available = json["available"].bool,
             stock = json["stock"].int
         else {
@@ -177,18 +169,6 @@ extension Article.Image: JSONInitializable {
 
 }
 
-extension Article.Price: JSONInitializable {
-    init?(json: JSON) {
-        guard let
-        currency = json["currency"].string,
-            amount = json["amount"].float
-        else { return nil }
-        self.currency = currency
-        self.amount = amount
-    }
-
-}
-
 extension Article.Partner: JSONInitializable {
     init?(json: JSON) {
         guard let
@@ -202,14 +182,4 @@ extension Article.Partner: JSONInitializable {
         self.detailsURL = detailsURL
     }
 
-}
-
-extension Article.Price: Comparable { }
-
-public func == (lhs: Article.Price, rhs: Article.Price) -> Bool {
-    return lhs.amount == rhs.amount
-}
-
-public func < (lhs: Article.Price, rhs: Article.Price) -> Bool {
-    return lhs.amount < rhs.amount
 }
