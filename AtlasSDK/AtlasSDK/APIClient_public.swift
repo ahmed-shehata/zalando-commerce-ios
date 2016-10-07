@@ -25,12 +25,7 @@ public typealias ArticleCompletion = AtlasResult<Article> -> Void
 public typealias CartCompletion = AtlasResult<Cart> -> Void
 
 /**
- Completion block `AtlasResult` with the `Checkout` struct as a success value
- */
-public typealias CheckoutCompletion = AtlasResult<Checkout> -> Void
-
-/**
- Completion block `AtlasResult` with the `CheckoutCart` struct that contain `Checkout` & `Cart` structs as a success value
+ Completion block `AtlasResult` with the `CheckoutCart` struct that contains `Checkout` & `Cart` structs as a success value
  */
 public typealias CheckoutCartCompletion = AtlasResult<CheckoutCart> -> Void
 
@@ -121,7 +116,7 @@ extension APIClient {
         fetch(from: endpoint, completion: completion)
     }
 
-    public func updateCheckout(checkoutId: String, updateCheckoutRequest: UpdateCheckoutRequest, completion: CheckoutCompletion) {
+    public func updateCheckout(checkoutId: String, updateCheckoutRequest: UpdateCheckoutRequest, completion: CheckoutCartCompletion) {
         let endpoint = UpdateCheckoutEndpoint(serviceURL: config.checkoutURL,
             parameters: updateCheckoutRequest.toJSON(),
             checkoutId: checkoutId)

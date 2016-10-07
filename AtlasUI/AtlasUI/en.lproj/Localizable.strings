@@ -32,6 +32,7 @@
 "AtlasCatalogError.message.outOfStock" = "Sorry this item is out of stock";
 "AtlasCatalogError.message.missingAddress" = "Please select shipping and billing addresses first";
 "AtlasCatalogError.message.priceChanged" = "The price is now %@";
+"AtlasCatalogError.message.paymentMethodNotAvailable" = "Payment method is no longer available";
 
 "LoginError.title" = "Login Error";
 "LoginError.message.missingURL" = "Missing login URL";

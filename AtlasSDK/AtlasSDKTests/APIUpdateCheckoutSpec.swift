@@ -23,9 +23,9 @@ class APIUpdateCheckoutSpec: APIClientBaseSpec {
                         switch result {
                         case .failure(let error):
                             fail(String(error))
-                        case .success(let checkout):
-                            expect(checkout.id).to(equal(self.checkoutId))
-                            expect(checkout.billingAddress.id).to(equal(self.addressId))
+                        case .success(let checkoutCart):
+                            expect(checkoutCart.checkout.id).to(equal(self.checkoutId))
+                            expect(checkoutCart.checkout.billingAddress.id).to(equal(self.addressId))
                         }
                         done()
                     }
@@ -39,9 +39,9 @@ class APIUpdateCheckoutSpec: APIClientBaseSpec {
                         switch result {
                         case .failure(let error):
                             fail(String(error))
-                        case .success(let checkout):
-                            expect(checkout.id).to(equal(self.checkoutId))
-                            expect(checkout.shippingAddress.id).to(equal(self.addressId))
+                        case .success(let checkoutCart):
+                            expect(checkoutCart.checkout.id).to(equal(self.checkoutId))
+                            expect(checkoutCart.checkout.shippingAddress.id).to(equal(self.addressId))
                         }
                         done()
                     }
@@ -55,10 +55,10 @@ class APIUpdateCheckoutSpec: APIClientBaseSpec {
                         switch result {
                         case .failure(let error):
                             fail(String(error))
-                        case .success(let checkout):
-                            expect(checkout.id).to(equal(self.checkoutId))
-                            expect(checkout.billingAddress.id).to(equal(self.addressId))
-                            expect(checkout.shippingAddress.id).to(equal(self.addressId))
+                        case .success(let checkoutCart):
+                            expect(checkoutCart.checkout.id).to(equal(self.checkoutId))
+                            expect(checkoutCart.checkout.billingAddress.id).to(equal(self.addressId))
+                            expect(checkoutCart.checkout.shippingAddress.id).to(equal(self.addressId))
                         }
                         done()
                     }

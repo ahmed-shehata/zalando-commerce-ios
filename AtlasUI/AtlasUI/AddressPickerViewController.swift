@@ -93,7 +93,7 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
 
     private func setTableViewDataSource(addresses: [UserAddress]) {
         self.tableviewDelegate?.addresses = addresses
-        if addressType == AddressType.billing {
+        if addressType == .billing {
             self.tableviewDelegate?.addresses = addresses.filter({ $0.pickupPoint == nil })
         }
         self.tableView.reloadData()

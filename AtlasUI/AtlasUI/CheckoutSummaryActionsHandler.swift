@@ -38,8 +38,18 @@ extension CheckoutSummaryActionsHandler {
         viewController.displayLoader { done in
             viewController.checkout.client.updateCheckout(checkout.id, updateCheckoutRequest: updateCheckoutRequest) { result in
                 done()
-                guard let checkout = result.process() else { return }
-                self.createOrder(checkout.id)
+                guard var checkoutCart = result.process() else { return }
+                checkoutCart.cart = viewController.checkoutViewModel.cart
+
+                let checkoutViewModel = CheckoutViewModel(
+                    selectedArticleUnit: viewController.checkoutViewModel.selectedArticleUnit,
+                    cart: checkoutCart.cart,
+                    checkout: checkoutCart.checkout)
+                viewController.checkoutViewModel = checkoutViewModel
+
+                if viewController.viewState == .CheckoutReady {
+                    self.createOrder(checkoutCart.checkout.id)
+                }
             }
         }
     }
@@ -81,7 +91,6 @@ extension CheckoutSummaryActionsHandler {
 
                 checkoutViewModel.customer = customer
                 viewController.checkoutViewModel = checkoutViewModel
-                viewController.viewState = checkoutViewModel.checkoutViewState
             }
         }
     }
@@ -168,26 +177,20 @@ extension CheckoutSummaryActionsHandler {
             }
 
             switch addressType {
-            case AddressType.billing:
+            case .billing:
                 viewController.checkoutViewModel.selectedBillingAddress = address
-            case AddressType.shipping:
+            case .shipping:
                 viewController.checkoutViewModel.selectedShippingAddress = address
             }
 
-            viewController.rootStackView.configureData(viewController)
-            viewController.refreshViewData()
-
-            guard viewController.checkoutViewModel.isReadyToCreateCheckout == true else { return }
+            guard viewController.checkoutViewModel.isReadyToCreateCheckout else { return }
 
             viewController.displayLoader { done in
                 viewController.checkout.createCheckoutViewModel(fromModel: viewController.checkoutViewModel) { result in
                     done()
-                    guard var checkoutViewModel = result.process() else { return }
+                    guard let checkoutViewModel = result.process() else { return }
 
-                    checkoutViewModel.customer = viewController.checkoutViewModel.customer
                     viewController.checkoutViewModel = checkoutViewModel
-                    viewController.rootStackView.configureData(viewController)
-                    viewController.refreshViewData()
                 }
             }
     }

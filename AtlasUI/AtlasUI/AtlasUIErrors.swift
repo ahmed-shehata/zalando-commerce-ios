@@ -78,7 +78,7 @@ extension AtlasCatalogError: UserPresentable {
     public func errorPresentationType() -> ErrorPresentationType {
         switch self {
         case .outOfStock: return .fullScreen
-        case .missingAddress, .priceChanged: return .banner
+        case .paymentMethodNotAvailable, .missingAddress, .priceChanged: return .banner
         }
     }
 
