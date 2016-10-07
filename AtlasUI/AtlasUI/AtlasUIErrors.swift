@@ -82,7 +82,7 @@ extension AtlasCatalogError: UserPresentable {
         }
     }
 
-    func arguments() -> [CVarArgType?] {
+    func messageArguments() -> [CVarArgType?] {
         switch self {
         case .priceChanged(let newPrice): return [Localizer.price(newPrice)]
         default: return []

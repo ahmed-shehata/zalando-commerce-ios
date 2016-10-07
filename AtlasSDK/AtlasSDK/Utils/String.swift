@@ -17,4 +17,13 @@ extension String {
         return string.stringByReplacingOccurrencesOfString("  ", withString: "")
     }
 
+    var range: NSRange {
+        return NSRange(location: 0, length: characters.count)
+    }
+
+    var bracketsFree: String {
+        let regex = try? NSRegularExpression(pattern: "\\([^\\)]*\\)", options: .CaseInsensitive)
+        return regex?.stringByReplacingMatchesInString(self, options: [], range: range, withTemplate: "") ?? ""
+    }
+
 }

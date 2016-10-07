@@ -13,8 +13,8 @@ public protocol AtlasErrorType: ErrorType {
 
 public extension AtlasErrorType {
 
-    var localizedTitleKey: String { return "\(self.dynamicType).title.\(self)" }
-    var localizedMessageKey: String { return "\(self.dynamicType).message.\(self)" }
+    var localizedTitleKey: String { return "\(self.dynamicType).title.\(self)".bracketsFree }
+    var localizedMessageKey: String { return "\(self.dynamicType).message.\(self)".bracketsFree }
 
 }
 
