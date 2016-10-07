@@ -82,7 +82,7 @@ class AtlasDemoUITests: XCTestCase {
     }
 
     func testDeleteAddress() {
-        let size = app.cells["size-cell-1"]
+        let size = app.cells["size-cell-0"]
         tapBuyNow("Lamica")
         waitForElementToAppearAndTap(size)
         tapConnectAndLogin()
@@ -92,7 +92,7 @@ class AtlasDemoUITests: XCTestCase {
     }
 
     func testDeletePreselectedAddress() {
-        let size = app.cells["size-cell-1"]
+        let size = app.cells["size-cell-0"]
         tapBuyNow("Lamica")
         waitForElementToAppearAndTap(size)
         tapConnectAndLogin()
@@ -115,7 +115,7 @@ class AtlasDemoUITests: XCTestCase {
     }
 
     func testToC() {
-        let size = app.cells["size-cell-1"]
+        let size = app.cells["size-cell-0"]
         let webView = app.otherElements["toc-webview"]
         tapBuyNow("Lamica")
         waitForElementToAppearAndTap(size)
@@ -143,7 +143,7 @@ class AtlasDemoUITests: XCTestCase {
 extension AtlasDemoUITests {
 
     private func proceedToSummaryWithSizes() {
-        let size = app.cells["size-cell-1"]
+        let size = app.cells["size-cell-0"]
         tapBuyNow("Lamica")
         waitForElementToAppearAndTap(size)
         tapConnectAndLogin()
