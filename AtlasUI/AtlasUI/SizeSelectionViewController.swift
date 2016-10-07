@@ -79,7 +79,6 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
         checkout.client.article(forSKU: sku) { [weak self] result in
             guard let strongSelf = self, article = result.process() else { return }
             strongSelf.displaySizes(forArticle: article)
-            strongSelf.title = Localizer.string("Pick a size")
         }
     }
 
@@ -87,6 +86,7 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
         guard !article.hasSingleUnit else {
             return showCheckoutScreen(article, selectedUnitIndex: 0)
         }
+        self.title = Localizer.string("Pick a size")
         self.activityIndicatorView.stopAnimating()
         self.showSizeListViewController(article)
     }
