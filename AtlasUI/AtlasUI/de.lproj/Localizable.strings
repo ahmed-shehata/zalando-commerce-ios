@@ -26,7 +26,7 @@
 "feature.notImplemented.title" = "Not implemented";
 "feature.notImplemented.message" = "This feature is currently not implemented";
 
-"AtlasCatalogError.title" = "Error";
+"AtlasCatalogError.title" = "Oops";
 "AtlasCatalogError.message.outOfStock" = "Sorry this item is out of stock";
 
 "LoginError.title" = "Anmeldung fehlgeschlagen";
