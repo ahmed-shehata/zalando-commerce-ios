@@ -77,7 +77,9 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
         activityIndicatorView.startAnimating()
 
         checkout.client.article(forSKU: sku) { [weak self] result in
-            guard let strongSelf = self, article = result.process() else { return }
+            guard let strongSelf = self else { return }
+            strongSelf.activityIndicatorView.stopAnimating()
+            guard let article = result.process() else { return }
             strongSelf.displaySizes(forArticle: article)
             strongSelf.showCancelButton()
         }
