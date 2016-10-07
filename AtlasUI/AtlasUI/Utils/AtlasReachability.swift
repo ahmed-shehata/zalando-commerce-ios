@@ -28,7 +28,7 @@ class AtlasReachability {
 
         reachability?.whenUnreachable = { _ in
             Async.main {
-                atlasUIViewController.displayError(ReachabilityUserPresentableError())
+                atlasUIViewController.displayError(AtlasAPIError.noInternet)
             }
         }
     }
