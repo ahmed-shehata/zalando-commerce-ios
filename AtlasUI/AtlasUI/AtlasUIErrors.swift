@@ -98,14 +98,27 @@ extension AtlasConfigurationError: UserPresentable { }
 extension AtlasCatalogError: UserPresentable {
 
     public func shouldDisplayGeneralMessage() -> Bool {
-        switch self {
-        case .outOfStock: return false
-        }
+        return false
     }
 
     public func errorPresentationType() -> ErrorPresentationType {
         switch self {
         case .outOfStock: return .fullScreen
+        case .priceChanged: return .banner
+        }
+    }
+
+    func title(formatArguments: CVarArgType?...) -> String {
+        switch self {
+        case .priceChanged: return Localizer.string("Error.priceChanged.title")
+        default: return Localizer.string("\(self.dynamicType).title", formatArguments)
+        }
+    }
+
+    func message(formatArguments: CVarArgType?...) -> String {
+        switch self {
+        case .priceChanged(let newPrice): return Localizer.string("AtlasCatalogError.message.priceChanged: %@", Localizer.price(newPrice))
+        default: return Localizer.string(self.localizedDescriptionKey, formatArguments)
         }
     }
 

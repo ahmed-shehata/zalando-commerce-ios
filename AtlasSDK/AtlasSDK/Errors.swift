@@ -41,5 +41,6 @@ public enum AtlasAPIError: AtlasErrorType {
 public enum AtlasCatalogError: AtlasErrorType {
 
     case outOfStock
+    case priceChanged(newPrice: NSDecimalNumber)
 
 }
