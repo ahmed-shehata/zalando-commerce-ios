@@ -20,28 +20,17 @@ class AtlasReachability {
             AtlasLogger.logError("Reachability Configuration error")
         }
 
-        reachability?.whenReachable = { [weak self] _ in
+        reachability?.whenReachable = { _ in
             Async.main {
-                self?.removeReachabilityBanner(atlasUIViewController)
+                atlasUIViewController.clearBannerError()
             }
         }
 
-        reachability?.whenUnreachable = { [weak self] _ in
+        reachability?.whenUnreachable = { _ in
             Async.main {
-                self?.displayReachabilityBanner(atlasUIViewController)
+                atlasUIViewController.displayError(ReachabilityUserPresentableError())
             }
         }
-    }
-
-    private func displayReachabilityBanner(atlasUIViewController: AtlasUIViewController) {
-        atlasUIViewController.addChildViewController(atlasUIViewController.bannerErrorViewController)
-        atlasUIViewController.view.addSubview(atlasUIViewController.bannerErrorViewController.view)
-        atlasUIViewController.bannerErrorViewController.view.fillInSuperView()
-        atlasUIViewController.bannerErrorViewController.configureData(ReachabilityUserPresentableError())
-    }
-
-    private func removeReachabilityBanner(atlasUIViewController: AtlasUIViewController) {
-        atlasUIViewController.bannerErrorViewController.hideBanner()
     }
 
 }
