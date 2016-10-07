@@ -10,9 +10,9 @@ import AtlasMockAPI
 class AppSetup {
 
     private(set) static var checkout: AtlasCheckout?
-    private static var options: Options?
+    private(set) static var options: Options?
 
-    private static let defaultUseSandbox = true
+    private static let defaultUseSandbox = false
     private static let defaultInterfaceLanguage = "en"
 
     static var interfaceLanguage: String? {
@@ -27,6 +27,7 @@ class AppSetup {
     }
 
     static func change(environmentToSandbox useSandbox: Bool, completion: (() -> Void)? = nil) {
+        Atlas.logoutUser()
         setAppOptions(prepareOptions(useSandbox: useSandbox), completion: completion)
     }
 

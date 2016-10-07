@@ -37,7 +37,7 @@ enum FormValidator {
         case .MaxLength(let maxLength): return text?.trimmedLength <= maxLength
         case .ExactLength(let length): return text?.trimmedLength == length
         case .Pattern(let pattern, _): return isPatternValid(pattern, text: text)
-        case .NumbersOnly: return isPatternValid("[0-9]+", text: text)
+        case .NumbersOnly: return isPatternValid("^[0-9]+$", text: text)
         }
     }
 
