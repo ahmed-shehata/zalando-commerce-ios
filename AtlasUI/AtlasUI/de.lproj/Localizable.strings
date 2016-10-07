@@ -27,7 +27,9 @@
 "feature.notImplemented.message" = "This feature is currently not implemented";
 
 "AtlasCatalogError.title" = "Oops";
+"AtlasCatalogError.title.priceChanged" = "Price changed";
 "AtlasCatalogError.message.outOfStock" = "Sorry this item is out of stock";
+"AtlasCatalogError.message.priceChanged: %@" = "The price is now %@";
 
 "LoginError.title" = "Anmeldung fehlgeschlagen";
 "LoginError.message.missingURL" = "Missing login URL";
@@ -88,6 +90,3 @@
 
 "Error.missingAddress.title" = "No address selected";
 "Error.missingAddress.message" = "Please select shipping and billing addresses first";
-
-"Error.priceChanged.title" = "Price changed";
-"Error.priceChanged.message: %@" = "The price is now %@";

@@ -17,7 +17,7 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
                 newPrice = checkoutViewModel.cart?.grossTotal.amount else { return }
 
             if oldPrice != newPrice {
-                atlasUIViewController.displayError(PriceChangedError(newPrice: newPrice))
+                atlasUIViewController.displayError(AtlasCatalogError.priceChanged(newPrice: newPrice))
             }
         }
     }
