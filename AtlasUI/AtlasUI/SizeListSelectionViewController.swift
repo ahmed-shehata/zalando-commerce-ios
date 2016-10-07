@@ -92,7 +92,7 @@ extension SizeListSelectionViewController: UITableViewDelegate {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
 
         guard Atlas.isUserLoggedIn() else {
-            let selectedArticleUnit = SelectedArticleUnit(article: article, selectedUnitIndex: 0)
+            let selectedArticleUnit = SelectedArticleUnit(article: article, selectedUnitIndex: indexPath.row)
             let checkoutViewModel = CheckoutViewModel(selectedArticleUnit: selectedArticleUnit)
             return displayCheckoutSummaryViewController(checkoutViewModel)
         }
