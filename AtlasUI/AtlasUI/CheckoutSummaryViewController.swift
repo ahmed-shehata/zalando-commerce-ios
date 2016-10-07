@@ -11,9 +11,9 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
     internal var checkoutViewModel: CheckoutViewModel {
         didSet {
             injectCustomer(from: oldValue)
-            checkPriceChange(oldValue)
-            checkPaymentMethod(oldValue)
             viewState = checkoutViewModel.checkoutViewState
+            checkPaymentMethod(oldValue)
+            checkPriceChange(oldValue)
         }
     }
     internal var viewState: CheckoutViewState = .NotLoggedIn {

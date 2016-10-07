@@ -33,6 +33,10 @@ public class AtlasUIViewController: UIViewController {
 
 extension AtlasUIViewController {
 
+    var errorDisplayed: Bool {
+        return bannerErrorViewController.parentViewController != nil || fullScreenErrorViewController.parentViewController != nil
+    }
+
     internal func displayError(error: UserPresentable) {
         switch error.errorPresentationType() {
         case .banner: displayBanner(error)

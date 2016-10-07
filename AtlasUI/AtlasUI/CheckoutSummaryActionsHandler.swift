@@ -26,20 +26,16 @@ extension Checkout {
 extension CheckoutSummaryActionsHandler {
 
     internal func handleBuyAction() {
-        guard let viewController = self.viewController else { return }
-        guard let checkout = viewController.checkoutViewModel.checkout else { return }
-
-        if checkout.hasSameAddress(like: viewController.checkoutViewModel) {
-            return createOrder(checkout.id)
-        }
-
-        let updateCheckoutRequest = UpdateCheckoutRequest(checkoutViewModel: viewController.checkoutViewModel)
+        let mainViewController: AtlasUIViewController? = try? Atlas.provide()
+        guard let
+            atlasUIViewController = mainViewController,
+            viewController = self.viewController else { return }
 
         viewController.displayLoader { done in
-            viewController.checkout.client.updateCheckout(checkout.id, updateCheckoutRequest: updateCheckoutRequest) { result in
+            viewController.checkout.client.createCheckout(for: viewController.checkoutViewModel.selectedArticleUnit,
+            addresses: viewController.checkoutViewModel.selectedAddresses) { result in
                 done()
-                guard var checkoutCart = result.process() else { return }
-                checkoutCart.cart = viewController.checkoutViewModel.cart
+                guard let checkoutCart = result.process() else { return }
 
                 let checkoutViewModel = CheckoutViewModel(
                     selectedArticleUnit: viewController.checkoutViewModel.selectedArticleUnit,
@@ -47,7 +43,7 @@ extension CheckoutSummaryActionsHandler {
                     checkout: checkoutCart.checkout)
                 viewController.checkoutViewModel = checkoutViewModel
 
-                if viewController.viewState == .CheckoutReady {
+                if viewController.viewState == .CheckoutReady && !atlasUIViewController.errorDisplayed {
                     self.createOrder(checkoutCart.checkout.id)
                 }
             }

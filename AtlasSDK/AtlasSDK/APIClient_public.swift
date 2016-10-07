@@ -25,7 +25,12 @@ public typealias ArticleCompletion = AtlasResult<Article> -> Void
 public typealias CartCompletion = AtlasResult<Cart> -> Void
 
 /**
- Completion block `AtlasResult` with the `CheckoutCart` struct that contains `Checkout` & `Cart` structs as a success value
+ Completion block `AtlasResult` with the `Checkout` struct as a success value
+ */
+public typealias CheckoutCompletion = AtlasResult<Checkout> -> Void
+
+/**
+ Completion block `AtlasResult` with the `CheckoutCart` struct that contain `Checkout` & `Cart` structs as a success value
  */
 public typealias CheckoutCartCompletion = AtlasResult<CheckoutCart> -> Void
 
@@ -98,8 +103,8 @@ extension APIClient {
                                 case .failure(let error):
                                     let checkoutError = AtlasAPIError.checkoutFailed(addresses: addressList, cart: cart, error: error)
                                     completion(.failure(checkoutError))
-                                case .success(var checkoutCart):
-                                    checkoutCart.cart = cart
+                                case .success(let checkout):
+                                    let checkoutCart = CheckoutCart(checkout: checkout, cart: cart)
                                     completion(.success(checkoutCart))
                                 }
                             }
@@ -109,14 +114,14 @@ extension APIClient {
             }
     }
 
-    public func createCheckout(cartId: String, addresses: CheckoutAddresses? = nil, completion: CheckoutCartCompletion) {
+    public func createCheckout(cartId: String, addresses: CheckoutAddresses? = nil, completion: CheckoutCompletion) {
         let parameters = CreateCheckoutRequest(cartId: cartId, addresses: addresses).toJSON()
         let endpoint = CreateCheckoutEndpoint(serviceURL: config.checkoutURL, parameters: parameters)
 
         fetch(from: endpoint, completion: completion)
     }
 
-    public func updateCheckout(checkoutId: String, updateCheckoutRequest: UpdateCheckoutRequest, completion: CheckoutCartCompletion) {
+    public func updateCheckout(checkoutId: String, updateCheckoutRequest: UpdateCheckoutRequest, completion: CheckoutCompletion) {
         let endpoint = UpdateCheckoutEndpoint(serviceURL: config.checkoutURL,
             parameters: updateCheckoutRequest.toJSON(),
             checkoutId: checkoutId)
