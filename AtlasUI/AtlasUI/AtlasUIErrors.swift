@@ -14,7 +14,6 @@ protocol UserPresentable: AtlasErrorType {
 
     func titleArguments() -> [CVarArgType?]
     func messageArguments() -> [CVarArgType?]
-
     func customMessage() -> String?
 
     func shouldDisplayGeneralMessage() -> Bool
@@ -24,25 +23,12 @@ protocol UserPresentable: AtlasErrorType {
 
 extension UserPresentable {
 
-    func titleArguments() -> [CVarArgType?] {
-        return []
-    }
+    func titleArguments() -> [CVarArgType?] { return [] }
+    func messageArguments() -> [CVarArgType?] { return [] }
+    func customMessage() -> String? { return nil }
 
-    func messageArguments() -> [CVarArgType?] {
-        return []
-    }
-
-    func customMessage() -> String? {
-        return nil
-    }
-
-    func shouldDisplayGeneralMessage() -> Bool {
-        return true
-    }
-
-    func errorPresentationType() -> ErrorPresentationType {
-        return .banner
-    }
+    func shouldDisplayGeneralMessage() -> Bool { return true }
+    func errorPresentationType() -> ErrorPresentationType { return .banner }
 
     var displayedTitle: String {
         return shouldDisplayGeneralMessage() ? Localizer.string("Error.unclassified.title") : title(titleArguments())
@@ -68,6 +54,7 @@ extension AtlasAPIError: UserPresentable {
 
     func shouldDisplayGeneralMessage() -> Bool {
         switch self {
+        case .noInternet: return false
         case let .nsURLError(_, details): return details == nil
         default: return true
         }
@@ -75,36 +62,12 @@ extension AtlasAPIError: UserPresentable {
 
     func customMessage() -> String? {
         switch self {
-        case let .nsURLError(_, details):
-            return "\(details~?)"
-        case let .http(status, details):
-            return "\(details~?) (#\(status~?))"
-        case let .backend(status, _, _, details):
-            return "\(details~?) (#\(status~?))"
-        case let .checkoutFailed(_, _, error):
-            if case let AtlasAPIError.backend(_, _, _, details) = error {
-                return "\(details~?)"
-            } else {
-                return nil
-            }
+        case let .nsURLError(_, details): return details~?
         default: return nil
         }
     }
 
 }
-
-extension LoginError: UserPresentable {
-
-    func customMessage() -> String? {
-        switch self {
-        case let .requestFailed(error): return "\(error?.localizedDescription~?)"
-        default: return nil
-        }
-    }
-
-}
-
-extension AtlasConfigurationError: UserPresentable { }
 
 extension AtlasCatalogError: UserPresentable {
 
@@ -127,3 +90,7 @@ extension AtlasCatalogError: UserPresentable {
     }
 
 }
+
+extension LoginError: UserPresentable { }
+
+extension AtlasConfigurationError: UserPresentable { }

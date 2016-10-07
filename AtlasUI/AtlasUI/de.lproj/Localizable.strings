@@ -27,7 +27,7 @@
 "feature.notImplemented.message" = "This feature is currently not implemented";
 
 "AtlasCatalogError.title" = "Oops";
-"AtlasCatalogError.title.missingAddress" = "Price changed";
+"AtlasCatalogError.title.missingAddress" = "No address selected";
 "AtlasCatalogError.title.priceChanged" = "Price changed";
 "AtlasCatalogError.message.outOfStock" = "Sorry this item is out of stock";
 "AtlasCatalogError.message.missingAddress" = "Please select shipping and billing addresses first";
@@ -40,8 +40,10 @@
 "LoginError.message.missingViewControllerToShowLoginForm" = "Cannot show login form";
 
 "AtlasAPIError.title" = "Server Error";
+"AtlasAPIError.title.noInternet" = "No internet connection";
 "AtlasAPIError.message.invalidResponseFormat" = "Incorrect response format";
 "AtlasAPIError.message.noData" = "Empty response";
+"AtlasAPIError.message.noInternet" = "Please check you internet connection";
 "AtlasAPIError.message.unauthorized" = "Access denied";
 "AtlasAPIError.message.checkoutFailed" = "Unknown checkout error";
 
@@ -86,9 +88,3 @@
 
 "Error.unclassified.title" = "Oops";
 "Error.unclassified.message" = "Something went wrong.\nWe are fixing the issue.\nPlease come back later";
-
-"Error.reachability.title" = "No internet connection";
-"Error.reachability.message" = "Please check you internet connection";
-
-"Error.missingAddress.title" = "No address selected";
-"Error.missingAddress.message" = "Please select shipping and billing addresses first";
