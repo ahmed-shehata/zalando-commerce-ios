@@ -80,6 +80,9 @@ extension AddressListTableViewDelegate: UITableViewDelegate {
     }
 
     private func deleteAddress(indexPath: NSIndexPath, tableView: UITableView) {
+        if let selectedAddress = selectedAddress where selectedAddress == self.addresses[indexPath.item] {
+            self.selectedAddress = nil
+        }
         self.addresses.removeAtIndex(indexPath.item)
 
         if self.addresses.isEmpty {
