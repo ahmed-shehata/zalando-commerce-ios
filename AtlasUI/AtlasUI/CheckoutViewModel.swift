@@ -42,11 +42,11 @@ struct CheckoutViewModel {
 extension CheckoutViewModel {
 
     var shippingAddress: [String] {
-        return selectedShippingAddress?.splittedFormattedPostalAddress ?? [Localizer.string("No Shipping Address")]
+        return selectedShippingAddress?.splittedFormattedPostalAddress ?? [Localizer.string("Address.empty.shipping")]
     }
 
     var billingAddress: [String] {
-        return selectedBillingAddress?.splittedFormattedPostalAddress ?? [Localizer.string("No Billing Address")]
+        return selectedBillingAddress?.splittedFormattedPostalAddress ?? [Localizer.string("Address.empty.billing")]
     }
 
     var submitButtonTitle: String {

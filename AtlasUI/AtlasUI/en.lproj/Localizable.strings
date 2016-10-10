@@ -13,11 +13,12 @@
 "Shipping" = "Shipping";
 "Pay %@" = "Pay %@";
 "Zalando.Connect" = "Connect to Zalando";
+"Zalando.login" = "Login with Zalando";
+"Zalando.Checkout" = "Checkout with Zalando";
 "CheckoutSummaryViewController.terms" = "Zalando terms, conditions and cancellation policy apply to all orders";
 "Address.Shipping" = "Shipping Address";
 "Address.Billing" = "Billing Address";
 "Size: %@" = "Size: %@";
-"Zalando.Checkout" = "Checkout with Zalando";
 "order.place" = "Place order";
 "order.place.paypal" = "Confirm and pay with PayPal";
 "navigation.back.shop" = "Back to shop";
@@ -69,6 +70,8 @@
 "Address.prefix.packstation" = "Packstation";
 "Address.prefix.memberID" = "Member ID";
 "Address.prefix.packstation.abbreviation" = "P.S.";
+"Address.empty.billing" = "No Billing Address";
+"Address.empty.shipping" = "No Shipping Address";
 
 "Form.validation.required" = "This field is required";
 "Form.validation.minLength: %@" = "Min length is %@";
