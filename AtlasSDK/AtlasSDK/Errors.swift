@@ -45,7 +45,7 @@ public enum AtlasCatalogError: AtlasErrorType {
 
     case outOfStock
     case missingAddress
-    case priceChanged(newPrice: NSDecimalNumber)
+    case priceChanged(newPrice: MoneyAmount)
     case paymentMethodNotAvailable
 
 }

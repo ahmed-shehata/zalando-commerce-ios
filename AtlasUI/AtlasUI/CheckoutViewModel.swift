@@ -76,11 +76,11 @@ extension CheckoutViewModel {
         return selectedArticleUnit.article
     }
 
-    var shippingPriceValue: NSDecimalNumber {
+    var shippingPriceValue: MoneyAmount {
         return shippingPrice?.amount ?? 0
     }
 
-    var totalPriceValue: NSDecimalNumber {
+    var totalPriceValue: MoneyAmount {
         return cart?.grossTotal.amount ?? 0
     }
 

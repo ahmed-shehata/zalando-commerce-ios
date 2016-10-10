@@ -4,8 +4,10 @@
 
 import Foundation
 
+public typealias MoneyAmount = NSDecimalNumber
+
 public struct Money {
-    public let amount: NSDecimalNumber
+    public let amount: MoneyAmount
     public let currency: String
 }
 
@@ -37,6 +39,6 @@ extension Money: JSONInitializable {
             amount = json[Keys.amount].number,
             currency = json[Keys.currency].string else { return nil }
 
-        self.init(amount: NSDecimalNumber(decimal: amount.decimalValue), currency: currency)
+        self.init(amount: MoneyAmount(decimal: amount.decimalValue), currency: currency)
     }
 }
