@@ -32,19 +32,19 @@ extension CheckoutSummaryActionsHandler {
             viewController = self.viewController else { return }
 
         viewController.displayLoader { done in
-            viewController.checkout.client.createCheckoutWithCart(for: viewController.checkoutViewModel.selectedArticleUnit,
+            viewController.checkout.client.createCheckoutCart(for: viewController.checkoutViewModel.selectedArticleUnit,
             addresses: viewController.checkoutViewModel.selectedAddresses) { result in
                 done()
-                guard let checkoutWithCart = result.process() else { return }
+                guard let (checkout, cart) = result.process() else { return }
 
                 let checkoutViewModel = CheckoutViewModel(
                     selectedArticleUnit: viewController.checkoutViewModel.selectedArticleUnit,
-                    cart: checkoutWithCart.cart,
-                    checkout: checkoutWithCart.checkout)
+                    cart: cart,
+                    checkout: checkout)
                 viewController.checkoutViewModel = checkoutViewModel
 
                 if viewController.viewState == .CheckoutReady && !atlasUIViewController.errorDisplayed {
-                    self.createOrder(checkoutWithCart.checkout.id)
+                    self.createOrder(checkout.id)
                 }
             }
         }

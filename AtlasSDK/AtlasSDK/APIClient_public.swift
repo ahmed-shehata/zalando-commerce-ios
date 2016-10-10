@@ -30,9 +30,9 @@ public typealias CartCompletion = AtlasResult<Cart> -> Void
 public typealias CheckoutCompletion = AtlasResult<Checkout> -> Void
 
 /**
- Completion block `AtlasResult` with the `CheckoutWithCart` struct that contain `Checkout` & `Cart` structs as a success value
+ Completion block `AtlasResult` with the `Checkout` & `Cart` structs as a success value
  */
-public typealias CheckoutWithCartCompletion = AtlasResult<CheckoutWithCart> -> Void
+public typealias CheckoutCartCompletion = AtlasResult<(checkout: Checkout, cart: Cart)> -> Void
 
 /**
  Completion block `AtlasResult` with the `Order` struct as a success value
@@ -76,8 +76,8 @@ extension APIClient {
         fetch(from: endpoint, completion: completion)
     }
 
-    public func createCheckoutWithCart(for selectedArticleUnit: SelectedArticleUnit,
-        addresses: CheckoutAddresses? = nil, completion: CheckoutWithCartCompletion) {
+    public func createCheckoutCart(for selectedArticleUnit: SelectedArticleUnit,
+        addresses: CheckoutAddresses? = nil, completion: CheckoutCartCompletion) {
             let articleSKU = selectedArticleUnit.article.availableUnits[selectedArticleUnit.selectedUnitIndex].id
             let cartItemRequest = CartItemRequest(sku: articleSKU, quantity: 1)
 
@@ -104,8 +104,7 @@ extension APIClient {
                                     let checkoutError = AtlasAPIError.checkoutFailed(addresses: addressList, cart: cart, error: error)
                                     completion(.failure(checkoutError))
                                 case .success(let checkout):
-                                    let checkoutWithCart = CheckoutWithCart(checkout: checkout, cart: cart)
-                                    completion(.success(checkoutWithCart))
+                                    completion(.success((checkout: checkout, cart: cart)))
                                 }
                             }
                         }
