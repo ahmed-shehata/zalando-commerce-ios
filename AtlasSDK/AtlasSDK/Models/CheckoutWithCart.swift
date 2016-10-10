@@ -4,14 +4,14 @@
 
 import Foundation
 
-public struct CheckoutCart {
+public struct CheckoutWithCart {
 
     public let checkout: Checkout
     public var cart: Cart?
 
 }
 
-extension CheckoutCart: JSONInitializable {
+extension CheckoutWithCart: JSONInitializable {
 
     init?(json: JSON) {
         guard let checkout = Checkout(json: json) else { return nil }

@@ -25,12 +25,12 @@ class APICreateCheckoutSpec: APIClientBaseSpec {
                             fail(String(error))
                         case .success(let article):
                             let selectedArticleUnit = SelectedArticleUnit(article: article, selectedUnitIndex: 0)
-                            client.createCheckout(for: selectedArticleUnit) { result in
+                            client.createCheckoutWithCart(for: selectedArticleUnit) { result in
                                 switch result {
                                 case .failure(let error):
                                     fail(String(error))
-                                case .success(let checkoutCart):
-                                    expect(checkoutCart.checkout.id).to(equal(self.checkoutId))
+                                case .success(let checkoutWithCart):
+                                    expect(checkoutWithCart.checkout.id).to(equal(self.checkoutId))
                                 }
                                 done()
                             }
