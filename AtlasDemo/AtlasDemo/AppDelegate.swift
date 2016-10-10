@@ -13,12 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         BuddyBuildSDK.setup()
         AppSetup.configure()
 
-        setupBugScreenshot()
-
-        Lookback.setupWithAppToken("yxHNcPapi4XecJDit")
-        Lookback.sharedLookback().shakeToRecord = false
-        Lookback.sharedLookback().feedbackBubbleVisible = true
-
         return true
     }
 

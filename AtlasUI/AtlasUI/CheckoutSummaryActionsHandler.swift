@@ -32,7 +32,7 @@ extension CheckoutSummaryActionsHandler {
         guard let checkout = viewController.checkoutViewModel.checkout else { return }
 
         if checkout.hasSameAddress(like: viewController.checkoutViewModel) {
-            return chooseCreateOrder(forCheckoutId: checkout.id)
+            return createOrder(forCheckoutId: checkout.id)
         }
 
         let updateCheckoutRequest = UpdateCheckoutRequest(checkoutViewModel: viewController.checkoutViewModel)
@@ -41,16 +41,8 @@ extension CheckoutSummaryActionsHandler {
             viewController.checkout.client.updateCheckout(checkout.id, updateCheckoutRequest: updateCheckoutRequest) { result in
                 hideLoader()
                 guard let checkout = result.process() else { return }
-                self.chooseCreateOrder(forCheckoutId: checkout.id)
+                self.createOrder(forCheckoutId: checkout.id)
             }
-        }
-    }
-
-    private func chooseCreateOrder(forCheckoutId checkoutId: String) {
-        if atlasCheckoutUseRealOrderProcess {
-            self.createOrder(forCheckoutId: checkoutId)
-        } else {
-            self.fake_createOrder(forCheckoutId: checkoutId)
         }
     }
 
@@ -200,24 +192,6 @@ extension UpdateCheckoutRequest {
     init (checkoutViewModel: CheckoutViewModel) {
         self.init(billingAddressId: checkoutViewModel.selectedBillingAddress?.id,
             shippingAddressId: checkoutViewModel.selectedShippingAddress?.id)
-    }
-
-}
-
-extension CheckoutSummaryActionsHandler {
-
-    @available( *, deprecated, message = "Only for bug bashing session")
-    internal func fake_createOrder(forCheckoutId checkoutId: String) {
-        guard let viewController = self.viewController else { return }
-        viewController.displayLoader { hideLoader in
-            viewController.checkout.client.createOrder(checkoutId) { result in
-                Async.delay(2) {
-                    guard let viewController = self.viewController else { return hideLoader() }
-                    viewController.viewState = .OrderPlaced
-                    return hideLoader()
-                }
-            }
-        }
     }
 
 }
