@@ -5,8 +5,6 @@
 import Foundation
 import AtlasSDK
 
-public var atlasCheckoutUseRealOrderProcess = false
-
 struct CheckoutSummaryActionsHandler {
 
     internal weak var viewController: CheckoutSummaryViewController?
