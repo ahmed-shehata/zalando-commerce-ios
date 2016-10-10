@@ -14,10 +14,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var customerNumer: UILabel!
     @IBOutlet weak var gender: UILabel!
     @IBOutlet weak var languageSwitcher: UISegmentedControl!
-    @IBOutlet weak var fakeOrderSwitch: UISegmentedControl!
     @IBOutlet weak var serverSegmentedControl: UISegmentedControl!
-
-    private var shakeCounter = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,14 +25,13 @@ class ProfileViewController: UIViewController {
         self.gender.text = ""
         self.email.textColor = UIColor.grayColor()
         self.languageSwitcher.selectedSegmentIndex = getLanguageSwitcherSelectedIndex()
+
         serverSegmentedControl.selectedSegmentIndex = 0
         if let useSandbox = AppSetup.options?.useSandboxEnvironment {
             if useSandbox {
                 serverSegmentedControl.selectedSegmentIndex = 1
             }
         }
-
-        fakeOrderSwitch.selectedSegmentIndex = atlasCheckoutUseRealOrderProcess ? 1 : 0
 
         AppSetup.checkout?.client.customer { result in
             switch result {
@@ -53,6 +49,7 @@ class ProfileViewController: UIViewController {
             }
         }
     }
+
     @IBAction func serverSwitched(sender: UISegmentedControl) {
 
         switch sender.selectedSegmentIndex {
@@ -77,10 +74,6 @@ class ProfileViewController: UIViewController {
         }
     }
 
-    @IBAction func fakeOrderSwitched(sender: UISegmentedControl) {
-        atlasCheckoutUseRealOrderProcess = sender.selectedSegmentIndex == 1
-    }
-
     @IBAction func logoutButtonTapped(sender: AnyObject) {
         Atlas.logoutUser()
         self.navigationController?.popViewControllerAnimated(true)
@@ -89,19 +82,6 @@ class ProfileViewController: UIViewController {
     private func getLanguageSwitcherSelectedIndex() -> Int {
         guard let languageCode = AppSetup.interfaceLanguage else { return 0 }
         return ["en", "de"].indexOf(languageCode) ?? 0
-    }
-
-    override func canBecomeFirstResponder() -> Bool {
-        return true
-    }
-
-    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
-        if motion == .MotionShake {
-            shakeCounter += 1
-        }
-        if shakeCounter >= 2 {
-            self.fakeOrderSwitch.enabled = true
-        }
     }
 
 }

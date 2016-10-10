@@ -45,7 +45,7 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
         selectionCompletion = addressSelectionCompletion
         super.init(nibName: nil, bundle: nil)
         tableviewDelegate = AddressListTableViewDelegate(checkout: checkout, addressType: addressType,
-                                                         addressSelectionCompletion: selectionCompletion)
+            addressSelectionCompletion: selectionCompletion)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -181,6 +181,7 @@ extension AddressPickerViewController {
         showUpdateAddressViewController(for: originalAddress) { [weak self] updatedAddress in
             guard let strongSelf = self else { return }
             strongSelf.tableviewDelegate?.replaceUpdatedAddress(updatedAddress)
+            strongSelf.fetchAddresses()
         }
     }
 
@@ -201,7 +202,8 @@ extension AddressPickerViewController {
         tableviewDelegate?.deleteAddressHandler = { [weak self] in
             guard let strongSelf = self else { return }
             strongSelf.configureEditButton()
-            strongSelf.selectionCompletion(pickedAddress: nil, pickedAddressType: strongSelf.addressType, popBackToSummaryOnFinish: false)
+            strongSelf.selectionCompletion(pickedAddress: strongSelf.selectedAddress,
+                pickedAddressType: strongSelf.addressType, popBackToSummaryOnFinish: false)
         }
     }
 

@@ -77,9 +77,31 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
         activityIndicatorView.startAnimating()
 
         checkout.client.article(forSKU: sku) { [weak self] result in
-            guard let strongSelf = self, article = result.process() else { return }
+            guard let strongSelf = self else { return }
+            strongSelf.activityIndicatorView.stopAnimating()
+            guard let article = result.process() else { return }
             strongSelf.displaySizes(forArticle: article)
+            strongSelf.showCancelButton()
         }
+    }
+
+    private func showCancelButton() {
+        let button = UIBarButtonItem(title: Localizer.string("Cancel"),
+            style: .Plain,
+            target: self,
+            action: #selector(SizeSelectionViewController.cancelButtonTapped))
+        button.accessibilityIdentifier = "navigation-bar-cancel-button"
+        navigationItem.rightBarButtonItem = button
+
+        navigationController?.navigationBar.translucent = false
+    }
+
+    dynamic private func cancelButtonTapped() {
+        dismissView()
+        }
+
+    private func dismissView() {
+        dismissViewControllerAnimated(true, completion: nil)
     }
 
     private func displaySizes(forArticle article: Article) {
