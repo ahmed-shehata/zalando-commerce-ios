@@ -12,40 +12,38 @@ public enum ErrorPresentationType {
 
 protocol UserPresentable: AtlasErrorType {
 
-    func titleArguments() -> [CVarArgType?]
-    func messageArguments() -> [CVarArgType?]
     func customMessage() -> String?
 
     func shouldDisplayGeneralMessage() -> Bool
+
     func errorPresentationType() -> ErrorPresentationType
 
 }
 
 extension UserPresentable {
 
-    func titleArguments() -> [CVarArgType?] { return [] }
-    func messageArguments() -> [CVarArgType?] { return [] }
     func customMessage() -> String? { return nil }
 
     func shouldDisplayGeneralMessage() -> Bool { return true }
+
     func errorPresentationType() -> ErrorPresentationType { return .banner }
 
     var displayedTitle: String {
-        return shouldDisplayGeneralMessage() ? Localizer.string("Error.unclassified.title") : title(titleArguments())
+        return shouldDisplayGeneralMessage() ? Localizer.string("Error.unclassified.title") : title()
     }
 
     var displayedMessage: String {
-        return shouldDisplayGeneralMessage() ? Localizer.string("Error.unclassified.message") : message(messageArguments())
+        return shouldDisplayGeneralMessage() ? Localizer.string("Error.unclassified.message") : message()
     }
 
-    private func title(formatArguments: [CVarArgType?]) -> String {
-        let errorTitle = Localizer.string(localizedTitleKey, formatArguments)
-        let errorCategoryTitle = Localizer.string("\(self.dynamicType).title", formatArguments)
+    private func title() -> String {
+        let errorTitle = Localizer.string(localizedTitleKey)
+        let errorCategoryTitle = Localizer.string("\(self.dynamicType).title")
         return errorTitle == localizedTitleKey ? errorCategoryTitle : errorTitle
     }
 
-    private func message(formatArguments: [CVarArgType?]) -> String {
-        return customMessage() ?? Localizer.string(localizedMessageKey, formatArguments)
+    private func message() -> String {
+        return customMessage() ?? Localizer.string(localizedMessageKey)
     }
 
 }
@@ -82,10 +80,10 @@ extension AtlasCatalogError: UserPresentable {
         }
     }
 
-    func messageArguments() -> [CVarArgType?] {
+    func customMessage() -> String? {
         switch self {
-        case .priceChanged(let newPrice): return [Localizer.price(newPrice)]
-        default: return []
+        case .priceChanged(let newPrice): return Localizer.string("AtlasCatalogError.message.priceChanged", Localizer.price(newPrice))
+        default: return nil
         }
     }
 
