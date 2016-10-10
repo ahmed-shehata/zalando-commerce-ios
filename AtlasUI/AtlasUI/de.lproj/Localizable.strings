@@ -14,7 +14,7 @@
 "Shipping" = "Versand";
 "Pay %@" = "Zahlen %@";
 "Zalando.Connect" = "Mit Zalando verbinden";
-"Zalando.login" = "Login with Zalando";
+"Zalando.login" = "Bei Zalando einloggen";
 "Zalando.Checkout" = "Mit Zalando anmelden";
 "CheckoutSummaryViewController.terms" = "Für Deine Bestellung gelten die AGB und die Wiederrufsbelehrung von Zalando";
 "Address.Shipping" = "Lieferadresse";
@@ -29,7 +29,7 @@
 "feature.notImplemented.message" = "This feature is currently not implemented";
 
 "AtlasCatalogError.title" = "Oops";
-"AtlasCatalogError.message.outOfStock" = "Sorry this item is out of stock";
+"AtlasCatalogError.message.outOfStock" = "Leider ist dieser Artikel nicht mehr verfügbar";
 
 "LoginError.title" = "Anmeldung fehlgeschlagen";
 "LoginError.message.missingURL" = "Missing login URL";
@@ -37,7 +37,7 @@
 "LoginError.message.requestFailed" = "Request failed";
 "LoginError.message.missingViewControllerToShowLoginForm" = "Cannot show login form";
 
-"AtlasAPIError.title" = "Server Error";
+"AtlasAPIError.title" = "Server Fehler";
 "AtlasAPIError.message.invalidResponseFormat" = "Incorrect response format";
 "AtlasAPIError.message.noData" = "Empty response";
 "AtlasAPIError.message.unauthorized" = "Access denied";
@@ -71,8 +71,8 @@
 "Address.prefix.packstation" = "Nummer der Packstation";
 "Address.prefix.memberID" = "PostNummer";
 "Address.prefix.packstation.abbreviation" = "P.S.";
-"Address.empty.billing" = "No Billing Address";
-"Address.empty.shipping" = "No Shipping Address";
+"Address.empty.billing" = "Die Rechnungsadresse fehlt";
+"Address.empty.shipping" = "Die Lieferadresse fehlt";
 
 "Form.validation.required" = "Dies ist ein Pflichtfeld";
 "Form.validation.minLength: %@" = "Eingabe muss mind. %@ Zeichen lang sein";
@@ -85,4 +85,4 @@
 "Address.validation.notValid" = "Adresse nicht bekannt, bitte überprüfe sie.";
 
 "Error.unclassified.title" = "Oops";
-"Error.unclassified.message" = "Something went wrong.\nWe are fixing the issue.\nPlease come back later";
+"Error.unclassified.message" = "Da ist etwas schief gelaufen.\nWir arbeiten an dem Problem.\nBitte komm später noch einmal vorbei.";
