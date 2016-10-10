@@ -91,8 +91,11 @@ extension CheckoutViewModel {
     var checkoutViewState: CheckoutViewState {
         if customer == nil {
             return .NotLoggedIn
+        } else if checkout?.payment.selected?.method == nil {
+            return .CheckoutIncomplete
+        } else {
+            return .CheckoutReady
         }
-        return (checkout?.payment.selected?.method == nil) ? .CheckoutIncomplete : .CheckoutReady
     }
 
 }

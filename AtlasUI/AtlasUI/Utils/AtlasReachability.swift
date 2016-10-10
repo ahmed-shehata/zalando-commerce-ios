@@ -16,8 +16,8 @@ class AtlasReachability {
         do {
             reachability = try AtlasUI_Reachability.reachabilityForInternetConnection()
             try reachability?.startNotifier()
-        } catch {
-            AtlasLogger.logError("Reachability Configuration error")
+        } catch let error {
+            AtlasLogger.logError(error)
         }
 
         reachability?.whenReachable = { _ in
