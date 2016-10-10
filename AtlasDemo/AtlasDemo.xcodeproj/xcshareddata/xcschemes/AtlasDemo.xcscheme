@@ -111,6 +111,10 @@
             argument = "USE_MOCK_API"
             isEnabled = "NO">
          </CommandLineArgument>
+         <CommandLineArgument
+            argument = "PRINT_REQUEST_DESCRIPTION"
+            isEnabled = "NO">
+         </CommandLineArgument>
       </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>
