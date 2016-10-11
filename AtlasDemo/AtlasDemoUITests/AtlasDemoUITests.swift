@@ -203,7 +203,7 @@ extension AtlasDemoUITests {
         setTextFieldValue("firstname-textfield", value: "John")
         setTextFieldValue("lastname-textfield", value: "Doe")
         setTextFieldValue("street-textfield", value: "Mollstr. 1")
-        setTextFieldValue("additional-textfield", value: "")
+        setTextFieldValue("additional-textfield", value: "Zalando SE")
         setTextFieldValue("zipcode-textfield", value: "10178")
         setTextFieldValue("city-textfield", value: "Berlin")
 
@@ -212,8 +212,7 @@ extension AtlasDemoUITests {
     }
 
     private func setTextFieldValue(textFieldIdentifier: String, value: String) {
-        app.textFields[textFieldIdentifier].typeText(value)
-        app.textFields[textFieldIdentifier].typeText("\n")
+        app.textFields[textFieldIdentifier].pasteText(value, application: app)
     }
 
     private func tapConnectAndLogin() {
