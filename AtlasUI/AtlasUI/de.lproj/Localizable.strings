@@ -13,11 +13,12 @@
 "Shipping" = "Versand";
 "Pay %@" = "Zahlen %@";
 "Zalando.Connect" = "Mit Zalando verbinden";
+"Zalando.login" = "Bei Zalando einloggen";
+"Zalando.Checkout" = "Mit Zalando anmelden";
 "CheckoutSummaryViewController.terms" = "Für Deine Bestellung gelten die AGB und die Wiederrufsbelehrung von Zalando";
 "Address.Shipping" = "Lieferadresse";
 "Address.Billing" = "Rechnungsadresse";
 "Size: %@" = "Größe: %@";
-"Zalando.Checkout" = "Mit Zalando anmelden";
 "order.place" = "Jetzt Kaufen";
 "order.place.paypal" = "Bestätigen und zahlen mit PayPal";
 "navigation.back.shop" = "weiter shoppen";
@@ -71,11 +72,13 @@
 "Address.Add.type.title" = "Lieferung an";
 "Address.Add.type.standard" = "Wunschadresse";
 "Address.Add.type.pickupPoint" = "Packstation";
-"Address.Add.cellTitle" = "Neue Adresse hinzufügen";
+"Address.Add.cellTitle" = "Neue Adresse hinzufügen...";
 
 "Address.prefix.packstation" = "Nummer der Packstation";
 "Address.prefix.memberID" = "PostNummer";
 "Address.prefix.packstation.abbreviation" = "P.S.";
+"Address.empty.billing" = "Die Rechnungsadresse fehlt";
+"Address.empty.shipping" = "Die Lieferadresse fehlt";
 
 "Form.validation.required" = "Dies ist ein Pflichtfeld";
 "Form.validation.minLength: %@" = "Eingabe muss mind. %@ Zeichen lang sein";
@@ -88,4 +91,4 @@
 "Address.validation.notValid" = "Adresse nicht bekannt, bitte überprüfe sie.";
 
 "Error.unclassified.title" = "Oops";
-"Error.unclassified.message" = "Something went wrong.\nWe are fixing the issue.\nPlease come back later";
+"Error.unclassified.message" = "Da ist etwas schief gelaufen.\nWir arbeiten an dem Problem.\nBitte komm später noch einmal vorbei.";
