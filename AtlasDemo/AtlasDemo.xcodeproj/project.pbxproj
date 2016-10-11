@@ -51,7 +51,6 @@
 		C4EB83E0B477B89F5867EFC11A7750A6 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D700DE204B65F397DE54E0F8519CA6D /* ProductCollectionViewCell.swift */; };
 		CAA90EC309813CB7235C27A1340BE9FC /* AlamofireImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A614269AAEE03BE9FE8D96766E4E3067 /* AlamofireImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D548A0F26A64DF4948FD1F8BC16CAFED /* AtlasMockAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B4AF978C21A97C681A423F5436C1C409 /* AtlasMockAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		DE2058F1308088EC2D339EFA8CA7E925 /* Lookback.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B4E0D81F1DD62FBEB866219546D429AD /* Lookback.bundle */; };
 		E283E83F8AB0B137D725B276F2A134E7 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4D539715BD2C9531ED72B24D9B4A98FF /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E615E3AFD0732A033AB3FE6884D12F2D /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 94BA4D648812766A2EF92CED9C8BFDF1 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EAF6B18A76607DD0AC887AEF1371D19A /* SizeMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2531BE0ABE61D11C79EB23BABD7E11 /* SizeMap.swift */; };
@@ -421,7 +420,6 @@
 			files = (
 				3A8421486CA5811AB6CF8978F401EA83 /* Assets.xcassets in Resources */,
 				17774FD279D9D9972B447A118C17A4E4 /* LaunchScreen.storyboard in Resources */,
-				DE2058F1308088EC2D339EFA8CA7E925 /* Lookback.bundle in Resources */,
 				14B2EC592F7C57B3B77134AF2195AB15 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -546,6 +544,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/../Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -578,19 +577,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/../Carthage/Build/iOS",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/lookback/Safe",
-				);
 				INFOPLIST_FILE = AtlasDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-framework",
-					Lookback,
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.zalando.atlas.AtlasDemo;
 				PRODUCT_NAME = AtlasDemo;
 				PROVISIONING_PROFILE = "";
@@ -627,6 +615,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/../Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -664,20 +653,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/../Carthage/Build/iOS",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/lookback/Safe",
-				);
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = AtlasDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-framework",
-					Lookback,
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.zalando.atlas.AtlasDemo;
 				PRODUCT_NAME = AtlasDemo;
 				PROVISIONING_PROFILE = "";
