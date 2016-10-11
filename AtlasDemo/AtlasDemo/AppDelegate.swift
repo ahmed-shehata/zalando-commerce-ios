@@ -13,8 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         BuddyBuildSDK.setup()
         AppSetup.configure()
 
-        setupBugScreenshot()
-
         return true
     }
 

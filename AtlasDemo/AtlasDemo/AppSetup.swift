@@ -9,11 +9,16 @@ import AtlasMockAPI
 
 class AppSetup {
 
+    enum InterfaceLanguage: String {
+        case English = "en"
+        case Deutsch = "de"
+    }
+
     private(set) static var checkout: AtlasCheckout?
     private(set) static var options: Options?
 
-    private static let defaultUseSandbox = true
-    private static let defaultInterfaceLanguage = "en"
+    private static let defaultUseSandbox = false
+    private static let defaultInterfaceLanguage = InterfaceLanguage.English
 
     static var interfaceLanguage: String? {
         return checkout?.client.config.interfaceLocale.objectForKey(NSLocaleLanguageCode) as? String
@@ -31,7 +36,7 @@ class AppSetup {
         setAppOptions(prepareOptions(useSandbox: useSandbox), completion: completion)
     }
 
-    static func change(interfaceLanguage language: String, completion: (() -> Void)? = nil) {
+    static func change(interfaceLanguage language: InterfaceLanguage, completion: (() -> Void)? = nil) {
         setAppOptions(prepareOptions(interfaceLanguage: language), completion: completion)
     }
 
@@ -61,10 +66,10 @@ class AppSetup {
         }
     }
 
-    private static func prepareOptions(useSandbox useSandbox: Bool? = nil, interfaceLanguage: String? = nil) -> Options {
+    private static func prepareOptions(useSandbox useSandbox: Bool? = nil, interfaceLanguage: InterfaceLanguage? = nil) -> Options {
         let configurationURL: NSURL? = AtlasMockAPI.hasMockedAPIStarted ? AtlasMockAPI.endpointURL(forPath: "/config") : nil
         let sandbox = useSandbox ?? options?.useSandboxEnvironment ?? defaultUseSandbox
-        let language = interfaceLanguage ?? options?.interfaceLanguage ?? defaultInterfaceLanguage
+        let language = interfaceLanguage?.rawValue ?? options?.interfaceLanguage ?? defaultInterfaceLanguage.rawValue
 
         return Options(clientId: "atlas_Y2M1MzA",
             salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",

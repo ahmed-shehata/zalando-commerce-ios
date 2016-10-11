@@ -30,31 +30,31 @@ extension CheckoutSummaryActionsHandler {
         guard let checkout = viewController.checkoutViewModel.checkout else { return }
 
         if checkout.hasSameAddress(like: viewController.checkoutViewModel) {
-            return createOrder(checkout.id)
+            return createOrder(forCheckoutId: checkout.id)
         }
 
         let updateCheckoutRequest = UpdateCheckoutRequest(checkoutViewModel: viewController.checkoutViewModel)
 
-        viewController.displayLoader { done in
+        viewController.displayLoader { hideLoader in
             viewController.checkout.client.updateCheckout(checkout.id, updateCheckoutRequest: updateCheckoutRequest) { result in
-                done()
+                hideLoader()
                 guard let checkout = result.process() else { return }
-                self.createOrder(checkout.id)
+                self.createOrder(forCheckoutId: checkout.id)
             }
         }
     }
-    internal func createOrder(checkoutId: String) {
-        guard let viewController = self.viewController else { return }
-        viewController.displayLoader { done in
-            viewController.checkout.client.createOrder(checkoutId) { result in
 
-                done()
+    internal func createOrder(forCheckoutId checkoutId: String) {
+        guard let viewController = self.viewController else { return }
+        viewController.displayLoader { hideLoader in
+            viewController.checkout.client.createOrder(checkoutId) { result in
+                hideLoader()
                 guard let order = result.process() else { return }
                 self.handleOrderConfirmation(order)
             }
         }
-
     }
+
 }
 
 extension CheckoutSummaryActionsHandler {
@@ -131,7 +131,6 @@ extension CheckoutSummaryActionsHandler {
 
         let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
         paymentSelectionViewController.paymentCompletion = { result in
-
             guard let _ = result.process() else { return }
             viewController.viewState = .OrderPlaced
         }
@@ -141,6 +140,7 @@ extension CheckoutSummaryActionsHandler {
 }
 
 extension CheckoutSummaryActionsHandler {
+
     func pickedAddressCompletion(pickedAddress address: EquatableAddress?,
         forAddressType addressType: AddressType, popBackToSummaryOnFinish: Bool) {
             guard let viewController = self.viewController else { return }
@@ -182,10 +182,14 @@ extension CheckoutSummaryActionsHandler {
                 }
             }
     }
+
 }
+
 extension UpdateCheckoutRequest {
+
     init (checkoutViewModel: CheckoutViewModel) {
         self.init(billingAddressId: checkoutViewModel.selectedBillingAddress?.id,
             shippingAddressId: checkoutViewModel.selectedShippingAddress?.id)
     }
+
 }
