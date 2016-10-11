@@ -247,10 +247,10 @@
                         <outlet property="avatar" destination="eP9-SB-DNz" id="FRD-9a-uyu"/>
                         <outlet property="customerNumer" destination="ePY-X1-kBf" id="kOQ-Jm-XxJ"/>
                         <outlet property="email" destination="I7v-X3-FGV" id="MUj-x6-nfH"/>
+                        <outlet property="environmentSegmentedControl" destination="pXc-VB-gbw" id="bwP-ei-zpC"/>
                         <outlet property="gender" destination="l83-gi-coC" id="OI1-eH-Wu0"/>
                         <outlet property="languageSwitcher" destination="qLo-Q0-jea" id="JYI-M7-kdn"/>
                         <outlet property="name" destination="cPX-V4-a02" id="v4A-3Z-q9M"/>
-                        <outlet property="serverSegmentedControl" destination="pXc-VB-gbw" id="Zuc-Rz-f2U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2J9-Xl-zSa" userLabel="First Responder" sceneMemberID="firstResponder"/>

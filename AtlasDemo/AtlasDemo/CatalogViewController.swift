@@ -10,7 +10,6 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
 
     @IBOutlet weak var productCollectionView: UICollectionView!
 
-    @IBOutlet weak var serverSwitch: UISwitch!
     var articles = [DemoArticle]() {
         didSet {
             dispatch_async(dispatch_get_main_queue()) {
@@ -43,9 +42,6 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
         exampleImageView.image = UIImage(named: "example")
         productCollectionView.delegate = self
         productCollectionView.dataSource = self
-        if let useSandbox = AppSetup.options?.useSandboxEnvironment {
-            serverSwitch.on = useSandbox
-        }
         self.navigationController?.navigationBar.accessibilityIdentifier = "catalog-navigation-controller"
     }
 
@@ -65,18 +61,13 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
     }
 
-    @IBAction func serverSwitchTapped(serverSwitch: UISwitch) {
-        AppSetup.change(environmentToSandbox: !serverSwitch.on)
-    }
-
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ProductCollectionViewCell", forIndexPath: indexPath)
         guard let productCell = cell as? ProductCollectionViewCell else {
             return cell
         }
 
-        productCell.setupCell(withArticle: articles[indexPath.row])
-        return productCell
+        return productCell.setupCell(withArticle: articles[indexPath.row])
     }
 
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
