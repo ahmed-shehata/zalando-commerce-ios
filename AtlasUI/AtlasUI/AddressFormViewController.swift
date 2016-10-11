@@ -86,7 +86,10 @@ extension AddressFormViewController {
 
         let isValid = addressStackView.textFields.map { $0.validateForm() }.filter { $0 == false }.isEmpty
         guard isValid else { return }
-        checkAddressRequest()
+
+        AtlasUI_RateLimit.execute(name: "Create Address", limit: 1) { [weak self] in
+            self?.checkAddressRequest()
+        }
     }
 
     private dynamic func cancelButtonPressed() {
