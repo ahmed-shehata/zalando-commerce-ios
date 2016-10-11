@@ -17,4 +17,8 @@ extension String {
         return string.stringByReplacingOccurrencesOfString("  ", withString: "")
     }
 
+    var range: NSRange {
+        return NSRange(location: 0, length: characters.count)
+    }
+
 }

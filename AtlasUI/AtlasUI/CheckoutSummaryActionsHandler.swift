@@ -26,20 +26,26 @@ extension Checkout {
 extension CheckoutSummaryActionsHandler {
 
     internal func handleBuyAction() {
-        guard let viewController = self.viewController else { return }
-        guard let checkout = viewController.checkoutViewModel.checkout else { return }
+        let mainViewController: AtlasUIViewController? = try? Atlas.provide()
+        guard let
+            atlasUIViewController = mainViewController,
+            viewController = self.viewController else { return }
 
-        if checkout.hasSameAddress(like: viewController.checkoutViewModel) {
-            return createOrder(forCheckoutId: checkout.id)
-        }
+        viewController.displayLoader { done in
+            viewController.checkout.client.createCheckoutCart(for: viewController.checkoutViewModel.selectedArticleUnit,
+            addresses: viewController.checkoutViewModel.selectedAddresses) { result in
+                done()
+                guard let (checkout, cart) = result.process() else { return }
 
-        let updateCheckoutRequest = UpdateCheckoutRequest(checkoutViewModel: viewController.checkoutViewModel)
+                let checkoutViewModel = CheckoutViewModel(
+                    selectedArticleUnit: viewController.checkoutViewModel.selectedArticleUnit,
+                    cart: cart,
+                    checkout: checkout)
+                viewController.checkoutViewModel = checkoutViewModel
 
-        viewController.displayLoader { hideLoader in
-            viewController.checkout.client.updateCheckout(checkout.id, updateCheckoutRequest: updateCheckoutRequest) { result in
-                hideLoader()
-                guard let checkout = result.process() else { return }
-                self.createOrder(forCheckoutId: checkout.id)
+                if viewController.viewState == .CheckoutReady && !atlasUIViewController.errorDisplayed {
+                    self.createOrder(forCheckoutId: checkout.id)
+                }
             }
         }
     }
@@ -79,7 +85,6 @@ extension CheckoutSummaryActionsHandler {
 
                 checkoutViewModel.customer = customer
                 viewController.checkoutViewModel = checkoutViewModel
-                viewController.viewState = checkoutViewModel.checkoutViewState
             }
         }
     }
@@ -91,7 +96,14 @@ extension CheckoutSummaryActionsHandler {
     internal func showPaymentSelectionScreen() {
         guard let viewController = self.viewController else { return }
         guard Atlas.isUserLoggedIn() else { return loadCustomerData() }
-        guard let paymentURL = viewController.checkoutViewModel.checkout?.payment.selectionPageURL else { return }
+        guard let paymentURL = viewController.checkoutViewModel.checkout?.payment.selectionPageURL else {
+            if viewController.checkoutViewModel.selectedShippingAddress == nil ||
+                viewController.checkoutViewModel.selectedBillingAddress == nil {
+                let atlasUIViewController: AtlasUIViewController? = try? Atlas.provide()
+                atlasUIViewController?.displayError(AtlasCatalogError.missingAddress)
+            }
+            return
+        }
 
         let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
         paymentSelectionViewController.paymentCompletion = { result in
@@ -159,26 +171,20 @@ extension CheckoutSummaryActionsHandler {
             }
 
             switch addressType {
-            case AddressType.billing:
+            case .billing:
                 viewController.checkoutViewModel.selectedBillingAddress = address
-            case AddressType.shipping:
+            case .shipping:
                 viewController.checkoutViewModel.selectedShippingAddress = address
             }
 
-            viewController.rootStackView.configureData(viewController)
-            viewController.refreshViewData()
-
-            guard viewController.checkoutViewModel.isReadyToCreateCheckout == true else { return }
+            guard viewController.checkoutViewModel.isReadyToCreateCheckout else { return }
 
             viewController.displayLoader { done in
                 viewController.checkout.createCheckoutViewModel(fromModel: viewController.checkoutViewModel) { result in
                     done()
-                    guard var checkoutViewModel = result.process() else { return }
+                    guard let checkoutViewModel = result.process() else { return }
 
-                    checkoutViewModel.customer = viewController.checkoutViewModel.customer
                     viewController.checkoutViewModel = checkoutViewModel
-                    viewController.rootStackView.configureData(viewController)
-                    viewController.refreshViewData()
                 }
             }
     }

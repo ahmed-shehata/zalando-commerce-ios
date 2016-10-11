@@ -8,8 +8,8 @@ import AtlasSDK
 struct CheckoutViewModel {
 
     let selectedArticleUnit: SelectedArticleUnit
-    let shippingPrice: Article.Price?
-    let cartId: String?
+    let shippingPrice: Money?
+    var cart: Cart?
     var checkout: Checkout?
     internal(set) var customer: Customer?
 
@@ -21,20 +21,19 @@ struct CheckoutViewModel {
     }
 
     init(selectedArticleUnit: SelectedArticleUnit,
-        shippingPrice: Article.Price? = nil,
-        cartId: String? = nil,
+        shippingPrice: Money? = nil,
+        cart: Cart? = nil,
         checkout: Checkout? = nil,
         customer: Customer? = nil,
         billingAddress: EquatableAddress? = nil,
         shippingAddress: EquatableAddress? = nil) {
             self.selectedArticleUnit = selectedArticleUnit
             self.shippingPrice = shippingPrice
+            self.cart = cart
             self.checkout = checkout
             self.customer = customer
             self.selectedBillingAddress = checkout?.billingAddress
             self.selectedShippingAddress = checkout?.shippingAddress
-            self.cartId = cartId
-
     }
 
 }
@@ -52,7 +51,7 @@ extension CheckoutViewModel {
     var submitButtonTitle: String {
         switch self.checkoutViewState {
         case .NotLoggedIn: return "Zalando.Checkout"
-        case .CheckoutIncomplete, .LoggedIn:
+        case .CheckoutIncomplete, .CheckoutReady:
             if let paymentMethod = checkout?.payment.selected where paymentMethod.isPaypal() {
                 return "order.place.paypal"
             }
@@ -77,12 +76,12 @@ extension CheckoutViewModel {
         return selectedArticleUnit.article
     }
 
-    var shippingPriceValue: Float {
+    var shippingPriceValue: MoneyAmount {
         return shippingPrice?.amount ?? 0
     }
 
-    var totalPriceValue: Float {
-        return shippingPriceValue + selectedUnit.price.amount
+    var totalPriceValue: MoneyAmount {
+        return cart?.grossTotal.amount ?? 0
     }
 
     var selectedPaymentMethod: String? {
@@ -92,8 +91,11 @@ extension CheckoutViewModel {
     var checkoutViewState: CheckoutViewState {
         if customer == nil {
             return .NotLoggedIn
+        } else if checkout?.payment.selected?.method == nil {
+            return .CheckoutIncomplete
+        } else {
+            return .CheckoutReady
         }
-        return (checkout?.payment.selected?.method == nil) ? .CheckoutIncomplete : .LoggedIn
     }
 
 }
@@ -107,7 +109,7 @@ extension CheckoutViewModel {
 }
 
 extension CheckoutViewModel {
-    var isReadyToCreateCheckout: Bool? {
+    var isReadyToCreateCheckout: Bool {
         return self.checkout == nil && self.selectedBillingAddress != nil && self.selectedShippingAddress != nil
     }
 }

@@ -30,6 +30,11 @@ public typealias CartCompletion = AtlasResult<Cart> -> Void
 public typealias CheckoutCompletion = AtlasResult<Checkout> -> Void
 
 /**
+ Completion block `AtlasResult` with the `Checkout` & `Cart` structs as a success value
+ */
+public typealias CheckoutCartCompletion = AtlasResult<(checkout: Checkout, cart: Cart)> -> Void
+
+/**
  Completion block `AtlasResult` with the `Order` struct as a success value
  */
 public typealias OrderCompletion = AtlasResult<Order> -> Void
@@ -71,8 +76,8 @@ extension APIClient {
         fetch(from: endpoint, completion: completion)
     }
 
-    public func createCheckout(for selectedArticleUnit: SelectedArticleUnit,
-        addresses: CheckoutAddresses? = nil, completion: CheckoutCompletion) {
+    public func createCheckoutCart(for selectedArticleUnit: SelectedArticleUnit,
+        addresses: CheckoutAddresses? = nil, completion: CheckoutCartCompletion) {
             let articleSKU = selectedArticleUnit.article.availableUnits[selectedArticleUnit.selectedUnitIndex].id
             let cartItemRequest = CartItemRequest(sku: articleSKU, quantity: 1)
 
@@ -96,11 +101,10 @@ extension APIClient {
                             self.createCheckout(cart.id, addresses: addresses) { checkoutResult in
                                 switch checkoutResult {
                                 case .failure(let error):
-                                    let checkoutError = AtlasAPIError.checkoutFailed(addresses: addressList,
-                                        cartId: cart.id, error: error)
+                                    let checkoutError = AtlasAPIError.checkoutFailed(addresses: addressList, cart: cart, error: error)
                                     completion(.failure(checkoutError))
                                 case .success(let checkout):
-                                    completion(.success(checkout))
+                                    completion(.success((checkout: checkout, cart: cart)))
                                 }
                             }
                         }
