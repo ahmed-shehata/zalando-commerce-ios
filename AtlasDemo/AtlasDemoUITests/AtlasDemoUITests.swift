@@ -212,7 +212,8 @@ extension AtlasDemoUITests {
     }
 
     private func setTextFieldValue(textFieldIdentifier: String, value: String) {
-        app.textFields[textFieldIdentifier].pasteText(value, application: app)
+        app.textFields[textFieldIdentifier].typeText(value)
+        app.textFields[textFieldIdentifier].typeText("\n")
     }
 
     private func tapConnectAndLogin() {

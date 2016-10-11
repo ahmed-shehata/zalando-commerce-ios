@@ -12,10 +12,4 @@ extension XCUIElement {
         }
     }
 
-    func pasteText(text: String, application: XCUIApplication) {
-        UIPasteboard.generalPasteboard().string = text
-        doubleTap()
-        application.menuItems["Paste"].tap()
-    }
-
 }
