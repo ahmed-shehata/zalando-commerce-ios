@@ -30,7 +30,7 @@
 "AtlasCatalogError.title" = "Oops";
 "AtlasCatalogError.title.missingAddress" = "No address selected";
 "AtlasCatalogError.title.priceChanged" = "Price changed";
-"AtlasCatalogError.message.outOfStock" = "Sorry this item is out of stock";
+"AtlasCatalogError.message.outOfStock" = "Leider ist dieser Artikel nicht mehr verfügbar";
 "AtlasCatalogError.message.missingAddress" = "Please select shipping and billing addresses first";
 "AtlasCatalogError.message.priceChanged" = "The price is now %@";
 "AtlasCatalogError.message.paymentMethodNotAvailable" = "Payment method is no longer available";
@@ -41,7 +41,7 @@
 "LoginError.message.requestFailed" = "Request failed";
 "LoginError.message.missingViewControllerToShowLoginForm" = "Cannot show login form";
 
-"AtlasAPIError.title" = "Server Error";
+"AtlasAPIError.title" = "Server Fehler";
 "AtlasAPIError.title.noInternet" = "No internet connection";
 "AtlasAPIError.message.invalidResponseFormat" = "Incorrect response format";
 "AtlasAPIError.message.noData" = "Empty response";

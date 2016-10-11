@@ -44,6 +44,7 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
         self.checkoutViewModel = checkoutViewModel
 
         super.init(nibName: nil, bundle: nil)
+        viewState = checkoutViewModel.checkoutViewState
     }
 
     required init?(coder aDecoder: NSCoder) {
