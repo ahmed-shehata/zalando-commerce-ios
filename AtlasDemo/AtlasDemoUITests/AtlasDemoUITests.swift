@@ -203,7 +203,7 @@ extension AtlasDemoUITests {
         setTextFieldValue("firstname-textfield", value: "John")
         setTextFieldValue("lastname-textfield", value: "Doe")
         setTextFieldValue("street-textfield", value: "Mollstr. 1")
-        setTextFieldValue("additional-textfield", value: "")
+        setTextFieldValue("additional-textfield", value: "Zalando SE")
         setTextFieldValue("zipcode-textfield", value: "10178")
         setTextFieldValue("city-textfield", value: "Berlin")
 

@@ -86,15 +86,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="AtlasSDK Demo" id="Qtr-gt-Nf8">
-                        <barButtonItem key="leftBarButtonItem" id="ega-UN-CNV">
-                            <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="4fn-Ge-VII">
-                                <rect key="frame" x="20" y="6" width="51" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="serverSwitchTapped:" destination="BYZ-38-t0r" eventType="valueChanged" id="6PI-d6-HKT"/>
-                                </connections>
-                            </switch>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="Profile" id="8NH-Un-PA1">
                             <connections>
                                 <segue destination="4dE-k4-8mF" kind="show" id="vDp-6b-SYC"/>
@@ -103,7 +94,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="productCollectionView" destination="wHW-dw-RKm" id="FKK-eQ-DOg"/>
-                        <outlet property="serverSwitch" destination="4fn-Ge-VII" id="ZJ5-3n-Lvl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -257,10 +247,10 @@
                         <outlet property="avatar" destination="eP9-SB-DNz" id="FRD-9a-uyu"/>
                         <outlet property="customerNumer" destination="ePY-X1-kBf" id="kOQ-Jm-XxJ"/>
                         <outlet property="email" destination="I7v-X3-FGV" id="MUj-x6-nfH"/>
+                        <outlet property="environmentSegmentedControl" destination="pXc-VB-gbw" id="bwP-ei-zpC"/>
                         <outlet property="gender" destination="l83-gi-coC" id="OI1-eH-Wu0"/>
                         <outlet property="languageSwitcher" destination="qLo-Q0-jea" id="JYI-M7-kdn"/>
                         <outlet property="name" destination="cPX-V4-a02" id="v4A-3Z-q9M"/>
-                        <outlet property="serverSegmentedControl" destination="pXc-VB-gbw" id="Zuc-Rz-f2U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2J9-Xl-zSa" userLabel="First Responder" sceneMemberID="firstResponder"/>

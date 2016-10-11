@@ -98,7 +98,7 @@ final class SizeSelectionViewController: UIViewController, CheckoutProviderType 
 
     dynamic private func cancelButtonTapped() {
         dismissView()
-    }
+        }
 
     private func dismissView() {
         dismissViewControllerAnimated(true, completion: nil)

@@ -34,6 +34,7 @@ final public class AtlasCheckout {
         Atlas.configure(options) { result in
             switch result {
             case .failure(let error):
+                AtlasLogger.logError(error)
                 completion(.failure(error))
 
             case .success(let client):

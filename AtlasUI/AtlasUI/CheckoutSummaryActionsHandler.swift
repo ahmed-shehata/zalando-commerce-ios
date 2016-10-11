@@ -52,15 +52,13 @@ extension CheckoutSummaryActionsHandler {
 
     internal func createOrder(checkoutId: String) {
         guard let viewController = self.viewController else { return }
-        viewController.displayLoader { done in
+        viewController.displayLoader { hideLoader in
             viewController.checkout.client.createOrder(checkoutId) { result in
-
-                done()
+                hideLoader()
                 guard let order = result.process() else { return }
                 self.handleOrderConfirmation(order)
             }
         }
-
     }
 
 }
@@ -145,7 +143,6 @@ extension CheckoutSummaryActionsHandler {
 
         let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
         paymentSelectionViewController.paymentCompletion = { result in
-
             guard let _ = result.process() else { return }
             viewController.viewState = .OrderPlaced
         }
@@ -155,6 +152,7 @@ extension CheckoutSummaryActionsHandler {
 }
 
 extension CheckoutSummaryActionsHandler {
+
     func pickedAddressCompletion(pickedAddress address: EquatableAddress?,
         forAddressType addressType: AddressType, popBackToSummaryOnFinish: Bool) {
             guard let viewController = self.viewController else { return }
