@@ -75,9 +75,12 @@
 		D1597746177CEB8207EFB773413174DF /* TextFieldInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828CB7B3C433014C119561A964D809BC /* TextFieldInputViewModel.swift */; };
 		8D8609A7F30C9F7D15E5E4A905BE4529 /* ToCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059D85CAB2A4B2D773369E3B053F112C /* ToCViewController.swift */; };
 		D55BE43D2B403796900F316E5D71E5DC /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE97CB84083DD00DA5045AB38EA0038 /* UIApplication.swift */; };
-		D5D8A7E27A96BEAA8D3EEED93BE86D30 /* CheckoutViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2653612BC3DBC05157000E6790084A05 /* CheckoutViewState.swift */; };
-		D9CE3553FFE09F2A82794C7A9E45F4F1 /* TextFieldInputStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733421E924B47BF0FE5766446A269719 /* TextFieldInputStackView.swift */; };
-		DB2470DB4F51D75862D73B20254CB0A7 /* CheckoutSummaryActionsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4E23134230FC0873B95CF6C403C333 /* CheckoutSummaryActionsHandler.swift */; };
+		BC1ECCD35BAA9A66EA505B1C454025E3 /* UIBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640810DC34806DF7B0FBAEA4DB0123CD /* UIBuilder.swift */; };
+		79175AD49456E48DC6B393EB6F62053A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC182F5F2F24D9AF740830B9B50A9 /* UIColor.swift */; };
+		170D032BE739B3A96834CDAF3CA1D22C /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417B9ADA720A948E8E1F8F875F349D62 /* UIImage.swift */; };
+		4434BCFA43868F4DBFCFF8980581F9AC /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCAC0AB68C0265B9B9D4ECA7B7F2200 /* UIImageView.swift */; };
+		FE2A3356031A3EE41940E824A2E6E1D3 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724F293E73B6AEE65CFA30937C94D242 /* UIStackView.swift */; };
+		F3F62025EFDB47B5637DC3C928D69264 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F13460B6B17606CC65E38CE6A4716C /* UITableView.swift */; };
 		DE4482A9091E62348223761D4C58D008 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA19C45C79A94472331D134BC9895CA /* UIView.swift */; };
 		E91BC0581D9EBCFE00F4B381 /* FullScreenErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91BC0571D9EBCFE00F4B381 /* FullScreenErrorViewController.swift */; };
 		E91BC05A1D9EBF7800F4B381 /* BannerErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91BC0591D9EBF7800F4B381 /* BannerErrorViewController.swift */; };
@@ -91,13 +94,7 @@
 		F3F62025EFDB47B5637DC3C928D69264 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F13460B6B17606CC65E38CE6A4716C /* UITableView.swift */; };
 		F8CC87AE6AB394474A3805C2E754E7C9 /* OAuth2AuthorizationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BD4560BAD0C3A785D43680822E8BC2 /* OAuth2AuthorizationHandler.swift */; };
 		FD0035C9551735C4B0988C4769495FFF /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01745B4995023182267D504707E4A241 /* Localization.swift */; };
-		BC1ECCD35BAA9A66EA505B1C454025E3 /* UIBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640810DC34806DF7B0FBAEA4DB0123CD /* UIBuilder.swift */; };
-		79175AD49456E48DC6B393EB6F62053A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC182F5F2F24D9AF740830B9B50A9 /* UIColor.swift */; };
-		170D032BE739B3A96834CDAF3CA1D22C /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417B9ADA720A948E8E1F8F875F349D62 /* UIImage.swift */; };
-		4434BCFA43868F4DBFCFF8980581F9AC /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCAC0AB68C0265B9B9D4ECA7B7F2200 /* UIImageView.swift */; };
 		FE2A3356031A3EE41940E824A2E6E1D3 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724F293E73B6AEE65CFA30937C94D242 /* UIStackView.swift */; };
-		F3F62025EFDB47B5637DC3C928D69264 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F13460B6B17606CC65E38CE6A4716C /* UITableView.swift */; };
-		DE4482A9091E62348223761D4C58D008 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA19C45C79A94472331D134BC9895CA /* UIView.swift */; };
 		7E9443B46A96E4C94DDF32C3B711C137 /* UnitSizeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2212DE66FE76CB7293827065AB636FF /* UnitSizeTableViewCell.swift */; };
 		8EB96C51E439F0E511A696F28FE216B1 /* UserMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764CDA794B49DC585B031C7C4F5776D5 /* UserMessage.swift */; };
 /* End PBXBuildFile section */
@@ -467,17 +464,14 @@
 		ECBC67CCC5E72798CEB556243DC767A4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F95BABF7CE37F95001E0F5AE904A3EAB /* Atlas UI View Controller */,
 				E7B8FD94F5B37D0CD471CC2CC01B2A93 /* Address Selection */,
 				F95BABF7CE37F95001E0F5AE904A3EAB /* Atlas UI View Controller */,
-				76C39D0CB8D31C324232D17F5DDF4995 /* Checkout Summary */,
-				B5F1F381F821E11BEDBF15E154DBA659 /* Errors */,
-				DD0E3D494C9603BAB5C1791CE77D8A70 /* Payment Processing */,
-				98C55DD91517239DC96E0518855FA6F6 /* Payment Selection */,
 				5A6BA7B96491254C4D14CF86BE138534 /* Size Selection */,
 				76C39D0CB8D31C324232D17F5DDF4995 /* Checkout Summary */,
 				FE9498BE98F9F68594D83CB871C6D6A5 /* ToC */,
 				E7B8FD94F5B37D0CD471CC2CC01B2A93 /* Address Selection */,
+				B5F1F381F821E11BEDBF15E154DBA659 /* Errors */,
+				DD0E3D494C9603BAB5C1791CE77D8A70 /* Payment Processing */,
 				98C55DD91517239DC96E0518855FA6F6 /* Payment Selection */,
 				E91BC0561D9EBCEE00F4B381 /* Errors */,
 				EE1E502DE20549F934F0F30CAC1AF1A4 /* Transitions */,

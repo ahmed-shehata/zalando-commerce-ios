@@ -44,13 +44,13 @@ extension CheckoutSummaryActionsHandler {
                 viewController.checkoutViewModel = checkoutViewModel
 
                 if viewController.viewState == .CheckoutReady && !atlasUIViewController.errorDisplayed {
-                    self.createOrder(checkout.id)
+                    self.createOrder(forCheckoutId: checkout.id)
                 }
             }
         }
     }
 
-    internal func createOrder(checkoutId: String) {
+    internal func createOrder(forCheckoutId checkoutId: String) {
         guard let viewController = self.viewController else { return }
         viewController.displayLoader { hideLoader in
             viewController.checkout.client.createOrder(checkoutId) { result in
