@@ -109,7 +109,7 @@
       <CommandLineArguments>
          <CommandLineArgument
             argument = "USE_MOCK_API"
-            isEnabled = "NO">
+            isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "PRINT_REQUEST_DESCRIPTION"
