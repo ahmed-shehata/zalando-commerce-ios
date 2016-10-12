@@ -7,21 +7,26 @@ import AtlasSDK
 
 class AddressListTableViewDelegate: NSObject {
 
-    internal var checkout: AtlasCheckout
-    private let addressType: AddressType
-    private let selectionCompletion: AddressSelectionCompletion
-    internal var createAddressHandler: CreateAddressHandler?
-    internal var updateAddressHandler: UpdateAddressHandler?
-    internal var deleteAddressHandler: DeleteAddressHandler?
-
-    var addresses: [UserAddress] = []
-    var selectedAddress: EquatableAddress?
-    init(checkout: AtlasCheckout, addressType: AddressType,
-        addressSelectionCompletion: AddressSelectionCompletion) {
-            self.checkout = checkout
-            self.addressType = addressType
-            self.selectionCompletion = addressSelectionCompletion
+    internal var addresses: [EquatableAddress] {
+        didSet {
+            if let selectedAddress = selectedAddress where !addresses.contains({ $0 == selectedAddress })  {
+                self.selectedAddress = nil
+            }
+            tableView.reloadData()
+        }
     }
+
+    private let tableView: UITableView
+    private var selectedAddress: EquatableAddress?
+    private weak var actionsHandler: AddressActionsHandler?
+
+    init(tableView: UITableView, addresses: [EquatableAddress], selectedAddress: EquatableAddress?, actionsHandler: AddressActionsHandler) {
+        self.tableView = tableView
+        self.addresses = addresses
+        self.selectedAddress = selectedAddress
+        self.actionsHandler = actionsHandler
+    }
+
 }
 
 extension AddressListTableViewDelegate: UITableViewDataSource {
@@ -41,22 +46,16 @@ extension AddressListTableViewDelegate: UITableViewDataSource {
         return tableView.dequeueReusableCell(AddressRowViewCell.self, forIndexPath: indexPath) { cell in
             let address = self.addresses[indexPath.item]
             cell.configureData(address)
+
             if let selectedAddress = self.selectedAddress where selectedAddress == address {
                 cell.accessoryType = .Checkmark
             } else {
                 cell.accessoryType = .None
             }
-
             cell.accessibilityIdentifier = "address-selection-row-\(indexPath.row)"
+
             return cell
         }
-    }
-
-    func replaceUpdatedAddress(updatedAddress: UserAddress) {
-        guard let addressIdx = addresses.indexOf({ $0 == updatedAddress }) else {
-            return
-        }
-        addresses[addressIdx] = updatedAddress
     }
 
 }
@@ -70,42 +69,23 @@ extension AddressListTableViewDelegate: UITableViewDelegate {
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle,
         forRowAtIndexPath indexPath: NSIndexPath) {
 
-            guard editingStyle == .Delete else { return }
-
-            let address = self.addresses[indexPath.item]
-            checkout.client.deleteAddress(address.id) { result in
-                guard let _ = result.process() else { return }
-                self.deleteAddress(indexPath, tableView: tableView)
-            }
-    }
-
-    private func deleteAddress(indexPath: NSIndexPath, tableView: UITableView) {
-        if let selectedAddress = selectedAddress where selectedAddress == self.addresses[indexPath.item] {
-            self.selectedAddress = nil
-        }
-        self.addresses.removeAtIndex(indexPath.item)
-
-        if self.addresses.isEmpty {
-            tableView.setEditing(true, animated: true)
-        }
-
-        self.deleteAddressHandler?()
-        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        guard editingStyle == .Delete else { return }
+        let address = addresses[indexPath.item]
+        actionsHandler?.deleteAddress(address)
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         guard indexPath.row < addresses.count else {
-            createAddressHandler?()
+            actionsHandler?.createAddress()
             return
         }
 
+        let address = addresses[indexPath.item]
         if tableView.editing {
-            updateAddressHandler?(address: addresses[indexPath.item])
+            actionsHandler?.updateAddress(address)
         } else {
-            selectedAddress = addresses[indexPath.item]
-            self.selectionCompletion(pickedAddress: selectedAddress, pickedAddressType: self.addressType, popBackToSummaryOnFinish: true)
-            tableView.reloadData()
+            actionsHandler?.selectAddress(address)
         }
     }
 
