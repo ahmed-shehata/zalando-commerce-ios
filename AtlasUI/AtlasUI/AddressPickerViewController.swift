@@ -181,7 +181,7 @@ extension AddressPickerViewController {
         showUpdateAddressViewController(for: originalAddress) { [weak self] updatedAddress in
             guard let strongSelf = self else { return }
             strongSelf.tableviewDelegate?.replaceUpdatedAddress(updatedAddress)
-            strongSelf.fetchAddresses()
+            strongSelf.tableView.reloadData()
         }
     }
 

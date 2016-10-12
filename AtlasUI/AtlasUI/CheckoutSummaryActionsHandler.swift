@@ -162,11 +162,6 @@ extension CheckoutSummaryActionsHandler {
             }
 
             if address == nil {
-                if let billingAddress = viewController.checkoutViewModel.selectedBillingAddress,
-                    shippingAddress = viewController.checkoutViewModel.selectedShippingAddress
-                where shippingAddress == billingAddress {
-                    viewController.checkoutViewModel.resetState()
-                }
                 viewController.checkoutViewModel.checkout = nil
             }
 
