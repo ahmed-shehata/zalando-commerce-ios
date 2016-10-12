@@ -92,19 +92,3 @@ extension AtlasCatalogError: UserPresentable {
 extension LoginError: UserPresentable { }
 
 extension AtlasConfigurationError: UserPresentable { }
-
-extension NSError: UserPresentable {
-
-    public func shouldDisplayGeneralMessage() -> Bool {
-        return false
-    }
-
-    public var localizedTitleKey: String {
-        return "AtlasAPIError.title"
-    }
-
-    func customMessage() -> String? {
-        return localizedDescription
-    }
-
-}
