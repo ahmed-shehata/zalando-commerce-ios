@@ -17,7 +17,7 @@ class AppSetup {
     private(set) static var checkout: AtlasCheckout?
     private(set) static var options: Options?
 
-    private static let defaultUseSandbox = false
+    private static let defaultUseSandbox = true
     private static let defaultInterfaceLanguage = InterfaceLanguage.English
 
     static var interfaceLanguage: String? {

@@ -86,6 +86,8 @@ extension AddressFormViewController {
 
         let isValid = addressStackView.textFields.map { $0.validateForm() }.filter { $0 == false }.isEmpty
         guard isValid else { return }
+
+        disableSaveButton()
         checkAddressRequest()
     }
 
@@ -101,6 +103,14 @@ extension AddressFormViewController {
         } else {
             navigationController?.popViewControllerAnimated(true)
         }
+    }
+
+    private func enableSaveButton() {
+        navigationItem.rightBarButtonItem?.enabled = true
+    }
+
+    private func disableSaveButton() {
+        navigationItem.rightBarButtonItem?.enabled = false
     }
 
 }
@@ -130,7 +140,7 @@ extension AddressFormViewController: UIBuilder {
 extension AddressFormViewController {
 
     private func checkAddressRequest() {
-        guard let request = CheckAddressRequest(addressFormViewModel: addressViewModel) else { return }
+        guard let request = CheckAddressRequest(addressFormViewModel: addressViewModel) else { return enableSaveButton() }
         loaderView.show()
         checkout.client.checkAddress(request) { [weak self] result in
             self?.checkAddressRequestCompletion(result)
@@ -138,7 +148,7 @@ extension AddressFormViewController {
     }
 
     private func createAddressRequest() {
-        guard let request = CreateAddressRequest(addressFormViewModel: addressViewModel) else { return }
+        guard let request = CreateAddressRequest(addressFormViewModel: addressViewModel) else { return enableSaveButton() }
         loaderView.show()
         checkout.client.createAddress(request) { [weak self] result in
             self?.createUpdateAddressRequestCompletion(result)
@@ -146,7 +156,7 @@ extension AddressFormViewController {
     }
 
     private func updateAddressRequest(originalAddress: EquatableAddress) {
-        guard let request = UpdateAddressRequest(addressFormViewModel: addressViewModel) else { return }
+        guard let request = UpdateAddressRequest(addressFormViewModel: addressViewModel) else { return enableSaveButton() }
         loaderView.show()
         checkout.client.updateAddress(originalAddress.id, request: request) { [weak self] result in
             self?.createUpdateAddressRequestCompletion(result)
@@ -155,22 +165,22 @@ extension AddressFormViewController {
 
     private func checkAddressRequestCompletion(result: AtlasResult<CheckAddressResponse>) {
         loaderView.hide()
-        guard let checkAddressResponse = result.process() else { return }
+        guard let checkAddressResponse = result.process() else { return enableSaveButton() }
         if checkAddressResponse.status == .notCorrect {
             let title = Localizer.string("Address.validation.notValid")
             UserMessage.show(title: title, message: nil, actions: ButtonAction(text: "OK"))
+            enableSaveButton()
         } else {
             switch addressMode {
             case .createAddress: createAddressRequest()
             case .updateAddress(let address): updateAddressRequest(address)
             }
-            dismissView()
         }
     }
 
     private func createUpdateAddressRequestCompletion(result: AtlasResult<UserAddress>) {
         loaderView.hide()
-        guard let address = result.process() else { return }
+        guard let address = result.process() else { return enableSaveButton() }
         dismissView()
         completion?(address)
     }

@@ -15,7 +15,7 @@ class CheckoutSummaryViewControllerSpec: QuickSpec {
             try! AtlasMockAPI.startServer() // swiftlint:disable:this force_try
 
             waitUntil(timeout: 10) { done in
-                self.viewController { (viewController, atlasUIViewController) in
+                self.viewControllers { (viewController, atlasUIViewController) in
 
                     var originalViewModel = viewController.checkoutViewModel
 
@@ -56,7 +56,7 @@ class CheckoutSummaryViewControllerSpec: QuickSpec {
     }
 
 
-    private func viewController(completion: ((CheckoutSummaryViewController, AtlasUIViewController) -> Void)) {
+    private func viewControllers(completion: ((CheckoutSummaryViewController, AtlasUIViewController) -> Void)) {
         self.atlasCheckout { atlasCheckout in
 
             atlasCheckout.client.article(forSKU: "AD541L009-G11") { result in
