@@ -64,10 +64,10 @@ struct UserMessage {
     }
 
     static func unclassifiedError(error: ErrorType) {
-        AtlasLogger.logError("Unclasified Error", error)
+        AtlasLogger.logError("Unclassified Error", error)
 
-        let title = Localizer.string("Error.unclasified.title")
-        let message = Localizer.string("Error.unclasified.message")
+        let title = Localizer.string("Error.unclassified.title")
+        let message = Localizer.string("Error.unclassified.message")
         show(title: title, message: message, actions: ButtonAction(text: "OK"))
     }
 

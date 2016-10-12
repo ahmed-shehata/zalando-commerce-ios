@@ -292,10 +292,10 @@
 		34ECE1C52097D5F274C73E332B128DD4 /* Address Form */ = {
 			isa = PBXGroup;
 			children = (
-				C7AE728E404BE0C4805F301575D7A500 /* AddressFormStackView.swift */,
-				DB1735D520DF324324C5AE16AF88B4DC /* AddressFormType.swift */,
 				15D8C7E62AC21A7198F4703BCE88DAC6 /* AddressFormViewController.swift */,
+				C7AE728E404BE0C4805F301575D7A500 /* AddressFormStackView.swift */,
 				D69B52B28021061BA2BD811B235ACC35 /* AddressFormViewModel.swift */,
+				DB1735D520DF324324C5AE16AF88B4DC /* AddressFormType.swift */,
 			);
 			name = "Address Form";
 			sourceTree = "<group>";
@@ -353,8 +353,8 @@
 			isa = PBXGroup;
 			children = (
 				9B484E9EDAA08B438CFF1D9582A4432D /* StackViews */,
-				3A4E23134230FC0873B95CF6C403C333 /* CheckoutSummaryActionsHandler.swift */,
 				9E6AC4686F0CD4C14C72BEF9B2DCFBA5 /* CheckoutSummaryViewController.swift */,
+				3A4E23134230FC0873B95CF6C403C333 /* CheckoutSummaryActionsHandler.swift */,
 				B9A9F1AEC57E7B7763E98C4CB5C195D4 /* CheckoutViewModel.swift */,
 				2653612BC3DBC05157000E6790084A05 /* CheckoutViewState.swift */,
 			);
@@ -419,11 +419,11 @@
 		E7B8FD94F5B37D0CD471CC2CC01B2A93 /* Address Selection */ = {
 			isa = PBXGroup;
 			children = (
-				34ECE1C52097D5F274C73E332B128DD4 /* Address Form */,
-				C7EEA970F03A677415B3AC4CB774D953 /* AddAddressTableViewCell.swift */,
-				6FC391339AB40C212901806139F6FC2B /* AddressListTableViewDelegate.swift */,
 				9CC30D3206CE11A3DB6F12F72BC8DB31 /* AddressPickerViewController.swift */,
+				6FC391339AB40C212901806139F6FC2B /* AddressListTableViewDelegate.swift */,
 				FCDAB74F0608C1A0ABE505D7D3498B40 /* AddressRowViewCell.swift */,
+				C7EEA970F03A677415B3AC4CB774D953 /* AddAddressTableViewCell.swift */,
+				34ECE1C52097D5F274C73E332B128DD4 /* Address Form */,
 			);
 			name = "Address Selection";
 			sourceTree = "<group>";
