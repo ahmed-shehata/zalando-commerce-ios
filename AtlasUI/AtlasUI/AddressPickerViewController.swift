@@ -13,6 +13,7 @@ enum AddressType {
 
 typealias AddressSelectionCompletion = (pickedAddress: EquatableAddress?, pickedAddressType: AddressType,
     popBackToSummaryOnFinish: Bool) -> Void
+typealias AddressUpdatedHandler = (address: EquatableAddress) -> Void
 typealias CreateAddressHandler = () -> Void
 typealias UpdateAddressHandler = (address: EquatableAddress) -> Void
 typealias DeleteAddressHandler = () -> Void
@@ -21,6 +22,7 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
 
     internal var checkout: AtlasCheckout
     private let addressType: AddressType
+    private let addressUpdatedHandler: AddressUpdatedHandler
     private let selectionCompletion: AddressSelectionCompletion
 
     private let tableView = UITableView()
@@ -39,9 +41,11 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
         }
     }
 
-    init(checkout: AtlasCheckout, addressType: AddressType, addressSelectionCompletion: AddressSelectionCompletion) {
+    init(checkout: AtlasCheckout, addressType: AddressType, addressUpdatedHandler: AddressUpdatedHandler,
+         addressSelectionCompletion: AddressSelectionCompletion) {
         self.checkout = checkout
         self.addressType = addressType
+        self.addressUpdatedHandler = addressUpdatedHandler
         selectionCompletion = addressSelectionCompletion
         super.init(nibName: nil, bundle: nil)
         tableviewDelegate = AddressListTableViewDelegate(checkout: checkout, addressType: addressType,
@@ -182,6 +186,7 @@ extension AddressPickerViewController {
             guard let strongSelf = self else { return }
             strongSelf.tableviewDelegate?.replaceUpdatedAddress(updatedAddress)
             strongSelf.tableView.reloadData()
+            strongSelf.addressUpdatedHandler(address: updatedAddress)
         }
     }
 

@@ -118,7 +118,9 @@ extension CheckoutSummaryActionsHandler {
         guard let viewController = self.viewController else { return }
         guard Atlas.isUserLoggedIn() else { return loadCustomerData() }
         let addressSelectionViewController = AddressPickerViewController(checkout: viewController.checkout,
-            addressType: .shipping, addressSelectionCompletion: pickedAddressCompletion)
+                                                                         addressType: .shipping,
+                                                                         addressUpdatedHandler: addressUpdatedHandler,
+                                                                         addressSelectionCompletion: pickedAddressCompletion)
         addressSelectionViewController.selectedAddress = viewController.checkoutViewModel.selectedShippingAddress
         viewController.showViewController(addressSelectionViewController, sender: viewController)
     }
@@ -127,8 +129,9 @@ extension CheckoutSummaryActionsHandler {
         guard let viewController = self.viewController else { return }
         guard Atlas.isUserLoggedIn() else { return loadCustomerData() }
         let addressSelectionViewController = AddressPickerViewController(checkout: viewController.checkout,
-            addressType: .billing,
-            addressSelectionCompletion: pickedAddressCompletion)
+                                                                         addressType: .billing,
+                                                                         addressUpdatedHandler: addressUpdatedHandler,
+                                                                         addressSelectionCompletion: pickedAddressCompletion)
         addressSelectionViewController.selectedAddress = viewController.checkoutViewModel.selectedBillingAddress
         viewController.showViewController(addressSelectionViewController, sender: viewController)
     }
@@ -182,6 +185,17 @@ extension CheckoutSummaryActionsHandler {
                     viewController.checkoutViewModel = checkoutViewModel
                 }
             }
+    }
+
+    func addressUpdatedHandler(address: EquatableAddress) {
+        guard let viewController = self.viewController else { return }
+
+        if let billingAddress = viewController.checkoutViewModel.selectedBillingAddress where  billingAddress == address {
+            viewController.checkoutViewModel.selectedBillingAddress = address
+        }
+        if let shippingAddress = viewController.checkoutViewModel.selectedShippingAddress where  shippingAddress == address {
+            viewController.checkoutViewModel.selectedShippingAddress = address
+        }
     }
 
 }
