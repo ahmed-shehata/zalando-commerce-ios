@@ -61,22 +61,11 @@ extension AddressActionsHandler {
 
     func deleteAddress(address: EquatableAddress) {
         checkout.client.deleteAddress(address.id) { [weak self] result in
-            guard let _ = result.process() else { return }
-            self?.viewController?.tableviewDelegate.addresses.remove = updatedAddress
-            self.deleteAddress(indexPath, tableView: tableView)
+            let addresses = self?.viewController?.tableviewDelegate.addresses
+            guard let _ = result.process(), addressIdx = addresses?.indexOf({ $0 == address }) else { return }
+            self?.viewController?.tableviewDelegate.addresses.removeAtIndex(addressIdx)
+            self?.viewController?.addressDeletedHandler?(address: address)
         }
-    }
-
-    private func deleteAddress(indexPath: NSIndexPath, tableView: UITableView) {
-
-        self.addresses.removeAtIndex(indexPath.item)
-
-        if self.addresses.isEmpty {
-            tableView.setEditing(true, animated: true)
-        }
-
-        self.deleteAddressHandler?()
-        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
     }
 
 }
@@ -84,7 +73,7 @@ extension AddressActionsHandler {
 extension AddressActionsHandler {
 
     func selectAddress(address: EquatableAddress) {
-
+        viewController?.addressSelectedHandler?(address: address)
     }
 
 }
