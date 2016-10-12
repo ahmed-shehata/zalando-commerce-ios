@@ -103,14 +103,17 @@ enum AddressFormField: String {
         case .FirstName:
             return [.Required,
                     .MaxLength(maxLength: 50),
+                    .MinLength(minLength: 2),
                     .Pattern(pattern: FormValidator.namePattern, errorMessage: "Form.validation.pattern.name")]
         case .LastName:
             return [.Required,
                     .MaxLength(maxLength: 50),
+                    .MinLength(minLength: 2),
                     .Pattern(pattern: FormValidator.namePattern, errorMessage: "Form.validation.pattern.name")]
         case .Street:
             return [.Required,
                     .MaxLength(maxLength: 50),
+                    .MinLength(minLength: 2),
                     .Pattern(pattern: FormValidator.streetPattern, errorMessage: "Form.validation.pattern.street")]
         case .Additional:
             return [.MaxLength(maxLength: 50)]
@@ -129,6 +132,7 @@ enum AddressFormField: String {
         case .City:
             return [.Required,
                     .MaxLength(maxLength: 50),
+                    .MinLength(minLength: 2),
                     .Pattern(pattern: FormValidator.cityPattern, errorMessage: "Form.validation.pattern.city")]
         case .Country:
             return [.Required]
