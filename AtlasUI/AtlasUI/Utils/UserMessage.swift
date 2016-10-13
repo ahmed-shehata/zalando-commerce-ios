@@ -24,24 +24,25 @@ struct ButtonAction {
 
 struct UserMessage {
 
-    static func show(title title: String, message: String? = nil,
-        preferredStyle: UIAlertControllerStyle = .Alert, actions: ButtonAction...) {
+    static func displayError(error: ErrorType) {
+        let viewController: AtlasUIViewController? = try? Atlas.provide()
+        guard let userPresentable = error as? UserPresentable, atlasUIViewController = viewController else {
+            displayError(AtlasCatalogError.unclassified)
+            return
+        }
+
+        atlasUIViewController.displayError(userPresentable)
+    }
+
+    static func showActionSheet(title title: String, message: String? = nil, actions: ButtonAction...) {
             guard let topViewController = UIApplication.topViewController() else { return }
-            let alertView = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
+            let alertView = UIAlertController(title: title, message: message, preferredStyle: .ActionSheet)
 
             actions.forEach { alertView.addAction($0) }
 
             Async.main {
                 topViewController.presentViewController(alertView, animated: true, completion: nil)
             }
-    }
-
-    static func unclassifiedError(error: ErrorType) {
-        AtlasLogger.logError("Unclassified Error", error)
-
-        let title = Localizer.string("Error.unclassified.title")
-        let message = Localizer.string("Error.unclassified.message")
-        show(title: title, message: message, actions: ButtonAction(text: "OK"))
     }
 
 }

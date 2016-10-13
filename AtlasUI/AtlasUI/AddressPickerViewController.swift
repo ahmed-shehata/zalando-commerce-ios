@@ -141,9 +141,7 @@ extension AddressPickerViewController {
             }
             let cancelAction = ButtonAction(text: "Cancel", style: .Cancel, handler: nil)
 
-            UserMessage.show(title: title,
-                preferredStyle: .ActionSheet,
-                actions: standardAction, pickupPointAction, cancelAction)
+            UserMessage.showActionSheet(title: title, actions: standardAction, pickupPointAction, cancelAction)
         }
     }
 

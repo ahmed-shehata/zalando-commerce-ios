@@ -167,8 +167,7 @@ extension AddressFormViewController {
         loaderView.hide()
         guard let checkAddressResponse = result.process() else { return enableSaveButton() }
         if checkAddressResponse.status == .notCorrect {
-            let title = Localizer.string("Address.validation.notValid")
-            UserMessage.show(title: title, message: nil, actions: ButtonAction(text: "OK"))
+            UserMessage.displayError(AtlasCatalogError.addressInvalid)
             enableSaveButton()
         } else {
             switch addressMode {

@@ -30,10 +30,12 @@
 "AtlasCatalogError.title" = "Oops";
 "AtlasCatalogError.title.missingAddress" = "No address selected";
 "AtlasCatalogError.title.priceChanged" = "Price changed";
+"AtlasCatalogError.message.unclassified" = "Da ist etwas schief gelaufen.\nWir arbeiten an dem Problem.\nBitte komm später noch einmal vorbei.";
 "AtlasCatalogError.message.outOfStock" = "Leider ist dieser Artikel nicht mehr verfügbar";
 "AtlasCatalogError.message.missingAddress" = "Please select shipping and billing addresses first";
 "AtlasCatalogError.message.priceChanged" = "The price is now %@";
 "AtlasCatalogError.message.paymentMethodNotAvailable" = "Payment method is no longer available";
+"AtlasCatalogError.message.addressInvalid" = "Adresse nicht bekannt, bitte überprüfe sie.";
 
 "LoginError.title" = "Anmeldung fehlgeschlagen";
 "LoginError.message.missingURL" = "Missing login URL";
@@ -65,7 +67,6 @@
 "Address.form.zipcode" = "Postleitzahl";
 "Address.form.city" = "Stadt";
 "Address.form.country" = "Land";
-
 "Address.form.gender.male" = "Herr";
 "Address.form.gender.female" = "Frau";
 
@@ -88,7 +89,3 @@
 "Form.validation.pattern.city" = "Bitte in diesem Feld nur die Zeichen (A-z) eingeben.";
 "Form.validation.pattern.street" = "Bitte Straße und Hausnummer eingeben.";
 "Form.validation.numbersOnly" = "Bitte nur Nummern eintragen";
-"Address.validation.notValid" = "Adresse nicht bekannt, bitte überprüfe sie.";
-
-"Error.unclassified.title" = "Oops";
-"Error.unclassified.message" = "Da ist etwas schief gelaufen.\nWir arbeiten an dem Problem.\nBitte komm später noch einmal vorbei.";
