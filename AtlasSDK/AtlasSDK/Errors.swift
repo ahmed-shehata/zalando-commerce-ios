@@ -41,7 +41,7 @@ public enum AtlasAPIError: AtlasErrorType {
 
 }
 
-public enum AtlasCatalogError: AtlasErrorType {
+public enum AtlasCheckoutError: AtlasErrorType {
 
     case unclassified
     case outOfStock

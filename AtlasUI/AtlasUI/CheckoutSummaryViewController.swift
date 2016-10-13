@@ -78,7 +78,7 @@ extension CheckoutSummaryViewController {
             newPrice = checkoutViewModel.cart?.grossTotal.amount else { return }
 
         if oldPrice != newPrice {
-            UserMessage.displayError(AtlasCatalogError.priceChanged(newPrice: newPrice))
+            UserMessage.displayError(AtlasCheckoutError.priceChanged(newPrice: newPrice))
         }
     }
 
@@ -86,7 +86,7 @@ extension CheckoutSummaryViewController {
         guard oldViewModel.checkout?.payment.selected?.method != nil
             && checkoutViewModel.checkout?.payment.selected?.method == nil else { return }
 
-        UserMessage.displayError(AtlasCatalogError.paymentMethodNotAvailable)
+        UserMessage.displayError(AtlasCheckoutError.paymentMethodNotAvailable)
     }
 
     private func createCheckout() {

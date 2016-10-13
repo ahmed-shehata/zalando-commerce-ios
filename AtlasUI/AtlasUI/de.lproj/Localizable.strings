@@ -27,15 +27,15 @@
 "feature.notImplemented.title" = "Not implemented";
 "feature.notImplemented.message" = "This feature is currently not implemented";
 
-"AtlasCatalogError.title" = "Oops";
-"AtlasCatalogError.title.missingAddress" = "No address selected";
-"AtlasCatalogError.title.priceChanged" = "Price changed";
-"AtlasCatalogError.message.unclassified" = "Da ist etwas schief gelaufen.\nWir arbeiten an dem Problem.\nBitte komm später noch einmal vorbei.";
-"AtlasCatalogError.message.outOfStock" = "Leider ist dieser Artikel nicht mehr verfügbar";
-"AtlasCatalogError.message.missingAddress" = "Please select shipping and billing addresses first";
-"AtlasCatalogError.message.priceChanged" = "The price is now %@";
-"AtlasCatalogError.message.paymentMethodNotAvailable" = "Payment method is no longer available";
-"AtlasCatalogError.message.addressInvalid" = "Adresse nicht bekannt, bitte überprüfe sie.";
+"AtlasCheckoutError.title" = "Oops";
+"AtlasCheckoutError.title.missingAddress" = "No address selected";
+"AtlasCheckoutError.title.priceChanged" = "Price changed";
+"AtlasCheckoutError.message.unclassified" = "Da ist etwas schief gelaufen.\nWir arbeiten an dem Problem.\nBitte komm später noch einmal vorbei.";
+"AtlasCheckoutError.message.outOfStock" = "Leider ist dieser Artikel nicht mehr verfügbar";
+"AtlasCheckoutError.message.missingAddress" = "Please select shipping and billing addresses first";
+"AtlasCheckoutError.message.priceChanged" = "The price is now %@";
+"AtlasCheckoutError.message.paymentMethodNotAvailable" = "Payment method is no longer available";
+"AtlasCheckoutError.message.addressInvalid" = "Adresse nicht bekannt, bitte überprüfe sie.";
 
 "LoginError.title" = "Anmeldung fehlgeschlagen";
 "LoginError.message.missingURL" = "Missing login URL";

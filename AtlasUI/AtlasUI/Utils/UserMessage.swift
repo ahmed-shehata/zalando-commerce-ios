@@ -37,7 +37,7 @@ struct UserMessage {
 
     static func displayError(error: ErrorType) {
         guard let userPresentable = error as? UserPresentable else {
-            displayError(AtlasCatalogError.unclassified)
+            displayError(AtlasCheckoutError.unclassified)
             return
         }
 
