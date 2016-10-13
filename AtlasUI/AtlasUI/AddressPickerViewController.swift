@@ -8,15 +8,13 @@ import AtlasSDK
 typealias AddressUpdatedHandler = (address: EquatableAddress) -> Void
 typealias AddressDeletedHandler = (address: EquatableAddress) -> Void
 typealias AddressSelectedHandler = (address: EquatableAddress) -> Void
-typealias AddressFormViewControllerHandler = (viewController: AddressFormViewController) -> Void
-typealias CreateAddressViewControllerGenerator = (handler: AddressFormViewControllerHandler) -> Void
 
 final class AddressPickerViewController: UIViewController {
 
     internal var addressUpdatedHandler: AddressUpdatedHandler?
     internal var addressDeletedHandler: AddressDeletedHandler?
     internal var addressSelectedHandler: AddressSelectedHandler?
-    internal var createAddressViewControllerGenerator: CreateAddressViewControllerGenerator?
+    internal var addressCreationStrategy: AddressCreationStrategy?
 
     internal lazy var tableviewDelegate: AddressListTableViewDelegate = {
         let delegate = AddressListTableViewDelegate(tableView: self.tableView,

@@ -14,6 +14,7 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
             viewState = checkoutViewModel.checkoutViewState
             checkPaymentMethod(oldValue)
             checkPriceChange(oldValue)
+            createCheckout()
         }
     }
     internal var viewState: CheckoutViewState = .NotLoggedIn {
@@ -89,6 +90,19 @@ extension CheckoutSummaryViewController {
 
         if checkoutViewModel.checkout?.payment.selected?.method == nil {
             atlasUIViewController.displayError(AtlasCatalogError.paymentMethodNotAvailable)
+        }
+    }
+
+    private func createCheckout() {
+        guard checkoutViewModel.isReadyToCreateCheckout else { return }
+
+        displayLoader { [weak self] done in
+            guard let strongSelf = self else { return }
+            strongSelf.checkout.createCheckoutViewModel(fromModel: strongSelf.checkoutViewModel) { result in
+                done()
+                guard let checkoutViewModel = result.process() else { return }
+                strongSelf.checkoutViewModel = checkoutViewModel
+            }
         }
     }
 

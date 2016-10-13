@@ -20,18 +20,13 @@ class AddressActionsHandler {
 extension AddressActionsHandler {
 
     func createAddress() {
-        viewController?.createAddressViewControllerGenerator? { [weak self] viewController in
-            self?.showCreateAddressViewController(viewController)  { createdAddress in
-                self?.viewController?.tableviewDelegate.addresses.append(createdAddress)
-                self?.viewController?.addressSelectedHandler?(address: createdAddress)
-            }
+        viewController?.addressCreationStrategy?.navigationController = viewController?.navigationController
+        viewController?.addressCreationStrategy?.addressFormCompletion = { [weak self] userAddress in
+            self?.viewController?.tableviewDelegate.addresses.append(userAddress)
+            self?.selectAddress(userAddress)
         }
-    }
 
-    private func showCreateAddressViewController(viewController: AddressFormViewController, completion: AddressFormCompletion) {
-        let navigationController = UINavigationController(rootViewController: viewController)
-        navigationController.modalPresentationStyle = .OverCurrentContext
-        self.viewController?.navigationController?.showViewController(navigationController, sender: nil)
+        viewController?.addressCreationStrategy?.execute(checkout)
     }
 
 }
@@ -74,6 +69,7 @@ extension AddressActionsHandler {
 
     func selectAddress(address: EquatableAddress) {
         viewController?.addressSelectedHandler?(address: address)
+        viewController?.navigationController?.popViewControllerAnimated(true)
     }
 
 }

@@ -75,6 +75,9 @@
 		D9CE3553FFE09F2A82794C7A9E45F4F1 /* TextFieldInputStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733421E924B47BF0FE5766446A269719 /* TextFieldInputStackView.swift */; };
 		DB2470DB4F51D75862D73B20254CB0A7 /* CheckoutSummaryActionsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4E23134230FC0873B95CF6C403C333 /* CheckoutSummaryActionsHandler.swift */; };
 		DE4482A9091E62348223761D4C58D008 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA19C45C79A94472331D134BC9895CA /* UIView.swift */; };
+		E91496E61DAF79CF007566FF /* AddressCreationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91496E51DAF79CF007566FF /* AddressCreationStrategy.swift */; };
+		E91496E91DAF879F007566FF /* ShippingAddressCreationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91496E81DAF879F007566FF /* ShippingAddressCreationStrategy.swift */; };
+		E91496EB1DAF87C5007566FF /* BillingAddressCreationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91496EA1DAF87C5007566FF /* BillingAddressCreationStrategy.swift */; };
 		E9340F7C1DACD3B500DAEF09 /* CheckoutSummaryViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9340F7B1DACD3B500DAEF09 /* CheckoutSummaryViewControllerSpec.swift */; };
 		E951AF161DAE9E89007B1063 /* AddressActionsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951AF151DAE9E89007B1063 /* AddressActionsHandler.swift */; };
 		E96997501DA51E49000299C8 /* AtlasUI-Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E969974F1DA51E49000299C8 /* AtlasUI-Constants.swift */; };
@@ -185,6 +188,9 @@
 		DBCD16D68816C1E45EC44175CDD43DA5 /* AtlasUIErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasUIErrors.swift; sourceTree = "<group>"; };
 		DFCC0DB119DFC404BB122ED5E6E2861F /* AtlasUI-String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AtlasUI-String.swift"; sourceTree = "<group>"; };
 		E0787BE393FFE7950A8DA96CCD4375EA /* AtlasUI-NSURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AtlasUI-NSURL.swift"; sourceTree = "<group>"; };
+		E91496E51DAF79CF007566FF /* AddressCreationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCreationStrategy.swift; sourceTree = "<group>"; };
+		E91496E81DAF879F007566FF /* ShippingAddressCreationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShippingAddressCreationStrategy.swift; sourceTree = "<group>"; };
+		E91496EA1DAF87C5007566FF /* BillingAddressCreationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingAddressCreationStrategy.swift; sourceTree = "<group>"; };
 		E9340F7B1DACD3B500DAEF09 /* CheckoutSummaryViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryViewControllerSpec.swift; sourceTree = "<group>"; };
 		E951AF151DAE9E89007B1063 /* AddressActionsHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressActionsHandler.swift; sourceTree = "<group>"; };
 		E969974F1DA51E49000299C8 /* AtlasUI-Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AtlasUI-Constants.swift"; sourceTree = "<group>"; };
@@ -418,6 +424,7 @@
 		E7B8FD94F5B37D0CD471CC2CC01B2A93 /* Address Selection */ = {
 			isa = PBXGroup;
 			children = (
+				E91496E71DAF8788007566FF /* Address Creation Strategy */,
 				34ECE1C52097D5F274C73E332B128DD4 /* Address Form */,
 				C7EEA970F03A677415B3AC4CB774D953 /* AddAddressTableViewCell.swift */,
 				6FC391339AB40C212901806139F6FC2B /* AddressListTableViewDelegate.swift */,
@@ -426,6 +433,16 @@
 				E951AF151DAE9E89007B1063 /* AddressActionsHandler.swift */,
 			);
 			name = "Address Selection";
+			sourceTree = "<group>";
+		};
+		E91496E71DAF8788007566FF /* Address Creation Strategy */ = {
+			isa = PBXGroup;
+			children = (
+				E91496E51DAF79CF007566FF /* AddressCreationStrategy.swift */,
+				E91496E81DAF879F007566FF /* ShippingAddressCreationStrategy.swift */,
+				E91496EA1DAF87C5007566FF /* BillingAddressCreationStrategy.swift */,
+			);
+			name = "Address Creation Strategy";
 			sourceTree = "<group>";
 		};
 		E99548451DA3D953001AF7DE /* Reachability */ = {
@@ -649,6 +666,7 @@
 				65BCA936AE236A318847ECE6DCA4A3B0 /* AddAddressTableViewCell.swift in Sources */,
 				06501FA9461ACAAE48E6766F81E3F4BB /* AddressFormStackView.swift in Sources */,
 				4BE7741C07F5F55104DCC09E8594AF92 /* AddressFormType.swift in Sources */,
+				E91496E91DAF879F007566FF /* ShippingAddressCreationStrategy.swift in Sources */,
 				9327E278449199F204D0B0B0675CAC10 /* AddressFormViewController.swift in Sources */,
 				AD12B850B93E98B146F2119CFCB350A3 /* AddressFormViewModel.swift in Sources */,
 				E96997501DA51E49000299C8 /* AtlasUI-Constants.swift in Sources */,
@@ -677,6 +695,7 @@
 				E951AF161DAE9E89007B1063 /* AddressActionsHandler.swift in Sources */,
 				3ABA26421BD2B174AA71C1D7D4F67E58 /* CheckoutSummaryPaymentStackView.swift in Sources */,
 				9DF15AB5A8939C7163029A2364B05864 /* CheckoutSummaryPriceStackView.swift in Sources */,
+				E91496EB1DAF87C5007566FF /* BillingAddressCreationStrategy.swift in Sources */,
 				1A6A62DFB9C89EC03C88B3F06B2164E3 /* CheckoutSummaryProductStackView.swift in Sources */,
 				0609FEB6D8F704C68CCF1051ACDEDF56 /* CheckoutSummaryRootStackView.swift in Sources */,
 				B38C79AC7967CA0C0249132BA67FC54D /* CheckoutSummaryViewController.swift in Sources */,
@@ -696,6 +715,7 @@
 				54F18A56CF79CF25599259CA5EB5D394 /* PickerKeyboardInputView.swift in Sources */,
 				924051DE99309804FFDA4F5E66FE4D65 /* RoundedViews.swift in Sources */,
 				AC2A991E658A6F0E4A4E5435ABE3BB84 /* SizeListSelectionViewController.swift in Sources */,
+				E91496E61DAF79CF007566FF /* AddressCreationStrategy.swift in Sources */,
 				6AD690A77903B1887A46218251970A9D /* SizeSelectionViewController.swift in Sources */,
 				D9CE3553FFE09F2A82794C7A9E45F4F1 /* TextFieldInputStackView.swift in Sources */,
 				D1597746177CEB8207EFB773413174DF /* TextFieldInputViewModel.swift in Sources */,

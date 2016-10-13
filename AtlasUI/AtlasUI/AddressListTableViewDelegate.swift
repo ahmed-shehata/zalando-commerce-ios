@@ -9,7 +9,7 @@ class AddressListTableViewDelegate: NSObject {
 
     internal var addresses: [EquatableAddress] {
         didSet {
-            if let selectedAddress = selectedAddress where !addresses.contains({ $0 == selectedAddress })  {
+            if let selectedAddress = selectedAddress where !addresses.contains({ $0 == selectedAddress }) {
                 self.selectedAddress = nil
             }
             if addresses.isEmpty {
