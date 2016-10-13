@@ -101,6 +101,7 @@ extension BannerErrorViewController: UIBuilder {
         view.clipsToBounds = true
         view.userInteractionEnabled = true
         view.addSubview(containerView)
+        view.backgroundColor = .redColor()
         containerView.addSubview(stackView)
         containerView.addSubview(cancelIconLabel)
         containerView.addSubview(cancelButton)

@@ -41,12 +41,9 @@ struct UserMessage {
             return
         }
 
-        let viewController: AtlasUIViewController? = try? Atlas.provide()
-        guard let atlasUIViewController = viewController else { return }
-
         switch userPresentable.errorPresentationType() {
-        case .banner: displayBanner(userPresentable, on: atlasUIViewController)
-        case .fullScreen: displayFullScreen(userPresentable, on: atlasUIViewController)
+        case .banner: displayBanner(userPresentable)
+        case .fullScreen: displayFullScreen(userPresentable)
         }
     }
 
@@ -61,21 +58,33 @@ struct UserMessage {
             }
     }
 
-    private static func displayBanner(error: UserPresentable, on viewController: UIViewController) {
+}
+
+extension UserMessage {
+
+    private static var errorPresenterViewController: UIViewController? {
+        let viewController: AtlasUIViewController? = try? Atlas.provide()
+        guard let atlasUIViewController = viewController else { return nil }
+        return atlasUIViewController.presentedViewController ?? atlasUIViewController
+    }
+
+    private static func displayBanner(error: UserPresentable) {
+        let viewController = errorPresenterViewController
         bannerErrorViewController.removeFromParentViewController()
         bannerErrorViewController.view.removeFromSuperview()
 
-        viewController.addChildViewController(bannerErrorViewController)
-        viewController.view.addSubview(bannerErrorViewController.view)
+        viewController?.addChildViewController(bannerErrorViewController)
+        viewController?.view.addSubview(bannerErrorViewController.view)
 
         bannerErrorViewController.view.fillInSuperView()
         bannerErrorViewController.configureData(error)
     }
 
-    private static func displayFullScreen(error: UserPresentable, on viewController: UIViewController) {
+    private static func displayFullScreen(error: UserPresentable) {
+        let viewController = errorPresenterViewController
         let navigationController = UINavigationController(rootViewController: fullScreenErrorViewController)
-        viewController.addChildViewController(navigationController)
-        viewController.view.addSubview(navigationController.view)
+        viewController?.addChildViewController(navigationController)
+        viewController?.view.addSubview(navigationController.view)
 
         navigationController.view.fillInSuperView()
         fullScreenErrorViewController.configureData(error)
