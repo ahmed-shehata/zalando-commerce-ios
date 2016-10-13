@@ -98,18 +98,32 @@ extension CheckoutViewModel {
         }
     }
 
-}
-
-extension CheckoutViewModel {
-    mutating func resetState() {
-        self.checkout = nil
-        self.selectedBillingAddress = nil
-        self.selectedShippingAddress = nil
-    }
-}
-
-extension CheckoutViewModel {
     var isReadyToCreateCheckout: Bool {
         return self.checkout == nil && self.selectedBillingAddress != nil && self.selectedShippingAddress != nil
     }
+
+}
+
+extension CheckoutViewModel {
+
+    mutating func addressUpdated(address: EquatableAddress) {
+        if let billingAddress = selectedBillingAddress where  billingAddress == address {
+            selectedBillingAddress = address
+        }
+        if let shippingAddress = selectedShippingAddress where  shippingAddress == address {
+            selectedShippingAddress = address
+        }
+    }
+
+    mutating func addressDeleted(address: EquatableAddress) {
+        if let billingAddress = selectedBillingAddress where  billingAddress == address {
+            selectedBillingAddress = nil
+            checkout = nil
+        }
+        if let shippingAddress = selectedShippingAddress where  shippingAddress == address {
+            selectedShippingAddress = nil
+            checkout = nil
+        }
+    }
+
 }
