@@ -73,24 +73,20 @@ extension CheckoutSummaryViewController {
     }
 
     private func checkPriceChange(oldViewModel: CheckoutViewModel) {
-        let viewController: AtlasUIViewController? = try? Atlas.provide()
         guard let
-            atlasUIViewController = viewController,
             oldPrice = oldViewModel.cart?.grossTotal.amount,
             newPrice = checkoutViewModel.cart?.grossTotal.amount else { return }
 
         if oldPrice != newPrice {
-            atlasUIViewController.displayError(AtlasCatalogError.priceChanged(newPrice: newPrice))
+            UserMessage.displayError(AtlasCatalogError.priceChanged(newPrice: newPrice))
         }
     }
 
     private func checkPaymentMethod(oldViewModel: CheckoutViewModel) {
-        let viewController: AtlasUIViewController? = try? Atlas.provide()
-        guard let atlasUIViewController = viewController where oldViewModel.checkout?.payment.selected?.method != nil else { return }
+        guard oldViewModel.checkout?.payment.selected?.method != nil
+            && checkoutViewModel.checkout?.payment.selected?.method == nil else { return }
 
-        if checkoutViewModel.checkout?.payment.selected?.method == nil {
-            atlasUIViewController.displayError(AtlasCatalogError.paymentMethodNotAvailable)
-        }
+        UserMessage.displayError(AtlasCatalogError.paymentMethodNotAvailable)
     }
 
     private func createCheckout() {
