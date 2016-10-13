@@ -36,11 +36,13 @@ struct UserMessage {
     }
 
     static func displayError(error: ErrorType) {
-        let viewController: AtlasUIViewController? = try? Atlas.provide()
-        guard let userPresentable = error as? UserPresentable, atlasUIViewController = viewController else {
+        guard let userPresentable = error as? UserPresentable else {
             displayError(AtlasCatalogError.unclassified)
             return
         }
+
+        let viewController: AtlasUIViewController? = try? Atlas.provide()
+        guard let atlasUIViewController = viewController else { return }
 
         switch userPresentable.errorPresentationType() {
         case .banner: displayBanner(userPresentable, on: atlasUIViewController)
