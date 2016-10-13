@@ -170,11 +170,11 @@ extension AtlasDemoUITests {
 
         let table = app.tables
 
-        table.buttons.elementBoundByIndex(0).tap()
         table.buttons.elementBoundByIndex(2).tap()
+        table.buttons.elementBoundByIndex(4).tap()
 
-        table.buttons.elementBoundByIndex(0).tap()
         table.buttons.elementBoundByIndex(2).tap()
+        table.buttons.elementBoundByIndex(4).tap()
 
         let existsPredicate = NSPredicate(format: "count == 2")
         expectationForPredicate(existsPredicate, evaluatedWithObject: table.cells, handler: nil)

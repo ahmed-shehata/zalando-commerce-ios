@@ -114,25 +114,6 @@ extension CheckoutSummaryActionsHandler {
         viewController.showViewController(paymentSelectionViewController, sender: viewController)
     }
 
-    internal func showShippingAddressSelectionScreen() {
-        guard let viewController = self.viewController else { return }
-        guard Atlas.isUserLoggedIn() else { return loadCustomerData() }
-        let addressSelectionViewController = AddressPickerViewController(checkout: viewController.checkout,
-            addressType: .shipping, addressSelectionCompletion: pickedAddressCompletion)
-        addressSelectionViewController.selectedAddress = viewController.checkoutViewModel.selectedShippingAddress
-        viewController.showViewController(addressSelectionViewController, sender: viewController)
-    }
-
-    internal func showBillingAddressSelectionScreen() {
-        guard let viewController = self.viewController else { return }
-        guard Atlas.isUserLoggedIn() else { return loadCustomerData() }
-        let addressSelectionViewController = AddressPickerViewController(checkout: viewController.checkout,
-            addressType: .billing,
-            addressSelectionCompletion: pickedAddressCompletion)
-        addressSelectionViewController.selectedAddress = viewController.checkoutViewModel.selectedBillingAddress
-        viewController.showViewController(addressSelectionViewController, sender: viewController)
-    }
-
     internal func handleOrderConfirmation(order: Order) {
         guard let viewController = self.viewController else { return }
 
@@ -153,40 +134,46 @@ extension CheckoutSummaryActionsHandler {
 
 extension CheckoutSummaryActionsHandler {
 
-    func pickedAddressCompletion(pickedAddress address: EquatableAddress?,
-        forAddressType addressType: AddressType, popBackToSummaryOnFinish: Bool) {
-            guard let viewController = self.viewController else { return }
+    internal func showShippingAddressSelectionScreen() {
+        guard let viewController = self.viewController else { return }
+        guard Atlas.isUserLoggedIn() else { return loadCustomerData() }
 
-            if popBackToSummaryOnFinish {
-                viewController.navigationController?.popViewControllerAnimated(true)
+        viewController.displayLoader { done in
+            viewController.checkout.client.addresses { result in
+                done()
+                guard let addresses = result.process() else { return }
+                let addressSelectionViewController = AddressPickerViewController(checkout: viewController.checkout,
+                    initialAddresses: addresses.map { $0 },
+                    initialSelectedAddress: viewController.checkoutViewModel.selectedShippingAddress)
+                addressSelectionViewController.addressUpdatedHandler = { viewController.checkoutViewModel.addressUpdated($0) }
+                addressSelectionViewController.addressDeletedHandler = { viewController.checkoutViewModel.addressDeleted($0) }
+                addressSelectionViewController.addressSelectedHandler = { viewController.checkoutViewModel.selectedShippingAddress = $0 }
+                addressSelectionViewController.addressCreationStrategy = ShippingAddressCreationStrategy()
+                addressSelectionViewController.title = Localizer.string("Address.Shipping")
+                viewController.showViewController(addressSelectionViewController, sender: nil)
             }
+        }
+    }
 
-            if address == nil {
-                if let billingAddress = viewController.checkoutViewModel.selectedBillingAddress,
-                    shippingAddress = viewController.checkoutViewModel.selectedShippingAddress
-                where shippingAddress == billingAddress {
-                    viewController.checkoutViewModel.resetState()
-                }
-                viewController.checkoutViewModel.checkout = nil
+    internal func showBillingAddressSelectionScreen() {
+        guard let viewController = self.viewController else { return }
+        guard Atlas.isUserLoggedIn() else { return loadCustomerData() }
+
+        viewController.displayLoader { done in
+            viewController.checkout.client.addresses { result in
+                done()
+                guard let addresses = result.process() else { return }
+                let addressSelectionViewController = AddressPickerViewController(checkout: viewController.checkout,
+                    initialAddresses: addresses.filter { $0.pickupPoint == nil } .map { $0 },
+                    initialSelectedAddress: viewController.checkoutViewModel.selectedBillingAddress)
+                addressSelectionViewController.addressUpdatedHandler = { viewController.checkoutViewModel.addressUpdated($0) }
+                addressSelectionViewController.addressDeletedHandler = { viewController.checkoutViewModel.addressDeleted($0) }
+                addressSelectionViewController.addressSelectedHandler = { viewController.checkoutViewModel.selectedBillingAddress = $0 }
+                addressSelectionViewController.addressCreationStrategy =  BillingAddressCreationStrategy()
+                addressSelectionViewController.title = Localizer.string("Address.Billing")
+                viewController.showViewController(addressSelectionViewController, sender: nil)
             }
-
-            switch addressType {
-            case .billing:
-                viewController.checkoutViewModel.selectedBillingAddress = address
-            case .shipping:
-                viewController.checkoutViewModel.selectedShippingAddress = address
-            }
-
-            guard viewController.checkoutViewModel.isReadyToCreateCheckout else { return }
-
-            viewController.displayLoader { done in
-                viewController.checkout.createCheckoutViewModel(fromModel: viewController.checkoutViewModel) { result in
-                    done()
-                    guard let checkoutViewModel = result.process() else { return }
-
-                    viewController.checkoutViewModel = checkoutViewModel
-                }
-            }
+        }
     }
 
 }

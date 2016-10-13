@@ -5,47 +5,52 @@
 import UIKit
 import AtlasSDK
 
-@available( *, deprecated, message = "Kill it with fire!")
-enum AddressType {
-    case shipping
-    case billing
-}
+typealias AddressUpdatedHandler = (address: EquatableAddress) -> Void
+typealias AddressDeletedHandler = (address: EquatableAddress) -> Void
+typealias AddressSelectedHandler = (address: EquatableAddress) -> Void
 
-typealias AddressSelectionCompletion = (pickedAddress: EquatableAddress?, pickedAddressType: AddressType,
-    popBackToSummaryOnFinish: Bool) -> Void
-typealias CreateAddressHandler = () -> Void
-typealias UpdateAddressHandler = (address: EquatableAddress) -> Void
-typealias DeleteAddressHandler = () -> Void
+final class AddressPickerViewController: UIViewController {
 
-final class AddressPickerViewController: UIViewController, CheckoutProviderType {
+    internal var addressUpdatedHandler: AddressUpdatedHandler?
+    internal var addressDeletedHandler: AddressDeletedHandler?
+    internal var addressSelectedHandler: AddressSelectedHandler?
+    internal var addressCreationStrategy: AddressCreationStrategy?
 
-    internal var checkout: AtlasCheckout
-    private let addressType: AddressType
-    private let selectionCompletion: AddressSelectionCompletion
+    internal lazy var tableviewDelegate: AddressListTableViewDelegate = {
+        return AddressListTableViewDelegate(tableView: self.tableView,
+                                            addresses: self.initialAddresses,
+                                            selectedAddress: self.initialSelectedAddress,
+                                            actionsHandler: self.actionsHandler)
+    }()
 
-    private let tableView = UITableView()
+    private let checkout: AtlasCheckout
+    private let initialAddresses: [EquatableAddress]
+    private let initialSelectedAddress: EquatableAddress?
+    private lazy var actionsHandler: AddressActionsHandler = {
+        return AddressActionsHandler(checkout: self.checkout, viewController: self)
+    }()
 
-    internal let loaderView: LoaderView = {
+    private let tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.registerReusableCell(AddressRowViewCell.self)
+        tableView.registerReusableCell(AddAddressTableViewCell.self)
+        tableView.allowsSelectionDuringEditing = true
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 100
+        return tableView
+    }()
+
+    private let loaderView: LoaderView = {
         let view = LoaderView()
         view.hidden = true
         return view
     }()
 
-    var tableviewDelegate: AddressListTableViewDelegate?
-
-    var selectedAddress: EquatableAddress? {
-        didSet {
-            tableviewDelegate?.selectedAddress = selectedAddress
-        }
-    }
-
-    init(checkout: AtlasCheckout, addressType: AddressType, addressSelectionCompletion: AddressSelectionCompletion) {
+    init(checkout: AtlasCheckout, initialAddresses: [EquatableAddress], initialSelectedAddress: EquatableAddress?) {
         self.checkout = checkout
-        self.addressType = addressType
-        selectionCompletion = addressSelectionCompletion
+        self.initialAddresses = initialAddresses
+        self.initialSelectedAddress = initialSelectedAddress
         super.init(nibName: nil, bundle: nil)
-        tableviewDelegate = AddressListTableViewDelegate(checkout: checkout, addressType: addressType,
-            addressSelectionCompletion: selectionCompletion)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -54,20 +59,7 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.addSubview(tableView)
-        self.view.addSubview(loaderView)
-        switch addressType {
-        case .billing:
-            self.title = Localizer.string("Address.Billing")
-        case .shipping:
-            self.title = Localizer.string("Address.Shipping")
-        }
-
-        self.navigationController?.navigationBar.accessibilityIdentifier = "address-picker-navigation-bar"
-
-        setupView()
-        fetchAddresses()
-        configureTableviewDelegate()
+        buildView()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -75,49 +67,9 @@ final class AddressPickerViewController: UIViewController, CheckoutProviderType 
         setEditing(false, animated: false)
     }
 
-    private func configureTableviewDelegate() {
-        configureCreateAddress()
-        configureUpdateAddress()
-        configureDeleteAddress()
-    }
-
-    private func fetchAddresses() {
-        loaderView.show()
-        checkout.client.addresses { [weak self] result in
-            guard let strongSelf = self else { return }
-            strongSelf.loaderView.hide()
-            guard let addresses = result.process() else { return }
-            strongSelf.setTableViewDataSource(addresses)
-        }
-    }
-
-    private func setTableViewDataSource(addresses: [UserAddress]) {
-        self.tableviewDelegate?.addresses = addresses
-        if addressType == .billing {
-            self.tableviewDelegate?.addresses = addresses.filter({ $0.pickupPoint == nil })
-        }
-        self.tableView.reloadData()
-        self.configureEditButton()
-    }
-
     override func setEditing(editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         tableView.setEditing(editing, animated: animated)
-    }
-
-    func setupView() {
-        tableView.fillInSuperView()
-        loaderView.fillInSuperView()
-        loaderView.buildView()
-
-        tableView.delegate = tableviewDelegate
-        tableView.dataSource = tableviewDelegate
-        tableView.registerReusableCell(AddressRowViewCell.self)
-        tableView.registerReusableCell(AddAddressTableViewCell.self)
-        tableView.allowsSelectionDuringEditing = true
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 100
-        tableView.reloadData()
     }
 
 }
@@ -145,72 +97,38 @@ extension AddressPickerViewController {
         }
     }
 
-    private func showCreateAddress(addressType: AddressFormType) {
-        showCreateAddressViewController(addressType) { [weak self] address in
-            guard let strongSelf = self else { return }
-            strongSelf.selectionCompletion(pickedAddress: address,
-                pickedAddressType: strongSelf.addressType,
-                popBackToSummaryOnFinish: true)
-            strongSelf.navigationController?.popViewControllerAnimated(false)
-        }
+    func configureView() {
+        view.addSubview(tableView)
+        view.addSubview(loaderView)
+        configureEditButton()
+        configureTableView()
+
+        navigationController?.navigationBar.accessibilityIdentifier = "address-picker-navigation-bar"
     }
 
-    private func showCreateAddressViewController(type: AddressFormType, completion: AddressFormCompletion) {
-        let viewController = AddressFormViewController(addressType: type,
-            addressMode: .createAddress,
-            checkout: checkout,
-            completion: completion)
-        let navigationController = UINavigationController(rootViewController: viewController)
-        navigationController.modalPresentationStyle = .OverCurrentContext
-        self.navigationController?.showViewController(navigationController, sender: nil)
+    func configureConstraints() {
+        tableView.fillInSuperView()
+        loaderView.fillInSuperView()
     }
 
-}
-
-extension AddressPickerViewController {
-
-    private func configureUpdateAddress() {
-        tableviewDelegate?.updateAddressHandler = { [weak self] address in
-            self?.showUpdateAddress(address)
-        }
+    func builderSubviews() -> [UIBuilder] {
+        return [loaderView]
     }
 
-    private func showUpdateAddress(originalAddress: EquatableAddress) {
-        showUpdateAddressViewController(for: originalAddress) { [weak self] updatedAddress in
-            guard let strongSelf = self else { return }
-            strongSelf.tableviewDelegate?.replaceUpdatedAddress(updatedAddress)
-            strongSelf.fetchAddresses()
-        }
-    }
-
-    private func showUpdateAddressViewController(for address: EquatableAddress, completion: AddressFormCompletion) {
-        let addressType: AddressFormType = address.pickupPoint == nil ? .StandardAddress : .PickupPoint
-        let viewController = AddressFormViewController(addressType: addressType,
-            addressMode: .updateAddress(address: address),
-            checkout: checkout,
-            completion: completion)
-        self.navigationController?.pushViewController(viewController, animated: true)
-    }
-
-}
-
-extension AddressPickerViewController {
-
-    private func configureDeleteAddress() {
-        tableviewDelegate?.deleteAddressHandler = { [weak self] in
-            guard let strongSelf = self else { return }
-            strongSelf.configureEditButton()
-            strongSelf.selectionCompletion(pickedAddress: strongSelf.selectedAddress,
-                pickedAddressType: strongSelf.addressType, popBackToSummaryOnFinish: false)
-        }
-    }
-
-    private func configureEditButton() {
-        if let addressList = tableviewDelegate?.addresses where addressList.isEmpty {
-            self.navigationItem.rightBarButtonItem = nil
+    internal func configureEditButton() {
+        if tableviewDelegate.addresses.isEmpty {
+            setEditing(false, animated: false)
+            navigationItem.rightBarButtonItem = nil
         } else {
-            self.navigationItem.rightBarButtonItem = self.editButtonItem()
-            self.navigationItem.rightBarButtonItem?.accessibilityIdentifier = "address-picker-right-button"
+            navigationItem.rightBarButtonItem = editButtonItem()
+            navigationItem.rightBarButtonItem?.accessibilityIdentifier = "address-picker-right-button"
         }
     }
+
+    private func configureTableView() {
+        tableView.delegate = tableviewDelegate
+        tableView.dataSource = tableviewDelegate
+        tableView.reloadData()
+    }
+
 }

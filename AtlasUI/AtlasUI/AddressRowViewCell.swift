@@ -60,7 +60,7 @@ extension AddressRowViewCell: UIBuilder {
 
 extension AddressRowViewCell: UIDataBuilder {
 
-    typealias T = UserAddress
+    typealias T = EquatableAddress
 
     func configureData(viewModel: T) {
         titleLabel.text = viewModel.formattedContact?.trimmed

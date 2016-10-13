@@ -15,16 +15,16 @@ class EditAddressTypeSpec: QuickSpec {
 
         describe("Edit Address") {
             it("should format field title") {
-                expect(AddressFormField.Title.title).to(equal("Title*"))
-                expect(AddressFormField.FirstName.title).to(equal("First Name*"))
-                expect(AddressFormField.LastName.title).to(equal("Last Name*"))
-                expect(AddressFormField.Street.title).to(equal("Street*"))
-                expect(AddressFormField.Additional.title).to(equal("Additional"))
-                expect(AddressFormField.Packstation.title).to(equal("Packstation*"))
-                expect(AddressFormField.MemberID.title).to(equal("Member ID*"))
-                expect(AddressFormField.Zipcode.title).to(equal("Zipcode*"))
-                expect(AddressFormField.City.title).to(equal("City*"))
-                expect(AddressFormField.Country.title).to(equal("Country*"))
+                expect(AddressFormField.title.title).to(equal("Title*"))
+                expect(AddressFormField.firstName.title).to(equal("First Name*"))
+                expect(AddressFormField.lastName.title).to(equal("Last Name*"))
+                expect(AddressFormField.street.title).to(equal("Street*"))
+                expect(AddressFormField.additional.title).to(equal("Additional"))
+                expect(AddressFormField.packstation.title).to(equal("Packstation*"))
+                expect(AddressFormField.memberID.title).to(equal("Member ID*"))
+                expect(AddressFormField.zipcode.title).to(equal("Zipcode*"))
+                expect(AddressFormField.city.title).to(equal("City*"))
+                expect(AddressFormField.country.title).to(equal("Country*"))
             }
 
             it("should set view model data") {
@@ -44,30 +44,30 @@ class EditAddressTypeSpec: QuickSpec {
             it("Should read from view model") {
                 self.updateModelData(viewModel)
 
-                expect(AddressFormField.Title.value(viewModel)).to(equal("Mr"))
-                expect(AddressFormField.FirstName.value(viewModel)).to(equal("John"))
-                expect(AddressFormField.LastName.value(viewModel)).to(equal("Doe"))
-                expect(AddressFormField.Street.value(viewModel)).to(equal("Mollstr. 1"))
-                expect(AddressFormField.Additional.value(viewModel)).to(equal("C/O Zalando SE"))
-                expect(AddressFormField.Packstation.value(viewModel)).to(equal("123"))
-                expect(AddressFormField.MemberID.value(viewModel)).to(equal("12345"))
-                expect(AddressFormField.Zipcode.value(viewModel)).to(equal("10178"))
-                expect(AddressFormField.City.value(viewModel)).to(equal("Berlin"))
-                expect(AddressFormField.Country.value(viewModel)).to(equal("Germany"))
+                expect(AddressFormField.title.value(viewModel)).to(equal("Mr"))
+                expect(AddressFormField.firstName.value(viewModel)).to(equal("John"))
+                expect(AddressFormField.lastName.value(viewModel)).to(equal("Doe"))
+                expect(AddressFormField.street.value(viewModel)).to(equal("Mollstr. 1"))
+                expect(AddressFormField.additional.value(viewModel)).to(equal("C/O Zalando SE"))
+                expect(AddressFormField.packstation.value(viewModel)).to(equal("123"))
+                expect(AddressFormField.memberID.value(viewModel)).to(equal("12345"))
+                expect(AddressFormField.zipcode.value(viewModel)).to(equal("10178"))
+                expect(AddressFormField.city.value(viewModel)).to(equal("Berlin"))
+                expect(AddressFormField.country.value(viewModel)).to(equal("Germany"))
             }
         }
     }
 
     private func updateModelData(viewModel: AddressFormViewModel) {
-        AddressFormField.Title.updateModel(viewModel, withValue: "Mr")
-        AddressFormField.FirstName.updateModel(viewModel, withValue: "John")
-        AddressFormField.LastName.updateModel(viewModel, withValue: "Doe")
-        AddressFormField.Street.updateModel(viewModel, withValue: "Mollstr. 1")
-        AddressFormField.Additional.updateModel(viewModel, withValue: "C/O Zalando SE")
-        AddressFormField.Packstation.updateModel(viewModel, withValue: "123")
-        AddressFormField.MemberID.updateModel(viewModel, withValue: "12345")
-        AddressFormField.Zipcode.updateModel(viewModel, withValue: "10178")
-        AddressFormField.City.updateModel(viewModel, withValue: "Berlin")
+        AddressFormField.title.updateModel(viewModel, withValue: "Mr")
+        AddressFormField.firstName.updateModel(viewModel, withValue: "John")
+        AddressFormField.lastName.updateModel(viewModel, withValue: "Doe")
+        AddressFormField.street.updateModel(viewModel, withValue: "Mollstr. 1")
+        AddressFormField.additional.updateModel(viewModel, withValue: "C/O Zalando SE")
+        AddressFormField.packstation.updateModel(viewModel, withValue: "123")
+        AddressFormField.memberID.updateModel(viewModel, withValue: "12345")
+        AddressFormField.zipcode.updateModel(viewModel, withValue: "10178")
+        AddressFormField.city.updateModel(viewModel, withValue: "Berlin")
     }
 
 }
