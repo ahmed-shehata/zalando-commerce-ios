@@ -24,12 +24,4 @@ class ShippingAddressCreationStrategy: AddressCreationStrategy {
                          actions: standardAction, pickupPointAction, cancelAction)
     }
 
-    private func showCreateAddress(addressType: AddressFormType, checkout: AtlasCheckout) {
-        let viewController = AddressFormViewController(addressType: addressType,
-                                                       addressMode: .createAddress,
-                                                       checkout: checkout,
-                                                       completion: addressFormCompletion)
-        showCreateAddressViewController(viewController)
-    }
-
 }

@@ -15,7 +15,12 @@ protocol AddressCreationStrategy {
 
 extension AddressCreationStrategy {
 
-    func showCreateAddressViewController(viewController: AddressFormViewController) {
+    func showCreateAddress(addressType: AddressFormType, checkout: AtlasCheckout) {
+        let viewController = AddressFormViewController(addressType: addressType,
+                                                       addressMode: .createAddress,
+                                                       checkout: checkout,
+                                                       completion: addressFormCompletion)
+
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.modalPresentationStyle = .OverCurrentContext
         self.navigationController?.showViewController(navigationController, sender: nil)

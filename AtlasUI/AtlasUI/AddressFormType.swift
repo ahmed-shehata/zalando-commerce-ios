@@ -16,23 +16,23 @@ enum AddressFormType {
 
     var fields: [AddressFormField] {
         switch self {
-        case .standardAddress: return [.Title, .FirstName, .LastName, .Street, .Additional, .Zipcode, .City, .Country]
-        case .pickupPoint: return [.Title, .FirstName, .LastName, .Packstation, .MemberID, .Zipcode, .City, .Country]
+        case .standardAddress: return [.title, .firstName, .lastName, .street, .additional, .zipcode, .city, .country]
+        case .pickupPoint: return [.title, .firstName, .lastName, .packstation, .memberID, .zipcode, .city, .country]
         }
     }
 }
 
 enum AddressFormField: String {
-    case Title
-    case FirstName
-    case LastName
-    case Street
-    case Additional
-    case Packstation
-    case MemberID
-    case Zipcode
-    case City
-    case Country
+    case title
+    case firstName
+    case lastName
+    case street
+    case additional
+    case packstation
+    case memberID
+    case zipcode
+    case city
+    case country
 
     var accessibilityIdentifier: String {
         return "\(rawValue.lowercaseString)-textfield"
@@ -45,48 +45,48 @@ enum AddressFormField: String {
 
     func value(viewModel: AddressFormViewModel) -> String? {
         switch self {
-        case .Title: return viewModel.localizedTitle()
-        case .FirstName: return viewModel.firstName
-        case .LastName: return viewModel.lastName
-        case .Street: return viewModel.street
-        case .Additional: return viewModel.additional
-        case .Packstation: return viewModel.pickupPointId
-        case .MemberID: return viewModel.pickupPointMemberId
-        case .Zipcode: return viewModel.zip
-        case .City: return viewModel.city
-        case .Country: return Localizer.countryName(forCountryCode: viewModel.countryCode)
+        case .title: return viewModel.localizedTitle()
+        case .firstName: return viewModel.firstName
+        case .lastName: return viewModel.lastName
+        case .street: return viewModel.street
+        case .additional: return viewModel.additional
+        case .packstation: return viewModel.pickupPointId
+        case .memberID: return viewModel.pickupPointMemberId
+        case .zipcode: return viewModel.zip
+        case .city: return viewModel.city
+        case .country: return Localizer.countryName(forCountryCode: viewModel.countryCode)
         }
     }
 
     func updateModel(viewModel: AddressFormViewModel, withValue value: String?) {
         switch self {
-        case .Title: viewModel.updateTitle(value)
-        case .FirstName: viewModel.firstName = value
-        case .LastName: viewModel.lastName = value
-        case .Street: viewModel.street = value
-        case .Additional: viewModel.additional = value
-        case .Packstation: viewModel.pickupPointId = value
-        case .MemberID: viewModel.pickupPointMemberId = value
-        case .Zipcode: viewModel.zip = value
-        case .City: viewModel.city = value
-        case .Country: break
+        case .title: viewModel.updateTitle(value)
+        case .firstName: viewModel.firstName = value
+        case .lastName: viewModel.lastName = value
+        case .street: viewModel.street = value
+        case .additional: viewModel.additional = value
+        case .packstation: viewModel.pickupPointId = value
+        case .memberID: viewModel.pickupPointMemberId = value
+        case .zipcode: viewModel.zip = value
+        case .city: viewModel.city = value
+        case .country: break
         }
     }
 
     func isActive() -> Bool {
-        return self != .Country
+        return self != .country
     }
 
     func returnKeyDismissKeyboard() -> Bool {
         switch self {
-        case .City, .Country: return true
+        case .city, .country: return true
         default: return false
         }
     }
 
     func customView(viewModel: AddressFormViewModel, completion: TextFieldChangedHandler) -> UIView? {
         switch self {
-        case .Title:
+        case .title:
             let titles = viewModel.titles
             let currentTitle = value(viewModel) ?? ""
             let currentTitleIdx = titles.indexOf(currentTitle) ?? 0
@@ -98,43 +98,38 @@ enum AddressFormField: String {
 
     var formValidators: [FormValidator] {
         switch self {
-        case .Title:
+        case .title:
             return [.Required]
-        case .FirstName:
+        case .firstName, .lastName:
             return [.Required,
                     .MaxLength(maxLength: 50),
                     .MinLength(minLength: 2),
                     .Pattern(pattern: FormValidator.namePattern, errorMessage: "Form.validation.pattern.name")]
-        case .LastName:
-            return [.Required,
-                    .MaxLength(maxLength: 50),
-                    .MinLength(minLength: 2),
-                    .Pattern(pattern: FormValidator.namePattern, errorMessage: "Form.validation.pattern.name")]
-        case .Street:
+        case .street:
             return [.Required,
                     .MaxLength(maxLength: 50),
                     .MinLength(minLength: 2),
                     .Pattern(pattern: FormValidator.streetPattern, errorMessage: "Form.validation.pattern.street")]
-        case .Additional:
+        case .additional:
             return [.MaxLength(maxLength: 50)]
-        case .Packstation:
+        case .packstation:
             return [.Required,
                     .ExactLength(length: 3),
                     .NumbersOnly]
-        case .MemberID:
+        case .memberID:
             return [.Required,
                     .MinLength(minLength: 3),
                     .NumbersOnly]
-        case .Zipcode:
+        case .zipcode:
             return [.Required,
                     .ExactLength(length: 5),
                     .NumbersOnly]
-        case .City:
+        case .city:
             return [.Required,
                     .MaxLength(maxLength: 50),
                     .MinLength(minLength: 2),
                     .Pattern(pattern: FormValidator.cityPattern, errorMessage: "Form.validation.pattern.city")]
-        case .Country:
+        case .country:
             return [.Required]
         }
     }

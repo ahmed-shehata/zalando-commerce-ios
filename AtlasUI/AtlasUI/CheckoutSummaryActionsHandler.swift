@@ -145,8 +145,8 @@ extension CheckoutSummaryActionsHandler {
                 let addressSelectionViewController = AddressPickerViewController(checkout: viewController.checkout,
                     initialAddresses: addresses.map { $0 },
                     initialSelectedAddress: viewController.checkoutViewModel.selectedShippingAddress)
-                addressSelectionViewController.addressUpdatedHandler = self.addressUpdatedHandler
-                addressSelectionViewController.addressDeletedHandler = self.addressDeletedHandler
+                addressSelectionViewController.addressUpdatedHandler = { viewController.checkoutViewModel.addressUpdated($0) }
+                addressSelectionViewController.addressDeletedHandler = { viewController.checkoutViewModel.addressDeleted($0) }
                 addressSelectionViewController.addressSelectedHandler = { viewController.checkoutViewModel.selectedShippingAddress = $0 }
                 addressSelectionViewController.addressCreationStrategy = ShippingAddressCreationStrategy()
                 addressSelectionViewController.title = Localizer.string("Address.Shipping")
@@ -166,37 +166,13 @@ extension CheckoutSummaryActionsHandler {
                 let addressSelectionViewController = AddressPickerViewController(checkout: viewController.checkout,
                     initialAddresses: addresses.filter { $0.pickupPoint == nil } .map { $0 },
                     initialSelectedAddress: viewController.checkoutViewModel.selectedBillingAddress)
-                addressSelectionViewController.addressUpdatedHandler = self.addressUpdatedHandler
-                addressSelectionViewController.addressDeletedHandler = self.addressDeletedHandler
+                addressSelectionViewController.addressUpdatedHandler = { viewController.checkoutViewModel.addressUpdated($0) }
+                addressSelectionViewController.addressDeletedHandler = { viewController.checkoutViewModel.addressDeleted($0) }
                 addressSelectionViewController.addressSelectedHandler = { viewController.checkoutViewModel.selectedBillingAddress = $0 }
                 addressSelectionViewController.addressCreationStrategy =  BillingAddressCreationStrategy()
                 addressSelectionViewController.title = Localizer.string("Address.Billing")
                 viewController.showViewController(addressSelectionViewController, sender: nil)
             }
-        }
-    }
-
-    func addressUpdatedHandler(address: EquatableAddress) {
-        guard let viewController = viewController else { return }
-
-        if let billingAddress = viewController.checkoutViewModel.selectedBillingAddress where  billingAddress == address {
-            viewController.checkoutViewModel.selectedBillingAddress = address
-        }
-        if let shippingAddress = viewController.checkoutViewModel.selectedShippingAddress where  shippingAddress == address {
-            viewController.checkoutViewModel.selectedShippingAddress = address
-        }
-    }
-
-    func addressDeletedHandler(address: EquatableAddress) {
-        guard let viewController = viewController else { return }
-
-        if let billingAddress = viewController.checkoutViewModel.selectedBillingAddress where  billingAddress == address {
-            viewController.checkoutViewModel.selectedBillingAddress = nil
-            viewController.checkoutViewModel.checkout = nil
-        }
-        if let shippingAddress = viewController.checkoutViewModel.selectedShippingAddress where  shippingAddress == address {
-            viewController.checkoutViewModel.selectedShippingAddress = nil
-            viewController.checkoutViewModel.checkout = nil
         }
     }
 
