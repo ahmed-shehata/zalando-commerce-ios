@@ -15,10 +15,6 @@ class AddressActionsHandler {
         self.viewController = viewController
     }
 
-}
-
-extension AddressActionsHandler {
-
     func createAddress() {
         viewController?.addressCreationStrategy?.navigationController = viewController?.navigationController
         viewController?.addressCreationStrategy?.addressFormCompletion = { [weak self] userAddress in
@@ -28,10 +24,6 @@ extension AddressActionsHandler {
 
         viewController?.addressCreationStrategy?.execute(checkout)
     }
-
-}
-
-extension AddressActionsHandler {
 
     func updateAddress(address: EquatableAddress) {
         showUpdateAddressViewController(for: address) { [weak self] updatedAddress in
@@ -50,10 +42,6 @@ extension AddressActionsHandler {
         self.viewController?.navigationController?.pushViewController(viewController, animated: true)
     }
 
-}
-
-extension AddressActionsHandler {
-
     func deleteAddress(address: EquatableAddress) {
         checkout.client.deleteAddress(address.id) { [weak self] result in
             let addresses = self?.viewController?.tableviewDelegate.addresses
@@ -63,10 +51,6 @@ extension AddressActionsHandler {
             self?.viewController?.addressDeletedHandler?(address: address)
         }
     }
-
-}
-
-extension AddressActionsHandler {
 
     func selectAddress(address: EquatableAddress) {
         viewController?.addressSelectedHandler?(address: address)
