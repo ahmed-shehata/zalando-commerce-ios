@@ -192,11 +192,12 @@ extension CheckoutSummaryActionsHandler {
 
         if let billingAddress = viewController.checkoutViewModel.selectedBillingAddress where  billingAddress == address {
             viewController.checkoutViewModel.selectedBillingAddress = nil
+            viewController.checkoutViewModel.checkout = nil
         }
         if let shippingAddress = viewController.checkoutViewModel.selectedShippingAddress where  shippingAddress == address {
             viewController.checkoutViewModel.selectedShippingAddress = nil
+            viewController.checkoutViewModel.checkout = nil
         }
-        viewController.checkoutViewModel.checkout = nil
     }
 
 }
