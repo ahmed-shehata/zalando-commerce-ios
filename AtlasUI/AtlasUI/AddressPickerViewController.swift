@@ -74,28 +74,7 @@ final class AddressPickerViewController: UIViewController {
 
 }
 
-extension AddressPickerViewController {
-
-    private func configureCreateAddress() {
-        tableviewDelegate?.createAddressHandler = { [weak self] in
-            guard let strongSelf = self else { return }
-            guard strongSelf.addressType == .shipping else {
-                strongSelf.showCreateAddress(.StandardAddress)
-                return
-            }
-
-            let title = Localizer.string("Address.Add.type.title")
-            let standardAction = ButtonAction(text: "Address.Add.type.standard", style: .Default) { (UIAlertAction) in
-                strongSelf.showCreateAddress(.StandardAddress)
-            }
-            let pickupPointAction = ButtonAction(text: "Address.Add.type.pickupPoint", style: .Default) { (UIAlertAction) in
-                strongSelf.showCreateAddress(.PickupPoint)
-            }
-            let cancelAction = ButtonAction(text: "Cancel", style: .Cancel, handler: nil)
-
-            UserMessage.showActionSheet(title: title, actions: standardAction, pickupPointAction, cancelAction)
-        }
-    }
+extension AddressPickerViewController: UIBuilder {
 
     func configureView() {
         view.addSubview(tableView)
