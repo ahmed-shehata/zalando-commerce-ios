@@ -34,7 +34,7 @@ class AddressActionsHandler {
     }
 
     private func showUpdateAddressViewController(for address: EquatableAddress, completion: AddressFormCompletion) {
-        let addressType: AddressFormType = address.pickupPoint == nil ? .StandardAddress : .PickupPoint
+        let addressType: AddressFormType = address.pickupPoint == nil ? .standardAddress : .pickupPoint
         let viewController = AddressFormViewController(addressType: addressType,
                                                        addressMode: .updateAddress(address: address),
                                                        checkout: checkout,

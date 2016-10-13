@@ -11,13 +11,13 @@ enum AddressFormMode {
 }
 
 enum AddressFormType {
-    case StandardAddress
-    case PickupPoint
+    case standardAddress
+    case pickupPoint
 
     var fields: [AddressFormField] {
         switch self {
-        case .StandardAddress: return [.Title, .FirstName, .LastName, .Street, .Additional, .Zipcode, .City, .Country]
-        case .PickupPoint: return [.Title, .FirstName, .LastName, .Packstation, .MemberID, .Zipcode, .City, .Country]
+        case .standardAddress: return [.Title, .FirstName, .LastName, .Street, .Additional, .Zipcode, .City, .Country]
+        case .pickupPoint: return [.Title, .FirstName, .LastName, .Packstation, .MemberID, .Zipcode, .City, .Country]
         }
     }
 }

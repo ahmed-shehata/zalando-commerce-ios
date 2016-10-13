@@ -10,7 +10,7 @@ class BillingAddressCreationStrategy: AddressCreationStrategy {
     var navigationController: UINavigationController?
 
     func execute(checkout: AtlasCheckout) {
-        let viewController = AddressFormViewController(addressType: .StandardAddress,
+        let viewController = AddressFormViewController(addressType: .standardAddress,
                                                        addressMode: .createAddress,
                                                        checkout: checkout,
                                                        completion: addressFormCompletion)

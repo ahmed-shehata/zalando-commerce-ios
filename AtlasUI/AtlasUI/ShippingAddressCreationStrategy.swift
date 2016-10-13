@@ -12,10 +12,10 @@ class ShippingAddressCreationStrategy: AddressCreationStrategy {
     func execute(checkout: AtlasCheckout) {
         let title = Localizer.string("Address.Add.type.title")
         let standardAction = ButtonAction(text: "Address.Add.type.standard", style: .Default) { [weak self] (UIAlertAction) in
-            self?.showCreateAddress(.StandardAddress, checkout: checkout)
+            self?.showCreateAddress(.standardAddress, checkout: checkout)
         }
         let pickupPointAction = ButtonAction(text: "Address.Add.type.pickupPoint", style: .Default) { [weak self] (UIAlertAction) in
-            self?.showCreateAddress(.PickupPoint, checkout: checkout)
+            self?.showCreateAddress(.pickupPoint, checkout: checkout)
         }
         let cancelAction = ButtonAction(text: "Cancel", style: .Cancel, handler: nil)
 
