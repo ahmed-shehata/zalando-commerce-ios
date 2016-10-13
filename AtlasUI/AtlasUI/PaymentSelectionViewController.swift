@@ -48,22 +48,17 @@ final class PaymentSelectionViewController: UIViewController, UIWebViewDelegate 
     #if swift(>=2.3)
     func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
         guard !errorBecuaseRequestCancelled(error) else { return }
-        showError(error)
+        UserMessage.displayError(error)
     }
     #else
     func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
         guard let error = error where !errorBecuaseRequestCancelled(error) else { return }
-        showError(error)
+        UserMessage.displayError(error)
     }
     #endif
 
     private func errorBecuaseRequestCancelled(error: NSError) -> Bool {
         return error.domain == "WebKitErrorDomain"
-    }
-
-    private func showError(error: NSError) {
-        let viewController: AtlasUIViewController? = try? Atlas.provide()
-        viewController?.displayError(AtlasAPIError.nsURLError(code: error.code, details: error.localizedDescription))
     }
 
 }
