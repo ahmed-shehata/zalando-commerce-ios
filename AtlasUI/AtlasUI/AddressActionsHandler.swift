@@ -59,6 +59,7 @@ extension AddressActionsHandler {
             let addresses = self?.viewController?.tableviewDelegate.addresses
             guard let _ = result.process(), addressIdx = addresses?.indexOf({ $0 == address }) else { return }
             self?.viewController?.tableviewDelegate.addresses.removeAtIndex(addressIdx)
+            self?.viewController?.configureEditButton()
             self?.viewController?.addressDeletedHandler?(address: address)
         }
     }

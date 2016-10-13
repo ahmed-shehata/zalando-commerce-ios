@@ -12,9 +12,6 @@ class AddressListTableViewDelegate: NSObject {
             if let selectedAddress = selectedAddress where !addresses.contains({ $0 == selectedAddress }) {
                 self.selectedAddress = nil
             }
-            if addresses.isEmpty {
-                tableView.setEditing(true, animated: true)
-            }
             tableView.reloadData()
         }
     }

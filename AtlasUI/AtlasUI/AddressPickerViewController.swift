@@ -17,11 +17,10 @@ final class AddressPickerViewController: UIViewController {
     internal var addressCreationStrategy: AddressCreationStrategy?
 
     internal lazy var tableviewDelegate: AddressListTableViewDelegate = {
-        let delegate = AddressListTableViewDelegate(tableView: self.tableView,
-                                                    addresses: self.initialAddresses,
-                                                    selectedAddress: self.initialSelectedAddress,
-                                                    actionsHandler: self.actionsHandler)
-        return delegate
+        return AddressListTableViewDelegate(tableView: self.tableView,
+                                            addresses: self.initialAddresses,
+                                            selectedAddress: self.initialSelectedAddress,
+                                            actionsHandler: self.actionsHandler)
     }()
 
     private let checkout: AtlasCheckout
@@ -97,6 +96,7 @@ extension AddressPickerViewController: UIBuilder {
 
     internal func configureEditButton() {
         if tableviewDelegate.addresses.isEmpty {
+            setEditing(false, animated: false)
             navigationItem.rightBarButtonItem = nil
         } else {
             navigationItem.rightBarButtonItem = editButtonItem()
