@@ -48,14 +48,14 @@ struct UserMessage {
     }
 
     static func showActionSheet(title title: String, message: String? = nil, actions: ButtonAction...) {
-            guard let topViewController = UIApplication.topViewController() else { return }
-            let alertView = UIAlertController(title: title, message: message, preferredStyle: .ActionSheet)
+        guard let topViewController = UIApplication.topViewController() else { return }
+        let alertView = UIAlertController(title: title, message: message, preferredStyle: .ActionSheet)
 
-            actions.forEach { alertView.addAction($0) }
+        actions.forEach { alertView.addAction($0) }
 
-            Async.main {
-                topViewController.presentViewController(alertView, animated: true, completion: nil)
-            }
+        Async.main {
+            topViewController.presentViewController(alertView, animated: true, completion: nil)
+        }
     }
 
 }
