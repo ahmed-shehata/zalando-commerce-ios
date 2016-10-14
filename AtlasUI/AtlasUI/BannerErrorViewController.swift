@@ -65,11 +65,6 @@ class BannerErrorViewController: UIViewController {
         buildView()
     }
 
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        showBanner()
-    }
-
     func showBanner() {
         containerView.transform = CGAffineTransformMakeTranslation(0, -containerView.bounds.height)
         view.alpha = 1
@@ -128,6 +123,7 @@ extension BannerErrorViewController: UIDataBuilder {
     func configureData(viewModel: T) {
         titleLabel.text = viewModel.displayedTitle
         messageLabel.text = viewModel.displayedMessage.oneLineString
+        showBanner()
     }
 
 }
