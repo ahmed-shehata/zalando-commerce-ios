@@ -24,15 +24,13 @@
 "navigation.back.shop" = "weiter shoppen";
 "order.placed" = "Vielen Dank für deinen Einkauf!";
 
-"feature.notImplemented.title" = "Not implemented";
-"feature.notImplemented.message" = "This feature is currently not implemented";
-
 "AtlasCheckoutError.title" = "Oops";
 "AtlasCheckoutError.title.missingAddress" = "No address selected";
 "AtlasCheckoutError.title.priceChanged" = "Price changed";
 "AtlasCheckoutError.message.unclassified" = "Da ist etwas schief gelaufen.\nWir arbeiten an dem Problem.\nBitte komm später noch einmal vorbei.";
 "AtlasCheckoutError.message.outOfStock" = "Leider ist dieser Artikel nicht mehr verfügbar";
 "AtlasCheckoutError.message.missingAddress" = "Please select shipping and billing addresses first";
+"AtlasCheckoutError.message.missingAddressAndPayment" = "Please select shipping and billing addresses and the payment method first";
 "AtlasCheckoutError.message.priceChanged" = "The price is now %@";
 "AtlasCheckoutError.message.paymentMethodNotAvailable" = "Payment method is no longer available";
 "AtlasCheckoutError.message.addressInvalid" = "Adresse nicht bekannt, bitte überprüfe sie.";
