@@ -23,4 +23,5 @@ extension Delivery: JSONInitializable {
 
         self.init(earliest: earliest, latest: latest)
     }
+
 }

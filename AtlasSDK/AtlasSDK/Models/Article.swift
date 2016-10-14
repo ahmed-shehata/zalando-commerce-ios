@@ -110,9 +110,7 @@ extension Article.Unit: JSONInitializable {
             originalPrice = Money(json: json["original_price"]),
             available = json["available"].bool,
             stock = json["stock"].int
-        else {
-            return nil
-        }
+        else { return nil }
 
         self.id = id
         self.size = size
@@ -170,6 +168,7 @@ extension Article.Image: JSONInitializable {
 }
 
 extension Article.Partner: JSONInitializable {
+
     init?(json: JSON) {
         guard let
         id = json["id"].string,
