@@ -1,6 +1,6 @@
 require 'thor'
-require 'github_api'
 require 'daemons'
+require 'github_api'
 
 require_relative 'coverage'
 require_relative 'env'
@@ -75,13 +75,6 @@ module Calypso
       "https://dashboard.buddybuild.com/apps/#{env_app_id}/build/#{env_build_id}"
     end
 
-    def github
-      @github ||= Github.new do |config|
-        config.endpoint    = env_endpoint
-        config.oauth_token = env_oauth_token
-      end
-    end
-
     def wait_for_finish(pattern, timeout = 30, step = 0.5)
       @task = Daemons.call do
         steps = 0
@@ -100,6 +93,13 @@ module Calypso
     end
 
     include Env
+
+    def github
+      @github ||= Github.new do |config|
+        config.endpoint    = env_endpoint
+        config.oauth_token = env_oauth_token
+      end
+    end
 
   end
 
