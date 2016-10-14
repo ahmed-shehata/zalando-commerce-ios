@@ -15,37 +15,37 @@ class CheckoutSummaryViewControllerSpec: QuickSpec {
             try! AtlasMockAPI.startServer() // swiftlint:disable:this force_try
 
             waitUntil(timeout: 10) { done in
-                self.viewControllers { (viewController, atlasUIViewController) in
+                self.viewController { viewController in
 
                     var originalViewModel = viewController.checkoutViewModel
 
                     // Initial state
                     expect(viewController.checkoutViewModel.customer).toNot(beNil())
                     expect(viewController.viewState).to(equal(CheckoutViewState.CheckoutReady))
-                    expect(atlasUIViewController.errorDisplayed).to(equal(false))
+                    expect(UserMessage.errorDisplayed).to(equal(false))
 
                     // Change price
-                    self.clearState(viewController, atlasUIViewController: atlasUIViewController)
+                    self.clearState(viewController)
                     viewController.checkoutViewModel.cart = viewController.checkoutViewModel.cart?.cartWithDifferentPrice
                     expect(viewController.checkoutViewModel.customer).toNot(beNil())
                     expect(viewController.viewState).to(equal(CheckoutViewState.CheckoutReady))
-                    expect(atlasUIViewController.errorDisplayed).to(equal(true))
+                    expect(UserMessage.errorDisplayed).to(equal(true))
 
                     // Reassign view model after removing the customer
-                    self.clearState(viewController, atlasUIViewController: atlasUIViewController)
+                    self.clearState(viewController)
                     originalViewModel.customer = nil
                     originalViewModel.cart = viewController.checkoutViewModel.cart
                     viewController.checkoutViewModel = originalViewModel
                     expect(viewController.checkoutViewModel.customer).toNot(beNil())
                     expect(viewController.viewState).to(equal(CheckoutViewState.CheckoutReady))
-                    expect(atlasUIViewController.errorDisplayed).to(equal(false))
+                    expect(UserMessage.errorDisplayed).to(equal(false))
 
                     // Remove Checkout
-                    self.clearState(viewController, atlasUIViewController: atlasUIViewController)
+                    self.clearState(viewController)
                     viewController.checkoutViewModel.checkout = nil
                     expect(viewController.checkoutViewModel.customer).toNot(beNil())
                     expect(viewController.viewState).to(equal(CheckoutViewState.CheckoutIncomplete))
-                    expect(atlasUIViewController.errorDisplayed).to(equal(true))
+                    expect(UserMessage.errorDisplayed).to(equal(true))
 
                     done()
                 }
@@ -56,7 +56,7 @@ class CheckoutSummaryViewControllerSpec: QuickSpec {
     }
 
 
-    private func viewControllers(completion: ((CheckoutSummaryViewController, AtlasUIViewController) -> Void)) {
+    private func viewController(completion: (CheckoutSummaryViewController -> Void)) {
         self.atlasCheckout { atlasCheckout in
 
             atlasCheckout.client.article(forSKU: "AD541L009-G11") { result in
@@ -71,8 +71,8 @@ class CheckoutSummaryViewControllerSpec: QuickSpec {
                     checkoutViewModel.customer = customer
 
                     let viewController = CheckoutSummaryViewController(checkout: atlasCheckout, checkoutViewModel: checkoutViewModel)
-                    let atlasUIViewController = self.registerAtlasUIViewController(atlasCheckout)
-                    completion(viewController, atlasUIViewController)
+                    self.registerAtlasUIViewController(atlasCheckout)
+                    completion(viewController)
 
                 }
             }
@@ -98,15 +98,15 @@ class CheckoutSummaryViewControllerSpec: QuickSpec {
         }
     }
 
-    private func registerAtlasUIViewController(checkout: AtlasCheckout) -> AtlasUIViewController {
+    private func registerAtlasUIViewController(checkout: AtlasCheckout) {
         let atlasUIViewController = AtlasUIViewController(atlasCheckout: checkout, forProductSKU: "AD541L009-G11")
         Atlas.register { atlasUIViewController }
-        return atlasUIViewController
     }
 
-    private func clearState(viewController: CheckoutSummaryViewController, atlasUIViewController: AtlasUIViewController) {
+    private func clearState(viewController: CheckoutSummaryViewController) {
         viewController.viewState = .CheckoutIncomplete
-        atlasUIViewController.childViewControllers.flatMap { $0 as? BannerErrorViewController }.first?.removeFromParentViewController()
+        let atlasUIViewController: AtlasUIViewController? = try? Atlas.provide()
+        atlasUIViewController?.childViewControllers.flatMap { $0 as? BannerErrorViewController }.first?.removeFromParentViewController()
     }
 
 }
