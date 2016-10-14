@@ -9,21 +9,11 @@ extension AtlasResult {
     internal func process() -> T? {
         switch self {
         case .failure(let error):
-            displayError(error)
+            UserMessage.displayError(error)
             return nil
         case .success(let data):
             return data
         }
-    }
-
-    private func displayError(error: ErrorType) {
-        let viewController: AtlasUIViewController? = try? Atlas.provide()
-        guard let userPresentable = error as? UserPresentable, atlasUIViewController = viewController else {
-            UserMessage.unclassifiedError(error)
-            return
-        }
-
-        atlasUIViewController.displayError(userPresentable)
     }
 
 }

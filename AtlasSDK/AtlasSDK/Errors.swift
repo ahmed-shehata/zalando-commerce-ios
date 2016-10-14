@@ -41,11 +41,13 @@ public enum AtlasAPIError: AtlasErrorType {
 
 }
 
-public enum AtlasCatalogError: AtlasErrorType {
+public enum AtlasCheckoutError: AtlasErrorType {
 
+    case unclassified
     case outOfStock
     case missingAddress
     case priceChanged(newPrice: MoneyAmount)
     case paymentMethodNotAvailable
+    case addressInvalid
 
 }

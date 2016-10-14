@@ -24,37 +24,35 @@ struct ButtonAction {
 
 struct UserMessage {
 
-    static func show(error error: ErrorType) {
-        AtlasLogger.logError(error)
+    private static let bannerErrorViewController = BannerErrorViewController()
+    private static let fullScreenErrorViewController = FullScreenErrorViewController()
 
-        let title: String
-        let message: String
-        if let userPresentable = error as? UserPresentable {
-            message = userPresentable.displayedMessage
-            title = userPresentable.displayedTitle
-        } else {
-            message = String(error)
-            title = Localizer.string("Error")
+    static var errorDisplayed: Bool {
+        return bannerErrorViewController.parentViewController != nil || fullScreenErrorViewController.parentViewController != nil
+    }
+
+    static func clearBannerError() {
+        bannerErrorViewController.hideBanner()
+    }
+
+    static func displayError(error: ErrorType) {
+        guard let userPresentable = error as? UserPresentable else {
+            displayError(AtlasCheckoutError.unclassified)
+            return
         }
 
-        show(title: title, message: message, actions: ButtonAction(text: "OK"))
+        let viewController: AtlasUIViewController? = try? Atlas.provide()
+        guard let atlasUIViewController = viewController else { return }
+
+        switch userPresentable.errorPresentationType() {
+        case .banner: displayBanner(userPresentable, on: atlasUIViewController)
+        case .fullScreen: displayFullScreen(userPresentable, on: atlasUIViewController)
+        }
     }
 
-    static func notImplemented() {
-        AtlasLogger.logError("Not Implemented")
-        let title = Localizer.string("feature.notImplemented.title")
-        let message = Localizer.string("feature.notImplemented.message")
-        show(title: title, message: message, actions: ButtonAction(text: "OK"))
-    }
-
-    static func showOK(title title: String) {
-        show(title: title, message: nil, actions: ButtonAction(text: "OK"))
-    }
-
-    static func show(title title: String, message: String? = nil,
-        preferredStyle: UIAlertControllerStyle = .Alert, actions: ButtonAction...) {
+    static func showActionSheet(title title: String, message: String? = nil, actions: ButtonAction...) {
             guard let topViewController = UIApplication.topViewController() else { return }
-            let alertView = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
+            let alertView = UIAlertController(title: title, message: message, preferredStyle: .ActionSheet)
 
             actions.forEach { alertView.addAction($0) }
 
@@ -63,12 +61,24 @@ struct UserMessage {
             }
     }
 
-    static func unclassifiedError(error: ErrorType) {
-        AtlasLogger.logError("Unclasified Error", error)
+    private static func displayBanner(error: UserPresentable, on viewController: UIViewController) {
+        bannerErrorViewController.removeFromParentViewController()
+        bannerErrorViewController.view.removeFromSuperview()
 
-        let title = Localizer.string("Error.unclasified.title")
-        let message = Localizer.string("Error.unclasified.message")
-        show(title: title, message: message, actions: ButtonAction(text: "OK"))
+        viewController.addChildViewController(bannerErrorViewController)
+        viewController.view.addSubview(bannerErrorViewController.view)
+
+        bannerErrorViewController.view.fillInSuperView()
+        bannerErrorViewController.configureData(error)
+    }
+
+    private static func displayFullScreen(error: UserPresentable, on viewController: UIViewController) {
+        let navigationController = UINavigationController(rootViewController: fullScreenErrorViewController)
+        viewController.addChildViewController(navigationController)
+        viewController.view.addSubview(navigationController.view)
+
+        navigationController.view.fillInSuperView()
+        fullScreenErrorViewController.configureData(error)
     }
 
 }

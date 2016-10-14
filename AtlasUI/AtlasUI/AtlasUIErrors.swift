@@ -67,7 +67,7 @@ extension AtlasAPIError: UserPresentable {
 
 }
 
-extension AtlasCatalogError: UserPresentable {
+extension AtlasCheckoutError: UserPresentable {
 
     public func shouldDisplayGeneralMessage() -> Bool {
         return false
@@ -76,13 +76,13 @@ extension AtlasCatalogError: UserPresentable {
     public func errorPresentationType() -> ErrorPresentationType {
         switch self {
         case .outOfStock: return .fullScreen
-        case .paymentMethodNotAvailable, .missingAddress, .priceChanged: return .banner
+        default: return .banner
         }
     }
 
     func customMessage() -> String? {
         switch self {
-        case .priceChanged(let newPrice): return Localizer.string("AtlasCatalogError.message.priceChanged", Localizer.price(newPrice))
+        case .priceChanged(let newPrice): return Localizer.string("AtlasCheckoutError.message.priceChanged", Localizer.price(newPrice))
         default: return nil
         }
     }
