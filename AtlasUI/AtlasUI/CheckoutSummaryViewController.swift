@@ -150,7 +150,7 @@ extension CheckoutSummaryViewController {
         case .NotLoggedIn: actionsHandler.loadCustomerData()
         case .CheckoutReady: actionsHandler.handleBuyAction()
         case .OrderPlaced: dismissView()
-        case .CheckoutIncomplete: break
+        case .CheckoutIncomplete: UserMessage.displayError(AtlasCheckoutError.missingAddressAndPayment)
         }
     }
 
