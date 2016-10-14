@@ -10,9 +10,6 @@ class AtlasReachability {
     private var reachability: AtlasUI_Reachability?
 
     internal func setupReachability() {
-        let viewController: AtlasUIViewController? = try? Atlas.provide()
-        guard let atlasUIViewController = viewController else { return }
-
         do {
             reachability = try AtlasUI_Reachability.reachabilityForInternetConnection()
             try reachability?.startNotifier()
@@ -22,13 +19,13 @@ class AtlasReachability {
 
         reachability?.whenReachable = { _ in
             Async.main {
-                atlasUIViewController.clearBannerError()
+                UserMessage.clearBannerError()
             }
         }
 
         reachability?.whenUnreachable = { _ in
             Async.main {
-                atlasUIViewController.displayError(AtlasAPIError.noInternet)
+                UserMessage.displayError(AtlasAPIError.noInternet)
             }
         }
     }

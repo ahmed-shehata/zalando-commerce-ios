@@ -26,10 +26,7 @@ extension Checkout {
 extension CheckoutSummaryActionsHandler {
 
     internal func handleBuyAction() {
-        let mainViewController: AtlasUIViewController? = try? Atlas.provide()
-        guard let
-            atlasUIViewController = mainViewController,
-            viewController = self.viewController else { return }
+        guard let viewController = self.viewController else { return }
 
         viewController.displayLoader { done in
             viewController.checkout.client.createCheckoutCart(for: viewController.checkoutViewModel.selectedArticleUnit,
@@ -43,7 +40,7 @@ extension CheckoutSummaryActionsHandler {
                     checkout: checkout)
                 viewController.checkoutViewModel = checkoutViewModel
 
-                if viewController.viewState == .CheckoutReady && !atlasUIViewController.errorDisplayed {
+                if viewController.viewState == .CheckoutReady && !UserMessage.errorDisplayed {
                     self.createOrder(forCheckoutId: checkout.id)
                 }
             }
@@ -99,8 +96,7 @@ extension CheckoutSummaryActionsHandler {
         guard let paymentURL = viewController.checkoutViewModel.checkout?.payment.selectionPageURL else {
             if viewController.checkoutViewModel.selectedShippingAddress == nil ||
                 viewController.checkoutViewModel.selectedBillingAddress == nil {
-                let atlasUIViewController: AtlasUIViewController? = try? Atlas.provide()
-                atlasUIViewController?.displayError(AtlasCatalogError.missingAddress)
+                UserMessage.displayError(AtlasCheckoutError.missingAddress)
             }
             return
         }
