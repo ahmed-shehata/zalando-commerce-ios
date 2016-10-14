@@ -6,63 +6,48 @@ module Calypso
   module GithubClient
 
     def issues(labels, state, pages = 10)
-      fetch(issues_url, query: { labels: labels, state: state }, pages: pages).select { |issue| issue['pull_request'].nil? }
+      query = { labels: labels, state: state }
+      fetch(issues_url, query: query, pages: pages).select { |issue| issue['pull_request'].nil? }
     end
 
     def project(name)
-      projects = fetch_projects(projects_url)
+      projects = fetch_via_projects_api(projects_url)
       projects.select { |p| p['name'] == name }.first
     end
 
-    def column(project, name)
-      columns = fetch_projects(columns_url(project['number']))
-      columns.select { |c| c['name'] == name }.first
-    end
-
-    def cards(project_name, column_name)
-      fetch_projects(cards_url(project_name, column_name))
-    end
-
-    def column_issues(project_name, column_name)
-      issues_ids = cards(project_name, column_name).map do |card|
+    def project_issues(project_name:, column_name: nil, state: 'closed')
+      project = project(project_name)
+      column = column_name ? column(project, column_name) : nil
+      issues_ids = cards(project: project, column: column).map do |card|
         issue_url = card['content_url']
+        next if issue_url.nil?
         issue_url[/http.*[^0-9]([0-9]+)$/, 1].to_i
-      end
-      issues = issues(nil, 'closed')
+      end.compact
+      issues = issues(nil, state)
       issues.select { |i| issues_ids.include?(i['number']) }
     end
 
     private
 
-    include Env
-
-    def fetch_projects(url)
-      fetch(url, new_headers: { 'Accept' => 'application/vnd.github.inertia-preview+json' })
+    def column(project, name)
+      columns(project).select { |c| c['name'] == name }.first
     end
 
-    def fetch(url, new_headers: {}, query: {}, pages: 1)
-      headers = new_headers
-      headers['Authorization'] = "token #{env_oauth_token}"
-      headers['User-Agent'] = 'calypso.rb'
+    def columns(project)
+      fetch_via_projects_api(columns_url(project['number']))
+    end
 
-      full_response = nil
-      1.upto(pages).each do |page|
-        if pages > 1
-          query['per_page'] = 100
-          query['page'] = page
+    def cards(project:, column: nil)
+      if column.nil?
+        cards = []
+        columns(project).each do |col|
+          column_cards = cards(project: project, column: col)
+          cards += column_cards
         end
-        puts "Fetching #{url} ... (page=#{page})"
-        response = HTTParty.get(url, headers: headers, query: query)
-        parsed = response.parsed_response
-        if full_response.nil?
-          full_response = parsed
-        else
-          full_response += parsed
-        end
-        break if parsed.count == 0
+        cards
+      else
+        fetch_via_projects_api(cards_url(column))
       end
-      # puts full_response
-      full_response
     end
 
     def repos_url(endpoint, owner = env_owner, repo = env_repo)
@@ -81,12 +66,47 @@ module Calypso
       repos_url("projects/#{project_id}/columns")
     end
 
-    def cards_url(project_name, column_name)
-      project = project(project_name)
-      column = column(project, column_name)
-
+    def cards_url(column)
       repos_url("projects/columns/#{column['id']}/cards")
     end
+
+    def fetch_via_projects_api(url)
+      fetch(url, new_headers: { 'Accept' => 'application/vnd.github.inertia-preview+json' })
+    end
+
+    def fetch(url, new_headers: {}, query: {}, pages: 1)
+      headers = new_headers
+      headers['Authorization'] = "token #{env_oauth_token}"
+      headers['User-Agent'] = 'calypso.rb'
+
+      fetch_pages(url, headers, query, pages)
+    end
+
+    def fetch_pages(url, headers, query, pages)
+      full_response = nil
+      1.upto(pages).each do |page|
+        puts "Fetching #{url} ... (page=#{page})"
+        response = HTTParty.get(url, headers: headers, query: prepare(query: query, page: page))
+        parsed = response.parsed_response
+        if full_response.nil?
+          full_response = parsed
+        else
+          full_response += parsed
+        end
+        break if parsed.count.zero?
+      end
+      full_response
+    end
+
+    def prepare(query: {}, page:)
+      return query if page < 2
+
+      query['per_page'] = 100
+      query['page'] = page
+      query
+    end
+
+    include Env
 
   end
 

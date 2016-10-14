@@ -17,9 +17,9 @@ module Calypso
       end
     end
 
-    desc 'release_notes <project_name> <column_name>', 'Shows issues in given project / column'
-    def release_notes(project_name, column_name)
-      column_issues(project_name, column_name).each do |issue|
+    desc 'release_notes <project_name> [column_name] [state]', 'Shows issues in given project / column'
+    def release_notes(project_name, column_name = nil, state = 'closed')
+      project_issues(project_name: project_name, column_name: column_name, state: state).each do |issue|
         format_issue(issue)
       end
     end
