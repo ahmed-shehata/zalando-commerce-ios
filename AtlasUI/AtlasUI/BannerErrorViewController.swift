@@ -6,6 +6,8 @@ import UIKit
 
 class BannerErrorViewController: UIViewController {
 
+    private static let topMargin: CGFloat = UIScreen.isSmallScreen ? 25 : 10
+
     private let containerView: UIView = {
         let view = UIView()
         view.backgroundColor = .orangeColor()
@@ -16,7 +18,7 @@ class BannerErrorViewController: UIViewController {
         let stackView = UIStackView()
         stackView.axis = .Vertical
         stackView.spacing = 10
-        stackView.layoutMargins = UIEdgeInsets(top: 10, left: 30, bottom: 10, right: 30)
+        stackView.layoutMargins = UIEdgeInsets(top: topMargin, left: 30, bottom: 10, right: 30)
         stackView.layoutMarginsRelativeArrangement = true
         return stackView
     }()
@@ -114,7 +116,7 @@ extension BannerErrorViewController: UIBuilder {
         containerView.snapAnchorToSuperView(.right)
         containerView.snapAnchorToSuperView(.left)
         stackView.fillInSuperView()
-        cancelIconLabel.snapAnchorToSuperView(.top, constant: 10)
+        cancelIconLabel.snapAnchorToSuperView(.top, constant: BannerErrorViewController.topMargin)
         cancelIconLabel.snapAnchorToSuperView(.right, constant: -10)
         cancelButton.fillInSuperView()
     }
