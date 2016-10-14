@@ -15,11 +15,6 @@ public typealias NoContentCompletion = AtlasResult<Bool> -> Void
 public typealias CustomerCompletion = AtlasResult<Customer> -> Void
 
 /**
- Completion block `AtlasResult` with the `Article` struct as a success value
- */
-public typealias ArticleCompletion = AtlasResult<Article> -> Void
-
-/**
  Completion block `AtlasResult` with the `Cart` struct as a success value
  */
 public typealias CartCompletion = AtlasResult<Cart> -> Void
@@ -42,7 +37,7 @@ public typealias OrderCompletion = AtlasResult<Order> -> Void
 /**
  Completion block `AtlasResult` with the `Article` struct as a success value
  */
-public typealias ArticlesCompletion = AtlasResult<Article> -> Void
+public typealias ArticleCompletion = AtlasResult<Article> -> Void
 
 /**
  Completion block `AtlasResult` with arry of the `UserAddress` struct as a success value
@@ -137,14 +132,14 @@ extension APIClient {
         fetch(from: endpoint, completion: completion)
     }
 
-    public func article(forSKU sku: String, completion: ArticlesCompletion) {
+    public func article(forSKU sku: String, completion: ArticleCompletion) {
         let endpoint = GetArticlesEndpoint(serviceURL: config.catalogURL,
             skus: [sku],
             salesChannel: config.salesChannel,
             clientId: config.clientId,
             fields: nil)
 
-        let fetchCompletion: ArticlesCompletion = { result in
+        let fetchCompletion: ArticleCompletion = { result in
             if case let .success(article) = result where !article.hasAvailableUnits {
                 completion(.failure(AtlasCheckoutError.outOfStock))
             } else {
