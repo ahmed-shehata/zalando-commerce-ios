@@ -7,16 +7,20 @@ import Foundation
 public typealias MoneyAmount = NSDecimalNumber
 
 public struct Money {
+
     public let amount: MoneyAmount
     public let currency: String
+
 }
 
 extension Money: Comparable { }
 
 extension Money: Hashable {
+
     public var hashValue: Int {
         return (17 &* amount.hashValue) &+ currency.hashValue
     }
+
 }
 
 public func == (lhs: Money, rhs: Money) -> Bool {
@@ -36,9 +40,10 @@ extension Money: JSONInitializable {
 
     init?(json: JSON) {
         guard let
-            amount = json[Keys.amount].number,
+        amount = json[Keys.amount].number,
             currency = json[Keys.currency].string else { return nil }
 
         self.init(amount: MoneyAmount(decimal: amount.decimalValue), currency: currency)
     }
+
 }

@@ -19,9 +19,11 @@ public struct Checkout {
 }
 
 extension Checkout: Hashable {
+
     public var hashValue: Int {
         return id.hashValue
     }
+
 }
 
 public func == (lhs: Checkout, rhs: Checkout) -> Bool {

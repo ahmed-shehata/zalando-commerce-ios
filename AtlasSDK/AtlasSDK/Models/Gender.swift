@@ -3,6 +3,8 @@
 //
 
 public enum Gender: String {
+
     case male = "MALE"
     case female = "FEMALE"
+
 }
