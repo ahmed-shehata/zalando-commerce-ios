@@ -4,6 +4,7 @@ require 'httparty'
 require_relative 'consts'
 require_relative 'run'
 require_relative 'env'
+require_relative 'github'
 
 module Calypso
 
@@ -16,17 +17,14 @@ module Calypso
       end
     end
 
+    desc 'release_notes <project_name> <column_name>', 'Shows issues in given project / column'
+    def release_notes(project_name, column_name)
+      column_issues(project_name, column_name).each do |issue|
+        format_issue(issue)
+      end
+    end
+
     private
-
-    def github_url(labels, state, owner, repo)
-      "https://api.github.com/repos/#{owner}/#{repo}/issues?per_page=1000&labels=#{labels}&state=#{state}"
-    end
-
-    def issues(labels, state)
-      url = github_url(labels, state, env_owner, env_repo)
-      response = HTTParty.get(url)
-      response.parsed_response.select { |issue| issue['pull_request'].nil? }
-    end
 
     def format_issue(issue)
       labels = issue['labels'].empty? ? '' : "[#{issue['labels'].map { |l| l['name'] }.join(',')}]"
@@ -34,6 +32,7 @@ module Calypso
     end
 
     include Env
+    include GithubClient
 
   end
 

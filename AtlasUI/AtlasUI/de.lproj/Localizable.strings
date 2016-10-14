@@ -24,17 +24,15 @@
 "navigation.back.shop" = "weiter shoppen";
 "order.placed" = "Vielen Dank für deinen Einkauf!";
 
-"feature.notImplemented.title" = "Not implemented";
-"feature.notImplemented.message" = "This feature is currently not implemented";
-
 "AtlasCheckoutError.title" = "Oops";
-"AtlasCheckoutError.title.missingAddress" = "No address selected";
-"AtlasCheckoutError.title.priceChanged" = "Price changed";
+"AtlasCheckoutError.title.missingAddress" = "Keine Adresse ausgwählt";
+"AtlasCheckoutError.title.priceChanged" = "Der Preis hat sich geändert";
 "AtlasCheckoutError.message.unclassified" = "Da ist etwas schief gelaufen.\nWir arbeiten an dem Problem.\nBitte komm später noch einmal vorbei.";
 "AtlasCheckoutError.message.outOfStock" = "Leider ist dieser Artikel nicht mehr verfügbar";
-"AtlasCheckoutError.message.missingAddress" = "Please select shipping and billing addresses first";
-"AtlasCheckoutError.message.priceChanged" = "The price is now %@";
-"AtlasCheckoutError.message.paymentMethodNotAvailable" = "Payment method is no longer available";
+"AtlasCheckoutError.message.missingAddress" = "Bitte wähle zuerst eine Liefer- und eine Rechnungsadresse";
+"AtlasCheckoutError.message.missingAddressAndPayment" = "Bitte wähle zuerst eine Liefer- und eine Rechnungsadresse sowie eine Zahlart";
+"AtlasCheckoutError.message.priceChanged" = "Der Preis beträgt nun %@";
+"AtlasCheckoutError.message.paymentMethodNotAvailable" = "Diese Zahlart ist nicht mehr verfügbar";
 "AtlasCheckoutError.message.addressInvalid" = "Adresse nicht bekannt, bitte überprüfe sie.";
 
 "LoginError.title" = "Anmeldung fehlgeschlagen";
@@ -44,10 +42,10 @@
 "LoginError.message.missingViewControllerToShowLoginForm" = "Cannot show login form";
 
 "AtlasAPIError.title" = "Server Fehler";
-"AtlasAPIError.title.noInternet" = "No internet connection";
+"AtlasAPIError.title.noInternet" = "Keine Internetverbindung";
 "AtlasAPIError.message.invalidResponseFormat" = "Incorrect response format";
 "AtlasAPIError.message.noData" = "Empty response";
-"AtlasAPIError.message.noInternet" = "Please check you internet connection";
+"AtlasAPIError.message.noInternet" = "Bitte überprüfe Deine Internetverbindung";
 "AtlasAPIError.message.unauthorized" = "Access denied";
 "AtlasAPIError.message.checkoutFailed" = "Unknown checkout error";
 

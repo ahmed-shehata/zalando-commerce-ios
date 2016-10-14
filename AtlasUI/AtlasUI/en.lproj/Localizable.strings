@@ -24,15 +24,13 @@
 "navigation.back.shop" = "Back to shop";
 "order.placed" = "Order placed";
 
-"feature.notImplemented.title" = "Not implemented";
-"feature.notImplemented.message" = "This feature is currently not implemented";
-
 "AtlasCheckoutError.title" = "Oops";
 "AtlasCheckoutError.title.missingAddress" = "No address selected";
 "AtlasCheckoutError.title.priceChanged" = "Price changed";
 "AtlasCheckoutError.message.unclassified" = "Something went wrong.\nWe are fixing the issue.\nPlease come back later";
 "AtlasCheckoutError.message.outOfStock" = "Sorry this item is out of stock";
 "AtlasCheckoutError.message.missingAddress" = "Please select shipping and billing addresses first";
+"AtlasCheckoutError.message.missingAddressAndPayment" = "Please select shipping and billing addresses and the payment method first";
 "AtlasCheckoutError.message.priceChanged" = "The price is now %@";
 "AtlasCheckoutError.message.paymentMethodNotAvailable" = "Payment method is no longer available";
 "AtlasCheckoutError.message.addressInvalid" = "Address not valid, please check the address";
