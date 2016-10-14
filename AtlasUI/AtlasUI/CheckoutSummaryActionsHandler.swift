@@ -103,8 +103,7 @@ extension CheckoutSummaryActionsHandler {
 
         let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
         paymentSelectionViewController.paymentCompletion = { result in
-
-            guard let _ = result.process() else { return }
+            guard let redirectURL = result.process() where redirectURL != .cancel else { return }
             self.loadCustomerData()
         }
         viewController.showViewController(paymentSelectionViewController, sender: viewController)
@@ -120,7 +119,7 @@ extension CheckoutSummaryActionsHandler {
 
         let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
         paymentSelectionViewController.paymentCompletion = { result in
-            guard let _ = result.process() else { return }
+            guard let redirectURL = result.process() where redirectURL == .success else { return }
             viewController.viewState = .OrderPlaced
         }
         viewController.showViewController(paymentSelectionViewController, sender: viewController)

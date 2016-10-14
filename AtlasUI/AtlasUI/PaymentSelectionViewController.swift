@@ -5,13 +5,20 @@
 import UIKit
 import AtlasSDK
 
-typealias PaymentCompletion = AtlasResult<Bool> -> Void
+typealias PaymentCompletion = AtlasResult<PaymentRedirectURL> -> Void
+
+enum PaymentRedirectURL: String {
+
+    case redirect = "http://de.zalando.atlas.atlascheckoutdemo/redirect"
+    case success = "http://de.zalando.atlas.atlascheckoutdemo/redirect?payment_status=success"
+    case cancel = "http://de.zalando.atlas.atlascheckoutdemo/redirect?payment_status=cancel"
+
+}
 
 final class PaymentSelectionViewController: UIViewController, UIWebViewDelegate {
 
     var paymentCompletion: PaymentCompletion?
     private let paymentSelectionURL: NSURL
-    private let successURL = "http://de.zalando.atlas.atlascheckoutdemo/redirect"
 
     private lazy var webView: UIWebView = {
         let webView = UIWebView()
@@ -40,8 +47,9 @@ final class PaymentSelectionViewController: UIViewController, UIWebViewDelegate 
     }
 
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        guard let success = request.URL?.validAbsoluteString.hasPrefix(successURL) where success else { return true }
-        paymentCompletion?(.success(true))
+        guard let url = request.URL?.validAbsoluteString, redirectUrl = PaymentRedirectURL(rawValue: url) else { return true }
+        paymentCompletion?(.success(redirectUrl))
+        navigationController?.popViewControllerAnimated(true)
         return false
     }
 
