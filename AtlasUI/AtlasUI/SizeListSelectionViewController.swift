@@ -79,7 +79,7 @@ extension SizeListSelectionViewController {
         loaderView.show()
         checkout.client.article(forSKU: sku) { [weak self] result in
             self?.loaderView.hide()
-            guard let article = result.process() else { return }
+            guard let article = result.process(forceFullScreenError: true) else { return }
             self?.tableViewDelegate = SizeListTableViewDelegate(article: article, completion: self?.showCheckoutScreen)
             self?.showCancelButton()
         }
@@ -93,14 +93,14 @@ extension SizeListSelectionViewController {
 
         loaderView.show()
         checkout.client.customer { [weak self] result in
-            guard let customer = result.process() else {
+            guard let customer = result.process(forceFullScreenError: !userSelected) else {
                 self?.loaderView.hide()
                 return
             }
 
             self?.checkout.createCheckoutViewModel(forArticleUnit: selectedArticleUnit) { result in
                 self?.loaderView.hide()
-                guard var checkoutViewModel = result.process() else { return }
+                guard var checkoutViewModel = result.process(forceFullScreenError: !userSelected) else { return }
 
                 checkoutViewModel.customer = customer
                 self?.displayCheckoutSummaryViewController(checkoutViewModel, userSelected: userSelected)
