@@ -30,6 +30,21 @@ module Calypso
       issues.select { |i| issues_ids.include?(i['number']) }
     end
 
+    def column_cards(project_name:, column_name:)
+      project = project(project_name)
+      column = column(project, column_name)
+      fetch_via_projects_api(cards_url(column))
+    end
+
+    def drop_cards(cards)
+      answer = ask("Do you want to drop all #{cards.count} cards? (only 'YES' counts)")
+      return unless answer == 'YES'
+
+      cards.each do |card|
+        delete_via_projects_api(delete_card_url(card))
+      end
+    end
+
     private
 
     def column(project, name)
@@ -74,12 +89,15 @@ module Calypso
       repos_url("projects/columns/#{column['id']}/cards")
     end
 
-    def fetch_via_projects_api(url)
-      fetch(url, new_headers: { 'Accept' => 'application/vnd.github.inertia-preview+json' })
+    def delete_card_url(card)
+      repos_url("projects/columns/cards/#{card['id']}")
     end
 
-    def fetch(url, new_headers: {}, query: {}, pages: 1)
-      headers = new_headers
+    def fetch_via_projects_api(url)
+      fetch(url, headers: { 'Accept' => 'application/vnd.github.inertia-preview+json' })
+    end
+
+    def fetch(url, headers: {}, query: {}, pages: 1)
       headers['Authorization'] = "token #{env_oauth_token}"
       headers['User-Agent'] = 'calypso.rb'
 
@@ -89,7 +107,7 @@ module Calypso
     def fetch_pages(url, headers, query, pages)
       full_response = []
       1.upto(pages).each do |page|
-        puts "Fetching #{url} ... (page=#{page})"
+        puts "GET #{url} ... (page=#{page})"
         if pages > 1
           query['per_page'] = 100
           query['page'] = page
@@ -100,6 +118,15 @@ module Calypso
         break if parsed.count.zero?
       end
       full_response
+    end
+
+    def delete_via_projects_api(url)
+      delete(url, headers: { 'Accept' => 'application/vnd.github.inertia-preview+json' })
+    end
+
+    def delete(url, headers: {}, query: {})
+      puts "DELETE #{url} ..."
+      HTTParty.delete(url, headers: headers, query: query)
     end
 
     include Env

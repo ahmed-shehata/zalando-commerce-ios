@@ -23,6 +23,12 @@ module Calypso
       end
     end
 
+    desc 'clear <project_name> <column_name>', 'Clear issues in given project / column'
+    def clear(project_name, column_name)
+      cards = github.column_cards(project_name: project_name, column_name: column_name)
+      github.drop_cards(cards)
+    end
+
     private
 
     def github
