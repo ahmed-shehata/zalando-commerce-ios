@@ -35,9 +35,14 @@ struct UserMessage {
         bannerErrorViewController.hideBanner()
     }
 
-    static func displayError(error: ErrorType) {
+    static func displayError(error: ErrorType, forceFullScreenError fullScreen: Bool = false) {
         guard let userPresentable = error as? UserPresentable else {
             displayError(AtlasCheckoutError.unclassified)
+            return
+        }
+
+        guard !fullScreen else {
+            displayFullScreen(userPresentable)
             return
         }
 

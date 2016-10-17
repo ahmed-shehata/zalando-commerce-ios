@@ -10,7 +10,7 @@ public class AtlasUIViewController: UIViewController {
     private let atlasReachability = AtlasReachability()
 
     init(atlasCheckout: AtlasCheckout, forProductSKU sku: String) {
-        let sizeSelectionViewController = SizeSelectionViewController(checkout: atlasCheckout, sku: sku)
+        let sizeSelectionViewController = SizeListSelectionViewController(checkout: atlasCheckout, sku: sku)
         mainNavigationController = UINavigationController(rootViewController: sizeSelectionViewController)
 
         super.init(nibName: nil, bundle: nil)
