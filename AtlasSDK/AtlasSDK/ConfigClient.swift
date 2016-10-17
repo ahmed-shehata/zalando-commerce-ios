@@ -25,12 +25,19 @@ struct ConfigClient: Configurator {
         requestBuilder.execute { result in
             switch result {
             case .failure(let error):
-                completion(.failure(error))
+                dispatch_async(dispatch_get_main_queue()) {
+                    completion(.failure(error))
+                }
             case .success(let response):
                 guard let json = response.body, config = Config(json: json, options: self.options) else {
-                    return completion(.failure(AtlasConfigurationError.incorrectConfigServiceResponse))
+                    dispatch_async(dispatch_get_main_queue()) {
+                        completion(.failure(AtlasConfigurationError.incorrectConfigServiceResponse))
+                    }
+                    return
                 }
-                completion(.success(config))
+                dispatch_async(dispatch_get_main_queue()) {
+                    completion(.success(config))
+                }
             }
         }
     }

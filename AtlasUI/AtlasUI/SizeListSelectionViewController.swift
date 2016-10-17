@@ -8,8 +8,8 @@ import AtlasSDK
 final class SizeListSelectionViewController: UIViewController, CheckoutProviderType {
 
     internal let checkout: AtlasCheckout
-    private let sku: String
-    private var tableViewDelegate: SizeListTableViewDelegate? {
+    internal let sku: String
+    internal var tableViewDelegate: SizeListTableViewDelegate? {
         didSet {
             tableView.dataSource = tableViewDelegate
             tableView.delegate = tableViewDelegate
