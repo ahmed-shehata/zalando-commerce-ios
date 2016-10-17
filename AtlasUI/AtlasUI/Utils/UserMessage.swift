@@ -35,14 +35,9 @@ struct UserMessage {
         bannerErrorViewController.hideBanner()
     }
 
-    static func displayError(error: ErrorType, forceFullScreenError fullScreen: Bool = false) {
+    static func displayError(error: ErrorType) {
         guard let userPresentable = error as? UserPresentable else {
             displayError(AtlasCheckoutError.unclassified)
-            return
-        }
-
-        guard !fullScreen else {
-            displayFullScreen(userPresentable)
             return
         }
 
@@ -50,6 +45,24 @@ struct UserMessage {
         case .banner: displayBanner(userPresentable)
         case .fullScreen: displayFullScreen(userPresentable)
         }
+    }
+
+    static func displayErrorBanner(error: ErrorType) {
+        guard let userPresentable = error as? UserPresentable else {
+            displayError(AtlasCheckoutError.unclassified)
+            return
+        }
+
+        displayBanner(userPresentable)
+    }
+
+    static func displayErrorFullScreen(error: ErrorType) {
+        guard let userPresentable = error as? UserPresentable else {
+            displayError(AtlasCheckoutError.unclassified)
+            return
+        }
+
+        displayFullScreen(userPresentable)
     }
 
     static func showActionSheet(title title: String, message: String? = nil, actions: ButtonAction...) {

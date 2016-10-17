@@ -35,10 +35,10 @@ class SizeListSelectionViewControllerSpec: QuickSpec {
                 }
 
                 let viewController = sizeSelectionNavigationController?.topViewController as? SizeListSelectionViewController
-                expect(viewController?.tableViewDelegate).toEventuallyNot(beNil())
-                expect(viewController?.tableViewDelegate?.article.units.count).to(equal(5))
-                expect(viewController?.tableViewDelegate?.article.availableUnits.count).to(equal(1))
-                expect(viewController?.tableViewDelegate?.article.hasSingleUnit).to(equal(false))
+                expect(viewController?.tableViewDataSource).toEventuallyNot(beNil())
+                expect(viewController?.tableViewDataSource?.article.units.count).to(equal(5))
+                expect(viewController?.tableViewDataSource?.article.availableUnits.count).to(equal(1))
+                expect(viewController?.tableViewDataSource?.article.hasSingleUnit).to(equal(false))
                 expect(sizeSelectionNavigationController?.topViewController).to(equal(viewController))
             }
 
@@ -54,10 +54,10 @@ class SizeListSelectionViewControllerSpec: QuickSpec {
                 }
 
                 let viewController = sizeSelectionNavigationController?.topViewController as? SizeListSelectionViewController
-                expect(viewController?.tableViewDelegate).toEventuallyNot(beNil())
-                expect(viewController?.tableViewDelegate?.article.units.count).to(equal(1))
-                expect(viewController?.tableViewDelegate?.article.availableUnits.count).to(equal(1))
-                expect(viewController?.tableViewDelegate?.article.hasSingleUnit).to(equal(true))
+                expect(viewController?.tableViewDataSource).toEventuallyNot(beNil())
+                expect(viewController?.tableViewDataSource?.article.units.count).to(equal(1))
+                expect(viewController?.tableViewDataSource?.article.availableUnits.count).to(equal(1))
+                expect(viewController?.tableViewDataSource?.article.hasSingleUnit).to(equal(true))
                 expect(sizeSelectionNavigationController?.topViewController).toNot(equal(viewController))
             }
 

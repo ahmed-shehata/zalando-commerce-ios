@@ -4,7 +4,7 @@
 
 import AtlasSDK
 
-typealias SizeListTableViewDelegateCompletion = (selectedArticleUnit: SelectedArticleUnit, userSelected: Bool) -> Void
+typealias SizeListTableViewDelegateCompletion = (selectedArticleUnit: SelectedArticleUnit) -> Void
 
 class SizeListTableViewDelegate: NSObject {
 
@@ -16,24 +16,7 @@ class SizeListTableViewDelegate: NSObject {
         self.completion = completion
 
         if article.hasSingleUnit {
-            completion?(selectedArticleUnit: SelectedArticleUnit(article: article, selectedUnitIndex: 0), userSelected: false)
-        }
-    }
-
-}
-
-extension SizeListTableViewDelegate: UITableViewDataSource {
-
-    internal func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return article.availableUnits.count
-    }
-
-    internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(UnitSizeTableViewCell.self, forIndexPath: indexPath) { cell in
-            let unit = self.article.availableUnits[indexPath.item]
-            cell.configureData(unit)
-            cell.accessibilityIdentifier = "size-cell-\(indexPath.row)"
-            return cell
+            completion?(selectedArticleUnit: SelectedArticleUnit(article: article, selectedUnitIndex: 0))
         }
     }
 
@@ -45,7 +28,7 @@ extension SizeListTableViewDelegate: UITableViewDelegate {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
 
         let selectedArticleUnit = SelectedArticleUnit(article: article, selectedUnitIndex: indexPath.row)
-        completion?(selectedArticleUnit: selectedArticleUnit, userSelected: true)
+        completion?(selectedArticleUnit: selectedArticleUnit)
     }
 
 }

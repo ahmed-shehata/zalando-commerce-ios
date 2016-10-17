@@ -81,6 +81,7 @@
 		E95C47291DB4CDB0006C37C6 /* SizeListTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95C47281DB4CDB0006C37C6 /* SizeListTableViewDelegate.swift */; };
 		E95C472B1DB4E62B006C37C6 /* AtlasUI-UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95C472A1DB4E62B006C37C6 /* AtlasUI-UIViewController.swift */; };
 		E95C472D1DB50CC1006C37C6 /* SizeListSelectionViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95C472C1DB50CC1006C37C6 /* SizeListSelectionViewControllerSpec.swift */; };
+		E95C472F1DB52006006C37C6 /* SizeListTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95C472E1DB52006006C37C6 /* SizeListTableViewDataSource.swift */; };
 		E96997501DA51E49000299C8 /* AtlasUI-Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E969974F1DA51E49000299C8 /* AtlasUI-Constants.swift */; };
 		E96997521DA5219A000299C8 /* AtlasReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96997511DA5219A000299C8 /* AtlasReachability.swift */; };
 		E97A33A7BE2D26CDE9B4C62EB5BD2661 /* CheckoutSummaryAddressStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9494F7947C24BD2087FE22EBE20BFCD /* CheckoutSummaryAddressStackView.swift */; };
@@ -197,6 +198,7 @@
 		E95C47281DB4CDB0006C37C6 /* SizeListTableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeListTableViewDelegate.swift; sourceTree = "<group>"; };
 		E95C472A1DB4E62B006C37C6 /* AtlasUI-UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AtlasUI-UIViewController.swift"; sourceTree = "<group>"; };
 		E95C472C1DB50CC1006C37C6 /* SizeListSelectionViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeListSelectionViewControllerSpec.swift; sourceTree = "<group>"; };
+		E95C472E1DB52006006C37C6 /* SizeListTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeListTableViewDataSource.swift; sourceTree = "<group>"; };
 		E969974F1DA51E49000299C8 /* AtlasUI-Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AtlasUI-Constants.swift"; sourceTree = "<group>"; };
 		E96997511DA5219A000299C8 /* AtlasReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasReachability.swift; sourceTree = "<group>"; };
 		E9888D851DB0D49200736A50 /* AtlasUI-UIScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AtlasUI-UIScreen.swift"; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				4B5F2A46508AF365A825D9FDECADE941 /* SizeListSelectionViewController.swift */,
+				E95C472E1DB52006006C37C6 /* SizeListTableViewDataSource.swift */,
 				E95C47281DB4CDB0006C37C6 /* SizeListTableViewDelegate.swift */,
 				B2212DE66FE76CB7293827065AB636FF /* UnitSizeTableViewCell.swift */,
 			);
@@ -691,6 +694,7 @@
 				AD1C6DB11CD8FE8A3E16C997AED68D63 /* AtlasUI-NSURL.swift in Sources */,
 				04F28264BE2A927E330D3459B87A91D2 /* AtlasUI-StreetAddress.swift in Sources */,
 				B96E746BEA32C49AA7B206F00C144F57 /* AtlasUI-String.swift in Sources */,
+				E95C472F1DB52006006C37C6 /* SizeListTableViewDataSource.swift in Sources */,
 				D335F80B78F8AD18EC8A079C138A41BF /* AtlasUIErrors.swift in Sources */,
 				1B42E623E7FF2AD785958BBDD8103B11 /* AtlasUIViewController.swift in Sources */,
 				869B7706B6456BBC7CF641AF7A8E4356 /* BannerErrorViewController.swift in Sources */,

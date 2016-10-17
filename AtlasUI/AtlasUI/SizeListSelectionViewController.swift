@@ -11,9 +11,13 @@ final class SizeListSelectionViewController: UIViewController, CheckoutProviderT
     internal let sku: String
     internal var tableViewDelegate: SizeListTableViewDelegate? {
         didSet {
-            tableView.dataSource = tableViewDelegate
             tableView.delegate = tableViewDelegate
-            tableView.hidden = tableViewDelegate?.article.hasSingleUnit ?? true
+        }
+    }
+    internal var tableViewDataSource: SizeListTableViewDataSource? {
+        didSet {
+            tableView.dataSource = tableViewDataSource
+            tableView.hidden = tableViewDataSource?.article.hasSingleUnit ?? true
             tableView.reloadData()
         }
     }
@@ -81,36 +85,38 @@ extension SizeListSelectionViewController {
             self?.loaderView.hide()
             guard let article = result.process(forceFullScreenError: true) else { return }
             self?.tableViewDelegate = SizeListTableViewDelegate(article: article, completion: self?.showCheckoutScreen)
+            self?.tableViewDataSource = SizeListTableViewDataSource(article: article)
             self?.showCancelButton()
         }
     }
 
-    private func showCheckoutScreen(selectedArticleUnit: SelectedArticleUnit, userSelected: Bool) {
+    private func showCheckoutScreen(selectedArticleUnit: SelectedArticleUnit) {
+        let hasSingleUnit = selectedArticleUnit.article.hasSingleUnit
         guard Atlas.isUserLoggedIn() else {
             let checkoutViewModel = CheckoutViewModel(selectedArticleUnit: selectedArticleUnit)
-            return displayCheckoutSummaryViewController(checkoutViewModel, userSelected: userSelected)
+            return displayCheckoutSummaryViewController(checkoutViewModel, animated: !hasSingleUnit)
         }
 
         loaderView.show()
         checkout.client.customer { [weak self] result in
-            guard let customer = result.process(forceFullScreenError: !userSelected) else {
+            guard let customer = result.process(forceFullScreenError: hasSingleUnit) else {
                 self?.loaderView.hide()
                 return
             }
 
             self?.checkout.createCheckoutViewModel(forArticleUnit: selectedArticleUnit) { result in
                 self?.loaderView.hide()
-                guard var checkoutViewModel = result.process(forceFullScreenError: !userSelected) else { return }
+                guard var checkoutViewModel = result.process(forceFullScreenError: hasSingleUnit) else { return }
 
                 checkoutViewModel.customer = customer
-                self?.displayCheckoutSummaryViewController(checkoutViewModel, userSelected: userSelected)
+                self?.displayCheckoutSummaryViewController(checkoutViewModel, animated: !hasSingleUnit)
             }
         }
     }
 
-    private func displayCheckoutSummaryViewController(checkoutViewModel: CheckoutViewModel, userSelected: Bool) {
+    private func displayCheckoutSummaryViewController(checkoutViewModel: CheckoutViewModel, animated: Bool) {
         let checkoutSummaryVC = CheckoutSummaryViewController(checkout: checkout, checkoutViewModel: checkoutViewModel)
-        navigationController?.pushViewController(checkoutSummaryVC, animated: userSelected)
+        navigationController?.pushViewController(checkoutSummaryVC, animated: animated)
     }
 
 }
