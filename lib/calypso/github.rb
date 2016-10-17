@@ -1,9 +1,12 @@
 require 'github_api'
+require 'httparty'
+require 'awesome_print'
+
 require_relative 'env'
 
 module Calypso
 
-  module GithubClient
+  class GithubClient
 
     def issues(labels, state, pages = 10)
       query = { labels: labels, state: state }
@@ -41,6 +44,7 @@ module Calypso
       if column.nil?
         cards = []
         columns(project).each do |col|
+          print "#{col['name']} > "
           column_cards = cards(project: project, column: col)
           cards += column_cards
         end
@@ -83,27 +87,19 @@ module Calypso
     end
 
     def fetch_pages(url, headers, query, pages)
-      full_response = nil
+      full_response = []
       1.upto(pages).each do |page|
         puts "Fetching #{url} ... (page=#{page})"
-        response = HTTParty.get(url, headers: headers, query: prepare(query: query, page: page))
-        parsed = response.parsed_response
-        if full_response.nil?
-          full_response = parsed
-        else
-          full_response += parsed
+        if pages > 1
+          query['per_page'] = 100
+          query['page'] = page
         end
+        response = HTTParty.get(url, headers: headers, query: query)
+        parsed = response.parsed_response
+        full_response += parsed
         break if parsed.count.zero?
       end
       full_response
-    end
-
-    def prepare(query: {}, page:)
-      return query if page < 2
-
-      query['per_page'] = 100
-      query['page'] = page
-      query
     end
 
     include Env
