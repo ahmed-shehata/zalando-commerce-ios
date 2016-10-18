@@ -7,90 +7,90 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		026DF395B09EF9653EE15EFD7D997272 /* DELETE*|addresses|6702759.json in Resources */ = {isa = PBXBuildFile; fileRef = 812B2909493357626A3A9702D1E53EB6 /* DELETE*|addresses|6702759.json */; };
+		062E4BE07D2AC78A1CFA23BE1DA14633 /* POST*|address-checks.json in Resources */ = {isa = PBXBuildFile; fileRef = 2841CC657D79D120D56C0C0B83CC3B86 /* POST*|address-checks.json */; };
+		07C472EFCD85D0D776A222A89D4EC6D3 /* GET*|addresses.json in Resources */ = {isa = PBXBuildFile; fileRef = BA19F28255577F57BCC4022C7ECBF3C0 /* GET*|addresses.json */; };
 		07DA19F96F959C079F50D9210AA26240 /* !customer-auth.json in Resources */ = {isa = PBXBuildFile; fileRef = 815037129A1261499B9D2861EDAA6F98 /* !customer-auth.json */; };
-		3F8F946EE612D30C91DF67AF9CA9B238 /* !customer-auth.json in Resources */ = {isa = PBXBuildFile; fileRef = 815037129A1261499B9D2861EDAA6F98 /* !customer-auth.json */; };
-		777814A8FC474BC1AA4984890BB9AD13 /* !customer-not-auth.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C70FA17D28F6B60FE9C96F541888317 /* !customer-not-auth.json */; };
-		E3B3041376E6760AE0CE8C9586D63236 /* !customer-not-auth.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C70FA17D28F6B60FE9C96F541888317 /* !customer-not-auth.json */; };
-		1B516B7D80FF4E5E30818B0C49381798 /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = D46C232E5D94E641359CC993B3772C18 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		656B57C0C01C0381DA4B82613E512AE7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46C232E5D94E641359CC993B3772C18 /* Alamofire.framework */; };
-		61CBC6DA4A10A98808ADCE594E11F929 /* AtlasMockAPI-macOS.h in Headers */ = {isa = PBXBuildFile; fileRef = F7C2FA3A57F587B64A91D179D83BE578 /* AtlasMockAPI-macOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4CCBF7311FF9CDE42A2FE6702500AC6D /* AtlasMockAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABB5A5EE8F076164F43D0AB5ACC9285B /* AtlasMockAPI.framework */; };
-		58DE049BBB0978C3AAF39B71FBA2CE83 /* AtlasMockAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E3778589D321DAEEFC3A19E61372FA8 /* AtlasMockAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0ABF11E1EE44DA367512F7B0197E45D1 /* SwiftyJSON.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5EA1BDBEDFD8CF67629C52AE1F9AA83D /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0ACCBCDDAD12C8FEBD7F745CF0DF1AEA /* DELETE*|addresses|6702748.json in Resources */ = {isa = PBXBuildFile; fileRef = E6077DEF558A4F20255F21C94C9C7193 /* DELETE*|addresses|6702748.json */; };
+		0DDEF5CB582E8362BD50ABBEB8C71B42 /* root.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A12FDAD29AC96D6E81A64E6D2BDFB5 /* root.swift */; };
 		133CA35176EC050787C42B168A2767CD /* AtlasMockAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6678498B12532BC9FB37041A2AED1DE4 /* AtlasMockAPI.swift */; };
 		15ED1D40026A24C7177E2284DF12769A /* AtlasMockAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6678498B12532BC9FB37041A2AED1DE4 /* AtlasMockAPI.swift */; };
-		CA6498F26AEEB6234C38A69E0FBDF21E /* AtlasMockAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916DA4EC8C6CDF184EA2662AFB5E1DD2 /* AtlasMockAPITests.swift */; };
-		428BB791E55116079F156E003D3CB18E /* AtlasMockAPI_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C95290F96219584B6ACEAEABDD8E348C /* AtlasMockAPI_macOS.framework */; };
-		C9E2B458DA2120DC16FFEF3CEED6BE4D /* DELETE*|addresses|6616154.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B77BFA55E90452C29F820964E76C552 /* DELETE*|addresses|6616154.json */; };
-		8905DA5A45974A15DF4D5CFFFBE20717 /* DELETE*|addresses|6616154.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B77BFA55E90452C29F820964E76C552 /* DELETE*|addresses|6616154.json */; };
-		0ACCBCDDAD12C8FEBD7F745CF0DF1AEA /* DELETE*|addresses|6702748.json in Resources */ = {isa = PBXBuildFile; fileRef = E6077DEF558A4F20255F21C94C9C7193 /* DELETE*|addresses|6702748.json */; };
-		67F126B00EEBE90A846AB7A64B23A194 /* DELETE*|addresses|6702748.json in Resources */ = {isa = PBXBuildFile; fileRef = E6077DEF558A4F20255F21C94C9C7193 /* DELETE*|addresses|6702748.json */; };
-		026DF395B09EF9653EE15EFD7D997272 /* DELETE*|addresses|6702759.json in Resources */ = {isa = PBXBuildFile; fileRef = 812B2909493357626A3A9702D1E53EB6 /* DELETE*|addresses|6702759.json */; };
-		E0CD4D96582FDDB4194DC88BB67DC4CC /* DELETE*|addresses|6702759.json in Resources */ = {isa = PBXBuildFile; fileRef = 812B2909493357626A3A9702D1E53EB6 /* DELETE*|addresses|6702759.json */; };
-		60FCA6FEB78EC510D7FC48F871A7A6F8 /* GET*|addresses.json in Resources */ = {isa = PBXBuildFile; fileRef = BA19F28255577F57BCC4022C7ECBF3C0 /* GET*|addresses.json */; };
-		07C472EFCD85D0D776A222A89D4EC6D3 /* GET*|addresses.json in Resources */ = {isa = PBXBuildFile; fileRef = BA19F28255577F57BCC4022C7ECBF3C0 /* GET*|addresses.json */; };
-		BD04D69F3BA7F71268E669BF33816D29 /* GET*|articles.json in Resources */ = {isa = PBXBuildFile; fileRef = BED4F477EC901DB7C23CF95D9A19E120 /* GET*|articles.json */; };
-		7989C39671D1BF05C1048F06D56071E1 /* GET*|articles.json in Resources */ = {isa = PBXBuildFile; fileRef = BED4F477EC901DB7C23CF95D9A19E120 /* GET*|articles.json */; };
-		B97D8288374CB047438BF9AD18EC6BF5 /* GET*|articles|AD541L009-G11.json in Resources */ = {isa = PBXBuildFile; fileRef = CB805E7568D813D0C4EB07411B72E491 /* GET*|articles|AD541L009-G11.json */; };
-		F61D12E7B1B4DA5165EEFE1D3571C880 /* GET*|articles|AD541L009-G11.json in Resources */ = {isa = PBXBuildFile; fileRef = CB805E7568D813D0C4EB07411B72E491 /* GET*|articles|AD541L009-G11.json */; };
+		16B554226571FB6039BDF21AE78D157E /* POST*|orders.json in Resources */ = {isa = PBXBuildFile; fileRef = 93FDDC5BCA83505593A58CA86BFBF851 /* POST*|orders.json */; };
+		1B516B7D80FF4E5E30818B0C49381798 /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = D46C232E5D94E641359CC993B3772C18 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1E7E4C1280BB1D9F1148C090EAEE3606 /* GET*|articles|AZ711M001-B11.json in Resources */ = {isa = PBXBuildFile; fileRef = 07F98C93F4BF4B3DEEA237CA4A4436DD /* GET*|articles|AZ711M001-B11.json */; };
-		6425E3CE59240DEAAC075CB1D5D89CA1 /* GET*|articles|AZ711M001-B11.json in Resources */ = {isa = PBXBuildFile; fileRef = 07F98C93F4BF4B3DEEA237CA4A4436DD /* GET*|articles|AZ711M001-B11.json */; };
-		FDD5B3119903B7320EB4565149F77360 /* GET*|articles|AZ711N007-Q11.json in Resources */ = {isa = PBXBuildFile; fileRef = 30E3CDE4BE5DB29315837978D5509155 /* GET*|articles|AZ711N007-Q11.json */; };
-		DE8B0185750B18D66E605083286526DD /* GET*|articles|AZ711N007-Q11.json in Resources */ = {isa = PBXBuildFile; fileRef = 30E3CDE4BE5DB29315837978D5509155 /* GET*|articles|AZ711N007-Q11.json */; };
-		E6D700F730294617F4487B079E120159 /* GET*|articles|AZ711N008-G11.json in Resources */ = {isa = PBXBuildFile; fileRef = 92088B658556068A367B08E1E4936359 /* GET*|articles|AZ711N008-G11.json */; };
-		4438316180B88717EC05C856AFF6DD05 /* GET*|articles|AZ711N008-G11.json in Resources */ = {isa = PBXBuildFile; fileRef = 92088B658556068A367B08E1E4936359 /* GET*|articles|AZ711N008-G11.json */; };
-		28C6028429104BA91EF0B7A9DB479250 /* GET*|articles|AZ711N00B-Q11.json in Resources */ = {isa = PBXBuildFile; fileRef = 24ED23F1FECE70477E1829FEBDB89430 /* GET*|articles|AZ711N00B-Q11.json */; };
-		6B1AAA8006A91B41F57CC26E6AD58FFD /* GET*|articles|AZ711N00B-Q11.json in Resources */ = {isa = PBXBuildFile; fileRef = 24ED23F1FECE70477E1829FEBDB89430 /* GET*|articles|AZ711N00B-Q11.json */; };
-		8226623C8CAAD9C5972F62F0C386D0D0 /* GET*|articles|EV451G023-Q11.json in Resources */ = {isa = PBXBuildFile; fileRef = 490248B98C610B03DF3ECF90B114EB93 /* GET*|articles|EV451G023-Q11.json */; };
-		462A4FA899A6DEE56DD962E71C01A9F2 /* GET*|articles|EV451G023-Q11.json in Resources */ = {isa = PBXBuildFile; fileRef = 490248B98C610B03DF3ECF90B114EB93 /* GET*|articles|EV451G023-Q11.json */; };
-		2C24F1DC75155BD155EC908A0E9CF643 /* GET*|articles|GU121D08Z-Q11.json in Resources */ = {isa = PBXBuildFile; fileRef = 0CBB7A8B24835A3D394D49201FD5B6EB /* GET*|articles|GU121D08Z-Q11.json */; };
-		7C6A823DDC2B11E2DFC82453DCE9EE03 /* GET*|articles|GU121D08Z-Q11.json in Resources */ = {isa = PBXBuildFile; fileRef = 0CBB7A8B24835A3D394D49201FD5B6EB /* GET*|articles|GU121D08Z-Q11.json */; };
-		EE239AB58574DBF5BCBDBBA391E22651 /* GET*|articles|L2711E002-Q11.json in Resources */ = {isa = PBXBuildFile; fileRef = 52314B18BD758E4F4DAE92D6C7867BEE /* GET*|articles|L2711E002-Q11.json */; };
-		77402566EFC255726327939AA8FDF9EB /* GET*|articles|L2711E002-Q11.json in Resources */ = {isa = PBXBuildFile; fileRef = 52314B18BD758E4F4DAE92D6C7867BEE /* GET*|articles|L2711E002-Q11.json */; };
 		1F8BEFDD73F613F0E91995A414CDAF5B /* GET*|articles|LA254E005-Q11.json in Resources */ = {isa = PBXBuildFile; fileRef = 18921BBF9B098C14C09110407E9D0EB1 /* GET*|articles|LA254E005-Q11.json */; };
+		28C6028429104BA91EF0B7A9DB479250 /* GET*|articles|AZ711N00B-Q11.json in Resources */ = {isa = PBXBuildFile; fileRef = 24ED23F1FECE70477E1829FEBDB89430 /* GET*|articles|AZ711N00B-Q11.json */; };
+		2C24F1DC75155BD155EC908A0E9CF643 /* GET*|articles|GU121D08Z-Q11.json in Resources */ = {isa = PBXBuildFile; fileRef = 0CBB7A8B24835A3D394D49201FD5B6EB /* GET*|articles|GU121D08Z-Q11.json */; };
+		2C9AF11FC81D411E5D2FC2FE45658C2F /* POST*|checkouts.json in Resources */ = {isa = PBXBuildFile; fileRef = DFA4DF572BA03856BC586CA15ED868A6 /* POST*|checkouts.json */; };
+		2CD0614AAEA15E47F4E9E268B1580378 /* POST*|addresses.json in Resources */ = {isa = PBXBuildFile; fileRef = 241E00DD9081F51185D5BB238FCF02DD /* POST*|addresses.json */; };
+		2EBF086F6D93D27F5EFB05CF8BBE843A /* POST*|carts.json in Resources */ = {isa = PBXBuildFile; fileRef = 426274DDC1245E783F3D2560060CB2EF /* POST*|carts.json */; };
+		3885B3BD7BEF34D3AC5430379339B952 /* HttpServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FCAE6C2E00BC14146D7A5490970DFD /* HttpServer.swift */; };
+		398F5BDE0F8504306DCD314FC9EE0E01 /* POST*|carts.json in Resources */ = {isa = PBXBuildFile; fileRef = 426274DDC1245E783F3D2560060CB2EF /* POST*|carts.json */; };
+		3A2D2C93BBA0EE2ED7480F42FB1C3C31 /* Swifter.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 4AA029A129260745C4942EF8C034D83E /* Swifter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3F8F946EE612D30C91DF67AF9CA9B238 /* !customer-auth.json in Resources */ = {isa = PBXBuildFile; fileRef = 815037129A1261499B9D2861EDAA6F98 /* !customer-auth.json */; };
+		428BB791E55116079F156E003D3CB18E /* AtlasMockAPI_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C95290F96219584B6ACEAEABDD8E348C /* AtlasMockAPI_macOS.framework */; };
+		43457A065FCFCCDC1D6945E2CC0AFE12 /* GET*|articles|MK151F00E-Q11.json in Resources */ = {isa = PBXBuildFile; fileRef = 1F475234B6045D8C2D64970F7AA4C7F6 /* GET*|articles|MK151F00E-Q11.json */; };
+		4438316180B88717EC05C856AFF6DD05 /* GET*|articles|AZ711N008-G11.json in Resources */ = {isa = PBXBuildFile; fileRef = 92088B658556068A367B08E1E4936359 /* GET*|articles|AZ711N008-G11.json */; };
+		462A4FA899A6DEE56DD962E71C01A9F2 /* GET*|articles|EV451G023-Q11.json in Resources */ = {isa = PBXBuildFile; fileRef = 490248B98C610B03DF3ECF90B114EB93 /* GET*|articles|EV451G023-Q11.json */; };
+		4CCBF7311FF9CDE42A2FE6702500AC6D /* AtlasMockAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABB5A5EE8F076164F43D0AB5ACC9285B /* AtlasMockAPI.framework */; };
+		4E1301BBF0B0F9A97678F81AA2776861 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EA1BDBEDFD8CF67629C52AE1F9AA83D /* SwiftyJSON.framework */; };
+		4F84E7DDA8C48A7CF85F05A598E20392 /* GET*|config.json in Resources */ = {isa = PBXBuildFile; fileRef = FAC7C79D277014FC00CD35427E010B0D /* GET*|config.json */; };
+		55824B2EEBFE02A86F0E7817505D7ACC /* PUT*|addresses|6616154.json in Resources */ = {isa = PBXBuildFile; fileRef = 69695F795A38316243DB669005333657 /* PUT*|addresses|6616154.json */; };
+		57D3AD978D8116B827B77CA671CA08A8 /* NSBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774E15C0298E7554801A950D57B1794B /* NSBundle.swift */; };
+		58DE049BBB0978C3AAF39B71FBA2CE83 /* AtlasMockAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E3778589D321DAEEFC3A19E61372FA8 /* AtlasMockAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		60FCA6FEB78EC510D7FC48F871A7A6F8 /* GET*|addresses.json in Resources */ = {isa = PBXBuildFile; fileRef = BA19F28255577F57BCC4022C7ECBF3C0 /* GET*|addresses.json */; };
+		61CBC6DA4A10A98808ADCE594E11F929 /* AtlasMockAPI-macOS.h in Headers */ = {isa = PBXBuildFile; fileRef = F7C2FA3A57F587B64A91D179D83BE578 /* AtlasMockAPI-macOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		629565C5D03102052BC9F9FDFC8374C9 /* PUT*|checkouts|CHECKOUT_ID.json in Resources */ = {isa = PBXBuildFile; fileRef = 93E28FCF102E72B605D335A776D66776 /* PUT*|checkouts|CHECKOUT_ID.json */; };
+		641A2668CE64DD67664E7BEDD95287FF /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EA1BDBEDFD8CF67629C52AE1F9AA83D /* SwiftyJSON.framework */; };
+		6425E3CE59240DEAAC075CB1D5D89CA1 /* GET*|articles|AZ711M001-B11.json in Resources */ = {isa = PBXBuildFile; fileRef = 07F98C93F4BF4B3DEEA237CA4A4436DD /* GET*|articles|AZ711M001-B11.json */; };
+		656B57C0C01C0381DA4B82613E512AE7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46C232E5D94E641359CC993B3772C18 /* Alamofire.framework */; };
+		6737D0D98CE1339B90399C66D79230A0 /* POST*|addresses.json in Resources */ = {isa = PBXBuildFile; fileRef = 241E00DD9081F51185D5BB238FCF02DD /* POST*|addresses.json */; };
+		67F126B00EEBE90A846AB7A64B23A194 /* DELETE*|addresses|6702748.json in Resources */ = {isa = PBXBuildFile; fileRef = E6077DEF558A4F20255F21C94C9C7193 /* DELETE*|addresses|6702748.json */; };
+		6B1AAA8006A91B41F57CC26E6AD58FFD /* GET*|articles|AZ711N00B-Q11.json in Resources */ = {isa = PBXBuildFile; fileRef = 24ED23F1FECE70477E1829FEBDB89430 /* GET*|articles|AZ711N00B-Q11.json */; };
+		6B8D00F6A8A7623EDC6C802B0ACF2DB1 /* authorize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515C868CEC51956D7AB4E80D708654BC /* authorize.swift */; };
+		752AD4DC7CCCA0A5BE46A02D5AC5C848 /* customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE50F14CF22BB8970E3EA7156738A8D5 /* customer.swift */; };
+		77402566EFC255726327939AA8FDF9EB /* GET*|articles|L2711E002-Q11.json in Resources */ = {isa = PBXBuildFile; fileRef = 52314B18BD758E4F4DAE92D6C7867BEE /* GET*|articles|L2711E002-Q11.json */; };
+		777814A8FC474BC1AA4984890BB9AD13 /* !customer-not-auth.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C70FA17D28F6B60FE9C96F541888317 /* !customer-not-auth.json */; };
+		7989C39671D1BF05C1048F06D56071E1 /* GET*|articles.json in Resources */ = {isa = PBXBuildFile; fileRef = BED4F477EC901DB7C23CF95D9A19E120 /* GET*|articles.json */; };
+		79B050A23B1CDDF51B8B7B2AA5FAF073 /* static-jsons.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA560C48D8E31572681D63D800308B84 /* static-jsons.swift */; };
+		7BD4FF2BCB0C1B7C42399553075AAE3A /* SwiftyJSON.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5EA1BDBEDFD8CF67629C52AE1F9AA83D /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7C6A823DDC2B11E2DFC82453DCE9EE03 /* GET*|articles|GU121D08Z-Q11.json in Resources */ = {isa = PBXBuildFile; fileRef = 0CBB7A8B24835A3D394D49201FD5B6EB /* GET*|articles|GU121D08Z-Q11.json */; };
+		8226623C8CAAD9C5972F62F0C386D0D0 /* GET*|articles|EV451G023-Q11.json in Resources */ = {isa = PBXBuildFile; fileRef = 490248B98C610B03DF3ECF90B114EB93 /* GET*|articles|EV451G023-Q11.json */; };
+		8310FD6D7EAB31888EBC5A84A3493D55 /* Swifter.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 18A5038C4E6BD35EB954EA2DB2CF13AB /* Swifter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8905DA5A45974A15DF4D5CFFFBE20717 /* DELETE*|addresses|6616154.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B77BFA55E90452C29F820964E76C552 /* DELETE*|addresses|6616154.json */; };
+		8D3AE68C49E1A738EA42EDF45E0FF4F4 /* PUT*|checkouts|CHECKOUT_ID.json in Resources */ = {isa = PBXBuildFile; fileRef = 93E28FCF102E72B605D335A776D66776 /* PUT*|checkouts|CHECKOUT_ID.json */; };
+		9272ADB29082F5AF4F2EE6004230A53A /* PUT*|addresses|6702759.json in Resources */ = {isa = PBXBuildFile; fileRef = E88C58D6E7FC18ED55C24290F11BE21A /* PUT*|addresses|6702759.json */; };
+		9BA018D1A6DC1001792DE9BD8BA88F39 /* PUT*|addresses|6702759.json in Resources */ = {isa = PBXBuildFile; fileRef = E88C58D6E7FC18ED55C24290F11BE21A /* PUT*|addresses|6702759.json */; };
+		AD3EA5D09D361926C45D9EF77FD74D43 /* Swifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A5038C4E6BD35EB954EA2DB2CF13AB /* Swifter.framework */; };
+		B343C35805059D57DD16B6B97D5EE277 /* static-jsons.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA560C48D8E31572681D63D800308B84 /* static-jsons.swift */; };
+		B91AB4810221943184693E3627A04116 /* authorize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515C868CEC51956D7AB4E80D708654BC /* authorize.swift */; };
+		B97D8288374CB047438BF9AD18EC6BF5 /* GET*|articles|AD541L009-G11.json in Resources */ = {isa = PBXBuildFile; fileRef = CB805E7568D813D0C4EB07411B72E491 /* GET*|articles|AD541L009-G11.json */; };
+		BD04D69F3BA7F71268E669BF33816D29 /* GET*|articles.json in Resources */ = {isa = PBXBuildFile; fileRef = BED4F477EC901DB7C23CF95D9A19E120 /* GET*|articles.json */; };
+		BD308837CE08A9B3B952473D0C55AB0F /* HttpServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FCAE6C2E00BC14146D7A5490970DFD /* HttpServer.swift */; };
+		C194886D6A3ADDEB65DD6A4F0013B3EA /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DAE00CB3FFDF2325A917AA51178BF3 /* main.swift */; };
+		C84F01DDE46BF77B5EE6B09C5267430A /* GET*|config.json in Resources */ = {isa = PBXBuildFile; fileRef = FAC7C79D277014FC00CD35427E010B0D /* GET*|config.json */; };
+		C85677CF1DE7D0C335AC48FE83C3654E /* NSBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774E15C0298E7554801A950D57B1794B /* NSBundle.swift */; };
+		C9E2B458DA2120DC16FFEF3CEED6BE4D /* DELETE*|addresses|6616154.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B77BFA55E90452C29F820964E76C552 /* DELETE*|addresses|6616154.json */; };
+		CA6498F26AEEB6234C38A69E0FBDF21E /* AtlasMockAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916DA4EC8C6CDF184EA2662AFB5E1DD2 /* AtlasMockAPITests.swift */; };
+		DE633D80016A67491AAB451972BA0F8F /* PUT*|addresses|6616154.json in Resources */ = {isa = PBXBuildFile; fileRef = 69695F795A38316243DB669005333657 /* PUT*|addresses|6616154.json */; };
+		DE8B0185750B18D66E605083286526DD /* GET*|articles|AZ711N007-Q11.json in Resources */ = {isa = PBXBuildFile; fileRef = 30E3CDE4BE5DB29315837978D5509155 /* GET*|articles|AZ711N007-Q11.json */; };
+		DFCA1DE95AC6227FF82D62DAA4E54AF6 /* customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE50F14CF22BB8970E3EA7156738A8D5 /* customer.swift */; };
+		E0CD4D96582FDDB4194DC88BB67DC4CC /* DELETE*|addresses|6702759.json in Resources */ = {isa = PBXBuildFile; fileRef = 812B2909493357626A3A9702D1E53EB6 /* DELETE*|addresses|6702759.json */; };
+		E0DE531EED316FE416C6599BF0527D4D /* POST*|orders.json in Resources */ = {isa = PBXBuildFile; fileRef = 93FDDC5BCA83505593A58CA86BFBF851 /* POST*|orders.json */; };
+		E28A5D0ADC4B5EDD2AE14AC2AEFBF52A /* root.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A12FDAD29AC96D6E81A64E6D2BDFB5 /* root.swift */; };
+		E3706147D5957DF65BA2DBE530B64D8C /* POST*|address-checks.json in Resources */ = {isa = PBXBuildFile; fileRef = 2841CC657D79D120D56C0C0B83CC3B86 /* POST*|address-checks.json */; };
+		E3B3041376E6760AE0CE8C9586D63236 /* !customer-not-auth.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C70FA17D28F6B60FE9C96F541888317 /* !customer-not-auth.json */; };
+		E4647BFB1A8502271D8B7BF258A5BF77 /* POST*|checkouts.json in Resources */ = {isa = PBXBuildFile; fileRef = DFA4DF572BA03856BC586CA15ED868A6 /* POST*|checkouts.json */; };
+		E6D700F730294617F4487B079E120159 /* GET*|articles|AZ711N008-G11.json in Resources */ = {isa = PBXBuildFile; fileRef = 92088B658556068A367B08E1E4936359 /* GET*|articles|AZ711N008-G11.json */; };
 		E780B0251A50C3F147D958FA96EE4D85 /* GET*|articles|LA254E005-Q11.json in Resources */ = {isa = PBXBuildFile; fileRef = 18921BBF9B098C14C09110407E9D0EB1 /* GET*|articles|LA254E005-Q11.json */; };
 		EB68C5AB75D7DFEAA44BDA6A0F123FEB /* GET*|articles|MK151F00E-Q11.json in Resources */ = {isa = PBXBuildFile; fileRef = 1F475234B6045D8C2D64970F7AA4C7F6 /* GET*|articles|MK151F00E-Q11.json */; };
-		43457A065FCFCCDC1D6945E2CC0AFE12 /* GET*|articles|MK151F00E-Q11.json in Resources */ = {isa = PBXBuildFile; fileRef = 1F475234B6045D8C2D64970F7AA4C7F6 /* GET*|articles|MK151F00E-Q11.json */; };
-		4F84E7DDA8C48A7CF85F05A598E20392 /* GET*|config.json in Resources */ = {isa = PBXBuildFile; fileRef = FAC7C79D277014FC00CD35427E010B0D /* GET*|config.json */; };
-		C84F01DDE46BF77B5EE6B09C5267430A /* GET*|config.json in Resources */ = {isa = PBXBuildFile; fileRef = FAC7C79D277014FC00CD35427E010B0D /* GET*|config.json */; };
-		3885B3BD7BEF34D3AC5430379339B952 /* HttpServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FCAE6C2E00BC14146D7A5490970DFD /* HttpServer.swift */; };
-		BD308837CE08A9B3B952473D0C55AB0F /* HttpServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FCAE6C2E00BC14146D7A5490970DFD /* HttpServer.swift */; };
-		57D3AD978D8116B827B77CA671CA08A8 /* NSBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774E15C0298E7554801A950D57B1794B /* NSBundle.swift */; };
-		C85677CF1DE7D0C335AC48FE83C3654E /* NSBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774E15C0298E7554801A950D57B1794B /* NSBundle.swift */; };
-		E3706147D5957DF65BA2DBE530B64D8C /* POST*|address-checks.json in Resources */ = {isa = PBXBuildFile; fileRef = 2841CC657D79D120D56C0C0B83CC3B86 /* POST*|address-checks.json */; };
-		062E4BE07D2AC78A1CFA23BE1DA14633 /* POST*|address-checks.json in Resources */ = {isa = PBXBuildFile; fileRef = 2841CC657D79D120D56C0C0B83CC3B86 /* POST*|address-checks.json */; };
-		2CD0614AAEA15E47F4E9E268B1580378 /* POST*|addresses.json in Resources */ = {isa = PBXBuildFile; fileRef = 241E00DD9081F51185D5BB238FCF02DD /* POST*|addresses.json */; };
-		6737D0D98CE1339B90399C66D79230A0 /* POST*|addresses.json in Resources */ = {isa = PBXBuildFile; fileRef = 241E00DD9081F51185D5BB238FCF02DD /* POST*|addresses.json */; };
-		398F5BDE0F8504306DCD314FC9EE0E01 /* POST*|carts.json in Resources */ = {isa = PBXBuildFile; fileRef = 426274DDC1245E783F3D2560060CB2EF /* POST*|carts.json */; };
-		2EBF086F6D93D27F5EFB05CF8BBE843A /* POST*|carts.json in Resources */ = {isa = PBXBuildFile; fileRef = 426274DDC1245E783F3D2560060CB2EF /* POST*|carts.json */; };
-		2C9AF11FC81D411E5D2FC2FE45658C2F /* POST*|checkouts.json in Resources */ = {isa = PBXBuildFile; fileRef = DFA4DF572BA03856BC586CA15ED868A6 /* POST*|checkouts.json */; };
-		E4647BFB1A8502271D8B7BF258A5BF77 /* POST*|checkouts.json in Resources */ = {isa = PBXBuildFile; fileRef = DFA4DF572BA03856BC586CA15ED868A6 /* POST*|checkouts.json */; };
-		E0DE531EED316FE416C6599BF0527D4D /* POST*|orders.json in Resources */ = {isa = PBXBuildFile; fileRef = 93FDDC5BCA83505593A58CA86BFBF851 /* POST*|orders.json */; };
-		16B554226571FB6039BDF21AE78D157E /* POST*|orders.json in Resources */ = {isa = PBXBuildFile; fileRef = 93FDDC5BCA83505593A58CA86BFBF851 /* POST*|orders.json */; };
-		55824B2EEBFE02A86F0E7817505D7ACC /* PUT*|addresses|6616154.json in Resources */ = {isa = PBXBuildFile; fileRef = 69695F795A38316243DB669005333657 /* PUT*|addresses|6616154.json */; };
-		DE633D80016A67491AAB451972BA0F8F /* PUT*|addresses|6616154.json in Resources */ = {isa = PBXBuildFile; fileRef = 69695F795A38316243DB669005333657 /* PUT*|addresses|6616154.json */; };
-		F240735B85D0938406D375E2B6870E98 /* PUT*|addresses|6702748.json in Resources */ = {isa = PBXBuildFile; fileRef = BBFFA3476A56951225F82BB64F48E62B /* PUT*|addresses|6702748.json */; };
 		ED9580A03E3BFECBA487FBD158D76FEF /* PUT*|addresses|6702748.json in Resources */ = {isa = PBXBuildFile; fileRef = BBFFA3476A56951225F82BB64F48E62B /* PUT*|addresses|6702748.json */; };
-		9BA018D1A6DC1001792DE9BD8BA88F39 /* PUT*|addresses|6702759.json in Resources */ = {isa = PBXBuildFile; fileRef = E88C58D6E7FC18ED55C24290F11BE21A /* PUT*|addresses|6702759.json */; };
-		9272ADB29082F5AF4F2EE6004230A53A /* PUT*|addresses|6702759.json in Resources */ = {isa = PBXBuildFile; fileRef = E88C58D6E7FC18ED55C24290F11BE21A /* PUT*|addresses|6702759.json */; };
-		629565C5D03102052BC9F9FDFC8374C9 /* PUT*|checkouts|CHECKOUT_ID.json in Resources */ = {isa = PBXBuildFile; fileRef = 93E28FCF102E72B605D335A776D66776 /* PUT*|checkouts|CHECKOUT_ID.json */; };
-		8D3AE68C49E1A738EA42EDF45E0FF4F4 /* PUT*|checkouts|CHECKOUT_ID.json in Resources */ = {isa = PBXBuildFile; fileRef = 93E28FCF102E72B605D335A776D66776 /* PUT*|checkouts|CHECKOUT_ID.json */; };
-		3A2D2C93BBA0EE2ED7480F42FB1C3C31 /* Swifter.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 4AA029A129260745C4942EF8C034D83E /* Swifter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8310FD6D7EAB31888EBC5A84A3493D55 /* Swifter.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 18A5038C4E6BD35EB954EA2DB2CF13AB /* Swifter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		AD3EA5D09D361926C45D9EF77FD74D43 /* Swifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A5038C4E6BD35EB954EA2DB2CF13AB /* Swifter.framework */; };
+		EE239AB58574DBF5BCBDBBA391E22651 /* GET*|articles|L2711E002-Q11.json in Resources */ = {isa = PBXBuildFile; fileRef = 52314B18BD758E4F4DAE92D6C7867BEE /* GET*|articles|L2711E002-Q11.json */; };
+		F240735B85D0938406D375E2B6870E98 /* PUT*|addresses|6702748.json in Resources */ = {isa = PBXBuildFile; fileRef = BBFFA3476A56951225F82BB64F48E62B /* PUT*|addresses|6702748.json */; };
+		F61D12E7B1B4DA5165EEFE1D3571C880 /* GET*|articles|AD541L009-G11.json in Resources */ = {isa = PBXBuildFile; fileRef = CB805E7568D813D0C4EB07411B72E491 /* GET*|articles|AD541L009-G11.json */; };
 		FC6827F0BEDB8CB6E8EB5B4FA6E824D8 /* Swifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A5038C4E6BD35EB954EA2DB2CF13AB /* Swifter.framework */; };
-		0ABF11E1EE44DA367512F7B0197E45D1 /* SwiftyJSON.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5EA1BDBEDFD8CF67629C52AE1F9AA83D /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7BD4FF2BCB0C1B7C42399553075AAE3A /* SwiftyJSON.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5EA1BDBEDFD8CF67629C52AE1F9AA83D /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4E1301BBF0B0F9A97678F81AA2776861 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EA1BDBEDFD8CF67629C52AE1F9AA83D /* SwiftyJSON.framework */; };
-		641A2668CE64DD67664E7BEDD95287FF /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EA1BDBEDFD8CF67629C52AE1F9AA83D /* SwiftyJSON.framework */; };
-		6B8D00F6A8A7623EDC6C802B0ACF2DB1 /* authorize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515C868CEC51956D7AB4E80D708654BC /* authorize.swift */; };
-		B91AB4810221943184693E3627A04116 /* authorize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515C868CEC51956D7AB4E80D708654BC /* authorize.swift */; };
-		752AD4DC7CCCA0A5BE46A02D5AC5C848 /* customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE50F14CF22BB8970E3EA7156738A8D5 /* customer.swift */; };
-		DFCA1DE95AC6227FF82D62DAA4E54AF6 /* customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE50F14CF22BB8970E3EA7156738A8D5 /* customer.swift */; };
-		C194886D6A3ADDEB65DD6A4F0013B3EA /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DAE00CB3FFDF2325A917AA51178BF3 /* main.swift */; };
-		0DDEF5CB582E8362BD50ABBEB8C71B42 /* root.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A12FDAD29AC96D6E81A64E6D2BDFB5 /* root.swift */; };
-		E28A5D0ADC4B5EDD2AE14AC2AEFBF52A /* root.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A12FDAD29AC96D6E81A64E6D2BDFB5 /* root.swift */; };
-		79B050A23B1CDDF51B8B7B2AA5FAF073 /* static-jsons.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA560C48D8E31572681D63D800308B84 /* static-jsons.swift */; };
-		B343C35805059D57DD16B6B97D5EE277 /* static-jsons.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA560C48D8E31572681D63D800308B84 /* static-jsons.swift */; };
+		FDD5B3119903B7320EB4565149F77360 /* GET*|articles|AZ711N007-Q11.json in Resources */ = {isa = PBXBuildFile; fileRef = 30E3CDE4BE5DB29315837978D5509155 /* GET*|articles|AZ711N007-Q11.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,55 +149,55 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		815037129A1261499B9D2861EDAA6F98 /* !customer-auth.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "!customer-auth.json"; sourceTree = "<group>"; };
-		9C70FA17D28F6B60FE9C96F541888317 /* !customer-not-auth.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "!customer-not-auth.json"; sourceTree = "<group>"; };
-		D46C232E5D94E641359CC993B3772C18 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = ../../Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		F7C2FA3A57F587B64A91D179D83BE578 /* AtlasMockAPI-macOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AtlasMockAPI-macOS.h"; sourceTree = "<group>"; };
-		ABB5A5EE8F076164F43D0AB5ACC9285B /* AtlasMockAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AtlasMockAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8E3778589D321DAEEFC3A19E61372FA8 /* AtlasMockAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtlasMockAPI.h; sourceTree = "<group>"; };
-		6678498B12532BC9FB37041A2AED1DE4 /* AtlasMockAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasMockAPI.swift; sourceTree = "<group>"; };
-		2F233AE2A48887D4F5E1D37453A3E21F /* AtlasMockAPIRunner */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AtlasMockAPIRunner; sourceTree = BUILT_PRODUCTS_DIR; };
-		916DA4EC8C6CDF184EA2662AFB5E1DD2 /* AtlasMockAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtlasMockAPITests.swift; sourceTree = "<group>"; };
-		B3478D1ADA6EF6092385EAE781DD3CD6 /* AtlasMockAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AtlasMockAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C95290F96219584B6ACEAEABDD8E348C /* AtlasMockAPI_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AtlasMockAPI_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7B77BFA55E90452C29F820964E76C552 /* DELETE*|addresses|6616154.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "DELETE*|addresses|6616154.json"; sourceTree = "<group>"; };
-		E6077DEF558A4F20255F21C94C9C7193 /* DELETE*|addresses|6702748.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "DELETE*|addresses|6702748.json"; sourceTree = "<group>"; };
-		812B2909493357626A3A9702D1E53EB6 /* DELETE*|addresses|6702759.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "DELETE*|addresses|6702759.json"; sourceTree = "<group>"; };
-		BA19F28255577F57BCC4022C7ECBF3C0 /* GET*|addresses.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|addresses.json"; sourceTree = "<group>"; };
-		BED4F477EC901DB7C23CF95D9A19E120 /* GET*|articles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles.json"; sourceTree = "<group>"; };
-		CB805E7568D813D0C4EB07411B72E491 /* GET*|articles|AD541L009-G11.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles|AD541L009-G11.json"; sourceTree = "<group>"; };
-		07F98C93F4BF4B3DEEA237CA4A4436DD /* GET*|articles|AZ711M001-B11.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles|AZ711M001-B11.json"; sourceTree = "<group>"; };
-		30E3CDE4BE5DB29315837978D5509155 /* GET*|articles|AZ711N007-Q11.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles|AZ711N007-Q11.json"; sourceTree = "<group>"; };
-		92088B658556068A367B08E1E4936359 /* GET*|articles|AZ711N008-G11.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles|AZ711N008-G11.json"; sourceTree = "<group>"; };
-		24ED23F1FECE70477E1829FEBDB89430 /* GET*|articles|AZ711N00B-Q11.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles|AZ711N00B-Q11.json"; sourceTree = "<group>"; };
-		490248B98C610B03DF3ECF90B114EB93 /* GET*|articles|EV451G023-Q11.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles|EV451G023-Q11.json"; sourceTree = "<group>"; };
-		0CBB7A8B24835A3D394D49201FD5B6EB /* GET*|articles|GU121D08Z-Q11.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles|GU121D08Z-Q11.json"; sourceTree = "<group>"; };
-		52314B18BD758E4F4DAE92D6C7867BEE /* GET*|articles|L2711E002-Q11.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles|L2711E002-Q11.json"; sourceTree = "<group>"; };
-		18921BBF9B098C14C09110407E9D0EB1 /* GET*|articles|LA254E005-Q11.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles|LA254E005-Q11.json"; sourceTree = "<group>"; };
-		1F475234B6045D8C2D64970F7AA4C7F6 /* GET*|articles|MK151F00E-Q11.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles|MK151F00E-Q11.json"; sourceTree = "<group>"; };
-		FAC7C79D277014FC00CD35427E010B0D /* GET*|config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|config.json"; sourceTree = "<group>"; };
-		03FCAE6C2E00BC14146D7A5490970DFD /* HttpServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpServer.swift; sourceTree = "<group>"; };
 		00A19F915A836EDF5ECDA01CD0F136B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		25AA9D7CAAB78B0F3310F0CBD901FEBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AB2917E6A279B62A34C89CF1270C36FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		774E15C0298E7554801A950D57B1794B /* NSBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSBundle.swift; sourceTree = "<group>"; };
-		2841CC657D79D120D56C0C0B83CC3B86 /* POST*|address-checks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "POST*|address-checks.json"; sourceTree = "<group>"; };
-		241E00DD9081F51185D5BB238FCF02DD /* POST*|addresses.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "POST*|addresses.json"; sourceTree = "<group>"; };
-		426274DDC1245E783F3D2560060CB2EF /* POST*|carts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "POST*|carts.json"; sourceTree = "<group>"; };
-		DFA4DF572BA03856BC586CA15ED868A6 /* POST*|checkouts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "POST*|checkouts.json"; sourceTree = "<group>"; };
-		93FDDC5BCA83505593A58CA86BFBF851 /* POST*|orders.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "POST*|orders.json"; sourceTree = "<group>"; };
-		69695F795A38316243DB669005333657 /* PUT*|addresses|6616154.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "PUT*|addresses|6616154.json"; sourceTree = "<group>"; };
-		BBFFA3476A56951225F82BB64F48E62B /* PUT*|addresses|6702748.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "PUT*|addresses|6702748.json"; sourceTree = "<group>"; };
-		E88C58D6E7FC18ED55C24290F11BE21A /* PUT*|addresses|6702759.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "PUT*|addresses|6702759.json"; sourceTree = "<group>"; };
-		93E28FCF102E72B605D335A776D66776 /* PUT*|checkouts|CHECKOUT_ID.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "PUT*|checkouts|CHECKOUT_ID.json"; sourceTree = "<group>"; };
+		03FCAE6C2E00BC14146D7A5490970DFD /* HttpServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpServer.swift; sourceTree = "<group>"; };
+		07F98C93F4BF4B3DEEA237CA4A4436DD /* GET*|articles|AZ711M001-B11.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles|AZ711M001-B11.json"; sourceTree = "<group>"; };
+		0CBB7A8B24835A3D394D49201FD5B6EB /* GET*|articles|GU121D08Z-Q11.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles|GU121D08Z-Q11.json"; sourceTree = "<group>"; };
+		18921BBF9B098C14C09110407E9D0EB1 /* GET*|articles|LA254E005-Q11.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles|LA254E005-Q11.json"; sourceTree = "<group>"; };
 		18A5038C4E6BD35EB954EA2DB2CF13AB /* Swifter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swifter.framework; path = ../../Carthage/Build/iOS/Swifter.framework; sourceTree = "<group>"; };
+		1F475234B6045D8C2D64970F7AA4C7F6 /* GET*|articles|MK151F00E-Q11.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles|MK151F00E-Q11.json"; sourceTree = "<group>"; };
+		241E00DD9081F51185D5BB238FCF02DD /* POST*|addresses.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "POST*|addresses.json"; sourceTree = "<group>"; };
+		24ED23F1FECE70477E1829FEBDB89430 /* GET*|articles|AZ711N00B-Q11.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles|AZ711N00B-Q11.json"; sourceTree = "<group>"; };
+		25AA9D7CAAB78B0F3310F0CBD901FEBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2841CC657D79D120D56C0C0B83CC3B86 /* POST*|address-checks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "POST*|address-checks.json"; sourceTree = "<group>"; };
+		2F233AE2A48887D4F5E1D37453A3E21F /* AtlasMockAPIRunner */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AtlasMockAPIRunner; sourceTree = BUILT_PRODUCTS_DIR; };
+		30E3CDE4BE5DB29315837978D5509155 /* GET*|articles|AZ711N007-Q11.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles|AZ711N007-Q11.json"; sourceTree = "<group>"; };
+		426274DDC1245E783F3D2560060CB2EF /* POST*|carts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "POST*|carts.json"; sourceTree = "<group>"; };
+		490248B98C610B03DF3ECF90B114EB93 /* GET*|articles|EV451G023-Q11.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles|EV451G023-Q11.json"; sourceTree = "<group>"; };
 		4AA029A129260745C4942EF8C034D83E /* Swifter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swifter.framework; path = ../Carthage/Build/Mac/Swifter.framework; sourceTree = "<group>"; };
-		5EA1BDBEDFD8CF67629C52AE1F9AA83D /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = ../../Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		515C868CEC51956D7AB4E80D708654BC /* authorize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = authorize.swift; sourceTree = "<group>"; };
-		FE50F14CF22BB8970E3EA7156738A8D5 /* customer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customer.swift; sourceTree = "<group>"; };
+		52314B18BD758E4F4DAE92D6C7867BEE /* GET*|articles|L2711E002-Q11.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles|L2711E002-Q11.json"; sourceTree = "<group>"; };
+		5EA1BDBEDFD8CF67629C52AE1F9AA83D /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = ../../Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		6678498B12532BC9FB37041A2AED1DE4 /* AtlasMockAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasMockAPI.swift; sourceTree = "<group>"; };
+		69695F795A38316243DB669005333657 /* PUT*|addresses|6616154.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "PUT*|addresses|6616154.json"; sourceTree = "<group>"; };
+		774E15C0298E7554801A950D57B1794B /* NSBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSBundle.swift; sourceTree = "<group>"; };
+		7B77BFA55E90452C29F820964E76C552 /* DELETE*|addresses|6616154.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "DELETE*|addresses|6616154.json"; sourceTree = "<group>"; };
+		812B2909493357626A3A9702D1E53EB6 /* DELETE*|addresses|6702759.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "DELETE*|addresses|6702759.json"; sourceTree = "<group>"; };
+		815037129A1261499B9D2861EDAA6F98 /* !customer-auth.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "!customer-auth.json"; sourceTree = "<group>"; };
+		8E3778589D321DAEEFC3A19E61372FA8 /* AtlasMockAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtlasMockAPI.h; sourceTree = "<group>"; };
+		916DA4EC8C6CDF184EA2662AFB5E1DD2 /* AtlasMockAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtlasMockAPITests.swift; sourceTree = "<group>"; };
+		92088B658556068A367B08E1E4936359 /* GET*|articles|AZ711N008-G11.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles|AZ711N008-G11.json"; sourceTree = "<group>"; };
+		93E28FCF102E72B605D335A776D66776 /* PUT*|checkouts|CHECKOUT_ID.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "PUT*|checkouts|CHECKOUT_ID.json"; sourceTree = "<group>"; };
+		93FDDC5BCA83505593A58CA86BFBF851 /* POST*|orders.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "POST*|orders.json"; sourceTree = "<group>"; };
+		9C70FA17D28F6B60FE9C96F541888317 /* !customer-not-auth.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "!customer-not-auth.json"; sourceTree = "<group>"; };
+		AB2917E6A279B62A34C89CF1270C36FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ABB5A5EE8F076164F43D0AB5ACC9285B /* AtlasMockAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AtlasMockAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3478D1ADA6EF6092385EAE781DD3CD6 /* AtlasMockAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AtlasMockAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA19F28255577F57BCC4022C7ECBF3C0 /* GET*|addresses.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|addresses.json"; sourceTree = "<group>"; };
+		BBFFA3476A56951225F82BB64F48E62B /* PUT*|addresses|6702748.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "PUT*|addresses|6702748.json"; sourceTree = "<group>"; };
+		BED4F477EC901DB7C23CF95D9A19E120 /* GET*|articles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles.json"; sourceTree = "<group>"; };
 		C3DAE00CB3FFDF2325A917AA51178BF3 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		E6A12FDAD29AC96D6E81A64E6D2BDFB5 /* root.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = root.swift; sourceTree = "<group>"; };
+		C95290F96219584B6ACEAEABDD8E348C /* AtlasMockAPI_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AtlasMockAPI_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA560C48D8E31572681D63D800308B84 /* static-jsons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "static-jsons.swift"; sourceTree = "<group>"; };
+		CB805E7568D813D0C4EB07411B72E491 /* GET*|articles|AD541L009-G11.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles|AD541L009-G11.json"; sourceTree = "<group>"; };
+		D46C232E5D94E641359CC993B3772C18 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = ../../Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		DFA4DF572BA03856BC586CA15ED868A6 /* POST*|checkouts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "POST*|checkouts.json"; sourceTree = "<group>"; };
+		E6077DEF558A4F20255F21C94C9C7193 /* DELETE*|addresses|6702748.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "DELETE*|addresses|6702748.json"; sourceTree = "<group>"; };
+		E6A12FDAD29AC96D6E81A64E6D2BDFB5 /* root.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = root.swift; sourceTree = "<group>"; };
+		E88C58D6E7FC18ED55C24290F11BE21A /* PUT*|addresses|6702759.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "PUT*|addresses|6702759.json"; sourceTree = "<group>"; };
+		F7C2FA3A57F587B64A91D179D83BE578 /* AtlasMockAPI-macOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AtlasMockAPI-macOS.h"; sourceTree = "<group>"; };
+		FAC7C79D277014FC00CD35427E010B0D /* GET*|config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|config.json"; sourceTree = "<group>"; };
+		FE50F14CF22BB8970E3EA7156738A8D5 /* customer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,6 +276,57 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		813C16721DB6401B0002D45E /* articles */ = {
+			isa = PBXGroup;
+			children = (
+				BED4F477EC901DB7C23CF95D9A19E120 /* GET*|articles.json */,
+				CB805E7568D813D0C4EB07411B72E491 /* GET*|articles|AD541L009-G11.json */,
+				07F98C93F4BF4B3DEEA237CA4A4436DD /* GET*|articles|AZ711M001-B11.json */,
+				30E3CDE4BE5DB29315837978D5509155 /* GET*|articles|AZ711N007-Q11.json */,
+				92088B658556068A367B08E1E4936359 /* GET*|articles|AZ711N008-G11.json */,
+				24ED23F1FECE70477E1829FEBDB89430 /* GET*|articles|AZ711N00B-Q11.json */,
+				490248B98C610B03DF3ECF90B114EB93 /* GET*|articles|EV451G023-Q11.json */,
+				0CBB7A8B24835A3D394D49201FD5B6EB /* GET*|articles|GU121D08Z-Q11.json */,
+				52314B18BD758E4F4DAE92D6C7867BEE /* GET*|articles|L2711E002-Q11.json */,
+				18921BBF9B098C14C09110407E9D0EB1 /* GET*|articles|LA254E005-Q11.json */,
+				1F475234B6045D8C2D64970F7AA4C7F6 /* GET*|articles|MK151F00E-Q11.json */,
+			);
+			name = articles;
+			sourceTree = "<group>";
+		};
+		813C16731DB6402A0002D45E /* addresses */ = {
+			isa = PBXGroup;
+			children = (
+				7B77BFA55E90452C29F820964E76C552 /* DELETE*|addresses|6616154.json */,
+				E6077DEF558A4F20255F21C94C9C7193 /* DELETE*|addresses|6702748.json */,
+				812B2909493357626A3A9702D1E53EB6 /* DELETE*|addresses|6702759.json */,
+				BA19F28255577F57BCC4022C7ECBF3C0 /* GET*|addresses.json */,
+				241E00DD9081F51185D5BB238FCF02DD /* POST*|addresses.json */,
+				69695F795A38316243DB669005333657 /* PUT*|addresses|6616154.json */,
+				BBFFA3476A56951225F82BB64F48E62B /* PUT*|addresses|6702748.json */,
+				E88C58D6E7FC18ED55C24290F11BE21A /* PUT*|addresses|6702759.json */,
+			);
+			name = addresses;
+			sourceTree = "<group>";
+		};
+		813C16741DB640360002D45E /* checkouts */ = {
+			isa = PBXGroup;
+			children = (
+				DFA4DF572BA03856BC586CA15ED868A6 /* POST*|checkouts.json */,
+				93E28FCF102E72B605D335A776D66776 /* PUT*|checkouts|CHECKOUT_ID.json */,
+			);
+			name = checkouts;
+			sourceTree = "<group>";
+		};
+		813C16751DB640400002D45E /* customer */ = {
+			isa = PBXGroup;
+			children = (
+				815037129A1261499B9D2861EDAA6F98 /* !customer-auth.json */,
+				9C70FA17D28F6B60FE9C96F541888317 /* !customer-not-auth.json */,
+			);
+			name = customer;
+			sourceTree = "<group>";
+		};
 		9C08D20CC26D285554B00A206F697AE6 = {
 			isa = PBXGroup;
 			children = (
@@ -334,33 +385,14 @@
 		EC3974C4DBAB12AD129AA49F272977D3 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
-				815037129A1261499B9D2861EDAA6F98 /* !customer-auth.json */,
-				9C70FA17D28F6B60FE9C96F541888317 /* !customer-not-auth.json */,
-				7B77BFA55E90452C29F820964E76C552 /* DELETE*|addresses|6616154.json */,
-				E6077DEF558A4F20255F21C94C9C7193 /* DELETE*|addresses|6702748.json */,
-				812B2909493357626A3A9702D1E53EB6 /* DELETE*|addresses|6702759.json */,
-				BA19F28255577F57BCC4022C7ECBF3C0 /* GET*|addresses.json */,
-				BED4F477EC901DB7C23CF95D9A19E120 /* GET*|articles.json */,
-				CB805E7568D813D0C4EB07411B72E491 /* GET*|articles|AD541L009-G11.json */,
-				07F98C93F4BF4B3DEEA237CA4A4436DD /* GET*|articles|AZ711M001-B11.json */,
-				30E3CDE4BE5DB29315837978D5509155 /* GET*|articles|AZ711N007-Q11.json */,
-				92088B658556068A367B08E1E4936359 /* GET*|articles|AZ711N008-G11.json */,
-				24ED23F1FECE70477E1829FEBDB89430 /* GET*|articles|AZ711N00B-Q11.json */,
-				490248B98C610B03DF3ECF90B114EB93 /* GET*|articles|EV451G023-Q11.json */,
-				0CBB7A8B24835A3D394D49201FD5B6EB /* GET*|articles|GU121D08Z-Q11.json */,
-				52314B18BD758E4F4DAE92D6C7867BEE /* GET*|articles|L2711E002-Q11.json */,
-				18921BBF9B098C14C09110407E9D0EB1 /* GET*|articles|LA254E005-Q11.json */,
-				1F475234B6045D8C2D64970F7AA4C7F6 /* GET*|articles|MK151F00E-Q11.json */,
+				813C16751DB640400002D45E /* customer */,
+				813C16731DB6402A0002D45E /* addresses */,
+				813C16721DB6401B0002D45E /* articles */,
+				813C16741DB640360002D45E /* checkouts */,
 				FAC7C79D277014FC00CD35427E010B0D /* GET*|config.json */,
 				2841CC657D79D120D56C0C0B83CC3B86 /* POST*|address-checks.json */,
-				241E00DD9081F51185D5BB238FCF02DD /* POST*|addresses.json */,
 				426274DDC1245E783F3D2560060CB2EF /* POST*|carts.json */,
-				DFA4DF572BA03856BC586CA15ED868A6 /* POST*|checkouts.json */,
 				93FDDC5BCA83505593A58CA86BFBF851 /* POST*|orders.json */,
-				69695F795A38316243DB669005333657 /* PUT*|addresses|6616154.json */,
-				BBFFA3476A56951225F82BB64F48E62B /* PUT*|addresses|6702748.json */,
-				E88C58D6E7FC18ED55C24290F11BE21A /* PUT*|addresses|6702759.json */,
-				93E28FCF102E72B605D335A776D66776 /* PUT*|checkouts|CHECKOUT_ID.json */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
