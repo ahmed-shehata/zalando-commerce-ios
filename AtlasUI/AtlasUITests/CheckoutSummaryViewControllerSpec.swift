@@ -10,48 +10,58 @@ import AtlasMockAPI
 
 class CheckoutSummaryViewControllerSpec: QuickSpec {
 
+    override class func setUp() {
+        super.setUp()
+        try! AtlasMockAPI.startServer() // swiftlint:disable:this force_try
+    }
+
+    override class func tearDown() {
+        super.tearDown()
+        try! AtlasMockAPI.stopServer() // swiftlint:disable:this force_try
+    }
+
     override func spec() {
         describe("CheckoutSummaryViewController") {
-            try! AtlasMockAPI.startServer() // swiftlint:disable:this force_try
 
-            waitUntil(timeout: 10) { done in
-                self.viewController { viewController in
+            it("Should have a valid state") {
+                waitUntil(timeout: 10) { done in
+                    self.viewController { viewController in
 
-                    var originalViewModel = viewController.checkoutViewModel
+                        var originalViewModel = viewController.checkoutViewModel
 
-                    // Initial state
-                    expect(viewController.checkoutViewModel.customer).toNot(beNil())
-                    expect(viewController.viewState).to(equal(CheckoutViewState.CheckoutReady))
-                    expect(UserMessage.errorDisplayed).to(equal(false))
+                        // Initial state
+                        expect(viewController.checkoutViewModel.customer).toNot(beNil())
+                        expect(viewController.viewState).to(equal(CheckoutViewState.CheckoutReady))
+                        expect(UserMessage.errorDisplayed).to(equal(false))
 
-                    // Change price
-                    self.clearState(viewController)
-                    viewController.checkoutViewModel.cart = viewController.checkoutViewModel.cart?.cartWithDifferentPrice
-                    expect(viewController.checkoutViewModel.customer).toNot(beNil())
-                    expect(viewController.viewState).to(equal(CheckoutViewState.CheckoutReady))
-                    expect(UserMessage.errorDisplayed).to(equal(true))
+                        // Change price
+                        self.clearState(viewController)
+                        viewController.checkoutViewModel.cart = viewController.checkoutViewModel.cart?.cartWithDifferentPrice
+                        expect(viewController.checkoutViewModel.customer).toNot(beNil())
+                        expect(viewController.viewState).to(equal(CheckoutViewState.CheckoutReady))
+                        expect(UserMessage.errorDisplayed).to(equal(true))
 
-                    // Reassign view model after removing the customer
-                    self.clearState(viewController)
-                    originalViewModel.customer = nil
-                    originalViewModel.cart = viewController.checkoutViewModel.cart
-                    viewController.checkoutViewModel = originalViewModel
-                    expect(viewController.checkoutViewModel.customer).toNot(beNil())
-                    expect(viewController.viewState).to(equal(CheckoutViewState.CheckoutReady))
-                    expect(UserMessage.errorDisplayed).to(equal(false))
+                        // Reassign view model after removing the customer
+                        self.clearState(viewController)
+                        originalViewModel.customer = nil
+                        originalViewModel.cart = viewController.checkoutViewModel.cart
+                        viewController.checkoutViewModel = originalViewModel
+                        expect(viewController.checkoutViewModel.customer).toNot(beNil())
+                        expect(viewController.viewState).to(equal(CheckoutViewState.CheckoutReady))
+                        expect(UserMessage.errorDisplayed).to(equal(false))
 
-                    // Remove Checkout
-                    self.clearState(viewController)
-                    viewController.checkoutViewModel.checkout = nil
-                    expect(viewController.checkoutViewModel.customer).toNot(beNil())
-                    expect(viewController.viewState).to(equal(CheckoutViewState.CheckoutIncomplete))
-                    expect(UserMessage.errorDisplayed).to(equal(true))
+                        // Remove Checkout
+                        self.clearState(viewController)
+                        viewController.checkoutViewModel.checkout = nil
+                        expect(viewController.checkoutViewModel.customer).toNot(beNil())
+                        expect(viewController.viewState).to(equal(CheckoutViewState.CheckoutIncomplete))
+                        expect(UserMessage.errorDisplayed).to(equal(true))
 
-                    done()
+                        done()
+                    }
                 }
             }
 
-            try! AtlasMockAPI.stopServer() // swiftlint:disable:this force_try
         }
     }
 

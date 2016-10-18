@@ -7,15 +7,26 @@ import AtlasSDK
 
 final class SizeListSelectionViewController: UIViewController, CheckoutProviderType {
 
-    private let article: Article
     internal let checkout: AtlasCheckout
+    internal let sku: String
+    internal var tableViewDelegate: SizeListTableViewDelegate? {
+        didSet {
+            tableView.delegate = tableViewDelegate
+        }
+    }
+    internal var tableViewDataSource: SizeListTableViewDataSource? {
+        didSet {
+            tableView.dataSource = tableViewDataSource
+            tableView.hidden = tableViewDataSource?.article.hasSingleUnit ?? true
+            tableView.reloadData()
+        }
+    }
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = UIColor.clearColor()
         tableView.opaque = false
-        tableView.dataSource = self
-        tableView.delegate = self
+        tableView.hidden = true
         return tableView
     }()
 
@@ -25,9 +36,9 @@ final class SizeListSelectionViewController: UIViewController, CheckoutProviderT
         return view
     }()
 
-    init(checkout: AtlasCheckout, article: Article) {
+    init(checkout: AtlasCheckout, sku: String) {
         self.checkout = checkout
-        self.article = article
+        self.sku = sku
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -38,12 +49,8 @@ final class SizeListSelectionViewController: UIViewController, CheckoutProviderT
     override func viewDidLoad() {
         super.viewDidLoad()
         buildView()
+        fetchSizes()
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
-    }
-
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        tableView.reloadData()
     }
 
 }
@@ -56,6 +63,7 @@ extension SizeListSelectionViewController: UIBuilder {
         view.backgroundColor = .clearColor()
         view.opaque = false
         tableView.registerReusableCell(UnitSizeTableViewCell.self)
+        showCancelButton()
     }
 
     internal func configureConstraints() {
@@ -69,56 +77,46 @@ extension SizeListSelectionViewController: UIBuilder {
 
 }
 
-extension SizeListSelectionViewController: UITableViewDataSource {
+extension SizeListSelectionViewController {
 
-    internal func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return article.availableUnits.count
-    }
-
-    internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(UnitSizeTableViewCell.self, forIndexPath: indexPath) { cell in
-            let unit = self.article.availableUnits[indexPath.item]
-            cell.configureData(unit)
-            cell.accessibilityIdentifier = "size-cell-\(indexPath.row)"
-            return cell
+    private func fetchSizes() {
+        loaderView.show()
+        checkout.client.article(forSKU: sku) { [weak self] result in
+            self?.loaderView.hide()
+            guard let article = result.process(forceFullScreenError: true) else { return }
+            self?.tableViewDelegate = SizeListTableViewDelegate(article: article, completion: self?.showCheckoutScreen)
+            self?.tableViewDataSource = SizeListTableViewDataSource(article: article)
+            self?.showCancelButton()
         }
     }
 
-}
-
-extension SizeListSelectionViewController: UITableViewDelegate {
-
-    internal func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-
+    private func showCheckoutScreen(selectedArticleUnit: SelectedArticleUnit) {
+        let hasSingleUnit = selectedArticleUnit.article.hasSingleUnit
         guard Atlas.isUserLoggedIn() else {
-            let selectedArticleUnit = SelectedArticleUnit(article: article, selectedUnitIndex: indexPath.row)
             let checkoutViewModel = CheckoutViewModel(selectedArticleUnit: selectedArticleUnit)
-            return displayCheckoutSummaryViewController(checkoutViewModel)
+            return displayCheckoutSummaryViewController(checkoutViewModel, animated: !hasSingleUnit)
         }
 
         loaderView.show()
-        self.checkout.client.customer { result in
-            self.loaderView.hide()
+        checkout.client.customer { [weak self] result in
+            guard let customer = result.process(forceFullScreenError: hasSingleUnit) else {
+                self?.loaderView.hide()
+                return
+            }
 
-            guard let customer = result.process() else { return }
-            let selectedArticleUnit = SelectedArticleUnit(article: self.article, selectedUnitIndex: indexPath.row)
-
-            self.loaderView.show()
-            self.checkout.createCheckoutViewModel(forArticleUnit: selectedArticleUnit) { result in
-                self.loaderView.hide()
-
-                guard var checkoutViewModel = result.process() else { return }
+            self?.checkout.createCheckoutViewModel(forArticleUnit: selectedArticleUnit) { result in
+                self?.loaderView.hide()
+                guard var checkoutViewModel = result.process(forceFullScreenError: hasSingleUnit) else { return }
 
                 checkoutViewModel.customer = customer
-                self.displayCheckoutSummaryViewController(checkoutViewModel)
+                self?.displayCheckoutSummaryViewController(checkoutViewModel, animated: !hasSingleUnit)
             }
         }
     }
 
-    private func displayCheckoutSummaryViewController(checkoutViewModel: CheckoutViewModel) {
+    private func displayCheckoutSummaryViewController(checkoutViewModel: CheckoutViewModel, animated: Bool) {
         let checkoutSummaryVC = CheckoutSummaryViewController(checkout: checkout, checkoutViewModel: checkoutViewModel)
-        self.showViewController(checkoutSummaryVC, sender: self)
+        navigationController?.pushViewController(checkoutSummaryVC, animated: animated)
     }
 
 }

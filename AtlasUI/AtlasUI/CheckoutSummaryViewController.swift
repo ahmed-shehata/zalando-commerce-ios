@@ -137,10 +137,6 @@ extension CheckoutSummaryViewController {
             action: #selector(CheckoutSummaryViewController.paymentAddressTapped)))
     }
 
-    dynamic private func cancelCheckoutTapped() {
-        dismissView()
-    }
-
     private func dismissView() {
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -199,16 +195,9 @@ extension CheckoutSummaryViewController {
         navigationItem.setHidesBackButton(viewState.hideBackButton(hasSingleUnit), animated: false)
 
         if viewState.showCancelButton {
-            let button = UIBarButtonItem(title: Localizer.string("Cancel"),
-                style: .Plain,
-                target: self,
-                action: #selector(CheckoutSummaryViewController.cancelCheckoutTapped))
-            button.accessibilityIdentifier = "navigation-bar-cancel-button"
-            navigationItem.rightBarButtonItem = button
-
-            navigationController?.navigationBar.translucent = false
+            showCancelButton()
         } else {
-            navigationItem.rightBarButtonItem = nil
+            hideCancelButton()
         }
     }
 
