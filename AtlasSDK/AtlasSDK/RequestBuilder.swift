@@ -16,6 +16,10 @@ struct RequestBuilder {
     private var responseData: NSData?
     private var responseError: NSError?
 
+    private var printRequestDescription: Bool {
+        return NSProcessInfo.processInfo().arguments.contains("PRINT_REQUEST_DESCRIPTION")
+    }
+
     init(forEndpoint endpoint: Endpoint, urlSession: NSURLSession = NSURLSession.sharedSession()) {
         self.urlSession = urlSession
         self.endpoint = endpoint
@@ -61,7 +65,7 @@ struct RequestBuilder {
 
         self.urlSession.dataTaskWithRequest(request) { response in
             (self.responseData, self.response, self.responseError) = response
-            if NSProcessInfo.processInfo().arguments.contains("PRINT_REQUEST_DESCRIPTION") {
+            if self.printRequestDescription {
                 print(self.description)
             }
             ResponseParser(taskResponse: response).parse(completion)
