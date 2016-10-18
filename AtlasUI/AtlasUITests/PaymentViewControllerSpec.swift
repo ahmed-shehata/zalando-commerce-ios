@@ -24,10 +24,61 @@ class PaymentViewControllerSpec: QuickSpec {
         describe("PaymentViewController") {
 
             it("Should return .redirect status") {
-                let url = AtlasMockAPI.endpointURL(forPath: "/redirect")
-                PaymentViewController(paymentURL: url, callbackURL: NSURL(string: "http://google.com")!)
+                guard let paymentViewController = self.paymentViewController(.redirect) else { return }
+                waitUntil(timeout: 10) { done in
+                    let _ = paymentViewController.view // load the view
+                    paymentViewController.paymentCompletion = { result in
+                        expect(result.process()).to(equal(PaymentStatus.redirect))
+                        done()
+                    }
+                }
+            }
+
+            it("Should return .success status") {
+                guard let paymentViewController = self.paymentViewController(.success) else { return }
+                waitUntil(timeout: 10) { done in
+                    let _ = paymentViewController.view // load the view
+                    paymentViewController.paymentCompletion = { result in
+                        expect(result.process()).to(equal(PaymentStatus.success))
+                        done()
+                    }
+                }
+            }
+
+            it("Should return .cancel status") {
+                guard let paymentViewController = self.paymentViewController(.cancel) else { return }
+                waitUntil(timeout: 10) { done in
+                    let _ = paymentViewController.view // load the view
+                    paymentViewController.paymentCompletion = { result in
+                        expect(result.process()).to(equal(PaymentStatus.cancel))
+                        done()
+                    }
+                }
+            }
+
+            it("Should return .error status") {
+                guard let paymentViewController = self.paymentViewController(.error) else { return }
+                waitUntil(timeout: 10) { done in
+                    let _ = paymentViewController.view // load the view
+                    paymentViewController.paymentCompletion = { result in
+                        expect(result.process()).to(equal(PaymentStatus.error))
+                        done()
+                    }
+                }
             }
         }
+    }
+
+    func paymentViewController(status: PaymentStatus) -> PaymentViewController? {
+        guard let callbackURL = NSURL(string: "http://de.zalando.atlas.AtlasCheckoutDemo/redirect") else { return nil }
+        let redirectURL: String
+        if status == .redirect {
+            redirectURL = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect"
+        } else {
+            redirectURL = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect%3F\(PaymentStatus.statusKey)%3D\(status.rawValue)"
+        }
+        let url = AtlasMockAPI.endpointURL(forPath: "/redirect", queryItems: [NSURLQueryItem(name: "url", value: redirectURL)])
+        return PaymentViewController(paymentURL: url, callbackURL: callbackURL)
     }
 
 }

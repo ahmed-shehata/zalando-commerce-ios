@@ -104,8 +104,8 @@ extension CheckoutSummaryActionsHandler {
         let callbackURL = viewController.checkout.client.config.payment.selectionCallbackURL
         let paymentViewController = PaymentViewController(paymentURL: paymentURL, callbackURL: callbackURL)
         paymentViewController.paymentCompletion = { result in
-            guard let redirectURL = result.process() else { return }
-            switch redirectURL {
+            guard let paymentStatus = result.process() else { return }
+            switch paymentStatus {
             case .redirect, .success: self.loadCustomerData()
             case .cancel: break
             case .error: UserMessage.displayError(AtlasCheckoutError.unclassified)
@@ -125,8 +125,8 @@ extension CheckoutSummaryActionsHandler {
         let callbackURL = viewController.checkout.client.config.payment.thirdPartyCallbackURL
         let paymentViewController = PaymentViewController(paymentURL: paymentURL, callbackURL: callbackURL)
         paymentViewController.paymentCompletion = { result in
-            guard let redirectURL = result.process() else { return }
-            switch redirectURL {
+            guard let paymentStatus = result.process() else { return }
+            switch paymentStatus {
             case .success: viewController.viewState = .OrderPlaced
             case .redirect, .cancel: break
             case .error: UserMessage.displayError(AtlasCheckoutError.unclassified)

@@ -5,9 +5,9 @@
 import UIKit
 import AtlasSDK
 
-typealias PaymentCompletion = AtlasResult<PaymentRedirectURL> -> Void
+typealias PaymentCompletion = AtlasResult<PaymentStatus> -> Void
 
-enum PaymentRedirectURL: String {
+enum PaymentStatus: String {
 
     case redirect = ""
     case success = "success"
@@ -24,11 +24,11 @@ enum PaymentRedirectURL: String {
             else { return nil }
 
         guard let
-            paymentStatus = requestURLComponents.queryItems?.filter({ $0.name == PaymentRedirectURL.statusKey }).first?.value,
-            redirectURL = PaymentRedirectURL(rawValue: paymentStatus)
+            rawValue = requestURLComponents.queryItems?.filter({ $0.name == PaymentStatus.statusKey }).first?.value,
+            paymentStatus = PaymentStatus(rawValue: rawValue)
             else { self = .redirect; return }
 
-        self = redirectURL
+        self = paymentStatus
     }
 
 }
@@ -73,10 +73,10 @@ final class PaymentViewController: UIViewController, UIWebViewDelegate {
             requestURLComponents = NSURLComponents(URL: url, resolvingAgainstBaseURL: true)
             else { return true }
 
-        guard let redirectUrl = PaymentRedirectURL(callbackURLComponents: callbackURLComponents,
-                                                   requestURLComponents: requestURLComponents) else { return true }
+        guard let paymentStatus = PaymentStatus(callbackURLComponents: callbackURLComponents,
+                                                requestURLComponents: requestURLComponents) else { return true }
 
-        paymentCompletion?(.success(redirectUrl))
+        paymentCompletion?(.success(paymentStatus))
         navigationController?.popViewControllerAnimated(true)
         return false
     }

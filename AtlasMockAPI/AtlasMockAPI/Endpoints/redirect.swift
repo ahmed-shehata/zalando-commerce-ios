@@ -12,7 +12,7 @@ extension HttpServer {
 
         self[path] = { request in
             let redirectURL = request.queryParams.filter({ (key, val) in key == "url" }).first?.1 ?? ""
-            return .MovedPermanently(redirectURL)
+            return .MovedPermanently(redirectURL.stringByRemovingPercentEncoding ?? redirectURL)
         }
     }
 
