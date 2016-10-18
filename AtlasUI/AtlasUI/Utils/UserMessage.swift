@@ -47,6 +47,24 @@ struct UserMessage {
         }
     }
 
+    static func displayErrorBanner(error: ErrorType) {
+        guard let userPresentable = error as? UserPresentable else {
+            displayError(AtlasCheckoutError.unclassified)
+            return
+        }
+
+        displayBanner(userPresentable)
+    }
+
+    static func displayErrorFullScreen(error: ErrorType) {
+        guard let userPresentable = error as? UserPresentable else {
+            displayError(AtlasCheckoutError.unclassified)
+            return
+        }
+
+        displayFullScreen(userPresentable)
+    }
+
     static func showActionSheet(title title: String, message: String? = nil, actions: ButtonAction...) {
         guard let topViewController = UIApplication.topViewController() else { return }
         let alertView = UIAlertController(title: title, message: message, preferredStyle: .ActionSheet)
