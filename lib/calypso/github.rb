@@ -126,6 +126,9 @@ module Calypso
 
     def delete(url, headers: {}, query: {})
       puts "DELETE #{url} ..."
+      headers['Authorization'] = "token #{env_oauth_token}"
+      headers['User-Agent'] = 'calypso.rb'
+
       HTTParty.delete(url, headers: headers, query: query)
     end
 
