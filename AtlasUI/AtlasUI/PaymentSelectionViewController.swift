@@ -9,16 +9,25 @@ typealias PaymentCompletion = AtlasResult<PaymentRedirectURL> -> Void
 
 enum PaymentRedirectURL: String {
 
-    case redirect = "http://de.zalando.atlas.atlascheckoutdemo/redirect"
-    case success = "http://de.zalando.atlas.atlascheckoutdemo/redirect?payment_status=success"
-    case cancel = "http://de.zalando.atlas.atlascheckoutdemo/redirect?payment_status=cancel"
+    case redirect = ""
+    case success = "?payment_status=success"
+    case cancel = "?payment_status=cancel"
+    case error = "?payment_status=error"
+
+    init?(callbackURLString: String, urlString: String) {
+        guard urlString.hasPrefix(callbackURLString) else { return nil }
+        let rawValue = urlString.stringByReplacingOccurrencesOfString(callbackURLString, withString: "")
+        guard let paymentRedirectURL = PaymentRedirectURL(rawValue: rawValue) else { return nil }
+        self = paymentRedirectURL
+    }
 
 }
 
-final class PaymentSelectionViewController: UIViewController, UIWebViewDelegate {
+final class PaymentViewController: UIViewController, UIWebViewDelegate {
 
     var paymentCompletion: PaymentCompletion?
-    private let paymentSelectionURL: NSURL
+    private let paymentURL: NSURL
+    private let callbackURL: NSURL
 
     private lazy var webView: UIWebView = {
         let webView = UIWebView()
@@ -29,8 +38,9 @@ final class PaymentSelectionViewController: UIViewController, UIWebViewDelegate 
         return webView
     }()
 
-    init(paymentSelectionURL: NSURL) {
-        self.paymentSelectionURL = paymentSelectionURL
+    init(paymentURL: NSURL, callbackURL: NSURL) {
+        self.callbackURL = callbackURL
+        self.paymentURL = paymentURL
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -43,11 +53,15 @@ final class PaymentSelectionViewController: UIViewController, UIWebViewDelegate 
         view.addSubview(webView)
 
         webView.fillInSuperView()
-        webView.loadRequest(NSURLRequest(URL: paymentSelectionURL))
+        webView.loadRequest(NSURLRequest(URL: paymentURL))
     }
 
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        guard let url = request.URL?.validAbsoluteString, redirectUrl = PaymentRedirectURL(rawValue: url) else { return true }
+        let callbackURLString = callbackURL.validAbsoluteString.lowercaseString
+        guard let
+            urlString = request.URL?.validAbsoluteString.lowercaseString,
+            redirectUrl = PaymentRedirectURL(callbackURLString: callbackURLString, urlString: urlString) else { return true }
+
         paymentCompletion?(.success(redirectUrl))
         navigationController?.popViewControllerAnimated(true)
         return false

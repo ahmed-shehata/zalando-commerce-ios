@@ -23,8 +23,8 @@ public struct Config {
     public let tocURL: NSURL
 
     public struct Payment {
-        let selectionCallbackURL: NSURL
-        let thirdPartyCallbackURL: NSURL
+        public let selectionCallbackURL: NSURL
+        public let thirdPartyCallbackURL: NSURL
     }
 }
 

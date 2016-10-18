@@ -101,12 +101,17 @@ extension CheckoutSummaryActionsHandler {
             return
         }
 
-        let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
-        paymentSelectionViewController.paymentCompletion = { result in
-            guard let redirectURL = result.process() where redirectURL != .cancel else { return }
-            self.loadCustomerData()
+        let callbackURL = viewController.checkout.client.config.payment.selectionCallbackURL
+        let paymentViewController = PaymentViewController(paymentURL: paymentURL, callbackURL: callbackURL)
+        paymentViewController.paymentCompletion = { result in
+            guard let redirectURL = result.process() else { return }
+            switch redirectURL {
+            case .redirect, .success: self.loadCustomerData()
+            case .cancel: break
+            case .error: UserMessage.displayError(AtlasCheckoutError.unclassified)
+            }
         }
-        viewController.showViewController(paymentSelectionViewController, sender: viewController)
+        viewController.showViewController(paymentViewController, sender: viewController)
     }
 
     internal func handleOrderConfirmation(order: Order) {
@@ -117,12 +122,17 @@ extension CheckoutSummaryActionsHandler {
             return
         }
 
-        let paymentSelectionViewController = PaymentSelectionViewController(paymentSelectionURL: paymentURL)
-        paymentSelectionViewController.paymentCompletion = { result in
-            guard let redirectURL = result.process() where redirectURL == .success else { return }
-            viewController.viewState = .OrderPlaced
+        let callbackURL = viewController.checkout.client.config.payment.thirdPartyCallbackURL
+        let paymentViewController = PaymentViewController(paymentURL: paymentURL, callbackURL: callbackURL)
+        paymentViewController.paymentCompletion = { result in
+            guard let redirectURL = result.process() else { return }
+            switch redirectURL {
+            case .success: viewController.viewState = .OrderPlaced
+            case .redirect, .cancel: break
+            case .error: UserMessage.displayError(AtlasCheckoutError.unclassified)
+            }
         }
-        viewController.showViewController(paymentSelectionViewController, sender: viewController)
+        viewController.showViewController(paymentViewController, sender: viewController)
     }
 
 }
