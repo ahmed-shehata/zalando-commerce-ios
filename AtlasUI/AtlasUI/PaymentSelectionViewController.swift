@@ -10,15 +10,25 @@ typealias PaymentCompletion = AtlasResult<PaymentRedirectURL> -> Void
 enum PaymentRedirectURL: String {
 
     case redirect = ""
-    case success = "?payment_status=success"
-    case cancel = "?payment_status=cancel"
-    case error = "?payment_status=error"
+    case success = "success"
+    case cancel = "cancel"
+    case error = "error"
 
-    init?(callbackURLString: String, urlString: String) {
-        guard urlString.hasPrefix(callbackURLString) else { return nil }
-        let rawValue = urlString.stringByReplacingOccurrencesOfString(callbackURLString, withString: "")
-        guard let paymentRedirectURL = PaymentRedirectURL(rawValue: rawValue) else { return nil }
-        self = paymentRedirectURL
+    static var statusKey = "payment_status"
+
+    init?(callbackURLComponents: NSURLComponents, requestURLComponents: NSURLComponents) {
+        guard let
+            callbackHost = callbackURLComponents.host,
+            requestHost = requestURLComponents.host
+            where callbackHost.lowercaseString == requestHost.lowercaseString
+            else { return nil }
+
+        guard let
+            paymentStatus = requestURLComponents.queryItems?.filter({ $0.name == PaymentRedirectURL.statusKey }).first?.value,
+            redirectURL = PaymentRedirectURL(rawValue: paymentStatus)
+            else { self = .redirect; return }
+
+        self = redirectURL
     }
 
 }
@@ -27,7 +37,7 @@ final class PaymentViewController: UIViewController, UIWebViewDelegate {
 
     var paymentCompletion: PaymentCompletion?
     private let paymentURL: NSURL
-    private let callbackURL: NSURL
+    private let callbackURLComponents: NSURLComponents?
 
     private lazy var webView: UIWebView = {
         let webView = UIWebView()
@@ -39,7 +49,7 @@ final class PaymentViewController: UIViewController, UIWebViewDelegate {
     }()
 
     init(paymentURL: NSURL, callbackURL: NSURL) {
-        self.callbackURL = callbackURL
+        self.callbackURLComponents = NSURLComponents(URL: callbackURL, resolvingAgainstBaseURL: true)
         self.paymentURL = paymentURL
         super.init(nibName: nil, bundle: nil)
     }
@@ -57,10 +67,14 @@ final class PaymentViewController: UIViewController, UIWebViewDelegate {
     }
 
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        let callbackURLString = callbackURL.validAbsoluteString.lowercaseString
         guard let
-            urlString = request.URL?.validAbsoluteString.lowercaseString,
-            redirectUrl = PaymentRedirectURL(callbackURLString: callbackURLString, urlString: urlString) else { return true }
+            url = request.URL,
+            callbackURLComponents = callbackURLComponents,
+            requestURLComponents = NSURLComponents(URL: url, resolvingAgainstBaseURL: true)
+            else { return true }
+
+        guard let redirectUrl = PaymentRedirectURL(callbackURLComponents: callbackURLComponents,
+                                                   requestURLComponents: requestURLComponents) else { return true }
 
         paymentCompletion?(.success(redirectUrl))
         navigationController?.popViewControllerAnimated(true)
