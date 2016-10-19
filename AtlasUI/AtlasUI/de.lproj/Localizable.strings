@@ -33,6 +33,7 @@
 "AtlasCheckoutError.message.missingAddressAndPayment" = "Bitte wähle zuerst eine Liefer- und eine Rechnungsadresse sowie eine Zahlart";
 "AtlasCheckoutError.message.priceChanged" = "Der Preis beträgt nun %@";
 "AtlasCheckoutError.message.paymentMethodNotAvailable" = "Diese Zahlart ist nicht mehr verfügbar";
+"AtlasCheckoutError.message.checkoutFailure" = "Bei der Bestellung ist ein Fehler aufgetreten";
 "AtlasCheckoutError.message.addressInvalid" = "Adresse nicht bekannt, bitte überprüfe sie.";
 
 "LoginError.title" = "Anmeldung fehlgeschlagen";

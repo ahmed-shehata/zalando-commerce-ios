@@ -18,6 +18,10 @@ public struct SelectedArticleUnit {
         self.selectedUnitIndex = selectedUnitIndex
     }
 
+    public var articleSKU: String {
+        return article.availableUnits[selectedUnitIndex].id
+    }
+
 }
 
 public struct Article {

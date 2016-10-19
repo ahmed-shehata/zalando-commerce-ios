@@ -29,8 +29,9 @@ extension CheckoutSummaryActionsHandler {
         guard let viewController = self.viewController else { return }
 
         viewController.displayLoader { done in
-            viewController.checkout.client.createCheckoutCart(for: viewController.checkoutViewModel.selectedArticleUnit,
-            addresses: viewController.checkoutViewModel.selectedAddresses) { result in
+            let articleSKU = viewController.checkoutViewModel.selectedArticleUnit.articleSKU
+            let addresses = viewController.checkoutViewModel.selectedAddresses
+            viewController.checkout.client.createCheckoutCart(for: articleSKU, addresses: addresses) { result in
                 done()
                 guard let (checkout, cart) = result.process() else { return }
 

@@ -77,10 +77,10 @@ final public class AtlasCheckout {
 
     func createCheckoutViewModel(forArticleUnit selectedArticleUnit: SelectedArticleUnit, addresses: CheckoutAddresses? = nil,
         completion: CreateCheckoutViewModelCompletion) {
-            client.createCheckoutCart(for: selectedArticleUnit, addresses: addresses) { result in
+            client.createCheckoutCart(for: selectedArticleUnit.articleSKU, addresses: addresses) { result in
                 switch result {
                 case .failure(let error):
-                    if case let AtlasAPIError.checkoutFailed(_, cart, _) = error {
+                    if case let AtlasAPIError.checkoutFailed(cart, _) = error {
                         let checkoutModel = CheckoutViewModel(selectedArticleUnit: selectedArticleUnit, cart: cart)
                         completion(.success(checkoutModel))
                     } else {

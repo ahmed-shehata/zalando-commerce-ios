@@ -127,3 +127,36 @@ extension CheckoutViewModel {
     }
 
 }
+
+extension CheckoutViewModel {
+
+    func validateAgainstOldViewModel(oldViewModel: CheckoutViewModel) {
+        checkPriceChange(oldViewModel)
+        checkPaymentMethod(oldViewModel)
+        checkCheckoutFailure(oldViewModel)
+    }
+
+    private func checkPriceChange(oldViewModel: CheckoutViewModel) {
+        guard let
+            oldPrice = oldViewModel.cart?.grossTotal.amount,
+            newPrice = cart?.grossTotal.amount else { return }
+
+        if oldPrice != newPrice {
+            UserMessage.displayError(AtlasCheckoutError.priceChanged(newPrice: newPrice))
+        }
+    }
+
+    private func checkPaymentMethod(oldViewModel: CheckoutViewModel) {
+        guard oldViewModel.checkout?.payment.selected?.method != nil
+            && checkout?.payment.selected?.method == nil else { return }
+
+        UserMessage.displayError(AtlasCheckoutError.paymentMethodNotAvailable)
+    }
+
+    private func checkCheckoutFailure(oldViewModel: CheckoutViewModel) {
+        guard oldViewModel.checkout != nil && checkout == nil else { return }
+
+        UserMessage.displayError(AtlasCheckoutError.checkoutFailure)
+    }
+
+}

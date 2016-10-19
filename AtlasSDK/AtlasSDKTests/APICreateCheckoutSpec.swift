@@ -25,7 +25,7 @@ class APICreateCheckoutSpec: APIClientBaseSpec {
                             fail(String(error))
                         case .success(let article):
                             let selectedArticleUnit = SelectedArticleUnit(article: article, selectedUnitIndex: 0)
-                            client.createCheckoutCart(for: selectedArticleUnit) { result in
+                            client.createCheckoutCart(for: selectedArticleUnit.articleSKU) { result in
                                 switch result {
                                 case .failure(let error):
                                     fail(String(error))

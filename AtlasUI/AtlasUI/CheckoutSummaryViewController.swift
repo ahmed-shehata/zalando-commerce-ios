@@ -12,8 +12,7 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
         didSet {
             injectCustomer(from: oldValue)
             viewState = checkoutViewModel.checkoutViewState
-            checkPaymentMethod(oldValue)
-            checkPriceChange(oldValue)
+            checkoutViewModel.validateAgainstOldViewModel(oldValue)
             createCheckout()
         }
     }
@@ -59,8 +58,8 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
         setupInitialViewState()
         setupActions()
 
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
-        self.navigationController?.navigationBar.accessibilityIdentifier = "checkout-summary-navigation-bar"
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        navigationController?.navigationBar.accessibilityIdentifier = "checkout-summary-navigation-bar"
     }
 }
 
@@ -70,23 +69,6 @@ extension CheckoutSummaryViewController {
         if checkoutViewModel.customer == nil && oldViewModel.customer != nil {
             checkoutViewModel.customer = oldViewModel.customer
         }
-    }
-
-    private func checkPriceChange(oldViewModel: CheckoutViewModel) {
-        guard let
-            oldPrice = oldViewModel.cart?.grossTotal.amount,
-            newPrice = checkoutViewModel.cart?.grossTotal.amount else { return }
-
-        if oldPrice != newPrice {
-            UserMessage.displayError(AtlasCheckoutError.priceChanged(newPrice: newPrice))
-        }
-    }
-
-    private func checkPaymentMethod(oldViewModel: CheckoutViewModel) {
-        guard oldViewModel.checkout?.payment.selected?.method != nil
-            && checkoutViewModel.checkout?.payment.selected?.method == nil else { return }
-
-        UserMessage.displayError(AtlasCheckoutError.paymentMethodNotAvailable)
     }
 
     private func createCheckout() {
