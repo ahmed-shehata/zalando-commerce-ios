@@ -57,11 +57,18 @@ class APIClientBaseSpec: QuickSpec {
         status: HTTPStatus, errorCode: Int? = nil) -> APIClient {
             let apiURL = AtlasMockAPI.endpointURL(forPath: "/")
             let loginURL = AtlasMockAPI.endpointURL(forPath: "/oauth2/authorize")
+            let callback = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect"
 
         let json = JSON(["sales-channels": [["locale": "de_DE", "sales-channel": "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
             "toc_url": "https://www.zalando.de/agb/"]],
                 "atlas-catalog-api": ["url": apiURL.absoluteString],
-                "atlas-checkout-api": ["url": apiURL.absoluteString],
+                "atlas-checkout-api": [
+                    "url": apiURL.absoluteString,
+                    "payment": [
+                        "selection-callback": callback,
+                        "third-party-callback": callback
+                    ]
+                ],
                 "oauth2-provider": ["url": loginURL.absoluteString]])
 
             let config = Config(json: json, options: options ?? clientOptions)! // swiftlint:disable:this force_unwrapping
