@@ -79,6 +79,9 @@ final public class AtlasCheckout {
                 if case let AtlasAPIError.checkoutFailed(cart, _) = error {
                     let checkoutModel = CheckoutViewModel(selectedArticleUnit: selectedArticleUnit, cart: cart)
                     completion(.success(checkoutModel))
+                    if addresses?.billingAddress != nil && addresses?.shippingAddress != nil {
+                        UserMessage.displayError(AtlasCheckoutError.checkoutFailure)
+                    }
                 } else {
                     completion(.failure(error))
                 }
