@@ -72,16 +72,8 @@ extension CheckoutSummaryViewController {
     }
 
     private func createCheckout() {
-        guard checkoutViewModel.isReadyToCreateCheckout else { return }
-
-        displayLoader { [weak self] done in
-            guard let strongSelf = self else { return }
-            strongSelf.checkout.createCheckoutViewModel(fromModel: strongSelf.checkoutViewModel) { result in
-                done()
-                guard let checkoutViewModel = result.process() else { return }
-                strongSelf.checkoutViewModel = checkoutViewModel
-            }
-        }
+        guard let customer = checkoutViewModel.customer where checkoutViewModel.isReadyToCreateCheckout else { return }
+        actionsHandler.generateCheckout(customer)
     }
 
 }

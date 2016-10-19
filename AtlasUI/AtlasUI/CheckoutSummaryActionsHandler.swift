@@ -29,9 +29,9 @@ extension CheckoutSummaryActionsHandler {
         guard let viewController = self.viewController else { return }
 
         viewController.displayLoader { done in
-            let articleSKU = viewController.checkoutViewModel.selectedArticleUnit.articleSKU
+            let articleSKU = viewController.checkoutViewModel.selectedArticleUnit.sku
             let addresses = viewController.checkoutViewModel.selectedAddresses
-            viewController.checkout.client.createCheckoutCart(for: articleSKU, addresses: addresses) { result in
+            viewController.checkout.client.createCheckoutCart(articleSKU, addresses: addresses) { result in
                 done()
                 guard let (checkout, cart) = result.process() else { return }
 
@@ -73,11 +73,13 @@ extension CheckoutSummaryActionsHandler {
         }
     }
 
-    private func generateCheckout(customer: Customer) {
+    internal func generateCheckout(customer: Customer) {
         guard let viewController = self.viewController else { return }
 
         viewController.displayLoader { done in
-            viewController.checkout.createCheckoutViewModel(fromModel: viewController.checkoutViewModel) { result in
+            let selectedArticleUnit = viewController.checkoutViewModel.selectedArticleUnit
+            let addresses = viewController.checkoutViewModel.selectedAddresses
+            viewController.checkout.createCheckoutViewModel(selectedArticleUnit, addresses: addresses) { result in
                 done()
                 guard var checkoutViewModel = result.process() else { return }
 

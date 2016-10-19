@@ -133,7 +133,6 @@ extension CheckoutViewModel {
     func validateAgainstOldViewModel(oldViewModel: CheckoutViewModel) {
         checkPriceChange(oldViewModel)
         checkPaymentMethod(oldViewModel)
-        checkCheckoutFailure(oldViewModel)
     }
 
     private func checkPriceChange(oldViewModel: CheckoutViewModel) {
@@ -151,12 +150,6 @@ extension CheckoutViewModel {
             && checkout?.payment.selected?.method == nil else { return }
 
         UserMessage.displayError(AtlasCheckoutError.paymentMethodNotAvailable)
-    }
-
-    private func checkCheckoutFailure(oldViewModel: CheckoutViewModel) {
-        guard oldViewModel.checkout != nil && checkout == nil else { return }
-
-        UserMessage.displayError(AtlasCheckoutError.checkoutFailure)
     }
 
 }

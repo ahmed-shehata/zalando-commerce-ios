@@ -19,13 +19,13 @@ class APICreateCheckoutSpec: APIClientBaseSpec {
             it("should create checkout from article") {
                 self.waitUntilAPIClientIsConfigured { done, client in
                     let sku = "AD541L009-G11"
-                    client.article(forSKU: sku) { result in
+                    client.article(sku) { result in
                         switch result {
                         case .failure(let error):
                             fail(String(error))
                         case .success(let article):
                             let selectedArticleUnit = SelectedArticleUnit(article: article, selectedUnitIndex: 0)
-                            client.createCheckoutCart(for: selectedArticleUnit.articleSKU) { result in
+                            client.createCheckoutCart(selectedArticleUnit.sku) { result in
                                 switch result {
                                 case .failure(let error):
                                     fail(String(error))

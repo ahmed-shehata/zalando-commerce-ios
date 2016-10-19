@@ -81,7 +81,7 @@ extension SizeListSelectionViewController {
 
     private func fetchSizes() {
         loaderView.show()
-        checkout.client.article(forSKU: sku) { [weak self] result in
+        checkout.client.article(sku) { [weak self] result in
             self?.loaderView.hide()
             guard let article = result.process(forceFullScreenError: true) else { return }
             self?.tableViewDelegate = SizeListTableViewDelegate(article: article, completion: self?.showCheckoutScreen)
@@ -104,7 +104,7 @@ extension SizeListSelectionViewController {
                 return
             }
 
-            self?.checkout.createCheckoutViewModel(forArticleUnit: selectedArticleUnit) { result in
+            self?.checkout.createCheckoutViewModel(selectedArticleUnit) { result in
                 self?.loaderView.hide()
                 guard var checkoutViewModel = result.process(forceFullScreenError: hasSingleUnit) else { return }
 
