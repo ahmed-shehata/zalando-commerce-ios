@@ -69,11 +69,11 @@ class CheckoutSummaryViewControllerSpec: QuickSpec {
     private func viewController(completion: (CheckoutSummaryViewController -> Void)) {
         self.atlasCheckout { atlasCheckout in
 
-            atlasCheckout.client.article(forSKU: "AD541L009-G11") { result in
+            atlasCheckout.client.article("AD541L009-G11") { result in
                 guard let article = result.process() else { return XCTFail() }
                 let selectedArticleUnit = SelectedArticleUnit(article: article, selectedUnitIndex: 0)
 
-                atlasCheckout.createCheckoutViewModel(forArticleUnit: selectedArticleUnit) { result in
+                atlasCheckout.createCheckoutViewModel(selectedArticleUnit) { result in
                     guard var checkoutViewModel = result.process() else { return XCTFail() }
 
                     let customer = Customer(customerNumber: "12345678", gender: Customer.Gender.Male,

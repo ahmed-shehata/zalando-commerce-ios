@@ -26,23 +26,21 @@ extension Checkout {
 extension CheckoutSummaryActionsHandler {
 
     internal func handleBuyAction() {
-        guard let viewController = self.viewController else { return }
+        guard let
+            viewController = self.viewController,
+            checkoutId = viewController.checkoutViewModel.checkout?.id
+            else { return }
 
         viewController.displayLoader { done in
-            let articleSKU = viewController.checkoutViewModel.selectedArticleUnit.sku
+            let selectedArticleUnit = viewController.checkoutViewModel.selectedArticleUnit
             let addresses = viewController.checkoutViewModel.selectedAddresses
-            viewController.checkout.client.createCheckoutCart(articleSKU, addresses: addresses) { result in
+            viewController.checkout.createCheckoutViewModel(selectedArticleUnit, addresses: addresses) { result in
                 done()
-                guard let (checkout, cart) = result.process() else { return }
-
-                let checkoutViewModel = CheckoutViewModel(
-                    selectedArticleUnit: viewController.checkoutViewModel.selectedArticleUnit,
-                    cart: cart,
-                    checkout: checkout)
+                guard let checkoutViewModel = result.process() else { return }
                 viewController.checkoutViewModel = checkoutViewModel
 
                 if viewController.viewState == .CheckoutReady && !UserMessage.errorDisplayed {
-                    self.createOrder(forCheckoutId: checkout.id)
+                    self.createOrder(forCheckoutId: checkoutId)
                 }
             }
         }
