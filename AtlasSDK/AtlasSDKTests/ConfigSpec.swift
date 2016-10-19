@@ -24,6 +24,7 @@ class ConfigSpec: QuickSpec {
         let salesChannelId = "82fe2e7f-8c4f-4aa1-9019-b6bde5594456"
         let clientId = "CLIENT_ID"
         let tocURL = "https://www.zalando.de/agb/"
+        let callback = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect"
 
         let json = JSON([
             "sales-channels": [
@@ -31,7 +32,13 @@ class ConfigSpec: QuickSpec {
                 ["locale": configLocale, "sales-channel": salesChannelId, "toc_url": tocURL],
             ],
             "atlas-catalog-api": ["url": catalogURL.absoluteString],
-            "atlas-checkout-api": ["url": checkoutURL.absoluteString],
+            "atlas-checkout-api": [
+                "url": checkoutURL.absoluteString,
+                "payment": [
+                    "selection-callback": callback,
+                    "third-party-callback": callback
+                ]
+            ],
             "oauth2-provider": ["url": loginURL.absoluteString]])
 
         describe("Config") {

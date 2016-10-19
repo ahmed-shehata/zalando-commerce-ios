@@ -34,7 +34,7 @@ EOT
     def xunique
       project_files = Dir['**/*.pbxproj'].select { |f| !f.include? 'Carthage' }
       project_files.each do |pbxproj|
-        run("xunique -p #{pbxproj}", false)
+        run("xunique --unique #{pbxproj}", false)
       end
     end
 

@@ -72,7 +72,7 @@
 		7B21A5839D8997DA626D689A9B03C5C2 /* GetCustomerEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E9BD4D77C0386109EAD09F634330CD /* GetCustomerEndpoint.swift */; };
 		7D9992E58F4E287BC6EE7AD30338862F /* FormattableAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A2E3D95B370914C7B19A3B81E80190 /* FormattableAddress.swift */; };
 		8121410286D1482AE56315CCD5E2AC10 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42F187B2D3AF87F210E636B8FEB493D8 /* Nimble.framework */; };
-		816216BF1DB0F674003FD7CD /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECCE8130C31F3C04713FD6782E20E5A /* Price.swift */; };
+		9F91C29E6D4328AD2CE09BB975179C05 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECCE8130C31F3C04713FD6782E20E5A /* Price.swift */; };
 		8181B15B2059E0C37F74FA1B0E4DAF8C /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D9D57D8A8EE4FD7D57EFE634240FB /* HTTP.swift */; };
 		8311BFD275D616D4277DC6B5A41821EC /* AuthorizationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0682F8C25363E355228D108280F186 /* AuthorizationHandler.swift */; };
 		876589FD4612DC2514CB3D7284288A81 /* Tests.json in Resources */ = {isa = PBXBuildFile; fileRef = EA97D05C1FC1C316CAA9F2EAEE6DFB89 /* Tests.json */; };
@@ -874,7 +874,7 @@
 				963AE70DD87A3C9A75FB0231D2130E7F /* PaymentMethod.swift in Sources */,
 				19052EC3C88FE3710B358C8A009122EF /* PickupPoint.swift in Sources */,
 				A259CD2306CCF2869A51462415F62F50 /* PrintLogger.swift in Sources */,
-				816216BF1DB0F674003FD7CD /* Price.swift in Sources */,
+				9F91C29E6D4328AD2CE09BB975179C05 /* Price.swift in Sources */,
 				0AFCDCE5DA454E85BB2CA10BB7F472DE /* RequestBuilder.swift in Sources */,
 				119CF1D796B2FC5D92809D94C9B4FCC0 /* ResponseParser.swift in Sources */,
 				ADC651D09BC859A4771F19D04B3E8635 /* SalesChannelEndpoint.swift in Sources */,

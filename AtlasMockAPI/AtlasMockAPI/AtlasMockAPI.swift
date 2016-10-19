@@ -25,12 +25,15 @@ public final class AtlasMockAPI {
         print("AtlasMockAPI server stopped")
     }
 
-    public static func endpointURL(forPath path: String) -> NSURL {
+    public static func endpointURL(forPath path: String, queryItems: [NSURLQueryItem] = []) -> NSURL {
         #if swift(>=2.3)
-            return serverURL.URLByAppendingPathComponent(path)! // swiftlint:disable:this force_unwrapping
+            let url = serverURL.URLByAppendingPathComponent(path)! // swiftlint:disable:this force_unwrapping
         #else
-            return serverURL.URLByAppendingPathComponent(path)
+            let url = serverURL.URLByAppendingPathComponent(path)
         #endif
+        let urlComponents = NSURLComponents(URL: url, resolvingAgainstBaseURL: true)
+        urlComponents?.queryItems = queryItems
+        return urlComponents?.URL ?? url
     }
 
     public static var hasMockedAPIStarted: Bool {

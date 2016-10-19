@@ -87,22 +87,23 @@ extension UserMessage {
     }
 
     private static func displayBanner(error: UserPresentable) {
-        let viewController = errorPresenterViewController
+        guard let viewController = errorPresenterViewController else { return }
         bannerErrorViewController.removeFromParentViewController()
         bannerErrorViewController.view.removeFromSuperview()
 
-        viewController?.addChildViewController(bannerErrorViewController)
-        viewController?.view.addSubview(bannerErrorViewController.view)
+        viewController.addChildViewController(bannerErrorViewController)
+        viewController.view.addSubview(bannerErrorViewController.view)
 
         bannerErrorViewController.view.fillInSuperView()
         bannerErrorViewController.configureData(error)
     }
 
     private static func displayFullScreen(error: UserPresentable) {
-        let viewController = errorPresenterViewController
+        guard let viewController = errorPresenterViewController else { return }
         let navigationController = UINavigationController(rootViewController: fullScreenErrorViewController)
-        viewController?.addChildViewController(navigationController)
-        viewController?.view.addSubview(navigationController.view)
+
+        viewController.addChildViewController(navigationController)
+        viewController.view.addSubview(navigationController.view)
 
         navigationController.view.fillInSuperView()
         fullScreenErrorViewController.configureData(error)
