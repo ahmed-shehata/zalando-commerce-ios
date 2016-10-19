@@ -30,12 +30,6 @@ final class SizeListSelectionViewController: UIViewController, CheckoutProviderT
         return tableView
     }()
 
-    private let loaderView: LoaderView = {
-        let view = LoaderView()
-        view.hidden = true
-        return view
-    }()
-
     init(checkout: AtlasCheckout, sku: String) {
         self.checkout = checkout
         self.sku = sku
@@ -59,7 +53,6 @@ extension SizeListSelectionViewController: UIBuilder {
 
     internal func configureView() {
         view.addSubview(tableView)
-        view.addSubview(loaderView)
         view.backgroundColor = .clearColor()
         view.opaque = false
         tableView.registerReusableCell(UnitSizeTableViewCell.self)
@@ -68,11 +61,6 @@ extension SizeListSelectionViewController: UIBuilder {
 
     internal func configureConstraints() {
         tableView.fillInSuperView()
-        loaderView.fillInSuperView()
-    }
-
-    internal func builderSubviews() -> [UIBuilder] {
-        return [loaderView]
     }
 
 }
@@ -80,13 +68,14 @@ extension SizeListSelectionViewController: UIBuilder {
 extension SizeListSelectionViewController {
 
     private func fetchSizes() {
-        loaderView.show()
-        checkout.client.article(forSKU: sku) { [weak self] result in
-            self?.loaderView.hide()
-            guard let article = result.process(forceFullScreenError: true) else { return }
-            self?.tableViewDelegate = SizeListTableViewDelegate(article: article, completion: self?.showCheckoutScreen)
-            self?.tableViewDataSource = SizeListTableViewDataSource(article: article)
-            self?.showCancelButton()
+        LoaderView.displayLoader { hideLoader in
+            self.checkout.client.article(forSKU: self.sku) { [weak self] result in
+                hideLoader()
+                guard let article = result.process(forceFullScreenError: true) else { return }
+                self?.tableViewDelegate = SizeListTableViewDelegate(article: article, completion: self?.showCheckoutScreen)
+                self?.tableViewDataSource = SizeListTableViewDataSource(article: article)
+                self?.showCancelButton()
+            }
         }
     }
 
@@ -97,19 +86,20 @@ extension SizeListSelectionViewController {
             return displayCheckoutSummaryViewController(checkoutViewModel, animated: !hasSingleUnit)
         }
 
-        loaderView.show()
-        checkout.client.customer { [weak self] result in
-            guard let customer = result.process(forceFullScreenError: hasSingleUnit) else {
-                self?.loaderView.hide()
-                return
-            }
+        LoaderView.displayLoader { [weak self] hideLoader in
+            self?.checkout.client.customer { [weak self] result in
+                guard let customer = result.process(forceFullScreenError: hasSingleUnit) else {
+                    hideLoader()
+                    return
+                }
 
-            self?.checkout.createCheckoutViewModel(forArticleUnit: selectedArticleUnit) { result in
-                self?.loaderView.hide()
-                guard var checkoutViewModel = result.process(forceFullScreenError: hasSingleUnit) else { return }
+                self?.checkout.createCheckoutViewModel(forArticleUnit: selectedArticleUnit) { result in
+                    hideLoader()
+                    guard var checkoutViewModel = result.process(forceFullScreenError: hasSingleUnit) else { return }
 
-                checkoutViewModel.customer = customer
-                self?.displayCheckoutSummaryViewController(checkoutViewModel, animated: !hasSingleUnit)
+                    checkoutViewModel.customer = customer
+                    self?.displayCheckoutSummaryViewController(checkoutViewModel, animated: !hasSingleUnit)
+                }
             }
         }
     }
