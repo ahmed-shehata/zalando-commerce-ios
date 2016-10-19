@@ -64,18 +64,6 @@ extension CheckoutViewModel {
         return customer != nil && selectedPaymentMethod != nil
     }
 
-    var selectedUnit: Article.Unit {
-        return article.availableUnits[selectedArticleUnit.selectedUnitIndex]
-    }
-
-    var selectedUnitIndex: Int {
-        return selectedArticleUnit.selectedUnitIndex
-    }
-
-    var article: Article {
-        return selectedArticleUnit.article
-    }
-
     var shippingPriceValue: MoneyAmount {
         return shippingPrice?.amount ?? 0
     }
