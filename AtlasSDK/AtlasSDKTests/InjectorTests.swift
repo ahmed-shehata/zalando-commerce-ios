@@ -2,6 +2,7 @@
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
+import XCTest
 import Foundation
 import Nimble
 
@@ -27,68 +28,63 @@ private class Three: NumberType {
     let value = 3
 }
 
-class InjectorSpec: QuickSpec {
+class InjectorTests: XCTestCase {
 
     var injector: Injector!
 
-    override func spec() {
-        describe("Injector") {
+    override func setUp() {
+        super.setUp()
 
-            beforeEach {
-                self.injector = Injector()
-            }
+        injector = Injector()
+    }
 
-            it("should return implementation of a registered type") {
-                self.injector.register { One(value: 1) as Onable }
+    func testRegisterTypeOneTime() {
+        injector.register { One(value: 1) as Onable }
+        let number: Onable? = try? injector.provide()
 
-                let number: Onable? = try? self.injector.provide()
+        expect(number?.value).to(equal(1))
+    }
 
-                expect(number?.value).to(equal(1))
-            }
+    func testRegisterTypeManyTimes() {
+        injector.register { One(value: 1) as NumberType }
+        injector.register { Two() as NumberType }
 
-            it("should return last implementation of a registered type") {
-                self.injector.register { One(value: 1) as Onable }
-                self.injector.register { Two() as NumberType }
+        let number: NumberType? = try? injector.provide()
+        expect(number?.value).to(equal(2))
+    }
 
-                let number: NumberType? = try? self.injector.provide()
+    func testRetrieveIdenticalObject() {
+        let three = Three()
+        injector.register { three }
 
-                expect(number?.value).to(equal(2))
-            }
+        let number: Three? = try? injector.provide()
+        expect(number).to(beIdenticalTo(three))
+    }
 
-            it("should return same object") {
-                let three = Three()
-                self.injector.register { three }
+    func testRetrieveLastIdenticalObject() {
+        injector.register { Three() }
+        let three2 = Three()
+        injector.register { three2 }
 
-                let number: Three? = try? self.injector.provide()
+        let number: Three? = try? injector.provide()
+        expect(number).to(beIdenticalTo(three2))
+    }
 
-                expect(number).to(beIdenticalTo(three))
-            }
+    func testDeregisterObject() {
+        let three = Three()
+        injector.register { three }
 
-            it("should return last registered object") {
-                self.injector.register { Three() }
-                let three2 = Three()
-                self.injector.register { three2 }
+        let number: Three? = try? injector.provide()
+        expect(number).toNot(beNil())
 
-                let number: Three? = try? self.injector.provide()
+        injector.deregister(three.dynamicType)
 
-                expect(number).to(beIdenticalTo(three2))
-            }
+        let nilNumber: Three? = try? injector.provide()
+        expect(nilNumber).to(beNil())
+    }
 
-            it("should be able to deregister object") {
-                let three = Three()
-                self.injector.register { three }
-                self.injector.deregister(three.dynamicType)
-
-                let number: Three? = try? self.injector.provide()
-
-                expect(number).to(beNil())
-            }
-
-            it("should throw error if type is not registered") {
-                expect { try self.injector.provide() as NumberType }.to(throwError())
-            }
-
-        }
+    func testThrowErrorIfTypeNotFound() {
+        expect { try self.injector.provide() as NumberType }.to(throwError())
     }
 
 }

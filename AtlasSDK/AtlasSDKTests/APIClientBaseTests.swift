@@ -2,13 +2,14 @@
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
+import XCTest
 import Foundation
 import Nimble
 import AtlasMockAPI
 
 @testable import AtlasSDK
 
-class APIClientBaseSpec: QuickSpec {
+class APIClientBaseTests: XCTestCase {
 
     let cartId = "CART_ID"
     let checkoutId = "CHECKOUT_ID"
@@ -50,14 +51,25 @@ class APIClientBaseSpec: QuickSpec {
         return try! NSJSONSerialization.dataWithJSONObject(object, options: []) // swiftlint:disable:this force_try
     }
 
-    func mockedAPIClient(forURL url: NSURL, options: Options? = nil, data: NSData?,
-        status: HTTPStatus, errorCode: Int? = nil) -> APIClient {
-            let apiURL = AtlasMockAPI.endpointURL(forPath: "/")
-            let loginURL = AtlasMockAPI.endpointURL(forPath: "/oauth2/authorize")
-            let callback = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect"
+    func mockedAPIClient(forURL url: NSURL,
+                                options: Options? = nil,
+                                data: NSData?,
+                                status: HTTPStatus,
+                                errorCode: Int? = nil) -> APIClient {
 
-        let json = JSON(["sales-channels": [["locale": "de_DE", "sales-channel": "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
-            "toc_url": "https://www.zalando.de/agb/"]],
+        let apiURL = AtlasMockAPI.endpointURL(forPath: "/")
+        let loginURL = AtlasMockAPI.endpointURL(forPath: "/oauth2/authorize")
+        let callback = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect"
+
+        let json = JSON(
+            [
+                "sales-channels": [
+                    [
+                        "locale": "de_DE",
+                        "sales-channel": "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
+                        "toc_url": "https://www.zalando.de/agb/"
+                    ]
+                ],
                 "atlas-catalog-api": ["url": apiURL.absoluteString],
                 "atlas-checkout-api": [
                     "url": apiURL.absoluteString,
@@ -66,21 +78,21 @@ class APIClientBaseSpec: QuickSpec {
                         "third-party-callback": callback
                     ]
                 ],
-                "oauth2-provider": ["url": loginURL.absoluteString]])
+                "oauth2-provider": ["url": loginURL.absoluteString]
+            ]
+        )
 
-            let config = Config(json: json, options: options ?? clientOptions)! // swiftlint:disable:this force_unwrapping
-            var client = APIClient(config: config)
+        let config = Config(json: json, options: options ?? clientOptions)! // swiftlint:disable:this force_unwrapping
+        var client = APIClient(config: config)
 
-            var error: NSError? = nil
-            if let errorCode = errorCode {
-                error = NSError(domain: "NSURLErrorDomain", code: errorCode, userInfo: nil)
-            }
+        var error: NSError? = nil
+        if let errorCode = errorCode {
+            error = NSError(domain: "NSURLErrorDomain", code: errorCode, userInfo: nil)
+        }
 
-            client.urlSession = URLSessionMock(data: data,
-                response: NSHTTPURLResponse(URL: url, statusCode: status.rawValue),
-                error: error)
+        client.urlSession = URLSessionMock(data: data, response: NSHTTPURLResponse(URL: url, statusCode: status.rawValue), error: error)
 
-            return client
+        return client
     }
 
 }

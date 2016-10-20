@@ -2,30 +2,36 @@
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
+import XCTest
 import Foundation
 import Nimble
 import AtlasMockAPI
 
 @testable import AtlasSDK
 
-class ConfigSpec: QuickSpec {
+class ConfigTests: XCTestCase {
 
-    override func spec() {
+    let catalogURL = AtlasMockAPI.endpointURL(forPath: "/catalog")
+    let checkoutURL = AtlasMockAPI.endpointURL(forPath: "/checkout")
+    let loginURL = AtlasMockAPI.endpointURL(forPath: "/login")
 
-        let catalogURL = AtlasMockAPI.endpointURL(forPath: "/catalog")
-        let checkoutURL = AtlasMockAPI.endpointURL(forPath: "/checkout")
-        let loginURL = AtlasMockAPI.endpointURL(forPath: "/login")
+    let interfaceLanguage = "fr"
+    let configLanguage = "de"
+    let configCountry = "DE"
+    let salesChannelId = "82fe2e7f-8c4f-4aa1-9019-b6bde5594456"
+    let clientId = "CLIENT_ID"
+    let tocURL = "https://www.zalando.de/agb/"
+    let callback = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect"
 
-        let interfaceLanguage = "fr"
-        let configLanguage = "de"
-        let configCountry = "DE"
-        let configLocale = "\(configLanguage)_\(configCountry)"
-        let salesChannelId = "82fe2e7f-8c4f-4aa1-9019-b6bde5594456"
-        let clientId = "CLIENT_ID"
-        let tocURL = "https://www.zalando.de/agb/"
-        let callback = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect"
+    var configLocale: String!
+    var json: JSON!
 
-        let json = JSON([
+    override func setUp() {
+        super.setUp()
+
+        configLocale = "\(configLanguage)_\(configCountry)"
+        json = JSON(
+            [
             "sales-channels": [
                 ["locale": "es_ES", "sales-channel": "SPAIN", "toc_url": "https://www.zalando.es/cgc/"],
                 ["locale": configLocale, "sales-channel": salesChannelId, "toc_url": tocURL],
@@ -38,46 +44,44 @@ class ConfigSpec: QuickSpec {
                     "third-party-callback": callback
                 ]
             ],
-            "oauth2-provider": ["url": loginURL.absoluteString]])
+            "oauth2-provider": ["url": loginURL.absoluteString]
+            ]
+        )
+    }
 
-        describe("Config") {
+    func testOptionInitialization() {
+        let options = Options(clientId: clientId, salesChannel: salesChannelId, interfaceLanguage: interfaceLanguage)
+        let config = Config(json: json, options: options)
 
-            it("should correctly initialize from fully given data") {
-                let options = Options(clientId: clientId, salesChannel: salesChannelId, interfaceLanguage: interfaceLanguage)
-                let config = Config(json: json, options: options)
+        expect(config?.catalogURL).to(equal(catalogURL))
+        expect(config?.checkoutURL).to(equal(checkoutURL))
+        expect(config?.loginURL).to(equal(loginURL))
+        expect(config?.clientId).to(equal(clientId))
+        expect(config?.salesChannel).to(equal(salesChannelId))
+        expect(config?.tocURL).to(equal(NSURL(validURL: tocURL)))
+    }
 
-                expect(config?.catalogURL).to(equal(catalogURL))
-                expect(config?.checkoutURL).to(equal(checkoutURL))
-                expect(config?.loginURL).to(equal(loginURL))
-                expect(config?.clientId).to(equal(clientId))
-                expect(config?.salesChannel).to(equal(salesChannelId))
-                expect(config?.tocURL).to(equal(NSURL(validURL: tocURL)))
-            }
+    func testReadingLanguageFromConfigWhenNoInterfaceLanguageGiven() {
+        let options = Options(clientId: clientId, salesChannel: salesChannelId)
+        let config = Config(json: json, options: options)
 
-            it("should use config locale when no interface lanugage given") {
-                let options = Options(clientId: clientId, salesChannel: salesChannelId)
-                let config = Config(json: json, options: options)
+        expect(config?.salesChannelLocale.localeIdentifier).to(equal(configLocale))
+        expect(config?.interfaceLocale.localeIdentifier).to(equal(configLocale))
+    }
 
-                expect(config?.salesChannelLocale.localeIdentifier).to(equal(configLocale))
-                expect(config?.interfaceLocale.localeIdentifier).to(equal(configLocale))
-            }
+    func testUseInterfaceLanugageWithConfigCountry() {
+        let options = Options(clientId: clientId, salesChannel: salesChannelId, interfaceLanguage: interfaceLanguage)
+        let config = Config(json: json, options: options)
 
-            it("should use interface lanugage and config country") {
-                let options = Options(clientId: clientId, salesChannel: salesChannelId, interfaceLanguage: interfaceLanguage)
-                let config = Config(json: json, options: options)
+        expect(config?.salesChannelLocale.localeIdentifier).to(equal(configLocale))
+        expect(config?.interfaceLocale.localeIdentifier).to(equal("\(interfaceLanguage)_\(configCountry)"))
+    }
 
-                expect(config?.salesChannelLocale.localeIdentifier).to(equal(configLocale))
-                expect(config?.interfaceLocale.localeIdentifier).to(equal("\(interfaceLanguage)_\(configCountry)"))
-            }
+    func testInvalidSalesChannel() {
+        let options = Options(clientId: clientId, salesChannel: "INVALID")
+        let config = Config(json: json, options: options)
 
-            it("should not create config for invalid sales channel") {
-                let options = Options(clientId: clientId, salesChannel: "INVALID")
-                let config = Config(json: json, options: options)
-
-                expect(config).to(beNil())
-            }
-
-        }
+        expect(config).to(beNil())
     }
 
 }
