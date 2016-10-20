@@ -17,7 +17,7 @@ public struct Config {
     public let interfaceLocale: NSLocale
 
     public var countryCode: String {
-        return interfaceLocale.countryCode
+        return interfaceLocale.validCountryCode()
     }
 
     public let tocURL: NSURL
@@ -51,7 +51,7 @@ extension Config {
         self.salesChannelLocale = NSLocale(localeIdentifier: localeSalesChannel.locale)
         self.tocURL = localeSalesChannel.tocURL
         if let interfaceLanguage = options.interfaceLanguage {
-            self.interfaceLocale = NSLocale(localeIdentifier: "\(interfaceLanguage)_\(salesChannelLocale.countryCode)")
+            self.interfaceLocale = NSLocale(localeIdentifier: "\(interfaceLanguage)_\(salesChannelLocale.validCountryCode())")
         } else {
             self.interfaceLocale = salesChannelLocale
         }
