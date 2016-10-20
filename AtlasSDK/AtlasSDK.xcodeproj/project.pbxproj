@@ -72,7 +72,6 @@
 		7B21A5839D8997DA626D689A9B03C5C2 /* GetCustomerEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E9BD4D77C0386109EAD09F634330CD /* GetCustomerEndpoint.swift */; };
 		7D9992E58F4E287BC6EE7AD30338862F /* FormattableAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A2E3D95B370914C7B19A3B81E80190 /* FormattableAddress.swift */; };
 		8121410286D1482AE56315CCD5E2AC10 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42F187B2D3AF87F210E636B8FEB493D8 /* Nimble.framework */; };
-		9F91C29E6D4328AD2CE09BB975179C05 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECCE8130C31F3C04713FD6782E20E5A /* Price.swift */; };
 		8181B15B2059E0C37F74FA1B0E4DAF8C /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D9D57D8A8EE4FD7D57EFE634240FB /* HTTP.swift */; };
 		8311BFD275D616D4277DC6B5A41821EC /* AuthorizationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0682F8C25363E355228D108280F186 /* AuthorizationHandler.swift */; };
 		876589FD4612DC2514CB3D7284288A81 /* Tests.json in Resources */ = {isa = PBXBuildFile; fileRef = EA97D05C1FC1C316CAA9F2EAEE6DFB89 /* Tests.json */; };
@@ -84,6 +83,7 @@
 		963AE70DD87A3C9A75FB0231D2130E7F /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CF52ED3F20B2F59D5E6096E498A18B /* PaymentMethod.swift */; };
 		97B4EDF441C6E5F2F715844EAFD527CD /* LoggerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B40AEACC9AD78CAFFB98B61702CE25A /* LoggerType.swift */; };
 		999D8D8F6F37891C794A474549044605 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2155265DCAF83847E14F21DC71EF756B /* Endpoint.swift */; };
+		9F91C29E6D4328AD2CE09BB975179C05 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECCE8130C31F3C04713FD6782E20E5A /* Price.swift */; };
 		9FBE1426643CB5DFC73CD66E9CE24856 /* SequenceTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702F998B9D457EBAA94E996DA15ABB64 /* SequenceTypeTests.swift */; };
 		A0EFD6474DCE215941273DBFE9FB064B /* OrderAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A02961F55508B3B15CEC53112BFE4D /* OrderAddress.swift */; };
 		A259CD2306CCF2869A51462415F62F50 /* PrintLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812218FB3FA269E7294BC86C1E53B428 /* PrintLogger.swift */; };
@@ -1002,7 +1002,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_SWIFT_FLAGS = "$(inherited) -DDEBUG";
+				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies DEBUG";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1086,6 +1086,7 @@
 				INSTALL_GROUP = everyone;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 2.3;
