@@ -33,7 +33,7 @@ class DatesTests: XCTestCase {
         expect(expectedDate).to(equal(parsedDate))
     }
 
-    func testNiDate() {
+    func testNilDate() {
         let parsedDate = RFC3339DateFormatter().dateFromString(nil)
         expect(parsedDate).to(beNil())
     }
