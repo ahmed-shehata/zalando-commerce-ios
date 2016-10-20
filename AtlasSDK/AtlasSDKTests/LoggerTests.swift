@@ -68,8 +68,8 @@ class LoggerTests: XCTestCase {
         AtlasLogger.logger.severity = .Debug
         AtlasLogger.logDebug(loggedMessage, verbose: true)
 
-        expect(self.loggerOutput).to(contain("spec()"))
-        expect(self.loggerOutput).to(contain("LoggerSpec.swift"))
+        expect(self.loggerOutput).to(contain("testFunctionNameAndFile()"))
+        expect(self.loggerOutput).to(contain("LoggerTests.swift"))
     }
 
 }
