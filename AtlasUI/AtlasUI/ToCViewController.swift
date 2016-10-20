@@ -37,14 +37,14 @@ final class ToCViewController: UIViewController, UIWebViewDelegate {
     }
 
     #if swift(>=2.3)
-    func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
-    dismissViewController(.failure(error), animated: true)
-    }
+        func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
+            dismissViewController(.failure(error), animated: true)
+        }
     #else
-    func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
-        guard let error = error where !errorBecuaseRequestCancelled(error) else { return }
-        dismissViewController(.failure(error), animated: true)
-    }
+        func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
+            guard let error = error where !errorBecuaseRequestCancelled(error) else { return }
+            dismissViewController(.failure(error), animated: true)
+        }
     #endif
 
     private func errorBecuaseRequestCancelled(error: NSError) -> Bool {

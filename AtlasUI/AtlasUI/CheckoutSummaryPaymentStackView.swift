@@ -5,12 +5,14 @@
 import UIKit
 
 struct CheckoutSummaryPaymentViewModel {
+
     let title: String
     let value: String
     let showArrow: Bool
+
 }
 
-class CheckoutSummaryPaymentStackView: UIStackView {
+class CheckoutSummaryPaymentStackView: UIStackView, RowStackView {
 
     internal let titleLabel: UILabel = {
         let label = UILabel()
