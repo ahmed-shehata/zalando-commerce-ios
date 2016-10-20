@@ -56,7 +56,7 @@ class SizeListSelectionViewControllerTests: XCTestCase {
         expect(viewController?.tableViewDataSource?.article.units.count).to(equal(1))
         expect(viewController?.tableViewDataSource?.article.availableUnits.count).to(equal(1))
         expect(viewController?.tableViewDataSource?.article.hasSingleUnit).to(equal(true))
-        expect(sizeSelectionNavigationController?.topViewController).toNot(equal(viewController))
+        expect(sizeSelectionNavigationController?.topViewController).toEventuallyNot(equal(viewController))
     }
 
     func testOutOfStockArticle() {
