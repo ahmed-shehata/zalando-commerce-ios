@@ -20,7 +20,6 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
     internal var viewState: CheckoutViewState = .NotLoggedIn {
         didSet {
             setupNavigationBar()
-            loaderView.hide()
             rootStackView.configureData(self)
         }
     }
@@ -33,11 +32,6 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
         stackView.axis = .Vertical
         stackView.spacing = 5
         return stackView
-    }()
-    internal let loaderView: LoaderView = {
-        let view = LoaderView()
-        view.hidden = true
-        return view
     }()
 
     init(checkout: AtlasCheckout, checkoutViewModel: CheckoutViewModel) {
@@ -92,31 +86,14 @@ extension CheckoutSummaryViewController {
     private func createCheckout() {
         guard checkoutViewModel.isReadyToCreateCheckout else { return }
 
-        displayLoader { [weak self] done in
+        LoaderView.displayLoader { [weak self] hideLoader in
             guard let strongSelf = self else { return }
             strongSelf.checkout.createCheckoutViewModel(fromModel: strongSelf.checkoutViewModel) { result in
-                done()
+                hideLoader()
                 guard let checkoutViewModel = result.process() else { return }
                 strongSelf.checkoutViewModel = checkoutViewModel
             }
         }
-    }
-
-}
-
-extension CheckoutSummaryViewController {
-
-    private func showLoader() {
-        self.loaderView.show()
-    }
-
-    private func hideLoader() {
-        self.loaderView.hide()
-    }
-
-    internal func displayLoader(block: (() -> Void) -> Void) {
-        showLoader()
-        block(hideLoader)
     }
 
 }
@@ -175,9 +152,7 @@ extension CheckoutSummaryViewController {
     private func setupView() {
         view.backgroundColor = .whiteColor()
         view.addSubview(rootStackView)
-        view.addSubview(loaderView)
         rootStackView.buildView()
-        loaderView.buildView()
     }
 
     private func setupInitialViewState() {
