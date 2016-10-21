@@ -538,7 +538,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 02F7ED365458581106909C3B3784C656 /* Build configuration list for PBXNativeTarget "AtlasUITests" */;
 			buildPhases = (
-				0549D3E8BA9DD76CD24F0F5D9F842E1F /* Swift Lint */,
 				A60B78CD55E47A4F8F549FE789D8E2C0 /* Sources */,
 				67B56B6FF2EBD941450E593663475035 /* Copy Quick and Nimble frameworks */,
 				33726023126163EF22BCC39019CFB9E4 /* Frameworks */,
@@ -632,21 +631,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0549D3E8BA9DD76CD24F0F5D9F842E1F /* Swift Lint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Swift Lint";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [[ -z \"$ATLAS_SKIP_SWIFT_LINT\" ]]; then\n  eval \"$(/usr/bin/which -s rbenv && rbenv init -)\"\n  ${PROJECT_DIR}/../calypso.rb lint check ${PROJECT_DIR}/${TARGET_NAME}\nfi";
-			showEnvVarsInLog = 0;
-		};
 		4A838DB860B288CB29A67CBB5E7CE8B0 /* Swift Lint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
