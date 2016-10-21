@@ -36,15 +36,15 @@ class ConfigTests: XCTestCase {
                 ["locale": "es_ES", "sales-channel": "SPAIN", "toc_url": "https://www.zalando.es/cgc/"],
                 ["locale": configLocale, "sales-channel": salesChannelId, "toc_url": tocURL],
             ],
-            "atlas-catalog-api": ["url": catalogURL.absoluteString],
+            "atlas-catalog-api": ["url": catalogURL.absoluteString!],
             "atlas-checkout-api": [
-                "url": checkoutURL.absoluteString,
+                "url": checkoutURL.absoluteString!,
                 "payment": [
                     "selection-callback": callback,
                     "third-party-callback": callback
                 ]
             ],
-            "oauth2-provider": ["url": loginURL.absoluteString]
+            "oauth2-provider": ["url": loginURL.absoluteString!]
             ]
         )
     }
