@@ -10,7 +10,6 @@ import Nimble
 
 class OptionsSpec: QuickSpec {
 
-    // swiftlint:disable:next function_body_length
     override func spec() {
 
         let clientId = "CLIENT_ID_SPEC"

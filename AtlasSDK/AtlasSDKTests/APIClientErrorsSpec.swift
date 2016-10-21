@@ -11,7 +11,6 @@ import AtlasMockAPI
 
 class APIClientErrorsSpec: APIClientBaseSpec {
 
-    // swiftlint:disable:next function_body_length
     override func spec() {
 
         describe("API Client Errors") {

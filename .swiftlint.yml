@@ -21,6 +21,7 @@ excluded:
   - AtlasSDKTests/SwiftyJSON
   - SwiftyJSON
   - AtlasSDKTests
+  - AtlasMockAPITests
   - AtlasDemoUITests
   - AtlasUITests
 

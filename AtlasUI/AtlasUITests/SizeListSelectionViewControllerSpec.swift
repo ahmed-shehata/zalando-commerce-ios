@@ -12,12 +12,12 @@ class SizeListSelectionViewControllerSpec: QuickSpec {
 
     override class func setUp() {
         super.setUp()
-        try! AtlasMockAPI.startServer() // swiftlint:disable:this force_try
+        try! AtlasMockAPI.startServer()
     }
 
     override class func tearDown() {
         super.tearDown()
-        try! AtlasMockAPI.stopServer() // swiftlint:disable:this force_try
+        try! AtlasMockAPI.stopServer()
     }
 
     override func spec() {

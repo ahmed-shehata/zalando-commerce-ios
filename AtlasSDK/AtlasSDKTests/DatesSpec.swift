@@ -8,7 +8,7 @@ import Nimble
 
 class DatesSpec: QuickSpec {
 
-    override func spec() { // swiftlint:disable:this function_body_length
+    override func spec() {
         describe("Date extensions") {
 
             it("ISO8601DateFormatter should correctly format date") {
