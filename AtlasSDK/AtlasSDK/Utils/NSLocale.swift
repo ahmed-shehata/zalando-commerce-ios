@@ -6,16 +6,12 @@ import Foundation
 
 extension NSLocale {
 
-    func stringForKey(key: String) -> String {
-        return self.objectForKey(key) as? String ?? ""
-    }
-
-    var countryCode: String {
-        return self.stringForKey(NSLocaleCountryCode)
-    }
-
-    var languageCode: String {
-        return self.stringForKey(NSLocaleLanguageCode)
+    func validCountryCode(defaultCode: String = "") -> String {
+        if #available(iOS 10.0, *) {
+            return self.countryCode ?? defaultCode
+        } else {
+            return self.objectForKey(NSLocaleCountryCode) as? String ?? defaultCode
+        }
     }
 
 }

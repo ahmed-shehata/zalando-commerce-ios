@@ -70,15 +70,15 @@ class APIClientBaseTests: XCTestCase {
                         "toc_url": "https://www.zalando.de/agb/"
                     ]
                 ],
-                "atlas-catalog-api": ["url": apiURL.absoluteString],
+                "atlas-catalog-api": ["url": apiURL.absoluteString!],
                 "atlas-checkout-api": [
-                    "url": apiURL.absoluteString,
+                    "url": apiURL.absoluteString!,
                     "payment": [
                         "selection-callback": callback,
                         "third-party-callback": callback
                     ]
                 ],
-                "oauth2-provider": ["url": loginURL.absoluteString]
+                "oauth2-provider": ["url": loginURL.absoluteString!]
             ]
         )
 
