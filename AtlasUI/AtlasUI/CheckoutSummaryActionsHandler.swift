@@ -31,7 +31,7 @@ extension CheckoutSummaryActionsHandler {
             checkoutId = viewController.checkoutViewModel.checkout?.id
             else { return }
 
-        LoaderView.displayLoader { hideLoader in
+        UserMessage.displayLoader { hideLoader in
             let selectedArticleUnit = viewController.checkoutViewModel.selectedArticleUnit
             let addresses = viewController.checkoutViewModel.selectedAddresses
             viewController.checkout.createCheckoutViewModel(selectedArticleUnit, addresses: addresses) { result in
@@ -48,7 +48,7 @@ extension CheckoutSummaryActionsHandler {
 
     internal func createOrder(forCheckoutId checkoutId: String) {
         guard let viewController = self.viewController else { return }
-        LoaderView.displayLoader { hideLoader in
+        UserMessage.displayLoader { hideLoader in
             viewController.checkout.client.createOrder(checkoutId) { result in
                 hideLoader()
                 guard let order = result.process() else { return }
@@ -74,7 +74,7 @@ extension CheckoutSummaryActionsHandler {
     internal func generateCheckout(customer: Customer) {
         guard let viewController = self.viewController else { return }
 
-        LoaderView.displayLoader { hideLoader in
+        UserMessage.displayLoader { hideLoader in
             let selectedArticleUnit = viewController.checkoutViewModel.selectedArticleUnit
             let addresses = viewController.checkoutViewModel.selectedAddresses
             viewController.checkout.createCheckoutViewModel(selectedArticleUnit, addresses: addresses) { result in
@@ -144,7 +144,7 @@ extension CheckoutSummaryActionsHandler {
         guard let viewController = self.viewController else { return }
         guard Atlas.isUserLoggedIn() else { return loadCustomerData() }
 
-        LoaderView.displayLoader { hideLoader in
+        UserMessage.displayLoader { hideLoader in
             viewController.checkout.client.addresses { result in
                 hideLoader()
                 guard let addresses = result.process() else { return }
@@ -165,7 +165,7 @@ extension CheckoutSummaryActionsHandler {
         guard let viewController = self.viewController else { return }
         guard Atlas.isUserLoggedIn() else { return loadCustomerData() }
 
-        LoaderView.displayLoader { hideLoader in
+        UserMessage.displayLoader { hideLoader in
             viewController.checkout.client.addresses { result in
                 hideLoader()
                 guard let addresses = result.process() else { return }

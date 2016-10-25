@@ -68,7 +68,7 @@ extension SizeListSelectionViewController: UIBuilder {
 extension SizeListSelectionViewController {
 
     private func fetchSizes() {
-        LoaderView.displayLoader { hideLoader in
+        UserMessage.displayLoader { hideLoader in
             self.checkout.client.article(self.sku) { [weak self] result in
                 hideLoader()
                 guard let article = result.process(forceFullScreenError: true) else { return }
@@ -86,7 +86,7 @@ extension SizeListSelectionViewController {
             return displayCheckoutSummaryViewController(checkoutViewModel, animated: !hasSingleUnit)
         }
 
-        LoaderView.displayLoader { [weak self] hideLoader in
+        UserMessage.displayLoader { [weak self] hideLoader in
             self?.checkout.client.customer { [weak self] result in
                 guard let customer = result.process(forceFullScreenError: hasSingleUnit) else {
                     hideLoader()
