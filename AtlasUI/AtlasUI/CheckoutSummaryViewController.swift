@@ -19,7 +19,6 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
     internal var viewState: CheckoutViewState = .NotLoggedIn {
         didSet {
             setupNavigationBar()
-            loaderView.hide()
             rootStackView.configureData(self)
         }
     }
@@ -32,11 +31,6 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
         stackView.axis = .Vertical
         stackView.spacing = 5
         return stackView
-    }()
-    internal let loaderView: LoaderView = {
-        let view = LoaderView()
-        view.hidden = true
-        return view
     }()
 
     init(checkout: AtlasCheckout, checkoutViewModel: CheckoutViewModel) {
@@ -74,23 +68,6 @@ extension CheckoutSummaryViewController {
     private func createCheckout() {
         guard let customer = checkoutViewModel.customer where checkoutViewModel.isReadyToCreateCheckout else { return }
         actionsHandler.generateCheckout(customer)
-    }
-
-}
-
-extension CheckoutSummaryViewController {
-
-    private func showLoader() {
-        self.loaderView.show()
-    }
-
-    private func hideLoader() {
-        self.loaderView.hide()
-    }
-
-    internal func displayLoader(block: (() -> Void) -> Void) {
-        showLoader()
-        block(hideLoader)
     }
 
 }
@@ -149,9 +126,7 @@ extension CheckoutSummaryViewController {
     private func setupView() {
         view.backgroundColor = .whiteColor()
         view.addSubview(rootStackView)
-        view.addSubview(loaderView)
         rootStackView.buildView()
-        loaderView.buildView()
     }
 
     private func setupInitialViewState() {

@@ -43,12 +43,15 @@ class AddressActionsHandler {
     }
 
     func deleteAddress(address: EquatableAddress) {
-        checkout.client.deleteAddress(address.id) { [weak self] result in
-            let addresses = self?.viewController?.tableviewDelegate.addresses
-            guard let _ = result.process(), addressIdx = addresses?.indexOf({ $0 == address }) else { return }
-            self?.viewController?.tableviewDelegate.addresses.removeAtIndex(addressIdx)
-            self?.viewController?.configureEditButton()
-            self?.viewController?.addressDeletedHandler?(address: address)
+        LoaderView.displayLoader { [weak self] hideLoader in
+            self?.checkout.client.deleteAddress(address.id) { [weak self] result in
+                hideLoader()
+                let addresses = self?.viewController?.tableviewDelegate.addresses
+                guard let _ = result.process(), addressIdx = addresses?.indexOf({ $0 == address }) else { return }
+                self?.viewController?.tableviewDelegate.addresses.removeAtIndex(addressIdx)
+                self?.viewController?.configureEditButton()
+                self?.viewController?.addressDeletedHandler?(address: address)
+            }
         }
     }
 

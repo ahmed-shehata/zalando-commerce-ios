@@ -31,11 +31,11 @@ extension CheckoutSummaryActionsHandler {
             checkoutId = viewController.checkoutViewModel.checkout?.id
             else { return }
 
-        viewController.displayLoader { done in
+        LoaderView.displayLoader { hideLoader in
             let selectedArticleUnit = viewController.checkoutViewModel.selectedArticleUnit
             let addresses = viewController.checkoutViewModel.selectedAddresses
             viewController.checkout.createCheckoutViewModel(selectedArticleUnit, addresses: addresses) { result in
-                done()
+                hideLoader()
                 guard let checkoutViewModel = result.process() else { return }
                 viewController.checkoutViewModel = checkoutViewModel
 
@@ -48,7 +48,7 @@ extension CheckoutSummaryActionsHandler {
 
     internal func createOrder(forCheckoutId checkoutId: String) {
         guard let viewController = self.viewController else { return }
-        viewController.displayLoader { hideLoader in
+        LoaderView.displayLoader { hideLoader in
             viewController.checkout.client.createOrder(checkoutId) { result in
                 hideLoader()
                 guard let order = result.process() else { return }
@@ -74,11 +74,11 @@ extension CheckoutSummaryActionsHandler {
     internal func generateCheckout(customer: Customer) {
         guard let viewController = self.viewController else { return }
 
-        viewController.displayLoader { done in
+        LoaderView.displayLoader { hideLoader in
             let selectedArticleUnit = viewController.checkoutViewModel.selectedArticleUnit
             let addresses = viewController.checkoutViewModel.selectedAddresses
             viewController.checkout.createCheckoutViewModel(selectedArticleUnit, addresses: addresses) { result in
-                done()
+                hideLoader()
                 guard var checkoutViewModel = result.process() else { return }
 
                 checkoutViewModel.customer = customer
@@ -144,9 +144,9 @@ extension CheckoutSummaryActionsHandler {
         guard let viewController = self.viewController else { return }
         guard Atlas.isUserLoggedIn() else { return loadCustomerData() }
 
-        viewController.displayLoader { done in
+        LoaderView.displayLoader { hideLoader in
             viewController.checkout.client.addresses { result in
-                done()
+                hideLoader()
                 guard let addresses = result.process() else { return }
                 let addressSelectionViewController = AddressPickerViewController(checkout: viewController.checkout,
                     initialAddresses: addresses.map { $0 },
@@ -165,9 +165,9 @@ extension CheckoutSummaryActionsHandler {
         guard let viewController = self.viewController else { return }
         guard Atlas.isUserLoggedIn() else { return loadCustomerData() }
 
-        viewController.displayLoader { done in
+        LoaderView.displayLoader { hideLoader in
             viewController.checkout.client.addresses { result in
-                done()
+                hideLoader()
                 guard let addresses = result.process() else { return }
                 let addressSelectionViewController = AddressPickerViewController(checkout: viewController.checkout,
                     initialAddresses: addresses.filter { $0.pickupPoint == nil } .map { $0 },

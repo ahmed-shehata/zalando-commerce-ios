@@ -10,6 +10,12 @@ public class AtlasUIViewController: UIViewController {
     let mainNavigationController: UINavigationController
     private let atlasReachability = AtlasReachability()
 
+    private let loaderView: LoaderView = {
+        let view = LoaderView()
+        view.hidden = true
+        return view
+    }()
+
     init(atlasCheckout: AtlasCheckout, forProductSKU sku: String) {
         let sizeSelectionViewController = SizeListSelectionViewController(checkout: atlasCheckout, sku: sku)
         mainNavigationController = UINavigationController(rootViewController: sizeSelectionViewController)
@@ -32,6 +38,23 @@ public class AtlasUIViewController: UIViewController {
     private func loadErrorView() {
         UserMessage.displayError(AtlasCheckoutError.unclassified)
         UserMessage.clearBannerError()
+    }
+
+}
+
+extension AtlasUIViewController {
+
+    func showLoader() {
+        loaderView.removeFromSuperview()
+        UIApplication.topViewController()?.view.addSubview(loaderView)
+        loaderView.fillInSuperView()
+        loaderView.buildView()
+        loaderView.show()
+    }
+
+    func hideLoader() {
+        loaderView.hide()
+        loaderView.removeFromSuperview()
     }
 
 }

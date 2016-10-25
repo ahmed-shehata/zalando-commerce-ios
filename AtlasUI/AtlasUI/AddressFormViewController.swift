@@ -24,12 +24,6 @@ class AddressFormViewController: UIViewController, CheckoutProviderType {
         return stackView
     }()
 
-    internal let loaderView: LoaderView = {
-        let view = LoaderView()
-        view.hidden = true
-        return view
-    }()
-
     private let addressType: AddressFormType
     private let addressMode: AddressFormMode
     internal let checkout: AtlasCheckout
@@ -119,20 +113,18 @@ extension AddressFormViewController: UIBuilder {
 
     func configureView() {
         view.addSubview(scrollView)
-        view.addSubview(loaderView)
         scrollView.addSubview(addressStackView)
         scrollView.registerForKeyboardNotifications()
     }
 
     func configureConstraints() {
         scrollView.fillInSuperView()
-        loaderView.fillInSuperView()
         addressStackView.fillInSuperView()
         addressStackView.setWidth(equalToView: scrollView)
     }
 
     func builderSubviews() -> [UIBuilder] {
-        return [addressStackView, loaderView]
+        return [addressStackView]
     }
 
 }
@@ -141,30 +133,35 @@ extension AddressFormViewController {
 
     private func checkAddressRequest() {
         guard let request = CheckAddressRequest(addressFormViewModel: addressViewModel) else { return enableSaveButton() }
-        loaderView.show()
-        checkout.client.checkAddress(request) { [weak self] result in
-            self?.checkAddressRequestCompletion(result)
+        LoaderView.displayLoader { [weak self] hideLoader in
+            self?.checkout.client.checkAddress(request) { [weak self] result in
+                hideLoader()
+                self?.checkAddressRequestCompletion(result)
+            }
         }
     }
 
     private func createAddressRequest() {
         guard let request = CreateAddressRequest(addressFormViewModel: addressViewModel) else { return enableSaveButton() }
-        loaderView.show()
-        checkout.client.createAddress(request) { [weak self] result in
-            self?.createUpdateAddressRequestCompletion(result)
+        LoaderView.displayLoader { [weak self] hideLoader in
+            self?.checkout.client.createAddress(request) { [weak self] result in
+                hideLoader()
+                self?.createUpdateAddressRequestCompletion(result)
+            }
         }
     }
 
     private func updateAddressRequest(originalAddress: EquatableAddress) {
         guard let request = UpdateAddressRequest(addressFormViewModel: addressViewModel) else { return enableSaveButton() }
-        loaderView.show()
-        checkout.client.updateAddress(originalAddress.id, request: request) { [weak self] result in
-            self?.createUpdateAddressRequestCompletion(result)
+        LoaderView.displayLoader { [weak self] hideLoader in
+            self?.checkout.client.updateAddress(originalAddress.id, request: request) { [weak self] result in
+                hideLoader()
+                self?.createUpdateAddressRequestCompletion(result)
+            }
         }
     }
 
     private func checkAddressRequestCompletion(result: AtlasResult<CheckAddressResponse>) {
-        loaderView.hide()
         guard let checkAddressResponse = result.process() else { return enableSaveButton() }
         if checkAddressResponse.status == .notCorrect {
             UserMessage.displayError(AtlasCheckoutError.addressInvalid)
@@ -178,7 +175,6 @@ extension AddressFormViewController {
     }
 
     private func createUpdateAddressRequestCompletion(result: AtlasResult<UserAddress>) {
-        loaderView.hide()
         guard let address = result.process() else { return enableSaveButton() }
         dismissView()
         completion?(address)

@@ -14,12 +14,12 @@ class AtlasMockAPITests: XCTestCase {
 
     override static func setUp() {
         super.setUp()
-        try! AtlasMockAPI.startServer() // swiftlint:disable:this force_try
+        try! AtlasMockAPI.startServer()
     }
 
     override static func tearDown() {
         super.tearDown()
-        try! AtlasMockAPI.stopServer() // swiftlint:disable:this force_try
+        try! AtlasMockAPI.stopServer()
     }
 
     func testRootEndpoint() {
