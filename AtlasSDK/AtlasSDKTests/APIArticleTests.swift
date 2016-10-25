@@ -13,7 +13,7 @@ class APIArticleTests: APIClientBaseTests {
     func testFetchArticle() {
         waitUntilAPIClientIsConfigured { done, client in
             let sku = "AD541L009-G11"
-            client.article(forSKU: sku) { result in
+            client.article(sku) { result in
                 switch result {
                 case .failure(let error):
                     fail(String(error))
