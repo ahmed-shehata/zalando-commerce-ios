@@ -524,9 +524,9 @@
 					};
 					6EAF48CE510DEB8F61900BF8679179AD = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = J67E9B6234;
 						DevelopmentTeamName = "Zalando AG";
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Manual;
 					};
 					7A9DE536D7A7A1DEA013E619E317542B = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -783,6 +783,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -806,6 +807,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
