@@ -41,7 +41,7 @@ class AppSetup {
     }
 
     private static var alwaysUseMockAPI: Bool {
-        return NSProcessInfo.processInfo().arguments.contains("USE_MOCK_API")
+        return true
     }
 
     private static func prepareMockAPI() {
