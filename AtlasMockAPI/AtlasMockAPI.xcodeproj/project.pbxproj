@@ -47,6 +47,9 @@
 		7BD4FF2BCB0C1B7C42399553075AAE3A /* SwiftyJSON.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5EA1BDBEDFD8CF67629C52AE1F9AA83D /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		819E45001DC0DD8800AD80A1 /* SwiftHTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 819E44FF1DC0DD8800AD80A1 /* SwiftHTTP.framework */; };
 		819E45021DC0DDAC00AD80A1 /* SwiftHTTP.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 819E45011DC0DDAC00AD80A1 /* SwiftHTTP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		81FD35701DC0ED020096043E /* redirect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96A6BFD1DB64D250026EA82 /* redirect.swift */; };
+		81FD35721DC0ED5E0096043E /* Nimble.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 81FD35711DC0ED5E0096043E /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		81FD35731DC0ED650096043E /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81FD35711DC0ED5E0096043E /* Nimble.framework */; };
 		8310FD6D7EAB31888EBC5A84A3493D55 /* Swifter.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 18A5038C4E6BD35EB954EA2DB2CF13AB /* Swifter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8720D2B0604EE9F3D556997AABD433D1 /* PUT*|checkouts|CHECKOUT_ID.json in Resources */ = {isa = PBXBuildFile; fileRef = 36179885761B049B1F4CBF0168DCE1BC /* PUT*|checkouts|CHECKOUT_ID.json */; };
 		89D06E86E5BD432FBCB4F4A722DBF3EA /* PUT*|addresses|6616154.json in Resources */ = {isa = PBXBuildFile; fileRef = A18D1A78AC6C343752EAD271C4A781C7 /* PUT*|addresses|6616154.json */; };
@@ -118,6 +121,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				81FD35721DC0ED5E0096043E /* Nimble.framework in Copy Frameworks */,
 				819E45021DC0DDAC00AD80A1 /* SwiftHTTP.framework in Copy Frameworks */,
 				7BD4FF2BCB0C1B7C42399553075AAE3A /* SwiftyJSON.framework in Copy Frameworks */,
 			);
@@ -172,6 +176,7 @@
 		774E15C0298E7554801A950D57B1794B /* NSBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSBundle.swift; sourceTree = "<group>"; };
 		819E44FF1DC0DD8800AD80A1 /* SwiftHTTP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftHTTP.framework; path = ../Carthage/Build/iOS/SwiftHTTP.framework; sourceTree = "<group>"; };
 		819E45011DC0DDAC00AD80A1 /* SwiftHTTP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftHTTP.framework; path = ../Carthage/Build/iOS/SwiftHTTP.framework; sourceTree = "<group>"; };
+		81FD35711DC0ED5E0096043E /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = ../Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		85BC90121A75EE5E58D7451EDFC484AB /* GET*|articles|EV451G023-Q11.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles|EV451G023-Q11.json"; sourceTree = "<group>"; };
 		8E3778589D321DAEEFC3A19E61372FA8 /* AtlasMockAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtlasMockAPI.h; sourceTree = "<group>"; };
 		916DA4EC8C6CDF184EA2662AFB5E1DD2 /* AtlasMockAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtlasMockAPITests.swift; sourceTree = "<group>"; };
@@ -234,6 +239,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81FD35731DC0ED650096043E /* Nimble.framework in Frameworks */,
 				819E45001DC0DD8800AD80A1 /* SwiftHTTP.framework in Frameworks */,
 				4CCBF7311FF9CDE42A2FE6702500AC6D /* AtlasMockAPI.framework in Frameworks */,
 				4E1301BBF0B0F9A97678F81AA2776861 /* SwiftyJSON.framework in Frameworks */,
@@ -334,6 +340,7 @@
 		9C08D20CC26D285554B00A206F697AE6 = {
 			isa = PBXGroup;
 			children = (
+				81FD35711DC0ED5E0096043E /* Nimble.framework */,
 				819E45011DC0DDAC00AD80A1 /* SwiftHTTP.framework */,
 				B8B6C1CD32875C2F19DFA52EEAC7B323 /* AtlasMockAPI */,
 				F09E383836BC69C7BA22BCB1FA1CB8C2 /* AtlasMockAPI-macOS */,
@@ -671,6 +678,7 @@
 				15ED1D40026A24C7177E2284DF12769A /* AtlasMockAPI.swift in Sources */,
 				3885B3BD7BEF34D3AC5430379339B952 /* HttpServer.swift in Sources */,
 				C85677CF1DE7D0C335AC48FE83C3654E /* NSBundle.swift in Sources */,
+				81FD35701DC0ED020096043E /* redirect.swift in Sources */,
 				B91AB4810221943184693E3627A04116 /* authorize.swift in Sources */,
 				DFCA1DE95AC6227FF82D62DAA4E54AF6 /* customer.swift in Sources */,
 				E28A5D0ADC4B5EDD2AE14AC2AEFBF52A /* root.swift in Sources */,

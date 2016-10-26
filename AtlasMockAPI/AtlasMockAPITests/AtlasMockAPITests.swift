@@ -43,8 +43,10 @@ class AtlasMockAPITests: XCTestCase {
     }
 
     func testAuthorizeEndpoint() {
-        assertSuccessfulJSONResponse(forEndpoint: "/oauth2/authorize") { json in
-            expect(json["content", 0, "id"].stringValue).to(equal("L2711E002-Q11"))
+        assertSuccessfulResponse(forEndpoint: "/oauth2/authorize") { data in
+            if let html = String(data: data, encoding: NSUTF8StringEncoding) {
+                expect(html).to(contain("value=\"qux-quux-corge\""))
+            }
         }
     }
 
