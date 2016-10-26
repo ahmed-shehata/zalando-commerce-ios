@@ -16,12 +16,12 @@ class APIClientBaseTests: XCTestCase {
 
     override class func setUp() {
         super.setUp()
-        try! AtlasMockAPI.startServer() // swiftlint:disable:this force_try
+        try! AtlasMockAPI.startServer()
     }
 
     override class func tearDown() {
         super.tearDown()
-        try! AtlasMockAPI.stopServer() // swiftlint:disable:this force_try
+        try! AtlasMockAPI.stopServer()
     }
 
     private var clientOptions: Options {
@@ -48,7 +48,7 @@ class APIClientBaseTests: XCTestCase {
     }
 
     func dataWithJSONObject(object: AnyObject) -> NSData {
-        return try! NSJSONSerialization.dataWithJSONObject(object, options: []) // swiftlint:disable:this force_try
+        return try! NSJSONSerialization.dataWithJSONObject(object, options: [])
     }
 
     func mockedAPIClient(forURL url: NSURL,
@@ -82,7 +82,7 @@ class APIClientBaseTests: XCTestCase {
             ]
         )
 
-        let config = Config(json: json, options: options ?? clientOptions)! // swiftlint:disable:this force_unwrapping
+        let config = Config(json: json, options: options ?? clientOptions)!
         var client = APIClient(config: config)
 
         var error: NSError? = nil

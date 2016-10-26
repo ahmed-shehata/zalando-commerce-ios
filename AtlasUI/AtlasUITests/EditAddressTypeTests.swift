@@ -10,12 +10,12 @@ import Nimble
 
 class EditAddressTypeTests: XCTestCase {
 
-    var viewModel: AddressFormViewModel! // swiftlint:disable:this force_try
+    var viewModel: AddressFormViewModel!
 
     override func setUp() {
         super.setUp()
 
-        Atlas.register { try! Localizer(localeIdentifier: "en_UK") as Localizer } // swiftlint:disable:this force_try
+        Atlas.register { try! Localizer(localeIdentifier: "en_UK") as Localizer }
         viewModel = AddressFormViewModel(equatableAddress: nil, countryCode: "DE")
         updateModelData(viewModel)
     }
