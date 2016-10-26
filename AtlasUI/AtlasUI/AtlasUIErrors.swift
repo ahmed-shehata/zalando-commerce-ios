@@ -29,11 +29,11 @@ extension UserPresentable {
     func errorPresentationType() -> ErrorPresentationType { return .banner }
 
     var displayedTitle: String {
-        return shouldDisplayGeneralMessage() ? Localizer.string("Error.unclassified.title") : title()
+        return shouldDisplayGeneralMessage() ? Localizer.string("AtlasCheckoutError.title") : title()
     }
 
     var displayedMessage: String {
-        return shouldDisplayGeneralMessage() ? Localizer.string("Error.unclassified.message") : message()
+        return shouldDisplayGeneralMessage() ? Localizer.string("AtlasCheckoutError.message.unclassified") : message()
     }
 
     private func title() -> String {

@@ -86,6 +86,7 @@
 		DE4482A9091E62348223761D4C58D008 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA19C45C79A94472331D134BC9895CA /* UIView.swift */; };
 		E96A6BFC1DB648030026EA82 /* PaymentViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96A6BFB1DB648030026EA82 /* PaymentViewControllerTests.swift */; };
 		E97A33A7BE2D26CDE9B4C62EB5BD2661 /* CheckoutSummaryAddressStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9494F7947C24BD2087FE22EBE20BFCD /* CheckoutSummaryAddressStackView.swift */; };
+		E98F06AF1DC0AD340066B0DD /* URLAuthorizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F06AE1DC0AD340066B0DD /* URLAuthorizationTests.swift */; };
 		EF570993CFA4FDF0361679E931D55B8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94F33C041120EF12B441AE2E84A48050 /* Assets.xcassets */; };
 		F22B10157E2B91A8BF9D3AB7B354E6CC /* Nimble.framework in Copy Quick and Nimble frameworks */ = {isa = PBXBuildFile; fileRef = 2E89A529CD1D470F15B857AF1031CB61 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F3F62025EFDB47B5637DC3C928D69264 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F13460B6B17606CC65E38CE6A4716C /* UITableView.swift */; };
@@ -197,6 +198,7 @@
 		DFCC0DB119DFC404BB122ED5E6E2861F /* AtlasUI-String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AtlasUI-String.swift"; sourceTree = "<group>"; };
 		E0787BE393FFE7950A8DA96CCD4375EA /* AtlasUI-NSURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AtlasUI-NSURL.swift"; sourceTree = "<group>"; };
 		E96A6BFB1DB648030026EA82 /* PaymentViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewControllerTests.swift; sourceTree = "<group>"; };
+		E98F06AE1DC0AD340066B0DD /* URLAuthorizationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLAuthorizationTests.swift; sourceTree = "<group>"; };
 		EAF268B630147E557D2C826B01EADCBD /* CheckoutProviderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutProviderType.swift; sourceTree = "<group>"; };
 		EE803447FAE67D333D86C06DBB03AF20 /* AtlasUI-Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AtlasUI-Constants.swift"; sourceTree = "<group>"; };
 		F2F7E6DC714F121E065D4109C618121A /* BillingAddressCreationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingAddressCreationStrategy.swift; sourceTree = "<group>"; };
@@ -424,6 +426,7 @@
 				48590F8AE70FBDA018EEA2A764993D7B /* CheckoutSummaryViewControllerTests.swift */,
 				3FC2F679DBCE572A4B40BED38A132609 /* SizeListSelectionViewControllerTests.swift */,
 				E96A6BFB1DB648030026EA82 /* PaymentViewControllerTests.swift */,
+				E98F06AE1DC0AD340066B0DD /* URLAuthorizationTests.swift */,
 			);
 			path = AtlasUITests;
 			sourceTree = "<group>";
@@ -645,6 +648,7 @@
 				5563CDBD2C0F397355C0392DFE834767 /* EditAddressTypeTests.swift in Sources */,
 				462C5C2CBE11034F80AC43BF90F52D28 /* FormValidatorTests.swift in Sources */,
 				E96A6BFC1DB648030026EA82 /* PaymentViewControllerTests.swift in Sources */,
+				E98F06AF1DC0AD340066B0DD /* URLAuthorizationTests.swift in Sources */,
 				354DA8B0D0E898D52E4F519EF046248C /* LocalizationTests.swift in Sources */,
 				7109452CB160DD8E492BB82ED31164F0 /* SizeListSelectionViewControllerTests.swift in Sources */,
 			);

@@ -28,14 +28,6 @@ class LoaderView: UIView {
         hidden = true
     }
 
-    internal static func displayLoader(block: (() -> Void) -> Void) {
-        let atlasUIViewController: AtlasUIViewController? = try? Atlas.provide()
-        atlasUIViewController?.showLoader()
-        block {
-            atlasUIViewController?.hideLoader()
-        }
-    }
-
 }
 
 extension LoaderView: UIBuilder {

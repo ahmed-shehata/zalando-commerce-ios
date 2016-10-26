@@ -37,7 +37,7 @@ public enum AtlasAPIError: AtlasErrorType {
     case http(status: HTTPStatus, details: String?)
     case backend(status: Int?, type: String?, title: String?, details: String?)
 
-    case checkoutFailed(addresses: [UserAddress]?, cart: Cart?, error: ErrorType)
+    case checkoutFailed(cart: Cart?, error: ErrorType)
 
 }
 
@@ -49,6 +49,7 @@ public enum AtlasCheckoutError: AtlasErrorType {
     case missingAddressAndPayment
     case priceChanged(newPrice: MoneyAmount)
     case paymentMethodNotAvailable
+    case checkoutFailure
     case addressInvalid
 
 }

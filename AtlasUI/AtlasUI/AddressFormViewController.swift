@@ -133,7 +133,7 @@ extension AddressFormViewController {
 
     private func checkAddressRequest() {
         guard let request = CheckAddressRequest(addressFormViewModel: addressViewModel) else { return enableSaveButton() }
-        LoaderView.displayLoader { [weak self] hideLoader in
+        UserMessage.displayLoader { [weak self] hideLoader in
             self?.checkout.client.checkAddress(request) { [weak self] result in
                 hideLoader()
                 self?.checkAddressRequestCompletion(result)
@@ -143,7 +143,7 @@ extension AddressFormViewController {
 
     private func createAddressRequest() {
         guard let request = CreateAddressRequest(addressFormViewModel: addressViewModel) else { return enableSaveButton() }
-        LoaderView.displayLoader { [weak self] hideLoader in
+        UserMessage.displayLoader { [weak self] hideLoader in
             self?.checkout.client.createAddress(request) { [weak self] result in
                 hideLoader()
                 self?.createUpdateAddressRequestCompletion(result)
@@ -153,7 +153,7 @@ extension AddressFormViewController {
 
     private func updateAddressRequest(originalAddress: EquatableAddress) {
         guard let request = UpdateAddressRequest(addressFormViewModel: addressViewModel) else { return enableSaveButton() }
-        LoaderView.displayLoader { [weak self] hideLoader in
+        UserMessage.displayLoader { [weak self] hideLoader in
             self?.checkout.client.updateAddress(originalAddress.id, request: request) { [weak self] result in
                 hideLoader()
                 self?.createUpdateAddressRequestCompletion(result)

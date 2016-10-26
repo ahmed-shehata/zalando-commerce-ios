@@ -52,18 +52,6 @@ extension CheckoutViewModel {
         return customer != nil && selectedPaymentMethod != nil
     }
 
-    var selectedUnit: Article.Unit {
-        return article.availableUnits[selectedArticleUnit.selectedUnitIndex]
-    }
-
-    var selectedUnitIndex: Int {
-        return selectedArticleUnit.selectedUnitIndex
-    }
-
-    var article: Article {
-        return selectedArticleUnit.article
-    }
-
     var shippingPriceValue: MoneyAmount {
         return shippingPrice?.amount ?? 0
     }
@@ -112,6 +100,32 @@ extension CheckoutViewModel {
             selectedShippingAddress = nil
             checkout = nil
         }
+    }
+
+}
+
+extension CheckoutViewModel {
+
+    func validateAgainstOldViewModel(oldViewModel: CheckoutViewModel) {
+        checkPriceChange(oldViewModel)
+        checkPaymentMethod(oldViewModel)
+    }
+
+    private func checkPriceChange(oldViewModel: CheckoutViewModel) {
+        guard let
+            oldPrice = oldViewModel.cart?.grossTotal.amount,
+            newPrice = cart?.grossTotal.amount else { return }
+
+        if oldPrice != newPrice {
+            UserMessage.displayError(AtlasCheckoutError.priceChanged(newPrice: newPrice))
+        }
+    }
+
+    private func checkPaymentMethod(oldViewModel: CheckoutViewModel) {
+        guard oldViewModel.checkout?.payment.selected?.method != nil
+            && checkout?.payment.selected?.method == nil else { return }
+
+        UserMessage.displayError(AtlasCheckoutError.paymentMethodNotAvailable)
     }
 
 }
