@@ -12,8 +12,7 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
         didSet {
             injectCustomer(from: oldValue)
             viewState = checkoutViewModel.checkoutViewState
-            checkPaymentMethod(oldValue)
-            checkPriceChange(oldValue)
+            checkoutViewModel.validateAgainstOldViewModel(oldValue)
             createCheckout()
         }
     }
@@ -53,8 +52,8 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
         setupInitialViewState()
         setupActions()
 
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
-        self.navigationController?.navigationBar.accessibilityIdentifier = "checkout-summary-navigation-bar"
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        navigationController?.navigationBar.accessibilityIdentifier = "checkout-summary-navigation-bar"
     }
 }
 
@@ -66,34 +65,9 @@ extension CheckoutSummaryViewController {
         }
     }
 
-    private func checkPriceChange(oldViewModel: CheckoutViewModel) {
-        guard let
-            oldPrice = oldViewModel.cart?.grossTotal.amount,
-            newPrice = checkoutViewModel.cart?.grossTotal.amount else { return }
-
-        if oldPrice != newPrice {
-            UserMessage.displayError(AtlasCheckoutError.priceChanged(newPrice: newPrice))
-        }
-    }
-
-    private func checkPaymentMethod(oldViewModel: CheckoutViewModel) {
-        guard oldViewModel.checkout?.payment.selected?.method != nil
-            && checkoutViewModel.checkout?.payment.selected?.method == nil else { return }
-
-        UserMessage.displayError(AtlasCheckoutError.paymentMethodNotAvailable)
-    }
-
     private func createCheckout() {
-        guard checkoutViewModel.isReadyToCreateCheckout else { return }
-
-        LoaderView.displayLoader { [weak self] hideLoader in
-            guard let strongSelf = self else { return }
-            strongSelf.checkout.createCheckoutViewModel(fromModel: strongSelf.checkoutViewModel) { result in
-                hideLoader()
-                guard let checkoutViewModel = result.process() else { return }
-                strongSelf.checkoutViewModel = checkoutViewModel
-            }
-        }
+        guard let customer = checkoutViewModel.customer where checkoutViewModel.isReadyToCreateCheckout else { return }
+        actionsHandler.generateCheckout(customer)
     }
 
 }
@@ -166,7 +140,7 @@ extension CheckoutSummaryViewController {
     private func setupNavigationBar() {
         title = Localizer.string(viewState.navigationBarTitleLocalizedKey)
 
-        let hasSingleUnit = checkoutViewModel.article.hasSingleUnit
+        let hasSingleUnit = checkoutViewModel.selectedArticleUnit.article.hasSingleUnit
         navigationItem.setHidesBackButton(viewState.hideBackButton(hasSingleUnit), animated: false)
 
         if viewState.showCancelButton {

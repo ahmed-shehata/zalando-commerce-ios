@@ -69,31 +69,30 @@ final public class AtlasCheckout {
         viewController.presentViewController(atlasUIViewController, animated: true, completion: nil)
     }
 
-    func createCheckoutViewModel(fromModel checkoutViewModel: CheckoutViewModel,
-        completion: CreateCheckoutViewModelCompletion) {
-            createCheckoutViewModel(forArticleUnit: checkoutViewModel.selectedArticleUnit,
-                addresses: checkoutViewModel.selectedAddresses, completion: completion)
-    }
+    func createCheckoutViewModel(selectedArticleUnit: SelectedArticleUnit,
+                                 addresses: CheckoutAddresses? = nil,
+                                 completion: CreateCheckoutViewModelCompletion) {
 
-    func createCheckoutViewModel(forArticleUnit selectedArticleUnit: SelectedArticleUnit, addresses: CheckoutAddresses? = nil,
-        completion: CreateCheckoutViewModelCompletion) {
-            client.createCheckoutCart(for: selectedArticleUnit, addresses: addresses) { result in
-                switch result {
-                case .failure(let error):
-                    if case let AtlasAPIError.checkoutFailed(_, cart, _) = error {
-                        let checkoutModel = CheckoutViewModel(selectedArticleUnit: selectedArticleUnit, cart: cart)
-                        completion(.success(checkoutModel))
-                    } else {
-                        completion(.failure(error))
-                    }
-
-                case .success(let result):
-                    let checkoutModel = CheckoutViewModel(selectedArticleUnit: selectedArticleUnit,
-                                                          cart: result.cart,
-                                                          checkout: result.checkout)
+        client.createCheckoutCart(selectedArticleUnit.sku, addresses: addresses) { result in
+            switch result {
+            case .failure(let error):
+                if case let AtlasAPIError.checkoutFailed(cart, _) = error {
+                    let checkoutModel = CheckoutViewModel(selectedArticleUnit: selectedArticleUnit, cart: cart)
                     completion(.success(checkoutModel))
+                    if addresses?.billingAddress != nil && addresses?.shippingAddress != nil {
+                        UserMessage.displayError(AtlasCheckoutError.checkoutFailure)
+                    }
+                } else {
+                    completion(.failure(error))
                 }
+
+            case .success(let result):
+                let checkoutModel = CheckoutViewModel(selectedArticleUnit: selectedArticleUnit,
+                                                      cart: result.cart,
+                                                      checkout: result.checkout)
+                completion(.success(checkoutModel))
             }
+        }
     }
 
 }

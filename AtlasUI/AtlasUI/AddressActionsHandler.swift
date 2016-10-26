@@ -43,7 +43,7 @@ class AddressActionsHandler {
     }
 
     func deleteAddress(address: EquatableAddress) {
-        LoaderView.displayLoader { [weak self] hideLoader in
+        UserMessage.displayLoader { [weak self] hideLoader in
             self?.checkout.client.deleteAddress(address.id) { [weak self] result in
                 hideLoader()
                 let addresses = self?.viewController?.tableviewDelegate.addresses

@@ -33,6 +33,7 @@
 "AtlasCheckoutError.message.missingAddressAndPayment" = "Please select shipping and billing addresses and the payment method first";
 "AtlasCheckoutError.message.priceChanged" = "The price is now %@";
 "AtlasCheckoutError.message.paymentMethodNotAvailable" = "Payment method is no longer available";
+"AtlasCheckoutError.message.checkoutFailure" = "An error occurred during updating the checkout";
 "AtlasCheckoutError.message.addressInvalid" = "Address not valid, please check the address";
 
 "LoginError.title" = "Login Error";

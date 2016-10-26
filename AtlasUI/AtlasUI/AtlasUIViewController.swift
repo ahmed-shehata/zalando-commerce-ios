@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import AtlasSDK
 
 public class AtlasUIViewController: UIViewController {
 
@@ -27,10 +28,16 @@ public class AtlasUIViewController: UIViewController {
     }
 
     override public func viewDidLoad() {
+        loadErrorView()
         addChildViewController(mainNavigationController)
         view.addSubview(mainNavigationController.view)
         mainNavigationController.view.fillInSuperView()
         atlasReachability.setupReachability()
+    }
+
+    private func loadErrorView() {
+        UserMessage.displayError(AtlasCheckoutError.unclassified)
+        UserMessage.clearBannerError()
     }
 
 }
