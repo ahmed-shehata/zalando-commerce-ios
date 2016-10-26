@@ -143,7 +143,7 @@
 			containerPortal = CF97571A7484C47635A53E809C53B7ED /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = E98F06B41DC0D2C00066B0DD;
-			remoteInfo = AtlasSDKApp;
+			remoteInfo = AtlasSDKTestsHostApp;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -275,10 +275,10 @@
 		E3503D1E2D03C3587BB85A5BEE7D5202 /* OptionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OptionsTests.swift; path = AtlasSDKTests/OptionsTests.swift; sourceTree = SOURCE_ROOT; };
 		E929ACF16D83C88A9F1FA314D691FFEE /* JSONRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONRepresentable.swift; sourceTree = "<group>"; };
 		E93768521DC0D6D900E98635 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		E98F06B51DC0D2C00066B0DD /* AtlasSDKApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AtlasSDKApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E98F06B51DC0D2C00066B0DD /* AtlasSDKTestsHostApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AtlasSDKTestsHostApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E98F06B71DC0D2C00066B0DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E98F06C31DC0D2C00066B0DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E98F06C71DC0D2D30066B0DD /* AtlasSDKApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AtlasSDKApp.entitlements; sourceTree = "<group>"; };
+		E98F06C71DC0D2D30066B0DD /* AtlasSDKTestsHostApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AtlasSDKTestsHostApp.entitlements; sourceTree = "<group>"; };
 		EA97D05C1FC1C316CAA9F2EAEE6DFB89 /* Tests.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Tests.json; sourceTree = "<group>"; };
 		EC4618CBD3A7F5BB4565EE718D48F852 /* LiteralConvertibleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiteralConvertibleTests.swift; sourceTree = "<group>"; };
 		EDA906FCD07627E9180A5D9B2D2B8C88 /* APICreateCheckoutTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APICreateCheckoutTests.swift; path = AtlasSDKTests/APICreateCheckoutTests.swift; sourceTree = SOURCE_ROOT; };
@@ -558,7 +558,7 @@
 			children = (
 				75D3D341CD1A816A0E6B63CB55C81BF2 /* AtlasSDK */,
 				F963EFE65B6A40971D31F80FC766E5B8 /* AtlasSDKTests */,
-				E98F06B61DC0D2C00066B0DD /* AtlasSDKApp */,
+				E98F06B61DC0D2C00066B0DD /* AtlasSDKTestsHostApp */,
 				F43D62FABF1E071CB5EDE91A6BC3D9A4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -607,15 +607,15 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		E98F06B61DC0D2C00066B0DD /* AtlasSDKApp */ = {
+		E98F06B61DC0D2C00066B0DD /* AtlasSDKTestsHostApp */ = {
 			isa = PBXGroup;
 			children = (
-				E98F06C71DC0D2D30066B0DD /* AtlasSDKApp.entitlements */,
+				E98F06C71DC0D2D30066B0DD /* AtlasSDKTestsHostApp.entitlements */,
 				E98F06B71DC0D2C00066B0DD /* AppDelegate.swift */,
 				E93768521DC0D6D900E98635 /* Default-568h@2x.png */,
 				E98F06C31DC0D2C00066B0DD /* Info.plist */,
 			);
-			path = AtlasSDKApp;
+			path = AtlasSDKTestsHostApp;
 			sourceTree = "<group>";
 		};
 		EF442BE1B17D7385C097A2B95501B93B /* Utils */ = {
@@ -632,7 +632,7 @@
 			children = (
 				BF2DD2D803D006BDEAB6C294E238C72D /* AtlasSDK.framework */,
 				76D8786A1A0E25F620A6FDC8EEB941AD /* AtlasSDKTests.xctest */,
-				E98F06B51DC0D2C00066B0DD /* AtlasSDKApp.app */,
+				E98F06B51DC0D2C00066B0DD /* AtlasSDKTestsHostApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -734,9 +734,9 @@
 			productReference = BF2DD2D803D006BDEAB6C294E238C72D /* AtlasSDK.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		E98F06B41DC0D2C00066B0DD /* AtlasSDKApp */ = {
+		E98F06B41DC0D2C00066B0DD /* AtlasSDKTestsHostApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E98F06C61DC0D2C00066B0DD /* Build configuration list for PBXNativeTarget "AtlasSDKApp" */;
+			buildConfigurationList = E98F06C61DC0D2C00066B0DD /* Build configuration list for PBXNativeTarget "AtlasSDKTestsHostApp" */;
 			buildPhases = (
 				E98F06B11DC0D2C00066B0DD /* Sources */,
 				E98F06B21DC0D2C00066B0DD /* Frameworks */,
@@ -746,9 +746,9 @@
 			);
 			dependencies = (
 			);
-			name = AtlasSDKApp;
-			productName = AtlasSDKApp;
-			productReference = E98F06B51DC0D2C00066B0DD /* AtlasSDKApp.app */;
+			name = AtlasSDKTestsHostApp;
+			productName = AtlasSDKTestsHostApp;
+			productReference = E98F06B51DC0D2C00066B0DD /* AtlasSDKTestsHostApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -802,7 +802,7 @@
 			targets = (
 				E59A11A5E0347028AC04CEEACDF57D88 /* AtlasSDK */,
 				4850138AFD7E1EECC8F7F5FD3D02713F /* AtlasSDKTests */,
-				E98F06B41DC0D2C00066B0DD /* AtlasSDKApp */,
+				E98F06B41DC0D2C00066B0DD /* AtlasSDKTestsHostApp */,
 			);
 		};
 /* End PBXProject section */
@@ -997,7 +997,7 @@
 		};
 		E98F06C91DC0D2D70066B0DD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = E98F06B41DC0D2C00066B0DD /* AtlasSDKApp */;
+			target = E98F06B41DC0D2C00066B0DD /* AtlasSDKTestsHostApp */;
 			targetProxy = E98F06C81DC0D2D70066B0DD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1015,7 +1015,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.zalando.atlas.AtlasSDKTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AtlasSDKApp.app/AtlasSDKApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AtlasSDKTestsHostApp.app/AtlasSDKTestsHostApp";
 			};
 			name = Release;
 		};
@@ -1108,7 +1108,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.zalando.atlas.AtlasSDKTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AtlasSDKApp.app/AtlasSDKApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AtlasSDKTestsHostApp.app/AtlasSDKTestsHostApp";
 			};
 			name = Debug;
 		};
@@ -1166,13 +1166,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				CODE_SIGN_ENTITLEMENTS = AtlasSDKApp/AtlasSDKApp.entitlements;
+				CODE_SIGN_ENTITLEMENTS = AtlasSDKTestsHostApp/AtlasSDKTestsHostApp.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = J67E9B6234;
-				INFOPLIST_FILE = AtlasSDKApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				INFOPLIST_FILE = AtlasSDKTestsHostApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zalando.AtlasSDKApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zalando.AtlasSDKTestsHostApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 2.3;
 			};
@@ -1182,13 +1182,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				CODE_SIGN_ENTITLEMENTS = AtlasSDKApp/AtlasSDKApp.entitlements;
+				CODE_SIGN_ENTITLEMENTS = AtlasSDKTestsHostApp/AtlasSDKTestsHostApp.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = J67E9B6234;
-				INFOPLIST_FILE = AtlasSDKApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				INFOPLIST_FILE = AtlasSDKTestsHostApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zalando.AtlasSDKApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zalando.AtlasSDKTestsHostApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 2.3;
 			};
@@ -1243,7 +1243,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E98F06C61DC0D2C00066B0DD /* Build configuration list for PBXNativeTarget "AtlasSDKApp" */ = {
+		E98F06C61DC0D2C00066B0DD /* Build configuration list for PBXNativeTarget "AtlasSDKTestsHostApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E98F06C41DC0D2C00066B0DD /* Debug */,

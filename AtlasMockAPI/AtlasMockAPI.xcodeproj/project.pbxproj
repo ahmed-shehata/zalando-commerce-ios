@@ -17,7 +17,6 @@
 		15ED1D40026A24C7177E2284DF12769A /* AtlasMockAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6678498B12532BC9FB37041A2AED1DE4 /* AtlasMockAPI.swift */; };
 		16B554226571FB6039BDF21AE78D157E /* POST*|orders.json in Resources */ = {isa = PBXBuildFile; fileRef = 93FDDC5BCA83505593A58CA86BFBF851 /* POST*|orders.json */; };
 		16F0CA78B871E84EA9528CF169C3F383 /* GET*|articles|AZ711M001-B11.json in Resources */ = {isa = PBXBuildFile; fileRef = F32701B0E244493C8FDB26A6DB3DF08A /* GET*|articles|AZ711M001-B11.json */; };
-		1B516B7D80FF4E5E30818B0C49381798 /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = D46C232E5D94E641359CC993B3772C18 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2EBF086F6D93D27F5EFB05CF8BBE843A /* POST*|carts.json in Resources */ = {isa = PBXBuildFile; fileRef = 426274DDC1245E783F3D2560060CB2EF /* POST*|carts.json */; };
 		3885B3BD7BEF34D3AC5430379339B952 /* HttpServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FCAE6C2E00BC14146D7A5490970DFD /* HttpServer.swift */; };
 		398F5BDE0F8504306DCD314FC9EE0E01 /* POST*|carts.json in Resources */ = {isa = PBXBuildFile; fileRef = 426274DDC1245E783F3D2560060CB2EF /* POST*|carts.json */; };
@@ -38,7 +37,6 @@
 		64407C519CB0060BBB74B492DCFA5692 /* GET*|articles|AD541L009-G11.json in Resources */ = {isa = PBXBuildFile; fileRef = A804306971AB4D86B763854CFAF41D68 /* GET*|articles|AD541L009-G11.json */; };
 		64DA112F4AA804031B27C1D2A3842C49 /* DELETE*|addresses|6702759.json in Resources */ = {isa = PBXBuildFile; fileRef = CACE4447528604E65E39575522445766 /* DELETE*|addresses|6702759.json */; };
 		65522A93EA15FE48ED165C3A8BDB6E2F /* DELETE*|addresses|6702748.json in Resources */ = {isa = PBXBuildFile; fileRef = FB1DF45B612B010DA36687458D5AAD11 /* DELETE*|addresses|6702748.json */; };
-		656B57C0C01C0381DA4B82613E512AE7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46C232E5D94E641359CC993B3772C18 /* Alamofire.framework */; };
 		66B64BA96DE6813191ABC6DB68478691 /* GET*|articles|AZ711N008-G11.json in Resources */ = {isa = PBXBuildFile; fileRef = 38E5279F0A11E45EFB61EB6FB162000A /* GET*|articles|AZ711N008-G11.json */; };
 		6B8D00F6A8A7623EDC6C802B0ACF2DB1 /* authorize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515C868CEC51956D7AB4E80D708654BC /* authorize.swift */; };
 		6D87BC6A19E87B21AD6A5D948A029491 /* GET*|addresses.json in Resources */ = {isa = PBXBuildFile; fileRef = 2BEBFF894CA6322C4F0CBA0352C30C5D /* GET*|addresses.json */; };
@@ -47,6 +45,8 @@
 		79068FCC902009E12A3E43E7A2895902 /* !customer-auth.json in Resources */ = {isa = PBXBuildFile; fileRef = 190ADDFC8C36495A6C2B51B58DE206F4 /* !customer-auth.json */; };
 		79B050A23B1CDDF51B8B7B2AA5FAF073 /* static-jsons.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA560C48D8E31572681D63D800308B84 /* static-jsons.swift */; };
 		7BD4FF2BCB0C1B7C42399553075AAE3A /* SwiftyJSON.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5EA1BDBEDFD8CF67629C52AE1F9AA83D /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		819E45001DC0DD8800AD80A1 /* SwiftHTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 819E44FF1DC0DD8800AD80A1 /* SwiftHTTP.framework */; };
+		819E45021DC0DDAC00AD80A1 /* SwiftHTTP.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 819E45011DC0DDAC00AD80A1 /* SwiftHTTP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8310FD6D7EAB31888EBC5A84A3493D55 /* Swifter.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 18A5038C4E6BD35EB954EA2DB2CF13AB /* Swifter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8720D2B0604EE9F3D556997AABD433D1 /* PUT*|checkouts|CHECKOUT_ID.json in Resources */ = {isa = PBXBuildFile; fileRef = 36179885761B049B1F4CBF0168DCE1BC /* PUT*|checkouts|CHECKOUT_ID.json */; };
 		89D06E86E5BD432FBCB4F4A722DBF3EA /* PUT*|addresses|6616154.json in Resources */ = {isa = PBXBuildFile; fileRef = A18D1A78AC6C343752EAD271C4A781C7 /* PUT*|addresses|6616154.json */; };
@@ -118,7 +118,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1B516B7D80FF4E5E30818B0C49381798 /* Alamofire.framework in Copy Frameworks */,
+				819E45021DC0DDAC00AD80A1 /* SwiftHTTP.framework in Copy Frameworks */,
 				7BD4FF2BCB0C1B7C42399553075AAE3A /* SwiftyJSON.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
@@ -170,6 +170,8 @@
 		6678498B12532BC9FB37041A2AED1DE4 /* AtlasMockAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasMockAPI.swift; sourceTree = "<group>"; };
 		6943EFC2A304C00CD2041024D11F5CEE /* GET*|articles|LA254E005-Q11.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles|LA254E005-Q11.json"; sourceTree = "<group>"; };
 		774E15C0298E7554801A950D57B1794B /* NSBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSBundle.swift; sourceTree = "<group>"; };
+		819E44FF1DC0DD8800AD80A1 /* SwiftHTTP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftHTTP.framework; path = ../Carthage/Build/iOS/SwiftHTTP.framework; sourceTree = "<group>"; };
+		819E45011DC0DDAC00AD80A1 /* SwiftHTTP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftHTTP.framework; path = ../Carthage/Build/iOS/SwiftHTTP.framework; sourceTree = "<group>"; };
 		85BC90121A75EE5E58D7451EDFC484AB /* GET*|articles|EV451G023-Q11.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles|EV451G023-Q11.json"; sourceTree = "<group>"; };
 		8E3778589D321DAEEFC3A19E61372FA8 /* AtlasMockAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtlasMockAPI.h; sourceTree = "<group>"; };
 		916DA4EC8C6CDF184EA2662AFB5E1DD2 /* AtlasMockAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtlasMockAPITests.swift; sourceTree = "<group>"; };
@@ -232,7 +234,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				656B57C0C01C0381DA4B82613E512AE7 /* Alamofire.framework in Frameworks */,
+				819E45001DC0DD8800AD80A1 /* SwiftHTTP.framework in Frameworks */,
 				4CCBF7311FF9CDE42A2FE6702500AC6D /* AtlasMockAPI.framework in Frameworks */,
 				4E1301BBF0B0F9A97678F81AA2776861 /* SwiftyJSON.framework in Frameworks */,
 			);
@@ -320,15 +322,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		819E44FE1DC0DD8800AD80A1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4AA029A129260745C4942EF8C034D83E /* Swifter.framework */,
+				819E44FF1DC0DD8800AD80A1 /* SwiftHTTP.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9C08D20CC26D285554B00A206F697AE6 = {
 			isa = PBXGroup;
 			children = (
+				819E45011DC0DDAC00AD80A1 /* SwiftHTTP.framework */,
 				B8B6C1CD32875C2F19DFA52EEAC7B323 /* AtlasMockAPI */,
 				F09E383836BC69C7BA22BCB1FA1CB8C2 /* AtlasMockAPI-macOS */,
 				0DC62517D000B8E79FF5E23D5F513E03 /* AtlasMockAPIRunner */,
 				DF46618ABE71B0C1E4DBCE4393FF845F /* AtlasMockAPITests */,
 				213093A7EB673251D6646FE5B965AA13 /* Products */,
-				4AA029A129260745C4942EF8C034D83E /* Swifter.framework */,
+				819E44FE1DC0DD8800AD80A1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -530,6 +542,8 @@
 					};
 					7A9DE536D7A7A1DEA013E619E317542B = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = J67E9B6234;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -840,6 +854,8 @@
 		6D5025E11D007D7308DD5D676A033C17 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = J67E9B6234;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/iOS";
 				INFOPLIST_FILE = AtlasMockAPITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -885,6 +901,8 @@
 		F88E3D3D64E2E4380314D7B8D488B390 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = J67E9B6234;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/iOS";
 				INFOPLIST_FILE = AtlasMockAPITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

@@ -3,12 +3,14 @@
 //
 
 import XCTest
-import Alamofire
+import SwiftHTTP
 import SwiftyJSON
+import Nimble
 
 @testable import AtlasMockAPI
 
-typealias JSONCompletion = JSON -> Void
+private typealias JSONCompletion = JSON -> Void
+private typealias DataCompletion = NSData -> Void
 
 class AtlasMockAPITests: XCTestCase {
 
@@ -23,48 +25,49 @@ class AtlasMockAPITests: XCTestCase {
     }
 
     func testRootEndpoint() {
-        assertSuccessfulResponse(forEndpoint: "/")
+        assertSuccessfulResponse(forEndpoint: "/") { data in
+            expect(data.length).toNot(equal(0))
+        }
     }
 
     func testCatalogEndpoint() {
-        assertSuccessfulResponse(forEndpoint: "/articles") { json in
-            XCTAssertEqual(json["content", 0, "id"].stringValue, "L2711E002-Q11")
+        assertSuccessfulJSONResponse(forEndpoint: "/articles") { json in
+            expect(json["content", 0, "id"].stringValue).to(equal("L2711E002-Q11"))
         }
     }
 
     func testArticleEndpoint() {
-        assertSuccessfulResponse(forEndpoint: "/articles/AD541L009-G11") { json in
-            XCTAssertEqual(json["units", 0, "id"].stringValue, "AD541L009-G11000S000")
+        assertSuccessfulJSONResponse(forEndpoint: "/articles/AD541L009-G11") { json in
+            expect(json["units", 0, "id"].stringValue).to(equal("AD541L009-G11000S000"))
         }
     }
 
     func testAuthorizeEndpoint() {
-        assertSuccessfulResponse(forEndpoint: "/articles") { json in
-            XCTAssertEqual(json["content", 0, "id"].stringValue, "L2711E002-Q11")
+        assertSuccessfulJSONResponse(forEndpoint: "/oauth2/authorize") { json in
+            expect(json["content", 0, "id"].stringValue).to(equal("L2711E002-Q11"))
         }
     }
 
-    private func assertSuccessfulResponse(method: Alamofire.Method = .GET,
-        forEndpoint endpoint: String, completion: JSONCompletion? = nil) {
-            let expectation = expectationWithDescription("assertSuccessfulResponse \(endpoint)")
+    private func assertSuccessfulJSONResponse(forEndpoint endpoint: String, completion: JSONCompletion? = nil) {
+        assertSuccessfulResponse(forEndpoint: endpoint) { data in
+            let json = SwiftyJSON.JSON(data: data)
+            expect(json).toNot(beNil())
+            completion?(json)
+        }
+    }
 
-            let url = AtlasMockAPI.endpointURL(forPath: endpoint)
-            Alamofire.request(method, url).responseString { response in
+    private func assertSuccessfulResponse(forEndpoint endpoint: String, completion: DataCompletion? = nil) {
+        let expectation = expectationWithDescription("assertSuccessfulResponse \(endpoint)")
+        let url = AtlasMockAPI.endpointURL(forPath: endpoint).absoluteString!
 
-                guard let data = response.data else {
-                    return XCTFail()
-                }
-
-                if let completion = completion {
-                    let json = SwiftyJSON.JSON(data: data)
-                    completion(json)
-                }
-
-                XCTAssertTrue(response.result.isSuccess)
+        if let operation = try? HTTP.GET(url) {
+            operation.start { response in
+                completion?(response.data)
                 expectation.fulfill()
             }
 
-            self.waitForExpectationsWithTimeout(10, handler: nil)
+        }
+        self.waitForExpectationsWithTimeout(10, handler: nil)
     }
 
 }
