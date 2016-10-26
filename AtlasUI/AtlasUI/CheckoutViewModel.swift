@@ -8,53 +8,44 @@ import AtlasSDK
 struct CheckoutViewModel {
 
     let selectedArticleUnit: SelectedArticleUnit
-    let shippingPrice: Article.Price?
-    let cartId: String?
+    let shippingPrice: Money?
+    var cart: Cart?
     var checkout: Checkout?
     internal(set) var customer: Customer?
 
     var selectedBillingAddress: EquatableAddress?
     var selectedShippingAddress: EquatableAddress?
 
+    var selectedAddresses: CheckoutAddresses {
+        return (billingAddress: selectedBillingAddress, shippingAddress: selectedShippingAddress)
+    }
+
     init(selectedArticleUnit: SelectedArticleUnit,
-        shippingPrice: Article.Price? = nil,
-        cartId: String? = nil,
+        shippingPrice: Money? = nil,
+        cart: Cart? = nil,
         checkout: Checkout? = nil,
         customer: Customer? = nil,
         billingAddress: EquatableAddress? = nil,
         shippingAddress: EquatableAddress? = nil) {
             self.selectedArticleUnit = selectedArticleUnit
             self.shippingPrice = shippingPrice
+            self.cart = cart
             self.checkout = checkout
             self.customer = customer
             self.selectedBillingAddress = checkout?.billingAddress
             self.selectedShippingAddress = checkout?.shippingAddress
-            self.cartId = cartId
-
     }
 
 }
 
 extension CheckoutViewModel {
 
-    func shippingAddress(localizedWith localizer: LocalizerProviderType) -> [String] {
-        return selectedShippingAddress?.splittedFormattedPostalAddress(localizedWith: localizer) ?? [localizer.loc("No Shipping Address")]
+    var shippingAddress: [String] {
+        return selectedShippingAddress?.splittedFormattedPostalAddress ?? [Localizer.string("Address.empty.shipping")]
     }
 
-    func billingAddress(localizedWith localizer: LocalizerProviderType) -> [String] {
-        return selectedBillingAddress?.splittedFormattedPostalAddress(localizedWith: localizer) ?? [localizer.loc("No Billing Address")]
-    }
-
-    var submitButtonTitle: String {
-        switch self.checkoutViewState {
-        case .NotLoggedIn: return "Zalando.Checkout"
-        case .CheckoutIncomplete, .LoggedIn:
-            if let paymentMethod = checkout?.payment.selected where paymentMethod.isPaypal() {
-                return "order.place.paypal"
-            }
-            return "order.place"
-        case .OrderPlaced: return "navigation.back.shop"
-        }
+    var billingAddress: [String] {
+        return selectedBillingAddress?.splittedFormattedPostalAddress ?? [Localizer.string("Address.empty.billing")]
     }
 
     var isPaymentSelected: Bool {
@@ -62,7 +53,7 @@ extension CheckoutViewModel {
     }
 
     var selectedUnit: Article.Unit {
-        return article.units[selectedArticleUnit.selectedUnitIndex]
+        return article.availableUnits[selectedArticleUnit.selectedUnitIndex]
     }
 
     var selectedUnitIndex: Int {
@@ -73,12 +64,12 @@ extension CheckoutViewModel {
         return selectedArticleUnit.article
     }
 
-    var shippingPriceValue: Float {
+    var shippingPriceValue: MoneyAmount {
         return shippingPrice?.amount ?? 0
     }
 
-    var totalPriceValue: Float {
-        return shippingPriceValue + selectedUnit.price.amount
+    var totalPriceValue: MoneyAmount {
+        return cart?.grossTotal.amount ?? 0
     }
 
     var selectedPaymentMethod: String? {
@@ -88,14 +79,39 @@ extension CheckoutViewModel {
     var checkoutViewState: CheckoutViewState {
         if customer == nil {
             return .NotLoggedIn
+        } else if checkout?.payment.selected?.method == nil {
+            return .CheckoutIncomplete
+        } else {
+            return .CheckoutReady
         }
-        return (checkout == nil || checkout?.payment.selected?.method == nil) ? .CheckoutIncomplete : .LoggedIn
+    }
+
+    var isReadyToCreateCheckout: Bool {
+        return self.checkout == nil && self.selectedBillingAddress != nil && self.selectedShippingAddress != nil
     }
 
 }
 
 extension CheckoutViewModel {
-    var isReadyToCreateCheckout: Bool? {
-        return self.checkout == nil && self.selectedBillingAddress != nil && self.selectedShippingAddress != nil
+
+    mutating func addressUpdated(address: EquatableAddress) {
+        if let billingAddress = selectedBillingAddress where  billingAddress == address {
+            selectedBillingAddress = address
+        }
+        if let shippingAddress = selectedShippingAddress where  shippingAddress == address {
+            selectedShippingAddress = address
+        }
     }
+
+    mutating func addressDeleted(address: EquatableAddress) {
+        if let billingAddress = selectedBillingAddress where  billingAddress == address {
+            selectedBillingAddress = nil
+            checkout = nil
+        }
+        if let shippingAddress = selectedShippingAddress where  shippingAddress == address {
+            selectedShippingAddress = nil
+            checkout = nil
+        }
+    }
+
 }

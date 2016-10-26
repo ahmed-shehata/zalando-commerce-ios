@@ -5,11 +5,6 @@
 import Foundation
 import AtlasSDK
 
-struct AddressRowCellViewModel {
-    let userAddress: UserAddress
-    let localizer: LocalizerProviderType
-}
-
 final class AddressRowViewCell: UITableViewCell {
 
     internal let stackView: UIStackView = {
@@ -65,11 +60,11 @@ extension AddressRowViewCell: UIBuilder {
 
 extension AddressRowViewCell: UIDataBuilder {
 
-    typealias T = AddressRowCellViewModel
+    typealias T = EquatableAddress
 
     func configureData(viewModel: T) {
-        titleLabel.text = viewModel.userAddress.formattedContact?.trimmed
-        addressLabel.text = viewModel.userAddress.formattedPostalAddress(localizedWith: viewModel.localizer).trimmed
+        titleLabel.text = viewModel.formattedContact?.trimmed
+        addressLabel.text = viewModel.formattedPostalAddress.trimmed
     }
 
 }

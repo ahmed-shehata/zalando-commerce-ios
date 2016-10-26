@@ -6,7 +6,7 @@ import Foundation
 
 extension NSURL {
 
-    convenience init(validUrl stringConvertible: URLStringConvertible) {
+    convenience init(validURL stringConvertible: URLStringConvertible) {
         self.init(string: stringConvertible.URLString)! // swiftlint:disable:this force_unwrapping
     }
 

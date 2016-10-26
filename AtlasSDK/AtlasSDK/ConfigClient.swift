@@ -4,35 +4,40 @@
 
 import Foundation
 
-typealias ConfigCompletion = AtlasResult<Config> -> Void
+public typealias AtlasConfigCompletion = AtlasResult<Config> -> Void
 
 protocol Configurator {
 
-    mutating func configure(completion: ConfigCompletion) -> Void
+    func configure(completion: AtlasConfigCompletion) -> Void
 
 }
 
 struct ConfigClient: Configurator {
 
-    private let requestBuilder: RequestBuilder
     private let options: Options
 
     init(options: Options) {
-        let endpoint = GetConfigEndpoint(URL: options.configurationURL)
         self.options = options
-        self.requestBuilder = RequestBuilder(endpoint: endpoint)
     }
 
-    mutating func configure(completion: ConfigCompletion) {
-        self.requestBuilder.execute { result in
+    func configure(completion: AtlasConfigCompletion) {
+        var requestBuilder = RequestBuilder(forEndpoint: GetConfigEndpoint(URL: options.configurationURL))
+        requestBuilder.execute { result in
             switch result {
             case .failure(let error):
-                completion(.failure(error))
+                dispatch_async(dispatch_get_main_queue()) {
+                    completion(.failure(error))
+                }
             case .success(let response):
                 guard let json = response.body, config = Config(json: json, options: self.options) else {
-                    return completion(.failure(AtlasConfigurationError.incorrectConfigServiceResponse))
+                    dispatch_async(dispatch_get_main_queue()) {
+                        completion(.failure(AtlasConfigurationError.incorrectConfigServiceResponse))
+                    }
+                    return
                 }
-                completion(.success(config))
+                dispatch_async(dispatch_get_main_queue()) {
+                    completion(.success(config))
+                }
             }
         }
     }

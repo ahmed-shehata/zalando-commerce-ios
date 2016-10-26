@@ -4,6 +4,18 @@
     "items" : [ {
                "sku" : "EV451G023-Q110ONE000",
                "quantity" : 1
+               },
+               {"sku": "GU121D08Z-Q1100XL000",
+               "quantity" : 1
+               },
+               {"sku": "MK151F00E-Q110ONE000",
+               "quantity" : 1
+               },
+               {"sku": "L2711E002-Q110350000",
+               "quantity" : 1
+               },
+               {"sku": "AD541L009-G1100XS000",
+               "quantity" : 1
                } ],
     "items_out_of_stock" : [ ],
     "delivery" : {

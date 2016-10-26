@@ -15,7 +15,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var productNameLabel: UILabel!
     var article: DemoArticle?
 
-    func setupCell(withArticle article: DemoArticle) {
+    func setupCell(withArticle article: DemoArticle) -> ProductCollectionViewCell {
         self.article = article
         self.backgroundColor = .whiteColor()
         self.productNameLabel.text = article.brand.name
@@ -23,11 +23,15 @@ class ProductCollectionViewCell: UICollectionViewCell {
             self.thumbImageView.af_setImageWithURL(imageUrl)
         }
         self.buyNowButton.accessibilityIdentifier = "buy-now"
+
+        return self
     }
 
     @IBAction func buyNowButtonTapped(sender: AnyObject) {
-        if let article = self.article {
-            AppSetup.sharedInstance.checkout?.presentCheckoutView(sku: article.id)
+        if let rootController = UIApplication.sharedApplication().keyWindow?.rootViewController,
+            article = self.article {
+                AppSetup.checkout?.presentCheckout(onViewController: rootController,
+                    forProductSKU: article.id)
         }
     }
 }

@@ -5,13 +5,39 @@
 import UIKit
 import AtlasSDK
 
-typealias PaymentCompletion = AtlasResult<Bool> -> Void
+typealias PaymentCompletion = AtlasResult<PaymentStatus> -> Void
 
-final class PaymentSelectionViewController: UIViewController, UIWebViewDelegate {
+enum PaymentStatus: String {
+
+    case redirect = ""
+    case success = "success"
+    case cancel = "cancel"
+    case error = "error"
+
+    static var statusKey = "payment_status"
+
+    init?(callbackURLComponents: NSURLComponents, requestURLComponents: NSURLComponents) {
+        guard let
+            callbackHost = callbackURLComponents.host,
+            requestHost = requestURLComponents.host
+            where callbackHost.lowercaseString == requestHost.lowercaseString
+            else { return nil }
+
+        guard let
+            rawValue = requestURLComponents.queryItems?.filter({ $0.name == PaymentStatus.statusKey }).first?.value,
+            paymentStatus = PaymentStatus(rawValue: rawValue)
+            else { self = .redirect; return }
+
+        self = paymentStatus
+    }
+
+}
+
+final class PaymentViewController: UIViewController, UIWebViewDelegate {
 
     var paymentCompletion: PaymentCompletion?
-    private let paymentSelectionURL: NSURL
-    private let successURL = "http://de.zalando.atlas.atlascheckoutdemo/redirect"
+    private let paymentURL: NSURL
+    private let callbackURLComponents: NSURLComponents?
 
     private lazy var webView: UIWebView = {
         let webView = UIWebView()
@@ -22,8 +48,9 @@ final class PaymentSelectionViewController: UIViewController, UIWebViewDelegate 
         return webView
     }()
 
-    init(paymentSelectionURL: NSURL) {
-        self.paymentSelectionURL = paymentSelectionURL
+    init(paymentURL: NSURL, callbackURL: NSURL) {
+        self.callbackURLComponents = NSURLComponents(URL: callbackURL, resolvingAgainstBaseURL: true)
+        self.paymentURL = paymentURL
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -36,33 +63,38 @@ final class PaymentSelectionViewController: UIViewController, UIWebViewDelegate 
         view.addSubview(webView)
 
         webView.fillInSuperView()
-        webView.loadRequest(NSURLRequest(URL: paymentSelectionURL))
+        webView.loadRequest(NSURLRequest(URL: paymentURL))
     }
 
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        guard let success = request.URL?.validAbsoluteString.hasPrefix(successURL) where success else { return true }
-        dismissViewController(.success(true))
+        guard let
+            url = request.URL,
+            callbackURLComponents = callbackURLComponents,
+            requestURLComponents = NSURLComponents(URL: url, resolvingAgainstBaseURL: true)
+            else { return true }
+
+        guard let paymentStatus = PaymentStatus(callbackURLComponents: callbackURLComponents,
+                                                requestURLComponents: requestURLComponents) else { return true }
+
+        paymentCompletion?(.success(paymentStatus))
+        navigationController?.popViewControllerAnimated(true)
         return false
     }
 
     #if swift(>=2.3)
     func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
-        dismissViewController(.failure(error), animated: true)
+        guard !errorBecuaseRequestCancelled(error) else { return }
+        UserMessage.displayError(error)
     }
     #else
     func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
         guard let error = error where !errorBecuaseRequestCancelled(error) else { return }
-        dismissViewController(.failure(error), animated: true)
+        UserMessage.displayError(error)
     }
     #endif
 
     private func errorBecuaseRequestCancelled(error: NSError) -> Bool {
         return error.domain == "WebKitErrorDomain"
-    }
-
-    private func dismissViewController(result: AtlasResult<Bool>, animated: Bool = true) {
-        navigationController?.popViewControllerAnimated(animated)
-        paymentCompletion?(result)
     }
 
 }

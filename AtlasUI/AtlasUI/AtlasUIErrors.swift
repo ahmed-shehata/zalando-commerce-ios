@@ -5,60 +5,90 @@
 import Foundation
 import AtlasSDK
 
+public enum ErrorPresentationType {
+    case banner
+    case fullScreen
+}
+
 protocol UserPresentable: AtlasErrorType {
 
-    func title(localizedWith provider: LocalizerProviderType, formatArguments: CVarArgType?...) -> String
+    func customMessage() -> String?
 
-    func message(localizedWith provider: LocalizerProviderType, formatArguments: CVarArgType?...) -> String
+    func shouldDisplayGeneralMessage() -> Bool
+
+    func errorPresentationType() -> ErrorPresentationType
 
 }
 
 extension UserPresentable {
 
-    func title(localizedWith provider: LocalizerProviderType, formatArguments: CVarArgType?...) -> String {
-        return provider.localizer.localizedString("\(self.dynamicType).title", formatArguments: formatArguments)
+    func customMessage() -> String? { return nil }
+
+    func shouldDisplayGeneralMessage() -> Bool { return true }
+
+    func errorPresentationType() -> ErrorPresentationType { return .banner }
+
+    var displayedTitle: String {
+        return shouldDisplayGeneralMessage() ? Localizer.string("Error.unclassified.title") : title()
     }
 
-    func message(localizedWith provider: LocalizerProviderType, formatArguments: CVarArgType?...) -> String {
-        return provider.localizer.localizedString(self.localizedDescriptionKey, formatArguments: formatArguments)
+    var displayedMessage: String {
+        return shouldDisplayGeneralMessage() ? Localizer.string("Error.unclassified.message") : message()
+    }
+
+    private func title() -> String {
+        let errorTitle = Localizer.string(localizedTitleKey)
+        let errorCategoryTitle = Localizer.string("\(self.dynamicType).title")
+        return errorTitle == localizedTitleKey ? errorCategoryTitle : errorTitle
+    }
+
+    private func message() -> String {
+        return customMessage() ?? Localizer.string(localizedMessageKey)
     }
 
 }
 
 extension AtlasAPIError: UserPresentable {
 
-    func message(localizedWith provider: LocalizerProviderType, formatArguments: CVarArgType?...) -> String {
+    func shouldDisplayGeneralMessage() -> Bool {
         switch self {
-        case .invalidResponseFormat, .noData, .unauthorized:
-            return provider.localizer.localizedString(self.localizedDescriptionKey)
-        case let .nsURLError(code, details):
-            return "\(details) (#\(code))"
-        case let .http(status, details):
-            return "\(details~?) (#\(status~?))"
-        case let .backend(status, _, details):
-            return "\(details~?) (#\(status~?))"
-        case let .checkoutFailed(_, _, error):
-            if case let AtlasAPIError.backend(_, _, details) = error {
-                return "\(details~?)"
-            } else {
-                return provider.localizer.localizedString("AtlasAPIError.message.checkoutFailed")
-            }
+        case .noInternet: return false
+        case let .nsURLError(_, details): return details == nil
+        default: return true
+        }
+    }
+
+    func customMessage() -> String? {
+        switch self {
+        case let .nsURLError(_, details): return details~?
+        default: return nil
         }
     }
 
 }
 
-extension LoginError: UserPresentable {
+extension AtlasCheckoutError: UserPresentable {
 
-    func message(localizedWith provider: LocalizerProviderType, formatArguments: CVarArgType?...) -> String {
+    public func shouldDisplayGeneralMessage() -> Bool {
+        return false
+    }
+
+    public func errorPresentationType() -> ErrorPresentationType {
         switch self {
-        case .missingURL, .accessDenied, .missingViewControllerToShowLoginForm:
-            return provider.localizer.localizedString(self.localizedDescriptionKey)
-        case let .requestFailed(error):
-            return "\(error?.localizedDescription~?)"
+        case .outOfStock: return .fullScreen
+        default: return .banner
+        }
+    }
+
+    func customMessage() -> String? {
+        switch self {
+        case .priceChanged(let newPrice): return Localizer.string("AtlasCheckoutError.message.priceChanged", Localizer.price(newPrice))
+        default: return nil
         }
     }
 
 }
+
+extension LoginError: UserPresentable { }
 
 extension AtlasConfigurationError: UserPresentable { }

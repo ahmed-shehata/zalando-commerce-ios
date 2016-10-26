@@ -71,13 +71,15 @@ extension CheckoutSummaryProductStackView: UIBuilder {
 
 extension CheckoutSummaryProductStackView: UIDataBuilder {
 
-    typealias T = CheckoutSummaryViewController
+    typealias T = CheckoutViewModel
 
     func configureData(viewModel: T) {
-        articleImageView.setImage(fromUrl: viewModel.checkoutViewModel.article.thumbnailUrl)
-        brandNameLabel.text = viewModel.checkoutViewModel.article.brand.name
-        articleNameLabel.text = viewModel.checkoutViewModel.article.name
-        unitSizeLabel.text = viewModel.loc("Size: %@", viewModel.checkoutViewModel.selectedUnit.size)
+        articleImageView.setImage(fromUrl: viewModel.article.thumbnailURL)
+        brandNameLabel.text = viewModel.article.brand.name
+        articleNameLabel.text = viewModel.article.name
+        unitSizeLabel.text = Localizer.string("Size: %@", viewModel.selectedUnit.size)
+        unitColorLabel.text = viewModel.selectedArticleUnit.article.color
+
     }
 
 }

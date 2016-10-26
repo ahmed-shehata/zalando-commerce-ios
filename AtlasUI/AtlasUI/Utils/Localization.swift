@@ -3,26 +3,29 @@
 //
 
 import Foundation
+import AtlasSDK
 
-protocol Localizable {
+enum AtlasLocalizerError: AtlasErrorType {
 
-    var localeIdentifier: String { get }
-    var localizedStringsBundle: NSBundle { get }
+    case languageNotFound
+    case localizedStringsNotFound
 
 }
 
 struct Localizer {
 
-    let locale: NSLocale
-    let localizationProvider: Localizable
-
+    private let locale: NSLocale
     private let priceFormatter: NSNumberFormatter
     private let dateFormatter: NSDateFormatter
-    private var localizedStringsBundle: NSBundle!
+    private let localizedStringsBundle: NSBundle
 
-    init(localizationProvider: Localizable, defaultLocalization: String = "en") {
-        self.localizationProvider = localizationProvider
-        self.locale = NSLocale(localeIdentifier: localizationProvider.localeIdentifier)
+    init(localeIdentifier: String) throws {
+        try self.init(localeIdentifier: localeIdentifier,
+            localizedStringsBundle: NSBundle(forClass: AtlasCheckout.self))
+    }
+
+    init(localeIdentifier: String, localizedStringsBundle: NSBundle) throws {
+        locale = NSLocale(localeIdentifier: localeIdentifier)
 
         dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = .MediumStyle
@@ -32,10 +35,15 @@ struct Localizer {
         priceFormatter.numberStyle = .CurrencyStyle
         priceFormatter.locale = self.locale
 
-        self.localizedStringsBundle = findLocalizedStringsBundle(defaultLocalization)
+        self.localizedStringsBundle = try NSBundle.languageBundle(forLanguage: locale, from: localizedStringsBundle)
     }
 
-    func localizedString(key: String, formatArguments: [CVarArgType?]? = nil) -> String {
+    func countryName(forCountryCode countryCode: String?) -> String? {
+        guard let countryCode = countryCode else { return nil }
+        return locale.displayNameForKey(NSLocaleCountryCode, value: countryCode)
+    }
+
+    func string(key: String, formatArguments: [CVarArgType?]? = nil) -> String {
         let localizedString = NSLocalizedString(key, bundle: self.localizedStringsBundle, comment: "")
 
         guard let formatArguments = formatArguments where !formatArguments.isEmpty else {
@@ -45,37 +53,65 @@ struct Localizer {
         return String(format: localizedString, arguments: formatArguments.flatMap { $0 })
     }
 
-    func countryName(forCountryCode countryCode: String?) -> String? {
-        guard let countryCode = countryCode else { return nil }
-        return locale.displayNameForKey(NSLocaleCountryCode, value: countryCode)
+    func price(price: NSNumber) -> String? {
+        return priceFormatter.stringFromNumber(price)
     }
 
-    func fmtPrice(number: NSNumber) -> String? {
-        return priceFormatter.stringFromNumber(number)
-    }
-
-    func fmtDate(date: NSDate) -> String? {
+    func date(date: NSDate) -> String? {
         return dateFormatter.stringFromDate(date)
     }
 
-    private func findLocalizedStringsBundle(defaultLocalization: String) -> NSBundle {
-        let localizationKeys = [NSLocaleIdentifier, NSLocaleLanguageCode, defaultLocalization]
+}
 
-        for key in localizationKeys {
-            guard let localization = locale.objectForKey(key) as? String else { continue }
-            let localizedStringsPath = path(forResourceNamed: "Localizable.strings", forLocalization: localization)
-            let localizedStringsFolder = localizedStringsPath?.stringByDeletingLastPathComponent
-            if let folder = localizedStringsFolder, bundle = NSBundle(path: folder) {
-                return bundle
-            }
-        }
+extension Localizer {
 
-        return localizationProvider.localizedStringsBundle
+    private static var instance: Localizer {
+        return try! Atlas.provide() as Localizer // swiftlint:disable:this force_try
     }
 
-    private func path(forResourceNamed resourceName: String, forLocalization localizationName: String) -> NSString? {
-        return localizationProvider.localizedStringsBundle.pathForResource(resourceName,
-            ofType: nil, inDirectory: nil, forLocalization: localizationName) as NSString?
+    static func string(key: String, _ formatArguments: [CVarArgType?]) -> String {
+        return instance.string(key, formatArguments: formatArguments.flatMap { $0 })
+    }
+
+    static func string(key: String, _ formatArguments: CVarArgType?...) -> String {
+        return instance.string(key, formatArguments: formatArguments)
+    }
+
+    static func price(price: NSNumber) -> String? {
+        return instance.price(price)
+    }
+
+    static func date(date: NSDate) -> String? {
+        return instance.date(date)
+    }
+
+    static func countryName(forCountryCode countryCode: String?) -> String? {
+        return instance.countryName(forCountryCode: countryCode)
+    }
+
+}
+
+extension NSBundle {
+
+    private static func languageBundle(forLanguage locale: NSLocale, from localizedStringsBundle: NSBundle) throws -> NSBundle {
+        guard let localization = locale.objectForKey(NSLocaleLanguageCode) as? String else {
+            throw AtlasLocalizerError.languageNotFound
+        }
+
+        let localizedStringsPath = path(from: localizedStringsBundle,
+            forResourceNamed: "Localizable.strings", forLocalization: localization)
+        let localizedStringsFolder = localizedStringsPath?.stringByDeletingLastPathComponent
+
+        guard let folder = localizedStringsFolder, bundle = NSBundle(path: folder) else {
+            throw AtlasLocalizerError.localizedStringsNotFound
+        }
+
+        return bundle
+    }
+
+    private static func path(from bundle: NSBundle, forResourceNamed resourceName: String,
+        forLocalization localizationName: String) -> NSString? {
+            return bundle.pathForResource(resourceName, ofType: nil, inDirectory: nil, forLocalization: localizationName) as NSString?
     }
 
 }

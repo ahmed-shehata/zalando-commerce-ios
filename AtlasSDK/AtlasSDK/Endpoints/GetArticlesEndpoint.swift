@@ -2,7 +2,7 @@
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
-struct GetArticlesEndpoint: ConfigurableEndpoint {
+struct GetArticlesEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
 
     let serviceURL: NSURL
     var path: String { return "articles/\(skus.joinWithSeparator(",") ?? "")" }
@@ -18,5 +18,5 @@ struct GetArticlesEndpoint: ConfigurableEndpoint {
     let salesChannel: String
     let clientId: String
     let fields: [String]?
-
+    let requiresAuthorization = false
 }

@@ -12,4 +12,13 @@ extension String {
         self.init(contents)
     }
 
+    var whiteCharactersFreeString: String {
+        let string = componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet()).joinWithSeparator("")
+        return string.stringByReplacingOccurrencesOfString("  ", withString: "")
+    }
+
+    var range: NSRange {
+        return NSRange(location: 0, length: characters.count)
+    }
+
 }

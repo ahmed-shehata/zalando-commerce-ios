@@ -6,13 +6,15 @@ import Foundation
 
 public protocol AtlasErrorType: ErrorType {
 
-    var localizedDescriptionKey: String { get }
+    var localizedTitleKey: String { get }
+    var localizedMessageKey: String { get }
 
 }
 
 public extension AtlasErrorType {
 
-    var localizedDescriptionKey: String { return "\(self.dynamicType).message.\(self)" }
+    var localizedTitleKey: String { return "\(self.dynamicType).title.\(self)" }
+    var localizedMessageKey: String { return "\(self.dynamicType).message.\(self)" }
 
 }
 
@@ -21,34 +23,32 @@ public enum AtlasConfigurationError: AtlasErrorType {
     case incorrectConfigServiceResponse
     case missingClientId
     case missingSalesChannel
-    case missingInterfaceLanguage
 
 }
 
 public enum AtlasAPIError: AtlasErrorType {
 
     case noData
+    case noInternet
     case invalidResponseFormat
     case unauthorized
 
     case nsURLError(code: Int, details: String?)
     case http(status: HTTPStatus, details: String?)
-    case backend(status: Int?, title: String?, details: String?)
+    case backend(status: Int?, type: String?, title: String?, details: String?)
 
-    case checkoutFailed(addresses: [UserAddress]?, cartId: String?, error: ErrorType)
-
-}
-
-public enum LoginError: AtlasErrorType {
-
-    case missingURL
-    case accessDenied
-    case missingViewControllerToShowLoginForm
-
-    case requestFailed(error: NSError?)
+    case checkoutFailed(addresses: [UserAddress]?, cart: Cart?, error: ErrorType)
 
 }
 
-public func == (lhs: AtlasAPIError, rhs: AtlasAPIError) -> Bool {
-    return lhs._code == rhs._code
+public enum AtlasCheckoutError: AtlasErrorType {
+
+    case unclassified
+    case outOfStock
+    case missingAddress
+    case missingAddressAndPayment
+    case priceChanged(newPrice: MoneyAmount)
+    case paymentMethodNotAvailable
+    case addressInvalid
+
 }

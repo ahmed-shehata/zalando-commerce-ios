@@ -8,14 +8,19 @@ import AtlasSDK
 class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
 
     internal var checkout: AtlasCheckout
-    internal var checkoutViewModel: CheckoutViewModel
+    internal var checkoutViewModel: CheckoutViewModel {
+        didSet {
+            injectCustomer(from: oldValue)
+            viewState = checkoutViewModel.checkoutViewState
+            checkPaymentMethod(oldValue)
+            checkPriceChange(oldValue)
+            createCheckout()
+        }
+    }
     internal var viewState: CheckoutViewState = .NotLoggedIn {
         didSet {
-            Async.main {
-                self.setupNavigationBar()
-                self.loaderView.hide()
-                self.rootStackView.configureData(self)
-            }
+            setupNavigationBar()
+            rootStackView.configureData(self)
         }
     }
     lazy private var actionsHandler: CheckoutSummaryActionsHandler = {
@@ -28,17 +33,13 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
         stackView.spacing = 5
         return stackView
     }()
-    internal let loaderView: LoaderView = {
-        let view = LoaderView()
-        view.hidden = true
-        return view
-    }()
 
     init(checkout: AtlasCheckout, checkoutViewModel: CheckoutViewModel) {
         self.checkout = checkout
         self.checkoutViewModel = checkoutViewModel
 
         super.init(nibName: nil, bundle: nil)
+        viewState = checkoutViewModel.checkoutViewState
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -49,20 +50,52 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
         super.viewDidLoad()
 
         setupView()
-        setupViewState()
+        setupInitialViewState()
         setupActions()
 
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         self.navigationController?.navigationBar.accessibilityIdentifier = "checkout-summary-navigation-bar"
     }
+}
 
-    internal func showLoader() {
-        loaderView.show()
+extension CheckoutSummaryViewController {
+
+    private func injectCustomer(from oldViewModel: CheckoutViewModel) {
+        if checkoutViewModel.customer == nil && oldViewModel.customer != nil {
+            checkoutViewModel.customer = oldViewModel.customer
+        }
     }
 
-    internal func hideLoader() {
-        loaderView.hide()
+    private func checkPriceChange(oldViewModel: CheckoutViewModel) {
+        guard let
+            oldPrice = oldViewModel.cart?.grossTotal.amount,
+            newPrice = checkoutViewModel.cart?.grossTotal.amount else { return }
+
+        if oldPrice != newPrice {
+            UserMessage.displayError(AtlasCheckoutError.priceChanged(newPrice: newPrice))
+        }
     }
+
+    private func checkPaymentMethod(oldViewModel: CheckoutViewModel) {
+        guard oldViewModel.checkout?.payment.selected?.method != nil
+            && checkoutViewModel.checkout?.payment.selected?.method == nil else { return }
+
+        UserMessage.displayError(AtlasCheckoutError.paymentMethodNotAvailable)
+    }
+
+    private func createCheckout() {
+        guard checkoutViewModel.isReadyToCreateCheckout else { return }
+
+        LoaderView.displayLoader { [weak self] hideLoader in
+            guard let strongSelf = self else { return }
+            strongSelf.checkout.createCheckoutViewModel(fromModel: strongSelf.checkoutViewModel) { result in
+                hideLoader()
+                guard let checkoutViewModel = result.process() else { return }
+                strongSelf.checkoutViewModel = checkoutViewModel
+            }
+        }
+    }
+
 }
 
 extension CheckoutSummaryViewController {
@@ -81,10 +114,6 @@ extension CheckoutSummaryViewController {
             action: #selector(CheckoutSummaryViewController.paymentAddressTapped)))
     }
 
-    dynamic private func cancelCheckoutTapped() {
-        dismissView()
-    }
-
     private func dismissView() {
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -92,9 +121,9 @@ extension CheckoutSummaryViewController {
     dynamic private func submitButtonTapped() {
         switch viewState {
         case .NotLoggedIn: actionsHandler.loadCustomerData()
-        case .LoggedIn: actionsHandler.handleBuyAction()
+        case .CheckoutReady: actionsHandler.handleBuyAction()
         case .OrderPlaced: dismissView()
-        case .CheckoutIncomplete: break
+        case .CheckoutIncomplete: UserMessage.displayError(AtlasCheckoutError.missingAddressAndPayment)
         }
     }
 
@@ -120,19 +149,13 @@ extension CheckoutSummaryViewController {
 
 extension CheckoutSummaryViewController {
 
-    func refreshViewData() {
-        setupViewState()
-    }
-
     private func setupView() {
         view.backgroundColor = .whiteColor()
         view.addSubview(rootStackView)
-        view.addSubview(loaderView)
         rootStackView.buildView()
-        loaderView.buildView()
     }
 
-    private func setupViewState() {
+    private func setupInitialViewState() {
         if Atlas.isUserLoggedIn() {
             viewState = checkoutViewModel.checkoutViewState
         } else {
@@ -141,30 +164,15 @@ extension CheckoutSummaryViewController {
     }
 
     private func setupNavigationBar() {
-        title = loc(viewState.navigationBarTitleLocalizedKey)
+        title = Localizer.string(viewState.navigationBarTitleLocalizedKey)
 
         let hasSingleUnit = checkoutViewModel.article.hasSingleUnit
         navigationItem.setHidesBackButton(viewState.hideBackButton(hasSingleUnit), animated: false)
 
         if viewState.showCancelButton {
-            let button = UIBarButtonItem(title: loc("Cancel"),
-                style: .Plain,
-                target: self,
-                action: #selector(CheckoutSummaryViewController.cancelCheckoutTapped))
-            button.accessibilityIdentifier = "navigation-bar-cancel-button"
-            navigationItem.rightBarButtonItem = button
-
-            navigationController?.navigationBar.translucent = false
+            showCancelButton()
         } else {
-            navigationItem.rightBarButtonItem = nil
-        }
-    }
-
-    func createCheckout(cartId: String, completion: CheckoutCompletion) {
-        checkout.client.createCheckout(cartId,
-            billingAddressId: checkoutViewModel.selectedShippingAddress?.id,
-            shippingAddressId: checkoutViewModel.selectedBillingAddress?.id) { checkout in
-                completion(checkout)
+            hideCancelButton()
         }
     }
 

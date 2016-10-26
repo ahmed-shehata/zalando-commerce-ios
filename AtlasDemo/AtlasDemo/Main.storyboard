@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="O9n-73-qiO">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="O9n-73-qiO">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -86,15 +86,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="AtlasSDK Demo" id="Qtr-gt-Nf8">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="ega-UN-CNV">
-                            <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="4fn-Ge-VII">
-                                <rect key="frame" x="20" y="6" width="51" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="serverSwitchTapped:" destination="BYZ-38-t0r" eventType="valueChanged" id="6PI-d6-HKT"/>
-                                </connections>
-                            </switch>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="Profile" id="8NH-Un-PA1">
                             <connections>
                                 <segue destination="4dE-k4-8mF" kind="show" id="vDp-6b-SYC"/>
@@ -103,7 +94,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="productCollectionView" destination="wHW-dw-RKm" id="FKK-eQ-DOg"/>
-                        <outlet property="serverSwitch" destination="4fn-Ge-VII" id="ZJ5-3n-Lvl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -204,32 +194,49 @@
                                     <constraint firstItem="4JT-7d-5gI" firstAttribute="width" secondItem="9dg-ts-9xB" secondAttribute="width" id="9Kd-UU-vq5"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A5Y-Dt-XWn">
-                                <rect key="frame" x="20" y="323" width="560" height="30"/>
-                                <state key="normal" title="Pay Now"/>
-                                <connections>
-                                    <action selector="payNowButtonTapped:" destination="4dE-k4-8mF" eventType="touchUpInside" id="xFR-M7-Ywf"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mas-9p-sdx">
-                                <rect key="frame" x="20" y="361" width="560" height="30"/>
+                                <rect key="frame" x="20" y="530" width="560" height="30"/>
                                 <state key="normal" title="Logout"/>
                                 <connections>
                                     <action selector="logoutButtonTapped:" destination="4dE-k4-8mF" eventType="touchUpInside" id="zTp-5V-W5o"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qLo-Q0-jea">
+                                <rect key="frame" x="235" y="462" width="131" height="29"/>
+                                <segments>
+                                    <segment title="English"/>
+                                    <segment title="Deutsch"/>
+                                </segments>
+                                <connections>
+                                    <action selector="languageSwitched:" destination="4dE-k4-8mF" eventType="valueChanged" id="c0w-vr-f9c"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="pXc-VB-gbw">
+                                <rect key="frame" x="235" y="498" width="131" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="131" id="JCX-bo-tTD"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Live"/>
+                                    <segment title="Staging"/>
+                                </segments>
+                                <connections>
+                                    <action selector="serverSwitched:" destination="4dE-k4-8mF" eventType="valueChanged" id="YQd-iy-iRW"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="pXc-VB-gbw" firstAttribute="top" secondItem="qLo-Q0-jea" secondAttribute="bottom" constant="8" id="3zu-lM-15r"/>
                             <constraint firstItem="cKW-p6-kGE" firstAttribute="top" secondItem="Cew-DZ-oSf" secondAttribute="bottom" constant="8" id="87g-7C-rIr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="cKW-p6-kGE" secondAttribute="trailing" constant="8" id="9E4-hY-2uQ"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Mas-9p-sdx" secondAttribute="leading" id="Bba-Hg-7Hx"/>
-                            <constraint firstItem="A5Y-Dt-XWn" firstAttribute="centerX" secondItem="Mfi-QH-Ey6" secondAttribute="centerX" id="NVC-Gh-i8I"/>
+                            <constraint firstItem="Mas-9p-sdx" firstAttribute="top" secondItem="qLo-Q0-jea" secondAttribute="bottom" constant="40" id="LvW-wO-yiQ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Mas-9p-sdx" secondAttribute="trailing" id="Umc-We-jKj"/>
+                            <constraint firstItem="qLo-Q0-jea" firstAttribute="centerX" secondItem="Mfi-QH-Ey6" secondAttribute="centerX" id="X5h-QE-qAP"/>
                             <constraint firstItem="9dg-ts-9xB" firstAttribute="top" secondItem="cKW-p6-kGE" secondAttribute="bottom" constant="16" id="Yq0-jT-Q0M"/>
-                            <constraint firstItem="Mas-9p-sdx" firstAttribute="top" secondItem="A5Y-Dt-XWn" secondAttribute="bottom" constant="8" id="ahv-XT-VEz"/>
-                            <constraint firstItem="A5Y-Dt-XWn" firstAttribute="top" secondItem="Htc-6u-A4B" secondAttribute="bottom" constant="46" id="c3t-Lm-Yde"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="A5Y-Dt-XWn" secondAttribute="leading" id="e59-iZ-4qG"/>
+                            <constraint firstItem="SNu-FN-JOB" firstAttribute="top" secondItem="Mas-9p-sdx" secondAttribute="bottom" constant="40" id="jVT-Rs-Sm4"/>
+                            <constraint firstItem="pXc-VB-gbw" firstAttribute="centerX" secondItem="qLo-Q0-jea" secondAttribute="centerX" id="jwR-op-9Sv"/>
                             <constraint firstItem="cKW-p6-kGE" firstAttribute="leading" secondItem="Mfi-QH-Ey6" secondAttribute="leadingMargin" constant="8" id="oFh-CM-QVK"/>
                             <constraint firstItem="9dg-ts-9xB" firstAttribute="width" secondItem="cKW-p6-kGE" secondAttribute="width" id="rh9-td-ok1"/>
                             <constraint firstItem="9dg-ts-9xB" firstAttribute="leading" secondItem="cKW-p6-kGE" secondAttribute="leading" id="suo-yN-9qD"/>
@@ -240,7 +247,9 @@
                         <outlet property="avatar" destination="eP9-SB-DNz" id="FRD-9a-uyu"/>
                         <outlet property="customerNumer" destination="ePY-X1-kBf" id="kOQ-Jm-XxJ"/>
                         <outlet property="email" destination="I7v-X3-FGV" id="MUj-x6-nfH"/>
+                        <outlet property="environmentSegmentedControl" destination="pXc-VB-gbw" id="bwP-ei-zpC"/>
                         <outlet property="gender" destination="l83-gi-coC" id="OI1-eH-Wu0"/>
+                        <outlet property="languageSwitcher" destination="qLo-Q0-jea" id="JYI-M7-kdn"/>
                         <outlet property="name" destination="cPX-V4-a02" id="v4A-3Z-q9M"/>
                     </connections>
                 </viewController>

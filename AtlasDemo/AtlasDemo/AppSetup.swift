@@ -8,60 +8,74 @@ import AtlasUI
 import AtlasMockAPI
 
 class AppSetup {
-    var checkout: AtlasCheckout?
-    static let sharedInstance = AppSetup()
 
-    func configure() {
+    enum InterfaceLanguage: String {
+        case English = "en"
+        case Deutsch = "de"
+    }
+
+    private(set) static var checkout: AtlasCheckout?
+    private(set) static var options: Options?
+
+    private static let defaultUseSandbox = true
+    private static let defaultInterfaceLanguage = InterfaceLanguage.English
+
+    static var interfaceLanguage: String? {
+        return checkout?.client.config.interfaceLocale.objectForKey(NSLocaleLanguageCode) as? String
+    }
+
+    static func configure() {
         prepareMockAPI()
         prepareApp()
 
-        let opts = prepareOptions(useSandbox: true)
-        setAppOptions(opts)
+        setAppOptions(prepareOptions())
     }
 
-    private var alwaysUseMockAPI: Bool {
-        #if DEBUG
-            return true
-        #else
-            return false
-        #endif
+    static func change(environmentToSandbox useSandbox: Bool, completion: (() -> Void)? = nil) {
+        Atlas.logoutUser()
+        setAppOptions(prepareOptions(useSandbox: useSandbox), completion: completion)
     }
 
-    private func prepareMockAPI() {
+    static func change(interfaceLanguage language: InterfaceLanguage, completion: (() -> Void)? = nil) {
+        setAppOptions(prepareOptions(interfaceLanguage: language), completion: completion)
+    }
+
+    private static var alwaysUseMockAPI: Bool {
+        return NSProcessInfo.processInfo().arguments.contains("USE_MOCK_API")
+    }
+
+    private static func prepareMockAPI() {
         if alwaysUseMockAPI && !AtlasMockAPI.hasMockedAPIStarted {
             try! AtlasMockAPI.startServer() // swiftlint:disable:this force_try
         }
     }
 
-    private func prepareApp() {
+    private static func prepareApp() {
         if AtlasMockAPI.hasMockedAPIStarted {
-            Atlas.logoutCustomer()
+            Atlas.logoutUser()
         }
     }
 
-    private func setAppOptions(opts: Options, completion: (() -> Void)? = nil) {
+    private static func setAppOptions(opts: Options, completion: (() -> Void)? = nil) {
         AtlasCheckout.configure(opts) { result in
             if case let .success(checkout) = result {
-                self.checkout = checkout
+                AppSetup.options = opts
+                AppSetup.checkout = checkout
                 completion?()
             }
         }
     }
 
-    private func prepareOptions(useSandbox useSandbox: Bool) -> Options {
-        var opts = Options(clientId: "atlas_Y2M1MzA",
+    private static func prepareOptions(useSandbox useSandbox: Bool? = nil, interfaceLanguage: InterfaceLanguage? = nil) -> Options {
+        let configurationURL: NSURL? = AtlasMockAPI.hasMockedAPIStarted ? AtlasMockAPI.endpointURL(forPath: "/config") : nil
+        let sandbox = useSandbox ?? options?.useSandboxEnvironment ?? defaultUseSandbox
+        let language = interfaceLanguage?.rawValue ?? options?.interfaceLanguage ?? defaultInterfaceLanguage.rawValue
+
+        return Options(clientId: "atlas_Y2M1MzA",
             salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
-            useSandbox: useSandbox, interfaceLanguage: "en_DE")
-
-        if AtlasMockAPI.hasMockedAPIStarted {
-            opts = Options(basedOn: opts, configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
-        }
-
-        return opts
-    }
-
-    func switchEnvironment(useSandbox useSandbox: Bool, completion: (() -> Void)? = nil) {
-        setAppOptions(prepareOptions(useSandbox: useSandbox), completion: completion)
+            useSandbox: sandbox,
+            interfaceLanguage: language,
+            configurationURL: configurationURL)
     }
 
 }

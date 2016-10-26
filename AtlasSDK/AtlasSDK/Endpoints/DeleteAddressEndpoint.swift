@@ -2,7 +2,7 @@
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
-struct DeleteAddressEndpoint: ConfigurableEndpoint {
+struct DeleteAddressEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
 
     let serviceURL: NSURL
     let method: HTTPMethod = .DELETE

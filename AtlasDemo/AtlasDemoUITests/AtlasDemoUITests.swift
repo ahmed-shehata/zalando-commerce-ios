@@ -42,7 +42,7 @@ class AtlasDemoUITests: XCTestCase {
     func testBuyProductWithSizesAndNavigatingBack() {
         let backButton = app.navigationBars["checkout-summary-navigation-bar"].buttons["Back"]
         let cancelButton = app.navigationBars["checkout-summary-navigation-bar"].buttons["Cancel"]
-        let sizeText = app.cells["size-cell-XS"]
+        let sizeText = app.cells["size-cell-XL"]
 
         tapBuyNow("Guess")
 
@@ -63,7 +63,6 @@ class AtlasDemoUITests: XCTestCase {
     func testChangeShippingAddress() {
         proceedToSummaryWithSizes()
         changeShippingAddress()
-        tapBackToSummaryFromPickingAddressButton()
         tapPlaceOrder()
         tapBackToShop()
 
@@ -72,16 +71,40 @@ class AtlasDemoUITests: XCTestCase {
     func testChangeBillingAddress() {
         proceedToSummaryWithSizes()
         changeBillingAddress()
-        tapBackToSummaryFromPickingAddressButton()
         tapPlaceOrder()
         tapBackToShop()
     }
 
-    func testDeleteAddress() {
+    func testCreateAddress() {
         proceedToSummaryWithSizes()
+        app.otherElements["shipping-stack-view"].tap()
+        createAddress()
+    }
+
+    func testDeleteAddress() {
+        let size = app.cells["size-cell-0"]
+        tapBuyNow("Lamica")
+        waitForElementToAppearAndTap(size)
+        tapConnectAndLogin()
         app.otherElements["shipping-stack-view"].tap()
         deleteAddresses()
         app.buttons["navigation-bar-cancel-button"].tap()
+    }
+
+    func testDeletePreselectedAddress() {
+        let size = app.cells["size-cell-0"]
+        tapBuyNow("Lamica")
+        waitForElementToAppearAndTap(size)
+        tapConnectAndLogin()
+
+        app.otherElements["shipping-stack-view"].tap()
+        deleteAddresses()
+        changeShippingAddress()
+        changeBillingAddress()
+
+        tapPlaceOrder()
+        tapBackToShop()
+
     }
 
     func testEditAddress() {
@@ -91,19 +114,36 @@ class AtlasDemoUITests: XCTestCase {
         app.buttons["navigation-bar-cancel-button"].tap()
     }
 
-    func testCreateAddress() {
-        proceedToSummaryWithSizes()
-        app.otherElements["shipping-stack-view"].tap()
-        createAddress()
-        app.buttons["navigation-bar-cancel-button"].tap()
+    func testToC() {
+        let size = app.cells["size-cell-0"]
+        let webView = app.otherElements["toc-webview"]
+        tapBuyNow("Lamica")
+        waitForElementToAppearAndTap(size)
+        app.buttons["checkout-summary-toc-button"].tap()
+        waitForElementToAppearAndTap(webView)
     }
 
+    func testPickupPoints() {
+        proceedToSummaryWithSizes()
+        app.otherElements["shipping-stack-view"].tap()
+
+        let shippingPredicate = NSPredicate(format: "count == 4")
+        expectationForPredicate(shippingPredicate, evaluatedWithObject: app.tables.cells, handler: nil)
+        waitForExpectationsWithTimeout(5, handler: nil)
+
+        app.navigationBars["address-picker-navigation-bar"].buttons["Back"].tap()
+        app.otherElements["billing-stack-view"].tap()
+
+        let billingPredicate = NSPredicate(format: "count == 3")
+        expectationForPredicate(billingPredicate, evaluatedWithObject: app.tables.cells, handler: nil)
+        waitForExpectationsWithTimeout(5, handler: nil)
+    }
 }
 
 extension AtlasDemoUITests {
 
     private func proceedToSummaryWithSizes() {
-        let size = app.cells["size-cell-1"]
+        let size = app.cells["size-cell-0"]
         tapBuyNow("Lamica")
         waitForElementToAppearAndTap(size)
         tapConnectAndLogin()
@@ -128,13 +168,17 @@ extension AtlasDemoUITests {
         let rightButton = app.navigationBars.buttons["address-picker-right-button"]
         rightButton.tap()
 
-        let tablesQuery = app.tables
+        let table = app.tables
 
-        tablesQuery.buttons.elementBoundByIndex(0).tap()
-        tablesQuery.buttons.elementBoundByIndex(2).tap()
+        table.buttons.elementBoundByIndex(2).tap()
+        table.buttons.elementBoundByIndex(4).tap()
 
-        tablesQuery.buttons.elementBoundByIndex(0).tap()
-        tablesQuery.buttons.elementBoundByIndex(2).tap()
+        table.buttons.elementBoundByIndex(2).tap()
+        table.buttons.elementBoundByIndex(4).tap()
+
+        let existsPredicate = NSPredicate(format: "count == 2")
+        expectationForPredicate(existsPredicate, evaluatedWithObject: table.cells, handler: nil)
+        waitForExpectationsWithTimeout(5, handler: nil)
 
         rightButton.tap()
         app.navigationBars["address-picker-navigation-bar"].buttons["Back"].tap()
@@ -155,12 +199,11 @@ extension AtlasDemoUITests {
         app.textFields["title-textfield"].tap()
         app.pickerWheels.element.adjustToPickerWheelValue("Mr")
 
-
         app.textFields["firstname-textfield"].tap()
         setTextFieldValue("firstname-textfield", value: "John")
         setTextFieldValue("lastname-textfield", value: "Doe")
         setTextFieldValue("street-textfield", value: "Mollstr. 1")
-        setTextFieldValue("additional-textfield", value: "")
+        setTextFieldValue("additional-textfield", value: "Zalando SE")
         setTextFieldValue("zipcode-textfield", value: "10178")
         setTextFieldValue("city-textfield", value: "Berlin")
 
@@ -181,10 +224,6 @@ extension AtlasDemoUITests {
 
     private func tapPlaceOrder() {
         waitForElementToAppearAndTap(app.buttons["checkout-footer-button"])
-    }
-
-    private func tapBackToSummaryFromPickingAddressButton() {
-        waitForElementToAppearAndTap(app.navigationBars["address-picker-navigation-bar"].buttons["Back"])
     }
 
     private func tapBackToShop() {

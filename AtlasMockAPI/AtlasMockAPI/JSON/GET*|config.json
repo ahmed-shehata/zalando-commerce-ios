@@ -1,75 +1,96 @@
 {
-  "sales-channels": [
-    {
-      "locale": "de_DE",
-      "sales-channel": "82fe2e7f-8c4f-4aa1-9019-b6bde5594456"
-    },
-    {
-      "locale": "nl_NL",
-      "sales-channel": "6c282f96-5374-4741-bbca-b39be20aac7a"
-    },
-    {
-      "locale": "fr_FR",
-      "sales-channel": "6bed066f-8d6d-412a-96be-04a59237914f"
-    },
-    {
-      "locale": "it_IT",
-      "sales-channel": "465e200f-26b0-4d84-9b24-9b5db2b974ae"
-    },
-    {
-      "locale": "en_GB",
-      "sales-channel": "9c053041-b75d-4c4f-a3e2-4a484f70a809"
-    },
-    {
-      "locale": "de_AT",
-      "sales-channel": "a840399d-9587-49fb-854d-07c169f2fa5a"
-    },
-    {
-      "locale": "de_CH",
-      "sales-channel": "0f8888b8-1048-4cf5-9ce0-f2d88284ae63"
-    },
-    {
-      "locale": "fr_CH",
-      "sales-channel": "0f8888b8-1048-4cf5-9ce0-f2d88284ae63"
-    },
-    {
-      "locale": "pl_PL",
-      "sales-channel": "d8842511-ff68-42e8-a419-eb997ff08fc6"
-    },
-    {
-      "locale": "nl_BE",
-      "sales-channel": "860eec20-7ab5-4186-94f4-e935473aed64"
-    },
-    {
-      "locale": "fr_BE",
-      "sales-channel": "860eec20-7ab5-4186-94f4-e935473aed64"
-    },
-    {
-      "locale": "sv_SE",
-      "sales-channel": "bbf53e27-a89f-4d1b-9b42-b69268c7bb32"
-    },
-    {
-      "locale": "fi_FI",
-      "sales-channel": "96b5fee4-13ba-4f0c-acd0-3bc69abdd2de"
-    },
-    {
-      "locale": "da_DK",
-      "sales-channel": "b8d45643-0087-42ea-94bc-9b39050a843c"
-    },
-    {
-      "locale": "es_ES",
-      "sales-channel": "a0595229-ba5d-4048-a40f-3a40eeee36c9"
-    },
-    {
-      "locale": "no_NO",
-      "sales-channel": "a39030a6-b426-4162-bcf6-88ff88a4c26a"
-    }
-  ],
+    "sales-channels": [
+                       {
+                       "locale" : "de_DE",
+                       "toc_url" : "https://www.zalando.de/agb/",
+                       "sales-channel" : "82fe2e7f-8c4f-4aa1-9019-b6bde5594456"
+                       },
+                       {
+                       "locale" : "nl_NL",
+                       "toc_url" : "https://www.zalando.nl/algemene-voorwaarden/",
+                       "sales-channel" : "6c282f96-5374-4741-bbca-b39be20aac7a"
+                       },
+                       {
+                       "locale" : "fr_FR",
+                       "toc_url" : "https://www.zalando.fr/cgv/",
+                       "sales-channel" : "6bed066f-8d6d-412a-96be-04a59237914f"
+                       },
+                       {
+                       "locale" : "it_IT",
+                       "toc_url" : "https://www.zalando.it/cgv/",
+                       "sales-channel" : "465e200f-26b0-4d84-9b24-9b5db2b974ae"
+                       },
+                       {
+                       "locale" : "en_GB",
+                       "toc_url" : "https://www.zalando.co.uk/terms/",
+                       "sales-channel" : "9c053041-b75d-4c4f-a3e2-4a484f70a809"
+                       },
+                       {
+                       "locale" : "de_AT",
+                       "toc_url" : "https://www.zalando.at/agb/",
+                       "sales-channel" : "a840399d-9587-49fb-854d-07c169f2fa5a"
+                       },
+                       {
+                       "locale" : "de_CH",
+                       "toc_url" : "https://www.zalando.ch/agb/",
+                       "sales-channel" : "0f8888b8-1048-4cf5-9ce0-f2d88284ae63"
+                       },
+                       {
+                       "locale" : "fr_CH",
+                       "toc_url" : "https://fr.zalando.ch/cgv/",
+                       "sales-channel" : "0f8888b8-1048-4cf5-9ce0-f2d88284ae63"
+                       },
+                       {
+                       "locale" : "pl_PL",
+                       "toc_url" : "https://www.zalando.pl/regulamin/",
+                       "sales-channel" : "d8842511-ff68-42e8-a419-eb997ff08fc6"
+                       },
+                       {
+                       "locale" : "nl_BE",
+                       "toc_url" : "https://www.zalando.be/algemene-voorwaarden/",
+                       "sales-channel" : "860eec20-7ab5-4186-94f4-e935473aed64"
+                       },
+                       {
+                       "locale" : "fr_BE",
+                       "toc_url" : "https://fr.zalando.be/cgv/",
+                       "sales-channel" : "860eec20-7ab5-4186-94f4-e935473aed64"
+                       },
+                       {
+                       "locale" : "sv_SE",
+                       "toc_url" : "https://www.zalando.se/aav/",
+                       "sales-channel" : "bbf53e27-a89f-4d1b-9b42-b69268c7bb32"
+                       },
+                       {
+                       "locale" : "fi_FI",
+                       "toc_url" : "https://www.zalando.fi/yleiset-sopimusehdot/",
+                       "sales-channel" : "96b5fee4-13ba-4f0c-acd0-3bc69abdd2de"
+                       },
+                       {
+                       "locale" : "da_DK",
+                       "toc_url" : "https://www.zalando.dk/asl/",
+                       "sales-channel" : "b8d45643-0087-42ea-94bc-9b39050a843c"
+                       },
+                       {
+                       "locale" : "es_ES",
+                       "toc_url" : "https://www.zalando.es/cgc/",
+                       "sales-channel" : "a0595229-ba5d-4048-a40f-3a40eeee36c9"
+                       },
+                       {
+                       "locale" : "no_NO",
+                       "toc_url" : "https://www.zalando.no/generellevilkar/",
+                       "sales-channel" : "a39030a6-b426-4162-bcf6-88ff88a4c26a"
+                       }
+                       ],
     "atlas-catalog-api": {
         "url": "http://localhost.charlesproxy.com:9080"
     },
     "atlas-checkout-api": {
-        "url": "http://localhost.charlesproxy.com:9080"
+        "url": "http://localhost.charlesproxy.com:9080",
+        "payment":
+        {
+            "selection-callback": "http://de.zalando.atlas.AtlasCheckoutDemo/redirect",
+            "third-party-callback":"http://de.zalando.atlas.AtlasCheckoutDemo/redirect"
+        }
     },
     "oauth2-provider": {
         "url": "http://localhost.charlesproxy.com:9080/oauth2/authorize?realm=/customers&response_type=token&client_id=atlas_Y2M1MzA&redirect_uri=http://de.zalando.atlas.AtlasCheckoutDemo/redirect"

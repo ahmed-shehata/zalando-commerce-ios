@@ -13,6 +13,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var customerNumer: UILabel!
     @IBOutlet weak var gender: UILabel!
+    @IBOutlet weak var languageSwitcher: UISegmentedControl!
+    @IBOutlet weak var environmentSegmentedControl: UISegmentedControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,10 +23,46 @@ class ProfileViewController: UIViewController {
         self.email.text = ""
         self.customerNumer.text = ""
         self.gender.text = ""
-
         self.email.textColor = UIColor.grayColor()
 
-        AppSetup.sharedInstance.checkout?.client.customer { result in
+        updateLanguageSelectedIndex()
+        updateEnvironmentSelectedIndex()
+        loadCustomerData()
+    }
+
+    @IBAction func serverSwitched(sender: UISegmentedControl) {
+        let useSandbox = sender.selectedSegmentIndex == 1
+        AppSetup.change(environmentToSandbox: useSandbox)
+    }
+
+    @IBAction func languageSwitched(sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 1:
+            AppSetup.change(interfaceLanguage: .Deutsch)
+        case 0:
+            fallthrough
+        default:
+            AppSetup.change(interfaceLanguage: .English)
+        }
+    }
+
+    @IBAction func logoutButtonTapped(sender: AnyObject) {
+        Atlas.logoutUser()
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+
+    private func updateLanguageSelectedIndex() {
+        let availableLanguages: [String?] = [AppSetup.InterfaceLanguage.English.rawValue, AppSetup.InterfaceLanguage.Deutsch.rawValue]
+        self.languageSwitcher.selectedSegmentIndex = availableLanguages.indexOf { $0 == AppSetup.interfaceLanguage } ?? 0
+    }
+
+    private func updateEnvironmentSelectedIndex() {
+        let selectedSegment = AppSetup.options?.useSandboxEnvironment == true ? 1 : 0
+        environmentSegmentedControl.selectedSegmentIndex = selectedSegment
+    }
+
+    private func loadCustomerData() {
+        AppSetup.checkout?.client.customer { result in
             switch result {
             case .failure(let error):
                 self.showError(title: "Error", error: error)
@@ -39,14 +77,6 @@ class ProfileViewController: UIViewController {
                 self.gender.text = customer.gender.rawValue
             }
         }
-    }
-
-    @IBAction func payNowButtonTapped(sender: AnyObject) {
-//        showPaymentScreen()
-    }
-    @IBAction func logoutButtonTapped(sender: AnyObject) {
-        Atlas.logoutCustomer()
-        self.navigationController?.popViewControllerAnimated(true)
     }
 
 }

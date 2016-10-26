@@ -11,6 +11,8 @@ group :calypso do
   gem 'jazzy'
   gem 'github_changelog_generator'
   gem 'rubocop'
+  gem 'httparty'
+  gem 'awesome_print'
 end
 
 group :tools do

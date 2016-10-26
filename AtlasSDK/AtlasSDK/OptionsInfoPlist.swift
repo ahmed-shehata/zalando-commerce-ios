@@ -4,25 +4,31 @@
 
 import Foundation
 
-public extension Options {
+extension Options {
 
-    public init(bundle: NSBundle) {
-        self.init(clientId: bundle.string(.clientId) ?? "",
-                  salesChannel: bundle.string(.salesChannel) ?? "",
-                  interfaceLanguage: bundle.string(.interfaceLanguage) ?? "de_DE",
-                  useSandbox: bundle.bool(.useSandbox, defaultValue: false))
+    enum InfoKey: String {
+
+        case useSandbox = "ATLASSDK_USE_SANDBOX"
+        case clientId = "ATLASSDK_CLIENT_ID"
+        case salesChannel = "ATLASSDK_SALES_CHANNEL"
+        case interfaceLanguage = "ATLASSDK_INTERFACE_LANGUAGE"
+
     }
 
 }
 
 extension NSBundle {
 
-    private func string(key: InfoKey) -> String? {
-        return self.objectForInfoDictionaryKey(key.rawValue) as? String
+    func string(key: Options.InfoKey, defaultValue: String? = nil) -> String? {
+        return self.infoObject(forKey: key) ?? defaultValue
     }
 
-    private func bool(key: InfoKey, defaultValue: Bool = false) -> Bool {
-        return self.objectForInfoDictionaryKey(key.rawValue) as? Bool ?? defaultValue
+    func bool(key: Options.InfoKey, defaultValue: Bool? = nil) -> Bool? {
+        return self.infoObject(forKey: key) ?? defaultValue
+    }
+
+    func infoObject<T>(forKey key: Options.InfoKey) -> T? {
+        return self.objectForInfoDictionaryKey(key.rawValue) as? T
     }
 
 }

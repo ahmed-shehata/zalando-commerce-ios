@@ -9,23 +9,31 @@
 "Done" = "Done";
 "Total" = "Total";
 "vat.included" = "(VAT Included)";
-"estimated.delivery.date" = "Estimated Delivery: %@";
-"estimated.delivery.range" = "Estimated Delivery: %@ - %@";
+"estimated.delivery.title" = "Estimated Delivery";
 "Shipping" = "Shipping";
 "Pay %@" = "Pay %@";
 "Zalando.Connect" = "Connect to Zalando";
+"Zalando.login" = "Login with Zalando";
+"Zalando.Checkout" = "Checkout with Zalando";
 "CheckoutSummaryViewController.terms" = "Zalando terms, conditions and cancellation policy apply to all orders";
 "Address.Shipping" = "Shipping Address";
 "Address.Billing" = "Billing Address";
 "Size: %@" = "Size: %@";
-"Zalando.Checkout" = "Checkout with Zalando";
 "order.place" = "Place order";
 "order.place.paypal" = "Confirm and pay with PayPal";
 "navigation.back.shop" = "Back to shop";
 "order.placed" = "Order placed";
 
-"feature.notImplemented.title" = "Not implemented";
-"feature.notImplemented.message" = "This feature is currently not implemented";
+"AtlasCheckoutError.title" = "Oops";
+"AtlasCheckoutError.title.missingAddress" = "No address selected";
+"AtlasCheckoutError.title.priceChanged" = "Price changed";
+"AtlasCheckoutError.message.unclassified" = "Something went wrong.\nWe are fixing the issue.\nPlease come back later";
+"AtlasCheckoutError.message.outOfStock" = "Sorry this item is out of stock";
+"AtlasCheckoutError.message.missingAddress" = "Please select shipping and billing addresses first";
+"AtlasCheckoutError.message.missingAddressAndPayment" = "Please select shipping and billing addresses and the payment method first";
+"AtlasCheckoutError.message.priceChanged" = "The price is now %@";
+"AtlasCheckoutError.message.paymentMethodNotAvailable" = "Payment method is no longer available";
+"AtlasCheckoutError.message.addressInvalid" = "Address not valid, please check the address";
 
 "LoginError.title" = "Login Error";
 "LoginError.message.missingURL" = "Missing login URL";
@@ -34,8 +42,10 @@
 "LoginError.message.missingViewControllerToShowLoginForm" = "Cannot show login form";
 
 "AtlasAPIError.title" = "Server Error";
+"AtlasAPIError.title.noInternet" = "No internet connection";
 "AtlasAPIError.message.invalidResponseFormat" = "Incorrect response format";
 "AtlasAPIError.message.noData" = "Empty response";
+"AtlasAPIError.message.noInternet" = "Please check you internet connection";
 "AtlasAPIError.message.unauthorized" = "Access denied";
 "AtlasAPIError.message.checkoutFailed" = "Unknown checkout error";
 
@@ -45,19 +55,18 @@
 "AtlasConfigurationError.message.missingSalesChannel" = "Missing sales channel";
 "AtlasConfigurationError.message.missingInterfaceLanguage" = "Missing interface language";
 
-"Address.edit.title" = "Title";
-"Address.edit.firstname" = "First Name";
-"Address.edit.lastname" = "Last Name";
-"Address.edit.street" = "Street";
-"Address.edit.additional" = "Additional";
-"Address.edit.packstation" = "Packstation";
-"Address.edit.memberid" = "Member ID";
-"Address.edit.zipcode" = "Zipcode";
-"Address.edit.city" = "City";
-"Address.edit.country" = "Country";
-
-"Address.edit.gender.male" = "Mr";
-"Address.edit.gender.female" = "Mrs";
+"Address.form.title" = "Title";
+"Address.form.firstname" = "First Name";
+"Address.form.lastname" = "Last Name";
+"Address.form.street" = "Street";
+"Address.form.additional" = "Additional";
+"Address.form.packstation" = "Packstation";
+"Address.form.memberid" = "Member ID";
+"Address.form.zipcode" = "Zipcode";
+"Address.form.city" = "City";
+"Address.form.country" = "Country";
+"Address.form.gender.male" = "Mr";
+"Address.form.gender.female" = "Mrs";
 
 "Address.Add.type.title" = "Address Type";
 "Address.Add.type.standard" = "Standard";
@@ -67,11 +76,14 @@
 "Address.prefix.packstation" = "Packstation";
 "Address.prefix.memberID" = "Member ID";
 "Address.prefix.packstation.abbreviation" = "P.S.";
+"Address.empty.billing" = "No Billing Address";
+"Address.empty.shipping" = "No Shipping Address";
 
 "Form.validation.required" = "This field is required";
 "Form.validation.minLength: %@" = "Min length is %@";
 "Form.validation.maxLength: %@" = "Max length is %@";
 "Form.validation.exactLength: %@" = "Required length is %@";
-"Form.validation.pattern" = "Invalid value";
+"Form.validation.pattern.name" = "Please only use the characters (A-z) in this field";
+"Form.validation.pattern.city" = "Please only use the characters (A-z) in this field";
+"Form.validation.pattern.street" = "Please enter your street and house number";
 "Form.validation.numbersOnly" = "Only numbers are allowed";
-"Address.validation.notValid" = "Address not valid, please check the address";
