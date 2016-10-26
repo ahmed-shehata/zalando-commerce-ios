@@ -118,8 +118,8 @@
 		DE0AF749E2EBC194E568845A555A016C /* NSHTTPURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9E9C7158DC9EB44B6B05FF3E07CB1B /* NSHTTPURLResponse.swift */; };
 		DE440328FFB4FBA9B8527F3CBFF054BA /* APICreateCheckoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA906FCD07627E9180A5D9B2D2B8C88 /* APICreateCheckoutTests.swift */; };
 		E6A17887BC6BA4C25B2D758C44514B80 /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D788B8AFA05BF3BB7559752D777933 /* Money.swift */; };
+		E93768531DC0D6D900E98635 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E93768521DC0D6D900E98635 /* Default-568h@2x.png */; };
 		E98F06B81DC0D2C00066B0DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F06B71DC0D2C00066B0DD /* AppDelegate.swift */; };
-		E98F06CB1DC0D3C70066B0DD /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E98F06CA1DC0D3C70066B0DD /* Default-568h@2x.png */; };
 		EAB0FA06F2B1E48C0F3CB1E5A6814A84 /* DatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22F082ED7BC990710AC6E435B8EA1D0 /* DatesTests.swift */; };
 		ECE8DEFDB2A85FBCD15B77C89EA5EF4A /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69384BDB0D3D26DA7967C229EF6CF14A /* Keychain.swift */; };
 		EE25945EBC0430BD1BEC06783620FBA7 /* APIGetAddressesEndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03499DB21790D8CCF1F3050A7D4EDE /* APIGetAddressesEndpointTests.swift */; };
@@ -274,11 +274,11 @@
 		DD3D9D57D8A8EE4FD7D57EFE634240FB /* HTTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
 		E3503D1E2D03C3587BB85A5BEE7D5202 /* OptionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OptionsTests.swift; path = AtlasSDKTests/OptionsTests.swift; sourceTree = SOURCE_ROOT; };
 		E929ACF16D83C88A9F1FA314D691FFEE /* JSONRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONRepresentable.swift; sourceTree = "<group>"; };
+		E93768521DC0D6D900E98635 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		E98F06B51DC0D2C00066B0DD /* AtlasSDKApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AtlasSDKApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E98F06B71DC0D2C00066B0DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E98F06C31DC0D2C00066B0DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E98F06C71DC0D2D30066B0DD /* AtlasSDKApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AtlasSDKApp.entitlements; sourceTree = "<group>"; };
-		E98F06CA1DC0D3C70066B0DD /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		EA97D05C1FC1C316CAA9F2EAEE6DFB89 /* Tests.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Tests.json; sourceTree = "<group>"; };
 		EC4618CBD3A7F5BB4565EE718D48F852 /* LiteralConvertibleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiteralConvertibleTests.swift; sourceTree = "<group>"; };
 		EDA906FCD07627E9180A5D9B2D2B8C88 /* APICreateCheckoutTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APICreateCheckoutTests.swift; path = AtlasSDKTests/APICreateCheckoutTests.swift; sourceTree = SOURCE_ROOT; };
@@ -612,7 +612,7 @@
 			children = (
 				E98F06C71DC0D2D30066B0DD /* AtlasSDKApp.entitlements */,
 				E98F06B71DC0D2C00066B0DD /* AppDelegate.swift */,
-				E98F06CA1DC0D3C70066B0DD /* Default-568h@2x.png */,
+				E93768521DC0D6D900E98635 /* Default-568h@2x.png */,
 				E98F06C31DC0D2C00066B0DD /* Info.plist */,
 			);
 			path = AtlasSDKApp;
@@ -827,7 +827,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E98F06CB1DC0D3C70066B0DD /* Default-568h@2x.png in Resources */,
+				E93768531DC0D6D900E98635 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
