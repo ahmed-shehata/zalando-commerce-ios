@@ -281,7 +281,6 @@
 			isa = PBXGroup;
 			children = (
 				1EAFD84117BCB3FDCF44F68B67C453DC /* Authorization */,
-				ED09699BF65A0BB23CB9575EF0C1ADF6 /* Frameworks */,
 				030AC42F0C3F5EF6C4EEE430622B1EAC /* Others */,
 				16528EE5F669261E669CCB1331591210 /* Resources */,
 				4C97964529F3E380DC0D91E7093919D9 /* Utils */,
@@ -299,6 +298,7 @@
 			children = (
 				2256B0C1AAAE60580B37160C27B74A94 /* AtlasUI */,
 				B0658A7A5FA9F75BCDF8341379EB0319 /* AtlasUITests */,
+				ED09699BF65A0BB23CB9575EF0C1ADF6 /* Frameworks */,
 				58525F1A4F96F26E15272DC693E4FB44 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -417,7 +417,6 @@
 		B0658A7A5FA9F75BCDF8341379EB0319 /* AtlasUITests */ = {
 			isa = PBXGroup;
 			children = (
-				CAA68AC473B19357EB600179B707795D /* Frameworks */,
 				A754353C97F26BBC2E518BB80BB9F4BE /* Info.plist */,
 				8C686045A1CFC18F21F295D0AD890463 /* AsyncTests.swift */,
 				1FB096480C6143C6CA99922FBD4B84A6 /* EditAddressTypeTests.swift */,
@@ -438,14 +437,6 @@
 				03B9AEFEA853EB9FD83162CF1D3F62CC /* FullScreenErrorViewController.swift */,
 			);
 			name = Errors;
-			sourceTree = "<group>";
-		};
-		CAA68AC473B19357EB600179B707795D /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				2E89A529CD1D470F15B857AF1031CB61 /* Nimble.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		E7B8FD94F5B37D0CD471CC2CC01B2A93 /* Address Selection */ = {
@@ -480,9 +471,11 @@
 		ED09699BF65A0BB23CB9575EF0C1ADF6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2E89A529CD1D470F15B857AF1031CB61 /* Nimble.framework */,
 				4E7DEC8F3885D28DB6B90C8289DF9FC2 /* AtlasSDK.framework */,
 			);
 			name = Frameworks;
+			path = AtlasUI;
 			sourceTree = "<group>";
 		};
 		EE1E502DE20549F934F0F30CAC1AF1A4 /* Transitions */ = {
