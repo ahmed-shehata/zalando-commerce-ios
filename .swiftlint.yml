@@ -20,6 +20,10 @@ excluded:
   - AtlasSDK/AtlasSDKTests/SwiftyJSON
   - AtlasSDKTests/SwiftyJSON
   - SwiftyJSON
+  - AtlasSDKTests
+  - AtlasMockAPITests
+  - AtlasDemoUITests
+  - AtlasUITests
 
 opt_in_rules:
   - force_unwrapping

@@ -6,10 +6,6 @@ import Foundation
 
 extension UIApplication {
 
-    static var hasTopViewController: Bool {
-        return topViewController() != nil
-    }
-
     static func topViewController(baseController: UIViewController? = nil) -> UIViewController? {
         let baseController = baseController ?? UIApplication.sharedApplication().keyWindow?.rootViewController
         if let navigationController = baseController as? UINavigationController {

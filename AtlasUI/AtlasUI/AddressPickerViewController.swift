@@ -40,12 +40,6 @@ final class AddressPickerViewController: UIViewController {
         return tableView
     }()
 
-    private let loaderView: LoaderView = {
-        let view = LoaderView()
-        view.hidden = true
-        return view
-    }()
-
     init(checkout: AtlasCheckout, initialAddresses: [EquatableAddress], initialSelectedAddress: EquatableAddress?) {
         self.checkout = checkout
         self.initialAddresses = initialAddresses
@@ -78,7 +72,6 @@ extension AddressPickerViewController: UIBuilder {
 
     func configureView() {
         view.addSubview(tableView)
-        view.addSubview(loaderView)
         configureEditButton()
         configureTableView()
 
@@ -87,11 +80,6 @@ extension AddressPickerViewController: UIBuilder {
 
     func configureConstraints() {
         tableView.fillInSuperView()
-        loaderView.fillInSuperView()
-    }
-
-    func builderSubviews() -> [UIBuilder] {
-        return [loaderView]
     }
 
     internal func configureEditButton() {

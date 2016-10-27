@@ -3,11 +3,18 @@
 //
 
 import UIKit
+import AtlasSDK
 
 public class AtlasUIViewController: UIViewController {
 
     let mainNavigationController: UINavigationController
     private let atlasReachability = AtlasReachability()
+
+    private let loaderView: LoaderView = {
+        let view = LoaderView()
+        view.hidden = true
+        return view
+    }()
 
     init(atlasCheckout: AtlasCheckout, forProductSKU sku: String) {
         let sizeSelectionViewController = SizeListSelectionViewController(checkout: atlasCheckout, sku: sku)
@@ -21,10 +28,33 @@ public class AtlasUIViewController: UIViewController {
     }
 
     override public func viewDidLoad() {
+        loadErrorView()
         addChildViewController(mainNavigationController)
         view.addSubview(mainNavigationController.view)
         mainNavigationController.view.fillInSuperView()
         atlasReachability.setupReachability()
+    }
+
+    private func loadErrorView() {
+        UserMessage.displayError(AtlasCheckoutError.unclassified)
+        UserMessage.clearBannerError()
+    }
+
+}
+
+extension AtlasUIViewController {
+
+    func showLoader() {
+        loaderView.removeFromSuperview()
+        UIApplication.topViewController()?.view.addSubview(loaderView)
+        loaderView.fillInSuperView()
+        loaderView.buildView()
+        loaderView.show()
+    }
+
+    func hideLoader() {
+        loaderView.hide()
+        loaderView.removeFromSuperview()
     }
 
 }

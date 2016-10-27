@@ -19,7 +19,7 @@ module Calypso
       dev_id = find_device_type(device_name)
       runtime_id = find_runtime(runtime_name)
       udid = run_simctl('create', "'#{name}'", dev_id, runtime_id).strip
-      puts "Simulator #{udid} created"
+      puts "Simulator '#{name}' (#{udid}) created"
       udid
     end
 

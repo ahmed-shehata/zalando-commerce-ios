@@ -12,15 +12,13 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
         didSet {
             injectCustomer(from: oldValue)
             viewState = checkoutViewModel.checkoutViewState
-            checkPaymentMethod(oldValue)
-            checkPriceChange(oldValue)
+            checkoutViewModel.validateAgainstOldViewModel(oldValue)
             createCheckout()
         }
     }
     internal var viewState: CheckoutViewState = .NotLoggedIn {
         didSet {
             setupNavigationBar()
-            loaderView.hide()
             rootStackView.configureData(self)
         }
     }
@@ -33,11 +31,6 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
         stackView.axis = .Vertical
         stackView.spacing = 5
         return stackView
-    }()
-    internal let loaderView: LoaderView = {
-        let view = LoaderView()
-        view.hidden = true
-        return view
     }()
 
     init(checkout: AtlasCheckout, checkoutViewModel: CheckoutViewModel) {
@@ -59,8 +52,8 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
         setupInitialViewState()
         setupActions()
 
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
-        self.navigationController?.navigationBar.accessibilityIdentifier = "checkout-summary-navigation-bar"
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        navigationController?.navigationBar.accessibilityIdentifier = "checkout-summary-navigation-bar"
     }
 }
 
@@ -72,51 +65,9 @@ extension CheckoutSummaryViewController {
         }
     }
 
-    private func checkPriceChange(oldViewModel: CheckoutViewModel) {
-        guard let
-            oldPrice = oldViewModel.cart?.grossTotal.amount,
-            newPrice = checkoutViewModel.cart?.grossTotal.amount else { return }
-
-        if oldPrice != newPrice {
-            UserMessage.displayError(AtlasCheckoutError.priceChanged(newPrice: newPrice))
-        }
-    }
-
-    private func checkPaymentMethod(oldViewModel: CheckoutViewModel) {
-        guard oldViewModel.checkout?.payment.selected?.method != nil
-            && checkoutViewModel.checkout?.payment.selected?.method == nil else { return }
-
-        UserMessage.displayError(AtlasCheckoutError.paymentMethodNotAvailable)
-    }
-
     private func createCheckout() {
-        guard checkoutViewModel.isReadyToCreateCheckout else { return }
-
-        displayLoader { [weak self] done in
-            guard let strongSelf = self else { return }
-            strongSelf.checkout.createCheckoutViewModel(fromModel: strongSelf.checkoutViewModel) { result in
-                done()
-                guard let checkoutViewModel = result.process() else { return }
-                strongSelf.checkoutViewModel = checkoutViewModel
-            }
-        }
-    }
-
-}
-
-extension CheckoutSummaryViewController {
-
-    private func showLoader() {
-        self.loaderView.show()
-    }
-
-    private func hideLoader() {
-        self.loaderView.hide()
-    }
-
-    internal func displayLoader(block: (() -> Void) -> Void) {
-        showLoader()
-        block(hideLoader)
+        guard let customer = checkoutViewModel.customer where checkoutViewModel.isReadyToCreateCheckout else { return }
+        actionsHandler.generateCheckout(customer)
     }
 
 }
@@ -175,9 +126,7 @@ extension CheckoutSummaryViewController {
     private func setupView() {
         view.backgroundColor = .whiteColor()
         view.addSubview(rootStackView)
-        view.addSubview(loaderView)
         rootStackView.buildView()
-        loaderView.buildView()
     }
 
     private func setupInitialViewState() {
@@ -191,7 +140,7 @@ extension CheckoutSummaryViewController {
     private func setupNavigationBar() {
         title = Localizer.string(viewState.navigationBarTitleLocalizedKey)
 
-        let hasSingleUnit = checkoutViewModel.article.hasSingleUnit
+        let hasSingleUnit = checkoutViewModel.selectedArticleUnit.article.hasSingleUnit
         navigationItem.setHidesBackButton(viewState.hideBackButton(hasSingleUnit), animated: false)
 
         if viewState.showCancelButton {

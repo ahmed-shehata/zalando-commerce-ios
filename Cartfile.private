@@ -1,7 +1,6 @@
 # Tests
 
-github "Quick/Quick" "v0.9.3"
-github "Quick/Nimble" "v4.1.0"
+github "Quick/Nimble" ~> 4.1
 
 # AtlasMockAPI
 
@@ -10,5 +9,6 @@ github "bonkey/swifter" "stable"
 # AtlasDemo
 
 github "SwiftyJSON/SwiftyJSON" "swift2"
-github "Alamofire/Alamofire" "3.5.0"
-github "Alamofire/AlamofireImage" "2.5.0"
+github "kean/Nuke" "swift2.3"
+github "daltoniam/SwiftHTTP" "swift-23"
+

@@ -6,7 +6,7 @@ import Foundation
 import UIKit
 import AtlasSDK
 import AtlasUI
-import AlamofireImage
+import Nuke
 
 class ProductCollectionViewCell: UICollectionViewCell {
 
@@ -20,7 +20,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
         self.backgroundColor = .whiteColor()
         self.productNameLabel.text = article.brand.name
         if let imageUrl = article.imageThumbURL {
-            self.thumbImageView.af_setImageWithURL(imageUrl)
+            thumbImageView.nk_setImageWith(imageUrl)
         }
         self.buyNowButton.accessibilityIdentifier = "buy-now"
 
