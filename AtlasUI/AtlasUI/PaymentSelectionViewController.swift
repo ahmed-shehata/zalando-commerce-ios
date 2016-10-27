@@ -18,13 +18,13 @@ enum PaymentStatus: String {
 
     init?(callbackURLComponents: NSURLComponents, requestURLComponents: NSURLComponents) {
         guard let
-            callbackHost = callbackURLComponents.host,
+        callbackHost = callbackURLComponents.host,
             requestHost = requestURLComponents.host
-            where callbackHost.lowercaseString == requestHost.lowercaseString
+        where callbackHost.lowercaseString == requestHost.lowercaseString
             else { return nil }
 
         guard let
-            rawValue = requestURLComponents.queryItems?.filter({ $0.name == PaymentStatus.statusKey }).first?.value,
+        rawValue = requestURLComponents.queryItems?.filter({ $0.name == PaymentStatus.statusKey }).first?.value,
             paymentStatus = PaymentStatus(rawValue: rawValue)
             else { self = .redirect; return }
 
@@ -68,7 +68,7 @@ final class PaymentViewController: UIViewController, UIWebViewDelegate {
 
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         guard let
-            url = request.URL,
+        url = request.URL,
             callbackURLComponents = callbackURLComponents,
             requestURLComponents = NSURLComponents(URL: url, resolvingAgainstBaseURL: true)
             else { return true }
@@ -82,15 +82,15 @@ final class PaymentViewController: UIViewController, UIWebViewDelegate {
     }
 
     #if swift(>=2.3)
-    func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
-        guard !errorBecuaseRequestCancelled(error) else { return }
-        UserMessage.displayError(error)
-    }
+        func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
+            guard !errorBecuaseRequestCancelled(error) else { return }
+            UserMessage.displayError(error)
+        }
     #else
-    func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
-        guard let error = error where !errorBecuaseRequestCancelled(error) else { return }
-        UserMessage.displayError(error)
-    }
+        func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
+            guard let error = error where !errorBecuaseRequestCancelled(error) else { return }
+            UserMessage.displayError(error)
+        }
     #endif
 
     private func errorBecuaseRequestCancelled(error: NSError) -> Bool {

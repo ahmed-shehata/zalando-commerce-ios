@@ -43,9 +43,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E59A11A5E0347028AC04CEEACDF57D88"
-            BuildableName = "AtlasSDK.framework"
-            BlueprintName = "AtlasSDK"
+            BlueprintIdentifier = "E98F06B41DC0D2C00066B0DD"
+            BuildableName = "AtlasSDKTestsHostApp.app"
+            BlueprintName = "AtlasSDKTestsHostApp"
             ReferencedContainer = "container:AtlasSDK.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -62,15 +62,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E59A11A5E0347028AC04CEEACDF57D88"
-            BuildableName = "AtlasSDK.framework"
-            BlueprintName = "AtlasSDK"
+            BlueprintIdentifier = "E98F06B41DC0D2C00066B0DD"
+            BuildableName = "AtlasSDKTestsHostApp.app"
+            BlueprintName = "AtlasSDKTestsHostApp"
             ReferencedContainer = "container:AtlasSDK.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

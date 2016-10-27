@@ -22,8 +22,8 @@ module Calypso
   SCHEME_UNIT_TESTS = 'UnitTests'.freeze
   SCHEME_UI_UNIT_TESTS = 'UI+UnitTests'.freeze
 
-  TEST_DEVICE = 'iPhone 6s'.freeze
-  TEST_RUNTIME = 'iOS 9.3'.freeze
+  TEST_DEVICE = 'iPhone 7'.freeze
+  TEST_RUNTIME = 'iOS 10.0'.freeze
 
   PROJECT_DIRS = [BASE_DIR + 'AtlasSDK', BASE_DIR + 'AtlasDemo'].freeze
 
