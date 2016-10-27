@@ -95,9 +95,7 @@
 		2F5B83286C89AB2EDC7C360410C90B60 /* AtlasDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AtlasDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37F1FE1DEBE7C2CDF69A44C574EB2CE7 /* BuddyBuildSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BuddyBuildSDK.framework; sourceTree = "<group>"; };
 		3D8E376ECF3335AA4B2E86DAAFAB2448 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		3D9C1B3EAAD56276711D5A02EB851E42 /* Swifter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Swifter.framework; sourceTree = "<group>"; };
 		42CFF9379D10F9FC2F3FEAE9EB8AC172 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4D539715BD2C9531ED72B24D9B4A98FF /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = ../../Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		4D700DE204B65F397DE54E0F8519CA6D /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		544EDD646AB580836FDD4255D475BA85 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		589E4A9F8217071530B2FDE472AD2996 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -105,7 +103,6 @@
 		6EA73BDC161923CD166B30F1051CBC88 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		70CB82D0A3803BF19FF55CBB985CB29A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		70D0DBF19E7CD929E402B3987A071587 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
-		811850FB1DBFA1CF0093185A /* AtlasDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AtlasDemo.entitlements; sourceTree = "<group>"; };
 		81E2E45B1DC0D66F0025C5E5 /* SwiftHTTP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftHTTP.framework; path = ../Carthage/Build/iOS/SwiftHTTP.framework; sourceTree = "<group>"; };
 		81E2E45C1DC0D66F0025C5E5 /* Nuke.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nuke.framework; path = ../Carthage/Build/iOS/Nuke.framework; sourceTree = "<group>"; };
 		81E2E45F1DC0D68F0025C5E5 /* SwiftHTTP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftHTTP.framework; path = ../Carthage/Build/iOS/SwiftHTTP.framework; sourceTree = "<group>"; };
@@ -118,11 +115,9 @@
 		9EDD3C116753E5606C881975DA7B6380 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		A09363B8394CF5F3F4FBFE3E3AB2F5B1 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		A3903D304D732D84FC3034810FB00B36 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		A614269AAEE03BE9FE8D96766E4E3067 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = ../../Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		AE2531BE0ABE61D11C79EB23BABD7E11 /* SizeMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeMap.swift; sourceTree = "<group>"; };
 		AE465EB2A4F6D8B31261A51664D603CD /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		B4AF978C21A97C681A423F5436C1C409 /* AtlasMockAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AtlasMockAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B4E0D81F1DD62FBEB866219546D429AD /* Lookback.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Lookback.bundle; sourceTree = "<group>"; };
 		B5B3919A2CEC66658921E58E02D888B5 /* XCTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTestCase.swift; sourceTree = "<group>"; };
 		B5D445C1DAAC347B64D5AFED9B5B140B /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		CFE7F4402C577EAAD785596D4FB735D0 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -219,21 +214,15 @@
 			name = Others;
 			sourceTree = "<group>";
 		};
-		3F942673168CDE112B1F871540344925 /* Lookback-Resources */ = {
-			isa = PBXGroup;
-			children = (
-				B4E0D81F1DD62FBEB866219546D429AD /* Lookback.bundle */,
-			);
-			name = "Lookback-Resources";
-			path = "lookback/Lookback-Resources";
-			sourceTree = SOURCE_ROOT;
-		};
 		40AD2A55265882FCC65FA2EF0FB2B6BC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				277B8EB145D8CAB212763B99CCB70525 /* AtlasCheckout.framework */,
+				B4AF978C21A97C681A423F5436C1C409 /* AtlasMockAPI.framework */,
+				FD1554ECC3021D4DC35E014009832E9C /* AtlasSDK.framework */,
+				86E7E4F623F6CBF62F880CFAEF213938 /* AtlasUI.framework */,
 				81E2E45F1DC0D68F0025C5E5 /* SwiftHTTP.framework */,
 				81E2E4601DC0D68F0025C5E5 /* Nuke.framework */,
-				3D9C1B3EAAD56276711D5A02EB851E42 /* Swifter.framework */,
 				94BA4D648812766A2EF92CED9C8BFDF1 /* SwiftyJSON.framework */,
 				81E2E45B1DC0D66F0025C5E5 /* SwiftHTTP.framework */,
 				81E2E45C1DC0D66F0025C5E5 /* Nuke.framework */,
@@ -261,11 +250,9 @@
 		633DDF356879505B3ACC77431326BBA3 /* AtlasDemo */ = {
 			isa = PBXGroup;
 			children = (
-				811850FB1DBFA1CF0093185A /* AtlasDemo.entitlements */,
 				E98F06B01DC0CFAA0066B0DD /* AtlasDemo.entitlements */,
 				8EEE55221857D825CB81EFEEF83BE303 /* API */,
 				A4A3F0BFE52EB0B10890CA9CBF7A61F1 /* CustomViews */,
-				A7C0347AEE4E5AD87CCAE5D9E11987B0 /* Frameworks */,
 				2FFB18F07E6F25E025E0592A82B1FC01 /* Others */,
 				E42B0408C4EA92244389DE825756A220 /* Resources */,
 				8B62911B0415B9AE8A814155D7BC4E41 /* Utils */,
@@ -302,20 +289,6 @@
 				4D700DE204B65F397DE54E0F8519CA6D /* ProductCollectionViewCell.swift */,
 			);
 			name = CustomViews;
-			sourceTree = "<group>";
-		};
-		A7C0347AEE4E5AD87CCAE5D9E11987B0 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				3F942673168CDE112B1F871540344925 /* Lookback-Resources */,
-				4D539715BD2C9531ED72B24D9B4A98FF /* Alamofire.framework */,
-				A614269AAEE03BE9FE8D96766E4E3067 /* AlamofireImage.framework */,
-				277B8EB145D8CAB212763B99CCB70525 /* AtlasCheckout.framework */,
-				B4AF978C21A97C681A423F5436C1C409 /* AtlasMockAPI.framework */,
-				FD1554ECC3021D4DC35E014009832E9C /* AtlasSDK.framework */,
-				86E7E4F623F6CBF62F880CFAEF213938 /* AtlasUI.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		E42B0408C4EA92244389DE825756A220 /* Resources */ = {
