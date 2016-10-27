@@ -40,7 +40,12 @@ public typealias OrderCompletion = AtlasResult<Order> -> Void
 public typealias ArticleCompletion = AtlasResult<Article> -> Void
 
 /**
- Completion block `AtlasResult` with arry of the `UserAddress` struct as a success value
+ Completion block `AtlasResult` with array of the `Article` struct as a success value
+ */
+public typealias ArticlesCompletion = AtlasResult<[Article]> -> Void
+
+/**
+ Completion block `AtlasResult` with array of the `UserAddress` struct as a success value
  */
 public typealias AddressesCompletion = AtlasResult<[UserAddress]> -> Void
 
@@ -136,6 +141,15 @@ extension APIClient {
             }
         }
         fetch(from: endpoint, completion: fetchCompletion)
+    }
+
+    public func articles(sku: [String], completion: ArticlesCompletion) {
+        let endpoint = GetArticlesEndpoint(serviceURL: config.catalogURL,
+                                           skus: sku,
+                                           salesChannel: config.salesChannel,
+                                           clientId: config.clientId,
+                                           fields: nil)
+        fetch(from: endpoint, completion: completion)
     }
 
     public func addresses(completion: AddressesCompletion) {

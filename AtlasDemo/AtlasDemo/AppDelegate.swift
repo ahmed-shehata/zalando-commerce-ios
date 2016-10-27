@@ -16,4 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    func applicationDidBecomeActive(application: UIApplication) {
+        guard let
+            navigationController = window?.rootViewController as? UINavigationController,
+            catalogViewController = navigationController.viewControllers.first as? CatalogViewController else { return }
+
+        catalogViewController.loadHomepageArticles()
+    }
+
 }

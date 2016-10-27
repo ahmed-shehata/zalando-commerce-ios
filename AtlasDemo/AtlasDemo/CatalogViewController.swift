@@ -45,12 +45,14 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
         self.navigationController?.navigationBar.accessibilityIdentifier = "catalog-navigation-controller"
     }
 
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         loadHomepageArticles()
     }
 
-    private func loadHomepageArticles() {
+    internal func loadHomepageArticles() {
+        guard articles.isEmpty else { return }
+
         articlesClient.fetch(articlesForSKUs: sampleSKUs) { result in
             switch result {
             case .success(let articles):
