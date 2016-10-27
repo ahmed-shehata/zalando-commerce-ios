@@ -65,7 +65,7 @@ class ProfileViewController: UIViewController {
         AppSetup.checkout?.client.customer { result in
             switch result {
             case .failure(let error):
-                self.showError(title: "Error", error: error)
+                self.displayError(error)
 
             case .success(let customer):
                 self.avatar.image = UIImage(named: "user")

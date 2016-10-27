@@ -24,19 +24,19 @@ class AppSetup {
         return checkout?.client.config.interfaceLocale.objectForKey(NSLocaleLanguageCode) as? String
     }
 
-    static func configure() {
+    static func configure(completion: AtlasCheckoutConfigurationCompletion? = nil) {
         prepareMockAPI()
         prepareApp()
 
-        setAppOptions(prepareOptions())
+        setAppOptions(prepareOptions(), completion: completion)
     }
 
-    static func change(environmentToSandbox useSandbox: Bool, completion: (() -> Void)? = nil) {
+    static func change(environmentToSandbox useSandbox: Bool, completion: AtlasCheckoutConfigurationCompletion? = nil) {
         Atlas.logoutUser()
         setAppOptions(prepareOptions(useSandbox: useSandbox), completion: completion)
     }
 
-    static func change(interfaceLanguage language: InterfaceLanguage, completion: (() -> Void)? = nil) {
+    static func change(interfaceLanguage language: InterfaceLanguage, completion: AtlasCheckoutConfigurationCompletion? = nil) {
         setAppOptions(prepareOptions(interfaceLanguage: language), completion: completion)
     }
 
@@ -56,13 +56,13 @@ class AppSetup {
         }
     }
 
-    private static func setAppOptions(opts: Options, completion: (() -> Void)? = nil) {
+    private static func setAppOptions(opts: Options, completion: AtlasCheckoutConfigurationCompletion? = nil) {
         AtlasCheckout.configure(opts) { result in
             if case let .success(checkout) = result {
                 AppSetup.options = opts
                 AppSetup.checkout = checkout
-                completion?()
             }
+            completion?(result)
         }
     }
 

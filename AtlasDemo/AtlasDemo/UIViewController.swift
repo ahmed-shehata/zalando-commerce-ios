@@ -4,6 +4,8 @@
 
 import Foundation
 import UIKit
+import AtlasUI
+import AtlasSDK
 
 extension UIViewController {
 
@@ -21,8 +23,13 @@ extension UIViewController {
 
     }
 
-    func showError(title title: String, error: ErrorType) {
-        showMessage(title: title, message: String(error), actions: ButtonAction(text: "OK"))
+    func displayError(error: ErrorType) {
+        guard let userPresentable = error as? UserPresentable else {
+            displayError(AtlasCheckoutError.unclassified)
+            return
+        }
+
+        showMessage(title: userPresentable.displayedTitle, message: userPresentable.displayedMessage, actions: ButtonAction(text: "OK"))
     }
 
     private func showMessage(title title: String, message: String, actions: ButtonAction...) {

@@ -10,7 +10,7 @@ public enum ErrorPresentationType {
     case fullScreen
 }
 
-protocol UserPresentable: AtlasErrorType {
+public protocol UserPresentable: AtlasErrorType {
 
     func customMessage() -> String?
 
@@ -22,17 +22,17 @@ protocol UserPresentable: AtlasErrorType {
 
 extension UserPresentable {
 
-    func customMessage() -> String? { return nil }
+    public func customMessage() -> String? { return nil }
 
-    func shouldDisplayGeneralMessage() -> Bool { return true }
+    public func shouldDisplayGeneralMessage() -> Bool { return true }
 
-    func errorPresentationType() -> ErrorPresentationType { return .banner }
+    public func errorPresentationType() -> ErrorPresentationType { return .banner }
 
-    var displayedTitle: String {
+    public var displayedTitle: String {
         return shouldDisplayGeneralMessage() ? Localizer.string("AtlasCheckoutError.title") : title()
     }
 
-    var displayedMessage: String {
+    public var displayedMessage: String {
         return shouldDisplayGeneralMessage() ? Localizer.string("AtlasCheckoutError.message.unclassified") : message()
     }
 
@@ -50,7 +50,7 @@ extension UserPresentable {
 
 extension AtlasAPIError: UserPresentable {
 
-    func shouldDisplayGeneralMessage() -> Bool {
+    public func shouldDisplayGeneralMessage() -> Bool {
         switch self {
         case .noInternet: return false
         case let .nsURLError(_, details): return details == nil
@@ -58,7 +58,7 @@ extension AtlasAPIError: UserPresentable {
         }
     }
 
-    func customMessage() -> String? {
+    public func customMessage() -> String? {
         switch self {
         case let .nsURLError(_, details): return details~?
         default: return nil
@@ -80,7 +80,7 @@ extension AtlasCheckoutError: UserPresentable {
         }
     }
 
-    func customMessage() -> String? {
+    public func customMessage() -> String? {
         switch self {
         case .priceChanged(let newPrice): return Localizer.string("AtlasCheckoutError.message.priceChanged", Localizer.price(newPrice))
         default: return nil
