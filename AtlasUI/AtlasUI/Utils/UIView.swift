@@ -101,3 +101,15 @@ extension UIView {
     }
 
 }
+
+extension UIView {
+
+    static func animate(duration: AnimationDuration, animations: () -> Void) {
+        UIView.animateWithDuration(duration.rawValue, animations: animations)
+    }
+
+    static func animate(duration: AnimationDuration, animations: () -> Void, completion: ((Bool) -> Void)?) {
+        UIView.animateWithDuration(duration.rawValue, animations: animations, completion: completion)
+    }
+
+}

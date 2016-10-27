@@ -119,7 +119,7 @@
 		DE440328FFB4FBA9B8527F3CBFF054BA /* APICreateCheckoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA906FCD07627E9180A5D9B2D2B8C88 /* APICreateCheckoutTests.swift */; };
 		E6A17887BC6BA4C25B2D758C44514B80 /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D788B8AFA05BF3BB7559752D777933 /* Money.swift */; };
 		E93768531DC0D6D900E98635 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E93768521DC0D6D900E98635 /* Default-568h@2x.png */; };
-		E98F06B81DC0D2C00066B0DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F06B71DC0D2C00066B0DD /* AppDelegate.swift */; };
+		E98F06B81DC0D2C00066B0DD /* TestsHostAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F06B71DC0D2C00066B0DD /* TestsHostAppDelegate.swift */; };
 		EAB0FA06F2B1E48C0F3CB1E5A6814A84 /* DatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22F082ED7BC990710AC6E435B8EA1D0 /* DatesTests.swift */; };
 		ECE8DEFDB2A85FBCD15B77C89EA5EF4A /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69384BDB0D3D26DA7967C229EF6CF14A /* Keychain.swift */; };
 		EE25945EBC0430BD1BEC06783620FBA7 /* APIGetAddressesEndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03499DB21790D8CCF1F3050A7D4EDE /* APIGetAddressesEndpointTests.swift */; };
@@ -191,7 +191,7 @@
 		402AD2052AB32129CFB12ED77B1D048C /* StreetAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreetAddress.swift; sourceTree = "<group>"; };
 		40D5FC54BBEC76EBF55DF17160808351 /* BaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTests.swift; sourceTree = "<group>"; };
 		418ACEE4D5E6479A3E6C61B7717E7907 /* PrintableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintableTests.swift; sourceTree = "<group>"; };
-		42F187B2D3AF87F210E636B8FEB493D8 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = ../../../Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
+		42F187B2D3AF87F210E636B8FEB493D8 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = ../Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		4313E8D5403BD6496524D034FDF7CD83 /* StringTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringTests.swift; sourceTree = "<group>"; };
 		44BCD46FB3F843D5B0C100A9AAB2385C /* CreateCheckoutEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCheckoutEndpoint.swift; sourceTree = "<group>"; };
 		45D27EC2DBE428F8EEF67DD091C5CB93 /* AtlasLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasLogger.swift; sourceTree = "<group>"; };
@@ -276,7 +276,7 @@
 		E929ACF16D83C88A9F1FA314D691FFEE /* JSONRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONRepresentable.swift; sourceTree = "<group>"; };
 		E93768521DC0D6D900E98635 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		E98F06B51DC0D2C00066B0DD /* AtlasSDKTestsHostApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AtlasSDKTestsHostApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E98F06B71DC0D2C00066B0DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E98F06B71DC0D2C00066B0DD /* TestsHostAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsHostAppDelegate.swift; sourceTree = "<group>"; };
 		E98F06C31DC0D2C00066B0DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E98F06C71DC0D2D30066B0DD /* AtlasSDKTestsHostApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AtlasSDKTestsHostApp.entitlements; sourceTree = "<group>"; };
 		EA97D05C1FC1C316CAA9F2EAEE6DFB89 /* Tests.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Tests.json; sourceTree = "<group>"; };
@@ -473,6 +473,15 @@
 			name = Checkout;
 			sourceTree = "<group>";
 		};
+		812A1BBA1DC22F8E00AF8BE9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8702301BFF3A6A5E289463BB6931C0E8 /* AtlasMockAPI.framework */,
+				42F187B2D3AF87F210E636B8FEB493D8 /* Nimble.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		947D25025E63734A9578592CE675F961 /* Cart */ = {
 			isa = PBXGroup;
 			children = (
@@ -544,18 +553,10 @@
 			path = AtlasSDK/API;
 			sourceTree = "<group>";
 		};
-		C219342B28B6274DCA6CA1B48C825DB9 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				8702301BFF3A6A5E289463BB6931C0E8 /* AtlasMockAPI.framework */,
-				42F187B2D3AF87F210E636B8FEB493D8 /* Nimble.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		C2DE1761D061DCB09F87ABB9AFE9108C = {
 			isa = PBXGroup;
 			children = (
+				812A1BBA1DC22F8E00AF8BE9 /* Frameworks */,
 				75D3D341CD1A816A0E6B63CB55C81BF2 /* AtlasSDK */,
 				F963EFE65B6A40971D31F80FC766E5B8 /* AtlasSDKTests */,
 				E98F06B61DC0D2C00066B0DD /* AtlasSDKTestsHostApp */,
@@ -611,7 +612,7 @@
 			isa = PBXGroup;
 			children = (
 				E98F06C71DC0D2D30066B0DD /* AtlasSDKTestsHostApp.entitlements */,
-				E98F06B71DC0D2C00066B0DD /* AppDelegate.swift */,
+				E98F06B71DC0D2C00066B0DD /* TestsHostAppDelegate.swift */,
 				E93768521DC0D6D900E98635 /* Default-568h@2x.png */,
 				E98F06C31DC0D2C00066B0DD /* Info.plist */,
 			);
@@ -657,7 +658,6 @@
 			isa = PBXGroup;
 			children = (
 				B2210A5DBC18E8A21572524B02FD2C87 /* APIClient */,
-				C219342B28B6274DCA6CA1B48C825DB9 /* Frameworks */,
 				DFF2E6EE0F67D372B549184B90678C61 /* Other */,
 				BD964D543EF7C4BDF7B0A9F54F727E12 /* SwiftyJSON */,
 				EF442BE1B17D7385C097A2B95501B93B /* Utils */,
@@ -983,7 +983,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E98F06B81DC0D2C00066B0DD /* AppDelegate.swift in Sources */,
+				E98F06B81DC0D2C00066B0DD /* TestsHostAppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
