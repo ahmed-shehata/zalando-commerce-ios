@@ -10,7 +10,7 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
 
     @IBOutlet weak var productCollectionView: UICollectionView!
 
-    var articles = [Article]() {
+    var articles = [DemoArticle]() {
         didSet {
             dispatch_async(dispatch_get_main_queue()) {
                 self.productCollectionView.reloadData()
@@ -18,6 +18,7 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
     }
 
+    private let articlesClient = ArticlesClient()
     private let sampleSKUs = [
         "L2711E002-Q11", "GU121D08Z-Q11", "AZ711M001-B11",
         "AZ711N00B-Q11", "MK151F00E-Q11", "M0Q21C068-B11",
@@ -37,7 +38,7 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
 
     internal func loadHomepageArticles() {
-        AppSetup.checkout?.client.articles([sampleSKUs.first!]) { result in
+        articlesClient.fetch(articlesForSKUs: sampleSKUs) { result in
             switch result {
             case .success(let articles):
                 self.articles = articles.sort { $0.id < $1.id }

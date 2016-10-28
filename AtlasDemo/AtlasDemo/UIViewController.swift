@@ -43,3 +43,19 @@ extension UIViewController {
     }
 
 }
+
+extension NSError: UserPresentable {
+
+    public func customTitle() -> String? {
+        return "Error"
+    }
+
+    public func customMessage() -> String? {
+        return localizedDescription
+    }
+
+    public func shouldDisplayGeneralMessage() -> Bool {
+        return false
+    }
+
+}

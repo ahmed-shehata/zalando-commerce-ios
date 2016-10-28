@@ -13,14 +13,14 @@ class ProductCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var thumbImageView: UIImageView!
     @IBOutlet weak var buyNowButton: UIButton!
     @IBOutlet weak var productNameLabel: UILabel!
-    var article: Article?
+    var article: DemoArticle?
 
-    func setupCell(withArticle article: Article) -> ProductCollectionViewCell {
+    func setupCell(withArticle article: DemoArticle) -> ProductCollectionViewCell {
         self.article = article
         self.backgroundColor = .whiteColor()
         self.productNameLabel.text = article.brand.name
         thumbImageView.image = nil
-        if let imageUrl = article.thumbnailURL {
+        if let imageUrl = article.imageThumbURL {
             thumbImageView.nk_setImageWith(imageUrl)
         }
         self.buyNowButton.accessibilityIdentifier = "buy-now"

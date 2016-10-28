@@ -12,6 +12,8 @@ public enum ErrorPresentationType {
 
 public protocol UserPresentable: AtlasErrorType {
 
+    func customTitle() -> String?
+
     func customMessage() -> String?
 
     func shouldDisplayGeneralMessage() -> Bool
@@ -21,6 +23,8 @@ public protocol UserPresentable: AtlasErrorType {
 }
 
 extension UserPresentable {
+
+    public func customTitle() -> String? { return nil}
 
     public func customMessage() -> String? { return nil }
 
@@ -39,7 +43,7 @@ extension UserPresentable {
     private func title() -> String {
         let errorTitle = Localizer.string(localizedTitleKey)
         let errorCategoryTitle = Localizer.string("\(self.dynamicType).title")
-        return errorTitle == localizedTitleKey ? errorCategoryTitle : errorTitle
+        return customTitle() ?? (errorTitle == localizedTitleKey ? errorCategoryTitle : errorTitle)
     }
 
     private func message() -> String {

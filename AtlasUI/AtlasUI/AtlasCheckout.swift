@@ -98,8 +98,8 @@ final public class AtlasCheckout {
     }
 
     private static func registerDefaultLanguage() {
-        let bundle = NSBundle.mainBundle().bundleIdentifier! // swiftlint:disable:this force_unwrapping
-        Atlas.register { try! Localizer(localeIdentifier: bundle) as Localizer } // swiftlint:disable:this force_try
+        let localeIdentifier = NSLocale.currentLocale().localeIdentifier
+        Atlas.register { try! Localizer(localeIdentifier: localeIdentifier) as Localizer } // swiftlint:disable:this force_try
     }
 
 }
