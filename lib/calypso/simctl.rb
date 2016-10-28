@@ -59,9 +59,12 @@ module Calypso
     end
 
     def find_runtime(name)
-      list['runtimes'].select do |dev|
+      print "Finding runtime #{name}... "
+      runtime = list['runtimes'].select do |dev|
         dev['name'] == name
-      end.first['identifier']
+      end.first
+      abort('Not found') if runtime.nil?
+      runtime['identifier']
     end
 
     def find_devices(name)
