@@ -37,7 +37,7 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
 
     internal func loadHomepageArticles() {
-        AppSetup.checkout?.client.articles(sampleSKUs) { result in
+        AppSetup.checkout?.client.articles([sampleSKUs.first!]) { result in
             switch result {
             case .success(let articles):
                 self.articles = articles.sort { $0.id < $1.id }
