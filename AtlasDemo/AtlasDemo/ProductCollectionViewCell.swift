@@ -19,6 +19,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
         self.article = article
         self.backgroundColor = .whiteColor()
         self.productNameLabel.text = article.brand.name
+        thumbImageView.image = nil
         if let imageUrl = article.imageThumbURL {
             thumbImageView.nk_setImageWith(imageUrl)
         }
@@ -28,10 +29,8 @@ class ProductCollectionViewCell: UICollectionViewCell {
     }
 
     @IBAction func buyNowButtonTapped(sender: AnyObject) {
-        if let rootController = UIApplication.sharedApplication().keyWindow?.rootViewController,
-            article = self.article {
-                AppSetup.checkout?.presentCheckout(onViewController: rootController,
-                    forProductSKU: article.id)
+        if let rootController = UIApplication.sharedApplication().keyWindow?.rootViewController, article = self.article {
+            AppSetup.checkout?.presentCheckout(onViewController: rootController, forProductSKU: article.id)
         }
     }
 }
