@@ -25,6 +25,14 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
         "EV451D00U-302", "RA252F005-802"
     ]
 
+    static var instance: CatalogViewController? {
+        guard let
+            navigationController = UIApplication.sharedApplication().keyWindow?.rootViewController as? UINavigationController,
+            catalogViewController = navigationController.viewControllers.first as? CatalogViewController
+            else { return nil }
+        return catalogViewController
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         productCollectionView.delegate = self
@@ -32,18 +40,18 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
         self.navigationController?.navigationBar.accessibilityIdentifier = "catalog-navigation-controller"
     }
 
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         loadHomepageArticles()
     }
 
-    private func loadHomepageArticles() {
+    internal func loadHomepageArticles() {
         articlesClient.fetch(articlesForSKUs: sampleSKUs) { result in
             switch result {
             case .success(let articles):
                 self.articles = articles.sort { $0.id < $1.id }
             case .failure(let error):
-                self.showError(title: "Error", error: error)
+                self.displayError(error)
             }
         }
     }
