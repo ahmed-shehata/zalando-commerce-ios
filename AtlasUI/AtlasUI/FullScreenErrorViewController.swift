@@ -23,10 +23,7 @@ class FullScreenErrorViewController: UIViewController {
     }
 
     func cancelButtonPressed() {
-        let atlasUIViewController: AtlasUIViewController? = try? Atlas.provide()
-        if let atlasUIViewController = atlasUIViewController {
-            atlasUIViewController.dismissViewControllerAnimated(true, completion: nil)
-        }
+        AtlasUIViewController.instance?.dismissViewControllerAnimated(true, completion: nil)
     }
 
 }
