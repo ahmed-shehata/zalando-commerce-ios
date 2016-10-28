@@ -18,17 +18,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
-        guard let
-            navigationController = window?.rootViewController as? UINavigationController,
-            catalogViewController = navigationController.viewControllers.first as? CatalogViewController
-            where catalogViewController.articles.isEmpty else { return }
-
-        AppSetup.configure { result in
-            switch result {
-            case .success: catalogViewController.loadHomepageArticles()
-            case .failure(let error): catalogViewController.displayError(error)
+        if AppSetup.checkout == nil {
+            AppSetup.configure { result in
+                guard let catalogViewController = AppDelegate.catalogViewController else { return }
+                switch result {
+                case .success: catalogViewController.loadHomepageArticles()
+                case .failure(let error): catalogViewController.displayError(error)
+                }
             }
+        } else if let catalogViewController = AppDelegate.catalogViewController where catalogViewController.articles.isEmpty {
+            catalogViewController.loadHomepageArticles()
         }
+    }
+
+    static var catalogViewController: CatalogViewController? {
+        guard let
+            navigationController = UIApplication.sharedApplication().keyWindow?.rootViewController as? UINavigationController,
+            catalogViewController = navigationController.viewControllers.first as? CatalogViewController
+            else { return nil }
+        return catalogViewController
     }
 
 }

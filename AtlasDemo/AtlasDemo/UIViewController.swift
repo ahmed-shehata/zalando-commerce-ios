@@ -24,12 +24,22 @@ extension UIViewController {
     }
 
     func displayError(error: ErrorType) {
-        guard let userPresentable = error as? UserPresentable else {
-            displayError(AtlasCheckoutError.unclassified)
-            return
+        var message: String?
+        let unclassifiedMessage = "Something went wrong.\nWe are fixing the issue.\nPlease come back later"
+
+        switch error {
+        case AtlasAPIError.noInternet: message = "Please check you internet connection"
+        case AtlasAPIError.unauthorized: message = "Access denied"
+        case AtlasAPIError.nsURLError(_, let details): message = details
+        case AtlasAPIError.http(_, let details): message = details
+        case AtlasAPIError.backend(_, _, _, let details): message = details
+        case LoginError.accessDenied: message = "Access denied"
+        case LoginError.requestFailed(let error): message = error?.localizedDescription
+        case ArticlesError.Error(let error): message = (error as NSError).localizedDescription
+        default: message = unclassifiedMessage
         }
 
-        showMessage(title: userPresentable.displayedTitle, message: userPresentable.displayedMessage, actions: ButtonAction(text: "OK"))
+        showMessage(title: "Oops", message: message ?? unclassifiedMessage, actions: ButtonAction(text: "OK"))
     }
 
     private func showMessage(title title: String, message: String, actions: ButtonAction...) {
@@ -40,22 +50,6 @@ extension UIViewController {
         dispatch_async(dispatch_get_main_queue()) {
             self.presentViewController(alertView, animated: true, completion: nil)
         }
-    }
-
-}
-
-extension NSError: UserPresentable {
-
-    public func customTitle() -> String? {
-        return "Error"
-    }
-
-    public func customMessage() -> String? {
-        return localizedDescription
-    }
-
-    public func shouldDisplayGeneralMessage() -> Bool {
-        return false
     }
 
 }

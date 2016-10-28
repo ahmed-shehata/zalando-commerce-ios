@@ -8,6 +8,10 @@ import SwiftHTTP
 
 typealias ArticlesCompletion = AtlasResult<[DemoArticle]> -> Void
 
+enum ArticlesError: ErrorType {
+    case NoData
+    case Error(ErrorType)
+}
 
 // swiftlint:disable force_unwrapping
 
@@ -19,10 +23,10 @@ class ArticlesClient {
         if let operation = try? HTTP.GET(endpointURL(forSKUs: skus)) {
             operation.start { response in
                 if let error = response.error {
-                    return completion(.failure(error))
+                    return completion(.failure(ArticlesError.Error(error)))
                 }
                 guard let responseString = response.text else {
-                    return completion(.failure(AtlasAPIError.noData))
+                    return completion(.failure(ArticlesError.NoData))
                 }
                 let articles = DemoCatalog(jsonString: responseString).articles
                 completion(.success(articles))
