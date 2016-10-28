@@ -123,7 +123,7 @@ extension APIClient {
 
     public func article(sku: String, completion: ArticleCompletion) {
         let endpoint = GetArticleEndpoint(serviceURL: config.catalogURL,
-                                          skus: sku,
+                                          sku: sku,
                                           salesChannel: config.salesChannel,
                                           clientId: config.clientId,
                                           fields: nil)

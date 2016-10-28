@@ -5,9 +5,9 @@
 struct GetArticleEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
 
     let serviceURL: NSURL
-    var path: String { return "articles/\(skus)" }
+    var path: String { return "articles/\(sku)" }
     let acceptedContentType = "application/x.zalando.article+json"
-    let skus: String
+    let sku: String
     var queryItems: [NSURLQueryItem]? {
         return NSURLQueryItem.build([
             "sales_channel": salesChannel,
