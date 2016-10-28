@@ -88,3 +88,5 @@
 "Form.validation.pattern.city" = "Bitte in diesem Feld nur die Zeichen (A-z) eingeben.";
 "Form.validation.pattern.street" = "Bitte Straße und Hausnummer eingeben.";
 "Form.validation.numbersOnly" = "Bitte nur Nummern eintragen";
+
+"ToCViewController.title" = "Rechtliche Hinweise";

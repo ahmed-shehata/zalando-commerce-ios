@@ -5,62 +5,32 @@
 import Foundation
 import AtlasSDK
 
-typealias RequestSuccessfulCompletion = AtlasResult<LegalViewController>
+final class LegalController: NSObject {
 
-
-final class LegalController: NSURLSessionDelegate {
-
-    internal let webViewData: WebViewData
+    private let tocURL: NSURL
+    private let legalURL: NSURL
 
     private let legalURLPath = "/legal/"
-    private let interceptedPaths = ["/"]
 
-    func canPresentLegalViewController(forURL url: NSURL) -> Bool {
+    required init(tocURL: NSURL) {
+        self.tocURL = tocURL
+        self.legalURL = NSURL(validURL: tocURL, path: legalURLPath)
     }
 
-    func presentLegalViewController(forURL url: NSURL, completion: RequestSuccessfulCompletion? = nil) {
+    func presentLegalViewController() {
+        guard let navController = AtlasUIViewController.instance?.mainNavigationController else {
+            UIApplication.sharedApplication().openURL(tocURL)
+            return
+        }
+
+        let tocController = ToCViewController()
+        navController.pushViewController(tocController, animated: true)
+
+        tocController.load(url: legalURL) { url, _, status in
+            if !status.isSuccessful {
+                tocController.load(url: self.tocURL)
+            }
+        }
     }
-
-}
-
-
-final class LegalViewController: UIViewController, UIWebViewDelegate {
-
-    internal let webViewData: WebViewData
-
-    private lazy var webView: UIWebView = {
-        let webView = UIWebView()
-        webView.backgroundColor = .whiteColor()
-        webView.delegate = self
-        webView.scalesPageToFit = true
-        webView.translatesAutoresizingMaskIntoConstraints = false
-        webView.accessibilityIdentifier = "legal-webview"
-        return webView
-    }()
-
-    init(webViewData: WebViewData) {
-        self.webViewData = webViewData
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    override func viewDidLoad() {
-        view.backgroundColor = .whiteColor()
-        view.addSubview(webView)
-
-        webView.fillInSuperView()
-    }
-
-}
-
-struct WebViewData {
-
-    let data: NSData
-    let mimeType: String
-    let textEncoding: String
-    let baseURL: NSURL
 
 }

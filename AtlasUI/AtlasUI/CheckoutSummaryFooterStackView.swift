@@ -7,7 +7,7 @@ import AtlasSDK
 
 class CheckoutSummaryFooterStackView: UIStackView {
 
-    var tocURL: NSURL?
+    private var legalController: LegalController?
 
     internal let footerButton: UIButton = {
         let button = UIButton(type: .System)
@@ -39,13 +39,7 @@ extension CheckoutSummaryFooterStackView: UIBuilder {
     }
 
     @objc func tocPressed(sender: UIButton!) {
-        guard let url = tocURL else { return }
-        let atlasUIViewController: AtlasUIViewController? = try? Atlas.provide()
-        guard let navController = atlasUIViewController?.mainNavigationController else {
-            UIApplication.sharedApplication().openURL(url)
-            return
-        }
-        navController.pushViewController(ToCViewController(tocURL: url), animated: true)
+        legalController?.presentLegalViewController()
     }
 
 }
@@ -55,7 +49,7 @@ extension CheckoutSummaryFooterStackView: UIDataBuilder {
     typealias T = CheckoutSummaryViewController
 
     func configureData(viewModel: T) {
-        tocURL = viewModel.checkout.client.config.tocURL
+        legalController = LegalController(tocURL: viewModel.checkout.client.config.tocURL)
 
         footerButton.setAttributedTitle(tocAttributedTitle(), forState: .Normal)
         footerButton.hidden = !viewModel.viewState.showFooterLabel

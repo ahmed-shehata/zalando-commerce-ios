@@ -5,9 +5,15 @@
 import UIKit
 import AtlasSDK
 
+typealias WebViewLoadedCompletion = (request: NSURL?, error: NSError?, status: HTTPStatus) -> Void
+
 final class ToCViewController: UIViewController, UIWebViewDelegate {
 
-    private let tocURL: NSURL
+    private var loadedCompletion: WebViewLoadedCompletion? {
+        willSet {
+            webView.stopLoading()
+        }
+    }
 
     private lazy var webView: UIWebView = {
         let webView = UIWebView()
@@ -19,40 +25,47 @@ final class ToCViewController: UIViewController, UIWebViewDelegate {
         return webView
     }()
 
-    init(tocURL: NSURL) {
-        self.tocURL = tocURL
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder decoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     override func viewDidLoad() {
         view.backgroundColor = .whiteColor()
         view.addSubview(webView)
 
+        self.title = Localizer.string("ToCViewController.title")
+
         webView.fillInSuperView()
-        webView.loadRequest(NSURLRequest(URL: tocURL))
+    }
+
+    func load(url url: NSURL, completion: WebViewLoadedCompletion? = nil) {
+        self.loadedCompletion = completion
+
+        let request = NSMutableURLRequest(URL: url)
+        request.setValue("AtlasSDK", forHTTPHeaderField: "X-Zalando-Mobile-App")
+        webView.loadRequest(request)
+    }
+
+    func webViewDidFinishLoad(webView: UIWebView) {
+        didLoad(webView: webView)
     }
 
     #if swift(>=2.3)
         func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
-            dismissViewController(.failure(error), animated: true)
+            didLoad(webView: webView, error: error)
         }
     #else
         func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
-            guard let error = error where !errorBecuaseRequestCancelled(error) else { return }
-            dismissViewController(.failure(error), animated: true)
+            guard let error = error else { return }
+            didLoad(webView: webView, error: error)
         }
     #endif
 
-    private func errorBecuaseRequestCancelled(error: NSError) -> Bool {
-        return error.domain == "WebKitErrorDomain"
-    }
+    private func didLoad(webView webView: UIWebView, error: NSError? = nil) {
+        let status: HTTPStatus = {
+            guard let request = webView.request,
+                response = NSURLCache.sharedURLCache().cachedResponseForRequest(request)?.response as? NSHTTPURLResponse
+                else { return HTTPStatus.Unknown }
+            return HTTPStatus(response: response)
+        }()
 
-    private func dismissViewController(result: AtlasResult<Bool>, animated: Bool = true) {
-        navigationController?.popViewControllerAnimated(animated)
+        loadedCompletion?(request: webView.request?.URL, error: error, status: status)
     }
 
 }

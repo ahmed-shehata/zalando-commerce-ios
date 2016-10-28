@@ -88,3 +88,5 @@
 "Form.validation.pattern.city" = "Please only use the characters (A-z) in this field";
 "Form.validation.pattern.street" = "Please enter your street and house number";
 "Form.validation.numbersOnly" = "Only numbers are allowed";
+
+"ToCViewController.title" = "Legal Notice";
