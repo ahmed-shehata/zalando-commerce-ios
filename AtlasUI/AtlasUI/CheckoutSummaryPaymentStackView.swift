@@ -6,7 +6,6 @@ import UIKit
 
 struct CheckoutSummaryPaymentViewModel {
 
-    let title: String
     let value: String
     let showArrow: Bool
 
@@ -59,7 +58,6 @@ extension CheckoutSummaryPaymentStackView: UIDataBuilder {
     typealias T = CheckoutSummaryPaymentViewModel
 
     func configureData(viewModel: T) {
-        titleLabel.text = viewModel.title
         valueLabel.text = viewModel.value
         arrowImageView.alpha = viewModel.showArrow ? 1 : 0
     }
