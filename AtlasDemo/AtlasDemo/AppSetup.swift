@@ -20,6 +20,10 @@ class AppSetup {
     private static let defaultUseSandbox = true
     private static let defaultInterfaceLanguage = InterfaceLanguage.English
 
+    static var isConfigured: Bool {
+        return checkout != nil && options != nil
+    }
+
     static var interfaceLanguage: String? {
         return checkout?.client.config.interfaceLocale.objectForKey(NSLocaleLanguageCode) as? String
     }
