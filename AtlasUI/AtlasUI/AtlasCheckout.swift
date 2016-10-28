@@ -31,8 +31,6 @@ final public class AtlasCheckout {
         - completion `AtlasCheckoutConfigurationCompletion`: `AtlasResult` with success result as `AtlasCheckout` initialized
     */
     public static func configure(options: Options? = nil, completion: AtlasCheckoutConfigurationCompletion) {
-        registerDefaultLanguage()
-
         Atlas.configure(options) { result in
             switch result {
             case .failure(let error):
@@ -95,11 +93,6 @@ final public class AtlasCheckout {
                 completion(.success(checkoutModel))
             }
         }
-    }
-
-    private static func registerDefaultLanguage() {
-        let localeIdentifier = NSLocale.currentLocale().localeIdentifier
-        Atlas.register { try! Localizer(localeIdentifier: localeIdentifier) as Localizer } // swiftlint:disable:this force_try
     }
 
 }
