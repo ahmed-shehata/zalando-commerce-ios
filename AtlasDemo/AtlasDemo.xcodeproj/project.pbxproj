@@ -252,13 +252,13 @@
 			children = (
 				233A9E231C34B3B78C3C44C35B66995F /* AtlasDemo.entitlements */,
 				8EEE55221857D825CB81EFEEF83BE303 /* API */,
-				A4A3F0BFE52EB0B10890CA9CBF7A61F1 /* CustomViews */,
 				2FFB18F07E6F25E025E0592A82B1FC01 /* Others */,
 				E42B0408C4EA92244389DE825756A220 /* Resources */,
 				8B62911B0415B9AE8A814155D7BC4E41 /* Utils */,
 				F726829F5154A9F85A931EAFC8D9E730 /* AppDelegate.swift */,
 				D89AF6C44EE98EAB17A1E81EC252C5AD /* AppSetup.swift */,
 				29D25E49A4BA3C66C371430FFD7DC396 /* CatalogViewController.swift */,
+				4D700DE204B65F397DE54E0F8519CA6D /* ProductCollectionViewCell.swift */,
 				68D47F523CFD3049B145328DBAAD3BF6 /* ProfileViewController.swift */,
 			);
 			path = AtlasDemo;
@@ -281,14 +281,6 @@
 				AE2531BE0ABE61D11C79EB23BABD7E11 /* SizeMap.swift */,
 			);
 			name = API;
-			sourceTree = "<group>";
-		};
-		A4A3F0BFE52EB0B10890CA9CBF7A61F1 /* CustomViews */ = {
-			isa = PBXGroup;
-			children = (
-				4D700DE204B65F397DE54E0F8519CA6D /* ProductCollectionViewCell.swift */,
-			);
-			name = CustomViews;
 			sourceTree = "<group>";
 		};
 		E42B0408C4EA92244389DE825756A220 /* Resources */ = {

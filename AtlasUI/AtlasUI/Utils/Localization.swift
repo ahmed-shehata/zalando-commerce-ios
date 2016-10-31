@@ -66,7 +66,11 @@ struct Localizer {
 extension Localizer {
 
     private static var instance: Localizer {
-        return try! Atlas.provide() as Localizer // swiftlint:disable:this force_try
+        do {
+            return try Atlas.provide() as Localizer
+        } catch {
+            return try! Localizer(localeIdentifier: NSLocale.currentLocale().localeIdentifier) // swiftlint:disable:this force_try
+        }
     }
 
     static func string(key: String, _ formatArguments: [CVarArgType?]) -> String {
