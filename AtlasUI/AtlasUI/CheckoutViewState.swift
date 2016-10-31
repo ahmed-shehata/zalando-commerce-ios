@@ -21,7 +21,7 @@ enum CheckoutViewState {
 
     var navigationBarTitleLocalizedKey: String {
         switch self {
-        case .NotLoggedIn, .CheckoutReady, .CheckoutIncomplete: return "Summary"
+        case .NotLoggedIn, .CheckoutReady, .CheckoutIncomplete: return "order.summary"
         case .OrderPlaced: return "order.placed"
         }
     }
@@ -59,7 +59,7 @@ enum CheckoutViewState {
         case .NotLoggedIn: return "Zalando.Checkout"
         case .CheckoutIncomplete, .CheckoutReady:
             return isPaypal ? "order.place.paypal" : "order.place"
-        case .OrderPlaced: return "navigation.back.shop"
+        case .OrderPlaced: return "button.title.backToShop"
         }
     }
 

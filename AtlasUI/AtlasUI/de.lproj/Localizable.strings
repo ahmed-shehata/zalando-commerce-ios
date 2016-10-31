@@ -1,60 +1,45 @@
-"Buy now" = "Jetzt kaufen";
-"Pick a size" = "Größe wählen";
-"Fatal Error" = "Fataler Fehler";
-"Error" = "Fehler";
-"Cancel" = "Abbrechen";
-"Save" = "Speichern";
-"Summary" = "Übersicht";
-"Payment" = "Zahlungsart";
-"Done" = "Fertig";
-"Total" = "Gesamtsumme:";
-"vat.included" = "(Incl. MwST)";
-"estimated.delivery.title" = "Voraussichtliche Lieferung";
-"Shipping" = "Versand";
-"Pay %@" = "Zahlen %@";
+// Zalando
 "Zalando.Connect" = "Mit Zalando verbinden";
 "Zalando.login" = "Bei Zalando einloggen";
 "Zalando.Checkout" = "Mit Zalando anmelden";
-"CheckoutSummaryViewController.terms" = "Für Deine Bestellung gelten die AGB und die Wiederrufsbelehrung von Zalando";
-"Address.Shipping" = "Lieferadresse";
-"Address.Billing" = "Rechnungsadresse";
-"Size: %@" = "Größe: %@";
+"Zalando.terms" = "Für Deine Bestellung gelten die AGB und die Wiederrufsbelehrung von Zalando";
+
+// Buttons
+"button.title.cancel" = "Abbrechen";
+"button.title.save" = "Speichern";
+"button.title.backToShop" = "weiter shoppen";
+
+// Order
+"order.summary" = "Übersicht";
+"order.payment" = "Zahlungsart";
+"order.estimatedDelivery" = "Voraussichtliche Lieferung";
+
+"order.price.total" = "Gesamtsumme:";
+"order.price.vat" = "(Incl. MwST)";
+"order.price.Shipping" = "Versand";
+
 "order.place" = "Jetzt Kaufen";
 "order.place.paypal" = "Bestätigen und zahlen mit PayPal";
-"navigation.back.shop" = "weiter shoppen";
 "order.placed" = "Vielen Dank für deinen Einkauf!";
 
-"AtlasCheckoutError.title" = "Oops";
-"AtlasCheckoutError.title.missingAddress" = "Keine Adresse ausgwählt";
-"AtlasCheckoutError.title.priceChanged" = "Der Preis hat sich geändert";
-"AtlasCheckoutError.message.unclassified" = "Da ist etwas schief gelaufen.\nWir arbeiten an dem Problem.\nBitte komm später noch einmal vorbei.";
-"AtlasCheckoutError.message.outOfStock" = "Leider ist dieser Artikel nicht mehr verfügbar";
-"AtlasCheckoutError.message.missingAddress" = "Bitte wähle zuerst eine Liefer- und eine Rechnungsadresse";
-"AtlasCheckoutError.message.missingAddressAndPayment" = "Bitte wähle zuerst eine Liefer- und eine Rechnungsadresse sowie eine Zahlart";
-"AtlasCheckoutError.message.priceChanged" = "Der Preis beträgt nun %@";
-"AtlasCheckoutError.message.paymentMethodNotAvailable" = "Diese Zahlart ist nicht mehr verfügbar";
-"AtlasCheckoutError.message.checkoutFailure" = "Bei der Bestellung ist ein Fehler aufgetreten";
-"AtlasCheckoutError.message.addressInvalid" = "Adresse nicht bekannt, bitte überprüfe sie.";
+// Unit
+"unit.size" = "Größe: %@";
 
-"LoginError.title" = "Anmeldung fehlgeschlagen";
-"LoginError.message.missingURL" = "Missing login URL";
-"LoginError.message.accessDenied" = "Access denied";
-"LoginError.message.requestFailed" = "Request failed";
-"LoginError.message.missingViewControllerToShowLoginForm" = "Cannot show login form";
+// Address
+"Address.title.shipping" = "Lieferadresse";
+"Address.title.billing" = "Rechnungsadresse";
 
-"AtlasAPIError.title" = "Server Fehler";
-"AtlasAPIError.title.noInternet" = "Keine Internetverbindung";
-"AtlasAPIError.message.invalidResponseFormat" = "Incorrect response format";
-"AtlasAPIError.message.noData" = "Empty response";
-"AtlasAPIError.message.noInternet" = "Bitte überprüfe Deine Internetverbindung";
-"AtlasAPIError.message.unauthorized" = "Access denied";
-"AtlasAPIError.message.checkoutFailed" = "Unknown checkout error";
+"Address.prefix.packstation" = "Nummer der Packstation";
+"Address.prefix.memberID" = "PostNummer";
+"Address.prefix.packstation.abbreviation" = "P.S.";
 
-"AtlasConfigurationError.title" = "Configuration Error";
-"AtlasConfigurationError.message.incorrectConfigServiceResponse" = "Server returned unknown response";
-"AtlasConfigurationError.message.missingClientId" = "Missing client identifier";
-"AtlasConfigurationError.message.missingSalesChannel" = "Missing sales channel";
-"AtlasConfigurationError.message.missingInterfaceLanguage" = "Missing interface language";
+"Address.empty.billing" = "Die Rechnungsadresse fehlt";
+"Address.empty.shipping" = "Die Lieferadresse fehlt";
+
+"Address.add.type.title" = "Lieferung an";
+"Address.add.type.standard" = "Wunschadresse";
+"Address.add.type.pickupPoint" = "Packstation";
+"Address.add.cellTitle" = "Neue Adresse hinzufügen...";
 
 "Address.form.title" = "Anrede";
 "Address.form.firstname" = "Vorname";
@@ -69,17 +54,7 @@
 "Address.form.gender.male" = "Herr";
 "Address.form.gender.female" = "Frau";
 
-"Address.Add.type.title" = "Lieferung an";
-"Address.Add.type.standard" = "Wunschadresse";
-"Address.Add.type.pickupPoint" = "Packstation";
-"Address.Add.cellTitle" = "Neue Adresse hinzufügen...";
-
-"Address.prefix.packstation" = "Nummer der Packstation";
-"Address.prefix.memberID" = "PostNummer";
-"Address.prefix.packstation.abbreviation" = "P.S.";
-"Address.empty.billing" = "Die Rechnungsadresse fehlt";
-"Address.empty.shipping" = "Die Lieferadresse fehlt";
-
+// Form validation
 "Form.validation.required" = "Dies ist ein Pflichtfeld";
 "Form.validation.minLength: %@" = "Eingabe muss mind. %@ Zeichen lang sein";
 "Form.validation.maxLength: %@" = "Eingabe darf max. %@ Zeichen lang sein";
@@ -88,3 +63,36 @@
 "Form.validation.pattern.city" = "Bitte in diesem Feld nur die Zeichen (A-z) eingeben.";
 "Form.validation.pattern.street" = "Bitte Straße und Hausnummer eingeben.";
 "Form.validation.numbersOnly" = "Bitte nur Nummern eintragen";
+
+// Error
+"AtlasCheckoutError.title" = "Oops";
+"AtlasCheckoutError.title.missingAddress" = "Keine Adresse ausgwählt";
+"AtlasCheckoutError.title.priceChanged" = "Der Preis hat sich geändert";
+"AtlasCheckoutError.message.unclassified" = "Da ist etwas schief gelaufen.\nWir arbeiten an dem Problem.\nBitte komm später noch einmal vorbei.";
+"AtlasCheckoutError.message.outOfStock" = "Leider ist dieser Artikel nicht mehr verfügbar";
+"AtlasCheckoutError.message.missingAddress" = "Bitte wähle zuerst eine Liefer- und eine Rechnungsadresse";
+"AtlasCheckoutError.message.missingAddressAndPayment" = "Bitte wähle zuerst eine Liefer- und eine Rechnungsadresse sowie eine Zahlart";
+"AtlasCheckoutError.message.priceChanged" = "Der Preis beträgt nun %@";
+"AtlasCheckoutError.message.paymentMethodNotAvailable" = "Diese Zahlart ist nicht mehr verfügbar";
+"AtlasCheckoutError.message.checkoutFailure" = "Bei der Bestellung ist ein Fehler aufgetreten";
+"AtlasCheckoutError.message.addressInvalid" = "Adresse nicht bekannt, bitte überprüfe sie.";
+
+"AtlasLoginError.title" = "Anmeldung fehlgeschlagen";
+"AtlasLoginError.message.missingURL" = "Missing login URL";
+"AtlasLoginError.message.accessDenied" = "Access denied";
+"AtlasLoginError.message.requestFailed" = "Request failed";
+"AtlasLoginError.message.missingViewControllerToShowLoginForm" = "Cannot show login form";
+
+"AtlasAPIError.title" = "Server Fehler";
+"AtlasAPIError.title.noInternet" = "Keine Internetverbindung";
+"AtlasAPIError.message.invalidResponseFormat" = "Incorrect response format";
+"AtlasAPIError.message.noData" = "Empty response";
+"AtlasAPIError.message.noInternet" = "Bitte überprüfe Deine Internetverbindung";
+"AtlasAPIError.message.unauthorized" = "Access denied";
+"AtlasAPIError.message.checkoutFailed" = "Unknown checkout error";
+
+"AtlasConfigurationError.title" = "Configuration Error";
+"AtlasConfigurationError.message.incorrectConfigServiceResponse" = "Server returned unknown response";
+"AtlasConfigurationError.message.missingClientId" = "Missing client identifier";
+"AtlasConfigurationError.message.missingSalesChannel" = "Missing sales channel";
+"AtlasConfigurationError.message.missingInterfaceLanguage" = "Missing interface language";

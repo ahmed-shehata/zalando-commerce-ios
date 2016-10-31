@@ -7,7 +7,7 @@ import UIKit
 extension UIViewController {
 
     func showCancelButton() {
-        let button = UIBarButtonItem(title: Localizer.string("Cancel"),
+        let button = UIBarButtonItem(title: Localizer.string("button.title.cancel"),
                                      style: .Plain,
                                      target: self,
                                      action: #selector(UIViewController.cancelCheckoutTapped))

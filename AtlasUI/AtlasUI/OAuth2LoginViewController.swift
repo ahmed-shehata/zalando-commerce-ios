@@ -53,7 +53,7 @@ final class OAuth2LoginViewController: UIViewController {
         webView.loadRequest(NSURLRequest(URL: loginURL))
     }
 
-    private func dismissViewController(withFailure error: LoginError, animated: Bool = true) -> Bool {
+    private func dismissViewController(withFailure error: AtlasLoginError, animated: Bool = true) -> Bool {
         return dismissViewController(.failure(error), animated: animated)
     }
 
