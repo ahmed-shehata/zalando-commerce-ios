@@ -45,7 +45,8 @@
 		79175AD49456E48DC6B393EB6F62053A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC182F5F2F24D9AF740830B9B50A9 /* UIColor.swift */; };
 		7DF959AF2293A8A17D536A711A829F9B /* CheckoutSummaryViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F6FD4BE525C2E90E5B0F1D874FEF05 /* CheckoutSummaryViewControllerTests.swift */; };
 		7E9443B46A96E4C94DDF32C3B711C137 /* UnitSizeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2212DE66FE76CB7293827065AB636FF /* UnitSizeTableViewCell.swift */; };
-		81CDA05B1DC7505C00A71BBE /* LegalControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CDA05A1DC7505C00A71BBE /* LegalControllerTests.swift */; };
+		81D4211D1DC78C480028FB28 /* AtlasMockAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81D4211B1DC78C480028FB28 /* AtlasMockAPI.framework */; };
+		81D4211E1DC78C480028FB28 /* AtlasSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81D4211C1DC78C480028FB28 /* AtlasSDK.framework */; };
 		82FEDC4FA09CC55CE1D9224BCDED9062 /* FormValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E272DADD96290ADDD55009F293229EAD /* FormValidatorTests.swift */; };
 		869B7706B6456BBC7CF641AF7A8E4356 /* BannerErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A01B45B1F4C0D9775396AA422A78BA /* BannerErrorViewController.swift */; };
 		86C41143C6D9EAA6BA2C78007F6B0004 /* SizeListSelectionViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87223EDAD5E7184D20A621B18B1B7D26 /* SizeListSelectionViewControllerTests.swift */; };
@@ -85,7 +86,7 @@
 		D5D8A7E27A96BEAA8D3EEED93BE86D30 /* CheckoutViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2653612BC3DBC05157000E6790084A05 /* CheckoutViewState.swift */; };
 		D9CE3553FFE09F2A82794C7A9E45F4F1 /* TextFieldInputStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733421E924B47BF0FE5766446A269719 /* TextFieldInputStackView.swift */; };
 		DB2470DB4F51D75862D73B20254CB0A7 /* CheckoutSummaryActionsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4E23134230FC0873B95CF6C403C333 /* CheckoutSummaryActionsHandler.swift */; };
-		DD9AB9C2100A7544D07255735914791B /* Nimble.framework in Copy Quick and Nimble frameworks */ = {isa = PBXBuildFile; fileRef = 8398317FEC21A1E65AB06E3EF9B29A2B /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DD9AB9C2100A7544D07255735914791B /* Nimble.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 8398317FEC21A1E65AB06E3EF9B29A2B /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DE4482A9091E62348223761D4C58D008 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA19C45C79A94472331D134BC9895CA /* UIView.swift */; };
 		E0D0E4EC009CDEA4D16C8A2726F24643 /* AsyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B55AD6C5A60999BD38E9F067F32E6B /* AsyncTests.swift */; };
 		E97A33A7BE2D26CDE9B4C62EB5BD2661 /* CheckoutSummaryAddressStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9494F7947C24BD2087FE22EBE20BFCD /* CheckoutSummaryAddressStackView.swift */; };
@@ -109,15 +110,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		67B56B6FF2EBD941450E593663475035 /* Copy Quick and Nimble frameworks */ = {
+		67B56B6FF2EBD941450E593663475035 /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				DD9AB9C2100A7544D07255735914791B /* Nimble.framework in Copy Quick and Nimble frameworks */,
+				DD9AB9C2100A7544D07255735914791B /* Nimble.framework in Copy Frameworks */,
 			);
-			name = "Copy Quick and Nimble frameworks";
+			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -166,7 +167,8 @@
 		764CDA794B49DC585B031C7C4F5776D5 /* UserMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMessage.swift; sourceTree = "<group>"; };
 		808C394E80E745736133ADBD0E2938C8 /* AtlasUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AtlasUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80F13460B6B17606CC65E38CE6A4716C /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
-		81CDA05A1DC7505C00A71BBE /* LegalControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegalControllerTests.swift; sourceTree = "<group>"; };
+		81D4211B1DC78C480028FB28 /* AtlasMockAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AtlasMockAPI.framework; path = "../../AtlasMockAPI/build/Debug-iphoneos/AtlasMockAPI.framework"; sourceTree = "<group>"; };
+		81D4211C1DC78C480028FB28 /* AtlasSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AtlasSDK.framework; path = "../../../../../../Volumes/RAMDrive/AtlasSDK-dzjaikoqpgflzpfctpqwcbwxveqk/Build/Products/Debug-iphonesimulator/AtlasSDK.framework"; sourceTree = "<group>"; };
 		828CB7B3C433014C119561A964D809BC /* TextFieldInputViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldInputViewModel.swift; sourceTree = "<group>"; };
 		82D2ADD240889020E56AC601593CC418 /* FormValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValidator.swift; sourceTree = "<group>"; };
 		83316EC4886ACF067F2DE376AB807478 /* URLAuthorizationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLAuthorizationTests.swift; sourceTree = "<group>"; };
@@ -222,6 +224,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81D4211D1DC78C480028FB28 /* AtlasMockAPI.framework in Frameworks */,
+				81D4211E1DC78C480028FB28 /* AtlasSDK.framework in Frameworks */,
 				9E5205894F8AC507226ED777A68C464B /* AtlasUI.framework in Frameworks */,
 				9B94362B4B333AA179225CA9A5BA9C0A /* Nimble.framework in Frameworks */,
 			);
@@ -276,6 +280,8 @@
 		1E54B5694EFDF9FA901ABDD14A47A6A3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				81D4211B1DC78C480028FB28 /* AtlasMockAPI.framework */,
+				81D4211C1DC78C480028FB28 /* AtlasSDK.framework */,
 				8398317FEC21A1E65AB06E3EF9B29A2B /* Nimble.framework */,
 				BE2FC0AE7631C1F62076EA9FCAEEE5C9 /* AtlasSDK.framework */,
 			);
@@ -443,7 +449,6 @@
 				87223EDAD5E7184D20A621B18B1B7D26 /* SizeListSelectionViewControllerTests.swift */,
 				51B1CD594BE0AFFDF8587372BC49280A /* PaymentViewControllerTests.swift */,
 				83316EC4886ACF067F2DE376AB807478 /* URLAuthorizationTests.swift */,
-				81CDA05A1DC7505C00A71BBE /* LegalControllerTests.swift */,
 			);
 			path = AtlasUITests;
 			sourceTree = "<group>";
@@ -531,7 +536,7 @@
 			buildConfigurationList = 02F7ED365458581106909C3B3784C656 /* Build configuration list for PBXNativeTarget "AtlasUITests" */;
 			buildPhases = (
 				A60B78CD55E47A4F8F549FE789D8E2C0 /* Sources */,
-				67B56B6FF2EBD941450E593663475035 /* Copy Quick and Nimble frameworks */,
+				67B56B6FF2EBD941450E593663475035 /* Copy Frameworks */,
 				33726023126163EF22BCC39019CFB9E4 /* Frameworks */,
 				2EC3D8D43B6BA95C7A466B5244074F3F /* Resources */,
 			);
@@ -649,7 +654,6 @@
 				E0D0E4EC009CDEA4D16C8A2726F24643 /* AsyncTests.swift in Sources */,
 				877D4CE660F5CFF550D4032BE46FCCCB /* EditAddressTypeTests.swift in Sources */,
 				82FEDC4FA09CC55CE1D9224BCDED9062 /* FormValidatorTests.swift in Sources */,
-				81CDA05B1DC7505C00A71BBE /* LegalControllerTests.swift in Sources */,
 				A077967CA9194ECD42DE4F9582D38823 /* PaymentViewControllerTests.swift in Sources */,
 				F7134FE121256D750D7DCDB3C6494EF0 /* URLAuthorizationTests.swift in Sources */,
 				C233CC7F6C4F9387883F1F4ACA455596 /* LocalizationTests.swift in Sources */,
@@ -914,6 +918,7 @@
 		EB1C2ED322AFCAF49683CDE4DD472722 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = J67E9B6234;
 				INFOPLIST_FILE = AtlasUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.zalando.atlas.AtlasUITests;
@@ -924,6 +929,7 @@
 		F231E34897B7061FDCB697D589AAF926 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = J67E9B6234;
 				INFOPLIST_FILE = AtlasUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.zalando.atlas.AtlasUITests;

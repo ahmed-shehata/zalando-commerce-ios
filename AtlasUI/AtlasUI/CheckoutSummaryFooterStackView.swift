@@ -39,7 +39,7 @@ extension CheckoutSummaryFooterStackView: UIBuilder {
     }
 
     @objc func tocPressed(sender: UIButton!) {
-        legalController?.presentLegalViewController()
+        legalController?.push()
     }
 
 }
@@ -49,7 +49,7 @@ extension CheckoutSummaryFooterStackView: UIDataBuilder {
     typealias T = CheckoutSummaryViewController
 
     func configureData(viewModel: T) {
-        legalController = LegalController(tocURL: viewModel.checkout.client.config.tocURL)
+        legalController = LegalController(tocURL: viewModel.checkout.client.config.salesChannel.termsAndConditionsURL)
 
         footerButton.setAttributedTitle(tocAttributedTitle(), forState: .Normal)
         footerButton.hidden = !viewModel.viewState.showFooterLabel
