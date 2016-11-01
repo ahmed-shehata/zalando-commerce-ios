@@ -9,10 +9,15 @@ extension AtlasResult {
     internal func process(forceFullScreenError fullScreen: Bool = false) -> T? {
         switch self {
         case .failure(let error):
-            if fullScreen {
-                UserMessage.displayErrorFullScreen(error)
-            } else {
-                UserMessage.displayError(error)
+            switch error {
+            case AtlasUserError.userCancelled:
+                break
+            default:
+                if fullScreen {
+                    UserMessage.displayErrorFullScreen(error)
+                } else {
+                    UserMessage.displayError(error)
+                }
             }
             return nil
         case .success(let data):
