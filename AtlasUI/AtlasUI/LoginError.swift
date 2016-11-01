@@ -10,7 +10,7 @@ public enum LoginError: AtlasErrorType {
     case missingURL
     case accessDenied
     case missingViewControllerToShowLoginForm
-    case userCancelled
+
     case requestFailed(error: NSError?)
 
 }

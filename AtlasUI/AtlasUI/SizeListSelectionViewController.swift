@@ -104,25 +104,6 @@ extension SizeListSelectionViewController {
         }
     }
 
-    private func userLoginResultProcess(result: AtlasResult<Customer>, forceFullScreenError fullScreen: Bool = false) -> Customer? {
-        switch result {
-        case .failure(let error):
-            switch error {
-            case LoginError.userCancelled:
-                break
-            default:
-                if fullScreen {
-                    UserMessage.displayErrorFullScreen(error)
-                } else {
-                    UserMessage.displayError(error)
-                }
-            }
-            return nil
-        case .success(let data):
-            return data
-        }
-    }
-
     private func displayCheckoutSummaryViewController(checkoutViewModel: CheckoutViewModel, animated: Bool) {
         let checkoutSummaryVC = CheckoutSummaryViewController(checkout: checkout, checkoutViewModel: checkoutViewModel)
         navigationController?.pushViewController(checkoutSummaryVC, animated: animated)

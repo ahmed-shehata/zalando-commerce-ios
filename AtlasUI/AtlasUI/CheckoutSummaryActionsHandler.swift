@@ -68,24 +68,9 @@ extension CheckoutSummaryActionsHandler {
             viewController.checkout.client.customer { result in
                 hideLoader()
 
-                guard let customer = self.userLoginResultProcess(result) else { return }
+                guard let customer = result.process() else { return }
                 self.generateCheckout(customer)
             }
-        }
-    }
-
-    private func userLoginResultProcess(result: AtlasResult<Customer>) -> Customer? {
-        switch result {
-        case .failure(let error):
-            switch error {
-            case LoginError.userCancelled:
-                break
-            default:
-                UserMessage.displayError(error)
-            }
-            return nil
-        case .success(let data):
-            return data
         }
     }
 

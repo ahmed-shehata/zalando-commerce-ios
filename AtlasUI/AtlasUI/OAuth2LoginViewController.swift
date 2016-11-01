@@ -70,7 +70,7 @@ final class OAuth2LoginViewController: UIViewController {
     }
 
     @objc private func cancelButtonTapped(sender: UIBarButtonItem) {
-        dismissViewController(withFailure: .userCancelled)
+        dismissViewController(.failure(AtlasUserError.userCancelled))
     }
 
 }
