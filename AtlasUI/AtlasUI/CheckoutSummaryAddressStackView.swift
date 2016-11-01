@@ -5,12 +5,11 @@
 import UIKit
 
 struct CheckoutSummaryAddressViewModel {
-    let title: String
     let addressLines: [String]
     let showArrow: Bool
 }
 
-class CheckoutSummaryAddressStackView: UIStackView {
+class CheckoutSummaryAddressStackView: UIStackView, RowStackView {
 
     internal let titleLabel: UILabel = {
         let label = UILabel()
@@ -75,9 +74,8 @@ extension CheckoutSummaryAddressStackView: UIDataBuilder {
     typealias T = CheckoutSummaryAddressViewModel
 
     func configureData(viewModel: T) {
-        titleLabel.text = viewModel.title
         firstLineValueLabel.text = viewModel.addressLines[0].trimmed
-        secondLineValueLabel.text = viewModel.addressLines.count > 1 ? viewModel.addressLines[1].trimmed : nil
+        secondLineValueLabel.text = viewModel.addressLines.count > 1 ? viewModel.addressLines[1].trimmed: nil
         arrowImageView.alpha = viewModel.showArrow ? 1 : 0
     }
 

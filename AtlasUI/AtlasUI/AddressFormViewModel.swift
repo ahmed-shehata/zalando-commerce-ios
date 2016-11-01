@@ -21,7 +21,7 @@ class AddressFormViewModel {
     let isDefaultBilling: Bool
     let isDefaultShipping: Bool
 
-    init (equatableAddress: EquatableAddress?, countryCode: String) {
+    init (equatableAddress: EquatableAddress? = nil, countryCode: String) {
         if let userAddress = equatableAddress as? UserAddress {
             isDefaultBilling = userAddress.isDefaultBilling
             isDefaultShipping = userAddress.isDefaultShipping

@@ -6,10 +6,7 @@ import UIKit
 
 class CheckoutSummaryRootStackView: UIStackView {
 
-    internal let scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        return scrollView
-    }()
+    internal let scrollView = UIScrollView()
 
     internal let mainStackView: CheckoutSummaryMainStackView = {
         let stackView = CheckoutSummaryMainStackView()

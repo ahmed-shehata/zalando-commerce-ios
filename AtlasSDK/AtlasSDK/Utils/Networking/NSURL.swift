@@ -6,8 +6,12 @@ import Foundation
 
 extension NSURL {
 
-    convenience init(validURL stringConvertible: URLStringConvertible) {
+    public convenience init(validURL stringConvertible: URLStringConvertible) {
         self.init(string: stringConvertible.URLString)! // swiftlint:disable:this force_unwrapping
+    }
+
+    public convenience init(validURL stringConvertible: URLStringConvertible, path: String?) {
+        self.init(validURL: NSURLComponents(validURL: stringConvertible, path: path))
     }
 
     func URLByAppending(pathComponent pathComponent: String) -> NSURL {

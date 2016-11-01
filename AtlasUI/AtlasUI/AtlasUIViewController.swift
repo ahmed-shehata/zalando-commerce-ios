@@ -10,6 +10,10 @@ public class AtlasUIViewController: UIViewController {
     let mainNavigationController: UINavigationController
     private let atlasReachability = AtlasReachability()
 
+    static var instance: AtlasUIViewController? {
+        return try? Atlas.provide()
+    }
+
     private let loaderView: LoaderView = {
         let view = LoaderView()
         view.hidden = true
