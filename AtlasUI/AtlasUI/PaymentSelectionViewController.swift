@@ -83,18 +83,27 @@ final class PaymentViewController: UIViewController, UIWebViewDelegate {
 
     #if swift(>=2.3)
         func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
-            guard !errorBecuaseRequestCancelled(error) else { return }
-            UserMessage.displayError(error)
+            handle(webView: webView, error: error)
         }
     #else
         func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
-            guard let error = error where !errorBecuaseRequestCancelled(error) else { return }
-            UserMessage.displayError(error)
+            guard let error = error else { return }
+            handle(webView: webView, error: error)
         }
     #endif
 
-    private func errorBecuaseRequestCancelled(error: NSError) -> Bool {
-        return error.domain == "WebKitErrorDomain"
+    private func handle(webView webView: UIWebView, error: NSError) {
+        if !error.isWebKitError {
+            UserMessage.displayError(error)
+        }
+    }
+
+}
+
+private extension NSError {
+
+    var isWebKitError: Bool {
+        return self.domain == "WebKitErrorDomain"
     }
 
 }

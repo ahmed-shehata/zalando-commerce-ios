@@ -38,9 +38,10 @@ class AddressFormViewController: UIViewController, CheckoutProviderType {
 
         switch addressMode {
         case .createAddress:
-            self.addressViewModel = AddressFormViewModel(equatableAddress: nil, countryCode: checkout.client.config.countryCode)
+            self.addressViewModel = AddressFormViewModel(countryCode: checkout.client.config.salesChannel.countryCode)
         case .updateAddress(let address):
-            self.addressViewModel = AddressFormViewModel(equatableAddress: address, countryCode: checkout.client.config.countryCode)
+            self.addressViewModel = AddressFormViewModel(equatableAddress: address,
+                                                         countryCode: checkout.client.config.salesChannel.countryCode)
         }
 
         super.init(nibName: nil, bundle: nil)

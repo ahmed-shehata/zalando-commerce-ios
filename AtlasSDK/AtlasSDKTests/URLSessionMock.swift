@@ -8,6 +8,7 @@ typealias CompletionHandler = (NSData?, NSURLResponse?, NSError?) -> Void
 typealias TaskResponse = (data: NSData?, response: NSURLResponse?, error: NSError?)
 
 final class URLSessionMock: NSURLSession {
+
     var url: NSURL?
     var request: NSURLRequest?
     private let dataTaskMock: URLSessionDataTaskMock
@@ -45,4 +46,5 @@ final class URLSessionMock: NSURLSession {
         }
 
     }
+    
 }

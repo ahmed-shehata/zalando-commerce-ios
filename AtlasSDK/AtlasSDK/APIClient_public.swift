@@ -62,7 +62,7 @@ extension APIClient {
     }
 
     public func createCart(cartItemRequests: CartItemRequest..., completion: CartCompletion) {
-        let parameters = CartRequest(salesChannel: config.salesChannel, items: cartItemRequests, replaceItems: true).toJSON()
+        let parameters = CartRequest(salesChannel: config.salesChannel.identifier, items: cartItemRequests, replaceItems: true).toJSON()
         let endpoint = CreateCartEndpoint(serviceURL: config.checkoutURL, parameters: parameters)
         fetch(from: endpoint, completion: completion)
     }
@@ -124,7 +124,7 @@ extension APIClient {
     public func article(sku: String, completion: ArticleCompletion) {
         let endpoint = GetArticleEndpoint(serviceURL: config.catalogURL,
                                           sku: sku,
-                                          salesChannel: config.salesChannel,
+                                          salesChannel: config.salesChannel.identifier,
                                           clientId: config.clientId,
                                           fields: nil)
 
@@ -140,21 +140,21 @@ extension APIClient {
 
     public func addresses(completion: AddressesCompletion) {
         let endpoint = GetAddressesEndpoint(serviceURL: config.checkoutURL,
-                                            salesChannel: config.salesChannel)
+                                            salesChannel: config.salesChannel.identifier)
         fetch(from: endpoint, completion: completion)
     }
 
     public func deleteAddress(addressId: String, completion: NoContentCompletion) {
         let endpoint = DeleteAddressEndpoint(serviceURL: config.checkoutURL,
                                              addressId: addressId,
-                                             salesChannel: config.salesChannel)
+                                             salesChannel: config.salesChannel.identifier)
         touch(endpoint, completion: completion)
     }
 
     public func createAddress(request: CreateAddressRequest, completion: AddressCreateUpdateCompletion) {
         let endpoint = CreateAddressEndpoint(serviceURL: config.checkoutURL,
                                              createAddressRequest: request,
-                                             salesChannel: config.salesChannel)
+                                             salesChannel: config.salesChannel.identifier)
         fetch(from: endpoint, completion: completion)
     }
 
@@ -162,7 +162,7 @@ extension APIClient {
         let endpoint = UpdateAddressEndpoint(serviceURL: config.checkoutURL,
                                              addressId: addressId,
                                              updateAddressRequest: request,
-                                             salesChannel: config.salesChannel)
+                                             salesChannel: config.salesChannel.identifier)
         fetch(from: endpoint, completion: completion)
     }
 

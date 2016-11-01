@@ -77,10 +77,9 @@ struct UserMessage {
     }
 
     internal static func displayLoader(block: (() -> Void) -> Void) {
-        let atlasUIViewController: AtlasUIViewController? = try? Atlas.provide()
-        atlasUIViewController?.showLoader()
+        AtlasUIViewController.instance?.showLoader()
         block {
-            atlasUIViewController?.hideLoader()
+            AtlasUIViewController.instance?.hideLoader()
         }
     }
 

@@ -34,7 +34,7 @@ struct ResponseParser {
                     details: json["detail"].string)
             } else {
                 error = AtlasAPIError.http(
-                    status: HTTPStatus(statusCode: httpResponse.statusCode),
+                    status: HTTPStatus(response: httpResponse),
                     details: NSHTTPURLResponse.localizedStringForStatusCode(httpResponse.statusCode))
             }
             return completion(.failure(error))
