@@ -64,10 +64,13 @@ extension CheckoutSummaryActionsHandler {
     internal func loadCustomerData() {
         guard let viewController = self.viewController else { return }
 
-        viewController.checkout.client.customer { result in
+        UserMessage.displayLoader { hideLoader in
+            viewController.checkout.client.customer { result in
+                hideLoader()
 
-            guard let customer = result.process() else { return }
-            self.generateCheckout(customer)
+                guard let customer = result.process() else { return }
+                self.generateCheckout(customer)
+            }
         }
     }
 

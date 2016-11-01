@@ -92,3 +92,9 @@ extension AtlasCheckoutError: UserPresentable {
 extension AtlasLoginError: UserPresentable { }
 
 extension AtlasConfigurationError: UserPresentable { }
+
+public enum AtlasUserError: UserPresentable {
+
+    case userCancelled
+
+}
