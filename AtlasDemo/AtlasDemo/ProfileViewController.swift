@@ -65,8 +65,8 @@ class ProfileViewController: UIViewController {
         AppSetup.checkout?.client.customer { result in
             switch result {
             case .failure(let error):
-                guard let userError = error as? AtlasUserError where userError != AtlasUserError.userCancelled else {
-                    print("SWALLOWED: ", error)
+                guard (error as? AtlasUserError) != AtlasUserError.userCancelled else {
+                    AtlasLogger.logError(error)
                     return
                 }
 

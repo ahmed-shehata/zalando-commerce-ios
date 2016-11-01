@@ -9,8 +9,8 @@ extension AtlasResult {
     internal func process(forceFullScreenError fullScreen: Bool = false) -> T? {
         switch self {
         case .failure(let error):
-            guard let userError = error as? AtlasUserError where userError != AtlasUserError.userCancelled else {
-                print("SWALLOWED: ", error)
+            guard (error as? AtlasUserError) != AtlasUserError.userCancelled else {
+                AtlasLogger.logError(error)
                 return nil
             }
 
