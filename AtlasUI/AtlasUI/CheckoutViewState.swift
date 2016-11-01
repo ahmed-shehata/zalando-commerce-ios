@@ -56,7 +56,7 @@ enum CheckoutViewState {
 
     func submitButtonTitle(isPaypal: Bool) -> String {
         switch self {
-        case .NotLoggedIn: return "Zalando.Checkout"
+        case .NotLoggedIn: return "button.title.checkoutWithZalando"
         case .CheckoutIncomplete, .CheckoutReady:
             return isPaypal ? "order.place.paypal" : "order.place"
         case .OrderPlaced: return "button.title.backToShop"

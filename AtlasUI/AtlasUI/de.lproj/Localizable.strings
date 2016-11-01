@@ -1,10 +1,11 @@
 // Zalando
-"Zalando.Connect" = "Mit Zalando verbinden";
-"Zalando.login" = "Bei Zalando einloggen";
-"Zalando.Checkout" = "Mit Zalando anmelden";
+
+
 "Zalando.terms" = "Für Deine Bestellung gelten die AGB und die Wiederrufsbelehrung von Zalando";
 
 // Buttons
+"button.title.loginWithZalando" = "Bei Zalando einloggen";
+"button.title.checkoutWithZalando" = "Mit Zalando anmelden";
 "button.title.cancel" = "Abbrechen";
 "button.title.save" = "Speichern";
 "button.title.backToShop" = "weiter shoppen";

@@ -1,10 +1,11 @@
 // Zalando
-"Zalando.Connect" = "Connect to Zalando";
-"Zalando.login" = "Login with Zalando";
-"Zalando.Checkout" = "Checkout with Zalando";
+
+
 "Zalando.terms" = "Zalando terms, conditions and cancellation policy apply to all orders";
 
 // Buttons
+"button.title.loginWithZalando" = "Login with Zalando";
+"button.title.checkoutWithZalando" = "Checkout with Zalando";
 "button.title.cancel" = "Cancel";
 "button.title.save" = "Save";
 "button.title.backToShop" = "Back to shop";
