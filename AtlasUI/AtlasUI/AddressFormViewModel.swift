@@ -161,7 +161,7 @@ extension CheckAddress {
 extension Gender {
 
     private var title: String {
-        return Localizer.string("Address.form.gender.\(rawValue.lowercaseString)")
+        return Localizer.string("addressFormView.gender.\(rawValue.lowercaseString)")
     }
 
 }

@@ -28,7 +28,7 @@ final class OAuth2LoginViewController: UIViewController {
         self.loginURL = loginURL
         self.loginCompletion = completion
         super.init(nibName: nil, bundle: nil)
-        self.title = Localizer.string("button.title.loginWithZalando")
+        self.title = Localizer.string("loginView.loginWithZalando")
     }
 
     required init?(coder decoder: NSCoder) {

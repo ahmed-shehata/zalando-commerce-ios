@@ -91,11 +91,11 @@ extension CheckoutSummaryPriceStackView: UIDataBuilder {
     typealias T = CheckoutViewModel
 
     func configureData(viewModel: T) {
-        shippingTitleLabel.text = Localizer.string("order.price.Shipping")
+        shippingTitleLabel.text = Localizer.string("summaryView.label.price.shipping")
         shippingValueLabel.text = Localizer.price(viewModel.shippingPriceValue)
-        totalTitleLabel.text = Localizer.string("order.price.total")
+        totalTitleLabel.text = Localizer.string("summaryView.label.price.total")
         totalValueLabel.text = Localizer.price(viewModel.totalPriceValue)
-        vatTitleLabel.text = Localizer.string("order.price.vat")
+        vatTitleLabel.text = Localizer.string("summaryView.label.price.vat")
     }
 
 }

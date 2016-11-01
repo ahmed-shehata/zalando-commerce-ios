@@ -51,7 +51,7 @@ class FormValidatorTests: XCTestCase {
     }
 
     func testPatternValidator() {
-        let validator = FormValidator.Pattern(pattern: FormValidator.namePattern, errorMessage: "Form.validation.pattern.name")
+        let validator = FormValidator.Pattern(pattern: FormValidator.namePattern, errorMessage: "formValidation.pattern.name")
         expect(validator.errorMessage("John")).to(beNil())
         expect(validator.errorMessage("John Doe")).to(beNil())
         expect(validator.errorMessage("John-Doe")).to(beNil())
