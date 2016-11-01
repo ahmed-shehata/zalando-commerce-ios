@@ -5,6 +5,9 @@
 // Login View
 "loginView.loginWithZalando" = "Login with Zalando";
 
+// Terms & Conditions View
+"termsAndConditionsView.title" = "Legal Notice";
+
 // Summary View
 "summaryView.title.summary" = "Summary";
 "summaryView.title.orderPlaced" = "Order placed";
