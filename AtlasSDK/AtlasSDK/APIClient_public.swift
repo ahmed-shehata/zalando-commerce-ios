@@ -62,8 +62,10 @@ extension APIClient {
     }
 
     public func createCart(cartItemRequests: CartItemRequest..., completion: CartCompletion) {
-        let parameters = CartRequest(salesChannel: config.salesChannel.identifier, items: cartItemRequests, replaceItems: true).toJSON()
-        let endpoint = CreateCartEndpoint(serviceURL: config.checkoutURL, parameters: parameters)
+        let parameters = CartRequest(items: cartItemRequests, replaceItems: true).toJSON()
+        let endpoint = CreateCartEndpoint(serviceURL: config.checkoutURL,
+                                          parameters: parameters,
+                                          salesChannel: config.salesChannel.identifier)
         fetch(from: endpoint, completion: completion)
     }
 
