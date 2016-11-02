@@ -8,6 +8,7 @@ class ShippingAddressCreationStrategy: AddressCreationStrategy {
 
     var addressFormCompletion: AddressFormCompletion?
     var navigationController: UINavigationController?
+    var showAddressFormStrategy: ShowAddressFormStrategy?
 
     func execute(checkout: AtlasCheckout) {
         let title = Localizer.string("addressListView.add.type.title")
@@ -19,7 +20,7 @@ class ShippingAddressCreationStrategy: AddressCreationStrategy {
         }
         let cancelAction = ButtonAction(text: Localizer.string("button.general.cancel"), style: .Cancel, handler: nil)
 
-        UserMessage.showActionSheet(title: title, actions: standardAction, pickupPointAction, cancelAction)
+        UserMessage.showAlert(title, message: nil, preferredStyle: .ActionSheet, actions: standardAction, pickupPointAction, cancelAction)
     }
 
 }

@@ -65,9 +65,9 @@ struct UserMessage {
         displayFullScreen(userPresentable)
     }
 
-    static func showActionSheet(title title: String, message: String? = nil, actions: ButtonAction...) {
+    static func showAlert(title: String, message: String?, preferredStyle: UIAlertControllerStyle = .Alert, actions: ButtonAction...) {
         guard let topViewController = UIApplication.topViewController() else { return }
-        let alertView = UIAlertController(title: title, message: message, preferredStyle: .ActionSheet)
+        let alertView = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
 
         actions.forEach { alertView.addAction($0) }
 

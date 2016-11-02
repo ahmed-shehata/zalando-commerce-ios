@@ -8,6 +8,7 @@ class BillingAddressCreationStrategy: AddressCreationStrategy {
 
     var addressFormCompletion: AddressFormCompletion?
     var navigationController: UINavigationController?
+    var showAddressFormStrategy: ShowAddressFormStrategy?
 
     func execute(checkout: AtlasCheckout) {
         showCreateAddress(.standardAddress, checkout: checkout)

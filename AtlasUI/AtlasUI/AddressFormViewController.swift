@@ -39,8 +39,11 @@ class AddressFormViewController: UIViewController, CheckoutProviderType {
         switch addressMode {
         case .createAddress:
             self.addressViewModel = AddressFormViewModel(countryCode: checkout.client.config.salesChannel.countryCode)
+        case .createAddressFromTemplate(let address):
+            self.addressViewModel = AddressFormViewModel(formattableAddress: address,
+                                                         countryCode: checkout.client.config.salesChannel.countryCode)
         case .updateAddress(let address):
-            self.addressViewModel = AddressFormViewModel(equatableAddress: address,
+            self.addressViewModel = AddressFormViewModel(formattableAddress: address,
                                                          countryCode: checkout.client.config.salesChannel.countryCode)
         }
 
@@ -169,7 +172,7 @@ extension AddressFormViewController {
             enableSaveButton()
         } else {
             switch addressMode {
-            case .createAddress: createAddressRequest()
+            case .createAddress, .createAddressFromTemplate: createAddressRequest()
             case .updateAddress(let address): updateAddressRequest(address)
             }
         }
