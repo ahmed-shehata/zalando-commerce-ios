@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import AtlasSDK
 
 protocol AddressCreationStrategy: class {
 
@@ -20,13 +21,19 @@ extension AddressCreationStrategy {
     }
 
     private func showAddressBookAlert(addressType: AddressFormType, checkout: AtlasCheckout) {
-        showAddressFormStrategy = ShowAddressFormStrategy(countryCode: checkout.client.config.salesChannel.countryCode) { type in
+        showAddressFormStrategy = ShowAddressFormStrategy { [weak self] type in
             switch type {
             case .newAddress:
-                self.showAddressForm(addressType, addressMode: .createAddress, checkout: checkout)
-            case .fromAddressBook(let addressViewModel):
-                let addressMode = AddressFormMode.createAddressFromTemplate(addressViewModel: addressViewModel)
-                self.showAddressForm(addressType, addressMode: addressMode, checkout: checkout)
+                self?.showAddressForm(addressType, addressMode: .createAddress, checkout: checkout)
+
+            case .fromAddressBook(let contactProperty):
+                let countryCode = checkout.client.config.salesChannel.countryCode
+                if let addressViewModel = AddressFormViewModel(contactProperty: contactProperty, countryCode: countryCode) {
+                    let addressMode = AddressFormMode.createAddressFromTemplate(addressViewModel: addressViewModel)
+                    self?.showAddressForm(addressType, addressMode: addressMode, checkout: checkout)
+                } else {
+                    UserMessage.displayError(AtlasCheckoutError.unclassified)
+                }
             }
         }
         showAddressFormStrategy?.execute()

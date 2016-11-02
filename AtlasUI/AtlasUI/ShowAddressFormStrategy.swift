@@ -9,7 +9,7 @@ import AtlasSDK
 enum ShowAddressFormStrategyType {
 
     case newAddress
-    case fromAddressBook(addressViewModel: AddressFormViewModel)
+    case fromAddressBook(contactProperty: CNContactProperty)
 
 }
 
@@ -17,11 +17,9 @@ typealias ShowAddressFormStrategyCompletion = (type: ShowAddressFormStrategyType
 
 class ShowAddressFormStrategy: NSObject {
 
-    let countryCode: String
     var completion: ShowAddressFormStrategyCompletion
 
-    init(countryCode: String, completion: ShowAddressFormStrategyCompletion) {
-        self.countryCode = countryCode
+    init(completion: ShowAddressFormStrategyCompletion) {
         self.completion = completion
     }
 
@@ -50,12 +48,7 @@ extension ShowAddressFormStrategy: CNContactPickerDelegate {
 
     func contactPicker(picker: CNContactPickerViewController, didSelectContactProperty contactProperty: CNContactProperty) {
         picker.dismissViewControllerAnimated(true) { [weak self] in
-            guard let strongSelf = self else { return }
-            if let addressViewModel = AddressFormViewModel(contactProperty: contactProperty, countryCode: strongSelf.countryCode) {
-                strongSelf.completion(type: .fromAddressBook(addressViewModel: addressViewModel))
-            } else {
-                UserMessage.displayError(AtlasCheckoutError.unclassified)
-            }
+            self?.completion(type: .fromAddressBook(contactProperty: contactProperty))
         }
     }
 
