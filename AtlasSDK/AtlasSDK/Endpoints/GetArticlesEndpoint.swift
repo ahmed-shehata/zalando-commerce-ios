@@ -10,7 +10,6 @@ struct GetArticleEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
     let sku: String
     var queryItems: [NSURLQueryItem]? {
         return NSURLQueryItem.build([
-            "sales_channel": salesChannel,
             "client_id": clientId,
             "fields": fields?.joinWithSeparator(",")
         ])
