@@ -45,7 +45,7 @@ class AddressFormViewController: UIViewController, CheckoutProviderType {
             self.addressViewModel = addressViewModel
 
         case .updateAddress(let address):
-            self.addressViewModel = AddressFormViewModel(formattableAddress: address, countryCode: countryCode)
+            self.addressViewModel = AddressFormViewModel(equatableAddress: address, countryCode: countryCode)
 
         }
 

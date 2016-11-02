@@ -22,8 +22,8 @@ class AddressFormViewModel {
     let isDefaultBilling: Bool
     let isDefaultShipping: Bool
 
-    init (formattableAddress: FormattableAddress? = nil, countryCode: String) {
-        if let userAddress = formattableAddress as? UserAddress {
+    init (equatableAddress: EquatableAddress? = nil, countryCode: String) {
+        if let userAddress = equatableAddress as? UserAddress {
             isDefaultBilling = userAddress.isDefaultBilling
             isDefaultShipping = userAddress.isDefaultShipping
         } else {
@@ -32,7 +32,7 @@ class AddressFormViewModel {
         }
         self.countryCode = countryCode
 
-        guard let equatableAddress = formattableAddress else { return }
+        guard let equatableAddress = equatableAddress else { return }
 
         gender = equatableAddress.gender
         firstName = equatableAddress.firstName
