@@ -35,16 +35,18 @@ class AddressFormViewController: UIViewController, CheckoutProviderType {
         self.addressMode = addressMode
         self.checkout = checkout
         self.completion = completion
+        let countryCode = checkout.client.config.salesChannel.countryCode
 
         switch addressMode {
         case .createAddress:
-            self.addressViewModel = AddressFormViewModel(countryCode: checkout.client.config.salesChannel.countryCode)
-        case .createAddressFromTemplate(let address):
-            self.addressViewModel = AddressFormViewModel(formattableAddress: address,
-                                                         countryCode: checkout.client.config.salesChannel.countryCode)
+            self.addressViewModel = AddressFormViewModel(countryCode: countryCode)
+
+        case .createAddressFromTemplate(let addressViewModel):
+            self.addressViewModel = addressViewModel
+
         case .updateAddress(let address):
-            self.addressViewModel = AddressFormViewModel(formattableAddress: address,
-                                                         countryCode: checkout.client.config.salesChannel.countryCode)
+            self.addressViewModel = AddressFormViewModel(formattableAddress: address, countryCode: countryCode)
+
         }
 
         super.init(nibName: nil, bundle: nil)
@@ -68,14 +70,19 @@ class AddressFormViewController: UIViewController, CheckoutProviderType {
 extension AddressFormViewController {
 
     private func configureNavigation() {
-        let saveButton = UIBarButtonItem(title: Localizer.string("button.general.save"),
-            style: .Plain, target: self, action: #selector(submitButtonPressed))
-        navigationItem.rightBarButtonItem = saveButton
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: Localizer.string("button.general.save"),
+                                                            style: .Plain,
+                                                            target: self,
+                                                            action: #selector(submitButtonPressed))
 
-        if addressMode == .createAddress {
-            let cancelButton = UIBarButtonItem(title: Localizer.string("button.general.cancel"),
-                style: .Plain, target: self, action: #selector(cancelButtonPressed))
-            navigationItem.leftBarButtonItem = cancelButton
+        switch addressMode {
+        case .createAddress, .createAddressFromTemplate:
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: Localizer.string("button.general.cancel"),
+                                                               style: .Plain,
+                                                               target: self,
+                                                               action: #selector(cancelButtonPressed))
+        case .updateAddress:
+            break
         }
     }
 
@@ -96,10 +103,9 @@ extension AddressFormViewController {
     private func dismissView() {
         view.endEditing(true)
 
-        if addressMode == .createAddress {
-            dismissViewControllerAnimated(true, completion: nil)
-        } else {
-            navigationController?.popViewControllerAnimated(true)
+        switch addressMode {
+        case .createAddress, .createAddressFromTemplate: dismissViewControllerAnimated(true, completion: nil)
+        case .updateAddress: navigationController?.popViewControllerAnimated(true)
         }
     }
 

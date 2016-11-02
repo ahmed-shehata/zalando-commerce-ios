@@ -7,7 +7,6 @@ import Foundation
 class ShippingAddressCreationStrategy: AddressCreationStrategy {
 
     var addressFormCompletion: AddressFormCompletion?
-    var navigationController: UINavigationController?
     var showAddressFormStrategy: ShowAddressFormStrategy?
 
     func execute(checkout: AtlasCheckout) {

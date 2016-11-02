@@ -16,7 +16,6 @@ class AddressActionsHandler {
     }
 
     func createAddress() {
-        viewController?.addressCreationStrategy?.navigationController = viewController?.navigationController
         viewController?.addressCreationStrategy?.addressFormCompletion = { [weak self] userAddress in
             self?.viewController?.tableviewDelegate.addresses.append(userAddress)
             self?.selectAddress(userAddress)

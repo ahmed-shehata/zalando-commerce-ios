@@ -9,7 +9,7 @@ import AtlasSDK
 enum ShowAddressFormStrategyType {
 
     case newAddress
-    case fromAddressBook(address: FormattableAddress)
+    case fromAddressBook(addressViewModel: AddressFormViewModel)
 
 }
 
@@ -17,9 +17,11 @@ typealias ShowAddressFormStrategyCompletion = (type: ShowAddressFormStrategyType
 
 class ShowAddressFormStrategy: NSObject {
 
+    let countryCode: String
     var completion: ShowAddressFormStrategyCompletion
 
-    init(completion: ShowAddressFormStrategyCompletion) {
+    init(countryCode: String, completion: ShowAddressFormStrategyCompletion) {
+        self.countryCode = countryCode
         self.completion = completion
     }
 
@@ -38,6 +40,7 @@ class ShowAddressFormStrategy: NSObject {
         contactPickerViewController.displayedPropertyKeys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPostalAddressesKey]
         contactPickerViewController.predicateForSelectionOfProperty = NSPredicate(format: "key == 'postalAddresses'")
         contactPickerViewController.delegate = self
+        contactPickerViewController.modalPresentationStyle = .OverFullScreen
         AtlasUIViewController.instance?.showViewController(contactPickerViewController, sender: nil)
     }
 
@@ -46,7 +49,14 @@ class ShowAddressFormStrategy: NSObject {
 extension ShowAddressFormStrategy: CNContactPickerDelegate {
 
     func contactPicker(picker: CNContactPickerViewController, didSelectContactProperty contactProperty: CNContactProperty) {
-        print(contactProperty)
+        picker.dismissViewControllerAnimated(true) { [weak self] in
+            guard let strongSelf = self else { return }
+            if let addressViewModel = AddressFormViewModel(contactProperty: contactProperty, countryCode: strongSelf.countryCode) {
+                strongSelf.completion(type: .fromAddressBook(addressViewModel: addressViewModel))
+            } else {
+                UserMessage.displayError(AtlasCheckoutError.unclassified)
+            }
+        }
     }
 
 }

@@ -7,7 +7,7 @@ import AtlasSDK
 
 enum AddressFormMode {
     case createAddress
-    case createAddressFromTemplate(address: FormattableAddress)
+    case createAddressFromTemplate(addressViewModel: AddressFormViewModel)
     case updateAddress(address: EquatableAddress)
 }
 
