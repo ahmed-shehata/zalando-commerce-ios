@@ -25,7 +25,7 @@ extension NSMutableURLRequest {
                 curlComponents.append("-d \"\(escapedBody)\"")
         }
 
-        curlComponents.append("\"\(URL.absoluteString)\"")
+        curlComponents.append("\"\(URL.URLString)\"")
 
         return curlComponents.joinWithSeparator(" \\\n\t")
     }

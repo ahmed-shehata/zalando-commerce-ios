@@ -50,7 +50,6 @@ class AddressFormViewModel {
         self.firstName = contactProperty.contact.givenName
         self.lastName = contactProperty.contact.familyName
         self.street = postalAddress.street
-        self.additional = postalAddress.state
         self.zip = postalAddress.postalCode
         self.city = postalAddress.city
         self.countryCode = countryCode
