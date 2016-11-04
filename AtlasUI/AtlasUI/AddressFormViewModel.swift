@@ -49,7 +49,11 @@ class AddressFormViewModel {
         guard let postalAddress = contactProperty.value as? CNPostalAddress else { return nil }
         self.firstName = contactProperty.contact.givenName
         self.lastName = contactProperty.contact.familyName
-        self.street = postalAddress.street
+        let streetComponents = postalAddress.street.componentsSeparatedByString("\n")
+        self.street = streetComponents.first
+        if streetComponents.count > 1 && !streetComponents[1].isEmpty {
+            self.additional = streetComponents[1]
+        }
         self.zip = postalAddress.postalCode
         self.city = postalAddress.city
         self.countryCode = countryCode
