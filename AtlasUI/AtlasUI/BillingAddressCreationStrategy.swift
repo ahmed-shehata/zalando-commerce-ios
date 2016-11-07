@@ -4,9 +4,24 @@
 
 import Foundation
 
-struct BillingAddressCreationStrategy: AddressCreationStrategy {
+class BillingAddressCreationStrategy: AddressCreationStrategy {
 
     var addressFormCompletion: AddressFormCompletion?
-    let availableTypes: [AddressCreationType] = [.standard, .addressBookImport(strategy: ImportAddressBookStrategy())]
+    var availableFormCreationStrategies = [AddressFormCreationStrategy]()
+
+    func execute(checkout: AtlasCheckout) {
+        let countryCode = checkout.client.config.salesChannel.countryCode
+
+        let standardStrategy = StandardAddressFormCreationStrategy(countryCode: countryCode) { [weak self] viewModel in
+            self?.showAddressForm(.standardAddress, addressViewModel: viewModel, checkout: checkout)
+        }
+
+        let addressBookStrategy = AddressBookImportCreationStrategy(countryCode: countryCode) { [weak self] viewModel in
+            self?.showAddressForm(.standardAddress, addressViewModel: viewModel, checkout: checkout)
+        }
+
+        availableFormCreationStrategies = [standardStrategy, addressBookStrategy]
+        showActionSheet(availableFormCreationStrategies, checkout: checkout)
+    }
 
 }

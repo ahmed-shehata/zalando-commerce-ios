@@ -35,9 +35,9 @@
 "addressListView.prefix.memberID" = "PostNummer";
 "addressListView.add.cellTitle" = "Neue Adresse hinzufügen...";
 "addressListView.add.type.title" = "Lieferung an";
-"addressListView.add.type.standard" = "Wunschadresse";
-"addressListView.add.type.addressBookImport" = "Import from Address Book";
-"addressListView.add.type.pickupPoint" = "Packstation";
+"addressListView.add.type.StandardAddressFormCreationStrategy" = "Wunschadresse";
+"addressListView.add.type.PickupPointAddressFormCreationStrategy" = "Packstation";
+"addressListView.add.type.AddressBookImportCreationStrategy" = "Import from Address Book";
 
 // Address Form View
 "addressFormView.title" = "Anrede";

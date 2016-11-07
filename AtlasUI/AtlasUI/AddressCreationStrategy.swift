@@ -8,7 +8,6 @@ import AtlasSDK
 protocol AddressCreationStrategy {
 
     var addressFormCompletion: AddressFormCompletion? { get set }
-    var availableTypes: [AddressCreationType] { get }
 
     func execute(checkout: AtlasCheckout)
 
@@ -16,34 +15,12 @@ protocol AddressCreationStrategy {
 
 extension AddressCreationStrategy {
 
-    func execute(checkout: AtlasCheckout) {
-        showActionSheet(availableTypes, checkout: checkout)
-    }
-
-    func showActionSheet(types: [AddressCreationType], checkout: AtlasCheckout) {
+    func showActionSheet(strategies: [AddressFormCreationStrategy], checkout: AtlasCheckout) {
         let title = Localizer.string("addressListView.add.type.title")
-        let countryCode = checkout.client.config.salesChannel.countryCode
-        let emptyAddressViewModel = AddressFormViewModel(countryCode: countryCode)
 
-        var buttonActions = types.map { type in
-            ButtonAction(text: type.localizedTitleKey) { (UIAlertAction) in
-                switch type {
-                case .standard:
-                    self.showAddressForm(.standardAddress, addressViewModel: emptyAddressViewModel, checkout: checkout)
-
-                case .pickupPoint:
-                    self.showAddressForm(.pickupPoint, addressViewModel: emptyAddressViewModel, checkout: checkout)
-
-                case .addressBookImport(let strategy):
-                    strategy.completion = { contactProperty in
-                        if let addressViewModel = AddressFormViewModel(contactProperty: contactProperty, countryCode: countryCode) {
-                            self.showAddressForm(.standardAddress, addressViewModel: addressViewModel, checkout: checkout)
-                        } else {
-                            UserMessage.displayError(AtlasCheckoutError.unclassified)
-                        }
-                    }
-                    strategy.execute()
-                }
+        var buttonActions = strategies.map { strategy in
+            ButtonAction(text: strategy.localizedTitleKey) { (UIAlertAction) in
+                strategy.execute()
             }
         }
 
