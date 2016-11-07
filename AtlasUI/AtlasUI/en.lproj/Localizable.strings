@@ -36,6 +36,7 @@
 "addressListView.add.cellTitle" = "Add new address...";
 "addressListView.add.type.title" = "Address Type";
 "addressListView.add.type.standard" = "Standard";
+"addressListView.add.type.addressBookImport" = "Import from Address Book";
 "addressListView.add.type.pickupPoint" = "Pickup Point";
 
 // Address Form View

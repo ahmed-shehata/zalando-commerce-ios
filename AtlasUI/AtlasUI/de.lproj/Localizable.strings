@@ -36,6 +36,7 @@
 "addressListView.add.cellTitle" = "Neue Adresse hinzufügen...";
 "addressListView.add.type.title" = "Lieferung an";
 "addressListView.add.type.standard" = "Wunschadresse";
+"addressListView.add.type.addressBookImport" = "Import from Address Book";
 "addressListView.add.type.pickupPoint" = "Packstation";
 
 // Address Form View

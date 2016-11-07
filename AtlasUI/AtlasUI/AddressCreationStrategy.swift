@@ -5,10 +5,10 @@
 import Foundation
 import AtlasSDK
 
-protocol AddressCreationStrategy: class {
+protocol AddressCreationStrategy {
 
     var addressFormCompletion: AddressFormCompletion? { get set }
-    var showAddressFormStrategy: ShowAddressFormStrategy? { get set }
+    var availableTypes: [AddressCreationType] { get }
 
     func execute(checkout: AtlasCheckout)
 
@@ -16,30 +16,30 @@ protocol AddressCreationStrategy: class {
 
 extension AddressCreationStrategy {
 
-    func showCreateAddress(addressType: AddressFormType, checkout: AtlasCheckout) {
-        showAddressBookAlert(addressType, checkout: checkout)
+    func execute(checkout: AtlasCheckout) {
+        showActionSheet(availableTypes, checkout: checkout)
     }
 
-    private func showAddressBookAlert(addressType: AddressFormType, checkout: AtlasCheckout) {
-        showAddressFormStrategy = ShowAddressFormStrategy { [weak self] type in
-            switch type {
-            case .newAddress:
-                self?.showAddressForm(addressType, addressMode: .createAddress, checkout: checkout)
+    func showActionSheet(types: [AddressCreationType], checkout: AtlasCheckout) {
+        let title = Localizer.string("addressListView.add.type.title")
 
-            case .fromAddressBook(let contactProperty):
-                let countryCode = checkout.client.config.salesChannel.countryCode
-                if let addressViewModel = AddressFormViewModel(contactProperty: contactProperty, countryCode: countryCode) {
-                    let addressMode = AddressFormMode.createAddressFromTemplate(addressViewModel: addressViewModel)
-                    self?.showAddressForm(addressType, addressMode: addressMode, checkout: checkout)
-                } else {
-                    UserMessage.displayError(AtlasCheckoutError.unclassified)
+        var buttonActions = types.map { type in
+            ButtonAction(text: type.localizedTitleKey) { (UIAlertAction) in
+                switch type {
+                case .standard: self.showAddressForm(.standardAddress, addressMode: .createAddress, checkout: checkout)
+                case .addressBookImport(let strategy): strategy.configureAndExecute(checkout, addressCreationStrategy: self)
+                case .pickupPoint: self.showAddressForm(.pickupPoint, addressMode: .createAddress, checkout: checkout)
                 }
             }
         }
-        showAddressFormStrategy?.execute()
+
+        let cancelAction = ButtonAction(text: Localizer.string("button.general.cancel"), style: .Cancel, handler: nil)
+        buttonActions.append(cancelAction)
+
+        UserMessage.showActionSheet(title: title, actions: buttonActions)
     }
 
-    private func showAddressForm(addressType: AddressFormType, addressMode: AddressFormMode, checkout: AtlasCheckout) {
+    func showAddressForm(addressType: AddressFormType, addressMode: AddressFormMode, checkout: AtlasCheckout) {
         let viewController = AddressFormViewController(addressType: addressType,
                                                        addressMode: addressMode,
                                                        checkout: checkout,
@@ -48,6 +48,23 @@ extension AddressCreationStrategy {
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.modalPresentationStyle = .OverCurrentContext
         AtlasUIViewController.instance?.showViewController(navigationController, sender: nil)
+    }
+
+}
+
+private extension ImportAddressBookStrategy {
+
+    func configureAndExecute(checkout: AtlasCheckout, addressCreationStrategy: AddressCreationStrategy) {
+        completion = { contactProperty in
+            let countryCode = checkout.client.config.salesChannel.countryCode
+            if let addressViewModel = AddressFormViewModel(contactProperty: contactProperty, countryCode: countryCode) {
+                let addressMode = AddressFormMode.createAddressFromTemplate(addressViewModel: addressViewModel)
+                addressCreationStrategy.showAddressForm(.standardAddress, addressMode: addressMode, checkout: checkout)
+            } else {
+                UserMessage.displayError(AtlasCheckoutError.unclassified)
+            }
+        }
+        execute()
     }
 
 }

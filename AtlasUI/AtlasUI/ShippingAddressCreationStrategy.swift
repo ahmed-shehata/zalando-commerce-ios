@@ -4,22 +4,9 @@
 
 import Foundation
 
-class ShippingAddressCreationStrategy: AddressCreationStrategy {
+struct ShippingAddressCreationStrategy: AddressCreationStrategy {
 
     var addressFormCompletion: AddressFormCompletion?
-    var showAddressFormStrategy: ShowAddressFormStrategy?
-
-    func execute(checkout: AtlasCheckout) {
-        let title = Localizer.string("addressListView.add.type.title")
-        let standardAction = ButtonAction(text: "addressListView.add.type.standard", style: .Default) { [weak self] (UIAlertAction) in
-            self?.showCreateAddress(.standardAddress, checkout: checkout)
-        }
-        let pickupPointAction = ButtonAction(text: "addressListView.add.type.pickupPoint", style: .Default) { [weak self] (UIAlertAction) in
-            self?.showCreateAddress(.pickupPoint, checkout: checkout)
-        }
-        let cancelAction = ButtonAction(text: Localizer.string("button.general.cancel"), style: .Cancel, handler: nil)
-
-        UserMessage.showAlert(title, message: nil, preferredStyle: .ActionSheet, actions: standardAction, pickupPointAction, cancelAction)
-    }
+    let availableTypes: [AddressCreationType] = [.standard, .addressBookImport(strategy: ImportAddressBookStrategy()), .pickupPoint]
 
 }

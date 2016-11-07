@@ -4,13 +4,9 @@
 
 import Foundation
 
-class BillingAddressCreationStrategy: AddressCreationStrategy {
+struct BillingAddressCreationStrategy: AddressCreationStrategy {
 
     var addressFormCompletion: AddressFormCompletion?
-    var showAddressFormStrategy: ShowAddressFormStrategy?
-
-    func execute(checkout: AtlasCheckout) {
-        showCreateAddress(.standardAddress, checkout: checkout)
-    }
+    let availableTypes: [AddressCreationType] = [.standard, .addressBookImport(strategy: ImportAddressBookStrategy())]
 
 }
