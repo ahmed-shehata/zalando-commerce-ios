@@ -22,16 +22,26 @@ extension AddressCreationStrategy {
 
     func showActionSheet(types: [AddressCreationType], checkout: AtlasCheckout) {
         let title = Localizer.string("addressListView.add.type.title")
+        let countryCode = checkout.client.config.salesChannel.countryCode
+        let emptyAddressViewModel = AddressFormViewModel(countryCode: countryCode)
 
         var buttonActions = types.map { type in
             ButtonAction(text: type.localizedTitleKey) { (UIAlertAction) in
                 switch type {
                 case .standard:
-                    self.showAddressForm(.standardAddress, addressMode: .createAddress, checkout: checkout)
+                    self.showAddressForm(.standardAddress, addressViewModel: emptyAddressViewModel, checkout: checkout)
+
                 case .pickupPoint:
-                    self.showAddressForm(.pickupPoint, addressMode: .createAddress, checkout: checkout)
+                    self.showAddressForm(.pickupPoint, addressViewModel: emptyAddressViewModel, checkout: checkout)
+
                 case .addressBookImport(let strategy):
-                    strategy.configure(checkout, addressCreationStrategy: self)
+                    strategy.completion = { contactProperty in
+                        if let addressViewModel = AddressFormViewModel(contactProperty: contactProperty, countryCode: countryCode) {
+                            self.showAddressForm(.standardAddress, addressViewModel: addressViewModel, checkout: checkout)
+                        } else {
+                            UserMessage.displayError(AtlasCheckoutError.unclassified)
+                        }
+                    }
                     strategy.execute()
                 }
             }
@@ -43,31 +53,15 @@ extension AddressCreationStrategy {
         UserMessage.showActionSheet(title: title, actions: buttonActions)
     }
 
-    func showAddressForm(addressType: AddressFormType, addressMode: AddressFormMode, checkout: AtlasCheckout) {
+    func showAddressForm(addressType: AddressFormType, addressViewModel: AddressFormViewModel, checkout: AtlasCheckout) {
         let viewController = AddressFormViewController(addressType: addressType,
-                                                       addressMode: addressMode,
+                                                       addressMode: .createAddress(addressViewModel: addressViewModel),
                                                        checkout: checkout,
                                                        completion: addressFormCompletion)
 
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.modalPresentationStyle = .OverCurrentContext
         AtlasUIViewController.instance?.showViewController(navigationController, sender: nil)
-    }
-
-}
-
-private extension ImportAddressBookStrategy {
-
-    func configure(checkout: AtlasCheckout, addressCreationStrategy: AddressCreationStrategy) {
-        completion = { contactProperty in
-            let countryCode = checkout.client.config.salesChannel.countryCode
-            if let addressViewModel = AddressFormViewModel(contactProperty: contactProperty, countryCode: countryCode) {
-                let addressMode = AddressFormMode.createAddressFromTemplate(addressViewModel: addressViewModel)
-                addressCreationStrategy.showAddressForm(.standardAddress, addressMode: addressMode, checkout: checkout)
-            } else {
-                UserMessage.displayError(AtlasCheckoutError.unclassified)
-            }
-        }
     }
 
 }

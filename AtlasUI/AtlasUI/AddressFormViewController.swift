@@ -38,15 +38,8 @@ class AddressFormViewController: UIViewController, CheckoutProviderType {
         let countryCode = checkout.client.config.salesChannel.countryCode
 
         switch addressMode {
-        case .createAddress:
-            self.addressViewModel = AddressFormViewModel(countryCode: countryCode)
-
-        case .createAddressFromTemplate(let addressViewModel):
-            self.addressViewModel = addressViewModel
-
-        case .updateAddress(let address):
-            self.addressViewModel = AddressFormViewModel(equatableAddress: address, countryCode: countryCode)
-
+        case .createAddress(let addressViewModel): self.addressViewModel = addressViewModel
+        case .updateAddress(let address): self.addressViewModel = AddressFormViewModel(equatableAddress: address, countryCode: countryCode)
         }
 
         super.init(nibName: nil, bundle: nil)
@@ -76,7 +69,7 @@ extension AddressFormViewController {
                                                             action: #selector(submitButtonPressed))
 
         switch addressMode {
-        case .createAddress, .createAddressFromTemplate:
+        case .createAddress:
             navigationItem.leftBarButtonItem = UIBarButtonItem(title: Localizer.string("button.general.cancel"),
                                                                style: .Plain,
                                                                target: self,
@@ -104,7 +97,7 @@ extension AddressFormViewController {
         view.endEditing(true)
 
         switch addressMode {
-        case .createAddress, .createAddressFromTemplate: dismissViewControllerAnimated(true, completion: nil)
+        case .createAddress: dismissViewControllerAnimated(true, completion: nil)
         case .updateAddress: navigationController?.popViewControllerAnimated(true)
         }
     }
@@ -178,7 +171,7 @@ extension AddressFormViewController {
             enableSaveButton()
         } else {
             switch addressMode {
-            case .createAddress, .createAddressFromTemplate: createAddressRequest()
+            case .createAddress: createAddressRequest()
             case .updateAddress(let address): updateAddressRequest(address)
             }
         }

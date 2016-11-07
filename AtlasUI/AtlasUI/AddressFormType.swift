@@ -6,8 +6,7 @@ import Foundation
 import AtlasSDK
 
 enum AddressFormMode {
-    case createAddress
-    case createAddressFromTemplate(addressViewModel: AddressFormViewModel)
+    case createAddress(addressViewModel: AddressFormViewModel)
     case updateAddress(address: EquatableAddress)
 }
 
