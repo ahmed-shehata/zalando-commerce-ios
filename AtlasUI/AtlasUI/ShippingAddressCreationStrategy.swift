@@ -7,6 +7,6 @@ import Foundation
 struct ShippingAddressCreationStrategy: AddressCreationStrategy {
 
     var addressFormCompletion: AddressFormCompletion?
-    let availableTypes: [AddressCreationType] = [.standard, .addressBookImport(strategy: ImportAddressBookStrategy()), .pickupPoint]
+    let availableTypes: [AddressCreationType] = [.standard, .pickupPoint, .addressBookImport(strategy: ImportAddressBookStrategy())]
 
 }
