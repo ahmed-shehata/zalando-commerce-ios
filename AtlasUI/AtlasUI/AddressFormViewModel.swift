@@ -4,6 +4,7 @@
 
 import Foundation
 import AtlasSDK
+import ContactsUI
 
 class AddressFormViewModel {
 
@@ -42,6 +43,22 @@ class AddressFormViewModel {
         pickupPointMemberId = equatableAddress.pickupPoint?.memberId
         zip = equatableAddress.zip
         city = equatableAddress.city
+    }
+
+    init?(contactProperty: CNContactProperty, countryCode: String) {
+        guard let postalAddress = contactProperty.value as? CNPostalAddress else { return nil }
+        self.firstName = contactProperty.contact.givenName
+        self.lastName = contactProperty.contact.familyName
+        let streetComponents = postalAddress.street.componentsSeparatedByString("\n")
+        self.street = streetComponents.first
+        if streetComponents.count > 1 && !streetComponents[1].isEmpty {
+            self.additional = streetComponents[1]
+        }
+        self.zip = postalAddress.postalCode
+        self.city = postalAddress.city
+        self.countryCode = countryCode
+        self.isDefaultBilling = false
+        self.isDefaultShipping = false
     }
 
     internal var titles: [String] {
