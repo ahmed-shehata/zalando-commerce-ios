@@ -11,9 +11,6 @@ struct UpdateAddressEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
     var path: String { return "addresses/\(addressId)" }
     let acceptedContentType = "application/x.zalando.customer.address.update.response+json"
     let contentType = "application/x.zalando.customer.address.update+json"
-    var queryItems: [NSURLQueryItem]? {
-        return NSURLQueryItem.build(["sales_channel": salesChannel])
-    }
 
     var parameters: [String: AnyObject]? {
         return updateAddressRequest.toJSON()
