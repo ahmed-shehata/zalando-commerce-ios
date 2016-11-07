@@ -12,11 +12,11 @@ if [ -z ${API_ENDPOINT} ]; then
   API_ENDPOINT=https://cloud.testdroid.com
 fi
 
-if [ -z "$1" ]; then
-  read -p "Testdroid API-Key: " TESTDROID_APIKEY
-else
-  TESTDROID_APIKEY=$1
-fi
+# if [ -z "$1" ]; then
+#   read -p "Testdroid API-Key: " TESTDROID_APIKEY
+# else
+#   TESTDROID_APIKEY=$1
+# fi
 
 if [ -z ${TESTDROID_PROJECT_ID} ]; then
   echo "Project ID not found"
