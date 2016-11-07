@@ -7,14 +7,14 @@ import Foundation
 enum AddressCreationType {
 
     case standard
-    case addressBookImport (strategy: ImportAddressBookStrategy)
     case pickupPoint
+    case addressBookImport (strategy: ImportAddressBookStrategy)
 
     var localizedTitleKey: String {
         switch self {
         case .standard: return "addressListView.add.type.standard"
-        case .addressBookImport: return "addressListView.add.type.addressBookImport"
         case .pickupPoint: return "addressListView.add.type.pickupPoint"
+        case .addressBookImport: return "addressListView.add.type.addressBookImport"
         }
     }
 

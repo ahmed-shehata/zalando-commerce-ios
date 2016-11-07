@@ -26,9 +26,13 @@ extension AddressCreationStrategy {
         var buttonActions = types.map { type in
             ButtonAction(text: type.localizedTitleKey) { (UIAlertAction) in
                 switch type {
-                case .standard: self.showAddressForm(.standardAddress, addressMode: .createAddress, checkout: checkout)
-                case .addressBookImport(let strategy): strategy.configureAndExecute(checkout, addressCreationStrategy: self)
-                case .pickupPoint: self.showAddressForm(.pickupPoint, addressMode: .createAddress, checkout: checkout)
+                case .standard:
+                    self.showAddressForm(.standardAddress, addressMode: .createAddress, checkout: checkout)
+                case .pickupPoint:
+                    self.showAddressForm(.pickupPoint, addressMode: .createAddress, checkout: checkout)
+                case .addressBookImport(let strategy):
+                    strategy.configure(checkout, addressCreationStrategy: self)
+                    strategy.execute()
                 }
             }
         }
@@ -54,7 +58,7 @@ extension AddressCreationStrategy {
 
 private extension ImportAddressBookStrategy {
 
-    func configureAndExecute(checkout: AtlasCheckout, addressCreationStrategy: AddressCreationStrategy) {
+    func configure(checkout: AtlasCheckout, addressCreationStrategy: AddressCreationStrategy) {
         completion = { contactProperty in
             let countryCode = checkout.client.config.salesChannel.countryCode
             if let addressViewModel = AddressFormViewModel(contactProperty: contactProperty, countryCode: countryCode) {
@@ -64,7 +68,6 @@ private extension ImportAddressBookStrategy {
                 UserMessage.displayError(AtlasCheckoutError.unclassified)
             }
         }
-        execute()
     }
 
 }
