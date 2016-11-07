@@ -48,7 +48,7 @@
 		BFD1D1499CD09ED4A74B6ECA27B2B81B /* AtlasDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0000FBCF7CFA54DDC8399E4BABD42A15 /* AtlasDemoUITests.swift */; };
 		C13958F3EB2139209B40A7C93BAAAE5A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE465EB2A4F6D8B31261A51664D603CD /* MobileCoreServices.framework */; };
 		C28B405D84A7E9B9F1879C6860E5E428 /* XCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B3919A2CEC66658921E58E02D888B5 /* XCTestCase.swift */; };
-		C4EB83E0B477B89F5867EFC11A7750A6 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D700DE204B65F397DE54E0F8519CA6D /* ProductCollectionViewCell.swift */; };
+		0FE6FE338EDD0304EC47F380FA6E7F0F /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F2F3D1790B7E063C3527BF921B7E1D /* ProductCollectionViewCell.swift */; };
 		CE9B127E5489C61FF98589AAF040871F /* AtlasMockAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 400508DFC64A49E6ECB6AC89CF040BEE /* AtlasMockAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CFAD7A2119559691BF01E0E84EFD479A /* SwiftHTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD3778CF4B0F93EE5191DF4F8D3C518 /* SwiftHTTP.framework */; };
 		D5A7D77C559D41E4D656CEC2D2E53186 /* AtlasSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9C17735AA3650A838A0716B1CA9222AF /* AtlasSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -103,7 +103,7 @@
 		400508DFC64A49E6ECB6AC89CF040BEE /* AtlasMockAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AtlasMockAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		42CFF9379D10F9FC2F3FEAE9EB8AC172 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CD3778CF4B0F93EE5191DF4F8D3C518 /* SwiftHTTP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftHTTP.framework; path = ../Carthage/Build/iOS/SwiftHTTP.framework; sourceTree = "<group>"; };
-		4D700DE204B65F397DE54E0F8519CA6D /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
+		74F2F3D1790B7E063C3527BF921B7E1D /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		544EDD646AB580836FDD4255D475BA85 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		589E4A9F8217071530B2FDE472AD2996 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		68D47F523CFD3049B145328DBAAD3BF6 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -258,7 +258,7 @@
 				F726829F5154A9F85A931EAFC8D9E730 /* AppDelegate.swift */,
 				D89AF6C44EE98EAB17A1E81EC252C5AD /* AppSetup.swift */,
 				29D25E49A4BA3C66C371430FFD7DC396 /* CatalogViewController.swift */,
-				4D700DE204B65F397DE54E0F8519CA6D /* ProductCollectionViewCell.swift */,
+				74F2F3D1790B7E063C3527BF921B7E1D /* ProductCollectionViewCell.swift */,
 				68D47F523CFD3049B145328DBAAD3BF6 /* ProfileViewController.swift */,
 			);
 			path = AtlasDemo;
@@ -450,7 +450,7 @@
 				1862B91B111AAE37D4D8484B29B5AE6D /* CatalogViewController.swift in Sources */,
 				37390AB837A99ABB76439EB6FFF435DC /* DemoArticle.swift in Sources */,
 				A780FF331E667E4F680D3C330ED07DB8 /* DemoCatalog.swift in Sources */,
-				C4EB83E0B477B89F5867EFC11A7750A6 /* ProductCollectionViewCell.swift in Sources */,
+				0FE6FE338EDD0304EC47F380FA6E7F0F /* ProductCollectionViewCell.swift in Sources */,
 				A12BA69E9882091D0E7458127925A441 /* ProfileViewController.swift in Sources */,
 				EAF6B18A76607DD0AC887AEF1371D19A /* SizeMap.swift in Sources */,
 				9AD52B8EF1F22034353693A4843F318F /* UIViewController.swift in Sources */,

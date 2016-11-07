@@ -57,13 +57,16 @@ public typealias CheckAddressCompletion = AtlasResult<CheckAddressResponse> -> V
 extension APIClient {
 
     public func customer(completion: CustomerCompletion) {
-        let endpoint = GetCustomerEndpoint(serviceURL: config.checkoutURL)
+        let endpoint = GetCustomerEndpoint(serviceURL: config.checkoutURL,
+                                           salesChannel: config.salesChannel.identifier)
         fetch(from: endpoint, completion: completion)
     }
 
     public func createCart(cartItemRequests: CartItemRequest..., completion: CartCompletion) {
-        let parameters = CartRequest(salesChannel: config.salesChannel.identifier, items: cartItemRequests, replaceItems: true).toJSON()
-        let endpoint = CreateCartEndpoint(serviceURL: config.checkoutURL, parameters: parameters)
+        let parameters = CartRequest(items: cartItemRequests, replaceItems: true).toJSON()
+        let endpoint = CreateCartEndpoint(serviceURL: config.checkoutURL,
+                                          parameters: parameters,
+                                          salesChannel: config.salesChannel.identifier)
         fetch(from: endpoint, completion: completion)
     }
 
@@ -102,13 +105,15 @@ extension APIClient {
     public func createCheckout(cartId: String, addresses: CheckoutAddresses? = nil, completion: CheckoutCompletion) {
         let parameters = CreateCheckoutRequest(cartId: cartId, addresses: addresses).toJSON()
         let endpoint = CreateCheckoutEndpoint(serviceURL: config.checkoutURL,
-                                              parameters: parameters)
+                                              parameters: parameters,
+                                              salesChannel: config.salesChannel.identifier)
         fetch(from: endpoint, completion: completion)
     }
 
     public func updateCheckout(checkoutId: String, updateCheckoutRequest: UpdateCheckoutRequest, completion: CheckoutCompletion) {
         let endpoint = UpdateCheckoutEndpoint(serviceURL: config.checkoutURL,
                                               parameters: updateCheckoutRequest.toJSON(),
+                                              salesChannel: config.salesChannel.identifier,
                                               checkoutId: checkoutId)
         fetch(from: endpoint, completion: completion)
     }
@@ -117,6 +122,7 @@ extension APIClient {
         let parameters = OrderRequest(checkoutId: checkoutId).toJSON()
         let endpoint = CreateOrderEndpoint(serviceURL: config.checkoutURL,
                                            parameters: parameters,
+                                           salesChannel: config.salesChannel.identifier,
                                            checkoutId: checkoutId)
         fetch(from: endpoint, completion: completion)
     }
@@ -168,7 +174,8 @@ extension APIClient {
 
     public func checkAddress(request: CheckAddressRequest, completion: CheckAddressCompletion) {
         let endpoint = CheckAddressEndpoint(serviceURL: config.checkoutURL,
-                                            checkAddressRequest: request)
+                                            checkAddressRequest: request,
+                                            salesChannel: config.salesChannel.identifier)
         fetch(from: endpoint, completion: completion)
     }
 
