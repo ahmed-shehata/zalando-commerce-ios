@@ -4,7 +4,7 @@
 #  Copyright (c) 2016 Honza Dvorsky. All rights reserved.
 
 cd ..
-bash <(curl -s https://codecov.io/bash) -J AtlasSDK -J AtlasUI -D /private/tmp/sandbox/${BUDDYBUILD_APP_ID}/bbtest -Z -K
+# bash <(curl -s https://codecov.io/bash) -J AtlasSDK -J AtlasUI -D /private/tmp/sandbox/${BUDDYBUILD_APP_ID}/bbtest -Z -K
 
 # if [[ $BUDDYBUILD_BRANCH == "master" ]]; then
 
