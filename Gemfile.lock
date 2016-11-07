@@ -125,7 +125,7 @@ GEM
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     mustache (0.99.8)
-    nanaimo (0.1.2)
+    nanaimo (0.1.4)
     nap (1.1.0)
     net-http-persistent (3.0.0)
       connection_pool (~> 2.2)
