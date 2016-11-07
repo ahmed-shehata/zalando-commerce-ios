@@ -10,7 +10,6 @@ extension AtlasResult {
         switch self {
         case .failure(let error):
             guard (error as? AtlasUserError) != AtlasUserError.userCancelled else {
-                AtlasLogger.logError(error)
                 return nil
             }
 

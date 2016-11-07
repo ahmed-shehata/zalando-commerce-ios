@@ -15,7 +15,7 @@ struct OAuth2AuthorizationHandler: AuthorizationHandler {
 
     func authorize(completion: AuthorizationCompletion) {
         guard let topViewController = UIApplication.topViewController() else {
-            return completion(.failure(LoginError.missingViewControllerToShowLoginForm))
+            return completion(.failure(AtlasLoginError.missingViewControllerToShowLoginForm))
         }
 
         let loginViewController = OAuth2LoginViewController(loginURL: self.loginURL, completion: completion)

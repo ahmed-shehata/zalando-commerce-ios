@@ -1,29 +1,68 @@
-"Buy now" = "Buy now";
-"Pick a size" = "Pick a size";
-"Fatal Error" = "Fatal Error";
-"Error" = "Error";
-"Cancel" = "Cancel";
-"Save" = "Save";
-"Summary" = "Summary";
-"Payment" = "Payment";
-"Done" = "Done";
-"Total" = "Total";
-"vat.included" = "(VAT Included)";
-"estimated.delivery.title" = "Estimated Delivery";
-"Shipping" = "Shipping";
-"Pay %@" = "Pay %@";
-"Zalando.Connect" = "Connect to Zalando";
-"Zalando.login" = "Login with Zalando";
-"Zalando.Checkout" = "Checkout with Zalando";
-"CheckoutSummaryViewController.terms" = "Zalando terms, conditions and cancellation policy apply to all orders";
-"Address.Shipping" = "Shipping Address";
-"Address.Billing" = "Billing Address";
-"Size: %@" = "Size: %@";
-"order.place" = "Place order";
-"order.place.paypal" = "Confirm and pay with PayPal";
-"navigation.back.shop" = "Back to shop";
-"order.placed" = "Order placed";
+// Buttons
+"button.general.cancel" = "Cancel";
+"button.general.save" = "Save";
 
+// Login View
+"loginView.loginWithZalando" = "Login with Zalando";
+
+// Terms & Conditions View
+"termsAndConditionsView.title" = "Legal Notice";
+
+// Summary View
+"summaryView.title.summary" = "Summary";
+"summaryView.title.orderPlaced" = "Order placed";
+"summaryView.label.payment" = "Payment";
+"summaryView.label.address.shipping" = "Shipping Address";
+"summaryView.label.address.billing" = "Billing Address";
+"summaryView.label.address.packstationAbbreviation" = "P.S.";
+"summaryView.label.emptyAddress.shipping" = "No Shipping Address";
+"summaryView.label.emptyAddress.billing" = "No Billing Address";
+"summaryView.label.estimatedDelivery" = "Estimated Delivery";
+"summaryView.label.unitSize" = "Size: %@";
+"summaryView.label.price.total" = "Total";
+"summaryView.label.price.vat" = "(VAT Included)";
+"summaryView.label.price.shipping" = "Shipping";
+"summaryView.submitButton.checkoutWithZalando" = "Checkout with Zalando";
+"summaryView.submitButton.placeOrder" = "Place order";
+"summaryView.submitButton.payWithPapPal" = "Confirm and pay with PayPal";
+"summaryView.submitButton.backToShop" = "Back to shop";
+"summaryView.link.termsAndConditions" = "Zalando terms, conditions and cancellation policy apply to all orders";
+
+// Address list view
+"addressListView.title.shipping" = "Shipping Address";
+"addressListView.title.billing" = "Billing Address";
+"addressListView.prefix.packstation" = "Packstation";
+"addressListView.prefix.memberID" = "Member ID";
+"addressListView.add.cellTitle" = "Add new address...";
+"addressListView.add.type.title" = "Address Type";
+"addressListView.add.type.standard" = "Standard";
+"addressListView.add.type.pickupPoint" = "Pickup Point";
+
+// Address Form View
+"addressFormView.title" = "Title";
+"addressFormView.firstname" = "First Name";
+"addressFormView.lastname" = "Last Name";
+"addressFormView.street" = "Street";
+"addressFormView.additional" = "Additional";
+"addressFormView.packstation" = "Packstation";
+"addressFormView.memberid" = "Member ID";
+"addressFormView.zipcode" = "Zipcode";
+"addressFormView.city" = "City";
+"addressFormView.country" = "Country";
+"addressFormView.gender.male" = "Mr";
+"addressFormView.gender.female" = "Mrs";
+
+// Form validation
+"formValidation.required" = "This field is required";
+"formValidation.minLength" = "Min length is %@";
+"formValidation.maxLength" = "Max length is %@";
+"formValidation.exactLength" = "Required length is %@";
+"formValidation.pattern.name" = "Please only use the characters (A-z) in this field";
+"formValidation.pattern.city" = "Please only use the characters (A-z) in this field";
+"formValidation.pattern.street" = "Please enter your street and house number";
+"formValidation.numbersOnly" = "Only numbers are allowed";
+
+// Errors
 "AtlasCheckoutError.title" = "Oops";
 "AtlasCheckoutError.title.missingAddress" = "No address selected";
 "AtlasCheckoutError.title.priceChanged" = "Price changed";
@@ -36,11 +75,11 @@
 "AtlasCheckoutError.message.checkoutFailure" = "An error occurred during updating the checkout";
 "AtlasCheckoutError.message.addressInvalid" = "Address not valid, please check the address";
 
-"LoginError.title" = "Login Error";
-"LoginError.message.missingURL" = "Missing login URL";
-"LoginError.message.accessDenied" = "Access denied";
-"LoginError.message.requestFailed" = "Request failed";
-"LoginError.message.missingViewControllerToShowLoginForm" = "Cannot show login form";
+"AtlasLoginError.title" = "Login Error";
+"AtlasLoginError.message.missingURL" = "Missing login URL";
+"AtlasLoginError.message.accessDenied" = "Access denied";
+"AtlasLoginError.message.requestFailed" = "Request failed";
+"AtlasLoginError.message.missingViewControllerToShowLoginForm" = "Cannot show login form";
 
 "AtlasAPIError.title" = "Server Error";
 "AtlasAPIError.title.noInternet" = "No internet connection";
@@ -55,38 +94,3 @@
 "AtlasConfigurationError.message.missingClientId" = "Missing client identifier";
 "AtlasConfigurationError.message.missingSalesChannel" = "Missing sales channel";
 "AtlasConfigurationError.message.missingInterfaceLanguage" = "Missing interface language";
-
-"Address.form.title" = "Title";
-"Address.form.firstname" = "First Name";
-"Address.form.lastname" = "Last Name";
-"Address.form.street" = "Street";
-"Address.form.additional" = "Additional";
-"Address.form.packstation" = "Packstation";
-"Address.form.memberid" = "Member ID";
-"Address.form.zipcode" = "Zipcode";
-"Address.form.city" = "City";
-"Address.form.country" = "Country";
-"Address.form.gender.male" = "Mr";
-"Address.form.gender.female" = "Mrs";
-
-"Address.Add.type.title" = "Address Type";
-"Address.Add.type.standard" = "Standard";
-"Address.Add.type.pickupPoint" = "Pickup Point";
-"Address.Add.cellTitle" = "Add new address...";
-
-"Address.prefix.packstation" = "Packstation";
-"Address.prefix.memberID" = "Member ID";
-"Address.prefix.packstation.abbreviation" = "P.S.";
-"Address.empty.billing" = "No Billing Address";
-"Address.empty.shipping" = "No Shipping Address";
-
-"Form.validation.required" = "This field is required";
-"Form.validation.minLength: %@" = "Min length is %@";
-"Form.validation.maxLength: %@" = "Max length is %@";
-"Form.validation.exactLength: %@" = "Required length is %@";
-"Form.validation.pattern.name" = "Please only use the characters (A-z) in this field";
-"Form.validation.pattern.city" = "Please only use the characters (A-z) in this field";
-"Form.validation.pattern.street" = "Please enter your street and house number";
-"Form.validation.numbersOnly" = "Only numbers are allowed";
-
-"ToCViewController.title" = "Legal Notice";

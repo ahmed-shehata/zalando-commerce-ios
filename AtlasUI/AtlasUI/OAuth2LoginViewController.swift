@@ -28,7 +28,7 @@ final class OAuth2LoginViewController: UIViewController {
         self.loginURL = loginURL
         self.loginCompletion = completion
         super.init(nibName: nil, bundle: nil)
-        self.title = Localizer.string("Zalando.login")
+        self.title = Localizer.string("loginView.loginWithZalando")
     }
 
     required init?(coder decoder: NSCoder) {
@@ -53,7 +53,7 @@ final class OAuth2LoginViewController: UIViewController {
         webView.loadRequest(NSURLRequest(URL: loginURL))
     }
 
-    private func dismissViewController(withFailure error: LoginError, animated: Bool = true) -> Bool {
+    private func dismissViewController(withFailure error: AtlasLoginError, animated: Bool = true) -> Bool {
         return dismissViewController(.failure(error), animated: animated)
     }
 

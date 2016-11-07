@@ -41,11 +41,11 @@ struct CheckoutViewModel {
 extension CheckoutViewModel {
 
     var shippingAddress: [String] {
-        return selectedShippingAddress?.splittedFormattedPostalAddress ?? [Localizer.string("Address.empty.shipping")]
+        return selectedShippingAddress?.splittedFormattedPostalAddress ?? [Localizer.string("summaryView.label.emptyAddress.shipping")]
     }
 
     var billingAddress: [String] {
-        return selectedBillingAddress?.splittedFormattedPostalAddress ?? [Localizer.string("Address.empty.billing")]
+        return selectedBillingAddress?.splittedFormattedPostalAddress ?? [Localizer.string("summaryView.label.emptyAddress.billing")]
     }
 
     var isPaymentSelected: Bool {
