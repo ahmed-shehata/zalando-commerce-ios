@@ -89,7 +89,7 @@ extension AtlasCheckoutError: UserPresentable {
 
 }
 
-extension LoginError: UserPresentable { }
+extension AtlasLoginError: UserPresentable { }
 
 extension AtlasConfigurationError: UserPresentable { }
 

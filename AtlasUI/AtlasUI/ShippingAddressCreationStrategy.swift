@@ -10,14 +10,14 @@ class ShippingAddressCreationStrategy: AddressCreationStrategy {
     var navigationController: UINavigationController?
 
     func execute(checkout: AtlasCheckout) {
-        let title = Localizer.string("Address.Add.type.title")
-        let standardAction = ButtonAction(text: "Address.Add.type.standard", style: .Default) { [weak self] (UIAlertAction) in
+        let title = Localizer.string("addressListView.add.type.title")
+        let standardAction = ButtonAction(text: "addressListView.add.type.standard", style: .Default) { [weak self] (UIAlertAction) in
             self?.showCreateAddress(.standardAddress, checkout: checkout)
         }
-        let pickupPointAction = ButtonAction(text: "Address.Add.type.pickupPoint", style: .Default) { [weak self] (UIAlertAction) in
+        let pickupPointAction = ButtonAction(text: "addressListView.add.type.pickupPoint", style: .Default) { [weak self] (UIAlertAction) in
             self?.showCreateAddress(.pickupPoint, checkout: checkout)
         }
-        let cancelAction = ButtonAction(text: "Cancel", style: .Cancel, handler: nil)
+        let cancelAction = ButtonAction(text: Localizer.string("button.general.cancel"), style: .Cancel, handler: nil)
 
         UserMessage.showActionSheet(title: title, actions: standardAction, pickupPointAction, cancelAction)
     }

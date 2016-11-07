@@ -66,7 +66,6 @@ class ProfileViewController: UIViewController {
             switch result {
             case .failure(let error):
                 guard (error as? AtlasUserError) != AtlasUserError.userCancelled else {
-                    AtlasLogger.logError(error)
                     return
                 }
 

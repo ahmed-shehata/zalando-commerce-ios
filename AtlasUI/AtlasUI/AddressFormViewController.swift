@@ -65,12 +65,12 @@ class AddressFormViewController: UIViewController, CheckoutProviderType {
 extension AddressFormViewController {
 
     private func configureNavigation() {
-        let saveButton = UIBarButtonItem(title: Localizer.string("Save"),
+        let saveButton = UIBarButtonItem(title: Localizer.string("button.general.save"),
             style: .Plain, target: self, action: #selector(submitButtonPressed))
         navigationItem.rightBarButtonItem = saveButton
 
         if addressMode == .createAddress {
-            let cancelButton = UIBarButtonItem(title: Localizer.string("Cancel"),
+            let cancelButton = UIBarButtonItem(title: Localizer.string("button.general.cancel"),
                 style: .Plain, target: self, action: #selector(cancelButtonPressed))
             navigationItem.leftBarButtonItem = cancelButton
         }

@@ -62,7 +62,7 @@ extension CheckoutSummaryFooterStackView: UIDataBuilder {
     }
 
     private func tocAttributedTitle() -> NSAttributedString {
-        let attributedString = NSMutableAttributedString(string: Localizer.string("CheckoutSummaryViewController.terms"))
+        let attributedString = NSMutableAttributedString(string: Localizer.string("summaryView.link.termsAndConditions"))
         let range = NSRange(location: 0, length: attributedString.length)
         attributedString.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.StyleSingle.rawValue, range: range)
         return attributedString

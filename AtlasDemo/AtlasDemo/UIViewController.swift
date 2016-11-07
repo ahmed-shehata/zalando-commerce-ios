@@ -33,8 +33,8 @@ extension UIViewController {
         case AtlasAPIError.nsURLError(_, let details): message = details
         case AtlasAPIError.http(_, let details): message = details
         case AtlasAPIError.backend(_, _, _, let details): message = details
-        case LoginError.accessDenied: message = "Access denied"
-        case LoginError.requestFailed(let error): message = error?.localizedDescription
+        case AtlasLoginError.accessDenied: message = "Access denied"
+        case AtlasLoginError.requestFailed(let error): message = error?.localizedDescription
         case ArticlesError.Error(let error): message = (error as NSError).localizedDescription
         default: message = unclassifiedMessage
         }
