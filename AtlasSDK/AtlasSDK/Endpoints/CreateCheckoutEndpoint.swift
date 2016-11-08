@@ -2,7 +2,7 @@
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
-struct CreateCheckoutEndpoint: ConfigurableEndpoint {
+struct CreateCheckoutEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
 
     let serviceURL: NSURL
     let method: HTTPMethod = .POST
@@ -10,5 +10,6 @@ struct CreateCheckoutEndpoint: ConfigurableEndpoint {
     let contentType = "application/x.zalando.customer.checkout.create+json"
     let acceptedContentType = "application/x.zalando.customer.checkout.create.response+json"
     let parameters: [String: AnyObject]?
+    let salesChannel: String
 
 }

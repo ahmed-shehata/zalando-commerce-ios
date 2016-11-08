@@ -19,7 +19,7 @@ module Calypso
       dev_id = find_device_type(device_name)
       runtime_id = find_runtime(runtime_name)
       udid = run_simctl('create', "'#{name}'", dev_id, runtime_id).strip
-      puts "Simulator #{udid} created"
+      puts "Simulator '#{name}' (#{udid}) created"
       udid
     end
 
@@ -59,9 +59,12 @@ module Calypso
     end
 
     def find_runtime(name)
-      list['runtimes'].select do |dev|
+      print "Finding runtime #{name}... "
+      runtime = list['runtimes'].select do |dev|
         dev['name'] == name
-      end.first['identifier']
+      end.first
+      abort('Not found') if runtime.nil?
+      runtime['identifier']
     end
 
     def find_devices(name)

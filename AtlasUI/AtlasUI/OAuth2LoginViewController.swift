@@ -28,7 +28,7 @@ final class OAuth2LoginViewController: UIViewController {
         self.loginURL = loginURL
         self.loginCompletion = completion
         super.init(nibName: nil, bundle: nil)
-        self.title = Localizer.string("Zalando.login")
+        self.title = Localizer.string("loginView.loginWithZalando")
     }
 
     required init?(coder decoder: NSCoder) {
@@ -53,7 +53,7 @@ final class OAuth2LoginViewController: UIViewController {
         webView.loadRequest(NSURLRequest(URL: loginURL))
     }
 
-    private func dismissViewController(withFailure error: LoginError, animated: Bool = true) -> Bool {
+    private func dismissViewController(withFailure error: AtlasLoginError, animated: Bool = true) -> Bool {
         return dismissViewController(.failure(error), animated: animated)
     }
 
@@ -70,7 +70,7 @@ final class OAuth2LoginViewController: UIViewController {
     }
 
     @objc private func cancelButtonTapped(sender: UIBarButtonItem) {
-        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        dismissViewController(.failure(AtlasUserError.userCancelled))
     }
 
 }
@@ -113,49 +113,6 @@ extension OAuth2LoginViewController: UIWebViewDelegate {
     func webViewDidFinishLoad(webView: UIWebView) {
         webViewFinishedLoadCompletion?(webView)
         webViewDidFinishedLoad = true
-    }
-
-}
-
-#if DEBUG
-    extension OAuth2LoginViewController {
-
-        override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
-            if motion == .MotionShake {
-                self.login(email: "atlas-testing@mailinator.com", password: "12345678")
-            }
-        }
-
-    }
-#endif
-
-extension OAuth2LoginViewController {
-
-    func login(email email: String, password: String) {
-        if webViewDidFinishedLoad {
-            submit(email: email, password: password)
-        } else {
-            webViewFinishedLoadCompletion = { _ in
-                self.submit(email: email, password: password)
-            }
-        }
-    }
-
-    func submit(email email: String, password: String) {
-        let loginJS =
-        // "$('input[type=\'email\']').value = '\(email)'"
-        // + "$('input[type=\'password\']').value = '\(password)'"
-        // "$('.z-button-submit').click()"
-
-        "var inputFields = document.getElementsByTagName('input');"
-            + "for (var i = inputFields.length >>> 0; i--;) {"
-            + "  if (inputFields[i].type == 'email') inputFields[i].value = '\(email)';"
-            + "  if (inputFields[i].type == 'password') inputFields[i].value = '\(password)';"
-            + "};"
-            + "document.getElementsByClassName('z-button-submit')[0].click() "
-
-        let ret = webView.stringByEvaluatingJavaScriptFromString(loginJS)
-        print("SUMBIT RESULT: ", ret)
     }
 
 }

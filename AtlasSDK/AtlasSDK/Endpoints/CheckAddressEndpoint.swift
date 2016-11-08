@@ -4,7 +4,7 @@
 
 import Foundation
 
-struct CheckAddressEndpoint: ConfigurableEndpoint {
+struct CheckAddressEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
 
     let serviceURL: NSURL
     let method: HTTPMethod = .POST
@@ -17,5 +17,6 @@ struct CheckAddressEndpoint: ConfigurableEndpoint {
     }
 
     let checkAddressRequest: CheckAddressRequest
+    let salesChannel: String
 
 }

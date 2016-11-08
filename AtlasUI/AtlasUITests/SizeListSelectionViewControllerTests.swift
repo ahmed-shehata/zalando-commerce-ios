@@ -94,15 +94,10 @@ extension SizeListSelectionViewControllerTests {
     }
 
     private func atlasCheckout(completion: (AtlasCheckout -> Void)) {
-        let configURL = AtlasMockAPI.endpointURL(forPath: "/config")
-        let interfaceLanguage = "en"
-        let salesChannelId = "82fe2e7f-8c4f-4aa1-9019-b6bde5594456"
-        let clientId = "CLIENT_ID"
-        let options = Options(clientId: clientId,
-                              salesChannel: salesChannelId,
-                              interfaceLanguage: interfaceLanguage,
-                              configurationURL: configURL)
-
+        let options = Options(clientId: "CLIENT_ID",
+                              salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
+                              interfaceLanguage: "en",
+                              configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
 
         AtlasCheckout.configure(options) { result in
             guard let checkout = result.process() else { return XCTFail() }

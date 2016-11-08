@@ -4,7 +4,7 @@
 
 import AtlasSDK
 import AtlasMockAPI
-import Alamofire
+import SwiftHTTP
 
 typealias ArticlesCompletion = AtlasResult<[DemoArticle]> -> Void
 
@@ -13,36 +13,38 @@ enum ArticlesError: ErrorType {
     case Error(ErrorType)
 }
 
+// swiftlint:disable force_unwrapping
+
 class ArticlesClient {
 
     var dataTask: NSURLSessionDataTask?
 
     func fetch(articlesForSKUs skus: [String], completion: ArticlesCompletion) {
-        Alamofire.request(.GET, endpointURL(forSKUs: skus)).responseString { response in
-            if let error = response.result.error {
-                return completion(.failure(ArticlesError.Error(error)))
+        if let operation = try? HTTP.GET(endpointURL(forSKUs: skus)) {
+            operation.start { response in
+                if let error = response.error {
+                    return completion(.failure(ArticlesError.Error(error)))
+                }
+                guard let responseString = response.text else {
+                    return completion(.failure(ArticlesError.NoData))
+                }
+                let articles = DemoCatalog(jsonString: responseString).articles
+                completion(.success(articles))
             }
-            guard let responseString = response.result.value else {
-                return completion(.failure(ArticlesError.NoData))
-            }
-            let articles = DemoCatalog(jsonString: responseString).articles
-            completion(.success(articles))
         }
     }
 
-    private func endpointURL(forSKUs skus: [String]) -> NSURL {
+    private func endpointURL(forSKUs skus: [String]) -> String {
         if AtlasMockAPI.hasMockedAPIStarted {
-            return AtlasMockAPI.endpointURL(forPath: "/articles")
+            return AtlasMockAPI.endpointURL(forPath: "/articles").absoluteString!
         }
 
-        // swiftlint:disable:next force_unwrapping
         let urlComponents = NSURLComponents(string: "https://api.zalando.com/articles")!
         urlComponents.queryItems = skus.map {
             NSURLQueryItem(name: "articleId", value: $0)
         }
 
-        // swiftlint:disable:next force_unwrapping
-        return urlComponents.URL!
+        return urlComponents.URL!.absoluteString!
     }
 
 }

@@ -64,10 +64,13 @@ extension CheckoutSummaryActionsHandler {
     internal func loadCustomerData() {
         guard let viewController = self.viewController else { return }
 
-        viewController.checkout.client.customer { result in
+        UserMessage.displayLoader { hideLoader in
+            viewController.checkout.client.customer { result in
+                hideLoader()
 
-            guard let customer = result.process() else { return }
-            self.generateCheckout(customer)
+                guard let customer = result.process() else { return }
+                self.generateCheckout(customer)
+            }
         }
     }
 
@@ -155,7 +158,7 @@ extension CheckoutSummaryActionsHandler {
                 addressSelectionViewController.addressDeletedHandler = { viewController.checkoutViewModel.addressDeleted($0) }
                 addressSelectionViewController.addressSelectedHandler = { viewController.checkoutViewModel.selectedShippingAddress = $0 }
                 addressSelectionViewController.addressCreationStrategy = ShippingAddressCreationStrategy()
-                addressSelectionViewController.title = Localizer.string("Address.Shipping")
+                addressSelectionViewController.title = Localizer.string("addressListView.title.shipping")
                 viewController.showViewController(addressSelectionViewController, sender: nil)
             }
         }
@@ -176,7 +179,7 @@ extension CheckoutSummaryActionsHandler {
                 addressSelectionViewController.addressDeletedHandler = { viewController.checkoutViewModel.addressDeleted($0) }
                 addressSelectionViewController.addressSelectedHandler = { viewController.checkoutViewModel.selectedBillingAddress = $0 }
                 addressSelectionViewController.addressCreationStrategy =  BillingAddressCreationStrategy()
-                addressSelectionViewController.title = Localizer.string("Address.Billing")
+                addressSelectionViewController.title = Localizer.string("addressListView.title.billing")
                 viewController.showViewController(addressSelectionViewController, sender: nil)
             }
         }

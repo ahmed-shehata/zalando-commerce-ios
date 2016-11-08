@@ -16,17 +16,17 @@ EOT
     def all
       invoke :copyrights
       Lint.new.invoke(:fix)
-      invoke :fix_ruby
+      invoke :ruby
       invoke :xunique
     end
 
     desc 'copyrights', 'Clean copyright headers'
     def copyrights
-      clean_files('**/*.{h,m,swift}', %r{\/Carthage\/})
+      fix_copyrights
     end
 
-    desc 'fix_ruby', 'Clean ruby sources'
-    def fix_ruby
+    desc 'ruby', 'Clean ruby sources'
+    def ruby
       run 'rubocop -a calypso.rb lib/calypso/*.rb'
     end
 
@@ -40,16 +40,26 @@ EOT
 
     private
 
+    SOURCES_PATTERN = '**/*.{h,m,swift}'.freeze
+    SKIP_PATTERN = %r{(^|\/)Carthage\/}
+
     include Run
 
-    def clean_files(pattern, skip_pattern = nil)
-      Dir[pattern].each do |f|
-        next if f =~ skip_pattern
-        rewrite_file(f)
+    def fix_copyrights
+      sources.each do |f|
+        rewrite_copyright(f)
       end
     end
 
-    def rewrite_file(path)
+    def sources
+      select_files(pattern: SOURCES_PATTERN, skip_pattern: SKIP_PATTERN)
+    end
+
+    def select_files(pattern:, skip_pattern:)
+      Dir[pattern].select { |f| f !~ skip_pattern }
+    end
+
+    def rewrite_copyright(path)
       new_content = replace_copyright_header(path)
 
       return if new_content.empty?

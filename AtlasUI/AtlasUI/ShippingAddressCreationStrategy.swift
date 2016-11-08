@@ -7,19 +7,23 @@ import Foundation
 class ShippingAddressCreationStrategy: AddressCreationStrategy {
 
     var addressFormCompletion: AddressFormCompletion?
-    var navigationController: UINavigationController?
+    var availableFormCreationStrategies = [AddressFormCreationStrategy]()
 
     func execute(checkout: AtlasCheckout) {
-        let title = Localizer.string("Address.Add.type.title")
-        let standardAction = ButtonAction(text: "Address.Add.type.standard", style: .Default) { [weak self] (UIAlertAction) in
-            self?.showCreateAddress(.standardAddress, checkout: checkout)
-        }
-        let pickupPointAction = ButtonAction(text: "Address.Add.type.pickupPoint", style: .Default) { [weak self] (UIAlertAction) in
-            self?.showCreateAddress(.pickupPoint, checkout: checkout)
-        }
-        let cancelAction = ButtonAction(text: "Cancel", style: .Cancel, handler: nil)
+        let countryCode = checkout.client.config.salesChannel.countryCode
 
-        UserMessage.showActionSheet(title: title, actions: standardAction, pickupPointAction, cancelAction)
+        let standardStrategy = StandardAddressFormCreationStrategy(countryCode: countryCode) { [weak self] viewModel in
+            self?.showAddressForm(.standardAddress, addressViewModel: viewModel, checkout: checkout)
+        }
+        let pickupPointStrategy = PickupPointAddressFormCreationStrategy(countryCode: countryCode) { [weak self] viewModel in
+            self?.showAddressForm(.pickupPoint, addressViewModel: viewModel, checkout: checkout)
+        }
+        let addressBookStrategy = AddressBookImportCreationStrategy(countryCode: countryCode) { [weak self] viewModel in
+            self?.showAddressForm(.standardAddress, addressViewModel: viewModel, checkout: checkout)
+        }
+
+        availableFormCreationStrategies = [standardStrategy, pickupPointStrategy, addressBookStrategy]
+        showActionSheet(availableFormCreationStrategies, checkout: checkout)
     }
 
 }

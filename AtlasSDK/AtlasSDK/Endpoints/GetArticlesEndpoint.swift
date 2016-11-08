@@ -2,17 +2,17 @@
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
-struct GetArticlesEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
+struct GetArticleEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
 
     let serviceURL: NSURL
-    var path: String { return "articles/\(skus.joinWithSeparator(",") ?? "")" }
+    var path: String { return "articles/\(sku)" }
     let acceptedContentType = "application/x.zalando.article+json"
-    let skus: [String]
+    let sku: String
     var queryItems: [NSURLQueryItem]? {
-        return NSURLQueryItem.build(
-            ["sales_channel": salesChannel,
-                "client_id": clientId,
-                "fields": fields?.joinWithSeparator(",")])
+        return NSURLQueryItem.build([
+            "client_id": clientId,
+            "fields": fields?.joinWithSeparator(",")
+        ])
     }
 
     let salesChannel: String

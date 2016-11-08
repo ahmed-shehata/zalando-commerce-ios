@@ -71,14 +71,14 @@ class BannerErrorViewController: UIViewController {
         containerView.transform = CGAffineTransformMakeTranslation(0, -containerView.bounds.height)
         view.alpha = 1
 
-        UIView.animateWithDuration(AnimationDuration.fast.rawValue) { [weak self] in
+        UIView.animate(.fast) { [weak self] in
             self?.containerView.transform = CGAffineTransformIdentity
         }
     }
 
     func hideBanner() {
         let bannerHeight = containerView.bounds.height
-        UIView.animateWithDuration(AnimationDuration.fast.rawValue, animations: { [weak self] in
+        UIView.animate(.fast, animations: { [weak self] in
             self?.containerView.transform = CGAffineTransformMakeTranslation(0, -bannerHeight)
         }) { [weak self] _ in
             self?.view.removeFromSuperview()

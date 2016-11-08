@@ -3,11 +3,11 @@
 //
 
 import Foundation
+import AtlasSDK
 
 protocol AddressCreationStrategy {
 
     var addressFormCompletion: AddressFormCompletion? { get set }
-    var navigationController: UINavigationController? { get set }
 
     func execute(checkout: AtlasCheckout)
 
@@ -15,15 +15,30 @@ protocol AddressCreationStrategy {
 
 extension AddressCreationStrategy {
 
-    func showCreateAddress(addressType: AddressFormType, checkout: AtlasCheckout) {
+    func showActionSheet(strategies: [AddressFormCreationStrategy], checkout: AtlasCheckout) {
+        let title = Localizer.string("addressListView.add.type.title")
+
+        var buttonActions = strategies.map { strategy in
+            ButtonAction(text: strategy.localizedTitleKey) { (UIAlertAction) in
+                strategy.execute()
+            }
+        }
+
+        let cancelAction = ButtonAction(text: Localizer.string("button.general.cancel"), style: .Cancel, handler: nil)
+        buttonActions.append(cancelAction)
+
+        UserMessage.showActionSheet(title: title, actions: buttonActions)
+    }
+
+    func showAddressForm(addressType: AddressFormType, addressViewModel: AddressFormViewModel, checkout: AtlasCheckout) {
         let viewController = AddressFormViewController(addressType: addressType,
-                                                       addressMode: .createAddress,
+                                                       addressMode: .createAddress(addressViewModel: addressViewModel),
                                                        checkout: checkout,
                                                        completion: addressFormCompletion)
 
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.modalPresentationStyle = .OverCurrentContext
-        self.navigationController?.showViewController(navigationController, sender: nil)
+        AtlasUIViewController.instance?.showViewController(navigationController, sender: nil)
     }
 
 }

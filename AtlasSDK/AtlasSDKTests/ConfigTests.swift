@@ -57,15 +57,15 @@ class ConfigTests: XCTestCase {
         expect(config?.checkoutURL).to(equal(checkoutURL))
         expect(config?.loginURL).to(equal(loginURL))
         expect(config?.clientId).to(equal(clientId))
-        expect(config?.salesChannel).to(equal(salesChannelId))
-        expect(config?.tocURL).to(equal(NSURL(validURL: tocURL)))
+        expect(config?.salesChannel.identifier).to(equal(salesChannelId))
+        expect(config?.salesChannel.termsAndConditionsURL).to(equal(NSURL(validURL: tocURL)))
     }
 
     func testReadingLanguageFromConfigWhenNoInterfaceLanguageGiven() {
         let options = Options(clientId: clientId, salesChannel: salesChannelId)
         let config = Config(json: json, options: options)
 
-        expect(config?.salesChannelLocale.localeIdentifier).to(equal(configLocale))
+        expect(config?.salesChannel.locale.localeIdentifier).to(equal(configLocale))
         expect(config?.interfaceLocale.localeIdentifier).to(equal(configLocale))
     }
 
@@ -73,7 +73,7 @@ class ConfigTests: XCTestCase {
         let options = Options(clientId: clientId, salesChannel: salesChannelId, interfaceLanguage: interfaceLanguage)
         let config = Config(json: json, options: options)
 
-        expect(config?.salesChannelLocale.localeIdentifier).to(equal(configLocale))
+        expect(config?.salesChannel.locale.localeIdentifier).to(equal(configLocale))
         expect(config?.interfaceLocale.localeIdentifier).to(equal("\(interfaceLanguage)_\(configCountry)"))
     }
 

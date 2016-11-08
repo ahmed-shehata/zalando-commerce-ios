@@ -21,8 +21,8 @@ enum CheckoutViewState {
 
     var navigationBarTitleLocalizedKey: String {
         switch self {
-        case .NotLoggedIn, .CheckoutReady, .CheckoutIncomplete: return "Summary"
-        case .OrderPlaced: return "order.placed"
+        case .NotLoggedIn, .CheckoutReady, .CheckoutIncomplete: return "summaryView.title.summary"
+        case .OrderPlaced: return "summaryView.title.orderPlaced"
         }
     }
 
@@ -56,10 +56,10 @@ enum CheckoutViewState {
 
     func submitButtonTitle(isPaypal: Bool) -> String {
         switch self {
-        case .NotLoggedIn: return "Zalando.Checkout"
+        case .NotLoggedIn: return "summaryView.submitButton.checkoutWithZalando"
         case .CheckoutIncomplete, .CheckoutReady:
-            return isPaypal ? "order.place.paypal" : "order.place"
-        case .OrderPlaced: return "navigation.back.shop"
+            return isPaypal ? "summaryView.submitButton.payWithPapPal" : "summaryView.submitButton.placeOrder"
+        case .OrderPlaced: return "summaryView.submitButton.backToShop"
         }
     }
 

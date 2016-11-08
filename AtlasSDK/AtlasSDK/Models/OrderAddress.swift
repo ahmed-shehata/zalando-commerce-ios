@@ -4,7 +4,7 @@
 
 import Foundation
 
-public struct OrderAddress: StreetAddress {
+public struct OrderAddress: FormattableAddress {
     public let gender: Gender
     public let firstName: String
     public let lastName: String

@@ -1,5 +1,5 @@
-github "Alamofire/Alamofire" "3.5.0"
 github "Quick/Nimble" "v4.1.0"
+github "kean/Nuke" "1d2b2a2c61e5851a74ccad1995d22942b93db3c9"
+github "daltoniam/SwiftHTTP" "e5f14670e3bd1e2726259eb3a82a2bfb8d6a7efc"
 github "SwiftyJSON/SwiftyJSON" "54017d514a87b2b855b407131292c510cdeb65f8"
-github "bonkey/swifter" "b250a0d27fb91abebbf3efe458e0f56ef04e6861"
-github "Alamofire/AlamofireImage" "2.5.0"
+github "bonkey/swifter" "207c871b5862e76ab5cec9fd40999c97cd5e4a8c"

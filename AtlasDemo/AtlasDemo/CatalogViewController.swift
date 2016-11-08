@@ -19,44 +19,39 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
 
     private let articlesClient = ArticlesClient()
-    private let exampleImageView = UIImageView()
-    private let sampleSKUs = ["L2711E002-Q11", "AZ711N007-Q11",
-        "GU121D08Z-Q11", "AZ711N007-Q11", "AZ711N008-G11",
-        "AZ711M001-B11", "AZ711N00B-Q11", "MK151F00E-Q11",
-        "LA254E005-Q11", "HM141I009-J11", "EV941DA1B-G11",
-        "ON581D004-O11", "SN541H00V-Q11", "BU311L00C-Q12",
-        "AR322O01B-I11", "MA322E020-E11", "FOA51M001-Q11",
-        "1VJ51H02P-Q11", "GU151G034-Q11", "P5011N001-Q11",
-        "TI811B000-A11", "SH311N012-B11", "M0Q11L02W-J13",
-        "M0Q21C06G-B11", "M0Q21C068-B11", "UG151B002-C11",
-        "2SW51E08S-F11", "EV451D00U-302", "K4851H02E-Q11",
-        "RA254E00M-O12", "RA252F005-802", "K0052E00Z-O11",
-        "K0052E012-D11", "AJ152H012-Q11", "6CA51L00B-D11",
-        "C1551E00K-F11", "PS752G001-Q11", "PX652G005-K11",
-        "YO152G00A-C11", "BO152F027-Q11", "TP822C00N-Q11",
-        "HU752E00G-A11", "TI522A03E-K11", "TI522D02K-A11", "yo152ha06-k11"
+    private let sampleSKUs = [
+        "L2711E002-Q11", "GU121D08Z-Q11", "AZ711M001-B11",
+        "AZ711N00B-Q11", "MK151F00E-Q11", "M0Q21C068-B11",
+        "EV451D00U-302", "RA252F005-802"
     ]
+
+    static var instance: CatalogViewController? {
+        guard let
+            navigationController = UIApplication.sharedApplication().keyWindow?.rootViewController as? UINavigationController,
+            catalogViewController = navigationController.viewControllers.first as? CatalogViewController
+            else { return nil }
+        return catalogViewController
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        exampleImageView.image = UIImage(named: "example")
         productCollectionView.delegate = self
         productCollectionView.dataSource = self
         self.navigationController?.navigationBar.accessibilityIdentifier = "catalog-navigation-controller"
     }
 
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         loadHomepageArticles()
     }
 
-    private func loadHomepageArticles() {
+    internal func loadHomepageArticles() {
         articlesClient.fetch(articlesForSKUs: sampleSKUs) { result in
             switch result {
             case .success(let articles):
-                self.articles = articles
+                self.articles = articles.sort { $0.id < $1.id }
             case .failure(let error):
-                self.showError(title: "Error", error: error)
+                self.displayError(error)
             }
         }
     }

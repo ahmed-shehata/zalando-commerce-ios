@@ -69,11 +69,11 @@ extension AtlasAPIError: UserPresentable {
 
 extension AtlasCheckoutError: UserPresentable {
 
-    public func shouldDisplayGeneralMessage() -> Bool {
+    func shouldDisplayGeneralMessage() -> Bool {
         return false
     }
 
-    public func errorPresentationType() -> ErrorPresentationType {
+    func errorPresentationType() -> ErrorPresentationType {
         switch self {
         case .outOfStock: return .fullScreen
         default: return .banner
@@ -89,6 +89,12 @@ extension AtlasCheckoutError: UserPresentable {
 
 }
 
-extension LoginError: UserPresentable { }
+extension AtlasLoginError: UserPresentable { }
 
 extension AtlasConfigurationError: UserPresentable { }
+
+public enum AtlasUserError: UserPresentable {
+
+    case userCancelled
+
+}

@@ -6,7 +6,7 @@ import Foundation
 import AtlasSDK
 
 enum AddressFormMode {
-    case createAddress
+    case createAddress(addressViewModel: AddressFormViewModel)
     case updateAddress(address: EquatableAddress)
 }
 
@@ -39,7 +39,7 @@ enum AddressFormField: String {
     }
 
     var title: String {
-        let title = Localizer.string("Address.form.\(rawValue.lowercaseString)")
+        let title = Localizer.string("addressFormView.\(rawValue.lowercaseString)")
         return title + (formValidators.contains { $0 == .Required } ? "*" : "")
     }
 
@@ -104,12 +104,12 @@ enum AddressFormField: String {
             return [.Required,
                     .MaxLength(maxLength: 50),
                     .MinLength(minLength: 2),
-                    .Pattern(pattern: FormValidator.namePattern, errorMessage: "Form.validation.pattern.name")]
+                    .Pattern(pattern: FormValidator.namePattern, errorMessage: "formValidation.pattern.name")]
         case .street:
             return [.Required,
                     .MaxLength(maxLength: 50),
                     .MinLength(minLength: 2),
-                    .Pattern(pattern: FormValidator.streetPattern, errorMessage: "Form.validation.pattern.street")]
+                    .Pattern(pattern: FormValidator.streetPattern, errorMessage: "formValidation.pattern.street")]
         case .additional:
             return [.MaxLength(maxLength: 50)]
         case .packstation:
@@ -128,7 +128,7 @@ enum AddressFormField: String {
             return [.Required,
                     .MaxLength(maxLength: 50),
                     .MinLength(minLength: 2),
-                    .Pattern(pattern: FormValidator.cityPattern, errorMessage: "Form.validation.pattern.city")]
+                    .Pattern(pattern: FormValidator.cityPattern, errorMessage: "formValidation.pattern.city")]
         case .country:
             return [.Required]
         }

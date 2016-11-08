@@ -24,7 +24,7 @@ final class CheckoutPresentationController: UIPresentationController {
         return dimmingView
     }()
 
-    init(presentedViewController: UIViewController, presentingViewController: UIViewController,
+    init(presentedViewController: UIViewController, presentingViewController: UIViewController?,
         heightRatio: CGFloat = Constants.defaultHeightRatio) {
             self.heightRatio = heightRatio
             effectView.frame = presentedViewController.view.frame

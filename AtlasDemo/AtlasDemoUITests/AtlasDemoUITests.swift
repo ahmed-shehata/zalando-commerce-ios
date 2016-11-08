@@ -65,7 +65,6 @@ class AtlasDemoUITests: XCTestCase {
         changeShippingAddress()
         tapPlaceOrder()
         tapBackToShop()
-
     }
 
     func testChangeBillingAddress() {
@@ -104,7 +103,6 @@ class AtlasDemoUITests: XCTestCase {
 
         tapPlaceOrder()
         tapBackToShop()
-
     }
 
     func testEditAddress() {

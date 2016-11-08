@@ -65,7 +65,12 @@ struct UserMessage {
         displayFullScreen(userPresentable)
     }
 
+
     static func showActionSheet(title title: String, message: String? = nil, actions: ButtonAction...) {
+        showActionSheet(title: title, message: message, actions: actions)
+    }
+
+    static func showActionSheet(title title: String, message: String? = nil, actions: [ButtonAction]) {
         guard let topViewController = UIApplication.topViewController() else { return }
         let alertView = UIAlertController(title: title, message: message, preferredStyle: .ActionSheet)
 
@@ -77,10 +82,9 @@ struct UserMessage {
     }
 
     internal static func displayLoader(block: (() -> Void) -> Void) {
-        let atlasUIViewController: AtlasUIViewController? = try? Atlas.provide()
-        atlasUIViewController?.showLoader()
+        AtlasUIViewController.instance?.showLoader()
         block {
-            atlasUIViewController?.hideLoader()
+            AtlasUIViewController.instance?.hideLoader()
         }
     }
 

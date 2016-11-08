@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0800"
+   LastUpgradeVersion = "0810"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -43,9 +43,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E59A11A5E0347028AC04CEEACDF57D88"
-            BuildableName = "AtlasSDK.framework"
-            BlueprintName = "AtlasSDK"
+            BlueprintIdentifier = "4C40501591B44F17B94996E914C5F583"
+            BuildableName = "AtlasSDKTestsHostApp.app"
+            BlueprintName = "AtlasSDKTestsHostApp"
             ReferencedContainer = "container:AtlasSDK.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -62,15 +62,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E59A11A5E0347028AC04CEEACDF57D88"
-            BuildableName = "AtlasSDK.framework"
-            BlueprintName = "AtlasSDK"
+            BlueprintIdentifier = "4C40501591B44F17B94996E914C5F583"
+            BuildableName = "AtlasSDKTestsHostApp.app"
+            BlueprintName = "AtlasSDKTestsHostApp"
             ReferencedContainer = "container:AtlasSDK.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

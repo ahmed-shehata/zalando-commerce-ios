@@ -59,7 +59,11 @@ public enum HTTPStatus: Int {
         self = HTTPStatus(rawValue: statusCode) ?? .Unknown
     }
 
-    var isSuccessful: Bool {
+    public init(response: NSHTTPURLResponse) {
+        self.init(statusCode: response.statusCode)
+    }
+
+    public var isSuccessful: Bool {
         return (OK.rawValue..<BadRequest.rawValue).contains(rawValue)
     }
 }

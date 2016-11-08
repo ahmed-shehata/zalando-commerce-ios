@@ -6,7 +6,7 @@ import Foundation
 import UIKit
 import AtlasSDK
 import AtlasUI
-import AlamofireImage
+import Nuke
 
 class ProductCollectionViewCell: UICollectionViewCell {
 
@@ -19,8 +19,9 @@ class ProductCollectionViewCell: UICollectionViewCell {
         self.article = article
         self.backgroundColor = .whiteColor()
         self.productNameLabel.text = article.brand.name
+        thumbImageView.image = nil
         if let imageUrl = article.imageThumbURL {
-            self.thumbImageView.af_setImageWithURL(imageUrl)
+            thumbImageView.nk_setImageWith(imageUrl)
         }
         self.buyNowButton.accessibilityIdentifier = "buy-now"
 
@@ -28,10 +29,8 @@ class ProductCollectionViewCell: UICollectionViewCell {
     }
 
     @IBAction func buyNowButtonTapped(sender: AnyObject) {
-        if let rootController = UIApplication.sharedApplication().keyWindow?.rootViewController,
-            article = self.article {
-                AppSetup.checkout?.presentCheckout(onViewController: rootController,
-                    forProductSKU: article.id)
+        if let rootController = UIApplication.sharedApplication().keyWindow?.rootViewController, article = self.article {
+            AppSetup.checkout?.presentCheckout(onViewController: rootController, forProductSKU: article.id)
         }
     }
 }

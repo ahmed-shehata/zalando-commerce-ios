@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0800"
+   LastUpgradeVersion = "0810"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -119,10 +119,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2A09D0C5F782D7D824F5F39015890DE6"
-            BuildableName = "AtlasDemo.app"
-            BlueprintName = "AtlasDemo"
-            ReferencedContainer = "container:AtlasDemo/AtlasDemo.xcodeproj">
+            BlueprintIdentifier = "E59A11A5E0347028AC04CEEACDF57D88"
+            BuildableName = "AtlasSDK.framework"
+            BlueprintName = "AtlasSDK"
+            ReferencedContainer = "container:AtlasSDK/AtlasSDK.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
