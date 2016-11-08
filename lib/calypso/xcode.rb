@@ -48,7 +48,7 @@ module Calypso
           build_cmd = format_build_cmd('test', scheme,
                                        '-destination', "'platform=iOS Simulator,id=#{simulator_udid}'",
                                        '-enableCodeCoverage', 'YES')
-          exitstatus = run(build_cmd, false)
+          exitstatus = run(build_cmd, exit_on_failure: false)
         end
 
         break if exitstatus.zero?
