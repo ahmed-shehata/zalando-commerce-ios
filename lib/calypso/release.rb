@@ -10,6 +10,8 @@ module Calypso
 
     desc 'create_version', 'Creates new version: updates plist files, add a tag and push to the GitHub'
     def create_version
+      abort('Please commit all changes before creating new version') unless `git status --porcelain`.empty?
+
       new_version = ask("Enter new version (current #{ATLAS_VERSION}):", :blue)
       new_version = ATLAS_VERSION if new_version.empty?
       write_new_version(new_version)
@@ -18,8 +20,7 @@ module Calypso
       update_plist_version(new_version: new_version, plist: 'AtlasUI/AtlasUI/Info.plist')
 
       say 'Execute the following commands:'
-      say "  git add -A && git commit -m 'Release #{new_version}'\n"\
-        "  git tag '#{new_version}'\n"\
+      say "  git tag '#{new_version}'\n"\
         '  git push --tags', :yellow
     end
 
