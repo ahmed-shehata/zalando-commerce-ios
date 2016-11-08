@@ -37,7 +37,7 @@
 "addressListView.add.type.title" = "Lieferung an";
 "addressListView.add.type.StandardAddressFormCreationStrategy" = "Wunschadresse";
 "addressListView.add.type.PickupPointAddressFormCreationStrategy" = "Packstation";
-"addressListView.add.type.AddressBookImportCreationStrategy" = "Import from Address Book";
+"addressListView.add.type.AddressBookImportCreationStrategy" = "Aus dem Adressbuch";
 
 // Address Form View
 "addressFormView.title" = "Anrede";
