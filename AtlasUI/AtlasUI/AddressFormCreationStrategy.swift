@@ -15,7 +15,6 @@ protocol AddressFormCreationStrategy {
     func execute()
 }
 
-
 extension AddressFormCreationStrategy {
 
     var localizedTitleKey: String {

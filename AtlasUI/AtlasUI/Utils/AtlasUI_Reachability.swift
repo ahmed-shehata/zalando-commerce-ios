@@ -55,7 +55,6 @@ private func AtlasUI_callback(reachability:SCNetworkReachability, flags: SCNetwo
     }
 }
 
-
 internal class AtlasUI_Reachability: NSObject {
 
     internal typealias NetworkReachable = (AtlasUI_Reachability) -> ()
