@@ -1,8 +1,0 @@
-use_frameworks!
-
-target 'AtlasDemo' do
-  pod 'AtlasSDK'
-  pod 'Nuke', 'swift2.3'
-  pod 'SwiftHTTP', 'swift-23'
-  pod 'SwiftyJSON', 'swift2'
-end
