@@ -9,29 +9,24 @@ module Calypso
 
   class Release < Thor
 
-    option :tag, type: :boolean
-    option :push, type: :boolean
+    option :tag, type: :boolean, default: true
+    option :push, type: :boolean, default: true
     desc 'create_version', 'Creates new version: updates plist files, add a tag and push to the GitHub'
-    def create_version
+    def create_version(version = nil)
       if repo_changes?
         say 'Please commit all changes before creating new version', :red
-        abort
+        # abort
       end
 
-      new_version = ask("Enter new version (current #{ATLAS_VERSION}):", :blue)
-      new_version = ATLAS_VERSION if new_version.empty?
+      new_version = ask_new_version(version)
 
       update_plist(new_version, 'AtlasSDK/AtlasSDK/Info.plist')
       update_plist(new_version, 'AtlasUI/AtlasUI/Info.plist')
       update_version_file(new_version)
       commit_version(new_version)
 
-      if options[:tag] || yes?("Would you like to tag current commit with #{new_version}?", :red)
-        say "  git tag '#{new_version}'", :yellow
-      end
-      if options[:push] || yes?('Would you like to push changes?', :red)
-        say '  git push --tags', :yellow
-      end
+      tag_new_version(options, new_version)
+      push_new_version(options)
     end
 
     private
@@ -40,6 +35,34 @@ module Calypso
 
     def repo
       @repo ||= Git.open(File.expand_path('../../..', __FILE__))
+    end
+
+    def ask_new_version(version = nil)
+      new_version = version || ask("Enter new version (current #{ATLAS_VERSION}):", :blue)
+      new_version = ATLAS_VERSION if new_version.empty?
+
+      if new_version == ATLAS_VERSION
+        say "No change in version (#{ATLAS_VERSION}), quitting", :green
+        abort
+      end
+
+      new_version
+    end
+
+    def tag_new_version(options, new_version)
+      dry_run "git tag #{new_version}", dry_run: options[:tag]
+    end
+
+    def push_new_version(options)
+      dry_run 'git push --tags', dry_run: options[:push]
+    end
+
+    def dry_run(cmd, dry_run: true)
+      if dry_run
+        say "Don't forget to run:\n  #{cmd}", :yellow
+      else
+        run cmd
+      end
     end
 
     def update_version_file(new_version)
@@ -54,6 +77,8 @@ module Calypso
 
     def commit_version(new_version)
       repo.commit "[auto] Updated version to #{new_version}"
+    rescue StandardError => e
+      say e, :red
     end
 
     def repo_changes?
