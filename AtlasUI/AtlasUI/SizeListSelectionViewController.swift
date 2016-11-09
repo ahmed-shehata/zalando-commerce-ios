@@ -77,21 +77,27 @@ extension SizeListSelectionViewController {
     private func showCheckoutScreen(selectedArticleUnit: SelectedArticleUnit) {
         guard Atlas.isUserLoggedIn() else {
             let actionHandler = NotLoggedInActionHandler()
-            return displayCheckoutSummaryViewController(selectedArticleUnit, actionHandler: actionHandler)
+            let uiModel = NotLoggedInUIModel()
+            return displayCheckoutSummaryViewController(selectedArticleUnit, uiModel: uiModel, actionHandler: actionHandler)
         }
 
         AtlasAPIClient.customer { [weak self] customerResult in
             guard let customer = customerResult.process(forceFullScreenError: selectedArticleUnit.article.hasSingleUnit) else { return }
-            let actionHandler = LoggedInActionHandler(customer: customer)
-            self?.displayCheckoutSummaryViewController(selectedArticleUnit, actionHandler: actionHandler)
+            let actionHandler = CheckoutIncompleteActionHandler(customer: customer)
+            let uiModel = CheckoutIncompleteUIModel()
+            self?.displayCheckoutSummaryViewController(selectedArticleUnit, uiModel: uiModel, actionHandler: actionHandler)
         }
     }
 
-    private func displayCheckoutSummaryViewController(selectedUnit: SelectedArticleUnit, actionHandler: CheckoutSummaryActionHandler) {
-        let hasSingleUnit = selectedUnit.article.hasSingleUnit
-        actionHandler.createCheckoutSummaryDataModel(selectedUnit) { [weak self] result in
+    private func displayCheckoutSummaryViewController(selectedArticleUnit: SelectedArticleUnit,
+                                                      uiModel: CheckoutSummaryUIModel,
+                                                      actionHandler: CheckoutSummaryActionHandler) {
+
+        let hasSingleUnit = selectedArticleUnit.article.hasSingleUnit
+        actionHandler.createCheckoutSummaryDataModel(selectedArticleUnit) { [weak self] result in
             guard let dataModel = result.process(forceFullScreenError: hasSingleUnit) else { return }
-            let checkoutSummaryVC = CheckoutSummaryViewController(dataModel: dataModel, actionHandler: actionHandler)
+            let viewModel = CheckoutSummaryViewModel(dataModel: dataModel, uiModel: uiModel)
+            let checkoutSummaryVC = CheckoutSummaryViewController(viewModel: viewModel, actionHandler: actionHandler)
             self?.navigationController?.pushViewController(checkoutSummaryVC, animated: !hasSingleUnit)
         }
     }

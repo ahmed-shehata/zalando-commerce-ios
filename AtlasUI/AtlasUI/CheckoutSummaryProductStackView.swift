@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import AtlasSDK
 
 class CheckoutSummaryProductStackView: UIStackView {
 
@@ -71,14 +72,14 @@ extension CheckoutSummaryProductStackView: UIBuilder {
 
 extension CheckoutSummaryProductStackView: UIDataBuilder {
 
-    typealias T = CheckoutViewModel
+    typealias T = SelectedArticleUnit
 
     func configureData(viewModel: T) {
-        articleImageView.setImage(fromUrl: viewModel.selectedArticleUnit.article.thumbnailURL)
-        brandNameLabel.text = viewModel.selectedArticleUnit.article.brand.name
-        articleNameLabel.text = viewModel.selectedArticleUnit.article.name
-        unitSizeLabel.text = Localizer.string("summaryView.label.unitSize", viewModel.selectedArticleUnit.unit.size)
-        unitColorLabel.text = viewModel.selectedArticleUnit.article.color
+        articleImageView.setImage(fromUrl: viewModel.article.thumbnailURL)
+        brandNameLabel.text = viewModel.article.brand.name
+        articleNameLabel.text = viewModel.article.name
+        unitSizeLabel.text = Localizer.string("summaryView.label.unitSize", viewModel.unit.size)
+        unitColorLabel.text = viewModel.article.color
     }
 
 }

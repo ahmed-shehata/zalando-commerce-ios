@@ -44,7 +44,7 @@ extension CheckoutSummaryRootStackView: UIBuilder {
 
 extension CheckoutSummaryRootStackView: UIDataBuilder {
 
-    typealias T = CheckoutSummaryViewController // TODO: Create new view model
+    typealias T = CheckoutSummaryViewModel
 
     func configureData(viewModel: T) {
         mainStackView.configureData(viewModel)

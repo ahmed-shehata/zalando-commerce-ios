@@ -39,10 +39,10 @@ extension CheckoutSummaryDeliveryStackView: UIBuilder {
 
 extension CheckoutSummaryDeliveryStackView: UIDataBuilder {
 
-    typealias T = CheckoutViewModel
+    typealias T = CheckoutSummaryDataModel
 
     func configureData(viewModel: T) {
-        guard let delivery = viewModel.checkout?.delivery else {
+        guard let delivery = viewModel.delivery else {
             deliveryTitleLabel.text = ""
             deliveryValueLabel.text = ""
             return

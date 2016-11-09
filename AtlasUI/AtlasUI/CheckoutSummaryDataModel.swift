@@ -13,13 +13,15 @@ struct CheckoutSummaryDataModel {
     var paymentMethod: String?
     var shippingPrice: MoneyAmount?
     var totalPrice: MoneyAmount?
+    var delivery: Delivery?
 
     init(selectedArticleUnit: SelectedArticleUnit,
          shippingAddress: EquatableAddress? = nil,
          billingAddress: EquatableAddress? = nil,
          paymentMethod: String? = nil,
          shippingPrice: MoneyAmount? = nil,
-         totalPrice: MoneyAmount? = nil) {
+         totalPrice: MoneyAmount? = nil,
+         delivery: Delivery? = nil) {
 
         self.selectedArticleUnit = selectedArticleUnit
         self.shippingAddress = shippingAddress
@@ -27,6 +29,7 @@ struct CheckoutSummaryDataModel {
         self.paymentMethod = paymentMethod
         self.shippingPrice = shippingPrice
         self.totalPrice = totalPrice
+        self.delivery = delivery
     }
 
 }
@@ -43,6 +46,10 @@ extension CheckoutSummaryDataModel {
 
     var isPaymentSelected: Bool {
         return paymentMethod != nil
+    }
+
+    var isPayPal: Bool {
+        return paymentMethod?.caseInsensitiveCompare("paypal") == .OrderedSame
     }
 
 }

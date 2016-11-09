@@ -22,8 +22,4 @@ extension PaymentMethod: JSONInitializable {
             metadata: json[Keys.metadata].dictionaryObject)
     }
 
-    public func isPaypal() -> Bool {
-        return self.method?.caseInsensitiveCompare("paypal") == .OrderedSame
-    }
-
 }

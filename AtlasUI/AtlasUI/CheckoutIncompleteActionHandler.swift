@@ -7,6 +7,8 @@ import AtlasSDK
 
 struct CheckoutIncompleteActionHandler: CheckoutSummaryActionHandler {
 
+    let customer: Customer
+
     func createCheckoutSummaryDataModel(selectedArticleUnit: SelectedArticleUnit, completion: CheckoutSummaryDataModelCompletion) {
 
     }

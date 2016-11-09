@@ -46,18 +46,18 @@ extension CheckoutSummaryFooterStackView: UIBuilder {
 
 extension CheckoutSummaryFooterStackView: UIDataBuilder {
 
-    typealias T = CheckoutSummaryViewController
+    typealias T = CheckoutSummaryViewModel
 
     func configureData(viewModel: T) {
-        legalController = LegalController(tocURL: viewModel.checkout.client.config.salesChannel.termsAndConditionsURL)
+        legalController = LegalController(tocURL: AtlasAPIClient.instance?.config.salesChannel.termsAndConditionsURL)
 
         footerButton.setAttributedTitle(tocAttributedTitle(), forState: .Normal)
-        footerButton.hidden = !viewModel.viewState.showFooterLabel
+        footerButton.hidden = !viewModel.uiModel.showFooterLabel
 
-        let isPaypal = viewModel.checkoutViewModel.checkout?.payment.selected?.isPaypal() ?? false
+        let isPaypal = viewModel.dataModel.isPayPal
 
-        submitButton.setTitle(Localizer.string(viewModel.viewState.submitButtonTitle(isPaypal)), forState: .Normal)
-        submitButton.backgroundColor = viewModel.viewState.submitButtonBackgroundColor
+        submitButton.setTitle(Localizer.string(viewModel.uiModel.submitButtonTitle(isPaypal)), forState: .Normal)
+        submitButton.backgroundColor = viewModel.uiModel.submitButtonBackgroundColor
         submitButton.accessibilityIdentifier = "checkout-footer-button"
     }
 
