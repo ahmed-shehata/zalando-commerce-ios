@@ -128,10 +128,6 @@ extension CheckoutSummaryMainStackView: UIBuilder {
         paymentSeparatorView.setHeight(equalToConstant: 1)
     }
 
-    func builderSubviews() -> [UIBuilder] {
-        return [productStackView, shippingAddressStackView, billingAddressStackView, paymentStackView, priceStackView, deliveryStackView]
-    }
-
 }
 
 extension CheckoutSummaryMainStackView: UIDataBuilder {
