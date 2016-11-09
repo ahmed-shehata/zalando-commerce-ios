@@ -18,12 +18,12 @@ class LoaderView: UIView {
         return view
     }()
 
-    internal func show() {
+    func show() {
         activityIndicator.startAnimating()
         hidden = false
     }
 
-    internal func hide() {
+    func hide() {
         activityIndicator.stopAnimating()
         hidden = true
     }

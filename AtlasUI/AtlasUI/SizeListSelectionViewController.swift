@@ -7,14 +7,13 @@ import AtlasSDK
 
 final class SizeListSelectionViewController: UIViewController {
 
-    internal let checkout: AtlasUI
-    internal let sku: String
-    internal var tableViewDelegate: SizeListTableViewDelegate? {
+    let sku: String
+    var tableViewDelegate: SizeListTableViewDelegate? {
         didSet {
             tableView.delegate = tableViewDelegate
         }
     }
-    internal var tableViewDataSource: SizeListTableViewDataSource? {
+    var tableViewDataSource: SizeListTableViewDataSource? {
         didSet {
             tableView.dataSource = tableViewDataSource
             tableView.hidden = tableViewDataSource?.article.hasSingleUnit ?? true
@@ -30,8 +29,7 @@ final class SizeListSelectionViewController: UIViewController {
         return tableView
     }()
 
-    init(checkout: AtlasUI, sku: String) {
-        self.checkout = checkout
+    init(sku: String) {
         self.sku = sku
         super.init(nibName: nil, bundle: nil)
     }
@@ -51,7 +49,7 @@ final class SizeListSelectionViewController: UIViewController {
 
 extension SizeListSelectionViewController: UIBuilder {
 
-    internal func configureView() {
+    func configureView() {
         view.addSubview(tableView)
         view.backgroundColor = .clearColor()
         view.opaque = false
@@ -59,7 +57,7 @@ extension SizeListSelectionViewController: UIBuilder {
         showCancelButton()
     }
 
-    internal func configureConstraints() {
+    func configureConstraints() {
         tableView.fillInSuperView()
     }
 
@@ -68,45 +66,34 @@ extension SizeListSelectionViewController: UIBuilder {
 extension SizeListSelectionViewController {
 
     private func fetchSizes() {
-        UserMessage.displayLoader { hideLoader in
-            self.checkout.client.article(self.sku) { [weak self] result in
-                hideLoader()
-                guard let article = result.process(forceFullScreenError: true) else { return }
-                self?.tableViewDelegate = SizeListTableViewDelegate(article: article, completion: self?.showCheckoutScreen)
-                self?.tableViewDataSource = SizeListTableViewDataSource(article: article)
-                self?.showCancelButton()
-            }
+        AtlasAPIClient.article(self.sku) { [weak self] result in
+            guard let article = result.process(forceFullScreenError: true) else { return }
+            self?.tableViewDelegate = SizeListTableViewDelegate(article: article, completion: self?.showCheckoutScreen)
+            self?.tableViewDataSource = SizeListTableViewDataSource(article: article)
+            self?.showCancelButton()
         }
     }
 
     private func showCheckoutScreen(selectedArticleUnit: SelectedArticleUnit) {
-        let hasSingleUnit = selectedArticleUnit.article.hasSingleUnit
         guard Atlas.isUserLoggedIn() else {
-            let checkoutViewModel = CheckoutViewModel(selectedArticleUnit: selectedArticleUnit)
-            return displayCheckoutSummaryViewController(checkoutViewModel, animated: !hasSingleUnit)
+            let actionHandler = NotLoggedInActionHandler()
+            return displayCheckoutSummaryViewController(selectedArticleUnit, actionHandler: actionHandler)
         }
 
-        UserMessage.displayLoader { [weak self] hideLoader in
-            self?.checkout.client.customer { [weak self] result in
-                guard let customer = result.process(forceFullScreenError: hasSingleUnit) else {
-                    hideLoader()
-                    return
-                }
-
-            self?.checkout.createCheckoutViewModel(selectedArticleUnit) { result in
-                hideLoader()
-                guard var checkoutViewModel = result.process(forceFullScreenError: hasSingleUnit) else { return }
-
-                    checkoutViewModel.customer = customer
-                    self?.displayCheckoutSummaryViewController(checkoutViewModel, animated: !hasSingleUnit)
-                }
-            }
+        AtlasAPIClient.customer { [weak self] customerResult in
+            guard let customer = customerResult.process(forceFullScreenError: selectedArticleUnit.article.hasSingleUnit) else { return }
+            let actionHandler = LoggedInActionHandler(customer: customer)
+            self?.displayCheckoutSummaryViewController(selectedArticleUnit, actionHandler: actionHandler)
         }
     }
 
-    private func displayCheckoutSummaryViewController(checkoutViewModel: CheckoutViewModel, animated: Bool) {
-        let checkoutSummaryVC = CheckoutSummaryViewController(checkout: checkout, checkoutViewModel: checkoutViewModel)
-        navigationController?.pushViewController(checkoutSummaryVC, animated: animated)
+    private func displayCheckoutSummaryViewController(selectedUnit: SelectedArticleUnit, actionHandler: CheckoutSummaryActionHandler) {
+        let hasSingleUnit = selectedUnit.article.hasSingleUnit
+        actionHandler.createCheckoutSummaryDataModel(selectedUnit) { [weak self] result in
+            guard let dataModel = result.process(forceFullScreenError: hasSingleUnit) else { return }
+            let checkoutSummaryVC = CheckoutSummaryViewController(dataModel: dataModel, actionHandler: actionHandler)
+            self?.navigationController?.pushViewController(checkoutSummaryVC, animated: !hasSingleUnit)
+        }
     }
 
 }

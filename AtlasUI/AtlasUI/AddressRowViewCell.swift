@@ -7,7 +7,7 @@ import AtlasSDK
 
 final class AddressRowViewCell: UITableViewCell {
 
-    internal let stackView: UIStackView = {
+    let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .Vertical
         stackView.spacing = 2
@@ -16,7 +16,7 @@ final class AddressRowViewCell: UITableViewCell {
         return stackView
     }()
 
-    internal let titleLabel: UILabel = {
+    let titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.font = .systemFontOfSize(16)
@@ -24,7 +24,7 @@ final class AddressRowViewCell: UITableViewCell {
         return label
     }()
 
-    internal let addressLabel: UILabel = {
+    let addressLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.font = .systemFontOfSize(14, weight: UIFontWeightLight)

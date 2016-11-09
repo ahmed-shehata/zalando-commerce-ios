@@ -6,7 +6,7 @@ import AtlasSDK
 
 class SizeListTableViewDataSource: NSObject {
 
-    internal let article: Article
+    let article: Article
 
     init(article: Article) {
         self.article = article
@@ -16,11 +16,11 @@ class SizeListTableViewDataSource: NSObject {
 
 extension SizeListTableViewDataSource: UITableViewDataSource {
 
-    internal func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return article.availableUnits.count
     }
 
-    internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         return tableView.dequeueReusableCell(UnitSizeTableViewCell.self, forIndexPath: indexPath) { cell in
             let unit = self.article.availableUnits[indexPath.item]
             cell.configureData(unit)

@@ -9,13 +9,13 @@ typealias AddressFormCompletion = UserAddress -> Void
 
 class AddressFormViewController: UIViewController {
 
-    internal let scrollView: KeyboardScrollView = {
+    let scrollView: KeyboardScrollView = {
         let scrollView = KeyboardScrollView()
         scrollView.keyboardDismissMode = .Interactive
         return scrollView
     }()
 
-    internal lazy var addressStackView: AddressFormStackView = {
+    lazy var addressStackView: AddressFormStackView = {
         let stackView = AddressFormStackView()
         stackView.addressType = self.addressType
         stackView.axis = .Vertical
@@ -26,9 +26,9 @@ class AddressFormViewController: UIViewController {
 
     private let addressType: AddressFormType
     private let addressMode: AddressFormMode
-    internal let checkout: AtlasUI
+    let checkout: AtlasUI
     private let addressViewModel: AddressFormViewModel
-    internal var completion: AddressFormCompletion?
+    var completion: AddressFormCompletion?
 
     init(addressType: AddressFormType, addressMode: AddressFormMode, checkout: AtlasUI, completion: AddressFormCompletion?) {
         self.addressType = addressType

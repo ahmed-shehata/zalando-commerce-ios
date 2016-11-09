@@ -8,7 +8,7 @@ typealias SizeListTableViewDelegateCompletion = (selectedArticleUnit: SelectedAr
 
 class SizeListTableViewDelegate: NSObject {
 
-    internal let article: Article
+    let article: Article
     private let completion: SizeListTableViewDelegateCompletion?
 
     init(article: Article, completion: SizeListTableViewDelegateCompletion?) {
@@ -24,7 +24,7 @@ class SizeListTableViewDelegate: NSObject {
 
 extension SizeListTableViewDelegate: UITableViewDelegate {
 
-    internal func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
 
         let selectedArticleUnit = SelectedArticleUnit(article: article, selectedUnitIndex: indexPath.row)

@@ -6,7 +6,7 @@ import AtlasSDK
 
 extension AtlasResult {
 
-    internal func process(forceFullScreenError fullScreen: Bool = false) -> T? {
+    func process(forceFullScreenError fullScreen: Bool = false) -> T? {
         switch self {
         case .failure(let error):
             guard (error as? AtlasUserError) != AtlasUserError.userCancelled else {
@@ -39,3 +39,4 @@ extension AtlasResult {
 //                            self.execute(completion)
 //                        }
 //                    }
+// AtlasUI.register { OAuth2AuthorizationHandler(loginURL: client.config.loginURL) as AuthorizationHandler }

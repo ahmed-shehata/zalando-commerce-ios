@@ -6,7 +6,7 @@ import UIKit
 
 class CheckoutSummaryMainStackView: UIStackView {
 
-    internal let productStackView: CheckoutSummaryProductStackView = {
+    let productStackView: CheckoutSummaryProductStackView = {
         let stackView = CheckoutSummaryProductStackView()
         stackView.axis = .Horizontal
         stackView.spacing = 15
@@ -15,14 +15,14 @@ class CheckoutSummaryMainStackView: UIStackView {
         return stackView
     }()
 
-    internal let productSeparatorView: BorderView = {
+    let productSeparatorView: BorderView = {
         let view = BorderView()
         view.bottomBorder = true
         view.borderColor = UIColor(hex: 0xE5E5E5)
         return view
     }()
 
-    internal let shippingAddressStackView: CheckoutSummaryAddressStackView = {
+    let shippingAddressStackView: CheckoutSummaryAddressStackView = {
         let stackView = CheckoutSummaryAddressStackView()
         stackView.axis = .Horizontal
         stackView.spacing = 5
@@ -33,7 +33,7 @@ class CheckoutSummaryMainStackView: UIStackView {
         return stackView
     }()
 
-    internal let shippingAddressSeparatorView: BorderView = {
+    let shippingAddressSeparatorView: BorderView = {
         let view = BorderView()
         view.bottomBorder = true
         view.leadingMargin = 15
@@ -41,7 +41,7 @@ class CheckoutSummaryMainStackView: UIStackView {
         return view
     }()
 
-    internal let billingAddressStackView: CheckoutSummaryAddressStackView = {
+    let billingAddressStackView: CheckoutSummaryAddressStackView = {
         let stackView = CheckoutSummaryAddressStackView()
         stackView.axis = .Horizontal
         stackView.spacing = 5
@@ -52,7 +52,7 @@ class CheckoutSummaryMainStackView: UIStackView {
         return stackView
     }()
 
-    internal let billingAddressSeparatorView: BorderView = {
+    let billingAddressSeparatorView: BorderView = {
         let view = BorderView()
         view.bottomBorder = true
         view.leadingMargin = 15
@@ -60,7 +60,7 @@ class CheckoutSummaryMainStackView: UIStackView {
         return view
     }()
 
-    internal let paymentStackView: CheckoutSummaryPaymentStackView = {
+    let paymentStackView: CheckoutSummaryPaymentStackView = {
         let stackView = CheckoutSummaryPaymentStackView()
         stackView.axis = .Horizontal
         stackView.spacing = 5
@@ -70,14 +70,14 @@ class CheckoutSummaryMainStackView: UIStackView {
         return stackView
     }()
 
-    internal let paymentSeparatorView: BorderView = {
+    let paymentSeparatorView: BorderView = {
         let view = BorderView()
         view.bottomBorder = true
         view.borderColor = UIColor(hex: 0xE5E5E5)
         return view
     }()
 
-    internal let priceStackView: CheckoutSummaryPriceStackView = {
+    let priceStackView: CheckoutSummaryPriceStackView = {
         let stackView = CheckoutSummaryPriceStackView()
         stackView.axis = .Vertical
         stackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
@@ -85,7 +85,7 @@ class CheckoutSummaryMainStackView: UIStackView {
         return stackView
     }()
 
-    internal let deliveryStackView: CheckoutSummaryDeliveryStackView = {
+    let deliveryStackView: CheckoutSummaryDeliveryStackView = {
         let stackView = CheckoutSummaryDeliveryStackView()
         stackView.axis = .Horizontal
         stackView.spacing = 5

@@ -6,13 +6,13 @@ import UIKit
 
 class CheckoutSummaryProductStackView: UIStackView {
 
-    internal let articleImageView: UIImageView = {
+    let articleImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .ScaleAspectFit
         return imageView
     }()
 
-    internal let detailsStackView: UIStackView = {
+    let detailsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .Vertical
         stackView.spacing = 2
@@ -20,28 +20,28 @@ class CheckoutSummaryProductStackView: UIStackView {
         return stackView
     }()
 
-    internal let brandNameLabel: UILabel = {
+    let brandNameLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFontOfSize(16, weight: UIFontWeightBold)
         label.textColor = .blackColor()
         return label
     }()
 
-    internal let articleNameLabel: UILabel = {
+    let articleNameLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFontOfSize(14, weight: UIFontWeightLight)
         label.textColor = .blackColor()
         return label
     }()
 
-    internal let unitSizeLabel: UILabel = {
+    let unitSizeLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFontOfSize(14, weight: UIFontWeightLight)
         label.textColor = .lightGrayColor()
         return label
     }()
 
-    internal let unitColorLabel: UILabel = {
+    let unitColorLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFontOfSize(14, weight: UIFontWeightLight)
         label.textColor = .lightGrayColor()

@@ -136,7 +136,7 @@ enum AddressFormField: String {
 
 }
 
-internal func == (lhs: AddressFormMode, rhs: AddressFormMode) -> Bool {
+func == (lhs: AddressFormMode, rhs: AddressFormMode) -> Bool {
     switch (lhs, rhs) {
     case (.createAddress, .createAddress): return true
     case (.updateAddress(let lhsAddress), .updateAddress(let rhsAddress)): return lhsAddress == rhsAddress

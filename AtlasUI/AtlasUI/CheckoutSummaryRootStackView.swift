@@ -6,9 +6,9 @@ import UIKit
 
 class CheckoutSummaryRootStackView: UIStackView {
 
-    internal let scrollView = UIScrollView()
+    let scrollView = UIScrollView()
 
-    internal let mainStackView: CheckoutSummaryMainStackView = {
+    let mainStackView: CheckoutSummaryMainStackView = {
         let stackView = CheckoutSummaryMainStackView()
         stackView.axis = .Vertical
         stackView.spacing = 5
@@ -17,7 +17,7 @@ class CheckoutSummaryRootStackView: UIStackView {
         return stackView
     }()
 
-    internal let footerStackView: CheckoutSummaryFooterStackView = {
+    let footerStackView: CheckoutSummaryFooterStackView = {
         let stackView = CheckoutSummaryFooterStackView()
         stackView.axis = .Vertical
         stackView.spacing = 5

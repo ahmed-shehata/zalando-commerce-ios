@@ -9,7 +9,7 @@ class CheckoutSummaryFooterStackView: UIStackView {
 
     private var legalController: LegalController?
 
-    internal let footerButton: UIButton = {
+    let footerButton: UIButton = {
         let button = UIButton(type: .System)
         button.titleLabel?.font = .systemFontOfSize(12, weight: UIFontWeightLight)
         button.titleLabel?.adjustsFontSizeToFitWidth = true
@@ -19,7 +19,7 @@ class CheckoutSummaryFooterStackView: UIStackView {
         return button
     }()
 
-    internal let submitButton: RoundedButton = {
+    let submitButton: RoundedButton = {
         let button = RoundedButton(type: .Custom)
         button.cornerRadius = 5
         button.titleLabel?.font = .systemFontOfSize(15)

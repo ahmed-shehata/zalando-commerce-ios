@@ -8,7 +8,7 @@ import Contacts
 
 extension FormattableAddress {
 
-    internal var formattedContact: String? {
+    var formattedContact: String? {
         let contactFormatter = CNContactFormatter()
         let contact = CNMutableContact()
 
@@ -18,7 +18,7 @@ extension FormattableAddress {
         return contactFormatter.stringFromContact(contact)
     }
 
-    internal var formattedPostalAddress: String {
+    var formattedPostalAddress: String {
         let postalFormatter = CNPostalAddressFormatter()
         let postalAddress = CNMutablePostalAddress()
 
@@ -32,7 +32,7 @@ extension FormattableAddress {
         return postalFormatter.stringFromPostalAddress(postalAddress)
     }
 
-    internal var splittedFormattedPostalAddress: [String] {
+    var splittedFormattedPostalAddress: [String] {
         let postalFormatter = CNPostalAddressFormatter()
         let firstLineAddress = CNMutablePostalAddress()
         let secondLineAddress = CNMutablePostalAddress()

@@ -20,8 +20,8 @@ public class AtlasUIViewController: UIViewController {
         return view
     }()
 
-    init(atlasCheckout: AtlasUI, forProductSKU sku: String) {
-        let sizeSelectionViewController = SizeListSelectionViewController(checkout: atlasCheckout, sku: sku)
+    init(forProductSKU sku: String) {
+        let sizeSelectionViewController = SizeListSelectionViewController(sku: sku)
         mainNavigationController = UINavigationController(rootViewController: sizeSelectionViewController)
 
         super.init(nibName: nil, bundle: nil)

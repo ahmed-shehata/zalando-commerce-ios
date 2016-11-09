@@ -12,7 +12,7 @@ enum FormValidator {
     case Pattern(pattern: String, errorMessage: String)
     case NumbersOnly
 
-    internal func errorMessage(text: String?) -> String? {
+    func errorMessage(text: String?) -> String? {
         guard !isValid(text) else { return nil }
 
         switch self {
@@ -26,9 +26,9 @@ enum FormValidator {
     }
 
     private static let anyCharacterPattern = "a-zA-ZàÀâÂäÄáÁåÅéÉèÈêÊëËìÌîÎïÏòÒôÔöÖøØùÙûÛüÜçÇñœŒæÆíóúÍÓÚĄąĆćĘęŁłŃńŚśŻżŹź"
-    internal static let namePattern = "^[" + anyCharacterPattern + "]'?[- " + anyCharacterPattern + "ß]+$"
-    internal static let cityPattern = "^[" + anyCharacterPattern + "]'?[-,;()' 0-9" + anyCharacterPattern + "ß]+$"
-    internal static let streetPattern = "^(?=.*[a-zA-Z])(?=.*[0-9]).*$"
+    static let namePattern = "^[" + anyCharacterPattern + "]'?[- " + anyCharacterPattern + "ß]+$"
+    static let cityPattern = "^[" + anyCharacterPattern + "]'?[-,;()' 0-9" + anyCharacterPattern + "ß]+$"
+    static let streetPattern = "^(?=.*[a-zA-Z])(?=.*[0-9]).*$"
 
     private func isValid(text: String?) -> Bool {
         switch self {
@@ -50,7 +50,7 @@ enum FormValidator {
 
 }
 
-internal func == (lhs: FormValidator, rhs: FormValidator) -> Bool {
+func == (lhs: FormValidator, rhs: FormValidator) -> Bool {
     switch (lhs, rhs) {
     case (.Required, .Required): return true
     case (.MinLength(let lhsMinLength), .MinLength(let rhsMinLength)): return lhsMinLength == rhsMinLength

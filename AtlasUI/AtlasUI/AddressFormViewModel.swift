@@ -61,11 +61,11 @@ class AddressFormViewModel {
         self.isDefaultShipping = false
     }
 
-    internal var titles: [String] {
+    var titles: [String] {
         return ["", Gender.male.title, Gender.female.title]
     }
 
-    internal func updateTitle(localizedGenderText: String?) {
+    func updateTitle(localizedGenderText: String?) {
         switch localizedGenderText {
         case Gender.male.title?: gender = .male
         case Gender.female.title?: gender = .female
@@ -73,7 +73,7 @@ class AddressFormViewModel {
         }
     }
 
-    internal func localizedTitle() -> String? {
+    func localizedTitle() -> String? {
         return gender?.title
     }
 
@@ -81,7 +81,7 @@ class AddressFormViewModel {
 
 extension CreateAddressRequest {
 
-    internal init? (addressFormViewModel: AddressFormViewModel) {
+    init? (addressFormViewModel: AddressFormViewModel) {
 
         guard let
         gender = addressFormViewModel.gender,
@@ -107,7 +107,7 @@ extension CreateAddressRequest {
 
 extension UpdateAddressRequest {
 
-    internal init? (addressFormViewModel: AddressFormViewModel) {
+    init? (addressFormViewModel: AddressFormViewModel) {
 
         guard let
         gender = addressFormViewModel.gender,
@@ -133,7 +133,7 @@ extension UpdateAddressRequest {
 
 extension CheckAddressRequest {
 
-    internal init? (addressFormViewModel: AddressFormViewModel) {
+    init? (addressFormViewModel: AddressFormViewModel) {
 
         guard let address = CheckAddress(addressFormViewModel: addressFormViewModel) else { return nil }
 
@@ -145,7 +145,7 @@ extension CheckAddressRequest {
 
 extension PickupPoint {
 
-    internal init? (addressFormViewModel: AddressFormViewModel) {
+    init? (addressFormViewModel: AddressFormViewModel) {
 
         guard let
         pickupPointId = addressFormViewModel.pickupPointId,
@@ -160,7 +160,7 @@ extension PickupPoint {
 
 extension CheckAddress {
 
-    internal init? (addressFormViewModel: AddressFormViewModel) {
+    init? (addressFormViewModel: AddressFormViewModel) {
 
         guard let
         zip = addressFormViewModel.zip,

@@ -7,33 +7,33 @@ import AtlasSDK
 
 extension StreetAddress {
 
-    internal var isPickupPoint: Bool {
+    var isPickupPoint: Bool {
         return pickupPoint != nil
     }
 
-    internal var addressLine1: String {
+    var addressLine1: String {
         return (isPickupPoint ? pickupPoint?.id : street) ?? ""
     }
 
-    internal var addressLine2: String {
+    var addressLine2: String {
         return (isPickupPoint ? pickupPoint?.memberId : additional) ?? ""
     }
 
-    internal var shortAddressLine: String {
+    var shortAddressLine: String {
         return [addressLine1, addressLine2].filter { !$0.isEmpty }.joinWithSeparator(", ")
     }
 
-    internal var prefixedAddressLine1: String {
+    var prefixedAddressLine1: String {
         guard isPickupPoint && !addressLine1.isEmpty else { return addressLine1 }
         return Localizer.string("addressListView.prefix.packstation") + ": " + addressLine1
     }
 
-    internal var prefixedAddressLine2: String {
+    var prefixedAddressLine2: String {
         guard isPickupPoint && !addressLine2.isEmpty else { return addressLine2 }
         return Localizer.string("addressListView.prefix.memberID") + ": " + addressLine2
     }
 
-    internal var prefixedShortAddressLine: String {
+    var prefixedShortAddressLine: String {
         guard isPickupPoint && !shortAddressLine.isEmpty else { return shortAddressLine }
         return Localizer.string("summaryView.label.address.packstationAbbreviation") + ": " + shortAddressLine
     }

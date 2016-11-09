@@ -81,7 +81,7 @@ struct UserMessage {
         }
     }
 
-    internal static func displayLoader(block: (() -> Void) -> Void) {
+    static func displayLoader(block: (() -> Void) -> Void) {
         AtlasUIViewController.instance?.showLoader()
         block {
             AtlasUIViewController.instance?.hideLoader()

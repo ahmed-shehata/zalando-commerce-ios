@@ -6,7 +6,7 @@ import UIKit
 
 class CheckoutSummaryDeliveryStackView: UIStackView {
 
-    internal let deliveryTitleLabel: UILabel = {
+    let deliveryTitleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFontOfSize(10, weight: UIFontWeightLight)
         label.textColor = .blackColor()
@@ -14,7 +14,7 @@ class CheckoutSummaryDeliveryStackView: UIStackView {
         return label
     }()
 
-    internal let deliveryValueLabel: UILabel = {
+    let deliveryValueLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFontOfSize(10, weight: UIFontWeightLight)
         label.textColor = UIColor(hex: 0x7F7F7F)

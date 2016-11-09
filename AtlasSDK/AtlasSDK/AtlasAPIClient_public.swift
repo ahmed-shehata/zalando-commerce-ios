@@ -62,7 +62,7 @@ extension AtlasAPIClient {
         fetch(from: endpoint, completion: completion)
     }
 
-    public func createCart(cartItemRequests: CartItemRequest..., completion: CartCompletion) {
+    public func createCart(cartItemRequests: [CartItemRequest], completion: CartCompletion) {
         let parameters = CartRequest(items: cartItemRequests, replaceItems: true).toJSON()
         let endpoint = CreateCartEndpoint(serviceURL: config.checkoutURL,
                                           parameters: parameters,
@@ -73,7 +73,7 @@ extension AtlasAPIClient {
     public func createCheckoutCart(sku: String, addresses: CheckoutAddresses? = nil, completion: CheckoutCartCompletion) {
         let cartItemRequest = CartItemRequest(sku: sku, quantity: 1)
 
-        createCart(cartItemRequest) { cartResult in
+        createCart([cartItemRequest]) { cartResult in
             switch cartResult {
             case .failure(let error):
                 completion(.failure(error))

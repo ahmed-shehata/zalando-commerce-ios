@@ -45,7 +45,7 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
         loadHomepageArticles()
     }
 
-    internal func loadHomepageArticles() {
+    func loadHomepageArticles() {
         articlesClient.fetch(articlesForSKUs: sampleSKUs) { result in
             switch result {
             case .success(let articles):

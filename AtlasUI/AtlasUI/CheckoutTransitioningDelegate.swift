@@ -4,7 +4,7 @@
 
 import UIKit
 
-internal final class CheckoutTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
+final class CheckoutTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
 
     #if swift(>=2.3)
 

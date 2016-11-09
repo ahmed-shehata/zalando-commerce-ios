@@ -8,7 +8,7 @@ public struct AtlasAPIClient {
 
     public let config: Config
 
-    internal var urlSession: NSURLSession = NSURLSession.sharedSession()
+    var urlSession: NSURLSession = NSURLSession.sharedSession()
 
     init(config: Config) {
         self.config = config
