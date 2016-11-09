@@ -126,10 +126,6 @@ extension AddressFormViewController: UIBuilder {
         addressStackView.setWidth(equalToView: scrollView)
     }
 
-    func builderSubviews() -> [UIBuilder] {
-        return [addressStackView]
-    }
-
 }
 
 extension AddressFormViewController {

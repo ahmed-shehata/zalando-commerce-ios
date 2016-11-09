@@ -6,7 +6,6 @@ import Foundation
 
 public struct Cart {
     public let id: String
-    public let salesChannel: String
     public let items: [CartItem]
     public let itemsOutOfStock: [String]
     public let delivery: Delivery
@@ -28,7 +27,6 @@ extension Cart: JSONInitializable {
 
     private struct Keys {
         static let id = "id"
-        static let salesChannel = "sales_channel"
         static let items = "items"
         static let itemsOutOfStock = "items_out_of_stock"
         static let delivery = "delivery"
@@ -39,12 +37,10 @@ extension Cart: JSONInitializable {
     init?(json: JSON) {
         guard let
         id = json[Keys.id].string,
-            salesChannel = json[Keys.salesChannel].string,
             delivery = Delivery(json: json[Keys.delivery]),
             grossTotal = Money(json: json[Keys.grossTotal]),
             taxTotal = Money(json: json[Keys.taxTotal]) else { return nil }
         self.init(id: id,
-            salesChannel: salesChannel,
             items: json[Keys.items].arrayValue.flatMap { CartItem(json: $0) },
             itemsOutOfStock: json[Keys.itemsOutOfStock].arrayValue.flatMap { $0.string },
             delivery: delivery,
