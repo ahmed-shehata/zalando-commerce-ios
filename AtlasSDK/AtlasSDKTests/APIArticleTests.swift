@@ -8,10 +8,10 @@ import Nimble
 
 @testable import AtlasSDK
 
-class APIArticleTests: APIClientBaseTests {
+class APIArticleTests: AtlasAPIClientBaseTests {
 
     func testFetchArticle() {
-        waitUntilAPIClientIsConfigured { done, client in
+        waitUntilAtlasAPIClientIsConfigured { done, client in
             let sku = "AD541L009-G11"
             client.article(sku) { result in
                 switch result {

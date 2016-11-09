@@ -4,7 +4,7 @@
 
 import Foundation
 
-public struct APIClient {
+public struct AtlasAPIClient {
 
     public let config: Config
 

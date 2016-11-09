@@ -9,13 +9,13 @@ import AtlasMockAPI
 
 @testable import AtlasSDK
 
-class APIClientErrorsTests: APIClientBaseTests {
+class AtlasAPIClientErrorsTests: AtlasAPIClientBaseTests {
 
     let clientURL = NSURL(validURL: "https://atlas-sdk.api/api/any_endpoint")
 
     func testNoDataResponse() {
         let status = HTTPStatus.OK
-        let client = mockedAPIClient(forURL: clientURL, data: nil, status: status)
+        let client = mockedAtlasAPIClient(forURL: clientURL, data: nil, status: status)
 
         waitUntil(timeout: 10) { done in
             client.customer { result in
@@ -44,7 +44,7 @@ class APIClientErrorsTests: APIClientBaseTests {
                               authorizationHandler: MockAuthorizationHandler(error: AtlasAPIError.unauthorized),
                               configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
 
-        let client = mockedAPIClient(forURL: clientURL, options: options, data: errorResponse, status: status)
+        let client = mockedAtlasAPIClient(forURL: clientURL, options: options, data: errorResponse, status: status)
 
         waitUntil(timeout: 10) { done in
             client.customer { result in
@@ -64,7 +64,7 @@ class APIClientErrorsTests: APIClientBaseTests {
                     "status": status.rawValue, "detail": ""]
 
         let errorResponse = dataWithJSONObject(json)
-        let client = mockedAPIClient(forURL: clientURL, data: errorResponse, status: status)
+        let client = mockedAtlasAPIClient(forURL: clientURL, data: errorResponse, status: status)
 
         waitUntil(timeout: 10) { done in
             client.customer { result in
@@ -83,7 +83,7 @@ class APIClientErrorsTests: APIClientBaseTests {
     }
 
     func testNSURLDomainError() {
-        let client = mockedAPIClient(forURL: clientURL,
+        let client = mockedAtlasAPIClient(forURL: clientURL,
                                      data: nil,
                                      status: .Unauthorized,
                                      errorCode: NSURLErrorBadURL)
@@ -105,7 +105,7 @@ class APIClientErrorsTests: APIClientBaseTests {
     func testMangledJSON() {
         let errorStatus = HTTPStatus.ServiceUnavailable
         let errorResponse = "Some text error".dataUsingEncoding(NSUTF8StringEncoding)
-        let client = mockedAPIClient(forURL: clientURL, data: errorResponse, status: errorStatus)
+        let client = mockedAtlasAPIClient(forURL: clientURL, data: errorResponse, status: errorStatus)
 
         waitUntil(timeout: 10) { done in
             client.customer { result in

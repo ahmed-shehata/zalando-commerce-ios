@@ -54,7 +54,7 @@ public typealias AddressCreateUpdateCompletion = AtlasResult<UserAddress> -> Voi
  */
 public typealias CheckAddressCompletion = AtlasResult<CheckAddressResponse> -> Void
 
-extension APIClient {
+extension AtlasAPIClient {
 
     public func customer(completion: CustomerCompletion) {
         let endpoint = GetCustomerEndpoint(serviceURL: config.checkoutURL,
@@ -181,7 +181,7 @@ extension APIClient {
 
 }
 
-private extension APIClient {
+private extension AtlasAPIClient {
 
     private func errorBecauseCheckoutFailed(error: ErrorType) -> Bool {
         if case let AtlasAPIError.backend(status, _, _, _) = error where status == 409 {

@@ -8,12 +8,12 @@ import Nimble
 
 @testable import AtlasSDK
 
-class APICreateCheckoutTests: APIClientBaseTests {
+class APICreateCheckoutTests: AtlasAPIClientBaseTests {
 
     private let addressId = "6702759"
 
     func testCreateCheckoutFromArticle() {
-        waitUntilAPIClientIsConfigured { done, client in
+        waitUntilAtlasAPIClientIsConfigured { done, client in
             let sku = "AD541L009-G11"
             client.article(sku) { result in
                 switch result {
@@ -36,7 +36,7 @@ class APICreateCheckoutTests: APIClientBaseTests {
     }
 
     func testCreateCheckoutFromCart() {
-        waitUntilAPIClientIsConfigured { done, client in
+        waitUntilAtlasAPIClientIsConfigured { done, client in
             client.createCheckout(self.cartId) { result in
                 switch result {
                 case .failure(let error):

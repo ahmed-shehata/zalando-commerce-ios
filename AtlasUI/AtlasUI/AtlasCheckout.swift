@@ -12,9 +12,9 @@ typealias CreateCheckoutViewModelCompletion = AtlasResult<CheckoutViewModel> -> 
 
 final public class AtlasCheckout {
 
-    public let client: APIClient
+    public let client: AtlasAPIClient
 
-    private init(client: APIClient) {
+    private init(client: AtlasAPIClient) {
         self.client = client
     }
 

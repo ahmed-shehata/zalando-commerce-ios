@@ -8,12 +8,12 @@ import Nimble
 
 @testable import AtlasSDK
 
-class APIUpdateCheckoutTests: APIClientBaseTests {
+class APIUpdateCheckoutTests: AtlasAPIClientBaseTests {
 
     private let addressId = "6702759"
 
     func testUpdateBillingAddress() {
-        waitUntilAPIClientIsConfigured { done, client in
+        waitUntilAtlasAPIClientIsConfigured { done, client in
             let updateRequest = UpdateCheckoutRequest(billingAddressId: self.addressId)
             client.updateCheckout(self.checkoutId, updateCheckoutRequest: updateRequest) { result in
                 switch result {
@@ -29,7 +29,7 @@ class APIUpdateCheckoutTests: APIClientBaseTests {
     }
 
     func testUpdateShippingAddress() {
-        waitUntilAPIClientIsConfigured { done, client in
+        waitUntilAtlasAPIClientIsConfigured { done, client in
             let updateRequest = UpdateCheckoutRequest(shippingAddressId: self.addressId)
             client.updateCheckout(self.checkoutId, updateCheckoutRequest: updateRequest) { result in
                 switch result {
@@ -45,7 +45,7 @@ class APIUpdateCheckoutTests: APIClientBaseTests {
     }
 
     func testUpdateBillingAndShippingAddresses() {
-        waitUntilAPIClientIsConfigured { done, client in
+        waitUntilAtlasAPIClientIsConfigured { done, client in
             let updateRequest = UpdateCheckoutRequest(billingAddressId: self.addressId, shippingAddressId: self.addressId)
             client.updateCheckout(self.checkoutId, updateCheckoutRequest: updateRequest) { result in
                 switch result {

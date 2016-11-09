@@ -4,7 +4,7 @@
 
 import Foundation
 
-public typealias AtlasClientCompletion = AtlasResult<APIClient> -> Void
+public typealias AtlasClientCompletion = AtlasResult<AtlasAPIClient> -> Void
 
 public struct Atlas {
 
@@ -25,7 +25,7 @@ public struct Atlas {
                 AtlasLogger.logError(error)
                 completion(.failure(error))
             case .success(let config):
-                let client = APIClient(config: config)
+                let client = AtlasAPIClient(config: config)
                 completion(.success(client))
             }
         }
