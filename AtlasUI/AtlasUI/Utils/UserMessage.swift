@@ -65,7 +65,6 @@ struct UserMessage {
         displayFullScreen(userPresentable)
     }
 
-
     static func showActionSheet(title title: String, message: String? = nil, actions: ButtonAction...) {
         showActionSheet(title: title, message: message, actions: actions)
     }
