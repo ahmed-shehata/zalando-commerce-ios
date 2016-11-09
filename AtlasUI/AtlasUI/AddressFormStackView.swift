@@ -21,10 +21,6 @@ extension AddressFormStackView: UIBuilder {
         }
     }
 
-    func builderSubviews() -> [UIBuilder] {
-        return textFields.map { $0 }
-    }
-
 }
 
 extension AddressFormStackView: UIDataBuilder {

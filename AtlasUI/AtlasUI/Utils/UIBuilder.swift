@@ -8,7 +8,6 @@ protocol UIBuilder {
 
     func configureView()
     func configureConstraints()
-    func builderSubviews() -> [UIBuilder]
 
 }
 
@@ -16,12 +15,26 @@ extension UIBuilder {
 
     func configureView() {}
     func configureConstraints() {}
-    func builderSubviews() -> [UIBuilder] { return [] }
 
     func buildView() {
         configureView()
         configureConstraints()
-        builderSubviews().forEach { $0.buildView() }
+
+        if let view = self as? UIView {
+            buildSubViews(view)
+        } else if let viewController = self as? UIViewController {
+            buildSubViews(viewController.view)
+        }
+    }
+
+    func buildSubViews(rootView: UIView) {
+        rootView.subviews.forEach { subview in
+            if let builder = subview as? UIBuilder {
+                builder.buildView()
+            } else {
+                buildSubViews(subview)
+            }
+        }
     }
 
 }

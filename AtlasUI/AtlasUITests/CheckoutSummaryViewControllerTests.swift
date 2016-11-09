@@ -121,7 +121,6 @@ private extension Cart {
 
     var cartWithDifferentPrice: Cart {
         return Cart(id: id,
-                    salesChannel: salesChannel,
                     items: items,
                     itemsOutOfStock: itemsOutOfStock,
                     delivery: delivery,
