@@ -25,3 +25,17 @@ extension AtlasResult {
     }
 
 }
+
+// TODO: Handle AuthorizationHandler
+//guard let authorizationHandler = try? AtlasUI.provide() as AuthorizationHandler else {
+//                        return completion(.failure(error))
+//                    }
+//                    authorizationHandler.authorize { result in
+//                        switch result {
+//                        case .failure(let error):
+//                            completion(.failure(error))
+//                        case .success(let accessToken):
+//                            APIAccessToken.store(accessToken)
+//                            self.execute(completion)
+//                        }
+//                    }

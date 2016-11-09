@@ -7,7 +7,7 @@ import AtlasSDK
 
 typealias AddressFormCompletion = UserAddress -> Void
 
-class AddressFormViewController: UIViewController, CheckoutProviderType {
+class AddressFormViewController: UIViewController {
 
     internal let scrollView: KeyboardScrollView = {
         let scrollView = KeyboardScrollView()
@@ -26,11 +26,11 @@ class AddressFormViewController: UIViewController, CheckoutProviderType {
 
     private let addressType: AddressFormType
     private let addressMode: AddressFormMode
-    internal let checkout: AtlasCheckout
+    internal let checkout: AtlasUI
     private let addressViewModel: AddressFormViewModel
     internal var completion: AddressFormCompletion?
 
-    init(addressType: AddressFormType, addressMode: AddressFormMode, checkout: AtlasCheckout, completion: AddressFormCompletion?) {
+    init(addressType: AddressFormType, addressMode: AddressFormMode, checkout: AtlasUI, completion: AddressFormCompletion?) {
         self.addressType = addressType
         self.addressMode = addressMode
         self.checkout = checkout

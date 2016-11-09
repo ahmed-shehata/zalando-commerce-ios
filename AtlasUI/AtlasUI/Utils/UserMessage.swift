@@ -93,7 +93,7 @@ struct UserMessage {
 extension UserMessage {
 
     private static var errorPresenterViewController: UIViewController? {
-        let viewController: AtlasUIViewController? = try? Atlas.provide()
+        let viewController: AtlasUIViewController? = try? AtlasUI.provide()
         guard let atlasUIViewController = viewController else { return nil }
         return atlasUIViewController.presentedViewController ?? atlasUIViewController
     }

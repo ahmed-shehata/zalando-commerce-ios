@@ -24,9 +24,10 @@ public struct Options {
             self.useSandboxEnvironment = useSandbox ?? bundle.bool(.useSandbox) ?? false
             self.interfaceLanguage = interfaceLanguage ?? bundle.string(.interfaceLanguage)
 
-            if let authorizationHandler = authorizationHandler {
-                Atlas.register { authorizationHandler as AuthorizationHandler }
-            }
+        // TODO: FIX
+//            if let authorizationHandler = authorizationHandler {
+//                Atlas.register { authorizationHandler as AuthorizationHandler }
+//            }
 
             if let url = configurationURL {
                 self.configurationURL = url

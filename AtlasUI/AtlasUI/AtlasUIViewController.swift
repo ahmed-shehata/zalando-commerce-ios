@@ -11,7 +11,7 @@ public class AtlasUIViewController: UIViewController {
     private let atlasReachability = AtlasReachability()
 
     static var instance: AtlasUIViewController? {
-        return try? Atlas.provide()
+        return try? AtlasUI.provide()
     }
 
     private let loaderView: LoaderView = {
@@ -20,7 +20,7 @@ public class AtlasUIViewController: UIViewController {
         return view
     }()
 
-    init(atlasCheckout: AtlasCheckout, forProductSKU sku: String) {
+    init(atlasCheckout: AtlasUI, forProductSKU sku: String) {
         let sizeSelectionViewController = SizeListSelectionViewController(checkout: atlasCheckout, sku: sku)
         mainNavigationController = UINavigationController(rootViewController: sizeSelectionViewController)
 

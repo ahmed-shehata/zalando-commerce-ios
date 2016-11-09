@@ -70,7 +70,7 @@ extension AtlasUIErrorTests {
     private func registerAtlasUIViewController(completion: () -> Void) {
         atlasCheckout { atlasCheckout in
             let atlasUIViewController = AtlasUIViewController(atlasCheckout: atlasCheckout, forProductSKU: "AD541L009-G11")
-            Atlas.register { atlasUIViewController }
+            AtlasUI.register { atlasUIViewController }
             completion()
         }
     }

@@ -14,7 +14,7 @@ class AppSetup {
         case Deutsch = "de"
     }
 
-    private(set) static var checkout: AtlasCheckout?
+    private(set) static var checkout: AtlasUI?
     private(set) static var options: Options?
 
     private static let defaultUseSandbox = true
@@ -61,7 +61,7 @@ class AppSetup {
     }
 
     private static func setAppOptions(opts: Options, completion: AtlasCheckoutConfigurationCompletion? = nil) {
-        AtlasCheckout.configure(opts) { result in
+        AtlasUI.configure(opts) { result in
             if case let .success(checkout) = result {
                 AppSetup.options = opts
                 AppSetup.checkout = checkout

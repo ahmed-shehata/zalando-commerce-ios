@@ -112,7 +112,7 @@ extension CheckoutSummaryViewControllerTests {
 
     private func registerAtlasUIViewController(checkout: AtlasCheckout) {
         let atlasUIViewController = AtlasUIViewController(atlasCheckout: checkout, forProductSKU: "AD541L009-G11")
-        Atlas.register { atlasUIViewController }
+        AtlasUI.register { atlasUIViewController }
     }
 
 }

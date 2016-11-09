@@ -23,7 +23,7 @@ final class AddressPickerViewController: UIViewController {
                                             actionsHandler: self.actionsHandler)
     }()
 
-    private let checkout: AtlasCheckout
+    private let checkout: AtlasUI
     private let initialAddresses: [EquatableAddress]
     private let initialSelectedAddress: EquatableAddress?
     private lazy var actionsHandler: AddressActionsHandler = {
@@ -40,7 +40,7 @@ final class AddressPickerViewController: UIViewController {
         return tableView
     }()
 
-    init(checkout: AtlasCheckout, initialAddresses: [EquatableAddress], initialSelectedAddress: EquatableAddress?) {
+    init(checkout: AtlasUI, initialAddresses: [EquatableAddress], initialSelectedAddress: EquatableAddress?) {
         self.checkout = checkout
         self.initialAddresses = initialAddresses
         self.initialSelectedAddress = initialSelectedAddress

@@ -5,9 +5,9 @@
 import Foundation
 import AtlasSDK
 
-final class SizeListSelectionViewController: UIViewController, CheckoutProviderType {
+final class SizeListSelectionViewController: UIViewController {
 
-    internal let checkout: AtlasCheckout
+    internal let checkout: AtlasUI
     internal let sku: String
     internal var tableViewDelegate: SizeListTableViewDelegate? {
         didSet {
@@ -30,7 +30,7 @@ final class SizeListSelectionViewController: UIViewController, CheckoutProviderT
         return tableView
     }()
 
-    init(checkout: AtlasCheckout, sku: String) {
+    init(checkout: AtlasUI, sku: String) {
         self.checkout = checkout
         self.sku = sku
         super.init(nibName: nil, bundle: nil)

@@ -7,10 +7,10 @@ import AtlasSDK
 
 class AddressActionsHandler {
 
-    private let checkout: AtlasCheckout
+    private let checkout: AtlasUI
     private weak var viewController: AddressPickerViewController?
 
-    init(checkout: AtlasCheckout, viewController: AddressPickerViewController?) {
+    init(checkout: AtlasUI, viewController: AddressPickerViewController?) {
         self.checkout = checkout
         self.viewController = viewController
     }

@@ -9,7 +9,7 @@ class ShippingAddressCreationStrategy: AddressCreationStrategy {
     var addressFormCompletion: AddressFormCompletion?
     var availableFormCreationStrategies = [AddressFormCreationStrategy]()
 
-    func execute(checkout: AtlasCheckout) {
+    func execute(checkout: AtlasUI) {
         let countryCode = checkout.client.config.salesChannel.countryCode
 
         let standardStrategy = StandardAddressFormCreationStrategy(countryCode: countryCode) { [weak self] viewModel in

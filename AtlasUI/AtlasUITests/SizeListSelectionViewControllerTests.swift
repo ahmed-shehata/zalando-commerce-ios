@@ -90,7 +90,7 @@ extension SizeListSelectionViewControllerTests {
 
     private func registerAtlasUIViewController(checkout: AtlasCheckout, sku: String) {
         let atlasUIViewController = AtlasUIViewController(atlasCheckout: checkout, forProductSKU: sku)
-        Atlas.register { atlasUIViewController }
+        AtlasUI.register { atlasUIViewController }
     }
 
     private func atlasCheckout(completion: (AtlasCheckout -> Void)) {

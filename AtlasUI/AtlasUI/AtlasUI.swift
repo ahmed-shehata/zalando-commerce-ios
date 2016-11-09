@@ -6,13 +6,14 @@ import Foundation
 import UIKit
 import AtlasSDK
 
-public typealias AtlasCheckoutConfigurationCompletion = AtlasResult<AtlasCheckout> -> Void
+public typealias AtlasCheckoutConfigurationCompletion = AtlasResult<AtlasUI> -> Void
 
 typealias CreateCheckoutViewModelCompletion = AtlasResult<CheckoutViewModel> -> Void
 
-final public class AtlasCheckout {
+final public class AtlasUI {
 
     public let client: AtlasAPIClient
+    private static let injector = Injector()
 
     private init(client: AtlasAPIClient) {
         self.client = client
@@ -38,19 +39,19 @@ final public class AtlasCheckout {
                 completion(.failure(error))
 
             case .success(let client):
-                let checkout = AtlasCheckout(client: client)
+                let checkout = AtlasUI(client: client)
 
                 let localizer: Localizer
                 do {
                     localizer = try Localizer(localeIdentifier: client.config.interfaceLocale.localeIdentifier)
-                    Atlas.register { localizer }
+                    AtlasUI.register { localizer }
                 } catch let error {
                     completion(.failure(error))
                 }
 
-                Atlas.register { OAuth2AuthorizationHandler(loginURL: client.config.loginURL) as AuthorizationHandler }
-                Atlas.register { client }
-                Atlas.register { checkout }
+                AtlasUI.register { OAuth2AuthorizationHandler(loginURL: client.config.loginURL) as AuthorizationHandler }
+                AtlasUI.register { client }
+                AtlasUI.register { checkout }
 
                 completion(.success(checkout))
             }
@@ -64,7 +65,7 @@ final public class AtlasCheckout {
         atlasUIViewController.transitioningDelegate = checkoutTransitioning
         atlasUIViewController.modalPresentationStyle = .Custom
 
-        Atlas.register { atlasUIViewController }
+        AtlasUI.register { atlasUIViewController }
 
         viewController.presentViewController(atlasUIViewController, animated: true, completion: nil)
     }
@@ -93,6 +94,14 @@ final public class AtlasCheckout {
                 completion(.success(checkoutModel))
             }
         }
+    }
+
+    public static func register<T>(factory: Void -> T) {
+        injector.register(factory)
+    }
+
+    public static func provide<T>() throws -> T {
+        return try injector.provide()
     }
 
 }

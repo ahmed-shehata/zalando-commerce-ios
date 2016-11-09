@@ -5,9 +5,9 @@
 import UIKit
 import AtlasSDK
 
-class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
+class CheckoutSummaryViewController: UIViewController {
 
-    internal var checkout: AtlasCheckout
+    internal var checkout: AtlasUI
     internal var checkoutViewModel: CheckoutViewModel {
         didSet {
             injectCustomer(from: oldValue)
@@ -33,7 +33,7 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
         return stackView
     }()
 
-    init(checkout: AtlasCheckout, checkoutViewModel: CheckoutViewModel) {
+    init(checkout: AtlasUI, checkoutViewModel: CheckoutViewModel) {
         self.checkout = checkout
         self.checkoutViewModel = checkoutViewModel
 
