@@ -15,7 +15,7 @@ module Calypso
     def create_version(version = nil)
       if repo_changes?
         say 'Please commit all changes before creating new version', :red
-        # abort
+        abort
       end
 
       new_version = ask_new_version(version)
@@ -50,18 +50,18 @@ module Calypso
     end
 
     def tag_new_version(options, new_version)
-      dry_run "git tag #{new_version}", dry_run: options[:tag]
+      dry_run "git tag #{new_version}", real_run: options[:tag]
     end
 
     def push_new_version(options)
-      dry_run 'git push --tags', dry_run: options[:push]
+      dry_run 'git push --tags', real_run: options[:push]
     end
 
-    def dry_run(cmd, dry_run: true)
-      if dry_run
-        say "Don't forget to run:\n  #{cmd}", :yellow
-      else
+    def dry_run(cmd, real_run: true)
+      if real_run
         run cmd
+      else
+        say "Don't forget to run:\n  #{cmd}", :yellow
       end
     end
 
