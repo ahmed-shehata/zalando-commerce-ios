@@ -17,12 +17,12 @@ class AddressFormViewModel {
     var pickupPointMemberId: String?
     var zip: String?
     var city: String?
+    var countryCode: String?
 
-    let countryCode: String
     let isDefaultBilling: Bool
     let isDefaultShipping: Bool
 
-    init (equatableAddress: EquatableAddress? = nil, countryCode: String) {
+    init (equatableAddress: EquatableAddress? = nil) {
         if let userAddress = equatableAddress as? UserAddress {
             isDefaultBilling = userAddress.isDefaultBilling
             isDefaultShipping = userAddress.isDefaultShipping
@@ -30,7 +30,6 @@ class AddressFormViewModel {
             isDefaultBilling = false
             isDefaultShipping = false
         }
-        self.countryCode = countryCode
 
         guard let equatableAddress = equatableAddress else { return }
 
@@ -43,9 +42,10 @@ class AddressFormViewModel {
         pickupPointMemberId = equatableAddress.pickupPoint?.memberId
         zip = equatableAddress.zip
         city = equatableAddress.city
+        countryCode = AtlasAPIClient.instance?.config.salesChannel.countryCode
     }
 
-    init?(contactProperty: CNContactProperty, countryCode: String) {
+    init?(contactProperty: CNContactProperty) {
         guard let postalAddress = contactProperty.value as? CNPostalAddress else { return nil }
         self.firstName = contactProperty.contact.givenName
         self.lastName = contactProperty.contact.familyName
@@ -56,7 +56,7 @@ class AddressFormViewModel {
         }
         self.zip = postalAddress.postalCode
         self.city = postalAddress.city
-        self.countryCode = countryCode
+        self.countryCode = AtlasAPIClient.instance?.config.salesChannel.countryCode
         self.isDefaultBilling = false
         self.isDefaultShipping = false
     }
@@ -84,11 +84,12 @@ extension CreateAddressRequest {
     init? (addressFormViewModel: AddressFormViewModel) {
 
         guard let
-        gender = addressFormViewModel.gender,
+            gender = addressFormViewModel.gender,
             firstName = addressFormViewModel.firstName,
             lastName = addressFormViewModel.lastName,
             zip = addressFormViewModel.zip,
-            city = addressFormViewModel.city else { return nil }
+            city = addressFormViewModel.city,
+            countryCode = addressFormViewModel.countryCode else { return nil }
 
         self.gender = gender
         self.firstName = firstName
@@ -97,7 +98,7 @@ extension CreateAddressRequest {
         self.additional = addressFormViewModel.additional
         self.zip = zip
         self.city = city
-        self.countryCode = addressFormViewModel.countryCode
+        self.countryCode = countryCode
         self.pickupPoint = PickupPoint(addressFormViewModel: addressFormViewModel)
         self.defaultBilling = addressFormViewModel.isDefaultBilling
         self.defaultShipping = addressFormViewModel.isDefaultShipping
@@ -110,11 +111,12 @@ extension UpdateAddressRequest {
     init? (addressFormViewModel: AddressFormViewModel) {
 
         guard let
-        gender = addressFormViewModel.gender,
+            gender = addressFormViewModel.gender,
             firstName = addressFormViewModel.firstName,
             lastName = addressFormViewModel.lastName,
             zip = addressFormViewModel.zip,
-            city = addressFormViewModel.city else { return nil }
+            city = addressFormViewModel.city,
+            countryCode = addressFormViewModel.countryCode else { return nil }
 
         self.gender = gender
         self.firstName = firstName
@@ -123,7 +125,7 @@ extension UpdateAddressRequest {
         self.additional = addressFormViewModel.additional
         self.zip = zip
         self.city = city
-        self.countryCode = addressFormViewModel.countryCode
+        self.countryCode = countryCode
         self.pickupPoint = PickupPoint(addressFormViewModel: addressFormViewModel)
         self.defaultBilling = addressFormViewModel.isDefaultBilling
         self.defaultShipping = addressFormViewModel.isDefaultShipping
@@ -163,14 +165,15 @@ extension CheckAddress {
     init? (addressFormViewModel: AddressFormViewModel) {
 
         guard let
-        zip = addressFormViewModel.zip,
-            city = addressFormViewModel.city else { return nil }
+            zip = addressFormViewModel.zip,
+            city = addressFormViewModel.city,
+            countryCode = addressFormViewModel.countryCode else { return nil }
 
         self.street = addressFormViewModel.street
         self.additional = addressFormViewModel.additional
         self.zip = zip
         self.city = city
-        self.countryCode = addressFormViewModel.countryCode
+        self.countryCode = countryCode
     }
 
 }

@@ -8,11 +8,9 @@ import AtlasSDK
 
 class AddressBookImportCreationStrategy: NSObject, AddressFormCreationStrategy {
 
-    let countryCode: String
     let completion: AddressFormCreationStrategyCompletion
 
-    required init(countryCode: String, completion: AddressFormCreationStrategyCompletion) {
-        self.countryCode = countryCode
+    required init(completion: AddressFormCreationStrategyCompletion) {
         self.completion = completion
     }
 
@@ -32,7 +30,7 @@ extension AddressBookImportCreationStrategy: CNContactPickerDelegate {
     func contactPicker(picker: CNContactPickerViewController, didSelectContactProperty contactProperty: CNContactProperty) {
         picker.dismissViewControllerAnimated(true) { [weak self] in
             guard let strongSelf = self else { return }
-            if let addressViewModel = AddressFormViewModel(contactProperty: contactProperty, countryCode: strongSelf.countryCode) {
+            if let addressViewModel = AddressFormViewModel(contactProperty: contactProperty) {
                 strongSelf.completion(addressViewModel)
             } else {
                 UserMessage.displayError(AtlasCheckoutError.unclassified)

@@ -7,11 +7,9 @@ import AtlasSDK
 
 class AddressActionsHandler {
 
-    private let checkout: AtlasUI
     private weak var viewController: AddressPickerViewController?
 
-    init(checkout: AtlasUI, viewController: AddressPickerViewController?) {
-        self.checkout = checkout
+    init(viewController: AddressPickerViewController?) {
         self.viewController = viewController
     }
 
@@ -21,7 +19,7 @@ class AddressActionsHandler {
             self?.selectAddress(userAddress)
         }
 
-        viewController?.addressCreationStrategy?.execute(checkout)
+        viewController?.addressCreationStrategy?.execute()
     }
 
     func updateAddress(address: EquatableAddress) {
@@ -36,21 +34,18 @@ class AddressActionsHandler {
         let addressType: AddressFormType = address.pickupPoint == nil ? .standardAddress : .pickupPoint
         let viewController = AddressFormViewController(addressType: addressType,
                                                        addressMode: .updateAddress(address: address),
-                                                       checkout: checkout,
                                                        completion: completion)
         self.viewController?.navigationController?.pushViewController(viewController, animated: true)
     }
 
     func deleteAddress(address: EquatableAddress) {
-        UserMessage.displayLoader { [weak self] hideLoader in
-            self?.checkout.client.deleteAddress(address.id) { [weak self] result in
-                hideLoader()
-                let addresses = self?.viewController?.tableviewDelegate.addresses
-                guard let _ = result.process(), addressIdx = addresses?.indexOf({ $0 == address }) else { return }
-                self?.viewController?.tableviewDelegate.addresses.removeAtIndex(addressIdx)
-                self?.viewController?.configureEditButton()
-                self?.viewController?.addressDeletedHandler?(address: address)
-            }
+        AtlasAPIClient.deleteAddress(address.id) { [weak self] result in
+            let addresses = self?.viewController?.tableviewDelegate.addresses
+            guard let _ = result.process(), addressIdx = addresses?.indexOf({ $0 == address }) else { return }
+
+            self?.viewController?.tableviewDelegate.addresses.removeAtIndex(addressIdx)
+            self?.viewController?.configureEditButton()
+            self?.viewController?.addressDeletedHandler?(address: address)
         }
     }
 

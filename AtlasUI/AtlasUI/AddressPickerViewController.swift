@@ -26,7 +26,7 @@ final class AddressPickerViewController: UIViewController {
     private let initialAddresses: [EquatableAddress]
     private let initialSelectedAddress: EquatableAddress?
     private lazy var actionsHandler: AddressActionsHandler = {
-        return AddressActionsHandler(checkout: self.checkout, viewController: self)
+        return AddressActionsHandler(viewController: self)
     }()
 
     private let tableView: UITableView = {

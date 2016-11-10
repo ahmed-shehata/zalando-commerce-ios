@@ -26,20 +26,17 @@ class AddressFormViewController: UIViewController {
 
     private let addressType: AddressFormType
     private let addressMode: AddressFormMode
-    let checkout: AtlasUI
     private let addressViewModel: AddressFormViewModel
     var completion: AddressFormCompletion?
 
-    init(addressType: AddressFormType, addressMode: AddressFormMode, checkout: AtlasUI, completion: AddressFormCompletion?) {
+    init(addressType: AddressFormType, addressMode: AddressFormMode, completion: AddressFormCompletion?) {
         self.addressType = addressType
         self.addressMode = addressMode
-        self.checkout = checkout
         self.completion = completion
-        let countryCode = checkout.client.config.salesChannel.countryCode
 
         switch addressMode {
         case .createAddress(let addressViewModel): self.addressViewModel = addressViewModel
-        case .updateAddress(let address): self.addressViewModel = AddressFormViewModel(equatableAddress: address, countryCode: countryCode)
+        case .updateAddress(let address): self.addressViewModel = AddressFormViewModel(equatableAddress: address)
         }
 
         super.init(nibName: nil, bundle: nil)
@@ -132,31 +129,22 @@ extension AddressFormViewController {
 
     private func checkAddressRequest() {
         guard let request = CheckAddressRequest(addressFormViewModel: addressViewModel) else { return enableSaveButton() }
-        UserMessage.displayLoader { [weak self] hideLoader in
-            self?.checkout.client.checkAddress(request) { [weak self] result in
-                hideLoader()
-                self?.checkAddressRequestCompletion(result)
-            }
+        AtlasAPIClient.checkAddress(request) { [weak self] result in
+            self?.checkAddressRequestCompletion(result)
         }
     }
 
     private func createAddressRequest() {
         guard let request = CreateAddressRequest(addressFormViewModel: addressViewModel) else { return enableSaveButton() }
-        UserMessage.displayLoader { [weak self] hideLoader in
-            self?.checkout.client.createAddress(request) { [weak self] result in
-                hideLoader()
-                self?.createUpdateAddressRequestCompletion(result)
-            }
+        AtlasAPIClient.createAddress(request) { [weak self] result in
+            self?.createUpdateAddressRequestCompletion(result)
         }
     }
 
     private func updateAddressRequest(originalAddress: EquatableAddress) {
         guard let request = UpdateAddressRequest(addressFormViewModel: addressViewModel) else { return enableSaveButton() }
-        UserMessage.displayLoader { [weak self] hideLoader in
-            self?.checkout.client.updateAddress(originalAddress.id, request: request) { [weak self] result in
-                hideLoader()
-                self?.createUpdateAddressRequestCompletion(result)
-            }
+        AtlasAPIClient.updateAddress(originalAddress.id, request: request) { [weak self] result in
+            self?.createUpdateAddressRequestCompletion(result)
         }
     }
 

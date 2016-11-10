@@ -6,16 +6,14 @@ import Foundation
 
 class EmptyAddressFormCreationStrategy: AddressFormCreationStrategy {
 
-    let countryCode: String
     let completion: AddressFormCreationStrategyCompletion
 
-    required init(countryCode: String, completion: AddressFormCreationStrategyCompletion) {
-        self.countryCode = countryCode
+    required init(completion: AddressFormCreationStrategyCompletion) {
         self.completion = completion
     }
 
     func execute() {
-        completion(AddressFormViewModel(countryCode: countryCode))
+        completion(AddressFormViewModel())
     }
 
 }
