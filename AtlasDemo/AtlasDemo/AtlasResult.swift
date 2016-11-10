@@ -11,11 +11,20 @@ extension AtlasResult {
     func process() -> T? {
         switch self {
         case .failure(let error):
-            guard (error as? AtlasUserError) != AtlasUserError.userCancelled else {
+            switch error {
+            case AtlasAPIError.unauthorized(let repeatCall):
+                let authorizationHandler = OAuth2AuthorizationHandler()
+                authorizationHandler.authorize { result in
+                    guard let accessToken = result.process() else { return }
+                    APIAccessToken.store(accessToken)
+                    repeatCall {}
+                }
                 return nil
+
+            default:
+                displayError(error)
             }
 
-            displayError(error)
             return nil
         case .success(let data):
             return data

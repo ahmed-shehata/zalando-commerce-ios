@@ -10,7 +10,7 @@ struct ResponseParser {
 
     let taskResponse: DataTaskResponse
 
-    func parse(completion: ResponseCompletion) {
+    func parse(repeatCall: RepeatCallAction, completion: ResponseCompletion) {
         if let error = taskResponse.error {
             let nsURLError = AtlasAPIError.nsURLError(code: error.code, details: error.localizedDescription)
             return completion(.failure(nsURLError))
@@ -25,7 +25,7 @@ struct ResponseParser {
         guard httpResponse.isSuccessful else {
             let error: AtlasAPIError
             if httpResponse.status == .Unauthorized {
-                error = AtlasAPIError.unauthorized
+                error = AtlasAPIError.unauthorized(repeatCall: repeatCall)
             } else if let json = json where json != JSON.null {
                 error = AtlasAPIError.backend(
                     status: json["status"].int,

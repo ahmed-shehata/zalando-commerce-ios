@@ -26,7 +26,14 @@ struct RequestBuilder {
     }
 
     mutating func execute(completion: ResponseCompletion) {
-        buildAndExecuteSessionTask { result in
+        buildAndExecuteSessionTask({ repeatCompletion in
+            self.execute { result in
+                dispatch_async(dispatch_get_main_queue()) {
+                    repeatCompletion()
+                }
+                completion(result)
+            }
+        }) { result in
             switch result {
             case .failure(let error):
                 AtlasLogger.logError("Failed request:", self.endpoint, "with error:", error)
@@ -38,7 +45,7 @@ struct RequestBuilder {
         }
     }
 
-    private mutating func buildAndExecuteSessionTask(completion: ResponseCompletion) {
+    private mutating func buildAndExecuteSessionTask(repeatCall: RepeatCallAction, completion: ResponseCompletion) {
         let request: NSMutableURLRequest
         do {
             request = try buildRequest()
@@ -52,7 +59,7 @@ struct RequestBuilder {
             if self.printRequestDescription {
                 print(self.description)
             }
-            ResponseParser(taskResponse: response).parse(completion)
+            ResponseParser(taskResponse: response).parse(repeatCall, completion: completion)
         }.resume()
     }
 

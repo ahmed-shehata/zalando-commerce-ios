@@ -9,14 +9,26 @@ extension AtlasResult {
     func process(forceFullScreenError fullScreen: Bool = false) -> T? {
         switch self {
         case .failure(let error):
-            guard (error as? AtlasUserError) != AtlasUserError.userCancelled else {
+            switch error {
+            case AtlasAPIError.unauthorized(let repeatCall):
+                let authorizationHandler = OAuth2AuthorizationHandler()
+                authorizationHandler.authorize { result in
+                    guard let accessToken = result.process(forceFullScreenError: fullScreen) else { return }
+                    APIAccessToken.store(accessToken)
+                    UserMessage.displayLoader { hideLoader in
+                        repeatCall {
+                            hideLoader()
+                        }
+                    }
+                }
                 return nil
-            }
 
-            if fullScreen {
-                UserMessage.displayErrorFullScreen(error)
-            } else {
-                UserMessage.displayError(error)
+            default:
+                if fullScreen {
+                    UserMessage.displayErrorFullScreen(error)
+                } else {
+                    UserMessage.displayError(error)
+                }
             }
             return nil
         case .success(let data):
@@ -25,18 +37,3 @@ extension AtlasResult {
     }
 
 }
-
-// TODO: Handle AuthorizationHandler
-//guard let authorizationHandler = try? AtlasUI.provide() as AuthorizationHandler else {
-//                        return completion(.failure(error))
-//                    }
-//                    authorizationHandler.authorize { result in
-//                        switch result {
-//                        case .failure(let error):
-//                            completion(.failure(error))
-//                        case .success(let accessToken):
-//                            APIAccessToken.store(accessToken)
-//                            self.execute(completion)
-//                        }
-//                    }
-// AtlasUI.register { OAuth2AuthorizationHandler(loginURL: client.config.loginURL) as AuthorizationHandler }
