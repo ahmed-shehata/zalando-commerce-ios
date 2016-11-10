@@ -20,11 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(application: UIApplication) {
         if !AppSetup.isConfigured {
             AppSetup.configure { result in
-                guard let catalogViewController = CatalogViewController.instance else { return }
-                switch result {
-                case .success: catalogViewController.loadHomepageArticles()
-                case .failure(let error): catalogViewController.displayError(error)
-                }
+                guard let _ = result.process(), catalogViewController = CatalogViewController.instance else { return }
+                catalogViewController.loadHomepageArticles()
             }
         } else if let catalogViewController = CatalogViewController.instance where catalogViewController.articles.isEmpty {
             catalogViewController.loadHomepageArticles()

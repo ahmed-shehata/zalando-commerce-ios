@@ -34,6 +34,8 @@ class CheckoutSummaryViewController: UIViewController, CheckoutSummaryActionHand
         self.viewModel = CheckoutSummaryViewModel(dataModel: dataModel, uiModel: actionHandler.uiModel)
         self.actionHandler = actionHandler
         super.init(nibName: nil, bundle: nil)
+
+        triggerDidSet(actionHandler)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -44,6 +46,10 @@ class CheckoutSummaryViewController: UIViewController, CheckoutSummaryActionHand
         super.viewDidLoad()
         buildView()
         setupActions()
+    }
+
+    private func triggerDidSet(actionHandler: CheckoutSummaryActionHandler) {
+        self.actionHandler = actionHandler
     }
 
 }

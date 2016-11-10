@@ -3,27 +3,26 @@
 //
 
 import Foundation
-import UIKit
-import AtlasUI
 import AtlasSDK
+import AtlasUI
 
-extension UIViewController {
+extension AtlasResult {
 
-    typealias ButtonActionHandler = ((UIAlertAction) -> Void)
+    func process() -> T? {
+        switch self {
+        case .failure(let error):
+            guard (error as? AtlasUserError) != AtlasUserError.userCancelled else {
+                return nil
+            }
 
-    private struct ButtonAction {
-
-        var text: String
-        var handler: ButtonActionHandler?
-
-        init(text: String, handler: ButtonActionHandler? = nil) {
-            self.text = text
-            self.handler = handler
+            displayError(error)
+            return nil
+        case .success(let data):
+            return data
         }
-
     }
 
-    func displayError(error: ErrorType) {
+    private func displayError(error: ErrorType) {
         var message: String?
         let unclassifiedMessage = "Something went wrong.\nWe are fixing the issue.\nPlease come back later"
 
@@ -39,16 +38,16 @@ extension UIViewController {
         default: message = unclassifiedMessage
         }
 
-        showMessage(title: "Oops", message: message ?? unclassifiedMessage, actions: ButtonAction(text: "OK"))
+        showMessage(title: "Oops", message: message ?? unclassifiedMessage)
     }
 
-    private func showMessage(title title: String, message: String, actions: ButtonAction...) {
+    private func showMessage(title title: String, message: String) {
         let alertView = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        for button in actions {
-            alertView.addAction(UIAlertAction(title: button.text, style: .Default, handler: button.handler))
-        }
+        alertView.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+
         dispatch_async(dispatch_get_main_queue()) {
-            self.presentViewController(alertView, animated: true, completion: nil)
+            let navigationController = UIApplication.sharedApplication().keyWindow?.rootViewController as? UINavigationController
+            navigationController?.presentViewController(alertView, animated: true, completion: nil)
         }
     }
 

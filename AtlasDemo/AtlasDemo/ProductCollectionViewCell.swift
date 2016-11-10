@@ -30,7 +30,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
 
     @IBAction func buyNowButtonTapped(sender: AnyObject) {
         if let rootController = UIApplication.sharedApplication().keyWindow?.rootViewController, article = self.article {
-            AppSetup.checkout?.presentCheckout(onViewController: rootController, forProductSKU: article.id)
+            AtlasUI.presentCheckout(onViewController: rootController, forProductSKU: article.id)
         }
     }
 }

@@ -32,17 +32,17 @@ class ProfileViewController: UIViewController {
 
     @IBAction func serverSwitched(sender: UISegmentedControl) {
         let useSandbox = sender.selectedSegmentIndex == 1
-        AppSetup.change(environmentToSandbox: useSandbox)
+        AppSetup.change(environmentToSandbox: useSandbox) { _ in }
     }
 
     @IBAction func languageSwitched(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 1:
-            AppSetup.change(interfaceLanguage: .Deutsch)
+            AppSetup.change(interfaceLanguage: .Deutsch) { _ in }
         case 0:
             fallthrough
         default:
-            AppSetup.change(interfaceLanguage: .English)
+            AppSetup.change(interfaceLanguage: .English) { _ in }
         }
     }
 
@@ -53,7 +53,7 @@ class ProfileViewController: UIViewController {
 
     private func updateLanguageSelectedIndex() {
         let availableLanguages: [String?] = [AppSetup.InterfaceLanguage.English.rawValue, AppSetup.InterfaceLanguage.Deutsch.rawValue]
-        self.languageSwitcher.selectedSegmentIndex = availableLanguages.indexOf { $0 == AppSetup.interfaceLanguage } ?? 0
+        self.languageSwitcher.selectedSegmentIndex = availableLanguages.indexOf { $0 == AppSetup.options?.interfaceLanguage } ?? 0
     }
 
     private func updateEnvironmentSelectedIndex() {
@@ -62,24 +62,16 @@ class ProfileViewController: UIViewController {
     }
 
     private func loadCustomerData() {
-        AppSetup.checkout?.client.customer { result in
-            switch result {
-            case .failure(let error):
-                guard (error as? AtlasUserError) != AtlasUserError.userCancelled else {
-                    return
-                }
+        AppSetup.atlasClient?.customer { result in
+            guard let customer = result.process() else { return }
 
-                self.displayError(error)
-
-            case .success(let customer):
-                self.avatar.image = UIImage(named: "user")
-                self.avatar.layer.cornerRadius = self.avatar.frame.size.width / 2
-                self.avatar.clipsToBounds = true
-                self.name.text = "\(customer.firstName) \(customer.lastName)"
-                self.email.text = customer.email
-                self.customerNumer.text = customer.customerNumber
-                self.gender.text = customer.gender.rawValue
-            }
+            self.avatar.image = UIImage(named: "user")
+            self.avatar.layer.cornerRadius = self.avatar.frame.size.width / 2
+            self.avatar.clipsToBounds = true
+            self.name.text = "\(customer.firstName) \(customer.lastName)"
+            self.email.text = customer.email
+            self.customerNumer.text = customer.customerNumber
+            self.gender.text = customer.gender.rawValue
         }
     }
 

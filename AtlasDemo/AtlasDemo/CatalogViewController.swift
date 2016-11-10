@@ -42,17 +42,15 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        loadHomepageArticles()
+        if AppSetup.isConfigured {
+            loadHomepageArticles()
+        }
     }
 
     func loadHomepageArticles() {
         articlesClient.fetch(articlesForSKUs: sampleSKUs) { result in
-            switch result {
-            case .success(let articles):
-                self.articles = articles.sort { $0.id < $1.id }
-            case .failure(let error):
-                self.displayError(error)
-            }
+            guard let articles = result.process() else { return }
+            self.articles = articles.sort { $0.id < $1.id }
         }
     }
 

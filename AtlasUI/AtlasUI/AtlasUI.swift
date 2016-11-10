@@ -18,9 +18,9 @@ final public class AtlasUI {
              - ATLASSDK_SALES_CHANNEL: String - Sales Channel (required)
              - ATLASSDK_USE_SANDBOX: Bool - Indicates whether sandbox environment should be used
              - ATLASSDK_INTERFACE_LANGUAGE: String - Checkout interface language
-        - completion `NoContentCompletion`: `AtlasResult` with success result as `true` when AtlasUI is initialized and ready to use
+        - completion `AtlasClientCompletion`: `AtlasResult` with success result as `AtlasAPIClient` initialized
     */
-    public static func configure(options: Options? = nil, completion: NoContentCompletion) {
+    public static func configure(options: Options? = nil, completion: AtlasClientCompletion) {
         Atlas.configure(options) { result in
             switch result {
             case .failure(let error):
@@ -32,7 +32,7 @@ final public class AtlasUI {
                     let localizer = try Localizer(localeIdentifier: client.config.interfaceLocale.localeIdentifier)
                     AtlasUI.register { localizer }
                     AtlasUI.register { client }
-                    completion(.success(true))
+                    completion(.success(client))
                 } catch let error {
                     completion(.failure(error))
                 }

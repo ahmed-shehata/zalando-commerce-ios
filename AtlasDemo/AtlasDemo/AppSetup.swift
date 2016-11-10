@@ -14,33 +14,29 @@ class AppSetup {
         case Deutsch = "de"
     }
 
-    private(set) static var checkout: AtlasUI?
+    private(set) static var atlasClient: AtlasAPIClient?
     private(set) static var options: Options?
 
     private static let defaultUseSandbox = true
     private static let defaultInterfaceLanguage = InterfaceLanguage.English
 
     static var isConfigured: Bool {
-        return checkout != nil && options != nil
+        return atlasClient != nil && options != nil
     }
 
-    static var interfaceLanguage: String? {
-        return checkout?.client.config.interfaceLocale.objectForKey(NSLocaleLanguageCode) as? String
-    }
-
-    static func configure(completion: AtlasCheckoutConfigurationCompletion? = nil) {
+    static func configure(completion: NoContentCompletion) {
         prepareMockAPI()
         prepareApp()
 
         setAppOptions(prepareOptions(), completion: completion)
     }
 
-    static func change(environmentToSandbox useSandbox: Bool, completion: AtlasCheckoutConfigurationCompletion? = nil) {
+    static func change(environmentToSandbox useSandbox: Bool, completion: NoContentCompletion) {
         Atlas.logoutUser()
         setAppOptions(prepareOptions(useSandbox: useSandbox), completion: completion)
     }
 
-    static func change(interfaceLanguage language: InterfaceLanguage, completion: AtlasCheckoutConfigurationCompletion? = nil) {
+    static func change(interfaceLanguage language: InterfaceLanguage, completion: NoContentCompletion) {
         setAppOptions(prepareOptions(interfaceLanguage: language), completion: completion)
     }
 
@@ -60,13 +56,12 @@ class AppSetup {
         }
     }
 
-    private static func setAppOptions(opts: Options, completion: AtlasCheckoutConfigurationCompletion? = nil) {
+    private static func setAppOptions(opts: Options, completion: NoContentCompletion) {
         AtlasUI.configure(opts) { result in
-            if case let .success(checkout) = result {
-                AppSetup.options = opts
-                AppSetup.checkout = checkout
-            }
-            completion?(result)
+            guard let client = result.process() else { return }
+            AppSetup.atlasClient = client
+            AppSetup.options = opts
+            completion(.success(true))
         }
     }
 
@@ -76,10 +71,10 @@ class AppSetup {
         let language = interfaceLanguage?.rawValue ?? options?.interfaceLanguage ?? defaultInterfaceLanguage.rawValue
 
         return Options(clientId: "atlas_Y2M1MzA",
-            salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
-            useSandbox: sandbox,
-            interfaceLanguage: language,
-            configurationURL: configurationURL)
+                       salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
+                       useSandbox: sandbox,
+                       interfaceLanguage: language,
+                       configurationURL: configurationURL)
     }
 
 }
