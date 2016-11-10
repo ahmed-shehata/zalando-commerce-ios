@@ -1,8 +1,8 @@
 require 'thor'
 require 'git'
-require_relative 'run'
+require_relative '../run'
 
-VERSION_FILE = File.expand_path('../../version.rb', __FILE__)
+VERSION_FILE = File.expand_path('../../../version.rb', __FILE__)
 require VERSION_FILE
 
 module Calypso

@@ -14,10 +14,10 @@ require_relative 'lib/calypso/xcode'
 require_relative 'lib/calypso/coverage'
 
 require_relative 'lib/calypso/issues'
-require_relative 'lib/calypso/release'
-require_relative 'lib/calypso/version'
-require_relative 'lib/calypso/pod'
-require_relative 'lib/calypso/carthage'
+require_relative 'lib/calypso/release/release'
+require_relative 'lib/calypso/release/version'
+require_relative 'lib/calypso/release/pod'
+require_relative 'lib/calypso/release/carthage'
 
 $stdout.sync = $stderr.sync = true
 

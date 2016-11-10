@@ -3,7 +3,7 @@ require 'thor'
 require_relative 'consts'
 require_relative 'run'
 require_relative 'env'
-require_relative 'github'
+require_relative 'github_client/github_client'
 
 module Calypso
 
@@ -32,7 +32,7 @@ module Calypso
     private
 
     def github
-      @github ||= GithubClient.new
+      @github ||= GithubClient::Client.new
     end
 
     def format_issue(issue)

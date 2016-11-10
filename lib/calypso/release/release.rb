@@ -1,6 +1,6 @@
 require 'thor'
 require 'git'
-require_relative 'run'
+require_relative '../run'
 
 module Calypso
 
