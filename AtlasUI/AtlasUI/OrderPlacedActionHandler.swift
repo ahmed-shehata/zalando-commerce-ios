@@ -7,12 +7,11 @@ import AtlasSDK
 
 struct OrderPlacedActionHandler: CheckoutSummaryActionHandler {
 
-    func createCheckoutSummaryDataModel(selectedArticleUnit: SelectedArticleUnit, completion: CheckoutSummaryDataModelCompletion) {
-
-    }
+    let uiModel: CheckoutSummaryUIModel = OrderPlacedUIModel()
+    weak var delegate: CheckoutSummaryActionHandlerDelegate?
 
     func handleSubmitButton() {
-
+        delegate?.dismissView()
     }
 
     func showPaymentSelectionScreen() {
@@ -24,7 +23,7 @@ struct OrderPlacedActionHandler: CheckoutSummaryActionHandler {
     }
 
     func showBillingAddressSelectionScreen() {
-        
+
     }
-    
+
 }

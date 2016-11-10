@@ -55,9 +55,10 @@ extension CheckoutSummaryFooterStackView: UIDataBuilder {
         footerButton.hidden = !viewModel.uiModel.showFooterLabel
 
         let isPaypal = viewModel.dataModel.isPayPal
+        let readyToCheckout = viewModel.dataModel.isPaymentSelected
 
         submitButton.setTitle(Localizer.string(viewModel.uiModel.submitButtonTitle(isPaypal)), forState: .Normal)
-        submitButton.backgroundColor = viewModel.uiModel.submitButtonBackgroundColor
+        submitButton.backgroundColor = viewModel.uiModel.submitButtonBackgroundColor(readyToCheckout)
         submitButton.accessibilityIdentifier = "checkout-footer-button"
     }
 

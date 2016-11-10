@@ -5,12 +5,21 @@
 import Foundation
 import AtlasSDK
 
-typealias CheckoutSummaryDataModelCompletion = AtlasResult<CheckoutSummaryDataModel> -> Void
+protocol CheckoutSummaryActionHandlerDelegate: NSObjectProtocol {
+
+    var viewModel: CheckoutSummaryViewModel { get set }
+    var actionHandler: CheckoutSummaryActionHandler { get set }
+
+    func dismissView()
+
+}
 
 protocol CheckoutSummaryActionHandler {
 
-    func createCheckoutSummaryDataModel(selectedArticleUnit: SelectedArticleUnit, completion: CheckoutSummaryDataModelCompletion)
-    func handleSubmitButton()
+    var uiModel: CheckoutSummaryUIModel { get }
+    weak var delegate: CheckoutSummaryActionHandlerDelegate? { get set }
+
+    mutating func handleSubmitButton()
     func showPaymentSelectionScreen()
     func showShippingAddressSelectionScreen()
     func showBillingAddressSelectionScreen()

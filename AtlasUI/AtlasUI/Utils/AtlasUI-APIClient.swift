@@ -16,7 +16,7 @@ extension AtlasAPIClient {
         }
     }
 
-    static func createCart(cartItemRequests: CartItemRequest, completion: CartCompletion) {
+    static func createCart(cartItemRequests: [CartItemRequest], completion: CartCompletion) {
         UserMessage.displayLoader { hideLoader in
             AtlasAPIClient.instance?.createCart(cartItemRequests) { result in
                 hideLoader()

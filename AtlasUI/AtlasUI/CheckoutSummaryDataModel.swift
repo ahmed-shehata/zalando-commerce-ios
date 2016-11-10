@@ -8,16 +8,16 @@ import AtlasSDK
 struct CheckoutSummaryDataModel {
 
     let selectedArticleUnit: SelectedArticleUnit
-    var shippingAddress: EquatableAddress?
-    var billingAddress: EquatableAddress?
+    var shippingAddress: FormattableAddress?
+    var billingAddress: FormattableAddress?
     var paymentMethod: String?
     var shippingPrice: MoneyAmount?
     var totalPrice: MoneyAmount?
     var delivery: Delivery?
 
     init(selectedArticleUnit: SelectedArticleUnit,
-         shippingAddress: EquatableAddress? = nil,
-         billingAddress: EquatableAddress? = nil,
+         shippingAddress: FormattableAddress? = nil,
+         billingAddress: FormattableAddress? = nil,
          paymentMethod: String? = nil,
          shippingPrice: MoneyAmount? = nil,
          totalPrice: MoneyAmount? = nil,
@@ -36,6 +36,10 @@ struct CheckoutSummaryDataModel {
 
 extension CheckoutSummaryDataModel {
 
+    var addresses: CheckoutAddresses {
+        return CheckoutAddresses(billingAddress: billingAddress as? EquatableAddress, shippingAddress: shippingAddress as? EquatableAddress)
+    }
+
     var formattedShippingAddress: [String] {
         return shippingAddress?.splittedFormattedPostalAddress ?? [Localizer.string("summaryView.label.emptyAddress.shipping")]
     }
@@ -50,6 +54,30 @@ extension CheckoutSummaryDataModel {
 
     var isPayPal: Bool {
         return paymentMethod?.caseInsensitiveCompare("paypal") == .OrderedSame
+    }
+
+}
+
+extension CheckoutSummaryDataModel {
+
+    init(selectedArticleUnit: SelectedArticleUnit, cart: Cart?, checkout: Checkout?) {
+        self.selectedArticleUnit = selectedArticleUnit
+        self.shippingAddress = checkout?.shippingAddress
+        self.billingAddress = checkout?.billingAddress
+        self.paymentMethod = checkout?.payment.selected?.method
+        self.shippingPrice = 0
+        self.totalPrice = cart?.grossTotal.amount
+        self.delivery = checkout?.delivery
+    }
+
+    init(selectedArticleUnit: SelectedArticleUnit, checkout: Checkout?, order: Order) {
+        self.selectedArticleUnit = selectedArticleUnit
+        self.shippingAddress = order.shippingAddress
+        self.billingAddress = order.billingAddress
+        self.paymentMethod = checkout?.payment.selected?.method
+        self.shippingPrice = 0
+        self.totalPrice = order.grossTotal.amount
+        self.delivery = checkout?.delivery
     }
 
 }

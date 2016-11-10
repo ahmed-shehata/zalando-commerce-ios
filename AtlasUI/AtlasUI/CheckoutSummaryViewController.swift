@@ -7,28 +7,33 @@ import AtlasSDK
 
 typealias CheckoutSummaryViewControllerCompletion = (CheckoutSummaryViewController) -> Void
 
-class CheckoutSummaryViewController: UIViewController {
+class CheckoutSummaryViewController: UIViewController, CheckoutSummaryActionHandlerDelegate {
 
-    var actionHandler: CheckoutSummaryActionHandler
-    var viewModel: CheckoutSummaryViewModel {
+    var actionHandler: CheckoutSummaryActionHandler {
         didSet {
-            setupNavigationBar()
-            rootStackView.configureData(self)
+            actionHandler.delegate = self
+            viewModel.uiModel = actionHandler.uiModel
         }
     }
 
-    let rootStackView: CheckoutSummaryRootStackView = {
+    var viewModel: CheckoutSummaryViewModel {
+        didSet {
+            setupNavigationBar()
+            rootStackView.configureData(viewModel)
+        }
+    }
+
+    private let rootStackView: CheckoutSummaryRootStackView = {
         let stackView = CheckoutSummaryRootStackView()
         stackView.axis = .Vertical
         stackView.spacing = 5
         return stackView
     }()
 
-    init(viewModel: CheckoutSummaryViewModel, actionHandler: CheckoutSummaryActionHandler) {
-        self.viewModel = viewModel
+    init(dataModel: CheckoutSummaryDataModel, actionHandler: CheckoutSummaryActionHandler) {
+        self.viewModel = CheckoutSummaryViewModel(dataModel: dataModel, uiModel: actionHandler.uiModel)
         self.actionHandler = actionHandler
         super.init(nibName: nil, bundle: nil)
-        self.viewModel = viewModel
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -109,6 +114,10 @@ extension CheckoutSummaryViewController {
     dynamic private func paymentAddressTapped() {
         guard viewModel.uiModel.showDetailArrow else { return }
         actionHandler.showPaymentSelectionScreen()
+    }
+
+    func dismissView() {
+        dismissViewControllerAnimated(true, completion: nil)
     }
 
 }
