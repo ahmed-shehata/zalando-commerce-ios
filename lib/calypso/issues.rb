@@ -11,7 +11,7 @@ module Calypso
 
     desc 'labeled [label1,label2] [open*,closed,any]', 'Shows available open issues with given list of labels'
     def labeled(labels = nil, state = 'open')
-      github.issues(labels, state).each do |issue|
+      github.issues(labels: labels, state: state).each do |issue|
         format_issue(issue)
       end
     end
@@ -31,16 +31,13 @@ module Calypso
 
     private
 
-    def github
-      @github ||= GithubClient::Client.new
-    end
-
     def format_issue(issue)
       labels = issue['labels'].empty? ? '' : "[#{issue['labels'].map { |l| l['name'] }.join(',')}]"
       puts "* #{issue['title']} #[#{issue['number']}](#{issue['html_url']}) #{labels}".freeze
     end
 
     include Env
+    include Github
 
   end
 

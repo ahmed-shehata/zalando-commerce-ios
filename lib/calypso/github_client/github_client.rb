@@ -5,8 +5,17 @@ require 'awesome_print'
 require_relative '../env'
 require_relative 'projects_api'
 require_relative 'issues_api'
+require_relative 'releases_api'
 
 module Calypso
+
+  module Github
+
+    def github
+      @github ||= GithubClient::Client.new
+    end
+
+  end
 
   module GithubClient
 
@@ -14,6 +23,7 @@ module Calypso
 
       include IssuesAPI
       include ProjectsAPI
+      include ReleasesAPI
 
       private
 

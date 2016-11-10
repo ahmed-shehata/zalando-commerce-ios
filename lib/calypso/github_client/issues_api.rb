@@ -4,8 +4,14 @@ module Calypso
 
     module IssuesAPI
 
-      def issues(labels, state, pages = 10)
-        query = { labels: labels, state: state }
+      def issues(labels: nil, state: nil, filter: nil, sort: nil, direction: nil, since: nil, pages: 10)
+        query = {}
+        query['labels'] = labels unless labels.nil?
+        query['state'] = state unless state.nil?
+        query['sort'] = sort unless sort.nil?
+        query['direction'] = direction unless direction.nil?
+        query['since'] = since unless since.nil?
+        query['filter'] = filter unless filter.nil?
         fetch(issues_url, query: query, pages: pages).select { |issue| issue['pull_request'].nil? }
       end
 

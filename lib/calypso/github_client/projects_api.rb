@@ -17,8 +17,7 @@ module Calypso
           next if issue_url.nil?
           issue_url[/http.*[^0-9]([0-9]+)$/, 1].to_i
         end.compact
-        issues = issues(nil, state)
-        issues.select { |i| issues_ids.include?(i['number']) }
+        issues(state: state).select { |i| issues_ids.include?(i['number']) }
       end
 
       def column_cards(project_name:, column_name:)
