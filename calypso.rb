@@ -15,9 +15,9 @@ require_relative 'lib/calypso/coverage'
 
 require_relative 'lib/calypso/issues'
 require_relative 'lib/calypso/release'
+require_relative 'lib/calypso/version'
 require_relative 'lib/calypso/pod'
 require_relative 'lib/calypso/carthage'
-
 
 $stdout.sync = $stderr.sync = true
 
@@ -48,6 +48,9 @@ module Calypso
 
     desc 'pod', 'CocoaPods commands'
     subcommand 'pod', Pod
+
+    desc 'version', 'Updates source versions'
+    subcommand 'version', Version
 
     desc 'release', 'Releases of new source versions'
     subcommand 'release', Release
