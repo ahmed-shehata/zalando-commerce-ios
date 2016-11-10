@@ -1,14 +1,15 @@
-// Buttons
+
+/*Buttons*/
 "button.general.cancel" = "Cancel";
 "button.general.save" = "Save";
 
-// Login View
+/*Login View*/
 "loginView.loginWithZalando" = "Login with Zalando";
 
-// Terms & Conditions View
+/*Terms & Conditions View*/
 "termsAndConditionsView.title" = "Legal Notice";
 
-// Summary View
+/*Summary View*/
 "summaryView.title.summary" = "Summary";
 "summaryView.title.orderPlaced" = "Order placed";
 "summaryView.label.payment" = "Payment";
@@ -28,7 +29,7 @@
 "summaryView.submitButton.backToShop" = "Back to shop";
 "summaryView.link.termsAndConditions" = "Zalando terms, conditions and cancellation policy apply to all orders";
 
-// Address list view
+/*Address list view*/
 "addressListView.title.shipping" = "Shipping Address";
 "addressListView.title.billing" = "Billing Address";
 "addressListView.prefix.packstation" = "Packstation";
@@ -39,7 +40,7 @@
 "addressListView.add.type.PickupPointAddressFormCreationStrategy" = "Pickup Point";
 "addressListView.add.type.AddressBookImportCreationStrategy" = "Import from Address Book";
 
-// Address Form View
+/*Address Form View*/
 "addressFormView.title" = "Title";
 "addressFormView.firstname" = "First Name";
 "addressFormView.lastname" = "Last Name";
@@ -53,7 +54,7 @@
 "addressFormView.gender.male" = "Mr";
 "addressFormView.gender.female" = "Mrs";
 
-// Form validation
+/*Form validation*/
 "formValidation.required" = "This field is required";
 "formValidation.minLength" = "Min length is %@";
 "formValidation.maxLength" = "Max length is %@";
@@ -63,7 +64,7 @@
 "formValidation.pattern.street" = "Please enter your street and house number";
 "formValidation.numbersOnly" = "Only numbers are allowed";
 
-// Errors
+/*Errors*/
 "AtlasCheckoutError.title" = "Oops";
 "AtlasCheckoutError.title.missingAddress" = "No address selected";
 "AtlasCheckoutError.title.priceChanged" = "Price changed";
@@ -75,13 +76,11 @@
 "AtlasCheckoutError.message.paymentMethodNotAvailable" = "Payment method is no longer available";
 "AtlasCheckoutError.message.checkoutFailure" = "An error occurred during updating the checkout";
 "AtlasCheckoutError.message.addressInvalid" = "Address not valid, please check the address";
-
 "AtlasLoginError.title" = "Login Error";
 "AtlasLoginError.message.missingURL" = "Missing login URL";
 "AtlasLoginError.message.accessDenied" = "Access denied";
 "AtlasLoginError.message.requestFailed" = "Request failed";
 "AtlasLoginError.message.missingViewControllerToShowLoginForm" = "Cannot show login form";
-
 "AtlasAPIError.title" = "Server Error";
 "AtlasAPIError.title.noInternet" = "No internet connection";
 "AtlasAPIError.message.invalidResponseFormat" = "Incorrect response format";
@@ -89,7 +88,6 @@
 "AtlasAPIError.message.noInternet" = "Please check you internet connection";
 "AtlasAPIError.message.unauthorized" = "Access denied";
 "AtlasAPIError.message.checkoutFailed" = "Unknown checkout error";
-
 "AtlasConfigurationError.title" = "Configuration Error";
 "AtlasConfigurationError.message.incorrectConfigServiceResponse" = "Server returned unknown response";
 "AtlasConfigurationError.message.missingClientId" = "Missing client identifier";
