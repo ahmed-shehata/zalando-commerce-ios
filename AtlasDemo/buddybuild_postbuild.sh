@@ -106,7 +106,11 @@ echo "Test run ID: ${TESTRUN_ID}"
     done
 fi
 
+#See the Test result in Testdroid
+echo "TEST DONE! The test results are available at ${API_ENDPOINT}/#service/testrun/${TESTDROID_PROJECT_ID}/${TESTRUN_ID}"
+
 #Get Sumary of test run
+
 
 #TESTREPORT="$(curl -H "Accept: application/json" -X GET -u ${TESTDROID_APIKEY}: "${API_ENDPOINT}/api/v2/me/projects/${TESTDROID_PROJECT_ID}/runs/${TESTRUN_ID}/reports/summary?type=HTML")"
 
