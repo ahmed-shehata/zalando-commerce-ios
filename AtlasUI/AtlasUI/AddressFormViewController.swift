@@ -87,14 +87,14 @@ extension AddressFormViewController {
     }
 
     private dynamic func cancelButtonPressed() {
-        dismissView()
+        dismissView(nil)
     }
 
-    private func dismissView() {
+    private func dismissView(completion: (() -> Void)?) {
         view.endEditing(true)
 
         switch addressMode {
-        case .createAddress: dismissViewControllerAnimated(true, completion: nil)
+        case .createAddress: dismissViewControllerAnimated(true, completion: completion)
         case .updateAddress: navigationController?.popViewControllerAnimated(true)
         }
     }
@@ -163,8 +163,9 @@ extension AddressFormViewController {
 
     private func createUpdateAddressRequestCompletion(result: AtlasResult<UserAddress>) {
         guard let address = result.process() else { return enableSaveButton() }
-        dismissView()
-        completion?(address)
+        dismissView { [weak self] in
+            self?.completion?(address)
+        }
     }
 
 }

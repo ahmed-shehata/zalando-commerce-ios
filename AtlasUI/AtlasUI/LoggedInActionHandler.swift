@@ -44,7 +44,7 @@ class LoggedInActionHandler: CheckoutSummaryActionHandler {
         }
     }
 
-    init(customer: Customer) {
+    private init(customer: Customer) {
         self.customer = customer
     }
 
