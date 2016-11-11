@@ -9,7 +9,7 @@ module Calypso
       end
 
       def create_release(tag:, notes:)
-        post(releases_url, body: { tag_name: tag, body: notes, draft: true })
+        post(releases_url, body: { tag_name: tag, body: notes, draft: true, name: tag })
       end
 
       def latest_release
