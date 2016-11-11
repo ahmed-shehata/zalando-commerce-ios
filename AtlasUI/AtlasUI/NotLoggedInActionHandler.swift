@@ -20,9 +20,7 @@ struct NotLoggedInActionHandler: CheckoutSummaryActionHandler {
             LoggedInActionHandler.createInstance(customer, selectedArticleUnit: selectedArticleUnit) { result in
                 guard let actionHandler = result.process() else { return }
 
-                let cart = actionHandler.cart
-                let checkout = actionHandler.checkout
-                let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, cart: cart, checkout: checkout)
+                let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, cartCheckout: actionHandler.cartCheckout)
                 delegate.actionHandler = actionHandler
                 delegate.viewModel.dataModel = dataModel
             }

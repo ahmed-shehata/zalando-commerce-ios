@@ -88,9 +88,7 @@ extension SizeListSelectionViewController {
             LoggedInActionHandler.createInstance(customer, selectedArticleUnit: selectedArticleUnit) { actionHandlerResult in
                 guard let actionHandler = actionHandlerResult.process(forceFullScreenError: hasSingleUnit) else { return }
 
-                let cart = actionHandler.cart
-                let checkout = actionHandler.checkout
-                let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, cart: cart, checkout: checkout)
+                let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, cartCheckout: actionHandler.cartCheckout)
                 self?.displayCheckoutSummaryViewController(dataModel, actionHandler: actionHandler)
             }
         }

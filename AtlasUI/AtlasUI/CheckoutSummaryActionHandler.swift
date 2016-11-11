@@ -20,8 +20,8 @@ protocol CheckoutSummaryActionHandler {
     weak var delegate: CheckoutSummaryActionHandlerDelegate? { get set }
 
     mutating func handleSubmitButton()
-    func showPaymentSelectionScreen()
-    func showShippingAddressSelectionScreen()
-    func showBillingAddressSelectionScreen()
+    mutating func showPaymentSelectionScreen()
+    mutating func showShippingAddressSelectionScreen()
+    mutating func showBillingAddressSelectionScreen()
 
 }

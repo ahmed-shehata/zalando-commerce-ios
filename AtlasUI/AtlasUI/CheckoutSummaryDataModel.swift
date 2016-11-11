@@ -8,12 +8,12 @@ import AtlasSDK
 struct CheckoutSummaryDataModel {
 
     let selectedArticleUnit: SelectedArticleUnit
-    var shippingAddress: FormattableAddress?
-    var billingAddress: FormattableAddress?
-    var paymentMethod: String?
-    var shippingPrice: MoneyAmount?
-    var totalPrice: MoneyAmount?
-    var delivery: Delivery?
+    let shippingAddress: FormattableAddress?
+    let billingAddress: FormattableAddress?
+    let paymentMethod: String?
+    let shippingPrice: MoneyAmount?
+    let totalPrice: MoneyAmount?
+    let delivery: Delivery?
 
     init(selectedArticleUnit: SelectedArticleUnit,
          shippingAddress: FormattableAddress? = nil,
@@ -60,14 +60,18 @@ extension CheckoutSummaryDataModel {
 
 extension CheckoutSummaryDataModel {
 
-    init(selectedArticleUnit: SelectedArticleUnit, cart: Cart?, checkout: Checkout?) {
+    init(selectedArticleUnit: SelectedArticleUnit,
+         cartCheckout: CartCheckout?,
+         shippingAddress: FormattableAddress? = nil,
+         billingAddress: FormattableAddress? = nil) {
+
         self.selectedArticleUnit = selectedArticleUnit
-        self.shippingAddress = checkout?.shippingAddress
-        self.billingAddress = checkout?.billingAddress
-        self.paymentMethod = checkout?.payment.selected?.method
+        self.shippingAddress = shippingAddress ?? cartCheckout?.checkout?.shippingAddress
+        self.billingAddress = billingAddress ?? cartCheckout?.checkout?.billingAddress
+        self.paymentMethod = cartCheckout?.checkout?.payment.selected?.method
         self.shippingPrice = 0
-        self.totalPrice = cart?.grossTotal.amount
-        self.delivery = checkout?.delivery
+        self.totalPrice = cartCheckout?.cart?.grossTotal.amount
+        self.delivery = cartCheckout?.checkout?.delivery
     }
 
     init(selectedArticleUnit: SelectedArticleUnit, checkout: Checkout?, order: Order) {
