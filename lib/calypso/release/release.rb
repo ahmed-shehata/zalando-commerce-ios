@@ -30,14 +30,14 @@ module Calypso
       issues = github.fixed_issues_closed_since_last_release
       notes = []
       github.group_issues_by_labels(issues).each do |label, label_issues|
-        notes << "## label: #{label}"
+        notes << "## #{label}"
         notes << ''
         label_issues.each do |issue|
           notes << Issues.format_issue(issue, markdown: false)
         end
         notes << ''
       end
-      notes
+      notes.join "\n"
     end
 
   end

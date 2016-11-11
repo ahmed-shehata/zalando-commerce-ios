@@ -66,13 +66,14 @@ module Calypso
       def post(url, headers: {}, query: {}, body: {})
         log_debug "POST #{url} ..."
         headers.merge! standard_headers
-        HTTParty.post(url, headers: headers, query: query, body: body)
+        HTTParty.post(url, headers: headers, query: query, body: body.to_json)
       end
 
       def standard_headers
         headers = {}
         headers['Authorization'] = "token #{env_oauth_token}"
         headers['User-Agent'] = 'calypso.rb'
+        headers['Content-Type'] = 'application/json'
         headers['Accept'] = 'application/vnd.github.inertia-preview+json'
         headers
       end
