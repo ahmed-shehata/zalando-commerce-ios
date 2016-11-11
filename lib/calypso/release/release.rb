@@ -2,7 +2,9 @@ require 'thor'
 require 'git'
 require 'awesome_print'
 require_relative '../issues'
+require_relative 'version'
 require_relative '../run'
+require_relative '../lint'
 require_relative '../github_client/github_client'
 
 module Calypso
@@ -11,7 +13,8 @@ module Calypso
 
     desc 'create', 'Create new release'
     def create
-      invoke :release_notes
+      version = Version.new.invoke(:create)
+      github.create_release(tag: version, notes: release_notes)
     end
 
     desc 'changelog', 'Create release notes since latest release'

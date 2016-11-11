@@ -24,6 +24,8 @@ module Calypso
 
       tag_new_version(options, new_version)
       push_new_version(options)
+
+      new_version
     end
 
     private
@@ -55,7 +57,7 @@ module Calypso
       if real_run
         run cmd
       else
-        say "Don't forget to run:\n  #{cmd}", :yellow
+        log "Don't forget to run:\n  #{cmd}"
       end
     end
 
@@ -72,7 +74,7 @@ module Calypso
     def commit_version(new_version)
       repo.commit "[auto] Updated version to #{new_version}"
     rescue StandardError => e
-      say e, :red
+      log_abort e
     end
 
     def repo_changes?

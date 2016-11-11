@@ -8,6 +8,10 @@ module Calypso
         fetch(releases_url, pages: 10).select { |issue| issue['pull_request'].nil? }
       end
 
+      def create_release(tag:, notes:)
+        post(releases_url, body: { tag_name: tag, body: notes, draft: true })
+      end
+
       def latest_release
         @latest_release ||= releases.sort { |left, right| left['created_at'] <=> right['created_at'] }.last
       end

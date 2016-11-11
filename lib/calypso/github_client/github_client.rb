@@ -37,10 +37,7 @@ module Calypso
       end
 
       def fetch(url, headers: {}, query: {}, pages: 1)
-        headers['Authorization'] = "token #{env_oauth_token}"
-        headers['User-Agent'] = 'calypso.rb'
-        headers['Accept'] = 'application/vnd.github.inertia-preview+json'
-
+        headers.merge! standard_headers
         fetch_pages(url, headers, query, pages)
       end
 
@@ -60,16 +57,24 @@ module Calypso
         full_response
       end
 
-      def delete_via_projects_api(url)
-        delete(url, headers: { 'Accept' => 'application/vnd.github.inertia-preview+json' })
-      end
-
       def delete(url, headers: {}, query: {})
         log_debug "DELETE #{url} ..."
+        headers.merge! standard_headers
+        HTTParty.delete(url, headers: headers, query: query)
+      end
+
+      def post(url, headers: {}, query: {}, body: {})
+        log_debug "POST #{url} ..."
+        headers.merge! standard_headers
+        HTTParty.post(url, headers: headers, query: query, body: body)
+      end
+
+      def standard_headers
+        headers = {}
         headers['Authorization'] = "token #{env_oauth_token}"
         headers['User-Agent'] = 'calypso.rb'
-
-        HTTParty.delete(url, headers: headers, query: query)
+        headers['Accept'] = 'application/vnd.github.inertia-preview+json'
+        headers
       end
 
       include Env
