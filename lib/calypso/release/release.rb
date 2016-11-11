@@ -11,10 +11,18 @@ module Calypso
 
     desc 'create', 'Create new release'
     def create
+      invoke :release_notes
+    end
+
+    desc 'changelog', 'Create release notes since latest release'
+    def changelog
       puts release_notes
     end
 
-    desc 'release_notes', 'Create release notes since latest release'
+    private
+
+    include Github
+
     def release_notes
       issues = github.fixed_issues_closed_since_last_release
       notes = []
@@ -28,8 +36,6 @@ module Calypso
       end
       notes
     end
-
-    include Github
 
   end
 

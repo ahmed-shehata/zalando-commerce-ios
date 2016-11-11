@@ -35,7 +35,7 @@ module Calypso
     desc 'uncached', 'Builds only if they\'re not cached (used in CI)'
     def uncached
       if cached?
-        puts "#{CART_RES} unchanged. Assuming correctly cached #{CART_DIR}"
+        log "#{CART_RES} unchanged. Assuming correctly cached #{CART_DIR}"
         return
       end
       invoke :build

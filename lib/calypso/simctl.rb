@@ -1,6 +1,8 @@
 require 'json'
 require 'thor'
 
+require_relative 'log'
+
 module Calypso
 
   class SimCtl
@@ -19,7 +21,7 @@ module Calypso
       dev_id = find_device_type(device_name)
       runtime_id = find_runtime(runtime_name)
       udid = run_simctl('create', "'#{name}'", dev_id, runtime_id).strip
-      puts "Simulator '#{name}' (#{udid}) created"
+      log_debug "Simulator '#{name}' (#{udid}) created"
       udid
     end
 
@@ -34,21 +36,21 @@ module Calypso
       shutdown_simulator(udid) unless dev['state'] == 'Shutdown'
       `killall -9 Simulator`
       run_simctl('delete', udid)
-      puts "Simulator #{udid} deleted"
+      log_debug "Simulator #{udid} deleted"
     end
 
     def boot_simulator(udid)
-      puts "Simulator #{udid} booting"
+      log_debug "Simulator #{udid} booting"
       run_simctl('boot', udid)
     end
 
     def open_simulator(udid)
-      puts "Simulator #{udid} starting"
+      log_debug "Simulator #{udid} starting"
       %(open -a "simulator" --args -CurrentDeviceUDID #{udid})
     end
 
     def shutdown_simulator(udid)
-      puts "Simulator #{udid} shutting down"
+      log_debug "Simulator #{udid} shutting down"
       run_simctl('shutdown', udid)
     end
 
@@ -86,6 +88,8 @@ module Calypso
     def run_simctl(*args)
       `xcrun simctl #{args.join ' '}`
     end
+
+    include Log
 
   end
 

@@ -3,6 +3,7 @@ require 'httparty'
 require 'awesome_print'
 
 require_relative '../env'
+require_relative '../log'
 require_relative 'projects_api'
 require_relative 'issues_api'
 require_relative 'releases_api'
@@ -46,7 +47,7 @@ module Calypso
       def fetch_pages(url, headers, query, pages)
         full_response = []
         1.upto(pages).each do |page|
-          puts "GET #{url} ... (page=#{page})"
+          log_debug "GET #{url} ... (page=#{page})"
           if pages > 1
             query['per_page'] = 100
             query['page'] = page
@@ -64,7 +65,7 @@ module Calypso
       end
 
       def delete(url, headers: {}, query: {})
-        puts "DELETE #{url} ..."
+        log_debug "DELETE #{url} ..."
         headers['Authorization'] = "token #{env_oauth_token}"
         headers['User-Agent'] = 'calypso.rb'
 
@@ -72,6 +73,7 @@ module Calypso
       end
 
       include Env
+      include Log
 
     end
 

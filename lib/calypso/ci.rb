@@ -55,7 +55,7 @@ module Calypso
     private
 
     def notify(status, message)
-      puts "Status updated: #{status} - '#{message}'"
+      log "Status updated: #{status} - '#{message}'"
       begin
         t = Time.now
         tz = t.dst? ? '+02:00' : '+01:00'
