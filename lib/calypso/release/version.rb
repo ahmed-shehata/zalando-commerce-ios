@@ -13,7 +13,8 @@ module Calypso
     option :push, type: :boolean, default: true
     desc 'create', 'Creates new version: updates plist files, add a tag and push to the GitHub'
     def create(version = nil)
-      log_abort 'Please commit all changes before creating new version' if repo_changes?
+      log_abort 'Please create version only from master branch' unless master_branch?
+      log_abort 'Please commit all changes before creating new version' if repo_contains_changes?
 
       new_version = ask_new_version(version)
 
@@ -34,6 +35,14 @@ module Calypso
 
     def repo
       @repo ||= Git.open(File.expand_path('../../../..', __FILE__))
+    end
+
+    def master_branch?
+      current_branch == 'master'
+    end
+
+    def current_branch
+      `git rev-parse --abbrev-ref HEAD`
     end
 
     def ask_new_version(version = nil)
@@ -77,7 +86,7 @@ module Calypso
       log_abort e
     end
 
-    def repo_changes?
+    def repo_contains_changes?
       changed = repo.status.map(&:type).compact
       changed.count.nonzero?
     end
