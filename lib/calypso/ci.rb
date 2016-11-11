@@ -66,7 +66,7 @@ module Calypso
           target_url: target_url,
           description: "#{message} (#{tf})"
       rescue StandardError => e
-        abort "ERROR updating status: #{e}"
+        log_abort "ERROR updating status: #{e}"
       end
     end
 

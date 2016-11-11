@@ -13,10 +13,7 @@ module Calypso
     option :push, type: :boolean, default: true
     desc 'create', 'Creates new version: updates plist files, add a tag and push to the GitHub'
     def create(version = nil)
-      if repo_changes?
-        say 'Please commit all changes before creating new version', :red
-        abort
-      end
+      log_abort 'Please commit all changes before creating new version' if repo_changes?
 
       new_version = ask_new_version(version)
 
@@ -34,17 +31,14 @@ module Calypso
     include Run
 
     def repo
-      @repo ||= Git.open(File.expand_path('../../..', __FILE__))
+      @repo ||= Git.open(File.expand_path('../../../..', __FILE__))
     end
 
     def ask_new_version(version = nil)
       new_version = version || ask("Enter new version (current #{ATLAS_VERSION}):", :blue)
       new_version = ATLAS_VERSION if new_version.empty?
 
-      if new_version == ATLAS_VERSION
-        say "No change in version (#{ATLAS_VERSION}), quitting", :green
-        abort
-      end
+      log_abort "No change in version (#{ATLAS_VERSION}), quitting" if new_version == ATLAS_VERSION
 
       new_version
     end

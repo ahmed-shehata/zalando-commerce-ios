@@ -65,7 +65,7 @@ module Calypso
       runtime = list['runtimes'].select do |dev|
         dev['name'] == name
       end.first
-      abort('Not found') if runtime.nil?
+      log_abort('Not found') if runtime.nil?
       runtime['identifier']
     end
 

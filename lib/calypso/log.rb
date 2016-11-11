@@ -12,6 +12,13 @@ module Calypso
       color(code: 33) { STDERR.puts args }
     end
 
+    def log_abort(*args)
+      color(code: 31) do
+        puts args
+        abort
+      end
+    end
+
     def color(code:)
       printf "\033[#{code}m"
       yield
