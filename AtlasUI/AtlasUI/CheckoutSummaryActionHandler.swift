@@ -19,9 +19,9 @@ protocol CheckoutSummaryActionHandler {
     var uiModel: CheckoutSummaryUIModel { get }
     weak var delegate: CheckoutSummaryActionHandlerDelegate? { get set }
 
-    mutating func handleSubmitButton()
-    mutating func showPaymentSelectionScreen()
-    mutating func showShippingAddressSelectionScreen()
-    mutating func showBillingAddressSelectionScreen()
+    func handleSubmitButton()
+    func showPaymentSelectionScreen()
+    func showShippingAddressSelectionScreen()
+    func showBillingAddressSelectionScreen()
 
 }

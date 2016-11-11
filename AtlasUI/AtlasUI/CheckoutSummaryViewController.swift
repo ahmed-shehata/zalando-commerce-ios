@@ -5,8 +5,6 @@
 import UIKit
 import AtlasSDK
 
-typealias CheckoutSummaryViewControllerCompletion = (CheckoutSummaryViewController) -> Void
-
 class CheckoutSummaryViewController: UIViewController, CheckoutSummaryActionHandlerDelegate {
 
     var actionHandler: CheckoutSummaryActionHandler {
@@ -34,8 +32,7 @@ class CheckoutSummaryViewController: UIViewController, CheckoutSummaryActionHand
         self.viewModel = CheckoutSummaryViewModel(dataModel: dataModel, uiModel: actionHandler.uiModel)
         self.actionHandler = actionHandler
         super.init(nibName: nil, bundle: nil)
-
-        triggerDidSet(actionHandler)
+        ({ [weak self] in self?.actionHandler = actionHandler }) ()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -46,10 +43,6 @@ class CheckoutSummaryViewController: UIViewController, CheckoutSummaryActionHand
         super.viewDidLoad()
         buildView()
         setupActions()
-    }
-
-    private func triggerDidSet(actionHandler: CheckoutSummaryActionHandler) {
-        self.actionHandler = actionHandler
     }
 
 }
@@ -108,17 +101,14 @@ extension CheckoutSummaryViewController {
     }
 
     dynamic private func shippingAddressTapped() {
-        guard viewModel.uiModel.showDetailArrow else { return }
         actionHandler.showShippingAddressSelectionScreen()
     }
 
     dynamic private func billingAddressTapped() {
-        guard viewModel.uiModel.showDetailArrow else { return }
         actionHandler.showBillingAddressSelectionScreen()
     }
 
     dynamic private func paymentAddressTapped() {
-        guard viewModel.uiModel.showDetailArrow else { return }
         actionHandler.showPaymentSelectionScreen()
     }
 

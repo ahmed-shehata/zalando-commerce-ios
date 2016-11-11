@@ -60,14 +60,10 @@ extension CheckoutSummaryDataModel {
 
 extension CheckoutSummaryDataModel {
 
-    init(selectedArticleUnit: SelectedArticleUnit,
-         cartCheckout: CartCheckout?,
-         shippingAddress: FormattableAddress? = nil,
-         billingAddress: FormattableAddress? = nil) {
-
+    init(selectedArticleUnit: SelectedArticleUnit, cartCheckout: CartCheckout?, addresses: CheckoutAddresses? = nil) {
         self.selectedArticleUnit = selectedArticleUnit
-        self.shippingAddress = shippingAddress ?? cartCheckout?.checkout?.shippingAddress
-        self.billingAddress = billingAddress ?? cartCheckout?.checkout?.billingAddress
+        self.shippingAddress = addresses?.shippingAddress ?? cartCheckout?.checkout?.shippingAddress
+        self.billingAddress = addresses?.billingAddress ?? cartCheckout?.checkout?.billingAddress
         self.paymentMethod = cartCheckout?.checkout?.payment.selected?.method
         self.shippingPrice = 0
         self.totalPrice = cartCheckout?.cart?.grossTotal.amount
