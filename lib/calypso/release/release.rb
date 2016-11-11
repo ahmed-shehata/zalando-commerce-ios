@@ -1,6 +1,7 @@
 require 'thor'
 require 'git'
 require 'awesome_print'
+require_relative '../issues'
 require_relative '../run'
 require_relative '../github_client/github_client'
 
@@ -8,26 +9,27 @@ module Calypso
 
   class Release < Thor
 
-    desc 'create', 'Create new release with'
+    desc 'create', 'Create new release'
     def create
-      ap issues_closed_since_last_release
+      puts release_notes
     end
 
-    private
+    desc 'release_notes', 'Create release notes since latest release'
+    def release_notes
+      issues = github.fixed_issues_closed_since_last_release
+      notes = []
+      github.group_issues_by_labels(issues).each do |label, label_issues|
+        notes << "## label: #{label}"
+        notes << ''
+        label_issues.each do |issue|
+          notes << Issues.format_issue(issue, markdown: false)
+        end
+        notes << ''
+      end
+      notes
+    end
 
     include Github
-
-    def latest_release
-      @latest_release ||= github.releases.sort { |left, right| left['created_at'] <=> right['created_at'] }.last
-    end
-
-    def latest_release_date
-      latest_release['created_at']
-    end
-
-    def issues_closed_since_last_release
-      github.issues(since: latest_release_date, state: 'closed').map { |i| i['title'] }
-    end
 
   end
 

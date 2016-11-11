@@ -12,14 +12,14 @@ module Calypso
     desc 'labeled [label1,label2] [open*,closed,any]', 'Shows available open issues with given list of labels'
     def labeled(labels = nil, state = 'open')
       github.issues(labels: labels, state: state).each do |issue|
-        format_issue(issue)
+        puts self.class.format_issue(issue)
       end
     end
 
     desc 'project <project_name> [column_name] [open,closed*,any]', 'Shows issues in given project / column'
     def project(project_name, column_name = nil, state = 'closed')
       github.project_issues(project_name: project_name, column_name: column_name, state: state).each do |issue|
-        format_issue(issue)
+        puts self.class.format_issue(issue)
       end
     end
 
@@ -29,11 +29,14 @@ module Calypso
       github.drop_cards(cards)
     end
 
-    private
-
-    def format_issue(issue)
+    def self.format_issue(issue, markdown: true)
       labels = issue['labels'].empty? ? '' : "[#{issue['labels'].map { |l| l['name'] }.join(',')}]"
-      puts "* #{issue['title']} #[#{issue['number']}](#{issue['html_url']}) #{labels}".freeze
+      issue_link = if markdown
+                     "#[#{issue['number']}](#{issue['html_url']})".freeze
+                   else
+                     "##{issue['number']}".freeze
+                   end
+      "* #{issue['title']} #{issue_link} #{labels}".freeze
     end
 
     include Env

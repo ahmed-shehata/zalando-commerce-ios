@@ -15,6 +15,17 @@ module Calypso
         fetch(issues_url, query: query, pages: pages).select { |issue| issue['pull_request'].nil? }
       end
 
+      def group_issues_by_labels(issues)
+        labels_issues = {}
+        issues.each do |issue|
+          issue['labels'].each do |label|
+            labels_issues[label['name']] ||= []
+            labels_issues[label['name']] << issue
+          end
+        end
+        labels_issues
+      end
+
       private
 
       def issues_url
