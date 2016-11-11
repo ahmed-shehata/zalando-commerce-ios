@@ -14,7 +14,8 @@ module Calypso
     desc 'create', 'Create new release'
     def create
       version = Version.new.invoke(:create)
-      github.create_release(tag: version, notes: release_notes)
+      release = github.create_release(tag: version, notes: release_notes)
+      run "open \'#{release['html_url']}\'"
     end
 
     desc 'changelog', 'Create release notes since latest release'
@@ -39,6 +40,8 @@ module Calypso
       end
       notes.join "\n"
     end
+
+    include Run
 
   end
 
