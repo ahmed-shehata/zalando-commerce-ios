@@ -30,6 +30,7 @@ class AddressFormViewModel {
             isDefaultBilling = false
             isDefaultShipping = false
         }
+        countryCode = AtlasAPIClient.instance?.config.salesChannel.countryCode
 
         guard let equatableAddress = equatableAddress else { return }
 
@@ -42,7 +43,6 @@ class AddressFormViewModel {
         pickupPointMemberId = equatableAddress.pickupPoint?.memberId
         zip = equatableAddress.zip
         city = equatableAddress.city
-        countryCode = AtlasAPIClient.instance?.config.salesChannel.countryCode
     }
 
     init?(contactProperty: CNContactProperty) {

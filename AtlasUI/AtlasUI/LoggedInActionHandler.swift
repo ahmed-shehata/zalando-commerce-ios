@@ -12,13 +12,24 @@ typealias CreateCartCheckoutCompletion = AtlasResult<CartCheckout> -> Void
 class LoggedInActionHandler: CheckoutSummaryActionHandler {
 
     let customer: Customer
-    var cartCheckout: CartCheckout? {
-        didSet {
-            updateDataModel()
-        }
-    }
     let uiModel: CheckoutSummaryUIModel = LoggedInUIModel()
     weak var delegate: CheckoutSummaryActionHandlerDelegate?
+
+    var cartCheckout: CartCheckout? {
+        didSet {
+            updateDataModel(addresses)
+        }
+    }
+
+    private var shippingAddress: EquatableAddress? {
+        return delegate?.viewModel.dataModel.shippingAddress as? EquatableAddress
+    }
+    private var billingAddress: EquatableAddress? {
+        return delegate?.viewModel.dataModel.billingAddress as? EquatableAddress
+    }
+    private var addresses: CheckoutAddresses? {
+        return CheckoutAddresses(billingAddress: billingAddress, shippingAddress: shippingAddress)
+    }
 
     static func createInstance(customer: Customer, selectedArticleUnit: SelectedArticleUnit, completion: LoggedInActionHandlerCompletion) {
         let actionHandler = LoggedInActionHandler(customer: customer)
@@ -70,7 +81,7 @@ class LoggedInActionHandler: CheckoutSummaryActionHandler {
             paymentURL = cartCheckout?.checkout?.payment.selectionPageURL,
             callbackURL = AtlasAPIClient.instance?.config.payment.selectionCallbackURL
             else {
-                if delegate?.viewModel.dataModel.shippingAddress == nil || delegate?.viewModel.dataModel.billingAddress == nil {
+                if shippingAddress == nil || billingAddress == nil {
                     UserMessage.displayError(AtlasCheckoutError.missingAddress)
                 } else {
                     UserMessage.displayError(AtlasCheckoutError.unclassified)
@@ -101,8 +112,7 @@ class LoggedInActionHandler: CheckoutSummaryActionHandler {
         AtlasAPIClient.addresses { [weak self] result in
             guard let userAddresses = result.process() else { return }
             let addresses: [EquatableAddress] = userAddresses.map { $0 }
-            let selectedAddress = self?.delegate?.viewModel.dataModel.shippingAddress as? EquatableAddress
-            let addressViewController = AddressPickerViewController(initialAddresses: addresses, initialSelectedAddress: selectedAddress)
+            let addressViewController = AddressPickerViewController(initialAddresses: addresses, initialAddress: self?.shippingAddress)
             addressViewController.addressUpdatedHandler = { self?.addressUpdated($0) }
             addressViewController.addressDeletedHandler = { self?.addressDeleted($0) }
             addressViewController.addressSelectedHandler = { self?.selectShippingAddress($0) }
@@ -116,8 +126,7 @@ class LoggedInActionHandler: CheckoutSummaryActionHandler {
         AtlasAPIClient.addresses { [weak self] result in
             guard let userAddresses = result.process() else { return }
             let addresses: [EquatableAddress] = userAddresses.map { $0 }
-            let selectedAddress = self?.delegate?.viewModel.dataModel.billingAddress as? EquatableAddress
-            let addressViewController = AddressPickerViewController(initialAddresses: addresses, initialSelectedAddress: selectedAddress)
+            let addressViewController = AddressPickerViewController(initialAddresses: addresses, initialAddress: self?.billingAddress)
             addressViewController.addressUpdatedHandler = { self?.addressUpdated($0) }
             addressViewController.addressDeletedHandler = { self?.addressDeleted($0) }
             addressViewController.addressSelectedHandler = { self?.selectBillingAddress($0) }
@@ -133,8 +142,6 @@ extension LoggedInActionHandler {
 
     private func createCartCheckout(completion: CreateCartCheckoutCompletion) {
         guard let selectedArticleUnit = delegate?.viewModel.dataModel.selectedArticleUnit else { return }
-
-        let addresses = delegate?.viewModel.dataModel.addresses
         LoggedInActionHandler.createCartCheckout(selectedArticleUnit, addresses: addresses, completion: completion)
     }
 
@@ -163,22 +170,13 @@ extension LoggedInActionHandler {
 
 extension LoggedInActionHandler {
 
-    private func updateDataModel() {
-        let shippingAddress = delegate?.viewModel.dataModel.shippingAddress as? EquatableAddress
-        let billingAddress = delegate?.viewModel.dataModel.billingAddress as? EquatableAddress
-        updateDataModel(CheckoutAddresses(billingAddress: billingAddress, shippingAddress: shippingAddress))
-    }
-
-    private func updateDataModel(addresses: CheckoutAddresses) {
+    private func updateDataModel(addresses: CheckoutAddresses?) {
         guard let selectedArticleUnit = delegate?.viewModel.dataModel.selectedArticleUnit else { return }
 
         let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, cartCheckout: cartCheckout, addresses: addresses)
         delegate?.viewModel.dataModel = dataModel
 
-        if cartCheckout?.checkout == nil &&
-            delegate?.viewModel.dataModel.shippingAddress != nil &&
-            delegate?.viewModel.dataModel.billingAddress != nil {
-
+        if cartCheckout?.checkout == nil && shippingAddress != nil && billingAddress != nil {
             createCartCheckout { [weak self] result in
                 guard let cartCheckout = result.process() else { return }
                 self?.cartCheckout = cartCheckout
@@ -186,38 +184,42 @@ extension LoggedInActionHandler {
         }
     }
 
+    private func updateDataModelWithNoCartCheckout(addresses: CheckoutAddresses) {
+        guard let selectedArticleUnit = delegate?.viewModel.dataModel.selectedArticleUnit else { return }
+
+        let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, cartCheckout: nil, addresses: addresses)
+        delegate?.viewModel.dataModel = dataModel
+    }
+
 }
 
-//TODO: Try to move to Address controllers?
 extension LoggedInActionHandler {
 
     private func addressUpdated(address: EquatableAddress) {
-        if let shippingAddress = delegate?.viewModel.dataModel.shippingAddress as? EquatableAddress where shippingAddress == address {
+        if let shippingAddress = shippingAddress where shippingAddress == address {
             selectShippingAddress(shippingAddress)
         }
-        if let billingAddress = delegate?.viewModel.dataModel.billingAddress as? EquatableAddress where billingAddress == address {
+        if let billingAddress = billingAddress where billingAddress == address {
             selectBillingAddress(billingAddress)
         }
     }
 
     private func addressDeleted(address: EquatableAddress) {
-        if let shippingAddress = delegate?.viewModel.dataModel.shippingAddress as? EquatableAddress where shippingAddress == address {
+        if let shippingAddress = shippingAddress where shippingAddress == address {
+            updateDataModelWithNoCartCheckout(CheckoutAddresses(billingAddress: billingAddress, shippingAddress: nil))
             cartCheckout?.checkout = nil
-            selectShippingAddress(nil)
         }
-        if let billingAddress = delegate?.viewModel.dataModel.billingAddress as? EquatableAddress where billingAddress == address {
+        if let billingAddress = billingAddress where billingAddress == address {
+            updateDataModelWithNoCartCheckout(CheckoutAddresses(billingAddress: nil, shippingAddress: shippingAddress))
             cartCheckout?.checkout = nil
-            selectBillingAddress(nil)
         }
     }
 
     private func selectShippingAddress(address: EquatableAddress?) {
-        let billingAddress = delegate?.viewModel.dataModel.billingAddress as? EquatableAddress
         updateDataModel(CheckoutAddresses(billingAddress: billingAddress, shippingAddress: address))
     }
 
     private func selectBillingAddress(address: EquatableAddress?) {
-        let shippingAddress = delegate?.viewModel.dataModel.shippingAddress as? EquatableAddress
         updateDataModel(CheckoutAddresses(billingAddress: address, shippingAddress: shippingAddress))
     }
 
