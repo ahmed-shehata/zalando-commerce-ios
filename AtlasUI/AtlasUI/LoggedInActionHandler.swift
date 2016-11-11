@@ -66,11 +66,7 @@ class LoggedInActionHandler: CheckoutSummaryActionHandler {
             if delegate.viewModel.dataModel.isPaymentSelected && !UserMessage.errorDisplayed {
                 AtlasAPIClient.createOrder(checkout.id) { result in
                     guard let order = result.process() else { return }
-
-                    let selectedArticleUnit = delegate.viewModel.dataModel.selectedArticleUnit
-                    let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, checkout: checkout, order: order)
-                    delegate.actionHandler = OrderPlacedActionHandler()
-                    delegate.viewModel.dataModel = dataModel
+                    self?.handleOrderConfirmation(order)
                 }
             }
         }
@@ -134,6 +130,41 @@ class LoggedInActionHandler: CheckoutSummaryActionHandler {
             addressViewController.title = Localizer.string("addressListView.title.billing")
             AtlasUIViewController.instance?.mainNavigationController.pushViewController(addressViewController, animated: true)
         }
+    }
+
+}
+
+extension LoggedInActionHandler {
+
+    private func handleOrderConfirmation(order: Order) {
+        guard let paymentURL = order.externalPaymentURL else {
+            showConfirmationScreen(order)
+            return
+        }
+
+        guard let callbackURL = AtlasAPIClient.instance?.config.payment.thirdPartyCallbackURL else {
+            UserMessage.displayError(AtlasCheckoutError.unclassified)
+            return
+        }
+
+        let paymentViewController = PaymentViewController(paymentURL: paymentURL, callbackURL: callbackURL)
+        paymentViewController.paymentCompletion = { [weak self] result in
+            guard let paymentStatus = result.process() else { return }
+            switch paymentStatus {
+            case .success: self?.showConfirmationScreen(order)
+            case .redirect, .cancel: break
+            case .error: UserMessage.displayError(AtlasCheckoutError.unclassified)
+            }
+        }
+        AtlasUIViewController.instance?.mainNavigationController.pushViewController(paymentViewController, animated: true)
+    }
+
+    private func showConfirmationScreen(order: Order) {
+        guard let delegate = delegate else { return }
+        let selectedArticleUnit = delegate.viewModel.dataModel.selectedArticleUnit
+        let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, checkout: cartCheckout?.checkout, order: order)
+        delegate.actionHandler = OrderPlacedActionHandler()
+        delegate.viewModel.dataModel = dataModel
     }
 
 }
