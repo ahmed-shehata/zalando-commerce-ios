@@ -26,9 +26,9 @@ class LoggedInActionHandlerTests: XCTestCase {
     }
 
     func testNoPaymentMethodSelected() {
-//        let actionHandler = createActionHandler()
-//        actionHandler?.handleSubmitButton()
-//        expect(UserMessage.errorDisplayed).toEventually(equal(true))
+        let actionHandler = createActionHandler()
+        actionHandler?.handleSubmitButton()
+        expect(UserMessage.errorDisplayed).toEventually(equal(true))
     }
 
     func testPlaceOrder() {
@@ -84,9 +84,54 @@ class LoggedInActionHandlerTests: XCTestCase {
 
     func testShowingPaymentSelectionScreen() {
         let actionHandler = createActionHandler()
-        actionHandler?.cartCheckout = nil
+        guard let checkout = actionHandler?.cartCheckout?.checkout else { return fail() }
+        actionHandler?.cartCheckout?.checkout = Checkout(id: checkout.id,
+                                                         customerNumber: checkout.customerNumber,
+                                                         cartId: checkout.cartId,
+                                                         delivery: checkout.delivery,
+                                                         payment: Payment(selected: nil, isExternalPayment: nil, selectionPageURL: nil),
+                                                         billingAddress: checkout.billingAddress,
+                                                         shippingAddress: checkout.shippingAddress)
+        actionHandler?.showPaymentSelectionScreen()
+        expect(UserMessage.errorDisplayed).toEventually(equal(true))
+
+        UserMessage.clearBannerError()
+        expect(UserMessage.errorDisplayed).toNotEventually(equal(true))
+        actionHandler?.cartCheckout?.checkout = checkout
+
+        guard let selectedArticleUnit = mockedDelegate?.viewModel.dataModel.selectedArticleUnit else { return fail() }
+        guard let originalDataModel = mockedDelegate?.viewModel.dataModel else { return fail() }
+        let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit,
+                                                 shippingAddress: nil,
+                                                 billingAddress: nil,
+                                                 paymentMethod: nil,
+                                                 shippingPrice: 0,
+                                                 totalPrice: 0,
+                                                 delivery: nil)
+        mockedDelegate?.viewModel.dataModel = dataModel
+        actionHandler?.showPaymentSelectionScreen()
+        expect(UserMessage.errorDisplayed).toEventually(equal(true))
+
+        UserMessage.clearBannerError()
+        expect(UserMessage.errorDisplayed).toNotEventually(equal(true))
+        mockedDelegate?.viewModel.dataModel = originalDataModel
+
         actionHandler?.showPaymentSelectionScreen()
         expect(AtlasUIViewController.instance?.mainNavigationController.viewControllers.last as? PaymentViewController).toNotEventually(beNil())
+        let paymentViewController = AtlasUIViewController.instance?.mainNavigationController.viewControllers.last as? PaymentViewController
+
+        paymentViewController?.paymentCompletion?(.failure(AtlasCheckoutError.unclassified))
+        expect(UserMessage.errorDisplayed).toEventually(equal(true))
+        UserMessage.clearBannerError()
+        expect(UserMessage.errorDisplayed).toNotEventually(equal(true))
+
+
+        mockedDelegate?.viewModel.dataModel = dataModel
+        paymentViewController?.paymentCompletion?(.success(.success))
+        expect(self.mockedDelegate?.viewModel.dataModel.paymentMethod).toNotEventually(beNil())
+
+        paymentViewController?.paymentCompletion?(.success(.error))
+        expect(UserMessage.errorDisplayed).toEventually(equal(true))
     }
 
     func testShowShippingAddressSelectionScreen() {
