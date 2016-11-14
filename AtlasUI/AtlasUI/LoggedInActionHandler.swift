@@ -228,10 +228,10 @@ extension LoggedInActionHandler {
 
     private func addressUpdated(address: EquatableAddress) {
         if let shippingAddress = shippingAddress where shippingAddress == address {
-            selectShippingAddress(shippingAddress)
+            selectShippingAddress(address)
         }
         if let billingAddress = billingAddress where billingAddress == address {
-            selectBillingAddress(billingAddress)
+            selectBillingAddress(address)
         }
     }
 

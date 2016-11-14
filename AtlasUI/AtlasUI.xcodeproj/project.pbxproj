@@ -83,6 +83,9 @@
 		E0D0E4EC009CDEA4D16C8A2726F24643 /* AsyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B55AD6C5A60999BD38E9F067F32E6B /* AsyncTests.swift */; };
 		E726441E020342505E0A3E67AB6E20CB /* Nimble.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 8398317FEC21A1E65AB06E3EF9B29A2B /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E916E7161DD9C11F001F7498 /* InjectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E916E7151DD9C11F001F7498 /* InjectorTests.swift */; };
+		E95EA1341DD9FF0600179C11 /* LoggedInActionHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95EA1331DD9FF0600179C11 /* LoggedInActionHandlerTests.swift */; };
+		E95EA13C1DDA0DC700179C11 /* TestsHostAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95EA13B1DDA0DC700179C11 /* TestsHostAppDelegate.swift */; };
+		E95EA14C1DDA0DE900179C11 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E95EA14B1DDA0DE900179C11 /* Default-568h@2x.png */; };
 		E97A33A7BE2D26CDE9B4C62EB5BD2661 /* CheckoutSummaryAddressStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9494F7947C24BD2087FE22EBE20BFCD /* CheckoutSummaryAddressStackView.swift */; };
 		E9C777001DD0BC020065BA0C /* EmptyAddressFormCreationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C776FF1DD0BC020065BA0C /* EmptyAddressFormCreationStrategy.swift */; };
 		E9C777041DD0BFC20065BA0C /* AddressFormCreationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C777031DD0BFC20065BA0C /* AddressFormCreationStrategy.swift */; };
@@ -114,6 +117,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = F27E7E2D17C97B961882815BCF0DE4ED;
 			remoteInfo = AtlasUI;
+		};
+		E95EA14E1DDA0EC900179C11 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CA460E1A7406188D0392155EA8A63A1A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E95EA1381DDA0DC700179C11;
+			remoteInfo = AtlasUITestsHostsApp;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -210,6 +220,12 @@
 		E0787BE393FFE7950A8DA96CCD4375EA /* AtlasUI-NSURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AtlasUI-NSURL.swift"; sourceTree = "<group>"; };
 		E272DADD96290ADDD55009F293229EAD /* FormValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValidatorTests.swift; sourceTree = "<group>"; };
 		E916E7151DD9C11F001F7498 /* InjectorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InjectorTests.swift; sourceTree = "<group>"; };
+		E95EA1331DD9FF0600179C11 /* LoggedInActionHandlerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedInActionHandlerTests.swift; sourceTree = "<group>"; };
+		E95EA1391DDA0DC700179C11 /* AtlasUITestsHostsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AtlasUITestsHostsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E95EA13B1DDA0DC700179C11 /* TestsHostAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsHostAppDelegate.swift; sourceTree = "<group>"; };
+		E95EA1471DDA0DC700179C11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E95EA14B1DDA0DE900179C11 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		E95EA14D1DDA0EB000179C11 /* AtlasUITestsHostsApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AtlasUITestsHostsApp.entitlements; sourceTree = "<group>"; };
 		E9C776FF1DD0BC020065BA0C /* EmptyAddressFormCreationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyAddressFormCreationStrategy.swift; sourceTree = "<group>"; };
 		E9C777031DD0BFC20065BA0C /* AddressFormCreationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressFormCreationStrategy.swift; sourceTree = "<group>"; };
 		E9D437921DD35BED00082B44 /* Injector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Injector.swift; sourceTree = "<group>"; };
@@ -251,6 +267,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AC4DDA62D4BECDCE2166F9109EE75A2 /* AtlasSDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E95EA1361DDA0DC700179C11 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +356,7 @@
 			children = (
 				2256B0C1AAAE60580B37160C27B74A94 /* AtlasUI */,
 				B0658A7A5FA9F75BCDF8341379EB0319 /* AtlasUITests */,
+				E95EA13A1DDA0DC700179C11 /* AtlasUITestsHostsApp */,
 				1E54B5694EFDF9FA901ABDD14A47A6A3 /* Frameworks */,
 				58525F1A4F96F26E15272DC693E4FB44 /* Products */,
 			);
@@ -401,6 +425,7 @@
 			children = (
 				808C394E80E745736133ADBD0E2938C8 /* AtlasUI.framework */,
 				3A844E81320BFEB7BA74F94C62ED69D2 /* AtlasUITests.xctest */,
+				E95EA1391DDA0DC700179C11 /* AtlasUITestsHostsApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -465,6 +490,7 @@
 				87223EDAD5E7184D20A621B18B1B7D26 /* SizeListSelectionViewControllerTests.swift */,
 				51B1CD594BE0AFFDF8587372BC49280A /* PaymentViewControllerTests.swift */,
 				83316EC4886ACF067F2DE376AB807478 /* URLAuthorizationTests.swift */,
+				E95EA1331DD9FF0600179C11 /* LoggedInActionHandlerTests.swift */,
 			);
 			path = AtlasUITests;
 			sourceTree = "<group>";
@@ -490,6 +516,17 @@
 				34ECE1C52097D5F274C73E332B128DD4 /* Address Form */,
 			);
 			name = "Address Selection";
+			sourceTree = "<group>";
+		};
+		E95EA13A1DDA0DC700179C11 /* AtlasUITestsHostsApp */ = {
+			isa = PBXGroup;
+			children = (
+				E95EA14D1DDA0EB000179C11 /* AtlasUITestsHostsApp.entitlements */,
+				E95EA13B1DDA0DC700179C11 /* TestsHostAppDelegate.swift */,
+				E95EA14B1DDA0DE900179C11 /* Default-568h@2x.png */,
+				E95EA1471DDA0DC700179C11 /* Info.plist */,
+			);
+			path = AtlasUITestsHostsApp;
 			sourceTree = "<group>";
 		};
 		E9C777051DD0C3970065BA0C /* Address Form Creation Strategy */ = {
@@ -582,11 +619,29 @@
 			);
 			dependencies = (
 				202E4C5BE8BA8F7EFE36172EE458D9CC /* PBXTargetDependency */,
+				E95EA14F1DDA0EC900179C11 /* PBXTargetDependency */,
 			);
 			name = AtlasUITests;
 			productName = AtlasUITests;
 			productReference = 3A844E81320BFEB7BA74F94C62ED69D2 /* AtlasUITests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E95EA1381DDA0DC700179C11 /* AtlasUITestsHostsApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E95EA1481DDA0DC700179C11 /* Build configuration list for PBXNativeTarget "AtlasUITestsHostsApp" */;
+			buildPhases = (
+				E95EA1351DDA0DC700179C11 /* Sources */,
+				E95EA1361DDA0DC700179C11 /* Frameworks */,
+				E95EA1371DDA0DC700179C11 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AtlasUITestsHostsApp;
+			productName = AtlasUITestsHostsApp;
+			productReference = E95EA1391DDA0DC700179C11 /* AtlasUITestsHostsApp.app */;
+			productType = "com.apple.product-type.application";
 		};
 		F27E7E2D17C97B961882815BCF0DE4ED /* AtlasUI */ = {
 			isa = PBXNativeTarget;
@@ -613,12 +668,22 @@
 		CA460E1A7406188D0392155EA8A63A1A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
+				LastSwiftUpdateCheck = 0810;
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Zalando SE";
 				TargetAttributes = {
 					05766597D649C37825AED617FB1045D0 = {
 						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = E95EA1381DDA0DC700179C11;
+					};
+					E95EA1381DDA0DC700179C11 = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					F27E7E2D17C97B961882815BCF0DE4ED = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -634,6 +699,7 @@
 				en,
 				de,
 				global,
+				Base,
 			);
 			mainGroup = 28416D88773780187E0A1F21A416ADD5;
 			productRefGroup = 58525F1A4F96F26E15272DC693E4FB44 /* Products */;
@@ -642,6 +708,7 @@
 			targets = (
 				F27E7E2D17C97B961882815BCF0DE4ED /* AtlasUI */,
 				05766597D649C37825AED617FB1045D0 /* AtlasUITests */,
+				E95EA1381DDA0DC700179C11 /* AtlasUITestsHostsApp */,
 			);
 		};
 /* End PBXProject section */
@@ -660,6 +727,14 @@
 			files = (
 				EF570993CFA4FDF0361679E931D55B8F /* Assets.xcassets in Resources */,
 				D3AA63A444255BE1B17EDACF32E6181D /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E95EA1371DDA0DC700179C11 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E95EA14C1DDA0DE900179C11 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -691,6 +766,7 @@
 				E0D0E4EC009CDEA4D16C8A2726F24643 /* AsyncTests.swift in Sources */,
 				877D4CE660F5CFF550D4032BE46FCCCB /* EditAddressTypeTests.swift in Sources */,
 				82FEDC4FA09CC55CE1D9224BCDED9062 /* FormValidatorTests.swift in Sources */,
+				E95EA1341DD9FF0600179C11 /* LoggedInActionHandlerTests.swift in Sources */,
 				A077967CA9194ECD42DE4F9582D38823 /* PaymentViewControllerTests.swift in Sources */,
 				E916E7161DD9C11F001F7498 /* InjectorTests.swift in Sources */,
 				F7134FE121256D750D7DCDB3C6494EF0 /* URLAuthorizationTests.swift in Sources */,
@@ -787,6 +863,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E95EA1351DDA0DC700179C11 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E95EA13C1DDA0DC700179C11 /* TestsHostAppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -794,6 +878,11 @@
 			isa = PBXTargetDependency;
 			target = F27E7E2D17C97B961882815BCF0DE4ED /* AtlasUI */;
 			targetProxy = A64B0588D2191874F0B71837BB27AB31 /* PBXContainerItemProxy */;
+		};
+		E95EA14F1DDA0EC900179C11 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E95EA1381DDA0DC700179C11 /* AtlasUITestsHostsApp */;
+			targetProxy = E95EA14E1DDA0EC900179C11 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -961,6 +1050,41 @@
 			};
 			name = Release;
 		};
+		E95EA1491DDA0DC700179C11 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_ENTITLEMENTS = AtlasUITestsHostsApp/AtlasUITestsHostsApp.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = J67E9B6234;
+				INFOPLIST_FILE = AtlasUITestsHostsApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zalando.AtlasUITestsHostsApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 2.3;
+			};
+			name = Debug;
+		};
+		E95EA14A1DDA0DC700179C11 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_ENTITLEMENTS = AtlasUITestsHostsApp/AtlasUITestsHostsApp.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = J67E9B6234;
+				INFOPLIST_FILE = AtlasUITestsHostsApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zalando.AtlasUITestsHostsApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
+			};
+			name = Release;
+		};
 		EB1C2ED322AFCAF49683CDE4DD472722 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -969,6 +1093,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.zalando.atlas.AtlasUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AtlasUITestsHostsApp.app/AtlasUITestsHostsApp";
 			};
 			name = Release;
 		};
@@ -980,6 +1105,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.zalando.atlas.AtlasUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AtlasUITestsHostsApp.app/AtlasUITestsHostsApp";
 			};
 			name = Debug;
 		};
@@ -1012,6 +1138,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		E95EA1481DDA0DC700179C11 /* Build configuration list for PBXNativeTarget "AtlasUITestsHostsApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E95EA1491DDA0DC700179C11 /* Debug */,
+				E95EA14A1DDA0DC700179C11 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
