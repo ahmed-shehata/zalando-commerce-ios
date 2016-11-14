@@ -18,7 +18,7 @@ module Calypso
 
     def env_changelog_token
       ENV['CHANGELOG_GITHUB_TOKEN'] ||
-        abort('ERROR: No $CHANGELOG_GITHUB_TOKEN in your env')
+        log_abort('ERROR: No $CHANGELOG_GITHUB_TOKEN in your env')
     end
 
   end

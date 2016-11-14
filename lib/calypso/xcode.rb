@@ -42,7 +42,7 @@ module Calypso
       try = 0
       loop do
         try += 1
-        puts "Running tests (scheme: #{scheme}, try: #{try}/#{tries})"
+        log "Running tests (scheme: #{scheme}, try: #{try}/#{tries})"
 
         SimCtl.new.run_with_simulator(TEST_DEVICE, TEST_RUNTIME) do |simulator_udid|
           build_cmd = format_build_cmd('test', scheme,
