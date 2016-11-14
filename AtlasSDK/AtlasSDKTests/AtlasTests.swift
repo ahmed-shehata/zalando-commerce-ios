@@ -37,8 +37,7 @@ class AtlasTests: XCTestCase {
                            salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
                            useSandbox: true,
                            interfaceLanguage: "de",
-                           configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"),
-                           authorizationHandler: MockAuthorizationHandler())
+                           configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
 
         waitUntil(timeout: 60) { done in
             Atlas.configure(opts) { result in

@@ -41,7 +41,6 @@ class AtlasAPIClientErrorsTests: AtlasAPIClientBaseTests {
                               salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
                               useSandbox: true,
                               interfaceLanguage: "de",
-                              authorizationHandler: MockAuthorizationHandler(error: AtlasAPIError.unauthorized),
                               configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
 
         let client = mockedAtlasAPIClient(forURL: clientURL, options: options, data: errorResponse, status: status)
@@ -53,7 +52,10 @@ class AtlasAPIClientErrorsTests: AtlasAPIClientBaseTests {
                     return fail("Should emit \(AtlasAPIError.unauthorized)")
                 }
 
-                expect("\(error)").to(equal("\(AtlasAPIError.unauthorized)"))
+                switch error {
+                case AtlasAPIError.unauthorized: break
+                default: fail("\(error) should be unauthorized")
+                }
             }
         }
     }

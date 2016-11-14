@@ -16,7 +16,7 @@ class EditAddressTypeTests: XCTestCase {
         super.setUp()
 
         AtlasUI.register { try! Localizer(localeIdentifier: "en_UK") as Localizer }
-        viewModel = AddressFormViewModel(equatableAddress: nil, countryCode: "DE")
+        viewModel = AddressFormViewModel(equatableAddress: nil)
         updateModelData(viewModel)
     }
 
@@ -55,7 +55,6 @@ class EditAddressTypeTests: XCTestCase {
         expect(AddressFormField.memberID.value(self.viewModel)).to(equal("12345"))
         expect(AddressFormField.zipcode.value(self.viewModel)).to(equal("10178"))
         expect(AddressFormField.city.value(self.viewModel)).to(equal("Berlin"))
-        expect(AddressFormField.country.value(self.viewModel)).to(equal("Germany"))
     }
 
 }
