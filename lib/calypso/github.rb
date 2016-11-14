@@ -37,8 +37,7 @@ module Calypso
     end
 
     def drop_cards(cards)
-      answer = ask("Do you want to drop all #{cards.count} cards? (only 'YES' counts)")
-      return unless answer == 'YES'
+      return unless yes?("Do you want to drop all #{cards.count} cards?", :red)
 
       cards.each do |card|
         delete_via_projects_api(delete_card_url(card))

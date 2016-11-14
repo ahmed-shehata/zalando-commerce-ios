@@ -15,7 +15,6 @@ protocol AddressFormCreationStrategy {
 
 }
 
-
 extension AddressFormCreationStrategy {
 
     var localizedTitleKey: String {
