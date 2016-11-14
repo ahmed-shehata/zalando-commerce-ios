@@ -36,10 +36,6 @@ struct CheckoutSummaryDataModel {
 
 extension CheckoutSummaryDataModel {
 
-    var addresses: CheckoutAddresses {
-        return CheckoutAddresses(billingAddress: billingAddress as? EquatableAddress, shippingAddress: shippingAddress as? EquatableAddress)
-    }
-
     var formattedShippingAddress: [String] {
         return shippingAddress?.splittedFormattedPostalAddress ?? [Localizer.string("summaryView.label.emptyAddress.shipping")]
     }
