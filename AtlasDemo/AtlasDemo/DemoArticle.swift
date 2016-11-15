@@ -90,7 +90,7 @@ extension DemoArticle {
             seasonYear = json["seasonYear"].string,
             brand = Brand(json: json["brand"]),
             media = Media(json: json["media"])
-        else { return nil }
+            else { return nil }
 
         self.id = id
         self.modelId = modelId
@@ -227,12 +227,7 @@ extension DemoArticle {
     }
 
     var availableSizes: [String] {
-        return units.filter { $0.available }.map { $0.size }.sort { first, second in
-            guard let firstValue = sizeMap[first], secondValue = sizeMap[second] else {
-                return first <= second
-            }
-            return firstValue <= secondValue
-        }
+        return units.filter { $0.available }.map { $0.size }
     }
 
 }
@@ -254,8 +249,5 @@ public func == (lhs: DemoArticle.Unit, rhs: DemoArticle.Unit) -> Bool {
 }
 
 public func < (lhs: DemoArticle.Unit, rhs: DemoArticle.Unit) -> Bool {
-    guard let lhsSizeWeight = sizeMap[lhs.size], rhsSizeWeight = sizeMap[rhs.size] else {
-        return lhs.size < rhs.size
-    }
-    return lhsSizeWeight < rhsSizeWeight
+    return lhs.size < rhs.size
 }
