@@ -32,17 +32,17 @@ class ProfileViewController: UIViewController {
 
     @IBAction func serverSwitched(sender: UISegmentedControl) {
         let useSandbox = sender.selectedSegmentIndex == 1
-        AppSetup.change(environmentToSandbox: useSandbox) { _ in }
+        AppSetup.change(environmentToSandbox: useSandbox)
     }
 
     @IBAction func languageSwitched(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 1:
-            AppSetup.change(interfaceLanguage: .Deutsch) { _ in }
+            AppSetup.change(interfaceLanguage: .Deutsch)
         case 0:
             fallthrough
         default:
-            AppSetup.change(interfaceLanguage: .English) { _ in }
+            AppSetup.change(interfaceLanguage: .English)
         }
     }
 

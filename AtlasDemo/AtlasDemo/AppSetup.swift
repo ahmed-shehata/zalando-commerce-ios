@@ -33,12 +33,12 @@ class AppSetup {
         setAppOptions(prepareOptions(), completion: completion)
     }
 
-    static func change(environmentToSandbox useSandbox: Bool, completion: EmptyCompletion) {
+    static func change(environmentToSandbox useSandbox: Bool, completion: EmptyCompletion? = nil) {
         Atlas.logoutUser()
         setAppOptions(prepareOptions(useSandbox: useSandbox), completion: completion)
     }
 
-    static func change(interfaceLanguage language: InterfaceLanguage, completion: EmptyCompletion) {
+    static func change(interfaceLanguage language: InterfaceLanguage, completion: EmptyCompletion? = nil) {
         setAppOptions(prepareOptions(interfaceLanguage: language), completion: completion)
     }
 
@@ -58,12 +58,12 @@ class AppSetup {
         }
     }
 
-    private static func setAppOptions(opts: Options, completion: EmptyCompletion) {
+    private static func setAppOptions(opts: Options, completion: EmptyCompletion? = nil) {
         AtlasUI.configure(opts) { result in
             guard let client = result.process() else { return }
             AppSetup.atlasClient = client
             AppSetup.options = opts
-            completion()
+            completion?()
         }
     }
 
