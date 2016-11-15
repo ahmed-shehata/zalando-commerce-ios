@@ -29,6 +29,10 @@ public struct Atlas {
         }
     }
 
+    public static func login(token: String) {
+        APIAccessToken.store(token)
+    }
+
     public static func isUserLoggedIn() -> Bool {
         return APIAccessToken.retrieve() != nil
     }

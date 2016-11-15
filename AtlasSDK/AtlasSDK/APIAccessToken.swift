@@ -4,19 +4,19 @@
 
 import Foundation
 
-public struct APIAccessToken {
+struct APIAccessToken {
 
     private static let keychainKey = "APIAccessToken"
 
-    public static func store(newToken: String?) {
+    static func store(newToken: String?) {
         Keychain.write(newToken, forKey: keychainKey)
     }
 
-    public static func retrieve() -> String? {
+    static func retrieve() -> String? {
         return Keychain.read(forKey: keychainKey)
     }
 
-    public static func delete() {
+    static func delete() {
         Keychain.delete(key: keychainKey)
     }
 

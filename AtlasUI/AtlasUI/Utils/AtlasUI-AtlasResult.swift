@@ -24,7 +24,7 @@ extension AtlasResult {
                     let processedResult = result.processedResult()
                     switch processedResult {
                     case .success(let accessToken):
-                        APIAccessToken.store(accessToken)
+                        Atlas.login(accessToken)
                         UserMessage.displayLoader { hideLoader in
                             repeatCall {
                                 hideLoader()
