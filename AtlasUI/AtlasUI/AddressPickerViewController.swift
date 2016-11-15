@@ -39,9 +39,9 @@ final class AddressPickerViewController: UIViewController {
         return tableView
     }()
 
-    init(initialAddresses: [EquatableAddress], initialSelectedAddress: EquatableAddress?) {
+    init(initialAddresses: [EquatableAddress], selectedAddress: EquatableAddress?) {
         self.initialAddresses = initialAddresses
-        self.initialSelectedAddress = initialSelectedAddress
+        self.initialSelectedAddress = selectedAddress
         super.init(nibName: nil, bundle: nil)
     }
 

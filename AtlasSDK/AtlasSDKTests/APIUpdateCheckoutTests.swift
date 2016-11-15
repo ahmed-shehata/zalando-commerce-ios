@@ -19,6 +19,8 @@ class APIUpdateCheckoutTests: AtlasAPIClientBaseTests {
                 switch result {
                 case .failure(let error):
                     fail(String(error))
+                case .abortion(let error, _):
+                    fail(String(error))
                 case .success(let checkout):
                     expect(checkout.id).to(equal(self.checkoutId))
                     expect(checkout.billingAddress.id).to(equal(self.addressId))
@@ -35,6 +37,8 @@ class APIUpdateCheckoutTests: AtlasAPIClientBaseTests {
                 switch result {
                 case .failure(let error):
                     fail(String(error))
+                case .abortion(let error, _):
+                    fail(String(error))
                 case .success(let checkout):
                     expect(checkout.id).to(equal(self.checkoutId))
                     expect(checkout.shippingAddress.id).to(equal(self.addressId))
@@ -50,6 +54,8 @@ class APIUpdateCheckoutTests: AtlasAPIClientBaseTests {
             client.updateCheckout(self.checkoutId, updateCheckoutRequest: updateRequest) { result in
                 switch result {
                 case .failure(let error):
+                    fail(String(error))
+                case .abortion(let error, _):
                     fail(String(error))
                 case .success(let checkout):
                     expect(checkout.id).to(equal(self.checkoutId))

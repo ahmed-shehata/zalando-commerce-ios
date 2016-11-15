@@ -22,6 +22,9 @@ public struct Atlas {
             case .failure(let error):
                 AtlasLogger.logError(error)
                 completion(.failure(error))
+            case .abortion(let error, _):
+                AtlasLogger.logError(error)
+                completion(.failure(error))
             case .success(let config):
                 let client = AtlasAPIClient(config: config)
                 completion(.success(client))

@@ -4,8 +4,6 @@
 
 import Foundation
 
-public typealias RepeatCallAction = (completion: () -> Void) -> Void
-
 public protocol AtlasErrorType: ErrorType {
 
     var localizedTitleKey: String { get }
@@ -33,7 +31,7 @@ public enum AtlasAPIError: AtlasErrorType {
     case noData
     case noInternet
     case invalidResponseFormat
-    case unauthorized(repeatCall: RepeatCallAction)
+    case unauthorized
 
     case nsURLError(code: Int, details: String?)
     case http(status: HTTPStatus, details: String?)

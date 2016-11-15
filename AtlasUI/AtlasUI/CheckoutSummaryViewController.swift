@@ -5,12 +5,12 @@
 import UIKit
 import AtlasSDK
 
-class CheckoutSummaryViewController: UIViewController, CheckoutSummaryActionHandlerDelegate {
+class CheckoutSummaryViewController: UIViewController {
 
-    var actionHandler: CheckoutSummaryActionHandler {
+    var actionHandler: CheckoutSummaryActionHandler? {
         didSet {
-            actionHandler.delegate = self
-            viewModel.uiModel = actionHandler.uiModel
+            actionHandler?.dataSource = self
+            actionHandler?.delegate = self
         }
     }
 
@@ -28,11 +28,10 @@ class CheckoutSummaryViewController: UIViewController, CheckoutSummaryActionHand
         return stackView
     }()
 
-    init(dataModel: CheckoutSummaryDataModel, actionHandler: CheckoutSummaryActionHandler) {
-        self.viewModel = CheckoutSummaryViewModel(dataModel: dataModel, uiModel: actionHandler.uiModel)
-        self.actionHandler = actionHandler
+    init(viewModel: CheckoutSummaryViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        ({ [weak self] in self?.actionHandler = actionHandler }) ()
+        triggerDidSet(viewModel)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -43,6 +42,10 @@ class CheckoutSummaryViewController: UIViewController, CheckoutSummaryActionHand
         super.viewDidLoad()
         buildView()
         setupActions()
+    }
+
+    private func triggerDidSet(viewModel: CheckoutSummaryViewModel) {
+        self.viewModel = viewModel
     }
 
 }
@@ -80,12 +83,12 @@ extension CheckoutSummaryViewController {
     }
 
     private func setupNavigationBar() {
-        title = Localizer.string(viewModel.uiModel.navigationBarTitleLocalizedKey)
+        title = Localizer.string(viewModel.layout.navigationBarTitleLocalizedKey)
 
         let hasSingleUnit = viewModel.dataModel.selectedArticleUnit.article.hasSingleUnit
-        navigationItem.setHidesBackButton(viewModel.uiModel.hideBackButton(hasSingleUnit: hasSingleUnit), animated: false)
+        navigationItem.setHidesBackButton(viewModel.layout.hideBackButton(hasSingleUnit: hasSingleUnit), animated: false)
 
-        if viewModel.uiModel.showCancelButton {
+        if viewModel.layout.showCancelButton {
             showCancelButton()
         } else {
             hideCancelButton()
@@ -97,19 +100,43 @@ extension CheckoutSummaryViewController {
 extension CheckoutSummaryViewController {
 
     dynamic private func submitButtonTapped() {
-        actionHandler.handleSubmitButton()
+        actionHandler?.handleSubmitButton()
     }
 
     dynamic private func shippingAddressTapped() {
-        actionHandler.showShippingAddressSelectionScreen()
+        actionHandler?.showShippingAddressSelectionScreen()
     }
 
     dynamic private func billingAddressTapped() {
-        actionHandler.showBillingAddressSelectionScreen()
+        actionHandler?.showBillingAddressSelectionScreen()
     }
 
     dynamic private func paymentAddressTapped() {
-        actionHandler.showPaymentSelectionScreen()
+        actionHandler?.showPaymentSelectionScreen()
+    }
+
+}
+
+extension CheckoutSummaryViewController: CheckoutSummaryActionHandlerDataSource {
+
+    var dataModel: CheckoutSummaryDataModel {
+        return viewModel.dataModel
+    }
+
+}
+
+extension CheckoutSummaryViewController: CheckoutSummaryActionHandlerDelegate {
+
+    func dataModelUpdated(dataModel: CheckoutSummaryDataModel) {
+        self.viewModel.dataModel = dataModel
+    }
+
+    func layoutUpdated(layout: CheckoutSummaryLayout) {
+        self.viewModel.layout = layout
+    }
+
+    func actionHandlerUpdated(actionHandler: CheckoutSummaryActionHandler) {
+        self.actionHandler = actionHandler
     }
 
     func dismissView() {

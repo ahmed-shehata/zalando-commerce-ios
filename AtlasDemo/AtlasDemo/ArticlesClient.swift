@@ -6,7 +6,7 @@ import AtlasSDK
 import AtlasMockAPI
 import SwiftHTTP
 
-typealias ArticlesCompletion = AtlasResult<[DemoArticle]> -> Void
+typealias ArticlesCompletion = AtlasAPIResult<[DemoArticle]> -> Void
 
 enum ArticlesError: ErrorType {
     case NoData

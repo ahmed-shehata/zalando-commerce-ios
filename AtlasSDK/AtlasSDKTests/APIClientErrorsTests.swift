@@ -48,13 +48,13 @@ class AtlasAPIClientErrorsTests: AtlasAPIClientBaseTests {
         waitUntil(timeout: 10) { done in
             client.customer { result in
                 defer { done() }
-                guard case let .failure(error) = result else {
-                    return fail("Should emit \(AtlasAPIError.unauthorized)")
-                }
-
-                switch error {
-                case AtlasAPIError.unauthorized: break
-                default: fail("\(error) should be unauthorized")
+                switch result {
+                case .abortion(let error, _):
+                    switch error {
+                    case AtlasAPIError.unauthorized: break
+                    default: fail("\(error) should be unauthorized")
+                    }
+                default: fail("\(result) should be abortion")
                 }
             }
         }

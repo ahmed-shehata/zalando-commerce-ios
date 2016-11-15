@@ -12,7 +12,8 @@ struct CheckoutSummaryViewModel {
             validateAgainstOldDataModel(oldValue)
         }
     }
-    var uiModel: CheckoutSummaryUIModel
+    var layout: CheckoutSummaryLayout
+
 }
 
 extension CheckoutSummaryViewModel {

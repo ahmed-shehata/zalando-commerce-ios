@@ -19,11 +19,15 @@ class APICreateCheckoutTests: AtlasAPIClientBaseTests {
                 switch result {
                 case .failure(let error):
                     fail(String(error))
+                case .abortion(let error, _):
+                    fail(String(error))
                 case .success(let article):
                     let selectedArticleUnit = SelectedArticleUnit(article: article, selectedUnitIndex: 0)
                     client.createCheckoutCart(selectedArticleUnit.sku) { result in
                         switch result {
                         case .failure(let error):
+                            fail(String(error))
+                        case .abortion(let error, _):
                             fail(String(error))
                         case .success(let result):
                             expect(result.checkout.id).to(equal(self.checkoutId))
@@ -40,6 +44,8 @@ class APICreateCheckoutTests: AtlasAPIClientBaseTests {
             client.createCheckout(self.cartId) { result in
                 switch result {
                 case .failure(let error):
+                    fail(String(error))
+                case .abortion(let error, _):
                     fail(String(error))
                 case .success(let checkout):
                     expect(checkout.id).to(equal(self.checkoutId))

@@ -5,54 +5,54 @@
 import Foundation
 
 /**
- Completion block `AtlasResult` with the no content returned
+ Completion block `AtlasAPIResult` with the no content returned
  */
-public typealias NoContentCompletion = AtlasResult<Bool> -> Void
+public typealias NoContentCompletion = AtlasAPIResult<Bool> -> Void
 
 /**
- Completion block `AtlasResult` with the `Customer` struct as a success value
+ Completion block `AtlasAPIResult` with the `Customer` struct as a success value
  */
-public typealias CustomerCompletion = AtlasResult<Customer> -> Void
+public typealias CustomerCompletion = AtlasAPIResult<Customer> -> Void
 
 /**
- Completion block `AtlasResult` with the `Cart` struct as a success value
+ Completion block `AtlasAPIResult` with the `Cart` struct as a success value
  */
-public typealias CartCompletion = AtlasResult<Cart> -> Void
+public typealias CartCompletion = AtlasAPIResult<Cart> -> Void
 
 /**
- Completion block `AtlasResult` with the `Checkout` struct as a success value
+ Completion block `AtlasAPIResult` with the `Checkout` struct as a success value
  */
-public typealias CheckoutCompletion = AtlasResult<Checkout> -> Void
+public typealias CheckoutCompletion = AtlasAPIResult<Checkout> -> Void
 
 /**
- Completion block `AtlasResult` with the `Checkout` & `Cart` structs as a success value
+ Completion block `AtlasAPIResult` with the `Checkout` & `Cart` structs as a success value
  */
-public typealias CheckoutCartCompletion = AtlasResult<(checkout: Checkout, cart: Cart)> -> Void
+public typealias CheckoutCartCompletion = AtlasAPIResult<(checkout: Checkout, cart: Cart)> -> Void
 
 /**
- Completion block `AtlasResult` with the `Order` struct as a success value
+ Completion block `AtlasAPIResult` with the `Order` struct as a success value
  */
-public typealias OrderCompletion = AtlasResult<Order> -> Void
+public typealias OrderCompletion = AtlasAPIResult<Order> -> Void
 
 /**
- Completion block `AtlasResult` with the `Article` struct as a success value
+ Completion block `AtlasAPIResult` with the `Article` struct as a success value
  */
-public typealias ArticleCompletion = AtlasResult<Article> -> Void
+public typealias ArticleCompletion = AtlasAPIResult<Article> -> Void
 
 /**
- Completion block `AtlasResult` with array of the `UserAddress` struct as a success value
+ Completion block `AtlasAPIResult` with array of the `UserAddress` struct as a success value
  */
-public typealias AddressesCompletion = AtlasResult<[UserAddress]> -> Void
+public typealias AddressesCompletion = AtlasAPIResult<[UserAddress]> -> Void
 
 /**
- Completion block `AtlasResult` with the `UserAddress` struct as a success value
+ Completion block `AtlasAPIResult` with the `UserAddress` struct as a success value
  */
-public typealias AddressCreateUpdateCompletion = AtlasResult<UserAddress> -> Void
+public typealias AddressCreateUpdateCompletion = AtlasAPIResult<UserAddress> -> Void
 
 /**
- Completion block `AtlasResult` with the `CheckAddressResponse` struct as a success value
+ Completion block `AtlasAPIResult` with the `CheckAddressResponse` struct as a success value
  */
-public typealias CheckAddressCompletion = AtlasResult<CheckAddressResponse> -> Void
+public typealias CheckAddressCompletion = AtlasAPIResult<CheckAddressResponse> -> Void
 
 extension AtlasAPIClient {
 
@@ -78,6 +78,9 @@ extension AtlasAPIClient {
             case .failure(let error):
                 completion(.failure(error))
 
+            case .abortion(let error, _):
+                completion(.failure(error))
+
             case .success(let cart):
                 let itemExists = cart.items.contains { $0.sku == sku } && !cart.itemsOutOfStock.contains(sku)
                 guard itemExists else {
@@ -94,6 +97,8 @@ extension AtlasAPIClient {
                         } else {
                             completion(.failure(error))
                         }
+                    case .abortion(let error, _):
+                        completion(.failure(error))
                     case .success(let checkout):
                         completion(.success((checkout: checkout, cart: cart)))
                     }

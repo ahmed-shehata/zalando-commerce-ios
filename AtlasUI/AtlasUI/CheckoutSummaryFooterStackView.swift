@@ -54,13 +54,13 @@ extension CheckoutSummaryFooterStackView: UIDataBuilder {
         }
 
         footerButton.setAttributedTitle(tocAttributedTitle(), forState: .Normal)
-        footerButton.hidden = !viewModel.uiModel.showFooterLabel
+        footerButton.hidden = !viewModel.layout.showFooterLabel
 
         let isPaypal = viewModel.dataModel.isPayPal
         let readyToCheckout = viewModel.dataModel.isPaymentSelected
 
-        submitButton.setTitle(Localizer.string(viewModel.uiModel.submitButtonTitle(isPaypal: isPaypal)), forState: .Normal)
-        submitButton.backgroundColor = viewModel.uiModel.submitButtonBackgroundColor(readyToCheckout: readyToCheckout)
+        submitButton.setTitle(Localizer.string(viewModel.layout.submitButtonTitle(isPaypal: isPaypal)), forState: .Normal)
+        submitButton.backgroundColor = viewModel.layout.submitButtonBackgroundColor(readyToCheckout: readyToCheckout)
         submitButton.accessibilityIdentifier = "checkout-footer-button"
     }
 

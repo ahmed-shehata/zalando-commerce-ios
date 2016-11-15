@@ -6,7 +6,7 @@ import Foundation
 import AtlasSDK
 import AtlasUI
 
-extension AtlasResult {
+extension AtlasAPIResult {
 
     func process() -> T? {
         let processedResult = self.processedResult()
@@ -16,7 +16,7 @@ extension AtlasResult {
         case .error(_, let title, let message):
             showMessage(title: title, message: message)
             return nil
-        case .skipped:
+        case .handledInternally:
             return nil
         }
     }

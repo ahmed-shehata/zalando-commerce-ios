@@ -33,10 +33,11 @@ class AddressFormViewController: UIViewController {
         self.addressType = addressType
         self.addressMode = addressMode
         self.completion = completion
+        let countryCode = AtlasAPIClient.countryCode
 
         switch addressMode {
         case .createAddress(let addressViewModel): self.addressViewModel = addressViewModel
-        case .updateAddress(let address): self.addressViewModel = AddressFormViewModel(equatableAddress: address)
+        case .updateAddress(let address): self.addressViewModel = AddressFormViewModel(equatableAddress: address, countryCode: countryCode)
         }
 
         super.init(nibName: nil, bundle: nil)
@@ -148,7 +149,7 @@ extension AddressFormViewController {
         }
     }
 
-    private func checkAddressRequestCompletion(result: AtlasResult<CheckAddressResponse>) {
+    private func checkAddressRequestCompletion(result: AtlasAPIResult<CheckAddressResponse>) {
         guard let checkAddressResponse = result.process() else { return enableSaveButton() }
         if checkAddressResponse.status == .notCorrect {
             UserMessage.displayError(AtlasCheckoutError.addressInvalid)
@@ -161,7 +162,7 @@ extension AddressFormViewController {
         }
     }
 
-    private func createUpdateAddressRequestCompletion(result: AtlasResult<UserAddress>) {
+    private func createUpdateAddressRequestCompletion(result: AtlasAPIResult<UserAddress>) {
         guard let address = result.process() else { return enableSaveButton() }
         dismissView { [weak self] in
             self?.completion?(address)

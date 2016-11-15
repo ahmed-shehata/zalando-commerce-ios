@@ -7,7 +7,7 @@ import AtlasSDK
 
 struct OrderPlacedActionHandler: CheckoutSummaryActionHandler {
 
-    let uiModel: CheckoutSummaryUIModel = OrderPlacedUIModel()
+    weak var dataSource: CheckoutSummaryActionHandlerDataSource?
     weak var delegate: CheckoutSummaryActionHandlerDelegate?
 
     func handleSubmitButton() {
@@ -15,15 +15,15 @@ struct OrderPlacedActionHandler: CheckoutSummaryActionHandler {
     }
 
     func showPaymentSelectionScreen() {
-
+        // Show Payment screen should have no action in Order placed mode
     }
 
     func showShippingAddressSelectionScreen() {
-
+        // Show Shipping Address screen should have no action in Order placed mode
     }
 
     func showBillingAddressSelectionScreen() {
-
+        // Show Billing Address screen should have no action in Order placed mode
     }
 
 }

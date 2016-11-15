@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import AtlasSDK
 
 class EmptyAddressFormCreationStrategy: AddressFormCreationStrategy {
 
@@ -13,7 +14,7 @@ class EmptyAddressFormCreationStrategy: AddressFormCreationStrategy {
     }
 
     func execute() {
-        completion(AddressFormViewModel())
+        completion(AddressFormViewModel(countryCode: AtlasAPIClient.countryCode))
     }
 
 }

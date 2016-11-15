@@ -4,46 +4,43 @@
 
 import AtlasSDK
 
-public enum ProcessedAtlasResult<T> {
+public enum ProcessedAtlasAPIResult<T> {
 
     case success(T)
     case error(error: ErrorType, title: String, message: String)
-    case skipped
+    case handledInternally
 
 }
 
-extension AtlasResult {
+extension AtlasAPIResult {
 
-    public func processedResult() -> ProcessedAtlasResult<T> {
+    public func processedResult() -> ProcessedAtlasAPIResult<T> {
         switch self {
+        case .success(let data):
+            return .success(data)
         case .failure(let error):
+            return processError(error)
+        case .abortion(let error, var apiRequest):
             switch error {
-            case AtlasAPIError.unauthorized(let repeatCall):
+            case AtlasAPIError.unauthorized:
                 let authorizationHandler = OAuth2AuthorizationHandler()
                 authorizationHandler.authorize { result in
-                    let processedResult = result.processedResult()
-                    switch processedResult {
+                    switch result {
                     case .success(let accessToken):
                         Atlas.login(accessToken)
                         UserMessage.displayLoader { hideLoader in
-                            repeatCall {
+                            apiRequest.execute { _ in
                                 hideLoader()
                             }
                         }
-                    default: break
+                    default:
+                        break
                     }
                 }
-                return .skipped
-
-            case let userPresentable as UserPresentable:
-                return .error(error: error, title: userPresentable.displayedTitle, message: userPresentable.displayedMessage)
-
+                return .handledInternally
             default:
-                let unclassifiedError = AtlasCheckoutError.unclassified
-                return .error(error: error, title: unclassifiedError.displayedTitle, message: unclassifiedError.displayedMessage)
+                return processError(error)
             }
-        case .success(let data):
-            return .success(data)
         }
     }
 
@@ -59,9 +56,14 @@ extension AtlasResult {
                 UserMessage.displayError(error)
             }
             return nil
-        case .skipped:
+        case .handledInternally:
             return nil
         }
+    }
+
+    private func processError(error: ErrorType) -> ProcessedAtlasAPIResult<T> {
+        let userPresentable = error as? UserPresentable ?? AtlasCheckoutError.unclassified
+        return .error(error: error, title: userPresentable.displayedTitle, message: userPresentable.displayedMessage)
     }
 
 }

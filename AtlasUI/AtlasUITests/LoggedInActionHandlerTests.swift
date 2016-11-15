@@ -11,7 +11,7 @@ import AtlasMockAPI
 
 class LoggedInActionHandlerTests: XCTestCase {
 
-    var mockedDelegate: CheckoutSummaryActionHandlerDelegateMock?
+    var mockedDataSourceDelegate: CheckoutSummaryActionHandlerDataSourceDelegateMock?
 
     override class func setUp() {
         super.setUp()
@@ -34,18 +34,18 @@ class LoggedInActionHandlerTests: XCTestCase {
     func testPlaceOrder() {
         let actionHandler = createActionHandler()
         let cartCheckout = createCartCheckout()
-        guard let selectedArticleUnit = mockedDelegate?.viewModel.dataModel.selectedArticleUnit else { return fail() }
+        guard let selectedArticleUnit = mockedDataSourceDelegate?.dataModel.selectedArticleUnit else { return fail() }
 
         let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, cartCheckout: cartCheckout)
-        mockedDelegate?.viewModel.dataModel = dataModel
+        mockedDataSourceDelegate?.dataModelUpdated(dataModel)
         actionHandler?.handleSubmitButton()
-        expect(self.mockedDelegate?.actionHandler as? OrderPlacedActionHandler).toNotEventually(beNil())
+        expect(self.mockedDataSourceDelegate?.actionHandler as? OrderPlacedActionHandler).toNotEventually(beNil())
     }
 
     func testPriceChange() {
         let actionHandler = createActionHandler()
         let cartCheckout = createCartCheckout()
-        guard let selectedArticleUnit = mockedDelegate?.viewModel.dataModel.selectedArticleUnit else { return fail() }
+        guard let selectedArticleUnit = mockedDataSourceDelegate?.dataModel.selectedArticleUnit else { return fail() }
 
         let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit,
                                                  shippingAddress: cartCheckout?.checkout?.shippingAddress,
@@ -54,14 +54,14 @@ class LoggedInActionHandlerTests: XCTestCase {
                                                  shippingPrice: 0,
                                                  totalPrice: MoneyAmount(string: "0.1"),
                                                  delivery: cartCheckout?.checkout?.delivery)
-        mockedDelegate?.viewModel.dataModel = dataModel
+        mockedDataSourceDelegate?.dataModelUpdated(dataModel)
         actionHandler?.handleSubmitButton()
         expect(UserMessage.errorDisplayed).toEventually(beTrue())
     }
 
     func testPaymentMethodRemoved() {
         let _ = createActionHandler()
-        guard let selectedArticleUnit = mockedDelegate?.viewModel.dataModel.selectedArticleUnit else { return fail() }
+        guard let selectedArticleUnit = mockedDataSourceDelegate?.dataModel.selectedArticleUnit else { return fail() }
 
         let dataModel1 = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit,
                                                   shippingAddress: nil,
@@ -77,8 +77,8 @@ class LoggedInActionHandlerTests: XCTestCase {
                                                   shippingPrice: 0,
                                                   totalPrice: 0,
                                                   delivery: nil)
-        mockedDelegate?.viewModel.dataModel = dataModel1
-        mockedDelegate?.viewModel.dataModel = dataModel2
+        mockedDataSourceDelegate?.dataModelUpdated(dataModel1)
+        mockedDataSourceDelegate?.dataModelUpdated(dataModel2)
         expect(UserMessage.errorDisplayed).toEventually(beTrue())
     }
 
@@ -99,8 +99,8 @@ class LoggedInActionHandlerTests: XCTestCase {
         expect(UserMessage.errorDisplayed).toNotEventually(beTrue())
         actionHandler?.cartCheckout?.checkout = checkout
 
-        guard let selectedArticleUnit = mockedDelegate?.viewModel.dataModel.selectedArticleUnit else { return fail() }
-        guard let originalDataModel = mockedDelegate?.viewModel.dataModel else { return fail() }
+        guard let selectedArticleUnit = mockedDataSourceDelegate?.dataModel.selectedArticleUnit else { return fail() }
+        guard let originalDataModel = mockedDataSourceDelegate?.dataModel else { return fail() }
         let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit,
                                                  shippingAddress: nil,
                                                  billingAddress: nil,
@@ -108,29 +108,29 @@ class LoggedInActionHandlerTests: XCTestCase {
                                                  shippingPrice: 0,
                                                  totalPrice: 0,
                                                  delivery: nil)
-        mockedDelegate?.viewModel.dataModel = dataModel
+        mockedDataSourceDelegate?.dataModelUpdated(dataModel)
         actionHandler?.showPaymentSelectionScreen()
         expect(UserMessage.errorDisplayed).toEventually(beTrue())
 
         UserMessage.clearBannerError()
         expect(UserMessage.errorDisplayed).toNotEventually(beTrue())
-        mockedDelegate?.viewModel.dataModel = originalDataModel
+        mockedDataSourceDelegate?.dataModelUpdated(originalDataModel)
 
         actionHandler?.showPaymentSelectionScreen()
         expect(AtlasUIViewController.instance?.mainNavigationController.viewControllers.last as? PaymentViewController).toNotEventually(beNil())
         let paymentViewController = AtlasUIViewController.instance?.mainNavigationController.viewControllers.last as? PaymentViewController
 
-        paymentViewController?.paymentCompletion?(.failure(AtlasCheckoutError.unclassified))
+        paymentViewController?.paymentCompletion?(.error)
         expect(UserMessage.errorDisplayed).toEventually(beTrue())
         UserMessage.clearBannerError()
         expect(UserMessage.errorDisplayed).toNotEventually(beTrue())
 
 
-        mockedDelegate?.viewModel.dataModel = dataModel
-        paymentViewController?.paymentCompletion?(.success(.success))
-        expect(self.mockedDelegate?.viewModel.dataModel.paymentMethod).toNotEventually(beNil())
+        mockedDataSourceDelegate?.dataModelUpdated(dataModel)
+        paymentViewController?.paymentCompletion?(.success)
+        expect(self.mockedDataSourceDelegate?.dataModel.paymentMethod).toNotEventually(beNil())
 
-        paymentViewController?.paymentCompletion?(.success(.error))
+        paymentViewController?.paymentCompletion?(.error)
         expect(UserMessage.errorDisplayed).toEventually(beTrue())
     }
 
@@ -139,16 +139,16 @@ class LoggedInActionHandlerTests: XCTestCase {
         actionHandler?.showShippingAddressSelectionScreen()
         expect(AtlasUIViewController.instance?.mainNavigationController.viewControllers.last as? AddressPickerViewController).toNotEventually(beNil())
 
-        guard let selectedArticleUnit = mockedDelegate?.viewModel.dataModel.selectedArticleUnit else { return fail() }
+        guard let selectedArticleUnit = mockedDataSourceDelegate?.dataModel.selectedArticleUnit else { return fail() }
         let cartCheckout = createCartCheckout()
         let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, cartCheckout: cartCheckout)
         guard let billingAddress = dataModel.billingAddress as? EquatableAddress else { return fail() }
-        mockedDelegate?.viewModel.dataModel = dataModel
+        mockedDataSourceDelegate?.dataModelUpdated(dataModel)
         let addressPickerViewController = AtlasUIViewController.instance?.mainNavigationController.viewControllers.last as? AddressPickerViewController
 
         addressPickerViewController?.addressSelectedHandler?(address: billingAddress)
-        expect((self.mockedDelegate?.viewModel.dataModel.shippingAddress as? EquatableAddress)?.id).toEventually(equal(billingAddress.id))
-        expect((self.mockedDelegate?.viewModel.dataModel.billingAddress as? EquatableAddress)?.id).toEventually(equal(billingAddress.id))
+        expect((self.mockedDataSourceDelegate?.dataModel.shippingAddress as? EquatableAddress)?.id).toEventually(equal(billingAddress.id))
+        expect((self.mockedDataSourceDelegate?.dataModel.billingAddress as? EquatableAddress)?.id).toEventually(equal(billingAddress.id))
         expect(UserMessage.errorDisplayed).toNotEventually(beTrue())
 
         let updatedBillingAddress = CheckoutAddress(id: billingAddress.id,
@@ -161,16 +161,16 @@ class LoggedInActionHandlerTests: XCTestCase {
                                                     city: billingAddress.city,
                                                     countryCode: billingAddress.countryCode,
                                                     pickupPoint: billingAddress.pickupPoint)
-        expect(self.mockedDelegate?.viewModel.dataModel.shippingAddress?.firstName).to(equal("Erika"))
-        expect(self.mockedDelegate?.viewModel.dataModel.billingAddress?.firstName).to(equal("Erika"))
+        expect(self.mockedDataSourceDelegate?.dataModel.shippingAddress?.firstName).to(equal("Erika"))
+        expect(self.mockedDataSourceDelegate?.dataModel.billingAddress?.firstName).to(equal("Erika"))
         addressPickerViewController?.addressUpdatedHandler?(address: updatedBillingAddress)
-        expect(self.mockedDelegate?.viewModel.dataModel.shippingAddress?.firstName).toEventually(equal("John"))
-        expect(self.mockedDelegate?.viewModel.dataModel.billingAddress?.firstName).toEventually(equal("John"))
+        expect(self.mockedDataSourceDelegate?.dataModel.shippingAddress?.firstName).toEventually(equal("John"))
+        expect(self.mockedDataSourceDelegate?.dataModel.billingAddress?.firstName).toEventually(equal("John"))
         expect(UserMessage.errorDisplayed).toNotEventually(beTrue())
 
         addressPickerViewController?.addressDeletedHandler?(address: billingAddress)
-        expect(self.mockedDelegate?.viewModel.dataModel.shippingAddress).toEventually(beNil())
-        expect(self.mockedDelegate?.viewModel.dataModel.billingAddress).toEventually(beNil())
+        expect(self.mockedDataSourceDelegate?.dataModel.shippingAddress).toEventually(beNil())
+        expect(self.mockedDataSourceDelegate?.dataModel.billingAddress).toEventually(beNil())
         expect(UserMessage.errorDisplayed).toEventually(beTrue())
     }
 
@@ -179,16 +179,16 @@ class LoggedInActionHandlerTests: XCTestCase {
         actionHandler?.showBillingAddressSelectionScreen()
         expect(AtlasUIViewController.instance?.mainNavigationController.viewControllers.last as? AddressPickerViewController).toNotEventually(beNil())
 
-        guard let selectedArticleUnit = mockedDelegate?.viewModel.dataModel.selectedArticleUnit else { return fail() }
+        guard let selectedArticleUnit = mockedDataSourceDelegate?.dataModel.selectedArticleUnit else { return fail() }
         let cartCheckout = createCartCheckout()
         let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, cartCheckout: cartCheckout)
         guard let shippingAddress = dataModel.shippingAddress as? CheckoutAddress else { return fail() }
-        mockedDelegate?.viewModel.dataModel = dataModel
+        mockedDataSourceDelegate?.dataModelUpdated(dataModel)
         let addressPickerViewController = AtlasUIViewController.instance?.mainNavigationController.viewControllers.last as? AddressPickerViewController
 
         addressPickerViewController?.addressSelectedHandler?(address: shippingAddress)
-        expect((self.mockedDelegate?.viewModel.dataModel.shippingAddress as? EquatableAddress)?.id).toEventually(equal(shippingAddress.id))
-        expect((self.mockedDelegate?.viewModel.dataModel.billingAddress as? EquatableAddress)?.id).toEventually(equal(shippingAddress.id))
+        expect((self.mockedDataSourceDelegate?.dataModel.shippingAddress as? EquatableAddress)?.id).toEventually(equal(shippingAddress.id))
+        expect((self.mockedDataSourceDelegate?.dataModel.billingAddress as? EquatableAddress)?.id).toEventually(equal(shippingAddress.id))
         expect(UserMessage.errorDisplayed).toNotEventually(beTrue())
 
         let updatedShippingAddress = CheckoutAddress(id: shippingAddress.id,
@@ -201,16 +201,16 @@ class LoggedInActionHandlerTests: XCTestCase {
                                                      city: shippingAddress.city,
                                                      countryCode: shippingAddress.countryCode,
                                                      pickupPoint: shippingAddress.pickupPoint)
-        expect(self.mockedDelegate?.viewModel.dataModel.shippingAddress?.firstName).to(equal("Erika"))
-        expect(self.mockedDelegate?.viewModel.dataModel.billingAddress?.firstName).to(equal("Erika"))
+        expect(self.mockedDataSourceDelegate?.dataModel.shippingAddress?.firstName).to(equal("Erika"))
+        expect(self.mockedDataSourceDelegate?.dataModel.billingAddress?.firstName).to(equal("Erika"))
         addressPickerViewController?.addressUpdatedHandler?(address: updatedShippingAddress)
-        expect(self.mockedDelegate?.viewModel.dataModel.shippingAddress?.firstName).toEventually(equal("John"))
-        expect(self.mockedDelegate?.viewModel.dataModel.billingAddress?.firstName).toEventually(equal("John"))
+        expect(self.mockedDataSourceDelegate?.dataModel.shippingAddress?.firstName).toEventually(equal("John"))
+        expect(self.mockedDataSourceDelegate?.dataModel.billingAddress?.firstName).toEventually(equal("John"))
         expect(UserMessage.errorDisplayed).toNotEventually(beTrue())
 
         addressPickerViewController?.addressDeletedHandler?(address: shippingAddress)
-        expect(self.mockedDelegate?.viewModel.dataModel.shippingAddress).toEventually(beNil())
-        expect(self.mockedDelegate?.viewModel.dataModel.billingAddress).toEventually(beNil())
+        expect(self.mockedDataSourceDelegate?.dataModel.shippingAddress).toEventually(beNil())
+        expect(self.mockedDataSourceDelegate?.dataModel.billingAddress).toEventually(beNil())
         expect(UserMessage.errorDisplayed).toEventually(beTrue())
     }
 
@@ -231,8 +231,9 @@ extension LoggedInActionHandlerTests {
                         LoggedInActionHandler.createInstance(customer, selectedArticleUnit: selectedArticleUnit) { result in
                             guard let actionHandler = result.process() else { return fail() }
                             let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit)
-                            self.mockedDelegate = CheckoutSummaryActionHandlerDelegateMock(dataModel: dataModel, actionHandler: actionHandler)
-                            actionHandler.delegate = self.mockedDelegate
+                            let viewModel = CheckoutSummaryViewModel(dataModel: dataModel, layout: LoggedInLayout())
+                            self.mockedDataSourceDelegate = CheckoutSummaryActionHandlerDataSourceDelegateMock(viewModel: viewModel)
+                            self.mockedDataSourceDelegate?.actionHandler = actionHandler
                             loggedInActionHandler = actionHandler
                             done()
                         }
@@ -272,16 +273,37 @@ extension LoggedInActionHandlerTests {
     
 }
 
-class CheckoutSummaryActionHandlerDelegateMock: NSObject, CheckoutSummaryActionHandlerDelegate {
+class CheckoutSummaryActionHandlerDataSourceDelegateMock: NSObject, CheckoutSummaryActionHandlerDataSource, CheckoutSummaryActionHandlerDelegate {
 
     var viewModel: CheckoutSummaryViewModel
-    var actionHandler: CheckoutSummaryActionHandler
+    var dataModel: CheckoutSummaryDataModel {
+        return viewModel.dataModel
+    }
+    var actionHandler: CheckoutSummaryActionHandler? {
+        didSet {
+            actionHandler?.dataSource = self
+            actionHandler?.delegate = self
+        }
+    }
 
-    init(dataModel: CheckoutSummaryDataModel, actionHandler: CheckoutSummaryActionHandler) {
-        self.viewModel = CheckoutSummaryViewModel(dataModel: dataModel, uiModel: actionHandler.uiModel)
+    init(viewModel: CheckoutSummaryViewModel) {
+        self.viewModel = viewModel
+    }
+
+    func dataModelUpdated(dataModel: CheckoutSummaryDataModel) {
+        self.viewModel.dataModel = dataModel
+    }
+
+    func layoutUpdated(layout: CheckoutSummaryLayout) {
+        self.viewModel.layout = layout
+    }
+
+    func actionHandlerUpdated(actionHandler: CheckoutSummaryActionHandler) {
         self.actionHandler = actionHandler
     }
 
-    func dismissView() {}
+    func dismissView() {
 
+    }
+    
 }

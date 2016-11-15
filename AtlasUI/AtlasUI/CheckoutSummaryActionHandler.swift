@@ -5,18 +5,24 @@
 import Foundation
 import AtlasSDK
 
+protocol CheckoutSummaryActionHandlerDataSource: NSObjectProtocol {
+
+    var dataModel: CheckoutSummaryDataModel { get }
+
+}
+
 protocol CheckoutSummaryActionHandlerDelegate: NSObjectProtocol {
 
-    var viewModel: CheckoutSummaryViewModel { get set }
-    var actionHandler: CheckoutSummaryActionHandler { get set }
-
+    func dataModelUpdated(dataModel: CheckoutSummaryDataModel)
+    func layoutUpdated(layout: CheckoutSummaryLayout)
+    func actionHandlerUpdated(actionHandler: CheckoutSummaryActionHandler)
     func dismissView()
 
 }
 
 protocol CheckoutSummaryActionHandler {
 
-    var uiModel: CheckoutSummaryUIModel { get }
+    weak var dataSource: CheckoutSummaryActionHandlerDataSource? { get set }
     weak var delegate: CheckoutSummaryActionHandlerDelegate? { get set }
 
     func handleSubmitButton()

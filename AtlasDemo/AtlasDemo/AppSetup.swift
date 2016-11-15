@@ -7,7 +7,7 @@ import AtlasSDK
 import AtlasUI
 import AtlasMockAPI
 
-typealias EmptyCompletion = () -> Void
+typealias AppSetupCompletion = (configured: Bool) -> Void
 
 class AppSetup {
 
@@ -26,20 +26,20 @@ class AppSetup {
         return atlasClient != nil && options != nil
     }
 
-    static func configure(completion: EmptyCompletion) {
+    static func configure(completion: AppSetupCompletion) {
         prepareMockAPI()
         prepareApp()
 
         setAppOptions(prepareOptions(), completion: completion)
     }
 
-    static func change(environmentToSandbox useSandbox: Bool, completion: EmptyCompletion? = nil) {
+    static func change(environmentToSandbox useSandbox: Bool) {
         Atlas.logoutUser()
-        setAppOptions(prepareOptions(useSandbox: useSandbox), completion: completion)
+        setAppOptions(prepareOptions(useSandbox: useSandbox))
     }
 
-    static func change(interfaceLanguage language: InterfaceLanguage, completion: EmptyCompletion? = nil) {
-        setAppOptions(prepareOptions(interfaceLanguage: language), completion: completion)
+    static func change(interfaceLanguage language: InterfaceLanguage) {
+        setAppOptions(prepareOptions(interfaceLanguage: language))
     }
 
     private static var alwaysUseMockAPI: Bool {
@@ -58,12 +58,16 @@ class AppSetup {
         }
     }
 
-    private static func setAppOptions(opts: Options, completion: EmptyCompletion? = nil) {
+    private static func setAppOptions(opts: Options, completion: AppSetupCompletion? = nil) {
         AtlasUI.configure(opts) { result in
-            guard let client = result.process() else { return }
-            AppSetup.atlasClient = client
-            AppSetup.options = opts
-            completion?()
+            switch result {
+            case .success(let client):
+                AppSetup.atlasClient = client
+                AppSetup.options = opts
+                completion?(configured: true)
+            case .failure:
+                completion?(configured: false)
+            }
         }
     }
 

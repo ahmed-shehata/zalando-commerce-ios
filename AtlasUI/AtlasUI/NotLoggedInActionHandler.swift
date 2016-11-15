@@ -7,22 +7,23 @@ import AtlasSDK
 
 struct NotLoggedInActionHandler: CheckoutSummaryActionHandler {
 
-    let uiModel: CheckoutSummaryUIModel = NotLoggedInUIModel()
+    weak var dataSource: CheckoutSummaryActionHandlerDataSource?
     weak var delegate: CheckoutSummaryActionHandlerDelegate?
 
     func handleSubmitButton() {
-        guard let delegate = delegate else { return }
+        guard let dataSource = dataSource, delegate = delegate else { return }
 
         AtlasUIClient.customer { result in
             guard let customer = result.process() else { return }
 
-            let selectedArticleUnit = delegate.viewModel.dataModel.selectedArticleUnit
+            let selectedArticleUnit = dataSource.dataModel.selectedArticleUnit
             LoggedInActionHandler.createInstance(customer, selectedArticleUnit: selectedArticleUnit) { result in
                 guard let actionHandler = result.process() else { return }
 
                 let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, cartCheckout: actionHandler.cartCheckout)
-                delegate.actionHandler = actionHandler
-                delegate.viewModel.dataModel = dataModel
+                delegate.actionHandlerUpdated(actionHandler)
+                delegate.dataModelUpdated(dataModel)
+                delegate.layoutUpdated(LoggedInLayout())
             }
         }
     }

@@ -138,21 +138,21 @@ extension CheckoutSummaryMainStackView: UIDataBuilder {
         productStackView.configureData(viewModel.dataModel.selectedArticleUnit)
         priceStackView.configureData(viewModel.dataModel)
         deliveryStackView.configureData(viewModel.dataModel)
-        priceStackView.hidden = !viewModel.uiModel.showPrice
+        priceStackView.hidden = !viewModel.layout.showPrice
 
         shippingAddressStackView.configureData(CheckoutSummaryAddressViewModel(
             addressLines: viewModel.dataModel.formattedShippingAddress,
-            showArrow: viewModel.uiModel.showDetailArrow)
+            showArrow: viewModel.layout.showDetailArrow)
         )
 
         billingAddressStackView.configureData(CheckoutSummaryAddressViewModel(
             addressLines: viewModel.dataModel.formattedBillingAddress,
-            showArrow: viewModel.uiModel.showDetailArrow)
+            showArrow: viewModel.layout.showDetailArrow)
         )
 
         paymentStackView.configureData(CheckoutSummaryPaymentViewModel(
             value: viewModel.dataModel.paymentMethod ?? "",
-            showArrow: viewModel.uiModel.showDetailArrow)
+            showArrow: viewModel.layout.showDetailArrow)
         )
     }
 

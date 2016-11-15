@@ -30,7 +30,7 @@ extension AddressBookImportCreationStrategy: CNContactPickerDelegate {
     func contactPicker(picker: CNContactPickerViewController, didSelectContactProperty contactProperty: CNContactProperty) {
         picker.dismissViewControllerAnimated(true) { [weak self] in
             guard let strongSelf = self else { return }
-            if let addressViewModel = AddressFormViewModel(contactProperty: contactProperty) {
+            if let addressViewModel = AddressFormViewModel(contactProperty: contactProperty, countryCode: AtlasAPIClient.countryCode) {
                 strongSelf.completion(addressViewModel)
             } else {
                 UserMessage.displayError(AtlasCheckoutError.unclassified)

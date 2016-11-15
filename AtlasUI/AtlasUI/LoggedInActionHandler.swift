@@ -5,14 +5,15 @@
 import Foundation
 import AtlasSDK
 
-typealias LoggedInActionHandlerCompletion = AtlasResult<LoggedInActionHandler> -> Void
+typealias LoggedInActionHandlerCompletion = AtlasAPIResult<LoggedInActionHandler> -> Void
 typealias CartCheckout = (cart: Cart?, checkout: Checkout?)
-typealias CreateCartCheckoutCompletion = AtlasResult<CartCheckout> -> Void
+typealias CreateCartCheckoutCompletion = AtlasAPIResult<CartCheckout> -> Void
 
 class LoggedInActionHandler: CheckoutSummaryActionHandler {
 
     let customer: Customer
-    let uiModel: CheckoutSummaryUIModel = LoggedInUIModel()
+
+    weak var dataSource: CheckoutSummaryActionHandlerDataSource?
     weak var delegate: CheckoutSummaryActionHandlerDelegate?
 
     var cartCheckout: CartCheckout? {
@@ -22,10 +23,10 @@ class LoggedInActionHandler: CheckoutSummaryActionHandler {
     }
 
     private var shippingAddress: EquatableAddress? {
-        return delegate?.viewModel.dataModel.shippingAddress as? EquatableAddress
+        return dataSource?.dataModel.shippingAddress as? EquatableAddress
     }
     private var billingAddress: EquatableAddress? {
-        return delegate?.viewModel.dataModel.billingAddress as? EquatableAddress
+        return dataSource?.dataModel.billingAddress as? EquatableAddress
     }
     private var addresses: CheckoutAddresses? {
         return CheckoutAddresses(billingAddress: billingAddress, shippingAddress: shippingAddress)
@@ -40,6 +41,8 @@ class LoggedInActionHandler: CheckoutSummaryActionHandler {
                 completion(.success(actionHandler))
             case .failure(let error):
                 completion(.failure(error))
+            case .abortion(let error, _):
+                completion(.failure(error))
             }
         }
     }
@@ -49,8 +52,8 @@ class LoggedInActionHandler: CheckoutSummaryActionHandler {
     }
 
     func handleSubmitButton() {
-        guard let delegate = delegate else { return }
-        guard delegate.viewModel.dataModel.isPaymentSelected else {
+        guard let dataSource = dataSource else { return }
+        guard dataSource.dataModel.isPaymentSelected else {
             UserMessage.displayError(AtlasCheckoutError.missingAddressAndPayment)
             return
         }
@@ -63,7 +66,7 @@ class LoggedInActionHandler: CheckoutSummaryActionHandler {
 
             self?.cartCheckout = cartCheckout
 
-            if delegate.viewModel.dataModel.isPaymentSelected && !UserMessage.errorDisplayed {
+            if dataSource.dataModel.isPaymentSelected && !UserMessage.errorDisplayed {
                 AtlasUIClient.createOrder(checkout.id) { result in
                     guard let order = result.process() else { return }
                     self?.handleOrderConfirmation(order)
@@ -86,8 +89,7 @@ class LoggedInActionHandler: CheckoutSummaryActionHandler {
         }
 
         let paymentViewController = PaymentViewController(paymentURL: paymentURL, callbackURL: callbackURL)
-        paymentViewController.paymentCompletion = { [weak self] result in
-            guard let paymentStatus = result.process() else { return }
+        paymentViewController.paymentCompletion = { [weak self] paymentStatus in
             switch paymentStatus {
             case .redirect, .success:
                 self?.createCartCheckout { result in
@@ -108,8 +110,7 @@ class LoggedInActionHandler: CheckoutSummaryActionHandler {
         AtlasUIClient.addresses { [weak self] result in
             guard let userAddresses = result.process() else { return }
             let addresses: [EquatableAddress] = userAddresses.map { $0 }
-            let selectedAddress = self?.shippingAddress
-            let addressViewController = AddressPickerViewController(initialAddresses: addresses, initialSelectedAddress: selectedAddress)
+            let addressViewController = AddressPickerViewController(initialAddresses: addresses, selectedAddress: self?.shippingAddress)
             addressViewController.addressUpdatedHandler = { self?.addressUpdated($0) }
             addressViewController.addressDeletedHandler = { self?.addressDeleted($0) }
             addressViewController.addressSelectedHandler = { self?.selectShippingAddress($0) }
@@ -123,8 +124,7 @@ class LoggedInActionHandler: CheckoutSummaryActionHandler {
         AtlasUIClient.addresses { [weak self] result in
             guard let userAddresses = result.process() else { return }
             let addresses: [EquatableAddress] = userAddresses.filter { $0.pickupPoint == nil } .map { $0 }
-            let selectedAddress = self?.billingAddress
-            let addressViewController = AddressPickerViewController(initialAddresses: addresses, initialSelectedAddress: selectedAddress)
+            let addressViewController = AddressPickerViewController(initialAddresses: addresses, selectedAddress: self?.billingAddress)
             addressViewController.addressUpdatedHandler = { self?.addressUpdated($0) }
             addressViewController.addressDeletedHandler = { self?.addressDeleted($0) }
             addressViewController.addressSelectedHandler = { self?.selectBillingAddress($0) }
@@ -150,8 +150,7 @@ extension LoggedInActionHandler {
         }
 
         let paymentViewController = PaymentViewController(paymentURL: paymentURL, callbackURL: callbackURL)
-        paymentViewController.paymentCompletion = { [weak self] result in
-            guard let paymentStatus = result.process() else { return }
+        paymentViewController.paymentCompletion = { [weak self] paymentStatus in
             switch paymentStatus {
             case .success: self?.showConfirmationScreen(order)
             case .redirect, .cancel: break
@@ -162,11 +161,12 @@ extension LoggedInActionHandler {
     }
 
     private func showConfirmationScreen(order: Order) {
-        guard let delegate = delegate else { return }
-        let selectedArticleUnit = delegate.viewModel.dataModel.selectedArticleUnit
+        guard let dataSource = dataSource, delegate = delegate else { return }
+        let selectedArticleUnit = dataSource.dataModel.selectedArticleUnit
         let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, checkout: cartCheckout?.checkout, order: order)
-        delegate.actionHandler = OrderPlacedActionHandler()
-        delegate.viewModel.dataModel = dataModel
+        delegate.actionHandlerUpdated(OrderPlacedActionHandler())
+        delegate.dataModelUpdated(dataModel)
+        delegate.layoutUpdated(OrderPlacedLayout())
     }
 
 }
@@ -174,7 +174,7 @@ extension LoggedInActionHandler {
 extension LoggedInActionHandler {
 
     private func createCartCheckout(completion: CreateCartCheckoutCompletion) {
-        guard let selectedArticleUnit = delegate?.viewModel.dataModel.selectedArticleUnit else { return }
+        guard let selectedArticleUnit = dataSource?.dataModel.selectedArticleUnit else { return }
         LoggedInActionHandler.createCartCheckout(selectedArticleUnit, addresses: addresses, completion: completion)
     }
 
@@ -194,6 +194,8 @@ extension LoggedInActionHandler {
                 if addresses?.billingAddress != nil && addresses?.shippingAddress != nil {
                     UserMessage.displayError(AtlasCheckoutError.checkoutFailure)
                 }
+            case .abortion(let error, _):
+                completion(.failure(error))
             case .success(let checkoutCart):
                 completion(.success((cart: checkoutCart.cart, checkout: checkoutCart.checkout)))
             }
@@ -205,10 +207,10 @@ extension LoggedInActionHandler {
 extension LoggedInActionHandler {
 
     private func updateDataModel(addresses: CheckoutAddresses?) {
-        guard let selectedArticleUnit = delegate?.viewModel.dataModel.selectedArticleUnit else { return }
+        guard let selectedArticleUnit = dataSource?.dataModel.selectedArticleUnit else { return }
 
         let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, cartCheckout: cartCheckout, addresses: addresses)
-        delegate?.viewModel.dataModel = dataModel
+        delegate?.dataModelUpdated(dataModel)
 
         if cartCheckout?.checkout == nil && shippingAddress != nil && billingAddress != nil {
             createCartCheckout { [weak self] result in
@@ -219,10 +221,10 @@ extension LoggedInActionHandler {
     }
 
     private func updateDataModelWithNoCartCheckout(addresses: CheckoutAddresses) {
-        guard let selectedArticleUnit = delegate?.viewModel.dataModel.selectedArticleUnit else { return }
+        guard let selectedArticleUnit = dataSource?.dataModel.selectedArticleUnit else { return }
 
         let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, cartCheckout: nil, addresses: addresses)
-        delegate?.viewModel.dataModel = dataModel
+        delegate?.dataModelUpdated(dataModel)
     }
 
 }

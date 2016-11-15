@@ -17,12 +17,12 @@ class AddressFormViewModel {
     var pickupPointMemberId: String?
     var zip: String?
     var city: String?
-    var countryCode: String?
 
+    let countryCode: String?
     let isDefaultBilling: Bool
     let isDefaultShipping: Bool
 
-    init (equatableAddress: EquatableAddress? = nil) {
+    init (equatableAddress: EquatableAddress? = nil, countryCode: String?) {
         if let userAddress = equatableAddress as? UserAddress {
             isDefaultBilling = userAddress.isDefaultBilling
             isDefaultShipping = userAddress.isDefaultShipping
@@ -30,7 +30,7 @@ class AddressFormViewModel {
             isDefaultBilling = false
             isDefaultShipping = false
         }
-        countryCode = AtlasAPIClient.instance?.config.salesChannel.countryCode
+        self.countryCode = countryCode
 
         guard let equatableAddress = equatableAddress else { return }
 
@@ -45,7 +45,7 @@ class AddressFormViewModel {
         city = equatableAddress.city
     }
 
-    init?(contactProperty: CNContactProperty) {
+    init?(contactProperty: CNContactProperty, countryCode: String?) {
         guard let postalAddress = contactProperty.value as? CNPostalAddress else { return nil }
         self.firstName = contactProperty.contact.givenName
         self.lastName = contactProperty.contact.familyName
@@ -56,7 +56,7 @@ class AddressFormViewModel {
         }
         self.zip = postalAddress.postalCode
         self.city = postalAddress.city
-        self.countryCode = AtlasAPIClient.instance?.config.salesChannel.countryCode
+        self.countryCode = countryCode
         self.isDefaultBilling = false
         self.isDefaultShipping = false
     }
@@ -150,7 +150,7 @@ extension PickupPoint {
     init? (addressFormViewModel: AddressFormViewModel) {
 
         guard let
-        pickupPointId = addressFormViewModel.pickupPointId,
+            pickupPointId = addressFormViewModel.pickupPointId,
             pickupPointMemberId = addressFormViewModel.pickupPointMemberId else { return nil }
 
         self.id = pickupPointId

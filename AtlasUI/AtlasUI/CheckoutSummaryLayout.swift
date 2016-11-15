@@ -5,7 +5,7 @@
 
 import Foundation
 
-protocol CheckoutSummaryUIModel {
+protocol CheckoutSummaryLayout {
 
     var navigationBarTitleLocalizedKey: String { get }
     var showCancelButton: Bool { get }
@@ -19,7 +19,7 @@ protocol CheckoutSummaryUIModel {
 
 }
 
-struct NotLoggedInUIModel: CheckoutSummaryUIModel {
+struct NotLoggedInLayout: CheckoutSummaryLayout {
 
     let navigationBarTitleLocalizedKey: String = "summaryView.title.summary"
     let showCancelButton: Bool = true
@@ -33,7 +33,7 @@ struct NotLoggedInUIModel: CheckoutSummaryUIModel {
 
 }
 
-struct LoggedInUIModel: CheckoutSummaryUIModel {
+struct LoggedInLayout: CheckoutSummaryLayout {
 
     let navigationBarTitleLocalizedKey: String = "summaryView.title.summary"
     let showCancelButton: Bool = true
@@ -47,7 +47,7 @@ struct LoggedInUIModel: CheckoutSummaryUIModel {
 
 }
 
-struct OrderPlacedUIModel: CheckoutSummaryUIModel {
+struct OrderPlacedLayout: CheckoutSummaryLayout {
 
     let navigationBarTitleLocalizedKey: String = "summaryView.title.orderPlaced"
     let showCancelButton: Bool = false

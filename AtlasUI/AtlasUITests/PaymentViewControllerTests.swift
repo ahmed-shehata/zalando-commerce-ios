@@ -26,7 +26,7 @@ class PaymentViewControllerTests: XCTestCase {
         waitUntil(timeout: 10) { done in
             let _ = paymentViewController.view // load the view
             paymentViewController.paymentCompletion = { result in
-                expect(result.process()).to(equal(PaymentStatus.redirect))
+                expect(result).to(equal(PaymentStatus.redirect))
                 done()
             }
         }
@@ -37,7 +37,7 @@ class PaymentViewControllerTests: XCTestCase {
         waitUntil(timeout: 10) { done in
             let _ = paymentViewController.view // load the view
             paymentViewController.paymentCompletion = { result in
-                expect(result.process()).to(equal(PaymentStatus.success))
+                expect(result).to(equal(PaymentStatus.success))
                 done()
             }
         }
@@ -48,7 +48,7 @@ class PaymentViewControllerTests: XCTestCase {
         waitUntil(timeout: 10) { done in
             let _ = paymentViewController.view // load the view
             paymentViewController.paymentCompletion = { result in
-                expect(result.process()).to(equal(PaymentStatus.cancel))
+                expect(result).to(equal(PaymentStatus.cancel))
                 done()
             }
         }
@@ -59,7 +59,7 @@ class PaymentViewControllerTests: XCTestCase {
         waitUntil(timeout: 10) { done in
             let _ = paymentViewController.view // load the view
             paymentViewController.paymentCompletion = { result in
-                expect(result.process()).to(equal(PaymentStatus.error))
+                expect(result).to(equal(PaymentStatus.error))
                 done()
             }
         }

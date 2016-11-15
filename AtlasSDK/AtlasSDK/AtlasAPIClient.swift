@@ -14,54 +14,36 @@ public struct AtlasAPIClient {
         self.config = config
     }
 
-    func touch(endpoint: Endpoint, successStatus: HTTPStatus = .NoContent, completion: AtlasResult<Bool> -> Void) {
+    func touch(endpoint: Endpoint, successStatus: HTTPStatus = .NoContent, completion: AtlasAPIResult<Bool> -> Void) {
         touch(endpoint, completion: completion) { response in
             return response.statusCode == successStatus
         }
     }
 
-    func touch(endpoint: Endpoint, completion: AtlasResult<Bool> -> Void, successCompletion: JSONResponse -> Bool) {
+    func touch(endpoint: Endpoint, completion: AtlasAPIResult<Bool> -> Void, successCompletion: JSONResponse -> Bool) {
         call(endpoint, completion: completion) { response in
             return successCompletion(response)
         }
     }
 
-    func fetch<Model: JSONInitializable>(from endpoint: Endpoint, completion: AtlasResult<Model> -> Void) {
+    func fetch<Model: JSONInitializable>(from endpoint: Endpoint, completion: AtlasAPIResult<Model> -> Void) {
         call(endpoint, completion: completion) { response in
             guard let json = response.body else { return nil }
             return Model(json: json)
         }
     }
 
-    func fetch<Model: JSONInitializable>(from endpoint: Endpoint, completion: AtlasResult<[Model]> -> Void) {
+    func fetch<Model: JSONInitializable>(from endpoint: Endpoint, completion: AtlasAPIResult<[Model]> -> Void) {
         call(endpoint, completion: completion) { response in
             guard let json = response.body, jsons = json.array.flatMap({ $0 }) else { return nil }
             return jsons.flatMap { Model(json: $0) }
         }
     }
 
-    private func call<T>(endpoint: Endpoint, completion: AtlasResult<T> -> Void, successHandler: JSONResponse -> T?) {
-        var builder = RequestBuilder(forEndpoint: endpoint, urlSession: urlSession)
-        builder.execute { result in
-            switch result {
-            case .failure(let error):
-                AtlasLogger.logError("FAILED CALL", builder)
-
-                dispatch_async(dispatch_get_main_queue()) {
-                    completion(.failure(error))
-                }
-            case .success(let response):
-                if let parsedResponse = successHandler(response) {
-                    dispatch_async(dispatch_get_main_queue()) {
-                        completion(.success(parsedResponse))
-                    }
-                } else {
-                    dispatch_async(dispatch_get_main_queue()) {
-                        completion(.failure(AtlasAPIError.invalidResponseFormat))
-                    }
-                }
-            }
-        }
+    private func call<T>(endpoint: Endpoint, completion: AtlasAPIResult<T> -> Void, successHandler: JSONResponse -> T?) {
+        let requestBuilder = RequestBuilder(forEndpoint: endpoint, urlSession: urlSession)
+        var apiRequest = APIRequest(requestBuilder: requestBuilder, successHandler: successHandler, completion: completion)
+        apiRequest.execute()
     }
 
 }

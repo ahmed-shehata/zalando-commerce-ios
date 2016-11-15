@@ -16,6 +16,8 @@ class APIAddressesTests: AtlasAPIClientBaseTests {
                 switch result {
                 case .failure(let error):
                     fail(String(error))
+                case .abortion(let error, _):
+                    fail(String(error))
                 case .success(let addresses):
                     expect(addresses.first?.id).to(equal("6702759"))
                     expect(addresses.first?.customerNumber).to(equal("3036553496"))
@@ -40,6 +42,8 @@ class APIAddressesTests: AtlasAPIClientBaseTests {
             client.deleteAddress("6702748") { result in
                 switch result {
                 case .failure(let error):
+                    fail(String(error))
+                case .abortion(let error, _):
                     fail(String(error))
                 case .success(let emptyResponse):
                     expect(emptyResponse).notTo(beNil())
