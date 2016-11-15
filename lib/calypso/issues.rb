@@ -9,6 +9,15 @@ module Calypso
 
   class Issues < Thor
 
+    desc 'clean_closed', "Removes closed issues from projects [#{CLEANABLE_GITHUB_PROJECT_COLUMNS}]"
+    def clean_closed
+      CLEANABLE_GITHUB_PROJECT_COLUMNS.each do |project, columns|
+        columns.each do |column|
+          invoke :clear, [project, column]
+        end
+      end
+    end
+
     desc 'labeled [label1,label2] [open*,closed,any]', 'Shows available open issues with given list of labels'
     def labeled(labels = nil, state = 'open')
       github.issues(labels: labels, state: state).each do |issue|
