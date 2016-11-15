@@ -16,19 +16,19 @@ class LoggedInActionHandlerTests: XCTestCase {
     override class func setUp() {
         super.setUp()
         try! AtlasMockAPI.startServer()
-        APIAccessToken.store("TestToken")
+        Atlas.login("TestToken")
     }
 
     override class func tearDown() {
         super.tearDown()
         try! AtlasMockAPI.stopServer()
-        APIAccessToken.delete()
+        Atlas.logoutUser()
     }
 
     func testNoPaymentMethodSelected() {
         let actionHandler = createActionHandler()
         actionHandler?.handleSubmitButton()
-        expect(UserMessage.errorDisplayed).toEventually(equal(true))
+        expect(UserMessage.errorDisplayed).toEventually(beTrue())
     }
 
     func testPlaceOrder() {
@@ -56,7 +56,7 @@ class LoggedInActionHandlerTests: XCTestCase {
                                                  delivery: cartCheckout?.checkout?.delivery)
         mockedDelegate?.viewModel.dataModel = dataModel
         actionHandler?.handleSubmitButton()
-        expect(UserMessage.errorDisplayed).toEventually(equal(true))
+        expect(UserMessage.errorDisplayed).toEventually(beTrue())
     }
 
     func testPaymentMethodRemoved() {
@@ -79,7 +79,7 @@ class LoggedInActionHandlerTests: XCTestCase {
                                                   delivery: nil)
         mockedDelegate?.viewModel.dataModel = dataModel1
         mockedDelegate?.viewModel.dataModel = dataModel2
-        expect(UserMessage.errorDisplayed).toEventually(equal(true))
+        expect(UserMessage.errorDisplayed).toEventually(beTrue())
     }
 
     func testShowingPaymentSelectionScreen() {
@@ -93,10 +93,10 @@ class LoggedInActionHandlerTests: XCTestCase {
                                                          billingAddress: checkout.billingAddress,
                                                          shippingAddress: checkout.shippingAddress)
         actionHandler?.showPaymentSelectionScreen()
-        expect(UserMessage.errorDisplayed).toEventually(equal(true))
+        expect(UserMessage.errorDisplayed).toEventually(beTrue())
 
         UserMessage.clearBannerError()
-        expect(UserMessage.errorDisplayed).toNotEventually(equal(true))
+        expect(UserMessage.errorDisplayed).toNotEventually(beTrue())
         actionHandler?.cartCheckout?.checkout = checkout
 
         guard let selectedArticleUnit = mockedDelegate?.viewModel.dataModel.selectedArticleUnit else { return fail() }
@@ -110,10 +110,10 @@ class LoggedInActionHandlerTests: XCTestCase {
                                                  delivery: nil)
         mockedDelegate?.viewModel.dataModel = dataModel
         actionHandler?.showPaymentSelectionScreen()
-        expect(UserMessage.errorDisplayed).toEventually(equal(true))
+        expect(UserMessage.errorDisplayed).toEventually(beTrue())
 
         UserMessage.clearBannerError()
-        expect(UserMessage.errorDisplayed).toNotEventually(equal(true))
+        expect(UserMessage.errorDisplayed).toNotEventually(beTrue())
         mockedDelegate?.viewModel.dataModel = originalDataModel
 
         actionHandler?.showPaymentSelectionScreen()
@@ -121,9 +121,9 @@ class LoggedInActionHandlerTests: XCTestCase {
         let paymentViewController = AtlasUIViewController.instance?.mainNavigationController.viewControllers.last as? PaymentViewController
 
         paymentViewController?.paymentCompletion?(.failure(AtlasCheckoutError.unclassified))
-        expect(UserMessage.errorDisplayed).toEventually(equal(true))
+        expect(UserMessage.errorDisplayed).toEventually(beTrue())
         UserMessage.clearBannerError()
-        expect(UserMessage.errorDisplayed).toNotEventually(equal(true))
+        expect(UserMessage.errorDisplayed).toNotEventually(beTrue())
 
 
         mockedDelegate?.viewModel.dataModel = dataModel
@@ -131,7 +131,7 @@ class LoggedInActionHandlerTests: XCTestCase {
         expect(self.mockedDelegate?.viewModel.dataModel.paymentMethod).toNotEventually(beNil())
 
         paymentViewController?.paymentCompletion?(.success(.error))
-        expect(UserMessage.errorDisplayed).toEventually(equal(true))
+        expect(UserMessage.errorDisplayed).toEventually(beTrue())
     }
 
     func testShowShippingAddressSelectionScreen() {
@@ -149,7 +149,7 @@ class LoggedInActionHandlerTests: XCTestCase {
         addressPickerViewController?.addressSelectedHandler?(address: billingAddress)
         expect((self.mockedDelegate?.viewModel.dataModel.shippingAddress as? EquatableAddress)?.id).toEventually(equal(billingAddress.id))
         expect((self.mockedDelegate?.viewModel.dataModel.billingAddress as? EquatableAddress)?.id).toEventually(equal(billingAddress.id))
-        expect(UserMessage.errorDisplayed).toNotEventually(equal(true))
+        expect(UserMessage.errorDisplayed).toNotEventually(beTrue())
 
         let updatedBillingAddress = CheckoutAddress(id: billingAddress.id,
                                                     gender: billingAddress.gender,
@@ -166,12 +166,12 @@ class LoggedInActionHandlerTests: XCTestCase {
         addressPickerViewController?.addressUpdatedHandler?(address: updatedBillingAddress)
         expect(self.mockedDelegate?.viewModel.dataModel.shippingAddress?.firstName).toEventually(equal("John"))
         expect(self.mockedDelegate?.viewModel.dataModel.billingAddress?.firstName).toEventually(equal("John"))
-        expect(UserMessage.errorDisplayed).toNotEventually(equal(true))
+        expect(UserMessage.errorDisplayed).toNotEventually(beTrue())
 
         addressPickerViewController?.addressDeletedHandler?(address: billingAddress)
         expect(self.mockedDelegate?.viewModel.dataModel.shippingAddress).toEventually(beNil())
         expect(self.mockedDelegate?.viewModel.dataModel.billingAddress).toEventually(beNil())
-        expect(UserMessage.errorDisplayed).toEventually(equal(true))
+        expect(UserMessage.errorDisplayed).toEventually(beTrue())
     }
 
     func testShowBillingAddressSelectionScreen() {
@@ -189,7 +189,7 @@ class LoggedInActionHandlerTests: XCTestCase {
         addressPickerViewController?.addressSelectedHandler?(address: shippingAddress)
         expect((self.mockedDelegate?.viewModel.dataModel.shippingAddress as? EquatableAddress)?.id).toEventually(equal(shippingAddress.id))
         expect((self.mockedDelegate?.viewModel.dataModel.billingAddress as? EquatableAddress)?.id).toEventually(equal(shippingAddress.id))
-        expect(UserMessage.errorDisplayed).toNotEventually(equal(true))
+        expect(UserMessage.errorDisplayed).toNotEventually(beTrue())
 
         let updatedShippingAddress = CheckoutAddress(id: shippingAddress.id,
                                                      gender: shippingAddress.gender,
@@ -206,12 +206,12 @@ class LoggedInActionHandlerTests: XCTestCase {
         addressPickerViewController?.addressUpdatedHandler?(address: updatedShippingAddress)
         expect(self.mockedDelegate?.viewModel.dataModel.shippingAddress?.firstName).toEventually(equal("John"))
         expect(self.mockedDelegate?.viewModel.dataModel.billingAddress?.firstName).toEventually(equal("John"))
-        expect(UserMessage.errorDisplayed).toNotEventually(equal(true))
+        expect(UserMessage.errorDisplayed).toNotEventually(beTrue())
 
         addressPickerViewController?.addressDeletedHandler?(address: shippingAddress)
         expect(self.mockedDelegate?.viewModel.dataModel.shippingAddress).toEventually(beNil())
         expect(self.mockedDelegate?.viewModel.dataModel.billingAddress).toEventually(beNil())
-        expect(UserMessage.errorDisplayed).toEventually(equal(true))
+        expect(UserMessage.errorDisplayed).toEventually(beTrue())
     }
 
 }

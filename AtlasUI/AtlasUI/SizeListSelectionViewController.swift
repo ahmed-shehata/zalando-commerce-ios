@@ -9,8 +9,11 @@ final class SizeListSelectionViewController: UIViewController {
 
     let sku: String
     var tableViewDelegate: SizeListTableViewDelegate? {
-        didSet {
-            tableView.delegate = tableViewDelegate
+        get {
+            return tableView.delegate as? SizeListTableViewDelegate
+        }
+        set(newDelegate) {
+            tableView.delegate = newDelegate
         }
     }
     var tableViewDataSource: SizeListTableViewDataSource? {
