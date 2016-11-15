@@ -185,13 +185,14 @@ extension LoggedInActionHandler {
         AtlasUIClient.createCheckoutCart(selectedArticleUnit.sku, addresses: addresses) { result in
             switch result {
             case .failure(let error):
-                if case let AtlasAPIError.checkoutFailed(cart, _) = error {
-                    completion(.success((cart: cart, checkout: nil)))
-                    if addresses?.billingAddress != nil && addresses?.shippingAddress != nil {
-                        UserMessage.displayError(AtlasCheckoutError.checkoutFailure)
-                    }
-                } else {
+                guard case let AtlasAPIError.checkoutFailed(cart, _) = error else {
                     completion(.failure(error))
+                    return
+                }
+
+                completion(.success((cart: cart, checkout: nil)))
+                if addresses?.billingAddress != nil && addresses?.shippingAddress != nil {
+                    UserMessage.displayError(AtlasCheckoutError.checkoutFailure)
                 }
             case .success(let checkoutCart):
                 completion(.success((cart: checkoutCart.cart, checkout: checkoutCart.checkout)))
