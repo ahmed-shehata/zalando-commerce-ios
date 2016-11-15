@@ -7,6 +7,8 @@ import AtlasSDK
 import AtlasUI
 import AtlasMockAPI
 
+typealias EmptyCompletion = () -> Void
+
 class AppSetup {
 
     enum InterfaceLanguage: String {
@@ -24,19 +26,19 @@ class AppSetup {
         return atlasClient != nil && options != nil
     }
 
-    static func configure(completion: NoContentCompletion) {
+    static func configure(completion: EmptyCompletion) {
         prepareMockAPI()
         prepareApp()
 
         setAppOptions(prepareOptions(), completion: completion)
     }
 
-    static func change(environmentToSandbox useSandbox: Bool, completion: NoContentCompletion) {
+    static func change(environmentToSandbox useSandbox: Bool, completion: EmptyCompletion) {
         Atlas.logoutUser()
         setAppOptions(prepareOptions(useSandbox: useSandbox), completion: completion)
     }
 
-    static func change(interfaceLanguage language: InterfaceLanguage, completion: NoContentCompletion) {
+    static func change(interfaceLanguage language: InterfaceLanguage, completion: EmptyCompletion) {
         setAppOptions(prepareOptions(interfaceLanguage: language), completion: completion)
     }
 
@@ -56,12 +58,12 @@ class AppSetup {
         }
     }
 
-    private static func setAppOptions(opts: Options, completion: NoContentCompletion) {
+    private static func setAppOptions(opts: Options, completion: EmptyCompletion) {
         AtlasUI.configure(opts) { result in
             guard let client = result.process() else { return }
             AppSetup.atlasClient = client
             AppSetup.options = opts
-            completion(.success(true))
+            completion()
         }
     }
 
