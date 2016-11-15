@@ -36,6 +36,4 @@ module Calypso
 
   COV_EXCLUDE_PRODUCTS = [PRODUCT_MOCK_SERVER, PRODUCT_CHECKOUT_DEMO].freeze
 
-  CLEANABLE_GITHUB_PROJECT_COLUMNS = { 'Technical Debt' => ['Done'], 'Current Release' => ['Postponed'] }.freeze
-
 end
