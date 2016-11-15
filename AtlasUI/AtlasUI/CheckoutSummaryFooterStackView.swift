@@ -49,7 +49,7 @@ extension CheckoutSummaryFooterStackView: UIDataBuilder {
     typealias T = CheckoutSummaryViewModel
 
     func configureData(viewModel: T) {
-        legalController = LegalController(tocURL: AtlasAPIClient.instance?.config.salesChannel.termsAndConditionsURL)
+        legalController = LegalController(tocURL: viewModel.dataModel.termsAndConditionsURL)
 
         footerButton.setAttributedTitle(tocAttributedTitle(), forState: .Normal)
         footerButton.hidden = !viewModel.uiModel.showFooterLabel

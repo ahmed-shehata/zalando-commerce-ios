@@ -19,7 +19,7 @@ class BillingAddressCreationStrategy: AddressCreationStrategy {
         }
 
         availableFormCreationStrategies = [standardStrategy, addressBookStrategy]
-        showActionSheet(availableFormCreationStrategies)
+        showActionSheet(strategies: availableFormCreationStrategies)
     }
 
 }

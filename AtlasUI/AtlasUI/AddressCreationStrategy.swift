@@ -15,7 +15,7 @@ protocol AddressCreationStrategy {
 
 extension AddressCreationStrategy {
 
-    func showActionSheet(strategies: [AddressFormCreationStrategy]) {
+    func showActionSheet(strategies strategies: [AddressFormCreationStrategy]) {
         let title = Localizer.string("addressListView.add.type.title")
 
         var buttonActions = strategies.map { strategy in

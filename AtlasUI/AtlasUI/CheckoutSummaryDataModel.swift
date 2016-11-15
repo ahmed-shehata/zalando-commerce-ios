@@ -52,6 +52,10 @@ extension CheckoutSummaryDataModel {
         return paymentMethod?.caseInsensitiveCompare("paypal") == .OrderedSame
     }
 
+    var termsAndConditionsURL: NSURL? {
+        return AtlasAPIClient.instance?.config.salesChannel.termsAndConditionsURL
+    }
+
 }
 
 extension CheckoutSummaryDataModel {

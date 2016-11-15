@@ -21,7 +21,7 @@ class ShippingAddressCreationStrategy: AddressCreationStrategy {
         }
 
         availableFormCreationStrategies = [standardStrategy, pickupPointStrategy, addressBookStrategy]
-        showActionSheet(availableFormCreationStrategies)
+        showActionSheet(strategies: availableFormCreationStrategies)
     }
 
 }
