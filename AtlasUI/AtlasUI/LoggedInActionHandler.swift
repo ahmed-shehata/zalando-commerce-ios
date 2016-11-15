@@ -108,7 +108,8 @@ class LoggedInActionHandler: CheckoutSummaryActionHandler {
         AtlasUIClient.addresses { [weak self] result in
             guard let userAddresses = result.process() else { return }
             let addresses: [EquatableAddress] = userAddresses.map { $0 }
-            let addressViewController = AddressPickerViewController(initialAddresses: addresses, initialAddress: self?.shippingAddress)
+            let selectedAddress = self?.shippingAddress
+            let addressViewController = AddressPickerViewController(initialAddresses: addresses, initialSelectedAddress: selectedAddress)
             addressViewController.addressUpdatedHandler = { self?.addressUpdated($0) }
             addressViewController.addressDeletedHandler = { self?.addressDeleted($0) }
             addressViewController.addressSelectedHandler = { self?.selectShippingAddress($0) }
@@ -122,7 +123,8 @@ class LoggedInActionHandler: CheckoutSummaryActionHandler {
         AtlasUIClient.addresses { [weak self] result in
             guard let userAddresses = result.process() else { return }
             let addresses: [EquatableAddress] = userAddresses.filter { $0.pickupPoint == nil } .map { $0 }
-            let addressViewController = AddressPickerViewController(initialAddresses: addresses, initialAddress: self?.billingAddress)
+            let selectedAddress = self?.billingAddress
+            let addressViewController = AddressPickerViewController(initialAddresses: addresses, initialSelectedAddress: selectedAddress)
             addressViewController.addressUpdatedHandler = { self?.addressUpdated($0) }
             addressViewController.addressDeletedHandler = { self?.addressDeleted($0) }
             addressViewController.addressSelectedHandler = { self?.selectBillingAddress($0) }
