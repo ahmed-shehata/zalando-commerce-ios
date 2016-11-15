@@ -12,10 +12,9 @@ final class LegalController: NSObject {
 
     private let legalURLPath = "/legal/"
 
-    required init?(tocURL: NSURL?) {
-        guard let url = tocURL else { return nil }
-        self.tocURL = url
-        self.legalURL = NSURL(validURL: url, path: legalURLPath)
+    required init(tocURL: NSURL) {
+        self.tocURL = tocURL
+        self.legalURL = NSURL(validURL: tocURL, path: legalURLPath)
     }
 
     func push(on navController: UINavigationController? = AtlasUIViewController.instance?.mainNavigationController) {

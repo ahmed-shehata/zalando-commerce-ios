@@ -49,7 +49,9 @@ extension CheckoutSummaryFooterStackView: UIDataBuilder {
     typealias T = CheckoutSummaryViewModel
 
     func configureData(viewModel: T) {
-        legalController = LegalController(tocURL: viewModel.dataModel.termsAndConditionsURL)
+        if let termsAndConditionsURL = viewModel.dataModel.termsAndConditionsURL {
+            legalController = LegalController(tocURL: termsAndConditionsURL)
+        }
 
         footerButton.setAttributedTitle(tocAttributedTitle(), forState: .Normal)
         footerButton.hidden = !viewModel.uiModel.showFooterLabel
