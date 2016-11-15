@@ -4,35 +4,63 @@
 
 import AtlasSDK
 
+public enum ProcessedAtlasResult<T> {
+
+    case success(T)
+    case error(error: ErrorType, title: String, message: String)
+    case skipped
+
+}
+
 extension AtlasResult {
 
-    func process(forceFullScreenError fullScreen: Bool = false) -> T? {
+    public func processedResult() -> ProcessedAtlasResult<T> {
         switch self {
         case .failure(let error):
             switch error {
             case AtlasAPIError.unauthorized(let repeatCall):
                 let authorizationHandler = OAuth2AuthorizationHandler()
                 authorizationHandler.authorize { result in
-                    guard let accessToken = result.process(forceFullScreenError: fullScreen) else { return }
-                    APIAccessToken.store(accessToken)
-                    UserMessage.displayLoader { hideLoader in
-                        repeatCall {
-                            hideLoader()
+                    let processedResult = result.processedResult()
+                    switch processedResult {
+                    case .success(let accessToken):
+                        APIAccessToken.store(accessToken)
+                        UserMessage.displayLoader { hideLoader in
+                            repeatCall {
+                                hideLoader()
+                            }
                         }
+                    default: break
                     }
                 }
-                return nil
+                return .skipped
+
+            case let userPresentable as UserPresentable:
+                return .error(error: error, title: userPresentable.displayedTitle, message: userPresentable.displayedMessage)
 
             default:
-                if fullScreen {
-                    UserMessage.displayErrorFullScreen(error)
-                } else {
-                    UserMessage.displayError(error)
-                }
+                let unclassifiedError = AtlasCheckoutError.unclassified
+                return .error(error: error, title: unclassifiedError.displayedTitle, message: unclassifiedError.displayedMessage)
             }
-            return nil
+        case .success(let data):
+            return .success(data)
+        }
+    }
+
+    func process(forceFullScreenError fullScreen: Bool = false) -> T? {
+        let processedResult = self.processedResult()
+        switch processedResult {
         case .success(let data):
             return data
+        case .error(let error, _, _):
+            if fullScreen {
+                UserMessage.displayErrorFullScreen(error)
+            } else {
+                UserMessage.displayError(error)
+            }
+            return nil
+        case .skipped:
+            return nil
         }
     }
 
