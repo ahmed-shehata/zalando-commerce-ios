@@ -39,7 +39,7 @@ class AddressActionsHandler {
     }
 
     func deleteAddress(address: EquatableAddress) {
-        AtlasAPIClient.deleteAddress(address.id) { [weak self] result in
+        AtlasUIClient.deleteAddress(address.id) { [weak self] result in
             let addresses = self?.viewController?.tableviewDelegate.addresses
             guard let _ = result.process(), addressIdx = addresses?.indexOf({ $0 == address }) else { return }
 

@@ -13,7 +13,7 @@ struct NotLoggedInActionHandler: CheckoutSummaryActionHandler {
     func handleSubmitButton() {
         guard let delegate = delegate else { return }
 
-        AtlasAPIClient.customer { result in
+        AtlasUIClient.customer { result in
             guard let customer = result.process() else { return }
 
             let selectedArticleUnit = delegate.viewModel.dataModel.selectedArticleUnit

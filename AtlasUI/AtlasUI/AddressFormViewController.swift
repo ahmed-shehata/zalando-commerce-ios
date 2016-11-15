@@ -129,21 +129,21 @@ extension AddressFormViewController {
 
     private func checkAddressRequest() {
         guard let request = CheckAddressRequest(addressFormViewModel: addressViewModel) else { return enableSaveButton() }
-        AtlasAPIClient.checkAddress(request) { [weak self] result in
+        AtlasUIClient.checkAddress(request) { [weak self] result in
             self?.checkAddressRequestCompletion(result)
         }
     }
 
     private func createAddressRequest() {
         guard let request = CreateAddressRequest(addressFormViewModel: addressViewModel) else { return enableSaveButton() }
-        AtlasAPIClient.createAddress(request) { [weak self] result in
+        AtlasUIClient.createAddress(request) { [weak self] result in
             self?.createUpdateAddressRequestCompletion(result)
         }
     }
 
     private func updateAddressRequest(originalAddress: EquatableAddress) {
         guard let request = UpdateAddressRequest(addressFormViewModel: addressViewModel) else { return enableSaveButton() }
-        AtlasAPIClient.updateAddress(originalAddress.id, request: request) { [weak self] result in
+        AtlasUIClient.updateAddress(originalAddress.id, request: request) { [weak self] result in
             self?.createUpdateAddressRequestCompletion(result)
         }
     }

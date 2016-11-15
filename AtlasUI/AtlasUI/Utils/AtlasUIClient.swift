@@ -5,7 +5,7 @@
 import Foundation
 import AtlasSDK
 
-extension AtlasAPIClient {
+struct AtlasUIClient {
 
     static func customer(completion: CustomerCompletion) {
         UserMessage.displayLoader { hideLoader in

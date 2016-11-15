@@ -66,7 +66,7 @@ extension SizeListSelectionViewController: UIBuilder {
 extension SizeListSelectionViewController {
 
     private func fetchSizes() {
-        AtlasAPIClient.article(self.sku) { [weak self] result in
+        AtlasUIClient.article(self.sku) { [weak self] result in
             guard let article = result.process(forceFullScreenError: true) else { return }
             self?.tableViewDelegate = SizeListTableViewDelegate(article: article, completion: self?.showCheckoutScreen)
             self?.tableViewDataSource = SizeListTableViewDataSource(article: article)
@@ -82,7 +82,7 @@ extension SizeListSelectionViewController {
             return displayCheckoutSummaryViewController(dataModel, actionHandler: actionHandler)
         }
 
-        AtlasAPIClient.customer { [weak self] customerResult in
+        AtlasUIClient.customer { [weak self] customerResult in
             guard let customer = customerResult.process(forceFullScreenError: hasSingleUnit) else { return }
 
             LoggedInActionHandler.createInstance(customer, selectedArticleUnit: selectedArticleUnit) { actionHandlerResult in

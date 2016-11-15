@@ -64,7 +64,7 @@ class LoggedInActionHandler: CheckoutSummaryActionHandler {
             self?.cartCheckout = cartCheckout
 
             if delegate.viewModel.dataModel.isPaymentSelected && !UserMessage.errorDisplayed {
-                AtlasAPIClient.createOrder(checkout.id) { result in
+                AtlasUIClient.createOrder(checkout.id) { result in
                     guard let order = result.process() else { return }
                     self?.handleOrderConfirmation(order)
                 }
@@ -105,7 +105,7 @@ class LoggedInActionHandler: CheckoutSummaryActionHandler {
     }
 
     func showShippingAddressSelectionScreen() {
-        AtlasAPIClient.addresses { [weak self] result in
+        AtlasUIClient.addresses { [weak self] result in
             guard let userAddresses = result.process() else { return }
             let addresses: [EquatableAddress] = userAddresses.map { $0 }
             let addressViewController = AddressPickerViewController(initialAddresses: addresses, initialAddress: self?.shippingAddress)
@@ -119,7 +119,7 @@ class LoggedInActionHandler: CheckoutSummaryActionHandler {
     }
 
     func showBillingAddressSelectionScreen() {
-        AtlasAPIClient.addresses { [weak self] result in
+        AtlasUIClient.addresses { [weak self] result in
             guard let userAddresses = result.process() else { return }
             let addresses: [EquatableAddress] = userAddresses.filter { $0.pickupPoint == nil } .map { $0 }
             let addressViewController = AddressPickerViewController(initialAddresses: addresses, initialAddress: self?.billingAddress)
@@ -180,7 +180,7 @@ extension LoggedInActionHandler {
                                            addresses: CheckoutAddresses? = nil,
                                            completion: CreateCartCheckoutCompletion) {
 
-        AtlasAPIClient.createCheckoutCart(selectedArticleUnit.sku, addresses: addresses) { result in
+        AtlasUIClient.createCheckoutCart(selectedArticleUnit.sku, addresses: addresses) { result in
             switch result {
             case .failure(let error):
                 if case let AtlasAPIError.checkoutFailed(cart, _) = error {
