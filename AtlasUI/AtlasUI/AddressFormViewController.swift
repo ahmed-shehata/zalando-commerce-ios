@@ -87,10 +87,10 @@ extension AddressFormViewController {
     }
 
     private dynamic func cancelButtonPressed() {
-        dismissView(nil)
+        dismissView()
     }
 
-    private func dismissView(completion: (() -> Void)?) {
+    private func dismissView(completion: (() -> Void)? = nil) {
         view.endEditing(true)
 
         switch addressMode {
