@@ -13,9 +13,9 @@ protocol CheckoutSummaryUIModel {
     var showFooterLabel: Bool { get }
     var showDetailArrow: Bool { get }
 
-    func submitButtonBackgroundColor(readyToCheckout: Bool) -> UIColor
-    func submitButtonTitle(isPaypal: Bool) -> String
-    func hideBackButton(hasSingleUnit: Bool) -> Bool
+    func submitButtonBackgroundColor(readyToCheckout readyToCheckout: Bool) -> UIColor
+    func submitButtonTitle(isPaypal isPaypal: Bool) -> String
+    func hideBackButton(hasSingleUnit hasSingleUnit: Bool) -> Bool
 
 }
 
@@ -27,9 +27,9 @@ struct NotLoggedInUIModel: CheckoutSummaryUIModel {
     let showFooterLabel: Bool = true
     let showDetailArrow: Bool = true
 
-    func submitButtonBackgroundColor(readyToCheckout: Bool) -> UIColor { return .orangeColor() }
-    func submitButtonTitle(isPaypal: Bool) -> String { return "summaryView.submitButton.checkoutWithZalando" }
-    func hideBackButton(hasSingleUnit: Bool) -> Bool { return hasSingleUnit }
+    func submitButtonBackgroundColor(readyToCheckout readyToCheckout: Bool) -> UIColor { return .orangeColor() }
+    func submitButtonTitle(isPaypal isPaypal: Bool) -> String { return "summaryView.submitButton.checkoutWithZalando" }
+    func hideBackButton(hasSingleUnit hasSingleUnit: Bool) -> Bool { return hasSingleUnit }
 
 }
 
@@ -41,9 +41,9 @@ struct LoggedInUIModel: CheckoutSummaryUIModel {
     let showFooterLabel: Bool = true
     let showDetailArrow: Bool = true
 
-    func submitButtonBackgroundColor(readyToCheckout: Bool) -> UIColor { return readyToCheckout ? .orangeColor() : .grayColor() }
-    func submitButtonTitle(isPaypal: Bool) -> String { return isPaypal ? "summaryView.submitButton.payWithPapPal" : "summaryView.submitButton.placeOrder" }
-    func hideBackButton(hasSingleUnit: Bool) -> Bool { return hasSingleUnit }
+    func submitButtonBackgroundColor(readyToCheckout readyToCheckout: Bool) -> UIColor { return readyToCheckout ? .orangeColor() : .grayColor() }
+    func submitButtonTitle(isPaypal isPaypal: Bool) -> String { return isPaypal ? "summaryView.submitButton.payWithPapPal" : "summaryView.submitButton.placeOrder" }
+    func hideBackButton(hasSingleUnit hasSingleUnit: Bool) -> Bool { return hasSingleUnit }
 
 }
 
@@ -55,8 +55,8 @@ struct OrderPlacedUIModel: CheckoutSummaryUIModel {
     let showFooterLabel: Bool = false
     let showDetailArrow: Bool = false
 
-    func submitButtonBackgroundColor(readyToCheckout: Bool) -> UIColor { return UIColor(red: 80.0 / 255.0, green: 150.0 / 255.0, blue: 20.0 / 255.0, alpha: 1.0) }
-    func submitButtonTitle(isPaypal: Bool) -> String { return "summaryView.submitButton.backToShop" }
-    func hideBackButton(hasSingleUnit: Bool) -> Bool { return true }
+    func submitButtonBackgroundColor(readyToCheckout readyToCheckout: Bool) -> UIColor { return UIColor(red: 80.0 / 255.0, green: 150.0 / 255.0, blue: 20.0 / 255.0, alpha: 1.0) }
+    func submitButtonTitle(isPaypal isPaypal: Bool) -> String { return "summaryView.submitButton.backToShop" }
+    func hideBackButton(hasSingleUnit hasSingleUnit: Bool) -> Bool { return true }
 
 }
