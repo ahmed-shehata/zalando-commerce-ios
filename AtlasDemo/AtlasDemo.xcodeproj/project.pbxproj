@@ -451,7 +451,7 @@
 				A780FF331E667E4F680D3C330ED07DB8 /* DemoCatalog.swift in Sources */,
 				0FE6FE338EDD0304EC47F380FA6E7F0F /* ProductCollectionViewCell.swift in Sources */,
 				A12BA69E9882091D0E7458127925A441 /* ProfileViewController.swift in Sources */,
-				EAF6B18A76607DD0AC887AEF1371D19A /* SizeMap.swift in Sources */,
+				9AD52B8EF1F22034353693A4843F318F /* UIViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
