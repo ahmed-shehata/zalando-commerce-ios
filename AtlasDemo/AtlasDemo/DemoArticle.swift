@@ -108,7 +108,7 @@ extension DemoArticle {
         ageGroups = json["ageGroups"].arrayValue.flatMap { $0.string }
         categoryKeys = json["categoryKeys"].arrayValue.flatMap { $0.string }
         attributes = json["attributes"].arrayValue.flatMap { DemoArticle.Attribute(json: $0) }
-        units = json["units"].arrayValue.flatMap { DemoArticle.Unit(json: $0) }.sort()
+        units = json["units"].arrayValue.flatMap { DemoArticle.Unit(json: $0) }
     }
 }
 
@@ -240,14 +240,4 @@ public func == (lhs: DemoArticle.Price, rhs: DemoArticle.Price) -> Bool {
 
 public func < (lhs: DemoArticle.Price, rhs: DemoArticle.Price) -> Bool {
     return lhs.valueInCents < rhs.valueInCents
-}
-
-extension DemoArticle.Unit: Comparable { }
-
-public func == (lhs: DemoArticle.Unit, rhs: DemoArticle.Unit) -> Bool {
-    return lhs.id == rhs.id
-}
-
-public func < (lhs: DemoArticle.Unit, rhs: DemoArticle.Unit) -> Bool {
-    return lhs.size < rhs.size
 }
