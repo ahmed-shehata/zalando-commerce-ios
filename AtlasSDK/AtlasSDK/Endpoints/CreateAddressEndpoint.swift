@@ -8,7 +8,7 @@ struct CreateAddressEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
 
     let serviceURL: NSURL
     let method: HTTPMethod = .POST
-    var path: String { return "addresses" }
+    let path = "addresses"
     let acceptedContentType = "application/x.zalando.customer.address.create.response+json"
     let contentType = "application/x.zalando.customer.address.create+json"
 

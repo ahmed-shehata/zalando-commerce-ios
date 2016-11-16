@@ -30,6 +30,12 @@ which could be used with a single fire-and-forget call.
 
 ## Installation
 
+### Requirements
+
+* iOS 9+
+* Swift 2.2/2.3 (3 planned, vote on [#29](https://github.com/zalando-incubator/atlas-ios/issues/29))
+* AtlasUI views are designed for iPhone only. iPad works, but is not deliberatly adapted
+
 ### Cocoapods
 
 Fully integrated `AtlasSDK` + `AtlasUI` components:
