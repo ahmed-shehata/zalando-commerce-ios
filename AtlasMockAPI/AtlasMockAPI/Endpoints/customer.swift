@@ -10,18 +10,18 @@ extension HttpServer {
     func addCustomerEndpoint() throws {
         let path = "/customer"
         guard let authorizedFilePath = try serverBundle.pathsForResources(containingInName: "!customer-auth.json")?.first,
-            unauthorizedFilePath = try serverBundle.pathsForResources(containingInName: "!customer-not-auth.json")?.first
+            let unauthorizedFilePath = try serverBundle.pathsForResources(containingInName: "!customer-not-auth.json")?.first
         else { return }
 
         let authorizedContent = try String(contentsOfFile: authorizedFilePath)
 
         self[path] = { request in
-            let isAuthorized = request.headers["authorization"]?.containsString("Bearer ") ?? false
+            let isAuthorized = request.headers["authorization"]?.contains("Bearer ") ?? false
             if isAuthorized {
-                return .OK(.Text(authorizedContent))
+                return .ok(.text(authorizedContent))
             } else {
-                return HttpResponse.RAW(401, "Unauthorized", nil) { writer in
-                    let unauthorizedFile = try File.openForReading(unauthorizedFilePath)
+                return HttpResponse.raw(401, "Unauthorized", nil) { writer in
+                    let unauthorizedFile = try unauthorizedFilePath.openForReading()
                     try writer.write(unauthorizedFile)
                 }
             }

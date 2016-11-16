@@ -7,37 +7,33 @@ import Swifter
 
 public final class AtlasMockAPI {
 
-    private static var isStarted = false
     public static let isEnabledFlag = "ATLAS_MOCK_API_ENABLED"
 
-    private static let server = HttpServer()
-    private static let serverURL = NSURL(string: "http://localhost:9080")! // swiftlint:disable:this force_unwrapping
+    fileprivate static var isStarted = false
+    fileprivate static let server = HttpServer()
+    fileprivate static let serverURL = URL(string: "http://localhost:9080")! // swiftlint:disable:this force_unwrapping
 
-    public static func startServer(wait timeout: NSTimeInterval = 15) throws {
+    public static func startServer(wait timeout: TimeInterval = 15) throws {
         try server.registerEndpoints()
-        try server.start(serverURL, forceIPv4: false, timeout: timeout)
+        try server.start(at: serverURL, forceIPv4: false, timeout: timeout)
         AtlasMockAPI.isStarted = true
         print("AtlasMockAPI server started @ \(serverURL)")
     }
 
-    public static func stopServer(wait timeout: NSTimeInterval = 15) throws {
-        try server.stop(timeout)
+    public static func stopServer(wait timeout: TimeInterval = 15) throws {
+        try server.stop(withGraceTimeout: timeout)
         print("AtlasMockAPI server stopped")
     }
 
-    public static func endpointURL(forPath path: String, queryItems: [NSURLQueryItem] = []) -> NSURL {
-        #if swift(>=2.3)
-            let url = serverURL.URLByAppendingPathComponent(path)! // swiftlint:disable:this force_unwrapping
-        #else
-            let url = serverURL.URLByAppendingPathComponent(path)
-        #endif
-        let urlComponents = NSURLComponents(URL: url, resolvingAgainstBaseURL: true)
+    public static func endpointURL(forPath path: String, queryItems: [URLQueryItem] = []) -> URL {
+        let url = serverURL.appendingPathComponent(path)
+        var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true)
         urlComponents?.queryItems = queryItems
-        return urlComponents?.URL ?? url
+        return urlComponents?.url ?? url
     }
 
     public static var hasMockedAPIStarted: Bool {
-        return isStarted || NSProcessInfo.processInfo().arguments.contains(AtlasMockAPI.isEnabledFlag)
+        return isStarted || ProcessInfo().arguments.contains(AtlasMockAPI.isEnabledFlag)
     }
 
 }
