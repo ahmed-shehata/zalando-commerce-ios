@@ -23,17 +23,17 @@ public struct APIRequest<T> {
             case .failure(let error):
                 AtlasLogger.logError("FAILED CALL", self.requestBuilder)
                 dispatch_async(dispatch_get_main_queue()) {
-                    self.completions.forEach { $0(.failure(error, self)) }
+                    self.completions.reverse().forEach { $0(.failure(error, self)) }
                 }
 
             case .success(let response):
                 if let parsedResponse = self.successHandler(response) {
                     dispatch_async(dispatch_get_main_queue()) {
-                        self.completions.forEach { $0(.success(parsedResponse)) }
+                        self.completions.reverse().forEach { $0(.success(parsedResponse)) }
                     }
                 } else {
                     dispatch_async(dispatch_get_main_queue()) {
-                        self.completions.forEach { $0(.failure(AtlasAPIError.invalidResponseFormat, self)) }
+                        self.completions.reverse().forEach { $0(.failure(AtlasAPIError.invalidResponseFormat, self)) }
                     }
                 }
             }
