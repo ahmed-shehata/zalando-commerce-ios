@@ -27,8 +27,6 @@ module Calypso
       end
 
       def drop_cards(cards)
-        return unless yes?("Do you want to drop all #{cards.count} cards?", :red)
-
         cards.each do |card|
           delete(delete_card_url(card))
         end
@@ -41,7 +39,7 @@ module Calypso
       end
 
       def columns(project)
-        fetch(columns_url(project['number']))
+        fetch(columns_url(project['id']))
       end
 
       def cards(project:, column: nil)
@@ -63,15 +61,15 @@ module Calypso
       end
 
       def columns_url(project_id)
-        repos_url("projects/#{project_id}/columns")
+        api_url(path: "projects/#{project_id}/columns")
       end
 
       def cards_url(column)
-        repos_url("projects/columns/#{column['id']}/cards")
+        api_url(path: "projects/columns/#{column['id']}/cards")
       end
 
       def delete_card_url(card)
-        repos_url("projects/columns/cards/#{card['id']}")
+        api_url(path: "projects/columns/cards/#{card['id']}")
       end
 
     end

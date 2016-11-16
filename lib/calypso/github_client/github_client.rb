@@ -28,12 +28,12 @@ module Calypso
 
       private
 
-      def api_url(api_module, owner, repo, endpoint)
-        "https://api.github.com/#{api_module}/#{owner}/#{repo}/#{endpoint}"
+      def api_url(path:)
+        "https://api.github.com/#{path}"
       end
 
       def repos_url(endpoint, owner: env_owner, repo: env_repo)
-        api_url('repos', owner, repo, endpoint)
+        api_url(path: "repos/#{owner}/#{repo}/#{endpoint}")
       end
 
       def fetch(url, headers: {}, query: {}, pages: 1)
@@ -50,6 +50,7 @@ module Calypso
             query['page'] = page
           end
           response = HTTParty.get(url, headers: headers, query: query)
+          log_abort response unless response.success?
           parsed = response.parsed_response
           full_response += parsed
           break if parsed.count.zero?
@@ -60,13 +61,15 @@ module Calypso
       def delete(url, headers: {}, query: {})
         log_debug "DELETE #{url} ..."
         headers.merge! standard_headers
-        HTTParty.delete(url, headers: headers, query: query)
+        response HTTParty.delete(url, headers: headers, query: query)
+        log_abort response unless response.success?
       end
 
       def post(url, headers: {}, query: {}, body: {})
         log_debug "POST #{url} ..."
         headers.merge! standard_headers
-        HTTParty.post(url, headers: headers, query: query, body: body.to_json)
+        response = HTTParty.post(url, headers: headers, query: query, body: body.to_json)
+        log_abort response unless response.success?
       end
 
       def standard_headers
