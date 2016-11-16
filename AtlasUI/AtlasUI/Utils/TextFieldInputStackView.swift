@@ -6,7 +6,7 @@ import UIKit
 
 class TextFieldInputStackView: UIStackView {
 
-    internal let titleLabel: UILabel = {
+    let titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.alpha = 0
@@ -15,21 +15,21 @@ class TextFieldInputStackView: UIStackView {
         return label
     }()
 
-    internal let textField: ActionTextField = {
+    let textField: ActionTextField = {
         let textField = ActionTextField()
         textField.font = .systemFontOfSize(15)
         textField.textColor = UIColor(hex: 0x333333)
         return textField
     }()
 
-    internal let separatorView: BorderView = {
+    let separatorView: BorderView = {
         let view = BorderView()
         view.bottomBorder = true
         view.borderColor = .blackColor()
         return view
     }()
 
-    internal let errorLabel: UILabel = {
+    let errorLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.font = .systemFontOfSize(11)
@@ -42,7 +42,7 @@ class TextFieldInputStackView: UIStackView {
     private var valueChangedHandler: TextFieldChangedHandler?
     private var validators: [FormValidator] = []
 
-    internal func validateForm() -> Bool {
+    func validateForm() -> Bool {
         let error = checkFormForError()
         errorLabel.text = error ?? " "
         return error == nil
@@ -115,7 +115,7 @@ extension TextFieldInputStackView: UIDataBuilder {
         configureTitleLabel()
     }
 
-    internal func configureTitleLabel() {
+    func configureTitleLabel() {
         UIView.animate(.fast) {
             self.titleLabel.alpha = self.textField.text?.isEmpty == true ? 0 : 1
         }

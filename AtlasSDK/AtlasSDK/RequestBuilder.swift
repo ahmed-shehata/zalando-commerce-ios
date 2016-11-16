@@ -30,23 +30,7 @@ struct RequestBuilder {
             switch result {
             case .failure(let error):
                 AtlasLogger.logError("Failed request:", self.endpoint, "with error:", error)
-                switch error {
-                case AtlasAPIError.unauthorized:
-                    guard let authorizationHandler = try? Atlas.provide() as AuthorizationHandler else {
-                        return completion(.failure(error))
-                    }
-                    authorizationHandler.authorize { result in
-                        switch result {
-                        case .failure(let error):
-                            completion(.failure(error))
-                        case .success(let accessToken):
-                            APIAccessToken.store(accessToken)
-                            self.execute(completion)
-                        }
-                    }
-                default:
-                    completion(.failure(error))
-                }
+                completion(.failure(error))
 
             case .success(let response):
                 completion(.success(response))

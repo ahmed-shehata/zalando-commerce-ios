@@ -15,7 +15,7 @@ class EditAddressTypeTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        Atlas.register { try! Localizer(localeIdentifier: "en_UK") as Localizer }
+        AtlasUI.register { try! Localizer(localeIdentifier: "en_UK") as Localizer }
         viewModel = AddressFormViewModel(equatableAddress: nil, countryCode: "DE")
         updateModelData(viewModel)
     }

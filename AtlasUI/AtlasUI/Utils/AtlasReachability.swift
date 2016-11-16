@@ -9,7 +9,7 @@ class AtlasReachability {
 
     private var reachability: AtlasUI_Reachability?
 
-    internal func setupReachability() {
+    func setupReachability() {
         do {
             reachability = try AtlasUI_Reachability.reachabilityForInternetConnection()
             try reachability?.startNotifier()

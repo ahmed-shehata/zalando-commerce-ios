@@ -5,7 +5,7 @@
 import UIKit
 import AtlasSDK
 
-typealias PaymentCompletion = AtlasResult<PaymentStatus> -> Void
+typealias PaymentCompletion = PaymentStatus -> Void
 
 enum PaymentStatus: String {
 
@@ -18,13 +18,14 @@ enum PaymentStatus: String {
 
     init?(callbackURLComponents: NSURLComponents, requestURLComponents: NSURLComponents) {
         guard let
-        callbackHost = callbackURLComponents.host,
+            callbackHost = callbackURLComponents.host,
             requestHost = requestURLComponents.host
-        where callbackHost.lowercaseString == requestHost.lowercaseString
+        where
+            callbackHost.lowercaseString == requestHost.lowercaseString
             else { return nil }
 
         guard let
-        rawValue = requestURLComponents.queryItems?.filter({ $0.name == PaymentStatus.statusKey }).first?.value,
+            rawValue = requestURLComponents.queryItems?.filter({ $0.name == PaymentStatus.statusKey }).first?.value,
             paymentStatus = PaymentStatus(rawValue: rawValue)
             else { self = .redirect; return }
 
@@ -76,7 +77,7 @@ final class PaymentViewController: UIViewController, UIWebViewDelegate {
         guard let paymentStatus = PaymentStatus(callbackURLComponents: callbackURLComponents,
                                                 requestURLComponents: requestURLComponents) else { return true }
 
-        paymentCompletion?(.success(paymentStatus))
+        paymentCompletion?(paymentStatus)
         navigationController?.popViewControllerAnimated(true)
         return false
     }

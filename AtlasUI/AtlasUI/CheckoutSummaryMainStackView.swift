@@ -6,7 +6,7 @@ import UIKit
 
 class CheckoutSummaryMainStackView: UIStackView {
 
-    internal let productStackView: CheckoutSummaryProductStackView = {
+    let productStackView: CheckoutSummaryProductStackView = {
         let stackView = CheckoutSummaryProductStackView()
         stackView.axis = .Horizontal
         stackView.spacing = 15
@@ -15,14 +15,14 @@ class CheckoutSummaryMainStackView: UIStackView {
         return stackView
     }()
 
-    internal let productSeparatorView: BorderView = {
+    let productSeparatorView: BorderView = {
         let view = BorderView()
         view.bottomBorder = true
         view.borderColor = UIColor(hex: 0xE5E5E5)
         return view
     }()
 
-    internal let shippingAddressStackView: CheckoutSummaryAddressStackView = {
+    let shippingAddressStackView: CheckoutSummaryAddressStackView = {
         let stackView = CheckoutSummaryAddressStackView()
         stackView.axis = .Horizontal
         stackView.spacing = 5
@@ -33,7 +33,7 @@ class CheckoutSummaryMainStackView: UIStackView {
         return stackView
     }()
 
-    internal let shippingAddressSeparatorView: BorderView = {
+    let shippingAddressSeparatorView: BorderView = {
         let view = BorderView()
         view.bottomBorder = true
         view.leadingMargin = 15
@@ -41,7 +41,7 @@ class CheckoutSummaryMainStackView: UIStackView {
         return view
     }()
 
-    internal let billingAddressStackView: CheckoutSummaryAddressStackView = {
+    let billingAddressStackView: CheckoutSummaryAddressStackView = {
         let stackView = CheckoutSummaryAddressStackView()
         stackView.axis = .Horizontal
         stackView.spacing = 5
@@ -52,7 +52,7 @@ class CheckoutSummaryMainStackView: UIStackView {
         return stackView
     }()
 
-    internal let billingAddressSeparatorView: BorderView = {
+    let billingAddressSeparatorView: BorderView = {
         let view = BorderView()
         view.bottomBorder = true
         view.leadingMargin = 15
@@ -60,7 +60,7 @@ class CheckoutSummaryMainStackView: UIStackView {
         return view
     }()
 
-    internal let paymentStackView: CheckoutSummaryPaymentStackView = {
+    let paymentStackView: CheckoutSummaryPaymentStackView = {
         let stackView = CheckoutSummaryPaymentStackView()
         stackView.axis = .Horizontal
         stackView.spacing = 5
@@ -70,14 +70,14 @@ class CheckoutSummaryMainStackView: UIStackView {
         return stackView
     }()
 
-    internal let paymentSeparatorView: BorderView = {
+    let paymentSeparatorView: BorderView = {
         let view = BorderView()
         view.bottomBorder = true
         view.borderColor = UIColor(hex: 0xE5E5E5)
         return view
     }()
 
-    internal let priceStackView: CheckoutSummaryPriceStackView = {
+    let priceStackView: CheckoutSummaryPriceStackView = {
         let stackView = CheckoutSummaryPriceStackView()
         stackView.axis = .Vertical
         stackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
@@ -85,7 +85,7 @@ class CheckoutSummaryMainStackView: UIStackView {
         return stackView
     }()
 
-    internal let deliveryStackView: CheckoutSummaryDeliveryStackView = {
+    let deliveryStackView: CheckoutSummaryDeliveryStackView = {
         let stackView = CheckoutSummaryDeliveryStackView()
         stackView.axis = .Horizontal
         stackView.spacing = 5
@@ -132,27 +132,27 @@ extension CheckoutSummaryMainStackView: UIBuilder {
 
 extension CheckoutSummaryMainStackView: UIDataBuilder {
 
-    typealias T = CheckoutSummaryViewController // TODO: create separated view model
+    typealias T = CheckoutSummaryViewModel
 
     func configureData(viewModel: T) {
-        productStackView.configureData(viewModel.checkoutViewModel)
-        priceStackView.configureData(viewModel.checkoutViewModel)
-        deliveryStackView.configureData(viewModel.checkoutViewModel)
-        priceStackView.hidden = !viewModel.viewState.showPrice
+        productStackView.configureData(viewModel.dataModel.selectedArticleUnit)
+        priceStackView.configureData(viewModel.dataModel)
+        deliveryStackView.configureData(viewModel.dataModel)
+        priceStackView.hidden = !viewModel.layout.showPrice
 
         shippingAddressStackView.configureData(CheckoutSummaryAddressViewModel(
-            addressLines: viewModel.checkoutViewModel.shippingAddress,
-            showArrow: viewModel.viewState.showDetailArrow)
+            addressLines: viewModel.dataModel.formattedShippingAddress,
+            showArrow: viewModel.layout.showDetailArrow)
         )
 
         billingAddressStackView.configureData(CheckoutSummaryAddressViewModel(
-            addressLines: viewModel.checkoutViewModel.billingAddress,
-            showArrow: viewModel.viewState.showDetailArrow)
+            addressLines: viewModel.dataModel.formattedBillingAddress,
+            showArrow: viewModel.layout.showDetailArrow)
         )
 
         paymentStackView.configureData(CheckoutSummaryPaymentViewModel(
-            value: viewModel.checkoutViewModel.selectedPaymentMethod ?? "",
-            showArrow: viewModel.viewState.showDetailArrow)
+            value: viewModel.dataModel.paymentMethod ?? "",
+            showArrow: viewModel.layout.showDetailArrow)
         )
     }
 

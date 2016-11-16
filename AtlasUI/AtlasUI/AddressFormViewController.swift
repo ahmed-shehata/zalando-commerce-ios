@@ -7,15 +7,15 @@ import AtlasSDK
 
 typealias AddressFormCompletion = UserAddress -> Void
 
-class AddressFormViewController: UIViewController, CheckoutProviderType {
+class AddressFormViewController: UIViewController {
 
-    internal let scrollView: KeyboardScrollView = {
+    let scrollView: KeyboardScrollView = {
         let scrollView = KeyboardScrollView()
         scrollView.keyboardDismissMode = .Interactive
         return scrollView
     }()
 
-    internal lazy var addressStackView: AddressFormStackView = {
+    lazy var addressStackView: AddressFormStackView = {
         let stackView = AddressFormStackView()
         stackView.addressType = self.addressType
         stackView.axis = .Vertical
@@ -26,16 +26,14 @@ class AddressFormViewController: UIViewController, CheckoutProviderType {
 
     private let addressType: AddressFormType
     private let addressMode: AddressFormMode
-    internal let checkout: AtlasCheckout
     private let addressViewModel: AddressFormViewModel
-    internal var completion: AddressFormCompletion?
+    var completion: AddressFormCompletion?
 
-    init(addressType: AddressFormType, addressMode: AddressFormMode, checkout: AtlasCheckout, completion: AddressFormCompletion?) {
+    init(addressType: AddressFormType, addressMode: AddressFormMode, completion: AddressFormCompletion?) {
         self.addressType = addressType
         self.addressMode = addressMode
-        self.checkout = checkout
         self.completion = completion
-        let countryCode = checkout.client.config.salesChannel.countryCode
+        let countryCode = AtlasAPIClient.countryCode
 
         switch addressMode {
         case .createAddress(let addressViewModel): self.addressViewModel = addressViewModel
@@ -93,11 +91,11 @@ extension AddressFormViewController {
         dismissView()
     }
 
-    private func dismissView() {
+    private func dismissView(completion: (() -> Void)? = nil) {
         view.endEditing(true)
 
         switch addressMode {
-        case .createAddress: dismissViewControllerAnimated(true, completion: nil)
+        case .createAddress: dismissViewControllerAnimated(true, completion: completion)
         case .updateAddress: navigationController?.popViewControllerAnimated(true)
         }
     }
@@ -132,35 +130,26 @@ extension AddressFormViewController {
 
     private func checkAddressRequest() {
         guard let request = CheckAddressRequest(addressFormViewModel: addressViewModel) else { return enableSaveButton() }
-        UserMessage.displayLoader { [weak self] hideLoader in
-            self?.checkout.client.checkAddress(request) { [weak self] result in
-                hideLoader()
-                self?.checkAddressRequestCompletion(result)
-            }
+        AtlasUIClient.checkAddress(request) { [weak self] result in
+            self?.checkAddressRequestCompletion(result)
         }
     }
 
     private func createAddressRequest() {
         guard let request = CreateAddressRequest(addressFormViewModel: addressViewModel) else { return enableSaveButton() }
-        UserMessage.displayLoader { [weak self] hideLoader in
-            self?.checkout.client.createAddress(request) { [weak self] result in
-                hideLoader()
-                self?.createUpdateAddressRequestCompletion(result)
-            }
+        AtlasUIClient.createAddress(request) { [weak self] result in
+            self?.createUpdateAddressRequestCompletion(result)
         }
     }
 
     private func updateAddressRequest(originalAddress: EquatableAddress) {
         guard let request = UpdateAddressRequest(addressFormViewModel: addressViewModel) else { return enableSaveButton() }
-        UserMessage.displayLoader { [weak self] hideLoader in
-            self?.checkout.client.updateAddress(originalAddress.id, request: request) { [weak self] result in
-                hideLoader()
-                self?.createUpdateAddressRequestCompletion(result)
-            }
+        AtlasUIClient.updateAddress(originalAddress.id, request: request) { [weak self] result in
+            self?.createUpdateAddressRequestCompletion(result)
         }
     }
 
-    private func checkAddressRequestCompletion(result: AtlasResult<CheckAddressResponse>) {
+    private func checkAddressRequestCompletion(result: AtlasAPIResult<CheckAddressResponse>) {
         guard let checkAddressResponse = result.process() else { return enableSaveButton() }
         if checkAddressResponse.status == .notCorrect {
             UserMessage.displayError(AtlasCheckoutError.addressInvalid)
@@ -173,10 +162,11 @@ extension AddressFormViewController {
         }
     }
 
-    private func createUpdateAddressRequestCompletion(result: AtlasResult<UserAddress>) {
+    private func createUpdateAddressRequestCompletion(result: AtlasAPIResult<UserAddress>) {
         guard let address = result.process() else { return enableSaveButton() }
-        dismissView()
-        completion?(address)
+        dismissView { [weak self] in
+            self?.completion?(address)
+        }
     }
 
 }

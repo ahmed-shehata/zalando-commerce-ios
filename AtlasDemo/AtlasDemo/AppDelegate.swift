@@ -19,12 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         if !AppSetup.isConfigured {
-            AppSetup.configure { result in
-                guard let catalogViewController = CatalogViewController.instance else { return }
-                switch result {
-                case .success: catalogViewController.loadHomepageArticles()
-                case .failure(let error): catalogViewController.displayError(error)
+            AppSetup.configure { configured in
+                guard configured else {
+                    print("App Configuration failed")
+                    return
                 }
+                CatalogViewController.instance?.loadHomepageArticles()
             }
         } else if let catalogViewController = CatalogViewController.instance where catalogViewController.articles.isEmpty {
             catalogViewController.loadHomepageArticles()

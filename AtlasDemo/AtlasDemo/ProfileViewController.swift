@@ -53,7 +53,7 @@ class ProfileViewController: UIViewController {
 
     private func updateLanguageSelectedIndex() {
         let availableLanguages: [String?] = [AppSetup.InterfaceLanguage.English.rawValue, AppSetup.InterfaceLanguage.Deutsch.rawValue]
-        self.languageSwitcher.selectedSegmentIndex = availableLanguages.indexOf { $0 == AppSetup.interfaceLanguage } ?? 0
+        self.languageSwitcher.selectedSegmentIndex = availableLanguages.indexOf { $0 == AppSetup.options?.interfaceLanguage } ?? 0
     }
 
     private func updateEnvironmentSelectedIndex() {
@@ -62,15 +62,9 @@ class ProfileViewController: UIViewController {
     }
 
     private func loadCustomerData() {
-        AppSetup.checkout?.client.customer { result in
-            switch result {
-            case .failure(let error):
-                guard (error as? AtlasUserError) != AtlasUserError.userCancelled else {
-                    return
-                }
-
-                self.displayError(error)
-
+        AppSetup.atlasClient?.customer { result in
+            let processedResult = result.processedResult()
+            switch processedResult {
             case .success(let customer):
                 self.avatar.image = UIImage(named: "user")
                 self.avatar.layer.cornerRadius = self.avatar.frame.size.width / 2
@@ -79,6 +73,12 @@ class ProfileViewController: UIViewController {
                 self.email.text = customer.email
                 self.customerNumer.text = customer.customerNumber
                 self.gender.text = customer.gender.rawValue
+
+            case .error(_, let title, let message):
+                UIAlertController.showMessage(title: title, message: message)
+
+            case .handledInternally:
+                break
             }
         }
     }

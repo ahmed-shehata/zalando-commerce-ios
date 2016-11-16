@@ -11,23 +11,22 @@ typealias AddressSelectedHandler = (address: EquatableAddress) -> Void
 
 final class AddressPickerViewController: UIViewController {
 
-    internal var addressUpdatedHandler: AddressUpdatedHandler?
-    internal var addressDeletedHandler: AddressDeletedHandler?
-    internal var addressSelectedHandler: AddressSelectedHandler?
-    internal var addressCreationStrategy: AddressCreationStrategy?
+    var addressUpdatedHandler: AddressUpdatedHandler?
+    var addressDeletedHandler: AddressDeletedHandler?
+    var addressSelectedHandler: AddressSelectedHandler?
+    var addressCreationStrategy: AddressCreationStrategy?
 
-    internal lazy var tableviewDelegate: AddressListTableViewDelegate = {
+    lazy var tableviewDelegate: AddressListTableViewDelegate = {
         return AddressListTableViewDelegate(tableView: self.tableView,
                                             addresses: self.initialAddresses,
                                             selectedAddress: self.initialSelectedAddress,
                                             actionsHandler: self.actionsHandler)
     }()
 
-    private let checkout: AtlasCheckout
     private let initialAddresses: [EquatableAddress]
     private let initialSelectedAddress: EquatableAddress?
     private lazy var actionsHandler: AddressActionsHandler = {
-        return AddressActionsHandler(checkout: self.checkout, viewController: self)
+        return AddressActionsHandler(viewController: self)
     }()
 
     private let tableView: UITableView = {
@@ -40,10 +39,9 @@ final class AddressPickerViewController: UIViewController {
         return tableView
     }()
 
-    init(checkout: AtlasCheckout, initialAddresses: [EquatableAddress], initialSelectedAddress: EquatableAddress?) {
-        self.checkout = checkout
+    init(initialAddresses: [EquatableAddress], selectedAddress: EquatableAddress?) {
         self.initialAddresses = initialAddresses
-        self.initialSelectedAddress = initialSelectedAddress
+        self.initialSelectedAddress = selectedAddress
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -82,7 +80,7 @@ extension AddressPickerViewController: UIBuilder {
         tableView.fillInSuperView()
     }
 
-    internal func configureEditButton() {
+    func configureEditButton() {
         if tableviewDelegate.addresses.isEmpty {
             setEditing(false, animated: false)
             navigationItem.rightBarButtonItem = nil

@@ -9,19 +9,17 @@ class BillingAddressCreationStrategy: AddressCreationStrategy {
     var addressFormCompletion: AddressFormCompletion?
     var availableFormCreationStrategies = [AddressFormCreationStrategy]()
 
-    func execute(checkout: AtlasCheckout) {
-        let countryCode = checkout.client.config.salesChannel.countryCode
-
-        let standardStrategy = StandardAddressFormCreationStrategy(countryCode: countryCode) { [weak self] viewModel in
-            self?.showAddressForm(.standardAddress, addressViewModel: viewModel, checkout: checkout)
+    func execute() {
+        let standardStrategy = StandardAddressFormCreationStrategy { [weak self] viewModel in
+            self?.showAddressForm(.standardAddress, addressViewModel: viewModel)
         }
 
-        let addressBookStrategy = AddressBookImportCreationStrategy(countryCode: countryCode) { [weak self] viewModel in
-            self?.showAddressForm(.standardAddress, addressViewModel: viewModel, checkout: checkout)
+        let addressBookStrategy = AddressBookImportCreationStrategy { [weak self] viewModel in
+            self?.showAddressForm(.standardAddress, addressViewModel: viewModel)
         }
 
         availableFormCreationStrategies = [standardStrategy, addressBookStrategy]
-        showActionSheet(availableFormCreationStrategies, checkout: checkout)
+        showActionSheet(strategies: availableFormCreationStrategies)
     }
 
 }

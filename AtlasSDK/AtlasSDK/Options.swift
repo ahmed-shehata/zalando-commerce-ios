@@ -17,16 +17,11 @@ public struct Options {
         useSandbox: Bool? = nil,
         interfaceLanguage: String? = nil,
         configurationURL: NSURL? = nil,
-        authorizationHandler: AuthorizationHandler? = nil,
         infoBundle bundle: NSBundle = NSBundle.mainBundle()) {
             self.clientId = clientId ?? bundle.string(.clientId) ?? ""
             self.salesChannel = salesChannel ?? bundle.string(.salesChannel) ?? ""
             self.useSandboxEnvironment = useSandbox ?? bundle.bool(.useSandbox) ?? false
             self.interfaceLanguage = interfaceLanguage ?? bundle.string(.interfaceLanguage)
-
-            if let authorizationHandler = authorizationHandler {
-                Atlas.register { authorizationHandler as AuthorizationHandler }
-            }
 
             if let url = configurationURL {
                 self.configurationURL = url

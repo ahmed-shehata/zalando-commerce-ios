@@ -6,7 +6,7 @@ import UIKit
 
 class CheckoutSummaryDeliveryStackView: UIStackView {
 
-    internal let deliveryTitleLabel: UILabel = {
+    let deliveryTitleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFontOfSize(10, weight: UIFontWeightLight)
         label.textColor = .blackColor()
@@ -14,7 +14,7 @@ class CheckoutSummaryDeliveryStackView: UIStackView {
         return label
     }()
 
-    internal let deliveryValueLabel: UILabel = {
+    let deliveryValueLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFontOfSize(10, weight: UIFontWeightLight)
         label.textColor = UIColor(hex: 0x7F7F7F)
@@ -39,10 +39,10 @@ extension CheckoutSummaryDeliveryStackView: UIBuilder {
 
 extension CheckoutSummaryDeliveryStackView: UIDataBuilder {
 
-    typealias T = CheckoutViewModel
+    typealias T = CheckoutSummaryDataModel
 
     func configureData(viewModel: T) {
-        guard let delivery = viewModel.checkout?.delivery else {
+        guard let delivery = viewModel.delivery else {
             deliveryTitleLabel.text = ""
             deliveryValueLabel.text = ""
             return

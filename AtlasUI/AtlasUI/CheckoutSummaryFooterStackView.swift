@@ -9,7 +9,7 @@ class CheckoutSummaryFooterStackView: UIStackView {
 
     private var legalController: LegalController?
 
-    internal let footerButton: UIButton = {
+    let footerButton: UIButton = {
         let button = UIButton(type: .System)
         button.titleLabel?.font = .systemFontOfSize(12, weight: UIFontWeightLight)
         button.titleLabel?.adjustsFontSizeToFitWidth = true
@@ -19,7 +19,7 @@ class CheckoutSummaryFooterStackView: UIStackView {
         return button
     }()
 
-    internal let submitButton: RoundedButton = {
+    let submitButton: RoundedButton = {
         let button = RoundedButton(type: .Custom)
         button.cornerRadius = 5
         button.titleLabel?.font = .systemFontOfSize(15)
@@ -46,18 +46,21 @@ extension CheckoutSummaryFooterStackView: UIBuilder {
 
 extension CheckoutSummaryFooterStackView: UIDataBuilder {
 
-    typealias T = CheckoutSummaryViewController
+    typealias T = CheckoutSummaryViewModel
 
     func configureData(viewModel: T) {
-        legalController = LegalController(tocURL: viewModel.checkout.client.config.salesChannel.termsAndConditionsURL)
+        if let termsAndConditionsURL = viewModel.dataModel.termsAndConditionsURL {
+            legalController = LegalController(tocURL: termsAndConditionsURL)
+        }
 
         footerButton.setAttributedTitle(tocAttributedTitle(), forState: .Normal)
-        footerButton.hidden = !viewModel.viewState.showFooterLabel
+        footerButton.hidden = !viewModel.layout.showFooterLabel
 
-        let isPaypal = viewModel.checkoutViewModel.checkout?.payment.selected?.isPaypal() ?? false
+        let isPaypal = viewModel.dataModel.isPayPal
+        let readyToCheckout = viewModel.dataModel.isPaymentSelected
 
-        submitButton.setTitle(Localizer.string(viewModel.viewState.submitButtonTitle(isPaypal)), forState: .Normal)
-        submitButton.backgroundColor = viewModel.viewState.submitButtonBackgroundColor
+        submitButton.setTitle(Localizer.string(viewModel.layout.submitButtonTitle(isPaypal: isPaypal)), forState: .Normal)
+        submitButton.backgroundColor = viewModel.layout.submitButtonBackgroundColor(readyToCheckout: readyToCheckout)
         submitButton.accessibilityIdentifier = "checkout-footer-button"
     }
 

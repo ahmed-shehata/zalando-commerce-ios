@@ -7,7 +7,7 @@ import AtlasSDK
 
 class AddressListTableViewDelegate: NSObject {
 
-    internal var addresses: [EquatableAddress] {
+    var addresses: [EquatableAddress] {
         didSet {
             if let selectedAddress = selectedAddress where !addresses.contains({ $0 == selectedAddress }) {
                 self.selectedAddress = nil

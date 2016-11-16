@@ -80,7 +80,7 @@ struct UserMessage {
         }
     }
 
-    internal static func displayLoader(block: (() -> Void) -> Void) {
+    static func displayLoader(block: (() -> Void) -> Void) {
         AtlasUIViewController.instance?.showLoader()
         block {
             AtlasUIViewController.instance?.hideLoader()
@@ -92,7 +92,7 @@ struct UserMessage {
 extension UserMessage {
 
     private static var errorPresenterViewController: UIViewController? {
-        let viewController: AtlasUIViewController? = try? Atlas.provide()
+        let viewController: AtlasUIViewController? = try? AtlasUI.provide()
         guard let atlasUIViewController = viewController else { return nil }
         return atlasUIViewController.presentedViewController ?? atlasUIViewController
     }

@@ -29,12 +29,6 @@ class OptionsTests: XCTestCase {
         expect(opts.useSandboxEnvironment).to(equal(useSandbox))
     }
 
-    func testRegisterAuthorizationHandler() {
-        let _ = Options(authorizationHandler: MockAuthorizationHandler())
-        let authorizationHandler = try? Atlas.provide() as AuthorizationHandler
-        expect(authorizationHandler).toNot(beNil())
-    }
-
     func testNoDefaultLanguage() {
         let opts = Options(infoBundle: emptyBundle)
         expect(opts.interfaceLanguage).to(beNil())

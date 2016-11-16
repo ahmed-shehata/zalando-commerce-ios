@@ -5,26 +5,26 @@
 import Foundation
 import AtlasSDK
 
-struct OAuth2AuthorizationHandler: AuthorizationHandler {
+typealias AuthorizationToken = String
+typealias AuthorizationCompletion = AtlasResult<AuthorizationToken> -> Void
 
-    private let loginURL: NSURL
+struct OAuth2AuthorizationHandler {
 
-    init(loginURL: NSURL) {
-        self.loginURL = loginURL
+    init() {
+
     }
 
     func authorize(completion: AuthorizationCompletion) {
+        guard let loginURL = AtlasAPIClient.instance?.config.loginURL else { return }
         guard let topViewController = UIApplication.topViewController() else {
             return completion(.failure(AtlasLoginError.missingViewControllerToShowLoginForm))
         }
 
-        let loginViewController = OAuth2LoginViewController(loginURL: self.loginURL, completion: completion)
+        let loginViewController = OAuth2LoginViewController(loginURL: loginURL, completion: completion)
         let navigationController = UINavigationController(rootViewController: loginViewController)
 
-        Async.main {
-            navigationController.modalPresentationStyle = .OverCurrentContext
-            topViewController.presentViewController(navigationController, animated: true, completion: nil)
-        }
+        navigationController.modalPresentationStyle = .OverCurrentContext
+        topViewController.presentViewController(navigationController, animated: true, completion: nil)
     }
 
 }

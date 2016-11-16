@@ -6,8 +6,8 @@ import UIKit
 
 class AddressFormStackView: UIStackView {
 
-    internal var addressType: AddressFormType!
-    internal var textFields: [TextFieldInputStackView] = []
+    var addressType: AddressFormType!
+    var textFields: [TextFieldInputStackView] = []
 
 }
 

@@ -11,7 +11,7 @@ struct CheckoutSummaryAddressViewModel {
 
 class CheckoutSummaryAddressStackView: UIStackView, RowStackView {
 
-    internal let titleLabel: UILabel = {
+    let titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.font = .systemFontOfSize(16)
@@ -19,14 +19,14 @@ class CheckoutSummaryAddressStackView: UIStackView, RowStackView {
         return label
     }()
 
-    internal let linesStackView: UIStackView = {
+    let linesStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .Vertical
         stackView.spacing = 2
         return stackView
     }()
 
-    internal let firstLineValueLabel: UILabel = {
+    let firstLineValueLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
         label.lineBreakMode = .ByTruncatingTail
@@ -35,7 +35,7 @@ class CheckoutSummaryAddressStackView: UIStackView, RowStackView {
         return label
     }()
 
-    internal let secondLineValueLabel: UILabel = {
+    let secondLineValueLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
         label.lineBreakMode = .ByTruncatingTail
@@ -44,7 +44,7 @@ class CheckoutSummaryAddressStackView: UIStackView, RowStackView {
         return label
     }()
 
-    internal let arrowImageView: UIImageView = {
+    let arrowImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "tableArrow", bundledWith: CheckoutSummaryAddressStackView.self))
         imageView.contentMode = .Center
         return imageView

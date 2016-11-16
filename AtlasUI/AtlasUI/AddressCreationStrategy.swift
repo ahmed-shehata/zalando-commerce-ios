@@ -9,13 +9,13 @@ protocol AddressCreationStrategy {
 
     var addressFormCompletion: AddressFormCompletion? { get set }
 
-    func execute(checkout: AtlasCheckout)
+    func execute()
 
 }
 
 extension AddressCreationStrategy {
 
-    func showActionSheet(strategies: [AddressFormCreationStrategy], checkout: AtlasCheckout) {
+    func showActionSheet(strategies strategies: [AddressFormCreationStrategy]) {
         let title = Localizer.string("addressListView.add.type.title")
 
         var buttonActions = strategies.map { strategy in
@@ -30,10 +30,9 @@ extension AddressCreationStrategy {
         UserMessage.showActionSheet(title: title, actions: buttonActions)
     }
 
-    func showAddressForm(addressType: AddressFormType, addressViewModel: AddressFormViewModel, checkout: AtlasCheckout) {
+    func showAddressForm(addressType: AddressFormType, addressViewModel: AddressFormViewModel) {
         let viewController = AddressFormViewController(addressType: addressType,
                                                        addressMode: .createAddress(addressViewModel: addressViewModel),
-                                                       checkout: checkout,
                                                        completion: addressFormCompletion)
 
         let navigationController = UINavigationController(rootViewController: viewController)

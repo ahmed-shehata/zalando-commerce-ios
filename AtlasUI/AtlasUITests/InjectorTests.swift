@@ -6,7 +6,7 @@ import XCTest
 import Foundation
 import Nimble
 
-@testable import AtlasSDK
+@testable import AtlasUI
 
 private protocol NumberType {
     var value: Int { get }

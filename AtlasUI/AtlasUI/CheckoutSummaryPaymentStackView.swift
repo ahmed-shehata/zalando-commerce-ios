@@ -13,7 +13,7 @@ struct CheckoutSummaryPaymentViewModel {
 
 class CheckoutSummaryPaymentStackView: UIStackView, RowStackView {
 
-    internal let titleLabel: UILabel = {
+    let titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.font = .systemFontOfSize(16)
@@ -21,7 +21,7 @@ class CheckoutSummaryPaymentStackView: UIStackView, RowStackView {
         return label
     }()
 
-    internal let valueLabel: UILabel = {
+    let valueLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
         label.lineBreakMode = .ByTruncatingTail
@@ -30,7 +30,7 @@ class CheckoutSummaryPaymentStackView: UIStackView, RowStackView {
         return label
     }()
 
-    internal let arrowImageView: UIImageView = {
+    let arrowImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "tableArrow", bundledWith: CheckoutSummaryPaymentStackView.self))
         imageView.contentMode = .Center
         return imageView

@@ -9,10 +9,10 @@ typealias AddressFormCreationStrategyCompletion = (AddressFormViewModel) -> Void
 protocol AddressFormCreationStrategy {
 
     var localizedTitleKey: String { get }
-    var completion: AddressFormCreationStrategyCompletion { get }
 
-    init(countryCode: String, completion: AddressFormCreationStrategyCompletion)
+    init(completion: AddressFormCreationStrategyCompletion)
     func execute()
+
 }
 
 extension AddressFormCreationStrategy {

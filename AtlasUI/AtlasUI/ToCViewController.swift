@@ -29,7 +29,7 @@ final class ToCViewController: UIViewController, UIWebViewDelegate {
         view.backgroundColor = .whiteColor()
         view.addSubview(webView)
 
-        self.title = Localizer.string("ToCViewController.title")
+        self.title = Localizer.string("termsAndConditionsView.title")
 
         webView.fillInSuperView()
     }

@@ -9,7 +9,7 @@ import AtlasMockAPI
 
 @testable import AtlasSDK
 
-class APIClientBaseTests: XCTestCase {
+class AtlasAPIClientBaseTests: XCTestCase {
 
     let cartId = "CART_ID"
     let checkoutId = "CHECKOUT_ID"
@@ -29,11 +29,10 @@ class APIClientBaseTests: XCTestCase {
             salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
             useSandbox: true,
             interfaceLanguage: "de",
-            configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"),
-            authorizationHandler: MockAuthorizationHandler())
+            configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
     }
 
-    func waitUntilAPIClientIsConfigured(actions: (done: () -> Void, client: APIClient) -> Void) {
+    func waitUntilAtlasAPIClientIsConfigured(actions: (done: () -> Void, client: AtlasAPIClient) -> Void) {
         waitUntil(timeout: 10) { done in
             Atlas.configure(self.clientOptions) { result in
                 switch result {
@@ -51,11 +50,11 @@ class APIClientBaseTests: XCTestCase {
         return try! NSJSONSerialization.dataWithJSONObject(object, options: [])
     }
 
-    func mockedAPIClient(forURL url: NSURL,
+    func mockedAtlasAPIClient(forURL url: NSURL,
                                 options: Options? = nil,
                                 data: NSData?,
                                 status: HTTPStatus,
-                                errorCode: Int? = nil) -> APIClient {
+                                errorCode: Int? = nil) -> AtlasAPIClient {
 
         let apiURL = AtlasMockAPI.endpointURL(forPath: "/")
         let loginURL = AtlasMockAPI.endpointURL(forPath: "/oauth2/authorize")
@@ -83,7 +82,7 @@ class APIClientBaseTests: XCTestCase {
         )
 
         let config = Config(json: json, options: options ?? clientOptions)!
-        var client = APIClient(config: config)
+        var client = AtlasAPIClient(config: config)
 
         var error: NSError? = nil
         if let errorCode = errorCode {

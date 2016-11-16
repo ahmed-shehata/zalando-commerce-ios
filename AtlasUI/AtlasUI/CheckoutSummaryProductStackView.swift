@@ -3,16 +3,17 @@
 //
 
 import UIKit
+import AtlasSDK
 
 class CheckoutSummaryProductStackView: UIStackView {
 
-    internal let articleImageView: UIImageView = {
+    let articleImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .ScaleAspectFit
         return imageView
     }()
 
-    internal let detailsStackView: UIStackView = {
+    let detailsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .Vertical
         stackView.spacing = 2
@@ -20,28 +21,28 @@ class CheckoutSummaryProductStackView: UIStackView {
         return stackView
     }()
 
-    internal let brandNameLabel: UILabel = {
+    let brandNameLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFontOfSize(16, weight: UIFontWeightBold)
         label.textColor = .blackColor()
         return label
     }()
 
-    internal let articleNameLabel: UILabel = {
+    let articleNameLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFontOfSize(14, weight: UIFontWeightLight)
         label.textColor = .blackColor()
         return label
     }()
 
-    internal let unitSizeLabel: UILabel = {
+    let unitSizeLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFontOfSize(14, weight: UIFontWeightLight)
         label.textColor = .lightGrayColor()
         return label
     }()
 
-    internal let unitColorLabel: UILabel = {
+    let unitColorLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFontOfSize(14, weight: UIFontWeightLight)
         label.textColor = .lightGrayColor()
@@ -71,14 +72,14 @@ extension CheckoutSummaryProductStackView: UIBuilder {
 
 extension CheckoutSummaryProductStackView: UIDataBuilder {
 
-    typealias T = CheckoutViewModel
+    typealias T = SelectedArticleUnit
 
     func configureData(viewModel: T) {
-        articleImageView.setImage(fromUrl: viewModel.selectedArticleUnit.article.thumbnailURL)
-        brandNameLabel.text = viewModel.selectedArticleUnit.article.brand.name
-        articleNameLabel.text = viewModel.selectedArticleUnit.article.name
-        unitSizeLabel.text = Localizer.string("summaryView.label.unitSize", viewModel.selectedArticleUnit.unit.size)
-        unitColorLabel.text = viewModel.selectedArticleUnit.article.color
+        articleImageView.setImage(fromUrl: viewModel.article.thumbnailURL)
+        brandNameLabel.text = viewModel.article.brand.name
+        articleNameLabel.text = viewModel.article.name
+        unitSizeLabel.text = Localizer.string("summaryView.label.unitSize", viewModel.unit.size)
+        unitColorLabel.text = viewModel.article.color
     }
 
 }

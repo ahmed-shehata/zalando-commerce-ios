@@ -4,7 +4,7 @@
 
 import Foundation
 
-internal extension UIScreen {
+extension UIScreen {
 
     static var isSmallScreen: Bool {
         return mainScreen().bounds.height < 600

@@ -40,7 +40,6 @@
 		8F1EB3AA8D794C560B3FDEE6F4988CA3 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA73BDC161923CD166B30F1051CBC88 /* MediaPlayer.framework */; };
 		946005C07CBE3751A66304711A6898AA /* XCUIElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94862D8C44368F2CED777738686848A0 /* XCUIElement.swift */; };
 		947B280B61FF3AA8375301D218108C4E /* Nuke.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F9BDB072FD0595FBC1302107487559C /* Nuke.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9AD52B8EF1F22034353693A4843F318F /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF26C5FD9B2B80575150B96ED6DCAC4 /* UIViewController.swift */; };
 		A12BA69E9882091D0E7458127925A441 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D47F523CFD3049B145328DBAAD3BF6 /* ProfileViewController.swift */; };
 		A498FD6DDC484AC12046664C9E0BFB72 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 35CA68DACB839A1478B037F75B4718A9 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A6004F8D3EAD48FB4D199E71519FA3CE /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35CA68DACB839A1478B037F75B4718A9 /* SwiftyJSON.framework */; };
@@ -52,6 +51,8 @@
 		CE9B127E5489C61FF98589AAF040871F /* AtlasMockAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 400508DFC64A49E6ECB6AC89CF040BEE /* AtlasMockAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CFAD7A2119559691BF01E0E84EFD479A /* SwiftHTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD3778CF4B0F93EE5191DF4F8D3C518 /* SwiftHTTP.framework */; };
 		D5A7D77C559D41E4D656CEC2D2E53186 /* AtlasSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9C17735AA3650A838A0716B1CA9222AF /* AtlasSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E96084871DDC969500624B9D /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96084861DDC969500624B9D /* UIAlertController.swift */; };
+		EAF6B18A76607DD0AC887AEF1371D19A /* SizeMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2531BE0ABE61D11C79EB23BABD7E11 /* SizeMap.swift */; };
 		EE7374754508E203252E55A91A2A8167 /* Nuke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F9BDB072FD0595FBC1302107487559C /* Nuke.framework */; };
 /* End PBXBuildFile section */
 
@@ -89,7 +90,6 @@
 		0000FBCF7CFA54DDC8399E4BABD42A15 /* AtlasDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtlasDemoUITests.swift; sourceTree = "<group>"; };
 		103765BAF91B718D0DCF2CEF31C1707D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		109BAEFBC7956B5B01FB907BBBF2FC87 /* AtlasDemo.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AtlasDemo.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1CF26C5FD9B2B80575150B96ED6DCAC4 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		1D15645E9195207A25A4D56198499AE7 /* Swifter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swifter.framework; path = ../Carthage/Build/iOS/Swifter.framework; sourceTree = "<group>"; };
 		1E9AC22E8436A9E4B159173A8D00CE86 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		233A9E231C34B3B78C3C44C35B66995F /* AtlasDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AtlasDemo.entitlements; sourceTree = "<group>"; };
@@ -127,6 +127,7 @@
 		DE6D68AFDCE06CE5A1A54A8B3C37EA3A /* Bridging-Header.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		E4F833A4CE21235444066F2613EFB09A /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		E68BC11A4A9FD71255E1A93A12587B3D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		E96084861DDC969500624B9D /* UIAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		F71AFAF33E121C103808CE6C2F4B14B6 /* ArticlesClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticlesClient.swift; sourceTree = "<group>"; };
 		F726829F5154A9F85A931EAFC8D9E730 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F89FA499DC08F5C540C7FE44552F23A6 /* DemoCatalog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoCatalog.swift; sourceTree = "<group>"; };
@@ -265,7 +266,7 @@
 		8B62911B0415B9AE8A814155D7BC4E41 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				1CF26C5FD9B2B80575150B96ED6DCAC4 /* UIViewController.swift */,
+				E96084861DDC969500624B9D /* UIAlertController.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -444,6 +445,7 @@
 				3EBB13C2ED4814BEE7F3E3D70940487E /* AppDelegate.swift in Sources */,
 				8838F6A5652FC042A161FBC6A6961594 /* AppSetup.swift in Sources */,
 				80EAF118A2EFF34CF406B0059F8B61E6 /* ArticlesClient.swift in Sources */,
+				E96084871DDC969500624B9D /* UIAlertController.swift in Sources */,
 				1862B91B111AAE37D4D8484B29B5AE6D /* CatalogViewController.swift in Sources */,
 				37390AB837A99ABB76439EB6FFF435DC /* DemoArticle.swift in Sources */,
 				A780FF331E667E4F680D3C330ED07DB8 /* DemoCatalog.swift in Sources */,

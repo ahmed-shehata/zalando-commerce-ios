@@ -21,7 +21,7 @@ struct Localizer {
 
     init(localeIdentifier: String) throws {
         try self.init(localeIdentifier: localeIdentifier,
-            localizedStringsBundle: NSBundle(forClass: AtlasCheckout.self))
+            localizedStringsBundle: NSBundle(forClass: AtlasUI.self))
     }
 
     init(localeIdentifier: String, localizedStringsBundle: NSBundle) throws {
@@ -67,7 +67,7 @@ extension Localizer {
 
     private static var instance: Localizer {
         do {
-            return try Atlas.provide() as Localizer
+            return try AtlasUI.provide() as Localizer
         } catch {
             return try! Localizer(localeIdentifier: NSLocale.currentLocale().localeIdentifier) // swiftlint:disable:this force_try
         }

@@ -6,7 +6,7 @@ import UIKit
 
 class AddAddressTableViewCell: UITableViewCell {
 
-    internal let stackView: UIStackView = {
+    let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .Horizontal
         stackView.spacing = 2
@@ -15,7 +15,7 @@ class AddAddressTableViewCell: UITableViewCell {
         return stackView
     }()
 
-    internal let addAddressLabel: UILabel = {
+    let addAddressLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.font = .systemFontOfSize(14, weight: UIFontWeightLight)
@@ -24,7 +24,7 @@ class AddAddressTableViewCell: UITableViewCell {
         return label
     }()
 
-    internal let addAddressButton: UIButton = {
+    let addAddressButton: UIButton = {
         let button = UIButton(type: .ContactAdd)
         button.userInteractionEnabled = false
         return button

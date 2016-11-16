@@ -7,7 +7,7 @@ import AtlasSDK
 
 class UnitSizeTableViewCell: UITableViewCell {
 
-    internal let stackView: UIStackView = {
+    let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .Horizontal
         stackView.spacing = 2
@@ -16,7 +16,7 @@ class UnitSizeTableViewCell: UITableViewCell {
         return stackView
     }()
 
-    internal let sizeLabel: UILabel = {
+    let sizeLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.font = .systemFontOfSize(14, weight: UIFontWeightLight)
@@ -24,7 +24,7 @@ class UnitSizeTableViewCell: UITableViewCell {
         return label
     }()
 
-    internal let priceLabel: UILabel = {
+    let priceLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .Right

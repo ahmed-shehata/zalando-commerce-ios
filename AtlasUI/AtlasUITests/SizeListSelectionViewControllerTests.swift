@@ -55,7 +55,7 @@ class SizeListSelectionViewControllerTests: XCTestCase {
         expect(viewController?.tableViewDataSource).toEventuallyNot(beNil())
         expect(viewController?.tableViewDataSource?.article.units.count).to(equal(1))
         expect(viewController?.tableViewDataSource?.article.availableUnits.count).to(equal(1))
-        expect(viewController?.tableViewDataSource?.article.hasSingleUnit).to(equal(true))
+        expect(viewController?.tableViewDataSource?.article.hasSingleUnit).to(beTrue())
         expect(sizeSelectionNavigationController?.topViewController).toEventuallyNot(equal(viewController))
     }
 
@@ -71,39 +71,32 @@ class SizeListSelectionViewControllerTests: XCTestCase {
         }
 
         let viewController = sizeSelectionNavigationController?.topViewController as? SizeListSelectionViewController
-        expect(UserMessage.errorDisplayed).toEventually(equal(true))
+        expect(UserMessage.errorDisplayed).toEventually(beTrue())
         expect(sizeSelectionNavigationController?.topViewController).to(equal(viewController))
     }
+
 }
 
 extension SizeListSelectionViewControllerTests {
 
     private func navigationController(sku: String, completion: (UINavigationController -> Void)) {
-        self.atlasCheckout { atlasCheckout in
-
-            let viewController = SizeListSelectionViewController(checkout: atlasCheckout, sku: sku)
+        registerAtlasUIViewController(sku) {
+            let viewController = SizeListSelectionViewController(sku: sku)
             let navigationController = UINavigationController(rootViewController: viewController)
-            self.registerAtlasUIViewController(atlasCheckout, sku: sku)
             completion(navigationController)
         }
     }
 
-    private func registerAtlasUIViewController(checkout: AtlasCheckout, sku: String) {
-        let atlasUIViewController = AtlasUIViewController(atlasCheckout: checkout, forProductSKU: sku)
-        Atlas.register { atlasUIViewController }
-    }
-
-    private func atlasCheckout(completion: (AtlasCheckout -> Void)) {
+    private func registerAtlasUIViewController(sku: String, completion: () -> Void) {
         let options = Options(clientId: "CLIENT_ID",
                               salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
                               interfaceLanguage: "en",
                               configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
 
-        AtlasCheckout.configure(options) { result in
-            guard let checkout = result.process() else { return XCTFail() }
-            Async.main {
-                completion(checkout)
-            }
+        AtlasUI.configure(options) { _ in
+            let atlasUIViewController = AtlasUIViewController(forProductSKU: sku)
+            AtlasUI.register { atlasUIViewController }
+            completion()
         }
     }
 
