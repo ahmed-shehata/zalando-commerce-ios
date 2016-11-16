@@ -20,7 +20,7 @@ class AtlasAPIClientErrorsTests: AtlasAPIClientBaseTests {
         waitUntil(timeout: 10) { done in
             client.customer { result in
                 defer { done() }
-                guard case let .failure(error) = result else {
+                guard case let .failure(error, _) = result else {
                     return fail("Should emit \(AtlasAPIError.noData)")
                 }
 
@@ -49,12 +49,12 @@ class AtlasAPIClientErrorsTests: AtlasAPIClientBaseTests {
             client.customer { result in
                 defer { done() }
                 switch result {
-                case .abortion(let error, _):
+                case .failure(let error, _):
                     switch error {
                     case AtlasAPIError.unauthorized: break
                     default: fail("\(error) should be unauthorized")
                     }
-                default: fail("\(result) should be abortion")
+                default: fail("\(result) should be failure")
                 }
             }
         }
@@ -71,7 +71,7 @@ class AtlasAPIClientErrorsTests: AtlasAPIClientBaseTests {
         waitUntil(timeout: 10) { done in
             client.customer { result in
                 defer { done() }
-                guard case let .failure(error) = result,
+                guard case let .failure(error, _) = result,
                     AtlasAPIError.backend(let errorStatus, let type, let title, let details) = error else {
                         return fail("Should emit AtlasAPIError.backend")
                 }
@@ -93,7 +93,7 @@ class AtlasAPIClientErrorsTests: AtlasAPIClientBaseTests {
         waitUntil(timeout: 10) { done in
             client.customer { result in
                 defer { done() }
-                guard case let .failure(error) = result,
+                guard case let .failure(error, _) = result,
                     AtlasAPIError.nsURLError(let code, let details) = error else {
                         return fail("Should emit AtlasAPIError.nsURLError")
                 }
@@ -112,7 +112,7 @@ class AtlasAPIClientErrorsTests: AtlasAPIClientBaseTests {
         waitUntil(timeout: 10) { done in
             client.customer { result in
                 defer { done() }
-                guard case let .failure(error) = result,
+                guard case let .failure(error, _) = result,
                     AtlasAPIError.http(let status, _) = error else {
                         return fail("Should emit AtlasAPIError.http")
                 }

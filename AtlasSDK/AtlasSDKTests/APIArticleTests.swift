@@ -17,8 +17,6 @@ class APIArticleTests: AtlasAPIClientBaseTests {
                 switch result {
                 case .failure(let error):
                     fail(String(error))
-                case .abortion(let error, _):
-                    fail(String(error))
                 case .success(let article):
                     expect(article.id).to(equal(sku))
                     expect(article.name).to(equal("ADIZERO  - Sportkleid - red"))
