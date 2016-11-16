@@ -18,9 +18,7 @@ extension AtlasAPIResult {
         switch self {
         case .success(let data):
             return .success(data)
-        case .failure(let error):
-            return processError(error)
-        case .abortion(let error, var apiRequest):
+        case .failure(let error, var apiRequest):
             switch error {
             case AtlasAPIError.unauthorized:
                 let authorizationHandler = OAuth2AuthorizationHandler()
@@ -29,7 +27,7 @@ extension AtlasAPIResult {
                     case .success(let accessToken):
                         Atlas.login(accessToken)
                         UserMessage.displayLoader { hideLoader in
-                            apiRequest.execute { _ in
+                            apiRequest?.execute { _ in
                                 hideLoader()
                             }
                         }
@@ -39,7 +37,8 @@ extension AtlasAPIResult {
                 }
                 return .handledInternally
             default:
-                return processError(error)
+                let userPresentable = error as? UserPresentable ?? AtlasCheckoutError.unclassified
+                return .error(error: error, title: userPresentable.displayedTitle, message: userPresentable.displayedMessage)
             }
         }
     }
@@ -59,11 +58,6 @@ extension AtlasAPIResult {
         case .handledInternally:
             return nil
         }
-    }
-
-    private func processError(error: ErrorType) -> ProcessedAtlasAPIResult<T> {
-        let userPresentable = error as? UserPresentable ?? AtlasCheckoutError.unclassified
-        return .error(error: error, title: userPresentable.displayedTitle, message: userPresentable.displayedMessage)
     }
 
 }

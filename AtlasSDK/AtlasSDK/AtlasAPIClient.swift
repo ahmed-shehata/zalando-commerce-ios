@@ -42,8 +42,8 @@ public struct AtlasAPIClient {
 
     private func call<T>(endpoint: Endpoint, completion: AtlasAPIResult<T> -> Void, successHandler: JSONResponse -> T?) {
         let requestBuilder = RequestBuilder(forEndpoint: endpoint, urlSession: urlSession)
-        var apiRequest = APIRequest(requestBuilder: requestBuilder, successHandler: successHandler, completion: completion)
-        apiRequest.execute()
+        var apiRequest = APIRequest(requestBuilder: requestBuilder, successHandler: successHandler)
+        apiRequest.execute(completion)
     }
 
 }

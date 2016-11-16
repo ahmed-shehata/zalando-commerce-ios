@@ -19,10 +19,7 @@ public struct Atlas {
 
         ConfigClient(options: options).configure { result in
             switch result {
-            case .failure(let error):
-                AtlasLogger.logError(error)
-                completion(.failure(error))
-            case .abortion(let error, _):
+            case .failure(let error, _):
                 AtlasLogger.logError(error)
                 completion(.failure(error))
             case .success(let config):

@@ -8,7 +8,6 @@
 public enum AtlasAPIResult<T> {
 
     case success(T)
-    case failure(ErrorType)
-    case abortion(ErrorType, APIRequest<T>)
+    case failure(ErrorType, APIRequest<T>?)
 
 }

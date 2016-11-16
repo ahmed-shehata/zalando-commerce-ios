@@ -49,8 +49,11 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
 
     func loadHomepageArticles() {
         articlesClient.fetch(articlesForSKUs: sampleSKUs) { result in
-            guard let articles = result.process() else { return }
-            self.articles = articles.sort { $0.id < $1.id }
+            let processedResult = result.processedResult()
+            switch processedResult {
+            case .success(let articles): self.articles = articles.sort { $0.id < $1.id }
+            case .error(_, let title, let message): UIAlertController.showMessage(title: title, message: message)
+            }
         }
     }
 

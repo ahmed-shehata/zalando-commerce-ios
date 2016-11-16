@@ -63,15 +63,23 @@ class ProfileViewController: UIViewController {
 
     private func loadCustomerData() {
         AppSetup.atlasClient?.customer { result in
-            guard let customer = result.process() else { return }
+            let processedResult = result.processedResult()
+            switch processedResult {
+            case .success(let customer):
+                self.avatar.image = UIImage(named: "user")
+                self.avatar.layer.cornerRadius = self.avatar.frame.size.width / 2
+                self.avatar.clipsToBounds = true
+                self.name.text = "\(customer.firstName) \(customer.lastName)"
+                self.email.text = customer.email
+                self.customerNumer.text = customer.customerNumber
+                self.gender.text = customer.gender.rawValue
 
-            self.avatar.image = UIImage(named: "user")
-            self.avatar.layer.cornerRadius = self.avatar.frame.size.width / 2
-            self.avatar.clipsToBounds = true
-            self.name.text = "\(customer.firstName) \(customer.lastName)"
-            self.email.text = customer.email
-            self.customerNumer.text = customer.customerNumber
-            self.gender.text = customer.gender.rawValue
+            case .error(_, let title, let message):
+                UIAlertController.showMessage(title: title, message: message)
+
+            case .handledInternally:
+                break
+            }
         }
     }
 

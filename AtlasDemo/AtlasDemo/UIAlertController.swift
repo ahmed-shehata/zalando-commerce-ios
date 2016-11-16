@@ -3,25 +3,10 @@
 //
 
 import Foundation
-import AtlasSDK
-import AtlasUI
 
-extension AtlasAPIResult {
+extension UIAlertController {
 
-    func process() -> T? {
-        let processedResult = self.processedResult()
-        switch processedResult {
-        case .success(let data):
-            return data
-        case .error(_, let title, let message):
-            showMessage(title: title, message: message)
-            return nil
-        case .handledInternally:
-            return nil
-        }
-    }
-
-    private func showMessage(title title: String, message: String) {
+    static func showMessage(title title: String, message: String) {
         let alertView = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         alertView.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
 

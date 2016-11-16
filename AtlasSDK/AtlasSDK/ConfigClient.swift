@@ -22,11 +22,11 @@ struct ConfigClient: Configurator {
 
     func configure(completion: AtlasConfigCompletion) {
         let requestBuilder = RequestBuilder(forEndpoint: GetConfigEndpoint(URL: options.configurationURL))
-        var apiRequest = APIRequest<Config>(requestBuilder: requestBuilder, successHandler: { response in
+        var apiRequest = APIRequest<Config>(requestBuilder: requestBuilder) { response in
             guard let json = response.body, config = Config(json: json, options: self.options) else { return nil }
             return config
-        }, completion: completion)
-        apiRequest.execute()
+        }
+        apiRequest.execute(completion)
     }
 
 }

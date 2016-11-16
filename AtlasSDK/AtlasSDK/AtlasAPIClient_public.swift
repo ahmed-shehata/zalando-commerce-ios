@@ -75,30 +75,25 @@ extension AtlasAPIClient {
 
         createCart([cartItemRequest]) { cartResult in
             switch cartResult {
-            case .failure(let error):
-                completion(.failure(error))
-
-            case .abortion(let error, _):
-                completion(.failure(error))
+            case .failure(let error, _):
+                completion(.failure(error, nil))
 
             case .success(let cart):
                 let itemExists = cart.items.contains { $0.sku == sku } && !cart.itemsOutOfStock.contains(sku)
                 guard itemExists else {
-                    completion(.failure(AtlasCheckoutError.outOfStock))
+                    completion(.failure(AtlasCheckoutError.outOfStock, nil))
                     return
                 }
 
                 self.createCheckout(cart.id, addresses: addresses) { checkoutResult in
                     switch checkoutResult {
-                    case .failure(let error):
+                    case .failure(let error, _):
                         if self.errorBecauseCheckoutFailed(error) {
                             let checkoutError = AtlasAPIError.checkoutFailed(cart: cart, error: error)
-                            completion(.failure(checkoutError))
+                            completion(.failure(checkoutError, nil))
                         } else {
-                            completion(.failure(error))
+                            completion(.failure(error, nil))
                         }
-                    case .abortion(let error, _):
-                        completion(.failure(error))
                     case .success(let checkout):
                         completion(.success((checkout: checkout, cart: cart)))
                     }
@@ -141,7 +136,7 @@ extension AtlasAPIClient {
 
         let fetchCompletion: ArticleCompletion = { result in
             if case let .success(article) = result where !article.hasAvailableUnits {
-                completion(.failure(AtlasCheckoutError.outOfStock))
+                completion(.failure(AtlasCheckoutError.outOfStock, nil))
             } else {
                 completion(result)
             }

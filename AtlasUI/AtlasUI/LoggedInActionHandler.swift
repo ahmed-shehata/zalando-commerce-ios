@@ -5,9 +5,9 @@
 import Foundation
 import AtlasSDK
 
-typealias LoggedInActionHandlerCompletion = AtlasAPIResult<LoggedInActionHandler> -> Void
+typealias LoggedInActionHandlerCompletion = AtlasResult<LoggedInActionHandler> -> Void
 typealias CartCheckout = (cart: Cart?, checkout: Checkout?)
-typealias CreateCartCheckoutCompletion = AtlasAPIResult<CartCheckout> -> Void
+typealias CreateCartCheckoutCompletion = AtlasResult<CartCheckout> -> Void
 
 class LoggedInActionHandler: CheckoutSummaryActionHandler {
 
@@ -40,8 +40,6 @@ class LoggedInActionHandler: CheckoutSummaryActionHandler {
                 actionHandler.cartCheckout = cartCheckout
                 completion(.success(actionHandler))
             case .failure(let error):
-                completion(.failure(error))
-            case .abortion(let error, _):
                 completion(.failure(error))
             }
         }
@@ -184,7 +182,7 @@ extension LoggedInActionHandler {
 
         AtlasUIClient.createCheckoutCart(selectedArticleUnit.sku, addresses: addresses) { result in
             switch result {
-            case .failure(let error):
+            case .failure(let error, _):
                 guard case let AtlasAPIError.checkoutFailed(cart, _) = error else {
                     completion(.failure(error))
                     return
@@ -194,8 +192,6 @@ extension LoggedInActionHandler {
                 if addresses?.billingAddress != nil && addresses?.shippingAddress != nil {
                     UserMessage.displayError(AtlasCheckoutError.checkoutFailure)
                 }
-            case .abortion(let error, _):
-                completion(.failure(error))
             case .success(let checkoutCart):
                 completion(.success((cart: checkoutCart.cart, checkout: checkoutCart.checkout)))
             }
