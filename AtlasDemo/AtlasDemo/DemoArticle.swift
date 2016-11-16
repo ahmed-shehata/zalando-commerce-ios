@@ -90,7 +90,7 @@ extension DemoArticle {
             seasonYear = json["seasonYear"].string,
             brand = Brand(json: json["brand"]),
             media = Media(json: json["media"])
-        else { return nil }
+            else { return nil }
 
         self.id = id
         self.modelId = modelId
@@ -108,7 +108,7 @@ extension DemoArticle {
         ageGroups = json["ageGroups"].arrayValue.flatMap { $0.string }
         categoryKeys = json["categoryKeys"].arrayValue.flatMap { $0.string }
         attributes = json["attributes"].arrayValue.flatMap { DemoArticle.Attribute(json: $0) }
-        units = json["units"].arrayValue.flatMap { DemoArticle.Unit(json: $0) }.sort()
+        units = json["units"].arrayValue.flatMap { DemoArticle.Unit(json: $0) }
     }
 }
 
@@ -227,12 +227,7 @@ extension DemoArticle {
     }
 
     var availableSizes: [String] {
-        return units.filter { $0.available }.map { $0.size }.sort { first, second in
-            guard let firstValue = sizeMap[first], secondValue = sizeMap[second] else {
-                return first <= second
-            }
-            return firstValue <= secondValue
-        }
+        return units.filter { $0.available }.map { $0.size }
     }
 
 }
@@ -245,17 +240,4 @@ public func == (lhs: DemoArticle.Price, rhs: DemoArticle.Price) -> Bool {
 
 public func < (lhs: DemoArticle.Price, rhs: DemoArticle.Price) -> Bool {
     return lhs.valueInCents < rhs.valueInCents
-}
-
-extension DemoArticle.Unit: Comparable { }
-
-public func == (lhs: DemoArticle.Unit, rhs: DemoArticle.Unit) -> Bool {
-    return lhs.id == rhs.id
-}
-
-public func < (lhs: DemoArticle.Unit, rhs: DemoArticle.Unit) -> Bool {
-    guard let lhsSizeWeight = sizeMap[lhs.size], rhsSizeWeight = sizeMap[rhs.size] else {
-        return lhs.size < rhs.size
-    }
-    return lhsSizeWeight < rhsSizeWeight
 }
