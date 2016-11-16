@@ -3,6 +3,7 @@ require 'thor'
 require_relative 'consts'
 require_relative 'run'
 require_relative 'env'
+require_relative 'log'
 require_relative 'github_client/github_client'
 
 module Calypso
@@ -11,9 +12,9 @@ module Calypso
 
     desc 'clean_closed', "Removes closed issues from projects [#{CLEANABLE_GITHUB_PROJECT_COLUMNS}]"
     def clean_closed
-      CLEANABLE_GITHUB_PROJECT_COLUMNS.each do |project, columns|
-        columns.each do |column|
-          invoke :clear, [project, column]
+      CLEANABLE_GITHUB_PROJECT_COLUMNS.each do |project_name, columns|
+        columns.each do |column_name|
+          clear(project_name, column_name)
         end
       end
     end
@@ -34,7 +35,14 @@ module Calypso
 
     desc 'clear <project_name> <column_name>', 'Clear issues in given project / column'
     def clear(project_name, column_name)
-      cards = github.column_cards(project_name: project_name, column_name: column_name)
+      log "Issues in \"#{project_name}/#{column_name}\":"
+      
+      issues = column_issues(project_name: project_name, column_name: column_name)
+      log issues.map { |issue| "  * #{issue['title']} - #{issue['html_url']}\n" }
+
+      confirm_msg = "Do you want to drop all #{issues.count} cards from the project's column (won't delete the issues)?"
+      return unless yes?(confirm_msg, :red)
+
       github.drop_cards(cards)
     end
 
@@ -48,7 +56,25 @@ module Calypso
       "* #{issue['title']} #{issue_link} #{labels}".freeze
     end
 
+    private
+
+    def column_issues(project_name:, column_name:, state: 'closed')
+      issues = github.project_issues(project_name: project_name, column_name: column_name, state: state)
+      cards = cards_from(issues: issues, project_name: project_name, column_name: column_name)
+      cards_urls = cards.map { |card| card['content_url'] }
+
+      issues.select { |issue| cards_urls.include? issue['url'] }
+    end
+
+    def cards_from(issues:, project_name:, column_name:)
+      issues_urls = issues.map { |issue| issue['url'] }
+      github.column_cards(project_name: project_name, column_name: column_name).select do |card|
+        issues_urls.include? card['content_url']
+      end
+    end
+
     include Env
+    include Log
     include Github
 
   end
