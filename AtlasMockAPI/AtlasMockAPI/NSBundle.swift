@@ -4,21 +4,21 @@
 
 import Foundation
 
-extension NSBundle {
+extension Bundle {
 
     func pathsForResources(containingInName pattern: String? = nil) throws -> [String]? {
         guard let resourcesPath = self.resourcePath else { return nil }
 
-        let allResources = try NSFileManager.defaultManager().contentsOfDirectoryAtPath(resourcesPath)
+        let allResources = try FileManager.default.contentsOfDirectory(atPath: resourcesPath)
 
         guard let pattern = pattern else {
             return allResources
         }
 
-        let matchingNames = allResources.filter { $0.containsString(pattern) }
+        let matchingNames = allResources.filter { $0.contains(pattern) }
 
         return matchingNames.flatMap {
-            self.pathForResource($0, ofType: "")
+            self.path(forResource: $0, ofType: "")
         }
     }
 

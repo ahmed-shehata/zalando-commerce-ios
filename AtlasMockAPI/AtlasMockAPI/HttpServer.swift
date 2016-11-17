@@ -5,14 +5,14 @@
 import Foundation
 import Swifter
 
-enum HttpServerError: ErrorType {
-    case TimeoutOnStart(NSTimeInterval)
-    case TimeoutOnStop(NSTimeInterval)
+enum HttpServerError: Error {
+    case timeoutOnStart(TimeInterval)
+    case timeoutOnStop(TimeInterval)
 }
 
 extension HttpServer {
 
-    var serverBundle: NSBundle { return NSBundle(forClass: AtlasMockAPI.self) }
+    var serverBundle: Bundle { return Bundle(for: AtlasMockAPI.self) }
 
     func registerEndpoints() throws {
         addRootResponse()
@@ -22,33 +22,33 @@ extension HttpServer {
         addRedirectEndpoint()
     }
 
-    func start(url: NSURL, forceIPv4: Bool, timeout: NSTimeInterval) throws {
-        let port = UInt16(url.port!.unsignedIntegerValue) // swiftlint:disable:this force_unwrapping
+    func start(at url: URL, forceIPv4: Bool, timeout: TimeInterval) throws {
+        let port = UInt16((url as NSURL).port!.uintValue) // swiftlint:disable:this force_unwrapping
         try self.start(port, forceIPv4: forceIPv4)
-        try wait(seconds: timeout, forState: .Running)
+        try wait(seconds: timeout, forState: .running)
     }
 
-    func stop(timeout: NSTimeInterval) throws {
+    func stop(withGraceTimeout timeout: TimeInterval) throws {
         self.stop()
-        try wait(seconds: timeout, forState: .Stopped)
+        try wait(seconds: timeout, forState: .stopped)
     }
 
-    private func wait(seconds timeout: NSTimeInterval, forState state: HttpServerIOState) throws {
+    fileprivate func wait(seconds timeout: TimeInterval, forState state: HttpServerIOState) throws {
         let waitStep = 0.5
         var waiting = 0.0
         repeat {
-            NSThread.sleepForTimeInterval(waitStep)
+            Thread.sleep(forTimeInterval: waitStep)
             waiting += waitStep
         } while self.state != state && waiting < timeout
 
         if self.state != state {
-            throw HttpServerError.TimeoutOnStop(timeout)
+            throw HttpServerError.timeoutOnStop(timeout)
         }
     }
 
     func respond(forPath path: String, withText text: String) {
         self[path] = { _ in
-            return .OK(.Text(text))
+            return .ok(.text(text))
         }
     }
 

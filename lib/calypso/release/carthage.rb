@@ -7,7 +7,7 @@ module Calypso
 
     desc 'build', 'Builds and creates an archive'
     def build
-      run 'carthage build --no-skip-current --platform iOS'
+      run 'carthage build --no-skip-current --platform iOS --no-use-binaries'
       run 'carthage archive AtlasSDK AtlasUI'
     end
 
