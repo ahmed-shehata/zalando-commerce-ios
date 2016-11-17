@@ -52,6 +52,10 @@ extension CheckoutSummaryDataModel {
         return paymentMethod?.caseInsensitiveCompare("paypal") == .OrderedSame
     }
 
+    var isAddressesReady: Bool {
+        return shippingAddress != nil && billingAddress != nil
+    }
+
     var termsAndConditionsURL: NSURL? {
         return AtlasAPIClient.instance?.config.salesChannel.termsAndConditionsURL
     }

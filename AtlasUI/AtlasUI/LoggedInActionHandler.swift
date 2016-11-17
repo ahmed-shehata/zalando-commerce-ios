@@ -11,11 +11,10 @@ typealias CreateCartCheckoutCompletion = AtlasResult<CartCheckout> -> Void
 
 class LoggedInActionHandler: CheckoutSummaryActionHandler {
 
-    let customer: Customer
-
     weak var dataSource: CheckoutSummaryActionHandlerDataSource?
     weak var delegate: CheckoutSummaryActionHandlerDelegate?
 
+    let customer: Customer
     var cartCheckout: CartCheckout? {
         didSet {
             updateDataModel(addresses)
@@ -247,11 +246,11 @@ extension LoggedInActionHandler {
         }
     }
 
-    private func selectShippingAddress(address: EquatableAddress?) {
+    private func selectShippingAddress(address: EquatableAddress) {
         updateDataModel(CheckoutAddresses(billingAddress: billingAddress, shippingAddress: address))
     }
 
-    private func selectBillingAddress(address: EquatableAddress?) {
+    private func selectBillingAddress(address: EquatableAddress) {
         updateDataModel(CheckoutAddresses(billingAddress: address, shippingAddress: shippingAddress))
     }
 
