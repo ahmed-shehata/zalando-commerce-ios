@@ -23,13 +23,13 @@ class AtlasTests: XCTestCase {
 
     func testSaveUserToken() {
         loginUser()
-        expect(Atlas.isUserLoggedIn()).to(beTrue())
+        expect(Atlas.isAuthorized()).to(beTrue())
     }
 
     func testLogoutUser() {
         loginUser()
-        Atlas.logoutUser()
-        expect(Atlas.isUserLoggedIn()).to(beFalse())
+        Atlas.deauthorizeToken()
+        expect(Atlas.isAuthorized()).to(beFalse())
     }
 
     func testAtlasAPIClient() {

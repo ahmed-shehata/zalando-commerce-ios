@@ -17,14 +17,14 @@ class LoggedInActionHandlerTests: XCTestCase {
     override func setUp() {
         super.setUp()
         try! AtlasMockAPI.startServer()
-        Atlas.login("TestToken")
+        Atlas.authorizeWithToken("TestToken")
         actionHandler = createActionHandler()
     }
 
     override func tearDown() {
         super.tearDown()
         try! AtlasMockAPI.stopServer()
-        Atlas.logoutUser()
+        Atlas.deauthorizeToken()
     }
 
     func testNoPaymentMethodSelected() {
