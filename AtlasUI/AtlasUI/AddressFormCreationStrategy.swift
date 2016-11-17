@@ -4,7 +4,7 @@
 
 import Foundation
 
-typealias AddressFormCreationStrategyCompletion = (AddressFormViewModel) -> Void
+typealias AddressFormCreationStrategyCompletion = (AddressFormDataModel) -> Void
 
 protocol AddressFormCreationStrategy {
 

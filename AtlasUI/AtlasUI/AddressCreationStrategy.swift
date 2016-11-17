@@ -7,7 +7,7 @@ import AtlasSDK
 
 protocol AddressCreationStrategy {
 
-    var addressFormCompletion: AddressFormCompletion? { get set }
+    var addressFormActionHandler: AddressFormActionHandler? { get set }
 
     func execute()
 
@@ -30,11 +30,8 @@ extension AddressCreationStrategy {
         UserMessage.showActionSheet(title: title, actions: buttonActions)
     }
 
-    func showAddressForm(addressType: AddressFormType, addressViewModel: AddressFormViewModel) {
-        let viewController = AddressFormViewController(addressType: addressType,
-                                                       addressMode: .createAddress(addressViewModel: addressViewModel),
-                                                       completion: addressFormCompletion)
-
+    func showAddressForm(addressViewModel: AddressFormViewModel) {
+        let viewController = AddressFormViewController(viewModel: addressViewModel, actionHandler: addressFormActionHandler)
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.modalPresentationStyle = .OverCurrentContext
         AtlasUIViewController.instance?.showViewController(navigationController, sender: nil)

@@ -14,7 +14,7 @@ class EmptyAddressFormCreationStrategy: AddressFormCreationStrategy {
     }
 
     func execute() {
-        completion(AddressFormViewModel(countryCode: AtlasAPIClient.countryCode))
+        completion(AddressFormDataModel(countryCode: AtlasAPIClient.countryCode))
     }
 
 }
