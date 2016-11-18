@@ -213,6 +213,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
+  cocoapods
   daemons
   git
   github_api
