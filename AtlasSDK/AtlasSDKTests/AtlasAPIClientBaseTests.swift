@@ -32,27 +32,27 @@ class AtlasAPIClientBaseTests: XCTestCase {
             configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
     }
 
-    func waitUntilAtlasAPIClientIsConfigured(_ actions: (_ done: () -> Void, _ client: AtlasAPIClient) -> Void) {
+    func waitUntilAtlasAPIClientIsConfigured(_ actions: @escaping (_ done: @escaping () -> Void, _ client: AtlasAPIClient) -> Void) {
         waitUntil(timeout: 10) { done in
-            Atlas.configure(self.clientOptions) { result in
+            Atlas.configure(options: self.clientOptions) { result in
                 switch result {
                 case .failure(let error):
-                    fail(String(error))
+                    fail(String(describing: error))
                     done()
                 case .success(let client):
-                    actions(done: done, client: client)
+                    actions(done, client)
                 }
             }
         }
     }
 
-    func data(withJSONObject: AnyObject) -> Data {
+    func data(withJSONObject object: AnyObject) -> Data {
         return try! JSONSerialization.data(withJSONObject: object, options: [])
     }
 
-    func mockedAtlasAPIClient(forURL url: NSURL,
+    func mockedAtlasAPIClient(forURL url: URL,
                                 options: Options? = nil,
-                                data: NSData?,
+                                data: Data?,
                                 status: HTTPStatus,
                                 errorCode: Int? = nil) -> AtlasAPIClient {
 
@@ -69,15 +69,15 @@ class AtlasAPIClientBaseTests: XCTestCase {
                         "toc_url": "https://www.zalando.de/agb/"
                     ]
                 ],
-                "atlas-catalog-api": ["url": apiURL.absoluteString!],
+                "atlas-catalog-api": ["url": apiURL.absoluteString],
                 "atlas-checkout-api": [
-                    "url": apiURL.absoluteString!,
+                    "url": apiURL.absoluteString,
                     "payment": [
                         "selection-callback": callback,
                         "third-party-callback": callback
                     ]
                 ],
-                "oauth2-provider": ["url": loginURL.absoluteString!]
+                "oauth2-provider": ["url": loginURL.absoluteString]
             ]
         )
 
@@ -89,7 +89,7 @@ class AtlasAPIClientBaseTests: XCTestCase {
             error = NSError(domain: "NSURLErrorDomain", code: errorCode, userInfo: nil)
         }
 
-        client.urlSession = URLSessionMock(data: data, response: HTTPURLResponse(URL: url, statusCode: status.rawValue), error: error)
+        client.urlSession = URLSessionMock(data: data, response: HTTPURLResponse(url: url, statusCode: status.rawValue), error: error)
 
         return client
     }

@@ -18,8 +18,8 @@ class APICustomerTests: AtlasAPIClientBaseTests {
                     "email": "aaa@a.a",
                     "first_name": "John",
                     "last_name": "Doe"]
-        let customerResponse = dataWithJSONObject(json)
-        let client = mockedAtlasAPIClient(forURL: customerURL, data: customerResponse, status: .OK)
+        let customerResponse = data(withJSONObject: json as AnyObject)
+        let client = mockedAtlasAPIClient(forURL: customerURL, data: customerResponse, status: .ok)
 
         waitUntil(timeout: 60) { done in
             client.customer { result in

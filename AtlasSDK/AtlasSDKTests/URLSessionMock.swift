@@ -4,7 +4,6 @@
 
 import Foundation
 
-typealias CompletionHandler = (Data?, URLResponse?, NSError?) -> Void
 typealias TaskResponse = (data: Data?, response: URLResponse?, error: NSError?)
 
 final class URLSessionMock: URLSession {
@@ -17,20 +16,22 @@ final class URLSessionMock: URLSession {
         dataTaskMock = URLSessionDataTaskMock(taskResponse: (data, response, error))
     }
 
-    override func dataTask(with url: URL, completionHandler: @escaping CompletionHandler) -> URLSessionDataTask {
+    override func dataTask(with url: URL,
+                           completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
         self.url = url
         self.dataTaskMock.completionHandler = completionHandler
         return self.dataTaskMock
     }
 
-    override func dataTask(with request: URLRequest, completionHandler: @escaping CompletionHandler) -> URLSessionDataTask {
+    override func dataTask(with request: URLRequest,
+                           completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
         self.request = request
         self.dataTaskMock.completionHandler = completionHandler
         return self.dataTaskMock
     }
 
     final fileprivate class URLSessionDataTaskMock: URLSessionDataTask {
-        var completionHandler: CompletionHandler?
+        var completionHandler: ((Data?, URLResponse?, Error?) -> Void?)?
         var taskResponse: TaskResponse
 
         init(taskResponse: TaskResponse) {
@@ -46,5 +47,5 @@ final class URLSessionMock: URLSession {
         }
 
     }
-    
+
 }
