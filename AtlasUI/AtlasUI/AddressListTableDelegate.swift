@@ -29,6 +29,7 @@ class AddressListTableDelegate: NSObject {
         self.addresses = addresses
         self.selectedAddress = selectedAddress
         self.viewController = viewController
+        super.init()
         self.viewController?.actionHandler?.delegate = self
     }
 

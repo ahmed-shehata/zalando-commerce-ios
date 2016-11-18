@@ -16,7 +16,8 @@ struct LoggedInAddressListActionHandler: AddressListActionHandler {
 
     func createAddress() {
         addressViewModelCreationStrategy?.setStrategyCompletion() { viewModel in
-            self.showAddressViewController(withViewModel: viewModel) { address in
+            let actionHandler = LoggedInCreateAddressActionHandler()
+            self.showAddressViewController(withViewModel: viewModel, formActionHandler: actionHandler) { address in
                 self.delegate?.addressCreated(address)
             }
         }
@@ -28,7 +29,8 @@ struct LoggedInAddressListActionHandler: AddressListActionHandler {
         let formLayout = UpdateAddressFormLayout()
         let addressType: AddressFormType = address.pickupPoint == nil ? .standardAddress : .pickupPoint
         let viewModel = AddressFormViewModel(dataModel: dataModel, layout: formLayout, type: addressType)
-        showAddressViewController(withViewModel: viewModel) { address in
+        let actionHandler = LoggedInUpdateAddressActionHandler()
+        showAddressViewController(withViewModel: viewModel, formActionHandler: actionHandler) { address in
             self.delegate?.addressUpdated(address)
         }
     }
@@ -44,8 +46,10 @@ struct LoggedInAddressListActionHandler: AddressListActionHandler {
 
 extension LoggedInAddressListActionHandler {
 
-    private func showAddressViewController(withViewModel viewModel: AddressFormViewModel, completion: AddressFormCompletion) {
-        let formActionHandler = LoggedInCreateAddressActionHandler()
+    private func showAddressViewController(withViewModel viewModel: AddressFormViewModel,
+                                                         formActionHandler: AddressFormActionHandler,
+                                                         completion: AddressFormCompletion) {
+
         let viewController = AddressFormViewController(viewModel: viewModel, actionHandler: formActionHandler, completion: completion)
         viewController.displayView()
     }
