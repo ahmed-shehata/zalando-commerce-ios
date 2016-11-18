@@ -47,7 +47,7 @@ class ProfileViewController: UIViewController {
     }
 
     @IBAction func logoutButtonTapped(sender: AnyObject) {
-        Atlas.logoutUser()
+        Atlas.deauthorizeToken()
         self.navigationController?.popViewControllerAnimated(true)
     }
 
