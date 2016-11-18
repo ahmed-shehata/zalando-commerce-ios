@@ -27,8 +27,8 @@ import XCTest
 class SequenceTypeTests: XCTestCase {
 
     func testJSONFile() {
-        if let file = NSBundle(forClass: BaseTests.self).pathForResource("Tests", ofType: "json") {
-            let testData = NSData(contentsOfFile: file)
+        if let file = Bundle(for: BaseTests.self).path(forResource: "Tests", ofType: "json") {
+            let testData = try? Data(contentsOf: URL(fileURLWithPath: file))
             let json = JSON(data: testData!)
             for (index, sub) in json {
                 switch (index as NSString).integerValue {

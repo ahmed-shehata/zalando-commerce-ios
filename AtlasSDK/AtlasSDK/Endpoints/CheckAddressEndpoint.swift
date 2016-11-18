@@ -6,7 +6,7 @@ import Foundation
 
 struct CheckAddressEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
 
-    let serviceURL: NSURL
+    let serviceURL: URL
     let method: HTTPMethod = .POST
     let path = "address-checks"
     let acceptedContentType = "application/x.zalando.address-check.create.response+json"

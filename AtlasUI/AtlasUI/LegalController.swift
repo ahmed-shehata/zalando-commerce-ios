@@ -14,7 +14,7 @@ final class LegalController: NSObject {
 
     required init(tocURL: NSURL) {
         self.tocURL = tocURL
-        self.legalURL = NSURL(validURL: tocURL, path: legalURLPath)
+        self.legalURL = NSURL(validUrl: tocURL, path: legalURLPath)
     }
 
     func push(on navController: UINavigationController? = AtlasUIViewController.instance?.mainNavigationController) {

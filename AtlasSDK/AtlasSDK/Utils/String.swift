@@ -7,8 +7,8 @@ import Foundation
 extension String {
 
     var whiteCharactersFreeString: String {
-        let string = componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet()).joinWithSeparator("")
-        return string.stringByReplacingOccurrencesOfString("  ", withString: "")
+        let string = components(separatedBy: CharacterSet.newlines).joined(separator: "")
+        return string.replacingOccurrences(of: "  ", with: "")
     }
 
 }

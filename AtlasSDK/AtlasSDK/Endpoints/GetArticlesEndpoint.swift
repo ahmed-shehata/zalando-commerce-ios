@@ -4,14 +4,14 @@
 
 struct GetArticleEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
 
-    let serviceURL: NSURL
+    let serviceURL: URL
     var path: String { return "articles/\(sku)" }
     let acceptedContentType = "application/x.zalando.article+json"
     let sku: String
-    var queryItems: [NSURLQueryItem]? {
-        return NSURLQueryItem.build([
-            "client_id": clientId,
-            "fields": fields?.joinWithSeparator(",")
+    var queryItems: [URLQueryItem]? {
+        return URLQueryItem.build([
+            "client_id": clientId as Optional<AnyObject>,
+            "fields": fields?.joined(separator: ",") as Optional<AnyObject>
         ])
     }
 

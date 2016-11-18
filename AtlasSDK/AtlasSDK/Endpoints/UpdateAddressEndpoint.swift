@@ -6,7 +6,7 @@ import Foundation
 
 struct UpdateAddressEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
 
-    let serviceURL: NSURL
+    let serviceURL: URL
     let method: HTTPMethod = .PUT
     var path: String { return "addresses/\(addressId)" }
     let acceptedContentType = "application/x.zalando.customer.address.update.response+json"

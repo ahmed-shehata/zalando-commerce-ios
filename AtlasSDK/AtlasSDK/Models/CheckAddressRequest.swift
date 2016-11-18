@@ -9,17 +9,17 @@ public struct CheckAddressRequest {
 
 extension CheckAddressRequest: JSONRepresentable {
 
-    private struct Keys {
+    fileprivate struct Keys {
         static let address = "address"
         static let pickupPoint = "pickup_point"
     }
 
     func toJSON() -> [String : AnyObject] {
         var result: [String: AnyObject] = [
-            Keys.address: address.toJSON()
+            Keys.address: address.toJSON() as AnyObject
         ]
         if let pickupPoint = pickupPoint {
-            result[Keys.pickupPoint] = pickupPoint.toJSON()
+            result[Keys.pickupPoint] = pickupPoint.toJSON() as AnyObject?
         }
         return result
     }

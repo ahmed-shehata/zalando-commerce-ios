@@ -11,7 +11,7 @@ import AtlasMockAPI
 
 class AtlasAPIClientErrorsTests: AtlasAPIClientBaseTests {
 
-    let clientURL = NSURL(validURL: "https://atlas-sdk.api/api/any_endpoint")
+    let clientURL = URL(validUrl: "https://atlas-sdk.api/api/any_endpoint")
 
     func testNoDataResponse() {
         let status = HTTPStatus.OK
@@ -106,7 +106,7 @@ class AtlasAPIClientErrorsTests: AtlasAPIClientBaseTests {
 
     func testMangledJSON() {
         let errorStatus = HTTPStatus.ServiceUnavailable
-        let errorResponse = "Some text error".dataUsingEncoding(NSUTF8StringEncoding)
+        let errorResponse = "Some text error".data(using: String.Encoding.utf8)
         let client = mockedAtlasAPIClient(forURL: clientURL, data: errorResponse, status: errorStatus)
 
         waitUntil(timeout: 10) { done in

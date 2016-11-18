@@ -59,7 +59,7 @@ class AtlasTests: XCTestCase {
 
 extension AtlasTests {
 
-    private func loginUser() {
+    fileprivate func loginUser() {
         APIAccessToken.store("TEST_TOKEN")
     }
 

@@ -4,12 +4,12 @@
 
 struct DeleteAddressEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
 
-    let serviceURL: NSURL
+    let serviceURL: URL
     let method: HTTPMethod = .DELETE
     var path: String { return "addresses/\(addressId)" }
     let acceptedContentType = "application/x.zalando.customer.addresses+json"
-    var queryItems: [NSURLQueryItem]? {
-        return NSURLQueryItem.build(["address_id": addressId])
+    var queryItems: [URLQueryItem]? {
+        return URLQueryItem.build(["address_id": addressId as Optional<AnyObject>])
     }
 
     let addressId: String

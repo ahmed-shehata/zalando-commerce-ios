@@ -1,4 +1,3 @@
-// swiftlint:disable line_length
 //
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //

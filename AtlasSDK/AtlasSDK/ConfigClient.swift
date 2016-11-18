@@ -4,26 +4,26 @@
 
 import Foundation
 
-public typealias AtlasConfigCompletion = AtlasAPIResult<Config> -> Void
+public typealias AtlasConfigCompletion = (AtlasAPIResult<Config>) -> Void
 
 protocol Configurator {
 
-    func configure(completion: AtlasConfigCompletion) -> Void
+    func configure(_ completion: @escaping AtlasConfigCompletion) -> Void
 
 }
 
 struct ConfigClient: Configurator {
 
-    private let options: Options
+    fileprivate let options: Options
 
     init(options: Options) {
         self.options = options
     }
 
-    func configure(completion: AtlasConfigCompletion) {
-        let requestBuilder = RequestBuilder(forEndpoint: GetConfigEndpoint(URL: options.configurationURL))
+    func configure(_ completion: @escaping AtlasConfigCompletion) {
+        let requestBuilder = RequestBuilder(forEndpoint: GetConfigEndpoint(url: options.configurationURL))
         var apiRequest = APIRequest<Config>(requestBuilder: requestBuilder) { response in
-            guard let json = response.body, config = Config(json: json, options: self.options) else { return nil }
+            guard let json = response.body, let config = Config(json: json, options: self.options) else { return nil }
             return config
         }
         apiRequest.execute(completion)

@@ -16,7 +16,7 @@ public struct UpdateCheckoutRequest {
 
 extension UpdateCheckoutRequest: JSONRepresentable {
 
-    private struct Keys {
+    fileprivate struct Keys {
         static let billingAddressId = "billing_address_id"
         static let shippingAddressId = "shipping_address_id"
     }
@@ -24,11 +24,11 @@ extension UpdateCheckoutRequest: JSONRepresentable {
     func toJSON() -> [String: AnyObject] {
         var result = [String: AnyObject]()
 
-        if let billingAddressId = billingAddressId where !billingAddressId.isEmpty {
-            result[Keys.billingAddressId] = billingAddressId
+        if let billingAddressId = billingAddressId, !billingAddressId.isEmpty {
+            result[Keys.billingAddressId] = billingAddressId as AnyObject?
         }
-        if let shippingAddressId = shippingAddressId where !shippingAddressId.isEmpty {
-            result[Keys.shippingAddressId] = shippingAddressId
+        if let shippingAddressId = shippingAddressId, !shippingAddressId.isEmpty {
+            result[Keys.shippingAddressId] = shippingAddressId as AnyObject?
         }
         return result
     }

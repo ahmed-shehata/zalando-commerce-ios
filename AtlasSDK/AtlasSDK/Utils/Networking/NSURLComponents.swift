@@ -4,19 +4,21 @@
 
 import Foundation
 
-extension NSURLComponents {
+extension URLComponents {
 
-    public convenience init(validURL stringConvertible: URLStringConvertible) {
+    public init(validUrl stringConvertible: URLStringConvertible) {
         self.init(string: stringConvertible.URLString)! // swiftlint:disable:this force_unwrapping
     }
 
-    public convenience init(validURL stringConvertible: URLStringConvertible, path: String?) {
-        self.init(validURL: stringConvertible)
-        self.path = path
+    public init(validUrl stringConvertible: URLStringConvertible, path: String? = nil) {
+        self.init(validUrl: stringConvertible)
+        if let path = path {
+            self.path = path
+        }
     }
 
-    public var validURL: NSURL {
-        return self.URL! // swiftlint:disable:this force_unwrapping
+    public var validUrl: URL {
+        return self.url! // swiftlint:disable:this force_unwrapping
     }
 
 }
