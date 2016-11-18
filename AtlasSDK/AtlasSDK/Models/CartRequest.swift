@@ -16,8 +16,8 @@ public struct CartRequest: JSONRepresentable {
 
     public func toJSON() -> [String: AnyObject] {
         return [
-            "replace_items": self.replaceItems,
-            "items": self.items.map { $0.toJSON() }
+            "replace_items": self.replaceItems as AnyObject,
+            "items": self.items.map { $0.toJSON() } as AnyObject
         ]
     }
 

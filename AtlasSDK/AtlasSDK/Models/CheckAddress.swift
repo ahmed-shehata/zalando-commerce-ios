@@ -12,7 +12,7 @@ public struct CheckAddress {
 
 extension CheckAddress: JSONInitializable {
 
-    private struct Keys {
+    fileprivate struct Keys {
         static let street = "street"
         static let additional = "additional"
         static let zip = "zip"
@@ -21,10 +21,10 @@ extension CheckAddress: JSONInitializable {
     }
 
     init?(json: JSON) {
-        guard let
-            zip = json[Keys.zip].string,
-            city = json[Keys.city].string,
-            countryCode = json[Keys.countryCode].string else { return nil }
+        guard let zip = json[Keys.zip].string,
+            let city = json[Keys.city].string,
+            let countryCode = json[Keys.countryCode].string
+            else { return nil }
 
         self.init(street: json[Keys.street].string,
                   additional: json[Keys.additional].string,
@@ -38,15 +38,15 @@ extension CheckAddress: JSONRepresentable {
 
     func toJSON() -> [String : AnyObject] {
         var result: [String: AnyObject] = [
-            Keys.zip: zip,
-            Keys.city: city,
-            Keys.countryCode: countryCode
+            Keys.zip: zip as AnyObject,
+            Keys.city: city as AnyObject,
+            Keys.countryCode: countryCode as AnyObject
         ]
         if let street = street {
-            result[Keys.street] = street
+            result[Keys.street] = street as AnyObject?
         }
         if let additional = additional {
-            result[Keys.additional] = additional
+            result[Keys.additional] = additional as AnyObject?
         }
         return result
     }

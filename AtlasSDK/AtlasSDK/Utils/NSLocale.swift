@@ -4,13 +4,13 @@
 
 import Foundation
 
-extension NSLocale {
+extension Locale {
 
-    func validCountryCode(defaultCode: String = "") -> String {
+    func validCountryCode(fallbackCode: String = "") -> String {
         if #available(iOS 10.0, *) {
-            return self.countryCode ?? defaultCode
+            return (self as NSLocale).countryCode ?? fallbackCode
         } else {
-            return self.objectForKey(NSLocaleCountryCode) as? String ?? defaultCode
+            return (self as NSLocale).object(forKey: NSLocale.Key.countryCode) as? String ?? fallbackCode
         }
     }
 

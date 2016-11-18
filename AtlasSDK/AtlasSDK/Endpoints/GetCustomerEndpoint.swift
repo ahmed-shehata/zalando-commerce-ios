@@ -4,7 +4,7 @@
 
 struct GetCustomerEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
 
-    var serviceURL: NSURL
+    var serviceURL: URL
     let path = "customer"
     let acceptedContentType = "application/x.zalando.customer+json"
     let salesChannel: String

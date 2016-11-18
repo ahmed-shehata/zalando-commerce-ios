@@ -10,7 +10,7 @@ import Nimble
 
 class APICustomerTests: AtlasAPIClientBaseTests {
 
-    let customerURL = NSURL(validURL: "https://atlas-sdk.api/api/customer")
+    let customerURL = URL(validUrl: "https://atlas-sdk.api/api/customer")
 
     func testCreateCustomer() {
         let json = ["customer_number": "12345678",

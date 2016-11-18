@@ -59,17 +59,17 @@ class PrintableTests: XCTestCase {
         var description = json.description.stringByReplacingOccurrencesOfString("\n", withString: "")
         description = description.stringByReplacingOccurrencesOfString(" ", withString: "")
         XCTAssertEqual(description, "[1,2,\"4\",5,\"6\"]")
-        XCTAssertTrue(json.description.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0)
-        XCTAssertTrue(json.debugDescription.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0)
+        XCTAssertTrue(json.description.lengthOfBytesUsingEncoding(String.Encoding.utf8) > 0)
+        XCTAssertTrue(json.debugDescription.lengthOfBytesUsingEncoding(String.Encoding.utf8) > 0)
     }
 
     func testDictionary() {
         let json: JSON = ["1": 2, "2": "two", "3": 3]
         var debugDescription = json.debugDescription.stringByReplacingOccurrencesOfString("\n", withString: "")
         debugDescription = debugDescription.stringByReplacingOccurrencesOfString(" ", withString: "")
-        XCTAssertTrue(json.description.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0)
-        XCTAssertTrue(debugDescription.rangeOfString("\"1\":2", options: NSStringCompareOptions.CaseInsensitiveSearch) != nil)
-        XCTAssertTrue(debugDescription.rangeOfString("\"2\":\"two\"", options: NSStringCompareOptions.CaseInsensitiveSearch) != nil)
-        XCTAssertTrue(debugDescription.rangeOfString("\"3\":3", options: NSStringCompareOptions.CaseInsensitiveSearch) != nil)
+        XCTAssertTrue(json.description.lengthOfBytesUsingEncoding(String.Encoding.utf8) > 0)
+        XCTAssertTrue(debugDescription.rangeOfString("\"1\":2", options: NSString.CompareOptions.CaseInsensitiveSearch) != nil)
+        XCTAssertTrue(debugDescription.rangeOfString("\"2\":\"two\"", options: NSString.CompareOptions.CaseInsensitiveSearch) != nil)
+        XCTAssertTrue(debugDescription.rangeOfString("\"3\":3", options: NSString.CompareOptions.CaseInsensitiveSearch) != nil)
     }
 }

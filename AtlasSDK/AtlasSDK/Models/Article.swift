@@ -46,7 +46,7 @@ public struct Article {
         return !availableUnits.isEmpty
     }
 
-    public var thumbnailURL: NSURL? {
+    public var thumbnailURL: URL? {
         return media.images.first?.catalogURL
     }
 
@@ -70,12 +70,12 @@ public struct Article {
 
     public struct Image {
         public let order: Int
-        public let catalogURL: NSURL
-        public let catalogHDURL: NSURL
-        public let detailURL: NSURL
-        public let detailHDURL: NSURL
-        public let largeURL: NSURL
-        public let largeHDURL: NSURL
+        public let catalogURL: URL
+        public let catalogHDURL: URL
+        public let detailURL: URL
+        public let detailHDURL: URL
+        public let largeURL: URL
+        public let largeHDURL: URL
     }
 
     public struct Partner {
@@ -89,12 +89,11 @@ public struct Article {
 extension Article: JSONInitializable {
 
     init?(json: JSON) {
-        guard let
-        id = json["id"].string,
-            name = json["name"].string,
-            color = json["color"].string,
-            brand = Brand(json: json["brand"]),
-            media = Media(json: json["media"])
+        guard let id = json["id"].string,
+            let name = json["name"].string,
+            let color = json["color"].string,
+            let brand = Brand(json: json["brand"]),
+            let media = Media(json: json["media"])
         else { return nil }
 
         self.id = id
@@ -111,13 +110,12 @@ extension Article: JSONInitializable {
 extension Article.Unit: JSONInitializable {
 
     init?(json: JSON) {
-        guard let
-        id = json["id"].string,
-            size = json["size"].string,
-            price = Money(json: json["price"]),
-            originalPrice = Money(json: json["original_price"]),
-            available = json["available"].bool,
-            stock = json["stock"].int
+        guard let id = json["id"].string,
+            let size = json["size"].string,
+            let price = Money(json: json["price"]),
+            let originalPrice = Money(json: json["original_price"]),
+            let available = json["available"].bool,
+            let stock = json["stock"].int
         else { return nil }
 
         self.id = id
@@ -155,14 +153,13 @@ extension Article.Media: JSONInitializable {
 extension Article.Image: JSONInitializable {
 
     init?(json: JSON) {
-        guard let
-        order = json["order"].int,
-            catalogURL = json["catalog"].URL,
-            catalogHDURL = json["catalog_hd"].URL,
-            detailURL = json["detail"].URL,
-            detailHDURL = json["detail_hd"].URL,
-            largeURL = json["large"].URL,
-            largeHDURL = json["large_hd"].URL
+        guard let order = json["order"].int,
+            let catalogURL = json["catalog"].URL,
+            let catalogHDURL = json["catalog_hd"].URL,
+            let detailURL = json["detail"].URL,
+            let detailHDURL = json["detail_hd"].URL,
+            let largeURL = json["large"].URL,
+            let largeHDURL = json["large_hd"].URL
         else { return nil }
         self.order = order
         self.catalogURL = catalogURL
@@ -178,10 +175,9 @@ extension Article.Image: JSONInitializable {
 extension Article.Partner: JSONInitializable {
 
     init?(json: JSON) {
-        guard let
-        id = json["id"].string,
-            name = json["name"].string,
-            detailsURL = json["detail_url"].string
+        guard let id = json["id"].string,
+            let name = json["name"].string,
+            let detailsURL = json["detail_url"].string
         else { return nil }
 
         self.id = id

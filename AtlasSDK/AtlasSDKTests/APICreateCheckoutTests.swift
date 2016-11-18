@@ -10,7 +10,7 @@ import Nimble
 
 class APICreateCheckoutTests: AtlasAPIClientBaseTests {
 
-    private let addressId = "6702759"
+    fileprivate let addressId = "6702759"
 
     func testCreateCheckoutFromArticle() {
         waitUntilAtlasAPIClientIsConfigured { done, client in

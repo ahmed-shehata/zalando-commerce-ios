@@ -168,7 +168,7 @@ class NumberTests: XCTestCase {
     }
 
     func testInt8() {
-        let n127 = NSNumber(char: 127)
+        let n127 = NSNumber(value: 127 as Int8)
         var json = JSON(n127)
         XCTAssertTrue(json.int8! == n127.charValue)
         XCTAssertTrue(json.int8Value == n127.charValue)
@@ -176,7 +176,7 @@ class NumberTests: XCTestCase {
         XCTAssertEqual(json.numberValue, n127)
         XCTAssertEqual(json.stringValue, "127")
 
-        let nm128 = NSNumber(char: -128)
+        let nm128 = NSNumber(value: -128 as Int8)
         json.int8Value = nm128.charValue
         XCTAssertTrue(json.int8! == nm128.charValue)
         XCTAssertTrue(json.int8Value == nm128.charValue)
@@ -184,7 +184,7 @@ class NumberTests: XCTestCase {
         XCTAssertEqual(json.numberValue, nm128)
         XCTAssertEqual(json.stringValue, "-128")
 
-        let n0 = NSNumber(char: 0 as Int8)
+        let n0 = NSNumber(value: 0 as Int8 as Int8)
         json.int8Value = n0.charValue
         XCTAssertTrue(json.int8! == n0.charValue)
         XCTAssertTrue(json.int8Value == n0.charValue)
@@ -197,7 +197,7 @@ class NumberTests: XCTestCase {
             XCTAssertEqual(json.stringValue, "0")
         #endif
 
-        let n1 = NSNumber(char: 1 as Int8)
+        let n1 = NSNumber(value: 1 as Int8 as Int8)
         json.int8Value = n1.charValue
         XCTAssertTrue(json.int8! == n1.charValue)
         XCTAssertTrue(json.int8Value == n1.charValue)
@@ -211,7 +211,7 @@ class NumberTests: XCTestCase {
     }
 
     func testUInt8() {
-        let n255 = NSNumber(unsignedChar: 255)
+        let n255 = NSNumber(value: 255 as UInt8)
         var json = JSON(n255)
         XCTAssertTrue(json.uInt8! == n255.unsignedCharValue)
         XCTAssertTrue(json.uInt8Value == n255.unsignedCharValue)
@@ -219,7 +219,7 @@ class NumberTests: XCTestCase {
         XCTAssertEqual(json.numberValue, n255)
         XCTAssertEqual(json.stringValue, "255")
 
-        let nm2 = NSNumber(unsignedChar: 2)
+        let nm2 = NSNumber(value: 2 as UInt8)
         json.uInt8Value = nm2.unsignedCharValue
         XCTAssertTrue(json.uInt8! == nm2.unsignedCharValue)
         XCTAssertTrue(json.uInt8Value == nm2.unsignedCharValue)
@@ -227,7 +227,7 @@ class NumberTests: XCTestCase {
         XCTAssertEqual(json.numberValue, nm2)
         XCTAssertEqual(json.stringValue, "2")
 
-        let nm0 = NSNumber(unsignedChar: 0)
+        let nm0 = NSNumber(value: 0 as UInt8)
         json.uInt8Value = nm0.unsignedCharValue
         XCTAssertTrue(json.uInt8! == nm0.unsignedCharValue)
         XCTAssertTrue(json.uInt8Value == nm0.unsignedCharValue)
@@ -235,7 +235,7 @@ class NumberTests: XCTestCase {
         XCTAssertEqual(json.numberValue, nm0)
         XCTAssertEqual(json.stringValue, "0")
 
-        let nm1 = NSNumber(unsignedChar: 1)
+        let nm1 = NSNumber(value: 1 as UInt8)
         json.uInt8 = nm1.unsignedCharValue
         XCTAssertTrue(json.uInt8! == nm1.unsignedCharValue)
         XCTAssertTrue(json.uInt8Value == nm1.unsignedCharValue)
@@ -246,7 +246,7 @@ class NumberTests: XCTestCase {
 
     func testInt16() {
 
-        let n32767 = NSNumber(short: 32767)
+        let n32767 = NSNumber(value: 32767 as Int16)
         var json = JSON(n32767)
         XCTAssertTrue(json.int16! == n32767.shortValue)
         XCTAssertTrue(json.int16Value == n32767.shortValue)
@@ -254,7 +254,7 @@ class NumberTests: XCTestCase {
         XCTAssertEqual(json.numberValue, n32767)
         XCTAssertEqual(json.stringValue, "32767")
 
-        let nm32768 = NSNumber(short: -32768)
+        let nm32768 = NSNumber(value: -32768 as Int16)
         json.int16Value = nm32768.shortValue
         XCTAssertTrue(json.int16! == nm32768.shortValue)
         XCTAssertTrue(json.int16Value == nm32768.shortValue)
@@ -262,7 +262,7 @@ class NumberTests: XCTestCase {
         XCTAssertEqual(json.numberValue, nm32768)
         XCTAssertEqual(json.stringValue, "-32768")
 
-        let n0 = NSNumber(short: 0)
+        let n0 = NSNumber(value: 0 as Int16)
         json.int16Value = n0.shortValue
         XCTAssertTrue(json.int16! == n0.shortValue)
         XCTAssertTrue(json.int16Value == n0.shortValue)
@@ -271,7 +271,7 @@ class NumberTests: XCTestCase {
         XCTAssertEqual(json.numberValue, n0)
         XCTAssertEqual(json.stringValue, "0")
 
-        let n1 = NSNumber(short: 1)
+        let n1 = NSNumber(value: 1 as Int16)
         json.int16 = n1.shortValue
         XCTAssertTrue(json.int16! == n1.shortValue)
         XCTAssertTrue(json.int16Value == n1.shortValue)
@@ -282,7 +282,7 @@ class NumberTests: XCTestCase {
 
     func testUInt16() {
 
-        let n65535 = NSNumber(unsignedInteger: 65535)
+        let n65535 = NSNumber(value: 65535 as UInt)
         var json = JSON(n65535)
         XCTAssertTrue(json.uInt16! == n65535.unsignedShortValue)
         XCTAssertTrue(json.uInt16Value == n65535.unsignedShortValue)
@@ -290,7 +290,7 @@ class NumberTests: XCTestCase {
         XCTAssertEqual(json.numberValue, n65535)
         XCTAssertEqual(json.stringValue, "65535")
 
-        let n32767 = NSNumber(unsignedInteger: 32767)
+        let n32767 = NSNumber(value: 32767 as UInt)
         json.uInt16 = n32767.unsignedShortValue
         XCTAssertTrue(json.uInt16! == n32767.unsignedShortValue)
         XCTAssertTrue(json.uInt16Value == n32767.unsignedShortValue)
@@ -300,7 +300,7 @@ class NumberTests: XCTestCase {
     }
 
     func testInt32() {
-        let n2147483647 = NSNumber(int: 2147483647)
+        let n2147483647 = NSNumber(value: 2147483647 as Int32)
         var json = JSON(n2147483647)
         XCTAssertTrue(json.int32! == n2147483647.intValue)
         XCTAssertTrue(json.int32Value == n2147483647.intValue)
@@ -308,7 +308,7 @@ class NumberTests: XCTestCase {
         XCTAssertEqual(json.numberValue, n2147483647)
         XCTAssertEqual(json.stringValue, "2147483647")
 
-        let n32767 = NSNumber(int: 32767)
+        let n32767 = NSNumber(value: 32767 as Int32)
         json.int32 = n32767.intValue
         XCTAssertTrue(json.int32! == n32767.intValue)
         XCTAssertTrue(json.int32Value == n32767.intValue)
@@ -316,7 +316,7 @@ class NumberTests: XCTestCase {
         XCTAssertEqual(json.numberValue, n32767)
         XCTAssertEqual(json.stringValue, "32767")
 
-        let nm2147483648 = NSNumber(int: -2147483648)
+        let nm2147483648 = NSNumber(value: -2147483648 as Int32)
         json.int32Value = nm2147483648.intValue
         XCTAssertTrue(json.int32! == nm2147483648.intValue)
         XCTAssertTrue(json.int32Value == nm2147483648.intValue)
@@ -326,7 +326,7 @@ class NumberTests: XCTestCase {
     }
 
     func testUInt32() {
-        let n2147483648 = NSNumber(unsignedInt: 2147483648)
+        let n2147483648 = NSNumber(value: 2147483648 as UInt32)
         var json = JSON(n2147483648)
         XCTAssertTrue(json.uInt32! == n2147483648.unsignedIntValue)
         XCTAssertTrue(json.uInt32Value == n2147483648.unsignedIntValue)
@@ -334,7 +334,7 @@ class NumberTests: XCTestCase {
         XCTAssertEqual(json.numberValue, n2147483648)
         XCTAssertEqual(json.stringValue, "2147483648")
 
-        let n32767 = NSNumber(unsignedInt: 32767)
+        let n32767 = NSNumber(value: 32767 as UInt32)
         json.uInt32 = n32767.unsignedIntValue
         XCTAssertTrue(json.uInt32! == n32767.unsignedIntValue)
         XCTAssertTrue(json.uInt32Value == n32767.unsignedIntValue)
@@ -342,7 +342,7 @@ class NumberTests: XCTestCase {
         XCTAssertEqual(json.numberValue, n32767)
         XCTAssertEqual(json.stringValue, "32767")
 
-        let n0 = NSNumber(unsignedInt: 0)
+        let n0 = NSNumber(value: 0 as UInt32)
         json.uInt32Value = n0.unsignedIntValue
         XCTAssertTrue(json.uInt32! == n0.unsignedIntValue)
         XCTAssertTrue(json.uInt32Value == n0.unsignedIntValue)
@@ -352,7 +352,7 @@ class NumberTests: XCTestCase {
     }
 
     func testInt64() {
-        let int64Max = NSNumber(longLong: INT64_MAX)
+        let int64Max = NSNumber(value: INT64_MAX as Int64)
         var json = JSON(int64Max)
         XCTAssertTrue(json.int64! == int64Max.longLongValue)
         XCTAssertTrue(json.int64Value == int64Max.longLongValue)
@@ -360,7 +360,7 @@ class NumberTests: XCTestCase {
         XCTAssertEqual(json.numberValue, int64Max)
         XCTAssertEqual(json.stringValue, int64Max.stringValue)
 
-        let n32767 = NSNumber(longLong: 32767)
+        let n32767 = NSNumber(value: 32767 as Int64)
         json.int64 = n32767.longLongValue
         XCTAssertTrue(json.int64! == n32767.longLongValue)
         XCTAssertTrue(json.int64Value == n32767.longLongValue)
@@ -368,7 +368,7 @@ class NumberTests: XCTestCase {
         XCTAssertEqual(json.numberValue, n32767)
         XCTAssertEqual(json.stringValue, "32767")
 
-        let int64Min = NSNumber(longLong: (INT64_MAX - 1) * -1)
+        let int64Min = NSNumber(value: (INT64_MAX - 1) * -1 as Int64)
         json.int64Value = int64Min.longLongValue
         XCTAssertTrue(json.int64! == int64Min.longLongValue)
         XCTAssertTrue(json.int64Value == int64Min.longLongValue)
@@ -378,7 +378,7 @@ class NumberTests: XCTestCase {
     }
 
     func testUInt64() {
-        let uInt64Max = NSNumber(unsignedLongLong: UINT64_MAX)
+        let uInt64Max = NSNumber(value: UINT64_MAX as UInt64)
         var json = JSON(uInt64Max)
         XCTAssertTrue(json.uInt64! == uInt64Max.unsignedLongLongValue)
         XCTAssertTrue(json.uInt64Value == uInt64Max.unsignedLongLongValue)
@@ -386,7 +386,7 @@ class NumberTests: XCTestCase {
         XCTAssertEqual(json.numberValue, uInt64Max)
         XCTAssertEqual(json.stringValue, uInt64Max.stringValue)
 
-        let n32767 = NSNumber(longLong: 32767)
+        let n32767 = NSNumber(value: 32767 as Int64)
         json.int64 = n32767.longLongValue
         XCTAssertTrue(json.int64! == n32767.longLongValue)
         XCTAssertTrue(json.int64Value == n32767.longLongValue)

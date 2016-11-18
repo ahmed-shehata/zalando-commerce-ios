@@ -4,7 +4,7 @@
 
 import Foundation
 
-public protocol AtlasErrorType: ErrorType {
+public protocol AtlasErrorType: Error {
 
     var localizedTitleKey: String { get }
     var localizedMessageKey: String { get }
@@ -13,8 +13,8 @@ public protocol AtlasErrorType: ErrorType {
 
 public extension AtlasErrorType {
 
-    var localizedTitleKey: String { return "\(self.dynamicType).title.\(self)" }
-    var localizedMessageKey: String { return "\(self.dynamicType).message.\(self)" }
+    var localizedTitleKey: String { return "\(type(of: self)).title.\(self)" }
+    var localizedMessageKey: String { return "\(type(of: self)).message.\(self)" }
 
 }
 
@@ -37,7 +37,7 @@ public enum AtlasAPIError: AtlasErrorType {
     case http(status: HTTPStatus, details: String?)
     case backend(status: Int?, type: String?, title: String?, details: String?)
 
-    case checkoutFailed(cart: Cart?, error: ErrorType)
+    case checkoutFailed(cart: Cart?, error: Error)
 
 }
 

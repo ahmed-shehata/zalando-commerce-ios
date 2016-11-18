@@ -54,13 +54,13 @@ class RawRepresentableTests: XCTestCase {
         XCTAssertEqual(objectTrue as? Int, 1)
         XCTAssertEqual(objectTrue as? Double, 1.0)
         XCTAssertEqual(objectTrue as? Bool, true)
-        XCTAssertEqual(objectTrue as? NSNumber, NSNumber(bool: true))
+        XCTAssertEqual(objectTrue as? NSNumber, NSNumber(value: true as Bool))
 
         let objectFalse: AnyObject = jsonFalse.rawValue
         XCTAssertEqual(objectFalse as? Int, 0)
         XCTAssertEqual(objectFalse as? Double, 0.0)
         XCTAssertEqual(objectFalse as? Bool, false)
-        XCTAssertEqual(objectFalse as? NSNumber, NSNumber(bool: false))
+        XCTAssertEqual(objectFalse as? NSNumber, NSNumber(value: false as Bool))
     }
 
     func testString() {

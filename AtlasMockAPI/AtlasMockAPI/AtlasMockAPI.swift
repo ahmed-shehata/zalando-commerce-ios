@@ -33,7 +33,7 @@ public final class AtlasMockAPI {
     }
 
     public static var hasMockedAPIStarted: Bool {
-        return isStarted || ProcessInfo().arguments.contains(AtlasMockAPI.isEnabledFlag)
+        return isStarted || ProcessInfo.processInfo.arguments.contains(AtlasMockAPI.isEnabledFlag)
     }
 
 }

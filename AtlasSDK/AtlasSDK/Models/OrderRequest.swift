@@ -14,7 +14,7 @@ public struct OrderRequest: JSONRepresentable {
 
     public func toJSON() -> Dictionary<String, AnyObject> {
         return [
-            "checkout_id": self.checkoutId
+            "checkout_id": self.checkoutId as AnyObject
         ]
     }
 

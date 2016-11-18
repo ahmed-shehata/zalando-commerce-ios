@@ -6,7 +6,7 @@ import Foundation
 
 enum AppLogSeverity: Int {
 
-    case Debug, Message, Error
+    case debug, message, error
 
 }
 
@@ -18,17 +18,17 @@ protocol LoggerType {
 
     var verbose: Bool { get }
     var severity: AppLogSeverity { get set }
-    var outputStream: OutputStreamType { get set }
+    var outputStream: TextOutputStream { get set }
 
     // swiftlint:disable:next function_parameter_count
-    func log(severity: AppLogSeverity, verbose: Bool?, function: String, filePath: String, fileLine: Int, _ items: [Any])
+    func log(as severity: AppLogSeverity, verbose: Bool?, function: String, filePath: String, fileLine: Int, _ items: [Any])
 
 }
 
 extension LoggerType {
 
-    func formatMessage(items: [Any], verbose: Bool = false) -> String {
-        return items.map { "\($0)" }.joinWithSeparator(" ")
+    func formatMessage(_ items: [Any], verbose: Bool = false) -> String {
+        return items.map { "\($0)" }.joined(separator: " ")
     }
 
 }

@@ -18,22 +18,18 @@ extension String: URLStringConvertible {
 
 }
 
-extension NSURL: URLStringConvertible {
+extension URL: URLStringConvertible {
 
     public var URLString: String {
-        #if swift(>=2.3)
-            return absoluteString! // swiftlint:disable:this force_unwrapping
-        #else
-            return absoluteString
-        #endif
+        return absoluteString
     }
 
 }
 
-extension NSURLComponents: URLStringConvertible {
+extension URLComponents: URLStringConvertible {
 
     public var URLString: String {
-        return validURL.URLString
+        return validUrl.URLString
     }
 
 }

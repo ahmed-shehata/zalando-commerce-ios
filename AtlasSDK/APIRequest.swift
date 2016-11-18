@@ -7,33 +7,36 @@ import Foundation
 public struct APIRequest<T> {
 
     var requestBuilder: RequestBuilder
-    let successHandler: JSONResponse -> T?
-    var completions: [AtlasAPIResult<T> -> Void]
+    let successHandler: (JSONResponse) -> T?
+    var completions: [(AtlasAPIResult<T>) -> Void]
 
-    init(requestBuilder: RequestBuilder, successHandler: JSONResponse -> T?) {
+    init(requestBuilder: RequestBuilder, successHandler: @escaping (JSONResponse) -> T?) {
         self.requestBuilder = requestBuilder
         self.successHandler = successHandler
         completions = []
     }
 
-    public mutating func execute(completion: AtlasAPIResult<T> -> Void) {
-        completions.append(completion)
+    public mutating func execute(_ completion: @escaping (AtlasAPIResult<T>) -> Void) {
+        self.completions.append(completion)
+
+        let completions = self.completions.reversed()
+        let successHandler = self.successHandler
+
         requestBuilder.execute { result in
             switch result {
             case .failure(let error):
-                AtlasLogger.logError("FAILED CALL", self.requestBuilder)
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.completions.reverse().forEach { $0(.failure(error, self)) }
+                DispatchQueue.main.async {
+                    completions.forEach { $0(.failure(error, self)) }
                 }
 
             case .success(let response):
-                if let parsedResponse = self.successHandler(response) {
-                    dispatch_async(dispatch_get_main_queue()) {
-                        self.completions.reverse().forEach { $0(.success(parsedResponse)) }
+                if let parsedResponse = successHandler(response) {
+                    DispatchQueue.main.async {
+                        completions.forEach { $0(.success(parsedResponse)) }
                     }
                 } else {
-                    dispatch_async(dispatch_get_main_queue()) {
-                        self.completions.reverse().forEach { $0(.failure(AtlasAPIError.invalidResponseFormat, self)) }
+                    DispatchQueue.main.async {
+                        completions.forEach { $0(.failure(AtlasAPIError.invalidResponseFormat, self)) }
                     }
                 }
             }

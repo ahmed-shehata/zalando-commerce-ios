@@ -4,7 +4,7 @@
 
 struct CreateOrderEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
 
-    let serviceURL: NSURL
+    let serviceURL: URL
     let method: HTTPMethod = .POST
     let path = "orders"
     let contentType = "application/x.zalando.customer.order.create+json"

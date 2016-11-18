@@ -9,9 +9,9 @@ protocol Endpoint: CustomStringConvertible {
     var contentType: String { get }
     var acceptedContentType: String { get }
 
-    var URL: NSURL { get }
+    var url: Foundation.URL { get }
 
-    var queryItems: [NSURLQueryItem]? { get }
+    var queryItems: [URLQueryItem]? { get }
     var parameters: [String: AnyObject]? { get }
     var headers: [String: AnyObject]? { get }
 
@@ -25,7 +25,7 @@ extension Endpoint {
     var contentType: String { return "application/json" }
     var acceptedContentType: String { return "application/json" }
 
-    var queryItems: [NSURLQueryItem]? { return nil }
+    var queryItems: [URLQueryItem]? { return nil }
     var parameters: [String: AnyObject]? { return nil }
     var headers: [String: AnyObject]? { return nil }
 
@@ -38,15 +38,15 @@ extension Endpoint {
         let params: String = {
             guard let parameters = parameters else { return nil }
             do {
-                let data = try NSJSONSerialization.dataWithJSONObject(parameters, options: [.PrettyPrinted])
-                return String(data: data, encoding: NSUTF8StringEncoding)
+                let data = try JSONSerialization.data(withJSONObject: parameters, options: [.prettyPrinted])
+                return String(data: data, encoding: String.Encoding.utf8)
             } catch let error {
                 AtlasLogger.logError(error)
                 return nil
             }
         }() ?? "<NO PARAMETERS>"
 
-        return "\(method) \(URL)\n"
+        return "\(method) \(url)\n"
             + "Content-Type: \(contentType)\n"
             + "Accepted: \(acceptedContentType)\n\n"
             + params

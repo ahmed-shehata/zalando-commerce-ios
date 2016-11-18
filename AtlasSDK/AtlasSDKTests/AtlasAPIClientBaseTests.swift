@@ -24,7 +24,7 @@ class AtlasAPIClientBaseTests: XCTestCase {
         try! AtlasMockAPI.stopServer()
     }
 
-    private var clientOptions: Options {
+    fileprivate var clientOptions: Options {
         return Options(clientId: "atlas_Y2M1MzA",
             salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
             useSandbox: true,
@@ -32,7 +32,7 @@ class AtlasAPIClientBaseTests: XCTestCase {
             configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
     }
 
-    func waitUntilAtlasAPIClientIsConfigured(actions: (done: () -> Void, client: AtlasAPIClient) -> Void) {
+    func waitUntilAtlasAPIClientIsConfigured(_ actions: (_ done: () -> Void, _ client: AtlasAPIClient) -> Void) {
         waitUntil(timeout: 10) { done in
             Atlas.configure(self.clientOptions) { result in
                 switch result {
@@ -46,8 +46,8 @@ class AtlasAPIClientBaseTests: XCTestCase {
         }
     }
 
-    func dataWithJSONObject(object: AnyObject) -> NSData {
-        return try! NSJSONSerialization.dataWithJSONObject(object, options: [])
+    func data(withJSONObject: AnyObject) -> Data {
+        return try! JSONSerialization.data(withJSONObject: object, options: [])
     }
 
     func mockedAtlasAPIClient(forURL url: NSURL,
@@ -89,7 +89,7 @@ class AtlasAPIClientBaseTests: XCTestCase {
             error = NSError(domain: "NSURLErrorDomain", code: errorCode, userInfo: nil)
         }
 
-        client.urlSession = URLSessionMock(data: data, response: NSHTTPURLResponse(URL: url, statusCode: status.rawValue), error: error)
+        client.urlSession = URLSessionMock(data: data, response: HTTPURLResponse(URL: url, statusCode: status.rawValue), error: error)
 
         return client
     }

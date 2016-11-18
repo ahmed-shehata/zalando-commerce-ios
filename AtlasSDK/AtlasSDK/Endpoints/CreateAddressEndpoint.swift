@@ -6,7 +6,7 @@ import Foundation
 
 struct CreateAddressEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
 
-    let serviceURL: NSURL
+    let serviceURL: URL
     let method: HTTPMethod = .POST
     let path = "addresses"
     let acceptedContentType = "application/x.zalando.customer.address.create.response+json"

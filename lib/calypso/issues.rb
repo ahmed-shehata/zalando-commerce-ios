@@ -36,7 +36,7 @@ module Calypso
     desc 'clear <project_name> <column_name>', 'Clear issues in given project / column'
     def clear(project_name, column_name)
       log "Issues in \"#{project_name}/#{column_name}\":"
-      
+
       issues = column_issues(project_name: project_name, column_name: column_name)
       log issues.map { |issue| "  * #{issue['title']} - #{issue['html_url']}\n" }
 

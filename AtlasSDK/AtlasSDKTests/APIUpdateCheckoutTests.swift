@@ -10,7 +10,7 @@ import Nimble
 
 class APIUpdateCheckoutTests: AtlasAPIClientBaseTests {
 
-    private let addressId = "6702759"
+    fileprivate let addressId = "6702759"
 
     func testUpdateBillingAddress() {
         waitUntilAtlasAPIClientIsConfigured { done, client in

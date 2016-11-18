@@ -8,18 +8,19 @@ public struct PaymentMethod {
 
     public let method: String?
     public let metadata: [String: AnyObject]?
+
 }
 
 extension PaymentMethod: JSONInitializable {
 
-    private struct Keys {
+    fileprivate struct Keys {
         static let method = "method"
         static let metadata = "metadata"
     }
 
     init?(json: JSON) {
         self.init(method: json[Keys.method].string,
-            metadata: json[Keys.metadata].dictionaryObject)
+            metadata: json[Keys.metadata].dictionaryObject as [String : AnyObject]?)
     }
 
 }

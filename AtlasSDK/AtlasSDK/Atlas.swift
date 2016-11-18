@@ -4,11 +4,11 @@
 
 import Foundation
 
-public typealias AtlasClientCompletion = AtlasResult<AtlasAPIClient> -> Void
+public typealias AtlasClientCompletion = (AtlasResult<AtlasAPIClient>) -> Void
 
 public struct Atlas {
 
-    public static func configure(options: Options? = nil, completion: AtlasClientCompletion) {
+    public static func configure(options: Options? = nil, completion: @escaping AtlasClientCompletion) {
         let options = options ?? Options()
         do {
             try options.validate()
@@ -29,15 +29,15 @@ public struct Atlas {
         }
     }
 
-    public static func login(token: String) {
-        APIAccessToken.store(token)
+    public static func authorize(withToken token: String) {
+        APIAccessToken.store(token: token)
     }
 
-    public static func isUserLoggedIn() -> Bool {
+    public static func isAuthorized() -> Bool {
         return APIAccessToken.retrieve() != nil
     }
 
-    public static func logoutUser() {
+    public static func deauthorize() {
         APIAccessToken.delete()
     }
 

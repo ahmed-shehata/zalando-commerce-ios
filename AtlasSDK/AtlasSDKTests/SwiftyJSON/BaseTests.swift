@@ -25,14 +25,14 @@ import XCTest
 
 class BaseTests: XCTestCase {
 
-    var testData: NSData!
+    var testData: Data!
 
     override func setUp() {
 
         super.setUp()
 
-        if let file = NSBundle(forClass: BaseTests.self).pathForResource("Tests", ofType: "json") {
-            self.testData = NSData(contentsOfFile: file)
+        if let file = Bundle(for: BaseTests.self).path(forResource: "Tests", ofType: "json") {
+            self.testData = try? Data(contentsOf: URL(fileURLWithPath: file))
         } else {
             XCTFail("Can't find the test JSON file")
         }
@@ -48,11 +48,11 @@ class BaseTests: XCTestCase {
         XCTAssertEqual(JSON("123").description, "123")
         XCTAssertEqual(JSON(["1": "2"])["1"].string!, "2")
         let dictionary = NSMutableDictionary()
-        dictionary.setObject(NSNumber(double: 1.0), forKey: "number" as NSString)
+        dictionary.setObject(NSNumber(value: 1.0 as Double), forKey: "number" as NSString)
         dictionary.setObject(NSNull(), forKey: "null" as NSString)
         _ = JSON(dictionary)
         do {
-            let object: AnyObject = try NSJSONSerialization.JSONObjectWithData(self.testData, options: [])
+            let object: AnyObject = try JSONSerialization.jsonObject(with: self.testData, options: [])
             let json2 = JSON(object)
             XCTAssertEqual(json0, json2)
         } catch _ {
@@ -121,13 +121,13 @@ class BaseTests: XCTestCase {
         let user_name = user["name"].string
         let user_profile_image_url = user["profile_image_url"].URL
         XCTAssert(user_name == "OAuth Dancer")
-        XCTAssert(user_profile_image_url == NSURL(string: "http://a0.twimg.com/profile_images/730275945/oauth-dancer_normal.jpg"))
+        XCTAssert(user_profile_image_url == URL(string: "http://a0.twimg.com/profile_images/730275945/oauth-dancer_normal.jpg"))
 
         let user_dictionary = json[0]["user"].dictionary
         let user_dictionary_name = user_dictionary?["name"]?.string
         let user_dictionary_name_profile_image_url = user_dictionary?["profile_image_url"]?.URL
         XCTAssert(user_dictionary_name == "OAuth Dancer")
-        XCTAssert(user_dictionary_name_profile_image_url == NSURL(string: "http://a0.twimg.com/profile_images/730275945/oauth-dancer_normal.jpg"))
+        XCTAssert(user_dictionary_name_profile_image_url == URL(string: "http://a0.twimg.com/profile_images/730275945/oauth-dancer_normal.jpg"))
     }
 
     func testSequenceType() {
@@ -259,14 +259,14 @@ class BaseTests: XCTestCase {
     }
 
     func testNumberCompare() {
-        XCTAssertEqual(NSNumber(double: 888332), NSNumber(int: 888332))
-        XCTAssertNotEqual(NSNumber(double: 888332.1), NSNumber(int: 888332))
-        XCTAssertLessThan(NSNumber(int: 888332).doubleValue, NSNumber(double: 888332.1).doubleValue)
-        XCTAssertGreaterThan(NSNumber(double: 888332.1).doubleValue, NSNumber(int: 888332).doubleValue)
-        XCTAssertFalse(NSNumber(double: 1) == NSNumber(bool: true))
-        XCTAssertFalse(NSNumber(int: 0) == NSNumber(bool: false))
-        XCTAssertEqual(NSNumber(bool: false), NSNumber(bool: false))
-        XCTAssertEqual(NSNumber(bool: true), NSNumber(bool: true))
+        XCTAssertEqual(NSNumber(value: 888332 as Double), NSNumber(value: 888332 as Int32))
+        XCTAssertNotEqual(NSNumber(value: 888332.1 as Double), NSNumber(value: 888332 as Int32))
+        XCTAssertLessThan(NSNumber(value: 888332 as Int32).doubleValue, NSNumber(value: 888332.1 as Double).doubleValue)
+        XCTAssertGreaterThan(NSNumber(value: 888332.1 as Double).doubleValue, NSNumber(value: 888332 as Int32).doubleValue)
+        XCTAssertFalse(NSNumber(value: 1 as Double) == NSNumber(value: true as Bool))
+        XCTAssertFalse(NSNumber(value: 0 as Int32) == NSNumber(value: false as Bool))
+        XCTAssertEqual(NSNumber(value: false as Bool), NSNumber(value: false as Bool))
+        XCTAssertEqual(NSNumber(value: true as Bool), NSNumber(value: true as Bool))
     }
 
 }

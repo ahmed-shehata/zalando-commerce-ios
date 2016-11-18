@@ -4,56 +4,57 @@
 
 import Foundation
 
-extension NSMutableURLRequest {
+extension URLRequest {
 
     func curlCommandRepresentation() -> String {
         var curlComponents = ["curl -i"]
 
-        guard let URL = self.URL else { return "curl command could not be created" }
+        guard let URL = self.url else { return "curl command could not be created" }
 
-        curlComponents.append("-X \(self.HTTPMethod)")
+        curlComponents.append("-X \(self.httpMethod)")
 
         self.allHTTPHeaderFields?.forEach {
             curlComponents.append("-H \"\($0): \($1)\"")
         }
 
-        if let HTTPBodyData = self.HTTPBody,
-            HTTPBody = String(data: HTTPBodyData, encoding: NSUTF8StringEncoding) {
-                var escapedBody = HTTPBody.stringByReplacingOccurrencesOfString("\\\"", withString: "\\\\\"")
-                escapedBody = escapedBody.stringByReplacingOccurrencesOfString("\"", withString: "\\\"")
+        if let HTTPBodyData = self.httpBody,
+            let HTTPBody = String(data: HTTPBodyData, encoding: String.Encoding.utf8) {
+                var escapedBody = HTTPBody.replacingOccurrences(of: "\\\"", with: "\\\\\"")
+                escapedBody = escapedBody.replacingOccurrences(of: "\"", with: "\\\"")
 
                 curlComponents.append("-d \"\(escapedBody)\"")
         }
 
         curlComponents.append("\"\(URL.URLString)\"")
 
-        return curlComponents.joinWithSeparator(" \\\n\t")
+        return curlComponents.joined(separator: " \\\n\t")
     }
 
-    func debugLog() -> NSMutableURLRequest {
+    func debugLog() -> URLRequest {
         AtlasLogger.logDebug(curlCommandRepresentation())
         return self
     }
 
-    func authorize(withToken token: String?) -> NSMutableURLRequest {
+    @discardableResult
+    mutating func authorize(withToken token: String?) -> URLRequest {
         if let token = token {
             self.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         }
         return self
     }
 
-    convenience init(endpoint: Endpoint) throws {
-        self.init(URL: endpoint.URL)
+    init(endpoint: Endpoint) throws {
+        self.init(url: endpoint.url)
         self.setHeaders(from: endpoint)
-        self.HTTPMethod = endpoint.method.rawValue
-        self.HTTPBody = try NSData(json: endpoint.parameters)
+        self.httpMethod = endpoint.method.rawValue
+        self.httpBody = try Data(json: endpoint.parameters)
     }
 
-    private func setHeaders(from endpoint: Endpoint) {
+    fileprivate mutating func setHeaders(from endpoint: Endpoint) {
         var headers = [String: String]()
 
         let acceptedContentTypes = [endpoint.acceptedContentType, "application/x.problem+json"].flatMap { $0 }
-        headers["Accept"] = acceptedContentTypes.joinWithSeparator(",")
+        headers["Accept"] = acceptedContentTypes.joined(separator: ",")
         headers["Content-Type"] = endpoint.contentType
 
         headers.forEach { header, value in
@@ -61,7 +62,7 @@ extension NSMutableURLRequest {
         }
 
         endpoint.headers?.forEach { header, value in
-            self.setValue(String(value), forHTTPHeaderField: header)
+            self.setValue(String(describing: value), forHTTPHeaderField: header)
         }
     }
 

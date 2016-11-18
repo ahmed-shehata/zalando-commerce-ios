@@ -4,7 +4,7 @@
 
 struct UpdateCheckoutEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
 
-    let serviceURL: NSURL
+    let serviceURL: URL
     let method: HTTPMethod = .PUT
     var path: String { return "checkouts/\(checkoutId)" }
     let contentType = "application/x.zalando.customer.checkout.update+json"
