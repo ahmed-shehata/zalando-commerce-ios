@@ -9,8 +9,7 @@ typealias AddressViewModelCreationStrategyCompletion = (addressViewModel: Addres
 
 protocol AddressViewModelCreationStrategy {
 
-    var completion: AddressViewModelCreationStrategyCompletion? { get set }
-
+    func setStrategyCompletion(completion: AddressViewModelCreationStrategyCompletion?)
     func execute()
 
 }

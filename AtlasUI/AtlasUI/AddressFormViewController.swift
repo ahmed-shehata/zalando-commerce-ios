@@ -48,6 +48,16 @@ class AddressFormViewController: UIViewController {
         configureNavigation()
     }
 
+    func displayView() {
+        if viewModel.layout.displayViewModally {
+            let navigationController = UINavigationController(rootViewController: self)
+            navigationController.modalPresentationStyle = .OverCurrentContext
+            AtlasUIViewController.instance?.showViewController(navigationController, sender: nil)
+        } else {
+            AtlasUIViewController.instance?.mainNavigationController.pushViewController(self, animated: true)
+        }
+    }
+
 }
 
 extension AddressFormViewController: UIBuilder {
@@ -63,7 +73,7 @@ extension AddressFormViewController: UIBuilder {
         addressStackView.fillInSuperView()
         addressStackView.setWidth(equalToView: scrollView)
     }
-    
+
 }
 
 extension AddressFormViewController {
@@ -100,11 +110,11 @@ extension AddressFormViewController {
     private func dismissView(animated: Bool, completion: (() -> Void)? = nil) {
         view.endEditing(true)
 
-        if viewModel.layout.dismissViewByPoping {
+        if viewModel.layout.displayViewModally {
+            dismissViewControllerAnimated(animated, completion: completion)
+        } else {
             navigationController?.popViewControllerAnimated(animated)
             completion?()
-        } else {
-            dismissViewControllerAnimated(animated, completion: completion)
         }
     }
 
@@ -123,4 +133,3 @@ extension AddressFormViewController: AddressFormActionHandlerDelegate {
     }
 
 }
-

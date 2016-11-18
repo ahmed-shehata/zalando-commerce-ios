@@ -7,20 +7,20 @@ import Foundation
 protocol AddressFormLayout {
 
     var displayCancelButton: Bool { get }
-    var dismissViewByPoping: Bool { get }
+    var displayViewModally: Bool { get }
 
 }
 
 struct CreateAddressFormLayout: AddressFormLayout {
 
     let displayCancelButton: Bool = true
-    let dismissViewByPoping: Bool = false
+    let displayViewModally: Bool = true
 
 }
 
 struct UpdateAddressFormLayout: AddressFormLayout {
 
     let displayCancelButton: Bool = false
-    var dismissViewByPoping: Bool = true
+    var displayViewModally: Bool = false
 
 }

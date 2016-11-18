@@ -50,5 +50,5 @@ extension CreateAddressRequest {
         self.defaultBilling = dataModel.isDefaultBilling
         self.defaultShipping = dataModel.isDefaultShipping
     }
-    
+
 }

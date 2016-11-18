@@ -29,7 +29,7 @@ extension AddressFormActionHandler {
         }
 
         AtlasUIClient.checkAddress(request) { result in
-            guard let checkAddressResponse = result.process() else  {
+            guard let checkAddressResponse = result.process() else {
                 self.delegate?.addressProcessingFinished()
                 return
             }
@@ -70,6 +70,5 @@ extension CheckAddress {
         self.city = city
         self.countryCode = countryCode
     }
-    
-}
 
+}

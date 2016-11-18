@@ -6,8 +6,12 @@ import Foundation
 
 class BillingAddressViewModelCreationStrategy: AddressViewModelCreationStrategy {
 
-    var completion: AddressViewModelCreationStrategyCompletion?
+    private var completion: AddressViewModelCreationStrategyCompletion?
     private var availableDataModelCreationStrategies = [AddressDataModelCreationStrategy]()
+
+    func setStrategyCompletion(completion: AddressViewModelCreationStrategyCompletion?) {
+        self.completion = completion
+    }
 
     func execute() {
         let standardStrategy = StandardAddressDataModelCreationStrategy { [weak self] dataModel in
