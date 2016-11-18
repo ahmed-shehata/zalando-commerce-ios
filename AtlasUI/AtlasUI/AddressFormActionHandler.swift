@@ -5,19 +5,16 @@
 import Foundation
 import AtlasSDK
 
-typealias AddressFormActionHandlerCompletion = (EquatableAddress) -> Void
-
 protocol AddressFormActionHandlerDelegate: NSObjectProtocol {
 
     func addressProcessingFinished()
-    func dismissView(animated: Bool, completion: (() -> Void)?)
+    func dismissView(withAddress address: EquatableAddress, animated: Bool)
 
 }
 
 protocol AddressFormActionHandler {
 
     weak var delegate: AddressFormActionHandlerDelegate? { get set }
-    var completion: AddressFormActionHandlerCompletion? { get set }
 
     func procces(withValidModel dataModel: AddressFormDataModel)
 

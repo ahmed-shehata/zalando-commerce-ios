@@ -8,7 +8,6 @@ import AtlasSDK
 struct LoggedInUpdateAddressActionHandler: AddressFormActionHandler {
 
     weak var delegate: AddressFormActionHandlerDelegate?
-    var completion: AddressFormActionHandlerCompletion?
 
     func procces(withValidModel dataModel: AddressFormDataModel) {
         guard let
@@ -25,9 +24,7 @@ struct LoggedInUpdateAddressActionHandler: AddressFormActionHandler {
                 return
             }
 
-            self.delegate?.dismissView(true) {
-                self.completion?(address)
-            }
+            self.delegate?.dismissView(withAddress: address, animated: true)
         }
     }
 

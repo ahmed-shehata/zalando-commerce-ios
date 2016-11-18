@@ -5,6 +5,8 @@
 import UIKit
 import AtlasSDK
 
+typealias AddressFormCompletion = EquatableAddress -> Void
+
 class AddressFormViewController: UIViewController {
 
     let scrollView: KeyboardScrollView = {
@@ -24,10 +26,12 @@ class AddressFormViewController: UIViewController {
 
     private let viewModel: AddressFormViewModel
     private let actionHandler: AddressFormActionHandler?
+    private let completion: AddressFormCompletion?
 
-    init(viewModel: AddressFormViewModel, actionHandler: AddressFormActionHandler?) {
+    init(viewModel: AddressFormViewModel, actionHandler: AddressFormActionHandler?, completion: AddressFormCompletion?) {
         self.viewModel = viewModel
         self.actionHandler = actionHandler
+        self.completion = completion
         super.init(nibName: nil, bundle: nil)
         self.actionHandler?.delegate = self
     }
@@ -80,7 +84,7 @@ extension AddressFormViewController {
     }
 
     private dynamic func cancelButtonPressed() {
-        dismissView(true) { }
+        dismissView(true)
     }
 
     private dynamic func submitButtonPressed() {
@@ -93,6 +97,17 @@ extension AddressFormViewController {
         actionHandler?.submitButtonPressed(viewModel.dataModel)
     }
 
+    private func dismissView(animated: Bool, completion: (() -> Void)? = nil) {
+        view.endEditing(true)
+
+        if viewModel.layout.dismissViewByPoping {
+            navigationController?.popViewControllerAnimated(animated)
+            completion?()
+        } else {
+            dismissViewControllerAnimated(animated, completion: completion)
+        }
+    }
+
 }
 
 extension AddressFormViewController: AddressFormActionHandlerDelegate {
@@ -101,14 +116,9 @@ extension AddressFormViewController: AddressFormActionHandlerDelegate {
         navigationItem.rightBarButtonItem?.enabled = true
     }
 
-    func dismissView(animated: Bool, completion: (() -> Void)?) {
-        view.endEditing(true)
-
-        if viewModel.layout.dismissViewByPoping {
-            navigationController?.popViewControllerAnimated(animated)
-            completion?()
-        } else {
-            dismissViewControllerAnimated(animated, completion: completion)
+    func dismissView(withAddress address: EquatableAddress, animated: Bool) {
+        dismissView(animated) { [weak self] in
+            self?.completion?(address)
         }
     }
 

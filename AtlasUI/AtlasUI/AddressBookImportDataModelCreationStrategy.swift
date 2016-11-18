@@ -6,11 +6,11 @@ import Foundation
 import ContactsUI
 import AtlasSDK
 
-class AddressBookImportCreationStrategy: NSObject, AddressFormCreationStrategy {
+class AddressBookImportDataModelCreationStrategy: NSObject, AddressDataModelCreationStrategy {
 
-    let completion: AddressFormCreationStrategyCompletion
+    let completion: AddressDataModelCreationStrategyCompletion
 
-    required init(completion: AddressFormCreationStrategyCompletion) {
+    required init(completion: AddressDataModelCreationStrategyCompletion) {
         self.completion = completion
     }
 
@@ -25,7 +25,7 @@ class AddressBookImportCreationStrategy: NSObject, AddressFormCreationStrategy {
 
 }
 
-extension AddressBookImportCreationStrategy: CNContactPickerDelegate {
+extension AddressBookImportDataModelCreationStrategy: CNContactPickerDelegate {
 
     func contactPicker(picker: CNContactPickerViewController, didSelectContactProperty contactProperty: CNContactProperty) {
         picker.dismissViewControllerAnimated(true) { [weak self] in

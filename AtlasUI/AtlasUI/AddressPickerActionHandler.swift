@@ -7,6 +7,8 @@ import AtlasSDK
 
 protocol AddressPickerActionHandler {
 
+    var addressViewModelCreationStrategy: AddressViewModelCreationStrategy? { get set }
+
     func createAddress()
     func selectAddress(address: EquatableAddress)
     func updateAddress(address: EquatableAddress)
