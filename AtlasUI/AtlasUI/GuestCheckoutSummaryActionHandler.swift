@@ -5,7 +5,7 @@
 import UIKit
 import AtlasSDK
 
-class GuestCheckoutActionHandler: CheckoutSummaryActionHandler {
+class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
 
     weak var dataSource: CheckoutSummaryActionHandlerDataSource?
     weak var delegate: CheckoutSummaryActionHandlerDelegate?
@@ -34,29 +34,29 @@ class GuestCheckoutActionHandler: CheckoutSummaryActionHandler {
     }
 
     func showShippingAddressSelectionScreen() {
-        let addressViewController = AddressPickerViewController(initialAddresses: addresses, selectedAddress: shippingAddress)
-        addressViewController.addressUpdatedHandler = { self.addressUpdated($0) }
-        addressViewController.addressDeletedHandler = { self.addressDeleted($0) }
-        addressViewController.addressSelectedHandler = { self.selectShippingAddress($0) }
-        addressViewController.addressCreationStrategy = ShippingAddressCreationStrategy()
-        addressViewController.title = Localizer.string("addressListView.title.shipping")
-        AtlasUIViewController.instance?.mainNavigationController.pushViewController(addressViewController, animated: true)
+//        let addressViewController = AddressPickerViewController(initialAddresses: addresses, selectedAddress: shippingAddress)
+//        addressViewController.addressUpdatedHandler = { self.addressUpdated($0) }
+//        addressViewController.addressDeletedHandler = { self.addressDeleted($0) }
+//        addressViewController.addressSelectedHandler = { self.selectShippingAddress($0) }
+//        addressViewController.addressCreationStrategy = ShippingAddressCreationStrategy()
+//        addressViewController.title = Localizer.string("addressListView.title.shipping")
+//        AtlasUIViewController.instance?.mainNavigationController.pushViewController(addressViewController, animated: true)
     }
 
     func showBillingAddressSelectionScreen() {
-        let addresses = self.addresses.filter { $0.pickupPoint == nil } .map { $0 }
-        let addressViewController = AddressPickerViewController(initialAddresses: addresses, selectedAddress: billingAddress)
-        addressViewController.addressUpdatedHandler = { self.addressUpdated($0) }
-        addressViewController.addressDeletedHandler = { self.addressDeleted($0) }
-        addressViewController.addressSelectedHandler = { self.selectBillingAddress($0) }
-        addressViewController.addressCreationStrategy = BillingAddressCreationStrategy()
-        addressViewController.title = Localizer.string("addressListView.title.billing")
-        AtlasUIViewController.instance?.mainNavigationController.pushViewController(addressViewController, animated: true)
+//        let addresses = self.addresses.filter { $0.pickupPoint == nil } .map { $0 }
+//        let addressViewController = AddressPickerViewController(initialAddresses: addresses, selectedAddress: billingAddress)
+//        addressViewController.addressUpdatedHandler = { self.addressUpdated($0) }
+//        addressViewController.addressDeletedHandler = { self.addressDeleted($0) }
+//        addressViewController.addressSelectedHandler = { self.selectBillingAddress($0) }
+//        addressViewController.addressCreationStrategy = BillingAddressCreationStrategy()
+//        addressViewController.title = Localizer.string("addressListView.title.billing")
+//        AtlasUIViewController.instance?.mainNavigationController.pushViewController(addressViewController, animated: true)
     }
 
 }
 
-extension GuestCheckoutActionHandler {
+extension GuestCheckoutSummaryActionHandler {
 
     private func addressUpdated(address: EquatableAddress) {
         if let shippingAddress = shippingAddress where shippingAddress == address {

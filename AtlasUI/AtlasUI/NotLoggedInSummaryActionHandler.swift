@@ -33,46 +33,46 @@ struct NotLoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
     }
 
     func showShippingAddressSelectionScreen() {
-        let addressViewController = AddressPickerViewController(initialAddresses: [], selectedAddress: nil)
-        addressViewController.addressSelectedHandler = { self.selectShippingAddress($0) }
-        addressViewController.addressCreationStrategy = ShippingAddressCreationStrategy()
-        addressViewController.title = Localizer.string("addressListView.title.shipping")
-        AtlasUIViewController.instance?.mainNavigationController.pushViewController(addressViewController, animated: true)
+//        let addressViewController = AddressPickerViewController(initialAddresses: [], selectedAddress: nil)
+//        addressViewController.addressSelectedHandler = { self.selectShippingAddress($0) }
+//        addressViewController.addressCreationStrategy = ShippingAddressCreationStrategy()
+//        addressViewController.title = Localizer.string("addressListView.title.shipping")
+//        AtlasUIViewController.instance?.mainNavigationController.pushViewController(addressViewController, animated: true)
     }
 
     func showBillingAddressSelectionScreen() {
-        let addressViewController = AddressPickerViewController(initialAddresses: [], selectedAddress: nil)
-        addressViewController.addressSelectedHandler = { self.selectShippingAddress($0) }
-        addressViewController.addressCreationStrategy = BillingAddressCreationStrategy()
-        addressViewController.title = Localizer.string("addressListView.title.billing")
-        AtlasUIViewController.instance?.mainNavigationController.pushViewController(addressViewController, animated: true)
+//        let addressViewController = AddressPickerViewController(initialAddresses: [], selectedAddress: nil)
+//        addressViewController.addressSelectedHandler = { self.selectShippingAddress($0) }
+//        addressViewController.addressCreationStrategy = BillingAddressCreationStrategy()
+//        addressViewController.title = Localizer.string("addressListView.title.billing")
+//        AtlasUIViewController.instance?.mainNavigationController.pushViewController(addressViewController, animated: true)
     }
 
 }
 
-extension NotLoggedInActionHandler {
-
-    private func selectShippingAddress(address: EquatableAddress) {
-        // TODO: need to get the email
-        switchToGuestCheckout(withEmail: "", shippingAddress: address, billingAddress: nil)
-    }
-
-    private func selectBillingAddress(address: EquatableAddress) {
-        // TODO: need to get the email
-        switchToGuestCheckout(withEmail: "", shippingAddress: nil, billingAddress: address)
-    }
-
-    private func switchToGuestCheckout(withEmail email: String, shippingAddress: EquatableAddress?, billingAddress: EquatableAddress?) {
-        guard let dataSource = dataSource, address = shippingAddress ?? billingAddress else { return }
-
-        let selectedArticleUnit = dataSource.dataModel.selectedArticleUnit
-        let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit,
-                                                 shippingAddress: shippingAddress,
-                                                 billingAddress: billingAddress)
-        let actionHandler = GuestCheckoutActionHandler(email: email, address: address)
-        delegate?.actionHandlerUpdated(actionHandler)
-        delegate?.dataModelUpdated(dataModel)
-        delegate?.layoutUpdated(GuestCheckoutLayout())
-    }
-
-}
+//extension NotLoggedInSummaryActionHandler {
+//
+//    private func selectShippingAddress(address: EquatableAddress) {
+//        // TODO: need to get the email
+//        switchToGuestCheckout(withEmail: "", shippingAddress: address, billingAddress: nil)
+//    }
+//
+//    private func selectBillingAddress(address: EquatableAddress) {
+//        // TODO: need to get the email
+//        switchToGuestCheckout(withEmail: "", shippingAddress: nil, billingAddress: address)
+//    }
+//
+//    private func switchToGuestCheckout(withEmail email: String, shippingAddress: EquatableAddress?, billingAddress: EquatableAddress?) {
+//        guard let dataSource = dataSource, address = shippingAddress ?? billingAddress else { return }
+//
+//        let selectedArticleUnit = dataSource.dataModel.selectedArticleUnit
+//        let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit,
+//                                                 shippingAddress: shippingAddress,
+//                                                 billingAddress: billingAddress)
+//        let actionHandler = GuestCheckoutSummaryActionHandler(email: email, address: address)
+//        delegate?.actionHandlerUpdated(actionHandler)
+//        delegate?.dataModelUpdated(dataModel)
+//        delegate?.layoutUpdated(GuestCheckoutLayout())
+//    }
+//
+//}
