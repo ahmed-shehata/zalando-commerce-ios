@@ -34,7 +34,7 @@ class AppSetup {
     }
 
     static func change(environmentToSandbox useSandbox: Bool) {
-        Atlas.logoutUser()
+        Atlas.deauthorizeToken()
         setAppOptions(prepareOptions(useSandbox: useSandbox))
     }
 
@@ -54,7 +54,7 @@ class AppSetup {
 
     private static func prepareApp() {
         if AtlasMockAPI.hasMockedAPIStarted {
-            Atlas.logoutUser()
+            Atlas.deauthorizeToken()
         }
     }
 

@@ -29,15 +29,15 @@ public struct Atlas {
         }
     }
 
-    public static func login(token: String) {
+    public static func authorizeWithToken(token: String) {
         APIAccessToken.store(token)
     }
 
-    public static func isUserLoggedIn() -> Bool {
+    public static func isAuthorized() -> Bool {
         return APIAccessToken.retrieve() != nil
     }
 
-    public static func logoutUser() {
+    public static func deauthorizeToken() {
         APIAccessToken.delete()
     }
 
