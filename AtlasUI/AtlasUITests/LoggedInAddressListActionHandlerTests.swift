@@ -14,12 +14,12 @@ class LoggedInAddressListActionHandlerTests: XCTestCase {
     let delegate = AddressListTableDelegate(tableView: UITableView(), addresses: [], selectedAddress: nil, viewController: nil)
     let window = UIWindow()
 
-    override func setUp() {
+    override class func setUp() {
         super.setUp()
         try! AtlasMockAPI.startServer()
     }
 
-    override func tearDown() {
+    override class func tearDown() {
         super.tearDown()
         try! AtlasMockAPI.stopServer()
     }

@@ -13,12 +13,12 @@ class AddressFormViewControllerTests: XCTestCase {
 
     let window = UIWindow()
 
-    override func setUp() {
+    override class func setUp() {
         super.setUp()
         try! AtlasMockAPI.startServer()
     }
 
-    override func tearDown() {
+    override class func tearDown() {
         super.tearDown()
         try! AtlasMockAPI.stopServer()
     }
