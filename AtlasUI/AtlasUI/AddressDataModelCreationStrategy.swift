@@ -4,18 +4,18 @@
 
 import Foundation
 
-typealias AddressFormCreationStrategyCompletion = (AddressFormViewModel) -> Void
+typealias AddressDataModelCreationStrategyCompletion = (AddressFormDataModel) -> Void
 
-protocol AddressFormCreationStrategy {
+protocol AddressDataModelCreationStrategy {
 
     var localizedTitleKey: String { get }
 
-    init(completion: AddressFormCreationStrategyCompletion)
+    init(completion: AddressDataModelCreationStrategyCompletion)
     func execute()
 
 }
 
-extension AddressFormCreationStrategy {
+extension AddressDataModelCreationStrategy {
 
     var localizedTitleKey: String {
         return "addressListView.add.type.\(self.dynamicType)"

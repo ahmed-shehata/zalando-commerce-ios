@@ -5,11 +5,6 @@
 import Foundation
 import AtlasSDK
 
-enum AddressFormMode {
-    case createAddress(addressViewModel: AddressFormViewModel)
-    case updateAddress(address: EquatableAddress)
-}
-
 enum AddressFormType {
     case standardAddress
     case pickupPoint
@@ -43,32 +38,32 @@ enum AddressFormField: String {
         return title + (formValidators.contains { $0 == .Required } ? "*" : "")
     }
 
-    func value(viewModel: AddressFormViewModel) -> String? {
+    func value(dataModel: AddressFormDataModel) -> String? {
         switch self {
-        case .title: return viewModel.localizedTitle()
-        case .firstName: return viewModel.firstName
-        case .lastName: return viewModel.lastName
-        case .street: return viewModel.street
-        case .additional: return viewModel.additional
-        case .packstation: return viewModel.pickupPointId
-        case .memberID: return viewModel.pickupPointMemberId
-        case .zipcode: return viewModel.zip
-        case .city: return viewModel.city
-        case .country: return Localizer.countryName(forCountryCode: viewModel.countryCode)
+        case .title: return dataModel.localizedTitle()
+        case .firstName: return dataModel.firstName
+        case .lastName: return dataModel.lastName
+        case .street: return dataModel.street
+        case .additional: return dataModel.additional
+        case .packstation: return dataModel.pickupPointId
+        case .memberID: return dataModel.pickupPointMemberId
+        case .zipcode: return dataModel.zip
+        case .city: return dataModel.city
+        case .country: return Localizer.countryName(forCountryCode: dataModel.countryCode)
         }
     }
 
-    func updateModel(viewModel: AddressFormViewModel, withValue value: String?) {
+    func updateModel(dataModel: AddressFormDataModel, withValue value: String?) {
         switch self {
-        case .title: viewModel.updateTitle(value)
-        case .firstName: viewModel.firstName = value
-        case .lastName: viewModel.lastName = value
-        case .street: viewModel.street = value
-        case .additional: viewModel.additional = value
-        case .packstation: viewModel.pickupPointId = value
-        case .memberID: viewModel.pickupPointMemberId = value
-        case .zipcode: viewModel.zip = value
-        case .city: viewModel.city = value
+        case .title: dataModel.updateTitle(value)
+        case .firstName: dataModel.firstName = value
+        case .lastName: dataModel.lastName = value
+        case .street: dataModel.street = value
+        case .additional: dataModel.additional = value
+        case .packstation: dataModel.pickupPointId = value
+        case .memberID: dataModel.pickupPointMemberId = value
+        case .zipcode: dataModel.zip = value
+        case .city: dataModel.city = value
         case .country: break
         }
     }
@@ -84,11 +79,11 @@ enum AddressFormField: String {
         }
     }
 
-    func customView(viewModel: AddressFormViewModel, completion: TextFieldChangedHandler) -> UIView? {
+    func customView(dataModel: AddressFormDataModel, completion: TextFieldChangedHandler) -> UIView? {
         switch self {
         case .title:
-            let titles = viewModel.titles
-            let currentTitle = value(viewModel) ?? ""
+            let titles = dataModel.titles
+            let currentTitle = value(dataModel) ?? ""
             let currentTitleIdx = titles.indexOf(currentTitle) ?? 0
             return PickerKeyboardInputView(pickerData: titles, startingValueIndex: currentTitleIdx, completion: completion)
         default:
@@ -134,12 +129,4 @@ enum AddressFormField: String {
         }
     }
 
-}
-
-func == (lhs: AddressFormMode, rhs: AddressFormMode) -> Bool {
-    switch (lhs, rhs) {
-    case (.createAddress, .createAddress): return true
-    case (.updateAddress(let lhsAddress), .updateAddress(let rhsAddress)): return lhsAddress == rhsAddress
-    default: return false
-    }
 }

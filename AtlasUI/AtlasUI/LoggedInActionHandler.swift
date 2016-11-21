@@ -107,11 +107,12 @@ class LoggedInActionHandler: CheckoutSummaryActionHandler {
         AtlasUIClient.addresses { [weak self] result in
             guard let userAddresses = result.process() else { return }
             let addresses: [EquatableAddress] = userAddresses.map { $0 }
-            let addressViewController = AddressPickerViewController(initialAddresses: addresses, selectedAddress: self?.shippingAddress)
+            let creationStrategy = ShippingAddressViewModelCreationStrategy()
+            let addressViewController = AddressListViewController(initialAddresses: addresses, selectedAddress: self?.shippingAddress)
             addressViewController.addressUpdatedHandler = { self?.addressUpdated($0) }
             addressViewController.addressDeletedHandler = { self?.addressDeleted($0) }
             addressViewController.addressSelectedHandler = { self?.selectShippingAddress($0) }
-            addressViewController.addressCreationStrategy = ShippingAddressCreationStrategy()
+            addressViewController.actionHandler = LoggedInAddressListActionHandler(addressViewModelCreationStrategy: creationStrategy)
             addressViewController.title = Localizer.string("addressListView.title.shipping")
             AtlasUIViewController.instance?.mainNavigationController.pushViewController(addressViewController, animated: true)
         }
@@ -121,11 +122,12 @@ class LoggedInActionHandler: CheckoutSummaryActionHandler {
         AtlasUIClient.addresses { [weak self] result in
             guard let userAddresses = result.process() else { return }
             let addresses: [EquatableAddress] = userAddresses.filter { $0.pickupPoint == nil } .map { $0 }
-            let addressViewController = AddressPickerViewController(initialAddresses: addresses, selectedAddress: self?.billingAddress)
+            let creationStrategy = BillingAddressViewModelCreationStrategy()
+            let addressViewController = AddressListViewController(initialAddresses: addresses, selectedAddress: self?.billingAddress)
             addressViewController.addressUpdatedHandler = { self?.addressUpdated($0) }
             addressViewController.addressDeletedHandler = { self?.addressDeleted($0) }
             addressViewController.addressSelectedHandler = { self?.selectBillingAddress($0) }
-            addressViewController.addressCreationStrategy = BillingAddressCreationStrategy()
+            addressViewController.actionHandler = LoggedInAddressListActionHandler(addressViewModelCreationStrategy: creationStrategy)
             addressViewController.title = Localizer.string("addressListView.title.billing")
             AtlasUIViewController.instance?.mainNavigationController.pushViewController(addressViewController, animated: true)
         }

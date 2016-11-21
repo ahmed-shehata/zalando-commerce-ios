@@ -281,14 +281,14 @@ extension LoggedInActionHandlerTests {
         return AtlasUIViewController.instance?.mainNavigationController.viewControllers.last as? PaymentViewController
     }
 
-    private func showAddressScreen(forShippingAddress isShipping: Bool) -> AddressPickerViewController? {
+    private func showAddressScreen(forShippingAddress isShipping: Bool) -> AddressListViewController? {
         if isShipping {
             actionHandler?.showShippingAddressSelectionScreen()
         } else {
             actionHandler?.showBillingAddressSelectionScreen()
         }
-        expect(AtlasUIViewController.instance?.mainNavigationController.viewControllers.last as? AddressPickerViewController).toNotEventually(beNil())
-        return AtlasUIViewController.instance?.mainNavigationController.viewControllers.last as? AddressPickerViewController
+        expect(AtlasUIViewController.instance?.mainNavigationController.viewControllers.last as? AddressListViewController).toNotEventually(beNil())
+        return AtlasUIViewController.instance?.mainNavigationController.viewControllers.last as? AddressListViewController
     }
 
     private func updateAddress(address: EquatableAddress) -> CheckoutAddress {

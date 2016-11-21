@@ -5,7 +5,7 @@
 import Foundation
 import AtlasSDK
 
-class AddressListTableViewDelegate: NSObject {
+class AddressListTableDelegate: NSObject {
 
     var addresses: [EquatableAddress] {
         didSet {
@@ -18,18 +18,24 @@ class AddressListTableViewDelegate: NSObject {
 
     private let tableView: UITableView
     private var selectedAddress: EquatableAddress?
-    private weak var actionsHandler: AddressActionsHandler?
+    private weak var viewController: AddressListViewController?
 
-    init(tableView: UITableView, addresses: [EquatableAddress], selectedAddress: EquatableAddress?, actionsHandler: AddressActionsHandler) {
+    init(tableView: UITableView,
+         addresses: [EquatableAddress],
+         selectedAddress: EquatableAddress?,
+         viewController: AddressListViewController) {
+
         self.tableView = tableView
         self.addresses = addresses
         self.selectedAddress = selectedAddress
-        self.actionsHandler = actionsHandler
+        self.viewController = viewController
+        super.init()
+        self.viewController?.actionHandler?.delegate = self
     }
 
 }
 
-extension AddressListTableViewDelegate: UITableViewDataSource {
+extension AddressListTableDelegate: UITableViewDataSource {
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return addresses.count + 1
@@ -60,7 +66,7 @@ extension AddressListTableViewDelegate: UITableViewDataSource {
 
 }
 
-extension AddressListTableViewDelegate: UITableViewDelegate {
+extension AddressListTableDelegate: UITableViewDelegate {
 
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return indexPath.row < addresses.count
@@ -71,22 +77,49 @@ extension AddressListTableViewDelegate: UITableViewDelegate {
 
         guard editingStyle == .Delete else { return }
         let address = addresses[indexPath.item]
-        actionsHandler?.deleteAddress(address)
+        viewController?.actionHandler?.deleteAddress(address)
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         guard indexPath.row < addresses.count else {
-            actionsHandler?.createAddress()
+            viewController?.actionHandler?.createAddress()
             return
         }
 
         let address = addresses[indexPath.item]
         if tableView.editing {
-            actionsHandler?.updateAddress(address)
+            viewController?.actionHandler?.updateAddress(address)
         } else {
-            actionsHandler?.selectAddress(address)
+            addressSelected(address)
         }
+    }
+
+}
+
+extension AddressListTableDelegate: AddressListActionHandlerDelegate {
+
+    func addressCreated(address: EquatableAddress) {
+        addresses.append(address)
+        addressSelected(address)
+    }
+
+    func addressUpdated(address: EquatableAddress) {
+        guard let addressIdx = addresses.indexOf({ $0 == address }) else { return }
+        addresses[addressIdx] = address
+        viewController?.addressUpdatedHandler?(address: address)
+    }
+
+    func addressDeleted(address: EquatableAddress) {
+        guard let addressIdx = addresses.indexOf({ $0 == address }) else { return }
+        addresses.removeAtIndex(addressIdx)
+        viewController?.configureEditButton()
+        viewController?.addressDeletedHandler?(address: address)
+    }
+
+    private func addressSelected(address: EquatableAddress) {
+        viewController?.addressSelectedHandler?(address: address)
+        viewController?.navigationController?.popViewControllerAnimated(true)
     }
 
 }
