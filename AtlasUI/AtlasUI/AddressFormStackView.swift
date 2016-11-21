@@ -3,6 +3,30 @@
 //
 
 import UIKit
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class AddressFormStackView: UIStackView {
 
@@ -27,18 +51,18 @@ extension AddressFormStackView: UIDataBuilder {
 
     typealias T = AddressFormDataModel
 
-    func configureData(viewModel: T) {
-        for (idx, textFieldInputView) in textFields.enumerate() {
+    func configure(viewModel: T) {
+        for (idx, textFieldInputView) in textFields.enumerated() {
             let fieldType = addressType.fields[idx]
             let title = fieldType.title
             let value = fieldType.value(viewModel)
             let isActive = fieldType.isActive()
 
             let customView = fieldType.customView(viewModel) { text in
-                fieldType.updateModel(viewModel, withValue: text)
+                fieldType.update(dataModel: viewModel, withValue: text)
                 textFieldInputView.textField.text = text
                 textFieldInputView.configureTitleLabel()
-                if text?.trimmedLength > 0 {
+                if text?.trimmed().length > 0 {
                     textFieldInputView.textField.resignFirstResponder()
                 }
             }
@@ -49,7 +73,7 @@ extension AddressFormStackView: UIDataBuilder {
             }
 
             let valueChangedHandler: TextFieldChangedHandler = { text in
-                fieldType.updateModel(viewModel, withValue: text)
+                fieldType.update(dataModel: viewModel, withValue: text)
             }
 
             let viewModel = TextFieldInputViewModel(title: title,
@@ -60,7 +84,7 @@ extension AddressFormStackView: UIDataBuilder {
                 customInputView: customView,
                 nextTextFieldInput: nextTextField,
                 valueChangedHandler: valueChangedHandler)
-            textFieldInputView.configureData(viewModel)
+            textFieldInputView.configure(viewModel: viewModel)
         }
     }
 

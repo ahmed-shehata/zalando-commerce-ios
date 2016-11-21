@@ -16,16 +16,16 @@ final class SizeListSelectionViewController: UIViewController {
     var tableViewDataSource: SizeListTableViewDataSource? {
         didSet {
             tableView.dataSource = tableViewDataSource
-            tableView.hidden = tableViewDataSource?.article.hasSingleUnit ?? true
+            tableView.isHidden = tableViewDataSource?.article.hasSingleUnit ?? true
             tableView.reloadData()
         }
     }
 
-    private lazy var tableView: UITableView = {
+    fileprivate lazy var tableView: UITableView = {
         let tableView = UITableView()
-        tableView.backgroundColor = UIColor.clearColor()
-        tableView.opaque = false
-        tableView.hidden = true
+        tableView.backgroundColor = UIColor.clear
+        tableView.isOpaque = false
+        tableView.isHidden = true
         return tableView
     }()
 
@@ -42,7 +42,7 @@ final class SizeListSelectionViewController: UIViewController {
         super.viewDidLoad()
         buildView()
         fetchSizes()
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
 
 }
@@ -51,21 +51,21 @@ extension SizeListSelectionViewController: UIBuilder {
 
     func configureView() {
         view.addSubview(tableView)
-        view.backgroundColor = .clearColor()
-        view.opaque = false
+        view.backgroundColor = .clear
+        view.isOpaque = false
         tableView.registerReusableCell(UnitSizeTableViewCell.self)
         showCancelButton()
     }
 
     func configureConstraints() {
-        tableView.fillInSuperView()
+        tableView.fillInSuperview()
     }
 
 }
 
 extension SizeListSelectionViewController {
 
-    private func fetchSizes() {
+    fileprivate func fetchSizes() {
         AtlasUIClient.article(self.sku) { [weak self] result in
             guard let article = result.process(forceFullScreenError: true) else { return }
             self?.tableViewDelegate = SizeListTableViewDelegate(article: article, completion: self?.showCheckoutScreen)
@@ -74,7 +74,7 @@ extension SizeListSelectionViewController {
         }
     }
 
-    private func showCheckoutScreen(selectedArticleUnit: SelectedArticleUnit) {
+    fileprivate func showCheckoutScreen(_ selectedArticleUnit: SelectedArticleUnit) {
         let hasSingleUnit = selectedArticleUnit.article.hasSingleUnit
         guard Atlas.isAuthorized() else {
             let actionHandler = NotLoggedInSummaryActionHandler()
@@ -96,7 +96,7 @@ extension SizeListSelectionViewController {
         }
     }
 
-    private func displayCheckoutSummaryViewController(viewModel: CheckoutSummaryViewModel, actionHandler: CheckoutSummaryActionHandler) {
+    fileprivate func displayCheckoutSummaryViewController(_ viewModel: CheckoutSummaryViewModel, actionHandler: CheckoutSummaryActionHandler) {
         let hasSingleUnit = viewModel.dataModel.selectedArticleUnit.article.hasSingleUnit
         let checkoutSummaryVC = CheckoutSummaryViewController(viewModel: viewModel)
         checkoutSummaryVC.actionHandler = actionHandler

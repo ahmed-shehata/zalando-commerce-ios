@@ -7,9 +7,9 @@ import AtlasSDK
 
 protocol AddressListActionHandlerDelegate: NSObjectProtocol {
 
-    func addressCreated(address: EquatableAddress)
-    func addressUpdated(address: EquatableAddress)
-    func addressDeleted(address: EquatableAddress)
+    func created(address: EquatableAddress)
+    func updated(address: EquatableAddress)
+    func deleted(address: EquatableAddress)
 
 }
 
@@ -19,7 +19,7 @@ protocol AddressListActionHandler {
 
     init(addressViewModelCreationStrategy: AddressViewModelCreationStrategy?)
     func createAddress()
-    func updateAddress(address: EquatableAddress)
-    func deleteAddress(address: EquatableAddress)
+    func update(address: EquatableAddress)
+    func delete(address: EquatableAddress)
 
 }

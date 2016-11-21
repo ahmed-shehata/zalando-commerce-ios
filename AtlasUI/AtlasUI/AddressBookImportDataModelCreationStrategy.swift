@@ -11,7 +11,7 @@ class AddressBookImportDataModelCreationStrategy: NSObject, AddressDataModelCrea
 
     let completion: AddressDataModelCreationStrategyCompletion
 
-    required init(completion: AddressDataModelCreationStrategyCompletion) {
+    required init(completion: @escaping AddressDataModelCreationStrategyCompletion) {
         self.completion = completion
     }
 
@@ -20,16 +20,16 @@ class AddressBookImportDataModelCreationStrategy: NSObject, AddressDataModelCrea
         contactPickerViewController.displayedPropertyKeys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPostalAddressesKey]
         contactPickerViewController.predicateForSelectionOfProperty = NSPredicate(format: "key == 'postalAddresses'")
         contactPickerViewController.delegate = self
-        contactPickerViewController.modalPresentationStyle = .OverCurrentContext
-        AtlasUIViewController.instance?.showViewController(contactPickerViewController, sender: nil)
+        contactPickerViewController.modalPresentationStyle = .overCurrentContext
+        AtlasUIViewController.instance?.show(contactPickerViewController, sender: self)
     }
 
 }
 
 extension AddressBookImportDataModelCreationStrategy: CNContactPickerDelegate {
 
-    func contactPicker(picker: CNContactPickerViewController, didSelectContactProperty contactProperty: CNContactProperty) {
-        picker.dismissViewControllerAnimated(true) { [weak self] in
+    func contactPicker(_ picker: CNContactPickerViewController, didSelect contactProperty: CNContactProperty) {
+        picker.dismiss(animated: true) { [weak self] in
             guard let strongSelf = self else { return }
             if let datawModel = AddressFormDataModel(contactProperty: contactProperty, countryCode: AtlasAPIClient.countryCode) {
                 strongSelf.completion(datawModel)

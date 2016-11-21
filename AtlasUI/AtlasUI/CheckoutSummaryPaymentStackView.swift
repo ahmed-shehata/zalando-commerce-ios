@@ -16,23 +16,23 @@ class CheckoutSummaryPaymentStackView: UIStackView, RowStackView {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = .systemFontOfSize(16)
-        label.textColor = .blackColor()
+        label.font = .systemFont(ofSize: 16)
+        label.textColor = .black
         return label
     }()
 
     let valueLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
-        label.lineBreakMode = .ByTruncatingTail
-        label.font = .systemFontOfSize(14, weight: UIFontWeightLight)
+        label.lineBreakMode = .byTruncatingTail
+        label.font = .systemFont(ofSize: 14, weight: UIFontWeightLight)
         label.textColor = UIColor(hex: 0x7F7F7F)
         return label
     }()
 
     let arrowImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "tableArrow", bundledWith: CheckoutSummaryPaymentStackView.self))
-        imageView.contentMode = .Center
+        imageView.contentMode = .center
         return imageView
     }()
 
@@ -57,7 +57,7 @@ extension CheckoutSummaryPaymentStackView: UIDataBuilder {
 
     typealias T = CheckoutSummaryPaymentViewModel
 
-    func configureData(viewModel: T) {
+    func configure(viewModel: T) {
         valueLabel.text = viewModel.value
         arrowImageView.alpha = viewModel.showArrow ? 1 : 0
     }

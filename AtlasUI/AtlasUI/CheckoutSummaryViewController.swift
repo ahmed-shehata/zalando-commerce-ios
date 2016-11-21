@@ -17,13 +17,13 @@ class CheckoutSummaryViewController: UIViewController {
     var viewModel: CheckoutSummaryViewModel {
         didSet {
             setupNavigationBar()
-            rootStackView.configureData(viewModel)
+            rootStackView.configure(viewModel: viewModel)
         }
     }
 
-    private let rootStackView: CheckoutSummaryRootStackView = {
+    fileprivate let rootStackView: CheckoutSummaryRootStackView = {
         let stackView = CheckoutSummaryRootStackView()
-        stackView.axis = .Vertical
+        stackView.axis = .vertical
         stackView.spacing = 5
         return stackView
     }()
@@ -44,7 +44,7 @@ class CheckoutSummaryViewController: UIViewController {
         setupActions()
     }
 
-    private func triggerDidSet(viewModel: CheckoutSummaryViewModel) {
+    fileprivate func triggerDidSet(_ viewModel: CheckoutSummaryViewModel) {
         self.viewModel = viewModel
     }
 
@@ -53,22 +53,22 @@ class CheckoutSummaryViewController: UIViewController {
 extension CheckoutSummaryViewController: UIBuilder {
 
     func configureView() {
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationController?.navigationBar.accessibilityIdentifier = "checkout-summary-navigation-bar"
 
-        view.backgroundColor = .whiteColor()
+        view.backgroundColor = .white
         view.addSubview(rootStackView)
     }
 
     func configureConstraints() {
-        rootStackView.fillInSuperView()
+        rootStackView.fillInSuperview()
     }
 
 }
 
 extension CheckoutSummaryViewController {
 
-    private func setupActions() {
+    fileprivate func setupActions() {
         let submitButtonRecognizer = UITapGestureRecognizer(target: self, action: #selector(submitButtonTapped))
         rootStackView.footerStackView.submitButton.addGestureRecognizer(submitButtonRecognizer)
 
@@ -82,7 +82,7 @@ extension CheckoutSummaryViewController {
         rootStackView.mainStackView.paymentStackView.addGestureRecognizer(paymentRecognizer)
     }
 
-    private func setupNavigationBar() {
+    fileprivate func setupNavigationBar() {
         title = Localizer.string(viewModel.layout.navigationBarTitleLocalizedKey)
 
         let hasSingleUnit = viewModel.dataModel.selectedArticleUnit.article.hasSingleUnit
@@ -99,19 +99,19 @@ extension CheckoutSummaryViewController {
 
 extension CheckoutSummaryViewController {
 
-    dynamic private func submitButtonTapped() {
+    dynamic fileprivate func submitButtonTapped() {
         actionHandler?.handleSubmitButton()
     }
 
-    dynamic private func shippingAddressTapped() {
+    dynamic fileprivate func shippingAddressTapped() {
         actionHandler?.showShippingAddressSelectionScreen()
     }
 
-    dynamic private func billingAddressTapped() {
+    dynamic fileprivate func billingAddressTapped() {
         actionHandler?.showBillingAddressSelectionScreen()
     }
 
-    dynamic private func paymentAddressTapped() {
+    dynamic fileprivate func paymentAddressTapped() {
         actionHandler?.showPaymentSelectionScreen()
     }
 
@@ -127,20 +127,20 @@ extension CheckoutSummaryViewController: CheckoutSummaryActionHandlerDataSource 
 
 extension CheckoutSummaryViewController: CheckoutSummaryActionHandlerDelegate {
 
-    func dataModelUpdated(dataModel: CheckoutSummaryDataModel) {
+    func updated(dataModel: CheckoutSummaryDataModel) {
         self.viewModel.dataModel = dataModel
     }
 
-    func layoutUpdated(layout: CheckoutSummaryLayout) {
+    func updated(layout: CheckoutSummaryLayout) {
         self.viewModel.layout = layout
     }
 
-    func actionHandlerUpdated(actionHandler: CheckoutSummaryActionHandler) {
+    func updated(actionHandler: CheckoutSummaryActionHandler) {
         self.actionHandler = actionHandler
     }
 
     func dismissView() {
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 
 }

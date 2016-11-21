@@ -27,7 +27,7 @@ extension UIBuilder {
         }
     }
 
-    func buildSubViews(rootView: UIView) {
+    func buildSubViews(_ rootView: UIView) {
         rootView.subviews.forEach { subview in
             if let builder = subview as? UIBuilder {
                 builder.buildView()
@@ -43,6 +43,6 @@ protocol UIDataBuilder {
 
     associatedtype T
 
-    func configureData(viewModel: T)
+    func configure(viewModel: T)
 
 }

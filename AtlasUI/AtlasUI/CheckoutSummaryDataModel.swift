@@ -49,10 +49,10 @@ extension CheckoutSummaryDataModel {
     }
 
     var isPayPal: Bool {
-        return paymentMethod?.caseInsensitiveCompare("paypal") == .OrderedSame
+        return paymentMethod?.caseInsensitiveCompare("paypal") == .orderedSame
     }
 
-    var termsAndConditionsURL: NSURL? {
+    var termsAndConditionsURL: URL? {
         return AtlasAPIClient.instance?.config.salesChannel.termsAndConditionsURL
     }
 

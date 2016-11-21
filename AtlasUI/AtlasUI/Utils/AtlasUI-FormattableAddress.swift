@@ -15,7 +15,7 @@ extension FormattableAddress {
         contact.givenName = firstName
         contact.familyName = lastName
 
-        return contactFormatter.stringFromContact(contact)
+        return contactFormatter.string(from: contact)
     }
 
     var formattedPostalAddress: String {
@@ -24,12 +24,12 @@ extension FormattableAddress {
 
         postalAddress.city = city
         postalAddress.postalCode = zip
-        postalAddress.ISOCountryCode = countryCode
+        postalAddress.isoCountryCode = countryCode
 
         let addressLines = [prefixedAddressLine1, prefixedAddressLine2]
-        postalAddress.street = addressLines.filter { !$0.isEmpty }.joinWithSeparator("\n")
+        postalAddress.street = addressLines.filter { !$0.isEmpty }.joined(separator: "\n")
 
-        return postalFormatter.stringFromPostalAddress(postalAddress)
+        return postalFormatter.string(from: postalAddress)
     }
 
     var splittedFormattedPostalAddress: [String] {
@@ -41,9 +41,9 @@ extension FormattableAddress {
 
         secondLineAddress.city = city
         secondLineAddress.postalCode = zip
-        secondLineAddress.ISOCountryCode = countryCode
+        secondLineAddress.isoCountryCode = countryCode
 
-        return [postalFormatter.stringFromPostalAddress(firstLineAddress), postalFormatter.stringFromPostalAddress(secondLineAddress)]
+        return [postalFormatter.string(from: firstLineAddress), postalFormatter.string(from: secondLineAddress)]
     }
 
 }

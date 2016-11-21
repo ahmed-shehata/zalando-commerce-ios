@@ -85,7 +85,7 @@ class LoggedInSummaryActionHandlerTests: XCTestCase {
     func testShippingAddressScreenSelectCompletion() {
         guard let
             addressViewController = showAddressScreen(forShippingAddress: true),
-            address = getAddress()
+            let address = getAddress()
             else { return fail() }
 
         addressViewController.addressSelectedHandler?(address: address)
@@ -97,7 +97,7 @@ class LoggedInSummaryActionHandlerTests: XCTestCase {
     func testShippingAddressScreenUpdateCompletion() {
         guard let
             addressViewController = showAddressScreen(forShippingAddress: true),
-            dataModel = createDataModel(fromCartCheckout: createCartCheckout())
+            let dataModel = createDataModel(fromCartCheckout: createCartCheckout())
             else { return fail() }
         mockedDataSourceDelegate?.dataModelUpdated(dataModel)
         guard let address = self.mockedDataSourceDelegate?.dataModel.shippingAddress as? EquatableAddress else { return fail() }
@@ -113,7 +113,7 @@ class LoggedInSummaryActionHandlerTests: XCTestCase {
     func testShippingAddressScreenDeleteCompletion() {
         guard let
             addressViewController = showAddressScreen(forShippingAddress: true),
-            dataModel = createDataModel(fromCartCheckout: createCartCheckout())
+            let dataModel = createDataModel(fromCartCheckout: createCartCheckout())
             else { return fail() }
         mockedDataSourceDelegate?.dataModelUpdated(dataModel)
         guard let address = self.mockedDataSourceDelegate?.dataModel.shippingAddress as? EquatableAddress else { return fail() }
@@ -127,7 +127,7 @@ class LoggedInSummaryActionHandlerTests: XCTestCase {
     func testBillingAddressScreenSelectCompletion() {
         guard let
             addressViewController = showAddressScreen(forShippingAddress: false),
-            address = getAddress()
+            let address = getAddress()
             else { return fail() }
 
         addressViewController.addressSelectedHandler?(address: address)
@@ -139,7 +139,7 @@ class LoggedInSummaryActionHandlerTests: XCTestCase {
     func testBillingAddressScreenUpdateCompletion() {
         guard let
             addressViewController = showAddressScreen(forShippingAddress: false),
-            dataModel = createDataModel(fromCartCheckout: createCartCheckout())
+            let dataModel = createDataModel(fromCartCheckout: createCartCheckout())
             else { return fail() }
         mockedDataSourceDelegate?.dataModelUpdated(dataModel)
         guard let address = self.mockedDataSourceDelegate?.dataModel.billingAddress as? EquatableAddress else { return fail() }
@@ -155,7 +155,7 @@ class LoggedInSummaryActionHandlerTests: XCTestCase {
     func testBillingAddressScreenDeleteCompletion() {
         guard let
             addressViewController = showAddressScreen(forShippingAddress: false),
-            dataModel = createDataModel(fromCartCheckout: createCartCheckout())
+            let dataModel = createDataModel(fromCartCheckout: createCartCheckout())
             else { return fail() }
         mockedDataSourceDelegate?.dataModelUpdated(dataModel)
         guard let address = self.mockedDataSourceDelegate?.dataModel.billingAddress as? EquatableAddress else { return fail() }
@@ -170,7 +170,7 @@ class LoggedInSummaryActionHandlerTests: XCTestCase {
 
 extension LoggedInSummaryActionHandlerTests {
 
-    private func createActionHandler() -> LoggedInSummaryActionHandler? {
+    fileprivate func createActionHandler() -> LoggedInSummaryActionHandler? {
         var loggedInActionHandler: LoggedInSummaryActionHandler?
         waitUntil(timeout: 10) { done in
             let sku = "AD541L009-G11"
@@ -196,7 +196,7 @@ extension LoggedInSummaryActionHandlerTests {
         return loggedInActionHandler
     }
 
-    private func createCartCheckout() -> CartCheckout? {
+    fileprivate func createCartCheckout() -> CartCheckout? {
         var cartCheckout: CartCheckout?
         waitUntil(timeout: 10) { done in
             let sku = "AD541L009-G11"
@@ -209,21 +209,21 @@ extension LoggedInSummaryActionHandlerTests {
         return cartCheckout
     }
 
-    private func registerAtlasUIViewController(sku: String, completion: () -> Void) {
+    fileprivate func registerAtlasUIViewController(_ sku: String, completion: @escaping () -> Void) {
         let options = Options(clientId: "CLIENT_ID",
                               salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
                               interfaceLanguage: "en",
                               configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
 
         AtlasUI.configure(options) { _ in
-            let atlasUIViewController = AtlasUIViewController(forProductSKU: sku)
+            let atlasUIViewController = AtlasUIViewController(forSKU: sku)
             let _  = atlasUIViewController.view // load the view
             AtlasUI.register { atlasUIViewController }
             completion()
         }
     }
 
-    private func getAddress() -> EquatableAddress? {
+    fileprivate func getAddress() -> EquatableAddress? {
         var address: EquatableAddress?
         waitUntil(timeout: 10) { done in
             AtlasUIClient.addresses { result in
@@ -239,7 +239,7 @@ extension LoggedInSummaryActionHandlerTests {
 
 extension LoggedInSummaryActionHandlerTests {
 
-    private func createDataModel(withPaymentMethod paymentMethod: String?) -> CheckoutSummaryDataModel? {
+    fileprivate func createDataModel(withPaymentMethod paymentMethod: String?) -> CheckoutSummaryDataModel? {
         guard let selectedArticleUnit = mockedDataSourceDelegate?.dataModel.selectedArticleUnit else { return nil }
         return CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit,
                                         shippingAddress: nil,
@@ -250,7 +250,7 @@ extension LoggedInSummaryActionHandlerTests {
                                         delivery: nil)
     }
 
-    private func createDataModel(fromCheckout checkout: Checkout?, totalPrice: MoneyAmount?) -> CheckoutSummaryDataModel? {
+    fileprivate func createDataModel(fromCheckout checkout: Checkout?, totalPrice: MoneyAmount?) -> CheckoutSummaryDataModel? {
         guard let selectedArticleUnit = mockedDataSourceDelegate?.dataModel.selectedArticleUnit else { return nil }
         return CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit,
                                         shippingAddress: checkout?.shippingAddress,
@@ -261,11 +261,11 @@ extension LoggedInSummaryActionHandlerTests {
                                         delivery: checkout?.delivery)
     }
 
-    private func createDataModel(fromCartCheckout cartCheckout: CartCheckout?) -> CheckoutSummaryDataModel? {
+    fileprivate func createDataModel(fromCartCheckout cartCheckout: CartCheckout?) -> CheckoutSummaryDataModel? {
         return createDataModel(fromCheckout: cartCheckout?.checkout, totalPrice: cartCheckout?.cart?.grossTotal.amount)
     }
 
-    private func createCheckout(fromCheckout checkout: Checkout, payment: Payment) -> Checkout {
+    fileprivate func createCheckout(fromCheckout checkout: Checkout, payment: Payment) -> Checkout {
         return Checkout(id: checkout.id,
                         customerNumber: checkout.customerNumber,
                         cartId: checkout.cartId,
@@ -275,13 +275,13 @@ extension LoggedInSummaryActionHandlerTests {
                         shippingAddress: checkout.shippingAddress)
     }
 
-    private func showPaymentScreen() -> PaymentViewController? {
+    fileprivate func showPaymentScreen() -> PaymentViewController? {
         actionHandler?.showPaymentSelectionScreen()
         expect(AtlasUIViewController.instance?.mainNavigationController.viewControllers.last as? PaymentViewController).toNotEventually(beNil())
         return AtlasUIViewController.instance?.mainNavigationController.viewControllers.last as? PaymentViewController
     }
 
-    private func showAddressScreen(forShippingAddress isShipping: Bool) -> AddressListViewController? {
+    fileprivate func showAddressScreen(forShippingAddress isShipping: Bool) -> AddressListViewController? {
         if isShipping {
             actionHandler?.showShippingAddressSelectionScreen()
         } else {
@@ -291,7 +291,7 @@ extension LoggedInSummaryActionHandlerTests {
         return AtlasUIViewController.instance?.mainNavigationController.viewControllers.last as? AddressListViewController
     }
 
-    private func updateAddress(address: EquatableAddress) -> CheckoutAddress {
+    fileprivate func updateAddress(_ address: EquatableAddress) -> CheckoutAddress {
         return CheckoutAddress(id: address.id,
                                gender: address.gender,
                                firstName: "John",
@@ -323,15 +323,15 @@ class CheckoutSummaryActionHandlerDataSourceDelegateMock: NSObject, CheckoutSumm
         self.viewModel = viewModel
     }
 
-    func dataModelUpdated(dataModel: CheckoutSummaryDataModel) {
+    func updated(dataModel: CheckoutSummaryDataModel) {
         self.viewModel.dataModel = dataModel
     }
 
-    func layoutUpdated(layout: CheckoutSummaryLayout) {
+    func updated(layout: CheckoutSummaryLayout) {
         self.viewModel.layout = layout
     }
 
-    func actionHandlerUpdated(actionHandler: CheckoutSummaryActionHandler) {
+    func updated(actionHandler: CheckoutSummaryActionHandler) {
         self.actionHandler = actionHandler
     }
 

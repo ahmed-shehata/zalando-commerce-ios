@@ -40,7 +40,7 @@ class LoggedInAddressListActionHandlerTests: XCTestCase {
 
 extension LoggedInAddressListActionHandlerTests {
 
-    private func registerAtlasUIViewController() -> AtlasUIViewController? {
+    fileprivate func registerAtlasUIViewController() -> AtlasUIViewController? {
         var atlasUIViewController: AtlasUIViewController?
         waitUntil(timeout: 10) { done in
             let options = Options(clientId: "CLIENT_ID",
@@ -49,7 +49,7 @@ extension LoggedInAddressListActionHandlerTests {
                                   configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
 
             AtlasUI.configure(options) { _ in
-                atlasUIViewController = AtlasUIViewController(forProductSKU: "AD541L009-G11")
+                atlasUIViewController = AtlasUIViewController(forSKU: "AD541L009-G11")
                 UIApplication.sharedApplication().windows.first?.rootViewController = atlasUIViewController
                 guard let viewController = atlasUIViewController else { return fail() }
                 let _  = viewController.view // load the view
@@ -66,7 +66,7 @@ class AddressViewModelCreationStrategyMock: AddressViewModelCreationStrategy {
 
     var completion: AddressViewModelCreationStrategyCompletion?
 
-    func setStrategyCompletion(completion: AddressViewModelCreationStrategyCompletion?) {
+    func setStrategyCompletion(_ completion: AddressViewModelCreationStrategyCompletion?) {
         self.completion = completion
     }
 

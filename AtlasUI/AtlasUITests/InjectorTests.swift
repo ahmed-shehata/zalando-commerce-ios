@@ -77,7 +77,7 @@ class InjectorTests: XCTestCase {
         let number: Three? = try? injector.provide()
         expect(number).toNot(beNil())
 
-        injector.deregister(three.dynamicType)
+        injector.deregister(type(of: three))
 
         let nilNumber: Three? = try? injector.provide()
         expect(nilNumber).to(beNil())

@@ -62,7 +62,7 @@ class EditAddressTypeTests: XCTestCase {
 
 extension EditAddressTypeTests {
 
-    private func updateModelData(dataModel: AddressFormDataModel) {
+    fileprivate func update(dataModel: AddressFormDataModel) {
         AddressFormField.title.updateModel(dataModel, withValue: "Mr")
         AddressFormField.firstName.updateModel(dataModel, withValue: "John")
         AddressFormField.lastName.updateModel(dataModel, withValue: "Doe")

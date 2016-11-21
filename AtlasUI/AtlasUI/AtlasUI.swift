@@ -20,8 +20,8 @@ final public class AtlasUI {
              - ATLASSDK_INTERFACE_LANGUAGE: String - Checkout interface language
         - completion `AtlasClientCompletion`: `AtlasResult` with success result as `AtlasAPIClient` initialized
     */
-    public static func configure(options: Options? = nil, completion: AtlasClientCompletion) {
-        Atlas.configure(options) { result in
+    public static func configure(options: Options? = nil, completion: @escaping AtlasClientCompletion) {
+        Atlas.configure(options: options) { result in
             switch result {
             case .failure(let error):
                 AtlasLogger.logError(error)
@@ -29,7 +29,7 @@ final public class AtlasUI {
 
             case .success(let client):
                 do {
-                    let localizer = try Localizer(localeIdentifier: client.config.interfaceLocale.localeIdentifier)
+                    let localizer = try Localizer(localeIdentifier: client.config.interfaceLocale.identifier)
                     AtlasUI.register { localizer }
                     AtlasUI.register { client }
                     completion(.success(client))
@@ -40,27 +40,27 @@ final public class AtlasUI {
         }
     }
 
-    public static func presentCheckout(onViewController viewController: UIViewController, forProductSKU sku: String) {
+    public static func presentCheckout(onViewController viewController: UIViewController, forSKU sku: String) {
         guard let _ = AtlasAPIClient.instance else { AtlasLogger.logError("AtlasUI is not initialized"); return }
 
-        let atlasUIViewController = AtlasUIViewController(forProductSKU: sku)
+        let atlasUIViewController = AtlasUIViewController(forSKU: sku)
 
         let checkoutTransitioning = CheckoutTransitioningDelegate()
         atlasUIViewController.transitioningDelegate = checkoutTransitioning
-        atlasUIViewController.modalPresentationStyle = .Custom
+        atlasUIViewController.modalPresentationStyle = .custom
 
         AtlasUI.register { atlasUIViewController }
 
-        viewController.presentViewController(atlasUIViewController, animated: true, completion: nil)
+        viewController.present(atlasUIViewController, animated: true, completion: nil)
     }
 
 }
 
 extension AtlasUI {
 
-    private static let injector = Injector()
+    fileprivate static let injector = Injector()
 
-    static func register<T>(factory: Void -> T) {
+    static func register<T>(_ factory: @escaping (Void) -> T) {
         injector.register(factory)
     }
 

@@ -6,21 +6,21 @@ import Foundation
 
 class BillingAddressViewModelCreationStrategy: AddressViewModelCreationStrategy {
 
-    private var completion: AddressViewModelCreationStrategyCompletion?
-    private var availableDataModelCreationStrategies = [AddressDataModelCreationStrategy]()
+    fileprivate var completion: AddressViewModelCreationStrategyCompletion?
+    fileprivate var availableDataModelCreationStrategies = [AddressDataModelCreationStrategy]()
 
-    func setStrategyCompletion(completion: AddressViewModelCreationStrategyCompletion?) {
+    func setStrategyCompletion(_ completion: AddressViewModelCreationStrategyCompletion?) {
         self.completion = completion
     }
 
     func execute() {
         let standardStrategy = StandardAddressDataModelCreationStrategy { [weak self] dataModel in
             let viewModel = AddressFormViewModel(dataModel: dataModel, layout: CreateAddressFormLayout(), type: .standardAddress)
-            self?.completion?(addressViewModel: viewModel)
+            self?.completion?(viewModel)
         }
         let addressBookStrategy = AddressBookImportDataModelCreationStrategy { [weak self] dataModel in
             let viewModel = AddressFormViewModel(dataModel: dataModel, layout: CreateAddressFormLayout(), type: .standardAddress)
-            self?.completion?(addressViewModel: viewModel)
+            self?.completion?(viewModel)
         }
 
         availableDataModelCreationStrategies = [standardStrategy, addressBookStrategy]

@@ -4,7 +4,7 @@
 
 import Foundation
 
-typealias TextFieldChangedHandler = String? -> Void
+typealias TextFieldChangedHandler = (String?) -> Void
 
 struct TextFieldInputViewModel {
     let title: String

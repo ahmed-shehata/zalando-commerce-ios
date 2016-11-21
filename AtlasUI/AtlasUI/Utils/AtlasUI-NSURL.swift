@@ -4,20 +4,7 @@
 
 import Foundation
 
-extension NSURL {
-
-    var validAbsoluteString: String {
-        #if swift(>=2.3)
-            return self.absoluteString! // swiftlint:disable:this force_unwrapping
-        #else
-            return self.absoluteString
-        #endif
-
-    }
-
-}
-
-extension NSURL {
+extension URL {
 
     enum QueryItemKey: String {
         case accessToken = "access_token"
@@ -36,28 +23,28 @@ extension NSURL {
         return hasQueryItem(.error, value: .accessDenied)
     }
 
-    func queryItemValue(key: QueryItemKey) -> String? {
-        let urlComponents = NSURLComponents(URL: self, resolvingAgainstBaseURL: false)
+    func queryItemValue(_ key: QueryItemKey) -> String? {
+        let urlComponents = URLComponents(url: self, resolvingAgainstBaseURL: false)
         let queryAccessToken = urlComponents?.queryItems?.filter { $0.name == key.rawValue }.last
         return queryAccessToken?.value
     }
 
-    func hasQueryItem(key: QueryItemKey, value: QueryItemValue? = nil) -> Bool {
+    func hasQueryItem(_ key: QueryItemKey, value: QueryItemValue? = nil) -> Bool {
         return hasQueryItem(key, value: value?.rawValue)
     }
 
-    func hasQueryItem(key: QueryItemKey, value: String? = nil) -> Bool {
-        let urlComponents = NSURLComponents(URL: self, resolvingAgainstBaseURL: false)
+    func hasQueryItem(_ key: QueryItemKey, value: String? = nil) -> Bool {
+        let urlComponents = URLComponents(url: self, resolvingAgainstBaseURL: false)
         let queryAccessToken = urlComponents?.queryItems?.filter { $0.name == key.rawValue && (value == nil || $0.value == value) }.last
         return queryAccessToken != nil
     }
 
-    func fragmentValue(key: QueryItemKey) -> String? {
-        guard let urlComponents = NSURLComponents(URL: self, resolvingAgainstBaseURL: false),
-            fragment = urlComponents.fragment else { return nil }
+    func fragmentValue(_ key: QueryItemKey) -> String? {
+        guard var urlComponents = URLComponents(url: self, resolvingAgainstBaseURL: false),
+            let fragment = urlComponents.fragment else { return nil }
 
         urlComponents.query = fragment
-        return urlComponents.URL?.queryItemValue(key)
+        return urlComponents.url?.queryItemValue(key)
     }
 
 }

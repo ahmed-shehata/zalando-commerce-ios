@@ -14,7 +14,7 @@ protocol RowStackView {
 
 extension RowStackView {
 
-    func setTitle(localizerKey: String) {
+    func setTitle(fromLocalizedKey localizerKey: String) {
         self.titleLabel.text = Localizer.string(localizerKey)
     }
 

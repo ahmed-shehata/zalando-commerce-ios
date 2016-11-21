@@ -10,9 +10,8 @@ struct LoggedInUpdateAddressActionHandler: AddressFormActionHandler {
     weak var delegate: AddressFormActionHandlerDelegate?
 
     func process(validDataModel dataModel: AddressFormDataModel) {
-        guard let
-            addressId = dataModel.addressId,
-            request = UpdateAddressRequest(dataModel: dataModel)
+        guard let addressId = dataModel.addressId,
+            let request = UpdateAddressRequest(dataModel: dataModel)
             else {
                 delegate?.addressProcessingFinished()
                 return
@@ -33,13 +32,13 @@ struct LoggedInUpdateAddressActionHandler: AddressFormActionHandler {
 extension UpdateAddressRequest {
 
     init?(dataModel: AddressFormDataModel) {
-        guard let
-            gender = dataModel.gender,
-            firstName = dataModel.firstName,
-            lastName = dataModel.lastName,
-            zip = dataModel.zip,
-            city = dataModel.city,
-            countryCode = dataModel.countryCode else { return nil }
+        guard let gender = dataModel.gender,
+            let firstName = dataModel.firstName,
+            let lastName = dataModel.lastName,
+            let zip = dataModel.zip,
+            let city = dataModel.city,
+            let countryCode = dataModel.countryCode
+            else { return nil }
 
         self.gender = gender
         self.firstName = firstName

@@ -30,15 +30,16 @@ enum AddressFormField: String {
     case country
 
     var accessibilityIdentifier: String {
-        return "\(rawValue.lowercaseString)-textfield"
+        return "\(rawValue.lowercased())-textfield"
     }
 
     var title: String {
-        let title = Localizer.string("addressFormView.\(rawValue.lowercaseString)")
-        return title + (formValidators.contains { $0 == .Required } ? "*" : "")
+        let title = Localizer.string("addressFormView.\(rawValue.lowercased())")
+        return title + (formValidators.contains { $0 == .required } ? "*" : "")
     }
 
-    func value(dataModel: AddressFormDataModel) -> String? {
+    // TODO: consider extension AddressFormDataModel
+    func value(_ dataModel: AddressFormDataModel) -> String? {
         switch self {
         case .title: return dataModel.localizedTitle()
         case .firstName: return dataModel.firstName
@@ -53,9 +54,9 @@ enum AddressFormField: String {
         }
     }
 
-    func updateModel(dataModel: AddressFormDataModel, withValue value: String?) {
+    func update(dataModel: AddressFormDataModel, withValue value: String?) {
         switch self {
-        case .title: dataModel.updateTitle(value)
+        case .title: dataModel.updateTitle(fromLocalizedGenderText: value)
         case .firstName: dataModel.firstName = value
         case .lastName: dataModel.lastName = value
         case .street: dataModel.street = value
@@ -79,12 +80,12 @@ enum AddressFormField: String {
         }
     }
 
-    func customView(dataModel: AddressFormDataModel, completion: TextFieldChangedHandler) -> UIView? {
+    func customView(_ dataModel: AddressFormDataModel, completion: @escaping TextFieldChangedHandler) -> UIView? {
         switch self {
         case .title:
             let titles = dataModel.titles
             let currentTitle = value(dataModel) ?? ""
-            let currentTitleIdx = titles.indexOf(currentTitle) ?? 0
+            let currentTitleIdx = titles.index(of: currentTitle) ?? 0
             return PickerKeyboardInputView(pickerData: titles, startingValueIndex: currentTitleIdx, completion: completion)
         default:
             return nil
@@ -94,38 +95,38 @@ enum AddressFormField: String {
     var formValidators: [FormValidator] {
         switch self {
         case .title:
-            return [.Required]
+            return [.required]
         case .firstName, .lastName:
-            return [.Required,
-                    .MaxLength(maxLength: 50),
-                    .MinLength(minLength: 2),
-                    .Pattern(pattern: FormValidator.namePattern, errorMessage: "formValidation.pattern.name")]
+            return [.required,
+                    .maxLength(maxLength: 50),
+                    .minLength(minLength: 2),
+                    .pattern(pattern: FormValidator.namePattern, errorMessage: "formValidation.pattern.name")]
         case .street:
-            return [.Required,
-                    .MaxLength(maxLength: 50),
-                    .MinLength(minLength: 2),
-                    .Pattern(pattern: FormValidator.streetPattern, errorMessage: "formValidation.pattern.street")]
+            return [.required,
+                    .maxLength(maxLength: 50),
+                    .minLength(minLength: 2),
+                    .pattern(pattern: FormValidator.streetPattern, errorMessage: "formValidation.pattern.street")]
         case .additional:
-            return [.MaxLength(maxLength: 50)]
+            return [.maxLength(maxLength: 50)]
         case .packstation:
-            return [.Required,
-                    .ExactLength(length: 3),
-                    .NumbersOnly]
+            return [.required,
+                    .exactLength(length: 3),
+                    .numbersOnly]
         case .memberID:
-            return [.Required,
-                    .MinLength(minLength: 3),
-                    .NumbersOnly]
+            return [.required,
+                    .minLength(minLength: 3),
+                    .numbersOnly]
         case .zipcode:
-            return [.Required,
-                    .ExactLength(length: 5),
-                    .NumbersOnly]
+            return [.required,
+                    .exactLength(length: 5),
+                    .numbersOnly]
         case .city:
-            return [.Required,
-                    .MaxLength(maxLength: 50),
-                    .MinLength(minLength: 2),
-                    .Pattern(pattern: FormValidator.cityPattern, errorMessage: "formValidation.pattern.city")]
+            return [.required,
+                    .maxLength(maxLength: 50),
+                    .minLength(minLength: 2),
+                    .pattern(pattern: FormValidator.cityPattern, errorMessage: "formValidation.pattern.city")]
         case .country:
-            return [.Required]
+            return [.required]
         }
     }
 

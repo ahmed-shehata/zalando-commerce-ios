@@ -6,12 +6,12 @@ import Foundation
 
 extension UIApplication {
 
-    static func topViewController(baseController: UIViewController? = nil) -> UIViewController? {
-        let baseController = baseController ?? UIApplication.sharedApplication().keyWindow?.rootViewController
+    static func topViewController(_ baseController: UIViewController? = nil) -> UIViewController? {
+        let baseController = baseController ?? UIApplication.shared.keyWindow?.rootViewController
         if let navigationController = baseController as? UINavigationController {
             return topViewController(navigationController.visibleViewController)
         }
-        if let tabBarController = baseController as? UITabBarController, selectedController = tabBarController.selectedViewController {
+        if let tabBarController = baseController as? UITabBarController, let selectedController = tabBarController.selectedViewController {
             return topViewController(selectedController)
         }
         if let presentedController = baseController?.presentedViewController {
@@ -21,7 +21,7 @@ extension UIApplication {
     }
 
     static var window: UIWindow? {
-        return UIApplication.sharedApplication().keyWindow
+        return UIApplication.shared.keyWindow
     }
 
 }

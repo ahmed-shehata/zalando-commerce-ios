@@ -5,9 +5,9 @@
 import UIKit
 import AtlasSDK
 
-typealias AddressUpdatedHandler = (address: EquatableAddress) -> Void
-typealias AddressDeletedHandler = (address: EquatableAddress) -> Void
-typealias AddressSelectedHandler = (address: EquatableAddress) -> Void
+typealias AddressUpdatedHandler = (_ address: EquatableAddress) -> Void
+typealias AddressDeletedHandler = (_ address: EquatableAddress) -> Void
+typealias AddressSelectedHandler = (_ address: EquatableAddress) -> Void
 
 final class AddressListViewController: UIViewController {
 
@@ -23,10 +23,10 @@ final class AddressListViewController: UIViewController {
                                         viewController: self)
     }()
 
-    private let initialAddresses: [EquatableAddress]
-    private let initialSelectedAddress: EquatableAddress?
+    fileprivate let initialAddresses: [EquatableAddress]
+    fileprivate let initialSelectedAddress: EquatableAddress?
 
-    private let tableView: UITableView = {
+    fileprivate let tableView: UITableView = {
         let tableView = UITableView()
         tableView.registerReusableCell(AddressRowViewCell.self)
         tableView.registerReusableCell(AddAddressTableViewCell.self)
@@ -51,12 +51,12 @@ final class AddressListViewController: UIViewController {
         buildView()
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setEditing(false, animated: false)
     }
 
-    override func setEditing(editing: Bool, animated: Bool) {
+    override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         tableView.setEditing(editing, animated: animated)
     }
@@ -74,7 +74,7 @@ extension AddressListViewController: UIBuilder {
     }
 
     func configureConstraints() {
-        tableView.fillInSuperView()
+        tableView.fillInSuperview()
     }
 
     func configureEditButton() {
@@ -82,12 +82,12 @@ extension AddressListViewController: UIBuilder {
             setEditing(false, animated: false)
             navigationItem.rightBarButtonItem = nil
         } else {
-            navigationItem.rightBarButtonItem = editButtonItem()
+            navigationItem.rightBarButtonItem = editButtonItem
             navigationItem.rightBarButtonItem?.accessibilityIdentifier = "address-picker-right-button"
         }
     }
 
-    private func configureTableView() {
+    fileprivate func configureTableView() {
         tableView.delegate = tableviewDelegate
         tableView.dataSource = tableviewDelegate
         tableView.reloadData()

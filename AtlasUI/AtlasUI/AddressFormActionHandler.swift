@@ -22,7 +22,7 @@ protocol AddressFormActionHandler {
 
 extension AddressFormActionHandler {
 
-    func submitButtonPressed(dataModel: AddressFormDataModel) {
+    func submit(dataModel: AddressFormDataModel) {
         guard let request = CheckAddressRequest(dataModel: dataModel) else {
             delegate?.addressProcessingFinished()
             return

@@ -8,19 +8,20 @@ import AtlasSDK
 class KeyboardScrollView: UIScrollView {
 
     func registerForKeyboardNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self,
-                                                         selector: #selector(keyboardWillShow(_:)),
-                                                         name: UIKeyboardWillShowNotification,
-                                                         object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow(fromNotification:)),
+                                               name: NSNotification.Name.UIKeyboardWillShow,
+                                               object: nil)
 
-        NSNotificationCenter.defaultCenter().addObserver(self,
-                                                         selector: #selector(keyboardWillHide(_:)),
-                                                         name: UIKeyboardWillHideNotification,
-                                                         object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide(fromNotification:)),
+                                               name: NSNotification.Name.UIKeyboardWillHide,
+                                               object: nil)
     }
 
-    func keyboardWillShow(notification: NSNotification) {
-        guard let keyboardHeight = notification.userInfo?[UIKeyboardFrameEndUserInfoKey]?.CGRectValue().height else { return }
+    func keyboardWillShow(fromNotification notification: Notification) {
+        guard let infoValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] else { return }
+        let keyboardHeight = (infoValue as AnyObject).cgRectValue.height
 
         UIView.animate(.fast) {
             self.contentInset.bottom = keyboardHeight
@@ -29,17 +30,17 @@ class KeyboardScrollView: UIScrollView {
         }
     }
 
-    func keyboardWillHide(notification: NSNotification) {
+    func keyboardWillHide(fromNotification notification: Notification) {
         UIView.animate(.fast) {
             self.contentInset.bottom = 0
             self.scrollIndicatorInsets.bottom = 0
         }
     }
 
-    private func scrollToCurrentFirstResponder(withKeyboardHeight keyboardHeight: CGFloat) {
+    fileprivate func scrollToCurrentFirstResponder(withKeyboardHeight keyboardHeight: CGFloat) {
         guard let firstResponder = UIApplication.window?.findFirstResponder() else { return }
 
-        let frame = firstResponder.convertRect(firstResponder.bounds, toView: self)
+        let frame = firstResponder.convert(firstResponder.bounds, to: self)
         let newOffset = frame.origin.y - (bounds.height - keyboardHeight) / 2.0
         let maxOffset = contentSize.height + keyboardHeight - bounds.height
         contentOffset.y = max(-contentInset.top, min(newOffset, maxOffset))
