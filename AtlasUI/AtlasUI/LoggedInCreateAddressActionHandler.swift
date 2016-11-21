@@ -9,7 +9,7 @@ struct LoggedInCreateAddressActionHandler: AddressFormActionHandler {
 
     weak var delegate: AddressFormActionHandlerDelegate?
 
-    func procces(withValidModel dataModel: AddressFormDataModel) {
+    func process(validDataModel dataModel: AddressFormDataModel) {
         guard let request = CreateAddressRequest(dataModel: dataModel) else {
             delegate?.addressProcessingFinished()
             return

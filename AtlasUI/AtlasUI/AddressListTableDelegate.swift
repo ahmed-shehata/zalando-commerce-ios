@@ -23,7 +23,7 @@ class AddressListTableDelegate: NSObject {
     init(tableView: UITableView,
          addresses: [EquatableAddress],
          selectedAddress: EquatableAddress?,
-         viewController: AddressListViewController) {
+         viewController: AddressListViewController?) {
 
         self.tableView = tableView
         self.addresses = addresses

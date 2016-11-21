@@ -5,11 +5,11 @@
 import Foundation
 import AtlasSDK
 
-typealias LoggedInActionHandlerCompletion = AtlasResult<LoggedInActionHandler> -> Void
+typealias LoggedInSummaryActionHandlerCompletion = AtlasResult<LoggedInSummaryActionHandler> -> Void
 typealias CartCheckout = (cart: Cart?, checkout: Checkout?)
 typealias CreateCartCheckoutCompletion = AtlasResult<CartCheckout> -> Void
 
-class LoggedInActionHandler: CheckoutSummaryActionHandler {
+class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
 
     weak var dataSource: CheckoutSummaryActionHandlerDataSource?
     weak var delegate: CheckoutSummaryActionHandlerDelegate?
@@ -31,9 +31,9 @@ class LoggedInActionHandler: CheckoutSummaryActionHandler {
         return CheckoutAddresses(billingAddress: billingAddress, shippingAddress: shippingAddress)
     }
 
-    static func createInstance(customer: Customer, selectedArticleUnit: SelectedArticleUnit, completion: LoggedInActionHandlerCompletion) {
-        let actionHandler = LoggedInActionHandler(customer: customer)
-        LoggedInActionHandler.createCartCheckout(selectedArticleUnit) { result in
+    static func createInstance(customer: Customer, selectedUnit: SelectedArticleUnit, completion: LoggedInSummaryActionHandlerCompletion) {
+        let actionHandler = LoggedInSummaryActionHandler(customer: customer)
+        LoggedInSummaryActionHandler.createCartCheckout(selectedUnit) { result in
             switch result {
             case .success(let cartCheckout):
                 actionHandler.cartCheckout = cartCheckout
@@ -135,7 +135,7 @@ class LoggedInActionHandler: CheckoutSummaryActionHandler {
 
 }
 
-extension LoggedInActionHandler {
+extension LoggedInSummaryActionHandler {
 
     private func handleOrderConfirmation(order: Order) {
         guard let paymentURL = order.externalPaymentURL else {
@@ -163,18 +163,18 @@ extension LoggedInActionHandler {
         guard let dataSource = dataSource, delegate = delegate else { return }
         let selectedArticleUnit = dataSource.dataModel.selectedArticleUnit
         let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, checkout: cartCheckout?.checkout, order: order)
-        delegate.actionHandlerUpdated(OrderPlacedActionHandler())
+        delegate.actionHandlerUpdated(OrderPlacedSummaryActionHandler())
         delegate.dataModelUpdated(dataModel)
         delegate.layoutUpdated(OrderPlacedLayout())
     }
 
 }
 
-extension LoggedInActionHandler {
+extension LoggedInSummaryActionHandler {
 
     private func createCartCheckout(completion: CreateCartCheckoutCompletion) {
         guard let selectedArticleUnit = dataSource?.dataModel.selectedArticleUnit else { return }
-        LoggedInActionHandler.createCartCheckout(selectedArticleUnit, addresses: addresses, completion: completion)
+        LoggedInSummaryActionHandler.createCartCheckout(selectedArticleUnit, addresses: addresses, completion: completion)
     }
 
     private static func createCartCheckout(selectedArticleUnit: SelectedArticleUnit,
@@ -201,7 +201,7 @@ extension LoggedInActionHandler {
 
 }
 
-extension LoggedInActionHandler {
+extension LoggedInSummaryActionHandler {
 
     private func updateDataModel(addresses: CheckoutAddresses?) {
         guard let selectedArticleUnit = dataSource?.dataModel.selectedArticleUnit else { return }
@@ -226,7 +226,7 @@ extension LoggedInActionHandler {
 
 }
 
-extension LoggedInActionHandler {
+extension LoggedInSummaryActionHandler {
 
     private func addressUpdated(address: EquatableAddress) {
         if let shippingAddress = shippingAddress where shippingAddress == address {

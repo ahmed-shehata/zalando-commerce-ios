@@ -9,10 +9,10 @@ import AtlasMockAPI
 @testable import AtlasUI
 @testable import AtlasSDK
 
-class LoggedInActionHandlerTests: XCTestCase {
+class LoggedInSummaryActionHandlerTests: XCTestCase {
 
     var mockedDataSourceDelegate: CheckoutSummaryActionHandlerDataSourceDelegateMock?
-    var actionHandler: LoggedInActionHandler?
+    var actionHandler: LoggedInSummaryActionHandler?
 
     override func setUp() {
         super.setUp()
@@ -36,7 +36,7 @@ class LoggedInActionHandlerTests: XCTestCase {
         guard let dataModel = createDataModel(fromCartCheckout: createCartCheckout()) else { return fail() }
         mockedDataSourceDelegate?.dataModelUpdated(dataModel)
         actionHandler?.handleSubmitButton()
-        expect(self.mockedDataSourceDelegate?.actionHandler as? OrderPlacedActionHandler).toNotEventually(beNil())
+        expect(self.mockedDataSourceDelegate?.actionHandler as? OrderPlacedSummaryActionHandler).toNotEventually(beNil())
     }
 
     func testPriceChange() {
@@ -168,10 +168,10 @@ class LoggedInActionHandlerTests: XCTestCase {
 
 }
 
-extension LoggedInActionHandlerTests {
+extension LoggedInSummaryActionHandlerTests {
 
-    private func createActionHandler() -> LoggedInActionHandler? {
-        var loggedInActionHandler: LoggedInActionHandler?
+    private func createActionHandler() -> LoggedInSummaryActionHandler? {
+        var loggedInActionHandler: LoggedInSummaryActionHandler?
         waitUntil(timeout: 10) { done in
             let sku = "AD541L009-G11"
             self.registerAtlasUIViewController(sku) {
@@ -180,7 +180,7 @@ extension LoggedInActionHandlerTests {
                     AtlasUIClient.article(sku) { result in
                         guard let article = result.process() else { return fail() }
                         let selectedArticleUnit = SelectedArticleUnit(article: article, selectedUnitIndex: 0)
-                        LoggedInActionHandler.createInstance(customer, selectedArticleUnit: selectedArticleUnit) { result in
+                        LoggedInSummaryActionHandler.createInstance(customer, selectedUnit: selectedArticleUnit) { result in
                             guard let actionHandler = result.process() else { return fail() }
                             let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit)
                             let viewModel = CheckoutSummaryViewModel(dataModel: dataModel, layout: LoggedInLayout())
@@ -237,7 +237,7 @@ extension LoggedInActionHandlerTests {
     
 }
 
-extension LoggedInActionHandlerTests {
+extension LoggedInSummaryActionHandlerTests {
 
     private func createDataModel(withPaymentMethod paymentMethod: String?) -> CheckoutSummaryDataModel? {
         guard let selectedArticleUnit = mockedDataSourceDelegate?.dataModel.selectedArticleUnit else { return nil }

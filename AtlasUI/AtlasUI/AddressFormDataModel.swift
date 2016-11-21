@@ -50,14 +50,10 @@ class AddressFormDataModel {
     init?(contactProperty: CNContactProperty, countryCode: String?) {
         guard let postalAddress = contactProperty.value as? CNPostalAddress else { return nil }
 
-        let streetComponents = postalAddress.street.componentsSeparatedByString("\n")
-        self.street = streetComponents.first
-        if streetComponents.count > 1 && !streetComponents[1].isEmpty {
-            self.additional = streetComponents[1]
-        }
-
         self.firstName = contactProperty.contact.givenName
         self.lastName = contactProperty.contact.familyName
+        self.street = postalAddress.streetLine1
+        self.additional = postalAddress.streetLine2
         self.zip = postalAddress.postalCode
         self.city = postalAddress.city
         self.countryCode = countryCode
@@ -65,9 +61,7 @@ class AddressFormDataModel {
         self.isDefaultShipping = false
     }
 
-    var titles: [String] {
-        return ["", Gender.male.title, Gender.female.title]
-    }
+    let titles: [String] = ["", Gender.male.title, Gender.female.title]
 
     func updateTitle(localizedGenderText: String?) {
         switch localizedGenderText {
@@ -101,6 +95,34 @@ extension Gender {
 
     private var title: String {
         return Localizer.string("addressFormView.gender.\(rawValue.lowercaseString)")
+    }
+
+}
+
+extension CheckAddressRequest {
+
+    init?(dataModel: AddressFormDataModel) {
+        guard let address = CheckAddress(dataModel: dataModel) else { return nil }
+
+        self.address = address
+        self.pickupPoint = PickupPoint(dataModel: dataModel)
+    }
+
+}
+
+extension CheckAddress {
+
+    init?(dataModel: AddressFormDataModel) {
+        guard let
+            zip = dataModel.zip,
+            city = dataModel.city,
+            countryCode = dataModel.countryCode else { return nil }
+
+        self.street = dataModel.street
+        self.additional = dataModel.additional
+        self.zip = zip
+        self.city = city
+        self.countryCode = countryCode
     }
 
 }

@@ -16,7 +16,7 @@ protocol AddressFormActionHandler {
 
     weak var delegate: AddressFormActionHandlerDelegate? { get set }
 
-    func procces(withValidModel dataModel: AddressFormDataModel)
+    func process(validDataModel dataModel: AddressFormDataModel)
 
 }
 
@@ -38,37 +38,9 @@ extension AddressFormActionHandler {
                 UserMessage.displayError(AtlasCheckoutError.addressInvalid)
                 self.delegate?.addressProcessingFinished()
             } else {
-                self.procces(withValidModel: dataModel)
+                self.process(validDataModel: dataModel)
             }
         }
-    }
-
-}
-
-extension CheckAddressRequest {
-
-    init?(dataModel: AddressFormDataModel) {
-        guard let address = CheckAddress(dataModel: dataModel) else { return nil }
-
-        self.address = address
-        self.pickupPoint = PickupPoint(dataModel: dataModel)
-    }
-
-}
-
-extension CheckAddress {
-
-    init?(dataModel: AddressFormDataModel) {
-        guard let
-            zip = dataModel.zip,
-            city = dataModel.city,
-            countryCode = dataModel.countryCode else { return nil }
-
-        self.street = dataModel.street
-        self.additional = dataModel.additional
-        self.zip = zip
-        self.city = city
-        self.countryCode = countryCode
     }
 
 }

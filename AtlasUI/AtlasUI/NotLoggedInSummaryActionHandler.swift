@@ -5,7 +5,7 @@
 import Foundation
 import AtlasSDK
 
-struct NotLoggedInActionHandler: CheckoutSummaryActionHandler {
+struct NotLoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
 
     weak var dataSource: CheckoutSummaryActionHandlerDataSource?
     weak var delegate: CheckoutSummaryActionHandlerDelegate?
@@ -17,7 +17,7 @@ struct NotLoggedInActionHandler: CheckoutSummaryActionHandler {
             guard let customer = result.process() else { return }
 
             let selectedArticleUnit = dataSource.dataModel.selectedArticleUnit
-            LoggedInActionHandler.createInstance(customer, selectedArticleUnit: selectedArticleUnit) { result in
+            LoggedInSummaryActionHandler.createInstance(customer, selectedUnit: selectedArticleUnit) { result in
                 guard let actionHandler = result.process() else { return }
 
                 let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, cartCheckout: actionHandler.cartCheckout)
