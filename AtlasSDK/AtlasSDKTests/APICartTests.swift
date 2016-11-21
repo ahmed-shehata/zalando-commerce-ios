@@ -16,7 +16,7 @@ class APICartTests: AtlasAPIClientBaseTests {
             client.createCart([cartItemRequest]) { result in
                 switch result {
                 case .failure(let error):
-                    fail(String(error))
+                    fail(String(describing: error))
                 case .success(let cart):
                     expect(cart.id).to(equal(self.cartId))
                 }

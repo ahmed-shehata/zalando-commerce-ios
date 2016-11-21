@@ -39,7 +39,7 @@ extension DataTaskResponse: CustomStringConvertible {
             desc += "\(key): \(val)\n"
         }
         if let bodyData = request.httpBody, let body = String(data: bodyData, encoding: String.Encoding.utf8) {
-            desc += "⭕️ BODY: \(body.whiteCharactersFreeString)\n"
+            desc += "⭕️ BODY: \(body.newlinesRemoved)\n"
         }
 
         if let response = self.response {
@@ -48,7 +48,7 @@ extension DataTaskResponse: CustomStringConvertible {
                 desc += "\(key): \(val)\n"
             }
             if let bodyData = data, let body = String(data: bodyData, encoding: String.Encoding.utf8) {
-                desc += "⭕️ BODY: \(body.whiteCharactersFreeString)\n"
+                desc += "⭕️ BODY: \(body.newlinesRemoved)\n"
             }
         } else {
             desc += "<NO RESPONSE DATA>\n"

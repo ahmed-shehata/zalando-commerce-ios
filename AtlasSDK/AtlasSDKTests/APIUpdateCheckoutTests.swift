@@ -15,10 +15,10 @@ class APIUpdateCheckoutTests: AtlasAPIClientBaseTests {
     func testUpdateBillingAddress() {
         waitUntilAtlasAPIClientIsConfigured { done, client in
             let updateRequest = UpdateCheckoutRequest(billingAddressId: self.addressId)
-            client.updateCheckout(self.checkoutId, updateCheckoutRequest: updateRequest) { result in
+            client.updateCheckout(withId: self.checkoutId, updateCheckoutRequest: updateRequest) { result in
                 switch result {
                 case .failure(let error):
-                    fail(String(error))
+                    fail(String(describing: error))
                 case .success(let checkout):
                     expect(checkout.id).to(equal(self.checkoutId))
                     expect(checkout.billingAddress.id).to(equal(self.addressId))
@@ -31,10 +31,10 @@ class APIUpdateCheckoutTests: AtlasAPIClientBaseTests {
     func testUpdateShippingAddress() {
         waitUntilAtlasAPIClientIsConfigured { done, client in
             let updateRequest = UpdateCheckoutRequest(shippingAddressId: self.addressId)
-            client.updateCheckout(self.checkoutId, updateCheckoutRequest: updateRequest) { result in
+            client.updateCheckout(withId: self.checkoutId, updateCheckoutRequest: updateRequest) { result in
                 switch result {
                 case .failure(let error):
-                    fail(String(error))
+                    fail(String(describing: error))
                 case .success(let checkout):
                     expect(checkout.id).to(equal(self.checkoutId))
                     expect(checkout.shippingAddress.id).to(equal(self.addressId))
@@ -47,10 +47,10 @@ class APIUpdateCheckoutTests: AtlasAPIClientBaseTests {
     func testUpdateBillingAndShippingAddresses() {
         waitUntilAtlasAPIClientIsConfigured { done, client in
             let updateRequest = UpdateCheckoutRequest(billingAddressId: self.addressId, shippingAddressId: self.addressId)
-            client.updateCheckout(self.checkoutId, updateCheckoutRequest: updateRequest) { result in
+            client.updateCheckout(withId: self.checkoutId, updateCheckoutRequest: updateRequest) { result in
                 switch result {
                 case .failure(let error):
-                    fail(String(error))
+                    fail(String(describing: error))
                 case .success(let checkout):
                     expect(checkout.id).to(equal(self.checkoutId))
                     expect(checkout.billingAddress.id).to(equal(self.addressId))

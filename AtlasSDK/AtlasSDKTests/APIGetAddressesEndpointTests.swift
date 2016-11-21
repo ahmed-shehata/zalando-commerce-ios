@@ -15,7 +15,7 @@ class APIGetAddressesEndpointTests: XCTestCase {
         let endpoint = GetAddressesEndpoint(serviceURL: URL(validUrl: "http://example.com"),
                                             salesChannel: salesChannel)
 
-        let request = try? NSMutableURLRequest(endpoint: endpoint)
+        let request = try? URLRequest(endpoint: endpoint)
         expect(request?.allHTTPHeaderFields?["X-Sales-Channel"]).to(equal(salesChannel))
     }
 
