@@ -95,6 +95,7 @@
 		E98D1E871DDE0822005774B4 /* LoggedInCreateAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98D1E861DDE0822005774B4 /* LoggedInCreateAddressActionHandler.swift */; };
 		E98D1E891DDE082F005774B4 /* LoggedInUpdateAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98D1E881DDE082F005774B4 /* LoggedInUpdateAddressActionHandler.swift */; };
 		E9B686461DE36025009F8883 /* GuestCheckoutSummaryActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B686451DE36025009F8883 /* GuestCheckoutSummaryActionHandler.swift */; };
+		E9B686481DE363FD009F8883 /* GuestCheckoutAddressListActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B686471DE363FD009F8883 /* GuestCheckoutAddressListActionHandler.swift */; };
 		E9D437931DD35BED00082B44 /* Injector.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D437921DD35BED00082B44 /* Injector.swift */; };
 		E9D437951DD35E6C00082B44 /* AtlasUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D437941DD35E6C00082B44 /* AtlasUI.swift */; };
 		E9D437971DD3729D00082B44 /* CheckoutSummaryActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D437961DD3729D00082B44 /* CheckoutSummaryActionHandler.swift */; };
@@ -245,6 +246,7 @@
 		E98D1E861DDE0822005774B4 /* LoggedInCreateAddressActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedInCreateAddressActionHandler.swift; sourceTree = "<group>"; };
 		E98D1E881DDE082F005774B4 /* LoggedInUpdateAddressActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedInUpdateAddressActionHandler.swift; sourceTree = "<group>"; };
 		E9B686451DE36025009F8883 /* GuestCheckoutSummaryActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCheckoutSummaryActionHandler.swift; sourceTree = "<group>"; };
+		E9B686471DE363FD009F8883 /* GuestCheckoutAddressListActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCheckoutAddressListActionHandler.swift; sourceTree = "<group>"; };
 		E9D437921DD35BED00082B44 /* Injector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Injector.swift; sourceTree = "<group>"; };
 		E9D437941DD35E6C00082B44 /* AtlasUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasUI.swift; sourceTree = "<group>"; };
 		E9D437961DD3729D00082B44 /* CheckoutSummaryActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryActionHandler.swift; sourceTree = "<group>"; };
@@ -573,6 +575,7 @@
 			children = (
 				E9E193381DDF568600B070B8 /* AddressListActionHandler.swift */,
 				E9E193391DDF568600B070B8 /* LoggedInAddressListActionHandler.swift */,
+				E9B686471DE363FD009F8883 /* GuestCheckoutAddressListActionHandler.swift */,
 			);
 			name = "Action Handler";
 			sourceTree = "<group>";
@@ -913,6 +916,7 @@
 				79175AD49456E48DC6B393EB6F62053A /* UIColor.swift in Sources */,
 				170D032BE739B3A96834CDAF3CA1D22C /* UIImage.swift in Sources */,
 				4434BCFA43868F4DBFCFF8980581F9AC /* UIImageView.swift in Sources */,
+				E9B686481DE363FD009F8883 /* GuestCheckoutAddressListActionHandler.swift in Sources */,
 				F3F62025EFDB47B5637DC3C928D69264 /* UITableView.swift in Sources */,
 				E9B686461DE36025009F8883 /* GuestCheckoutSummaryActionHandler.swift in Sources */,
 				DE4482A9091E62348223761D4C58D008 /* UIView.swift in Sources */,
