@@ -9,25 +9,22 @@ typealias AddressUpdatedHandler = (address: EquatableAddress) -> Void
 typealias AddressDeletedHandler = (address: EquatableAddress) -> Void
 typealias AddressSelectedHandler = (address: EquatableAddress) -> Void
 
-final class AddressPickerViewController: UIViewController {
+final class AddressListViewController: UIViewController {
 
     var addressUpdatedHandler: AddressUpdatedHandler?
     var addressDeletedHandler: AddressDeletedHandler?
     var addressSelectedHandler: AddressSelectedHandler?
-    var addressCreationStrategy: AddressCreationStrategy?
+    var actionHandler: AddressListActionHandler?
 
-    lazy var tableviewDelegate: AddressListTableViewDelegate = {
-        return AddressListTableViewDelegate(tableView: self.tableView,
-                                            addresses: self.initialAddresses,
-                                            selectedAddress: self.initialSelectedAddress,
-                                            actionsHandler: self.actionsHandler)
+    lazy var tableviewDelegate: AddressListTableDelegate = {
+        return AddressListTableDelegate(tableView: self.tableView,
+                                        addresses: self.initialAddresses,
+                                        selectedAddress: self.initialSelectedAddress,
+                                        viewController: self)
     }()
 
     private let initialAddresses: [EquatableAddress]
     private let initialSelectedAddress: EquatableAddress?
-    private lazy var actionsHandler: AddressActionsHandler = {
-        return AddressActionsHandler(viewController: self)
-    }()
 
     private let tableView: UITableView = {
         let tableView = UITableView()
@@ -66,7 +63,7 @@ final class AddressPickerViewController: UIViewController {
 
 }
 
-extension AddressPickerViewController: UIBuilder {
+extension AddressListViewController: UIBuilder {
 
     func configureView() {
         view.addSubview(tableView)

@@ -77,7 +77,7 @@ extension SizeListSelectionViewController {
     private func showCheckoutScreen(selectedArticleUnit: SelectedArticleUnit) {
         let hasSingleUnit = selectedArticleUnit.article.hasSingleUnit
         guard Atlas.isAuthorized() else {
-            let actionHandler = NotLoggedInActionHandler()
+            let actionHandler = NotLoggedInSummaryActionHandler()
             let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit)
             let viewModel = CheckoutSummaryViewModel(dataModel: dataModel, layout: NotLoggedInLayout())
             return displayCheckoutSummaryViewController(viewModel, actionHandler: actionHandler)
@@ -86,7 +86,7 @@ extension SizeListSelectionViewController {
         AtlasUIClient.customer { [weak self] customerResult in
             guard let customer = customerResult.process(forceFullScreenError: hasSingleUnit) else { return }
 
-            LoggedInActionHandler.createInstance(customer, selectedArticleUnit: selectedArticleUnit) { actionHandlerResult in
+            LoggedInSummaryActionHandler.createInstance(customer, selectedUnit: selectedArticleUnit) { actionHandlerResult in
                 guard let actionHandler = actionHandlerResult.process(forceFullScreenError: hasSingleUnit) else { return }
 
                 let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, cartCheckout: actionHandler.cartCheckout)

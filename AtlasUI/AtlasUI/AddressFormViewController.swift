@@ -5,7 +5,7 @@
 import UIKit
 import AtlasSDK
 
-typealias AddressFormCompletion = UserAddress -> Void
+typealias AddressFormCompletion = EquatableAddress -> Void
 
 class AddressFormViewController: UIViewController {
 
@@ -17,30 +17,23 @@ class AddressFormViewController: UIViewController {
 
     lazy var addressStackView: AddressFormStackView = {
         let stackView = AddressFormStackView()
-        stackView.addressType = self.addressType
+        stackView.addressType = self.viewModel.type
         stackView.axis = .Vertical
         stackView.layoutMargins = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
         stackView.layoutMarginsRelativeArrangement = true
         return stackView
     }()
 
-    private let addressType: AddressFormType
-    private let addressMode: AddressFormMode
-    private let addressViewModel: AddressFormViewModel
-    var completion: AddressFormCompletion?
+    private let viewModel: AddressFormViewModel
+    private let actionHandler: AddressFormActionHandler?
+    private let completion: AddressFormCompletion?
 
-    init(addressType: AddressFormType, addressMode: AddressFormMode, completion: AddressFormCompletion?) {
-        self.addressType = addressType
-        self.addressMode = addressMode
+    init(viewModel: AddressFormViewModel, actionHandler: AddressFormActionHandler?, completion: AddressFormCompletion?) {
+        self.viewModel = viewModel
+        self.actionHandler = actionHandler
         self.completion = completion
-        let countryCode = AtlasAPIClient.countryCode
-
-        switch addressMode {
-        case .createAddress(let addressViewModel): self.addressViewModel = addressViewModel
-        case .updateAddress(let address): self.addressViewModel = AddressFormViewModel(equatableAddress: address, countryCode: countryCode)
-        }
-
         super.init(nibName: nil, bundle: nil)
+        self.actionHandler?.delegate = self
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -51,61 +44,18 @@ class AddressFormViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .whiteColor()
         buildView()
-        addressStackView.configureData(addressViewModel)
+        addressStackView.configureData(viewModel.dataModel)
         configureNavigation()
-        navigationItem.rightBarButtonItem?.accessibilityIdentifier = "address-edit-right-button"
     }
 
-}
-
-extension AddressFormViewController {
-
-    private func configureNavigation() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: Localizer.string("button.general.save"),
-                                                            style: .Plain,
-                                                            target: self,
-                                                            action: #selector(submitButtonPressed))
-
-        switch addressMode {
-        case .createAddress:
-            navigationItem.leftBarButtonItem = UIBarButtonItem(title: Localizer.string("button.general.cancel"),
-                                                               style: .Plain,
-                                                               target: self,
-                                                               action: #selector(cancelButtonPressed))
-        case .updateAddress:
-            break
+    func displayView() {
+        if viewModel.layout.displayViewModally {
+            let navigationController = UINavigationController(rootViewController: self)
+            navigationController.modalPresentationStyle = .OverCurrentContext
+            AtlasUIViewController.instance?.showViewController(navigationController, sender: nil)
+        } else {
+            AtlasUIViewController.instance?.mainNavigationController.pushViewController(self, animated: true)
         }
-    }
-
-    private dynamic func submitButtonPressed() {
-        view.endEditing(true)
-
-        let isValid = addressStackView.textFields.map { $0.validateForm() }.filter { $0 == false }.isEmpty
-        guard isValid else { return }
-
-        disableSaveButton()
-        checkAddressRequest()
-    }
-
-    private dynamic func cancelButtonPressed() {
-        dismissView()
-    }
-
-    private func dismissView(completion: (() -> Void)? = nil) {
-        view.endEditing(true)
-
-        switch addressMode {
-        case .createAddress: dismissViewControllerAnimated(true, completion: completion)
-        case .updateAddress: navigationController?.popViewControllerAnimated(true)
-        }
-    }
-
-    private func enableSaveButton() {
-        navigationItem.rightBarButtonItem?.enabled = true
-    }
-
-    private func disableSaveButton() {
-        navigationItem.rightBarButtonItem?.enabled = false
     }
 
 }
@@ -128,43 +78,56 @@ extension AddressFormViewController: UIBuilder {
 
 extension AddressFormViewController {
 
-    private func checkAddressRequest() {
-        guard let request = CheckAddressRequest(addressFormViewModel: addressViewModel) else { return enableSaveButton() }
-        AtlasUIClient.checkAddress(request) { [weak self] result in
-            self?.checkAddressRequestCompletion(result)
+    private func configureNavigation() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: Localizer.string("button.general.save"),
+                                                            style: .Plain,
+                                                            target: self,
+                                                            action: #selector(submitButtonPressed))
+        navigationItem.rightBarButtonItem?.accessibilityIdentifier = "address-edit-right-button"
+
+        if viewModel.layout.displayCancelButton {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: Localizer.string("button.general.cancel"),
+                                                               style: .Plain,
+                                                               target: self,
+                                                               action: #selector(cancelButtonPressed))
         }
     }
 
-    private func createAddressRequest() {
-        guard let request = CreateAddressRequest(addressFormViewModel: addressViewModel) else { return enableSaveButton() }
-        AtlasUIClient.createAddress(request) { [weak self] result in
-            self?.createUpdateAddressRequestCompletion(result)
-        }
+    private dynamic func cancelButtonPressed() {
+        dismissView(true)
     }
 
-    private func updateAddressRequest(originalAddress: EquatableAddress) {
-        guard let request = UpdateAddressRequest(addressFormViewModel: addressViewModel) else { return enableSaveButton() }
-        AtlasUIClient.updateAddress(originalAddress.id, request: request) { [weak self] result in
-            self?.createUpdateAddressRequestCompletion(result)
-        }
+    private dynamic func submitButtonPressed() {
+        view.endEditing(true)
+
+        let isValid = addressStackView.textFields.map { $0.validateForm() }.filter { $0 == false }.isEmpty
+        guard isValid else { return }
+
+        navigationItem.rightBarButtonItem?.enabled = false
+        actionHandler?.submitButtonPressed(viewModel.dataModel)
     }
 
-    private func checkAddressRequestCompletion(result: AtlasAPIResult<CheckAddressResponse>) {
-        guard let checkAddressResponse = result.process() else { return enableSaveButton() }
-        if checkAddressResponse.status == .notCorrect {
-            UserMessage.displayError(AtlasCheckoutError.addressInvalid)
-            enableSaveButton()
+    private func dismissView(animated: Bool, completion: (() -> Void)? = nil) {
+        view.endEditing(true)
+
+        if viewModel.layout.displayViewModally {
+            dismissViewControllerAnimated(animated, completion: completion)
         } else {
-            switch addressMode {
-            case .createAddress: createAddressRequest()
-            case .updateAddress(let address): updateAddressRequest(address)
-            }
+            navigationController?.popViewControllerAnimated(animated)
+            completion?()
         }
     }
 
-    private func createUpdateAddressRequestCompletion(result: AtlasAPIResult<UserAddress>) {
-        guard let address = result.process() else { return enableSaveButton() }
-        dismissView { [weak self] in
+}
+
+extension AddressFormViewController: AddressFormActionHandlerDelegate {
+
+    func addressProcessingFinished() {
+        navigationItem.rightBarButtonItem?.enabled = true
+    }
+
+    func dismissView(withAddress address: EquatableAddress, animated: Bool) {
+        dismissView(animated) { [weak self] in
             self?.completion?(address)
         }
     }
