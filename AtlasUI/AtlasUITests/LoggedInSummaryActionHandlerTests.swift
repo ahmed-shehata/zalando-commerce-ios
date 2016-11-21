@@ -246,7 +246,7 @@ extension LoggedInSummaryActionHandlerTests {
                                         billingAddress: nil,
                                         paymentMethod: paymentMethod,
                                         shippingPrice: 0,
-                                        totalPrice: 0,
+                                        totalPrice: 10.45,
                                         delivery: nil)
     }
 
