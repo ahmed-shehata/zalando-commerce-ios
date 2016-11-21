@@ -24,9 +24,9 @@ class AddressFormViewController: UIViewController {
         return stackView
     }()
 
+    var completion: AddressFormCompletion?
     private let viewModel: AddressFormViewModel
     private let actionHandler: AddressFormActionHandler?
-    private let completion: AddressFormCompletion?
 
     init(viewModel: AddressFormViewModel, actionHandler: AddressFormActionHandler?, completion: AddressFormCompletion?) {
         self.viewModel = viewModel

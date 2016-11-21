@@ -124,5 +124,5 @@ extension CheckAddress {
         self.city = city
         self.countryCode = countryCode
     }
-    
+
 }
