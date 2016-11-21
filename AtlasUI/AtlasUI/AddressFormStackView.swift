@@ -25,7 +25,7 @@ extension AddressFormStackView: UIBuilder {
 
 extension AddressFormStackView: UIDataBuilder {
 
-    typealias T = AddressFormViewModel
+    typealias T = AddressFormDataModel
 
     func configureData(viewModel: T) {
         for (idx, textFieldInputView) in textFields.enumerate() {

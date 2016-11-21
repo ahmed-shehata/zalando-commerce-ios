@@ -6,11 +6,12 @@ import Foundation
 import ContactsUI
 import AtlasSDK
 
-class AddressBookImportCreationStrategy: NSObject, AddressFormCreationStrategy {
+// swiftlint:disable:next type_name
+class AddressBookImportDataModelCreationStrategy: NSObject, AddressDataModelCreationStrategy {
 
-    let completion: AddressFormCreationStrategyCompletion
+    let completion: AddressDataModelCreationStrategyCompletion
 
-    required init(completion: AddressFormCreationStrategyCompletion) {
+    required init(completion: AddressDataModelCreationStrategyCompletion) {
         self.completion = completion
     }
 
@@ -25,13 +26,13 @@ class AddressBookImportCreationStrategy: NSObject, AddressFormCreationStrategy {
 
 }
 
-extension AddressBookImportCreationStrategy: CNContactPickerDelegate {
+extension AddressBookImportDataModelCreationStrategy: CNContactPickerDelegate {
 
     func contactPicker(picker: CNContactPickerViewController, didSelectContactProperty contactProperty: CNContactProperty) {
         picker.dismissViewControllerAnimated(true) { [weak self] in
             guard let strongSelf = self else { return }
-            if let addressViewModel = AddressFormViewModel(contactProperty: contactProperty, countryCode: AtlasAPIClient.countryCode) {
-                strongSelf.completion(addressViewModel)
+            if let datawModel = AddressFormDataModel(contactProperty: contactProperty, countryCode: AtlasAPIClient.countryCode) {
+                strongSelf.completion(datawModel)
             } else {
                 UserMessage.displayError(AtlasCheckoutError.unclassified)
             }
