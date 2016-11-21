@@ -9,7 +9,7 @@ struct LoggedInUpdateAddressActionHandler: AddressFormActionHandler {
 
     weak var delegate: AddressFormActionHandlerDelegate?
 
-    func procces(withValidModel dataModel: AddressFormDataModel) {
+    func process(validDataModel dataModel: AddressFormDataModel) {
         guard let
             addressId = dataModel.addressId,
             request = UpdateAddressRequest(dataModel: dataModel)

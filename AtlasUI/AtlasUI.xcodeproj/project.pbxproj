@@ -109,6 +109,8 @@
 		E9E193371DDF562700B070B8 /* AddressListTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E193361DDF562700B070B8 /* AddressListTableDelegate.swift */; };
 		E9E1933A1DDF568600B070B8 /* AddressListActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E193381DDF568600B070B8 /* AddressListActionHandler.swift */; };
 		E9E1933B1DDF568600B070B8 /* LoggedInAddressListActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E193391DDF568600B070B8 /* LoggedInAddressListActionHandler.swift */; };
+		E9E2F3D91DE301CE0017D059 /* LoggedInAddressListActionHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E2F3D81DE301CE0017D059 /* LoggedInAddressListActionHandlerTests.swift */; };
+		E9E2F3DB1DE3346B0017D059 /* CNPostalAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E2F3DA1DE3346B0017D059 /* CNPostalAddress.swift */; };
 		EF570993CFA4FDF0361679E931D55B8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94F33C041120EF12B441AE2E84A48050 /* Assets.xcassets */; };
 		F3F62025EFDB47B5637DC3C928D69264 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F13460B6B17606CC65E38CE6A4716C /* UITableView.swift */; };
 		F60151398A735039647F5A24ADB64506 /* SizeListTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662F01835226FD6EFB86E93D7332FA0A /* SizeListTableViewDataSource.swift */; };
@@ -255,6 +257,8 @@
 		E9E193361DDF562700B070B8 /* AddressListTableDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressListTableDelegate.swift; sourceTree = "<group>"; };
 		E9E193381DDF568600B070B8 /* AddressListActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressListActionHandler.swift; sourceTree = "<group>"; };
 		E9E193391DDF568600B070B8 /* LoggedInAddressListActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedInAddressListActionHandler.swift; sourceTree = "<group>"; };
+		E9E2F3D81DE301CE0017D059 /* LoggedInAddressListActionHandlerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedInAddressListActionHandlerTests.swift; sourceTree = "<group>"; };
+		E9E2F3DA1DE3346B0017D059 /* CNPostalAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNPostalAddress.swift; sourceTree = "<group>"; };
 		EE803447FAE67D333D86C06DBB03AF20 /* AtlasUI-Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AtlasUI-Constants.swift"; sourceTree = "<group>"; };
 		F3A01B45B1F4C0D9775396AA422A78BA /* BannerErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerErrorViewController.swift; sourceTree = "<group>"; };
 		F5BC3D0FCDE4649756A9FB6C987C9064 /* AtlasUI-StreetAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AtlasUI-StreetAddress.swift"; sourceTree = "<group>"; };
@@ -419,6 +423,7 @@
 				F5BC3D0FCDE4649756A9FB6C987C9064 /* AtlasUI-StreetAddress.swift */,
 				DFCC0DB119DFC404BB122ED5E6E2861F /* AtlasUI-String.swift */,
 				E961859D1DDB1C180000463B /* AtlasUIClient.swift */,
+				E9E2F3DA1DE3346B0017D059 /* CNPostalAddress.swift */,
 				48810079D24D8738797CA31DF6E4E8BE /* UIScreen.swift */,
 				9F5B1762ED329FAB88F440E73AB36059 /* UIViewController.swift */,
 				D4F1679B8BB8A951B60D19AD947CD5BA /* CGRect.swift */,
@@ -509,6 +514,7 @@
 				51B1CD594BE0AFFDF8587372BC49280A /* PaymentViewControllerTests.swift */,
 				83316EC4886ACF067F2DE376AB807478 /* URLAuthorizationTests.swift */,
 				E94CCCBD1DE2FFE000987655 /* LoggedInSummaryActionHandlerTests.swift */,
+				E9E2F3D81DE301CE0017D059 /* LoggedInAddressListActionHandlerTests.swift */,
 			);
 			path = AtlasUITests;
 			sourceTree = "<group>";
@@ -800,6 +806,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9E2F3D91DE301CE0017D059 /* LoggedInAddressListActionHandlerTests.swift in Sources */,
 				E0D0E4EC009CDEA4D16C8A2726F24643 /* AsyncTests.swift in Sources */,
 				877D4CE660F5CFF550D4032BE46FCCCB /* EditAddressTypeTests.swift in Sources */,
 				82FEDC4FA09CC55CE1D9224BCDED9062 /* FormValidatorTests.swift in Sources */,
@@ -834,6 +841,7 @@
 				E94CCCBA1DE2FE3B00987655 /* OrderPlacedSummaryActionHandler.swift in Sources */,
 				E9E193241DDF123600B070B8 /* EmptyAddressDataModelCreationStrategy.swift in Sources */,
 				712A5CE53BB2C82B8F3C0E04225A8409 /* AtlasUI-FormattableAddress.swift in Sources */,
+				E9E2F3DB1DE3346B0017D059 /* CNPostalAddress.swift in Sources */,
 				AD1C6DB11CD8FE8A3E16C997AED68D63 /* AtlasUI-NSURL.swift in Sources */,
 				E9E1933B1DDF568600B070B8 /* LoggedInAddressListActionHandler.swift in Sources */,
 				04F28264BE2A927E330D3459B87A91D2 /* AtlasUI-StreetAddress.swift in Sources */,
