@@ -13,7 +13,7 @@ class DatesTests: XCTestCase {
         let expectedFormattedDate = "2016-07-06T16:33:10.000+0000"
 
         let date = Date(timeIntervalSince1970: 1467822790)
-        let formattedDate = RFC3339DateFormatter().stringFromDate(date)
+        let formattedDate = RFC3339DateFormatter().string(from: date)
         expect(expectedFormattedDate).to(equal(formattedDate))
     }
 
@@ -21,7 +21,7 @@ class DatesTests: XCTestCase {
         let expectedDate = Date(timeIntervalSince1970: 1467822790)
 
         let textDate = "2016-07-06T16:33:10.000+0000"
-        let parsedDate = RFC3339DateFormatter().dateFromString(textDate)
+        let parsedDate = RFC3339DateFormatter().date(from: textDate)
         expect(expectedDate).to(equal(parsedDate))
     }
 
@@ -29,12 +29,12 @@ class DatesTests: XCTestCase {
         let expectedDate = Date(timeIntervalSince1970: 1467822790)
 
         let textDate = "2016-07-06T18:33:10.000+02:00"
-        let parsedDate = RFC3339DateFormatter().dateFromString(textDate)
+        let parsedDate = RFC3339DateFormatter().date(from: textDate)
         expect(expectedDate).to(equal(parsedDate))
     }
 
     func testNilDate() {
-        let parsedDate = RFC3339DateFormatter().dateFromString(nil)
+        let parsedDate = RFC3339DateFormatter().date(from: nil)
         expect(parsedDate).to(beNil())
     }
 

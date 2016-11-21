@@ -6,10 +6,10 @@ import Foundation
 
 extension Data {
 
-    init?(json: [String: AnyObject]?) throws {
+    init?(withJSONObject json: [String: Any]?, options: JSONSerialization.WritingOptions = []) throws {
         guard let json = json else { return nil }
         do {
-            self = try JSONSerialization.data(withJSONObject: json, options: [])
+            self = try JSONSerialization.data(withJSONObject: json, options: options)
         } catch let e {
             AtlasLogger.logError(e)
             throw e

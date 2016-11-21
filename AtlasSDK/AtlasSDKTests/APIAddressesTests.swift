@@ -15,7 +15,7 @@ class APIAddressesTests: AtlasAPIClientBaseTests {
             client.addresses { result in
                 switch result {
                 case .failure(let error):
-                    fail(String(error))
+                    fail(String(describing: error))
                 case .success(let addresses):
                     expect(addresses.first?.id).to(equal("6702759"))
                     expect(addresses.first?.customerNumber).to(equal("3036553496"))
@@ -37,10 +37,10 @@ class APIAddressesTests: AtlasAPIClientBaseTests {
 
     func testDeleteAddress() {
         waitUntilAtlasAPIClientIsConfigured { done, client in
-            client.deleteAddress("6702748") { result in
+            client.deleteAddress(withId: "6702748") { result in
                 switch result {
                 case .failure(let error):
-                    fail(String(error))
+                    fail(String(describing: error))
                 case .success(let emptyResponse):
                     expect(emptyResponse).notTo(beNil())
                 }

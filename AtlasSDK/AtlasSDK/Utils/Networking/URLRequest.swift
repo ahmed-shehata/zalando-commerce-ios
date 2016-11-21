@@ -47,7 +47,7 @@ extension URLRequest {
         self.init(url: endpoint.url)
         self.setHeaders(from: endpoint)
         self.httpMethod = endpoint.method.rawValue
-        self.httpBody = try Data(json: endpoint.parameters)
+        self.httpBody = try Data(withJSONObject: endpoint.parameters)
     }
 
     fileprivate mutating func setHeaders(from endpoint: Endpoint) {

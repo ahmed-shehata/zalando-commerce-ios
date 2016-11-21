@@ -29,43 +29,43 @@ class LoggerTests: XCTestCase {
     }
 
     func testErrorForErrorSeverity() {
-        AtlasLogger.logger.severity = .Error
+        AtlasLogger.logger.severity = .error
         AtlasLogger.logError(loggedMessage)
         expect(self.loggerOutput).to(contain(loggedMessage))
     }
 
     func testMessageForMessageSeverity() {
-        AtlasLogger.logger.severity = .Message
+        AtlasLogger.logger.severity = .message
         AtlasLogger.logMessage(loggedMessage)
         expect(self.loggerOutput).to(contain(loggedMessage))
     }
 
     func testDebugForDebugSeverity() {
-        AtlasLogger.logger.severity = .Debug
+        AtlasLogger.logger.severity = .debug
         AtlasLogger.logDebug(loggedMessage)
         expect(self.loggerOutput).to(contain(loggedMessage))
     }
 
     func testMessageForErrorSeverity() {
-        AtlasLogger.logger.severity = .Error
+        AtlasLogger.logger.severity = .error
         AtlasLogger.logMessage(loggedMessage)
         expect(self.loggerOutput).toNot(contain(loggedMessage))
     }
 
     func testDebugForErrorSeverity() {
-        AtlasLogger.logger.severity = .Error
+        AtlasLogger.logger.severity = .error
         AtlasLogger.logDebug(loggedMessage)
         expect(self.loggerOutput).toNot(contain(loggedMessage))
     }
 
     func testDebugForMessageSeverity() {
-        AtlasLogger.logger.severity = .Message
+        AtlasLogger.logger.severity = .message
         AtlasLogger.logDebug(loggedMessage)
         expect(self.loggerOutput).toNot(contain(loggedMessage))
     }
 
     func testFunctionNameAndFile() {
-        AtlasLogger.logger.severity = .Debug
+        AtlasLogger.logger.severity = .debug
         AtlasLogger.logDebug(loggedMessage, verbose: true)
 
         expect(self.loggerOutput).to(contain("testFunctionNameAndFile()"))
