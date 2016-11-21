@@ -591,10 +591,10 @@
 			isa = PBXGroup;
 			children = (
 				E9D437961DD3729D00082B44 /* CheckoutSummaryActionHandler.swift */,
-				E9D437991DD3740A00082B44 /* NotLoggedInActionHandler.swift */,
+				E94CCCBB1DE2FF4600987655 /* NotLoggedInSummaryActionHandler.swift */,
 				E98D1E791DDDB762005774B4 /* GuestCheckoutActionHandler.swift */,
-				E9D4379F1DD3752300082B44 /* LoggedInActionHandler.swift */,
-				E9D4379D1DD3748E00082B44 /* OrderPlacedActionHandler.swift */,
+				E94CCCB51DE2FE3B00987655 /* LoggedInSummaryActionHandler.swift */,
+				E94CCCB71DE2FE3B00987655 /* OrderPlacedSummaryActionHandler.swift */,
 			);
 			name = "Action Handler";
 			sourceTree = "<group>";
