@@ -9,7 +9,6 @@ protocol CheckoutSummaryLayout {
 
     var navigationBarTitleLocalizedKey: String { get }
     var showCancelButton: Bool { get }
-    var showPrice: Bool { get }
     var showFooterLabel: Bool { get }
     var showDetailArrow: Bool { get }
 
@@ -23,7 +22,6 @@ struct NotLoggedInLayout: CheckoutSummaryLayout {
 
     let navigationBarTitleLocalizedKey: String = "summaryView.title.summary"
     let showCancelButton: Bool = true
-    let showPrice: Bool = false
     let showFooterLabel: Bool = true
     let showDetailArrow: Bool = true
 
@@ -37,7 +35,6 @@ struct LoggedInLayout: CheckoutSummaryLayout {
 
     let navigationBarTitleLocalizedKey: String = "summaryView.title.summary"
     let showCancelButton: Bool = true
-    let showPrice: Bool = true
     let showFooterLabel: Bool = true
     let showDetailArrow: Bool = true
 
@@ -51,7 +48,6 @@ struct OrderPlacedLayout: CheckoutSummaryLayout {
 
     let navigationBarTitleLocalizedKey: String = "summaryView.title.orderPlaced"
     let showCancelButton: Bool = false
-    let showPrice: Bool = true
     let showFooterLabel: Bool = false
     let showDetailArrow: Bool = false
 

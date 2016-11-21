@@ -24,12 +24,8 @@ extension CheckoutSummaryViewModel {
     }
 
     private func checkPriceChange(oldDataModel: CheckoutSummaryDataModel) {
-        guard let
-            oldPrice = oldDataModel.totalPrice,
-            newPrice = dataModel.totalPrice else { return }
-
-        if oldPrice != newPrice {
-            UserMessage.displayError(AtlasCheckoutError.priceChanged(newPrice: newPrice))
+        if oldDataModel.totalPrice != dataModel.totalPrice {
+            UserMessage.displayError(AtlasCheckoutError.priceChanged(newPrice: dataModel.totalPrice))
         }
     }
 
