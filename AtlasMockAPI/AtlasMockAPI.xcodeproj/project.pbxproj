@@ -47,6 +47,7 @@
 		752AD4DC7CCCA0A5BE46A02D5AC5C848 /* customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE50F14CF22BB8970E3EA7156738A8D5 /* customer.swift */; };
 		79068FCC902009E12A3E43E7A2895902 /* !customer-auth.json in Resources */ = {isa = PBXBuildFile; fileRef = 190ADDFC8C36495A6C2B51B58DE206F4 /* !customer-auth.json */; };
 		79B050A23B1CDDF51B8B7B2AA5FAF073 /* static-jsons.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA560C48D8E31572681D63D800308B84 /* static-jsons.swift */; };
+		814ECBE51DE33C7D00BA47A5 /* Swifter.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 814ECBE41DE33C7D00BA47A5 /* Swifter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8720D2B0604EE9F3D556997AABD433D1 /* PUT*|checkouts|CHECKOUT_ID.json in Resources */ = {isa = PBXBuildFile; fileRef = 36179885761B049B1F4CBF0168DCE1BC /* PUT*|checkouts|CHECKOUT_ID.json */; };
 		89D06E86E5BD432FBCB4F4A722DBF3EA /* PUT*|addresses|6616154.json in Resources */ = {isa = PBXBuildFile; fileRef = A18D1A78AC6C343752EAD271C4A781C7 /* PUT*|addresses|6616154.json */; };
 		89E334C4AD5ADBBA39AB8084DAF56777 /* POST*|checkouts.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A268438741376FB9F4283CC387897E0 /* POST*|checkouts.json */; };
@@ -94,7 +95,6 @@
 		F58A3868199FCF758BAFBF169270FF60 /* GET*|articles.json in Resources */ = {isa = PBXBuildFile; fileRef = 925056144BC88164B2CFDCEBE2F0C7E7 /* GET*|articles.json */; };
 		F8586B67C272BAB25648D8B37F2DF4ED /* POST*|checkouts.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A268438741376FB9F4283CC387897E0 /* POST*|checkouts.json */; };
 		F9BF26EEB1340EF7A3AFAE31DFA35F37 /* Swifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B32EE0596F3E33D121673D07A89E425 /* Swifter.framework */; };
-		FD8928084A5B5260D43B5826E9B543A9 /* Swifter.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7B32EE0596F3E33D121673D07A89E425 /* Swifter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,7 +121,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				FD8928084A5B5260D43B5826E9B543A9 /* Swifter.framework in Copy Frameworks */,
+				814ECBE51DE33C7D00BA47A5 /* Swifter.framework in Copy Frameworks */,
 				9C0578DBD80EB3FB52CF65220A86FF0E /* SwiftyJSON.framework in Copy Frameworks */,
 				67ADE51755468A8D087D4A51AB1EF4E9 /* SwiftHTTP.framework in Copy Frameworks */,
 				2AB36F7186EB2F5690564F3984DDF6F2 /* Nimble.framework in Copy Frameworks */,
@@ -184,6 +184,7 @@
 		774E15C0298E7554801A950D57B1794B /* Bundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		7B32EE0596F3E33D121673D07A89E425 /* Swifter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swifter.framework; path = ../Carthage/Build/Mac/Swifter.framework; sourceTree = "<group>"; };
 		7F71AA7830F715E66612EE4F3B5B0DE2 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = ../Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
+		814ECBE41DE33C7D00BA47A5 /* Swifter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swifter.framework; path = ../Carthage/Build/iOS/Swifter.framework; sourceTree = "<group>"; };
 		85BC90121A75EE5E58D7451EDFC484AB /* GET*|articles|EV451G023-Q11.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles|EV451G023-Q11.json"; sourceTree = "<group>"; };
 		8E3778589D321DAEEFC3A19E61372FA8 /* AtlasMockAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtlasMockAPI.h; sourceTree = "<group>"; };
 		916DA4EC8C6CDF184EA2662AFB5E1DD2 /* AtlasMockAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtlasMockAPITests.swift; sourceTree = "<group>"; };
@@ -329,6 +330,7 @@
 		79D6218341E757DDDD2E75B04AC88C9D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				814ECBE41DE33C7D00BA47A5 /* Swifter.framework */,
 				7B32EE0596F3E33D121673D07A89E425 /* Swifter.framework */,
 				72C51F2F8B90A76F70E31896FC0E81C5 /* SwiftyJSON.framework */,
 				AC9521FB6EAEE2BD391841437FC0C671 /* SwiftHTTP.framework */,
@@ -745,7 +747,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -786,7 +787,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -816,7 +817,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -842,7 +842,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = de.zalando.AtlasMockAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -854,7 +853,6 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -868,7 +866,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.zalando.AtlasMockAPITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -880,7 +877,6 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -904,7 +900,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -919,7 +914,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = de.zalando.AtlasMockAPITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -970,7 +964,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) -DDEBUG";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
