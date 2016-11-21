@@ -46,8 +46,8 @@ class AtlasAPIClientBaseTests: XCTestCase {
         }
     }
 
-    func data(withJSONObject object: AnyObject) -> Data {
-        return try! JSONSerialization.data(withJSONObject: object, options: [])
+    func data(withJSONObject object: [String: Any]) -> Data {
+        return try! Data(withJSONObject: object)!
     }
 
     func mockedAtlasAPIClient(forURL url: URL,

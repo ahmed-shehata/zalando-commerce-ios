@@ -36,7 +36,7 @@ class AtlasAPIClientErrorsTests: AtlasAPIClientBaseTests {
             "status": status.rawValue,
             "detail": "Full authentication is required to access this resource"]
 
-        let errorResponse = data(withJSONObject: json as AnyObject)
+        let errorResponse = data(withJSONObject: json)
         let options = Options(clientId: "atlas_Y2M1MzA",
                               salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
                               useSandbox: true,
@@ -65,7 +65,7 @@ class AtlasAPIClientErrorsTests: AtlasAPIClientBaseTests {
         let json: [String: Any] = ["type": "http://httpstatus.es/401", "title": "unauthorized",
             "status": status.rawValue, "detail": ""]
 
-        let errorResponse = data(withJSONObject: json as AnyObject)
+        let errorResponse = data(withJSONObject: json)
         let client = mockedAtlasAPIClient(forURL: clientURL, data: errorResponse, status: status)
 
         waitUntil(timeout: 10) { done in

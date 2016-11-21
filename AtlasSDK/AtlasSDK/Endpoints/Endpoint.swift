@@ -35,16 +35,7 @@ extension Endpoint {
 extension Endpoint {
 
     var description: String {
-        let params: String = {
-            guard let parameters = parameters else { return nil }
-            do {
-                let data = try JSONSerialization.data(withJSONObject: parameters, options: [.prettyPrinted])
-                return String(data: data, encoding: String.Encoding.utf8)
-            } catch let error {
-                AtlasLogger.logError(error)
-                return nil
-            }
-        }() ?? "<NO PARAMETERS>"
+        let params = String(withJSONObject: parameters) ?? "<NO PARAMETERS>"
 
         return "\(method) \(url)\n"
             + "Content-Type: \(contentType)\n"

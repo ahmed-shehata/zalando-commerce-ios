@@ -13,12 +13,12 @@ class APICustomerTests: AtlasAPIClientBaseTests {
     let customerURL = URL(validUrl: "https://atlas-sdk.api/api/customer")
 
     func testCreateCustomer() {
-        let json = ["customer_number": "12345678",
+        let json: [String: Any] = ["customer_number": "12345678",
                     "gender": "MALE",
                     "email": "aaa@a.a",
                     "first_name": "John",
                     "last_name": "Doe"]
-        let customerResponse = data(withJSONObject: json as AnyObject)
+        let customerResponse = data(withJSONObject: json)
         let client = mockedAtlasAPIClient(forURL: customerURL, data: customerResponse, status: .ok)
 
         waitUntil(timeout: 60) { done in
