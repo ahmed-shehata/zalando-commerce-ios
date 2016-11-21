@@ -5,7 +5,7 @@
 import Foundation
 import AtlasSDK
 
-struct OrderPlacedActionHandler: CheckoutSummaryActionHandler {
+struct OrderPlacedSummaryActionHandler: CheckoutSummaryActionHandler {
 
     weak var dataSource: CheckoutSummaryActionHandlerDataSource?
     weak var delegate: CheckoutSummaryActionHandlerDelegate?
