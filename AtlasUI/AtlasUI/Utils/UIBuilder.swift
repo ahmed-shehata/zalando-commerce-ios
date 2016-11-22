@@ -21,18 +21,18 @@ extension UIBuilder {
         configureConstraints()
 
         if let view = self as? UIView {
-            buildSubViews(view)
+            buildSubviews(view)
         } else if let viewController = self as? UIViewController {
-            buildSubViews(viewController.view)
+            buildSubviews(viewController.view)
         }
     }
 
-    func buildSubViews(_ rootView: UIView) {
+    func buildSubviews(_ rootView: UIView) {
         rootView.subviews.forEach { subview in
             if let builder = subview as? UIBuilder {
                 builder.buildView()
             } else {
-                buildSubViews(subview)
+                buildSubviews(subview)
             }
         }
     }
