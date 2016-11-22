@@ -41,7 +41,7 @@ final public class AtlasUI {
     }
 
     public static func presentCheckout(onViewController viewController: UIViewController, forSKU sku: String) {
-        guard let _ = AtlasAPIClient.instance else { AtlasLogger.logError("AtlasUI is not initialized"); return }
+        guard let _ = AtlasAPIClient.shared else { AtlasLogger.logError("AtlasUI is not initialized"); return }
 
         let atlasUIViewController = AtlasUIViewController(forSKU: sku)
 
@@ -72,12 +72,12 @@ extension AtlasUI {
 
 extension AtlasAPIClient {
 
-    static var instance: AtlasAPIClient? {
+    static var shared: AtlasAPIClient? {
         return try? AtlasUI.provide()
     }
 
     static var countryCode: String? {
-        return AtlasAPIClient.instance?.config.salesChannel.countryCode
+        return AtlasAPIClient.shared?.config.salesChannel.countryCode
     }
 
 }

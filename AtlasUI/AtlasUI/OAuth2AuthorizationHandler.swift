@@ -15,7 +15,7 @@ struct OAuth2AuthorizationHandler {
     }
 
     func authorize(_ completion: @escaping AuthorizationCompletion) {
-        guard let loginURL = AtlasAPIClient.instance?.config.loginURL else { return }
+        guard let loginURL = AtlasAPIClient.shared?.config.loginURL else { return }
         guard let topViewController = UIApplication.topViewController() else {
             return completion(.failure(AtlasLoginError.missingViewControllerToShowLoginForm))
         }

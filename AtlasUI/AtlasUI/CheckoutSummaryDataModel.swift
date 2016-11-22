@@ -53,7 +53,7 @@ extension CheckoutSummaryDataModel {
     }
 
     var termsAndConditionsURL: URL? {
-        return AtlasAPIClient.instance?.config.salesChannel.termsAndConditionsURL
+        return AtlasAPIClient.shared?.config.salesChannel.termsAndConditionsURL
     }
 
 }
