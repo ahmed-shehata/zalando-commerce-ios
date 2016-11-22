@@ -18,7 +18,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
 
     var cartCheckout: CartCheckout? {
         didSet {
-            updateDataModel(addresses: addresses)
+            updateCheckout()
         }
     }
 
@@ -207,18 +207,31 @@ extension LoggedInSummaryActionHandler {
 
 extension LoggedInSummaryActionHandler {
 
-    fileprivate func updateDataModel(addresses: CheckoutAddresses?, byRemovingCartCheckout removeCartCheckout: Bool = true) {
+    fileprivate func updateCheckout() {
+        updateDataModel(with: self.addresses, in: self.cartCheckout)
+    }
+
+    fileprivate func update(billingAddress newBillingAddress: EquatableAddress? = nil,
+                            shippingAddress newShippingAddress: EquatableAddress? = nil) {
+        let newAddresses = CheckoutAddresses(billingAddress: newBillingAddress ?? self.billingAddress,
+                                             shippingAddress: newShippingAddress ?? self.shippingAddress)
+        updateDataModel(with: newAddresses, in: self.cartCheckout)
+    }
+
+    fileprivate func delete(billingAddress deleteBilling: Bool = false, shippingAddress deleteShipping: Bool = false) {
+        let newAddresses = CheckoutAddresses(billingAddress: deleteBilling ? nil : self.billingAddress,
+                                             shippingAddress: deleteShipping ? nil : self.shippingAddress)
+        updateDataModel(with: newAddresses)
+        cartCheckout?.checkout = nil
+    }
+
+    fileprivate func updateDataModel(with addresses: CheckoutAddresses?, in cartCheckout: CartCheckout? = nil) {
         guard let selectedArticleUnit = dataSource?.dataModel.selectedArticleUnit else { return }
 
-        let dataModel: CheckoutSummaryDataModel
-        if removeCartCheckout {
-            dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, cartCheckout: cartCheckout, addresses: addresses)
-        } else {
-            dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, cartCheckout: nil, addresses: addresses)
-        }
+        let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, cartCheckout: cartCheckout, addresses: addresses)
         delegate?.updated(dataModel: dataModel)
 
-        if removeCartCheckout && cartCheckout?.checkout == nil && hasAddresses {
+        if cartCheckout?.checkout == nil && hasAddresses {
             createCartCheckout { [weak self] result in
                 guard let cartCheckout = result.process() else { return }
                 self?.cartCheckout = cartCheckout
@@ -239,23 +252,21 @@ extension LoggedInSummaryActionHandler {
         }
     }
 
-    fileprivate func deleted(address: EquatableAddress) {
-        if let shippingAddress = shippingAddress, shippingAddress == address {
-            updateDataModel(addresses: CheckoutAddresses(billingAddress: billingAddress, shippingAddress: nil), byRemovingCartCheckout: false)
-            cartCheckout?.checkout = nil
+    fileprivate func deleted(address deletedAddress: EquatableAddress) {
+        if let shippingAddress = shippingAddress, shippingAddress == deletedAddress {
+            delete(shippingAddress: true)
         }
-        if let billingAddress = billingAddress, billingAddress == address {
-            updateDataModel(addresses: CheckoutAddresses(billingAddress: nil, shippingAddress: shippingAddress), byRemovingCartCheckout: false)
-            cartCheckout?.checkout = nil
+        if let billingAddress = billingAddress, billingAddress == deletedAddress {
+            delete(billingAddress: true)
         }
     }
 
-    fileprivate func select(shippingAddress address: EquatableAddress?) {
-        updateDataModel(addresses: CheckoutAddresses(billingAddress: billingAddress, shippingAddress: address))
+    fileprivate func select(shippingAddress newShippingAddress: EquatableAddress?) {
+        update(shippingAddress: newShippingAddress)
     }
 
-    fileprivate func select(billingAddress address: EquatableAddress?) {
-        updateDataModel(addresses: CheckoutAddresses(billingAddress: address, shippingAddress: shippingAddress))
+    fileprivate func select(billingAddress newBillingAddress: EquatableAddress?) {
+        update(billingAddress: newBillingAddress)
     }
 
 }

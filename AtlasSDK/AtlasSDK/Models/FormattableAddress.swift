@@ -28,4 +28,8 @@ public func == (lhs: EquatableAddress, rhs: EquatableAddress) -> Bool {
 
 }
 
-public typealias CheckoutAddresses = (billingAddress: EquatableAddress?, shippingAddress: EquatableAddress?)
+public typealias BillingAddress = EquatableAddress
+public typealias ShippingAddress = EquatableAddress
+
+public typealias CheckoutAddresses = (billingAddress: BillingAddress?, shippingAddress: ShippingAddress?)
+
