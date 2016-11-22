@@ -50,13 +50,14 @@ extension CheckoutSummaryDeliveryStackView: UIDataBuilder {
 
         deliveryTitleLabel.text = Localizer.string("summaryView.label.estimatedDelivery")
 
-        if let earliest = delivery.earliest,
+        guard let earliest = delivery.earliest,
             let earliestDateFormatted = Localizer.date(earliest),
-            let latestDateFormatted = Localizer.date(delivery.latest) {
-                deliveryValueLabel.text = earliestDateFormatted + " - " + latestDateFormatted
-        } else {
+            let latestDateFormatted = Localizer.date(delivery.latest) else {
                 deliveryValueLabel.text = Localizer.date(delivery.latest)
+                return
         }
+
+        deliveryValueLabel.text = earliestDateFormatted + " - " + latestDateFormatted
     }
 
 }
