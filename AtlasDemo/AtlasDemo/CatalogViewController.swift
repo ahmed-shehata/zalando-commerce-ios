@@ -25,7 +25,7 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
         "EV451D00U-302", "RA252F005-802"
     ]
 
-    static var instance: CatalogViewController? {
+    static var shared: CatalogViewController? {
         guard let
             navigationController = UIApplication.sharedApplication().keyWindow?.rootViewController as? UINavigationController,
             catalogViewController = navigationController.viewControllers.first as? CatalogViewController

@@ -24,9 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     print("App Configuration failed")
                     return
                 }
-                CatalogViewController.instance?.loadHomepageArticles()
+                CatalogViewController.shared?.loadHomepageArticles()
             }
-        } else if let catalogViewController = CatalogViewController.instance where catalogViewController.articles.isEmpty {
+        } else if let catalogViewController = CatalogViewController.shared where catalogViewController.articles.isEmpty {
             catalogViewController.loadHomepageArticles()
         }
     }
