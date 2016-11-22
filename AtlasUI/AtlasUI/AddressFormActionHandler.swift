@@ -23,6 +23,9 @@ protocol AddressFormActionHandler {
 extension AddressFormActionHandler {
 
     func submitButtonPressed(dataModel: AddressFormDataModel) {
+        process(validDataModel: dataModel)
+        // TODO: FIX!!
+        return
         guard let request = CheckAddressRequest(dataModel: dataModel) else {
             delegate?.addressProcessingFinished()
             return

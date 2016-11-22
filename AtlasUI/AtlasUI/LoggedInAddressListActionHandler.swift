@@ -15,24 +15,11 @@ struct LoggedInAddressListActionHandler: AddressListActionHandler {
     }
 
     func createAddress() {
-        addressViewModelCreationStrategy?.setStrategyCompletion() { viewModel in
-            let actionHandler = LoggedInCreateAddressActionHandler()
-            self.showAddressViewController(withViewModel: viewModel, formActionHandler: actionHandler) { address in
-                self.delegate?.addressCreated(address)
-            }
-        }
-        addressViewModelCreationStrategy?.execute()
+        createAddress(addressViewModelCreationStrategy, formActionHandler: LoggedInCreateAddressActionHandler())
     }
 
     func updateAddress(address: EquatableAddress) {
-        let dataModel = AddressFormDataModel(equatableAddress: address, countryCode: AtlasAPIClient.countryCode)
-        let formLayout = UpdateAddressFormLayout()
-        let addressType: AddressFormType = address.pickupPoint == nil ? .standardAddress : .pickupPoint
-        let viewModel = AddressFormViewModel(dataModel: dataModel, layout: formLayout, type: addressType)
-        let actionHandler = LoggedInUpdateAddressActionHandler()
-        showAddressViewController(withViewModel: viewModel, formActionHandler: actionHandler) { address in
-            self.delegate?.addressUpdated(address)
-        }
+        updateAddress(address, formActionHandler: LoggedInUpdateAddressActionHandler())
     }
 
     func deleteAddress(address: EquatableAddress) {
@@ -40,18 +27,6 @@ struct LoggedInAddressListActionHandler: AddressListActionHandler {
             guard let _ = result.process() else { return }
             self.delegate?.addressDeleted(address)
         }
-    }
-
-}
-
-extension LoggedInAddressListActionHandler {
-
-    private func showAddressViewController(withViewModel viewModel: AddressFormViewModel,
-                                                         formActionHandler: AddressFormActionHandler,
-                                                         completion: AddressFormCompletion) {
-
-        let viewController = AddressFormViewController(viewModel: viewModel, actionHandler: formActionHandler, completion: completion)
-        viewController.displayView()
     }
 
 }

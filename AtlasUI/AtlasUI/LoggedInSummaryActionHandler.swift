@@ -21,16 +21,6 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
         }
     }
 
-    private var shippingAddress: EquatableAddress? {
-        return dataSource?.dataModel.shippingAddress as? EquatableAddress
-    }
-    private var billingAddress: EquatableAddress? {
-        return dataSource?.dataModel.billingAddress as? EquatableAddress
-    }
-    private var addresses: CheckoutAddresses? {
-        return CheckoutAddresses(billingAddress: billingAddress, shippingAddress: shippingAddress)
-    }
-
     static func createInstance(customer: Customer, selectedUnit: SelectedArticleUnit, completion: LoggedInSummaryActionHandlerCompletion) {
         let actionHandler = LoggedInSummaryActionHandler(customer: customer)
         LoggedInSummaryActionHandler.createCartCheckout(selectedUnit) { result in

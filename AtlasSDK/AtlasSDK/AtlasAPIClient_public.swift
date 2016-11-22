@@ -35,6 +35,11 @@ public typealias CheckoutCartCompletion = AtlasAPIResult<(checkout: Checkout, ca
 public typealias OrderCompletion = AtlasAPIResult<Order> -> Void
 
 /**
+ Completion block `AtlasAPIResult` with the `Order` struct as a success value
+ */
+public typealias GuestOrderCompletion = AtlasAPIResult<Order> -> Void
+
+/**
  Completion block `AtlasAPIResult` with the `Article` struct as a success value
  */
 public typealias ArticleCompletion = AtlasAPIResult<Article> -> Void
@@ -110,6 +115,8 @@ extension AtlasAPIClient {
         fetch(from: endpoint, completion: completion)
     }
 
+
+
     public func updateCheckout(checkoutId: String, updateCheckoutRequest: UpdateCheckoutRequest, completion: CheckoutCompletion) {
         let endpoint = UpdateCheckoutEndpoint(serviceURL: config.checkoutURL,
                                               parameters: updateCheckoutRequest.toJSON(),
@@ -124,6 +131,13 @@ extension AtlasAPIClient {
                                            parameters: parameters,
                                            salesChannel: config.salesChannel.identifier,
                                            checkoutId: checkoutId)
+        fetch(from: endpoint, completion: completion)
+    }
+
+    public func createGuestOrder(request: CreateGuestOrderRequest, completion: GuestOrderCompletion) {
+        let endpoint = CreateGuestOrderEndpoint(serviceURL: config.checkoutURL,
+                                                parameters: request.toJSON(),
+                                                salesChannel: config.salesChannel.identifier)
         fetch(from: endpoint, completion: completion)
     }
 

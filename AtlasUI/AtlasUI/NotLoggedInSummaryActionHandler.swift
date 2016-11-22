@@ -55,12 +55,12 @@ struct NotLoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
 extension NotLoggedInSummaryActionHandler {
 
     private func selectShippingAddress(address: EquatableAddress) {
-//        // TODO: need to get the email
+        // TODO: need to get the email
         switchToGuestCheckout(withEmail: "", shippingAddress: address, billingAddress: nil)
     }
-//
+
     private func selectBillingAddress(address: EquatableAddress) {
-//        // TODO: need to get the email
+        // TODO: need to get the email
         switchToGuestCheckout(withEmail: "", shippingAddress: nil, billingAddress: address)
     }
 
@@ -70,7 +70,8 @@ extension NotLoggedInSummaryActionHandler {
         let selectedArticleUnit = dataSource.dataModel.selectedArticleUnit
         let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit,
                                                  shippingAddress: shippingAddress,
-                                                 billingAddress: billingAddress)
+                                                 billingAddress: billingAddress,
+                                                 totalPrice: selectedArticleUnit.unit.price.amount)
         let actionHandler = GuestCheckoutSummaryActionHandler(email: email, address: address)
         delegate?.actionHandlerUpdated(actionHandler)
         delegate?.dataModelUpdated(dataModel)

@@ -15,15 +15,15 @@ struct GuestCheckoutAddressListActionHandler: AddressListActionHandler {
     }
 
     func createAddress() {
-
+        createAddress(addressViewModelCreationStrategy, formActionHandler: GuestCheckoutCreateAddressActionHandler())
     }
 
     func updateAddress(address: EquatableAddress) {
-
+        updateAddress(address, formActionHandler: GuestCheckoutUpdateAddressActionHandler())
     }
 
     func deleteAddress(address: EquatableAddress) {
-
+        delegate?.addressDeleted(address)
     }
 
 }

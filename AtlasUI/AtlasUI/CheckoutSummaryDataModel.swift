@@ -74,6 +74,16 @@ extension CheckoutSummaryDataModel {
         self.delivery = cartCheckout?.checkout?.delivery
     }
 
+    init(selectedArticleUnit: SelectedArticleUnit, guestCheckout: GuestCheckout?, addresses: CheckoutAddresses? = nil) {
+        self.selectedArticleUnit = selectedArticleUnit
+        self.shippingAddress = addresses?.shippingAddress ?? guestCheckout?.shippingAddress
+        self.billingAddress = addresses?.billingAddress ?? guestCheckout?.billingAddress
+        self.paymentMethod = guestCheckout?.payment.selected?.method
+        self.shippingPrice = 0
+        self.totalPrice = guestCheckout?.cart.grossTotal.amount ?? selectedArticleUnit.unit.price.amount
+        self.delivery = nil // TODO: ASK about delivery?
+    }
+
     init(selectedArticleUnit: SelectedArticleUnit, checkout: Checkout?, order: Order) {
         self.selectedArticleUnit = selectedArticleUnit
         self.shippingAddress = order.shippingAddress
