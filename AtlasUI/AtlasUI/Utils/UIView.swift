@@ -4,6 +4,23 @@
 
 import Foundation
 
+enum ViewAnchor {
+    case top
+    case right
+    case bottom
+    case left
+
+    fileprivate func constraint(fromView view1: UIView, toView view2: UIView) -> NSLayoutConstraint {
+        switch self {
+        case .top: return view1.topAnchor.constraint(equalTo: view2.topAnchor)
+        case .right: return view1.rightAnchor.constraint(equalTo: view2.rightAnchor)
+        case .bottom: return view1.bottomAnchor.constraint(equalTo: view2.bottomAnchor)
+        case .left: return view1.leftAnchor.constraint(equalTo: view2.leftAnchor)
+        }
+    }
+
+}
+
 extension UIView {
 
     func removeAllSubviews() {
@@ -33,22 +50,12 @@ extension UIView {
         leftAnchor.constraint(equalTo: superview.leftAnchor).isActive = true
     }
 
-    @nonobjc
-    func snap(anchor: NSLayoutYAxisAnchor, toAnchor otherAnchor: NSLayoutYAxisAnchor?, constant: CGFloat = 0) {
-        guard let otherAnchor = otherAnchor else { return }
+    func snapAnchorToSuperView(anchor: ViewAnchor, constant: CGFloat = 0) {
+        guard let superview = superview else { return }
         translatesAutoresizingMaskIntoConstraints = false
-        let constaint = anchor.constraint(equalTo: otherAnchor)
-        constaint.constant = constant
-        constaint.isActive = true
-    }
-
-    @nonobjc
-    func snap(anchor: NSLayoutXAxisAnchor, toAnchor otherAnchor: NSLayoutXAxisAnchor?, constant: CGFloat = 0) {
-        guard let otherAnchor = otherAnchor else { return }
-        translatesAutoresizingMaskIntoConstraints = false
-        let constaint = anchor.constraint(equalTo: otherAnchor)
-        constaint.constant = constant
-        constaint.isActive = true
+        let constraint = anchor.constraint(fromView: self, toView: superview)
+        constraint.constant = constant
+        constraint.isActive = true
     }
 
     func centerInSuperview() {
