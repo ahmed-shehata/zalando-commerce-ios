@@ -8,7 +8,9 @@ import AtlasSDK
 class LoaderView: UIView {
 
     fileprivate let activityIndicator: UIActivityIndicatorView = {
-        return UIActivityIndicatorView(activityIndicatorStyle: .white)
+        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .white)
+        indicator.hidesWhenStopped = true
+        return indicator
     }()
 
     fileprivate let backgroundView: RoundedView = {
@@ -20,12 +22,10 @@ class LoaderView: UIView {
 
     func show() {
         activityIndicator.startAnimating()
-        isHidden = false
     }
 
     func hide() {
         activityIndicator.stopAnimating()
-        isHidden = true
     }
 
 }
