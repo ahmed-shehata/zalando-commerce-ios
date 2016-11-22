@@ -10,4 +10,6 @@ enum AnimationDuration: TimeInterval {
     case normal = 0.5
     case slow = 1
 
+    static let `default` = AnimationDuration.fast
+
 }

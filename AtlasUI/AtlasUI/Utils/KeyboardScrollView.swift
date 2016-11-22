@@ -23,7 +23,7 @@ class KeyboardScrollView: UIScrollView {
         guard let infoValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] else { return }
         let keyboardHeight = (infoValue as AnyObject).cgRectValue.height
 
-        UIView.animate(.fast) {
+        UIView.animate {
             self.contentInset.bottom = keyboardHeight
             self.scrollIndicatorInsets.bottom = keyboardHeight
             self.scrollToCurrentFirstResponder(withKeyboardHeight: keyboardHeight)
@@ -31,7 +31,7 @@ class KeyboardScrollView: UIScrollView {
     }
 
     func keyboardWillHide(fromNotification notification: Notification) {
-        UIView.animate(.fast) {
+        UIView.animate {
             self.contentInset.bottom = 0
             self.scrollIndicatorInsets.bottom = 0
         }

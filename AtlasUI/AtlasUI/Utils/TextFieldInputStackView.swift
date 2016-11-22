@@ -116,7 +116,7 @@ extension TextFieldInputStackView: UIDataBuilder {
     }
 
     func configureTitleLabel() {
-        UIView.animate(.fast) {
+        UIView.animate {
             self.titleLabel.alpha = self.textField.text?.isEmpty == true ? 0 : 1
         }
     }
