@@ -72,7 +72,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
             self?.cartCheckout = cartCheckout
 
             if dataSource.dataModel.isPaymentSelected && !UserMessage.errorDisplayed {
-                AtlasUIClient.createOrder(checkout.id) { result in
+                AtlasUIClient.createOrder(fromCheckoutId: checkout.id) { result in
                     guard let order = result.process() else { return }
                     self?.handleOrderConfirmation(order)
                 }
@@ -185,7 +185,7 @@ extension LoggedInSummaryActionHandler {
                                                addresses: CheckoutAddresses? = nil,
                                                completion: @escaping CreateCartCheckoutCompletion) {
 
-        AtlasUIClient.createCheckoutCart(selectedArticleUnit.sku, addresses: addresses) { result in
+        AtlasUIClient.createCheckoutCart(forSKU: selectedArticleUnit.sku, addresses: addresses) { result in
             switch result {
             case .failure(let error, _):
                 guard case let AtlasAPIError.checkoutFailed(cart, _) = error else {

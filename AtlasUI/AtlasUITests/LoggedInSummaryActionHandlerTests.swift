@@ -177,7 +177,7 @@ extension LoggedInSummaryActionHandlerTests {
             self.registerAtlasUIViewController(sku) {
                 AtlasUIClient.customer { result in
                     guard let customer = result.process() else { return fail() }
-                    AtlasUIClient.article(sku) { result in
+                    AtlasUIClient.article(withSKU: sku) { result in
                         guard let article = result.process() else { return fail() }
                         let selectedArticleUnit = SelectedArticleUnit(article: article, selectedUnitIndex: 0)
                         LoggedInSummaryActionHandler.createInstance(customer, selectedUnit: selectedArticleUnit) { result in
@@ -200,7 +200,7 @@ extension LoggedInSummaryActionHandlerTests {
         var cartCheckout: CartCheckout?
         waitUntil(timeout: 10) { done in
             let sku = "AD541L009-G11"
-            AtlasUIClient.createCheckoutCart(sku) { result in
+            AtlasUIClient.createCheckoutCart(forSKU: sku) { result in
                 guard let checkoutCart = result.process() else { return fail() }
                 cartCheckout = (cart: checkoutCart.cart, checkout: checkoutCart.checkout)
                 done()

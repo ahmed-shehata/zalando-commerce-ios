@@ -17,7 +17,7 @@ struct LoggedInUpdateAddressActionHandler: AddressFormActionHandler {
                 return
         }
 
-        AtlasUIClient.updateAddress(addressId, request: request) { result in
+        AtlasUIClient.updateAddress(withAddressId: addressId, request: request) { result in
             guard let address = result.process() else {
                 self.delegate?.addressProcessingFinished()
                 return

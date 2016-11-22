@@ -66,7 +66,7 @@ extension SizeListSelectionViewController: UIBuilder {
 extension SizeListSelectionViewController {
 
     fileprivate func fetchSizes() {
-        AtlasUIClient.article(self.sku) { [weak self] result in
+        AtlasUIClient.article(withSKU: self.sku) { [weak self] result in
             guard let article = result.process(forceFullScreenError: true) else { return }
             self?.tableViewDelegate = SizeListTableViewDelegate(article: article, completion: self?.showCheckoutScreen)
             self?.tableViewDataSource = SizeListTableViewDataSource(article: article)
