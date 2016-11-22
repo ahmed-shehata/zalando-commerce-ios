@@ -6,10 +6,10 @@ import UIKit
 
 final class CheckoutTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
 
-        func presentationControllerForPresentedViewController(presented: UIViewController,
-                                                              presentingViewController presenting: UIViewController?,
-                                                              sourceViewController source: UIViewController) -> UIPresentationController? {
-            return CheckoutPresentationController(presentedViewController: presented, presentingViewController: presenting)
-        }
+    func presentationController(forPresented presented: UIViewController,
+                                presenting: UIViewController?,
+                                source: UIViewController) -> UIPresentationController? {
+        return CheckoutPresentationController(presentedViewController: presented, presentingViewController: presenting)
+    }
 
 }
