@@ -52,7 +52,9 @@ enum AddressFormField: String {
     func customView(_ dataModel: AddressFormDataModel, completion: @escaping TextFieldChangedHandler) -> UIView? {
         switch self {
         case .title:
-            return PickerKeyboardInputView(pickerData: titles, startingValueIndex: dataModel.selectedTitleIndex(), completion: completion)
+            return PickerKeyboardInputView(pickerData: dataModel.titles,
+                                           startingValueIndex: dataModel.selectedTitleIndex(),
+                                           completion: completion)
         default:
             return nil
         }
