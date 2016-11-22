@@ -65,7 +65,7 @@ struct Localizer {
 
 extension Localizer {
 
-    fileprivate static var instance: Localizer {
+    fileprivate static var shared: Localizer {
         do {
             return try AtlasUI.provide() as Localizer
         } catch {
@@ -74,23 +74,23 @@ extension Localizer {
     }
 
     static func string(_ key: String, _ formatArguments: [CVarArg?]) -> String {
-        return instance.string(key, formatArguments: formatArguments.flatMap { $0 })
+        return shared.string(key, formatArguments: formatArguments.flatMap { $0 })
     }
 
     static func string(_ key: String, _ formatArguments: CVarArg?...) -> String {
-        return instance.string(key, formatArguments: formatArguments)
+        return shared.string(key, formatArguments: formatArguments)
     }
 
     static func price(_ price: NSNumber) -> String? {
-        return instance.price(price)
+        return shared.price(price)
     }
 
     static func date(_ date: Date) -> String? {
-        return instance.date(date)
+        return shared.date(date)
     }
 
     static func countryName(forCountryCode countryCode: String?) -> String? {
-        return instance.countryName(forCountryCode: countryCode)
+        return shared.countryName(forCountryCode: countryCode)
     }
 
 }
