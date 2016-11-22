@@ -7,6 +7,10 @@ import AtlasSDK
 
 class KeyboardScrollView: UIScrollView {
 
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
     func registerForKeyboardNotifications() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillShow(fromNotification:)),
