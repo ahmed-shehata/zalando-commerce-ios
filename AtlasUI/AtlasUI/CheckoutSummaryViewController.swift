@@ -16,8 +16,7 @@ class CheckoutSummaryViewController: UIViewController {
 
     var viewModel: CheckoutSummaryViewModel {
         didSet {
-            setupNavigationBar()
-            rootStackView.configure(viewModel: viewModel)
+            viewModelDidSet()
         }
     }
 
@@ -30,8 +29,8 @@ class CheckoutSummaryViewController: UIViewController {
 
     init(viewModel: CheckoutSummaryViewModel) {
         self.viewModel = viewModel
+        defer { viewModelDidSet() }
         super.init(nibName: nil, bundle: nil)
-        triggerDidSet(viewModel)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -44,8 +43,9 @@ class CheckoutSummaryViewController: UIViewController {
         setupActions()
     }
 
-    fileprivate func triggerDidSet(_ viewModel: CheckoutSummaryViewModel) {
-        self.viewModel = viewModel
+    fileprivate func viewModelDidSet() {
+        setupNavigationBar()
+        rootStackView.configure(viewModel: viewModel)
     }
 
 }
