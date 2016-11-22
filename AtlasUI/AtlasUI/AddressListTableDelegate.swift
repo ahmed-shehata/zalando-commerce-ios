@@ -120,7 +120,7 @@ extension AddressListTableDelegate: AddressListActionHandlerDelegate {
 
     fileprivate func selected(address: EquatableAddress) {
         viewController?.addressSelectedHandler?(address)
-        viewController?.navigationController?.popViewController(animated: true)
+        let _ = viewController?.navigationController?.popViewController(animated: true)
     }
 
 }

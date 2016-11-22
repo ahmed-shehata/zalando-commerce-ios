@@ -71,7 +71,7 @@ final class CheckoutPresentationController: UIPresentationController {
         }
     }
 
-    override var frameOfPresentedViewInContainerView : CGRect {
+    override var frameOfPresentedViewInContainerView: CGRect {
         let rect = super.frameOfPresentedViewInContainerView
         let newHeight = rect.height * heightRatio
         return CGRect(x: rect.origin.x,

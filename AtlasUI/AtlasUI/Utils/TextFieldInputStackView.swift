@@ -42,6 +42,7 @@ class TextFieldInputStackView: UIStackView {
     fileprivate var valueChangedHandler: TextFieldChangedHandler?
     fileprivate var validators: [FormValidator] = []
 
+    @discardableResult
     func validateForm() -> Bool {
         let error = checkFormForError()
         errorLabel.text = error ?? " "
