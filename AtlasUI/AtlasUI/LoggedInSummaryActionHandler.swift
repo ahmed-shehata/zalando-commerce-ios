@@ -207,18 +207,18 @@ extension LoggedInSummaryActionHandler {
 
 extension LoggedInSummaryActionHandler {
 
-    fileprivate func updateDataModel(addresses: CheckoutAddresses?, usingCartCheckout: Bool = false) {
+    fileprivate func updateDataModel(addresses: CheckoutAddresses?, byRemovingCartCheckout removeCartCheckout: Bool = true) {
         guard let selectedArticleUnit = dataSource?.dataModel.selectedArticleUnit else { return }
 
         let dataModel: CheckoutSummaryDataModel
-        if usingCartCheckout {
+        if removeCartCheckout {
             dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, cartCheckout: cartCheckout, addresses: addresses)
         } else {
             dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, cartCheckout: nil, addresses: addresses)
         }
         delegate?.updated(dataModel: dataModel)
 
-        if usingCartCheckout && cartCheckout?.checkout == nil && hasAddresses {
+        if removeCartCheckout && cartCheckout?.checkout == nil && hasAddresses {
             createCartCheckout { [weak self] result in
                 guard let cartCheckout = result.process() else { return }
                 self?.cartCheckout = cartCheckout
@@ -241,11 +241,11 @@ extension LoggedInSummaryActionHandler {
 
     fileprivate func deleted(address: EquatableAddress) {
         if let shippingAddress = shippingAddress, shippingAddress == address {
-            updateDataModel(addresses: CheckoutAddresses(billingAddress: billingAddress, shippingAddress: nil), usingCartCheckout: false)
+            updateDataModel(addresses: CheckoutAddresses(billingAddress: billingAddress, shippingAddress: nil), byRemovingCartCheckout: false)
             cartCheckout?.checkout = nil
         }
         if let billingAddress = billingAddress, billingAddress == address {
-            updateDataModel(addresses: CheckoutAddresses(billingAddress: nil, shippingAddress: shippingAddress), usingCartCheckout: false)
+            updateDataModel(addresses: CheckoutAddresses(billingAddress: nil, shippingAddress: shippingAddress), byRemovingCartCheckout: false)
             cartCheckout?.checkout = nil
         }
     }
