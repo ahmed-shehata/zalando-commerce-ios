@@ -6,25 +6,22 @@ import Foundation
 
 class ShippingAddressViewModelCreationStrategy: AddressViewModelCreationStrategy {
 
-    fileprivate var completion: AddressViewModelCreationStrategyCompletion?
-    fileprivate var availableDataModelCreationStrategies = [AddressDataModelCreationStrategy]()
+    var strategyCompletion: AddressViewModelCreationStrategyCompletion?
 
-    func setStrategyCompletion(_ completion: AddressViewModelCreationStrategyCompletion?) {
-        self.completion = completion
-    }
+    fileprivate var availableDataModelCreationStrategies = [AddressDataModelCreationStrategy]()
 
     func execute() {
         let standardStrategy = StandardAddressDataModelCreationStrategy { [weak self] dataModel in
             let viewModel = AddressFormViewModel(dataModel: dataModel, layout: CreateAddressFormLayout(), type: .standardAddress)
-            self?.completion?(viewModel)
+            self?.strategyCompletion?(viewModel)
         }
         let pickupPointStrategy = PickupPointAddressDataModelCreationStrategy { [weak self] dataModel in
             let viewModel = AddressFormViewModel(dataModel: dataModel, layout: CreateAddressFormLayout(), type: .pickupPoint)
-            self?.completion?(viewModel)
+            self?.strategyCompletion?(viewModel)
         }
         let addressBookStrategy = AddressBookImportDataModelCreationStrategy { [weak self] dataModel in
             let viewModel = AddressFormViewModel(dataModel: dataModel, layout: CreateAddressFormLayout(), type: .standardAddress)
-            self?.completion?(viewModel)
+            self?.strategyCompletion?(viewModel)
         }
 
         availableDataModelCreationStrategies = [standardStrategy, pickupPointStrategy, addressBookStrategy]

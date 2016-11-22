@@ -5,20 +5,20 @@
 import Foundation
 import AtlasSDK
 
-struct LoggedInAddressListActionHandler: AddressListActionHandler {
+class LoggedInAddressListActionHandler: AddressListActionHandler {
 
     var addressViewModelCreationStrategy: AddressViewModelCreationStrategy?
     weak var delegate: AddressListActionHandlerDelegate?
 
-    init(addressViewModelCreationStrategy: AddressViewModelCreationStrategy?) {
+    required init(addressViewModelCreationStrategy: AddressViewModelCreationStrategy?) {
         self.addressViewModelCreationStrategy = addressViewModelCreationStrategy
     }
 
     func createAddress() {
-        addressViewModelCreationStrategy?.setStrategyCompletion() { viewModel in
+        addressViewModelCreationStrategy?.strategyCompletion = { [weak self] viewModel in
             let actionHandler = LoggedInCreateAddressActionHandler()
-            self.showAddressViewController(withViewModel: viewModel, formActionHandler: actionHandler) { address in
-                self.delegate?.created(address: address)
+            self?.showAddressViewController(withViewModel: viewModel, formActionHandler: actionHandler) { address in
+                self?.delegate?.created(address: address)
             }
         }
         addressViewModelCreationStrategy?.execute()

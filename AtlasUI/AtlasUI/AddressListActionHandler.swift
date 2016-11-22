@@ -18,6 +18,7 @@ protocol AddressListActionHandler {
     weak var delegate: AddressListActionHandlerDelegate? { get set }
 
     init(addressViewModelCreationStrategy: AddressViewModelCreationStrategy?)
+
     func createAddress()
     func update(address: EquatableAddress)
     func delete(address: EquatableAddress)
