@@ -53,7 +53,6 @@ extension AddressListTableDelegate: UITableViewDataSource {
             let address = self.addresses[indexPath.item]
             cell.configure(viewModel: address)
 
-            // TODO: consider ternary
             if let selectedAddress = self.selectedAddress, selectedAddress == address {
                 cell.accessoryType = .checkmark
             } else {
@@ -120,7 +119,7 @@ extension AddressListTableDelegate: AddressListActionHandlerDelegate {
 
     fileprivate func selected(address: EquatableAddress) {
         viewController?.addressSelectedHandler?(address)
-        viewController?.navigationController?.popViewController(animated: true)
+        let _ = viewController?.navigationController?.popViewController(animated: true)
     }
 
 }

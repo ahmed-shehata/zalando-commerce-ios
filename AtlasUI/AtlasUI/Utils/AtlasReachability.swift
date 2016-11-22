@@ -23,7 +23,7 @@ class AtlasReachability {
                 UserMessage.displayError(AtlasAPIError.noInternet)
             }
         }
-        
+
         do {
             try reachability.startNotifier()
         } catch let error {

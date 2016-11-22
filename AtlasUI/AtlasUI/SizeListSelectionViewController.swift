@@ -96,7 +96,8 @@ extension SizeListSelectionViewController {
         }
     }
 
-    fileprivate func displayCheckoutSummaryViewController(_ viewModel: CheckoutSummaryViewModel, actionHandler: CheckoutSummaryActionHandler) {
+    fileprivate func displayCheckoutSummaryViewController(_ viewModel: CheckoutSummaryViewModel,
+                                                          actionHandler: CheckoutSummaryActionHandler) {
         let hasSingleUnit = viewModel.dataModel.selectedArticleUnit.article.hasSingleUnit
         let checkoutSummaryVC = CheckoutSummaryViewController(viewModel: viewModel)
         checkoutSummaryVC.actionHandler = actionHandler

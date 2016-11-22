@@ -76,23 +76,12 @@ final class PaymentViewController: UIViewController, UIWebViewDelegate {
                                                 requestURLComponents: requestURLComponents) else { return true }
 
         paymentCompletion?(paymentStatus)
-        navigationController?.popViewController(animated: true)
+        let _ = navigationController?.popViewController(animated: true)
         return false
     }
 
-    #if swift(>=2.3)
-        func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
-            handle(webView: webView, error: error)
-        }
-    #else
-        func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
-            guard let error = error else { return }
-            handle(webView: webView, error: error)
-        }
-    #endif
-
-    fileprivate func handle(webView: UIWebView, error: NSError) {
-        if !error.isWebKitError {
+    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
+        if let error = error as NSError?, !error.isWebKitError {
             UserMessage.displayError(error)
         }
     }

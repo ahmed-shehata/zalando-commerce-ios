@@ -43,7 +43,8 @@ struct AtlasUIClient {
         }
     }
 
-    static func updateCheckout(_ checkoutId: String, updateCheckoutRequest: UpdateCheckoutRequest, completion: @escaping CheckoutCompletion) {
+    static func updateCheckout(_ checkoutId: String, updateCheckoutRequest: UpdateCheckoutRequest,
+                               completion: @escaping CheckoutCompletion) {
         UserMessage.displayLoader { hideLoader in
             AtlasAPIClient.instance?.updateCheckout(withId: checkoutId, updateCheckoutRequest: updateCheckoutRequest) { result in
                 hideLoader()

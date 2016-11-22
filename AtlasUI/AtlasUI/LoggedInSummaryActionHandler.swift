@@ -25,14 +25,22 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
     fileprivate var shippingAddress: EquatableAddress? {
         return dataSource?.dataModel.shippingAddress as? EquatableAddress
     }
+
     fileprivate var billingAddress: EquatableAddress? {
         return dataSource?.dataModel.billingAddress as? EquatableAddress
     }
+
     fileprivate var addresses: CheckoutAddresses? {
         return CheckoutAddresses(billingAddress: billingAddress, shippingAddress: shippingAddress)
     }
 
-    static func createInstance(_ customer: Customer, selectedUnit: SelectedArticleUnit, completion: @escaping LoggedInSummaryActionHandlerCompletion) {
+    fileprivate var hasAddresses: Bool {
+        return shippingAddress != nil && billingAddress != nil
+    }
+
+
+    static func createInstance(_ customer: Customer, selectedUnit: SelectedArticleUnit,
+                               completion: @escaping LoggedInSummaryActionHandlerCompletion) {
         let actionHandler = LoggedInSummaryActionHandler(customer: customer)
         LoggedInSummaryActionHandler.createCartCheckout(selectedUnit) { result in
             switch result {
@@ -77,12 +85,9 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
         guard let paymentURL = cartCheckout?.checkout?.payment.selectionPageURL,
             let callbackURL = AtlasAPIClient.instance?.config.payment.selectionCallbackURL
             else {
-                if shippingAddress == nil || billingAddress == nil {
-                    UserMessage.displayError(AtlasCheckoutError.missingAddress)
-                } else {
-                    UserMessage.displayError(AtlasCheckoutError.unclassified)
-                }
-                return
+            let error: AtlasCheckoutError = !hasAddresses ? .missingAddress : .unclassified
+            UserMessage.displayError(error)
+            return
         }
 
         let paymentViewController = PaymentViewController(paymentURL: paymentURL, callbackURL: callbackURL)
@@ -178,8 +183,8 @@ extension LoggedInSummaryActionHandler {
     }
 
     fileprivate static func createCartCheckout(_ selectedArticleUnit: SelectedArticleUnit,
-                                           addresses: CheckoutAddresses? = nil,
-                                           completion: @escaping CreateCartCheckoutCompletion) {
+                                               addresses: CheckoutAddresses? = nil,
+                                               completion: @escaping CreateCartCheckoutCompletion) {
 
         AtlasUIClient.createCheckoutCart(selectedArticleUnit.sku, addresses: addresses) { result in
             switch result {
