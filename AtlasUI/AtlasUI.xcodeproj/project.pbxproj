@@ -22,23 +22,27 @@
 		30788EA71B54F0C0BCC51AA46C0C6D09 /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F1679B8BB8A951B60D19AD947CD5BA /* CGRect.swift */; };
 		34160EED7155A39B7F8EBDE762263F17 /* PaymentSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A26AACC32143945E59B862CBDB3626 /* PaymentSelectionViewController.swift */; };
 		3ABA26421BD2B174AA71C1D7D4F67E58 /* CheckoutSummaryPaymentStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E590A91E14F2FED72589813043BEFD /* CheckoutSummaryPaymentStackView.swift */; };
-		3AC4DDA62D4BECDCE2166F9109EE75A2 /* AtlasSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2FC0AE7631C1F62076EA9FCAEEE5C9 /* AtlasSDK.framework */; };
 		3ED1FCFD38D86B0362C9C9F9E06B6027 /* AtlasReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EED7D8EF8D5EB7448D7EF047681628A /* AtlasReachability.swift */; };
 		3F6D66B29FCF4014B376B484003E143E /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48810079D24D8738797CA31DF6E4E8BE /* UIScreen.swift */; };
 		4342464869E446FBC18FE72A79CC55B5 /* ActionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BDFF5745C6C2E352983C027B78A69C /* ActionTextField.swift */; };
 		4434BCFA43868F4DBFCFF8980581F9AC /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCAC0AB68C0265B9B9D4ECA7B7F2200 /* UIImageView.swift */; };
-		45AE98E39A9855E323CD556FE0AE472D /* AtlasSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2FC0AE7631C1F62076EA9FCAEEE5C9 /* AtlasSDK.framework */; };
 		4BE7741C07F5F55104DCC09E8594AF92 /* AddressFormType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1735D520DF324324C5AE16AF88B4DC /* AddressFormType.swift */; };
 		536FFA0EF451B723E43BDE2C8B097700 /* CheckoutPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB583604F0F19D75AFE9FB25FD4D89E1 /* CheckoutPresentationController.swift */; };
 		54F18A56CF79CF25599259CA5EB5D394 /* PickerKeyboardInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7DF8A211B4CCC727F816767346EF3B /* PickerKeyboardInputView.swift */; };
 		62397CD3313BF2E11BF45ED92B6276B4 /* CheckoutTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516FBBE5C6D50ED98656F3EDA7EB6C06 /* CheckoutTransitioningDelegate.swift */; };
 		6385A110FD56BDDDECC2DC57FBA94780 /* AtlasLoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BD370CD1B34D1B6EDCA103C9F1DF94 /* AtlasLoginError.swift */; };
 		65BCA936AE236A318847ECE6DCA4A3B0 /* AddAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EEA970F03A677415B3AC4CB774D953 /* AddAddressTableViewCell.swift */; };
-		6B3DB46A8A039022D27D1B3BEDE40876 /* AtlasMockAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB50EAB4D0B50A73E0673740617BEDE3 /* AtlasMockAPI.framework */; };
 		712A5CE53BB2C82B8F3C0E04225A8409 /* AtlasUI-FormattableAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A84C9399E270328DF5494004CB85C5 /* AtlasUI-FormattableAddress.swift */; };
 		7629410B747CDC9D6FD8015EAE15F936 /* FullScreenErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B9AEFEA853EB9FD83162CF1D3F62CC /* FullScreenErrorViewController.swift */; };
 		79175AD49456E48DC6B393EB6F62053A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC182F5F2F24D9AF740830B9B50A9 /* UIColor.swift */; };
 		7E9443B46A96E4C94DDF32C3B711C137 /* UnitSizeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2212DE66FE76CB7293827065AB636FF /* UnitSizeTableViewCell.swift */; };
+		81D38D171DE498C600E7FE29 /* AtlasSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81D38D161DE498C600E7FE29 /* AtlasSDK.framework */; };
+		81D38D191DE498E400E7FE29 /* AtlasMockAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81D38D181DE498E400E7FE29 /* AtlasMockAPI.framework */; };
+		81D38D1A1DE498F200E7FE29 /* AtlasMockAPI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 81D38D181DE498E400E7FE29 /* AtlasMockAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		81D38D1B1DE498F200E7FE29 /* AtlasSDK.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 81D38D161DE498C600E7FE29 /* AtlasSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		81D38D1F1DE49A0D00E7FE29 /* Swifter.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 81D38D1C1DE49A0D00E7FE29 /* Swifter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		81D38D201DE49A0D00E7FE29 /* SwiftHTTP.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 81D38D1D1DE49A0D00E7FE29 /* SwiftHTTP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		81D38D211DE49A0D00E7FE29 /* SwiftyJSON.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 81D38D1E1DE49A0D00E7FE29 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		82FEDC4FA09CC55CE1D9224BCDED9062 /* FormValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E272DADD96290ADDD55009F293229EAD /* FormValidatorTests.swift */; };
 		869B7706B6456BBC7CF641AF7A8E4356 /* BannerErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A01B45B1F4C0D9775396AA422A78BA /* BannerErrorViewController.swift */; };
 		86C41143C6D9EAA6BA2C78007F6B0004 /* SizeListSelectionViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87223EDAD5E7184D20A621B18B1B7D26 /* SizeListSelectionViewControllerTests.swift */; };
@@ -143,6 +147,11 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				81D38D1F1DE49A0D00E7FE29 /* Swifter.framework in Copy Frameworks */,
+				81D38D201DE49A0D00E7FE29 /* SwiftHTTP.framework in Copy Frameworks */,
+				81D38D211DE49A0D00E7FE29 /* SwiftyJSON.framework in Copy Frameworks */,
+				81D38D1A1DE498F200E7FE29 /* AtlasMockAPI.framework in Copy Frameworks */,
+				81D38D1B1DE498F200E7FE29 /* AtlasSDK.framework in Copy Frameworks */,
 				E726441E020342505E0A3E67AB6E20CB /* Nimble.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
@@ -188,6 +197,11 @@
 		764CDA794B49DC585B031C7C4F5776D5 /* UserMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMessage.swift; sourceTree = "<group>"; };
 		808C394E80E745736133ADBD0E2938C8 /* AtlasUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AtlasUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80F13460B6B17606CC65E38CE6A4716C /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		81D38D161DE498C600E7FE29 /* AtlasSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AtlasSDK.framework; path = "../Debug-iphonesimulator/AtlasSDK.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		81D38D181DE498E400E7FE29 /* AtlasMockAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AtlasMockAPI.framework; path = "../Debug-iphonesimulator/AtlasMockAPI.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		81D38D1C1DE49A0D00E7FE29 /* Swifter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swifter.framework; path = ../../Carthage/Build/iOS/Swifter.framework; sourceTree = "<group>"; };
+		81D38D1D1DE49A0D00E7FE29 /* SwiftHTTP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftHTTP.framework; path = ../../Carthage/Build/iOS/SwiftHTTP.framework; sourceTree = "<group>"; };
+		81D38D1E1DE49A0D00E7FE29 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = ../../Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		828CB7B3C433014C119561A964D809BC /* TextFieldInputViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldInputViewModel.swift; sourceTree = "<group>"; };
 		82D2ADD240889020E56AC601593CC418 /* FormValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValidator.swift; sourceTree = "<group>"; };
 		83316EC4886ACF067F2DE376AB807478 /* URLAuthorizationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLAuthorizationTests.swift; sourceTree = "<group>"; };
@@ -206,8 +220,6 @@
 		A8B55AD6C5A60999BD38E9F067F32E6B /* AsyncTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncTests.swift; sourceTree = "<group>"; };
 		AB41B71854AFBEEBCA15F25103CE4D15 /* RowStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RowStackView.swift; sourceTree = "<group>"; };
 		B2212DE66FE76CB7293827065AB636FF /* UnitSizeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitSizeTableViewCell.swift; sourceTree = "<group>"; };
-		BB50EAB4D0B50A73E0673740617BEDE3 /* AtlasMockAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AtlasMockAPI.framework; path = "../../AtlasMockAPI/build/Debug-iphoneos/AtlasMockAPI.framework"; sourceTree = "<group>"; };
-		BE2FC0AE7631C1F62076EA9FCAEEE5C9 /* AtlasSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AtlasSDK.framework; path = "../AtlasSDK/build/Debug-iphoneos/AtlasSDK.framework"; sourceTree = "<group>"; };
 		BFBCE11B274F25D8CDC220276F89179D /* CheckoutSummaryPriceStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryPriceStackView.swift; sourceTree = "<group>"; };
 		C1E4728D40DB91AAFB177DC453685F05 /* LoaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoaderView.swift; path = ../LoaderView.swift; sourceTree = "<group>"; };
 		C7AE728E404BE0C4805F301575D7A500 /* AddressFormStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressFormStackView.swift; sourceTree = "<group>"; };
@@ -273,8 +285,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B3DB46A8A039022D27D1B3BEDE40876 /* AtlasMockAPI.framework in Frameworks */,
-				45AE98E39A9855E323CD556FE0AE472D /* AtlasSDK.framework in Frameworks */,
+				81D38D191DE498E400E7FE29 /* AtlasMockAPI.framework in Frameworks */,
 				9E5205894F8AC507226ED777A68C464B /* AtlasUI.framework in Frameworks */,
 				9B94362B4B333AA179225CA9A5BA9C0A /* Nimble.framework in Frameworks */,
 			);
@@ -284,7 +295,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AC4DDA62D4BECDCE2166F9109EE75A2 /* AtlasSDK.framework in Frameworks */,
+				81D38D171DE498C600E7FE29 /* AtlasSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,9 +348,12 @@
 		1E54B5694EFDF9FA901ABDD14A47A6A3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BB50EAB4D0B50A73E0673740617BEDE3 /* AtlasMockAPI.framework */,
+				81D38D1C1DE49A0D00E7FE29 /* Swifter.framework */,
+				81D38D1D1DE49A0D00E7FE29 /* SwiftHTTP.framework */,
+				81D38D1E1DE49A0D00E7FE29 /* SwiftyJSON.framework */,
+				81D38D181DE498E400E7FE29 /* AtlasMockAPI.framework */,
+				81D38D161DE498C600E7FE29 /* AtlasSDK.framework */,
 				8398317FEC21A1E65AB06E3EF9B29A2B /* Nimble.framework */,
-				BE2FC0AE7631C1F62076EA9FCAEEE5C9 /* AtlasSDK.framework */,
 			);
 			name = Frameworks;
 			path = AtlasUI;
