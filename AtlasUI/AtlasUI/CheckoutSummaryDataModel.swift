@@ -11,16 +11,16 @@ struct CheckoutSummaryDataModel {
     let shippingAddress: FormattableAddress?
     let billingAddress: FormattableAddress?
     let paymentMethod: String?
-    let shippingPrice: MoneyAmount?
-    let totalPrice: MoneyAmount?
+    let shippingPrice: MoneyAmount
+    let totalPrice: MoneyAmount
     let delivery: Delivery?
 
     init(selectedArticleUnit: SelectedArticleUnit,
          shippingAddress: FormattableAddress? = nil,
          billingAddress: FormattableAddress? = nil,
          paymentMethod: String? = nil,
-         shippingPrice: MoneyAmount? = nil,
-         totalPrice: MoneyAmount? = nil,
+         shippingPrice: MoneyAmount = 0,
+         totalPrice: MoneyAmount,
          delivery: Delivery? = nil) {
 
         self.selectedArticleUnit = selectedArticleUnit
@@ -70,7 +70,7 @@ extension CheckoutSummaryDataModel {
         self.billingAddress = addresses?.billingAddress ?? cartCheckout?.checkout?.billingAddress
         self.paymentMethod = cartCheckout?.checkout?.payment.selected?.method
         self.shippingPrice = 0
-        self.totalPrice = cartCheckout?.cart?.grossTotal.amount
+        self.totalPrice = cartCheckout?.cart?.grossTotal.amount ?? selectedArticleUnit.unit.price.amount
         self.delivery = cartCheckout?.checkout?.delivery
     }
 

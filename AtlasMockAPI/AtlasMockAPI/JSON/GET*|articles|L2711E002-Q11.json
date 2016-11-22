@@ -35,11 +35,11 @@
     "id" : "L2711E002-Q110350000",
     "size" : "35",
     "price" : {
-      "amount" : 104.95,
+      "amount" : 10.45,
       "currency" : "EUR"
     },
     "original_price" : {
-      "amount" : 149.95,
+      "amount" : 12.45,
       "currency" : "EUR"
     },
     "available" : true,
@@ -87,11 +87,11 @@
     "id" : "L2711E002-Q110370000",
     "size" : "37",
     "price" : {
-      "amount" : 104.95,
+      "amount" : 10.45,
       "currency" : "EUR"
     },
     "original_price" : {
-      "amount" : 149.95,
+      "amount" : 12.45,
       "currency" : "EUR"
     },
     "available" : true,
