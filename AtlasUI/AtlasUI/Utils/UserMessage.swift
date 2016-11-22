@@ -81,9 +81,9 @@ struct UserMessage {
     }
 
     static func displayLoader(_ block: (@escaping () -> Void) -> Void) {
-        AtlasUIViewController.instance?.showLoader()
+        AtlasUIViewController.shared?.showLoader()
         block {
-            AtlasUIViewController.instance?.hideLoader()
+            AtlasUIViewController.shared?.hideLoader()
         }
     }
 

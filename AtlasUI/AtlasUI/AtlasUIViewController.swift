@@ -10,7 +10,7 @@ public class AtlasUIViewController: UIViewController {
     let mainNavigationController: UINavigationController
     fileprivate let atlasReachability = AtlasReachability()
 
-    static var instance: AtlasUIViewController? {
+    static var shared: AtlasUIViewController? {
         return try? AtlasUI.provide()
     }
 

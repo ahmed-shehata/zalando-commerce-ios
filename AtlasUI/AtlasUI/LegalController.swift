@@ -17,7 +17,7 @@ final class LegalController: NSObject {
         self.legalURL = URL(validUrl: tocURL, path: legalURLPath)
     }
 
-    func push(on navController: UINavigationController? = AtlasUIViewController.instance?.mainNavigationController) {
+    func push(on navController: UINavigationController? = AtlasUIViewController.shared?.mainNavigationController) {
         guard let navController = navController else {
             UIApplication.shared.openURL(tocURL)
             return

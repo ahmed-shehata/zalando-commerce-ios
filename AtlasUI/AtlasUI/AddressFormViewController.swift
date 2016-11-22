@@ -52,9 +52,9 @@ class AddressFormViewController: UIViewController {
         if viewModel.layout.displayViewModally {
             let navigationController = UINavigationController(rootViewController: self)
             navigationController.modalPresentationStyle = .overCurrentContext
-            AtlasUIViewController.instance?.show(navigationController, sender: nil)
+            AtlasUIViewController.shared?.show(navigationController, sender: nil)
         } else {
-            AtlasUIViewController.instance?.mainNavigationController.pushViewController(self, animated: true)
+            AtlasUIViewController.shared?.mainNavigationController.pushViewController(self, animated: true)
         }
     }
 

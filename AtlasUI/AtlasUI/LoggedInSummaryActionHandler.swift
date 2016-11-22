@@ -104,7 +104,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
             }
         }
 
-        AtlasUIViewController.instance?.mainNavigationController.pushViewController(paymentViewController, animated: true)
+        AtlasUIViewController.shared?.mainNavigationController.pushViewController(paymentViewController, animated: true)
     }
 
     func showShippingAddressSelectionScreen() {
@@ -118,7 +118,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
             addressViewController.addressSelectedHandler = { self?.select(shippingAddress: $0) }
             addressViewController.actionHandler = LoggedInAddressListActionHandler(addressViewModelCreationStrategy: creationStrategy)
             addressViewController.title = Localizer.string("addressListView.title.shipping")
-            AtlasUIViewController.instance?.mainNavigationController.pushViewController(addressViewController, animated: true)
+            AtlasUIViewController.shared?.mainNavigationController.pushViewController(addressViewController, animated: true)
         }
     }
 
@@ -133,7 +133,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
             addressViewController.addressSelectedHandler = { self?.select(billingAddress: $0) }
             addressViewController.actionHandler = LoggedInAddressListActionHandler(addressViewModelCreationStrategy: creationStrategy)
             addressViewController.title = Localizer.string("addressListView.title.billing")
-            AtlasUIViewController.instance?.mainNavigationController.pushViewController(addressViewController, animated: true)
+            AtlasUIViewController.shared?.mainNavigationController.pushViewController(addressViewController, animated: true)
         }
     }
 
@@ -160,7 +160,7 @@ extension LoggedInSummaryActionHandler {
             case .error: UserMessage.displayError(AtlasCheckoutError.unclassified)
             }
         }
-        AtlasUIViewController.instance?.mainNavigationController.pushViewController(paymentViewController, animated: true)
+        AtlasUIViewController.shared?.mainNavigationController.pushViewController(paymentViewController, animated: true)
     }
 
     fileprivate func showConfirmationScreen(_ order: Order) {

@@ -21,7 +21,7 @@ class AddressBookImportDataModelCreationStrategy: NSObject, AddressDataModelCrea
         contactPickerViewController.predicateForSelectionOfProperty = NSPredicate(format: "key == 'postalAddresses'")
         contactPickerViewController.delegate = self
         contactPickerViewController.modalPresentationStyle = .overCurrentContext
-        AtlasUIViewController.instance?.show(contactPickerViewController, sender: self)
+        AtlasUIViewController.shared?.show(contactPickerViewController, sender: self)
     }
 
 }
