@@ -17,7 +17,7 @@ class EditAddressTypeTests: XCTestCase {
 
         AtlasUI.register { try! Localizer(localeIdentifier: "en_UK") as Localizer }
         dataModel = AddressFormDataModel(equatableAddress: nil, countryCode: "DE")
-        updateModelData(dataModel)
+        update(dataModel: dataModel)
     }
 
     func testFieldTitle() {
@@ -46,16 +46,16 @@ class EditAddressTypeTests: XCTestCase {
     }
 
     func testReadingFromDataModel() {
-        expect(AddressFormField.title.value(self.dataModel)).to(equal("Mr"))
-        expect(AddressFormField.firstName.value(self.dataModel)).to(equal("John"))
-        expect(AddressFormField.lastName.value(self.dataModel)).to(equal("Doe"))
-        expect(AddressFormField.street.value(self.dataModel)).to(equal("Mollstr. 1"))
-        expect(AddressFormField.additional.value(self.dataModel)).to(equal("C/O Zalando SE"))
-        expect(AddressFormField.packstation.value(self.dataModel)).to(equal("123"))
-        expect(AddressFormField.memberID.value(self.dataModel)).to(equal("12345"))
-        expect(AddressFormField.zipcode.value(self.dataModel)).to(equal("10178"))
-        expect(AddressFormField.city.value(self.dataModel)).to(equal("Berlin"))
-        expect(AddressFormField.country.value(self.dataModel)).to(equal("Germany"))
+        expect(self.dataModel.value(forField: .title)).to(equal("Mr"))
+        expect(self.dataModel.value(forField: .firstName)).to(equal("John"))
+        expect(self.dataModel.value(forField: .lastName)).to(equal("Doe"))
+        expect(self.dataModel.value(forField: .street)).to(equal("Mollstr. 1"))
+        expect(self.dataModel.value(forField: .additional)).to(equal("C/O Zalando SE"))
+        expect(self.dataModel.value(forField: .packstation)).to(equal("123"))
+        expect(self.dataModel.value(forField: .memberID)).to(equal("12345"))
+        expect(self.dataModel.value(forField: .zipcode)).to(equal("10178"))
+        expect(self.dataModel.value(forField: .city)).to(equal("Berlin"))
+        expect(self.dataModel.value(forField: .country)).to(equal("Germany"))
     }
 
 }
@@ -63,15 +63,15 @@ class EditAddressTypeTests: XCTestCase {
 extension EditAddressTypeTests {
 
     fileprivate func update(dataModel: AddressFormDataModel) {
-        AddressFormField.title.updateModel(dataModel, withValue: "Mr")
-        AddressFormField.firstName.updateModel(dataModel, withValue: "John")
-        AddressFormField.lastName.updateModel(dataModel, withValue: "Doe")
-        AddressFormField.street.updateModel(dataModel, withValue: "Mollstr. 1")
-        AddressFormField.additional.updateModel(dataModel, withValue: "C/O Zalando SE")
-        AddressFormField.packstation.updateModel(dataModel, withValue: "123")
-        AddressFormField.memberID.updateModel(dataModel, withValue: "12345")
-        AddressFormField.zipcode.updateModel(dataModel, withValue: "10178")
-        AddressFormField.city.updateModel(dataModel, withValue: "Berlin")
+        dataModel.update(value: "Mr", fromField: .title)
+        dataModel.update(value: "John", fromField: .firstName)
+        dataModel.update(value: "Doe", fromField: .lastName)
+        dataModel.update(value: "Mollstr. 1", fromField: .street)
+        dataModel.update(value: "C/O Zalando SE", fromField: .additional)
+        dataModel.update(value: "123", fromField: .packstation)
+        dataModel.update(value: "12345", fromField: .memberID)
+        dataModel.update(value: "10178", fromField: .zipcode)
+        dataModel.update(value: "Berlin", fromField: .city)
     }
 
 }

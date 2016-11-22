@@ -12,7 +12,7 @@ class AsyncTests: XCTestCase {
     func testOperationOnMainQueue() {
         var operationDidRunOnChosenQueue = false
         Async.main {
-            operationDidRunOnChosenQueue = self.isRunningOn(queue: DispatchQueue.main)
+            operationDidRunOnChosenQueue = self.isRunningOn(qosClass: qos_class_main())
         }
         expect(operationDidRunOnChosenQueue).toEventually(beTrue())
     }
@@ -20,7 +20,7 @@ class AsyncTests: XCTestCase {
     func testOperationNOTOnMainQueue() {
         var operationDidNOTRunOnChosenQueue = true
         Async.main {
-            operationDidNOTRunOnChosenQueue = self.isRunningOn(qos: DispatchQoS.QoSClass.background)
+            operationDidNOTRunOnChosenQueue = self.isRunningOn(qos: .background)
         }
         expect(operationDidNOTRunOnChosenQueue).toEventually(beFalse())
     }
@@ -28,7 +28,7 @@ class AsyncTests: XCTestCase {
     func testOperationOnUserInteractiveQueue() {
         var operationDidRunOnChosenQueue = false
         Async.userInteractive {
-            operationDidRunOnChosenQueue = self.isRunningOn(qos: DispatchQoS.QoSClass.userInteractive)
+            operationDidRunOnChosenQueue = self.isRunningOn(qos: .userInteractive)
         }
         expect(operationDidRunOnChosenQueue).toEventually(beTrue())
     }
@@ -36,7 +36,7 @@ class AsyncTests: XCTestCase {
     func testOperationOnUserInitatedQueue() {
         var operationDidRunOnChosenQueue = false
         Async.userInitiated {
-            operationDidRunOnChosenQueue = self.isRunningOn(qos: DispatchQoS.QoSClass.userInitiated)
+            operationDidRunOnChosenQueue = self.isRunningOn(qos: .userInitiated)
         }
         expect(operationDidRunOnChosenQueue).toEventually(beTrue())
     }
@@ -44,7 +44,7 @@ class AsyncTests: XCTestCase {
     func testOperationOnUtilityQueue() {
         var operationDidRunOnChosenQueue = false
         Async.utility {
-            operationDidRunOnChosenQueue = self.isRunningOn(qos: DispatchQoS.QoSClass.utility)
+            operationDidRunOnChosenQueue = self.isRunningOn(qos: .utility)
         }
         expect(operationDidRunOnChosenQueue).toEventually(beTrue())
     }
@@ -52,7 +52,7 @@ class AsyncTests: XCTestCase {
     func testOperationOnBackgroundQueue() {
         var operationDidRunOnChosenQueue = false
         Async.background {
-            operationDidRunOnChosenQueue = self.isRunningOn(qos: DispatchQoS.QoSClass.background)
+            operationDidRunOnChosenQueue = self.isRunningOn(qos: .background)
         }
         expect(operationDidRunOnChosenQueue).toEventually(beTrue())
     }
@@ -61,15 +61,12 @@ class AsyncTests: XCTestCase {
 
 extension AsyncTests {
 
-    fileprivate func isRunningOn(qos: qos_class_t) -> Bool {
-        let queue = DispatchQueue.global(qos: qos)
-        return isRunningOn(queue: queue)
+    fileprivate func isRunningOn(qos: DispatchQoS.QoSClass) -> Bool {
+        return isRunningOn(qosClass: qos.rawValue)
     }
 
-    fileprivate func isRunningOn(queue: DispatchQueue) -> Bool {
-        let currentQueueLabel = DISPATCH_CURRENT_QUEUE_LABEL.label
-        let queueLabel = queue.label
-        return currentQueueLabel == queueLabel
+    fileprivate func isRunningOn(qosClass: qos_class_t) -> Bool {
+        return qos_class_self() == qosClass
     }
 
 }

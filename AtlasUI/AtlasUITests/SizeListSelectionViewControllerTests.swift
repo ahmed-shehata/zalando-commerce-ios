@@ -93,7 +93,7 @@ extension SizeListSelectionViewControllerTests {
                               interfaceLanguage: "en",
                               configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
 
-        AtlasUI.configure(options) { _ in
+        AtlasUI.configure(options: options) { _ in
             let atlasUIViewController = AtlasUIViewController(forSKU: sku)
             AtlasUI.register { atlasUIViewController }
             completion()

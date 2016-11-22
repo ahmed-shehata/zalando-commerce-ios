@@ -17,14 +17,14 @@ class FormValidatorTests: XCTestCase {
     }
 
     func testRequiredValidator() {
-        let validator = FormValidator.Required
+        let validator = FormValidator.required
         expect(validator.errorMessage("John")).to(beNil())
         expect(validator.errorMessage("")).to(equal("This field is required"))
         expect(validator.errorMessage(nil)).to(equal("This field is required"))
     }
 
     func testMinimumLengthValidator() {
-        let validator = FormValidator.MinLength(minLength: 3)
+        let validator = FormValidator.minLength(minLength: 3)
         expect(validator.errorMessage("John")).to(beNil())
         expect(validator.errorMessage("Joh")).to(beNil())
         expect(validator.errorMessage("Jo")).to(equal("Min length is 3"))
@@ -33,7 +33,7 @@ class FormValidatorTests: XCTestCase {
     }
 
     func testMaximumLengthValidator() {
-        let validator = FormValidator.MaxLength(maxLength: 4)
+        let validator = FormValidator.maxLength(maxLength: 4)
         expect(validator.errorMessage("John")).to(beNil())
         expect(validator.errorMessage("Joh")).to(beNil())
         expect(validator.errorMessage("")).to(beNil())
@@ -42,7 +42,7 @@ class FormValidatorTests: XCTestCase {
     }
 
     func testExactLengthValidator() {
-        let validator = FormValidator.ExactLength(length: 4)
+        let validator = FormValidator.exactLength(length: 4)
         expect(validator.errorMessage("John")).to(beNil())
         expect(validator.errorMessage("John Doe")).to(equal("Required length is 4"))
         expect(validator.errorMessage("Joh")).to(equal("Required length is 4"))
@@ -51,7 +51,7 @@ class FormValidatorTests: XCTestCase {
     }
 
     func testPatternValidator() {
-        let validator = FormValidator.Pattern(pattern: FormValidator.namePattern, errorMessage: "formValidation.pattern.name")
+        let validator = FormValidator.pattern(pattern: FormValidator.namePattern, errorMessage: "formValidation.pattern.name")
         expect(validator.errorMessage("John")).to(beNil())
         expect(validator.errorMessage("John Doe")).to(beNil())
         expect(validator.errorMessage("John-Doe")).to(beNil())
@@ -61,7 +61,7 @@ class FormValidatorTests: XCTestCase {
     }
 
     func testNumbersOnlyValidator() {
-        let validator = FormValidator.NumbersOnly
+        let validator = FormValidator.numbersOnly
         expect(validator.errorMessage("12345")).to(beNil())
         expect(validator.errorMessage("John1")).to(equal("Only numbers are allowed"))
     }
