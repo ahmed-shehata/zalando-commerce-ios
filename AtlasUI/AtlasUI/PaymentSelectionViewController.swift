@@ -14,7 +14,7 @@ enum PaymentStatus: String {
     case cancel = "cancel"
     case error = "error"
 
-    static var statusKey = "payment_status"
+    static let statusKey = "payment_status"
 
     init?(callbackURLComponents: URLComponents, requestURLComponents: URLComponents) {
         guard let
