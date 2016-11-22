@@ -32,4 +32,3 @@ public typealias BillingAddress = EquatableAddress
 public typealias ShippingAddress = EquatableAddress
 
 public typealias CheckoutAddresses = (billingAddress: BillingAddress?, shippingAddress: ShippingAddress?)
-
