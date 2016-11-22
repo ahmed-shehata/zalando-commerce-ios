@@ -54,11 +54,11 @@ extension AddressFormStackView: UIDataBuilder {
         for (idx, textFieldInputView) in textFields.enumerated() {
             let fieldType = addressType.fields[idx]
             let title = fieldType.title
-            let value = fieldType.value(viewModel)
+            let value = viewModel.value(forField: fieldType)
             let isActive = fieldType.isActive()
 
             let customView = fieldType.customView(viewModel) { text in
-                fieldType.update(dataModel: viewModel, withValue: text)
+                viewModel.update(value: text, fromField: fieldType)
                 textFieldInputView.textField.text = text
                 textFieldInputView.configureTitleLabel()
                 if text?.trimmed().length > 0 {
@@ -72,7 +72,7 @@ extension AddressFormStackView: UIDataBuilder {
             }
 
             let valueChangedHandler: TextFieldChangedHandler = { text in
-                fieldType.update(dataModel: viewModel, withValue: text)
+                viewModel.update(value: text, fromField: fieldType)
             }
 
             let viewModel = TextFieldInputViewModel(title: title,

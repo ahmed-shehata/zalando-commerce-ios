@@ -38,7 +38,6 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
         return shippingAddress != nil && billingAddress != nil
     }
 
-
     static func createInstance(_ customer: Customer, selectedUnit: SelectedArticleUnit,
                                completion: @escaping LoggedInSummaryActionHandlerCompletion) {
         let actionHandler = LoggedInSummaryActionHandler(customer: customer)

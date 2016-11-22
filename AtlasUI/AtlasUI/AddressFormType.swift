@@ -38,37 +38,6 @@ enum AddressFormField: String {
         return title + (formValidators.contains { $0 == .required } ? "*" : "")
     }
 
-    // TODO: consider extension AddressFormDataModel
-    func value(_ dataModel: AddressFormDataModel) -> String? {
-        switch self {
-        case .title: return dataModel.localizedTitle()
-        case .firstName: return dataModel.firstName
-        case .lastName: return dataModel.lastName
-        case .street: return dataModel.street
-        case .additional: return dataModel.additional
-        case .packstation: return dataModel.pickupPointId
-        case .memberID: return dataModel.pickupPointMemberId
-        case .zipcode: return dataModel.zip
-        case .city: return dataModel.city
-        case .country: return Localizer.countryName(forCountryCode: dataModel.countryCode)
-        }
-    }
-
-    func update(dataModel: AddressFormDataModel, withValue value: String?) {
-        switch self {
-        case .title: dataModel.updateTitle(fromLocalizedGenderText: value)
-        case .firstName: dataModel.firstName = value
-        case .lastName: dataModel.lastName = value
-        case .street: dataModel.street = value
-        case .additional: dataModel.additional = value
-        case .packstation: dataModel.pickupPointId = value
-        case .memberID: dataModel.pickupPointMemberId = value
-        case .zipcode: dataModel.zip = value
-        case .city: dataModel.city = value
-        case .country: break
-        }
-    }
-
     func isActive() -> Bool {
         return self != .country
     }
@@ -83,10 +52,7 @@ enum AddressFormField: String {
     func customView(_ dataModel: AddressFormDataModel, completion: @escaping TextFieldChangedHandler) -> UIView? {
         switch self {
         case .title:
-            let titles = dataModel.titles
-            let currentTitle = value(dataModel) ?? ""
-            let currentTitleIdx = titles.index(of: currentTitle) ?? 0
-            return PickerKeyboardInputView(pickerData: titles, startingValueIndex: currentTitleIdx, completion: completion)
+            return PickerKeyboardInputView(pickerData: titles, startingValueIndex: dataModel.selectedTitleIndex(), completion: completion)
         default:
             return nil
         }
@@ -130,4 +96,42 @@ enum AddressFormField: String {
         }
     }
 
+}
+
+extension AddressFormDataModel {
+
+    fileprivate func selectedTitleIndex() -> Int {
+        guard let title = self.localizedTitle() else { return 0 }
+        return titles.index(of: title) ?? 0
+    }
+
+    func value(forField field: AddressFormField) -> String? {
+        switch field {
+        case .title: return self.localizedTitle()
+        case .firstName: return self.firstName
+        case .lastName: return self.lastName
+        case .street: return self.street
+        case .additional: return self.additional
+        case .packstation: return self.pickupPointId
+        case .memberID: return self.pickupPointMemberId
+        case .zipcode: return self.zip
+        case .city: return self.city
+        case .country: return Localizer.countryName(forCountryCode: self.countryCode)
+        }
+    }
+
+    func update(value: String?, fromField field: AddressFormField) {
+        switch field {
+        case .title: self.updateTitle(fromLocalizedGenderText: value)
+        case .firstName: self.firstName = value
+        case .lastName: self.lastName = value
+        case .street: self.street = value
+        case .additional: self.additional = value
+        case .packstation: self.pickupPointId = value
+        case .memberID: self.pickupPointMemberId = value
+        case .zipcode: self.zip = value
+        case .city: self.city = value
+        case .country: break
+        }
+    }
 }
