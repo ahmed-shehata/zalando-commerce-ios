@@ -116,7 +116,7 @@
 		F60151398A735039647F5A24ADB64506 /* SizeListTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662F01835226FD6EFB86E93D7332FA0A /* SizeListTableViewDataSource.swift */; };
 		F7134FE121256D750D7DCDB3C6494EF0 /* URLAuthorizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83316EC4886ACF067F2DE376AB807478 /* URLAuthorizationTests.swift */; };
 		F8CC87AE6AB394474A3805C2E754E7C9 /* OAuth2AuthorizationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BD4560BAD0C3A785D43680822E8BC2 /* OAuth2AuthorizationHandler.swift */; };
-		FD0035C9551735C4B0988C4769495FFF /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01745B4995023182267D504707E4A241 /* Localization.swift */; };
+		FD0035C9551735C4B0988C4769495FFF /* Localizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01745B4995023182267D504707E4A241 /* Localizer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,7 +151,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		01745B4995023182267D504707E4A241 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		01745B4995023182267D504707E4A241 /* Localizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizer.swift; sourceTree = "<group>"; };
 		02BD370CD1B34D1B6EDCA103C9F1DF94 /* AtlasLoginError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasLoginError.swift; sourceTree = "<group>"; };
 		03B9AEFEA853EB9FD83162CF1D3F62CC /* FullScreenErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullScreenErrorViewController.swift; sourceTree = "<group>"; };
 		059D85CAB2A4B2D773369E3B053F112C /* ToCViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToCViewController.swift; sourceTree = "<group>"; };
@@ -428,7 +428,7 @@
 				9F5B1762ED329FAB88F440E73AB36059 /* UIViewController.swift */,
 				D4F1679B8BB8A951B60D19AD947CD5BA /* CGRect.swift */,
 				82D2ADD240889020E56AC601593CC418 /* FormValidator.swift */,
-				01745B4995023182267D504707E4A241 /* Localization.swift */,
+				01745B4995023182267D504707E4A241 /* Localizer.swift */,
 				FCE97CB84083DD00DA5045AB38EA0038 /* UIApplication.swift */,
 				640810DC34806DF7B0FBAEA4DB0123CD /* UIBuilder.swift */,
 				27ADC182F5F2F24D9AF740830B9B50A9 /* UIColor.swift */,
@@ -880,7 +880,7 @@
 				7629410B747CDC9D6FD8015EAE15F936 /* FullScreenErrorViewController.swift in Sources */,
 				0FBF5C603EAAC10495E96E1E79EC75A0 /* KeyboardScrollView.swift in Sources */,
 				97A8338792C92AC0C5C6E1B92A510F58 /* LoaderView.swift in Sources */,
-				FD0035C9551735C4B0988C4769495FFF /* Localization.swift in Sources */,
+				FD0035C9551735C4B0988C4769495FFF /* Localizer.swift in Sources */,
 				6385A110FD56BDDDECC2DC57FBA94780 /* AtlasLoginError.swift in Sources */,
 				F8CC87AE6AB394474A3805C2E754E7C9 /* OAuth2AuthorizationHandler.swift in Sources */,
 				E94CCCB81DE2FE3B00987655 /* LoggedInSummaryActionHandler.swift in Sources */,

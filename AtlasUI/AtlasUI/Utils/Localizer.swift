@@ -5,14 +5,14 @@
 import Foundation
 import AtlasSDK
 
-enum AtlasLocalizerError: AtlasErrorType {
-
-    case languageNotFound
-    case localizedStringsNotFound
-
-}
-
 struct Localizer {
+
+    enum Error: AtlasErrorType {
+
+        case languageNotFound
+        case localizedStringsNotFound
+
+    }
 
     fileprivate let locale: Locale
     fileprivate let priceFormatter: NumberFormatter
@@ -21,7 +21,7 @@ struct Localizer {
 
     init(localeIdentifier: String) throws {
         try self.init(localeIdentifier: localeIdentifier,
-            localizedStringsBundle: Bundle(for: AtlasUI.self))
+                      localizedStringsBundle: Bundle(for: AtlasUI.self))
     }
 
     init(localeIdentifier: String, localizedStringsBundle: Bundle) throws {
@@ -99,25 +99,25 @@ extension Bundle {
 
     fileprivate static func languageBundle(forLanguage locale: Locale, from localizedStringsBundle: Bundle) throws -> Bundle {
         guard let localization = (locale as NSLocale).object(forKey: NSLocale.Key.languageCode) as? String else {
-            throw AtlasLocalizerError.languageNotFound
+            throw Localizer.Error.languageNotFound
         }
 
         let localizedStringsPath = path(from: localizedStringsBundle,
-            forResourceNamed: "Localizable.strings", forLocalization: localization)
+                                        forResourceNamed: "Localizable.strings", forLocalization: localization)
         let localizedStringsFolder = localizedStringsPath?.deletingLastPathComponent
 
         guard let folder = localizedStringsFolder,
             let bundle = Bundle(path: folder)
             else {
-            throw AtlasLocalizerError.localizedStringsNotFound
+            throw Localizer.Error.localizedStringsNotFound
         }
 
         return bundle
     }
 
     fileprivate static func path(from bundle: Bundle, forResourceNamed resourceName: String,
-        forLocalization localizationName: String) -> NSString? {
-            return bundle.path(forResource: resourceName, ofType: nil, inDirectory: nil, forLocalization: localizationName) as NSString?
+                                 forLocalization localizationName: String) -> NSString? {
+        return bundle.path(forResource: resourceName, ofType: nil, inDirectory: nil, forLocalization: localizationName) as NSString?
     }
 
 }
