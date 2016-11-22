@@ -18,7 +18,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
 
     var cartCheckout: CartCheckout? {
         didSet {
-            updateDataModel(addresses)
+            updateDataModel(addresses: addresses)
         }
     }
 
@@ -113,9 +113,9 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
             let addresses: [EquatableAddress] = userAddresses.map { $0 }
             let creationStrategy = ShippingAddressViewModelCreationStrategy()
             let addressViewController = AddressListViewController(initialAddresses: addresses, selectedAddress: self?.shippingAddress)
-            addressViewController.addressUpdatedHandler = { self?.addressUpdated($0) }
-            addressViewController.addressDeletedHandler = { self?.addressDeleted($0) }
-            addressViewController.addressSelectedHandler = { self?.selectShippingAddress($0) }
+            addressViewController.addressUpdatedHandler = { self?.updated(address: $0) }
+            addressViewController.addressDeletedHandler = { self?.deleted(address: $0) }
+            addressViewController.addressSelectedHandler = { self?.select(shippingAddress: $0) }
             addressViewController.actionHandler = LoggedInAddressListActionHandler(addressViewModelCreationStrategy: creationStrategy)
             addressViewController.title = Localizer.string("addressListView.title.shipping")
             AtlasUIViewController.instance?.mainNavigationController.pushViewController(addressViewController, animated: true)
@@ -128,9 +128,9 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
             let addresses: [EquatableAddress] = userAddresses.filter { $0.pickupPoint == nil } .map { $0 }
             let creationStrategy = BillingAddressViewModelCreationStrategy()
             let addressViewController = AddressListViewController(initialAddresses: addresses, selectedAddress: self?.billingAddress)
-            addressViewController.addressUpdatedHandler = { self?.addressUpdated($0) }
-            addressViewController.addressDeletedHandler = { self?.addressDeleted($0) }
-            addressViewController.addressSelectedHandler = { self?.selectBillingAddress($0) }
+            addressViewController.addressUpdatedHandler = { self?.updated(address: $0) }
+            addressViewController.addressDeletedHandler = { self?.deleted(address: $0) }
+            addressViewController.addressSelectedHandler = { self?.select(billingAddress: $0) }
             addressViewController.actionHandler = LoggedInAddressListActionHandler(addressViewModelCreationStrategy: creationStrategy)
             addressViewController.title = Localizer.string("addressListView.title.billing")
             AtlasUIViewController.instance?.mainNavigationController.pushViewController(addressViewController, animated: true)
@@ -207,13 +207,18 @@ extension LoggedInSummaryActionHandler {
 
 extension LoggedInSummaryActionHandler {
 
-    fileprivate func updateDataModel(_ addresses: CheckoutAddresses?) {
+    fileprivate func updateDataModel(addresses: CheckoutAddresses?, usingCartCheckout: Bool = false) {
         guard let selectedArticleUnit = dataSource?.dataModel.selectedArticleUnit else { return }
 
-        let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, cartCheckout: cartCheckout, addresses: addresses)
+        let dataModel: CheckoutSummaryDataModel
+        if usingCartCheckout {
+            dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, cartCheckout: cartCheckout, addresses: addresses)
+        } else {
+            dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, cartCheckout: nil, addresses: addresses)
+        }
         delegate?.updated(dataModel: dataModel)
 
-        if cartCheckout?.checkout == nil && shippingAddress != nil && billingAddress != nil {
+        if usingCartCheckout && cartCheckout?.checkout == nil && hasAddresses {
             createCartCheckout { [weak self] result in
                 guard let cartCheckout = result.process() else { return }
                 self?.cartCheckout = cartCheckout
@@ -221,43 +226,36 @@ extension LoggedInSummaryActionHandler {
         }
     }
 
-    fileprivate func updateDataModelWithNoCartCheckout(_ addresses: CheckoutAddresses) {
-        guard let selectedArticleUnit = dataSource?.dataModel.selectedArticleUnit else { return }
-
-        let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, cartCheckout: nil, addresses: addresses)
-        delegate?.updated(dataModel: dataModel)
-    }
-
 }
 
 extension LoggedInSummaryActionHandler {
 
-    fileprivate func addressUpdated(_ address: EquatableAddress) {
+    fileprivate func updated(address: EquatableAddress) {
         if let shippingAddress = shippingAddress, shippingAddress == address {
-            selectShippingAddress(address)
+            select(shippingAddress: address)
         }
         if let billingAddress = billingAddress, billingAddress == address {
-            selectBillingAddress(address)
+            select(billingAddress: address)
         }
     }
 
-    fileprivate func addressDeleted(_ address: EquatableAddress) {
+    fileprivate func deleted(address: EquatableAddress) {
         if let shippingAddress = shippingAddress, shippingAddress == address {
-            updateDataModelWithNoCartCheckout(CheckoutAddresses(billingAddress: billingAddress, shippingAddress: nil))
+            updateDataModel(addresses: CheckoutAddresses(billingAddress: billingAddress, shippingAddress: nil), usingCartCheckout: false)
             cartCheckout?.checkout = nil
         }
         if let billingAddress = billingAddress, billingAddress == address {
-            updateDataModelWithNoCartCheckout(CheckoutAddresses(billingAddress: nil, shippingAddress: shippingAddress))
+            updateDataModel(addresses: CheckoutAddresses(billingAddress: nil, shippingAddress: shippingAddress), usingCartCheckout: false)
             cartCheckout?.checkout = nil
         }
     }
 
-    fileprivate func selectShippingAddress(_ address: EquatableAddress?) {
-        updateDataModel(CheckoutAddresses(billingAddress: billingAddress, shippingAddress: address))
+    fileprivate func select(shippingAddress address: EquatableAddress?) {
+        updateDataModel(addresses: CheckoutAddresses(billingAddress: billingAddress, shippingAddress: address))
     }
 
-    fileprivate func selectBillingAddress(_ address: EquatableAddress?) {
-        updateDataModel(CheckoutAddresses(billingAddress: address, shippingAddress: shippingAddress))
+    fileprivate func select(billingAddress address: EquatableAddress?) {
+        updateDataModel(addresses: CheckoutAddresses(billingAddress: address, shippingAddress: shippingAddress))
     }
 
 }
