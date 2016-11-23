@@ -7,33 +7,6 @@ import AtlasSDK
 
 typealias PaymentCompletion = PaymentStatus -> Void
 
-enum PaymentStatus: String {
-
-    case redirect = ""
-    case success = "success"
-    case cancel = "cancel"
-    case error = "error"
-
-    static var statusKey = "payment_status"
-
-    init?(callbackURLComponents: NSURLComponents, requestURLComponents: NSURLComponents) {
-        guard let
-            callbackHost = callbackURLComponents.host,
-            requestHost = requestURLComponents.host
-        where
-            callbackHost.lowercaseString == requestHost.lowercaseString
-            else { return nil }
-
-        guard let
-            rawValue = requestURLComponents.queryItems?.filter({ $0.name == PaymentStatus.statusKey }).first?.value,
-            paymentStatus = PaymentStatus(rawValue: rawValue)
-            else { self = .redirect; return }
-
-        self = paymentStatus
-    }
-
-}
-
 final class PaymentViewController: UIViewController, UIWebViewDelegate {
 
     var paymentCompletion: PaymentCompletion?
@@ -68,6 +41,7 @@ final class PaymentViewController: UIViewController, UIWebViewDelegate {
     }
 
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        print(request.URL)
         guard let
         url = request.URL,
             callbackURLComponents = callbackURLComponents,
@@ -89,7 +63,7 @@ final class PaymentViewController: UIViewController, UIWebViewDelegate {
     #else
         func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
             guard let error = error else { return }
-            handle(webView: webView, error: error)
+            handlgateway e(webView: webView, error: error)
         }
     #endif
 

@@ -28,7 +28,42 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
     }
 
     func showPaymentSelectionScreen() {
+        guard let dataSource = dataSource else { return }
+        guard let shippingAddress = shippingAddress, billingAddress = billingAddress else {
+            UserMessage.displayError(AtlasCheckoutError.missingAddress)
+            return
+        }
+        guard let callbackURL = AtlasAPIClient.instance?.config.checkoutGatewayURL else {
+            UserMessage.displayError(AtlasCheckoutError.unclassified)
+            return
+        }
 
+        let shippingGuestAddress = GuestAddressRequest(address: shippingAddress)
+        let billingGuestAddress = GuestAddressRequest(address: billingAddress)
+        let customer = GuestCustomerRequest(guestEmail: "test@test.com", subscribeNewsletter: false)
+        let cartItem = CartItemRequest(sku: dataSource.dataModel.selectedArticleUnit.sku, quantity: 1)
+        let cart = GuestCartRequest(items: [cartItem])
+        let paymentSelectionRequest = GuestPaymentSelectionRequest(customer: customer,
+                                                                   shippingAddress: shippingGuestAddress,
+                                                                   billingAddress: billingGuestAddress,
+                                                                   cart: cart)
+        AtlasUIClient.guestChecoutPaymentSelectionURL(paymentSelectionRequest) { result in
+            guard let paymentURL = result.process() else { return }
+
+            let paymentViewController = PaymentViewController(paymentURL: paymentURL, callbackURL: callbackURL)
+            paymentViewController.paymentCompletion = { [weak self] paymentStatus in
+                switch paymentStatus {
+                case .guestRedirect(let encryptedCheckoutId, let encryptedToken):
+                    print("\(encryptedCheckoutId) - \(encryptedToken)")
+                case .cancel:
+                    break
+                case .error, .redirect, .success:
+                    UserMessage.displayError(AtlasCheckoutError.unclassified)
+                }
+            }
+
+            AtlasUIViewController.instance?.mainNavigationController.pushViewController(paymentViewController, animated: true)
+        }
     }
 
     func showShippingAddressSelectionScreen() {
@@ -77,6 +112,7 @@ extension GuestCheckoutSummaryActionHandler {
     }
 
     private func addressDeleted(address: EquatableAddress) {
+        removeAddress(address)
         if let shippingAddress = shippingAddress where shippingAddress == address {
             updateDataModel(CheckoutAddresses(billingAddress: billingAddress, shippingAddress: nil), guestCheckout: nil)
             guestCheckout = nil
@@ -88,11 +124,25 @@ extension GuestCheckoutSummaryActionHandler {
     }
 
     private func selectShippingAddress(address: EquatableAddress) {
+        appendAddress(address)
         updateDataModel(CheckoutAddresses(billingAddress: billingAddress, shippingAddress: address), guestCheckout: guestCheckout)
     }
 
     private func selectBillingAddress(address: EquatableAddress) {
+        appendAddress(address)
         updateDataModel(CheckoutAddresses(billingAddress: address, shippingAddress: shippingAddress), guestCheckout: guestCheckout)
+    }
+
+    private func removeAddress(address: EquatableAddress) {
+        if let idx = addresses.indexOf({ $0 == address }) {
+            addresses.removeAtIndex(idx)
+        }
+    }
+
+    private func appendAddress(address: EquatableAddress) {
+        if !addresses.contains({ $0 == address }) {
+            addresses.append(address)
+        }
     }
 
 }

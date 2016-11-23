@@ -85,7 +85,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
                 }
             case .cancel:
                 break
-            case .error:
+            case .error, .guestRedirect:
                 UserMessage.displayError(AtlasCheckoutError.unclassified)
             }
         }
@@ -143,7 +143,7 @@ extension LoggedInSummaryActionHandler {
             switch paymentStatus {
             case .success: self?.showConfirmationScreen(order)
             case .redirect, .cancel: break
-            case .error: UserMessage.displayError(AtlasCheckoutError.unclassified)
+            case .error, .guestRedirect: UserMessage.displayError(AtlasCheckoutError.unclassified)
             }
         }
         AtlasUIViewController.instance?.mainNavigationController.pushViewController(paymentViewController, animated: true)

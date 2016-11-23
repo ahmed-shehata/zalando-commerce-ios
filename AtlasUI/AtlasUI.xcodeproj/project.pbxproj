@@ -96,6 +96,7 @@
 		E98D1E851DDE0657005774B4 /* AddressFormActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98D1E841DDE0657005774B4 /* AddressFormActionHandler.swift */; };
 		E98D1E871DDE0822005774B4 /* LoggedInCreateAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98D1E861DDE0822005774B4 /* LoggedInCreateAddressActionHandler.swift */; };
 		E98D1E891DDE082F005774B4 /* LoggedInUpdateAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98D1E881DDE082F005774B4 /* LoggedInUpdateAddressActionHandler.swift */; };
+		E98F629D1DE5FF0400488740 /* PaymentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F629C1DE5FF0400488740 /* PaymentStatus.swift */; };
 		E9B686461DE36025009F8883 /* GuestCheckoutSummaryActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B686451DE36025009F8883 /* GuestCheckoutSummaryActionHandler.swift */; };
 		E9B686481DE363FD009F8883 /* GuestCheckoutAddressListActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B686471DE363FD009F8883 /* GuestCheckoutAddressListActionHandler.swift */; };
 		E9D437931DD35BED00082B44 /* Injector.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D437921DD35BED00082B44 /* Injector.swift */; };
@@ -249,6 +250,7 @@
 		E98D1E841DDE0657005774B4 /* AddressFormActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressFormActionHandler.swift; sourceTree = "<group>"; };
 		E98D1E861DDE0822005774B4 /* LoggedInCreateAddressActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedInCreateAddressActionHandler.swift; sourceTree = "<group>"; };
 		E98D1E881DDE082F005774B4 /* LoggedInUpdateAddressActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedInUpdateAddressActionHandler.swift; sourceTree = "<group>"; };
+		E98F629C1DE5FF0400488740 /* PaymentStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentStatus.swift; sourceTree = "<group>"; };
 		E9B686451DE36025009F8883 /* GuestCheckoutSummaryActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCheckoutSummaryActionHandler.swift; sourceTree = "<group>"; };
 		E9B686471DE363FD009F8883 /* GuestCheckoutAddressListActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCheckoutAddressListActionHandler.swift; sourceTree = "<group>"; };
 		E9D437921DD35BED00082B44 /* Injector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Injector.swift; sourceTree = "<group>"; };
@@ -491,6 +493,7 @@
 			isa = PBXGroup;
 			children = (
 				52A26AACC32143945E59B862CBDB3626 /* PaymentSelectionViewController.swift */,
+				E98F629C1DE5FF0400488740 /* PaymentStatus.swift */,
 			);
 			name = "Payment Selection";
 			sourceTree = "<group>";
@@ -849,6 +852,7 @@
 				E98D1E7C1DDDF201005774B4 /* AddressFormLayout.swift in Sources */,
 				E9D437AC1DD3903000082B44 /* CheckoutSummaryViewModel.swift in Sources */,
 				9327E278449199F204D0B0B0675CAC10 /* AddressFormViewController.swift in Sources */,
+				E98F629D1DE5FF0400488740 /* PaymentStatus.swift in Sources */,
 				E9E193291DDF134E00B070B8 /* BillingAddressViewModelCreationStrategy.swift in Sources */,
 				016CEEB704BC854DD45A432B7BF86639 /* AtlasUI-Constants.swift in Sources */,
 				271C74EFD455C9953DB58ED7A2B107CE /* AddressRowViewCell.swift in Sources */,

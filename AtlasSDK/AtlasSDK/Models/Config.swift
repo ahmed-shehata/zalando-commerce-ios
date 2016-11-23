@@ -8,6 +8,7 @@ public struct Config {
 
     public let catalogURL: NSURL
     public let checkoutURL: NSURL
+    public let checkoutGatewayURL: NSURL
     public let loginURL: NSURL
     public let clientId: String
     public let payment: Payment
@@ -37,8 +38,9 @@ extension Config {
 
     init?(json: JSON, options: Options) {
         guard let
-        catalogURL = json["atlas-catalog-api"]["url"].URL,
+            catalogURL = json["atlas-catalog-api"]["url"].URL,
             checkoutURL = json["atlas-checkout-api"]["url"].URL,
+            checkoutGatewayURL = json["atlas-checkout-gateway"]["url"].URL,
             loginURL = json["oauth2-provider"]["url"].URL,
             selectionCallbackURL = json["atlas-checkout-api"]["payment"]["selection-callback"].URL,
             thirdPartyCallbackURL = json["atlas-checkout-api"]["payment"]["third-party-callback"].URL,
@@ -48,6 +50,7 @@ extension Config {
 
         self.catalogURL = catalogURL
         self.checkoutURL = checkoutURL
+        self.checkoutGatewayURL = checkoutGatewayURL
         self.loginURL = loginURL
         self.availableSalesChannels = availableSalesChannels
 
@@ -69,6 +72,7 @@ extension Config: CustomStringConvertible {
     public var description: String {
         return "Config: { catalogURL: \(self.catalogURL)"
             + ", checkoutURL: \(self.checkoutURL)"
+            + ", checkoutGatewayURL: \(self.checkoutGatewayURL)"
             + ", loginURL: \(self.loginURL)"
             + ", clientId: \(self.clientId)"
             + ", salesChannel: \(self.salesChannel)"

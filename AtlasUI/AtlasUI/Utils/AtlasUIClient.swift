@@ -61,9 +61,18 @@ struct AtlasUIClient {
         }
     }
 
-    static func createGuestOrder(request: CreateGuestOrderRequest, completion: GuestOrderCompletion) {
+    static func createGuestOrder(request: GuestOrderRequest, completion: OrderCompletion) {
         UserMessage.displayLoader { hideLoader in
             AtlasAPIClient.instance?.createGuestOrder(request) { result in
+                hideLoader()
+                completion(result)
+            }
+        }
+    }
+
+    static func guestChecoutPaymentSelectionURL(request: GuestPaymentSelectionRequest, completion: URLCompletion) {
+        UserMessage.displayLoader { hideLoader in
+            AtlasAPIClient.instance?.guestChecoutPaymentSelectionURL(request) { result in
                 hideLoader()
                 completion(result)
             }
