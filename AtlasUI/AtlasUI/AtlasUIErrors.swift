@@ -36,13 +36,13 @@ extension UserPresentable {
         return shouldDisplayGeneralMessage() ? Localizer.string("AtlasCheckoutError.message.unclassified") : message()
     }
 
-    private func title() -> String {
+    fileprivate func title() -> String {
         let errorTitle = Localizer.string(localizedTitleKey)
-        let errorCategoryTitle = Localizer.string("\(self.dynamicType).title")
+        let errorCategoryTitle = Localizer.string("\(type(of: self)).title")
         return errorTitle == localizedTitleKey ? errorCategoryTitle : errorTitle
     }
 
-    private func message() -> String {
+    fileprivate func message() -> String {
         return customMessage() ?? Localizer.string(localizedMessageKey)
     }
 

@@ -12,13 +12,13 @@ class BorderView: UIView {
     var leftBorder: Bool = false
     var leadingMargin: CGFloat = 0
     var trailingMarging: CGFloat = 0
-    var borderColor: UIColor = .blackColor() {
+    var borderColor: UIColor = .black {
         didSet {
             subviews.forEach { $0.backgroundColor = borderColor }
         }
     }
 
-    private let onePixel = 1 / UIScreen.mainScreen().scale
+    fileprivate let onePixel = 1 / UIScreen.main.scale
 
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -40,7 +40,7 @@ class BorderView: UIView {
         }
     }
 
-    private func addView(frame: CGRect) {
+    fileprivate func addView(_ frame: CGRect) {
         let view = UIView(frame: frame)
         view.backgroundColor = borderColor
         addSubview(view)

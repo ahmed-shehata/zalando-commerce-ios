@@ -6,21 +6,21 @@ import UIKit
 
 final class CheckoutPresentationController: UIPresentationController {
 
-    private struct Constants {
+    fileprivate struct Constants {
         static let defaultHeightRatio: CGFloat = UIScreen.isSmallScreen ? 1.0 : 0.75
     }
 
-    private let heightRatio: CGFloat
+    fileprivate let heightRatio: CGFloat
 
-    private let effectView = UIVisualEffectView()
+    fileprivate let effectView = UIVisualEffectView()
 
-    private lazy var dimmingView: UIView? = {
+    fileprivate lazy var dimmingView: UIView? = {
         guard let containerView = self.containerView else { return nil }
         let dimmingView = UIView(frame: containerView.bounds)
         dimmingView.alpha = 0
         dimmingView.backgroundColor = UIColor(white: 0, alpha: 0.4)
         dimmingView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dimmingViewTapped(_:))))
-        dimmingView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        dimmingView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         return dimmingView
     }()
 
@@ -28,8 +28,8 @@ final class CheckoutPresentationController: UIPresentationController {
         heightRatio: CGFloat = Constants.defaultHeightRatio) {
             self.heightRatio = heightRatio
             effectView.frame = presentedViewController.view.frame
-            presentedViewController.view.insertSubview(effectView, atIndex: 0)
-            super.init(presentedViewController: presentedViewController, presentingViewController: presentingViewController)
+            presentedViewController.view.insertSubview(effectView, at: 0)
+            super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
     }
 
     override func presentationTransitionWillBegin() {
@@ -39,15 +39,15 @@ final class CheckoutPresentationController: UIPresentationController {
         dimmingView.backgroundColor = UIColor(white: 0, alpha: 0.4)
         dimmingView.addGestureRecognizer(UITapGestureRecognizer(target: self,
             action: #selector(dimmingViewTapped(_:))))
-        containerView.insertSubview(dimmingView, atIndex: 0)
+        containerView.insertSubview(dimmingView, at: 0)
 
         let updateViews = {
-            self.effectView.effect = UIBlurEffect(style: .ExtraLight)
+            self.effectView.effect = UIBlurEffect(style: .extraLight)
             dimmingView.alpha = 1
         }
 
-        if let transitionCoordinator = presentedViewController.transitionCoordinator() {
-            transitionCoordinator.animateAlongsideTransition({ _ in
+        if let transitionCoordinator = presentedViewController.transitionCoordinator {
+            transitionCoordinator.animate(alongsideTransition: { _ in
                 updateViews()
                 }, completion: nil)
         } else {
@@ -56,14 +56,14 @@ final class CheckoutPresentationController: UIPresentationController {
     }
 
     override func dismissalTransitionWillBegin() {
-        guard let _ = containerView, _ = dimmingView else { return }
+        guard let _ = containerView, let _ = dimmingView else { return }
         let updateViews = {
             self.dimmingView?.alpha = 0
             self.effectView.effect = nil
         }
 
-        if let transitionCoordinator = presentedViewController.transitionCoordinator() {
-            transitionCoordinator.animateAlongsideTransition({ _ in
+        if let transitionCoordinator = presentedViewController.transitionCoordinator {
+            transitionCoordinator.animate(alongsideTransition: { _ in
                 updateViews()
                 }, completion: nil)
         } else {
@@ -71,8 +71,8 @@ final class CheckoutPresentationController: UIPresentationController {
         }
     }
 
-    override func frameOfPresentedViewInContainerView() -> CGRect {
-        let rect = super.frameOfPresentedViewInContainerView()
+    override var frameOfPresentedViewInContainerView: CGRect {
+        let rect = super.frameOfPresentedViewInContainerView
         let newHeight = rect.height * heightRatio
         return CGRect(x: rect.origin.x,
             y: rect.origin.y + (rect.height - newHeight),
@@ -80,7 +80,7 @@ final class CheckoutPresentationController: UIPresentationController {
             height: newHeight)
     }
 
-    @objc private func dimmingViewTapped(sender: AnyObject?) {
-        presentingViewController.dismissViewControllerAnimated(true, completion: nil)
+    @objc fileprivate func dimmingViewTapped(_ sender: AnyObject?) {
+        presentingViewController.dismiss(animated: true, completion: nil)
     }
 }

@@ -6,29 +6,25 @@ import Foundation
 
 extension String {
 
-    var trimmed: String {
-        return stringByTrimmingCharactersInSet(.whitespaceAndNewlineCharacterSet())
-    }
-
-    var trimmedLength: Int {
-        return trimmed.characters.count
+    func trimmed() -> String {
+        return trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
     var length: Int {
         return characters.count
     }
 
-    var oneLineString: String {
-        return stringByReplacingOccurrencesOfString("\n", withString: " ")
+    func onelined() -> String {
+        return replacingOccurrences(of: "\n", with: " ")
     }
 
 }
 
-postfix operator ~? { }
+postfix operator ~?
 
 postfix func ~?<T> (val: T?) -> String {
     if let val = val {
-        return String(val)
+        return String(describing: val)
     } else {
         return ""
     }

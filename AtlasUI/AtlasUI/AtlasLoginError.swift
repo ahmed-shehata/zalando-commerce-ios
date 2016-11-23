@@ -11,6 +11,6 @@ public enum AtlasLoginError: AtlasErrorType {
     case accessDenied
     case missingViewControllerToShowLoginForm
 
-    case requestFailed(error: NSError?)
+    case requestFailed(error: Error?)
 
 }

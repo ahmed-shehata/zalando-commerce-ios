@@ -69,15 +69,15 @@ class PaymentViewControllerTests: XCTestCase {
 
 extension PaymentViewControllerTests {
 
-    private func paymentViewController(status: PaymentStatus) -> PaymentViewController? {
-        guard let callbackURL = NSURL(string: "http://de.zalando.atlas.AtlasCheckoutDemo/redirect") else { return nil }
+    fileprivate func paymentViewController(_ status: PaymentStatus) -> PaymentViewController? {
+        guard let callbackURL = URL(string: "http://de.zalando.atlas.AtlasCheckoutDemo/redirect") else { return nil }
         let redirectURL: String
         if status == .redirect {
             redirectURL = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect"
         } else {
             redirectURL = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect%3F\(PaymentStatus.statusKey)%3D\(status.rawValue)"
         }
-        let url = AtlasMockAPI.endpointURL(forPath: "/redirect", queryItems: [NSURLQueryItem(name: "url", value: redirectURL)])
+        let url = AtlasMockAPI.endpointURL(forPath: "/redirect", queryItems: [URLQueryItem(name: "url", value: redirectURL)])
         return PaymentViewController(paymentURL: url, callbackURL: callbackURL)
     }
 

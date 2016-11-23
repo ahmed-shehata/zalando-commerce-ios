@@ -16,14 +16,14 @@ class SizeListTableViewDataSource: NSObject {
 
 extension SizeListTableViewDataSource: UITableViewDataSource {
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return article.availableUnits.count
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return tableView.dequeueReusableCell(UnitSizeTableViewCell.self, forIndexPath: indexPath) { cell in
             let unit = self.article.availableUnits[indexPath.item]
-            cell.configureData(unit)
+            cell.configure(viewModel: unit)
             cell.accessibilityIdentifier = "size-cell-\(indexPath.row)"
             return cell
         }

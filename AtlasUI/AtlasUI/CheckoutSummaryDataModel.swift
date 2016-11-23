@@ -49,11 +49,11 @@ extension CheckoutSummaryDataModel {
     }
 
     var isPayPal: Bool {
-        return paymentMethod?.caseInsensitiveCompare("paypal") == .OrderedSame
+        return paymentMethod?.caseInsensitiveCompare("paypal") == .orderedSame
     }
 
-    var termsAndConditionsURL: NSURL? {
-        return AtlasAPIClient.instance?.config.salesChannel.termsAndConditionsURL
+    var termsAndConditionsURL: URL? {
+        return AtlasAPIClient.shared?.config.salesChannel.termsAndConditionsURL
     }
 
 }

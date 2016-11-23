@@ -6,7 +6,7 @@ import Foundation
 
 extension String {
 
-    var newlinesRemoved: String {
+    func whitespaceCompacted() -> String {
         let string = components(separatedBy: CharacterSet.newlines).joined(separator: "")
         return string.replacingOccurrences(of: "  ", with: "")
     }

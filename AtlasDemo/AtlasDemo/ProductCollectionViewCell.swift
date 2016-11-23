@@ -17,19 +17,19 @@ class ProductCollectionViewCell: UICollectionViewCell {
 
     func setupCell(withArticle article: DemoArticle) -> ProductCollectionViewCell {
         self.article = article
-        self.backgroundColor = .whiteColor()
+        self.backgroundColor = .white
         self.productNameLabel.text = article.brand.name
         thumbImageView.image = nil
         if let imageUrl = article.imageThumbURL {
-            thumbImageView.nk_setImageWith(imageUrl)
+            Nuke.loadImage(with: imageUrl, into: thumbImageView)
         }
         self.buyNowButton.accessibilityIdentifier = "buy-now"
 
         return self
     }
 
-    @IBAction func buyNowButtonTapped(sender: AnyObject) {
-        guard let rootController = UIApplication.sharedApplication().keyWindow?.rootViewController, article = self.article else { return }
-        AtlasUI.presentCheckout(onViewController: rootController, forProductSKU: article.id)
+    @IBAction func buyNowButtonTapped(_ sender: AnyObject) {
+        guard let rootController = UIApplication.shared.keyWindow?.rootViewController, let article = self.article else { return }
+        AtlasUI.presentCheckout(onViewController: rootController, forSKU: article.id)
     }
 }

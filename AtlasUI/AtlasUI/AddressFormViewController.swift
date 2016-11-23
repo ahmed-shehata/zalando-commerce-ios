@@ -5,28 +5,28 @@
 import UIKit
 import AtlasSDK
 
-typealias AddressFormCompletion = EquatableAddress -> Void
+typealias AddressFormCompletion = (EquatableAddress) -> Void
 
 class AddressFormViewController: UIViewController {
 
     let scrollView: KeyboardScrollView = {
         let scrollView = KeyboardScrollView()
-        scrollView.keyboardDismissMode = .Interactive
+        scrollView.keyboardDismissMode = .interactive
         return scrollView
     }()
 
     lazy var addressStackView: AddressFormStackView = {
         let stackView = AddressFormStackView()
         stackView.addressType = self.viewModel.type
-        stackView.axis = .Vertical
+        stackView.axis = .vertical
         stackView.layoutMargins = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
-        stackView.layoutMarginsRelativeArrangement = true
+        stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
 
-    private let viewModel: AddressFormViewModel
-    private let actionHandler: AddressFormActionHandler?
-    private let completion: AddressFormCompletion?
+    fileprivate let viewModel: AddressFormViewModel
+    fileprivate let actionHandler: AddressFormActionHandler?
+    fileprivate let completion: AddressFormCompletion?
 
     init(viewModel: AddressFormViewModel, actionHandler: AddressFormActionHandler?, completion: AddressFormCompletion?) {
         self.viewModel = viewModel
@@ -42,19 +42,19 @@ class AddressFormViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .whiteColor()
+        view.backgroundColor = .white
         buildView()
-        addressStackView.configureData(viewModel.dataModel)
+        addressStackView.configure(viewModel: viewModel.dataModel)
         configureNavigation()
     }
 
     func displayView() {
         if viewModel.layout.displayViewModally {
             let navigationController = UINavigationController(rootViewController: self)
-            navigationController.modalPresentationStyle = .OverCurrentContext
-            AtlasUIViewController.instance?.showViewController(navigationController, sender: nil)
+            navigationController.modalPresentationStyle = .overCurrentContext
+            AtlasUIViewController.shared?.show(navigationController, sender: nil)
         } else {
-            AtlasUIViewController.instance?.mainNavigationController.pushViewController(self, animated: true)
+            AtlasUIViewController.shared?.mainNavigationController.pushViewController(self, animated: true)
         }
     }
 
@@ -69,8 +69,8 @@ extension AddressFormViewController: UIBuilder {
     }
 
     func configureConstraints() {
-        scrollView.fillInSuperView()
-        addressStackView.fillInSuperView()
+        scrollView.fillInSuperview()
+        addressStackView.fillInSuperview()
         addressStackView.setWidth(equalToView: scrollView)
     }
 
@@ -78,42 +78,42 @@ extension AddressFormViewController: UIBuilder {
 
 extension AddressFormViewController {
 
-    private func configureNavigation() {
+    fileprivate func configureNavigation() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: Localizer.string("button.general.save"),
-                                                            style: .Plain,
+                                                            style: .plain,
                                                             target: self,
                                                             action: #selector(submitButtonPressed))
         navigationItem.rightBarButtonItem?.accessibilityIdentifier = "address-edit-right-button"
 
         if viewModel.layout.displayCancelButton {
             navigationItem.leftBarButtonItem = UIBarButtonItem(title: Localizer.string("button.general.cancel"),
-                                                               style: .Plain,
+                                                               style: .plain,
                                                                target: self,
                                                                action: #selector(cancelButtonPressed))
         }
     }
 
-    private dynamic func cancelButtonPressed() {
-        dismissView(true)
+    fileprivate dynamic func cancelButtonPressed() {
+        dismissView()
     }
 
-    private dynamic func submitButtonPressed() {
+    fileprivate dynamic func submitButtonPressed() {
         view.endEditing(true)
 
         let isValid = addressStackView.textFields.map { $0.validateForm() }.filter { $0 == false }.isEmpty
         guard isValid else { return }
 
-        navigationItem.rightBarButtonItem?.enabled = false
-        actionHandler?.submitButtonPressed(viewModel.dataModel)
+        navigationItem.rightBarButtonItem?.isEnabled = false
+        actionHandler?.submit(dataModel: viewModel.dataModel)
     }
 
-    private func dismissView(animated: Bool, completion: (() -> Void)? = nil) {
+    fileprivate func dismissView(animated: Bool = true, completion: (() -> Void)? = nil) {
         view.endEditing(true)
 
         if viewModel.layout.displayViewModally {
-            dismissViewControllerAnimated(animated, completion: completion)
+            dismiss(animated: animated, completion: completion)
         } else {
-            navigationController?.popViewControllerAnimated(animated)
+            let _ = navigationController?.popViewController(animated: animated)
             completion?()
         }
     }
@@ -123,11 +123,11 @@ extension AddressFormViewController {
 extension AddressFormViewController: AddressFormActionHandlerDelegate {
 
     func addressProcessingFinished() {
-        navigationItem.rightBarButtonItem?.enabled = true
+        navigationItem.rightBarButtonItem?.isEnabled = true
     }
 
     func dismissView(withAddress address: EquatableAddress, animated: Bool) {
-        dismissView(animated) { [weak self] in
+        dismissView(animated: animated) { [weak self] in
             self?.completion?(address)
         }
     }

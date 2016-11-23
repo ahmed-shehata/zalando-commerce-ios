@@ -6,19 +6,19 @@ import Foundation
 
 extension UITableView {
 
-    private func reusableIdentifier(cellClass: AnyClass) -> String {
-        return String(cellClass)
+    fileprivate func reusableIdentifier(_ cellClass: AnyClass) -> String {
+        return String(describing: cellClass)
     }
 
-    func registerReusableCell(cellClass: AnyClass) {
-        self.registerClass(cellClass, forCellReuseIdentifier: reusableIdentifier(cellClass))
+    func registerReusableCell(_ cellClass: AnyClass) {
+        self.register(cellClass, forCellReuseIdentifier: reusableIdentifier(cellClass))
     }
 
-    func dequeueReusableCell<T: UITableViewCell>(cellClass: T.Type, forIndexPath indexPath: NSIndexPath,
-        completion: T -> UITableViewCell) -> UITableViewCell {
+    func dequeueReusableCell<T: UITableViewCell>(_ cellClass: T.Type, forIndexPath indexPath: IndexPath,
+        completion: (T) -> UITableViewCell) -> UITableViewCell {
             let cellId = reusableIdentifier(cellClass)
-            guard let cell = self.dequeueReusableCellWithIdentifier(cellId, forIndexPath: indexPath) as? T else {
-                return UITableViewCell(style: .Default, reuseIdentifier: cellId)
+            guard let cell = self.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? T else {
+                return UITableViewCell(style: .default, reuseIdentifier: cellId)
             }
             return completion(cell)
     }

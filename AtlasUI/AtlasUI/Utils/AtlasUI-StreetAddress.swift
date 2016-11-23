@@ -20,7 +20,7 @@ extension StreetAddress {
     }
 
     var shortAddressLine: String {
-        return [addressLine1, addressLine2].filter { !$0.isEmpty }.joinWithSeparator(", ")
+        return [addressLine1, addressLine2].filter { !$0.isEmpty }.joined(separator: ", ")
     }
 
     var prefixedAddressLine1: String {

@@ -79,7 +79,7 @@ class SizeListSelectionViewControllerTests: XCTestCase {
 
 extension SizeListSelectionViewControllerTests {
 
-    private func navigationController(sku: String, completion: (UINavigationController -> Void)) {
+    fileprivate func navigationController(_ sku: String, completion: @escaping ((UINavigationController) -> Void)) {
         registerAtlasUIViewController(sku) {
             let viewController = SizeListSelectionViewController(sku: sku)
             let navigationController = UINavigationController(rootViewController: viewController)
@@ -87,14 +87,14 @@ extension SizeListSelectionViewControllerTests {
         }
     }
 
-    private func registerAtlasUIViewController(sku: String, completion: () -> Void) {
+    fileprivate func registerAtlasUIViewController(_ sku: String, completion: @escaping () -> Void) {
         let options = Options(clientId: "CLIENT_ID",
                               salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
                               interfaceLanguage: "en",
                               configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
 
-        AtlasUI.configure(options) { _ in
-            let atlasUIViewController = AtlasUIViewController(forProductSKU: sku)
+        AtlasUI.configure(options: options) { _ in
+            let atlasUIViewController = AtlasUIViewController(forSKU: sku)
             AtlasUI.register { atlasUIViewController }
             completion()
         }

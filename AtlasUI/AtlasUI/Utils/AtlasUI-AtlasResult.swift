@@ -7,7 +7,7 @@ import AtlasSDK
 public enum ProcessedAtlasResult<T> {
 
     case success(T)
-    case error(error: ErrorType, title: String, message: String)
+    case error(error: Error, title: String, message: String)
 
 }
 

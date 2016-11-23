@@ -7,7 +7,7 @@ import AtlasSDK
 import AtlasUI
 import AtlasMockAPI
 
-typealias AppSetupCompletion = (configured: Bool) -> Void
+typealias AppSetupCompletion = (_ configured: Bool) -> Void
 
 class AppSetup {
 
@@ -16,63 +16,63 @@ class AppSetup {
         case Deutsch = "de"
     }
 
-    private(set) static var atlasClient: AtlasAPIClient?
-    private(set) static var options: Options?
+    fileprivate(set) static var atlasClient: AtlasAPIClient?
+    fileprivate(set) static var options: Options?
 
-    private static let defaultUseSandbox = true
-    private static let defaultInterfaceLanguage = InterfaceLanguage.English
+    fileprivate static let defaultUseSandbox = true
+    fileprivate static let defaultInterfaceLanguage = InterfaceLanguage.English
 
     static var isConfigured: Bool {
         return atlasClient != nil && options != nil
     }
 
-    static func configure(completion: AppSetupCompletion) {
+    static func configure(_ completion: @escaping AppSetupCompletion) {
         prepareMockAPI()
         prepareApp()
 
-        setAppOptions(prepareOptions(), completion: completion)
+        set(appOptions: prepareOptions(), completion: completion)
     }
 
     static func change(environmentToSandbox useSandbox: Bool) {
-        Atlas.deauthorizeToken()
-        setAppOptions(prepareOptions(useSandbox: useSandbox))
+        Atlas.deauthorize()
+        set(appOptions: prepareOptions(useSandbox: useSandbox))
     }
 
     static func change(interfaceLanguage language: InterfaceLanguage) {
-        setAppOptions(prepareOptions(interfaceLanguage: language))
+        set(appOptions: prepareOptions(interfaceLanguage: language))
     }
 
-    private static var alwaysUseMockAPI: Bool {
-        return NSProcessInfo.processInfo().arguments.contains("USE_MOCK_API")
+    fileprivate static var alwaysUseMockAPI: Bool {
+        return ProcessInfo.processInfo.arguments.contains("USE_MOCK_API")
     }
 
-    private static func prepareMockAPI() {
+    fileprivate static func prepareMockAPI() {
         if alwaysUseMockAPI && !AtlasMockAPI.hasMockedAPIStarted {
             try! AtlasMockAPI.startServer() // swiftlint:disable:this force_try
         }
     }
 
-    private static func prepareApp() {
+    fileprivate static func prepareApp() {
         if AtlasMockAPI.hasMockedAPIStarted {
-            Atlas.deauthorizeToken()
+            Atlas.deauthorize()
         }
     }
 
-    private static func setAppOptions(opts: Options, completion: AppSetupCompletion? = nil) {
-        AtlasUI.configure(opts) { result in
+    fileprivate static func set(appOptions options: Options, completion: AppSetupCompletion? = nil) {
+        AtlasUI.configure(options: options) { result in
             switch result {
             case .success(let client):
                 AppSetup.atlasClient = client
-                AppSetup.options = opts
-                completion?(configured: true)
+                AppSetup.options = options
+                completion?(true)
             case .failure:
-                completion?(configured: false)
+                completion?(false)
             }
         }
     }
 
-    private static func prepareOptions(useSandbox useSandbox: Bool? = nil, interfaceLanguage: InterfaceLanguage? = nil) -> Options {
-        let configurationURL: NSURL? = AtlasMockAPI.hasMockedAPIStarted ? AtlasMockAPI.endpointURL(forPath: "/config") : nil
+    fileprivate static func prepareOptions(useSandbox: Bool? = nil, interfaceLanguage: InterfaceLanguage? = nil) -> Options {
+        let configurationURL: URL? = AtlasMockAPI.hasMockedAPIStarted ? AtlasMockAPI.endpointURL(forPath: "/config") : nil
         let sandbox = useSandbox ?? options?.useSandboxEnvironment ?? defaultUseSandbox
         let language = interfaceLanguage?.rawValue ?? options?.interfaceLanguage ?? defaultInterfaceLanguage.rawValue
 
