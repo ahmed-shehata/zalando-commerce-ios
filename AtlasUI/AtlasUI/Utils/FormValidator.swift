@@ -11,6 +11,7 @@ enum FormValidator {
     case ExactLength(length: Int)
     case Pattern(pattern: String, errorMessage: String)
     case NumbersOnly
+    case ValidEmail
 
     func errorMessage(text: String?) -> String? {
         guard !isValid(text) else { return nil }
@@ -22,6 +23,7 @@ enum FormValidator {
         case .ExactLength(let length): return Localizer.string("formValidation.exactLength", "\(length)")
         case .Pattern(_, let errorMessage): return Localizer.string(errorMessage)
         case .NumbersOnly: return Localizer.string("formValidation.numbersOnly")
+        case .ValidEmail: return Localizer.string("formValidation.vaildEmail")
         }
     }
 
@@ -29,6 +31,7 @@ enum FormValidator {
     static let namePattern = "^[" + anyCharacterPattern + "]'?[- " + anyCharacterPattern + "ß]+$"
     static let cityPattern = "^[" + anyCharacterPattern + "]'?[-,;()' 0-9" + anyCharacterPattern + "ß]+$"
     static let streetPattern = "^(?=.*[a-zA-Z])(?=.*[0-9]).*$"
+    static let emailPattern = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
 
     private func isValid(text: String?) -> Bool {
         switch self {
@@ -38,6 +41,7 @@ enum FormValidator {
         case .ExactLength(let length): return text?.trimmedLength == length
         case .Pattern(let pattern, _): return isPatternValid(pattern, text: text)
         case .NumbersOnly: return isPatternValid("^[0-9]+$", text: text)
+        case .ValidEmail: return isPatternValid(FormValidator.emailPattern, text: text)
         }
     }
 
@@ -58,6 +62,7 @@ func == (lhs: FormValidator, rhs: FormValidator) -> Bool {
     case (.ExactLength(let lhsLength), .ExactLength(let rhsLength)): return lhsLength == rhsLength
     case (.Pattern(let lhsPattern), .Pattern(let rhsPattern)): return lhsPattern == rhsPattern
     case (.NumbersOnly, .NumbersOnly): return true
+    case (.ValidEmail, .ValidEmail): return true
     default: return false
     }
 }

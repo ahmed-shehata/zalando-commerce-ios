@@ -79,6 +79,7 @@
 		E916E7161DD9C11F001F7498 /* InjectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E916E7151DD9C11F001F7498 /* InjectorTests.swift */; };
 		E92316E41DE466F700920188 /* GuestCheckoutCreateAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92316E31DE466F700920188 /* GuestCheckoutCreateAddressActionHandler.swift */; };
 		E92316E61DE4671000920188 /* GuestCheckoutUpdateAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92316E51DE4671000920188 /* GuestCheckoutUpdateAddressActionHandler.swift */; };
+		E924CB791DE7414B00C3E08A /* CheckoutSummaryGuestStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E924CB781DE7414B00C3E08A /* CheckoutSummaryGuestStackView.swift */; };
 		E94CCCB81DE2FE3B00987655 /* LoggedInSummaryActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94CCCB51DE2FE3B00987655 /* LoggedInSummaryActionHandler.swift */; };
 		E94CCCBA1DE2FE3B00987655 /* OrderPlacedSummaryActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94CCCB71DE2FE3B00987655 /* OrderPlacedSummaryActionHandler.swift */; };
 		E94CCCBC1DE2FF4600987655 /* NotLoggedInSummaryActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94CCCBB1DE2FF4600987655 /* NotLoggedInSummaryActionHandler.swift */; };
@@ -231,6 +232,7 @@
 		E916E7151DD9C11F001F7498 /* InjectorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InjectorTests.swift; sourceTree = "<group>"; };
 		E92316E31DE466F700920188 /* GuestCheckoutCreateAddressActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCheckoutCreateAddressActionHandler.swift; sourceTree = "<group>"; };
 		E92316E51DE4671000920188 /* GuestCheckoutUpdateAddressActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCheckoutUpdateAddressActionHandler.swift; sourceTree = "<group>"; };
+		E924CB781DE7414B00C3E08A /* CheckoutSummaryGuestStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryGuestStackView.swift; sourceTree = "<group>"; };
 		E94CCCB51DE2FE3B00987655 /* LoggedInSummaryActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedInSummaryActionHandler.swift; sourceTree = "<group>"; };
 		E94CCCB71DE2FE3B00987655 /* OrderPlacedSummaryActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderPlacedSummaryActionHandler.swift; sourceTree = "<group>"; };
 		E94CCCBB1DE2FF4600987655 /* NotLoggedInSummaryActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotLoggedInSummaryActionHandler.swift; sourceTree = "<group>"; };
@@ -507,6 +509,7 @@
 				2B7D9D17623D2179A7F4614617C3C38C /* CheckoutSummaryProductStackView.swift */,
 				F9494F7947C24BD2087FE22EBE20BFCD /* CheckoutSummaryAddressStackView.swift */,
 				87E590A91E14F2FED72589813043BEFD /* CheckoutSummaryPaymentStackView.swift */,
+				E924CB781DE7414B00C3E08A /* CheckoutSummaryGuestStackView.swift */,
 				BFBCE11B274F25D8CDC220276F89179D /* CheckoutSummaryPriceStackView.swift */,
 				842E43B5DEB9E0807F43553F358C687F /* CheckoutSummaryDeliveryStackView.swift */,
 				FFAA3A40B92B64CE46E74B153ABE8C52 /* CheckoutSummaryFooterStackView.swift */,
@@ -842,6 +845,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E924CB791DE7414B00C3E08A /* CheckoutSummaryGuestStackView.swift in Sources */,
 				4342464869E446FBC18FE72A79CC55B5 /* ActionTextField.swift in Sources */,
 				E98D1E851DDE0657005774B4 /* AddressFormActionHandler.swift in Sources */,
 				65BCA936AE236A318847ECE6DCA4A3B0 /* AddAddressTableViewCell.swift in Sources */,

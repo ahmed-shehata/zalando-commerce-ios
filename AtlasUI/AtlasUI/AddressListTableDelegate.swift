@@ -99,6 +99,10 @@ extension AddressListTableDelegate: UITableViewDelegate {
 
 extension AddressListTableDelegate: AddressListActionHandlerDelegate {
 
+    func emailUpdated(email: String) {
+        viewController?.emailUpdatedHandler?(email: email)
+    }
+
     func addressCreated(address: EquatableAddress) {
         addresses.append(address)
         addressSelected(address)

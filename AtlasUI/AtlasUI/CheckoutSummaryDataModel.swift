@@ -14,6 +14,7 @@ struct CheckoutSummaryDataModel {
     let shippingPrice: MoneyAmount
     let totalPrice: MoneyAmount
     let delivery: Delivery?
+    let email: String?
 
     init(selectedArticleUnit: SelectedArticleUnit,
          shippingAddress: FormattableAddress? = nil,
@@ -21,7 +22,8 @@ struct CheckoutSummaryDataModel {
          paymentMethod: String? = nil,
          shippingPrice: MoneyAmount = 0,
          totalPrice: MoneyAmount,
-         delivery: Delivery? = nil) {
+         delivery: Delivery? = nil,
+         email: String? = nil) {
 
         self.selectedArticleUnit = selectedArticleUnit
         self.shippingAddress = shippingAddress
@@ -30,6 +32,7 @@ struct CheckoutSummaryDataModel {
         self.shippingPrice = shippingPrice
         self.totalPrice = totalPrice
         self.delivery = delivery
+        self.email = email
     }
 
 }
@@ -72,26 +75,7 @@ extension CheckoutSummaryDataModel {
         self.shippingPrice = 0
         self.totalPrice = cartCheckout?.cart?.grossTotal.amount ?? selectedArticleUnit.unit.price.amount
         self.delivery = cartCheckout?.checkout?.delivery
-    }
-
-    init(selectedArticleUnit: SelectedArticleUnit, guestCheckout: GuestCheckout?, addresses: CheckoutAddresses? = nil) {
-        self.selectedArticleUnit = selectedArticleUnit
-        self.shippingAddress = addresses?.shippingAddress ?? guestCheckout?.shippingAddress
-        self.billingAddress = addresses?.billingAddress ?? guestCheckout?.billingAddress
-        self.paymentMethod = guestCheckout?.payment.method
-        self.shippingPrice = 0
-        self.totalPrice = guestCheckout?.grossTotal.amount ?? selectedArticleUnit.unit.price.amount
-        self.delivery = nil // TODO: ASK about delivery?
-    }
-
-    init(selectedArticleUnit: SelectedArticleUnit, guestCheckout: GuestCheckout?, order: Order) {
-        self.selectedArticleUnit = selectedArticleUnit
-        self.shippingAddress = order.shippingAddress
-        self.billingAddress = order.billingAddress
-        self.paymentMethod = guestCheckout?.payment.method
-        self.shippingPrice = 0
-        self.totalPrice = order.grossTotal.amount
-        self.delivery = nil // TODO: ASK about delivery?
+        self.email = nil
     }
 
     init(selectedArticleUnit: SelectedArticleUnit, checkout: Checkout?, order: Order) {
@@ -102,6 +86,29 @@ extension CheckoutSummaryDataModel {
         self.shippingPrice = 0
         self.totalPrice = order.grossTotal.amount
         self.delivery = checkout?.delivery
+        self.email = nil
+    }
+
+    init(selectedArticleUnit: SelectedArticleUnit, guestCheckout: GuestCheckout?, email: String, addresses: CheckoutAddresses? = nil) {
+        self.selectedArticleUnit = selectedArticleUnit
+        self.shippingAddress = addresses?.shippingAddress ?? guestCheckout?.shippingAddress
+        self.billingAddress = addresses?.billingAddress ?? guestCheckout?.billingAddress
+        self.paymentMethod = guestCheckout?.payment.method
+        self.shippingPrice = 0
+        self.totalPrice = guestCheckout?.grossTotal.amount ?? selectedArticleUnit.unit.price.amount
+        self.delivery = nil // TODO: ASK about delivery?
+        self.email = email
+    }
+
+    init(selectedArticleUnit: SelectedArticleUnit, guestCheckout: GuestCheckout?, email: String, order: Order) {
+        self.selectedArticleUnit = selectedArticleUnit
+        self.shippingAddress = order.shippingAddress
+        self.billingAddress = order.billingAddress
+        self.paymentMethod = guestCheckout?.payment.method
+        self.shippingPrice = 0
+        self.totalPrice = order.grossTotal.amount
+        self.delivery = nil // TODO: ASK about delivery?
+        self.email = email
     }
 
 }

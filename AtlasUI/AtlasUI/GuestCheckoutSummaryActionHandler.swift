@@ -91,23 +91,23 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
     }
 
     func showShippingAddressSelectionScreen() {
-        let creationStrategy = ShippingAddressViewModelCreationStrategy()
         let addressViewController = AddressListViewController(initialAddresses: addresses, selectedAddress: shippingAddress)
+        addressViewController.emailUpdatedHandler = { self.email = $0 }
         addressViewController.addressUpdatedHandler = { self.addressUpdated($0) }
         addressViewController.addressDeletedHandler = { self.addressDeleted($0) }
         addressViewController.addressSelectedHandler = { self.selectShippingAddress($0) }
-        addressViewController.actionHandler = GuestCheckoutAddressListActionHandler(addressViewModelCreationStrategy: creationStrategy)
+        addressViewController.actionHandler = addressListActionHandler(ShippingAddressViewModelCreationStrategy())
         addressViewController.title = Localizer.string("addressListView.title.shipping")
         AtlasUIViewController.instance?.mainNavigationController.pushViewController(addressViewController, animated: true)
     }
 
     func showBillingAddressSelectionScreen() {
-        let creationStrategy = BillingAddressViewModelCreationStrategy()
         let addressViewController = AddressListViewController(initialAddresses: addresses, selectedAddress: billingAddress)
+        addressViewController.emailUpdatedHandler = { self.email = $0 }
         addressViewController.addressUpdatedHandler = { self.addressUpdated($0) }
         addressViewController.addressDeletedHandler = { self.addressDeleted($0) }
         addressViewController.addressSelectedHandler = { self.selectBillingAddress($0) }
-        addressViewController.actionHandler = GuestCheckoutAddressListActionHandler(addressViewModelCreationStrategy: creationStrategy)
+        addressViewController.actionHandler = addressListActionHandler(BillingAddressViewModelCreationStrategy())
         addressViewController.title = Localizer.string("addressListView.title.billing")
         AtlasUIViewController.instance?.mainNavigationController.pushViewController(addressViewController, animated: true)
     }
@@ -141,10 +141,13 @@ extension GuestCheckoutSummaryActionHandler {
     private func showConfirmationScreen(order: Order) {
         guard let dataSource = dataSource, delegate = delegate else { return }
         let selectedArticleUnit = dataSource.dataModel.selectedArticleUnit
-        let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, guestCheckout: guestCheckout, order: order)
+        let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit,
+                                                 guestCheckout: guestCheckout,
+                                                 email: email,
+                                                 order: order)
         delegate.actionHandlerUpdated(OrderPlacedSummaryActionHandler())
         delegate.dataModelUpdated(dataModel)
-        delegate.layoutUpdated(OrderPlacedLayout())
+        delegate.layoutUpdated(GuestOrderPlacedLayout())
     }
 
     private func getGuestCheckout(checkoutId: String, token: String) {
@@ -156,8 +159,17 @@ extension GuestCheckoutSummaryActionHandler {
 
     private func updateDataModel(addresses: CheckoutAddresses?, guestCheckout: GuestCheckout?) {
         guard let selectedUnit = dataSource?.dataModel.selectedArticleUnit else { return }
-        let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedUnit, guestCheckout: guestCheckout, addresses: addresses)
+        let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedUnit,
+                                                 guestCheckout: guestCheckout,
+                                                 email: email,
+                                                 addresses: addresses)
         delegate?.dataModelUpdated(dataModel)
+    }
+
+    private func addressListActionHandler(creationStrategy: AddressViewModelCreationStrategy?) -> GuestCheckoutAddressListActionHandler {
+        var actionHandler = GuestCheckoutAddressListActionHandler(addressViewModelCreationStrategy: creationStrategy)
+        actionHandler.emailAddress = email
+        return actionHandler
     }
 
 }
@@ -165,6 +177,7 @@ extension GuestCheckoutSummaryActionHandler {
 extension GuestCheckoutSummaryActionHandler {
 
     private func addressUpdated(address: EquatableAddress) {
+        updateAddress(address)
         if let shippingAddress = shippingAddress where shippingAddress == address {
             selectShippingAddress(address)
         }
@@ -196,6 +209,12 @@ extension GuestCheckoutSummaryActionHandler {
     }
 
     private func removeAddress(address: EquatableAddress) {
+        if let idx = addresses.indexOf({ $0 == address }) {
+            addresses.removeAtIndex(idx)
+        }
+    }
+
+    private func updateAddress(address: EquatableAddress) {
         if let idx = addresses.indexOf({ $0 == address }) {
             addresses.removeAtIndex(idx)
         }

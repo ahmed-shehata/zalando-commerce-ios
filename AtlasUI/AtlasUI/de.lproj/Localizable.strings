@@ -12,6 +12,7 @@
 "summaryView.title.summary" = "Übersicht";
 "summaryView.title.orderPlaced" = "Vielen Dank für deinen Einkauf!";
 "summaryView.label.payment" = "Zahlungsart";
+"summaryView.label.guestCheckout" = "Als Gast zur Kasse";
 "summaryView.label.address.shipping" = "Lieferadresse";
 "summaryView.label.address.billing" = "Rechnungsadresse";
 "summaryView.label.address.packstationAbbreviation" = "P.S.";
@@ -43,6 +44,7 @@
 "addressFormView.title" = "Anrede";
 "addressFormView.firstname" = "Vorname";
 "addressFormView.lastname" = "Nachname";
+"addressFormView.emailaddress" = "E-Mail Adresse";
 "addressFormView.street" = "Straße und Hausnummer";
 "addressFormView.additional" = "Adresszusatz / Firma / c/o";
 "addressFormView.packstation" = "Nummer der Packstation";
@@ -62,6 +64,7 @@
 "formValidation.pattern.city" = "Bitte in diesem Feld nur die Zeichen (A-z) eingeben.";
 "formValidation.pattern.street" = "Bitte Straße und Hausnummer eingeben.";
 "formValidation.numbersOnly" = "Bitte nur Nummern eintragen";
+"formValidation.vaildEmail" = "Bitte geben Sie eine gültige E-Mail Adresse an";
 
 // Error
 "AtlasCheckoutError.title" = "Oops";

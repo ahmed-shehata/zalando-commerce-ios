@@ -5,12 +5,14 @@
 import UIKit
 import AtlasSDK
 
+typealias EmailUpdatedHandler = (email: String) -> Void
 typealias AddressUpdatedHandler = (address: EquatableAddress) -> Void
 typealias AddressDeletedHandler = (address: EquatableAddress) -> Void
 typealias AddressSelectedHandler = (address: EquatableAddress) -> Void
 
 final class AddressListViewController: UIViewController {
 
+    var emailUpdatedHandler: EmailUpdatedHandler?
     var addressUpdatedHandler: AddressUpdatedHandler?
     var addressDeletedHandler: AddressDeletedHandler?
     var addressSelectedHandler: AddressSelectedHandler?

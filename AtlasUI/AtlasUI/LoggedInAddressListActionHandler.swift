@@ -15,11 +15,24 @@ struct LoggedInAddressListActionHandler: AddressListActionHandler {
     }
 
     func createAddress() {
-        createAddress(addressViewModelCreationStrategy, formActionHandler: LoggedInCreateAddressActionHandler())
+        let actionHandler = LoggedInCreateAddressActionHandler()
+        addressViewModelCreationStrategy?.setStrategyCompletion() { viewModel in
+            self.showAddressViewController(withViewModel: viewModel, formActionHandler: actionHandler) { (address, _) in
+                self.delegate?.addressCreated(address)
+            }
+        }
+        addressViewModelCreationStrategy?.execute()
     }
 
     func updateAddress(address: EquatableAddress) {
-        updateAddress(address, formActionHandler: LoggedInUpdateAddressActionHandler())
+        let actionHandler = LoggedInUpdateAddressActionHandler()
+        let dataModel = AddressFormDataModel(equatableAddress: address, countryCode: AtlasAPIClient.countryCode)
+        let formLayout = UpdateAddressFormLayout()
+        let addressType: AddressFormType = address.pickupPoint == nil ? .standardAddress : .pickupPoint
+        let viewModel = AddressFormViewModel(dataModel: dataModel, layout: formLayout, type: addressType)
+        showAddressViewController(withViewModel: viewModel, formActionHandler: actionHandler) { (address, _) in
+            self.delegate?.addressUpdated(address)
+        }
     }
 
     func deleteAddress(address: EquatableAddress) {

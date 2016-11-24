@@ -1,3 +1,4 @@
+// swiftlint:disable cyclomatic_complexity
 //
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
@@ -8,11 +9,15 @@ import AtlasSDK
 enum AddressFormType {
     case standardAddress
     case pickupPoint
+    case guestStandardAddress
+    case guestPickupPoint
 
     var fields: [AddressFormField] {
         switch self {
         case .standardAddress: return [.title, .firstName, .lastName, .street, .additional, .zipcode, .city, .country]
         case .pickupPoint: return [.title, .firstName, .lastName, .packstation, .memberID, .zipcode, .city, .country]
+        case .guestStandardAddress: return [.title, .firstName, .lastName, .emailAddress, .street, .additional, .zipcode, .city, .country]
+        case .guestPickupPoint: return [.title, .firstName, .lastName, .emailAddress, .packstation, .memberID, .zipcode, .city, .country]
         }
     }
 }
@@ -21,6 +26,7 @@ enum AddressFormField: String {
     case title
     case firstName
     case lastName
+    case emailAddress
     case street
     case additional
     case packstation
@@ -43,6 +49,7 @@ enum AddressFormField: String {
         case .title: return dataModel.localizedTitle()
         case .firstName: return dataModel.firstName
         case .lastName: return dataModel.lastName
+        case .emailAddress: return dataModel.email
         case .street: return dataModel.street
         case .additional: return dataModel.additional
         case .packstation: return dataModel.pickupPointId
@@ -58,6 +65,7 @@ enum AddressFormField: String {
         case .title: dataModel.updateTitle(value)
         case .firstName: dataModel.firstName = value
         case .lastName: dataModel.lastName = value
+        case .emailAddress: dataModel.email = value
         case .street: dataModel.street = value
         case .additional: dataModel.additional = value
         case .packstation: dataModel.pickupPointId = value
@@ -100,6 +108,9 @@ enum AddressFormField: String {
                     .MaxLength(maxLength: 50),
                     .MinLength(minLength: 2),
                     .Pattern(pattern: FormValidator.namePattern, errorMessage: "formValidation.pattern.name")]
+        case .emailAddress:
+            return [.Required,
+                    .ValidEmail]
         case .street:
             return [.Required,
                     .MaxLength(maxLength: 50),
