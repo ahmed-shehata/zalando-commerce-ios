@@ -15,8 +15,8 @@ struct LoggedInAddressListActionHandler: AddressListActionHandler {
     }
 
     func createAddress() {
-        let actionHandler = LoggedInCreateAddressActionHandler()
         addressViewModelCreationStrategy?.setStrategyCompletion() { viewModel in
+            let actionHandler = LoggedInCreateAddressActionHandler()
             self.showAddressViewController(withViewModel: viewModel, formActionHandler: actionHandler) { (address, _) in
                 self.delegate?.addressCreated(address)
             }
@@ -25,11 +25,11 @@ struct LoggedInAddressListActionHandler: AddressListActionHandler {
     }
 
     func updateAddress(address: EquatableAddress) {
-        let actionHandler = LoggedInUpdateAddressActionHandler()
         let dataModel = AddressFormDataModel(equatableAddress: address, countryCode: AtlasAPIClient.countryCode)
         let formLayout = UpdateAddressFormLayout()
         let addressType: AddressFormType = address.pickupPoint == nil ? .standardAddress : .pickupPoint
         let viewModel = AddressFormViewModel(dataModel: dataModel, layout: formLayout, type: addressType)
+        let actionHandler = LoggedInUpdateAddressActionHandler()
         showAddressViewController(withViewModel: viewModel, formActionHandler: actionHandler) { (address, _) in
             self.delegate?.addressUpdated(address)
         }
