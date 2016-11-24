@@ -14,7 +14,7 @@ public struct GuestAddressRequest {
     public let countryCode: String
     public let pickupPoint: PickupPoint?
 
-    public init(address: EquatableAddress) {
+    public init(address: FormattableAddress) {
         self.gender = address.gender
         self.firstName = address.firstName
         self.lastName = address.lastName
