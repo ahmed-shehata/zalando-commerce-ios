@@ -115,8 +115,6 @@ extension AtlasAPIClient {
         fetch(from: endpoint, completion: completion)
     }
 
-
-
     public func updateCheckout(checkoutId: String, updateCheckoutRequest: UpdateCheckoutRequest, completion: CheckoutCompletion) {
         let endpoint = UpdateCheckoutEndpoint(serviceURL: config.checkoutURL,
                                               parameters: updateCheckoutRequest.toJSON(),
