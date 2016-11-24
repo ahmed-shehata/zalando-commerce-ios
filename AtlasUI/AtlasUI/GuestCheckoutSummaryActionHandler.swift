@@ -122,7 +122,7 @@ extension GuestCheckoutSummaryActionHandler {
             return
         }
 
-        guard let callbackURL = AtlasAPIClient.instance?.config.payment.thirdPartyCallbackURL else {
+        guard let callbackURL = AtlasAPIClient.instance?.config.checkoutGatewayURL else {
             UserMessage.displayError(AtlasCheckoutError.unclassified)
             return
         }
