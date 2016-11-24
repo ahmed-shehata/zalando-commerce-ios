@@ -54,7 +54,7 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
             paymentViewController.paymentCompletion = { [weak self] paymentStatus in
                 switch paymentStatus {
                 case .guestRedirect(let encryptedCheckoutId, let encryptedToken):
-                    print("\(encryptedCheckoutId) - \(encryptedToken)")
+                    self?.getGuestCheckout(encryptedCheckoutId, token: encryptedToken)
                 case .cancel:
                     break
                 case .error, .redirect, .success:
@@ -91,6 +91,13 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
 }
 
 extension GuestCheckoutSummaryActionHandler {
+
+    private func getGuestCheckout(checkoutId: String, token: String) {
+        AtlasUIClient.guestCheckout(checkoutId, token: token) { [weak self] result in
+            guard let guestCheckout = result.process() else { return }
+            self?.guestCheckout = guestCheckout
+        }
+    }
 
     private func updateDataModel(addresses: CheckoutAddresses?, guestCheckout: GuestCheckout?) {
         guard let selectedUnit = dataSource?.dataModel.selectedArticleUnit else { return }

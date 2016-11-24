@@ -78,9 +78,9 @@ extension CheckoutSummaryDataModel {
         self.selectedArticleUnit = selectedArticleUnit
         self.shippingAddress = addresses?.shippingAddress ?? guestCheckout?.shippingAddress
         self.billingAddress = addresses?.billingAddress ?? guestCheckout?.billingAddress
-        self.paymentMethod = guestCheckout?.payment.selected?.method
+        self.paymentMethod = guestCheckout?.payment.method
         self.shippingPrice = 0
-        self.totalPrice = guestCheckout?.cart.grossTotal.amount ?? selectedArticleUnit.unit.price.amount
+        self.totalPrice = guestCheckout?.grossTotal.amount ?? selectedArticleUnit.unit.price.amount
         self.delivery = nil // TODO: ASK about delivery?
     }
 

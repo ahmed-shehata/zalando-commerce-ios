@@ -12,8 +12,8 @@ enum PaymentStatus {
 
     static var statusKey = "payment_status"
 
-    private init?(withStatusValue statusValue: String) {
-        switch statusValue {
+    private init?(withStatus status: String) {
+        switch status {
         case "success": self = .success
         case "cancel": self = .cancel
         case "error": self = .error
@@ -22,8 +22,8 @@ enum PaymentStatus {
     }
 
     private init?(withPath path: [String]) {
-        guard let pathValue = path.first else { return nil }
-        switch pathValue {
+        guard let firstComponent = path.first else { return nil }
+        switch firstComponent {
         case "redirect":
             if path.count == 3 {
                 self = .guestRedirect(encryptedCheckoutId: path[1], encryptedToken: path[2])
@@ -44,16 +44,16 @@ enum PaymentStatus {
             else { return nil }
 
         if let
-            rawValue = requestURLComponents.queryItems?.filter({ $0.name == PaymentStatus.statusKey }).first?.value,
-            paymentStatus = PaymentStatus(withStatusValue: rawValue) {
+            status = requestURLComponents.queryItems?.filter({ $0.name == PaymentStatus.statusKey }).first?.value,
+            paymentStatus = PaymentStatus(withStatus: status) {
             self = paymentStatus
         } else if let
             path = requestURLComponents.path?.componentsSeparatedByString("/").filter({ !$0.isEmpty }),
             paymentStatus = PaymentStatus(withPath: path) {
             self = paymentStatus
+        } else {
+            self = .redirect
         }
-
-        self = .redirect
     }
 
 }

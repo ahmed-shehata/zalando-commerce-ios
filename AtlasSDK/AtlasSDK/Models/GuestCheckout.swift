@@ -6,48 +6,46 @@ import Foundation
 
 public struct GuestCheckout {
 
-    public let id: String
     public let customerNumber: String
-    public let cart: Cart
+    public let shippingAddress: OrderAddress
+    public let billingAddress: OrderAddress
 
-    public let delivery: Delivery
-    public let payment: Payment
-
-    public let billingAddress: CheckoutAddress
-    public let shippingAddress: CheckoutAddress
+    public let cart: GuestCart
+    public let grossTotal: Price
+    public let taxTotal: Price
+    public let payment: GuestPaymentMethod
 
 }
 
 extension GuestCheckout: JSONInitializable {
 
     private struct Keys {
-        static let id = "id"
         static let customerNumber = "customer_number"
-        static let cart = "cart"
         static let shippingAddress = "shipping_address"
         static let billingAddress = "billing_address"
-        static let delivery = "delivery"
+        static let cart = "cart"
+        static let grossTotal = "gross_total"
+        static let taxTotal = "tax_total"
         static let payment = "payment"
     }
 
     init?(json: JSON) {
         guard let
-            id = json[Keys.id].string,
             customerNumber = json[Keys.customerNumber].string,
-            cart = Cart(json: json[Keys.cart]),
-            payment = Payment(json: json[Keys.payment]),
-            delivery = Delivery(json: json[Keys.delivery]),
-            billingAddress = CheckoutAddress(json: json[Keys.billingAddress]),
-            shippingAddress = CheckoutAddress(json: json[Keys.shippingAddress])
+            shippingAddress = OrderAddress(json: json[Keys.shippingAddress]),
+            billingAddress = OrderAddress(json: json[Keys.billingAddress]),
+            cart = GuestCart(json: json[Keys.cart]),
+            grossTotal = Price(json: json[Keys.grossTotal]),
+            taxTotal = Price(json: json[Keys.taxTotal]),
+            payment = GuestPaymentMethod(json: json[Keys.payment])
             else { return nil }
 
-        self.init(id: id,
-                  customerNumber: customerNumber,
-                  cart: cart,
-                  delivery: delivery,
-                  payment: payment,
+        self.init(customerNumber: customerNumber,
+                  shippingAddress: shippingAddress,
                   billingAddress: billingAddress,
-                  shippingAddress: shippingAddress
-        )
+                  cart: cart,
+                  grossTotal: grossTotal,
+                  taxTotal: taxTotal,
+                  payment: payment)
     }
 }
