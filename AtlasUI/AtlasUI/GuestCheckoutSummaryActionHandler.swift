@@ -36,7 +36,7 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
 
         let shippingGuestAddress = GuestAddressRequest(address: shippingAddress)
         let billingGuestAddress = GuestAddressRequest(address: billingAddress)
-        let customer = GuestCustomerRequest(guestEmail: "test@test.com", subscribeNewsletter: false)
+        let customer = GuestCustomerRequest(guestEmail: email, subscribeNewsletter: false)
         let cartItem = CartItemRequest(sku: dataSource.dataModel.selectedArticleUnit.sku, quantity: 1)
         let cart = GuestCartRequest(items: [cartItem])
         let payment = GuestPaymentRequest(method: guestCheckout.payment.method, metadata: guestCheckout.payment.metadata)
@@ -64,7 +64,7 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
 
         let shippingGuestAddress = GuestAddressRequest(address: shippingAddress)
         let billingGuestAddress = GuestAddressRequest(address: billingAddress)
-        let customer = GuestCustomerRequest(guestEmail: "test@test.com", subscribeNewsletter: false)
+        let customer = GuestCustomerRequest(guestEmail: email, subscribeNewsletter: false)
         let cartItem = CartItemRequest(sku: dataSource.dataModel.selectedArticleUnit.sku, quantity: 1)
         let cart = GuestCartRequest(items: [cartItem])
         let request = GuestPaymentSelectionRequest(customer: customer,
@@ -216,7 +216,7 @@ extension GuestCheckoutSummaryActionHandler {
 
     private func updateAddress(address: EquatableAddress) {
         if let idx = addresses.indexOf({ $0 == address }) {
-            addresses.removeAtIndex(idx)
+            addresses[idx] = address
         }
     }
 

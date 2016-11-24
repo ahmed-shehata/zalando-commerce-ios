@@ -41,7 +41,6 @@ final class PaymentViewController: UIViewController, UIWebViewDelegate {
     }
 
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        print(request.URL)
         guard let
         url = request.URL,
             callbackURLComponents = callbackURLComponents,
