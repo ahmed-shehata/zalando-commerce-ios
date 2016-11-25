@@ -32,7 +32,7 @@ extension GuestCheckoutAddress {
             city = dataModel.city,
             countryCode = dataModel.countryCode else { return nil }
 
-        self.id = NSUUID().UUIDString
+        self.id = ""
         self.gender = gender
         self.firstName = firstName
         self.lastName = lastName

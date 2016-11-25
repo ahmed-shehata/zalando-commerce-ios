@@ -9,7 +9,7 @@ class NotLoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
 
     weak var dataSource: CheckoutSummaryActionHandlerDataSource?
     weak var delegate: CheckoutSummaryActionHandlerDelegate?
-    var email: String?
+    private let guestAddressManager = GuestAddressManager()
 
     func handleSubmitButton() {
         guard let dataSource = dataSource, delegate = delegate else { return }
@@ -34,49 +34,34 @@ class NotLoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
     }
 
     func showShippingAddressSelectionScreen() {
-        let creationStrategy = ShippingAddressViewModelCreationStrategy()
-        let addressViewController = AddressListViewController(initialAddresses: [], selectedAddress: nil)
-        addressViewController.emailUpdatedHandler = { self.email = $0 }
-        addressViewController.addressSelectedHandler = { self.selectShippingAddress($0) }
-        addressViewController.actionHandler = GuestCheckoutAddressListActionHandler(addressViewModelCreationStrategy: creationStrategy)
-        addressViewController.title = Localizer.string("addressListView.title.shipping")
-        AtlasUIViewController.instance?.mainNavigationController.pushViewController(addressViewController, animated: true)
+        guestAddressManager.addressCreationStrategy = ShippingAddressViewModelCreationStrategy()
+        guestAddressManager.createAddress { [weak self] address in
+            let checkoutAddress = self?.guestAddressManager.checkoutAddresses(address, billingAddress: nil)
+            self?.switchToGuestCheckout(checkoutAddress)
+        }
     }
 
     func showBillingAddressSelectionScreen() {
-        let creationStrategy = BillingAddressViewModelCreationStrategy()
-        let addressViewController = AddressListViewController(initialAddresses: [], selectedAddress: nil)
-        addressViewController.emailUpdatedHandler = { self.email = $0 }
-        addressViewController.addressSelectedHandler = { self.selectBillingAddress($0) }
-        addressViewController.actionHandler = GuestCheckoutAddressListActionHandler(addressViewModelCreationStrategy: creationStrategy)
-        addressViewController.title = Localizer.string("addressListView.title.billing")
-        AtlasUIViewController.instance?.mainNavigationController.pushViewController(addressViewController, animated: true)
+        guestAddressManager.addressCreationStrategy = BillingAddressViewModelCreationStrategy()
+        guestAddressManager.createAddress { [weak self] address in
+            let checkoutAddress = self?.guestAddressManager.checkoutAddresses(nil, billingAddress: address)
+            self?.switchToGuestCheckout(checkoutAddress)
+        }
     }
 
 }
 
 extension NotLoggedInSummaryActionHandler {
 
-    private func selectShippingAddress(address: EquatableAddress) {
-        guard let email = email else { return }
-        switchToGuestCheckout(withEmail: email, shippingAddress: address, billingAddress: nil)
-    }
+    private func switchToGuestCheckout(checkoutAddress: CheckoutAddresses?) {
+        guard let selectedArticleUnit = dataSource?.dataModel.selectedArticleUnit, email = guestAddressManager.emailAddress else { return }
 
-    private func selectBillingAddress(address: EquatableAddress) {
-        guard let email = email else { return }
-        switchToGuestCheckout(withEmail: email, shippingAddress: nil, billingAddress: address)
-    }
-
-    private func switchToGuestCheckout(withEmail email: String, shippingAddress: EquatableAddress?, billingAddress: EquatableAddress?) {
-        guard let dataSource = dataSource, address = shippingAddress ?? billingAddress else { return }
-
-        let selectedArticleUnit = dataSource.dataModel.selectedArticleUnit
         let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit,
-                                                 shippingAddress: shippingAddress,
-                                                 billingAddress: billingAddress,
+                                                 shippingAddress: checkoutAddress?.shippingAddress,
+                                                 billingAddress: checkoutAddress?.billingAddress,
                                                  totalPrice: selectedArticleUnit.unit.price.amount,
                                                  email: email)
-        let actionHandler = GuestCheckoutSummaryActionHandler(email: email, address: address)
+        let actionHandler = GuestCheckoutSummaryActionHandler(email: email)
         delegate?.actionHandlerUpdated(actionHandler)
         delegate?.dataModelUpdated(dataModel)
         delegate?.layoutUpdated(GuestCheckoutLayout())

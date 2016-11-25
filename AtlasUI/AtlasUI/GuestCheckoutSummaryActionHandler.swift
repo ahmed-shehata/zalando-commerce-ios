@@ -10,22 +10,20 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
     weak var dataSource: CheckoutSummaryActionHandlerDataSource?
     weak var delegate: CheckoutSummaryActionHandlerDelegate?
 
-    private var email: String
-    private var addresses: [EquatableAddress]
-    var guestCheckout: GuestCheckout? {
+    private let guestAddressManager = GuestAddressManager()
+    private var guestCheckout: GuestCheckout? {
         didSet {
             updateDataModel(addresses, guestCheckout: guestCheckout)
         }
     }
 
-    init(email: String, address: EquatableAddress) {
-        self.email = email
-        self.addresses = [address]
+    init(email: String) {
+        self.guestAddressManager.emailAddress = email
     }
 
     func handleSubmitButton() {
         guard let dataSource = dataSource else { return }
-        guard let shippingAddress = shippingAddress, billingAddress = billingAddress else {
+        guard let email = guestAddressManager.emailAddress, shippingAddress = shippingAddress, billingAddress = billingAddress else {
             UserMessage.displayError(AtlasCheckoutError.missingAddress)
             return
         }
@@ -53,7 +51,7 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
 
     func showPaymentSelectionScreen() {
         guard let dataSource = dataSource else { return }
-        guard let shippingAddress = shippingAddress, billingAddress = billingAddress else {
+        guard let email = guestAddressManager.emailAddress, shippingAddress = shippingAddress, billingAddress = billingAddress else {
             UserMessage.displayError(AtlasCheckoutError.missingAddress)
             return
         }
@@ -91,25 +89,19 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
     }
 
     func showShippingAddressSelectionScreen() {
-        let addressViewController = AddressListViewController(initialAddresses: addresses, selectedAddress: shippingAddress)
-        addressViewController.emailUpdatedHandler = { self.email = $0 }
-        addressViewController.addressUpdatedHandler = { self.addressUpdated($0) }
-        addressViewController.addressDeletedHandler = { self.addressDeleted($0) }
-        addressViewController.addressSelectedHandler = { self.selectShippingAddress($0) }
-        addressViewController.actionHandler = addressListActionHandler(ShippingAddressViewModelCreationStrategy())
-        addressViewController.title = Localizer.string("addressListView.title.shipping")
-        AtlasUIViewController.instance?.mainNavigationController.pushViewController(addressViewController, animated: true)
+        guestAddressManager.addressCreationStrategy = ShippingAddressViewModelCreationStrategy()
+        guestAddressManager.handleAddressModification(shippingAddress) { [weak self] address in
+            let checkoutAddress = self?.guestAddressManager.checkoutAddresses(address, billingAddress: self?.billingAddress)
+            self?.updateDataModel(checkoutAddress, guestCheckout: self?.guestCheckout)
+        }
     }
 
     func showBillingAddressSelectionScreen() {
-        let addressViewController = AddressListViewController(initialAddresses: addresses, selectedAddress: billingAddress)
-        addressViewController.emailUpdatedHandler = { self.email = $0 }
-        addressViewController.addressUpdatedHandler = { self.addressUpdated($0) }
-        addressViewController.addressDeletedHandler = { self.addressDeleted($0) }
-        addressViewController.addressSelectedHandler = { self.selectBillingAddress($0) }
-        addressViewController.actionHandler = addressListActionHandler(BillingAddressViewModelCreationStrategy())
-        addressViewController.title = Localizer.string("addressListView.title.billing")
-        AtlasUIViewController.instance?.mainNavigationController.pushViewController(addressViewController, animated: true)
+        guestAddressManager.addressCreationStrategy = BillingAddressViewModelCreationStrategy()
+        guestAddressManager.handleAddressModification(billingAddress) { [weak self] address in
+            let checkoutAddress = self?.guestAddressManager.checkoutAddresses(self?.shippingAddress, billingAddress: address)
+            self?.updateDataModel(checkoutAddress, guestCheckout: self?.guestCheckout)
+        }
     }
 
 }
@@ -139,7 +131,7 @@ extension GuestCheckoutSummaryActionHandler {
     }
 
     private func showConfirmationScreen(order: Order) {
-        guard let dataSource = dataSource, delegate = delegate else { return }
+        guard let dataSource = dataSource, delegate = delegate, email = guestAddressManager.emailAddress else { return }
         let selectedArticleUnit = dataSource.dataModel.selectedArticleUnit
         let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit,
                                                  guestCheckout: guestCheckout,
@@ -158,72 +150,12 @@ extension GuestCheckoutSummaryActionHandler {
     }
 
     private func updateDataModel(addresses: CheckoutAddresses?, guestCheckout: GuestCheckout?) {
-        guard let selectedUnit = dataSource?.dataModel.selectedArticleUnit else { return }
+        guard let selectedUnit = dataSource?.dataModel.selectedArticleUnit, email = guestAddressManager.emailAddress else { return }
         let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedUnit,
                                                  guestCheckout: guestCheckout,
                                                  email: email,
                                                  addresses: addresses)
         delegate?.dataModelUpdated(dataModel)
-    }
-
-    private func addressListActionHandler(creationStrategy: AddressViewModelCreationStrategy?) -> GuestCheckoutAddressListActionHandler {
-        var actionHandler = GuestCheckoutAddressListActionHandler(addressViewModelCreationStrategy: creationStrategy)
-        actionHandler.emailAddress = email
-        return actionHandler
-    }
-
-}
-
-extension GuestCheckoutSummaryActionHandler {
-
-    private func addressUpdated(address: EquatableAddress) {
-        updateAddress(address)
-        if let shippingAddress = shippingAddress where shippingAddress == address {
-            selectShippingAddress(address)
-        }
-        if let billingAddress = billingAddress where billingAddress == address {
-            selectBillingAddress(address)
-        }
-    }
-
-    private func addressDeleted(address: EquatableAddress) {
-        removeAddress(address)
-        if let shippingAddress = shippingAddress where shippingAddress == address {
-            updateDataModel(CheckoutAddresses(billingAddress: billingAddress, shippingAddress: nil), guestCheckout: nil)
-            guestCheckout = nil
-        }
-        if let billingAddress = billingAddress where billingAddress == address {
-            updateDataModel(CheckoutAddresses(billingAddress: nil, shippingAddress: shippingAddress), guestCheckout: nil)
-            guestCheckout = nil
-        }
-    }
-
-    private func selectShippingAddress(address: EquatableAddress) {
-        appendAddress(address)
-        updateDataModel(CheckoutAddresses(billingAddress: billingAddress, shippingAddress: address), guestCheckout: guestCheckout)
-    }
-
-    private func selectBillingAddress(address: EquatableAddress) {
-        appendAddress(address)
-        updateDataModel(CheckoutAddresses(billingAddress: address, shippingAddress: shippingAddress), guestCheckout: guestCheckout)
-    }
-
-    private func removeAddress(address: EquatableAddress) {
-        if let idx = addresses.indexOf({ $0 == address }) {
-            addresses.removeAtIndex(idx)
-        }
-    }
-
-    private func updateAddress(address: EquatableAddress) {
-        if let idx = addresses.indexOf({ $0 == address }) {
-            addresses[idx] = address
-        }
-    }
-
-    private func appendAddress(address: EquatableAddress) {
-        if !addresses.contains({ $0 == address }) {
-            addresses.append(address)
-        }
     }
 
 }

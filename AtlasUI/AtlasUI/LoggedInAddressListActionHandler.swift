@@ -43,3 +43,15 @@ struct LoggedInAddressListActionHandler: AddressListActionHandler {
     }
 
 }
+
+extension LoggedInAddressListActionHandler {
+
+    private func showAddressViewController(withViewModel viewModel: AddressFormViewModel,
+                                                         formActionHandler: AddressFormActionHandler,
+                                                         completion: AddressFormCompletion) {
+
+        let viewController = AddressFormViewController(viewModel: viewModel, actionHandler: formActionHandler, completion: completion)
+        viewController.displayView()
+    }
+
+}

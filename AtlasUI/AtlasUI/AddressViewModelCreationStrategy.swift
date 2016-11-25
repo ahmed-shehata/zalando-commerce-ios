@@ -17,7 +17,7 @@ protocol AddressViewModelCreationStrategy {
 extension AddressViewModelCreationStrategy {
 
     func showActionSheet(dataModelStrategies strategies: [AddressDataModelCreationStrategy]) {
-        let title = Localizer.string("addressListView.add.type.title")
+        let title = Localizer.string("addressListView.add.type.title") // TODO: Need to be localized
 
         var buttonActions = strategies.map { strategy in
             ButtonAction(text: strategy.localizedTitleKey) { (UIAlertAction) in
