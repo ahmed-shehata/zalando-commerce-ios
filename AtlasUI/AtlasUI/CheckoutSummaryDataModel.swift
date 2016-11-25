@@ -69,6 +69,7 @@ extension CheckoutSummaryDataModel {
 
     init(selectedArticleUnit: SelectedArticleUnit, cartCheckout: CartCheckout?, addresses: CheckoutAddresses? = nil) {
         self.selectedArticleUnit = selectedArticleUnit
+        // TODO: Should get from checkout first?
         self.shippingAddress = addresses?.shippingAddress ?? cartCheckout?.checkout?.shippingAddress
         self.billingAddress = addresses?.billingAddress ?? cartCheckout?.checkout?.billingAddress
         self.paymentMethod = cartCheckout?.checkout?.payment.selected?.method
@@ -91,6 +92,7 @@ extension CheckoutSummaryDataModel {
 
     init(selectedArticleUnit: SelectedArticleUnit, guestCheckout: GuestCheckout?, email: String, addresses: CheckoutAddresses? = nil) {
         self.selectedArticleUnit = selectedArticleUnit
+        // TODO: Should get from checkout first?
         self.shippingAddress = addresses?.shippingAddress ?? guestCheckout?.shippingAddress
         self.billingAddress = addresses?.billingAddress ?? guestCheckout?.billingAddress
         self.paymentMethod = guestCheckout?.payment.method
