@@ -9,7 +9,7 @@ class GuestCheckoutUpdateAddressActionHandler: AddressFormActionHandler {
 
     weak var delegate: AddressFormActionHandlerDelegate?
 
-    func process(validDataModel dataModel: AddressFormDataModel) {
+    func submitButtonPressed(dataModel: AddressFormDataModel) {
         guard let address = GuestCheckoutAddress(fromDataModelForUpdateAddress: dataModel) else {
             UserMessage.displayError(AtlasCheckoutError.unclassified)
             delegate?.addressProcessingFinished()

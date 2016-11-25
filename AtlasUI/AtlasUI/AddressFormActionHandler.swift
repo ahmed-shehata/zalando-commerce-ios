@@ -16,32 +16,29 @@ protocol AddressFormActionHandler {
 
     weak var delegate: AddressFormActionHandlerDelegate? { get set }
 
-    func process(validDataModel dataModel: AddressFormDataModel)
+    func submitButtonPressed(dataModel: AddressFormDataModel)
 
 }
 
 extension AddressFormActionHandler {
 
-    func submitButtonPressed(dataModel: AddressFormDataModel) {
-        process(validDataModel: dataModel)
-        // TODO: FIX!!
-        return
+    func validateAddress(dataModel: AddressFormDataModel, completion: (Bool) -> Void) {
         guard let request = CheckAddressRequest(dataModel: dataModel) else {
-            delegate?.addressProcessingFinished()
+            completion(false)
             return
         }
 
         AtlasUIClient.checkAddress(request) { result in
             guard let checkAddressResponse = result.process() else {
-                self.delegate?.addressProcessingFinished()
+                completion(false)
                 return
             }
 
             if checkAddressResponse.status == .notCorrect {
                 UserMessage.displayError(AtlasCheckoutError.addressInvalid)
-                self.delegate?.addressProcessingFinished()
+                completion(false)
             } else {
-                self.process(validDataModel: dataModel)
+                completion(true)
             }
         }
     }

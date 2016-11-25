@@ -9,22 +9,24 @@ struct LoggedInUpdateAddressActionHandler: AddressFormActionHandler {
 
     weak var delegate: AddressFormActionHandlerDelegate?
 
-    func process(validDataModel dataModel: AddressFormDataModel) {
-        guard let
-            addressId = dataModel.addressId,
-            request = UpdateAddressRequest(dataModel: dataModel)
-            else {
-                delegate?.addressProcessingFinished()
-                return
-        }
-
-        AtlasUIClient.updateAddress(addressId, request: request) { result in
-            guard let address = result.process() else {
-                self.delegate?.addressProcessingFinished()
-                return
+    func submitButtonPressed(dataModel: AddressFormDataModel) {
+        validateAddress(dataModel) { success in
+            guard let
+                addressId = dataModel.addressId,
+                request = UpdateAddressRequest(dataModel: dataModel) where success
+                else {
+                    self.delegate?.addressProcessingFinished()
+                    return
             }
 
-            self.delegate?.dismissView(withAddress: address, animated: true)
+            AtlasUIClient.updateAddress(addressId, request: request) { result in
+                guard let address = result.process() else {
+                    self.delegate?.addressProcessingFinished()
+                    return
+                }
+
+                self.delegate?.dismissView(withAddress: address, animated: true)
+            }
         }
     }
 
