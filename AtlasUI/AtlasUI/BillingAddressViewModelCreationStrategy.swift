@@ -6,10 +6,12 @@ import Foundation
 
 class BillingAddressViewModelCreationStrategy: AddressViewModelCreationStrategy {
 
+    private var titleLocalizedKey: String?
     private var completion: AddressViewModelCreationStrategyCompletion?
     private var availableDataModelCreationStrategies = [AddressDataModelCreationStrategy]()
 
-    func setStrategyCompletion(completion: AddressViewModelCreationStrategyCompletion?) {
+    func configure(withTitle titleLocalizedKey: String, completion: AddressViewModelCreationStrategyCompletion?) {
+        self.titleLocalizedKey = titleLocalizedKey
         self.completion = completion
     }
 
@@ -24,7 +26,7 @@ class BillingAddressViewModelCreationStrategy: AddressViewModelCreationStrategy 
         }
 
         availableDataModelCreationStrategies = [standardStrategy, addressBookStrategy]
-        showActionSheet(dataModelStrategies: availableDataModelCreationStrategies)
+        showActionSheet(titleLocalizedKey, strategies: availableDataModelCreationStrategies)
     }
 
 }

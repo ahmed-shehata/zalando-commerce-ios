@@ -13,7 +13,7 @@ class GuestAddressManager {
     var emailAddress: String?
 
     func createAddress(completion: GuestAddressManagerCompletion) {
-        addressCreationStrategy?.setStrategyCompletion() { viewModel in
+        addressCreationStrategy?.configure(withTitle: "guestSummaryView.address.add") { viewModel in
             let guestViewModel = self.guestViewModel(fromViewModel: viewModel)
             let actionHandler = GuestCheckoutCreateAddressActionHandler()
             let viewController = AddressFormViewController(viewModel: guestViewModel, actionHandler: actionHandler) { (address, email) in
@@ -44,12 +44,11 @@ class GuestAddressManager {
             return
         }
 
-        // TODO: Localization
-        let title = "Modify Address"
-        let createAction = ButtonAction(text: "Create Address") { [weak self] _ in
+        let title = Localizer.string("guestSummaryView.address.modify")
+        let createAction = ButtonAction(text: Localizer.string("guestSummaryView.address.create")) { [weak self] _ in
             self?.createAddress(completion)
         }
-        let updateAction = ButtonAction(text: "Update Address") { [weak self] _ in
+        let updateAction = ButtonAction(text: Localizer.string("guestSummaryView.address.update")) { [weak self] _ in
             self?.updateAddress(address, completion: completion)
         }
         let cancelAction = ButtonAction(text: Localizer.string("button.general.cancel"), style: .Cancel, handler: nil)

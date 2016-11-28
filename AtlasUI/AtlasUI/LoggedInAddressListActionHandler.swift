@@ -15,7 +15,7 @@ struct LoggedInAddressListActionHandler: AddressListActionHandler {
     }
 
     func createAddress() {
-        addressViewModelCreationStrategy?.setStrategyCompletion() { viewModel in
+        addressViewModelCreationStrategy?.configure(withTitle: "addressListView.add.type.title") { viewModel in
             let actionHandler = LoggedInCreateAddressActionHandler()
             self.showAddressViewController(withViewModel: viewModel, formActionHandler: actionHandler) { (address, _) in
                 self.delegate?.addressCreated(address)

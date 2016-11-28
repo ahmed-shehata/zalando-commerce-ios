@@ -24,10 +24,17 @@
 "summaryView.label.price.vat" = "(VAT Included)";
 "summaryView.label.price.shipping" = "Shipping";
 "summaryView.submitButton.checkoutWithZalando" = "Checkout with Zalando";
+"summaryView.submitButton.guestCheckout" = "Checkout as guest";
 "summaryView.submitButton.placeOrder" = "Place order";
 "summaryView.submitButton.payWithPapPal" = "Confirm and pay with PayPal";
 "summaryView.submitButton.backToShop" = "Back to shop";
 "summaryView.link.termsAndConditions" = "Zalando terms, conditions and cancellation policy apply to all orders";
+
+// Guest Summary View
+"guestSummaryView.address.add" = "Create new address";
+"guestSummaryView.address.modify" = "Modify Address";
+"guestSummaryView.address.create" = "Create Address";
+"guestSummaryView.address.update" = "Update Address";
 
 // Address list view
 "addressListView.title.shipping" = "Shipping Address";
