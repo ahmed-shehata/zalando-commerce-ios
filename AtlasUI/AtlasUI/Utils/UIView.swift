@@ -50,7 +50,7 @@ extension UIView {
         leftAnchor.constraint(equalTo: superview.leftAnchor).isActive = true
     }
 
-    func snapAnchorToSuperView(anchor: ViewAnchor, constant: CGFloat = 0) {
+    func bindTo(superviewAnchor anchor: ViewAnchor, constant: CGFloat = 0) {
         guard let superview = superview else { return }
         translatesAutoresizingMaskIntoConstraints = false
         let constraint = anchor.constraint(fromView: self, toView: superview)
