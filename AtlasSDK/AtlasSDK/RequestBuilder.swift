@@ -29,7 +29,6 @@ struct RequestBuilder {
         buildAndExecuteSessionTask { result in
             switch result {
             case .failure(let error):
-                AtlasLogger.logError("Failed request:", self.endpoint, "with error:", error)
                 completion(.failure(error))
 
             case .success(let response):
