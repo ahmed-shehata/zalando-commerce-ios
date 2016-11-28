@@ -16,8 +16,7 @@ protocol AddressViewModelCreationStrategy {
 
 extension AddressViewModelCreationStrategy {
 
-    @available(*, deprecated, message: "Should be renamed")
-    func showActionSheet(dataModelStrategies strategies: [AddressDataModelCreationStrategy]) {
+    func presentSelection(forStrategies strategies: [AddressDataModelCreationStrategy]) {
         let title = Localizer.string("addressListView.add.type.title")
 
         var buttonActions = strategies.map { strategy in
@@ -29,7 +28,7 @@ extension AddressViewModelCreationStrategy {
         let cancelAction = ButtonAction(text: Localizer.string("button.general.cancel"), style: .cancel, handler: nil)
         buttonActions.append(cancelAction)
 
-        UserMessage.showActionSheet(title: title, actions: buttonActions)
+        UserMessage.presentSelection(title: title, actions: buttonActions)
     }
 
 }
