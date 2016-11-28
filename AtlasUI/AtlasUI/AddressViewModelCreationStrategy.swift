@@ -9,7 +9,7 @@ typealias AddressViewModelCreationStrategyCompletion = (addressViewModel: Addres
 
 protocol AddressViewModelCreationStrategy {
 
-    func configure(withTitle titleLocalizedKey: String, completion: AddressViewModelCreationStrategyCompletion?)
+    func configure(withTitle titleLocalizedKey: String?, completion: AddressViewModelCreationStrategyCompletion?)
     func execute()
 
 }
@@ -17,9 +17,11 @@ protocol AddressViewModelCreationStrategy {
 extension AddressViewModelCreationStrategy {
 
     func showActionSheet(titleLocalizedKey: String?, strategies: [AddressDataModelCreationStrategy]) {
-        guard let titleLocalizedKey = titleLocalizedKey else {
-            UserMessage.displayError(AtlasCheckoutError.unclassified)
-            return
+        let title: String?
+        if let key = titleLocalizedKey {
+            title = Localizer.string(key)
+        } else {
+            title = nil
         }
 
         var buttonActions = strategies.map { strategy in
@@ -31,7 +33,7 @@ extension AddressViewModelCreationStrategy {
         let cancelAction = ButtonAction(text: Localizer.string("button.general.cancel"), style: .Cancel, handler: nil)
         buttonActions.append(cancelAction)
 
-        UserMessage.showActionSheet(title: Localizer.string(titleLocalizedKey), actions: buttonActions)
+        UserMessage.showActionSheet(title: title, actions: buttonActions)
     }
 
 }

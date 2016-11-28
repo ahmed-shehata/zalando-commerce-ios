@@ -10,7 +10,7 @@ class BillingAddressViewModelCreationStrategy: AddressViewModelCreationStrategy 
     private var completion: AddressViewModelCreationStrategyCompletion?
     private var availableDataModelCreationStrategies = [AddressDataModelCreationStrategy]()
 
-    func configure(withTitle titleLocalizedKey: String, completion: AddressViewModelCreationStrategyCompletion?) {
+    func configure(withTitle titleLocalizedKey: String?, completion: AddressViewModelCreationStrategyCompletion?) {
         self.titleLocalizedKey = titleLocalizedKey
         self.completion = completion
     }

@@ -32,8 +32,7 @@
 
 // Guest Summary View
 "guestSummaryView.address.add" = "Create new address";
-"guestSummaryView.address.modify" = "Modify Address";
-"guestSummaryView.address.create" = "Create Address";
+"guestSummaryView.address.create" = "Create new Address";
 "guestSummaryView.address.update" = "Update Address";
 
 // Address list view

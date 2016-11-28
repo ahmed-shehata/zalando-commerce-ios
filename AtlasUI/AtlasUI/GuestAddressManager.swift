@@ -44,7 +44,6 @@ class GuestAddressManager {
             return
         }
 
-        let title = Localizer.string("guestSummaryView.address.modify")
         let createAction = ButtonAction(text: Localizer.string("guestSummaryView.address.create")) { [weak self] _ in
             self?.createAddress(completion)
         }
@@ -52,7 +51,7 @@ class GuestAddressManager {
             self?.updateAddress(address, completion: completion)
         }
         let cancelAction = ButtonAction(text: Localizer.string("button.general.cancel"), style: .Cancel, handler: nil)
-        UserMessage.showActionSheet(title: title, actions: [createAction, updateAction, cancelAction])
+        UserMessage.showActionSheet(title: nil, actions: [createAction, updateAction, cancelAction])
     }
 
     func checkoutAddresses(shippingAddress: EquatableAddress?, billingAddress: EquatableAddress?) -> CheckoutAddresses {

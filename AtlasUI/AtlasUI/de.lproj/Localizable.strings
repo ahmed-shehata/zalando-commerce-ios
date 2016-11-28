@@ -24,17 +24,16 @@
 "summaryView.label.price.vat" = "(Incl. MwST)";
 "summaryView.label.price.shipping" = "Versand";
 "summaryView.submitButton.checkoutWithZalando" = "Mit Zalando anmelden";
-"summaryView.submitButton.guestCheckout" = "Checkout as guest";
+"summaryView.submitButton.guestCheckout" = "ohne Registrierung";
 "summaryView.submitButton.placeOrder" = "Jetzt Kaufen";
 "summaryView.submitButton.payWithPapPal" = "Bestätigen und zahlen mit PayPal";
 "summaryView.submitButton.backToShop" = "weiter shoppen";
 "summaryView.link.termsAndConditions" = "Für Deine Bestellung gelten die AGB und die Wiederrufsbelehrung von Zalando";
 
 // Guest Summary View
-"guestSummaryView.address.add" = "Create new address";
-"guestSummaryView.address.modify" = "Modify Address";
-"guestSummaryView.address.create" = "Create Address";
-"guestSummaryView.address.update" = "Update Address";
+"guestSummaryView.address.add" = "Neue Adresse erstellen";
+"guestSummaryView.address.create" = "Neue Adresse erstellen";
+"guestSummaryView.address.update" = "Adresse ändern";
 
 // Address list view
 "addressListView.title.shipping" = "Lieferadresse";
