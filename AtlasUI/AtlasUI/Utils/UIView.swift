@@ -70,6 +70,13 @@ extension UIView {
         widthAnchor.constraint(equalTo: heightAnchor, multiplier: 1).isActive = true
     }
 
+    func bindTo(guidesOf viewController: UIViewController) {
+        self.topAnchor.constraint(equalTo: viewController.topLayoutGuide.bottomAnchor).isActive = true
+        self.bottomAnchor.constraint(equalTo: viewController.bottomLayoutGuide.topAnchor).isActive = true
+        self.leadingAnchor.constraint(equalTo: viewController.view.leadingAnchor).isActive = true
+        self.trailingAnchor.constraint(equalTo: viewController.view.trailingAnchor).isActive = true
+    }
+
 }
 
 extension UIView {

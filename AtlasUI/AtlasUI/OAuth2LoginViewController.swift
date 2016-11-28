@@ -45,10 +45,7 @@ final class OAuth2LoginViewController: UIViewController {
         view.backgroundColor = .white
         view.addSubview(webView)
 
-        webView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
-        webView.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.topAnchor).isActive = true
-        webView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        webView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        webView.bindTo(guidesOf: self)
 
         webView.loadRequest(URLRequest(url: loginURL))
     }
