@@ -47,7 +47,7 @@ class AddressFormViewControllerTests: XCTestCase {
                 expect(address.city).to(equal("Berlin"))
                 done()
             }
-            UIApplication.sharedApplication().sendAction(barButtonItem.action, to: barButtonItem.target, from: nil, forEvent: nil)
+            let _ = UIApplication.shared.sendAction(barButtonItem.action!, to: barButtonItem.target, from: nil, for: nil)
         }
     }
 
@@ -75,7 +75,7 @@ class AddressFormViewControllerTests: XCTestCase {
                 expect(address.city).to(equal("Berlin"))
                 done()
             }
-            UIApplication.sharedApplication().sendAction(saveButton.action, to: saveButton.target, from: nil, forEvent: nil)
+            let _ = UIApplication.shared.sendAction(saveButton.action!, to: saveButton.target, from: nil, for: nil)
         }
     }
 
@@ -83,7 +83,7 @@ class AddressFormViewControllerTests: XCTestCase {
 
 extension AddressFormViewControllerTests {
 
-    private func registerAtlasUIViewController() -> AtlasUIViewController? {
+    fileprivate func registerAtlasUIViewController() -> AtlasUIViewController? {
         var atlasUIViewController: AtlasUIViewController?
         waitUntil(timeout: 10) { done in
             let options = Options(clientId: "CLIENT_ID",
@@ -91,8 +91,8 @@ extension AddressFormViewControllerTests {
                                   interfaceLanguage: "en",
                                   configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
 
-            AtlasUI.configure(options) { _ in
-                atlasUIViewController = AtlasUIViewController(forProductSKU: "AD541L009-G11")
+            AtlasUI.configure(options: options) { _ in
+                atlasUIViewController = AtlasUIViewController(forSKU: "AD541L009-G11")
                 guard let viewController = atlasUIViewController else { return fail() }
                 self.window.rootViewController = viewController
                 self.window.makeKeyAndVisible()
@@ -103,7 +103,7 @@ extension AddressFormViewControllerTests {
         return atlasUIViewController
     }
 
-    private func createAddressFormDataModel() -> AddressFormDataModel {
+    fileprivate func createAddressFormDataModel() -> AddressFormDataModel {
         let dataModel = AddressFormDataModel(countryCode: "DE")
         dataModel.addressId = "6616154"
         dataModel.gender = .male
