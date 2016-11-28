@@ -49,7 +49,7 @@ class AddressFormViewController: UIViewController {
         configureNavigation()
     }
 
-    func displayView() {
+    func present() {
         if viewModel.layout.displayViewModally {
             let navigationController = UINavigationController(rootViewController: self)
             navigationController.modalPresentationStyle = .overCurrentContext

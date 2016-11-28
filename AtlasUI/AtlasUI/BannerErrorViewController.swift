@@ -67,7 +67,7 @@ class BannerErrorViewController: UIViewController {
         buildView()
     }
 
-    func showBanner() {
+    func present() {
         containerView.transform = CGAffineTransform(translationX: 0, y: -containerView.bounds.height)
         view.alpha = 1
 
@@ -76,7 +76,7 @@ class BannerErrorViewController: UIViewController {
         }
     }
 
-    func hideBanner() {
+    func dismiss() {
         let bannerHeight = containerView.bounds.height
         UIView.animate(animations: { [weak self] in
             self?.containerView.transform = CGAffineTransform(translationX: 0, y: -bannerHeight)
@@ -87,7 +87,7 @@ class BannerErrorViewController: UIViewController {
     }
 
     func cancelButtonPressed() {
-        hideBanner()
+        dismiss()
     }
 
 }
@@ -126,7 +126,7 @@ extension BannerErrorViewController: UIDataBuilder {
     func configure(viewModel: T) {
         titleLabel.text = viewModel.displayedTitle
         messageLabel.text = viewModel.displayedMessage.onelined()
-        showBanner()
+        present()
     }
 
 }

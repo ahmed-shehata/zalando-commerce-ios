@@ -31,7 +31,7 @@ class AddressFormViewControllerTests: XCTestCase {
         let viewModel = AddressFormViewModel(dataModel: dataModel, layout: CreateAddressFormLayout(), type: .standardAddress)
         let addressFormViewController = AddressFormViewController(viewModel: viewModel, actionHandler: actionHandler, completion: nil)
         actionHandler.delegate = addressFormViewController
-        addressFormViewController.displayView()
+        addressFormViewController.present()
         expect(addressFormViewController.navigationItem.rightBarButtonItem).toNotEventually(beNil())
         guard let barButtonItem = addressFormViewController.navigationItem.rightBarButtonItem else { return fail() }
 
@@ -59,7 +59,7 @@ class AddressFormViewControllerTests: XCTestCase {
         let viewModel = AddressFormViewModel(dataModel: dataModel, layout: UpdateAddressFormLayout(), type: .standardAddress)
         let addressFormViewController = AddressFormViewController(viewModel: viewModel, actionHandler: actionHandler, completion: nil)
         actionHandler.delegate = addressFormViewController
-        addressFormViewController.displayView()
+        addressFormViewController.present()
         expect(addressFormViewController.navigationItem.rightBarButtonItem).toNotEventually(beNil())
         guard let saveButton = addressFormViewController.navigationItem.rightBarButtonItem else { return fail() }
 

@@ -60,31 +60,31 @@ class LoggedInSummaryActionHandlerTests: XCTestCase {
         guard let checkout = actionHandler?.cartCheckout?.checkout else { return fail() }
         actionHandler?.cartCheckout?.checkout = createCheckout(fromCheckout: checkout, payment: Payment(selected: nil, isExternalPayment: nil, selectionPageURL: nil))
 
-        actionHandler?.showPaymentSelectionScreen()
+        actionHandler?.presentPaymentSelectionScreen()
         expect(UserMessage.errorDisplayed).toEventually(beTrue())
     }
 
     func testShowingPaymentSelectionScreenWithEmptyCartCheckout() {
         actionHandler?.cartCheckout = nil
-        actionHandler?.showPaymentSelectionScreen()
+        actionHandler?.presentPaymentSelectionScreen()
         expect(UserMessage.errorDisplayed).toEventually(beTrue())
     }
 
     func testPaymentScreenCompletionWithError() {
-        guard let paymentViewController = showPaymentScreen() else { return fail() }
+        guard let paymentViewController = presentPaymentScreen() else { return fail() }
         paymentViewController.paymentCompletion?(.error)
         expect(UserMessage.errorDisplayed).toEventually(beTrue())
     }
 
     func testPaymentScreenCompletionWithSuccess() {
-        guard let paymentViewController = showPaymentScreen() else { return fail() }
+        guard let paymentViewController = presentPaymentScreen() else { return fail() }
         paymentViewController.paymentCompletion?(.success)
         expect(self.mockedDataSourceDelegate?.dataModel.paymentMethod).toNotEventually(beNil())
     }
 
     func testShippingAddressScreenSelectCompletion() {
         guard let
-            addressViewController = showAddressScreen(forShippingAddress: true),
+            addressViewController = presentAddressScreen(forShippingAddress: true),
             let address = getAddress()
             else { return fail() }
 
@@ -96,7 +96,7 @@ class LoggedInSummaryActionHandlerTests: XCTestCase {
 
     func testShippingAddressScreenUpdateCompletion() {
         guard let
-            addressViewController = showAddressScreen(forShippingAddress: true),
+            addressViewController = presentAddressScreen(forShippingAddress: true),
             let dataModel = createDataModel(fromCartCheckout: createCartCheckout())
             else { return fail() }
         mockedDataSourceDelegate?.updated(dataModel: dataModel)
@@ -104,7 +104,7 @@ class LoggedInSummaryActionHandlerTests: XCTestCase {
 
         expect(self.mockedDataSourceDelegate?.dataModel.shippingAddress?.firstName).to(equal("Erika"))
         expect(self.mockedDataSourceDelegate?.dataModel.billingAddress?.firstName).to(equal("Erika"))
-        addressViewController.addressUpdatedHandler?(updateAddress(address))
+        addressViewController.addressUpdatedHandler?(update(address: address))
         expect(self.mockedDataSourceDelegate?.dataModel.shippingAddress?.firstName).toEventually(equal("John"))
         expect(self.mockedDataSourceDelegate?.dataModel.billingAddress?.firstName).toEventually(equal("Erika"))
         expect(UserMessage.errorDisplayed).toNotEventually(beTrue())
@@ -112,7 +112,7 @@ class LoggedInSummaryActionHandlerTests: XCTestCase {
 
     func testShippingAddressScreenDeleteCompletion() {
         guard let
-            addressViewController = showAddressScreen(forShippingAddress: true),
+            addressViewController = presentAddressScreen(forShippingAddress: true),
             let dataModel = createDataModel(fromCartCheckout: createCartCheckout())
             else { return fail() }
         mockedDataSourceDelegate?.updated(dataModel: dataModel)
@@ -126,7 +126,7 @@ class LoggedInSummaryActionHandlerTests: XCTestCase {
 
     func testBillingAddressScreenSelectCompletion() {
         guard let
-            addressViewController = showAddressScreen(forShippingAddress: false),
+            addressViewController = presentAddressScreen(forShippingAddress: false),
             let address = getAddress()
             else { return fail() }
 
@@ -138,7 +138,7 @@ class LoggedInSummaryActionHandlerTests: XCTestCase {
 
     func testBillingAddressScreenUpdateCompletion() {
         guard let
-            addressViewController = showAddressScreen(forShippingAddress: false),
+            addressViewController = presentAddressScreen(forShippingAddress: false),
             let dataModel = createDataModel(fromCartCheckout: createCartCheckout())
             else { return fail() }
         mockedDataSourceDelegate?.updated(dataModel: dataModel)
@@ -146,7 +146,7 @@ class LoggedInSummaryActionHandlerTests: XCTestCase {
 
         expect(self.mockedDataSourceDelegate?.dataModel.shippingAddress?.firstName).to(equal("Erika"))
         expect(self.mockedDataSourceDelegate?.dataModel.billingAddress?.firstName).to(equal("Erika"))
-        addressViewController.addressUpdatedHandler?(updateAddress(address))
+        addressViewController.addressUpdatedHandler?(update(address: address))
         expect(self.mockedDataSourceDelegate?.dataModel.shippingAddress?.firstName).toEventually(equal("Erika"))
         expect(self.mockedDataSourceDelegate?.dataModel.billingAddress?.firstName).toEventually(equal("John"))
         expect(UserMessage.errorDisplayed).toNotEventually(beTrue())
@@ -154,7 +154,7 @@ class LoggedInSummaryActionHandlerTests: XCTestCase {
 
     func testBillingAddressScreenDeleteCompletion() {
         guard let
-            addressViewController = showAddressScreen(forShippingAddress: false),
+            addressViewController = presentAddressScreen(forShippingAddress: false),
             let dataModel = createDataModel(fromCartCheckout: createCartCheckout())
             else { return fail() }
         mockedDataSourceDelegate?.updated(dataModel: dataModel)
@@ -275,23 +275,23 @@ extension LoggedInSummaryActionHandlerTests {
                         shippingAddress: checkout.shippingAddress)
     }
 
-    fileprivate func showPaymentScreen() -> PaymentViewController? {
-        actionHandler?.showPaymentSelectionScreen()
+    fileprivate func presentPaymentScreen() -> PaymentViewController? {
+        actionHandler?.presentPaymentSelectionScreen()
         expect(AtlasUIViewController.shared?.mainNavigationController.viewControllers.last as? PaymentViewController).toNotEventually(beNil())
         return AtlasUIViewController.shared?.mainNavigationController.viewControllers.last as? PaymentViewController
     }
 
-    fileprivate func showAddressScreen(forShippingAddress isShipping: Bool) -> AddressListViewController? {
+    fileprivate func presentAddressScreen(forShippingAddress isShipping: Bool) -> AddressListViewController? {
         if isShipping {
-            actionHandler?.showShippingAddressSelectionScreen()
+            actionHandler?.presentShippingAddressSelectionScreen()
         } else {
-            actionHandler?.showBillingAddressSelectionScreen()
+            actionHandler?.presentBillingAddressSelectionScreen()
         }
         expect(AtlasUIViewController.shared?.mainNavigationController.viewControllers.last as? AddressListViewController).toNotEventually(beNil())
         return AtlasUIViewController.shared?.mainNavigationController.viewControllers.last as? AddressListViewController
     }
 
-    fileprivate func updateAddress(_ address: EquatableAddress) -> CheckoutAddress {
+    fileprivate func update(address: EquatableAddress) -> CheckoutAddress {
         return CheckoutAddress(id: address.id,
                                gender: address.gender,
                                firstName: "John",

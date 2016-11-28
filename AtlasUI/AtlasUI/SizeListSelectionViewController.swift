@@ -68,20 +68,20 @@ extension SizeListSelectionViewController {
     fileprivate func fetchSizes() {
         AtlasUIClient.article(withSKU: self.sku) { [weak self] result in
             guard let article = result.process(forceFullScreenError: true) else { return }
-            self?.tableViewDelegate = SizeListTableViewDelegate(article: article, completion: self?.showCheckoutScreen)
+            self?.tableViewDelegate = SizeListTableViewDelegate(article: article, completion: self?.presentCheckoutScreen)
             self?.tableViewDataSource = SizeListTableViewDataSource(article: article)
             self?.showCancelButton()
         }
     }
 
-    fileprivate func showCheckoutScreen(_ selectedArticleUnit: SelectedArticleUnit) {
+    fileprivate func presentCheckoutScreen(selectedArticleUnit: SelectedArticleUnit) {
         let hasSingleUnit = selectedArticleUnit.article.hasSingleUnit
         guard Atlas.isAuthorized() else {
             let actionHandler = NotLoggedInSummaryActionHandler()
             let price = selectedArticleUnit.unit.price.amount
             let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, totalPrice: price)
             let viewModel = CheckoutSummaryViewModel(dataModel: dataModel, layout: NotLoggedInLayout())
-            return displayCheckoutSummaryViewController(viewModel, actionHandler: actionHandler)
+            return presentCheckoutSummaryViewController(viewModel: viewModel, actionHandler: actionHandler)
         }
 
         AtlasUIClient.customer { [weak self] customerResult in
@@ -92,12 +92,12 @@ extension SizeListSelectionViewController {
 
                 let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, cartCheckout: actionHandler.cartCheckout)
                 let viewModel = CheckoutSummaryViewModel(dataModel: dataModel, layout: LoggedInLayout())
-                self?.displayCheckoutSummaryViewController(viewModel, actionHandler: actionHandler)
+                self?.presentCheckoutSummaryViewController(viewModel: viewModel, actionHandler: actionHandler)
             }
         }
     }
 
-    fileprivate func displayCheckoutSummaryViewController(_ viewModel: CheckoutSummaryViewModel,
+    fileprivate func presentCheckoutSummaryViewController(viewModel: CheckoutSummaryViewModel,
                                                           actionHandler: CheckoutSummaryActionHandler) {
         let hasSingleUnit = viewModel.dataModel.selectedArticleUnit.article.hasSingleUnit
         let checkoutSummaryVC = CheckoutSummaryViewController(viewModel: viewModel)

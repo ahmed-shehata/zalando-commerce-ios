@@ -14,15 +14,15 @@ struct OrderPlacedSummaryActionHandler: CheckoutSummaryActionHandler {
         delegate?.dismissView()
     }
 
-    func showPaymentSelectionScreen() {
+    func presentPaymentSelectionScreen() {
         // Show Payment screen should have no action in Order placed mode
     }
 
-    func showShippingAddressSelectionScreen() {
+    func presentShippingAddressSelectionScreen() {
         // Show Shipping Address screen should have no action in Order placed mode
     }
 
-    func showBillingAddressSelectionScreen() {
+    func presentBillingAddressSelectionScreen() {
         // Show Billing Address screen should have no action in Order placed mode
     }
 

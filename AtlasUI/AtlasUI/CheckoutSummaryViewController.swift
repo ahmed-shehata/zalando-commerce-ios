@@ -104,15 +104,15 @@ extension CheckoutSummaryViewController {
     }
 
     dynamic fileprivate func shippingAddressTapped() {
-        actionHandler?.showShippingAddressSelectionScreen()
+        actionHandler?.presentShippingAddressSelectionScreen()
     }
 
     dynamic fileprivate func billingAddressTapped() {
-        actionHandler?.showBillingAddressSelectionScreen()
+        actionHandler?.presentBillingAddressSelectionScreen()
     }
 
     dynamic fileprivate func paymentAddressTapped() {
-        actionHandler?.showPaymentSelectionScreen()
+        actionHandler?.presentPaymentSelectionScreen()
     }
 
 }

@@ -16,6 +16,7 @@ protocol AddressViewModelCreationStrategy {
 
 extension AddressViewModelCreationStrategy {
 
+    @available(*, deprecated, message: "Should be renamed")
     func showActionSheet(dataModelStrategies strategies: [AddressDataModelCreationStrategy]) {
         let title = Localizer.string("addressListView.add.type.title")
 

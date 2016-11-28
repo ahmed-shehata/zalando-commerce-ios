@@ -32,7 +32,7 @@ struct UserMessage {
     }
 
     static func clearBannerError() {
-        bannerErrorViewController.hideBanner()
+        bannerErrorViewController.dismiss()
     }
 
     static func displayError(_ error: Error) {
@@ -69,6 +69,7 @@ struct UserMessage {
         showActionSheet(title: title, message: message, actions: actions)
     }
 
+    @available(*, deprecated, message: "Should be renamed")
     static func showActionSheet(title: String, message: String? = nil, actions: [ButtonAction]) {
         guard let topViewController = UIApplication.topViewController() else { return }
         let alertView = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)

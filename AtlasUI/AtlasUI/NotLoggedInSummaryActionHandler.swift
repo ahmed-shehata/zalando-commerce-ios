@@ -30,15 +30,15 @@ struct NotLoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
         }
     }
 
-    func showPaymentSelectionScreen() {
+    func presentPaymentSelectionScreen() {
         handleSubmitButton()
     }
 
-    func showShippingAddressSelectionScreen() {
+    func presentShippingAddressSelectionScreen() {
         handleSubmitButton()
     }
 
-    func showBillingAddressSelectionScreen() {
+    func presentBillingAddressSelectionScreen() {
         handleSubmitButton()
     }
 
