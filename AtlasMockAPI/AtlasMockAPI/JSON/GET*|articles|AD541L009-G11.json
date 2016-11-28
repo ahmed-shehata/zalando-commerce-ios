@@ -48,11 +48,11 @@
     "id" : "AD541L009-G1100XS000",
     "size" : "30/32",
     "price" : {
-      "amount" : 76.45,
+      "amount" : 10.45,
       "currency" : "EUR"
     },
     "original_price" : {
-      "amount" : 84.95,
+      "amount" : 12.45,
       "currency" : "EUR"
     },
     "available" : true,

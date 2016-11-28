@@ -78,7 +78,8 @@ extension SizeListSelectionViewController {
         let hasSingleUnit = selectedArticleUnit.article.hasSingleUnit
         guard Atlas.isAuthorized() else {
             let actionHandler = NotLoggedInSummaryActionHandler()
-            let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit)
+            let price = selectedArticleUnit.unit.price.amount
+            let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, totalPrice: price)
             let viewModel = CheckoutSummaryViewModel(dataModel: dataModel, layout: NotLoggedInLayout())
             return displayCheckoutSummaryViewController(viewModel, actionHandler: actionHandler)
         }
