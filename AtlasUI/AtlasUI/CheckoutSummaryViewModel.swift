@@ -19,17 +19,17 @@ struct CheckoutSummaryViewModel {
 extension CheckoutSummaryViewModel {
 
     fileprivate func validate(against oldDataModel: CheckoutSummaryDataModel) {
-        checkPriceChange(oldDataModel: oldDataModel)
-        checkPaymentMethod(oldDataModel: oldDataModel)
+        didPriceChange(comparedTo: oldDataModel)
+        didPaymentClear(comparedTo: oldDataModel)
     }
 
-    fileprivate func checkPriceChange(oldDataModel: CheckoutSummaryDataModel) {
+    fileprivate func didPriceChange(comparedTo oldDataModel: CheckoutSummaryDataModel) {
         if oldDataModel.totalPrice != dataModel.totalPrice {
             UserMessage.displayError(AtlasCheckoutError.priceChanged(newPrice: dataModel.totalPrice))
         }
     }
 
-    fileprivate func checkPaymentMethod(oldDataModel: CheckoutSummaryDataModel) {
+    fileprivate func didPaymentClear(comparedTo oldDataModel: CheckoutSummaryDataModel) {
         guard oldDataModel.paymentMethod != nil && dataModel.paymentMethod == nil else { return }
         UserMessage.displayError(AtlasCheckoutError.paymentMethodNotAvailable)
     }
