@@ -182,7 +182,7 @@ extension LoggedInSummaryActionHandlerTests {
                         let selectedArticleUnit = SelectedArticleUnit(article: article, selectedUnitIndex: 0)
                         LoggedInSummaryActionHandler.createInstance(customer, selectedUnit: selectedArticleUnit) { result in
                             guard let actionHandler = result.process() else { return fail() }
-                            let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit)
+                            let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, totalPrice: selectedArticleUnit.unit.price.amount)
                             let viewModel = CheckoutSummaryViewModel(dataModel: dataModel, layout: LoggedInLayout())
                             self.mockedDataSourceDelegate = CheckoutSummaryActionHandlerDataSourceDelegateMock(viewModel: viewModel)
                             self.mockedDataSourceDelegate?.actionHandler = actionHandler
@@ -246,11 +246,11 @@ extension LoggedInSummaryActionHandlerTests {
                                         billingAddress: nil,
                                         paymentMethod: paymentMethod,
                                         shippingPrice: 0,
-                                        totalPrice: 0,
+                                        totalPrice: 10.45,
                                         delivery: nil)
     }
 
-    private func createDataModel(fromCheckout checkout: Checkout?, totalPrice: MoneyAmount?) -> CheckoutSummaryDataModel? {
+    private func createDataModel(fromCheckout checkout: Checkout?, totalPrice: MoneyAmount) -> CheckoutSummaryDataModel? {
         guard let selectedArticleUnit = mockedDataSourceDelegate?.dataModel.selectedArticleUnit else { return nil }
         return CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit,
                                         shippingAddress: checkout?.shippingAddress,
@@ -262,7 +262,7 @@ extension LoggedInSummaryActionHandlerTests {
     }
 
     private func createDataModel(fromCartCheckout cartCheckout: CartCheckout?) -> CheckoutSummaryDataModel? {
-        return createDataModel(fromCheckout: cartCheckout?.checkout, totalPrice: cartCheckout?.cart?.grossTotal.amount)
+        return createDataModel(fromCheckout: cartCheckout?.checkout, totalPrice: cartCheckout?.cart?.grossTotal.amount ?? 0)
     }
 
     private func createCheckout(fromCheckout checkout: Checkout, payment: Payment) -> Checkout {
