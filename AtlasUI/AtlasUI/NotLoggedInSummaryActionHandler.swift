@@ -19,7 +19,7 @@ struct NotLoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
             guard let customer = result.process() else { return }
             let selectedArticleUnit = dataSource.dataModel.selectedArticleUnit
 
-            LoggedInSummaryActionHandler.createInstance(customer, selectedUnit: selectedArticleUnit) { result in
+            LoggedInSummaryActionHandler.create(customer: customer, selectedArticleUnit: selectedArticleUnit) { result in
                 guard let actionHandler = result.process() else { return }
 
                 let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, cartCheckout: actionHandler.cartCheckout)

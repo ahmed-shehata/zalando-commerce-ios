@@ -87,7 +87,7 @@ extension SizeListSelectionViewController {
         AtlasUIClient.customer { [weak self] customerResult in
             guard let customer = customerResult.process(forceFullScreenError: hasSingleUnit) else { return }
 
-            LoggedInSummaryActionHandler.createInstance(customer, selectedUnit: selectedArticleUnit) { actionHandlerResult in
+            LoggedInSummaryActionHandler.create(customer: customer, selectedArticleUnit: selectedArticleUnit) { actionHandlerResult in
                 guard let actionHandler = actionHandlerResult.process(forceFullScreenError: hasSingleUnit) else { return }
 
                 let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, cartCheckout: actionHandler.cartCheckout)

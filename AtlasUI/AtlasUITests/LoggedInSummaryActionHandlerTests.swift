@@ -180,7 +180,7 @@ extension LoggedInSummaryActionHandlerTests {
                     AtlasUIClient.article(withSKU: sku) { result in
                         guard let article = result.process() else { return fail() }
                         let selectedArticleUnit = SelectedArticleUnit(article: article, selectedUnitIndex: 0)
-                        LoggedInSummaryActionHandler.createInstance(customer, selectedUnit: selectedArticleUnit) { result in
+                        LoggedInSummaryActionHandler.create(customer: customer, selectedArticleUnit: selectedArticleUnit) { result in
                             guard let actionHandler = result.process() else { return fail() }
                             let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, totalPrice: selectedArticleUnit.unit.price.amount)
                             let viewModel = CheckoutSummaryViewModel(dataModel: dataModel, layout: LoggedInLayout())

@@ -38,12 +38,12 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
         return shippingAddress != nil && billingAddress != nil
     }
 
-    static func createInstance(_ customer: Customer, selectedUnit: SelectedArticleUnit,
-                               completion: @escaping LoggedInSummaryActionHandlerCompletion) {
-        let actionHandler = LoggedInSummaryActionHandler(customer: customer)
+    static func create(customer: Customer, selectedArticleUnit: SelectedArticleUnit,
+                       completion: @escaping LoggedInSummaryActionHandlerCompletion) {
         LoggedInSummaryActionHandler.createCartCheckout(selectedUnit) { result in
             switch result {
             case .success(let cartCheckout):
+                let actionHandler = LoggedInSummaryActionHandler(customer: customer)
                 actionHandler.cartCheckout = cartCheckout
                 completion(.success(actionHandler))
             case .failure(let error):
