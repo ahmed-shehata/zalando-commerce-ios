@@ -245,10 +245,10 @@ extension LoggedInSummaryActionHandler {
 
     fileprivate func updated(address: EquatableAddress) {
         if let shippingAddress = shippingAddress, shippingAddress == address {
-            select(shippingAddress: address)
+            update(shippingAddress: address)
         }
         if let billingAddress = billingAddress, billingAddress == address {
-            select(billingAddress: address)
+            update(billingAddress: address)
         }
     }
 
