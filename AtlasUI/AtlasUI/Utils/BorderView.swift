@@ -53,6 +53,7 @@ class BorderView: UIView {
         }
     }
 
+    // swiftlint:disable:next variable_name
     fileprivate func addView(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) {
         let frame = CGRect(x: x, y: y, width: width, height: height)
         let view = UIView(frame: frame)

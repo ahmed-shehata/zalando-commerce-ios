@@ -74,7 +74,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
             if dataSource.dataModel.isPaymentSelected && !UserMessage.errorDisplayed {
                 AtlasUIClient.createOrder(fromCheckoutId: checkout.id) { result in
                     guard let order = result.process() else { return }
-                    self?.handleOrderConfirmation(order)
+                    self?.handleConfirmation(forOrder: order)
                 }
             }
         }
@@ -140,7 +140,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
 
 extension LoggedInSummaryActionHandler {
 
-    fileprivate func handleOrderConfirmation(_ order: Order) {
+    fileprivate func handleConfirmation(forOrder order: Order) {
         guard let paymentURL = order.externalPaymentURL else {
             presentConfirmationScreen(order)
             return
