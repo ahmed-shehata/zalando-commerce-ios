@@ -3,29 +3,6 @@
 //
 
 import UIKit
-// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
-// Consider refactoring the code to use the non-optional operators.
-fileprivate func < <T: Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
-}
-
-// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
-// Consider refactoring the code to use the non-optional operators.
-fileprivate func > <T: Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l > r
-  default:
-    return rhs < lhs
-  }
-}
 
 class AddressFormStackView: UIStackView {
 
@@ -61,7 +38,7 @@ extension AddressFormStackView: UIDataBuilder {
                 viewModel.update(value: text, fromField: fieldType)
                 textFieldInputView.textField.text = text
                 textFieldInputView.configureTitleLabel()
-                if text?.trimmed().length > 0 {
+                if let trimmed = text?.trimmed(), trimmed.length > 0 {
                     textFieldInputView.textField.resignFirstResponder()
                 }
             }
