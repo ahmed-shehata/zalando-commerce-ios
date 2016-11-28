@@ -59,7 +59,7 @@ extension NotLoggedInSummaryActionHandler {
         let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit,
                                                  shippingAddress: checkoutAddress?.shippingAddress,
                                                  billingAddress: checkoutAddress?.billingAddress,
-                                                 totalPrice: selectedArticleUnit.unit.price.amount,
+                                                 totalPrice: selectedArticleUnit.priceAmount,
                                                  email: email)
         let actionHandler = GuestCheckoutSummaryActionHandler(email: email)
         delegate?.actionHandlerUpdated(actionHandler)

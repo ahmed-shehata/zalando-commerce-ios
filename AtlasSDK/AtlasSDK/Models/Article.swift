@@ -26,6 +26,10 @@ public struct SelectedArticleUnit {
         return article.availableUnits[selectedUnitIndex]
     }
 
+    public var priceAmount: MoneyAmount {
+        return unit.price.amount
+    }
+
 }
 
 public struct Article {
