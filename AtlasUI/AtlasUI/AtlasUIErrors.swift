@@ -5,7 +5,7 @@
 import Foundation
 import AtlasSDK
 
-public enum ErrorPresentationType {
+enum ErrorPresentationType {
     case banner
     case fullScreen
 }
