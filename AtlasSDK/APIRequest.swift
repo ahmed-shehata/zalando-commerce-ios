@@ -21,7 +21,6 @@ public struct APIRequest<T> {
         requestBuilder.execute { result in
             switch result {
             case .failure(let error):
-                AtlasLogger.logError("FAILED CALL", self.requestBuilder)
                 dispatch_async(dispatch_get_main_queue()) {
                     self.completions.reverse().forEach { $0(.failure(error, self)) }
                 }
