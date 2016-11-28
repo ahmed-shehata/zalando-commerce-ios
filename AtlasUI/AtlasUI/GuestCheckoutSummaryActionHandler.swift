@@ -108,7 +108,7 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
 
 extension GuestCheckoutSummaryActionHandler {
 
-    private func handleOrderConfirmation(order: Order) {
+    private func handleOrderConfirmation(order: GuestOrder) {
         guard let paymentURL = order.externalPaymentURL else {
             showConfirmationScreen(order)
             return
@@ -130,13 +130,13 @@ extension GuestCheckoutSummaryActionHandler {
         AtlasUIViewController.instance?.mainNavigationController.pushViewController(paymentViewController, animated: true)
     }
 
-    private func showConfirmationScreen(order: Order) {
+    private func showConfirmationScreen(order: GuestOrder) {
         guard let dataSource = dataSource, delegate = delegate, email = guestAddressManager.emailAddress else { return }
         let selectedArticleUnit = dataSource.dataModel.selectedArticleUnit
         let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit,
                                                  guestCheckout: guestCheckout,
                                                  email: email,
-                                                 order: order)
+                                                 guestOrder: order)
         delegate.actionHandlerUpdated(OrderPlacedSummaryActionHandler())
         delegate.dataModelUpdated(dataModel)
         delegate.layoutUpdated(GuestOrderPlacedLayout())

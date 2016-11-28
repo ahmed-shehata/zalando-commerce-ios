@@ -100,13 +100,13 @@ extension CheckoutSummaryDataModel {
         self.email = email
     }
 
-    init(selectedArticleUnit: SelectedArticleUnit, guestCheckout: GuestCheckout?, email: String, order: Order) {
+    init(selectedArticleUnit: SelectedArticleUnit, guestCheckout: GuestCheckout?, email: String, guestOrder: GuestOrder) {
         self.selectedArticleUnit = selectedArticleUnit
-        self.shippingAddress = order.shippingAddress
-        self.billingAddress = order.billingAddress
+        self.shippingAddress = guestOrder.shippingAddress
+        self.billingAddress = guestOrder.billingAddress
         self.paymentMethod = guestCheckout?.payment.method
         self.shippingPrice = 0
-        self.totalPrice = order.grossTotal.amount
+        self.totalPrice = guestOrder.grossTotal.amount
         self.delivery = guestCheckout?.delivery
         self.email = email
     }
