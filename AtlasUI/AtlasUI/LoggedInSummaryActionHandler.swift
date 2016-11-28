@@ -40,7 +40,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
 
     static func create(customer: Customer, selectedArticleUnit: SelectedArticleUnit,
                        completion: @escaping LoggedInSummaryActionHandlerCompletion) {
-        LoggedInSummaryActionHandler.createCartCheckout(selectedUnit) { result in
+        LoggedInSummaryActionHandler.createCartCheckout(selectedArticleUnit) { result in
             switch result {
             case .success(let cartCheckout):
                 let actionHandler = LoggedInSummaryActionHandler(customer: customer)
