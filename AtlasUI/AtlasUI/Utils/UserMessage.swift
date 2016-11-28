@@ -121,7 +121,7 @@ extension UserMessage {
 private extension UIAlertController {
 
     func add(button: ButtonAction) {
-        let title = Localizer.string(button.text)
+        let title = Localizer.format(string: button.text)
         let action = UIAlertAction(title: title, style: button.style, handler: button.handler)
         self.addAction(action)
     }

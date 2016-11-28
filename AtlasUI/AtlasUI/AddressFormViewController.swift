@@ -80,14 +80,14 @@ extension AddressFormViewController: UIBuilder {
 extension AddressFormViewController {
 
     fileprivate func configureNavigation() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: Localizer.string("button.general.save"),
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: Localizer.format(string: "button.general.save"),
                                                             style: .plain,
                                                             target: self,
                                                             action: #selector(submitButtonPressed))
         navigationItem.rightBarButtonItem?.accessibilityIdentifier = "address-edit-right-button"
 
         if viewModel.layout.displayCancelButton {
-            navigationItem.leftBarButtonItem = UIBarButtonItem(title: Localizer.string("button.general.cancel"),
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: Localizer.format(string: "button.general.cancel"),
                                                                style: .plain,
                                                                target: self,
                                                                action: #selector(cancelButtonPressed))

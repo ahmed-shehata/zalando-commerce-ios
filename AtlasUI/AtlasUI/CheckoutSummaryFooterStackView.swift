@@ -66,14 +66,14 @@ extension CheckoutSummaryFooterStackView: UIDataBuilder {
         let isPaypal = viewModel.dataModel.isPayPal
         let readyToCheckout = viewModel.dataModel.isPaymentSelected
 
-        submitButton.setTitle(Localizer.string(viewModel.layout.submitButtonTitle(isPaypal: isPaypal)), for: .normal)
+        submitButton.setTitle(Localizer.format(string: viewModel.layout.submitButtonTitle(isPaypal: isPaypal)), for: .normal)
         submitButton.backgroundColor = viewModel.layout.submitButtonBackgroundColor(readyToCheckout: readyToCheckout)
         submitButton.accessibilityIdentifier = "checkout-footer-button"
     }
 
     private func tocAttributedTitle() -> NSAttributedString {
         let underline = [NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue]
-        return NSAttributedString(string: Localizer.string("summaryView.link.termsAndConditions"), attributes: underline)
+        return NSAttributedString(string: Localizer.format(string: "summaryView.link.termsAndConditions"), attributes: underline)
     }
 
 }

@@ -34,7 +34,7 @@ enum AddressFormField: String {
     }
 
     var title: String {
-        let title = Localizer.string("addressFormView.\(rawValue.lowercased())")
+        let title = Localizer.format(string: "addressFormView.\(rawValue.lowercased())")
         return title + (formValidators.contains { $0 == .required } ? "*" : "")
     }
 

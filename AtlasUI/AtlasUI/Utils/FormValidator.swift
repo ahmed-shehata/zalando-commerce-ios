@@ -16,12 +16,12 @@ enum FormValidator {
         guard !isValid(text) else { return nil }
 
         switch self {
-        case .required: return Localizer.string("formValidation.required")
-        case .minLength(let minLength): return Localizer.string("formValidation.minLength", "\(minLength)")
-        case .maxLength(let maxLength): return Localizer.string("formValidation.maxLength", "\(maxLength)")
-        case .exactLength(let length): return Localizer.string("formValidation.exactLength", "\(length)")
-        case .pattern(_, let errorMessage): return Localizer.string(errorMessage)
-        case .numbersOnly: return Localizer.string("formValidation.numbersOnly")
+        case .required: return Localizer.format(string: "formValidation.required")
+        case .minLength(let minLength): return Localizer.format(string: "formValidation.minLength", "\(minLength)")
+        case .maxLength(let maxLength): return Localizer.format(string: "formValidation.maxLength", "\(maxLength)")
+        case .exactLength(let length): return Localizer.format(string: "formValidation.exactLength", "\(length)")
+        case .pattern(_, let errorMessage): return Localizer.format(string: errorMessage)
+        case .numbersOnly: return Localizer.format(string: "formValidation.numbersOnly")
         }
     }
 

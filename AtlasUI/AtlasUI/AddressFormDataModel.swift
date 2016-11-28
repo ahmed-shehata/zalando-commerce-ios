@@ -97,7 +97,7 @@ extension PickupPoint {
 extension Gender {
 
     fileprivate var title: String {
-        return Localizer.string("addressFormView.gender.\(rawValue.lowercased())")
+        return Localizer.format(string: "addressFormView.gender.\(rawValue.lowercased())")
     }
 
 }

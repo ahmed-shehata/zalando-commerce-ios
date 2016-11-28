@@ -37,11 +37,11 @@ struct CheckoutSummaryDataModel {
 extension CheckoutSummaryDataModel {
 
     var formattedShippingAddress: [String] {
-        return shippingAddress?.splittedFormattedPostalAddress ?? [Localizer.string("summaryView.label.emptyAddress.shipping")]
+        return shippingAddress?.splittedFormattedPostalAddress ?? [Localizer.format(string: "summaryView.label.emptyAddress.shipping")]
     }
 
     var formattedBillingAddress: [String] {
-        return billingAddress?.splittedFormattedPostalAddress ?? [Localizer.string("summaryView.label.emptyAddress.billing")]
+        return billingAddress?.splittedFormattedPostalAddress ?? [Localizer.format(string: "summaryView.label.emptyAddress.billing")]
     }
 
     var isPaymentSelected: Bool {

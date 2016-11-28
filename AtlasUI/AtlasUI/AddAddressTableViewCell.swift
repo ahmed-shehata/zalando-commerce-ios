@@ -20,7 +20,7 @@ class AddAddressTableViewCell: UITableViewCell {
         label.numberOfLines = 0
         label.font = .systemFont(ofSize: 14, weight: UIFontWeightLight)
         label.textColor = UIColor(hex: 0x555555)
-        label.text = Localizer.string("addressListView.add.cellTitle")
+        label.text = Localizer.format(string: "addressListView.add.cellTitle")
         return label
     }()
 

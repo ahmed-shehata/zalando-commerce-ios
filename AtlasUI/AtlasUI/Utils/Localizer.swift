@@ -43,7 +43,7 @@ struct Localizer {
         return (locale as NSLocale).displayName(forKey: NSLocale.Key.countryCode, value: countryCode)
     }
 
-    func string(_ key: String, formatArguments: [CVarArg?]? = nil) -> String {
+    func format(string key: String, formatArguments: [CVarArg?]? = nil) -> String {
         let localizedString = NSLocalizedString(key, bundle: self.localizedStringsBundle, comment: "")
 
         guard let formatArguments = formatArguments, !formatArguments.isEmpty else {
@@ -53,11 +53,11 @@ struct Localizer {
         return String(format: localizedString, arguments: formatArguments.flatMap { $0 })
     }
 
-    func price(_ price: NSNumber) -> String? {
+    func format(price: NSNumber) -> String? {
         return priceFormatter.string(from: price)
     }
 
-    func date(_ date: Date) -> String? {
+    func format(date: Date) -> String? {
         return dateFormatter.string(from: date)
     }
 
@@ -73,20 +73,20 @@ extension Localizer {
         }
     }
 
-    static func string(_ key: String, _ formatArguments: [CVarArg?]) -> String {
-        return shared.string(key, formatArguments: formatArguments.flatMap { $0 })
+    static func format(string: String, _ formatArguments: [CVarArg?]) -> String {
+        return shared.format(string: string, formatArguments: formatArguments.flatMap { $0 })
     }
 
-    static func string(_ key: String, _ formatArguments: CVarArg?...) -> String {
-        return shared.string(key, formatArguments: formatArguments)
+    static func format(string: String, _ formatArguments: CVarArg?...) -> String {
+        return shared.format(string: string, formatArguments: formatArguments)
     }
 
-    static func price(_ price: NSNumber) -> String? {
-        return shared.price(price)
+    static func format(price: NSNumber) -> String? {
+        return shared.format(price: price)
     }
 
-    static func date(_ date: Date) -> String? {
-        return shared.date(date)
+    static func format(date: Date) -> String? {
+        return shared.format(date: date)
     }
 
     static func countryName(forCountryCode countryCode: String?) -> String? {

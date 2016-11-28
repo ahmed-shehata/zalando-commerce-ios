@@ -29,21 +29,21 @@ extension UserPresentable {
     func errorPresentationType() -> ErrorPresentationType { return .banner }
 
     var displayedTitle: String {
-        return shouldDisplayGeneralMessage() ? Localizer.string("AtlasCheckoutError.title") : title()
+        return shouldDisplayGeneralMessage() ? Localizer.format(string: "AtlasCheckoutError.title") : title()
     }
 
     var displayedMessage: String {
-        return shouldDisplayGeneralMessage() ? Localizer.string("AtlasCheckoutError.message.unclassified") : message()
+        return shouldDisplayGeneralMessage() ? Localizer.format(string: "AtlasCheckoutError.message.unclassified") : message()
     }
 
     fileprivate func title() -> String {
-        let errorTitle = Localizer.string(localizedTitleKey)
-        let errorCategoryTitle = Localizer.string("\(type(of: self)).title")
+        let errorTitle = Localizer.format(string: localizedTitleKey)
+        let errorCategoryTitle = Localizer.format(string: "\(type(of: self)).title")
         return errorTitle == localizedTitleKey ? errorCategoryTitle : errorTitle
     }
 
     fileprivate func message() -> String {
-        return customMessage() ?? Localizer.string(localizedMessageKey)
+        return customMessage() ?? Localizer.format(string: localizedMessageKey)
     }
 
 }
@@ -82,7 +82,9 @@ extension AtlasCheckoutError: UserPresentable {
 
     func customMessage() -> String? {
         switch self {
-        case .priceChanged(let newPrice): return Localizer.string("AtlasCheckoutError.message.priceChanged", Localizer.price(newPrice))
+        case .priceChanged(let newPrice):
+            let price = Localizer.format(price: newPrice)
+            return Localizer.format(string: "AtlasCheckoutError.message.priceChanged", price)
         default: return nil
         }
     }

@@ -78,7 +78,7 @@ extension CheckoutSummaryProductStackView: UIDataBuilder {
         articleImageView.setImage(fromUrl: viewModel.article.thumbnailURL)
         brandNameLabel.text = viewModel.article.brand.name
         articleNameLabel.text = viewModel.article.name
-        unitSizeLabel.text = Localizer.string("summaryView.label.unitSize", viewModel.unit.size)
+        unitSizeLabel.text = Localizer.format(string: "summaryView.label.unitSize", viewModel.unit.size)
         unitColorLabel.text = viewModel.article.color
     }
 

@@ -116,7 +116,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
             addressViewController.addressDeletedHandler = { self?.deleted(address: $0) }
             addressViewController.addressSelectedHandler = { self?.select(shippingAddress: $0) }
             addressViewController.actionHandler = LoggedInAddressListActionHandler(addressViewModelCreationStrategy: creationStrategy)
-            addressViewController.title = Localizer.string("addressListView.title.shipping")
+            addressViewController.title = Localizer.format(string: "addressListView.title.shipping")
             AtlasUIViewController.shared?.mainNavigationController.pushViewController(addressViewController, animated: true)
         }
     }
@@ -131,7 +131,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
             addressViewController.addressDeletedHandler = { self?.deleted(address: $0) }
             addressViewController.addressSelectedHandler = { self?.select(billingAddress: $0) }
             addressViewController.actionHandler = LoggedInAddressListActionHandler(addressViewModelCreationStrategy: creationStrategy)
-            addressViewController.title = Localizer.string("addressListView.title.billing")
+            addressViewController.title = Localizer.format(string: "addressListView.title.billing")
             AtlasUIViewController.shared?.mainNavigationController.pushViewController(addressViewController, animated: true)
         }
     }
