@@ -50,12 +50,20 @@ extension UIView {
         leftAnchor.constraint(equalTo: superview.leftAnchor).isActive = true
     }
 
-    func bindTo(superviewAnchor anchor: ViewAnchor, constant: CGFloat = 0) {
+    func bind(toSuperview anchor: ViewAnchor, constant: CGFloat = 0) {
         guard let superview = superview else { return }
         translatesAutoresizingMaskIntoConstraints = false
         let constraint = anchor.constraint(fromView: self, toView: superview)
         constraint.constant = constant
         constraint.isActive = true
+    }
+
+    func bind(edgesTo viewController: UIViewController) {
+        translatesAutoresizingMaskIntoConstraints = false
+        self.topAnchor.constraint(equalTo: viewController.topLayoutGuide.bottomAnchor).isActive = true
+        self.bottomAnchor.constraint(equalTo: viewController.bottomLayoutGuide.topAnchor).isActive = true
+        self.leadingAnchor.constraint(equalTo: viewController.view.leadingAnchor).isActive = true
+        self.trailingAnchor.constraint(equalTo: viewController.view.trailingAnchor).isActive = true
     }
 
     func centerInSuperview() {
@@ -68,13 +76,6 @@ extension UIView {
     func setSquareAspectRatio() {
         translatesAutoresizingMaskIntoConstraints = false
         widthAnchor.constraint(equalTo: heightAnchor, multiplier: 1).isActive = true
-    }
-
-    func bindTo(guidesOf viewController: UIViewController) {
-        self.topAnchor.constraint(equalTo: viewController.topLayoutGuide.bottomAnchor).isActive = true
-        self.bottomAnchor.constraint(equalTo: viewController.bottomLayoutGuide.topAnchor).isActive = true
-        self.leadingAnchor.constraint(equalTo: viewController.view.leadingAnchor).isActive = true
-        self.trailingAnchor.constraint(equalTo: viewController.view.trailingAnchor).isActive = true
     }
 
 }

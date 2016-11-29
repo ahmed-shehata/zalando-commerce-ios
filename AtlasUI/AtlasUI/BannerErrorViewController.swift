@@ -107,13 +107,13 @@ extension BannerErrorViewController: UIBuilder {
     }
 
     func configureConstraints() {
-        containerView.bindTo(superviewAnchor: .top)
-        containerView.bindTo(superviewAnchor: .right)
-        containerView.bindTo(superviewAnchor: .left)
+        containerView.bind(toSuperview: .top)
+        containerView.bind(toSuperview: .right)
+        containerView.bind(toSuperview: .left)
         stackView.fillInSuperview()
 
-        cancelIconLabel.bindTo(superviewAnchor: .top, constant: BannerErrorViewController.topMargin)
-        cancelIconLabel.bindTo(superviewAnchor: .right, constant: -10)
+        cancelIconLabel.bind(toSuperview: .top, constant: BannerErrorViewController.topMargin)
+        cancelIconLabel.bind(toSuperview: .right, constant: -10)
         cancelButton.fillInSuperview()
     }
 

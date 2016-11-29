@@ -14,7 +14,7 @@ struct Async {
 
     @discardableResult
     static func main(_ block: @escaping ()->()) -> Async {
-        return dispatchAsync(on: DispatchQueue.main, block: block)
+        return dispatchAsync(on: .main, block: block)
     }
 
     @discardableResult

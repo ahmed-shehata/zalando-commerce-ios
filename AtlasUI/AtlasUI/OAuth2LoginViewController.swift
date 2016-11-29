@@ -45,7 +45,7 @@ final class OAuth2LoginViewController: UIViewController {
         view.backgroundColor = .white
         view.addSubview(webView)
 
-        webView.bindTo(guidesOf: self)
+        webView.bind(toGuides: self)
 
         webView.loadRequest(URLRequest(url: loginURL))
     }
