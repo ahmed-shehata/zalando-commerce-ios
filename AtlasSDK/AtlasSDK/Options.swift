@@ -75,9 +75,9 @@ extension Options {
     fileprivate static func defaultConfigurationURL(clientId: String, useSandbox: Bool,
                                                     inFormat format: ResponseFormat = .json) -> URL {
         let environment: Environment = useSandbox ? .staging : .production
-        let baseUrl = "https://atlas-config-api.dc.zalan.do"
+        let URL = "https://atlas-config-api.dc.zalan.do"
         let path = "/api/config/\(clientId)-\(environment).\(format)"
-        return URLComponents(validUrl: baseUrl, path: path).validUrl
+        return URLComponents(validURL: URL, path: path).validURL
     }
 
 }

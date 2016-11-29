@@ -6,12 +6,12 @@ import Foundation
 
 extension URL {
 
-    public init(validUrl stringConvertible: URLStringConvertible) {
-        self.init(string: stringConvertible.URLString)! // swiftlint:disable:this force_unwrapping
+    public init(validURL stringConvertible: URLStringConvertible) {
+        self.init(string: stringConvertible.urlString)! // swiftlint:disable:this force_unwrapping
     }
 
-    public init(validUrl stringConvertible: URLStringConvertible, path: String? = nil) {
-        self.init(validUrl: URLComponents(validUrl: stringConvertible, path: path))
+    public init(validURL stringConvertible: URLStringConvertible, path: String? = nil) {
+        self.init(validURL: URLComponents(validURL: stringConvertible, path: path))
     }
 
 }

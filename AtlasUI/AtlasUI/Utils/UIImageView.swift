@@ -7,11 +7,7 @@ import AtlasSDK
 
 extension UIImageView {
 
-    func setImage(fromUrlString urlString: String) {
-        setImage(fromUrl: URL(string: urlString))
-    }
-
-    func setImage(fromUrl url: URL?) {
+    func setImage(from url: URL?) {
         guard let url = url else {
             Async.main {
                 self.image = nil

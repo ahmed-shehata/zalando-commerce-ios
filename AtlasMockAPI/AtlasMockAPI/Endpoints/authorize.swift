@@ -44,7 +44,7 @@ extension HttpServer {
             var params = [String: String]()
             req.parseUrlencodedForm().forEach { params[$0.0] = $0.1 }
 
-            guard let redirectUrl = params["redirect_uri"], params["username"] != nil
+            guard let redirectUri = params["redirect_uri"], params["username"] != nil
             && params["password"] != nil
             && params["realm"] != nil
             && params["response_type"] == "token"
@@ -55,7 +55,7 @@ extension HttpServer {
                 return HttpResponse.badRequest(.json(response as AnyObject))
             }
 
-            return HttpResponse.movedPermanently("\(redirectUrl)#access_token=TOKEN")
+            return HttpResponse.movedPermanently("\(redirectUri)#access_token=TOKEN")
         }
 
     }

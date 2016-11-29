@@ -11,7 +11,7 @@ import AtlasMockAPI
 
 class AtlasAPIClientErrorsTests: AtlasAPIClientBaseTests {
 
-    let clientURL = URL(validUrl: "https://atlas-sdk.api/api/any_endpoint")
+    let clientURL = URL(validURL: "https://atlas-sdk.api/api/any_endpoint")
 
     func testNoDataResponse() {
         let status = HTTPStatus.ok
