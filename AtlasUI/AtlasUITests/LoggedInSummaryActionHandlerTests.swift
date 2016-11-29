@@ -28,21 +28,21 @@ class LoggedInSummaryActionHandlerTests: XCTestCase {
     }
 
     func testNoPaymentMethodSelected() {
-        actionHandler?.handleSubmitButton()
+        actionHandler?.handleSubmit()
         expect(UserMessage.errorDisplayed).toEventually(beTrue())
     }
 
     func testPlaceOrder() {
         guard let dataModel = createDataModel(fromCartCheckout: createCartCheckout()) else { return fail() }
         mockedDataSourceDelegate?.updated(dataModel: dataModel)
-        actionHandler?.handleSubmitButton()
+        actionHandler?.handleSubmit()
         expect(self.mockedDataSourceDelegate?.actionHandler as? OrderPlacedSummaryActionHandler).toNotEventually(beNil())
     }
 
     func testPriceChange() {
         guard let dataModel = createDataModel(fromCheckout: createCartCheckout()?.checkout, totalPrice: MoneyAmount(string: "0.1")) else { return fail() }
         mockedDataSourceDelegate?.updated(dataModel: dataModel)
-        actionHandler?.handleSubmitButton()
+        actionHandler?.handleSubmit()
         expect(UserMessage.errorDisplayed).toEventually(beTrue())
     }
 
@@ -60,13 +60,13 @@ class LoggedInSummaryActionHandlerTests: XCTestCase {
         guard let checkout = actionHandler?.cartCheckout?.checkout else { return fail() }
         actionHandler?.cartCheckout?.checkout = createCheckout(fromCheckout: checkout, payment: Payment(selected: nil, isExternalPayment: nil, selectionPageURL: nil))
 
-        actionHandler?.presentPaymentSelectionScreen()
+        actionHandler?.handlePaymentSelection()
         expect(UserMessage.errorDisplayed).toEventually(beTrue())
     }
 
     func testShowingPaymentSelectionScreenWithEmptyCartCheckout() {
         actionHandler?.cartCheckout = nil
-        actionHandler?.presentPaymentSelectionScreen()
+        actionHandler?.handlePaymentSelection()
         expect(UserMessage.errorDisplayed).toEventually(beTrue())
     }
 
@@ -276,16 +276,16 @@ extension LoggedInSummaryActionHandlerTests {
     }
 
     fileprivate func presentPaymentScreen() -> PaymentViewController? {
-        actionHandler?.presentPaymentSelectionScreen()
+        actionHandler?.handlePaymentSelection()
         expect(AtlasUIViewController.shared?.mainNavigationController.viewControllers.last as? PaymentViewController).toNotEventually(beNil())
         return AtlasUIViewController.shared?.mainNavigationController.viewControllers.last as? PaymentViewController
     }
 
     fileprivate func presentAddressScreen(forShippingAddress isShipping: Bool) -> AddressListViewController? {
         if isShipping {
-            actionHandler?.presentShippingAddressSelectionScreen()
+            actionHandler?.handleShippingAddressSelection()
         } else {
-            actionHandler?.presentBillingAddressSelectionScreen()
+            actionHandler?.handleBillingAddressSelection()
         }
         expect(AtlasUIViewController.shared?.mainNavigationController.viewControllers.last as? AddressListViewController).toNotEventually(beNil())
         return AtlasUIViewController.shared?.mainNavigationController.viewControllers.last as? AddressListViewController
