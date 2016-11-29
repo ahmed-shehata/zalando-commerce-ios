@@ -40,12 +40,9 @@ final class OAuth2LoginViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
                                                             target: self,
                                                             action: .cancelButtonTapped)
-        automaticallyAdjustsScrollViewInsets = false
-
         view.backgroundColor = .white
         view.addSubview(webView)
-
-        webView.bind(toEdges: self)
+        webView.fillInSuperview()
 
         webView.loadRequest(URLRequest(url: loginURL))
     }

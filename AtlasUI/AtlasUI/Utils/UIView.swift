@@ -50,20 +50,12 @@ extension UIView {
         leftAnchor.constraint(equalTo: superview.leftAnchor).isActive = true
     }
 
-    func bind(toSuperview anchor: ViewAnchor, constant: CGFloat = 0) {
+    func snap(toSuperview anchor: ViewAnchor, constant: CGFloat = 0) {
         guard let superview = superview else { return }
         translatesAutoresizingMaskIntoConstraints = false
         let constraint = anchor.constraint(fromView: self, toView: superview)
         constraint.constant = constant
         constraint.isActive = true
-    }
-
-    func bind(toEdges viewController: UIViewController) {
-        translatesAutoresizingMaskIntoConstraints = false
-        self.topAnchor.constraint(equalTo: viewController.topLayoutGuide.bottomAnchor).isActive = true
-        self.bottomAnchor.constraint(equalTo: viewController.bottomLayoutGuide.topAnchor).isActive = true
-        self.leadingAnchor.constraint(equalTo: viewController.view.leadingAnchor).isActive = true
-        self.trailingAnchor.constraint(equalTo: viewController.view.trailingAnchor).isActive = true
     }
 
     func centerInSuperview() {
