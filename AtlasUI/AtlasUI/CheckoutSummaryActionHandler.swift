@@ -25,9 +25,9 @@ protocol CheckoutSummaryActionHandler {
     weak var dataSource: CheckoutSummaryActionHandlerDataSource? { get set }
     weak var delegate: CheckoutSummaryActionHandlerDelegate? { get set }
 
-    func handleSubmitButton()
-    func presentPaymentSelectionScreen()
-    func presentShippingAddressSelectionScreen()
-    func presentBillingAddressSelectionScreen()
+    func handleSubmit()
+    func handlePaymentSelection()
+    func handleShippingAddressSelection()
+    func handleBillingAddressSelection()
 
 }

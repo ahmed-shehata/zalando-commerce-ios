@@ -56,7 +56,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
         self.customer = customer
     }
 
-    func handleSubmitButton() {
+    func handleSubmit() {
         guard let dataSource = dataSource else { return }
         guard dataSource.dataModel.isPaymentSelected else {
             UserMessage.displayError(AtlasCheckoutError.missingAddressAndPayment)
@@ -80,7 +80,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
         }
     }
 
-    func presentPaymentSelectionScreen() {
+    func handlePaymentSelection() {
         guard let paymentURL = cartCheckout?.checkout?.payment.selectionPageURL,
             let callbackURL = AtlasAPIClient.shared?.config.payment.selectionCallbackURL else {
             let error = !hasAddresses ? AtlasCheckoutError.missingAddress : AtlasCheckoutError.unclassified
@@ -106,7 +106,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
         AtlasUIViewController.shared?.mainNavigationController.pushViewController(paymentViewController, animated: true)
     }
 
-    func presentShippingAddressSelectionScreen() {
+    func handleShippingAddressSelection() {
         AtlasUIClient.addresses { [weak self] result in
             guard let userAddresses = result.process() else { return }
             let addresses: [EquatableAddress] = userAddresses.map { $0 }
@@ -121,7 +121,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
         }
     }
 
-    func presentBillingAddressSelectionScreen() {
+    func handleBillingAddressSelection() {
         AtlasUIClient.addresses { [weak self] result in
             guard let userAddresses = result.process() else { return }
             let addresses: [EquatableAddress] = userAddresses.filter { $0.pickupPoint == nil } .map { $0 }

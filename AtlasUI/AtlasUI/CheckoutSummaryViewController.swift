@@ -100,19 +100,19 @@ extension CheckoutSummaryViewController {
 extension CheckoutSummaryViewController {
 
     dynamic fileprivate func submitButtonTapped() {
-        actionHandler?.handleSubmitButton()
+        actionHandler?.handleSubmit()
     }
 
     dynamic fileprivate func shippingAddressTapped() {
-        actionHandler?.presentShippingAddressSelectionScreen()
+        actionHandler?.handleShippingAddressSelection()
     }
 
     dynamic fileprivate func billingAddressTapped() {
-        actionHandler?.presentBillingAddressSelectionScreen()
+        actionHandler?.handleBillingAddressSelection()
     }
 
     dynamic fileprivate func paymentAddressTapped() {
-        actionHandler?.presentPaymentSelectionScreen()
+        actionHandler?.handlePaymentSelection()
     }
 
 }

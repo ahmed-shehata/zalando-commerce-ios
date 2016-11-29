@@ -10,7 +10,7 @@ struct NotLoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
     weak var dataSource: CheckoutSummaryActionHandlerDataSource?
     weak var delegate: CheckoutSummaryActionHandlerDelegate?
 
-    func handleSubmitButton() {
+    func handleSubmit() {
         guard let dataSource = dataSource,
             let delegate = delegate
             else { return }
@@ -30,16 +30,16 @@ struct NotLoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
         }
     }
 
-    func presentPaymentSelectionScreen() {
-        handleSubmitButton()
+    func handlePaymentSelection() {
+        handleSubmit()
     }
 
-    func presentShippingAddressSelectionScreen() {
-        handleSubmitButton()
+    func handleShippingAddressSelection() {
+        handleSubmit()
     }
 
-    func presentBillingAddressSelectionScreen() {
-        handleSubmitButton()
+    func handleBillingAddressSelection() {
+        handleSubmit()
     }
 
 }
