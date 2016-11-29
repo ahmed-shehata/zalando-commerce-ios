@@ -58,7 +58,7 @@ extension UIView {
         constraint.isActive = true
     }
 
-    func bind(edgesTo viewController: UIViewController) {
+    func bind(toEdges viewController: UIViewController) {
         translatesAutoresizingMaskIntoConstraints = false
         self.topAnchor.constraint(equalTo: viewController.topLayoutGuide.bottomAnchor).isActive = true
         self.bottomAnchor.constraint(equalTo: viewController.bottomLayoutGuide.topAnchor).isActive = true
