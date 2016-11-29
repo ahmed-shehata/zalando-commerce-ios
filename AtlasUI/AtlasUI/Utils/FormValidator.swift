@@ -12,7 +12,7 @@ enum FormValidator {
     case pattern(pattern: String, errorMessage: String)
     case numbersOnly
 
-    func errorMessage(_ text: String?) -> String? {
+    func rejectionReason(for text: String?) -> String? {
         guard !isValid(text) else { return nil }
 
         switch self {
