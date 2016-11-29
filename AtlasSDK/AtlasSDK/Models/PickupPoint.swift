@@ -3,15 +3,19 @@
 //
 
 public struct PickupPoint {
+
     public let id: String
     public let name: String
     public let memberId: String
+    
 }
 
 extension PickupPoint: Hashable {
+
     public var hashValue: Int {
         return id.hashValue
     }
+
 }
 
 public func == (lhs: PickupPoint, rhs: PickupPoint) -> Bool {
@@ -19,14 +23,17 @@ public func == (lhs: PickupPoint, rhs: PickupPoint) -> Bool {
 }
 
 extension PickupPoint {
+
     fileprivate struct Keys {
         static let id = "id"
         static let name = "name"
         static let memberId = "member_id"
     }
+
 }
 
 extension PickupPoint: JSONInitializable {
+
     init?(json: JSON) {
         guard let id = json[Keys.id].string,
             let name = json[Keys.name].string,
@@ -34,14 +41,17 @@ extension PickupPoint: JSONInitializable {
             else { return nil }
         self.init(id: id, name: name, memberId: memberId)
     }
+
 }
 
 extension PickupPoint: JSONRepresentable {
-    func toJSON() -> [String: AnyObject] {
+
+    func toJSON() -> [String: Any] {
         return [
-            Keys.id: id as AnyObject,
-            Keys.name: name as AnyObject,
-            Keys.memberId: memberId as AnyObject
+            Keys.id: id,
+            Keys.name: name,
+            Keys.memberId: memberId
         ]
     }
+
 }

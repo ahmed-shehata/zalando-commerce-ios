@@ -32,25 +32,25 @@ extension CreateAddressRequest: JSONRepresentable {
         static let defaultShipping = "default_shipping"
     }
 
-    func toJSON() -> [String: AnyObject] {
-        var result: [String: AnyObject] = [
-            Keys.gender: gender.rawValue as AnyObject,
-            Keys.firstName: firstName as AnyObject,
-            Keys.lastName: lastName as AnyObject,
-            Keys.zip: zip as AnyObject,
-            Keys.city: city as AnyObject,
-            Keys.countryCode: countryCode as AnyObject,
-            Keys.defaultBilling: defaultBilling as AnyObject,
-            Keys.defaultShipping: defaultShipping as AnyObject
+    func toJSON() -> [String: Any] {
+        var result: [String: Any] = [
+            Keys.gender: gender.rawValue,
+            Keys.firstName: firstName,
+            Keys.lastName: lastName,
+            Keys.zip: zip,
+            Keys.city: city,
+            Keys.countryCode: countryCode,
+            Keys.defaultBilling: defaultBilling,
+            Keys.defaultShipping: defaultShipping
         ]
         if let street = street {
-            result[Keys.street] = street as AnyObject?
+            result[Keys.street] = street
         }
         if let additional = additional {
-            result[Keys.additional] = additional as AnyObject?
+            result[Keys.additional] = additional
         }
         if let pickupPoint = pickupPoint {
-            result[Keys.pickupPoint] = pickupPoint.toJSON() as AnyObject?
+            result[Keys.pickupPoint] = pickupPoint.toJSON()
         }
         return result
     }

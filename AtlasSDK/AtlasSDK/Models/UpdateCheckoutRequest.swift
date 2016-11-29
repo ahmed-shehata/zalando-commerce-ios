@@ -21,14 +21,14 @@ extension UpdateCheckoutRequest: JSONRepresentable {
         static let shippingAddressId = "shipping_address_id"
     }
 
-    func toJSON() -> [String: AnyObject] {
-        var result = [String: AnyObject]()
+    func toJSON() -> [String: Any] {
+        var result = [String: Any]()
 
         if let billingAddressId = billingAddressId, !billingAddressId.isEmpty {
-            result[Keys.billingAddressId] = billingAddressId as AnyObject?
+            result[Keys.billingAddressId] = billingAddressId
         }
         if let shippingAddressId = shippingAddressId, !shippingAddressId.isEmpty {
-            result[Keys.shippingAddressId] = shippingAddressId as AnyObject?
+            result[Keys.shippingAddressId] = shippingAddressId
         }
         return result
     }

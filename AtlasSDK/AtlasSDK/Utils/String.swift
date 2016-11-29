@@ -11,7 +11,7 @@ extension String {
         return string.replacingOccurrences(of: "  ", with: "")
     }
 
-    init?(withJSONObject json: [String: AnyObject]?,
+    init?(withJSONObject json: [String: Any]?,
           options: JSONSerialization.WritingOptions = [.prettyPrinted],
           encoding: Encoding = .utf8) {
         guard let json = json,

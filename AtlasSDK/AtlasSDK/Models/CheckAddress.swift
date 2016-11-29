@@ -36,17 +36,17 @@ extension CheckAddress: JSONInitializable {
 
 extension CheckAddress: JSONRepresentable {
 
-    func toJSON() -> [String : AnyObject] {
-        var result: [String: AnyObject] = [
-            Keys.zip: zip as AnyObject,
-            Keys.city: city as AnyObject,
-            Keys.countryCode: countryCode as AnyObject
+    func toJSON() -> [String : Any] {
+        var result: [String: Any] = [
+            Keys.zip: zip,
+            Keys.city: city,
+            Keys.countryCode: countryCode
         ]
         if let street = street {
-            result[Keys.street] = street as AnyObject?
+            result[Keys.street] = street
         }
         if let additional = additional {
-            result[Keys.additional] = additional as AnyObject?
+            result[Keys.additional] = additional
         }
         return result
     }
