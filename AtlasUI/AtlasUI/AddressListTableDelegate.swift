@@ -43,13 +43,13 @@ extension AddressListTableDelegate: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard indexPath.row < addresses.count else {
-            return tableView.dequeueReusableCell(AddAddressTableViewCell.self, forIndexPath: indexPath) { cell in
+            return tableView.dequeueReusableCell(of: AddAddressTableViewCell.self, at: indexPath) { cell in
                 cell.accessibilityIdentifier = "addresses-table-create-address-cell"
                 return cell
             }
         }
 
-        return tableView.dequeueReusableCell(AddressRowViewCell.self, forIndexPath: indexPath) { cell in
+        return tableView.dequeueReusableCell(of: AddressRowViewCell.self, at: indexPath) { cell in
             let address = self.addresses[indexPath.item]
             cell.configure(viewModel: address)
 

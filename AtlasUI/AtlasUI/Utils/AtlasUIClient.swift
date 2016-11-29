@@ -7,7 +7,7 @@ import AtlasSDK
 
 struct AtlasUIClient {
 
-    static func customer(_ completion: @escaping CustomerCompletion) {
+    static func customer(completion: @escaping CustomerCompletion) {
         UserMessage.displayLoader { hideLoader in
             AtlasAPIClient.shared?.customer { result in
                 hideLoader()
@@ -71,7 +71,7 @@ struct AtlasUIClient {
         }
     }
 
-    static func addresses(_ completion: @escaping AddressesCompletion) {
+    static func addresses(completion: @escaping AddressesCompletion) {
         UserMessage.displayLoader { hideLoader in
             AtlasAPIClient.shared?.addresses { result in
                 hideLoader()

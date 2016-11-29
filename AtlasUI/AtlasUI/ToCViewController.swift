@@ -7,7 +7,7 @@ import AtlasSDK
 
 typealias WebViewLoadedCompletion = (_ request: URL?, _ error: Error?, _ status: HTTPStatus) -> Void
 
-final class ToCViewController: UIViewController, UIWebViewDelegate {
+final class ToCViewController: UIViewController {
 
     fileprivate var loadedCompletion: WebViewLoadedCompletion? {
         willSet {
@@ -41,6 +41,10 @@ final class ToCViewController: UIViewController, UIWebViewDelegate {
         request.setValue("AtlasSDK", forHTTPHeaderField: "X-Zalando-Mobile-App")
         webView.loadRequest(request as URLRequest)
     }
+
+}
+
+extension ToCViewController: UIWebViewDelegate {
 
     func webViewDidFinishLoad(_ webView: UIWebView) {
         didLoad(webView: webView)

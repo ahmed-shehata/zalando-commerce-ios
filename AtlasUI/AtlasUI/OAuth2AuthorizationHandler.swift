@@ -10,11 +10,7 @@ typealias AuthorizationCompletion = (AtlasResult<AuthorizationToken>) -> Void
 
 struct OAuth2AuthorizationHandler {
 
-    init() {
-
-    }
-
-    func authorize(_ completion: @escaping AuthorizationCompletion) {
+    func authorize(completion: @escaping AuthorizationCompletion) {
         guard let loginURL = AtlasAPIClient.shared?.config.loginURL else { return }
         guard let topViewController = UIApplication.topViewController() else {
             return completion(.failure(AtlasLoginError.missingViewControllerToShowLoginForm))

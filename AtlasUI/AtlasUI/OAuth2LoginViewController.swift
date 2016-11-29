@@ -49,11 +49,10 @@ final class OAuth2LoginViewController: UIViewController {
 
     @discardableResult
     fileprivate func dismissViewController(withFailure error: AtlasLoginError, animated: Bool = true) -> Bool {
-        return dismissViewController(.failure(error), animated: animated)
+        return dismissViewController(with: .failure(error), animated: animated)
     }
 
-    @discardableResult
-    fileprivate func dismissViewController(_ result: AuthorizationResult, animated: Bool = true) -> Bool {
+    fileprivate func dismissViewController(with result: AuthorizationResult, animated: Bool = true) -> Bool {
         dismiss(animated: animated) {
             self.loginCompletion?(result)
         }
@@ -65,7 +64,7 @@ final class OAuth2LoginViewController: UIViewController {
         }
     }
 
-    @objc fileprivate func cancelButtonTapped(_ sender: UIBarButtonItem) {
+    @objc fileprivate func cancelButtonTapped() {
         dismiss(animated: true, completion: nil)
     }
 
@@ -73,7 +72,7 @@ final class OAuth2LoginViewController: UIViewController {
 
 private extension Selector {
 
-    static let cancelButtonTapped = #selector(OAuth2LoginViewController.cancelButtonTapped(_:))
+    static let cancelButtonTapped = #selector(OAuth2LoginViewController.cancelButtonTapped)
 
 }
 
@@ -93,7 +92,7 @@ extension OAuth2LoginViewController: UIWebViewDelegate {
             return true
         }
 
-        return dismissViewController(.success(token))
+        return dismissViewController(with: .success(token))
     }
 
     func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {

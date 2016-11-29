@@ -49,7 +49,7 @@ enum AddressFormField: String {
         }
     }
 
-    func customView(_ dataModel: AddressFormDataModel, completion: @escaping TextFieldChangedHandler) -> UIView? {
+    func customView(from dataModel: AddressFormDataModel, completion: @escaping TextFieldChangedHandler) -> UIView? {
         switch self {
         case .title:
             return PickerKeyboardInputView(pickerData: dataModel.titles,

@@ -60,7 +60,7 @@ extension AtlasUI {
 
     fileprivate static let injector = Injector()
 
-    static func register<T>(_ factory: @escaping (Void) -> T) {
+    static func register<T>(factory: @escaping (Void) -> T) {
         injector.register(factory)
     }
 

@@ -174,7 +174,7 @@ extension LoggedInSummaryActionHandlerTests {
         var loggedInActionHandler: LoggedInSummaryActionHandler?
         waitUntil(timeout: 10) { done in
             let sku = "AD541L009-G11"
-            self.registerAtlasUIViewController(sku) {
+            self.registerAtlasUIViewController(forSKU: sku) {
                 AtlasUIClient.customer { result in
                     guard let customer = result.process() else { return fail() }
                     AtlasUIClient.article(withSKU: sku) { result in
@@ -209,7 +209,7 @@ extension LoggedInSummaryActionHandlerTests {
         return cartCheckout
     }
 
-    fileprivate func registerAtlasUIViewController(_ sku: String, completion: @escaping () -> Void) {
+    fileprivate func registerAtlasUIViewController(forSKU sku: String, completion: @escaping () -> Void) {
         let options = Options(clientId: "CLIENT_ID",
                               salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
                               interfaceLanguage: "en",
@@ -217,7 +217,7 @@ extension LoggedInSummaryActionHandlerTests {
 
         AtlasUI.configure(options: options) { _ in
             let atlasUIViewController = AtlasUIViewController(forSKU: sku)
-            let _  = atlasUIViewController.view // load the view
+            _ = atlasUIViewController.view // load the view
             AtlasUI.register { atlasUIViewController }
             completion()
         }

@@ -53,7 +53,7 @@ extension SizeListSelectionViewController: UIBuilder {
         view.addSubview(tableView)
         view.backgroundColor = .clear
         view.isOpaque = false
-        tableView.registerReusableCell(UnitSizeTableViewCell.self)
+        tableView.registerReusableCell(for: UnitSizeTableViewCell.self)
         showCancelButton()
     }
 

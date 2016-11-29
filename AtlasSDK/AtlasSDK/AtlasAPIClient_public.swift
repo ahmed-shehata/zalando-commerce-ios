@@ -159,7 +159,7 @@ extension AtlasAPIClient {
         touch(endpoint: endpoint, completion: completion)
     }
 
-    public func createAddress(request: CreateAddressRequest, completion: @escaping AddressCreateUpdateCompletion) {
+    public func createAddress(_ request: CreateAddressRequest, completion: @escaping AddressCreateUpdateCompletion) {
         let endpoint = CreateAddressEndpoint(serviceURL: config.checkoutURL,
                                              createAddressRequest: request,
                                              salesChannel: config.salesChannel.identifier)
@@ -176,7 +176,7 @@ extension AtlasAPIClient {
         fetch(from: endpoint, completion: completion)
     }
 
-    public func checkAddress(request: CheckAddressRequest, completion: @escaping CheckAddressCompletion) {
+    public func checkAddress(_ request: CheckAddressRequest, completion: @escaping CheckAddressCompletion) {
         let endpoint = CheckAddressEndpoint(serviceURL: config.checkoutURL,
                                             checkAddressRequest: request,
                                             salesChannel: config.salesChannel.identifier)

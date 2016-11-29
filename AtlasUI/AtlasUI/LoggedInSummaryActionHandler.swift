@@ -142,7 +142,7 @@ extension LoggedInSummaryActionHandler {
 
     fileprivate func handleConfirmation(forOrder order: Order) {
         guard let paymentURL = order.externalPaymentURL else {
-            presentConfirmationScreen(order)
+            presentConfirmationScreen(for: order)
             return
         }
 
@@ -154,7 +154,7 @@ extension LoggedInSummaryActionHandler {
         let paymentViewController = PaymentViewController(paymentURL: paymentURL, callbackURL: callbackURL)
         paymentViewController.paymentCompletion = { [weak self] paymentStatus in
             switch paymentStatus {
-            case .success: self?.presentConfirmationScreen(order)
+            case .success: self?.presentConfirmationScreen(for: order)
             case .redirect, .cancel: break
             case .error: UserMessage.displayError(AtlasCheckoutError.unclassified)
             }
@@ -162,7 +162,7 @@ extension LoggedInSummaryActionHandler {
         AtlasUIViewController.shared?.mainNavigationController.pushViewController(paymentViewController, animated: true)
     }
 
-    fileprivate func presentConfirmationScreen(_ order: Order) {
+    fileprivate func presentConfirmationScreen(for order: Order) {
         guard let dataSource = dataSource, let delegate = delegate else { return }
         let selectedArticleUnit = dataSource.dataModel.selectedArticleUnit
         let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, checkout: cartCheckout?.checkout, order: order)

@@ -21,7 +21,7 @@ extension SizeListTableViewDataSource: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(UnitSizeTableViewCell.self, forIndexPath: indexPath) { cell in
+        return tableView.dequeueReusableCell(of: UnitSizeTableViewCell.self, at: indexPath) { cell in
             let unit = self.article.availableUnits[indexPath.item]
             cell.configure(viewModel: unit)
             cell.accessibilityIdentifier = "size-cell-\(indexPath.row)"

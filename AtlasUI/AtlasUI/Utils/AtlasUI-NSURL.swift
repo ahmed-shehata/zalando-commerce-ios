@@ -16,35 +16,35 @@ extension URL {
     }
 
     var accessToken: String? {
-        return queryItemValue(.accessToken) ?? fragmentValue(.accessToken)
+        return queryItemValue(for: .accessToken) ?? fragmentValue(for: .accessToken)
     }
 
     var isAccessDenied: Bool {
-        return hasQueryItem(.error, value: .accessDenied)
+        return hasQueryItem(with: .error, value: .accessDenied)
     }
 
-    func queryItemValue(_ key: QueryItemKey) -> String? {
+    private func queryItemValue(for key: QueryItemKey) -> String? {
         let urlComponents = URLComponents(url: self, resolvingAgainstBaseURL: false)
         let queryAccessToken = urlComponents?.queryItems?.filter { $0.name == key.rawValue }.last
         return queryAccessToken?.value
     }
 
-    func hasQueryItem(_ key: QueryItemKey, value: QueryItemValue? = nil) -> Bool {
-        return hasQueryItem(key, value: value?.rawValue)
+    private func hasQueryItem(with key: QueryItemKey, value: QueryItemValue? = nil) -> Bool {
+        return hasQueryItem(with: key, value: value?.rawValue)
     }
 
-    func hasQueryItem(_ key: QueryItemKey, value: String? = nil) -> Bool {
+    private func hasQueryItem(with key: QueryItemKey, value: String? = nil) -> Bool {
         let urlComponents = URLComponents(url: self, resolvingAgainstBaseURL: false)
         let queryAccessToken = urlComponents?.queryItems?.filter { $0.name == key.rawValue && (value == nil || $0.value == value) }.last
         return queryAccessToken != nil
     }
 
-    func fragmentValue(_ key: QueryItemKey) -> String? {
+    private func fragmentValue(for key: QueryItemKey) -> String? {
         guard var urlComponents = URLComponents(url: self, resolvingAgainstBaseURL: false),
             let fragment = urlComponents.fragment else { return nil }
 
         urlComponents.query = fragment
-        return urlComponents.url?.queryItemValue(key)
+        return urlComponents.url?.queryItemValue(for: key)
     }
 
 }

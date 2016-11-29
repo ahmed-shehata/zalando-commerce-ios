@@ -34,7 +34,7 @@ extension AddressFormStackView: UIDataBuilder {
             let value = viewModel.value(forField: fieldType)
             let isActive = fieldType.isActive()
 
-            let customView = fieldType.customView(viewModel) { text in
+            let customView = fieldType.customView(from: viewModel) { text in
                 viewModel.update(value: text, fromField: fieldType)
                 textFieldInputView.textField.text = text
                 textFieldInputView.configureTitleLabel()
