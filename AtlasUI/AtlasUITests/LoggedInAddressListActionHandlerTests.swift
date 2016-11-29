@@ -73,7 +73,7 @@ extension LoggedInAddressListActionHandlerTests {
                                   interfaceLanguage: "en",
                                   configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
 
-            AtlasUI.configure(options) { _ in
+            AtlasUI.configure(options) { _   in
                 atlasUIViewController = AtlasUIViewController(forProductSKU: "AD541L009-G11")
                 guard let viewController = atlasUIViewController else { return fail() }
                 self.window.rootViewController = viewController
@@ -131,7 +131,7 @@ class AddressViewModelCreationStrategyMock: AddressViewModelCreationStrategy {
 
     var completion: AddressViewModelCreationStrategyCompletion?
 
-    func setStrategyCompletion(completion: AddressViewModelCreationStrategyCompletion?) {
+    func configure(withTitle titleLocalizedKey: String?, completion: AddressViewModelCreationStrategyCompletion?) {
         self.completion = completion
     }
 

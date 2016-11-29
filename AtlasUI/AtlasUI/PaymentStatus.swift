@@ -2,7 +2,7 @@
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
-enum PaymentStatus {
+enum PaymentStatus: Equatable {
 
     case guestRedirect(encryptedCheckoutId: String, encryptedToken: String)
     case redirect
@@ -56,4 +56,16 @@ enum PaymentStatus {
         }
     }
 
+}
+
+func == (lhs: PaymentStatus, rhs: PaymentStatus) -> Bool {
+    switch (lhs, rhs) {
+    case (.guestRedirect(let lhsCheckoutId, let lhsToken), .guestRedirect(let rhsCheckoutId, let rhsToken)):
+        return lhsCheckoutId == rhsCheckoutId && lhsToken == rhsToken
+    case (.redirect, .redirect): return true
+    case (.success, .success): return true
+    case (.cancel, .cancel): return true
+    case (.error, .error): return true
+    default: return false
+    }
 }

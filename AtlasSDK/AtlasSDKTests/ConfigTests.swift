@@ -29,6 +29,7 @@ class ConfigTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
+        let gateway = "http://localhost.charlesproxy.com:9080"
         configLocale = "\(configLanguage)_\(configCountry)"
         json = JSON(
             [
@@ -37,6 +38,7 @@ class ConfigTests: XCTestCase {
                 ["locale": configLocale, "sales-channel": salesChannelId, "toc_url": tocURL],
             ],
             "atlas-catalog-api": ["url": catalogURL.absoluteString!],
+            "atlas-checkout-gateway": ["url": gateway],
             "atlas-checkout-api": [
                 "url": checkoutURL.absoluteString!,
                 "payment": [

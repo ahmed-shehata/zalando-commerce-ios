@@ -21,6 +21,17 @@ class PaymentViewControllerTests: XCTestCase {
         try! AtlasMockAPI.stopServer()
     }
 
+    func testGuestRedirectStatus() {
+        guard let paymentViewController = self.paymentViewController(.guestRedirect(encryptedCheckoutId: "encryptedCheckoutId", encryptedToken: "encryptedToken")) else { return }
+        waitUntil(timeout: 10) { done in
+            let _ = paymentViewController.view // load the view
+            paymentViewController.paymentCompletion = { result in
+                expect(result).to(equal(PaymentStatus.guestRedirect(encryptedCheckoutId: "encryptedCheckoutId", encryptedToken: "encryptedToken")))
+                done()
+            }
+        }
+    }
+
     func testRedirectStatus() {
         guard let paymentViewController = self.paymentViewController(.redirect) else { return }
         waitUntil(timeout: 10) { done in
@@ -70,15 +81,27 @@ class PaymentViewControllerTests: XCTestCase {
 extension PaymentViewControllerTests {
 
     private func paymentViewController(status: PaymentStatus) -> PaymentViewController? {
-        guard let callbackURL = NSURL(string: "http://de.zalando.atlas.AtlasCheckoutDemo/redirect") else { return nil }
+        let callbackURL: String
         let redirectURL: String
-        if status == .redirect {
+        switch status {
+        case .guestRedirect(let encryptedCheckoutId, let encryptedToken):
+            callbackURL = "http://localhost.charlesproxy.com:9080/redirect"
+            redirectURL = "http://localhost.charlesproxy.com:9080/redirect/\(encryptedCheckoutId)/\(encryptedToken)"
+        case .redirect:
+            callbackURL = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect"
             redirectURL = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect"
-        } else {
-            redirectURL = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect%3F\(PaymentStatus.statusKey)%3D\(status.rawValue)"
+        case .success:
+            callbackURL = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect"
+            redirectURL = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect%3F\(PaymentStatus.statusKey)%3Dsuccess"
+        case .cancel:
+            callbackURL = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect"
+            redirectURL = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect%3F\(PaymentStatus.statusKey)%3Dcancel"
+        case .error:
+            callbackURL = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect"
+            redirectURL = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect%3F\(PaymentStatus.statusKey)%3Derror"
         }
         let url = AtlasMockAPI.endpointURL(forPath: "/redirect", queryItems: [NSURLQueryItem(name: "url", value: redirectURL)])
-        return PaymentViewController(paymentURL: url, callbackURL: callbackURL)
+        return PaymentViewController(paymentURL: url, callbackURL: NSURL(string: callbackURL)!)
     }
 
 }

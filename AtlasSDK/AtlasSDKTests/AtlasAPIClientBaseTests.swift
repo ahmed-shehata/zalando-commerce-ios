@@ -59,6 +59,7 @@ class AtlasAPIClientBaseTests: XCTestCase {
         let apiURL = AtlasMockAPI.endpointURL(forPath: "/")
         let loginURL = AtlasMockAPI.endpointURL(forPath: "/oauth2/authorize")
         let callback = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect"
+        let gateway = "http://localhost.charlesproxy.com:9080"
 
         let json = JSON(
             [
@@ -70,6 +71,7 @@ class AtlasAPIClientBaseTests: XCTestCase {
                     ]
                 ],
                 "atlas-catalog-api": ["url": apiURL.absoluteString!],
+                "atlas-checkout-gateway": ["url": gateway],
                 "atlas-checkout-api": [
                     "url": apiURL.absoluteString!,
                     "payment": [

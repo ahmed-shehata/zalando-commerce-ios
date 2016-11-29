@@ -83,6 +83,9 @@
     "atlas-catalog-api": {
         "url": "http://localhost.charlesproxy.com:9080"
     },
+    "atlas-checkout-gateway": {
+        "url": "http://localhost.charlesproxy.com:9080"
+    },
     "atlas-checkout-api": {
         "url": "http://localhost.charlesproxy.com:9080",
         "payment":
