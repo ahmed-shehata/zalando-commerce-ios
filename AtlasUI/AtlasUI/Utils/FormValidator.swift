@@ -36,8 +36,8 @@ enum FormValidator {
         case .minLength(let minLength): return trimmedLength(text) >= minLength
         case .maxLength(let maxLength): return trimmedLength(text) <= maxLength
         case .exactLength(let length): return text?.trimmed().length == length
-        case .pattern(let pattern, _): return isPatternValid(pattern, text: text)
-        case .numbersOnly: return isPatternValid("^[0-9]+$", text: text)
+        case .pattern(let pattern, _): return isValid(pattern: pattern, text: text)
+        case .numbersOnly: return isValid(pattern: "^[0-9]+$", text: text)
         }
     }
 
@@ -45,11 +45,9 @@ enum FormValidator {
         return text?.trimmed().length ?? 0
     }
 
-    private func isPatternValid(_ pattern: String, text: String?) -> Bool {
+    private func isValid(pattern: String, text: String?) -> Bool {
         guard let trimmedText = text?.trimmed(), !trimmedText.isEmpty else { return true }
-
-        let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive)
-        return regex?.firstMatch(in: trimmedText, options: [], range: NSRange(location: 0, length: trimmedText.length)) != nil
+        return trimmedText.matches(pattern: pattern)
     }
 
 }

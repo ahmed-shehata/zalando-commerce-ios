@@ -18,6 +18,15 @@ extension String {
         return replacingOccurrences(of: "\n", with: " ")
     }
 
+    func range() -> NSRange {
+        return NSRange(location: 0, length: (self as NSString).length)
+    }
+
+    func matches(pattern: String, options: NSRegularExpression.Options = .caseInsensitive) -> Bool {
+        let regex = try? NSRegularExpression(pattern: pattern, options: options)
+        return regex?.firstMatch(in: self, options: [], range: self.range()) != nil
+    }
+
 }
 
 postfix operator ~?
