@@ -26,7 +26,7 @@ class AppSetup {
         return atlasClient != nil && options != nil
     }
 
-    static func configure(_ completion: @escaping AppSetupCompletion) {
+    static func configure(completion: @escaping AppSetupCompletion) {
         prepareMockAPI()
         prepareApp()
 
