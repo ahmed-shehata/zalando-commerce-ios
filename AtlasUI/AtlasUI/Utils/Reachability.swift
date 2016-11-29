@@ -49,17 +49,17 @@ func callback(reachability: SCNetworkReachability, flags: SCNetworkReachabilityF
 
     guard let info = info else { return }
 
-    let reachability = Unmanaged<AtlasUI_Reachability>.fromOpaque(info).takeUnretainedValue()
+    let reachability = Unmanaged<Reachability>.fromOpaque(info).takeUnretainedValue()
 
     DispatchQueue.main.async {
         reachability.reachabilityChanged()
     }
 }
 
-class AtlasUI_Reachability {
+class Reachability {
 
-    typealias NetworkReachable = (AtlasUI_Reachability) -> ()
-    typealias NetworkUnreachable = (AtlasUI_Reachability) -> ()
+    typealias NetworkReachable = (Reachability) -> ()
+    typealias NetworkUnreachable = (Reachability) -> ()
 
     enum NetworkStatus: CustomStringConvertible {
 
@@ -147,7 +147,7 @@ class AtlasUI_Reachability {
     }
 }
 
-extension AtlasUI_Reachability {
+extension Reachability {
 
     // MARK: - *** Notifier methods ***
     func startNotifier() throws {
@@ -155,7 +155,7 @@ extension AtlasUI_Reachability {
         guard let reachabilityRef = reachabilityRef, !notifierRunning else { return }
 
         var context = SCNetworkReachabilityContext(version: 0, info: nil, retain: nil, release: nil, copyDescription: nil)
-        context.info = UnsafeMutableRawPointer(Unmanaged<AtlasUI_Reachability>.passUnretained(self).toOpaque())
+        context.info = UnsafeMutableRawPointer(Unmanaged<Reachability>.passUnretained(self).toOpaque())
         if !SCNetworkReachabilitySetCallback(reachabilityRef, callback, &context) {
             stopNotifier()
             throw ReachabilityError.UnableToSetCallback
@@ -234,7 +234,7 @@ extension AtlasUI_Reachability {
     }
 }
 
-fileprivate extension AtlasUI_Reachability {
+fileprivate extension Reachability {
 
     func reachabilityChanged() {
 
