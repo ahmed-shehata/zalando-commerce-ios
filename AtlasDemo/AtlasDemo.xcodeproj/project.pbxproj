@@ -30,23 +30,23 @@
 		7449525A39F475B6C68F497A3A3CA7FA /* BuddyBuildSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37F1FE1DEBE7C2CDF69A44C574EB2CE7 /* BuddyBuildSDK.framework */; };
 		7B1C78AE089D3132077309EC6E12D4C4 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70D0DBF19E7CD929E402B3987A071587 /* AssetsLibrary.framework */; };
 		80EAF118A2EFF34CF406B0059F8B61E6 /* ArticlesClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71AFAF33E121C103808CE6C2F4B14B6 /* ArticlesClient.swift */; };
-		813D44A71DE5117800CAB1B0 /* AtlasMockAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 813D44A41DE5117800CAB1B0 /* AtlasMockAPI.framework */; };
-		813D44A81DE5117800CAB1B0 /* AtlasSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 813D44A51DE5117800CAB1B0 /* AtlasSDK.framework */; };
-		813D44A91DE5117800CAB1B0 /* AtlasUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 813D44A61DE5117800CAB1B0 /* AtlasUI.framework */; };
-		813D44AB1DE512AF00CAB1B0 /* AtlasMockAPI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 813D44A41DE5117800CAB1B0 /* AtlasMockAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		813D44AC1DE512AF00CAB1B0 /* AtlasSDK.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 813D44A51DE5117800CAB1B0 /* AtlasSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		813D44AD1DE512AF00CAB1B0 /* AtlasUI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 813D44A61DE5117800CAB1B0 /* AtlasUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		813D44AF1DE512FF00CAB1B0 /* AtlasMockAPI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 813D44A41DE5117800CAB1B0 /* AtlasMockAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		813D44B01DE512FF00CAB1B0 /* AtlasSDK.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 813D44A51DE5117800CAB1B0 /* AtlasSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		813D44B11DE512FF00CAB1B0 /* AtlasUI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 813D44A61DE5117800CAB1B0 /* AtlasUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		81E106861DEC54C600FD95A6 /* Swifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D15645E9195207A25A4D56198499AE7 /* Swifter.framework */; };
-		81E106871DEC54C600FD95A6 /* Swifter.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 1D15645E9195207A25A4D56198499AE7 /* Swifter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		81E106881DEC54C600FD95A6 /* SwiftHTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD3778CF4B0F93EE5191DF4F8D3C518 /* SwiftHTTP.framework */; };
-		81E106891DEC54C600FD95A6 /* SwiftHTTP.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD3778CF4B0F93EE5191DF4F8D3C518 /* SwiftHTTP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		81E1068A1DEC54C600FD95A6 /* Nuke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F9BDB072FD0595FBC1302107487559C /* Nuke.framework */; };
-		81E1068B1DEC54C600FD95A6 /* Nuke.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 6F9BDB072FD0595FBC1302107487559C /* Nuke.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		81E1068C1DEC54C600FD95A6 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35CA68DACB839A1478B037F75B4718A9 /* SwiftyJSON.framework */; };
-		81E1068D1DEC54C600FD95A6 /* SwiftyJSON.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 35CA68DACB839A1478B037F75B4718A9 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		65A6DBFB34A8DD425710B6F3FDEB82E3 /* AtlasMockAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 400508DFC64A49E6ECB6AC89CF040BEE /* AtlasMockAPI.framework */; };
+		5B75F0E38964DD09768A8A20A46F81A4 /* AtlasSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C17735AA3650A838A0716B1CA9222AF /* AtlasSDK.framework */; };
+		519DFB7C62476E995A4EE56821FA31D4 /* AtlasUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1A7A0B5C279F22FC02C6B5E54125FD2 /* AtlasUI.framework */; };
+		E9CFD6BFA89DE23D6DB0C5B8469D3CF3 /* AtlasMockAPI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 400508DFC64A49E6ECB6AC89CF040BEE /* AtlasMockAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		968AADD1A82227BDAD19F1456B498E21 /* AtlasSDK.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 9C17735AA3650A838A0716B1CA9222AF /* AtlasSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		865FBD178438F346C50223D31BCFE2BB /* AtlasUI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = A1A7A0B5C279F22FC02C6B5E54125FD2 /* AtlasUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		501C7BFF1ADC3D4CEDEF3448B1584B6D /* AtlasMockAPI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 400508DFC64A49E6ECB6AC89CF040BEE /* AtlasMockAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DD1713AFBB45F179703F27E8F8C6F863 /* AtlasSDK.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 9C17735AA3650A838A0716B1CA9222AF /* AtlasSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		967FEF000A11FCD3EA0644E15064AC48 /* AtlasUI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = A1A7A0B5C279F22FC02C6B5E54125FD2 /* AtlasUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		38B292015D6EB859824E22C09CB154F9 /* Swifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D15645E9195207A25A4D56198499AE7 /* Swifter.framework */; };
+		E09393D6841BD5B02BAF1F879FA14420 /* Swifter.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 1D15645E9195207A25A4D56198499AE7 /* Swifter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CFAD7A2119559691BF01E0E84EFD479A /* SwiftHTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD3778CF4B0F93EE5191DF4F8D3C518 /* SwiftHTTP.framework */; };
+		4C1EEA896DC0FBA0112CE058A8A90348 /* SwiftHTTP.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD3778CF4B0F93EE5191DF4F8D3C518 /* SwiftHTTP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EE7374754508E203252E55A91A2A8167 /* Nuke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F9BDB072FD0595FBC1302107487559C /* Nuke.framework */; };
+		E39AF4AF3A83F07266F020D5E6D3A55C /* Nuke.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 6F9BDB072FD0595FBC1302107487559C /* Nuke.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A6004F8D3EAD48FB4D199E71519FA3CE /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35CA68DACB839A1478B037F75B4718A9 /* SwiftyJSON.framework */; };
+		78A57477448129E64F7355ED5936579D /* SwiftyJSON.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 35CA68DACB839A1478B037F75B4718A9 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8838F6A5652FC042A161FBC6A6961594 /* AppSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AF6C44EE98EAB17A1E81EC252C5AD /* AppSetup.swift */; };
 		8F1EB3AA8D794C560B3FDEE6F4988CA3 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA73BDC161923CD166B30F1051CBC88 /* MediaPlayer.framework */; };
 		946005C07CBE3751A66304711A6898AA /* XCUIElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94862D8C44368F2CED777738686848A0 /* XCUIElement.swift */; };
@@ -69,32 +69,32 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		813D44AA1DE5129800CAB1B0 /* Copy Frameworks */ = {
+		064E623F6ADB77392B05B062FA1DDBD2 /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				813D44AB1DE512AF00CAB1B0 /* AtlasMockAPI.framework in Copy Frameworks */,
-				813D44AC1DE512AF00CAB1B0 /* AtlasSDK.framework in Copy Frameworks */,
-				813D44AD1DE512AF00CAB1B0 /* AtlasUI.framework in Copy Frameworks */,
+				E9CFD6BFA89DE23D6DB0C5B8469D3CF3 /* AtlasMockAPI.framework in Copy Frameworks */,
+				968AADD1A82227BDAD19F1456B498E21 /* AtlasSDK.framework in Copy Frameworks */,
+				865FBD178438F346C50223D31BCFE2BB /* AtlasUI.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		813D44AE1DE512ED00CAB1B0 /* Copy Frameworks */ = {
+		709B8180EF992CCC4B4F50F79A676FEA /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				81E106891DEC54C600FD95A6 /* SwiftHTTP.framework in Copy Frameworks */,
-				813D44AF1DE512FF00CAB1B0 /* AtlasMockAPI.framework in Copy Frameworks */,
-				81E106871DEC54C600FD95A6 /* Swifter.framework in Copy Frameworks */,
-				81E1068B1DEC54C600FD95A6 /* Nuke.framework in Copy Frameworks */,
-				81E1068D1DEC54C600FD95A6 /* SwiftyJSON.framework in Copy Frameworks */,
-				813D44B01DE512FF00CAB1B0 /* AtlasSDK.framework in Copy Frameworks */,
-				813D44B11DE512FF00CAB1B0 /* AtlasUI.framework in Copy Frameworks */,
+				4C1EEA896DC0FBA0112CE058A8A90348 /* SwiftHTTP.framework in Copy Frameworks */,
+				501C7BFF1ADC3D4CEDEF3448B1584B6D /* AtlasMockAPI.framework in Copy Frameworks */,
+				E09393D6841BD5B02BAF1F879FA14420 /* Swifter.framework in Copy Frameworks */,
+				E39AF4AF3A83F07266F020D5E6D3A55C /* Nuke.framework in Copy Frameworks */,
+				78A57477448129E64F7355ED5936579D /* SwiftyJSON.framework in Copy Frameworks */,
+				DD1713AFBB45F179703F27E8F8C6F863 /* AtlasSDK.framework in Copy Frameworks */,
+				967FEF000A11FCD3EA0644E15064AC48 /* AtlasUI.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -125,9 +125,9 @@
 		70CB82D0A3803BF19FF55CBB985CB29A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		70D0DBF19E7CD929E402B3987A071587 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		74F2F3D1790B7E063C3527BF921B7E1D /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
-		813D44A41DE5117800CAB1B0 /* AtlasMockAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AtlasMockAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		813D44A51DE5117800CAB1B0 /* AtlasSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AtlasSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		813D44A61DE5117800CAB1B0 /* AtlasUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AtlasUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		400508DFC64A49E6ECB6AC89CF040BEE /* AtlasMockAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AtlasMockAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C17735AA3650A838A0716B1CA9222AF /* AtlasSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AtlasSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1A7A0B5C279F22FC02C6B5E54125FD2 /* AtlasUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AtlasUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F4B197D9F61B68006802BD626C9F76E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		94862D8C44368F2CED777738686848A0 /* XCUIElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCUIElement.swift; sourceTree = "<group>"; };
 		98660FB609B352D5A620AF07368F81EC /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -154,9 +154,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				813D44A71DE5117800CAB1B0 /* AtlasMockAPI.framework in Frameworks */,
-				813D44A81DE5117800CAB1B0 /* AtlasSDK.framework in Frameworks */,
-				813D44A91DE5117800CAB1B0 /* AtlasUI.framework in Frameworks */,
+				65A6DBFB34A8DD425710B6F3FDEB82E3 /* AtlasMockAPI.framework in Frameworks */,
+				5B75F0E38964DD09768A8A20A46F81A4 /* AtlasSDK.framework in Frameworks */,
+				519DFB7C62476E995A4EE56821FA31D4 /* AtlasUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,7 +166,7 @@
 			files = (
 				1AA9D877EA35733BB8F2821C4FB61915 /* AVFoundation.framework in Frameworks */,
 				7B1C78AE089D3132077309EC6E12D4C4 /* AssetsLibrary.framework in Frameworks */,
-				81E106881DEC54C600FD95A6 /* SwiftHTTP.framework in Frameworks */,
+				CFAD7A2119559691BF01E0E84EFD479A /* SwiftHTTP.framework in Frameworks */,
 				1A9818D72E4B3DF8734FB7932CD98C59 /* AudioToolbox.framework in Frameworks */,
 				7449525A39F475B6C68F497A3A3CA7FA /* BuddyBuildSDK.framework in Frameworks */,
 				5C38BE2E6C30F953FDD8E2C0891B4EFF /* CoreAudio.framework in Frameworks */,
@@ -175,14 +175,14 @@
 				5354EC81B56390B95BAA15D4F3965B41 /* CoreTelephony.framework in Frameworks */,
 				0FDDDFE532941228DC746DAEF6740637 /* CoreText.framework in Frameworks */,
 				2192C7D1F6802A6157DE18C9B39A501A /* CoreVideo.framework in Frameworks */,
-				81E1068C1DEC54C600FD95A6 /* SwiftyJSON.framework in Frameworks */,
+				A6004F8D3EAD48FB4D199E71519FA3CE /* SwiftyJSON.framework in Frameworks */,
 				44EBCE2FE12DE8193EE4F38738F84B2E /* ImageIO.framework in Frameworks */,
 				8F1EB3AA8D794C560B3FDEE6F4988CA3 /* MediaPlayer.framework in Frameworks */,
 				00D6E40AB1C980587ADCF3D3A629707E /* MessageUI.framework in Frameworks */,
 				C13958F3EB2139209B40A7C93BAAAE5A /* MobileCoreServices.framework in Frameworks */,
 				28C9E4E66E9BB7F0E964EDD2416EC634 /* QuartzCore.framework in Frameworks */,
-				81E106861DEC54C600FD95A6 /* Swifter.framework in Frameworks */,
-				81E1068A1DEC54C600FD95A6 /* Nuke.framework in Frameworks */,
+				38B292015D6EB859824E22C09CB154F9 /* Swifter.framework in Frameworks */,
+				EE7374754508E203252E55A91A2A8167 /* Nuke.framework in Frameworks */,
 				ADB3F0B19117CD32B5795BAF37B3FB48 /* SystemConfiguration.framework in Frameworks */,
 				4C7F901DEBA1E479432682A6E43A6266 /* VideoToolbox.framework in Frameworks */,
 			);
@@ -233,9 +233,9 @@
 		40AD2A55265882FCC65FA2EF0FB2B6BC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				813D44A41DE5117800CAB1B0 /* AtlasMockAPI.framework */,
-				813D44A51DE5117800CAB1B0 /* AtlasSDK.framework */,
-				813D44A61DE5117800CAB1B0 /* AtlasUI.framework */,
+				400508DFC64A49E6ECB6AC89CF040BEE /* AtlasMockAPI.framework */,
+				9C17735AA3650A838A0716B1CA9222AF /* AtlasSDK.framework */,
+				A1A7A0B5C279F22FC02C6B5E54125FD2 /* AtlasUI.framework */,
 				1D15645E9195207A25A4D56198499AE7 /* Swifter.framework */,
 				4CD3778CF4B0F93EE5191DF4F8D3C518 /* SwiftHTTP.framework */,
 				6F9BDB072FD0595FBC1302107487559C /* Nuke.framework */,
@@ -325,7 +325,7 @@
 			buildPhases = (
 				E3890F736B203CDB5F4F8B72C0193196 /* Swift Lint */,
 				8938AC41FD8F31015CD93E4A43C35120 /* Sources */,
-				813D44AE1DE512ED00CAB1B0 /* Copy Frameworks */,
+				709B8180EF992CCC4B4F50F79A676FEA /* Copy Frameworks */,
 				B307BE12931466F5C44234C6B9C0A4AC /* Frameworks */,
 				0DF7A2B2DE082CCF9AB3ACBCC3849324 /* Resources */,
 				B6D1C42DE9C9A401AACB795FDEFA1DF6 /* Headers */,
@@ -346,7 +346,7 @@
 				45247CAE1CB9F4C5E8B7EA72ECB4CA8F /* Sources */,
 				8DD4418F24780B87123A0D038C031431 /* Frameworks */,
 				3AB60BD07431A898C1254B15FA75039C /* Resources */,
-				813D44AA1DE5129800CAB1B0 /* Copy Frameworks */,
+				064E623F6ADB77392B05B062FA1DDBD2 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);

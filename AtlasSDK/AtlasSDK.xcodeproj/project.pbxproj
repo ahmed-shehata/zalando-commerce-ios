@@ -85,7 +85,7 @@
 		94D9B020E3D9C84A5D2E72DF8622E3F2 /* GetArticlesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8992399ACEBA4764146FD940C1E17A81 /* GetArticlesEndpoint.swift */; };
 		963AE70DD87A3C9A75FB0231D2130E7F /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CF52ED3F20B2F59D5E6096E498A18B /* PaymentMethod.swift */; };
 		96D8C896819BF0D75A206348D011CA74 /* OptionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7373D8759DBC5DB0F094B007B9252C3 /* OptionsTests.swift */; };
-		97B4EDF441C6E5F2F715844EAFD527CD /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B40AEACC9AD78CAFFB98B61702CE25A /* Logger.swift */; };
+		9CAE3816C21EFD8FC7B9074737F89DCB /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B5DB4CCFCF65E1C3C88F12100069A /* Logger.swift */; };
 		98CB76A653F5A1551F2ACAB21AC48311 /* Locale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F26B6F76806DA53595F9515B6768792 /* Locale.swift */; };
 		999D8D8F6F37891C794A474549044605 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2155265DCAF83847E14F21DC71EF756B /* Endpoint.swift */; };
 		9C71AFE69A2BC857760F1FFD2C4D3489 /* AtlasAPIClient_public.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A769B94E9EF881B5FAC3206C36AAC8 /* AtlasAPIClient_public.swift */; };
@@ -231,7 +231,7 @@
 		76D8786A1A0E25F620A6FDC8EEB941AD /* AtlasSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AtlasSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		78C4D7E077947A25DFA82411E4E0A5B6 /* OptionsInfoPlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OptionsInfoPlist.swift; path = AtlasSDK/OptionsInfoPlist.swift; sourceTree = SOURCE_ROOT; };
 		7AC5CAD6D2A33BC368A6BCD3652228EF /* SubscriptTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptTests.swift; sourceTree = "<group>"; };
-		7B40AEACC9AD78CAFFB98B61702CE25A /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		1A8B5DB4CCFCF65E1C3C88F12100069A /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		7CDE9B266DF0DAFAF1BB3ED0A00D2609 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		7D215D90311A506D7D973B86210A3463 /* CheckAddressRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckAddressRequest.swift; sourceTree = "<group>"; };
 		80882428404628DC886C2144E1E1E48D /* NestedJSONTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NestedJSONTests.swift; sourceTree = "<group>"; };
@@ -360,7 +360,7 @@
 				E929ACF16D83C88A9F1FA314D691FFEE /* JSONRepresentable.swift */,
 				2A306470BE019B80490488330B394271 /* JSONResponse.swift */,
 				69384BDB0D3D26DA7967C229EF6CF14A /* Keychain.swift */,
-				7B40AEACC9AD78CAFFB98B61702CE25A /* Logger.swift */,
+				1A8B5DB4CCFCF65E1C3C88F12100069A /* Logger.swift */,
 				1144008D922BB81B068D385A27F28BEA /* Data.swift */,
 				9F26B6F76806DA53595F9515B6768792 /* Locale.swift */,
 				9A32293C441B83DF5D66A6173583302B /* OutputStreams.swift */,
@@ -915,7 +915,7 @@
 				46980E992EDB6D46D3B2F62634025CCD /* JSONResponse.swift in Sources */,
 				1B681AF464D8AFCBBB91BCB098FB5E8A /* AtlasAPIResult.swift in Sources */,
 				ECE8DEFDB2A85FBCD15B77C89EA5EF4A /* Keychain.swift in Sources */,
-				97B4EDF441C6E5F2F715844EAFD527CD /* Logger.swift in Sources */,
+				9CAE3816C21EFD8FC7B9074737F89DCB /* Logger.swift in Sources */,
 				E6A17887BC6BA4C25B2D758C44514B80 /* Money.swift in Sources */,
 				50B7CAD88F4CB40657A1E293C5886CBE /* Data.swift in Sources */,
 				10839FF50C4F1E752D250018E332B446 /* HTTPURLResponse.swift in Sources */,

@@ -44,15 +44,15 @@ extension HttpServer {
             var params = [String: String]()
             req.parseUrlencodedForm().forEach { params[$0.0] = $0.1 }
 
-            guard let redirectUri = params["redirect_uri"], params["username"] != nil
-            && params["password"] != nil
-            && params["realm"] != nil
-            && params["response_type"] == "token"
-            && params["client_id"] != nil
-            else {
-                let response = ["error": "invalid_grant",
-                    "error_description": "The provided access grant is invalid, expired, or revoked."]
-                return HttpResponse.badRequest(.json(response as AnyObject))
+            guard let redirectUri = params["redirect_uri"],
+                params["username"] != nil,
+                params["password"] != nil,
+                params["realm"] != nil,
+                params["response_type"] == "token",
+                params["client_id"] != nil else {
+                    let response = ["error": "invalid_grant",
+                        "error_description": "The provided access grant is invalid, expired, or revoked."]
+                    return HttpResponse.badRequest(.json(response as AnyObject))
             }
 
             return HttpResponse.movedPermanently("\(redirectUri)#access_token=TOKEN")

@@ -7,7 +7,7 @@ public struct PickupPoint {
     public let id: String
     public let name: String
     public let memberId: String
-    
+
 }
 
 extension PickupPoint: Hashable {
