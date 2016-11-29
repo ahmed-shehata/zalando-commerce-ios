@@ -9,7 +9,7 @@ struct GetArticleEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
     let acceptedContentType = "application/x.zalando.article+json"
     let sku: String
     var queryItems: [URLQueryItem]? {
-        return URLQueryItem.build([
+        return URLQueryItem.build(from: [
             "client_id": clientId as Optional<AnyObject>,
             "fields": fields?.joined(separator: ",") as Optional<AnyObject>
         ])

@@ -32,7 +32,7 @@ class AtlasAPIClientBaseTests: XCTestCase {
             configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
     }
 
-    func waitUntilAtlasAPIClientIsConfigured(_ actions: @escaping (_ done: @escaping () -> Void, _ client: AtlasAPIClient) -> Void) {
+    func waitUntilAtlasAPIClientIsConfigured(actions: @escaping (_ done: @escaping () -> Void, _ client: AtlasAPIClient) -> Void) {
         waitUntil(timeout: 10) { done in
             Atlas.configure(options: self.clientOptions) { result in
                 switch result {

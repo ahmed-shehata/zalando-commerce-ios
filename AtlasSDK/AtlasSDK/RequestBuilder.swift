@@ -18,7 +18,7 @@ struct RequestBuilder {
         self.endpoint = endpoint
     }
 
-    mutating func execute(_ completion: @escaping ResponseCompletion) {
+    mutating func execute(completion: @escaping ResponseCompletion) {
         let endpoint = self.endpoint
         buildAndExecuteSessionTask { result in
             switch result {
@@ -33,7 +33,7 @@ struct RequestBuilder {
         }
     }
 
-    fileprivate mutating func buildAndExecuteSessionTask(_ completion: @escaping ResponseCompletion) {
+    fileprivate mutating func buildAndExecuteSessionTask(completion: @escaping ResponseCompletion) {
         let request: URLRequest
         do {
             request = try buildRequest()
@@ -43,7 +43,7 @@ struct RequestBuilder {
 
         self.urlSession.dataTask(with: request) { data, response, error in
             let taskResponse = DataTaskResponse(request: request, response: response, data: data, error: error)
-            ResponseParser(taskResponse: taskResponse).parse(completion)
+            ResponseParser(taskResponse: taskResponse).parse(completion: completion)
         }.resume()
 
     }

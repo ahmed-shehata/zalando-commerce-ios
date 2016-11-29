@@ -8,7 +8,7 @@ public typealias AtlasConfigCompletion = (AtlasAPIResult<Config>) -> Void
 
 protocol Configurator {
 
-    func configure(_ completion: @escaping AtlasConfigCompletion) -> Void
+    func configure(completion: @escaping AtlasConfigCompletion) -> Void
 
 }
 
@@ -20,7 +20,7 @@ struct ConfigClient: Configurator {
         self.options = options
     }
 
-    func configure(_ completion: @escaping AtlasConfigCompletion) {
+    func configure(completion: @escaping AtlasConfigCompletion) {
         let requestBuilder = RequestBuilder(forEndpoint: GetConfigEndpoint(url: options.configurationURL))
         var apiRequest = APIRequest<Config>(requestBuilder: requestBuilder) { response in
             guard let json = response.body, let config = Config(json: json, options: self.options) else { return nil }

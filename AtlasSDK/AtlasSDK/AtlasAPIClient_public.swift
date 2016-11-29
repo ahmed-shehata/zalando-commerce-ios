@@ -56,7 +56,7 @@ public typealias CheckAddressCompletion = (AtlasAPIResult<CheckAddressResponse>)
 
 extension AtlasAPIClient {
 
-    public func customer(_ completion: @escaping CustomerCompletion) {
+    public func customer(completion: @escaping CustomerCompletion) {
         let endpoint = GetCustomerEndpoint(serviceURL: config.checkoutURL,
                                            salesChannel: config.salesChannel.identifier)
         fetch(from: endpoint, completion: completion)
@@ -146,7 +146,7 @@ extension AtlasAPIClient {
         fetch(from: endpoint, completion: fetchCompletion)
     }
 
-    public func addresses(_ completion: @escaping AddressesCompletion) {
+    public func addresses(completion: @escaping AddressesCompletion) {
         let endpoint = GetAddressesEndpoint(serviceURL: config.checkoutURL,
                                             salesChannel: config.salesChannel.identifier)
         fetch(from: endpoint, completion: completion)
@@ -159,7 +159,7 @@ extension AtlasAPIClient {
         touch(endpoint: endpoint, completion: completion)
     }
 
-    public func createAddress(_ request: CreateAddressRequest, completion: @escaping AddressCreateUpdateCompletion) {
+    public func createAddress(request: CreateAddressRequest, completion: @escaping AddressCreateUpdateCompletion) {
         let endpoint = CreateAddressEndpoint(serviceURL: config.checkoutURL,
                                              createAddressRequest: request,
                                              salesChannel: config.salesChannel.identifier)
@@ -176,7 +176,7 @@ extension AtlasAPIClient {
         fetch(from: endpoint, completion: completion)
     }
 
-    public func checkAddress(_ request: CheckAddressRequest, completion: @escaping CheckAddressCompletion) {
+    public func checkAddress(request: CheckAddressRequest, completion: @escaping CheckAddressCompletion) {
         let endpoint = CheckAddressEndpoint(serviceURL: config.checkoutURL,
                                             checkAddressRequest: request,
                                             salesChannel: config.salesChannel.identifier)
