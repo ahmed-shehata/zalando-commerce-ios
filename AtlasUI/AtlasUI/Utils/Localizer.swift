@@ -7,7 +7,7 @@ import AtlasSDK
 
 struct Localizer {
 
-    enum Error: AtlasErrorType {
+    enum Error: AtlasError {
 
         case languageNotFound
         case localizedStringsNotFound

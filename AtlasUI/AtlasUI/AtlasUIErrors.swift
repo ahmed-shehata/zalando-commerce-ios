@@ -5,28 +5,28 @@
 import Foundation
 import AtlasSDK
 
-enum ErrorPresentationType {
+enum PresentationMode {
     case banner
     case fullScreen
 }
 
-protocol UserPresentable: AtlasErrorType {
+protocol UserPresentableError: AtlasError {
 
     func customMessage() -> String?
 
     func shouldDisplayGeneralMessage() -> Bool
 
-    func errorPresentationType() -> ErrorPresentationType
+    func presentationMode() -> PresentationMode
 
 }
 
-extension UserPresentable {
+extension UserPresentableError {
 
     func customMessage() -> String? { return nil }
 
     func shouldDisplayGeneralMessage() -> Bool { return true }
 
-    func errorPresentationType() -> ErrorPresentationType { return .banner }
+    func presentationMode() -> PresentationMode { return .banner }
 
     var displayedTitle: String {
         return shouldDisplayGeneralMessage() ? Localizer.format(string: "AtlasCheckoutError.title") : title()
@@ -48,7 +48,7 @@ extension UserPresentable {
 
 }
 
-extension AtlasAPIError: UserPresentable {
+extension AtlasAPIError: UserPresentableError {
 
     func shouldDisplayGeneralMessage() -> Bool {
         switch self {
@@ -67,13 +67,13 @@ extension AtlasAPIError: UserPresentable {
 
 }
 
-extension AtlasCheckoutError: UserPresentable {
+extension AtlasCheckoutError: UserPresentableError {
 
     func shouldDisplayGeneralMessage() -> Bool {
         return false
     }
 
-    func errorPresentationType() -> ErrorPresentationType {
+    func presentationMode() -> PresentationMode {
         switch self {
         case .outOfStock: return .fullScreen
         default: return .banner
@@ -91,6 +91,6 @@ extension AtlasCheckoutError: UserPresentable {
 
 }
 
-extension AtlasLoginError: UserPresentable { }
+extension AtlasLoginError: UserPresentableError { }
 
-extension AtlasConfigurationError: UserPresentable { }
+extension AtlasConfigurationError: UserPresentableError { }

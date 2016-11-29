@@ -16,7 +16,7 @@ private extension AppLogSeverity {
 
 }
 
-final class PrintLogger: LoggerType {
+final class PrintLogger: Logger {
 
     var verbose: Bool = false
     var severity: AppLogSeverity = isDebug() ? .debug : .message

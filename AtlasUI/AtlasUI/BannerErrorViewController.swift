@@ -121,7 +121,7 @@ extension BannerErrorViewController: UIBuilder {
 
 extension BannerErrorViewController: UIDataBuilder {
 
-    typealias T = UserPresentable
+    typealias T = UserPresentableError
 
     func configure(viewModel: T) {
         titleLabel.text = viewModel.displayedTitle

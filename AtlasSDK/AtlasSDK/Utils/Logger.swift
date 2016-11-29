@@ -14,7 +14,7 @@ func >= (lhs: AppLogSeverity, rhs: AppLogSeverity) -> Bool {
     return lhs.rawValue >= rhs.rawValue
 }
 
-protocol LoggerType {
+protocol Logger {
 
     var verbose: Bool { get }
     var severity: AppLogSeverity { get set }
@@ -25,7 +25,7 @@ protocol LoggerType {
 
 }
 
-extension LoggerType {
+extension Logger {
 
     func formatMessage(_ items: [Any], verbose: Bool = false) -> String {
         return items.map { "\($0)" }.joined(separator: " ")

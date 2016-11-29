@@ -47,7 +47,7 @@ extension FullScreenErrorViewController: UIBuilder {
 
 extension FullScreenErrorViewController: UIDataBuilder {
 
-    typealias T = UserPresentable
+    typealias T = UserPresentableError
 
     func configure(viewModel: T) {
         title = viewModel.displayedTitle

@@ -36,19 +36,19 @@ struct UserMessage {
     }
 
     static func displayError(_ error: Error) {
-        guard let userPresentable = error as? UserPresentable else {
+        guard let userPresentable = error as? UserPresentableError else {
             displayError(AtlasCheckoutError.unclassified)
             return
         }
 
-        switch userPresentable.errorPresentationType() {
+        switch userPresentable.presentationMode() {
         case .banner: displayBanner(userPresentable)
         case .fullScreen: displayFullScreen(userPresentable)
         }
     }
 
     static func displayErrorBanner(_ error: Error) {
-        guard let userPresentable = error as? UserPresentable else {
+        guard let userPresentable = error as? UserPresentableError else {
             displayError(AtlasCheckoutError.unclassified)
             return
         }
@@ -57,7 +57,7 @@ struct UserMessage {
     }
 
     static func displayErrorFullScreen(_ error: Error) {
-        guard let userPresentable = error as? UserPresentable else {
+        guard let userPresentable = error as? UserPresentableError else {
             displayError(AtlasCheckoutError.unclassified)
             return
         }
@@ -93,7 +93,7 @@ extension UserMessage {
         return atlasUIViewController.presentedViewController ?? atlasUIViewController
     }
 
-    fileprivate static func displayBanner(_ error: UserPresentable) {
+    fileprivate static func displayBanner(_ error: UserPresentableError) {
         guard let viewController = errorPresenterViewController else { return }
         bannerErrorViewController.removeFromParentViewController()
         bannerErrorViewController.view.removeFromSuperview()
@@ -105,7 +105,7 @@ extension UserMessage {
         bannerErrorViewController.configure(viewModel: error)
     }
 
-    fileprivate static func displayFullScreen(_ error: UserPresentable) {
+    fileprivate static func displayFullScreen(_ error: UserPresentableError) {
         guard let viewController = errorPresenterViewController else { return }
         let navigationController = UINavigationController(rootViewController: fullScreenErrorViewController)
 

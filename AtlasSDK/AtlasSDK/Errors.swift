@@ -4,21 +4,21 @@
 
 import Foundation
 
-public protocol AtlasErrorType: Error {
+public protocol AtlasError: Error {
 
     var localizedTitleKey: String { get }
     var localizedMessageKey: String { get }
 
 }
 
-public extension AtlasErrorType {
+public extension AtlasError {
 
     var localizedTitleKey: String { return "\(type(of: self)).title.\(self)" }
     var localizedMessageKey: String { return "\(type(of: self)).message.\(self)" }
 
 }
 
-public enum AtlasConfigurationError: AtlasErrorType {
+public enum AtlasConfigurationError: AtlasError {
 
     case incorrectConfigServiceResponse
     case missingClientId
@@ -26,7 +26,7 @@ public enum AtlasConfigurationError: AtlasErrorType {
 
 }
 
-public enum AtlasAPIError: AtlasErrorType {
+public enum AtlasAPIError: AtlasError {
 
     case noData
     case noInternet
@@ -41,7 +41,7 @@ public enum AtlasAPIError: AtlasErrorType {
 
 }
 
-public enum AtlasCheckoutError: AtlasErrorType {
+public enum AtlasCheckoutError: AtlasError {
 
     case unclassified
     case outOfStock
