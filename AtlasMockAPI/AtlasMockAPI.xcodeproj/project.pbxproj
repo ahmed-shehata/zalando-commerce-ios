@@ -90,7 +90,6 @@
 		E5EA6B0AA33ED7FB2824EC819970B2ED /* DELETE*|addresses|6702759.json in Resources */ = {isa = PBXBuildFile; fileRef = CACE4447528604E65E39575522445766 /* DELETE*|addresses|6702759.json */; };
 		E92BE02A1DEDD97C001316E8 /* SwiftyJSON.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 72C51F2F8B90A76F70E31896FC0E81C5 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E92BE02B1DEDD99A001316E8 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72C51F2F8B90A76F70E31896FC0E81C5 /* SwiftyJSON.framework */; };
-		E92BE02D1DEDDE57001316E8 /* GET*|guest-checkout|api|orders|withPaymentInRequest.json in Resources */ = {isa = PBXBuildFile; fileRef = E92BE02C1DEDDE57001316E8 /* GET*|guest-checkout|api|orders|withPaymentInRequest.json */; };
 		E97997BC1DEDA4EE00AC1A78 /* GET*|guest-checkout|api|checkouts|CHECKOUT_ID|TOKEN.json in Resources */ = {isa = PBXBuildFile; fileRef = E97997BB1DEDA4EE00AC1A78 /* GET*|guest-checkout|api|checkouts|CHECKOUT_ID|TOKEN.json */; };
 		E97997C01DEDC2A500AC1A78 /* guestOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97997BF1DEDC2A500AC1A78 /* guestOrder.swift */; };
 		E9DAF9722397E88CA29D63AFC5105B59 /* !customer-not-auth.json in Resources */ = {isa = PBXBuildFile; fileRef = A2292C0F231C12E7007FBD34A78D6FE9 /* !customer-not-auth.json */; };
@@ -213,7 +212,6 @@
 		CA560C48D8E31572681D63D800308B84 /* static-jsons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "static-jsons.swift"; sourceTree = "<group>"; };
 		CACE4447528604E65E39575522445766 /* DELETE*|addresses|6702759.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "DELETE*|addresses|6702759.json"; sourceTree = "<group>"; };
 		E6A12FDAD29AC96D6E81A64E6D2BDFB5 /* root.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = root.swift; sourceTree = "<group>"; };
-		E92BE02C1DEDDE57001316E8 /* GET*|guest-checkout|api|orders|withPaymentInRequest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|guest-checkout|api|orders|withPaymentInRequest.json"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.javascript; };
 		E97997BB1DEDA4EE00AC1A78 /* GET*|guest-checkout|api|checkouts|CHECKOUT_ID|TOKEN.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|guest-checkout|api|checkouts|CHECKOUT_ID|TOKEN.json"; sourceTree = "<group>"; };
 		E97997BF1DEDC2A500AC1A78 /* guestOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = guestOrder.swift; sourceTree = "<group>"; };
 		EE841A5E3AF50F26A2453D96398B0547 /* GET*|articles|MK151F00E-Q11.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles|MK151F00E-Q11.json"; sourceTree = "<group>"; };
@@ -398,7 +396,6 @@
 			isa = PBXGroup;
 			children = (
 				E97997BB1DEDA4EE00AC1A78 /* GET*|guest-checkout|api|checkouts|CHECKOUT_ID|TOKEN.json */,
-				E92BE02C1DEDDE57001316E8 /* GET*|guest-checkout|api|orders|withPaymentInRequest.json */,
 			);
 			name = "Guest Checkout";
 			sourceTree = "<group>";
@@ -647,7 +644,6 @@
 				E97997BC1DEDA4EE00AC1A78 /* GET*|guest-checkout|api|checkouts|CHECKOUT_ID|TOKEN.json in Resources */,
 				AD45008504E2DF00E0A3A55E5D87C6EB /* GET*|articles|L2711E002-Q11.json in Resources */,
 				E2A7B55242AD7320ED0238122456560D /* GET*|articles|LA254E005-Q11.json in Resources */,
-				E92BE02D1DEDDE57001316E8 /* GET*|guest-checkout|api|orders|withPaymentInRequest.json in Resources */,
 				9ACA16D03DD1902554009DDFD445D481 /* GET*|articles|MK151F00E-Q11.json in Resources */,
 				4F84E7DDA8C48A7CF85F05A598E20392 /* GET*|config.json in Resources */,
 				E3706147D5957DF65BA2DBE530B64D8C /* POST*|address-checks.json in Resources */,
