@@ -85,8 +85,8 @@ extension PaymentViewControllerTests {
         let redirectURL: String
         switch status {
         case .guestRedirect(let encryptedCheckoutId, let encryptedToken):
-            callbackURL = "http://localhost.charlesproxy.com:9080/redirect"
-            redirectURL = "http://localhost.charlesproxy.com:9080/redirect/\(encryptedCheckoutId)/\(encryptedToken)"
+            callbackURL = "https://atlas-checkout-gateway-staging.dc.zalan.do/redirect"
+            redirectURL = "https://atlas-checkout-gateway-staging.dc.zalan.do/redirect/\(encryptedCheckoutId)/\(encryptedToken)"
         case .redirect:
             callbackURL = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect"
             redirectURL = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect"
