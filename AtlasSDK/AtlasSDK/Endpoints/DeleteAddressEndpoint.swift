@@ -9,7 +9,7 @@ struct DeleteAddressEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
     var path: String { return "addresses/\(addressId)" }
     let acceptedContentType = "application/x.zalando.customer.addresses+json"
     var queryItems: [URLQueryItem]? {
-        return URLQueryItem.build(from: ["address_id": addressId as Optional<AnyObject>])
+        return URLQueryItem.build(from: ["address_id": addressId])
     }
 
     let addressId: String

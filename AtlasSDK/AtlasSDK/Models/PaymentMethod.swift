@@ -7,7 +7,7 @@ import Foundation
 public struct PaymentMethod {
 
     public let method: String?
-    public let metadata: [String: AnyObject]?
+    public let metadata: [String: Any]?
 
 }
 
@@ -20,7 +20,7 @@ extension PaymentMethod: JSONInitializable {
 
     init?(json: JSON) {
         self.init(method: json[Keys.method].string,
-            metadata: json[Keys.metadata].dictionaryObject as [String : AnyObject]?)
+            metadata: json[Keys.metadata].dictionaryObject)
     }
 
 }

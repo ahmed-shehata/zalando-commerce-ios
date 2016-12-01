@@ -13,7 +13,7 @@ class FormValidatorTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        try! AtlasUI.shared().register { try! Localizer(localeIdentifier: "en_UK") as Localizer }
+        try! AtlasUI.shared().register { try! Localizer(localeIdentifier: "en_UK") }
     }
 
     func testRequiredValidator() {

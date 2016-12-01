@@ -40,7 +40,8 @@ struct Localizer {
 
     func countryName(forCountryCode countryCode: String?) -> String? {
         guard let countryCode = countryCode else { return nil }
-        return (locale as NSLocale).displayName(forKey: NSLocale.Key.countryCode, value: countryCode)
+
+        return (locale as NSLocale).displayName(forKey: .countryCode, value: countryCode)
     }
 
     func format(string key: String, formatArguments: [CVarArg?]? = nil) -> String {
@@ -99,7 +100,7 @@ extension Localizer {
 extension Bundle {
 
     fileprivate static func languageBundle(forLanguage locale: Locale, from localizedStringsBundle: Bundle) throws -> Bundle {
-        guard let localization = (locale as NSLocale).object(forKey: NSLocale.Key.languageCode) as? String else {
+        guard let localization = locale.languageCode else {
             throw Localizer.Error.languageNotFound
         }
 
