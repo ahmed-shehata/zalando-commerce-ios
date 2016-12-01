@@ -33,21 +33,15 @@ class AtlasTests: XCTestCase {
     }
 
     func testAtlasAPIClient() {
-        let opts = Options(clientId: "atlas_Y2M1MzA",
-                           salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
-                           useSandbox: true,
-                           interfaceLanguage: "de",
-                           configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
-
         waitUntil(timeout: 60) { done in
-            Atlas.configure(options: opts) { result in
+            Atlas.configure(options: Options.forTests()) { result in
                 switch result {
                 case .failure(let error):
                     fail(String(describing: error))
                 case .success(let client):
-                    expect(client.config.salesChannel.identifier).to(equal("82fe2e7f-8c4f-4aa1-9019-b6bde5594456"))
-                    expect(client.config.clientId).to(equal("atlas_Y2M1MzA"))
-                    expect(client.config.interfaceLocale.identifier).to(equal("de_DE"))
+                    expect(client.config.salesChannel.identifier).to(equal("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"))
+                    expect(client.config.clientId).to(equal("CLIENT_ID"))
+                    expect(client.config.interfaceLocale.identifier).to(equal("en_DE"))
                     expect(client.config.availableSalesChannels.count).to(equal(16))
                 }
                 done()

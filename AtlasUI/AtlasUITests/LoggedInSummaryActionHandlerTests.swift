@@ -210,15 +210,10 @@ extension LoggedInSummaryActionHandlerTests {
     }
 
     fileprivate func registerAtlasUIViewController(forSKU sku: String, completion: @escaping () -> Void) {
-        let options = Options(clientId: "CLIENT_ID",
-                              salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
-                              interfaceLanguage: "en",
-                              configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
-
-        AtlasUI.configure(options: options) { _ in
+        AtlasUI.configure(options: Options.forTests()) { _ in
             let atlasUIViewController = AtlasUIViewController(forSKU: sku)
             _ = atlasUIViewController.view // load the view
-            AtlasUI.register { atlasUIViewController }
+            try! AtlasUI.shared().register { atlasUIViewController }
             completion()
         }
     }

@@ -65,12 +65,13 @@ struct Localizer {
 
 extension Localizer {
 
+    static var current: Localizer {
+        return try! Localizer(localeIdentifier: Locale.current.identifier) // swiftlint:disable:this force_try
+    }
+
     fileprivate static var shared: Localizer {
-        do {
-            return try AtlasUI.provide() as Localizer
-        } catch {
-            return try! Localizer(localeIdentifier: Locale.current.identifier) // swiftlint:disable:this force_try
-        }
+        let shared: Localizer? = try? AtlasUI.shared().provide()
+        return shared ?? Localizer.current
     }
 
     static func format(string: String, _ formatArguments: [CVarArg?]) -> String {

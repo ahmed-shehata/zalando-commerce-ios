@@ -6,16 +6,16 @@ import Foundation
 import AtlasSDK
 
 enum PresentationMode {
+
     case banner
     case fullScreen
+
 }
 
 protocol UserPresentableError: AtlasError {
 
     func customMessage() -> String?
-
     func shouldDisplayGeneralMessage() -> Bool
-
     func presentationMode() -> PresentationMode
 
 }

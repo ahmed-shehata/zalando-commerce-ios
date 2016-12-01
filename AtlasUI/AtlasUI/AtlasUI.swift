@@ -6,7 +6,29 @@ import Foundation
 import UIKit
 import AtlasSDK
 
+public typealias AtlasUICompletion = (AtlasResult<AtlasUI>) -> Void
+
 final public class AtlasUI {
+
+    public enum Error: AtlasError {
+
+        case notInitialized
+
+    }
+
+    private static var _shared: AtlasUI?
+
+    static func shared() throws -> AtlasUI {
+        guard let shared = _shared else { throw Error.notInitialized }
+        return shared
+    }
+
+    fileprivate let injector = Injector()
+
+    private init(client: AtlasAPIClient, localizer: Localizer) {
+        self.register { localizer }
+        self.register { client }
+    }
 
     /**
      Configure AtlasUI.
@@ -18,9 +40,9 @@ final public class AtlasUI {
              - ATLASSDK_SALES_CHANNEL: String - Sales Channel (required)
              - ATLASSDK_USE_SANDBOX: Bool - Indicates whether sandbox environment should be used
              - ATLASSDK_INTERFACE_LANGUAGE: String - Checkout interface language
-        - completion `AtlasClientCompletion`: `AtlasResult` with success result as `AtlasAPIClient` initialized
+        - completion `AtlasUICompletion`: `AtlasResult` with success result as `AtlasUI` initialized
     */
-    public static func configure(options: Options? = nil, completion: @escaping AtlasClientCompletion) {
+    public static func configure(options: Options? = nil, completion: @escaping AtlasUICompletion) {
         Atlas.configure(options: options) { result in
             switch result {
             case .failure(let error):
@@ -30,9 +52,9 @@ final public class AtlasUI {
             case .success(let client):
                 do {
                     let localizer = try Localizer(localeIdentifier: client.config.interfaceLocale.identifier)
-                    AtlasUI.register { localizer }
-                    AtlasUI.register { client }
-                    completion(.success(client))
+                    let shared = AtlasUI(client: client, localizer: localizer)
+                    AtlasUI._shared = shared
+                    completion(.success(shared))
                 } catch let error {
                     completion(.failure(error))
                 }
@@ -40,8 +62,11 @@ final public class AtlasUI {
         }
     }
 
-    public static func presentCheckout(onViewController viewController: UIViewController, forSKU sku: String) {
-        guard let _ = AtlasAPIClient.shared else { AtlasLogger.logError("AtlasUI is not initialized"); return }
+    public func presentCheckout(onViewController viewController: UIViewController, forSKU sku: String) throws {
+        guard let _ = AtlasAPIClient.shared else {
+            AtlasLogger.logError("AtlasUI is not initialized")
+            throw AtlasUI.Error.notInitialized
+        }
 
         let atlasUIViewController = AtlasUIViewController(forSKU: sku)
 
@@ -49,7 +74,7 @@ final public class AtlasUI {
         atlasUIViewController.transitioningDelegate = checkoutTransitioning
         atlasUIViewController.modalPresentationStyle = .custom
 
-        AtlasUI.register { atlasUIViewController }
+        self.register { atlasUIViewController }
 
         viewController.present(atlasUIViewController, animated: true, completion: nil)
     }
@@ -58,13 +83,11 @@ final public class AtlasUI {
 
 extension AtlasUI {
 
-    fileprivate static let injector = Injector()
-
-    static func register<T>(factory: @escaping (Void) -> T) {
+    func register<T>(factory: @escaping (Void) -> T) {
         injector.register(factory)
     }
 
-    static func provide<T>() throws -> T {
+    func provide<T>() throws -> T {
         return try injector.provide()
     }
 
@@ -73,7 +96,7 @@ extension AtlasUI {
 extension AtlasAPIClient {
 
     static var shared: AtlasAPIClient? {
-        return try? AtlasUI.provide()
+        return try? AtlasUI.shared().provide()
     }
 
     static var countryCode: String? {

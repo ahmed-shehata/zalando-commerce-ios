@@ -86,17 +86,12 @@ extension AddressFormViewControllerTests {
     fileprivate func registerAtlasUIViewController() -> AtlasUIViewController? {
         var atlasUIViewController: AtlasUIViewController?
         waitUntil(timeout: 10) { done in
-            let options = Options(clientId: "CLIENT_ID",
-                                  salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
-                                  interfaceLanguage: "en",
-                                  configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
-
-            AtlasUI.configure(options: options) { _ in
+            AtlasUI.configure(options: Options.forTests()) { _ in
                 atlasUIViewController = AtlasUIViewController(forSKU: "AD541L009-G11")
                 guard let viewController = atlasUIViewController else { return fail() }
                 self.window.rootViewController = viewController
                 self.window.makeKeyAndVisible()
-                AtlasUI.register { viewController }
+                try! AtlasUI.shared().register { viewController }
                 done()
             }
         }

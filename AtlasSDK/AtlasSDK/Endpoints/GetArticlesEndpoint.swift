@@ -10,8 +10,8 @@ struct GetArticleEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
     let sku: String
     var queryItems: [URLQueryItem]? {
         return URLQueryItem.build(from: [
-            "client_id": clientId as Optional<AnyObject>,
-            "fields": fields?.joined(separator: ",") as Optional<AnyObject>
+            "client_id": clientId,
+            "fields": fields?.joined(separator: ",")
         ])
     }
 
