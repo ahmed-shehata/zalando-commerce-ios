@@ -8,6 +8,7 @@ module Calypso
     option :local, type: :boolean
     option :silent, type: :boolean
     option :verbose, type: :boolean
+    option :clean, type: :boolean, default: true
     desc 'validate', 'Validates and builds pod'
     def validate
       if options[:local]
@@ -28,13 +29,15 @@ module Calypso
     include Run
 
     def run_pod(subcommand, options)
-      verbosity_arg = if options[:silent]
-                        '--silent'
-                      elsif options[:verbose]
-                        '--verbose'
-                      end
+      args = ['--allow-warnings']
+      if options[:silent]
+        args << '--silent'
+      elsif options[:verbose]
+        args << '--verbose'
+      end
+      args << (options[:clean] ? '' : '--no-clean')
 
-      run "pod #{subcommand} AtlasSDK.podspec --allow-warnings #{verbosity_arg}"
+      run "pod #{subcommand} AtlasSDK.podspec #{args.join ' '}"
     end
 
   end
