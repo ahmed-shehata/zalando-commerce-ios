@@ -62,7 +62,7 @@ class ProfileViewController: UIViewController {
     }
 
     fileprivate func loadCustomerData() {
-        AppSetup.atlasClient?.customer { result in
+        AppSetup.atlas?.client.customer { result in
             let processedResult = result.processedResult()
             switch processedResult {
             case .success(let customer):

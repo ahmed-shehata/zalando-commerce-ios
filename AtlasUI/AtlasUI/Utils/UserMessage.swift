@@ -88,7 +88,7 @@ struct UserMessage {
 extension UserMessage {
 
     fileprivate static var errorPresenterViewController: UIViewController? {
-        guard let atlasUIViewController: AtlasUIViewController = try? AtlasUI.shared().provide()
+        guard let atlasUIViewController: AtlasUIViewController = AtlasUIViewController.shared
             else { return nil }
         return atlasUIViewController.presentedViewController ?? atlasUIViewController
     }

@@ -71,8 +71,7 @@ extension Localizer {
     }
 
     fileprivate static var shared: Localizer {
-        let shared: Localizer? = try? AtlasUI.shared().provide()
-        return shared ?? Localizer.current
+        return (try? AtlasUI.shared().provide()) ?? Localizer.current
     }
 
     static func format(string: String, _ formatArguments: [CVarArg?]) -> String {

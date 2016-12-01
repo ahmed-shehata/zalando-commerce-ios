@@ -16,6 +16,8 @@ final public class AtlasUI {
 
     }
 
+    public let client: AtlasAPIClient
+
     private static var _shared: AtlasUI?
 
     static func shared() throws -> AtlasUI {
@@ -26,8 +28,8 @@ final public class AtlasUI {
     fileprivate let injector = Injector()
 
     private init(client: AtlasAPIClient, localizer: Localizer) {
+        self.client = client
         self.register { localizer }
-        self.register { client }
     }
 
     /**
@@ -74,7 +76,7 @@ final public class AtlasUI {
         atlasUIViewController.transitioningDelegate = checkoutTransitioning
         atlasUIViewController.modalPresentationStyle = .custom
 
-        self.register { atlasUIViewController }
+        injector.register { atlasUIViewController }
 
         viewController.present(atlasUIViewController, animated: true, completion: nil)
     }
@@ -96,11 +98,11 @@ extension AtlasUI {
 extension AtlasAPIClient {
 
     static var shared: AtlasAPIClient? {
-        return try? AtlasUI.shared().provide()
+        return try? AtlasUI.shared().client
     }
 
     static var countryCode: String? {
-        return AtlasAPIClient.shared?.config.salesChannel.countryCode
+        return shared?.config.salesChannel.countryCode
     }
 
 }
