@@ -6,13 +6,13 @@ import Foundation
 
 public protocol URLStringConvertible {
 
-    var URLString: String { get }
+    var urlString: String { get }
 
 }
 
 extension String: URLStringConvertible {
 
-    public var URLString: String {
+    public var urlString: String {
         return self
     }
 
@@ -20,7 +20,7 @@ extension String: URLStringConvertible {
 
 extension URL: URLStringConvertible {
 
-    public var URLString: String {
+    public var urlString: String {
         return absoluteString
     }
 
@@ -28,8 +28,8 @@ extension URL: URLStringConvertible {
 
 extension URLComponents: URLStringConvertible {
 
-    public var URLString: String {
-        return validUrl.URLString
+    public var urlString: String {
+        return validURL.urlString
     }
 
 }

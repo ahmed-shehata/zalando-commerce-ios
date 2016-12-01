@@ -23,9 +23,9 @@ class ShippingAddressViewModelCreationStrategy: AddressViewModelCreationStrategy
             let viewModel = AddressFormViewModel(dataModel: dataModel, layout: CreateAddressFormLayout(), type: .standardAddress)
             self?.strategyCompletion?(viewModel)
         }
-
         availableDataModelCreationStrategies = [standardStrategy, pickupPointStrategy, addressBookStrategy]
-        showActionSheet(dataModelStrategies: availableDataModelCreationStrategies)
+
+        presentSelection(forStrategies: availableDataModelCreationStrategies)
     }
 
 }

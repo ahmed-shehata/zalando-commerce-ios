@@ -10,7 +10,7 @@ struct NotLoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
     weak var dataSource: CheckoutSummaryActionHandlerDataSource?
     weak var delegate: CheckoutSummaryActionHandlerDelegate?
 
-    func handleSubmitButton() {
+    func handleSubmit() {
         guard let dataSource = dataSource,
             let delegate = delegate
             else { return }
@@ -19,7 +19,7 @@ struct NotLoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
             guard let customer = result.process() else { return }
             let selectedArticleUnit = dataSource.dataModel.selectedArticleUnit
 
-            LoggedInSummaryActionHandler.createInstance(customer, selectedUnit: selectedArticleUnit) { result in
+            LoggedInSummaryActionHandler.create(customer: customer, selectedArticleUnit: selectedArticleUnit) { result in
                 guard let actionHandler = result.process() else { return }
 
                 let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, cartCheckout: actionHandler.cartCheckout)
@@ -30,16 +30,16 @@ struct NotLoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
         }
     }
 
-    func showPaymentSelectionScreen() {
-        handleSubmitButton()
+    func handlePaymentSelection() {
+        handleSubmit()
     }
 
-    func showShippingAddressSelectionScreen() {
-        handleSubmitButton()
+    func handleShippingAddressSelection() {
+        handleSubmit()
     }
 
-    func showBillingAddressSelectionScreen() {
-        handleSubmitButton()
+    func handleBillingAddressSelection() {
+        handleSubmit()
     }
 
 }

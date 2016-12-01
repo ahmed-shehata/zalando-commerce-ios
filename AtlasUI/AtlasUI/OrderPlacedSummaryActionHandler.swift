@@ -10,19 +10,19 @@ struct OrderPlacedSummaryActionHandler: CheckoutSummaryActionHandler {
     weak var dataSource: CheckoutSummaryActionHandlerDataSource?
     weak var delegate: CheckoutSummaryActionHandlerDelegate?
 
-    func handleSubmitButton() {
+    func handleSubmit() {
         delegate?.dismissView()
     }
 
-    func showPaymentSelectionScreen() {
+    func handlePaymentSelection() {
         // Show Payment screen should have no action in Order placed mode
     }
 
-    func showShippingAddressSelectionScreen() {
+    func handleShippingAddressSelection() {
         // Show Shipping Address screen should have no action in Order placed mode
     }
 
-    func showBillingAddressSelectionScreen() {
+    func handleBillingAddressSelection() {
         // Show Billing Address screen should have no action in Order placed mode
     }
 

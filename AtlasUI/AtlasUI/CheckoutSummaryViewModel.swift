@@ -9,7 +9,7 @@ struct CheckoutSummaryViewModel {
 
     var dataModel: CheckoutSummaryDataModel {
         didSet {
-            validateAgainstOldDataModel(oldValue)
+            validate(against: oldValue)
         }
     }
     var layout: CheckoutSummaryLayout
@@ -18,24 +18,21 @@ struct CheckoutSummaryViewModel {
 
 extension CheckoutSummaryViewModel {
 
-    fileprivate func validateAgainstOldDataModel(_ oldDataModel: CheckoutSummaryDataModel) {
-        checkPriceChange(oldDataModel)
-        checkPaymentMethod(oldDataModel)
+    fileprivate func validate(against oldDataModel: CheckoutSummaryDataModel) {
+        checkPriceChange(comparedTo: oldDataModel)
+        checkPaymentAvailable(comparedTo: oldDataModel)
     }
 
-    fileprivate func checkPriceChange(_ oldDataModel: CheckoutSummaryDataModel) {
-        guard let
-            oldPrice = oldDataModel.totalPrice,
-            let newPrice = dataModel.totalPrice else { return }
-
-        if oldPrice != newPrice {
-            UserMessage.displayError(AtlasCheckoutError.priceChanged(newPrice: newPrice))
+    fileprivate func checkPriceChange(comparedTo oldDataModel: CheckoutSummaryDataModel) {
+        if oldDataModel.totalPrice != dataModel.totalPrice {
+            UserMessage.displayError(AtlasCheckoutError.priceChanged(newPrice: dataModel.totalPrice))
         }
     }
 
-    fileprivate func checkPaymentMethod(_ oldDataModel: CheckoutSummaryDataModel) {
-        guard oldDataModel.paymentMethod != nil && dataModel.paymentMethod == nil else { return }
-        UserMessage.displayError(AtlasCheckoutError.paymentMethodNotAvailable)
+    fileprivate func checkPaymentAvailable(comparedTo oldDataModel: CheckoutSummaryDataModel) {
+        if oldDataModel.paymentMethod != nil && dataModel.paymentMethod == nil {
+            UserMessage.displayError(AtlasCheckoutError.paymentMethodNotAvailable)
+        }
     }
 
 }

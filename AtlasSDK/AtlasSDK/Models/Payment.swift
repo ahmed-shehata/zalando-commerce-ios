@@ -21,13 +21,13 @@ extension Payment: JSONInitializable {
     fileprivate struct Keys {
         static let externalPayment = "external_payment"
         static let selected = "selected"
-        static let selectionPageUrl = "selection_page_url"
+        static let selectionPageURL = "selection_page_url"
     }
 
     init?(json: JSON) {
         self.init(selected: PaymentMethod(json: json[Keys.selected]),
             isExternalPayment: json[Keys.externalPayment].bool,
-            selectionPageURL: json[Keys.selectionPageUrl].URL)
+            selectionPageURL: json[Keys.selectionPageURL].URL)
     }
 
 }

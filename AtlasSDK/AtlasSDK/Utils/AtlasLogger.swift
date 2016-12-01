@@ -6,7 +6,7 @@ import Foundation
 
 public final class AtlasLogger {
 
-    static var logger: LoggerType = PrintLogger()
+    static var logger: Logger = PrintLogger()
     static var severity: AppLogSeverity = isDebug() ? .debug : .message {
         didSet {
             logger.severity = severity

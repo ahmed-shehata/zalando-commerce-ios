@@ -11,7 +11,7 @@ import AtlasMockAPI
 
 class AtlasAPIClientErrorsTests: AtlasAPIClientBaseTests {
 
-    let clientURL = URL(validUrl: "https://atlas-sdk.api/api/any_endpoint")
+    let clientURL = URL(validURL: "https://atlas-sdk.api/api/any_endpoint")
 
     func testNoDataResponse() {
         let status = HTTPStatus.ok
@@ -37,13 +37,7 @@ class AtlasAPIClientErrorsTests: AtlasAPIClientBaseTests {
             "detail": "Full authentication is required to access this resource"]
 
         let errorResponse = data(withJSONObject: json)
-        let options = Options(clientId: "atlas_Y2M1MzA",
-                              salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
-                              useSandbox: true,
-                              interfaceLanguage: "de",
-                              configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
-
-        let client = mockedAtlasAPIClient(forURL: clientURL, options: options, data: errorResponse, status: status)
+        let client = mockedAtlasAPIClient(forURL: clientURL, options: Options.forTests(), data: errorResponse, status: status)
 
         waitUntil(timeout: 10) { done in
             client.customer { result in

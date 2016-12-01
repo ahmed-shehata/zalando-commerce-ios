@@ -7,10 +7,10 @@ import AtlasSDK
 
 class AtlasReachability {
 
-    fileprivate var reachability: AtlasUI_Reachability?
+    fileprivate var reachability: Reachability?
 
     func setupReachability() {
-        guard let reachability = AtlasUI_Reachability() else { return }
+        guard let reachability = Reachability() else { return }
 
         reachability.whenReachable = { _ in
             Async.main {

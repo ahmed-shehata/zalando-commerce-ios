@@ -19,9 +19,9 @@ class BillingAddressViewModelCreationStrategy: AddressViewModelCreationStrategy 
             let viewModel = AddressFormViewModel(dataModel: dataModel, layout: CreateAddressFormLayout(), type: .standardAddress)
             self?.strategyCompletion?(viewModel)
         }
-
         availableDataModelCreationStrategies = [standardStrategy, addressBookStrategy]
-        showActionSheet(dataModelStrategies: availableDataModelCreationStrategies)
+
+        presentSelection(forStrategies: availableDataModelCreationStrategies)
     }
 
 }

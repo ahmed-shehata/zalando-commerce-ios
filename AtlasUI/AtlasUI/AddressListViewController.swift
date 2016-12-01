@@ -28,8 +28,8 @@ final class AddressListViewController: UIViewController {
 
     fileprivate let tableView: UITableView = {
         let tableView = UITableView()
-        tableView.registerReusableCell(AddressRowViewCell.self)
-        tableView.registerReusableCell(AddAddressTableViewCell.self)
+        tableView.registerReusableCell(for: AddressRowViewCell.self)
+        tableView.registerReusableCell(for: AddAddressTableViewCell.self)
         tableView.allowsSelectionDuringEditing = true
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100

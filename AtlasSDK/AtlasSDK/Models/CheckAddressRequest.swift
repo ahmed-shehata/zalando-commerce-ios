@@ -14,12 +14,12 @@ extension CheckAddressRequest: JSONRepresentable {
         static let pickupPoint = "pickup_point"
     }
 
-    func toJSON() -> [String : AnyObject] {
-        var result: [String: AnyObject] = [
-            Keys.address: address.toJSON() as AnyObject
+    func toJSON() -> [String : Any] {
+        var result: [String: Any] = [
+            Keys.address: address.toJSON()
         ]
         if let pickupPoint = pickupPoint {
-            result[Keys.pickupPoint] = pickupPoint.toJSON() as AnyObject?
+            result[Keys.pickupPoint] = pickupPoint.toJSON()
         }
         return result
     }

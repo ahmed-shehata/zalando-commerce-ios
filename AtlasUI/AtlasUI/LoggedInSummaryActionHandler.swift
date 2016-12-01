@@ -38,12 +38,12 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
         return shippingAddress != nil && billingAddress != nil
     }
 
-    static func createInstance(_ customer: Customer, selectedUnit: SelectedArticleUnit,
-                               completion: @escaping LoggedInSummaryActionHandlerCompletion) {
-        let actionHandler = LoggedInSummaryActionHandler(customer: customer)
-        LoggedInSummaryActionHandler.createCartCheckout(selectedUnit) { result in
+    static func create(customer: Customer, selectedArticleUnit: SelectedArticleUnit,
+                       completion: @escaping LoggedInSummaryActionHandlerCompletion) {
+        LoggedInSummaryActionHandler.createCartCheckout(selectedArticleUnit: selectedArticleUnit) { result in
             switch result {
             case .success(let cartCheckout):
+                let actionHandler = LoggedInSummaryActionHandler(customer: customer)
                 actionHandler.cartCheckout = cartCheckout
                 completion(.success(actionHandler))
             case .failure(let error):
@@ -56,7 +56,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
         self.customer = customer
     }
 
-    func handleSubmitButton() {
+    func handleSubmit() {
         guard let dataSource = dataSource else { return }
         guard dataSource.dataModel.isPaymentSelected else {
             UserMessage.displayError(AtlasCheckoutError.missingAddressAndPayment)
@@ -74,17 +74,16 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
             if dataSource.dataModel.isPaymentSelected && !UserMessage.errorDisplayed {
                 AtlasUIClient.createOrder(fromCheckoutId: checkout.id) { result in
                     guard let order = result.process() else { return }
-                    self?.handleOrderConfirmation(order)
+                    self?.handleConfirmation(forOrder: order)
                 }
             }
         }
     }
 
-    func showPaymentSelectionScreen() {
+    func handlePaymentSelection() {
         guard let paymentURL = cartCheckout?.checkout?.payment.selectionPageURL,
-            let callbackURL = AtlasAPIClient.shared?.config.payment.selectionCallbackURL
-            else {
-            let error: AtlasCheckoutError = !hasAddresses ? .missingAddress : .unclassified
+            let callbackURL = AtlasAPIClient.shared?.config.payment.selectionCallbackURL else {
+            let error = !hasAddresses ? AtlasCheckoutError.missingAddress : AtlasCheckoutError.unclassified
             UserMessage.displayError(error)
             return
         }
@@ -107,7 +106,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
         AtlasUIViewController.shared?.mainNavigationController.pushViewController(paymentViewController, animated: true)
     }
 
-    func showShippingAddressSelectionScreen() {
+    func handleShippingAddressSelection() {
         AtlasUIClient.addresses { [weak self] result in
             guard let userAddresses = result.process() else { return }
             let addresses: [EquatableAddress] = userAddresses.map { $0 }
@@ -117,12 +116,12 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
             addressViewController.addressDeletedHandler = { self?.deleted(address: $0) }
             addressViewController.addressSelectedHandler = { self?.select(shippingAddress: $0) }
             addressViewController.actionHandler = LoggedInAddressListActionHandler(addressViewModelCreationStrategy: creationStrategy)
-            addressViewController.title = Localizer.string("addressListView.title.shipping")
+            addressViewController.title = Localizer.format(string: "addressListView.title.shipping")
             AtlasUIViewController.shared?.mainNavigationController.pushViewController(addressViewController, animated: true)
         }
     }
 
-    func showBillingAddressSelectionScreen() {
+    func handleBillingAddressSelection() {
         AtlasUIClient.addresses { [weak self] result in
             guard let userAddresses = result.process() else { return }
             let addresses: [EquatableAddress] = userAddresses.filter { $0.pickupPoint == nil } .map { $0 }
@@ -132,7 +131,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
             addressViewController.addressDeletedHandler = { self?.deleted(address: $0) }
             addressViewController.addressSelectedHandler = { self?.select(billingAddress: $0) }
             addressViewController.actionHandler = LoggedInAddressListActionHandler(addressViewModelCreationStrategy: creationStrategy)
-            addressViewController.title = Localizer.string("addressListView.title.billing")
+            addressViewController.title = Localizer.format(string: "addressListView.title.billing")
             AtlasUIViewController.shared?.mainNavigationController.pushViewController(addressViewController, animated: true)
         }
     }
@@ -141,9 +140,9 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
 
 extension LoggedInSummaryActionHandler {
 
-    fileprivate func handleOrderConfirmation(_ order: Order) {
+    fileprivate func handleConfirmation(forOrder order: Order) {
         guard let paymentURL = order.externalPaymentURL else {
-            showConfirmationScreen(order)
+            presentConfirmationScreen(for: order)
             return
         }
 
@@ -155,7 +154,7 @@ extension LoggedInSummaryActionHandler {
         let paymentViewController = PaymentViewController(paymentURL: paymentURL, callbackURL: callbackURL)
         paymentViewController.paymentCompletion = { [weak self] paymentStatus in
             switch paymentStatus {
-            case .success: self?.showConfirmationScreen(order)
+            case .success: self?.presentConfirmationScreen(for: order)
             case .redirect, .cancel: break
             case .error: UserMessage.displayError(AtlasCheckoutError.unclassified)
             }
@@ -163,7 +162,7 @@ extension LoggedInSummaryActionHandler {
         AtlasUIViewController.shared?.mainNavigationController.pushViewController(paymentViewController, animated: true)
     }
 
-    fileprivate func showConfirmationScreen(_ order: Order) {
+    fileprivate func presentConfirmationScreen(for order: Order) {
         guard let dataSource = dataSource, let delegate = delegate else { return }
         let selectedArticleUnit = dataSource.dataModel.selectedArticleUnit
         let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, checkout: cartCheckout?.checkout, order: order)
@@ -176,12 +175,14 @@ extension LoggedInSummaryActionHandler {
 
 extension LoggedInSummaryActionHandler {
 
-    fileprivate func createCartCheckout(_ completion: @escaping CreateCartCheckoutCompletion) {
+    fileprivate func createCartCheckout(completion: @escaping CreateCartCheckoutCompletion) {
         guard let selectedArticleUnit = dataSource?.dataModel.selectedArticleUnit else { return }
-        LoggedInSummaryActionHandler.createCartCheckout(selectedArticleUnit, addresses: addresses, completion: completion)
+        LoggedInSummaryActionHandler.createCartCheckout(selectedArticleUnit: selectedArticleUnit,
+                                                        addresses: addresses,
+                                                        completion: completion)
     }
 
-    fileprivate static func createCartCheckout(_ selectedArticleUnit: SelectedArticleUnit,
+    fileprivate static func createCartCheckout(selectedArticleUnit: SelectedArticleUnit,
                                                addresses: CheckoutAddresses? = nil,
                                                completion: @escaping CreateCartCheckoutCompletion) {
 
@@ -245,10 +246,10 @@ extension LoggedInSummaryActionHandler {
 
     fileprivate func updated(address: EquatableAddress) {
         if let shippingAddress = shippingAddress, shippingAddress == address {
-            select(shippingAddress: address)
+            update(shippingAddress: address)
         }
         if let billingAddress = billingAddress, billingAddress == address {
-            select(billingAddress: address)
+            update(billingAddress: address)
         }
     }
 

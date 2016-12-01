@@ -23,7 +23,7 @@ extension HttpServer {
     }
 
     func start(at url: URL, forceIPv4: Bool, timeout: TimeInterval) throws {
-        let port = UInt16((url as NSURL).port!.uintValue) // swiftlint:disable:this force_unwrapping
+        let port = UInt16(url.port!) // swiftlint:disable:this force_unwrapping
         try self.start(port, forceIPv4: forceIPv4)
         try wait(seconds: timeout, forState: .running)
     }

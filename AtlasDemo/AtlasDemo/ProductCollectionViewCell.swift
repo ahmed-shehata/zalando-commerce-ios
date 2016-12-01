@@ -20,8 +20,8 @@ class ProductCollectionViewCell: UICollectionViewCell {
         self.backgroundColor = .white
         self.productNameLabel.text = article.brand.name
         thumbImageView.image = nil
-        if let imageUrl = article.imageThumbURL {
-            Nuke.loadImage(with: imageUrl, into: thumbImageView)
+        if let imageURL = article.imageThumbURL {
+            Nuke.loadImage(with: imageURL, into: thumbImageView)
         }
         self.buyNowButton.accessibilityIdentifier = "buy-now"
 

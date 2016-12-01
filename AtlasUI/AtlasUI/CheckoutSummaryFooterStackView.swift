@@ -23,7 +23,7 @@ class CheckoutSummaryFooterStackView: UIStackView {
         let button = RoundedButton(type: .custom)
         button.cornerRadius = 5
         button.titleLabel?.font = .systemFont(ofSize: 15)
-        button.setTitleColor(.white, for: UIControlState())
+        button.setTitleColor(.white, for: .normal)
         button.backgroundColor = UIColor(hex: 0x519415)
         return button
     }()
@@ -33,12 +33,12 @@ class CheckoutSummaryFooterStackView: UIStackView {
 extension CheckoutSummaryFooterStackView: UIBuilder {
 
     func configureView() {
-        footerButton.addTarget(self, action: #selector(CheckoutSummaryFooterStackView.tocPressed(_:)), for: .touchUpInside)
+        footerButton.addTarget(self, action: #selector(CheckoutSummaryFooterStackView.tocPressed), for: .touchUpInside)
         addArrangedSubview(footerButton)
         addArrangedSubview(submitButton)
     }
 
-    @objc func tocPressed(_ sender: UIButton!) {
+    @objc func tocPressed() {
         legalController?.push()
     }
 
@@ -53,22 +53,27 @@ extension CheckoutSummaryFooterStackView: UIDataBuilder {
             legalController = LegalController(tocURL: termsAndConditionsURL)
         }
 
-        footerButton.setAttributedTitle(tocAttributedTitle(), for: UIControlState())
-        footerButton.isHidden = !viewModel.layout.showFooterLabel
+        setupFooterButton(viewModel: viewModel)
+        setupSubmitButton(viewModel: viewModel)
+    }
 
+    private func setupFooterButton(viewModel: T) {
+        footerButton.setAttributedTitle(tocAttributedTitle(), for: .normal)
+        footerButton.isHidden = !viewModel.layout.showFooterLabel
+    }
+
+    private func setupSubmitButton(viewModel: T) {
         let isPaypal = viewModel.dataModel.isPayPal
         let readyToCheckout = viewModel.dataModel.isPaymentSelected
 
-        submitButton.setTitle(Localizer.string(viewModel.layout.submitButtonTitle(isPaypal: isPaypal)), for: UIControlState())
+        submitButton.setTitle(Localizer.format(string: viewModel.layout.submitButtonTitle(isPaypal: isPaypal)), for: .normal)
         submitButton.backgroundColor = viewModel.layout.submitButtonBackgroundColor(readyToCheckout: readyToCheckout)
         submitButton.accessibilityIdentifier = "checkout-footer-button"
     }
 
-    fileprivate func tocAttributedTitle() -> NSAttributedString {
-        let attributedString = NSMutableAttributedString(string: Localizer.string("summaryView.link.termsAndConditions"))
-        let range = NSRange(location: 0, length: attributedString.length)
-        attributedString.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.styleSingle.rawValue, range: range)
-        return attributedString
+    private func tocAttributedTitle() -> NSAttributedString {
+        let underline = [NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue]
+        return NSAttributedString(string: Localizer.format(string: "summaryView.link.termsAndConditions"), attributes: underline)
     }
 
 }

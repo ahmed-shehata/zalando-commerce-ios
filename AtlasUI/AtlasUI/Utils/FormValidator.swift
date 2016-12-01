@@ -3,51 +3,6 @@
 //
 
 import Foundation
-// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
-// Consider refactoring the code to use the non-optional operators.
-fileprivate func < <T: Comparable>(lhs: T?, rhs: T?) -> Bool {
-    switch (lhs, rhs) {
-    case let (l?, r?):
-        return l < r
-    case (nil, _?):
-        return true
-    default:
-        return false
-    }
-}
-
-// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
-// Consider refactoring the code to use the non-optional operators.
-fileprivate func > <T: Comparable>(lhs: T?, rhs: T?) -> Bool {
-    switch (lhs, rhs) {
-    case let (l?, r?):
-        return l > r
-    default:
-        return rhs < lhs
-    }
-}
-
-// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
-// Consider refactoring the code to use the non-optional operators.
-fileprivate func >= <T: Comparable>(lhs: T?, rhs: T?) -> Bool {
-    switch (lhs, rhs) {
-    case let (l?, r?):
-        return l >= r
-    default:
-        return !(lhs < rhs)
-    }
-}
-
-// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
-// Consider refactoring the code to use the non-optional operators.
-fileprivate func <= <T: Comparable>(lhs: T?, rhs: T?) -> Bool {
-    switch (lhs, rhs) {
-    case let (l?, r?):
-        return l <= r
-    default:
-        return !(rhs < lhs)
-    }
-}
 
 enum FormValidator {
     case required
@@ -57,16 +12,16 @@ enum FormValidator {
     case pattern(pattern: String, errorMessage: String)
     case numbersOnly
 
-    func errorMessage(_ text: String?) -> String? {
+    func rejectionReason(for text: String?) -> String? {
         guard !isValid(text) else { return nil }
 
         switch self {
-        case .required: return Localizer.string("formValidation.required")
-        case .minLength(let minLength): return Localizer.string("formValidation.minLength", "\(minLength)")
-        case .maxLength(let maxLength): return Localizer.string("formValidation.maxLength", "\(maxLength)")
-        case .exactLength(let length): return Localizer.string("formValidation.exactLength", "\(length)")
-        case .pattern(_, let errorMessage): return Localizer.string(errorMessage)
-        case .numbersOnly: return Localizer.string("formValidation.numbersOnly")
+        case .required: return Localizer.format(string: "formValidation.required")
+        case .minLength(let minLength): return Localizer.format(string: "formValidation.minLength", "\(minLength)")
+        case .maxLength(let maxLength): return Localizer.format(string: "formValidation.maxLength", "\(maxLength)")
+        case .exactLength(let length): return Localizer.format(string: "formValidation.exactLength", "\(length)")
+        case .pattern(_, let errorMessage): return Localizer.format(string: errorMessage)
+        case .numbersOnly: return Localizer.format(string: "formValidation.numbersOnly")
         }
     }
 
@@ -75,22 +30,24 @@ enum FormValidator {
     static let cityPattern = "^[" + anyCharacterPattern + "]'?[-,;()' 0-9" + anyCharacterPattern + "ß]+$"
     static let streetPattern = "^(?=.*[a-zA-Z])(?=.*[0-9]).*$"
 
-    fileprivate func isValid(_ text: String?) -> Bool {
+    private func isValid(_ text: String?) -> Bool {
         switch self {
-        case .required: return text?.trimmed().length > 0
-        case .minLength(let minLength): return text?.trimmed().length >= minLength
-        case .maxLength(let maxLength): return text?.trimmed().length <= maxLength
+        case .required: return trimmedLength(text) > 0
+        case .minLength(let minLength): return trimmedLength(text) >= minLength
+        case .maxLength(let maxLength): return trimmedLength(text) <= maxLength
         case .exactLength(let length): return text?.trimmed().length == length
-        case .pattern(let pattern, _): return isPatternValid(pattern, text: text)
-        case .numbersOnly: return isPatternValid("^[0-9]+$", text: text)
+        case .pattern(let pattern, _): return isValid(pattern: pattern, text: text)
+        case .numbersOnly: return isValid(pattern: "^[0-9]+$", text: text)
         }
     }
 
-    fileprivate func isPatternValid(_ pattern: String, text: String?) -> Bool {
-        guard let trimmedText = text?.trimmed(), !trimmedText.isEmpty else { return true }
+    private func trimmedLength(_ text: String?) -> Int {
+        return text?.trimmed().length ?? 0
+    }
 
-        let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive)
-        return regex?.firstMatch(in: trimmedText, options: [], range: NSRange(location: 0, length: trimmedText.length)) != nil
+    private func isValid(pattern: String, text: String?) -> Bool {
+        guard let trimmedText = text?.trimmed(), !trimmedText.isEmpty else { return true }
+        return trimmedText.matches(pattern: pattern)
     }
 
 }

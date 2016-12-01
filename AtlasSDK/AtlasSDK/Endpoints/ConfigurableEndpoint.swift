@@ -6,7 +6,7 @@ import Foundation
 
 protocol ConfigurableEndpoint: Endpoint {
 
-    var serviceURL: Foundation.URL { get }
+    var serviceURL: URL { get }
     var path: String { get }
 
 }
@@ -14,9 +14,9 @@ protocol ConfigurableEndpoint: Endpoint {
 extension ConfigurableEndpoint {
 
     var url: URL {
-        var urlComponents = URLComponents(validUrl: serviceURL)
+        var urlComponents = URLComponents(validURL: serviceURL)
         urlComponents.queryItems = self.queryItems
-        return urlComponents.validUrl.appendingPathComponent(path)
+        return urlComponents.validURL.appendingPathComponent(path)
     }
 
 }

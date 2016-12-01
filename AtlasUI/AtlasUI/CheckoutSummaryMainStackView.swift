@@ -138,7 +138,6 @@ extension CheckoutSummaryMainStackView: UIDataBuilder {
         productStackView.configure(viewModel: viewModel.dataModel.selectedArticleUnit)
         priceStackView.configure(viewModel: viewModel.dataModel)
         deliveryStackView.configure(viewModel: viewModel.dataModel)
-        priceStackView.isHidden = !viewModel.layout.showPrice
 
         shippingAddressStackView.configure(viewModel: CheckoutSummaryAddressViewModel(
             addressLines: viewModel.dataModel.formattedShippingAddress,

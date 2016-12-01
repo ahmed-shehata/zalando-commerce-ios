@@ -34,7 +34,7 @@ enum AddressFormField: String {
     }
 
     var title: String {
-        let title = Localizer.string("addressFormView.\(rawValue.lowercased())")
+        let title = Localizer.format(string: "addressFormView.\(rawValue.lowercased())")
         return title + (formValidators.contains { $0 == .required } ? "*" : "")
     }
 
@@ -49,7 +49,7 @@ enum AddressFormField: String {
         }
     }
 
-    func customView(_ dataModel: AddressFormDataModel, completion: @escaping TextFieldChangedHandler) -> UIView? {
+    func customView(from dataModel: AddressFormDataModel, completion: @escaping TextFieldChangedHandler) -> UIView? {
         switch self {
         case .title:
             return PickerKeyboardInputView(pickerData: dataModel.titles,

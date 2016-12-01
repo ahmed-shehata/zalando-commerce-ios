@@ -37,7 +37,7 @@ extension AtlasAPIResult {
                 }
                 return .handledInternally
             default:
-                let userPresentable = error as? UserPresentable ?? AtlasCheckoutError.unclassified
+                let userPresentable = error as? UserPresentableError ?? AtlasCheckoutError.unclassified
                 return .error(error: error, title: userPresentable.displayedTitle, message: userPresentable.displayedMessage)
             }
         }

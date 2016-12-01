@@ -28,8 +28,8 @@ extension Order: JSONInitializable {
         static let grossTotal = "gross_total"
         static let taxTotal = "tax_total"
         static let created = "created"
-        static let detailUrl = "detail_url"
-        static let externalPaymentUrl = "external_payment_url"
+        static let detailURL = "detail_url"
+        static let externalPaymentURL = "external_payment_url"
     }
 
     init?(json: JSON) {
@@ -48,7 +48,7 @@ extension Order: JSONInitializable {
             grossTotal: grossTotal,
             taxTotal: taxTotal,
             created: RFC3339DateFormatter().date(from: json[Keys.created].string),
-            detailURL: json[Keys.detailUrl].URL,
-            externalPaymentURL: json[Keys.externalPaymentUrl].URL)
+            detailURL: json[Keys.detailURL].URL,
+            externalPaymentURL: json[Keys.externalPaymentURL].URL)
     }
 }

@@ -5,7 +5,7 @@
 import Foundation
 import AtlasSDK
 
-public enum AtlasLoginError: AtlasErrorType {
+public enum AtlasLoginError: AtlasError {
 
     case missingURL
     case accessDenied

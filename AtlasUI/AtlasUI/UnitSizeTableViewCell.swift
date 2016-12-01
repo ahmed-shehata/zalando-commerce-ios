@@ -66,7 +66,7 @@ extension UnitSizeTableViewCell: UIDataBuilder {
 
     func configure(viewModel: T) {
         sizeLabel.text = viewModel.size
-        priceLabel.text = Localizer.price(viewModel.price.amount)
+        priceLabel.text = Localizer.format(price: viewModel.price.amount)
         accessibilityLabel = "size-cell-\(viewModel.size)"
     }
 

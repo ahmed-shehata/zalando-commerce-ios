@@ -44,14 +44,14 @@ class AtlasDemoUITests: XCTestCase {
         let cancelButton = app.navigationBars["checkout-summary-navigation-bar"].buttons["Cancel"]
         let sizeText = app.cells["size-cell-XL"]
 
-        tapBuyNow("Guess")
+        tapBuyNow(withId: "Guess")
 
         waitForAppearAndTap(element: sizeText)
         waitForAppearAndTap(element: backButton)
         waitForAppearAndTap(element: sizeText)
         waitForAppearAndTap(element: cancelButton)
 
-        tapBuyNow("Guess")
+        tapBuyNow(withId: "Guess")
 
         waitForAppearAndTap(element: sizeText)
 
@@ -82,7 +82,7 @@ class AtlasDemoUITests: XCTestCase {
 
     func testDeleteAddress() {
         let size = app.cells["size-cell-0"]
-        tapBuyNow("Lamica")
+        tapBuyNow(withId: "Lamica")
         waitForAppearAndTap(element: size)
         tapConnectAndLogin()
         app.otherElements["shipping-stack-view"].tap()
@@ -92,7 +92,7 @@ class AtlasDemoUITests: XCTestCase {
 
     func testDeletePreselectedAddress() {
         let size = app.cells["size-cell-0"]
-        tapBuyNow("Lamica")
+        tapBuyNow(withId: "Lamica")
         waitForAppearAndTap(element: size)
         tapConnectAndLogin()
 
@@ -115,7 +115,7 @@ class AtlasDemoUITests: XCTestCase {
     func testToC() {
         let size = app.cells["size-cell-0"]
         let webView = app.otherElements["toc-webview"]
-        tapBuyNow("Lamica")
+        tapBuyNow(withId: "Lamica")
         waitForAppearAndTap(element: size)
         app.buttons["checkout-summary-toc-button"].tap()
         waitForAppearAndTap(element: webView)
@@ -142,13 +142,13 @@ extension AtlasDemoUITests {
 
     fileprivate func proceedToSummaryWithSizes() {
         let size = app.cells["size-cell-0"]
-        tapBuyNow("Lamica")
+        tapBuyNow(withId: "Lamica")
         waitForAppearAndTap(element: size)
         tapConnectAndLogin()
     }
 
     fileprivate func proceedToSummaryWithoutSizes() {
-        tapBuyNow("MICHAEL Michael Kors")
+        tapBuyNow(withId: "MICHAEL Michael Kors")
         tapConnectAndLogin()
     }
 
@@ -234,7 +234,7 @@ extension AtlasDemoUITests {
         app.buttons["Login"].tap()
     }
 
-    fileprivate func tapBuyNow(_ identifier: String) {
+    fileprivate func tapBuyNow(withId identifier: String) {
         let collectionView = app.collectionViews.element(boundBy: 0)
         let cell = collectionView.cells.otherElements.containing(.staticText, identifier: identifier)
         let buyNowButton = cell.buttons["buy-now"]

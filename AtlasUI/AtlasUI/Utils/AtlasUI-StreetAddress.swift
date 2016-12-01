@@ -25,17 +25,17 @@ extension StreetAddress {
 
     var prefixedAddressLine1: String {
         guard isPickupPoint && !addressLine1.isEmpty else { return addressLine1 }
-        return Localizer.string("addressListView.prefix.packstation") + ": " + addressLine1
+        return Localizer.format(string: "addressListView.prefix.packstation") + ": " + addressLine1
     }
 
     var prefixedAddressLine2: String {
         guard isPickupPoint && !addressLine2.isEmpty else { return addressLine2 }
-        return Localizer.string("addressListView.prefix.memberID") + ": " + addressLine2
+        return Localizer.format(string: "addressListView.prefix.memberID") + ": " + addressLine2
     }
 
     var prefixedShortAddressLine: String {
         guard isPickupPoint && !shortAddressLine.isEmpty else { return shortAddressLine }
-        return Localizer.string("summaryView.label.address.packstationAbbreviation") + ": " + shortAddressLine
+        return Localizer.format(string: "summaryView.label.address.packstationAbbreviation") + ": " + shortAddressLine
     }
 
 }

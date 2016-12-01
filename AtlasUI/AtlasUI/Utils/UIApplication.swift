@@ -6,16 +6,16 @@ import Foundation
 
 extension UIApplication {
 
-    static func topViewController(_ baseController: UIViewController? = nil) -> UIViewController? {
+    static func topViewController(baseController: UIViewController? = nil) -> UIViewController? {
         let baseController = baseController ?? UIApplication.shared.keyWindow?.rootViewController
         if let navigationController = baseController as? UINavigationController {
-            return topViewController(navigationController.visibleViewController)
+            return topViewController(baseController: navigationController.visibleViewController)
         }
         if let tabBarController = baseController as? UITabBarController, let selectedController = tabBarController.selectedViewController {
-            return topViewController(selectedController)
+            return topViewController(baseController: selectedController)
         }
         if let presentedController = baseController?.presentedViewController {
-            return topViewController(presentedController)
+            return topViewController(baseController: presentedController)
         }
         return baseController
     }

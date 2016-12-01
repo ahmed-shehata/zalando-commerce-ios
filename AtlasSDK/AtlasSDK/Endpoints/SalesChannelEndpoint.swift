@@ -12,8 +12,8 @@ protocol SalesChannelEndpoint: Endpoint {
 
 extension SalesChannelEndpoint {
 
-    var headers: [String: AnyObject]? {
-        return ["X-Sales-Channel": salesChannel as AnyObject]
+    var headers: [String: Any]? {
+        return ["X-Sales-Channel": salesChannel]
     }
 
 }

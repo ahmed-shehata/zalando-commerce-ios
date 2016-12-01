@@ -32,7 +32,7 @@ extension FullScreenErrorViewController: UIBuilder {
 
     func configureView() {
         view.addSubview(messageLabel)
-        let cancelButton = UIBarButtonItem(title: Localizer.string("button.general.cancel"),
+        let cancelButton = UIBarButtonItem(title: Localizer.format(string: "button.general.cancel"),
                                            style: .plain,
                                            target: self,
                                            action: #selector(cancelButtonPressed))
@@ -47,7 +47,7 @@ extension FullScreenErrorViewController: UIBuilder {
 
 extension FullScreenErrorViewController: UIDataBuilder {
 
-    typealias T = UserPresentable
+    typealias T = UserPresentableError
 
     func configure(viewModel: T) {
         title = viewModel.displayedTitle

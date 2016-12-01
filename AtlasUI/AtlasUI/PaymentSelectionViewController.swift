@@ -33,7 +33,7 @@ enum PaymentStatus: String {
 
 }
 
-final class PaymentViewController: UIViewController, UIWebViewDelegate {
+final class PaymentViewController: UIViewController {
 
     var paymentCompletion: PaymentCompletion?
     fileprivate let paymentURL: URL
@@ -65,6 +65,10 @@ final class PaymentViewController: UIViewController, UIWebViewDelegate {
         webView.fillInSuperview()
         webView.loadRequest(URLRequest(url: paymentURL))
     }
+
+}
+
+extension PaymentViewController: UIWebViewDelegate {
 
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         guard let url = request.url,

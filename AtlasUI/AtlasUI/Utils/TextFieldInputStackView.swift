@@ -50,7 +50,7 @@ class TextFieldInputStackView: UIStackView {
     }
 
     fileprivate func checkFormForError() -> String? {
-        return validators.flatMap { $0.errorMessage(textField.text) }.first
+        return validators.flatMap { $0.rejectionReason(for: textField.text) }.first
     }
 
 }

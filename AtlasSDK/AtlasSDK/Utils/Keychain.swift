@@ -21,7 +21,7 @@ struct Keychain {
             }
         }
 
-        let query = prepareItemQuery(key)
+        let query = prepareItemQuery(accountName: key)
 
         guard let value = value, let data = value.data(using: String.Encoding.utf8) else {
             status = SecItemDelete(query as CFDictionary)
@@ -41,7 +41,7 @@ struct Keychain {
     }
 
     static func read(forKey key: String) -> String? {
-        var query = prepareItemQuery(key)
+        var query = prepareItemQuery(accountName: key)
         query[kSecReturnData as AnyHashable] = true
         query[kSecReturnAttributes as AnyHashable] = true
 
@@ -58,10 +58,10 @@ struct Keychain {
         return String(data: resultData, encoding: String.Encoding.utf8)
     }
 
-    fileprivate static func prepareItemQuery(_ account: String) -> [AnyHashable: Any] {
+    private static func prepareItemQuery(accountName: String) -> [AnyHashable: Any] {
         return [kSecClass as AnyHashable: kSecClassGenericPassword,
             kSecAttrAccessible as AnyHashable: kSecAttrAccessibleWhenUnlocked,
-            kSecAttrAccount as AnyHashable: account,
+            kSecAttrAccount as AnyHashable: accountName,
             kSecAttrService as AnyHashable: Bundle.main.bundleIdentifier ?? "de.zalando.AtlasSDK"]
     }
 

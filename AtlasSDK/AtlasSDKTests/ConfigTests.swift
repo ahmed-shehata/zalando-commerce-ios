@@ -58,7 +58,7 @@ class ConfigTests: XCTestCase {
         expect(config?.loginURL).to(equal(loginURL))
         expect(config?.clientId).to(equal(clientId))
         expect(config?.salesChannel.identifier).to(equal(salesChannelId))
-        expect(config?.salesChannel.termsAndConditionsURL).to(equal(URL(validUrl: tocURL)))
+        expect(config?.salesChannel.termsAndConditionsURL).to(equal(URL(validURL: tocURL)))
     }
 
     func testReadingLanguageFromConfigWhenNoInterfaceLanguageGiven() {

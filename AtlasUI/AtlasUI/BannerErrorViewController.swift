@@ -67,7 +67,7 @@ class BannerErrorViewController: UIViewController {
         buildView()
     }
 
-    func showBanner() {
+    func present() {
         containerView.transform = CGAffineTransform(translationX: 0, y: -containerView.bounds.height)
         view.alpha = 1
 
@@ -76,7 +76,7 @@ class BannerErrorViewController: UIViewController {
         }
     }
 
-    func hideBanner() {
+    func dismiss() {
         let bannerHeight = containerView.bounds.height
         UIView.animate(animations: { [weak self] in
             self?.containerView.transform = CGAffineTransform(translationX: 0, y: -bannerHeight)
@@ -87,7 +87,7 @@ class BannerErrorViewController: UIViewController {
     }
 
     func cancelButtonPressed() {
-        hideBanner()
+        dismiss()
     }
 
 }
@@ -107,13 +107,13 @@ extension BannerErrorViewController: UIBuilder {
     }
 
     func configureConstraints() {
-        containerView.snapAnchorToSuperView(anchor: .top)
-        containerView.snapAnchorToSuperView(anchor: .right)
-        containerView.snapAnchorToSuperView(anchor: .left)
+        containerView.snap(toSuperview: .top)
+        containerView.snap(toSuperview: .right)
+        containerView.snap(toSuperview: .left)
         stackView.fillInSuperview()
 
-        cancelIconLabel.snapAnchorToSuperView(anchor: .top, constant: BannerErrorViewController.topMargin)
-        cancelIconLabel.snapAnchorToSuperView(anchor: .right, constant: -10)
+        cancelIconLabel.snap(toSuperview: .top, constant: BannerErrorViewController.topMargin)
+        cancelIconLabel.snap(toSuperview: .right, constant: -10)
         cancelButton.fillInSuperview()
     }
 
@@ -121,12 +121,12 @@ extension BannerErrorViewController: UIBuilder {
 
 extension BannerErrorViewController: UIDataBuilder {
 
-    typealias T = UserPresentable
+    typealias T = UserPresentableError
 
     func configure(viewModel: T) {
         titleLabel.text = viewModel.displayedTitle
         messageLabel.text = viewModel.displayedMessage.onelined()
-        showBanner()
+        present()
     }
 
 }

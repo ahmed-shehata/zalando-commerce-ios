@@ -16,17 +16,17 @@ class AppSetup {
         case Deutsch = "de"
     }
 
-    fileprivate(set) static var atlasClient: AtlasAPIClient?
+    fileprivate(set) static var atlas: AtlasUI?
     fileprivate(set) static var options: Options?
 
     fileprivate static let defaultUseSandbox = true
     fileprivate static let defaultInterfaceLanguage = InterfaceLanguage.English
 
     static var isConfigured: Bool {
-        return atlasClient != nil && options != nil
+        return atlas != nil && options != nil
     }
 
-    static func configure(_ completion: @escaping AppSetupCompletion) {
+    static func configure(completion: @escaping AppSetupCompletion) {
         prepareMockAPI()
         prepareApp()
 
@@ -61,8 +61,8 @@ class AppSetup {
     fileprivate static func set(appOptions options: Options, completion: AppSetupCompletion? = nil) {
         AtlasUI.configure(options: options) { result in
             switch result {
-            case .success(let client):
-                AppSetup.atlasClient = client
+            case .success(let atlas):
+                AppSetup.atlas = atlas
                 AppSetup.options = options
                 completion?(true)
             case .failure:

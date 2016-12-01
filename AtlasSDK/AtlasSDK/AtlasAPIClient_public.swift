@@ -56,7 +56,7 @@ public typealias CheckAddressCompletion = (AtlasAPIResult<CheckAddressResponse>)
 
 extension AtlasAPIClient {
 
-    public func customer(_ completion: @escaping CustomerCompletion) {
+    public func customer(completion: @escaping CustomerCompletion) {
         let endpoint = GetCustomerEndpoint(serviceURL: config.checkoutURL,
                                            salesChannel: config.salesChannel.identifier)
         fetch(from: endpoint, completion: completion)
@@ -146,7 +146,7 @@ extension AtlasAPIClient {
         fetch(from: endpoint, completion: fetchCompletion)
     }
 
-    public func addresses(_ completion: @escaping AddressesCompletion) {
+    public func addresses(completion: @escaping AddressesCompletion) {
         let endpoint = GetAddressesEndpoint(serviceURL: config.checkoutURL,
                                             salesChannel: config.salesChannel.identifier)
         fetch(from: endpoint, completion: completion)

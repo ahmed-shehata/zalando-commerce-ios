@@ -1,5 +1,5 @@
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/zalando-incubator/atlas-ios/master/LICENSE)
-[![Swift 2.2/2.3](https://img.shields.io/badge/Swift-2.2/2.3-orange.svg?maxAge=3600)]()
+[![Swift 3.0](https://img.shields.io/badge/Swift-3.0-orange.svg?maxAge=3600)]()
 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CocoaPods](https://img.shields.io/cocoapods/v/AtlasSDK.svg?maxAge=3600)](http://cocoadocs.org/docsets/AtlasSDK)

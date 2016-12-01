@@ -7,7 +7,7 @@ import AtlasSDK
 
 struct Localizer {
 
-    enum Error: AtlasErrorType {
+    enum Error: AtlasError {
 
         case languageNotFound
         case localizedStringsNotFound
@@ -40,10 +40,11 @@ struct Localizer {
 
     func countryName(forCountryCode countryCode: String?) -> String? {
         guard let countryCode = countryCode else { return nil }
-        return (locale as NSLocale).displayName(forKey: NSLocale.Key.countryCode, value: countryCode)
+
+        return (locale as NSLocale).displayName(forKey: .countryCode, value: countryCode)
     }
 
-    func string(_ key: String, formatArguments: [CVarArg?]? = nil) -> String {
+    func format(string key: String, formatArguments: [CVarArg?]? = nil) -> String {
         let localizedString = NSLocalizedString(key, bundle: self.localizedStringsBundle, comment: "")
 
         guard let formatArguments = formatArguments, !formatArguments.isEmpty else {
@@ -53,11 +54,11 @@ struct Localizer {
         return String(format: localizedString, arguments: formatArguments.flatMap { $0 })
     }
 
-    func price(_ price: NSNumber) -> String? {
+    func format(price: NSNumber) -> String? {
         return priceFormatter.string(from: price)
     }
 
-    func date(_ date: Date) -> String? {
+    func format(date: Date) -> String? {
         return dateFormatter.string(from: date)
     }
 
@@ -65,28 +66,29 @@ struct Localizer {
 
 extension Localizer {
 
+    static var current: Localizer {
+        return try! Localizer(localeIdentifier: Locale.current.identifier) // swiftlint:disable:this force_try
+    }
+
     fileprivate static var shared: Localizer {
-        do {
-            return try AtlasUI.provide() as Localizer
-        } catch {
-            return try! Localizer(localeIdentifier: Locale.current.identifier) // swiftlint:disable:this force_try
-        }
+        let shared: Localizer? = try? AtlasUI.shared().provide()
+        return shared ?? Localizer.current
     }
 
-    static func string(_ key: String, _ formatArguments: [CVarArg?]) -> String {
-        return shared.string(key, formatArguments: formatArguments.flatMap { $0 })
+    static func format(string: String, _ formatArguments: [CVarArg?]) -> String {
+        return shared.format(string: string, formatArguments: formatArguments.flatMap { $0 })
     }
 
-    static func string(_ key: String, _ formatArguments: CVarArg?...) -> String {
-        return shared.string(key, formatArguments: formatArguments)
+    static func format(string: String, _ formatArguments: CVarArg?...) -> String {
+        return shared.format(string: string, formatArguments: formatArguments)
     }
 
-    static func price(_ price: NSNumber) -> String? {
-        return shared.price(price)
+    static func format(price: NSNumber) -> String? {
+        return shared.format(price: price)
     }
 
-    static func date(_ date: Date) -> String? {
-        return shared.date(date)
+    static func format(date: Date) -> String? {
+        return shared.format(date: date)
     }
 
     static func countryName(forCountryCode countryCode: String?) -> String? {
@@ -98,7 +100,7 @@ extension Localizer {
 extension Bundle {
 
     fileprivate static func languageBundle(forLanguage locale: Locale, from localizedStringsBundle: Bundle) throws -> Bundle {
-        guard let localization = (locale as NSLocale).object(forKey: NSLocale.Key.languageCode) as? String else {
+        guard let localization = locale.languageCode else {
             throw Localizer.Error.languageNotFound
         }
 

@@ -25,7 +25,7 @@ extension URLRequest {
                 curlComponents.append("-d \"\(escapedBody)\"")
         }
 
-        curlComponents.append("\"\(URL.URLString)\"")
+        curlComponents.append("\"\(URL.urlString)\"")
 
         return curlComponents.joined(separator: " \\\n\t")
     }

@@ -50,7 +50,7 @@ extension UIView {
         leftAnchor.constraint(equalTo: superview.leftAnchor).isActive = true
     }
 
-    func snapAnchorToSuperView(anchor: ViewAnchor, constant: CGFloat = 0) {
+    func snap(toSuperview anchor: ViewAnchor, constant: CGFloat = 0) {
         guard let superview = superview else { return }
         translatesAutoresizingMaskIntoConstraints = false
         let constraint = anchor.constraint(fromView: self, toView: superview)
@@ -104,11 +104,11 @@ extension UIView {
 
 extension UIView {
 
-    static func animate(_ duration: AnimationDuration = AnimationDuration.default, animations: @escaping () -> Void) {
+    static func animate(duration: AnimationDuration = AnimationDuration.default, animations: @escaping () -> Void) {
         UIView.animate(withDuration: duration.rawValue, animations: animations)
     }
 
-    static func animate(_ duration: AnimationDuration = AnimationDuration.default,
+    static func animate(duration: AnimationDuration = AnimationDuration.default,
                         animations: @escaping () -> Void,
                         completion: @escaping (Bool) -> Void) {
         UIView.animate(withDuration: duration.rawValue, animations: animations, completion: completion)

@@ -24,9 +24,10 @@ class AddressFormViewController: UIViewController {
         return stackView
     }()
 
+    var completion: AddressFormCompletion?
+
     fileprivate let viewModel: AddressFormViewModel
     fileprivate let actionHandler: AddressFormActionHandler?
-    fileprivate let completion: AddressFormCompletion?
 
     init(viewModel: AddressFormViewModel, actionHandler: AddressFormActionHandler?, completion: AddressFormCompletion?) {
         self.viewModel = viewModel
@@ -48,7 +49,7 @@ class AddressFormViewController: UIViewController {
         configureNavigation()
     }
 
-    func displayView() {
+    func present() {
         if viewModel.layout.displayViewModally {
             let navigationController = UINavigationController(rootViewController: self)
             navigationController.modalPresentationStyle = .overCurrentContext
@@ -79,14 +80,14 @@ extension AddressFormViewController: UIBuilder {
 extension AddressFormViewController {
 
     fileprivate func configureNavigation() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: Localizer.string("button.general.save"),
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: Localizer.format(string: "button.general.save"),
                                                             style: .plain,
                                                             target: self,
                                                             action: #selector(submitButtonPressed))
         navigationItem.rightBarButtonItem?.accessibilityIdentifier = "address-edit-right-button"
 
         if viewModel.layout.displayCancelButton {
-            navigationItem.leftBarButtonItem = UIBarButtonItem(title: Localizer.string("button.general.cancel"),
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: Localizer.format(string: "button.general.cancel"),
                                                                style: .plain,
                                                                target: self,
                                                                action: #selector(cancelButtonPressed))

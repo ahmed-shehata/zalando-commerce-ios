@@ -16,16 +16,15 @@ public struct CreateCheckoutRequest: JSONRepresentable {
         self.shippingAddressId = addresses?.shippingAddress?.id
     }
 
-    public func toJSON() -> [String: AnyObject] {
-        var json: [String: AnyObject] = [:]
-        json["cart_id"] = self.cartId as AnyObject?
+    public func toJSON() -> [String: Any] {
+        var json: [String: Any] = ["cart_id": self.cartId]
 
         if let billingId = self.billingAddressId {
-            json["billing_address_id"] = billingId as AnyObject?
+            json["billing_address_id"] = billingId
         }
 
         if let shippingId = self.shippingAddressId {
-            json["shipping_address_id"] = shippingId as AnyObject?
+            json["shipping_address_id"] = shippingId
         }
 
         return json

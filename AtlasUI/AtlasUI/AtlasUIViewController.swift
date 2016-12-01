@@ -7,12 +7,12 @@ import AtlasSDK
 
 public class AtlasUIViewController: UIViewController {
 
+    static var shared: AtlasUIViewController? {
+        return try? AtlasUI.shared().provide()
+    }
+
     let mainNavigationController: UINavigationController
     fileprivate let atlasReachability = AtlasReachability()
-
-    static var shared: AtlasUIViewController? {
-        return try? AtlasUI.provide()
-    }
 
     fileprivate let loaderView: LoaderView = {
         let view = LoaderView()
@@ -27,7 +27,7 @@ public class AtlasUIViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
 
-    required public  init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
