@@ -11,7 +11,7 @@ extension URLRequest {
 
         guard let URL = self.url else { return "curl command could not be created" }
 
-        curlComponents.append("-X \(self.httpMethod)")
+        curlComponents.append("-X \(self.httpMethod ~? "GET")")
 
         self.allHTTPHeaderFields?.forEach {
             curlComponents.append("-H \"\($0): \($1)\"")
