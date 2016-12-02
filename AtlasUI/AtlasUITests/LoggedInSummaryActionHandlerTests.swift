@@ -217,8 +217,8 @@ extension LoggedInSummaryActionHandlerTests {
 
         AtlasUI.configure(options) { _ in
             let atlasUIViewController = AtlasUIViewController(forProductSKU: sku)
-            let _  = atlasUIViewController.view // load the view
             AtlasUI.register { atlasUIViewController }
+            let _  = atlasUIViewController.view // load the view
             completion()
         }
     }

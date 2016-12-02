@@ -25,7 +25,7 @@ extension AddressViewModelCreationStrategy {
         }
 
         var buttonActions = strategies.map { strategy in
-            ButtonAction(text: strategy.localizedTitleKey) { (UIAlertAction) in
+            ButtonAction(text: strategy.localizedTitleKey) { _ in
                 strategy.execute()
             }
         }
