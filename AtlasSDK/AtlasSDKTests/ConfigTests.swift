@@ -19,7 +19,7 @@ class ConfigTests: XCTestCase {
     let configLanguage = "de"
     let configCountry = "DE"
     let salesChannelId = "82fe2e7f-8c4f-4aa1-9019-b6bde5594456"
-    let clientId = "CLIENT_ID"
+    let clientId = "partner_YCg9dRq"
     let tocURL = "https://www.zalando.de/agb/"
     let callback = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect"
 

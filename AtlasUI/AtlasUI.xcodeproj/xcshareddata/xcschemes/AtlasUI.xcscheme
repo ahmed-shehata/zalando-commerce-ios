@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E95EA1381DDA0DC700179C11"
+               BlueprintIdentifier = "5BC1E6A06770E7598B0CE1C578109BF4"
                BuildableName = "AtlasUITestsHostsApp.app"
                BlueprintName = "AtlasUITestsHostsApp"
                ReferencedContainer = "container:AtlasUI.xcodeproj">

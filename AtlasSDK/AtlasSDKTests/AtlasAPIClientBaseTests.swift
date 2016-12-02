@@ -56,7 +56,7 @@ class AtlasAPIClientBaseTests: XCTestCase {
                             "sales-channels": [
                                 [
                                     "locale": "de_DE",
-                                    "sales-channel": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+                                    "sales-channel": "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
                                     "toc_url": "https://www.zalando.de/agb/"
                                 ]
                             ],

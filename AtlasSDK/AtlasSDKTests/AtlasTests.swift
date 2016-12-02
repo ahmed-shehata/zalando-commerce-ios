@@ -39,8 +39,8 @@ class AtlasTests: XCTestCase {
                 case .failure(let error):
                     fail(String(describing: error))
                 case .success(let client):
-                    expect(client.config.salesChannel.identifier).to(equal("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"))
-                    expect(client.config.clientId).to(equal("CLIENT_ID"))
+                    expect(client.config.salesChannel.identifier).to(equal("82fe2e7f-8c4f-4aa1-9019-b6bde5594456"))
+                    expect(client.config.clientId).to(equal("partner_YCg9dRq"))
                     expect(client.config.interfaceLocale.identifier).to(equal("en_DE"))
                     expect(client.config.availableSalesChannels.count).to(equal(16))
                 }
