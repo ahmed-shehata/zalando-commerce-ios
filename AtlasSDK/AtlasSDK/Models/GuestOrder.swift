@@ -12,7 +12,6 @@ public struct GuestOrder {
     public let grossTotal: Price
     public let taxTotal: Price
     public let created: NSDate?
-    public let detailURL: NSURL?
     public let externalPaymentURL: NSURL?
 
 }
@@ -26,7 +25,6 @@ extension GuestOrder: JSONInitializable {
         static let grossTotal = "gross_total"
         static let taxTotal = "tax_total"
         static let created = "created"
-        static let detailUrl = "detail_url"
         static let externalPaymentUrl = "external_payment_url"
     }
 
@@ -44,7 +42,6 @@ extension GuestOrder: JSONInitializable {
                   grossTotal: grossTotal,
                   taxTotal: taxTotal,
                   created: RFC3339DateFormatter().dateFromString(json[Keys.created].string),
-                  detailURL: json[Keys.detailUrl].URL,
                   externalPaymentURL: json[Keys.externalPaymentUrl].URL)
     }
 
