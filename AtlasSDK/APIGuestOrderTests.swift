@@ -37,7 +37,6 @@ class APIGuestOrderTests: AtlasAPIClientBaseTests {
                     expect(order.grossTotal.currency).to(equal("EUR"))
                     expect(order.taxTotal.amount).to(equal(2.34))
                     expect(order.taxTotal.currency).to(equal("EUR"))
-                    expect(order.detailURL).to(equal(NSURL(string: "https://www-de.release.zalando.net/benutzerkonto/bestellung-detail/10105083300694")!))
                 }
                 done()
             }
