@@ -17,7 +17,6 @@ module Calypso
     def create(version = nil)
       log_abort 'Please create version only from master branch' unless !options[:master] || master_branch?
       log_abort 'Please commit all changes before creating new version' if options[:commit] && repo_contains_changes?
-      log_abort 'kaboom!'
 
       new_version = ask_new_version(version)
 
