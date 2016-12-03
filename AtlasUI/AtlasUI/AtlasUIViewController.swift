@@ -16,7 +16,6 @@ public class AtlasUIViewController: UIViewController {
 
     fileprivate let loaderView: LoaderView = {
         let view = LoaderView()
-        view.isHidden = true
         return view
     }()
 
