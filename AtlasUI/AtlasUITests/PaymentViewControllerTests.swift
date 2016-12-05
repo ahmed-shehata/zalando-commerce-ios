@@ -22,7 +22,7 @@ class PaymentViewControllerTests: XCTestCase {
     }
 
     func testGuestRedirectStatus() {
-        guard let paymentViewController = self.paymentViewController(.guestRedirect(encryptedCheckoutId: "encryptedCheckoutId", encryptedToken: "encryptedToken")) else { return }
+        guard let paymentViewController = self.paymentViewController(with: .guestRedirect(encryptedCheckoutId: "encryptedCheckoutId", encryptedToken: "encryptedToken")) else { return }
         waitUntil(timeout: 10) { done in
             _ = paymentViewController.view // load the view
             paymentViewController.paymentCompletion = { result in
@@ -81,12 +81,12 @@ class PaymentViewControllerTests: XCTestCase {
 extension PaymentViewControllerTests {
 
     fileprivate func paymentViewController(with status: PaymentStatus) -> PaymentViewController? {
-        guard let callbackURL = URL(string: "http://de.zalando.atlas.AtlasCheckoutDemo/redirect") else { return nil }
+        let callbackURL: String
         let redirectURL: String
         switch status {
         case .guestRedirect(let encryptedCheckoutId, let encryptedToken):
-            callbackURL = "https://atlas-checkout-gateway-staging.dc.zalan.do/redirect"
-            redirectURL = "https://atlas-checkout-gateway-staging.dc.zalan.do/redirect/\(encryptedCheckoutId)/\(encryptedToken)"
+            callbackURL = "https://atlas-checkout-gateway.com/redirect"
+            redirectURL = "https://atlas-checkout-gateway.com/redirect/\(encryptedCheckoutId)/\(encryptedToken)"
         case .redirect:
             callbackURL = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect"
             redirectURL = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect"
@@ -101,7 +101,8 @@ extension PaymentViewControllerTests {
             redirectURL = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect%3F\(PaymentStatus.statusKey)%3Derror"
         }
         let url = AtlasMockAPI.endpointURL(forPath: "/redirect", queryItems: [URLQueryItem(name: "url", value: redirectURL)])
-        return PaymentViewController(paymentURL: url, callbackURL: callbackURL)
+        let callback = URL(string: callbackURL)!
+        return PaymentViewController(paymentURL: url, callbackURL: callback)
     }
 
 }

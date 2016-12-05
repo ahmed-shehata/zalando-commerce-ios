@@ -123,13 +123,9 @@ extension LoggedInAddressListActionHandlerTests {
 }
 
 class AddressViewModelCreationStrategyMock: AddressViewModelCreationStrategy {
+
+    var titleKey: String?
     var strategyCompletion: AddressViewModelCreationStrategyCompletion?
-
-    var completion: AddressViewModelCreationStrategyCompletion?
-
-    func configure(withTitle titleLocalizedKey: String?, completion: AddressViewModelCreationStrategyCompletion?) {
-        self.completion = completion
-    }
 
     func execute() {
         let dataModel = AddressFormDataModel(equatableAddress: UserAddress(addressId: "6616154"), countryCode: "DE")
