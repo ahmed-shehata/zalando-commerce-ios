@@ -80,11 +80,11 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
             paymentViewController.paymentCompletion = { [weak self] paymentStatus in
                 switch paymentStatus {
                 case .guestRedirect(let encryptedCheckoutId, let encryptedToken):
-                    self?.getGuestCheckout(encryptedCheckoutId, token: encryptedToken)
+                    self?.getGuestCheckout(checkoutId: encryptedCheckoutId, token: encryptedToken)
                 case .cancel:
                     break
                 case .error, .redirect, .success:
-                    UserMessage.displayError(AtlasCheckoutError.unclassified)
+                    UserMessage.displayError(error: AtlasCheckoutError.unclassified)
                 }
             }
 
@@ -126,9 +126,9 @@ extension GuestCheckoutSummaryActionHandler {
         let paymentViewController = PaymentViewController(paymentURL: paymentURL, callbackURL: callbackURL)
         paymentViewController.paymentCompletion = { [weak self] paymentStatus in
             switch paymentStatus {
-            case .success: self?.showConfirmationScreen(order)
+            case .success: self?.showConfirmationScreen(order: order)
             case .redirect, .cancel: break
-            case .error, .guestRedirect: UserMessage.displayError(AtlasCheckoutError.unclassified)
+            case .error, .guestRedirect: UserMessage.displayError(error: AtlasCheckoutError.unclassified)
             }
         }
         AtlasUIViewController.shared?.mainNavigationController.pushViewController(paymentViewController, animated: true)

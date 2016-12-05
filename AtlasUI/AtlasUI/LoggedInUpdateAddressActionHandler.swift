@@ -9,7 +9,7 @@ struct LoggedInUpdateAddressActionHandler: AddressFormActionHandler {
 
     weak var delegate: AddressFormActionHandlerDelegate?
 
-    func submitButtonPressed(dataModel: AddressFormDataModel) {
+    func submit(dataModel: AddressFormDataModel) {
         validateAddress(dataModel: dataModel) { success in
             guard let addressId = dataModel.addressId,
                 let request = UpdateAddressRequest(dataModel: dataModel), success else {

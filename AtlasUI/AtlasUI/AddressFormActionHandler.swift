@@ -16,7 +16,7 @@ protocol AddressFormActionHandler {
 
     weak var delegate: AddressFormActionHandlerDelegate? { get set }
 
-    func submitButtonPressed(dataModel: AddressFormDataModel)
+    func submit(dataModel: AddressFormDataModel)
 
 }
 

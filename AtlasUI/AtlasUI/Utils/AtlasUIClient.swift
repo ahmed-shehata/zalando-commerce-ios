@@ -81,7 +81,7 @@ struct AtlasUIClient {
 
     static func guestCheckout(checkoutId: String, token: String, completion: @escaping GuestCheckoutCompletion) {
         UserMessage.displayLoader { hideLoader in
-            AtlasAPIClient.shared?.guestCheckout(checkoutId, token: token) { result in
+            AtlasAPIClient.shared?.guestCheckout(checkoutId: checkoutId, token: token) { result in
                 hideLoader()
                 completion(result)
             }
@@ -90,7 +90,7 @@ struct AtlasUIClient {
 
     static func article(withSKU sku: String, completion: @escaping ArticleCompletion) {
         UserMessage.displayLoader { hideLoader in
-            AtlasAPIClient.shared?.article(sku) { result in
+            AtlasAPIClient.shared?.article(withSKU: sku) { result in
                 hideLoader()
                 completion(result)
             }
@@ -106,9 +106,9 @@ struct AtlasUIClient {
         }
     }
 
-    static func deleteAddress(addressId: String, completion: @escaping NoContentCompletion) {
+    static func deleteAddress(withId addressId: String, completion: @escaping NoContentCompletion) {
         UserMessage.displayLoader { hideLoader in
-            AtlasAPIClient.shared?.deleteAddress(addressId) { result in
+            AtlasAPIClient.shared?.deleteAddress(withId: addressId) { result in
                 hideLoader()
                 completion(result)
             }
@@ -126,7 +126,7 @@ struct AtlasUIClient {
 
     static func updateAddress(addressId: String, request: UpdateAddressRequest, completion: @escaping AddressCreateUpdateCompletion) {
         UserMessage.displayLoader { hideLoader in
-            AtlasAPIClient.shared?.updateAddress(addressId, request: request) { result in
+            AtlasAPIClient.shared?.updateAddress(withAddressId: addressId, request: request) { result in
                 hideLoader()
                 completion(result)
             }

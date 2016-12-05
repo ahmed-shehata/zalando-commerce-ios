@@ -20,7 +20,7 @@ class AtlasReachability {
 
         reachability.whenUnreachable = { _ in
             Async.main {
-                UserMessage.displayError(AtlasAPIError.noInternet)
+                UserMessage.displayError(error: AtlasAPIError.noInternet)
             }
         }
 

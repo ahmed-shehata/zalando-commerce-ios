@@ -9,43 +9,43 @@ class NotLoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
 
     weak var dataSource: CheckoutSummaryActionHandlerDataSource?
     weak var delegate: CheckoutSummaryActionHandlerDelegate?
-    private let guestAddressActionHandler = GuestAddressActionHandler()
+    fileprivate let guestAddressActionHandler = GuestAddressActionHandler()
 
-    func handleSubmitButton() {
+    func handleSubmit() {
         guard let dataSource = dataSource, let delegate = delegate else { return }
 
         AtlasUIClient.customer { result in
             guard let customer = result.process() else { return }
 
             let selectedArticleUnit = dataSource.dataModel.selectedArticleUnit
-            LoggedInSummaryActionHandler.createInstance(customer, selectedUnit: selectedArticleUnit) { result in
+            LoggedInSummaryActionHandler.create(customer: customer, selectedArticleUnit: selectedArticleUnit) { result in
                 guard let actionHandler = result.process() else { return }
 
                 let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, cartCheckout: actionHandler.cartCheckout)
-                delegate.actionHandlerUpdated(actionHandler)
-                delegate.dataModelUpdated(dataModel)
-                delegate.layoutUpdated(LoggedInLayout())
+                delegate.updated(actionHandler: actionHandler)
+                delegate.updated(dataModel: dataModel)
+                delegate.updated(layout: LoggedInLayout())
             }
         }
     }
 
-    func showPaymentSelectionScreen() {
-        UserMessage.displayError(AtlasCheckoutError.missingAddress)
+    func handlePaymentSelection() {
+        UserMessage.displayError(error: AtlasCheckoutError.missingAddress)
     }
 
-    func showShippingAddressSelectionScreen() {
+    func handleShippingAddressSelection() {
         guestAddressActionHandler.addressCreationStrategy = ShippingAddressViewModelCreationStrategy()
         guestAddressActionHandler.createAddress { [weak self] address in
-            let checkoutAddress = self?.guestAddressActionHandler.checkoutAddresses(address, billingAddress: nil)
-            self?.switchToGuestCheckout(checkoutAddress)
+            let checkoutAddress = self?.guestAddressActionHandler.checkoutAddresses(shippingAddress: address, billingAddress: nil)
+            self?.switchToGuestCheckout(checkoutAddress: checkoutAddress)
         }
     }
 
-    func showBillingAddressSelectionScreen() {
+    func handleBillingAddressSelection() {
         guestAddressActionHandler.addressCreationStrategy = BillingAddressViewModelCreationStrategy()
         guestAddressActionHandler.createAddress { [weak self] address in
-            let checkoutAddress = self?.guestAddressActionHandler.checkoutAddresses(nil, billingAddress: address)
-            self?.switchToGuestCheckout(checkoutAddress)
+            let checkoutAddress = self?.guestAddressActionHandler.checkoutAddresses(shippingAddress: nil, billingAddress: address)
+            self?.switchToGuestCheckout(checkoutAddress: checkoutAddress)
         }
     }
 
@@ -53,7 +53,7 @@ class NotLoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
 
 extension NotLoggedInSummaryActionHandler {
 
-    private func switchToGuestCheckout(checkoutAddress: CheckoutAddresses?) {
+    fileprivate func switchToGuestCheckout(checkoutAddress: CheckoutAddresses?) {
         guard let
             selectedArticleUnit = dataSource?.dataModel.selectedArticleUnit,
             let email = guestAddressActionHandler.emailAddress else { return }
@@ -64,9 +64,9 @@ extension NotLoggedInSummaryActionHandler {
                                                  totalPrice: selectedArticleUnit.priceAmount,
                                                  email: email)
         let actionHandler = GuestCheckoutSummaryActionHandler(email: email)
-        delegate?.actionHandlerUpdated(actionHandler)
-        delegate?.dataModelUpdated(dataModel)
-        delegate?.layoutUpdated(GuestCheckoutLayout())
+        delegate?.updated(actionHandler: actionHandler)
+        delegate?.updated(dataModel: dataModel)
+        delegate?.updated(layout: GuestCheckoutLayout())
     }
 
 }

@@ -59,20 +59,20 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
     func handleSubmit() {
         guard let dataSource = dataSource else { return }
         guard dataSource.dataModel.isPaymentSelected else {
-            UserMessage.displayError(AtlasCheckoutError.missingAddressAndPayment)
+            UserMessage.displayError(error: AtlasCheckoutError.missingAddressAndPayment)
             return
         }
 
         createCartCheckout { [weak self] result in
             guard let cartCheckout = result.process() else { return }
             guard let checkout = cartCheckout.checkout, cartCheckout.cart != nil else {
-                return UserMessage.displayError(AtlasCheckoutError.unclassified)
+                return UserMessage.displayError(error: AtlasCheckoutError.unclassified)
             }
 
             self?.cartCheckout = cartCheckout
 
             if dataSource.dataModel.isPaymentSelected && !UserMessage.errorDisplayed {
-                AtlasUIClient.createOrder(fromCheckoutId: checkout.id) { result in
+                AtlasUIClient.createOrder(checkoutId: checkout.id) { result in
                     guard let order = result.process() else { return }
                     self?.handleConfirmation(forOrder: order)
                 }
@@ -84,7 +84,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
         guard let paymentURL = cartCheckout?.checkout?.payment.selectionPageURL,
             let callbackURL = AtlasAPIClient.shared?.config.payment.selectionCallbackURL else {
             let error = !hasAddresses ? AtlasCheckoutError.missingAddress : AtlasCheckoutError.unclassified
-            UserMessage.displayError(error)
+            UserMessage.displayError(error: error)
             return
         }
 
@@ -98,8 +98,8 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
                 }
             case .cancel:
                 break
-            case .error:
-                UserMessage.displayError(AtlasCheckoutError.unclassified)
+            case .error, .guestRedirect:
+                UserMessage.displayError(error: AtlasCheckoutError.unclassified)
             }
         }
 
@@ -147,7 +147,7 @@ extension LoggedInSummaryActionHandler {
         }
 
         guard let callbackURL = AtlasAPIClient.shared?.config.payment.thirdPartyCallbackURL else {
-            UserMessage.displayError(AtlasCheckoutError.unclassified)
+            UserMessage.displayError(error: AtlasCheckoutError.unclassified)
             return
         }
 
@@ -156,7 +156,7 @@ extension LoggedInSummaryActionHandler {
             switch paymentStatus {
             case .success: self?.presentConfirmationScreen(for: order)
             case .redirect, .cancel: break
-            case .error: UserMessage.displayError(AtlasCheckoutError.unclassified)
+            case .error, .guestRedirect: UserMessage.displayError(error: AtlasCheckoutError.unclassified)
             }
         }
         AtlasUIViewController.shared?.mainNavigationController.pushViewController(paymentViewController, animated: true)
@@ -186,7 +186,7 @@ extension LoggedInSummaryActionHandler {
                                                addresses: CheckoutAddresses? = nil,
                                                completion: @escaping CreateCartCheckoutCompletion) {
 
-        AtlasUIClient.createCheckoutCart(forSKU: selectedArticleUnit.sku, addresses: addresses) { result in
+        AtlasUIClient.createCheckoutCart(sku: selectedArticleUnit.sku, addresses: addresses) { result in
             switch result {
             case .failure(let error, _):
                 guard case let AtlasAPIError.checkoutFailed(cart, _) = error else {
@@ -196,7 +196,7 @@ extension LoggedInSummaryActionHandler {
 
                 completion(.success((cart: cart, checkout: nil)))
                 if addresses?.billingAddress != nil && addresses?.shippingAddress != nil {
-                    UserMessage.displayError(AtlasCheckoutError.checkoutFailure)
+                    UserMessage.displayError(error: AtlasCheckoutError.checkoutFailure)
                 }
             case .success(let checkoutCart):
                 completion(.success((cart: checkoutCart.cart, checkout: checkoutCart.checkout)))

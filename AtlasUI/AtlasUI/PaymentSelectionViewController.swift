@@ -5,7 +5,7 @@
 import UIKit
 import AtlasSDK
 
-typealias PaymentCompletion = PaymentStatus -> Void
+typealias PaymentCompletion = (PaymentStatus) -> Void
 
 final class PaymentViewController: UIViewController, UIWebViewDelegate {
 
@@ -23,7 +23,7 @@ final class PaymentViewController: UIViewController, UIWebViewDelegate {
     }()
 
     init(paymentURL: URL, callbackURL: URL) {
-        self.callbackURLComponents = URLComponents(URL: callbackURL, resolvingAgainstBaseURL: true)
+        self.callbackURLComponents = URLComponents(url: callbackURL, resolvingAgainstBaseURL: true)
         self.paymentURL = paymentURL
         super.init(nibName: nil, bundle: nil)
     }
@@ -40,26 +40,24 @@ final class PaymentViewController: UIViewController, UIWebViewDelegate {
         webView.loadRequest(URLRequest(url: paymentURL))
     }
 
-    func webView(webView: UIWebView, shouldStartLoadWithRequest request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+    func webView(_ webView: UIWebView,
+                 shouldStartLoadWith request: URLRequest,
+                 navigationType: UIWebViewNavigationType) -> Bool {
         guard let url = request.url,
             let callbackURLComponents = callbackURLComponents,
-            let requestURLComponents = NSURLComponents(url: url, resolvingAgainstBaseURL: true)
+            let requestURLComponents = URLComponents(url: url, resolvingAgainstBaseURL: true)
             else { return true }
 
         guard let paymentStatus = PaymentStatus(callbackURLComponents: callbackURLComponents,
                                                 requestURLComponents: requestURLComponents) else { return true }
 
         paymentCompletion?(paymentStatus)
-        navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
         return false
     }
 
-    func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
-        handle(webView: webView, error: error)
-    }
-
-    private func handle(webView: UIWebView, error: NSError) {
-        if !error.isWebKitError {
+    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
+        if let error = error as NSError?, !error.isWebKitError {
             UserMessage.displayError(error: error)
         }
     }

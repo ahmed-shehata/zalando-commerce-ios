@@ -79,10 +79,10 @@ class CheckoutSummaryMainStackView: UIStackView {
 
     let guestStackView: CheckoutSummaryGuestStackView = {
         let stackView = CheckoutSummaryGuestStackView()
-        stackView.axis = .Horizontal
+        stackView.axis = .horizontal
         stackView.spacing = 5
         stackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
-        stackView.layoutMarginsRelativeArrangement = true
+        stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
 
@@ -148,8 +148,8 @@ extension CheckoutSummaryMainStackView: UIDataBuilder {
         productStackView.configure(viewModel: viewModel.dataModel.selectedArticleUnit)
         priceStackView.configure(viewModel: viewModel.dataModel)
         deliveryStackView.configure(viewModel: viewModel.dataModel)
-        guestStackView.configureData(viewModel.dataModel.email)
-        guestStackView.hidden = !viewModel.layout.showGuestStackView
+        guestStackView.configure(viewModel: viewModel.dataModel.email)
+        guestStackView.isHidden = !viewModel.layout.showGuestStackView
 
         shippingAddressStackView.configure(viewModel: CheckoutSummaryAddressViewModel(
             addressLines: viewModel.dataModel.formattedShippingAddress,

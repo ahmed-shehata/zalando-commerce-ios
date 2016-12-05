@@ -19,7 +19,7 @@ class LoggedInAddressListActionHandler: AddressListActionHandler {
         addressViewModelCreationStrategy?.strategyCompletion = { [weak self] viewModel in
             let actionHandler = LoggedInCreateAddressActionHandler()
             self?.presentAddressViewController(withViewModel: viewModel,
-                                            formActionHandler: actionHandler) { address in
+                                            formActionHandler: actionHandler) { address, email in
                 self?.delegate?.created(address: address)
             }
         }
@@ -32,7 +32,7 @@ class LoggedInAddressListActionHandler: AddressListActionHandler {
         let addressType: AddressFormType = address.pickupPoint == nil ? .standardAddress : .pickupPoint
         let viewModel = AddressFormViewModel(dataModel: dataModel, layout: formLayout, type: addressType)
         let actionHandler = LoggedInUpdateAddressActionHandler()
-        presentAddressViewController(withViewModel: viewModel, formActionHandler: actionHandler) { [weak self] address in
+        presentAddressViewController(withViewModel: viewModel, formActionHandler: actionHandler) { [weak self] address, email in
             self?.delegate?.updated(address: address)
         }
     }

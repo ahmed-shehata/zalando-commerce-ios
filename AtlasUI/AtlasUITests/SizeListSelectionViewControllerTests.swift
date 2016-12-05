@@ -26,7 +26,7 @@ class SizeListSelectionViewControllerTests: XCTestCase {
         waitUntil(timeout: 10) { done in
             self.navigationController(forSKU: "AD541L009-G11") { navigationController in
 
-                let _ = navigationController.topViewController?.view // Load the view
+                _ = navigationController.topViewController?.view // Load the view
                 sizeSelectionNavigationController = navigationController
                 done()
             }
@@ -45,7 +45,7 @@ class SizeListSelectionViewControllerTests: XCTestCase {
         waitUntil(timeout: 10) { done in
             self.navigationController(forSKU: "MK151F00E-Q11") { navigationController in
 
-                let _ = navigationController.topViewController?.view // Load the view
+                _ = navigationController.topViewController?.view // Load the view
                 sizeSelectionNavigationController = navigationController
                 done()
             }
@@ -63,7 +63,7 @@ class SizeListSelectionViewControllerTests: XCTestCase {
         var sizeSelectionNavigationController: UINavigationController?
         waitUntil(timeout: 10) { done in
             self.navigationController(forSKU: "AZ711N00B-Q11") { navigationController in
-                let _ = navigationController.topViewController?.view // Load the view
+                _ = navigationController.topViewController?.view // Load the view
                 sizeSelectionNavigationController = navigationController
                 done()
             }

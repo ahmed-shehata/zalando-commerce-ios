@@ -12,8 +12,23 @@ enum PaymentStatus: Equatable {
 
     static var statusKey = "payment_status"
 
-    private init?(withStatus status: String) {
-        switch status {
+    init?(callbackURLComponents: URLComponents, requestURLComponents: URLComponents) {
+        guard let callbackHost = callbackURLComponents.host,
+            let requestHost = requestURLComponents.host,
+            callbackHost.lowercased() == requestHost.lowercased()
+            else { return nil }
+
+        self.init(requestURLComponents: requestURLComponents)
+    }
+
+}
+
+extension PaymentStatus {
+
+    fileprivate init?(fromString string: String?) {
+        guard let string = string else { return nil }
+
+        switch string {
         case "success": self = .success
         case "cancel": self = .cancel
         case "error": self = .error
@@ -21,40 +36,37 @@ enum PaymentStatus: Equatable {
         }
     }
 
-    private init?(withPath path: [String]) {
-        guard let firstComponent = path.first else { return nil }
-        switch firstComponent {
-        case "redirect":
-            let redirectPathHasCheckoutIdAndToken = path.count == 3
-            if redirectPathHasCheckoutIdAndToken {
-                self = .guestRedirect(encryptedCheckoutId: path[1], encryptedToken: path[2])
-            } else {
-                return nil
-            }
-        default:
-            return nil
-        }
-    }
-
-    init?(callbackURLComponents: NSURLComponents, requestURLComponents: NSURLComponents) {
-        guard let
-            callbackHost = callbackURLComponents.host,
-            requestHost = requestURLComponents.host
-            where
-            callbackHost.lowercaseString == requestHost.lowercaseString
-            else { return nil }
-
-        if let
-            status = requestURLComponents.queryItems?.filter({ $0.name == PaymentStatus.statusKey }).first?.value,
-            paymentStatus = PaymentStatus(withStatus: status) {
+    fileprivate init(requestURLComponents: URLComponents) {
+        if let paymentStatus = PaymentStatus(fromString: requestURLComponents.paymentStatus) {
             self = paymentStatus
-        } else if let
-            path = requestURLComponents.path?.componentsSeparatedByString("/").filter({ !$0.isEmpty }),
-            paymentStatus = PaymentStatus(withPath: path) {
-            self = paymentStatus
+        } else if let guestRedirect = requestURLComponents.guestRedirect {
+            self = .guestRedirect(encryptedCheckoutId: guestRedirect.encryptedCheckoutId,
+                                  encryptedToken: guestRedirect.encryptedToken)
         } else {
             self = .redirect
         }
+    }
+
+}
+
+extension URLComponents {
+
+    fileprivate var paymentStatus: String? {
+        return queryItems?.filter({ $0.name == PaymentStatus.statusKey }).first?.value
+    }
+
+    fileprivate var guestRedirect: (encryptedCheckoutId: String, encryptedToken: String)? {
+        guard isGuestRedirect else { return nil }
+        return (encryptedCheckoutId: pathComponents[1], encryptedToken: pathComponents[2])
+    }
+
+    private var isGuestRedirect: Bool {
+        guard let action = pathComponents.first, action == "redirect" else { return false }
+        return pathComponents.count == 3
+    }
+
+    private var pathComponents: [String] {
+        return path.components(separatedBy: "/").filter({ !$0.isEmpty })
     }
 
 }
