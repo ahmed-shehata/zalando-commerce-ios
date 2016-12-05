@@ -19,7 +19,7 @@ class AtlasReachability {
 
         reachability?.whenReachable = { _ in
             Async.main {
-                UserMessage.clearBannerError()
+                UserMessage.hideBannerError()
             }
         }
 

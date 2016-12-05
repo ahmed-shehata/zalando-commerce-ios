@@ -31,8 +31,15 @@ struct UserMessage {
         return bannerErrorViewController.parentViewController != nil || fullScreenErrorViewController.parentViewController != nil
     }
 
-    static func clearBannerError() {
+    static func hideBannerError() {
         bannerErrorViewController.hideBanner()
+    }
+
+    static func hideError() {
+        bannerErrorViewController.hideBanner() {
+            fullScreenErrorViewController.view.removeFromSuperview()
+            fullScreenErrorViewController.removeFromParentViewController()
+        }
     }
 
     static func displayError(error: ErrorType) {
