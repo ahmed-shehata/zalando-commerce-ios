@@ -25,7 +25,8 @@ enum PaymentStatus: Equatable {
         guard let firstComponent = path.first else { return nil }
         switch firstComponent {
         case "redirect":
-            if path.count == 3 {
+            let redirectPathHasCheckoutIdAndToken = path.count == 3
+            if redirectPathHasCheckoutIdAndToken {
                 self = .guestRedirect(encryptedCheckoutId: path[1], encryptedToken: path[2])
             } else {
                 return nil

@@ -5,7 +5,6 @@
 struct GetGuestCheckoutEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
 
     let serviceURL: NSURL
-    let method: HTTPMethod = .GET
     var path: String { return "guest-checkout/api/checkouts/\(checkoutId)/\(token)" }
     let acceptedContentType = "application/x.zalando.guest-checkout+json"
     let salesChannel: String

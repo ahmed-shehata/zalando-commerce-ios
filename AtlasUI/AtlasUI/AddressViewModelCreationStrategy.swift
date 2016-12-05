@@ -17,12 +17,7 @@ protocol AddressViewModelCreationStrategy {
 extension AddressViewModelCreationStrategy {
 
     func showActionSheet(titleLocalizedKey: String?, strategies: [AddressDataModelCreationStrategy]) {
-        let title: String?
-        if let key = titleLocalizedKey {
-            title = Localizer.string(key)
-        } else {
-            title = nil
-        }
+        let title = actionSheetLocalizedTitle(titleLocalizedKey)
 
         var buttonActions = strategies.map { strategy in
             ButtonAction(text: strategy.localizedTitleKey) { _ in
@@ -34,6 +29,11 @@ extension AddressViewModelCreationStrategy {
         buttonActions.append(cancelAction)
 
         UserMessage.showActionSheet(title: title, actions: buttonActions)
+    }
+
+    private func actionSheetLocalizedTitle(titleLocalizedKey: String?) -> String? {
+        guard let key = titleLocalizedKey else { return nil }
+        return Localizer.string(key)
     }
 
 }

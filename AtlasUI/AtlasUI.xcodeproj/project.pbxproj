@@ -80,7 +80,6 @@
 		E92316E41DE466F700920188 /* GuestCheckoutCreateAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92316E31DE466F700920188 /* GuestCheckoutCreateAddressActionHandler.swift */; };
 		E92316E61DE4671000920188 /* GuestCheckoutUpdateAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92316E51DE4671000920188 /* GuestCheckoutUpdateAddressActionHandler.swift */; };
 		E924CB791DE7414B00C3E08A /* CheckoutSummaryGuestStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E924CB781DE7414B00C3E08A /* CheckoutSummaryGuestStackView.swift */; };
-		E931B6681DE8891500FBA7A9 /* GuestAddressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E931B6671DE8891500FBA7A9 /* GuestAddressManager.swift */; };
 		E94CCCB81DE2FE3B00987655 /* LoggedInSummaryActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94CCCB51DE2FE3B00987655 /* LoggedInSummaryActionHandler.swift */; };
 		E94CCCBA1DE2FE3B00987655 /* OrderPlacedSummaryActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94CCCB71DE2FE3B00987655 /* OrderPlacedSummaryActionHandler.swift */; };
 		E94CCCBC1DE2FF4600987655 /* NotLoggedInSummaryActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94CCCBB1DE2FF4600987655 /* NotLoggedInSummaryActionHandler.swift */; };
@@ -100,6 +99,7 @@
 		E98D1E871DDE0822005774B4 /* LoggedInCreateAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98D1E861DDE0822005774B4 /* LoggedInCreateAddressActionHandler.swift */; };
 		E98D1E891DDE082F005774B4 /* LoggedInUpdateAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98D1E881DDE082F005774B4 /* LoggedInUpdateAddressActionHandler.swift */; };
 		E98F629D1DE5FF0400488740 /* PaymentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F629C1DE5FF0400488740 /* PaymentStatus.swift */; };
+		E99943911DF56978007A1070 /* GuestAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99943901DF56978007A1070 /* GuestAddressActionHandler.swift */; };
 		E9B686461DE36025009F8883 /* GuestCheckoutSummaryActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B686451DE36025009F8883 /* GuestCheckoutSummaryActionHandler.swift */; };
 		E9D437931DD35BED00082B44 /* Injector.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D437921DD35BED00082B44 /* Injector.swift */; };
 		E9D437951DD35E6C00082B44 /* AtlasUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D437941DD35E6C00082B44 /* AtlasUI.swift */; };
@@ -235,7 +235,6 @@
 		E92316E31DE466F700920188 /* GuestCheckoutCreateAddressActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCheckoutCreateAddressActionHandler.swift; sourceTree = "<group>"; };
 		E92316E51DE4671000920188 /* GuestCheckoutUpdateAddressActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCheckoutUpdateAddressActionHandler.swift; sourceTree = "<group>"; };
 		E924CB781DE7414B00C3E08A /* CheckoutSummaryGuestStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryGuestStackView.swift; sourceTree = "<group>"; };
-		E931B6671DE8891500FBA7A9 /* GuestAddressManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestAddressManager.swift; sourceTree = "<group>"; };
 		E94CCCB51DE2FE3B00987655 /* LoggedInSummaryActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedInSummaryActionHandler.swift; sourceTree = "<group>"; };
 		E94CCCB71DE2FE3B00987655 /* OrderPlacedSummaryActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderPlacedSummaryActionHandler.swift; sourceTree = "<group>"; };
 		E94CCCBB1DE2FF4600987655 /* NotLoggedInSummaryActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotLoggedInSummaryActionHandler.swift; sourceTree = "<group>"; };
@@ -257,6 +256,7 @@
 		E98D1E861DDE0822005774B4 /* LoggedInCreateAddressActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedInCreateAddressActionHandler.swift; sourceTree = "<group>"; };
 		E98D1E881DDE082F005774B4 /* LoggedInUpdateAddressActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedInUpdateAddressActionHandler.swift; sourceTree = "<group>"; };
 		E98F629C1DE5FF0400488740 /* PaymentStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentStatus.swift; sourceTree = "<group>"; };
+		E99943901DF56978007A1070 /* GuestAddressActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestAddressActionHandler.swift; sourceTree = "<group>"; };
 		E9B686451DE36025009F8883 /* GuestCheckoutSummaryActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCheckoutSummaryActionHandler.swift; sourceTree = "<group>"; };
 		E9D437921DD35BED00082B44 /* Injector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Injector.swift; sourceTree = "<group>"; };
 		E9D437941DD35E6C00082B44 /* AtlasUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasUI.swift; sourceTree = "<group>"; };
@@ -615,7 +615,7 @@
 				E9B686451DE36025009F8883 /* GuestCheckoutSummaryActionHandler.swift */,
 				E94CCCB51DE2FE3B00987655 /* LoggedInSummaryActionHandler.swift */,
 				E94CCCB71DE2FE3B00987655 /* OrderPlacedSummaryActionHandler.swift */,
-				E931B6671DE8891500FBA7A9 /* GuestAddressManager.swift */,
+				E99943901DF56978007A1070 /* GuestAddressActionHandler.swift */,
 			);
 			name = "Action Handler";
 			sourceTree = "<group>";
@@ -882,7 +882,6 @@
 				E96185AA1DDB7EA50000463B /* CheckoutSummaryLayout.swift in Sources */,
 				B96E746BEA32C49AA7B206F00C144F57 /* AtlasUI-String.swift in Sources */,
 				F60151398A735039647F5A24ADB64506 /* SizeListTableViewDataSource.swift in Sources */,
-				E931B6681DE8891500FBA7A9 /* GuestAddressManager.swift in Sources */,
 				E9D437A21DD3769D00082B44 /* CheckoutSummaryDataModel.swift in Sources */,
 				D335F80B78F8AD18EC8A079C138A41BF /* AtlasUIErrors.swift in Sources */,
 				1B42E623E7FF2AD785958BBDD8103B11 /* AtlasUIViewController.swift in Sources */,
@@ -899,6 +898,7 @@
 				E98D1E821DDDF636005774B4 /* AddressFormViewModel.swift in Sources */,
 				3ABA26421BD2B174AA71C1D7D4F67E58 /* CheckoutSummaryPaymentStackView.swift in Sources */,
 				E9E193281DDF134E00B070B8 /* AddressViewModelCreationStrategy.swift in Sources */,
+				E99943911DF56978007A1070 /* GuestAddressActionHandler.swift in Sources */,
 				9DF15AB5A8939C7163029A2364B05864 /* CheckoutSummaryPriceStackView.swift in Sources */,
 				1A6A62DFB9C89EC03C88B3F06B2164E3 /* CheckoutSummaryProductStackView.swift in Sources */,
 				0609FEB6D8F704C68CCF1051ACDEDF56 /* CheckoutSummaryRootStackView.swift in Sources */,

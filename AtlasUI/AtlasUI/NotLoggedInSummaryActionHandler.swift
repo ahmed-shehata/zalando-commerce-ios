@@ -9,7 +9,7 @@ class NotLoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
 
     weak var dataSource: CheckoutSummaryActionHandlerDataSource?
     weak var delegate: CheckoutSummaryActionHandlerDelegate?
-    private let guestAddressManager = GuestAddressManager()
+    private let guestAddressActionHandler = GuestAddressActionHandler()
 
     func handleSubmitButton() {
         guard let dataSource = dataSource, delegate = delegate else { return }
@@ -34,17 +34,17 @@ class NotLoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
     }
 
     func showShippingAddressSelectionScreen() {
-        guestAddressManager.addressCreationStrategy = ShippingAddressViewModelCreationStrategy()
-        guestAddressManager.createAddress { [weak self] address in
-            let checkoutAddress = self?.guestAddressManager.checkoutAddresses(address, billingAddress: nil)
+        guestAddressActionHandler.addressCreationStrategy = ShippingAddressViewModelCreationStrategy()
+        guestAddressActionHandler.createAddress { [weak self] address in
+            let checkoutAddress = self?.guestAddressActionHandler.checkoutAddresses(address, billingAddress: nil)
             self?.switchToGuestCheckout(checkoutAddress)
         }
     }
 
     func showBillingAddressSelectionScreen() {
-        guestAddressManager.addressCreationStrategy = BillingAddressViewModelCreationStrategy()
-        guestAddressManager.createAddress { [weak self] address in
-            let checkoutAddress = self?.guestAddressManager.checkoutAddresses(nil, billingAddress: address)
+        guestAddressActionHandler.addressCreationStrategy = BillingAddressViewModelCreationStrategy()
+        guestAddressActionHandler.createAddress { [weak self] address in
+            let checkoutAddress = self?.guestAddressActionHandler.checkoutAddresses(nil, billingAddress: address)
             self?.switchToGuestCheckout(checkoutAddress)
         }
     }
@@ -54,7 +54,9 @@ class NotLoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
 extension NotLoggedInSummaryActionHandler {
 
     private func switchToGuestCheckout(checkoutAddress: CheckoutAddresses?) {
-        guard let selectedArticleUnit = dataSource?.dataModel.selectedArticleUnit, email = guestAddressManager.emailAddress else { return }
+        guard let
+            selectedArticleUnit = dataSource?.dataModel.selectedArticleUnit,
+            email = guestAddressActionHandler.emailAddress else { return }
 
         let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit,
                                                  shippingAddress: checkoutAddress?.shippingAddress,

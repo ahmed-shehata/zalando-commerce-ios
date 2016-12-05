@@ -9,9 +9,9 @@ import AtlasMockAPI
 @testable import AtlasUI
 @testable import AtlasSDK
 
-class GuestAddressManagerTests: XCTestCase {
+class GuestAddressActionHandlerTests: XCTestCase {
 
-    var manager: GuestAddressManager = GuestAddressManager()
+    var guestAddressActionHandler = GuestAddressActionHandler()
     let window = UIWindow()
 
     override func setUp() {
@@ -73,7 +73,7 @@ class GuestAddressManagerTests: XCTestCase {
 
 }
 
-extension GuestAddressManagerTests {
+extension GuestAddressActionHandlerTests {
 
     private func registerAtlasUIViewController(sku: String) {
         waitUntil(timeout: 10) { done in

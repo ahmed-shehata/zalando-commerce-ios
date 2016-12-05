@@ -69,7 +69,7 @@ struct OrderPlacedLayout: CheckoutSummaryLayout {
     let showDetailArrow: Bool = false
     let showGuestStackView: Bool = false
 
-    func submitButtonBackgroundColor(readyToCheckout readyToCheckout: Bool) -> UIColor { return UIColor(red: 80.0 / 255.0, green: 150.0 / 255.0, blue: 20.0 / 255.0, alpha: 1.0) }
+    func submitButtonBackgroundColor(readyToCheckout readyToCheckout: Bool) -> UIColor { return UIColor(hex: 0x509614) }
     func submitButtonTitle(isPaypal isPaypal: Bool) -> String { return "summaryView.submitButton.backToShop" }
     func hideBackButton(hasSingleUnit hasSingleUnit: Bool) -> Bool { return true }
 
@@ -83,7 +83,7 @@ struct GuestOrderPlacedLayout: CheckoutSummaryLayout {
     let showDetailArrow: Bool = false
     let showGuestStackView: Bool = true
 
-    func submitButtonBackgroundColor(readyToCheckout readyToCheckout: Bool) -> UIColor { return UIColor(red: 80.0 / 255.0, green: 150.0 / 255.0, blue: 20.0 / 255.0, alpha: 1.0) }
+    func submitButtonBackgroundColor(readyToCheckout readyToCheckout: Bool) -> UIColor { return UIColor(hex: 0x509614) }
     func submitButtonTitle(isPaypal isPaypal: Bool) -> String { return "summaryView.submitButton.backToShop" }
     func hideBackButton(hasSingleUnit hasSingleUnit: Bool) -> Bool { return true }
 
