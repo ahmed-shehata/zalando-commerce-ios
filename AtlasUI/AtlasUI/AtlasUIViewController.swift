@@ -40,7 +40,7 @@ public class AtlasUIViewController: UIViewController {
 
     fileprivate func loadErrorView() {
         UserMessage.displayError(AtlasCheckoutError.unclassified)
-        UserMessage.clearBannerError()
+        UserMessage.hideError()
     }
 
 }
