@@ -62,7 +62,7 @@ final class PaymentViewController: UIViewController, UIWebViewDelegate {
     #else
         func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
             guard let error = error else { return }
-            handlgateway e(webView: webView, error: error)
+            handle(webView: webView, error: error)
         }
     #endif
 

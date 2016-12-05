@@ -9,9 +9,9 @@ import AtlasMockAPI
 @testable import AtlasUI
 @testable import AtlasSDK
 
-class GuestAddressManagerTests: XCTestCase {
+class GuestAddressActionHandlerTests: XCTestCase {
 
-    var manager: GuestAddressManager = GuestAddressManager()
+    var guestAddressActionHandler = GuestAddressActionHandler()
     let window = UIWindow()
 
     override func setUp() {
@@ -26,54 +26,54 @@ class GuestAddressManagerTests: XCTestCase {
     }
 
     func testCreateShippingAddress() {
-        manager.addressCreationStrategy = ShippingAddressViewModelCreationStrategy()
-        manager.createAddress { _ in }
+        guestAddressActionHandler.addressCreationStrategy = ShippingAddressViewModelCreationStrategy()
+        guestAddressActionHandler.createAddress { _ in }
         expect(UIApplication.topViewController() as? UIAlertController).toNotEventually(beNil())
     }
 
     func testCreateBilingAddress() {
-        manager.addressCreationStrategy = BillingAddressViewModelCreationStrategy()
-        manager.createAddress { _ in }
+        guestAddressActionHandler.addressCreationStrategy = BillingAddressViewModelCreationStrategy()
+        guestAddressActionHandler.createAddress { _ in }
         expect(UIApplication.topViewController() as? UIAlertController).toNotEventually(beNil())
     }
 
     func testUpdateShippingAddress() {
-        manager.addressCreationStrategy = ShippingAddressViewModelCreationStrategy()
-        manager.updateAddress(createAddress()) { _ in }
+        guestAddressActionHandler.addressCreationStrategy = ShippingAddressViewModelCreationStrategy()
+        guestAddressActionHandler.updateAddress(createAddress()) { _ in }
         expect(AtlasUIViewController.instance?.mainNavigationController.viewControllers.last as? AddressFormViewController).toNotEventually(beNil())
     }
 
     func testUpdateBilingAddress() {
-        manager.addressCreationStrategy = BillingAddressViewModelCreationStrategy()
-        manager.updateAddress(createAddress()) { _ in }
+        guestAddressActionHandler.addressCreationStrategy = BillingAddressViewModelCreationStrategy()
+        guestAddressActionHandler.updateAddress(createAddress()) { _ in }
         expect(AtlasUIViewController.instance?.mainNavigationController.viewControllers.last as? AddressFormViewController).toNotEventually(beNil())
     }
 
     func testModifyShippingAddress() {
-        manager.addressCreationStrategy = ShippingAddressViewModelCreationStrategy()
-        manager.handleAddressModification(createAddress()) { _ in }
+        guestAddressActionHandler.addressCreationStrategy = ShippingAddressViewModelCreationStrategy()
+        guestAddressActionHandler.handleAddressModification(createAddress()) { _ in }
         expect(UIApplication.topViewController() as? UIAlertController).toNotEventually(beNil())
     }
 
     func testModifyNoAddress() {
-        manager.addressCreationStrategy = ShippingAddressViewModelCreationStrategy()
-        manager.handleAddressModification(nil) { _ in }
+        guestAddressActionHandler.addressCreationStrategy = ShippingAddressViewModelCreationStrategy()
+        guestAddressActionHandler.handleAddressModification(nil) { _ in }
         expect(UIApplication.topViewController() as? UIAlertController).toNotEventually(beNil())
     }
 
     func testCheckoutAddressesWithNormalShippingAddress() {
-        let checkoutAddresses = manager.checkoutAddresses(createAddress(), billingAddress: nil)
+        let checkoutAddresses = guestAddressActionHandler.checkoutAddresses(createAddress(), billingAddress: nil)
         expect(checkoutAddresses.billingAddress).toNot(beNil())
     }
 
     func testCheckoutAddressesWithPickupPointShippingAddress() {
-        let checkoutAddresses = manager.checkoutAddresses(createPickupPointAddress(), billingAddress: nil)
+        let checkoutAddresses = guestAddressActionHandler.checkoutAddresses(createPickupPointAddress(), billingAddress: nil)
         expect(checkoutAddresses.billingAddress).to(beNil())
     }
 
 }
 
-extension GuestAddressManagerTests {
+extension GuestAddressActionHandlerTests {
 
     private func registerAtlasUIViewController(sku: String) {
         waitUntil(timeout: 10) { done in

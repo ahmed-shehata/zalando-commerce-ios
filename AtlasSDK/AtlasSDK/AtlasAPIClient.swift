@@ -46,11 +46,11 @@ public struct AtlasAPIClient {
         }
     }
 
-    func fetchRedirectLocation(endpoint: Endpoint, successStatus: HTTPStatus = .NoContent, completion: AtlasAPIResult<NSURL> -> Void) {
+    func fetchRedirectLocation(endpoint: Endpoint, completion: AtlasAPIResult<NSURL> -> Void) {
         call(endpoint, completion: completion) { response in
             guard let
                 urlString = response.httpHeaders?["Location"],
-                url = NSURL(string: urlString) where response.statusCode == successStatus else { return nil }
+                url = NSURL(string: urlString) where HTTPStatus(statusCode: response.statusCode).isSuccessful else { return nil }
             return url
         }
     }
