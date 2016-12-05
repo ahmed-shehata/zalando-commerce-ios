@@ -12,10 +12,10 @@ class APIGuestCheckoutTests: AtlasAPIClientBaseTests {
 
     func testGetGuestCheckout() {
         waitUntilAtlasAPIClientIsConfigured { done, client in
-            client.guestCheckout("CHECKOUT_ID", token: "TOKEN") { result in
+            client.guestCheckout(checkoutId: "CHECKOUT_ID", token: "TOKEN") { result in
                 switch result {
                 case .failure(let error):
-                    fail(String(error))
+                    fail(String(describing: error))
                 case .success(let guestCheckout):
                     expect(guestCheckout.cart.items[0].sku).to(equal("AD541L009-G1100XS000"))
                     expect(guestCheckout.cart.items[0].quantity).to(equal(1))
