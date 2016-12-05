@@ -21,8 +21,8 @@ extension GuestPaymentRequest: JSONRepresentable {
         static let metadata = "metadata"
     }
 
-    public func toJSON() -> [String : AnyObject] {
-        var json: [String: AnyObject] = [
+    public func toJSON() -> [String : Any] {
+        var json: [String: Any] = [
             Keys.method: self.method
         ]
         json[Keys.metadata] = metadata

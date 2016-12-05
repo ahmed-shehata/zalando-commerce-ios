@@ -42,5 +42,5 @@ public struct APIRequest<T> {
             }
         }
     }
-    
+
 }

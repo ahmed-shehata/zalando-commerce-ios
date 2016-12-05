@@ -5,7 +5,7 @@
 public struct GuestPaymentMethod {
 
     public let method: String
-    public let metadata: [String: AnyObject]?
+    public let metadata: [String: Any]?
     public let externalPayment: Bool?
 
 }

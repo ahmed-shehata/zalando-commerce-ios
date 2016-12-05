@@ -21,7 +21,7 @@ extension GuestCustomerRequest: JSONRepresentable {
         self.subscribeNewsletter = subscribeNewsletter
     }
 
-    public func toJSON() -> [String: AnyObject] {
+    public func toJSON() -> [String: Any] {
         return [
             Keys.email: email,
             Keys.subscribeNewsletter: subscribeNewsletter

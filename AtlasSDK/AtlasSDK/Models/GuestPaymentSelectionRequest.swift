@@ -33,7 +33,7 @@ extension GuestPaymentSelectionRequest: JSONRepresentable {
         static let cart = "cart"
     }
 
-    public func toJSON() -> [String: AnyObject] {
+    public func toJSON() -> [String: Any] {
         return [
             Keys.customer: customer.toJSON(),
             Keys.shippingAddress: shippingAddress.toJSON(),

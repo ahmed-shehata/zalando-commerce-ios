@@ -60,7 +60,7 @@ public struct AtlasAPIClient {
                              successHandler: @escaping (JSONResponse) -> T?) {
         let requestBuilder = RequestBuilder(forEndpoint: endpoint, urlSession: urlSession)
         var apiRequest = APIRequest(requestBuilder: requestBuilder, successHandler: successHandler)
-        apiRequest.execute(completion: completion)
+        apiRequest.execute(completion)
     }
 
 }

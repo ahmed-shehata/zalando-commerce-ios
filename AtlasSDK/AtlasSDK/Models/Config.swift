@@ -9,7 +9,7 @@ public struct Config {
     public let catalogURL: URL
     public let checkoutURL: URL
     public let checkoutGatewayURL: URL
-    public let loginURL: NSURL
+    public let loginURL: URL
 
     public let clientId: String
     public let payment: Payment
