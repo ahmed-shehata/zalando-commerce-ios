@@ -11,7 +11,7 @@ struct LoggedInCreateAddressActionHandler: AddressFormActionHandler {
 
     func submitButtonPressed(dataModel: AddressFormDataModel) {
         validateAddress(dataModel) { success in
-            guard let request = CreateAddressRequest(dataModel: dataModel) where success else {
+            guard let request = CreateAddressRequest(dataModel: dataModel), success else {
                 self.delegate?.addressProcessingFinished()
                 return
             }

@@ -5,15 +5,16 @@
 import Foundation
 import AtlasSDK
 
-typealias GuestAddressActionHandlerCompletion = (address: EquatableAddress) -> Void
+typealias GuestAddressActionHandlerCompletion = (_ address: EquatableAddress) -> Void
 
 class GuestAddressActionHandler {
 
     var addressCreationStrategy: AddressViewModelCreationStrategy?
     var emailAddress: String?
 
-    func createAddress(completion: GuestAddressActionHandlerCompletion) {
-        addressCreationStrategy?.configure(withTitle: "guestSummaryView.address.add") { viewModel in
+    func createAddress(completion: @escaping GuestAddressActionHandlerCompletion) {
+        addressCreationStrategy?.titleKey = "guestSummaryView.address.add"
+        addressCreationStrategy?.strategyCompletion = { viewModel in
             let guestViewModel = self.guestViewModel(fromViewModel: viewModel)
             let actionHandler = GuestCheckoutCreateAddressActionHandler()
             let viewController = AddressFormViewController(viewModel: guestViewModel, actionHandler: actionHandler) { (address, email) in
@@ -25,7 +26,7 @@ class GuestAddressActionHandler {
         addressCreationStrategy?.execute()
     }
 
-    func updateAddress(address: EquatableAddress, completion: GuestAddressActionHandlerCompletion) {
+    func updateAddress(address: EquatableAddress, completion: @escaping GuestAddressActionHandlerCompletion) {
         let actionHandler = GuestCheckoutUpdateAddressActionHandler()
         let dataModel = AddressFormDataModel(equatableAddress: address, email: emailAddress, countryCode: AtlasAPIClient.countryCode)
         let formLayout = UpdateAddressFormLayout()
@@ -40,7 +41,7 @@ class GuestAddressActionHandler {
 
     func handleAddressModification(address: EquatableAddress?, completion: GuestAddressActionHandlerCompletion) {
         guard let address = address else {
-            createAddress(completion)
+            createAddress(completion: completion)
             return
         }
 

@@ -24,13 +24,13 @@ class GuestCheckoutCreateAddressActionHandler: AddressFormActionHandler {
 extension GuestCheckoutAddress {
 
     private init?(fromDataModelForCreateAddress dataModel: AddressFormDataModel) {
-        guard let
-            gender = dataModel.gender,
-            firstName = dataModel.firstName,
-            lastName = dataModel.lastName,
-            zip = dataModel.zip,
-            city = dataModel.city,
-            countryCode = dataModel.countryCode else { return nil }
+        guard
+            let gender = dataModel.gender,
+            let firstName = dataModel.firstName,
+            let lastName = dataModel.lastName,
+            let zip = dataModel.zip,
+            let city = dataModel.city,
+            let countryCode = dataModel.countryCode else { return nil }
 
         self.id = ""
         self.gender = gender

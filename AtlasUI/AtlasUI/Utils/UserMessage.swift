@@ -14,7 +14,7 @@ struct ButtonAction {
     let handler: ButtonActionHandler?
     let style: UIAlertActionStyle
 
-    init(text: String, style: UIAlertActionStyle = .Default, handler: ButtonActionHandler? = nil) {
+    init(text: String, style: UIAlertActionStyle = .default, handler: ButtonActionHandler? = nil) {
         self.text = text
         self.handler = handler
         self.style = style
@@ -28,7 +28,7 @@ struct UserMessage {
     private static let fullScreenErrorViewController = FullScreenErrorViewController()
 
     static var errorDisplayed: Bool {
-        return bannerErrorViewController.parentViewController != nil || fullScreenErrorViewController.parentViewController != nil
+        return bannerErrorViewController.parent != nil || fullScreenErrorViewController.parent != nil
     }
 
     static func hideBannerError() {
@@ -42,7 +42,7 @@ struct UserMessage {
         }
     }
 
-    static func displayError(error: ErrorType) {
+    static func displayError(error: Error) {
         guard let userPresentable = error as? UserPresentable else {
             displayError(AtlasCheckoutError.unclassified)
             return
@@ -54,7 +54,7 @@ struct UserMessage {
         }
     }
 
-    static func displayErrorBanner(error: ErrorType) {
+    static func displayErrorBanner(error: Error) {
         guard let userPresentable = error as? UserPresentable else {
             displayError(AtlasCheckoutError.unclassified)
             return
@@ -63,7 +63,7 @@ struct UserMessage {
         displayBanner(userPresentable)
     }
 
-    static func displayErrorFullScreen(error: ErrorType) {
+    static func displayErrorFullScreen(error: Error) {
         guard let userPresentable = error as? UserPresentable else {
             displayError(AtlasCheckoutError.unclassified)
             return
@@ -72,11 +72,11 @@ struct UserMessage {
         displayFullScreen(userPresentable)
     }
 
-    static func showActionSheet(title title: String?, message: String? = nil, actions: ButtonAction...) {
+    static func showActionSheet(title: String?, message: String? = nil, actions: ButtonAction...) {
         showActionSheet(title: title, message: message, actions: actions)
     }
 
-    static func showActionSheet(title title: String?, message: String? = nil, actions: [ButtonAction]) {
+    static func showActionSheet(title: String?, message: String? = nil, actions: [ButtonAction]) {
         guard let topViewController = UIApplication.topViewController() else { return }
         let alertView = UIAlertController(title: title, message: message, preferredStyle: .ActionSheet)
 

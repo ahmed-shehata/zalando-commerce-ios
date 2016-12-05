@@ -12,7 +12,7 @@ class NotLoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
     private let guestAddressActionHandler = GuestAddressActionHandler()
 
     func handleSubmitButton() {
-        guard let dataSource = dataSource, delegate = delegate else { return }
+        guard let dataSource = dataSource, let delegate = delegate else { return }
 
         AtlasUIClient.customer { result in
             guard let customer = result.process() else { return }
@@ -54,9 +54,9 @@ class NotLoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
 extension NotLoggedInSummaryActionHandler {
 
     private func switchToGuestCheckout(checkoutAddress: CheckoutAddresses?) {
-        guard let
-            selectedArticleUnit = dataSource?.dataModel.selectedArticleUnit,
-            email = guestAddressActionHandler.emailAddress else { return }
+        guard
+            let selectedArticleUnit = dataSource?.dataModel.selectedArticleUnit,
+            let email = guestAddressActionHandler.emailAddress else { return }
 
         let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit,
                                                  shippingAddress: checkoutAddress?.shippingAddress,

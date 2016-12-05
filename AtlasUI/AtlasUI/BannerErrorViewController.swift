@@ -76,7 +76,7 @@ class BannerErrorViewController: UIViewController {
         }
     }
 
-    func dismiss(completion: (() -> Void)? = nil) {
+    func hideBanner(completion: (() -> Void)? = nil) {
         let bannerHeight = containerView.bounds.height
         UIView.animate(animations: { [weak self] in
             self?.containerView.transform = CGAffineTransform(translationX: 0, y: -bannerHeight)
@@ -88,7 +88,7 @@ class BannerErrorViewController: UIViewController {
     }
 
     func cancelButtonPressed() {
-        dismiss()
+        hideBanner()
     }
 
 }

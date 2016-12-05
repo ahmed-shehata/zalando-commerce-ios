@@ -5,7 +5,7 @@
 import UIKit
 import AtlasSDK
 
-typealias PaymentCompletion = PaymentStatus -> Void
+typealias PaymentCompletion = (PaymentStatus) -> Void
 
 final class PaymentViewController: UIViewController, UIWebViewDelegate {
 
@@ -41,10 +41,10 @@ final class PaymentViewController: UIViewController, UIWebViewDelegate {
     }
 
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        guard let
-        url = request.URL,
-            callbackURLComponents = callbackURLComponents,
-            requestURLComponents = NSURLComponents(URL: url, resolvingAgainstBaseURL: true)
+        guard
+            let url = request.URL,
+            let callbackURLComponents = callbackURLComponents,
+            let requestURLComponents = NSURLComponents(URL: url, resolvingAgainstBaseURL: true)
             else { return true }
 
         guard let paymentStatus = PaymentStatus(callbackURLComponents: callbackURLComponents,
@@ -66,7 +66,7 @@ final class PaymentViewController: UIViewController, UIWebViewDelegate {
         }
     #endif
 
-    private func handle(webView webView: UIWebView, error: NSError) {
+    private func handle(webView: UIWebView, error: NSError) {
         if !error.isWebKitError {
             UserMessage.displayError(error)
         }

@@ -40,9 +40,9 @@ struct GuestCheckoutLayout: CheckoutSummaryLayout {
     let showDetailArrow: Bool = true
     let showGuestStackView: Bool = true
 
-    func submitButtonBackgroundColor(readyToCheckout readyToCheckout: Bool) -> UIColor { return readyToCheckout ? .orangeColor() : .grayColor() }
-    func submitButtonTitle(isPaypal isPaypal: Bool) -> String { return "summaryView.submitButton.checkoutWithZalando" }
-    func hideBackButton(hasSingleUnit hasSingleUnit: Bool) -> Bool { return hasSingleUnit }
+    func submitButtonBackgroundColor(readyToCheckout: Bool) -> UIColor { return readyToCheckout ? .orangeColor() : .grayColor() }
+    func submitButtonTitle(isPaypal: Bool) -> String { return "summaryView.submitButton.checkoutWithZalando" }
+    func hideBackButton(hasSingleUnit: Bool) -> Bool { return hasSingleUnit }
 
 }
 
@@ -55,9 +55,7 @@ struct LoggedInLayout: CheckoutSummaryLayout {
     let showGuestStackView: Bool = false
 
     func submitButtonBackgroundColor(readyToCheckout: Bool) -> UIColor { return readyToCheckout ? .orange : .gray }
-    func submitButtonTitle(isPaypal: Bool) -> String {
-        return isPaypal ? "summaryView.submitButton.payWithPapPal" : "summaryView.submitButton.placeOrder"
-    }
+    func submitButtonTitle(isPaypal: Bool) -> String { return "summaryView.submitButton." + (isPaypal ? "payWithPapPal" : "placeOrder") }
     func hideBackButton(hasSingleUnit: Bool) -> Bool { return hasSingleUnit }
 
 }
@@ -70,9 +68,9 @@ struct OrderPlacedLayout: CheckoutSummaryLayout {
     let showDetailArrow: Bool = false
     let showGuestStackView: Bool = false
 
-    func submitButtonBackgroundColor(readyToCheckout readyToCheckout: Bool) -> UIColor { return UIColor(hex: 0x509614) }
-    func submitButtonTitle(isPaypal isPaypal: Bool) -> String { return "summaryView.submitButton.backToShop" }
-    func hideBackButton(hasSingleUnit hasSingleUnit: Bool) -> Bool { return true }
+    func submitButtonBackgroundColor(readyToCheckout: Bool) -> UIColor { return UIColor(hex: 0x509614) }
+    func submitButtonTitle(isPaypal: Bool) -> String { return "summaryView.submitButton.backToShop" }
+    func hideBackButton(hasSingleUnit: Bool) -> Bool { return true }
 
 }
 
@@ -84,8 +82,8 @@ struct GuestOrderPlacedLayout: CheckoutSummaryLayout {
     let showDetailArrow: Bool = false
     let showGuestStackView: Bool = true
 
-    func submitButtonBackgroundColor(readyToCheckout readyToCheckout: Bool) -> UIColor { return UIColor(hex: 0x509614) }
-    func submitButtonTitle(isPaypal isPaypal: Bool) -> String { return "summaryView.submitButton.backToShop" }
-    func hideBackButton(hasSingleUnit hasSingleUnit: Bool) -> Bool { return true }
+    func submitButtonBackgroundColor(readyToCheckout: Bool) -> UIColor { return UIColor(hex: 0x509614) }
+    func submitButtonTitle(isPaypal: Bool) -> String { return "summaryView.submitButton.backToShop" }
+    func hideBackButton(hasSingleUnit: Bool) -> Bool { return true }
 
 }

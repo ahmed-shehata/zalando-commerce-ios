@@ -10,7 +10,7 @@ typealias AddressViewModelCreationStrategyCompletion = (_ addressViewModel: Addr
 protocol AddressViewModelCreationStrategy {
 
     var strategyCompletion: AddressViewModelCreationStrategyCompletion? { get set }
-    var titleKey: String? { get }
+    var titleKey: String? { get set }
 
     func execute()
 
@@ -35,7 +35,7 @@ extension AddressViewModelCreationStrategy {
         let cancelAction = ButtonAction(text: Localizer.format(string: "button.general.cancel"), style: .cancel, handler: nil)
         buttonActions.append(cancelAction)
 
-        UserMessage.presentSelection(title: title, actions: buttonActions)
+        UserMessage.showActionSheet(title: title, actions: buttonActions)
     }
 
 }

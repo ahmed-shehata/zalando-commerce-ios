@@ -37,20 +37,19 @@ enum PaymentStatus: Equatable {
     }
 
     init?(callbackURLComponents: NSURLComponents, requestURLComponents: NSURLComponents) {
-        guard let
-            callbackHost = callbackURLComponents.host,
-            requestHost = requestURLComponents.host
-            where
-            callbackHost.lowercaseString == requestHost.lowercaseString
+        guard
+            let callbackHost = callbackURLComponents.host,
+            let requestHost = requestURLComponents.host,
+            callbackHost.lowercased() == requestHost.lowercased()
             else { return nil }
 
-        if let
-            status = requestURLComponents.queryItems?.filter({ $0.name == PaymentStatus.statusKey }).first?.value,
-            paymentStatus = PaymentStatus(withStatus: status) {
+        if
+            let status = requestURLComponents.queryItems?.filter({ $0.name == PaymentStatus.statusKey }).first?.value,
+            let paymentStatus = PaymentStatus(withStatus: status) {
             self = paymentStatus
-        } else if let
-            path = requestURLComponents.path?.componentsSeparatedByString("/").filter({ !$0.isEmpty }),
-            paymentStatus = PaymentStatus(withPath: path) {
+        } else if
+            let path = requestURLComponents.path?.components(separatedBy: "/").filter({ !$0.isEmpty }),
+            let paymentStatus = PaymentStatus(withPath: path) {
             self = paymentStatus
         } else {
             self = .redirect
