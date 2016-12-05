@@ -22,7 +22,7 @@ protocol AddressFormActionHandler {
 
 extension AddressFormActionHandler {
 
-    func validateAddress(dataModel: AddressFormDataModel, completion: (Bool) -> Void) {
+    func validateAddress(dataModel: AddressFormDataModel, completion: @escaping (Bool) -> Void) {
         guard let request = CheckAddressRequest(dataModel: dataModel) else {
             completion(false)
             return
@@ -35,7 +35,7 @@ extension AddressFormActionHandler {
             }
 
             if checkAddressResponse.status == .notCorrect {
-                UserMessage.displayError(AtlasCheckoutError.addressInvalid)
+                UserMessage.displayError(error: AtlasCheckoutError.addressInvalid)
                 completion(false)
             } else {
                 completion(true)

@@ -5,9 +5,9 @@
 public struct GuestPaymentRequest {
 
     public let method: String
-    public let metadata: [String: AnyObject]?
+    public let metadata: [String: Any]?
 
-    public init(method: String, metadata: [String: AnyObject]?) {
+    public init(method: String, metadata: [String: Any]?) {
         self.method = method
         self.metadata = metadata
     }

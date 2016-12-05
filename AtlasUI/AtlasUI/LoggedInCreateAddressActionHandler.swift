@@ -10,13 +10,13 @@ struct LoggedInCreateAddressActionHandler: AddressFormActionHandler {
     weak var delegate: AddressFormActionHandlerDelegate?
 
     func submitButtonPressed(dataModel: AddressFormDataModel) {
-        validateAddress(dataModel) { success in
-            guard let request = CreateAddressRequest(dataModel: dataModel) where success else {
+        validateAddress(dataModel: dataModel) { success in
+            guard let request = CreateAddressRequest(dataModel: dataModel), success else {
                 self.delegate?.addressProcessingFinished()
                 return
             }
 
-            AtlasUIClient.createAddress(request) { result in
+            AtlasUIClient.createAddress(request: request) { result in
                 guard let address = result.process() else {
                     self.delegate?.addressProcessingFinished()
                     return

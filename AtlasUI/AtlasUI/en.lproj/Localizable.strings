@@ -26,7 +26,7 @@
 "summaryView.submitButton.checkoutWithZalando" = "Checkout with Zalando";
 "summaryView.submitButton.guestCheckout" = "Checkout as guest";
 "summaryView.submitButton.placeOrder" = "Place order";
-"summaryView.submitButton.payWithPapPal" = "Confirm and pay with PayPal";
+"summaryView.submitButton.payWithPayPal" = "Confirm and pay with PayPal";
 "summaryView.submitButton.backToShop" = "Back to shop";
 "summaryView.link.termsAndConditions" = "Zalando terms, conditions and cancellation policy apply to all orders";
 

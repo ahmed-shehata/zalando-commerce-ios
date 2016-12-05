@@ -10,10 +10,10 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
     weak var dataSource: CheckoutSummaryActionHandlerDataSource?
     weak var delegate: CheckoutSummaryActionHandlerDelegate?
 
-    private let guestAddressActionHandler = GuestAddressActionHandler()
-    private var guestCheckout: GuestCheckout? {
+    fileprivate let guestAddressActionHandler = GuestAddressActionHandler()
+    fileprivate var guestCheckout: GuestCheckout? {
         didSet {
-            updateDataModel(addresses, guestCheckout: guestCheckout)
+            updateDataModel(addresses: addresses, guestCheckout: guestCheckout)
         }
     }
 
@@ -21,14 +21,16 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
         self.guestAddressActionHandler.emailAddress = email
     }
 
-    func handleSubmitButton() {
+    func handleSubmit() {
         guard let dataSource = dataSource else { return }
-        guard let email = guestAddressActionHandler.emailAddress, shippingAddress = shippingAddress, billingAddress = billingAddress else {
-            UserMessage.displayError(AtlasCheckoutError.missingAddress)
+        guard let email = guestAddressActionHandler.emailAddress,
+            let shippingAddress = shippingAddress,
+            let billingAddress = billingAddress else {
+            UserMessage.displayError(error: AtlasCheckoutError.missingAddress)
             return
         }
         guard let guestCheckout = guestCheckout else {
-            UserMessage.displayError(AtlasCheckoutError.missingAddressAndPayment)
+            UserMessage.displayError(error: AtlasCheckoutError.missingAddressAndPayment)
             return
         }
 
@@ -43,20 +45,22 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
                                         billingAddress: billingGuestAddress,
                                         cart: cart,
                                         payment: payment)
-        AtlasUIClient.createGuestOrder(request) { [weak self] result in
+        AtlasUIClient.createGuestOrder(request: request) { [weak self] result in
             guard let order = result.process() else { return }
-            self?.handleOrderConfirmation(order)
+            self?.handleOrderConfirmation(order: order)
         }
     }
 
-    func showPaymentSelectionScreen() {
+    func handlePaymentSelection() {
         guard let dataSource = dataSource else { return }
-        guard let email = guestAddressActionHandler.emailAddress, shippingAddress = shippingAddress, billingAddress = billingAddress else {
-            UserMessage.displayError(AtlasCheckoutError.missingAddress)
+        guard let email = guestAddressActionHandler.emailAddress,
+            let shippingAddress = shippingAddress,
+            let billingAddress = billingAddress else {
+            UserMessage.displayError(error: AtlasCheckoutError.missingAddress)
             return
         }
-        guard let callbackURL = AtlasAPIClient.instance?.config.checkoutGatewayURL else {
-            UserMessage.displayError(AtlasCheckoutError.unclassified)
+        guard let callbackURL = AtlasAPIClient.shared?.config.checkoutGatewayURL else {
+            UserMessage.displayError(error: AtlasCheckoutError.unclassified)
             return
         }
 
@@ -69,7 +73,7 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
                                                    shippingAddress: shippingGuestAddress,
                                                    billingAddress: billingGuestAddress,
                                                    cart: cart)
-        AtlasUIClient.guestChecoutPaymentSelectionURL(request) { result in
+        AtlasUIClient.guestCheckoutPaymentSelectionURL(request: request) { result in
             guard let paymentURL = result.process() else { return }
 
             let paymentViewController = PaymentViewController(paymentURL: paymentURL, callbackURL: callbackURL)
@@ -84,23 +88,23 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
                 }
             }
 
-            AtlasUIViewController.instance?.mainNavigationController.pushViewController(paymentViewController, animated: true)
+            AtlasUIViewController.shared?.mainNavigationController.pushViewController(paymentViewController, animated: true)
         }
     }
 
-    func showShippingAddressSelectionScreen() {
+    func handleShippingAddressSelection() {
         guestAddressActionHandler.addressCreationStrategy = ShippingAddressViewModelCreationStrategy()
-        guestAddressActionHandler.handleAddressModification(shippingAddress) { [weak self] address in
-            let checkoutAddress = self?.guestAddressActionHandler.checkoutAddresses(address, billingAddress: self?.billingAddress)
-            self?.updateDataModel(checkoutAddress, guestCheckout: self?.guestCheckout)
+        guestAddressActionHandler.handleAddressModification(address: shippingAddress) { [weak self] address in
+            let checkoutAddress = self?.guestAddressActionHandler.checkoutAddresses(shippingAddress: address, billingAddress: self?.billingAddress)
+            self?.updateDataModel(addresses: checkoutAddress, guestCheckout: self?.guestCheckout)
         }
     }
 
-    func showBillingAddressSelectionScreen() {
+    func handleBillingAddressSelection() {
         guestAddressActionHandler.addressCreationStrategy = BillingAddressViewModelCreationStrategy()
-        guestAddressActionHandler.handleAddressModification(billingAddress) { [weak self] address in
-            let checkoutAddress = self?.guestAddressActionHandler.checkoutAddresses(self?.shippingAddress, billingAddress: address)
-            self?.updateDataModel(checkoutAddress, guestCheckout: self?.guestCheckout)
+        guestAddressActionHandler.handleAddressModification(address: billingAddress) { [weak self] address in
+            let checkoutAddress = self?.guestAddressActionHandler.checkoutAddresses(shippingAddress: self?.shippingAddress, billingAddress: address)
+            self?.updateDataModel(addresses: checkoutAddress, guestCheckout: self?.guestCheckout)
         }
     }
 
@@ -108,14 +112,14 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
 
 extension GuestCheckoutSummaryActionHandler {
 
-    private func handleOrderConfirmation(order: GuestOrder) {
+    fileprivate func handleOrderConfirmation(order: GuestOrder) {
         guard let paymentURL = order.externalPaymentURL else {
-            showConfirmationScreen(order)
+            showConfirmationScreen(order: order)
             return
         }
 
-        guard let callbackURL = AtlasAPIClient.instance?.config.checkoutGatewayURL else {
-            UserMessage.displayError(AtlasCheckoutError.unclassified)
+        guard let callbackURL = AtlasAPIClient.shared?.config.checkoutGatewayURL else {
+            UserMessage.displayError(error: AtlasCheckoutError.unclassified)
             return
         }
 
@@ -127,35 +131,41 @@ extension GuestCheckoutSummaryActionHandler {
             case .error, .guestRedirect: UserMessage.displayError(AtlasCheckoutError.unclassified)
             }
         }
-        AtlasUIViewController.instance?.mainNavigationController.pushViewController(paymentViewController, animated: true)
+        AtlasUIViewController.shared?.mainNavigationController.pushViewController(paymentViewController, animated: true)
     }
 
-    private func showConfirmationScreen(order: GuestOrder) {
-        guard let dataSource = dataSource, delegate = delegate, email = guestAddressActionHandler.emailAddress else { return }
+    fileprivate func showConfirmationScreen(order: GuestOrder) {
+        guard let dataSource = dataSource,
+            let delegate = delegate,
+            let email = guestAddressActionHandler.emailAddress
+            else { return }
+
         let selectedArticleUnit = dataSource.dataModel.selectedArticleUnit
         let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit,
                                                  guestCheckout: guestCheckout,
                                                  email: email,
                                                  guestOrder: order)
-        delegate.actionHandlerUpdated(OrderPlacedSummaryActionHandler())
-        delegate.dataModelUpdated(dataModel)
-        delegate.layoutUpdated(GuestOrderPlacedLayout())
+        delegate.updated(actionHandler: OrderPlacedSummaryActionHandler())
+        delegate.updated(dataModel: dataModel)
+        delegate.updated(layout: GuestOrderPlacedLayout())
     }
 
-    private func getGuestCheckout(checkoutId: String, token: String) {
-        AtlasUIClient.guestCheckout(checkoutId, token: token) { [weak self] result in
+    fileprivate func getGuestCheckout(checkoutId: String, token: String) {
+        AtlasUIClient.guestCheckout(checkoutId: checkoutId, token: token) { [weak self] result in
             guard let guestCheckout = result.process() else { return }
             self?.guestCheckout = guestCheckout
         }
     }
 
-    private func updateDataModel(addresses: CheckoutAddresses?, guestCheckout: GuestCheckout?) {
-        guard let selectedUnit = dataSource?.dataModel.selectedArticleUnit, email = guestAddressActionHandler.emailAddress else { return }
+    fileprivate func updateDataModel(addresses: CheckoutAddresses?, guestCheckout: GuestCheckout?) {
+        guard let selectedUnit = dataSource?.dataModel.selectedArticleUnit,
+            let email = guestAddressActionHandler.emailAddress
+            else { return }
         let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedUnit,
                                                  guestCheckout: guestCheckout,
                                                  email: email,
                                                  addresses: addresses)
-        delegate?.dataModelUpdated(dataModel)
+        delegate?.updated(dataModel: dataModel)
     }
 
 }

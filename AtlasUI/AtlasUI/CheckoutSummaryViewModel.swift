@@ -25,13 +25,13 @@ extension CheckoutSummaryViewModel {
 
     fileprivate func checkPriceChange(comparedTo oldDataModel: CheckoutSummaryDataModel) {
         if oldDataModel.totalPrice != dataModel.totalPrice {
-            UserMessage.displayError(AtlasCheckoutError.priceChanged(newPrice: dataModel.totalPrice))
+            UserMessage.displayError(error: AtlasCheckoutError.priceChanged(newPrice: dataModel.totalPrice))
         }
     }
 
     fileprivate func checkPaymentAvailable(comparedTo oldDataModel: CheckoutSummaryDataModel) {
         if oldDataModel.paymentMethod != nil && dataModel.paymentMethod == nil {
-            UserMessage.displayError(AtlasCheckoutError.paymentMethodNotAvailable)
+            UserMessage.displayError(error: AtlasCheckoutError.paymentMethodNotAvailable)
         }
     }
 
