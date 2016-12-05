@@ -23,7 +23,7 @@ class GuestCheckoutCreateAddressActionHandler: AddressFormActionHandler {
 
 extension GuestCheckoutAddress {
 
-    private init?(fromDataModelForCreateAddress dataModel: AddressFormDataModel) {
+    fileprivate init?(fromDataModelForCreateAddress dataModel: AddressFormDataModel) {
         guard let gender = dataModel.gender,
             let firstName = dataModel.firstName,
             let lastName = dataModel.lastName,

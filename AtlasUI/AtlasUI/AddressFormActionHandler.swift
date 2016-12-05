@@ -28,7 +28,7 @@ extension AddressFormActionHandler {
             return
         }
 
-        AtlasUIClient.checkAddress(request: request) { result in
+        AtlasUIClient.checkAddress(request) { result in
             guard let checkAddressResponse = result.process() else {
                 completion(false)
                 return

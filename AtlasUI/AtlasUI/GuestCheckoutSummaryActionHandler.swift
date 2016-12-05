@@ -158,7 +158,6 @@ extension GuestCheckoutSummaryActionHandler {
     }
 
     fileprivate func updateDataModel(addresses: CheckoutAddresses?, guestCheckout: GuestCheckout?) {
-        guard
         guard let selectedUnit = dataSource?.dataModel.selectedArticleUnit,
             let email = guestAddressActionHandler.emailAddress
             else { return }
