@@ -20,7 +20,7 @@ public struct CheckoutAddress: EquatableAddress {
 
 extension CheckoutAddress: JSONInitializable {
 
-    private struct Keys {
+    fileprivate struct Keys {
 
         static let id = "id"
         static let gender = "gender"
@@ -35,15 +35,14 @@ extension CheckoutAddress: JSONInitializable {
     }
 
     init?(json: JSON) {
-        guard let
-        id = json[Keys.id].string,
-            genderRaw = json[Keys.gender].string,
-            gender = Gender(rawValue: genderRaw),
-            firstName = json[Keys.firstName].string,
-            lastName = json[Keys.lastName].string,
-            zip = json[Keys.zip].string,
-            city = json[Keys.city].string,
-            countryCode = json[Keys.countryCode].string
+        guard let id = json[Keys.id].string,
+            let genderRaw = json[Keys.gender].string,
+            let gender = Gender(rawValue: genderRaw),
+            let firstName = json[Keys.firstName].string,
+            let lastName = json[Keys.lastName].string,
+            let zip = json[Keys.zip].string,
+            let city = json[Keys.city].string,
+            let countryCode = json[Keys.countryCode].string
         else { return nil }
 
         self.init(id: id,
@@ -60,7 +59,8 @@ extension CheckoutAddress: JSONInitializable {
 }
 extension CheckoutAddress {
     public init?(address: FormattableAddress) {
-        guard let address = address as? UserAddress else { return nil }
+        guard let address = address as? UserAddress
+            else { return nil }
         self.init(id: address.id,
             gender: address.gender,
             firstName: address.firstName,

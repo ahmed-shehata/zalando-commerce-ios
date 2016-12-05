@@ -14,7 +14,7 @@ public struct CartItemRequest: JSONRepresentable {
         self.quantity = quantity
     }
 
-    public func toJSON() -> Dictionary<String, AnyObject> {
+    public func toJSON() -> [String: Any] {
         return [
             "sku": self.sku,
             "quantity": self.quantity

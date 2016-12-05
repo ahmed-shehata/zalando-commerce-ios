@@ -12,15 +12,15 @@ public struct Order {
     public let shippingAddress: OrderAddress
     public let grossTotal: Price
     public let taxTotal: Price
-    public let created: NSDate?
-    public let detailURL: NSURL?
-    public let externalPaymentURL: NSURL?
+    public let created: Date?
+    public let detailURL: URL?
+    public let externalPaymentURL: URL?
 
 }
 
 extension Order: JSONInitializable {
 
-    private struct Keys {
+    fileprivate struct Keys {
         static let orderNumber = "order_number"
         static let customerNumber = "customer_number"
         static let billingAddress = "billing_address"
@@ -28,18 +28,18 @@ extension Order: JSONInitializable {
         static let grossTotal = "gross_total"
         static let taxTotal = "tax_total"
         static let created = "created"
-        static let detailUrl = "detail_url"
-        static let externalPaymentUrl = "external_payment_url"
+        static let detailURL = "detail_url"
+        static let externalPaymentURL = "external_payment_url"
     }
 
     init?(json: JSON) {
-        guard let
-        orderNumber = json[Keys.orderNumber].string,
-            customerNumber = json[Keys.customerNumber].string,
-            billingAddress = OrderAddress(json: json[Keys.billingAddress]),
-            shippingAddress = OrderAddress(json: json[Keys.shippingAddress]),
-            grossTotal = Price(json: json[Keys.grossTotal]),
-            taxTotal = Price(json: json[Keys.taxTotal]) else { return nil }
+        guard let orderNumber = json[Keys.orderNumber].string,
+            let customerNumber = json[Keys.customerNumber].string,
+            let billingAddress = OrderAddress(json: json[Keys.billingAddress]),
+            let shippingAddress = OrderAddress(json: json[Keys.shippingAddress]),
+            let grossTotal = Price(json: json[Keys.grossTotal]),
+            let taxTotal = Price(json: json[Keys.taxTotal])
+            else { return nil }
 
         self.init(orderNumber: orderNumber,
             customerNumber: customerNumber,
@@ -47,8 +47,8 @@ extension Order: JSONInitializable {
             shippingAddress: shippingAddress,
             grossTotal: grossTotal,
             taxTotal: taxTotal,
-            created: RFC3339DateFormatter().dateFromString(json[Keys.created].string),
-            detailURL: json[Keys.detailUrl].URL,
-            externalPaymentURL: json[Keys.externalPaymentUrl].URL)
+            created: RFC3339DateFormatter().date(from: json[Keys.created].string),
+            detailURL: json[Keys.detailURL].URL,
+            externalPaymentURL: json[Keys.externalPaymentURL].URL)
     }
 }

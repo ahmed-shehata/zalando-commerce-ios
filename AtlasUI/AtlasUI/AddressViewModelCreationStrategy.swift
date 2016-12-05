@@ -5,21 +5,23 @@
 import Foundation
 import AtlasSDK
 
-typealias AddressViewModelCreationStrategyCompletion = (addressViewModel: AddressFormViewModel) -> Void
+typealias AddressViewModelCreationStrategyCompletion = (_ addressViewModel: AddressFormViewModel) -> Void
 
 protocol AddressViewModelCreationStrategy {
 
-    func configure(withTitle titleLocalizedKey: String?, completion: AddressViewModelCreationStrategyCompletion?)
+    var strategyCompletion: AddressViewModelCreationStrategyCompletion? { get set }
+    var titleKey: String? { get }
+
     func execute()
 
 }
 
 extension AddressViewModelCreationStrategy {
 
-    func showActionSheet(titleLocalizedKey: String?, strategies: [AddressDataModelCreationStrategy]) {
+    func presentSelection(forStrategies strategies: [AddressDataModelCreationStrategy]) {
         let title: String?
-        if let key = titleLocalizedKey {
-            title = Localizer.string(key)
+        if let key = titleKey {
+            title = Localizer.format(string: key)
         } else {
             title = nil
         }
@@ -30,10 +32,10 @@ extension AddressViewModelCreationStrategy {
             }
         }
 
-        let cancelAction = ButtonAction(text: Localizer.string("button.general.cancel"), style: .Cancel, handler: nil)
+        let cancelAction = ButtonAction(text: Localizer.format(string: "button.general.cancel"), style: .cancel, handler: nil)
         buttonActions.append(cancelAction)
 
-        UserMessage.showActionSheet(title: title, actions: buttonActions)
+        UserMessage.presentSelection(title: title, actions: buttonActions)
     }
 
 }

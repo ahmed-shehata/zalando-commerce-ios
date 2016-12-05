@@ -1,6 +1,6 @@
-// StringTests.swift
+//  StringTests.swift
 //
-//  Copyright (c) 2014 Pinglin Tang
+//  Copyright (c) 2014 - 2016 Pinglin Tang
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -21,12 +21,12 @@
 //  THE SOFTWARE.
 
 import XCTest
-@testable import AtlasSDK
+import SwiftyJSON
 
 class StringTests: XCTestCase {
 
     func testString() {
-        // getter
+        //getter
         var json = JSON("abcdefg hijklmn;opqrst.?+_()")
         XCTAssertEqual(json.string!, "abcdefg hijklmn;opqrst.?+_()")
         XCTAssertEqual(json.stringValue, "abcdefg hijklmn;opqrst.?+_()")
@@ -35,17 +35,32 @@ class StringTests: XCTestCase {
         XCTAssertEqual(json.string!, "12345?67890.@#")
         XCTAssertEqual(json.stringValue, "12345?67890.@#")
     }
-
+    
     func testURL() {
         let json = JSON("http://github.com")
-        XCTAssertEqual(json.URL!, NSURL(string: "http://github.com")!)
+        XCTAssertEqual(json.URL!, URL(string:"http://github.com")!)
+    }
+
+    func testBool() {
+        let json = JSON("true")
+        XCTAssertTrue(json.boolValue)
+    }
+
+    func testBoolWithY() {
+        let json = JSON("Y")
+        XCTAssertTrue(json.boolValue)
+    }
+
+    func testBoolWithT() {
+        let json = JSON("T")
+        XCTAssertTrue(json.boolValue)
     }
 
     func testURLPercentEscapes() {
         let emDash = "\\u2014"
         let urlString = "http://examble.com/unencoded" + emDash + "string"
-        let encodedURLString = urlString.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        let encodedURLString = urlString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         let json = JSON(urlString)
-        XCTAssertEqual(json.URL!, NSURL(string: encodedURLString!)!, "Wrong unpacked ")
+        XCTAssertEqual(json.URL!, URL(string: encodedURLString!)!, "Wrong unpacked ")
     }
 }

@@ -6,38 +6,38 @@ import Foundation
 
 class Injector {
 
-    enum Error: ErrorType {
-        case TypeNotRegistered
+    enum InjectionError: Error {
+        case typeNotRegistered
     }
 
-    private var factories: [TypeKey: Void -> Any] = [:]
+    fileprivate var factories: [TypeKey: (Void) -> Any] = [:]
 
-    func register<T>(factory: Void -> T) {
+    func register<T>(_ factory: @escaping (Void) -> T) {
         let key = TypeKey(type: T.self)
         factories[key] = factory
     }
 
-    func deregister<T>(type: T.Type) {
+    func deregister<T>(_ type: T.Type) {
         let key = TypeKey(type: T.self)
-        factories.removeValueForKey(key)
+        factories.removeValue(forKey: key)
     }
 
     func provide<T>() throws -> T {
         let key = TypeKey(type: T.self)
         guard let factory = factories[key]?() as? T else {
-            throw Error.TypeNotRegistered
+            throw InjectionError.typeNotRegistered
         }
         return factory
     }
 
-    private struct TypeKey: Hashable, CustomDebugStringConvertible {
+    fileprivate struct TypeKey: Hashable, CustomDebugStringConvertible {
         let type: Any.Type
 
         var hashValue: Int {
             return "\(type)".hashValue
         }
 
-        private var debugDescription: String {
+        fileprivate var debugDescription: String {
             return "<\(type)>"
         }
 

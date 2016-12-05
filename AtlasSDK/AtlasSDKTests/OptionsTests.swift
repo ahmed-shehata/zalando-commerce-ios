@@ -14,8 +14,8 @@ class OptionsTests: XCTestCase {
     let salesChannel = "SALES_CHANNEL_SPEC"
     let interfaceLanguage = "fr"
     let useSandbox = true
-    let emptyBundle = NSBundle()
-    let testsBundle = NSBundle(forClass: OptionsTests.self)
+    let emptyBundle = Bundle()
+    let testsBundle = Bundle(for: OptionsTests.self)
 
     func testInitialization() {
         let opts = Options(clientId: clientId,

@@ -4,8 +4,6 @@
 
 import Foundation
 
-typealias DataTaskResponse = (data: NSData?, urlResponse: NSURLResponse?, error: NSError?)
-
 struct ResponseParser {
 
     let taskResponse: DataTaskResponse
@@ -16,17 +14,17 @@ struct ResponseParser {
             return completion(.failure(nsURLError))
         }
 
-        guard let httpResponse = taskResponse.urlResponse as? NSHTTPURLResponse, data = taskResponse.data else {
+        guard let httpResponse = taskResponse.response, let data = taskResponse.data else {
             return completion(.failure(AtlasAPIError.noData))
         }
 
-        let json: JSON? = data.length > 0 ? JSON(data: data) : nil
+        let json = JSON(data: data)
 
         guard httpResponse.isSuccessful else {
             let error: AtlasAPIError
-            if httpResponse.status == .Unauthorized {
+            if httpResponse.status == .unauthorized {
                 error = AtlasAPIError.unauthorized
-            } else if let json = json where json != JSON.null {
+            } else if json != JSON.null {
                 error = AtlasAPIError.backend(
                     status: json["status"].int,
                     type: json["type"].string,
@@ -35,7 +33,7 @@ struct ResponseParser {
             } else {
                 error = AtlasAPIError.http(
                     status: HTTPStatus(response: httpResponse),
-                    details: NSHTTPURLResponse.localizedStringForStatusCode(httpResponse.statusCode))
+                    details: HTTPURLResponse.localizedString(forStatusCode: httpResponse.statusCode))
             }
             return completion(.failure(error))
         }

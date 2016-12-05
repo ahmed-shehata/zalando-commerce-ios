@@ -6,34 +6,30 @@ import Foundation
 
 public protocol URLStringConvertible {
 
-    var URLString: String { get }
+    var urlString: String { get }
 
 }
 
 extension String: URLStringConvertible {
 
-    public var URLString: String {
+    public var urlString: String {
         return self
     }
 
 }
 
-extension NSURL: URLStringConvertible {
+extension URL: URLStringConvertible {
 
-    public var URLString: String {
-        #if swift(>=2.3)
-            return absoluteString! // swiftlint:disable:this force_unwrapping
-        #else
-            return absoluteString
-        #endif
+    public var urlString: String {
+        return absoluteString
     }
 
 }
 
-extension NSURLComponents: URLStringConvertible {
+extension URLComponents: URLStringConvertible {
 
-    public var URLString: String {
-        return validURL.URLString
+    public var urlString: String {
+        return validURL.urlString
     }
 
 }

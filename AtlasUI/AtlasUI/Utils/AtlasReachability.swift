@@ -7,27 +7,31 @@ import AtlasSDK
 
 class AtlasReachability {
 
-    private var reachability: AtlasUI_Reachability?
+    fileprivate var reachability: Reachability?
 
     func setupReachability() {
-        do {
-            reachability = try AtlasUI_Reachability.reachabilityForInternetConnection()
-            try reachability?.startNotifier()
-        } catch let error {
-            AtlasLogger.logError(error)
-        }
+        guard let reachability = Reachability() else { return }
 
-        reachability?.whenReachable = { _ in
+        reachability.whenReachable = { _ in
             Async.main {
                 UserMessage.clearBannerError()
             }
         }
 
-        reachability?.whenUnreachable = { _ in
+        reachability.whenUnreachable = { _ in
             Async.main {
                 UserMessage.displayError(AtlasAPIError.noInternet)
             }
         }
+
+        do {
+            try reachability.startNotifier()
+        } catch let error {
+            AtlasLogger.logError(error)
+            return
+        }
+
+        self.reachability = reachability
     }
 
 }

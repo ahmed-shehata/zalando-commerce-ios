@@ -29,7 +29,7 @@ class LoggedInAddressListActionHandlerTests: XCTestCase {
         actionHandler.createAddress()
 
         guard let saveButton = getSaveButton() else { return fail() }
-        UIApplication.sharedApplication().sendAction(saveButton.action, to: saveButton.target, from: nil, forEvent: nil)
+        UIApplication.shared.sendAction(saveButton.action!, to: saveButton.target, from: nil, for: nil)
 
         expect(self.delegate.addresses.count).toEventually(equal(1), timeout: 10)
     }
@@ -41,10 +41,10 @@ class LoggedInAddressListActionHandlerTests: XCTestCase {
         delegate.addresses.append(userAddress)
         expect(self.delegate.addresses.first?.lastName).to(equal("Doe"))
 
-        actionHandler.updateAddress(userAddress)
+        actionHandler.update(address: userAddress)
 
         guard let saveButton = getSaveButton() else { return fail() }
-        UIApplication.sharedApplication().sendAction(saveButton.action, to: saveButton.target, from: nil, forEvent: nil)
+        UIApplication.shared.sendAction(saveButton.action!, to: saveButton.target, from: nil, for: nil)
 
         expect(self.delegate.addresses.first?.lastName).toEventually(equal("Doe Edited"), timeout: 10)
     }
@@ -56,7 +56,7 @@ class LoggedInAddressListActionHandlerTests: XCTestCase {
         delegate.addresses.append(userAddress)
         expect(self.delegate.addresses.count).to(equal(1))
 
-        actionHandler.deleteAddress(userAddress)
+        actionHandler.delete(address: userAddress)
 
         expect(self.delegate.addresses).toEventually(beEmpty())
     }
@@ -68,37 +68,32 @@ extension LoggedInAddressListActionHandlerTests {
     private func registerAtlasUIViewController() -> AtlasUIViewController? {
         var atlasUIViewController: AtlasUIViewController?
         waitUntil(timeout: 10) { done in
-            let options = Options(clientId: "CLIENT_ID",
-                                  salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
-                                  interfaceLanguage: "en",
-                                  configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
-
-            AtlasUI.configure(options) { _   in
-                atlasUIViewController = AtlasUIViewController(forProductSKU: "AD541L009-G11")
+            AtlasUI.configure(options: Options.forTests()) { result in
+                atlasUIViewController = AtlasUIViewController(forSKU: "AD541L009-G11")
                 guard let viewController = atlasUIViewController else { return fail() }
                 self.window.rootViewController = viewController
                 self.window.makeKeyAndVisible()
-                AtlasUI.register { viewController }
+                try! AtlasUI.shared().register { viewController }
                 done()
             }
         }
         return atlasUIViewController
     }
 
-    private func createActionHandler() -> LoggedInAddressListActionHandler? {
+    fileprivate func createActionHandler() -> LoggedInAddressListActionHandler? {
         guard registerAtlasUIViewController() != nil else {
             fail()
             return nil
         }
 
         let strategyMock = AddressViewModelCreationStrategyMock()
-        var actionHandler = LoggedInAddressListActionHandler(addressViewModelCreationStrategy: strategyMock)
+        let actionHandler = LoggedInAddressListActionHandler(addressViewModelCreationStrategy: strategyMock)
         actionHandler.delegate = delegate
         return actionHandler
     }
 
-    private func getSaveButton() -> UIBarButtonItem? {
-        guard let atlasUIViewController = AtlasUIViewController.instance else {
+    fileprivate func getSaveButton() -> UIBarButtonItem? {
+        guard let atlasUIViewController = AtlasUIViewController.shared else {
             fail()
             return nil
         }
@@ -128,6 +123,7 @@ extension LoggedInAddressListActionHandlerTests {
 }
 
 class AddressViewModelCreationStrategyMock: AddressViewModelCreationStrategy {
+    var strategyCompletion: AddressViewModelCreationStrategyCompletion?
 
     var completion: AddressViewModelCreationStrategyCompletion?
 
@@ -138,7 +134,7 @@ class AddressViewModelCreationStrategyMock: AddressViewModelCreationStrategy {
     func execute() {
         let dataModel = AddressFormDataModel(equatableAddress: UserAddress(addressId: "6616154"), countryCode: "DE")
         let viewModel = AddressFormViewModel(dataModel: dataModel, layout: CreateAddressFormLayout(), type: .standardAddress)
-        completion?(addressViewModel: viewModel)
+        strategyCompletion?(viewModel)
     }
 
 }

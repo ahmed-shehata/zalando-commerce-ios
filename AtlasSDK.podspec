@@ -44,6 +44,7 @@ calls and provide you high-level business objects to deal with.
   s.subspec 'UI' do |ss|
     ss.dependency 'AtlasSDK/Core'
     ss.source_files = 'AtlasUI/AtlasUI/**/*.{h,m,swift}'
+    ss.ios.resources = ['AtlasUI/AtlasUI/**/*.xcassets', 'AtlasUI/AtlasUI/**/Localizable.strings']
     ss.frameworks = 'Foundation', 'UIKit'
   end
 

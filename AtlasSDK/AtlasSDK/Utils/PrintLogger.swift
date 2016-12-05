@@ -8,39 +8,39 @@ private extension AppLogSeverity {
 
     func logMark() -> String {
         switch self {
-        case .Debug: return "🕷"
-        case .Message: return "✳️"
-        case .Error: return "🆘"
+        case .debug: return "🕷"
+        case .message: return "✳️"
+        case .error: return "🆘"
         }
     }
 
 }
 
-final class PrintLogger: LoggerType {
+final class PrintLogger: Logger {
 
     var verbose: Bool = false
-    var severity: AppLogSeverity = isDebug() ? .Debug : .Message
-    var outputStream: OutputStreamType = StdoutOutputStream()
+    var severity: AppLogSeverity = isDebug() ? .debug : .message
+    var outputStream: TextOutputStream = StdoutOutputStream()
 
-    private let dateFormatter: NSDateFormatter = {
-        let df = NSDateFormatter()
+    fileprivate let dateFormatter: DateFormatter = {
+        let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS"
         return df
     }()
 
-    func log(severity: AppLogSeverity, verbose: Bool? = nil, function: String, filePath: String, fileLine: Int, _ items: [Any]) {
+    func log(as severity: AppLogSeverity, verbose: Bool? = nil, function: String, filePath: String, fileLine: Int, _ items: [Any]) {
         guard severity >= self.severity else { return }
         let meta = formatMeta(verbose: verbose ?? self.verbose, function: function, filePath: filePath, fileLine: fileLine)
         outputStream.print(severity.logMark(), meta, formatMessage(items))
     }
 
-    private func formatMeta(verbose verbose: Bool, function: String, filePath: String, fileLine: Int) -> String {
+    fileprivate func formatMeta(verbose: Bool, function: String, filePath: String, fileLine: Int) -> String {
         guard verbose else {
             return ""
         }
 
         let filename = (filePath as NSString).pathComponents.last ?? "(unknown)"
-        return "\(dateFormatter.stringFromDate(NSDate())) [\(filename):\(fileLine) - \(function)]"
+        return "\(dateFormatter.string(from: Date())) [\(filename):\(fileLine) - \(function)]"
     }
 
 }

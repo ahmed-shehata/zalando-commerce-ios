@@ -36,13 +36,14 @@ module Calypso
     desc 'clear <project_name> <column_name>', 'Clear issues in given project / column'
     def clear(project_name, column_name)
       log "Issues in \"#{project_name}/#{column_name}\":"
-      
-      issues = column_issues(project_name: project_name, column_name: column_name)
+
+      issues = column_issues_with_cards(project_name: project_name, column_name: column_name)
       log issues.map { |issue| "  * #{issue['title']} - #{issue['html_url']}\n" }
 
       confirm_msg = "Do you want to drop all #{issues.count} cards from the project's column (won't delete the issues)?"
       return unless yes?(confirm_msg, :red)
 
+      cards = issues.map { |issue| issue['attached_card'] }
       github.drop_cards(cards)
     end
 
@@ -58,12 +59,16 @@ module Calypso
 
     private
 
-    def column_issues(project_name:, column_name:, state: 'closed')
+    def column_issues_with_cards(project_name:, column_name:, state: 'closed')
       issues = github.project_issues(project_name: project_name, column_name: column_name, state: state)
       cards = cards_from(issues: issues, project_name: project_name, column_name: column_name)
-      cards_urls = cards.map { |card| card['content_url'] }
+      cards_urls = cards.map { |card| [card['content_url'], card] }.to_h
 
-      issues.select { |issue| cards_urls.include? issue['url'] }
+      issues.select do |issue|
+        card = cards_urls[issue['url']]
+        false if card.nil?
+        issue['attached_card'] = card
+      end
     end
 
     def cards_from(issues:, project_name:, column_name:)

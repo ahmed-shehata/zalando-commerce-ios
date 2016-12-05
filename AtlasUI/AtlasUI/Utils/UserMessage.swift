@@ -14,7 +14,7 @@ struct ButtonAction {
     let handler: ButtonActionHandler?
     let style: UIAlertActionStyle
 
-    init(text: String, style: UIAlertActionStyle = .Default, handler: ButtonActionHandler? = nil) {
+    init(text: String, style: UIAlertActionStyle = .default, handler: ButtonActionHandler? = nil) {
         self.text = text
         self.handler = handler
         self.style = style
@@ -24,31 +24,31 @@ struct ButtonAction {
 
 struct UserMessage {
 
-    private static let bannerErrorViewController = BannerErrorViewController()
-    private static let fullScreenErrorViewController = FullScreenErrorViewController()
+    fileprivate static let bannerErrorViewController = BannerErrorViewController()
+    fileprivate static let fullScreenErrorViewController = FullScreenErrorViewController()
 
     static var errorDisplayed: Bool {
-        return bannerErrorViewController.parentViewController != nil || fullScreenErrorViewController.parentViewController != nil
+        return bannerErrorViewController.parent != nil || fullScreenErrorViewController.parent != nil
     }
 
     static func clearBannerError() {
-        bannerErrorViewController.hideBanner()
+        bannerErrorViewController.dismiss()
     }
 
-    static func displayError(error: ErrorType) {
-        guard let userPresentable = error as? UserPresentable else {
+    static func displayError(_ error: Error) {
+        guard let userPresentable = error as? UserPresentableError else {
             displayError(AtlasCheckoutError.unclassified)
             return
         }
 
-        switch userPresentable.errorPresentationType() {
+        switch userPresentable.presentationMode() {
         case .banner: displayBanner(userPresentable)
         case .fullScreen: displayFullScreen(userPresentable)
         }
     }
 
-    static func displayErrorBanner(error: ErrorType) {
-        guard let userPresentable = error as? UserPresentable else {
+    static func displayErrorBanner(_ error: Error) {
+        guard let userPresentable = error as? UserPresentableError else {
             displayError(AtlasCheckoutError.unclassified)
             return
         }
@@ -56,34 +56,30 @@ struct UserMessage {
         displayBanner(userPresentable)
     }
 
-    static func displayErrorFullScreen(error: ErrorType) {
-        guard let userPresentable = error as? UserPresentable else {
+    static func displayErrorFullScreen(_ error: Error) {
+        guard let userPresentable = error as? UserPresentableError else {
             displayError(AtlasCheckoutError.unclassified)
             return
         }
 
         displayFullScreen(userPresentable)
+    static func presentSelection(title: String, message: String? = nil, actions: [ButtonAction]) {
     }
 
-    static func showActionSheet(title title: String?, message: String? = nil, actions: ButtonAction...) {
-        showActionSheet(title: title, message: message, actions: actions)
-    }
-
-    static func showActionSheet(title title: String?, message: String? = nil, actions: [ButtonAction]) {
         guard let topViewController = UIApplication.topViewController() else { return }
-        let alertView = UIAlertController(title: title, message: message, preferredStyle: .ActionSheet)
+        let alertView = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
 
-        actions.forEach { alertView.addAction($0) }
+        actions.forEach { alertView.add(button: $0) }
 
         Async.main {
-            topViewController.presentViewController(alertView, animated: true, completion: nil)
+            topViewController.present(alertView, animated: true, completion: nil)
         }
     }
 
-    static func displayLoader(block: (() -> Void) -> Void) {
-        AtlasUIViewController.instance?.showLoader()
+    static func displayLoader(_ block: (@escaping () -> Void) -> Void) {
+        AtlasUIViewController.shared?.showLoader()
         block {
-            AtlasUIViewController.instance?.hideLoader()
+            AtlasUIViewController.shared?.hideLoader()
         }
     }
 
@@ -91,13 +87,13 @@ struct UserMessage {
 
 extension UserMessage {
 
-    private static var errorPresenterViewController: UIViewController? {
-        let viewController: AtlasUIViewController? = try? AtlasUI.provide()
-        guard let atlasUIViewController = viewController else { return nil }
+    fileprivate static var errorPresenterViewController: UIViewController? {
+        guard let atlasUIViewController: AtlasUIViewController = AtlasUIViewController.shared
+            else { return nil }
         return atlasUIViewController.presentedViewController ?? atlasUIViewController
     }
 
-    private static func displayBanner(error: UserPresentable) {
+    fileprivate static func displayBanner(_ error: UserPresentableError) {
         guard let viewController = errorPresenterViewController else { return }
         bannerErrorViewController.removeFromParentViewController()
         bannerErrorViewController.view.removeFromSuperview()
@@ -105,27 +101,27 @@ extension UserMessage {
         viewController.addChildViewController(bannerErrorViewController)
         viewController.view.addSubview(bannerErrorViewController.view)
 
-        bannerErrorViewController.view.fillInSuperView()
-        bannerErrorViewController.configureData(error)
+        bannerErrorViewController.view.fillInSuperview()
+        bannerErrorViewController.configure(viewModel: error)
     }
 
-    private static func displayFullScreen(error: UserPresentable) {
+    fileprivate static func displayFullScreen(_ error: UserPresentableError) {
         guard let viewController = errorPresenterViewController else { return }
         let navigationController = UINavigationController(rootViewController: fullScreenErrorViewController)
 
         viewController.addChildViewController(navigationController)
         viewController.view.addSubview(navigationController.view)
 
-        navigationController.view.fillInSuperView()
-        fullScreenErrorViewController.configureData(error)
+        navigationController.view.fillInSuperview()
+        fullScreenErrorViewController.configure(viewModel: error)
     }
 
 }
 
 private extension UIAlertController {
 
-    func addAction(button: ButtonAction) {
-        let title = Localizer.string(button.text)
+    func add(button: ButtonAction) {
+        let title = Localizer.format(string: button.text)
         let action = UIAlertAction(title: title, style: button.style, handler: button.handler)
         self.addAction(action)
     }

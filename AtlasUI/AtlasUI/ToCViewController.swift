@@ -5,19 +5,19 @@
 import UIKit
 import AtlasSDK
 
-typealias WebViewLoadedCompletion = (request: NSURL?, error: NSError?, status: HTTPStatus) -> Void
+typealias WebViewLoadedCompletion = (_ request: URL?, _ error: Error?, _ status: HTTPStatus) -> Void
 
-final class ToCViewController: UIViewController, UIWebViewDelegate {
+final class ToCViewController: UIViewController {
 
-    private var loadedCompletion: WebViewLoadedCompletion? {
+    fileprivate var loadedCompletion: WebViewLoadedCompletion? {
         willSet {
             webView.stopLoading()
         }
     }
 
-    private lazy var webView: UIWebView = {
+    fileprivate lazy var webView: UIWebView = {
         let webView = UIWebView()
-        webView.backgroundColor = .whiteColor()
+        webView.backgroundColor = .white
         webView.delegate = self
         webView.scalesPageToFit = true
         webView.translatesAutoresizingMaskIntoConstraints = false
@@ -26,46 +26,43 @@ final class ToCViewController: UIViewController, UIWebViewDelegate {
     }()
 
     override func viewDidLoad() {
-        view.backgroundColor = .whiteColor()
+        view.backgroundColor = .white
         view.addSubview(webView)
 
-        self.title = Localizer.string("termsAndConditionsView.title")
+        self.title = Localizer.format(string: "termsAndConditionsView.title")
 
-        webView.fillInSuperView()
+        webView.fillInSuperview()
     }
 
-    func load(url url: NSURL, completion: WebViewLoadedCompletion? = nil) {
+    func load(url: URL, completion: WebViewLoadedCompletion? = nil) {
         self.loadedCompletion = completion
 
-        let request = NSMutableURLRequest(URL: url)
+        var request = URLRequest(url: url)
         request.setValue("AtlasSDK", forHTTPHeaderField: "X-Zalando-Mobile-App")
         webView.loadRequest(request)
     }
 
-    func webViewDidFinishLoad(webView: UIWebView) {
+}
+
+extension ToCViewController: UIWebViewDelegate {
+
+    func webViewDidFinishLoad(_ webView: UIWebView) {
         didLoad(webView: webView)
     }
 
-    #if swift(>=2.3)
-        func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
-            didLoad(webView: webView, error: error)
-        }
-    #else
-        func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
-            guard let error = error else { return }
-            didLoad(webView: webView, error: error)
-        }
-    #endif
+    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
+        didLoad(webView: webView, error: error)
+    }
 
-    private func didLoad(webView webView: UIWebView, error: NSError? = nil) {
+    fileprivate func didLoad(webView: UIWebView, error: Error? = nil) {
         let status: HTTPStatus = {
             guard let request = webView.request,
-                response = NSURLCache.sharedURLCache().cachedResponseForRequest(request)?.response as? NSHTTPURLResponse
-                else { return HTTPStatus.Unknown }
+                let response = URLCache.shared.cachedResponse(for: request)?.response as? HTTPURLResponse
+                else { return HTTPStatus.unknown }
             return HTTPStatus(response: response)
         }()
 
-        loadedCompletion?(request: webView.request?.URL, error: error, status: status)
+        loadedCompletion?(webView.request?.url, error, status)
     }
 
 }

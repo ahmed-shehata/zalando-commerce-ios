@@ -33,7 +33,7 @@ class PaymentViewControllerTests: XCTestCase {
     }
 
     func testRedirectStatus() {
-        guard let paymentViewController = self.paymentViewController(.redirect) else { return }
+        guard let paymentViewController = self.paymentViewController(with: .redirect) else { return }
         waitUntil(timeout: 10) { done in
             let _ = paymentViewController.view // load the view
             paymentViewController.paymentCompletion = { result in
@@ -44,7 +44,7 @@ class PaymentViewControllerTests: XCTestCase {
     }
 
     func testSuccessStatus() {
-        guard let paymentViewController = self.paymentViewController(.success) else { return }
+        guard let paymentViewController = self.paymentViewController(with: .success) else { return }
         waitUntil(timeout: 10) { done in
             let _ = paymentViewController.view // load the view
             paymentViewController.paymentCompletion = { result in
@@ -55,7 +55,7 @@ class PaymentViewControllerTests: XCTestCase {
     }
 
     func testCancelStatus() {
-        guard let paymentViewController = self.paymentViewController(.cancel) else { return }
+        guard let paymentViewController = self.paymentViewController(with: .cancel) else { return }
         waitUntil(timeout: 10) { done in
             let _ = paymentViewController.view // load the view
             paymentViewController.paymentCompletion = { result in
@@ -66,7 +66,7 @@ class PaymentViewControllerTests: XCTestCase {
     }
 
     func testErrorStatus() {
-        guard let paymentViewController = self.paymentViewController(.error) else { return }
+        guard let paymentViewController = self.paymentViewController(with: .error) else { return }
         waitUntil(timeout: 10) { done in
             let _ = paymentViewController.view // load the view
             paymentViewController.paymentCompletion = { result in
@@ -80,8 +80,8 @@ class PaymentViewControllerTests: XCTestCase {
 
 extension PaymentViewControllerTests {
 
-    private func paymentViewController(status: PaymentStatus) -> PaymentViewController? {
-        let callbackURL: String
+    fileprivate func paymentViewController(with status: PaymentStatus) -> PaymentViewController? {
+        guard let callbackURL = URL(string: "http://de.zalando.atlas.AtlasCheckoutDemo/redirect") else { return nil }
         let redirectURL: String
         switch status {
         case .guestRedirect(let encryptedCheckoutId, let encryptedToken):
@@ -100,8 +100,8 @@ extension PaymentViewControllerTests {
             callbackURL = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect"
             redirectURL = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect%3F\(PaymentStatus.statusKey)%3Derror"
         }
-        let url = AtlasMockAPI.endpointURL(forPath: "/redirect", queryItems: [NSURLQueryItem(name: "url", value: redirectURL)])
-        return PaymentViewController(paymentURL: url, callbackURL: NSURL(string: callbackURL)!)
+        let url = AtlasMockAPI.endpointURL(forPath: "/redirect", queryItems: [URLQueryItem(name: "url", value: redirectURL)])
+        return PaymentViewController(paymentURL: url, callbackURL: callbackURL)
     }
 
 }

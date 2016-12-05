@@ -10,21 +10,21 @@ import Nimble
 
 class APICreateCheckoutTests: AtlasAPIClientBaseTests {
 
-    private let addressId = "6702759"
+    fileprivate let addressId = "6702759"
 
     func testCreateCheckoutFromArticle() {
         waitUntilAtlasAPIClientIsConfigured { done, client in
             let sku = "AD541L009-G11"
-            client.article(sku) { result in
+            client.article(withSKU: sku) { result in
                 switch result {
                 case .failure(let error):
-                    fail(String(error))
+                    fail(String(describing: error))
                 case .success(let article):
                     let selectedArticleUnit = SelectedArticleUnit(article: article, selectedUnitIndex: 0)
-                    client.createCheckoutCart(selectedArticleUnit.sku) { result in
+                    client.createCheckoutCart(forSKU: selectedArticleUnit.sku) { result in
                         switch result {
                         case .failure(let error):
-                            fail(String(error))
+                            fail(String(describing: error))
                         case .success(let result):
                             expect(result.checkout.id).to(equal(self.checkoutId))
                         }
@@ -37,10 +37,10 @@ class APICreateCheckoutTests: AtlasAPIClientBaseTests {
 
     func testCreateCheckoutFromCart() {
         waitUntilAtlasAPIClientIsConfigured { done, client in
-            client.createCheckout(self.cartId) { result in
+            client.createCheckout(fromCardId: self.cartId) { result in
                 switch result {
                 case .failure(let error):
-                    fail(String(error))
+                    fail(String(describing: error))
                 case .success(let checkout):
                     expect(checkout.id).to(equal(self.checkoutId))
                 }

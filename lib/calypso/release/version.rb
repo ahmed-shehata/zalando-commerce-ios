@@ -11,10 +11,12 @@ module Calypso
 
     option :tag, type: :boolean, default: true
     option :push, type: :boolean, default: true
+    option :master, type: :boolean, default: true
+    option :commit, type: :boolean, default: true
     desc 'create', 'Creates new version: updates plist files, add a tag and push to the GitHub'
     def create(version = nil)
-      log_abort 'Please create version only from master branch' unless master_branch?
-      log_abort 'Please commit all changes before creating new version' if repo_contains_changes?
+      log_abort 'Please create version only from master branch' unless !options[:master] || master_branch?
+      log_abort 'Please commit all changes before creating new version' if options[:commit] && repo_contains_changes?
 
       new_version = ask_new_version(version)
 

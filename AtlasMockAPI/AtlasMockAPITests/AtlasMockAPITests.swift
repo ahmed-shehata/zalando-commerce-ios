@@ -9,8 +9,8 @@ import Nimble
 
 @testable import AtlasMockAPI
 
-private typealias JSONCompletion = JSON -> Void
-private typealias DataCompletion = NSData -> Void
+private typealias JSONCompletion = (JSON) -> Void
+private typealias DataCompletion = (Data) -> Void
 
 class AtlasMockAPITests: XCTestCase {
 
@@ -26,7 +26,7 @@ class AtlasMockAPITests: XCTestCase {
 
     func testRootEndpoint() {
         assertSuccessfulResponse(forEndpoint: "/") { data in
-            expect(data.length).toNot(equal(0))
+            expect(data.count).toNot(equal(0))
         }
     }
 
@@ -44,13 +44,13 @@ class AtlasMockAPITests: XCTestCase {
 
     func testAuthorizeEndpoint() {
         assertSuccessfulResponse(forEndpoint: "/oauth2/authorize") { data in
-            if let html = String(data: data, encoding: NSUTF8StringEncoding) {
+            if let html = String(data: data, encoding: String.Encoding.utf8) {
                 expect(html).to(contain("value=\"qux-quux-corge\""))
             }
         }
     }
 
-    private func assertSuccessfulJSONResponse(forEndpoint endpoint: String, completion: JSONCompletion? = nil) {
+    fileprivate func assertSuccessfulJSONResponse(forEndpoint endpoint: String, completion: JSONCompletion? = nil) {
         assertSuccessfulResponse(forEndpoint: endpoint) { data in
             let json = SwiftyJSON.JSON(data: data)
             expect(json).toNot(beNil())
@@ -58,9 +58,9 @@ class AtlasMockAPITests: XCTestCase {
         }
     }
 
-    private func assertSuccessfulResponse(forEndpoint endpoint: String, completion: DataCompletion? = nil) {
-        let expectation = expectationWithDescription("assertSuccessfulResponse \(endpoint)")
-        let url = AtlasMockAPI.endpointURL(forPath: endpoint).absoluteString!
+    fileprivate func assertSuccessfulResponse(forEndpoint endpoint: String, completion: DataCompletion? = nil) {
+        let expectation = self.expectation(description: "assertSuccessfulResponse \(endpoint)")
+        let url = AtlasMockAPI.endpointURL(forPath: endpoint).absoluteString
 
         if let operation = try? HTTP.GET(url) {
             operation.start { response in
@@ -69,7 +69,7 @@ class AtlasMockAPITests: XCTestCase {
             }
 
         }
-        self.waitForExpectationsWithTimeout(10, handler: nil)
+        self.waitForExpectations(timeout: 10, handler: nil)
     }
 
 }

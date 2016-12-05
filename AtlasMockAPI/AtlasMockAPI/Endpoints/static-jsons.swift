@@ -13,26 +13,25 @@ extension HttpServer {
         guard let jsonFiles = try serverBundle.pathsForResources(containingInName: jsonExt) else { return }
 
         for filePath in jsonFiles {
-            guard let fullFilePath = NSURL(fileURLWithPath: filePath).lastPathComponent?
-                .stringByReplacingOccurrencesOfString(jsonExt, withString: "")
-                .replace("|", "/")
-            where !fullFilePath.containsString("!")
-            else { continue }
+            let fullFilePath = URL(fileURLWithPath: filePath).lastPathComponent
+                .replacingOccurrences(of: jsonExt, with: "")
+                .replace(old: "|", "/")
+            guard !fullFilePath.contains("!") else { continue }
 
             let contents = try String(contentsOfFile: filePath)
-            let method = fullFilePath.componentsSeparatedByString("*")[0]
-            let urlPath = fullFilePath.componentsSeparatedByString("*")[1]
+            let method = fullFilePath.components(separatedBy: "*")[0]
+            let urlPath = fullFilePath.components(separatedBy: "*")[1]
 
             print("Registered endpoint:", method, urlPath)
 
             switch method {
             case "POST":
                 self.POST[urlPath] = { _ in
-                    return .OK(.Text(contents))
+                    return .ok(.text(contents))
                 }
             default:
                 self[urlPath] = { _ in
-                    return .OK(.Text(contents))
+                    return .ok(.text(contents))
                 }
             }
         }
