@@ -19,6 +19,7 @@
 "summaryView.label.emptyAddress.billing" = "No Billing Address";
 "summaryView.label.estimatedDelivery" = "Estimated Delivery";
 "summaryView.label.unitSize" = "Size: %@";
+"summaryView.label.orderNumber" = "Order Number: %@";
 "summaryView.label.price.total" = "Total";
 "summaryView.label.price.vat" = "(VAT Included)";
 "summaryView.label.price.shipping" = "Shipping";

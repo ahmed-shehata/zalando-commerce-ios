@@ -14,6 +14,7 @@ struct CheckoutSummaryDataModel {
     let shippingPrice: MoneyAmount
     let totalPrice: MoneyAmount
     let delivery: Delivery?
+    let orderNumber: String?
 
     init(selectedArticleUnit: SelectedArticleUnit,
          shippingAddress: FormattableAddress? = nil,
@@ -21,7 +22,8 @@ struct CheckoutSummaryDataModel {
          paymentMethod: String? = nil,
          shippingPrice: MoneyAmount = 0,
          totalPrice: MoneyAmount,
-         delivery: Delivery? = nil) {
+         delivery: Delivery? = nil,
+         orderNumber: String? = nil) {
 
         self.selectedArticleUnit = selectedArticleUnit
         self.shippingAddress = shippingAddress
@@ -30,6 +32,7 @@ struct CheckoutSummaryDataModel {
         self.shippingPrice = shippingPrice
         self.totalPrice = totalPrice
         self.delivery = delivery
+        self.orderNumber = orderNumber
     }
 
 }
@@ -68,6 +71,7 @@ extension CheckoutSummaryDataModel {
         self.shippingPrice = 0
         self.totalPrice = cartCheckout?.cart?.grossTotal.amount ?? selectedArticleUnit.unit.price.amount
         self.delivery = cartCheckout?.checkout?.delivery
+        self.orderNumber = nil
     }
 
     init(selectedArticleUnit: SelectedArticleUnit, checkout: Checkout?, order: Order) {
@@ -78,6 +82,7 @@ extension CheckoutSummaryDataModel {
         self.shippingPrice = 0
         self.totalPrice = order.grossTotal.amount
         self.delivery = checkout?.delivery
+        self.orderNumber = order.orderNumber
     }
 
 }
