@@ -11,7 +11,7 @@ import AtlasMockAPI
 
 class GuestSummaryActionHandlerTests: XCTestCase {
 
-    var mockedDataSource: GuestSummaryActionHandlerDataSourceMocked?
+    var mockedDataSourceDelegate: GuestSummaryActionHandlerDataSourceDelegateMocked?
     var actionHandler: GuestCheckoutSummaryActionHandler?
 
     override func setUp() {
@@ -31,10 +31,20 @@ class GuestSummaryActionHandlerTests: XCTestCase {
     }
 
     func testSubmitButtonWithMissingPayment() {
-        guard let dataModel = mockedDataSource?.dataModel else { return fail() }
-        mockedDataSource?.dataModel = addAddress(toDataModel: dataModel)
+        guard let dataModel = mockedDataSourceDelegate?.dataModel else { return fail() }
+        mockedDataSourceDelegate?.dataModel = addAddress(toDataModel: dataModel)
         actionHandler?.handleSubmitButton()
         expect(UserMessage.errorDisplayed).toEventually(beTrue())
+    }
+
+    func testSubmitButton() {
+        guard let dataModel = mockedDataSourceDelegate?.dataModel else { return fail() }
+        mockedDataSourceDelegate?.dataModel = addAddress(toDataModel: dataModel)
+        selectedPaymentMethod()
+        expect(self.actionHandler?.guestCheckout).toNotEventually(beNil())
+        actionHandler?.handleSubmitButton()
+        expect(UserMessage.errorDisplayed).toEventually(beFalse())
+        expect(self.mockedDataSourceDelegate?.layout as? GuestOrderPlacedLayout).toNotEventually(beNil())
     }
 
     func testPaymentButtonWithMissingAddress() {
@@ -43,8 +53,8 @@ class GuestSummaryActionHandlerTests: XCTestCase {
     }
 
     func testPaymentButtonWithPaymentError() {
-        guard let dataModel = mockedDataSource?.dataModel else { return fail() }
-        mockedDataSource?.dataModel = addAddress(toDataModel: dataModel)
+        guard let dataModel = mockedDataSourceDelegate?.dataModel else { return fail() }
+        mockedDataSourceDelegate?.dataModel = addAddress(toDataModel: dataModel)
         guard let paymentViewController = showPaymentScreen() else { return fail() }
         paymentViewController.paymentCompletion?(.error)
         AtlasUIViewController.instance?.mainNavigationController.popViewControllerAnimated(true)
@@ -68,9 +78,10 @@ extension GuestSummaryActionHandlerTests {
                 AtlasUIClient.article(sku) { result in
                     guard let article = result.process() else { return fail() }
                     let selectedArticleUnit = SelectedArticleUnit(article: article, selectedUnitIndex: 0)
-                    self.mockedDataSource = GuestSummaryActionHandlerDataSourceMocked(selectedArticleUnit: selectedArticleUnit)
+                    self.mockedDataSourceDelegate = GuestSummaryActionHandlerDataSourceDelegateMocked(selectedArticleUnit: selectedArticleUnit)
                     guestActionHandler = GuestCheckoutSummaryActionHandler(email: "john.doe@zalando.de")
-                    guestActionHandler?.dataSource = self.mockedDataSource
+                    guestActionHandler?.dataSource = self.mockedDataSourceDelegate
+                    guestActionHandler?.delegate = self.mockedDataSourceDelegate
                     done()
                 }
             }
@@ -123,8 +134,8 @@ extension GuestSummaryActionHandlerTests {
     }
 
     private func selectedPaymentMethod() {
-        guard let dataModel = mockedDataSource?.dataModel else { return fail() }
-        mockedDataSource?.dataModel = addAddress(toDataModel: dataModel)
+        guard let dataModel = mockedDataSourceDelegate?.dataModel else { return fail() }
+        mockedDataSourceDelegate?.dataModel = addAddress(toDataModel: dataModel)
         guard let paymentViewController = showPaymentScreen() else { return fail() }
         paymentViewController.paymentCompletion?(.guestRedirect(encryptedCheckoutId: "CHECKOUT_ID", encryptedToken: "TOKEN"))
         AtlasUIViewController.instance?.mainNavigationController.popViewControllerAnimated(true)
@@ -132,12 +143,29 @@ extension GuestSummaryActionHandlerTests {
 
 }
 
-class GuestSummaryActionHandlerDataSourceMocked: NSObject, CheckoutSummaryActionHandlerDataSource {
+class GuestSummaryActionHandlerDataSourceDelegateMocked: NSObject, CheckoutSummaryActionHandlerDataSource, CheckoutSummaryActionHandlerDelegate {
 
     var dataModel: CheckoutSummaryDataModel
+    var layout: CheckoutSummaryLayout?
 
     init(selectedArticleUnit: SelectedArticleUnit) {
         dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, totalPrice: 0)
+    }
+
+    func dataModelUpdated(dataModel: CheckoutSummaryDataModel) {
+
+    }
+
+    func layoutUpdated(layout: CheckoutSummaryLayout) {
+        self.layout = layout
+    }
+
+    func actionHandlerUpdated(actionHandler: CheckoutSummaryActionHandler) {
+
+    }
+
+    func dismissView() {
+
     }
 
 }
