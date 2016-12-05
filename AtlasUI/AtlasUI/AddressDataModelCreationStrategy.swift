@@ -10,7 +10,7 @@ protocol AddressDataModelCreationStrategy {
 
     var localizedTitleKey: String { get }
 
-    init(completion: AddressDataModelCreationStrategyCompletion)
+    init(completion: @escaping AddressDataModelCreationStrategyCompletion)
     func execute()
 
 }
@@ -18,7 +18,7 @@ protocol AddressDataModelCreationStrategy {
 extension AddressDataModelCreationStrategy {
 
     var localizedTitleKey: String {
-        return "addressListView.add.type.\(self.dynamicType)"
+        return "addressListView.add.type.\(type(of: self))"
     }
 
 }

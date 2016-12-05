@@ -24,7 +24,7 @@ class SizeListSelectionViewControllerTests: XCTestCase {
     func testManySizesArticle() {
         var sizeSelectionNavigationController: UINavigationController?
         waitUntil(timeout: 10) { done in
-            self.navigationController("AD541L009-G11") { navigationController in
+            self.navigationController(forSKU: "AD541L009-G11") { navigationController in
 
                 let _ = navigationController.topViewController?.view // Load the view
                 sizeSelectionNavigationController = navigationController
@@ -43,7 +43,7 @@ class SizeListSelectionViewControllerTests: XCTestCase {
     func testSingleSizeArticle() {
         var sizeSelectionNavigationController: UINavigationController?
         waitUntil(timeout: 10) { done in
-            self.navigationController("MK151F00E-Q11") { navigationController in
+            self.navigationController(forSKU: "MK151F00E-Q11") { navigationController in
 
                 let _ = navigationController.topViewController?.view // Load the view
                 sizeSelectionNavigationController = navigationController
@@ -62,8 +62,7 @@ class SizeListSelectionViewControllerTests: XCTestCase {
     func testOutOfStockArticle() {
         var sizeSelectionNavigationController: UINavigationController?
         waitUntil(timeout: 10) { done in
-            self.navigationController("AZ711N00B-Q11") { navigationController in
-
+            self.navigationController(forSKU: "AZ711N00B-Q11") { navigationController in
                 let _ = navigationController.topViewController?.view // Load the view
                 sizeSelectionNavigationController = navigationController
                 done()
@@ -79,23 +78,18 @@ class SizeListSelectionViewControllerTests: XCTestCase {
 
 extension SizeListSelectionViewControllerTests {
 
-    private func navigationController(sku: String, completion: (UINavigationController -> Void)) {
-        registerAtlasUIViewController(sku) {
+    fileprivate func navigationController(forSKU sku: String, completion: @escaping ((UINavigationController) -> Void)) {
+        registerAtlasUIViewController(forSKU: sku) {
             let viewController = SizeListSelectionViewController(sku: sku)
             let navigationController = UINavigationController(rootViewController: viewController)
             completion(navigationController)
         }
     }
 
-    private func registerAtlasUIViewController(sku: String, completion: () -> Void) {
-        let options = Options(clientId: "CLIENT_ID",
-                              salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
-                              interfaceLanguage: "en",
-                              configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
-
-        AtlasUI.configure(options) { _ in
-            let atlasUIViewController = AtlasUIViewController(forProductSKU: sku)
-            AtlasUI.register { atlasUIViewController }
+    fileprivate func registerAtlasUIViewController(forSKU sku: String, completion: @escaping () -> Void) {
+        AtlasUI.configure(options: Options.forTests()) { _ in
+            let atlasUIViewController = AtlasUIViewController(forSKU: sku)
+            try! AtlasUI.shared().register { atlasUIViewController }
             completion()
         }
     }

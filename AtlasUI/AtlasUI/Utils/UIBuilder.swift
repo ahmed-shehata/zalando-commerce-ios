@@ -21,18 +21,22 @@ extension UIBuilder {
         configureConstraints()
 
         if let view = self as? UIView {
-            buildSubViews(view)
+            view.buildSubviews()
         } else if let viewController = self as? UIViewController {
-            buildSubViews(viewController.view)
+            viewController.view.buildSubviews()
         }
     }
 
-    func buildSubViews(rootView: UIView) {
-        rootView.subviews.forEach { subview in
+}
+
+private extension UIView {
+
+    func buildSubviews() {
+        self.subviews.forEach { subview in
             if let builder = subview as? UIBuilder {
                 builder.buildView()
             } else {
-                buildSubViews(subview)
+                subview.buildSubviews()
             }
         }
     }
@@ -43,6 +47,6 @@ protocol UIDataBuilder {
 
     associatedtype T
 
-    func configureData(viewModel: T)
+    func configure(viewModel: T)
 
 }

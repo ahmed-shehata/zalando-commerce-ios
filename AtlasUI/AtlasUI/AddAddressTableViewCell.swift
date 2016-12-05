@@ -8,25 +8,25 @@ class AddAddressTableViewCell: UITableViewCell {
 
     let stackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.axis = .Horizontal
+        stackView.axis = .horizontal
         stackView.spacing = 2
         stackView.layoutMargins = UIEdgeInsets(top: 20, left: 15, bottom: 20, right: 15)
-        stackView.layoutMarginsRelativeArrangement = true
+        stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
 
     let addAddressLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = .systemFontOfSize(14, weight: UIFontWeightLight)
+        label.font = .systemFont(ofSize: 14, weight: UIFontWeightLight)
         label.textColor = UIColor(hex: 0x555555)
-        label.text = Localizer.string("addressListView.add.cellTitle")
+        label.text = Localizer.format(string: "addressListView.add.cellTitle")
         return label
     }()
 
     let addAddressButton: UIButton = {
-        let button = UIButton(type: .ContactAdd)
-        button.userInteractionEnabled = false
+        let button = UIButton(type: .contactAdd)
+        button.isUserInteractionEnabled = false
         return button
     }()
 
@@ -50,7 +50,7 @@ extension AddAddressTableViewCell: UIBuilder {
     }
 
     func configureConstraints() {
-        stackView.fillInSuperView()
+        stackView.fillInSuperview()
         addAddressButton.setSquareAspectRatio()
         addAddressButton.setWidth(equalToConstant: 20)
     }

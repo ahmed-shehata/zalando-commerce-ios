@@ -9,13 +9,15 @@ public struct CartItem {
 
 extension CartItem: JSONInitializable {
 
-    private struct Keys {
+    fileprivate struct Keys {
         static let sku = "sku"
         static let quantity = "quantity"
     }
 
     init?(json: JSON) {
-        guard let sku = json[Keys.sku].string, quantity = json[Keys.quantity].int else { return nil }
+        guard let sku = json[Keys.sku].string,
+            let quantity = json[Keys.quantity].int
+            else { return nil }
         self.init(sku: sku, quantity: quantity)
     }
 }

@@ -7,108 +7,111 @@ import AtlasSDK
 
 struct AtlasUIClient {
 
-    static func customer(completion: CustomerCompletion) {
+    static func customer(completion: @escaping CustomerCompletion) {
         UserMessage.displayLoader { hideLoader in
-            AtlasAPIClient.instance?.customer { result in
+            AtlasAPIClient.shared?.customer { result in
                 hideLoader()
                 completion(result)
             }
         }
     }
 
-    static func createCart(cartItemRequests: [CartItemRequest], completion: CartCompletion) {
+    static func createCart(withItems cartItemRequests: [CartItemRequest], completion: @escaping CartCompletion) {
         UserMessage.displayLoader { hideLoader in
-            AtlasAPIClient.instance?.createCart(cartItemRequests) { result in
+            AtlasAPIClient.shared?.createCart(withItems: cartItemRequests) { result in
                 hideLoader()
                 completion(result)
             }
         }
     }
 
-    static func createCheckoutCart(sku: String, addresses: CheckoutAddresses? = nil, completion: CheckoutCartCompletion) {
+    static func createCheckoutCart(forSKU sku: String, addresses: CheckoutAddresses? = nil, completion: @escaping CheckoutCartCompletion) {
         UserMessage.displayLoader { hideLoader in
-            AtlasAPIClient.instance?.createCheckoutCart(sku, addresses: addresses) { result in
+            AtlasAPIClient.shared?.createCheckoutCart(forSKU: sku, addresses: addresses) { result in
                 hideLoader()
                 completion(result)
             }
         }
     }
 
-    static func createCheckout(cartId: String, addresses: CheckoutAddresses? = nil, completion: CheckoutCompletion) {
+    static func createCheckout(fromCardId cartId: String, addresses: CheckoutAddresses? = nil, completion: @escaping CheckoutCompletion) {
         UserMessage.displayLoader { hideLoader in
-            AtlasAPIClient.instance?.createCheckout(cartId, addresses: addresses) { result in
+            AtlasAPIClient.shared?.createCheckout(fromCardId: cartId, addresses: addresses) { result in
                 hideLoader()
                 completion(result)
             }
         }
     }
 
-    static func updateCheckout(checkoutId: String, updateCheckoutRequest: UpdateCheckoutRequest, completion: CheckoutCompletion) {
+    static func updateCheckout(withId checkoutId: String, updateCheckoutRequest: UpdateCheckoutRequest,
+                               completion: @escaping CheckoutCompletion) {
         UserMessage.displayLoader { hideLoader in
-            AtlasAPIClient.instance?.updateCheckout(checkoutId, updateCheckoutRequest: updateCheckoutRequest) { result in
+            AtlasAPIClient.shared?.updateCheckout(withId: checkoutId, updateCheckoutRequest: updateCheckoutRequest) { result in
                 hideLoader()
                 completion(result)
             }
         }
     }
 
-    static func createOrder(checkoutId: String, completion: OrderCompletion) {
+    static func createOrder(fromCheckoutId checkoutId: String, completion: @escaping OrderCompletion) {
         UserMessage.displayLoader { hideLoader in
-            AtlasAPIClient.instance?.createOrder(checkoutId) { result in
+            AtlasAPIClient.shared?.createOrder(fromCheckoutId: checkoutId) { result in
                 hideLoader()
                 completion(result)
             }
         }
     }
 
-    static func article(sku: String, completion: ArticleCompletion) {
+    static func article(withSKU sku: String, completion: @escaping ArticleCompletion) {
         UserMessage.displayLoader { hideLoader in
-            AtlasAPIClient.instance?.article(sku) { result in
+            AtlasAPIClient.shared?.article(withSKU: sku) { result in
                 hideLoader()
                 completion(result)
             }
         }
     }
 
-    static func addresses(completion: AddressesCompletion) {
+    static func addresses(completion: @escaping AddressesCompletion) {
         UserMessage.displayLoader { hideLoader in
-            AtlasAPIClient.instance?.addresses { result in
+            AtlasAPIClient.shared?.addresses { result in
                 hideLoader()
                 completion(result)
             }
         }
     }
 
-    static func deleteAddress(addressId: String, completion: NoContentCompletion) {
+    static func deleteAddress(withId addressId: String, completion: @escaping NoContentCompletion) {
         UserMessage.displayLoader { hideLoader in
-            AtlasAPIClient.instance?.deleteAddress(addressId) { result in
+            AtlasAPIClient.shared?.deleteAddress(withId: addressId) { result in
                 hideLoader()
                 completion(result)
             }
         }
     }
 
-    static func createAddress(request: CreateAddressRequest, completion: AddressCreateUpdateCompletion) {
+    static func createAddress(_ request: CreateAddressRequest, completion: @escaping AddressCreateUpdateCompletion) {
         UserMessage.displayLoader { hideLoader in
-            AtlasAPIClient.instance?.createAddress(request) { result in
+            AtlasAPIClient.shared?.createAddress(request) { result in
                 hideLoader()
                 completion(result)
             }
         }
     }
 
-    static func updateAddress(addressId: String, request: UpdateAddressRequest, completion: AddressCreateUpdateCompletion) {
+    static func updateAddress(withAddressId addressId: String,
+                              request: UpdateAddressRequest,
+                              completion: @escaping AddressCreateUpdateCompletion) {
         UserMessage.displayLoader { hideLoader in
-            AtlasAPIClient.instance?.updateAddress(addressId, request: request) { result in
+            AtlasAPIClient.shared?.updateAddress(withAddressId: addressId, request: request) { result in
                 hideLoader()
                 completion(result)
             }
         }
     }
 
-    static func checkAddress(request: CheckAddressRequest, completion: CheckAddressCompletion) {
+    static func checkAddress(_ request: CheckAddressRequest, completion: @escaping CheckAddressCompletion) {
         UserMessage.displayLoader { hideLoader in
-            AtlasAPIClient.instance?.checkAddress(request) { result in
+            AtlasAPIClient.shared?.checkAddress(request) { result in
                 hideLoader()
                 completion(result)
             }

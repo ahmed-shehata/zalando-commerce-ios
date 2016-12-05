@@ -9,7 +9,7 @@ class EmptyAddressDataModelCreationStrategy: AddressDataModelCreationStrategy {
 
     let completion: AddressDataModelCreationStrategyCompletion
 
-    required init(completion: AddressDataModelCreationStrategyCompletion) {
+    required init(completion: @escaping AddressDataModelCreationStrategyCompletion) {
         self.completion = completion
     }
 

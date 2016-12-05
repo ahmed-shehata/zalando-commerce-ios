@@ -61,7 +61,7 @@ module Calypso
       def delete(url, headers: {}, query: {})
         log_debug "DELETE #{url} ..."
         headers.merge! standard_headers
-        response HTTParty.delete(url, headers: headers, query: query)
+        response = HTTParty.delete(url, headers: headers, query: query)
         log_abort response unless response.success?
       end
 

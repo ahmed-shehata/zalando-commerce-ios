@@ -28,12 +28,11 @@ public struct Customer {
 extension Customer: JSONInitializable {
 
     init?(json: JSON) {
-        guard let
-        customerNumber = json["customer_number"].string,
-            gender = json["gender"].string,
-            firstName = json["first_name"].string,
-            lastName = json["last_name"].string,
-            email = json["email"].string
+        guard let customerNumber = json["customer_number"].string,
+            let gender = json["gender"].string,
+            let firstName = json["first_name"].string,
+            let lastName = json["last_name"].string,
+            let email = json["email"].string
         else { return nil }
 
         self.customerNumber = customerNumber

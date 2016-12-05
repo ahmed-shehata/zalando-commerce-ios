@@ -7,11 +7,13 @@ import AtlasSDK
 
 class LoaderView: UIView {
 
-    private let activityIndicator: UIActivityIndicatorView = {
-        return UIActivityIndicatorView(activityIndicatorStyle: .White)
+    fileprivate let activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .white)
+        indicator.hidesWhenStopped = true
+        return indicator
     }()
 
-    private let backgroundView: RoundedView = {
+    fileprivate let backgroundView: RoundedView = {
         let view = RoundedView()
         view.cornerRadius = 20
         view.backgroundColor = UIColor(white: 0, alpha: 0.7)
@@ -20,12 +22,10 @@ class LoaderView: UIView {
 
     func show() {
         activityIndicator.startAnimating()
-        hidden = false
     }
 
     func hide() {
         activityIndicator.stopAnimating()
-        hidden = true
     }
 
 }
@@ -33,17 +33,17 @@ class LoaderView: UIView {
 extension LoaderView: UIBuilder {
 
     func configureView() {
-        userInteractionEnabled = true
+        isUserInteractionEnabled = true
         addSubview(backgroundView)
         backgroundView.addSubview(activityIndicator)
     }
 
     func configureConstraints() {
-        fillInSuperView()
-        backgroundView.centerInSuperView()
+        fillInSuperview()
+        backgroundView.centerInSuperview()
         backgroundView.setWidth(equalToConstant: 40)
         backgroundView.setHeight(equalToConstant: 40)
-        activityIndicator.centerInSuperView()
+        activityIndicator.centerInSuperview()
     }
 
 }

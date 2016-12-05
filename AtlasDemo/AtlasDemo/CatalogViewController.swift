@@ -12,23 +12,23 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
 
     var articles = [DemoArticle]() {
         didSet {
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.productCollectionView.reloadData()
             }
         }
     }
 
-    private let articlesClient = ArticlesClient()
-    private let sampleSKUs = [
+    fileprivate let articlesClient = ArticlesClient()
+    fileprivate let sampleSKUs = [
         "L2711E002-Q11", "GU121D08Z-Q11", "AZ711M001-B11",
         "AZ711N00B-Q11", "MK151F00E-Q11", "M0Q21C068-B11",
         "EV451D00U-302", "RA252F005-802"
     ]
 
-    static var instance: CatalogViewController? {
+    static var shared: CatalogViewController? {
         guard let
-            navigationController = UIApplication.sharedApplication().keyWindow?.rootViewController as? UINavigationController,
-            catalogViewController = navigationController.viewControllers.first as? CatalogViewController
+            navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController,
+            let catalogViewController = navigationController.viewControllers.first as? CatalogViewController
             else { return nil }
         return catalogViewController
     }
@@ -40,7 +40,7 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
         self.navigationController?.navigationBar.accessibilityIdentifier = "catalog-navigation-controller"
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if AppSetup.isConfigured {
             loadHomepageArticles()
@@ -51,14 +51,14 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
         articlesClient.fetch(articlesForSKUs: sampleSKUs) { result in
             let processedResult = result.processedResult()
             switch processedResult {
-            case .success(let articles): self.articles = articles.sort { $0.id < $1.id }
+            case .success(let articles): self.articles = articles.sorted { $0.id < $1.id }
             case .error(_, let title, let message): UIAlertController.showMessage(title: title, message: message)
             }
         }
     }
 
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ProductCollectionViewCell", forIndexPath: indexPath)
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCollectionViewCell", for: indexPath)
         guard let productCell = cell as? ProductCollectionViewCell else {
             return cell
         }
@@ -66,11 +66,11 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
         return productCell.setupCell(withArticle: articles[indexPath.row])
     }
 
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
 
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return articles.count
     }
 

@@ -10,34 +10,36 @@ struct NotLoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
     weak var dataSource: CheckoutSummaryActionHandlerDataSource?
     weak var delegate: CheckoutSummaryActionHandlerDelegate?
 
-    func handleSubmitButton() {
-        guard let dataSource = dataSource, delegate = delegate else { return }
+    func handleSubmit() {
+        guard let dataSource = dataSource,
+            let delegate = delegate
+            else { return }
 
         AtlasUIClient.customer { result in
             guard let customer = result.process() else { return }
-
             let selectedArticleUnit = dataSource.dataModel.selectedArticleUnit
-            LoggedInSummaryActionHandler.createInstance(customer, selectedUnit: selectedArticleUnit) { result in
+
+            LoggedInSummaryActionHandler.create(customer: customer, selectedArticleUnit: selectedArticleUnit) { result in
                 guard let actionHandler = result.process() else { return }
 
                 let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, cartCheckout: actionHandler.cartCheckout)
-                delegate.actionHandlerUpdated(actionHandler)
-                delegate.dataModelUpdated(dataModel)
-                delegate.layoutUpdated(LoggedInLayout())
+                delegate.updated(actionHandler: actionHandler)
+                delegate.updated(dataModel: dataModel)
+                delegate.updated(layout: LoggedInLayout())
             }
         }
     }
 
-    func showPaymentSelectionScreen() {
-        handleSubmitButton()
+    func handlePaymentSelection() {
+        handleSubmit()
     }
 
-    func showShippingAddressSelectionScreen() {
-        handleSubmitButton()
+    func handleShippingAddressSelection() {
+        handleSubmit()
     }
 
-    func showBillingAddressSelectionScreen() {
-        handleSubmitButton()
+    func handleBillingAddressSelection() {
+        handleSubmit()
     }
 
 }

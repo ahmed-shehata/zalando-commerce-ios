@@ -19,7 +19,7 @@ class ConfigTests: XCTestCase {
     let configLanguage = "de"
     let configCountry = "DE"
     let salesChannelId = "82fe2e7f-8c4f-4aa1-9019-b6bde5594456"
-    let clientId = "CLIENT_ID"
+    let clientId = "partner_YCg9dRq"
     let tocURL = "https://www.zalando.de/agb/"
     let callback = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect"
 
@@ -36,15 +36,15 @@ class ConfigTests: XCTestCase {
                 ["locale": "es_ES", "sales-channel": "SPAIN", "toc_url": "https://www.zalando.es/cgc/"],
                 ["locale": configLocale, "sales-channel": salesChannelId, "toc_url": tocURL],
             ],
-            "atlas-catalog-api": ["url": catalogURL.absoluteString!],
+            "atlas-catalog-api": ["url": catalogURL.absoluteString],
             "atlas-checkout-api": [
-                "url": checkoutURL.absoluteString!,
+                "url": checkoutURL.absoluteString,
                 "payment": [
                     "selection-callback": callback,
                     "third-party-callback": callback
                 ]
             ],
-            "oauth2-provider": ["url": loginURL.absoluteString!]
+            "oauth2-provider": ["url": loginURL.absoluteString]
             ]
         )
     }
@@ -58,23 +58,23 @@ class ConfigTests: XCTestCase {
         expect(config?.loginURL).to(equal(loginURL))
         expect(config?.clientId).to(equal(clientId))
         expect(config?.salesChannel.identifier).to(equal(salesChannelId))
-        expect(config?.salesChannel.termsAndConditionsURL).to(equal(NSURL(validURL: tocURL)))
+        expect(config?.salesChannel.termsAndConditionsURL).to(equal(URL(validURL: tocURL)))
     }
 
     func testReadingLanguageFromConfigWhenNoInterfaceLanguageGiven() {
         let options = Options(clientId: clientId, salesChannel: salesChannelId)
         let config = Config(json: json, options: options)
 
-        expect(config?.salesChannel.locale.localeIdentifier).to(equal(configLocale))
-        expect(config?.interfaceLocale.localeIdentifier).to(equal(configLocale))
+        expect(config?.salesChannel.locale.identifier).to(equal(configLocale))
+        expect(config?.interfaceLocale.identifier).to(equal(configLocale))
     }
 
     func testUseInterfaceLanugageWithConfigCountry() {
         let options = Options(clientId: clientId, salesChannel: salesChannelId, interfaceLanguage: interfaceLanguage)
         let config = Config(json: json, options: options)
 
-        expect(config?.salesChannel.locale.localeIdentifier).to(equal(configLocale))
-        expect(config?.interfaceLocale.localeIdentifier).to(equal("\(interfaceLanguage)_\(configCountry)"))
+        expect(config?.salesChannel.locale.identifier).to(equal(configLocale))
+        expect(config?.interfaceLocale.identifier).to(equal("\(interfaceLanguage)_\(configCountry)"))
     }
 
     func testInvalidSalesChannel() {

@@ -7,7 +7,7 @@ import AtlasSDK
 public enum ProcessedAtlasAPIResult<T> {
 
     case success(T)
-    case error(error: ErrorType, title: String, message: String)
+    case error(error: Error, title: String, message: String)
     case handledInternally
 
 }
@@ -25,7 +25,7 @@ extension AtlasAPIResult {
                 authorizationHandler.authorize { result in
                     switch result {
                     case .success(let accessToken):
-                        Atlas.authorizeWithToken(accessToken)
+                        Atlas.authorize(withToken: accessToken)
                         UserMessage.displayLoader { hideLoader in
                             apiRequest?.execute { _ in
                                 hideLoader()
@@ -37,7 +37,7 @@ extension AtlasAPIResult {
                 }
                 return .handledInternally
             default:
-                let userPresentable = error as? UserPresentable ?? AtlasCheckoutError.unclassified
+                let userPresentable = error as? UserPresentableError ?? AtlasCheckoutError.unclassified
                 return .error(error: error, title: userPresentable.displayedTitle, message: userPresentable.displayedMessage)
             }
         }

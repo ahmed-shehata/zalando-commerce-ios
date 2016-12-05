@@ -4,13 +4,12 @@
 
 import Foundation
 
-extension NSData {
+extension Data {
 
-    convenience init?(json: [String: AnyObject]?) throws {
+    init?(withJSONObject json: [String: Any]?, options: JSONSerialization.WritingOptions = []) throws {
         guard let json = json else { return nil }
         do {
-            let data = try NSJSONSerialization.dataWithJSONObject(json, options: [])
-            self.init(data: data)
+            self = try JSONSerialization.data(withJSONObject: json, options: options)
         } catch let e {
             AtlasLogger.logError(e)
             throw e

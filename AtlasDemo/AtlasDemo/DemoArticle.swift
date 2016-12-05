@@ -4,15 +4,16 @@
 
 import Foundation
 import AtlasSDK
+import SwiftyJSON
 
 public struct DemoArticle {
 
     public struct Brand {
         public let key: String
         public let name: String
-        public let logoURL: NSURL?
-        public let largeLogoURL: NSURL?
-        public let shopURL: NSURL
+        public let logoURL: URL?
+        public let largeLogoURL: URL?
+        public let shopURL: URL
     }
 
     public struct Attribute {
@@ -43,19 +44,19 @@ public struct DemoArticle {
     public struct Image {
         public let orderNumber: Int
         public let type: String
-        public let thumbnailHDURL: NSURL
-        public let smallURL: NSURL
-        public let smallHDURL: NSURL
-        public let mediumURL: NSURL
-        public let mediumHDURL: NSURL
-        public let largeURL: NSURL
-        public let largeHDURL: NSURL
+        public let thumbnailHDURL: URL
+        public let smallURL: URL
+        public let smallHDURL: URL
+        public let mediumURL: URL
+        public let mediumHDURL: URL
+        public let largeURL: URL
+        public let largeHDURL: URL
     }
 
     public let id: String
     public let modelId: String
     public let name: String
-    public let shopURL: NSURL
+    public let shopURL: URL
     public let color: String
     public let available: Bool
     public let season: String
@@ -69,7 +70,7 @@ public struct DemoArticle {
     public let units: [Unit]
     public let media: Media
 
-    public var imageThumbURL: NSURL? {
+    public var imageThumbURL: URL? {
         guard let img = self.media.images.first else { return nil }
         return img.mediumHDURL
     }
@@ -79,17 +80,16 @@ public struct DemoArticle {
 extension DemoArticle {
 
     init?(json: JSON) {
-        guard let
-        id = json["id"].string,
-            modelId = json["modelId"].string,
-            name = json["name"].string,
-            shopURL = json["shopUrl"].URL,
-            color = json["color"].string,
-            available = json["available"].bool,
-            season = json["season"].string,
-            seasonYear = json["seasonYear"].string,
-            brand = Brand(json: json["brand"]),
-            media = Media(json: json["media"])
+        guard let id = json["id"].string,
+            let modelId = json["modelId"].string,
+            let name = json["name"].string,
+            let shopURL = json["shopUrl"].URL,
+            let color = json["color"].string,
+            let available = json["available"].bool,
+            let season = json["season"].string,
+            let seasonYear = json["seasonYear"].string,
+            let brand = Brand(json: json["brand"]),
+            let media = Media(json: json["media"])
             else { return nil }
 
         self.id = id
@@ -115,10 +115,11 @@ extension DemoArticle {
 extension DemoArticle.Brand {
 
     init?(json: JSON) {
-        guard let
-        key = json["key"].string,
-            name = json["name"].string,
-            shopURL = json["shopUrl"].URL else { return nil }
+        guard let key = json["key"].string,
+            let name = json["name"].string,
+            let shopURL = json["shopUrl"].URL
+            else { return nil }
+
         self.key = key
         self.name = name
         self.shopURL = shopURL
@@ -141,13 +142,13 @@ extension DemoArticle.Attribute {
 extension DemoArticle.Unit {
 
     init?(json: JSON) {
-        guard let
-        id = json["id"].string,
-            size = json["size"].string,
-            price = DemoArticle.Price(json: json["price"]),
-            originalPrice = DemoArticle.Price(json: json["originalPrice"]),
-            available = json["available"].bool,
-            stock = json["stock"].int else { return nil }
+        guard let id = json["id"].string,
+            let size = json["size"].string,
+            let price = DemoArticle.Price(json: json["price"]),
+            let originalPrice = DemoArticle.Price(json: json["originalPrice"]),
+            let available = json["available"].bool,
+            let stock = json["stock"].int
+            else { return nil }
 
         self.id = id
         self.size = size
@@ -166,10 +167,9 @@ extension DemoArticle.Unit {
 extension DemoArticle.Price {
 
     init?(json: JSON) {
-        guard let
-        currency = json["currency"].string,
-            value = json["value"].float,
-            formatted = json["formatted"].string else { return nil }
+        guard let currency = json["currency"].string,
+            let value = json["value"].float,
+            let formatted = json["formatted"].string else { return nil }
         self.currency = currency
         self.valueInCents = Int(value * 100)
         self.value = value
@@ -189,16 +189,17 @@ extension DemoArticle.Media {
 extension DemoArticle.Image {
 
     init?(json: JSON) {
-        guard let
-        orderNumber = json["orderNumber"].int,
-            type = json["type"].string,
-            thumbnailHDURL = json["thumbnailHdUrl"].URL,
-            smallURL = json["smallUrl"].URL,
-            smallHDURL = json["smallHdUrl"].URL,
-            mediumURL = json["mediumUrl"].URL,
-            mediumHDURL = json["mediumHdUrl"].URL,
-            largeURL = json["largeUrl"].URL,
-            largeHDURL = json["largeHdUrl"].URL else { return nil }
+        guard let orderNumber = json["orderNumber"].int,
+            let type = json["type"].string,
+            let thumbnailHDURL = json["thumbnailHdUrl"].URL,
+            let smallURL = json["smallUrl"].URL,
+            let smallHDURL = json["smallHdUrl"].URL,
+            let mediumURL = json["mediumUrl"].URL,
+            let mediumHDURL = json["mediumHdUrl"].URL,
+            let largeURL = json["largeUrl"].URL,
+            let largeHDURL = json["largeHdUrl"].URL
+            else { return nil }
+
         self.orderNumber = orderNumber
         self.type = type
         self.thumbnailHDURL = thumbnailHDURL
@@ -220,7 +221,7 @@ public func == (lhs: DemoArticle.Image, rhs: DemoArticle.Image) -> Bool {
 
 extension DemoArticle {
 
-    var imageURLs: [NSURL] {
+    var imageURLs: [URL] {
         return media.images
             .filter { $0.orderNumber >= 1 && $0.orderNumber <= 10 }
             .flatMap { $0.largeURL }

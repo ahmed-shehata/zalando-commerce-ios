@@ -5,59 +5,61 @@
 import Foundation
 
 enum FormValidator {
-    case Required
-    case MinLength(minLength: Int)
-    case MaxLength(maxLength: Int)
-    case ExactLength(length: Int)
-    case Pattern(pattern: String, errorMessage: String)
-    case NumbersOnly
+    case required
+    case minLength(minLength: Int)
+    case maxLength(maxLength: Int)
+    case exactLength(length: Int)
+    case pattern(pattern: String, errorMessage: String)
+    case numbersOnly
 
-    func errorMessage(text: String?) -> String? {
+    func rejectionReason(for text: String?) -> String? {
         guard !isValid(text) else { return nil }
 
         switch self {
-        case .Required: return Localizer.string("formValidation.required")
-        case .MinLength(let minLength): return Localizer.string("formValidation.minLength", "\(minLength)")
-        case .MaxLength(let maxLength): return Localizer.string("formValidation.maxLength", "\(maxLength)")
-        case .ExactLength(let length): return Localizer.string("formValidation.exactLength", "\(length)")
-        case .Pattern(_, let errorMessage): return Localizer.string(errorMessage)
-        case .NumbersOnly: return Localizer.string("formValidation.numbersOnly")
+        case .required: return Localizer.format(string: "formValidation.required")
+        case .minLength(let minLength): return Localizer.format(string: "formValidation.minLength", "\(minLength)")
+        case .maxLength(let maxLength): return Localizer.format(string: "formValidation.maxLength", "\(maxLength)")
+        case .exactLength(let length): return Localizer.format(string: "formValidation.exactLength", "\(length)")
+        case .pattern(_, let errorMessage): return Localizer.format(string: errorMessage)
+        case .numbersOnly: return Localizer.format(string: "formValidation.numbersOnly")
         }
     }
 
-    private static let anyCharacterPattern = "a-zA-ZàÀâÂäÄáÁåÅéÉèÈêÊëËìÌîÎïÏòÒôÔöÖøØùÙûÛüÜçÇñœŒæÆíóúÍÓÚĄąĆćĘęŁłŃńŚśŻżŹź"
+    fileprivate static let anyCharacterPattern = "a-zA-ZàÀâÂäÄáÁåÅéÉèÈêÊëËìÌîÎïÏòÒôÔöÖøØùÙûÛüÜçÇñœŒæÆíóúÍÓÚĄąĆćĘęŁłŃńŚśŻżŹź"
     static let namePattern = "^[" + anyCharacterPattern + "]'?[- " + anyCharacterPattern + "ß]+$"
     static let cityPattern = "^[" + anyCharacterPattern + "]'?[-,;()' 0-9" + anyCharacterPattern + "ß]+$"
     static let streetPattern = "^(?=.*[a-zA-Z])(?=.*[0-9]).*$"
 
-    private func isValid(text: String?) -> Bool {
+    private func isValid(_ text: String?) -> Bool {
         switch self {
-        case .Required: return text?.trimmedLength > 0
-        case .MinLength(let minLength): return text?.trimmedLength >= minLength
-        case .MaxLength(let maxLength): return text?.trimmedLength <= maxLength
-        case .ExactLength(let length): return text?.trimmedLength == length
-        case .Pattern(let pattern, _): return isPatternValid(pattern, text: text)
-        case .NumbersOnly: return isPatternValid("^[0-9]+$", text: text)
+        case .required: return trimmedLength(text) > 0
+        case .minLength(let minLength): return trimmedLength(text) >= minLength
+        case .maxLength(let maxLength): return trimmedLength(text) <= maxLength
+        case .exactLength(let length): return text?.trimmed().length == length
+        case .pattern(let pattern, _): return isValid(pattern: pattern, text: text)
+        case .numbersOnly: return isValid(pattern: "^[0-9]+$", text: text)
         }
     }
 
-    private func isPatternValid(pattern: String, text: String?) -> Bool {
-        guard let trimmedText = text?.trimmed where !trimmedText.isEmpty else { return true }
+    private func trimmedLength(_ text: String?) -> Int {
+        return text?.trimmed().length ?? 0
+    }
 
-        let regex = try? NSRegularExpression(pattern: pattern, options: .CaseInsensitive)
-        return regex?.firstMatchInString(trimmedText, options: [], range: NSRange(location: 0, length: trimmedText.length)) != nil
+    private func isValid(pattern: String, text: String?) -> Bool {
+        guard let trimmedText = text?.trimmed(), !trimmedText.isEmpty else { return true }
+        return trimmedText.matches(pattern: pattern)
     }
 
 }
 
 func == (lhs: FormValidator, rhs: FormValidator) -> Bool {
     switch (lhs, rhs) {
-    case (.Required, .Required): return true
-    case (.MinLength(let lhsMinLength), .MinLength(let rhsMinLength)): return lhsMinLength == rhsMinLength
-    case (.MaxLength(let lhsMaxLength), .MaxLength(let rhsMaxLength)): return lhsMaxLength == rhsMaxLength
-    case (.ExactLength(let lhsLength), .ExactLength(let rhsLength)): return lhsLength == rhsLength
-    case (.Pattern(let lhsPattern), .Pattern(let rhsPattern)): return lhsPattern == rhsPattern
-    case (.NumbersOnly, .NumbersOnly): return true
+    case (.required, .required): return true
+    case (.minLength(let lhsMinLength), .minLength(let rhsMinLength)): return lhsMinLength == rhsMinLength
+    case (.maxLength(let lhsMaxLength), .maxLength(let rhsMaxLength)): return lhsMaxLength == rhsMaxLength
+    case (.exactLength(let lhsLength), .exactLength(let rhsLength)): return lhsLength == rhsLength
+    case (.pattern(let lhsPattern), .pattern(let rhsPattern)): return lhsPattern == rhsPattern
+    case (.numbersOnly, .numbersOnly): return true
     default: return false
     }
 }

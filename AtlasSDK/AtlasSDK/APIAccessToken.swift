@@ -6,10 +6,10 @@ import Foundation
 
 struct APIAccessToken {
 
-    private static let keychainKey = "APIAccessToken"
+    fileprivate static let keychainKey = "APIAccessToken"
 
-    static func store(newToken: String?) {
-        Keychain.write(newToken, forKey: keychainKey)
+    static func store(token: String?) {
+        Keychain.write(value: token, forKey: keychainKey)
     }
 
     static func retrieve() -> String? {
@@ -20,6 +20,6 @@ struct APIAccessToken {
         Keychain.delete(key: keychainKey)
     }
 
-    private init() { }
+    fileprivate init() { }
 
 }

@@ -3,6 +3,7 @@
 //
 
 import AtlasSDK
+import SwiftyJSON
 
 public struct DemoCatalog {
 

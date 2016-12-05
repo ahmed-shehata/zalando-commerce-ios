@@ -8,62 +8,62 @@ class CheckoutSummaryPriceStackView: UIStackView {
 
     let shippingStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.axis = .Horizontal
-        stackView.distribution = .FillEqually
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
         return stackView
     }()
 
     let shippingTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFontOfSize(14, weight: UIFontWeightLight)
+        label.font = .systemFont(ofSize: 14, weight: UIFontWeightLight)
         label.textColor = UIColor(hex: 0x7F7F7F)
-        label.textAlignment = .Left
+        label.textAlignment = .left
         return label
     }()
 
     let shippingValueLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFontOfSize(14, weight: UIFontWeightLight)
+        label.font = .systemFont(ofSize: 14, weight: UIFontWeightLight)
         label.textColor = UIColor(hex: 0x7F7F7F)
-        label.textAlignment = .Right
+        label.textAlignment = .right
         return label
     }()
 
-    private let dummySeparatorLabel: UILabel = {
+    fileprivate let dummySeparatorLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFontOfSize(4)
+        label.font = .systemFont(ofSize: 4)
         label.text = " "
         return label
     }()
 
     let totalStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.axis = .Horizontal
-        stackView.distribution = .FillEqually
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
         return stackView
     }()
 
     let totalTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFontOfSize(16)
-        label.textColor = .blackColor()
-        label.textAlignment = .Left
+        label.font = .systemFont(ofSize: 16)
+        label.textColor = .black
+        label.textAlignment = .left
         return label
     }()
 
     let totalValueLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFontOfSize(16)
-        label.textColor = .blackColor()
-        label.textAlignment = .Right
+        label.font = .systemFont(ofSize: 16)
+        label.textColor = .black
+        label.textAlignment = .right
         return label
     }()
 
     let vatTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFontOfSize(10, weight: UIFontWeightLight)
+        label.font = .systemFont(ofSize: 10, weight: UIFontWeightLight)
         label.textColor = UIColor(hex: 0x7F7F7F)
-        label.textAlignment = .Right
+        label.textAlignment = .right
         return label
     }()
 
@@ -90,12 +90,12 @@ extension CheckoutSummaryPriceStackView: UIDataBuilder {
 
     typealias T = CheckoutSummaryDataModel
 
-    func configureData(viewModel: T) {
-        shippingTitleLabel.text = Localizer.string("summaryView.label.price.shipping")
-        shippingValueLabel.text = Localizer.price(viewModel.shippingPrice ?? 0)
-        totalTitleLabel.text = Localizer.string("summaryView.label.price.total")
-        totalValueLabel.text = Localizer.price(viewModel.totalPrice ?? 0)
-        vatTitleLabel.text = Localizer.string("summaryView.label.price.vat")
+    func configure(viewModel: T) {
+        shippingTitleLabel.text = Localizer.format(string: "summaryView.label.price.shipping")
+        shippingValueLabel.text = Localizer.format(price: viewModel.shippingPrice)
+        totalTitleLabel.text = Localizer.format(string: "summaryView.label.price.total")
+        totalValueLabel.text = Localizer.format(price: viewModel.totalPrice)
+        vatTitleLabel.text = Localizer.format(string: "summaryView.label.price.vat")
     }
 
 }

@@ -8,10 +8,10 @@ class CheckoutSummaryMainStackView: UIStackView {
 
     let productStackView: CheckoutSummaryProductStackView = {
         let stackView = CheckoutSummaryProductStackView()
-        stackView.axis = .Horizontal
+        stackView.axis = .horizontal
         stackView.spacing = 15
         stackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
-        stackView.layoutMarginsRelativeArrangement = true
+        stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
 
@@ -24,12 +24,12 @@ class CheckoutSummaryMainStackView: UIStackView {
 
     let shippingAddressStackView: CheckoutSummaryAddressStackView = {
         let stackView = CheckoutSummaryAddressStackView()
-        stackView.axis = .Horizontal
+        stackView.axis = .horizontal
         stackView.spacing = 5
         stackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
-        stackView.layoutMarginsRelativeArrangement = true
+        stackView.isLayoutMarginsRelativeArrangement = true
         stackView.accessibilityIdentifier = "shipping-stack-view"
-        stackView.setTitle("summaryView.label.address.shipping")
+        stackView.setTitle(fromLocalizedKey: "summaryView.label.address.shipping")
         return stackView
     }()
 
@@ -43,12 +43,12 @@ class CheckoutSummaryMainStackView: UIStackView {
 
     let billingAddressStackView: CheckoutSummaryAddressStackView = {
         let stackView = CheckoutSummaryAddressStackView()
-        stackView.axis = .Horizontal
+        stackView.axis = .horizontal
         stackView.spacing = 5
         stackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
-        stackView.layoutMarginsRelativeArrangement = true
+        stackView.isLayoutMarginsRelativeArrangement = true
         stackView.accessibilityIdentifier = "billing-stack-view"
-        stackView.setTitle("summaryView.label.address.billing")
+        stackView.setTitle(fromLocalizedKey: "summaryView.label.address.billing")
         return stackView
     }()
 
@@ -62,11 +62,11 @@ class CheckoutSummaryMainStackView: UIStackView {
 
     let paymentStackView: CheckoutSummaryPaymentStackView = {
         let stackView = CheckoutSummaryPaymentStackView()
-        stackView.axis = .Horizontal
+        stackView.axis = .horizontal
         stackView.spacing = 5
         stackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
-        stackView.layoutMarginsRelativeArrangement = true
-        stackView.setTitle("summaryView.label.payment")
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.setTitle(fromLocalizedKey: "summaryView.label.payment")
         return stackView
     }()
 
@@ -79,18 +79,18 @@ class CheckoutSummaryMainStackView: UIStackView {
 
     let priceStackView: CheckoutSummaryPriceStackView = {
         let stackView = CheckoutSummaryPriceStackView()
-        stackView.axis = .Vertical
+        stackView.axis = .vertical
         stackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
-        stackView.layoutMarginsRelativeArrangement = true
+        stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
 
     let deliveryStackView: CheckoutSummaryDeliveryStackView = {
         let stackView = CheckoutSummaryDeliveryStackView()
-        stackView.axis = .Horizontal
+        stackView.axis = .horizontal
         stackView.spacing = 5
         stackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
-        stackView.layoutMarginsRelativeArrangement = true
+        stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
 
@@ -116,7 +116,7 @@ extension CheckoutSummaryMainStackView: UIBuilder {
     }
 
     func configureConstraints() {
-        fillInSuperView()
+        fillInSuperview()
         setWidth(equalToView: superview)
 
         paymentStackView.setHeight(equalToView: billingAddressStackView)
@@ -134,22 +134,22 @@ extension CheckoutSummaryMainStackView: UIDataBuilder {
 
     typealias T = CheckoutSummaryViewModel
 
-    func configureData(viewModel: T) {
-        productStackView.configureData(viewModel.dataModel.selectedArticleUnit)
-        priceStackView.configureData(viewModel.dataModel)
-        deliveryStackView.configureData(viewModel.dataModel)
+    func configure(viewModel: T) {
+        productStackView.configure(viewModel: viewModel.dataModel.selectedArticleUnit)
+        priceStackView.configure(viewModel: viewModel.dataModel)
+        deliveryStackView.configure(viewModel: viewModel.dataModel)
 
-        shippingAddressStackView.configureData(CheckoutSummaryAddressViewModel(
+        shippingAddressStackView.configure(viewModel: CheckoutSummaryAddressViewModel(
             addressLines: viewModel.dataModel.formattedShippingAddress,
             showArrow: viewModel.layout.showDetailArrow)
         )
 
-        billingAddressStackView.configureData(CheckoutSummaryAddressViewModel(
+        billingAddressStackView.configure(viewModel: CheckoutSummaryAddressViewModel(
             addressLines: viewModel.dataModel.formattedBillingAddress,
             showArrow: viewModel.layout.showDetailArrow)
         )
 
-        paymentStackView.configureData(CheckoutSummaryPaymentViewModel(
+        paymentStackView.configure(viewModel: CheckoutSummaryPaymentViewModel(
             value: viewModel.dataModel.paymentMethod ?? "",
             showArrow: viewModel.layout.showDetailArrow)
         )

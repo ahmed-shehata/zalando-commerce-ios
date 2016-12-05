@@ -11,22 +11,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         BuddyBuildSDK.setup()
 
         return true
     }
 
-    func applicationDidBecomeActive(application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
         if !AppSetup.isConfigured {
             AppSetup.configure { configured in
                 guard configured else {
                     print("App Configuration failed")
                     return
                 }
-                CatalogViewController.instance?.loadHomepageArticles()
+                CatalogViewController.shared?.loadHomepageArticles()
             }
-        } else if let catalogViewController = CatalogViewController.instance where catalogViewController.articles.isEmpty {
+        } else if let catalogViewController = CatalogViewController.shared, catalogViewController.articles.isEmpty {
             catalogViewController.loadHomepageArticles()
         }
     }

@@ -5,12 +5,12 @@
 import Foundation
 import AtlasSDK
 
-public enum AtlasLoginError: AtlasErrorType {
+public enum AtlasLoginError: AtlasError {
 
     case missingURL
     case accessDenied
     case missingViewControllerToShowLoginForm
 
-    case requestFailed(error: NSError?)
+    case requestFailed(error: Error?)
 
 }

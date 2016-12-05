@@ -15,16 +15,16 @@ public struct CheckAddressResponse {
 
 extension CheckAddressResponse: JSONInitializable {
 
-    private struct Keys {
+    fileprivate struct Keys {
         static let status = "status"
         static let normalizedAddress = "normalized_address"
     }
 
     init?(json: JSON) {
-        guard let
-            statusRaw = json[Keys.status].string,
-            status = CheckAddressStatus(rawValue: statusRaw),
-            normalizedAddress = CheckAddress(json: json[Keys.normalizedAddress]) else { return nil }
+        guard let statusRaw = json[Keys.status].string,
+            let status = CheckAddressStatus(rawValue: statusRaw),
+            let normalizedAddress = CheckAddress(json: json[Keys.normalizedAddress])
+            else { return nil }
 
         self.init(status: status,
                   normalizedAddress: normalizedAddress)

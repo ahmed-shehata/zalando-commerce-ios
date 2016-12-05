@@ -9,16 +9,16 @@ class AddressListTableDelegate: NSObject {
 
     var addresses: [EquatableAddress] {
         didSet {
-            if let selectedAddress = selectedAddress where !addresses.contains({ $0 == selectedAddress }) {
+            if let selectedAddress = selectedAddress, !addresses.contains(where: { $0 == selectedAddress }) {
                 self.selectedAddress = nil
             }
             tableView.reloadData()
         }
     }
 
-    private let tableView: UITableView
-    private var selectedAddress: EquatableAddress?
-    private weak var viewController: AddressListViewController?
+    fileprivate let tableView: UITableView
+    fileprivate var selectedAddress: EquatableAddress?
+    fileprivate weak var viewController: AddressListViewController?
 
     init(tableView: UITableView,
          addresses: [EquatableAddress],
@@ -37,26 +37,26 @@ class AddressListTableDelegate: NSObject {
 
 extension AddressListTableDelegate: UITableViewDataSource {
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return addresses.count + 1
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard indexPath.row < addresses.count else {
-            return tableView.dequeueReusableCell(AddAddressTableViewCell.self, forIndexPath: indexPath) { cell in
+            return tableView.dequeueReusableCell(of: AddAddressTableViewCell.self, at: indexPath) { cell in
                 cell.accessibilityIdentifier = "addresses-table-create-address-cell"
                 return cell
             }
         }
 
-        return tableView.dequeueReusableCell(AddressRowViewCell.self, forIndexPath: indexPath) { cell in
+        return tableView.dequeueReusableCell(of: AddressRowViewCell.self, at: indexPath) { cell in
             let address = self.addresses[indexPath.item]
-            cell.configureData(address)
+            cell.configure(viewModel: address)
 
-            if let selectedAddress = self.selectedAddress where selectedAddress == address {
-                cell.accessoryType = .Checkmark
+            if let selectedAddress = self.selectedAddress, selectedAddress == address {
+                cell.accessoryType = .checkmark
             } else {
-                cell.accessoryType = .None
+                cell.accessoryType = .none
             }
             cell.accessibilityIdentifier = "address-selection-row-\(indexPath.row)"
 
@@ -68,30 +68,30 @@ extension AddressListTableDelegate: UITableViewDataSource {
 
 extension AddressListTableDelegate: UITableViewDelegate {
 
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return indexPath.row < addresses.count
     }
 
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle,
-        forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle,
+        forRowAt indexPath: IndexPath) {
 
-        guard editingStyle == .Delete else { return }
+        guard editingStyle == .delete else { return }
         let address = addresses[indexPath.item]
-        viewController?.actionHandler?.deleteAddress(address)
+        viewController?.actionHandler?.delete(address: address)
     }
 
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         guard indexPath.row < addresses.count else {
             viewController?.actionHandler?.createAddress()
             return
         }
 
         let address = addresses[indexPath.item]
-        if tableView.editing {
-            viewController?.actionHandler?.updateAddress(address)
+        if tableView.isEditing {
+            viewController?.actionHandler?.update(address: address)
         } else {
-            addressSelected(address)
+            selected(address: address)
         }
     }
 
@@ -99,27 +99,27 @@ extension AddressListTableDelegate: UITableViewDelegate {
 
 extension AddressListTableDelegate: AddressListActionHandlerDelegate {
 
-    func addressCreated(address: EquatableAddress) {
+    func created(address: EquatableAddress) {
         addresses.append(address)
-        addressSelected(address)
+        selected(address: address)
     }
 
-    func addressUpdated(address: EquatableAddress) {
-        guard let addressIdx = addresses.indexOf({ $0 == address }) else { return }
+    func updated(address: EquatableAddress) {
+        guard let addressIdx = addresses.index(where: { $0 == address }) else { return }
         addresses[addressIdx] = address
-        viewController?.addressUpdatedHandler?(address: address)
+        viewController?.addressUpdatedHandler?(address)
     }
 
-    func addressDeleted(address: EquatableAddress) {
-        guard let addressIdx = addresses.indexOf({ $0 == address }) else { return }
-        addresses.removeAtIndex(addressIdx)
+    func deleted(address: EquatableAddress) {
+        guard let addressIdx = addresses.index(where: { $0 == address }) else { return }
+        addresses.remove(at: addressIdx)
         viewController?.configureEditButton()
-        viewController?.addressDeletedHandler?(address: address)
+        viewController?.addressDeletedHandler?(address)
     }
 
-    private func addressSelected(address: EquatableAddress) {
-        viewController?.addressSelectedHandler?(address: address)
-        viewController?.navigationController?.popViewControllerAnimated(true)
+    fileprivate func selected(address: EquatableAddress) {
+        viewController?.addressSelectedHandler?(address)
+        let _ = viewController?.navigationController?.popViewController(animated: true)
     }
 
 }

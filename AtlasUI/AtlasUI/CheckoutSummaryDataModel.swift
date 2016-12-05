@@ -37,11 +37,11 @@ struct CheckoutSummaryDataModel {
 extension CheckoutSummaryDataModel {
 
     var formattedShippingAddress: [String] {
-        return shippingAddress?.splittedFormattedPostalAddress ?? [Localizer.string("summaryView.label.emptyAddress.shipping")]
+        return shippingAddress?.splittedFormattedPostalAddress ?? [Localizer.format(string: "summaryView.label.emptyAddress.shipping")]
     }
 
     var formattedBillingAddress: [String] {
-        return billingAddress?.splittedFormattedPostalAddress ?? [Localizer.string("summaryView.label.emptyAddress.billing")]
+        return billingAddress?.splittedFormattedPostalAddress ?? [Localizer.format(string: "summaryView.label.emptyAddress.billing")]
     }
 
     var isPaymentSelected: Bool {
@@ -49,11 +49,11 @@ extension CheckoutSummaryDataModel {
     }
 
     var isPayPal: Bool {
-        return paymentMethod?.caseInsensitiveCompare("paypal") == .OrderedSame
+        return paymentMethod?.caseInsensitiveCompare("paypal") == .orderedSame
     }
 
-    var termsAndConditionsURL: NSURL? {
-        return AtlasAPIClient.instance?.config.salesChannel.termsAndConditionsURL
+    var termsAndConditionsURL: URL? {
+        return AtlasAPIClient.shared?.config.salesChannel.termsAndConditionsURL
     }
 
 }

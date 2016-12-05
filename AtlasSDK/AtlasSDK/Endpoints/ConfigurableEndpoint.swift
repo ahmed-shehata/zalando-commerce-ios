@@ -6,17 +6,17 @@ import Foundation
 
 protocol ConfigurableEndpoint: Endpoint {
 
-    var serviceURL: NSURL { get }
+    var serviceURL: URL { get }
     var path: String { get }
 
 }
 
 extension ConfigurableEndpoint {
 
-    var URL: NSURL {
-        let urlComponents = NSURLComponents(validURL: serviceURL)
+    var url: URL {
+        var urlComponents = URLComponents(validURL: serviceURL)
         urlComponents.queryItems = self.queryItems
-        return urlComponents.validURL.URLByAppending(pathComponent: path)
+        return urlComponents.validURL.appendingPathComponent(path)
     }
 
 }

@@ -31,7 +31,7 @@ class AddressFormViewControllerTests: XCTestCase {
         let viewModel = AddressFormViewModel(dataModel: dataModel, layout: CreateAddressFormLayout(), type: .standardAddress)
         let addressFormViewController = AddressFormViewController(viewModel: viewModel, actionHandler: actionHandler, completion: nil)
         actionHandler.delegate = addressFormViewController
-        addressFormViewController.displayView()
+        addressFormViewController.present()
         expect(addressFormViewController.navigationItem.rightBarButtonItem).toNotEventually(beNil())
         guard let barButtonItem = addressFormViewController.navigationItem.rightBarButtonItem else { return fail() }
 
@@ -47,7 +47,7 @@ class AddressFormViewControllerTests: XCTestCase {
                 expect(address.city).to(equal("Berlin"))
                 done()
             }
-            UIApplication.sharedApplication().sendAction(barButtonItem.action, to: barButtonItem.target, from: nil, forEvent: nil)
+            let _ = UIApplication.shared.sendAction(barButtonItem.action!, to: barButtonItem.target, from: nil, for: nil)
         }
     }
 
@@ -59,7 +59,7 @@ class AddressFormViewControllerTests: XCTestCase {
         let viewModel = AddressFormViewModel(dataModel: dataModel, layout: UpdateAddressFormLayout(), type: .standardAddress)
         let addressFormViewController = AddressFormViewController(viewModel: viewModel, actionHandler: actionHandler, completion: nil)
         actionHandler.delegate = addressFormViewController
-        addressFormViewController.displayView()
+        addressFormViewController.present()
         expect(addressFormViewController.navigationItem.rightBarButtonItem).toNotEventually(beNil())
         guard let saveButton = addressFormViewController.navigationItem.rightBarButtonItem else { return fail() }
 
@@ -75,7 +75,7 @@ class AddressFormViewControllerTests: XCTestCase {
                 expect(address.city).to(equal("Berlin"))
                 done()
             }
-            UIApplication.sharedApplication().sendAction(saveButton.action, to: saveButton.target, from: nil, forEvent: nil)
+            let _ = UIApplication.shared.sendAction(saveButton.action!, to: saveButton.target, from: nil, for: nil)
         }
     }
 
@@ -83,27 +83,22 @@ class AddressFormViewControllerTests: XCTestCase {
 
 extension AddressFormViewControllerTests {
 
-    private func registerAtlasUIViewController() -> AtlasUIViewController? {
+    fileprivate func registerAtlasUIViewController() -> AtlasUIViewController? {
         var atlasUIViewController: AtlasUIViewController?
         waitUntil(timeout: 10) { done in
-            let options = Options(clientId: "CLIENT_ID",
-                                  salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
-                                  interfaceLanguage: "en",
-                                  configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
-
-            AtlasUI.configure(options) { _ in
-                atlasUIViewController = AtlasUIViewController(forProductSKU: "AD541L009-G11")
+            AtlasUI.configure(options: Options.forTests()) { _ in
+                atlasUIViewController = AtlasUIViewController(forSKU: "AD541L009-G11")
                 guard let viewController = atlasUIViewController else { return fail() }
                 self.window.rootViewController = viewController
                 self.window.makeKeyAndVisible()
-                AtlasUI.register { viewController }
+                try! AtlasUI.shared().register { viewController }
                 done()
             }
         }
         return atlasUIViewController
     }
 
-    private func createAddressFormDataModel() -> AddressFormDataModel {
+    fileprivate func createAddressFormDataModel() -> AddressFormDataModel {
         let dataModel = AddressFormDataModel(countryCode: "DE")
         dataModel.addressId = "6616154"
         dataModel.gender = .male
