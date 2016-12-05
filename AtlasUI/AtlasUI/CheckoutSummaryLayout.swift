@@ -1,4 +1,3 @@
-// swiftlint:disable line_length
 //
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
@@ -13,9 +12,9 @@ protocol CheckoutSummaryLayout {
     var showDetailArrow: Bool { get }
     var showGuestStackView: Bool { get }
 
-    func submitButtonBackgroundColor(readyToCheckout readyToCheckout: Bool) -> UIColor
-    func submitButtonTitle(isPaypal isPaypal: Bool) -> String
-    func hideBackButton(hasSingleUnit hasSingleUnit: Bool) -> Bool
+    func submitButtonBackgroundColor(readyToCheckout: Bool) -> UIColor
+    func submitButtonTitle(isPaypal: Bool) -> String
+    func hideBackButton(hasSingleUnit: Bool) -> Bool
 
 }
 
@@ -27,9 +26,9 @@ struct NotLoggedInLayout: CheckoutSummaryLayout {
     let showDetailArrow: Bool = true
     let showGuestStackView: Bool = false
 
-    func submitButtonBackgroundColor(readyToCheckout readyToCheckout: Bool) -> UIColor { return .orangeColor() }
-    func submitButtonTitle(isPaypal isPaypal: Bool) -> String { return "summaryView.submitButton.checkoutWithZalando" }
-    func hideBackButton(hasSingleUnit hasSingleUnit: Bool) -> Bool { return hasSingleUnit }
+    func submitButtonBackgroundColor(readyToCheckout: Bool) -> UIColor { return .orange }
+    func submitButtonTitle(isPaypal: Bool) -> String { return "summaryView.submitButton.checkoutWithZalando" }
+    func hideBackButton(hasSingleUnit: Bool) -> Bool { return hasSingleUnit }
 
 }
 
@@ -55,9 +54,11 @@ struct LoggedInLayout: CheckoutSummaryLayout {
     let showDetailArrow: Bool = true
     let showGuestStackView: Bool = false
 
-    func submitButtonBackgroundColor(readyToCheckout readyToCheckout: Bool) -> UIColor { return readyToCheckout ? .orangeColor() : .grayColor() }
-    func submitButtonTitle(isPaypal isPaypal: Bool) -> String { return isPaypal ? "summaryView.submitButton.payWithPapPal" : "summaryView.submitButton.placeOrder" }
-    func hideBackButton(hasSingleUnit hasSingleUnit: Bool) -> Bool { return hasSingleUnit }
+    func submitButtonBackgroundColor(readyToCheckout: Bool) -> UIColor { return readyToCheckout ? .orange : .gray }
+    func submitButtonTitle(isPaypal: Bool) -> String {
+        return isPaypal ? "summaryView.submitButton.payWithPapPal" : "summaryView.submitButton.placeOrder"
+    }
+    func hideBackButton(hasSingleUnit: Bool) -> Bool { return hasSingleUnit }
 
 }
 

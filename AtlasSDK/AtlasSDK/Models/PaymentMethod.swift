@@ -7,12 +7,13 @@ import Foundation
 public struct PaymentMethod {
 
     public let method: String?
-    public let metadata: [String: AnyObject]?
+    public let metadata: [String: Any]?
+
 }
 
 extension PaymentMethod: JSONInitializable {
 
-    private struct Keys {
+    fileprivate struct Keys {
         static let method = "method"
         static let metadata = "metadata"
     }

@@ -8,11 +8,11 @@ import ContactsUI
 extension CNPostalAddress {
 
     var streetLine1: String? {
-        return street.componentsSeparatedByString("\n").first
+        return street.components(separatedBy: "\n").first
     }
 
     var streetLine2: String? {
-        let streetComponents = street.componentsSeparatedByString("\n")
+        let streetComponents = street.components(separatedBy: "\n")
         return streetComponents.count > 1 && !streetComponents[1].isEmpty ? streetComponents[1] : nil
     }
 

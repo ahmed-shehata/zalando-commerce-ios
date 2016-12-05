@@ -13,9 +13,9 @@ protocol CheckoutSummaryActionHandlerDataSource: NSObjectProtocol {
 
 protocol CheckoutSummaryActionHandlerDelegate: NSObjectProtocol {
 
-    func dataModelUpdated(dataModel: CheckoutSummaryDataModel)
-    func layoutUpdated(layout: CheckoutSummaryLayout)
-    func actionHandlerUpdated(actionHandler: CheckoutSummaryActionHandler)
+    func updated(dataModel: CheckoutSummaryDataModel)
+    func updated(layout: CheckoutSummaryLayout)
+    func updated(actionHandler: CheckoutSummaryActionHandler)
     func dismissView()
 
 }
@@ -25,10 +25,10 @@ protocol CheckoutSummaryActionHandler {
     weak var dataSource: CheckoutSummaryActionHandlerDataSource? { get set }
     weak var delegate: CheckoutSummaryActionHandlerDelegate? { get set }
 
-    func handleSubmitButton()
-    func showPaymentSelectionScreen()
-    func showShippingAddressSelectionScreen()
-    func showBillingAddressSelectionScreen()
+    func handleSubmit()
+    func handlePaymentSelection()
+    func handleShippingAddressSelection()
+    func handleBillingAddressSelection()
 
 }
 

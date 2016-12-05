@@ -7,27 +7,26 @@ import AtlasSDK
 
 public class AtlasUIViewController: UIViewController {
 
-    let mainNavigationController: UINavigationController
-    private let atlasReachability = AtlasReachability()
-
-    static var instance: AtlasUIViewController? {
-        return try? AtlasUI.provide()
+    static var shared: AtlasUIViewController? {
+        return try? AtlasUI.shared().provide()
     }
 
-    private let loaderView: LoaderView = {
+    let mainNavigationController: UINavigationController
+    fileprivate let atlasReachability = AtlasReachability()
+
+    fileprivate let loaderView: LoaderView = {
         let view = LoaderView()
-        view.hidden = true
         return view
     }()
 
-    init(forProductSKU sku: String) {
+    init(forSKU sku: String) {
         let sizeSelectionViewController = SizeListSelectionViewController(sku: sku)
         mainNavigationController = UINavigationController(rootViewController: sizeSelectionViewController)
 
         super.init(nibName: nil, bundle: nil)
     }
 
-    required public  init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -35,11 +34,11 @@ public class AtlasUIViewController: UIViewController {
         loadErrorView()
         addChildViewController(mainNavigationController)
         view.addSubview(mainNavigationController.view)
-        mainNavigationController.view.fillInSuperView()
+        mainNavigationController.view.fillInSuperview()
         atlasReachability.setupReachability()
     }
 
-    private func loadErrorView() {
+    fileprivate func loadErrorView() {
         UserMessage.displayError(AtlasCheckoutError.unclassified)
         UserMessage.hideError()
     }
@@ -51,7 +50,7 @@ extension AtlasUIViewController {
     func showLoader() {
         loaderView.removeFromSuperview()
         UIApplication.topViewController()?.view.addSubview(loaderView)
-        loaderView.fillInSuperView()
+        loaderView.fillInSuperview()
         loaderView.buildView()
         loaderView.show()
     }

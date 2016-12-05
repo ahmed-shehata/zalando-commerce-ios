@@ -6,7 +6,7 @@ import Foundation
 
 struct GetConfigEndpoint: Endpoint {
 
-    let URL: NSURL
+    let url: URL
     let requiresAuthorization = false
 
 }

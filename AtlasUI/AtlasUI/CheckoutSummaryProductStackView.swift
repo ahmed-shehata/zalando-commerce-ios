@@ -9,43 +9,43 @@ class CheckoutSummaryProductStackView: UIStackView {
 
     let articleImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .ScaleAspectFit
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 
     let detailsStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.axis = .Vertical
+        stackView.axis = .vertical
         stackView.spacing = 2
-        stackView.distribution = .FillProportionally
+        stackView.distribution = .fillProportionally
         return stackView
     }()
 
     let brandNameLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFontOfSize(16, weight: UIFontWeightBold)
-        label.textColor = .blackColor()
+        label.font = .systemFont(ofSize: 16, weight: UIFontWeightBold)
+        label.textColor = .black
         return label
     }()
 
     let articleNameLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFontOfSize(14, weight: UIFontWeightLight)
-        label.textColor = .blackColor()
+        label.font = .systemFont(ofSize: 14, weight: UIFontWeightLight)
+        label.textColor = .black
         return label
     }()
 
     let unitSizeLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFontOfSize(14, weight: UIFontWeightLight)
-        label.textColor = .lightGrayColor()
+        label.font = .systemFont(ofSize: 14, weight: UIFontWeightLight)
+        label.textColor = .lightGray
         return label
     }()
 
     let unitColorLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFontOfSize(14, weight: UIFontWeightLight)
-        label.textColor = .lightGrayColor()
+        label.font = .systemFont(ofSize: 14, weight: UIFontWeightLight)
+        label.textColor = .lightGray
         return label
     }()
 
@@ -74,11 +74,11 @@ extension CheckoutSummaryProductStackView: UIDataBuilder {
 
     typealias T = SelectedArticleUnit
 
-    func configureData(viewModel: T) {
-        articleImageView.setImage(fromUrl: viewModel.article.thumbnailURL)
+    func configure(viewModel: T) {
+        articleImageView.setImage(from: viewModel.article.thumbnailURL)
         brandNameLabel.text = viewModel.article.brand.name
         articleNameLabel.text = viewModel.article.name
-        unitSizeLabel.text = Localizer.string("summaryView.label.unitSize", viewModel.unit.size)
+        unitSizeLabel.text = Localizer.format(string: "summaryView.label.unitSize", viewModel.unit.size)
         unitColorLabel.text = viewModel.article.color
     }
 

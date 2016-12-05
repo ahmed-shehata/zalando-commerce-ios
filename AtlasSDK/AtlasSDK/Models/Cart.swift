@@ -25,7 +25,7 @@ public func == (lhs: Cart, rhs: Cart) -> Bool {
 
 extension Cart: JSONInitializable {
 
-    private struct Keys {
+    fileprivate struct Keys {
         static let id = "id"
         static let items = "items"
         static let itemsOutOfStock = "items_out_of_stock"
@@ -35,11 +35,11 @@ extension Cart: JSONInitializable {
     }
 
     init?(json: JSON) {
-        guard let
-        id = json[Keys.id].string,
-            delivery = Delivery(json: json[Keys.delivery]),
-            grossTotal = Money(json: json[Keys.grossTotal]),
-            taxTotal = Money(json: json[Keys.taxTotal]) else { return nil }
+        guard let id = json[Keys.id].string,
+            let delivery = Delivery(json: json[Keys.delivery]),
+            let grossTotal = Money(json: json[Keys.grossTotal]),
+            let taxTotal = Money(json: json[Keys.taxTotal])
+            else { return nil }
         self.init(id: id,
             items: json[Keys.items].arrayValue.flatMap { CartItem(json: $0) },
             itemsOutOfStock: json[Keys.itemsOutOfStock].arrayValue.flatMap { $0.string },

@@ -13,10 +13,10 @@ class APIGuestOrderTests: AtlasAPIClientBaseTests {
     func testCreateGuestOrder() {
         waitUntilAtlasAPIClientIsConfigured { done, client in
             let request = GuestOrderRequest(customer: self.customerRequest, shippingAddress: self.addressRequest, billingAddress: self.addressRequest, cart: self.cartRequest, payment: self.paymentRequest)
-            client.createGuestOrder(request) { result in
+            client.createGuestOrder(request: request) { result in
                 switch result {
                 case .failure(let error):
-                    fail(String(error))
+                    fail(String(describing: error))
                 case .success(let order):
                     expect(order.orderNumber).to(equal("10105083300694"))
                     expect(order.billingAddress.gender).to(equal(Gender.male))
@@ -46,10 +46,10 @@ class APIGuestOrderTests: AtlasAPIClientBaseTests {
     func testGuestChecoutPaymentSelectionURL() {
         waitUntilAtlasAPIClientIsConfigured { done, client in
             let request = GuestPaymentSelectionRequest(customer: self.customerRequest, shippingAddress: self.addressRequest, billingAddress: self.addressRequest, cart: self.cartRequest)
-            client.guestChecoutPaymentSelectionURL(request) { result in
+            client.guestChecoutPaymentSelectionURL(request: request) { result in
                 switch result {
                 case .failure(let error):
-                    fail(String(error))
+                    fail(String(describing: error))
                 case .success(let url):
                     expect(url.absoluteString).to(equal("https://payment-gateway.kohle-integration.zalan.do/payment-method-selection-session/TOKEN/selection"))
                 }
@@ -62,11 +62,11 @@ class APIGuestOrderTests: AtlasAPIClientBaseTests {
 
 extension APIGuestOrderTests {
 
-    private var customerRequest: GuestCustomerRequest {
+    fileprivate var customerRequest: GuestCustomerRequest {
         return GuestCustomerRequest(email: "john.doe@zalando.de", subscribeNewsletter: false)
     }
 
-    private var addressRequest: GuestAddressRequest {
+    fileprivate var addressRequest: GuestAddressRequest {
         let address = OrderAddress(gender: .male,
                                    firstName: "John",
                                    lastName: "Doe",
@@ -79,12 +79,12 @@ extension APIGuestOrderTests {
         return GuestAddressRequest(address: address)
     }
 
-    private var cartRequest: GuestCartRequest {
+    fileprivate var cartRequest: GuestCartRequest {
         let cartItemRequest = CartItemRequest(sku: "AD541L009-G11", quantity: 1)
         return GuestCartRequest(items: [cartItemRequest])
     }
 
-    private var paymentRequest: GuestPaymentRequest {
+    fileprivate var paymentRequest: GuestPaymentRequest {
         return GuestPaymentRequest(method: "PREPAYMENT", metadata: nil)
     }
 

@@ -7,7 +7,7 @@ import AtlasSDK
 public enum ProcessedAtlasResult<T> {
 
     case success(T)
-    case error(error: ErrorType, title: String, message: String)
+    case error(error: Error, title: String, message: String)
 
 }
 
@@ -18,7 +18,7 @@ extension AtlasResult {
         case .success(let data):
             return .success(data)
         case .failure(let error):
-            let userPresentable = error as? UserPresentable ?? AtlasCheckoutError.unclassified
+            let userPresentable = error as? UserPresentableError ?? AtlasCheckoutError.unclassified
             return .error(error: error, title: userPresentable.displayedTitle, message: userPresentable.displayedMessage)
         }
     }

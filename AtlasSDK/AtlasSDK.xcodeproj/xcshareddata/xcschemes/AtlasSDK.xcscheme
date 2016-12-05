@@ -62,16 +62,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4C40501591B44F17B94996E914C5F583"
-            BuildableName = "AtlasSDKTestsHostApp.app"
-            BlueprintName = "AtlasSDKTestsHostApp"
-            ReferencedContainer = "container:AtlasSDK.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

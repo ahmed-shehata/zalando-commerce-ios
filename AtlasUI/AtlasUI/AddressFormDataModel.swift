@@ -66,11 +66,14 @@ class AddressFormDataModel {
 
     let titles: [String] = ["", Gender.male.title, Gender.female.title]
 
-    func updateTitle(localizedGenderText: String?) {
-        switch localizedGenderText {
-        case Gender.male.title?: gender = .male
-        case Gender.female.title?: gender = .female
-        default: gender = nil
+    func updateTitle(fromLocalizedGenderText text: String?) {
+        switch text {
+        case Gender.male.title?:
+            gender = .male
+        case Gender.female.title?:
+            gender = .female
+        default:
+            gender = nil
         }
     }
 
@@ -83,9 +86,9 @@ class AddressFormDataModel {
 extension PickupPoint {
 
     init?(dataModel: AddressFormDataModel) {
-        guard let
-            pickupPointId = dataModel.pickupPointId,
-            pickupPointMemberId = dataModel.pickupPointMemberId else { return nil }
+        guard let pickupPointId = dataModel.pickupPointId,
+            let pickupPointMemberId = dataModel.pickupPointMemberId
+            else { return nil }
 
         self.id = pickupPointId
         self.name = "PACKSTATION"
@@ -96,8 +99,8 @@ extension PickupPoint {
 
 extension Gender {
 
-    private var title: String {
-        return Localizer.string("addressFormView.gender.\(rawValue.lowercaseString)")
+    fileprivate var title: String {
+        return Localizer.format(string: "addressFormView.gender.\(rawValue.lowercased())")
     }
 
 }
@@ -116,10 +119,10 @@ extension CheckAddressRequest {
 extension CheckAddress {
 
     init?(dataModel: AddressFormDataModel) {
-        guard let
-            zip = dataModel.zip,
-            city = dataModel.city,
-            countryCode = dataModel.countryCode else { return nil }
+        guard let zip = dataModel.zip,
+            let city = dataModel.city,
+            let countryCode = dataModel.countryCode
+            else { return nil }
 
         self.street = dataModel.street
         self.additional = dataModel.additional

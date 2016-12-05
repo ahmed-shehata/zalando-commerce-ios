@@ -5,6 +5,6 @@
 public enum AtlasResult<T> {
 
     case success(T)
-    case failure(ErrorType)
+    case failure(Error)
 
 }

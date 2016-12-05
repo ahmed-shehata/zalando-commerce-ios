@@ -42,8 +42,8 @@ extension GuestAddressRequest: JSONRepresentable {
         static let pickupPoint = "pickup_point"
     }
 
-    public func toJSON() -> [String: AnyObject] {
-        var json: [String: AnyObject] = [
+    public func toJSON() -> [String: Any] {
+        var json: [String: Any] = [
             Keys.gender: gender.rawValue,
             Keys.firstName: firstName,
             Keys.lastName: lastName,

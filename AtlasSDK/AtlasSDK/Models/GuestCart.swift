@@ -21,12 +21,12 @@ extension GuestCart: JSONInitializable {
     }
 
     init?(json: JSON) {
-        guard let
-            grossTotal = Money(json: json[Keys.grossTotal]),
-            taxTotal = Money(json: json[Keys.taxTotal]) else { return nil }
+        guard let grossTotal = Money(json: json[Keys.grossTotal]),
+            let taxTotal = Money(json: json[Keys.taxTotal])
+            else { return nil }
         self.init(items: json[Keys.items].arrayValue.flatMap { CartItem(json: $0) },
                   itemsOutOfStock: json[Keys.itemsOutOfStock].arrayValue.flatMap { $0.string },
                   grossTotal: grossTotal,
-                  taxTotal:  taxTotal)
+                  taxTotal: taxTotal)
     }
 }

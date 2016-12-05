@@ -8,11 +8,11 @@ import Nimble
 
 @testable import AtlasUI
 
-private protocol NumberType {
+private protocol Number {
     var value: Int { get }
 }
 
-private protocol Onable: NumberType {
+private protocol Onable: Number {
     var value: Int { get }
 }
 
@@ -20,11 +20,11 @@ private struct One: Onable {
     var value = 1
 }
 
-private struct Two: NumberType {
+private struct Two: Number {
     let value = 2
 }
 
-private class Three: NumberType {
+private class Three: Number {
     let value = 3
 }
 
@@ -46,10 +46,10 @@ class InjectorTests: XCTestCase {
     }
 
     func testRegisterTypeManyTimes() {
-        injector.register { One(value: 1) as NumberType }
-        injector.register { Two() as NumberType }
+        injector.register { One(value: 1) as Number }
+        injector.register { Two() as Number }
 
-        let number: NumberType? = try? injector.provide()
+        let number: Number? = try? injector.provide()
         expect(number?.value).to(equal(2))
     }
 
@@ -77,14 +77,14 @@ class InjectorTests: XCTestCase {
         let number: Three? = try? injector.provide()
         expect(number).toNot(beNil())
 
-        injector.deregister(three.dynamicType)
+        injector.deregister(type(of: three))
 
         let nilNumber: Three? = try? injector.provide()
         expect(nilNumber).to(beNil())
     }
 
     func testThrowErrorIfTypeNotFound() {
-        expect { try self.injector.provide() as NumberType }.to(throwError())
+        expect { try self.injector.provide() as Number }.to(throwError())
     }
 
 }

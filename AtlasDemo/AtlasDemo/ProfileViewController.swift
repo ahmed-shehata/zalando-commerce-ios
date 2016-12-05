@@ -23,19 +23,19 @@ class ProfileViewController: UIViewController {
         self.email.text = ""
         self.customerNumer.text = ""
         self.gender.text = ""
-        self.email.textColor = UIColor.grayColor()
+        self.email.textColor = .gray
 
         updateLanguageSelectedIndex()
         updateEnvironmentSelectedIndex()
         loadCustomerData()
     }
 
-    @IBAction func serverSwitched(sender: UISegmentedControl) {
+    @IBAction func serverSwitched(_ sender: UISegmentedControl) {
         let useSandbox = sender.selectedSegmentIndex == 1
         AppSetup.change(environmentToSandbox: useSandbox)
     }
 
-    @IBAction func languageSwitched(sender: UISegmentedControl) {
+    @IBAction func languageSwitched(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 1:
             AppSetup.change(interfaceLanguage: .Deutsch)
@@ -46,23 +46,23 @@ class ProfileViewController: UIViewController {
         }
     }
 
-    @IBAction func logoutButtonTapped(sender: AnyObject) {
-        Atlas.deauthorizeToken()
-        self.navigationController?.popViewControllerAnimated(true)
+    @IBAction func logoutButtonTapped(_ sender: AnyObject) {
+        Atlas.deauthorize()
+        let _ = self.navigationController?.popViewController(animated: true)
     }
 
-    private func updateLanguageSelectedIndex() {
+    fileprivate func updateLanguageSelectedIndex() {
         let availableLanguages: [String?] = [AppSetup.InterfaceLanguage.English.rawValue, AppSetup.InterfaceLanguage.Deutsch.rawValue]
-        self.languageSwitcher.selectedSegmentIndex = availableLanguages.indexOf { $0 == AppSetup.options?.interfaceLanguage } ?? 0
+        self.languageSwitcher.selectedSegmentIndex = availableLanguages.index { $0 == AppSetup.options?.interfaceLanguage } ?? 0
     }
 
-    private func updateEnvironmentSelectedIndex() {
+    fileprivate func updateEnvironmentSelectedIndex() {
         let selectedSegment = AppSetup.options?.useSandboxEnvironment == true ? 1 : 0
         environmentSegmentedControl.selectedSegmentIndex = selectedSegment
     }
 
-    private func loadCustomerData() {
-        AppSetup.atlasClient?.customer { result in
+    fileprivate func loadCustomerData() {
+        AppSetup.atlas?.client.customer { result in
             let processedResult = result.processedResult()
             switch processedResult {
             case .success(let customer):

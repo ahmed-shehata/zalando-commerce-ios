@@ -6,27 +6,27 @@ import AtlasSDK
 import AtlasMockAPI
 import SwiftHTTP
 
-typealias ArticlesCompletion = AtlasResult<[DemoArticle]> -> Void
+typealias ArticlesCompletion = (AtlasResult<[DemoArticle]>) -> Void
 
-enum ArticlesError: ErrorType {
-    case NoData
-    case Error(ErrorType)
+enum ArticlesError: Error {
+    case noData
+    case error(Error)
 }
 
 // swiftlint:disable force_unwrapping
 
 class ArticlesClient {
 
-    var dataTask: NSURLSessionDataTask?
+    var dataTask: URLSessionDataTask?
 
-    func fetch(articlesForSKUs skus: [String], completion: ArticlesCompletion) {
+    func fetch(articlesForSKUs skus: [String], completion: @escaping ArticlesCompletion) {
         if let operation = try? HTTP.GET(endpointURL(forSKUs: skus)) {
             operation.start { response in
                 if let error = response.error {
-                    return completion(.failure(ArticlesError.Error(error)))
+                    return completion(.failure(ArticlesError.error(error)))
                 }
                 guard let responseString = response.text else {
-                    return completion(.failure(ArticlesError.NoData))
+                    return completion(.failure(ArticlesError.noData))
                 }
                 let articles = DemoCatalog(jsonString: responseString).articles
                 completion(.success(articles))
@@ -34,17 +34,17 @@ class ArticlesClient {
         }
     }
 
-    private func endpointURL(forSKUs skus: [String]) -> String {
+    fileprivate func endpointURL(forSKUs skus: [String]) -> String {
         if AtlasMockAPI.hasMockedAPIStarted {
-            return AtlasMockAPI.endpointURL(forPath: "/articles").absoluteString!
+            return AtlasMockAPI.endpointURL(forPath: "/articles").absoluteString
         }
 
-        let urlComponents = NSURLComponents(string: "https://api.zalando.com/articles")!
+        var urlComponents = URLComponents(string: "https://api.zalando.com/articles")!
         urlComponents.queryItems = skus.map {
-            NSURLQueryItem(name: "articleId", value: $0)
+            URLQueryItem(name: "articleId", value: $0)
         }
 
-        return urlComponents.URL!.absoluteString!
+        return urlComponents.url!.absoluteString
     }
 
 }

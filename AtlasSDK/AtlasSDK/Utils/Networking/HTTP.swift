@@ -4,7 +4,7 @@
 
 import Foundation
 
-public enum HTTPMethod: String {
+enum HTTPMethod: String {
 
     case GET, POST, PUT, DELETE, PATCH
 
@@ -12,59 +12,59 @@ public enum HTTPMethod: String {
 
 public enum HTTPStatus: Int {
 
-    case Unknown = -1
-    case Continue = 100
-    case SwitchingProtocols = 101
-    case OK = 200
-    case Created = 201
-    case Accepted = 202
-    case NonAuthoritativeInformation = 203
-    case NoContent = 204
-    case ResetContent = 205
-    case PartialContent = 206
-    case MultipleChoices = 300
-    case MovedPermanently = 301
-    case Found = 302
-    case SeeOther = 303
-    case NotModified = 304
-    case UseProxy = 305
-    case TemporaryRedirect = 307
-    case BadRequest = 400
-    case Unauthorized = 401
-    case PaymentRequired = 402
-    case Forbidden = 403
-    case NotFound = 404
-    case MethodNotAllowed = 405
-    case NotAcceptable = 406
-    case ProxyAuthenticationRequired = 407
-    case RequestTimeout = 408
-    case Conflict = 409
-    case Gone = 410
-    case LengthRequired = 411
-    case PreconditionFailed = 412
-    case RequestEntityTooLarge = 413
-    case RequestURITooLong = 414
-    case UnsupportedMediaType = 415
-    case RequestedRangeNotSatisfiable = 416
-    case ExpectationFailed = 417
-    case UnavailableForLegalReasons = 451
-    case InternalServerError = 500
-    case NotImplemented = 501
-    case BadGateway = 502
-    case ServiceUnavailable = 503
-    case GatewayTimeout = 504
-    case HTTPVersionNotSupported = 505
+    case unknown = -1
+    case `continue` = 100
+    case switchingProtocols = 101
+    case ok = 200
+    case created = 201
+    case accepted = 202
+    case nonAuthoritativeInformation = 203
+    case noContent = 204
+    case resetContent = 205
+    case partialContent = 206
+    case multipleChoices = 300
+    case movedPermanently = 301
+    case found = 302
+    case seeOther = 303
+    case notModified = 304
+    case useProxy = 305
+    case temporaryRedirect = 307
+    case badRequest = 400
+    case unauthorized = 401
+    case paymentRequired = 402
+    case forbidden = 403
+    case notFound = 404
+    case methodNotAllowed = 405
+    case notAcceptable = 406
+    case proxyAuthenticationRequired = 407
+    case requestTimeout = 408
+    case conflict = 409
+    case gone = 410
+    case lengthRequired = 411
+    case preconditionFailed = 412
+    case requestEntityTooLarge = 413
+    case requestURITooLong = 414
+    case unsupportedMediaType = 415
+    case requestedRangeNotSatisfiable = 416
+    case expectationFailed = 417
+    case unavailableForLegalReasons = 451
+    case internalServerError = 500
+    case notImplemented = 501
+    case badGateway = 502
+    case serviceUnavailable = 503
+    case gatewayTimeout = 504
+    case httpVersionNotSupported = 505
 
     public init(statusCode: Int) {
-        self = HTTPStatus(rawValue: statusCode) ?? .Unknown
+        self = HTTPStatus(rawValue: statusCode) ?? .unknown
     }
 
-    public init(response: NSHTTPURLResponse) {
+    public init(response: HTTPURLResponse) {
         self.init(statusCode: response.statusCode)
     }
 
     public var isSuccessful: Bool {
-        return (OK.rawValue..<BadRequest.rawValue).contains(rawValue)
+        return (HTTPStatus.ok.rawValue..<HTTPStatus.badRequest.rawValue).contains(rawValue)
     }
 }
 

@@ -7,23 +7,23 @@ import AtlasSDK
 
 class CheckoutSummaryFooterStackView: UIStackView {
 
-    private var legalController: LegalController?
+    fileprivate var legalController: LegalController?
 
     let footerButton: UIButton = {
-        let button = UIButton(type: .System)
-        button.titleLabel?.font = .systemFontOfSize(12, weight: UIFontWeightLight)
+        let button = UIButton(type: .system)
+        button.titleLabel?.font = .systemFont(ofSize: 12, weight: UIFontWeightLight)
         button.titleLabel?.adjustsFontSizeToFitWidth = true
-        button.titleLabel?.textAlignment = .Center
+        button.titleLabel?.textAlignment = .center
         button.titleLabel?.textColor = UIColor(hex: 0x7F7F7F)
         button.accessibilityIdentifier = "checkout-summary-toc-button"
         return button
     }()
 
     let submitButton: RoundedButton = {
-        let button = RoundedButton(type: .Custom)
+        let button = RoundedButton(type: .custom)
         button.cornerRadius = 5
-        button.titleLabel?.font = .systemFontOfSize(15)
-        button.setTitleColor(.whiteColor(), forState: .Normal)
+        button.titleLabel?.font = .systemFont(ofSize: 15)
+        button.setTitleColor(.white, for: .normal)
         button.backgroundColor = UIColor(hex: 0x519415)
         return button
     }()
@@ -33,12 +33,12 @@ class CheckoutSummaryFooterStackView: UIStackView {
 extension CheckoutSummaryFooterStackView: UIBuilder {
 
     func configureView() {
-        footerButton.addTarget(self, action: #selector(CheckoutSummaryFooterStackView.tocPressed(_:)), forControlEvents: .TouchUpInside)
+        footerButton.addTarget(self, action: #selector(CheckoutSummaryFooterStackView.tocPressed), for: .touchUpInside)
         addArrangedSubview(footerButton)
         addArrangedSubview(submitButton)
     }
 
-    @objc func tocPressed(sender: UIButton!) {
+    @objc func tocPressed() {
         legalController?.push()
     }
 
@@ -48,27 +48,32 @@ extension CheckoutSummaryFooterStackView: UIDataBuilder {
 
     typealias T = CheckoutSummaryViewModel
 
-    func configureData(viewModel: T) {
+    func configure(viewModel: T) {
         if let termsAndConditionsURL = viewModel.dataModel.termsAndConditionsURL {
             legalController = LegalController(tocURL: termsAndConditionsURL)
         }
 
-        footerButton.setAttributedTitle(tocAttributedTitle(), forState: .Normal)
-        footerButton.hidden = !viewModel.layout.showFooterLabel
+        setupFooterButton(viewModel: viewModel)
+        setupSubmitButton(viewModel: viewModel)
+    }
 
+    private func setupFooterButton(viewModel: T) {
+        footerButton.setAttributedTitle(tocAttributedTitle(), for: .normal)
+        footerButton.isHidden = !viewModel.layout.showFooterLabel
+    }
+
+    private func setupSubmitButton(viewModel: T) {
         let isPaypal = viewModel.dataModel.isPayPal
         let readyToCheckout = viewModel.dataModel.isPaymentSelected
 
-        submitButton.setTitle(Localizer.string(viewModel.layout.submitButtonTitle(isPaypal: isPaypal)), forState: .Normal)
+        submitButton.setTitle(Localizer.format(string: viewModel.layout.submitButtonTitle(isPaypal: isPaypal)), for: .normal)
         submitButton.backgroundColor = viewModel.layout.submitButtonBackgroundColor(readyToCheckout: readyToCheckout)
         submitButton.accessibilityIdentifier = "checkout-footer-button"
     }
 
     private func tocAttributedTitle() -> NSAttributedString {
-        let attributedString = NSMutableAttributedString(string: Localizer.string("summaryView.link.termsAndConditions"))
-        let range = NSRange(location: 0, length: attributedString.length)
-        attributedString.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.StyleSingle.rawValue, range: range)
-        return attributedString
+        let underline = [NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue]
+        return NSAttributedString(string: Localizer.format(string: "summaryView.link.termsAndConditions"), attributes: underline)
     }
 
 }

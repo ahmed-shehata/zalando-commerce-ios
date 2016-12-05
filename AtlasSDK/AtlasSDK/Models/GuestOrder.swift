@@ -11,8 +11,8 @@ public struct GuestOrder {
     public let shippingAddress: OrderAddress
     public let grossTotal: Price
     public let taxTotal: Price
-    public let created: NSDate?
-    public let externalPaymentURL: NSURL?
+    public let created: Date?
+    public let externalPaymentURL: URL?
 
 }
 
@@ -29,19 +29,19 @@ extension GuestOrder: JSONInitializable {
     }
 
     init?(json: JSON) {
-        guard let
-            orderNumber = json[Keys.orderNumber].string,
-            billingAddress = OrderAddress(json: json[Keys.billingAddress]),
-            shippingAddress = OrderAddress(json: json[Keys.shippingAddress]),
-            grossTotal = Price(json: json[Keys.grossTotal]),
-            taxTotal = Price(json: json[Keys.taxTotal]) else { return nil }
+        guard let orderNumber = json[Keys.orderNumber].string,
+            let billingAddress = OrderAddress(json: json[Keys.billingAddress]),
+            let shippingAddress = OrderAddress(json: json[Keys.shippingAddress]),
+            let grossTotal = Price(json: json[Keys.grossTotal]),
+            let taxTotal = Price(json: json[Keys.taxTotal])
+            else { return nil }
 
         self.init(orderNumber: orderNumber,
                   billingAddress: billingAddress,
                   shippingAddress: shippingAddress,
                   grossTotal: grossTotal,
                   taxTotal: taxTotal,
-                  created: RFC3339DateFormatter().dateFromString(json[Keys.created].string),
+                  created: RFC3339DateFormatter().date(from: json[Keys.created].string),
                   externalPaymentURL: json[Keys.externalPaymentUrl].URL)
     }
 

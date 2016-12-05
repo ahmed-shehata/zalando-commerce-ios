@@ -4,7 +4,7 @@
 
 import Foundation
 
-extension NSHTTPURLResponse {
+extension HTTPURLResponse {
 
     var isSuccessful: Bool {
         return status.isSuccessful
@@ -14,8 +14,8 @@ extension NSHTTPURLResponse {
         return HTTPStatus(statusCode: self.statusCode)
     }
 
-    convenience init?(URL: NSURL, statusCode: Int) {
-        self.init(URL: URL, statusCode: statusCode, HTTPVersion: "1.1", headerFields: nil)
+    convenience init?(url: URL, statusCode: Int) {
+        self.init(url: url, statusCode: statusCode, httpVersion: "1.1", headerFields: nil)
     }
 
 }

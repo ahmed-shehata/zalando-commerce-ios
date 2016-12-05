@@ -9,26 +9,26 @@ class UnitSizeTableViewCell: UITableViewCell {
 
     let stackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.axis = .Horizontal
+        stackView.axis = .horizontal
         stackView.spacing = 2
         stackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
-        stackView.layoutMarginsRelativeArrangement = true
+        stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
 
     let sizeLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = .systemFontOfSize(14, weight: UIFontWeightLight)
-        label.textColor = .blackColor()
+        label.font = .systemFont(ofSize: 14, weight: UIFontWeightLight)
+        label.textColor = .black
         return label
     }()
 
     let priceLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.textAlignment = .Right
-        label.font = .systemFontOfSize(14, weight: UIFontWeightLight)
+        label.textAlignment = .right
+        label.font = .systemFont(ofSize: 14, weight: UIFontWeightLight)
         label.textColor = UIColor(hex: 0x7F7F7F)
         return label
     }()
@@ -47,15 +47,15 @@ class UnitSizeTableViewCell: UITableViewCell {
 extension UnitSizeTableViewCell: UIBuilder {
 
     func configureView() {
-        backgroundColor = .clearColor()
-        opaque = false
+        backgroundColor = .clear
+        isOpaque = false
         contentView.addSubview(stackView)
         stackView.addArrangedSubview(sizeLabel)
         stackView.addArrangedSubview(priceLabel)
     }
 
     func configureConstraints() {
-        stackView.fillInSuperView()
+        stackView.fillInSuperview()
     }
 
 }
@@ -64,9 +64,9 @@ extension UnitSizeTableViewCell: UIDataBuilder {
 
     typealias T = Article.Unit
 
-    func configureData(viewModel: T) {
+    func configure(viewModel: T) {
         sizeLabel.text = viewModel.size
-        priceLabel.text = Localizer.price(viewModel.price.amount)
+        priceLabel.text = Localizer.format(price: viewModel.price.amount)
         accessibilityLabel = "size-cell-\(viewModel.size)"
     }
 

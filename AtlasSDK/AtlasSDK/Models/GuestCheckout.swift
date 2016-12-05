@@ -25,12 +25,11 @@ extension GuestCheckout: JSONInitializable {
     }
 
     init?(json: JSON) {
-        guard let
-            shippingAddress = OrderAddress(json: json[Keys.shippingAddress]),
-            billingAddress = OrderAddress(json: json[Keys.billingAddress]),
-            cart = GuestCart(json: json[Keys.cart]),
-            payment = GuestPaymentMethod(json: json[Keys.payment]),
-            delivery = Delivery(json: json[Keys.delivery])
+        guard let shippingAddress = OrderAddress(json: json[Keys.shippingAddress]),
+            let billingAddress = OrderAddress(json: json[Keys.billingAddress]),
+            let cart = GuestCart(json: json[Keys.cart]),
+            let payment = GuestPaymentMethod(json: json[Keys.payment]),
+            let delivery = Delivery(json: json[Keys.delivery])
             else { return nil }
 
         self.init(shippingAddress: shippingAddress,

@@ -4,22 +4,22 @@
 
 public struct Delivery {
 
-    public let earliest: NSDate?
-    public let latest: NSDate
+    public let earliest: Date?
+    public let latest: Date
 
 }
 
 extension Delivery: JSONInitializable {
 
-    private struct Keys {
+    fileprivate struct Keys {
         static let earliest = "earliest"
         static let latest = "latest"
     }
 
     init?(json: JSON) {
-        guard let latest = RFC3339DateFormatter().dateFromString(json[Keys.latest].string)
+        guard let latest = RFC3339DateFormatter().date(from: json[Keys.latest].string)
         else { return nil }
-        let earliest = RFC3339DateFormatter().dateFromString(json[Keys.earliest].string)
+        let earliest = RFC3339DateFormatter().date(from: json[Keys.earliest].string)
 
         self.init(earliest: earliest, latest: latest)
     }

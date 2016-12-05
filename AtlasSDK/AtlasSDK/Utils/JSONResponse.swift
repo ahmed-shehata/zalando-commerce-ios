@@ -16,7 +16,7 @@ class JSONResponse {
         self.body = body
     }
 
-    convenience init(response: NSHTTPURLResponse, body: JSON?) {
+    convenience init(response: HTTPURLResponse, body: JSON?) {
         let httpHeaders = response.allHeaderFields as? [String: String]
         self.init(statusCode: response.statusCode, httpHeaders: httpHeaders, body: body)
     }
