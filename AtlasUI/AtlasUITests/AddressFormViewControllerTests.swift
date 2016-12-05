@@ -47,7 +47,7 @@ class AddressFormViewControllerTests: XCTestCase {
                 expect(address.address.city).to(equal("Berlin"))
                 done()
             }
-            let _ = UIApplication.shared.sendAction(barButtonItem.action!, to: barButtonItem.target, from: nil, for: nil)
+            _ = UIApplication.shared.sendAction(barButtonItem.action!, to: barButtonItem.target, from: nil, for: nil)
         }
     }
 
@@ -75,7 +75,7 @@ class AddressFormViewControllerTests: XCTestCase {
                 expect(address.address.city).to(equal("Berlin"))
                 done()
             }
-            let _ = UIApplication.shared.sendAction(saveButton.action!, to: saveButton.target, from: nil, for: nil)
+            _ = UIApplication.shared.sendAction(saveButton.action!, to: saveButton.target, from: nil, for: nil)
         }
     }
 

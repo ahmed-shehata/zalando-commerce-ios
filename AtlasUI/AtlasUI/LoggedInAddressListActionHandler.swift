@@ -19,7 +19,7 @@ class LoggedInAddressListActionHandler: AddressListActionHandler {
         addressViewModelCreationStrategy?.strategyCompletion = { [weak self] viewModel in
             let actionHandler = LoggedInCreateAddressActionHandler()
             self?.presentAddressViewController(withViewModel: viewModel,
-                                            formActionHandler: actionHandler) { (address, _) in
+                                            formActionHandler: actionHandler) { address, email in
                 self?.delegate?.created(address: address)
             }
         }
@@ -32,13 +32,13 @@ class LoggedInAddressListActionHandler: AddressListActionHandler {
         let addressType: AddressFormType = address.pickupPoint == nil ? .standardAddress : .pickupPoint
         let viewModel = AddressFormViewModel(dataModel: dataModel, layout: formLayout, type: addressType)
         let actionHandler = LoggedInUpdateAddressActionHandler()
-        presentAddressViewController(withViewModel: viewModel, formActionHandler: actionHandler) { [weak self] (address, _) in
+        presentAddressViewController(withViewModel: viewModel, formActionHandler: actionHandler) { [weak self] address, email in
             self?.delegate?.updated(address: address)
         }
     }
 
     func delete(address: EquatableAddress) {
-        AtlasUIClient.deleteAddress(addressId: address.id) { [weak self] result in
+        AtlasUIClient.deleteAddress(withId: address.id) { [weak self] result in
             guard let _ = result.process() else { return }
             self?.delegate?.deleted(address: address)
         }

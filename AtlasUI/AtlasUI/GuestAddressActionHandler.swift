@@ -17,11 +17,11 @@ class GuestAddressActionHandler {
         addressCreationStrategy?.strategyCompletion = { viewModel in
             let guestViewModel = self.guestViewModel(fromViewModel: viewModel)
             let actionHandler = GuestCheckoutCreateAddressActionHandler()
-            let viewController = AddressFormViewController(viewModel: guestViewModel, actionHandler: actionHandler) { (address, email) in
+            let viewController = AddressFormViewController(viewModel: guestViewModel, actionHandler: actionHandler) { address, email in
                 self.emailAddress = email
-                completion(address: address)
+                completion(address)
             }
-            viewController.displayView()
+            viewController.present()
         }
         addressCreationStrategy?.execute()
     }
@@ -34,25 +34,25 @@ class GuestAddressActionHandler {
         let viewModel = AddressFormViewModel(dataModel: dataModel, layout: formLayout, type: addressType)
         let viewController = AddressFormViewController(viewModel: viewModel, actionHandler: actionHandler) { (address, email) in
             self.emailAddress = email
-            completion(address: address)
+            completion(address)
         }
-        viewController.displayView()
+        viewController.present()
     }
 
-    func handleAddressModification(address: EquatableAddress?, completion: GuestAddressActionHandlerCompletion) {
+    func handleAddressModification(address: EquatableAddress?, completion: @escaping GuestAddressActionHandlerCompletion) {
         guard let address = address else {
             createAddress(completion: completion)
             return
         }
 
-        let createAction = ButtonAction(text: Localizer.string("guestSummaryView.address.create")) { [weak self] _ in
-            self?.createAddress(completion)
+        let createAction = ButtonAction(text: Localizer.format(string: "guestSummaryView.address.create")) { [weak self] _ in
+            self?.createAddress(completion: completion)
         }
-        let updateAction = ButtonAction(text: Localizer.string("guestSummaryView.address.update")) { [weak self] _ in
-            self?.updateAddress(address, completion: completion)
+        let updateAction = ButtonAction(text: Localizer.format(string: "guestSummaryView.address.update")) { [weak self] _ in
+            self?.updateAddress(address: address, completion: completion)
         }
-        let cancelAction = ButtonAction(text: Localizer.string("button.general.cancel"), style: .Cancel, handler: nil)
-        UserMessage.showActionSheet(title: nil, actions: [createAction, updateAction, cancelAction])
+        let cancelAction = ButtonAction(text: Localizer.format(string: "button.general.cancel"), style: .cancel, handler: nil)
+        UserMessage.presentSelection(title: nil, actions: [createAction, updateAction, cancelAction])
     }
 
     func checkoutAddresses(shippingAddress: EquatableAddress?, billingAddress: EquatableAddress?) -> CheckoutAddresses {
@@ -65,7 +65,7 @@ class GuestAddressActionHandler {
 
 extension GuestAddressActionHandler {
 
-    private func guestViewModel(fromViewModel viewModel: AddressFormViewModel) -> AddressFormViewModel {
+    fileprivate func guestViewModel(fromViewModel viewModel: AddressFormViewModel) -> AddressFormViewModel {
         let type: AddressFormType
         switch viewModel.type {
         case .standardAddress: type = .guestStandardAddress

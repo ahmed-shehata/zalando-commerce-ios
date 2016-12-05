@@ -9,17 +9,15 @@ struct LoggedInUpdateAddressActionHandler: AddressFormActionHandler {
 
     weak var delegate: AddressFormActionHandlerDelegate?
 
-    func submitButtonPressed(dataModel: AddressFormDataModel) {
-        validateAddress(dataModel) { success in
-            guard
-                let addressId = dataModel.addressId,
-                let request = UpdateAddressRequest(dataModel: dataModel), success
-                else {
-                    self.delegate?.addressProcessingFinished()
-                    return
+    func submit(dataModel: AddressFormDataModel) {
+        validateAddress(dataModel: dataModel) { success in
+            guard let addressId = dataModel.addressId,
+                let request = UpdateAddressRequest(dataModel: dataModel), success else {
+                self.delegate?.addressProcessingFinished()
+                return
             }
 
-            AtlasUIClient.updateAddress(addressId, request: request) { result in
+            AtlasUIClient.updateAddress(addressId: addressId, request: request) { result in
                 guard let address = result.process() else {
                     self.delegate?.addressProcessingFinished()
                     return
@@ -35,13 +33,13 @@ struct LoggedInUpdateAddressActionHandler: AddressFormActionHandler {
 extension UpdateAddressRequest {
 
     init?(dataModel: AddressFormDataModel) {
-        guard
-            let gender = dataModel.gender,
+        guard let gender = dataModel.gender,
             let firstName = dataModel.firstName,
             let lastName = dataModel.lastName,
             let zip = dataModel.zip,
             let city = dataModel.city,
-            let countryCode = dataModel.countryCode else { return nil }
+            let countryCode = dataModel.countryCode
+            else { return nil }
 
         self.gender = gender
         self.firstName = firstName

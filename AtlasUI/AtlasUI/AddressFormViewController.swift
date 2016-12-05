@@ -114,7 +114,7 @@ extension AddressFormViewController {
         if viewModel.layout.displayViewModally {
             dismiss(animated: animated, completion: completion)
         } else {
-            let _ = navigationController?.popViewController(animated: animated)
+            _ = navigationController?.popViewController(animated: animated)
             completion?()
         }
     }

@@ -46,7 +46,7 @@ class APIGuestOrderTests: AtlasAPIClientBaseTests {
     func testGuestChecoutPaymentSelectionURL() {
         waitUntilAtlasAPIClientIsConfigured { done, client in
             let request = GuestPaymentSelectionRequest(customer: self.customerRequest, shippingAddress: self.addressRequest, billingAddress: self.addressRequest, cart: self.cartRequest)
-            client.guestChecoutPaymentSelectionURL(request: request) { result in
+            client.guestCheckoutPaymentSelectionURL(request: request) { result in
                 switch result {
                 case .failure(let error):
                     fail(String(describing: error))

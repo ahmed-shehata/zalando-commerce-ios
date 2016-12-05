@@ -9,9 +9,9 @@ class GuestCheckoutUpdateAddressActionHandler: AddressFormActionHandler {
 
     weak var delegate: AddressFormActionHandlerDelegate?
 
-    func submitButtonPressed(dataModel: AddressFormDataModel) {
+    func submit(dataModel: AddressFormDataModel) {
         guard let address = GuestCheckoutAddress(fromDataModelForUpdateAddress: dataModel) else {
-            UserMessage.displayError(AtlasCheckoutError.unclassified)
+            UserMessage.displayError(error: AtlasCheckoutError.unclassified)
             delegate?.addressProcessingFinished()
             return
         }
@@ -23,15 +23,15 @@ class GuestCheckoutUpdateAddressActionHandler: AddressFormActionHandler {
 
 extension GuestCheckoutAddress {
 
-    private init?(fromDataModelForUpdateAddress dataModel: AddressFormDataModel) {
-        guard
-            let id = dataModel.addressId,
+    fileprivate init?(fromDataModelForUpdateAddress dataModel: AddressFormDataModel) {
+        guard let id = dataModel.addressId,
             let gender = dataModel.gender,
             let firstName = dataModel.firstName,
             let lastName = dataModel.lastName,
             let zip = dataModel.zip,
             let city = dataModel.city,
-            let countryCode = dataModel.countryCode else { return nil }
+            let countryCode = dataModel.countryCode
+            else { return nil }
 
         self.id = id
         self.gender = gender

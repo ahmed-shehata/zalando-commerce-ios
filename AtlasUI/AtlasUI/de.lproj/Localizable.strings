@@ -26,7 +26,7 @@
 "summaryView.submitButton.checkoutWithZalando" = "Mit Zalando anmelden";
 "summaryView.submitButton.guestCheckout" = "ohne Registrierung";
 "summaryView.submitButton.placeOrder" = "Jetzt Kaufen";
-"summaryView.submitButton.payWithPapPal" = "Bestätigen und zahlen mit PayPal";
+"summaryView.submitButton.payWithPayPal" = "Bestätigen und zahlen mit PayPal";
 "summaryView.submitButton.backToShop" = "weiter shoppen";
 "summaryView.link.termsAndConditions" = "Für Deine Bestellung gelten die AGB und die Wiederrufsbelehrung von Zalando";
 

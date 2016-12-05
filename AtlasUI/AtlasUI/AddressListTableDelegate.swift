@@ -64,13 +64,13 @@ extension AddressListTableDelegate: UITableViewDataSource {
         }
     }
 
-}
-
-extension AddressListTableDelegate: UITableViewDelegate {
-
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return indexPath.row < addresses.count
     }
+
+}
+
+extension AddressListTableDelegate: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle,
         forRowAt indexPath: IndexPath) {
@@ -119,7 +119,7 @@ extension AddressListTableDelegate: AddressListActionHandlerDelegate {
 
     fileprivate func selected(address: EquatableAddress) {
         viewController?.addressSelectedHandler?(address)
-        let _ = viewController?.navigationController?.popViewController(animated: true)
+        _ = viewController?.navigationController?.popViewController(animated: true)
     }
 
 }

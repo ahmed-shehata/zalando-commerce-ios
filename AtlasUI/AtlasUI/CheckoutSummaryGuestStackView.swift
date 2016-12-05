@@ -8,18 +8,18 @@ class CheckoutSummaryGuestStackView: UIStackView {
 
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFontOfSize(10, weight: UIFontWeightLight)
-        label.text = Localizer.string("summaryView.label.guestCheckout")
-        label.textColor = .blackColor()
+        label.font = .systemFont(ofSize: 10, weight: UIFontWeightLight)
+        label.text = Localizer.format(string: "summaryView.label.guestCheckout")
+        label.textColor = .black
         return label
     }()
 
     let valueLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = .systemFontOfSize(10, weight: UIFontWeightLight)
+        label.font = .systemFont(ofSize: 10, weight: UIFontWeightLight)
         label.textColor = UIColor(hex: 0x7F7F7F)
-        label.textAlignment = .Right
+        label.textAlignment = .right
         return label
     }()
 
@@ -38,7 +38,7 @@ extension CheckoutSummaryGuestStackView: UIDataBuilder {
 
     typealias T = String?
 
-    func configureData(viewModel: T) {
+    func configure(viewModel: T) {
         valueLabel.text = viewModel
     }
 
