@@ -20,13 +20,8 @@ module Calypso
 
       new_version = ask_new_version(version)
 
-      update_plist(new_version, 'AtlasSDK/AtlasSDK/Info.plist')
-      update_plist(new_version, 'AtlasUI/AtlasUI/Info.plist')
-      update_version_file(new_version)
-      commit_version(new_version)
-
-      tag_new_version(options, new_version)
-      push_new_version(options)
+      update_versions(new_version)
+      git_new_version(new_version, options)
 
       new_version
     end
@@ -44,7 +39,7 @@ module Calypso
     end
 
     def current_branch
-      `git rev-parse --abbrev-ref HEAD`
+      `git rev-parse --abbrev-ref HEAD`.strip
     end
 
     def ask_new_version(version = nil)
@@ -54,6 +49,18 @@ module Calypso
       log_abort "No change in version (#{ATLAS_VERSION}), quitting" if new_version == ATLAS_VERSION
 
       new_version
+    end
+
+    def update_versions(new_version)
+      update_plist(new_version, 'AtlasSDK/AtlasSDK/Info.plist')
+      update_plist(new_version, 'AtlasUI/AtlasUI/Info.plist')
+      update_version_file(new_version)
+    end
+
+    def git_new_version(new_version, options)
+      commit_version(new_version)
+      tag_new_version(options, new_version)
+      push_new_version(options)
     end
 
     def tag_new_version(options, new_version)
