@@ -47,6 +47,10 @@
 		752AD4DC7CCCA0A5BE46A02D5AC5C848 /* customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE50F14CF22BB8970E3EA7156738A8D5 /* customer.swift */; };
 		79068FCC902009E12A3E43E7A2895902 /* !customer-auth.json in Resources */ = {isa = PBXBuildFile; fileRef = 190ADDFC8C36495A6C2B51B58DE206F4 /* !customer-auth.json */; };
 		79B050A23B1CDDF51B8B7B2AA5FAF073 /* static-jsons.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA560C48D8E31572681D63D800308B84 /* static-jsons.swift */; };
+		8195AA3D1DF579CE00D9AA7B /* guestOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8195AA3C1DF579CE00D9AA7B /* guestOrder.swift */; };
+		8195AA401DF57B8E00D9AA7B /* guestOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8195AA3C1DF579CE00D9AA7B /* guestOrder.swift */; };
+		8195AA431DF57BD600D9AA7B /* GET*|guest-checkout|api|checkouts|CHECKOUT_ID|TOKEN.json in Resources */ = {isa = PBXBuildFile; fileRef = 8195AA421DF57BD600D9AA7B /* GET*|guest-checkout|api|checkouts|CHECKOUT_ID|TOKEN.json */; };
+		8195AA441DF57BD600D9AA7B /* GET*|guest-checkout|api|checkouts|CHECKOUT_ID|TOKEN.json in Resources */ = {isa = PBXBuildFile; fileRef = 8195AA421DF57BD600D9AA7B /* GET*|guest-checkout|api|checkouts|CHECKOUT_ID|TOKEN.json */; };
 		8720D2B0604EE9F3D556997AABD433D1 /* PUT*|checkouts|CHECKOUT_ID.json in Resources */ = {isa = PBXBuildFile; fileRef = 36179885761B049B1F4CBF0168DCE1BC /* PUT*|checkouts|CHECKOUT_ID.json */; };
 		89D06E86E5BD432FBCB4F4A722DBF3EA /* PUT*|addresses|6616154.json in Resources */ = {isa = PBXBuildFile; fileRef = A18D1A78AC6C343752EAD271C4A781C7 /* PUT*|addresses|6616154.json */; };
 		89E334C4AD5ADBBA39AB8084DAF56777 /* POST*|checkouts.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A268438741376FB9F4283CC387897E0 /* POST*|checkouts.json */; };
@@ -184,6 +188,8 @@
 		72C51F2F8B90A76F70E31896FC0E81C5 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = ../Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		7B32EE0596F3E33D121673D07A89E425 /* Swifter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swifter.framework; path = ../Carthage/Build/iOS/Swifter.framework; sourceTree = "<group>"; };
 		7F71AA7830F715E66612EE4F3B5B0DE2 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = ../Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
+		8195AA3C1DF579CE00D9AA7B /* guestOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = guestOrder.swift; sourceTree = "<group>"; };
+		8195AA421DF57BD600D9AA7B /* GET*|guest-checkout|api|checkouts|CHECKOUT_ID|TOKEN.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|guest-checkout|api|checkouts|CHECKOUT_ID|TOKEN.json"; sourceTree = "<group>"; };
 		85BC90121A75EE5E58D7451EDFC484AB /* GET*|articles|EV451G023-Q11.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles|EV451G023-Q11.json"; sourceTree = "<group>"; };
 		8E3778589D321DAEEFC3A19E61372FA8 /* AtlasMockAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtlasMockAPI.h; sourceTree = "<group>"; };
 		916DA4EC8C6CDF184EA2662AFB5E1DD2 /* AtlasMockAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtlasMockAPITests.swift; sourceTree = "<group>"; };
@@ -337,6 +343,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8195AA411DF57BB800D9AA7B /* guest-checkout */ = {
+			isa = PBXGroup;
+			children = (
+				8195AA421DF57BD600D9AA7B /* GET*|guest-checkout|api|checkouts|CHECKOUT_ID|TOKEN.json */,
+			);
+			name = "guest-checkout";
+			sourceTree = "<group>";
+		};
 		9C08D20CC26D285554B00A206F697AE6 = {
 			isa = PBXGroup;
 			children = (
@@ -357,6 +371,7 @@
 				FE50F14CF22BB8970E3EA7156738A8D5 /* customer.swift */,
 				E6A12FDAD29AC96D6E81A64E6D2BDFB5 /* root.swift */,
 				CA560C48D8E31572681D63D800308B84 /* static-jsons.swift */,
+				8195AA3C1DF579CE00D9AA7B /* guestOrder.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -399,6 +414,7 @@
 				412391EBEC3B473DDB47B1B3C3AC4976 /* addresses */,
 				0A1CBE50F363F556537814A86627215A /* articles */,
 				292EF08474999FF81013D57FA1742381 /* checkouts */,
+				8195AA411DF57BB800D9AA7B /* guest-checkout */,
 				FAC7C79D277014FC00CD35427E010B0D /* GET*|config.json */,
 				2841CC657D79D120D56C0C0B83CC3B86 /* POST*|address-checks.json */,
 				426274DDC1245E783F3D2560060CB2EF /* POST*|carts.json */,
@@ -594,6 +610,7 @@
 				2EBF086F6D93D27F5EFB05CF8BBE843A /* POST*|carts.json in Resources */,
 				F8586B67C272BAB25648D8B37F2DF4ED /* POST*|checkouts.json in Resources */,
 				16B554226571FB6039BDF21AE78D157E /* POST*|orders.json in Resources */,
+				8195AA441DF57BD600D9AA7B /* GET*|guest-checkout|api|checkouts|CHECKOUT_ID|TOKEN.json in Resources */,
 				89D06E86E5BD432FBCB4F4A722DBF3EA /* PUT*|addresses|6616154.json in Resources */,
 				944AD23A63779DE8CFEFC4AB722450B0 /* PUT*|addresses|6702748.json in Resources */,
 				91A99DCEFA53765A6EEF392B70F4A6B6 /* PUT*|addresses|6702759.json in Resources */,
@@ -635,6 +652,7 @@
 				398F5BDE0F8504306DCD314FC9EE0E01 /* POST*|carts.json in Resources */,
 				89E334C4AD5ADBBA39AB8084DAF56777 /* POST*|checkouts.json in Resources */,
 				E0DE531EED316FE416C6599BF0527D4D /* POST*|orders.json in Resources */,
+				8195AA431DF57BD600D9AA7B /* GET*|guest-checkout|api|checkouts|CHECKOUT_ID|TOKEN.json in Resources */,
 				F567261BA44CE78FB4591C87F874918D /* PUT*|addresses|6616154.json in Resources */,
 				5FAEBA073DD6471F3C7E0A3F11DCD238 /* PUT*|addresses|6702748.json in Resources */,
 				954FFC519C9EBAA5D1CB75962B52B28C /* PUT*|addresses|6702759.json in Resources */,
@@ -667,6 +685,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8195AA401DF57B8E00D9AA7B /* guestOrder.swift in Sources */,
 				15ED1D40026A24C7177E2284DF12769A /* AtlasMockAPI.swift in Sources */,
 				3885B3BD7BEF34D3AC5430379339B952 /* HttpServer.swift in Sources */,
 				173CD5013AB058AF85E32D56E1C83CB1 /* Bundle.swift in Sources */,
@@ -682,6 +701,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8195AA3D1DF579CE00D9AA7B /* guestOrder.swift in Sources */,
 				133CA35176EC050787C42B168A2767CD /* AtlasMockAPI.swift in Sources */,
 				BD308837CE08A9B3B952473D0C55AB0F /* HttpServer.swift in Sources */,
 				B46F0A0A7FA69CFC819CA0BD0D0DA4DE /* Bundle.swift in Sources */,
