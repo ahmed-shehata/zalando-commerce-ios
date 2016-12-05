@@ -77,6 +77,8 @@
 		7D9992E58F4E287BC6EE7AD30338862F /* FormattableAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A2E3D95B370914C7B19A3B81E80190 /* FormattableAddress.swift */; };
 		8030BC3F79F17090B749C7A6018E906B /* URLQueryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F86AD638975BFCB529F73704F8796B3 /* URLQueryItem.swift */; };
 		8181B15B2059E0C37F74FA1B0E4DAF8C /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D9D57D8A8EE4FD7D57EFE634240FB /* HTTP.swift */; };
+		8195AA3A1DF579A900D9AA7B /* APIGuestCheckoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8195AA381DF579A900D9AA7B /* APIGuestCheckoutTests.swift */; };
+		8195AA3B1DF579A900D9AA7B /* APIGuestOrderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8195AA391DF579A900D9AA7B /* APIGuestOrderTests.swift */; };
 		83B21DD54057C92FF3BB321D3340B450 /* SwiftHTTP.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 49B83EA8E01BF361F973FA47FA728D86 /* SwiftHTTP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		85CA2D25895BA070BBA069C4B192C2AD /* NestedJSONTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80882428404628DC886C2144E1E1E48D /* NestedJSONTests.swift */; };
 		876589FD4612DC2514CB3D7284288A81 /* Tests.json in Resources */ = {isa = PBXBuildFile; fileRef = EA97D05C1FC1C316CAA9F2EAEE6DFB89 /* Tests.json */; };
@@ -238,6 +240,8 @@
 		80882428404628DC886C2144E1E1E48D /* NestedJSONTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NestedJSONTests.swift; sourceTree = "<group>"; };
 		80A20F90F85243250BFBE7AB2A1E14CC /* APICreateCheckoutTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APICreateCheckoutTests.swift; path = AtlasSDKTests/APICreateCheckoutTests.swift; sourceTree = SOURCE_ROOT; };
 		812218FB3FA269E7294BC86C1E53B428 /* PrintLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintLogger.swift; sourceTree = "<group>"; };
+		8195AA381DF579A900D9AA7B /* APIGuestCheckoutTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIGuestCheckoutTests.swift; path = AtlasSDKTests/APIGuestCheckoutTests.swift; sourceTree = SOURCE_ROOT; };
+		8195AA391DF579A900D9AA7B /* APIGuestOrderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIGuestOrderTests.swift; path = AtlasSDKTests/APIGuestOrderTests.swift; sourceTree = SOURCE_ROOT; };
 		819FFBCB5BEEE135A7DADA9CAA3988F2 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		837B190CB840EA546FFC3B70BF225F9C /* APIAccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIAccessToken.swift; path = AtlasSDK/APIAccessToken.swift; sourceTree = SOURCE_ROOT; };
 		87E0CBDAE3A5B1288455C6E176B852B6 /* APICartTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APICartTests.swift; path = AtlasSDKTests/APICartTests.swift; sourceTree = SOURCE_ROOT; };
@@ -528,6 +532,8 @@
 				56A61783B05CE0621331D112E3EA078E /* APICustomerTests.swift */,
 				46267A0501D2255983C3C68C1F2D5AF2 /* APIOrderTests.swift */,
 				14641D3458F5F2AA1790B9C08DF75BB0 /* APIUpdateCheckoutTests.swift */,
+				8195AA381DF579A900D9AA7B /* APIGuestCheckoutTests.swift */,
+				8195AA391DF579A900D9AA7B /* APIGuestOrderTests.swift */,
 			);
 			name = APIClient;
 			sourceTree = "<group>";
@@ -996,7 +1002,9 @@
 				F8C72E9B006A6CB1A10CC4CB517B5289 /* RawRepresentableTests.swift in Sources */,
 				5C20F7B9E5483DF8435A9C6B14A4D122 /* RawTests.swift in Sources */,
 				9FBE1426643CB5DFC73CD66E9CE24856 /* SequenceTypeTests.swift in Sources */,
+				8195AA3B1DF579A900D9AA7B /* APIGuestOrderTests.swift in Sources */,
 				8C2E858F79681FC342DF436D6976B1B8 /* StringTests.swift in Sources */,
+				8195AA3A1DF579A900D9AA7B /* APIGuestCheckoutTests.swift in Sources */,
 				46E12C86DFA8464D63F0E8ADCE3B3470 /* SubscriptTests.swift in Sources */,
 				85CA2D25895BA070BBA069C4B192C2AD /* NestedJSONTests.swift in Sources */,
 				431276925D480DC7748824D0419AEF97 /* URLSessionMock.swift in Sources */,
