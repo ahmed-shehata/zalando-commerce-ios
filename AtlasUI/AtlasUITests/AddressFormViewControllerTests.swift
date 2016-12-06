@@ -4,28 +4,20 @@
 
 import XCTest
 import Nimble
-import AtlasMockAPI
 
 @testable import AtlasUI
 @testable import AtlasSDK
 
-class AddressFormViewControllerTests: XCTestCase {
+class AddressFormViewControllerTests: UITestCase {
 
     let window = UIWindow()
 
-    override class func setUp() {
+    override func setUp() {
         super.setUp()
-        try! AtlasMockAPI.startServer()
-    }
-
-    override class func tearDown() {
-        super.tearDown()
-        try! AtlasMockAPI.stopServer()
+        registerAtlasUIViewController()
     }
 
     func testLoggedInCreateAddressActionHandler() {
-        guard registerAtlasUIViewController() != nil else { return fail() }
-
         var actionHandler = LoggedInCreateAddressActionHandler()
         let dataModel = createAddressFormDataModel()
         let viewModel = AddressFormViewModel(dataModel: dataModel, layout: CreateAddressFormLayout(), type: .standardAddress)
@@ -52,8 +44,6 @@ class AddressFormViewControllerTests: XCTestCase {
     }
 
     func testLoggedInUpdateAddressActionHandler() {
-        guard registerAtlasUIViewController() != nil else { return fail() }
-
         var actionHandler = LoggedInUpdateAddressActionHandler()
         let dataModel = createAddressFormDataModel()
         let viewModel = AddressFormViewModel(dataModel: dataModel, layout: UpdateAddressFormLayout(), type: .standardAddress)
@@ -83,19 +73,12 @@ class AddressFormViewControllerTests: XCTestCase {
 
 extension AddressFormViewControllerTests {
 
-    fileprivate func registerAtlasUIViewController() -> AtlasUIViewController? {
-        var atlasUIViewController: AtlasUIViewController?
-        waitUntil(timeout: 10) { done in
-            AtlasUI.configure(options: Options.forTests()) { _ in
-                atlasUIViewController = AtlasUIViewController(forSKU: "AD541L009-G11")
-                guard let viewController = atlasUIViewController else { return fail() }
-                self.window.rootViewController = viewController
-                self.window.makeKeyAndVisible()
-                try! AtlasUI.shared().register { viewController }
-                done()
-            }
-        }
-        return atlasUIViewController
+    fileprivate func registerAtlasUIViewController() {
+        let atlasUIViewController = AtlasUIViewController(forSKU: "AD541L009-G11")
+        _ = atlasUIViewController.view // load the view
+        self.window.rootViewController = atlasUIViewController
+        self.window.makeKeyAndVisible()
+        try! AtlasUI.shared().register { atlasUIViewController }
     }
 
     fileprivate func createAddressFormDataModel() -> AddressFormDataModel {

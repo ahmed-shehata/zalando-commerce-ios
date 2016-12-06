@@ -9,70 +9,60 @@ import AtlasMockAPI
 @testable import AtlasUI
 @testable import AtlasSDK
 
-class PaymentViewControllerTests: XCTestCase {
-
-    override class func setUp() {
-        super.setUp()
-        try! AtlasMockAPI.startServer()
-    }
-
-    override class func tearDown() {
-        super.tearDown()
-        try! AtlasMockAPI.stopServer()
-    }
+class PaymentViewControllerTests: UITestCase {
 
     func testGuestRedirectStatus() {
         guard let paymentViewController = self.paymentViewController(with: .guestRedirect(encryptedCheckoutId: "encryptedCheckoutId", encryptedToken: "encryptedToken")) else { return }
         waitUntil(timeout: 10) { done in
-            _ = paymentViewController.view // load the view
             paymentViewController.paymentCompletion = { result in
                 expect(result).to(equal(PaymentStatus.guestRedirect(encryptedCheckoutId: "encryptedCheckoutId", encryptedToken: "encryptedToken")))
                 done()
             }
+            _ = paymentViewController.view // load the view
         }
     }
 
     func testRedirectStatus() {
         guard let paymentViewController = self.paymentViewController(with: .redirect) else { return }
         waitUntil(timeout: 10) { done in
-            _ = paymentViewController.view // load the view
             paymentViewController.paymentCompletion = { result in
                 expect(result).to(equal(PaymentStatus.redirect))
                 done()
             }
+            _ = paymentViewController.view // load the view
         }
     }
 
     func testSuccessStatus() {
         guard let paymentViewController = self.paymentViewController(with: .success) else { return }
         waitUntil(timeout: 10) { done in
-            _ = paymentViewController.view // load the view
             paymentViewController.paymentCompletion = { result in
                 expect(result).to(equal(PaymentStatus.success))
                 done()
             }
+            _ = paymentViewController.view // load the view
         }
     }
 
     func testCancelStatus() {
         guard let paymentViewController = self.paymentViewController(with: .cancel) else { return }
         waitUntil(timeout: 10) { done in
-            _ = paymentViewController.view // load the view
             paymentViewController.paymentCompletion = { result in
                 expect(result).to(equal(PaymentStatus.cancel))
                 done()
             }
+            _ = paymentViewController.view // load the view
         }
     }
 
     func testErrorStatus() {
         guard let paymentViewController = self.paymentViewController(with: .error) else { return }
         waitUntil(timeout: 10) { done in
-            _ = paymentViewController.view // load the view
             paymentViewController.paymentCompletion = { result in
                 expect(result).to(equal(PaymentStatus.error))
                 done()
             }
+            _ = paymentViewController.view // load the view
         }
     }
 

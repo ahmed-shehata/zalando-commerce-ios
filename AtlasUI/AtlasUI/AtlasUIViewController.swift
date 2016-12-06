@@ -31,16 +31,11 @@ public class AtlasUIViewController: UIViewController {
     }
 
     override public func viewDidLoad() {
-        loadErrorView()
+        UserMessage.loadBannerError()
         addChildViewController(mainNavigationController)
         view.addSubview(mainNavigationController.view)
         mainNavigationController.view.fillInSuperview()
         atlasReachability.setupReachability()
-    }
-
-    fileprivate func loadErrorView() {
-        UserMessage.displayError(error: AtlasCheckoutError.unclassified)
-        UserMessage.resetBanners()
     }
 
 }

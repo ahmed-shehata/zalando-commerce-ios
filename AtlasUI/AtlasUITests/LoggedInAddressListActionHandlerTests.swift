@@ -4,29 +4,24 @@
 
 import XCTest
 import Nimble
-import AtlasMockAPI
 
 @testable import AtlasUI
 @testable import AtlasSDK
 
-class LoggedInAddressListActionHandlerTests: XCTestCase {
+class LoggedInAddressListActionHandlerTests: UITestCase {
 
     let delegate = AddressListTableDelegate(tableView: UITableView(), addresses: [], selectedAddress: nil, viewController: nil)
     let window = UIWindow()
+    var actionHandler: LoggedInAddressListActionHandler?
 
-    override class func setUp() {
+    override func setUp() {
         super.setUp()
-        try! AtlasMockAPI.startServer()
-    }
-
-    override class func tearDown() {
-        super.tearDown()
-        try! AtlasMockAPI.stopServer()
+        registerAtlasUIViewController()
+        actionHandler = createActionHandler()
     }
 
     func testCreateAddress() {
-        guard let actionHandler = createActionHandler() else { return fail() }
-        actionHandler.createAddress()
+        actionHandler?.createAddress()
 
         guard let saveButton = getSaveButton() else { return fail() }
         UIApplication.shared.sendAction(saveButton.action!, to: saveButton.target, from: nil, for: nil)
@@ -35,13 +30,11 @@ class LoggedInAddressListActionHandlerTests: XCTestCase {
     }
 
     func testUpdateAddress() {
-        guard let actionHandler = createActionHandler() else { return fail() }
-
         let userAddress = UserAddress(addressId: "6616154")
         delegate.addresses.append(userAddress)
         expect(self.delegate.addresses.first?.lastName).to(equal("Doe"))
 
-        actionHandler.update(address: userAddress)
+        actionHandler?.update(address: userAddress)
 
         guard let saveButton = getSaveButton() else { return fail() }
         UIApplication.shared.sendAction(saveButton.action!, to: saveButton.target, from: nil, for: nil)
@@ -50,13 +43,11 @@ class LoggedInAddressListActionHandlerTests: XCTestCase {
     }
 
     func testDeleteAddress() {
-        guard let actionHandler = createActionHandler() else { return fail() }
-
         let userAddress = UserAddress(addressId: "6616154")
         delegate.addresses.append(userAddress)
         expect(self.delegate.addresses.count).to(equal(1))
 
-        actionHandler.delete(address: userAddress)
+        actionHandler?.delete(address: userAddress)
 
         expect(self.delegate.addresses).toEventually(beEmpty())
     }
@@ -65,27 +56,14 @@ class LoggedInAddressListActionHandlerTests: XCTestCase {
 
 extension LoggedInAddressListActionHandlerTests {
 
-    private func registerAtlasUIViewController() -> AtlasUIViewController? {
-        var atlasUIViewController: AtlasUIViewController?
-        waitUntil(timeout: 10) { done in
-            AtlasUI.configure(options: Options.forTests()) { result in
-                atlasUIViewController = AtlasUIViewController(forSKU: "AD541L009-G11")
-                guard let viewController = atlasUIViewController else { return fail() }
-                self.window.rootViewController = viewController
-                self.window.makeKeyAndVisible()
-                try! AtlasUI.shared().register { viewController }
-                done()
-            }
-        }
-        return atlasUIViewController
+    fileprivate func registerAtlasUIViewController() {
+        let atlasUIViewController = AtlasUIViewController(forSKU: "AD541L009-G11")
+        self.window.rootViewController = atlasUIViewController
+        self.window.makeKeyAndVisible()
+        try! AtlasUI.shared().register { atlasUIViewController }
     }
 
     fileprivate func createActionHandler() -> LoggedInAddressListActionHandler? {
-        guard registerAtlasUIViewController() != nil else {
-            fail()
-            return nil
-        }
-
         let strategyMock = AddressViewModelCreationStrategyMock()
         let actionHandler = LoggedInAddressListActionHandler(addressViewModelCreationStrategy: strategyMock)
         actionHandler.delegate = delegate
@@ -96,6 +74,13 @@ extension LoggedInAddressListActionHandlerTests {
         guard let atlasUIViewController = AtlasUIViewController.shared else {
             fail()
             return nil
+        }
+
+        // Delay until the viewController is pushed into the navigation controller
+        waitUntil(timeout: 10) { done in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                done()
+            }
         }
 
         var addressFormViewController: AddressFormViewController?

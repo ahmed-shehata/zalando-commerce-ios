@@ -28,18 +28,28 @@ struct UserMessage {
     fileprivate static let fullScreenErrorViewController = FullScreenErrorViewController()
 
     static var errorDisplayed: Bool {
-        return bannerErrorViewController.parent != nil || fullScreenErrorViewController.parent != nil
+        return bannerErrorViewController.parent != nil || fullScreenErrorViewController.navigationController?.parent != nil
     }
 
     static func hideBannerError() {
         bannerErrorViewController.dismiss()
     }
 
+    static func loadBannerError() {
+        bannerErrorViewController.view.alpha = 0
+        UIApplication.shared.keyWindow?.insertSubview(bannerErrorViewController.view, at: 0)
+        bannerErrorViewController.view.fillInSuperview()
+        bannerErrorViewController.configure(viewModel: AtlasCheckoutError.unclassified)
+        Async.delay(delay: 0.1) {
+            bannerErrorViewController.view.removeFromSuperview()
+        }
+    }
+
     static func resetBanners() {
         bannerErrorViewController.view.removeFromSuperview()
         bannerErrorViewController.removeFromParentViewController()
-        fullScreenErrorViewController.view.removeFromSuperview()
-        fullScreenErrorViewController.removeFromParentViewController()
+        fullScreenErrorViewController.navigationController?.view.removeFromSuperview()
+        fullScreenErrorViewController.navigationController?.removeFromParentViewController()
     }
 
     static func displayError(error: Error) {

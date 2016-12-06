@@ -4,33 +4,11 @@
 
 import XCTest
 import Nimble
-import AtlasMockAPI
 import AtlasSDK
 
 @testable import AtlasUI
 
-class FormValidatorTests: XCTestCase {
-
-
-    override class func setUp() {
-        super.setUp()
-        try! AtlasMockAPI.startServer()
-
-        waitUntil(timeout: 10) { done in
-            let opts = Options.forTests(interfaceLanguage: "en")
-            AtlasUI.configure(options: opts) { result in
-                if case let .failure(error) = result {
-                    fail(String(describing: error))
-                }
-                done()
-            }
-        }
-    }
-
-    override class func tearDown() {
-        super.tearDown()
-        try! AtlasMockAPI.stopServer()
-    }
+class FormValidatorTests: UITestCase {
 
     func testRequiredValidator() {
         let validator = FormValidator.required

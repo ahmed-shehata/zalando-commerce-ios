@@ -4,26 +4,23 @@
 
 import XCTest
 import Nimble
-import AtlasMockAPI
 
 @testable import AtlasUI
 @testable import AtlasSDK
 
-class LoggedInSummaryActionHandlerTests: XCTestCase {
+class LoggedInSummaryActionHandlerTests: UITestCase {
 
     var mockedDataSourceDelegate: CheckoutSummaryActionHandlerDataSourceDelegateMock?
     var actionHandler: LoggedInSummaryActionHandler?
 
     override func setUp() {
         super.setUp()
-        try! AtlasMockAPI.startServer()
         Atlas.authorize(withToken: "TestToken")
         actionHandler = createActionHandler()
     }
 
     override func tearDown() {
         super.tearDown()
-        try! AtlasMockAPI.stopServer()
         Atlas.deauthorize()
     }
 
@@ -42,6 +39,8 @@ class LoggedInSummaryActionHandlerTests: XCTestCase {
     func testPriceChange() {
         guard let dataModel = createDataModel(fromCheckout: createCartCheckout()?.checkout, totalPrice: MoneyAmount(string: "0.1")) else { return fail() }
         mockedDataSourceDelegate?.updated(dataModel: dataModel)
+        expect(UserMessage.errorDisplayed).toEventually(beTrue())
+        UserMessage.resetBanners()
         actionHandler?.handleSubmit()
         expect(UserMessage.errorDisplayed).toEventually(beTrue())
     }
@@ -174,21 +173,20 @@ extension LoggedInSummaryActionHandlerTests {
         var loggedInActionHandler: LoggedInSummaryActionHandler?
         waitUntil(timeout: 10) { done in
             let sku = "AD541L009-G11"
-            self.registerAtlasUIViewController(forSKU: sku) {
-                AtlasUIClient.customer { result in
-                    guard let customer = result.process() else { return fail() }
-                    AtlasUIClient.article(withSKU: sku) { result in
-                        guard let article = result.process() else { return fail() }
-                        let selectedArticleUnit = SelectedArticleUnit(article: article, selectedUnitIndex: 0)
-                        LoggedInSummaryActionHandler.create(customer: customer, selectedArticleUnit: selectedArticleUnit) { result in
-                            guard let actionHandler = result.process() else { return fail() }
-                            let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, totalPrice: selectedArticleUnit.unit.price.amount)
-                            let viewModel = CheckoutSummaryViewModel(dataModel: dataModel, layout: LoggedInLayout())
-                            self.mockedDataSourceDelegate = CheckoutSummaryActionHandlerDataSourceDelegateMock(viewModel: viewModel)
-                            self.mockedDataSourceDelegate?.actionHandler = actionHandler
-                            loggedInActionHandler = actionHandler
-                            done()
-                        }
+            self.registerAtlasUIViewController(forSKU: sku)
+            AtlasUIClient.customer { result in
+                guard let customer = result.process() else { return fail() }
+                AtlasUIClient.article(withSKU: sku) { result in
+                    guard let article = result.process() else { return fail() }
+                    let selectedArticleUnit = SelectedArticleUnit(article: article, selectedUnitIndex: 0)
+                    LoggedInSummaryActionHandler.create(customer: customer, selectedArticleUnit: selectedArticleUnit) { result in
+                        guard let actionHandler = result.process() else { return fail() }
+                        let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, totalPrice: selectedArticleUnit.unit.price.amount)
+                        let viewModel = CheckoutSummaryViewModel(dataModel: dataModel, layout: LoggedInLayout())
+                        self.mockedDataSourceDelegate = CheckoutSummaryActionHandlerDataSourceDelegateMock(viewModel: viewModel)
+                        self.mockedDataSourceDelegate?.actionHandler = actionHandler
+                        loggedInActionHandler = actionHandler
+                        done()
                     }
                 }
             }
@@ -209,13 +207,10 @@ extension LoggedInSummaryActionHandlerTests {
         return cartCheckout
     }
 
-    fileprivate func registerAtlasUIViewController(forSKU sku: String, completion: @escaping () -> Void) {
-        AtlasUI.configure(options: Options.forTests()) { _ in
-            let atlasUIViewController = AtlasUIViewController(forSKU: sku)
-            _ = atlasUIViewController.view // load the view
-            try! AtlasUI.shared().register { atlasUIViewController }
-            completion()
-        }
+    fileprivate func registerAtlasUIViewController(forSKU sku: String) {
+        let atlasUIViewController = AtlasUIViewController(forSKU: sku)
+        _ = atlasUIViewController.view // load the view
+        try! AtlasUI.shared().register { atlasUIViewController }
     }
 
     fileprivate func getAddress() -> EquatableAddress? {

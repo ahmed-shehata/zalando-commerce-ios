@@ -10,28 +10,34 @@ class AtlasReachability {
     fileprivate var reachability: Reachability?
 
     func setupReachability() {
-        guard let reachability = Reachability() else { return }
+        if !unitTestsAreRunning() {
+            guard let reachability = Reachability() else { return }
 
-        reachability.whenReachable = { _ in
-            Async.main {
-                UserMessage.hideBannerError()
+            reachability.whenReachable = { _ in
+                Async.main {
+                    UserMessage.hideBannerError()
+                }
             }
-        }
 
-        reachability.whenUnreachable = { _ in
-            Async.main {
-                UserMessage.displayError(error: AtlasAPIError.noInternet)
+            reachability.whenUnreachable = { _ in
+                Async.main {
+                    UserMessage.displayError(error: AtlasAPIError.noInternet)
+                }
             }
-        }
 
-        do {
-            try reachability.startNotifier()
-        } catch let error {
-            AtlasLogger.logError(error)
-            return
-        }
+            do {
+                try reachability.startNotifier()
+            } catch let error {
+                AtlasLogger.logError(error)
+                return
+            }
 
-        self.reachability = reachability
+            self.reachability = reachability
+        }
+    }
+
+    private func unitTestsAreRunning() -> Bool {
+        return ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
     }
 
 }
