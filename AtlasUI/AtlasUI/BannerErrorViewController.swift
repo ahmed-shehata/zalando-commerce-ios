@@ -76,14 +76,13 @@ class BannerErrorViewController: UIViewController {
         }
     }
 
-    func dismiss(completion: (() -> Void)? = nil) {
+    func dismiss() {
         let bannerHeight = containerView.bounds.height
         UIView.animate(animations: { [weak self] in
             self?.containerView.transform = CGAffineTransform(translationX: 0, y: -bannerHeight)
         }) { [weak self] _ in
             self?.view.removeFromSuperview()
             self?.removeFromParentViewController()
-            completion?()
         }
     }
 

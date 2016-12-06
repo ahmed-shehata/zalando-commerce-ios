@@ -35,11 +35,11 @@ struct UserMessage {
         bannerErrorViewController.dismiss()
     }
 
-    static func hideError() {
-        bannerErrorViewController.dismiss() {
-            fullScreenErrorViewController.view.removeFromSuperview()
-            fullScreenErrorViewController.removeFromParentViewController()
-        }
+    static func resetBanners() {
+        bannerErrorViewController.view.removeFromSuperview()
+        bannerErrorViewController.removeFromParentViewController()
+        fullScreenErrorViewController.view.removeFromSuperview()
+        fullScreenErrorViewController.removeFromParentViewController()
     }
 
     static func displayError(error: Error) {
