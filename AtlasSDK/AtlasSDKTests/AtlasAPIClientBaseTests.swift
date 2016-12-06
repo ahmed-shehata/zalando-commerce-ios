@@ -43,10 +43,10 @@ class AtlasAPIClientBaseTests: XCTestCase {
     }
 
     func mockedAtlasAPIClient(forURL url: URL,
-                                options: Options? = nil,
+                              options: Options? = nil,
                               data: Data?,
-                                status: HTTPStatus,
-                                errorCode: Int? = nil) -> AtlasAPIClient {
+                              status: HTTPStatus,
+                              errorCode: Int? = nil) -> AtlasAPIClient {
 
         let apiURL = AtlasMockAPI.endpointURL(forPath: "/")
         let loginURL = AtlasMockAPI.endpointURL(forPath: "/oauth2/authorize")
@@ -54,22 +54,22 @@ class AtlasAPIClientBaseTests: XCTestCase {
         let gateway = "http://localhost.charlesproxy.com:9080"
 
         let json = JSON([
-                "sales-channels": [
-                    [
-                        "locale": "de_DE",
-                        "sales-channel": "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
-                        "toc_url": "https://www.zalando.de/agb/"
-                    ]
-                ],
+                            "sales-channels": [
+                                [
+                                    "locale": "de_DE",
+                                    "sales-channel": "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
+                                    "toc_url": "https://www.zalando.de/agb/"
+                                ]
+                            ],
                             "atlas-catalog-api": ["url": apiURL.absoluteString],
-                "atlas-checkout-gateway": ["url": gateway],
-                "atlas-checkout-api": [
+                            "atlas-checkout-gateway": ["url": gateway],
+                            "atlas-checkout-api": [
                                 "url": apiURL.absoluteString,
-                    "payment": [
-                        "selection-callback": callback,
-                        "third-party-callback": callback
-                    ]
-                ],
+                                "payment": [
+                                    "selection-callback": callback,
+                                    "third-party-callback": callback
+                                ]
+                            ],
                             "oauth2-provider": ["url": loginURL.absoluteString]
                         ])
 
