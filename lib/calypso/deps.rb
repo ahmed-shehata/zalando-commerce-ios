@@ -14,7 +14,7 @@ module Calypso
     desc 'build', 'Build dependencies'
     def build
       run 'carthage bootstrap --platform iOS --no-use-binaries'
-      run "carthage build --platform Mac --no-use-binaries #{MAC_DEPS}"
+      run "carthage build --platform Mac #{MAC_DEPS}"
     end
 
     desc 'update', 'Update dependencies'
