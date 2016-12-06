@@ -7,10 +7,6 @@ import AtlasSDK
 
 extension StreetAddress {
 
-    var isPickupPoint: Bool {
-        return pickupPoint != nil
-    }
-
     var addressLine1: String {
         return (isPickupPoint ? pickupPoint?.id : street) ?? ""
     }
