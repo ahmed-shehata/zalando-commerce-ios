@@ -55,12 +55,6 @@ class GuestAddressActionHandler {
         UserMessage.presentSelection(title: nil, actions: [createAction, updateAction, cancelAction])
     }
 
-    func checkoutAddresses(shippingAddress: EquatableAddress?, billingAddress: EquatableAddress?) -> CheckoutAddresses {
-        let standardShippingAddress = shippingAddress?.isPickupPoint == true ? nil : shippingAddress
-        return CheckoutAddresses(billingAddress: billingAddress ?? standardShippingAddress,
-                                 shippingAddress: shippingAddress ?? billingAddress)
-    }
-
 }
 
 extension GuestAddressActionHandler {

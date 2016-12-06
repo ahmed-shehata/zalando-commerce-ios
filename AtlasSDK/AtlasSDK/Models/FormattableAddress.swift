@@ -27,8 +27,3 @@ public func == (lhs: EquatableAddress, rhs: EquatableAddress) -> Bool {
     return lhs.id == rhs.id
 
 }
-
-public typealias BillingAddress = EquatableAddress
-public typealias ShippingAddress = EquatableAddress
-
-public typealias CheckoutAddresses = (billingAddress: BillingAddress?, shippingAddress: ShippingAddress?)
