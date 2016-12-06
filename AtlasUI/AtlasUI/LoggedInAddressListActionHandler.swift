@@ -18,8 +18,7 @@ class LoggedInAddressListActionHandler: AddressListActionHandler {
         addressViewModelCreationStrategy?.titleKey = "addressListView.add.type.title"
         addressViewModelCreationStrategy?.strategyCompletion = { [weak self] viewModel in
             let actionHandler = LoggedInCreateAddressActionHandler()
-            self?.presentAddressViewController(withViewModel: viewModel,
-                                            formActionHandler: actionHandler) { address, email in
+            self?.presentAddressViewController(with: viewModel, handler: actionHandler) { address, email in
                 self?.delegate?.created(address: address)
             }
         }
@@ -32,7 +31,7 @@ class LoggedInAddressListActionHandler: AddressListActionHandler {
         let addressType: AddressFormType = address.pickupPoint == nil ? .standardAddress : .pickupPoint
         let viewModel = AddressFormViewModel(dataModel: dataModel, layout: formLayout, type: addressType)
         let actionHandler = LoggedInUpdateAddressActionHandler()
-        presentAddressViewController(withViewModel: viewModel, formActionHandler: actionHandler) { [weak self] address, email in
+        presentAddressViewController(with: viewModel, handler: actionHandler) { [weak self] address, email in
             self?.delegate?.updated(address: address)
         }
     }
@@ -48,9 +47,9 @@ class LoggedInAddressListActionHandler: AddressListActionHandler {
 
 extension LoggedInAddressListActionHandler {
 
-    fileprivate func presentAddressViewController(withViewModel viewModel: AddressFormViewModel,
-                                                         formActionHandler: AddressFormActionHandler,
-                                               completion: @escaping AddressFormCompletion) {
+    fileprivate func presentAddressViewController(with viewModel: AddressFormViewModel,
+                                                  handler formActionHandler: AddressFormActionHandler,
+                                                  completion: @escaping AddressFormCompletion) {
 
         let viewController = AddressFormViewController(viewModel: viewModel, actionHandler: formActionHandler, completion: completion)
         viewController.present()
