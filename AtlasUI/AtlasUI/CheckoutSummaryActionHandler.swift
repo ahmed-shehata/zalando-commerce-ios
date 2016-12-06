@@ -43,7 +43,7 @@ extension CheckoutSummaryActionHandler {
     }
 
     var addresses: CheckoutAddresses? {
-        return CheckoutAddresses(billingAddress: billingAddress, shippingAddress: shippingAddress)
+        return CheckoutAddresses(shippingAddress: shippingAddress, billingAddress: billingAddress)
     }
 
 }

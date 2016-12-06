@@ -13,7 +13,7 @@ public struct CheckoutAddresses {
     public let billingAddress: BillingAddress?
     public let shippingAddress: ShippingAddress?
 
-    public init(billingAddress: BillingAddress?, shippingAddress: ShippingAddress?, autoFill: Bool = false) {
+    public init(shippingAddress: ShippingAddress?, billingAddress: BillingAddress?, autoFill: Bool = false) {
         if autoFill {
             let standardShippingAddress = shippingAddress?.isPickupPoint == true ? nil : shippingAddress
             self.billingAddress = billingAddress ?? standardShippingAddress
