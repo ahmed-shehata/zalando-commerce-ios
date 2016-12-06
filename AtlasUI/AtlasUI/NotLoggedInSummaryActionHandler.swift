@@ -36,7 +36,7 @@ class NotLoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
     func handleShippingAddressSelection() {
         guestAddressActionHandler.addressCreationStrategy = ShippingAddressViewModelCreationStrategy()
         guestAddressActionHandler.createAddress { [weak self] address in
-            let checkoutAddress = self?.guestAddressActionHandler.checkoutAddresses(shippingAddress: address, billingAddress: nil)
+            let checkoutAddress = CheckoutAddresses(billingAddress: nil, shippingAddress: address, autoFill: true)
             self?.switchToGuestCheckout(checkoutAddress: checkoutAddress)
         }
     }
@@ -44,7 +44,7 @@ class NotLoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
     func handleBillingAddressSelection() {
         guestAddressActionHandler.addressCreationStrategy = BillingAddressViewModelCreationStrategy()
         guestAddressActionHandler.createAddress { [weak self] address in
-            let checkoutAddress = self?.guestAddressActionHandler.checkoutAddresses(shippingAddress: nil, billingAddress: address)
+            let checkoutAddress = CheckoutAddresses(billingAddress: address, shippingAddress: nil, autoFill: true)
             self?.switchToGuestCheckout(checkoutAddress: checkoutAddress)
         }
     }

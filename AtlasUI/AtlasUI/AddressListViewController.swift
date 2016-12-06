@@ -16,6 +16,7 @@ final class AddressListViewController: UIViewController {
     var addressSelectedHandler: AddressSelectedHandler?
     var actionHandler: AddressListActionHandler?
 
+    // swiftlint:disable:next weak_delegate
     lazy var tableviewDelegate: AddressListTableDelegate = {
         return AddressListTableDelegate(tableView: self.tableView,
                                         addresses: self.initialAddresses,

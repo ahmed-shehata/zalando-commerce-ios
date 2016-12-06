@@ -10,7 +10,7 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
     weak var dataSource: CheckoutSummaryActionHandlerDataSource?
     weak var delegate: CheckoutSummaryActionHandlerDelegate?
 
-    fileprivate let guestAddressActionHandler = GuestAddressActionHandler()
+    fileprivate let actionHandler = GuestAddressActionHandler()
     fileprivate var guestCheckout: GuestCheckout? {
         didSet {
             updateDataModel(addresses: addresses, guestCheckout: guestCheckout)
@@ -18,12 +18,12 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
     }
 
     init(email: String) {
-        self.guestAddressActionHandler.emailAddress = email
+        self.actionHandler.emailAddress = email
     }
 
     func handleSubmit() {
         guard let dataSource = dataSource else { return }
-        guard let email = guestAddressActionHandler.emailAddress,
+        guard let email = actionHandler.emailAddress,
             let shippingAddress = shippingAddress,
             let billingAddress = billingAddress else {
                 UserMessage.displayError(error: AtlasCheckoutError.missingAddress)
@@ -53,7 +53,7 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
 
     func handlePaymentSelection() {
         guard let dataSource = dataSource else { return }
-        guard let email = guestAddressActionHandler.emailAddress,
+        guard let email = actionHandler.emailAddress,
             let shippingAddress = shippingAddress,
             let billingAddress = billingAddress else {
                 UserMessage.displayError(error: AtlasCheckoutError.missingAddress)
@@ -93,18 +93,18 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
     }
 
     func handleShippingAddressSelection() {
-        guestAddressActionHandler.addressCreationStrategy = ShippingAddressViewModelCreationStrategy()
-        guestAddressActionHandler.handleAddressModification(address: shippingAddress) { [weak self] address in
-            let checkoutAddress = self?.guestAddressActionHandler.checkoutAddresses(shippingAddress: address, billingAddress: self?.billingAddress)
-            self?.updateDataModel(addresses: checkoutAddress, guestCheckout: self?.guestCheckout)
+        actionHandler.addressCreationStrategy = ShippingAddressViewModelCreationStrategy()
+        actionHandler.handleAddressModification(address: shippingAddress) { [weak self] address in
+            let addresses = CheckoutAddresses(billingAddress: self?.billingAddress, shippingAddress: address, autoFill: true)
+            self?.updateDataModel(addresses: addresses, guestCheckout: self?.guestCheckout)
         }
     }
 
     func handleBillingAddressSelection() {
-        guestAddressActionHandler.addressCreationStrategy = BillingAddressViewModelCreationStrategy()
-        guestAddressActionHandler.handleAddressModification(address: billingAddress) { [weak self] address in
-            let checkoutAddress = self?.guestAddressActionHandler.checkoutAddresses(shippingAddress: self?.shippingAddress, billingAddress: address)
-            self?.updateDataModel(addresses: checkoutAddress, guestCheckout: self?.guestCheckout)
+        actionHandler.addressCreationStrategy = BillingAddressViewModelCreationStrategy()
+        actionHandler.handleAddressModification(address: billingAddress) { [weak self] address in
+            let addresses = CheckoutAddresses(billingAddress: address, shippingAddress: self?.shippingAddress, autoFill: true)
+            self?.updateDataModel(addresses: addresses, guestCheckout: self?.guestCheckout)
         }
     }
 
@@ -137,7 +137,7 @@ extension GuestCheckoutSummaryActionHandler {
     fileprivate func showConfirmationScreen(order: GuestOrder) {
         guard let dataSource = dataSource,
             let delegate = delegate,
-            let email = guestAddressActionHandler.emailAddress
+            let email = actionHandler.emailAddress
             else { return }
 
         let selectedArticleUnit = dataSource.dataModel.selectedArticleUnit
@@ -159,7 +159,7 @@ extension GuestCheckoutSummaryActionHandler {
 
     fileprivate func updateDataModel(addresses: CheckoutAddresses?, guestCheckout: GuestCheckout?) {
         guard let selectedUnit = dataSource?.dataModel.selectedArticleUnit,
-            let email = guestAddressActionHandler.emailAddress
+            let email = actionHandler.emailAddress
             else { return }
 
         let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedUnit,

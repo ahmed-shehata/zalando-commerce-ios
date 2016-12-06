@@ -45,7 +45,7 @@ public typealias GuestCheckoutCompletion = (AtlasAPIResult<GuestCheckout>) -> Vo
 public typealias GuestOrderCompletion = (AtlasAPIResult<GuestOrder>) -> Void
 
 /**
- Completion block `AtlasAPIResult` with the `NSURL` struct as a success value
+ Completion block `AtlasAPIResult` with the `URL` struct as a success value
  */
 public typealias URLCompletion = (AtlasAPIResult<URL>) -> Void
 

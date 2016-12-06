@@ -8,6 +8,7 @@ import AtlasSDK
 final class SizeListSelectionViewController: UIViewController {
 
     let sku: String
+    // swiftlint:disable:next weak_delegate
     var tableViewDelegate: SizeListTableViewDelegate? {
         didSet {
             tableView.delegate = tableViewDelegate
