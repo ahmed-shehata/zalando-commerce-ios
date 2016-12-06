@@ -18,7 +18,7 @@ extension GuestCartRequest: JSONRepresentable {
         static let items = "items"
     }
 
-    public func toJSON() -> JSONDictionary {
+    func toJSON() -> JSONDictionary {
         return [Keys.items: self.items.map { $0.toJSON() }]
     }
 
