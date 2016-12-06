@@ -12,7 +12,7 @@ protocol SalesChannelEndpoint: Endpoint {
 
 extension SalesChannelEndpoint {
 
-    var headers: [String: Any]? {
+    var headers: EndpointHeaders? {
         return ["X-Sales-Channel": salesChannel]
     }
 

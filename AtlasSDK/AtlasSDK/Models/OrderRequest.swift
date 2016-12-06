@@ -12,7 +12,7 @@ public struct OrderRequest: JSONRepresentable {
         self.checkoutId = checkoutId
     }
 
-    public func toJSON() -> [String: Any] {
+    public func toJSON() -> JSONDictionary {
         return [
             "checkout_id": self.checkoutId
         ]

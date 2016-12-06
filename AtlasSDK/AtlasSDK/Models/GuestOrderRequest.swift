@@ -37,7 +37,7 @@ extension GuestOrderRequest: JSONRepresentable {
         static let payment = "payment"
     }
 
-    public func toJSON() -> [String: Any] {
+    public func toJSON() -> JSONDictionary {
         return [
             Keys.customer: customer.toJSON(),
             Keys.shippingAddress: shippingAddress.toJSON(),

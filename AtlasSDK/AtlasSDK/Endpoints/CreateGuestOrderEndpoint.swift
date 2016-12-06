@@ -9,7 +9,7 @@ struct CreateGuestOrderEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
     let path = "guest-checkout/api/orders"
     let contentType = "application/x.zalando.order.create+json"
     let acceptedContentType = "application/x.zalando.order.create.response+json"
-    let parameters: [String: Any]?
+    let parameters: EndpointParameters?
     let salesChannel: String
 
 }
