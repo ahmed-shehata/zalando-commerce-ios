@@ -48,7 +48,7 @@ struct UserMessage {
             return
         }
 
-        switch userPresentable.presentationMode() {
+        switch userPresentable.presentationMode {
         case .banner: displayBanner(error: userPresentable)
         case .fullScreen: displayFullScreen(error: userPresentable)
         }
@@ -126,7 +126,7 @@ extension UserMessage {
 
 extension UIAlertController {
 
-    func add(button: ButtonAction) {
+    fileprivate func add(button: ButtonAction) {
         let title = Localizer.format(string: button.text)
         let action = UIAlertAction(title: title, style: button.style, handler: button.handler)
         self.addAction(action)
