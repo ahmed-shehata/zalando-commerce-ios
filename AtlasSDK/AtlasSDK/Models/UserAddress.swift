@@ -25,7 +25,7 @@ public struct UserAddress: EquatableAddress {
 
 extension UserAddress: JSONInitializable {
 
-    private struct Keys {
+    fileprivate struct Keys {
 
         static let id = "id"
         static let gender = "gender"
@@ -44,18 +44,18 @@ extension UserAddress: JSONInitializable {
     }
 
     init?(json: JSON) {
-        guard let
-        id = json[Keys.id].string,
-            genderRaw = json[Keys.gender].string,
-            customerNumber = json[Keys.customerNumber].string,
-            gender = Gender(rawValue: genderRaw),
-            firstName = json[Keys.firstName].string,
-            lastName = json[Keys.lastName].string,
-            zip = json[Keys.zip].string,
-            city = json[Keys.city].string,
-            countryCode = json[Keys.countryCode].string,
-            isDefaultBilling = json[Keys.defaultBilling].bool,
-            isDefaultShipping = json[Keys.defaultShipping].bool else { return nil }
+        guard let id = json[Keys.id].string,
+            let genderRaw = json[Keys.gender].string,
+            let customerNumber = json[Keys.customerNumber].string,
+            let gender = Gender(rawValue: genderRaw),
+            let firstName = json[Keys.firstName].string,
+            let lastName = json[Keys.lastName].string,
+            let zip = json[Keys.zip].string,
+            let city = json[Keys.city].string,
+            let countryCode = json[Keys.countryCode].string,
+            let isDefaultBilling = json[Keys.defaultBilling].bool,
+            let isDefaultShipping = json[Keys.defaultShipping].bool
+        else { return nil }
 
         self.init(id: id,
             customerNumber: customerNumber,

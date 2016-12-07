@@ -4,73 +4,56 @@
 
 import Foundation
 
-private struct Queues {
-
-    static func main() -> dispatch_queue_t {
-        return dispatch_get_main_queue()
-    }
-
-    static func userInteractive() -> dispatch_queue_t {
-        return dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)
-    }
-
-    static func userInitiated() -> dispatch_queue_t {
-        return dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)
-    }
-
-    static func utility() -> dispatch_queue_t {
-        return dispatch_get_global_queue(QOS_CLASS_UTILITY, 0)
-    }
-
-    static func background() -> dispatch_queue_t {
-        return dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0)
-    }
-
-}
-
 struct Async {
 
-    private let block: dispatch_block_t
+    private let workItem: DispatchWorkItem
 
-    private init(_ block: dispatch_block_t) {
-        self.block = block
+    private init(workItem: DispatchWorkItem) {
+        self.workItem = workItem
     }
 
-    static func main(block: dispatch_block_t) -> Async {
-        return dispatchAsync(Queues.main(), block: block)
+    @discardableResult
+    static func main(block: @escaping () -> ()) -> Async {
+        return dispatchAsync(on: .main, block: block)
     }
 
-    static func delay(delay: NSTimeInterval, block: dispatch_block_t) -> Async {
-        return dispatchAsyncDelay(delay, queue: Queues.main(), block: block)
+    @discardableResult
+    static func delay(delay: TimeInterval, block: @escaping () -> Void) -> Async {
+        return dispatchAsync(on: .main, after: delay, block: block)
     }
 
-    static func userInteractive(block: dispatch_block_t) -> Async {
-        return dispatchAsync(Queues.userInteractive(), block: block)
+    @discardableResult
+    static func userInteractive(block: @escaping () -> ()) -> Async {
+        return dispatchAsync(on: .userInteractive, block: block)
     }
 
-    static func userInitiated(block: dispatch_block_t) -> Async {
-        return dispatchAsync(Queues.userInitiated(), block: block)
+    @discardableResult
+    static func userInitiated(block: @escaping () -> ()) -> Async {
+        return dispatchAsync(on: .userInitiated, block: block)
     }
 
-    static func utility(block: dispatch_block_t) -> Async {
-        return dispatchAsync(Queues.utility(), block: block)
+    @discardableResult
+    static func utility(block: @escaping () -> ()) -> Async {
+        return dispatchAsync(on: .utility, block: block)
     }
 
-    static func background(block: dispatch_block_t) -> Async {
-        return dispatchAsync(Queues.background(), block: block)
+    @discardableResult
+    static func background(block: @escaping () -> ()) -> Async {
+        return dispatchAsync(on: .background, block: block)
     }
 
-    private static func dispatchAsync(queue: dispatch_queue_t, block: dispatch_block_t) -> Async {
-        let _block = dispatch_block_create(DISPATCH_BLOCK_INHERIT_QOS_CLASS, block)
-        dispatch_async(queue, _block)
-        return Async(_block)
+    private static func dispatchAsync(on qos: DispatchQoS.QoSClass, block: @escaping () -> ()) -> Async {
+        return dispatchAsync(on: DispatchQueue.global(qos: qos), block: block)
     }
 
-    private static func dispatchAsyncDelay(delay: NSTimeInterval, queue: dispatch_queue_t, block: dispatch_block_t) -> Async {
-        let _block = dispatch_block_create(DISPATCH_BLOCK_INHERIT_QOS_CLASS, block)
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
-        dispatch_after(delayTime, queue, _block)
-        return Async(_block)
+    private static func dispatchAsync(on queue: DispatchQueue, after delay: TimeInterval = 0, block: @escaping () -> ()) -> Async {
+        let workItem = DispatchWorkItem(block: block)
+        if delay == 0 {
+            queue.async(execute: workItem)
+        } else {
+            queue.asyncAfter(deadline: .now() + delay, execute: workItem)
+        }
+        return Async(workItem: workItem)
     }
 
 }

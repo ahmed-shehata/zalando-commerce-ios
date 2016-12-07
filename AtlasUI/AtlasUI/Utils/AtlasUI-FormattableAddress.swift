@@ -8,31 +8,31 @@ import Contacts
 
 extension FormattableAddress {
 
-    internal var formattedContact: String? {
+    var formattedContact: String? {
         let contactFormatter = CNContactFormatter()
         let contact = CNMutableContact()
 
         contact.givenName = firstName
         contact.familyName = lastName
 
-        return contactFormatter.stringFromContact(contact)
+        return contactFormatter.string(from: contact)
     }
 
-    internal var formattedPostalAddress: String {
+    var formattedPostalAddress: String {
         let postalFormatter = CNPostalAddressFormatter()
         let postalAddress = CNMutablePostalAddress()
 
         postalAddress.city = city
         postalAddress.postalCode = zip
-        postalAddress.ISOCountryCode = countryCode
+        postalAddress.isoCountryCode = countryCode
 
         let addressLines = [prefixedAddressLine1, prefixedAddressLine2]
-        postalAddress.street = addressLines.filter { !$0.isEmpty }.joinWithSeparator("\n")
+        postalAddress.street = addressLines.filter { !$0.isEmpty }.joined(separator: "\n")
 
-        return postalFormatter.stringFromPostalAddress(postalAddress)
+        return postalFormatter.string(from: postalAddress)
     }
 
-    internal var splittedFormattedPostalAddress: [String] {
+    var splittedFormattedPostalAddress: [String] {
         let postalFormatter = CNPostalAddressFormatter()
         let firstLineAddress = CNMutablePostalAddress()
         let secondLineAddress = CNMutablePostalAddress()
@@ -41,9 +41,9 @@ extension FormattableAddress {
 
         secondLineAddress.city = city
         secondLineAddress.postalCode = zip
-        secondLineAddress.ISOCountryCode = countryCode
+        secondLineAddress.isoCountryCode = countryCode
 
-        return [postalFormatter.stringFromPostalAddress(firstLineAddress), postalFormatter.stringFromPostalAddress(secondLineAddress)]
+        return [postalFormatter.string(from: firstLineAddress), postalFormatter.string(from: secondLineAddress)]
     }
 
 }

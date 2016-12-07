@@ -12,6 +12,6 @@ do {
 }
 
 while true {
-    NSThread.sleepForTimeInterval(1)
+    Thread.sleep(forTimeInterval: 1)
 }
 

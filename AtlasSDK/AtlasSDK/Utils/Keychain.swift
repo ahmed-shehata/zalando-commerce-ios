@@ -7,10 +7,12 @@ import Security
 
 struct Keychain {
 
-    static func delete(key key: String) -> Bool {
-        return write(nil, forKey: key)
+    @discardableResult
+    static func delete(key: String) -> Bool {
+        return write(value: nil, forKey: key)
     }
 
+    @discardableResult
     static func write(value: String?, forKey key: String) -> Bool {
         var status: OSStatus
         defer {
@@ -19,48 +21,48 @@ struct Keychain {
             }
         }
 
-        let query = prepareItemQuery(key)
+        let query = prepareItemQuery(accountName: key)
 
-        guard let value = value, data = value.dataUsingEncoding(NSUTF8StringEncoding) else {
-            status = SecItemDelete(query)
+        guard let value = value, let data = value.data(using: String.Encoding.utf8) else {
+            status = SecItemDelete(query as CFDictionary)
             return status == errSecSuccess
         }
 
-        if SecItemCopyMatching(query, nil) == errSecSuccess {
-            let updateData: [NSObject: AnyObject] = [kSecValueData: data]
-            status = SecItemUpdate(query, updateData)
+        if SecItemCopyMatching(query as CFDictionary, nil) == errSecSuccess {
+            let updateData: [AnyHashable: Any] = [kSecValueData as AnyHashable: data]
+            status = SecItemUpdate(query as CFDictionary, updateData as CFDictionary)
         } else {
             var securedItem = query
-            securedItem[kSecValueData] = data
-            status = SecItemAdd(securedItem, nil)
+            securedItem[kSecValueData as AnyHashable] = data
+            status = SecItemAdd(securedItem as CFDictionary, nil)
         }
 
         return status == errSecSuccess
     }
 
     static func read(forKey key: String) -> String? {
-        var query = prepareItemQuery(key)
-        query[kSecReturnData] = true
-        query[kSecReturnAttributes] = true
+        var query = prepareItemQuery(accountName: key)
+        query[kSecReturnData as AnyHashable] = true
+        query[kSecReturnAttributes as AnyHashable] = true
 
         var result: AnyObject?
-        let status = withUnsafeMutablePointer(&result) {
-            SecItemCopyMatching(query, UnsafeMutablePointer($0))
+        let status = withUnsafeMutablePointer(to: &result) {
+            SecItemCopyMatching(query as CFDictionary, UnsafeMutablePointer($0))
         }
 
         guard let resultDict = result as? [NSString: AnyObject],
-            resultData = resultDict[kSecValueData] as? NSData where status == errSecSuccess else {
+            let resultData = resultDict[kSecValueData] as? Data, status == errSecSuccess else {
                 return nil
         }
 
-        return String(data: resultData, encoding: NSUTF8StringEncoding)
+        return String(data: resultData, encoding: String.Encoding.utf8)
     }
 
-    private static func prepareItemQuery(account: String) -> [NSObject: AnyObject] {
-        return [kSecClass: kSecClassGenericPassword,
-            kSecAttrAccessible: kSecAttrAccessibleWhenUnlocked,
-            kSecAttrAccount: account,
-            kSecAttrService: NSBundle.mainBundle().bundleIdentifier ?? "de.zalando.AtlasSDK"]
+    private static func prepareItemQuery(accountName: String) -> [AnyHashable: Any] {
+        return [kSecClass as AnyHashable: kSecClassGenericPassword,
+            kSecAttrAccessible as AnyHashable: kSecAttrAccessibleWhenUnlocked,
+            kSecAttrAccount as AnyHashable: accountName,
+            kSecAttrService as AnyHashable: Bundle.main.bundleIdentifier ?? "de.zalando.AtlasSDK"]
     }
 
 }
@@ -70,31 +72,31 @@ extension OSStatus {
     var description: String {
         switch self {
         case errSecSuccess:
-            return addStatus("OK.")
+            return addStatus(to: "OK.")
         case errSecUnimplemented:
-            return addStatus("Function or operation not implemented.")
+            return addStatus(to: "Function or operation not implemented.")
         case errSecParam:
-            return addStatus("One or more parameters passed to a function where not valid.")
+            return addStatus(to: "One or more parameters passed to a function where not valid.")
         case errSecAllocate:
-            return addStatus("Failed to allocate memory.")
+            return addStatus(to: "Failed to allocate memory.")
         case errSecNotAvailable:
-            return addStatus("No keychain is available. You may need to restart your computer.")
+            return addStatus(to: "No keychain is available. You may need to restart your computer.")
         case errSecDuplicateItem:
-            return addStatus("The specified item already exists in the keychain.")
+            return addStatus(to: "The specified item already exists in the keychain.")
         case errSecItemNotFound:
-            return addStatus("The specified item could not be found in the keychain.")
+            return addStatus(to: "The specified item could not be found in the keychain.")
         case errSecInteractionNotAllowed:
-            return addStatus("User interaction is not allowed.")
+            return addStatus(to: "User interaction is not allowed.")
         case errSecDecode:
-            return addStatus("Unable to decode the provided data.")
+            return addStatus(to: "Unable to decode the provided data.")
         case errSecAuthFailed:
-            return addStatus("The user name or passphrase you entered is not correct.")
+            return addStatus(to: "The user name or passphrase you entered is not correct.")
         default:
-            return addStatus("Refer to SecBase.h for description")
+            return addStatus(to: "Refer to SecBase.h for description")
         }
     }
 
-    private func addStatus(message: String) -> String {
+    fileprivate func addStatus(to message: String) -> String {
         return message + " (status: \(self))"
     }
 

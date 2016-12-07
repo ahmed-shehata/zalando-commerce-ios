@@ -8,18 +8,18 @@ import Nimble
 
 @testable import AtlasSDK
 
-class APICustomerTests: APIClientBaseTests {
+class APICustomerTests: AtlasAPIClientBaseTests {
 
-    let customerURL = NSURL(validURL: "https://atlas-sdk.api/api/customer")
+    let customerURL = URL(validURL: "https://atlas-sdk.api/api/customer")
 
     func testCreateCustomer() {
-        let json = ["customer_number": "12345678",
+        let json: [String: Any] = ["customer_number": "12345678",
                     "gender": "MALE",
                     "email": "aaa@a.a",
                     "first_name": "John",
                     "last_name": "Doe"]
-        let customerResponse = dataWithJSONObject(json)
-        let client = mockedAPIClient(forURL: customerURL, data: customerResponse, status: .OK)
+        let customerResponse = data(withJSONObject: json)
+        let client = mockedAtlasAPIClient(forURL: customerURL, data: customerResponse, status: .ok)
 
         waitUntil(timeout: 60) { done in
             client.customer { result in

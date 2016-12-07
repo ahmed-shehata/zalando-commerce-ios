@@ -14,11 +14,11 @@ protocol RowStackView {
 
 extension RowStackView {
 
-    internal func setTitle(localizerKey: String) {
-        self.titleLabel.text = Localizer.string(localizerKey)
+    func setTitle(fromLocalizedKey localizerKey: String) {
+        self.titleLabel.text = Localizer.format(string: localizerKey)
     }
 
-    internal var showArrow: Bool {
+    var showArrow: Bool {
         get {
             return arrowImageView.alpha == 1
         }

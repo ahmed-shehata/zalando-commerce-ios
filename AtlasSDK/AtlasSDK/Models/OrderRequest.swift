@@ -4,7 +4,7 @@
 
 import Foundation
 
-public struct OrderRequest: JSONRepresentable {
+public struct OrderRequest {
 
     public let checkoutId: String
 
@@ -12,7 +12,11 @@ public struct OrderRequest: JSONRepresentable {
         self.checkoutId = checkoutId
     }
 
-    public func toJSON() -> Dictionary<String, AnyObject> {
+}
+
+extension OrderRequest: JSONRepresentable {
+
+    func toJSON() -> JSONDictionary {
         return [
             "checkout_id": self.checkoutId
         ]

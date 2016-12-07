@@ -23,32 +23,25 @@ class AtlasTests: XCTestCase {
 
     func testSaveUserToken() {
         loginUser()
-        expect(Atlas.isUserLoggedIn()).to(beTrue())
+        expect(Atlas.isAuthorized()).to(beTrue())
     }
 
     func testLogoutUser() {
         loginUser()
-        Atlas.logoutUser()
-        expect(Atlas.isUserLoggedIn()).to(beFalse())
+        Atlas.deauthorize()
+        expect(Atlas.isAuthorized()).to(beFalse())
     }
 
-    func testAPIClient() {
-        let opts = Options(clientId: "atlas_Y2M1MzA",
-                           salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
-                           useSandbox: true,
-                           interfaceLanguage: "de",
-                           configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"),
-                           authorizationHandler: MockAuthorizationHandler())
-
+    func testAtlasAPIClient() {
         waitUntil(timeout: 60) { done in
-            Atlas.configure(opts) { result in
+            Atlas.configure(options: Options.forTests()) { result in
                 switch result {
                 case .failure(let error):
-                    fail(String(error))
+                    fail(String(describing: error))
                 case .success(let client):
                     expect(client.config.salesChannel.identifier).to(equal("82fe2e7f-8c4f-4aa1-9019-b6bde5594456"))
-                    expect(client.config.clientId).to(equal("atlas_Y2M1MzA"))
-                    expect(client.config.interfaceLocale.localeIdentifier).to(equal("de_DE"))
+                    expect(client.config.clientId).to(equal("partner_YCg9dRq"))
+                    expect(client.config.interfaceLocale.identifier).to(equal("en_DE"))
                     expect(client.config.availableSalesChannels.count).to(equal(16))
                 }
                 done()
@@ -60,8 +53,8 @@ class AtlasTests: XCTestCase {
 
 extension AtlasTests {
 
-    private func loginUser() {
-        APIAccessToken.store("TEST_TOKEN")
+    fileprivate func loginUser() {
+        APIAccessToken.store(token: "TEST_TOKEN")
     }
 
 }

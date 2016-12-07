@@ -9,11 +9,11 @@
     "id" : "AZ711M001-B110370000",
     "size" : "37",
     "price" : {
-      "amount" : 209.95,
+      "amount" : 10.45,
       "currency" : "EUR"
     },
     "original_price" : {
-      "amount" : 299.95,
+      "amount" : 12.45,
       "currency" : "EUR"
     },
     "available" : true,
@@ -87,11 +87,11 @@
     "id" : "AZ711M001-B110410000",
     "size" : "41",
     "price" : {
-      "amount" : 209.95,
+      "amount" : 10.45,
       "currency" : "EUR"
     },
     "original_price" : {
-      "amount" : 299.95,
+      "amount" : 12.45,
       "currency" : "EUR"
     },
     "available" : true,
@@ -100,11 +100,11 @@
     "id" : "AZ711M001-B110420000",
     "size" : "42",
     "price" : {
-      "amount" : 209.95,
+      "amount" : 10.45,
       "currency" : "EUR"
     },
     "original_price" : {
-      "amount" : 299.95,
+      "amount" : 12.45,
       "currency" : "EUR"
     },
     "available" : true,

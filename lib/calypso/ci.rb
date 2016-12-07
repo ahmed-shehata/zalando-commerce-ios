@@ -55,7 +55,7 @@ module Calypso
     private
 
     def notify(status, message)
-      puts "Status updated: #{status} - '#{message}'"
+      log "Status updated: #{status} - '#{message}'"
       begin
         t = Time.now
         tz = t.dst? ? '+02:00' : '+01:00'
@@ -66,7 +66,7 @@ module Calypso
           target_url: target_url,
           description: "#{message} (#{tf})"
       rescue StandardError => e
-        abort "ERROR updating status: #{e}"
+        log_abort "ERROR updating status: #{e}"
       end
     end
 

@@ -35,11 +35,11 @@
     "zip" : "10178",
     "city" : "Berlin",
     "country_code" : "DE",
- "pickup_point" : {
- "name" : "PACKSTATION",
- "id" : "123",
- "member_id" : "1234567"
- },
+    "pickup_point" : {
+        "name" : "PACKSTATION",
+        "id" : "123",
+        "member_id" : "1234567"
+    },
     "default_billing" : false,
     "default_shipping" : false
 }]

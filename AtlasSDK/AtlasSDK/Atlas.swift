@@ -4,13 +4,11 @@
 
 import Foundation
 
-public typealias AtlasClientCompletion = AtlasResult<APIClient> -> Void
+public typealias AtlasClientCompletion = (AtlasResult<AtlasAPIClient>) -> Void
 
 public struct Atlas {
 
-    private static let injector = Injector()
-
-    public static func configure(options: Options? = nil, completion: AtlasClientCompletion) {
+    public static func configure(options: Options? = nil, completion: @escaping AtlasClientCompletion) {
         let options = options ?? Options()
         do {
             try options.validate()
@@ -21,30 +19,26 @@ public struct Atlas {
 
         ConfigClient(options: options).configure { result in
             switch result {
-            case .failure(let error):
+            case .failure(let error, _):
                 AtlasLogger.logError(error)
                 completion(.failure(error))
             case .success(let config):
-                let client = APIClient(config: config)
+                let client = AtlasAPIClient(config: config)
                 completion(.success(client))
             }
         }
     }
 
-    public static func isUserLoggedIn() -> Bool {
+    public static func authorize(withToken token: String) {
+        APIAccessToken.store(token: token)
+    }
+
+    public static func isAuthorized() -> Bool {
         return APIAccessToken.retrieve() != nil
     }
 
-    public static func logoutUser() {
+    public static func deauthorize() {
         APIAccessToken.delete()
-    }
-
-    public static func register<T>(factory: Void -> T) {
-        injector.register(factory)
-    }
-
-    public static func provide<T>() throws -> T {
-        return try injector.provide()
     }
 
 }

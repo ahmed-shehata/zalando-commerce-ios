@@ -4,8 +4,10 @@
 
 import Foundation
 
+typealias JSONDictionary = [String: Any]
+
 protocol JSONRepresentable {
 
-    func toJSON() -> [String: AnyObject]
+    func toJSON() -> JSONDictionary
 
 }

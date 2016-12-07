@@ -9,13 +9,13 @@ public struct CheckAddressRequest {
 
 extension CheckAddressRequest: JSONRepresentable {
 
-    private struct Keys {
+    fileprivate struct Keys {
         static let address = "address"
         static let pickupPoint = "pickup_point"
     }
 
-    func toJSON() -> [String : AnyObject] {
-        var result: [String: AnyObject] = [
+    func toJSON() -> [String : Any] {
+        var result: [String: Any] = [
             Keys.address: address.toJSON()
         ]
         if let pickupPoint = pickupPoint {

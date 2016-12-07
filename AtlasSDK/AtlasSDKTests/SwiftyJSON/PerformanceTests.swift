@@ -1,6 +1,6 @@
-// PerformanceTests.swift
+//  PerformanceTests.swift
 //
-//  Copyright (c) 2014 Pinglin Tang
+//  Copyright (c) 2014 - 2016 Pinglin Tang
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -21,75 +21,77 @@
 //  THE SOFTWARE.
 
 import XCTest
-@testable import AtlasSDK
+import SwiftyJSON
 
 class PerformanceTests: XCTestCase {
 
-    var testData: NSData!
-
+    var testData: Data!
+    
     override func setUp() {
         super.setUp()
-
-        if let file = NSBundle(forClass: PerformanceTests.self).pathForResource("Tests", ofType: "json") {
-            self.testData = NSData(contentsOfFile: file)
+        
+        if let file = Bundle(for:PerformanceTests.self).path(forResource: "Tests", ofType: "json") {
+            self.testData = try? Data(contentsOf: URL(fileURLWithPath: file))
         } else {
             XCTFail("Can't find the test JSON file")
         }
     }
-
+    
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-
+    
     func testInitPerformance() {
-        self.measureBlock() {
+        self.measure() {
             for _ in 1...100 {
-                let json = JSON(data: self.testData)
+                let json = JSON(data:self.testData)
                 XCTAssertTrue(json != JSON.null)
             }
         }
     }
-
+    
     func testObjectMethodPerformance() {
-        var json = JSON(data: self.testData)
-        self.measureBlock() {
+        let json = JSON(data:self.testData)
+        self.measure() {
             for _ in 1...100 {
-                let object: AnyObject? = json.object
+                let object:Any? = json.object
                 XCTAssertTrue(object != nil)
             }
         }
     }
 
     func testArrayMethodPerformance() {
-        let json = JSON(data: self.testData)
-        self.measureBlock() {
+        let json = JSON(data:self.testData)
+        self.measure() {
             for _ in 1...100 {
-                autoreleasepool {
-                    let array = json.array
-                    XCTAssertTrue(array?.count > 0)
+                autoreleasepool{
+                    if let array = json.array {
+                        XCTAssertTrue(array.count > 0)
+                    }
                 }
             }
         }
     }
-
+    
     func testDictionaryMethodPerformance() {
-        let json = JSON(data: testData)[0]
-        self.measureBlock() {
+        let json = JSON(data:testData)[0]
+        self.measure() {
             for _ in 1...100 {
-                autoreleasepool {
-                    let dictionary = json.dictionary
-                    XCTAssertTrue(dictionary?.count > 0)
+                autoreleasepool{
+                    if let dictionary = json.dictionary {
+                        XCTAssertTrue(dictionary.count > 0)
+                    }
                 }
             }
         }
     }
-
+    
     func testRawStringMethodPerformance() {
-        let json = JSON(data: testData)
-        self.measureBlock() {
+        let json = JSON(data:testData)
+        self.measure() {
             for _ in 1...100 {
-                autoreleasepool {
+                autoreleasepool{
                     let string = json.rawString()
                     XCTAssertTrue(string != nil)
                 }
@@ -97,4 +99,24 @@ class PerformanceTests: XCTestCase {
         }
     }
 
+    func testLargeDictionaryMethodPerformance() {
+        var data: [String: JSON] = [:]
+        (0...100000).forEach { n in
+            data["\(n)"] = JSON([
+                "name": "item\(n)",
+                "id": n
+                ])
+        }
+        let json = JSON(data)
+        
+        self.measure() {
+            autoreleasepool{
+                if let dictionary = json.dictionary {
+                    XCTAssertTrue(dictionary.count > 0)
+                } else {
+                    XCTFail("dictionary should not be nil")
+                }
+            }
+        }
+    }
 }

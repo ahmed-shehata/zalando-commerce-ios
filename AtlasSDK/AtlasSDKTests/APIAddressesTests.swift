@@ -8,14 +8,14 @@ import Nimble
 
 @testable import AtlasSDK
 
-class APIAddressesTests: APIClientBaseTests {
+class APIAddressesTests: AtlasAPIClientBaseTests {
 
     func testFetchAddressObject() {
-        waitUntilAPIClientIsConfigured { done, client in
+        waitUntilAtlasAPIClientIsConfigured { done, client in
             client.addresses { result in
                 switch result {
                 case .failure(let error):
-                    fail(String(error))
+                    fail(String(describing: error))
                 case .success(let addresses):
                     expect(addresses.first?.id).to(equal("6702759"))
                     expect(addresses.first?.customerNumber).to(equal("3036553496"))
@@ -36,11 +36,11 @@ class APIAddressesTests: APIClientBaseTests {
     }
 
     func testDeleteAddress() {
-        waitUntilAPIClientIsConfigured { done, client in
-            client.deleteAddress("6702748") { result in
+        waitUntilAtlasAPIClientIsConfigured { done, client in
+            client.deleteAddress(withId: "6702748") { result in
                 switch result {
                 case .failure(let error):
-                    fail(String(error))
+                    fail(String(describing: error))
                 case .success(let emptyResponse):
                     expect(emptyResponse).notTo(beNil())
                 }

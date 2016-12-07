@@ -14,8 +14,8 @@ class OptionsTests: XCTestCase {
     let salesChannel = "SALES_CHANNEL_SPEC"
     let interfaceLanguage = "fr"
     let useSandbox = true
-    let emptyBundle = NSBundle()
-    let testsBundle = NSBundle(forClass: OptionsTests.self)
+    let emptyBundle = Bundle()
+    let testsBundle = Bundle(for: OptionsTests.self)
 
     func testInitialization() {
         let opts = Options(clientId: clientId,
@@ -27,12 +27,6 @@ class OptionsTests: XCTestCase {
         expect(opts.salesChannel).to(equal(salesChannel))
         expect(opts.interfaceLanguage).to(equal(interfaceLanguage))
         expect(opts.useSandboxEnvironment).to(equal(useSandbox))
-    }
-
-    func testRegisterAuthorizationHandler() {
-        let _ = Options(authorizationHandler: MockAuthorizationHandler())
-        let authorizationHandler = try? Atlas.provide() as AuthorizationHandler
-        expect(authorizationHandler).toNot(beNil())
     }
 
     func testNoDefaultLanguage() {

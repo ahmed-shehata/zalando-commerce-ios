@@ -8,16 +8,14 @@ import Nimble
 @testable import AtlasUI
 @testable import AtlasSDK
 
-class EditAddressTypeTests: XCTestCase {
+class EditAddressTypeTests: UITestCase {
 
-    var viewModel: AddressFormViewModel!
+    var dataModel: AddressFormDataModel!
 
     override func setUp() {
         super.setUp()
-
-        Atlas.register { try! Localizer(localeIdentifier: "en_UK") as Localizer }
-        viewModel = AddressFormViewModel(equatableAddress: nil, countryCode: "DE")
-        updateModelData(viewModel)
+        dataModel = AddressFormDataModel(equatableAddress: nil, countryCode: "DE")
+        update(dataModel: dataModel)
     }
 
     func testFieldTitle() {
@@ -33,45 +31,45 @@ class EditAddressTypeTests: XCTestCase {
         expect(AddressFormField.country.title).to(equal("Country*"))
     }
 
-    func testSettingViewModelData() {
-        expect(self.viewModel.gender).to(equal(Gender.male))
-        expect(self.viewModel.firstName).to(equal("John"))
-        expect(self.viewModel.lastName).to(equal("Doe"))
-        expect(self.viewModel.street).to(equal("Mollstr. 1"))
-        expect(self.viewModel.additional).to(equal("C/O Zalando SE"))
-        expect(self.viewModel.pickupPointId).to(equal("123"))
-        expect(self.viewModel.pickupPointMemberId).to(equal("12345"))
-        expect(self.viewModel.zip).to(equal("10178"))
-        expect(self.viewModel.city).to(equal("Berlin"))
+    func testSettingDataModelData() {
+        expect(self.dataModel.gender).to(equal(Gender.male))
+        expect(self.dataModel.firstName).to(equal("John"))
+        expect(self.dataModel.lastName).to(equal("Doe"))
+        expect(self.dataModel.street).to(equal("Mollstr. 1"))
+        expect(self.dataModel.additional).to(equal("C/O Zalando SE"))
+        expect(self.dataModel.pickupPointId).to(equal("123"))
+        expect(self.dataModel.pickupPointMemberId).to(equal("12345"))
+        expect(self.dataModel.zip).to(equal("10178"))
+        expect(self.dataModel.city).to(equal("Berlin"))
     }
 
-    func testReadingFromViewModel() {
-        expect(AddressFormField.title.value(self.viewModel)).to(equal("Mr"))
-        expect(AddressFormField.firstName.value(self.viewModel)).to(equal("John"))
-        expect(AddressFormField.lastName.value(self.viewModel)).to(equal("Doe"))
-        expect(AddressFormField.street.value(self.viewModel)).to(equal("Mollstr. 1"))
-        expect(AddressFormField.additional.value(self.viewModel)).to(equal("C/O Zalando SE"))
-        expect(AddressFormField.packstation.value(self.viewModel)).to(equal("123"))
-        expect(AddressFormField.memberID.value(self.viewModel)).to(equal("12345"))
-        expect(AddressFormField.zipcode.value(self.viewModel)).to(equal("10178"))
-        expect(AddressFormField.city.value(self.viewModel)).to(equal("Berlin"))
-        expect(AddressFormField.country.value(self.viewModel)).to(equal("Germany"))
+    func testReadingFromDataModel() {
+        expect(self.dataModel.value(forField: .title)).to(equal("Mr"))
+        expect(self.dataModel.value(forField: .firstName)).to(equal("John"))
+        expect(self.dataModel.value(forField: .lastName)).to(equal("Doe"))
+        expect(self.dataModel.value(forField: .street)).to(equal("Mollstr. 1"))
+        expect(self.dataModel.value(forField: .additional)).to(equal("C/O Zalando SE"))
+        expect(self.dataModel.value(forField: .packstation)).to(equal("123"))
+        expect(self.dataModel.value(forField: .memberID)).to(equal("12345"))
+        expect(self.dataModel.value(forField: .zipcode)).to(equal("10178"))
+        expect(self.dataModel.value(forField: .city)).to(equal("Berlin"))
+        expect(self.dataModel.value(forField: .country)).to(equal("Germany"))
     }
 
 }
 
 extension EditAddressTypeTests {
 
-    private func updateModelData(viewModel: AddressFormViewModel) {
-        AddressFormField.title.updateModel(viewModel, withValue: "Mr")
-        AddressFormField.firstName.updateModel(viewModel, withValue: "John")
-        AddressFormField.lastName.updateModel(viewModel, withValue: "Doe")
-        AddressFormField.street.updateModel(viewModel, withValue: "Mollstr. 1")
-        AddressFormField.additional.updateModel(viewModel, withValue: "C/O Zalando SE")
-        AddressFormField.packstation.updateModel(viewModel, withValue: "123")
-        AddressFormField.memberID.updateModel(viewModel, withValue: "12345")
-        AddressFormField.zipcode.updateModel(viewModel, withValue: "10178")
-        AddressFormField.city.updateModel(viewModel, withValue: "Berlin")
+    fileprivate func update(dataModel: AddressFormDataModel) {
+        dataModel.update(value: "Mr", fromField: .title)
+        dataModel.update(value: "John", fromField: .firstName)
+        dataModel.update(value: "Doe", fromField: .lastName)
+        dataModel.update(value: "Mollstr. 1", fromField: .street)
+        dataModel.update(value: "C/O Zalando SE", fromField: .additional)
+        dataModel.update(value: "123", fromField: .packstation)
+        dataModel.update(value: "12345", fromField: .memberID)
+        dataModel.update(value: "10178", fromField: .zipcode)
+        dataModel.update(value: "Berlin", fromField: .city)
     }
 
 }

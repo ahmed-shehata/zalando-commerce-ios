@@ -8,17 +8,17 @@ import Nimble
 
 @testable import AtlasSDK
 
-class APIUpdateCheckoutTests: APIClientBaseTests {
+class APIUpdateCheckoutTests: AtlasAPIClientBaseTests {
 
-    private let addressId = "6702759"
+    fileprivate let addressId = "6702759"
 
     func testUpdateBillingAddress() {
-        waitUntilAPIClientIsConfigured { done, client in
+        waitUntilAtlasAPIClientIsConfigured { done, client in
             let updateRequest = UpdateCheckoutRequest(billingAddressId: self.addressId)
-            client.updateCheckout(self.checkoutId, updateCheckoutRequest: updateRequest) { result in
+            client.updateCheckout(withId: self.checkoutId, updateCheckoutRequest: updateRequest) { result in
                 switch result {
                 case .failure(let error):
-                    fail(String(error))
+                    fail(String(describing: error))
                 case .success(let checkout):
                     expect(checkout.id).to(equal(self.checkoutId))
                     expect(checkout.billingAddress.id).to(equal(self.addressId))
@@ -29,12 +29,12 @@ class APIUpdateCheckoutTests: APIClientBaseTests {
     }
 
     func testUpdateShippingAddress() {
-        waitUntilAPIClientIsConfigured { done, client in
+        waitUntilAtlasAPIClientIsConfigured { done, client in
             let updateRequest = UpdateCheckoutRequest(shippingAddressId: self.addressId)
-            client.updateCheckout(self.checkoutId, updateCheckoutRequest: updateRequest) { result in
+            client.updateCheckout(withId: self.checkoutId, updateCheckoutRequest: updateRequest) { result in
                 switch result {
                 case .failure(let error):
-                    fail(String(error))
+                    fail(String(describing: error))
                 case .success(let checkout):
                     expect(checkout.id).to(equal(self.checkoutId))
                     expect(checkout.shippingAddress.id).to(equal(self.addressId))
@@ -45,12 +45,12 @@ class APIUpdateCheckoutTests: APIClientBaseTests {
     }
 
     func testUpdateBillingAndShippingAddresses() {
-        waitUntilAPIClientIsConfigured { done, client in
+        waitUntilAtlasAPIClientIsConfigured { done, client in
             let updateRequest = UpdateCheckoutRequest(billingAddressId: self.addressId, shippingAddressId: self.addressId)
-            client.updateCheckout(self.checkoutId, updateCheckoutRequest: updateRequest) { result in
+            client.updateCheckout(withId: self.checkoutId, updateCheckoutRequest: updateRequest) { result in
                 switch result {
                 case .failure(let error):
-                    fail(String(error))
+                    fail(String(describing: error))
                 case .success(let checkout):
                     expect(checkout.id).to(equal(self.checkoutId))
                     expect(checkout.billingAddress.id).to(equal(self.addressId))

@@ -1,5 +1,6 @@
 require 'thor'
 require_relative 'consts'
+require_relative 'run'
 
 module Calypso
 
@@ -9,8 +10,7 @@ module Calypso
     def check(dir = nil)
       dirs = dir ? [dir] : PROJECT_DIRS
       dirs.each do |d|
-        puts "swiftlint lint --config #{LINT_CFG} --path #{d} 2> /dev/null"
-        system "swiftlint lint --config #{LINT_CFG} --path #{d} 2> /dev/null"
+        run "swiftlint lint --config #{LINT_CFG} --path #{d} 2> /dev/null"
       end
     end
 
@@ -18,9 +18,11 @@ module Calypso
     def fix(dir = nil)
       dirs = dir ? [dir] : PROJECT_DIRS
       dirs.each do |d|
-        system "swiftlint autocorrect --config #{LINT_CFG} --path #{d} > /dev/null"
+        run "swiftlint autocorrect --config #{LINT_CFG} --path #{d} > /dev/null"
       end
     end
+
+    include Run
 
   end
 

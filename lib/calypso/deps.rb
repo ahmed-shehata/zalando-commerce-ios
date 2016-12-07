@@ -9,15 +9,17 @@ module Calypso
 
   class Deps < Thor
 
+    MAC_DEPS = 'swifter SwiftyJSON'.freeze
+
     desc 'build', 'Build dependencies'
     def build
-      run 'carthage bootstrap --platform iOS'
-      run 'carthage build --platform Mac swifter'
+      run 'carthage bootstrap --platform iOS --no-use-binaries'
+      run "carthage build --platform Mac #{MAC_DEPS}"
     end
 
     desc 'update', 'Update dependencies'
     def update
-      run 'carthage update --platform iOS'
+      run "carthage update --platform iOS --no-use-binaries #{MAC_DEPS}"
     end
 
     desc 'clean', 'Clean dependencies'
@@ -35,7 +37,7 @@ module Calypso
     desc 'uncached', 'Builds only if they\'re not cached (used in CI)'
     def uncached
       if cached?
-        puts "#{CART_RES} unchanged. Assuming correctly cached #{CART_DIR}"
+        log "#{CART_RES} unchanged. Assuming correctly cached #{CART_DIR}"
         return
       end
       invoke :build

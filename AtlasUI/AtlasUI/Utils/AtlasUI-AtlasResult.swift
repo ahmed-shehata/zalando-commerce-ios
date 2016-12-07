@@ -4,23 +4,37 @@
 
 import AtlasSDK
 
+public enum ProcessedAtlasResult<T> {
+
+    case success(T)
+    case error(error: Error, title: String, message: String)
+
+}
+
 extension AtlasResult {
 
-    internal func process(forceFullScreenError fullScreen: Bool = false) -> T? {
+    public func processedResult() -> ProcessedAtlasResult<T> {
         switch self {
+        case .success(let data):
+            return .success(data)
         case .failure(let error):
-            guard (error as? AtlasUserError) != AtlasUserError.userCancelled else {
-                return nil
-            }
+            let userPresentable = error as? UserPresentableError ?? AtlasCheckoutError.unclassified
+            return .error(error: error, title: userPresentable.displayedTitle, message: userPresentable.displayedMessage)
+        }
+    }
 
-            if fullScreen {
-                UserMessage.displayErrorFullScreen(error)
-            } else {
-                UserMessage.displayError(error)
-            }
-            return nil
+    func process(forceFullScreenError fullScreen: Bool = false) -> T? {
+        let processedResult = self.processedResult()
+        switch processedResult {
         case .success(let data):
             return data
+        case .error(let error, _, _):
+            if fullScreen {
+                UserMessage.displayErrorFullScreen(error: error)
+            } else {
+                UserMessage.displayError(error: error)
+            }
+            return nil
         }
     }
 

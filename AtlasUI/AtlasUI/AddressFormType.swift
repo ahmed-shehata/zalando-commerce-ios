@@ -1,3 +1,4 @@
+// swiftlint:disable cyclomatic_complexity
 //
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
@@ -5,19 +6,18 @@
 import Foundation
 import AtlasSDK
 
-enum AddressFormMode {
-    case createAddress(addressViewModel: AddressFormViewModel)
-    case updateAddress(address: EquatableAddress)
-}
-
 enum AddressFormType {
     case standardAddress
     case pickupPoint
+    case guestStandardAddress
+    case guestPickupPoint
 
     var fields: [AddressFormField] {
         switch self {
         case .standardAddress: return [.title, .firstName, .lastName, .street, .additional, .zipcode, .city, .country]
         case .pickupPoint: return [.title, .firstName, .lastName, .packstation, .memberID, .zipcode, .city, .country]
+        case .guestStandardAddress: return [.title, .firstName, .lastName, .emailAddress, .street, .additional, .zipcode, .city, .country]
+        case .guestPickupPoint: return [.title, .firstName, .lastName, .emailAddress, .packstation, .memberID, .zipcode, .city, .country]
         }
     }
 }
@@ -26,6 +26,7 @@ enum AddressFormField: String {
     case title
     case firstName
     case lastName
+    case emailAddress
     case street
     case additional
     case packstation
@@ -35,42 +36,12 @@ enum AddressFormField: String {
     case country
 
     var accessibilityIdentifier: String {
-        return "\(rawValue.lowercaseString)-textfield"
+        return "\(rawValue.lowercased())-textfield"
     }
 
     var title: String {
-        let title = Localizer.string("addressFormView.\(rawValue.lowercaseString)")
-        return title + (formValidators.contains { $0 == .Required } ? "*" : "")
-    }
-
-    func value(viewModel: AddressFormViewModel) -> String? {
-        switch self {
-        case .title: return viewModel.localizedTitle()
-        case .firstName: return viewModel.firstName
-        case .lastName: return viewModel.lastName
-        case .street: return viewModel.street
-        case .additional: return viewModel.additional
-        case .packstation: return viewModel.pickupPointId
-        case .memberID: return viewModel.pickupPointMemberId
-        case .zipcode: return viewModel.zip
-        case .city: return viewModel.city
-        case .country: return Localizer.countryName(forCountryCode: viewModel.countryCode)
-        }
-    }
-
-    func updateModel(viewModel: AddressFormViewModel, withValue value: String?) {
-        switch self {
-        case .title: viewModel.updateTitle(value)
-        case .firstName: viewModel.firstName = value
-        case .lastName: viewModel.lastName = value
-        case .street: viewModel.street = value
-        case .additional: viewModel.additional = value
-        case .packstation: viewModel.pickupPointId = value
-        case .memberID: viewModel.pickupPointMemberId = value
-        case .zipcode: viewModel.zip = value
-        case .city: viewModel.city = value
-        case .country: break
-        }
+        let title = Localizer.format(string: "addressFormView.\(rawValue.lowercased())")
+        return title + (formValidators.contains { $0 == .required } ? "*" : "")
     }
 
     func isActive() -> Bool {
@@ -84,13 +55,12 @@ enum AddressFormField: String {
         }
     }
 
-    func customView(viewModel: AddressFormViewModel, completion: TextFieldChangedHandler) -> UIView? {
+    func customView(from dataModel: AddressFormDataModel, completion: @escaping TextFieldChangedHandler) -> UIView? {
         switch self {
         case .title:
-            let titles = viewModel.titles
-            let currentTitle = value(viewModel) ?? ""
-            let currentTitleIdx = titles.indexOf(currentTitle) ?? 0
-            return PickerKeyboardInputView(pickerData: titles, startingValueIndex: currentTitleIdx, completion: completion)
+            return PickerKeyboardInputView(pickerData: dataModel.titles,
+                                           startingValueIndex: dataModel.selectedTitleIndex(),
+                                           completion: completion)
         default:
             return nil
         }
@@ -99,47 +69,82 @@ enum AddressFormField: String {
     var formValidators: [FormValidator] {
         switch self {
         case .title:
-            return [.Required]
+            return [.required]
         case .firstName, .lastName:
-            return [.Required,
-                    .MaxLength(maxLength: 50),
-                    .MinLength(minLength: 2),
-                    .Pattern(pattern: FormValidator.namePattern, errorMessage: "formValidation.pattern.name")]
+            return [.required,
+                    .maxLength(maxLength: 50),
+                    .minLength(minLength: 2),
+                    .pattern(pattern: FormValidator.namePattern, errorMessage: "formValidation.pattern.name")]
+        case .emailAddress:
+            return [.required,
+                    .validEmail]
         case .street:
-            return [.Required,
-                    .MaxLength(maxLength: 50),
-                    .MinLength(minLength: 2),
-                    .Pattern(pattern: FormValidator.streetPattern, errorMessage: "formValidation.pattern.street")]
+            return [.required,
+                    .maxLength(maxLength: 50),
+                    .minLength(minLength: 2),
+                    .pattern(pattern: FormValidator.streetPattern, errorMessage: "formValidation.pattern.street")]
         case .additional:
-            return [.MaxLength(maxLength: 50)]
+            return [.maxLength(maxLength: 50)]
         case .packstation:
-            return [.Required,
-                    .ExactLength(length: 3),
-                    .NumbersOnly]
+            return [.required,
+                    .exactLength(length: 3),
+                    .numbersOnly]
         case .memberID:
-            return [.Required,
-                    .MinLength(minLength: 3),
-                    .NumbersOnly]
+            return [.required,
+                    .minLength(minLength: 3),
+                    .numbersOnly]
         case .zipcode:
-            return [.Required,
-                    .ExactLength(length: 5),
-                    .NumbersOnly]
+            return [.required,
+                    .exactLength(length: 5),
+                    .numbersOnly]
         case .city:
-            return [.Required,
-                    .MaxLength(maxLength: 50),
-                    .MinLength(minLength: 2),
-                    .Pattern(pattern: FormValidator.cityPattern, errorMessage: "formValidation.pattern.city")]
+            return [.required,
+                    .maxLength(maxLength: 50),
+                    .minLength(minLength: 2),
+                    .pattern(pattern: FormValidator.cityPattern, errorMessage: "formValidation.pattern.city")]
         case .country:
-            return [.Required]
+            return [.required]
         }
     }
 
 }
 
-internal func == (lhs: AddressFormMode, rhs: AddressFormMode) -> Bool {
-    switch (lhs, rhs) {
-    case (.createAddress, .createAddress): return true
-    case (.updateAddress(let lhsAddress), .updateAddress(let rhsAddress)): return lhsAddress == rhsAddress
-    default: return false
+extension AddressFormDataModel {
+
+    fileprivate func selectedTitleIndex() -> Int {
+        guard let title = self.localizedTitle() else { return 0 }
+        return titles.index(of: title) ?? 0
+    }
+
+    func value(forField field: AddressFormField) -> String? {
+        switch field {
+        case .title: return self.localizedTitle()
+        case .firstName: return self.firstName
+        case .lastName: return self.lastName
+        case .emailAddress: return self.email
+        case .street: return self.street
+        case .additional: return self.additional
+        case .packstation: return self.pickupPointId
+        case .memberID: return self.pickupPointMemberId
+        case .zipcode: return self.zip
+        case .city: return self.city
+        case .country: return Localizer.countryName(forCountryCode: self.countryCode)
+        }
+    }
+
+    func update(value: String?, fromField field: AddressFormField) {
+        switch field {
+        case .title: self.updateTitle(fromLocalizedGenderText: value)
+        case .firstName: self.firstName = value
+        case .lastName: self.lastName = value
+        case .emailAddress: self.email = value
+        case .street: self.street = value
+        case .additional: self.additional = value
+        case .packstation: self.pickupPointId = value
+        case .memberID: self.pickupPointMemberId = value
+        case .zipcode: self.zip = value
+        case .city: self.city = value
+        case .country: break
+        }
     }
 }

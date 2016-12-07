@@ -6,19 +6,19 @@ import UIKit
 
 class CheckoutSummaryDeliveryStackView: UIStackView {
 
-    internal let deliveryTitleLabel: UILabel = {
+    let deliveryTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFontOfSize(10, weight: UIFontWeightLight)
-        label.textColor = .blackColor()
-        label.textAlignment = .Left
+        label.font = .systemFont(ofSize: 10, weight: UIFontWeightLight)
+        label.textColor = .black
+        label.textAlignment = .left
         return label
     }()
 
-    internal let deliveryValueLabel: UILabel = {
+    let deliveryValueLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFontOfSize(10, weight: UIFontWeightLight)
+        label.font = .systemFont(ofSize: 10, weight: UIFontWeightLight)
         label.textColor = UIColor(hex: 0x7F7F7F)
-        label.textAlignment = .Right
+        label.textAlignment = .right
         return label
     }()
 
@@ -39,24 +39,25 @@ extension CheckoutSummaryDeliveryStackView: UIBuilder {
 
 extension CheckoutSummaryDeliveryStackView: UIDataBuilder {
 
-    typealias T = CheckoutViewModel
+    typealias T = CheckoutSummaryDataModel
 
-    func configureData(viewModel: T) {
-        guard let delivery = viewModel.checkout?.delivery else {
+    func configure(viewModel: T) {
+        guard let delivery = viewModel.delivery else {
             deliveryTitleLabel.text = ""
             deliveryValueLabel.text = ""
             return
         }
 
-        deliveryTitleLabel.text = Localizer.string("summaryView.label.estimatedDelivery")
+        deliveryTitleLabel.text = Localizer.format(string: "summaryView.label.estimatedDelivery")
 
-        if let earliest = delivery.earliest,
-            earliestDateFormatted = Localizer.date(earliest),
-            latestDateFormatted = Localizer.date(delivery.latest) {
-                deliveryValueLabel.text = earliestDateFormatted + " - " + latestDateFormatted
-        } else {
-                deliveryValueLabel.text = Localizer.date(delivery.latest)
+        guard let earliest = delivery.earliest,
+            let earliestDateFormatted = Localizer.format(date: earliest),
+            let latestDateFormatted = Localizer.format(date: delivery.latest) else {
+                deliveryValueLabel.text = Localizer.format(date: delivery.latest)
+                return
         }
+
+        deliveryValueLabel.text = earliestDateFormatted + " - " + latestDateFormatted
     }
 
 }

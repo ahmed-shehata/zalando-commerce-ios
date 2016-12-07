@@ -6,41 +6,56 @@ import UIKit
 
 class BorderView: UIView {
 
-    var topBorder: Bool = false
-    var rightBorder: Bool = false
-    var bottomBorder: Bool = false
-    var leftBorder: Bool = false
-    var leadingMargin: CGFloat = 0
-    var trailingMarging: CGFloat = 0
-    var borderColor: UIColor = .blackColor() {
+    var topBorder: Bool = false {
+        didSet { setNeedsLayout() }
+    }
+    var rightBorder: Bool = false {
+        didSet { setNeedsLayout() }
+    }
+    var bottomBorder: Bool = false {
+        didSet { setNeedsLayout() }
+    }
+    var leftBorder: Bool = false {
+        didSet { setNeedsLayout() }
+    }
+    var leadingMargin: CGFloat = 0 {
+        didSet { setNeedsLayout() }
+    }
+    var trailingMargin: CGFloat = 0 {
+        didSet { setNeedsLayout() }
+    }
+
+    var borderColor: UIColor = .black {
         didSet {
+            setNeedsLayout()
             subviews.forEach { $0.backgroundColor = borderColor }
         }
     }
-
-    private let onePixel = 1 / UIScreen.mainScreen().scale
 
     override func layoutSubviews() {
         super.layoutSubviews()
         removeAllSubviews()
 
-        let totalMargin = leadingMargin + trailingMarging
+        let onePixel = 1 / UIScreen.main.scale
+        let totalMargin = leadingMargin + trailingMargin
 
         if topBorder {
-            addView(CGRect(x: leadingMargin, y: 0, width: bounds.width - totalMargin, height: onePixel))
+            addView(x: leadingMargin, y: 0, width: bounds.width - totalMargin, height: onePixel)
         }
         if rightBorder {
-            addView(CGRect(x: bounds.width - onePixel, y: leadingMargin, width: onePixel, height: bounds.height - totalMargin))
+            addView(x: bounds.width - onePixel, y: leadingMargin, width: onePixel, height: bounds.height - totalMargin)
         }
         if bottomBorder {
-            addView(CGRect(x: leadingMargin, y: bounds.height - onePixel, width: bounds.width - totalMargin, height: onePixel))
+            addView(x: leadingMargin, y: bounds.height - onePixel, width: bounds.width - totalMargin, height: onePixel)
         }
         if leftBorder {
-            addView(CGRect(x: 0, y: leadingMargin, width: onePixel, height: bounds.height - totalMargin))
+            addView(x: 0, y: leadingMargin, width: onePixel, height: bounds.height - totalMargin)
         }
     }
 
-    private func addView(frame: CGRect) {
+    // swiftlint:disable:next variable_name
+    fileprivate func addView(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) {
+        let frame = CGRect(x: x, y: y, width: width, height: height)
         let view = UIView(frame: frame)
         view.backgroundColor = borderColor
         addSubview(view)

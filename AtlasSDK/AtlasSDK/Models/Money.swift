@@ -33,15 +33,15 @@ public func < (lhs: Money, rhs: Money) -> Bool {
 
 extension Money: JSONInitializable {
 
-    private struct Keys {
+    fileprivate struct Keys {
         static let amount = "amount"
         static let currency = "currency"
     }
 
     init?(json: JSON) {
-        guard let
-        amount = json[Keys.amount].number,
-            currency = json[Keys.currency].string else { return nil }
+        guard let amount = json[Keys.amount].number,
+            let currency = json[Keys.currency].string
+            else { return nil }
 
         self.init(amount: MoneyAmount(decimal: amount.decimalValue), currency: currency)
     }

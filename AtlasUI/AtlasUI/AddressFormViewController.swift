@@ -5,44 +5,36 @@
 import UIKit
 import AtlasSDK
 
-typealias AddressFormCompletion = UserAddress -> Void
+typealias AddressFormCompletion = (_ address: EquatableAddress, _ email: String?) -> Void
 
-class AddressFormViewController: UIViewController, CheckoutProviderType {
+class AddressFormViewController: UIViewController {
 
-    internal let scrollView: KeyboardScrollView = {
+    let scrollView: KeyboardScrollView = {
         let scrollView = KeyboardScrollView()
-        scrollView.keyboardDismissMode = .Interactive
+        scrollView.keyboardDismissMode = .interactive
         return scrollView
     }()
 
-    internal lazy var addressStackView: AddressFormStackView = {
+    lazy var addressStackView: AddressFormStackView = {
         let stackView = AddressFormStackView()
-        stackView.addressType = self.addressType
-        stackView.axis = .Vertical
+        stackView.addressType = self.viewModel.type
+        stackView.axis = .vertical
         stackView.layoutMargins = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
-        stackView.layoutMarginsRelativeArrangement = true
+        stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
 
-    private let addressType: AddressFormType
-    private let addressMode: AddressFormMode
-    internal let checkout: AtlasCheckout
-    private let addressViewModel: AddressFormViewModel
-    internal var completion: AddressFormCompletion?
+    var completion: AddressFormCompletion?
 
-    init(addressType: AddressFormType, addressMode: AddressFormMode, checkout: AtlasCheckout, completion: AddressFormCompletion?) {
-        self.addressType = addressType
-        self.addressMode = addressMode
-        self.checkout = checkout
+    fileprivate let viewModel: AddressFormViewModel
+    fileprivate let actionHandler: AddressFormActionHandler?
+
+    init(viewModel: AddressFormViewModel, actionHandler: AddressFormActionHandler?, completion: AddressFormCompletion?) {
+        self.viewModel = viewModel
+        self.actionHandler = actionHandler
         self.completion = completion
-        let countryCode = checkout.client.config.salesChannel.countryCode
-
-        switch addressMode {
-        case .createAddress(let addressViewModel): self.addressViewModel = addressViewModel
-        case .updateAddress(let address): self.addressViewModel = AddressFormViewModel(equatableAddress: address, countryCode: countryCode)
-        }
-
         super.init(nibName: nil, bundle: nil)
+        self.actionHandler?.delegate = self
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -51,63 +43,20 @@ class AddressFormViewController: UIViewController, CheckoutProviderType {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .whiteColor()
+        view.backgroundColor = .white
         buildView()
-        addressStackView.configureData(addressViewModel)
+        addressStackView.configure(viewModel: viewModel.dataModel)
         configureNavigation()
-        navigationItem.rightBarButtonItem?.accessibilityIdentifier = "address-edit-right-button"
     }
 
-}
-
-extension AddressFormViewController {
-
-    private func configureNavigation() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: Localizer.string("button.general.save"),
-                                                            style: .Plain,
-                                                            target: self,
-                                                            action: #selector(submitButtonPressed))
-
-        switch addressMode {
-        case .createAddress:
-            navigationItem.leftBarButtonItem = UIBarButtonItem(title: Localizer.string("button.general.cancel"),
-                                                               style: .Plain,
-                                                               target: self,
-                                                               action: #selector(cancelButtonPressed))
-        case .updateAddress:
-            break
+    func present() {
+        if viewModel.layout.displayViewModally {
+            let navigationController = UINavigationController(rootViewController: self)
+            navigationController.modalPresentationStyle = .overCurrentContext
+            AtlasUIViewController.shared?.show(navigationController, sender: nil)
+        } else {
+            AtlasUIViewController.shared?.mainNavigationController.pushViewController(self, animated: true)
         }
-    }
-
-    private dynamic func submitButtonPressed() {
-        view.endEditing(true)
-
-        let isValid = addressStackView.textFields.map { $0.validateForm() }.filter { $0 == false }.isEmpty
-        guard isValid else { return }
-
-        disableSaveButton()
-        checkAddressRequest()
-    }
-
-    private dynamic func cancelButtonPressed() {
-        dismissView()
-    }
-
-    private func dismissView() {
-        view.endEditing(true)
-
-        switch addressMode {
-        case .createAddress: dismissViewControllerAnimated(true, completion: nil)
-        case .updateAddress: navigationController?.popViewControllerAnimated(true)
-        }
-    }
-
-    private func enableSaveButton() {
-        navigationItem.rightBarButtonItem?.enabled = true
-    }
-
-    private func disableSaveButton() {
-        navigationItem.rightBarButtonItem?.enabled = false
     }
 
 }
@@ -121,8 +70,8 @@ extension AddressFormViewController: UIBuilder {
     }
 
     func configureConstraints() {
-        scrollView.fillInSuperView()
-        addressStackView.fillInSuperView()
+        scrollView.fillInSuperview()
+        addressStackView.fillInSuperview()
         addressStackView.setWidth(equalToView: scrollView)
     }
 
@@ -130,53 +79,58 @@ extension AddressFormViewController: UIBuilder {
 
 extension AddressFormViewController {
 
-    private func checkAddressRequest() {
-        guard let request = CheckAddressRequest(addressFormViewModel: addressViewModel) else { return enableSaveButton() }
-        UserMessage.displayLoader { [weak self] hideLoader in
-            self?.checkout.client.checkAddress(request) { [weak self] result in
-                hideLoader()
-                self?.checkAddressRequestCompletion(result)
-            }
+    fileprivate func configureNavigation() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: Localizer.format(string: "button.general.save"),
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(submitButtonPressed))
+        navigationItem.rightBarButtonItem?.accessibilityIdentifier = "address-edit-right-button"
+
+        if viewModel.layout.displayCancelButton {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: Localizer.format(string: "button.general.cancel"),
+                                                               style: .plain,
+                                                               target: self,
+                                                               action: #selector(cancelButtonPressed))
         }
     }
 
-    private func createAddressRequest() {
-        guard let request = CreateAddressRequest(addressFormViewModel: addressViewModel) else { return enableSaveButton() }
-        UserMessage.displayLoader { [weak self] hideLoader in
-            self?.checkout.client.createAddress(request) { [weak self] result in
-                hideLoader()
-                self?.createUpdateAddressRequestCompletion(result)
-            }
-        }
-    }
-
-    private func updateAddressRequest(originalAddress: EquatableAddress) {
-        guard let request = UpdateAddressRequest(addressFormViewModel: addressViewModel) else { return enableSaveButton() }
-        UserMessage.displayLoader { [weak self] hideLoader in
-            self?.checkout.client.updateAddress(originalAddress.id, request: request) { [weak self] result in
-                hideLoader()
-                self?.createUpdateAddressRequestCompletion(result)
-            }
-        }
-    }
-
-    private func checkAddressRequestCompletion(result: AtlasResult<CheckAddressResponse>) {
-        guard let checkAddressResponse = result.process() else { return enableSaveButton() }
-        if checkAddressResponse.status == .notCorrect {
-            UserMessage.displayError(AtlasCheckoutError.addressInvalid)
-            enableSaveButton()
-        } else {
-            switch addressMode {
-            case .createAddress: createAddressRequest()
-            case .updateAddress(let address): updateAddressRequest(address)
-            }
-        }
-    }
-
-    private func createUpdateAddressRequestCompletion(result: AtlasResult<UserAddress>) {
-        guard let address = result.process() else { return enableSaveButton() }
+    fileprivate dynamic func cancelButtonPressed() {
         dismissView()
-        completion?(address)
+    }
+
+    fileprivate dynamic func submitButtonPressed() {
+        view.endEditing(true)
+
+        let isValid = addressStackView.textFields.map { $0.validateForm() }.filter { $0 == false }.isEmpty
+        guard isValid else { return }
+
+        navigationItem.rightBarButtonItem?.isEnabled = false
+        actionHandler?.submit(dataModel: viewModel.dataModel)
+    }
+
+    fileprivate func dismissView(animated: Bool = true, completion: (() -> Void)? = nil) {
+        view.endEditing(true)
+
+        if viewModel.layout.displayViewModally {
+            dismiss(animated: animated, completion: completion)
+        } else {
+            _ = navigationController?.popViewController(animated: animated)
+            completion?()
+        }
+    }
+
+}
+
+extension AddressFormViewController: AddressFormActionHandlerDelegate {
+
+    func addressProcessingFinished() {
+        navigationItem.rightBarButtonItem?.isEnabled = true
+    }
+
+    func dismissView(withAddress address: EquatableAddress, animated: Bool) {
+        dismissView(animated: animated) { [weak self] in
+            self?.completion?(address, self?.viewModel.dataModel.email)
+        }
     }
 
 }

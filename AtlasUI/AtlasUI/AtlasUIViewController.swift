@@ -7,41 +7,35 @@ import AtlasSDK
 
 public class AtlasUIViewController: UIViewController {
 
-    let mainNavigationController: UINavigationController
-    private let atlasReachability = AtlasReachability()
-
-    static var instance: AtlasUIViewController? {
-        return try? Atlas.provide()
+    static var shared: AtlasUIViewController? {
+        return try? AtlasUI.shared().provide()
     }
 
-    private let loaderView: LoaderView = {
+    let mainNavigationController: UINavigationController
+    fileprivate let atlasReachability = AtlasReachability()
+
+    fileprivate let loaderView: LoaderView = {
         let view = LoaderView()
-        view.hidden = true
         return view
     }()
 
-    init(atlasCheckout: AtlasCheckout, forProductSKU sku: String) {
-        let sizeSelectionViewController = SizeListSelectionViewController(checkout: atlasCheckout, sku: sku)
+    init(forSKU sku: String) {
+        let sizeSelectionViewController = SizeListSelectionViewController(sku: sku)
         mainNavigationController = UINavigationController(rootViewController: sizeSelectionViewController)
 
         super.init(nibName: nil, bundle: nil)
     }
 
-    required public  init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     override public func viewDidLoad() {
-        loadErrorView()
+        UserMessage.loadBannerError()
         addChildViewController(mainNavigationController)
         view.addSubview(mainNavigationController.view)
-        mainNavigationController.view.fillInSuperView()
+        mainNavigationController.view.fillInSuperview()
         atlasReachability.setupReachability()
-    }
-
-    private func loadErrorView() {
-        UserMessage.displayError(AtlasCheckoutError.unclassified)
-        UserMessage.clearBannerError()
     }
 
 }
@@ -51,7 +45,7 @@ extension AtlasUIViewController {
     func showLoader() {
         loaderView.removeFromSuperview()
         UIApplication.topViewController()?.view.addSubview(loaderView)
-        loaderView.fillInSuperView()
+        loaderView.fillInSuperview()
         loaderView.buildView()
         loaderView.show()
     }

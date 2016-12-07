@@ -8,15 +8,15 @@ import Nimble
 
 @testable import AtlasSDK
 
-class APIArticleTests: APIClientBaseTests {
+class APIArticleTests: AtlasAPIClientBaseTests {
 
     func testFetchArticle() {
-        waitUntilAPIClientIsConfigured { done, client in
+        waitUntilAtlasAPIClientIsConfigured { done, client in
             let sku = "AD541L009-G11"
-            client.article(sku) { result in
+            client.article(withSKU: sku) { result in
                 switch result {
                 case .failure(let error):
-                    fail(String(error))
+                    fail(String(describing: error))
                 case .success(let article):
                     expect(article.id).to(equal(sku))
                     expect(article.name).to(equal("ADIZERO  - Sportkleid - red"))
@@ -24,10 +24,10 @@ class APIArticleTests: APIClientBaseTests {
 
                     expect(article.availableUnits.count).to(equal(1))
                     expect(article.availableUnits.first?.id).to(equal("AD541L009-G1100XS000"))
-                    expect(article.availableUnits.first?.price.amount).to(equal(76.45))
+                    expect(article.availableUnits.first?.price.amount).to(equal(10.45))
 
-                    let validUrl = "https://i6.ztat.net/detail/AD/54/1L/00/9G/11/AD541L009-G11@14.jpg"
-                    expect(article.media.images.first?.detailURL).to(equal(NSURL(validURL: validUrl)))
+                    let validURL = "https://i6.ztat.net/detail/AD/54/1L/00/9G/11/AD541L009-G11@14.jpg"
+                    expect(article.media.images.first?.detailURL).to(equal(URL(validURL: validURL)))
                     expect(article.media.images.first?.order).to(equal(1))
                 }
                 done()

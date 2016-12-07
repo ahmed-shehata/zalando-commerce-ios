@@ -6,23 +6,23 @@ import UIKit
 
 class CheckoutSummaryRootStackView: UIStackView {
 
-    internal let scrollView = UIScrollView()
+    let scrollView = UIScrollView()
 
-    internal let mainStackView: CheckoutSummaryMainStackView = {
+    let mainStackView: CheckoutSummaryMainStackView = {
         let stackView = CheckoutSummaryMainStackView()
-        stackView.axis = .Vertical
+        stackView.axis = .vertical
         stackView.spacing = 5
         stackView.layoutMargins = UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)
-        stackView.layoutMarginsRelativeArrangement = true
+        stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
 
-    internal let footerStackView: CheckoutSummaryFooterStackView = {
+    let footerStackView: CheckoutSummaryFooterStackView = {
         let stackView = CheckoutSummaryFooterStackView()
-        stackView.axis = .Vertical
+        stackView.axis = .vertical
         stackView.spacing = 5
         stackView.layoutMargins = UIEdgeInsets(top: 0, left: 20, bottom: 10, right: 20)
-        stackView.layoutMarginsRelativeArrangement = true
+        stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
 
@@ -37,18 +37,18 @@ extension CheckoutSummaryRootStackView: UIBuilder {
     }
 
     func configureConstraints() {
-        fillInSuperView()
+        fillInSuperview()
     }
 
 }
 
 extension CheckoutSummaryRootStackView: UIDataBuilder {
 
-    typealias T = CheckoutSummaryViewController // TODO: Create new view model
+    typealias T = CheckoutSummaryViewModel
 
-    func configureData(viewModel: T) {
-        mainStackView.configureData(viewModel)
-        footerStackView.configureData(viewModel)
+    func configure(viewModel: T) {
+        mainStackView.configure(viewModel: viewModel)
+        footerStackView.configure(viewModel: viewModel)
     }
 
 }

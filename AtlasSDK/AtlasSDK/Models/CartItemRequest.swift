@@ -4,7 +4,7 @@
 
 import Foundation
 
-public struct CartItemRequest: JSONRepresentable {
+public struct CartItemRequest {
 
     public let sku: String
     public let quantity: Int
@@ -14,7 +14,11 @@ public struct CartItemRequest: JSONRepresentable {
         self.quantity = quantity
     }
 
-    public func toJSON() -> Dictionary<String, AnyObject> {
+}
+
+extension CartItemRequest: JSONRepresentable {
+
+    func toJSON() -> JSONDictionary {
         return [
             "sku": self.sku,
             "quantity": self.quantity
