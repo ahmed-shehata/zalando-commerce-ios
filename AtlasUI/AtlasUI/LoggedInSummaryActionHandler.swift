@@ -31,7 +31,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
     }
 
     fileprivate var addresses: CheckoutAddresses? {
-        return CheckoutAddresses(billingAddress: billingAddress, shippingAddress: shippingAddress)
+        return CheckoutAddresses(shippingAddress: shippingAddress, billingAddress: billingAddress)
     }
 
     fileprivate var hasAddresses: Bool {
@@ -214,14 +214,14 @@ extension LoggedInSummaryActionHandler {
 
     fileprivate func update(billingAddress newBillingAddress: BillingAddress? = nil,
                             shippingAddress newShippingAddress: ShippingAddress? = nil) {
-        let newAddresses = CheckoutAddresses(billingAddress: newBillingAddress ?? self.billingAddress,
-                                             shippingAddress: newShippingAddress ?? self.shippingAddress)
+        let newAddresses = CheckoutAddresses(shippingAddress: newShippingAddress ?? self.shippingAddress,
+                                             billingAddress: newBillingAddress ?? self.billingAddress)
         updateDataModel(with: newAddresses, in: self.cartCheckout)
     }
 
     fileprivate func delete(billingAddress deleteBilling: Bool = false, shippingAddress deleteShipping: Bool = false) {
-        let newAddresses = CheckoutAddresses(billingAddress: deleteBilling ? nil : self.billingAddress,
-                                             shippingAddress: deleteShipping ? nil : self.shippingAddress)
+        let newAddresses = CheckoutAddresses(shippingAddress: deleteShipping ? nil : self.shippingAddress,
+                                             billingAddress: deleteBilling ? nil : self.billingAddress)
         updateDataModel(with: newAddresses)
         cartCheckout?.checkout = nil
     }

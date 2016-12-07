@@ -35,16 +35,16 @@ class NotLoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
 
     func handleShippingAddressSelection() {
         guestAddressActionHandler.addressCreationStrategy = ShippingAddressViewModelCreationStrategy()
-        guestAddressActionHandler.createAddress { [weak self] address in
-            let checkoutAddress = CheckoutAddresses(billingAddress: nil, shippingAddress: address, autoFill: true)
+        guestAddressActionHandler.createAddress { [weak self] newAddress in
+            let checkoutAddress = CheckoutAddresses(shippingAddress: newAddress, billingAddress: nil, autoFill: true)
             self?.switchToGuestCheckout(checkoutAddress: checkoutAddress)
         }
     }
 
     func handleBillingAddressSelection() {
         guestAddressActionHandler.addressCreationStrategy = BillingAddressViewModelCreationStrategy()
-        guestAddressActionHandler.createAddress { [weak self] address in
-            let checkoutAddress = CheckoutAddresses(billingAddress: address, shippingAddress: nil, autoFill: true)
+        guestAddressActionHandler.createAddress { [weak self] newAddress in
+            let checkoutAddress = CheckoutAddresses(shippingAddress: nil, billingAddress: newAddress, autoFill: true)
             self?.switchToGuestCheckout(checkoutAddress: checkoutAddress)
         }
     }

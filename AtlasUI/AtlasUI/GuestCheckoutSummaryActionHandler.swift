@@ -94,16 +94,16 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
 
     func handleShippingAddressSelection() {
         actionHandler.addressCreationStrategy = ShippingAddressViewModelCreationStrategy()
-        actionHandler.handleAddressModification(address: shippingAddress) { [weak self] address in
-            let addresses = CheckoutAddresses(billingAddress: self?.billingAddress, shippingAddress: address, autoFill: true)
+        actionHandler.handleAddressModification(address: shippingAddress) { [weak self] newAddress in
+            let addresses = CheckoutAddresses(shippingAddress: newAddress, billingAddress: self?.billingAddress, autoFill: true)
             self?.updateDataModel(addresses: addresses, guestCheckout: self?.guestCheckout)
         }
     }
 
     func handleBillingAddressSelection() {
         actionHandler.addressCreationStrategy = BillingAddressViewModelCreationStrategy()
-        actionHandler.handleAddressModification(address: billingAddress) { [weak self] address in
-            let addresses = CheckoutAddresses(billingAddress: address, shippingAddress: self?.shippingAddress, autoFill: true)
+        actionHandler.handleAddressModification(address: billingAddress) { [weak self] newAddress in
+            let addresses = CheckoutAddresses(shippingAddress: self?.shippingAddress, billingAddress: newAddress, autoFill: true)
             self?.updateDataModel(addresses: addresses, guestCheckout: self?.guestCheckout)
         }
     }
