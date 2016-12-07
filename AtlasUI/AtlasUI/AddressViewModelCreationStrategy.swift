@@ -10,6 +10,8 @@ typealias AddressViewModelCreationStrategyCompletion = (_ addressViewModel: Addr
 protocol AddressViewModelCreationStrategy {
 
     var strategyCompletion: AddressViewModelCreationStrategyCompletion? { get set }
+    var titleKey: String? { get set }
+
     func execute()
 
 }
@@ -17,10 +19,8 @@ protocol AddressViewModelCreationStrategy {
 extension AddressViewModelCreationStrategy {
 
     func presentSelection(forStrategies strategies: [AddressDataModelCreationStrategy]) {
-        let title = Localizer.format(string: "addressListView.add.type.title")
-
         var buttonActions = strategies.map { strategy in
-            ButtonAction(text: strategy.localizedTitleKey) { (UIAlertAction) in
+            ButtonAction(text: strategy.localizedTitleKey) { _ in
                 strategy.execute()
             }
         }
@@ -28,7 +28,12 @@ extension AddressViewModelCreationStrategy {
         let cancelAction = ButtonAction(text: Localizer.format(string: "button.general.cancel"), style: .cancel, handler: nil)
         buttonActions.append(cancelAction)
 
-        UserMessage.presentSelection(title: title, actions: buttonActions)
+        UserMessage.presentSelection(title: messageTitle, actions: buttonActions)
+    }
+
+    private var messageTitle: String? {
+        guard let key = titleKey else { return nil }
+        return Localizer.format(string: key)
     }
 
 }

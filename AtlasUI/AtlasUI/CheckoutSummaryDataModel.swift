@@ -55,6 +55,10 @@ extension CheckoutSummaryDataModel {
         return paymentMethod?.caseInsensitiveCompare("paypal") == .orderedSame
     }
 
+    var isAddressesReady: Bool {
+        return shippingAddress != nil && billingAddress != nil
+    }
+
     var termsAndConditionsURL: URL? {
         return AtlasAPIClient.shared?.config.salesChannel.termsAndConditionsURL
     }
@@ -69,7 +73,7 @@ extension CheckoutSummaryDataModel {
         self.billingAddress = addresses?.billingAddress ?? cartCheckout?.checkout?.billingAddress
         self.paymentMethod = cartCheckout?.checkout?.payment.selected?.method
         self.shippingPrice = 0
-        self.totalPrice = cartCheckout?.cart?.grossTotal.amount ?? selectedArticleUnit.unit.price.amount
+        self.totalPrice = cartCheckout?.cart?.grossTotal.amount ?? selectedArticleUnit.priceAmount
         self.delivery = cartCheckout?.checkout?.delivery
         self.orderNumber = nil
     }

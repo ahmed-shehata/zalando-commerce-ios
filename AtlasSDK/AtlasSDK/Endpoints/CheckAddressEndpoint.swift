@@ -12,7 +12,7 @@ struct CheckAddressEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
     let acceptedContentType = "application/x.zalando.address-check.create.response+json"
     let contentType = "application/x.zalando.address-check.create+json"
 
-    var parameters: [String: Any]? {
+    var parameters: EndpointParameters? {
         return checkAddressRequest.toJSON()
     }
 

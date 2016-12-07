@@ -1,3 +1,4 @@
+// swiftlint:disable cyclomatic_complexity
 //
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
@@ -8,11 +9,15 @@ import AtlasSDK
 enum AddressFormType {
     case standardAddress
     case pickupPoint
+    case guestStandardAddress
+    case guestPickupPoint
 
     var fields: [AddressFormField] {
         switch self {
         case .standardAddress: return [.title, .firstName, .lastName, .street, .additional, .zipcode, .city, .country]
         case .pickupPoint: return [.title, .firstName, .lastName, .packstation, .memberID, .zipcode, .city, .country]
+        case .guestStandardAddress: return [.title, .firstName, .lastName, .emailAddress, .street, .additional, .zipcode, .city, .country]
+        case .guestPickupPoint: return [.title, .firstName, .lastName, .emailAddress, .packstation, .memberID, .zipcode, .city, .country]
         }
     }
 }
@@ -21,6 +26,7 @@ enum AddressFormField: String {
     case title
     case firstName
     case lastName
+    case emailAddress
     case street
     case additional
     case packstation
@@ -69,6 +75,9 @@ enum AddressFormField: String {
                     .maxLength(maxLength: 50),
                     .minLength(minLength: 2),
                     .pattern(pattern: FormValidator.namePattern, errorMessage: "formValidation.pattern.name")]
+        case .emailAddress:
+            return [.required,
+                    .validEmail]
         case .street:
             return [.required,
                     .maxLength(maxLength: 50),
@@ -112,6 +121,7 @@ extension AddressFormDataModel {
         case .title: return self.localizedTitle()
         case .firstName: return self.firstName
         case .lastName: return self.lastName
+        case .emailAddress: return self.email
         case .street: return self.street
         case .additional: return self.additional
         case .packstation: return self.pickupPointId
@@ -127,6 +137,7 @@ extension AddressFormDataModel {
         case .title: self.updateTitle(fromLocalizedGenderText: value)
         case .firstName: self.firstName = value
         case .lastName: self.lastName = value
+        case .emailAddress: self.email = value
         case .street: self.street = value
         case .additional: self.additional = value
         case .packstation: self.pickupPointId = value

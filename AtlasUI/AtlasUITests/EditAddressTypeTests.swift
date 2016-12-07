@@ -8,14 +8,12 @@ import Nimble
 @testable import AtlasUI
 @testable import AtlasSDK
 
-class EditAddressTypeTests: XCTestCase {
+class EditAddressTypeTests: UITestCase {
 
     var dataModel: AddressFormDataModel!
 
     override func setUp() {
         super.setUp()
-
-        try! AtlasUI.shared().register { try! Localizer(localeIdentifier: "en_UK") }
         dataModel = AddressFormDataModel(equatableAddress: nil, countryCode: "DE")
         update(dataModel: dataModel)
     }

@@ -21,7 +21,7 @@ extension UpdateCheckoutRequest: JSONRepresentable {
         static let shippingAddressId = "shipping_address_id"
     }
 
-    func toJSON() -> [String: Any] {
+    func toJSON() -> JSONDictionary {
         var result = [String: Any]()
 
         if let billingAddressId = billingAddressId, !billingAddressId.isEmpty {

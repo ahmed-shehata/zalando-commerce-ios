@@ -16,7 +16,7 @@ struct AtlasUIClient {
         }
     }
 
-    static func createCart(withItems cartItemRequests: [CartItemRequest], completion: @escaping CartCompletion) {
+    static func createCart(cartItemRequests: [CartItemRequest], completion: @escaping CartCompletion) {
         UserMessage.displayLoader { hideLoader in
             AtlasAPIClient.shared?.createCart(withItems: cartItemRequests) { result in
                 hideLoader()
@@ -34,7 +34,7 @@ struct AtlasUIClient {
         }
     }
 
-    static func createCheckout(fromCardId cartId: String, addresses: CheckoutAddresses? = nil, completion: @escaping CheckoutCompletion) {
+    static func createCheckout(cartId: String, addresses: CheckoutAddresses? = nil, completion: @escaping CheckoutCompletion) {
         UserMessage.displayLoader { hideLoader in
             AtlasAPIClient.shared?.createCheckout(fromCardId: cartId, addresses: addresses) { result in
                 hideLoader()
@@ -43,8 +43,7 @@ struct AtlasUIClient {
         }
     }
 
-    static func updateCheckout(withId checkoutId: String, updateCheckoutRequest: UpdateCheckoutRequest,
-                               completion: @escaping CheckoutCompletion) {
+    static func updateCheckout(checkoutId: String, updateCheckoutRequest: UpdateCheckoutRequest, completion: @escaping CheckoutCompletion) {
         UserMessage.displayLoader { hideLoader in
             AtlasAPIClient.shared?.updateCheckout(withId: checkoutId, updateCheckoutRequest: updateCheckoutRequest) { result in
                 hideLoader()
@@ -53,9 +52,36 @@ struct AtlasUIClient {
         }
     }
 
-    static func createOrder(fromCheckoutId checkoutId: String, completion: @escaping OrderCompletion) {
+    static func createOrder(checkoutId: String, completion: @escaping OrderCompletion) {
         UserMessage.displayLoader { hideLoader in
             AtlasAPIClient.shared?.createOrder(fromCheckoutId: checkoutId) { result in
+                hideLoader()
+                completion(result)
+            }
+        }
+    }
+
+    static func createGuestOrder(request: GuestOrderRequest, completion: @escaping GuestOrderCompletion) {
+        UserMessage.displayLoader { hideLoader in
+            AtlasAPIClient.shared?.createGuestOrder(request: request) { result in
+                hideLoader()
+                completion(result)
+            }
+        }
+    }
+
+    static func guestCheckoutPaymentSelectionURL(request: GuestPaymentSelectionRequest, completion: @escaping URLCompletion) {
+        UserMessage.displayLoader { hideLoader in
+            AtlasAPIClient.shared?.guestCheckoutPaymentSelectionURL(request: request) { result in
+                hideLoader()
+                completion(result)
+            }
+        }
+    }
+
+    static func guestCheckout(checkoutId: String, token: String, completion: @escaping GuestCheckoutCompletion) {
+        UserMessage.displayLoader { hideLoader in
+            AtlasAPIClient.shared?.guestCheckout(checkoutId: checkoutId, token: token) { result in
                 hideLoader()
                 completion(result)
             }
@@ -98,9 +124,7 @@ struct AtlasUIClient {
         }
     }
 
-    static func updateAddress(withAddressId addressId: String,
-                              request: UpdateAddressRequest,
-                              completion: @escaping AddressCreateUpdateCompletion) {
+    static func updateAddress(addressId: String, request: UpdateAddressRequest, completion: @escaping AddressCreateUpdateCompletion) {
         UserMessage.displayLoader { hideLoader in
             AtlasAPIClient.shared?.updateAddress(withAddressId: addressId, request: request) { result in
                 hideLoader()

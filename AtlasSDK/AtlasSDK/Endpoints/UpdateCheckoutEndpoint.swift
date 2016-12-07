@@ -9,7 +9,7 @@ struct UpdateCheckoutEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
     var path: String { return "checkouts/\(checkoutId)" }
     let contentType = "application/x.zalando.customer.checkout.update+json"
     let acceptedContentType = "application/x.zalando.customer.checkout.update.response+json"
-    let parameters: [String: Any]?
+    let parameters: EndpointParameters?
     let salesChannel: String
 
     let checkoutId: String

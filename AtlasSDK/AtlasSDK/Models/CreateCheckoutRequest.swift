@@ -16,7 +16,7 @@ public struct CreateCheckoutRequest: JSONRepresentable {
         self.shippingAddressId = addresses?.shippingAddress?.id
     }
 
-    public func toJSON() -> [String: Any] {
+    func toJSON() -> JSONDictionary {
         var json: [String: Any] = ["cart_id": self.cartId]
 
         if let billingId = self.billingAddressId {

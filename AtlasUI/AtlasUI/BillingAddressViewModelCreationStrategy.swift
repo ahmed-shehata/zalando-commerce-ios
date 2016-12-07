@@ -6,9 +6,9 @@ import Foundation
 
 class BillingAddressViewModelCreationStrategy: AddressViewModelCreationStrategy {
 
+    var titleKey: String?
     var strategyCompletion: AddressViewModelCreationStrategyCompletion?
-
-    fileprivate var availableDataModelCreationStrategies = [AddressDataModelCreationStrategy]()
+    private var availableDataModelCreationStrategies = [AddressDataModelCreationStrategy]()
 
     func execute() {
         let standardStrategy = StandardAddressDataModelCreationStrategy { [weak self] dataModel in
@@ -19,8 +19,8 @@ class BillingAddressViewModelCreationStrategy: AddressViewModelCreationStrategy 
             let viewModel = AddressFormViewModel(dataModel: dataModel, layout: CreateAddressFormLayout(), type: .standardAddress)
             self?.strategyCompletion?(viewModel)
         }
-        availableDataModelCreationStrategies = [standardStrategy, addressBookStrategy]
 
+        availableDataModelCreationStrategies = [standardStrategy, addressBookStrategy]
         presentSelection(forStrategies: availableDataModelCreationStrategies)
     }
 

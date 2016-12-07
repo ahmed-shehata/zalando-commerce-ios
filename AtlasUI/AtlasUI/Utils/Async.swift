@@ -18,6 +18,11 @@ struct Async {
     }
 
     @discardableResult
+    static func delay(delay: TimeInterval, block: @escaping () -> Void) -> Async {
+        return dispatchAsync(on: .main, after: delay, block: block)
+    }
+
+    @discardableResult
     static func userInteractive(block: @escaping () -> ()) -> Async {
         return dispatchAsync(on: .userInteractive, block: block)
     }
@@ -41,9 +46,13 @@ struct Async {
         return dispatchAsync(on: DispatchQueue.global(qos: qos), block: block)
     }
 
-    private static func dispatchAsync(on queue: DispatchQueue, block: @escaping () -> ()) -> Async {
+    private static func dispatchAsync(on queue: DispatchQueue, after delay: TimeInterval = 0, block: @escaping () -> ()) -> Async {
         let workItem = DispatchWorkItem(block: block)
-        queue.async(execute: workItem)
+        if delay == 0 {
+            queue.async(execute: workItem)
+        } else {
+            queue.asyncAfter(deadline: .now() + delay, execute: workItem)
+        }
         return Async(workItem: workItem)
     }
 

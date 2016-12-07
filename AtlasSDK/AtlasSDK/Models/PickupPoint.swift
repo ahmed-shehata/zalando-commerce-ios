@@ -46,7 +46,7 @@ extension PickupPoint: JSONInitializable {
 
 extension PickupPoint: JSONRepresentable {
 
-    func toJSON() -> [String: Any] {
+    func toJSON() -> JSONDictionary {
         return [
             Keys.id: id,
             Keys.name: name,

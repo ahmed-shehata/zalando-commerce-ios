@@ -1,0 +1,54 @@
+{
+    "cart": {
+        "items": [
+                  {
+                  "sku": "AD541L009-G1100XS000",
+                  "quantity": 1
+                  }
+                  ],
+        "items_out_of_stock": [
+
+        ],
+        "gross_total": {
+            "amount": 10.45,
+            "currency": "EUR"
+        },
+        "tax_total": {
+            "amount": 2.34,
+            "currency": "EUR"
+        }
+    },
+    "billing_address": {
+        "gender": "MALE",
+        "first_name": "John",
+        "last_name": "Doe",
+        "street": "Mollstr. 1",
+        "zip": "10178",
+        "city": "Berlin",
+        "country_code": "DE"
+    },
+    "shipping_address": {
+        "gender": "MALE",
+        "first_name": "John",
+        "last_name": "Doe",
+        "street": "Mollstr. 1",
+        "zip": "10178",
+        "city": "Berlin",
+        "country_code": "DE"
+    },
+    "payment": {
+        "method": "PREPAYMENT",
+        "metadata": {
+            "DEPRECATED_cpm_id": "8255569"
+        }
+    },
+    "delivery": {
+        "service": "STANDARD",
+        "cost": {
+            "amount": 0,
+            "currency": "EUR"
+        },
+        "earliest": "2016-12-01T12:02:16.398Z",
+        "latest": "2016-12-02T12:02:16.398Z"
+    }
+}

@@ -8,6 +8,7 @@ import AtlasSDK
 final class SizeListSelectionViewController: UIViewController {
 
     let sku: String
+    // swiftlint:disable:next weak_delegate
     var tableViewDelegate: SizeListTableViewDelegate? {
         didSet {
             tableView.delegate = tableViewDelegate
@@ -78,8 +79,7 @@ extension SizeListSelectionViewController {
         let hasSingleUnit = selectedArticleUnit.article.hasSingleUnit
         guard Atlas.isAuthorized() else {
             let actionHandler = NotLoggedInSummaryActionHandler()
-            let price = selectedArticleUnit.unit.price.amount
-            let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, totalPrice: price)
+            let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, totalPrice: selectedArticleUnit.priceAmount)
             let viewModel = CheckoutSummaryViewModel(dataModel: dataModel, layout: NotLoggedInLayout())
             return presentCheckoutSummaryViewController(viewModel: viewModel, actionHandler: actionHandler)
         }

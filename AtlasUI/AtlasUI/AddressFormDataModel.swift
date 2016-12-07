@@ -12,6 +12,7 @@ class AddressFormDataModel {
     var gender: Gender?
     var firstName: String?
     var lastName: String?
+    var email: String?
     var street: String?
     var additional: String?
     var pickupPointId: String?
@@ -23,7 +24,7 @@ class AddressFormDataModel {
     let isDefaultBilling: Bool
     let isDefaultShipping: Bool
 
-    init(equatableAddress: EquatableAddress? = nil, countryCode: String?) {
+    init(equatableAddress: EquatableAddress? = nil, email: String? = nil, countryCode: String?) {
         if let userAddress = equatableAddress as? UserAddress {
             isDefaultBilling = userAddress.isDefaultBilling
             isDefaultShipping = userAddress.isDefaultShipping
@@ -31,6 +32,7 @@ class AddressFormDataModel {
             isDefaultBilling = false
             isDefaultShipping = false
         }
+        self.email = email
         self.countryCode = countryCode
 
         guard let equatableAddress = equatableAddress else { return }
@@ -47,11 +49,12 @@ class AddressFormDataModel {
         city = equatableAddress.city
     }
 
-    init?(contactProperty: CNContactProperty, countryCode: String?) {
+    init?(contactProperty: CNContactProperty, email: String? = nil, countryCode: String?) {
         guard let postalAddress = contactProperty.value as? CNPostalAddress else { return nil }
 
         self.firstName = contactProperty.contact.givenName
         self.lastName = contactProperty.contact.familyName
+        self.email = email
         self.street = postalAddress.streetLine1
         self.additional = postalAddress.streetLine2
         self.zip = postalAddress.postalCode

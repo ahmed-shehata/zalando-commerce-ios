@@ -9,19 +9,21 @@ struct LoggedInCreateAddressActionHandler: AddressFormActionHandler {
 
     weak var delegate: AddressFormActionHandlerDelegate?
 
-    func process(validDataModel dataModel: AddressFormDataModel) {
-        guard let request = CreateAddressRequest(dataModel: dataModel) else {
-            delegate?.addressProcessingFinished()
-            return
-        }
-
-        AtlasUIClient.createAddress(request) { result in
-            guard let address = result.process() else {
+    func submit(dataModel: AddressFormDataModel) {
+        validateAddress(dataModel: dataModel) { success in
+            guard let request = CreateAddressRequest(dataModel: dataModel), success else {
                 self.delegate?.addressProcessingFinished()
                 return
             }
 
-            self.delegate?.dismissView(withAddress: address, animated: false)
+            AtlasUIClient.createAddress(request) { result in
+                guard let address = result.process() else {
+                    self.delegate?.addressProcessingFinished()
+                    return
+                }
+
+                self.delegate?.dismissView(withAddress: address, animated: false)
+            }
         }
     }
 

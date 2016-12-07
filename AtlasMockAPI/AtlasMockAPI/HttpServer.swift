@@ -20,6 +20,7 @@ extension HttpServer {
         try registerAvailableJSONMocks()
         addAuthorizeEndpoint()
         addRedirectEndpoint()
+        addGuestOrder()
     }
 
     func start(at url: URL, forceIPv4: Bool, timeout: TimeInterval) throws {

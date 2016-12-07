@@ -9,7 +9,7 @@ struct CreateOrderEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
     let path = "orders"
     let contentType = "application/x.zalando.customer.order.create+json"
     let acceptedContentType = "application/x.zalando.customer.order.create.response+json"
-    let parameters: [String: Any]?
+    let parameters: EndpointParameters?
     let salesChannel: String
 
     let checkoutId: String

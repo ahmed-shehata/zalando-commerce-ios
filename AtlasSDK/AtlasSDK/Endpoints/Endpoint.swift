@@ -2,6 +2,9 @@
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
+typealias EndpointParameters = [String: Any]
+typealias EndpointHeaders = [String: Any]
+
 protocol Endpoint: CustomStringConvertible {
 
     var method: HTTPMethod { get }
@@ -12,8 +15,8 @@ protocol Endpoint: CustomStringConvertible {
     var url: Foundation.URL { get }
 
     var queryItems: [URLQueryItem]? { get }
-    var parameters: [String: Any]? { get }
-    var headers: [String: Any]? { get }
+    var parameters: EndpointParameters? { get }
+    var headers: EndpointHeaders? { get }
 
     var requiresAuthorization: Bool { get }
 }
@@ -26,8 +29,8 @@ extension Endpoint {
     var acceptedContentType: String { return "application/json" }
 
     var queryItems: [URLQueryItem]? { return nil }
-    var parameters: [String: Any]? { return nil }
-    var headers: [String: Any]? { return nil }
+    var parameters: EndpointParameters? { return nil }
+    var headers: EndpointHeaders? { return nil }
 
     var requiresAuthorization: Bool { return true }
 }
