@@ -11,7 +11,7 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
     weak var delegate: CheckoutSummaryActionHandlerDelegate?
 
     fileprivate let actionHandler = GuestAddressActionHandler()
-    fileprivate var guestCheckout: GuestCheckout? {
+    var guestCheckout: GuestCheckout? {
         didSet {
             updateDataModel(addresses: addresses, guestCheckout: guestCheckout)
         }

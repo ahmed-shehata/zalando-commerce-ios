@@ -122,6 +122,8 @@
 		E98453551DF59FAB001F6C51 /* GuestCheckoutSummaryActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98453531DF59FAB001F6C51 /* GuestCheckoutSummaryActionHandler.swift */; };
 		E98453581DF59FCF001F6C51 /* GuestCheckoutCreateAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98453561DF59FCF001F6C51 /* GuestCheckoutCreateAddressActionHandler.swift */; };
 		E98453591DF59FCF001F6C51 /* GuestCheckoutUpdateAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98453571DF59FCF001F6C51 /* GuestCheckoutUpdateAddressActionHandler.swift */; };
+		E9F6E56B1DF80DD200B5E6BD /* GuestAddressManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F6E5691DF80DD200B5E6BD /* GuestAddressManagerTests.swift */; };
+		E9F6E56C1DF80DD200B5E6BD /* GuestSummaryActionHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F6E56A1DF80DD200B5E6BD /* GuestSummaryActionHandlerTests.swift */; };
 		EBB0CE9B6F72CCBC101BCFD52F5E5993 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD2C09882EF82C93CC8615C9E0F59251 /* Default-568h@2x.png */; };
 		EF570993CFA4FDF0361679E931D55B8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94F33C041120EF12B441AE2E84A48050 /* Assets.xcassets */; };
 		F2DCEEB8BF2B1B7455C4C848172A7827 /* OAuth2LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2644DB2E806C8F07CECE81835A0326C /* OAuth2LoginViewController.swift */; };
@@ -287,6 +289,8 @@
 		E98453531DF59FAB001F6C51 /* GuestCheckoutSummaryActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCheckoutSummaryActionHandler.swift; sourceTree = "<group>"; };
 		E98453561DF59FCF001F6C51 /* GuestCheckoutCreateAddressActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCheckoutCreateAddressActionHandler.swift; sourceTree = "<group>"; };
 		E98453571DF59FCF001F6C51 /* GuestCheckoutUpdateAddressActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCheckoutUpdateAddressActionHandler.swift; sourceTree = "<group>"; };
+		E9F6E5691DF80DD200B5E6BD /* GuestAddressManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestAddressManagerTests.swift; sourceTree = "<group>"; };
+		E9F6E56A1DF80DD200B5E6BD /* GuestSummaryActionHandlerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestSummaryActionHandlerTests.swift; sourceTree = "<group>"; };
 		EB063447B26DE3D42F7736012B8921AA /* AddressListActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressListActionHandler.swift; sourceTree = "<group>"; };
 		EE803447FAE67D333D86C06DBB03AF20 /* AnimationDuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationDuration.swift; sourceTree = "<group>"; };
 		F3A01B45B1F4C0D9775396AA422A78BA /* BannerErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerErrorViewController.swift; sourceTree = "<group>"; };
@@ -574,6 +578,8 @@
 				C71205ADF1C3C36753FA064DFB54EC03 /* LoggedInSummaryActionHandlerTests.swift */,
 				15B8053E0362F7064F15C167BC228236 /* LoggedInAddressListActionHandlerTests.swift */,
 				5B553904D2ECD0E406028171B233ECEF /* AddressFormViewControllerTests.swift */,
+				E9F6E5691DF80DD200B5E6BD /* GuestAddressManagerTests.swift */,
+				E9F6E56A1DF80DD200B5E6BD /* GuestSummaryActionHandlerTests.swift */,
 				81B546CB1DF070D70038BBF4 /* TestOptions.swift */,
 			);
 			path = AtlasUITests;
@@ -855,6 +861,7 @@
 				E0D0E4EC009CDEA4D16C8A2726F24643 /* AsyncTests.swift in Sources */,
 				31C143E93BE11EC7482402E427829B55 /* AddressFormViewControllerTests.swift in Sources */,
 				877D4CE660F5CFF550D4032BE46FCCCB /* EditAddressTypeTests.swift in Sources */,
+				E9F6E56B1DF80DD200B5E6BD /* GuestAddressManagerTests.swift in Sources */,
 				81B546CC1DF070D70038BBF4 /* TestOptions.swift in Sources */,
 				82FEDC4FA09CC55CE1D9224BCDED9062 /* FormValidatorTests.swift in Sources */,
 				A077967CA9194ECD42DE4F9582D38823 /* PaymentViewControllerTests.swift in Sources */,
@@ -863,6 +870,7 @@
 				098CF939ED1E96935799A52EE6A5A6B3 /* LoggedInSummaryActionHandlerTests.swift in Sources */,
 				C233CC7F6C4F9387883F1F4ACA455596 /* LocalizationTests.swift in Sources */,
 				86C41143C6D9EAA6BA2C78007F6B0004 /* SizeListSelectionViewControllerTests.swift in Sources */,
+				E9F6E56C1DF80DD200B5E6BD /* GuestSummaryActionHandlerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -4,25 +4,18 @@
 
 import XCTest
 import Nimble
-import AtlasMockAPI
 
 @testable import AtlasUI
 @testable import AtlasSDK
 
-class GuestAddressActionHandlerTests: XCTestCase {
+class GuestAddressActionHandlerTests: UITestCase {
 
     var guestAddressActionHandler = GuestAddressActionHandler()
     let window = UIWindow()
 
     override func setUp() {
         super.setUp()
-        try! AtlasMockAPI.startServer()
-        registerAtlasUIViewController("AD541L009-G11")
-    }
-
-    override func tearDown() {
-        super.tearDown()
-        try! AtlasMockAPI.stopServer()
+        registerAtlasUIViewController(forSKU: "AD541L009-G11")
     }
 
     func testCreateShippingAddress() {
@@ -39,35 +32,35 @@ class GuestAddressActionHandlerTests: XCTestCase {
 
     func testUpdateShippingAddress() {
         guestAddressActionHandler.addressCreationStrategy = ShippingAddressViewModelCreationStrategy()
-        guestAddressActionHandler.updateAddress(createAddress()) { _ in }
-        expect(AtlasUIViewController.instance?.mainNavigationController.viewControllers.last as? AddressFormViewController).toNotEventually(beNil())
+        guestAddressActionHandler.updateAddress(address: createStandardAddress()) { _ in }
+        expect(AtlasUIViewController.shared?.mainNavigationController.viewControllers.last as? AddressFormViewController).toNotEventually(beNil())
     }
 
     func testUpdateBilingAddress() {
         guestAddressActionHandler.addressCreationStrategy = BillingAddressViewModelCreationStrategy()
-        guestAddressActionHandler.updateAddress(createAddress()) { _ in }
-        expect(AtlasUIViewController.instance?.mainNavigationController.viewControllers.last as? AddressFormViewController).toNotEventually(beNil())
+        guestAddressActionHandler.updateAddress(address: createStandardAddress()) { _ in }
+        expect(AtlasUIViewController.shared?.mainNavigationController.viewControllers.last as? AddressFormViewController).toNotEventually(beNil())
     }
 
     func testModifyShippingAddress() {
         guestAddressActionHandler.addressCreationStrategy = ShippingAddressViewModelCreationStrategy()
-        guestAddressActionHandler.handleAddressModification(createAddress()) { _ in }
+        guestAddressActionHandler.handleAddressModification(address: createStandardAddress()) { _ in }
         expect(UIApplication.topViewController() as? UIAlertController).toNotEventually(beNil())
     }
 
     func testModifyNoAddress() {
         guestAddressActionHandler.addressCreationStrategy = ShippingAddressViewModelCreationStrategy()
-        guestAddressActionHandler.handleAddressModification(nil) { _ in }
+        guestAddressActionHandler.handleAddressModification(address: nil) { _ in }
         expect(UIApplication.topViewController() as? UIAlertController).toNotEventually(beNil())
     }
 
-    func testCheckoutAddressesWithNormalShippingAddress() {
-        let checkoutAddresses = guestAddressActionHandler.checkoutAddresses(createAddress(), billingAddress: nil)
+    func testCheckoutAddressesWithStandardShippingAddress() {
+        let checkoutAddresses = CheckoutAddresses(shippingAddress: createStandardAddress(), billingAddress: nil, autoFill: true)
         expect(checkoutAddresses.billingAddress).toNot(beNil())
     }
 
     func testCheckoutAddressesWithPickupPointShippingAddress() {
-        let checkoutAddresses = guestAddressActionHandler.checkoutAddresses(createPickupPointAddress(), billingAddress: nil)
+        let checkoutAddresses = CheckoutAddresses(shippingAddress: createPickupPointAddress(), billingAddress: nil, autoFill: true)
         expect(checkoutAddresses.billingAddress).to(beNil())
     }
 
@@ -75,25 +68,15 @@ class GuestAddressActionHandlerTests: XCTestCase {
 
 extension GuestAddressActionHandlerTests {
 
-    private func registerAtlasUIViewController(sku: String) {
-        waitUntil(timeout: 10) { done in
-            let options = Options(clientId: "CLIENT_ID",
-                                  salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
-                                  interfaceLanguage: "en",
-                                  configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
-
-            AtlasUI.configure(options) { _ in
-                let atlasUIViewController = AtlasUIViewController(forProductSKU: sku)
-                AtlasUI.register { atlasUIViewController }
-                let _  = atlasUIViewController.view // load the view
-                self.window.rootViewController = atlasUIViewController
-                self.window.makeKeyAndVisible()
-                done()
-            }
-        }
+    fileprivate func registerAtlasUIViewController(forSKU sku: String) {
+        let atlasUIViewController = AtlasUIViewController(forSKU: sku)
+        _ = atlasUIViewController.view // load the view
+        self.window.rootViewController = atlasUIViewController
+        self.window.makeKeyAndVisible()
+        try! AtlasUI.shared().register { atlasUIViewController }
     }
 
-    private func createAddress() -> GuestCheckoutAddress {
+    fileprivate func createStandardAddress() -> GuestCheckoutAddress {
         return GuestCheckoutAddress(id: "",
                                     gender: .male,
                                     firstName: "John",
@@ -106,7 +89,7 @@ extension GuestAddressActionHandlerTests {
                                     pickupPoint: nil)
     }
 
-    private func createPickupPointAddress() -> GuestCheckoutAddress {
+    fileprivate func createPickupPointAddress() -> GuestCheckoutAddress {
         return GuestCheckoutAddress(id: "",
                                     gender: .male,
                                     firstName: "John",
