@@ -15,6 +15,15 @@ class CheckoutSummaryMainStackView: UIStackView {
         return stackView
     }()
 
+    let orderStackView: CheckoutSummaryOrderStackView = {
+        let stackView = CheckoutSummaryOrderStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 8
+        stackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 10, right: 15)
+        stackView.isLayoutMarginsRelativeArrangement = true
+        return stackView
+    }()
+
     let productSeparatorView: BorderView = {
         let view = BorderView()
         view.bottomBorder = true
@@ -109,6 +118,7 @@ extension CheckoutSummaryMainStackView: UIBuilder {
 
     func configureView() {
         addArrangedSubview(productStackView)
+        addArrangedSubview(orderStackView)
         addArrangedSubview(productSeparatorView)
 
         addArrangedSubview(shippingAddressStackView)
@@ -145,10 +155,13 @@ extension CheckoutSummaryMainStackView: UIDataBuilder {
     typealias T = CheckoutSummaryViewModel
 
     func configure(viewModel: T) {
-        productStackView.configure(viewModel: viewModel.dataModel)
+        productStackView.configure(viewModel: viewModel.dataModel.selectedArticleUnit)
+        orderStackView.configure(viewModel: viewModel.dataModel.orderNumber)
         priceStackView.configure(viewModel: viewModel.dataModel)
         deliveryStackView.configure(viewModel: viewModel.dataModel)
         guestStackView.configure(viewModel: viewModel.dataModel.email)
+
+        orderStackView.isHidden = !viewModel.layout.showOrderStackView
         guestStackView.isHidden = !viewModel.layout.showGuestStackView
 
         shippingAddressStackView.configure(viewModel: CheckoutSummaryAddressViewModel(

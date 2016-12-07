@@ -20,6 +20,8 @@
 "summaryView.label.emptyAddress.billing" = "Die Rechnungsadresse fehlt";
 "summaryView.label.estimatedDelivery" = "Voraussichtliche Lieferung";
 "summaryView.label.unitSize" = "Größe: %@";
+"summaryView.label.orderHeader" = "\nWir freuen uns über deine Bestellung.\nVielen Dank dafür!";
+"summaryView.label.orderNumber" = "Bestellnummer";
 "summaryView.label.price.total" = "Gesamtsumme:";
 "summaryView.label.price.vat" = "(Incl. MwST)";
 "summaryView.label.price.shipping" = "Versand";

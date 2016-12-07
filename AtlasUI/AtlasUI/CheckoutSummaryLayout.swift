@@ -11,6 +11,7 @@ protocol CheckoutSummaryLayout {
     var showFooterLabel: Bool { get }
     var showDetailArrow: Bool { get }
     var showGuestStackView: Bool { get }
+    var showOrderStackView: Bool { get }
 
     func submitButtonBackgroundColor(readyToCheckout: Bool) -> UIColor
     func submitButtonTitle(isPaypal: Bool) -> String
@@ -25,6 +26,7 @@ struct NotLoggedInLayout: CheckoutSummaryLayout {
     let showFooterLabel: Bool = true
     let showDetailArrow: Bool = true
     let showGuestStackView: Bool = false
+    let showOrderStackView: Bool = false
 
     func submitButtonBackgroundColor(readyToCheckout: Bool) -> UIColor { return .orange }
     func submitButtonTitle(isPaypal: Bool) -> String { return "summaryView.submitButton.checkoutWithZalando" }
@@ -39,6 +41,7 @@ struct GuestCheckoutLayout: CheckoutSummaryLayout {
     let showFooterLabel: Bool = true
     let showDetailArrow: Bool = true
     let showGuestStackView: Bool = true
+    let showOrderStackView: Bool = false
 
     func submitButtonBackgroundColor(readyToCheckout: Bool) -> UIColor { return readyToCheckout ? .orange : .gray }
     func submitButtonTitle(isPaypal: Bool) -> String { return "summaryView.submitButton.checkoutWithZalando" }
@@ -53,6 +56,7 @@ struct LoggedInLayout: CheckoutSummaryLayout {
     let showFooterLabel: Bool = true
     let showDetailArrow: Bool = true
     let showGuestStackView: Bool = false
+    let showOrderStackView: Bool = false
 
     func submitButtonBackgroundColor(readyToCheckout: Bool) -> UIColor { return readyToCheckout ? .orange : .gray }
     func submitButtonTitle(isPaypal: Bool) -> String {
@@ -69,6 +73,7 @@ struct OrderPlacedLayout: CheckoutSummaryLayout {
     let showFooterLabel: Bool = false
     let showDetailArrow: Bool = false
     let showGuestStackView: Bool = false
+    let showOrderStackView: Bool = true
 
     func submitButtonBackgroundColor(readyToCheckout: Bool) -> UIColor { return UIColor(hex: 0x509614) }
     func submitButtonTitle(isPaypal: Bool) -> String { return "summaryView.submitButton.backToShop" }
@@ -83,6 +88,7 @@ struct GuestOrderPlacedLayout: CheckoutSummaryLayout {
     let showFooterLabel: Bool = false
     let showDetailArrow: Bool = false
     let showGuestStackView: Bool = true
+    let showOrderStackView: Bool = true
 
     func submitButtonBackgroundColor(readyToCheckout: Bool) -> UIColor { return UIColor(hex: 0x509614) }
     func submitButtonTitle(isPaypal: Bool) -> String { return "summaryView.submitButton.backToShop" }

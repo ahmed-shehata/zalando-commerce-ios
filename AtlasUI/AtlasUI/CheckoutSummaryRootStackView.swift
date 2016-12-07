@@ -6,7 +6,11 @@ import UIKit
 
 class CheckoutSummaryRootStackView: UIStackView {
 
-    let scrollView = UIScrollView()
+    let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.backgroundColor = .white
+        return scrollView
+    }()
 
     let mainStackView: CheckoutSummaryMainStackView = {
         let stackView = CheckoutSummaryMainStackView()

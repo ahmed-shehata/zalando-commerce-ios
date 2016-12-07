@@ -49,13 +49,6 @@ class CheckoutSummaryProductStackView: UIStackView {
         return label
     }()
 
-    let orderNumberLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 14, weight: UIFontWeightLight)
-        label.textColor = .black
-        return label
-    }()
-
 }
 
 extension CheckoutSummaryProductStackView: UIBuilder {
@@ -68,10 +61,10 @@ extension CheckoutSummaryProductStackView: UIBuilder {
         detailsStackView.addArrangedSubview(articleNameLabel)
         detailsStackView.addArrangedSubview(unitSizeLabel)
         detailsStackView.addArrangedSubview(unitColorLabel)
-        detailsStackView.addArrangedSubview(orderNumberLabel)
     }
 
     func configureConstraints() {
+        articleImageView.setSquareAspectRatio()
         articleImageView.setWidth(equalToView: superview, multiplier: 0.2)
     }
 
@@ -79,16 +72,14 @@ extension CheckoutSummaryProductStackView: UIBuilder {
 
 extension CheckoutSummaryProductStackView: UIDataBuilder {
 
-    typealias T = CheckoutSummaryDataModel
+    typealias T = SelectedArticleUnit
 
     func configure(viewModel: T) {
-        articleImageView.setImage(from: viewModel.selectedArticleUnit.article.thumbnailURL)
-        brandNameLabel.text = viewModel.selectedArticleUnit.article.brand.name
-        articleNameLabel.text = viewModel.selectedArticleUnit.article.name
-        unitSizeLabel.text = Localizer.format(string: "summaryView.label.unitSize", viewModel.selectedArticleUnit.unit.size)
-        unitColorLabel.text = viewModel.selectedArticleUnit.article.color
-        orderNumberLabel.text = Localizer.format(string: "summaryView.label.orderNumber", viewModel.orderNumber ?? "")
-        orderNumberLabel.isHidden = viewModel.orderNumber == nil
+        articleImageView.setImage(from: viewModel.article.thumbnailURL)
+        brandNameLabel.text = viewModel.article.brand.name
+        articleNameLabel.text = viewModel.article.name
+        unitSizeLabel.text = Localizer.format(string: "summaryView.label.unitSize", viewModel.unit.size)
+        unitColorLabel.text = viewModel.article.color
     }
 
 }

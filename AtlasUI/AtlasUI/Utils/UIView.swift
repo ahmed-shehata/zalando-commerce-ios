@@ -37,6 +37,14 @@ extension UIView {
         return nil
     }
 
+    func takeScreenshot() -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(bounds.size, true, UIScreen.main.scale)
+        drawHierarchy(in: bounds, afterScreenUpdates: true)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
+
 }
 
 extension UIView {

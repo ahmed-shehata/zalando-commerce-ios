@@ -122,6 +122,8 @@
 		E98453551DF59FAB001F6C51 /* GuestCheckoutSummaryActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98453531DF59FAB001F6C51 /* GuestCheckoutSummaryActionHandler.swift */; };
 		E98453581DF59FCF001F6C51 /* GuestCheckoutCreateAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98453561DF59FCF001F6C51 /* GuestCheckoutCreateAddressActionHandler.swift */; };
 		E98453591DF59FCF001F6C51 /* GuestCheckoutUpdateAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98453571DF59FCF001F6C51 /* GuestCheckoutUpdateAddressActionHandler.swift */; };
+		E9974F961DF84E3D00BBE712 /* CheckoutSummaryOrderStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9974F951DF84E3D00BBE712 /* CheckoutSummaryOrderStackView.swift */; };
+		E9974F981DF87D6B00BBE712 /* UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9974F971DF87D6B00BBE712 /* UIScrollView.swift */; };
 		E9F6E56B1DF80DD200B5E6BD /* GuestAddressManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F6E5691DF80DD200B5E6BD /* GuestAddressManagerTests.swift */; };
 		E9F6E56C1DF80DD200B5E6BD /* GuestSummaryActionHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F6E56A1DF80DD200B5E6BD /* GuestSummaryActionHandlerTests.swift */; };
 		EBB0CE9B6F72CCBC101BCFD52F5E5993 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD2C09882EF82C93CC8615C9E0F59251 /* Default-568h@2x.png */; };
@@ -289,6 +291,8 @@
 		E98453531DF59FAB001F6C51 /* GuestCheckoutSummaryActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCheckoutSummaryActionHandler.swift; sourceTree = "<group>"; };
 		E98453561DF59FCF001F6C51 /* GuestCheckoutCreateAddressActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCheckoutCreateAddressActionHandler.swift; sourceTree = "<group>"; };
 		E98453571DF59FCF001F6C51 /* GuestCheckoutUpdateAddressActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCheckoutUpdateAddressActionHandler.swift; sourceTree = "<group>"; };
+		E9974F951DF84E3D00BBE712 /* CheckoutSummaryOrderStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryOrderStackView.swift; sourceTree = "<group>"; };
+		E9974F971DF87D6B00BBE712 /* UIScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollView.swift; sourceTree = "<group>"; };
 		E9F6E5691DF80DD200B5E6BD /* GuestAddressManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestAddressManagerTests.swift; sourceTree = "<group>"; };
 		E9F6E56A1DF80DD200B5E6BD /* GuestSummaryActionHandlerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestSummaryActionHandlerTests.swift; sourceTree = "<group>"; };
 		EB063447B26DE3D42F7736012B8921AA /* AddressListActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressListActionHandler.swift; sourceTree = "<group>"; };
@@ -453,6 +457,7 @@
 				5FCAC0AB68C0265B9B9D4ECA7B7F2200 /* UIImageView.swift */,
 				80F13460B6B17606CC65E38CE6A4716C /* UITableView.swift */,
 				0EA19C45C79A94472331D134BC9895CA /* UIView.swift */,
+				E9974F971DF87D6B00BBE712 /* UIScrollView.swift */,
 				B5494239851A207094AA7E1F76EFB842 /* Injector.swift */,
 				764CDA794B49DC585B031C7C4F5776D5 /* UserMessage.swift */,
 			);
@@ -541,6 +546,7 @@
 				5A709BBC960C3FA3E161DC6DA92C2831 /* CheckoutSummaryRootStackView.swift */,
 				36AFFBC11C6E4345A2FD0225BC27DA6E /* CheckoutSummaryMainStackView.swift */,
 				2B7D9D17623D2179A7F4614617C3C38C /* CheckoutSummaryProductStackView.swift */,
+				E9974F951DF84E3D00BBE712 /* CheckoutSummaryOrderStackView.swift */,
 				F9494F7947C24BD2087FE22EBE20BFCD /* CheckoutSummaryAddressStackView.swift */,
 				87E590A91E14F2FED72589813043BEFD /* CheckoutSummaryPaymentStackView.swift */,
 				E98453501DF59F96001F6C51 /* CheckoutSummaryGuestStackView.swift */,
@@ -949,6 +955,7 @@
 				16954EEE7CCDD0CE9815224EA8FF317E /* LoggedInCreateAddressActionHandler.swift in Sources */,
 				AC2A991E658A6F0E4A4E5435ABE3BB84 /* SizeListSelectionViewController.swift in Sources */,
 				546BE9B7EEFAC9AF8CDA82D115AAB5E0 /* AddressDataModelCreationStrategy.swift in Sources */,
+				E9974F961DF84E3D00BBE712 /* CheckoutSummaryOrderStackView.swift in Sources */,
 				E98453511DF59F96001F6C51 /* CheckoutSummaryGuestStackView.swift in Sources */,
 				93BB353DA208CEF9396B46D80A20A801 /* RowStackView.swift in Sources */,
 				78FC61A7719B1F7E9477B4BDE0F9B45A /* AtlasUIClient.swift in Sources */,
@@ -956,6 +963,7 @@
 				D9CE3553FFE09F2A82794C7A9E45F4F1 /* TextFieldInputStackView.swift in Sources */,
 				D1597746177CEB8207EFB773413174DF /* TextFieldInputViewModel.swift in Sources */,
 				8D8609A7F30C9F7D15E5E4A905BE4529 /* ToCViewController.swift in Sources */,
+				E9974F981DF87D6B00BBE712 /* UIScrollView.swift in Sources */,
 				D55BE43D2B403796900F316E5D71E5DC /* UIApplication.swift in Sources */,
 				04571E19605FDD77134ACCAFA10A2710 /* AddressBookImportDataModelCreationStrategy.swift in Sources */,
 				BC1ECCD35BAA9A66EA505B1C454025E3 /* UIBuilder.swift in Sources */,
