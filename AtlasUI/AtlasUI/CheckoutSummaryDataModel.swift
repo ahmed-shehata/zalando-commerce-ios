@@ -14,6 +14,7 @@ struct CheckoutSummaryDataModel {
     let shippingPrice: MoneyAmount
     let totalPrice: MoneyAmount
     let delivery: Delivery?
+    let email: String?
 
     init(selectedArticleUnit: SelectedArticleUnit,
          shippingAddress: FormattableAddress? = nil,
@@ -21,7 +22,8 @@ struct CheckoutSummaryDataModel {
          paymentMethod: String? = nil,
          shippingPrice: MoneyAmount = 0,
          totalPrice: MoneyAmount,
-         delivery: Delivery? = nil) {
+         delivery: Delivery? = nil,
+         email: String? = nil) {
 
         self.selectedArticleUnit = selectedArticleUnit
         self.shippingAddress = shippingAddress
@@ -30,6 +32,7 @@ struct CheckoutSummaryDataModel {
         self.shippingPrice = shippingPrice
         self.totalPrice = totalPrice
         self.delivery = delivery
+        self.email = email
     }
 
 }
@@ -52,6 +55,10 @@ extension CheckoutSummaryDataModel {
         return paymentMethod?.caseInsensitiveCompare("paypal") == .orderedSame
     }
 
+    var isAddressesReady: Bool {
+        return shippingAddress != nil && billingAddress != nil
+    }
+
     var termsAndConditionsURL: URL? {
         return AtlasAPIClient.shared?.config.salesChannel.termsAndConditionsURL
     }
@@ -66,8 +73,9 @@ extension CheckoutSummaryDataModel {
         self.billingAddress = addresses?.billingAddress ?? cartCheckout?.checkout?.billingAddress
         self.paymentMethod = cartCheckout?.checkout?.payment.selected?.method
         self.shippingPrice = 0
-        self.totalPrice = cartCheckout?.cart?.grossTotal.amount ?? selectedArticleUnit.unit.price.amount
+        self.totalPrice = cartCheckout?.cart?.grossTotal.amount ?? selectedArticleUnit.priceAmount
         self.delivery = cartCheckout?.checkout?.delivery
+        self.email = nil
     }
 
     init(selectedArticleUnit: SelectedArticleUnit, checkout: Checkout?, order: Order) {
@@ -78,6 +86,29 @@ extension CheckoutSummaryDataModel {
         self.shippingPrice = 0
         self.totalPrice = order.grossTotal.amount
         self.delivery = checkout?.delivery
+        self.email = nil
+    }
+
+    init(selectedArticleUnit: SelectedArticleUnit, guestCheckout: GuestCheckout?, email: String, addresses: CheckoutAddresses? = nil) {
+        self.selectedArticleUnit = selectedArticleUnit
+        self.shippingAddress = addresses?.shippingAddress ?? guestCheckout?.shippingAddress
+        self.billingAddress = addresses?.billingAddress ?? guestCheckout?.billingAddress
+        self.paymentMethod = guestCheckout?.payment.method
+        self.shippingPrice = 0
+        self.totalPrice = guestCheckout?.cart.grossTotal.amount ?? selectedArticleUnit.priceAmount
+        self.delivery = guestCheckout?.delivery
+        self.email = email
+    }
+
+    init(selectedArticleUnit: SelectedArticleUnit, guestCheckout: GuestCheckout?, email: String, guestOrder: GuestOrder) {
+        self.selectedArticleUnit = selectedArticleUnit
+        self.shippingAddress = guestOrder.shippingAddress
+        self.billingAddress = guestOrder.billingAddress
+        self.paymentMethod = guestCheckout?.payment.method
+        self.shippingPrice = 0
+        self.totalPrice = guestOrder.grossTotal.amount
+        self.delivery = guestCheckout?.delivery
+        self.email = email
     }
 
 }

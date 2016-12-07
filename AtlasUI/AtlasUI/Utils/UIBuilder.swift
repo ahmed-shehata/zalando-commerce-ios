@@ -13,8 +13,8 @@ protocol UIBuilder {
 
 extension UIBuilder {
 
-    func configureView() {}
-    func configureConstraints() {}
+    func configureView() { }
+    func configureConstraints() { }
 
     func buildView() {
         configureView()

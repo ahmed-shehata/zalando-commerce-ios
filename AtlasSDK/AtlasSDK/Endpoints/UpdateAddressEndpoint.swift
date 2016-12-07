@@ -12,7 +12,7 @@ struct UpdateAddressEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
     let acceptedContentType = "application/x.zalando.customer.address.update.response+json"
     let contentType = "application/x.zalando.customer.address.update+json"
 
-    var parameters: [String: Any]? {
+    var parameters: EndpointParameters? {
         return updateAddressRequest.toJSON()
     }
 

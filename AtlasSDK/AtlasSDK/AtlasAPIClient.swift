@@ -11,7 +11,7 @@ public struct AtlasAPIClient {
     var urlSession: URLSession = URLSession.shared
 
     public var countryCode: String {
-      return config.salesChannel.countryCode
+        return config.salesChannel.countryCode
     }
 
     init(config: Config) {
@@ -43,6 +43,15 @@ public struct AtlasAPIClient {
         call(endpoint: endpoint, completion: completion) { response in
             guard let json = response.body, let jsons = json.array.flatMap({ $0 }) else { return nil }
             return jsons.flatMap { Model(json: $0) }
+        }
+    }
+
+    func fetchRedirectLocation(endpoint: Endpoint, completion: @escaping (AtlasAPIResult<URL>) -> Void) {
+        call(endpoint: endpoint, completion: completion) { response in
+            guard let urlString = response.httpHeaders?["Location"],
+                let url = URL(string: urlString), HTTPStatus(statusCode: response.statusCode).isSuccessful
+                else { return nil }
+            return url
         }
     }
 

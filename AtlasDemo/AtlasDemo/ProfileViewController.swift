@@ -48,7 +48,7 @@ class ProfileViewController: UIViewController {
 
     @IBAction func logoutButtonTapped(_ sender: AnyObject) {
         Atlas.deauthorize()
-        let _ = self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
 
     fileprivate func updateLanguageSelectedIndex() {

@@ -35,6 +35,21 @@ public typealias CheckoutCartCompletion = (AtlasAPIResult<(checkout: Checkout, c
 public typealias OrderCompletion = (AtlasAPIResult<Order>) -> Void
 
 /**
+ Completion block `AtlasAPIResult` with the `GuestCheckout` struct as a success value
+ */
+public typealias GuestCheckoutCompletion = (AtlasAPIResult<GuestCheckout>) -> Void
+
+/**
+ Completion block `AtlasAPIResult` with the `GuestOrder` struct as a success value
+ */
+public typealias GuestOrderCompletion = (AtlasAPIResult<GuestOrder>) -> Void
+
+/**
+ Completion block `AtlasAPIResult` with the `URL` struct as a success value
+ */
+public typealias URLCompletion = (AtlasAPIResult<URL>) -> Void
+
+/**
  Completion block `AtlasAPIResult` with the `Article` struct as a success value
  */
 public typealias ArticleCompletion = (AtlasAPIResult<Article>) -> Void
@@ -126,6 +141,28 @@ extension AtlasAPIClient {
                                            parameters: parameters,
                                            salesChannel: config.salesChannel.identifier,
                                            checkoutId: checkoutId)
+        fetch(from: endpoint, completion: completion)
+    }
+
+    public func createGuestOrder(request: GuestOrderRequest, completion: @escaping GuestOrderCompletion) {
+        let endpoint = CreateGuestOrderEndpoint(serviceURL: config.checkoutGatewayURL,
+                                                parameters: request.toJSON(),
+                                                salesChannel: config.salesChannel.identifier)
+        fetch(from: endpoint, completion: completion)
+    }
+
+    public func guestCheckoutPaymentSelectionURL(request: GuestPaymentSelectionRequest, completion: @escaping URLCompletion) {
+        let endpoint = CreateGuestOrderEndpoint(serviceURL: config.checkoutGatewayURL,
+                                                parameters: request.toJSON(),
+                                                salesChannel: config.salesChannel.identifier)
+        fetchRedirectLocation(endpoint: endpoint, completion: completion)
+    }
+
+    public func guestCheckout(checkoutId: String, token: String, completion: @escaping GuestCheckoutCompletion) {
+        let endpoint = GetGuestCheckoutEndpoint(serviceURL: config.checkoutGatewayURL,
+                                                salesChannel: config.salesChannel.identifier,
+                                                checkoutId: checkoutId,
+                                                token: token)
         fetch(from: endpoint, completion: completion)
     }
 

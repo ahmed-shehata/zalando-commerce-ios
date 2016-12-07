@@ -5,7 +5,7 @@
 import UIKit
 import AtlasSDK
 
-typealias AddressFormCompletion = (EquatableAddress) -> Void
+typealias AddressFormCompletion = (_ address: EquatableAddress, _ email: String?) -> Void
 
 class AddressFormViewController: UIViewController {
 
@@ -114,7 +114,7 @@ extension AddressFormViewController {
         if viewModel.layout.displayViewModally {
             dismiss(animated: animated, completion: completion)
         } else {
-            let _ = navigationController?.popViewController(animated: animated)
+            _ = navigationController?.popViewController(animated: animated)
             completion?()
         }
     }
@@ -129,7 +129,7 @@ extension AddressFormViewController: AddressFormActionHandlerDelegate {
 
     func dismissView(withAddress address: EquatableAddress, animated: Bool) {
         dismissView(animated: animated) { [weak self] in
-            self?.completion?(address)
+            self?.completion?(address, self?.viewModel.dataModel.email)
         }
     }
 

@@ -31,3 +31,19 @@ protocol CheckoutSummaryActionHandler {
     func handleBillingAddressSelection()
 
 }
+
+extension CheckoutSummaryActionHandler {
+
+    var shippingAddress: EquatableAddress? {
+        return dataSource?.dataModel.shippingAddress as? EquatableAddress
+    }
+
+    var billingAddress: EquatableAddress? {
+        return dataSource?.dataModel.billingAddress as? EquatableAddress
+    }
+
+    var addresses: CheckoutAddresses? {
+        return CheckoutAddresses(shippingAddress: shippingAddress, billingAddress: billingAddress)
+    }
+
+}

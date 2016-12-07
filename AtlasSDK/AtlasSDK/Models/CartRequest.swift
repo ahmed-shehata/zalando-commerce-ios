@@ -4,7 +4,7 @@
 
 import Foundation
 
-public struct CartRequest: JSONRepresentable {
+public struct CartRequest {
 
     public let items: [CartItemRequest]
     public let replaceItems: Bool
@@ -14,7 +14,11 @@ public struct CartRequest: JSONRepresentable {
         self.replaceItems = replaceItems
     }
 
-    public func toJSON() -> [String: Any] {
+}
+
+extension CartRequest: JSONRepresentable {
+
+    func toJSON() -> JSONDictionary {
         return [
             "replace_items": self.replaceItems,
             "items": self.items.map { $0.toJSON() }

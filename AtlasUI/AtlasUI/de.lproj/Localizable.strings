@@ -12,6 +12,7 @@
 "summaryView.title.summary" = "Übersicht";
 "summaryView.title.orderPlaced" = "Vielen Dank für deinen Einkauf!";
 "summaryView.label.payment" = "Zahlungsart";
+"summaryView.label.guestCheckout" = "Als Gast zur Kasse";
 "summaryView.label.address.shipping" = "Lieferadresse";
 "summaryView.label.address.billing" = "Rechnungsadresse";
 "summaryView.label.address.packstationAbbreviation" = "P.S.";
@@ -23,10 +24,16 @@
 "summaryView.label.price.vat" = "(Incl. MwST)";
 "summaryView.label.price.shipping" = "Versand";
 "summaryView.submitButton.checkoutWithZalando" = "Mit Zalando anmelden";
+"summaryView.submitButton.guestCheckout" = "ohne Registrierung";
 "summaryView.submitButton.placeOrder" = "Jetzt Kaufen";
-"summaryView.submitButton.payWithPapPal" = "Bestätigen und zahlen mit PayPal";
+"summaryView.submitButton.payWithPayPal" = "Bestätigen und zahlen mit PayPal";
 "summaryView.submitButton.backToShop" = "weiter shoppen";
 "summaryView.link.termsAndConditions" = "Für Deine Bestellung gelten die AGB und die Wiederrufsbelehrung von Zalando";
+
+// Guest Summary View
+"guestSummaryView.address.add" = "Neue Adresse erstellen";
+"guestSummaryView.address.create" = "Neue Adresse erstellen";
+"guestSummaryView.address.update" = "Adresse ändern";
 
 // Address list view
 "addressListView.title.shipping" = "Lieferadresse";
@@ -43,6 +50,7 @@
 "addressFormView.title" = "Anrede";
 "addressFormView.firstname" = "Vorname";
 "addressFormView.lastname" = "Nachname";
+"addressFormView.emailaddress" = "E-Mail Adresse";
 "addressFormView.street" = "Straße und Hausnummer";
 "addressFormView.additional" = "Adresszusatz / Firma / c/o";
 "addressFormView.packstation" = "Nummer der Packstation";
@@ -62,6 +70,7 @@
 "formValidation.pattern.city" = "Bitte in diesem Feld nur die Zeichen (A-z) eingeben.";
 "formValidation.pattern.street" = "Bitte Straße und Hausnummer eingeben.";
 "formValidation.numbersOnly" = "Bitte nur Nummern eintragen";
+"formValidation.vaildEmail" = "Bitte geben Sie eine gültige E-Mail Adresse an";
 
 // Error
 "AtlasCheckoutError.title" = "Oops";

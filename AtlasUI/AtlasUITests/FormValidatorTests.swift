@@ -4,17 +4,11 @@
 
 import XCTest
 import Nimble
+import AtlasSDK
 
 @testable import AtlasUI
-@testable import AtlasSDK
 
-class FormValidatorTests: XCTestCase {
-
-    override func setUp() {
-        super.setUp()
-
-        try! AtlasUI.shared().register { try! Localizer(localeIdentifier: "en_UK") }
-    }
+class FormValidatorTests: UITestCase {
 
     func testRequiredValidator() {
         let validator = FormValidator.required

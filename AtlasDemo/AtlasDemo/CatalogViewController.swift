@@ -20,9 +20,9 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
 
     fileprivate let articlesClient = ArticlesClient()
     fileprivate let sampleSKUs = [
-        "L2711E002-Q11", "GU121D08Z-Q11", "AZ711M001-B11",
-        "AZ711N00B-Q11", "MK151F00E-Q11", "M0Q21C068-B11",
-        "EV451D00U-302", "RA252F005-802"
+        "SU222P027-Q11", "SU222O0C8-C11", "KX112B00P-Q11",
+        "N1242A0U7-k13", "TO152E050-Q11", "NI354F003-K11",
+        "DI122G08l-K11"
     ]
 
     static var shared: CatalogViewController? {

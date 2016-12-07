@@ -50,9 +50,9 @@ extension AtlasAPIResult {
             return data
         case .error(let error, _, _):
             if fullScreen {
-                UserMessage.displayErrorFullScreen(error)
+                UserMessage.displayErrorFullScreen(error: error)
             } else {
-                UserMessage.displayError(error)
+                UserMessage.displayError(error: error)
             }
             return nil
         case .handledInternally:

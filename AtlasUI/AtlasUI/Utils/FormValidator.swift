@@ -11,6 +11,7 @@ enum FormValidator {
     case exactLength(length: Int)
     case pattern(pattern: String, errorMessage: String)
     case numbersOnly
+    case validEmail
 
     func rejectionReason(for text: String?) -> String? {
         guard !isValid(text) else { return nil }
@@ -22,6 +23,7 @@ enum FormValidator {
         case .exactLength(let length): return Localizer.format(string: "formValidation.exactLength", "\(length)")
         case .pattern(_, let errorMessage): return Localizer.format(string: errorMessage)
         case .numbersOnly: return Localizer.format(string: "formValidation.numbersOnly")
+        case .validEmail: return Localizer.format(string: "formValidation.vaildEmail")
         }
     }
 
@@ -29,6 +31,8 @@ enum FormValidator {
     static let namePattern = "^[" + anyCharacterPattern + "]'?[- " + anyCharacterPattern + "ß]+$"
     static let cityPattern = "^[" + anyCharacterPattern + "]'?[-,;()' 0-9" + anyCharacterPattern + "ß]+$"
     static let streetPattern = "^(?=.*[a-zA-Z])(?=.*[0-9]).*$"
+    static let emailPattern = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
+    static let digitsPattern = "^[0-9]+$"
 
     private func isValid(_ text: String?) -> Bool {
         switch self {
@@ -37,7 +41,8 @@ enum FormValidator {
         case .maxLength(let maxLength): return trimmedLength(text) <= maxLength
         case .exactLength(let length): return text?.trimmed().length == length
         case .pattern(let pattern, _): return isValid(pattern: pattern, text: text)
-        case .numbersOnly: return isValid(pattern: "^[0-9]+$", text: text)
+        case .numbersOnly: return isValid(pattern: FormValidator.digitsPattern, text: text)
+        case .validEmail: return isValid(pattern: FormValidator.emailPattern, text: text)
         }
     }
 
@@ -60,6 +65,7 @@ func == (lhs: FormValidator, rhs: FormValidator) -> Bool {
     case (.exactLength(let lhsLength), .exactLength(let rhsLength)): return lhsLength == rhsLength
     case (.pattern(let lhsPattern), .pattern(let rhsPattern)): return lhsPattern == rhsPattern
     case (.numbersOnly, .numbersOnly): return true
+    case (.validEmail, .validEmail): return true
     default: return false
     }
 }

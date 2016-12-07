@@ -12,7 +12,7 @@ struct CreateAddressEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
     let acceptedContentType = "application/x.zalando.customer.address.create.response+json"
     let contentType = "application/x.zalando.customer.address.create+json"
 
-    var parameters: [String: Any]? {
+    var parameters: EndpointParameters? {
         return createAddressRequest.toJSON()
     }
 

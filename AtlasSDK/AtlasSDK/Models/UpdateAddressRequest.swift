@@ -32,7 +32,7 @@ extension UpdateAddressRequest: JSONRepresentable {
         static let defaultShipping = "default_shipping"
     }
 
-    func toJSON() -> [String: Any] {
+    func toJSON() -> JSONDictionary {
         var result: [String: Any] = [
             Keys.gender: gender.rawValue,
             Keys.firstName: firstName,

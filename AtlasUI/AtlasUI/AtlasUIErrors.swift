@@ -14,26 +14,32 @@ enum PresentationMode {
 
 protocol UserPresentableError: AtlasError {
 
-    func customMessage() -> String?
-    func shouldDisplayGeneralMessage() -> Bool
-    func presentationMode() -> PresentationMode
+    var customMessage: String? { get }
+    var shouldDisplayGeneralMessage: Bool { get }
+    var presentationMode: PresentationMode { get }
 
 }
 
 extension UserPresentableError {
 
-    func customMessage() -> String? { return nil }
+    var customMessage: String? {
+        return nil
+    }
 
-    func shouldDisplayGeneralMessage() -> Bool { return true }
+    var shouldDisplayGeneralMessage: Bool {
+        return true
+    }
 
-    func presentationMode() -> PresentationMode { return .banner }
+    var presentationMode: PresentationMode {
+        return .banner
+    }
 
     var displayedTitle: String {
-        return shouldDisplayGeneralMessage() ? Localizer.format(string: "AtlasCheckoutError.title") : title()
+        return shouldDisplayGeneralMessage ? Localizer.format(string: "AtlasCheckoutError.title") : title()
     }
 
     var displayedMessage: String {
-        return shouldDisplayGeneralMessage() ? Localizer.format(string: "AtlasCheckoutError.message.unclassified") : message()
+        return shouldDisplayGeneralMessage ? Localizer.format(string: "AtlasCheckoutError.message.unclassified") : message()
     }
 
     fileprivate func title() -> String {
@@ -43,14 +49,14 @@ extension UserPresentableError {
     }
 
     fileprivate func message() -> String {
-        return customMessage() ?? Localizer.format(string: localizedMessageKey)
+        return customMessage ?? Localizer.format(string: localizedMessageKey)
     }
 
 }
 
 extension AtlasAPIError: UserPresentableError {
 
-    func shouldDisplayGeneralMessage() -> Bool {
+    var shouldDisplayGeneralMessage: Bool {
         switch self {
         case .noInternet: return false
         case let .nsURLError(_, details): return details == nil
@@ -58,7 +64,7 @@ extension AtlasAPIError: UserPresentableError {
         }
     }
 
-    func customMessage() -> String? {
+    var customMessage: String? {
         switch self {
         case let .nsURLError(_, details): return details~?
         default: return nil
@@ -69,18 +75,18 @@ extension AtlasAPIError: UserPresentableError {
 
 extension AtlasCheckoutError: UserPresentableError {
 
-    func shouldDisplayGeneralMessage() -> Bool {
+    var shouldDisplayGeneralMessage: Bool {
         return false
     }
 
-    func presentationMode() -> PresentationMode {
+    var presentationMode: PresentationMode {
         switch self {
         case .outOfStock: return .fullScreen
         default: return .banner
         }
     }
 
-    func customMessage() -> String? {
+    var customMessage: String? {
         switch self {
         case .priceChanged(let newPrice):
             let price = Localizer.format(price: newPrice)

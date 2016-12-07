@@ -9,15 +9,17 @@ module Calypso
 
   class Deps < Thor
 
+    MAC_DEPS = 'swifter SwiftyJSON'.freeze
+
     desc 'build', 'Build dependencies'
     def build
       run 'carthage bootstrap --platform iOS --no-use-binaries'
-      run 'carthage build --platform Mac swifter --no-use-binaries'
+      run "carthage build --platform Mac #{MAC_DEPS}"
     end
 
     desc 'update', 'Update dependencies'
     def update
-      run 'carthage update --platform iOS --no-use-binaries'
+      run "carthage update --platform iOS --no-use-binaries #{MAC_DEPS}"
     end
 
     desc 'clean', 'Clean dependencies'

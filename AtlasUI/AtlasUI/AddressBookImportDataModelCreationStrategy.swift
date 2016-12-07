@@ -34,7 +34,7 @@ extension AddressBookImportDataModelCreationStrategy: CNContactPickerDelegate {
             if let datawModel = AddressFormDataModel(contactProperty: contactProperty, countryCode: AtlasAPIClient.countryCode) {
                 strongSelf.completion(datawModel)
             } else {
-                UserMessage.displayError(AtlasCheckoutError.unclassified)
+                UserMessage.displayError(error: AtlasCheckoutError.unclassified)
             }
         }
     }

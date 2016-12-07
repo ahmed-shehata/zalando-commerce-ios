@@ -98,9 +98,9 @@ extension BannerErrorViewController: UIBuilder {
         view.clipsToBounds = true
         view.isUserInteractionEnabled = true
         view.addSubview(containerView)
+        view.addSubview(cancelButton)
         containerView.addSubview(stackView)
         containerView.addSubview(cancelIconLabel)
-        containerView.addSubview(cancelButton)
         stackView.addArrangedSubview(titleLabel)
         stackView.addArrangedSubview(messageLabel)
         cancelButton.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
