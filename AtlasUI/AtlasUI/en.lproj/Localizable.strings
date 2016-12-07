@@ -1,18 +1,18 @@
-// Buttons
+
+/*Buttons*/
 "button.general.cancel" = "Cancel";
 "button.general.save" = "Save";
 
-// Login View
+/*Login View*/
 "loginView.loginWithZalando" = "Login with Zalando";
 
-// Terms & Conditions View
+/*Terms & Conditions View*/
 "termsAndConditionsView.title" = "Legal Notice";
 
-// Summary View
+/*Summary View*/
 "summaryView.title.summary" = "Summary";
 "summaryView.title.orderPlaced" = "Order placed";
 "summaryView.label.payment" = "Payment";
-"summaryView.label.guestCheckout" = "Checkout as guest";
 "summaryView.label.address.shipping" = "Shipping Address";
 "summaryView.label.address.billing" = "Billing Address";
 "summaryView.label.address.packstationAbbreviation" = "P.S.";
@@ -24,33 +24,25 @@
 "summaryView.label.price.vat" = "(VAT Included)";
 "summaryView.label.price.shipping" = "Shipping";
 "summaryView.submitButton.checkoutWithZalando" = "Checkout with Zalando";
-"summaryView.submitButton.guestCheckout" = "Checkout as guest";
 "summaryView.submitButton.placeOrder" = "Place order";
-"summaryView.submitButton.payWithPayPal" = "Confirm and pay with PayPal";
 "summaryView.submitButton.backToShop" = "Back to shop";
 "summaryView.link.termsAndConditions" = "Zalando terms, conditions and cancellation policy apply to all orders";
 
-// Guest Summary View
-"guestSummaryView.address.add" = "Create new address";
-"guestSummaryView.address.create" = "Create new Address";
-"guestSummaryView.address.update" = "Update Address";
-
-// Address list view
+/*Address list view*/
 "addressListView.title.shipping" = "Shipping Address";
 "addressListView.title.billing" = "Billing Address";
 "addressListView.prefix.packstation" = "Packstation";
 "addressListView.prefix.memberID" = "Member ID";
 "addressListView.add.cellTitle" = "Add new address...";
 "addressListView.add.type.title" = "Address Type";
-"addressListView.add.type.StandardAddressDataModelCreationStrategy" = "Standard";
-"addressListView.add.type.PickupPointAddressDataModelCreationStrategy" = "Pickup Point";
-"addressListView.add.type.AddressBookImportDataModelCreationStrategy" = "Import from Address Book";
+"addressListView.add.type.StandardAddressFormCreationStrategy" = "Standard";
+"addressListView.add.type.PickupPointAddressFormCreationStrategy" = "Pickup Point";
+"addressListView.add.type.AddressBookImportCreationStrategy" = "Import from Address Book";
 
-// Address Form View
+/*Address Form View*/
 "addressFormView.title" = "Title";
 "addressFormView.firstname" = "First Name";
 "addressFormView.lastname" = "Last Name";
-"addressFormView.emailaddress" = "Email Address";
 "addressFormView.street" = "Street";
 "addressFormView.additional" = "Additional";
 "addressFormView.packstation" = "Packstation";
@@ -61,7 +53,7 @@
 "addressFormView.gender.male" = "Mr";
 "addressFormView.gender.female" = "Mrs";
 
-// Form validation
+/*Form validation*/
 "formValidation.required" = "This field is required";
 "formValidation.minLength" = "Min length is %@";
 "formValidation.maxLength" = "Max length is %@";
@@ -70,9 +62,8 @@
 "formValidation.pattern.city" = "Please only use the characters (A-z) in this field";
 "formValidation.pattern.street" = "Please enter your street and house number";
 "formValidation.numbersOnly" = "Only numbers are allowed";
-"formValidation.vaildEmail" = "Please enter a valid email address";
 
-// Errors
+/*Errors*/
 "AtlasCheckoutError.title" = "Oops";
 "AtlasCheckoutError.title.missingAddress" = "No address selected";
 "AtlasCheckoutError.title.priceChanged" = "Price changed";
@@ -84,13 +75,11 @@
 "AtlasCheckoutError.message.paymentMethodNotAvailable" = "Payment method is no longer available";
 "AtlasCheckoutError.message.checkoutFailure" = "An error occurred during updating the checkout";
 "AtlasCheckoutError.message.addressInvalid" = "Address not valid, please check the address";
-
 "AtlasLoginError.title" = "Login Error";
 "AtlasLoginError.message.missingURL" = "Missing login URL";
 "AtlasLoginError.message.accessDenied" = "Access denied";
 "AtlasLoginError.message.requestFailed" = "Request failed";
 "AtlasLoginError.message.missingViewControllerToShowLoginForm" = "Cannot show login form";
-
 "AtlasAPIError.title" = "Server Error";
 "AtlasAPIError.title.noInternet" = "No internet connection";
 "AtlasAPIError.message.invalidResponseFormat" = "Incorrect response format";
@@ -98,9 +87,18 @@
 "AtlasAPIError.message.noInternet" = "Please check you internet connection";
 "AtlasAPIError.message.unauthorized" = "Access denied";
 "AtlasAPIError.message.checkoutFailed" = "Unknown checkout error";
-
 "AtlasConfigurationError.title" = "Configuration Error";
 "AtlasConfigurationError.message.incorrectConfigServiceResponse" = "Server returned unknown response";
 "AtlasConfigurationError.message.missingClientId" = "Missing client identifier";
 "AtlasConfigurationError.message.missingSalesChannel" = "Missing sales channel";
 "AtlasConfigurationError.message.missingInterfaceLanguage" = "Missing interface language";
+"summaryView.label.guestCheckout" = "Checkout as guest";
+"summaryView.submitButton.guestCheckout" = "Checkout as guest";
+"summaryView.submitButton.payWithPayPal" = "Confirm and pay with PayPal";
+
+/*Guest Summary View*/
+"guestSummaryView.address.add" = "Create new address";
+"guestSummaryView.address.create" = "Create new Address";
+"guestSummaryView.address.update" = "Update Address";
+"addressFormView.emailaddress" = "Email Address";
+"formValidation.vaildEmail" = "Please enter a valid email address";
