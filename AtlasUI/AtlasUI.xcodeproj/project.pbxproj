@@ -228,6 +228,9 @@
 		808C394E80E745736133ADBD0E2938C8 /* AtlasUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AtlasUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80F13460B6B17606CC65E38CE6A4716C /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		816405B61DF84EB600C7BAF0 /* AtlasUI-URLRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AtlasUI-URLRequest.swift"; sourceTree = "<group>"; };
+		816405BB1DF8524E00C7BAF0 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		816405BC1DF8525700C7BAF0 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		816405BD1DF8525C00C7BAF0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		816405BE1DF869B300C7BAF0 /* URLRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestTests.swift; sourceTree = "<group>"; };
 		8195AA6C1DF58DD800D9AA7B /* PaymentStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentStatus.swift; sourceTree = "<group>"; };
 		81B546CB1DF070D70038BBF4 /* TestOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestOptions.swift; path = ../../AtlasSDK/AtlasSDKTests/TestOptions.swift; sourceTree = "<group>"; };
@@ -789,8 +792,9 @@
 			knownRegions = (
 				en,
 				de,
-				global,
-				Base,
+				pl,
+				it,
+				fr,
 			);
 			mainGroup = 28416D88773780187E0A1F21A416ADD5;
 			productRefGroup = 58525F1A4F96F26E15272DC693E4FB44 /* Products */;
@@ -1005,6 +1009,9 @@
 			children = (
 				1F98B137A86BBD39141DE910F3A03D9D /* de */,
 				5578174CA128912EF595E9E39A03396E /* en */,
+				816405BB1DF8524E00C7BAF0 /* pl */,
+				816405BC1DF8525700C7BAF0 /* it */,
+				816405BD1DF8525C00C7BAF0 /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
