@@ -15,7 +15,6 @@ class URLRequestTests: UITestCase {
         let request = URLRequest(url: URL(validURL: "http://zalando.de"), language: language)
 
         expect(request.allHTTPHeaderFields?["Accept-Language"]).to(contain("\(language);q=1.0"))
-        expect(request.allHTTPHeaderFields?["Accept-Language"]).to(contain("\(language);q=1.0"))
     }
 
     func testLanguageQueryString() {
