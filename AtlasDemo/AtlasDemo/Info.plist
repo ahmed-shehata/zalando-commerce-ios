@@ -49,7 +49,7 @@
 		<string>armv7</string>
 	</array>
     <key>NSPhotoLibraryUsageDescription</key>
-    <string>Saving the order image in your photos app</string>
+    <string>Saving the order details image in your photos app</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

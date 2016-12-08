@@ -58,26 +58,73 @@ class CheckoutSummaryOrderStackView: UIStackView {
         return button
     }()
 
-    fileprivate dynamic func saveImageButtonPressed() {
-        saveImageContainer.isHidden = true
+    let imageSavedLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 15)
+        label.textColor = UIColor(hex: 0x509614)
+        label.textAlignment = .center
+        label.text = "✓ Image saved to your photo library"
+        label.alpha = 0
+        return label
+    }()
 
-        guard
-            let scrollView = superview?.superview as? UIScrollView,
-            let image = scrollView.takeScreenshot() else {
-                saveImageContainer.isHidden = false
-                UserMessage.displayError(error: AtlasCheckoutError.unclassified)
-                return
+}
+
+extension CheckoutSummaryOrderStackView {
+
+    fileprivate dynamic func saveImageButtonPressed() {
+        guard let scrollView = superview?.superview as? UIScrollView else {
+            UserMessage.displayError(error: AtlasCheckoutError.unclassified)
+            return
         }
 
-        saveImageContainer.isHidden = false
-        saveImageButton.isUserInteractionEnabled = false
-        saveImageButton.setTitle("Image Saved to your photo library", for: .normal)
+        let (contentOffset, frame) = prepareViewForTakingImage(scrollView: scrollView)
+        guard let image = scrollView.takeScreenshot() else {
+            cleanupViewAfterTakingImage(scrollView: scrollView, originalContentOffset: contentOffset, originalFrame: frame)
+            UserMessage.displayError(error: AtlasCheckoutError.unclassified)
+            return
+        }
 
+        cleanupViewAfterTakingImage(scrollView: scrollView, originalContentOffset: contentOffset, originalFrame: frame)
         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
 
-        Async.delay(delay: 3) { [weak self] in
-            self?.saveImageButton.isUserInteractionEnabled = true
-            self?.saveImageButton.setTitle("Save order details image", for: .normal)
+        UIView.animateKeyframes(withDuration: 4, delay: 0, options: .allowUserInteraction, animations: { [weak self] in
+
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.1) {
+                self?.saveImageButton.alpha = 0
+                self?.imageSavedLabel.alpha = 1
+            }
+
+            UIView.addKeyframe(withRelativeStartTime: 0.8, relativeDuration: 0.1) {
+                self?.saveImageButton.alpha = 1
+                self?.imageSavedLabel.alpha = 0
+            }
+
+        }, completion: nil)
+    }
+
+    private func prepareViewForTakingImage(scrollView: UIScrollView) -> (originalContentOffset: CGPoint, originalFrame: CGRect) {
+        let savedContentOffset = scrollView.contentOffset
+        let savedFrame = scrollView.frame
+
+        let imageHeight = scrollView.contentSize.height - saveImageContainer.frame.height - spacing
+        let imageSize = CGSize(width: scrollView.contentSize.width, height: imageHeight)
+        saveImageContainer.isHidden = true
+
+        scrollView.contentOffset = .zero
+        scrollView.frame = CGRect(origin: CGPoint.zero, size: imageSize)
+
+        return (savedContentOffset, savedFrame)
+    }
+
+    private func cleanupViewAfterTakingImage(scrollView: UIScrollView, originalContentOffset: CGPoint, originalFrame: CGRect) {
+        saveImageContainer.isHidden = false
+        scrollView.alpha = 0
+
+        Async.delay(delay: 0.1) {
+            scrollView.alpha = 1
+            scrollView.contentOffset = originalContentOffset
+            scrollView.frame = originalFrame
         }
     }
 
@@ -88,20 +135,28 @@ extension CheckoutSummaryOrderStackView: UIBuilder {
     func configureView() {
         addArrangedSubview(orderHeaderLabel)
         addArrangedSubview(orderNumberStackView)
-        addArrangedSubview(saveImageContainer)
 
         orderNumberStackView.addArrangedSubview(orderNumberTitleLabel)
         orderNumberStackView.addArrangedSubview(orderNumberValueLabel)
 
-        saveImageContainer.addSubview(saveImageButton)
-        saveImageButton.addTarget(self, action: #selector(saveImageButtonPressed), for: .touchUpInside)
+        if accessPhotosIsStatedInInfoPlist {
+            addArrangedSubview(saveImageContainer)
+            saveImageContainer.addSubview(imageSavedLabel)
+            saveImageContainer.addSubview(saveImageButton)
+            saveImageButton.addTarget(self, action: #selector(saveImageButtonPressed), for: .touchUpInside)
+        }
     }
 
     func configureConstraints() {
         orderNumberTitleLabel.setWidth(equalToView: orderNumberValueLabel)
+        imageSavedLabel.fillInSuperview()
         saveImageButton.centerInSuperview()
         saveImageButton.snap(toSuperview: .top)
         saveImageButton.snap(toSuperview: .bottom)
+    }
+
+    private var accessPhotosIsStatedInInfoPlist: Bool {
+        return Bundle.main.infoDictionary?["NSPhotoLibraryUsageDescription"] != nil
     }
 
 }
