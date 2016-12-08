@@ -94,37 +94,21 @@ class CheckoutSummaryOrderStackView: UIStackView {
 extension CheckoutSummaryOrderStackView {
 
     fileprivate dynamic func saveImageButtonPressed() {
-        guard let scrollView = superview?.superview as? UIScrollView else {
-            UserMessage.displayError(error: AtlasCheckoutError.unclassified)
-            return
-        }
+        guard let scrollView = superview?.superview as? UIScrollView else { return }
 
         let (contentOffset, frame) = prepareViewForTakingImage(scrollView: scrollView)
+
         guard let image = scrollView.takeScreenshot() else {
             cleanupViewAfterTakingImage(scrollView: scrollView, originalContentOffset: contentOffset, originalFrame: frame)
-            UserMessage.displayError(error: AtlasCheckoutError.unclassified)
             return
         }
-
         cleanupViewAfterTakingImage(scrollView: scrollView, originalContentOffset: contentOffset, originalFrame: frame)
 
         if !UIApplication.unitTestsAreRunning {
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
         }
 
-        UIView.animateKeyframes(withDuration: 4, delay: 0, options: .allowUserInteraction, animations: { [weak self] in
-
-            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.05) {
-                self?.saveImageButton.alpha = 0
-                self?.imageSavedLabel.alpha = 1
-            }
-
-            UIView.addKeyframe(withRelativeStartTime: 0.95, relativeDuration: 0.05) {
-                self?.saveImageButton.alpha = 1
-                self?.imageSavedLabel.alpha = 0
-            }
-
-        }, completion: nil)
+        showSavedLabel()
     }
 
     private func prepareViewForTakingImage(scrollView: UIScrollView) -> (originalContentOffset: CGPoint, originalFrame: CGRect) {
@@ -147,10 +131,24 @@ extension CheckoutSummaryOrderStackView {
         bottomSeparator.isHidden = false
         scrollView.alpha = 0
 
-        Async.delay(delay: 0.1) {
+        UIView.waitForUIState {
             scrollView.alpha = 1
             scrollView.contentOffset = originalContentOffset
             scrollView.frame = originalFrame
+        }
+    }
+
+    private func showSavedLabel() {
+        UIView.animate(duration: .normal) { [weak self] in
+            self?.saveImageButton.alpha = 0
+            self?.imageSavedLabel.alpha = 1
+        }
+
+        Async.delay(delay: 4) {
+            UIView.animate(duration: .normal) { [weak self] in
+                self?.saveImageButton.alpha = 1
+                self?.imageSavedLabel.alpha = 0
+            }
         }
     }
 

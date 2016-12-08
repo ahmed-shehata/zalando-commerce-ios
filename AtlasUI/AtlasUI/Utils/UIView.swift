@@ -45,6 +45,10 @@ extension UIView {
         return image
     }
 
+    static func waitForUIState(block: @escaping () -> Void) {
+        Async.delay(delay: 0.1, block: block)
+    }
+
 }
 
 extension UIView {
