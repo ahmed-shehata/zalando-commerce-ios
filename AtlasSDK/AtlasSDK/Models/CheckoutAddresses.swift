@@ -7,7 +7,6 @@ import Foundation
 public typealias BillingAddress = EquatableAddress
 public typealias ShippingAddress = EquatableAddress
 
-
 public struct CheckoutAddresses {
 
     public let billingAddress: BillingAddress?
