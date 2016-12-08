@@ -19,8 +19,7 @@ class CheckoutSummaryMainStackView: UIStackView {
         let stackView = CheckoutSummaryOrderStackView()
         stackView.isHidden = true
         stackView.axis = .vertical
-        stackView.spacing = 8
-        stackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 10, right: 15)
+        stackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()

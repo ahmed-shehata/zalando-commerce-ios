@@ -22,6 +22,8 @@
 "summaryView.label.unitSize" = "Größe: %@";
 "summaryView.label.orderHeader" = "\nWir freuen uns über deine Bestellung.\nVielen Dank dafür!";
 "summaryView.label.orderNumber" = "Bestellnummer";
+"summaryView.label.orderImageSaved" = "✓ Bild wurde in deiner Gallerie gespeichert";
+"summaryView.button.saveOrderImage" = "Bestelldetails als Bild speichern";
 "summaryView.label.price.total" = "Gesamtsumme:";
 "summaryView.label.price.vat" = "(Incl. MwST)";
 "summaryView.label.price.shipping" = "Versand";

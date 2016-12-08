@@ -17,11 +17,25 @@ class CheckoutSummaryOrderStackView: UIStackView {
         return label
     }()
 
+    let headerSeparator: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 14, weight: UIFontWeightLight)
+        label.text = " "
+        return label
+    }()
+
     let orderNumberStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.spacing = 5
         return stackView
+    }()
+
+    let orderNumberSeparator: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 12, weight: UIFontWeightLight)
+        label.text = " "
+        return label
     }()
 
     let orderNumberTitleLabel: UILabel = {
@@ -47,11 +61,18 @@ class CheckoutSummaryOrderStackView: UIStackView {
         return view
     }()
 
+    let bottomSeparator: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 12, weight: UIFontWeightLight)
+        label.text = " "
+        return label
+    }()
+
     let saveImageButton: RoundedButton = {
         let button = RoundedButton(type: .custom)
         button.cornerRadius = 5
         button.titleLabel?.font = .systemFont(ofSize: 15)
-        button.setTitle("Save order details image", for: .normal)
+        button.setTitle(Localizer.format(string: "summaryView.button.saveOrderImage"), for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         button.backgroundColor = UIColor(hex: 0xEEEEEE)
@@ -63,7 +84,7 @@ class CheckoutSummaryOrderStackView: UIStackView {
         label.font = .systemFont(ofSize: 15)
         label.textColor = UIColor(hex: 0x509614)
         label.textAlignment = .center
-        label.text = "✓ Image saved to your photo library"
+        label.text = Localizer.format(string: "summaryView.label.orderImageSaved")
         label.alpha = 0
         return label
     }()
@@ -90,12 +111,12 @@ extension CheckoutSummaryOrderStackView {
 
         UIView.animateKeyframes(withDuration: 4, delay: 0, options: .allowUserInteraction, animations: { [weak self] in
 
-            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.1) {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.05) {
                 self?.saveImageButton.alpha = 0
                 self?.imageSavedLabel.alpha = 1
             }
 
-            UIView.addKeyframe(withRelativeStartTime: 0.8, relativeDuration: 0.1) {
+            UIView.addKeyframe(withRelativeStartTime: 0.95, relativeDuration: 0.05) {
                 self?.saveImageButton.alpha = 1
                 self?.imageSavedLabel.alpha = 0
             }
@@ -107,9 +128,10 @@ extension CheckoutSummaryOrderStackView {
         let savedContentOffset = scrollView.contentOffset
         let savedFrame = scrollView.frame
 
-        let imageHeight = scrollView.contentSize.height - saveImageContainer.frame.height - spacing
+        let imageHeight = scrollView.contentSize.height - saveImageContainer.frame.height - bottomSeparator.frame.height
         let imageSize = CGSize(width: scrollView.contentSize.width, height: imageHeight)
         saveImageContainer.isHidden = true
+        bottomSeparator.isHidden = true
 
         scrollView.contentOffset = .zero
         scrollView.frame = CGRect(origin: CGPoint.zero, size: imageSize)
@@ -119,6 +141,7 @@ extension CheckoutSummaryOrderStackView {
 
     private func cleanupViewAfterTakingImage(scrollView: UIScrollView, originalContentOffset: CGPoint, originalFrame: CGRect) {
         saveImageContainer.isHidden = false
+        bottomSeparator.isHidden = false
         scrollView.alpha = 0
 
         Async.delay(delay: 0.1) {
@@ -134,13 +157,16 @@ extension CheckoutSummaryOrderStackView: UIBuilder {
 
     func configureView() {
         addArrangedSubview(orderHeaderLabel)
+        addArrangedSubview(headerSeparator)
         addArrangedSubview(orderNumberStackView)
+        addArrangedSubview(orderNumberSeparator)
 
         orderNumberStackView.addArrangedSubview(orderNumberTitleLabel)
         orderNumberStackView.addArrangedSubview(orderNumberValueLabel)
 
         if accessPhotosIsStatedInInfoPlist {
             addArrangedSubview(saveImageContainer)
+            addArrangedSubview(bottomSeparator)
             saveImageContainer.addSubview(imageSavedLabel)
             saveImageContainer.addSubview(saveImageButton)
             saveImageButton.addTarget(self, action: #selector(saveImageButtonPressed), for: .touchUpInside)
