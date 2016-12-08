@@ -107,7 +107,10 @@ extension CheckoutSummaryOrderStackView {
         }
 
         cleanupViewAfterTakingImage(scrollView: scrollView, originalContentOffset: contentOffset, originalFrame: frame)
-        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+
+        if !UIApplication.unitTestsAreRunning {
+            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        }
 
         UIView.animateKeyframes(withDuration: 4, delay: 0, options: .allowUserInteraction, animations: { [weak self] in
 

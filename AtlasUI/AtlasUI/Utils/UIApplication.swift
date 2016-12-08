@@ -24,4 +24,8 @@ extension UIApplication {
         return UIApplication.shared.keyWindow
     }
 
+    static var unitTestsAreRunning: Bool {
+        return ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
+    }
+
 }
