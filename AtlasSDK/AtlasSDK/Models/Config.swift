@@ -29,8 +29,13 @@ public struct Config {
         public let termsAndConditionsURL: URL
 
         public var countryCode: String {
-            return locale.validRegionCode()
+            return locale.regionCode~?
         }
+
+        public var languageCode: String {
+            return locale.languageCode~?
+        }
+
     }
 
 }

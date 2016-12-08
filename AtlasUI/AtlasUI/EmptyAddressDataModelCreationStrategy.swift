@@ -14,7 +14,7 @@ class EmptyAddressDataModelCreationStrategy: AddressDataModelCreationStrategy {
     }
 
     func execute() {
-        completion(AddressFormDataModel(countryCode: AtlasAPIClient.countryCode))
+        completion(AddressFormDataModel(countryCode: AtlasAPIClient.shared?.salesChannelCountry))
     }
 
 }

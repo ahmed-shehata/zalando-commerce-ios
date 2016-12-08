@@ -44,7 +44,7 @@ final class OAuth2LoginViewController: UIViewController {
         view.addSubview(webView)
         webView.fillInSuperview()
 
-        webView.loadRequest(URLRequest(url: loginURL))
+        webView.loadRequest(URLRequest(url: loginURL, config: AtlasAPIClient.shared?.config))
     }
 
     @discardableResult
@@ -67,12 +67,6 @@ final class OAuth2LoginViewController: UIViewController {
     @objc fileprivate func cancelButtonTapped() {
         dismiss(animated: true, completion: nil)
     }
-
-}
-
-private extension Selector {
-
-    static let cancelButtonTapped = #selector(OAuth2LoginViewController.cancelButtonTapped)
 
 }
 
@@ -103,5 +97,11 @@ extension OAuth2LoginViewController: UIWebViewDelegate {
         webViewFinishedLoadCompletion?(webView)
         webViewDidFinishedLoad = true
     }
+
+}
+
+private extension Selector {
+
+    static let cancelButtonTapped = #selector(OAuth2LoginViewController.cancelButtonTapped)
 
 }
