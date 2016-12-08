@@ -10,4 +10,8 @@ extension Locale {
         return self.regionCode ?? fallbackCode
     }
 
+    func validLanguageCode(fallbackCode: String = "") -> String {
+        return self.languageCode ?? fallbackCode
+    }
+
 }

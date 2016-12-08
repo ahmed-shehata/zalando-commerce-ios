@@ -8,11 +8,15 @@ public struct AtlasAPIClient {
 
     public let config: Config
 
-    var urlSession: URLSession = URLSession.shared
-
-    public var countryCode: String {
+    public var salesChannelCountry: String? {
         return config.salesChannel.countryCode
     }
+
+    public var salesChannelLanguage: String? {
+        return config.salesChannel.languageCode
+    }
+
+    var urlSession: URLSession = URLSession.shared
 
     init(config: Config) {
         self.config = config
