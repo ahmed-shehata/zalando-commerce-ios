@@ -125,6 +125,7 @@
 		E98453581DF59FCF001F6C51 /* GuestCheckoutCreateAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98453561DF59FCF001F6C51 /* GuestCheckoutCreateAddressActionHandler.swift */; };
 		E98453591DF59FCF001F6C51 /* GuestCheckoutUpdateAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98453571DF59FCF001F6C51 /* GuestCheckoutUpdateAddressActionHandler.swift */; };
 		E9974F961DF84E3D00BBE712 /* CheckoutSummaryOrderStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9974F951DF84E3D00BBE712 /* CheckoutSummaryOrderStackView.swift */; };
+		E9E842591DF99DE700059F35 /* UIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E842581DF99DE700059F35 /* UIViewTests.swift */; };
 		E9F6E56B1DF80DD200B5E6BD /* GuestAddressManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F6E5691DF80DD200B5E6BD /* GuestAddressManagerTests.swift */; };
 		E9F6E56C1DF80DD200B5E6BD /* GuestSummaryActionHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F6E56A1DF80DD200B5E6BD /* GuestSummaryActionHandlerTests.swift */; };
 		EBB0CE9B6F72CCBC101BCFD52F5E5993 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD2C09882EF82C93CC8615C9E0F59251 /* Default-568h@2x.png */; };
@@ -298,6 +299,7 @@
 		E98453561DF59FCF001F6C51 /* GuestCheckoutCreateAddressActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCheckoutCreateAddressActionHandler.swift; sourceTree = "<group>"; };
 		E98453571DF59FCF001F6C51 /* GuestCheckoutUpdateAddressActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCheckoutUpdateAddressActionHandler.swift; sourceTree = "<group>"; };
 		E9974F951DF84E3D00BBE712 /* CheckoutSummaryOrderStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryOrderStackView.swift; sourceTree = "<group>"; };
+		E9E842581DF99DE700059F35 /* UIViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewTests.swift; sourceTree = "<group>"; };
 		E9F6E5691DF80DD200B5E6BD /* GuestAddressManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestAddressManagerTests.swift; sourceTree = "<group>"; };
 		E9F6E56A1DF80DD200B5E6BD /* GuestSummaryActionHandlerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestSummaryActionHandlerTests.swift; sourceTree = "<group>"; };
 		EB063447B26DE3D42F7736012B8921AA /* AddressListActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressListActionHandler.swift; sourceTree = "<group>"; };
@@ -593,6 +595,7 @@
 				E9F6E56A1DF80DD200B5E6BD /* GuestSummaryActionHandlerTests.swift */,
 				81B546CB1DF070D70038BBF4 /* TestOptions.swift */,
 				816405BE1DF869B300C7BAF0 /* URLRequestTests.swift */,
+				E9E842581DF99DE700059F35 /* UIViewTests.swift */,
 			);
 			path = AtlasUITests;
 			sourceTree = "<group>";
@@ -873,6 +876,7 @@
 				E65505C3FCACDEC23CC634675587F5F1 /* LoggedInAddressListActionHandlerTests.swift in Sources */,
 				E0D0E4EC009CDEA4D16C8A2726F24643 /* AsyncTests.swift in Sources */,
 				31C143E93BE11EC7482402E427829B55 /* AddressFormViewControllerTests.swift in Sources */,
+				E9E842591DF99DE700059F35 /* UIViewTests.swift in Sources */,
 				877D4CE660F5CFF550D4032BE46FCCCB /* EditAddressTypeTests.swift in Sources */,
 				E9F6E56B1DF80DD200B5E6BD /* GuestAddressManagerTests.swift in Sources */,
 				81B546CC1DF070D70038BBF4 /* TestOptions.swift in Sources */,
