@@ -16,8 +16,14 @@ extension URLRequest {
     }
 
     init(url: URL, language: String?) {
-        self.init(url: url)
-        guard let language = language else { return }
+        guard let language = language else {
+            self.init(url: url)
+            return
+        }
+
+        var urlComponents = URLComponents(validURL: url)
+        urlComponents.append(queryItems: ["lng": language])
+        self.init(url: urlComponents.validURL)
         self.setValue(acceptedLanguages(add: language), forHTTPHeaderField: "Accept-Language")
     }
 

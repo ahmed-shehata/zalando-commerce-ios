@@ -13,6 +13,15 @@ extension URLComponents {
         }
     }
 
+    public mutating func append(queryItems dict: [String: String?]) {
+        let items = dict.map { URLQueryItem(name: $0, value: $1~?) }
+        if self.queryItems == nil {
+            self.queryItems = items
+        } else {
+            self.queryItems?.append(contentsOf: items)
+        }
+    }
+
     public var validURL: URL {
         return self.url! // swiftlint:disable:this force_unwrapping
     }
