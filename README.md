@@ -172,6 +172,12 @@ Using AtlasCheckout instance configured previously you can interact with SDK, fo
 	 } 
  }
  ```
+ 
+* In order to display the save order details button in the order confirmation page, Add the following `key/value`in Info.plist file of the host app:
+ - key: `NSPhotoLibraryUsageDescription`
+ - value: Localized text for the purpose of requesting the access to the user's photos library. ex: 
+ 
+ 	> Saving the order details image in your photos app
 
 ## AtlasSDK Structure
 
