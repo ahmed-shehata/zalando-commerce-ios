@@ -14,12 +14,7 @@ class URLRequestTests: UITestCase {
         let language = "fr"
         let request = URLRequest(url: URL(validURL: "http://zalando.de"), language: language)
 
-        guard let languageField = request.allHTTPHeaderFields?["Accept-Language"] else {
-            fail("No Accept-Language header")
-            return
-        }
-
-        expect(languageField).to(contain("\(language);q=1.0"))
+        expect(request.allHTTPHeaderFields?["Accept-Language"]).to(contain("\(language);q=1.0"))
     }
 
     func testSalesChannelLanguageHeader() {
@@ -27,12 +22,7 @@ class URLRequestTests: UITestCase {
         let language = client.salesChannelLanguage
         let request = URLRequest(url: URL(validURL: "http://zalando.de"), config: client.config)
 
-        guard let languageField = request.allHTTPHeaderFields?["Accept-Language"] else {
-            fail("No Accept-Language header")
-            return
-        }
-
-        expect(languageField).to(contain("\(language);q=1.0"))
+        expect(request.allHTTPHeaderFields?["Accept-Language"]).to(contain("\(language);q=1.0"))
     }
 
 
