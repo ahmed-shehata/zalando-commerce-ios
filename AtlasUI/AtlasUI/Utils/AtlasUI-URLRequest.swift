@@ -3,11 +3,16 @@
 //
 
 import Foundation
+import AtlasSDK
 
 extension URLRequest {
 
     private var acceptedLanguages: [String: Float] {
         return ["de": 0.6, "en": 0.4]
+    }
+
+    init(url: URL, config: Config?) {
+        self.init(url: url, language: config?.salesChannel.languageCode)
     }
 
     init(url: URL, language: String?) {
