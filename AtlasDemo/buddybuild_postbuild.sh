@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
 cd ..
-./calypso.rb pod verify --local
+bundle exec ./calypso.rb pod validate --local
 
