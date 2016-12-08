@@ -28,12 +28,12 @@ public struct Config {
         public let locale: Locale
         public let termsAndConditionsURL: URL
 
-        public var countryCode: String? {
-            return locale.regionCode
+        public var countryCode: String {
+            return locale.regionCode~?
         }
 
-        public var languageCode: String? {
-            return locale.languageCode
+        public var languageCode: String {
+            return locale.languageCode~?
         }
 
     }

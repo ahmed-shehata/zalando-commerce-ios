@@ -62,6 +62,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "E59A11A5E0347028AC04CEEACDF57D88"
+            BuildableName = "AtlasSDK.framework"
+            BlueprintName = "AtlasSDK"
+            ReferencedContainer = "container:AtlasSDK.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

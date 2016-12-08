@@ -8,11 +8,11 @@ public struct AtlasAPIClient {
 
     public let config: Config
 
-    public var salesChannelCountry: String? {
+    public var salesChannelCountry: String {
         return config.salesChannel.countryCode
     }
 
-    public var salesChannelLanguage: String? {
+    public var salesChannelLanguage: String {
         return config.salesChannel.languageCode
     }
 
