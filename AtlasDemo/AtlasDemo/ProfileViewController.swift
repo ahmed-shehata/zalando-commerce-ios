@@ -29,10 +29,10 @@ class ProfileViewController: UIViewController {
         updateSalesChannels()
         updateLanguages()
         updateEnvironmentSelectedIndex()
-        updateProfile()
+        updateProfileVisibility()
 
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(updateProfile(fromNotification:)),
+                                               selector: #selector(updateProfileVisibility(fromNotification:)),
                                                name: .AtlasAuthorizationChanged,
                                                object: nil)
     }
@@ -58,7 +58,6 @@ class ProfileViewController: UIViewController {
 
     @IBAction func logoutButtonTapped(_ sender: Any) {
         Atlas.deauthorize()
-        updateProfile()
     }
 
     @IBAction func loginButtonTapped(_ sender: Any) {
@@ -76,11 +75,11 @@ class ProfileViewController: UIViewController {
         self.loginButton.alpha = 0
     }
 
-    @objc fileprivate func updateProfile(fromNotification: Notification) {
-        updateProfile()
+    @objc fileprivate func updateProfileVisibility(fromNotification: Notification) {
+        updateProfileVisibility()
     }
 
-    fileprivate func updateProfile(loadData: Bool = true) {
+    fileprivate func updateProfileVisibility(loadData: Bool = true) {
         let showProfile = Atlas.isAuthorized()
 
         UIView.animate(withDuration: 0.3) {
@@ -139,8 +138,6 @@ class ProfileViewController: UIViewController {
             case .handledInternally:
                 break
             }
-
-            self.updateProfile(loadData: false)
         }
     }
 
