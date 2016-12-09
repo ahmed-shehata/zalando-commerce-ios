@@ -2,7 +2,7 @@
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
-struct CreateGuestOrderEndpoint: ConfigurableEndpoint {
+struct CreateGuestOrderEndpoint: ConfigurableEndpoint, ClientIdEndpoint {
 
     let serviceURL: URL
     let method: HTTPMethod = .POST
@@ -10,8 +10,14 @@ struct CreateGuestOrderEndpoint: ConfigurableEndpoint {
     let contentType = "application/x.zalando.order.create+json"
     let acceptedContentType = "application/x.zalando.order.create.response+json"
     let parameters: EndpointParameters?
-    var headers: EndpointHeaders? { return ["X-UID": clientId, "X-Sales-Channel": salesChannel] }
     let salesChannel: String
     let clientId: String
+
+    init(config: Config, parameters: EndpointParameters?) {
+        self.parameters = parameters
+        serviceURL = config.checkoutGatewayURL
+        salesChannel = config.salesChannel.identifier
+        clientId = config.clientId
+    }
 
 }
