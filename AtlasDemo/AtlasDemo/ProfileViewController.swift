@@ -8,6 +8,19 @@ import AtlasUI
 
 class ProfileViewController: UIViewController {
 
+    @IBOutlet weak var avatar: UIImageView!
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var email: UILabel!
+    @IBOutlet weak var customerNumer: UILabel!
+    @IBOutlet weak var gender: UILabel!
+
+    @IBOutlet weak var languageSwitcher: UISegmentedControl!
+    @IBOutlet weak var environmentSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var salesChannelSwitcher: UISegmentedControl!
+
+    @IBOutlet weak var profileStackView: UIStackView!
+    @IBOutlet weak var loginButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -65,19 +78,6 @@ class ProfileViewController: UIViewController {
 
 extension ProfileViewController {
 
-    @IBOutlet weak var avatar: UIImageView!
-    @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var email: UILabel!
-    @IBOutlet weak var customerNumer: UILabel!
-    @IBOutlet weak var gender: UILabel!
-
-    @IBOutlet weak var languageSwitcher: UISegmentedControl!
-    @IBOutlet weak var environmentSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var salesChannelSwitcher: UISegmentedControl!
-
-    @IBOutlet weak var profileStackView: UIStackView!
-    @IBOutlet weak var loginButton: UIButton!
-    
     @IBAction func serverSwitched(_ sender: UISegmentedControl) {
         let useSandbox = sender.selectedSegmentIndex == 1
         AppSetup.change(environmentToSandbox: useSandbox)
