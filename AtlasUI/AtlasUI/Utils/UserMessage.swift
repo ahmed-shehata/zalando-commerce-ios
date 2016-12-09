@@ -40,7 +40,7 @@ struct UserMessage {
         UIApplication.shared.keyWindow?.insertSubview(bannerErrorViewController.view, at: 0)
         bannerErrorViewController.view.fillInSuperview()
         bannerErrorViewController.configure(viewModel: AtlasCheckoutError.unclassified)
-        Async.delay(delay: 0.1) {
+        UIView.waitForUIState {
             bannerErrorViewController.view.removeFromSuperview()
         }
     }
