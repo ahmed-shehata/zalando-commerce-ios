@@ -13,21 +13,32 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var customerNumer: UILabel!
     @IBOutlet weak var gender: UILabel!
+
     @IBOutlet weak var languageSwitcher: UISegmentedControl!
     @IBOutlet weak var environmentSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var salesChannelSwitcher: UISegmentedControl!
+
+    @IBOutlet weak var profileStackView: UIStackView!
+    @IBOutlet weak var loginButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.name.text = ""
-        self.email.text = ""
-        self.customerNumer.text = ""
-        self.gender.text = ""
-        self.email.textColor = .gray
+        setupViews()
 
-        updateLanguageSelectedIndex()
+        updateSalesChannels()
+        updateLanguages()
         updateEnvironmentSelectedIndex()
-        loadCustomerData()
+        updateProfile()
+
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(updateProfile(fromNotification:)),
+                                               name: .AtlasAuthorizationChanged,
+                                               object: nil)
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
     @IBAction func serverSwitched(_ sender: UISegmentedControl) {
@@ -36,24 +47,72 @@ class ProfileViewController: UIViewController {
     }
 
     @IBAction func languageSwitched(_ sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex {
-        case 1:
-            AppSetup.change(interfaceLanguage: .Deutsch)
-        case 0:
-            fallthrough
-        default:
-            AppSetup.change(interfaceLanguage: .English)
+        let language = InterfaceLanguage(index: sender.selectedSegmentIndex)
+        AppSetup.change(interfaceLanguage: language)
+    }
+
+    @IBAction func salesChannelChanged(_ sender: UISegmentedControl) {
+        let salesChannel = SalesChannel(index: sender.selectedSegmentIndex)
+        AppSetup.change(salesChannel: salesChannel)
+    }
+
+    @IBAction func logoutButtonTapped(_ sender: Any) {
+        Atlas.deauthorize()
+        updateProfile()
+    }
+
+    @IBAction func loginButtonTapped(_ sender: Any) {
+        loadCustomerData()
+    }
+
+    fileprivate func setupViews() {
+        self.name.text = ""
+        self.email.text = ""
+        self.customerNumer.text = ""
+        self.gender.text = ""
+        self.email.textColor = .gray
+
+        self.profileStackView.alpha = 0
+        self.loginButton.alpha = 0
+    }
+
+    @objc fileprivate func updateProfile(fromNotification: Notification) {
+        updateProfile()
+    }
+
+    fileprivate func updateProfile(loadData: Bool = true) {
+        let showProfile = Atlas.isAuthorized()
+
+        UIView.animate(withDuration: 0.3) {
+            self.profileStackView.alpha = showProfile ? 1 : 0
+            self.loginButton.alpha = showProfile ? 0 : 1
+        }
+
+        if showProfile && loadData {
+            loadCustomerData()
         }
     }
 
-    @IBAction func logoutButtonTapped(_ sender: AnyObject) {
-        Atlas.deauthorize()
-        _ = self.navigationController?.popViewController(animated: true)
+    fileprivate func updateLanguages() {
+        self.languageSwitcher.removeAllSegments()
+        InterfaceLanguage.all.forEach { language in
+            let index = self.languageSwitcher.numberOfSegments
+            self.languageSwitcher.insertSegment(withTitle: language.name, at: index, animated: false)
+            if language.rawValue == AppSetup.options?.interfaceLanguage {
+                self.languageSwitcher.selectedSegmentIndex = index
+            }
+        }
     }
 
-    fileprivate func updateLanguageSelectedIndex() {
-        let availableLanguages: [String?] = [AppSetup.InterfaceLanguage.English.rawValue, AppSetup.InterfaceLanguage.Deutsch.rawValue]
-        self.languageSwitcher.selectedSegmentIndex = availableLanguages.index { $0 == AppSetup.options?.interfaceLanguage } ?? 0
+    fileprivate func updateSalesChannels() {
+        self.salesChannelSwitcher.removeAllSegments()
+        SalesChannel.all.forEach { salesChannel in
+            let index = self.salesChannelSwitcher.numberOfSegments
+            self.salesChannelSwitcher.insertSegment(withTitle: salesChannel.name, at: index, animated: false)
+            if salesChannel.rawValue == AppSetup.options?.salesChannel {
+                self.salesChannelSwitcher.selectedSegmentIndex = index
+            }
+        }
     }
 
     fileprivate func updateEnvironmentSelectedIndex() {
@@ -80,6 +139,8 @@ class ProfileViewController: UIViewController {
             case .handledInternally:
                 break
             }
+
+            self.updateProfile(loadData: false)
         }
     }
 
