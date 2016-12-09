@@ -37,6 +37,18 @@ extension UIView {
         return nil
     }
 
+    func takeScreenshot() -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(bounds.size, true, UIScreen.main.scale)
+        drawHierarchy(in: bounds, afterScreenUpdates: true)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
+
+    static func waitForUIState(block: @escaping () -> Void) {
+        Async.delay(delay: 0.1, block: block)
+    }
+
 }
 
 extension UIView {
@@ -104,13 +116,11 @@ extension UIView {
 
 extension UIView {
 
-    static func animate(duration: AnimationDuration = AnimationDuration.default, animations: @escaping () -> Void) {
+    static func animate(duration: AnimationDuration = .default, animations: @escaping () -> Void) {
         UIView.animate(withDuration: duration.rawValue, animations: animations)
     }
 
-    static func animate(duration: AnimationDuration = AnimationDuration.default,
-                        animations: @escaping () -> Void,
-                        completion: @escaping (Bool) -> Void) {
+    static func animate(duration: AnimationDuration = .default, animations: @escaping () -> Void, completion: @escaping (Bool) -> Void) {
         UIView.animate(withDuration: duration.rawValue, animations: animations, completion: completion)
     }
 
