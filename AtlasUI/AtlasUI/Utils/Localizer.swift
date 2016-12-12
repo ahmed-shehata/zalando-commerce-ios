@@ -16,7 +16,7 @@ struct Localizer {
     }
 
     fileprivate let locale: Locale
-    fileprivate let fallbackLocale: Locale = Locale(identifier: "en_US")
+    fileprivate let fallbackLocale = Locale(identifier: "en_US")
 
     fileprivate let localizedStringsBundle: Bundle
     fileprivate let localizedStringsFallbackBundle: Bundle
@@ -60,7 +60,7 @@ struct Localizer {
                     return key
                 }
             }
-            return (try? format(string: key, bundle: self.localizedStringsFallbackBundle, formatArguments: formatArguments)) ?? ""
+            return (try? format(string: key, bundle: self.localizedStringsFallbackBundle, formatArguments: formatArguments)) ?? key
         }
     }
 
@@ -90,11 +90,11 @@ struct Localizer {
 
 extension Localizer {
 
-    static var current: Localizer {
+    private static var current: Localizer {
         return try! Localizer(localeIdentifier: Locale.current.identifier) // swiftlint:disable:this force_try
     }
 
-    fileprivate static var shared: Localizer {
+    private static var shared: Localizer {
         return (try? AtlasUI.shared().provide()) ?? Localizer.current
     }
 
