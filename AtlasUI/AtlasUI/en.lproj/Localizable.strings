@@ -1,15 +1,7 @@
-
-/*Buttons*/
 "button.general.cancel" = "Cancel";
 "button.general.save" = "Save";
-
-/*Login View*/
 "loginView.loginWithZalando" = "Login with Zalando";
-
-/*Terms & Conditions View*/
 "termsAndConditionsView.title" = "Legal Notice";
-
-/*Summary View*/
 "summaryView.title.summary" = "Summary";
 "summaryView.title.orderPlaced" = "Order placed";
 "summaryView.label.payment" = "Payment";
@@ -82,8 +74,6 @@
 "AtlasAPIError.title" = "Server Error";
 "AtlasAPIError.title.noInternet" = "No internet connection";
 "AtlasAPIError.message.invalidResponseFormat" = "Incorrect response format";
-
-/*Fuzzy*/
 "AtlasAPIError.message.noData" = "Empty response";
 "AtlasAPIError.message.noInternet" = "Please check you internet connection";
 "AtlasAPIError.message.unauthorized" = "Access denied";
@@ -96,8 +86,6 @@
 "summaryView.label.guestCheckout" = "Checkout as guest";
 "summaryView.submitButton.guestCheckout" = "Checkout as guest";
 "summaryView.submitButton.payWithPayPal" = "Confirm and pay with PayPal";
-
-/*Guest Summary View*/
 "guestSummaryView.address.add" = "Create new address";
 "guestSummaryView.address.create" = "Create new Address";
 "guestSummaryView.address.update" = "Update Address";
@@ -106,7 +94,7 @@
 "addressListView.add.type.StandardAddressDataModelCreationStrategy" = "Standard";
 "addressListView.add.type.PickupPointAddressDataModelCreationStrategy" = "Pickup Point";
 "addressListView.add.type.AddressBookImportDataModelCreationStrategy" = "Import from Address Book";
-"summaryView.label.orderHeader" = "\\nWe are happy about your order\\nThanks a lot!";
+"summaryView.label.orderHeader" = "\nWe are happy about your order\nThanks a lot!";
 "summaryView.label.orderNumber" = "Order number";
 "summaryView.label.orderImageSaved" = "✓ Image saved to your photo library";
 "summaryView.button.saveOrderImage" = "Save order details image";
