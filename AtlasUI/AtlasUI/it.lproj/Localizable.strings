@@ -42,9 +42,6 @@
 "addressListView.prefix.memberID" = "Membro ID";
 "addressListView.add.cellTitle" = "Aggiungi un nuovo indirizzo…";
 "addressListView.add.type.title" = "Tipo di indirizzo";
-"addressListView.add.type.StandardAddressDataModelCreationStrategy" = "Standard";
-"addressListView.add.type.PickupPointAddressDataModelCreationStrategy" = "Punto di raccolta";
-"addressListView.add.type.AddressBookImportDataModelCreationStrategy" = "Importa dalla rubrica";
 
 /*Address Form View*/
 "addressFormView.title" = "Titolo";
@@ -111,13 +108,20 @@ An error occurred during the checkout*/
 "AtlasConfigurationError.message.missingClientId" = "Ops, si è verificato un errore tecnico. Ti preghiamo di riprovare più tardi.";
 "AtlasConfigurationError.message.missingSalesChannel" = "Sales channel assente";
 "AtlasConfigurationError.message.missingInterfaceLanguage" = "Linguaggio interfaccia assente";
-"summaryView.label.guestCheckout" = "Checkout as guest";
-"summaryView.submitButton.guestCheckout" = "Checkout as guest";
-"summaryView.submitButton.payWithPayPal" = "Confirm and pay with PayPal";
+"summaryView.label.guestCheckout" = "";
+"summaryView.submitButton.guestCheckout" = "";
+"summaryView.submitButton.payWithPayPal" = "";
 
 /*Guest Summary View*/
-"guestSummaryView.address.add" = "Create new address";
-"guestSummaryView.address.create" = "Create new Address";
-"guestSummaryView.address.update" = "Update Address";
-"addressFormView.emailaddress" = "Email Address";
-"formValidation.vaildEmail" = "Please enter a valid email address";
+"guestSummaryView.address.add" = "";
+"guestSummaryView.address.create" = "";
+"guestSummaryView.address.update" = "";
+"addressFormView.emailaddress" = "";
+"formValidation.vaildEmail" = "";
+"addressListView.add.type.StandardAddressDataModelCreationStrategy" = "Standard";
+"addressListView.add.type.PickupPointAddressDataModelCreationStrategy" = "Punto di raccolta";
+"addressListView.add.type.AddressBookImportDataModelCreationStrategy" = "Importa dalla rubrica";
+"summaryView.label.orderHeader" = "";
+"summaryView.label.orderNumber" = "";
+"summaryView.label.orderImageSaved" = "";
+"summaryView.button.saveOrderImage" = "";
