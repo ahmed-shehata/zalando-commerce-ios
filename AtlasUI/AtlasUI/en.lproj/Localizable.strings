@@ -20,10 +20,6 @@
 "summaryView.label.emptyAddress.billing" = "No Billing Address";
 "summaryView.label.estimatedDelivery" = "Estimated Delivery";
 "summaryView.label.unitSize" = "Size: %@";
-"summaryView.label.orderHeader" = "\nWe are happy about your order\nThanks a lot!";
-"summaryView.label.orderNumber" = "Order number";
-"summaryView.label.orderImageSaved" = "✓ Image saved to your photo library";
-"summaryView.button.saveOrderImage" = "Save order details image";
 "summaryView.label.price.total" = "Total";
 "summaryView.label.price.vat" = "(VAT Included)";
 "summaryView.label.price.shipping" = "Shipping";
@@ -41,9 +37,6 @@
 "addressListView.prefix.memberID" = "Member ID";
 "addressListView.add.cellTitle" = "Add new address...";
 "addressListView.add.type.title" = "Address Type";
-"addressListView.add.type.StandardAddressDataModelCreationStrategy" = "Standard";
-"addressListView.add.type.PickupPointAddressDataModelCreationStrategy" = "Pickup Point";
-"addressListView.add.type.AddressBookImportDataModelCreationStrategy" = "Import from Address Book";
 
 /*Address Form View*/
 "addressFormView.title" = "Title";
@@ -110,3 +103,6 @@
 "guestSummaryView.address.update" = "Update Address";
 "addressFormView.emailaddress" = "Email Address";
 "formValidation.vaildEmail" = "Please enter a valid email address";
+"addressListView.add.type.StandardAddressDataModelCreationStrategy" = "Standard";
+"addressListView.add.type.PickupPointAddressDataModelCreationStrategy" = "Pickup Point";
+"addressListView.add.type.AddressBookImportDataModelCreationStrategy" = "Import from Address Book";
