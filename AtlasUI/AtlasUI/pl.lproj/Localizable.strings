@@ -37,9 +37,9 @@
 "addressListView.prefix.memberID" = "Identyfikator klienta";
 "addressListView.add.cellTitle" = "Dodaj nowy adres...";
 "addressListView.add.type.title" = "Rodzaj adresu";
-"addressListView.add.type.StandardAddressFormCreationStrategy" = "Standardowy";
-"addressListView.add.type.PickupPointAddressFormCreationStrategy" = "Punkt odbioru";
-"addressListView.add.type.AddressBookImportCreationStrategy" = "Zaimportuj z książki adresowej";
+"addressListView.add.type.StandardAddressDataModelCreationStrategy" = "Standardowy";
+"addressListView.add.type.PickupPointAddressDataModelCreationStrategy" = "Punkt odbioru";
+"addressListView.add.type.AddressBookImportDataModelCreationStrategy" = "Zaimportuj z książki adresowej";
 
 /*Address Form View*/
 "addressFormView.title" = "Zwrot";

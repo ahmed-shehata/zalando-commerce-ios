@@ -37,9 +37,9 @@
 "addressListView.prefix.memberID" = "Member ID";
 "addressListView.add.cellTitle" = "Ajouter une nouvelle adresse";
 "addressListView.add.type.title" = "Address Type";
-"addressListView.add.type.StandardAddressFormCreationStrategy" = "Standard";
-"addressListView.add.type.PickupPointAddressFormCreationStrategy" = "Pickup Point";
-"addressListView.add.type.AddressBookImportCreationStrategy" = "Import from Address Book";
+"addressListView.add.type.StandardAddressDataModelCreationStrategy" = "Standard";
+"addressListView.add.type.PickupPointAddressDataModelCreationStrategy" = "Pickup Point";
+"addressListView.add.type.AddressBookImportDataModelCreationStrategy" = "Import from Address Book";
 
 /*Address Form View*/
 "addressFormView.title" = "Civilité";

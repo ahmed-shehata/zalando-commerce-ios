@@ -20,7 +20,7 @@ class ProfileViewController: UIViewController {
 
     @IBOutlet weak var profileStackView: UIStackView!
     @IBOutlet weak var loginButton: UIButton!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
