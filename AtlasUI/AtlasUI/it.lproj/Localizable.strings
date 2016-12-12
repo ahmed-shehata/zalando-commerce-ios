@@ -96,7 +96,6 @@ An error occurred during the checkout*/
 "AtlasAPIError.message.invalidResponseFormat" = "Formato risposta incorretto";
 
 /*Fuzzy*/
-/*Fuzzy*/
 "AtlasAPIError.message.noData" = "Risposta vuota";
 "AtlasAPIError.message.noInternet" = "Per piacere controlla la tua connessione ad internet";
 
