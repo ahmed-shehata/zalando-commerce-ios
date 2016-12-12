@@ -37,9 +37,6 @@
 "addressListView.prefix.memberID" = "Identyfikator klienta";
 "addressListView.add.cellTitle" = "Dodaj nowy adres...";
 "addressListView.add.type.title" = "Rodzaj adresu";
-"addressListView.add.type.StandardAddressDataModelCreationStrategy" = "Standardowy";
-"addressListView.add.type.PickupPointAddressDataModelCreationStrategy" = "Punkt odbioru";
-"addressListView.add.type.AddressBookImportDataModelCreationStrategy" = "Zaimportuj z książki adresowej";
 
 /*Address Form View*/
 "addressFormView.title" = "Zwrot";
@@ -106,3 +103,6 @@
 "guestSummaryView.address.update" = "Zmodyfikuj adres";
 "addressFormView.emailaddress" = "Adres email";
 "formValidation.vaildEmail" = "Prosimy podać poprawny adres email";
+"addressListView.add.type.StandardAddressDataModelCreationStrategy" = "Standardowy";
+"addressListView.add.type.PickupPointAddressDataModelCreationStrategy" = "Punkt odbioru";
+"addressListView.add.type.AddressBookImportDataModelCreationStrategy" = "Zaimportuj z książki adresowej";
