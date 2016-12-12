@@ -70,6 +70,7 @@
 "AtlasCheckoutError.message.outOfStock" = "Leider ist dieser Artikel nicht mehr verfügbar";
 "AtlasCheckoutError.message.missingAddress" = "Bitte wähle zuerst eine Liefer- und eine Rechnungsadresse";
 "AtlasCheckoutError.message.missingAddressAndPayment" = "Bitte wähle zuerst eine Liefer- und eine Rechnungsadresse sowie eine Zahlart";
+"AtlasCheckoutError.message.unsupportedCountry" = "This country is not supported for the selected item";
 "AtlasCheckoutError.message.priceChanged" = "Der Preis beträgt nun %@";
 "AtlasCheckoutError.message.paymentMethodNotAvailable" = "Diese Zahlart ist nicht mehr verfügbar";
 "AtlasCheckoutError.message.checkoutFailure" = "Bei der Bestellung ist ein Fehler aufgetreten";

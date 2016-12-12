@@ -79,7 +79,7 @@ class AppSetup {
         let language = interfaceLanguage?.rawValue ?? options?.interfaceLanguage ?? defaultInterfaceLanguage.rawValue
         let salesChannel = salesChannel?.rawValue ?? options?.salesChannel ?? defaultSalesChannel.rawValue
 
-        return Options(clientId: "partner_YCg9dRq",
+        return Options(clientId: "atlas_Y2M1MzA",
                        salesChannel: salesChannel,
                        useSandbox: sandbox,
                        interfaceLanguage: language,

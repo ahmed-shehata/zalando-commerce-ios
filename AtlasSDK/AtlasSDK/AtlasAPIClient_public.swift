@@ -145,22 +145,19 @@ extension AtlasAPIClient {
     }
 
     public func createGuestOrder(request: GuestOrderRequest, completion: @escaping GuestOrderCompletion) {
-        let endpoint = CreateGuestOrderEndpoint(serviceURL: config.checkoutGatewayURL,
-                                                parameters: request.toJSON(),
-                                                salesChannel: config.salesChannel.identifier)
+        let endpoint = CreateGuestOrderEndpoint(config: config, parameters: request.toJSON())
         fetch(from: endpoint, completion: completion)
     }
 
     public func guestCheckoutPaymentSelectionURL(request: GuestPaymentSelectionRequest, completion: @escaping URLCompletion) {
-        let endpoint = CreateGuestOrderEndpoint(serviceURL: config.checkoutGatewayURL,
-                                                parameters: request.toJSON(),
-                                                salesChannel: config.salesChannel.identifier)
+        let endpoint = CreateGuestOrderEndpoint(config: config, parameters: request.toJSON())
         fetchRedirectLocation(endpoint: endpoint, completion: completion)
     }
 
     public func guestCheckout(checkoutId: String, token: String, completion: @escaping GuestCheckoutCompletion) {
         let endpoint = GetGuestCheckoutEndpoint(serviceURL: config.checkoutGatewayURL,
                                                 salesChannel: config.salesChannel.identifier,
+                                                clientId: config.clientId,
                                                 checkoutId: checkoutId,
                                                 token: token)
         fetch(from: endpoint, completion: completion)

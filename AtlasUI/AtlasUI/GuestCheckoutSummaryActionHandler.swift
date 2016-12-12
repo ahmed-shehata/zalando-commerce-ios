@@ -59,7 +59,7 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
                 UserMessage.displayError(error: AtlasCheckoutError.missingAddress)
             return
         }
-        guard let callbackURL = AtlasAPIClient.shared?.config.checkoutGatewayURL else {
+        guard let callbackURL = AtlasAPIClient.shared?.config.payment.selectionCallbackURL else {
             UserMessage.displayError(error: AtlasCheckoutError.unclassified)
             return
         }
@@ -118,7 +118,7 @@ extension GuestCheckoutSummaryActionHandler {
             return
         }
 
-        guard let callbackURL = AtlasAPIClient.shared?.config.checkoutGatewayURL else {
+        guard let callbackURL = AtlasAPIClient.shared?.config.payment.thirdPartyCallbackURL else {
             UserMessage.displayError(error: AtlasCheckoutError.unclassified)
             return
         }
