@@ -99,16 +99,15 @@ extension CheckoutSummaryOrderStackView {
         let (contentOffset, frame) = prepareViewForTakingImage(scrollView: scrollView)
 
         guard let image = scrollView.takeScreenshot() else {
+            UserMessage.displayError(error: AtlasCheckoutError.unclassified)
             cleanupViewAfterTakingImage(scrollView: scrollView, originalContentOffset: contentOffset, originalFrame: frame)
             return
         }
         cleanupViewAfterTakingImage(scrollView: scrollView, originalContentOffset: contentOffset, originalFrame: frame)
 
         if !UIApplication.unitTestsAreRunning {
-            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+            UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(image:didFinishSavingWithError:contextInfo:)), nil)
         }
-
-        showSavedLabel()
     }
 
     private func prepareViewForTakingImage(scrollView: UIScrollView) -> (originalContentOffset: CGPoint, originalFrame: CGRect) {
@@ -135,6 +134,15 @@ extension CheckoutSummaryOrderStackView {
             scrollView.alpha = 1
             scrollView.contentOffset = originalContentOffset
             scrollView.frame = originalFrame
+        }
+    }
+
+    func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeMutableRawPointer) {
+        AtlasUIViewController.shared?.hideLoader()
+        if error == nil {
+            showSavedLabel()
+        } else {
+            UserMessage.displayError(error: AtlasCheckoutError.photosLibraryAccessNotAllowed)
         }
     }
 

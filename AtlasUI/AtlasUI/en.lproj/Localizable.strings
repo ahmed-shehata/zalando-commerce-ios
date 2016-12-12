@@ -88,6 +88,7 @@
 "AtlasCheckoutError.message.paymentMethodNotAvailable" = "Payment method is no longer available";
 "AtlasCheckoutError.message.checkoutFailure" = "An error occurred during updating the checkout";
 "AtlasCheckoutError.message.addressInvalid" = "Address not valid, please check the address";
+"AtlasCheckoutError.message.photosLibraryAccessNotAllowed" = "Can't access Photos Library";
 
 "AtlasLoginError.title" = "Login Error";
 "AtlasLoginError.message.missingURL" = "Missing login URL";

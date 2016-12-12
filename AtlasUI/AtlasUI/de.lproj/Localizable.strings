@@ -88,6 +88,7 @@
 "AtlasCheckoutError.message.paymentMethodNotAvailable" = "Diese Zahlart ist nicht mehr verfügbar";
 "AtlasCheckoutError.message.checkoutFailure" = "Bei der Bestellung ist ein Fehler aufgetreten";
 "AtlasCheckoutError.message.addressInvalid" = "Adresse nicht bekannt, bitte überprüfe sie.";
+"AtlasCheckoutError.message.photosLibraryAccessNotAllowed" = "Can't access Photos Library";
 
 "AtlasLoginError.title" = "Anmeldung fehlgeschlagen";
 "AtlasLoginError.message.missingURL" = "Missing login URL";
