@@ -1,7 +1,15 @@
+
+/*Buttons*/
 "button.general.cancel" = "Abbrechen";
 "button.general.save" = "Speichern";
+
+/*Login View*/
 "loginView.loginWithZalando" = "Bei Zalando einloggen";
+
+/*Terms & Conditions View*/
 "termsAndConditionsView.title" = "Rechtliche Hinweise";
+
+/*Summary View*/
 "summaryView.title.summary" = "Übersicht";
 "summaryView.title.orderPlaced" = "Vielen Dank für deinen Einkauf!";
 "summaryView.label.payment" = "Zahlungsart";
@@ -19,9 +27,13 @@
 "summaryView.submitButton.placeOrder" = "Jetzt Kaufen";
 "summaryView.submitButton.backToShop" = "weiter shoppen";
 "summaryView.link.termsAndConditions" = "Für Deine Bestellung gelten die AGB und die Wiederrufsbelehrung von Zalando";
+
+/*Address list view*/
 "addressListView.title.shipping" = "Lieferadresse";
 "addressListView.title.billing" = "Rechnungsadresse";
 "addressListView.prefix.packstation" = "Nummer der Packstation";
+
+/*Fuzzy*/
 "addressListView.prefix.memberID" = "PostNummer";
 "addressListView.add.cellTitle" = "Neue Adresse hinzufügen...";
 "addressListView.add.type.title" = "Lieferung an";
