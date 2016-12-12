@@ -38,6 +38,7 @@
 "addressListView.prefix.packstation" = "Packstation";
 
 /*Fuzzy*/
+/*Fuzzy*/
 "addressListView.prefix.memberID" = "Membro ID";
 "addressListView.add.cellTitle" = "Aggiungi un nuovo indirizzo…";
 "addressListView.add.type.title" = "Tipo di indirizzo";
@@ -97,6 +98,7 @@ An error occurred during the checkout*/
 "AtlasAPIError.title.noInternet" = "Connessione ad internet assente";
 "AtlasAPIError.message.invalidResponseFormat" = "Formato risposta incorretto";
 
+/*Fuzzy*/
 /*Fuzzy*/
 "AtlasAPIError.message.noData" = "Risposta vuota";
 "AtlasAPIError.message.noInternet" = "Per piacere controlla la tua connessione ad internet";
