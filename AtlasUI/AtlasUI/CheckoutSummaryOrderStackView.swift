@@ -105,7 +105,10 @@ extension CheckoutSummaryOrderStackView {
         }
         cleanupViewAfterTakingImage(scrollView: scrollView, originalContentOffset: contentOffset, originalFrame: frame)
 
-        if !UIApplication.unitTestsAreRunning {
+        if UIApplication.unitTestsAreRunning {
+            showSavedLabel()
+        } else {
+            AtlasUIViewController.shared?.showLoader()
             UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(image:didFinishSavingWithError:contextInfo:)), nil)
         }
     }
