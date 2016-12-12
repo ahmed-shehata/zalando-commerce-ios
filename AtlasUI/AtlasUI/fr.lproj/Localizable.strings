@@ -1,45 +1,42 @@
 
 /*Buttons*/
-"button.general.cancel" = "Cancel";
-"button.general.save" = "Save";
+"button.general.cancel" = "";
+"button.general.save" = "";
 
 /*Login View*/
-"loginView.loginWithZalando" = "Login with Zalando";
+"loginView.loginWithZalando" = "";
 
 /*Terms & Conditions View*/
 "termsAndConditionsView.title" = "Mentions légales";
 
 /*Summary View*/
-"summaryView.title.summary" = "Summary";
-"summaryView.title.orderPlaced" = "Order placed";
-"summaryView.label.payment" = "Payment";
+"summaryView.title.summary" = "";
+"summaryView.title.orderPlaced" = "";
+"summaryView.label.payment" = "";
 "summaryView.label.address.shipping" = "Adresse de livraison";
 "summaryView.label.address.billing" = "Adresse de facturation";
 "summaryView.label.address.packstationAbbreviation" = "P.S.";
-"summaryView.label.emptyAddress.shipping" = "No Shipping Address";
-"summaryView.label.emptyAddress.billing" = "No Billing Address";
+"summaryView.label.emptyAddress.shipping" = "";
+"summaryView.label.emptyAddress.billing" = "";
 "summaryView.label.estimatedDelivery" = "Date de livraison estimée";
 "summaryView.label.unitSize" = "Taille: %@";
-"summaryView.label.price.total" = "Total";
+"summaryView.label.price.total" = "";
 "summaryView.label.price.vat" = "(TVA incluse)";
 "summaryView.label.price.shipping" = "Livraison";
-"summaryView.submitButton.checkoutWithZalando" = "Checkout with Zalando";
-"summaryView.submitButton.placeOrder" = "Place order";
+"summaryView.submitButton.checkoutWithZalando" = "";
+"summaryView.submitButton.placeOrder" = "";
 "summaryView.submitButton.backToShop" = "Retour à la boutique";
-"summaryView.link.termsAndConditions" = "Zalando terms, conditions and cancellation policy apply to all orders";
+"summaryView.link.termsAndConditions" = "";
 
 /*Address list view*/
 "addressListView.title.shipping" = "Adresse de livraison";
 "addressListView.title.billing" = "Adresse de facturation";
-"addressListView.prefix.packstation" = "Packstation";
+"addressListView.prefix.packstation" = "";
 
 /*Fuzzy*/
-"addressListView.prefix.memberID" = "Member ID";
+"addressListView.prefix.memberID" = "";
 "addressListView.add.cellTitle" = "Ajouter une nouvelle adresse";
-"addressListView.add.type.title" = "Address Type";
-"addressListView.add.type.StandardAddressDataModelCreationStrategy" = "Standard";
-"addressListView.add.type.PickupPointAddressDataModelCreationStrategy" = "Pickup Point";
-"addressListView.add.type.AddressBookImportDataModelCreationStrategy" = "Import from Address Book";
+"addressListView.add.type.title" = "";
 
 /*Address Form View*/
 "addressFormView.title" = "Civilité";
@@ -47,62 +44,65 @@
 "addressFormView.lastname" = "Nom";
 "addressFormView.street" = "Adresse (numéro et rue)";
 "addressFormView.additional" = "Complément d’adresse";
-"addressFormView.packstation" = "Packstation";
-"addressFormView.memberid" = "Member ID";
+"addressFormView.packstation" = "";
+"addressFormView.memberid" = "";
 "addressFormView.zipcode" = "Code postal";
 "addressFormView.city" = "Ville";
 "addressFormView.country" = "Pays";
-"addressFormView.gender.male" = "Mr";
-"addressFormView.gender.female" = "Mrs";
+"addressFormView.gender.male" = "";
+"addressFormView.gender.female" = "";
 
 /*Form validation*/
 "formValidation.required" = "Ce champ est obligatoire.";
-"formValidation.minLength" = "Min length is %@";
-"formValidation.maxLength" = "Max length is %@";
-"formValidation.exactLength" = "Required length is %@";
+"formValidation.minLength" = "";
+"formValidation.maxLength" = "";
+"formValidation.exactLength" = "";
 "formValidation.pattern.name" = "Veuillez indiquer uniquement les caractères (a-z ou A-Z) dans ce champ.";
 "formValidation.pattern.city" = "Veuillez indiquer uniquement les caractères (a-z ou A-Z) dans ce champ.";
-"formValidation.pattern.street" = "Please enter your street and house number";
-"formValidation.numbersOnly" = "Only numbers are allowed";
+"formValidation.pattern.street" = "";
+"formValidation.numbersOnly" = "";
 
 /*Errors*/
-"AtlasCheckoutError.title" = "Oops";
-"AtlasCheckoutError.title.missingAddress" = "No address selected";
-"AtlasCheckoutError.title.priceChanged" = "Price changed";
-"AtlasCheckoutError.message.unclassified" = "Something went wrong.\nWe are fixing the issue.\nPlease come back later";
-"AtlasCheckoutError.message.outOfStock" = "Sorry this item is out of stock";
-"AtlasCheckoutError.message.missingAddress" = "Please select shipping and billing addresses first";
-"AtlasCheckoutError.message.missingAddressAndPayment" = "Please select shipping and billing addresses and the payment method first";
-"AtlasCheckoutError.message.priceChanged" = "The price is now %@";
-"AtlasCheckoutError.message.paymentMethodNotAvailable" = "Payment method is no longer available";
-"AtlasCheckoutError.message.checkoutFailure" = "An error occurred during updating the checkout";
-"AtlasCheckoutError.message.addressInvalid" = "Address not valid, please check the address";
-"AtlasLoginError.title" = "Login Error";
-"AtlasLoginError.message.missingURL" = "Missing login URL";
-"AtlasLoginError.message.accessDenied" = "Access denied";
-"AtlasLoginError.message.requestFailed" = "Request failed";
-"AtlasLoginError.message.missingViewControllerToShowLoginForm" = "Cannot show login form";
-"AtlasAPIError.title" = "Server Error";
-"AtlasAPIError.title.noInternet" = "No internet connection";
-"AtlasAPIError.message.invalidResponseFormat" = "Incorrect response format";
+"AtlasCheckoutError.title" = "";
+"AtlasCheckoutError.title.missingAddress" = "";
+"AtlasCheckoutError.title.priceChanged" = "";
+"AtlasCheckoutError.message.unclassified" = "";
+"AtlasCheckoutError.message.outOfStock" = "";
+"AtlasCheckoutError.message.missingAddress" = "";
+"AtlasCheckoutError.message.missingAddressAndPayment" = "";
+"AtlasCheckoutError.message.priceChanged" = "";
+"AtlasCheckoutError.message.paymentMethodNotAvailable" = "";
+"AtlasCheckoutError.message.checkoutFailure" = "";
+"AtlasCheckoutError.message.addressInvalid" = "";
+"AtlasLoginError.title" = "";
+"AtlasLoginError.message.missingURL" = "";
+"AtlasLoginError.message.accessDenied" = "";
+"AtlasLoginError.message.requestFailed" = "";
+"AtlasLoginError.message.missingViewControllerToShowLoginForm" = "";
+"AtlasAPIError.title" = "";
+"AtlasAPIError.title.noInternet" = "";
+"AtlasAPIError.message.invalidResponseFormat" = "";
 
 /*Fuzzy*/
-"AtlasAPIError.message.noData" = "Empty response";
-"AtlasAPIError.message.noInternet" = "Please check you internet connection";
-"AtlasAPIError.message.unauthorized" = "Access denied";
-"AtlasAPIError.message.checkoutFailed" = "Unknown checkout error";
-"AtlasConfigurationError.title" = "Configuration Error";
-"AtlasConfigurationError.message.incorrectConfigServiceResponse" = "Server returned unknown response";
-"AtlasConfigurationError.message.missingClientId" = "Missing client identifier";
-"AtlasConfigurationError.message.missingSalesChannel" = "Missing sales channel";
-"AtlasConfigurationError.message.missingInterfaceLanguage" = "Missing interface language";
-"summaryView.label.guestCheckout" = "Checkout as guest";
-"summaryView.submitButton.guestCheckout" = "Checkout as guest";
-"summaryView.submitButton.payWithPayPal" = "Confirm and pay with PayPal";
+"AtlasAPIError.message.noData" = "";
+"AtlasAPIError.message.noInternet" = "";
+"AtlasAPIError.message.unauthorized" = "";
+"AtlasAPIError.message.checkoutFailed" = "";
+"AtlasConfigurationError.title" = "";
+"AtlasConfigurationError.message.incorrectConfigServiceResponse" = "";
+"AtlasConfigurationError.message.missingClientId" = "";
+"AtlasConfigurationError.message.missingSalesChannel" = "";
+"AtlasConfigurationError.message.missingInterfaceLanguage" = "";
+"summaryView.label.guestCheckout" = "";
+"summaryView.submitButton.guestCheckout" = "";
+"summaryView.submitButton.payWithPayPal" = "";
 
 /*Guest Summary View*/
-"guestSummaryView.address.add" = "Create new address";
-"guestSummaryView.address.create" = "Create new Address";
-"guestSummaryView.address.update" = "Update Address";
-"addressFormView.emailaddress" = "Email Address";
-"formValidation.vaildEmail" = "Please enter a valid email address";
+"guestSummaryView.address.add" = "";
+"guestSummaryView.address.create" = "";
+"guestSummaryView.address.update" = "";
+"addressFormView.emailaddress" = "";
+"formValidation.vaildEmail" = "";
+"addressListView.add.type.StandardAddressDataModelCreationStrategy" = "";
+"addressListView.add.type.PickupPointAddressDataModelCreationStrategy" = "";
+"addressListView.add.type.AddressBookImportDataModelCreationStrategy" = "";
