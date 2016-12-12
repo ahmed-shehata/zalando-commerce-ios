@@ -1,15 +1,7 @@
-
-/*Buttons*/
 "button.general.cancel" = "Cancel";
 "button.general.save" = "Save";
-
-/*Login View*/
 "loginView.loginWithZalando" = "Login with Zalando";
-
-/*Terms & Conditions View*/
 "termsAndConditionsView.title" = "Legal Notice";
-
-/*Summary View*/
 "summaryView.title.summary" = "Summary";
 "summaryView.title.orderPlaced" = "Order placed";
 "summaryView.label.payment" = "Payment";
@@ -27,18 +19,12 @@
 "summaryView.submitButton.placeOrder" = "Place order";
 "summaryView.submitButton.backToShop" = "Back to shop";
 "summaryView.link.termsAndConditions" = "Zalando terms, conditions and cancellation policy apply to all orders";
-
-/*Address list view*/
 "addressListView.title.shipping" = "Shipping Address";
 "addressListView.title.billing" = "Billing Address";
 "addressListView.prefix.packstation" = "Packstation";
-
-/*Fuzzy*/
 "addressListView.prefix.memberID" = "Member ID";
 "addressListView.add.cellTitle" = "Add new address...";
 "addressListView.add.type.title" = "Address Type";
-
-/*Address Form View*/
 "addressFormView.title" = "Title";
 "addressFormView.firstname" = "First Name";
 "addressFormView.lastname" = "Last Name";
@@ -51,8 +37,6 @@
 "addressFormView.country" = "Country";
 "addressFormView.gender.male" = "Mr";
 "addressFormView.gender.female" = "Mrs";
-
-/*Form validation*/
 "formValidation.required" = "This field is required";
 "formValidation.minLength" = "Min length is %@";
 "formValidation.maxLength" = "Max length is %@";
@@ -61,8 +45,6 @@
 "formValidation.pattern.city" = "Please only use the characters (A-z) in this field";
 "formValidation.pattern.street" = "Please enter your street and house number";
 "formValidation.numbersOnly" = "Only numbers are allowed";
-
-/*Errors*/
 "AtlasCheckoutError.title" = "Oops";
 "AtlasCheckoutError.title.missingAddress" = "No address selected";
 "AtlasCheckoutError.title.priceChanged" = "Price changed";
@@ -82,8 +64,6 @@
 "AtlasAPIError.title" = "Server Error";
 "AtlasAPIError.title.noInternet" = "No internet connection";
 "AtlasAPIError.message.invalidResponseFormat" = "Incorrect response format";
-
-/*Fuzzy*/
 "AtlasAPIError.message.noData" = "Empty response";
 "AtlasAPIError.message.noInternet" = "Please check you internet connection";
 "AtlasAPIError.message.unauthorized" = "Access denied";
@@ -96,8 +76,6 @@
 "summaryView.label.guestCheckout" = "Checkout as guest";
 "summaryView.submitButton.guestCheckout" = "Checkout as guest";
 "summaryView.submitButton.payWithPayPal" = "Confirm and pay with PayPal";
-
-/*Guest Summary View*/
 "guestSummaryView.address.add" = "Create new address";
 "guestSummaryView.address.create" = "Create new Address";
 "guestSummaryView.address.update" = "Update Address";
