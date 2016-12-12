@@ -47,6 +47,7 @@
 		A6004F8D3EAD48FB4D199E71519FA3CE /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35CA68DACB839A1478B037F75B4718A9 /* SwiftyJSON.framework */; };
 		A780FF331E667E4F680D3C330ED07DB8 /* DemoCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89FA499DC08F5C540C7FE44552F23A6 /* DemoCatalog.swift */; };
 		ADB3F0B19117CD32B5795BAF37B3FB48 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E68BC11A4A9FD71255E1A93A12587B3D /* SystemConfiguration.framework */; };
+		B0377B46A99697FD41BBD5F2 /* InterfaceLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03771D541B3F8CE16776A3A /* InterfaceLanguage.swift */; };
 		BFD1D1499CD09ED4A74B6ECA27B2B81B /* AtlasDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0000FBCF7CFA54DDC8399E4BABD42A15 /* AtlasDemoUITests.swift */; };
 		C13958F3EB2139209B40A7C93BAAAE5A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE465EB2A4F6D8B31261A51664D603CD /* MobileCoreServices.framework */; };
 		C28B405D84A7E9B9F1879C6860E5E428 /* XCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B3919A2CEC66658921E58E02D888B5 /* XCTestCase.swift */; };
@@ -135,6 +136,7 @@
 		A1A7A0B5C279F22FC02C6B5E54125FD2 /* AtlasUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AtlasUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3903D304D732D84FC3034810FB00B36 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AE465EB2A4F6D8B31261A51664D603CD /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		B03771D541B3F8CE16776A3A /* InterfaceLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterfaceLanguage.swift; sourceTree = "<group>"; };
 		B5B3919A2CEC66658921E58E02D888B5 /* XCTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = XCTestCase.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B5D445C1DAAC347B64D5AFED9B5B140B /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		CFE7F4402C577EAAD785596D4FB735D0 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -274,6 +276,7 @@
 				29D25E49A4BA3C66C371430FFD7DC396 /* CatalogViewController.swift */,
 				74F2F3D1790B7E063C3527BF921B7E1D /* ProductCollectionViewCell.swift */,
 				68D47F523CFD3049B145328DBAAD3BF6 /* ProfileViewController.swift */,
+				B03771D541B3F8CE16776A3A /* InterfaceLanguage.swift */,
 			);
 			path = AtlasDemo;
 			sourceTree = "<group>";
@@ -467,6 +470,7 @@
 				A780FF331E667E4F680D3C330ED07DB8 /* DemoCatalog.swift in Sources */,
 				0FE6FE338EDD0304EC47F380FA6E7F0F /* ProductCollectionViewCell.swift in Sources */,
 				A12BA69E9882091D0E7458127925A441 /* ProfileViewController.swift in Sources */,
+				B0377B46A99697FD41BBD5F2 /* InterfaceLanguage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

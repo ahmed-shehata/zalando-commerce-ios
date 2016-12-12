@@ -11,16 +11,12 @@ typealias AppSetupCompletion = (_ configured: Bool) -> Void
 
 class AppSetup {
 
-    enum InterfaceLanguage: String {
-        case English = "en"
-        case Deutsch = "de"
-    }
-
     fileprivate(set) static var atlas: AtlasUI?
     fileprivate(set) static var options: Options?
 
     fileprivate static let defaultUseSandbox = true
-    fileprivate static let defaultInterfaceLanguage = InterfaceLanguage.English
+    fileprivate static let defaultInterfaceLanguage = InterfaceLanguage.english
+    fileprivate static let defaultSalesChannel = SalesChannel.germany
 
     static var isConfigured: Bool {
         return atlas != nil && options != nil
@@ -38,8 +34,12 @@ class AppSetup {
         set(appOptions: prepareOptions(useSandbox: useSandbox))
     }
 
-    static func change(interfaceLanguage language: InterfaceLanguage) {
-        set(appOptions: prepareOptions(interfaceLanguage: language))
+    static func change(interfaceLanguage: InterfaceLanguage) {
+        set(appOptions: prepareOptions(interfaceLanguage: interfaceLanguage))
+    }
+
+    static func change(salesChannel: SalesChannel) {
+        set(appOptions: prepareOptions(salesChannel: salesChannel))
     }
 
     fileprivate static var alwaysUseMockAPI: Bool {
@@ -71,13 +71,16 @@ class AppSetup {
         }
     }
 
-    fileprivate static func prepareOptions(useSandbox: Bool? = nil, interfaceLanguage: InterfaceLanguage? = nil) -> Options {
+    fileprivate static func prepareOptions(useSandbox: Bool? = nil,
+                                           interfaceLanguage: InterfaceLanguage? = nil,
+                                           salesChannel: SalesChannel? = nil) -> Options {
         let configurationURL: URL? = AtlasMockAPI.hasMockedAPIStarted ? AtlasMockAPI.endpointURL(forPath: "/config") : nil
         let sandbox = useSandbox ?? options?.useSandboxEnvironment ?? defaultUseSandbox
         let language = interfaceLanguage?.rawValue ?? options?.interfaceLanguage ?? defaultInterfaceLanguage.rawValue
+        let salesChannel = salesChannel?.rawValue ?? options?.salesChannel ?? defaultSalesChannel.rawValue
 
         return Options(clientId: "atlas_Y2M1MzA",
-                       salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
+                       salesChannel: salesChannel,
                        useSandbox: sandbox,
                        interfaceLanguage: language,
                        configurationURL: configurationURL)
