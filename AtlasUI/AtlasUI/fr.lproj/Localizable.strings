@@ -1,15 +1,7 @@
-
-/*Buttons*/
 "button.general.cancel" = "";
 "button.general.save" = "";
-
-/*Login View*/
 "loginView.loginWithZalando" = "";
-
-/*Terms & Conditions View*/
 "termsAndConditionsView.title" = "Mentions légales";
-
-/*Summary View*/
 "summaryView.title.summary" = "";
 "summaryView.title.orderPlaced" = "";
 "summaryView.label.payment" = "";
@@ -82,8 +74,6 @@
 "AtlasAPIError.title" = "";
 "AtlasAPIError.title.noInternet" = "";
 "AtlasAPIError.message.invalidResponseFormat" = "";
-
-/*Fuzzy*/
 "AtlasAPIError.message.noData" = "";
 "AtlasAPIError.message.noInternet" = "";
 "AtlasAPIError.message.unauthorized" = "";
@@ -96,8 +86,6 @@
 "summaryView.label.guestCheckout" = "";
 "summaryView.submitButton.guestCheckout" = "";
 "summaryView.submitButton.payWithPayPal" = "";
-
-/*Guest Summary View*/
 "guestSummaryView.address.add" = "";
 "guestSummaryView.address.create" = "";
 "guestSummaryView.address.update" = "";
