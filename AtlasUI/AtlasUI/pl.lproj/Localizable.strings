@@ -32,6 +32,8 @@
 "addressListView.title.shipping" = "Adres dostawy";
 "addressListView.title.billing" = "Adres do faktury";
 "addressListView.prefix.packstation" = "Paczkomat";
+
+/*Fuzzy*/
 "addressListView.prefix.memberID" = "Identyfikator klienta";
 "addressListView.add.cellTitle" = "Dodaj nowy adres...";
 "addressListView.add.type.title" = "Rodzaj adresu";
@@ -83,6 +85,8 @@
 "AtlasAPIError.title" = "Błąd serwera";
 "AtlasAPIError.title.noInternet" = "Brak połączenia z internetem";
 "AtlasAPIError.message.invalidResponseFormat" = "Nieprawidłowy format odpowiedzi serwera";
+
+/*Fuzzy*/
 "AtlasAPIError.message.noData" = "Serwer przesłał pustą odpowiedź";
 "AtlasAPIError.message.noInternet" = "Prosimy sprawdzić połączenie z internetem";
 "AtlasAPIError.message.unauthorized" = "Brak dostępu";
