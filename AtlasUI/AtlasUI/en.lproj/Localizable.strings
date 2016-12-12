@@ -20,6 +20,10 @@
 "summaryView.label.emptyAddress.billing" = "No Billing Address";
 "summaryView.label.estimatedDelivery" = "Estimated Delivery";
 "summaryView.label.unitSize" = "Size: %@";
+"summaryView.label.orderHeader" = "\nWe are happy about your order\nThanks a lot!";
+"summaryView.label.orderNumber" = "Order number";
+"summaryView.label.orderImageSaved" = "✓ Image saved to your photo library";
+"summaryView.button.saveOrderImage" = "Save order details image";
 "summaryView.label.price.total" = "Total";
 "summaryView.label.price.vat" = "(VAT Included)";
 "summaryView.label.price.shipping" = "Shipping";

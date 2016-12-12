@@ -101,8 +101,4 @@ extension AtlasAPIClient {
         return try? AtlasUI.shared().client
     }
 
-    static var countryCode: String? {
-        return shared?.config.salesChannel.countryCode
-    }
-
 }

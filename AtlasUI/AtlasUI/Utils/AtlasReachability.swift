@@ -10,7 +10,7 @@ class AtlasReachability {
     fileprivate var reachability: Reachability?
 
     func setupReachability() {
-        guard let reachability = Reachability(), !unitTestsAreRunning() else { return }
+        guard let reachability = Reachability(), !UIApplication.unitTestsAreRunning else { return }
 
         reachability.whenReachable = { _ in
             Async.main {
@@ -32,10 +32,6 @@ class AtlasReachability {
         }
 
         self.reachability = reachability
-    }
-
-    private func unitTestsAreRunning() -> Bool {
-        return ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
     }
 
 }

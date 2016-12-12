@@ -15,6 +15,7 @@ struct CheckoutSummaryDataModel {
     let totalPrice: MoneyAmount
     let delivery: Delivery?
     let email: String?
+    let orderNumber: String?
 
     init(selectedArticleUnit: SelectedArticleUnit,
          shippingAddress: FormattableAddress? = nil,
@@ -23,7 +24,8 @@ struct CheckoutSummaryDataModel {
          shippingPrice: MoneyAmount = 0,
          totalPrice: MoneyAmount,
          delivery: Delivery? = nil,
-         email: String? = nil) {
+         email: String? = nil,
+         orderNumber: String? = nil) {
 
         self.selectedArticleUnit = selectedArticleUnit
         self.shippingAddress = shippingAddress
@@ -33,6 +35,7 @@ struct CheckoutSummaryDataModel {
         self.totalPrice = totalPrice
         self.delivery = delivery
         self.email = email
+        self.orderNumber = orderNumber
     }
 
 }
@@ -76,6 +79,7 @@ extension CheckoutSummaryDataModel {
         self.totalPrice = cartCheckout?.cart?.grossTotal.amount ?? selectedArticleUnit.priceAmount
         self.delivery = cartCheckout?.checkout?.delivery
         self.email = nil
+        self.orderNumber = nil
     }
 
     init(selectedArticleUnit: SelectedArticleUnit, checkout: Checkout?, order: Order) {
@@ -87,6 +91,7 @@ extension CheckoutSummaryDataModel {
         self.totalPrice = order.grossTotal.amount
         self.delivery = checkout?.delivery
         self.email = nil
+        self.orderNumber = order.orderNumber
     }
 
     init(selectedArticleUnit: SelectedArticleUnit, guestCheckout: GuestCheckout?, email: String, addresses: CheckoutAddresses? = nil) {
@@ -98,6 +103,7 @@ extension CheckoutSummaryDataModel {
         self.totalPrice = guestCheckout?.cart.grossTotal.amount ?? selectedArticleUnit.priceAmount
         self.delivery = guestCheckout?.delivery
         self.email = email
+        self.orderNumber = nil
     }
 
     init(selectedArticleUnit: SelectedArticleUnit, guestCheckout: GuestCheckout?, email: String, guestOrder: GuestOrder) {
@@ -109,6 +115,7 @@ extension CheckoutSummaryDataModel {
         self.totalPrice = guestOrder.grossTotal.amount
         self.delivery = guestCheckout?.delivery
         self.email = email
+        self.orderNumber = guestOrder.orderNumber
     }
 
 }

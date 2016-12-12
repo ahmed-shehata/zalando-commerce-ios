@@ -38,6 +38,8 @@
             </dict>
         </dict>
     </dict>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Saving the order details image in your photos app</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

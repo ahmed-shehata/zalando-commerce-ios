@@ -6,6 +6,16 @@ import Foundation
 
 extension URL {
 
+    func removeCookies(from storage: HTTPCookieStorage = HTTPCookieStorage.shared) {
+        storage.cookies(for: self)?.forEach { cookie in
+            storage.deleteCookie(cookie)
+        }
+    }
+
+}
+
+extension URL {
+
     enum QueryItemKey: String {
         case accessToken = "access_token"
         case error = "error"

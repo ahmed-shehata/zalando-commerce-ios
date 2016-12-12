@@ -37,9 +37,15 @@ final class ToCViewController: UIViewController {
     func load(url: URL, completion: WebViewLoadedCompletion? = nil) {
         self.loadedCompletion = completion
 
+        webView.loadRequest(prepareRequest(for: url))
+    }
+
+    private func prepareRequest(for url: URL) -> URLRequest {
+        url.removeCookies()
+
         var request = URLRequest(url: url)
         request.setValue("AtlasSDK", forHTTPHeaderField: "X-Zalando-Mobile-App")
-        webView.loadRequest(request)
+        return request
     }
 
 }

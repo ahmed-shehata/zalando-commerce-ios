@@ -28,7 +28,9 @@ class GuestAddressActionHandler {
 
     func updateAddress(address: EquatableAddress, completion: @escaping GuestAddressActionHandlerCompletion) {
         let actionHandler = GuestCheckoutUpdateAddressActionHandler()
-        let dataModel = AddressFormDataModel(equatableAddress: address, email: emailAddress, countryCode: AtlasAPIClient.countryCode)
+        let dataModel = AddressFormDataModel(equatableAddress: address,
+                                             email: emailAddress,
+                                             countryCode: AtlasAPIClient.shared?.salesChannelCountry)
         let formLayout = UpdateAddressFormLayout()
         let addressType: AddressFormType = address.pickupPoint == nil ? .guestStandardAddress : .guestPickupPoint
         let viewModel = AddressFormViewModel(dataModel: dataModel, layout: formLayout, type: addressType)
