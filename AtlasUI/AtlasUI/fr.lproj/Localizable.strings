@@ -1,15 +1,7 @@
-
-/*Buttons*/
 "button.general.cancel" = "";
 "button.general.save" = "";
-
-/*Login View*/
 "loginView.loginWithZalando" = "";
-
-/*Terms & Conditions View*/
 "termsAndConditionsView.title" = "Mentions légales";
-
-/*Summary View*/
 "summaryView.title.summary" = "";
 "summaryView.title.orderPlaced" = "";
 "summaryView.label.payment" = "";
@@ -27,18 +19,12 @@
 "summaryView.submitButton.placeOrder" = "";
 "summaryView.submitButton.backToShop" = "Retour à la boutique";
 "summaryView.link.termsAndConditions" = "";
-
-/*Address list view*/
 "addressListView.title.shipping" = "Adresse de livraison";
 "addressListView.title.billing" = "Adresse de facturation";
 "addressListView.prefix.packstation" = "";
-
-/*Fuzzy*/
 "addressListView.prefix.memberID" = "";
 "addressListView.add.cellTitle" = "Ajouter une nouvelle adresse";
 "addressListView.add.type.title" = "";
-
-/*Address Form View*/
 "addressFormView.title" = "Civilité";
 "addressFormView.firstname" = "Prénom";
 "addressFormView.lastname" = "Nom";
@@ -51,8 +37,6 @@
 "addressFormView.country" = "Pays";
 "addressFormView.gender.male" = "";
 "addressFormView.gender.female" = "";
-
-/*Form validation*/
 "formValidation.required" = "Ce champ est obligatoire.";
 "formValidation.minLength" = "";
 "formValidation.maxLength" = "";
@@ -61,8 +45,6 @@
 "formValidation.pattern.city" = "Veuillez indiquer uniquement les caractères (a-z ou A-Z) dans ce champ.";
 "formValidation.pattern.street" = "";
 "formValidation.numbersOnly" = "";
-
-/*Errors*/
 "AtlasCheckoutError.title" = "";
 "AtlasCheckoutError.title.missingAddress" = "";
 "AtlasCheckoutError.title.priceChanged" = "";
@@ -82,8 +64,6 @@
 "AtlasAPIError.title" = "";
 "AtlasAPIError.title.noInternet" = "";
 "AtlasAPIError.message.invalidResponseFormat" = "";
-
-/*Fuzzy*/
 "AtlasAPIError.message.noData" = "";
 "AtlasAPIError.message.noInternet" = "";
 "AtlasAPIError.message.unauthorized" = "";
@@ -96,8 +76,6 @@
 "summaryView.label.guestCheckout" = "";
 "summaryView.submitButton.guestCheckout" = "";
 "summaryView.submitButton.payWithPayPal" = "";
-
-/*Guest Summary View*/
 "guestSummaryView.address.add" = "";
 "guestSummaryView.address.create" = "";
 "guestSummaryView.address.update" = "";
