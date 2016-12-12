@@ -1,14 +1,20 @@
+
+/*Buttons*/
 "button.general.cancel" = "Annulla";
 "button.general.save" = "Salva";
+
+/*Login View*/
 "loginView.loginWithZalando" = "Login con Zalando";
+
+/*Terms & Conditions View*/
 "termsAndConditionsView.title" = "Termini e condizioni";
+
+/*Summary View*/
 "summaryView.title.summary" = "Riepilogo";
 "summaryView.title.orderPlaced" = "Ordine effettuato";
 "summaryView.label.payment" = "Pagamento";
 "summaryView.label.address.shipping" = "Indirizzo di consegna";
 "summaryView.label.address.billing" = "Indirizzo di fatturazione";
-
-/*not available in italy*/
 "summaryView.label.address.packstationAbbreviation" = "P.S.";
 "summaryView.label.emptyAddress.shipping" = "Indirizzo di consegna assente";
 "summaryView.label.emptyAddress.billing" = "Indirizzo di fatturazione assente";
@@ -21,14 +27,18 @@
 "summaryView.submitButton.placeOrder" = "Effettua ordine";
 "summaryView.submitButton.backToShop" = "Ritorna allo shop";
 "summaryView.link.termsAndConditions" = "CGV";
+
+/*Address list view*/
 "addressListView.title.shipping" = "Indirizzo di consegna";
 "addressListView.title.billing" = "Indirizzo di fatturazione";
-
-/*should I leave it empty if not present in italy?*/
 "addressListView.prefix.packstation" = "Packstation";
+
+/*Fuzzy*/
 "addressListView.prefix.memberID" = "Membro ID";
 "addressListView.add.cellTitle" = "Aggiungi un nuovo indirizzo…";
 "addressListView.add.type.title" = "Tipo di indirizzo";
+
+/*Address Form View*/
 "addressFormView.title" = "Titolo";
 "addressFormView.firstname" = "Nome";
 "addressFormView.lastname" = "Cognome";
@@ -41,6 +51,8 @@
 "addressFormView.country" = "Paese";
 "addressFormView.gender.male" = "Sig.";
 "addressFormView.gender.female" = "Sig.ra";
+
+/*Form validation*/
 "formValidation.required" = "Questo è un campo obbligatorio";
 "formValidation.minLength" = "Inserisci almeno %@";
 "formValidation.maxLength" = "Lunghezza max è %@";
@@ -49,6 +61,8 @@
 "formValidation.pattern.city" = "Per piacere usa solo caratteri (A-z) in questo campo";
 "formValidation.pattern.street" = "Per piacere inserisci strada e numero di casa";
 "formValidation.numbersOnly" = "Sono consentiti solo numeri";
+
+/*Errors*/
 "AtlasCheckoutError.title" = "Oops";
 "AtlasCheckoutError.title.missingAddress" = "Nessun indirizzo selezionato";
 "AtlasCheckoutError.title.priceChanged" = "Il prezzo è cambiato";
@@ -68,6 +82,8 @@
 "AtlasAPIError.title" = "Errore server";
 "AtlasAPIError.title.noInternet" = "Connessione ad internet assente";
 "AtlasAPIError.message.invalidResponseFormat" = "Formato risposta incorretto";
+
+/*Fuzzy*/
 "AtlasAPIError.message.noData" = "Risposta vuota";
 "AtlasAPIError.message.noInternet" = "Per piacere controlla la tua connessione ad internet";
 "AtlasAPIError.message.unauthorized" = "Accesso non autorizzato";
@@ -80,6 +96,8 @@
 "summaryView.label.guestCheckout" = "";
 "summaryView.submitButton.guestCheckout" = "";
 "summaryView.submitButton.payWithPayPal" = "";
+
+/*Guest Summary View*/
 "guestSummaryView.address.add" = "";
 "guestSummaryView.address.create" = "";
 "guestSummaryView.address.update" = "";
