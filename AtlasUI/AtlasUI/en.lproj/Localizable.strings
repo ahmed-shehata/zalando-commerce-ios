@@ -32,6 +32,8 @@
 "addressListView.title.shipping" = "Shipping Address";
 "addressListView.title.billing" = "Billing Address";
 "addressListView.prefix.packstation" = "Packstation";
+
+/*Fuzzy*/
 "addressListView.prefix.memberID" = "Member ID";
 "addressListView.add.cellTitle" = "Add new address...";
 "addressListView.add.type.title" = "Address Type";
@@ -83,6 +85,8 @@
 "AtlasAPIError.title" = "Server Error";
 "AtlasAPIError.title.noInternet" = "No internet connection";
 "AtlasAPIError.message.invalidResponseFormat" = "Incorrect response format";
+
+/*Fuzzy*/
 "AtlasAPIError.message.noData" = "Empty response";
 "AtlasAPIError.message.noInternet" = "Please check you internet connection";
 "AtlasAPIError.message.unauthorized" = "Access denied";
