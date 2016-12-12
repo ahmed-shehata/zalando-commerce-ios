@@ -1,0 +1,112 @@
+
+/*Buttons*/
+"button.general.cancel" = "";
+"button.general.save" = "";
+
+/*Login View*/
+"loginView.loginWithZalando" = "";
+
+/*Terms & Conditions View*/
+"termsAndConditionsView.title" = "Mentions légales";
+
+/*Summary View*/
+"summaryView.title.summary" = "";
+"summaryView.title.orderPlaced" = "";
+"summaryView.label.payment" = "";
+"summaryView.label.address.shipping" = "Adresse de livraison";
+"summaryView.label.address.billing" = "Adresse de facturation";
+"summaryView.label.address.packstationAbbreviation" = "P.S.";
+"summaryView.label.emptyAddress.shipping" = "";
+"summaryView.label.emptyAddress.billing" = "";
+"summaryView.label.estimatedDelivery" = "Date de livraison estimée";
+"summaryView.label.unitSize" = "Taille: %@";
+"summaryView.label.price.total" = "";
+"summaryView.label.price.vat" = "(TVA incluse)";
+"summaryView.label.price.shipping" = "Livraison";
+"summaryView.submitButton.checkoutWithZalando" = "";
+"summaryView.submitButton.placeOrder" = "";
+"summaryView.submitButton.backToShop" = "Retour à la boutique";
+"summaryView.link.termsAndConditions" = "";
+
+/*Address list view*/
+"addressListView.title.shipping" = "Adresse de livraison";
+"addressListView.title.billing" = "Adresse de facturation";
+"addressListView.prefix.packstation" = "";
+
+/*Fuzzy*/
+"addressListView.prefix.memberID" = "";
+"addressListView.add.cellTitle" = "Ajouter une nouvelle adresse";
+"addressListView.add.type.title" = "";
+
+/*Address Form View*/
+"addressFormView.title" = "Civilité";
+"addressFormView.firstname" = "Prénom";
+"addressFormView.lastname" = "Nom";
+"addressFormView.street" = "Adresse (numéro et rue)";
+"addressFormView.additional" = "Complément d’adresse";
+"addressFormView.packstation" = "";
+"addressFormView.memberid" = "";
+"addressFormView.zipcode" = "Code postal";
+"addressFormView.city" = "Ville";
+"addressFormView.country" = "Pays";
+"addressFormView.gender.male" = "";
+"addressFormView.gender.female" = "";
+
+/*Form validation*/
+"formValidation.required" = "Ce champ est obligatoire.";
+"formValidation.minLength" = "";
+"formValidation.maxLength" = "";
+"formValidation.exactLength" = "";
+"formValidation.pattern.name" = "Veuillez indiquer uniquement les caractères (a-z ou A-Z) dans ce champ.";
+"formValidation.pattern.city" = "Veuillez indiquer uniquement les caractères (a-z ou A-Z) dans ce champ.";
+"formValidation.pattern.street" = "";
+"formValidation.numbersOnly" = "";
+
+/*Errors*/
+"AtlasCheckoutError.title" = "";
+"AtlasCheckoutError.title.missingAddress" = "";
+"AtlasCheckoutError.title.priceChanged" = "";
+"AtlasCheckoutError.message.unclassified" = "";
+"AtlasCheckoutError.message.outOfStock" = "";
+"AtlasCheckoutError.message.missingAddress" = "";
+"AtlasCheckoutError.message.missingAddressAndPayment" = "";
+"AtlasCheckoutError.message.priceChanged" = "";
+"AtlasCheckoutError.message.paymentMethodNotAvailable" = "";
+"AtlasCheckoutError.message.checkoutFailure" = "";
+"AtlasCheckoutError.message.addressInvalid" = "";
+"AtlasLoginError.title" = "";
+"AtlasLoginError.message.missingURL" = "";
+"AtlasLoginError.message.accessDenied" = "";
+"AtlasLoginError.message.requestFailed" = "";
+"AtlasLoginError.message.missingViewControllerToShowLoginForm" = "";
+"AtlasAPIError.title" = "";
+"AtlasAPIError.title.noInternet" = "";
+"AtlasAPIError.message.invalidResponseFormat" = "";
+
+/*Fuzzy*/
+"AtlasAPIError.message.noData" = "";
+"AtlasAPIError.message.noInternet" = "";
+"AtlasAPIError.message.unauthorized" = "";
+"AtlasAPIError.message.checkoutFailed" = "";
+"AtlasConfigurationError.title" = "";
+"AtlasConfigurationError.message.incorrectConfigServiceResponse" = "";
+"AtlasConfigurationError.message.missingClientId" = "";
+"AtlasConfigurationError.message.missingSalesChannel" = "";
+"AtlasConfigurationError.message.missingInterfaceLanguage" = "";
+"summaryView.label.guestCheckout" = "";
+"summaryView.submitButton.guestCheckout" = "";
+"summaryView.submitButton.payWithPayPal" = "";
+
+/*Guest Summary View*/
+"guestSummaryView.address.add" = "";
+"guestSummaryView.address.create" = "";
+"guestSummaryView.address.update" = "";
+"addressFormView.emailaddress" = "";
+"formValidation.vaildEmail" = "";
+"addressListView.add.type.StandardAddressDataModelCreationStrategy" = "";
+"addressListView.add.type.PickupPointAddressDataModelCreationStrategy" = "";
+"addressListView.add.type.AddressBookImportDataModelCreationStrategy" = "";
+"summaryView.label.orderHeader" = "";
+"summaryView.label.orderNumber" = "";
+"summaryView.label.orderImageSaved" = "";
+"summaryView.button.saveOrderImage" = "";
