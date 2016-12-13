@@ -67,9 +67,26 @@ struct Keychain {
         return String(data: resultData, encoding: String.Encoding.utf8)
     }
 
-    static func all() -> [String?] {
-        let query = prepareItemQuery(retrieveData: true)
-        return []
+    static func allAccounts() -> [String] {
+        guard let all = all() else { return [] }
+        return all.flatMap { $0[kSecAttrAccount as AnyHashable] as? String }
+    }
+
+    static func all() -> [[AnyHashable: Any]]? {
+        var query = prepareItemQuery(retrieveData: true)
+        query[kSecMatchLimit as AnyHashable] = kSecMatchLimitAll
+        var result: AnyObject?
+        let status = withUnsafeMutablePointer(to: &result) {
+            SecItemCopyMatching(query as CFDictionary, UnsafeMutablePointer($0))
+        }
+
+        guard let results = result as? [AnyObject], status == errSecSuccess else {
+            return nil
+        }
+        let entries: [[AnyHashable: Any]] = results.flatMap { $0 as? [AnyHashable: Any] }
+
+        AtlasLogger.logError(entries)
+        return entries
     }
 
     private static func prepareItemQuery(forAccount accountName: String? = nil,

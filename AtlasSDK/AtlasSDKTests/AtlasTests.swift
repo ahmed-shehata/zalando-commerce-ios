@@ -38,21 +38,45 @@ class AtlasTests: XCTestCase {
     }
 
     override func tearDown() {
+        AtlasAPIClient.deauthorizeAll()
         self.client = nil
     }
 
-    func testSaveUserToken() {
+    func testAuthorizeClient() {
         loginUser()
         expect(self.client?.isAuthorized) == true
     }
 
-    func testLogoutUser() {
+    func testAuthorizeAnotherClient() {
+        waitUntil(timeout: 60) { done in
+            Atlas.configure(options: Options.forTests(useSandboxEnvironment: false)) { result in
+                switch result {
+                case .failure(let error):
+                    fail(String(describing: error))
+                case .success(let client):
+                    let secondClient = client
+                    secondClient.authorize(withToken: "ANOTHER_TOKEN")
+                    expect(self.client?.isAuthorized) == false
+                    expect(secondClient.isAuthorized) == true
+                }
+                done()
+            }
+        }
+    }
+
+    func testDeauthorizeClient() {
         loginUser()
         logoutUser()
         expect(self.client?.isAuthorized) == false
     }
 
-    func testAtlasAPIClient() {
+    func testWipeTokens() {
+        loginUser()
+        AtlasAPIClient.deauthorizeAll()
+        expect(self.client?.isAuthorized) == false
+    }
+
+    func testClientConfig() {
         expect(self.client?.config.salesChannel.identifier) == "82fe2e7f-8c4f-4aa1-9019-b6bde5594456"
         expect(self.client?.config.clientId) == "atlas_Y2M1MzA"
         expect(self.client?.config.interfaceLocale.identifier) == "en_DE"
@@ -63,12 +87,12 @@ class AtlasTests: XCTestCase {
 
 extension AtlasTests {
 
-    fileprivate func loginUser() {
-        client?.authorize(withToken: "TEST_TOKEN")
+    fileprivate func loginUser(token: String = "TEST_TOKEN") {
+        self.client?.authorize(withToken: token)
     }
 
     fileprivate func logoutUser() {
-        client?.deauthorize()
+        self.client?.deauthorize()
     }
 
 }

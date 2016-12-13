@@ -63,14 +63,15 @@ extension APIAccessToken {
 
     @discardableResult
     static func wipe() -> [APIAccessToken] {
-        return all().flatMap {
+        return allKeys().flatMap {
             try? Keychain.deleteToken(withKey: $0)
         }
     }
 
-    fileprivate static func all() -> [String] {
-        // TODO: query all keys
-        return [""]
+    fileprivate static func allKeys() -> [String] {
+        return Keychain.allAccounts().filter { account in
+            account.hasPrefix(keychainKeyPrefix)
+        }
     }
 
 }
