@@ -49,8 +49,9 @@ class AddressFormDataModel {
         city = equatableAddress.city
     }
 
-    init?(contactProperty: CNContactProperty, email: String? = nil, countryCode: String?) {
-        guard let postalAddress = contactProperty.value as? CNPostalAddress else { return nil }
+    init(contactProperty: CNContactProperty, email: String? = nil, countryCode: String?) throws {
+        guard let postalAddress = contactProperty.value as? CNPostalAddress else { throw AtlasCheckoutError.unclassified }
+        guard postalAddress.isoCountryCode.lowercased() == countryCode?.lowercased() else { throw AtlasCheckoutError.unsupportedCountry }
 
         self.firstName = contactProperty.contact.givenName
         self.lastName = contactProperty.contact.familyName

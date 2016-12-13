@@ -30,12 +30,12 @@ extension AddressBookImportDataModelCreationStrategy: CNContactPickerDelegate {
 
     func contactPicker(_ picker: CNContactPickerViewController, didSelect contactProperty: CNContactProperty) {
         picker.dismiss(animated: true) { [weak self] in
-            guard let strongSelf = self else { return }
-            if let datawModel = AddressFormDataModel(contactProperty: contactProperty,
-                                                     countryCode: AtlasAPIClient.shared?.salesChannelCountry) {
-                strongSelf.completion(datawModel)
-            } else {
-                UserMessage.displayError(error: AtlasCheckoutError.unclassified)
+            do {
+                let datawModel = try AddressFormDataModel(contactProperty: contactProperty,
+                                                          countryCode: AtlasAPIClient.shared?.salesChannelCountry)
+                self?.completion(datawModel)
+            } catch let error {
+                UserMessage.displayError(error: error)
             }
         }
     }

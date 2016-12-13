@@ -80,6 +80,7 @@
 "AtlasCheckoutError.message.outOfStock" = "Sorry this item is out of stock";
 "AtlasCheckoutError.message.missingAddress" = "Please select shipping and billing addresses first";
 "AtlasCheckoutError.message.missingAddressAndPayment" = "Please select shipping and billing addresses and the payment method first";
+"AtlasCheckoutError.message.unsupportedCountry" = "This country is not supported for the selected item";
 "AtlasCheckoutError.message.priceChanged" = "The price is now %@";
 "AtlasCheckoutError.message.paymentMethodNotAvailable" = "Payment method is no longer available";
 "AtlasCheckoutError.message.checkoutFailure" = "An error occurred during updating the checkout";
