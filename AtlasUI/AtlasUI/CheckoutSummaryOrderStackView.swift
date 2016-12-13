@@ -105,12 +105,13 @@ extension CheckoutSummaryOrderStackView {
         }
         cleanupViewAfterTakingImage(scrollView: scrollView, originalContentOffset: contentOffset, originalFrame: frame)
 
-        if UIApplication.unitTestsAreRunning {
+        guard !UIApplication.unitTestsAreRunning else {
             showSavedLabel()
-        } else {
-            AtlasUIViewController.shared?.showLoader()
-            UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(image:didFinishSavingWithError:contextInfo:)), nil)
+            return
         }
+
+        AtlasUIViewController.shared?.showLoader()
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(image:didFinishSavingWithError:contextInfo:)), nil)
     }
 
     private func prepareViewForTakingImage(scrollView: UIScrollView) -> (originalContentOffset: CGPoint, originalFrame: CGRect) {
@@ -142,11 +143,13 @@ extension CheckoutSummaryOrderStackView {
 
     func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeMutableRawPointer) {
         AtlasUIViewController.shared?.hideLoader()
-        if error == nil {
-            showSavedLabel()
-        } else {
+
+        guard error == nil else {
             UserMessage.displayError(error: AtlasCheckoutError.photosLibraryAccessNotAllowed)
+            return
         }
+
+        showSavedLabel()
     }
 
     private func showSavedLabel() {
