@@ -19,11 +19,11 @@ class LocalizationTests: XCTestCase {
     }
 
     func testGermanGermanyFractionRoundedUpPriceFormat() {
-        expectPrice(10.999, formattedWith: "de_DE", toBe: "10,99\u{00a0}€")
+        expectPrice(10.999, formattedWith: "de_DE", toBe: "11,00\u{00a0}€")
     }
 
     func testGermanGermanyFractionRoundedDownPriceFormat() {
-        expectPrice(10.991, formattedWith: "de_DE", toBe: "10,99\u{00a0}€")
+        expectPrice(10.001, formattedWith: "de_DE", toBe: "10,00\u{00a0}€")
     }
 
     func testEnglishFrancePriceFormat() {
