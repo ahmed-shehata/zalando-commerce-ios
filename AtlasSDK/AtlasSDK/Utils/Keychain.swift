@@ -7,32 +7,42 @@ import Security
 
 struct Keychain {
 
-    @discardableResult
-    static func delete(key: String) -> Bool {
-        return write(value: nil, forKey: key)
+    enum Error: Swift.Error {
+        case incorrectValueData
     }
 
     @discardableResult
-    static func write(value: String?, forKey key: String) -> Bool {
-        var status: OSStatus
+    static func delete(key: String) -> Bool {
+        defer {
+            if status != errSecSuccess {
+                AtlasLogger.logError("Error deleting in Keychain:", status.description)
+            }
+        }
+
+        let query = prepareItemQuery(forAccount: key)
+        let status = SecItemDelete(query as CFDictionary)
+        return status == errSecSuccess
+    }
+
+    @discardableResult
+    static func write(value: String, forKey key: String) throws -> Bool {
+        var status = errSecSuccess
         defer {
             if status != errSecSuccess {
                 AtlasLogger.logError("Error saving in Keychain:", status.description)
             }
         }
 
-        let query = prepareItemQuery(accountName: key)
-
-        guard let value = value, let data = value.data(using: String.Encoding.utf8) else {
-            status = SecItemDelete(query as CFDictionary)
-            return status == errSecSuccess
+        guard let data = value.data(using: String.Encoding.utf8) else {
+            throw Error.incorrectValueData
         }
 
+        let query = prepareItemQuery(forAccount: key)
         if SecItemCopyMatching(query as CFDictionary, nil) == errSecSuccess {
             let updateData: [AnyHashable: Any] = [kSecValueData as AnyHashable: data]
             status = SecItemUpdate(query as CFDictionary, updateData as CFDictionary)
         } else {
-            var securedItem = query
+            var securedItem = query as [AnyHashable: Any]
             securedItem[kSecValueData as AnyHashable] = data
             status = SecItemAdd(securedItem as CFDictionary, nil)
         }
@@ -40,10 +50,8 @@ struct Keychain {
         return status == errSecSuccess
     }
 
-    static func read(forKey key: String) -> String? {
-        var query = prepareItemQuery(accountName: key)
-        query[kSecReturnData as AnyHashable] = true
-        query[kSecReturnAttributes as AnyHashable] = true
+    static func read(key: String) -> String? {
+        let query = prepareItemQuery(forAccount: key, retrieveData: true)
 
         var result: AnyObject?
         let status = withUnsafeMutablePointer(to: &result) {
@@ -51,18 +59,34 @@ struct Keychain {
         }
 
         guard let resultDict = result as? [NSString: AnyObject],
-            let resultData = resultDict[kSecValueData] as? Data, status == errSecSuccess else {
+            let resultData = resultDict[kSecValueData] as? Data,
+            status == errSecSuccess else {
                 return nil
         }
 
         return String(data: resultData, encoding: String.Encoding.utf8)
     }
 
-    private static func prepareItemQuery(accountName: String) -> [AnyHashable: Any] {
-        return [kSecClass as AnyHashable: kSecClassGenericPassword,
+    static func all() -> [String?] {
+        let query = prepareItemQuery(retrieveData: true)
+        return []
+    }
+
+    private static func prepareItemQuery(forAccount accountName: String? = nil,
+                                         retrieveData: Bool = false) -> [AnyHashable: Any] {
+        var query: [AnyHashable: Any] = [kSecClass as AnyHashable: kSecClassGenericPassword,
             kSecAttrAccessible as AnyHashable: kSecAttrAccessibleWhenUnlocked,
-            kSecAttrAccount as AnyHashable: accountName,
             kSecAttrService as AnyHashable: Bundle.main.bundleIdentifier ?? "de.zalando.AtlasSDK"]
+
+        if let account = accountName {
+            query[kSecAttrAccount as AnyHashable] = account
+        }
+        if retrieveData {
+            query[kSecReturnData as AnyHashable] = true
+            query[kSecReturnAttributes as AnyHashable] = true
+        }
+
+        return query
     }
 
 }

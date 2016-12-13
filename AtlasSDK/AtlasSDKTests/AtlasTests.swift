@@ -11,6 +11,8 @@ import AtlasMockAPI
 
 class AtlasTests: XCTestCase {
 
+    var client: AtlasAPIClient?
+
     override class func setUp() {
         super.setUp()
         try! AtlasMockAPI.startServer()
@@ -21,32 +23,40 @@ class AtlasTests: XCTestCase {
         try! AtlasMockAPI.stopServer()
     }
 
-    func testSaveUserToken() {
-        loginUser()
-        expect(Atlas.isAuthorized()).to(beTrue())
-    }
-
-    func testLogoutUser() {
-        loginUser()
-        Atlas.deauthorize()
-        expect(Atlas.isAuthorized()).to(beFalse())
-    }
-
-    func testAtlasAPIClient() {
+    override func setUp() {
         waitUntil(timeout: 60) { done in
             Atlas.configure(options: Options.forTests()) { result in
                 switch result {
                 case .failure(let error):
                     fail(String(describing: error))
                 case .success(let client):
-                    expect(client.config.salesChannel.identifier).to(equal("82fe2e7f-8c4f-4aa1-9019-b6bde5594456"))
-                    expect(client.config.clientId).to(equal("atlas_Y2M1MzA"))
-                    expect(client.config.interfaceLocale.identifier).to(equal("en_DE"))
-                    expect(client.config.availableSalesChannels.count).to(equal(16))
+                    self.client = client
                 }
                 done()
             }
         }
+    }
+
+    override func tearDown() {
+        self.client = nil
+    }
+
+    func testSaveUserToken() {
+        loginUser()
+        expect(self.client?.isAuthorized) == true
+    }
+
+    func testLogoutUser() {
+        loginUser()
+        logoutUser()
+        expect(self.client?.isAuthorized) == false
+    }
+
+    func testAtlasAPIClient() {
+        expect(self.client?.config.salesChannel.identifier) == "82fe2e7f-8c4f-4aa1-9019-b6bde5594456"
+        expect(self.client?.config.clientId) == "atlas_Y2M1MzA"
+        expect(self.client?.config.interfaceLocale.identifier) == "en_DE"
+        expect(self.client?.config.availableSalesChannels.count) == 16
     }
 
 }
@@ -54,7 +64,11 @@ class AtlasTests: XCTestCase {
 extension AtlasTests {
 
     fileprivate func loginUser() {
-        APIAccessToken.store(token: "TEST_TOKEN")
+        client?.authorize(withToken: "TEST_TOKEN")
+    }
+
+    fileprivate func logoutUser() {
+        client?.deauthorize()
     }
 
 }

@@ -77,7 +77,7 @@ extension SizeListSelectionViewController {
 
     fileprivate func presentCheckoutScreen(selectedArticleUnit: SelectedArticleUnit) {
         let hasSingleUnit = selectedArticleUnit.article.hasSingleUnit
-        guard Atlas.isAuthorized() else {
+        guard AtlasAPIClient.shared?.isAuthorized == true else {
             let actionHandler = NotLoggedInSummaryActionHandler()
             let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, totalPrice: selectedArticleUnit.priceAmount)
             let viewModel = CheckoutSummaryViewModel(dataModel: dataModel, layout: NotLoggedInLayout())

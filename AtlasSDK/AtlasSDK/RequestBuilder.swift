@@ -10,12 +10,16 @@ struct RequestBuilder {
 
     let endpoint: Endpoint
     let urlSession: URLSession
+    let authenticationToken: String?
 
     fileprivate(set) var taskResponse: DataTaskResponse?
 
-    init(forEndpoint endpoint: Endpoint, urlSession: URLSession = URLSession.shared) {
+    init(forEndpoint endpoint: Endpoint,
+         urlSession: URLSession = URLSession.shared,
+         authenticationToken: String? = nil) {
         self.urlSession = urlSession
         self.endpoint = endpoint
+        self.authenticationToken = authenticationToken
     }
 
     mutating func execute(completion: @escaping ResponseCompletion) {
@@ -51,8 +55,8 @@ struct RequestBuilder {
     fileprivate func buildRequest() throws -> URLRequest {
         let request: URLRequest = try {
             var r = try URLRequest(endpoint: self.endpoint)
-            if self.endpoint.requiresAuthorization {
-                r.authorize(withToken: APIAccessToken.retrieve())
+            if let token = self.authenticationToken {
+                r.authorize(withToken: token)
             }
             return r
         }()

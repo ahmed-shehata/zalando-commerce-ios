@@ -19,6 +19,7 @@ protocol Endpoint: CustomStringConvertible {
     var headers: EndpointHeaders? { get }
 
     var requiresAuthorization: Bool { get }
+
 }
 
 extension Endpoint {
@@ -33,6 +34,7 @@ extension Endpoint {
     var headers: EndpointHeaders? { return nil }
 
     var requiresAuthorization: Bool { return true }
+
 }
 
 extension Endpoint {

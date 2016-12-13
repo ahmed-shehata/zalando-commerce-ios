@@ -37,20 +37,4 @@ public struct Atlas {
         }
     }
 
-    public static func isAuthorized() -> Bool {
-        return APIAccessToken.retrieve() != nil
-    }
-
-    public static func authorize(withToken token: String) {
-        APIAccessToken.store(token: token)
-        NotificationCenter.default.post(name: .AtlasAuthorized, object: nil)
-        NotificationCenter.default.post(name: .AtlasAuthorizationChanged, object: nil)
-    }
-
-    public static func deauthorize() {
-        APIAccessToken.delete()
-        NotificationCenter.default.post(name: .AtlasDeauthorized, object: nil)
-        NotificationCenter.default.post(name: .AtlasAuthorizationChanged, object: nil)
-    }
-
 }
