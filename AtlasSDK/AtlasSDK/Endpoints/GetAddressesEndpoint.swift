@@ -2,12 +2,11 @@
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
-struct GetAddressesEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
+struct GetAddressesEndpoint: CheckoutEndpoint {
 
-    let serviceURL: URL
+    let config: Config
+
     let path = "addresses"
     let acceptedContentType = "application/x.zalando.customer.addresses+json"
-
-    let salesChannel: String
 
 }

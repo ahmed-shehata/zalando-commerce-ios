@@ -62,12 +62,7 @@ public struct AtlasAPIClient {
     fileprivate func call<T>(endpoint: Endpoint,
                              completion: @escaping (AtlasAPIResult<T>) -> Void,
                              successHandler: @escaping (JSONResponse) -> T?) {
-        let tokenProvider: AuthenticationTokenProvider = {
-            return endpoint.requiresAuthorization ? self.authorizationToken : nil
-        }
-        let requestBuilder = RequestBuilder(forEndpoint: endpoint,
-                                            urlSession: urlSession,
-                                            authenticationTokenProvider: tokenProvider)
+        let requestBuilder = RequestBuilder(forEndpoint: endpoint, urlSession: urlSession)
         var apiRequest = APIRequest(requestBuilder: requestBuilder, successHandler: successHandler)
         apiRequest.execute(completion)
     }
@@ -76,12 +71,8 @@ public struct AtlasAPIClient {
 
 extension AtlasAPIClient {
 
-    var authorizationToken: String? {
-        return APIAccessToken.retrieve(for: config)
-    }
-
     public var isAuthorized: Bool {
-        return authorizationToken != nil
+        return config.authorizationToken != nil
     }
 
     public func authorize(withToken tokenValue: String) {
@@ -104,15 +95,15 @@ extension AtlasAPIClient {
     }
 
     private static func notify(isAuthorized: Bool, withToken token: APIAccessToken?) {
-        let authNotification: NSNotification.Name = isAuthorized ? .AtlasAuthorized : .AtlasDeauthorized
         var userInfo: [AnyHashable: Any]? = nil
         if let token = token {
             userInfo = [Options.InfoKey.useSandboxEnvironment: token.useSandboxEnvironment,
                 Options.InfoKey.clientId: token.clientId]
         }
 
-        NotificationCenter.default.post(name: authNotification, object: self, userInfo: userInfo)
-        NotificationCenter.default.post(name: .AtlasAuthorizationChanged, object: self, userInfo: userInfo)
+        let authNotification: NSNotification.Name = isAuthorized ? .AtlasAuthorized : .AtlasDeauthorized
+        NotificationCenter.default.post(name: authNotification, object: nil, userInfo: userInfo)
+        NotificationCenter.default.post(name: .AtlasAuthorizationChanged, object: nil, userInfo: userInfo)
     }
 
 }

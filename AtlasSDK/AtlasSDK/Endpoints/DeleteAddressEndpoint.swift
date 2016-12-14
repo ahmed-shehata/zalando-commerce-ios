@@ -2,9 +2,10 @@
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
-struct DeleteAddressEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
+struct DeleteAddressEndpoint: CheckoutEndpoint {
 
-    let serviceURL: URL
+    let config: Config
+
     let method: HTTPMethod = .DELETE
     var path: String { return "addresses/\(addressId)" }
     let acceptedContentType = "application/x.zalando.customer.addresses+json"
@@ -13,6 +14,5 @@ struct DeleteAddressEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
     }
 
     let addressId: String
-    let salesChannel: String
 
 }

@@ -4,9 +4,10 @@
 
 import Foundation
 
-struct UpdateAddressEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
+struct UpdateAddressEndpoint: CheckoutEndpoint {
 
-    let serviceURL: URL
+    let config: Config
+
     let method: HTTPMethod = .PUT
     var path: String { return "addresses/\(addressId)" }
     let acceptedContentType = "application/x.zalando.customer.address.update.response+json"
@@ -18,6 +19,5 @@ struct UpdateAddressEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
 
     let addressId: String
     let updateAddressRequest: UpdateAddressRequest
-    let salesChannel: String
 
 }

@@ -6,10 +6,6 @@ import Foundation
 
 struct APIAccessToken {
 
-    enum Error: Swift.Error {
-        case invalidTokenKey
-    }
-
     fileprivate static let keychainKeyPrefix = "APIAccessToken"
     fileprivate static let componentsSeparator = "."
 
@@ -30,12 +26,12 @@ struct APIAccessToken {
         self.value = value
     }
 
-    fileprivate init(key: String) throws {
+    fileprivate init?(key: String) {
         let components = key.components(separatedBy: ".")
         guard components.count == 3,
             components[0] == APIAccessToken.keychainKeyPrefix,
             let environment = Options.Environment(rawValue: components[2]) else {
-                throw Error.invalidTokenKey
+                return nil
         }
         self.clientId = components[1]
         self.useSandboxEnvironment = environment.isSandbox
@@ -64,7 +60,7 @@ extension APIAccessToken {
     @discardableResult
     static func wipe() -> [APIAccessToken] {
         return allKeys().flatMap {
-            try? Keychain.deleteToken(withKey: $0)
+            Keychain.deleteToken(withKey: $0)
         }
     }
 
@@ -97,8 +93,8 @@ extension Keychain {
     }
 
     @discardableResult
-    fileprivate static func deleteToken(withKey key: String) throws -> APIAccessToken {
-        let token = try APIAccessToken(key: key)
+    fileprivate static func deleteToken(withKey key: String) -> APIAccessToken? {
+        guard let token = APIAccessToken(key: key) else { return nil }
         return Keychain.delete(token: token)
     }
 

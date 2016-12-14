@@ -5,22 +5,17 @@
 import Foundation
 
 typealias ResponseCompletion = (AtlasResult<JSONResponse>) -> Void
-typealias AuthenticationTokenProvider = () -> String?
 
 struct RequestBuilder {
 
     let endpoint: Endpoint
     let urlSession: URLSession
-    let authenticationTokenProvider: AuthenticationTokenProvider?
 
     fileprivate(set) var taskResponse: DataTaskResponse?
 
-    init(forEndpoint endpoint: Endpoint,
-         urlSession: URLSession = URLSession.shared,
-         authenticationTokenProvider: AuthenticationTokenProvider? = nil) {
+    init(forEndpoint endpoint: Endpoint, urlSession: URLSession = URLSession.shared) {
         self.urlSession = urlSession
         self.endpoint = endpoint
-        self.authenticationTokenProvider = authenticationTokenProvider
     }
 
     func execute(completion: @escaping ResponseCompletion) {
@@ -56,7 +51,7 @@ struct RequestBuilder {
     fileprivate func buildRequest() throws -> URLRequest {
         let request: URLRequest = try {
             var r = try URLRequest(endpoint: self.endpoint)
-            if let token = self.authenticationTokenProvider?() {
+            if let token = self.endpoint.authorizationToken {
                 r.authorize(withToken: token)
             }
             return r

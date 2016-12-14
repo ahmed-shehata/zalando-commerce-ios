@@ -4,9 +4,10 @@
 
 import Foundation
 
-struct CheckAddressEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
+struct CheckAddressEndpoint: CheckoutEndpoint {
 
-    let serviceURL: URL
+    let config: Config
+
     let method: HTTPMethod = .POST
     let path = "address-checks"
     let acceptedContentType = "application/x.zalando.address-check.create.response+json"
@@ -17,6 +18,5 @@ struct CheckAddressEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
     }
 
     let checkAddressRequest: CheckAddressRequest
-    let salesChannel: String
 
 }
