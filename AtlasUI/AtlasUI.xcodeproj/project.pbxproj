@@ -121,7 +121,6 @@
 		E726441E020342505E0A3E67AB6E20CB /* Nimble.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 8398317FEC21A1E65AB06E3EF9B29A2B /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E97719961DF6F49600AEE0EB /* UITestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97719951DF6F49600AEE0EB /* UITestCase.swift */; };
 		E97A33A7BE2D26CDE9B4C62EB5BD2661 /* CheckoutSummaryAddressStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9494F7947C24BD2087FE22EBE20BFCD /* CheckoutSummaryAddressStackView.swift */; };
-		E980B1381DF9A77600CE80D0 /* CheckoutSummaryOrderStackViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E980B1371DF9A77600CE80D0 /* CheckoutSummaryOrderStackViewTests.swift */; };
 		E98453511DF59F96001F6C51 /* CheckoutSummaryGuestStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98453501DF59F96001F6C51 /* CheckoutSummaryGuestStackView.swift */; };
 		E98453541DF59FAB001F6C51 /* GuestAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98453521DF59FAB001F6C51 /* GuestAddressActionHandler.swift */; };
 		E98453551DF59FAB001F6C51 /* GuestCheckoutSummaryActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98453531DF59FAB001F6C51 /* GuestCheckoutSummaryActionHandler.swift */; };
@@ -298,7 +297,6 @@
 		E2644DB2E806C8F07CECE81835A0326C /* OAuth2LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2LoginViewController.swift; sourceTree = "<group>"; };
 		E272DADD96290ADDD55009F293229EAD /* FormValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValidatorTests.swift; sourceTree = "<group>"; };
 		E97719951DF6F49600AEE0EB /* UITestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITestCase.swift; sourceTree = "<group>"; };
-		E980B1371DF9A77600CE80D0 /* CheckoutSummaryOrderStackViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryOrderStackViewTests.swift; sourceTree = "<group>"; };
 		E98453501DF59F96001F6C51 /* CheckoutSummaryGuestStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryGuestStackView.swift; sourceTree = "<group>"; };
 		E98453521DF59FAB001F6C51 /* GuestAddressActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestAddressActionHandler.swift; sourceTree = "<group>"; };
 		E98453531DF59FAB001F6C51 /* GuestCheckoutSummaryActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCheckoutSummaryActionHandler.swift; sourceTree = "<group>"; };
@@ -603,7 +601,6 @@
 				81B546CB1DF070D70038BBF4 /* TestOptions.swift */,
 				816405BE1DF869B300C7BAF0 /* URLRequestTests.swift */,
 				E9E842581DF99DE700059F35 /* UIViewTests.swift */,
-				E980B1371DF9A77600CE80D0 /* CheckoutSummaryOrderStackViewTests.swift */,
 				8133924C1DFA97C000AC3DE1 /* URLTests.swift */,
 			);
 			path = AtlasUITests;
@@ -896,7 +893,6 @@
 				F7134FE121256D750D7DCDB3C6494EF0 /* URLAuthorizationTests.swift in Sources */,
 				098CF939ED1E96935799A52EE6A5A6B3 /* LoggedInSummaryActionHandlerTests.swift in Sources */,
 				C233CC7F6C4F9387883F1F4ACA455596 /* LocalizationTests.swift in Sources */,
-				E980B1381DF9A77600CE80D0 /* CheckoutSummaryOrderStackViewTests.swift in Sources */,
 				86C41143C6D9EAA6BA2C78007F6B0004 /* SizeListSelectionViewControllerTests.swift in Sources */,
 				E9F6E56C1DF80DD200B5E6BD /* GuestSummaryActionHandlerTests.swift in Sources */,
 				816405BF1DF869B300C7BAF0 /* URLRequestTests.swift in Sources */,

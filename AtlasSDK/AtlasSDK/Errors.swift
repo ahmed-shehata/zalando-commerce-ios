@@ -52,5 +52,6 @@ public enum AtlasCheckoutError: AtlasError {
     case paymentMethodNotAvailable
     case checkoutFailure
     case addressInvalid
+    case photosLibraryAccessNotAllowed
 
 }
