@@ -8,7 +8,7 @@ require 'optparse'
 require_relative 'lib/calypso/clean'
 require_relative 'lib/calypso/deps'
 require_relative 'lib/calypso/lint'
-require_relative 'lib/calypso/xcode'
+require_relative 'lib/calypso/xcodebuild'
 
 require_relative 'lib/calypso/issues'
 require_relative 'lib/calypso/release/release'
@@ -19,6 +19,7 @@ require_relative 'lib/calypso/release/carthage'
 $stdout.sync = $stderr.sync = true
 
 module Calypso
+
   class CLI < Thor
     include Calypso
 
@@ -31,8 +32,8 @@ module Calypso
     desc 'lint', 'Check and format source code style'
     subcommand 'lint', Lint
 
-    desc 'xcode', 'Building shortcuts'
-    subcommand 'xcode', Xcode
+    desc 'xcodebuild', 'Building shortcuts'
+    subcommand 'xcodebuild', XcodeBuild
 
     desc 'pod', 'CocoaPods commands'
     subcommand 'pod', Pod
@@ -49,6 +50,7 @@ module Calypso
     desc 'issues', 'Github Issues reporter'
     subcommand 'issues', Issues
   end
+
 end
 
 Calypso::CLI.start
