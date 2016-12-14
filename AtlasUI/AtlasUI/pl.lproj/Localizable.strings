@@ -1,108 +1,90 @@
-// Buttons
-"button.general.cancel" = "Cancel";
-"button.general.save" = "Save";
-
-// Login View
-"loginView.loginWithZalando" = "Login with Zalando";
-
-// Terms & Conditions View
-"termsAndConditionsView.title" = "Legal Notice";
-
-// Summary View
-"summaryView.title.summary" = "Summary";
-"summaryView.title.orderPlaced" = "Order placed";
-"summaryView.label.payment" = "Payment";
-"summaryView.label.guestCheckout" = "Checkout as guest";
-"summaryView.label.address.shipping" = "Shipping Address";
-"summaryView.label.address.billing" = "Billing Address";
-"summaryView.label.address.packstationAbbreviation" = "P.S.";
-"summaryView.label.emptyAddress.shipping" = "No Shipping Address";
-"summaryView.label.emptyAddress.billing" = "No Billing Address";
-"summaryView.label.estimatedDelivery" = "Estimated Delivery";
-"summaryView.label.unitSize" = "Size: %@";
-"summaryView.label.price.total" = "Total";
-"summaryView.label.price.vat" = "(VAT Included)";
-"summaryView.label.price.shipping" = "Shipping";
-"summaryView.submitButton.checkoutWithZalando" = "Checkout with Zalando";
-"summaryView.submitButton.guestCheckout" = "Checkout as guest";
-"summaryView.submitButton.placeOrder" = "Place order";
-"summaryView.submitButton.payWithPayPal" = "Confirm and pay with PayPal";
-"summaryView.submitButton.backToShop" = "Back to shop";
-"summaryView.link.termsAndConditions" = "Zalando terms, conditions and cancellation policy apply to all orders";
-
-// Guest Summary View
-"guestSummaryView.address.add" = "Create new address";
-"guestSummaryView.address.create" = "Create new Address";
-"guestSummaryView.address.update" = "Update Address";
-
-// Address list view
-"addressListView.title.shipping" = "Shipping Address";
-"addressListView.title.billing" = "Billing Address";
-"addressListView.prefix.packstation" = "Packstation";
-"addressListView.prefix.memberID" = "Member ID";
-"addressListView.add.cellTitle" = "Add new address...";
-"addressListView.add.type.title" = "Address Type";
-"addressListView.add.type.StandardAddressDataModelCreationStrategy" = "Standard";
-"addressListView.add.type.PickupPointAddressDataModelCreationStrategy" = "Pickup Point";
-"addressListView.add.type.AddressBookImportDataModelCreationStrategy" = "Import from Address Book";
-
-// Address Form View
-"addressFormView.title" = "Title";
-"addressFormView.firstname" = "First Name";
-"addressFormView.lastname" = "Last Name";
-"addressFormView.emailaddress" = "Email Address";
-"addressFormView.street" = "Street";
-"addressFormView.additional" = "Additional";
-"addressFormView.packstation" = "Packstation";
-"addressFormView.memberid" = "Member ID";
-"addressFormView.zipcode" = "Zipcode";
-"addressFormView.city" = "City";
-"addressFormView.country" = "Country";
-"addressFormView.gender.male" = "Mr";
-"addressFormView.gender.female" = "Mrs";
-
-// Form validation
-"formValidation.required" = "This field is required";
-"formValidation.minLength" = "Min length is %@";
-"formValidation.maxLength" = "Max length is %@";
-"formValidation.exactLength" = "Required length is %@";
-"formValidation.pattern.name" = "Please only use the characters (A-z) in this field";
-"formValidation.pattern.city" = "Please only use the characters (A-z) in this field";
-"formValidation.pattern.street" = "Please enter your street and house number";
-"formValidation.numbersOnly" = "Only numbers are allowed";
-"formValidation.vaildEmail" = "Please enter a valid email address";
-
-// Errors
-"AtlasCheckoutError.title" = "Oops";
-"AtlasCheckoutError.title.missingAddress" = "No address selected";
-"AtlasCheckoutError.title.priceChanged" = "Price changed";
-"AtlasCheckoutError.message.unclassified" = "Something went wrong.\nWe are fixing the issue.\nPlease come back later";
-"AtlasCheckoutError.message.outOfStock" = "Sorry this item is out of stock";
-"AtlasCheckoutError.message.missingAddress" = "Please select shipping and billing addresses first";
-"AtlasCheckoutError.message.missingAddressAndPayment" = "Please select shipping and billing addresses and the payment method first";
-"AtlasCheckoutError.message.unsupportedCountry" = "This country is not supported for the selected item";
-"AtlasCheckoutError.message.priceChanged" = "The price is now %@";
-"AtlasCheckoutError.message.paymentMethodNotAvailable" = "Payment method is no longer available";
-"AtlasCheckoutError.message.checkoutFailure" = "An error occurred during updating the checkout";
-"AtlasCheckoutError.message.addressInvalid" = "Address not valid, please check the address";
-"AtlasCheckoutError.message.photosLibraryAccessNotAllowed" = "Can't access Photos Library";
-
-"AtlasLoginError.title" = "Login Error";
-"AtlasLoginError.message.missingURL" = "Missing login URL";
-"AtlasLoginError.message.accessDenied" = "Access denied";
-"AtlasLoginError.message.requestFailed" = "Request failed";
-"AtlasLoginError.message.missingViewControllerToShowLoginForm" = "Cannot show login form";
-
-"AtlasAPIError.title" = "Server Error";
-"AtlasAPIError.title.noInternet" = "No internet connection";
-"AtlasAPIError.message.invalidResponseFormat" = "Incorrect response format";
-"AtlasAPIError.message.noData" = "Empty response";
-"AtlasAPIError.message.noInternet" = "Please check you internet connection";
-"AtlasAPIError.message.unauthorized" = "Access denied";
-"AtlasAPIError.message.checkoutFailed" = "Unknown checkout error";
-
-"AtlasConfigurationError.title" = "Configuration Error";
-"AtlasConfigurationError.message.incorrectConfigServiceResponse" = "Server returned unknown response";
-"AtlasConfigurationError.message.missingClientId" = "Missing client identifier";
-"AtlasConfigurationError.message.missingSalesChannel" = "Missing sales channel";
-"AtlasConfigurationError.message.missingInterfaceLanguage" = "Missing interface language";
+"AtlasAPIError.message.checkoutFailed" = "Nieznany błąd tworzenia zamówienia";
+"AtlasAPIError.message.invalidResponseFormat" = "Nieprawidłowy format odpowiedzi serwera";
+"AtlasAPIError.message.noData" = "Serwer przesłał pustą odpowiedź";
+"AtlasAPIError.message.noInternet" = "Prosimy sprawdzić połączenie z internetem";
+"AtlasAPIError.message.unauthorized" = "Brak dostępu";
+"AtlasAPIError.title" = "Błąd serwera";
+"AtlasAPIError.title.noInternet" = "Brak połączenia z internetem";
+"AtlasCheckoutError.message.addressInvalid" = "Wprowadzony adres jest nieprawidłowy";
+"AtlasCheckoutError.message.checkoutFailure" = "Wystąpił błąd przy tworzeniu zamówienia";
+"AtlasCheckoutError.message.missingAddress" = "Prosimy najpierw wybrać adres dostawy oraz adres do faktury";
+"AtlasCheckoutError.message.missingAddressAndPayment" = "Prosimy najpierw wybrać adres dostawy, adres do faktury oraz formę płatności\n";
+"AtlasCheckoutError.message.outOfStock" = "Niestety ten produkt został już wyprzedany";
+"AtlasCheckoutError.message.paymentMethodNotAvailable" = "Wybrana forma płatności nie jest obecnie dostępna";
+"AtlasCheckoutError.message.priceChanged" = "Aktualna cena: %@";
+"AtlasCheckoutError.message.unclassified" = "Wystąpił problem. Pracujemy nad jego usunięciem. Prosimy spróbować później.";
+"AtlasCheckoutError.title" = "Ups";
+"AtlasCheckoutError.title.missingAddress" = "Adres nie został wybrany";
+"AtlasCheckoutError.title.priceChanged" = "Cena uległa zmianie";
+"AtlasConfigurationError.message.incorrectConfigServiceResponse" = "Nierozpoznana odpowiedź serwera";
+"AtlasConfigurationError.message.missingClientId" = "Brak idenfikatora klienta";
+"AtlasConfigurationError.message.missingInterfaceLanguage" = "Brak języka interfejsu";
+"AtlasConfigurationError.message.missingSalesChannel" = "Brak kanału sprzedaży";
+"AtlasConfigurationError.title" = "Błąd konfiguracji";
+"AtlasLoginError.message.accessDenied" = "Brak dostępu";
+"AtlasLoginError.message.missingURL" = "Brak adresu URL do logowania";
+"AtlasLoginError.message.missingViewControllerToShowLoginForm" = "Nie udało się zaprezentować formularza logowania";
+"AtlasLoginError.message.requestFailed" = "Połączenie nie powiodło się";
+"AtlasLoginError.title" = "Błąd logowania";
+"addressFormView.additional" = "Infomacje dodatkowe";
+"addressFormView.city" = "Miasto";
+"addressFormView.country" = "Kraj";
+"addressFormView.emailaddress" = "Adres email";
+"addressFormView.firstname" = "Imię";
+"addressFormView.gender.female" = "Pani";
+"addressFormView.gender.male" = "Pan";
+"addressFormView.lastname" = "Nazwisko";
+"addressFormView.memberid" = "Identyfikator klienta";
+"addressFormView.packstation" = "Paczkomat";
+"addressFormView.street" = "Ulica";
+"addressFormView.title" = "Zwrot";
+"addressFormView.zipcode" = "Kod pocztowy";
+"addressListView.add.cellTitle" = "Dodaj nowy adres...";
+"addressListView.add.type.AddressBookImportDataModelCreationStrategy" = "Zaimportuj z książki adresowej";
+"addressListView.add.type.PickupPointAddressDataModelCreationStrategy" = "Punkt odbioru";
+"addressListView.add.type.StandardAddressDataModelCreationStrategy" = "Standardowy";
+"addressListView.add.type.title" = "Rodzaj adresu";
+"addressListView.prefix.memberID" = "Identyfikator klienta";
+"addressListView.prefix.packstation" = "Paczkomat";
+"addressListView.title.billing" = "Adres do faktury";
+"addressListView.title.shipping" = "Adres dostawy";
+"button.general.cancel" = "Anuluj";
+"button.general.save" = "Zapisz";
+"formValidation.exactLength" = "Wymagana ilość znaków: %@";
+"formValidation.maxLength" = "Pole może zawierać najwyżej %@ znaków";
+"formValidation.minLength" = "Pole musi zawierać co najmniej %@ znaków";
+"formValidation.numbersOnly" = "Pole może zawierać wyłącznie liczby";
+"formValidation.pattern.city" = "Pole może zawierać wyłącznie litery";
+"formValidation.pattern.name" = "Pole może zawierać wyłącznie litery";
+"formValidation.pattern.street" = "Prosimy podać nazwę ulicy i numer";
+"formValidation.required" = "Pole wymagane";
+"formValidation.vaildEmail" = "Prosimy podać poprawny adres email";
+"guestSummaryView.address.add" = "Dodaj adres";
+"guestSummaryView.address.create" = "Dodaj adres";
+"guestSummaryView.address.update" = "Zmodyfikuj adres";
+"loginView.loginWithZalando" = "Zaloguj z Zalando";
+"summaryView.button.saveOrderImage" = "";
+"summaryView.label.address.billing" = "Adres dostawy";
+"summaryView.label.address.packstationAbbreviation" = "Adres do faktury";
+"summaryView.label.address.shipping" = "Adres dostawy";
+"summaryView.label.emptyAddress.billing" = "Brak adresu do faktury";
+"summaryView.label.emptyAddress.shipping" = "Brak adresu dostawy";
+"summaryView.label.estimatedDelivery" = "Przewidywany termin dostawy";
+"summaryView.label.guestCheckout" = "Zamów bez tworzenia konta";
+"summaryView.label.orderHeader" = "";
+"summaryView.label.orderImageSaved" = "";
+"summaryView.label.orderNumber" = "";
+"summaryView.label.payment" = "Forma płatności";
+"summaryView.label.price.shipping" = "Dostawa";
+"summaryView.label.price.total" = "Suma";
+"summaryView.label.price.vat" = "(z VAT)";
+"summaryView.label.unitSize" = "Rozmiar: %@";
+"summaryView.link.termsAndConditions" = "Do wszystkich zamówień ma zastosowanie polityka prywatności, regulamin sklepu oraz warunki odstąpienia od umowy Zalando";
+"summaryView.submitButton.backToShop" = "Do sklepu";
+"summaryView.submitButton.checkoutWithZalando" = "Zamów z Zalando";
+"summaryView.submitButton.guestCheckout" = "Zamów bez tworzenia konta";
+"summaryView.submitButton.payWithPayPal" = "Potwierdź i zapłać przez PayPal";
+"summaryView.submitButton.placeOrder" = "Złóż zamówienie";
+"summaryView.title.orderPlaced" = "Zamówienie złożone";
+"summaryView.title.summary" = "Podsumowanie";
+"termsAndConditionsView.title" = "Nota prawna";
