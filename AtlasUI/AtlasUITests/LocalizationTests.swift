@@ -10,22 +10,46 @@ import Nimble
 
 class LocalizationTests: XCTestCase {
 
-    func testGermanCurrency() {
-        let deutschland = try! Localizer(localeIdentifier: "de_DE")
-        let price = deutschland.format(price: 10)
-        expect(price).to(equal("10,00 €"))
+    func testGermanGermanyPriceFormat() {
+        expectPrice(10, formattedWith: "de_DE", toBe: "10,00\u{00a0}€")
     }
 
-    func testFrenchCurrency() {
-        let france = try! Localizer(localeIdentifier: "en_FR")
-        let price = france.format(price: 10)
-        expect(price).to(equal("€10,00"))
+    func testGermanGermanyFractionPriceFormat() {
+        expectPrice(10.99, formattedWith: "de_DE", toBe: "10,99\u{00a0}€")
     }
 
-    func testUKCurrency() {
-        let brexit = try! Localizer(localeIdentifier: "en_UK")
-        let price = brexit.format(price: 10)
-        expect(price).to(equal("£10.00"))
+    func testGermanGermanyFractionRoundedUpPriceFormat() {
+        expectPrice(10.999, formattedWith: "de_DE", toBe: "11,00\u{00a0}€")
+    }
+
+    func testGermanGermanyFractionRoundedDownPriceFormat() {
+        expectPrice(10.001, formattedWith: "de_DE", toBe: "10,00\u{00a0}€")
+    }
+
+    func testEnglishFrancePriceFormat() {
+        expectPrice(10, formattedWith: "en_FR", toBe: "€10,00")
+    }
+
+    func testEnglishUKPriceFormat() {
+        expectPrice(10, formattedWith: "en_UK", toBe: "£10.00")
+    }
+
+    func testGermanUKPriceFormat() {
+        expectPrice(10, formattedWith: "de_UK", toBe: "10,00\u{00a0}£")
+    }
+
+    func testNegativeGermanGermanyPriceFormat() {
+        expectPrice(-100, formattedWith: "de_DE", toBe: "-100,00\u{00a0}€")
+    }
+
+    func testNegativeFrenchUKPriceFormat() {
+        expectPrice(-100, formattedWith: "fr_UK", toBe: "-100,00\u{00a0}£GB")
+    }
+
+    private func expectPrice(_ price: NSNumber, formattedWith identifier: String, toBe expectedFormat: String) {
+        let formattedPrice = try! Localizer(localeIdentifier: identifier).format(price: price)
+
+        expect(formattedPrice) == expectedFormat
     }
 
 }
