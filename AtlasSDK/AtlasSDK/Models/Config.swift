@@ -13,6 +13,7 @@ public struct Config {
 
     public let clientId: String
     public let useSandboxEnvironment: Bool
+    public let guestCheckoutEnabled: Bool
 
     public let payment: Payment
     public let salesChannel: SalesChannel
@@ -71,6 +72,7 @@ extension Config {
 
         self.clientId = options.clientId
         self.useSandboxEnvironment = options.useSandboxEnvironment
+        self.guestCheckoutEnabled = json["atlas-guest-checkout-api"]["enabled"].bool ?? false
     }
 
 }
