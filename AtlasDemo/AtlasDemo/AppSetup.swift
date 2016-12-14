@@ -15,8 +15,8 @@ class AppSetup {
     fileprivate(set) static var options: Options?
 
     fileprivate static let defaultUseSandbox = true
-    fileprivate static let defaultInterfaceLanguage = InterfaceLanguage.english
-    fileprivate static let defaultSalesChannel = SalesChannel.germany
+    fileprivate static let defaultInterfaceLanguage: InterfaceLanguage = .english
+    fileprivate static let defaultSalesChannel: SalesChannel = .germany
 
     static var isConfigured: Bool {
         return atlas != nil && options != nil
@@ -24,7 +24,6 @@ class AppSetup {
 
     static func configure(completion: @escaping AppSetupCompletion) {
         prepareMockAPI()
-        prepareApp()
 
         set(appOptions: prepareOptions(), completion: completion)
     }
@@ -38,7 +37,6 @@ class AppSetup {
     }
 
     static func change(environmentToSandbox useSandbox: Bool) {
-        deauthorize()
         set(appOptions: prepareOptions(useSandbox: useSandbox))
     }
 
@@ -50,6 +48,10 @@ class AppSetup {
         set(appOptions: prepareOptions(salesChannel: salesChannel))
     }
 
+}
+
+extension AppSetup {
+
     fileprivate static var alwaysUseMockAPI: Bool {
         return ProcessInfo.processInfo.arguments.contains("USE_MOCK_API")
     }
@@ -57,12 +59,6 @@ class AppSetup {
     fileprivate static func prepareMockAPI() {
         if alwaysUseMockAPI && !AtlasMockAPI.hasMockedAPIStarted {
             try! AtlasMockAPI.startServer() // swiftlint:disable:this force_try
-        }
-    }
-
-    fileprivate static func prepareApp() {
-        if AtlasMockAPI.hasMockedAPIStarted {
-            deauthorize()
         }
     }
 
