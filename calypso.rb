@@ -9,7 +9,6 @@ require_relative 'lib/calypso/clean'
 require_relative 'lib/calypso/deps'
 require_relative 'lib/calypso/lint'
 require_relative 'lib/calypso/xcode'
-require_relative 'lib/calypso/coverage'
 
 require_relative 'lib/calypso/issues'
 require_relative 'lib/calypso/release/release'
@@ -34,9 +33,6 @@ module Calypso
 
     desc 'xcode', 'Building shortcuts'
     subcommand 'xcode', Xcode
-
-    desc 'coverage', 'Code coverage'
-    subcommand 'coverage', Coverage
 
     desc 'pod', 'CocoaPods commands'
     subcommand 'pod', Pod

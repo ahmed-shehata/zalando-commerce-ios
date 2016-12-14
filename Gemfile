@@ -10,7 +10,6 @@ group :calypso do
   gem 'httparty'
   gem 'rubocop'
   gem 'thor'
-  gem 'xcov'
   gem 'xcpretty'
 end
 
