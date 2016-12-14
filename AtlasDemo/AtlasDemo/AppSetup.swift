@@ -23,6 +23,7 @@ class AppSetup {
     }
 
     static func configure(completion: @escaping AppSetupCompletion) {
+        prepareForTests()
         prepareMockAPI()
 
         set(appOptions: prepareOptions(), completion: completion)
@@ -52,13 +53,24 @@ class AppSetup {
 
 extension AppSetup {
 
-    fileprivate static var alwaysUseMockAPI: Bool {
+    private static var isInTestsEnvironment: Bool {
+        return ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
+        || ProcessInfo.processInfo.arguments.contains("UI_TESTS")
+    }
+
+    private static var alwaysUseMockAPI: Bool {
         return ProcessInfo.processInfo.arguments.contains("USE_MOCK_API")
     }
 
     fileprivate static func prepareMockAPI() {
         if alwaysUseMockAPI && !AtlasMockAPI.hasMockedAPIStarted {
             try! AtlasMockAPI.startServer() // swiftlint:disable:this force_try
+        }
+    }
+
+    fileprivate static func prepareForTests() {
+        if isInTestsEnvironment {
+            AtlasAPIClient.deauthorizeAll()
         }
     }
 
