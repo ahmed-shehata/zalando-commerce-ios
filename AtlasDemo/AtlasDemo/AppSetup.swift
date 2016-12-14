@@ -29,8 +29,16 @@ class AppSetup {
         set(appOptions: prepareOptions(), completion: completion)
     }
 
+    static func isAuthorized() -> Bool {
+        return atlas?.client.isAuthorized ?? false
+    }
+
+    static func deauthorize() {
+        atlas?.client.deauthorize()
+    }
+
     static func change(environmentToSandbox useSandbox: Bool) {
-        Atlas.deauthorize()
+        deauthorize()
         set(appOptions: prepareOptions(useSandbox: useSandbox))
     }
 
@@ -54,7 +62,7 @@ class AppSetup {
 
     fileprivate static func prepareApp() {
         if AtlasMockAPI.hasMockedAPIStarted {
-            Atlas.deauthorize()
+            deauthorize()
         }
     }
 
@@ -81,7 +89,7 @@ class AppSetup {
 
         return Options(clientId: "atlas_Y2M1MzA",
                        salesChannel: salesChannel,
-                       useSandbox: sandbox,
+                       useSandboxEnvironment: sandbox,
                        interfaceLanguage: language,
                        configurationURL: configurationURL)
     }

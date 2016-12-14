@@ -20,7 +20,7 @@ class ProfileViewController: UIViewController {
 
     @IBOutlet weak var profileStackView: UIStackView!
     @IBOutlet weak var loginButton: UIButton!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -94,7 +94,7 @@ extension ProfileViewController {
     }
 
     @IBAction func logoutButtonTapped(_ sender: Any) {
-        Atlas.deauthorize()
+        AppSetup.deauthorize()
     }
 
     @IBAction func loginButtonTapped(_ sender: Any) {
@@ -110,7 +110,7 @@ extension ProfileViewController {
     }
 
     fileprivate func updateProfileVisibility(loadData: Bool = true) {
-        let showProfile = Atlas.isAuthorized()
+        let showProfile = AppSetup.isAuthorized()
 
         UIView.animate(withDuration: 0.3) {
             self.profileStackView.alpha = showProfile ? 1 : 0
