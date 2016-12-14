@@ -2,12 +2,6 @@ codecov:
   branch: master
   bot: bonkey
 
-  status:
-    project:
-      default:
-        target: 75
-        threshold: 1
-
 coverage:
   precision: 2
   round: down
@@ -16,4 +10,10 @@ coverage:
   ignore:
     - .*/SwiftyJSON.*
     - AtlasUI/AtlasUI/Utils/Reachability.swift
+
+  status:
+    project:
+      default:
+        target: 75
+        threshold: 1
 
