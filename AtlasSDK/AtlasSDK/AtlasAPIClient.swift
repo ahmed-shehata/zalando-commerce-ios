@@ -62,12 +62,7 @@ public struct AtlasAPIClient {
     fileprivate func call<T>(endpoint: Endpoint,
                              completion: @escaping (AtlasAPIResult<T>) -> Void,
                              successHandler: @escaping (JSONResponse) -> T?) {
-        let tokenProvider: AuthenticationTokenProvider = {
-            return endpoint.requiresAuthorization ? self.authorizationToken : nil
-        }
-        let requestBuilder = RequestBuilder(forEndpoint: endpoint,
-                                            urlSession: urlSession,
-                                            authenticationTokenProvider: tokenProvider)
+        let requestBuilder = RequestBuilder(forEndpoint: endpoint, urlSession: urlSession)
         var apiRequest = APIRequest(requestBuilder: requestBuilder, successHandler: successHandler)
         apiRequest.execute(completion)
     }
@@ -76,12 +71,8 @@ public struct AtlasAPIClient {
 
 extension AtlasAPIClient {
 
-    var authorizationToken: String? {
-        return APIAccessToken.retrieve(for: config)
-    }
-
     public var isAuthorized: Bool {
-        return authorizationToken != nil
+        return config.authorizationToken != nil
     }
 
     public func authorize(withToken tokenValue: String) {

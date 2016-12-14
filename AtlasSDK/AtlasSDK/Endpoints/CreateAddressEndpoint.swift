@@ -4,9 +4,10 @@
 
 import Foundation
 
-struct CreateAddressEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
+struct CreateAddressEndpoint: CheckoutEndpoint {
 
-    let serviceURL: URL
+    let config: Config
+
     let method: HTTPMethod = .POST
     let path = "addresses"
     let acceptedContentType = "application/x.zalando.customer.address.create.response+json"
@@ -17,6 +18,5 @@ struct CreateAddressEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
     }
 
     let createAddressRequest: CreateAddressRequest
-    let salesChannel: String
 
 }

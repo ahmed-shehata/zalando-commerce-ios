@@ -44,6 +44,14 @@ public struct Config {
 
 extension Config {
 
+    var authorizationToken: String? {
+        return APIAccessToken.retrieve(for: self)
+    }
+
+}
+
+extension Config {
+
     init?(json: JSON, options: Options) {
         guard let catalogURL = json["atlas-catalog-api"]["url"].URL,
             let checkoutURL = json["atlas-checkout-api"]["url"].URL,
