@@ -86,4 +86,17 @@ class ConfigTests: XCTestCase {
         expect(config).to(beNil())
     }
 
+    func testGuestCheckoutEnabled() {
+        let options = Options(clientId: clientId, salesChannel: salesChannelId, interfaceLanguage: interfaceLanguage)
+
+        var json = self.json!
+        json["atlas-guest-checkout-api"] = JSON(["enabled" : JSON(true)])
+        let config = Config(json: json, options: options)
+        expect(config?.guestCheckoutEnabled).to(equal(true))
+
+        json["atlas-guest-checkout-api"] = JSON.null
+        let config2 = Config(json: json, options: options)
+        expect(config2?.guestCheckoutEnabled).to(equal(false))
+    }
+
 }
