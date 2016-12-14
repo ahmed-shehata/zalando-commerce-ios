@@ -96,6 +96,9 @@
   },
   "atlas-checkout-gateway": {
     "url": "http://localhost.charlesproxy.com:9080"
+  },
+  "atlas-guest-checkout-api": {
+    "enabled":true
   }
 }
 
