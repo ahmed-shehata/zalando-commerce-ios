@@ -14,7 +14,7 @@ extension HttpServer {
         self[path] = { request in
             let data = Data(bytes: &request.body, count: request.body.count)
             let json = JSON(data: data)
-            if json["payment"] == JSON.null {
+            if json["checkout_id"] == JSON.null {
                 let url = "https://payment-gateway.kohle-integration.zalan.do/payment-method-selection-session/TOKEN/selection"
                 return HttpResponse.raw(204, "No Content", ["Location": url], nil)
             } else {

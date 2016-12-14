@@ -145,7 +145,7 @@ extension AtlasAPIClient {
     }
 
     public func createGuestOrder(request: GuestOrderRequest, completion: @escaping GuestOrderCompletion) {
-        let endpoint = CreateGuestOrderEndpoint(config: config, parameters: request.toJSON())
+        let endpoint = CompleteGuestOrderEndpoint(config: config, parameters: request.toJSON())
         fetch(from: endpoint, completion: completion)
     }
 
