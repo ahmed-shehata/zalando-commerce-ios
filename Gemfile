@@ -4,7 +4,6 @@ ruby 2.2
 
 group :calypso do
   gem 'awesome_print'
-  gem 'daemons'
   gem 'cocoapods'
   gem 'git'
   gem 'github_api'

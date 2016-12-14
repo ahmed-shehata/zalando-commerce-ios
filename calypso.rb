@@ -8,7 +8,6 @@ require 'optparse'
 require_relative 'lib/calypso/clean'
 require_relative 'lib/calypso/deps'
 require_relative 'lib/calypso/lint'
-require_relative 'lib/calypso/ci'
 require_relative 'lib/calypso/xcode'
 require_relative 'lib/calypso/coverage'
 
@@ -35,9 +34,6 @@ module Calypso
 
     desc 'xcode', 'Building shortcuts'
     subcommand 'xcode', Xcode
-
-    desc 'ci', 'BuddyBuild continuous integration'
-    subcommand 'ci', BuddyBuildCI
 
     desc 'coverage', 'Code coverage'
     subcommand 'coverage', Coverage

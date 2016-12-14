@@ -53,7 +53,6 @@ GEM
       commander (>= 4.3.5)
       highline (>= 1.7.1)
       security
-    daemons (1.2.4)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     escape (0.0.4)
@@ -177,7 +176,6 @@ PLATFORMS
 DEPENDENCIES
   awesome_print
   cocoapods
-  daemons
   git
   github_api
   httparty
