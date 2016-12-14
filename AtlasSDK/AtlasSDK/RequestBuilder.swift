@@ -22,7 +22,7 @@ struct RequestBuilder {
         self.authenticationToken = authenticationToken
     }
 
-    mutating func execute(completion: @escaping ResponseCompletion) {
+    func execute(completion: @escaping ResponseCompletion) {
         let endpoint = self.endpoint
         buildAndExecuteSessionTask { result in
             switch result {
@@ -37,7 +37,7 @@ struct RequestBuilder {
         }
     }
 
-    fileprivate mutating func buildAndExecuteSessionTask(completion: @escaping ResponseCompletion) {
+    fileprivate func buildAndExecuteSessionTask(completion: @escaping ResponseCompletion) {
         let request: URLRequest
         do {
             request = try buildRequest()
