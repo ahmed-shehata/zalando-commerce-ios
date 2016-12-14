@@ -81,10 +81,22 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
         expect(self.mockedDataSourceDelegate?.dataModel.paymentMethod).toNotEventually(beNil())
     }
 
-    func testShippingAddressScreenSelectCompletion() {
+    func testShippingStandardAddressScreenSelectCompletion() {
         guard let
             addressViewController = presentAddressScreen(forShippingAddress: true),
-            let address = getAddress()
+            let address = getStandardAddress()
+            else { return fail() }
+
+        addressViewController.addressSelectedHandler?(address)
+        expect((self.mockedDataSourceDelegate?.dataModel.shippingAddress as? EquatableAddress)?.id).toEventually(equal(address.id))
+        expect((self.mockedDataSourceDelegate?.dataModel.billingAddress as? EquatableAddress)?.id).toEventually(equal(address.id))
+        expect(UserMessage.errorDisplayed).toNotEventually(beTrue())
+    }
+
+    func testShippingPickupPointAddressScreenSelectCompletion() {
+        guard let
+            addressViewController = presentAddressScreen(forShippingAddress: true),
+            let address = getPickupPointAddress()
             else { return fail() }
 
         addressViewController.addressSelectedHandler?(address)
@@ -126,11 +138,11 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
     func testBillingAddressScreenSelectCompletion() {
         guard let
             addressViewController = presentAddressScreen(forShippingAddress: false),
-            let address = getAddress()
+            let address = getStandardAddress()
             else { return fail() }
 
         addressViewController.addressSelectedHandler?(address)
-        expect((self.mockedDataSourceDelegate?.dataModel.shippingAddress as? EquatableAddress)?.id).toNotEventually(equal(address.id))
+        expect((self.mockedDataSourceDelegate?.dataModel.shippingAddress as? EquatableAddress)?.id).toEventually(equal(address.id))
         expect((self.mockedDataSourceDelegate?.dataModel.billingAddress as? EquatableAddress)?.id).toEventually(equal(address.id))
         expect(UserMessage.errorDisplayed).toNotEventually(beTrue())
     }
@@ -213,12 +225,24 @@ extension LoggedInSummaryActionHandlerTests {
         try! AtlasUI.shared().register { atlasUIViewController }
     }
 
-    fileprivate func getAddress() -> EquatableAddress? {
+    fileprivate func getStandardAddress() -> EquatableAddress? {
         var address: EquatableAddress?
         waitUntil(timeout: 10) { done in
             AtlasUIClient.addresses { result in
                 guard let addresses = result.process() else { return fail() }
-                address = addresses.last
+                address = addresses.filter { !$0.isPickupPoint }.first
+                done()
+            }
+        }
+        return address
+    }
+
+    fileprivate func getPickupPointAddress() -> EquatableAddress? {
+        var address: EquatableAddress?
+        waitUntil(timeout: 10) { done in
+            AtlasUIClient.addresses { result in
+                guard let addresses = result.process() else { return fail() }
+                address = addresses.filter { $0.isPickupPoint }.first
                 done()
             }
         }
