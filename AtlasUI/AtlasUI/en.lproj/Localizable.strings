@@ -89,3 +89,4 @@
 "summaryView.title.summary" = "Summary";
 "termsAndConditionsView.title" = "Legal Notice";
 "AtlasCheckoutError.message.unsupportedCountry" = "This country is not supported for the selected item";
+"AtlasCheckoutError.message.photosLibraryAccessNotAllowed" = "Can't access Photos Library";
