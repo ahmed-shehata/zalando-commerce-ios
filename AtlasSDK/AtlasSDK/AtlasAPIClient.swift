@@ -95,15 +95,15 @@ extension AtlasAPIClient {
     }
 
     private static func notify(isAuthorized: Bool, withToken token: APIAccessToken?) {
-        let authNotification: NSNotification.Name = isAuthorized ? .AtlasAuthorized : .AtlasDeauthorized
         var userInfo: [AnyHashable: Any]? = nil
         if let token = token {
             userInfo = [Options.InfoKey.useSandboxEnvironment: token.useSandboxEnvironment,
                 Options.InfoKey.clientId: token.clientId]
         }
 
-        NotificationCenter.default.post(name: authNotification, object: self, userInfo: userInfo)
-        NotificationCenter.default.post(name: .AtlasAuthorizationChanged, object: self, userInfo: userInfo)
+        let authNotification: NSNotification.Name = isAuthorized ? .AtlasAuthorized : .AtlasDeauthorized
+        NotificationCenter.default.post(name: authNotification, object: nil, userInfo: userInfo)
+        NotificationCenter.default.post(name: .AtlasAuthorizationChanged, object: nil, userInfo: userInfo)
     }
 
 }
