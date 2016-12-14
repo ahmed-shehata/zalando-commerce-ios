@@ -23,7 +23,7 @@ class AtlasDemoUITests: XCTestCase {
         super.setUp()
 
         continueAfterFailure = false
-        app.launchArguments = [AtlasMockAPI.isEnabledFlag]
+        app.launchArguments = [AtlasMockAPI.isEnabledFlag, "UI_TESTS"]
         app.launch()
     }
 

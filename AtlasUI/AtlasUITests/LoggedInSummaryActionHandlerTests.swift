@@ -15,13 +15,13 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
 
     override func setUp() {
         super.setUp()
-        Atlas.authorize(withToken: "TestToken")
+        AtlasAPIClient.shared?.authorize(withToken: "TestToken")
         actionHandler = createActionHandler()
     }
 
     override func tearDown() {
         super.tearDown()
-        Atlas.deauthorize()
+        AtlasAPIClient.shared?.deauthorize()
     }
 
     func testNoPaymentMethodSelected() {

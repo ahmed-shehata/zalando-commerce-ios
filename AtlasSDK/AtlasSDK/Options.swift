@@ -14,19 +14,20 @@ public struct Options {
 
     public init(clientId: String? = nil,
                 salesChannel: String? = nil,
-                useSandbox: Bool? = nil,
+                useSandboxEnvironment: Bool? = nil,
                 interfaceLanguage: String? = nil,
                 configurationURL: URL? = nil,
                 infoBundle bundle: Bundle = Bundle.main) {
         self.clientId = clientId ?? bundle.string(for: .clientId) ?? ""
         self.salesChannel = salesChannel ?? bundle.string(for: .salesChannel) ?? ""
-        self.useSandboxEnvironment = useSandbox ?? bundle.bool(for: .useSandbox) ?? false
+        self.useSandboxEnvironment = useSandboxEnvironment ?? bundle.bool(for: .useSandboxEnvironment) ?? false
         self.interfaceLanguage = interfaceLanguage ?? bundle.string(for: .interfaceLanguage)
 
         if let url = configurationURL {
             self.configurationURL = url
         } else {
-            self.configurationURL = Options.defaultConfigurationURL(clientId: self.clientId, useSandbox: self.useSandboxEnvironment)
+            self.configurationURL = Options.defaultConfigurationURL(clientId: self.clientId,
+                                                                    useSandboxEnvironment: self.useSandboxEnvironment)
         }
     }
 
@@ -64,6 +65,12 @@ extension Options {
     enum Environment: String {
         case staging = "staging"
         case production = "production"
+
+        var isSandbox: Bool { return self == .staging }
+
+        init(useSandboxEnvironment: Bool) {
+            self = useSandboxEnvironment ? .staging : .production
+        }
     }
 
     enum ResponseFormat: String {
@@ -72,9 +79,9 @@ extension Options {
         case properties = "properties"
     }
 
-    fileprivate static func defaultConfigurationURL(clientId: String, useSandbox: Bool,
+    fileprivate static func defaultConfigurationURL(clientId: String, useSandboxEnvironment: Bool,
                                                     inFormat format: ResponseFormat = .json) -> URL {
-        let environment: Environment = useSandbox ? .staging : .production
+        let environment = Environment(useSandboxEnvironment: useSandboxEnvironment)
         let URL = "https://atlas-config-api.dc.zalan.do"
         let path = "/api/config/\(clientId)-\(environment).\(format)"
         return URLComponents(validURL: URL, path: path).validURL

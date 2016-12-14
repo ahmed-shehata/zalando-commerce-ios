@@ -11,6 +11,8 @@ import AtlasMockAPI
 
 class AtlasTests: XCTestCase {
 
+    var client: AtlasAPIClient?
+
     override class func setUp() {
         super.setUp()
         try! AtlasMockAPI.startServer()
@@ -21,40 +23,76 @@ class AtlasTests: XCTestCase {
         try! AtlasMockAPI.stopServer()
     }
 
-    func testSaveUserToken() {
-        loginUser()
-        expect(Atlas.isAuthorized()).to(beTrue())
-    }
-
-    func testLogoutUser() {
-        loginUser()
-        Atlas.deauthorize()
-        expect(Atlas.isAuthorized()).to(beFalse())
-    }
-
-    func testAtlasAPIClient() {
+    override func setUp() {
         waitUntil(timeout: 60) { done in
             Atlas.configure(options: Options.forTests()) { result in
                 switch result {
                 case .failure(let error):
                     fail(String(describing: error))
                 case .success(let client):
-                    expect(client.config.salesChannel.identifier).to(equal("82fe2e7f-8c4f-4aa1-9019-b6bde5594456"))
-                    expect(client.config.clientId).to(equal("atlas_Y2M1MzA"))
-                    expect(client.config.interfaceLocale.identifier).to(equal("en_DE"))
-                    expect(client.config.availableSalesChannels.count).to(equal(16))
+                    self.client = client
                 }
                 done()
             }
         }
     }
 
+    override func tearDown() {
+        AtlasAPIClient.deauthorizeAll()
+        self.client = nil
+    }
+
+    func testAuthorizeClient() {
+        loginUser()
+        expect(self.client?.isAuthorized) == true
+    }
+
+    func testAuthorizeAnotherClient() {
+        waitUntil(timeout: 60) { done in
+            Atlas.configure(options: Options.forTests(useSandboxEnvironment: false)) { result in
+                switch result {
+                case .failure(let error):
+                    fail(String(describing: error))
+                case .success(let client):
+                    let secondClient = client
+                    secondClient.authorize(withToken: "ANOTHER_TOKEN")
+                    expect(self.client?.isAuthorized) == false
+                    expect(secondClient.isAuthorized) == true
+                }
+                done()
+            }
+        }
+    }
+
+    func testDeauthorizeClient() {
+        loginUser()
+        logoutUser()
+        expect(self.client?.isAuthorized) == false
+    }
+
+    func testWipeTokens() {
+        loginUser()
+        AtlasAPIClient.deauthorizeAll()
+        expect(self.client?.isAuthorized) == false
+    }
+
+    func testClientConfig() {
+        expect(self.client?.config.salesChannel.identifier) == "82fe2e7f-8c4f-4aa1-9019-b6bde5594456"
+        expect(self.client?.config.clientId) == "atlas_Y2M1MzA"
+        expect(self.client?.config.interfaceLocale.identifier) == "en_DE"
+        expect(self.client?.config.availableSalesChannels.count) == 16
+    }
+
 }
 
 extension AtlasTests {
 
-    fileprivate func loginUser() {
-        APIAccessToken.store(token: "TEST_TOKEN")
+    fileprivate func loginUser(token: String = "TEST_TOKEN") {
+        self.client?.authorize(withToken: token)
+    }
+
+    fileprivate func logoutUser() {
+        self.client?.deauthorize()
     }
 
 }
