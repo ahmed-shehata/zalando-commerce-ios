@@ -11,7 +11,7 @@ script:
 - bundle exec ./calypso.rb xcodebuild test 3
 
 after_script:
-- bash <(curl -s https://codecov.io/bash) -J AtlasSDK -J AtlasUI
+- bundle exec ./calypso.rb codecov upload
 
 before_deploy:
 - bundle exec ./calypso.rb carthage build

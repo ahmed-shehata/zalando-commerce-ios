@@ -9,6 +9,7 @@ require_relative 'lib/calypso/clean'
 require_relative 'lib/calypso/deps'
 require_relative 'lib/calypso/lint'
 require_relative 'lib/calypso/xcodebuild'
+require_relative 'lib/calypso/codecov'
 
 require_relative 'lib/calypso/issues'
 require_relative 'lib/calypso/release/release'
@@ -34,6 +35,9 @@ module Calypso
 
     desc 'xcodebuild', 'Building shortcuts'
     subcommand 'xcodebuild', XcodeBuild
+
+    desc 'codecov', 'Code coverage reports'
+    subcommand 'codecov', Codecov
 
     desc 'pod', 'CocoaPods commands'
     subcommand 'pod', Pod
