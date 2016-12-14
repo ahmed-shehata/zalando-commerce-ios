@@ -149,7 +149,7 @@ extension AtlasAPIClient {
     }
 
     public func article(withSKU sku: String, completion: @escaping ArticleCompletion) {
-        let endpoint = GetArticleEndpoint(config: config, sku: sku, fields: nil)
+        let endpoint = GetArticleEndpoint(config: config, sku: sku)
 
         let fetchCompletion: ArticleCompletion = { result in
             if case let .success(article) = result, !article.hasAvailableUnits {

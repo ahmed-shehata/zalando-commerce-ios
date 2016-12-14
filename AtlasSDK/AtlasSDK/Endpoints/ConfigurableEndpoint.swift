@@ -26,7 +26,7 @@ extension ConfigurableEndpoint {
     }
 
     var headers: EndpointHeaders? {
-        return ["X-UID": clientId, "X-Sales-Channel": salesChannel]
+        return ["X-Sales-Channel": salesChannel]
     }
 
     var url: URL {
@@ -67,6 +67,10 @@ extension CheckoutGatewayEndpoint {
 
     var serviceURL: URL {
         return config.checkoutGatewayURL
+    }
+
+    var headers: EndpointHeaders? {
+        return ["X-UID": clientId, "X-Sales-Channel": salesChannel]
     }
 
 }

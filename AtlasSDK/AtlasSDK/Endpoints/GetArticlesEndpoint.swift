@@ -18,4 +18,10 @@ struct GetArticleEndpoint: CatalogEndpoint {
     let sku: String
     let fields: [String]?
 
+    init(config: Config, sku: String, fields: [String]? = nil) {
+        self.config = config
+        self.sku = sku
+        self.fields = fields
+    }
+
 }
