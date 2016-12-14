@@ -25,28 +25,29 @@ struct TestConfig {
 
 extension Config {
 
-    static func forTests() -> Config {
-        let opts = Options.forTests()
-        let json = JSON([
-                            "sales-channels": [
-                                ["locale": "es_ES", "sales-channel": "SPAIN", "toc_url": "https://www.zalando.es/cgc/"],
-                                ["locale": TestConfig.configLocale,
-                                 "sales-channel": opts.salesChannel,
-                                 "toc_url": TestConfig.tocURL],
-                            ],
-                            "atlas-catalog-api": ["url": TestConfig.catalogURL.absoluteString],
-                            "atlas-checkout-gateway": ["url": TestConfig.gateway],
-                            "atlas-checkout-api": [
-                                "url": TestConfig.checkoutURL.absoluteString,
-                                "payment": [
-                                    "selection-callback": TestConfig.callback,
-                                    "third-party-callback": TestConfig.callback
-                                ]
-                            ],
-                            "oauth2-provider": ["url": TestConfig.loginURL.absoluteString]
-                        ])
+    static func jsonForTests(options: Options = Options.forTests()) -> JSON {
+        return JSON([
+                        "sales-channels": [
+                            ["locale": "es_ES", "sales-channel": "SPAIN", "toc_url": "https://www.zalando.es/cgc/"],
+                            ["locale": TestConfig.configLocale,
+                                "sales-channel": options.salesChannel,
+                                "toc_url": TestConfig.tocURL],
+                        ],
+                        "atlas-catalog-api": ["url": TestConfig.catalogURL.absoluteString],
+                        "atlas-checkout-gateway": ["url": TestConfig.gateway],
+                        "atlas-checkout-api": [
+                            "url": TestConfig.checkoutURL.absoluteString,
+                            "payment": [
+                                "selection-callback": TestConfig.callback,
+                                "third-party-callback": TestConfig.callback
+                            ]
+                        ],
+                        "oauth2-provider": ["url": TestConfig.loginURL.absoluteString]
+                    ])
+    }
 
-        return Config(json: json, options: opts)!
+    static func forTests(options: Options = Options.forTests()) -> Config {
+        return Config(json: jsonForTests(options: options), options: options)!
     }
 
 }
