@@ -6,7 +6,7 @@ require_relative 'simctl'
 
 module Calypso
 
-  class Xcode < Thor
+  class XcodeBuild < Thor
 
     desc 'schemes', 'Shows available schemes'
     def schemes

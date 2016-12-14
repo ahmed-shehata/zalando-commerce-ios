@@ -4,16 +4,12 @@ ruby 2.2
 
 group :calypso do
   gem 'awesome_print'
-  gem 'daemons'
   gem 'cocoapods'
   gem 'git'
   gem 'github_api'
-  gem 'github_changelog_generator'
   gem 'httparty'
-  gem 'jazzy'
   gem 'rubocop'
   gem 'thor'
-  gem 'xcov'
   gem 'xcpretty'
 end
 
