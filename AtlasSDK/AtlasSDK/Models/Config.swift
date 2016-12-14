@@ -12,6 +12,8 @@ public struct Config {
     public let loginURL: URL
 
     public let clientId: String
+    public let useSandboxEnvironment: Bool
+
     public let payment: Payment
     public let salesChannel: SalesChannel
     public let availableSalesChannels: [SalesChannel]
@@ -68,6 +70,7 @@ extension Config {
         }
 
         self.clientId = options.clientId
+        self.useSandboxEnvironment = options.useSandboxEnvironment
     }
 
 }
@@ -83,6 +86,7 @@ extension Config: CustomStringConvertible {
             + ", salesChannel: \(self.salesChannel)"
             + ", payment: \(self.payment)"
             + ", interfaceLocale: \(self.interfaceLocale.identifier)"
+            + ", useSandboxEnvironment: \(self.useSandboxEnvironment)"
             + " }"
     }
 

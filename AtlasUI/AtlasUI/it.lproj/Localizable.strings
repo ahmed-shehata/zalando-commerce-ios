@@ -1,78 +1,18 @@
-// Buttons
-"button.general.cancel" = "Cancel";
-"button.general.save" = "Save";
-
-// Login View
-"loginView.loginWithZalando" = "Login with Zalando";
-
-// Terms & Conditions View
-"termsAndConditionsView.title" = "Legal Notice";
-
-// Summary View
-"summaryView.title.summary" = "Summary";
-"summaryView.title.orderPlaced" = "Order placed";
-"summaryView.label.payment" = "Payment";
-"summaryView.label.guestCheckout" = "Checkout as guest";
-"summaryView.label.address.shipping" = "Shipping Address";
-"summaryView.label.address.billing" = "Billing Address";
-"summaryView.label.address.packstationAbbreviation" = "P.S.";
-"summaryView.label.emptyAddress.shipping" = "No Shipping Address";
-"summaryView.label.emptyAddress.billing" = "No Billing Address";
-"summaryView.label.estimatedDelivery" = "Estimated Delivery";
-"summaryView.label.unitSize" = "Size: %@";
-"summaryView.label.price.total" = "Total";
-"summaryView.label.price.vat" = "(VAT Included)";
-"summaryView.label.price.shipping" = "Shipping";
-"summaryView.submitButton.checkoutWithZalando" = "Checkout with Zalando";
-"summaryView.submitButton.guestCheckout" = "Checkout as guest";
-"summaryView.submitButton.placeOrder" = "Place order";
-"summaryView.submitButton.payWithPayPal" = "Confirm and pay with PayPal";
-"summaryView.submitButton.backToShop" = "Back to shop";
-"summaryView.link.termsAndConditions" = "Zalando terms, conditions and cancellation policy apply to all orders";
-
-// Guest Summary View
-"guestSummaryView.address.add" = "Create new address";
-"guestSummaryView.address.create" = "Create new Address";
-"guestSummaryView.address.update" = "Update Address";
-
-// Address list view
-"addressListView.title.shipping" = "Shipping Address";
-"addressListView.title.billing" = "Billing Address";
-"addressListView.prefix.packstation" = "Packstation";
-"addressListView.prefix.memberID" = "Member ID";
-"addressListView.add.cellTitle" = "Add new address...";
-"addressListView.add.type.title" = "Address Type";
-"addressListView.add.type.StandardAddressDataModelCreationStrategy" = "Standard";
-"addressListView.add.type.PickupPointAddressDataModelCreationStrategy" = "Pickup Point";
-"addressListView.add.type.AddressBookImportDataModelCreationStrategy" = "Import from Address Book";
-
-// Address Form View
-"addressFormView.title" = "Title";
-"addressFormView.firstname" = "First Name";
-"addressFormView.lastname" = "Last Name";
-"addressFormView.emailaddress" = "Email Address";
-"addressFormView.street" = "Street";
-"addressFormView.additional" = "Additional";
-"addressFormView.packstation" = "Packstation";
-"addressFormView.memberid" = "Member ID";
-"addressFormView.zipcode" = "Zipcode";
-"addressFormView.city" = "City";
-"addressFormView.country" = "Country";
-"addressFormView.gender.male" = "Mr";
-"addressFormView.gender.female" = "Mrs";
-
-// Form validation
-"formValidation.required" = "This field is required";
-"formValidation.minLength" = "Min length is %@";
-"formValidation.maxLength" = "Max length is %@";
-"formValidation.exactLength" = "Required length is %@";
-"formValidation.pattern.name" = "Please only use the characters (A-z) in this field";
-"formValidation.pattern.city" = "Please only use the characters (A-z) in this field";
-"formValidation.pattern.street" = "Please enter your street and house number";
-"formValidation.numbersOnly" = "Only numbers are allowed";
-"formValidation.vaildEmail" = "Please enter a valid email address";
-
-// Errors
+"AtlasAPIError.message.checkoutFailed" = "Errore";
+"AtlasAPIError.message.invalidResponseFormat" = "Formato risposta incorretto";
+"AtlasAPIError.message.noData" = "Risposta vuota";
+"AtlasAPIError.message.noInternet" = "Per piacere controlla la tua connessione ad internet";
+"AtlasAPIError.message.unauthorized" = "Accesso non autorizzato";
+"AtlasAPIError.title" = "Errore server";
+"AtlasAPIError.title.noInternet" = "Connessione ad internet assente";
+"AtlasCheckoutError.message.addressInvalid" = "Indirizzo non valido, per piacere controlla l'indirizzo";
+"AtlasCheckoutError.message.checkoutFailure" = "Si è verificato un errore. Riprova più tardi oppure rivolgiti al nostro servizio clienti";
+"AtlasCheckoutError.message.missingAddress" = "Per piacere seleziona l'indirizzo di spedizione e fatturazione prima di continuare";
+"AtlasCheckoutError.message.missingAddressAndPayment" = "Per piacere seleziona l'indirizzo di spedizione, fatturazione e il metodo di pagamento prima di continuare";
+"AtlasCheckoutError.message.outOfStock" = "Scusa l'articolo da te richiesto non è più disponibile";
+"AtlasCheckoutError.message.paymentMethodNotAvailable" = "Il metodo di pagamento non è più disponibile";
+"AtlasCheckoutError.message.priceChanged" = "Il prezzo è ora %@";
+"AtlasCheckoutError.message.unclassified" = "Qualcosa è andato storto.\nStiamo sistemando il problema.\nPer piacere riprova più tardi.";
 "AtlasCheckoutError.title" = "Oops";
 "AtlasCheckoutError.title.missingAddress" = "No address selected";
 "AtlasCheckoutError.title.priceChanged" = "Price changed";

@@ -12,7 +12,7 @@ class APIGuestOrderTests: AtlasAPIClientBaseTests {
 
     func testCreateGuestOrder() {
         waitUntilAtlasAPIClientIsConfigured { done, client in
-            let request = GuestOrderRequest(customer: self.customerRequest, shippingAddress: self.addressRequest, billingAddress: self.addressRequest, cart: self.cartRequest, payment: self.paymentRequest)
+            let request = GuestOrderRequest(checkoutId: "CHECKOUT_ID", token: "TOKEN")
             client.createGuestOrder(request: request) { result in
                 switch result {
                 case .failure(let error):

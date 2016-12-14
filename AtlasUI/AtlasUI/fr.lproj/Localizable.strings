@@ -1,20 +1,70 @@
-// Buttons
-"button.general.cancel" = "Cancel";
-"button.general.save" = "Save";
-
-// Login View
-"loginView.loginWithZalando" = "Login with Zalando";
-
-// Terms & Conditions View
-"termsAndConditionsView.title" = "Legal Notice";
-
-// Summary View
-"summaryView.title.summary" = "Summary";
-"summaryView.title.orderPlaced" = "Order placed";
-"summaryView.label.payment" = "Payment";
-"summaryView.label.guestCheckout" = "Checkout as guest";
-"summaryView.label.address.shipping" = "Shipping Address";
-"summaryView.label.address.billing" = "Billing Address";
+"AtlasAPIError.message.checkoutFailed" = "";
+"AtlasAPIError.message.invalidResponseFormat" = "";
+"AtlasAPIError.message.noData" = "";
+"AtlasAPIError.message.noInternet" = "";
+"AtlasAPIError.message.unauthorized" = "";
+"AtlasAPIError.title" = "";
+"AtlasAPIError.title.noInternet" = "";
+"AtlasCheckoutError.message.addressInvalid" = "";
+"AtlasCheckoutError.message.checkoutFailure" = "";
+"AtlasCheckoutError.message.missingAddress" = "";
+"AtlasCheckoutError.message.missingAddressAndPayment" = "";
+"AtlasCheckoutError.message.outOfStock" = "";
+"AtlasCheckoutError.message.paymentMethodNotAvailable" = "";
+"AtlasCheckoutError.message.priceChanged" = "";
+"AtlasCheckoutError.message.unclassified" = "";
+"AtlasCheckoutError.title" = "";
+"AtlasCheckoutError.title.missingAddress" = "";
+"AtlasCheckoutError.title.priceChanged" = "";
+"AtlasConfigurationError.message.incorrectConfigServiceResponse" = "";
+"AtlasConfigurationError.message.missingClientId" = "";
+"AtlasConfigurationError.message.missingInterfaceLanguage" = "";
+"AtlasConfigurationError.message.missingSalesChannel" = "";
+"AtlasConfigurationError.title" = "";
+"AtlasLoginError.message.accessDenied" = "";
+"AtlasLoginError.message.missingURL" = "";
+"AtlasLoginError.message.missingViewControllerToShowLoginForm" = "";
+"AtlasLoginError.message.requestFailed" = "";
+"AtlasLoginError.title" = "";
+"addressFormView.additional" = "Complément d’adresse";
+"addressFormView.city" = "Ville";
+"addressFormView.country" = "Pays";
+"addressFormView.emailaddress" = "";
+"addressFormView.firstname" = "Prénom";
+"addressFormView.gender.female" = "";
+"addressFormView.gender.male" = "";
+"addressFormView.lastname" = "Nom";
+"addressFormView.memberid" = "";
+"addressFormView.packstation" = "";
+"addressFormView.street" = "Adresse (numéro et rue)";
+"addressFormView.title" = "Civilité";
+"addressFormView.zipcode" = "Code postal";
+"addressListView.add.cellTitle" = "Ajouter une nouvelle adresse";
+"addressListView.add.type.AddressBookImportDataModelCreationStrategy" = "";
+"addressListView.add.type.PickupPointAddressDataModelCreationStrategy" = "";
+"addressListView.add.type.StandardAddressDataModelCreationStrategy" = "";
+"addressListView.add.type.title" = "";
+"addressListView.prefix.memberID" = "";
+"addressListView.prefix.packstation" = "";
+"addressListView.title.billing" = "Adresse de facturation";
+"addressListView.title.shipping" = "Adresse de livraison";
+"button.general.cancel" = "";
+"button.general.save" = "";
+"formValidation.exactLength" = "";
+"formValidation.maxLength" = "";
+"formValidation.minLength" = "";
+"formValidation.numbersOnly" = "";
+"formValidation.pattern.city" = "Veuillez indiquer uniquement les caractères (a-z ou A-Z) dans ce champ.";
+"formValidation.pattern.name" = "Veuillez indiquer uniquement les caractères (a-z ou A-Z) dans ce champ.";
+"formValidation.pattern.street" = "";
+"formValidation.required" = "Ce champ est obligatoire.";
+"formValidation.vaildEmail" = "";
+"guestSummaryView.address.add" = "";
+"guestSummaryView.address.create" = "";
+"guestSummaryView.address.update" = "";
+"loginView.loginWithZalando" = "";
+"summaryView.button.saveOrderImage" = "";
+"summaryView.label.address.billing" = "Adresse de facturation";
 "summaryView.label.address.packstationAbbreviation" = "P.S.";
 "summaryView.label.emptyAddress.shipping" = "No Shipping Address";
 "summaryView.label.emptyAddress.billing" = "No Billing Address";

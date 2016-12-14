@@ -11,13 +11,18 @@ struct Localizer {
 
         case languageNotFound
         case localizedStringsNotFound
+        case missingTranslation(key: String, language: String)
 
     }
 
     fileprivate let locale: Locale
+    fileprivate let fallbackLocale = Locale(identifier: "en_US")
+
+    fileprivate let localizedStringsBundle: Bundle
+    fileprivate let localizedStringsFallbackBundle: Bundle
+
     fileprivate let priceFormatter: NumberFormatter
     fileprivate let dateFormatter: DateFormatter
-    fileprivate let localizedStringsBundle: Bundle
 
     init(localeIdentifier: String) throws {
         try self.init(localeIdentifier: localeIdentifier,
@@ -36,6 +41,7 @@ struct Localizer {
         priceFormatter.locale = self.locale
 
         self.localizedStringsBundle = try Bundle.languageBundle(forLanguage: locale, from: localizedStringsBundle)
+        self.localizedStringsFallbackBundle = try Bundle.languageBundle(forLanguage: fallbackLocale, from: localizedStringsBundle)
     }
 
     func countryName(forCountryCode countryCode: String?) -> String? {
@@ -45,7 +51,25 @@ struct Localizer {
     }
 
     func format(string key: String, formatArguments: [CVarArg?]? = nil) -> String {
-        let localizedString = NSLocalizedString(key, bundle: self.localizedStringsBundle, comment: "")
+        do {
+            return try format(string: key, bundle: self.localizedStringsBundle, formatArguments: formatArguments)
+        } catch let error {
+            if case let Error.missingTranslation(missingKey, language) = error {
+                AtlasLogger.logError("Translation not found for '\(missingKey)' language: \(language)")
+                if Debug.isEnabled {
+                    return key
+                }
+            }
+            return (try? format(string: key, bundle: self.localizedStringsFallbackBundle, formatArguments: formatArguments)) ?? key
+        }
+    }
+
+    private func format(string key: String, bundle: Bundle, formatArguments: [CVarArg?]? = nil) throws -> String {
+        let localizedString = NSLocalizedString(key, bundle: bundle, comment: "")
+
+        if localizedString.length == 0 {
+            throw Error.missingTranslation(key: key, language: self.locale.languageCode~?)
+        }
 
         guard let formatArguments = formatArguments, !formatArguments.isEmpty else {
             return localizedString
@@ -66,11 +90,11 @@ struct Localizer {
 
 extension Localizer {
 
-    static var current: Localizer {
+    private static var current: Localizer {
         return try! Localizer(localeIdentifier: Locale.current.identifier) // swiftlint:disable:this force_try
     }
 
-    fileprivate static var shared: Localizer {
+    private static var shared: Localizer {
         return (try? AtlasUI.shared().provide()) ?? Localizer.current
     }
 
@@ -107,16 +131,15 @@ extension Bundle {
                                         forResourceNamed: "Localizable.strings", forLocalization: localization)
         let localizedStringsFolder = localizedStringsPath?.deletingLastPathComponent
 
-        guard let folder = localizedStringsFolder,
-            let bundle = Bundle(path: folder)
-            else {
+        guard let folder = localizedStringsFolder, let bundle = Bundle(path: folder) else {
             throw Localizer.Error.localizedStringsNotFound
         }
 
         return bundle
     }
 
-    fileprivate static func path(from bundle: Bundle, forResourceNamed resourceName: String,
+    fileprivate static func path(from bundle: Bundle,
+                                 forResourceNamed resourceName: String,
                                  forLocalization localizationName: String) -> NSString? {
         return bundle.path(forResource: resourceName, ofType: nil, inDirectory: nil, forLocalization: localizationName) as NSString?
     }
