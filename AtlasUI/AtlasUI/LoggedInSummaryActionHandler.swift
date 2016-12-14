@@ -22,18 +22,6 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
         }
     }
 
-    fileprivate var shippingAddress: ShippingAddress? {
-        return dataSource?.dataModel.shippingAddress as? EquatableAddress
-    }
-
-    fileprivate var billingAddress: BillingAddress? {
-        return dataSource?.dataModel.billingAddress as? EquatableAddress
-    }
-
-    fileprivate var addresses: CheckoutAddresses? {
-        return CheckoutAddresses(shippingAddress: shippingAddress, billingAddress: billingAddress)
-    }
-
     fileprivate var hasAddresses: Bool {
         return shippingAddress != nil && billingAddress != nil
     }
@@ -215,7 +203,8 @@ extension LoggedInSummaryActionHandler {
     fileprivate func update(billingAddress newBillingAddress: BillingAddress? = nil,
                             shippingAddress newShippingAddress: ShippingAddress? = nil) {
         let newAddresses = CheckoutAddresses(shippingAddress: newShippingAddress ?? self.shippingAddress,
-                                             billingAddress: newBillingAddress ?? self.billingAddress)
+                                             billingAddress: newBillingAddress ?? self.billingAddress,
+                                             autoFill: true)
         updateDataModel(with: newAddresses, in: self.cartCheckout)
     }
 
