@@ -37,7 +37,7 @@ class APIGuestCheckoutTests: AtlasAPIClientBaseTests {
                     expect(guestCheckout.shippingAddress.zip).to(equal("10178"))
                     expect(guestCheckout.shippingAddress.city).to(equal("Berlin"))
                     expect(guestCheckout.shippingAddress.countryCode).to(equal("DE"))
-                    expect(guestCheckout.payment.method.rawValue).to(equal("PREPAYMENT"))
+                    expect(guestCheckout.payment.method).to(equal(PaymentMethodType.prepayment))
                 }
                 done()
             }
