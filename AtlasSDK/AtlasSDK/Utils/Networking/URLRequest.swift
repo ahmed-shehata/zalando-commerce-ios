@@ -73,8 +73,12 @@ extension URLRequest {
 
     fileprivate func setUserAgent(headers: inout [String: String]) {
         let bundle = Bundle(for: RFC3339DateFormatter.self)
-        let version = bundle.string(for: "CFBundleVersion")
-        headers["User-Agent"] = "AtlasSDK v.\(version~?)"
+        let sdkVersion = bundle.string(for: "CFBundleVersion")
+        let buildVersion = bundle.string(for: "CFBundleShortVersionString")
+        let device = SystemInfo.machine
+        let systemVersion = UIDevice.current.systemVersion
+
+        headers["User-Agent"] = "AtlasSDK iOS \(sdkVersion~?) (\(buildVersion~?)), \(device~?)/\(systemVersion)"
     }
 
 }

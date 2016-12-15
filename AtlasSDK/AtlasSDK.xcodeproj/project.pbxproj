@@ -95,6 +95,7 @@
 		8195AA601DF5804E00D9AA7B /* GuestPaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8195AA5C1DF5804E00D9AA7B /* GuestPaymentMethod.swift */; };
 		81CA48191E02AED400D435B0 /* TestConsts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CA48171E02AECB00D435B0 /* TestConsts.swift */; };
 		81CA481C1E02B62000D435B0 /* URLRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CA481A1E02B5E200D435B0 /* URLRequestTests.swift */; };
+		81CA48201E02C9C400D435B0 /* SystemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CA481F1E02C9C400D435B0 /* SystemInfo.swift */; };
 		81E0807C1E018F7100CFF55B /* TestConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CD141C1E018D7800F338E8 /* TestConfig.swift */; };
 		83B21DD54057C92FF3BB321D3340B450 /* SwiftHTTP.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 49B83EA8E01BF361F973FA47FA728D86 /* SwiftHTTP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		85CA2D25895BA070BBA069C4B192C2AD /* NestedJSONTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80882428404628DC886C2144E1E1E48D /* NestedJSONTests.swift */; };
@@ -274,6 +275,7 @@
 		819FFBCB5BEEE135A7DADA9CAA3988F2 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		81CA48171E02AECB00D435B0 /* TestConsts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestConsts.swift; path = AtlasSDKTests/TestConsts.swift; sourceTree = SOURCE_ROOT; };
 		81CA481A1E02B5E200D435B0 /* URLRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLRequestTests.swift; path = AtlasSDKTests/URLRequestTests.swift; sourceTree = SOURCE_ROOT; };
+		81CA481F1E02C9C400D435B0 /* SystemInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemInfo.swift; sourceTree = "<group>"; };
 		81CD141C1E018D7800F338E8 /* TestConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestConfig.swift; path = AtlasSDKTests/TestConfig.swift; sourceTree = SOURCE_ROOT; };
 		837B190CB840EA546FFC3B70BF225F9C /* APIAccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIAccessToken.swift; path = AtlasSDK/APIAccessToken.swift; sourceTree = SOURCE_ROOT; };
 		87E0CBDAE3A5B1288455C6E176B852B6 /* APICartTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APICartTests.swift; path = AtlasSDKTests/APICartTests.swift; sourceTree = SOURCE_ROOT; };
@@ -403,6 +405,7 @@
 				9A32293C441B83DF5D66A6173583302B /* OutputStreams.swift */,
 				812218FB3FA269E7294BC86C1E53B428 /* PrintLogger.swift */,
 				C34F2E0E206454046339F03CE00F8DCF /* String.swift */,
+				81CA481F1E02C9C400D435B0 /* SystemInfo.swift */,
 			);
 			name = Utils;
 			path = AtlasSDK/Utils;
@@ -830,6 +833,7 @@
 			buildConfigurationList = D3F0B073081067B98ED27357101F429D /* Build configuration list for PBXNativeTarget "AtlasSDK" */;
 			buildPhases = (
 				CAACA9936D8FEE96AEE5A57C71B8A25F /* Swift Lint */,
+				819F4DF81E02D55A00D7F954 /* Update build version */,
 				0B1192CD1EB2549BD9FB11F5FCD0602B /* Sources */,
 				A8FFC22BCB70DCAFBF47C9180AE05CE9 /* Headers */,
 				A467BC90A9A6E2615A4DFBCAD996513E /* Resources */,
@@ -929,6 +933,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		819F4DF81E02D55A00D7F954 /* Update build version */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Update build version";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "eval \"$(/usr/bin/which -s rbenv && rbenv init -)\"\n${PROJECT_DIR}/../calypso.rb version update_build_version --dirty\n";
+			showEnvVarsInLog = 0;
+		};
 		CAACA9936D8FEE96AEE5A57C71B8A25F /* Swift Lint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1024,6 +1043,7 @@
 				423504EBB87A04BAC1F14A0F667CBF8D /* APIRequest.swift in Sources */,
 				8A8AF97915118F778D555C19F225D1E9 /* OutputStreams.swift in Sources */,
 				63BD6D5AB647CD11815ABCDCD2724601 /* Payment.swift in Sources */,
+				81CA48201E02C9C400D435B0 /* SystemInfo.swift in Sources */,
 				963AE70DD87A3C9A75FB0231D2130E7F /* PaymentMethod.swift in Sources */,
 				19052EC3C88FE3710B358C8A009122EF /* PickupPoint.swift in Sources */,
 				A259CD2306CCF2869A51462415F62F50 /* PrintLogger.swift in Sources */,
