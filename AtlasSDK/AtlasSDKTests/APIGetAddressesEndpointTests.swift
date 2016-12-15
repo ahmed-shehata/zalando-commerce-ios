@@ -14,7 +14,7 @@ class APIGetAddressesEndpointTests: XCTestCase {
         let endpoint = GetAddressesEndpoint(config: Config.forTests())
 
         let request = try? URLRequest(endpoint: endpoint)
-        expect(request?.allHTTPHeaderFields?["X-Sales-Channel"]).to(equal(TestOptions.salesChannel))
+        expect(request?.allHTTPHeaderFields?["X-Sales-Channel"]).to(equal(TestConsts.salesChannel))
     }
 
 }
