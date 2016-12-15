@@ -4,7 +4,7 @@
 
 public struct GuestPaymentMethod {
 
-    public let method: String
+    public let method: PaymentMethodType
     public let metadata: [String: Any]?
     public let externalPayment: Bool?
 
@@ -19,7 +19,7 @@ extension GuestPaymentMethod: JSONInitializable {
     }
 
     init?(json: JSON) {
-        guard let method = json[Keys.method].string else { return nil }
+        guard let methodRawValue = json[Keys.method].string, let method = PaymentMethodType(rawValue: methodRawValue) else { return nil }
 
         self.init(method: method,
                   metadata: json[Keys.metadata].dictionaryObject,
