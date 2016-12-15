@@ -60,6 +60,7 @@
 		816405B71DF84EB600C7BAF0 /* AtlasUI-URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816405B61DF84EB600C7BAF0 /* AtlasUI-URLRequest.swift */; };
 		816405BF1DF869B300C7BAF0 /* URLRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816405BE1DF869B300C7BAF0 /* URLRequestTests.swift */; };
 		818B52781E02F5520023C7A1 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818B52771E02F5520023C7A1 /* Debug.swift */; };
+		818B527C1E02F6C30023C7A1 /* StringOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818B527B1E02F6C30023C7A1 /* StringOperators.swift */; };
 		8195AA6D1DF58DD800D9AA7B /* PaymentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8195AA6C1DF58DD800D9AA7B /* PaymentStatus.swift */; };
 		81B546CC1DF070D70038BBF4 /* TestOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B546CB1DF070D70038BBF4 /* TestOptions.swift */; };
 		81CA481E1E02C41F00D435B0 /* TestConsts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CA481D1E02C41F00D435B0 /* TestConsts.swift */; };
@@ -239,6 +240,7 @@
 		816405BD1DF8525C00C7BAF0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		816405BE1DF869B300C7BAF0 /* URLRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestTests.swift; sourceTree = "<group>"; };
 		818B52771E02F5520023C7A1 /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Debug.swift; path = ../../../AtlasSDK/AtlasSDK/Utils/Debug.swift; sourceTree = "<group>"; };
+		818B527B1E02F6C30023C7A1 /* StringOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringOperators.swift; path = ../../../AtlasSDK/AtlasSDK/Utils/StringOperators.swift; sourceTree = "<group>"; };
 		8195AA6C1DF58DD800D9AA7B /* PaymentStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentStatus.swift; sourceTree = "<group>"; };
 		81B546CB1DF070D70038BBF4 /* TestOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestOptions.swift; path = ../../AtlasSDK/AtlasSDKTests/TestOptions.swift; sourceTree = "<group>"; };
 		81CA481D1E02C41F00D435B0 /* TestConsts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestConsts.swift; path = ../../AtlasSDK/AtlasSDKTests/TestConsts.swift; sourceTree = "<group>"; };
@@ -456,6 +458,7 @@
 				BF0395160F6F6217A89A8F9C22944D2A /* AtlasUI-URL.swift */,
 				F5BC3D0FCDE4649756A9FB6C987C9064 /* AtlasUI-StreetAddress.swift */,
 				DFCC0DB119DFC404BB122ED5E6E2861F /* AtlasUI-String.swift */,
+				818B527B1E02F6C30023C7A1 /* StringOperators.swift */,
 				676B41DF9EC48A113436B2F194DB7AFE /* AtlasUIClient.swift */,
 				079F5EB0A67A527798FFCC6CF49C699F /* CNPostalAddress.swift */,
 				D4F1679B8BB8A951B60D19AD947CD5BA /* CGRect.swift */,
@@ -984,6 +987,7 @@
 				78FC61A7719B1F7E9477B4BDE0F9B45A /* AtlasUIClient.swift in Sources */,
 				BACEB4C366BB6879BCC21BADA5CCC0FC /* SizeListTableViewDelegate.swift in Sources */,
 				D9CE3553FFE09F2A82794C7A9E45F4F1 /* TextFieldInputStackView.swift in Sources */,
+				818B527C1E02F6C30023C7A1 /* StringOperators.swift in Sources */,
 				D1597746177CEB8207EFB773413174DF /* TextFieldInputViewModel.swift in Sources */,
 				8D8609A7F30C9F7D15E5E4A905BE4529 /* ToCViewController.swift in Sources */,
 				D55BE43D2B403796900F316E5D71E5DC /* UIApplication.swift in Sources */,
