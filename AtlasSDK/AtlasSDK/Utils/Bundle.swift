@@ -15,11 +15,13 @@ extension Bundle {
     }
 
     var version: String {
-        let identifier = self.string(for: "CFBundleIdentifier")
-        let version = self.string(for: "CFBundleShortVersionString")
-        let build = self.string(for: "CFBundleVersion")
+        let identifier = self.string(for: "CFBundleIdentifier") ?? "<UNKNOWN>"
+        let shortVersion = self.string(for: "CFBundleShortVersionString") ?? "<UNKNOWN>"
+        let bundleVersion = self.string(for: "CFBundleVersion") ?? "<UNKNOWN>"
 
-        return "\(identifier~?) \(version~?) (\(build~?))"
+        let version = shortVersion == bundleVersion ? shortVersion : "\(shortVersion) (\(bundleVersion))"
+
+        return "\(identifier) \(version)"
     }
 
 }
