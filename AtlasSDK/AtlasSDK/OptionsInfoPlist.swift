@@ -19,6 +19,10 @@ extension Options {
 
 extension Bundle {
 
+    func string(for key: String) -> String? {
+        return self.object(forInfoDictionaryKey: key)
+    }
+
     func string(for key: Options.InfoKey, defaultValue: String? = nil) -> String? {
         return self.object(forInfoDictionaryKey: key) ?? defaultValue
     }
@@ -28,7 +32,11 @@ extension Bundle {
     }
 
     fileprivate func object<T>(forInfoDictionaryKey key: Options.InfoKey) -> T? {
-        return self.object(forInfoDictionaryKey: key.rawValue) as? T
+        return self.object(forInfoDictionaryKey: key.rawValue)
+    }
+
+    fileprivate func object<T>(forInfoDictionaryKey key: String) -> T? {
+        return self.object(forInfoDictionaryKey: key) as? T
     }
 
 }
