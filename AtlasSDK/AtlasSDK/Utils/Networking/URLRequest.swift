@@ -73,8 +73,8 @@ extension URLRequest {
 
     fileprivate func setUserAgent(headers: inout [String: String]) {
         let bundle = Bundle(for: RFC3339DateFormatter.self)
-        let sdkVersion = bundle.string(for: "CFBundleVersion")
-        let buildVersion = bundle.string(for: "CFBundleShortVersionString")
+        let sdkVersion = bundle.string(for: "CFBundleShortVersionString")
+        let buildVersion = bundle.string(for: "CFBundleVersion")
         let device = SystemInfo.machine
         let systemVersion = UIDevice.current.systemVersion
 
