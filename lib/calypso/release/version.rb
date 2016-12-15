@@ -1,6 +1,7 @@
 require 'thor'
 require 'git'
 require_relative '../run'
+require_relative '../consts'
 
 VERSION_FILE = File.expand_path('../../../version.rb', __FILE__)
 require VERSION_FILE
@@ -26,20 +27,6 @@ module Calypso
       new_version
     end
 
-    option :dirty, type: :boolean, default: false
-    desc 'update_build_version', 'Updates CFBundleVersion with current commit'
-    def update_build_version
-      if repo_contains_changes?
-        if !options[:dirty]
-          log_exit 'Please commit all changes before updating version'
-        else
-          log_warn 'Repository contains changes, build version is not accurate'
-        end
-      end
-      build_version = "#{current_commit}.#{rev_count}"
-      update_info_plists('CFBundleVersion', build_version)
-    end
-
     private
 
     include Run
@@ -56,14 +43,6 @@ module Calypso
       `git rev-parse --abbrev-ref HEAD`.strip
     end
 
-    def current_commit
-      `git rev-parse --short HEAD`.strip
-    end
-
-    def rev_count
-      `git rev-list HEAD --count`.strip
-    end
-
     def ask_new_version(version = nil)
       new_version = version || ask("Enter new version (current #{ATLAS_VERSION}):", :blue)
       new_version = ATLAS_VERSION if new_version.empty?
@@ -74,13 +53,27 @@ module Calypso
     end
 
     def update_versions(new_version)
-      update_info_plists('CFBundleShortVersionString', new_version)
+      update_projects(new_version)
       update_version_file(new_version)
     end
 
-    def update_info_plists(key, new_version)
-      update_plist(key, new_version, 'AtlasSDK/AtlasSDK/Info.plist')
-      update_plist(key, new_version, 'AtlasUI/AtlasUI/Info.plist')
+    def update_projects(version)
+      VERSIONABLE_PROJECTS.each do |project|
+        full_path = File.expand_path("../../../../#{project}", __FILE__)
+        update_project(full_path, version)
+      end
+    end
+
+    def update_project(path, version)
+      run_agvtool path, version
+      Dir["#{path}/#{VERSIONED_PROJECT_FILES}"].each do |file|
+        repo.add file
+      end
+    end
+
+    def run_agvtool(path, version)
+      run "cd '#{path}' && xcrun agvtool new-marketing-version #{version}"
+      run "cd '#{path}' && xcrun agvtool new-version -all #{version}"
     end
 
     def git_new_version(new_version, options)
@@ -97,29 +90,23 @@ module Calypso
       dry_run 'git push --tags', real_run: options[:push]
     end
 
-    def dry_run(cmd, real_run: true)
-      if real_run
-        run cmd
-      else
-        log "Don't forget to run:\n  #{cmd}"
-      end
-    end
-
     def update_version_file(new_version)
       File.open(VERSION_FILE, 'w') { |file| file.puts("ATLAS_VERSION = '#{new_version}'") }
       repo.add VERSION_FILE
-    end
-
-    def update_plist(key, new_version, plist)
-      full_path = File.expand_path("../../../../#{plist}", __FILE__)
-      run "/usr/libexec/PlistBuddy -c 'Set :#{key} #{new_version}' '#{full_path}'"
-      repo.add full_path
     end
 
     def commit_version(new_version)
       repo.commit "[auto] Updated version to #{new_version}"
     rescue StandardError => e
       log_abort e
+    end
+
+    def dry_run(cmd, real_run: true)
+      if real_run
+        run cmd
+      else
+        log "Don't forget to run:\n  #{cmd}"
+      end
     end
 
     def repo_contains_changes?

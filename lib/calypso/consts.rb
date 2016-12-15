@@ -31,4 +31,7 @@ module Calypso
 
   CLEANABLE_GITHUB_PROJECT_COLUMNS = { 'Technical Debt' => ['Done'], 'Current Release' => ['Finished'] }.freeze
 
+  VERSIONABLE_PROJECTS = %w(AtlasSDK AtlasUI AtlasDemo).freeze
+  VERSIONED_PROJECT_FILES = '**/{Info.plist,project.pbxproj}'.freeze
+
 end
