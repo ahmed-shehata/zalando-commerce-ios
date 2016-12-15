@@ -62,6 +62,7 @@
 		818694D51DFECF9F00FEA536 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818694D41DFECF9F00FEA536 /* Debug.swift */; };
 		8195AA6D1DF58DD800D9AA7B /* PaymentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8195AA6C1DF58DD800D9AA7B /* PaymentStatus.swift */; };
 		81B546CC1DF070D70038BBF4 /* TestOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B546CB1DF070D70038BBF4 /* TestOptions.swift */; };
+		81CA481E1E02C41F00D435B0 /* TestConsts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CA481D1E02C41F00D435B0 /* TestConsts.swift */; };
 		82B9067A304377746BE15E2EE6A545EF /* AtlasUI-URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0395160F6F6217A89A8F9C22944D2A /* AtlasUI-URL.swift */; };
 		82FEDC4FA09CC55CE1D9224BCDED9062 /* FormValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E272DADD96290ADDD55009F293229EAD /* FormValidatorTests.swift */; };
 		8583B7276C6213867615703BA95BC77D /* CheckoutSummaryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24289A7D3F980C05C4FEF5B9AB500494 /* CheckoutSummaryDataModel.swift */; };
@@ -240,6 +241,7 @@
 		818694D41DFECF9F00FEA536 /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		8195AA6C1DF58DD800D9AA7B /* PaymentStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentStatus.swift; sourceTree = "<group>"; };
 		81B546CB1DF070D70038BBF4 /* TestOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestOptions.swift; path = ../../AtlasSDK/AtlasSDKTests/TestOptions.swift; sourceTree = "<group>"; };
+		81CA481D1E02C41F00D435B0 /* TestConsts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestConsts.swift; path = ../../AtlasSDK/AtlasSDKTests/TestConsts.swift; sourceTree = "<group>"; };
 		828CB7B3C433014C119561A964D809BC /* TextFieldInputViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldInputViewModel.swift; sourceTree = "<group>"; };
 		82D2ADD240889020E56AC601593CC418 /* FormValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValidator.swift; sourceTree = "<group>"; };
 		83316EC4886ACF067F2DE376AB807478 /* URLAuthorizationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLAuthorizationTests.swift; sourceTree = "<group>"; };
@@ -598,6 +600,7 @@
 				5B553904D2ECD0E406028171B233ECEF /* AddressFormViewControllerTests.swift */,
 				E9F6E5691DF80DD200B5E6BD /* GuestAddressManagerTests.swift */,
 				E9F6E56A1DF80DD200B5E6BD /* GuestSummaryActionHandlerTests.swift */,
+				81CA481D1E02C41F00D435B0 /* TestConsts.swift */,
 				81B546CB1DF070D70038BBF4 /* TestOptions.swift */,
 				816405BE1DF869B300C7BAF0 /* URLRequestTests.swift */,
 				E9E842581DF99DE700059F35 /* UIViewTests.swift */,
@@ -878,6 +881,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81CA481E1E02C41F00D435B0 /* TestConsts.swift in Sources */,
 				E97719961DF6F49600AEE0EB /* UITestCase.swift in Sources */,
 				E65505C3FCACDEC23CC634675587F5F1 /* LoggedInAddressListActionHandlerTests.swift in Sources */,
 				E0D0E4EC009CDEA4D16C8A2726F24643 /* AsyncTests.swift in Sources */,
