@@ -4,7 +4,7 @@
 
 import Foundation
 
-public final class AtlasLogger {
+public struct AtlasLogger {
 
     static var logger: Logger = PrintLogger()
     static var severity: AppLogSeverity = isDebug() ? .debug : .message {
