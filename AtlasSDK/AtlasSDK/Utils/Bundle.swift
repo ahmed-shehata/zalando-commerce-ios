@@ -6,8 +6,16 @@ import Foundation
 
 extension Bundle {
 
-    func version(prefix: String? = nil) -> String {
-        let identifier = prefix ?? self.string(for: "CFBundleIdentifier")
+    func string(for key: String) -> String? {
+        return self.object(forInfoDictionaryKey: key)
+    }
+
+    func object<T>(forInfoDictionaryKey key: String) -> T? {
+        return self.object(forInfoDictionaryKey: key) as? T
+    }
+
+    var version: String {
+        let identifier = self.string(for: "CFBundleIdentifier")
         let version = self.string(for: "CFBundleShortVersionString")
         let build = self.string(for: "CFBundleVersion")
 

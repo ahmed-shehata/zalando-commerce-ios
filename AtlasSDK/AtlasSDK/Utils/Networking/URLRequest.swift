@@ -73,10 +73,10 @@ extension URLRequest {
 
     fileprivate func setUserAgent(headers: inout [String: String]) {
         let sdkBundle = Bundle(for: RFC3339DateFormatter.self)
-        let sdkId = sdkBundle.version(prefix: "AtlasSDK iOS")
+        let sdkId = sdkBundle.version
 
         let appBundle = Bundle.main
-        let appId = appBundle.version()
+        let appId = appBundle.version
 
         headers["User-Agent"] = [appId, sdkId, SystemInfo.platform].joined(separator: ", ")
     }
