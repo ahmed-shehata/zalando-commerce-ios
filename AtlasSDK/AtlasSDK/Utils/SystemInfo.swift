@@ -16,4 +16,9 @@ struct SystemInfo {
         }
     }
 
+    static var platform: String {
+        let systemVersion = UIDevice.current.systemVersion
+        return "\(machine~?)/\(systemVersion)"
+    }
+
 }

@@ -11,15 +11,16 @@ class URLRequestTests: XCTestCase {
 
     func testUserAgentHeader() {
         let endpoint = GetConfigEndpoint(url: TestConsts.configURL)
-
         let request = try? URLRequest(endpoint: endpoint)
-        let bundle = Bundle(for: RFC3339DateFormatter.self)
-        let sdkVersion = bundle.string(for: "CFBundleShortVersionString")!
-        let buildVersion = bundle.string(for: "CFBundleVersion")!
-        let device = SystemInfo.machine!
-        let systemVersion = UIDevice.current.systemVersion
 
-        expect(request?.allHTTPHeaderFields?["User-Agent"]) == "AtlasSDK iOS \(sdkVersion) (\(buildVersion)), \(device)/\(systemVersion)"
+        let sdkBundle = Bundle(for: RFC3339DateFormatter.self)
+        let sdkId = sdkBundle.version(prefix: "AtlasSDK iOS")
+
+        let appBundle = Bundle.main
+        let appId = appBundle.version()
+
+        let expectedVersion = [appId, sdkId, SystemInfo.platform].joined(separator: ", ")
+        expect(request?.allHTTPHeaderFields?["User-Agent"]) == expectedVersion
     }
 
 }
