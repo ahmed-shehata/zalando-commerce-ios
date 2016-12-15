@@ -12,11 +12,11 @@ module Calypso
     option :tag, type: :boolean, default: true
     option :push, type: :boolean, default: true
     option :master, type: :boolean, default: true
-    option :commit, type: :boolean, default: true
+    option :dirty, type: :boolean, default: false
     desc 'create', 'Creates new version: updates plist files, add a tag and push to the GitHub'
     def create(version = nil)
       log_abort 'Please create version only from master branch' unless !options[:master] || master_branch?
-      log_abort 'Please commit all changes before creating new version' if options[:commit] && repo_contains_changes?
+      log_abort 'Please commit all changes before creating new version' if !options[:dirty] && repo_contains_changes?
 
       new_version = ask_new_version(version)
 
@@ -24,6 +24,20 @@ module Calypso
       git_new_version(new_version, options)
 
       new_version
+    end
+
+    option :dirty, type: :boolean, default: false
+    desc 'update_build_version', 'Updates CFBundleVersion with current commit'
+    def update_build_version
+      if repo_contains_changes?
+        if !options[:dirty]
+          log_exit 'Please commit all changes before updating version'
+        else
+          log_warn 'Repository contains changes, build version is not accurate'
+        end
+      end
+      build_version = "#{current_commit}.#{rev_count}"
+      update_info_plists('CFBundleVersion', build_version)
     end
 
     private
@@ -42,6 +56,14 @@ module Calypso
       `git rev-parse --abbrev-ref HEAD`.strip
     end
 
+    def current_commit
+      `git rev-parse --short HEAD`.strip
+    end
+
+    def rev_count
+      `git rev-list HEAD --count`.strip
+    end
+
     def ask_new_version(version = nil)
       new_version = version || ask("Enter new version (current #{ATLAS_VERSION}):", :blue)
       new_version = ATLAS_VERSION if new_version.empty?
@@ -52,9 +74,13 @@ module Calypso
     end
 
     def update_versions(new_version)
-      update_plist(new_version, 'AtlasSDK/AtlasSDK/Info.plist')
-      update_plist(new_version, 'AtlasUI/AtlasUI/Info.plist')
+      update_info_plists('CFBundleShortVersionString', new_version)
       update_version_file(new_version)
+    end
+
+    def update_info_plists(key, new_version)
+      update_plist(key, new_version, 'AtlasSDK/AtlasSDK/Info.plist')
+      update_plist(key, new_version, 'AtlasUI/AtlasUI/Info.plist')
     end
 
     def git_new_version(new_version, options)
@@ -84,9 +110,10 @@ module Calypso
       repo.add VERSION_FILE
     end
 
-    def update_plist(new_version, plist)
-      run "/usr/libexec/PlistBuddy -c 'Set :CFBundleShortVersionString #{new_version}' '#{plist}'"
-      repo.add plist
+    def update_plist(key, new_version, plist)
+      full_path = File.expand_path("../../../../#{plist}", __FILE__)
+      run "/usr/libexec/PlistBuddy -c 'Set :#{key} #{new_version}' '#{full_path}'"
+      repo.add full_path
     end
 
     def commit_version(new_version)

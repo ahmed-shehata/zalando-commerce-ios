@@ -12,6 +12,15 @@ module Calypso
       print_color_on_tty(STDERR, 33, args)
     end
 
+    def log_warn(*args)
+      print_color_on_tty(STDOUT, 31, args)
+    end
+
+    def log_exit(*args)
+      print_color_on_tty(STDOUT, 31, args)
+      exit(0)
+    end
+
     def log_abort(*args)
       print_color_on_tty(STDOUT, 31, args)
       abort
