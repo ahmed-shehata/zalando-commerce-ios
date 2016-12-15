@@ -7,7 +7,7 @@ import Foundation
 public struct AtlasLogger {
 
     static var logger: Logger = PrintLogger()
-    static var severity: AppLogSeverity = isDebug() ? .debug : .message {
+    static var severity: AppLogSeverity = Debug.isEnabled ? .debug : .message {
         didSet {
             logger.severity = severity
         }

@@ -59,7 +59,7 @@
 		8133924D1DFA97C000AC3DE1 /* URLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8133924C1DFA97C000AC3DE1 /* URLTests.swift */; };
 		816405B71DF84EB600C7BAF0 /* AtlasUI-URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816405B61DF84EB600C7BAF0 /* AtlasUI-URLRequest.swift */; };
 		816405BF1DF869B300C7BAF0 /* URLRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816405BE1DF869B300C7BAF0 /* URLRequestTests.swift */; };
-		818694D51DFECF9F00FEA536 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818694D41DFECF9F00FEA536 /* Debug.swift */; };
+		818B52781E02F5520023C7A1 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818B52771E02F5520023C7A1 /* Debug.swift */; };
 		8195AA6D1DF58DD800D9AA7B /* PaymentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8195AA6C1DF58DD800D9AA7B /* PaymentStatus.swift */; };
 		81B546CC1DF070D70038BBF4 /* TestOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B546CB1DF070D70038BBF4 /* TestOptions.swift */; };
 		81CA481E1E02C41F00D435B0 /* TestConsts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CA481D1E02C41F00D435B0 /* TestConsts.swift */; };
@@ -238,7 +238,7 @@
 		816405BC1DF8525700C7BAF0 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		816405BD1DF8525C00C7BAF0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		816405BE1DF869B300C7BAF0 /* URLRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestTests.swift; sourceTree = "<group>"; };
-		818694D41DFECF9F00FEA536 /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
+		818B52771E02F5520023C7A1 /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Debug.swift; path = ../../../AtlasSDK/AtlasSDK/Utils/Debug.swift; sourceTree = "<group>"; };
 		8195AA6C1DF58DD800D9AA7B /* PaymentStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentStatus.swift; sourceTree = "<group>"; };
 		81B546CB1DF070D70038BBF4 /* TestOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestOptions.swift; path = ../../AtlasSDK/AtlasSDKTests/TestOptions.swift; sourceTree = "<group>"; };
 		81CA481D1E02C41F00D435B0 /* TestConsts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestConsts.swift; path = ../../AtlasSDK/AtlasSDKTests/TestConsts.swift; sourceTree = "<group>"; };
@@ -446,6 +446,7 @@
 			isa = PBXGroup;
 			children = (
 				32BBDA408EFAB221DD44CB3DCD7DDE53 /* Generic Views */,
+				818B52771E02F5520023C7A1 /* Debug.swift */,
 				971465BF293DCFB809C2B0F1512B4CE3 /* Async.swift */,
 				4EED7D8EF8D5EB7448D7EF047681628A /* AtlasReachability.swift */,
 				EE803447FAE67D333D86C06DBB03AF20 /* AnimationDuration.swift */,
@@ -473,7 +474,6 @@
 				B5494239851A207094AA7E1F76EFB842 /* Injector.swift */,
 				764CDA794B49DC585B031C7C4F5776D5 /* UserMessage.swift */,
 				816405B61DF84EB600C7BAF0 /* AtlasUI-URLRequest.swift */,
-				818694D41DFECF9F00FEA536 /* Debug.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -996,7 +996,7 @@
 				79175AD49456E48DC6B393EB6F62053A /* UIColor.swift in Sources */,
 				170D032BE739B3A96834CDAF3CA1D22C /* UIImage.swift in Sources */,
 				8195AA6D1DF58DD800D9AA7B /* PaymentStatus.swift in Sources */,
-				818694D51DFECF9F00FEA536 /* Debug.swift in Sources */,
+				818B52781E02F5520023C7A1 /* Debug.swift in Sources */,
 				4434BCFA43868F4DBFCFF8980581F9AC /* UIImageView.swift in Sources */,
 				F3F62025EFDB47B5637DC3C928D69264 /* UITableView.swift in Sources */,
 				DE4482A9091E62348223761D4C58D008 /* UIView.swift in Sources */,
