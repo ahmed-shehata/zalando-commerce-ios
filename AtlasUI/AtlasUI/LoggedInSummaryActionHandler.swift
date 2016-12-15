@@ -12,7 +12,6 @@ typealias CreateCartCheckoutCompletion = (AtlasResult<CartCheckout>) -> Void
 class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
 
     let customer: Customer
-
     weak var dataSource: CheckoutSummaryActionHandlerDataSource?
     weak var delegate: CheckoutSummaryActionHandlerDelegate?
 
@@ -22,9 +21,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
         }
     }
 
-    fileprivate var hasAddresses: Bool {
-        return shippingAddress != nil && billingAddress != nil
-    }
+    fileprivate var addressCreationStrategy: AddressViewModelCreationStrategy?
 
     static func create(customer: Customer, selectedArticleUnit: SelectedArticleUnit,
                        completion: @escaping LoggedInSummaryActionHandlerCompletion) {
@@ -98,14 +95,13 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
         AtlasUIClient.addresses { [weak self] result in
             guard let userAddresses = result.process() else { return }
             let addresses: [EquatableAddress] = userAddresses.map { $0 }
-            let creationStrategy = ShippingAddressViewModelCreationStrategy()
-            let addressViewController = AddressListViewController(initialAddresses: addresses, selectedAddress: self?.shippingAddress)
-            addressViewController.addressUpdatedHandler = { self?.updated(address: $0) }
-            addressViewController.addressDeletedHandler = { self?.deleted(address: $0) }
-            addressViewController.addressSelectedHandler = { self?.select(shippingAddress: $0) }
-            addressViewController.actionHandler = LoggedInAddressListActionHandler(addressViewModelCreationStrategy: creationStrategy)
-            addressViewController.title = Localizer.format(string: "addressListView.title.shipping")
-            AtlasUIViewController.shared?.mainNavigationController.pushViewController(addressViewController, animated: true)
+            if !addresses.isEmpty {
+                self?.showAddressListViewController(forShippingAddressWithAddresses: addresses)
+            } else {
+                self?.showFormViewController(strategy: ShippingAddressViewModelCreationStrategy()) { [weak self] newAddress in
+                    self?.select(shippingAddress: newAddress)
+                }
+            }
         }
     }
 
@@ -113,19 +109,59 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
         AtlasUIClient.addresses { [weak self] result in
             guard let userAddresses = result.process() else { return }
             let addresses: [EquatableAddress] = userAddresses.filter { $0.pickupPoint == nil } .map { $0 }
-            let creationStrategy = BillingAddressViewModelCreationStrategy()
-            let addressViewController = AddressListViewController(initialAddresses: addresses, selectedAddress: self?.billingAddress)
-            addressViewController.addressUpdatedHandler = { self?.updated(address: $0) }
-            addressViewController.addressDeletedHandler = { self?.deleted(address: $0) }
-            addressViewController.addressSelectedHandler = { self?.select(billingAddress: $0) }
-            addressViewController.actionHandler = LoggedInAddressListActionHandler(addressViewModelCreationStrategy: creationStrategy)
-            addressViewController.title = Localizer.format(string: "addressListView.title.billing")
-            AtlasUIViewController.shared?.mainNavigationController.pushViewController(addressViewController, animated: true)
+            if !addresses.isEmpty {
+                self?.showAddressListViewController(forBillingAddressWithAddresses: addresses)
+            } else {
+                self?.showFormViewController(strategy: BillingAddressViewModelCreationStrategy()) { [weak self] newAddress in
+                    self?.select(billingAddress: newAddress)
+                }
+            }
         }
     }
 
 }
 
+// MARK: Address Screen
+extension LoggedInSummaryActionHandler {
+
+    fileprivate func showAddressListViewController(forShippingAddressWithAddresses addresses: [EquatableAddress]) {
+        let creationStrategy = ShippingAddressViewModelCreationStrategy()
+        let addressViewController = AddressListViewController(initialAddresses: addresses, selectedAddress: shippingAddress)
+        addressViewController.addressUpdatedHandler = { [weak self] in self?.updated(address: $0) }
+        addressViewController.addressDeletedHandler = { [weak self] in self?.deleted(address: $0) }
+        addressViewController.addressSelectedHandler = { [weak self] in self?.select(shippingAddress: $0) }
+        addressViewController.actionHandler = LoggedInAddressListActionHandler(addressViewModelCreationStrategy: creationStrategy)
+        addressViewController.title = Localizer.format(string: "addressListView.title.shipping")
+        AtlasUIViewController.shared?.mainNavigationController.pushViewController(addressViewController, animated: true)
+    }
+
+    fileprivate func showAddressListViewController(forBillingAddressWithAddresses addresses: [EquatableAddress]) {
+        let creationStrategy = BillingAddressViewModelCreationStrategy()
+        let addressViewController = AddressListViewController(initialAddresses: addresses, selectedAddress: billingAddress)
+        addressViewController.addressUpdatedHandler = { [weak self] in self?.updated(address: $0) }
+        addressViewController.addressDeletedHandler = { [weak self] in self?.deleted(address: $0) }
+        addressViewController.addressSelectedHandler = { [weak self] in self?.select(billingAddress: $0) }
+        addressViewController.actionHandler = LoggedInAddressListActionHandler(addressViewModelCreationStrategy: creationStrategy)
+        addressViewController.title = Localizer.format(string: "addressListView.title.billing")
+        AtlasUIViewController.shared?.mainNavigationController.pushViewController(addressViewController, animated: true)
+    }
+
+    fileprivate func showFormViewController(strategy: AddressViewModelCreationStrategy, completion: @escaping (EquatableAddress) -> Void) {
+        addressCreationStrategy = strategy
+        addressCreationStrategy?.titleKey = "guestSummaryView.address.add"
+        addressCreationStrategy?.strategyCompletion = { viewModel in
+            let actionHandler = LoggedInCreateAddressActionHandler()
+            let viewController = AddressFormViewController(viewModel: viewModel, actionHandler: actionHandler) { address, _ in
+                completion(address)
+            }
+            viewController.present()
+        }
+        addressCreationStrategy?.execute()
+    }
+
+}
+
+// MARK: Handle Confirmation
 extension LoggedInSummaryActionHandler {
 
     fileprivate func handleConfirmation(forOrder order: Order) {
@@ -161,6 +197,7 @@ extension LoggedInSummaryActionHandler {
 
 }
 
+// MARK: Create CartCheckout
 extension LoggedInSummaryActionHandler {
 
     fileprivate func createCartCheckout(completion: @escaping CreateCartCheckoutCompletion) {
@@ -194,6 +231,7 @@ extension LoggedInSummaryActionHandler {
 
 }
 
+// MARK: Update DataModel
 extension LoggedInSummaryActionHandler {
 
     fileprivate func updateCheckout() {
@@ -231,6 +269,7 @@ extension LoggedInSummaryActionHandler {
 
 }
 
+// MARK: Address Modifications
 extension LoggedInSummaryActionHandler {
 
     fileprivate func updated(address: EquatableAddress) {
