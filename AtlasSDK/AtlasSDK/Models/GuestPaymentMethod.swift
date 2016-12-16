@@ -19,9 +19,9 @@ extension GuestPaymentMethod: JSONInitializable {
     }
 
     init?(json: JSON) {
-        guard let methodRawValue = json[Keys.method].string, let method = PaymentMethodType(rawValue: methodRawValue) else { return nil }
+        guard let rawValue = json[Keys.method].string else { return nil }
 
-        self.init(method: method,
+        self.init(method: PaymentMethodType(rawValue: rawValue),
                   metadata: json[Keys.metadata].dictionaryObject,
                   externalPayment: json[Keys.externalPayment].bool)
     }

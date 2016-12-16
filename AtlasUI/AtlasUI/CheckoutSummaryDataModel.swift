@@ -123,7 +123,10 @@ extension CheckoutSummaryDataModel {
 extension PaymentMethodType {
 
     var localizedTitle: String {
-        return Localizer.format(string: "paymentMethod.\(rawValue)")
+        switch self {
+        case .unrecognized(let rawValue): return rawValue
+        default: return Localizer.format(string: "paymentMethod.\(rawValue)")
+        }
     }
 
 }
