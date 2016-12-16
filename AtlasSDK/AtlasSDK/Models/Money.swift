@@ -38,6 +38,14 @@ public func < (lhs: Money, rhs: Money) -> Bool {
     return lhs.amount < rhs.amount
 }
 
+extension Money: CustomStringConvertible {
+
+    public var description: String {
+        return "Money: { amount: \(self.amount), currency: \(self.currency) }"
+    }
+
+}
+
 extension Money: JSONInitializable {
 
     fileprivate struct Keys {

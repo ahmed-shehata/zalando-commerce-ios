@@ -253,7 +253,7 @@ extension LoggedInSummaryActionHandlerTests {
                                         shippingAddress: nil,
                                         billingAddress: nil,
                                         paymentMethod: paymentMethod,
-                                        totalPrice: Money(amount: 10.45, currency: ""),
+                                        totalPrice: Money(amount: 10.45, currency: "EUR"),
                                         delivery: nil)
     }
 
