@@ -263,7 +263,6 @@ extension LoggedInSummaryActionHandlerTests {
                                         shippingAddress: checkout?.shippingAddress,
                                         billingAddress: checkout?.billingAddress,
                                         paymentMethod: checkout?.payment.selected?.method?.localizedTitle,
-                                        shippingPrice: 0,
                                         totalPrice: totalPrice,
                                         delivery: checkout?.delivery)
     }

@@ -75,8 +75,7 @@ extension CheckoutSummaryDataModel {
         self.shippingAddress = addresses?.shippingAddress ?? cartCheckout?.checkout?.shippingAddress
         self.billingAddress = addresses?.billingAddress ?? cartCheckout?.checkout?.billingAddress
         self.paymentMethod = cartCheckout?.checkout?.payment.selected?.method?.localizedTitle
-        self.shippingPrice = 0
-        self.totalPrice = cartCheckout?.cart?.grossTotal.amount ?? selectedArticleUnit.priceAmount
+        self.totalPrice = cartCheckout?.cart?.grossTotal ?? selectedArticleUnit.price
         self.delivery = cartCheckout?.checkout?.delivery
         self.email = nil
         self.orderNumber = nil
@@ -87,8 +86,7 @@ extension CheckoutSummaryDataModel {
         self.shippingAddress = order.shippingAddress
         self.billingAddress = order.billingAddress
         self.paymentMethod = checkout?.payment.selected?.method?.localizedTitle
-        self.shippingPrice = 0
-        self.totalPrice = order.grossTotal.amount
+        self.totalPrice = order.grossTotal
         self.delivery = checkout?.delivery
         self.email = nil
         self.orderNumber = order.orderNumber
@@ -99,8 +97,7 @@ extension CheckoutSummaryDataModel {
         self.shippingAddress = addresses?.shippingAddress ?? guestCheckout?.shippingAddress
         self.billingAddress = addresses?.billingAddress ?? guestCheckout?.billingAddress
         self.paymentMethod = guestCheckout?.payment.method.localizedTitle
-        self.shippingPrice = 0
-        self.totalPrice = guestCheckout?.cart.grossTotal.amount ?? selectedArticleUnit.priceAmount
+        self.totalPrice = guestCheckout?.cart.grossTotal ?? selectedArticleUnit.price
         self.delivery = guestCheckout?.delivery
         self.email = email
         self.orderNumber = nil
@@ -111,8 +108,7 @@ extension CheckoutSummaryDataModel {
         self.shippingAddress = guestOrder.shippingAddress
         self.billingAddress = guestOrder.billingAddress
         self.paymentMethod = guestCheckout?.payment.method.localizedTitle
-        self.shippingPrice = 0
-        self.totalPrice = guestOrder.grossTotal.amount
+        self.totalPrice = guestOrder.grossTotal
         self.delivery = guestCheckout?.delivery
         self.email = email
         self.orderNumber = guestOrder.orderNumber
