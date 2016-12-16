@@ -10,8 +10,8 @@ public struct Order {
     public let customerNumber: String
     public let billingAddress: OrderAddress
     public let shippingAddress: OrderAddress
-    public let grossTotal: Price
-    public let taxTotal: Price
+    public let grossTotal: Money
+    public let taxTotal: Money
     public let created: Date?
     public let detailURL: URL?
     public let externalPaymentURL: URL?
@@ -37,8 +37,8 @@ extension Order: JSONInitializable {
             let customerNumber = json[Keys.customerNumber].string,
             let billingAddress = OrderAddress(json: json[Keys.billingAddress]),
             let shippingAddress = OrderAddress(json: json[Keys.shippingAddress]),
-            let grossTotal = Price(json: json[Keys.grossTotal]),
-            let taxTotal = Price(json: json[Keys.taxTotal])
+            let grossTotal = Money(json: json[Keys.grossTotal]),
+            let taxTotal = Money(json: json[Keys.taxTotal])
             else { return nil }
 
         self.init(orderNumber: orderNumber,

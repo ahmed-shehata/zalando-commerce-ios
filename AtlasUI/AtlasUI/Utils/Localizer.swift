@@ -78,7 +78,8 @@ struct Localizer {
         return String(format: localizedString, arguments: formatArguments.flatMap { $0 })
     }
 
-    func format(price: NSNumber) -> String? {
+    func format(price: NSNumber, withCurrency currencySymbol: String? = nil) -> String? {
+        priceFormatter.currencySymbol = currencySymbol
         return priceFormatter.string(from: price)
     }
 
@@ -106,8 +107,12 @@ extension Localizer {
         return shared.format(string: string, formatArguments: formatArguments)
     }
 
-    static func format(price: NSNumber) -> String? {
-        return shared.format(price: price)
+    static func format(price: NSNumber, withCurrency currencySymbol: String? = nil) -> String? {
+        return shared.format(price: price, withCurrency: currencySymbol)
+    }
+
+    static func format(price: Money) -> String? {
+        return shared.format(price: price.amount, withCurrency: price.currency)
     }
 
     static func format(date: Date) -> String? {

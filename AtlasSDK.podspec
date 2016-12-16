@@ -1,14 +1,14 @@
 require_relative './lib/version'
 
 # rubocop:disable Metrics/BlockLength
-Pod::Spec.new do |s|
-  s.name = 'AtlasSDK'
-  s.platform = :ios, '9.0'
-  s.version = ATLAS_VERSION
-  s.summary = 'Atlas iOS SDK for Zalando Checkout and Catalog APIs.'
-  s.homepage = 'https://github.com/zalando-incubator/atlas-ios'
+Pod::Spec.new do |spec|
+  spec.name = 'AtlasSDK'
+  spec.platform = :ios, '9.0'
+  spec.version = ATLAS_VERSION
+  spec.summary = 'Atlas iOS SDK for Zalando Checkout and Catalog APIs.'
+  spec.homepage = 'https://github.com/zalando-incubator/atlas-ios'
 
-  s.description = <<-DESC
+  spec.description = <<-DESC
 The purpose of this project is to provide seamless experience of Zalando
 articles checkout integration to the 3rd party iOS apps.
 
@@ -20,33 +20,33 @@ If you want to have a full control over the UI and manage checkout flow by
 yourself there is a low level AtlasSDK framework that covers all Checkout API
 calls and provide you high-level business objects to deal with.
   DESC
-  s.license = {
+  spec.license = {
     type: 'MIT',
     file: 'LICENSE'
   }
-  s.authors = {
+  spec.authors = {
     'Ahmed Shehata' => 'ahmed.shehata@zalando.de',
     'Daniel Bauke' => 'daniel.bauke@zalando.de',
     'Gleb Galkin' => 'gleb.galkin@zalando.de',
     'Haldun Bayhantopcu' => 'haldun.bayhantopcu@zalando.de',
     'Hani Ibrahim' => 'hani.eloksh@zalando.de'
   }
-  s.source = {
+  spec.source = {
     git: 'https://github.com/zalando-incubator/atlas-ios.git',
-    tag: s.version.to_s
+    tag: spec.version.to_s
   }
 
-  s.subspec 'Core' do |ss|
-    ss.source_files = 'AtlasSDK/AtlasSDK/**/*.{h,m,swift}'
-    ss.frameworks = 'Foundation'
+  spec.subspec 'Core' do |core|
+    core.source_files = 'AtlasSDK/AtlasSDK/**/*.{h,m,swift}'
+    core.frameworks = 'Foundation'
   end
 
-  s.subspec 'UI' do |ss|
-    ss.dependency 'AtlasSDK/Core'
-    ss.source_files = 'AtlasUI/AtlasUI/**/*.{h,m,swift}'
-    ss.ios.resources = ['AtlasUI/AtlasUI/**/*.xcassets', 'AtlasUI/AtlasUI/**/Localizable.strings']
-    ss.frameworks = 'Foundation', 'UIKit'
+  spec.subspec 'UI' do |ui|
+    ui.dependency 'AtlasSDK/Core'
+    ui.source_files = 'AtlasUI/AtlasUI/**/*.{h,m,swift}'
+    ui.ios.resources = ['AtlasUI/AtlasUI/**/*.xcassets', 'AtlasUI/AtlasUI/**/Localizable.strings']
+    ui.frameworks = 'Foundation', 'UIKit'
   end
 
-  s.default_subspecs = 'Core', 'UI'
+  spec.default_subspecs = 'Core', 'UI'
 end
