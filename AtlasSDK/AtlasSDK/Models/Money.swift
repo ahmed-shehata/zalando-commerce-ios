@@ -8,8 +8,15 @@ public typealias MoneyAmount = NSDecimalNumber
 
 public struct Money {
 
+    public static let Zero = Money(amount: 0, currency: nil)
+
     public let amount: MoneyAmount
-    public let currency: String
+    public let currency: String?
+
+    public init(amount: MoneyAmount, currency: String? = nil) {
+        self.amount = amount
+        self.currency = currency
+    }
 
 }
 
@@ -18,7 +25,7 @@ extension Money: Comparable { }
 extension Money: Hashable {
 
     public var hashValue: Int {
-        return (17 &* amount.hashValue) &+ currency.hashValue
+        return (17 &* amount.hashValue) &+ (currency?.hashValue ?? "".hashValue)
     }
 
 }

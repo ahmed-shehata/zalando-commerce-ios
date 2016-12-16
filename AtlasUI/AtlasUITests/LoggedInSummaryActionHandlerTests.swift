@@ -37,7 +37,8 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
     }
 
     func testPriceChange() {
-        guard let dataModel = createDataModel(fromCheckout: createCartCheckout()?.checkout, totalPrice: MoneyAmount(string: "0.1")) else { return fail() }
+        guard let dataModel = createDataModel(fromCheckout: createCartCheckout()?.checkout,
+                                              totalPrice: Money(amount: 0.1)) else { return fail() }
         mockedDataSourceDelegate?.updated(dataModel: dataModel)
         expect(UserMessage.errorDisplayed).toEventually(beTrue())
         UserMessage.resetBanners()
@@ -82,8 +83,7 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
     }
 
     func testShippingStandardAddressScreenSelectCompletion() {
-        guard let
-            addressViewController = presentAddressScreen(forShippingAddress: true),
+        guard let addressViewController = presentAddressScreen(forShippingAddress: true),
             let address = getStandardAddress()
             else { return fail() }
 
@@ -94,8 +94,7 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
     }
 
     func testShippingPickupPointAddressScreenSelectCompletion() {
-        guard let
-            addressViewController = presentAddressScreen(forShippingAddress: true),
+        guard let addressViewController = presentAddressScreen(forShippingAddress: true),
             let address = getPickupPointAddress()
             else { return fail() }
 
@@ -106,8 +105,7 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
     }
 
     func testShippingAddressScreenUpdateCompletion() {
-        guard let
-            addressViewController = presentAddressScreen(forShippingAddress: true),
+        guard let addressViewController = presentAddressScreen(forShippingAddress: true),
             let dataModel = createDataModel(fromCartCheckout: createCartCheckout())
             else { return fail() }
         mockedDataSourceDelegate?.updated(dataModel: dataModel)
@@ -122,8 +120,7 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
     }
 
     func testShippingAddressScreenDeleteCompletion() {
-        guard let
-            addressViewController = presentAddressScreen(forShippingAddress: true),
+        guard let addressViewController = presentAddressScreen(forShippingAddress: true),
             let dataModel = createDataModel(fromCartCheckout: createCartCheckout())
             else { return fail() }
         mockedDataSourceDelegate?.updated(dataModel: dataModel)
@@ -136,8 +133,7 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
     }
 
     func testBillingAddressScreenSelectCompletion() {
-        guard let
-            addressViewController = presentAddressScreen(forShippingAddress: false),
+        guard let addressViewController = presentAddressScreen(forShippingAddress: false),
             let address = getStandardAddress()
             else { return fail() }
 
@@ -148,8 +144,7 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
     }
 
     func testBillingAddressScreenUpdateCompletion() {
-        guard let
-            addressViewController = presentAddressScreen(forShippingAddress: false),
+        guard let addressViewController = presentAddressScreen(forShippingAddress: false),
             let dataModel = createDataModel(fromCartCheckout: createCartCheckout())
             else { return fail() }
         mockedDataSourceDelegate?.updated(dataModel: dataModel)
@@ -164,8 +159,7 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
     }
 
     func testBillingAddressScreenDeleteCompletion() {
-        guard let
-            addressViewController = presentAddressScreen(forShippingAddress: false),
+        guard let addressViewController = presentAddressScreen(forShippingAddress: false),
             let dataModel = createDataModel(fromCartCheckout: createCartCheckout())
             else { return fail() }
         mockedDataSourceDelegate?.updated(dataModel: dataModel)
@@ -193,7 +187,7 @@ extension LoggedInSummaryActionHandlerTests {
                     let selectedArticleUnit = SelectedArticleUnit(article: article, selectedUnitIndex: 0)
                     LoggedInSummaryActionHandler.create(customer: customer, selectedArticleUnit: selectedArticleUnit) { result in
                         guard let actionHandler = result.process() else { return fail() }
-                        let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, totalPrice: selectedArticleUnit.unit.price.amount)
+                        let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, totalPrice: selectedArticleUnit.unit.price)
                         let viewModel = CheckoutSummaryViewModel(dataModel: dataModel, layout: LoggedInLayout())
                         self.mockedDataSourceDelegate = CheckoutSummaryActionHandlerDataSourceDelegateMock(viewModel: viewModel)
                         self.mockedDataSourceDelegate?.actionHandler = actionHandler
@@ -248,7 +242,7 @@ extension LoggedInSummaryActionHandlerTests {
         }
         return address
     }
-    
+
 }
 
 extension LoggedInSummaryActionHandlerTests {
@@ -259,24 +253,25 @@ extension LoggedInSummaryActionHandlerTests {
                                         shippingAddress: nil,
                                         billingAddress: nil,
                                         paymentMethod: paymentMethod,
-                                        shippingPrice: 0,
-                                        totalPrice: 10.45,
+                                        shippingPrice: Money.Zero,
+                                        totalPrice: Money(amount: 10.45),
                                         delivery: nil)
     }
 
-    fileprivate func createDataModel(fromCheckout checkout: Checkout?, totalPrice: MoneyAmount) -> CheckoutSummaryDataModel? {
+    fileprivate func createDataModel(fromCheckout checkout: Checkout?, totalPrice: Money) -> CheckoutSummaryDataModel? {
         guard let selectedArticleUnit = mockedDataSourceDelegate?.dataModel.selectedArticleUnit else { return nil }
         return CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit,
                                         shippingAddress: checkout?.shippingAddress,
                                         billingAddress: checkout?.billingAddress,
                                         paymentMethod: checkout?.payment.selected?.method,
-                                        shippingPrice: 0,
+                                        shippingPrice: Money.Zero,
                                         totalPrice: totalPrice,
                                         delivery: checkout?.delivery)
     }
 
     fileprivate func createDataModel(fromCartCheckout cartCheckout: CartCheckout?) -> CheckoutSummaryDataModel? {
-        return createDataModel(fromCheckout: cartCheckout?.checkout, totalPrice: cartCheckout?.cart?.grossTotal.amount ?? 0)
+        let totalPrice = cartCheckout?.cart?.grossTotal ?? Money.Zero
+        return createDataModel(fromCheckout: cartCheckout?.checkout, totalPrice: totalPrice)
     }
 
     fileprivate func createCheckout(fromCheckout checkout: Checkout, payment: Payment) -> Checkout {
@@ -352,5 +347,5 @@ class CheckoutSummaryActionHandlerDataSourceDelegateMock: NSObject, CheckoutSumm
     func dismissView() {
 
     }
-    
+
 }
