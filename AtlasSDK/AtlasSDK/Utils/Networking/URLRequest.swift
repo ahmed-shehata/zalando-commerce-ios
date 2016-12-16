@@ -51,11 +51,10 @@ extension URLRequest {
     }
 
     fileprivate mutating func setHeaders(from endpoint: Endpoint) {
-        var headers = [String: String]()
+        var headers: [String: String] = [:]
 
-        let acceptedContentTypes = [endpoint.acceptedContentType, "application/x.problem+json"].flatMap { $0 }
-        headers["Accept"] = acceptedContentTypes.joined(separator: ",")
-        headers["Content-Type"] = endpoint.contentType
+        setContentType(for: endpoint, headers: &headers)
+        setUserAgent(headers: &headers)
 
         headers.forEach { header, value in
             self.setValue(value, forHTTPHeaderField: header)
@@ -64,6 +63,22 @@ extension URLRequest {
         endpoint.headers?.forEach { header, value in
             self.setValue(String(describing: value), forHTTPHeaderField: header)
         }
+    }
+
+    fileprivate func setContentType(for endpoint: Endpoint, headers: inout [String: String]) {
+        let acceptedContentTypes = [endpoint.acceptedContentType, "application/x.problem+json"].flatMap { $0 }
+        headers["Accept"] = acceptedContentTypes.joined(separator: ",")
+        headers["Content-Type"] = endpoint.contentType
+    }
+
+    fileprivate func setUserAgent(headers: inout [String: String]) {
+        let sdkBundle = Bundle(for: RFC3339DateFormatter.self)
+        let sdkId = sdkBundle.version
+
+        let appBundle = Bundle.main
+        let appId = appBundle.version
+
+        headers["User-Agent"] = [appId, sdkId, SystemInfo.platform].joined(separator: ", ")
     }
 
 }

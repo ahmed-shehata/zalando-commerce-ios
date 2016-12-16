@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 cd ..
-echo PWD: $PWD
+
+ruby -v
+bundle update
 bundle exec ./calypso.rb pod validate --local
 

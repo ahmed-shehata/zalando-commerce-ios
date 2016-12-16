@@ -7,42 +7,26 @@ import AtlasMockAPI
 
 @testable import AtlasSDK
 
-struct TestConfig {
-
-    static let catalogURL = AtlasMockAPI.endpointURL(forPath: "/catalog")
-    static let checkoutURL = AtlasMockAPI.endpointURL(forPath: "/checkout")
-    static let loginURL = AtlasMockAPI.endpointURL(forPath: "/login")
-
-    static let configLanguage = "de"
-    static let configCountry = "DE"
-    static let tocURL = "https://www.zalando.de/agb/"
-    static let callback = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect"
-
-    static let gateway = "http://localhost.charlesproxy.com:9080"
-    static var configLocale: String { return "\(configLanguage)_\(configCountry)" }
-
-}
-
 extension Config {
 
     static func jsonForTests(options: Options = Options.forTests()) -> JSON {
         return JSON([
                         "sales-channels": [
                             ["locale": "es_ES", "sales-channel": "SPAIN", "toc_url": "https://www.zalando.es/cgc/"],
-                            ["locale": TestConfig.configLocale,
+                            ["locale": TestConsts.configLocale,
                                 "sales-channel": options.salesChannel,
-                                "toc_url": TestConfig.tocURL],
+                                "toc_url": TestConsts.tocURL],
                         ],
-                        "atlas-catalog-api": ["url": TestConfig.catalogURL.absoluteString],
-                        "atlas-checkout-gateway": ["url": TestConfig.gateway],
+                        "atlas-catalog-api": ["url": TestConsts.catalogURL.absoluteString],
+                        "atlas-checkout-gateway": ["url": TestConsts.gateway],
                         "atlas-checkout-api": [
-                            "url": TestConfig.checkoutURL.absoluteString,
+                            "url": TestConsts.checkoutURL.absoluteString,
                             "payment": [
-                                "selection-callback": TestConfig.callback,
-                                "third-party-callback": TestConfig.callback
+                                "selection-callback": TestConsts.callback,
+                                "third-party-callback": TestConsts.callback
                             ]
                         ],
-                        "oauth2-provider": ["url": TestConfig.loginURL.absoluteString]
+                        "oauth2-provider": ["url": TestConsts.loginURL.absoluteString]
                     ])
     }
 

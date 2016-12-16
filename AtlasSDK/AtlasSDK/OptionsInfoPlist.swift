@@ -28,7 +28,7 @@ extension Bundle {
     }
 
     fileprivate func object<T>(forInfoDictionaryKey key: Options.InfoKey) -> T? {
-        return self.object(forInfoDictionaryKey: key.rawValue) as? T
+        return self.object(forInfoDictionaryKey: key.rawValue)
     }
 
 }

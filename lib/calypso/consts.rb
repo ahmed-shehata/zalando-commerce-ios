@@ -27,15 +27,11 @@ module Calypso
 
   PROJECT_DIRS = [BASE_DIR + 'AtlasSDK', BASE_DIR + 'AtlasDemo'].freeze
 
-  MIN_CODE_COVERAGE = 70
-  COV_THRESHOLD_WARN = -0.5
-  COV_THRESHOLD_FAIL = -3
-  XCOV_JSON_REPORT = 'xcov_report/report.json'.freeze
-
   LINT_CFG = BASE_DIR + '.swiftlint.yml'
 
-  COV_EXCLUDE_PRODUCTS = [PRODUCT_MOCK_SERVER, PRODUCT_CHECKOUT_DEMO].freeze
-
   CLEANABLE_GITHUB_PROJECT_COLUMNS = { 'Technical Debt' => ['Done'], 'Current Release' => ['Finished'] }.freeze
+
+  VERSIONABLE_PROJECTS = %w(AtlasSDK AtlasUI AtlasDemo).freeze
+  VERSIONED_PROJECT_FILES = '**/{Info.plist,project.pbxproj}'.freeze
 
 end
