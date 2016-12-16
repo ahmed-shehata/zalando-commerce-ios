@@ -16,7 +16,7 @@ extension HttpServer {
                 return .ok(.text("[]"))
             } else {
                 let filePath = Bundle(for: AtlasMockAPI.self).path(forResource: "addresses", ofType: "injectedJson") ?? ""
-                let json = (try? String(contentsOfFile: filePath)) ?? ""
+                let json = try! String(contentsOfFile: filePath) // swiftlint:disable:this force_try
                 return .ok(.text(json))
             }
         }

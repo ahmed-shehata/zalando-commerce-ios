@@ -98,7 +98,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
             if !addresses.isEmpty {
                 self?.showAddressListViewController(forShippingAddressWithAddresses: addresses)
             } else {
-                self?.showFormViewController(strategy: ShippingAddressViewModelCreationStrategy()) { [weak self] newAddress in
+                self?.showCreateAddressForm(strategy: ShippingAddressViewModelCreationStrategy()) { [weak self] newAddress in
                     self?.select(shippingAddress: newAddress)
                 }
             }
@@ -112,7 +112,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
             if !addresses.isEmpty {
                 self?.showAddressListViewController(forBillingAddressWithAddresses: addresses)
             } else {
-                self?.showFormViewController(strategy: BillingAddressViewModelCreationStrategy()) { [weak self] newAddress in
+                self?.showCreateAddressForm(strategy: BillingAddressViewModelCreationStrategy()) { [weak self] newAddress in
                     self?.select(billingAddress: newAddress)
                 }
             }
@@ -121,7 +121,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
 
 }
 
-// MARK: Address Screen
+// MARK:– Address Screen
 extension LoggedInSummaryActionHandler {
 
     fileprivate func showAddressListViewController(forShippingAddressWithAddresses addresses: [EquatableAddress]) {
@@ -146,7 +146,7 @@ extension LoggedInSummaryActionHandler {
         AtlasUIViewController.shared?.mainNavigationController.pushViewController(addressViewController, animated: true)
     }
 
-    fileprivate func showFormViewController(strategy: AddressViewModelCreationStrategy, completion: @escaping (EquatableAddress) -> Void) {
+    fileprivate func showCreateAddressForm(strategy: AddressViewModelCreationStrategy, completion: @escaping (EquatableAddress) -> Void) {
         addressCreationStrategy = strategy
         addressCreationStrategy?.titleKey = "guestSummaryView.address.add"
         addressCreationStrategy?.strategyCompletion = { viewModel in
@@ -161,7 +161,7 @@ extension LoggedInSummaryActionHandler {
 
 }
 
-// MARK: Handle Confirmation
+// MARK:– Handle Confirmation
 extension LoggedInSummaryActionHandler {
 
     fileprivate func handleConfirmation(forOrder order: Order) {
@@ -197,7 +197,7 @@ extension LoggedInSummaryActionHandler {
 
 }
 
-// MARK: Create CartCheckout
+// MARK:– Create CartCheckout
 extension LoggedInSummaryActionHandler {
 
     fileprivate func createCartCheckout(completion: @escaping CreateCartCheckoutCompletion) {
@@ -231,7 +231,7 @@ extension LoggedInSummaryActionHandler {
 
 }
 
-// MARK: Update DataModel
+// MARK:– Update DataModel
 extension LoggedInSummaryActionHandler {
 
     fileprivate func updateCheckout() {
@@ -269,7 +269,7 @@ extension LoggedInSummaryActionHandler {
 
 }
 
-// MARK: Address Modifications
+// MARK:– Address Modifications
 extension LoggedInSummaryActionHandler {
 
     fileprivate func updated(address: EquatableAddress) {
