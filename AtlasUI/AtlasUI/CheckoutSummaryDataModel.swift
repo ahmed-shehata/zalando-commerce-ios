@@ -11,8 +11,10 @@ struct CheckoutSummaryDataModel {
     let shippingAddress: FormattableAddress?
     let billingAddress: FormattableAddress?
     let paymentMethod: String?
-    let shippingPrice: MoneyAmount
-    let totalPrice: MoneyAmount
+    var shippingPrice: Money {
+        return Money(amount: 0, currency: totalPrice.currency)
+    }
+    let totalPrice: Money
     let delivery: Delivery?
     let email: String?
     let orderNumber: String?
@@ -21,8 +23,7 @@ struct CheckoutSummaryDataModel {
          shippingAddress: FormattableAddress? = nil,
          billingAddress: FormattableAddress? = nil,
          paymentMethod: String? = nil,
-         shippingPrice: MoneyAmount = 0,
-         totalPrice: MoneyAmount,
+         totalPrice: Money,
          delivery: Delivery? = nil,
          email: String? = nil,
          orderNumber: String? = nil) {
@@ -31,7 +32,6 @@ struct CheckoutSummaryDataModel {
         self.shippingAddress = shippingAddress
         self.billingAddress = billingAddress
         self.paymentMethod = paymentMethod
-        self.shippingPrice = shippingPrice
         self.totalPrice = totalPrice
         self.delivery = delivery
         self.email = email

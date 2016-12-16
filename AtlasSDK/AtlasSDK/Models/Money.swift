@@ -8,8 +8,15 @@ public typealias MoneyAmount = NSDecimalNumber
 
 public struct Money {
 
+    public static let Zero = Money(amount: 0, currency: "")
+
     public let amount: MoneyAmount
     public let currency: String
+
+    public init(amount: MoneyAmount, currency: String) {
+        self.amount = amount
+        self.currency = currency
+    }
 
 }
 
@@ -29,6 +36,14 @@ public func == (lhs: Money, rhs: Money) -> Bool {
 
 public func < (lhs: Money, rhs: Money) -> Bool {
     return lhs.amount < rhs.amount
+}
+
+extension Money: CustomStringConvertible {
+
+    public var description: String {
+        return "Money: { amount: \(self.amount), currency: \(self.currency) }"
+    }
+
 }
 
 extension Money: JSONInitializable {
