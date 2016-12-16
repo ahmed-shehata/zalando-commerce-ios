@@ -38,7 +38,7 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
 
     func testPriceChange() {
         guard let dataModel = createDataModel(fromCheckout: createCartCheckout()?.checkout,
-                                              totalPrice: Money(amount: 0.1)) else { return fail() }
+                                              totalPrice: Money(amount: 0.1, currency: "")) else { return fail() }
         mockedDataSourceDelegate?.updated(dataModel: dataModel)
         expect(UserMessage.errorDisplayed).toEventually(beTrue())
         UserMessage.resetBanners()
@@ -253,7 +253,7 @@ extension LoggedInSummaryActionHandlerTests {
                                         shippingAddress: nil,
                                         billingAddress: nil,
                                         paymentMethod: paymentMethod,
-                                        totalPrice: Money(amount: 10.45),
+                                        totalPrice: Money(amount: 10.45, currency: ""),
                                         delivery: nil)
     }
 
