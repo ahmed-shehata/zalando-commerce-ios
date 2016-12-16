@@ -19,7 +19,11 @@ extension PaymentMethod: JSONInitializable {
     }
 
     init?(json: JSON) {
-        self.init(method: PaymentMethodType(rawValue: json[Keys.method].stringValue),
+        var paymentMethod: PaymentMethodType?
+        if let methodRawValue = json[Keys.method].string {
+            paymentMethod = PaymentMethodType(rawValue: methodRawValue)
+        }
+        self.init(method: paymentMethod,
             metadata: json[Keys.metadata].dictionaryObject)
     }
 
