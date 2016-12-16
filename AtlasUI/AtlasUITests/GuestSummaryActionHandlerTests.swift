@@ -104,7 +104,6 @@ extension GuestSummaryActionHandlerTests {
                                         shippingAddress: createAddress(),
                                         billingAddress: createAddress(),
                                         paymentMethod: dataModel.paymentMethod,
-                                        shippingPrice: dataModel.shippingPrice,
                                         totalPrice: dataModel.totalPrice,
                                         delivery: dataModel.delivery,
                                         email: dataModel.email)

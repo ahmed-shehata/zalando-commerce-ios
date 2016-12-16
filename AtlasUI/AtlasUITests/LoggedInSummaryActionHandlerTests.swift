@@ -253,7 +253,6 @@ extension LoggedInSummaryActionHandlerTests {
                                         shippingAddress: nil,
                                         billingAddress: nil,
                                         paymentMethod: paymentMethod,
-                                        shippingPrice: Money.Zero,
                                         totalPrice: Money(amount: 10.45),
                                         delivery: nil)
     }
@@ -264,7 +263,6 @@ extension LoggedInSummaryActionHandlerTests {
                                         shippingAddress: checkout?.shippingAddress,
                                         billingAddress: checkout?.billingAddress,
                                         paymentMethod: checkout?.payment.selected?.method,
-                                        shippingPrice: Money.Zero,
                                         totalPrice: totalPrice,
                                         delivery: checkout?.delivery)
     }
