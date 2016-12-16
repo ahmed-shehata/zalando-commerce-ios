@@ -18,19 +18,9 @@ module Calypso
       exec_tests scheme, tries
     end
 
-    desc 'build [scheme]', 'Builds given scheme'
-    def build(scheme = SCHEME_UNIT_TESTS)
-      exec_build scheme
-    end
-
-    desc 'analyze [scheme]', 'Analyzes given scheme'
-    def analyze(scheme = SCHEME_UNIT_TESTS)
-      exec_analyze scheme
-    end
-
-    desc 'clean [scheme]', 'Cleans given scheme'
-    def clean(scheme = SCHEME_UNIT_TESTS)
-      exec_clean scheme
+    desc 'cmd xcode_command [scheme]', "Runs given command with default arguments and scheme (#{SCHEME_UNIT_TESTS})"
+    def cmd(cmd, scheme = SCHEME_UNIT_TESTS)
+      exec_cmd cmd, scheme
     end
 
     private
@@ -56,16 +46,8 @@ module Calypso
       end
     end
 
-    def exec_clean(scheme)
-      run format_build_cmd('clean', scheme)
-    end
-
-    def exec_build(scheme)
-      run format_build_cmd('build', scheme)
-    end
-
-    def exec_analyze(scheme)
-      run format_build_cmd('analyze', scheme)
+    def exec_cmd(cmd, scheme)
+      run format_build_cmd(cmd, scheme)
     end
 
     def base_build_cmd(workspace = WORKSPACE, *args)
@@ -73,7 +55,7 @@ module Calypso
     end
 
     def format_build_cmd(cmd, scheme = nil, *args)
-      scheme = scheme.nil? ? nil : "-scheme #{scheme}"
+      scheme = scheme.nil? ? nil : "-scheme '#{scheme}'"
       cmd = base_build_cmd(WORKSPACE, cmd, scheme, args)
 
       if env_skip_xcpretty?

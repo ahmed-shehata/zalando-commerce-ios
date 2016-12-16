@@ -19,7 +19,7 @@ private extension AppLogSeverity {
 final class PrintLogger: Logger {
 
     var verbose: Bool = false
-    var severity: AppLogSeverity = isDebug() ? .debug : .message
+    var severity: AppLogSeverity = Debug.isEnabled ? .debug : .message
     var outputStream: TextOutputStream = StdoutOutputStream()
 
     fileprivate let dateFormatter: DateFormatter = {

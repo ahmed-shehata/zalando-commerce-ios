@@ -14,32 +14,32 @@ class ConfigTests: XCTestCase {
     func testOptionInitialization() {
         let config = Config.forTests()
 
-        expect(config.catalogURL).to(equal(TestConfig.catalogURL))
-        expect(config.checkoutURL).to(equal(TestConfig.checkoutURL))
-        expect(config.loginURL).to(equal(TestConfig.loginURL))
-        expect(config.clientId).to(equal(TestOptions.clientId))
-        expect(config.salesChannel.identifier).to(equal(TestOptions.salesChannel))
-        expect(config.salesChannel.termsAndConditionsURL).to(equal(URL(validURL: TestConfig.tocURL)))
+        expect(config.catalogURL).to(equal(TestConsts.catalogURL))
+        expect(config.checkoutURL).to(equal(TestConsts.checkoutURL))
+        expect(config.loginURL).to(equal(TestConsts.loginURL))
+        expect(config.clientId).to(equal(TestConsts.clientId))
+        expect(config.salesChannel.identifier).to(equal(TestConsts.salesChannel))
+        expect(config.salesChannel.termsAndConditionsURL).to(equal(URL(validURL: TestConsts.tocURL)))
     }
 
     func testReadingLanguageFromConfigWhenNoInterfaceLanguageGiven() {
-        let options = Options(clientId: TestOptions.clientId, salesChannel: TestOptions.salesChannel)
+        let options = Options(clientId: TestConsts.clientId, salesChannel: TestConsts.salesChannel)
         let config = Config.forTests(options: options)
 
-        expect(config.salesChannel.locale.identifier).to(equal(TestConfig.configLocale))
-        expect(config.interfaceLocale.identifier).to(equal(TestConfig.configLocale))
+        expect(config.salesChannel.locale.identifier).to(equal(TestConsts.configLocale))
+        expect(config.interfaceLocale.identifier).to(equal(TestConsts.configLocale))
     }
 
     func testUseInterfaceLanugageWithConfigCountry() {
         let config = Config.forTests()
 
-        expect(config.salesChannel.locale.identifier).to(equal(TestConfig.configLocale))
-        expect(config.interfaceLocale.identifier).to(equal("\(TestOptions.interfaceLanguage)_\(TestConfig.configCountry)"))
+        expect(config.salesChannel.locale.identifier).to(equal(TestConsts.configLocale))
+        expect(config.interfaceLocale.identifier).to(equal("\(TestConsts.interfaceLanguage)_\(TestConsts.configCountry)"))
     }
 
     func testInvalidSalesChannel() {
         let json = Config.jsonForTests()
-        let options = Options(clientId: TestOptions.clientId, salesChannel: "INVALID")
+        let options = Options(clientId: TestConsts.clientId, salesChannel: "INVALID")
         let config = Config(json: json, options: options)
 
         expect(config).to(beNil())
