@@ -2,7 +2,5 @@
 
 cd ..
 
-ruby -v
-bundle update
-bundle exec ./calypso.rb pod validate --local
+pod lib lint AtlasSDK.podspec --allow-warnings
 
