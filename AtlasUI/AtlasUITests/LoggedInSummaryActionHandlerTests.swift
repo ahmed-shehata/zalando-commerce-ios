@@ -262,7 +262,7 @@ extension LoggedInSummaryActionHandlerTests {
         return CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit,
                                         shippingAddress: checkout?.shippingAddress,
                                         billingAddress: checkout?.billingAddress,
-                                        paymentMethod: checkout?.payment.selected?.method,
+                                        paymentMethod: checkout?.payment.selected?.method?.localizedTitle,
                                         totalPrice: totalPrice,
                                         delivery: checkout?.delivery)
     }

@@ -74,7 +74,7 @@ extension CheckoutSummaryDataModel {
         self.selectedArticleUnit = selectedArticleUnit
         self.shippingAddress = addresses?.shippingAddress ?? cartCheckout?.checkout?.shippingAddress
         self.billingAddress = addresses?.billingAddress ?? cartCheckout?.checkout?.billingAddress
-        self.paymentMethod = cartCheckout?.checkout?.payment.selected?.method
+        self.paymentMethod = cartCheckout?.checkout?.payment.selected?.method?.localizedTitle
         self.totalPrice = cartCheckout?.cart?.grossTotal ?? selectedArticleUnit.price
         self.delivery = cartCheckout?.checkout?.delivery
         self.email = nil
@@ -85,7 +85,7 @@ extension CheckoutSummaryDataModel {
         self.selectedArticleUnit = selectedArticleUnit
         self.shippingAddress = order.shippingAddress
         self.billingAddress = order.billingAddress
-        self.paymentMethod = checkout?.payment.selected?.method
+        self.paymentMethod = checkout?.payment.selected?.method?.localizedTitle
         self.totalPrice = order.grossTotal
         self.delivery = checkout?.delivery
         self.email = nil
@@ -96,7 +96,7 @@ extension CheckoutSummaryDataModel {
         self.selectedArticleUnit = selectedArticleUnit
         self.shippingAddress = addresses?.shippingAddress ?? guestCheckout?.shippingAddress
         self.billingAddress = addresses?.billingAddress ?? guestCheckout?.billingAddress
-        self.paymentMethod = guestCheckout?.payment.method
+        self.paymentMethod = guestCheckout?.payment.method.localizedTitle
         self.totalPrice = guestCheckout?.cart.grossTotal ?? selectedArticleUnit.price
         self.delivery = guestCheckout?.delivery
         self.email = email
@@ -107,11 +107,22 @@ extension CheckoutSummaryDataModel {
         self.selectedArticleUnit = selectedArticleUnit
         self.shippingAddress = guestOrder.shippingAddress
         self.billingAddress = guestOrder.billingAddress
-        self.paymentMethod = guestCheckout?.payment.method
+        self.paymentMethod = guestCheckout?.payment.method.localizedTitle
         self.totalPrice = guestOrder.grossTotal
         self.delivery = guestCheckout?.delivery
         self.email = email
         self.orderNumber = guestOrder.orderNumber
+    }
+
+}
+
+extension PaymentMethodType {
+
+    var localizedTitle: String {
+        switch self {
+        case .unrecognized(let rawValue): return rawValue
+        default: return Localizer.format(string: "paymentMethod.\(rawValue)")
+        }
     }
 
 }
