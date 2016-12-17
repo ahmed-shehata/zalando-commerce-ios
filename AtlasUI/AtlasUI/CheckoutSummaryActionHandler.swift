@@ -46,4 +46,8 @@ extension CheckoutSummaryActionHandler {
         return CheckoutAddresses(shippingAddress: shippingAddress, billingAddress: billingAddress)
     }
 
+    var hasAddresses: Bool {
+        return shippingAddress != nil && billingAddress != nil
+    }
+
 }

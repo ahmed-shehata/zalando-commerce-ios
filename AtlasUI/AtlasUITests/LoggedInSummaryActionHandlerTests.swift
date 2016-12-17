@@ -12,6 +12,7 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
 
     var mockedDataSourceDelegate: CheckoutSummaryActionHandlerDataSourceDelegateMock?
     var actionHandler: LoggedInSummaryActionHandler?
+    let window = UIWindow()
 
     override func setUp() {
         super.setUp()
@@ -171,6 +172,18 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
         expect(UserMessage.errorDisplayed).toEventually(beTrue())
     }
 
+    func testShippingAddressWithNoAddresses() {
+        AtlasAPIClient.shared?.authorize(withToken: "TestTokenWithoutAddresses")
+        actionHandler?.handleShippingAddressSelection()
+        expect(UIApplication.topViewController() as? UIAlertController).toNotEventually(beNil())
+    }
+
+    func testBillingAddressWithNoAddresses() {
+        AtlasAPIClient.shared?.authorize(withToken: "TestTokenWithoutAddresses")
+        actionHandler?.handleBillingAddressSelection()
+        expect(UIApplication.topViewController() as? UIAlertController).toNotEventually(beNil())
+    }
+
 }
 
 extension LoggedInSummaryActionHandlerTests {
@@ -216,6 +229,8 @@ extension LoggedInSummaryActionHandlerTests {
     fileprivate func registerAtlasUIViewController(forSKU sku: String) {
         let atlasUIViewController = AtlasUIViewController(forSKU: sku)
         _ = atlasUIViewController.view // load the view
+        self.window.rootViewController = atlasUIViewController
+        self.window.makeKeyAndVisible()
         try! AtlasUI.shared().register { atlasUIViewController }
     }
 

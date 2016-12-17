@@ -21,6 +21,7 @@ extension HttpServer {
         addAuthorizeEndpoint()
         addRedirectEndpoint()
         addGuestOrder()
+        addAddresses()
     }
 
     func start(at url: URL, forceIPv4: Bool, timeout: TimeInterval) throws {
