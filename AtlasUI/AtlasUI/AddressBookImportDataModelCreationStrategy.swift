@@ -6,7 +6,6 @@ import Foundation
 import ContactsUI
 import AtlasSDK
 
-// swiftlint:disable:next type_name
 class AddressBookImportDataModelCreationStrategy: NSObject, AddressDataModelCreationStrategy {
 
     let completion: AddressDataModelCreationStrategyCompletion
