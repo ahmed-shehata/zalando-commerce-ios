@@ -5,7 +5,7 @@ module Calypso
 
   class Pod < Thor
 
-    PODSPECS = ['AtlasSDK.podspec'].freeze
+    PODSPECS = ['AtlasSDK.podspec', 'AtlasUI.podspec'].freeze
 
     option :local, type: :boolean
     option :silent, type: :boolean
@@ -20,6 +20,7 @@ module Calypso
     end
 
     option :silent, type: :boolean
+    option :verbose, type: :boolean
     desc 'publish', 'Publish new version to CocoaPods'
     def publish
       run_pod 'trunk push', options
