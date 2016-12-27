@@ -63,8 +63,7 @@ extension Options: CustomStringConvertible {
 extension Options {
 
     enum Environment: String {
-        case staging = "staging"
-        case production = "production"
+        case staging, production
 
         var isSandbox: Bool { return self == .staging }
 
@@ -74,9 +73,7 @@ extension Options {
     }
 
     enum ResponseFormat: String {
-        case json = "json"
-        case yaml = "yaml"
-        case properties = "properties"
+        case json, yaml, properties
     }
 
     fileprivate static func defaultConfigurationURL(clientId: String, useSandboxEnvironment: Bool,

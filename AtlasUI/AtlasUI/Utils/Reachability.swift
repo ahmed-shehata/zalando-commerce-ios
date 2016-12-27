@@ -58,8 +58,8 @@ func callback(reachability: SCNetworkReachability, flags: SCNetworkReachabilityF
 
 class Reachability {
 
-    typealias NetworkReachable = (Reachability) -> ()
-    typealias NetworkUnreachable = (Reachability) -> ()
+    typealias NetworkReachable = (Reachability) -> Void
+    typealias NetworkUnreachable = (Reachability) -> Void
 
     enum NetworkStatus: CustomStringConvertible {
 

@@ -11,7 +11,7 @@ extension HttpServer {
         let path = "/redirect"
 
         self[path] = { request in
-            let redirectURL = request.queryParams.filter({ (key, val) in key == "url" }).first?.1 ?? ""
+            let redirectURL = request.queryParams.filter({ key, _ in key == "url" }).first?.1 ?? ""
             return .movedPermanently(redirectURL.removingPercentEncoding ?? redirectURL)
         }
     }

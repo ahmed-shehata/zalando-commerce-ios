@@ -121,7 +121,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
 
 }
 
-// MARK:– Address Screen
+// MARK: – Address Screen
 extension LoggedInSummaryActionHandler {
 
     fileprivate func showAddressListViewController(forShippingAddressWithAddresses addresses: [EquatableAddress]) {
@@ -161,7 +161,7 @@ extension LoggedInSummaryActionHandler {
 
 }
 
-// MARK:– Handle Confirmation
+// MARK: – Handle Confirmation
 extension LoggedInSummaryActionHandler {
 
     fileprivate func handleConfirmation(forOrder order: Order) {
@@ -197,7 +197,7 @@ extension LoggedInSummaryActionHandler {
 
 }
 
-// MARK:– Create CartCheckout
+// MARK: – Create CartCheckout
 extension LoggedInSummaryActionHandler {
 
     fileprivate func createCartCheckout(completion: @escaping CreateCartCheckoutCompletion) {
@@ -231,7 +231,7 @@ extension LoggedInSummaryActionHandler {
 
 }
 
-// MARK:– Update DataModel
+// MARK: – Update DataModel
 extension LoggedInSummaryActionHandler {
 
     fileprivate func updateCheckout() {
@@ -269,7 +269,7 @@ extension LoggedInSummaryActionHandler {
 
 }
 
-// MARK:– Address Modifications
+// MARK: – Address Modifications
 extension LoggedInSummaryActionHandler {
 
     fileprivate func updated(address: EquatableAddress) {

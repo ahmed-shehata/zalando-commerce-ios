@@ -21,5 +21,4 @@ class EmptyAddressDataModelCreationStrategy: AddressDataModelCreationStrategy {
 
 class StandardAddressDataModelCreationStrategy: EmptyAddressDataModelCreationStrategy {}
 
-// swiftlint:disable:next type_name
 class PickupPointAddressDataModelCreationStrategy: EmptyAddressDataModelCreationStrategy {}

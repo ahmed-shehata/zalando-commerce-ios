@@ -13,7 +13,7 @@ struct Async {
     }
 
     @discardableResult
-    static func main(block: @escaping () -> ()) -> Async {
+    static func main(block: @escaping () -> Void) -> Async {
         return dispatchAsync(on: .main, block: block)
     }
 
@@ -23,30 +23,30 @@ struct Async {
     }
 
     @discardableResult
-    static func userInteractive(block: @escaping () -> ()) -> Async {
+    static func userInteractive(block: @escaping () -> Void) -> Async {
         return dispatchAsync(on: .userInteractive, block: block)
     }
 
     @discardableResult
-    static func userInitiated(block: @escaping () -> ()) -> Async {
+    static func userInitiated(block: @escaping () -> Void) -> Async {
         return dispatchAsync(on: .userInitiated, block: block)
     }
 
     @discardableResult
-    static func utility(block: @escaping () -> ()) -> Async {
+    static func utility(block: @escaping () -> Void) -> Async {
         return dispatchAsync(on: .utility, block: block)
     }
 
     @discardableResult
-    static func background(block: @escaping () -> ()) -> Async {
+    static func background(block: @escaping () -> Void) -> Async {
         return dispatchAsync(on: .background, block: block)
     }
 
-    private static func dispatchAsync(on qos: DispatchQoS.QoSClass, block: @escaping () -> ()) -> Async {
+    private static func dispatchAsync(on qos: DispatchQoS.QoSClass, block: @escaping () -> Void) -> Async {
         return dispatchAsync(on: DispatchQueue.global(qos: qos), block: block)
     }
 
-    private static func dispatchAsync(on queue: DispatchQueue, after delay: TimeInterval = 0, block: @escaping () -> ()) -> Async {
+    private static func dispatchAsync(on queue: DispatchQueue, after delay: TimeInterval = 0, block: @escaping () -> Void) -> Async {
         let workItem = DispatchWorkItem(block: block)
         if delay == 0 {
             queue.async(execute: workItem)
