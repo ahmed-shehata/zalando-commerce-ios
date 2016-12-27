@@ -5,10 +5,11 @@ module Calypso
 
   class Pod < Thor
 
+    PODSPECS = ['AtlasSDK.podspec', 'AtlasUI.podspec'].freeze
+
     option :local, type: :boolean
     option :silent, type: :boolean
     option :verbose, type: :boolean
-    option :clean, type: :boolean, default: true
     desc 'validate', 'Validates and builds pod'
     def validate
       if options[:local]
@@ -19,6 +20,7 @@ module Calypso
     end
 
     option :silent, type: :boolean
+    option :verbose, type: :boolean
     desc 'publish', 'Publish new version to CocoaPods'
     def publish
       run_pod 'trunk push', options
@@ -35,9 +37,8 @@ module Calypso
       elsif options[:verbose]
         args << '--verbose'
       end
-      args << (options[:clean] ? '' : '--no-clean')
 
-      run "pod #{subcommand} AtlasSDK.podspec #{args.join ' '}"
+      run "pod #{subcommand} #{PODSPECS.join ' '} #{args.join ' '}"
     end
 
   end
