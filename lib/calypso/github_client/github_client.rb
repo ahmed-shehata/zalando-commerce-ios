@@ -63,6 +63,7 @@ module Calypso
         headers.merge! standard_headers
         response = HTTParty.delete(url, headers: headers, query: query)
         log_abort response unless response.success?
+        response
       end
 
       def post(url, headers: {}, query: {}, body: {})
@@ -70,6 +71,7 @@ module Calypso
         headers.merge! standard_headers
         response = HTTParty.post(url, headers: headers, query: query, body: body.to_json)
         log_abort response unless response.success?
+        response
       end
 
       def standard_headers
