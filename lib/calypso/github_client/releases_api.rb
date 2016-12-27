@@ -34,7 +34,8 @@ module Calypso
 
       def issue_fixed?(issue)
         fixed = issue['labels'].select { |l| l['name'] == 'wontfix' }.count.zero?
-        DateTime.parse(issue['closed_at']) > latest_release_date && fixed
+        closed_after_latest_release = DateTime.parse(issue['closed_at']) > latest_release_date
+        closed_after_latest_release && fixed
       end
 
     end
