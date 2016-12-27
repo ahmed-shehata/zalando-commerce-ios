@@ -87,6 +87,7 @@ module Calypso
     end
 
     def push_new_version(options)
+      dry_run 'git push', real_run: options[:push]
       dry_run 'git push --tags', real_run: options[:push]
     end
 
