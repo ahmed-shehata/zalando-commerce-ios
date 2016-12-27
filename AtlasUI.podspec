@@ -35,7 +35,9 @@ calls and provide you high-level business objects to deal with.
     git: 'https://github.com/zalando-incubator/atlas-ios.git',
     tag: spec.version.to_s
   }
-  spec.source_files = 'AtlasUI/AtlasUI/**/*.{h,m,swift}'
+  spec.source_files = 'AtlasUI/AtlasUI/**/*.{h,m,swift}', \
+                      'AtlasSDK/AtlasSDK/Utils/StringOperators.swift', \
+                      'AtlasSDK/AtlasSDK/Utils/Debug.swift'
   spec.ios.resources = ['AtlasUI/AtlasUI/**/*.xcassets', 'AtlasUI/AtlasUI/**/Localizable.strings']
   spec.ios.frameworks = 'Foundation', 'UIKit'
   spec.dependency 'AtlasSDK', "= #{spec.version}"
