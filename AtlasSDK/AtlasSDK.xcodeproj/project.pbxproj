@@ -527,7 +527,6 @@
 				A04E7980997323086729450F65FEEF1D /* Payment.swift */,
 				F6CF52ED3F20B2F59D5E6096E498A18B /* PaymentMethod.swift */,
 				1F74E6F0CBCE6D7E27184F239E9438F9 /* PickupPoint.swift */,
-				3ECCE8130C31F3C04713FD6782E20E5A /* Price.swift */,
 				E9541E481E02C0450023880E /* PaymentMethodType.swift */,
 			);
 			name = Models;
@@ -1276,7 +1275,6 @@
 				INSTALL_GROUP = everyone;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
