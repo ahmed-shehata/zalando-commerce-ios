@@ -12,7 +12,7 @@ module Calypso
 
     option :tag, type: :boolean, default: true
     option :push, type: :boolean, default: true
-    option :master, type: :boolean, default: true
+    option :master, type: :boolean, default: false
     option :dirty, type: :boolean, default: false
     desc 'create', 'Creates new version: updates plist files, add a tag and push to the GitHub'
     def create(version = nil)
