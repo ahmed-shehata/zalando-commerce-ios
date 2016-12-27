@@ -5,6 +5,8 @@ module Calypso
 
   class Pod < Thor
 
+    PODSPECS = ['AtlasSDK.podspec'].freeze
+
     option :local, type: :boolean
     option :silent, type: :boolean
     option :verbose, type: :boolean
@@ -37,7 +39,7 @@ module Calypso
       end
       args << (options[:clean] ? '' : '--no-clean')
 
-      run "pod #{subcommand} AtlasSDK.podspec #{args.join ' '}"
+      run "pod #{subcommand} #{PODSPECS.join ' '} #{args.join ' '}"
     end
 
   end

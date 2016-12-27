@@ -10,7 +10,7 @@
 		016CEEB704BC854DD45A432B7BF86639 /* AnimationDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE803447FAE67D333D86C06DBB03AF20 /* AnimationDuration.swift */; };
 		03075F34C90298D38035310368D818E6 /* AddressViewModelCreationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36275A1DACB3B1830E07EEE0CBB6D9C7 /* AddressViewModelCreationStrategy.swift */; };
 		04571E19605FDD77134ACCAFA10A2710 /* AddressBookImportDataModelCreationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66D969F2F12A9B65C02F88E68B0C1B9 /* AddressBookImportDataModelCreationStrategy.swift */; };
-		04F28264BE2A927E330D3459B87A91D2 /* AtlasUI-StreetAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC3D0FCDE4649756A9FB6C987C9064 /* AtlasUI-StreetAddress.swift */; };
+		04F28264BE2A927E330D3459B87A91D2 /* StreetAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC3D0FCDE4649756A9FB6C987C9064 /* StreetAddress.swift */; };
 		0609FEB6D8F704C68CCF1051ACDEDF56 /* CheckoutSummaryRootStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A709BBC960C3FA3E161DC6DA92C2831 /* CheckoutSummaryRootStackView.swift */; };
 		06501FA9461ACAAE48E6766F81E3F4BB /* AddressFormStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE728E404BE0C4805F301575D7A500 /* AddressFormStackView.swift */; };
 		098CF939ED1E96935799A52EE6A5A6B3 /* LoggedInSummaryActionHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71205ADF1C3C36753FA064DFB54EC03 /* LoggedInSummaryActionHandlerTests.swift */; };
@@ -51,20 +51,20 @@
 		65BCA936AE236A318847ECE6DCA4A3B0 /* AddAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EEA970F03A677415B3AC4CB774D953 /* AddAddressTableViewCell.swift */; };
 		68CE713AF956812A89FFC4227EBBE35D /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770C7E3629382BA8B0B01FB29599C2CC /* UIViewController.swift */; };
 		6B3DB46A8A039022D27D1B3BEDE40876 /* AtlasMockAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB50EAB4D0B50A73E0673740617BEDE3 /* AtlasMockAPI.framework */; };
-		712A5CE53BB2C82B8F3C0E04225A8409 /* AtlasUI-FormattableAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A84C9399E270328DF5494004CB85C5 /* AtlasUI-FormattableAddress.swift */; };
+		712A5CE53BB2C82B8F3C0E04225A8409 /* FormattableAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A84C9399E270328DF5494004CB85C5 /* FormattableAddress.swift */; };
 		7629410B747CDC9D6FD8015EAE15F936 /* FullScreenErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B9AEFEA853EB9FD83162CF1D3F62CC /* FullScreenErrorViewController.swift */; };
 		78FC61A7719B1F7E9477B4BDE0F9B45A /* AtlasUIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676B41DF9EC48A113436B2F194DB7AFE /* AtlasUIClient.swift */; };
 		79175AD49456E48DC6B393EB6F62053A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC182F5F2F24D9AF740830B9B50A9 /* UIColor.swift */; };
 		7E9443B46A96E4C94DDF32C3B711C137 /* UnitSizeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2212DE66FE76CB7293827065AB636FF /* UnitSizeTableViewCell.swift */; };
 		8133924D1DFA97C000AC3DE1 /* URLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8133924C1DFA97C000AC3DE1 /* URLTests.swift */; };
-		816405B71DF84EB600C7BAF0 /* AtlasUI-URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816405B61DF84EB600C7BAF0 /* AtlasUI-URLRequest.swift */; };
+		816405B71DF84EB600C7BAF0 /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816405B61DF84EB600C7BAF0 /* URLRequest.swift */; };
 		816405BF1DF869B300C7BAF0 /* URLRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816405BE1DF869B300C7BAF0 /* URLRequestTests.swift */; };
 		818B52781E02F5520023C7A1 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818B52771E02F5520023C7A1 /* Debug.swift */; };
 		818B527C1E02F6C30023C7A1 /* StringOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818B527B1E02F6C30023C7A1 /* StringOperators.swift */; };
 		8195AA6D1DF58DD800D9AA7B /* PaymentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8195AA6C1DF58DD800D9AA7B /* PaymentStatus.swift */; };
 		81B546CC1DF070D70038BBF4 /* TestOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B546CB1DF070D70038BBF4 /* TestOptions.swift */; };
 		81CA481E1E02C41F00D435B0 /* TestConsts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CA481D1E02C41F00D435B0 /* TestConsts.swift */; };
-		82B9067A304377746BE15E2EE6A545EF /* AtlasUI-URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0395160F6F6217A89A8F9C22944D2A /* AtlasUI-URL.swift */; };
+		82B9067A304377746BE15E2EE6A545EF /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0395160F6F6217A89A8F9C22944D2A /* URL.swift */; };
 		82FEDC4FA09CC55CE1D9224BCDED9062 /* FormValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E272DADD96290ADDD55009F293229EAD /* FormValidatorTests.swift */; };
 		8583B7276C6213867615703BA95BC77D /* CheckoutSummaryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24289A7D3F980C05C4FEF5B9AB500494 /* CheckoutSummaryDataModel.swift */; };
 		864F340AF805B09712DAB1A854B45608 /* LoggedInUpdateAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8575CDD854A7749A3B2E199B53264213 /* LoggedInUpdateAddressActionHandler.swift */; };
@@ -98,7 +98,7 @@
 		B19EC674E5B190AD3AA185A918D035B2 /* AtlasLoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E037A6A7167D16E00A85D7FA766F550 /* AtlasLoginError.swift */; };
 		B38C79AC7967CA0C0249132BA67FC54D /* CheckoutSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6AC4686F0CD4C14C72BEF9B2DCFBA5 /* CheckoutSummaryViewController.swift */; };
 		B4399FAB71827F9E8AE99CCADA530BCD /* LoggedInAddressListActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB91A3E98E9C3A59DF04CB6908512371 /* LoggedInAddressListActionHandler.swift */; };
-		B96E746BEA32C49AA7B206F00C144F57 /* AtlasUI-String.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCC0DB119DFC404BB122ED5E6E2861F /* AtlasUI-String.swift */; };
+		B96E746BEA32C49AA7B206F00C144F57 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCC0DB119DFC404BB122ED5E6E2861F /* String.swift */; };
 		BA58402ECC6740F060DF78D7F3E27028 /* EmptyAddressDataModelCreationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA3C34452FDEBE3580150200D217D64 /* EmptyAddressDataModelCreationStrategy.swift */; };
 		BACEB4C366BB6879BCC21BADA5CCC0FC /* SizeListTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376076D63BB2E3F3C6321F97D60A73ED /* SizeListTableViewDelegate.swift */; };
 		BC1ECCD35BAA9A66EA505B1C454025E3 /* UIBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640810DC34806DF7B0FBAEA4DB0123CD /* UIBuilder.swift */; };
@@ -107,7 +107,7 @@
 		BF0BBDDAE28AF6223ACC9BA609E41945 /* NotLoggedInSummaryActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DF36B19420B6047EC88680B80664F3 /* NotLoggedInSummaryActionHandler.swift */; };
 		C233CC7F6C4F9387883F1F4ACA455596 /* LocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1ECB5B17D15F82BF8604EBB3700CA3 /* LocalizationTests.swift */; };
 		C42337E9CAB452C0BCBCD05D6C976969 /* AddressListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4DAB61E4749CCDE76915D5F4818294 /* AddressListViewController.swift */; };
-		C4FDE37893882E7F6847EC29DA290056 /* AtlasUI-AtlasAPIResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EDD606834D019821F970825DE55019 /* AtlasUI-AtlasAPIResult.swift */; };
+		C4FDE37893882E7F6847EC29DA290056 /* AtlasAPIResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EDD606834D019821F970825DE55019 /* AtlasAPIResult.swift */; };
 		CB5E9906914C3BF8E9E5DA01DD7F16F7 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971465BF293DCFB809C2B0F1512B4CE3 /* Async.swift */; };
 		CBA65BA35406382B2C648060DA6EA216 /* OrderPlacedSummaryActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A2B5616332981750095E9414ED54F9 /* OrderPlacedSummaryActionHandler.swift */; };
 		D1597746177CEB8207EFB773413174DF /* TextFieldInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828CB7B3C433014C119561A964D809BC /* TextFieldInputViewModel.swift */; };
@@ -116,7 +116,7 @@
 		D55BE43D2B403796900F316E5D71E5DC /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE97CB84083DD00DA5045AB38EA0038 /* UIApplication.swift */; };
 		D9CE3553FFE09F2A82794C7A9E45F4F1 /* TextFieldInputStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733421E924B47BF0FE5766446A269719 /* TextFieldInputStackView.swift */; };
 		DB0CF7E26CC03119A5B25B7E21F41CF1 /* LegalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF6A746CDDB4E138234C19B108E6A72 /* LegalController.swift */; };
-		DD3206A638AD230D94C5721CF34EE767 /* AtlasUI-AtlasResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452DCE3D6A2F5135CACF01CDB0584A20 /* AtlasUI-AtlasResult.swift */; };
+		DD3206A638AD230D94C5721CF34EE767 /* AtlasResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452DCE3D6A2F5135CACF01CDB0584A20 /* AtlasResult.swift */; };
 		DE4482A9091E62348223761D4C58D008 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA19C45C79A94472331D134BC9895CA /* UIView.swift */; };
 		E0D0E4EC009CDEA4D16C8A2726F24643 /* AsyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B55AD6C5A60999BD38E9F067F32E6B /* AsyncTests.swift */; };
 		E65505C3FCACDEC23CC634675587F5F1 /* LoggedInAddressListActionHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B8053E0362F7064F15C167BC228236 /* LoggedInAddressListActionHandlerTests.swift */; };
@@ -210,7 +210,7 @@
 		3EF6A746CDDB4E138234C19B108E6A72 /* LegalController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegalController.swift; sourceTree = "<group>"; };
 		417B9ADA720A948E8E1F8F875F349D62 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		42DF36B19420B6047EC88680B80664F3 /* NotLoggedInSummaryActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotLoggedInSummaryActionHandler.swift; sourceTree = "<group>"; };
-		452DCE3D6A2F5135CACF01CDB0584A20 /* AtlasUI-AtlasResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AtlasUI-AtlasResult.swift"; sourceTree = "<group>"; };
+		452DCE3D6A2F5135CACF01CDB0584A20 /* AtlasResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasResult.swift; sourceTree = "<group>"; };
 		4B5F2A46508AF365A825D9FDECADE941 /* SizeListSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeListSelectionViewController.swift; sourceTree = "<group>"; };
 		4EED7D8EF8D5EB7448D7EF047681628A /* AtlasReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasReachability.swift; sourceTree = "<group>"; };
 		516FBBE5C6D50ED98656F3EDA7EB6C06 /* CheckoutTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutTransitioningDelegate.swift; sourceTree = "<group>"; };
@@ -234,7 +234,7 @@
 		808C394E80E745736133ADBD0E2938C8 /* AtlasUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AtlasUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80F13460B6B17606CC65E38CE6A4716C /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		8133924C1DFA97C000AC3DE1 /* URLTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLTests.swift; sourceTree = "<group>"; };
-		816405B61DF84EB600C7BAF0 /* AtlasUI-URLRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AtlasUI-URLRequest.swift"; sourceTree = "<group>"; };
+		816405B61DF84EB600C7BAF0 /* URLRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequest.swift; sourceTree = "<group>"; };
 		816405BB1DF8524E00C7BAF0 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		816405BC1DF8525700C7BAF0 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		816405BD1DF8525C00C7BAF0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -248,7 +248,7 @@
 		82D2ADD240889020E56AC601593CC418 /* FormValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValidator.swift; sourceTree = "<group>"; };
 		83316EC4886ACF067F2DE376AB807478 /* URLAuthorizationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLAuthorizationTests.swift; sourceTree = "<group>"; };
 		8398317FEC21A1E65AB06E3EF9B29A2B /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = ../../Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
-		83A84C9399E270328DF5494004CB85C5 /* AtlasUI-FormattableAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AtlasUI-FormattableAddress.swift"; sourceTree = "<group>"; };
+		83A84C9399E270328DF5494004CB85C5 /* FormattableAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormattableAddress.swift; sourceTree = "<group>"; };
 		842E43B5DEB9E0807F43553F358C687F /* CheckoutSummaryDeliveryStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryDeliveryStackView.swift; sourceTree = "<group>"; };
 		8575CDD854A7749A3B2E199B53264213 /* LoggedInUpdateAddressActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedInUpdateAddressActionHandler.swift; sourceTree = "<group>"; };
 		8636881F338407137FEFA7123766D711 /* BillingAddressViewModelCreationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingAddressViewModelCreationStrategy.swift; sourceTree = "<group>"; };
@@ -265,7 +265,7 @@
 		A329851A2FF23DF93E27B7D1E450D524 /* TestsHostAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsHostAppDelegate.swift; sourceTree = "<group>"; };
 		A33990920497814A8A80070EA1B5EA0D /* BorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderView.swift; sourceTree = "<group>"; };
 		A44E17ADA3E78EC29CF5C4871F8DBAEB /* LoggedInSummaryActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedInSummaryActionHandler.swift; sourceTree = "<group>"; };
-		A4EDD606834D019821F970825DE55019 /* AtlasUI-AtlasAPIResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AtlasUI-AtlasAPIResult.swift"; sourceTree = "<group>"; };
+		A4EDD606834D019821F970825DE55019 /* AtlasAPIResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasAPIResult.swift; sourceTree = "<group>"; };
 		A57EEEDE1D66FC2ED33D1A99DC35A792 /* Localizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizer.swift; sourceTree = "<group>"; };
 		A66D969F2F12A9B65C02F88E68B0C1B9 /* AddressBookImportDataModelCreationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBookImportDataModelCreationStrategy.swift; sourceTree = "<group>"; };
 		A754353C97F26BBC2E518BB80BB9F4BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -277,7 +277,7 @@
 		B5494239851A207094AA7E1F76EFB842 /* Injector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Injector.swift; sourceTree = "<group>"; };
 		BB50EAB4D0B50A73E0673740617BEDE3 /* AtlasMockAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AtlasMockAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE2FC0AE7631C1F62076EA9FCAEEE5C9 /* AtlasSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AtlasSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BF0395160F6F6217A89A8F9C22944D2A /* AtlasUI-URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AtlasUI-URL.swift"; sourceTree = "<group>"; };
+		BF0395160F6F6217A89A8F9C22944D2A /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		BFBCE11B274F25D8CDC220276F89179D /* CheckoutSummaryPriceStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryPriceStackView.swift; sourceTree = "<group>"; };
 		C1E4728D40DB91AAFB177DC453685F05 /* LoaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoaderView.swift; path = ../LoaderView.swift; sourceTree = "<group>"; };
 		C71205ADF1C3C36753FA064DFB54EC03 /* LoggedInSummaryActionHandlerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedInSummaryActionHandlerTests.swift; sourceTree = "<group>"; };
@@ -297,7 +297,7 @@
 		DB91A3E98E9C3A59DF04CB6908512371 /* LoggedInAddressListActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedInAddressListActionHandler.swift; sourceTree = "<group>"; };
 		DBCD16D68816C1E45EC44175CDD43DA5 /* AtlasUIErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasUIErrors.swift; sourceTree = "<group>"; };
 		DD2C09882EF82C93CC8615C9E0F59251 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		DFCC0DB119DFC404BB122ED5E6E2861F /* AtlasUI-String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AtlasUI-String.swift"; sourceTree = "<group>"; };
+		DFCC0DB119DFC404BB122ED5E6E2861F /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		E2644DB2E806C8F07CECE81835A0326C /* OAuth2LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2LoginViewController.swift; sourceTree = "<group>"; };
 		E272DADD96290ADDD55009F293229EAD /* FormValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValidatorTests.swift; sourceTree = "<group>"; };
 		E97719951DF6F49600AEE0EB /* UITestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITestCase.swift; sourceTree = "<group>"; };
@@ -313,7 +313,7 @@
 		EB063447B26DE3D42F7736012B8921AA /* AddressListActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressListActionHandler.swift; sourceTree = "<group>"; };
 		EE803447FAE67D333D86C06DBB03AF20 /* AnimationDuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationDuration.swift; sourceTree = "<group>"; };
 		F3A01B45B1F4C0D9775396AA422A78BA /* BannerErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerErrorViewController.swift; sourceTree = "<group>"; };
-		F5BC3D0FCDE4649756A9FB6C987C9064 /* AtlasUI-StreetAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AtlasUI-StreetAddress.swift"; sourceTree = "<group>"; };
+		F5BC3D0FCDE4649756A9FB6C987C9064 /* StreetAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreetAddress.swift; sourceTree = "<group>"; };
 		F9494F7947C24BD2087FE22EBE20BFCD /* CheckoutSummaryAddressStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryAddressStackView.swift; sourceTree = "<group>"; };
 		FCDAB74F0608C1A0ABE505D7D3498B40 /* AddressRowViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressRowViewCell.swift; sourceTree = "<group>"; };
 		FCE97CB84083DD00DA5045AB38EA0038 /* UIApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
@@ -452,12 +452,12 @@
 				971465BF293DCFB809C2B0F1512B4CE3 /* Async.swift */,
 				4EED7D8EF8D5EB7448D7EF047681628A /* AtlasReachability.swift */,
 				EE803447FAE67D333D86C06DBB03AF20 /* AnimationDuration.swift */,
-				452DCE3D6A2F5135CACF01CDB0584A20 /* AtlasUI-AtlasResult.swift */,
-				A4EDD606834D019821F970825DE55019 /* AtlasUI-AtlasAPIResult.swift */,
-				83A84C9399E270328DF5494004CB85C5 /* AtlasUI-FormattableAddress.swift */,
-				BF0395160F6F6217A89A8F9C22944D2A /* AtlasUI-URL.swift */,
-				F5BC3D0FCDE4649756A9FB6C987C9064 /* AtlasUI-StreetAddress.swift */,
-				DFCC0DB119DFC404BB122ED5E6E2861F /* AtlasUI-String.swift */,
+				452DCE3D6A2F5135CACF01CDB0584A20 /* AtlasResult.swift */,
+				A4EDD606834D019821F970825DE55019 /* AtlasAPIResult.swift */,
+				83A84C9399E270328DF5494004CB85C5 /* FormattableAddress.swift */,
+				BF0395160F6F6217A89A8F9C22944D2A /* URL.swift */,
+				F5BC3D0FCDE4649756A9FB6C987C9064 /* StreetAddress.swift */,
+				DFCC0DB119DFC404BB122ED5E6E2861F /* String.swift */,
 				818B527B1E02F6C30023C7A1 /* StringOperators.swift */,
 				676B41DF9EC48A113436B2F194DB7AFE /* AtlasUIClient.swift */,
 				079F5EB0A67A527798FFCC6CF49C699F /* CNPostalAddress.swift */,
@@ -476,7 +476,7 @@
 				0EA19C45C79A94472331D134BC9895CA /* UIView.swift */,
 				B5494239851A207094AA7E1F76EFB842 /* Injector.swift */,
 				764CDA794B49DC585B031C7C4F5776D5 /* UserMessage.swift */,
-				816405B61DF84EB600C7BAF0 /* AtlasUI-URLRequest.swift */,
+				816405B61DF84EB600C7BAF0 /* URLRequest.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -927,14 +927,14 @@
 				5E39A713BD25EE5E3CEDCD30DD9C8089 /* UIScreen.swift in Sources */,
 				CBA65BA35406382B2C648060DA6EA216 /* OrderPlacedSummaryActionHandler.swift in Sources */,
 				BA58402ECC6740F060DF78D7F3E27028 /* EmptyAddressDataModelCreationStrategy.swift in Sources */,
-				712A5CE53BB2C82B8F3C0E04225A8409 /* AtlasUI-FormattableAddress.swift in Sources */,
+				712A5CE53BB2C82B8F3C0E04225A8409 /* FormattableAddress.swift in Sources */,
 				0B7FB82906D53F680B364DDFD88D814C /* CNPostalAddress.swift in Sources */,
-				82B9067A304377746BE15E2EE6A545EF /* AtlasUI-URL.swift in Sources */,
+				82B9067A304377746BE15E2EE6A545EF /* URL.swift in Sources */,
 				B4399FAB71827F9E8AE99CCADA530BCD /* LoggedInAddressListActionHandler.swift in Sources */,
-				04F28264BE2A927E330D3459B87A91D2 /* AtlasUI-StreetAddress.swift in Sources */,
-				DD3206A638AD230D94C5721CF34EE767 /* AtlasUI-AtlasResult.swift in Sources */,
+				04F28264BE2A927E330D3459B87A91D2 /* StreetAddress.swift in Sources */,
+				DD3206A638AD230D94C5721CF34EE767 /* AtlasResult.swift in Sources */,
 				A31736F594D7934B7DDCDB98E78418EE /* CheckoutSummaryLayout.swift in Sources */,
-				B96E746BEA32C49AA7B206F00C144F57 /* AtlasUI-String.swift in Sources */,
+				B96E746BEA32C49AA7B206F00C144F57 /* String.swift in Sources */,
 				F60151398A735039647F5A24ADB64506 /* SizeListTableViewDataSource.swift in Sources */,
 				8583B7276C6213867615703BA95BC77D /* CheckoutSummaryDataModel.swift in Sources */,
 				D335F80B78F8AD18EC8A079C138A41BF /* AtlasUIErrors.swift in Sources */,
@@ -991,12 +991,12 @@
 				D1597746177CEB8207EFB773413174DF /* TextFieldInputViewModel.swift in Sources */,
 				8D8609A7F30C9F7D15E5E4A905BE4529 /* ToCViewController.swift in Sources */,
 				D55BE43D2B403796900F316E5D71E5DC /* UIApplication.swift in Sources */,
-				816405B71DF84EB600C7BAF0 /* AtlasUI-URLRequest.swift in Sources */,
+				816405B71DF84EB600C7BAF0 /* URLRequest.swift in Sources */,
 				04571E19605FDD77134ACCAFA10A2710 /* AddressBookImportDataModelCreationStrategy.swift in Sources */,
 				BC1ECCD35BAA9A66EA505B1C454025E3 /* UIBuilder.swift in Sources */,
 				3DA9EC5BB5FB16AB5C8D0D054D1B8538 /* CheckoutSummaryActionHandler.swift in Sources */,
 				5D4318C4269DBFE57664762C9940134D /* ShippingAddressViewModelCreationStrategy.swift in Sources */,
-				C4FDE37893882E7F6847EC29DA290056 /* AtlasUI-AtlasAPIResult.swift in Sources */,
+				C4FDE37893882E7F6847EC29DA290056 /* AtlasAPIResult.swift in Sources */,
 				79175AD49456E48DC6B393EB6F62053A /* UIColor.swift in Sources */,
 				170D032BE739B3A96834CDAF3CA1D22C /* UIImage.swift in Sources */,
 				8195AA6D1DF58DD800D9AA7B /* PaymentStatus.swift in Sources */,
