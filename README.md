@@ -19,4 +19,14 @@ articles checkout integration to the 3rd party iOS app in few minutes.
 Our goal is to allow iOS developer integrate and run Zalando Сheckout in
 minutes using just few lines of code.
 
-More documentation on [wiki](../../wiki)
+## Quick-start
+
+* Installation:
+  * [CocoaPods](../../wiki/Installation#cocoapods)
+  * [Carthage](../../wiki/Installation#carthage)
+  * [Manual](../../wiki/Installation#manual)
+* Setup
+  * [via code](../../wiki/Configuration#via-code)
+  * [via Info.plist](../../wiki/Configuration#via-infoplist)
+
+More documentation on [wiki](../../wiki).
