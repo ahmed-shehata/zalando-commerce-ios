@@ -1,8 +1,8 @@
 [![Swift 3.0](https://img.shields.io/badge/Swift-3.0-orange.svg?maxAge=3600)]()
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![CocoaPods](https://img.shields.io/cocoapods/v/AtlasSDK.svg?maxAge=3600)](http://cocoadocs.org/docsets/AtlasSDK)
 [![CocoaPods](https://img.shields.io/cocoapods/p/AtlasSDK.svg?maxAge=3600)](http://cocoadocs.org/docsets/AtlasSDK)
+[![CocoaPods](https://img.shields.io/cocoapods/v/AtlasSDK.svg?maxAge=3600)](http://cocoadocs.org/docsets/AtlasSDK)
 [![CocoaPods](https://img.shields.io/cocoapods/at/AtlasSDK.svg?maxAge=3600)](http://cocoadocs.org/docsets/AtlasSDK)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 [![Build Status](https://travis-ci.org/zalando-incubator/atlas-ios.svg?branch=master)](https://travis-ci.org/zalando-incubator/atlas-ios)
 [![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=57a305cb34a9450100595b71&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/57a305cb34a9450100595b71/build/latest)
