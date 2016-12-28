@@ -11,13 +11,7 @@
 
 # Atlas iOS SDK
 
-Atlas iOS SDK for Zalando Checkout and Catalog APIs.
-
-The purpose of this project is to provide seamless experience of Zalando
-articles checkout integration to the 3rd party iOS app in few minutes.
-
-Our goal is to allow iOS developer integrate and run Zalando Сheckout in
-minutes using just few lines of code.
+`AtlasSDK` is a framework to integrate Zalando Checkout, Guest Checkout and Catalog APIs, with additional `AtlasUI` framework with full UI implementation.
 
 ## Quick Start
 
