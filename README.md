@@ -30,59 +30,6 @@ which could be used with a single fire-and-forget call.
 
 More documentation on [wiki](../wiki)
 
-## Configuration
-
-You need to configure Atlas SDK first and use configured instance variable to interact with AtlasSDK.
-
-### Manual configuration
-
-In order to configure AtlasCheckout manually create an `Options` instance with at least 2 mandatory parameters `clientId` and `salesChannel`:
-
-```swift
-import AtlasSDK
-import AtlasUI
-
-var atlasCheckout: AtlasCheckout?
-
-override func viewDidLoad() {
-	super.viewDidLoad()
-
-	let opts = Options(clientId: "CLIENT_ID", salesChannel: "SALES_CHANNEL")
-
-	AtlasCheckout.configure(opts) { result in
-		if case let .success(checkout) = result {
-    	self.atlasCheckout = checkout
-    }
-  }
-}
-```
-
-### Configuration using Info.plist
-
-You can provide all configuration options application wide using `Info.plist` with the following keys:
-- `ATLASSDK_CLIENT_ID`: String - Client Id (required)
-- `ATLASSDK_SALES_CHANNEL`: String - Sales Channel (required)
-- `ATLASSDK_USE_SANDBOX`: Bool - Indicates whether sandbox environment should be used
-- `ATLASSDK_INTERFACE_LANGUAGE`: String - Checkout interface language
-
-In that case AtlasCheckout configuration is even simpler:
-
-```swift
-import AtlasSDK
-import AtlasUI
-
-var atlasCheckout: AtlasCheckout?
-
-override func viewDidLoad() {
-  super.viewDidLoad()
-
-  AtlasCheckout.configure { result in
-    if case let .success(checkout) = result {
-      self.atlasCheckout = checkout
-    }
-  }
-}
-```
 
 ## Usage
 
