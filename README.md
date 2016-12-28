@@ -15,8 +15,8 @@
 
 ## Quick Start
 
-1. Install: [CocoaPods](../../wiki/Installation#cocoapods), [Carthage](../../wiki/Installation#carthage), or [manual](../../wiki/Installation#manual)
-2. Configure: [via code](../../wiki/Configuration#via-code), or [via Info.plist](../../wiki/Configuration#via-infoplist)
-3. Use: [AtlasUI](../../wiki/AtlasUI-usage)
+1. Installation: [CocoaPods](../../wiki/Installation#cocoapods), [Carthage](../../wiki/Installation#carthage), or [manual](../../wiki/Installation#manual)
+2. Configuration: [via code](../../wiki/Configuration#via-code), or [via Info.plist](../../wiki/Configuration#via-infoplist)
+3. Usage: [AtlasUI](../../wiki/AtlasUI-usage)
 
 More documentation on [wiki](../../wiki).
