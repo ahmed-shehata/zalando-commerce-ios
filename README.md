@@ -30,52 +30,7 @@ which could be used with a single fire-and-forget call.
 
 More documentation on [wiki](../wiki)
 
-
-## Usage
-
-Using AtlasCheckout instance configured previously you can interact with SDK, for example:
-
-* Get customer information
-
- ```swift
- import AtlasSDK
- import AtlasUI
-
- class ViewController: UIViewController {
-
-    @IBAction private func getCustomerTapped(sender: UIButton) {
-      atlasCheckout?.client.customer { result in
-        switch result {
-          case .failure(let error):
-            print("Error: \(error)")
-
-          case .success(let customer):
-            print(customer)
-        }
-      }
-    }
- }
- ```
-
-* Start checkout somewhere in your view controller, e.g. when a user tap on a buy button:
-
- ```swift
- import AtlasSDK
- import AtlasUI
-
- class ViewController: UIViewController {
-	 @IBAction func buyButtonTapped(sender: AnyObject) {
-		 atlasCheckout?.presentCheckoutView(sku: "N1242A0WI-K13")
-	 } 
- }
- ```
  
-* In order to display the save order details button in the order confirmation page, Add the following `key/value`in Info.plist file of the host app:
- - key: `NSPhotoLibraryUsageDescription`
- - value: Localized text for the purpose of requesting the access to the user's photos library. ex: 
- 
- 	> Saving the order details image in your photos app
-
 ## AtlasSDK Structure
 
 ![structure](https://raw.githubusercontent.com/zalando-incubator/atlas-ios/master/Documentation/AtlasSDK%20Structure.png)
