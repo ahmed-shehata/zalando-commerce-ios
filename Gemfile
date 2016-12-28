@@ -13,6 +13,6 @@ group :calypso do
   gem 'xcpretty'
 end
 
-group :tools do
+group :development do
   gem 'travis'
 end

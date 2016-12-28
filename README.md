@@ -28,57 +28,7 @@ and allows to implement own UI solution
 * __AtlasUI__ – provides end-to-end UI implementation of Checkout process,
 which could be used with a single fire-and-forget call.
 
-## Installation
-
-### Requirements
-
-* iOS 9+
-* Swift 2.2/2.3 (3 planned, vote on [#29](https://github.com/zalando-incubator/atlas-ios/issues/29))
-* AtlasUI views are designed for iPhone only. iPad works, but is not deliberatly adapted
-
-### Cocoapods
-
-Fully integrated `AtlasSDK` + `AtlasUI` components:
-
-`Podfile`:
-
-```
-use_frameworks!
-
-target 'MyApp' do
-  pod 'AtlasSDK'
-end
-```
-
-Or selective components:
-
-`Podfile`:
-
-```
-use_frameworks!
-
-target 'MyApp' do
-  pod 'AtlasSDK/Core'
-  pod 'AtlasSDK/UI'
-end
-```
-
-### Carthage
-
-1. Add Atlas SDK to your `Cartfile.private`:
-	```
-	github "zalando-incubator/atlas-ios"
-	```
-1. Run `carthage bootstrap`
-1. From your `Carthage/Build/iOS/` directory, add `AtlasSDK` and `AtlasUI` to your "Embedded Binaries":
-![Embedded Binaries](https://raw.githubusercontent.com/zalando-incubator/atlas-ios/master/Documentation/carthage-embed.png)
-
-### Manually
-1. Drag AtlasSDK.xcodeproj and AtlasUI.xcodeproj to your project in the __Project Navigator__.
-1. Select your project, your app target, and open the __Build Phases__ panel.
-1. Open the __Target Dependencies__ group, and add AtlasSDK.framework and AtlasUI.framework.
-1. Click on the __+__ button at the top left of the panel and select __New Copy Files Phase__. Set Destination to __Frameworks__, and add AtlasSDK.framework and AtlasUI.framework.
-1. Import AtlasSDK and AtlasUI where you use AtlasSDK.
+More documentation on [wiki](../wiki)
 
 ## Configuration
 
