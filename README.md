@@ -21,12 +21,8 @@ minutes using just few lines of code.
 
 ## Quick-start
 
-* Installation:
-  * [CocoaPods](../../wiki/Installation#cocoapods)
-  * [Carthage](../../wiki/Installation#carthage)
-  * [Manual](../../wiki/Installation#manual)
-* Setup
-  * [via code](../../wiki/Configuration#via-code)
-  * [via Info.plist](../../wiki/Configuration#via-infoplist)
+* Installation: [CocoaPods](../../wiki/Installation#cocoapods), [Carthage](../../wiki/Installation#carthage), or [manual](../../wiki/Installation#manual)
+* Setup: [via code](../../wiki/Configuration#via-code), or [via Info.plist](../../wiki/Configuration#via-infoplist)
+* Usage: [AtlasUI](../../wiki/AtlasUI-usage)
 
 More documentation on [wiki](../../wiki).
