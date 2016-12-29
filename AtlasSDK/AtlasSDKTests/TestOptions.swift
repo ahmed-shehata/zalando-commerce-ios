@@ -9,12 +9,16 @@ import AtlasMockAPI
 
 extension Options {
 
-    static func forTests(interfaceLanguage: String = "en") -> Options {
-        return Options(clientId: "atlas_Y2M1MzA",
-                       salesChannel: "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
-                       useSandbox: true,
+    static func forTests(clientId: String = TestConsts.clientId,
+                         useSandboxEnvironment: Bool = TestConsts.useSandboxEnvironment,
+                         salesChannel: String = TestConsts.salesChannel,
+                         interfaceLanguage: String = TestConsts.interfaceLanguage,
+                         configurationURL: URL = TestConsts.configURL) -> Options {
+        return Options(clientId: clientId,
+                       salesChannel: salesChannel,
+                       useSandboxEnvironment: useSandboxEnvironment,
                        interfaceLanguage: interfaceLanguage,
-                       configurationURL: AtlasMockAPI.endpointURL(forPath: "/config"))
+                       configurationURL: configurationURL)
     }
 
 }

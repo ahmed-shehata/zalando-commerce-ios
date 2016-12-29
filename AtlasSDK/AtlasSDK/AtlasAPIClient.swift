@@ -68,3 +68,42 @@ public struct AtlasAPIClient {
     }
 
 }
+
+extension AtlasAPIClient {
+
+    public var isAuthorized: Bool {
+        return config.authorizationToken != nil
+    }
+
+    public func authorize(withToken tokenValue: String) {
+        if let token = APIAccessToken.store(token: tokenValue, for: config) {
+            AtlasAPIClient.notify(isAuthorized: true, withToken: token)
+        } else {
+            AtlasAPIClient.notify(isAuthorized: false, withToken: nil)
+        }
+    }
+
+    public func deauthorize() {
+        let token = APIAccessToken.delete(for: config)
+        AtlasAPIClient.notify(isAuthorized: false, withToken: token)
+    }
+
+    public static func deauthorizeAll() {
+        APIAccessToken.wipe().forEach { token in
+            AtlasAPIClient.notify(isAuthorized: false, withToken: token)
+        }
+    }
+
+    private static func notify(isAuthorized: Bool, withToken token: APIAccessToken?) {
+        var userInfo: [AnyHashable: Any]? = nil
+        if let token = token {
+            userInfo = [Options.InfoKey.useSandboxEnvironment: token.useSandboxEnvironment,
+                Options.InfoKey.clientId: token.clientId]
+        }
+
+        let authNotification: NSNotification.Name = isAuthorized ? .AtlasAuthorized : .AtlasDeauthorized
+        NotificationCenter.default.post(name: authNotification, object: nil, userInfo: userInfo)
+        NotificationCenter.default.post(name: .AtlasAuthorizationChanged, object: nil, userInfo: userInfo)
+    }
+
+}

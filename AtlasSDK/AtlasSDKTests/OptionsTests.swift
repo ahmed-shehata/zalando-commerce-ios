@@ -20,7 +20,7 @@ class OptionsTests: XCTestCase {
     func testInitialization() {
         let opts = Options(clientId: clientId,
                            salesChannel: salesChannel,
-                           useSandbox: useSandbox,
+                           useSandboxEnvironment: useSandbox,
                            interfaceLanguage: interfaceLanguage)
 
         expect(opts.clientId).to(equal(clientId))
@@ -55,7 +55,7 @@ class OptionsTests: XCTestCase {
 
     func testOverrideValuesFromInfoPlist() {
         let opts = Options(clientId: clientId, salesChannel: salesChannel,
-                           useSandbox: useSandbox,
+                           useSandboxEnvironment: useSandbox,
                            interfaceLanguage: interfaceLanguage,
                            infoBundle: testsBundle)
 

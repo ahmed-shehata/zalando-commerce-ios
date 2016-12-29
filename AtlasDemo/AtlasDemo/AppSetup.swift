@@ -15,22 +15,29 @@ class AppSetup {
     fileprivate(set) static var options: Options?
 
     fileprivate static let defaultUseSandbox = true
-    fileprivate static let defaultInterfaceLanguage = InterfaceLanguage.english
-    fileprivate static let defaultSalesChannel = SalesChannel.germany
+    fileprivate static let defaultInterfaceLanguage: InterfaceLanguage = .english
+    fileprivate static let defaultSalesChannel: SalesChannel = .germany
 
     static var isConfigured: Bool {
         return atlas != nil && options != nil
     }
 
     static func configure(completion: @escaping AppSetupCompletion) {
+        prepareForTests()
         prepareMockAPI()
-        prepareApp()
 
         set(appOptions: prepareOptions(), completion: completion)
     }
 
+    static func isAuthorized() -> Bool {
+        return atlas?.client.isAuthorized ?? false
+    }
+
+    static func deauthorize() {
+        atlas?.client.deauthorize()
+    }
+
     static func change(environmentToSandbox useSandbox: Bool) {
-        Atlas.deauthorize()
         set(appOptions: prepareOptions(useSandbox: useSandbox))
     }
 
@@ -42,7 +49,16 @@ class AppSetup {
         set(appOptions: prepareOptions(salesChannel: salesChannel))
     }
 
-    fileprivate static var alwaysUseMockAPI: Bool {
+    }
+
+extension AppSetup {
+
+    private static var isInTestsEnvironment: Bool {
+        return ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
+        || ProcessInfo.processInfo.arguments.contains("UI_TESTS")
+    }
+
+    private static var alwaysUseMockAPI: Bool {
         return ProcessInfo.processInfo.arguments.contains("USE_MOCK_API")
     }
 
@@ -52,9 +68,9 @@ class AppSetup {
         }
     }
 
-    fileprivate static func prepareApp() {
-        if AtlasMockAPI.hasMockedAPIStarted {
-            Atlas.deauthorize()
+    fileprivate static func prepareForTests() {
+        if isInTestsEnvironment {
+            AtlasAPIClient.deauthorizeAll()
         }
     }
 
@@ -81,9 +97,9 @@ class AppSetup {
 
         return Options(clientId: "atlas_Y2M1MzA",
                        salesChannel: salesChannel,
-                       useSandbox: sandbox,
-                       interfaceLanguage: language,
-                       configurationURL: configurationURL)
+                       useSandboxEnvironment: sandbox,
+            interfaceLanguage: language,
+            configurationURL: configurationURL)
     }
 
 }

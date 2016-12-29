@@ -9,8 +9,8 @@ public struct GuestOrder {
     public let orderNumber: String
     public let billingAddress: OrderAddress
     public let shippingAddress: OrderAddress
-    public let grossTotal: Price
-    public let taxTotal: Price
+    public let grossTotal: Money
+    public let taxTotal: Money
     public let created: Date?
     public let externalPaymentURL: URL?
 
@@ -32,8 +32,8 @@ extension GuestOrder: JSONInitializable {
         guard let orderNumber = json[Keys.orderNumber].string,
             let billingAddress = OrderAddress(json: json[Keys.billingAddress]),
             let shippingAddress = OrderAddress(json: json[Keys.shippingAddress]),
-            let grossTotal = Price(json: json[Keys.grossTotal]),
-            let taxTotal = Price(json: json[Keys.taxTotal])
+            let grossTotal = Money(json: json[Keys.grossTotal]),
+            let taxTotal = Money(json: json[Keys.taxTotal])
             else { return nil }
 
         self.init(orderNumber: orderNumber,

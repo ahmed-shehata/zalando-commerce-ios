@@ -23,7 +23,7 @@ class AtlasDemoUITests: XCTestCase {
         super.setUp()
 
         continueAfterFailure = false
-        app.launchArguments = [AtlasMockAPI.isEnabledFlag]
+        app.launchArguments = [AtlasMockAPI.isEnabledFlag, "UI_TESTS"]
         app.launch()
     }
 
@@ -136,6 +136,20 @@ class AtlasDemoUITests: XCTestCase {
         expectation(for: billingPredicate, evaluatedWith: app.tables.cells, handler: nil)
         waitForExpectations(timeout: 5, handler: nil)
     }
+
+    func testSaveOrderImage() {
+        proceedToSummaryWithSizes()
+        tapPlaceOrder()
+
+        addUIInterruptionMonitor(withDescription: "Photos Dialog") { (alert) -> Bool in
+            alert.buttons["OK"].tap()
+            return true
+        }
+
+        waitForAppearAndTap(element: app.buttons["save-order-image-button"])
+        app.tap()
+    }
+
 }
 
 extension AtlasDemoUITests {

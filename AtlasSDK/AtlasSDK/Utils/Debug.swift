@@ -4,10 +4,14 @@
 
 import Foundation
 
-func isDebug() -> Bool {
-    #if DEBUG
-        return true
-    #else
-        return false
-    #endif
+struct Debug {
+
+    static var isEnabled: Bool {
+        #if DEBUG
+            return true
+        #else
+            return false
+        #endif
+    }
+
 }

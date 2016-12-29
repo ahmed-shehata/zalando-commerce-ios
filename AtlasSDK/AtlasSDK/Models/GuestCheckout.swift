@@ -38,4 +38,5 @@ extension GuestCheckout: JSONInitializable {
                   payment: payment,
                   delivery: delivery)
     }
+
 }

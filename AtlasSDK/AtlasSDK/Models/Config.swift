@@ -12,6 +12,9 @@ public struct Config {
     public let loginURL: URL
 
     public let clientId: String
+    public let useSandboxEnvironment: Bool
+    public let guestCheckoutEnabled: Bool
+
     public let payment: Payment
     public let salesChannel: SalesChannel
     public let availableSalesChannels: [SalesChannel]
@@ -36,6 +39,14 @@ public struct Config {
             return locale.languageCode~?
         }
 
+    }
+
+}
+
+extension Config {
+
+    var authorizationToken: String? {
+        return APIAccessToken.retrieve(for: self)
     }
 
 }
@@ -68,6 +79,8 @@ extension Config {
         }
 
         self.clientId = options.clientId
+        self.useSandboxEnvironment = options.useSandboxEnvironment
+        self.guestCheckoutEnabled = json["atlas-guest-checkout-api"]["enabled"].bool ?? false
     }
 
 }
@@ -83,6 +96,7 @@ extension Config: CustomStringConvertible {
             + ", salesChannel: \(self.salesChannel)"
             + ", payment: \(self.payment)"
             + ", interfaceLocale: \(self.interfaceLocale.identifier)"
+            + ", useSandboxEnvironment: \(self.useSandboxEnvironment)"
             + " }"
     }
 

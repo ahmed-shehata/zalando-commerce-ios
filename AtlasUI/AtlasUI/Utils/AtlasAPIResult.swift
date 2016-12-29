@@ -25,7 +25,7 @@ extension AtlasAPIResult {
                 authorizationHandler.authorize { result in
                     switch result {
                     case .success(let accessToken):
-                        Atlas.authorize(withToken: accessToken)
+                        AtlasAPIClient.shared?.authorize(withToken: accessToken)
                         UserMessage.displayLoader { hideLoader in
                             apiRequest?.execute { _ in
                                 hideLoader()

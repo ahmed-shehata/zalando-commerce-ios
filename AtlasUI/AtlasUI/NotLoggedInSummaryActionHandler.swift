@@ -30,10 +30,12 @@ class NotLoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
     }
 
     func handlePaymentSelection() {
+        guard isGuestCheckoutEnabled else { return handleSubmit() }
         UserMessage.displayError(error: AtlasCheckoutError.missingAddress)
     }
 
     func handleShippingAddressSelection() {
+        guard isGuestCheckoutEnabled else { return handleSubmit() }
         guestAddressActionHandler.addressCreationStrategy = ShippingAddressViewModelCreationStrategy()
         guestAddressActionHandler.createAddress { [weak self] newAddress in
             let checkoutAddress = CheckoutAddresses(shippingAddress: newAddress, billingAddress: nil, autoFill: true)
@@ -42,6 +44,7 @@ class NotLoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
     }
 
     func handleBillingAddressSelection() {
+        guard isGuestCheckoutEnabled else { return handleSubmit() }
         guestAddressActionHandler.addressCreationStrategy = BillingAddressViewModelCreationStrategy()
         guestAddressActionHandler.createAddress { [weak self] newAddress in
             let checkoutAddress = CheckoutAddresses(shippingAddress: nil, billingAddress: newAddress, autoFill: true)
@@ -61,12 +64,16 @@ extension NotLoggedInSummaryActionHandler {
         let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit,
                                                  shippingAddress: checkoutAddress?.shippingAddress,
                                                  billingAddress: checkoutAddress?.billingAddress,
-                                                 totalPrice: selectedArticleUnit.priceAmount,
+                                                 totalPrice: selectedArticleUnit.price,
                                                  email: email)
         let actionHandler = GuestCheckoutSummaryActionHandler(email: email)
         delegate?.updated(actionHandler: actionHandler)
         delegate?.updated(dataModel: dataModel)
         delegate?.updated(layout: GuestCheckoutLayout())
+    }
+
+    fileprivate var isGuestCheckoutEnabled: Bool {
+        return AtlasAPIClient.shared?.config.guestCheckoutEnabled ?? false
     }
 
 }

@@ -11,9 +11,10 @@ module Calypso
 
   class Release < Thor
 
+    option :dirty, type: :boolean, default: false
     desc 'create', 'Create new release'
-    def create
-      version = Version.new.invoke(:create)
+    def create(version = nil)
+      version ||= Version.new([], options).invoke(:create)
       release = github.create_release(tag: version, notes: release_notes)
       run "open \'#{release['html_url']}\'"
     end

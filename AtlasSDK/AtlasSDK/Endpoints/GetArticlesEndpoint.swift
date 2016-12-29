@@ -2,12 +2,12 @@
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
-struct GetArticleEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
+struct GetArticleEndpoint: CatalogEndpoint {
 
-    let serviceURL: URL
+    let config: Config
+
     var path: String { return "articles/\(sku)" }
     let acceptedContentType = "application/x.zalando.article+json"
-    let sku: String
     var queryItems: [URLQueryItem]? {
         return URLQueryItem.build(from: [
             "client_id": clientId,
@@ -15,8 +15,13 @@ struct GetArticleEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
         ])
     }
 
-    let salesChannel: String
-    let clientId: String
+    let sku: String
     let fields: [String]?
-    let requiresAuthorization = false
+
+    init(config: Config, sku: String, fields: [String]? = nil) {
+        self.config = config
+        self.sku = sku
+        self.fields = fields
+    }
+
 }

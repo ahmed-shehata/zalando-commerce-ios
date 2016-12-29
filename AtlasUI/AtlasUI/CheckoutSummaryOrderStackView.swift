@@ -76,6 +76,7 @@ class CheckoutSummaryOrderStackView: UIStackView {
         button.setTitleColor(.black, for: .normal)
         button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         button.backgroundColor = UIColor(hex: 0xEEEEEE)
+        button.accessibilityIdentifier = "save-order-image-button"
         return button
     }()
 
@@ -86,6 +87,7 @@ class CheckoutSummaryOrderStackView: UIStackView {
         label.textAlignment = .center
         label.text = Localizer.format(string: "summaryView.label.orderImageSaved")
         label.alpha = 0
+        label.accessibilityIdentifier = "image-saved-success-label"
         return label
     }()
 
@@ -99,16 +101,14 @@ extension CheckoutSummaryOrderStackView {
         let (contentOffset, frame) = prepareViewForTakingImage(scrollView: scrollView)
 
         guard let image = scrollView.takeScreenshot() else {
+            UserMessage.displayError(error: AtlasCheckoutError.unclassified)
             cleanupViewAfterTakingImage(scrollView: scrollView, originalContentOffset: contentOffset, originalFrame: frame)
             return
         }
         cleanupViewAfterTakingImage(scrollView: scrollView, originalContentOffset: contentOffset, originalFrame: frame)
 
-        if !UIApplication.unitTestsAreRunning {
-            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-        }
-
-        showSavedLabel()
+        AtlasUIViewController.shared?.showLoader()
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(image:didFinishSavingWithError:contextInfo:)), nil)
     }
 
     private func prepareViewForTakingImage(scrollView: UIScrollView) -> (originalContentOffset: CGPoint, originalFrame: CGRect) {
@@ -136,6 +136,17 @@ extension CheckoutSummaryOrderStackView {
             scrollView.contentOffset = originalContentOffset
             scrollView.frame = originalFrame
         }
+    }
+
+    func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeMutableRawPointer) {
+        AtlasUIViewController.shared?.hideLoader()
+
+        guard error == nil else {
+            UserMessage.displayError(error: AtlasCheckoutError.photosLibraryAccessNotAllowed)
+            return
+        }
+
+        showSavedLabel()
     }
 
     private func showSavedLabel() {

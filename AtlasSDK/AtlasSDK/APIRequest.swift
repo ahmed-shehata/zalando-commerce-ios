@@ -6,7 +6,7 @@ import Foundation
 
 public struct APIRequest<T> {
 
-    var requestBuilder: RequestBuilder
+    let requestBuilder: RequestBuilder
     let successHandler: (JSONResponse) -> T?
     var completions: [(AtlasAPIResult<T>) -> Void]
 

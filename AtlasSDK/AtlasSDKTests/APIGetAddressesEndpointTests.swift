@@ -11,12 +11,10 @@ import Nimble
 class APIGetAddressesEndpointTests: XCTestCase {
 
     func testSalesChannelAsHeader() {
-        let salesChannel = "SALES_CHANNEL"
-        let endpoint = GetAddressesEndpoint(serviceURL: URL(validURL: "http://example.com"),
-                                            salesChannel: salesChannel)
+        let endpoint = GetAddressesEndpoint(config: Config.forTests())
 
         let request = try? URLRequest(endpoint: endpoint)
-        expect(request?.allHTTPHeaderFields?["X-Sales-Channel"]).to(equal(salesChannel))
+        expect(request?.allHTTPHeaderFields?["X-Sales-Channel"]) == TestConsts.salesChannel
     }
 
 }

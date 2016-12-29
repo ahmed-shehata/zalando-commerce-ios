@@ -8,7 +8,7 @@ extension Options {
 
     enum InfoKey: String {
 
-        case useSandbox = "ATLASSDK_USE_SANDBOX"
+        case useSandboxEnvironment = "ATLASSDK_USE_SANDBOX"
         case clientId = "ATLASSDK_CLIENT_ID"
         case salesChannel = "ATLASSDK_SALES_CHANNEL"
         case interfaceLanguage = "ATLASSDK_INTERFACE_LANGUAGE"
@@ -28,7 +28,7 @@ extension Bundle {
     }
 
     fileprivate func object<T>(forInfoDictionaryKey key: Options.InfoKey) -> T? {
-        return self.object(forInfoDictionaryKey: key.rawValue) as? T
+        return self.object(forInfoDictionaryKey: key.rawValue)
     }
 
 }

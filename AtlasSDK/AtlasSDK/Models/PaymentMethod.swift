@@ -6,7 +6,7 @@ import Foundation
 
 public struct PaymentMethod {
 
-    public let method: String?
+    public let method: PaymentMethodType?
     public let metadata: [String: Any]?
 
 }
@@ -19,7 +19,11 @@ extension PaymentMethod: JSONInitializable {
     }
 
     init?(json: JSON) {
-        self.init(method: json[Keys.method].string,
+        var paymentMethod: PaymentMethodType?
+        if let methodRawValue = json[Keys.method].string {
+            paymentMethod = PaymentMethodType(rawValue: methodRawValue)
+        }
+        self.init(method: paymentMethod,
             metadata: json[Keys.metadata].dictionaryObject)
     }
 
