@@ -32,18 +32,6 @@ final public class AtlasUI {
         self.register { localizer }
     }
 
-    /**
-     Configure AtlasUI.
-
-     - Parameters:
-        - options `Options`: provide an `Options` instance with at least 2 mandatory parameters **clientId** and **salesChannel**
-            options could be nil, then Info.plist configuration would be used:
-             - ATLASSDK_CLIENT_ID: String - Client Id (required)
-             - ATLASSDK_SALES_CHANNEL: String - Sales Channel (required)
-             - ATLASSDK_USE_SANDBOX: Bool - Indicates whether sandbox environment should be used
-             - ATLASSDK_INTERFACE_LANGUAGE: String - Checkout interface language
-        - completion `AtlasUICompletion`: `AtlasResult` with success result as `AtlasUI` initialized
-    */
     public static func configure(options: Options? = nil, completion: @escaping AtlasUICompletion) {
         Atlas.configure(options: options) { result in
             switch result {

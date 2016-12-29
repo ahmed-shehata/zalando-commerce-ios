@@ -4,9 +4,6 @@
 
 import Foundation
 
-/**
- Represents Zalando Customer model
- */
 public struct Customer {
 
     public let customerNumber: String
@@ -33,7 +30,7 @@ extension Customer: JSONInitializable {
             let firstName = json["first_name"].string,
             let lastName = json["last_name"].string,
             let email = json["email"].string
-        else { return nil }
+            else { return nil }
 
         self.customerNumber = customerNumber
         self.gender = Gender(rawValue: gender) ?? Gender.Female // default value in Zalando registration

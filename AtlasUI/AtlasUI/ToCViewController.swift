@@ -26,6 +26,7 @@ final class ToCViewController: UIViewController {
     }()
 
     override func viewDidLoad() {
+        super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(webView)
 

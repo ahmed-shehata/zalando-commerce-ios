@@ -106,7 +106,7 @@ struct AtlasUIClient {
         }
     }
 
-    static func deleteAddress(withId addressId: String, completion: @escaping NoContentCompletion) {
+    static func deleteAddress(withId addressId: String, completion: @escaping SuccessCompletion) {
         UserMessage.displayLoader { hideLoader in
             AtlasAPIClient.shared?.deleteAddress(withId: addressId) { result in
                 hideLoader()
@@ -115,7 +115,7 @@ struct AtlasUIClient {
         }
     }
 
-    static func createAddress(_ request: CreateAddressRequest, completion: @escaping AddressCreateUpdateCompletion) {
+    static func createAddress(_ request: CreateAddressRequest, completion: @escaping AddressChangeCompletion) {
         UserMessage.displayLoader { hideLoader in
             AtlasAPIClient.shared?.createAddress(request) { result in
                 hideLoader()
@@ -124,16 +124,16 @@ struct AtlasUIClient {
         }
     }
 
-    static func updateAddress(addressId: String, request: UpdateAddressRequest, completion: @escaping AddressCreateUpdateCompletion) {
+    static func updateAddress(addressId: String, request: UpdateAddressRequest, completion: @escaping AddressChangeCompletion) {
         UserMessage.displayLoader { hideLoader in
-            AtlasAPIClient.shared?.updateAddress(withAddressId: addressId, request: request) { result in
+            AtlasAPIClient.shared?.updateAddress(withId: addressId, request: request) { result in
                 hideLoader()
                 completion(result)
             }
         }
     }
 
-    static func checkAddress(_ request: CheckAddressRequest, completion: @escaping CheckAddressCompletion) {
+    static func checkAddress(_ request: CheckAddressRequest, completion: @escaping AddressCheckCompletion) {
         UserMessage.displayLoader { hideLoader in
             AtlasAPIClient.shared?.checkAddress(request) { result in
                 hideLoader()

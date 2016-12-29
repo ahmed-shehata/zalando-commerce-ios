@@ -55,20 +55,20 @@ extension UserAddress: JSONInitializable {
             let countryCode = json[Keys.countryCode].string,
             let isDefaultBilling = json[Keys.defaultBilling].bool,
             let isDefaultShipping = json[Keys.defaultShipping].bool
-        else { return nil }
+            else { return nil }
 
         self.init(id: id,
-            customerNumber: customerNumber,
-            gender: gender,
-            firstName: firstName,
-            lastName: lastName,
-            street: json[Keys.street].string,
-            additional: json[Keys.additional].string,
-            zip: zip,
-            city: city,
-            countryCode: countryCode,
-            pickupPoint: PickupPoint(json: json[Keys.pickupPoint]),
-            isDefaultBilling: isDefaultBilling,
-            isDefaultShipping: isDefaultShipping)
+                  customerNumber: customerNumber,
+                  gender: gender,
+                  firstName: firstName,
+                  lastName: lastName,
+                  street: json[Keys.street].string,
+                  additional: json[Keys.additional].string,
+                  zip: zip,
+                  city: city,
+                  countryCode: countryCode,
+                  pickupPoint: PickupPoint(json: json[Keys.pickupPoint]),
+                  isDefaultBilling: isDefaultBilling,
+                  isDefaultShipping: isDefaultShipping)
     }
 }

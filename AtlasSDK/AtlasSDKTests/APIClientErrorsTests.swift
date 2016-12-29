@@ -32,9 +32,9 @@ class AtlasAPIClientErrorsTests: AtlasAPIClientBaseTests {
     func testUnauthenticatedRequest() {
         let status = HTTPStatus.unauthorized
         let json: [String: Any] = ["type": "http://httpstatus.es/401",
-            "title": "unauthorized",
-            "status": status.rawValue,
-            "detail": "Full authentication is required to access this resource"]
+                                   "title": "unauthorized",
+                                   "status": status.rawValue,
+                                   "detail": "Full authentication is required to access this resource"]
 
         let errorResponse = data(withJSONObject: json)
         let client = mockedAtlasAPIClient(forURL: clientURL, options: Options.forTests(), data: errorResponse, status: status)
@@ -57,7 +57,7 @@ class AtlasAPIClientErrorsTests: AtlasAPIClientBaseTests {
     func testBackendError() {
         let status = HTTPStatus.forbidden
         let json: [String: Any] = ["type": "http://httpstatus.es/401", "title": "unauthorized",
-            "status": status.rawValue, "detail": ""]
+                                   "status": status.rawValue, "detail": ""]
 
         let errorResponse = data(withJSONObject: json)
         let client = mockedAtlasAPIClient(forURL: clientURL, data: errorResponse, status: status)

@@ -64,7 +64,8 @@ final class OAuth2LoginViewController: UIViewController {
         }
     }
 
-    @objc fileprivate func cancelButtonTapped() {
+    @objc
+    fileprivate func cancelButtonTapped() {
         dismiss(animated: true, completion: nil)
     }
 

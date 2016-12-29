@@ -25,7 +25,7 @@ module Calypso
   TEST_DEVICE = 'iPhone 7'.freeze
   TEST_RUNTIME = 'iOS 10.2'.freeze
 
-  PROJECT_DIRS = [BASE_DIR + 'AtlasSDK', BASE_DIR + 'AtlasDemo'].freeze
+  PROJECT_DIRS = [BASE_DIR + 'AtlasSDK', BASE_DIR + 'AtlasUI'].freeze
 
   LINT_CFG = BASE_DIR + '.swiftlint.yml'
 

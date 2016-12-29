@@ -4,19 +4,19 @@
 
 import Foundation
 
-public struct APIRequest<T> {
+public struct APIRequest<Model> {
 
     let requestBuilder: RequestBuilder
-    let successHandler: (JSONResponse) -> T?
-    var completions: [(AtlasAPIResult<T>) -> Void]
+    let successHandler: (JSONResponse) -> Model?
+    var completions: [(AtlasAPIResult<Model>) -> Void]
 
-    init(requestBuilder: RequestBuilder, successHandler: @escaping (JSONResponse) -> T?) {
+    init(requestBuilder: RequestBuilder, successHandler: @escaping (JSONResponse) -> Model?) {
         self.requestBuilder = requestBuilder
         self.successHandler = successHandler
         completions = []
     }
 
-    public mutating func execute(_ completion: @escaping (AtlasAPIResult<T>) -> Void) {
+    public mutating func execute(_ completion: @escaping (AtlasAPIResult<Model>) -> Void) {
         self.completions.append(completion)
 
         let completions = self.completions.reversed()

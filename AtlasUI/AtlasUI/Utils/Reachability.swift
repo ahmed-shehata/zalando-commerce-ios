@@ -5,6 +5,7 @@
 // swiftlint:disable trailing_whitespace
 // swiftlint:disable force_unwrapping
 // swiftlint:disable type_name
+// swiftlint:disable file_length
 
 /*
  Copyright (c) 2014, Ashley Mills

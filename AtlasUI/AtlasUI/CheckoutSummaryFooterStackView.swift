@@ -38,7 +38,8 @@ extension CheckoutSummaryFooterStackView: UIBuilder {
         addArrangedSubview(submitButton)
     }
 
-    @objc func tocPressed() {
+    @objc
+    func tocPressed() {
         legalController?.push()
     }
 

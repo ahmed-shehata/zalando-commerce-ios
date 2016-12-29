@@ -43,18 +43,18 @@ extension CheckoutAddress: JSONInitializable {
             let zip = json[Keys.zip].string,
             let city = json[Keys.city].string,
             let countryCode = json[Keys.countryCode].string
-        else { return nil }
+            else { return nil }
 
         self.init(id: id,
-            gender: gender,
-            firstName: firstName,
-            lastName: lastName,
-            street: json[Keys.street].string,
-            additional: json[Keys.additional].string,
-            zip: zip,
-            city: city,
-            countryCode: countryCode,
-            pickupPoint: PickupPoint(json: json[Keys.pickupPoint]))
+                  gender: gender,
+                  firstName: firstName,
+                  lastName: lastName,
+                  street: json[Keys.street].string,
+                  additional: json[Keys.additional].string,
+                  zip: zip,
+                  city: city,
+                  countryCode: countryCode,
+                  pickupPoint: PickupPoint(json: json[Keys.pickupPoint]))
     }
 }
 extension CheckoutAddress {
@@ -62,14 +62,14 @@ extension CheckoutAddress {
         guard let address = address as? UserAddress
             else { return nil }
         self.init(id: address.id,
-            gender: address.gender,
-            firstName: address.firstName,
-            lastName: address.lastName,
-            street: address.street,
-            additional: address.additional,
-            zip: address.zip,
-            city: address.city,
-            countryCode: address.countryCode,
-            pickupPoint: address.pickupPoint)
+                  gender: address.gender,
+                  firstName: address.firstName,
+                  lastName: address.lastName,
+                  street: address.street,
+                  additional: address.additional,
+                  zip: address.zip,
+                  city: address.city,
+                  countryCode: address.countryCode,
+                  pickupPoint: address.pickupPoint)
     }
 }

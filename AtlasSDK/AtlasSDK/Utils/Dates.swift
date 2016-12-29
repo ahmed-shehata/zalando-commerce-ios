@@ -23,8 +23,8 @@ class RFC3339DateFormatter: DateFormatter {
         let locale = Locale(identifier: "en_US_POSIX")
         let timeZone = TimeZone(abbreviation: "GMT")
         self.noMillisecondsFormatter = DateFormatter(dateFormat: "yyyy-MM-dd'T'HH:mm:ssZ",
-            localeIdentifier: locale.identifier,
-            timeZone: timeZone)
+                                                     localeIdentifier: locale.identifier,
+                                                     timeZone: timeZone)
         super.init()
         self.locale = locale
         self.timeZone = timeZone

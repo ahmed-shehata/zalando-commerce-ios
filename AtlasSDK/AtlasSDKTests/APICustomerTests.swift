@@ -14,10 +14,10 @@ class APICustomerTests: AtlasAPIClientBaseTests {
 
     func testCreateCustomer() {
         let json: [String: Any] = ["customer_number": "12345678",
-                    "gender": "MALE",
-                    "email": "aaa@a.a",
-                    "first_name": "John",
-                    "last_name": "Doe"]
+                                   "gender": "MALE",
+                                   "email": "aaa@a.a",
+                                   "first_name": "John",
+                                   "last_name": "Doe"]
         let customerResponse = data(withJSONObject: json)
         let client = mockedAtlasAPIClient(forURL: customerURL, data: customerResponse, status: .ok)
 

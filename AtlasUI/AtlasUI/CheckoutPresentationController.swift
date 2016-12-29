@@ -25,11 +25,11 @@ final class CheckoutPresentationController: UIPresentationController {
     }()
 
     init(presentedViewController: UIViewController, presentingViewController: UIViewController?,
-        heightRatio: CGFloat = Constants.defaultHeightRatio) {
-            self.heightRatio = heightRatio
-            effectView.frame = presentedViewController.view.frame
-            presentedViewController.view.insertSubview(effectView, at: 0)
-            super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
+         heightRatio: CGFloat = Constants.defaultHeightRatio) {
+        self.heightRatio = heightRatio
+        effectView.frame = presentedViewController.view.frame
+        presentedViewController.view.insertSubview(effectView, at: 0)
+        super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
     }
 
     override func presentationTransitionWillBegin() {
@@ -48,7 +48,7 @@ final class CheckoutPresentationController: UIPresentationController {
         if let transitionCoordinator = presentedViewController.transitionCoordinator {
             transitionCoordinator.animate(alongsideTransition: { _ in
                 updateViews()
-                }, completion: nil)
+            }, completion: nil)
         } else {
             updateViews()
         }
@@ -64,7 +64,7 @@ final class CheckoutPresentationController: UIPresentationController {
         if let transitionCoordinator = presentedViewController.transitionCoordinator {
             transitionCoordinator.animate(alongsideTransition: { _ in
                 updateViews()
-                }, completion: nil)
+            }, completion: nil)
         } else {
             updateViews()
         }
@@ -74,12 +74,13 @@ final class CheckoutPresentationController: UIPresentationController {
         let rect = super.frameOfPresentedViewInContainerView
         let newHeight = rect.height * heightRatio
         return CGRect(x: rect.origin.x,
-            y: rect.origin.y + (rect.height - newHeight),
-            width: rect.width,
-            height: newHeight)
+                      y: rect.origin.y + (rect.height - newHeight),
+                      width: rect.width,
+                      height: newHeight)
     }
 
-    @objc fileprivate func dimmingViewTapped() {
+    @objc
+    fileprivate func dimmingViewTapped() {
         presentingViewController.dismiss(animated: true, completion: nil)
     }
 }

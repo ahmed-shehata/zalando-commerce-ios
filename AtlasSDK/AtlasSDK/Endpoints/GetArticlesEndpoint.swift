@@ -12,7 +12,7 @@ struct GetArticleEndpoint: CatalogEndpoint {
         return URLQueryItem.build(from: [
             "client_id": clientId,
             "fields": fields?.joined(separator: ",")
-        ])
+            ])
     }
 
     let sku: String

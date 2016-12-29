@@ -52,7 +52,7 @@ extension PaymentStatus {
 extension URLComponents {
 
     fileprivate var paymentStatus: String? {
-        return queryItems?.filter({ $0.name == PaymentStatus.statusKey }).first?.value
+        return queryItems?.first(where: { $0.name == PaymentStatus.statusKey })?.value
     }
 
     fileprivate var guestRedirect: (encryptedCheckoutId: String, encryptedToken: String)? {

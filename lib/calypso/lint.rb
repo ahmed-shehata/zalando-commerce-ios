@@ -10,7 +10,7 @@ module Calypso
     def check(dir = nil)
       dirs = dir ? [dir] : PROJECT_DIRS
       dirs.each do |d|
-        run "swiftlint lint --config #{LINT_CFG} --path #{d} 2> /dev/null"
+        run "swiftlint lint --config #{LINT_CFG} --path #{d} --quiet"
       end
     end
 
@@ -18,7 +18,7 @@ module Calypso
     def fix(dir = nil)
       dirs = dir ? [dir] : PROJECT_DIRS
       dirs.each do |d|
-        run "swiftlint autocorrect --config #{LINT_CFG} --path #{d} > /dev/null"
+        run "swiftlint autocorrect --format --config #{LINT_CFG} --path #{d}"
       end
     end
 
