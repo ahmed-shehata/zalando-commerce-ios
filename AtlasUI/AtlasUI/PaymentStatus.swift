@@ -2,6 +2,8 @@
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
+import Foundation
+
 enum PaymentStatus: Equatable {
 
     case guestRedirect(encryptedCheckoutId: String, encryptedToken: String)

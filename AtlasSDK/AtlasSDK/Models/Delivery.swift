@@ -2,6 +2,8 @@
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
+import Foundation
+
 public struct Delivery {
 
     public let earliest: Date?

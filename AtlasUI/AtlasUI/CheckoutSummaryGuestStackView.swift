@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import UIKit
 
 class CheckoutSummaryGuestStackView: UIStackView {
 

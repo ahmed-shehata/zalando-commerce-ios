@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import UIKit
 
 typealias TextFieldChangedHandler = (String?) -> Void
 

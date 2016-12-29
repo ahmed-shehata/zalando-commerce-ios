@@ -2,6 +2,8 @@
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
+import Foundation
+import UIKit
 import AtlasSDK
 
 typealias SizeListTableViewDelegateCompletion = (_ selectedArticleUnit: SelectedArticleUnit) -> Void

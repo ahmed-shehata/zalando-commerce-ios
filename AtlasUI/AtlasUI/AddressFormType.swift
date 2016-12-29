@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import UIKit
 import AtlasSDK
 
 enum AddressFormType {

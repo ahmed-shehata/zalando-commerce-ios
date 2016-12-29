@@ -2,6 +2,8 @@
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
+import Foundation
+
 struct GetArticleEndpoint: CatalogEndpoint {
 
     let config: Config
