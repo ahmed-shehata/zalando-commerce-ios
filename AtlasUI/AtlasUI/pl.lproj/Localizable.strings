@@ -61,10 +61,10 @@
 "formValidation.vaildEmail" = "Prosimy podać poprawny adres email";
 "guestSummaryView.address.add" = "Dodaj adres";
 "guestSummaryView.address.create" = "Dodaj adres";
-"guestSummaryView.address.update" = "Zmodyfikuj adres";
+"guestSummaryView.address.update" = "Zmień adres";
 "loginView.loginWithZalando" = "Zaloguj z Zalando";
 "summaryView.button.saveOrderImage" = "Zapisz zamówienie jako zdjęcie";
-"summaryView.label.address.billing" = "Adres dostawy";
+"summaryView.label.address.billing" = "Adres do faktury";
 "summaryView.label.address.packstationAbbreviation" = "Adres do faktury";
 "summaryView.label.address.shipping" = "Adres dostawy";
 "summaryView.label.emptyAddress.billing" = "Brak adresu do faktury";
@@ -99,7 +99,7 @@
 "paymentMethod.FREE" = "Darmo";
 "paymentMethod.IDEAL" = "Ideal";
 "paymentMethod.INVOICE" = "Faktura";
-"paymentMethod.MAKSUTURVA" = "Maksuturva ";
+"paymentMethod.MAKSUTURVA" = "Maksuturva";
 "paymentMethod.PAYPAL" = "PayPal";
 "paymentMethod.POSTFINANCE" = "PostFinance";
 "paymentMethod.PREPAYMENT" = "Przedpłata";
