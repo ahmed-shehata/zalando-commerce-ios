@@ -46,3 +46,4 @@ playground.xcworkspace
 xcov_report
 /.bundle
 /vendor
+/AtlasDemo/Pods
