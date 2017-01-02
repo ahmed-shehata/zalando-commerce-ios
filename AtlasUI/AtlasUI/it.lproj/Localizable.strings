@@ -95,7 +95,7 @@
 "paymentMethod.CHEQUE" = "";
 "paymentMethod.CREDIT_CARD" = "";
 "paymentMethod.DIRECT_DEBIT" = "";
-"paymentMethod.ELECTRONIC_PAYMENT_STANDARD" = "Electronic Payment Standard ";
+"paymentMethod.ELECTRONIC_PAYMENT_STANDARD" = "Electronic Payment Standard";
 "paymentMethod.FREE" = "";
 "paymentMethod.IDEAL" = "Ideal";
 "paymentMethod.INVOICE" = "";
