@@ -124,7 +124,6 @@
 		B2323B4DCFEE74AEB931D8FCB3C7507F /* URLComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA00908F0F31A6F77785D0B24F4E633 /* URLComponents.swift */; };
 		B5120919EA1B89762D7C7C6DA8C62FCE /* UpdateCheckoutEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1B64FFF4650D873FD9BE329BE42FDF /* UpdateCheckoutEndpoint.swift */; };
 		B66B644C530E41D683DBA1D5F907336F /* AtlasSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF2DD2D803D006BDEAB6C294E238C72D /* AtlasSDK.framework */; };
-		B6FBE71E3D62848A7742DDA2772571E9 /* AtlasSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 4909F7A407311670C29A98F9C41DF22E /* AtlasSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B760B0603070F9558115F9AF15FEF6B1 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADBF1E8B3FDBFAAE434240E7212C5FF /* Article.swift */; };
 		B92A67EF0F82CF324E49637EF91AAFF5 /* APIArticleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE6AE34B690C623FF049B322AE3FE3D /* APIArticleTests.swift */; };
 		BA9A6116F3F8E3E87EB16B0D06DB6235 /* LoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69141283EBF13CFEA9EDC20661B9078 /* LoggerTests.swift */; };
@@ -225,7 +224,6 @@
 		451081DBEABD8FC9EB00C2974FF0D08B /* KeychainTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainTests.swift; path = AtlasSDKTests/KeychainTests.swift; sourceTree = SOURCE_ROOT; };
 		45D27EC2DBE428F8EEF67DD091C5CB93 /* AtlasLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasLogger.swift; sourceTree = "<group>"; };
 		46267A0501D2255983C3C68C1F2D5AF2 /* APIOrderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIOrderTests.swift; path = AtlasSDKTests/APIOrderTests.swift; sourceTree = SOURCE_ROOT; };
-		4909F7A407311670C29A98F9C41DF22E /* AtlasSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AtlasSDK.h; path = AtlasSDK/AtlasSDK.h; sourceTree = SOURCE_ROOT; };
 		4975D92727F8C4CB91BBBEDAA7414A3B /* CheckAddressResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckAddressResponse.swift; sourceTree = "<group>"; };
 		49B83EA8E01BF361F973FA47FA728D86 /* SwiftHTTP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftHTTP.framework; path = ../Carthage/Build/iOS/SwiftHTTP.framework; sourceTree = "<group>"; };
 		4EC242C27C538FFF87174759C5187E2F /* APIGetAddressesEndpointTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIGetAddressesEndpointTests.swift; path = AtlasSDKTests/APIGetAddressesEndpointTests.swift; sourceTree = SOURCE_ROOT; };
@@ -677,7 +675,6 @@
 		D4B1BA8DB7C3102EC22C0246D8DAACDB /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				4909F7A407311670C29A98F9C41DF22E /* AtlasSDK.h */,
 				0D89792D814554CD8DB67D0A0F6DC39F /* Info.plist */,
 			);
 			name = Other;
@@ -790,7 +787,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6FBE71E3D62848A7742DDA2772571E9 /* AtlasSDK.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -940,7 +936,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		CAACA9936D8FEE96AEE5A57C71B8A25F /* Swift Lint */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
@@ -950,8 +946,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [[ -z \"$ATLAS_SKIP_SWIFT_LINT\" && -z \"$CARTHAGE_PATH\" ]]; then\n  eval \"$(/usr/bin/which -s rbenv && rbenv init -)\"\n  ${PROJECT_DIR}/../calypso.rb lint check ${PROJECT_DIR}/${TARGET_NAME}\nfi";
-			showEnvVarsInLog = 0;
+			shellScript = "if [[ -z \"$ATLAS_SKIP_SWIFT_LINT\" && -z \"$CARTHAGE_PATH\" && -z \"$PLATFORM_PRODUCT_BUILD_VERSION\" ]]; then\n  eval \"$(/usr/bin/which -s rbenv && rbenv init -)\"\n  ${PROJECT_DIR}/../calypso.rb lint check ${PROJECT_DIR}/${TARGET_NAME}\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1166,7 +1161,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.1.1;
+				CURRENT_PROJECT_VERSION = 1.1.2;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1207,7 +1202,7 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1.1.1;
+				DYLIB_CURRENT_VERSION = 1.1.2;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = AtlasSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1258,7 +1253,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.1.1;
+				CURRENT_PROJECT_VERSION = 1.1.2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1306,7 +1301,7 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1.1.1;
+				DYLIB_CURRENT_VERSION = 1.1.2;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = AtlasSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";

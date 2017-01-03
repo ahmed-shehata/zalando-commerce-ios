@@ -68,9 +68,9 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
     func handlePaymentSelection() {
         guard let paymentURL = cartCheckout?.checkout?.payment.selectionPageURL,
             let callbackURL = AtlasAPIClient.shared?.config.payment.selectionCallbackURL else {
-            let error = !hasAddresses ? AtlasCheckoutError.missingAddress : AtlasCheckoutError.unclassified
-            UserMessage.displayError(error: error)
-            return
+                let error = !hasAddresses ? AtlasCheckoutError.missingAddress : AtlasCheckoutError.unclassified
+                UserMessage.displayError(error: error)
+                return
         }
 
         let paymentViewController = PaymentViewController(paymentURL: paymentURL, callbackURL: callbackURL)

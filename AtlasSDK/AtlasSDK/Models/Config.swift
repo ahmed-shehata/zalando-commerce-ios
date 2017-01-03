@@ -61,7 +61,7 @@ extension Config {
             let selectionCallbackURL = json["atlas-checkout-api"]["payment"]["selection-callback"].URL,
             let thirdPartyCallbackURL = json["atlas-checkout-api"]["payment"]["third-party-callback"].URL,
             let availableSalesChannels = json["sales-channels"].array?.flatMap({ SalesChannel(json: $0) }),
-            let salesChannel = availableSalesChannels.filter({ $0.identifier == options.salesChannel}).first
+            let salesChannel = availableSalesChannels.first(where: { $0.identifier == options.salesChannel })
             else { return nil }
 
         self.catalogURL = catalogURL

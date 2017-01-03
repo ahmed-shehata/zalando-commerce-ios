@@ -10,9 +10,9 @@ import Nuke
 
 class ProductCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var thumbImageView: UIImageView!
-    @IBOutlet weak var buyNowButton: UIButton!
-    @IBOutlet weak var productNameLabel: UILabel!
+    @IBOutlet fileprivate weak var thumbImageView: UIImageView!
+    @IBOutlet fileprivate weak var buyNowButton: UIButton!
+    @IBOutlet fileprivate weak var productNameLabel: UILabel!
     var article: DemoArticle?
 
     func setupCell(withArticle article: DemoArticle) -> ProductCollectionViewCell {

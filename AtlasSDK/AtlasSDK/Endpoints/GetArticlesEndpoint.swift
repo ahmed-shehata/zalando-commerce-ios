@@ -2,6 +2,8 @@
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
+import Foundation
+
 struct GetArticleEndpoint: CatalogEndpoint {
 
     let config: Config
@@ -12,7 +14,7 @@ struct GetArticleEndpoint: CatalogEndpoint {
         return URLQueryItem.build(from: [
             "client_id": clientId,
             "fields": fields?.joined(separator: ",")
-        ])
+            ])
     }
 
     let sku: String

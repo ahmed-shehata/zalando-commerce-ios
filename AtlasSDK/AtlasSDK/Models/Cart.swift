@@ -41,10 +41,10 @@ extension Cart: JSONInitializable {
             let taxTotal = Money(json: json[Keys.taxTotal])
             else { return nil }
         self.init(id: id,
-            items: json[Keys.items].arrayValue.flatMap { CartItem(json: $0) },
-            itemsOutOfStock: json[Keys.itemsOutOfStock].arrayValue.flatMap { $0.string },
-            delivery: delivery,
-            grossTotal: grossTotal,
-            taxTotal: taxTotal)
+                  items: json[Keys.items].arrayValue.flatMap { CartItem(json: $0) },
+                  itemsOutOfStock: json[Keys.itemsOutOfStock].arrayValue.flatMap { $0.string },
+                  delivery: delivery,
+                  grossTotal: grossTotal,
+                  taxTotal: taxTotal)
     }
 }

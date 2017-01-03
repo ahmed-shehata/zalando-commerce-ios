@@ -7,9 +7,9 @@ import UIKit
 extension UIImage {
 
     convenience init?(named imageName: String, bundledWith anyClass: AnyClass,
-        compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) {
-            let bundle = Bundle(for: anyClass)
-            self.init(named: imageName, in: bundle, compatibleWith: traitCollection)
+                      compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) {
+        let bundle = Bundle(for: anyClass)
+        self.init(named: imageName, in: bundle, compatibleWith: traitCollection)
     }
 
 }

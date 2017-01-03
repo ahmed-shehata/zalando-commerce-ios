@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct SystemInfo {
 
@@ -11,7 +12,7 @@ struct SystemInfo {
         uname(&uts)
         return withUnsafePointer(to: &uts.machine) {
             $0.withMemoryRebound(to: CChar.self, capacity: 1) { ptr in
-                String.init(validatingUTF8: ptr)
+                String(validatingUTF8: ptr)
             }
         }
     }

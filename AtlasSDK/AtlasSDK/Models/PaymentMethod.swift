@@ -24,7 +24,7 @@ extension PaymentMethod: JSONInitializable {
             paymentMethod = PaymentMethodType(rawValue: methodRawValue)
         }
         self.init(method: paymentMethod,
-            metadata: json[Keys.metadata].dictionaryObject)
+                  metadata: json[Keys.metadata].dictionaryObject)
     }
 
 }

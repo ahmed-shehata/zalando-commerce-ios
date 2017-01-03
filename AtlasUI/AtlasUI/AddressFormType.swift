@@ -1,9 +1,9 @@
-// swiftlint:disable cyclomatic_complexity
 //
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
 import Foundation
+import UIKit
 import AtlasSDK
 
 enum AddressFormType {
@@ -116,6 +116,7 @@ extension AddressFormDataModel {
         return titles.index(of: title) ?? 0
     }
 
+    // swiftlint:disable next cyclomatic_complexity
     func value(forField field: AddressFormField) -> String? {
         switch field {
         case .title: return self.localizedTitle()
@@ -132,6 +133,7 @@ extension AddressFormDataModel {
         }
     }
 
+    // swiftlint:disable next cyclomatic_complexity
     func update(value: String?, fromField field: AddressFormField) {
         switch field {
         case .title: self.updateTitle(fromLocalizedGenderText: value)

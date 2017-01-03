@@ -42,13 +42,13 @@ extension Order: JSONInitializable {
             else { return nil }
 
         self.init(orderNumber: orderNumber,
-            customerNumber: customerNumber,
-            billingAddress: billingAddress,
-            shippingAddress: shippingAddress,
-            grossTotal: grossTotal,
-            taxTotal: taxTotal,
-            created: RFC3339DateFormatter().date(from: json[Keys.created].string),
-            detailURL: json[Keys.detailURL].URL,
-            externalPaymentURL: json[Keys.externalPaymentURL].URL)
+                  customerNumber: customerNumber,
+                  billingAddress: billingAddress,
+                  shippingAddress: shippingAddress,
+                  grossTotal: grossTotal,
+                  taxTotal: taxTotal,
+                  created: RFC3339DateFormatter().date(from: json[Keys.created].string),
+                  detailURL: json[Keys.detailURL].URL,
+                  externalPaymentURL: json[Keys.externalPaymentURL].URL)
     }
 }

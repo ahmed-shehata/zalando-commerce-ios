@@ -33,6 +33,7 @@ final class PaymentViewController: UIViewController, UIWebViewDelegate {
     }
 
     override func viewDidLoad() {
+        super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(webView)
 

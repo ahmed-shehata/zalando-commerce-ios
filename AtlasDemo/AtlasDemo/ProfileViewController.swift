@@ -8,18 +8,18 @@ import AtlasUI
 
 class ProfileViewController: UIViewController {
 
-    @IBOutlet weak var avatar: UIImageView!
-    @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var email: UILabel!
-    @IBOutlet weak var customerNumer: UILabel!
-    @IBOutlet weak var gender: UILabel!
+    @IBOutlet fileprivate weak var avatar: UIImageView!
+    @IBOutlet fileprivate weak var name: UILabel!
+    @IBOutlet fileprivate weak var email: UILabel!
+    @IBOutlet fileprivate weak var customerNumer: UILabel!
+    @IBOutlet fileprivate weak var gender: UILabel!
 
-    @IBOutlet weak var languageSwitcher: UISegmentedControl!
-    @IBOutlet weak var environmentSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var salesChannelSwitcher: UISegmentedControl!
+    @IBOutlet fileprivate weak var languageSwitcher: UISegmentedControl!
+    @IBOutlet fileprivate weak var environmentSegmentedControl: UISegmentedControl!
+    @IBOutlet fileprivate weak var salesChannelSwitcher: UISegmentedControl!
 
-    @IBOutlet weak var profileStackView: UIStackView!
-    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet fileprivate weak var profileStackView: UIStackView!
+    @IBOutlet fileprivate weak var loginButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,7 +105,8 @@ extension ProfileViewController {
 
 extension ProfileViewController {
 
-    @objc fileprivate func updateProfileVisibility(fromNotification: Notification) {
+    @objc
+    fileprivate func updateProfileVisibility(fromNotification: Notification) {
         updateProfileVisibility()
     }
 

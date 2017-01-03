@@ -8,7 +8,7 @@ import AtlasUI
 
 class CatalogViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
-    @IBOutlet weak var productCollectionView: UICollectionView!
+    @IBOutlet fileprivate weak var productCollectionView: UICollectionView!
 
     var articles = [DemoArticle]() {
         didSet {

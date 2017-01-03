@@ -53,13 +53,13 @@ extension AddressFormStackView: UIDataBuilder {
             }
 
             let viewModel = TextFieldInputViewModel(title: title,
-                value: value,
-                accessibilityIdentifier: fieldType.accessibilityIdentifier,
-                isActive: isActive,
-                validators: fieldType.formValidators,
-                customInputView: customView,
-                nextTextFieldInput: nextTextField,
-                valueChangedHandler: valueChangedHandler)
+                                                    value: value,
+                                                    accessibilityIdentifier: fieldType.accessibilityIdentifier,
+                                                    isActive: isActive,
+                                                    validators: fieldType.formValidators,
+                                                    customInputView: customView,
+                                                    nextTextFieldInput: nextTextField,
+                                                    valueChangedHandler: valueChangedHandler)
             textFieldInputView.configure(viewModel: viewModel)
         }
     }

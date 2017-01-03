@@ -13,8 +13,8 @@ struct LoggedInUpdateAddressActionHandler: AddressFormActionHandler {
         validateAddress(dataModel: dataModel) { success in
             guard let addressId = dataModel.addressId,
                 let request = UpdateAddressRequest(dataModel: dataModel), success else {
-                self.delegate?.addressProcessingFinished()
-                return
+                    self.delegate?.addressProcessingFinished()
+                    return
             }
 
             AtlasUIClient.updateAddress(addressId: addressId, request: request) { result in

@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import UIKit
 import AtlasSDK
 
 class AddressListTableDelegate: NSObject {
@@ -73,7 +74,7 @@ extension AddressListTableDelegate: UITableViewDataSource {
 extension AddressListTableDelegate: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle,
-        forRowAt indexPath: IndexPath) {
+                   forRowAt indexPath: IndexPath) {
 
         guard editingStyle == .delete else { return }
         let address = addresses[indexPath.item]

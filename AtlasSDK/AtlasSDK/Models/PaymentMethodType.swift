@@ -1,9 +1,10 @@
-// swiftlint:disable cyclomatic_complexity
 //
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
 import Foundation
+
+// swiftlint:disable cyclomatic_complexity
 
 public enum PaymentMethodType {
 

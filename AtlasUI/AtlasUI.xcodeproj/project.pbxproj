@@ -103,7 +103,6 @@
 		BACEB4C366BB6879BCC21BADA5CCC0FC /* SizeListTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376076D63BB2E3F3C6321F97D60A73ED /* SizeListTableViewDelegate.swift */; };
 		BC1ECCD35BAA9A66EA505B1C454025E3 /* UIBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640810DC34806DF7B0FBAEA4DB0123CD /* UIBuilder.swift */; };
 		BDB4FD80F01C1540EC298D66AFF139A0 /* AddressFormDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B133DACE9EE36D4E3EBB71081CB2607 /* AddressFormDataModel.swift */; };
-		BEA2BDCA7B91F5E4F51E4F874F23F9D7 /* AtlasUI.h in Headers */ = {isa = PBXBuildFile; fileRef = D0009CB7BD6740E0AF5BA15485B24797 /* AtlasUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF0BBDDAE28AF6223ACC9BA609E41945 /* NotLoggedInSummaryActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DF36B19420B6047EC88680B80664F3 /* NotLoggedInSummaryActionHandler.swift */; };
 		C233CC7F6C4F9387883F1F4ACA455596 /* LocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1ECB5B17D15F82BF8604EBB3700CA3 /* LocalizationTests.swift */; };
 		C42337E9CAB452C0BCBCD05D6C976969 /* AddressListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4DAB61E4749CCDE76915D5F4818294 /* AddressListViewController.swift */; };
@@ -287,7 +286,6 @@
 		CA619C0CB9CF11DA4959C594653024B5 /* LoggedInCreateAddressActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedInCreateAddressActionHandler.swift; sourceTree = "<group>"; };
 		CB1ECB5B17D15F82BF8604EBB3700CA3 /* LocalizationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizationTests.swift; sourceTree = "<group>"; };
 		CF6833C5C4D8FFD19A5104F37B4DBC91 /* AddressFormLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressFormLayout.swift; sourceTree = "<group>"; };
-		D0009CB7BD6740E0AF5BA15485B24797 /* AtlasUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtlasUI.h; sourceTree = "<group>"; };
 		D294A8F5C9A6F3C32AD893047F37874F /* AddressFormActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressFormActionHandler.swift; sourceTree = "<group>"; };
 		D4F1679B8BB8A951B60D19AD947CD5BA /* CGRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
 		D5A2BA84044D128BD91EBEF9D98372B3 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = ../../Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
@@ -353,7 +351,6 @@
 		030AC42F0C3F5EF6C4EEE430622B1EAC /* Others */ = {
 			isa = PBXGroup;
 			children = (
-				D0009CB7BD6740E0AF5BA15485B24797 /* AtlasUI.h */,
 				5E59C0CF4169C9E442317220C6EA5939 /* Info.plist */,
 			);
 			name = Others;
@@ -708,7 +705,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEA2BDCA7B91F5E4F51E4F874F23F9D7 /* AtlasUI.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -866,7 +862,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [[ -z \"$ATLAS_SKIP_SWIFT_LINT\" && -z \"$CARTHAGE_PATH\" ]]; then\n  eval \"$(/usr/bin/which -s rbenv && rbenv init -)\"\n  ${PROJECT_DIR}/../calypso.rb lint check ${PROJECT_DIR}/${TARGET_NAME}\nfi";
+			shellScript = "if [[ -z \"$ATLAS_SKIP_SWIFT_LINT\" && -z \"$CARTHAGE_PATH\" && -z \"$PLATFORM_PRODUCT_BUILD_VERSION\" ]]; then\n  eval \"$(/usr/bin/which -s rbenv && rbenv init -)\"\n  ${PROJECT_DIR}/../calypso.rb lint check ${PROJECT_DIR}/${TARGET_NAME}\nfi";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1084,7 +1080,7 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1.1.1;
+				DYLIB_CURRENT_VERSION = 1.1.2;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = AtlasUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1118,7 +1114,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.1.1;
+				CURRENT_PROJECT_VERSION = 1.1.2;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1177,7 +1173,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.1.1;
+				CURRENT_PROJECT_VERSION = 1.1.2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1214,7 +1210,7 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1.1.1;
+				DYLIB_CURRENT_VERSION = 1.1.2;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = AtlasUI/Info.plist;

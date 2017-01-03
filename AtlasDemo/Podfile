@@ -1,0 +1,25 @@
+use_frameworks!
+
+target 'AtlasDemo' do
+  pod 'SwiftHTTP'
+  pod 'SwiftyJSON'
+  pod 'Nuke'
+  pod 'AtlasMockAPI', path: '..'
+  pod 'AtlasUI', path: '..'
+end
+
+pre_install do |installer|
+  remove_direct_project_references(installer)
+end
+
+def remove_direct_project_references(installer)
+  installer.analysis_result.target_inspections.each do |_, res|
+    res.project.objects.each do |obj|
+      next unless obj.is_a? Xcodeproj::Project::Object::PBXFileReference
+      next unless obj.source_tree == 'BUILT_PRODUCTS_DIR' || obj.path.start_with?('../Carthage/Build/')
+      next unless obj.last_known_file_type == 'wrapper.framework'
+      puts "Removing direct #{obj.path} reference from the project"
+      obj.remove_from_project
+    end
+  end
+end

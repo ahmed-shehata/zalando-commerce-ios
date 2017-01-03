@@ -31,6 +31,7 @@ public class AtlasUIViewController: UIViewController {
     }
 
     override public func viewDidLoad() {
+        super.viewDidLoad()
         UserMessage.loadBannerError()
         addChildViewController(mainNavigationController)
         view.addSubview(mainNavigationController.view)

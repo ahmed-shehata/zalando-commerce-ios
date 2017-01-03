@@ -1,4 +1,4 @@
-require_relative './lib/version'
+require_relative './lib/version.rb'
 
 # rubocop:disable Metrics/BlockLength
 Pod::Spec.new do |spec|

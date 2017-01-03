@@ -92,8 +92,8 @@ struct Keychain {
     private static func prepareItemQuery(forAccount accountName: String? = nil,
                                          retrieveData: Bool = false) -> [AnyHashable: Any] {
         var query: [AnyHashable: Any] = [kSecClass as AnyHashable: kSecClassGenericPassword,
-            kSecAttrAccessible as AnyHashable: kSecAttrAccessibleWhenUnlocked,
-            kSecAttrService as AnyHashable: Bundle.main.bundleIdentifier ?? "de.zalando.AtlasSDK"]
+                                         kSecAttrAccessible as AnyHashable: kSecAttrAccessibleWhenUnlocked,
+                                         kSecAttrService as AnyHashable: Bundle.main.bundleIdentifier ?? "de.zalando.AtlasSDK"]
 
         if let account = accountName {
             query[kSecAttrAccount as AnyHashable] = account

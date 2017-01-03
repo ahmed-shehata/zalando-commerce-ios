@@ -5,18 +5,19 @@
 import Foundation
 import Swifter
 
+// swiftlint:disable missing_docs
+
 public final class AtlasMockAPI {
 
     public static let isEnabledFlag = "ATLAS_MOCK_API_ENABLED"
 
-    fileprivate static var isStarted = false
+    fileprivate static var isStarted: Bool { return server.state == .starting || server.state == .running }
     fileprivate static let server = HttpServer()
     fileprivate static let serverURL = URL(string: "http://localhost:9080")! // swiftlint:disable:this force_unwrapping
 
     public static func startServer(wait timeout: TimeInterval = 15) throws {
         try server.registerEndpoints()
         try server.start(at: serverURL, forceIPv4: false, timeout: timeout)
-        AtlasMockAPI.isStarted = true
         print("AtlasMockAPI server started @ \(serverURL)")
     }
 

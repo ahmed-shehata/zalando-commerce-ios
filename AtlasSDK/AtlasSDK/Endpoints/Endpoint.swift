@@ -2,6 +2,8 @@
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
+import Foundation
+
 typealias EndpointParameters = [String: Any]
 typealias EndpointHeaders = [String: Any]
 

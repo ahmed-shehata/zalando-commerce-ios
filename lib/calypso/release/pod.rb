@@ -12,18 +12,21 @@ module Calypso
     option :verbose, type: :boolean
     desc 'validate', 'Validates and builds pod'
     def validate
-      if options[:local]
-        run_pod 'lib lint', options
-      else
-        run_pod 'spec lint', options
-      end
+      subcommand = if options[:local]
+                     'lib'
+                   else
+                     'spec'
+                   end
+      run_pod "#{subcommand} lint #{PODSPECS.join ' '}", options
     end
 
     option :silent, type: :boolean
     option :verbose, type: :boolean
     desc 'publish', 'Publish new version to CocoaPods'
     def publish
-      run_pod 'trunk push', options
+      PODSPECS.each do |ps|
+        run_pod "trunk push #{ps}", options
+      end
     end
 
     private
@@ -38,7 +41,7 @@ module Calypso
         args << '--verbose'
       end
 
-      run "pod #{subcommand} #{PODSPECS.join ' '} #{args.join ' '}"
+      run "pod #{subcommand} #{args.join ' '}"
     end
 
   end

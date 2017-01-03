@@ -19,10 +19,10 @@ extension URLRequest {
 
         if let HTTPBodyData = self.httpBody,
             let HTTPBody = String(data: HTTPBodyData, encoding: String.Encoding.utf8) {
-                var escapedBody = HTTPBody.replacingOccurrences(of: "\\\"", with: "\\\\\"")
-                escapedBody = escapedBody.replacingOccurrences(of: "\"", with: "\\\"")
+            var escapedBody = HTTPBody.replacingOccurrences(of: "\\\"", with: "\\\\\"")
+            escapedBody = escapedBody.replacingOccurrences(of: "\"", with: "\\\"")
 
-                curlComponents.append("-d \"\(escapedBody)\"")
+            curlComponents.append("-d \"\(escapedBody)\"")
         }
 
         curlComponents.append("\"\(URL.urlString)\"")

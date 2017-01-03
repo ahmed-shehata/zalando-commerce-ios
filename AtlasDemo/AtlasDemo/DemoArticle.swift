@@ -6,71 +6,71 @@ import Foundation
 import AtlasSDK
 import SwiftyJSON
 
-public struct DemoArticle {
+struct DemoArticle {
 
-    public struct Brand {
-        public let key: String
-        public let name: String
-        public let logoURL: URL?
-        public let largeLogoURL: URL?
-        public let shopURL: URL
+    struct Brand {
+        let key: String
+        let name: String
+        let logoURL: URL?
+        let largeLogoURL: URL?
+        let shopURL: URL
     }
 
-    public struct Attribute {
-        public let name: String
-        public let values: [String]
+    struct Attribute {
+        let name: String
+        let values: [String]
     }
 
-    public struct Unit {
-        public let id: String
-        public let size: String
-        public let price: Price
-        public let originalPrice: Price
-        public let available: Bool
-        public let stock: Int
+    struct Unit {
+        let id: String
+        let size: String
+        let price: Price
+        let originalPrice: Price
+        let available: Bool
+        let stock: Int
     }
 
-    public struct Price {
-        public let currency: String
-        public let valueInCents: Int
-        public let value: Float
-        public let formatted: String
+    struct Price {
+        let currency: String
+        let valueInCents: Int
+        let value: Float
+        let formatted: String
     }
 
-    public struct Media {
-        public let images: [Image]
+    struct Media {
+        let images: [Image]
     }
 
-    public struct Image {
-        public let orderNumber: Int
-        public let type: String
-        public let thumbnailHDURL: URL
-        public let smallURL: URL
-        public let smallHDURL: URL
-        public let mediumURL: URL
-        public let mediumHDURL: URL
-        public let largeURL: URL
-        public let largeHDURL: URL
+    struct Image {
+        let orderNumber: Int
+        let type: String
+        let thumbnailHDURL: URL
+        let smallURL: URL
+        let smallHDURL: URL
+        let mediumURL: URL
+        let mediumHDURL: URL
+        let largeURL: URL
+        let largeHDURL: URL
     }
 
-    public let id: String
-    public let modelId: String
-    public let name: String
-    public let shopURL: URL
-    public let color: String
-    public let available: Bool
-    public let season: String
-    public let seasonYear: String
-    public let additionalInfos: [String]
-    public let genders: [String]
-    public let ageGroups: [String]
-    public let brand: Brand
-    public let categoryKeys: [String]
-    public let attributes: [Attribute]
-    public let units: [Unit]
-    public let media: Media
+    let id: String
+    let modelId: String
+    let name: String
+    let shopURL: URL
+    let color: String
+    let available: Bool
+    let season: String
+    let seasonYear: String
+    let additionalInfos: [String]
+    let genders: [String]
+    let ageGroups: [String]
+    let brand: Brand
+    let categoryKeys: [String]
+    let attributes: [Attribute]
+    let units: [Unit]
+    let media: Media
 
-    public var imageThumbURL: URL? {
+    var imageThumbURL: URL? {
         guard let img = self.media.images.first else { return nil }
         return img.mediumHDURL
     }
@@ -215,7 +215,7 @@ extension DemoArticle.Image {
 
 extension DemoArticle.Image: Equatable { }
 
-public func == (lhs: DemoArticle.Image, rhs: DemoArticle.Image) -> Bool {
+func == (lhs: DemoArticle.Image, rhs: DemoArticle.Image) -> Bool {
     return lhs.type == rhs.type
 }
 
@@ -235,10 +235,10 @@ extension DemoArticle {
 
 extension DemoArticle.Price: Comparable { }
 
-public func == (lhs: DemoArticle.Price, rhs: DemoArticle.Price) -> Bool {
+func == (lhs: DemoArticle.Price, rhs: DemoArticle.Price) -> Bool {
     return lhs.valueInCents == rhs.valueInCents
 }
 
-public func < (lhs: DemoArticle.Price, rhs: DemoArticle.Price) -> Bool {
+func < (lhs: DemoArticle.Price, rhs: DemoArticle.Price) -> Bool {
     return lhs.valueInCents < rhs.valueInCents
 }

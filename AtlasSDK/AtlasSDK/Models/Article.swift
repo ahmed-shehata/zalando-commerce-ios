@@ -4,10 +4,6 @@
 
 import Foundation
 
-/**
- Represents a single article
- */
-
 public struct SelectedArticleUnit {
 
     public let article: Article
@@ -102,7 +98,7 @@ extension Article: JSONInitializable {
             let color = json["color"].string,
             let brand = Brand(json: json["brand"]),
             let media = Media(json: json["media"])
-        else { return nil }
+            else { return nil }
 
         self.id = id
         self.name = name
@@ -124,7 +120,7 @@ extension Article.Unit: JSONInitializable {
             let originalPrice = Money(json: json["original_price"]),
             let available = json["available"].bool,
             let stock = json["stock"].int
-        else { return nil }
+            else { return nil }
 
         self.id = id
         self.size = size
@@ -168,7 +164,7 @@ extension Article.Image: JSONInitializable {
             let detailHDURL = json["detail_hd"].URL,
             let largeURL = json["large"].URL,
             let largeHDURL = json["large_hd"].URL
-        else { return nil }
+            else { return nil }
         self.order = order
         self.catalogURL = catalogURL
         self.catalogHDURL = catalogHDURL
@@ -186,7 +182,7 @@ extension Article.Partner: JSONInitializable {
         guard let id = json["id"].string,
             let name = json["name"].string,
             let detailsURL = json["detail_url"].string
-        else { return nil }
+            else { return nil }
 
         self.id = id
         self.name = name

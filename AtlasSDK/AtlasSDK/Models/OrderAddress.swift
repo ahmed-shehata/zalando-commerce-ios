@@ -38,16 +38,16 @@ extension OrderAddress: JSONInitializable {
             let zip = json[Keys.zip].string,
             let city = json[Keys.city].string,
             let countryCode = json[Keys.countryCode].string
-        else { return nil }
+            else { return nil }
 
         self.init(gender: gender,
-            firstName: firstName,
-            lastName: lastName,
-            street: json[Keys.street].string,
-            additional: json[Keys.additional].string,
-            zip: zip,
-            city: city,
-            countryCode: countryCode,
-            pickupPoint: PickupPoint(json: json[Keys.pickupPoint]))
+                  firstName: firstName,
+                  lastName: lastName,
+                  street: json[Keys.street].string,
+                  additional: json[Keys.additional].string,
+                  zip: zip,
+                  city: city,
+                  countryCode: countryCode,
+                  pickupPoint: PickupPoint(json: json[Keys.pickupPoint]))
     }
 }

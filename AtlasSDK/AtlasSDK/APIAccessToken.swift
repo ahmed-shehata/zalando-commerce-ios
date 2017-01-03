@@ -15,8 +15,8 @@ struct APIAccessToken {
     var value: String?
     var key: String {
         let components = [APIAccessToken.keychainKeyPrefix,
-            clientId,
-            Options.Environment(useSandboxEnvironment: useSandboxEnvironment).rawValue]
+                          clientId,
+                          Options.Environment(useSandboxEnvironment: useSandboxEnvironment).rawValue]
         return components.joined(separator: APIAccessToken.componentsSeparator)
     }
 

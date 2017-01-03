@@ -5,15 +5,15 @@
 import AtlasSDK
 import SwiftyJSON
 
-public struct DemoCatalog {
+struct DemoCatalog {
 
-    public let articles: [DemoArticle]
+    let articles: [DemoArticle]
 
 }
 
 extension DemoCatalog {
 
-    public init(jsonString: String, rootElement: String = "content") {
+    init(jsonString: String, rootElement: String = "content") {
         let json = JSON.parse(jsonString)
         articles = json[rootElement].arrayValue.flatMap { DemoArticle(json: $0) }
     }

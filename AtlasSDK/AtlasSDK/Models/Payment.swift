@@ -2,6 +2,8 @@
 //  Copyright © 2016 Zalando SE. All rights reserved.
 //
 
+import Foundation
+
 public struct Payment {
 
     public let selected: PaymentMethod?
@@ -26,8 +28,8 @@ extension Payment: JSONInitializable {
 
     init?(json: JSON) {
         self.init(selected: PaymentMethod(json: json[Keys.selected]),
-            isExternalPayment: json[Keys.externalPayment].bool,
-            selectionPageURL: json[Keys.selectionPageURL].URL)
+                  isExternalPayment: json[Keys.externalPayment].bool,
+                  selectionPageURL: json[Keys.selectionPageURL].URL)
     }
 
 }

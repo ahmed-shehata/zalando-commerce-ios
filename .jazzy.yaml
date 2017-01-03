@@ -1,9 +1,0 @@
-module: AtlasCheckout
-author: Atlas
-github_url: https://github.com/zalando-incubator/atlas-ios
-clean: true
-podspec: AtlasSDK.podspec
-output: Documentation/Atlas
-skip_undocumented: true
-hide_documentation_coverage: false
-theme: apple

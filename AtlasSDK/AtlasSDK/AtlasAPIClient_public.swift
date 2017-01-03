@@ -4,70 +4,44 @@
 
 import Foundation
 
-/**
- Completion block `AtlasAPIResult` with the no content returned
- */
-public typealias NoContentCompletion = (AtlasAPIResult<Bool>) -> Void
+/// Completion closure with `Bool` in `AtlasAPIResult.success` result
+public typealias SuccessCompletion = (AtlasAPIResult<Bool>) -> Void
 
-/**
- Completion block `AtlasAPIResult` with the `Customer` struct as a success value
- */
+/// Completion closure with `Customer` in `AtlasAPIResult.success` result
 public typealias CustomerCompletion = (AtlasAPIResult<Customer>) -> Void
 
-/**
- Completion block `AtlasAPIResult` with the `Cart` struct as a success value
- */
+/// Completion closure with `Cart` in `AtlasAPIResult.success` result
 public typealias CartCompletion = (AtlasAPIResult<Cart>) -> Void
 
-/**
- Completion block `AtlasAPIResult` with the `Checkout` struct as a success value
- */
+/// Completion closure with `Checkout` in `AtlasAPIResult.success` result
 public typealias CheckoutCompletion = (AtlasAPIResult<Checkout>) -> Void
 
-/**
- Completion block `AtlasAPIResult` with the `Checkout` & `Cart` structs as a success value
- */
+/// Completion closure with (`Checkout`, `Cart`) in `AtlasAPIResult.success` result
 public typealias CheckoutCartCompletion = (AtlasAPIResult<(checkout: Checkout, cart: Cart)>) -> Void
 
-/**
- Completion block `AtlasAPIResult` with the `Order` struct as a success value
- */
+/// Completion closure with `Order` in `AtlasAPIResult.success` result
 public typealias OrderCompletion = (AtlasAPIResult<Order>) -> Void
 
-/**
- Completion block `AtlasAPIResult` with the `GuestCheckout` struct as a success value
- */
+/// Completion closure with `GuestCheckout` in `AtlasAPIResult.success` result
 public typealias GuestCheckoutCompletion = (AtlasAPIResult<GuestCheckout>) -> Void
 
-/**
- Completion block `AtlasAPIResult` with the `GuestOrder` struct as a success value
- */
+/// Completion closure with `GuestOrder` in `AtlasAPIResult.success` result
 public typealias GuestOrderCompletion = (AtlasAPIResult<GuestOrder>) -> Void
 
-/**
- Completion block `AtlasAPIResult` with the `URL` struct as a success value
- */
+/// Completion closure with `URL` in `AtlasAPIResult.success` result
 public typealias URLCompletion = (AtlasAPIResult<URL>) -> Void
 
-/**
- Completion block `AtlasAPIResult` with the `Article` struct as a success value
- */
+/// Completion closure with `Article` in `AtlasAPIResult.success` result
 public typealias ArticleCompletion = (AtlasAPIResult<Article>) -> Void
 
-/**
- Completion block `AtlasAPIResult` with array of the `UserAddress` struct as a success value
- */
+/// Completion closure with `[UserAddress]` in `AtlasAPIResult.success` result
 public typealias AddressesCompletion = (AtlasAPIResult<[UserAddress]>) -> Void
 
-/**
- Completion block `AtlasAPIResult` with the `UserAddress` struct as a success value
- */
-public typealias AddressCreateUpdateCompletion = (AtlasAPIResult<UserAddress>) -> Void
+/// Completion closure with `UserAddress` in `AtlasAPIResult.success` result
+public typealias AddressChangeCompletion = (AtlasAPIResult<UserAddress>) -> Void
 
-/**
- Completion block `AtlasAPIResult` with the `CheckAddressResponse` struct as a success value
- */
-public typealias CheckAddressCompletion = (AtlasAPIResult<CheckAddressResponse>) -> Void
+/// Completion closure with `CheckAddressResponse` in `AtlasAPIResult.success` result
+public typealias AddressCheckCompletion = (AtlasAPIResult<CheckAddressResponse>) -> Void
 
 extension AtlasAPIClient {
 
@@ -166,24 +140,25 @@ extension AtlasAPIClient {
         fetch(from: endpoint, completion: completion)
     }
 
-    public func deleteAddress(withId addressId: String, completion: @escaping NoContentCompletion) {
+    public func deleteAddress(withId addressId: String, completion: @escaping SuccessCompletion) {
         let endpoint = DeleteAddressEndpoint(config: config, addressId: addressId)
         touch(endpoint: endpoint, completion: completion)
     }
 
-    public func createAddress(_ request: CreateAddressRequest, completion: @escaping AddressCreateUpdateCompletion) {
+
+    public func createAddress(_ request: CreateAddressRequest, completion: @escaping AddressChangeCompletion) {
         let endpoint = CreateAddressEndpoint(config: config, createAddressRequest: request)
         fetch(from: endpoint, completion: completion)
     }
 
-    public func updateAddress(withAddressId addressId: String,
+    public func updateAddress(withId addressId: String,
                               request: UpdateAddressRequest,
-                              completion: @escaping AddressCreateUpdateCompletion) {
+                              completion: @escaping AddressChangeCompletion) {
         let endpoint = UpdateAddressEndpoint(config: config, addressId: addressId, updateAddressRequest: request)
         fetch(from: endpoint, completion: completion)
     }
 
-    public func checkAddress(_ request: CheckAddressRequest, completion: @escaping CheckAddressCompletion) {
+    public func checkAddress(_ request: CheckAddressRequest, completion: @escaping AddressCheckCompletion) {
         let endpoint = CheckAddressEndpoint(config: config, checkAddressRequest: request)
         fetch(from: endpoint, completion: completion)
     }
@@ -193,7 +168,7 @@ extension AtlasAPIClient {
 private extension AtlasAPIClient {
 
     func isCheckoutFailed(error: Error) -> Bool {
-        if case let AtlasAPIError.backend(status, _, _, _) = error, status == 409 {
+        if case let AtlasAPIError.backend(status, _, _, _) = error, status == HTTPStatus.conflict {
             return true
         } else {
             return false
