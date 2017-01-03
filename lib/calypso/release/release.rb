@@ -20,7 +20,7 @@ module Calypso
     end
 
     desc 'preview', 'Create release notes since latest release'
-    def preview 
+    def preview
       puts release_notes
     end
 
