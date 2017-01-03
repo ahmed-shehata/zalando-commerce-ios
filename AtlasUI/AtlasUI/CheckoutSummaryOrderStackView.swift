@@ -13,7 +13,7 @@ class CheckoutSummaryOrderStackView: UIStackView {
         label.numberOfLines = 0
         label.textColor = .darkGray
         label.textAlignment = .center
-        label.text = Localizer.format(string: "summaryView.label.orderHeader")
+        label.text = "\n" + Localizer.format(string: "summaryView.label.orderHeader")
         return label
     }()
 
