@@ -10,9 +10,9 @@ theirs approval (:+1:)
 ## Workflow
 
 1. Create an issue and describe your idea (remember its number)
-1. Create your feature branch (`git checkout -b <issue-NUMBER>`)
-1. Commit your changes (`git commit -am 'Add some feature'`)
-1. Publish the branch (`git push origin issue-NUMBER`)
+1. Create your feature branch: `git checkout -b <issue-NUMBER>`
+1. Commit your changes: `git commit -am 'Add some feature'`
+1. Publish the branch: `git push origin issue-NUMBER`
 1. Create a new Pull Request
 
 ## Rules
