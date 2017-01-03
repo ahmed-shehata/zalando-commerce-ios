@@ -4,8 +4,8 @@ target 'AtlasDemo' do
   pod 'SwiftHTTP'
   pod 'SwiftyJSON'
   pod 'Nuke'
-  pod 'AtlasMockAPI', path: '..'
-  pod 'AtlasUI', path: '..'
+  pod 'AtlasMockAPI' #, path: '..'
+  pod 'AtlasUI' #, path: '..'
 end
 
 pre_install do |installer|
