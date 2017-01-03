@@ -20,7 +20,7 @@ The project contains 2 main frameworks:
 1. `AtlasSDK` – contains models and network client for Zalando Checkout, Guest Checkout, and Catalog APIs.
 2. `AtlasUI` – contains full UI implementation for handling checkout.
 
-Additionally, [AtlasDemo app](https://github.com/zalando-incubator/atlas-ios/wiki/Demo-App) presents framework features.
+Additionally, [AtlasDemo app](https://github.com/zalando-incubator/atlas-ios/wiki/Demo-App) presents the framework and how to integrate it.
 
 ## Quick Start
 
