@@ -45,7 +45,7 @@ extension AddressFormStackView: UIDataBuilder {
 
             var nextTextField: TextFieldInputStackView?
             if !fieldType.returnKeyDismissKeyboard() {
-                nextTextField = textFields.count > idx + 1 ? textFields[idx + 1]: nil
+                nextTextField = textFields.count > idx + 1 ? textFields[idx + 1] : nil
             }
 
             let valueChangedHandler: TextFieldChangedHandler = { text in
@@ -54,14 +54,35 @@ extension AddressFormStackView: UIDataBuilder {
 
             let viewModel = TextFieldInputViewModel(title: title,
                                                     value: value,
-                                                    accessibilityIdentifier: fieldType.accessibilityIdentifier,
+                                                    fieldType: fieldType,
                                                     isActive: isActive,
-                                                    validators: fieldType.formValidators,
                                                     customInputView: customView,
                                                     nextTextFieldInput: nextTextField,
                                                     valueChangedHandler: valueChangedHandler)
             textFieldInputView.configure(viewModel: viewModel)
         }
+    }
+
+}
+
+extension TextFieldInputViewModel {
+
+    init(title: String,
+         value: String? = nil,
+         fieldType: AddressFormField,
+         isActive: Bool = true,
+         customInputView: UIView? = nil,
+         nextTextFieldInput: TextFieldInputStackView? = nil,
+         valueChangedHandler: TextFieldChangedHandler? = nil) {
+        self.init(title: title,
+                  value: value,
+                  accessibilityIdentifier: fieldType.accessibilityIdentifier,
+                  isActive: isActive,
+                  validators: fieldType.formValidators,
+                  customInputView: customInputView,
+                  nextTextFieldInput: nextTextFieldInput,
+                  valueChangedHandler: valueChangedHandler,
+                  keyboardType: fieldType.keyboardType)
     }
 
 }

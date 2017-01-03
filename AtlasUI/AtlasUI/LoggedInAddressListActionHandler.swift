@@ -27,7 +27,7 @@ class LoggedInAddressListActionHandler: AddressListActionHandler {
 
     func update(address: EquatableAddress) {
         let dataModel = AddressFormDataModel(equatableAddress: address,
-                                             countryCode: AtlasAPIClient.shared?.salesChannelCountry)
+                                             countryCode: AtlasAPIClient.shared?.config.salesChannel.countryCode)
         let formLayout = UpdateAddressFormLayout()
         let addressType: AddressFormType = address.pickupPoint == nil ? .standardAddress : .pickupPoint
         let viewModel = AddressFormViewModel(dataModel: dataModel, layout: formLayout, type: addressType)

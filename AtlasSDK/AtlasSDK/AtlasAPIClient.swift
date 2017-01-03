@@ -10,10 +10,6 @@ public struct AtlasAPIClient {
 
     public let config: Config
 
-    public var salesChannelCountry: String {
-        return config.salesChannel.countryCode
-    }
-
     var urlSession: URLSession = URLSession.shared
 
     init(config: Config) {

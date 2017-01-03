@@ -145,7 +145,6 @@ extension AtlasAPIClient {
         touch(endpoint: endpoint, completion: completion)
     }
 
-
     public func createAddress(_ request: CreateAddressRequest, completion: @escaping AddressChangeCompletion) {
         let endpoint = CreateAddressEndpoint(config: config, createAddressRequest: request)
         fetch(from: endpoint, completion: completion)

@@ -92,24 +92,9 @@ extension TextFieldInputStackView: UIDataBuilder {
     func configure(viewModel: T) {
         titleLabel.text = viewModel.title.uppercased()
 
+        textField.setup(from: viewModel)
+
         nextTextField = viewModel.nextTextFieldInput
-        textField.text = viewModel.value
-        textField.accessibilityIdentifier = viewModel.accessibilityIdentifier
-        textField.placeholder = viewModel.title
-        textField.returnKeyType = nextTextField == nil ? .default : .next
-
-        textField.isUserInteractionEnabled = viewModel.isActive
-        if !viewModel.isActive {
-            textField.textColor = UIColor(hex: 0xADADAD)
-        }
-
-        textField.inputView = viewModel.customInputView
-        if viewModel.customInputView != nil {
-            textField.tintColor = .clear
-            textField.canCopy = false
-            textField.canPaste = false
-        }
-
         valueChangedHandler = viewModel.valueChangedHandler
         validators = viewModel.validators
 
