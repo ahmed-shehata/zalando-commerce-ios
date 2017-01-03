@@ -9,7 +9,7 @@ target 'AtlasDemo' do
 end
 
 pre_install do |installer|
-  # remove_direct_project_references(installer)
+  remove_direct_project_references(installer)
 end
 
 def remove_direct_project_references(installer)
