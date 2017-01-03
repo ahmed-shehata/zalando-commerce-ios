@@ -41,19 +41,19 @@ module Calypso
         fetch_pages(url, headers, query, pages)
       end
 
-      def fetch_pages(url, headers, query, pages)
+      def fetch_pages(url, headers, query, pages, per_page: 100)
         full_response = []
         1.upto(pages).each do |page|
           log_debug "GET #{url} ... (page=#{page})"
           if pages > 1
-            query['per_page'] = 100
+            query['per_page'] = per_page
             query['page'] = page
           end
-          response = HTTParty.get(url, headers: headers, query: query)
+          response = HTTParty.get(url, headers: headers, query: query, verify: verify_ssl)
           log_abort response unless response.success?
           parsed = response.parsed_response
           full_response += parsed
-          break if parsed.count.zero?
+          break if parsed.count.zero? || parsed.count < per_page
         end
         full_response
       end
@@ -61,7 +61,7 @@ module Calypso
       def delete(url, headers: {}, query: {})
         log_debug "DELETE #{url} ..."
         headers.merge! standard_headers
-        response = HTTParty.delete(url, headers: headers, query: query)
+        response = HTTParty.delete(url, headers: headers, query: query, verify: verify_ssl)
         log_abort response unless response.success?
         response
       end
@@ -69,7 +69,7 @@ module Calypso
       def post(url, headers: {}, query: {}, body: {})
         log_debug "POST #{url} ..."
         headers.merge! standard_headers
-        response = HTTParty.post(url, headers: headers, query: query, body: body.to_json)
+        response = HTTParty.post(url, headers: headers, query: query, body: body.to_json, verify: verify_ssl)
         log_abort response unless response.success?
         response
       end
@@ -81,6 +81,10 @@ module Calypso
         headers['Content-Type'] = 'application/json'
         headers['Accept'] = 'application/vnd.github.inertia-preview+json'
         headers
+      end
+
+      def verify_ssl
+        false
       end
 
       include Env
