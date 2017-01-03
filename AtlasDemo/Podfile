@@ -4,8 +4,8 @@ target 'AtlasDemo' do
   pod 'SwiftHTTP'
   pod 'SwiftyJSON'
   pod 'Nuke'
-  pod 'AtlasMockAPI' #, path: '..'
-  pod 'AtlasUI' #, path: '..'
+  pod 'AtlasUI'
+  pod 'AtlasMockAPI', git: 'https://github.com/zalando-incubator/atlas-ios.git'
 end
 
 pre_install do |installer|
