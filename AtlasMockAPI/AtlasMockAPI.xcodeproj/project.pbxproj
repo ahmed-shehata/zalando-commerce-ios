@@ -38,7 +38,7 @@
 		68DB45EEDB9F7397A40E0E4498573BC2 /* SwiftHTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC9521FB6EAEE2BD391841437FC0C671 /* SwiftHTTP.framework */; };
 		69638C8F4C743864D4481FA6941E71B1 /* Swifter.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7B32EE0596F3E33D121673D07A89E425 /* Swifter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6B8D00F6A8A7623EDC6C802B0ACF2DB1 /* authorize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515C868CEC51956D7AB4E80D708654BC /* authorize.swift */; };
-		6D87BC6A19E87B21AD6A5D948A029491 /* addresses.injectedJson in Resources */ = {isa = PBXBuildFile; fileRef = 2BEBFF894CA6322C4F0CBA0352C30C5D /* addresses.injectedJson */; };
+		6D87BC6A19E87B21AD6A5D948A029491 /* !addresses.json in Resources */ = {isa = PBXBuildFile; fileRef = 2BEBFF894CA6322C4F0CBA0352C30C5D /* !addresses.json */; };
 		70F190676FB4911CAF3A7482D5D6FDDB /* GET*|articles|LA254E005-Q11.json in Resources */ = {isa = PBXBuildFile; fileRef = 6943EFC2A304C00CD2041024D11F5CEE /* GET*|articles|LA254E005-Q11.json */; };
 		752AD4DC7CCCA0A5BE46A02D5AC5C848 /* customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE50F14CF22BB8970E3EA7156738A8D5 /* customer.swift */; };
 		79068FCC902009E12A3E43E7A2895902 /* !customer-auth.json in Resources */ = {isa = PBXBuildFile; fileRef = 190ADDFC8C36495A6C2B51B58DE206F4 /* !customer-auth.json */; };
@@ -67,7 +67,7 @@
 		9C0578DBD80EB3FB52CF65220A86FF0E /* SwiftyJSON.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 72C51F2F8B90A76F70E31896FC0E81C5 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A016235CBE6482153D3A5F8C24FA6F28 /* GET*|articles|GU121D08Z-Q11.json in Resources */ = {isa = PBXBuildFile; fileRef = C5FCC3D9537682DB7EA877FCBE602EA8 /* GET*|articles|GU121D08Z-Q11.json */; };
 		A389EBF5652D8E081DFFAB10B876A866 /* redirect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9224E46FC82BA4A977234267FF02A75E /* redirect.swift */; };
-		A4F77C9721AA1F2F41838E45A99CECDD /* addresses.injectedJson in Resources */ = {isa = PBXBuildFile; fileRef = 2BEBFF894CA6322C4F0CBA0352C30C5D /* addresses.injectedJson */; };
+		A4F77C9721AA1F2F41838E45A99CECDD /* !addresses.json in Resources */ = {isa = PBXBuildFile; fileRef = 2BEBFF894CA6322C4F0CBA0352C30C5D /* !addresses.json */; };
 		A59F076590A5B06814D2F6466416E978 /* !customer-not-auth.json in Resources */ = {isa = PBXBuildFile; fileRef = A2292C0F231C12E7007FBD34A78D6FE9 /* !customer-not-auth.json */; };
 		AA70A196673623B812B5A0379184BA41 /* GET*|articles|EV451G023-Q11.json in Resources */ = {isa = PBXBuildFile; fileRef = 85BC90121A75EE5E58D7451EDFC484AB /* GET*|articles|EV451G023-Q11.json */; };
 		AD45008504E2DF00E0A3A55E5D87C6EB /* GET*|articles|L2711E002-Q11.json in Resources */ = {isa = PBXBuildFile; fileRef = 357236E33FB5593BDA0C34D7C3B85BD5 /* GET*|articles|L2711E002-Q11.json */; };
@@ -179,7 +179,7 @@
 		190ADDFC8C36495A6C2B51B58DE206F4 /* !customer-auth.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "!customer-auth.json"; sourceTree = "<group>"; };
 		25AA9D7CAAB78B0F3310F0CBD901FEBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2841CC657D79D120D56C0C0B83CC3B86 /* POST*|address-checks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "POST*|address-checks.json"; sourceTree = "<group>"; };
-		2BEBFF894CA6322C4F0CBA0352C30C5D /* addresses.injectedJson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = addresses.injectedJson; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.javascript; };
+		2BEBFF894CA6322C4F0CBA0352C30C5D /* !addresses.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "!addresses.json"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.javascript; };
 		2F233AE2A48887D4F5E1D37453A3E21F /* AtlasMockAPIRunner */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AtlasMockAPIRunner; sourceTree = BUILT_PRODUCTS_DIR; };
 		357236E33FB5593BDA0C34D7C3B85BD5 /* GET*|articles|L2711E002-Q11.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles|L2711E002-Q11.json"; sourceTree = "<group>"; };
 		36179885761B049B1F4CBF0168DCE1BC /* PUT*|checkouts|CHECKOUT_ID.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "PUT*|checkouts|CHECKOUT_ID.json"; sourceTree = "<group>"; };
@@ -330,7 +330,7 @@
 				FD8102294BD62829FFA7EDF717C73963 /* DELETE*|addresses|6616154.json */,
 				FB1DF45B612B010DA36687458D5AAD11 /* DELETE*|addresses|6702748.json */,
 				CACE4447528604E65E39575522445766 /* DELETE*|addresses|6702759.json */,
-				2BEBFF894CA6322C4F0CBA0352C30C5D /* addresses.injectedJson */,
+				2BEBFF894CA6322C4F0CBA0352C30C5D /* !addresses.json */,
 				9336AFA69D4F4B80A26EED76DFD48E73 /* POST*|addresses.json */,
 				A18D1A78AC6C343752EAD271C4A781C7 /* PUT*|addresses|6616154.json */,
 				B13055DF8EA83B50E99C79CD3B654526 /* PUT*|addresses|6702748.json */,
@@ -599,7 +599,7 @@
 				F250E16CBA2E2CEED4E3DE7EFF2D74A7 /* DELETE*|addresses|6616154.json in Resources */,
 				65522A93EA15FE48ED165C3A8BDB6E2F /* DELETE*|addresses|6702748.json in Resources */,
 				E5EA6B0AA33ED7FB2824EC819970B2ED /* DELETE*|addresses|6702759.json in Resources */,
-				A4F77C9721AA1F2F41838E45A99CECDD /* addresses.injectedJson in Resources */,
+				A4F77C9721AA1F2F41838E45A99CECDD /* !addresses.json in Resources */,
 				91404B744633CD79FA84CD4E5643CF33 /* GET*|articles.json in Resources */,
 				030BAC267ECE5552034894F8727BC4C0 /* GET*|articles|AD541L009-G11.json in Resources */,
 				5A99D969BDCDFF6E6392E35A8A0AB686 /* GET*|articles|AZ711M001-B11.json in Resources */,
@@ -641,7 +641,7 @@
 				59745E9F9ECCC552BCF3CF15CEC868E6 /* DELETE*|addresses|6616154.json in Resources */,
 				95E82407BC871E74D62BF55165FC985D /* DELETE*|addresses|6702748.json in Resources */,
 				64DA112F4AA804031B27C1D2A3842C49 /* DELETE*|addresses|6702759.json in Resources */,
-				6D87BC6A19E87B21AD6A5D948A029491 /* addresses.injectedJson in Resources */,
+				6D87BC6A19E87B21AD6A5D948A029491 /* !addresses.json in Resources */,
 				F58A3868199FCF758BAFBF169270FF60 /* GET*|articles.json in Resources */,
 				64407C519CB0060BBB74B492DCFA5692 /* GET*|articles|AD541L009-G11.json in Resources */,
 				16F0CA78B871E84EA9528CF169C3F383 /* GET*|articles|AZ711M001-B11.json in Resources */,
