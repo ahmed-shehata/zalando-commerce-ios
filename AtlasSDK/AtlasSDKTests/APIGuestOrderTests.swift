@@ -18,25 +18,25 @@ class APIGuestOrderTests: AtlasAPIClientBaseTests {
                 case .failure(let error):
                     fail(String(describing: error))
                 case .success(let order):
-                    expect(order.orderNumber).to(equal("10105083300694"))
-                    expect(order.billingAddress.gender).to(equal(Gender.male))
-                    expect(order.billingAddress.firstName).to(equal("John"))
-                    expect(order.billingAddress.lastName).to(equal("Doe"))
-                    expect(order.billingAddress.street).to(equal("Mollstr. 1"))
-                    expect(order.billingAddress.zip).to(equal("10178"))
-                    expect(order.billingAddress.city).to(equal("Berlin"))
-                    expect(order.billingAddress.countryCode).to(equal("DE"))
-                    expect(order.shippingAddress.gender).to(equal(Gender.male))
-                    expect(order.shippingAddress.firstName).to(equal("John"))
-                    expect(order.shippingAddress.lastName).to(equal("Doe"))
-                    expect(order.shippingAddress.street).to(equal("Mollstr. 1"))
-                    expect(order.shippingAddress.zip).to(equal("10178"))
-                    expect(order.shippingAddress.city).to(equal("Berlin"))
-                    expect(order.shippingAddress.countryCode).to(equal("DE"))
-                    expect(order.grossTotal.amount).to(equal(10.45))
-                    expect(order.grossTotal.currency).to(equal("EUR"))
-                    expect(order.taxTotal.amount).to(equal(2.34))
-                    expect(order.taxTotal.currency).to(equal("EUR"))
+                    expect(order.orderNumber) == "10105083300694"
+                    expect(order.billingAddress.gender) == Gender.male
+                    expect(order.billingAddress.firstName) == "John"
+                    expect(order.billingAddress.lastName) == "Doe"
+                    expect(order.billingAddress.street) == "Mollstr. 1"
+                    expect(order.billingAddress.zip) == "10178"
+                    expect(order.billingAddress.city) == "Berlin"
+                    expect(order.billingAddress.countryCode) == "DE"
+                    expect(order.shippingAddress.gender) == Gender.male
+                    expect(order.shippingAddress.firstName) == "John"
+                    expect(order.shippingAddress.lastName) == "Doe"
+                    expect(order.shippingAddress.street) == "Mollstr. 1"
+                    expect(order.shippingAddress.zip) == "10178"
+                    expect(order.shippingAddress.city) == "Berlin"
+                    expect(order.shippingAddress.countryCode) == "DE"
+                    expect(order.grossTotal.amount) == 10.45
+                    expect(order.grossTotal.currency) == "EUR"
+                    expect(order.taxTotal.amount) == 2.34
+                    expect(order.taxTotal.currency) == "EUR"
                 }
                 done()
             }
@@ -51,7 +51,7 @@ class APIGuestOrderTests: AtlasAPIClientBaseTests {
                 case .failure(let error):
                     fail(String(describing: error))
                 case .success(let url):
-                    expect(url.absoluteString).to(equal("https://payment-gateway.kohle-integration.zalan.do/payment-method-selection-session/TOKEN/selection"))
+                    expect(url.absoluteString) == "https://payment-gateway.kohle-integration.zalan.do/payment-method-selection-session/TOKEN/selection"
                 }
                 done()
             }

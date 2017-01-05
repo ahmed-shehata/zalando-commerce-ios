@@ -16,10 +16,10 @@ class SizeListSelectionViewControllerTests: UITestCase {
 
         let viewController = navigationController.topViewController as? SizeListSelectionViewController
         expect(viewController?.tableViewDataSource).toEventuallyNot(beNil())
-        expect(viewController?.tableViewDataSource?.article.units.count).to(equal(5))
-        expect(viewController?.tableViewDataSource?.article.availableUnits.count).to(equal(1))
-        expect(viewController?.tableViewDataSource?.article.hasSingleUnit).to(equal(false))
-        expect(navigationController.topViewController).to(equal(viewController))
+        expect(viewController?.tableViewDataSource?.article.units.count) == 5
+        expect(viewController?.tableViewDataSource?.article.availableUnits.count) == 1
+        expect(viewController?.tableViewDataSource?.article.hasSingleUnit) == false
+        expect(navigationController.topViewController) == viewController
     }
 
     func testSingleSizeArticle() {
@@ -28,8 +28,8 @@ class SizeListSelectionViewControllerTests: UITestCase {
 
         let viewController = navigationController.topViewController as? SizeListSelectionViewController
         expect(viewController?.tableViewDataSource).toEventuallyNot(beNil())
-        expect(viewController?.tableViewDataSource?.article.units.count).to(equal(1))
-        expect(viewController?.tableViewDataSource?.article.availableUnits.count).to(equal(1))
+        expect(viewController?.tableViewDataSource?.article.units.count) == 1
+        expect(viewController?.tableViewDataSource?.article.availableUnits.count) == 1
         expect(viewController?.tableViewDataSource?.article.hasSingleUnit).to(beTrue())
         expect(navigationController.topViewController).toEventuallyNot(equal(viewController))
     }
@@ -40,7 +40,7 @@ class SizeListSelectionViewControllerTests: UITestCase {
 
         let viewController = navigationController.topViewController as? SizeListSelectionViewController
         expect(UserMessage.errorDisplayed).toEventually(beTrue())
-        expect(navigationController.topViewController).to(equal(viewController))
+        expect(navigationController.topViewController) == viewController
     }
 
 }

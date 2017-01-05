@@ -20,23 +20,23 @@ class KeychainTests: XCTestCase {
     func testWriteValue() {
         let value = "test_new_1"
         try! Keychain.write(value: value, forKey: testKey)
-        expect(Keychain.read(key: self.testKey)).to(equal(value))
+        expect(Keychain.read(key: self.testKey)) == value
     }
 
     func testUpdateValue() {
         var value = "test_new_2"
         try! Keychain.write(value: value, forKey: testKey)
-        expect(Keychain.read(key: self.testKey)).to(equal(value))
+        expect(Keychain.read(key: self.testKey)) == value
 
         value = "test_update_2"
         try! Keychain.write(value: value, forKey: testKey)
-        expect(Keychain.read(key: self.testKey)).to(equal(value))
+        expect(Keychain.read(key: self.testKey)) == value
     }
 
     func testDeleteValue() {
         let value = "test_delete_it"
         try! Keychain.write(value: value, forKey: testKey)
-        expect(Keychain.read(key: self.testKey)).to(equal(value))
+        expect(Keychain.read(key: self.testKey)) == value
 
         Keychain.delete(key: testKey)
         expect(Keychain.read(key: self.testKey)).to(beNil())

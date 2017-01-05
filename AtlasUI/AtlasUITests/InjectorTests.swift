@@ -42,7 +42,7 @@ class InjectorTests: XCTestCase {
         injector.register { One(value: 1) as Onable }
         let number: Onable? = try? injector.provide()
 
-        expect(number?.value).to(equal(1))
+        expect(number?.value) == 1
     }
 
     func testRegisterTypeManyTimes() {
@@ -50,7 +50,7 @@ class InjectorTests: XCTestCase {
         injector.register { Two() as Number }
 
         let number: Number? = try? injector.provide()
-        expect(number?.value).to(equal(2))
+        expect(number?.value) == 2
     }
 
     func testRetrieveIdenticalObject() {

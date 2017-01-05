@@ -28,11 +28,11 @@ class APICustomerTests: AtlasAPIClientBaseTests {
                     return fail("Should return Customer")
                 }
 
-                expect(customer.customerNumber).to(equal("12345678"))
-                expect(customer.gender).to(equal(Customer.Gender.Male))
-                expect(customer.email).to(equal("aaa@a.a"))
-                expect(customer.firstName).to(equal("John"))
-                expect(customer.lastName).to(equal("Doe"))
+                expect(customer.customerNumber) == "12345678"
+                expect(customer.gender) == Customer.Gender.Male
+                expect(customer.email) == "aaa@a.a"
+                expect(customer.firstName) == "John"
+                expect(customer.lastName) == "Doe"
             }
         }
     }

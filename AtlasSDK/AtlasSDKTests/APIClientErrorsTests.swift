@@ -24,7 +24,7 @@ class AtlasAPIClientErrorsTests: AtlasAPIClientBaseTests {
                     return fail("Should emit \(AtlasAPIError.noData)")
                 }
 
-                expect("\(error)").to(equal("\(AtlasAPIError.noData)"))
+                expect("\(error)") == "\(AtlasAPIError.noData)"
             }
         }
     }
@@ -70,10 +70,10 @@ class AtlasAPIClientErrorsTests: AtlasAPIClientBaseTests {
                         return fail("Should emit AtlasAPIError.backend")
                 }
 
-                expect(errorStatus).to(equal(status.rawValue))
-                expect(type).to(equal(json["type"] as? String))
-                expect(title).to(equal(json["title"] as? String))
-                expect(details).to(equal(json["detail"] as? String))
+                expect(errorStatus) == status.rawValue
+                expect(type) == json["type"] as? String
+                expect(title) == json["title"] as? String
+                expect(details) == json["detail"] as? String
             }
         }
     }
@@ -92,7 +92,7 @@ class AtlasAPIClientErrorsTests: AtlasAPIClientBaseTests {
                         return fail("Should emit AtlasAPIError.nsURLError")
                 }
 
-                expect(code).to(equal(NSURLErrorBadURL))
+                expect(code) == NSURLErrorBadURL
                 expect(details).to(contain("The operation couldn’t be completed"))
             }
         }

@@ -32,13 +32,13 @@ class AtlasMockAPITests: XCTestCase {
 
     func testCatalogEndpoint() {
         assertSuccessfulJSONResponse(forEndpoint: "/articles") { json in
-            expect(json["content", 0, "id"].stringValue).to(equal("L2711E002-Q11"))
+            expect(json["content", 0, "id"].stringValue) == "L2711E002-Q11"
         }
     }
 
     func testArticleEndpoint() {
         assertSuccessfulJSONResponse(forEndpoint: "/articles/AD541L009-G11") { json in
-            expect(json["units", 0, "id"].stringValue).to(equal("AD541L009-G11000S000"))
+            expect(json["units", 0, "id"].stringValue) == "AD541L009-G11000S000"
         }
     }
 

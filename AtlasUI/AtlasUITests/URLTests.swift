@@ -19,10 +19,10 @@ class URLTests: XCTestCase {
 
         let storage = HTTPCookieStorage.shared
         storage.setCookie(cookie)
-        expect(storage.cookies(for: url)?.count).to(equal(1))
+        expect(storage.cookies(for: url)?.count) == 1
 
         url.removeCookies(from: storage)
-        expect(storage.cookies(for: url)?.count).to(equal(0))
+        expect(storage.cookies(for: url)?.count) == 0
     }
 
 }

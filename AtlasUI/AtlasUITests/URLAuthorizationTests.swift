@@ -13,7 +13,7 @@ class URLAuthorizationTests: XCTestCase {
         let accessToken = "access-token-J0ZXN0a2V5LWVzMj"
         let url = URL(string: "http://com.my.app/redirect?access_token=\(accessToken)&token_type=Bearer&expires_in=2592000&scope=atlas-checkout-api.address.all+atlas-checkout-api.order.all+atlas-checkout-api.payment.read+atlas-checkout-api.profile.read+azp+uid&state=")
 
-        expect(url?.accessToken).to(equal(accessToken))
+        expect(url?.accessToken) == accessToken
     }
 
     func testAccessDenied() {

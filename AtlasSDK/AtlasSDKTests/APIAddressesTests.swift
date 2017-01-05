@@ -17,16 +17,16 @@ class APIAddressesTests: AtlasAPIClientBaseTests {
                 case .failure(let error):
                     fail(String(describing: error))
                 case .success(let addresses):
-                    expect(addresses.first?.id).to(equal("6702759"))
-                    expect(addresses.first?.customerNumber).to(equal("3036553496"))
-                    expect(addresses.first?.gender).to(equal(Gender.female))
-                    expect(addresses.first?.firstName).to(equal("Erika"))
-                    expect(addresses.first?.lastName).to(equal("Mustermann"))
-                    expect(addresses.first?.street).to(equal("Mollstr. 1"))
-                    expect(addresses.first?.additional).to(equal("EG"))
-                    expect(addresses.first?.zip).to(equal("10178"))
-                    expect(addresses.first?.city).to(equal("Berlin"))
-                    expect(addresses.first?.countryCode).to(equal("DE"))
+                    expect(addresses.first?.id) == "6702759"
+                    expect(addresses.first?.customerNumber) == "3036553496"
+                    expect(addresses.first?.gender) == Gender.female
+                    expect(addresses.first?.firstName) == "Erika"
+                    expect(addresses.first?.lastName) == "Mustermann"
+                    expect(addresses.first?.street) == "Mollstr. 1"
+                    expect(addresses.first?.additional) == "EG"
+                    expect(addresses.first?.zip) == "10178"
+                    expect(addresses.first?.city) == "Berlin"
+                    expect(addresses.first?.countryCode) == "DE"
                     expect(addresses.first?.isDefaultBilling).to(beTrue())
                     expect(addresses.first?.isDefaultShipping).to(beTrue())
                 }

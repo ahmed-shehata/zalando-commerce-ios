@@ -29,14 +29,14 @@ class AddressFormViewControllerTests: UITestCase {
 
         waitUntil(timeout: 10) { done in
             addressFormViewController.completion = { address, _ in
-                expect(address.id).to(equal("6948960"))
-                expect(address.gender).to(equal(Gender.male))
-                expect(address.firstName).to(equal("John"))
-                expect(address.lastName).to(equal("Doe"))
-                expect(address.street).to(equal("Mollstr. 1"))
+                expect(address.id) == "6948960"
+                expect(address.gender) == Gender.male
+                expect(address.firstName) == "John"
+                expect(address.lastName) == "Doe"
+                expect(address.street) == "Mollstr. 1"
                 expect(address.additional).to(beNil())
-                expect(address.zip).to(equal("10178"))
-                expect(address.city).to(equal("Berlin"))
+                expect(address.zip) == "10178"
+                expect(address.city) == "Berlin"
                 done()
             }
             _ = UIApplication.shared.sendAction(barButtonItem.action!, to: barButtonItem.target, from: nil, for: nil)
@@ -55,14 +55,14 @@ class AddressFormViewControllerTests: UITestCase {
 
         waitUntil(timeout: 10) { done in
             addressFormViewController.completion = { address, _ in
-                expect(address.id).to(equal("6616154"))
-                expect(address.gender).to(equal(Gender.male))
-                expect(address.firstName).to(equal("John"))
-                expect(address.lastName).to(equal("Doe Edited"))
-                expect(address.street).to(equal("Mollstr. 1"))
-                expect(address.additional).to(equal("EG"))
-                expect(address.zip).to(equal("10178"))
-                expect(address.city).to(equal("Berlin"))
+                expect(address.id) == "6616154"
+                expect(address.gender) == Gender.male
+                expect(address.firstName) == "John"
+                expect(address.lastName) == "Doe Edited"
+                expect(address.street) == "Mollstr. 1"
+                expect(address.additional) == "EG"
+                expect(address.zip) == "10178"
+                expect(address.city) == "Berlin"
                 done()
             }
             _ = UIApplication.shared.sendAction(saveButton.action!, to: saveButton.target, from: nil, for: nil)

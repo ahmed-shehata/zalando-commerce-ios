@@ -23,10 +23,10 @@ class OptionsTests: XCTestCase {
                            useSandboxEnvironment: useSandbox,
                            interfaceLanguage: interfaceLanguage)
 
-        expect(opts.clientId).to(equal(clientId))
-        expect(opts.salesChannel).to(equal(salesChannel))
-        expect(opts.interfaceLanguage).to(equal(interfaceLanguage))
-        expect(opts.useSandboxEnvironment).to(equal(useSandbox))
+        expect(opts.clientId) == clientId
+        expect(opts.salesChannel) == salesChannel
+        expect(opts.interfaceLanguage) == interfaceLanguage
+        expect(opts.useSandboxEnvironment) == useSandbox
     }
 
     func testNoDefaultLanguage() {
@@ -47,9 +47,9 @@ class OptionsTests: XCTestCase {
     func testLoadValuesFromInfoPlist() {
         let opts = Options(infoBundle: testsBundle)
 
-        expect(opts.clientId).to(equal("CLIENT_ID_PLIST"))
-        expect(opts.salesChannel).to(equal("SALES_CHANNEL_PLIST"))
-        expect(opts.interfaceLanguage).to(equal("en"))
+        expect(opts.clientId) == "CLIENT_ID_PLIST"
+        expect(opts.salesChannel) == "SALES_CHANNEL_PLIST"
+        expect(opts.interfaceLanguage) == "en"
         expect(opts.useSandboxEnvironment).to(beTrue())
     }
 
@@ -59,10 +59,10 @@ class OptionsTests: XCTestCase {
                            interfaceLanguage: interfaceLanguage,
                            infoBundle: testsBundle)
 
-        expect(opts.clientId).to(equal(clientId))
-        expect(opts.salesChannel).to(equal(salesChannel))
-        expect(opts.interfaceLanguage).to(equal(interfaceLanguage))
-        expect(opts.useSandboxEnvironment).to(equal(useSandbox))
+        expect(opts.clientId) == clientId
+        expect(opts.salesChannel) == salesChannel
+        expect(opts.interfaceLanguage) == interfaceLanguage
+        expect(opts.useSandboxEnvironment) == useSandbox
     }
 
 }

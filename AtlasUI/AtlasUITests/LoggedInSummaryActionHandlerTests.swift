@@ -112,8 +112,8 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
         mockedDataSourceDelegate?.updated(dataModel: dataModel)
         guard let address = self.mockedDataSourceDelegate?.dataModel.shippingAddress as? EquatableAddress else { return fail() }
 
-        expect(self.mockedDataSourceDelegate?.dataModel.shippingAddress?.firstName).to(equal("Erika"))
-        expect(self.mockedDataSourceDelegate?.dataModel.billingAddress?.firstName).to(equal("Erika"))
+        expect(self.mockedDataSourceDelegate?.dataModel.shippingAddress?.firstName) == "Erika"
+        expect(self.mockedDataSourceDelegate?.dataModel.billingAddress?.firstName) == "Erika"
         addressViewController.addressUpdatedHandler?(update(address: address))
         expect(self.mockedDataSourceDelegate?.dataModel.shippingAddress?.firstName).toEventually(equal("John"))
         expect(self.mockedDataSourceDelegate?.dataModel.billingAddress?.firstName).toEventually(equal("Erika"))
@@ -151,8 +151,8 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
         mockedDataSourceDelegate?.updated(dataModel: dataModel)
         guard let address = self.mockedDataSourceDelegate?.dataModel.billingAddress as? EquatableAddress else { return fail() }
 
-        expect(self.mockedDataSourceDelegate?.dataModel.shippingAddress?.firstName).to(equal("Erika"))
-        expect(self.mockedDataSourceDelegate?.dataModel.billingAddress?.firstName).to(equal("Erika"))
+        expect(self.mockedDataSourceDelegate?.dataModel.shippingAddress?.firstName) == "Erika"
+        expect(self.mockedDataSourceDelegate?.dataModel.billingAddress?.firstName) == "Erika"
         addressViewController.addressUpdatedHandler?(update(address: address))
         expect(self.mockedDataSourceDelegate?.dataModel.shippingAddress?.firstName).toEventually(equal("Erika"))
         expect(self.mockedDataSourceDelegate?.dataModel.billingAddress?.firstName).toEventually(equal("John"))

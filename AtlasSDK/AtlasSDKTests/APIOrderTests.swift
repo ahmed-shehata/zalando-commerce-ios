@@ -17,7 +17,7 @@ class APIOrderTests: AtlasAPIClientBaseTests {
                 case .failure(let error):
                     fail(String(describing: error))
                 case .success(let order):
-                    expect(order.orderNumber).to(equal("ORDER_NUMBER"))
+                    expect(order.orderNumber) == "ORDER_NUMBER"
                 }
                 done()
             }
