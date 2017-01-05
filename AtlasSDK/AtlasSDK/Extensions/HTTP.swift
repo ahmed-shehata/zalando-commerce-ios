@@ -4,13 +4,13 @@
 
 import Foundation
 
-public enum HTTPMethod: String {
+enum HTTPMethod: String {
 
     case GET, POST, PUT, DELETE, PATCH
 
 }
 
-public enum HTTPStatus: Int {
+enum HTTPStatus: Int {
 
     case unknown = -1
     case `continue` = 100
@@ -55,24 +55,25 @@ public enum HTTPStatus: Int {
     case gatewayTimeout = 504
     case httpVersionNotSupported = 505
 
-    public init(statusCode: Int) {
+    init(statusCode: Int) {
         self = HTTPStatus(rawValue: statusCode) ?? .unknown
     }
 
-    public init(response: HTTPURLResponse) {
+    init(response: HTTPURLResponse) {
         self.init(statusCode: response.statusCode)
     }
 
-    public var isSuccessful: Bool {
+    var isSuccessful: Bool {
         return (HTTPStatus.ok.rawValue..<HTTPStatus.badRequest.rawValue).contains(rawValue)
     }
+
 }
 
-public func == (lhs: Int, rhs: HTTPStatus) -> Bool {
+func == (lhs: Int, rhs: HTTPStatus) -> Bool {
     return lhs == rhs.rawValue
 }
 
-public func == (lhs: Int?, rhs: HTTPStatus) -> Bool {
+func == (lhs: Int?, rhs: HTTPStatus) -> Bool {
     guard let lhs = lhs else { return false }
     return lhs == rhs.rawValue
 }

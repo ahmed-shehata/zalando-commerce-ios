@@ -111,7 +111,7 @@ class AtlasAPIClientErrorsTests: AtlasAPIClientBaseTests {
                         return fail("Should emit AtlasAPIError.http")
                 }
 
-                expect(status).to(equal(errorStatus))
+                expect(status) == errorStatus.rawValue
             }
         }
     }

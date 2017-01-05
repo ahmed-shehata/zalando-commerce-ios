@@ -4,9 +4,9 @@
 
 import Foundation
 
-public struct Debug {
+struct Debug {
 
-    public static var isEnabled: Bool {
+    static var isEnabled: Bool {
         #if DEBUG
             return true
         #else

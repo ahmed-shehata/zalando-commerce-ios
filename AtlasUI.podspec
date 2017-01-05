@@ -40,8 +40,7 @@ calls and provide you high-level business objects to deal with.
   }
 
   spec.source_files = 'AtlasUI/AtlasUI/**/*.swift', \
-                      'AtlasSDK/AtlasSDK/Extensions/StringOperators.swift', \
-                      'AtlasSDK/AtlasSDK/Extensions/Debug.swift'
+                      'AtlasSDK/AtlasSDK/Extensions/*.swift'
   spec.ios.resources = ['AtlasUI/AtlasUI/**/*.xcassets', 'AtlasUI/AtlasUI/**/Localizable.strings']
   spec.ios.frameworks = 'Foundation', 'UIKit'
 
