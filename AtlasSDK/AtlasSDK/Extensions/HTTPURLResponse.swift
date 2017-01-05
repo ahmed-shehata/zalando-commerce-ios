@@ -6,11 +6,11 @@ import Foundation
 
 extension HTTPURLResponse {
 
-    var isSuccessful: Bool {
+    public var isSuccessful: Bool {
         return status.isSuccessful
     }
 
-    var status: HTTPStatus {
+    public var status: HTTPStatus {
         return HTTPStatus(statusCode: self.statusCode)
     }
 

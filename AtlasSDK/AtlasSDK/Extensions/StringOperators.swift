@@ -7,7 +7,7 @@ import Foundation
 postfix operator ~?
 infix operator ~?
 
-postfix func ~?<T> (val: T?) -> String {
+public postfix func ~?<T> (val: T?) -> String {
     if let val = val {
         return String(describing: val)
     } else {
@@ -15,7 +15,7 @@ postfix func ~?<T> (val: T?) -> String {
     }
 }
 
-func ~?<T> (val: T?, fallback: String = "") -> String {
+public func ~?<T> (val: T?, fallback: String = "") -> String {
     if let val = val {
         return String(describing: val)
     } else {

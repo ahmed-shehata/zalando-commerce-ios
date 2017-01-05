@@ -3,8 +3,6 @@
 //
 
 import UIKit
-import AtlasSDK
-import AtlasUI
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

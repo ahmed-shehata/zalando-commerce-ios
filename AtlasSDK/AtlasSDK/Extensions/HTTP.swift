@@ -4,7 +4,7 @@
 
 import Foundation
 
-enum HTTPMethod: String {
+public enum HTTPMethod: String {
 
     case GET, POST, PUT, DELETE, PATCH
 
@@ -68,11 +68,11 @@ public enum HTTPStatus: Int {
     }
 }
 
-func == (lhs: Int, rhs: HTTPStatus) -> Bool {
+public func == (lhs: Int, rhs: HTTPStatus) -> Bool {
     return lhs == rhs.rawValue
 }
 
-func == (lhs: Int?, rhs: HTTPStatus) -> Bool {
+public func == (lhs: Int?, rhs: HTTPStatus) -> Bool {
     guard let lhs = lhs else { return false }
     return lhs == rhs.rawValue
 }

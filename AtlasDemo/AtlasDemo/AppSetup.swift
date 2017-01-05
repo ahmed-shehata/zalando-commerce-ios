@@ -3,7 +3,8 @@
 //
 
 import Foundation
-import AtlasSDK
+import struct AtlasSDK.Options
+import struct AtlasSDK.AtlasAPIClient
 import AtlasUI
 import AtlasMockAPI
 
