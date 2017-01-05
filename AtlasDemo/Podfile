@@ -10,6 +10,11 @@ target 'AtlasDemo' do
   pod 'AtlasMockAPI', git: 'https://github.com/zalando-incubator/atlas-ios.git'
 end
 
+target 'AtlasDemoUITests' do
+    pod 'AtlasMockAPI', git: 'https://github.com/zalando-incubator/atlas-ios.git'
+end
+
+
 pre_install do |installer|
   remove_direct_project_references(installer)
 end
