@@ -47,3 +47,4 @@ xcov_report
 /.bundle
 /vendor
 /AtlasDemo/Pods
+/AtlasDemo/Podfile.lock

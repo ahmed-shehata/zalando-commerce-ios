@@ -1,10 +1,12 @@
+require '../lib/version.rb'
+
 use_frameworks!
 
 target 'AtlasDemo' do
   pod 'SwiftHTTP'
   pod 'SwiftyJSON'
   pod 'Nuke'
-  pod 'AtlasUI'
+  pod 'AtlasUI', "= #{ATLAS_VERSION}"
   pod 'AtlasMockAPI', git: 'https://github.com/zalando-incubator/atlas-ios.git'
 end
 
