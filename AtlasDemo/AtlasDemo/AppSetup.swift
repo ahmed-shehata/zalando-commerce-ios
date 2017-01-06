@@ -3,9 +3,10 @@
 //
 
 import Foundation
-import struct AtlasSDK.Options
-import struct AtlasSDK.AtlasAPIClient
-//import AtlasSDK
+// It could be specific import, but Buddybuild fails with such constructs
+// import struct AtlasSDK.Options
+// import struct AtlasSDK.AtlasAPIClient
+import AtlasSDK
 import AtlasUI
 import AtlasMockAPI
 
