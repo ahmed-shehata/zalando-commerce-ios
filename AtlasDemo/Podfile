@@ -11,15 +11,15 @@ target 'AtlasDemo' do
 end
 
 target 'AtlasDemoUITests' do
-    pod 'AtlasMockAPI', git: 'https://github.com/zalando-incubator/atlas-ios.git'
+  pod 'AtlasMockAPI', git: 'https://github.com/zalando-incubator/atlas-ios.git'
 end
-
 
 pre_install do |installer|
   remove_direct_project_references(installer)
 end
 
 def remove_direct_project_references(installer)
+  return unless ENV['BUDDYBUILD_APP_ID'].nil?
   installer.analysis_result.target_inspections.each do |_, res|
     res.project.objects.each do |obj|
       next unless obj.is_a? Xcodeproj::Project::Object::PBXFileReference

@@ -3,10 +3,8 @@
 //
 
 import Foundation
-// It could be specific import, but Buddybuild fails with such constructs
-// import struct AtlasSDK.Options
-// import struct AtlasSDK.AtlasAPIClient
-import AtlasSDK
+import struct AtlasSDK.Options
+import struct AtlasSDK.AtlasAPIClient
 import AtlasUI
 import AtlasMockAPI
 
@@ -52,7 +50,7 @@ class AppSetup {
         set(appOptions: prepareOptions(salesChannel: salesChannel))
     }
 
-    }
+}
 
 extension AppSetup {
 
@@ -101,8 +99,8 @@ extension AppSetup {
         return Options(clientId: "atlas_Y2M1MzA",
                        salesChannel: salesChannel,
                        useSandboxEnvironment: sandbox,
-            interfaceLanguage: language,
-            configurationURL: configurationURL)
+                       interfaceLanguage: language,
+                       configurationURL: configurationURL)
     }
 
 }
