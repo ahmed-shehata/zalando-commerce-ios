@@ -21,20 +21,15 @@ end
 def remove_direct_project_references(installer)
   installer.analysis_result.target_inspections.each do |_, res|
     res.project.objects.each do |obj|
-      remove_reference(obj)
+      remove_direct_reference obj
     end
   end
 end
 
-def remove_reference(ref)
-  if ENV['BUDDYBUILD_APP_ID'].nil?
-    return unless ref.is_a? Xcodeproj::Project::Object::PBXFileReference
-    return unless ref.source_tree == 'BUILT_PRODUCTS_DIR' || ref.path.start_with?('../Carthage/Build/')
-    return unless ref.last_known_file_type == 'wrapper.framework'
-  else
-    ap ref
-    return
-  end
+def remove_direct_reference(ref)
+  return unless ref.is_a? Xcodeproj::Project::Object::PBXFileReference
+  return unless ref.source_tree == 'BUILT_PRODUCTS_DIR' || ref.path.start_with?('../Carthage/Build/')
+  return unless ref.last_known_file_type == 'wrapper.framework'
 
   puts "Removing direct #{ref.path} reference from the project"
   ref.remove_from_project
