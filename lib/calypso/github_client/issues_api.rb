@@ -18,9 +18,19 @@ module Calypso
       def group_issues_by_labels(issues)
         labels_issues = {}
         issues.each do |issue|
-          issue['labels'].each do |label|
-            labels_issues[label['name']] ||= []
-            labels_issues[label['name']] << issue
+          issue_labels = issue['labels']
+
+          if issue_labels.empty?
+            label_name = 'unknown'
+            labels_issues[label_name] ||= []
+            labels_issues[label_name] << issue
+            next
+          end
+
+          issue_labels.each do |label|
+            label_name = label['name']
+            labels_issues[label_name] ||= []
+            labels_issues[label_name] << issue
           end
         end
         labels_issues

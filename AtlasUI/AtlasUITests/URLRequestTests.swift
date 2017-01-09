@@ -27,7 +27,7 @@ class URLRequestTests: UITestCase {
 
     func testSalesChannelLanguageHeader() {
         let client = try! AtlasUI.shared().client
-        let language = client.salesChannelLanguage
+        let language = client.config.salesChannel.languageCode
         let request = URLRequest(url: URL(validURL: "http://zalando.de"), config: client.config)
 
         expect(request.allHTTPHeaderFields?["Accept-Language"]).to(contain("\(language);q=1.0"))

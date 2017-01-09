@@ -18,17 +18,17 @@ class APIArticleTests: AtlasAPIClientBaseTests {
                 case .failure(let error):
                     fail(String(describing: error))
                 case .success(let article):
-                    expect(article.id).to(equal(sku))
-                    expect(article.name).to(equal("ADIZERO  - Sportkleid - red"))
-                    expect(article.brand.name).to(equal("adidas Performance"))
+                    expect(article.id) == sku
+                    expect(article.name) == "ADIZERO  - Sportkleid - red"
+                    expect(article.brand.name) == "adidas Performance"
 
-                    expect(article.availableUnits.count).to(equal(1))
-                    expect(article.availableUnits.first?.id).to(equal("AD541L009-G1100XS000"))
-                    expect(article.availableUnits.first?.price.amount).to(equal(10.45))
+                    expect(article.availableUnits.count) == 1
+                    expect(article.availableUnits.first?.id) == "AD541L009-G1100XS000"
+                    expect(article.availableUnits.first?.price.amount) == 10.45
 
                     let validURL = "https://i6.ztat.net/detail/AD/54/1L/00/9G/11/AD541L009-G11@14.jpg"
-                    expect(article.media.images.first?.detailURL).to(equal(URL(validURL: validURL)))
-                    expect(article.media.images.first?.order).to(equal(1))
+                    expect(article.media.images.first?.detailURL) == URL(validURL: validURL)
+                    expect(article.media.images.first?.order) == 1
                 }
                 done()
             }

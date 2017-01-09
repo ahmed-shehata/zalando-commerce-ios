@@ -4,7 +4,7 @@
 
 import Foundation
 
-public protocol URLStringConvertible {
+protocol URLStringConvertible {
 
     var urlString: String { get }
 
@@ -12,7 +12,7 @@ public protocol URLStringConvertible {
 
 extension String: URLStringConvertible {
 
-    public var urlString: String {
+    var urlString: String {
         return self
     }
 
@@ -20,7 +20,7 @@ extension String: URLStringConvertible {
 
 extension URL: URLStringConvertible {
 
-    public var urlString: String {
+    var urlString: String {
         return absoluteString
     }
 
@@ -28,7 +28,7 @@ extension URL: URLStringConvertible {
 
 extension URLComponents: URLStringConvertible {
 
-    public var urlString: String {
+    var urlString: String {
         return validURL.urlString
     }
 

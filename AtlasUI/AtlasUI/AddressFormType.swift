@@ -107,6 +107,13 @@ enum AddressFormField: String {
         }
     }
 
+    var keyboardType: UIKeyboardType {
+        switch self {
+        case .emailAddress: return .emailAddress
+        default: return .default
+        }
+    }
+
 }
 
 extension AddressFormDataModel {

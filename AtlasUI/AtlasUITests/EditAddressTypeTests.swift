@@ -19,41 +19,41 @@ class EditAddressTypeTests: UITestCase {
     }
 
     func testFieldTitle() {
-        expect(AddressFormField.title.title).to(equal("Title*"))
-        expect(AddressFormField.firstName.title).to(equal("First Name*"))
-        expect(AddressFormField.lastName.title).to(equal("Last Name*"))
-        expect(AddressFormField.street.title).to(equal("Street*"))
-        expect(AddressFormField.additional.title).to(equal("Additional"))
-        expect(AddressFormField.packstation.title).to(equal("Packstation*"))
-        expect(AddressFormField.memberID.title).to(equal("Member ID*"))
-        expect(AddressFormField.zipcode.title).to(equal("Zipcode*"))
-        expect(AddressFormField.city.title).to(equal("City*"))
-        expect(AddressFormField.country.title).to(equal("Country*"))
+        expect(AddressFormField.title.title) == "Title*"
+        expect(AddressFormField.firstName.title) == "First Name*"
+        expect(AddressFormField.lastName.title) == "Last Name*"
+        expect(AddressFormField.street.title) == "Street*"
+        expect(AddressFormField.additional.title) == "Additional"
+        expect(AddressFormField.packstation.title) == "Packstation*"
+        expect(AddressFormField.memberID.title) == "Member ID*"
+        expect(AddressFormField.zipcode.title) == "Zipcode*"
+        expect(AddressFormField.city.title) == "City*"
+        expect(AddressFormField.country.title) == "Country*"
     }
 
     func testSettingDataModelData() {
-        expect(self.dataModel.gender).to(equal(Gender.male))
-        expect(self.dataModel.firstName).to(equal("John"))
-        expect(self.dataModel.lastName).to(equal("Doe"))
-        expect(self.dataModel.street).to(equal("Mollstr. 1"))
-        expect(self.dataModel.additional).to(equal("C/O Zalando SE"))
-        expect(self.dataModel.pickupPointId).to(equal("123"))
-        expect(self.dataModel.pickupPointMemberId).to(equal("12345"))
-        expect(self.dataModel.zip).to(equal("10178"))
-        expect(self.dataModel.city).to(equal("Berlin"))
+        expect(self.dataModel.gender) == Gender.male
+        expect(self.dataModel.firstName) == "John"
+        expect(self.dataModel.lastName) == "Doe"
+        expect(self.dataModel.street) == "Mollstr. 1"
+        expect(self.dataModel.additional) == "C/O Zalando SE"
+        expect(self.dataModel.pickupPointId) == "123"
+        expect(self.dataModel.pickupPointMemberId) == "12345"
+        expect(self.dataModel.zip) == "10178"
+        expect(self.dataModel.city) == "Berlin"
     }
 
     func testReadingFromDataModel() {
-        expect(self.dataModel.value(forField: .title)).to(equal("Mr"))
-        expect(self.dataModel.value(forField: .firstName)).to(equal("John"))
-        expect(self.dataModel.value(forField: .lastName)).to(equal("Doe"))
-        expect(self.dataModel.value(forField: .street)).to(equal("Mollstr. 1"))
-        expect(self.dataModel.value(forField: .additional)).to(equal("C/O Zalando SE"))
-        expect(self.dataModel.value(forField: .packstation)).to(equal("123"))
-        expect(self.dataModel.value(forField: .memberID)).to(equal("12345"))
-        expect(self.dataModel.value(forField: .zipcode)).to(equal("10178"))
-        expect(self.dataModel.value(forField: .city)).to(equal("Berlin"))
-        expect(self.dataModel.value(forField: .country)).to(equal("Germany"))
+        expect(self.dataModel.value(forField: .title)) == "Mr"
+        expect(self.dataModel.value(forField: .firstName)) == "John"
+        expect(self.dataModel.value(forField: .lastName)) == "Doe"
+        expect(self.dataModel.value(forField: .street)) == "Mollstr. 1"
+        expect(self.dataModel.value(forField: .additional)) == "C/O Zalando SE"
+        expect(self.dataModel.value(forField: .packstation)) == "123"
+        expect(self.dataModel.value(forField: .memberID)) == "12345"
+        expect(self.dataModel.value(forField: .zipcode)) == "10178"
+        expect(self.dataModel.value(forField: .city)) == "Berlin"
+        expect(self.dataModel.value(forField: .country)) == "Germany"
     }
 
 }

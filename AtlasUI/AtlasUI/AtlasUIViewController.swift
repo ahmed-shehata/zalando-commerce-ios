@@ -5,7 +5,7 @@
 import UIKit
 import AtlasSDK
 
-public class AtlasUIViewController: UIViewController {
+class AtlasUIViewController: UIViewController {
 
     static var shared: AtlasUIViewController? {
         return try? AtlasUI.shared().provide()
@@ -26,11 +26,11 @@ public class AtlasUIViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
 
-    required public init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override public func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         UserMessage.loadBannerError()
         addChildViewController(mainNavigationController)

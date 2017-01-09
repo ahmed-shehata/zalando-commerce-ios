@@ -25,15 +25,13 @@ struct ResponseParser {
             if httpResponse.status == .unauthorized {
                 error = AtlasAPIError.unauthorized
             } else if json != JSON.null {
-                error = AtlasAPIError.backend(
-                    status: json["status"].int,
-                    type: json["type"].string,
-                    title: json["title"].string,
-                    details: json["detail"].string)
+                error = AtlasAPIError.backend(status: json["status"].int,
+                                              type: json["type"].string,
+                                              title: json["title"].string,
+                                              details: json["detail"].string)
             } else {
-                error = AtlasAPIError.http(
-                    status: HTTPStatus(response: httpResponse),
-                    details: HTTPURLResponse.localizedString(forStatusCode: httpResponse.statusCode))
+                error = AtlasAPIError.http(status: httpResponse.statusCode,
+                                           details: HTTPURLResponse.localizedString(forStatusCode: httpResponse.statusCode))
             }
             return completion(.failure(error))
         }

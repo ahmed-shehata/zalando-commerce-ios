@@ -30,7 +30,7 @@ class GuestAddressActionHandler {
         let actionHandler = GuestCheckoutUpdateAddressActionHandler()
         let dataModel = AddressFormDataModel(equatableAddress: address,
                                              email: emailAddress,
-                                             countryCode: AtlasAPIClient.shared?.salesChannelCountry)
+                                             countryCode: AtlasAPIClient.shared?.config.salesChannel.countryCode)
         let formLayout = UpdateAddressFormLayout()
         let addressType: AddressFormType = address.pickupPoint == nil ? .guestStandardAddress : .guestPickupPoint
         let viewModel = AddressFormViewModel(dataModel: dataModel, layout: formLayout, type: addressType)

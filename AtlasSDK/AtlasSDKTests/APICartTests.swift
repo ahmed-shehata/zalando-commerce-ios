@@ -18,7 +18,7 @@ class APICartTests: AtlasAPIClientBaseTests {
                 case .failure(let error):
                     fail(String(describing: error))
                 case .success(let cart):
-                    expect(cart.id).to(equal(self.cartId))
+                    expect(cart.id) == self.cartId
                 }
                 done()
             }

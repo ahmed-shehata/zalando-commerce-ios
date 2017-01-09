@@ -32,7 +32,7 @@ class LoggedInAddressListActionHandlerTests: UITestCase {
     func testUpdateAddress() {
         let userAddress = UserAddress(addressId: "6616154")
         delegate.addresses.append(userAddress)
-        expect(self.delegate.addresses.first?.lastName).to(equal("Doe"))
+        expect(self.delegate.addresses.first?.lastName) == "Doe"
 
         actionHandler?.update(address: userAddress)
 
@@ -45,7 +45,7 @@ class LoggedInAddressListActionHandlerTests: UITestCase {
     func testDeleteAddress() {
         let userAddress = UserAddress(addressId: "6616154")
         delegate.addresses.append(userAddress)
-        expect(self.delegate.addresses.count).to(equal(1))
+        expect(self.delegate.addresses.count) == 1
 
         actionHandler?.delete(address: userAddress)
 

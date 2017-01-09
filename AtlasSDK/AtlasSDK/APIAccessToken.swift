@@ -7,7 +7,12 @@ import Foundation
 struct APIAccessToken {
 
     fileprivate static let keychainKeyPrefix = "APIAccessToken"
-    fileprivate static let componentsSeparator = "."
+
+    fileprivate enum Components: Int {
+        static let separator = "###"
+        static let count = 3
+        case prefix = 0, clientId = 1, environment = 2
+    }
 
     let clientId: String
     let useSandboxEnvironment: Bool
@@ -15,9 +20,9 @@ struct APIAccessToken {
     var value: String?
     var key: String {
         let components = [APIAccessToken.keychainKeyPrefix,
-                          clientId,
-                          Options.Environment(useSandboxEnvironment: useSandboxEnvironment).rawValue]
-        return components.joined(separator: APIAccessToken.componentsSeparator)
+            clientId,
+            Options.Environment(useSandboxEnvironment: useSandboxEnvironment).rawValue]
+        return components.joined(separator: Components.separator)
     }
 
     fileprivate init(config: Config, value: String? = nil) {
@@ -27,13 +32,13 @@ struct APIAccessToken {
     }
 
     fileprivate init?(key: String) {
-        let components = key.components(separatedBy: ".")
-        guard components.count == 3,
-            components[0] == APIAccessToken.keychainKeyPrefix,
-            let environment = Options.Environment(rawValue: components[2]) else {
+        let components = key.components(separatedBy: Components.separator)
+        guard components.count == Components.count,
+            components[Components.prefix] == APIAccessToken.keychainKeyPrefix,
+            let environment = Options.Environment(rawValue: components[Components.environment]) else {
                 return nil
         }
-        self.clientId = components[1]
+        self.clientId = components[Components.clientId]
         self.useSandboxEnvironment = environment.isSandbox
     }
 
@@ -102,6 +107,14 @@ extension Keychain {
     fileprivate static func delete(token: APIAccessToken) -> APIAccessToken {
         Keychain.delete(key: token.key)
         return token
+    }
+
+}
+
+extension Array {
+
+    fileprivate subscript(index: APIAccessToken.Components) -> Element {
+        get { return self[index.rawValue] }
     }
 
 }

@@ -8,6 +8,7 @@ require 'optparse'
 require_relative 'lib/calypso/clean'
 require_relative 'lib/calypso/deps'
 require_relative 'lib/calypso/lint'
+require_relative 'lib/calypso/simctl'
 require_relative 'lib/calypso/xcodebuild'
 require_relative 'lib/calypso/codecov'
 
@@ -35,6 +36,9 @@ module Calypso
 
     desc 'xcodebuild', 'Building shortcuts'
     subcommand 'xcodebuild', XcodeBuild
+
+    desc 'simctl', 'Simulator setup'
+    subcommand 'simctl', SimCtl
 
     desc 'codecov', 'Code coverage reports'
     subcommand 'codecov', Codecov

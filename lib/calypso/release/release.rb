@@ -19,8 +19,8 @@ module Calypso
       run "open \'#{release['html_url']}\'"
     end
 
-    desc 'changelog', 'Create release notes since latest release'
-    def changelog
+    desc 'preview', 'Create release notes since latest release'
+    def preview
       puts release_notes
     end
 
