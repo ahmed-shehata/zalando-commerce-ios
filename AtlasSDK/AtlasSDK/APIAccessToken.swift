@@ -1,5 +1,5 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
@@ -20,8 +20,8 @@ struct APIAccessToken {
     var value: String?
     var key: String {
         let components = [APIAccessToken.keychainKeyPrefix,
-            clientId,
-            Options.Environment(useSandboxEnvironment: useSandboxEnvironment).rawValue]
+                          clientId,
+                          Options.Environment(useSandboxEnvironment: useSandboxEnvironment).rawValue]
         return components.joined(separator: Components.separator)
     }
 

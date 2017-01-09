@@ -1,5 +1,5 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
@@ -44,7 +44,7 @@ struct RequestBuilder {
         self.urlSession.dataTask(with: request) { data, response, error in
             let taskResponse = DataTaskResponse(request: request, response: response, data: data, error: error)
             ResponseParser(taskResponse: taskResponse).parse(completion: completion)
-        }
+            }
             .resume()
 
     }
@@ -56,7 +56,7 @@ struct RequestBuilder {
                 r.authorize(withToken: token)
             }
             return r
-        }()
+            }()
 
         return request.debugLog()
     }

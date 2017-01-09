@@ -1,5 +1,5 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2017 Zalando SE. All rights reserved.
 //
 
 struct CompleteGuestOrderEndpoint: CheckoutGatewayEndpoint {
