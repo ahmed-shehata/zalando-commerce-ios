@@ -36,7 +36,7 @@ module Calypso
       if io.isatty
         io.printf "\033[#{color_code}m"
         io.puts args
-        io.printf "\033[#{color_code}m"
+        io.printf "\033[0m"
       else
         io.puts args
       end

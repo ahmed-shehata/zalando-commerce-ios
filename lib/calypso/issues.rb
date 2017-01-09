@@ -19,6 +19,13 @@ module Calypso
       end
     end
 
+    desc 'show_lost_in_projects [state]', 'Shows issues not related in projects'
+    def show_lost_in_projects(state = 'open')
+      github.no_project_issues(state: state).each do |issue|
+        puts self.class.format_issue(issue)
+      end
+    end
+
     desc 'labeled [label1,label2] [open*,closed,any]', 'Shows available open issues with given list of labels'
     def labeled(labels = nil, state = 'open')
       github.issues(labels: labels, state: state).each do |issue|
