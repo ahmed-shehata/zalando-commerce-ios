@@ -16,3 +16,8 @@ end
 group :development do
   gem 'travis'
 end
+
+group :jekyll_plugins do
+  gem 'github-pages'
+end
+
