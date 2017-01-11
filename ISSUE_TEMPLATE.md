@@ -10,15 +10,15 @@ If you're filling bug report please provide the following:
 
 Otherwise, if you creating new feature description, please use the following pattern:
 
-## Given
+### Given
 
 _In what context_
 
-## When
+### When
 
 _Some action is carried out_
 
-## Then
+### Then
 
 _Particular set of observable consequences should obtain_
 
