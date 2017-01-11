@@ -2,15 +2,15 @@ require 'thor'
 require 'pathname'
 require_relative '../utils/run'
 require_relative '../utils/log'
-require_relative '../utils/git'
+require_relative '../utils/git_cmd'
 require_relative '../../version'
 
 module Calypso
 
   class Docs < Thor
 
-    SOURCE_FOLDER = Pathname.new File.expand_path('../../..', __FILE__).freeze
-    DESTINATION_FOLDER = Pathname.new File.expand_path('../../../docs', __FILE__).freeze
+    SOURCE_FOLDER = Pathname.new File.expand_path('../../../..', __FILE__).freeze
+    DESTINATION_FOLDER = Pathname.new File.expand_path('../../../../docs', __FILE__).freeze
 
     MODULES = {
       'AtlasSDK' => 'atlas-sdk',
@@ -20,6 +20,7 @@ module Calypso
     desc 'publish', 'Generate docs and push them to the repository'
     def publish
       invoke :generate
+      publish_docs
     end
 
     desc 'generate', 'Generate code documentation in docs folder'
@@ -59,10 +60,11 @@ module Calypso
     end
 
     def destination_path(dst)
-      DESTINATION_FOLDER + dst
+      (DESTINATION_FOLDER + dst).to_s
     end
 
-    def commit_docs
+    def publish_docs
+      log 'Publishing docs...'
       MODULES.each do |_, dst|
         repo.add destination_path(dst)
       end
@@ -74,7 +76,7 @@ module Calypso
 
     include Log
     include Run
-    include Git
+    include GitCmd
 
   end
 

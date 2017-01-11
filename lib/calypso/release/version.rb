@@ -1,7 +1,7 @@
 require 'thor'
 
 require_relative '../utils/run'
-require_relative '../utils/git'
+require_relative '../utils/git_cmd'
 require_relative '../consts'
 
 VERSION_FILE = File.expand_path('../../../version.rb', __FILE__)
@@ -31,7 +31,7 @@ module Calypso
     private
 
     include Run
-    include Git
+    include GitCmd
 
     def ask_new_version(version = nil)
       new_version = version || ask("Enter new version (current #{ATLAS_VERSION}):", :blue)

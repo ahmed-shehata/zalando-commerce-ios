@@ -2,7 +2,7 @@ require 'git'
 
 module Calypso
 
-  module Git
+  module GitCmd
 
     def repo
       @repo ||= Git.open(File.expand_path('../../../..', __FILE__))
