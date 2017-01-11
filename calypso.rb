@@ -11,6 +11,7 @@ require_relative 'lib/calypso/lint'
 require_relative 'lib/calypso/simctl'
 require_relative 'lib/calypso/xcodebuild'
 require_relative 'lib/calypso/codecov'
+require_relative 'lib/calypso/docs'
 
 require_relative 'lib/calypso/issues'
 require_relative 'lib/calypso/release/release'
@@ -27,6 +28,9 @@ module Calypso
 
     desc 'clean', 'Clean source code'
     subcommand 'clean', Clean
+
+    desc 'docs', 'Generate docs'
+    subcommand 'docs', Docs
 
     desc 'deps', 'Prepare depended libraries'
     subcommand 'deps', Deps
