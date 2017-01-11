@@ -24,6 +24,7 @@ class AddAddressTableViewCell: UITableViewCell {
         return label
     }()
 
+    let addAddressButtonContainer: UIView = UIView()
     let addAddressButton: UIButton = {
         let button = UIButton(type: .contactAdd)
         button.isUserInteractionEnabled = false
@@ -46,11 +47,14 @@ extension AddAddressTableViewCell: UIBuilder {
     func configureView() {
         contentView.addSubview(stackView)
         stackView.addArrangedSubview(addAddressLabel)
-        stackView.addArrangedSubview(addAddressButton)
+        stackView.addArrangedSubview(addAddressButtonContainer)
+        addAddressButtonContainer.addSubview(addAddressButton)
     }
 
     func configureConstraints() {
         stackView.fillInSuperview()
+        addAddressButtonContainer.setWidth(equalToConstant: 20)
+        addAddressButton.centerInSuperview()
         addAddressButton.setSquareAspectRatio()
         addAddressButton.setWidth(equalToConstant: 20)
     }
