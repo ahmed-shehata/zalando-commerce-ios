@@ -2,6 +2,7 @@ require 'thor'
 require 'pathname'
 require_relative 'run'
 require_relative 'log'
+require_relative '../version'
 
 module Calypso
 
@@ -21,16 +22,16 @@ module Calypso
     def generate_docs(src, dst)
       args = {
         'output' => DESTINATION_FOLDER + dst,
-        'copyright' => '© 2016-2017 [Zalando SE](http://tech.zalando.com)',
-        'clean' => true,
-        'hide-documentation-coverage' => false,
-        'objc' => false,
         'theme' => 'apple',
-        'github_url' => 'https://github.com/zalando-incubator/atlas-ios'
+        'clean' => true, 'hide-documentation-coverage' => false, 'objc' => false,
+        'module' => src, 'module-version' => ATLAS_VERSION,
+        'author' => 'Zalando SE', 'author_url' => 'http://tech.zalando.com',
+        'github_url' => 'https://github.com/zalando-incubator/atlas-ios',
+        'copyright' => '© 2016-2017 [Zalando SE](http://tech.zalando.com)'
       }
 
-      source = SOURCE_FOLDER + src
-      run "cd #{source} && jazzy #{parse_args(args)}"
+      source_dir = SOURCE_FOLDER + src # --source-directory pick ups podspec
+      run "cd #{source_dir} && jazzy #{parse_args(args)}"
     end
 
     def parse_args(args)
