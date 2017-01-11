@@ -31,7 +31,9 @@ extension URLRequest {
     }
 
     func debugLog() -> URLRequest {
-        AtlasLogger.logDebug(curlCommandRepresentation())
+        if ProcessInfo.processInfo.arguments.contains("PRINT_REQUEST_DESCRIPTION") {
+            AtlasLogger.logDebug(curlCommandRepresentation())
+        }
         return self
     }
 
