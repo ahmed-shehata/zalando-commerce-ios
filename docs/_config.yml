@@ -1,11 +1,3 @@
-# Site settings
-title: Atlas iOS SDK
-tag_text: Atlas iOS SDK
-
-# Build settings
-markdown: kramdown
-exclude: ["README.md"]
-sass:
-  style: compressed
-
 theme: jekyll-theme-dinky
+title: Atlas iOS SDK
+description: Effortless and seamless integration with Zalando Checkout in iOS apps.
