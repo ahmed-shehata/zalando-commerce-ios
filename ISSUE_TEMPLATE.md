@@ -1,4 +1,4 @@
-If you're filling bug report please fill in:
+If you're filling bug report please provide the following:
 
 ### What did you do (e.g., steps to reproduce)
 
