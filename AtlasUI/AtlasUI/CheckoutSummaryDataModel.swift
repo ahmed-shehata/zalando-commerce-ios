@@ -18,6 +18,7 @@ struct CheckoutSummaryDataModel {
     let delivery: Delivery?
     let email: String?
     let orderNumber: String?
+    fileprivate(set) var validationDisplayedError: Bool = false
 
     init(selectedArticleUnit: SelectedArticleUnit,
          shippingAddress: FormattableAddress? = nil,
@@ -64,6 +65,30 @@ extension CheckoutSummaryDataModel {
 
     var termsAndConditionsURL: URL? {
         return AtlasAPIClient.shared?.config.salesChannel.termsAndConditionsURL
+    }
+
+}
+
+extension CheckoutSummaryDataModel {
+
+    mutating func validate(against dataModel: CheckoutSummaryDataModel) {
+        validationDisplayedError = false
+        checkPriceChange(comparedTo: dataModel)
+        checkPaymentAvailable(comparedTo: dataModel)
+    }
+
+    fileprivate mutating func checkPriceChange(comparedTo dataModel: CheckoutSummaryDataModel) {
+        if dataModel.totalPrice != totalPrice {
+            validationDisplayedError = true
+            UserMessage.displayError(error: AtlasCheckoutError.priceChanged(newPrice: totalPrice))
+        }
+    }
+
+    fileprivate mutating func checkPaymentAvailable(comparedTo dataModel: CheckoutSummaryDataModel) {
+        if dataModel.paymentMethod != nil && paymentMethod == nil {
+            validationDisplayedError = true
+            UserMessage.displayError(error: AtlasCheckoutError.paymentMethodNotAvailable)
+        }
     }
 
 }

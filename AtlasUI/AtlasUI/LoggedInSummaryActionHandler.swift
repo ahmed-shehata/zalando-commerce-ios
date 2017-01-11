@@ -56,7 +56,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
 
             self?.cartCheckout = cartCheckout
 
-            if dataSource.dataModel.isPaymentSelected && !UserMessage.errorDisplayed {
+            if dataSource.dataModel.isPaymentSelected && !dataSource.dataModel.validationDisplayedError {
                 AtlasUIClient.createOrder(checkoutId: checkout.id) { result in
                     guard let order = result.process() else { return }
                     self?.handleConfirmation(forOrder: order)
