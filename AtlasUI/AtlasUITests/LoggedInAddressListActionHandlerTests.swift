@@ -11,12 +11,10 @@ import Nimble
 class LoggedInAddressListActionHandlerTests: UITestCase {
 
     let delegate = AddressListTableDelegate(tableView: UITableView(), addresses: [], selectedAddress: nil, viewController: nil)
-    let window = UIWindow()
     var actionHandler: LoggedInAddressListActionHandler?
 
     override func setUp() {
         super.setUp()
-        registerAtlasUIViewController()
         actionHandler = createActionHandler()
     }
 
@@ -56,13 +54,6 @@ class LoggedInAddressListActionHandlerTests: UITestCase {
 
 extension LoggedInAddressListActionHandlerTests {
 
-    fileprivate func registerAtlasUIViewController() {
-        let atlasUIViewController = AtlasUIViewController(forSKU: "AD541L009-G11")
-        self.window.rootViewController = atlasUIViewController
-        self.window.makeKeyAndVisible()
-        try! AtlasUI.shared().register { atlasUIViewController }
-    }
-
     fileprivate func createActionHandler() -> LoggedInAddressListActionHandler? {
         let strategyMock = AddressViewModelCreationStrategyMock()
         let actionHandler = LoggedInAddressListActionHandler(addressViewModelCreationStrategy: strategyMock)
@@ -71,7 +62,7 @@ extension LoggedInAddressListActionHandlerTests {
     }
 
     fileprivate func getSaveButton() -> UIBarButtonItem? {
-        guard let atlasUIViewController = AtlasUIViewController.shared else {
+        guard let atlasUIViewController = self.atlasUIViewController else {
             fail()
             return nil
         }

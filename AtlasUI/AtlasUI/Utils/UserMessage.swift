@@ -27,10 +27,6 @@ struct UserMessage {
     fileprivate static let bannerErrorViewController = BannerErrorViewController()
     fileprivate static let fullScreenErrorViewController = FullScreenErrorViewController()
 
-//    static var errorDisplayed: Bool {
-//        return bannerErrorViewController.parent != nil || fullScreenErrorViewController.navigationController?.parent != nil
-//    }
-
     static func hideBannerError() {
         bannerErrorViewController.dismiss()
     }

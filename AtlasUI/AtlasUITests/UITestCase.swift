@@ -11,6 +11,14 @@ import AtlasSDK
 
 class UITestCase: XCTestCase {
 
+    var sku: String = "AD541L009-G11"
+    var atlasUIViewController: AtlasUIViewController?
+    var window: UIWindow = {
+        let window = UIWindow()
+        window.backgroundColor = .white
+        return window
+    }()
+
     override class func setUp() {
         super.setUp()
         try! AtlasMockAPI.startServer()
@@ -33,7 +41,23 @@ class UITestCase: XCTestCase {
 
     override func setUp() {
         super.setUp()
+        registerAtlasUIViewController(forSKU: sku)
+    }
+
+    func registerAtlasUIViewController(forSKU: String) {
         UserMessage.resetBanners()
+        let atlasUIViewController = AtlasUIViewController(forSKU: forSKU)
+        self.window.rootViewController = atlasUIViewController
+        self.window.makeKeyAndVisible()
+        try! AtlasUI.shared().register { atlasUIViewController }
+        _ = atlasUIViewController.view // load the view
+        self.atlasUIViewController = atlasUIViewController
+    }
+
+    var errorDisplayed: Bool {
+        let errorPresenterViewController = atlasUIViewController?.presentedViewController ?? atlasUIViewController
+        let errorViewControllers = errorPresenterViewController?.childViewControllers.flatMap { ($0 as? BannerErrorViewController) ?? (($0 as? UINavigationController)?.viewControllers.first as? FullScreenErrorViewController) } ?? []
+        return !errorViewControllers.isEmpty
     }
 
 }

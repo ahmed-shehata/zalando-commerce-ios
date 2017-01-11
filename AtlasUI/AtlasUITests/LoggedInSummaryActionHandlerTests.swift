@@ -12,7 +12,6 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
 
     var mockedDataSourceDelegate: CheckoutSummaryActionHandlerDataSourceDelegateMock?
     var actionHandler: LoggedInSummaryActionHandler?
-    let window = UIWindow()
 
     override func setUp() {
         super.setUp()
@@ -27,7 +26,7 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
 
     func testNoPaymentMethodSelected() {
         actionHandler?.handleSubmit()
-        expect(UserMessage.errorDisplayed).toEventually(beTrue())
+        expect(self.errorDisplayed).toEventually(beTrue())
     }
 
     func testPlaceOrder() {
@@ -41,20 +40,20 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
         guard let dataModel = createDataModel(fromCheckout: createCartCheckout()?.checkout,
                                               totalPrice: Money(amount: 0.1, currency: "")) else { return fail() }
         mockedDataSourceDelegate?.updated(dataModel: dataModel)
-        expect(UserMessage.errorDisplayed).toEventually(beTrue())
+        expect(self.errorDisplayed).toEventually(beTrue())
         UserMessage.resetBanners()
         actionHandler?.handleSubmit()
-        expect(UserMessage.errorDisplayed).toEventually(beTrue())
+        expect(self.errorDisplayed).toEventually(beTrue())
     }
 
     func testPaymentMethodRemoved() {
         guard let dataModel1 = createDataModel(withPaymentMethod: "PAYPAL") else { return fail() }
         mockedDataSourceDelegate?.updated(dataModel: dataModel1)
-        expect(UserMessage.errorDisplayed).toNotEventually(beTrue())
+        expect(self.errorDisplayed).toNotEventually(beTrue())
 
         guard let dataModel2 = createDataModel(withPaymentMethod: nil) else { return fail() }
         mockedDataSourceDelegate?.updated(dataModel: dataModel2)
-        expect(UserMessage.errorDisplayed).toEventually(beTrue())
+        expect(self.errorDisplayed).toEventually(beTrue())
     }
 
     func testShowingPaymentSelectionScreenWithEmptyPayment() {
@@ -62,19 +61,19 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
         actionHandler?.cartCheckout?.checkout = createCheckout(fromCheckout: checkout, payment: Payment(selected: nil, isExternalPayment: nil, selectionPageURL: nil))
 
         actionHandler?.handlePaymentSelection()
-        expect(UserMessage.errorDisplayed).toEventually(beTrue())
+        expect(self.errorDisplayed).toEventually(beTrue())
     }
 
     func testShowingPaymentSelectionScreenWithEmptyCartCheckout() {
         actionHandler?.cartCheckout = nil
         actionHandler?.handlePaymentSelection()
-        expect(UserMessage.errorDisplayed).toEventually(beTrue())
+        expect(self.errorDisplayed).toEventually(beTrue())
     }
 
     func testPaymentScreenCompletionWithError() {
         guard let paymentViewController = presentPaymentScreen() else { return fail() }
         paymentViewController.paymentCompletion?(.error)
-        expect(UserMessage.errorDisplayed).toEventually(beTrue())
+        expect(self.errorDisplayed).toEventually(beTrue())
     }
 
     func testPaymentScreenCompletionWithSuccess() {
@@ -91,7 +90,7 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
         addressViewController.addressSelectedHandler?(address)
         expect((self.mockedDataSourceDelegate?.dataModel.shippingAddress as? EquatableAddress)?.id).toEventually(equal(address.id))
         expect((self.mockedDataSourceDelegate?.dataModel.billingAddress as? EquatableAddress)?.id).toEventually(equal(address.id))
-        expect(UserMessage.errorDisplayed).toNotEventually(beTrue())
+        expect(self.errorDisplayed).toNotEventually(beTrue())
     }
 
     func testShippingPickupPointAddressScreenSelectCompletion() {
@@ -102,7 +101,7 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
         addressViewController.addressSelectedHandler?(address)
         expect((self.mockedDataSourceDelegate?.dataModel.shippingAddress as? EquatableAddress)?.id).toEventually(equal(address.id))
         expect((self.mockedDataSourceDelegate?.dataModel.billingAddress as? EquatableAddress)?.id).toNotEventually(equal(address.id))
-        expect(UserMessage.errorDisplayed).toNotEventually(beTrue())
+        expect(self.errorDisplayed).toNotEventually(beTrue())
     }
 
     func testShippingAddressScreenUpdateCompletion() {
@@ -117,7 +116,7 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
         addressViewController.addressUpdatedHandler?(update(address: address))
         expect(self.mockedDataSourceDelegate?.dataModel.shippingAddress?.firstName).toEventually(equal("John"))
         expect(self.mockedDataSourceDelegate?.dataModel.billingAddress?.firstName).toEventually(equal("Erika"))
-        expect(UserMessage.errorDisplayed).toNotEventually(beTrue())
+        expect(self.errorDisplayed).toNotEventually(beTrue())
     }
 
     func testShippingAddressScreenDeleteCompletion() {
@@ -130,7 +129,7 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
         addressViewController.addressDeletedHandler?(address)
         expect(self.mockedDataSourceDelegate?.dataModel.shippingAddress).toEventually(beNil())
         expect(self.mockedDataSourceDelegate?.dataModel.billingAddress).toNotEventually(beNil())
-        expect(UserMessage.errorDisplayed).toEventually(beTrue())
+        expect(self.errorDisplayed).toEventually(beTrue())
     }
 
     func testBillingAddressScreenSelectCompletion() {
@@ -141,7 +140,7 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
         addressViewController.addressSelectedHandler?(address)
         expect((self.mockedDataSourceDelegate?.dataModel.shippingAddress as? EquatableAddress)?.id).toEventually(equal(address.id))
         expect((self.mockedDataSourceDelegate?.dataModel.billingAddress as? EquatableAddress)?.id).toEventually(equal(address.id))
-        expect(UserMessage.errorDisplayed).toNotEventually(beTrue())
+        expect(self.errorDisplayed).toNotEventually(beTrue())
     }
 
     func testBillingAddressScreenUpdateCompletion() {
@@ -156,7 +155,7 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
         addressViewController.addressUpdatedHandler?(update(address: address))
         expect(self.mockedDataSourceDelegate?.dataModel.shippingAddress?.firstName).toEventually(equal("Erika"))
         expect(self.mockedDataSourceDelegate?.dataModel.billingAddress?.firstName).toEventually(equal("John"))
-        expect(UserMessage.errorDisplayed).toNotEventually(beTrue())
+        expect(self.errorDisplayed).toNotEventually(beTrue())
     }
 
     func testBillingAddressScreenDeleteCompletion() {
@@ -169,7 +168,7 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
         addressViewController.addressDeletedHandler?(address)
         expect(self.mockedDataSourceDelegate?.dataModel.shippingAddress).toNotEventually(beNil())
         expect(self.mockedDataSourceDelegate?.dataModel.billingAddress).toEventually(beNil())
-        expect(UserMessage.errorDisplayed).toEventually(beTrue())
+        expect(self.errorDisplayed).toEventually(beTrue())
     }
 
     func testShippingAddressWithNoAddresses() {
@@ -191,11 +190,9 @@ extension LoggedInSummaryActionHandlerTests {
     fileprivate func createActionHandler() -> LoggedInSummaryActionHandler? {
         var loggedInActionHandler: LoggedInSummaryActionHandler?
         waitUntil(timeout: 10) { done in
-            let sku = "AD541L009-G11"
-            self.registerAtlasUIViewController(forSKU: sku)
             AtlasUIClient.customer { result in
                 guard let customer = result.process() else { return fail() }
-                AtlasUIClient.article(withSKU: sku) { result in
+                AtlasUIClient.article(withSKU: self.sku) { result in
                     guard let article = result.process() else { return fail() }
                     let selectedArticleUnit = SelectedArticleUnit(article: article, selectedUnitIndex: 0)
                     LoggedInSummaryActionHandler.create(customer: customer, selectedArticleUnit: selectedArticleUnit) { result in
@@ -216,22 +213,13 @@ extension LoggedInSummaryActionHandlerTests {
     fileprivate func createCartCheckout() -> CartCheckout? {
         var cartCheckout: CartCheckout?
         waitUntil(timeout: 10) { done in
-            let sku = "AD541L009-G11"
-            AtlasUIClient.createCheckoutCart(forSKU: sku) { result in
+            AtlasUIClient.createCheckoutCart(forSKU: self.sku) { result in
                 guard let checkoutCart = result.process() else { return fail() }
                 cartCheckout = (cart: checkoutCart.cart, checkout: checkoutCart.checkout)
                 done()
             }
         }
         return cartCheckout
-    }
-
-    fileprivate func registerAtlasUIViewController(forSKU sku: String) {
-        let atlasUIViewController = AtlasUIViewController(forSKU: sku)
-        _ = atlasUIViewController.view // load the view
-        self.window.rootViewController = atlasUIViewController
-        self.window.makeKeyAndVisible()
-        try! AtlasUI.shared().register { atlasUIViewController }
     }
 
     fileprivate func getStandardAddress() -> EquatableAddress? {
@@ -299,8 +287,8 @@ extension LoggedInSummaryActionHandlerTests {
 
     fileprivate func presentPaymentScreen() -> PaymentViewController? {
         actionHandler?.handlePaymentSelection()
-        expect(AtlasUIViewController.shared?.mainNavigationController.viewControllers.last as? PaymentViewController).toNotEventually(beNil())
-        return AtlasUIViewController.shared?.mainNavigationController.viewControllers.last as? PaymentViewController
+        expect(self.atlasUIViewController?.mainNavigationController.viewControllers.last as? PaymentViewController).toNotEventually(beNil())
+        return self.atlasUIViewController?.mainNavigationController.viewControllers.last as? PaymentViewController
     }
 
     fileprivate func presentAddressScreen(forShippingAddress isShipping: Bool) -> AddressListViewController? {
@@ -309,8 +297,8 @@ extension LoggedInSummaryActionHandlerTests {
         } else {
             actionHandler?.handleBillingAddressSelection()
         }
-        expect(AtlasUIViewController.shared?.mainNavigationController.viewControllers.last as? AddressListViewController).toNotEventually(beNil())
-        return AtlasUIViewController.shared?.mainNavigationController.viewControllers.last as? AddressListViewController
+        expect(self.atlasUIViewController?.mainNavigationController.viewControllers.last as? AddressListViewController).toNotEventually(beNil())
+        return self.atlasUIViewController?.mainNavigationController.viewControllers.last as? AddressListViewController
     }
 
     fileprivate func update(address: EquatableAddress) -> CheckoutAddress {

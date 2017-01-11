@@ -18,7 +18,7 @@ class PaymentViewControllerTests: UITestCase {
                 expect(result) == PaymentStatus.guestRedirect(encryptedCheckoutId: "encryptedCheckoutId", encryptedToken: "encryptedToken")
                 done()
             }
-            _ = paymentViewController.view // load the view
+            self.atlasUIViewController?.mainNavigationController.pushViewController(paymentViewController, animated: true)
         }
     }
 
@@ -29,7 +29,7 @@ class PaymentViewControllerTests: UITestCase {
                 expect(result) == PaymentStatus.redirect
                 done()
             }
-            _ = paymentViewController.view // load the view
+            self.atlasUIViewController?.mainNavigationController.pushViewController(paymentViewController, animated: true)
         }
     }
 
@@ -40,7 +40,7 @@ class PaymentViewControllerTests: UITestCase {
                 expect(result) == PaymentStatus.success
                 done()
             }
-            _ = paymentViewController.view // load the view
+            self.atlasUIViewController?.mainNavigationController.pushViewController(paymentViewController, animated: true)
         }
     }
 
@@ -51,7 +51,7 @@ class PaymentViewControllerTests: UITestCase {
                 expect(result) == PaymentStatus.cancel
                 done()
             }
-            _ = paymentViewController.view // load the view
+            self.atlasUIViewController?.mainNavigationController.pushViewController(paymentViewController, animated: true)
         }
     }
 
@@ -62,7 +62,7 @@ class PaymentViewControllerTests: UITestCase {
                 expect(result) == PaymentStatus.error
                 done()
             }
-            _ = paymentViewController.view // load the view
+            self.atlasUIViewController?.mainNavigationController.pushViewController(paymentViewController, animated: true)
         }
     }
 
