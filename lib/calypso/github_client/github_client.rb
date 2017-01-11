@@ -3,7 +3,7 @@ require 'httparty'
 require 'awesome_print'
 
 require_relative '../env'
-require_relative '../log'
+require_relative '../utils/log'
 require_relative 'projects_api'
 require_relative 'issues_api'
 require_relative 'releases_api'
