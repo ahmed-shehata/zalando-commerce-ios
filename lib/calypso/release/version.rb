@@ -1,6 +1,7 @@
 require 'thor'
-require 'git'
-require_relative '../run'
+
+require_relative '../utils/run'
+require_relative '../utils/git'
 require_relative '../consts'
 
 VERSION_FILE = File.expand_path('../../../version.rb', __FILE__)
@@ -30,18 +31,7 @@ module Calypso
     private
 
     include Run
-
-    def repo
-      @repo ||= Git.open(File.expand_path('../../../..', __FILE__))
-    end
-
-    def master_branch?
-      current_branch == 'master'
-    end
-
-    def current_branch
-      `git rev-parse --abbrev-ref HEAD`.strip
-    end
+    include Git
 
     def ask_new_version(version = nil)
       new_version = version || ask("Enter new version (current #{ATLAS_VERSION}):", :blue)

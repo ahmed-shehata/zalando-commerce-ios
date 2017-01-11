@@ -1,6 +1,6 @@
 require 'thor'
 require 'date'
-require_relative 'run'
+require_relative 'utils/run'
 
 module Calypso
 

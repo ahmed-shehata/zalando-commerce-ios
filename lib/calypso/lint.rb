@@ -1,6 +1,6 @@
 require 'thor'
 require_relative 'consts'
-require_relative 'run'
+require_relative 'utils/run'
 
 module Calypso
 

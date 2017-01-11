@@ -1,6 +1,6 @@
 require 'thor'
 require 'fileutils'
-require_relative 'run'
+require_relative 'utils/run'
 
 module Calypso
 

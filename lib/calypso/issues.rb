@@ -1,9 +1,9 @@
 require 'thor'
 
 require_relative 'consts'
-require_relative 'run'
+require_relative 'utils/run'
 require_relative 'env'
-require_relative 'log'
+require_relative 'utils/log'
 require_relative 'github_client/github_client'
 
 module Calypso

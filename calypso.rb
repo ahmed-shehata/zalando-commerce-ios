@@ -11,13 +11,13 @@ require_relative 'lib/calypso/lint'
 require_relative 'lib/calypso/simctl'
 require_relative 'lib/calypso/xcodebuild'
 require_relative 'lib/calypso/codecov'
-require_relative 'lib/calypso/docs'
 
 require_relative 'lib/calypso/issues'
 require_relative 'lib/calypso/release/release'
 require_relative 'lib/calypso/release/version'
 require_relative 'lib/calypso/release/pod'
 require_relative 'lib/calypso/release/carthage'
+require_relative 'lib/calypso/release/docs'
 
 $stdout.sync = $stderr.sync = true
 
