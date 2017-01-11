@@ -10,16 +10,17 @@ module Calypso
   class Docs < Thor
 
     SOURCE_FOLDER = Pathname.new File.expand_path('../../../..', __FILE__).freeze
-    DESTINATION_FOLDER = Pathname.new File.expand_path('../../../../docs', __FILE__).freeze
+    DOCS_FOLDER = Pathname.new File.expand_path('../../../../docs', __FILE__).freeze
 
     MODULES = {
       'AtlasSDK' => 'atlas-sdk',
       'AtlasUI' => 'atlas-ui'
     }.freeze
 
-    desc 'publish', 'Generate docs and push them to the repository'
+    option :docs, type: :boolean, default: true
+    desc 'publish', 'Regenerate docs and push them to the repository'
     def publish
-      invoke :generate
+      invoke :generate if options[:docs]
       publish_docs
     end
 
@@ -60,14 +61,12 @@ module Calypso
     end
 
     def destination_path(dst)
-      (DESTINATION_FOLDER + dst).to_s
+      (DOCS_FOLDER + dst).to_s
     end
 
     def publish_docs
       log 'Publishing docs...'
-      MODULES.each do |_, dst|
-        repo.add destination_path(dst)
-      end
+      repo.add DOCS_FOLDER.to_s
       repo.commit '[auto] Updated docs'
       repo.push
     rescue StandardError => e
