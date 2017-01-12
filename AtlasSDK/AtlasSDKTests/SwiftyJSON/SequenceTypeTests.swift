@@ -1,7 +1,7 @@
 //
 //  SequenceTypeTests.swift
 //
-//  Copyright (c) 2014 - 2016 Pinglin Tang
+//  Copyright (c) 2014 - 2017 Pinglin Tang
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,7 @@
 //  THE SOFTWARE.
 
 import XCTest
-import SwiftyJSON
+@testable import AtlasSDK
 
 class SequenceTypeTests: XCTestCase {
 

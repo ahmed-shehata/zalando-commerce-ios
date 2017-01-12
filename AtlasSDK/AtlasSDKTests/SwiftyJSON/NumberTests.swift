@@ -1,6 +1,6 @@
 //  NumberTests.swift
 //
-//  Copyright (c) 2014 - 2016 Pinglin Tang
+//  Copyright (c) 2014 - 2017 Pinglin Tang
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -21,7 +21,7 @@
 //  THE SOFTWARE.
 
 import XCTest
-import SwiftyJSON
+@testable import AtlasSDK
 
 class NumberTests: XCTestCase {
 
@@ -191,11 +191,7 @@ class NumberTests: XCTestCase {
         XCTAssertTrue(json.int8Value == n0.int8Value)
         XCTAssertTrue(json.number! == n0)
         XCTAssertEqual(json.numberValue, n0)
-        #if (arch(x86_64) || arch(arm64))
-           XCTAssertEqual(json.stringValue, "false")
-        #elseif (arch(i386) || arch(arm))
-            XCTAssertEqual(json.stringValue, "0")
-        #endif
+        XCTAssertEqual(json.stringValue, "0")
         
         
         let n1 = NSNumber(value: 1 as Int8)
@@ -204,11 +200,7 @@ class NumberTests: XCTestCase {
         XCTAssertTrue(json.int8Value == n1.int8Value)
         XCTAssertTrue(json.number! == n1)
         XCTAssertEqual(json.numberValue, n1)
-        #if (arch(x86_64) || arch(arm64))
-            XCTAssertEqual(json.stringValue, "true")
-        #elseif (arch(i386) || arch(arm))
-            XCTAssertEqual(json.stringValue, "1")
-        #endif
+        XCTAssertEqual(json.stringValue, "1")
     }
     
     func testUInt8() {
@@ -267,7 +259,7 @@ class NumberTests: XCTestCase {
         json.int16Value = n0.int16Value
         XCTAssertTrue(json.int16! == n0.int16Value)
         XCTAssertTrue(json.int16Value == n0.int16Value)
-        XCTAssertTrue(json.number! == n0)
+        XCTAssertEqual(json.number, n0)
         XCTAssertEqual(json.numberValue, n0)
         XCTAssertEqual(json.stringValue, "0")
         

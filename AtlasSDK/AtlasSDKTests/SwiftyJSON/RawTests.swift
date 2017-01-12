@@ -1,6 +1,6 @@
 //  RawTests.swift
 //
-//  Copyright (c) 2014 - 2016 Pinglin Tang
+//  Copyright (c) 2014 - 2017 Pinglin Tang
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -21,7 +21,7 @@
 //  THE SOFTWARE.
 
 import XCTest
-import SwiftyJSON
+@testable import AtlasSDK
 
 class RawTests: XCTestCase {
 
@@ -75,21 +75,21 @@ class RawTests: XCTestCase {
     
     func testString() {
         let json:JSON = "I'm a json"
-        XCTAssertTrue(json.rawString() == "I'm a json")
+        XCTAssertEqual(json.rawString(), "I'm a json")
     }
     
     func testNumber() {
         let json:JSON = 123456789.123
-        XCTAssertTrue(json.rawString() == "123456789.123")
+        XCTAssertEqual(json.rawString(), "123456789.123")
     }
     
     func testBool() {
         let json:JSON = true
-        XCTAssertTrue(json.rawString() == "true")
+        XCTAssertEqual(json.rawString(), "true")
     }
     
     func testNull() {
         let json:JSON = JSON.null
-        XCTAssertTrue(json.rawString() == "null")
+        XCTAssertEqual(json.rawString(), "null")
     }
 }

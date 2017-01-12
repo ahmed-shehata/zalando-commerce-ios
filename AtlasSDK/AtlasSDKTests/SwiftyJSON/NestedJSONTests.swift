@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import SwiftyJSON
+@testable import AtlasSDK
 
 class NestedJSONTests: XCTestCase {
     let family: JSON = [
