@@ -54,12 +54,12 @@ extension Config {
 extension Config {
 
     init?(json: JSON, options: Options) {
-        guard let catalogURL = json["atlas-catalog-api"]["url"].URL,
-            let checkoutURL = json["atlas-checkout-api"]["url"].URL,
-            let checkoutGatewayURL = json["atlas-checkout-gateway"]["url"].URL,
-            let loginURL = json["oauth2-provider"]["url"].URL,
-            let selectionCallbackURL = json["atlas-checkout-api"]["payment"]["selection-callback"].URL,
-            let thirdPartyCallbackURL = json["atlas-checkout-api"]["payment"]["third-party-callback"].URL,
+        guard let catalogURL = json["atlas-catalog-api"]["url"].url,
+            let checkoutURL = json["atlas-checkout-api"]["url"].url,
+            let checkoutGatewayURL = json["atlas-checkout-gateway"]["url"].url,
+            let loginURL = json["oauth2-provider"]["url"].url,
+            let selectionCallbackURL = json["atlas-checkout-api"]["payment"]["selection-callback"].url,
+            let thirdPartyCallbackURL = json["atlas-checkout-api"]["payment"]["third-party-callback"].url,
             let availableSalesChannels = json["sales-channels"].array?.flatMap({ SalesChannel(json: $0) }),
             let salesChannel = availableSalesChannels.first(where: { $0.identifier == options.salesChannel })
             else { return nil }
@@ -107,7 +107,7 @@ extension Config.SalesChannel: JSONInitializable {
     init?(json: JSON) {
         guard let identifier = json["sales-channel"].string,
             let localeIdentifier = json["locale"].string,
-            let tocURL = json["toc_url"].URL
+            let tocURL = json["toc_url"].url
             else { return nil }
 
         self.identifier = identifier
