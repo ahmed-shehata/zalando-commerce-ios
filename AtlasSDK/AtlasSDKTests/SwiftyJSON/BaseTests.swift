@@ -229,18 +229,18 @@ class BaseTests: XCTestCase {
         if let _ = json["wrong-type"].string {
             XCTFail("Should not run into here")
         } else {
-            XCTAssertEqual(json["wrong-type"].error!.code, SwiftyJSON.ErrorWrongType)
+            XCTAssertEqual(json["wrong-type"].error!.code, JSONErrorWrongType)
         }
 
         if let _ = json[0]["not-exist"].string {
             XCTFail("Should not run into here")
         } else {
-            XCTAssertEqual(json[0]["not-exist"].error!.code, SwiftyJSON.ErrorNotExist)
+            XCTAssertEqual(json[0]["not-exist"].error!.code, JSONErrorNotExist)
         }
 
         let wrongJSON = JSON(NSObject())
         if let error = wrongJSON.error {
-            XCTAssertEqual(error.code, SwiftyJSON.ErrorUnsupportedType)
+            XCTAssertEqual(error.code, JSONErrorUnsupportedType)
         }
     }
 

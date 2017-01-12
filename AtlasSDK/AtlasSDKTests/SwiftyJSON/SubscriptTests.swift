@@ -180,37 +180,37 @@ class SubscriptTests: XCTestCase {
     func testOutOfBounds() {
         let json:JSON = JSON ([[NSNumber(value:1),NSNumber(value:2.123456),NSNumber(value:123456789)], ["aa","bbb","cccc"], [true, "766", NSNull(), 655231.9823]] as NSArray)
         XCTAssertEqual(json[9], JSON.null)
-        XCTAssertEqual(json[-2].error!.code, ErrorIndexOutOfBounds)
-        XCTAssertEqual(json[6].error!.code, ErrorIndexOutOfBounds)
+        XCTAssertEqual(json[-2].error!.code, JSONErrorIndexOutOfBounds)
+        XCTAssertEqual(json[6].error!.code, JSONErrorIndexOutOfBounds)
         XCTAssertEqual(json[9][8], JSON.null)
-        XCTAssertEqual(json[8][7].error!.code, ErrorIndexOutOfBounds)
-        XCTAssertEqual(json[8,7].error!.code, ErrorIndexOutOfBounds)
-        XCTAssertEqual(json[999].error!.code, ErrorIndexOutOfBounds)
+        XCTAssertEqual(json[8][7].error!.code, JSONErrorIndexOutOfBounds)
+        XCTAssertEqual(json[8,7].error!.code, JSONErrorIndexOutOfBounds)
+        XCTAssertEqual(json[999].error!.code, JSONErrorIndexOutOfBounds)
     }
     
-    func testErrorWrongType() {
+    func testJSONErrorWrongType() {
         let json = JSON(12345)
         XCTAssertEqual(json[9], JSON.null)
-        XCTAssertEqual(json[9].error!.code, ErrorWrongType)
-        XCTAssertEqual(json[8][7].error!.code, ErrorWrongType)
+        XCTAssertEqual(json[9].error!.code, JSONErrorWrongType)
+        XCTAssertEqual(json[8][7].error!.code, JSONErrorWrongType)
         XCTAssertEqual(json["name"], JSON.null)
-        XCTAssertEqual(json["name"].error!.code, ErrorWrongType)
-        XCTAssertEqual(json[0]["name"].error!.code, ErrorWrongType)
-        XCTAssertEqual(json["type"]["name"].error!.code, ErrorWrongType)
-        XCTAssertEqual(json["name"][99].error!.code, ErrorWrongType)
-        XCTAssertEqual(json[1,"Value"].error!.code, ErrorWrongType)
-        XCTAssertEqual(json[1, 2,"Value"].error!.code, ErrorWrongType)
-        XCTAssertEqual(json[[1, 2,"Value"]].error!.code, ErrorWrongType)
+        XCTAssertEqual(json["name"].error!.code, JSONErrorWrongType)
+        XCTAssertEqual(json[0]["name"].error!.code, JSONErrorWrongType)
+        XCTAssertEqual(json["type"]["name"].error!.code, JSONErrorWrongType)
+        XCTAssertEqual(json["name"][99].error!.code, JSONErrorWrongType)
+        XCTAssertEqual(json[1,"Value"].error!.code, JSONErrorWrongType)
+        XCTAssertEqual(json[1, 2,"Value"].error!.code, JSONErrorWrongType)
+        XCTAssertEqual(json[[1, 2,"Value"]].error!.code, JSONErrorWrongType)
     }
     
-    func testErrorNotExist() {
+    func testJSONErrorNotExist() {
         let json:JSON = ["name":"NAME", "age":15]
         XCTAssertEqual(json["Type"], JSON.null)
-        XCTAssertEqual(json["Type"].error!.code, ErrorNotExist)
-        XCTAssertEqual(json["Type"][1].error!.code, ErrorNotExist)
-        XCTAssertEqual(json["Type", 1].error!.code, ErrorNotExist)
-        XCTAssertEqual(json["Type"]["Value"].error!.code, ErrorNotExist)
-        XCTAssertEqual(json["Type","Value"].error!.code, ErrorNotExist)
+        XCTAssertEqual(json["Type"].error!.code, JSONErrorNotExist)
+        XCTAssertEqual(json["Type"][1].error!.code, JSONErrorNotExist)
+        XCTAssertEqual(json["Type", 1].error!.code, JSONErrorNotExist)
+        XCTAssertEqual(json["Type"]["Value"].error!.code, JSONErrorNotExist)
+        XCTAssertEqual(json["Type","Value"].error!.code, JSONErrorNotExist)
     }
     
     func testMultilevelGetter() {

@@ -41,7 +41,7 @@ class RawTests: XCTestCase {
         do {
             _ = try json.rawData()
         } catch let error as NSError {
-            XCTAssertEqual(error.code, ErrorInvalidJSON)
+            XCTAssertEqual(error.code, JSONErrorInvalidJSON)
         }
     }
     
