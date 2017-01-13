@@ -55,9 +55,11 @@ class UITestCase: XCTestCase {
     }
 
     var errorDisplayed: Bool {
-        let errorPresenterViewController = atlasUIViewController?.presentedViewController ?? atlasUIViewController
-        let errorViewControllers = errorPresenterViewController?.childViewControllers.flatMap { ($0 as? BannerErrorViewController) ?? (($0 as? UINavigationController)?.viewControllers.first as? FullScreenErrorViewController) } ?? []
-        return !errorViewControllers.isEmpty
+        guard let errorPresenterViewController = atlasUIViewController?.presentedViewController ?? atlasUIViewController else { return false }
+        return errorPresenterViewController.childViewControllers.contains {
+            $0 is BannerErrorViewController ||
+            ($0 as? UINavigationController)?.viewControllers.first is FullScreenErrorViewController
+        }
     }
 
 }
