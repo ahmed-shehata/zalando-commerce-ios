@@ -66,6 +66,7 @@
 		8154C0A71E1E7000006E9FF0 /* URLStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8154C0A01E1E7000006E9FF0 /* URLStringConvertible.swift */; };
 		816405B71DF84EB600C7BAF0 /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816405B61DF84EB600C7BAF0 /* URLRequest.swift */; };
 		816405BF1DF869B300C7BAF0 /* URLRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816405BE1DF869B300C7BAF0 /* URLRequestTests.swift */; };
+		817B79461E2904F800925793 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817B79451E2904F800925793 /* UIDevice.swift */; };
 		8195AA6D1DF58DD800D9AA7B /* PaymentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8195AA6C1DF58DD800D9AA7B /* PaymentStatus.swift */; };
 		81B546CC1DF070D70038BBF4 /* TestOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B546CB1DF070D70038BBF4 /* TestOptions.swift */; };
 		81CA481E1E02C41F00D435B0 /* TestConsts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CA481D1E02C41F00D435B0 /* TestConsts.swift */; };
@@ -250,6 +251,7 @@
 		816405BC1DF8525700C7BAF0 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		816405BD1DF8525C00C7BAF0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		816405BE1DF869B300C7BAF0 /* URLRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestTests.swift; sourceTree = "<group>"; };
+		817B79451E2904F800925793 /* UIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		8195AA6C1DF58DD800D9AA7B /* PaymentStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentStatus.swift; sourceTree = "<group>"; };
 		81B546CB1DF070D70038BBF4 /* TestOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestOptions.swift; path = ../../AtlasSDK/AtlasSDKTests/TestOptions.swift; sourceTree = "<group>"; };
 		81CA481D1E02C41F00D435B0 /* TestConsts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestConsts.swift; path = ../../AtlasSDK/AtlasSDKTests/TestConsts.swift; sourceTree = "<group>"; };
@@ -551,6 +553,7 @@
 				8154C09E1E1E7000006E9FF0 /* URL.swift */,
 				8154C09F1E1E7000006E9FF0 /* URLComponents.swift */,
 				8154C0A01E1E7000006E9FF0 /* URLStringConvertible.swift */,
+				817B79451E2904F800925793 /* UIDevice.swift */,
 			);
 			name = Extensions;
 			path = ../../AtlasSDK/AtlasSDK/Extensions;
@@ -985,6 +988,7 @@
 				5DED28D7802BD220B0257647BE4A6BA7 /* AddressListTableDelegate.swift in Sources */,
 				8D9714FE58E50B7BC699060466CEF934 /* FormValidator.swift in Sources */,
 				3ED1FCFD38D86B0362C9C9F9E06B6027 /* AtlasReachability.swift in Sources */,
+				817B79461E2904F800925793 /* UIDevice.swift in Sources */,
 				7629410B747CDC9D6FD8015EAE15F936 /* FullScreenErrorViewController.swift in Sources */,
 				E98453581DF59FCF001F6C51 /* GuestCheckoutCreateAddressActionHandler.swift in Sources */,
 				0FBF5C603EAAC10495E96E1E79EC75A0 /* KeyboardScrollView.swift in Sources */,
