@@ -318,6 +318,7 @@ extension LoggedInSummaryActionHandlerTests {
 
 class CheckoutSummaryActionHandlerDataSourceDelegateMock: NSObject, CheckoutSummaryActionHandlerDataSource, CheckoutSummaryActionHandlerDelegate {
 
+    var viewController: CheckoutSummaryViewController
     var viewModel: CheckoutSummaryViewModel
     var dataModel: CheckoutSummaryDataModel {
         return viewModel.dataModel
@@ -331,14 +332,17 @@ class CheckoutSummaryActionHandlerDataSourceDelegateMock: NSObject, CheckoutSumm
 
     init(viewModel: CheckoutSummaryViewModel) {
         self.viewModel = viewModel
+        self.viewController = CheckoutSummaryViewController(viewModel: viewModel)
     }
 
     func updated(dataModel: CheckoutSummaryDataModel) {
         self.viewModel.dataModel = dataModel
+        try? viewController.updated(dataModel: dataModel)
     }
 
     func updated(layout: CheckoutSummaryLayout) {
         self.viewModel.layout = layout
+        viewController.updated(layout: layout)
     }
 
     func updated(actionHandler: CheckoutSummaryActionHandler) {

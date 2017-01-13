@@ -128,13 +128,15 @@ extension CheckoutSummaryViewController: CheckoutSummaryActionHandlerDataSource 
 extension CheckoutSummaryViewController: CheckoutSummaryActionHandlerDelegate {
 
     func updated(dataModel: CheckoutSummaryDataModel) throws {
+        let oldModel = self.viewModel.dataModel
+        self.viewModel.dataModel = dataModel
+
         do {
-            try dataModel.validate(against: self.viewModel.dataModel)
+            try dataModel.validate(against: oldModel)
         } catch let error {
             UserMessage.displayError(error: error)
             throw error
         }
-        self.viewModel.dataModel = dataModel
     }
 
     func updated(layout: CheckoutSummaryLayout) {
