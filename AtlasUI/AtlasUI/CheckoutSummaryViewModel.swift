@@ -7,16 +7,7 @@ import AtlasSDK
 
 struct CheckoutSummaryViewModel {
 
-    var dataModel: CheckoutSummaryDataModel {
-        didSet {
-            dataModel.validate(against: oldValue)
-        }
-    }
+    var dataModel: CheckoutSummaryDataModel
     var layout: CheckoutSummaryLayout
-
-    init(dataModel: CheckoutSummaryDataModel, layout: CheckoutSummaryLayout) {
-        self.dataModel = dataModel
-        self.layout = layout
-    }
 
 }

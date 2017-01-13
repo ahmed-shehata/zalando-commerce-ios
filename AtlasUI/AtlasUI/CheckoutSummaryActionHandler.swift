@@ -13,7 +13,7 @@ protocol CheckoutSummaryActionHandlerDataSource: NSObjectProtocol {
 
 protocol CheckoutSummaryActionHandlerDelegate: NSObjectProtocol {
 
-    func updated(dataModel: CheckoutSummaryDataModel)
+    func updated(dataModel: CheckoutSummaryDataModel) throws
     func updated(layout: CheckoutSummaryLayout)
     func updated(actionHandler: CheckoutSummaryActionHandler)
     func dismissView()

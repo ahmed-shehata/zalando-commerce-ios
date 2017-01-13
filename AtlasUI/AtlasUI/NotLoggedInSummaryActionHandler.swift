@@ -23,7 +23,7 @@ class NotLoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
 
                 let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, cartCheckout: actionHandler.cartCheckout)
                 delegate.updated(actionHandler: actionHandler)
-                delegate.updated(dataModel: dataModel)
+                try? delegate.updated(dataModel: dataModel)
                 delegate.updated(layout: LoggedInLayout())
             }
         }
@@ -68,7 +68,7 @@ extension NotLoggedInSummaryActionHandler {
                                                  email: email)
         let actionHandler = GuestCheckoutSummaryActionHandler(email: email)
         delegate?.updated(actionHandler: actionHandler)
-        delegate?.updated(dataModel: dataModel)
+        try? delegate?.updated(dataModel: dataModel)
         delegate?.updated(layout: GuestCheckoutLayout())
     }
 

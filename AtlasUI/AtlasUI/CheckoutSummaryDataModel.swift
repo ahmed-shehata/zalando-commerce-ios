@@ -18,7 +18,6 @@ struct CheckoutSummaryDataModel {
     let delivery: Delivery?
     let email: String?
     let orderNumber: String?
-    fileprivate(set) var validationDisplayedError: Bool = false
 
     init(selectedArticleUnit: SelectedArticleUnit,
          shippingAddress: FormattableAddress? = nil,
@@ -71,23 +70,20 @@ extension CheckoutSummaryDataModel {
 
 extension CheckoutSummaryDataModel {
 
-    mutating func validate(against dataModel: CheckoutSummaryDataModel) {
-        validationDisplayedError = false
-        checkPriceChange(comparedTo: dataModel)
-        checkPaymentAvailable(comparedTo: dataModel)
+    func validate(against otherDataModel: CheckoutSummaryDataModel) throws {
+        try checkPriceChange(comparedTo: otherDataModel)
+        try checkPaymentAvailable(comparedTo: otherDataModel)
     }
 
-    fileprivate mutating func checkPriceChange(comparedTo dataModel: CheckoutSummaryDataModel) {
-        if dataModel.totalPrice != totalPrice {
-            validationDisplayedError = true
-            UserMessage.displayError(error: AtlasCheckoutError.priceChanged(newPrice: totalPrice))
+    private func checkPriceChange(comparedTo otherDataModel: CheckoutSummaryDataModel) throws {
+        if otherDataModel.totalPrice != totalPrice {
+            throw AtlasCheckoutError.priceChanged(newPrice: totalPrice)
         }
     }
 
-    fileprivate mutating func checkPaymentAvailable(comparedTo dataModel: CheckoutSummaryDataModel) {
-        if dataModel.paymentMethod != nil && paymentMethod == nil {
-            validationDisplayedError = true
-            UserMessage.displayError(error: AtlasCheckoutError.paymentMethodNotAvailable)
+    private func checkPaymentAvailable(comparedTo otherDataModel: CheckoutSummaryDataModel) throws {
+        if otherDataModel.paymentMethod != nil && paymentMethod == nil {
+            throw AtlasCheckoutError.paymentMethodNotAvailable
         }
     }
 
