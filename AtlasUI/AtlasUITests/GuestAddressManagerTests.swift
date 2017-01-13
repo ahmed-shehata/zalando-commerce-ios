@@ -27,13 +27,13 @@ class GuestAddressActionHandlerTests: UITestCase {
     func testUpdateShippingAddress() {
         guestAddressActionHandler.addressCreationStrategy = ShippingAddressViewModelCreationStrategy()
         guestAddressActionHandler.updateAddress(address: createStandardAddress()) { _ in }
-        expect(self.atlasUIViewController?.mainNavigationController.viewControllers.last as? AddressFormViewController).toNotEventually(beNil())
+        expect(self.defaultNavigationController?.viewControllers.last as? AddressFormViewController).toNotEventually(beNil())
     }
 
     func testUpdateBilingAddress() {
         guestAddressActionHandler.addressCreationStrategy = BillingAddressViewModelCreationStrategy()
         guestAddressActionHandler.updateAddress(address: createStandardAddress()) { _ in }
-        expect(self.atlasUIViewController?.mainNavigationController.viewControllers.last as? AddressFormViewController).toNotEventually(beNil())
+        expect(self.defaultNavigationController?.viewControllers.last as? AddressFormViewController).toNotEventually(beNil())
     }
 
     func testModifyShippingAddress() {

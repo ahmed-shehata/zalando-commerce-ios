@@ -13,31 +13,31 @@ class SizeListSelectionViewControllerTests: UITestCase {
     func testManySizesArticle() {
         registerAtlasUIViewController(forSKU: "AD541L009-G11")
 
-        let viewController = self.atlasUIViewController?.mainNavigationController.topViewController as? SizeListSelectionViewController
+        let viewController = self.defaultNavigationController?.topViewController as? SizeListSelectionViewController
         expect(viewController?.tableViewDataSource).toEventuallyNot(beNil())
         expect(viewController?.tableViewDataSource?.article.units.count) == 5
         expect(viewController?.tableViewDataSource?.article.availableUnits.count) == 1
         expect(viewController?.tableViewDataSource?.article.hasSingleUnit) == false
-        expect(self.atlasUIViewController?.mainNavigationController.topViewController).toEventually(equal(viewController))
+        expect(self.defaultNavigationController?.topViewController).toEventually(equal(viewController))
     }
 
     func testSingleSizeArticle() {
         registerAtlasUIViewController(forSKU: "MK151F00E-Q11")
 
-        let viewController = self.atlasUIViewController?.mainNavigationController.topViewController as? SizeListSelectionViewController
+        let viewController = self.defaultNavigationController?.topViewController as? SizeListSelectionViewController
         expect(viewController?.tableViewDataSource).toEventuallyNot(beNil(), timeout: 10)
         expect(viewController?.tableViewDataSource?.article.units.count) == 1
         expect(viewController?.tableViewDataSource?.article.availableUnits.count) == 1
         expect(viewController?.tableViewDataSource?.article.hasSingleUnit).to(beTrue())
-        expect(self.atlasUIViewController?.mainNavigationController.topViewController).toEventuallyNot(equal(viewController))
+        expect(self.defaultNavigationController?.topViewController).toEventuallyNot(equal(viewController))
     }
 
     func testOutOfStockArticle() {
         registerAtlasUIViewController(forSKU: "AZ711N00B-Q11")
 
-        let viewController = self.atlasUIViewController?.mainNavigationController.topViewController as? SizeListSelectionViewController
+        let viewController = self.defaultNavigationController?.topViewController as? SizeListSelectionViewController
         expect(self.errorDisplayed).toEventually(beTrue())
-        expect(self.atlasUIViewController?.mainNavigationController.topViewController).toEventually(equal(viewController))
+        expect(self.defaultNavigationController?.topViewController).toEventually(equal(viewController))
     }
 
 }

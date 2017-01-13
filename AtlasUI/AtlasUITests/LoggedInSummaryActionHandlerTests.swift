@@ -287,8 +287,8 @@ extension LoggedInSummaryActionHandlerTests {
 
     fileprivate func presentPaymentScreen() -> PaymentViewController? {
         actionHandler?.handlePaymentSelection()
-        expect(self.atlasUIViewController?.mainNavigationController.viewControllers.last as? PaymentViewController).toNotEventually(beNil())
-        return self.atlasUIViewController?.mainNavigationController.viewControllers.last as? PaymentViewController
+        expect(self.defaultNavigationController?.viewControllers.last as? PaymentViewController).toNotEventually(beNil())
+        return self.defaultNavigationController?.viewControllers.last as? PaymentViewController
     }
 
     fileprivate func presentAddressScreen(forShippingAddress isShipping: Bool) -> AddressListViewController? {
@@ -297,8 +297,8 @@ extension LoggedInSummaryActionHandlerTests {
         } else {
             actionHandler?.handleBillingAddressSelection()
         }
-        expect(self.atlasUIViewController?.mainNavigationController.viewControllers.last as? AddressListViewController).toNotEventually(beNil())
-        return self.atlasUIViewController?.mainNavigationController.viewControllers.last as? AddressListViewController
+        expect(self.defaultNavigationController?.viewControllers.last as? AddressListViewController).toNotEventually(beNil())
+        return self.defaultNavigationController?.viewControllers.last as? AddressListViewController
     }
 
     fileprivate func update(address: EquatableAddress) -> CheckoutAddress {

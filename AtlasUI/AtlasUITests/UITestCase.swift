@@ -18,6 +18,9 @@ class UITestCase: XCTestCase {
         window.backgroundColor = .white
         return window
     }()
+    var defaultNavigationController: UINavigationController? {
+        return atlasUIViewController?.mainNavigationController
+    }
 
     override class func setUp() {
         super.setUp()

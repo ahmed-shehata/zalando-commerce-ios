@@ -50,7 +50,7 @@ class GuestSummaryActionHandlerTests: UITestCase {
         mockedDataSourceDelegate?.dataModel = addAddress(toDataModel: dataModel)
         guard let paymentViewController = showPaymentScreen() else { return fail() }
         paymentViewController.paymentCompletion?(.error)
-        _ = self.atlasUIViewController?.mainNavigationController.popViewController(animated: true)
+        _ = self.defaultNavigationController?.popViewController(animated: true)
         expect(self.errorDisplayed).toEventually(beTrue())
     }
 
@@ -104,8 +104,8 @@ extension GuestSummaryActionHandlerTests {
 
     fileprivate func showPaymentScreen() -> PaymentViewController? {
         actionHandler?.handlePaymentSelection()
-        expect(self.atlasUIViewController?.mainNavigationController.viewControllers.last as? PaymentViewController).toNotEventually(beNil())
-        return self.atlasUIViewController?.mainNavigationController.viewControllers.last as? PaymentViewController
+        expect(self.defaultNavigationController?.viewControllers.last as? PaymentViewController).toNotEventually(beNil())
+        return self.defaultNavigationController?.viewControllers.last as? PaymentViewController
     }
 
     fileprivate func selectedPaymentMethod() {
@@ -113,7 +113,7 @@ extension GuestSummaryActionHandlerTests {
         mockedDataSourceDelegate?.dataModel = addAddress(toDataModel: dataModel)
         guard let paymentViewController = showPaymentScreen() else { return fail() }
         paymentViewController.paymentCompletion?(.guestRedirect(encryptedCheckoutId: "CHECKOUT_ID", encryptedToken: "TOKEN"))
-        _ = self.atlasUIViewController?.mainNavigationController.popViewController(animated: true)
+        _ = self.defaultNavigationController?.popViewController(animated: true)
     }
 
 }
