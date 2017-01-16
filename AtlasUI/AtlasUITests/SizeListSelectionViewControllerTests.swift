@@ -25,7 +25,7 @@ class SizeListSelectionViewControllerTests: UITestCase {
         registerAtlasUIViewController(forSKU: "MK151F00E-Q11")
 
         let viewController = self.defaultNavigationController?.topViewController as? SizeListSelectionViewController
-        expect(viewController?.tableViewDataSource).toEventuallyNot(beNil(), timeout: 10)
+        expect(viewController?.tableViewDataSource).toEventuallyNot(beNil())
         expect(viewController?.tableViewDataSource?.article.units.count) == 1
         expect(viewController?.tableViewDataSource?.article.availableUnits.count) == 1
         expect(viewController?.tableViewDataSource?.article.hasSingleUnit).to(beTrue())

@@ -24,7 +24,7 @@ class UITestCase: XCTestCase {
 
     override class func setUp() {
         super.setUp()
-        Nimble.AsyncDefaults.Timeout = 5
+        Nimble.AsyncDefaults.Timeout = 10
         try! AtlasMockAPI.startServer()
 
         waitUntil(timeout: 10) { done in

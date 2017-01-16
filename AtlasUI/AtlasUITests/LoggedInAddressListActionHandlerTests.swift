@@ -24,7 +24,7 @@ class LoggedInAddressListActionHandlerTests: UITestCase {
         guard let saveButton = getSaveButton() else { return fail() }
         UIApplication.shared.sendAction(saveButton.action!, to: saveButton.target, from: nil, for: nil)
 
-        expect(self.delegate.addresses.count).toEventually(equal(1), timeout: 10)
+        expect(self.delegate.addresses.count).toEventually(equal(1))
     }
 
     func testUpdateAddress() {
@@ -37,7 +37,7 @@ class LoggedInAddressListActionHandlerTests: UITestCase {
         guard let saveButton = getSaveButton() else { return fail() }
         UIApplication.shared.sendAction(saveButton.action!, to: saveButton.target, from: nil, for: nil)
 
-        expect(self.delegate.addresses.first?.lastName).toEventually(equal("Doe Edited"), timeout: 10)
+        expect(self.delegate.addresses.first?.lastName).toEventually(equal("Doe Edited"))
     }
 
     func testDeleteAddress() {
