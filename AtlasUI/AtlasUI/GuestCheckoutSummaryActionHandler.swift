@@ -25,7 +25,7 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
     }
 
     func handleSubmit() {
-        guard shippingAddress != nil, billingAddress != nil else {
+        guard hasAddresses else {
             UserMessage.displayError(error: AtlasCheckoutError.missingAddress)
             return
         }
