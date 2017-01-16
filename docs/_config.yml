@@ -1,1 +1,9 @@
-theme: jekyll-theme-minimal
+# Site settings
+title: Atlas iOS SDK
+tag_text: Atlas iOS SDK
+
+# Build settings
+markdown: kramdown
+exclude: ["README.md"]
+sass:
+  style: compressed

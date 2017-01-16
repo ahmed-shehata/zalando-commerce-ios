@@ -2,8 +2,8 @@ require 'json'
 require 'thor'
 
 require_relative 'consts'
-require_relative 'run'
-require_relative 'log'
+require_relative 'utils/run'
+require_relative 'utils/log'
 
 module Calypso
 

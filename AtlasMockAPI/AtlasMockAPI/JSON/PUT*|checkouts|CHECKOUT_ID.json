@@ -39,6 +39,6 @@
             },
             "external_payment" : false
         },
-        "selection_page_url" : "https://localhost.charlesproxy.com:9080/payment-method/595f8ebf-8525-4f66-91cf-5fb3b9ad86c1/selection"
+        "selection_page_url" : "http://localhost.charlesproxy.com:9080/payment-method/595f8ebf-8525-4f66-91cf-5fb3b9ad86c1/selection"
     }
 }

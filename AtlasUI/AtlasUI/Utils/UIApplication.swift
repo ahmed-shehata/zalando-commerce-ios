@@ -27,6 +27,7 @@ extension UIApplication {
 
     static var unitTestsAreRunning: Bool {
         return ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
+            || ProcessInfo.processInfo.arguments.contains("UI_TESTS")
     }
 
 }

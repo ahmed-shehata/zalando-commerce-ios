@@ -3,7 +3,7 @@ require 'git'
 require 'awesome_print'
 require_relative '../issues'
 require_relative 'version'
-require_relative '../run'
+require_relative '../utils/run'
 require_relative '../lint'
 require_relative '../github_client/github_client'
 

@@ -17,6 +17,7 @@ require_relative 'lib/calypso/release/release'
 require_relative 'lib/calypso/release/version'
 require_relative 'lib/calypso/release/pod'
 require_relative 'lib/calypso/release/carthage'
+require_relative 'lib/calypso/release/docs'
 
 $stdout.sync = $stderr.sync = true
 
@@ -27,6 +28,9 @@ module Calypso
 
     desc 'clean', 'Clean source code'
     subcommand 'clean', Clean
+
+    desc 'docs', 'Generate docs'
+    subcommand 'docs', Docs
 
     desc 'deps', 'Prepare depended libraries'
     subcommand 'deps', Deps

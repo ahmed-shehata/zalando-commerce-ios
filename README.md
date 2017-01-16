@@ -8,8 +8,8 @@
 [![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=57a305cb34a9450100595b71&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/57a305cb34a9450100595b71/build/latest)
 [![codecov](https://codecov.io/gh/zalando-incubator/atlas-ios/branch/master/graph/badge.svg)](https://codecov.io/gh/zalando-incubator/atlas-ios)
 [![codebeat badge](https://codebeat.co/badges/85202868-c550-46c0-9423-f71467f0fabf)](https://codebeat.co/projects/github-com-zalando-incubator-atlas-ios)
-[![AtlasSDK](https://img.shields.io/cocoapods/metrics/doc-percent/AtlasSDK.svg?maxAge=3600)](http://cocoadocs.org/docsets/AtlasSDK)
-[![AtlasUI](https://img.shields.io/cocoapods/metrics/doc-percent/AtlasUI.svg?maxAge=3600)](http://cocoadocs.org/docsets/AtlasUI)
+[![AtlasSDK](https://img.shields.io/cocoapods/metrics/doc-percent/AtlasSDK.svg?maxAge=3600)](https://zalando-incubator.github.io/atlas-ios/atlas-sdk/)
+[![AtlasUI](https://img.shields.io/cocoapods/metrics/doc-percent/AtlasUI.svg?maxAge=3600)](https://zalando-incubator.github.io/atlas-ios/atlas-ui/)
 
 # Atlas iOS SDK
 
