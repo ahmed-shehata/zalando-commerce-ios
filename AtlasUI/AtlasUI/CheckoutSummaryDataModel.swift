@@ -70,6 +70,27 @@ extension CheckoutSummaryDataModel {
 
 extension CheckoutSummaryDataModel {
 
+    func validate(against otherDataModel: CheckoutSummaryDataModel) throws {
+        try checkPriceChange(comparedTo: otherDataModel)
+        try checkPaymentAvailable(comparedTo: otherDataModel)
+    }
+
+    private func checkPriceChange(comparedTo otherDataModel: CheckoutSummaryDataModel) throws {
+        if otherDataModel.totalPrice != totalPrice {
+            throw AtlasCheckoutError.priceChanged(newPrice: totalPrice)
+        }
+    }
+
+    private func checkPaymentAvailable(comparedTo otherDataModel: CheckoutSummaryDataModel) throws {
+        if otherDataModel.paymentMethod != nil && paymentMethod == nil {
+            throw AtlasCheckoutError.paymentMethodNotAvailable
+        }
+    }
+
+}
+
+extension CheckoutSummaryDataModel {
+
     init(selectedArticleUnit: SelectedArticleUnit, cartCheckout: CartCheckout?, addresses: CheckoutAddresses? = nil) {
         self.selectedArticleUnit = selectedArticleUnit
         self.shippingAddress = addresses?.shippingAddress ?? cartCheckout?.checkout?.shippingAddress

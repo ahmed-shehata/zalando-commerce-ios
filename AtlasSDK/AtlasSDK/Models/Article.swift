@@ -158,12 +158,12 @@ extension Article.Image: JSONInitializable {
 
     init?(json: JSON) {
         guard let order = json["order"].int,
-            let catalogURL = json["catalog"].URL,
-            let catalogHDURL = json["catalog_hd"].URL,
-            let detailURL = json["detail"].URL,
-            let detailHDURL = json["detail_hd"].URL,
-            let largeURL = json["large"].URL,
-            let largeHDURL = json["large_hd"].URL
+            let catalogURL = json["catalog"].url,
+            let catalogHDURL = json["catalog_hd"].url,
+            let detailURL = json["detail"].url,
+            let detailHDURL = json["detail_hd"].url,
+            let largeURL = json["large"].url,
+            let largeHDURL = json["large_hd"].url
             else { return nil }
         self.order = order
         self.catalogURL = catalogURL

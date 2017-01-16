@@ -10,13 +10,6 @@ import Nimble
 
 class AddressFormViewControllerTests: UITestCase {
 
-    let window = UIWindow()
-
-    override func setUp() {
-        super.setUp()
-        registerAtlasUIViewController()
-    }
-
     func testLoggedInCreateAddressActionHandler() {
         var actionHandler = LoggedInCreateAddressActionHandler()
         let dataModel = createAddressFormDataModel()
@@ -72,14 +65,6 @@ class AddressFormViewControllerTests: UITestCase {
 }
 
 extension AddressFormViewControllerTests {
-
-    fileprivate func registerAtlasUIViewController() {
-        let atlasUIViewController = AtlasUIViewController(forSKU: "AD541L009-G11")
-        _ = atlasUIViewController.view // load the view
-        self.window.rootViewController = atlasUIViewController
-        self.window.makeKeyAndVisible()
-        try! AtlasUI.shared().register { atlasUIViewController }
-    }
 
     fileprivate func createAddressFormDataModel() -> AddressFormDataModel {
         let dataModel = AddressFormDataModel(countryCode: "DE")
