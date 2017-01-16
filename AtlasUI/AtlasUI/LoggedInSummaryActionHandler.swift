@@ -262,6 +262,8 @@ extension LoggedInSummaryActionHandler {
     fileprivate func updateDataModel(with addresses: CheckoutAddresses?, in cartCheckout: CartCheckout? = nil) {
         guard let selectedArticleUnit = dataSource?.dataModel.selectedArticleUnit else { return }
 
+        let addressesChanged = self.addressesChanged(withNewAddresses: addresses)
+
         let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, cartCheckout: cartCheckout, addresses: addresses)
         do {
             dataModelDisplayedError = nil
@@ -270,12 +272,16 @@ extension LoggedInSummaryActionHandler {
             dataModelDisplayedError = error
         }
 
-        if cartCheckout?.checkout == nil && hasAddresses {
+        if (cartCheckout?.checkout == nil || addressesChanged) && hasAddresses {
             createCartCheckout { [weak self] result in
                 guard let cartCheckout = result.process() else { return }
                 self?.cartCheckout = cartCheckout
             }
         }
+    }
+
+    private func addressesChanged(withNewAddresses addresses: CheckoutAddresses?) -> Bool {
+        return !(addresses?.shippingAddress === shippingAddress && addresses?.billingAddress === billingAddress)
     }
 
 }
@@ -284,10 +290,12 @@ extension LoggedInSummaryActionHandler {
 extension LoggedInSummaryActionHandler {
 
     fileprivate func updated(address: EquatableAddress) {
-        if let shippingAddress = shippingAddress, shippingAddress == address {
+        if let shippingAddress = shippingAddress, shippingAddress == address,
+           let billingAddress = billingAddress, billingAddress == address {
+            update(billingAddress: address, shippingAddress: address)
+        } else if let shippingAddress = shippingAddress, shippingAddress == address {
             update(shippingAddress: address)
-        }
-        if let billingAddress = billingAddress, billingAddress == address {
+        } else if let billingAddress = billingAddress, billingAddress == address {
             update(billingAddress: address)
         }
     }
