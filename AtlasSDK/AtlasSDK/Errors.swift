@@ -46,7 +46,7 @@ public enum AtlasCheckoutError: AtlasError {
     case unclassified
     case outOfStock
     case missingAddress
-    case missingAddressAndPayment
+    case missingPaymentMethod
     case unsupportedCountry
     case priceChanged(newPrice: Money)
     case paymentMethodNotAvailable

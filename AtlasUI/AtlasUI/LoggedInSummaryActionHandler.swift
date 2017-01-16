@@ -44,8 +44,12 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
 
     func handleSubmit() {
         guard let dataSource = dataSource else { return }
+        guard shippingAddress != nil, billingAddress != nil else {
+            UserMessage.displayError(error: AtlasCheckoutError.missingAddress)
+            return
+        }
         guard dataSource.dataModel.isPaymentSelected else {
-            UserMessage.displayError(error: AtlasCheckoutError.missingAddressAndPayment)
+            UserMessage.displayError(error: AtlasCheckoutError.missingPaymentMethod)
             return
         }
 
