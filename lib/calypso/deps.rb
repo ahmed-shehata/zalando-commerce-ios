@@ -17,9 +17,10 @@ module Calypso
       run "carthage build --platform Mac #{MAC_DEPS}"
     end
 
-    desc 'update', 'Update dependencies'
-    def update
-      run "carthage update --platform iOS --no-use-binaries #{MAC_DEPS}"
+    desc 'update [dep1, dep2, ..., dep3]', 'Update dependencies'
+    def update(*args)
+      run "carthage update --platform iOS --no-use-binaries #{args.join ' '}"
+      run "carthage update --platform Mac --no-use-binaries #{MAC_DEPS}" if args.empty?
     end
 
     desc 'clean', 'Clean dependencies'
