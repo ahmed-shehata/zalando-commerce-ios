@@ -8,6 +8,10 @@ import Freddy
 
 struct DemoArticle {
 
+    enum DataError: Error {
+        case incomplete
+    }
+
     struct Brand {
         let key: String
         let name: String
@@ -33,7 +37,7 @@ struct DemoArticle {
     struct Price {
         let currency: String
         let valueInCents: Int
-        let value: Float
+        let value: Double
         let formatted: String
     }
 
@@ -77,20 +81,20 @@ struct DemoArticle {
 
 }
 
-extension DemoArticle {
+extension DemoArticle: JSONDecodable {
 
-    init?(json: JSON) {
+    init(json: JSON) throws {
         guard let id = try? json.getString(at: "id"),
             let modelId = try? json.getString(at: "modelId"),
             let name = try? json.getString(at: "name"),
-            let shopURL = json["shopUrl"].URL,
+            let shopURL = json.getUrl(at: "shopUrl"),
             let color = try? json.getString(at: "color"),
-            let available = json["available"].bool,
+            let available = try? json.getBool(at: "available"),
             let season = try? json.getString(at: "season"),
             let seasonYear = try? json.getString(at: "seasonYear"),
-            let brand = Brand(json: json["brand"]),
-            let media = Media(json: json["media"])
-            else { return nil }
+            let brand = try? json.decode(at: "brand", type: Brand.self),
+            let media = try? json.decode(at: "media", type: Media.self)
+            else { throw DataError.incomplete }
 
         self.id = id
         self.modelId = modelId
@@ -103,28 +107,28 @@ extension DemoArticle {
         self.brand = brand
         self.media = media
 
-        additionalInfos = json["additionalInfos"].arrayValue.flatMap { $0.string }
-        genders = json["genders"].arrayValue.flatMap { $0.string }
-        ageGroups = json["ageGroups"].arrayValue.flatMap { $0.string }
-        categoryKeys = json["categoryKeys"].arrayValue.flatMap { $0.string }
-        attributes = json["attributes"].arrayValue.flatMap { DemoArticle.Attribute(json: $0) }
-        units = json["units"].arrayValue.flatMap { DemoArticle.Unit(json: $0) }
+        additionalInfos = try json.getArray(at: "additionalInfos").flatMap { String(describing: $0) }
+        genders = try json.getArray(at: "genders").flatMap { String(describing: $0) }
+        ageGroups = try json.getArray(at: "ageGroups").flatMap { String(describing: $0) }
+        categoryKeys = try json.getArray(at: "categoryKeys").flatMap { String(describing: $0) }
+        attributes = try json.getArray(at: "attributes").flatMap { DemoArticle.Attribute(json: $0) }
+        units = try json.getArray(at: "units").flatMap { DemoArticle.Unit(json: $0) }
     }
 }
 
-extension DemoArticle.Brand {
+extension DemoArticle.Brand: JSONDecodable {
 
-    init?(json: JSON) {
+    init(json: JSON) throws {
         guard let key = try? json.getString(at: "key"),
             let name = try? json.getString(at: "name"),
-            let shopURL = json["shopUrl"].URL
-            else { return nil }
+            let shopURL = json.getUrl(at: "shopUrl")
+            else { throw DemoArticle.DataError.incomplete }
 
         self.key = key
         self.name = name
         self.shopURL = shopURL
-        self.logoURL = json["logoUrl"].URL
-        self.largeLogoURL = json["logoLargeUrl"].URL
+        self.logoURL = json.getUrl(at: "logoUrl")
+        self.largeLogoURL = json.getUrl(at: "logoLargeUrl")
     }
 
 }
@@ -132,9 +136,11 @@ extension DemoArticle.Brand {
 extension DemoArticle.Attribute {
 
     init?(json: JSON) {
-        guard let name = try? json.getString(at: "name") else { return nil }
+        guard let name = try? json.getString(at: "name"),
+            let values = try? json.getArray(at: "values")
+            else { return nil }
         self.name = name
-        self.values = json["values"].arrayValue.flatMap { $0.string }
+        self.values = values.flatMap { String(describing: $0) }
     }
 
 }
@@ -144,10 +150,10 @@ extension DemoArticle.Unit {
     init?(json: JSON) {
         guard let id = try? json.getString(at: "id"),
             let size = try? json.getString(at: "size"),
-            let price = DemoArticle.Price(json: json["price"]),
-            let originalPrice = DemoArticle.Price(json: json["originalPrice"]),
-            let available = json["available"].bool,
-            let stock = json["stock"].int
+            let price = try? json.decode(at: "price", type: DemoArticle.Price.self),
+            let originalPrice = try? json.decode(at: "originalPrice", type: DemoArticle.Price.self),
+            let available = try? json.getBool(at: "available"),
+            let stock = try? json.getInt(at: "stock")
             else { return nil }
 
         self.id = id
@@ -164,12 +170,13 @@ extension DemoArticle.Unit {
 
 }
 
-extension DemoArticle.Price {
+extension DemoArticle.Price: JSONDecodable {
 
-    init?(json: JSON) {
+    init(json: JSON) throws {
         guard let currency = try? json.getString(at: "currency"),
-            let value = json["value"].float,
-            let formatted = try? json.getString(at: "formatted") else { return nil }
+            let value = try? json.getDouble(at: "value"),
+            let formatted = try? json.getString(at: "formatted")
+            else { throw DemoArticle.DataError.incomplete }
         self.currency = currency
         self.valueInCents = Int(value * 100)
         self.value = value
@@ -178,10 +185,10 @@ extension DemoArticle.Price {
 
 }
 
-extension DemoArticle.Media {
+extension DemoArticle.Media: JSONDecodable {
 
-    init?(json: JSON) {
-        self.images = json["images"].arrayValue.flatMap { DemoArticle.Image(json: $0) }
+    init(json: JSON) throws {
+        self.images = try json.getArray(at: "images").flatMap { DemoArticle.Image(json: $0) }
     }
 
 }
@@ -189,15 +196,15 @@ extension DemoArticle.Media {
 extension DemoArticle.Image {
 
     init?(json: JSON) {
-        guard let orderNumber = json["orderNumber"].int,
+        guard let orderNumber = try? json.getInt(at: "orderNumber"),
             let type = try? json.getString(at: "type"),
-            let thumbnailHDURL = json["thumbnailHdUrl"].URL,
-            let smallURL = json["smallUrl"].URL,
-            let smallHDURL = json["smallHdUrl"].URL,
-            let mediumURL = json["mediumUrl"].URL,
-            let mediumHDURL = json["mediumHdUrl"].URL,
-            let largeURL = json["largeUrl"].URL,
-            let largeHDURL = json["largeHdUrl"].URL
+            let thumbnailHDURL = json.getUrl(at: "thumbnailHdUrl"),
+            let smallURL = json.getUrl(at: "smallUrl"),
+            let smallHDURL = json.getUrl(at: "smallHdUrl"),
+            let mediumURL = json.getUrl(at: "mediumUrl"),
+            let mediumHDURL = json.getUrl(at: "mediumHdUrl"),
+            let largeURL = json.getUrl(at: "largeUrl"),
+            let largeHDURL = json.getUrl(at: "largeHdUrl")
             else { return nil }
 
         self.orderNumber = orderNumber
@@ -241,4 +248,15 @@ func == (lhs: DemoArticle.Price, rhs: DemoArticle.Price) -> Bool {
 
 func < (lhs: DemoArticle.Price, rhs: DemoArticle.Price) -> Bool {
     return lhs.valueInCents < rhs.valueInCents
+}
+
+extension JSON {
+
+    func getUrl(at path: String) -> URL? {
+        guard let string = try? getString(at: path),
+            let url = URL(string: string)
+            else { return nil }
+        return url
+    }
+
 }
