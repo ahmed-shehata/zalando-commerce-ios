@@ -65,6 +65,10 @@ extension JSON {
         return object()
     }
 
+    var float: Float? {
+        return object()
+    }
+
     var date: Date? {
         return object()
     }
@@ -112,6 +116,15 @@ extension Int: JSONObjectifier {
         self = number.intValue
     }
 
+}
+
+extension Float: JSONObjectifier {
+
+    init?(json: JSON?) {
+        guard let number = json?.rawNumber, json?.type == .number else { return nil }
+        self = number.floatValue
+    }
+    
 }
 
 extension Date: JSONObjectifier {

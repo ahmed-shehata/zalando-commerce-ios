@@ -28,7 +28,7 @@ extension Config {
                 ]
             ],
             "oauth2-provider": ["url": TestConsts.loginURL.absoluteString]
-            ])!
+            ])
     }
 
     static func forTests(options: Options = Options.forTests()) -> Config {

@@ -16,7 +16,8 @@ struct JSON: CustomStringConvertible {
         return String(describing: internalObject)
     }
 
-    private static let decimalNumberType = "NSDecimalNumber"
+    static let null = JSON(NSNull())
+    private static let decimalNumberType = String(describing: type(of: NSNumber(value: 1)))
 
     private(set) var type: DataType = .null
     private(set) var rawArray: [Any] = []
@@ -74,18 +75,24 @@ struct JSON: CustomStringConvertible {
         }
     }
 
-    init?(data: Data) throws {
+    init?(string: String,
+          encoding: String.Encoding = .utf8,
+          options: JSONSerialization.ReadingOptions = .allowFragments) throws {
+        guard let data = string.data(using: encoding) else { return nil }
+        try self.init(data: data, options: options)
+    }
+
+    init?(data: Data, options: JSONSerialization.ReadingOptions = .allowFragments) throws {
         do {
-            self.internalObject = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+            self.internalObject = try JSONSerialization.jsonObject(with: data, options: options)
         } catch let e {
             AtlasLogger.logError(e)
             throw e
         }
     }
 
-    init?(_ object: Any?) {
-        guard let object = object else { return nil }
-        self.internalObject = object
+    init(_ object: Any?) {
+        self.internalObject = object ?? JSON.null
     }
 
     private mutating func clearRawValues() {
@@ -94,66 +101,7 @@ struct JSON: CustomStringConvertible {
         rawString = ""
         rawNumber = 0
         rawBool = false
-    }
-
-}
-
-extension JSON {
-
-    enum SubscriptKey {
-        case index(Int)
-        case key(String)
-    }
-
-    subscript(try path: JSONSubscript...) -> JSON? {
-        get {
-            return self[path]
-        }
-    }
-
-    subscript(path: JSONSubscript...) -> JSON {
-        get {
-            return self[path]!
-        }
-    }
-
-    subscript(path: [JSONSubscript]) -> JSON? {
-        get {
-            return path.reduce(self) { $0?[sub: $1] }
-        }
-    }
-
-    fileprivate subscript(sub sub: JSONSubscript) -> JSON? {
-        get {
-            switch sub.jsonSubscript {
-            case .index(let index):
-                return JSON(self.rawArray[index])
-            case .key(let key):
-                return JSON(self.rawDictionary[key])
-            }
-        }
-    }
-
-}
-
-protocol JSONSubscript {
-
-    var jsonSubscript: JSON.SubscriptKey { get }
-
-}
-
-extension Int: JSONSubscript {
-
-    var jsonSubscript: JSON.SubscriptKey {
-        return .index(self)
-    }
-
-}
-
-extension String: JSONSubscript {
-
-    var jsonSubscript: JSON.SubscriptKey {
-        return .key(self)
+        type = .null
     }
 
 }
