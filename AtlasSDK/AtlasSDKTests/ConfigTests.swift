@@ -48,19 +48,17 @@ class ConfigTests: XCTestCase {
     func testGuestCheckoutEnabled() {
         let guestEnabled = true
         let options = Options.forTests()
-        let json = Config.jsonForTests(options: options, guestCheckoutEnabled: guestEnabled)
-        let config = Config(json: json, options: options)
+        let config = Config.forTests(options: options, guestCheckoutEnabled: guestEnabled)
 
-        expect(config?.guestCheckoutEnabled) == guestEnabled
+        expect(config.guestCheckoutEnabled) == guestEnabled
     }
 
     func testGuestCheckoutDisabled() {
         let guestEnabled = false
         let options = Options.forTests()
-        let json = Config.jsonForTests(options: options, guestCheckoutEnabled: guestEnabled)
-        let config = Config(json: json, options: options)
+        let config = Config.forTests(options: options, guestCheckoutEnabled: guestEnabled)
 
-        expect(config?.guestCheckoutEnabled) == guestEnabled
+        expect(config.guestCheckoutEnabled) == guestEnabled
     }
 
 }

@@ -17,7 +17,7 @@ extension Config {
                  "sales-channel": options.salesChannel,
                  "toc_url": TestConsts.tocURL],
             ],
-            "atlas-guest-checkout-api": guestCheckoutEnabled,
+            "atlas-guest-checkout-api": ["enabled": guestCheckoutEnabled],
             "atlas-catalog-api": ["url": TestConsts.catalogURL.absoluteString],
             "atlas-checkout-gateway": ["url": TestConsts.gateway],
             "atlas-checkout-api": [
@@ -31,8 +31,9 @@ extension Config {
             ])
     }
 
-    static func forTests(options: Options = Options.forTests()) -> Config {
-        return Config(json: jsonForTests(options: options), options: options)!
+    static func forTests(options: Options = Options.forTests(), guestCheckoutEnabled: Bool = true) -> Config {
+        let json = jsonForTests(options: options, guestCheckoutEnabled: guestCheckoutEnabled)
+        return Config(json: json, options: options)!
     }
 
 }
