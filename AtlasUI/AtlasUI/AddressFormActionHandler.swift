@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import UIKit
 import AtlasSDK
 
 protocol AddressFormActionHandlerDelegate: NSObjectProtocol {
@@ -34,11 +35,19 @@ extension AddressFormActionHandler {
                 return
             }
 
-            if checkAddressResponse.status == .notCorrect {
+            switch checkAddressResponse.status {
+            case .correct:
+                completion(true)
+            case .notCorrect:
                 UserMessage.displayError(error: AtlasCheckoutError.addressInvalid)
                 completion(false)
-            } else {
-                completion(true)
+            case .normalized:
+                guard let userAddress = CheckAddress(dataModel: dataModel) else { return }
+                let normalizedAddress = checkAddressResponse.normalizedAddress
+                let viewController = NormalizedAddressViewController(userAddress: userAddress, normalizedAddress: normalizedAddress)
+                let navigationController = UINavigationController(rootViewController: viewController)
+                navigationController.modalPresentationStyle = .overCurrentContext
+                AtlasUIViewController.shared?.show(navigationController, sender: nil)
             }
         }
     }

@@ -126,6 +126,8 @@
 		E97719961DF6F49600AEE0EB /* UITestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97719951DF6F49600AEE0EB /* UITestCase.swift */; };
 		E97793351E27DC18002143DD /* AtlasMockAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E97793341E27DC18002143DD /* AtlasMockAPI.framework */; };
 		E97A33A7BE2D26CDE9B4C62EB5BD2661 /* CheckoutSummaryAddressStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9494F7947C24BD2087FE22EBE20BFCD /* CheckoutSummaryAddressStackView.swift */; };
+		E97B1BE61E2E6DDD00FC0195 /* NormalizedAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B1BE51E2E6DDD00FC0195 /* NormalizedAddressViewController.swift */; };
+		E97B1BE91E2E704800FC0195 /* NormalizedAddressStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B1BE81E2E704800FC0195 /* NormalizedAddressStackView.swift */; };
 		E98453511DF59F96001F6C51 /* CheckoutSummaryGuestStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98453501DF59F96001F6C51 /* CheckoutSummaryGuestStackView.swift */; };
 		E98453541DF59FAB001F6C51 /* GuestAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98453521DF59FAB001F6C51 /* GuestAddressActionHandler.swift */; };
 		E98453551DF59FAB001F6C51 /* GuestCheckoutSummaryActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98453531DF59FAB001F6C51 /* GuestCheckoutSummaryActionHandler.swift */; };
@@ -302,6 +304,8 @@
 		E272DADD96290ADDD55009F293229EAD /* FormValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValidatorTests.swift; sourceTree = "<group>"; };
 		E97719951DF6F49600AEE0EB /* UITestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITestCase.swift; sourceTree = "<group>"; };
 		E97793341E27DC18002143DD /* AtlasMockAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AtlasMockAPI.framework; path = "../../AtlasMockAPI/build/Debug-iphoneos/AtlasMockAPI.framework"; sourceTree = "<group>"; };
+		E97B1BE51E2E6DDD00FC0195 /* NormalizedAddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalizedAddressViewController.swift; sourceTree = "<group>"; };
+		E97B1BE81E2E704800FC0195 /* NormalizedAddressStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalizedAddressStackView.swift; sourceTree = "<group>"; };
 		E98453501DF59F96001F6C51 /* CheckoutSummaryGuestStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryGuestStackView.swift; sourceTree = "<group>"; };
 		E98453521DF59FAB001F6C51 /* GuestAddressActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = GuestAddressActionHandler.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E98453531DF59FAB001F6C51 /* GuestCheckoutSummaryActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCheckoutSummaryActionHandler.swift; sourceTree = "<group>"; };
@@ -439,6 +443,7 @@
 				1B133DACE9EE36D4E3EBB71081CB2607 /* AddressFormDataModel.swift */,
 				CF6833C5C4D8FFD19A5104F37B4DBC91 /* AddressFormLayout.swift */,
 				DB1735D520DF324324C5AE16AF88B4DC /* AddressFormType.swift */,
+				E97B1BE71E2E6DF700FC0195 /* Normalized Address */,
 				8EF3033F3BF0B1CE2EE7158411392648 /* Action Handler */,
 			);
 			name = "Address Form";
@@ -670,6 +675,15 @@
 				34ECE1C52097D5F274C73E332B128DD4 /* Address Form */,
 			);
 			name = "Address Selection";
+			sourceTree = "<group>";
+		};
+		E97B1BE71E2E6DF700FC0195 /* Normalized Address */ = {
+			isa = PBXGroup;
+			children = (
+				E97B1BE51E2E6DDD00FC0195 /* NormalizedAddressViewController.swift */,
+				E97B1BE81E2E704800FC0195 /* NormalizedAddressStackView.swift */,
+			);
+			name = "Normalized Address";
 			sourceTree = "<group>";
 		};
 		ECBC67CCC5E72798CEB556243DC767A4 /* Views */ = {
@@ -978,6 +992,7 @@
 				8D9714FE58E50B7BC699060466CEF934 /* FormValidator.swift in Sources */,
 				3ED1FCFD38D86B0362C9C9F9E06B6027 /* AtlasReachability.swift in Sources */,
 				7629410B747CDC9D6FD8015EAE15F936 /* FullScreenErrorViewController.swift in Sources */,
+				E97B1BE91E2E704800FC0195 /* NormalizedAddressStackView.swift in Sources */,
 				E98453581DF59FCF001F6C51 /* GuestCheckoutCreateAddressActionHandler.swift in Sources */,
 				0FBF5C603EAAC10495E96E1E79EC75A0 /* KeyboardScrollView.swift in Sources */,
 				97A8338792C92AC0C5C6E1B92A510F58 /* LoaderView.swift in Sources */,
@@ -1020,6 +1035,7 @@
 				8154C0A11E1E7000006E9FF0 /* Debug.swift in Sources */,
 				4434BCFA43868F4DBFCFF8980581F9AC /* UIImageView.swift in Sources */,
 				F3F62025EFDB47B5637DC3C928D69264 /* UITableView.swift in Sources */,
+				E97B1BE61E2E6DDD00FC0195 /* NormalizedAddressViewController.swift in Sources */,
 				DE4482A9091E62348223761D4C58D008 /* UIView.swift in Sources */,
 				7E9443B46A96E4C94DDF32C3B711C137 /* UnitSizeTableViewCell.swift in Sources */,
 				FD3253ACE35111D2F7EA1CA22694E8EF /* Reachability.swift in Sources */,
