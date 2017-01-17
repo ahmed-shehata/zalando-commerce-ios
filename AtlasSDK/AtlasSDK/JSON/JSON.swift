@@ -1,5 +1,5 @@
 //
-//  Copyright © 2017 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 // Heavily influenced by [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
