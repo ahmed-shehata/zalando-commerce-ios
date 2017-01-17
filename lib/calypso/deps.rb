@@ -9,7 +9,7 @@ module Calypso
 
   class Deps < Thor
 
-    MAC_DEPS = 'swifter SwiftyJSON'.freeze
+    MAC_DEPS = %w(swifter SwiftyJSON Freddy).freeze
 
     desc 'build', 'Build dependencies'
     def build
