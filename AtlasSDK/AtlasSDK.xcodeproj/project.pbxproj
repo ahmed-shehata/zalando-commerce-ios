@@ -18,7 +18,6 @@
 		10EE5F7806FAFDDB8A83F361963328CD /* CheckAddressRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D215D90311A506D7D973B86210A3463 /* CheckAddressRequest.swift */; };
 		1125FA8E3B7B73CF65D82551F31B6B5E /* CreateCheckoutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C852C6A585400D9BC901E8CDC1F80DF3 /* CreateCheckoutRequest.swift */; };
 		119CF1D796B2FC5D92809D94C9B4FCC0 /* ResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678499CD7E6DEB42040BF6066D6A986D /* ResponseParser.swift */; };
-		12C2887E7E84581A289BDEB838D5C1CB /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE41039F67F0738D469F999A882AE7C /* PerformanceTests.swift */; };
 		165B7A83C91A0F8B8AD2BE9A4D4197E9 /* OrderRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145D219AEA3C99EECCE083FFD133AF3D /* OrderRequest.swift */; };
 		19052EC3C88FE3710B358C8A009122EF /* PickupPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74E6F0CBCE6D7E27184F239E9438F9 /* PickupPoint.swift */; };
 		1911CC114DB83B6E06B990E5F8CD42AA /* APICustomerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A61783B05CE0621331D112E3EA078E /* APICustomerTests.swift */; };
@@ -39,21 +38,16 @@
 		423504EBB87A04BAC1F14A0F667CBF8D /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE6BC0ECF32E11AAC17D7AF7D4E0F7E /* APIRequest.swift */; };
 		431276925D480DC7748824D0419AEF97 /* URLSessionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C1C5E4F032ED7537CF602510CE63DD /* URLSessionMock.swift */; };
 		433FAB30B47C347A6EF0F8DCC8F10589 /* Checkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B725CD87C6359705000C3DF5ADC2F36 /* Checkout.swift */; };
-		44E488A79CFAD8AEDB45E0E04572BA44 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242685CD209A93BB1CF84C2C0E70E64F /* SwiftyJSON.swift */; };
 		46980E992EDB6D46D3B2F62634025CCD /* JSONResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A306470BE019B80490488330B394271 /* JSONResponse.swift */; };
-		46E12C86DFA8464D63F0E8ADCE3B3470 /* SubscriptTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC5CAD6D2A33BC368A6BCD3652228EF /* SubscriptTests.swift */; };
 		473101F235CAE2005C4D1FFECE303DE5 /* CreateCartEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27170A588F07E6EE5FCD89F74AE3E9F0 /* CreateCartEndpoint.swift */; };
 		4753F06D956EA98A7B34E1014D69D2F3 /* Swifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 931E9C4A56949A5A7C6E2E8E5A30EDC2 /* Swifter.framework */; };
 		4B10BA7F4980C14CCFD91482E6A8B060 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747A73447DC8ACA0F246CCD8C6D0B513 /* Gender.swift */; };
 		4B3B5CF184BCF3B77D6F7D955158FD9F /* AtlasLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D27EC2DBE428F8EEF67DD091C5CB93 /* AtlasLogger.swift */; };
-		4C756FFBAA633FDF36449774329D1CB8 /* BaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D5FC54BBEC76EBF55DF17160808351 /* BaseTests.swift */; };
 		4C81D579860C7169B976A8B46F8595FE /* UpdateAddressEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF03E05680890285BF0E73AD57A3CC2C /* UpdateAddressEndpoint.swift */; };
-		4D2A7160FB16551CDDF58C4DECD813ED /* ArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2446B4C740C6F74391BE81BC5BBA66 /* ArrayTests.swift */; };
 		4ECD28F2D5A9072AB04B4E0EFEBB432D /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1C1684D882CE9C7E63BB89AA4FBD28 /* Options.swift */; };
 		50B7CAD88F4CB40657A1E293C5886CBE /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1144008D922BB81B068D385A27F28BEA /* Data.swift */; };
 		574121D2711D03274749CD460C82F91A /* APIClientErrorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3010BEF9FDD14A69B158A003FB4CEC7 /* APIClientErrorsTests.swift */; };
 		59E61FC35023F5B1380A55E4F55309ED /* APIAddressesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D3A26D9E8E95E41B272A10706E062A /* APIAddressesTests.swift */; };
-		5C20F7B9E5483DF8435A9C6B14A4D122 /* RawTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64660DC1781E6F8E4894CD0F10885724 /* RawTests.swift */; };
 		60737DDB8B3B1121E9A7C0FDDE2B30A3 /* TestOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B412D145F5B4C92805CCECE14A2892 /* TestOptions.swift */; };
 		611CFC917658FDDB577CB90E352036E8 /* SwiftyJSON.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = B8772529CCD4473FACA6DA1FD1B91C70 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		613D8FF85E470947466AB8AC54D4F3DD /* Catalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5122324D4A85204EB38F54BF29FEB024 /* Catalog.swift */; };
@@ -63,15 +57,15 @@
 		63BD6D5AB647CD11815ABCDCD2724601 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04E7980997323086729450F65FEEF1D /* Payment.swift */; };
 		644E855C089C54A583DA143C5E4CDB6C /* UpdateCheckoutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E87FE110B03D1A9869412A189ED338 /* UpdateCheckoutRequest.swift */; };
 		6506392A605FACF4557D0FCDD47ED7E6 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F8397816D421255C10AE0737FAAA41 /* Config.swift */; };
-		67FBB9B3CE2489C86C107C2263947817 /* DictionaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D027790585548414E9939AE9BBCA5BE8 /* DictionaryTests.swift */; };
 		69CF42E66809D4D6B64EB38068A17ACE /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E8D64CF13F8B6EB096F17811FA204DA7 /* Default-568h@2x.png */; };
-		6A99CAF0EC5CE4E7CCE6E546897E5ECB /* NumberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DCE0CDDFA0E3ED31B8879B93A73CE2 /* NumberTests.swift */; };
 		705832CFD4ABB43EFDB427959C77B882 /* AtlasTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4835C116AE50B88A092335E1E1D18E /* AtlasTests.swift */; };
 		71AA3AC175F71D21D0E992F642EBDA34 /* Dates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7431EDD7B7A9CD9C934F540FE32E5E /* Dates.swift */; };
 		727D825FC085BDA1D717C197FDABF439 /* StreetAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402AD2052AB32129CFB12ED77B1D048C /* StreetAddress.swift */; };
 		7842AF368F906588908661C4E9C4DB74 /* Atlas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF657CDB5BDD715ADE83432FD427E27 /* Atlas.swift */; };
 		7B21A5839D8997DA626D689A9B03C5C2 /* GetCustomerEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E9BD4D77C0386109EAD09F634330CD /* GetCustomerEndpoint.swift */; };
 		7D9992E58F4E287BC6EE7AD30338862F /* FormattableAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A2E3D95B370914C7B19A3B81E80190 /* FormattableAddress.swift */; };
+		812041601E2DF61700C402A1 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120415F1E2DF61700C402A1 /* JSON.swift */; };
+		812041621E2DF7DE00C402A1 /* JSONObjectifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812041611E2DF7DE00C402A1 /* JSONObjectifier.swift */; };
 		813F61CA1E1D635B007425BF /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D925B16F3D819F4756B5A3FAAB1E4A /* URLRequest.swift */; };
 		813F61CC1E1D642F007425BF /* URLQueryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F86AD638975BFCB529F73704F8796B3 /* URLQueryItem.swift */; };
 		8154C0921E1E6ED5006E9FF0 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8154C0841E1E690B006E9FF0 /* Debug.swift */; };
@@ -103,10 +97,7 @@
 		81CA48201E02C9C400D435B0 /* SystemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CA481F1E02C9C400D435B0 /* SystemInfo.swift */; };
 		81E0807C1E018F7100CFF55B /* TestConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CD141C1E018D7800F338E8 /* TestConfig.swift */; };
 		83B21DD54057C92FF3BB321D3340B450 /* SwiftHTTP.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 49B83EA8E01BF361F973FA47FA728D86 /* SwiftHTTP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		85CA2D25895BA070BBA069C4B192C2AD /* NestedJSONTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80882428404628DC886C2144E1E1E48D /* NestedJSONTests.swift */; };
-		876589FD4612DC2514CB3D7284288A81 /* Tests.json in Resources */ = {isa = PBXBuildFile; fileRef = EA97D05C1FC1C316CAA9F2EAEE6DFB89 /* Tests.json */; };
 		8A8AF97915118F778D555C19F225D1E9 /* OutputStreams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A32293C441B83DF5D66A6173583302B /* OutputStreams.swift */; };
-		8C2E858F79681FC342DF436D6976B1B8 /* StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4313E8D5403BD6496524D034FDF7CD83 /* StringTests.swift */; };
 		8CB38F77B0DCDD668E5D429205820A5A /* CreateAddressEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3591890A20C02A5BEFC0589E4FDB5F /* CreateAddressEndpoint.swift */; };
 		94D9B020E3D9C84A5D2E72DF8622E3F2 /* GetArticlesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8992399ACEBA4764146FD940C1E17A81 /* GetArticlesEndpoint.swift */; };
 		963AE70DD87A3C9A75FB0231D2130E7F /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CF52ED3F20B2F59D5E6096E498A18B /* PaymentMethod.swift */; };
@@ -114,7 +105,6 @@
 		999D8D8F6F37891C794A474549044605 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2155265DCAF83847E14F21DC71EF756B /* Endpoint.swift */; };
 		9C71AFE69A2BC857760F1FFD2C4D3489 /* AtlasAPIClient_public.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A769B94E9EF881B5FAC3206C36AAC8 /* AtlasAPIClient_public.swift */; };
 		9CAE3816C21EFD8FC7B9074737F89DCB /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B5DB4CCFCF65E1C3C88F12100069A /* Logger.swift */; };
-		9FBE1426643CB5DFC73CD66E9CE24856 /* SequenceTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702F998B9D457EBAA94E996DA15ABB64 /* SequenceTypeTests.swift */; };
 		A07B3B353458D68EE35EC7D9DBEBA739 /* APIUpdateCheckoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14641D3458F5F2AA1790B9C08DF75BB0 /* APIUpdateCheckoutTests.swift */; };
 		A0EFD6474DCE215941273DBFE9FB064B /* OrderAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A02961F55508B3B15CEC53112BFE4D /* OrderAddress.swift */; };
 		A259CD2306CCF2869A51462415F62F50 /* PrintLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812218FB3FA269E7294BC86C1E53B428 /* PrintLogger.swift */; };
@@ -122,7 +112,6 @@
 		AA5AF9E73DB31053A9F4115CC7A951D4 /* APICreateCheckoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A20F90F85243250BFBE7AB2A1E14CC /* APICreateCheckoutTests.swift */; };
 		AB3A4ED30959B6B2ECA0EA76F28BA15C /* UpdateAddressRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911266F3F4D1BD9868BEE8C12D704CED /* UpdateAddressRequest.swift */; };
 		AC215172F16F97964966D8804AF1585F /* ConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DF829AE4AB1806AE87109E1541C53C /* ConfigTests.swift */; };
-		AD9F9BF3000C6CF572BEAF6AC52E071E /* LiteralConvertibleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4618CBD3A7F5BB4565EE718D48F852 /* LiteralConvertibleTests.swift */; };
 		AFA5480D32447A330ADEB69346021F8C /* CheckoutAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C730D69D82840A7774CF4846D833BC /* CheckoutAddress.swift */; };
 		B5120919EA1B89762D7C7C6DA8C62FCE /* UpdateCheckoutEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1B64FFF4650D873FD9BE329BE42FDF /* UpdateCheckoutEndpoint.swift */; };
 		B66B644C530E41D683DBA1D5F907336F /* AtlasSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF2DD2D803D006BDEAB6C294E238C72D /* AtlasSDK.framework */; };
@@ -135,12 +124,10 @@
 		C3CAFD4032B12AAAF7119F5CE2F0183F /* CartItemRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9B4958BB21E71767900924A2B5E647 /* CartItemRequest.swift */; };
 		C5F2258C0426CD3E508675FBCF90B5C8 /* APIOrderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46267A0501D2255983C3C68C1F2D5AF2 /* APIOrderTests.swift */; };
 		C62B870ED76F90050574D53EAB217558 /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F1412AECA75E38BDC3B618E86AF5A3 /* CartItem.swift */; };
-		C895E91E91D004480D309069928E087D /* PrintableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ACEE4D5E6479A3E6C61B7717E7907 /* PrintableTests.swift */; };
 		C901F2D613212D9147AF6B6140E8A4E1 /* OptionsInfoPlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C4D7E077947A25DFA82411E4E0A5B6 /* OptionsInfoPlist.swift */; };
 		D19E1280CB863B5FA29CE8F2B60898BC /* AtlasResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050F3786B356D3E7DEB6A1D9FAA1EAF5 /* AtlasResult.swift */; };
 		D3171E475C7551C1086CF0C4C76601A6 /* CheckAddressResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4975D92727F8C4CB91BBBEDAA7414A3B /* CheckAddressResponse.swift */; };
 		D76FFB3DF97D519908E18DBB6F13F9D1 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34F2E0E206454046339F03CE00F8DCF /* String.swift */; };
-		D94D2829787FA8F6D3C5042C77F7EED8 /* ComparableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F9DA72D80C2CB580677E56E879AE1F /* ComparableTests.swift */; };
 		DA888DDD57C3D1B274AE5DB390833236 /* Swifter.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 931E9C4A56949A5A7C6E2E8E5A30EDC2 /* Swifter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DAB2BC46B777931E022DF54F2FE8937F /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 946A02D8E49A74EDBEBD78F9E7F24730 /* Nimble.framework */; };
 		E52344E4C5156748C4B8BD2A3D584BEF /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8772529CCD4473FACA6DA1FD1B91C70 /* SwiftyJSON.framework */; };
@@ -151,7 +138,6 @@
 		ECE8DEFDB2A85FBCD15B77C89EA5EF4A /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69384BDB0D3D26DA7967C229EF6CF14A /* Keychain.swift */; };
 		EDA77255414C4B32937542ACF6B1CD8F /* AtlasAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F1F9B916AAF353D03FC0086E818FAC /* AtlasAPIClient.swift */; };
 		F0BF496C467EAEE0A122A61F22075B91 /* ConfigurableEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA2C5D17D06C3726AC7038241D59EE1 /* ConfigurableEndpoint.swift */; };
-		F8C72E9B006A6CB1A10CC4CB517B5289 /* RawRepresentableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41D37768124AD7884E5CBA3693FA1E4 /* RawRepresentableTests.swift */; };
 		FC4DC88516E339E12FB7E0B70724A3C5 /* UserAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C240A1E0049D934FB15689BA1417E9 /* UserAddress.swift */; };
 /* End PBXBuildFile section */
 
@@ -252,6 +238,8 @@
 		7D215D90311A506D7D973B86210A3463 /* CheckAddressRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckAddressRequest.swift; sourceTree = "<group>"; };
 		80882428404628DC886C2144E1E1E48D /* NestedJSONTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NestedJSONTests.swift; sourceTree = "<group>"; };
 		80A20F90F85243250BFBE7AB2A1E14CC /* APICreateCheckoutTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APICreateCheckoutTests.swift; path = AtlasSDKTests/APICreateCheckoutTests.swift; sourceTree = SOURCE_ROOT; };
+		8120415F1E2DF61700C402A1 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
+		812041611E2DF7DE00C402A1 /* JSONObjectifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONObjectifier.swift; sourceTree = "<group>"; };
 		812218FB3FA269E7294BC86C1E53B428 /* PrintLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintLogger.swift; sourceTree = "<group>"; };
 		8154C0841E1E690B006E9FF0 /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		8154C0851E1E690B006E9FF0 /* HTTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
@@ -489,6 +477,7 @@
 		75D3D341CD1A816A0E6B63CB55C81BF2 /* AtlasSDK */ = {
 			isa = PBXGroup;
 			children = (
+				8120415E1E2DF61700C402A1 /* JSON */,
 				BDB95FC403C38D850EF542F46148C4AF /* API Client */,
 				763A6645A072E811EFADC02074D72E7B /* Models */,
 				5A9E7E143E07801F9491EB92A1331C22 /* Options */,
@@ -538,6 +527,16 @@
 			);
 			name = Checkout;
 			sourceTree = "<group>";
+		};
+		8120415E1E2DF61700C402A1 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				8120415F1E2DF61700C402A1 /* JSON.swift */,
+				812041611E2DF7DE00C402A1 /* JSONObjectifier.swift */,
+			);
+			name = JSON;
+			path = AtlasSDK/JSON;
+			sourceTree = SOURCE_ROOT;
 		};
 		8154C0831E1E690B006E9FF0 /* Extensions */ = {
 			isa = PBXGroup;
@@ -921,7 +920,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				876589FD4612DC2514CB3D7284288A81 /* Tests.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -993,6 +991,7 @@
 				396625ADA9A4CCD59B28CE853E599C72 /* ConfigClient.swift in Sources */,
 				8154C0971E1E6ED5006E9FF0 /* URLComponents.swift in Sources */,
 				8154C0981E1E6ED5006E9FF0 /* URLStringConvertible.swift in Sources */,
+				812041621E2DF7DE00C402A1 /* JSONObjectifier.swift in Sources */,
 				F0BF496C467EAEE0A122A61F22075B91 /* ConfigurableEndpoint.swift in Sources */,
 				8195AA531DF57FF200D9AA7B /* GuestCustomerRequest.swift in Sources */,
 				8195AA541DF57FF200D9AA7B /* GuestOrderRequest.swift in Sources */,
@@ -1017,6 +1016,7 @@
 				7D9992E58F4E287BC6EE7AD30338862F /* FormattableAddress.swift in Sources */,
 				4B10BA7F4980C14CCFD91482E6A8B060 /* Gender.swift in Sources */,
 				051F704B6EA0C8EAEC52E5B82066CAF7 /* GetAddressesEndpoint.swift in Sources */,
+				812041601E2DF61700C402A1 /* JSON.swift in Sources */,
 				94D9B020E3D9C84A5D2E72DF8622E3F2 /* GetArticlesEndpoint.swift in Sources */,
 				0FC44B374DA4192AB96BB33DFB15C004 /* GetConfigEndpoint.swift in Sources */,
 				7B21A5839D8997DA626D689A9B03C5C2 /* GetCustomerEndpoint.swift in Sources */,
@@ -1050,7 +1050,6 @@
 				119CF1D796B2FC5D92809D94C9B4FCC0 /* ResponseParser.swift in Sources */,
 				727D825FC085BDA1D717C197FDABF439 /* StreetAddress.swift in Sources */,
 				D76FFB3DF97D519908E18DBB6F13F9D1 /* String.swift in Sources */,
-				44E488A79CFAD8AEDB45E0E04572BA44 /* SwiftyJSON.swift in Sources */,
 				4C81D579860C7169B976A8B46F8595FE /* UpdateAddressEndpoint.swift in Sources */,
 				AB3A4ED30959B6B2ECA0EA76F28BA15C /* UpdateAddressRequest.swift in Sources */,
 				B5120919EA1B89762D7C7C6DA8C62FCE /* UpdateCheckoutEndpoint.swift in Sources */,
@@ -1085,32 +1084,18 @@
 				1911CC114DB83B6E06B990E5F8CD42AA /* APICustomerTests.swift in Sources */,
 				C5F2258C0426CD3E508675FBCF90B5C8 /* APIOrderTests.swift in Sources */,
 				A07B3B353458D68EE35EC7D9DBEBA739 /* APIUpdateCheckoutTests.swift in Sources */,
-				4D2A7160FB16551CDDF58C4DECD813ED /* ArrayTests.swift in Sources */,
 				705832CFD4ABB43EFDB427959C77B882 /* AtlasTests.swift in Sources */,
-				4C756FFBAA633FDF36449774329D1CB8 /* BaseTests.swift in Sources */,
-				D94D2829787FA8F6D3C5042C77F7EED8 /* ComparableTests.swift in Sources */,
 				AC215172F16F97964966D8804AF1585F /* ConfigTests.swift in Sources */,
 				23D41A051054E2DD90ACA36561D502C5 /* DatesTests.swift in Sources */,
-				67FBB9B3CE2489C86C107C2263947817 /* DictionaryTests.swift in Sources */,
 				2498AE792D1A990EC46EBE236CDFD94A /* KeychainTests.swift in Sources */,
-				AD9F9BF3000C6CF572BEAF6AC52E071E /* LiteralConvertibleTests.swift in Sources */,
 				BA9A6116F3F8E3E87EB16B0D06DB6235 /* LoggerTests.swift in Sources */,
-				6A99CAF0EC5CE4E7CCE6E546897E5ECB /* NumberTests.swift in Sources */,
 				96D8C896819BF0D75A206348D011CA74 /* OptionsTests.swift in Sources */,
 				62A336C02D05C2CF32FCAB761D1CC0CC /* APIGetAddressesEndpointTests.swift in Sources */,
 				81CA481C1E02B62000D435B0 /* URLRequestTests.swift in Sources */,
-				12C2887E7E84581A289BDEB838D5C1CB /* PerformanceTests.swift in Sources */,
-				C895E91E91D004480D309069928E087D /* PrintableTests.swift in Sources */,
 				81CA48191E02AED400D435B0 /* TestConsts.swift in Sources */,
-				F8C72E9B006A6CB1A10CC4CB517B5289 /* RawRepresentableTests.swift in Sources */,
-				5C20F7B9E5483DF8435A9C6B14A4D122 /* RawTests.swift in Sources */,
 				81E0807C1E018F7100CFF55B /* TestConfig.swift in Sources */,
-				9FBE1426643CB5DFC73CD66E9CE24856 /* SequenceTypeTests.swift in Sources */,
 				8195AA3B1DF579A900D9AA7B /* APIGuestOrderTests.swift in Sources */,
-				8C2E858F79681FC342DF436D6976B1B8 /* StringTests.swift in Sources */,
 				8195AA3A1DF579A900D9AA7B /* APIGuestCheckoutTests.swift in Sources */,
-				46E12C86DFA8464D63F0E8ADCE3B3470 /* SubscriptTests.swift in Sources */,
-				85CA2D25895BA070BBA069C4B192C2AD /* NestedJSONTests.swift in Sources */,
 				431276925D480DC7748824D0419AEF97 /* URLSessionMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

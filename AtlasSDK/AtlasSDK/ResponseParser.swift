@@ -18,13 +18,14 @@ struct ResponseParser {
             return completion(.failure(AtlasAPIError.noData))
         }
 
-        let json = JSON(data: data)
+        let json = (try? JSON(data: data)) ?? nil // swiftlint:disable:this redundant_nil_coalescing
+
 
         guard httpResponse.isSuccessful else {
             let error: AtlasAPIError
             if httpResponse.status == .unauthorized {
                 error = AtlasAPIError.unauthorized
-            } else if json != JSON.null {
+            } else if let json = json {
                 error = AtlasAPIError.backend(status: json["status"].int,
                                               type: json["type"].string,
                                               title: json["title"].string,
