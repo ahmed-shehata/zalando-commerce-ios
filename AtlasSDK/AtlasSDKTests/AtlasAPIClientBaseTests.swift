@@ -71,7 +71,7 @@ class AtlasAPIClientBaseTests: XCTestCase {
                 ]
             ],
             "oauth2-provider": ["url": loginURL.absoluteString]
-            ])
+            ])!
 
         let config = Config(json: json, options: options ?? Options.forTests())!
         var client = AtlasAPIClient(config: config)
