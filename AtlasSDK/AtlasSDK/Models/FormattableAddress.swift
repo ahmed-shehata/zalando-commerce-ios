@@ -38,3 +38,16 @@ public func === (lhs: EquatableAddress, rhs: EquatableAddress) -> Bool {
         && lhs.additional == rhs.additional
         && lhs.pickupPoint == rhs.pickupPoint
 }
+
+public func === (lhs: EquatableAddress?, rhs: EquatableAddress?) -> Bool {
+    return lhs?.id == rhs?.id
+        && lhs?.gender == rhs?.gender
+        && lhs?.firstName == rhs?.firstName
+        && lhs?.lastName == rhs?.lastName
+        && lhs?.zip == rhs?.zip
+        && lhs?.city == rhs?.city
+        && lhs?.countryCode == rhs?.countryCode
+        && lhs?.street == rhs?.street
+        && lhs?.additional == rhs?.additional
+        && lhs?.pickupPoint == rhs?.pickupPoint
+}
