@@ -57,11 +57,6 @@ extension JSON {
 
 extension JSON {
 
-    // @available( *, deprecated, message: "Use url property")
-    var URL: URL? {
-        return url
-    }
-
     var url: URL? {
         return object()
     }
@@ -70,8 +65,8 @@ extension JSON {
         return object()
     }
 
-    func object<T: JSONObjectifier>(at path: [JSONSubscript]? = nil) -> T {
-        return object(try: path)! // swiftlint:disable:this force_unwrapping
+    var date: Date? {
+        return object()
     }
 
     func object<T: JSONObjectifier>(try path: [JSONSubscript]? = nil) -> T? {
@@ -115,6 +110,19 @@ extension Int: JSONObjectifier {
     init?(json: JSON?) {
         guard let number = json?.rawNumber, json?.type == .number else { return nil }
         self = number.intValue
+    }
+
+}
+
+extension Date: JSONObjectifier {
+
+    init?(json: JSON?) {
+        let dateFormatter = RFC3339DateFormatter()
+
+        guard let string = json?.rawString,
+            let date = dateFormatter.date(from: string),
+            json?.type == .string else { return nil }
+        self = date
     }
 
 }
