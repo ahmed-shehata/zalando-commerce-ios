@@ -20,7 +20,6 @@ struct ResponseParser {
 
         let json = (try? JSON(data: data)) ?? nil // swiftlint:disable:this redundant_nil_coalescing
 
-
         guard httpResponse.isSuccessful else {
             let error: AtlasAPIError
             if httpResponse.status == .unauthorized {

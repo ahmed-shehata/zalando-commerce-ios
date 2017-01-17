@@ -41,7 +41,7 @@ extension GuestOrder: JSONInitializable {
                   shippingAddress: shippingAddress,
                   grossTotal: grossTotal,
                   taxTotal: taxTotal,
-                  created: RFC3339DateFormatter().date(from: json[Keys.created].string),
+                  created: json[Keys.created].date,
                   externalPaymentURL: json[Keys.externalPaymentUrl].url)
     }
 
