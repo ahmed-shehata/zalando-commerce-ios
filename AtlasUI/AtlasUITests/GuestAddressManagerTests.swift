@@ -11,12 +11,6 @@ import Nimble
 class GuestAddressActionHandlerTests: UITestCase {
 
     var guestAddressActionHandler = GuestAddressActionHandler()
-    let window = UIWindow()
-
-    override func setUp() {
-        super.setUp()
-        registerAtlasUIViewController(forSKU: "AD541L009-G11")
-    }
 
     func testCreateShippingAddress() {
         guestAddressActionHandler.addressCreationStrategy = ShippingAddressViewModelCreationStrategy()
@@ -33,13 +27,13 @@ class GuestAddressActionHandlerTests: UITestCase {
     func testUpdateShippingAddress() {
         guestAddressActionHandler.addressCreationStrategy = ShippingAddressViewModelCreationStrategy()
         guestAddressActionHandler.updateAddress(address: createStandardAddress()) { _ in }
-        expect(AtlasUIViewController.shared?.mainNavigationController.viewControllers.last as? AddressFormViewController).toNotEventually(beNil())
+        expect(self.defaultNavigationController?.viewControllers.last as? AddressFormViewController).toNotEventually(beNil())
     }
 
     func testUpdateBilingAddress() {
         guestAddressActionHandler.addressCreationStrategy = BillingAddressViewModelCreationStrategy()
         guestAddressActionHandler.updateAddress(address: createStandardAddress()) { _ in }
-        expect(AtlasUIViewController.shared?.mainNavigationController.viewControllers.last as? AddressFormViewController).toNotEventually(beNil())
+        expect(self.defaultNavigationController?.viewControllers.last as? AddressFormViewController).toNotEventually(beNil())
     }
 
     func testModifyShippingAddress() {
@@ -67,14 +61,6 @@ class GuestAddressActionHandlerTests: UITestCase {
 }
 
 extension GuestAddressActionHandlerTests {
-
-    fileprivate func registerAtlasUIViewController(forSKU sku: String) {
-        let atlasUIViewController = AtlasUIViewController(forSKU: sku)
-        _ = atlasUIViewController.view // load the view
-        self.window.rootViewController = atlasUIViewController
-        self.window.makeKeyAndVisible()
-        try! AtlasUI.shared().register { atlasUIViewController }
-    }
 
     fileprivate func createStandardAddress() -> GuestCheckoutAddress {
         return GuestCheckoutAddress(id: "",

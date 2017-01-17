@@ -81,6 +81,10 @@ extension TextFieldInputStackView: UIBuilder {
     fileprivate func configureTextField() {
         textField.addTarget(self, action: #selector(textFieldValueChanged), for: .editingChanged)
         textField.delegate = self
+        if UIApplication.unitTestsAreRunning {
+            textField.autocorrectionType = .no
+            textField.autocapitalizationType = .none
+        }
     }
 
 }
