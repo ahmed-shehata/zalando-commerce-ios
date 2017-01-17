@@ -4,7 +4,7 @@
 
 import XCTest
 import SwiftHTTP
-import SwiftyJSON
+import Freddy
 import Nimble
 
 @testable import AtlasMockAPI
@@ -32,19 +32,19 @@ class AtlasMockAPITests: XCTestCase {
 
     func testCatalogEndpoint() {
         assertSuccessfulJSONResponse(forEndpoint: "/articles") { json in
-            expect(json["content", 0, "id"].stringValue) == "L2711E002-Q11"
+            expect(try! json.getString(at: "content", 0, "id")) == "L2711E002-Q11"
         }
     }
 
     func testArticleEndpoint() {
         assertSuccessfulJSONResponse(forEndpoint: "/articles/AD541L009-G11") { json in
-            expect(json["units", 0, "id"].stringValue) == "AD541L009-G11000S000"
+            expect(try! json.getString(at: "units", 0, "id")) == "AD541L009-G11000S000"
         }
     }
 
     func testAuthorizeEndpoint() {
         assertSuccessfulResponse(forEndpoint: "/oauth2/authorize") { data in
-            if let html = String(data: data, encoding: String.Encoding.utf8) {
+            if let html = String(data: data, encoding: .utf8) {
                 expect(html).to(contain("value=\"qux-quux-corge\""))
             }
         }
@@ -52,7 +52,7 @@ class AtlasMockAPITests: XCTestCase {
 
     fileprivate func assertSuccessfulJSONResponse(forEndpoint endpoint: String, completion: JSONCompletion? = nil) {
         assertSuccessfulResponse(forEndpoint: endpoint) { data in
-            let json = SwiftyJSON.JSON(data: data)
+            let json = try! JSON(data: data)
             expect(json).toNot(beNil())
             completion?(json)
         }
