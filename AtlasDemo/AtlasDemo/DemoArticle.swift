@@ -4,7 +4,7 @@
 
 import Foundation
 import AtlasSDK
-import SwiftyJSON
+import Freddy
 
 struct DemoArticle {
 
@@ -80,14 +80,14 @@ struct DemoArticle {
 extension DemoArticle {
 
     init?(json: JSON) {
-        guard let id = json["id"].string,
-            let modelId = json["modelId"].string,
-            let name = json["name"].string,
+        guard let id = try? json.getString(at: "id"),
+            let modelId = try? json.getString(at: "modelId"),
+            let name = try? json.getString(at: "name"),
             let shopURL = json["shopUrl"].URL,
-            let color = json["color"].string,
+            let color = try? json.getString(at: "color"),
             let available = json["available"].bool,
-            let season = json["season"].string,
-            let seasonYear = json["seasonYear"].string,
+            let season = try? json.getString(at: "season"),
+            let seasonYear = try? json.getString(at: "seasonYear"),
             let brand = Brand(json: json["brand"]),
             let media = Media(json: json["media"])
             else { return nil }
@@ -115,8 +115,8 @@ extension DemoArticle {
 extension DemoArticle.Brand {
 
     init?(json: JSON) {
-        guard let key = json["key"].string,
-            let name = json["name"].string,
+        guard let key = try? json.getString(at: "key"),
+            let name = try? json.getString(at: "name"),
             let shopURL = json["shopUrl"].URL
             else { return nil }
 
@@ -132,7 +132,7 @@ extension DemoArticle.Brand {
 extension DemoArticle.Attribute {
 
     init?(json: JSON) {
-        guard let name = json["name"].string else { return nil }
+        guard let name = try? json.getString(at: "name") else { return nil }
         self.name = name
         self.values = json["values"].arrayValue.flatMap { $0.string }
     }
@@ -142,8 +142,8 @@ extension DemoArticle.Attribute {
 extension DemoArticle.Unit {
 
     init?(json: JSON) {
-        guard let id = json["id"].string,
-            let size = json["size"].string,
+        guard let id = try? json.getString(at: "id"),
+            let size = try? json.getString(at: "size"),
             let price = DemoArticle.Price(json: json["price"]),
             let originalPrice = DemoArticle.Price(json: json["originalPrice"]),
             let available = json["available"].bool,
@@ -167,9 +167,9 @@ extension DemoArticle.Unit {
 extension DemoArticle.Price {
 
     init?(json: JSON) {
-        guard let currency = json["currency"].string,
+        guard let currency = try? json.getString(at: "currency"),
             let value = json["value"].float,
-            let formatted = json["formatted"].string else { return nil }
+            let formatted = try? json.getString(at: "formatted") else { return nil }
         self.currency = currency
         self.valueInCents = Int(value * 100)
         self.value = value
@@ -190,7 +190,7 @@ extension DemoArticle.Image {
 
     init?(json: JSON) {
         guard let orderNumber = json["orderNumber"].int,
-            let type = json["type"].string,
+            let type = try? json.getString(at: "type"),
             let thumbnailHDURL = json["thumbnailHdUrl"].URL,
             let smallURL = json["smallUrl"].URL,
             let smallHDURL = json["smallHdUrl"].URL,
