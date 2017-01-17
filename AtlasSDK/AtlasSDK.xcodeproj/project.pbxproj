@@ -77,6 +77,7 @@
 		7D74BEC7DBDC9DD04361ED5D59571E98 /* JSONObjectifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD652AF08E9CFE5CC9592E651CB723B /* JSONObjectifier.swift */; };
 		7D9992E58F4E287BC6EE7AD30338862F /* FormattableAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A2E3D95B370914C7B19A3B81E80190 /* FormattableAddress.swift */; };
 		8030BC3F79F17090B749C7A6018E906B /* URLQueryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F86AD638975BFCB529F73704F8796B3 /* URLQueryItem.swift */; };
+		81FF94321E2E779700D08DD0 /* JSONTests.json in Resources */ = {isa = PBXBuildFile; fileRef = 81FF94311E2E779700D08DD0 /* JSONTests.json */; };
 		845B231C48605B942325197FD4180F95 /* GuestCartRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1F537123862D63AADA1FE7D54ECEB7 /* GuestCartRequest.swift */; };
 		8A8AF97915118F778D555C19F225D1E9 /* OutputStreams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A32293C441B83DF5D66A6173583302B /* OutputStreams.swift */; };
 		8CB38F77B0DCDD668E5D429205820A5A /* CreateAddressEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3591890A20C02A5BEFC0589E4FDB5F /* CreateAddressEndpoint.swift */; };
@@ -234,6 +235,7 @@
 		7D215D90311A506D7D973B86210A3463 /* CheckAddressRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckAddressRequest.swift; sourceTree = "<group>"; };
 		80A20F90F85243250BFBE7AB2A1E14CC /* APICreateCheckoutTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APICreateCheckoutTests.swift; path = AtlasSDKTests/APICreateCheckoutTests.swift; sourceTree = SOURCE_ROOT; };
 		812218FB3FA269E7294BC86C1E53B428 /* PrintLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintLogger.swift; sourceTree = "<group>"; };
+		81FF94311E2E779700D08DD0 /* JSONTests.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = JSONTests.json; path = AtlasSDKTests/JSONTests.json; sourceTree = SOURCE_ROOT; };
 		837B190CB840EA546FFC3B70BF225F9C /* APIAccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIAccessToken.swift; path = AtlasSDK/APIAccessToken.swift; sourceTree = SOURCE_ROOT; };
 		8413B2F1DEB1965D0A403D97C3DAECD4 /* JSONTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONTests.swift; path = AtlasSDKTests/JSONTests.swift; sourceTree = SOURCE_ROOT; };
 		87E0CBDAE3A5B1288455C6E176B852B6 /* APICartTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APICartTests.swift; path = AtlasSDKTests/APICartTests.swift; sourceTree = SOURCE_ROOT; };
@@ -572,6 +574,7 @@
 			isa = PBXGroup;
 			children = (
 				8413B2F1DEB1965D0A403D97C3DAECD4 /* JSONTests.swift */,
+				81FF94311E2E779700D08DD0 /* JSONTests.json */,
 			);
 			name = JSON;
 			sourceTree = "<group>";
@@ -882,6 +885,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81FF94321E2E779700D08DD0 /* JSONTests.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

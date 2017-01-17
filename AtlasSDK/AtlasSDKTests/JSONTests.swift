@@ -9,6 +9,7 @@ import Nimble
 
 class JSONTests: XCTestCase {
 
+
     func testInt0() {
         let json = try! JSON(string: "{\"int\": 0}")
         expect(json?["int"].int) == 0
@@ -32,6 +33,16 @@ class JSONTests: XCTestCase {
     func testIntBigFloat() {
         let json = try! JSON(string: "{\"float\": 100000000000.123}")
         expect(json?["float"].float) == 100000000000.123
+    }
+
+    func testBoolFalse() {
+        let json = try! JSON(string: "{\"bool\": false}")
+        expect(json?["bool"].bool) == false
+    }
+
+    func testBoolTrue() {
+        let json = try! JSON(string: "{\"bool\": true}")
+        expect(json?["bool"].bool) == true
     }
 
 }

@@ -4,6 +4,10 @@
 
 // Heavily influenced by [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
 
+// TODO:
+// - simplify arrayObject, array, arrayValue and dictionary as well
+// - drop raw... and type and use internalObject directly with casting (could be problematic with bools)
+
 import Foundation
 
 struct JSON: CustomStringConvertible {
