@@ -2,14 +2,7 @@
 //  Copyright © 2017 Zalando SE. All rights reserved.
 //
 
-// TODO
-// - dot notation to deeper paths: json["url.something"]
-// - extensive tests
-// - better naming for JSONObject
-// - extension Date: JSONObject
-
-import Foundation
-import UIKit
+// Heavily influenced by [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
 
 import Foundation
 
@@ -23,7 +16,7 @@ struct JSON: CustomStringConvertible {
         return String(describing: internalObject)
     }
 
-    private let decimalNumberType = "NSDecimalNumber"
+    private static let decimalNumberType = "NSDecimalNumber"
 
     private(set) var type: DataType = .null
     private(set) var rawArray: [Any] = []
@@ -56,7 +49,7 @@ struct JSON: CustomStringConvertible {
             switch newValue {
             case let number as NSNumber:
                 let newValueType = String(describing: type(of: newValue))
-                if newValueType == decimalNumberType {
+                if newValueType == JSON.decimalNumberType {
                     self.type = .number
                     self.rawNumber = number
                 } else if let boolValue = newValue as? Bool {
@@ -107,7 +100,7 @@ struct JSON: CustomStringConvertible {
 
 extension JSON {
 
-    enum PathKey {
+    enum SubscriptKey {
         case index(Int)
         case key(String)
     }
@@ -132,7 +125,7 @@ extension JSON {
 
     fileprivate subscript(sub sub: JSONSubscript) -> JSON? {
         get {
-            switch sub.jsonKey {
+            switch sub.jsonSubscript {
             case .index(let index):
                 return JSON(self.rawArray[index])
             case .key(let key):
@@ -145,13 +138,13 @@ extension JSON {
 
 protocol JSONSubscript {
 
-    var jsonKey: JSON.PathKey { get }
+    var jsonSubscript: JSON.SubscriptKey { get }
 
 }
 
 extension Int: JSONSubscript {
 
-    var jsonKey: JSON.PathKey {
+    var jsonSubscript: JSON.SubscriptKey {
         return .index(self)
     }
 
@@ -159,7 +152,7 @@ extension Int: JSONSubscript {
 
 extension String: JSONSubscript {
 
-    var jsonKey: JSON.PathKey {
+    var jsonSubscript: JSON.SubscriptKey {
         return .key(self)
     }
 
