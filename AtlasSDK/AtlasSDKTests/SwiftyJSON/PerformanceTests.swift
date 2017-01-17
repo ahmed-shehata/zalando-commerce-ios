@@ -1,6 +1,6 @@
 //  PerformanceTests.swift
 //
-//  Copyright (c) 2014 - 2016 Pinglin Tang
+//  Copyright (c) 2014 - 2017 Pinglin Tang
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -21,51 +21,51 @@
 //  THE SOFTWARE.
 
 import XCTest
-import SwiftyJSON
+@testable import AtlasSDK
 
 class PerformanceTests: XCTestCase {
 
     var testData: Data!
-    
+
     override func setUp() {
         super.setUp()
-        
-        if let file = Bundle(for:PerformanceTests.self).path(forResource: "Tests", ofType: "json") {
+
+        if let file = Bundle(for: PerformanceTests.self).path(forResource: "Tests", ofType: "json") {
             self.testData = try? Data(contentsOf: URL(fileURLWithPath: file))
         } else {
             XCTFail("Can't find the test JSON file")
         }
     }
-    
+
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
+
     func testInitPerformance() {
         self.measure() {
             for _ in 1...100 {
-                let json = JSON(data:self.testData)
+                let json = JSON(data: self.testData)
                 XCTAssertTrue(json != JSON.null)
             }
         }
     }
-    
+
     func testObjectMethodPerformance() {
-        let json = JSON(data:self.testData)
+        let json = JSON(data: self.testData)
         self.measure() {
             for _ in 1...100 {
-                let object:Any? = json.object
+                let object: Any? = json.object
                 XCTAssertTrue(object != nil)
             }
         }
     }
 
     func testArrayMethodPerformance() {
-        let json = JSON(data:self.testData)
+        let json = JSON(data: self.testData)
         self.measure() {
             for _ in 1...100 {
-                autoreleasepool{
+                autoreleasepool {
                     if let array = json.array {
                         XCTAssertTrue(array.count > 0)
                     }
@@ -73,12 +73,12 @@ class PerformanceTests: XCTestCase {
             }
         }
     }
-    
+
     func testDictionaryMethodPerformance() {
-        let json = JSON(data:testData)[0]
+        let json = JSON(data: testData)[0]
         self.measure() {
             for _ in 1...100 {
-                autoreleasepool{
+                autoreleasepool {
                     if let dictionary = json.dictionary {
                         XCTAssertTrue(dictionary.count > 0)
                     }
@@ -86,12 +86,12 @@ class PerformanceTests: XCTestCase {
             }
         }
     }
-    
+
     func testRawStringMethodPerformance() {
-        let json = JSON(data:testData)
+        let json = JSON(data: testData)
         self.measure() {
             for _ in 1...100 {
-                autoreleasepool{
+                autoreleasepool {
                     let string = json.rawString()
                     XCTAssertTrue(string != nil)
                 }
@@ -103,14 +103,14 @@ class PerformanceTests: XCTestCase {
         var data: [String: JSON] = [:]
         (0...100000).forEach { n in
             data["\(n)"] = JSON([
-                "name": "item\(n)",
-                "id": n
-                ])
+                                    "name": "item\(n)",
+                                    "id": n
+                                ])
         }
         let json = JSON(data)
-        
+
         self.measure() {
-            autoreleasepool{
+            autoreleasepool {
                 if let dictionary = json.dictionary {
                     XCTAssertTrue(dictionary.count > 0)
                 } else {

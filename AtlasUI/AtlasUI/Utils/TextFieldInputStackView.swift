@@ -1,5 +1,5 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import UIKit
@@ -81,6 +81,10 @@ extension TextFieldInputStackView: UIBuilder {
     fileprivate func configureTextField() {
         textField.addTarget(self, action: #selector(textFieldValueChanged), for: .editingChanged)
         textField.delegate = self
+        if UIApplication.unitTestsAreRunning {
+            textField.autocorrectionType = .no
+            textField.autocapitalizationType = .none
+        }
     }
 
 }

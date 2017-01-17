@@ -1,5 +1,5 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
@@ -14,6 +14,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
     let customer: Customer
     weak var dataSource: CheckoutSummaryActionHandlerDataSource?
     weak var delegate: CheckoutSummaryActionHandlerDelegate?
+    var dataModelDisplayedError: Error?
 
     var cartCheckout: CartCheckout? {
         didSet {
@@ -56,7 +57,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
 
             self?.cartCheckout = cartCheckout
 
-            if dataSource.dataModel.isPaymentSelected && !UserMessage.errorDisplayed {
+            if dataSource.dataModel.isPaymentSelected && self?.dataModelDisplayedError == nil {
                 AtlasUIClient.createOrder(checkoutId: checkout.id) { result in
                     guard let order = result.process() else { return }
                     self?.handleConfirmation(forOrder: order)
@@ -191,7 +192,12 @@ extension LoggedInSummaryActionHandler {
         let selectedArticleUnit = dataSource.dataModel.selectedArticleUnit
         let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, checkout: cartCheckout?.checkout, order: order)
         delegate.updated(actionHandler: OrderPlacedSummaryActionHandler())
-        delegate.updated(dataModel: dataModel)
+        do {
+            dataModelDisplayedError = nil
+            try delegate.updated(dataModel: dataModel)
+        } catch let error {
+            dataModelDisplayedError = error
+        }
         delegate.updated(layout: OrderPlacedLayout())
     }
 
@@ -257,7 +263,12 @@ extension LoggedInSummaryActionHandler {
         guard let selectedArticleUnit = dataSource?.dataModel.selectedArticleUnit else { return }
 
         let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, cartCheckout: cartCheckout, addresses: addresses)
-        delegate?.updated(dataModel: dataModel)
+        do {
+            dataModelDisplayedError = nil
+            try delegate?.updated(dataModel: dataModel)
+        } catch let error {
+            dataModelDisplayedError = error
+        }
 
         if cartCheckout?.checkout == nil && hasAddresses {
             createCartCheckout { [weak self] result in

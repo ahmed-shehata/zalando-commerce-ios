@@ -1,5 +1,5 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import XCTest
@@ -9,13 +9,6 @@ import Nimble
 @testable import AtlasSDK
 
 class AddressFormViewControllerTests: UITestCase {
-
-    let window = UIWindow()
-
-    override func setUp() {
-        super.setUp()
-        registerAtlasUIViewController()
-    }
 
     func testLoggedInCreateAddressActionHandler() {
         var actionHandler = LoggedInCreateAddressActionHandler()
@@ -72,14 +65,6 @@ class AddressFormViewControllerTests: UITestCase {
 }
 
 extension AddressFormViewControllerTests {
-
-    fileprivate func registerAtlasUIViewController() {
-        let atlasUIViewController = AtlasUIViewController(forSKU: "AD541L009-G11")
-        _ = atlasUIViewController.view // load the view
-        self.window.rootViewController = atlasUIViewController
-        self.window.makeKeyAndVisible()
-        try! AtlasUI.shared().register { atlasUIViewController }
-    }
 
     fileprivate func createAddressFormDataModel() -> AddressFormDataModel {
         let dataModel = AddressFormDataModel(countryCode: "DE")

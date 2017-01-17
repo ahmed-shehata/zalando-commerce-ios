@@ -1,5 +1,5 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import AtlasSDK
@@ -13,8 +13,8 @@ struct DemoCatalog {
 
 extension DemoCatalog {
 
-    init(jsonString: String, rootElement: String = "content") {
-        let json = JSON.parse(jsonString)
+    init(data: Data, rootElement: String = "content") {
+        let json = JSON(data: data)
         articles = json[rootElement].arrayValue.flatMap { DemoArticle(json: $0) }
     }
 

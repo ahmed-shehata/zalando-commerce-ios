@@ -1,9 +1,9 @@
 require 'thor'
 
 require_relative 'consts'
-require_relative 'run'
+require_relative 'utils/run'
 require_relative 'env'
-require_relative 'log'
+require_relative 'utils/log'
 require_relative 'github_client/github_client'
 
 module Calypso
@@ -16,6 +16,13 @@ module Calypso
         columns.each do |column_name|
           clear(project_name, column_name)
         end
+      end
+    end
+
+    desc 'show_lost_in_projects [state]', 'Shows issues not related in projects'
+    def show_lost_in_projects(state = 'open')
+      github.no_project_issues(state: state).each do |issue|
+        puts self.class.format_issue(issue)
       end
     end
 

@@ -1,5 +1,5 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
@@ -29,7 +29,7 @@ extension Payment: JSONInitializable {
     init?(json: JSON) {
         self.init(selected: PaymentMethod(json: json[Keys.selected]),
                   isExternalPayment: json[Keys.externalPayment].bool,
-                  selectionPageURL: json[Keys.selectionPageURL].URL)
+                  selectionPageURL: json[Keys.selectionPageURL].url)
     }
 
 }

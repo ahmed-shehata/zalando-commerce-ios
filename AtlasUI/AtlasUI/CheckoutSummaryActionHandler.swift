@@ -1,5 +1,5 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
@@ -13,7 +13,7 @@ protocol CheckoutSummaryActionHandlerDataSource: NSObjectProtocol {
 
 protocol CheckoutSummaryActionHandlerDelegate: NSObjectProtocol {
 
-    func updated(dataModel: CheckoutSummaryDataModel)
+    func updated(dataModel: CheckoutSummaryDataModel) throws
     func updated(layout: CheckoutSummaryLayout)
     func updated(actionHandler: CheckoutSummaryActionHandler)
     func dismissView()

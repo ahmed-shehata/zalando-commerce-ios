@@ -1,5 +1,5 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import UIKit
@@ -124,7 +124,7 @@ extension GuestCheckoutSummaryActionHandler {
                                                  email: email,
                                                  guestOrder: order)
         delegate.updated(actionHandler: OrderPlacedSummaryActionHandler())
-        delegate.updated(dataModel: dataModel)
+        try? delegate.updated(dataModel: dataModel)
         delegate.updated(layout: GuestOrderPlacedLayout())
     }
 
@@ -187,7 +187,7 @@ extension GuestCheckoutSummaryActionHandler {
                                                  guestCheckout: guestCheckout,
                                                  email: email,
                                                  addresses: addresses)
-        delegate?.updated(dataModel: dataModel)
+        try? delegate?.updated(dataModel: dataModel)
     }
 
 }

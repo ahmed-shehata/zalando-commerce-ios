@@ -1,5 +1,5 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
@@ -31,7 +31,7 @@ extension AddressBookImportDataModelCreationStrategy: CNContactPickerDelegate {
         picker.dismiss(animated: true) { [weak self] in
             do {
                 let dataModel = try AddressFormDataModel(contactProperty: contactProperty,
-                                                          countryCode: AtlasAPIClient.shared?.config.salesChannel.countryCode)
+                                                         countryCode: AtlasAPIClient.shared?.config.salesChannel.countryCode)
                 self?.completion(dataModel)
             } catch let error {
                 UserMessage.displayError(error: error)

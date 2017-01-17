@@ -1,5 +1,5 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
@@ -64,6 +64,27 @@ extension CheckoutSummaryDataModel {
 
     var termsAndConditionsURL: URL? {
         return AtlasAPIClient.shared?.config.salesChannel.termsAndConditionsURL
+    }
+
+}
+
+extension CheckoutSummaryDataModel {
+
+    func validate(against otherDataModel: CheckoutSummaryDataModel) throws {
+        try checkPriceChange(comparedTo: otherDataModel)
+        try checkPaymentAvailable(comparedTo: otherDataModel)
+    }
+
+    private func checkPriceChange(comparedTo otherDataModel: CheckoutSummaryDataModel) throws {
+        if otherDataModel.totalPrice != totalPrice {
+            throw AtlasCheckoutError.priceChanged(newPrice: totalPrice)
+        }
+    }
+
+    private func checkPaymentAvailable(comparedTo otherDataModel: CheckoutSummaryDataModel) throws {
+        if otherDataModel.paymentMethod != nil && paymentMethod == nil {
+            throw AtlasCheckoutError.paymentMethodNotAvailable
+        }
     }
 
 }

@@ -1,5 +1,5 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
@@ -31,7 +31,9 @@ extension URLRequest {
     }
 
     func debugLog() -> URLRequest {
-        AtlasLogger.logDebug(curlCommandRepresentation())
+        if ProcessInfo.processInfo.arguments.contains("PRINT_REQUEST_DESCRIPTION") {
+            AtlasLogger.logDebug(curlCommandRepresentation())
+        }
         return self
     }
 

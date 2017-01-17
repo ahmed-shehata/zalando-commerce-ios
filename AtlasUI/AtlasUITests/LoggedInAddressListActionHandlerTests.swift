@@ -1,5 +1,5 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import XCTest
@@ -11,12 +11,10 @@ import Nimble
 class LoggedInAddressListActionHandlerTests: UITestCase {
 
     let delegate = AddressListTableDelegate(tableView: UITableView(), addresses: [], selectedAddress: nil, viewController: nil)
-    let window = UIWindow()
     var actionHandler: LoggedInAddressListActionHandler?
 
     override func setUp() {
         super.setUp()
-        registerAtlasUIViewController()
         actionHandler = createActionHandler()
     }
 
@@ -26,7 +24,7 @@ class LoggedInAddressListActionHandlerTests: UITestCase {
         guard let saveButton = getSaveButton() else { return fail() }
         UIApplication.shared.sendAction(saveButton.action!, to: saveButton.target, from: nil, for: nil)
 
-        expect(self.delegate.addresses.count).toEventually(equal(1), timeout: 10)
+        expect(self.delegate.addresses.count).toEventually(equal(1))
     }
 
     func testUpdateAddress() {
@@ -39,7 +37,7 @@ class LoggedInAddressListActionHandlerTests: UITestCase {
         guard let saveButton = getSaveButton() else { return fail() }
         UIApplication.shared.sendAction(saveButton.action!, to: saveButton.target, from: nil, for: nil)
 
-        expect(self.delegate.addresses.first?.lastName).toEventually(equal("Doe Edited"), timeout: 10)
+        expect(self.delegate.addresses.first?.lastName).toEventually(equal("Doe Edited"))
     }
 
     func testDeleteAddress() {
@@ -56,13 +54,6 @@ class LoggedInAddressListActionHandlerTests: UITestCase {
 
 extension LoggedInAddressListActionHandlerTests {
 
-    fileprivate func registerAtlasUIViewController() {
-        let atlasUIViewController = AtlasUIViewController(forSKU: "AD541L009-G11")
-        self.window.rootViewController = atlasUIViewController
-        self.window.makeKeyAndVisible()
-        try! AtlasUI.shared().register { atlasUIViewController }
-    }
-
     fileprivate func createActionHandler() -> LoggedInAddressListActionHandler? {
         let strategyMock = AddressViewModelCreationStrategyMock()
         let actionHandler = LoggedInAddressListActionHandler(addressViewModelCreationStrategy: strategyMock)
@@ -71,7 +62,7 @@ extension LoggedInAddressListActionHandlerTests {
     }
 
     fileprivate func getSaveButton() -> UIBarButtonItem? {
-        guard let atlasUIViewController = AtlasUIViewController.shared else {
+        guard let atlasUIViewController = self.atlasUIViewController else {
             fail()
             return nil
         }

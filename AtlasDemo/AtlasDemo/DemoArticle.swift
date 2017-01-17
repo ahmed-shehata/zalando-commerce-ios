@@ -1,5 +1,5 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
@@ -83,7 +83,7 @@ extension DemoArticle {
         guard let id = json["id"].string,
             let modelId = json["modelId"].string,
             let name = json["name"].string,
-            let shopURL = json["shopUrl"].URL,
+            let shopURL = json["shopUrl"].url,
             let color = json["color"].string,
             let available = json["available"].bool,
             let season = json["season"].string,
@@ -117,14 +117,14 @@ extension DemoArticle.Brand {
     init?(json: JSON) {
         guard let key = json["key"].string,
             let name = json["name"].string,
-            let shopURL = json["shopUrl"].URL
+            let shopURL = json["shopUrl"].url
             else { return nil }
 
         self.key = key
         self.name = name
         self.shopURL = shopURL
-        self.logoURL = json["logoUrl"].URL
-        self.largeLogoURL = json["logoLargeUrl"].URL
+        self.logoURL = json["logoUrl"].url
+        self.largeLogoURL = json["logoLargeUrl"].url
     }
 
 }
@@ -191,13 +191,13 @@ extension DemoArticle.Image {
     init?(json: JSON) {
         guard let orderNumber = json["orderNumber"].int,
             let type = json["type"].string,
-            let thumbnailHDURL = json["thumbnailHdUrl"].URL,
-            let smallURL = json["smallUrl"].URL,
-            let smallHDURL = json["smallHdUrl"].URL,
-            let mediumURL = json["mediumUrl"].URL,
-            let mediumHDURL = json["mediumHdUrl"].URL,
-            let largeURL = json["largeUrl"].URL,
-            let largeHDURL = json["largeHdUrl"].URL
+            let thumbnailHDURL = json["thumbnailHdUrl"].url,
+            let smallURL = json["smallUrl"].url,
+            let smallHDURL = json["smallHdUrl"].url,
+            let mediumURL = json["mediumUrl"].url,
+            let mediumHDURL = json["mediumHdUrl"].url,
+            let largeURL = json["largeUrl"].url,
+            let largeHDURL = json["largeHdUrl"].url
             else { return nil }
 
         self.orderNumber = orderNumber

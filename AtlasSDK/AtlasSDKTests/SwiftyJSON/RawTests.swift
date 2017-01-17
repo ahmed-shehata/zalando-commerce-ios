@@ -1,6 +1,6 @@
 //  RawTests.swift
 //
-//  Copyright (c) 2014 - 2016 Pinglin Tang
+//  Copyright (c) 2014 - 2017 Pinglin Tang
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -21,12 +21,12 @@
 //  THE SOFTWARE.
 
 import XCTest
-import SwiftyJSON
+@testable import AtlasSDK
 
 class RawTests: XCTestCase {
 
     func testRawData() {
-        let json: JSON = ["somekey" : "some string value"]
+        let json: JSON = ["somekey": "some string value"]
         let expectedRawData = "{\"somekey\":\"some string value\"}".data(using: String.Encoding.utf8)
         do {
             let data: Data = try json.rawData()
@@ -35,18 +35,18 @@ class RawTests: XCTestCase {
             XCTFail()
         }
     }
-    
+
     func testInvalidJSONForRawData() {
         let json: JSON = "...<nonsense>xyz</nonsense>"
         do {
             _ = try json.rawData()
         } catch let error as NSError {
-            XCTAssertEqual(error.code, ErrorInvalidJSON)
+            XCTAssertEqual(error.code, JSONErrorInvalidJSON)
         }
     }
-    
+
     func testArray() {
-        let json:JSON = [1, "2", 3.12, NSNull(), true, ["name": "Jack"]]
+        let json: JSON = [1, "2", 3.12, NSNull(), true, ["name": "Jack"]]
         let data: Data?
         do {
             data = try json.rawData()
@@ -58,9 +58,9 @@ class RawTests: XCTestCase {
         XCTAssertTrue (string!.lengthOfBytes(using: String.Encoding.utf8) > 0)
         print(string!)
     }
-    
+
     func testDictionary() {
-        let json:JSON = ["number":111111.23456789, "name":"Jack", "list":[1,2,3,4], "bool":false, "null":NSNull()]
+        let json: JSON = ["number": 111111.23456789, "name": "Jack", "list": [1, 2, 3, 4], "bool": false, "null": NSNull()]
         let data: Data?
         do {
             data = try json.rawData()
@@ -72,24 +72,24 @@ class RawTests: XCTestCase {
         XCTAssertTrue (string!.lengthOfBytes(using: String.Encoding.utf8) > 0)
         print(string!)
     }
-    
+
     func testString() {
-        let json:JSON = "I'm a json"
-        XCTAssertTrue(json.rawString() == "I'm a json")
+        let json: JSON = "I'm a json"
+        XCTAssertEqual(json.rawString(), "I'm a json")
     }
-    
+
     func testNumber() {
-        let json:JSON = 123456789.123
-        XCTAssertTrue(json.rawString() == "123456789.123")
+        let json: JSON = 123456789.123
+        XCTAssertEqual(json.rawString(), "123456789.123")
     }
-    
+
     func testBool() {
-        let json:JSON = true
-        XCTAssertTrue(json.rawString() == "true")
+        let json: JSON = true
+        XCTAssertEqual(json.rawString(), "true")
     }
-    
+
     func testNull() {
-        let json:JSON = JSON.null
-        XCTAssertTrue(json.rawString() == "null")
+        let json: JSON = JSON.null
+        XCTAssertEqual(json.rawString(), "null")
     }
 }

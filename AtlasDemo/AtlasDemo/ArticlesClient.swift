@@ -1,5 +1,5 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import AtlasSDK
@@ -25,11 +25,12 @@ class ArticlesClient {
                 if let error = response.error {
                     return completion(.failure(ArticlesError.error(error)))
                 }
-                guard let responseString = response.text else {
-                    return completion(.failure(ArticlesError.noData))
+                let articles = DemoCatalog(data: response.data).articles
+                if articles.isEmpty {
+                    completion(.failure(ArticlesError.noData))
+                } else {
+                    completion(.success(articles))
                 }
-                let articles = DemoCatalog(jsonString: responseString).articles
-                completion(.success(articles))
             }
         }
     }

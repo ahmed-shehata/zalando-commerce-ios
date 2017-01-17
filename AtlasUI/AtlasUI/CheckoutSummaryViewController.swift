@@ -1,5 +1,5 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import UIKit
@@ -127,8 +127,16 @@ extension CheckoutSummaryViewController: CheckoutSummaryActionHandlerDataSource 
 
 extension CheckoutSummaryViewController: CheckoutSummaryActionHandlerDelegate {
 
-    func updated(dataModel: CheckoutSummaryDataModel) {
+    func updated(dataModel: CheckoutSummaryDataModel) throws {
+        let oldModel = self.viewModel.dataModel
         self.viewModel.dataModel = dataModel
+
+        do {
+            try dataModel.validate(against: oldModel)
+        } catch let error {
+            UserMessage.displayError(error: error)
+            throw error
+        }
     }
 
     func updated(layout: CheckoutSummaryLayout) {

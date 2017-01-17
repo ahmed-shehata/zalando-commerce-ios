@@ -1,5 +1,5 @@
 require 'thor'
-require_relative '../run'
+require_relative '../utils/run'
 
 module Calypso
 
