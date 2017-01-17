@@ -61,5 +61,5 @@ extension String: JSONSubscript {
     var jsonSubscript: JSON.SubscriptKey {
         return .key(self)
     }
-    
+
 }

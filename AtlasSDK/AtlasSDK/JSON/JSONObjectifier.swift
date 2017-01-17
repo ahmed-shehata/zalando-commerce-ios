@@ -124,7 +124,7 @@ extension Float: JSONObjectifier {
         guard let number = json?.rawNumber, json?.type == .number else { return nil }
         self = number.floatValue
     }
-    
+
 }
 
 extension Date: JSONObjectifier {
