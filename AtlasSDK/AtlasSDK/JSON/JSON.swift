@@ -26,8 +26,6 @@ struct JSON: CustomStringConvertible {
     private(set) var rawNumber: NSNumber = 0
     private(set) var rawBool: Bool = false
 
-    let rawNull = NSNull()
-
     fileprivate var internalObject: Any {
         get {
             switch self.type {
@@ -42,7 +40,7 @@ struct JSON: CustomStringConvertible {
             case .bool:
                 return self.rawBool
             default:
-                return self.rawNull
+                return JSON.null
             }
         }
         set {
