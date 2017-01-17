@@ -80,7 +80,7 @@ struct JSON: CustomStringConvertible {
         try self.init(data: data, options: options)
     }
 
-    init?(data: Data, options: JSONSerialization.ReadingOptions = .allowFragments) throws {
+    init(data: Data, options: JSONSerialization.ReadingOptions = .allowFragments) throws {
         do {
             self.internalObject = try JSONSerialization.jsonObject(with: data, options: options)
         } catch let e {

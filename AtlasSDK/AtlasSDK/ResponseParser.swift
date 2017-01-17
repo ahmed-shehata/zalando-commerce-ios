@@ -18,7 +18,7 @@ struct ResponseParser {
             return completion(.failure(AtlasAPIError.noData))
         }
 
-        let json = (try? JSON(data: data)) ?? nil // swiftlint:disable:this redundant_nil_coalescing
+        let json = try? JSON(data: data)
 
         guard httpResponse.isSuccessful else {
             let error: AtlasAPIError
