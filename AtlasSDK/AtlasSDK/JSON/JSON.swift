@@ -2,7 +2,7 @@
 //  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
-// Heavily influenced by [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
+// Concept influenced by [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
 
 import Foundation
 
@@ -16,10 +16,7 @@ struct JSON: CustomStringConvertible {
     private static let decimalNumberType = String(describing: type(of: NSNumber(value: 1)))
     fileprivate static let dateFormatter = RFC3339DateFormatter()
 
-    var isBool: Bool {
-        let rawObjectType = String(describing: type(of: rawObject))
-        return rawObject is Bool && rawObjectType != JSON.decimalNumberType
-    }
+    let isBool: Bool
     let rawObject: Any
 
     init?(string: String,
@@ -32,6 +29,7 @@ struct JSON: CustomStringConvertible {
     init(data: Data, options: JSONSerialization.ReadingOptions = .allowFragments) throws {
         do {
             self.rawObject = try JSONSerialization.jsonObject(with: data, options: options)
+            self.isBool = JSON.isBool(object: rawObject)
         } catch let e {
             AtlasLogger.logError(e)
             throw e
@@ -40,6 +38,12 @@ struct JSON: CustomStringConvertible {
 
     init(_ object: Any?) {
         self.rawObject = object ?? JSON.null
+        self.isBool = JSON.isBool(object: rawObject)
+    }
+
+    private static func isBool(object: Any) -> Bool {
+        let objectType = String(describing: type(of: object))
+        return object is Bool && objectType != JSON.decimalNumberType
     }
 
 }
@@ -99,9 +103,8 @@ extension JSON {
         guard let string = self.string,
             let date = JSON.dateFormatter.date(from: string)
             else { return nil }
-        
+
         return date
     }
-    
-}
 
+}
