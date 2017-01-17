@@ -8,7 +8,7 @@ import Nimble
 @testable import AtlasUI
 @testable import AtlasSDK
 
-class EditAddressTypeTests: UITestCase {
+class EditAddressTypeTests: XCTestCase {
 
     var dataModel: AddressFormDataModel!
 

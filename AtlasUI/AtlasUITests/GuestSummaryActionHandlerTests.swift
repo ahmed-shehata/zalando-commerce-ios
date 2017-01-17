@@ -15,20 +15,19 @@ class GuestSummaryActionHandlerTests: UITestCase {
 
     override func setUp() {
         super.setUp()
-        registerAtlasUIViewController(sku: "AD541L009-G11")
         actionHandler = createActionHandler()
     }
 
     func testSubmitButtonWithMissingAddress() {
         actionHandler?.handleSubmit()
-        expect(UserMessage.errorDisplayed).toEventually(beTrue())
+        expect(self.errorDisplayed).toEventually(beTrue())
     }
 
     func testSubmitButtonWithMissingPayment() {
         guard let dataModel = mockedDataSourceDelegate?.dataModel else { return fail() }
         mockedDataSourceDelegate?.dataModel = addAddress(toDataModel: dataModel)
         actionHandler?.handleSubmit()
-        expect(UserMessage.errorDisplayed).toEventually(beTrue())
+        expect(self.errorDisplayed).toEventually(beTrue())
     }
 
     func testSubmitButton() {
@@ -37,13 +36,13 @@ class GuestSummaryActionHandlerTests: UITestCase {
         selectedPaymentMethod()
         expect(self.actionHandler?.guestCheckout).toNotEventually(beNil())
         actionHandler?.handleSubmit()
-        expect(UserMessage.errorDisplayed).toEventually(beFalse())
+        expect(self.errorDisplayed).toEventually(beFalse())
         expect(self.mockedDataSourceDelegate?.layout as? GuestOrderPlacedLayout).toNotEventually(beNil())
     }
 
     func testPaymentButtonWithMissingAddress() {
         actionHandler?.handlePaymentSelection()
-        expect(UserMessage.errorDisplayed).toEventually(beTrue())
+        expect(self.errorDisplayed).toEventually(beTrue())
     }
 
     func testPaymentButtonWithPaymentError() {
@@ -51,13 +50,13 @@ class GuestSummaryActionHandlerTests: UITestCase {
         mockedDataSourceDelegate?.dataModel = addAddress(toDataModel: dataModel)
         guard let paymentViewController = showPaymentScreen() else { return fail() }
         paymentViewController.paymentCompletion?(.error)
-        _ = AtlasUIViewController.shared?.mainNavigationController.popViewController(animated: true)
-        expect(UserMessage.errorDisplayed).toEventually(beTrue())
+        _ = self.defaultNavigationController?.popViewController(animated: true)
+        expect(self.errorDisplayed).toEventually(beTrue())
     }
 
     func testPaymentButtonWithPaymentSuccess() {
         selectedPaymentMethod()
-        expect(UserMessage.errorDisplayed).toEventually(beFalse())
+        expect(self.errorDisplayed).toEventually(beFalse())
     }
 
 }
@@ -67,7 +66,7 @@ extension GuestSummaryActionHandlerTests {
     fileprivate func createActionHandler() -> GuestCheckoutSummaryActionHandler? {
         var guestActionHandler: GuestCheckoutSummaryActionHandler?
         waitUntil(timeout: 10) { done in
-            AtlasUIClient.article(withSKU: "AD541L009-G11") { result in
+            AtlasUIClient.article(withSKU: self.sku) { result in
                 guard let article = result.process() else { return fail() }
                 let selectedArticleUnit = SelectedArticleUnit(article: article, selectedUnitIndex: 0)
                 self.mockedDataSourceDelegate = GuestSummaryActionHandlerDataSourceDelegateMocked(selectedArticleUnit: selectedArticleUnit)
@@ -78,12 +77,6 @@ extension GuestSummaryActionHandlerTests {
             }
         }
         return guestActionHandler
-    }
-
-    fileprivate func registerAtlasUIViewController(sku: String) {
-        let atlasUIViewController = AtlasUIViewController(forSKU: sku)
-        _  = atlasUIViewController.view // load the view
-        try! AtlasUI.shared().register { atlasUIViewController }
     }
 
     fileprivate func createAddress() -> GuestCheckoutAddress {
@@ -111,8 +104,8 @@ extension GuestSummaryActionHandlerTests {
 
     fileprivate func showPaymentScreen() -> PaymentViewController? {
         actionHandler?.handlePaymentSelection()
-        expect(AtlasUIViewController.shared?.mainNavigationController.viewControllers.last as? PaymentViewController).toNotEventually(beNil())
-        return AtlasUIViewController.shared?.mainNavigationController.viewControllers.last as? PaymentViewController
+        expect(self.defaultNavigationController?.viewControllers.last as? PaymentViewController).toNotEventually(beNil())
+        return self.defaultNavigationController?.viewControllers.last as? PaymentViewController
     }
 
     fileprivate func selectedPaymentMethod() {
@@ -120,7 +113,7 @@ extension GuestSummaryActionHandlerTests {
         mockedDataSourceDelegate?.dataModel = addAddress(toDataModel: dataModel)
         guard let paymentViewController = showPaymentScreen() else { return fail() }
         paymentViewController.paymentCompletion?(.guestRedirect(encryptedCheckoutId: "CHECKOUT_ID", encryptedToken: "TOKEN"))
-        _ = AtlasUIViewController.shared?.mainNavigationController.popViewController(animated: true)
+        _ = self.defaultNavigationController?.popViewController(animated: true)
     }
 
 }
