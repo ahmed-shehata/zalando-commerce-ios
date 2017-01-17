@@ -136,10 +136,9 @@ extension DemoArticle.Brand: JSONDecodable {
 extension DemoArticle.Attribute {
 
     init?(json: JSON) {
-        guard let name = try? json.getString(at: "name"),
-            let values = try? json.getArray(at: "values")
-            else { return nil }
+        guard let name = try? json.getString(at: "name") else { return nil }
         self.name = name
+        let values = (try? json.getArray(at: "values")) ?? []
         self.values = values.flatMap { String(describing: $0) }
     }
 
