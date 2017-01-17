@@ -9,7 +9,7 @@ import AtlasMockAPI
 
 extension Config {
 
-    static func jsonForTests(options: Options = Options.forTests()) -> JSON {
+    static func jsonForTests(options: Options = Options.forTests(), guestCheckoutEnabled: Bool = true) -> JSON {
         return JSON([
             "sales-channels": [
                 ["locale": "es_ES", "sales-channel": "SPAIN", "toc_url": "https://www.zalando.es/cgc/"],
@@ -17,6 +17,7 @@ extension Config {
                  "sales-channel": options.salesChannel,
                  "toc_url": TestConsts.tocURL],
             ],
+            "atlas-guest-checkout-api": guestCheckoutEnabled,
             "atlas-catalog-api": ["url": TestConsts.catalogURL.absoluteString],
             "atlas-checkout-gateway": ["url": TestConsts.gateway],
             "atlas-checkout-api": [

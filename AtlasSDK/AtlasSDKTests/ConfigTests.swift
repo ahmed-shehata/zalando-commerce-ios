@@ -46,16 +46,21 @@ class ConfigTests: XCTestCase {
     }
 
     func testGuestCheckoutEnabled() {
+        let guestEnabled = true
         let options = Options.forTests()
-        var json = Config.jsonForTests(options: options)
-
-        json["atlas-guest-checkout-api"] = JSON(["enabled": JSON(true)])
+        let json = Config.jsonForTests(options: options, guestCheckoutEnabled: guestEnabled)
         let config = Config(json: json, options: options)
-        expect(config?.guestCheckoutEnabled) == true
 
-        json["atlas-guest-checkout-api"] = JSON.null
-        let config2 = Config(json: json, options: options)
-        expect(config2?.guestCheckoutEnabled) == false
+        expect(config?.guestCheckoutEnabled) == guestEnabled
+    }
+
+    func testGuestCheckoutDisabled() {
+        let guestEnabled = false
+        let options = Options.forTests()
+        let json = Config.jsonForTests(options: options, guestCheckoutEnabled: guestEnabled)
+        let config = Config(json: json, options: options)
+
+        expect(config?.guestCheckoutEnabled) == guestEnabled
     }
 
 }
