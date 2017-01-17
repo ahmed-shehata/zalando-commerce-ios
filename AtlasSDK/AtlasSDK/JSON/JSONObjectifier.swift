@@ -6,35 +6,28 @@ import Foundation
 
 extension JSON {
 
-    var array: [JSON]? {
+    var arrayObject: [Any]? {
         guard self.type == .array else { return nil }
-        return self.rawArray.flatMap { JSON($0) } // TODO: shouldn't be flatMap
+        return self.rawArray
     }
 
-    var arrayValue: [JSON] {
-        return array ?? []
-    }
-
-    var arrayObject: [Any] {
-        return rawArray
-    }
-
-    var dictionary: [String: JSON]? {
-        guard type == .dictionary else { return nil }
-        var d = [String: JSON](minimumCapacity: rawDictionary.count)
-        for (key, value) in rawDictionary {
-            d[key] = JSON(value)
-        }
-        return d
-    }
-
-    var dictionaryValue: [String: JSON] {
-        return self.dictionary ?? [:]
+    var array: [JSON] {
+        guard self.type == .array else { return [] }
+        return self.rawArray.flatMap { JSON($0) }
     }
 
     var dictionaryObject: [String: Any]? {
         guard type == .dictionary else { return nil }
         return self.rawDictionary
+    }
+
+    var dictionary: [String: JSON]? {
+        guard type == .dictionary else { return nil }
+        var newDictionary = [String: JSON](minimumCapacity: rawDictionary.count)
+        for (key, value) in self.rawDictionary {
+            newDictionary[key] = JSON(value)
+        }
+        return newDictionary
     }
 
     var string: String? {

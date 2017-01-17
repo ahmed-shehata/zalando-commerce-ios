@@ -59,9 +59,11 @@ extension Config {
             let checkoutGatewayURL = json["atlas-checkout-gateway"]["url"].url,
             let loginURL = json["oauth2-provider"]["url"].url,
             let selectionCallbackURL = json["atlas-checkout-api"]["payment"]["selection-callback"].url,
-            let thirdPartyCallbackURL = json["atlas-checkout-api"]["payment"]["third-party-callback"].url,
-            let availableSalesChannels = json["sales-channels"].array?.flatMap({ SalesChannel(json: $0) }),
-            let salesChannel = availableSalesChannels.first(where: { $0.identifier == options.salesChannel })
+            let thirdPartyCallbackURL = json["atlas-checkout-api"]["payment"]["third-party-callback"].url
+            else { return nil }
+
+        let availableSalesChannels = json["sales-channels"].array.flatMap({ SalesChannel(json: $0) })
+        guard let salesChannel = availableSalesChannels.first(where: { $0.identifier == options.salesChannel })
             else { return nil }
 
         self.catalogURL = catalogURL
