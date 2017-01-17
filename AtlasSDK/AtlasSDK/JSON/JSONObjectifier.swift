@@ -132,9 +132,9 @@ extension Date: JSONObjectifier {
     init?(json: JSON?) {
         let dateFormatter = RFC3339DateFormatter()
 
-        guard let string = json?.rawString,
-            let date = dateFormatter.date(from: string),
-            json?.type == .string else { return nil }
+        guard let string = json?.string,
+            let date = dateFormatter.date(from: string)
+            else { return nil }
         self = date
     }
 
