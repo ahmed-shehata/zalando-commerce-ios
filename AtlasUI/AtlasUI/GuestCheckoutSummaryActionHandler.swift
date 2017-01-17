@@ -30,7 +30,7 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
             return
         }
         guard let checkoutId = checkoutId, let token = token else {
-            UserMessage.displayError(error: AtlasCheckoutError.missingAddressAndPayment)
+            UserMessage.displayError(error: AtlasCheckoutError.missingPaymentMethod)
             return
         }
 
