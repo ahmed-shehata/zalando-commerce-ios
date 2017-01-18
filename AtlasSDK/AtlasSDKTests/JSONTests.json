@@ -1,0 +1,10 @@
+{
+    "int0": 0,
+    "int1": 1,
+    "bigInt": 5000000000,
+    "bigNegativeInt": -5000000000,
+    "float0": 0.0,
+    "float1": 1.1,
+    "bigFloat": 5000000000.500123,
+    "bigNegativeFloat": -5000000000.500123
+}

@@ -34,9 +34,10 @@
 		5C38BE2E6C30F953FDD8E2C0891B4EFF /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A09363B8394CF5F3F4FBFE3E3AB2F5B1 /* CoreAudio.framework */; };
 		65A6DBFB34A8DD425710B6F3FDEB82E3 /* AtlasMockAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 400508DFC64A49E6ECB6AC89CF040BEE /* AtlasMockAPI.framework */; };
 		7449525A39F475B6C68F497A3A3CA7FA /* BuddyBuildSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37F1FE1DEBE7C2CDF69A44C574EB2CE7 /* BuddyBuildSDK.framework */; };
-		78A57477448129E64F7355ED5936579D /* SwiftyJSON.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 35CA68DACB839A1478B037F75B4718A9 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7B1C78AE089D3132077309EC6E12D4C4 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70D0DBF19E7CD929E402B3987A071587 /* AssetsLibrary.framework */; };
 		80EAF118A2EFF34CF406B0059F8B61E6 /* ArticlesClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71AFAF33E121C103808CE6C2F4B14B6 /* ArticlesClient.swift */; };
+		6258EC13198C08F3C0C639D9281DA1FE /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34D105CA005E1E4B8E1C76FDC89894A2 /* Freddy.framework */; };
+		7DA4ECBA4E51223B37412C7BCA2917D0 /* Freddy.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34D105CA005E1E4B8E1C76FDC89894A2 /* Freddy.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		865FBD178438F346C50223D31BCFE2BB /* AtlasUI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = A1A7A0B5C279F22FC02C6B5E54125FD2 /* AtlasUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8838F6A5652FC042A161FBC6A6961594 /* AppSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AF6C44EE98EAB17A1E81EC252C5AD /* AppSetup.swift */; };
 		8F1EB3AA8D794C560B3FDEE6F4988CA3 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA73BDC161923CD166B30F1051CBC88 /* MediaPlayer.framework */; };
@@ -44,10 +45,9 @@
 		967FEF000A11FCD3EA0644E15064AC48 /* AtlasUI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = A1A7A0B5C279F22FC02C6B5E54125FD2 /* AtlasUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		968AADD1A82227BDAD19F1456B498E21 /* AtlasSDK.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 9C17735AA3650A838A0716B1CA9222AF /* AtlasSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A12BA69E9882091D0E7458127925A441 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D47F523CFD3049B145328DBAAD3BF6 /* ProfileViewController.swift */; };
-		A6004F8D3EAD48FB4D199E71519FA3CE /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35CA68DACB839A1478B037F75B4718A9 /* SwiftyJSON.framework */; };
 		A780FF331E667E4F680D3C330ED07DB8 /* DemoCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89FA499DC08F5C540C7FE44552F23A6 /* DemoCatalog.swift */; };
 		ADB3F0B19117CD32B5795BAF37B3FB48 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E68BC11A4A9FD71255E1A93A12587B3D /* SystemConfiguration.framework */; };
-		B0377B46A99697FD41BBD5F2 /* InterfaceLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03771D541B3F8CE16776A3A /* InterfaceLanguage.swift */; };
+		38E038EFCCE368062F2BFCF1876AA51B /* InterfaceLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6127C86D49960AE55D91C99ECF4382F1 /* InterfaceLanguage.swift */; };
 		BFD1D1499CD09ED4A74B6ECA27B2B81B /* AtlasDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0000FBCF7CFA54DDC8399E4BABD42A15 /* AtlasDemoUITests.swift */; };
 		C13958F3EB2139209B40A7C93BAAAE5A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE465EB2A4F6D8B31261A51664D603CD /* MobileCoreServices.framework */; };
 		C28B405D84A7E9B9F1879C6860E5E428 /* XCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B3919A2CEC66658921E58E02D888B5 /* XCTestCase.swift */; };
@@ -91,9 +91,9 @@
 			files = (
 				4C1EEA896DC0FBA0112CE058A8A90348 /* SwiftHTTP.framework in Copy Frameworks */,
 				501C7BFF1ADC3D4CEDEF3448B1584B6D /* AtlasMockAPI.framework in Copy Frameworks */,
+				7DA4ECBA4E51223B37412C7BCA2917D0 /* Freddy.framework in Copy Frameworks */,
 				E09393D6841BD5B02BAF1F879FA14420 /* Swifter.framework in Copy Frameworks */,
 				E39AF4AF3A83F07266F020D5E6D3A55C /* Nuke.framework in Copy Frameworks */,
-				78A57477448129E64F7355ED5936579D /* SwiftyJSON.framework in Copy Frameworks */,
 				DD1713AFBB45F179703F27E8F8C6F863 /* AtlasSDK.framework in Copy Frameworks */,
 				967FEF000A11FCD3EA0644E15064AC48 /* AtlasUI.framework in Copy Frameworks */,
 			);
@@ -127,6 +127,7 @@
 		70CB82D0A3803BF19FF55CBB985CB29A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		70D0DBF19E7CD929E402B3987A071587 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		74F2F3D1790B7E063C3527BF921B7E1D /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
+		34D105CA005E1E4B8E1C76FDC89894A2 /* Freddy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Freddy.framework; path = ../Carthage/Build/iOS/Freddy.framework; sourceTree = "<group>"; };
 		8F4B197D9F61B68006802BD626C9F76E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		94862D8C44368F2CED777738686848A0 /* XCUIElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCUIElement.swift; sourceTree = "<group>"; };
 		98660FB609B352D5A620AF07368F81EC /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -136,7 +137,7 @@
 		A1A7A0B5C279F22FC02C6B5E54125FD2 /* AtlasUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AtlasUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3903D304D732D84FC3034810FB00B36 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AE465EB2A4F6D8B31261A51664D603CD /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		B03771D541B3F8CE16776A3A /* InterfaceLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterfaceLanguage.swift; sourceTree = "<group>"; };
+		6127C86D49960AE55D91C99ECF4382F1 /* InterfaceLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterfaceLanguage.swift; sourceTree = "<group>"; };
 		B5B3919A2CEC66658921E58E02D888B5 /* XCTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = XCTestCase.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B5D445C1DAAC347B64D5AFED9B5B140B /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		CFE7F4402C577EAAD785596D4FB735D0 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -177,12 +178,12 @@
 				5354EC81B56390B95BAA15D4F3965B41 /* CoreTelephony.framework in Frameworks */,
 				0FDDDFE532941228DC746DAEF6740637 /* CoreText.framework in Frameworks */,
 				2192C7D1F6802A6157DE18C9B39A501A /* CoreVideo.framework in Frameworks */,
-				A6004F8D3EAD48FB4D199E71519FA3CE /* SwiftyJSON.framework in Frameworks */,
 				44EBCE2FE12DE8193EE4F38738F84B2E /* ImageIO.framework in Frameworks */,
 				8F1EB3AA8D794C560B3FDEE6F4988CA3 /* MediaPlayer.framework in Frameworks */,
 				00D6E40AB1C980587ADCF3D3A629707E /* MessageUI.framework in Frameworks */,
 				C13958F3EB2139209B40A7C93BAAAE5A /* MobileCoreServices.framework in Frameworks */,
 				28C9E4E66E9BB7F0E964EDD2416EC634 /* QuartzCore.framework in Frameworks */,
+				6258EC13198C08F3C0C639D9281DA1FE /* Freddy.framework in Frameworks */,
 				38B292015D6EB859824E22C09CB154F9 /* Swifter.framework in Frameworks */,
 				EE7374754508E203252E55A91A2A8167 /* Nuke.framework in Frameworks */,
 				ADB3F0B19117CD32B5795BAF37B3FB48 /* SystemConfiguration.framework in Frameworks */,
@@ -238,6 +239,7 @@
 				400508DFC64A49E6ECB6AC89CF040BEE /* AtlasMockAPI.framework */,
 				9C17735AA3650A838A0716B1CA9222AF /* AtlasSDK.framework */,
 				A1A7A0B5C279F22FC02C6B5E54125FD2 /* AtlasUI.framework */,
+				34D105CA005E1E4B8E1C76FDC89894A2 /* Freddy.framework */,
 				1D15645E9195207A25A4D56198499AE7 /* Swifter.framework */,
 				4CD3778CF4B0F93EE5191DF4F8D3C518 /* SwiftHTTP.framework */,
 				6F9BDB072FD0595FBC1302107487559C /* Nuke.framework */,
@@ -276,7 +278,7 @@
 				29D25E49A4BA3C66C371430FFD7DC396 /* CatalogViewController.swift */,
 				74F2F3D1790B7E063C3527BF921B7E1D /* ProductCollectionViewCell.swift */,
 				68D47F523CFD3049B145328DBAAD3BF6 /* ProfileViewController.swift */,
-				B03771D541B3F8CE16776A3A /* InterfaceLanguage.swift */,
+				6127C86D49960AE55D91C99ECF4382F1 /* InterfaceLanguage.swift */,
 			);
 			path = AtlasDemo;
 			sourceTree = "<group>";
@@ -326,7 +328,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CCEA0606603BB620FE5A41ED38560189 /* Build configuration list for PBXNativeTarget "AtlasDemo" */;
 			buildPhases = (
-				E3890F736B203CDB5F4F8B72C0193196 /* Swift Lint */,
+				25B422AF1F28BED8507E16308FEE5FCF /* Swift Lint */,
 				8938AC41FD8F31015CD93E4A43C35120 /* Sources */,
 				709B8180EF992CCC4B4F50F79A676FEA /* Copy Frameworks */,
 				B307BE12931466F5C44234C6B9C0A4AC /* Frameworks */,
@@ -429,7 +431,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		E3890F736B203CDB5F4F8B72C0193196 /* Swift Lint */ = {
+		25B422AF1F28BED8507E16308FEE5FCF /* Swift Lint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -470,7 +472,7 @@
 				A780FF331E667E4F680D3C330ED07DB8 /* DemoCatalog.swift in Sources */,
 				0FE6FE338EDD0304EC47F380FA6E7F0F /* ProductCollectionViewCell.swift in Sources */,
 				A12BA69E9882091D0E7458127925A441 /* ProfileViewController.swift in Sources */,
-				B0377B46A99697FD41BBD5F2 /* InterfaceLanguage.swift in Sources */,
+				38E038EFCCE368062F2BFCF1876AA51B /* InterfaceLanguage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
