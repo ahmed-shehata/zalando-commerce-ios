@@ -40,7 +40,7 @@
 "addressFormView.title" = "Title";
 "addressFormView.zipcode" = "Zipcode";
 "addressNormalizedView.title" = "We found another version for your address\nWhich one do you want to use?";
-"addressNormalizedView.yourAddress" = "Your address";
+"addressNormalizedView.originalAddress" = "Your address";
 "addressNormalizedView.suggestedAddress" = "Suggested address";
 "addressListView.add.cellTitle" = "Add new address...";
 "addressListView.add.type.AddressBookImportDataModelCreationStrategy" = "Import from Address Book";

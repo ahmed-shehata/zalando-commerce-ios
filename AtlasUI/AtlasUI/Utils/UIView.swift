@@ -72,9 +72,19 @@ extension UIView {
     }
 
     func centerInSuperview() {
+        centerHorizontallyInSuperview()
+        centerVerticallyInSuperview()
+    }
+
+    func centerHorizontallyInSuperview() {
         guard let superview = superview else { return }
         translatesAutoresizingMaskIntoConstraints = false
         centerXAnchor.constraint(equalTo: superview.centerXAnchor).isActive = true
+    }
+
+    func centerVerticallyInSuperview() {
+        guard let superview = superview else { return }
+        translatesAutoresizingMaskIntoConstraints = false
         centerYAnchor.constraint(equalTo: superview.centerYAnchor).isActive = true
     }
 

@@ -11,56 +11,35 @@ class NormalizedAddressStackView: UIStackView {
         let label = UILabel()
         label.numberOfLines = 0
         label.text = Localizer.format(string: "addressNormalizedView.title")
-        label.font = .systemFont(ofSize: 16)
-        label.textColor = .black
+        label.font = .systemFont(ofSize: 14, weight: UIFontWeightLight)
+        label.textColor = UIColor(hex: 0x7F7F7F)
         label.textAlignment = .center
         return label
     }()
 
-    let yourAddressTitleLabel: UILabel = {
+    let originalAddressTitleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.text = "\n" + Localizer.format(string: "addressNormalizedView.yourAddress")
-        label.font = .systemFont(ofSize: 14, weight: UIFontWeightLight)
-        label.textColor = UIColor(hex: 0x7F7F7F)
+        label.text = "\n" + Localizer.format(string: "addressNormalizedView.originalAddress")
+        label.font = .systemFont(ofSize: 14)
+        label.textColor = .black
         label.textAlignment = .left
         return label
     }()
 
-    let yourAddressLabel: UILabel = {
-        let label = RoundedLabel()
-        label.numberOfLines = 0
-        label.font = .systemFont(ofSize: 14, weight: UIFontWeightLight)
-        label.textColor = UIColor(hex: 0x7F7F7F)
-        label.textAlignment = .left
-        label.cornerRadius = 15
-        label.borderColor = UIColor(hex: 0xE5E5E5)
-        label.borderWidth = 1 / UIScreen.main.scale
-        return label
-    }()
+    let originalAddressRowView: NormalizedAddressRowView = NormalizedAddressRowView()
 
     let suggestedAddressTitleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.text = "\n" + Localizer.format(string: "addressNormalizedView.suggestedAddress")
-        label.font = .systemFont(ofSize: 14, weight: UIFontWeightLight)
-        label.textColor = UIColor(hex: 0x7F7F7F)
+        label.font = .systemFont(ofSize: 14)
+        label.textColor = .black
         label.textAlignment = .left
         return label
     }()
 
-    let suggestedAddressLabel: UILabel = {
-        let label = RoundedLabel()
-        label.numberOfLines = 0
-        label.text = "Hani"
-        label.font = .systemFont(ofSize: 14, weight: UIFontWeightLight)
-        label.textColor = UIColor(hex: 0x7F7F7F)
-        label.textAlignment = .left
-        label.cornerRadius = 15
-        label.borderColor = UIColor(hex: 0xE5E5E5)
-        label.borderWidth = 1 / UIScreen.main.scale
-        return label
-    }()
+    let suggestedAddressRowView: NormalizedAddressRowView = NormalizedAddressRowView()
 
 }
 
@@ -68,10 +47,10 @@ extension NormalizedAddressStackView: UIBuilder {
 
     func configureView() {
         addArrangedSubview(titleLabel)
-        addArrangedSubview(yourAddressTitleLabel)
-        addArrangedSubview(yourAddressLabel)
+        addArrangedSubview(originalAddressTitleLabel)
+        addArrangedSubview(originalAddressRowView)
         addArrangedSubview(suggestedAddressTitleLabel)
-        addArrangedSubview(suggestedAddressLabel)
+        addArrangedSubview(suggestedAddressRowView)
     }
 
 }
@@ -81,9 +60,10 @@ extension NormalizedAddressStackView: UIDataBuilder {
     typealias T = (userAddress: CheckAddress, normalizedAddress: CheckAddress)
 
     func configure(viewModel: (userAddress: CheckAddress, normalizedAddress: CheckAddress)) {
-        yourAddressLabel.text = viewModel.userAddress.stringValue
-        suggestedAddressLabel.text = viewModel.normalizedAddress.stringValue
+        originalAddressRowView.configure(viewModel: viewModel.userAddress.stringValue)
+        suggestedAddressRowView.configure(viewModel: viewModel.normalizedAddress.stringValue)
     }
+
 }
 
 fileprivate extension CheckAddress {
