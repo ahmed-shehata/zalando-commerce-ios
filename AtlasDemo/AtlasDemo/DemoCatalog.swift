@@ -3,7 +3,7 @@
 //
 
 import AtlasSDK
-import SwiftyJSON
+import Freddy
 
 struct DemoCatalog {
 
@@ -14,8 +14,12 @@ struct DemoCatalog {
 extension DemoCatalog {
 
     init(data: Data, rootElement: String = "content") {
-        let json = JSON(data: data)
-        articles = json[rootElement].arrayValue.flatMap { DemoArticle(json: $0) }
+        guard let json = try? JSON(data: data),
+            let rootArray = try? json.getArray(at: rootElement) else {
+                articles = []
+                return
+        }
+        articles = rootArray.flatMap { try? DemoArticle(json: $0) }
     }
 
 }

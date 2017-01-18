@@ -9,17 +9,23 @@ module Calypso
 
   class Deps < Thor
 
-    MAC_DEPS = 'swifter SwiftyJSON'.freeze
+    MAC_DEPS = %w(swifter SwiftyJSON Freddy).freeze
 
     desc 'build', 'Build dependencies'
     def build
       run 'carthage bootstrap --platform iOS --no-use-binaries'
-      run "carthage build --platform Mac #{MAC_DEPS}"
+      run "carthage build --platform Mac #{MAC_DEPS.join ' '}"
     end
 
-    desc 'update', 'Update dependencies'
-    def update
-      run "carthage update --platform iOS --no-use-binaries #{MAC_DEPS}"
+    desc 'update [dep1, dep2, ..., dep3]', 'Update dependencies'
+    def update(*args)
+      run "carthage update --platform iOS --no-use-binaries #{args.join ' '}"
+      if args.empty?
+        run "carthage update --platform Mac --no-use-binaries #{MAC_DEPS.join ' '}"
+      elsif !(args & MAC_DEPS).empty?
+        run "carthage update --platform Mac --no-use-binaries #{args.join ' '}"
+      end
+      run 'open Carthage/Build/iOS'
     end
 
     desc 'clean', 'Clean dependencies'
@@ -34,23 +40,7 @@ module Calypso
       invoke :build
     end
 
-    desc 'uncached', 'Builds only if they\'re not cached (used in CI)'
-    def uncached
-      if cached?
-        log "#{CART_RES} unchanged. Assuming correctly cached #{CART_DIR}"
-        return
-      end
-      invoke :build
-      FileUtils.cp CART_RES, CART_DIR
-    end
-
     include Run
-
-    private
-
-    def cached?
-      system("diff -q #{CART_RES} #{CART_DIR}/#{CART_RES} 2> /dev/null")
-    end
 
   end
 

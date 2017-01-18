@@ -35,7 +35,7 @@ public func == (lhs: Money, rhs: Money) -> Bool {
 }
 
 public func < (lhs: Money, rhs: Money) -> Bool {
-    return lhs.amount < rhs.amount
+    return lhs.amount.compare(rhs.amount) == .orderedAscending
 }
 
 extension Money: CustomStringConvertible {

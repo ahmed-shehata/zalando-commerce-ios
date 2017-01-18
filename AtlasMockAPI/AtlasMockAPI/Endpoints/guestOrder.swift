@@ -4,7 +4,7 @@
 
 import Foundation
 import Swifter
-import SwiftyJSON
+import Freddy
 
 extension HttpServer {
 
@@ -13,8 +13,7 @@ extension HttpServer {
 
         self[path] = { request in
             let data = Data(bytes: &request.body, count: request.body.count)
-            let json = JSON(data: data)
-            if json["checkout_id"] == JSON.null {
+            if let json = try? JSON(data: data), json["checkout_id"] == nil {
                 let url = "https://payment-gateway.kohle-integration.zalan.do/payment-method-selection-session/TOKEN/selection"
                 return HttpResponse.raw(204, "No Content", ["Location": url], nil)
             } else {

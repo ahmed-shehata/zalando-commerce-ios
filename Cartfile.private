@@ -9,6 +9,7 @@ github "httpswift/swifter" "stable"
 # AtlasDemo
 
 github "SwiftyJSON/SwiftyJSON"
+github "bignerdranch/Freddy"
 github "kean/Nuke"
 github "daltoniam/SwiftHTTP"
 
