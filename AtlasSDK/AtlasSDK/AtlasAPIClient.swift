@@ -39,9 +39,7 @@ public struct AtlasAPIClient {
 
     func fetch<Model: JSONInitializable>(from endpoint: Endpoint, completion: @escaping APIResultCompletion<[Model]>) {
         call(endpoint: endpoint, completion: completion) { response in
-            guard let json = response.body,
-                !json.array.isEmpty
-                else { return nil }
+            guard let json = response.body else { return nil }
             return json.array.flatMap { Model(json: $0) }
         }
     }
