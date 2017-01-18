@@ -6,11 +6,7 @@
 
 import Foundation
 
-struct JSON: CustomStringConvertible {
-
-    var description: String {
-        return String(describing: rawObject)
-    }
+struct JSON {
 
     static let null = JSON(NSNull())
     private static let decimalNumberType = String(describing: type(of: NSNumber(value: 1)))
@@ -44,6 +40,14 @@ struct JSON: CustomStringConvertible {
     private static func isBool(object: Any) -> Bool {
         let objectType = String(describing: type(of: object))
         return object is Bool && objectType != JSON.decimalNumberType
+    }
+
+}
+
+extension JSON: CustomStringConvertible {
+
+    var description: String {
+        return String(describing: rawObject)
     }
 
 }
