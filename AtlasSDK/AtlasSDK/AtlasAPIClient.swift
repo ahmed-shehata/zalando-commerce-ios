@@ -39,8 +39,8 @@ public struct AtlasAPIClient {
 
     func fetch<Model: JSONInitializable>(from endpoint: Endpoint, completion: @escaping APIResultCompletion<[Model]>) {
         call(endpoint: endpoint, completion: completion) { response in
-            guard let json = response.body, let jsons = json.array.flatMap({ $0 }) else { return nil }
-            return jsons.flatMap { Model(json: $0) }
+            guard let json = response.body else { return nil }
+            return json.array.flatMap { Model(json: $0) }
         }
     }
 
@@ -54,8 +54,8 @@ public struct AtlasAPIClient {
     }
 
     fileprivate func call<T>(endpoint: Endpoint,
-                          completion: @escaping APIResultCompletion<T>,
-                          successHandler: @escaping (JSONResponse) -> T?) {
+                             completion: @escaping APIResultCompletion<T>,
+                             successHandler: @escaping (JSONResponse) -> T?) {
         let requestBuilder = RequestBuilder(forEndpoint: endpoint, urlSession: urlSession)
         var apiRequest = APIRequest(requestBuilder: requestBuilder, successHandler: successHandler)
         apiRequest.execute(completion)
@@ -92,7 +92,7 @@ extension AtlasAPIClient {
         var userInfo: [AnyHashable: Any]?
         if let token = token {
             userInfo = [Options.InfoKey.useSandboxEnvironment: token.useSandboxEnvironment,
-                        Options.InfoKey.clientId: token.clientId]
+                Options.InfoKey.clientId: token.clientId]
         }
 
         let authNotification: NSNotification.Name = isAuthorized ? .AtlasAuthorized : .AtlasDeauthorized

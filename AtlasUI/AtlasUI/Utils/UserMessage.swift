@@ -80,7 +80,8 @@ struct UserMessage {
 
     static func presentSelection(title: String?, message: String? = nil, actions: [ButtonAction]) {
         guard let topViewController = UIApplication.topViewController() else { return }
-        let alertView = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        let style: UIAlertControllerStyle = UIDevice.isPad ? .alert : .actionSheet
+        let alertView = UIAlertController(title: title, message: message, preferredStyle: style)
 
         actions.forEach { alertView.add(button: $0) }
 

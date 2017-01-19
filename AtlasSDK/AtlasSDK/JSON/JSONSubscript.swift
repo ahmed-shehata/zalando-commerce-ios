@@ -33,9 +33,9 @@ extension JSON {
         get {
             switch sub.jsonSubscript {
             case .index(let index):
-                return JSON(self.rawArray[index])
+                return JSON(self.arrayObject?[index])
             case .key(let key):
-                return JSON(self.rawDictionary[key])
+                return JSON(self.dictionaryObject?[key])
             }
         }
     }
