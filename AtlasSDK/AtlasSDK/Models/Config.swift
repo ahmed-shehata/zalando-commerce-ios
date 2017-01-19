@@ -54,13 +54,13 @@ extension Config {
 extension Config {
 
     init?(json: JSON, options: Options) {
-        guard let catalogURL = json["atlas-catalog-api"]["url"].url,
-            let checkoutURL = json["atlas-checkout-api"]["url"].url,
-            let checkoutGatewayURL = json["atlas-checkout-gateway"]["url"].url,
-            let loginURL = json["oauth2-provider"]["url"].url,
-            let selectionCallbackURL = json["atlas-checkout-api"]["payment"]["selection-callback"].url,
-            let thirdPartyCallbackURL = json["atlas-checkout-api"]["payment"]["third-party-callback"].url,
-            let availableSalesChannels = json["sales-channels"].array?.flatMap({ SalesChannel(json: $0) }),
+        let availableSalesChannels = json["sales-channels"].array.flatMap({ SalesChannel(json: $0) })
+        guard let catalogURL = json["atlas-catalog-api", "url"].url,
+            let checkoutURL = json["atlas-checkout-api", "url"].url,
+            let checkoutGatewayURL = json["atlas-checkout-gateway", "url"].url,
+            let loginURL = json["oauth2-provider", "url"].url,
+            let selectionCallbackURL = json["atlas-checkout-api", "payment", "selection-callback"].url,
+            let thirdPartyCallbackURL = json["atlas-checkout-api", "payment", "third-party-callback"].url,
             let salesChannel = availableSalesChannels.first(where: { $0.identifier == options.salesChannel })
             else { return nil }
 
@@ -80,7 +80,7 @@ extension Config {
 
         self.clientId = options.clientId
         self.useSandboxEnvironment = options.useSandboxEnvironment
-        self.guestCheckoutEnabled = json["atlas-guest-checkout-api"]["enabled"].bool ?? false
+        self.guestCheckoutEnabled = json["atlas-guest-checkout-api", "enabled"].bool ?? false
     }
 
 }

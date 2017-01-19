@@ -2,80 +2,18 @@
 //  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
-// Heavily influenced by [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
-
-// TODO:
-// - simplify arrayObject, array, arrayValue and dictionary as well
-// - drop raw... and type and use internalObject directly with casting (could be problematic with bools)
+// Concept influenced by [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
 
 import Foundation
 
-struct JSON: CustomStringConvertible {
-
-    enum DataType {
-        case number, string, bool, array, dictionary, null
-    }
-
-    var description: String {
-        return String(describing: internalObject)
-    }
+struct JSON {
 
     static let null = JSON(NSNull())
     private static let decimalNumberType = String(describing: type(of: NSNumber(value: 1)))
+    fileprivate static let dateFormatter = RFC3339DateFormatter()
 
-    private(set) var type: DataType = .null
-    private(set) var rawArray: [Any] = []
-    private(set) var rawDictionary: [String: Any] = [:]
-    private(set) var rawString: String = ""
-    private(set) var rawNumber: NSNumber = 0
-    private(set) var rawBool: Bool = false
-
-    fileprivate var internalObject: Any {
-        get {
-            switch self.type {
-            case .array:
-                return self.rawArray
-            case .dictionary:
-                return self.rawDictionary
-            case .string:
-                return self.rawString
-            case .number:
-                return self.rawNumber
-            case .bool:
-                return self.rawBool
-            default:
-                return JSON.null
-            }
-        }
-        set {
-            clearRawValues()
-            switch newValue {
-            case let number as NSNumber:
-                let newValueType = String(describing: type(of: newValue))
-                if newValueType == JSON.decimalNumberType {
-                    self.type = .number
-                    self.rawNumber = number
-                } else if let boolValue = newValue as? Bool {
-                    self.type = .bool
-                    self.rawBool = boolValue
-                }
-            case let bool as Bool:
-                self.type = .bool
-                self.rawBool = bool
-            case let string as String:
-                self.type = .string
-                self.rawString = string
-            case let array as [Any]:
-                self.type = .array
-                self.rawArray = array
-            case let dictionary as [String: Any]:
-                self.type = .dictionary
-                self.rawDictionary = dictionary
-            default:
-                self.type = .null
-            }
-        }
-    }
+    let isBool: Bool
+    let rawObject: Any
 
     init?(string: String,
           encoding: String.Encoding = .utf8,
@@ -86,7 +24,8 @@ struct JSON: CustomStringConvertible {
 
     init(data: Data, options: JSONSerialization.ReadingOptions = .allowFragments) throws {
         do {
-            self.internalObject = try JSONSerialization.jsonObject(with: data, options: options)
+            self.rawObject = try JSONSerialization.jsonObject(with: data, options: options)
+            self.isBool = JSON.isBool(object: rawObject)
         } catch let e {
             AtlasLogger.logError(e)
             throw e
@@ -94,16 +33,82 @@ struct JSON: CustomStringConvertible {
     }
 
     init(_ object: Any?) {
-        self.internalObject = object ?? JSON.null
+        self.rawObject = object ?? JSON.null
+        self.isBool = JSON.isBool(object: rawObject)
     }
 
-    private mutating func clearRawValues() {
-        rawArray = []
-        rawDictionary = [:]
-        rawString = ""
-        rawNumber = 0
-        rawBool = false
-        type = .null
+    private static func isBool(object: Any) -> Bool {
+        let objectType = String(describing: type(of: object))
+        return object is Bool && objectType != JSON.decimalNumberType
+    }
+
+}
+
+extension JSON: CustomStringConvertible {
+
+    var description: String {
+        return String(describing: rawObject)
+    }
+
+}
+
+extension JSON {
+
+    var arrayObject: [Any]? {
+        return self.rawObject as? [Any]
+    }
+
+    var array: [JSON] {
+        guard let array = self.arrayObject else { return [] }
+        return array.flatMap { JSON($0) }
+    }
+
+    var dictionaryObject: [String: Any]? {
+        return self.rawObject as? [String: Any]
+    }
+
+    var dictionary: [String: JSON]? {
+        guard let dictionary = self.dictionaryObject else { return [:] }
+        var newDictionary = [String: JSON](minimumCapacity: dictionary.count)
+        for (key, value) in dictionary {
+            newDictionary[key] = JSON(value)
+        }
+        return newDictionary
+    }
+
+    var string: String? {
+        return self.rawObject as? String
+    }
+
+    var number: NSNumber? {
+        guard !isBool else { return nil }
+        return self.rawObject as? NSNumber
+    }
+
+    var bool: Bool? {
+        guard isBool else { return nil }
+        return self.rawObject as? Bool
+    }
+
+    var int: Int? {
+        return number?.intValue
+    }
+
+    var float: Float? {
+        return number?.floatValue
+    }
+
+    var url: URL? {
+        guard let string = self.string else { return nil }
+        return URL(string: string)
+    }
+
+    var date: Date? {
+        guard let string = self.string,
+            let date = JSON.dateFormatter.date(from: string)
+            else { return nil }
+
+        return date
     }
 
 }
