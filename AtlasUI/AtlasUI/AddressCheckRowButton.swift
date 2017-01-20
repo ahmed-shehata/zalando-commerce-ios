@@ -5,7 +5,7 @@
 import UIKit
 import AtlasSDK
 
-class NormalizedAddressRowButton: RoundedButton {
+class AddressCheckRowButton: RoundedButton {
 
     var address: CheckAddress?
 

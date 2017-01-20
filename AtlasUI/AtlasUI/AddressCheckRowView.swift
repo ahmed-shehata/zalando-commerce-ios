@@ -5,7 +5,7 @@
 import UIKit
 import AtlasSDK
 
-class NormalizedAddressRowView: RoundedView {
+class AddressCheckRowView: RoundedView {
 
     let stackView: UIStackView = {
         let stackView = UIStackView()
@@ -36,25 +36,25 @@ class NormalizedAddressRowView: RoundedView {
         return label
     }()
 
-    let selectButton: NormalizedAddressRowButton = NormalizedAddressRowButton(type: .custom)
+    let selectButton: AddressCheckRowButton = AddressCheckRowButton(type: .custom)
 
     let editButtonContainer: UIView = UIView()
 
-    let editButton: NormalizedAddressRowButton = {
-        let button = NormalizedAddressRowButton(type: .custom)
-        button.setImage(UIImage(named: "pen", bundledWith: NormalizedAddressRowView.self), for: .normal)
+    let editButton: AddressCheckRowButton = {
+        let button = AddressCheckRowButton(type: .custom)
+        button.setImage(UIImage(named: "pen", bundledWith: AddressCheckRowView.self), for: .normal)
         return button
     }()
 
     func selectRow(selected: Bool) {
         borderColor = selected ? .orange : UIColor(hex: 0xE5E5E5)
         roundIndicator.borderColor = selected ? .orange : .lightGray
-        editButton.setImage(UIImage(named: selected ? "pen-selected" : "pen", bundledWith: NormalizedAddressRowView.self), for: .normal)
+        editButton.setImage(UIImage(named: selected ? "pen-selected" : "pen", bundledWith: AddressCheckRowView.self), for: .normal)
     }
 
 }
 
-extension NormalizedAddressRowView: UIBuilder {
+extension AddressCheckRowView: UIBuilder {
 
     func configureView() {
         cornerRadius = 5
@@ -95,7 +95,7 @@ extension NormalizedAddressRowView: UIBuilder {
 
 }
 
-extension NormalizedAddressRowView: UIDataBuilder {
+extension AddressCheckRowView: UIDataBuilder {
 
     typealias T = CheckAddress
 

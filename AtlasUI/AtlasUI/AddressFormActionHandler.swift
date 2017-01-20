@@ -24,7 +24,7 @@ protocol AddressFormActionHandler {
 
 extension AddressFormActionHandler {
 
-    func validateAddress(dataModel: AddressFormDataModel, completion: @escaping NormalizedAddressCompletion) {
+    func validateAddress(dataModel: AddressFormDataModel, completion: @escaping AddressCheckViewControllerCompletion) {
         guard
             let request = CheckAddressRequest(dataModel: dataModel),
             let userCheckAddress = CheckAddress(dataModel: dataModel) else {
@@ -42,17 +42,30 @@ extension AddressFormActionHandler {
             case .correct:
                 completion(.selectAddress(address: userCheckAddress))
             case .notCorrect:
-                UserMessage.displayError(error: AtlasCheckoutError.addressInvalid)
-                completion(.error)
+                let header = Localizer.format(string: "addressCheckView.header.notCorrect")
+                let originalAddress = AddressCheckDataModel.Address(title: Localizer.format(string: "addressCheckView.originalAddress"),
+                                                                    address: userCheckAddress)
+
+                let dataModel = AddressCheckDataModel(header: header, addresses: [originalAddress])
+                self.displayAddressCheckView(dataModel: dataModel, completion: completion)
             case .normalized:
-                let viewController = NormalizedAddressViewController(userAddress: userCheckAddress,
-                                                                     normalizedAddress: checkAddressResponse.normalizedAddress,
-                                                                     completion: completion)
-                let navigationController = UINavigationController(rootViewController: viewController)
-                navigationController.modalPresentationStyle = .overCurrentContext
-                AtlasUIViewController.shared?.show(navigationController, sender: nil)
+                let header = Localizer.format(string: "addressCheckView.header.normalized")
+                let originalAddress = AddressCheckDataModel.Address(title: Localizer.format(string: "addressCheckView.originalAddress"),
+                                                                    address: userCheckAddress)
+                let normalizedAddress = AddressCheckDataModel.Address(title: Localizer.format(string: "addressCheckView.suggestedAddress"),
+                                                                      address: checkAddressResponse.normalizedAddress)
+
+                let dataModel = AddressCheckDataModel(header: header, addresses: [originalAddress, normalizedAddress])
+                self.displayAddressCheckView(dataModel: dataModel, completion: completion)
             }
         }
+    }
+
+    private func displayAddressCheckView(dataModel: AddressCheckDataModel, completion: @escaping AddressCheckViewControllerCompletion) {
+        let viewController = AddressCheckViewController(dataModel: dataModel, completion: completion)
+        let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.modalPresentationStyle = .overCurrentContext
+        AtlasUIViewController.shared?.show(navigationController, sender: nil)
     }
 
 }

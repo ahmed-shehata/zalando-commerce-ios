@@ -71,6 +71,11 @@ extension UIView {
         constraint.isActive = true
     }
 
+    func snap(toTopViewController viewController: UIViewController) {
+        translatesAutoresizingMaskIntoConstraints = false
+        topAnchor.constraint(equalTo: viewController.topLayoutGuide.bottomAnchor).isActive = true
+    }
+
     func centerInSuperview() {
         centerHorizontallyInSuperview()
         centerVerticallyInSuperview()

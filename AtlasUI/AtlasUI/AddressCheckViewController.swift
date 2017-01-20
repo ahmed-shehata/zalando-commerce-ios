@@ -5,26 +5,29 @@
 import UIKit
 import AtlasSDK
 
-enum NormalizedAddressResult {
+enum AddressCheckResult {
     case selectAddress(address: CheckAddress)
     case editAddress(address: CheckAddress)
     case cancel
     case error
 }
 
-typealias NormalizedAddressCompletion = (NormalizedAddressResult) -> Void
+typealias AddressCheckViewControllerCompletion = (AddressCheckResult) -> Void
 
-class NormalizedAddressViewController: UIViewController {
+class AddressCheckViewController: UIViewController {
 
-    let rootStackView: NormalizedAddressStackView = {
-        let stackView = NormalizedAddressStackView()
+    let rootStackView: AddressCheckStackView = {
+        let stackView = AddressCheckStackView()
         stackView.axis = .vertical
         stackView.spacing = 5
         stackView.layoutMargins = UIEdgeInsets(top: 10, left: 20, bottom: 0, right: 20)
         stackView.isLayoutMarginsRelativeArrangement = true
-        let editButtonSelector = #selector(editButtonPressed(button:))
-        stackView.originalAddressRowView.editButton.addTarget(self, action: editButtonSelector, for: .touchUpInside)
-        stackView.suggestedAddressRowView.editButton.addTarget(self, action: editButtonSelector, for: .touchUpInside)
+
+// TODO: THERE ARE NO ADDRESSES ROWS AT THIS POINT AS IT IS ADDED LATER :(
+
+        stackView.addressesRow.forEach { (_, view) in
+            view.editButton.addTarget(self, action: #selector(editButtonPressed(button:)), for: .touchUpInside)
+        }
         return stackView
     }()
 
@@ -39,13 +42,11 @@ class NormalizedAddressViewController: UIViewController {
         return button
     }()
 
-    let userAddress: CheckAddress
-    let normalizedAddress: CheckAddress
-    let completion: NormalizedAddressCompletion
+    let dataModel: AddressCheckDataModel
+    let completion: AddressCheckViewControllerCompletion
 
-    init(userAddress: CheckAddress, normalizedAddress: CheckAddress, completion: @escaping NormalizedAddressCompletion) {
-        self.userAddress = userAddress
-        self.normalizedAddress = normalizedAddress
+    init(dataModel: AddressCheckDataModel, completion: @escaping AddressCheckViewControllerCompletion) {
+        self.dataModel = dataModel
         self.completion = completion
         super.init(nibName: nil, bundle: nil)
     }
@@ -59,7 +60,7 @@ class NormalizedAddressViewController: UIViewController {
 
         configureNavigationBar()
         buildView()
-        rootStackView.configure(viewModel: (userAddress: userAddress, normalizedAddress: normalizedAddress))
+        rootStackView.configure(viewModel: dataModel)
     }
 
     private func configureNavigationBar() {
@@ -67,7 +68,7 @@ class NormalizedAddressViewController: UIViewController {
                                                                 style: .plain,
                                                                 target: self,
                                                                 action: #selector(cancelButtonPressed))
-        self.title = Localizer.format(string: "addressNormalizedView.title")
+        self.title = Localizer.format(string: "addressCheckView.title")
     }
 
     private dynamic func cancelButtonPressed() {
@@ -83,7 +84,7 @@ class NormalizedAddressViewController: UIViewController {
         finish(withResult: .selectAddress(address: selectedAddress))
     }
 
-    private dynamic func editButtonPressed(button: NormalizedAddressRowButton) {
+    private dynamic func editButtonPressed(button: AddressCheckRowButton) {
         guard let address = button.address else {
             finish(withResult: .cancel)
             return
@@ -92,14 +93,14 @@ class NormalizedAddressViewController: UIViewController {
         finish(withResult: .editAddress(address: address))
     }
 
-    private func finish(withResult result: NormalizedAddressResult) {
+    private func finish(withResult result: AddressCheckResult) {
         completion(result)
         dismiss(animated: true, completion: nil)
     }
 
 }
 
-extension NormalizedAddressViewController: UIBuilder {
+extension AddressCheckViewController: UIBuilder {
 
     func configureView() {
         view.backgroundColor = .white
@@ -108,7 +109,7 @@ extension NormalizedAddressViewController: UIBuilder {
     }
 
     func configureConstraints() {
-        rootStackView.snap(toSuperview: .top)
+        rootStackView.snap(toTopViewController: self)
         rootStackView.snap(toSuperview: .right)
         rootStackView.snap(toSuperview: .left)
 
