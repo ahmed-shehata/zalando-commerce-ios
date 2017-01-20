@@ -6,10 +6,18 @@ import UIKit
 
 class RoundedView: UIView {
 
-    var cornerRadius: CGFloat = 0
-    var isCircle: Bool = false
-    var borderWidth: CGFloat = 0
-    var borderColor: UIColor = .clear
+    var cornerRadius: CGFloat = 0 {
+        didSet { setNeedsLayout() }
+    }
+    var isCircle: Bool = false {
+        didSet { setNeedsLayout() }
+    }
+    var borderWidth: CGFloat = 0 {
+        didSet { setNeedsLayout() }
+    }
+    var borderColor: UIColor = .clear {
+        didSet { setNeedsLayout() }
+    }
 
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -27,10 +35,18 @@ class RoundedView: UIView {
 
 class RoundedImageView: UIImageView {
 
-    var cornerRadius: CGFloat = 0
-    var isCircle: Bool = false
-    var borderWidth: CGFloat = 0
-    var borderColor: UIColor = .clear
+    var cornerRadius: CGFloat = 0 {
+        didSet { setNeedsLayout() }
+    }
+    var isCircle: Bool = false {
+        didSet { setNeedsLayout() }
+    }
+    var borderWidth: CGFloat = 0 {
+        didSet { setNeedsLayout() }
+    }
+    var borderColor: UIColor = .clear {
+        didSet { setNeedsLayout() }
+    }
 
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -48,10 +64,18 @@ class RoundedImageView: UIImageView {
 
 class RoundedButton: UIButton {
 
-    var cornerRadius: CGFloat = 0
-    var isCircle: Bool = false
-    var borderWidth: CGFloat = 0
-    var borderColor: UIColor = .clear
+    var cornerRadius: CGFloat = 0 {
+        didSet { setNeedsLayout() }
+    }
+    var isCircle: Bool = false {
+        didSet { setNeedsLayout() }
+    }
+    var borderWidth: CGFloat = 0 {
+        didSet { setNeedsLayout() }
+    }
+    var borderColor: UIColor = .clear {
+        didSet { setNeedsLayout() }
+    }
 
     override func layoutSubviews() {
         super.layoutSubviews()

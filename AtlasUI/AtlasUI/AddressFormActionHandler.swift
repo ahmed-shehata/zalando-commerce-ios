@@ -9,6 +9,7 @@ import AtlasSDK
 protocol AddressFormActionHandlerDelegate: NSObjectProtocol {
 
     func addressProcessingFinished()
+    func updateView(withDataModel dataModel: AddressFormDataModel)
     func dismissView(withAddress address: EquatableAddress, animated: Bool)
 
 }
@@ -23,28 +24,30 @@ protocol AddressFormActionHandler {
 
 extension AddressFormActionHandler {
 
-    func validateAddress(dataModel: AddressFormDataModel, completion: @escaping (Bool) -> Void) {
-        guard let request = CheckAddressRequest(dataModel: dataModel) else {
-            completion(false)
-            return
+    func validateAddress(dataModel: AddressFormDataModel, completion: @escaping NormalizedAddressCompletion) {
+        guard
+            let request = CheckAddressRequest(dataModel: dataModel),
+            let userCheckAddress = CheckAddress(dataModel: dataModel) else {
+                completion(.error)
+                return
         }
 
         AtlasUIClient.checkAddress(request) { result in
             guard let checkAddressResponse = result.process() else {
-                completion(false)
+                completion(.error)
                 return
             }
 
             switch checkAddressResponse.status {
             case .correct:
-                completion(true)
+                completion(.selectAddress(address: userCheckAddress))
             case .notCorrect:
                 UserMessage.displayError(error: AtlasCheckoutError.addressInvalid)
-                completion(false)
+                completion(.error)
             case .normalized:
-                guard let userAddress = CheckAddress(dataModel: dataModel) else { return }
-                let normalizedAddress = checkAddressResponse.normalizedAddress
-                let viewController = NormalizedAddressViewController(userAddress: userAddress, normalizedAddress: normalizedAddress)
+                let viewController = NormalizedAddressViewController(userAddress: userCheckAddress,
+                                                                     normalizedAddress: checkAddressResponse.normalizedAddress,
+                                                                     completion: completion)
                 let navigationController = UINavigationController(rootViewController: viewController)
                 navigationController.modalPresentationStyle = .overCurrentContext
                 AtlasUIViewController.shared?.show(navigationController, sender: nil)

@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import AtlasSDK
 
 class NormalizedAddressRowView: RoundedView {
 
@@ -16,6 +17,7 @@ class NormalizedAddressRowView: RoundedView {
     }()
 
     let roundIndicatorContainer: UIView = UIView()
+
     let roundIndicator: RoundedView = {
         let view = RoundedView()
         view.isCircle = true
@@ -34,12 +36,21 @@ class NormalizedAddressRowView: RoundedView {
         return label
     }()
 
+    let selectButton: NormalizedAddressRowButton = NormalizedAddressRowButton(type: .custom)
+
     let editButtonContainer: UIView = UIView()
-    let editButton: UIButton = {
-        let button = RoundedButton(type: .custom)
+
+    let editButton: NormalizedAddressRowButton = {
+        let button = NormalizedAddressRowButton(type: .custom)
         button.setImage(UIImage(named: "pen", bundledWith: NormalizedAddressRowView.self), for: .normal)
         return button
     }()
+
+    func selectRow(selected: Bool) {
+        borderColor = selected ? .orange : UIColor(hex: 0xE5E5E5)
+        roundIndicator.borderColor = selected ? .orange : .lightGray
+        editButton.setImage(UIImage(named: selected ? "pen-selected" : "pen", bundledWith: NormalizedAddressRowView.self), for: .normal)
+    }
 
 }
 
@@ -51,6 +62,8 @@ extension NormalizedAddressRowView: UIBuilder {
         borderColor = UIColor(hex: 0xE5E5E5)
 
         addSubview(stackView)
+        addSubview(selectButton)
+
         stackView.addArrangedSubview(roundIndicatorContainer)
         stackView.addArrangedSubview(label)
         stackView.addArrangedSubview(editButtonContainer)
@@ -73,16 +86,32 @@ extension NormalizedAddressRowView: UIBuilder {
         editButton.setWidth(equalToConstant: 30)
         editButton.snap(toSuperview: .right, constant: -10)
         editButton.snap(toSuperview: .left, constant: 10)
+
+        selectButton.snap(toSuperview: .top)
+        selectButton.snap(toSuperview: .right, constant: -50)
+        selectButton.snap(toSuperview: .bottom)
+        selectButton.snap(toSuperview: .left)
     }
 
 }
 
 extension NormalizedAddressRowView: UIDataBuilder {
 
-    typealias T = String
+    typealias T = CheckAddress
 
-    func configure(viewModel: String) {
-        label.text = viewModel
+    func configure(viewModel: CheckAddress) {
+        selectButton.address = viewModel
+        editButton.address = viewModel
+        label.text = viewModel.stringValue
+    }
+
+}
+
+fileprivate extension CheckAddress {
+
+    var stringValue: String {
+        let values = [street, additional, zip, city, Localizer.countryName(forCountryCode: countryCode)]
+        return values.flatMap { $0 }.joined(separator: "\n")
     }
 
 }

@@ -133,3 +133,20 @@ extension CheckAddress {
     }
 
 }
+
+extension AddressFormDataModel {
+
+    fileprivate var isNormalAddress: Bool {
+        return pickupPointId == nil && pickupPointMemberId == nil
+    }
+
+    func update(forCheckAddress address: CheckAddress) {
+        if isNormalAddress {
+            street = address.street
+            additional = address.additional
+        }
+        zip = address.zip
+        city = address.city
+    }
+
+}

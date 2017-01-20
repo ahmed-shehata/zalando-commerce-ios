@@ -52,3 +52,13 @@ extension CheckAddress: JSONRepresentable {
     }
 
 }
+
+public func === (lhs: CheckAddress?, rhs: CheckAddress?) -> Bool {
+    guard let lhs = lhs, let rhs = rhs else { return false }
+
+    return lhs.street == rhs.street
+        && lhs.additional == rhs.additional
+        && lhs.zip == rhs.zip
+        && lhs.city == rhs.city
+        && lhs.countryCode == rhs.countryCode
+}

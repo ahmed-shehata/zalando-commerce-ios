@@ -10,7 +10,7 @@ class NormalizedAddressStackView: UIStackView {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.text = Localizer.format(string: "addressNormalizedView.title")
+        label.text = Localizer.format(string: "addressNormalizedView.header")
         label.font = .systemFont(ofSize: 14, weight: UIFontWeightLight)
         label.textColor = UIColor(hex: 0x7F7F7F)
         label.textAlignment = .center
@@ -27,7 +27,11 @@ class NormalizedAddressStackView: UIStackView {
         return label
     }()
 
-    let originalAddressRowView: NormalizedAddressRowView = NormalizedAddressRowView()
+    let originalAddressRowView: NormalizedAddressRowView = {
+        let view = NormalizedAddressRowView()
+        view.selectButton.addTarget(self, action: #selector(addressRowSelected(button:)), for: .touchUpInside)
+        return view
+    }()
 
     let suggestedAddressTitleLabel: UILabel = {
         let label = UILabel()
@@ -39,7 +43,22 @@ class NormalizedAddressStackView: UIStackView {
         return label
     }()
 
-    let suggestedAddressRowView: NormalizedAddressRowView = NormalizedAddressRowView()
+    let suggestedAddressRowView: NormalizedAddressRowView = {
+        let view = NormalizedAddressRowView()
+        view.selectButton.addTarget(self, action: #selector(addressRowSelected(button:)), for: .touchUpInside)
+        return view
+    }()
+
+    var selectedAddress: CheckAddress? {
+        didSet {
+            originalAddressRowView.selectRow(selected: originalAddressRowView.selectButton.address === selectedAddress)
+            suggestedAddressRowView.selectRow(selected: suggestedAddressRowView.selectButton.address === selectedAddress)
+        }
+    }
+
+    dynamic private func addressRowSelected(button: NormalizedAddressRowButton) {
+        selectedAddress = button.address
+    }
 
 }
 
@@ -60,17 +79,9 @@ extension NormalizedAddressStackView: UIDataBuilder {
     typealias T = (userAddress: CheckAddress, normalizedAddress: CheckAddress)
 
     func configure(viewModel: (userAddress: CheckAddress, normalizedAddress: CheckAddress)) {
-        originalAddressRowView.configure(viewModel: viewModel.userAddress.stringValue)
-        suggestedAddressRowView.configure(viewModel: viewModel.normalizedAddress.stringValue)
-    }
-
-}
-
-fileprivate extension CheckAddress {
-
-    var stringValue: String {
-        let values = [street, additional, zip, city, Localizer.countryName(forCountryCode: countryCode)]
-        return values.flatMap { $0 }.joined(separator: "\n")
+        originalAddressRowView.configure(viewModel: viewModel.userAddress)
+        suggestedAddressRowView.configure(viewModel: viewModel.normalizedAddress)
+        selectedAddress = viewModel.normalizedAddress
     }
 
 }

@@ -39,7 +39,8 @@
 "addressFormView.street" = "Street";
 "addressFormView.title" = "Title";
 "addressFormView.zipcode" = "Zipcode";
-"addressNormalizedView.title" = "We found another version for your address\nWhich one do you want to use?";
+"addressNormalizedView.title" = "Check your address";
+"addressNormalizedView.header" = "We found another version for your address\nWhich one do you want to use?";
 "addressNormalizedView.originalAddress" = "Your address";
 "addressNormalizedView.suggestedAddress" = "Suggested address";
 "addressListView.add.cellTitle" = "Add new address...";

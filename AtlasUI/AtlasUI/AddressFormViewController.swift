@@ -133,4 +133,8 @@ extension AddressFormViewController: AddressFormActionHandlerDelegate {
         }
     }
 
+    func updateView(withDataModel dataModel: AddressFormDataModel) {
+        addressStackView.configure(viewModel: dataModel)
+    }
+
 }

@@ -137,6 +137,7 @@
 		E97B1BE91E2E704800FC0195 /* NormalizedAddressStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B1BE81E2E704800FC0195 /* NormalizedAddressStackView.swift */; };
 		E98453581DF59FCF001F6C51 /* GuestCheckoutCreateAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A5CF928227B72DDBAB9949CA5ED28B /* GuestCheckoutCreateAddressActionHandler.swift */; };
 		E9A115391E2FAA8C001DC643 /* NormalizedAddressRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A115381E2FAA8C001DC643 /* NormalizedAddressRowView.swift */; };
+		E9D273D41E313D47002F0007 /* NormalizedAddressRowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D273D31E313D47002F0007 /* NormalizedAddressRowButton.swift */; };
 		EBB0CE9B6F72CCBC101BCFD52F5E5993 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD2C09882EF82C93CC8615C9E0F59251 /* Default-568h@2x.png */; };
 		EF570993CFA4FDF0361679E931D55B8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94F33C041120EF12B441AE2E84A48050 /* Assets.xcassets */; };
 		F1E585532601768D1683E758E8C10B4C /* GuestAddressManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19740711F5745D3D17790829088FE83B /* GuestAddressManagerTests.swift */; };
@@ -316,6 +317,7 @@
 		E97B1BE51E2E6DDD00FC0195 /* NormalizedAddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalizedAddressViewController.swift; sourceTree = "<group>"; };
 		E97B1BE81E2E704800FC0195 /* NormalizedAddressStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalizedAddressStackView.swift; sourceTree = "<group>"; };
 		E9A115381E2FAA8C001DC643 /* NormalizedAddressRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalizedAddressRowView.swift; sourceTree = "<group>"; };
+		E9D273D31E313D47002F0007 /* NormalizedAddressRowButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalizedAddressRowButton.swift; sourceTree = "<group>"; };
 		EAB966A42D2CA88D9E7F3931C371C95B /* URLRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestTests.swift; sourceTree = "<group>"; };
 		EB063447B26DE3D42F7736012B8921AA /* AddressListActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressListActionHandler.swift; sourceTree = "<group>"; };
 		EFCBCCBB4FB49BE6429AD9E29F595747 /* FormattableAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormattableAddress.swift; sourceTree = "<group>"; };
@@ -686,6 +688,7 @@
 				E97B1BE51E2E6DDD00FC0195 /* NormalizedAddressViewController.swift */,
 				E97B1BE81E2E704800FC0195 /* NormalizedAddressStackView.swift */,
 				E9A115381E2FAA8C001DC643 /* NormalizedAddressRowView.swift */,
+				E9D273D31E313D47002F0007 /* NormalizedAddressRowButton.swift */,
 			);
 			name = "Normalized Address";
 			sourceTree = "<group>";
@@ -1013,6 +1016,7 @@
 				54F18A56CF79CF25599259CA5EB5D394 /* PickerKeyboardInputView.swift in Sources */,
 				924051DE99309804FFDA4F5E66FE4D65 /* RoundedViews.swift in Sources */,
 				864F340AF805B09712DAB1A854B45608 /* LoggedInUpdateAddressActionHandler.swift in Sources */,
+				E9D273D41E313D47002F0007 /* NormalizedAddressRowButton.swift in Sources */,
 				FE291AE8A3F061A3FA7574CD75F572D7 /* URLComponents.swift in Sources */,
 				ACA27CD89DD3C13E1FC00CAAF5849989 /* AddressListActionHandler.swift in Sources */,
 				16954EEE7CCDD0CE9815224EA8FF317E /* LoggedInCreateAddressActionHandler.swift in Sources */,
