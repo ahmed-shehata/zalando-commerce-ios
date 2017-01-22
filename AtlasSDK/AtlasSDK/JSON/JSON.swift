@@ -67,7 +67,7 @@ extension JSON {
         return self.rawObject as? [String: Any]
     }
 
-    var dictionary: [String: JSON]? {
+    var dictionary: [String: JSON] {
         guard let dictionary = self.dictionaryObject else { return [:] }
         var newDictionary = [String: JSON](minimumCapacity: dictionary.count)
         for (key, value) in dictionary {
