@@ -22,12 +22,6 @@ class AddressCheckViewController: UIViewController {
         stackView.spacing = 5
         stackView.layoutMargins = UIEdgeInsets(top: 10, left: 20, bottom: 0, right: 20)
         stackView.isLayoutMarginsRelativeArrangement = true
-
-// TODO: THERE ARE NO ADDRESSES ROWS AT THIS POINT AS IT IS ADDED LATER :(
-
-        stackView.addressesRow.forEach { (_, view) in
-            view.editButton.addTarget(self, action: #selector(editButtonPressed(button:)), for: .touchUpInside)
-        }
         return stackView
     }()
 
@@ -61,6 +55,7 @@ class AddressCheckViewController: UIViewController {
         configureNavigationBar()
         buildView()
         rootStackView.configure(viewModel: dataModel)
+        configureEditButtonAction()
     }
 
     private func configureNavigationBar() {
@@ -69,6 +64,12 @@ class AddressCheckViewController: UIViewController {
                                                                 target: self,
                                                                 action: #selector(cancelButtonPressed))
         self.title = Localizer.format(string: "addressCheckView.title")
+    }
+
+    private func configureEditButtonAction() {
+        rootStackView.addressesRow.forEach { (_, view) in
+            view.editButton.addTarget(self, action: #selector(editButtonPressed(button:)), for: .touchUpInside)
+        }
     }
 
     private dynamic func cancelButtonPressed() {
