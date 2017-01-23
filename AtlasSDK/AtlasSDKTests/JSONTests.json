@@ -17,7 +17,10 @@
 
     "dates": {
         "secondsPrecision": "2016-07-06T16:33:10+0000",
-        "millisecondsPrecision": "2016-07-06T16:33:10.537+0000"
+        "millisecondsPrecision": "2016-07-06T16:33:10.537+0000",
+        "wrongDate": "2016-07-32T16:33:10.537+0000",
+        "wrongFormat": "2016-02-12 16:33:10",
+        "notDate": "2016-N0-7a date at all"
     },
 
     "urls": {

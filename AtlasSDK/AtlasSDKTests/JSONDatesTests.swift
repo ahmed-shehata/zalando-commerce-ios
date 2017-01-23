@@ -19,5 +19,17 @@ class JSONDatesTests: JSONTestCase {
         expect(date) == json["dates", "millisecondsPrecision"].date
     }
 
+    func testWrongDate() {
+        expect(self.json["dates", "wrongDate"].date).to(beNil())
+    }
+
+    func testWrongFormat() {
+        expect(self.json["dates", "wrongFormat"].date).to(beNil())
+    }
+
+    func testNotDate() {
+        expect(self.json["dates", "notDate"].date).to(beNil())
+    }
+
 }
 
