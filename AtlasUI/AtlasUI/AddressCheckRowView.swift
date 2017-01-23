@@ -97,9 +97,9 @@ extension AddressCheckRowView: UIBuilder {
 
 extension AddressCheckRowView: UIDataBuilder {
 
-    typealias T = CheckAddress
+    typealias T = AddressCheck
 
-    func configure(viewModel: CheckAddress) {
+    func configure(viewModel: AddressCheck) {
         selectButton.address = viewModel
         editButton.address = viewModel
         label.text = viewModel.stringValue
@@ -107,7 +107,7 @@ extension AddressCheckRowView: UIDataBuilder {
 
 }
 
-fileprivate extension CheckAddress {
+fileprivate extension AddressCheck {
 
     var stringValue: String {
         let values = [street, additional, zip, city, Localizer.countryName(forCountryCode: countryCode)]

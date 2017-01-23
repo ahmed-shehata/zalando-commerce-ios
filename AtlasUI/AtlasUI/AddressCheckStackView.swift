@@ -12,7 +12,7 @@ struct AddressCheckDataModel {
 
     struct Address {
         let title: String
-        let address: CheckAddress
+        let address: AddressCheck
     }
 
 }
@@ -29,9 +29,14 @@ class AddressCheckStackView: UIStackView {
     }()
 
     var addressesRow: [(label: UILabel, view: AddressCheckRowView)] = []
-    var selectedAddress: CheckAddress? {
+    var selectedAddress: AddressCheck? {
         didSet {
-            addressesRow.forEach { $0.view.selectRow(selected: $0.view.selectButton.address === selectedAddress) }
+            addressesRow.forEach {
+                guard let viewAddress = $0.view.selectButton.address, let selectedAddress = selectedAddress else {
+                    return $0.view.selectRow(selected: false)
+                }
+                $0.view.selectRow(selected: viewAddress === selectedAddress)
+            }
         }
     }
 
@@ -45,7 +50,7 @@ class AddressCheckStackView: UIStackView {
         return label
     }
 
-    fileprivate func createAddressRowView(address: CheckAddress) -> AddressCheckRowView {
+    fileprivate func createAddressRowView(address: AddressCheck) -> AddressCheckRowView {
         let view = AddressCheckRowView()
         view.selectButton.addTarget(self, action: #selector(addressRowSelected(button:)), for: .touchUpInside)
         return view

@@ -3,7 +3,7 @@
 //
 
 public struct CheckAddressRequest {
-    public let address: CheckAddress
+    public let address: AddressCheck
     public let pickupPoint: PickupPoint?
 }
 

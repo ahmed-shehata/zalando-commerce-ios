@@ -9,8 +9,8 @@ import AtlasSDK
 protocol AddressFormActionHandlerDelegate: NSObjectProtocol {
 
     func addressProcessingFinished()
-    func updateView(withDataModel dataModel: AddressFormDataModel)
-    func dismissView(withAddress address: EquatableAddress, animated: Bool)
+    func updateView(with dataModel: AddressFormDataModel)
+    func dismissView(with address: EquatableAddress, animated: Bool)
 
 }
 
@@ -27,7 +27,7 @@ extension AddressFormActionHandler {
     func validateAddress(dataModel: AddressFormDataModel, completion: @escaping AddressCheckViewControllerCompletion) {
         guard
             let request = CheckAddressRequest(dataModel: dataModel),
-            let userCheckAddress = CheckAddress(dataModel: dataModel) else {
+            let userCheckAddress = AddressCheck(dataModel: dataModel) else {
                 completion(.error)
                 return
         }

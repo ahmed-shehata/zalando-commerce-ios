@@ -6,8 +6,8 @@ import UIKit
 import AtlasSDK
 
 enum AddressCheckResult {
-    case selectAddress(address: CheckAddress)
-    case editAddress(address: CheckAddress)
+    case selectAddress(address: AddressCheck)
+    case editAddress(address: AddressCheck)
     case cancel
     case error
 }
@@ -77,19 +77,13 @@ class AddressCheckViewController: UIViewController {
     }
 
     private dynamic func submitButtonPressed() {
-        guard let selectedAddress = rootStackView.selectedAddress else {
-            finish(withResult: .cancel)
-            return
-        }
+        guard let selectedAddress = rootStackView.selectedAddress else { return finish(withResult: .cancel) }
 
         finish(withResult: .selectAddress(address: selectedAddress))
     }
 
     private dynamic func editButtonPressed(button: AddressCheckRowButton) {
-        guard let address = button.address else {
-            finish(withResult: .cancel)
-            return
-        }
+        guard let address = button.address else { return finish(withResult: .cancel) }
 
         finish(withResult: .editAddress(address: address))
     }

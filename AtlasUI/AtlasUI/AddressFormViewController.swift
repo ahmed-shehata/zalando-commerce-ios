@@ -127,13 +127,13 @@ extension AddressFormViewController: AddressFormActionHandlerDelegate {
         navigationItem.rightBarButtonItem?.isEnabled = true
     }
 
-    func dismissView(withAddress address: EquatableAddress, animated: Bool) {
+    func dismissView(with address: EquatableAddress, animated: Bool) {
         dismissView(animated: animated) { [weak self] in
             self?.completion?(address, self?.viewModel.dataModel.email)
         }
     }
 
-    func updateView(withDataModel dataModel: AddressFormDataModel) {
+    func updateView(with dataModel: AddressFormDataModel) {
         addressStackView.configure(viewModel: dataModel)
     }
 

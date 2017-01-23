@@ -7,6 +7,6 @@ import AtlasSDK
 
 class AddressCheckRowButton: RoundedButton {
 
-    var address: CheckAddress?
+    var address: AddressCheck?
 
 }

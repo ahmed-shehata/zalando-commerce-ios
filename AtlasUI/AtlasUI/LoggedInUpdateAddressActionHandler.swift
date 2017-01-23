@@ -13,15 +13,15 @@ struct LoggedInUpdateAddressActionHandler: AddressFormActionHandler {
         validateAddress(dataModel: dataModel) { result in
             guard case .selectAddress(let selectedAddress) = result else {
                 if case .editAddress(let editAddress) = result {
-                    dataModel.update(forCheckAddress: editAddress)
-                    self.delegate?.updateView(withDataModel: dataModel)
+                    dataModel.update(from: editAddress)
+                    self.delegate?.updateView(with: dataModel)
                 }
                 self.delegate?.addressProcessingFinished()
                 return
             }
 
-            dataModel.update(forCheckAddress: selectedAddress)
-            self.delegate?.updateView(withDataModel: dataModel)
+            dataModel.update(from: selectedAddress)
+            self.delegate?.updateView(with: dataModel)
 
             guard let addressId = dataModel.addressId,
                 let request = UpdateAddressRequest(dataModel: dataModel) else {
@@ -35,7 +35,7 @@ struct LoggedInUpdateAddressActionHandler: AddressFormActionHandler {
                     return
                 }
 
-                self.delegate?.dismissView(withAddress: address, animated: true)
+                self.delegate?.dismissView(with: address, animated: true)
             }
         }
     }
