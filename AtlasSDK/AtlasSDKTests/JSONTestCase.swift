@@ -17,7 +17,7 @@ class JSONTestCase: XCTestCase {
         loadTestsFile()
     }
 
-    func equalJson<T: Equatable>(path: JSONSubscript...) -> MatcherFunc<T?> {
+    func equalJson<T: Equatable>(rawObjectAtPath path: JSONSubscript...) -> MatcherFunc<T?> {
         return MatcherFunc { actualExpression, failureMessage in
             guard let jsonValue = self.json[path]?.rawObject as? T
                 else { return false }

@@ -9,7 +9,8 @@ import Foundation
 struct JSON {
 
     static let null = JSON(NSNull())
-    private static let decimalNumberType = String(describing: type(of: NSNumber(value: 1)))
+    private static let numberType = String(describing: type(of: NSNumber(value: 1)))
+    private static let decimalNumberType = String(describing: type(of: NSDecimalNumber(value: 1)))
     fileprivate static let dateFormatter = RFC3339DateFormatter()
 
     let isBool: Bool
@@ -39,7 +40,7 @@ struct JSON {
 
     private static func isBool(object: Any) -> Bool {
         let objectType = String(describing: type(of: object))
-        return object is Bool && objectType != JSON.decimalNumberType
+        return object is Bool && objectType != JSON.numberType && objectType != JSON.decimalNumberType
     }
 
 }

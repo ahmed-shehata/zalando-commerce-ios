@@ -10,11 +10,13 @@ import Nimble
 class JSONBoolsTests: JSONTestCase {
 
     func testTrue() {
-        expect(true).to(equalJson(path: "bools", "true"))
+        expect(true).to(equalJson(rawObjectAtPath: "bools", "true"))
+        expect(self.json["bools", "true"].bool).to(beTrue())
     }
 
     func testFalse() {
-        expect(false).to(equalJson(path: "bools", "false"))
+        expect(false).to(equalJson(rawObjectAtPath: "bools", "false"))
+        expect(self.json["bools", "false"].bool).to(beFalse())
     }
 
     func testNotNumber() {
