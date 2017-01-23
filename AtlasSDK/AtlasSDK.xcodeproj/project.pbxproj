@@ -81,6 +81,7 @@
 		8186B2A41E34B39F005B1A68 /* JSONDatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B2A31E34B39F005B1A68 /* JSONDatesTests.swift */; };
 		8186B2A61E365BEB005B1A68 /* JSONBoolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B2A51E365BEB005B1A68 /* JSONBoolsTests.swift */; };
 		8186B2A81E365E5A005B1A68 /* JSONUrlsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B2A71E365E5A005B1A68 /* JSONUrlsTests.swift */; };
+		8186B2AA1E366876005B1A68 /* JSONParseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B2A91E366876005B1A68 /* JSONParseTests.swift */; };
 		845B231C48605B942325197FD4180F95 /* GuestCartRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1F537123862D63AADA1FE7D54ECEB7 /* GuestCartRequest.swift */; };
 		8A8AF97915118F778D555C19F225D1E9 /* OutputStreams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A32293C441B83DF5D66A6173583302B /* OutputStreams.swift */; };
 		8CB38F77B0DCDD668E5D429205820A5A /* CreateAddressEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3591890A20C02A5BEFC0589E4FDB5F /* CreateAddressEndpoint.swift */; };
@@ -242,6 +243,7 @@
 		8186B2A31E34B39F005B1A68 /* JSONDatesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONDatesTests.swift; path = AtlasSDKTests/JSONDatesTests.swift; sourceTree = SOURCE_ROOT; };
 		8186B2A51E365BEB005B1A68 /* JSONBoolsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONBoolsTests.swift; path = AtlasSDKTests/JSONBoolsTests.swift; sourceTree = SOURCE_ROOT; };
 		8186B2A71E365E5A005B1A68 /* JSONUrlsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONUrlsTests.swift; path = AtlasSDKTests/JSONUrlsTests.swift; sourceTree = SOURCE_ROOT; };
+		8186B2A91E366876005B1A68 /* JSONParseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONParseTests.swift; path = AtlasSDKTests/JSONParseTests.swift; sourceTree = SOURCE_ROOT; };
 		81FF94311E2E779700D08DD0 /* JSONTests.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = JSONTests.json; path = AtlasSDKTests/JSONTests.json; sourceTree = SOURCE_ROOT; };
 		837B190CB840EA546FFC3B70BF225F9C /* APIAccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIAccessToken.swift; path = AtlasSDK/APIAccessToken.swift; sourceTree = SOURCE_ROOT; };
 		8413B2F1DEB1965D0A403D97C3DAECD4 /* JSONTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONTestCase.swift; path = AtlasSDKTests/JSONTestCase.swift; sourceTree = SOURCE_ROOT; };
@@ -584,6 +586,7 @@
 				8186B2A31E34B39F005B1A68 /* JSONDatesTests.swift */,
 				8186B2A71E365E5A005B1A68 /* JSONUrlsTests.swift */,
 				81FF94311E2E779700D08DD0 /* JSONTests.json */,
+				8186B2A91E366876005B1A68 /* JSONParseTests.swift */,
 			);
 			name = JSON;
 			sourceTree = "<group>";
@@ -1056,6 +1059,7 @@
 				96D8C896819BF0D75A206348D011CA74 /* OptionsTests.swift in Sources */,
 				62A336C02D05C2CF32FCAB761D1CC0CC /* APIGetAddressesEndpointTests.swift in Sources */,
 				8ED0E01242F9CD1BD78E59F43A38EDDA /* URLRequestTests.swift in Sources */,
+				8186B2AA1E366876005B1A68 /* JSONParseTests.swift in Sources */,
 				EA88C1248E9EF27B25014C7A20389FB5 /* TestConsts.swift in Sources */,
 				FC4E16F61AC2CD41E0A6CC848336E204 /* TestConfig.swift in Sources */,
 				50CBB4EC05164E66790A5149FDA6B1FA /* APIGuestOrderTests.swift in Sources */,
