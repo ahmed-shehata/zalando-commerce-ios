@@ -21,7 +21,10 @@
     },
 
     "urls": {
-        "url": "https://foo.bar/baz/qux?quux=10#corge"
+        "httpUrl": "http://foo.bar/baz/qux?quux=10#corge",
+        "httpsUrl": "https://foo.bar/baz/qux?quux=10#corge",
+        "fileUrl": "file:///foo/bar/baz.swift",
+        "wrongUrl": "http: this url is not what it seem"
     }
 
 }
