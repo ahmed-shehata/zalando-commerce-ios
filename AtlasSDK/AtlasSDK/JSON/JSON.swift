@@ -61,7 +61,7 @@ extension JSON {
 
     var array: [JSON] {
         guard let array = self.arrayObject else { return [] }
-        return array.flatMap { JSON($0) }
+        return array.map { JSON($0) }
     }
 
     var dictionaryObject: [String: Any]? {
