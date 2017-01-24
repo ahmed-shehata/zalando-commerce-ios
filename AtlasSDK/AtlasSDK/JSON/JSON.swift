@@ -8,6 +8,11 @@ import Foundation
 
 struct JSON {
 
+    enum Error: Swift.Error {
+        case incorrectData
+        case parseError(error: NSError)
+    }
+
     static let null = JSON(NSNull())
     private static let numberType = String(describing: type(of: NSNumber(value: 1)))
     private static let decimalNumberType = String(describing: type(of: NSDecimalNumber(value: 1)))
@@ -16,10 +21,10 @@ struct JSON {
     let isBool: Bool
     let rawObject: Any
 
-    init?(string: String,
-          encoding: String.Encoding = .utf8,
-          options: JSONSerialization.ReadingOptions = .allowFragments) throws {
-        guard let data = string.data(using: encoding) else { return nil }
+    init(string: String,
+         encoding: String.Encoding = .utf8,
+         options: JSONSerialization.ReadingOptions = .allowFragments) throws {
+        guard let data = string.data(using: encoding) else { throw Error.incorrectData }
         try self.init(data: data, options: options)
     }
 
@@ -29,7 +34,7 @@ struct JSON {
             self.isBool = JSON.isBool(object: rawObject)
         } catch let e {
             AtlasLogger.logError(e)
-            throw e
+            throw Error.parseError(error: e as NSError)
         }
     }
 

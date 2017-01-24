@@ -9,10 +9,21 @@ import Nimble
 
 class JSONParseTests: JSONTestCase {
 
-    func testParseString() {
+    func testParseCorrectString() {
         let json = try! JSON(string: "{\"int\": 500}")
-        expect(json?["int"].int) == 500
+        expect(json["int"].int) == 500
     }
 
+    func testThrowErrorOnIncorrectString() {
+        expect { try JSON(string: "{") }.to(throwError { (error: JSON.Error) in
+            if case .parseError(_) = error { } else {
+                fail("Not parseError")
+            }
+        })
+    }
+
+    func testParseNilOnIncorrectData() {
+        expect { try JSON(string: "👹", encoding: .ascii) }.to(throwError(JSON.Error.incorrectData))
+    }
 }
 
