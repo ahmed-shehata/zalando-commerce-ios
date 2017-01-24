@@ -45,7 +45,15 @@
     "collections": {
         "array": [42, 2.718, "string", true,
                   "http://foo.bar/baz/qux?quux=10#corge",
-                  "2016-07-06T16:33:10.537+0000"]
+                  "2016-07-06T16:33:10.537+0000"],
+        "dict": {
+            "e0": 42,
+            "e1": 2.718,
+            "e2": "string",
+            "e3": true,
+            "e4": "http://foo.bar/baz/qux?quux=10#corge",
+            "e5": "2016-07-06T16:33:10.537+0000"
+        }
     }
 
 }
