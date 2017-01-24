@@ -17,6 +17,11 @@
         "ordinaryString": "ordinaryString"
     },
 
+    "nulls": {
+        "nullString": "null",
+        "nullValue": null,
+    },
+
     "bools": {
         "true": true,
         "false": false
