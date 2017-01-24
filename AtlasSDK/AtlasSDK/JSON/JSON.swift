@@ -103,6 +103,10 @@ extension JSON {
         return number?.doubleValue
     }
 
+    var isNull: Bool {
+        return self.rawObject is NSNull
+    }
+
     var url: URL? {
         guard let string = self.string else { return nil }
         return URL(string: string)
@@ -116,4 +120,20 @@ extension JSON {
         return date
     }
 
+}
+
+extension JSON: Equatable { }
+
+func == (lhs: JSON, rhs: JSON) -> Bool {
+    if let larr = lhs.arrayObject, let rarr = rhs.arrayObject {
+        return larr as NSArray == rarr as NSArray
+    }
+    if let ldict = lhs.dictionaryObject, let rdict = rhs.dictionaryObject {
+        return ldict as NSDictionary == rdict as NSDictionary
+    }
+
+    return (lhs.isNull && rhs.isNull)
+    || lhs.bool == rhs.bool
+    || lhs.string == rhs.string
+    || lhs.number == rhs.number
 }

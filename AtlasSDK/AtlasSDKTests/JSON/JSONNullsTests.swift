@@ -10,13 +10,19 @@ import Nimble
 class JSONNullsTests: JSONTestCase {
 
     func testNullString() {
-        expect(self.json["strings", "nullString"].string) == "null"
-        expect(self.json["strings", "nullString"].bool).to(beNil())
+        let nullString = self.json["nulls", "nullString"]
+        expect(nullString.string) == "null"
+        expect(nullString.bool).to(beNil())
+        expect(nullString.isNull) == false
+        expect(nullString != JSON.null) == false
     }
 
     func testNullValue() {
-        expect(self.json["strings", "nullValue"].string).to(beNil())
-        expect(self.json["strings", "nullValue"].bool).to(beTrue())
+        let nullJson = json["nulls", "nullValue"]
+        expect(nullJson.string).to(beNil())
+        expect(nullJson.bool).to(beNil())
+        expect(nullJson.isNull) == true
+        expect(nullJson == JSON.null) == true
     }
 
 
