@@ -32,7 +32,6 @@ class AddressCheckViewController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .orange
         button.setTitle(Localizer.format(string: "button.general.submit"), for: .normal)
-        button.addTarget(self, action: #selector(submitButtonPressed), for: .touchUpInside)
         return button
     }()
 
@@ -55,7 +54,7 @@ class AddressCheckViewController: UIViewController {
         configureNavigationBar()
         buildView()
         rootStackView.configure(viewModel: dataModel)
-        configureEditButtonAction()
+        configureButtonsAction()
     }
 
     private func configureNavigationBar() {
@@ -66,7 +65,8 @@ class AddressCheckViewController: UIViewController {
         self.title = Localizer.format(string: "addressCheckView.title")
     }
 
-    private func configureEditButtonAction() {
+    private func configureButtonsAction() {
+        submitButton.addTarget(self, action: #selector(submitButtonPressed), for: .touchUpInside)
         rootStackView.addressesRow.forEach { (_, view) in
             view.editButton.addTarget(self, action: #selector(editButtonPressed(button:)), for: .touchUpInside)
         }

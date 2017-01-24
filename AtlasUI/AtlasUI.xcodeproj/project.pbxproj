@@ -132,6 +132,7 @@
 		E726441E020342505E0A3E67AB6E20CB /* Nimble.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 8398317FEC21A1E65AB06E3EF9B29A2B /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E782C0927EED31E254387612CC460B25 /* CheckoutSummaryGuestStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F6B74C3A17265FB585434F8EF82EBF /* CheckoutSummaryGuestStackView.swift */; };
 		E8B9ED27AD36D32DCD40F061A102A387 /* URL-QueryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FEB9F822022119C7EEC519A0FBC70F /* URL-QueryItem.swift */; };
+		E937CBC61E36795900D86846 /* AddressCheckViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E937CBC51E36795900D86846 /* AddressCheckViewControllerTests.swift */; };
 		E97A33A7BE2D26CDE9B4C62EB5BD2661 /* CheckoutSummaryAddressStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9494F7947C24BD2087FE22EBE20BFCD /* CheckoutSummaryAddressStackView.swift */; };
 		E97B1BE61E2E6DDD00FC0195 /* AddressCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B1BE51E2E6DDD00FC0195 /* AddressCheckViewController.swift */; };
 		E97B1BE91E2E704800FC0195 /* AddressCheckStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B1BE81E2E704800FC0195 /* AddressCheckStackView.swift */; };
@@ -314,6 +315,7 @@
 		DD2C09882EF82C93CC8615C9E0F59251 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		E2644DB2E806C8F07CECE81835A0326C /* OAuth2LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2LoginViewController.swift; sourceTree = "<group>"; };
 		E272DADD96290ADDD55009F293229EAD /* FormValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValidatorTests.swift; sourceTree = "<group>"; };
+		E937CBC51E36795900D86846 /* AddressCheckViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckViewControllerTests.swift; sourceTree = "<group>"; };
 		E97B1BE51E2E6DDD00FC0195 /* AddressCheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckViewController.swift; sourceTree = "<group>"; };
 		E97B1BE81E2E704800FC0195 /* AddressCheckStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckStackView.swift; sourceTree = "<group>"; };
 		E9A115381E2FAA8C001DC643 /* AddressCheckRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckRowView.swift; sourceTree = "<group>"; };
@@ -631,6 +633,7 @@
 				EAB966A42D2CA88D9E7F3931C371C95B /* URLRequestTests.swift */,
 				7D413AA8D706466A7F6D5D54306F7CB5 /* UIViewTests.swift */,
 				D7BEA406BC5B7419EC0637024DDA9D15 /* URLTests.swift */,
+				E937CBC51E36795900D86846 /* AddressCheckViewControllerTests.swift */,
 			);
 			path = AtlasUITests;
 			sourceTree = "<group>";
@@ -927,6 +930,7 @@
 				7EAC423199880152256E9D66A34235A6 /* URLTests.swift in Sources */,
 				F1E585532601768D1683E758E8C10B4C /* GuestAddressManagerTests.swift in Sources */,
 				762DC13A84D281643B2D3A49D326A581 /* TestOptions.swift in Sources */,
+				E937CBC61E36795900D86846 /* AddressCheckViewControllerTests.swift in Sources */,
 				82FEDC4FA09CC55CE1D9224BCDED9062 /* FormValidatorTests.swift in Sources */,
 				A077967CA9194ECD42DE4F9582D38823 /* PaymentViewControllerTests.swift in Sources */,
 				2472BFD6FA6F64A009A0C1B292CF3634 /* InjectorTests.swift in Sources */,
