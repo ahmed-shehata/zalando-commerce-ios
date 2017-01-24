@@ -1,10 +1,10 @@
 # Tests
 
-github "Quick/Nimble"
+github "bonkey/Nimble" "master" # fork with a fix for swiftlint build failure, to be changed back when it's merged in main repo
 
 # AtlasMockAPI
 
-github "httpswift/swifter" "stable"
+github "bonkey/swifter" "stable" # fork with compilation fix (b800641)
 
 # AtlasDemo
 
