@@ -9,37 +9,39 @@ import Nimble
 
 class JSONPathsTests: JSONTestCase {
 
-    func testCorrectStringPath() {
+    let indexedJson = try! JSON(string: "[[null, [null, null, \"value\", null]]]")!
+
+    func testFindIncorrectInIndexPath() {
+        expect(self.indexedJson.find(at: 100, 200, 300)).to(beNil())
+    }
+
+    func testSubscriptCorrectStringPath() {
         let value = json["paths", "stringPath", "l1", "l2", "l3"]
         expect(value.string) == "value"
     }
 
-    func testCorrectMixedPath() {
+    func testSubscriptCorrectMixedPath() {
         let value = json["paths", "mixedPath", 0, 1, 2]
         expect(value.string) == "value"
     }
 
-    func testCorrectIndexPath() {
-        let json = try! JSON(string: "[[null, [null, null, \"value\", null]]]")!
-        let arr = json[0, 1]
+    func testSubscriptCorrectIndexPath() {
+        let arr = indexedJson[0, 1]
         expect(arr[1].isNull) == true
         expect(arr[2].string) == "value"
         expect(arr[3].isNull) == true
     }
 
-    func testIncorrectStringPath() {
-        let value = json["paths", "stringPath", "x1", "l2", "x3"]
-        expect(value.string).to(beNil())
+    func testSubscriptIncorrectStringPath() {
+        expect(self.json["paths", "stringPath", "x1", "l2", "x3"]) == JSON.null
     }
 
-    func testIncorrectIndexPath() {
-        let json = try! JSON(string: "[[null, [null, null, \"value\", null]]]")!
-        expect(json[100, 200, 300]).to(beNil())
+    func testSubscriptIncorrectNullResultIndexPath() {
+        expect(self.indexedJson[100, 200, 300]) == JSON.null
     }
 
-    func testIncorrectMixedPath() {
-        let value = json["paths", "stringPath", 100, 200, 300]
-        expect(value.string).to(beNil())
+    func testSubscriptIncorrectMixedPath() {
+        expect(self.json["paths", "stringPath", 100, 200, 300]) == JSON.null
     }
 
 
