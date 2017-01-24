@@ -1,59 +1,76 @@
 {
-    "numbers": {
-        "int0": 0,
-        "int1": 1,
-        "bigInt": 5000000000,
-        "bigNegativeInt": -5000000000,
-        "float0": 0.0,
-        "float1": 1.1,
-        "bigFloat": 5000000000.500123,
-        "bigNegativeFloat": -5000000000.500123,
-        "double": 1.100000000000001
-    },
-
-    "strings": {
-        "trueString": "true",
-        "trueValue": true,
-        "ordinaryString": "ordinaryString"
-    },
-
-    "nulls": {
-        "nullString": "null",
-        "nullValue": null,
-    },
-
-    "bools": {
-        "true": true,
-        "false": false
-    },
-
-    "dates": {
-        "secondsPrecision": "2016-07-06T16:33:10+0000",
-        "millisecondsPrecision": "2016-07-06T16:33:10.537+0000",
-        "wrongDate": "2016-07-32T16:33:10.537+0000",
-        "wrongFormat": "2016-02-12 16:33:10",
-        "notDate": "2016-N0-7a date at all"
-    },
-
-    "urls": {
-        "httpUrl": "http://foo.bar/baz/qux?quux=10#corge",
-        "httpsUrl": "https://foo.bar/baz/qux?quux=10#corge",
-        "fileUrl": "file:///foo/bar/baz.swift",
-        "wrongUrl": "http: this url is not what it seem"
-    },
-
-    "collections": {
-        "array": [42, 2.718, "string", true,
-                  "http://foo.bar/baz/qux?quux=10#corge",
-                  "2016-07-06T16:33:10.537+0000"],
-        "dict": {
-            "e0": 42,
-            "e1": 2.718,
-            "e2": "string",
-            "e3": true,
-            "e4": "http://foo.bar/baz/qux?quux=10#corge",
-            "e5": "2016-07-06T16:33:10.537+0000"
-        }
+  "numbers": {
+    "int0": 0,
+    "int1": 1,
+    "bigInt": 5000000000,
+    "bigNegativeInt": -5000000000,
+    "float0": 0,
+    "float1": 1.1,
+    "bigFloat": 5000000000.500123,
+    "bigNegativeFloat": -5000000000.500123,
+    "double": 1.100000000000001
+  },
+  "strings": {
+    "trueString": "true",
+    "trueValue": true,
+    "ordinaryString": "ordinaryString"
+  },
+  "nulls": {
+    "nullString": "null",
+    "nullValue": null
+  },
+  "bools": {
+    "true": true,
+    "false": false
+  },
+  "dates": {
+    "secondsPrecision": "2016-07-06T16:33:10+0000",
+    "millisecondsPrecision": "2016-07-06T16:33:10.537+0000",
+    "wrongDate": "2016-07-32T16:33:10.537+0000",
+    "wrongFormat": "2016-02-12 16:33:10",
+    "notDate": "2016-N0-7a date at all"
+  },
+  "urls": {
+    "httpUrl": "http://foo.bar/baz/qux?quux=10#corge",
+    "httpsUrl": "https://foo.bar/baz/qux?quux=10#corge",
+    "fileUrl": "file:///foo/bar/baz.swift",
+    "wrongUrl": "http: this url is not what it seem"
+  },
+  "collections": {
+    "array": [
+      42,
+      2.718,
+      "string",
+      true,
+      "http://foo.bar/baz/qux?quux=10#corge",
+      "2016-07-06T16:33:10.537+0000"
+    ],
+    "dict": {
+      "e0": 42,
+      "e1": 2.718,
+      "e2": "string",
+      "e3": true,
+      "e4": "http://foo.bar/baz/qux?quux=10#corge",
+      "e5": "2016-07-06T16:33:10.537+0000"
     }
-
+  },
+  "paths": {
+    "stringPath": {
+      "l1": {
+        "l2": {
+          "l3": "value"
+        }
+      }
+    },
+    "mixedPath": [
+      [
+        null,
+        [
+         null,
+         null,
+          "value"
+        ]
+      ]
+    ]
+  }
 }

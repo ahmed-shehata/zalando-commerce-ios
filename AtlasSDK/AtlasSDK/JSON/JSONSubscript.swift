@@ -33,7 +33,8 @@ extension JSON {
         get {
             switch sub.jsonSubscript {
             case .index(let index):
-                return JSON(self.arrayObject?[index])
+                guard let array = self.arrayObject, index < array.count else { return nil }
+                return JSON(array[index])
             case .key(let key):
                 return JSON(self.dictionaryObject?[key])
             }
