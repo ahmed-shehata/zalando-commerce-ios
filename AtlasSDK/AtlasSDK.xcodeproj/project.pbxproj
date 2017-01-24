@@ -33,7 +33,6 @@
 		24FFD22FC660CB12AA036D615B422072 /* CheckAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550185D4F6E3EBAB878EAFC9701AC441 /* CheckAddress.swift */; };
 		261B28B342B4AB0AC459145308E87C48 /* GuestOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F04274C9DF91FEABFDD5EE482E7553 /* GuestOrder.swift */; };
 		26FB2DE0EB70E5A292055B0714A3F7B5 /* DeleteAddressEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536DC2A46ECE7928FB858878760D83DB /* DeleteAddressEndpoint.swift */; };
-		28B54E65A4684DA75C71D942CBA2CBEC /* JSONTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413B2F1DEB1965D0A403D97C3DAECD4 /* JSONTestCase.swift */; };
 		29B4ADC4DEE86B64B93A0035E4054C9B /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10B0A082BDFE901D0CEC90A2D969566 /* Cart.swift */; };
 		311D737B343AE828AB1B3EEB2CE5288B /* APIGuestCheckoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C2998687DC09E5F86BE3B73A6E1809 /* APIGuestCheckoutTests.swift */; };
 		3139D922EE3790EF2597975C5046EDA2 /* GuestCheckout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439BC5F5E13583D27A6EC5B0EB9C41AB /* GuestCheckout.swift */; };
@@ -76,12 +75,16 @@
 		7B21A5839D8997DA626D689A9B03C5C2 /* GetCustomerEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E9BD4D77C0386109EAD09F634330CD /* GetCustomerEndpoint.swift */; };
 		7D9992E58F4E287BC6EE7AD30338862F /* FormattableAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A2E3D95B370914C7B19A3B81E80190 /* FormattableAddress.swift */; };
 		8030BC3F79F17090B749C7A6018E906B /* URLQueryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F86AD638975BFCB529F73704F8796B3 /* URLQueryItem.swift */; };
-		8186B29F1E2F4A21005B1A68 /* JSONNumbersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B29D1E2F45CC005B1A68 /* JSONNumbersTests.swift */; };
-		8186B2A01E2F4A79005B1A68 /* JSONTests.json in Resources */ = {isa = PBXBuildFile; fileRef = 81FF94311E2E779700D08DD0 /* JSONTests.json */; };
-		8186B2A41E34B39F005B1A68 /* JSONDatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B2A31E34B39F005B1A68 /* JSONDatesTests.swift */; };
-		8186B2A61E365BEB005B1A68 /* JSONBoolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B2A51E365BEB005B1A68 /* JSONBoolsTests.swift */; };
-		8186B2A81E365E5A005B1A68 /* JSONUrlsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B2A71E365E5A005B1A68 /* JSONUrlsTests.swift */; };
-		8186B2AA1E366876005B1A68 /* JSONParseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186B2A91E366876005B1A68 /* JSONParseTests.swift */; };
+		81818A1A1E375922002774B2 /* JSONArraysTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81818A111E375922002774B2 /* JSONArraysTests.swift */; };
+		81818A1B1E375922002774B2 /* JSONBoolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81818A121E375922002774B2 /* JSONBoolsTests.swift */; };
+		81818A1C1E375922002774B2 /* JSONDatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81818A131E375922002774B2 /* JSONDatesTests.swift */; };
+		81818A1D1E375922002774B2 /* JSONDictionariesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81818A141E375922002774B2 /* JSONDictionariesTests.swift */; };
+		81818A1E1E375922002774B2 /* JSONNumbersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81818A151E375922002774B2 /* JSONNumbersTests.swift */; };
+		81818A1F1E375922002774B2 /* JSONParseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81818A161E375922002774B2 /* JSONParseTests.swift */; };
+		81818A201E375922002774B2 /* JSONTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81818A171E375922002774B2 /* JSONTestCase.swift */; };
+		81818A211E375922002774B2 /* JSONTests.json in Resources */ = {isa = PBXBuildFile; fileRef = 81818A181E375922002774B2 /* JSONTests.json */; };
+		81818A221E375922002774B2 /* JSONUrlsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81818A191E375922002774B2 /* JSONUrlsTests.swift */; };
+		81818A241E375BB8002774B2 /* JSONStringsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81818A231E375BB8002774B2 /* JSONStringsTests.swift */; };
 		845B231C48605B942325197FD4180F95 /* GuestCartRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1F537123862D63AADA1FE7D54ECEB7 /* GuestCartRequest.swift */; };
 		8A8AF97915118F778D555C19F225D1E9 /* OutputStreams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A32293C441B83DF5D66A6173583302B /* OutputStreams.swift */; };
 		8CB38F77B0DCDD668E5D429205820A5A /* CreateAddressEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3591890A20C02A5BEFC0589E4FDB5F /* CreateAddressEndpoint.swift */; };
@@ -239,14 +242,17 @@
 		7D215D90311A506D7D973B86210A3463 /* CheckAddressRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckAddressRequest.swift; sourceTree = "<group>"; };
 		80A20F90F85243250BFBE7AB2A1E14CC /* APICreateCheckoutTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APICreateCheckoutTests.swift; path = AtlasSDKTests/APICreateCheckoutTests.swift; sourceTree = SOURCE_ROOT; };
 		812218FB3FA269E7294BC86C1E53B428 /* PrintLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintLogger.swift; sourceTree = "<group>"; };
-		8186B29D1E2F45CC005B1A68 /* JSONNumbersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONNumbersTests.swift; path = AtlasSDKTests/JSONNumbersTests.swift; sourceTree = SOURCE_ROOT; };
-		8186B2A31E34B39F005B1A68 /* JSONDatesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONDatesTests.swift; path = AtlasSDKTests/JSONDatesTests.swift; sourceTree = SOURCE_ROOT; };
-		8186B2A51E365BEB005B1A68 /* JSONBoolsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONBoolsTests.swift; path = AtlasSDKTests/JSONBoolsTests.swift; sourceTree = SOURCE_ROOT; };
-		8186B2A71E365E5A005B1A68 /* JSONUrlsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONUrlsTests.swift; path = AtlasSDKTests/JSONUrlsTests.swift; sourceTree = SOURCE_ROOT; };
-		8186B2A91E366876005B1A68 /* JSONParseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONParseTests.swift; path = AtlasSDKTests/JSONParseTests.swift; sourceTree = SOURCE_ROOT; };
-		81FF94311E2E779700D08DD0 /* JSONTests.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = JSONTests.json; path = AtlasSDKTests/JSONTests.json; sourceTree = SOURCE_ROOT; };
+		81818A111E375922002774B2 /* JSONArraysTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONArraysTests.swift; sourceTree = "<group>"; };
+		81818A121E375922002774B2 /* JSONBoolsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONBoolsTests.swift; sourceTree = "<group>"; };
+		81818A131E375922002774B2 /* JSONDatesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDatesTests.swift; sourceTree = "<group>"; };
+		81818A141E375922002774B2 /* JSONDictionariesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDictionariesTests.swift; sourceTree = "<group>"; };
+		81818A151E375922002774B2 /* JSONNumbersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONNumbersTests.swift; sourceTree = "<group>"; };
+		81818A161E375922002774B2 /* JSONParseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParseTests.swift; sourceTree = "<group>"; };
+		81818A171E375922002774B2 /* JSONTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONTestCase.swift; sourceTree = "<group>"; };
+		81818A181E375922002774B2 /* JSONTests.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = JSONTests.json; sourceTree = "<group>"; };
+		81818A191E375922002774B2 /* JSONUrlsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONUrlsTests.swift; sourceTree = "<group>"; };
+		81818A231E375BB8002774B2 /* JSONStringsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONStringsTests.swift; sourceTree = "<group>"; };
 		837B190CB840EA546FFC3B70BF225F9C /* APIAccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIAccessToken.swift; path = AtlasSDK/APIAccessToken.swift; sourceTree = SOURCE_ROOT; };
-		8413B2F1DEB1965D0A403D97C3DAECD4 /* JSONTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONTestCase.swift; path = AtlasSDKTests/JSONTestCase.swift; sourceTree = SOURCE_ROOT; };
 		87E0CBDAE3A5B1288455C6E176B852B6 /* APICartTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APICartTests.swift; path = AtlasSDKTests/APICartTests.swift; sourceTree = SOURCE_ROOT; };
 		8804A49A711E3E291A3634007CA610A0 /* JSONSubscript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONSubscript.swift; sourceTree = "<group>"; };
 		88271BCC31E360BEF49D8115AE83264E /* GuestPaymentMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestPaymentMethod.swift; sourceTree = "<group>"; };
@@ -538,6 +544,24 @@
 			name = Checkout;
 			sourceTree = "<group>";
 		};
+		81818A101E375922002774B2 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				81818A111E375922002774B2 /* JSONArraysTests.swift */,
+				81818A121E375922002774B2 /* JSONBoolsTests.swift */,
+				81818A131E375922002774B2 /* JSONDatesTests.swift */,
+				81818A141E375922002774B2 /* JSONDictionariesTests.swift */,
+				81818A151E375922002774B2 /* JSONNumbersTests.swift */,
+				81818A161E375922002774B2 /* JSONParseTests.swift */,
+				81818A171E375922002774B2 /* JSONTestCase.swift */,
+				81818A181E375922002774B2 /* JSONTests.json */,
+				81818A191E375922002774B2 /* JSONUrlsTests.swift */,
+				81818A231E375BB8002774B2 /* JSONStringsTests.swift */,
+			);
+			name = JSON;
+			path = AtlasSDKTests/JSON;
+			sourceTree = SOURCE_ROOT;
+		};
 		864F2AE731B222CF20825FFF5BF5E6DD /* AtlasSDKTestsHostApp */ = {
 			isa = PBXGroup;
 			children = (
@@ -575,20 +599,6 @@
 				98FD0823D2FB8C419C75E4E8C619CA4C /* URLRequestTests.swift */,
 			);
 			name = APIClient;
-			sourceTree = "<group>";
-		};
-		B6873578BF036594821887D24AF53EC4 /* JSON */ = {
-			isa = PBXGroup;
-			children = (
-				8413B2F1DEB1965D0A403D97C3DAECD4 /* JSONTestCase.swift */,
-				8186B2A51E365BEB005B1A68 /* JSONBoolsTests.swift */,
-				8186B29D1E2F45CC005B1A68 /* JSONNumbersTests.swift */,
-				8186B2A31E34B39F005B1A68 /* JSONDatesTests.swift */,
-				8186B2A71E365E5A005B1A68 /* JSONUrlsTests.swift */,
-				81FF94311E2E779700D08DD0 /* JSONTests.json */,
-				8186B2A91E366876005B1A68 /* JSONParseTests.swift */,
-			);
-			name = JSON;
 			sourceTree = "<group>";
 		};
 		BB5C36CDAE5FD43E3435CD953DCAA6B2 /* RequestBuilder */ = {
@@ -724,8 +734,8 @@
 		F963EFE65B6A40971D31F80FC766E5B8 /* AtlasSDKTests */ = {
 			isa = PBXGroup;
 			children = (
-				B6873578BF036594821887D24AF53EC4 /* JSON */,
 				B2210A5DBC18E8A21572524B02FD2C87 /* APIClient */,
+				81818A101E375922002774B2 /* JSON */,
 				DFF2E6EE0F67D372B549184B90678C61 /* Other */,
 				EF442BE1B17D7385C097A2B95501B93B /* Utils */,
 				CD4835C116AE50B88A092335E1E1D18E /* AtlasTests.swift */,
@@ -882,7 +892,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8186B2A01E2F4A79005B1A68 /* JSONTests.json in Resources */,
+				81818A211E375922002774B2 /* JSONTests.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1038,32 +1048,35 @@
 			buildActionMask = 2147483647;
 			files = (
 				60737DDB8B3B1121E9A7C0FDDE2B30A3 /* TestOptions.swift in Sources */,
+				81818A1D1E375922002774B2 /* JSONDictionariesTests.swift in Sources */,
+				81818A221E375922002774B2 /* JSONUrlsTests.swift in Sources */,
 				631E37F9CE441F2D010BCA3C44A5A572 /* AtlasAPIClientBaseTests.swift in Sources */,
 				59E61FC35023F5B1380A55E4F55309ED /* APIAddressesTests.swift in Sources */,
-				8186B2A61E365BEB005B1A68 /* JSONBoolsTests.swift in Sources */,
 				B92A67EF0F82CF324E49637EF91AAFF5 /* APIArticleTests.swift in Sources */,
-				8186B2A81E365E5A005B1A68 /* JSONUrlsTests.swift in Sources */,
 				E87BA028C53FD040DB27878DCC189623 /* APICartTests.swift in Sources */,
 				574121D2711D03274749CD460C82F91A /* APIClientErrorsTests.swift in Sources */,
+				81818A241E375BB8002774B2 /* JSONStringsTests.swift in Sources */,
 				AA5AF9E73DB31053A9F4115CC7A951D4 /* APICreateCheckoutTests.swift in Sources */,
-				28B54E65A4684DA75C71D942CBA2CBEC /* JSONTestCase.swift in Sources */,
+				81818A1A1E375922002774B2 /* JSONArraysTests.swift in Sources */,
 				1911CC114DB83B6E06B990E5F8CD42AA /* APICustomerTests.swift in Sources */,
+				81818A1C1E375922002774B2 /* JSONDatesTests.swift in Sources */,
 				C5F2258C0426CD3E508675FBCF90B5C8 /* APIOrderTests.swift in Sources */,
 				A07B3B353458D68EE35EC7D9DBEBA739 /* APIUpdateCheckoutTests.swift in Sources */,
 				705832CFD4ABB43EFDB427959C77B882 /* AtlasTests.swift in Sources */,
 				AC215172F16F97964966D8804AF1585F /* ConfigTests.swift in Sources */,
-				8186B2A41E34B39F005B1A68 /* JSONDatesTests.swift in Sources */,
 				23D41A051054E2DD90ACA36561D502C5 /* DatesTests.swift in Sources */,
 				2498AE792D1A990EC46EBE236CDFD94A /* KeychainTests.swift in Sources */,
 				BA9A6116F3F8E3E87EB16B0D06DB6235 /* LoggerTests.swift in Sources */,
+				81818A1E1E375922002774B2 /* JSONNumbersTests.swift in Sources */,
 				96D8C896819BF0D75A206348D011CA74 /* OptionsTests.swift in Sources */,
 				62A336C02D05C2CF32FCAB761D1CC0CC /* APIGetAddressesEndpointTests.swift in Sources */,
+				81818A1B1E375922002774B2 /* JSONBoolsTests.swift in Sources */,
+				81818A1F1E375922002774B2 /* JSONParseTests.swift in Sources */,
 				8ED0E01242F9CD1BD78E59F43A38EDDA /* URLRequestTests.swift in Sources */,
-				8186B2AA1E366876005B1A68 /* JSONParseTests.swift in Sources */,
 				EA88C1248E9EF27B25014C7A20389FB5 /* TestConsts.swift in Sources */,
+				81818A201E375922002774B2 /* JSONTestCase.swift in Sources */,
 				FC4E16F61AC2CD41E0A6CC848336E204 /* TestConfig.swift in Sources */,
 				50CBB4EC05164E66790A5149FDA6B1FA /* APIGuestOrderTests.swift in Sources */,
-				8186B29F1E2F4A21005B1A68 /* JSONNumbersTests.swift in Sources */,
 				311D737B343AE828AB1B3EEB2CE5288B /* APIGuestCheckoutTests.swift in Sources */,
 				431276925D480DC7748824D0419AEF97 /* URLSessionMock.swift in Sources */,
 			);

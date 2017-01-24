@@ -10,6 +10,12 @@
         "bigNegativeFloat": -5000000000.500123
     },
 
+    "strings": {
+        "trueString": "true",
+        "trueValue": true,
+        "ordinaryString": "ordinaryString"
+    },
+
     "bools": {
         "true": true,
         "false": false
@@ -28,6 +34,12 @@
         "httpsUrl": "https://foo.bar/baz/qux?quux=10#corge",
         "fileUrl": "file:///foo/bar/baz.swift",
         "wrongUrl": "http: this url is not what it seem"
+    },
+
+    "collections": {
+        "array": [42, 2.718, "string", true,
+                  "http://foo.bar/baz/qux?quux=10#corge",
+                  "2016-07-06T16:33:10.537+0000"]
     }
 
 }
