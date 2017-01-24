@@ -7,7 +7,8 @@
         "float0": 0.0,
         "float1": 1.1,
         "bigFloat": 5000000000.500123,
-        "bigNegativeFloat": -5000000000.500123
+        "bigNegativeFloat": -5000000000.500123,
+        "double": 1.100000000000001
     },
 
     "strings": {

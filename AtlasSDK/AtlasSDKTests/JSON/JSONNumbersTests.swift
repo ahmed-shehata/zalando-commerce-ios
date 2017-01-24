@@ -45,6 +45,11 @@ class JSONNumbersTests: JSONTestCase {
         expect(self.json["numbers", "float1"].float) == 1.1
     }
 
+    func testDouble() {
+        expect(1.100000000000001).to(equalJson(rawObjectAtPath: "numbers", "double"))
+        expect(self.json["numbers", "double"].double) == 1.100000000000001
+    }
+
     func testBigFloat() {
         expect(5000000000.500123).to(equalJson(rawObjectAtPath: "numbers", "bigFloat"))
         expect(self.json["numbers", "bigFloat"].float) == 5000000000.500123
