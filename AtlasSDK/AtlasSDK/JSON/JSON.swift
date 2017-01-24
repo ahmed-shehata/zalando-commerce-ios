@@ -99,6 +99,10 @@ extension JSON {
         return number?.floatValue
     }
 
+    var double: Double? {
+        return number?.doubleValue
+    }
+
     var url: URL? {
         guard let string = self.string else { return nil }
         return URL(string: string)
