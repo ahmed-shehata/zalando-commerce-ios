@@ -1,6 +1,6 @@
 github "bignerdranch/Freddy" "3.0.2"
-github "bonkey/Nimble" "17f915b5cc47dc664084677b4a5a6fb10802ee5d"
+github "Quick/Nimble" "9bc6e293982764e81cb69dec9e9f54b13608c777"
 github "kean/Nuke" "4.1.2"
 github "daltoniam/SwiftHTTP" "2.0.2"
 github "SwiftyJSON/SwiftyJSON" "3.1.4"
-github "bonkey/swifter" "b80064107dfc5ba3deccdd830d08f817b10be472"
+github "httpswift/swifter" "73216329c57fdf860c89e9ac34b4201ca3091ee8"
