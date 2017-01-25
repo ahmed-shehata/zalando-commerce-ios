@@ -122,14 +122,3 @@ private extension AddressCheck {
     }
 
 }
-
-private func == (lhs: AddressCheckResult, rhs: AddressCheckResult) -> Bool {
-    switch (lhs, rhs) {
-    case (.selectAddress(let lhsAddress), .selectAddress(let rhsAddress)): return lhsAddress === rhsAddress
-    case (.editAddress(let lhsAddress), .editAddress(let rhsAddress)): return lhsAddress === rhsAddress
-    case (.cancel, .cancel): return true
-    case (.error, .error): return true
-    default: return false
-
-    }
-}
