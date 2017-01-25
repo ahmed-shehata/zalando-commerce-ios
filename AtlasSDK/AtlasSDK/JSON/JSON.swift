@@ -39,7 +39,7 @@ struct JSON {
     }
 
     init(_ object: Any?) {
-        self.rawObject = object ?? JSON.null
+        self.rawObject = object ?? JSON.null.rawObject
         self.isBool = JSON.isBool(object: rawObject)
     }
 
