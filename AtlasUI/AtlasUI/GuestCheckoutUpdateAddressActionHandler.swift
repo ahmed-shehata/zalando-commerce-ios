@@ -16,7 +16,7 @@ class GuestCheckoutUpdateAddressActionHandler: AddressFormActionHandler {
             return
         }
 
-        delegate?.dismissView(withAddress: address, animated: true)
+        delegate?.dismissView(with: address, animated: true)
     }
 
 }

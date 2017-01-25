@@ -39,6 +39,11 @@
 "addressFormView.street" = "Street";
 "addressFormView.title" = "Title";
 "addressFormView.zipcode" = "Zipcode";
+"addressCheckView.title" = "Check your address";
+"addressCheckView.header.normalized" = "We found another version for your address\nWhich one do you want to use?";
+"addressCheckView.header.notCorrect" = "Your address seams to be not valid\nAre you sure you need to use it?";
+"addressCheckView.originalAddress" = "Your address";
+"addressCheckView.suggestedAddress" = "Suggested address";
 "addressListView.add.cellTitle" = "Add new address...";
 "addressListView.add.type.AddressBookImportDataModelCreationStrategy" = "Import from Address Book";
 "addressListView.add.type.PickupPointAddressDataModelCreationStrategy" = "Pickup Point";
@@ -50,6 +55,7 @@
 "addressListView.title.shipping" = "Shipping Address";
 "button.general.cancel" = "Cancel";
 "button.general.save" = "Save";
+"button.general.submit" = "Submit";
 "formValidation.exactLength" = "Required length is %@";
 "formValidation.maxLength" = "Max length is %@";
 "formValidation.minLength" = "Min length is %@";
