@@ -124,21 +124,21 @@ func == (lhs: JSON, rhs: JSON) -> Bool {
     if lhs.isNull && rhs.isNull {
         return true
     }
-    if let lhs = lhs.bool, let rhs = rhs.bool, lhs == rhs {
-        return true
+    if let lhs = lhs.bool, let rhs = rhs.bool {
+        return lhs == rhs
     }
-    if let lhs = lhs.number, let rhs = rhs.number, lhs == rhs {
-        return true
+    if let lhs = lhs.number, let rhs = rhs.number {
+        return lhs == rhs
     }
-    if let lhs = lhs.string, let rhs = rhs.string, lhs == rhs {
-        return true
+    if let lhs = lhs.string, let rhs = rhs.string {
+        return lhs == rhs
     }
 
-    if let larr = lhs.array, let rarr = rhs.array {
-        return larr as NSArray == rarr as NSArray
+    if let lhs = lhs.array, let rhs = rhs.array {
+        return lhs as NSArray == rhs as NSArray
     }
-    if let ldict = lhs.dictionary, let rdict = rhs.dictionary {
-        return ldict as NSDictionary == rdict as NSDictionary
+    if let lhs = lhs.dictionary, let rhs = rhs.dictionary {
+        return lhs as NSDictionary == rhs as NSDictionary
     }
 
     return false
