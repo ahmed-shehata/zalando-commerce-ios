@@ -18,7 +18,7 @@ class JSONNullsTests: JSONTestCase {
         expect(nullString.string) == "null"
         expect(nullString.bool).to(beNil())
         expect(nullString.isNull) == false
-        expect(nullString != JSON.null) == false
+        expect(nullString == JSON.null) == false
     }
 
     func testNullValue() {
@@ -28,6 +28,5 @@ class JSONNullsTests: JSONTestCase {
         expect(nullJson.isNull) == true
         expect(nullJson == JSON.null) == true
     }
-
 
 }

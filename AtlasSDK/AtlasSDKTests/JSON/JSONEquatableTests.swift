@@ -20,6 +20,17 @@ class JSONEquatableTests: JSONTestCase {
         expect(lhs[4] == rhs[4]) == true
     }
 
+    func testBasicTypesInequality() {
+        let lhs = json["equals", "lhs"]
+        let rhs = json["equals", "rhs"]
+
+        expect(lhs[0] == rhs[1]) == false
+        expect(lhs[1] == rhs[2]) == false
+        expect(lhs[2] == rhs[3]) == false
+        expect(lhs[3] == rhs[4]) == false
+        expect(lhs[4] == rhs[0]) == false
+    }
+
     func testDictionariesEquality() {
         let dict1 = json["equals", "dicts", "dict1"]
         let dict2 = json["equals", "dicts", "dict1"]

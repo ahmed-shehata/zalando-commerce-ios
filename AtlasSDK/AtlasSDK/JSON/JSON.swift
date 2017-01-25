@@ -121,6 +121,19 @@ extension JSON {
 extension JSON: Equatable { }
 
 func == (lhs: JSON, rhs: JSON) -> Bool {
+    if lhs.isNull && rhs.isNull {
+        return true
+    }
+    if let lhs = lhs.bool, let rhs = rhs.bool, lhs == rhs {
+        return true
+    }
+    if let lhs = lhs.number, let rhs = rhs.number, lhs == rhs {
+        return true
+    }
+    if let lhs = lhs.string, let rhs = rhs.string, lhs == rhs {
+        return true
+    }
+
     if let larr = lhs.array, let rarr = rhs.array {
         return larr as NSArray == rarr as NSArray
     }
@@ -128,5 +141,5 @@ func == (lhs: JSON, rhs: JSON) -> Bool {
         return ldict as NSDictionary == rdict as NSDictionary
     }
 
-    return (lhs.isNull && rhs.isNull) || lhs.bool == rhs.bool || lhs.string == rhs.string || lhs.number == rhs.number
+    return false
 }
