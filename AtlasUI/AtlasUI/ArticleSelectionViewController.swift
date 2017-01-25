@@ -10,7 +10,7 @@ class ArticleSelectionViewController: UIViewController {
     var articleUnit: SelectedArticle
 
     init(article: Article) {
-        self.articleUnit = SelectedArticle(article: article, selectedUnitIndex: 0)
+        self.articleUnit = SelectedArticle(article: article, unitIndex: 0, quantity: 1)
         super.init(nibName: nil, bundle: nil)
     }
 

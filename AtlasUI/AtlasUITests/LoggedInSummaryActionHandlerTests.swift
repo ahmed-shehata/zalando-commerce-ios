@@ -194,7 +194,7 @@ extension LoggedInSummaryActionHandlerTests {
                 guard let customer = result.process() else { return fail() }
                 AtlasUIClient.article(withSKU: self.sku) { result in
                     guard let article = result.process() else { return fail() }
-                    let selectedArticle = SelectedArticle(article: article, selectedUnitIndex: 0)
+                    let selectedArticle = SelectedArticle(article: article, unitIndex: 0, quantity: 1)
                     LoggedInSummaryActionHandler.create(customer: customer, selectedArticle: selectedArticle) { result in
                         guard let actionHandler = result.process() else { return fail() }
                         let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, totalPrice: selectedArticle.unit.price)

@@ -7,11 +7,13 @@ import Foundation
 public struct SelectedArticle {
 
     public let article: Article
-    public let selectedUnitIndex: Int
+    public let unitIndex: Int
+    public let quantity: Int
 
-    public init(article: Article, selectedUnitIndex: Int) {
+    public init(article: Article, unitIndex: Int, quantity: Int) {
         self.article = article
-        self.selectedUnitIndex = selectedUnitIndex
+        self.unitIndex = unitIndex
+        self.quantity = quantity
     }
 
     public var sku: String {
@@ -19,7 +21,7 @@ public struct SelectedArticle {
     }
 
     public var unit: Article.Unit {
-        return article.availableUnits[selectedUnitIndex]
+        return article.availableUnits[unitIndex]
     }
 
     public var price: Money {

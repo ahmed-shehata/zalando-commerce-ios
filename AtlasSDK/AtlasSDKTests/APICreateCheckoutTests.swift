@@ -20,7 +20,7 @@ class APICreateCheckoutTests: AtlasAPIClientBaseTests {
                 case .failure(let error):
                     fail(String(describing: error))
                 case .success(let article):
-                    let selectedArticle = SelectedArticle(article: article, selectedUnitIndex: 0)
+                    let selectedArticle = SelectedArticle(article: article, unitIndex: 0, quantity: 1)
                     client.createCheckoutCart(forSKU: selectedArticle.sku) { result in
                         switch result {
                         case .failure(let error):
