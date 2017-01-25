@@ -142,6 +142,11 @@
 		E9ECD64D1E38E0B700305B87 /* ArticleSelectionProductStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECD64C1E38E0B700305B87 /* ArticleSelectionProductStackView.swift */; };
 		E9ECD64F1E38E0CB00305B87 /* ArticleSelectionQuantityStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECD64E1E38E0CB00305B87 /* ArticleSelectionQuantityStackView.swift */; };
 		E9ECD6511E38E0E300305B87 /* ArticleSelectionSizeStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECD6501E38E0E300305B87 /* ArticleSelectionSizeStackView.swift */; };
+		E97B1BE61E2E6DDD00FC0195 /* AddressCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B1BE51E2E6DDD00FC0195 /* AddressCheckViewController.swift */; };
+		E97B1BE91E2E704800FC0195 /* AddressCheckStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B1BE81E2E704800FC0195 /* AddressCheckStackView.swift */; };
+		E98453581DF59FCF001F6C51 /* GuestCheckoutCreateAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A5CF928227B72DDBAB9949CA5ED28B /* GuestCheckoutCreateAddressActionHandler.swift */; };
+		E9A115391E2FAA8C001DC643 /* AddressCheckRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A115381E2FAA8C001DC643 /* AddressCheckRowView.swift */; };
+		E9D273D41E313D47002F0007 /* AddressCheckRowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D273D31E313D47002F0007 /* AddressCheckRowButton.swift */; };
 		EBB0CE9B6F72CCBC101BCFD52F5E5993 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD2C09882EF82C93CC8615C9E0F59251 /* Default-568h@2x.png */; };
 		EF570993CFA4FDF0361679E931D55B8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94F33C041120EF12B441AE2E84A48050 /* Assets.xcassets */; };
 		F1E585532601768D1683E758E8C10B4C /* GuestAddressManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19740711F5745D3D17790829088FE83B /* GuestAddressManagerTests.swift */; };
@@ -326,6 +331,11 @@
 		E9ECD64C1E38E0B700305B87 /* ArticleSelectionProductStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleSelectionProductStackView.swift; sourceTree = "<group>"; };
 		E9ECD64E1E38E0CB00305B87 /* ArticleSelectionQuantityStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleSelectionQuantityStackView.swift; sourceTree = "<group>"; };
 		E9ECD6501E38E0E300305B87 /* ArticleSelectionSizeStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleSelectionSizeStackView.swift; sourceTree = "<group>"; };
+		E937CBC51E36795900D86846 /* AddressCheckViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckViewControllerTests.swift; sourceTree = "<group>"; };
+		E97B1BE51E2E6DDD00FC0195 /* AddressCheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckViewController.swift; sourceTree = "<group>"; };
+		E97B1BE81E2E704800FC0195 /* AddressCheckStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckStackView.swift; sourceTree = "<group>"; };
+		E9A115381E2FAA8C001DC643 /* AddressCheckRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckRowView.swift; sourceTree = "<group>"; };
+		E9D273D31E313D47002F0007 /* AddressCheckRowButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckRowButton.swift; sourceTree = "<group>"; };
 		EAB966A42D2CA88D9E7F3931C371C95B /* URLRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestTests.swift; sourceTree = "<group>"; };
 		EB063447B26DE3D42F7736012B8921AA /* AddressListActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressListActionHandler.swift; sourceTree = "<group>"; };
 		EFCBCCBB4FB49BE6429AD9E29F595747 /* FormattableAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormattableAddress.swift; sourceTree = "<group>"; };
@@ -691,6 +701,17 @@
 			name = "Address Selection";
 			sourceTree = "<group>";
 		};
+        E97B1BE71E2E6DF700FC0195 /* Address Check */ = {
+            isa = PBXGroup;
+            children = (
+                E97B1BE51E2E6DDD00FC0195 /* AddressCheckViewController.swift */,
+                E97B1BE81E2E704800FC0195 /* AddressCheckStackView.swift */,
+                E9A115381E2FAA8C001DC643 /* AddressCheckRowView.swift */,
+                E9D273D31E313D47002F0007 /* AddressCheckRowButton.swift */,
+            );
+            name = "Address Check";
+            sourceTree = "<group>";
+        };
 		E9ECD63F1E38B6BE00305B87 /* Article Selection */ = {
 			isa = PBXGroup;
 			children = (
@@ -1035,8 +1056,9 @@
 				3ED1FCFD38D86B0362C9C9F9E06B6027 /* AtlasReachability.swift in Sources */,
 				8186B2A21E2F4F9F005B1A68 /* UIDevice.swift in Sources */,
 				7629410B747CDC9D6FD8015EAE15F936 /* FullScreenErrorViewController.swift in Sources */,
-				FFAA8BE4A9676F35E87D1A797A3144E3 /* GuestCheckoutCreateAddressActionHandler.swift in Sources */,
 				E9ECD64B1E38E0A300305B87 /* ArticleSelectionFooterStackView.swift in Sources */,
+				E97B1BE91E2E704800FC0195 /* AddressCheckStackView.swift in Sources */,
+				E98453581DF59FCF001F6C51 /* GuestCheckoutCreateAddressActionHandler.swift in Sources */,
 				0FBF5C603EAAC10495E96E1E79EC75A0 /* KeyboardScrollView.swift in Sources */,
 				97A8338792C92AC0C5C6E1B92A510F58 /* LoaderView.swift in Sources */,
 				97A58706D0A6F9561290F7F4819775EE /* Localizer.swift in Sources */,
