@@ -18,6 +18,7 @@ class JSONCollectionsTests: JSONTestCase {
         expect(self.e1).to(equalJson(rawObjectAtPath: "collections", "array", 1))
         expect(self.e2).to(equalJson(rawObjectAtPath: "collections", "array", 2))
         expect(self.e3).to(equalJson(rawObjectAtPath: "collections", "array", 3))
+        expect(self.json["collections", "array", 6].isNull) == true
     }
 
     func testArrayHelper() {
@@ -37,6 +38,7 @@ class JSONCollectionsTests: JSONTestCase {
         expect(self.e1).to(equalJson(rawObjectAtPath: "collections", "dict", "e1"))
         expect(self.e2).to(equalJson(rawObjectAtPath: "collections", "dict", "e2"))
         expect(self.e3).to(equalJson(rawObjectAtPath: "collections", "dict", "e3"))
+        expect(self.json["collections", "array", "e6"].isNull) == true
     }
 
     func testDictionaryHelper() {

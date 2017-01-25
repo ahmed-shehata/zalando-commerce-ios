@@ -128,8 +128,5 @@ func == (lhs: JSON, rhs: JSON) -> Bool {
         return ldict as NSDictionary == rdict as NSDictionary
     }
 
-    return (lhs.isNull && rhs.isNull)
-    || lhs.bool == rhs.bool
-    || lhs.string == rhs.string
-    || lhs.number == rhs.number
+    return (lhs.isNull && rhs.isNull) || lhs.bool == rhs.bool || lhs.string == rhs.string || lhs.number == rhs.number
 }
