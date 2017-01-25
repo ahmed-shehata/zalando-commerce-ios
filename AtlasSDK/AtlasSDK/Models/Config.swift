@@ -54,7 +54,7 @@ extension Config {
 extension Config {
 
     init?(json: JSON, options: Options) {
-        let availableSalesChannels = json["sales-channels"].array.flatMap({ SalesChannel(json: $0) })
+        let availableSalesChannels = json["sales-channels"].jsons.flatMap({ SalesChannel(json: $0) })
         guard let catalogURL = json["atlas-catalog-api", "url"].url,
             let checkoutURL = json["atlas-checkout-api", "url"].url,
             let checkoutGatewayURL = json["atlas-checkout-gateway", "url"].url,
