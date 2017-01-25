@@ -133,6 +133,14 @@
 		E782C0927EED31E254387612CC460B25 /* CheckoutSummaryGuestStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F6B74C3A17265FB585434F8EF82EBF /* CheckoutSummaryGuestStackView.swift */; };
 		E8B9ED27AD36D32DCD40F061A102A387 /* URL-QueryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FEB9F822022119C7EEC519A0FBC70F /* URL-QueryItem.swift */; };
 		E97A33A7BE2D26CDE9B4C62EB5BD2661 /* CheckoutSummaryAddressStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9494F7947C24BD2087FE22EBE20BFCD /* CheckoutSummaryAddressStackView.swift */; };
+		E9ECD6411E38B70300305B87 /* ArticleSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECD6401E38B70300305B87 /* ArticleSelectionViewController.swift */; };
+		E9ECD6431E38BBB100305B87 /* GetArticleDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECD6421E38BBB100305B87 /* GetArticleDetailsViewController.swift */; };
+		E9ECD6471E38E06C00305B87 /* ArticleSelectionRootStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECD6461E38E06C00305B87 /* ArticleSelectionRootStackView.swift */; };
+		E9ECD6491E38E07F00305B87 /* ArticleSelectionMainStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECD6481E38E07F00305B87 /* ArticleSelectionMainStackView.swift */; };
+		E9ECD64B1E38E0A300305B87 /* ArticleSelectionFooterStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECD64A1E38E0A300305B87 /* ArticleSelectionFooterStackView.swift */; };
+		E9ECD64D1E38E0B700305B87 /* ArticleSelectionProductStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECD64C1E38E0B700305B87 /* ArticleSelectionProductStackView.swift */; };
+		E9ECD64F1E38E0CB00305B87 /* ArticleSelectionQuantityStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECD64E1E38E0CB00305B87 /* ArticleSelectionQuantityStackView.swift */; };
+		E9ECD6511E38E0E300305B87 /* ArticleSelectionSizeStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECD6501E38E0E300305B87 /* ArticleSelectionSizeStackView.swift */; };
 		EBB0CE9B6F72CCBC101BCFD52F5E5993 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD2C09882EF82C93CC8615C9E0F59251 /* Default-568h@2x.png */; };
 		EF570993CFA4FDF0361679E931D55B8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94F33C041120EF12B441AE2E84A48050 /* Assets.xcassets */; };
 		F1E585532601768D1683E758E8C10B4C /* GuestAddressManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19740711F5745D3D17790829088FE83B /* GuestAddressManagerTests.swift */; };
@@ -310,6 +318,14 @@
 		DD2C09882EF82C93CC8615C9E0F59251 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		E2644DB2E806C8F07CECE81835A0326C /* OAuth2LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2LoginViewController.swift; sourceTree = "<group>"; };
 		E272DADD96290ADDD55009F293229EAD /* FormValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValidatorTests.swift; sourceTree = "<group>"; };
+		E9ECD6401E38B70300305B87 /* ArticleSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleSelectionViewController.swift; sourceTree = "<group>"; };
+		E9ECD6421E38BBB100305B87 /* GetArticleDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetArticleDetailsViewController.swift; sourceTree = "<group>"; };
+		E9ECD6461E38E06C00305B87 /* ArticleSelectionRootStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleSelectionRootStackView.swift; sourceTree = "<group>"; };
+		E9ECD6481E38E07F00305B87 /* ArticleSelectionMainStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleSelectionMainStackView.swift; sourceTree = "<group>"; };
+		E9ECD64A1E38E0A300305B87 /* ArticleSelectionFooterStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleSelectionFooterStackView.swift; sourceTree = "<group>"; };
+		E9ECD64C1E38E0B700305B87 /* ArticleSelectionProductStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleSelectionProductStackView.swift; sourceTree = "<group>"; };
+		E9ECD64E1E38E0CB00305B87 /* ArticleSelectionQuantityStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleSelectionQuantityStackView.swift; sourceTree = "<group>"; };
+		E9ECD6501E38E0E300305B87 /* ArticleSelectionSizeStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleSelectionSizeStackView.swift; sourceTree = "<group>"; };
 		EAB966A42D2CA88D9E7F3931C371C95B /* URLRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestTests.swift; sourceTree = "<group>"; };
 		EB063447B26DE3D42F7736012B8921AA /* AddressListActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressListActionHandler.swift; sourceTree = "<group>"; };
 		EFCBCCBB4FB49BE6429AD9E29F595747 /* FormattableAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormattableAddress.swift; sourceTree = "<group>"; };
@@ -673,11 +689,42 @@
 			name = "Address Selection";
 			sourceTree = "<group>";
 		};
+		E9ECD63F1E38B6BE00305B87 /* Article Selection */ = {
+			isa = PBXGroup;
+			children = (
+				E9ECD6441E38D40D00305B87 /* Article Selection */,
+				5A6BA7B96491254C4D14CF86BE138534 /* Size Selection */,
+			);
+			name = "Article Selection";
+			sourceTree = "<group>";
+		};
+		E9ECD6441E38D40D00305B87 /* Article Selection */ = {
+			isa = PBXGroup;
+			children = (
+				E9ECD6401E38B70300305B87 /* ArticleSelectionViewController.swift */,
+				E9ECD6451E38E05000305B87 /* StackViews */,
+			);
+			name = "Article Selection";
+			sourceTree = "<group>";
+		};
+		E9ECD6451E38E05000305B87 /* StackViews */ = {
+			isa = PBXGroup;
+			children = (
+				E9ECD6461E38E06C00305B87 /* ArticleSelectionRootStackView.swift */,
+				E9ECD6481E38E07F00305B87 /* ArticleSelectionMainStackView.swift */,
+				E9ECD64A1E38E0A300305B87 /* ArticleSelectionFooterStackView.swift */,
+				E9ECD64C1E38E0B700305B87 /* ArticleSelectionProductStackView.swift */,
+				E9ECD64E1E38E0CB00305B87 /* ArticleSelectionQuantityStackView.swift */,
+				E9ECD6501E38E0E300305B87 /* ArticleSelectionSizeStackView.swift */,
+			);
+			name = StackViews;
+			sourceTree = "<group>";
+		};
 		ECBC67CCC5E72798CEB556243DC767A4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				F95BABF7CE37F95001E0F5AE904A3EAB /* Atlas UI View Controller */,
-				5A6BA7B96491254C4D14CF86BE138534 /* Size Selection */,
+				E9ECD63F1E38B6BE00305B87 /* Article Selection */,
 				76C39D0CB8D31C324232D17F5DDF4995 /* Checkout Summary */,
 				8142CA9EFFA2460D64D3676DADC7BCA3 /* Authorization */,
 				E7B8FD94F5B37D0CD471CC2CC01B2A93 /* Address Selection */,
@@ -702,6 +749,7 @@
 			isa = PBXGroup;
 			children = (
 				71F92A2A6183E6040FA688CC26ACB3EE /* AtlasUIViewController.swift */,
+				E9ECD6421E38BBB100305B87 /* GetArticleDetailsViewController.swift */,
 			);
 			name = "Atlas UI View Controller";
 			sourceTree = "<group>";
@@ -934,6 +982,7 @@
 				53A738D6D3568852721D68C97D738589 /* AddressFormLayout.swift in Sources */,
 				ABA135DCE8D4B314DF697AEBDAC428BE /* CheckoutSummaryViewModel.swift in Sources */,
 				9327E278449199F204D0B0B0675CAC10 /* AddressFormViewController.swift in Sources */,
+				E9ECD64D1E38E0B700305B87 /* ArticleSelectionProductStackView.swift in Sources */,
 				A76910C6F4709CBAB31814287638EAB4 /* BillingAddressViewModelCreationStrategy.swift in Sources */,
 				BDF158A23C9CEE6EB6445B6C6BA9F487 /* AnimationDuration.swift in Sources */,
 				271C74EFD455C9953DB58ED7A2B107CE /* AddressRowViewCell.swift in Sources */,
@@ -962,9 +1011,11 @@
 				536FFA0EF451B723E43BDE2C8B097700 /* CheckoutPresentationController.swift in Sources */,
 				68CE713AF956812A89FFC4227EBBE35D /* UIViewController.swift in Sources */,
 				E97A33A7BE2D26CDE9B4C62EB5BD2661 /* CheckoutSummaryAddressStackView.swift in Sources */,
+				E9ECD6431E38BBB100305B87 /* GetArticleDetailsViewController.swift in Sources */,
 				2A7DCAF77CF310B427D9EB0481F8F300 /* CheckoutSummaryDeliveryStackView.swift in Sources */,
 				A9E4450E0E6519516F7B93DD9EC4A616 /* CheckoutSummaryFooterStackView.swift in Sources */,
 				9365E863C1D0F885B2ECD9097BEB2DA4 /* URL.swift in Sources */,
+				E9ECD64F1E38E0CB00305B87 /* ArticleSelectionQuantityStackView.swift in Sources */,
 				1B44638F3D6077F3586EC16ECD50D647 /* CheckoutSummaryMainStackView.swift in Sources */,
 				AD12B850B93E98B146F2119CFCB350A3 /* AddressFormViewModel.swift in Sources */,
 				3ABA26421BD2B174AA71C1D7D4F67E58 /* CheckoutSummaryPaymentStackView.swift in Sources */,
@@ -975,12 +1026,14 @@
 				BF0BBDDAE28AF6223ACC9BA609E41945 /* NotLoggedInSummaryActionHandler.swift in Sources */,
 				B38C79AC7967CA0C0249132BA67FC54D /* CheckoutSummaryViewController.swift in Sources */,
 				62397CD3313BF2E11BF45ED92B6276B4 /* CheckoutTransitioningDelegate.swift in Sources */,
+				E9ECD6491E38E07F00305B87 /* ArticleSelectionMainStackView.swift in Sources */,
 				5DED28D7802BD220B0257647BE4A6BA7 /* AddressListTableDelegate.swift in Sources */,
 				8D9714FE58E50B7BC699060466CEF934 /* FormValidator.swift in Sources */,
 				3ED1FCFD38D86B0362C9C9F9E06B6027 /* AtlasReachability.swift in Sources */,
 				8186B2A21E2F4F9F005B1A68 /* UIDevice.swift in Sources */,
 				7629410B747CDC9D6FD8015EAE15F936 /* FullScreenErrorViewController.swift in Sources */,
 				FFAA8BE4A9676F35E87D1A797A3144E3 /* GuestCheckoutCreateAddressActionHandler.swift in Sources */,
+				E9ECD64B1E38E0A300305B87 /* ArticleSelectionFooterStackView.swift in Sources */,
 				0FBF5C603EAAC10495E96E1E79EC75A0 /* KeyboardScrollView.swift in Sources */,
 				97A8338792C92AC0C5C6E1B92A510F58 /* LoaderView.swift in Sources */,
 				97A58706D0A6F9561290F7F4819775EE /* Localizer.swift in Sources */,
@@ -995,17 +1048,20 @@
 				924051DE99309804FFDA4F5E66FE4D65 /* RoundedViews.swift in Sources */,
 				864F340AF805B09712DAB1A854B45608 /* LoggedInUpdateAddressActionHandler.swift in Sources */,
 				FE291AE8A3F061A3FA7574CD75F572D7 /* URLComponents.swift in Sources */,
+				E9ECD6411E38B70300305B87 /* ArticleSelectionViewController.swift in Sources */,
 				ACA27CD89DD3C13E1FC00CAAF5849989 /* AddressListActionHandler.swift in Sources */,
 				16954EEE7CCDD0CE9815224EA8FF317E /* LoggedInCreateAddressActionHandler.swift in Sources */,
 				AC2A991E658A6F0E4A4E5435ABE3BB84 /* SizeListSelectionViewController.swift in Sources */,
 				546BE9B7EEFAC9AF8CDA82D115AAB5E0 /* AddressDataModelCreationStrategy.swift in Sources */,
 				88478220BBA03482BF22A820F82ED63B /* CheckoutSummaryOrderStackView.swift in Sources */,
+				E9ECD6511E38E0E300305B87 /* ArticleSelectionSizeStackView.swift in Sources */,
 				42027F5B06C91CE6A9A2A26FA80793C9 /* URLStringConvertible.swift in Sources */,
 				E782C0927EED31E254387612CC460B25 /* CheckoutSummaryGuestStackView.swift in Sources */,
 				93BB353DA208CEF9396B46D80A20A801 /* RowStackView.swift in Sources */,
 				78FC61A7719B1F7E9477B4BDE0F9B45A /* AtlasUIClient.swift in Sources */,
 				BACEB4C366BB6879BCC21BADA5CCC0FC /* SizeListTableViewDelegate.swift in Sources */,
 				D9CE3553FFE09F2A82794C7A9E45F4F1 /* TextFieldInputStackView.swift in Sources */,
+				E9ECD6471E38E06C00305B87 /* ArticleSelectionRootStackView.swift in Sources */,
 				D1597746177CEB8207EFB773413174DF /* TextFieldInputViewModel.swift in Sources */,
 				8D8609A7F30C9F7D15E5E4A905BE4529 /* ToCViewController.swift in Sources */,
 				D55BE43D2B403796900F316E5D71E5DC /* UIApplication.swift in Sources */,

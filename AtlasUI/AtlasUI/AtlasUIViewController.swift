@@ -12,16 +12,12 @@ class AtlasUIViewController: UIViewController {
     }
 
     let mainNavigationController: UINavigationController
-    fileprivate let atlasReachability = AtlasReachability()
-
-    fileprivate let loaderView: LoaderView = {
-        let view = LoaderView()
-        return view
-    }()
+    fileprivate let loaderView = LoaderView()
+    private let atlasReachability = AtlasReachability()
 
     init(forSKU sku: String) {
-        let sizeSelectionViewController = SizeListSelectionViewController(sku: sku)
-        mainNavigationController = UINavigationController(rootViewController: sizeSelectionViewController)
+        let getArticleDetailsViewController = GetArticleDetailsViewController(sku: sku)
+        mainNavigationController = UINavigationController(rootViewController: getArticleDetailsViewController)
 
         super.init(nibName: nil, bundle: nil)
     }
