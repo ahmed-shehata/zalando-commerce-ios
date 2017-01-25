@@ -76,6 +76,7 @@
 		7D9992E58F4E287BC6EE7AD30338862F /* FormattableAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A2E3D95B370914C7B19A3B81E80190 /* FormattableAddress.swift */; };
 		8030BC3F79F17090B749C7A6018E906B /* URLQueryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F86AD638975BFCB529F73704F8796B3 /* URLQueryItem.swift */; };
 		816C39441E387D3F00042EA2 /* JSONEquatableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816C39421E387D2300042EA2 /* JSONEquatableTests.swift */; };
+		816C39471E388A3900042EA2 /* JSONJsonsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816C39451E388A2400042EA2 /* JSONJsonsTests.swift */; };
 		81818A1A1E375922002774B2 /* JSONCollectionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81818A111E375922002774B2 /* JSONCollectionsTests.swift */; };
 		81818A1B1E375922002774B2 /* JSONBoolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81818A121E375922002774B2 /* JSONBoolsTests.swift */; };
 		81818A1C1E375922002774B2 /* JSONDatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81818A131E375922002774B2 /* JSONDatesTests.swift */; };
@@ -246,6 +247,7 @@
 		80A20F90F85243250BFBE7AB2A1E14CC /* APICreateCheckoutTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APICreateCheckoutTests.swift; path = AtlasSDKTests/APICreateCheckoutTests.swift; sourceTree = SOURCE_ROOT; };
 		812218FB3FA269E7294BC86C1E53B428 /* PrintLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintLogger.swift; sourceTree = "<group>"; };
 		816C39421E387D2300042EA2 /* JSONEquatableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONEquatableTests.swift; sourceTree = "<group>"; };
+		816C39451E388A2400042EA2 /* JSONJsonsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONJsonsTests.swift; sourceTree = "<group>"; };
 		81818A111E375922002774B2 /* JSONCollectionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONCollectionsTests.swift; sourceTree = "<group>"; };
 		81818A121E375922002774B2 /* JSONBoolsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONBoolsTests.swift; sourceTree = "<group>"; };
 		81818A131E375922002774B2 /* JSONDatesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDatesTests.swift; sourceTree = "<group>"; };
@@ -553,6 +555,8 @@
 		81818A101E375922002774B2 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
+				81818A181E375922002774B2 /* JSONTests.json */,
+				81818A171E375922002774B2 /* JSONTestCase.swift */,
 				81818A111E375922002774B2 /* JSONCollectionsTests.swift */,
 				81818A121E375922002774B2 /* JSONBoolsTests.swift */,
 				81818A131E375922002774B2 /* JSONDatesTests.swift */,
@@ -561,11 +565,10 @@
 				81E278061E378D7100F531CA /* JSONNullsTests.swift */,
 				81818A161E375922002774B2 /* JSONParseTests.swift */,
 				81E278081E37A03100F531CA /* JSONPathsTests.swift */,
-				81818A171E375922002774B2 /* JSONTestCase.swift */,
-				81818A181E375922002774B2 /* JSONTests.json */,
 				81818A191E375922002774B2 /* JSONUrlsTests.swift */,
 				81818A231E375BB8002774B2 /* JSONStringsTests.swift */,
 				816C39421E387D2300042EA2 /* JSONEquatableTests.swift */,
+				816C39451E388A2400042EA2 /* JSONJsonsTests.swift */,
 			);
 			name = JSON;
 			path = AtlasSDKTests/JSON;
@@ -1073,6 +1076,7 @@
 				C5F2258C0426CD3E508675FBCF90B5C8 /* APIOrderTests.swift in Sources */,
 				A07B3B353458D68EE35EC7D9DBEBA739 /* APIUpdateCheckoutTests.swift in Sources */,
 				705832CFD4ABB43EFDB427959C77B882 /* AtlasTests.swift in Sources */,
+				816C39471E388A3900042EA2 /* JSONJsonsTests.swift in Sources */,
 				AC215172F16F97964966D8804AF1585F /* ConfigTests.swift in Sources */,
 				23D41A051054E2DD90ACA36561D502C5 /* DatesTests.swift in Sources */,
 				2498AE792D1A990EC46EBE236CDFD94A /* KeychainTests.swift in Sources */,

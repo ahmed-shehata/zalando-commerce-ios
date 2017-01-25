@@ -75,6 +75,15 @@
       ]
     ]
   },
+  "jsons": {
+    "jsons": [
+      1000,
+      500,
+      100,
+      900
+    ],
+    "notJsons": "notJsons"
+  },
   "equals": {
     "lhs": [
       42,
@@ -90,7 +99,12 @@
       true,
       null
     ],
-      "randomArray": [1000, 500, 100, 900],
+    "randomArray": [
+      1000,
+      500,
+      100,
+      900
+    ],
     "dicts": {
       "dict1": {
         "k1": 5,
