@@ -32,13 +32,10 @@ class ArticleSelectionRootStackView: UIStackView {
 extension ArticleSelectionRootStackView: UIBuilder {
 
     func configureView() {
-        scrollView.addSubview(mainStackView)
         addArrangedSubview(scrollView)
         addArrangedSubview(footerStackView)
-    }
 
-    func configureConstraints() {
-        fillInSuperview()
+        scrollView.addSubview(mainStackView)
     }
 
 }
@@ -48,7 +45,7 @@ extension ArticleSelectionRootStackView: UIDataBuilder {
     typealias T = SelectedArticle
 
     func configure(viewModel: SelectedArticle) {
-
+        mainStackView.configure(viewModel: viewModel)
     }
 
 }

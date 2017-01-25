@@ -56,6 +56,7 @@
 "button.general.cancel" = "Cancel";
 "button.general.save" = "Save";
 "button.general.submit" = "Submit";
+"button.general.continue" = "Continue";
 "formValidation.exactLength" = "Required length is %@";
 "formValidation.maxLength" = "Max length is %@";
 "formValidation.minLength" = "Min length is %@";
