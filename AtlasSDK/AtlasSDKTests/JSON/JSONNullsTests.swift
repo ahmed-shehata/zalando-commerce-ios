@@ -10,6 +10,7 @@ import Nimble
 class JSONNullsTests: JSONTestCase {
 
     func testJSONFromNil() {
+        expect(JSON(NSNull())) == JSON.null
         expect(JSON(nil)) == JSON.null
     }
 
