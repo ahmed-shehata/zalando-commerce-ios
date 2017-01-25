@@ -31,10 +31,10 @@ extension JSON {
         get {
             switch sub.jsonSubscript {
             case .index(let index):
-                guard let array = self.arrayObject, index < array.count else { return nil }
+                guard let array = self.array, index < array.count else { return nil }
                 return JSON(array[index])
             case .key(let key):
-                guard let dict = self.dictionaryObject?[key] else { return nil }
+                guard let dict = self.dictionary?[key] else { return nil }
                 return JSON(dict)
             }
         }

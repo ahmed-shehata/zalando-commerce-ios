@@ -60,26 +60,17 @@ extension JSON: CustomStringConvertible {
 
 extension JSON {
 
-    var arrayObject: [Any]? {
-        return self.rawObject as? [Any]
-    }
-
-    var array: [JSON] {
-        guard let array = self.arrayObject else { return [] }
+    var jsons: [JSON] {
+        guard let array = self.array else { return [] }
         return array.map { JSON($0) }
     }
 
-    var dictionaryObject: [String: Any]? {
-        return self.rawObject as? [String: Any]
+    var array: [Any]? {
+        return self.rawObject as? [Any]
     }
 
-    var dictionary: [String: JSON] {
-        guard let dictionary = self.dictionaryObject else { return [:] }
-        var newDictionary = [String: JSON](minimumCapacity: dictionary.count)
-        for (key, value) in dictionary {
-            newDictionary[key] = JSON(value)
-        }
-        return newDictionary
+    var dictionary: [String: Any]? {
+        return self.rawObject as? [String: Any]
     }
 
     var string: String? {
@@ -130,10 +121,10 @@ extension JSON {
 extension JSON: Equatable { }
 
 func == (lhs: JSON, rhs: JSON) -> Bool {
-    if let larr = lhs.arrayObject, let rarr = rhs.arrayObject {
+    if let larr = lhs.array, let rarr = rhs.array {
         return larr as NSArray == rarr as NSArray
     }
-    if let ldict = lhs.dictionaryObject, let rdict = rhs.dictionaryObject {
+    if let ldict = lhs.dictionary, let rdict = rhs.dictionary {
         return ldict as NSDictionary == rdict as NSDictionary
     }
 

@@ -20,11 +20,16 @@ class JSONCollectionsTests: JSONTestCase {
         expect(self.e3).to(equalJson(rawObjectAtPath: "collections", "array", 3))
     }
 
-    func testArrayHelperElements() {
-        let jsonArr = self.json["collections", "array"]
+    func testArrayHelper() {
+        expect(self.json["collections", "array"].array).toNot(beEmpty())
+        expect(self.json["collections", "dict"].array).to(beNil())
+    }
 
-        expect(jsonArr[4].url) == e4
-        expect(jsonArr[5].date) == e5
+    func testJsonsHelper() {
+        let jsons = self.json["collections", "array"].jsons
+
+        expect(jsons[4].url) == e4
+        expect(jsons[5].date) == e5
     }
 
     func testDictionaryBasicElements() {
@@ -34,11 +39,18 @@ class JSONCollectionsTests: JSONTestCase {
         expect(self.e3).to(equalJson(rawObjectAtPath: "collections", "dict", "e3"))
     }
 
-    func testDictionaryHelperElements() {
-        let jsonDict = self.json["collections", "dict"]
+    func testDictionaryHelper() {
+        expect(self.json["collections", "dict"].dictionary).toNot(beEmpty())
+        expect(self.json["collections", "array"].dictionary).to(beNil())
+    }
 
-        expect(jsonDict["e4"].url) == e4
-        expect(jsonDict["e5"].date) == e5
+    func testDictionaryHelperElements() {
+        let jsonDict = self.json["collections", "dict"].dictionary!
+
+        expect(jsonDict["e0"] as? Int) == e0
+        expect(jsonDict["e1"] as? Double) == e1
+        expect(jsonDict["e2"] as? String) == e2
+        expect(jsonDict["e3"] as? Bool) == e3
     }
 
 }
