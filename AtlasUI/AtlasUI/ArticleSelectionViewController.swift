@@ -7,10 +7,10 @@ import AtlasSDK
 
 class ArticleSelectionViewController: UIViewController {
 
-    var articleUnit: SelectedArticleUnit
+    var articleUnit: SelectedArticle
 
     init(article: Article) {
-        self.articleUnit = SelectedArticleUnit(article: article, selectedUnitIndex: 0)
+        self.articleUnit = SelectedArticle(article: article, selectedUnitIndex: 0)
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -20,7 +20,7 @@ class ArticleSelectionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
     }
 
 }

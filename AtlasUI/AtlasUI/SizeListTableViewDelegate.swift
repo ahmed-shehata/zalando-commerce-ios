@@ -6,7 +6,7 @@ import Foundation
 import UIKit
 import AtlasSDK
 
-typealias SizeListTableViewDelegateCompletion = (_ selectedArticleUnit: SelectedArticleUnit) -> Void
+typealias SizeListTableViewDelegateCompletion = (_ selectedArticle: SelectedArticle) -> Void
 
 class SizeListTableViewDelegate: NSObject {
 
@@ -18,7 +18,7 @@ class SizeListTableViewDelegate: NSObject {
         self.completion = completion
 
         if article.hasSingleUnit {
-            completion?(SelectedArticleUnit(article: article, selectedUnitIndex: 0))
+            completion?(SelectedArticle(article: article, selectedUnitIndex: 0))
         }
     }
 
@@ -29,8 +29,8 @@ extension SizeListTableViewDelegate: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        let selectedArticleUnit = SelectedArticleUnit(article: article, selectedUnitIndex: indexPath.row)
-        completion?(selectedArticleUnit)
+        let selectedArticle = SelectedArticle(article: article, selectedUnitIndex: indexPath.row)
+        completion?(selectedArticle)
     }
 
 }

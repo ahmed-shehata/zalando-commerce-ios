@@ -4,7 +4,7 @@
 
 import Foundation
 
-public struct SelectedArticleUnit {
+public struct SelectedArticle {
 
     public let article: Article
     public let selectedUnitIndex: Int

@@ -6,7 +6,7 @@ import Foundation
 import UIKit
 import AtlasSDK
 
-protocol AddressFormActionHandlerDelegate: NSObjectProtocol {
+protocol AddressFormActionHandlerDelegate: class {
 
     func addressProcessingFinished()
     func updateView(with dataModel: AddressFormDataModel)

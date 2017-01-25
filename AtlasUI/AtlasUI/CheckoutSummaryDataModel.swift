@@ -7,7 +7,7 @@ import AtlasSDK
 
 struct CheckoutSummaryDataModel {
 
-    let selectedArticleUnit: SelectedArticleUnit
+    let selectedArticle: SelectedArticle
     let shippingAddress: FormattableAddress?
     let billingAddress: FormattableAddress?
     let paymentMethod: String?
@@ -19,7 +19,7 @@ struct CheckoutSummaryDataModel {
     let email: String?
     let orderNumber: String?
 
-    init(selectedArticleUnit: SelectedArticleUnit,
+    init(selectedArticle: SelectedArticle,
          shippingAddress: FormattableAddress? = nil,
          billingAddress: FormattableAddress? = nil,
          paymentMethod: String? = nil,
@@ -28,7 +28,7 @@ struct CheckoutSummaryDataModel {
          email: String? = nil,
          orderNumber: String? = nil) {
 
-        self.selectedArticleUnit = selectedArticleUnit
+        self.selectedArticle = selectedArticle
         self.shippingAddress = shippingAddress
         self.billingAddress = billingAddress
         self.paymentMethod = paymentMethod
@@ -91,19 +91,19 @@ extension CheckoutSummaryDataModel {
 
 extension CheckoutSummaryDataModel {
 
-    init(selectedArticleUnit: SelectedArticleUnit, cartCheckout: CartCheckout?, addresses: CheckoutAddresses? = nil) {
-        self.selectedArticleUnit = selectedArticleUnit
+    init(selectedArticle: SelectedArticle, cartCheckout: CartCheckout?, addresses: CheckoutAddresses? = nil) {
+        self.selectedArticle = selectedArticle
         self.shippingAddress = addresses?.shippingAddress ?? cartCheckout?.checkout?.shippingAddress
         self.billingAddress = addresses?.billingAddress ?? cartCheckout?.checkout?.billingAddress
         self.paymentMethod = cartCheckout?.checkout?.payment.selected?.method?.localizedTitle
-        self.totalPrice = cartCheckout?.cart?.grossTotal ?? selectedArticleUnit.price
+        self.totalPrice = cartCheckout?.cart?.grossTotal ?? selectedArticle.price
         self.delivery = cartCheckout?.checkout?.delivery
         self.email = nil
         self.orderNumber = nil
     }
 
-    init(selectedArticleUnit: SelectedArticleUnit, checkout: Checkout?, order: Order) {
-        self.selectedArticleUnit = selectedArticleUnit
+    init(selectedArticle: SelectedArticle, checkout: Checkout?, order: Order) {
+        self.selectedArticle = selectedArticle
         self.shippingAddress = order.shippingAddress
         self.billingAddress = order.billingAddress
         self.paymentMethod = checkout?.payment.selected?.method?.localizedTitle
@@ -113,19 +113,19 @@ extension CheckoutSummaryDataModel {
         self.orderNumber = order.orderNumber
     }
 
-    init(selectedArticleUnit: SelectedArticleUnit, guestCheckout: GuestCheckout?, email: String, addresses: CheckoutAddresses? = nil) {
-        self.selectedArticleUnit = selectedArticleUnit
+    init(selectedArticle: SelectedArticle, guestCheckout: GuestCheckout?, email: String, addresses: CheckoutAddresses? = nil) {
+        self.selectedArticle = selectedArticle
         self.shippingAddress = addresses?.shippingAddress ?? guestCheckout?.shippingAddress
         self.billingAddress = addresses?.billingAddress ?? guestCheckout?.billingAddress
         self.paymentMethod = guestCheckout?.payment.method.localizedTitle
-        self.totalPrice = guestCheckout?.cart.grossTotal ?? selectedArticleUnit.price
+        self.totalPrice = guestCheckout?.cart.grossTotal ?? selectedArticle.price
         self.delivery = guestCheckout?.delivery
         self.email = email
         self.orderNumber = nil
     }
 
-    init(selectedArticleUnit: SelectedArticleUnit, guestCheckout: GuestCheckout?, email: String, guestOrder: GuestOrder) {
-        self.selectedArticleUnit = selectedArticleUnit
+    init(selectedArticle: SelectedArticle, guestCheckout: GuestCheckout?, email: String, guestOrder: GuestOrder) {
+        self.selectedArticle = selectedArticle
         self.shippingAddress = guestOrder.shippingAddress
         self.billingAddress = guestOrder.billingAddress
         self.paymentMethod = guestCheckout?.payment.method.localizedTitle

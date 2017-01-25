@@ -118,8 +118,8 @@ extension GuestCheckoutSummaryActionHandler {
             let email = actionHandler.emailAddress
             else { return }
 
-        let selectedArticleUnit = dataSource.dataModel.selectedArticleUnit
-        let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit,
+        let selectedArticle = dataSource.dataModel.selectedArticle
+        let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle,
                                                  guestCheckout: guestCheckout,
                                                  email: email,
                                                  guestOrder: order)
@@ -147,7 +147,7 @@ extension GuestCheckoutSummaryActionHandler {
         let shippingGuestAddress = GuestAddressRequest(address: shippingAddress)
         let billingGuestAddress = GuestAddressRequest(address: billingAddress)
         let customer = GuestCustomerRequest(guestEmail: email, subscribeNewsletter: false)
-        let cartItem = CartItemRequest(sku: dataSource.dataModel.selectedArticleUnit.sku, quantity: 1)
+        let cartItem = CartItemRequest(sku: dataSource.dataModel.selectedArticle.sku, quantity: 1)
         let cart = GuestCartRequest(items: [cartItem])
         let request = GuestPaymentSelectionRequest(customer: customer,
                                                    shippingAddress: shippingGuestAddress,
@@ -179,11 +179,11 @@ extension GuestCheckoutSummaryActionHandler {
     }
 
     fileprivate func updateDataModel(addresses: CheckoutAddresses?, guestCheckout: GuestCheckout?) {
-        guard let selectedUnit = dataSource?.dataModel.selectedArticleUnit,
+        guard let selectedUnit = dataSource?.dataModel.selectedArticle,
             let email = actionHandler.emailAddress
             else { return }
 
-        let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedUnit,
+        let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedUnit,
                                                  guestCheckout: guestCheckout,
                                                  email: email,
                                                  addresses: addresses)

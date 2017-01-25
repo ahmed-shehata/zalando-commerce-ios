@@ -17,11 +17,11 @@ class NotLoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
         AtlasUIClient.customer { result in
             guard let customer = result.process() else { return }
 
-            let selectedArticleUnit = dataSource.dataModel.selectedArticleUnit
-            LoggedInSummaryActionHandler.create(customer: customer, selectedArticleUnit: selectedArticleUnit) { result in
+            let selectedArticle = dataSource.dataModel.selectedArticle
+            LoggedInSummaryActionHandler.create(customer: customer, selectedArticle: selectedArticle) { result in
                 guard let actionHandler = result.process() else { return }
 
-                let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, cartCheckout: actionHandler.cartCheckout)
+                let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, cartCheckout: actionHandler.cartCheckout)
                 delegate.updated(actionHandler: actionHandler)
                 try? delegate.updated(dataModel: dataModel)
                 delegate.updated(layout: LoggedInLayout())
@@ -58,13 +58,13 @@ extension NotLoggedInSummaryActionHandler {
 
     fileprivate func switchToGuestCheckout(checkoutAddress: CheckoutAddresses?) {
         guard let
-            selectedArticleUnit = dataSource?.dataModel.selectedArticleUnit,
+            selectedArticle = dataSource?.dataModel.selectedArticle,
             let email = guestAddressActionHandler.emailAddress else { return }
 
-        let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit,
+        let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle,
                                                  shippingAddress: checkoutAddress?.shippingAddress,
                                                  billingAddress: checkoutAddress?.billingAddress,
-                                                 totalPrice: selectedArticleUnit.price,
+                                                 totalPrice: selectedArticle.price,
                                                  email: email)
         let actionHandler = GuestCheckoutSummaryActionHandler(email: email)
         delegate?.updated(actionHandler: actionHandler)

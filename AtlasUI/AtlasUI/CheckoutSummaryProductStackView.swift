@@ -72,7 +72,7 @@ extension CheckoutSummaryProductStackView: UIBuilder {
 
 extension CheckoutSummaryProductStackView: UIDataBuilder {
 
-    typealias T = SelectedArticleUnit
+    typealias T = SelectedArticle
 
     func configure(viewModel: T) {
         articleImageView.setImage(from: viewModel.article.thumbnailURL)
