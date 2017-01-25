@@ -26,4 +26,3 @@ class JSONParseTests: JSONTestCase {
         expect { try JSON(string: "👹", encoding: .ascii) }.to(throwError(JSON.Error.incorrectData))
     }
 }
-

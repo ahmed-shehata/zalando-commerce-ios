@@ -39,4 +39,3 @@ class JSONEquatableTests: JSONTestCase {
 
 
 }
-

@@ -29,4 +29,3 @@ class JSONUrlsTests: JSONTestCase {
     }
 
 }
-

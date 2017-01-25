@@ -32,4 +32,3 @@ class JSONDatesTests: JSONTestCase {
     }
 
 }
-

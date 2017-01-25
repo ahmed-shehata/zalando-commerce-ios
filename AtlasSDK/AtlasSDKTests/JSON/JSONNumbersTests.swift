@@ -62,4 +62,3 @@ class JSONNumbersTests: JSONTestCase {
     }
 
 }
-

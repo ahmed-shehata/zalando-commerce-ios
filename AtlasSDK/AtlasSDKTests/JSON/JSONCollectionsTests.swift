@@ -56,4 +56,3 @@ class JSONCollectionsTests: JSONTestCase {
     }
 
 }
-
