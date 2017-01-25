@@ -10,9 +10,21 @@ struct LoggedInUpdateAddressActionHandler: AddressFormActionHandler {
     weak var delegate: AddressFormActionHandlerDelegate?
 
     func submit(dataModel: AddressFormDataModel) {
-        validateAddress(dataModel: dataModel) { success in
+        validateAddress(dataModel: dataModel) { result in
+            guard case .selectAddress(let selectedAddress) = result else {
+                if case .editAddress(let editAddress) = result {
+                    dataModel.update(from: editAddress)
+                    self.delegate?.updateView(with: dataModel)
+                }
+                self.delegate?.addressProcessingFinished()
+                return
+            }
+
+            dataModel.update(from: selectedAddress)
+            self.delegate?.updateView(with: dataModel)
+
             guard let addressId = dataModel.addressId,
-                let request = UpdateAddressRequest(dataModel: dataModel), success else {
+                let request = UpdateAddressRequest(dataModel: dataModel) else {
                     self.delegate?.addressProcessingFinished()
                     return
             }
@@ -23,7 +35,7 @@ struct LoggedInUpdateAddressActionHandler: AddressFormActionHandler {
                     return
                 }
 
-                self.delegate?.dismissView(withAddress: address, animated: true)
+                self.delegate?.dismissView(with: address, animated: true)
             }
         }
     }
