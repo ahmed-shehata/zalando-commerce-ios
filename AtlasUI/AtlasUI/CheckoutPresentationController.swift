@@ -12,6 +12,8 @@ final class CheckoutPresentationController: UIPresentationController {
 
     fileprivate let heightRatio: CGFloat
 
+    fileprivate let effectView = UIVisualEffectView()
+
     fileprivate lazy var dimmingView: UIView? = {
         guard let containerView = self.containerView else { return nil }
         let dimmingView = UIView(frame: containerView.bounds)
@@ -25,6 +27,8 @@ final class CheckoutPresentationController: UIPresentationController {
     init(presentedViewController: UIViewController, presentingViewController: UIViewController?,
          heightRatio: CGFloat = Constants.defaultHeightRatio) {
         self.heightRatio = heightRatio
+        effectView.frame = presentedViewController.view.frame
+        presentedViewController.view.insertSubview(effectView, at: 0)
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
     }
 
@@ -37,6 +41,7 @@ final class CheckoutPresentationController: UIPresentationController {
         containerView.insertSubview(dimmingView, at: 0)
 
         let updateViews = {
+            self.effectView.effect = UIBlurEffect(style: .extraLight)
             dimmingView.alpha = 1
         }
 
@@ -53,6 +58,7 @@ final class CheckoutPresentationController: UIPresentationController {
         guard let _ = containerView, let _ = dimmingView else { return }
         let updateViews = {
             self.dimmingView?.alpha = 0
+            self.effectView.effect = nil
         }
 
         if let transitionCoordinator = presentedViewController.transitionCoordinator {

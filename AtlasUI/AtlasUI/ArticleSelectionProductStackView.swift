@@ -35,6 +35,13 @@ class ArticleSelectionProductStackView: UIStackView {
         return label
     }()
 
+    let unitColorLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 14, weight: UIFontWeightLight)
+        label.textColor = .lightGray
+        return label
+    }()
+
 }
 
 extension ArticleSelectionProductStackView: UIBuilder {
@@ -45,6 +52,7 @@ extension ArticleSelectionProductStackView: UIBuilder {
 
         detailsStackView.addArrangedSubview(brandNameLabel)
         detailsStackView.addArrangedSubview(articleNameLabel)
+        detailsStackView.addArrangedSubview(unitColorLabel)
     }
 
     func configureConstraints() {
@@ -62,6 +70,7 @@ extension ArticleSelectionProductStackView: UIDataBuilder {
         articleImageView.setImage(from: viewModel.article.thumbnailURL)
         brandNameLabel.text = viewModel.article.brand.name
         articleNameLabel.text = viewModel.article.name
+        unitColorLabel.text = viewModel.article.color
     }
 
 }

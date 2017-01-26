@@ -28,7 +28,6 @@ class AtlasUIViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         UserMessage.loadBannerError()
         addChildViewController(mainNavigationController)
         view.addSubview(mainNavigationController.view)

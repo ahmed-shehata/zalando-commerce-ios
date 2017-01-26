@@ -7,7 +7,11 @@ import AtlasSDK
 
 class ArticleSelectionViewController: UIViewController {
 
-    var selectedArticle: SelectedArticle
+    var selectedArticle: SelectedArticle {
+        didSet {
+            rootStackView.configure(viewModel: selectedArticle)
+        }
+    }
 
     fileprivate let rootStackView: ArticleSelectionRootStackView = {
         let stackView = ArticleSelectionRootStackView()
