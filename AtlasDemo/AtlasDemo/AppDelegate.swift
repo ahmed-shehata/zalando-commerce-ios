@@ -1,32 +1,31 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import UIKit
-import AtlasSDK
-import AtlasUI
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         BuddyBuildSDK.setup()
 
         return true
     }
 
-    func applicationDidBecomeActive(application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
         if !AppSetup.isConfigured {
-            AppSetup.configure { result in
-                guard let catalogViewController = CatalogViewController.instance else { return }
-                switch result {
-                case .success: catalogViewController.loadHomepageArticles()
-                case .failure(let error): catalogViewController.displayError(error)
+            AppSetup.configure { configured in
+                guard configured else {
+                    print("App Configuration failed")
+                    return
                 }
+                CatalogViewController.shared?.loadHomepageArticles()
             }
-        } else if let catalogViewController = CatalogViewController.instance where catalogViewController.articles.isEmpty {
+        } else if let catalogViewController = CatalogViewController.shared, catalogViewController.articles.isEmpty {
             catalogViewController.loadHomepageArticles()
         }
     }

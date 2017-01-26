@@ -1,33 +1,34 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
+import UIKit
 import AtlasSDK
 
 final class AddressRowViewCell: UITableViewCell {
 
-    internal let stackView: UIStackView = {
+    let stackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.axis = .Vertical
+        stackView.axis = .vertical
         stackView.spacing = 2
         stackView.layoutMargins = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
-        stackView.layoutMarginsRelativeArrangement = true
+        stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
 
-    internal let titleLabel: UILabel = {
+    let titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = .systemFontOfSize(16)
-        label.textColor = .blackColor()
+        label.font = .systemFont(ofSize: 16)
+        label.textColor = .black
         return label
     }()
 
-    internal let addressLabel: UILabel = {
+    let addressLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = .systemFontOfSize(14, weight: UIFontWeightLight)
+        label.font = .systemFont(ofSize: 14, weight: UIFontWeightLight)
         label.textColor = UIColor(hex: 0x555555)
         return label
     }()
@@ -46,14 +47,14 @@ final class AddressRowViewCell: UITableViewCell {
 extension AddressRowViewCell: UIBuilder {
 
     func configureView() {
-        editingAccessoryType = .DisclosureIndicator
+        editingAccessoryType = .disclosureIndicator
         contentView.addSubview(stackView)
         stackView.addArrangedSubview(titleLabel)
         stackView.addArrangedSubview(addressLabel)
     }
 
     func configureConstraints() {
-        stackView.fillInSuperView()
+        stackView.fillInSuperview()
     }
 
 }
@@ -62,9 +63,9 @@ extension AddressRowViewCell: UIDataBuilder {
 
     typealias T = EquatableAddress
 
-    func configureData(viewModel: T) {
-        titleLabel.text = viewModel.formattedContact?.trimmed
-        addressLabel.text = viewModel.formattedPostalAddress.trimmed
+    func configure(viewModel: T) {
+        titleLabel.text = viewModel.formattedContact?.trimmed()
+        addressLabel.text = viewModel.formattedPostalAddress.trimmed()
     }
 
 }

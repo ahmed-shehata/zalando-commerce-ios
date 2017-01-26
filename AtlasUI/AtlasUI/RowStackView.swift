@@ -1,8 +1,9 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
+import UIKit
 
 protocol RowStackView {
 
@@ -14,11 +15,11 @@ protocol RowStackView {
 
 extension RowStackView {
 
-    internal func setTitle(localizerKey: String) {
-        self.titleLabel.text = Localizer.string(localizerKey)
+    func setTitle(fromLocalizedKey localizerKey: String) {
+        self.titleLabel.text = Localizer.format(string: localizerKey)
     }
 
-    internal var showArrow: Bool {
+    var showArrow: Bool {
         get {
             return arrowImageView.alpha == 1
         }

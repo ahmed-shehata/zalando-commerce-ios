@@ -1,10 +1,10 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
 
-public struct CartRequest: JSONRepresentable {
+public struct CartRequest {
 
     public let items: [CartItemRequest]
     public let replaceItems: Bool
@@ -14,7 +14,11 @@ public struct CartRequest: JSONRepresentable {
         self.replaceItems = replaceItems
     }
 
-    public func toJSON() -> [String: AnyObject] {
+}
+
+extension CartRequest: JSONRepresentable {
+
+    func toJSON() -> JSONDictionary {
         return [
             "replace_items": self.replaceItems,
             "items": self.items.map { $0.toJSON() }

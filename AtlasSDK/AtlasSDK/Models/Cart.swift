@@ -1,12 +1,11 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
 
 public struct Cart {
     public let id: String
-    public let salesChannel: String
     public let items: [CartItem]
     public let itemsOutOfStock: [String]
     public let delivery: Delivery
@@ -26,9 +25,8 @@ public func == (lhs: Cart, rhs: Cart) -> Bool {
 
 extension Cart: JSONInitializable {
 
-    private struct Keys {
+    fileprivate struct Keys {
         static let id = "id"
-        static let salesChannel = "sales_channel"
         static let items = "items"
         static let itemsOutOfStock = "items_out_of_stock"
         static let delivery = "delivery"
@@ -37,18 +35,16 @@ extension Cart: JSONInitializable {
     }
 
     init?(json: JSON) {
-        guard let
-        id = json[Keys.id].string,
-            salesChannel = json[Keys.salesChannel].string,
-            delivery = Delivery(json: json[Keys.delivery]),
-            grossTotal = Money(json: json[Keys.grossTotal]),
-            taxTotal = Money(json: json[Keys.taxTotal]) else { return nil }
+        guard let id = json[Keys.id].string,
+            let delivery = Delivery(json: json[Keys.delivery]),
+            let grossTotal = Money(json: json[Keys.grossTotal]),
+            let taxTotal = Money(json: json[Keys.taxTotal])
+            else { return nil }
         self.init(id: id,
-            salesChannel: salesChannel,
-            items: json[Keys.items].arrayValue.flatMap { CartItem(json: $0) },
-            itemsOutOfStock: json[Keys.itemsOutOfStock].arrayValue.flatMap { $0.string },
-            delivery: delivery,
-            grossTotal: grossTotal,
-            taxTotal: taxTotal)
+                  items: json[Keys.items].jsons.flatMap { CartItem(json: $0) },
+                  itemsOutOfStock: json[Keys.itemsOutOfStock].jsons.flatMap { $0.string },
+                  delivery: delivery,
+                  grossTotal: grossTotal,
+                  taxTotal: taxTotal)
     }
 }

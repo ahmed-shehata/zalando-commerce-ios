@@ -1,18 +1,20 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
-struct DeleteAddressEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
+import Foundation
 
-    let serviceURL: NSURL
+struct DeleteAddressEndpoint: CheckoutEndpoint {
+
+    let config: Config
+
     let method: HTTPMethod = .DELETE
     var path: String { return "addresses/\(addressId)" }
     let acceptedContentType = "application/x.zalando.customer.addresses+json"
-    var queryItems: [NSURLQueryItem]? {
-        return NSURLQueryItem.build(["address_id": addressId])
+    var queryItems: [URLQueryItem]? {
+        return URLQueryItem.build(from: ["address_id": addressId])
     }
 
     let addressId: String
-    let salesChannel: String
 
 }

@@ -1,5 +1,5 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
@@ -7,60 +7,103 @@ import Security
 
 struct Keychain {
 
-    static func delete(key key: String) -> Bool {
-        return write(nil, forKey: key)
+    enum Error: Swift.Error {
+        case incorrectValueData
     }
 
-    static func write(value: String?, forKey key: String) -> Bool {
-        var status: OSStatus
+    @discardableResult
+    static func delete(key: String) -> Bool {
+        defer {
+            if status != errSecSuccess {
+                AtlasLogger.logError("Error deleting in Keychain:", status.description)
+            }
+        }
+
+        let query = prepareItemQuery(forAccount: key)
+        let status = SecItemDelete(query as CFDictionary)
+        return status == errSecSuccess
+    }
+
+    @discardableResult
+    static func write(value: String, forKey key: String) throws -> Bool {
+        var status = errSecSuccess
         defer {
             if status != errSecSuccess {
                 AtlasLogger.logError("Error saving in Keychain:", status.description)
             }
         }
 
-        let query = prepareItemQuery(key)
-
-        guard let value = value, data = value.dataUsingEncoding(NSUTF8StringEncoding) else {
-            status = SecItemDelete(query)
-            return status == errSecSuccess
+        guard let data = value.data(using: String.Encoding.utf8) else {
+            throw Error.incorrectValueData
         }
 
-        if SecItemCopyMatching(query, nil) == errSecSuccess {
-            let updateData: [NSObject: AnyObject] = [kSecValueData: data]
-            status = SecItemUpdate(query, updateData)
+        let query = prepareItemQuery(forAccount: key)
+        if SecItemCopyMatching(query as CFDictionary, nil) == errSecSuccess {
+            let updateData: [AnyHashable: Any] = [kSecValueData as AnyHashable: data]
+            status = SecItemUpdate(query as CFDictionary, updateData as CFDictionary)
         } else {
-            var securedItem = query
-            securedItem[kSecValueData] = data
-            status = SecItemAdd(securedItem, nil)
+            var securedItem = query as [AnyHashable: Any]
+            securedItem[kSecValueData as AnyHashable] = data
+            status = SecItemAdd(securedItem as CFDictionary, nil)
         }
 
         return status == errSecSuccess
     }
 
-    static func read(forKey key: String) -> String? {
-        var query = prepareItemQuery(key)
-        query[kSecReturnData] = true
-        query[kSecReturnAttributes] = true
+    static func read(key: String) -> String? {
+        let query = prepareItemQuery(forAccount: key, retrieveData: true)
 
         var result: AnyObject?
-        let status = withUnsafeMutablePointer(&result) {
-            SecItemCopyMatching(query, UnsafeMutablePointer($0))
+        let status = withUnsafeMutablePointer(to: &result) {
+            SecItemCopyMatching(query as CFDictionary, UnsafeMutablePointer($0))
         }
 
         guard let resultDict = result as? [NSString: AnyObject],
-            resultData = resultDict[kSecValueData] as? NSData where status == errSecSuccess else {
+            let resultData = resultDict[kSecValueData] as? Data,
+            status == errSecSuccess else {
                 return nil
         }
 
-        return String(data: resultData, encoding: NSUTF8StringEncoding)
+        return String(data: resultData, encoding: String.Encoding.utf8)
     }
 
-    private static func prepareItemQuery(account: String) -> [NSObject: AnyObject] {
-        return [kSecClass: kSecClassGenericPassword,
-            kSecAttrAccessible: kSecAttrAccessibleWhenUnlocked,
-            kSecAttrAccount: account,
-            kSecAttrService: NSBundle.mainBundle().bundleIdentifier ?? "de.zalando.AtlasSDK"]
+    static func allAccounts() -> [String] {
+        guard let all = all() else { return [] }
+        return all.flatMap { $0[kSecAttrAccount as AnyHashable] as? String }
+    }
+
+    static func all() -> [[AnyHashable: Any]]? {
+        var query = prepareItemQuery(retrieveData: true)
+        query[kSecMatchLimit as AnyHashable] = kSecMatchLimitAll
+        var result: AnyObject?
+        let status = withUnsafeMutablePointer(to: &result) {
+            SecItemCopyMatching(query as CFDictionary, UnsafeMutablePointer($0))
+        }
+
+        guard let results = result as? [AnyObject], status == errSecSuccess else {
+            return nil
+        }
+        let entries: [[AnyHashable: Any]] = results.flatMap { $0 as? [AnyHashable: Any] }
+
+        AtlasLogger.logError(entries)
+        return entries
+    }
+
+    private static func prepareItemQuery(forAccount accountName: String? = nil,
+                                         retrieveData: Bool = false) -> [AnyHashable: Any] {
+        var query: [AnyHashable: Any] = [kSecClass as AnyHashable: kSecClassGenericPassword,
+                                         kSecAttrAccessible as AnyHashable: kSecAttrAccessibleWhenUnlocked,
+                                         kSecAttrService as AnyHashable: Bundle.main.bundleIdentifier ?? "de.zalando.AtlasSDK"]
+
+        if let account = accountName {
+            query[kSecAttrAccount as AnyHashable] = account
+        }
+        if retrieveData {
+            query[kSecReturnData as AnyHashable] = true
+            query[kSecReturnAttributes as AnyHashable] = true
+        }
+
+        return query
     }
 
 }
@@ -70,31 +113,31 @@ extension OSStatus {
     var description: String {
         switch self {
         case errSecSuccess:
-            return addStatus("OK.")
+            return addStatus(to: "OK.")
         case errSecUnimplemented:
-            return addStatus("Function or operation not implemented.")
+            return addStatus(to: "Function or operation not implemented.")
         case errSecParam:
-            return addStatus("One or more parameters passed to a function where not valid.")
+            return addStatus(to: "One or more parameters passed to a function where not valid.")
         case errSecAllocate:
-            return addStatus("Failed to allocate memory.")
+            return addStatus(to: "Failed to allocate memory.")
         case errSecNotAvailable:
-            return addStatus("No keychain is available. You may need to restart your computer.")
+            return addStatus(to: "No keychain is available. You may need to restart your computer.")
         case errSecDuplicateItem:
-            return addStatus("The specified item already exists in the keychain.")
+            return addStatus(to: "The specified item already exists in the keychain.")
         case errSecItemNotFound:
-            return addStatus("The specified item could not be found in the keychain.")
+            return addStatus(to: "The specified item could not be found in the keychain.")
         case errSecInteractionNotAllowed:
-            return addStatus("User interaction is not allowed.")
+            return addStatus(to: "User interaction is not allowed.")
         case errSecDecode:
-            return addStatus("Unable to decode the provided data.")
+            return addStatus(to: "Unable to decode the provided data.")
         case errSecAuthFailed:
-            return addStatus("The user name or passphrase you entered is not correct.")
+            return addStatus(to: "The user name or passphrase you entered is not correct.")
         default:
-            return addStatus("Refer to SecBase.h for description")
+            return addStatus(to: "Refer to SecBase.h for description")
         }
     }
 
-    private func addStatus(message: String) -> String {
+    fileprivate func addStatus(to message: String) -> String {
         return message + " (status: \(self))"
     }
 

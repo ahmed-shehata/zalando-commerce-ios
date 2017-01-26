@@ -1,26 +1,27 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
+import UIKit
 
 extension UITableView {
 
-    private func reusableIdentifier(cellClass: AnyClass) -> String {
-        return String(cellClass)
+    fileprivate func reusableIdentifier(for cellClass: AnyClass) -> String {
+        return String(describing: cellClass)
     }
 
-    func registerReusableCell(cellClass: AnyClass) {
-        self.registerClass(cellClass, forCellReuseIdentifier: reusableIdentifier(cellClass))
+    func registerReusableCell(for cellClass: AnyClass) {
+        self.register(cellClass, forCellReuseIdentifier: reusableIdentifier(for: cellClass))
     }
 
-    func dequeueReusableCell<T: UITableViewCell>(cellClass: T.Type, forIndexPath indexPath: NSIndexPath,
-        completion: T -> UITableViewCell) -> UITableViewCell {
-            let cellId = reusableIdentifier(cellClass)
-            guard let cell = self.dequeueReusableCellWithIdentifier(cellId, forIndexPath: indexPath) as? T else {
-                return UITableViewCell(style: .Default, reuseIdentifier: cellId)
-            }
-            return completion(cell)
+    func dequeueReusableCell<T: UITableViewCell>(of cellClass: T.Type, at indexPath: IndexPath,
+                                                 completion: (T) -> UITableViewCell) -> UITableViewCell {
+        let cellId = reusableIdentifier(for: cellClass)
+        guard let cell = self.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? T else {
+            return UITableViewCell(style: .default, reuseIdentifier: cellId)
+        }
+        return completion(cell)
     }
 
 }

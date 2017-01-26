@@ -1,6 +1,6 @@
 require 'thor'
 require 'date'
-require_relative 'run'
+require_relative 'utils/run'
 
 module Calypso
 
@@ -8,7 +8,7 @@ module Calypso
 
     COPYRIGHT = <<EOT.freeze
 //
-//  Copyright © #{Date.today.year} Zalando SE. All rights reserved.
+//  Copyright © 2016-#{Date.today.year} Zalando SE. All rights reserved.
 //
 EOT
 
@@ -34,7 +34,7 @@ EOT
     def xunique
       project_files = Dir['**/*.pbxproj'].select { |f| !f.include? 'Carthage' }
       project_files.each do |pbxproj|
-        run("xunique --unique #{pbxproj}", false)
+        run("xunique --unique #{pbxproj}", exit_on_failure: false)
       end
     end
 

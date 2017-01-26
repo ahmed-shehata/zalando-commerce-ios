@@ -1,23 +1,23 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
 
-struct UpdateAddressEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
+struct UpdateAddressEndpoint: CheckoutEndpoint {
 
-    let serviceURL: NSURL
+    let config: Config
+
     let method: HTTPMethod = .PUT
     var path: String { return "addresses/\(addressId)" }
     let acceptedContentType = "application/x.zalando.customer.address.update.response+json"
     let contentType = "application/x.zalando.customer.address.update+json"
 
-    var parameters: [String: AnyObject]? {
+    var parameters: EndpointParameters? {
         return updateAddressRequest.toJSON()
     }
 
     let addressId: String
     let updateAddressRequest: UpdateAddressRequest
-    let salesChannel: String
 
 }

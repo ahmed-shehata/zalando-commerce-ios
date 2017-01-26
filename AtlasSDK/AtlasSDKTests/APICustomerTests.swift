@@ -1,5 +1,5 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import XCTest
@@ -8,18 +8,18 @@ import Nimble
 
 @testable import AtlasSDK
 
-class APICustomerTests: APIClientBaseTests {
+class APICustomerTests: AtlasAPIClientBaseTests {
 
-    let customerURL = NSURL(validURL: "https://atlas-sdk.api/api/customer")
+    let customerURL = URL(validURL: "https://atlas-sdk.api/api/customer")
 
     func testCreateCustomer() {
-        let json = ["customer_number": "12345678",
-                    "gender": "MALE",
-                    "email": "aaa@a.a",
-                    "first_name": "John",
-                    "last_name": "Doe"]
-        let customerResponse = dataWithJSONObject(json)
-        let client = mockedAPIClient(forURL: customerURL, data: customerResponse, status: .OK)
+        let json: [String: Any] = ["customer_number": "12345678",
+                                   "gender": "MALE",
+                                   "email": "aaa@a.a",
+                                   "first_name": "John",
+                                   "last_name": "Doe"]
+        let customerResponse = data(withJSONObject: json)
+        let client = mockedAtlasAPIClient(forURL: customerURL, data: customerResponse, status: .ok)
 
         waitUntil(timeout: 60) { done in
             client.customer { result in
@@ -28,11 +28,11 @@ class APICustomerTests: APIClientBaseTests {
                     return fail("Should return Customer")
                 }
 
-                expect(customer.customerNumber).to(equal("12345678"))
-                expect(customer.gender).to(equal(Customer.Gender.Male))
-                expect(customer.email).to(equal("aaa@a.a"))
-                expect(customer.firstName).to(equal("John"))
-                expect(customer.lastName).to(equal("Doe"))
+                expect(customer.customerNumber) == "12345678"
+                expect(customer.gender) == Customer.Gender.Male
+                expect(customer.email) == "aaa@a.a"
+                expect(customer.firstName) == "John"
+                expect(customer.lastName) == "Doe"
             }
         }
     }

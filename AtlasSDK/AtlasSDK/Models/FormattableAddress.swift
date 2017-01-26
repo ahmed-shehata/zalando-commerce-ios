@@ -1,5 +1,5 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
@@ -23,9 +23,31 @@ public protocol EquatableAddress: FormattableAddress {
 }
 
 public func == (lhs: EquatableAddress, rhs: EquatableAddress) -> Bool {
-
     return lhs.id == rhs.id
-
 }
 
-public typealias CheckoutAddresses = (billingAddress: EquatableAddress?, shippingAddress: EquatableAddress?)
+public func === (lhs: EquatableAddress, rhs: EquatableAddress) -> Bool {
+    return lhs.id == rhs.id
+        && lhs.gender == rhs.gender
+        && lhs.firstName == rhs.firstName
+        && lhs.lastName == rhs.lastName
+        && lhs.zip == rhs.zip
+        && lhs.city == rhs.city
+        && lhs.countryCode == rhs.countryCode
+        && lhs.street == rhs.street
+        && lhs.additional == rhs.additional
+        && lhs.pickupPoint == rhs.pickupPoint
+}
+
+public func === (lhs: EquatableAddress?, rhs: EquatableAddress?) -> Bool {
+    return lhs?.id == rhs?.id
+        && lhs?.gender == rhs?.gender
+        && lhs?.firstName == rhs?.firstName
+        && lhs?.lastName == rhs?.lastName
+        && lhs?.zip == rhs?.zip
+        && lhs?.city == rhs?.city
+        && lhs?.countryCode == rhs?.countryCode
+        && lhs?.street == rhs?.street
+        && lhs?.additional == rhs?.additional
+        && lhs?.pickupPoint == rhs?.pickupPoint
+}

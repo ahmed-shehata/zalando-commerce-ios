@@ -1,5 +1,5 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import XCTest
@@ -11,77 +11,54 @@ import AtlasMockAPI
 
 class ConfigTests: XCTestCase {
 
-    let catalogURL = AtlasMockAPI.endpointURL(forPath: "/catalog")
-    let checkoutURL = AtlasMockAPI.endpointURL(forPath: "/checkout")
-    let loginURL = AtlasMockAPI.endpointURL(forPath: "/login")
-
-    let interfaceLanguage = "fr"
-    let configLanguage = "de"
-    let configCountry = "DE"
-    let salesChannelId = "82fe2e7f-8c4f-4aa1-9019-b6bde5594456"
-    let clientId = "CLIENT_ID"
-    let tocURL = "https://www.zalando.de/agb/"
-    let callback = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect"
-
-    var configLocale: String!
-    var json: JSON!
-
-    override func setUp() {
-        super.setUp()
-
-        configLocale = "\(configLanguage)_\(configCountry)"
-        json = JSON(
-            [
-            "sales-channels": [
-                ["locale": "es_ES", "sales-channel": "SPAIN", "toc_url": "https://www.zalando.es/cgc/"],
-                ["locale": configLocale, "sales-channel": salesChannelId, "toc_url": tocURL],
-            ],
-            "atlas-catalog-api": ["url": catalogURL.absoluteString!],
-            "atlas-checkout-api": [
-                "url": checkoutURL.absoluteString!,
-                "payment": [
-                    "selection-callback": callback,
-                    "third-party-callback": callback
-                ]
-            ],
-            "oauth2-provider": ["url": loginURL.absoluteString!]
-            ]
-        )
-    }
-
     func testOptionInitialization() {
-        let options = Options(clientId: clientId, salesChannel: salesChannelId, interfaceLanguage: interfaceLanguage)
-        let config = Config(json: json, options: options)
+        let config = Config.forTests()
 
-        expect(config?.catalogURL).to(equal(catalogURL))
-        expect(config?.checkoutURL).to(equal(checkoutURL))
-        expect(config?.loginURL).to(equal(loginURL))
-        expect(config?.clientId).to(equal(clientId))
-        expect(config?.salesChannel.identifier).to(equal(salesChannelId))
-        expect(config?.salesChannel.termsAndConditionsURL).to(equal(NSURL(validURL: tocURL)))
+        expect(config.catalogURL) == TestConsts.catalogURL
+        expect(config.checkoutURL) == TestConsts.checkoutURL
+        expect(config.loginURL) == TestConsts.loginURL
+        expect(config.clientId) == TestConsts.clientId
+        expect(config.salesChannel.identifier) == TestConsts.salesChannel
+        expect(config.salesChannel.termsAndConditionsURL) == URL(validURL: TestConsts.tocURL)
     }
 
     func testReadingLanguageFromConfigWhenNoInterfaceLanguageGiven() {
-        let options = Options(clientId: clientId, salesChannel: salesChannelId)
-        let config = Config(json: json, options: options)
+        let options = Options(clientId: TestConsts.clientId, salesChannel: TestConsts.salesChannel)
+        let config = Config.forTests(options: options)
 
-        expect(config?.salesChannel.locale.localeIdentifier).to(equal(configLocale))
-        expect(config?.interfaceLocale.localeIdentifier).to(equal(configLocale))
+        expect(config.salesChannel.locale.identifier) == TestConsts.configLocale
+        expect(config.interfaceLocale.identifier) == TestConsts.configLocale
     }
 
     func testUseInterfaceLanugageWithConfigCountry() {
-        let options = Options(clientId: clientId, salesChannel: salesChannelId, interfaceLanguage: interfaceLanguage)
-        let config = Config(json: json, options: options)
+        let config = Config.forTests()
 
-        expect(config?.salesChannel.locale.localeIdentifier).to(equal(configLocale))
-        expect(config?.interfaceLocale.localeIdentifier).to(equal("\(interfaceLanguage)_\(configCountry)"))
+        expect(config.salesChannel.locale.identifier) == TestConsts.configLocale
+        expect(config.interfaceLocale.identifier) == "\(TestConsts.interfaceLanguage)_\(TestConsts.configCountry)"
     }
 
     func testInvalidSalesChannel() {
-        let options = Options(clientId: clientId, salesChannel: "INVALID")
+        let json = Config.jsonForTests()
+        let options = Options(clientId: TestConsts.clientId, salesChannel: "INVALID")
         let config = Config(json: json, options: options)
 
         expect(config).to(beNil())
+    }
+
+    func testGuestCheckoutEnabled() {
+        let guestEnabled = true
+        let options = Options.forTests()
+        let config = Config.forTests(options: options, guestCheckoutEnabled: guestEnabled)
+
+        expect(config.guestCheckoutEnabled) == guestEnabled
+    }
+
+    func testGuestCheckoutDisabled() {
+        let guestEnabled = false
+        let options = Options.forTests()
+        let config = Config.forTests(options: options, guestCheckoutEnabled: guestEnabled)
+
+        expect(config.guestCheckoutEnabled) == guestEnabled
     }
 
 }

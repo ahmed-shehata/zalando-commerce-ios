@@ -1,5 +1,5 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 public struct CreateAddressRequest {
@@ -18,7 +18,7 @@ public struct CreateAddressRequest {
 
 extension CreateAddressRequest: JSONRepresentable {
 
-    private struct Keys {
+    fileprivate struct Keys {
         static let gender = "gender"
         static let firstName = "first_name"
         static let lastName = "last_name"
@@ -32,8 +32,8 @@ extension CreateAddressRequest: JSONRepresentable {
         static let defaultShipping = "default_shipping"
     }
 
-    func toJSON() -> [String: AnyObject] {
-        var result: [String: AnyObject] = [
+    func toJSON() -> JSONDictionary {
+        var result: [String: Any] = [
             Keys.gender: gender.rawValue,
             Keys.firstName: firstName,
             Keys.lastName: lastName,

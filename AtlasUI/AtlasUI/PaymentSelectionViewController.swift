@@ -1,55 +1,29 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import UIKit
 import AtlasSDK
 
-typealias PaymentCompletion = AtlasResult<PaymentStatus> -> Void
-
-enum PaymentStatus: String {
-
-    case redirect = ""
-    case success = "success"
-    case cancel = "cancel"
-    case error = "error"
-
-    static var statusKey = "payment_status"
-
-    init?(callbackURLComponents: NSURLComponents, requestURLComponents: NSURLComponents) {
-        guard let
-        callbackHost = callbackURLComponents.host,
-            requestHost = requestURLComponents.host
-        where callbackHost.lowercaseString == requestHost.lowercaseString
-            else { return nil }
-
-        guard let
-        rawValue = requestURLComponents.queryItems?.filter({ $0.name == PaymentStatus.statusKey }).first?.value,
-            paymentStatus = PaymentStatus(rawValue: rawValue)
-            else { self = .redirect; return }
-
-        self = paymentStatus
-    }
-
-}
+typealias PaymentCompletion = (PaymentStatus) -> Void
 
 final class PaymentViewController: UIViewController, UIWebViewDelegate {
 
     var paymentCompletion: PaymentCompletion?
-    private let paymentURL: NSURL
-    private let callbackURLComponents: NSURLComponents?
+    private let paymentURL: URL
+    private let callbackURLComponents: URLComponents?
 
     private lazy var webView: UIWebView = {
         let webView = UIWebView()
-        webView.backgroundColor = .whiteColor()
+        webView.backgroundColor = .white
         webView.delegate = self
         webView.scalesPageToFit = true
         webView.translatesAutoresizingMaskIntoConstraints = false
         return webView
     }()
 
-    init(paymentURL: NSURL, callbackURL: NSURL) {
-        self.callbackURLComponents = NSURLComponents(URL: callbackURL, resolvingAgainstBaseURL: true)
+    init(paymentURL: URL, callbackURL: URL) {
+        self.callbackURLComponents = URLComponents(url: callbackURL, resolvingAgainstBaseURL: true)
         self.paymentURL = paymentURL
         super.init(nibName: nil, bundle: nil)
     }
@@ -59,42 +33,33 @@ final class PaymentViewController: UIViewController, UIWebViewDelegate {
     }
 
     override func viewDidLoad() {
-        view.backgroundColor = .whiteColor()
+        super.viewDidLoad()
+        view.backgroundColor = .white
         view.addSubview(webView)
 
-        webView.fillInSuperView()
-        webView.loadRequest(NSURLRequest(URL: paymentURL))
+        webView.fillInSuperview()
+        webView.loadRequest(URLRequest(url: paymentURL))
     }
 
-    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        guard let
-        url = request.URL,
-            callbackURLComponents = callbackURLComponents,
-            requestURLComponents = NSURLComponents(URL: url, resolvingAgainstBaseURL: true)
+    func webView(_ webView: UIWebView,
+                 shouldStartLoadWith request: URLRequest,
+                 navigationType: UIWebViewNavigationType) -> Bool {
+        guard let url = request.url,
+            let callbackURLComponents = callbackURLComponents,
+            let requestURLComponents = URLComponents(url: url, resolvingAgainstBaseURL: true)
             else { return true }
 
         guard let paymentStatus = PaymentStatus(callbackURLComponents: callbackURLComponents,
                                                 requestURLComponents: requestURLComponents) else { return true }
 
-        paymentCompletion?(.success(paymentStatus))
-        navigationController?.popViewControllerAnimated(true)
+        paymentCompletion?(paymentStatus)
+        _ = navigationController?.popViewController(animated: true)
         return false
     }
 
-    #if swift(>=2.3)
-        func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
-            handle(webView: webView, error: error)
-        }
-    #else
-        func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
-            guard let error = error else { return }
-            handle(webView: webView, error: error)
-        }
-    #endif
-
-    private func handle(webView webView: UIWebView, error: NSError) {
-        if !error.isWebKitError {
-            UserMessage.displayError(error)
+    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
+        if let error = error as NSError?, !error.isRequestCancelledError {
+            UserMessage.displayError(error: error)
         }
     }
 
@@ -102,7 +67,9 @@ final class PaymentViewController: UIViewController, UIWebViewDelegate {
 
 private extension NSError {
 
-    var isWebKitError: Bool {
+    var isRequestCancelledError: Bool {
+        // returning false from `shouldStartLoadWith` method results in error sent by the webview in `didFailLoadWithError` method
+        // We could catch this error by cheking the error domain for `WebKitErrorDomain` and prevent this error from displying to the user
         return self.domain == "WebKitErrorDomain"
     }
 

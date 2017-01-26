@@ -1,45 +1,32 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
 
-public typealias AtlasConfigCompletion = AtlasResult<Config> -> Void
+public typealias AtlasConfigCompletion = (AtlasAPIResult<Config>) -> Void
 
 protocol Configurator {
 
-    func configure(completion: AtlasConfigCompletion) -> Void
+    func configure(completion: @escaping AtlasConfigCompletion)
 
 }
 
 struct ConfigClient: Configurator {
 
-    private let options: Options
+    fileprivate let options: Options
 
     init(options: Options) {
         self.options = options
     }
 
-    func configure(completion: AtlasConfigCompletion) {
-        var requestBuilder = RequestBuilder(forEndpoint: GetConfigEndpoint(URL: options.configurationURL))
-        requestBuilder.execute { result in
-            switch result {
-            case .failure(let error):
-                dispatch_async(dispatch_get_main_queue()) {
-                    completion(.failure(error))
-                }
-            case .success(let response):
-                guard let json = response.body, config = Config(json: json, options: self.options) else {
-                    dispatch_async(dispatch_get_main_queue()) {
-                        completion(.failure(AtlasConfigurationError.incorrectConfigServiceResponse))
-                    }
-                    return
-                }
-                dispatch_async(dispatch_get_main_queue()) {
-                    completion(.success(config))
-                }
-            }
+    func configure(completion: @escaping AtlasConfigCompletion) {
+        let requestBuilder = RequestBuilder(forEndpoint: GetConfigEndpoint(url: options.configurationURL))
+        var apiRequest = APIRequest<Config>(requestBuilder: requestBuilder) { response in
+            guard let json = response.body, let config = Config(json: json, options: self.options) else { return nil }
+            return config
         }
+        apiRequest.execute(completion)
     }
 
 }

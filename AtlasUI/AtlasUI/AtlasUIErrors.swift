@@ -1,56 +1,62 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
 import AtlasSDK
 
-public enum ErrorPresentationType {
+enum PresentationMode {
+
     case banner
     case fullScreen
-}
-
-protocol UserPresentable: AtlasErrorType {
-
-    func customMessage() -> String?
-
-    func shouldDisplayGeneralMessage() -> Bool
-
-    func errorPresentationType() -> ErrorPresentationType
 
 }
 
-extension UserPresentable {
+protocol UserPresentableError: AtlasError {
 
-    func customMessage() -> String? { return nil }
+    var customMessage: String? { get }
+    var shouldDisplayGeneralMessage: Bool { get }
+    var presentationMode: PresentationMode { get }
 
-    func shouldDisplayGeneralMessage() -> Bool { return true }
+}
 
-    func errorPresentationType() -> ErrorPresentationType { return .banner }
+extension UserPresentableError {
+
+    var customMessage: String? {
+        return nil
+    }
+
+    var shouldDisplayGeneralMessage: Bool {
+        return true
+    }
+
+    var presentationMode: PresentationMode {
+        return .banner
+    }
 
     var displayedTitle: String {
-        return shouldDisplayGeneralMessage() ? Localizer.string("AtlasCheckoutError.title") : title()
+        return shouldDisplayGeneralMessage ? Localizer.format(string: "AtlasCheckoutError.title") : title()
     }
 
     var displayedMessage: String {
-        return shouldDisplayGeneralMessage() ? Localizer.string("AtlasCheckoutError.message.unclassified") : message()
+        return shouldDisplayGeneralMessage ? Localizer.format(string: "AtlasCheckoutError.message.unclassified") : message()
     }
 
-    private func title() -> String {
-        let errorTitle = Localizer.string(localizedTitleKey)
-        let errorCategoryTitle = Localizer.string("\(self.dynamicType).title")
+    fileprivate func title() -> String {
+        let errorTitle = Localizer.format(string: localizedTitleKey)
+        let errorCategoryTitle = Localizer.format(string: "\(type(of: self)).title")
         return errorTitle == localizedTitleKey ? errorCategoryTitle : errorTitle
     }
 
-    private func message() -> String {
-        return customMessage() ?? Localizer.string(localizedMessageKey)
+    fileprivate func message() -> String {
+        return customMessage ?? Localizer.format(string: localizedMessageKey)
     }
 
 }
 
-extension AtlasAPIError: UserPresentable {
+extension AtlasAPIError: UserPresentableError {
 
-    func shouldDisplayGeneralMessage() -> Bool {
+    var shouldDisplayGeneralMessage: Bool {
         switch self {
         case .noInternet: return false
         case let .nsURLError(_, details): return details == nil
@@ -58,7 +64,7 @@ extension AtlasAPIError: UserPresentable {
         }
     }
 
-    func customMessage() -> String? {
+    var customMessage: String? {
         switch self {
         case let .nsURLError(_, details): return details~?
         default: return nil
@@ -67,34 +73,30 @@ extension AtlasAPIError: UserPresentable {
 
 }
 
-extension AtlasCheckoutError: UserPresentable {
+extension AtlasCheckoutError: UserPresentableError {
 
-    func shouldDisplayGeneralMessage() -> Bool {
+    var shouldDisplayGeneralMessage: Bool {
         return false
     }
 
-    func errorPresentationType() -> ErrorPresentationType {
+    var presentationMode: PresentationMode {
         switch self {
         case .outOfStock: return .fullScreen
         default: return .banner
         }
     }
 
-    func customMessage() -> String? {
+    var customMessage: String? {
         switch self {
-        case .priceChanged(let newPrice): return Localizer.string("AtlasCheckoutError.message.priceChanged", Localizer.price(newPrice))
+        case .priceChanged(let newPrice):
+            let price = Localizer.format(price: newPrice)
+            return Localizer.format(string: "AtlasCheckoutError.message.priceChanged", price)
         default: return nil
         }
     }
 
 }
 
-extension AtlasLoginError: UserPresentable { }
+extension AtlasLoginError: UserPresentableError { }
 
-extension AtlasConfigurationError: UserPresentable { }
-
-public enum AtlasUserError: UserPresentable {
-
-    case userCancelled
-
-}
+extension AtlasConfigurationError: UserPresentableError { }

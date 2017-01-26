@@ -1,25 +1,26 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
+import UIKit
 import AtlasSDK
 
 final class LegalController: NSObject {
 
-    private let tocURL: NSURL
-    private let legalURL: NSURL
+    fileprivate let tocURL: URL
+    fileprivate let legalURL: URL
 
-    private let legalURLPath = "/legal/"
+    fileprivate let legalURLPath = "/legal/"
 
-    required init(tocURL: NSURL) {
+    required init(tocURL: URL) {
         self.tocURL = tocURL
-        self.legalURL = NSURL(validURL: tocURL, path: legalURLPath)
+        self.legalURL = URL(validURL: tocURL, path: legalURLPath)
     }
 
-    func push(on navController: UINavigationController? = AtlasUIViewController.instance?.mainNavigationController) {
+    func push(on navController: UINavigationController? = AtlasUIViewController.shared?.mainNavigationController) {
         guard let navController = navController else {
-            UIApplication.sharedApplication().openURL(tocURL)
+            UIApplication.shared.openURL(tocURL)
             return
         }
 

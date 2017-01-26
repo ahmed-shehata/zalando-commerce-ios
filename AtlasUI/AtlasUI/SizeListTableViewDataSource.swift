@@ -1,12 +1,14 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
+import Foundation
+import UIKit
 import AtlasSDK
 
 class SizeListTableViewDataSource: NSObject {
 
-    internal let article: Article
+    let article: Article
 
     init(article: Article) {
         self.article = article
@@ -16,14 +18,14 @@ class SizeListTableViewDataSource: NSObject {
 
 extension SizeListTableViewDataSource: UITableViewDataSource {
 
-    internal func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return article.availableUnits.count
     }
 
-    internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(UnitSizeTableViewCell.self, forIndexPath: indexPath) { cell in
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return tableView.dequeueReusableCell(of: UnitSizeTableViewCell.self, at: indexPath) { cell in
             let unit = self.article.availableUnits[indexPath.item]
-            cell.configureData(unit)
+            cell.configure(viewModel: unit)
             cell.accessibilityIdentifier = "size-cell-\(indexPath.row)"
             return cell
         }

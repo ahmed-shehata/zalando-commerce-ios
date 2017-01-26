@@ -1,5 +1,5 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
@@ -12,6 +12,6 @@ do {
 }
 
 while true {
-    NSThread.sleepForTimeInterval(1)
+    Thread.sleep(forTimeInterval: 1)
 }
 

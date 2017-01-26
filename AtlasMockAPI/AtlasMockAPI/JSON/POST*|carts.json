@@ -1,8 +1,7 @@
 {
     "id" : "CART_ID",
-    "sales_channel" : "SALES_CHANNEL_ID",
     "items" : [ {
-               "sku" : "EV451G023-Q110ONE000",
+               "sku" : "AD541L009-G11",
                "quantity" : 1
                },
                {"sku": "GU121D08Z-Q1100XL000",

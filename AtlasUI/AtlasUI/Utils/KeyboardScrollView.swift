@@ -1,45 +1,51 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
+import UIKit
 import AtlasSDK
 
 class KeyboardScrollView: UIScrollView {
 
-    func registerForKeyboardNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self,
-                                                         selector: #selector(keyboardWillShow(_:)),
-                                                         name: UIKeyboardWillShowNotification,
-                                                         object: nil)
-
-        NSNotificationCenter.defaultCenter().addObserver(self,
-                                                         selector: #selector(keyboardWillHide(_:)),
-                                                         name: UIKeyboardWillHideNotification,
-                                                         object: nil)
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
-    func keyboardWillShow(notification: NSNotification) {
-        guard let keyboardHeight = notification.userInfo?[UIKeyboardFrameEndUserInfoKey]?.CGRectValue().height else { return }
+    func registerForKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow(fromNotification:)),
+                                               name: NSNotification.Name.UIKeyboardWillShow,
+                                               object: nil)
 
-        UIView.animate(.fast) {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide(fromNotification:)),
+                                               name: NSNotification.Name.UIKeyboardWillHide,
+                                               object: nil)
+    }
+
+    func keyboardWillShow(fromNotification notification: Notification) {
+        guard let infoValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] else { return }
+        let keyboardHeight = (infoValue as AnyObject).cgRectValue.height
+
+        UIView.animate {
             self.contentInset.bottom = keyboardHeight
             self.scrollIndicatorInsets.bottom = keyboardHeight
             self.scrollToCurrentFirstResponder(withKeyboardHeight: keyboardHeight)
         }
     }
 
-    func keyboardWillHide(notification: NSNotification) {
-        UIView.animate(.fast) {
+    func keyboardWillHide(fromNotification notification: Notification) {
+        UIView.animate {
             self.contentInset.bottom = 0
             self.scrollIndicatorInsets.bottom = 0
         }
     }
 
-    private func scrollToCurrentFirstResponder(withKeyboardHeight keyboardHeight: CGFloat) {
+    fileprivate func scrollToCurrentFirstResponder(withKeyboardHeight keyboardHeight: CGFloat) {
         guard let firstResponder = UIApplication.window?.findFirstResponder() else { return }
 
-        let frame = firstResponder.convertRect(firstResponder.bounds, toView: self)
+        let frame = firstResponder.convert(firstResponder.bounds, to: self)
         let newOffset = frame.origin.y - (bounds.height - keyboardHeight) / 2.0
         let maxOffset = contentSize.height + keyboardHeight - bounds.height
         contentOffset.y = max(-contentInset.top, min(newOffset, maxOffset))

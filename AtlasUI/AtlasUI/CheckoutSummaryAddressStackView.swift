@@ -1,5 +1,5 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import UIKit
@@ -11,42 +11,42 @@ struct CheckoutSummaryAddressViewModel {
 
 class CheckoutSummaryAddressStackView: UIStackView, RowStackView {
 
-    internal let titleLabel: UILabel = {
+    let titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = .systemFontOfSize(16)
-        label.textColor = .blackColor()
+        label.font = .systemFont(ofSize: 16)
+        label.textColor = .black
         return label
     }()
 
-    internal let linesStackView: UIStackView = {
+    let linesStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.axis = .Vertical
+        stackView.axis = .vertical
         stackView.spacing = 2
         return stackView
     }()
 
-    internal let firstLineValueLabel: UILabel = {
+    let firstLineValueLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.lineBreakMode = .ByTruncatingTail
-        label.font = .systemFontOfSize(14, weight: UIFontWeightLight)
+        label.lineBreakMode = .byTruncatingTail
+        label.font = .systemFont(ofSize: 14, weight: UIFontWeightLight)
         label.textColor = UIColor(hex: 0x7F7F7F)
         return label
     }()
 
-    internal let secondLineValueLabel: UILabel = {
+    let secondLineValueLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.lineBreakMode = .ByTruncatingTail
-        label.font = .systemFontOfSize(14, weight: UIFontWeightLight)
+        label.lineBreakMode = .byTruncatingTail
+        label.font = .systemFont(ofSize: 14, weight: UIFontWeightLight)
         label.textColor = UIColor(hex: 0x7F7F7F)
         return label
     }()
 
-    internal let arrowImageView: UIImageView = {
+    let arrowImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "tableArrow", bundledWith: CheckoutSummaryAddressStackView.self))
-        imageView.contentMode = .Center
+        imageView.contentMode = .center
         return imageView
     }()
 
@@ -73,9 +73,9 @@ extension CheckoutSummaryAddressStackView: UIDataBuilder {
 
     typealias T = CheckoutSummaryAddressViewModel
 
-    func configureData(viewModel: T) {
-        firstLineValueLabel.text = viewModel.addressLines[0].trimmed
-        secondLineValueLabel.text = viewModel.addressLines.count > 1 ? viewModel.addressLines[1].trimmed: nil
+    func configure(viewModel: T) {
+        firstLineValueLabel.text = viewModel.addressLines[0].trimmed()
+        secondLineValueLabel.text = viewModel.addressLines.count > 1 ? viewModel.addressLines[1].trimmed() : nil
         arrowImageView.alpha = viewModel.showArrow ? 1 : 0
     }
 

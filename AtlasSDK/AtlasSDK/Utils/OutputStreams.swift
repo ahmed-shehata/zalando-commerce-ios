@@ -1,30 +1,30 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
 
-struct StderrOutputStream: OutputStreamType {
+struct StderrOutputStream: TextOutputStream {
 
-    mutating func write(string: String) {
+    mutating func write(_ string: String) {
         fputs(string, stderr)
     }
 
 }
 
-struct StdoutOutputStream: OutputStreamType {
+struct StdoutOutputStream: TextOutputStream {
 
-    mutating func write(string: String) {
+    mutating func write(_ string: String) {
         fputs(string, stdout)
     }
 
 }
 
-extension OutputStreamType {
+extension TextOutputStream {
 
-    mutating func print(items: Any..., separator: String = " ", terminator: String = "\n") {
-        let string = items.map { String($0) }.joinWithSeparator(separator)
-        Swift.print(string, terminator: terminator, toStream: &self)
+    mutating func print(_ items: Any..., separator: String = " ", terminator: String = "\n") {
+        let string = items.map { String(describing: $0) }.joined(separator: separator)
+        Swift.print(string, terminator: terminator, to: &self)
     }
 
 }

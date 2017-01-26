@@ -1,8 +1,8 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
-public struct CheckAddress {
+public struct AddressCheck {
     public let street: String?
     public let additional: String?
     public let zip: String
@@ -10,9 +10,9 @@ public struct CheckAddress {
     public let countryCode: String
 }
 
-extension CheckAddress: JSONInitializable {
+extension AddressCheck: JSONInitializable {
 
-    private struct Keys {
+    fileprivate struct Keys {
         static let street = "street"
         static let additional = "additional"
         static let zip = "zip"
@@ -21,10 +21,10 @@ extension CheckAddress: JSONInitializable {
     }
 
     init?(json: JSON) {
-        guard let
-            zip = json[Keys.zip].string,
-            city = json[Keys.city].string,
-            countryCode = json[Keys.countryCode].string else { return nil }
+        guard let zip = json[Keys.zip].string,
+            let city = json[Keys.city].string,
+            let countryCode = json[Keys.countryCode].string
+            else { return nil }
 
         self.init(street: json[Keys.street].string,
                   additional: json[Keys.additional].string,
@@ -34,10 +34,10 @@ extension CheckAddress: JSONInitializable {
     }
 }
 
-extension CheckAddress: JSONRepresentable {
+extension AddressCheck: JSONRepresentable {
 
-    func toJSON() -> [String : AnyObject] {
-        var result: [String: AnyObject] = [
+    func toJSON() -> [String : Any] {
+        var result: [String: Any] = [
             Keys.zip: zip,
             Keys.city: city,
             Keys.countryCode: countryCode
@@ -51,4 +51,12 @@ extension CheckAddress: JSONRepresentable {
         return result
     }
 
+}
+
+public func === (lhs: AddressCheck, rhs: AddressCheck) -> Bool {
+    return lhs.street == rhs.street
+        && lhs.additional == rhs.additional
+        && lhs.zip == rhs.zip
+        && lhs.city == rhs.city
+        && lhs.countryCode == rhs.countryCode
 }

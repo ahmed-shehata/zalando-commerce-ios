@@ -1,5 +1,5 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
@@ -13,7 +13,7 @@ public struct Catalog {
 extension Catalog: JSONInitializable {
 
     init?(json: JSON) {
-        articles = json.arrayValue.flatMap { Article(json: $0) }
+        articles = json.jsons.flatMap { Article(json: $0) }
     }
 
 }

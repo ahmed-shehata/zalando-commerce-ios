@@ -1,12 +1,8 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
-
-/**
- Represents a single article
- */
 
 public struct SelectedArticleUnit {
 
@@ -24,6 +20,14 @@ public struct SelectedArticleUnit {
 
     public var unit: Article.Unit {
         return article.availableUnits[selectedUnitIndex]
+    }
+
+    public var price: Money {
+        return unit.price
+    }
+
+    public var priceAmount: MoneyAmount {
+        return unit.price.amount
     }
 
 }
@@ -46,7 +50,7 @@ public struct Article {
         return !availableUnits.isEmpty
     }
 
-    public var thumbnailURL: NSURL? {
+    public var thumbnailURL: URL? {
         return media.images.first?.catalogURL
     }
 
@@ -70,12 +74,12 @@ public struct Article {
 
     public struct Image {
         public let order: Int
-        public let catalogURL: NSURL
-        public let catalogHDURL: NSURL
-        public let detailURL: NSURL
-        public let detailHDURL: NSURL
-        public let largeURL: NSURL
-        public let largeHDURL: NSURL
+        public let catalogURL: URL
+        public let catalogHDURL: URL
+        public let detailURL: URL
+        public let detailHDURL: URL
+        public let largeURL: URL
+        public let largeHDURL: URL
     }
 
     public struct Partner {
@@ -89,20 +93,19 @@ public struct Article {
 extension Article: JSONInitializable {
 
     init?(json: JSON) {
-        guard let
-        id = json["id"].string,
-            name = json["name"].string,
-            color = json["color"].string,
-            brand = Brand(json: json["brand"]),
-            media = Media(json: json["media"])
-        else { return nil }
+        guard let id = json["id"].string,
+            let name = json["name"].string,
+            let color = json["color"].string,
+            let brand = Brand(json: json["brand"]),
+            let media = Media(json: json["media"])
+            else { return nil }
 
         self.id = id
         self.name = name
         self.color = color
         self.media = media
         self.brand = brand
-        self.units = json["units"].arrayValue.flatMap { Article.Unit(json: $0) }
+        self.units = json["units"].jsons.flatMap { Article.Unit(json: $0) }
         self.availableUnits = units.filter { $0.available }
     }
 
@@ -111,14 +114,13 @@ extension Article: JSONInitializable {
 extension Article.Unit: JSONInitializable {
 
     init?(json: JSON) {
-        guard let
-        id = json["id"].string,
-            size = json["size"].string,
-            price = Money(json: json["price"]),
-            originalPrice = Money(json: json["original_price"]),
-            available = json["available"].bool,
-            stock = json["stock"].int
-        else { return nil }
+        guard let id = json["id"].string,
+            let size = json["size"].string,
+            let price = Money(json: json["price"]),
+            let originalPrice = Money(json: json["original_price"]),
+            let available = json["available"].bool,
+            let stock = json["stock"].int
+            else { return nil }
 
         self.id = id
         self.size = size
@@ -147,7 +149,7 @@ extension Article.Brand: JSONInitializable {
 extension Article.Media: JSONInitializable {
 
     init?(json: JSON) {
-        self.images = json["images"].arrayValue.flatMap { Article.Image(json: $0) }
+        self.images = json["images"].jsons.flatMap { Article.Image(json: $0) }
     }
 
 }
@@ -155,15 +157,14 @@ extension Article.Media: JSONInitializable {
 extension Article.Image: JSONInitializable {
 
     init?(json: JSON) {
-        guard let
-        order = json["order"].int,
-            catalogURL = json["catalog"].URL,
-            catalogHDURL = json["catalog_hd"].URL,
-            detailURL = json["detail"].URL,
-            detailHDURL = json["detail_hd"].URL,
-            largeURL = json["large"].URL,
-            largeHDURL = json["large_hd"].URL
-        else { return nil }
+        guard let order = json["order"].int,
+            let catalogURL = json["catalog"].url,
+            let catalogHDURL = json["catalog_hd"].url,
+            let detailURL = json["detail"].url,
+            let detailHDURL = json["detail_hd"].url,
+            let largeURL = json["large"].url,
+            let largeHDURL = json["large_hd"].url
+            else { return nil }
         self.order = order
         self.catalogURL = catalogURL
         self.catalogHDURL = catalogHDURL
@@ -178,11 +179,10 @@ extension Article.Image: JSONInitializable {
 extension Article.Partner: JSONInitializable {
 
     init?(json: JSON) {
-        guard let
-        id = json["id"].string,
-            name = json["name"].string,
-            detailsURL = json["detail_url"].string
-        else { return nil }
+        guard let id = json["id"].string,
+            let name = json["name"].string,
+            let detailsURL = json["detail_url"].string
+            else { return nil }
 
         self.id = id
         self.name = name

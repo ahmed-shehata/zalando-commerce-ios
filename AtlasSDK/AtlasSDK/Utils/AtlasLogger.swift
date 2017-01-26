@@ -1,13 +1,13 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
 
-public final class AtlasLogger {
+public struct AtlasLogger {
 
-    static var logger: LoggerType = PrintLogger()
-    static var severity: AppLogSeverity = isDebug() ? .Debug : .Message {
+    static var logger: Logger = PrintLogger()
+    static var severity: AppLogSeverity = Debug.isEnabled ? .debug : .message {
         didSet {
             logger.severity = severity
         }
@@ -17,19 +17,19 @@ public final class AtlasLogger {
 
 extension AtlasLogger {
 
-    public static func logMessage(items: Any..., verbose: Bool? = nil,
-        function: String = #function, filePath: String = #file, fileLine: Int = #line) {
-            AtlasLogger.logger.log(.Message, verbose: verbose, function: function, filePath: filePath, fileLine: fileLine, items)
+    public static func logMessage(_ items: Any..., verbose: Bool? = nil,
+                                  function: String = #function, filePath: String = #file, fileLine: Int = #line) {
+        AtlasLogger.logger.log(as: .message, verbose: verbose, function: function, filePath: filePath, fileLine: fileLine, items)
     }
 
-    public static func logDebug(items: Any..., verbose: Bool? = nil,
-        function: String = #function, filePath: String = #file, fileLine: Int = #line) {
-            AtlasLogger.logger.log(.Debug, verbose: verbose, function: function, filePath: filePath, fileLine: fileLine, items)
+    public static func logDebug(_ items: Any..., verbose: Bool? = nil,
+                                function: String = #function, filePath: String = #file, fileLine: Int = #line) {
+        AtlasLogger.logger.log(as: .debug, verbose: verbose, function: function, filePath: filePath, fileLine: fileLine, items)
     }
 
-    public static func logError(items: Any..., verbose: Bool? = nil,
-        function: String = #function, filePath: String = #file, fileLine: Int = #line) {
-            AtlasLogger.logger.log(.Error, verbose: verbose, function: function, filePath: filePath, fileLine: fileLine, items)
+    public static func logError(_ items: Any..., verbose: Bool? = nil,
+                                function: String = #function, filePath: String = #file, fileLine: Int = #line) {
+        AtlasLogger.logger.log(as: .error, verbose: verbose, function: function, filePath: filePath, fileLine: fileLine, items)
     }
 
 }

@@ -1,5 +1,5 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
@@ -32,7 +32,7 @@ public func == (lhs: Checkout, rhs: Checkout) -> Bool {
 
 extension Checkout: JSONInitializable {
 
-    private struct Keys {
+    fileprivate struct Keys {
         static let id = "id"
         static let customerNumber = "customer_number"
         static let cartId = "cart_id"
@@ -43,22 +43,22 @@ extension Checkout: JSONInitializable {
     }
 
     init?(json: JSON) {
-        guard let
-        id = json[Keys.id].string,
-            customerNumber = json[Keys.customerNumber].string,
-            cartId = json[Keys.cartId].string,
-            payment = Payment(json: json[Keys.payment]),
-            delivery = Delivery(json: json[Keys.delivery]),
-            billingAddress = CheckoutAddress(json: json[Keys.billingAddress]),
-            shippingAddress = CheckoutAddress(json: json[Keys.shippingAddress])
-        else { return nil }
+        guard let id = json[Keys.id].string,
+            let customerNumber = json[Keys.customerNumber].string,
+            let cartId = json[Keys.cartId].string,
+            let payment = Payment(json: json[Keys.payment]),
+            let delivery = Delivery(json: json[Keys.delivery]),
+            let billingAddress = CheckoutAddress(json: json[Keys.billingAddress]),
+            let shippingAddress = CheckoutAddress(json: json[Keys.shippingAddress])
+            else { return nil }
+
         self.init(id: id,
-            customerNumber: customerNumber,
-            cartId: cartId,
-            delivery: delivery,
-            payment: payment,
-            billingAddress: billingAddress,
-            shippingAddress: shippingAddress
+                  customerNumber: customerNumber,
+                  cartId: cartId,
+                  delivery: delivery,
+                  payment: payment,
+                  billingAddress: billingAddress,
+                  shippingAddress: shippingAddress
         )
     }
 }

@@ -20,6 +20,20 @@
                ReferencedContainer = "container:AtlasUI.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "5BC1E6A06770E7598B0CE1C578109BF4"
+               BuildableName = "AtlasUITestsHostsApp.app"
+               BlueprintName = "AtlasUITestsHostsApp"
+               ReferencedContainer = "container:AtlasUI.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

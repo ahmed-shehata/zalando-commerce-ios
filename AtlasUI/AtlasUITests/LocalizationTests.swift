@@ -1,5 +1,5 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import XCTest
@@ -10,22 +10,51 @@ import Nimble
 
 class LocalizationTests: XCTestCase {
 
-    func testGermanCurrency() {
-        let deutschland = try! Localizer(localeIdentifier: "de_DE")
-        let price = deutschland.price(10)
-        expect(price).to(equal("10,00 €"))
+    func testGermanGermanyPriceFormat() {
+        expectPrice(10, formattedFor: "de_DE", toBe: "10,00\u{00a0}€")
     }
 
-    func testFrenchCurrency() {
-        let france = try! Localizer(localeIdentifier: "en_FR")
-        let price = france.price(10)
-        expect(price).to(equal("€10,00"))
+    func testGermanGermanyFractionPriceFormat() {
+        expectPrice(10.99, formattedFor: "de_DE", toBe: "10,99\u{00a0}€")
     }
 
-    func testUKCurrency() {
-        let brexit = try! Localizer(localeIdentifier: "en_UK")
-        let price = brexit.price(10)
-        expect(price).to(equal("£10.00"))
+    func testGermanGermanyFractionRoundedUpPriceFormat() {
+        expectPrice(10.999, formattedFor: "de_DE", toBe: "11,00\u{00a0}€")
+    }
+
+    func testGermanGermanyFractionRoundedDownPriceFormat() {
+        expectPrice(10.001, formattedFor: "de_DE", toBe: "10,00\u{00a0}€")
+    }
+
+    func testEnglishFrancePriceFormat() {
+        expectPrice(10, formattedFor: "en_FR", toBe: "€10,00")
+    }
+
+    func testEnglishUKPriceFormat() {
+        expectPrice(10, formattedFor: "en_UK", toBe: "£10.00")
+    }
+
+    func testGermanUKPriceFormat() {
+        expectPrice(10, formattedFor: "de_UK", toBe: "10,00\u{00a0}£")
+    }
+
+    func testNegativeGermanGermanyPriceFormat() {
+        expectPrice(-100, formattedFor: "de_DE", toBe: "-100,00\u{00a0}€")
+    }
+
+    func testNegativeFrenchUKPriceFormat() {
+        expectPrice(-100, formattedFor: "fr_UK", toBe: "-100,00\u{00a0}£GB")
+    }
+
+    func testNegativeFrenchUKPriceWithOwnCurrencyFormat() {
+        expectPrice(-100, inCurrency: "KABOOM", formattedFor: "fr_UK", toBe: "-100,00\u{00a0}KAB")
+    }
+
+    private func expectPrice(_ price: NSNumber, inCurrency currency: String? = nil, formattedFor identifier: String, toBe expectedFormat: String) {
+        let loc = try! Localizer(localeIdentifier: identifier)
+        let formattedPrice = loc.format(price: price, withCurrencyCode: currency)
+
+        expect(formattedPrice) == expectedFormat
     }
 
 }

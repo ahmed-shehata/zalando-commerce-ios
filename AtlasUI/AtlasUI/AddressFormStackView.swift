@@ -1,13 +1,13 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import UIKit
 
 class AddressFormStackView: UIStackView {
 
-    internal var addressType: AddressFormType!
-    internal var textFields: [TextFieldInputStackView] = []
+    var addressType: AddressFormType!
+    var textFields: [TextFieldInputStackView] = []
 
 }
 
@@ -21,51 +21,68 @@ extension AddressFormStackView: UIBuilder {
         }
     }
 
-    func builderSubviews() -> [UIBuilder] {
-        return textFields.map { $0 }
-    }
-
 }
 
 extension AddressFormStackView: UIDataBuilder {
 
-    typealias T = AddressFormViewModel
+    typealias T = AddressFormDataModel
 
-    func configureData(viewModel: T) {
-        for (idx, textFieldInputView) in textFields.enumerate() {
+    func configure(viewModel: T) {
+        for (idx, textFieldInputView) in textFields.enumerated() {
             let fieldType = addressType.fields[idx]
             let title = fieldType.title
-            let value = fieldType.value(viewModel)
+            let value = viewModel.value(forField: fieldType)
             let isActive = fieldType.isActive()
 
-            let customView = fieldType.customView(viewModel) { text in
-                fieldType.updateModel(viewModel, withValue: text)
+            let customView = fieldType.customView(from: viewModel) { text in
+                viewModel.update(value: text, fromField: fieldType)
                 textFieldInputView.textField.text = text
                 textFieldInputView.configureTitleLabel()
-                if text?.trimmedLength > 0 {
+                if let trimmed = text?.trimmed(), trimmed.length > 0 {
                     textFieldInputView.textField.resignFirstResponder()
                 }
             }
 
             var nextTextField: TextFieldInputStackView?
             if !fieldType.returnKeyDismissKeyboard() {
-                nextTextField = textFields.count > idx + 1 ? textFields[idx + 1]: nil
+                nextTextField = textFields.count > idx + 1 ? textFields[idx + 1] : nil
             }
 
             let valueChangedHandler: TextFieldChangedHandler = { text in
-                fieldType.updateModel(viewModel, withValue: text)
+                viewModel.update(value: text, fromField: fieldType)
             }
 
             let viewModel = TextFieldInputViewModel(title: title,
-                value: value,
-                accessibilityIdentifier: fieldType.accessibilityIdentifier,
-                isActive: isActive,
-                validators: fieldType.formValidators,
-                customInputView: customView,
-                nextTextFieldInput: nextTextField,
-                valueChangedHandler: valueChangedHandler)
-            textFieldInputView.configureData(viewModel)
+                                                    value: value,
+                                                    fieldType: fieldType,
+                                                    isActive: isActive,
+                                                    customInputView: customView,
+                                                    nextTextFieldInput: nextTextField,
+                                                    valueChangedHandler: valueChangedHandler)
+            textFieldInputView.configure(viewModel: viewModel)
         }
+    }
+
+}
+
+extension TextFieldInputViewModel {
+
+    init(title: String,
+         value: String? = nil,
+         fieldType: AddressFormField,
+         isActive: Bool = true,
+         customInputView: UIView? = nil,
+         nextTextFieldInput: TextFieldInputStackView? = nil,
+         valueChangedHandler: TextFieldChangedHandler? = nil) {
+        self.init(title: title,
+                  value: value,
+                  accessibilityIdentifier: fieldType.accessibilityIdentifier,
+                  isActive: isActive,
+                  validators: fieldType.formValidators,
+                  customInputView: customInputView,
+                  nextTextFieldInput: nextTextFieldInput,
+                  valueChangedHandler: valueChangedHandler,
+                  keyboardType: fieldType.keyboardType)
     }
 
 }

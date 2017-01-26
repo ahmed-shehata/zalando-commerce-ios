@@ -1,52 +1,31 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
 
-typealias ResponseCompletion = AtlasResult<JSONResponse> -> Void
+typealias ResponseCompletion = (AtlasResult<JSONResponse>) -> Void
 
 struct RequestBuilder {
 
     let endpoint: Endpoint
-    let urlSession: NSURLSession
+    let urlSession: URLSession
 
-    private var request: NSURLRequest?
-    private var response: NSURLResponse?
-    private var responseData: NSData?
-    private var responseError: NSError?
+    fileprivate(set) var taskResponse: DataTaskResponse?
 
-    private var printRequestDescription: Bool {
-        return NSProcessInfo.processInfo().arguments.contains("PRINT_REQUEST_DESCRIPTION")
-    }
-
-    init(forEndpoint endpoint: Endpoint, urlSession: NSURLSession = NSURLSession.sharedSession()) {
+    init(forEndpoint endpoint: Endpoint, urlSession: URLSession = URLSession.shared) {
         self.urlSession = urlSession
         self.endpoint = endpoint
     }
 
-    mutating func execute(completion: ResponseCompletion) {
+    func execute(completion: @escaping ResponseCompletion) {
+        let endpoint = self.endpoint
         buildAndExecuteSessionTask { result in
             switch result {
             case .failure(let error):
-                AtlasLogger.logError("Failed request:", self.endpoint, "with error:", error)
-                switch error {
-                case AtlasAPIError.unauthorized:
-                    guard let authorizationHandler = try? Atlas.provide() as AuthorizationHandler else {
-                        return completion(.failure(error))
-                    }
-                    authorizationHandler.authorize { result in
-                        switch result {
-                        case .failure(let error):
-                            completion(.failure(error))
-                        case .success(let accessToken):
-                            APIAccessToken.store(accessToken)
-                            self.execute(completion)
-                        }
-                    }
-                default:
-                    completion(.failure(error))
-                }
+                AtlasLogger.logError("FAILED CONNECTION:", type(of: endpoint),
+                                     "\nERROR:", error)
+                completion(.failure(error))
 
             case .success(let response):
                 completion(.success(response))
@@ -54,66 +33,32 @@ struct RequestBuilder {
         }
     }
 
-    private mutating func buildAndExecuteSessionTask(completion: ResponseCompletion) {
-        let request: NSMutableURLRequest
+    fileprivate func buildAndExecuteSessionTask(completion: @escaping ResponseCompletion) {
+        let request: URLRequest
         do {
             request = try buildRequest()
-            self.request = request
         } catch let e {
             return completion(.failure(e))
         }
 
-        self.urlSession.dataTaskWithRequest(request) { response in
-            (self.responseData, self.response, self.responseError) = response
-            if self.printRequestDescription {
-                print(self.description)
+        self.urlSession.dataTask(with: request) { data, response, error in
+            let taskResponse = DataTaskResponse(request: request, response: response, data: data, error: error)
+            ResponseParser(taskResponse: taskResponse).parse(completion: completion)
             }
-            ResponseParser(taskResponse: response).parse(completion)
-        }.resume()
+            .resume()
+
     }
 
-    private func buildRequest() throws -> NSMutableURLRequest {
-        let request = try NSMutableURLRequest(endpoint: endpoint)
-        guard endpoint.requiresAuthorization else {
-            return request.debugLog()
-        }
-        return request.authorize(withToken: APIAccessToken.retrieve()).debugLog()
-    }
-
-}
-
-extension RequestBuilder: CustomStringConvertible {
-
-    var description: String {
-
-        var desc = ""
-        if let request = request {
-            desc += "\n🔴 REQUEST:\n"
-            desc += "URL: \(request.URL!)\n" // swiftlint:disable:this force_unwrapping
-            desc += "Method: \(request.HTTPMethod ?? "")\n"
-            request.allHTTPHeaderFields?.forEach { key, val in
-                desc += "\(key): \(val)\n"
+    fileprivate func buildRequest() throws -> URLRequest {
+        let request: URLRequest = try {
+            var r = try URLRequest(endpoint: self.endpoint)
+            if let token = self.endpoint.authorizationToken {
+                r.authorize(withToken: token)
             }
-            if let bodyData = request.HTTPBody, body = String(data: bodyData, encoding: NSUTF8StringEncoding) {
-                desc += "⭕️ BODY: \(body.whiteCharactersFreeString)\n"
-            }
-        } else {
-            desc += "<NO REQUEST DATA>\n"
-        }
+            return r
+            }()
 
-        if let response = self.response as? NSHTTPURLResponse {
-            desc += "\n🔵 RESPONSE:\n"
-            response.allHeaderFields.forEach { key, val in
-                desc += "\(key): \(val)\n"
-            }
-            if let bodyData = responseData, body = String(data: bodyData, encoding: NSUTF8StringEncoding) {
-                desc += "⭕️ BODY: \(body.whiteCharactersFreeString)\n"
-            }
-        } else {
-            desc += "<NO RESPONSE DATA>\n"
-        }
-
-        return desc
+        return request.debugLog()
     }
 
 }

@@ -1,16 +1,22 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
 
-public typealias AtlasClientCompletion = AtlasResult<APIClient> -> Void
+public typealias AtlasClientCompletion = (AtlasResult<AtlasAPIClient>) -> Void
+
+extension NSNotification.Name {
+
+    public static let AtlasAuthorized = NSNotification.Name(rawValue: "Atlas.NotificationAuthorized")
+    public static let AtlasDeauthorized = NSNotification.Name(rawValue: "Atlas.NotificationDeauthorized")
+    public static let AtlasAuthorizationChanged = NSNotification.Name(rawValue: "Atlas.NotificationAuthorizationChanged")
+
+}
 
 public struct Atlas {
 
-    private static let injector = Injector()
-
-    public static func configure(options: Options? = nil, completion: AtlasClientCompletion) {
+    public static func configure(options: Options? = nil, completion: @escaping AtlasClientCompletion) {
         let options = options ?? Options()
         do {
             try options.validate()
@@ -21,30 +27,14 @@ public struct Atlas {
 
         ConfigClient(options: options).configure { result in
             switch result {
-            case .failure(let error):
+            case .failure(let error, _):
                 AtlasLogger.logError(error)
                 completion(.failure(error))
             case .success(let config):
-                let client = APIClient(config: config)
+                let client = AtlasAPIClient(config: config)
                 completion(.success(client))
             }
         }
-    }
-
-    public static func isUserLoggedIn() -> Bool {
-        return APIAccessToken.retrieve() != nil
-    }
-
-    public static func logoutUser() {
-        APIAccessToken.delete()
-    }
-
-    public static func register<T>(factory: Void -> T) {
-        injector.register(factory)
-    }
-
-    public static func provide<T>() throws -> T {
-        return try injector.provide()
     }
 
 }

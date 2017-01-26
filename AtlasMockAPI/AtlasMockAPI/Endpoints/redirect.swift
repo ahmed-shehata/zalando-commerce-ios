@@ -1,5 +1,5 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
@@ -11,8 +11,8 @@ extension HttpServer {
         let path = "/redirect"
 
         self[path] = { request in
-            let redirectURL = request.queryParams.filter({ (key, val) in key == "url" }).first?.1 ?? ""
-            return .MovedPermanently(redirectURL.stringByRemovingPercentEncoding ?? redirectURL)
+            let redirectURL = request.queryParams.first(where: { key, _ in key == "url" })?.1 ?? ""
+            return .movedPermanently(redirectURL.removingPercentEncoding ?? redirectURL)
         }
     }
 

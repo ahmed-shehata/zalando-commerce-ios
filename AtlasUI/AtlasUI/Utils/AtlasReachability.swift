@@ -1,5 +1,5 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import UIKit
@@ -7,27 +7,31 @@ import AtlasSDK
 
 class AtlasReachability {
 
-    private var reachability: AtlasUI_Reachability?
+    fileprivate var reachability: Reachability?
 
-    internal func setupReachability() {
+    func setupReachability() {
+        guard let reachability = Reachability(), !UIApplication.unitTestsAreRunning else { return }
+
+        reachability.whenReachable = { _ in
+            Async.main {
+                UserMessage.hideBannerError()
+            }
+        }
+
+        reachability.whenUnreachable = { _ in
+            Async.main {
+                UserMessage.displayError(error: AtlasAPIError.noInternet)
+            }
+        }
+
         do {
-            reachability = try AtlasUI_Reachability.reachabilityForInternetConnection()
-            try reachability?.startNotifier()
+            try reachability.startNotifier()
         } catch let error {
             AtlasLogger.logError(error)
+            return
         }
 
-        reachability?.whenReachable = { _ in
-            Async.main {
-                UserMessage.clearBannerError()
-            }
-        }
-
-        reachability?.whenUnreachable = { _ in
-            Async.main {
-                UserMessage.displayError(AtlasAPIError.noInternet)
-            }
-        }
+        self.reachability = reachability
     }
 
 }

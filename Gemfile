@@ -3,18 +3,21 @@ source 'https://rubygems.org'
 ruby 2.2
 
 group :calypso do
+  gem 'awesome_print'
+  gem 'cocoapods'
+  gem 'git'
+  gem 'github_api'
+  gem 'httparty'
+  gem 'jazzy'
+  gem 'rubocop'
   gem 'thor'
   gem 'xcpretty'
-  gem 'github_api'
-  gem 'daemons'
-  gem 'xcov'
-  gem 'jazzy'
-  gem 'github_changelog_generator'
-  gem 'rubocop'
-  gem 'httparty'
-  gem 'awesome_print'
 end
 
-group :tools do
+group :development do
   gem 'travis'
+end
+
+group :jekyll_plugins do
+  gem 'github-pages'
 end

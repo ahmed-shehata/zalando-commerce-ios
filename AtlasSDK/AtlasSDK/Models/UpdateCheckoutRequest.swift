@@ -1,5 +1,5 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
@@ -16,18 +16,18 @@ public struct UpdateCheckoutRequest {
 
 extension UpdateCheckoutRequest: JSONRepresentable {
 
-    private struct Keys {
+    fileprivate struct Keys {
         static let billingAddressId = "billing_address_id"
         static let shippingAddressId = "shipping_address_id"
     }
 
-    func toJSON() -> [String: AnyObject] {
-        var result = [String: AnyObject]()
+    func toJSON() -> JSONDictionary {
+        var result = [String: Any]()
 
-        if let billingAddressId = billingAddressId where !billingAddressId.isEmpty {
+        if let billingAddressId = billingAddressId, !billingAddressId.isEmpty {
             result[Keys.billingAddressId] = billingAddressId
         }
-        if let shippingAddressId = shippingAddressId where !shippingAddressId.isEmpty {
+        if let shippingAddressId = shippingAddressId, !shippingAddressId.isEmpty {
             result[Keys.shippingAddressId] = shippingAddressId
         }
         return result

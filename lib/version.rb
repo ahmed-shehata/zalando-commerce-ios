@@ -1,1 +1,1 @@
-VERSION='0.0.4'
+ATLAS_VERSION = '1.1.4'

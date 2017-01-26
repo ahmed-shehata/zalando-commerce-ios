@@ -1,5 +1,5 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
@@ -20,7 +20,7 @@ public struct CheckoutAddress: EquatableAddress {
 
 extension CheckoutAddress: JSONInitializable {
 
-    private struct Keys {
+    fileprivate struct Keys {
 
         static let id = "id"
         static let gender = "gender"
@@ -35,41 +35,41 @@ extension CheckoutAddress: JSONInitializable {
     }
 
     init?(json: JSON) {
-        guard let
-        id = json[Keys.id].string,
-            genderRaw = json[Keys.gender].string,
-            gender = Gender(rawValue: genderRaw),
-            firstName = json[Keys.firstName].string,
-            lastName = json[Keys.lastName].string,
-            zip = json[Keys.zip].string,
-            city = json[Keys.city].string,
-            countryCode = json[Keys.countryCode].string
-        else { return nil }
+        guard let id = json[Keys.id].string,
+            let genderRaw = json[Keys.gender].string,
+            let gender = Gender(rawValue: genderRaw),
+            let firstName = json[Keys.firstName].string,
+            let lastName = json[Keys.lastName].string,
+            let zip = json[Keys.zip].string,
+            let city = json[Keys.city].string,
+            let countryCode = json[Keys.countryCode].string
+            else { return nil }
 
         self.init(id: id,
-            gender: gender,
-            firstName: firstName,
-            lastName: lastName,
-            street: json[Keys.street].string,
-            additional: json[Keys.additional].string,
-            zip: zip,
-            city: city,
-            countryCode: countryCode,
-            pickupPoint: PickupPoint(json: json[Keys.pickupPoint]))
+                  gender: gender,
+                  firstName: firstName,
+                  lastName: lastName,
+                  street: json[Keys.street].string,
+                  additional: json[Keys.additional].string,
+                  zip: zip,
+                  city: city,
+                  countryCode: countryCode,
+                  pickupPoint: PickupPoint(json: json[Keys.pickupPoint]))
     }
 }
 extension CheckoutAddress {
     public init?(address: FormattableAddress) {
-        guard let address = address as? UserAddress else { return nil }
+        guard let address = address as? UserAddress
+            else { return nil }
         self.init(id: address.id,
-            gender: address.gender,
-            firstName: address.firstName,
-            lastName: address.lastName,
-            street: address.street,
-            additional: address.additional,
-            zip: address.zip,
-            city: address.city,
-            countryCode: address.countryCode,
-            pickupPoint: address.pickupPoint)
+                  gender: address.gender,
+                  firstName: address.firstName,
+                  lastName: address.lastName,
+                  street: address.street,
+                  additional: address.additional,
+                  zip: address.zip,
+                  city: address.city,
+                  countryCode: address.countryCode,
+                  pickupPoint: address.pickupPoint)
     }
 }

@@ -1,30 +1,30 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
 
-extension NSDateFormatter {
+extension DateFormatter {
 
-    convenience init(dateFormat: String, localeIdentifier: String = "en_US_POSIX", timeZone: NSTimeZone? = nil) {
+    convenience init(dateFormat: String, localeIdentifier: String = "en_US_POSIX", timeZone: TimeZone? = nil) {
         self.init()
-        self.locale = NSLocale(localeIdentifier: localeIdentifier)
+        self.locale = Locale(identifier: localeIdentifier)
         self.timeZone = timeZone
         self.dateFormat = dateFormat
     }
 
 }
 
-class RFC3339DateFormatter: NSDateFormatter {
+class RFC3339DateFormatter: DateFormatter {
 
-    private let noMillisecondsFormatter: NSDateFormatter
+    fileprivate let noMillisecondsFormatter: DateFormatter
 
     override init() {
-        let locale = NSLocale(localeIdentifier: "en_US_POSIX")
-        let timeZone = NSTimeZone(abbreviation: "GMT")
-        self.noMillisecondsFormatter = NSDateFormatter(dateFormat: "yyyy-MM-dd'T'HH:mm:ssZ",
-            localeIdentifier: locale.localeIdentifier,
-            timeZone: timeZone)
+        let locale = Locale(identifier: "en_US_POSIX")
+        let timeZone = TimeZone(abbreviation: "GMT")
+        self.noMillisecondsFormatter = DateFormatter(dateFormat: "yyyy-MM-dd'T'HH:mm:ssZ",
+                                                     localeIdentifier: locale.identifier,
+                                                     timeZone: timeZone)
         super.init()
         self.locale = locale
         self.timeZone = timeZone
@@ -35,8 +35,8 @@ class RFC3339DateFormatter: NSDateFormatter {
         self.init()
     }
 
-    override func dateFromString(string: String?) -> NSDate? {
+    override func date(from string: String?) -> Date? {
         guard let string = string else { return nil }
-        return super.dateFromString(string) ?? noMillisecondsFormatter.dateFromString(string)
+        return super.date(from: string) ?? noMillisecondsFormatter.date(from: string)
     }
 }

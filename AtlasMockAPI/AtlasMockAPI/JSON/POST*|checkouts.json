@@ -4,7 +4,7 @@
     "cart_id" : "CART_ID",
     "billing_address_id" : "6702759",
     "billing_address" : {
-        "id" : "6702759",
+        "id" : "6702760",
         "gender" : "FEMALE",
         "first_name" : "Erika",
         "last_name" : "Mustermann",
@@ -39,6 +39,6 @@
             },
             "external_payment" : false
         },
-        "selection_page_url" : "https://localhost.charlesproxy.com:9080/payment-method/595f8ebf-8525-4f66-91cf-5fb3b9ffffc1"
+        "selection_page_url" : "http://localhost.charlesproxy.com:9080/payment-method/595f8ebf-8525-4f66-91cf-5fb3b9ffffc1"
     }
 }

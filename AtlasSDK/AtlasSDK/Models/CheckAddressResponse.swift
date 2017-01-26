@@ -1,5 +1,5 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 public enum CheckAddressStatus: String {
@@ -10,21 +10,21 @@ public enum CheckAddressStatus: String {
 
 public struct CheckAddressResponse {
     public let status: CheckAddressStatus
-    public let normalizedAddress: CheckAddress
+    public let normalizedAddress: AddressCheck
 }
 
 extension CheckAddressResponse: JSONInitializable {
 
-    private struct Keys {
+    fileprivate struct Keys {
         static let status = "status"
         static let normalizedAddress = "normalized_address"
     }
 
     init?(json: JSON) {
-        guard let
-            statusRaw = json[Keys.status].string,
-            status = CheckAddressStatus(rawValue: statusRaw),
-            normalizedAddress = CheckAddress(json: json[Keys.normalizedAddress]) else { return nil }
+        guard let statusRaw = json[Keys.status].string,
+            let status = CheckAddressStatus(rawValue: statusRaw),
+            let normalizedAddress = AddressCheck(json: json[Keys.normalizedAddress])
+            else { return nil }
 
         self.init(status: status,
                   normalizedAddress: normalizedAddress)

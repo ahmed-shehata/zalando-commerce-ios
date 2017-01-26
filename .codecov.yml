@@ -10,3 +10,10 @@ coverage:
   ignore:
     - .*/SwiftyJSON.*
     - AtlasUI/AtlasUI/Utils/Reachability.swift
+
+  status:
+    project:
+      default:
+        target: 75
+        threshold: 1
+

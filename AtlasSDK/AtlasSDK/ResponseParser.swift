@@ -1,10 +1,8 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
-
-typealias DataTaskResponse = (data: NSData?, urlResponse: NSURLResponse?, error: NSError?)
 
 struct ResponseParser {
 
@@ -16,26 +14,24 @@ struct ResponseParser {
             return completion(.failure(nsURLError))
         }
 
-        guard let httpResponse = taskResponse.urlResponse as? NSHTTPURLResponse, data = taskResponse.data else {
+        guard let httpResponse = taskResponse.response, let data = taskResponse.data else {
             return completion(.failure(AtlasAPIError.noData))
         }
 
-        let json: JSON? = data.length > 0 ? JSON(data: data) : nil
+        let json = try? JSON(data: data)
 
         guard httpResponse.isSuccessful else {
             let error: AtlasAPIError
-            if httpResponse.status == .Unauthorized {
+            if httpResponse.status == .unauthorized {
                 error = AtlasAPIError.unauthorized
-            } else if let json = json where json != JSON.null {
-                error = AtlasAPIError.backend(
-                    status: json["status"].int,
-                    type: json["type"].string,
-                    title: json["title"].string,
-                    details: json["detail"].string)
+            } else if let json = json {
+                error = AtlasAPIError.backend(status: json["status"].int,
+                                              type: json["type"].string,
+                                              title: json["title"].string,
+                                              details: json["detail"].string)
             } else {
-                error = AtlasAPIError.http(
-                    status: HTTPStatus(response: httpResponse),
-                    details: NSHTTPURLResponse.localizedStringForStatusCode(httpResponse.statusCode))
+                error = AtlasAPIError.http(status: httpResponse.statusCode,
+                                           details: HTTPURLResponse.localizedString(forStatusCode: httpResponse.statusCode))
             }
             return completion(.failure(error))
         }

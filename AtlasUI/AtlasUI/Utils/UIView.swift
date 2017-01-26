@@ -1,8 +1,9 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
+import UIKit
 
 enum ViewAnchor {
     case top
@@ -10,12 +11,12 @@ enum ViewAnchor {
     case bottom
     case left
 
-    func anchorForView(view: UIView) -> NSLayoutAnchor {
+    fileprivate func constraint(fromView view1: UIView, toView view2: UIView) -> NSLayoutConstraint {
         switch self {
-        case .top: return view.topAnchor
-        case .right: return view.rightAnchor
-        case .bottom: return view.bottomAnchor
-        case .left: return view.leftAnchor
+        case .top: return view1.topAnchor.constraint(equalTo: view2.topAnchor)
+        case .right: return view1.rightAnchor.constraint(equalTo: view2.rightAnchor)
+        case .bottom: return view1.bottomAnchor.constraint(equalTo: view2.bottomAnchor)
+        case .left: return view1.leftAnchor.constraint(equalTo: view2.leftAnchor)
         }
     }
 
@@ -28,7 +29,7 @@ extension UIView {
     }
 
     func findFirstResponder() -> UIView? {
-        guard !isFirstResponder() else { return self }
+        guard !isFirstResponder else { return self }
         for view in subviews {
             if let subView = view.findFirstResponder() {
                 return subView
@@ -37,37 +38,64 @@ extension UIView {
         return nil
     }
 
+    func takeScreenshot() -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(bounds.size, true, UIScreen.main.scale)
+        drawHierarchy(in: bounds, afterScreenUpdates: true)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
+
+    static func waitForUIState(block: @escaping () -> Void) {
+        Async.delay(delay: 0.1, block: block)
+    }
+
 }
 
 extension UIView {
 
-    func fillInSuperView() {
+    func fillInSuperview() {
         guard let superview = superview else { return }
         translatesAutoresizingMaskIntoConstraints = false
-        topAnchor.constraintEqualToAnchor(superview.topAnchor).active = true
-        bottomAnchor.constraintEqualToAnchor(superview.bottomAnchor).active = true
-        rightAnchor.constraintEqualToAnchor(superview.rightAnchor).active = true
-        leftAnchor.constraintEqualToAnchor(superview.leftAnchor).active = true
+        topAnchor.constraint(equalTo: superview.topAnchor).isActive = true
+        bottomAnchor.constraint(equalTo: superview.bottomAnchor).isActive = true
+        rightAnchor.constraint(equalTo: superview.rightAnchor).isActive = true
+        leftAnchor.constraint(equalTo: superview.leftAnchor).isActive = true
     }
 
-    func snapAnchorToSuperView(anchor: ViewAnchor, constant: CGFloat = 0) {
+    func snap(toSuperview anchor: ViewAnchor, constant: CGFloat = 0) {
         guard let superview = superview else { return }
         translatesAutoresizingMaskIntoConstraints = false
-        let constaint = anchor.anchorForView(self).constraintEqualToAnchor(anchor.anchorForView(superview))
-        constaint.constant = constant
-        constaint.active = true
+        let constraint = anchor.constraint(fromView: self, toView: superview)
+        constraint.constant = constant
+        constraint.isActive = true
     }
 
-    func centerInSuperView() {
+    func snap(toTopViewController viewController: UIViewController) {
+        translatesAutoresizingMaskIntoConstraints = false
+        topAnchor.constraint(equalTo: viewController.topLayoutGuide.bottomAnchor).isActive = true
+    }
+
+    func centerInSuperview() {
+        centerHorizontallyInSuperview()
+        centerVerticallyInSuperview()
+    }
+
+    func centerHorizontallyInSuperview() {
         guard let superview = superview else { return }
         translatesAutoresizingMaskIntoConstraints = false
-        centerXAnchor.constraintEqualToAnchor(superview.centerXAnchor).active = true
-        centerYAnchor.constraintEqualToAnchor(superview.centerYAnchor).active = true
+        centerXAnchor.constraint(equalTo: superview.centerXAnchor).isActive = true
+    }
+
+    func centerVerticallyInSuperview() {
+        guard let superview = superview else { return }
+        translatesAutoresizingMaskIntoConstraints = false
+        centerYAnchor.constraint(equalTo: superview.centerYAnchor).isActive = true
     }
 
     func setSquareAspectRatio() {
         translatesAutoresizingMaskIntoConstraints = false
-        widthAnchor.constraintEqualToAnchor(heightAnchor, multiplier: 1).active = true
+        widthAnchor.constraint(equalTo: heightAnchor, multiplier: 1).isActive = true
     }
 
 }
@@ -77,12 +105,12 @@ extension UIView {
     func setWidth(equalToView view: UIView?, multiplier: CGFloat = 1) {
         guard let view = view else { return }
         translatesAutoresizingMaskIntoConstraints = false
-        widthAnchor.constraintEqualToAnchor(view.widthAnchor, multiplier: multiplier).active = true
+        widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: multiplier).isActive = true
     }
 
     func setWidth(equalToConstant width: CGFloat) {
         translatesAutoresizingMaskIntoConstraints = false
-        widthAnchor.constraintEqualToConstant(width).active = true
+        widthAnchor.constraint(equalToConstant: width).isActive = true
     }
 
 }
@@ -92,24 +120,24 @@ extension UIView {
     func setHeight(equalToView view: UIView?, multiplier: CGFloat = 1) {
         guard let view = view else { return }
         translatesAutoresizingMaskIntoConstraints = false
-        heightAnchor.constraintEqualToAnchor(view.heightAnchor, multiplier: multiplier).active = true
+        heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: multiplier).isActive = true
     }
 
     func setHeight(equalToConstant height: CGFloat) {
         translatesAutoresizingMaskIntoConstraints = false
-        heightAnchor.constraintEqualToConstant(height).active = true
+        heightAnchor.constraint(equalToConstant: height).isActive = true
     }
 
 }
 
 extension UIView {
 
-    static func animate(duration: AnimationDuration, animations: () -> Void) {
-        UIView.animateWithDuration(duration.rawValue, animations: animations)
+    static func animate(duration: AnimationDuration = .default, animations: @escaping () -> Void) {
+        UIView.animate(withDuration: duration.rawValue, animations: animations)
     }
 
-    static func animate(duration: AnimationDuration, animations: () -> Void, completion: ((Bool) -> Void)?) {
-        UIView.animateWithDuration(duration.rawValue, animations: animations, completion: completion)
+    static func animate(duration: AnimationDuration = .default, animations: @escaping () -> Void, completion: @escaping (Bool) -> Void) {
+        UIView.animate(withDuration: duration.rawValue, animations: animations, completion: completion)
     }
 
 }

@@ -1,27 +1,15 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import UIKit
 
-internal final class CheckoutTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
+final class CheckoutTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
 
-    #if swift(>=2.3)
-
-        func presentationControllerForPresentedViewController(presented: UIViewController,
-                                                              presentingViewController presenting: UIViewController?,
-                                                              sourceViewController source: UIViewController) -> UIPresentationController? {
-            return CheckoutPresentationController(presentedViewController: presented, presentingViewController: presenting)
-        }
-
-    #else
-
-        func presentationControllerForPresentedViewController(presented: UIViewController,
-                                                              presentingViewController presenting: UIViewController,
-                                                              sourceViewController source: UIViewController) -> UIPresentationController? {
-            return CheckoutPresentationController(presentedViewController: presented, presentingViewController: presenting)
-        }
-
-    #endif
+    func presentationController(forPresented presented: UIViewController,
+                                presenting: UIViewController?,
+                                source: UIViewController) -> UIPresentationController? {
+        return CheckoutPresentationController(presentedViewController: presented, presentingViewController: presenting)
+    }
 
 }

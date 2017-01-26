@@ -1,13 +1,14 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
+import UIKit
 import AtlasSDK
 
 class PickerKeyboardInputView: UIView {
 
-    private lazy var pickerView: UIPickerView = {
+    fileprivate lazy var pickerView: UIPickerView = {
         let view = UIPickerView()
         view.showsSelectionIndicator = true
         view.dataSource = self
@@ -15,13 +16,13 @@ class PickerKeyboardInputView: UIView {
         return view
     }()
 
-    private let pickerData: [String]
-    private let completion: TextFieldChangedHandler
+    fileprivate let pickerData: [String]
+    fileprivate let completion: TextFieldChangedHandler
 
-    init(pickerData: [String], startingValueIndex: Int, completion: TextFieldChangedHandler) {
+    init(pickerData: [String], startingValueIndex: Int, completion: @escaping TextFieldChangedHandler) {
         self.pickerData = pickerData
         self.completion = completion
-        let frame = CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: 216)
+        let frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 216)
         super.init(frame: frame)
         buildView()
         pickerView.reloadAllComponents()
@@ -41,18 +42,18 @@ extension PickerKeyboardInputView: UIBuilder {
     }
 
     func configureConstraints() {
-        pickerView.fillInSuperView()
+        pickerView.fillInSuperview()
     }
 
 }
 
 extension PickerKeyboardInputView: UIPickerViewDataSource {
 
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
 
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerData.count
     }
 
@@ -60,11 +61,11 @@ extension PickerKeyboardInputView: UIPickerViewDataSource {
 
 extension PickerKeyboardInputView: UIPickerViewDelegate {
 
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickerData[row]
     }
 
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         completion(pickerData[row])
     }
 

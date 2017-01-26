@@ -1,44 +1,36 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import UIKit
 import AtlasSDK
 
-class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
+class CheckoutSummaryViewController: UIViewController {
 
-    internal var checkout: AtlasCheckout
-    internal var checkoutViewModel: CheckoutViewModel {
+    var actionHandler: CheckoutSummaryActionHandler? {
         didSet {
-            injectCustomer(from: oldValue)
-            viewState = checkoutViewModel.checkoutViewState
-            checkoutViewModel.validateAgainstOldViewModel(oldValue)
-            createCheckout()
+            actionHandler?.dataSource = self
+            actionHandler?.delegate = self
         }
     }
-    internal var viewState: CheckoutViewState = .NotLoggedIn {
+
+    var viewModel: CheckoutSummaryViewModel {
         didSet {
-            setupNavigationBar()
-            rootStackView.configureData(self)
+            viewModelDidSet()
         }
     }
-    lazy private var actionsHandler: CheckoutSummaryActionsHandler = {
-        CheckoutSummaryActionsHandler(viewController: self)
-    }()
 
-    internal let rootStackView: CheckoutSummaryRootStackView = {
+    fileprivate let rootStackView: CheckoutSummaryRootStackView = {
         let stackView = CheckoutSummaryRootStackView()
-        stackView.axis = .Vertical
+        stackView.axis = .vertical
         stackView.spacing = 5
         return stackView
     }()
 
-    init(checkout: AtlasCheckout, checkoutViewModel: CheckoutViewModel) {
-        self.checkout = checkout
-        self.checkoutViewModel = checkoutViewModel
-
+    init(viewModel: CheckoutSummaryViewModel) {
+        self.viewModel = viewModel
+        defer { viewModelDidSet() }
         super.init(nibName: nil, bundle: nil)
-        viewState = checkoutViewModel.checkoutViewState
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -47,107 +39,116 @@ class CheckoutSummaryViewController: UIViewController, CheckoutProviderType {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        setupView()
-        setupInitialViewState()
+        buildView()
         setupActions()
+    }
 
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+    fileprivate func viewModelDidSet() {
+        setupNavigationBar()
+        rootStackView.configure(viewModel: viewModel)
+    }
+
+}
+
+extension CheckoutSummaryViewController: UIBuilder {
+
+    func configureView() {
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationController?.navigationBar.accessibilityIdentifier = "checkout-summary-navigation-bar"
-    }
-}
 
-extension CheckoutSummaryViewController {
-
-    private func injectCustomer(from oldViewModel: CheckoutViewModel) {
-        if checkoutViewModel.customer == nil && oldViewModel.customer != nil {
-            checkoutViewModel.customer = oldViewModel.customer
-        }
-    }
-
-    private func createCheckout() {
-        guard let customer = checkoutViewModel.customer where checkoutViewModel.isReadyToCreateCheckout else { return }
-        actionsHandler.generateCheckout(customer)
-    }
-
-}
-
-extension CheckoutSummaryViewController {
-
-    private func setupActions() {
-        rootStackView.footerStackView.submitButton.addGestureRecognizer(UITapGestureRecognizer(target: self,
-            action: #selector(CheckoutSummaryViewController.submitButtonTapped)))
-
-        rootStackView.mainStackView.shippingAddressStackView.addGestureRecognizer(UITapGestureRecognizer(target: self,
-            action: #selector(CheckoutSummaryViewController.shippingAddressTapped)))
-
-        rootStackView.mainStackView.billingAddressStackView.addGestureRecognizer(UITapGestureRecognizer(target: self,
-            action: #selector(CheckoutSummaryViewController.billingAddressTapped)))
-
-        rootStackView.mainStackView.paymentStackView.addGestureRecognizer(UITapGestureRecognizer(target: self,
-            action: #selector(CheckoutSummaryViewController.paymentAddressTapped)))
-    }
-
-    private func dismissView() {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-
-    dynamic private func submitButtonTapped() {
-        switch viewState {
-        case .NotLoggedIn: actionsHandler.loadCustomerData()
-        case .CheckoutReady: actionsHandler.handleBuyAction()
-        case .OrderPlaced: dismissView()
-        case .CheckoutIncomplete: UserMessage.displayError(AtlasCheckoutError.missingAddressAndPayment)
-        }
-    }
-
-    dynamic private func shippingAddressTapped() {
-        guard viewState.showDetailArrow else { return }
-
-        actionsHandler.showShippingAddressSelectionScreen()
-    }
-
-    dynamic private func billingAddressTapped() {
-        guard viewState.showDetailArrow else { return }
-
-        actionsHandler.showBillingAddressSelectionScreen()
-    }
-
-    dynamic private func paymentAddressTapped() {
-        guard viewState.showDetailArrow else { return }
-
-        actionsHandler.showPaymentSelectionScreen()
-    }
-
-}
-
-extension CheckoutSummaryViewController {
-
-    private func setupView() {
-        view.backgroundColor = .whiteColor()
+        view.backgroundColor = .white
         view.addSubview(rootStackView)
-        rootStackView.buildView()
     }
 
-    private func setupInitialViewState() {
-        if Atlas.isUserLoggedIn() {
-            viewState = checkoutViewModel.checkoutViewState
-        } else {
-            viewState = .NotLoggedIn
-        }
+    func configureConstraints() {
+        rootStackView.fillInSuperview()
     }
 
-    private func setupNavigationBar() {
-        title = Localizer.string(viewState.navigationBarTitleLocalizedKey)
+}
 
-        let hasSingleUnit = checkoutViewModel.selectedArticleUnit.article.hasSingleUnit
-        navigationItem.setHidesBackButton(viewState.hideBackButton(hasSingleUnit), animated: false)
+extension CheckoutSummaryViewController {
 
-        if viewState.showCancelButton {
+    fileprivate func setupActions() {
+        let submitButtonRecognizer = UITapGestureRecognizer(target: self, action: #selector(submitButtonTapped))
+        rootStackView.footerStackView.submitButton.addGestureRecognizer(submitButtonRecognizer)
+
+        let shippingAddressRecognizer = UITapGestureRecognizer(target: self, action: #selector(shippingAddressTapped))
+        rootStackView.mainStackView.shippingAddressStackView.addGestureRecognizer(shippingAddressRecognizer)
+
+        let billingAddressRecognizer = UITapGestureRecognizer(target: self, action: #selector(billingAddressTapped))
+        rootStackView.mainStackView.billingAddressStackView.addGestureRecognizer(billingAddressRecognizer)
+
+        let paymentRecognizer = UITapGestureRecognizer(target: self, action: #selector(paymentAddressTapped))
+        rootStackView.mainStackView.paymentStackView.addGestureRecognizer(paymentRecognizer)
+    }
+
+    fileprivate func setupNavigationBar() {
+        title = Localizer.format(string: viewModel.layout.navigationBarTitleLocalizedKey)
+
+        let hasSingleUnit = viewModel.dataModel.selectedArticleUnit.article.hasSingleUnit
+        navigationItem.setHidesBackButton(viewModel.layout.hideBackButton(hasSingleUnit: hasSingleUnit), animated: false)
+
+        if viewModel.layout.showCancelButton {
             showCancelButton()
         } else {
             hideCancelButton()
         }
+    }
+
+}
+
+extension CheckoutSummaryViewController {
+
+    dynamic fileprivate func submitButtonTapped() {
+        actionHandler?.handleSubmit()
+    }
+
+    dynamic fileprivate func shippingAddressTapped() {
+        actionHandler?.handleShippingAddressSelection()
+    }
+
+    dynamic fileprivate func billingAddressTapped() {
+        actionHandler?.handleBillingAddressSelection()
+    }
+
+    dynamic fileprivate func paymentAddressTapped() {
+        actionHandler?.handlePaymentSelection()
+    }
+
+}
+
+extension CheckoutSummaryViewController: CheckoutSummaryActionHandlerDataSource {
+
+    var dataModel: CheckoutSummaryDataModel {
+        return viewModel.dataModel
+    }
+
+}
+
+extension CheckoutSummaryViewController: CheckoutSummaryActionHandlerDelegate {
+
+    func updated(dataModel: CheckoutSummaryDataModel) throws {
+        let oldModel = self.viewModel.dataModel
+        self.viewModel.dataModel = dataModel
+
+        do {
+            try dataModel.validate(against: oldModel)
+        } catch let error {
+            UserMessage.displayError(error: error)
+            throw error
+        }
+    }
+
+    func updated(layout: CheckoutSummaryLayout) {
+        self.viewModel.layout = layout
+    }
+
+    func updated(actionHandler: CheckoutSummaryActionHandler) {
+        self.actionHandler = actionHandler
+    }
+
+    func dismissView() {
+        dismiss(animated: true, completion: nil)
     }
 
 }

@@ -1,20 +1,25 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import AtlasSDK
+import Freddy
 
-public struct DemoCatalog {
+struct DemoCatalog {
 
-    public let articles: [DemoArticle]
+    let articles: [DemoArticle]
 
 }
 
 extension DemoCatalog {
 
-    public init(jsonString: String, rootElement: String = "content") {
-        let json = JSON.parse(jsonString)
-        articles = json[rootElement].arrayValue.flatMap { DemoArticle(json: $0) }
+    init(data: Data, rootElement: String = "content") {
+        guard let json = try? JSON(data: data),
+            let rootArray = try? json.getArray(at: rootElement) else {
+                articles = []
+                return
+        }
+        articles = rootArray.flatMap { try? DemoArticle(json: $0) }
     }
 
 }

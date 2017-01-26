@@ -1,5 +1,5 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import UIKit
@@ -7,11 +7,7 @@ import AtlasSDK
 
 extension UIImageView {
 
-    func setImage(fromUrlString urlString: String) {
-        setImage(fromUrl: NSURL(string: urlString))
-    }
-
-    func setImage(fromUrl url: NSURL?) {
+    func setImage(from url: URL?) {
         guard let url = url else {
             Async.main {
                 self.image = nil
@@ -19,7 +15,7 @@ extension UIImageView {
             return
         }
         Async.background {
-            guard let data = NSData(contentsOfURL: url) else { return }
+            guard let data = try? Data(contentsOf: url) else { return }
             Async.main {
                 self.image = UIImage(data: data)
             }

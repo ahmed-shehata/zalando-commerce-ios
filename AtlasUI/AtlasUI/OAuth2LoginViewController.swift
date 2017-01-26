@@ -1,34 +1,34 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import UIKit
 import AtlasSDK
 
-typealias WebViewFinishedLoadCompletion = UIWebView -> Void
+typealias WebViewFinishedLoadCompletion = (UIWebView) -> Void
 typealias AuthorizationResult = AtlasResult<AuthorizationToken>
 
 final class OAuth2LoginViewController: UIViewController {
 
-    private let loginURL: NSURL
+    fileprivate let loginURL: URL
 
-    private let loginCompletion: AuthorizationCompletion?
-    private var webViewFinishedLoadCompletion: WebViewFinishedLoadCompletion?
-    private var webViewDidFinishedLoad = false
+    fileprivate let loginCompletion: AuthorizationCompletion?
+    fileprivate var webViewFinishedLoadCompletion: WebViewFinishedLoadCompletion?
+    fileprivate var webViewDidFinishedLoad = false
 
-    private lazy var webView: UIWebView = {
+    fileprivate lazy var webView: UIWebView = {
         let webView = UIWebView()
-        webView.backgroundColor = .whiteColor()
+        webView.backgroundColor = .white
         webView.delegate = self
         webView.translatesAutoresizingMaskIntoConstraints = false
         return webView
     }()
 
-    init(loginURL: NSURL, completion: AuthorizationCompletion? = nil) {
+    init(loginURL: URL, completion: AuthorizationCompletion? = nil) {
         self.loginURL = loginURL
         self.loginCompletion = completion
         super.init(nibName: nil, bundle: nil)
-        self.title = Localizer.string("loginView.loginWithZalando")
+        self.title = Localizer.format(string: "loginView.loginWithZalando")
     }
 
     required init?(coder decoder: NSCoder) {
@@ -37,28 +37,23 @@ final class OAuth2LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel,
-            target: self,
-            action: .cancelButtonTapped)
-        automaticallyAdjustsScrollViewInsets = false
-
-        view.backgroundColor = .whiteColor()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
+                                                            target: self,
+                                                            action: .cancelButtonTapped)
+        view.backgroundColor = .white
         view.addSubview(webView)
+        webView.fillInSuperview()
 
-        webView.topAnchor.constraintEqualToAnchor(self.topLayoutGuide.bottomAnchor).active = true
-        webView.bottomAnchor.constraintEqualToAnchor(self.bottomLayoutGuide.topAnchor).active = true
-        webView.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor).active = true
-        webView.trailingAnchor.constraintEqualToAnchor(self.view.trailingAnchor).active = true
-
-        webView.loadRequest(NSURLRequest(URL: loginURL))
+        webView.loadRequest(URLRequest(url: loginURL, config: AtlasAPIClient.shared?.config))
     }
 
-    private func dismissViewController(withFailure error: AtlasLoginError, animated: Bool = true) -> Bool {
-        return dismissViewController(.failure(error), animated: animated)
+    @discardableResult
+    fileprivate func dismissViewController(withFailure error: AtlasLoginError, animated: Bool = true) -> Bool {
+        return dismissViewController(with: .failure(error), animated: animated)
     }
 
-    private func dismissViewController(result: AuthorizationResult, animated: Bool = true) -> Bool {
-        dismissViewControllerAnimated(animated) {
+    fileprivate func dismissViewController(with result: AuthorizationResult, animated: Bool = true) -> Bool {
+        dismiss(animated: animated) {
             self.loginCompletion?(result)
         }
         switch result {
@@ -69,50 +64,45 @@ final class OAuth2LoginViewController: UIViewController {
         }
     }
 
-    @objc private func cancelButtonTapped(sender: UIBarButtonItem) {
-        dismissViewController(.failure(AtlasUserError.userCancelled))
+    @objc
+    fileprivate func cancelButtonTapped() {
+        dismiss(animated: true, completion: nil)
+    }
+
+}
+
+extension OAuth2LoginViewController: UIWebViewDelegate {
+
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest,
+                 navigationType: UIWebViewNavigationType) -> Bool {
+        guard let url = request.url else {
+            return dismissViewController(withFailure: .missingURL)
+        }
+
+        guard !url.isAccessDenied else {
+            return dismissViewController(withFailure: .accessDenied)
+        }
+
+        guard let token = url.accessToken else {
+            return true
+        }
+
+        return dismissViewController(with: .success(token))
+    }
+
+    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
+        self.dismissViewController(withFailure: .requestFailed(error: error))
+    }
+
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        webViewFinishedLoadCompletion?(webView)
+        webViewDidFinishedLoad = true
     }
 
 }
 
 private extension Selector {
 
-    static let cancelButtonTapped = #selector(OAuth2LoginViewController.cancelButtonTapped(_:))
-
-}
-
-extension OAuth2LoginViewController: UIWebViewDelegate {
-
-    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest,
-        navigationType: UIWebViewNavigationType) -> Bool {
-            guard let url = request.URL else {
-                return dismissViewController(withFailure: .missingURL)
-            }
-
-            guard !url.isAccessDenied else {
-                return dismissViewController(withFailure: .accessDenied)
-            }
-
-            guard let token = url.accessToken else {
-                return true
-            }
-
-            return dismissViewController(.success(token))
-    }
-
-    #if swift(>=2.3)
-        func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
-            self.dismissViewController(withFailure: .requestFailed(error: error))
-        }
-    #else
-        func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
-            self.dismissViewController(withFailure: .requestFailed(error: error))
-        }
-    #endif
-
-    func webViewDidFinishLoad(webView: UIWebView) {
-        webViewFinishedLoadCompletion?(webView)
-        webViewDidFinishedLoad = true
-    }
+    static let cancelButtonTapped = #selector(OAuth2LoginViewController.cancelButtonTapped)
 
 }

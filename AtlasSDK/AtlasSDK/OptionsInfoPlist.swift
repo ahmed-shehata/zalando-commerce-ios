@@ -1,5 +1,5 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
@@ -8,7 +8,7 @@ extension Options {
 
     enum InfoKey: String {
 
-        case useSandbox = "ATLASSDK_USE_SANDBOX"
+        case useSandboxEnvironment = "ATLASSDK_USE_SANDBOX"
         case clientId = "ATLASSDK_CLIENT_ID"
         case salesChannel = "ATLASSDK_SALES_CHANNEL"
         case interfaceLanguage = "ATLASSDK_INTERFACE_LANGUAGE"
@@ -17,18 +17,18 @@ extension Options {
 
 }
 
-extension NSBundle {
+extension Bundle {
 
-    func string(key: Options.InfoKey, defaultValue: String? = nil) -> String? {
-        return self.infoObject(forKey: key) ?? defaultValue
+    func string(for key: Options.InfoKey, defaultValue: String? = nil) -> String? {
+        return self.object(forInfoDictionaryKey: key) ?? defaultValue
     }
 
-    func bool(key: Options.InfoKey, defaultValue: Bool? = nil) -> Bool? {
-        return self.infoObject(forKey: key) ?? defaultValue
+    func bool(for key: Options.InfoKey, defaultValue: Bool? = nil) -> Bool? {
+        return self.object(forInfoDictionaryKey: key) ?? defaultValue
     }
 
-    func infoObject<T>(forKey key: Options.InfoKey) -> T? {
-        return self.objectForInfoDictionaryKey(key.rawValue) as? T
+    fileprivate func object<T>(forInfoDictionaryKey key: Options.InfoKey) -> T? {
+        return self.object(forInfoDictionaryKey: key.rawValue)
     }
 
 }

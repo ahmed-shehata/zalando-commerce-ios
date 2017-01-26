@@ -1,5 +1,5 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import XCTest
@@ -19,31 +19,31 @@ class KeychainTests: XCTestCase {
 
     func testWriteValue() {
         let value = "test_new_1"
-        Keychain.write(value, forKey: testKey)
-        expect(Keychain.read(forKey: self.testKey)).to(equal(value))
+        try! Keychain.write(value: value, forKey: testKey)
+        expect(Keychain.read(key: self.testKey)) == value
     }
 
     func testUpdateValue() {
         var value = "test_new_2"
-        Keychain.write(value, forKey: testKey)
-        expect(Keychain.read(forKey: self.testKey)).to(equal(value))
+        try! Keychain.write(value: value, forKey: testKey)
+        expect(Keychain.read(key: self.testKey)) == value
 
         value = "test_update_2"
-        Keychain.write(value, forKey: testKey)
-        expect(Keychain.read(forKey: self.testKey)).to(equal(value))
+        try! Keychain.write(value: value, forKey: testKey)
+        expect(Keychain.read(key: self.testKey)) == value
     }
 
     func testDeleteValue() {
         let value = "test_delete_it"
-        Keychain.write(value, forKey: testKey)
-        expect(Keychain.read(forKey: self.testKey)).to(equal(value))
+        try! Keychain.write(value: value, forKey: testKey)
+        expect(Keychain.read(key: self.testKey)) == value
 
         Keychain.delete(key: testKey)
-        expect(Keychain.read(forKey: self.testKey)).to(beNil())
+        expect(Keychain.read(key: self.testKey)).to(beNil())
     }
 
     func testNilValue() {
-        expect(Keychain.read(forKey: "test_new_4")).to(beNil())
+        expect(Keychain.read(key: "test_new_4")).to(beNil())
     }
 
 }

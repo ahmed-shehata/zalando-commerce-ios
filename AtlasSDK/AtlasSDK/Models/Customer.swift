@@ -1,12 +1,9 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
 
-/**
- Represents Zalando Customer model
- */
 public struct Customer {
 
     public let customerNumber: String
@@ -28,13 +25,12 @@ public struct Customer {
 extension Customer: JSONInitializable {
 
     init?(json: JSON) {
-        guard let
-        customerNumber = json["customer_number"].string,
-            gender = json["gender"].string,
-            firstName = json["first_name"].string,
-            lastName = json["last_name"].string,
-            email = json["email"].string
-        else { return nil }
+        guard let customerNumber = json["customer_number"].string,
+            let gender = json["gender"].string,
+            let firstName = json["first_name"].string,
+            let lastName = json["last_name"].string,
+            let email = json["email"].string
+            else { return nil }
 
         self.customerNumber = customerNumber
         self.gender = Gender(rawValue: gender) ?? Gender.Female // default value in Zalando registration

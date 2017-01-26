@@ -1,27 +1,33 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
+import UIKit
 
 extension UIApplication {
 
     static func topViewController(baseController: UIViewController? = nil) -> UIViewController? {
-        let baseController = baseController ?? UIApplication.sharedApplication().keyWindow?.rootViewController
+        let baseController = baseController ?? UIApplication.shared.keyWindow?.rootViewController
         if let navigationController = baseController as? UINavigationController {
-            return topViewController(navigationController.visibleViewController)
+            return topViewController(baseController: navigationController.visibleViewController)
         }
-        if let tabBarController = baseController as? UITabBarController, selectedController = tabBarController.selectedViewController {
-            return topViewController(selectedController)
+        if let tabBarController = baseController as? UITabBarController, let selectedController = tabBarController.selectedViewController {
+            return topViewController(baseController: selectedController)
         }
         if let presentedController = baseController?.presentedViewController {
-            return topViewController(presentedController)
+            return topViewController(baseController: presentedController)
         }
         return baseController
     }
 
     static var window: UIWindow? {
-        return UIApplication.sharedApplication().keyWindow
+        return UIApplication.shared.keyWindow
+    }
+
+    static var unitTestsAreRunning: Bool {
+        return ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
+            || ProcessInfo.processInfo.arguments.contains("UI_TESTS")
     }
 
 }

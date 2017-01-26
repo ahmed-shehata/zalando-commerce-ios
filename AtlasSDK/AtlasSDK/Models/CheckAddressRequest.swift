@@ -1,21 +1,21 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 public struct CheckAddressRequest {
-    public let address: CheckAddress
+    public let address: AddressCheck
     public let pickupPoint: PickupPoint?
 }
 
 extension CheckAddressRequest: JSONRepresentable {
 
-    private struct Keys {
+    fileprivate struct Keys {
         static let address = "address"
         static let pickupPoint = "pickup_point"
     }
 
-    func toJSON() -> [String : AnyObject] {
-        var result: [String: AnyObject] = [
+    func toJSON() -> [String : Any] {
+        var result: [String: Any] = [
             Keys.address: address.toJSON()
         ]
         if let pickupPoint = pickupPoint {

@@ -1,5 +1,5 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import XCTest
@@ -14,25 +14,19 @@ class OptionsTests: XCTestCase {
     let salesChannel = "SALES_CHANNEL_SPEC"
     let interfaceLanguage = "fr"
     let useSandbox = true
-    let emptyBundle = NSBundle()
-    let testsBundle = NSBundle(forClass: OptionsTests.self)
+    let emptyBundle = Bundle()
+    let testsBundle = Bundle(for: OptionsTests.self)
 
     func testInitialization() {
         let opts = Options(clientId: clientId,
                            salesChannel: salesChannel,
-                           useSandbox: useSandbox,
+                           useSandboxEnvironment: useSandbox,
                            interfaceLanguage: interfaceLanguage)
 
-        expect(opts.clientId).to(equal(clientId))
-        expect(opts.salesChannel).to(equal(salesChannel))
-        expect(opts.interfaceLanguage).to(equal(interfaceLanguage))
-        expect(opts.useSandboxEnvironment).to(equal(useSandbox))
-    }
-
-    func testRegisterAuthorizationHandler() {
-        let _ = Options(authorizationHandler: MockAuthorizationHandler())
-        let authorizationHandler = try? Atlas.provide() as AuthorizationHandler
-        expect(authorizationHandler).toNot(beNil())
+        expect(opts.clientId) == clientId
+        expect(opts.salesChannel) == salesChannel
+        expect(opts.interfaceLanguage) == interfaceLanguage
+        expect(opts.useSandboxEnvironment) == useSandbox
     }
 
     func testNoDefaultLanguage() {
@@ -53,22 +47,22 @@ class OptionsTests: XCTestCase {
     func testLoadValuesFromInfoPlist() {
         let opts = Options(infoBundle: testsBundle)
 
-        expect(opts.clientId).to(equal("CLIENT_ID_PLIST"))
-        expect(opts.salesChannel).to(equal("SALES_CHANNEL_PLIST"))
-        expect(opts.interfaceLanguage).to(equal("en"))
+        expect(opts.clientId) == "CLIENT_ID_PLIST"
+        expect(opts.salesChannel) == "SALES_CHANNEL_PLIST"
+        expect(opts.interfaceLanguage) == "en"
         expect(opts.useSandboxEnvironment).to(beTrue())
     }
 
     func testOverrideValuesFromInfoPlist() {
         let opts = Options(clientId: clientId, salesChannel: salesChannel,
-                           useSandbox: useSandbox,
+                           useSandboxEnvironment: useSandbox,
                            interfaceLanguage: interfaceLanguage,
                            infoBundle: testsBundle)
 
-        expect(opts.clientId).to(equal(clientId))
-        expect(opts.salesChannel).to(equal(salesChannel))
-        expect(opts.interfaceLanguage).to(equal(interfaceLanguage))
-        expect(opts.useSandboxEnvironment).to(equal(useSandbox))
+        expect(opts.clientId) == clientId
+        expect(opts.salesChannel) == salesChannel
+        expect(opts.interfaceLanguage) == interfaceLanguage
+        expect(opts.useSandboxEnvironment) == useSandbox
     }
 
 }

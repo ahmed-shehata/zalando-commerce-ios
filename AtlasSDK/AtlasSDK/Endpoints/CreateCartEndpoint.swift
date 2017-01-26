@@ -1,15 +1,15 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
-struct CreateCartEndpoint: ConfigurableEndpoint, SalesChannelEndpoint {
+struct CreateCartEndpoint: CheckoutEndpoint {
 
-    let serviceURL: NSURL
+    let config: Config
+
     let method: HTTPMethod = .POST
     let path = "carts"
     let contentType = "application/x.zalando.cart.create+json"
     let acceptedContentType = "application/x.zalando.cart.create.response+json"
-    let parameters: [String: AnyObject]?
-    let salesChannel: String
+    let parameters: EndpointParameters?
 
 }

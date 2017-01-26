@@ -1,29 +1,30 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
 
 public struct PaymentMethod {
 
-    public let method: String?
-    public let metadata: [String: AnyObject]?
+    public let method: PaymentMethodType?
+    public let metadata: [String: Any]?
+
 }
 
 extension PaymentMethod: JSONInitializable {
 
-    private struct Keys {
+    fileprivate struct Keys {
         static let method = "method"
         static let metadata = "metadata"
     }
 
     init?(json: JSON) {
-        self.init(method: json[Keys.method].string,
-            metadata: json[Keys.metadata].dictionaryObject)
-    }
-
-    public func isPaypal() -> Bool {
-        return self.method?.caseInsensitiveCompare("paypal") == .OrderedSame
+        var paymentMethod: PaymentMethodType?
+        if let methodRawValue = json[Keys.method].string {
+            paymentMethod = PaymentMethodType(rawValue: methodRawValue)
+        }
+        self.init(method: paymentMethod,
+                  metadata: json[Keys.metadata].dictionary)
     }
 
 }

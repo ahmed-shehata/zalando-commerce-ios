@@ -1,16 +1,16 @@
 //
-//  Copyright © 2016 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
 import AtlasSDK
 
-public enum AtlasLoginError: AtlasErrorType {
+public enum AtlasLoginError: AtlasError {
 
     case missingURL
     case accessDenied
     case missingViewControllerToShowLoginForm
 
-    case requestFailed(error: NSError?)
+    case requestFailed(error: Error?)
 
 }
