@@ -109,7 +109,7 @@ extension Gender {
 extension CheckAddressRequest {
 
     init?(dataModel: AddressFormDataModel) {
-        guard let address = CheckAddress(dataModel: dataModel) else { return nil }
+        guard let address = AddressCheck(dataModel: dataModel) else { return nil }
 
         self.address = address
         self.pickupPoint = PickupPoint(dataModel: dataModel)
@@ -117,7 +117,7 @@ extension CheckAddressRequest {
 
 }
 
-extension CheckAddress {
+extension AddressCheck {
 
     init?(dataModel: AddressFormDataModel) {
         guard let zip = dataModel.zip,
@@ -130,6 +130,23 @@ extension CheckAddress {
         self.zip = zip
         self.city = city
         self.countryCode = countryCode
+    }
+
+}
+
+extension AddressFormDataModel {
+
+    fileprivate var isNormalAddress: Bool {
+        return pickupPointId == nil && pickupPointMemberId == nil
+    }
+
+    func update(from address: AddressCheck) {
+        if isNormalAddress {
+            street = address.street
+            additional = address.additional
+        }
+        zip = address.zip
+        city = address.city
     }
 
 }

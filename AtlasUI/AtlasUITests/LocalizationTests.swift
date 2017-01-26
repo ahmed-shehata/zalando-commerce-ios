@@ -47,12 +47,12 @@ class LocalizationTests: XCTestCase {
     }
 
     func testNegativeFrenchUKPriceWithOwnCurrencyFormat() {
-        expectPrice(-100, inCurrency: "KABOOM", formattedFor: "fr_UK", toBe: "-100,00\u{00a0}KABOOM")
+        expectPrice(-100, inCurrency: "KABOOM", formattedFor: "fr_UK", toBe: "-100,00\u{00a0}KAB")
     }
 
     private func expectPrice(_ price: NSNumber, inCurrency currency: String? = nil, formattedFor identifier: String, toBe expectedFormat: String) {
         let loc = try! Localizer(localeIdentifier: identifier)
-        let formattedPrice = loc.format(price: price, withCurrency: currency)
+        let formattedPrice = loc.format(price: price, withCurrencyCode: currency)
 
         expect(formattedPrice) == expectedFormat
     }

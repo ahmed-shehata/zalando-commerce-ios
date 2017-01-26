@@ -242,7 +242,33 @@ SWIFT_CLASS("_TtC6Nimble14NMBObjCMatcher")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 @end
 
+
+@interface NMBObjCMatcher (SWIFT_EXTENSION(Nimble))
++ (id <NMBMatcher> _Nonnull)equalMatcher:(NSObject * _Nonnull)expected;
+@end
+
+
+@interface NMBObjCMatcher (SWIFT_EXTENSION(Nimble))
++ (NMBObjCMatcher * _Nonnull)beLessThanMatcher:(id <NMBComparable> _Nullable)expected;
+@end
+
+
+@interface NMBObjCMatcher (SWIFT_EXTENSION(Nimble))
++ (NMBObjCMatcher * _Nonnull)beGreaterThanMatcher:(id <NMBComparable> _Nullable)expected;
+@end
+
+@class NMBObjCRaiseExceptionMatcher;
+
+@interface NMBObjCMatcher (SWIFT_EXTENSION(Nimble))
++ (NMBObjCRaiseExceptionMatcher * _Nonnull)raiseExceptionMatcher;
+@end
+
 @class NSNumber;
+
+@interface NMBObjCMatcher (SWIFT_EXTENSION(Nimble))
++ (NMBObjCBeCloseToMatcher * _Nonnull)beCloseToMatcher:(NSNumber * _Nonnull)expected within:(double)within;
+@end
+
 
 @interface NMBObjCMatcher (SWIFT_EXTENSION(Nimble))
 + (NMBObjCMatcher * _Nonnull)haveCountMatcher:(NSNumber * _Nonnull)expected;
@@ -251,6 +277,42 @@ SWIFT_CLASS("_TtC6Nimble14NMBObjCMatcher")
 
 @interface NMBObjCMatcher (SWIFT_EXTENSION(Nimble))
 + (NMBObjCMatcher * _Nonnull)satisfyAnyOfMatcher:(NSArray<NMBObjCMatcher *> * _Nonnull)matchers;
+@end
+
+
+@interface NMBObjCMatcher (SWIFT_EXTENSION(Nimble))
++ (NMBObjCMatcher * _Nonnull)beLessThanOrEqualToMatcher:(id <NMBComparable> _Nullable)expected;
+@end
+
+
+@interface NMBObjCMatcher (SWIFT_EXTENSION(Nimble))
++ (id <NMBMatcher> _Nonnull)beAnInstanceOfMatcher:(Class _Nonnull)expected;
+@end
+
+
+@interface NMBObjCMatcher (SWIFT_EXTENSION(Nimble))
++ (NMBObjCMatcher * _Nonnull)allPassMatcher:(NMBObjCMatcher * _Nonnull)matcher;
+@end
+
+
+@interface NMBObjCMatcher (SWIFT_EXTENSION(Nimble))
++ (id <NMBMatcher> _Nonnull)beAKindOfMatcher:(Class _Nonnull)expected;
+@end
+
+@class NSString;
+
+@interface NMBObjCMatcher (SWIFT_EXTENSION(Nimble))
++ (id <NMBMatcher> _Nonnull)matchMatcher:(NSString * _Nonnull)expected;
+@end
+
+
+@interface NMBObjCMatcher (SWIFT_EXTENSION(Nimble))
++ (NMBObjCMatcher * _Nonnull)containElementSatisfyingMatcher:(BOOL (^ _Nonnull)(NSObject * _Nonnull))predicate;
+@end
+
+
+@interface NMBObjCMatcher (SWIFT_EXTENSION(Nimble))
++ (NMBObjCMatcher * _Nonnull)containMatcher:(NSArray<NSObject *> * _Nonnull)expected;
 @end
 
 
@@ -281,63 +343,6 @@ SWIFT_CLASS("_TtC6Nimble14NMBObjCMatcher")
 
 @interface NMBObjCMatcher (SWIFT_EXTENSION(Nimble))
 + (NMBObjCMatcher * _Nonnull)beGreaterThanOrEqualToMatcher:(id <NMBComparable> _Nullable)expected;
-@end
-
-
-@interface NMBObjCMatcher (SWIFT_EXTENSION(Nimble))
-+ (NMBObjCMatcher * _Nonnull)containMatcher:(NSArray<NSObject *> * _Nonnull)expected;
-@end
-
-
-@interface NMBObjCMatcher (SWIFT_EXTENSION(Nimble))
-+ (NMBObjCMatcher * _Nonnull)beGreaterThanMatcher:(id <NMBComparable> _Nullable)expected;
-@end
-
-
-@interface NMBObjCMatcher (SWIFT_EXTENSION(Nimble))
-+ (NMBObjCMatcher * _Nonnull)beLessThanMatcher:(id <NMBComparable> _Nullable)expected;
-@end
-
-
-@interface NMBObjCMatcher (SWIFT_EXTENSION(Nimble))
-+ (id <NMBMatcher> _Nonnull)equalMatcher:(NSObject * _Nonnull)expected;
-@end
-
-@class NSString;
-
-@interface NMBObjCMatcher (SWIFT_EXTENSION(Nimble))
-+ (id <NMBMatcher> _Nonnull)matchMatcher:(NSString * _Nonnull)expected;
-@end
-
-
-@interface NMBObjCMatcher (SWIFT_EXTENSION(Nimble))
-+ (id <NMBMatcher> _Nonnull)beAKindOfMatcher:(Class _Nonnull)expected;
-@end
-
-
-@interface NMBObjCMatcher (SWIFT_EXTENSION(Nimble))
-+ (NMBObjCMatcher * _Nonnull)allPassMatcher:(NMBObjCMatcher * _Nonnull)matcher;
-@end
-
-
-@interface NMBObjCMatcher (SWIFT_EXTENSION(Nimble))
-+ (id <NMBMatcher> _Nonnull)beAnInstanceOfMatcher:(Class _Nonnull)expected;
-@end
-
-
-@interface NMBObjCMatcher (SWIFT_EXTENSION(Nimble))
-+ (NMBObjCMatcher * _Nonnull)beLessThanOrEqualToMatcher:(id <NMBComparable> _Nullable)expected;
-@end
-
-
-@interface NMBObjCMatcher (SWIFT_EXTENSION(Nimble))
-+ (NMBObjCBeCloseToMatcher * _Nonnull)beCloseToMatcher:(NSNumber * _Nonnull)expected within:(double)within;
-@end
-
-@class NMBObjCRaiseExceptionMatcher;
-
-@interface NMBObjCMatcher (SWIFT_EXTENSION(Nimble))
-+ (NMBObjCRaiseExceptionMatcher * _Nonnull)raiseExceptionMatcher;
 @end
 
 
@@ -392,12 +397,12 @@ SWIFT_CLASS("_TtC6Nimble11NMBStringer")
 
 
 @interface NSDate (SWIFT_EXTENSION(Nimble))
-@property (nonatomic, readonly) double doubleValue;
+@property (nonatomic, readonly, copy) NSString * _Nonnull testDescription;
 @end
 
 
 @interface NSDate (SWIFT_EXTENSION(Nimble))
-@property (nonatomic, readonly, copy) NSString * _Nonnull testDescription;
+@property (nonatomic, readonly) double doubleValue;
 @end
 
 
@@ -441,11 +446,11 @@ SWIFT_CLASS("_TtC6Nimble11NMBStringer")
 @end
 
 
-@interface NSSet (SWIFT_EXTENSION(Nimble)) <NMBCollection>
+@interface NSSet (SWIFT_EXTENSION(Nimble)) <NMBContainer>
 @end
 
 
-@interface NSSet (SWIFT_EXTENSION(Nimble)) <NMBContainer>
+@interface NSSet (SWIFT_EXTENSION(Nimble)) <NMBCollection>
 @end
 
 

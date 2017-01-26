@@ -10,7 +10,7 @@ public enum CheckAddressStatus: String {
 
 public struct CheckAddressResponse {
     public let status: CheckAddressStatus
-    public let normalizedAddress: CheckAddress
+    public let normalizedAddress: AddressCheck
 }
 
 extension CheckAddressResponse: JSONInitializable {
@@ -23,7 +23,7 @@ extension CheckAddressResponse: JSONInitializable {
     init?(json: JSON) {
         guard let statusRaw = json[Keys.status].string,
             let status = CheckAddressStatus(rawValue: statusRaw),
-            let normalizedAddress = CheckAddress(json: json[Keys.normalizedAddress])
+            let normalizedAddress = AddressCheck(json: json[Keys.normalizedAddress])
             else { return nil }
 
         self.init(status: status,
