@@ -61,6 +61,7 @@ extension ArticleSelectionQuantityStackView: UIDataBuilder {
     typealias T = ArticleSelectionQuantityViewModel
 
     func configure(viewModel: ArticleSelectionQuantityViewModel) {
+        stepper.alpha = viewModel.maximumValue == 1 ? 0.2 : 1
         stepper.value = Double(viewModel.currentValue)
         stepper.maximumValue = Double(viewModel.maximumValue)
         valueLabel.text = "\(viewModel.currentValue)"
