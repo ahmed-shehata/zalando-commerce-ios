@@ -221,7 +221,7 @@ extension LoggedInSummaryActionHandler {
                                                addresses: CheckoutAddresses? = nil,
                                                completion: @escaping CreateCartCheckoutCompletion) {
 
-        AtlasUIClient.createCheckoutCart(forSKU: selectedArticle.sku, addresses: addresses) { result in
+        AtlasUIClient.createCheckoutCart(forSelectedArticle: selectedArticle, addresses: addresses) { result in
             switch result {
             case .failure(let error, _):
                 guard case let AtlasAPIError.checkoutFailed(cart, _) = error else {

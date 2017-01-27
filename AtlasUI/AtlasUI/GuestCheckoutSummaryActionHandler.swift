@@ -147,7 +147,8 @@ extension GuestCheckoutSummaryActionHandler {
         let shippingGuestAddress = GuestAddressRequest(address: shippingAddress)
         let billingGuestAddress = GuestAddressRequest(address: billingAddress)
         let customer = GuestCustomerRequest(guestEmail: email, subscribeNewsletter: false)
-        let cartItem = CartItemRequest(sku: dataSource.dataModel.selectedArticle.sku, quantity: 1)
+        let cartItem = CartItemRequest(sku: dataSource.dataModel.selectedArticle.sku,
+                                       quantity: dataSource.dataModel.selectedArticle.quantity)
         let cart = GuestCartRequest(items: [cartItem])
         let request = GuestPaymentSelectionRequest(customer: customer,
                                                    shippingAddress: shippingGuestAddress,
