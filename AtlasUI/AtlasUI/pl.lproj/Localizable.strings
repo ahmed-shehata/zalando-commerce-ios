@@ -8,7 +8,6 @@
 "AtlasCheckoutError.message.addressInvalid" = "Wprowadzony adres jest nieprawidłowy";
 "AtlasCheckoutError.message.checkoutFailure" = "Wystąpił błąd przy tworzeniu zamówienia";
 "AtlasCheckoutError.message.missingAddress" = "Prosimy najpierw wybrać adres dostawy oraz adres do faktury";
-"AtlasCheckoutError.message.missingAddressAndPayment" = "Prosimy najpierw wybrać adres dostawy, adres do faktury oraz formę płatności\n";
 "AtlasCheckoutError.message.outOfStock" = "Niestety ten produkt został już wyprzedany";
 "AtlasCheckoutError.message.paymentMethodNotAvailable" = "Wybrana forma płatności nie jest obecnie dostępna";
 "AtlasCheckoutError.message.priceChanged" = "Aktualna cena: %@";
@@ -106,3 +105,4 @@
 "paymentMethod.PRZELEWY24" = "Przelewy24";
 "paymentMethod.TRUSTLY" = "Trustly";
 "paymentMethod.UNKNOWN" = "Nieznany";
+"AtlasCheckoutError.message.missingPaymentMethod" = "Prosimy wybrać wpierw metodę płatności";
