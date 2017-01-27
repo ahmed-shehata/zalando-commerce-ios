@@ -8,7 +8,6 @@
 "AtlasCheckoutError.message.addressInvalid" = "Address not valid, please check the address";
 "AtlasCheckoutError.message.checkoutFailure" = "An error occurred during updating the checkout";
 "AtlasCheckoutError.message.missingAddress" = "Please select shipping and billing addresses first";
-"AtlasCheckoutError.message.missingPaymentMethod" = "Please the payment method first";
 "AtlasCheckoutError.message.outOfStock" = "Sorry this item is out of stock";
 "AtlasCheckoutError.message.paymentMethodNotAvailable" = "Payment method is no longer available";
 "AtlasCheckoutError.message.priceChanged" = "The price is now %@";
@@ -112,3 +111,4 @@
 "paymentMethod.PRZELEWY24" = "Przelewy24";
 "paymentMethod.TRUSTLY" = "Trustly";
 "paymentMethod.UNKNOWN" = "Unknown";
+"AtlasCheckoutError.message.missingPaymentMethod" = "Please select the payment method first";
