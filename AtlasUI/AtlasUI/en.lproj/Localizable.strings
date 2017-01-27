@@ -96,6 +96,7 @@
 "summaryView.title.summary" = "Summary";
 "selectionView.title.quantity" = "Quantity";
 "selectionView.title.size" = "Size";
+"selectionView.label.price.item" = "Price / item";
 "termsAndConditionsView.title" = "Legal Notice";
 "AtlasCheckoutError.message.unsupportedCountry" = "This country is not supported";
 "AtlasCheckoutError.message.photosLibraryAccessNotAllowed" = "Can't access Photos Library";

@@ -56,6 +56,14 @@ class ArticleSelectionMainStackView: UIStackView {
         return view
     }()
 
+    let priceStackView: ArticleSelectionPriceStackView = {
+        let stackView = ArticleSelectionPriceStackView()
+        stackView.axis = .vertical
+        stackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+        stackView.isLayoutMarginsRelativeArrangement = true
+        return stackView
+    }()
+
 }
 
 extension ArticleSelectionMainStackView: UIBuilder {
@@ -67,6 +75,7 @@ extension ArticleSelectionMainStackView: UIBuilder {
         addArrangedSubview(quantitySeparatorView)
         addArrangedSubview(sizeStackView)
         addArrangedSubview(sizeSeparatorView)
+        addArrangedSubview(priceStackView)
 
         productSeparatorView.setHeight(equalToConstant: 10)
         quantitySeparatorView.setHeight(equalToConstant: 1)
@@ -93,6 +102,11 @@ extension ArticleSelectionMainStackView: UIDataBuilder {
                                                                                  maximumValue: viewModel.unit.stock))
         sizeStackView.configure(viewModel: ArticleSelectionSizeViewModel(value: viewModel.unit.size,
                                                                          showArrow: !viewModel.article.hasSingleUnit))
+
+        let totalPrice = viewModel.unit.price.amount.multiplying(by: NSDecimalNumber(integerLiteral: viewModel.quantity))
+        priceStackView.configure(viewModel: ArticleSelectionPriceViewModel(itemPrice: viewModel.unit.price,
+                                                                           totalPrice: Money(amount: totalPrice,
+                                                                                             currency: viewModel.unit.price.currency)))
     }
 
 }

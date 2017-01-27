@@ -133,7 +133,13 @@
 		E782C0927EED31E254387612CC460B25 /* CheckoutSummaryGuestStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F6B74C3A17265FB585434F8EF82EBF /* CheckoutSummaryGuestStackView.swift */; };
 		E8B9ED27AD36D32DCD40F061A102A387 /* URL-QueryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FEB9F822022119C7EEC519A0FBC70F /* URL-QueryItem.swift */; };
 		E937CBC61E36795900D86846 /* AddressCheckViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E937CBC51E36795900D86846 /* AddressCheckViewControllerTests.swift */; };
+		E969AD4E1E3B4D8600E617EC /* ArticleSelectionPriceStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E969AD4D1E3B4D8600E617EC /* ArticleSelectionPriceStackView.swift */; };
 		E97A33A7BE2D26CDE9B4C62EB5BD2661 /* CheckoutSummaryAddressStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9494F7947C24BD2087FE22EBE20BFCD /* CheckoutSummaryAddressStackView.swift */; };
+		E97B1BE61E2E6DDD00FC0195 /* AddressCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B1BE51E2E6DDD00FC0195 /* AddressCheckViewController.swift */; };
+		E97B1BE91E2E704800FC0195 /* AddressCheckStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B1BE81E2E704800FC0195 /* AddressCheckStackView.swift */; };
+		E98453581DF59FCF001F6C51 /* GuestCheckoutCreateAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A5CF928227B72DDBAB9949CA5ED28B /* GuestCheckoutCreateAddressActionHandler.swift */; };
+		E9A115391E2FAA8C001DC643 /* AddressCheckRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A115381E2FAA8C001DC643 /* AddressCheckRowView.swift */; };
+		E9D273D41E313D47002F0007 /* AddressCheckRowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D273D31E313D47002F0007 /* AddressCheckRowButton.swift */; };
 		E9ECD6411E38B70300305B87 /* ArticleSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECD6401E38B70300305B87 /* ArticleSelectionViewController.swift */; };
 		E9ECD6431E38BBB100305B87 /* GetArticleDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECD6421E38BBB100305B87 /* GetArticleDetailsViewController.swift */; };
 		E9ECD6471E38E06C00305B87 /* ArticleSelectionRootStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECD6461E38E06C00305B87 /* ArticleSelectionRootStackView.swift */; };
@@ -142,11 +148,6 @@
 		E9ECD64D1E38E0B700305B87 /* ArticleSelectionProductStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECD64C1E38E0B700305B87 /* ArticleSelectionProductStackView.swift */; };
 		E9ECD64F1E38E0CB00305B87 /* ArticleSelectionQuantityStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECD64E1E38E0CB00305B87 /* ArticleSelectionQuantityStackView.swift */; };
 		E9ECD6511E38E0E300305B87 /* ArticleSelectionSizeStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECD6501E38E0E300305B87 /* ArticleSelectionSizeStackView.swift */; };
-		E97B1BE61E2E6DDD00FC0195 /* AddressCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B1BE51E2E6DDD00FC0195 /* AddressCheckViewController.swift */; };
-		E97B1BE91E2E704800FC0195 /* AddressCheckStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B1BE81E2E704800FC0195 /* AddressCheckStackView.swift */; };
-		E98453581DF59FCF001F6C51 /* GuestCheckoutCreateAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A5CF928227B72DDBAB9949CA5ED28B /* GuestCheckoutCreateAddressActionHandler.swift */; };
-		E9A115391E2FAA8C001DC643 /* AddressCheckRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A115381E2FAA8C001DC643 /* AddressCheckRowView.swift */; };
-		E9D273D41E313D47002F0007 /* AddressCheckRowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D273D31E313D47002F0007 /* AddressCheckRowButton.swift */; };
 		EBB0CE9B6F72CCBC101BCFD52F5E5993 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD2C09882EF82C93CC8615C9E0F59251 /* Default-568h@2x.png */; };
 		EF570993CFA4FDF0361679E931D55B8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94F33C041120EF12B441AE2E84A48050 /* Assets.xcassets */; };
 		F1E585532601768D1683E758E8C10B4C /* GuestAddressManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19740711F5745D3D17790829088FE83B /* GuestAddressManagerTests.swift */; };
@@ -323,6 +324,12 @@
 		DD2C09882EF82C93CC8615C9E0F59251 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		E2644DB2E806C8F07CECE81835A0326C /* OAuth2LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2LoginViewController.swift; sourceTree = "<group>"; };
 		E272DADD96290ADDD55009F293229EAD /* FormValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValidatorTests.swift; sourceTree = "<group>"; };
+		E937CBC51E36795900D86846 /* AddressCheckViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckViewControllerTests.swift; sourceTree = "<group>"; };
+		E969AD4D1E3B4D8600E617EC /* ArticleSelectionPriceStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleSelectionPriceStackView.swift; sourceTree = "<group>"; };
+		E97B1BE51E2E6DDD00FC0195 /* AddressCheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckViewController.swift; sourceTree = "<group>"; };
+		E97B1BE81E2E704800FC0195 /* AddressCheckStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckStackView.swift; sourceTree = "<group>"; };
+		E9A115381E2FAA8C001DC643 /* AddressCheckRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckRowView.swift; sourceTree = "<group>"; };
+		E9D273D31E313D47002F0007 /* AddressCheckRowButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckRowButton.swift; sourceTree = "<group>"; };
 		E9ECD6401E38B70300305B87 /* ArticleSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleSelectionViewController.swift; sourceTree = "<group>"; };
 		E9ECD6421E38BBB100305B87 /* GetArticleDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetArticleDetailsViewController.swift; sourceTree = "<group>"; };
 		E9ECD6461E38E06C00305B87 /* ArticleSelectionRootStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleSelectionRootStackView.swift; sourceTree = "<group>"; };
@@ -331,11 +338,6 @@
 		E9ECD64C1E38E0B700305B87 /* ArticleSelectionProductStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleSelectionProductStackView.swift; sourceTree = "<group>"; };
 		E9ECD64E1E38E0CB00305B87 /* ArticleSelectionQuantityStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleSelectionQuantityStackView.swift; sourceTree = "<group>"; };
 		E9ECD6501E38E0E300305B87 /* ArticleSelectionSizeStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleSelectionSizeStackView.swift; sourceTree = "<group>"; };
-		E937CBC51E36795900D86846 /* AddressCheckViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckViewControllerTests.swift; sourceTree = "<group>"; };
-		E97B1BE51E2E6DDD00FC0195 /* AddressCheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckViewController.swift; sourceTree = "<group>"; };
-		E97B1BE81E2E704800FC0195 /* AddressCheckStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckStackView.swift; sourceTree = "<group>"; };
-		E9A115381E2FAA8C001DC643 /* AddressCheckRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckRowView.swift; sourceTree = "<group>"; };
-		E9D273D31E313D47002F0007 /* AddressCheckRowButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckRowButton.swift; sourceTree = "<group>"; };
 		EAB966A42D2CA88D9E7F3931C371C95B /* URLRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestTests.swift; sourceTree = "<group>"; };
 		EB063447B26DE3D42F7736012B8921AA /* AddressListActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressListActionHandler.swift; sourceTree = "<group>"; };
 		EFCBCCBB4FB49BE6429AD9E29F595747 /* FormattableAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormattableAddress.swift; sourceTree = "<group>"; };
@@ -701,17 +703,17 @@
 			name = "Address Selection";
 			sourceTree = "<group>";
 		};
-        E97B1BE71E2E6DF700FC0195 /* Address Check */ = {
-            isa = PBXGroup;
-            children = (
-                E97B1BE51E2E6DDD00FC0195 /* AddressCheckViewController.swift */,
-                E97B1BE81E2E704800FC0195 /* AddressCheckStackView.swift */,
-                E9A115381E2FAA8C001DC643 /* AddressCheckRowView.swift */,
-                E9D273D31E313D47002F0007 /* AddressCheckRowButton.swift */,
-            );
-            name = "Address Check";
-            sourceTree = "<group>";
-        };
+		E97B1BE71E2E6DF700FC0195 /* Address Check */ = {
+			isa = PBXGroup;
+			children = (
+				E97B1BE51E2E6DDD00FC0195 /* AddressCheckViewController.swift */,
+				E97B1BE81E2E704800FC0195 /* AddressCheckStackView.swift */,
+				E9A115381E2FAA8C001DC643 /* AddressCheckRowView.swift */,
+				E9D273D31E313D47002F0007 /* AddressCheckRowButton.swift */,
+			);
+			name = "Address Check";
+			sourceTree = "<group>";
+		};
 		E9ECD63F1E38B6BE00305B87 /* Article Selection */ = {
 			isa = PBXGroup;
 			children = (
@@ -739,6 +741,7 @@
 				E9ECD64C1E38E0B700305B87 /* ArticleSelectionProductStackView.swift */,
 				E9ECD64E1E38E0CB00305B87 /* ArticleSelectionQuantityStackView.swift */,
 				E9ECD6501E38E0E300305B87 /* ArticleSelectionSizeStackView.swift */,
+				E969AD4D1E3B4D8600E617EC /* ArticleSelectionPriceStackView.swift */,
 			);
 			name = StackViews;
 			sourceTree = "<group>";
@@ -1038,6 +1041,7 @@
 				E9ECD6431E38BBB100305B87 /* GetArticleDetailsViewController.swift in Sources */,
 				2A7DCAF77CF310B427D9EB0481F8F300 /* CheckoutSummaryDeliveryStackView.swift in Sources */,
 				A9E4450E0E6519516F7B93DD9EC4A616 /* CheckoutSummaryFooterStackView.swift in Sources */,
+				E969AD4E1E3B4D8600E617EC /* ArticleSelectionPriceStackView.swift in Sources */,
 				9365E863C1D0F885B2ECD9097BEB2DA4 /* URL.swift in Sources */,
 				E9ECD64F1E38E0CB00305B87 /* ArticleSelectionQuantityStackView.swift in Sources */,
 				1B44638F3D6077F3586EC16ECD50D647 /* CheckoutSummaryMainStackView.swift in Sources */,
