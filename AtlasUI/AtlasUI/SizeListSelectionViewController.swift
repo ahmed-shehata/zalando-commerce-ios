@@ -30,7 +30,6 @@ final class SizeListSelectionViewController: UIViewController {
         let tableView = UITableView()
         tableView.backgroundColor = UIColor.clear
         tableView.isOpaque = false
-        tableView.isHidden = true
         return tableView
     }()
 
