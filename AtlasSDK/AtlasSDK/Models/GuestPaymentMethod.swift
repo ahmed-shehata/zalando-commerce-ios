@@ -22,7 +22,7 @@ extension GuestPaymentMethod: JSONInitializable {
         guard let rawValue = json[Keys.method].string else { return nil }
 
         self.init(method: PaymentMethodType(rawValue: rawValue),
-                  metadata: json[Keys.metadata].dictionaryObject,
+                  metadata: json[Keys.metadata].dictionary,
                   externalPayment: json[Keys.externalPayment].bool)
     }
 

@@ -78,9 +78,9 @@ struct Localizer {
         return String(format: localizedString, arguments: formatArguments.flatMap { $0 })
     }
 
-    func format(price: NSNumber, withCurrencyCode currencyCode: String? = nil) -> String? {
+    func format(price: Decimal, withCurrencyCode currencyCode: String? = nil) -> String? {
         priceFormatter.currencyCode = currencyCode
-        return priceFormatter.string(from: price)
+        return priceFormatter.string(from: NSDecimalNumber(decimal: price))
     }
 
     func format(date: Date) -> String? {
@@ -107,7 +107,7 @@ extension Localizer {
         return shared.format(string: string, formatArguments: formatArguments)
     }
 
-    static func format(price: NSNumber, withCurrencyCode currencyCode: String? = nil) -> String? {
+    static func format(price: Decimal, withCurrencyCode currencyCode: String? = nil) -> String? {
         return shared.format(price: price, withCurrencyCode: currencyCode)
     }
 

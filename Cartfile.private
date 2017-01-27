@@ -1,6 +1,7 @@
 # Tests
 
-github "Quick/Nimble"
+# 6.0.0 has build error when switlint 0.16+ installed, switch to regular version on 6.0.1
+github "Quick/Nimble" "9bc6e293982764e81cb69dec9e9f54b13608c777"
 
 # AtlasMockAPI
 
@@ -8,7 +9,6 @@ github "httpswift/swifter" "stable"
 
 # AtlasDemo
 
-github "SwiftyJSON/SwiftyJSON"
 github "bignerdranch/Freddy"
 github "kean/Nuke"
 github "daltoniam/SwiftHTTP"

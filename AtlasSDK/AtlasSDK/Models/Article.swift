@@ -111,7 +111,7 @@ extension Article: JSONInitializable {
         self.color = color
         self.media = media
         self.brand = brand
-        self.units = json["units"].array.flatMap { Article.Unit(json: $0) }
+        self.units = json["units"].jsons.flatMap { Article.Unit(json: $0) }
         self.availableUnits = units.filter { $0.available }
     }
 
@@ -155,7 +155,7 @@ extension Article.Brand: JSONInitializable {
 extension Article.Media: JSONInitializable {
 
     init?(json: JSON) {
-        self.images = json["images"].array.flatMap { Article.Image(json: $0) }
+        self.images = json["images"].jsons.flatMap { Article.Image(json: $0) }
     }
 
 }

@@ -13,7 +13,7 @@ public struct Catalog {
 extension Catalog: JSONInitializable {
 
     init?(json: JSON) {
-        articles = json.array.flatMap { Article(json: $0) }
+        articles = json.jsons.flatMap { Article(json: $0) }
     }
 
 }

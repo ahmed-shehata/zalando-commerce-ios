@@ -9,7 +9,7 @@ extension URLRequest {
     func curlCommandRepresentation() -> String {
         var curlComponents = ["curl -i"]
 
-        guard let URL = self.url else { return "curl command could not be created" }
+        guard let url = self.url else { return "curl command could not be created" }
 
         curlComponents.append("-X \(self.httpMethod ~? "GET")")
 
@@ -18,14 +18,14 @@ extension URLRequest {
         }
 
         if let HTTPBodyData = self.httpBody,
-            let HTTPBody = String(data: HTTPBodyData, encoding: String.Encoding.utf8) {
-            var escapedBody = HTTPBody.replacingOccurrences(of: "\\\"", with: "\\\\\"")
+            let body = String(data: HTTPBodyData, encoding: String.Encoding.utf8) {
+            var escapedBody = body.replacingOccurrences(of: "\\\"", with: "\\\\\"")
             escapedBody = escapedBody.replacingOccurrences(of: "\"", with: "\\\"")
 
             curlComponents.append("-d \"\(escapedBody)\"")
         }
 
-        curlComponents.append("\"\(URL.urlString)\"")
+        curlComponents.append("\"\(url.urlString)\"")
 
         return curlComponents.joined(separator: " \\\n\t")
     }

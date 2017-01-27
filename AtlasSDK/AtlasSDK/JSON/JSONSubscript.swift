@@ -11,10 +11,8 @@ extension JSON {
         case key(String)
     }
 
-    subscript(try path: JSONSubscript...) -> JSON? {
-        get {
-            return self[path]
-        }
+    func find(at path: JSONSubscript...) -> JSON? {
+        return self[path]
     }
 
     subscript(path: JSONSubscript...) -> JSON {
@@ -33,9 +31,11 @@ extension JSON {
         get {
             switch sub.jsonSubscript {
             case .index(let index):
-                return JSON(self.arrayObject?[index])
+                guard let array = self.array, index < array.count else { return nil }
+                return JSON(array[index])
             case .key(let key):
-                return JSON(self.dictionaryObject?[key])
+                guard let dict = self.dictionary?[key] else { return nil }
+                return JSON(dict)
             }
         }
     }
