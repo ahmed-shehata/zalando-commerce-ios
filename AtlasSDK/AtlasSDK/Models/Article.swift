@@ -32,6 +32,10 @@ public struct SelectedArticle {
         return unit.price.amount
     }
 
+    public var totalPrice: Money {
+        return Money(amount: unit.price.amount.multiplying(by: NSDecimalNumber(integerLiteral: quantity)), currency: unit.price.currency)
+    }
+
 }
 
 public struct Article {

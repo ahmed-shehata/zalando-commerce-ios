@@ -103,10 +103,8 @@ extension ArticleSelectionMainStackView: UIDataBuilder {
         sizeStackView.configure(viewModel: ArticleSelectionSizeViewModel(value: viewModel.unit.size,
                                                                          showArrow: !viewModel.article.hasSingleUnit))
 
-        let totalPrice = viewModel.unit.price.amount.multiplying(by: NSDecimalNumber(integerLiteral: viewModel.quantity))
         priceStackView.configure(viewModel: ArticleSelectionPriceViewModel(itemPrice: viewModel.unit.price,
-                                                                           totalPrice: Money(amount: totalPrice,
-                                                                                             currency: viewModel.unit.price.currency)))
+                                                                           totalPrice: viewModel.totalPrice))
     }
 
 }

@@ -44,6 +44,9 @@ class ArticleSelectionViewController: UIViewController {
 
         let sizeRecognizer = UITapGestureRecognizer(target: self, action: #selector(sizeTapped))
         rootStackView.mainStackView.sizeStackView.addGestureRecognizer(sizeRecognizer)
+
+        let continueButton = rootStackView.footerStackView.continueButton
+        continueButton.addTarget(self, action: #selector(continueButtonTapped), for: .touchUpInside)
     }
 
     dynamic private func quantityChanged(stepper: UIStepper) {
@@ -68,6 +71,10 @@ class ArticleSelectionViewController: UIViewController {
         navigationController?.pushViewController(sizeSelectionViewController, animated: true)
     }
 
+    dynamic private func continueButtonTapped() {
+        presentCheckoutScreen(selectedArticle: selectedArticle)
+    }
+
 }
 
 extension ArticleSelectionViewController: UIBuilder {
@@ -83,34 +90,37 @@ extension ArticleSelectionViewController: UIBuilder {
 
 }
 
-//
-//fileprivate func presentCheckoutScreen(selectedArticle: SelectedArticle) {
-//    let hasSingleUnit = selectedArticle.article.hasSingleUnit
-//    guard AtlasAPIClient.shared?.isAuthorized == true else {
-//        let actionHandler = NotLoggedInSummaryActionHandler()
-//        let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle,
-//                                                 totalPrice: selectedArticle.price)
-//        let viewModel = CheckoutSummaryViewModel(dataModel: dataModel, layout: NotLoggedInLayout())
-//        return presentCheckoutSummaryViewController(viewModel: viewModel, actionHandler: actionHandler)
-//    }
-//
-//    AtlasUIClient.customer { [weak self] customerResult in
-//        guard let customer = customerResult.process(forceFullScreenError: hasSingleUnit) else { return }
-//
-//        LoggedInSummaryActionHandler.create(customer: customer, selectedArticle: selectedArticle) { actionHandlerResult in
-//            guard let actionHandler = actionHandlerResult.process(forceFullScreenError: hasSingleUnit) else { return }
-//
-//            let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, cartCheckout: actionHandler.cartCheckout)
-//            let viewModel = CheckoutSummaryViewModel(dataModel: dataModel, layout: LoggedInLayout())
-//            self?.presentCheckoutSummaryViewController(viewModel: viewModel, actionHandler: actionHandler)
-//        }
-//    }
-//}
-//
-//fileprivate func presentCheckoutSummaryViewController(viewModel: CheckoutSummaryViewModel,
-//                                                      actionHandler: CheckoutSummaryActionHandler) {
-//    let hasSingleUnit = viewModel.dataModel.selectedArticle.article.hasSingleUnit
-//    let checkoutSummaryVC = CheckoutSummaryViewController(viewModel: viewModel)
-//    checkoutSummaryVC.actionHandler = actionHandler
-//    navigationController?.pushViewController(checkoutSummaryVC, animated: !hasSingleUnit)
-//}
+extension ArticleSelectionViewController {
+
+    fileprivate func presentCheckoutScreen(selectedArticle: SelectedArticle) {
+        let hasSingleUnit = selectedArticle.article.hasSingleUnit
+        guard AtlasAPIClient.shared?.isAuthorized == true else {
+            let actionHandler = NotLoggedInSummaryActionHandler()
+            let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle,
+                                                     totalPrice: selectedArticle.price)
+            let viewModel = CheckoutSummaryViewModel(dataModel: dataModel, layout: NotLoggedInLayout())
+            return presentCheckoutSummaryViewController(viewModel: viewModel, actionHandler: actionHandler)
+        }
+
+        AtlasUIClient.customer { [weak self] customerResult in
+            guard let customer = customerResult.process(forceFullScreenError: hasSingleUnit) else { return }
+
+            LoggedInSummaryActionHandler.create(customer: customer, selectedArticle: selectedArticle) { actionHandlerResult in
+                guard let actionHandler = actionHandlerResult.process(forceFullScreenError: hasSingleUnit) else { return }
+
+                let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, cartCheckout: actionHandler.cartCheckout)
+                let viewModel = CheckoutSummaryViewModel(dataModel: dataModel, layout: LoggedInLayout())
+                self?.presentCheckoutSummaryViewController(viewModel: viewModel, actionHandler: actionHandler)
+            }
+        }
+    }
+
+    fileprivate func presentCheckoutSummaryViewController(viewModel: CheckoutSummaryViewModel,
+                                                          actionHandler: CheckoutSummaryActionHandler) {
+        let hasSingleUnit = viewModel.dataModel.selectedArticle.article.hasSingleUnit
+        let checkoutSummaryVC = CheckoutSummaryViewController(viewModel: viewModel)
+        checkoutSummaryVC.actionHandler = actionHandler
+        navigationController?.pushViewController(checkoutSummaryVC, animated: !hasSingleUnit)
+    }
+
+}
