@@ -22,7 +22,6 @@ final class SizeListSelectionViewController: UIViewController {
     var tableViewDataSource: SizeListTableViewDataSource? {
         didSet {
             tableView.dataSource = tableViewDataSource
-            tableView.isHidden = tableViewDataSource?.article.hasSingleUnit ?? true
             tableView.reloadData()
         }
     }
@@ -48,7 +47,6 @@ final class SizeListSelectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         buildView()
-        view.backgroundColor = .white
     }
 
 }
@@ -56,6 +54,7 @@ final class SizeListSelectionViewController: UIViewController {
 extension SizeListSelectionViewController: UIBuilder {
 
     func configureView() {
+        view.backgroundColor = .white
         view.addSubview(tableView)
         tableView.registerReusableCell(for: UnitSizeTableViewCell.self)
         tableViewDelegate = SizeListTableViewDelegate(article: article) { [weak self] selectedArticle in

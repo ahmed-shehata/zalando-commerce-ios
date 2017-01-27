@@ -85,8 +85,7 @@ extension CheckoutSummaryViewController {
     fileprivate func setupNavigationBar() {
         title = Localizer.format(string: viewModel.layout.navigationBarTitleLocalizedKey)
 
-        let hasSingleUnit = viewModel.dataModel.selectedArticle.article.hasSingleUnit
-        navigationItem.setHidesBackButton(viewModel.layout.hideBackButton(hasSingleUnit: hasSingleUnit), animated: false)
+        navigationItem.setHidesBackButton(viewModel.layout.hideBackButton, animated: false)
 
         if viewModel.layout.showCancelButton {
             showCancelButton()

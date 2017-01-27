@@ -93,20 +93,19 @@ extension ArticleSelectionViewController: UIBuilder {
 extension ArticleSelectionViewController {
 
     fileprivate func presentCheckoutScreen(selectedArticle: SelectedArticle) {
-        let hasSingleUnit = selectedArticle.article.hasSingleUnit
         guard AtlasAPIClient.shared?.isAuthorized == true else {
             let actionHandler = NotLoggedInSummaryActionHandler()
             let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle,
-                                                     totalPrice: selectedArticle.price)
+                                                     totalPrice: selectedArticle.totalPrice)
             let viewModel = CheckoutSummaryViewModel(dataModel: dataModel, layout: NotLoggedInLayout())
             return presentCheckoutSummaryViewController(viewModel: viewModel, actionHandler: actionHandler)
         }
 
         AtlasUIClient.customer { [weak self] customerResult in
-            guard let customer = customerResult.process(forceFullScreenError: hasSingleUnit) else { return }
+            guard let customer = customerResult.process() else { return }
 
             LoggedInSummaryActionHandler.create(customer: customer, selectedArticle: selectedArticle) { actionHandlerResult in
-                guard let actionHandler = actionHandlerResult.process(forceFullScreenError: hasSingleUnit) else { return }
+                guard let actionHandler = actionHandlerResult.process() else { return }
 
                 let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, cartCheckout: actionHandler.cartCheckout)
                 let viewModel = CheckoutSummaryViewModel(dataModel: dataModel, layout: LoggedInLayout())
@@ -117,10 +116,9 @@ extension ArticleSelectionViewController {
 
     fileprivate func presentCheckoutSummaryViewController(viewModel: CheckoutSummaryViewModel,
                                                           actionHandler: CheckoutSummaryActionHandler) {
-        let hasSingleUnit = viewModel.dataModel.selectedArticle.article.hasSingleUnit
         let checkoutSummaryVC = CheckoutSummaryViewController(viewModel: viewModel)
         checkoutSummaryVC.actionHandler = actionHandler
-        navigationController?.pushViewController(checkoutSummaryVC, animated: !hasSingleUnit)
+        navigationController?.pushViewController(checkoutSummaryVC, animated: true)
     }
 
 }
