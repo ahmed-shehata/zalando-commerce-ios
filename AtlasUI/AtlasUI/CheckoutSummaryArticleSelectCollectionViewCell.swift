@@ -58,16 +58,14 @@ extension CheckoutSummaryArticleSelectCollectionViewCell: UIBuilder {
 extension CheckoutSummaryArticleSelectCollectionViewCell {
 
     func configure(selectedArticle: SelectedArticle, type: CheckoutSummaryArticleSelectCollectionViewType, idx: Int) {
-        let isSelected: Bool
+        let isSelected = type.idx(selectedArticle: selectedArticle) == idx
 
         switch type {
         case .size:
-            isSelected = idx == selectedArticle.unitIndex
             let unit = selectedArticle.article.availableUnits[idx]
             valueLabel.text = unit.size
             priceLabel.attributedText = priceAttributedString(price: unit.price, originalPrice: unit.originalPrice, isSelected: isSelected)
         case .quantity:
-            isSelected = idx == selectedArticle.quantity - 1
             let currency = selectedArticle.price.currency
             let totalPrice = Money(amount: selectedArticle.price.amount * Decimal(idx + 1), currency: currency)
             let totalOriginalPrice = Money(amount: selectedArticle.unit.originalPrice.amount * Decimal(idx + 1), currency: currency)

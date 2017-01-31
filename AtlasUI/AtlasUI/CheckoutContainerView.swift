@@ -48,7 +48,13 @@ class CheckoutContainerView: UIView {
         return button
     }()
 
-    let collectionViewHeight: CGFloat = 50
+    let collectionViewContainerHeight: CGFloat = 50
+    let collectionViewContainerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        return view
+    }()
+
     let collectionView: CheckoutSummaryArticleSelectCollectionView = {
         let collectionView = CheckoutSummaryArticleSelectCollectionView()
         collectionView.backgroundColor = .white
@@ -58,9 +64,9 @@ class CheckoutContainerView: UIView {
     func displaySizes(selectedArticle: SelectedArticle, animated: Bool, completion: CheckoutContainerViewEditCompletion) {
         if overlayButton.isHidden {
             showOverlay(animated: animated)
-            collectionView.configure(with: selectedArticle, for: .size)
+            collectionView.configure(with: selectedArticle, for: .size, animated: false)
         } else if collectionView.type == .quantity {
-            collectionView.configure(with: selectedArticle, for: .size)
+            collectionView.configure(with: selectedArticle, for: .size, animated: true)
         } else {
             hideOverlay(animated: animated)
         }
@@ -69,9 +75,9 @@ class CheckoutContainerView: UIView {
     func displayQuantites(selectedArticle: SelectedArticle, animated: Bool, completion: CheckoutContainerViewEditCompletion) {
         if overlayButton.isHidden {
             showOverlay(animated: animated)
-            collectionView.configure(with: selectedArticle, for: .quantity)
+            collectionView.configure(with: selectedArticle, for: .quantity, animated: false)
         } else if collectionView.type == .size {
-            collectionView.configure(with: selectedArticle, for: .quantity)
+            collectionView.configure(with: selectedArticle, for: .quantity, animated: true)
         } else {
             hideOverlay(animated: animated)
         }
@@ -85,7 +91,7 @@ class CheckoutContainerView: UIView {
         guard animated else {
             overlayButton.isHidden = false
             overlayButton.alpha = 1
-            collectionView.transform = .identity
+            collectionViewContainerView.transform = .identity
             return
         }
 
@@ -93,7 +99,7 @@ class CheckoutContainerView: UIView {
         overlayButton.alpha = 0
         UIView.animate(duration: .fast) { [weak self] in
             self?.overlayButton.alpha = 1
-            self?.collectionView.transform = .identity
+            self?.collectionViewContainerView.transform = .identity
         }
     }
 
@@ -101,14 +107,14 @@ class CheckoutContainerView: UIView {
         guard animated else {
             overlayButton.isHidden = true
             overlayButton.alpha = 0
-            collectionView.transform = CGAffineTransform(translationX: 0, y: -collectionViewHeight)
+            collectionViewContainerView.transform = CGAffineTransform(translationX: 0, y: -collectionViewContainerHeight)
             return
         }
 
         UIView.animate(duration: .fast, animations: { [weak self] in
             guard let strongSelf = self else { return }
             self?.overlayButton.alpha = 0
-            self?.collectionView.transform = CGAffineTransform(translationX: 0, y: -strongSelf.collectionViewHeight)
+            self?.collectionViewContainerView.transform = CGAffineTransform(translationX: 0, y: -strongSelf.collectionViewContainerHeight)
         }, completion: { [weak self] _ in
             self?.overlayButton.isHidden = true
         })
@@ -121,22 +127,25 @@ extension CheckoutContainerView: UIBuilder {
     func configureView() {
         addSubview(containerStackView)
         addSubview(overlayButton)
-        addSubview(collectionView)
+        addSubview(collectionViewContainerView)
 
         containerStackView.addArrangedSubview(scrollView)
         containerStackView.addArrangedSubview(footerStackView)
 
         scrollView.addSubview(mainStackView)
+        collectionViewContainerView.addSubview(collectionView)
     }
 
     func configureConstraints() {
         containerStackView.fillInSuperview()
         overlayButton.fillInSuperview()
 
-        collectionView.snap(toSuperview: .top)
-        collectionView.snap(toSuperview: .right)
-        collectionView.snap(toSuperview: .left)
-        collectionView.setHeight(equalToConstant: collectionViewHeight)
+        collectionViewContainerView.snap(toSuperview: .top)
+        collectionViewContainerView.snap(toSuperview: .right)
+        collectionViewContainerView.snap(toSuperview: .left)
+        collectionViewContainerView.setHeight(equalToConstant: collectionViewContainerHeight)
+
+        collectionView.fillInSuperview()
     }
 
 }

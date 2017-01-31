@@ -10,6 +10,20 @@ enum CheckoutSummaryArticleSelectCollectionViewType {
     case size
     case quantity
 
+    func count(selectedArticle: SelectedArticle) -> Int {
+        switch self {
+        case .size: return selectedArticle.article.availableUnits.count
+        case .quantity: return selectedArticle.unit.stock
+        }
+    }
+
+    func idx(selectedArticle: SelectedArticle) -> Int {
+        switch self {
+        case .size: return selectedArticle.unitIndex
+        case .quantity: return selectedArticle.quantity - 1
+        }
+    }
+
 }
 
 class CheckoutSummaryArticleSelectCollectionView: UICollectionView {
@@ -36,10 +50,24 @@ class CheckoutSummaryArticleSelectCollectionView: UICollectionView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configure(with selectedArticle: SelectedArticle, for type: CheckoutSummaryArticleSelectCollectionViewType) {
+    func configure(with selectedArticle: SelectedArticle, for type: CheckoutSummaryArticleSelectCollectionViewType, animated: Bool) {
         self.selectedArticle = selectedArticle
         self.type = type
+        guard animated else { return reload(andSelect: type.idx(selectedArticle: selectedArticle)) }
+
+        UIView.animate(duration: .fast, animations: { [weak self] in
+            self?.alpha = 0
+        }, completion: { [weak self] _ in
+            self?.reload(andSelect: type.idx(selectedArticle: selectedArticle))
+            UIView.animate(duration: .fast) {
+                self?.alpha = 1
+            }
+        })
+    }
+
+    private func reload(andSelect idx: Int) {
         reloadData()
+        selectItem(at: IndexPath(row: idx, section: 0), animated: false, scrollPosition: .centeredHorizontally)
     }
 
 }
@@ -48,10 +76,7 @@ extension CheckoutSummaryArticleSelectCollectionView: UICollectionViewDataSource
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let type = type, let selectedArticle = selectedArticle else { return 0 }
-        switch type {
-        case .size: return selectedArticle.article.availableUnits.count
-        case .quantity: return selectedArticle.unit.stock
-        }
+        return type.count(selectedArticle: selectedArticle)
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
