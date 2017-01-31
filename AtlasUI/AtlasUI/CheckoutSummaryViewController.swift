@@ -23,7 +23,6 @@ class CheckoutSummaryViewController: UIViewController {
     fileprivate let rootStackView: CheckoutSummaryRootStackView = {
         let stackView = CheckoutSummaryRootStackView()
         stackView.axis = .vertical
-        stackView.spacing = 5
         return stackView
     }()
 
@@ -46,6 +45,7 @@ class CheckoutSummaryViewController: UIViewController {
     fileprivate func viewModelDidSet() {
         setupNavigationBar()
         rootStackView.configure(viewModel: viewModel)
+        rootStackView.productStackView.editArticleStackView.dataSource = self
     }
 
 }
@@ -70,16 +70,16 @@ extension CheckoutSummaryViewController {
 
     fileprivate func setupActions() {
         let submitButtonRecognizer = UITapGestureRecognizer(target: self, action: #selector(submitButtonTapped))
-        rootStackView.footerStackView.submitButton.addGestureRecognizer(submitButtonRecognizer)
+        rootStackView.checkoutContainer.footerStackView.submitButton.addGestureRecognizer(submitButtonRecognizer)
 
         let shippingAddressRecognizer = UITapGestureRecognizer(target: self, action: #selector(shippingAddressTapped))
-        rootStackView.mainStackView.shippingAddressStackView.addGestureRecognizer(shippingAddressRecognizer)
+        rootStackView.checkoutContainer.mainStackView.shippingAddressStackView.addGestureRecognizer(shippingAddressRecognizer)
 
         let billingAddressRecognizer = UITapGestureRecognizer(target: self, action: #selector(billingAddressTapped))
-        rootStackView.mainStackView.billingAddressStackView.addGestureRecognizer(billingAddressRecognizer)
+        rootStackView.checkoutContainer.mainStackView.billingAddressStackView.addGestureRecognizer(billingAddressRecognizer)
 
         let paymentRecognizer = UITapGestureRecognizer(target: self, action: #selector(paymentAddressTapped))
-        rootStackView.mainStackView.paymentStackView.addGestureRecognizer(paymentRecognizer)
+        rootStackView.checkoutContainer.mainStackView.paymentStackView.addGestureRecognizer(paymentRecognizer)
     }
 
     fileprivate func setupNavigationBar() {
@@ -120,6 +120,18 @@ extension CheckoutSummaryViewController: CheckoutSummaryActionHandlerDataSource 
 
     var dataModel: CheckoutSummaryDataModel {
         return viewModel.dataModel
+    }
+
+}
+
+extension CheckoutSummaryViewController: CheckoutSummaryEditProductStackViewDataSource {
+
+    var checkoutContainer: CheckoutContainerView {
+        return rootStackView.checkoutContainer
+    }
+
+    var selectedArticle: SelectedArticle {
+        return viewModel.dataModel.selectedArticle
     }
 
 }

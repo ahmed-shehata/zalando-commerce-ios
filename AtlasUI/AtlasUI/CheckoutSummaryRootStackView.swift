@@ -6,28 +6,17 @@ import UIKit
 
 class CheckoutSummaryRootStackView: UIStackView {
 
-    let scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.backgroundColor = .white
-        return scrollView
-    }()
-
-    let mainStackView: CheckoutSummaryMainStackView = {
-        let stackView = CheckoutSummaryMainStackView()
+    let productStackView: CheckoutSummaryProductStackView = {
+        let stackView = CheckoutSummaryProductStackView()
         stackView.axis = .vertical
-        stackView.spacing = 5
-        stackView.layoutMargins = UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)
-        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.spacing = 0
         return stackView
     }()
 
-    let footerStackView: CheckoutSummaryFooterStackView = {
-        let stackView = CheckoutSummaryFooterStackView()
-        stackView.axis = .vertical
-        stackView.spacing = 5
-        stackView.layoutMargins = UIEdgeInsets(top: 0, left: 20, bottom: 10, right: 20)
-        stackView.isLayoutMarginsRelativeArrangement = true
-        return stackView
+    let checkoutContainer: CheckoutContainerView = {
+        let view = CheckoutContainerView()
+        view.backgroundColor = .clear
+        return view
     }()
 
 }
@@ -35,9 +24,8 @@ class CheckoutSummaryRootStackView: UIStackView {
 extension CheckoutSummaryRootStackView: UIBuilder {
 
     func configureView() {
-        scrollView.addSubview(mainStackView)
-        addArrangedSubview(scrollView)
-        addArrangedSubview(footerStackView)
+        addArrangedSubview(productStackView)
+        addArrangedSubview(checkoutContainer)
     }
 
     func configureConstraints() {
@@ -51,8 +39,8 @@ extension CheckoutSummaryRootStackView: UIDataBuilder {
     typealias T = CheckoutSummaryViewModel
 
     func configure(viewModel: T) {
-        mainStackView.configure(viewModel: viewModel)
-        footerStackView.configure(viewModel: viewModel)
+        productStackView.configure(viewModel: viewModel.dataModel.selectedArticle)
+        checkoutContainer.configure(viewModel: viewModel)
     }
 
 }

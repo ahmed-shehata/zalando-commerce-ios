@@ -132,6 +132,11 @@
 		E726441E020342505E0A3E67AB6E20CB /* Nimble.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 8398317FEC21A1E65AB06E3EF9B29A2B /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E782C0927EED31E254387612CC460B25 /* CheckoutSummaryGuestStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F6B74C3A17265FB585434F8EF82EBF /* CheckoutSummaryGuestStackView.swift */; };
 		E8B9ED27AD36D32DCD40F061A102A387 /* URL-QueryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FEB9F822022119C7EEC519A0FBC70F /* URL-QueryItem.swift */; };
+		E91FBC601E40BB6600057992 /* CheckoutSummaryProductInfoStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91FBC5F1E40BB6600057992 /* CheckoutSummaryProductInfoStackView.swift */; };
+		E91FBC621E40BC7F00057992 /* CheckoutSummaryEditProductStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91FBC611E40BC7F00057992 /* CheckoutSummaryEditProductStackView.swift */; };
+		E91FBC641E40BE9F00057992 /* CheckoutContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91FBC631E40BE9F00057992 /* CheckoutContainerView.swift */; };
+		E91FBC661E40CE2B00057992 /* CheckoutSummaryArticleSelectCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91FBC651E40CE2B00057992 /* CheckoutSummaryArticleSelectCollectionView.swift */; };
+		E91FBC681E40CF0300057992 /* CheckoutSummaryArticleSelectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91FBC671E40CF0300057992 /* CheckoutSummaryArticleSelectCollectionViewCell.swift */; };
 		E937CBC61E36795900D86846 /* AddressCheckViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E937CBC51E36795900D86846 /* AddressCheckViewControllerTests.swift */; };
 		E969AD4E1E3B4D8600E617EC /* ArticleSelectionPriceStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E969AD4D1E3B4D8600E617EC /* ArticleSelectionPriceStackView.swift */; };
 		E97A33A7BE2D26CDE9B4C62EB5BD2661 /* CheckoutSummaryAddressStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9494F7947C24BD2087FE22EBE20BFCD /* CheckoutSummaryAddressStackView.swift */; };
@@ -324,6 +329,11 @@
 		DD2C09882EF82C93CC8615C9E0F59251 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		E2644DB2E806C8F07CECE81835A0326C /* OAuth2LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2LoginViewController.swift; sourceTree = "<group>"; };
 		E272DADD96290ADDD55009F293229EAD /* FormValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValidatorTests.swift; sourceTree = "<group>"; };
+		E91FBC5F1E40BB6600057992 /* CheckoutSummaryProductInfoStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryProductInfoStackView.swift; sourceTree = "<group>"; };
+		E91FBC611E40BC7F00057992 /* CheckoutSummaryEditProductStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryEditProductStackView.swift; sourceTree = "<group>"; };
+		E91FBC631E40BE9F00057992 /* CheckoutContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutContainerView.swift; sourceTree = "<group>"; };
+		E91FBC651E40CE2B00057992 /* CheckoutSummaryArticleSelectCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryArticleSelectCollectionView.swift; sourceTree = "<group>"; };
+		E91FBC671E40CF0300057992 /* CheckoutSummaryArticleSelectCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryArticleSelectCollectionViewCell.swift; sourceTree = "<group>"; };
 		E937CBC51E36795900D86846 /* AddressCheckViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckViewControllerTests.swift; sourceTree = "<group>"; };
 		E969AD4D1E3B4D8600E617EC /* ArticleSelectionPriceStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleSelectionPriceStackView.swift; sourceTree = "<group>"; };
 		E97B1BE51E2E6DDD00FC0195 /* AddressCheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckViewController.swift; sourceTree = "<group>"; };
@@ -602,17 +612,11 @@
 		9B484E9EDAA08B438CFF1D9582A4432D /* StackViews */ = {
 			isa = PBXGroup;
 			children = (
-				AB41B71854AFBEEBCA15F25103CE4D15 /* RowStackView.swift */,
 				5A709BBC960C3FA3E161DC6DA92C2831 /* CheckoutSummaryRootStackView.swift */,
-				36AFFBC11C6E4345A2FD0225BC27DA6E /* CheckoutSummaryMainStackView.swift */,
-				2B7D9D17623D2179A7F4614617C3C38C /* CheckoutSummaryProductStackView.swift */,
-				399DFA4B1292136BEE7E6DBC3BB30B1B /* CheckoutSummaryOrderStackView.swift */,
-				F9494F7947C24BD2087FE22EBE20BFCD /* CheckoutSummaryAddressStackView.swift */,
-				87E590A91E14F2FED72589813043BEFD /* CheckoutSummaryPaymentStackView.swift */,
-				23F6B74C3A17265FB585434F8EF82EBF /* CheckoutSummaryGuestStackView.swift */,
-				BFBCE11B274F25D8CDC220276F89179D /* CheckoutSummaryPriceStackView.swift */,
-				842E43B5DEB9E0807F43553F358C687F /* CheckoutSummaryDeliveryStackView.swift */,
+				E91FBC631E40BE9F00057992 /* CheckoutContainerView.swift */,
 				FFAA3A40B92B64CE46E74B153ABE8C52 /* CheckoutSummaryFooterStackView.swift */,
+				E91FBC6A1E40D12D00057992 /* Product Stack View */,
+				E91FBC691E40D11500057992 /* Main Stack View */,
 			);
 			name = StackViews;
 			sourceTree = "<group>";
@@ -701,6 +705,33 @@
 				34ECE1C52097D5F274C73E332B128DD4 /* Address Form */,
 			);
 			name = "Address Selection";
+			sourceTree = "<group>";
+		};
+		E91FBC691E40D11500057992 /* Main Stack View */ = {
+			isa = PBXGroup;
+			children = (
+				AB41B71854AFBEEBCA15F25103CE4D15 /* RowStackView.swift */,
+				36AFFBC11C6E4345A2FD0225BC27DA6E /* CheckoutSummaryMainStackView.swift */,
+				399DFA4B1292136BEE7E6DBC3BB30B1B /* CheckoutSummaryOrderStackView.swift */,
+				F9494F7947C24BD2087FE22EBE20BFCD /* CheckoutSummaryAddressStackView.swift */,
+				87E590A91E14F2FED72589813043BEFD /* CheckoutSummaryPaymentStackView.swift */,
+				23F6B74C3A17265FB585434F8EF82EBF /* CheckoutSummaryGuestStackView.swift */,
+				BFBCE11B274F25D8CDC220276F89179D /* CheckoutSummaryPriceStackView.swift */,
+				842E43B5DEB9E0807F43553F358C687F /* CheckoutSummaryDeliveryStackView.swift */,
+			);
+			name = "Main Stack View";
+			sourceTree = "<group>";
+		};
+		E91FBC6A1E40D12D00057992 /* Product Stack View */ = {
+			isa = PBXGroup;
+			children = (
+				2B7D9D17623D2179A7F4614617C3C38C /* CheckoutSummaryProductStackView.swift */,
+				E91FBC5F1E40BB6600057992 /* CheckoutSummaryProductInfoStackView.swift */,
+				E91FBC611E40BC7F00057992 /* CheckoutSummaryEditProductStackView.swift */,
+				E91FBC651E40CE2B00057992 /* CheckoutSummaryArticleSelectCollectionView.swift */,
+				E91FBC671E40CF0300057992 /* CheckoutSummaryArticleSelectCollectionViewCell.swift */,
+			);
+			name = "Product Stack View";
 			sourceTree = "<group>";
 		};
 		E97B1BE71E2E6DF700FC0195 /* Address Check */ = {
@@ -1020,8 +1051,10 @@
 				3B764862C63DB1FAF1CDE72BDE37D661 /* FormattableAddress.swift in Sources */,
 				0B7FB82906D53F680B364DDFD88D814C /* CNPostalAddress.swift in Sources */,
 				080B51E8DF2948F845506AFD67303D94 /* StringOperators.swift in Sources */,
+				E91FBC661E40CE2B00057992 /* CheckoutSummaryArticleSelectCollectionView.swift in Sources */,
 				E8B9ED27AD36D32DCD40F061A102A387 /* URL-QueryItem.swift in Sources */,
 				B4399FAB71827F9E8AE99CCADA530BCD /* LoggedInAddressListActionHandler.swift in Sources */,
+				E91FBC601E40BB6600057992 /* CheckoutSummaryProductInfoStackView.swift in Sources */,
 				C2CBD5F0A9B399A6FAC9311860D09B56 /* StreetAddress.swift in Sources */,
 				301347C3A95691A0DCE03305E725897C /* AtlasResult.swift in Sources */,
 				A31736F594D7934B7DDCDB98E78418EE /* CheckoutSummaryLayout.swift in Sources */,
@@ -1037,6 +1070,7 @@
 				30788EA71B54F0C0BCC51AA46C0C6D09 /* CGRect.swift in Sources */,
 				536FFA0EF451B723E43BDE2C8B097700 /* CheckoutPresentationController.swift in Sources */,
 				68CE713AF956812A89FFC4227EBBE35D /* UIViewController.swift in Sources */,
+				E91FBC621E40BC7F00057992 /* CheckoutSummaryEditProductStackView.swift in Sources */,
 				E97A33A7BE2D26CDE9B4C62EB5BD2661 /* CheckoutSummaryAddressStackView.swift in Sources */,
 				E9ECD6431E38BBB100305B87 /* GetArticleDetailsViewController.swift in Sources */,
 				2A7DCAF77CF310B427D9EB0481F8F300 /* CheckoutSummaryDeliveryStackView.swift in Sources */,
@@ -1046,6 +1080,7 @@
 				E9ECD64F1E38E0CB00305B87 /* ArticleSelectionQuantityStackView.swift in Sources */,
 				1B44638F3D6077F3586EC16ECD50D647 /* CheckoutSummaryMainStackView.swift in Sources */,
 				AD12B850B93E98B146F2119CFCB350A3 /* AddressFormViewModel.swift in Sources */,
+				E91FBC641E40BE9F00057992 /* CheckoutContainerView.swift in Sources */,
 				3ABA26421BD2B174AA71C1D7D4F67E58 /* CheckoutSummaryPaymentStackView.swift in Sources */,
 				03075F34C90298D38035310368D818E6 /* AddressViewModelCreationStrategy.swift in Sources */,
 				9DF15AB5A8939C7163029A2364B05864 /* CheckoutSummaryPriceStackView.swift in Sources */,
@@ -1100,6 +1135,7 @@
 				81C121DD8EC1CF6A575CF1BC21C48205 /* HTTP.swift in Sources */,
 				04571E19605FDD77134ACCAFA10A2710 /* AddressBookImportDataModelCreationStrategy.swift in Sources */,
 				BC1ECCD35BAA9A66EA505B1C454025E3 /* UIBuilder.swift in Sources */,
+				E91FBC681E40CF0300057992 /* CheckoutSummaryArticleSelectCollectionViewCell.swift in Sources */,
 				3DA9EC5BB5FB16AB5C8D0D054D1B8538 /* CheckoutSummaryActionHandler.swift in Sources */,
 				5D4318C4269DBFE57664762C9940134D /* ShippingAddressViewModelCreationStrategy.swift in Sources */,
 				125D65A740AA700245607C84A89DD052 /* AtlasAPIResult.swift in Sources */,

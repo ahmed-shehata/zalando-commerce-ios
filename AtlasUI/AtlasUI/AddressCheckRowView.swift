@@ -22,7 +22,7 @@ class AddressCheckRowView: RoundedView {
         let view = RoundedView()
         view.isCircle = true
         view.borderColor = .lightGray
-        view.borderWidth = 1 / UIScreen.main.scale
+        view.borderWidth = UIView.onePixel
         view.backgroundColor = UIColor(hex: 0xE5E5E5)
         return view
     }()
@@ -58,7 +58,7 @@ extension AddressCheckRowView: UIBuilder {
 
     func configureView() {
         cornerRadius = 5
-        borderWidth = 1 / UIScreen.main.scale
+        borderWidth = UIView.onePixel
         borderColor = UIColor(hex: 0xE5E5E5)
 
         addSubview(stackView)

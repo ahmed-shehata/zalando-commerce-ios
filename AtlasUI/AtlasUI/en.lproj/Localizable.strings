@@ -55,7 +55,6 @@
 "button.general.cancel" = "Cancel";
 "button.general.save" = "Save";
 "button.general.submit" = "Submit";
-"button.general.continue" = "Continue";
 "formValidation.exactLength" = "Required length is %@";
 "formValidation.maxLength" = "Max length is %@";
 "formValidation.minLength" = "Min length is %@";
@@ -70,6 +69,9 @@
 "guestSummaryView.address.update" = "Update Address";
 "loginView.loginWithZalando" = "Login with Zalando";
 "summaryView.button.saveOrderImage" = "Save order details image";
+"summaryView.button.size" = "Size";
+"summaryView.button.selectColor" = "Color";
+"summaryView.button.quantity" = "Quantity";
 "summaryView.label.address.billing" = "Billing Address";
 "summaryView.label.address.packstationAbbreviation" = "P.S.";
 "summaryView.label.address.shipping" = "Shipping Address";
@@ -93,9 +95,6 @@
 "summaryView.submitButton.placeOrder" = "Place order";
 "summaryView.title.orderPlaced" = "Order placed";
 "summaryView.title.summary" = "Summary";
-"selectionView.title.quantity" = "Quantity";
-"selectionView.title.size" = "Size";
-"selectionView.label.price.item" = "Price / item";
 "termsAndConditionsView.title" = "Legal Notice";
 "AtlasCheckoutError.message.unsupportedCountry" = "This country is not supported";
 "AtlasCheckoutError.message.photosLibraryAccessNotAllowed" = "Can't access Photos Library";
