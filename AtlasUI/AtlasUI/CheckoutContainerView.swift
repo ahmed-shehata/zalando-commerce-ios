@@ -48,42 +48,70 @@ class CheckoutContainerView: UIView {
         return button
     }()
 
+    let collectionViewHeight: CGFloat = 50
     let collectionView: CheckoutSummaryArticleSelectCollectionView = {
         let collectionView = CheckoutSummaryArticleSelectCollectionView()
-        collectionView.isHidden = true
         collectionView.backgroundColor = .white
         return collectionView
     }()
 
-    func displaySizes(selectedArticle: SelectedArticle, completion: CheckoutContainerViewEditCompletion) {
+    func displaySizes(selectedArticle: SelectedArticle, animated: Bool, completion: CheckoutContainerViewEditCompletion) {
         if overlayButton.isHidden {
-            overlayButton.isHidden = false
-            collectionView.isHidden = false
+            showOverlay(animated: animated)
             collectionView.configure(with: selectedArticle, for: .size)
         } else if collectionView.type == .quantity {
             collectionView.configure(with: selectedArticle, for: .size)
         } else {
-            overlayButton.isHidden = true
-            collectionView.isHidden = true
+            hideOverlay(animated: animated)
         }
     }
 
-    func displayQuantites(selectedArticle: SelectedArticle, completion: CheckoutContainerViewEditCompletion) {
+    func displayQuantites(selectedArticle: SelectedArticle, animated: Bool, completion: CheckoutContainerViewEditCompletion) {
         if overlayButton.isHidden {
-            overlayButton.isHidden = false
-            collectionView.isHidden = false
+            showOverlay(animated: animated)
             collectionView.configure(with: selectedArticle, for: .quantity)
         } else if collectionView.type == .size {
             collectionView.configure(with: selectedArticle, for: .quantity)
         } else {
-            overlayButton.isHidden = true
-            collectionView.isHidden = true
+            hideOverlay(animated: animated)
         }
     }
 
     dynamic private func overlayButtonTapped() {
-        overlayButton.isHidden = true
-        collectionView.isHidden = true
+        hideOverlay(animated: true)
+    }
+
+    private func showOverlay(animated: Bool) {
+        guard animated else {
+            overlayButton.isHidden = false
+            overlayButton.alpha = 1
+            collectionView.transform = .identity
+            return
+        }
+
+        overlayButton.isHidden = false
+        overlayButton.alpha = 0
+        UIView.animate(duration: .fast) { [weak self] in
+            self?.overlayButton.alpha = 1
+            self?.collectionView.transform = .identity
+        }
+    }
+
+    private func hideOverlay(animated: Bool) {
+        guard animated else {
+            overlayButton.isHidden = true
+            overlayButton.alpha = 0
+            collectionView.transform = CGAffineTransform(translationX: 0, y: -collectionViewHeight)
+            return
+        }
+
+        UIView.animate(duration: .fast, animations: { [weak self] in
+            guard let strongSelf = self else { return }
+            self?.overlayButton.alpha = 0
+            self?.collectionView.transform = CGAffineTransform(translationX: 0, y: -strongSelf.collectionViewHeight)
+        }, completion: { [weak self] _ in
+            self?.overlayButton.isHidden = true
+        })
     }
 
 }
@@ -108,7 +136,7 @@ extension CheckoutContainerView: UIBuilder {
         collectionView.snap(toSuperview: .top)
         collectionView.snap(toSuperview: .right)
         collectionView.snap(toSuperview: .left)
-        collectionView.setHeight(equalToConstant: 50)
+        collectionView.setHeight(equalToConstant: collectionViewHeight)
     }
 
 }

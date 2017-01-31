@@ -46,6 +46,9 @@ class CheckoutSummaryViewController: UIViewController {
         setupNavigationBar()
         rootStackView.configure(viewModel: viewModel)
         rootStackView.productStackView.editArticleStackView.dataSource = self
+        rootStackView.checkoutContainer.displaySizes(selectedArticle: viewModel.dataModel.selectedArticle, animated: true) { result in
+            
+        }
     }
 
 }

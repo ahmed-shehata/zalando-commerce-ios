@@ -26,6 +26,7 @@ class CheckoutSummaryArticleSelectCollectionView: UICollectionView {
         layout.scrollDirection = .horizontal
 
         super.init(frame: .zero, collectionViewLayout: layout)
+        showsHorizontalScrollIndicator = false
         dataSource = self
         delegate = self
         register(CheckoutSummaryArticleSelectCollectionViewCell.self, forCellWithReuseIdentifier: "cell")

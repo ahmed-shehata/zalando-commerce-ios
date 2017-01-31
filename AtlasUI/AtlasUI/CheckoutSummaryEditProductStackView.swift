@@ -41,14 +41,14 @@ class CheckoutSummaryEditProductStackView: UIStackView {
 
     dynamic private func sizeButtonTapped() {
         guard let selectedArticle = dataSource?.selectedArticle else { return }
-        dataSource?.checkoutContainer.displaySizes(selectedArticle: selectedArticle) { result in
+        dataSource?.checkoutContainer.displaySizes(selectedArticle: selectedArticle, animated: true) { result in
 
         }
     }
 
     dynamic private func quantityButtonTapped() {
         guard let selectedArticle = dataSource?.selectedArticle else { return }
-        dataSource?.checkoutContainer.displayQuantites(selectedArticle: selectedArticle) { result in
+        dataSource?.checkoutContainer.displayQuantites(selectedArticle: selectedArticle, animated: true) { result in
 
         }
     }

@@ -15,6 +15,7 @@ class CheckoutSummaryRootStackView: UIStackView {
 
     let checkoutContainer: CheckoutContainerView = {
         let view = CheckoutContainerView()
+        view.clipsToBounds = true
         view.backgroundColor = .clear
         return view
     }()
