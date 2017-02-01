@@ -1,5 +1,5 @@
 github "bignerdranch/Freddy" "3.0.2"
-github "Quick/Nimble" "9bc6e293982764e81cb69dec9e9f54b13608c777"
+github "Quick/Nimble" "v6.0.1"
 github "kean/Nuke" "4.1.2"
 github "daltoniam/SwiftHTTP" "2.0.2"
-github "httpswift/swifter" "73216329c57fdf860c89e9ac34b4201ca3091ee8"
+github "httpswift/swifter" "7b3b96e8208afa4ddb5314af01ed6277a6f4f503"
