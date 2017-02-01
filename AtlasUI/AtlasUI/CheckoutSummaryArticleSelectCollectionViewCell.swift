@@ -57,7 +57,7 @@ extension CheckoutSummaryArticleSelectCollectionViewCell: UIBuilder {
 
 extension CheckoutSummaryArticleSelectCollectionViewCell {
 
-    func configure(selectedArticle: SelectedArticle, type: CheckoutSummaryArticleSelectCollectionViewType, idx: Int) {
+    func configure(selectedArticle: SelectedArticle, type: CheckoutSummaryArticleRefineType, idx: Int) {
         let isSelected = type.idx(selectedArticle: selectedArticle) == idx
 
         switch type {

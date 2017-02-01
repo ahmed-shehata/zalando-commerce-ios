@@ -26,7 +26,6 @@ class CheckoutSummaryProductStackView: UIStackView {
     let editArticleStackView: CheckoutSummaryEditProductStackView = {
         let stackView = CheckoutSummaryEditProductStackView()
         stackView.axis = .horizontal
-        stackView.distribution = .fillProportionally
         return stackView
     }()
 

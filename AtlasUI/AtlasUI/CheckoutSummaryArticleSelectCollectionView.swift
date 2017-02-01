@@ -5,7 +5,7 @@
 import UIKit
 import AtlasSDK
 
-enum CheckoutSummaryArticleSelectCollectionViewType {
+enum CheckoutSummaryArticleRefineType {
 
     case size
     case quantity
@@ -26,10 +26,13 @@ enum CheckoutSummaryArticleSelectCollectionViewType {
 
 }
 
+typealias CheckoutSummaryArticleRefineCompletion = (Int) -> Void
+
 class CheckoutSummaryArticleSelectCollectionView: UICollectionView {
 
     var selectedArticle: SelectedArticle?
-    var type: CheckoutSummaryArticleSelectCollectionViewType?
+    var type: CheckoutSummaryArticleRefineType?
+    var completion: CheckoutSummaryArticleRefineCompletion?
 
     init() {
         let layout = UICollectionViewFlowLayout()
@@ -50,7 +53,7 @@ class CheckoutSummaryArticleSelectCollectionView: UICollectionView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configure(with selectedArticle: SelectedArticle, for type: CheckoutSummaryArticleSelectCollectionViewType, animated: Bool) {
+    func configure(with selectedArticle: SelectedArticle, for type: CheckoutSummaryArticleRefineType, animated: Bool) {
         self.selectedArticle = selectedArticle
         self.type = type
         guard animated else { return reload(andSelect: type.idx(selectedArticle: selectedArticle)) }
@@ -94,5 +97,9 @@ extension CheckoutSummaryArticleSelectCollectionView: UICollectionViewDataSource
 }
 
 extension CheckoutSummaryArticleSelectCollectionView: UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        completion?(indexPath.row)
+    }
 
 }

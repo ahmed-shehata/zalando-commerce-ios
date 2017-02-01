@@ -14,7 +14,7 @@ class CheckoutSummaryViewController: UIViewController {
         }
     }
 
-    var viewModel: CheckoutSummaryViewModel {
+    fileprivate var viewModel: CheckoutSummaryViewModel {
         didSet {
             viewModelDidSet()
         }
@@ -41,6 +41,7 @@ class CheckoutSummaryViewController: UIViewController {
         buildView()
         setupActions()
         rootStackView.productStackView.editArticleStackView.dataSource = self
+        rootStackView.productStackView.editArticleStackView.delegate = self
         rootStackView.checkoutContainer.displaySizes(selectedArticle: viewModel.dataModel.selectedArticle, animated: false) { result in
 
         }
@@ -127,18 +128,6 @@ extension CheckoutSummaryViewController: CheckoutSummaryActionHandlerDataSource 
 
 }
 
-extension CheckoutSummaryViewController: CheckoutSummaryEditProductStackViewDataSource {
-
-    var checkoutContainer: CheckoutContainerView {
-        return rootStackView.checkoutContainer
-    }
-
-    var selectedArticle: SelectedArticle {
-        return viewModel.dataModel.selectedArticle
-    }
-
-}
-
 extension CheckoutSummaryViewController: CheckoutSummaryActionHandlerDelegate {
 
     func updated(dataModel: CheckoutSummaryDataModel) throws {
@@ -163,6 +152,34 @@ extension CheckoutSummaryViewController: CheckoutSummaryActionHandlerDelegate {
 
     func dismissView() {
         dismiss(animated: true, completion: nil)
+    }
+
+}
+
+extension CheckoutSummaryViewController: CheckoutSummaryEditProductDataSource {
+
+    var checkoutContainer: CheckoutContainerView {
+        return rootStackView.checkoutContainer
+    }
+
+    var selectedArticle: SelectedArticle {
+        return viewModel.dataModel.selectedArticle
+    }
+
+}
+
+extension CheckoutSummaryViewController: CheckoutSummaryEditProductDelegate {
+
+    func updated(selectedArticle: SelectedArticle) {
+        viewModel.dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle,
+                                                       shippingAddress: viewModel.dataModel.shippingAddress,
+                                                       billingAddress: viewModel.dataModel.billingAddress,
+                                                       paymentMethod: viewModel.dataModel.paymentMethod,
+                                                       totalPrice: viewModel.dataModel.totalPrice,
+                                                       delivery: viewModel.dataModel.delivery,
+                                                       email: viewModel.dataModel.email,
+                                                       orderNumber: viewModel.dataModel.orderNumber)
+        actionHandler?.selectedArticleChanged()
     }
 
 }

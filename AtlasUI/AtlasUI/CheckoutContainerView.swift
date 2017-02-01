@@ -5,8 +5,6 @@
 import UIKit
 import AtlasSDK
 
-typealias CheckoutContainerViewEditCompletion = (SelectedArticle) -> Void
-
 class CheckoutContainerView: UIView {
 
     let containerStackView: UIStackView = {
@@ -61,23 +59,29 @@ class CheckoutContainerView: UIView {
         return collectionView
     }()
 
-    func displaySizes(selectedArticle: SelectedArticle, animated: Bool, completion: CheckoutContainerViewEditCompletion) {
-        if overlayButton.isHidden {
-            showOverlay(animated: animated)
-            collectionView.configure(with: selectedArticle, for: .size, animated: false)
-        } else if collectionView.type == .quantity {
-            collectionView.configure(with: selectedArticle, for: .size, animated: true)
-        } else {
-            hideOverlay(animated: animated)
-        }
+    func displaySizes(selectedArticle: SelectedArticle, animated: Bool, completion: @escaping CheckoutSummaryArticleRefineCompletion) {
+        configureCollectionView(selectedArticle: selectedArticle, for: .size, animated: animated, completion: completion)
     }
 
-    func displayQuantites(selectedArticle: SelectedArticle, animated: Bool, completion: CheckoutContainerViewEditCompletion) {
+    func displayQuantites(selectedArticle: SelectedArticle, animated: Bool, completion: @escaping CheckoutSummaryArticleRefineCompletion) {
+        configureCollectionView(selectedArticle: selectedArticle, for: .quantity, animated: animated, completion: completion)
+    }
+
+    private func configureCollectionView(selectedArticle: SelectedArticle,
+                                         for type: CheckoutSummaryArticleRefineType,
+                                         animated: Bool,
+                                         completion: @escaping CheckoutSummaryArticleRefineCompletion) {
+
+        collectionView.completion = { [weak self] result in
+            completion(result)
+            self?.hideOverlay(animated: true)
+        }
+
         if overlayButton.isHidden {
             showOverlay(animated: animated)
-            collectionView.configure(with: selectedArticle, for: .quantity, animated: false)
-        } else if collectionView.type == .size {
-            collectionView.configure(with: selectedArticle, for: .quantity, animated: true)
+            collectionView.configure(with: selectedArticle, for: type, animated: false)
+        } else if collectionView.type != type {
+            collectionView.configure(with: selectedArticle, for: type, animated: true)
         } else {
             hideOverlay(animated: animated)
         }
