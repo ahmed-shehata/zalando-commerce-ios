@@ -210,7 +210,6 @@ extension LoggedInSummaryActionHandler {
         guard let dataSource = dataSource, let delegate = delegate else { return }
         let selectedArticle = dataSource.dataModel.selectedArticle
         let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, checkout: cartCheckout?.checkout, order: order)
-        delegate.updated(actionHandler: OrderPlacedSummaryActionHandler())
         do {
             dataModelDisplayedError = nil
             try delegate.updated(dataModel: dataModel)
@@ -218,6 +217,7 @@ extension LoggedInSummaryActionHandler {
             dataModelDisplayedError = error
         }
         delegate.updated(layout: OrderPlacedLayout())
+        delegate.updated(actionHandler: OrderPlacedSummaryActionHandler())
     }
 
 }

@@ -32,7 +32,7 @@ class GetArticleDetailsViewController: UIViewController {
     }
 
     private func showSummaryView(article: Article) {
-        let initialSelectedArticle = SelectedArticle(article: article, unitIndex: 0, quantity: 1) // TODO: Use NSNotFound
+        let initialSelectedArticle = SelectedArticle(article: article, unitIndex: NSNotFound, quantity: 1)
         let dataModel = CheckoutSummaryDataModel(selectedArticle: initialSelectedArticle,
                                                  totalPrice: initialSelectedArticle.totalPrice)
         let viewModel = CheckoutSummaryViewModel(dataModel: dataModel, layout: ArticleNotSelectedLayout())

@@ -134,9 +134,9 @@ extension GuestCheckoutSummaryActionHandler {
                                                  guestCheckout: guestCheckout,
                                                  email: email,
                                                  guestOrder: order)
-        delegate.updated(actionHandler: OrderPlacedSummaryActionHandler())
         try? delegate.updated(dataModel: dataModel)
         delegate.updated(layout: GuestOrderPlacedLayout())
+        delegate.updated(actionHandler: OrderPlacedSummaryActionHandler())
     }
 
     fileprivate func getPaymentURL(completion: @escaping (URL) -> Void) {

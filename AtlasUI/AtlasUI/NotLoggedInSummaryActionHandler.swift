@@ -22,9 +22,9 @@ class NotLoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
                 guard let actionHandler = result.process() else { return }
 
                 let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, cartCheckout: actionHandler.cartCheckout)
-                delegate.updated(actionHandler: actionHandler)
                 try? delegate.updated(dataModel: dataModel)
                 delegate.updated(layout: LoggedInLayout())
+                delegate.updated(actionHandler: actionHandler)
             }
         }
     }
@@ -72,9 +72,9 @@ extension NotLoggedInSummaryActionHandler {
                                                  totalPrice: selectedArticle.price,
                                                  email: email)
         let actionHandler = GuestCheckoutSummaryActionHandler(email: email)
-        delegate?.updated(actionHandler: actionHandler)
         try? delegate?.updated(dataModel: dataModel)
         delegate?.updated(layout: GuestCheckoutLayout())
+        delegate?.updated(actionHandler: actionHandler)
     }
 
     fileprivate var isGuestCheckoutEnabled: Bool {

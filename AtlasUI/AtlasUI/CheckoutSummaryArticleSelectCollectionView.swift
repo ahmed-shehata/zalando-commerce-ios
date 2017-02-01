@@ -70,6 +70,7 @@ class CheckoutSummaryArticleSelectCollectionView: UICollectionView {
 
     private func reload(andSelect idx: Int) {
         reloadData()
+        guard idx != NSNotFound && idx < numberOfItems(inSection: 0) else { return }
         selectItem(at: IndexPath(row: idx, section: 0), animated: false, scrollPosition: .centeredHorizontally)
     }
 

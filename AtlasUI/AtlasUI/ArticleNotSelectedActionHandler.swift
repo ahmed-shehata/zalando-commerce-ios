@@ -29,9 +29,9 @@ class ArticleNotSelectedActionHandler: CheckoutSummaryActionHandler {
     func updated(selectedArticle: SelectedArticle) {
         guard AtlasAPIClient.shared?.isAuthorized == true else {
             let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, totalPrice: selectedArticle.totalPrice)
-            delegate?.updated(actionHandler: NotLoggedInSummaryActionHandler())
             try? delegate?.updated(dataModel: dataModel)
             delegate?.updated(layout: NotLoggedInLayout())
+            delegate?.updated(actionHandler: NotLoggedInSummaryActionHandler())
             return
         }
 
@@ -42,9 +42,9 @@ class ArticleNotSelectedActionHandler: CheckoutSummaryActionHandler {
                 guard let actionHandler = actionHandlerResult.process(forceFullScreenError: true) else { return }
 
                 let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, cartCheckout: actionHandler.cartCheckout)
-                self?.delegate?.updated(actionHandler: actionHandler)
                 try? self?.delegate?.updated(dataModel: dataModel)
                 self?.delegate?.updated(layout: LoggedInLayout())
+                self?.delegate?.updated(actionHandler: actionHandler)
             }
         }
     }
