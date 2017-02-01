@@ -86,6 +86,17 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
         }
     }
 
+    func updated(selectedArticle: SelectedArticle) {
+        guard let email = actionHandler.emailAddress else { return }
+        clearCurrentState()
+
+        let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle,
+                                                 guestCheckout: guestCheckout,
+                                                 email: email,
+                                                 addresses: addresses)
+        try? delegate?.updated(dataModel: dataModel)
+    }
+
 }
 
 extension GuestCheckoutSummaryActionHandler {
@@ -163,11 +174,15 @@ extension GuestCheckoutSummaryActionHandler {
 
     fileprivate func validateAddressModification(newAddress: EquatableAddress, oldAddress: EquatableAddress?) {
         if let oldAddress = oldAddress, !(newAddress === oldAddress) {
-            paymentURL = nil
-            guestCheckout = nil
-            checkoutId = nil
-            token = nil
+            clearCurrentState()
         }
+    }
+
+    fileprivate func clearCurrentState() {
+        paymentURL = nil
+        guestCheckout = nil
+        checkoutId = nil
+        token = nil
     }
 
     fileprivate func getGuestCheckout(checkoutId: String, token: String) {

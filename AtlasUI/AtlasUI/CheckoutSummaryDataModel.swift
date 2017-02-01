@@ -76,13 +76,13 @@ extension CheckoutSummaryDataModel {
     }
 
     private func checkPriceChange(comparedTo otherDataModel: CheckoutSummaryDataModel) throws {
-        if otherDataModel.totalPrice != totalPrice {
+        if otherDataModel.totalPrice != totalPrice && selectedArticle == otherDataModel.selectedArticle {
             throw AtlasCheckoutError.priceChanged(newPrice: totalPrice)
         }
     }
 
     private func checkPaymentAvailable(comparedTo otherDataModel: CheckoutSummaryDataModel) throws {
-        if otherDataModel.paymentMethod != nil && paymentMethod == nil {
+        if otherDataModel.paymentMethod != nil && paymentMethod == nil && selectedArticle == otherDataModel.selectedArticle {
             throw AtlasCheckoutError.paymentMethodNotAvailable
         }
     }

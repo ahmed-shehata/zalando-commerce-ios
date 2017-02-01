@@ -5,7 +5,7 @@
 import Foundation
 import AtlasSDK
 
-struct ArticleNotSelectedActionHandler: CheckoutSummaryActionHandler {
+class ArticleNotSelectedActionHandler: CheckoutSummaryActionHandler {
 
     weak var dataSource: CheckoutSummaryActionHandlerDataSource?
     weak var delegate: CheckoutSummaryActionHandlerDelegate?
@@ -26,33 +26,27 @@ struct ArticleNotSelectedActionHandler: CheckoutSummaryActionHandler {
         // Show Billing Address screen should have no action if the article is not selected
     }
 
-    fileprivate func presentCheckoutScreen(selectedArticle: SelectedArticle) {
-//        guard AtlasAPIClient.shared?.isAuthorized == true else {
-//            let actionHandler = NotLoggedInSummaryActionHandler()
-//            let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle,
-//                                                     totalPrice: selectedArticle.totalPrice)
-//            let viewModel = CheckoutSummaryViewModel(dataModel: dataModel, layout: NotLoggedInLayout())
-//            return presentCheckoutSummaryViewController(viewModel: viewModel, actionHandler: actionHandler)
-//        }
-//
-//        AtlasUIClient.customer { [weak self] customerResult in
-//            guard let customer = customerResult.process() else { return }
-//
-//            LoggedInSummaryActionHandler.create(customer: customer, selectedArticle: selectedArticle) { actionHandlerResult in
-//                guard let actionHandler = actionHandlerResult.process() else { return }
-//
-//                let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, cartCheckout: actionHandler.cartCheckout)
-//                let viewModel = CheckoutSummaryViewModel(dataModel: dataModel, layout: LoggedInLayout())
-//                self?.presentCheckoutSummaryViewController(viewModel: viewModel, actionHandler: actionHandler)
-//            }
-//        }
-    }
+    func updated(selectedArticle: SelectedArticle) {
+        guard AtlasAPIClient.shared?.isAuthorized == true else {
+            let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, totalPrice: selectedArticle.totalPrice)
+            delegate?.updated(actionHandler: NotLoggedInSummaryActionHandler())
+            try? delegate?.updated(dataModel: dataModel)
+            delegate?.updated(layout: NotLoggedInLayout())
+            return
+        }
 
-    fileprivate func presentCheckoutSummaryViewController(viewModel: CheckoutSummaryViewModel,
-                                                          actionHandler: CheckoutSummaryActionHandler) {
-//        let checkoutSummaryVC = CheckoutSummaryViewController(viewModel: viewModel)
-//        checkoutSummaryVC.actionHandler = actionHandler
-//        navigationController?.pushViewController(checkoutSummaryVC, animated: true)
+        AtlasUIClient.customer { [weak self] customerResult in
+            guard let customer = customerResult.process(forceFullScreenError: true) else { return }
+
+            LoggedInSummaryActionHandler.create(customer: customer, selectedArticle: selectedArticle) { actionHandlerResult in
+                guard let actionHandler = actionHandlerResult.process(forceFullScreenError: true) else { return }
+
+                let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, cartCheckout: actionHandler.cartCheckout)
+                self?.delegate?.updated(actionHandler: actionHandler)
+                try? self?.delegate?.updated(dataModel: dataModel)
+                self?.delegate?.updated(layout: LoggedInLayout())
+            }
+        }
     }
 
 }

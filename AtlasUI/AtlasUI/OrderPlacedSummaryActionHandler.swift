@@ -5,7 +5,7 @@
 import Foundation
 import AtlasSDK
 
-struct OrderPlacedSummaryActionHandler: CheckoutSummaryActionHandler {
+class OrderPlacedSummaryActionHandler: CheckoutSummaryActionHandler {
 
     weak var dataSource: CheckoutSummaryActionHandlerDataSource?
     weak var delegate: CheckoutSummaryActionHandlerDelegate?
@@ -24,6 +24,10 @@ struct OrderPlacedSummaryActionHandler: CheckoutSummaryActionHandler {
 
     func handleBillingAddressSelection() {
         // Show Billing Address screen should have no action in Order placed mode
+    }
+
+    func updated(selectedArticle: SelectedArticle) {
+        // Selected Article should not be updated in Order placed mode
     }
 
 }

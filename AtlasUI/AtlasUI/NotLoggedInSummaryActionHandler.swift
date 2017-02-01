@@ -52,6 +52,11 @@ class NotLoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
         }
     }
 
+    func updated(selectedArticle: SelectedArticle) {
+        let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, totalPrice: selectedArticle.totalPrice)
+        try? delegate?.updated(dataModel: dataModel)
+    }
+
 }
 
 extension NotLoggedInSummaryActionHandler {

@@ -11,6 +11,7 @@ class CheckoutSummaryViewController: UIViewController {
         didSet {
             actionHandler?.dataSource = self
             actionHandler?.delegate = self
+            configureEditArticleDelegate()
         }
     }
 
@@ -24,7 +25,6 @@ class CheckoutSummaryViewController: UIViewController {
         let stackView = CheckoutSummaryRootStackView()
         stackView.axis = .vertical
         stackView.productStackView.editArticleStackView.dataSource = self
-        stackView.productStackView.editArticleStackView.delegate = self
         return stackView
     }()
 
@@ -42,15 +42,17 @@ class CheckoutSummaryViewController: UIViewController {
         super.viewDidLoad()
         buildView()
         setupActions()
-
-        rootStackView.checkoutContainer.displaySizes(selectedArticle: viewModel.dataModel.selectedArticle, animated: false) { result in
-
-        }
+        rootStackView.productStackView.editArticleStackView.displayInitialSizes()
     }
 
-    fileprivate func viewModelDidSet() {
+    private func viewModelDidSet() {
         setupNavigationBar()
         rootStackView.configure(viewModel: viewModel)
+        configureEditArticleDelegate()
+    }
+
+    private func configureEditArticleDelegate() {
+        rootStackView.productStackView.editArticleStackView.delegate = actionHandler
     }
 
 }
@@ -163,22 +165,6 @@ extension CheckoutSummaryViewController: CheckoutSummaryEditProductDataSource {
 
     var selectedArticle: SelectedArticle {
         return viewModel.dataModel.selectedArticle
-    }
-
-}
-
-extension CheckoutSummaryViewController: CheckoutSummaryEditProductDelegate {
-
-    func updated(selectedArticle: SelectedArticle) {
-        viewModel.dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle,
-                                                       shippingAddress: viewModel.dataModel.shippingAddress,
-                                                       billingAddress: viewModel.dataModel.billingAddress,
-                                                       paymentMethod: viewModel.dataModel.paymentMethod,
-                                                       totalPrice: viewModel.dataModel.totalPrice,
-                                                       delivery: viewModel.dataModel.delivery,
-                                                       email: viewModel.dataModel.email,
-                                                       orderNumber: viewModel.dataModel.orderNumber)
-        actionHandler?.selectedArticleChanged()
     }
 
 }

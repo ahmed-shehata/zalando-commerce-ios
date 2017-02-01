@@ -124,6 +124,21 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
         }
     }
 
+    func updated(selectedArticle: SelectedArticle) {
+        let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle,
+                                                 shippingAddress: shippingAddress,
+                                                 billingAddress: billingAddress,
+                                                 totalPrice: selectedArticle.totalPrice)
+        try? delegate?.updated(dataModel: dataModel)
+
+        if hasAddresses {
+            createCartCheckout { [weak self] result in
+                guard let cartCheckout = result.process() else { return }
+                self?.cartCheckout = cartCheckout
+            }
+        }
+    }
+
 }
 
 // MARK: – Address Screen

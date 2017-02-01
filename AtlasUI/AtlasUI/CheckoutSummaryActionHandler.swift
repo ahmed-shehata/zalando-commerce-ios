@@ -20,12 +20,11 @@ protocol CheckoutSummaryActionHandlerDelegate: class {
 
 }
 
-protocol CheckoutSummaryActionHandler {
+protocol CheckoutSummaryActionHandler: CheckoutSummaryEditProductDelegate {
 
     weak var dataSource: CheckoutSummaryActionHandlerDataSource? { get set }
     weak var delegate: CheckoutSummaryActionHandlerDelegate? { get set }
 
-    func selectedArticleChanged()
     func handleSubmit()
     func handlePaymentSelection()
     func handleShippingAddressSelection()
@@ -35,7 +34,6 @@ protocol CheckoutSummaryActionHandler {
 
 extension CheckoutSummaryActionHandler {
 
-    func selectedArticleChanged() { } //TODO: MUST BE REMOVED AND HANDLED
     var shippingAddress: EquatableAddress? {
         return dataSource?.dataModel.shippingAddress as? EquatableAddress
     }

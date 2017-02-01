@@ -44,22 +44,43 @@ class CheckoutSummaryEditProductStackView: UIStackView {
     weak var dataSource: CheckoutSummaryEditProductDataSource?
     weak var delegate: CheckoutSummaryEditProductDelegate?
 
+    func displayInitialSizes() {
+        guard let selectedArticle = dataSource?.selectedArticle else { return }
+        dataSource?.checkoutContainer.displaySizes(selectedArticle: selectedArticle, animated: false) { [weak self] idx in
+            self?.sizeSelected(at: idx, for: selectedArticle)
+        }
+    }
+
     dynamic fileprivate func sizeButtonTapped() {
         guard let selectedArticle = dataSource?.selectedArticle else { return }
         dataSource?.checkoutContainer.displaySizes(selectedArticle: selectedArticle, animated: true) { [weak self] idx in
-            guard self?.dataSource?.checkoutContainer.collectionView.type == .size else { return }
-            let updatedArticle = SelectedArticle(article: selectedArticle.article, unitIndex: idx, quantity: selectedArticle.quantity)
-            self?.delegate?.updated(selectedArticle: updatedArticle)
+            self?.sizeSelected(at: idx, for: selectedArticle)
         }
     }
 
     dynamic fileprivate func quantityButtonTapped() {
         guard let selectedArticle = dataSource?.selectedArticle else { return }
         dataSource?.checkoutContainer.displayQuantites(selectedArticle: selectedArticle, animated: true) { [weak self] idx in
-            guard self?.dataSource?.checkoutContainer.collectionView.type == .quantity else { return }
-            let updatedArticle = SelectedArticle(article: selectedArticle.article, unitIndex: selectedArticle.unitIndex, quantity: idx + 1)
-            self?.delegate?.updated(selectedArticle: updatedArticle)
+            self?.quantitySelected(at: idx, for: selectedArticle)
         }
+    }
+
+    private func sizeSelected(at idx: Int, for selectedArticle: SelectedArticle) {
+        let updatedArticle = SelectedArticle(article: selectedArticle.article, unitIndex: idx, quantity: selectedArticle.quantity)
+
+        guard let currentSelectedArticle = dataSource?.selectedArticle,
+            dataSource?.checkoutContainer.collectionView.type == .size, updatedArticle != currentSelectedArticle else { return }
+
+        delegate?.updated(selectedArticle: updatedArticle)
+    }
+
+    private func quantitySelected(at idx: Int, for selectedArticle: SelectedArticle) {
+        let updatedArticle = SelectedArticle(article: selectedArticle.article, unitIndex: selectedArticle.unitIndex, quantity: idx + 1)
+
+        guard let currentSelectedArticle = dataSource?.selectedArticle,
+            dataSource?.checkoutContainer.collectionView.type == .quantity, updatedArticle != currentSelectedArticle else { return }
+
+        delegate?.updated(selectedArticle: updatedArticle)
     }
 
 }
