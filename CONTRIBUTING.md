@@ -25,9 +25,10 @@ theirs approval (:+1:)
 
 ## External libraries
 
-Main frameworks (_AtlasSDK_ and _AtlasUI_) have strict rule to **do not depend on any external library**.
-In exceptional cases it could be lifted, but still you should consider taking source code from the external
-framework instead (and the best – not whole, just needed part).
+Main frameworks (_AtlasSDK_ and _AtlasUI_) have strict rule to **do not depend
+on any external library**.  In exceptional cases it could be lifted, but still
+you should first consider taking source code from the external framework
+instead (and the best – not whole, but just needed part).
 
 Rationale behind is:
 
@@ -40,6 +41,8 @@ Rationale behind is:
    it loose a maintainer
 1. Updating unmaintained the whole external library (eg. for new Swift version)
    on your own could be time consuming
+1. And in general, not only on framework level: the less dependencies, the higher
+   reuse factor.
 
 
 They're totally allowed in satellite projects (_AtlasMockAPI_ or _AtlasDemo_), however the less we have them,
