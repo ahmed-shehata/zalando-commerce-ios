@@ -13,6 +13,7 @@ struct Keychain {
 
     @discardableResult
     static func delete(key: String) -> Bool {
+        let status: OSStatus
         defer {
             if status != errSecSuccess {
                 AtlasLogger.logError("Error deleting in Keychain:", status.description)
@@ -20,7 +21,7 @@ struct Keychain {
         }
 
         let query = prepareItemQuery(forAccount: key)
-        let status = SecItemDelete(query as CFDictionary)
+        status = SecItemDelete(query as CFDictionary)
         return status == errSecSuccess
     }
 
