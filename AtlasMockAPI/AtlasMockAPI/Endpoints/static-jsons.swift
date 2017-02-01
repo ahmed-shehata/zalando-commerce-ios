@@ -15,15 +15,15 @@ extension HttpServer {
         for filePath in jsonFiles {
             let fullFilePath = URL(fileURLWithPath: filePath).lastPathComponent
                 .replacingOccurrences(of: jsonExt, with: "")
-                .replace(old: "|", "/")
+                .replacingOccurrences(of: "|", with: "/")
             guard !fullFilePath.contains("!") else { continue }
 
-            let contents = try String(contentsOfFile: filePath)
-            let method = fullFilePath.components(separatedBy: "*")[0]
-            let urlPath = fullFilePath.components(separatedBy: "*")[1]
+            let pathComponents = fullFilePath.components(separatedBy: "*")
+            let (method, urlPath) = (pathComponents[0], pathComponents[1])
 
             print("Registered endpoint:", method, urlPath)
 
+            let contents = try String(contentsOfFile: filePath)
             switch method {
             case "POST":
                 self.POST[urlPath] = { _ in
