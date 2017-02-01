@@ -42,13 +42,15 @@ class CheckoutContainerView: UIView {
         button.isUserInteractionEnabled = true
         button.backgroundColor = UIColor(white: 0, alpha: 0.5)
         button.isHidden = true
+        button.alpha = 0
         return button
     }()
 
     let collectionViewContainerHeight: CGFloat = 50
-    let collectionViewContainerView: UIView = {
+    lazy var collectionViewContainerView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
+        view.transform = CGAffineTransform(translationX: 0, y: -self.collectionViewContainerHeight)
         return view
     }()
 
@@ -59,6 +61,7 @@ class CheckoutContainerView: UIView {
     }()
 
     func displaySizes(selectedArticle: SelectedArticle, animated: Bool, completion: @escaping CheckoutSummaryArticleRefineCompletion) {
+        guard !selectedArticle.article.hasSingleUnit else { return }
         configureCollectionView(selectedArticle: selectedArticle, for: .size, animated: animated, completion: completion)
     }
 
