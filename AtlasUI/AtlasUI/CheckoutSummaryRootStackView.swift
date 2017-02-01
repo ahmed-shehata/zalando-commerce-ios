@@ -40,7 +40,7 @@ extension CheckoutSummaryRootStackView: UIDataBuilder {
     typealias T = CheckoutSummaryViewModel
 
     func configure(viewModel: T) {
-        productStackView.configure(viewModel: viewModel.dataModel.selectedArticle)
+        productStackView.configure(viewModel: viewModel)
         checkoutContainer.configure(viewModel: viewModel)
     }
 

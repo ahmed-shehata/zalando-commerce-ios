@@ -20,9 +20,11 @@ class CheckoutSummaryViewController: UIViewController {
         }
     }
 
-    fileprivate let rootStackView: CheckoutSummaryRootStackView = {
+    fileprivate lazy var rootStackView: CheckoutSummaryRootStackView = {
         let stackView = CheckoutSummaryRootStackView()
         stackView.axis = .vertical
+        stackView.productStackView.editArticleStackView.dataSource = self
+        stackView.productStackView.editArticleStackView.delegate = self
         return stackView
     }()
 
@@ -40,8 +42,7 @@ class CheckoutSummaryViewController: UIViewController {
         super.viewDidLoad()
         buildView()
         setupActions()
-        rootStackView.productStackView.editArticleStackView.dataSource = self
-        rootStackView.productStackView.editArticleStackView.delegate = self
+
         rootStackView.checkoutContainer.displaySizes(selectedArticle: viewModel.dataModel.selectedArticle, animated: false) { result in
 
         }
@@ -57,8 +58,8 @@ class CheckoutSummaryViewController: UIViewController {
 extension CheckoutSummaryViewController: UIBuilder {
 
     func configureView() {
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationController?.navigationBar.accessibilityIdentifier = "checkout-summary-navigation-bar"
+        navigationController?.navigationBar.isTranslucent = false
 
         view.backgroundColor = .white
         view.addSubview(rootStackView)
@@ -88,8 +89,6 @@ extension CheckoutSummaryViewController {
 
     fileprivate func setupNavigationBar() {
         title = Localizer.format(string: viewModel.layout.navigationBarTitleLocalizedKey)
-
-        navigationItem.setHidesBackButton(viewModel.layout.hideBackButton, animated: false)
 
         if viewModel.layout.showCancelButton {
             showCancelButton()

@@ -42,7 +42,6 @@ class CheckoutContainerView: UIView {
         button.isUserInteractionEnabled = true
         button.backgroundColor = UIColor(white: 0, alpha: 0.5)
         button.isHidden = true
-        button.addTarget(self, action: #selector(overlayButtonTapped), for: .touchUpInside)
         return button
     }()
 
@@ -87,7 +86,7 @@ class CheckoutContainerView: UIView {
         }
     }
 
-    dynamic private func overlayButtonTapped() {
+    dynamic fileprivate func overlayButtonTapped() {
         hideOverlay(animated: true)
     }
 
@@ -161,6 +160,11 @@ extension CheckoutContainerView: UIDataBuilder {
     func configure(viewModel: T) {
         mainStackView.configure(viewModel: viewModel)
         footerStackView.configure(viewModel: viewModel)
+
+        overlayButton.removeTarget(self, action: nil, for: .touchUpInside)
+        if viewModel.layout.allowArticleRefine {
+            overlayButton.addTarget(self, action: #selector(overlayButtonTapped), for: .touchUpInside)
+        }
     }
 
 }

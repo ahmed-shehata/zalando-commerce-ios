@@ -140,6 +140,7 @@
 		E97B1BE91E2E704800FC0195 /* AddressCheckStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B1BE81E2E704800FC0195 /* AddressCheckStackView.swift */; };
 		E98453581DF59FCF001F6C51 /* GuestCheckoutCreateAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A5CF928227B72DDBAB9949CA5ED28B /* GuestCheckoutCreateAddressActionHandler.swift */; };
 		E9A115391E2FAA8C001DC643 /* AddressCheckRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A115381E2FAA8C001DC643 /* AddressCheckRowView.swift */; };
+		E9C74F4C1E421FAB00334658 /* ArticleNotSelectedActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C74F4B1E421FAB00334658 /* ArticleNotSelectedActionHandler.swift */; };
 		E9D273D41E313D47002F0007 /* AddressCheckRowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D273D31E313D47002F0007 /* AddressCheckRowButton.swift */; };
 		E9ECD6431E38BBB100305B87 /* GetArticleDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECD6421E38BBB100305B87 /* GetArticleDetailsViewController.swift */; };
 		EBB0CE9B6F72CCBC101BCFD52F5E5993 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD2C09882EF82C93CC8615C9E0F59251 /* Default-568h@2x.png */; };
@@ -322,6 +323,7 @@
 		E97B1BE51E2E6DDD00FC0195 /* AddressCheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckViewController.swift; sourceTree = "<group>"; };
 		E97B1BE81E2E704800FC0195 /* AddressCheckStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckStackView.swift; sourceTree = "<group>"; };
 		E9A115381E2FAA8C001DC643 /* AddressCheckRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckRowView.swift; sourceTree = "<group>"; };
+		E9C74F4B1E421FAB00334658 /* ArticleNotSelectedActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleNotSelectedActionHandler.swift; sourceTree = "<group>"; };
 		E9D273D31E313D47002F0007 /* AddressCheckRowButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckRowButton.swift; sourceTree = "<group>"; };
 		E9ECD6421E38BBB100305B87 /* GetArticleDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetArticleDetailsViewController.swift; sourceTree = "<group>"; };
 		EAB966A42D2CA88D9E7F3931C371C95B /* URLRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestTests.swift; sourceTree = "<group>"; };
@@ -649,10 +651,11 @@
 			isa = PBXGroup;
 			children = (
 				AF07350B5BD61F52DB61E240874FCAF4 /* CheckoutSummaryActionHandler.swift */,
+				E9C74F4B1E421FAB00334658 /* ArticleNotSelectedActionHandler.swift */,
 				42DF36B19420B6047EC88680B80664F3 /* NotLoggedInSummaryActionHandler.swift */,
-				D7F0F933BB830864598A694065D1EA6B /* GuestCheckoutSummaryActionHandler.swift */,
 				A44E17ADA3E78EC29CF5C4871F8DBAEB /* LoggedInSummaryActionHandler.swift */,
 				88A2B5616332981750095E9414ED54F9 /* OrderPlacedSummaryActionHandler.swift */,
+				D7F0F933BB830864598A694065D1EA6B /* GuestCheckoutSummaryActionHandler.swift */,
 				BB11FA4FF95CCD5FF47F27EBD5F2DF20 /* GuestAddressActionHandler.swift */,
 			);
 			name = "Action Handler";
@@ -1035,6 +1038,7 @@
 				BDB4FD80F01C1540EC298D66AFF139A0 /* AddressFormDataModel.swift in Sources */,
 				F2DCEEB8BF2B1B7455C4C848172A7827 /* OAuth2LoginViewController.swift in Sources */,
 				34160EED7155A39B7F8EBDE762263F17 /* PaymentSelectionViewController.swift in Sources */,
+				E9C74F4C1E421FAB00334658 /* ArticleNotSelectedActionHandler.swift in Sources */,
 				54F18A56CF79CF25599259CA5EB5D394 /* PickerKeyboardInputView.swift in Sources */,
 				924051DE99309804FFDA4F5E66FE4D65 /* RoundedViews.swift in Sources */,
 				864F340AF805B09712DAB1A854B45608 /* LoggedInUpdateAddressActionHandler.swift in Sources */,

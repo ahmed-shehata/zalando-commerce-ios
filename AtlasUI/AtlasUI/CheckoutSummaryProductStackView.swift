@@ -56,10 +56,10 @@ extension CheckoutSummaryProductStackView: UIBuilder {
 
 extension CheckoutSummaryProductStackView: UIDataBuilder {
 
-    typealias T = SelectedArticle
+    typealias T = CheckoutSummaryViewModel
 
     func configure(viewModel: T) {
-        productInfoStackView.configure(viewModel: viewModel)
+        productInfoStackView.configure(viewModel: viewModel.dataModel.selectedArticle)
         editArticleStackView.configure(viewModel: viewModel)
     }
 

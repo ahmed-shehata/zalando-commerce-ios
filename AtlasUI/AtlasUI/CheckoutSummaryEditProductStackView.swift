@@ -24,7 +24,6 @@ class CheckoutSummaryEditProductStackView: UIStackView {
         let button = UIButton(type: .custom)
         button.setTitleColor(UIColor(hex: 0x848484), for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 10, weight: UIFontWeightLight)
-        button.addTarget(self, action: #selector(sizeButtonTapped), for: .touchUpInside)
         return button
     }()
 
@@ -39,14 +38,13 @@ class CheckoutSummaryEditProductStackView: UIStackView {
         let button = UIButton(type: .custom)
         button.setTitleColor(UIColor(hex: 0x848484), for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 10, weight: UIFontWeightLight)
-        button.addTarget(self, action: #selector(quantityButtonTapped), for: .touchUpInside)
         return button
     }()
 
     weak var dataSource: CheckoutSummaryEditProductDataSource?
     weak var delegate: CheckoutSummaryEditProductDelegate?
 
-    dynamic private func sizeButtonTapped() {
+    dynamic fileprivate func sizeButtonTapped() {
         guard let selectedArticle = dataSource?.selectedArticle else { return }
         dataSource?.checkoutContainer.displaySizes(selectedArticle: selectedArticle, animated: true) { [weak self] idx in
             guard self?.dataSource?.checkoutContainer.collectionView.type == .size else { return }
@@ -55,7 +53,7 @@ class CheckoutSummaryEditProductStackView: UIStackView {
         }
     }
 
-    dynamic private func quantityButtonTapped() {
+    dynamic fileprivate func quantityButtonTapped() {
         guard let selectedArticle = dataSource?.selectedArticle else { return }
         dataSource?.checkoutContainer.displayQuantites(selectedArticle: selectedArticle, animated: true) { [weak self] idx in
             guard self?.dataSource?.checkoutContainer.collectionView.type == .quantity else { return }
@@ -83,13 +81,20 @@ extension CheckoutSummaryEditProductStackView: UIBuilder {
 
 extension CheckoutSummaryEditProductStackView: UIDataBuilder {
 
-    typealias T = SelectedArticle
+    typealias T = CheckoutSummaryViewModel
 
     func configure(viewModel: T) {
         let sizeLabel = Localizer.format(string: "summaryView.button.size")
         let quantityLabel = Localizer.format(string: "summaryView.button.quantity")
-        sizeButton.setTitle("\(sizeLabel): \(viewModel.unit.size)", for: .normal)
-        quantityButton.setTitle("\(quantityLabel): \(viewModel.quantity)", for: .normal)
+        sizeButton.setTitle("\(sizeLabel): \(viewModel.dataModel.selectedArticle.unit.size)", for: .normal)
+        quantityButton.setTitle("\(quantityLabel): \(viewModel.dataModel.selectedArticle.quantity)", for: .normal)
+
+        sizeButton.removeTarget(self, action: nil, for: .touchUpInside)
+        quantityButton.removeTarget(self, action: nil, for: .touchUpInside)
+        if viewModel.layout.allowArticleRefine {
+            sizeButton.addTarget(self, action: #selector(sizeButtonTapped), for: .touchUpInside)
+            quantityButton.addTarget(self, action: #selector(quantityButtonTapped), for: .touchUpInside)
+        }
     }
 
 }

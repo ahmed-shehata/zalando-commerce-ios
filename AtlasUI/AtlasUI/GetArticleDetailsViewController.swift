@@ -27,13 +27,18 @@ class GetArticleDetailsViewController: UIViewController {
     private func getArticle() {
         AtlasUIClient.article(withSKU: self.sku) { [weak self] result in
             guard let article = result.process(forceFullScreenError: true) else { return }
-            self?.showArticleSelectionView(article: article)
+            self?.showSummaryView(article: article)
         }
     }
 
-    private func showArticleSelectionView(article: Article) {
-        let articleSelectionViewController = ArticleSelectionViewController(article: article)
-        AtlasUIViewController.shared?.mainNavigationController.viewControllers = [articleSelectionViewController]
+    private func showSummaryView(article: Article) {
+        let initialSelectedArticle = SelectedArticle(article: article, unitIndex: 0, quantity: 1) // TODO: Use NSNotFound
+        let dataModel = CheckoutSummaryDataModel(selectedArticle: initialSelectedArticle,
+                                                 totalPrice: initialSelectedArticle.totalPrice)
+        let viewModel = CheckoutSummaryViewModel(dataModel: dataModel, layout: ArticleNotSelectedLayout())
+        let checkoutSummaryViewController = CheckoutSummaryViewController(viewModel: viewModel)
+        checkoutSummaryViewController.actionHandler = ArticleNotSelectedActionHandler() // TODO: Support One size
+        navigationController?.viewControllers = [checkoutSummaryViewController]
     }
 
 }
