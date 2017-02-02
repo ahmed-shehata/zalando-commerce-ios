@@ -176,12 +176,14 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
         AtlasAPIClient.shared?.authorize(withToken: "TestTokenWithoutAddresses")
         actionHandler?.handleShippingAddressSelection()
         expect(UIApplication.topViewController() as? UIAlertController).toNotEventually(beNil())
+        UIApplication.topViewController()?.dismiss(animated: true, completion: nil)
     }
 
     func testBillingAddressWithNoAddresses() {
         AtlasAPIClient.shared?.authorize(withToken: "TestTokenWithoutAddresses")
         actionHandler?.handleBillingAddressSelection()
         expect(UIApplication.topViewController() as? UIAlertController).toNotEventually(beNil())
+        UIApplication.topViewController()?.dismiss(animated: true, completion: nil)
     }
 
 }

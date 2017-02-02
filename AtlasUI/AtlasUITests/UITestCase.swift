@@ -46,6 +46,7 @@ class UITestCase: XCTestCase {
     override func setUp() {
         super.setUp()
         registerAtlasUIViewController(forSKU: sku)
+        waitForArticleFetch()
     }
 
     func registerAtlasUIViewController(forSKU: String) {
@@ -56,6 +57,15 @@ class UITestCase: XCTestCase {
         try! AtlasUI.shared().register { atlasUIViewController }
         _ = atlasUIViewController.view // load the view
         self.atlasUIViewController = atlasUIViewController
+    }
+
+    private func waitForArticleFetch() {
+        expect(self.atlasUIViewController?.mainNavigationController.viewControllers.last as? CheckoutSummaryViewController).toEventuallyNot(beNil())
+        guard let checkoutSummary = self.atlasUIViewController?.mainNavigationController.viewControllers.last as? CheckoutSummaryViewController else { return fail() }
+        if checkoutSummary.checkoutContainer.collectionView.numberOfItems(inSection: 0) > 0 {
+            checkoutSummary.checkoutContainer.collectionView.collectionView(checkoutSummary.checkoutContainer.collectionView, didSelectItemAt: IndexPath(row: 0, section: 0))
+            expect(checkoutSummary.checkoutContainer.overlayButton.isHidden).toEventually(beTrue())
+        }
     }
 
     var errorDisplayed: Bool {

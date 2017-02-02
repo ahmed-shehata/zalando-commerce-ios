@@ -92,6 +92,8 @@ extension CheckoutSummaryArticleSelectCollectionView: UICollectionViewDataSource
 
         selectCell.buildView()
         selectCell.configure(selectedArticle: selectedArticle, type: type, idx: indexPath.row)
+        selectCell.accessibilityIdentifier = "size-cell-\(indexPath.row)"
+        selectCell.accessibilityLabel = "size-cell-\(selectedArticle.article.availableUnits[indexPath.row].size)"
         return selectCell
     }
 
