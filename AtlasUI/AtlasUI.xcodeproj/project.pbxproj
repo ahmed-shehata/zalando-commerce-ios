@@ -72,7 +72,6 @@
 		8583B7276C6213867615703BA95BC77D /* CheckoutSummaryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24289A7D3F980C05C4FEF5B9AB500494 /* CheckoutSummaryDataModel.swift */; };
 		864F340AF805B09712DAB1A854B45608 /* LoggedInUpdateAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8575CDD854A7749A3B2E199B53264213 /* LoggedInUpdateAddressActionHandler.swift */; };
 		869B7706B6456BBC7CF641AF7A8E4356 /* BannerErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A01B45B1F4C0D9775396AA422A78BA /* BannerErrorViewController.swift */; };
-		86C41143C6D9EAA6BA2C78007F6B0004 /* SizeListSelectionViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87223EDAD5E7184D20A621B18B1B7D26 /* SizeListSelectionViewControllerTests.swift */; };
 		8727564CF779CED50226DE7D89CA6A21 /* TestsHostAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A329851A2FF23DF93E27B7D1E450D524 /* TestsHostAppDelegate.swift */; };
 		877D4CE660F5CFF550D4032BE46FCCCB /* EditAddressTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99D46B90DFE9FF45F43D027C5350016 /* EditAddressTypeTests.swift */; };
 		88478220BBA03482BF22A820F82ED63B /* CheckoutSummaryOrderStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399DFA4B1292136BEE7E6DBC3BB30B1B /* CheckoutSummaryOrderStackView.swift */; };
@@ -261,7 +260,6 @@
 		842E43B5DEB9E0807F43553F358C687F /* CheckoutSummaryDeliveryStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryDeliveryStackView.swift; sourceTree = "<group>"; };
 		8575CDD854A7749A3B2E199B53264213 /* LoggedInUpdateAddressActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedInUpdateAddressActionHandler.swift; sourceTree = "<group>"; };
 		8636881F338407137FEFA7123766D711 /* BillingAddressViewModelCreationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingAddressViewModelCreationStrategy.swift; sourceTree = "<group>"; };
-		87223EDAD5E7184D20A621B18B1B7D26 /* SizeListSelectionViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeListSelectionViewControllerTests.swift; sourceTree = "<group>"; };
 		87E590A91E14F2FED72589813043BEFD /* CheckoutSummaryPaymentStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryPaymentStackView.swift; sourceTree = "<group>"; };
 		88A2B5616332981750095E9414ED54F9 /* OrderPlacedSummaryActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderPlacedSummaryActionHandler.swift; sourceTree = "<group>"; };
 		8E587FF53F450FE59AA0F49C7397417F /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -609,7 +607,6 @@
 				E272DADD96290ADDD55009F293229EAD /* FormValidatorTests.swift */,
 				9ECEC417D171DD90570F6EBB09161BBE /* InjectorTests.swift */,
 				CB1ECB5B17D15F82BF8604EBB3700CA3 /* LocalizationTests.swift */,
-				87223EDAD5E7184D20A621B18B1B7D26 /* SizeListSelectionViewControllerTests.swift */,
 				51B1CD594BE0AFFDF8587372BC49280A /* PaymentViewControllerTests.swift */,
 				83316EC4886ACF067F2DE376AB807478 /* URLAuthorizationTests.swift */,
 				C71205ADF1C3C36753FA064DFB54EC03 /* LoggedInSummaryActionHandlerTests.swift */,
@@ -954,7 +951,6 @@
 				F7134FE121256D750D7DCDB3C6494EF0 /* URLAuthorizationTests.swift in Sources */,
 				098CF939ED1E96935799A52EE6A5A6B3 /* LoggedInSummaryActionHandlerTests.swift in Sources */,
 				C233CC7F6C4F9387883F1F4ACA455596 /* LocalizationTests.swift in Sources */,
-				86C41143C6D9EAA6BA2C78007F6B0004 /* SizeListSelectionViewControllerTests.swift in Sources */,
 				AE5A1B075E577CFC4E36131CA66454F6 /* GuestSummaryActionHandlerTests.swift in Sources */,
 				058BE78B26BE81F95C877C63E15D4D84 /* URLRequestTests.swift in Sources */,
 			);

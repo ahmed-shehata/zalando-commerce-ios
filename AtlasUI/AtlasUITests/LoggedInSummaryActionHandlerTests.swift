@@ -12,6 +12,7 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
 
     var mockedDataSourceDelegate: CheckoutSummaryActionHandlerDataSourceDelegateMock?
     var actionHandler: LoggedInSummaryActionHandler?
+    var article: Article?
 
     override func setUp() {
         super.setUp()
@@ -194,6 +195,7 @@ extension LoggedInSummaryActionHandlerTests {
                 guard let customer = result.process() else { return fail() }
                 AtlasUIClient.article(withSKU: self.sku) { result in
                     guard let article = result.process() else { return fail() }
+                    self.article = article
                     let selectedArticle = SelectedArticle(article: article, unitIndex: 0, quantity: 1)
                     LoggedInSummaryActionHandler.create(customer: customer, selectedArticle: selectedArticle) { result in
                         guard let actionHandler = result.process() else { return fail() }
@@ -211,9 +213,10 @@ extension LoggedInSummaryActionHandlerTests {
     }
 
     fileprivate func createCartCheckout() -> CartCheckout? {
+        guard let article = article else { return nil }
         var cartCheckout: CartCheckout?
         waitUntil(timeout: 10) { done in
-            AtlasUIClient.createCheckoutCart(forSKU: self.sku) { result in
+            AtlasUIClient.createCheckoutCart(forSelectedArticle: SelectedArticle(article: article, unitIndex: 0, quantity: 1)) { result in
                 guard let checkoutCart = result.process() else { return fail() }
                 cartCheckout = (cart: checkoutCart.cart, checkout: checkoutCart.checkout)
                 done()
