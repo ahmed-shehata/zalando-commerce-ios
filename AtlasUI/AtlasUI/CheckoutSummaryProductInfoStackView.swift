@@ -89,7 +89,11 @@ extension CheckoutSummaryProductInfoStackView: UIDataBuilder {
         brandNameLabel.text = viewModel.article.brand.name
         articleNameLabel.text = viewModel.article.name
         unitColorLabel.text = viewModel.article.color
-        unitPriceLabel.text = Localizer.format(price: viewModel.unit.price)
+        if let price = viewModel.unit?.price {
+            unitPriceLabel.text = Localizer.format(price: price)
+        } else {
+            unitPriceLabel.text = ""
+        }
     }
 
 }

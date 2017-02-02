@@ -17,30 +17,38 @@ public struct SelectedArticle {
     }
 
     public var sku: String {
-        guard unitIndex != NSNotFound else { return "" }
-        return unit.id
+        return unit?.id ?? ""
     }
 
-    public var unit: Article.Unit {
-        guard unitIndex != NSNotFound else { return article.availableUnits[0] }
+    public var unit: Article.Unit? {
+        guard !notSelected, unitIndex < article.availableUnits.count else { return nil }
         return article.availableUnits[unitIndex]
     }
 
     public var price: Money {
-        guard unitIndex != NSNotFound else { return Money(amount: 0, currency: unit.price.currency) }
-        return unit.price
+        return unit?.price ?? Money(amount: 0, currency: currency)
     }
 
     public var priceAmount: MoneyAmount {
-        guard unitIndex != NSNotFound else { return 0 }
-        return unit.price.amount
+        return unit?.price.amount ?? 0
     }
 
     public var totalPrice: Money {
-        guard unitIndex != NSNotFound else { return Money(amount: 0, currency: unit.price.currency) }
-        return Money(amount: unit.price.amount * Decimal(quantity), currency: unit.price.currency)
+        return Money(amount: priceAmount * quantity, currency: currency)
     }
 
+    public var currency: String {
+        return unit?.price.currency ?? article.availableUnits[0].price.currency
+    }
+
+    public var notSelected: Bool {
+        return unitIndex == NSNotFound
+    }
+
+}
+
+public func * (lhs: Decimal, rhs: Int) -> Decimal {
+    return lhs * Decimal(rhs)
 }
 
 public func == (lhs: SelectedArticle, rhs: SelectedArticle) -> Bool {

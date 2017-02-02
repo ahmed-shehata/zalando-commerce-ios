@@ -201,7 +201,7 @@ extension LoggedInSummaryActionHandlerTests {
                     let selectedArticle = SelectedArticle(article: article, unitIndex: 0, quantity: 1)
                     LoggedInSummaryActionHandler.create(customer: customer, selectedArticle: selectedArticle) { result in
                         guard let actionHandler = result.process() else { return fail() }
-                        let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, totalPrice: selectedArticle.unit.price)
+                        let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, totalPrice: selectedArticle.price)
                         let viewModel = CheckoutSummaryViewModel(dataModel: dataModel, layout: LoggedInLayout())
                         self.mockedDataSourceDelegate = CheckoutSummaryActionHandlerDataSourceDelegateMock(viewModel: viewModel)
                         self.mockedDataSourceDelegate?.actionHandler = actionHandler

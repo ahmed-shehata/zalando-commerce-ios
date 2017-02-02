@@ -134,6 +134,7 @@
 		E91FBC661E40CE2B00057992 /* CheckoutSummaryArticleSelectCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91FBC651E40CE2B00057992 /* CheckoutSummaryArticleSelectCollectionView.swift */; };
 		E91FBC681E40CF0300057992 /* CheckoutSummaryArticleSelectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91FBC671E40CF0300057992 /* CheckoutSummaryArticleSelectCollectionViewCell.swift */; };
 		E937CBC61E36795900D86846 /* AddressCheckViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E937CBC51E36795900D86846 /* AddressCheckViewControllerTests.swift */; };
+		E979A6F01E43A2520052AFDC /* NSAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E979A6EF1E43A2520052AFDC /* NSAttributedString.swift */; };
 		E97A33A7BE2D26CDE9B4C62EB5BD2661 /* CheckoutSummaryAddressStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9494F7947C24BD2087FE22EBE20BFCD /* CheckoutSummaryAddressStackView.swift */; };
 		E97B1BE61E2E6DDD00FC0195 /* AddressCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B1BE51E2E6DDD00FC0195 /* AddressCheckViewController.swift */; };
 		E97B1BE91E2E704800FC0195 /* AddressCheckStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B1BE81E2E704800FC0195 /* AddressCheckStackView.swift */; };
@@ -318,6 +319,7 @@
 		E91FBC651E40CE2B00057992 /* CheckoutSummaryArticleSelectCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryArticleSelectCollectionView.swift; sourceTree = "<group>"; };
 		E91FBC671E40CF0300057992 /* CheckoutSummaryArticleSelectCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryArticleSelectCollectionViewCell.swift; sourceTree = "<group>"; };
 		E937CBC51E36795900D86846 /* AddressCheckViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckViewControllerTests.swift; sourceTree = "<group>"; };
+		E979A6EF1E43A2520052AFDC /* NSAttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSAttributedString.swift; sourceTree = "<group>"; };
 		E97B1BE51E2E6DDD00FC0195 /* AddressCheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckViewController.swift; sourceTree = "<group>"; };
 		E97B1BE81E2E704800FC0195 /* AddressCheckStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckStackView.swift; sourceTree = "<group>"; };
 		E9A115381E2FAA8C001DC643 /* AddressCheckRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckRowView.swift; sourceTree = "<group>"; };
@@ -462,35 +464,36 @@
 		4C97964529F3E380DC0D91E7093919D9 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				8186B2A11E2F4F9F005B1A68 /* UIDevice.swift */,
 				32BBDA408EFAB221DD44CB3DCD7DDE53 /* Generic Views */,
-				971465BF293DCFB809C2B0F1512B4CE3 /* Async.swift */,
-				4EED7D8EF8D5EB7448D7EF047681628A /* AtlasReachability.swift */,
 				B35DF21D6C80C8890DF784B76CEAEA63 /* AnimationDuration.swift */,
-				4EDCE5D7080248D2C8410C3760876C9A /* AtlasResult.swift */,
+				971465BF293DCFB809C2B0F1512B4CE3 /* Async.swift */,
 				5A58904741B812272DD3C84E76C47A5D /* AtlasAPIResult.swift */,
+				4EED7D8EF8D5EB7448D7EF047681628A /* AtlasReachability.swift */,
+				4EDCE5D7080248D2C8410C3760876C9A /* AtlasResult.swift */,
+				676B41DF9EC48A113436B2F194DB7AFE /* AtlasUIClient.swift */,
+				D4F1679B8BB8A951B60D19AD947CD5BA /* CGRect.swift */,
+				079F5EB0A67A527798FFCC6CF49C699F /* CNPostalAddress.swift */,
 				EFCBCCBB4FB49BE6429AD9E29F595747 /* FormattableAddress.swift */,
-				77FEB9F822022119C7EEC519A0FBC70F /* URL-QueryItem.swift */,
+				82D2ADD240889020E56AC601593CC418 /* FormValidator.swift */,
+				B5494239851A207094AA7E1F76EFB842 /* Injector.swift */,
+				A57EEEDE1D66FC2ED33D1A99DC35A792 /* Localizer.swift */,
+				E979A6EF1E43A2520052AFDC /* NSAttributedString.swift */,
+				1D979FCCB7C4E538EBB7521909C35D17 /* Reachability.swift */,
 				4475607CB5E8B6F4DD5F143C36C4B5AA /* StreetAddress.swift */,
 				0B6F508180606FB22E1A4FCC91997E48 /* String.swift */,
-				676B41DF9EC48A113436B2F194DB7AFE /* AtlasUIClient.swift */,
-				079F5EB0A67A527798FFCC6CF49C699F /* CNPostalAddress.swift */,
-				D4F1679B8BB8A951B60D19AD947CD5BA /* CGRect.swift */,
-				82D2ADD240889020E56AC601593CC418 /* FormValidator.swift */,
-				A57EEEDE1D66FC2ED33D1A99DC35A792 /* Localizer.swift */,
-				1D979FCCB7C4E538EBB7521909C35D17 /* Reachability.swift */,
+				77FEB9F822022119C7EEC519A0FBC70F /* URL-QueryItem.swift */,
+				F0E9D2C0604CA6A42DFECF4E657E34F3 /* URLRequest.swift */,
+				764CDA794B49DC585B031C7C4F5776D5 /* UserMessage.swift */,
 				FCE97CB84083DD00DA5045AB38EA0038 /* UIApplication.swift */,
 				640810DC34806DF7B0FBAEA4DB0123CD /* UIBuilder.swift */,
-				1ADD469E887E515E90E83A58BD2B418A /* UIScreen.swift */,
-				770C7E3629382BA8B0B01FB29599C2CC /* UIViewController.swift */,
 				27ADC182F5F2F24D9AF740830B9B50A9 /* UIColor.swift */,
+				8186B2A11E2F4F9F005B1A68 /* UIDevice.swift */,
 				417B9ADA720A948E8E1F8F875F349D62 /* UIImage.swift */,
 				5FCAC0AB68C0265B9B9D4ECA7B7F2200 /* UIImageView.swift */,
+				1ADD469E887E515E90E83A58BD2B418A /* UIScreen.swift */,
 				80F13460B6B17606CC65E38CE6A4716C /* UITableView.swift */,
 				0EA19C45C79A94472331D134BC9895CA /* UIView.swift */,
-				B5494239851A207094AA7E1F76EFB842 /* Injector.swift */,
-				764CDA794B49DC585B031C7C4F5776D5 /* UserMessage.swift */,
-				F0E9D2C0604CA6A42DFECF4E657E34F3 /* URLRequest.swift */,
+				770C7E3629382BA8B0B01FB29599C2CC /* UIViewController.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1017,6 +1020,7 @@
 				B38C79AC7967CA0C0249132BA67FC54D /* CheckoutSummaryViewController.swift in Sources */,
 				62397CD3313BF2E11BF45ED92B6276B4 /* CheckoutTransitioningDelegate.swift in Sources */,
 				5DED28D7802BD220B0257647BE4A6BA7 /* AddressListTableDelegate.swift in Sources */,
+				E979A6F01E43A2520052AFDC /* NSAttributedString.swift in Sources */,
 				8D9714FE58E50B7BC699060466CEF934 /* FormValidator.swift in Sources */,
 				3ED1FCFD38D86B0362C9C9F9E06B6027 /* AtlasReachability.swift in Sources */,
 				8186B2A21E2F4F9F005B1A68 /* UIDevice.swift in Sources */,

@@ -22,13 +22,13 @@ protocol CheckoutSummaryLayout {
 
 struct ArticleNotSelectedLayout: CheckoutSummaryLayout {
 
-    let navigationBarTitleLocalizedKey: String = "summaryView.title.selectSize"
-    let showCancelButton: Bool = true
-    let showFooterLabel: Bool = true
-    let showDetailArrow: Bool = true
-    let showGuestStackView: Bool = false
-    let showOrderStackView: Bool = false
-    let allowArticleRefine: Bool = false
+    let navigationBarTitleLocalizedKey = "summaryView.title.selectSize"
+    let showCancelButton = true
+    let showFooterLabel = true
+    let showDetailArrow = true
+    let showGuestStackView = false
+    let showOrderStackView = false
+    let allowArticleRefine = false
 
     func submitButtonBackgroundColor(readyToCheckout: Bool) -> UIColor { return .orange }
     func submitButtonTitle(isPaypal: Bool) -> String { return "summaryView.title.selectSize" }
@@ -37,13 +37,13 @@ struct ArticleNotSelectedLayout: CheckoutSummaryLayout {
 
 struct NotLoggedInLayout: CheckoutSummaryLayout {
 
-    let navigationBarTitleLocalizedKey: String = "summaryView.title.summary"
-    let showCancelButton: Bool = true
-    let showFooterLabel: Bool = true
-    let showDetailArrow: Bool = true
-    let showGuestStackView: Bool = false
-    let showOrderStackView: Bool = false
-    let allowArticleRefine: Bool = true
+    let navigationBarTitleLocalizedKey = "summaryView.title.summary"
+    let showCancelButton = true
+    let showFooterLabel = true
+    let showDetailArrow = true
+    let showGuestStackView = false
+    let showOrderStackView = false
+    let allowArticleRefine = true
 
     func submitButtonBackgroundColor(readyToCheckout: Bool) -> UIColor { return .orange }
     func submitButtonTitle(isPaypal: Bool) -> String { return "summaryView.submitButton.checkoutWithZalando" }
@@ -52,13 +52,13 @@ struct NotLoggedInLayout: CheckoutSummaryLayout {
 
 struct LoggedInLayout: CheckoutSummaryLayout {
 
-    let navigationBarTitleLocalizedKey: String = "summaryView.title.summary"
-    let showCancelButton: Bool = true
-    let showFooterLabel: Bool = true
-    let showDetailArrow: Bool = true
-    let showGuestStackView: Bool = false
-    let showOrderStackView: Bool = false
-    let allowArticleRefine: Bool = true
+    let navigationBarTitleLocalizedKey = "summaryView.title.summary"
+    let showCancelButton = true
+    let showFooterLabel = true
+    let showDetailArrow = true
+    let showGuestStackView = false
+    let showOrderStackView = false
+    let allowArticleRefine = true
 
     func submitButtonBackgroundColor(readyToCheckout: Bool) -> UIColor { return readyToCheckout ? .orange : .gray }
     func submitButtonTitle(isPaypal: Bool) -> String {
@@ -69,13 +69,13 @@ struct LoggedInLayout: CheckoutSummaryLayout {
 
 struct OrderPlacedLayout: CheckoutSummaryLayout {
 
-    let navigationBarTitleLocalizedKey: String = "summaryView.title.orderPlaced"
-    let showCancelButton: Bool = false
-    let showFooterLabel: Bool = false
-    let showDetailArrow: Bool = false
-    let showGuestStackView: Bool = false
-    let showOrderStackView: Bool = true
-    let allowArticleRefine: Bool = false
+    let navigationBarTitleLocalizedKey = "summaryView.title.orderPlaced"
+    let showCancelButton = false
+    let showFooterLabel = false
+    let showDetailArrow = false
+    let showGuestStackView = false
+    let showOrderStackView = true
+    let allowArticleRefine = false
 
     func submitButtonBackgroundColor(readyToCheckout: Bool) -> UIColor { return UIColor(hex: 0x509614) }
     func submitButtonTitle(isPaypal: Bool) -> String { return "summaryView.submitButton.backToShop" }
@@ -84,13 +84,13 @@ struct OrderPlacedLayout: CheckoutSummaryLayout {
 
 struct GuestCheckoutLayout: CheckoutSummaryLayout {
 
-    let navigationBarTitleLocalizedKey: String = "summaryView.title.summary"
-    let showCancelButton: Bool = true
-    let showFooterLabel: Bool = true
-    let showDetailArrow: Bool = true
-    let showGuestStackView: Bool = true
-    let showOrderStackView: Bool = false
-    let allowArticleRefine: Bool = true
+    let navigationBarTitleLocalizedKey = "summaryView.title.summary"
+    let showCancelButton = true
+    let showFooterLabel = true
+    let showDetailArrow = true
+    let showGuestStackView = true
+    let showOrderStackView = false
+    let allowArticleRefine = true
 
     func submitButtonBackgroundColor(readyToCheckout: Bool) -> UIColor { return readyToCheckout ? .orange : .gray }
     func submitButtonTitle(isPaypal: Bool) -> String { return "summaryView.submitButton.guestCheckout" }
@@ -99,13 +99,13 @@ struct GuestCheckoutLayout: CheckoutSummaryLayout {
 
 struct GuestOrderPlacedLayout: CheckoutSummaryLayout {
 
-    let navigationBarTitleLocalizedKey: String = "summaryView.title.orderPlaced"
-    let showCancelButton: Bool = false
-    let showFooterLabel: Bool = false
-    let showDetailArrow: Bool = false
-    let showGuestStackView: Bool = true
-    let showOrderStackView: Bool = true
-    let allowArticleRefine: Bool = false
+    let navigationBarTitleLocalizedKey = "summaryView.title.orderPlaced"
+    let showCancelButton = false
+    let showFooterLabel = false
+    let showDetailArrow = false
+    let showGuestStackView = true
+    let showOrderStackView = true
+    let allowArticleRefine = false
 
     func submitButtonBackgroundColor(readyToCheckout: Bool) -> UIColor { return UIColor(hex: 0x509614) }
     func submitButtonTitle(isPaypal: Bool) -> String { return "summaryView.submitButton.backToShop" }

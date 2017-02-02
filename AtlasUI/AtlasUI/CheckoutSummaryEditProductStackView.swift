@@ -105,9 +105,14 @@ extension CheckoutSummaryEditProductStackView: UIDataBuilder {
     typealias T = CheckoutSummaryViewModel
 
     func configure(viewModel: T) {
-        let sizeLabel = Localizer.format(string: "summaryView.button.size")
+        if let size = viewModel.dataModel.selectedArticle.unit?.size {
+            let sizeLabel = Localizer.format(string: "summaryView.button.size")
+            sizeButton.setTitle("\(sizeLabel): \(size)", for: .normal)
+        } else {
+            sizeButton.setTitle(Localizer.format(string: "summaryView.title.selectSize"), for: .normal)
+        }
+
         let quantityLabel = Localizer.format(string: "summaryView.button.quantity")
-        sizeButton.setTitle("\(sizeLabel): \(viewModel.dataModel.selectedArticle.unit.size)", for: .normal)
         quantityButton.setTitle("\(quantityLabel): \(viewModel.dataModel.selectedArticle.quantity)", for: .normal)
 
         sizeButton.removeTarget(self, action: nil, for: .touchUpInside)

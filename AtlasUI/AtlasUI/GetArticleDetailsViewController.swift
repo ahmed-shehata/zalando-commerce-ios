@@ -21,10 +21,10 @@ class GetArticleDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        getArticle()
+        fetchArticle()
     }
 
-    private func getArticle() {
+    private func fetchArticle() {
         AtlasUIClient.article(withSKU: self.sku) { [weak self] result in
             guard let article = result.process(forceFullScreenError: true) else { return }
             self?.showSummaryView(article: article)

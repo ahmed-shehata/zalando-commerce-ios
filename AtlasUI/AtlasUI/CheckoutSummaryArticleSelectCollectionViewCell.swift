@@ -5,6 +5,58 @@
 import UIKit
 import AtlasSDK
 
+enum ArticleSelectionCellStyle {
+
+    case normal
+    case selected
+
+    var priceFont: UIFont { return .systemFont(ofSize: 10, weight: UIFontWeightLight) }
+    var originalPriceFont: UIFont { return .systemFont(ofSize: 8, weight: UIFontWeightLight) }
+
+    var priceColor: UIColor {
+        switch self {
+        case .normal: return .black
+        case .selected: return .white
+        }
+    }
+
+    var originalPriceColor: UIColor {
+        switch self {
+        case .normal: return .red
+        case .selected: return .white
+        }
+    }
+
+    var strikethroughColor: UIColor {
+        switch self {
+        case .normal: return .gray
+        case .selected: return .white
+        }
+    }
+
+    var borderColor: UIColor {
+        switch self {
+        case .normal: return UIColor(hex: 0xE5E5E5)
+        case .selected: return .orange
+        }
+    }
+
+    var backgroundColor: UIColor {
+        switch self {
+        case .normal: return .white
+        case .selected: return .orange
+        }
+    }
+
+    var valueColor: UIColor {
+        switch self {
+        case .normal: return UIColor(hex: 0x848484)
+        case .selected: return .white
+        }
+    }
+
+}
+
 class CheckoutSummaryArticleSelectCollectionViewCell: UICollectionViewCell {
 
     let container: RoundedView = {
@@ -58,52 +110,49 @@ extension CheckoutSummaryArticleSelectCollectionViewCell: UIBuilder {
 extension CheckoutSummaryArticleSelectCollectionViewCell {
 
     func configure(selectedArticle: SelectedArticle, type: CheckoutSummaryArticleRefineType, idx: Int) {
-        let isSelected = type.idx(selectedArticle: selectedArticle) == idx
+        let style: ArticleSelectionCellStyle = type.idx(selectedArticle: selectedArticle) == idx ? .selected : .normal
 
         switch type {
         case .size:
             let unit = selectedArticle.article.availableUnits[idx]
             valueLabel.text = unit.size
-            priceLabel.attributedText = priceAttributedString(price: unit.price, originalPrice: unit.originalPrice, isSelected: isSelected)
+            priceLabel.attributedText = priceAttributedString(price: unit.price, originalPrice: unit.originalPrice, style: style)
         case .quantity:
+            guard let unit = selectedArticle.unit else { return }
             let currency = selectedArticle.price.currency
-            let totalPrice = Money(amount: selectedArticle.price.amount * Decimal(idx + 1), currency: currency)
-            let totalOriginalPrice = Money(amount: selectedArticle.unit.originalPrice.amount * Decimal(idx + 1), currency: currency)
-            valueLabel.text = "\(idx + 1)"
-            priceLabel.attributedText = priceAttributedString(price: totalPrice, originalPrice: totalOriginalPrice, isSelected: isSelected)
+            let selectedQuantity = idx + 1
+            let totalPrice = Money(amount: unit.price.amount * selectedQuantity, currency: currency)
+            let totalOriginalPrice = Money(amount: unit.originalPrice.amount * selectedQuantity, currency: currency)
+            valueLabel.text = "\(selectedQuantity)"
+            priceLabel.attributedText = priceAttributedString(price: totalPrice, originalPrice: totalOriginalPrice, style: style)
         }
 
-        container.borderColor = isSelected ? .orange : UIColor(hex: 0xE5E5E5)
-        container.backgroundColor = isSelected ? .orange : .white
-        valueLabel.textColor = isSelected ? .white : UIColor(hex: 0x848484)
+        container.borderColor = style.borderColor
+        container.backgroundColor = style.backgroundColor
+        valueLabel.textColor = style.valueColor
     }
 
-    private func priceAttributedString(price: Money, originalPrice: Money, isSelected: Bool) -> NSAttributedString {
-        guard price.amount != originalPrice.amount else { return priceAttributedString(price: price, isSelected: isSelected) }
+    private func priceAttributedString(price: Money, originalPrice: Money, style: ArticleSelectionCellStyle) -> NSAttributedString {
+        guard price.amount != originalPrice.amount else { return priceAttributedString(price: price, style: style) }
 
-        let attributedString = NSMutableAttributedString(attributedString: priceAttributedString(price: price, isSelected: isSelected))
-        attributedString.append(separatorAttributedString(isSelected: isSelected))
-        attributedString.append(originalPriceAttributedString(originalPrice: originalPrice, isSelected: isSelected))
+        let attributedString = NSMutableAttributedString(attributedString: priceAttributedString(price: price, style: style))
+        attributedString.append(originalPriceAttributedString(originalPrice: originalPrice, style: style))
         return attributedString
     }
 
-    private func priceAttributedString(price: Money, isSelected: Bool) -> NSAttributedString {
+    private func priceAttributedString(price: Money, style: ArticleSelectionCellStyle) -> NSAttributedString {
         let text = Localizer.format(price: price) ?? ""
-        return NSAttributedString(string: text, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 10, weight: UIFontWeightLight),
-                                                             NSForegroundColorAttributeName: isSelected ? .white : UIColor.black])
+        return text.attributed
+            .addFont(font: style.priceFont)
+            .addForeground(color: style.priceColor)
     }
 
-    private func separatorAttributedString(isSelected: Bool) -> NSAttributedString {
-        return NSAttributedString(string: " ", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 8, weight: UIFontWeightLight),
-                                                              NSForegroundColorAttributeName: isSelected ? .white : UIColor.black])
-    }
-
-    private func originalPriceAttributedString(originalPrice: Money, isSelected: Bool) -> NSAttributedString {
-        let text = Localizer.format(price: originalPrice) ?? ""
-        return NSAttributedString(string: text, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 8, weight: UIFontWeightLight),
-                                                             NSForegroundColorAttributeName: isSelected ? .white : UIColor.red,
-                                                             NSStrikethroughStyleAttributeName: 1,
-                                                             NSStrikethroughColorAttributeName: isSelected ? .white : UIColor.gray])
+    private func originalPriceAttributedString(originalPrice: Money, style: ArticleSelectionCellStyle) -> NSAttributedString {
+        let text = " " + (Localizer.format(price: originalPrice) ?? "")
+        return text.attributed
+            .addFont(font: style.originalPriceFont)
+            .addForeground(color: style.originalPriceColor)
+            .addStrikethrough(color: style.strikethroughColor)
     }
 
 }
