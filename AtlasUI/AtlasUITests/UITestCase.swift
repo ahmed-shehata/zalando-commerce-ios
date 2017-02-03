@@ -76,4 +76,15 @@ class UITestCase: XCTestCase {
         }
     }
 
+    func retrieveView<T>(inView containerView: UIView) -> T? {
+        guard let view = containerView as? T else {
+            let subviews: [T] = containerView.subviews.flatMap {
+                let subview: T? = retrieveView(inView: $0)
+                return subview
+            }
+            return subviews.first
+        }
+        return view
+    }
+
 }
