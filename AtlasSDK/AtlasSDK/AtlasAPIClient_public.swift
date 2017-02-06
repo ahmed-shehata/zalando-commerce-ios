@@ -56,8 +56,10 @@ extension AtlasAPIClient {
         fetch(from: endpoint, completion: completion)
     }
 
-    public func createCheckoutCart(forSKU sku: String, addresses: CheckoutAddresses? = nil, completion: @escaping CheckoutCartCompletion) {
-        let cartItemRequest = CartItemRequest(sku: sku, quantity: 1)
+    public func createCheckoutCart(forSelectedArticle selectedArticle: SelectedArticle,
+                                   addresses: CheckoutAddresses? = nil,
+                                   completion: @escaping CheckoutCartCompletion) {
+        let cartItemRequest = CartItemRequest(sku: selectedArticle.sku, quantity: selectedArticle.quantity)
 
         createCart(withItems: [cartItemRequest]) { cartResult in
             switch cartResult {
@@ -65,6 +67,7 @@ extension AtlasAPIClient {
                 completion(.failure(error, nil))
 
             case .success(let cart):
+                let sku = selectedArticle.sku
                 let itemExists = cart.items.contains { $0.sku == sku } && !cart.itemsOutOfStock.contains(sku)
                 guard itemExists else {
                     completion(.failure(AtlasCheckoutError.outOfStock, nil))

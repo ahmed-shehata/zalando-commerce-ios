@@ -13,8 +13,6 @@ extension UIViewController {
                                      action: #selector(UIViewController.cancelCheckoutTapped))
         button.accessibilityIdentifier = "navigation-bar-cancel-button"
         navigationItem.rightBarButtonItem = button
-
-        navigationController?.navigationBar.isTranslucent = false
     }
 
     func hideCancelButton() {

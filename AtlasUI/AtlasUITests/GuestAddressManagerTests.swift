@@ -16,12 +16,14 @@ class GuestAddressActionHandlerTests: UITestCase {
         guestAddressActionHandler.addressCreationStrategy = ShippingAddressViewModelCreationStrategy()
         guestAddressActionHandler.createAddress { _ in }
         expect(UIApplication.topViewController() as? UIAlertController).toNotEventually(beNil())
+        UIApplication.topViewController()?.dismiss(animated: true, completion: nil)
     }
 
     func testCreateBilingAddress() {
         guestAddressActionHandler.addressCreationStrategy = BillingAddressViewModelCreationStrategy()
         guestAddressActionHandler.createAddress { _ in }
         expect(UIApplication.topViewController() as? UIAlertController).toNotEventually(beNil())
+        UIApplication.topViewController()?.dismiss(animated: true, completion: nil)
     }
 
     func testUpdateShippingAddress() {
@@ -40,12 +42,14 @@ class GuestAddressActionHandlerTests: UITestCase {
         guestAddressActionHandler.addressCreationStrategy = ShippingAddressViewModelCreationStrategy()
         guestAddressActionHandler.handleAddressModification(address: createStandardAddress()) { _ in }
         expect(UIApplication.topViewController() as? UIAlertController).toNotEventually(beNil())
+        UIApplication.topViewController()?.dismiss(animated: true, completion: nil)
     }
 
     func testModifyNoAddress() {
         guestAddressActionHandler.addressCreationStrategy = ShippingAddressViewModelCreationStrategy()
         guestAddressActionHandler.handleAddressModification(address: nil) { _ in }
         expect(UIApplication.topViewController() as? UIAlertController).toNotEventually(beNil())
+        UIApplication.topViewController()?.dismiss(animated: true, completion: nil)
     }
 
     func testCheckoutAddressesWithStandardShippingAddress() {

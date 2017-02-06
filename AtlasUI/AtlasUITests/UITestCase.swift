@@ -46,6 +46,7 @@ class UITestCase: XCTestCase {
     override func setUp() {
         super.setUp()
         registerAtlasUIViewController(forSKU: sku)
+        waitForArticleFetch()
     }
 
     func registerAtlasUIViewController(forSKU: String) {
@@ -58,12 +59,32 @@ class UITestCase: XCTestCase {
         self.atlasUIViewController = atlasUIViewController
     }
 
+    private func waitForArticleFetch() {
+        expect(self.atlasUIViewController?.mainNavigationController.viewControllers.last as? CheckoutSummaryViewController).toEventuallyNot(beNil())
+        guard let checkoutSummary = self.atlasUIViewController?.mainNavigationController.viewControllers.last as? CheckoutSummaryViewController else { return fail() }
+        if checkoutSummary.checkoutContainer.collectionView.numberOfItems(inSection: 0) > 0 {
+            checkoutSummary.checkoutContainer.collectionView.collectionView(checkoutSummary.checkoutContainer.collectionView, didSelectItemAt: IndexPath(row: 0, section: 0))
+            expect(checkoutSummary.checkoutContainer.overlayButton.isHidden).toEventually(beTrue())
+        }
+    }
+
     var errorDisplayed: Bool {
         guard let errorPresenterViewController = atlasUIViewController?.presentedViewController ?? atlasUIViewController else { return false }
         return errorPresenterViewController.childViewControllers.contains {
             $0 is BannerErrorViewController ||
             ($0 as? UINavigationController)?.viewControllers.first is FullScreenErrorViewController
         }
+    }
+
+    func retrieveView<T>(inView containerView: UIView) -> T? {
+        guard let view = containerView as? T else {
+            let subviews: [T] = containerView.subviews.flatMap {
+                let subview: T? = retrieveView(inView: $0)
+                return subview
+            }
+            return subviews.first
+        }
+        return view
     }
 
 }

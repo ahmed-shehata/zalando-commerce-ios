@@ -7,46 +7,33 @@ import AtlasSDK
 
 class CheckoutSummaryProductStackView: UIStackView {
 
-    let articleImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
-
-    let detailsStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.spacing = 2
-        stackView.distribution = .fillProportionally
+    let productInfoStackView: CheckoutSummaryProductInfoStackView = {
+        let stackView = CheckoutSummaryProductInfoStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = 15
+        stackView.layoutMargins = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+        stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
 
-    let brandNameLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 16, weight: UIFontWeightBold)
-        label.textColor = .black
-        return label
+    let productInfoSeparatorView: BorderView = {
+        let view = BorderView()
+        view.bottomBorder = true
+        view.borderColor = UIColor(hex: 0xE5E5E5)
+        return view
     }()
 
-    let articleNameLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 14, weight: UIFontWeightLight)
-        label.textColor = .black
-        return label
+    let editArticleStackView: CheckoutSummaryEditProductStackView = {
+        let stackView = CheckoutSummaryEditProductStackView()
+        stackView.axis = .horizontal
+        return stackView
     }()
 
-    let unitSizeLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 14, weight: UIFontWeightLight)
-        label.textColor = .lightGray
-        return label
-    }()
-
-    let unitColorLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 14, weight: UIFontWeightLight)
-        label.textColor = .lightGray
-        return label
+    let editArticleSeparatorView: BorderView = {
+        let view = BorderView()
+        view.topBorder = true
+        view.borderColor = UIColor(hex: 0xB2B2B2)
+        return view
     }()
 
 }
@@ -54,32 +41,26 @@ class CheckoutSummaryProductStackView: UIStackView {
 extension CheckoutSummaryProductStackView: UIBuilder {
 
     func configureView() {
-        addArrangedSubview(articleImageView)
-        addArrangedSubview(detailsStackView)
-
-        detailsStackView.addArrangedSubview(brandNameLabel)
-        detailsStackView.addArrangedSubview(articleNameLabel)
-        detailsStackView.addArrangedSubview(unitSizeLabel)
-        detailsStackView.addArrangedSubview(unitColorLabel)
+        addArrangedSubview(productInfoStackView)
+        addArrangedSubview(productInfoSeparatorView)
+        addArrangedSubview(editArticleStackView)
+        addArrangedSubview(editArticleSeparatorView)
     }
 
     func configureConstraints() {
-        articleImageView.setSquareAspectRatio()
-        articleImageView.setWidth(equalToView: superview, multiplier: 0.2)
+        productInfoSeparatorView.setHeight(equalToConstant: UIView.onePixel)
+        editArticleSeparatorView.setHeight(equalToConstant: UIView.onePixel)
     }
 
 }
 
 extension CheckoutSummaryProductStackView: UIDataBuilder {
 
-    typealias T = SelectedArticleUnit
+    typealias T = CheckoutSummaryViewModel
 
     func configure(viewModel: T) {
-        articleImageView.setImage(from: viewModel.article.thumbnailURL)
-        brandNameLabel.text = viewModel.article.brand.name
-        articleNameLabel.text = viewModel.article.name
-        unitSizeLabel.text = Localizer.format(string: "summaryView.label.unitSize", viewModel.unit.size)
-        unitColorLabel.text = viewModel.article.color
+        productInfoStackView.configure(viewModel: viewModel.dataModel.selectedArticle)
+        editArticleStackView.configure(viewModel: viewModel)
     }
 
 }

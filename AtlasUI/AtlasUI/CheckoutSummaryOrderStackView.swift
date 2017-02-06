@@ -99,14 +99,12 @@ extension CheckoutSummaryOrderStackView {
         guard let scrollView = superview?.superview as? UIScrollView else { return }
 
         let (contentOffset, frame) = prepareViewForTakingImage(scrollView: scrollView)
-
         guard let image = scrollView.takeScreenshot() else {
             UserMessage.displayError(error: AtlasCheckoutError.unclassified)
             cleanupViewAfterTakingImage(scrollView: scrollView, originalContentOffset: contentOffset, originalFrame: frame)
             return
         }
         cleanupViewAfterTakingImage(scrollView: scrollView, originalContentOffset: contentOffset, originalFrame: frame)
-
         AtlasUIViewController.shared?.showLoader()
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(image:didFinishSavingWithError:contextInfo:)), nil)
     }
@@ -114,15 +112,12 @@ extension CheckoutSummaryOrderStackView {
     private func prepareViewForTakingImage(scrollView: UIScrollView) -> (originalContentOffset: CGPoint, originalFrame: CGRect) {
         let savedContentOffset = scrollView.contentOffset
         let savedFrame = scrollView.frame
-
         let imageHeight = scrollView.contentSize.height - saveImageContainer.frame.height - bottomSeparator.frame.height
         let imageSize = CGSize(width: scrollView.contentSize.width, height: imageHeight)
         saveImageContainer.isHidden = true
         bottomSeparator.isHidden = true
-
         scrollView.contentOffset = .zero
         scrollView.frame = CGRect(origin: CGPoint.zero, size: imageSize)
-
         return (savedContentOffset, savedFrame)
     }
 
@@ -140,12 +135,7 @@ extension CheckoutSummaryOrderStackView {
 
     func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeMutableRawPointer) {
         AtlasUIViewController.shared?.hideLoader()
-
-        guard error == nil else {
-            UserMessage.displayError(error: AtlasCheckoutError.photosLibraryAccessNotAllowed)
-            return
-        }
-
+        guard error == nil else { return UserMessage.displayError(error: AtlasCheckoutError.photosLibraryAccessNotAllowed) }
         showSavedLabel()
     }
 

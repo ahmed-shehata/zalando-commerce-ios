@@ -40,14 +40,11 @@ class AtlasDemoUITests: XCTestCase {
     }
 
     func testBuyProductWithSizesAndNavigatingBack() {
-        let backButton = app.navigationBars["checkout-summary-navigation-bar"].buttons["Back"]
         let cancelButton = app.navigationBars["checkout-summary-navigation-bar"].buttons["Cancel"]
         let sizeText = app.cells["size-cell-XL"]
 
         tapBuyNow(withId: "Guess")
 
-        waitForAppearAndTap(element: sizeText)
-        waitForAppearAndTap(element: backButton)
         waitForAppearAndTap(element: sizeText)
         waitForAppearAndTap(element: cancelButton)
 
@@ -220,7 +217,6 @@ extension AtlasDemoUITests {
         setTextField(identifier: "city-textfield", value: "Berlin")
 
         app.navigationBars.buttons["address-edit-right-button"].tap()
-        app.navigationBars["address-picker-navigation-bar"].buttons["Back"].tap()
     }
 
     fileprivate func setTextField(identifier: String, value: String) {

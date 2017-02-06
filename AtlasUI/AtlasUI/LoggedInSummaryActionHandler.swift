@@ -24,9 +24,9 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
 
     fileprivate var addressCreationStrategy: AddressViewModelCreationStrategy?
 
-    static func create(customer: Customer, selectedArticleUnit: SelectedArticleUnit,
+    static func create(customer: Customer, selectedArticle: SelectedArticle,
                        completion: @escaping LoggedInSummaryActionHandlerCompletion) {
-        LoggedInSummaryActionHandler.createCartCheckout(selectedArticleUnit: selectedArticleUnit) { result in
+        LoggedInSummaryActionHandler.createCartCheckout(selectedArticle: selectedArticle) { result in
             switch result {
             case .success(let cartCheckout):
                 let actionHandler = LoggedInSummaryActionHandler(customer: customer)
@@ -124,6 +124,21 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
         }
     }
 
+    func updated(selectedArticle: SelectedArticle) {
+        let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle,
+                                                 shippingAddress: shippingAddress,
+                                                 billingAddress: billingAddress,
+                                                 totalPrice: selectedArticle.totalPrice)
+        try? delegate?.updated(dataModel: dataModel)
+
+        if hasAddresses {
+            createCartCheckout { [weak self] result in
+                guard let cartCheckout = result.process() else { return }
+                self?.cartCheckout = cartCheckout
+            }
+        }
+    }
+
 }
 
 // MARK: – Address Screen
@@ -193,9 +208,8 @@ extension LoggedInSummaryActionHandler {
 
     fileprivate func presentConfirmationScreen(for order: Order) {
         guard let dataSource = dataSource, let delegate = delegate else { return }
-        let selectedArticleUnit = dataSource.dataModel.selectedArticleUnit
-        let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, checkout: cartCheckout?.checkout, order: order)
-        delegate.updated(actionHandler: OrderPlacedSummaryActionHandler())
+        let selectedArticle = dataSource.dataModel.selectedArticle
+        let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, checkout: cartCheckout?.checkout, order: order)
         do {
             dataModelDisplayedError = nil
             try delegate.updated(dataModel: dataModel)
@@ -203,6 +217,7 @@ extension LoggedInSummaryActionHandler {
             dataModelDisplayedError = error
         }
         delegate.updated(layout: OrderPlacedLayout())
+        delegate.updated(actionHandler: OrderPlacedSummaryActionHandler())
     }
 
 }
@@ -211,17 +226,17 @@ extension LoggedInSummaryActionHandler {
 extension LoggedInSummaryActionHandler {
 
     fileprivate func createCartCheckout(completion: @escaping CreateCartCheckoutCompletion) {
-        guard let selectedArticleUnit = dataSource?.dataModel.selectedArticleUnit else { return }
-        LoggedInSummaryActionHandler.createCartCheckout(selectedArticleUnit: selectedArticleUnit,
+        guard let selectedArticle = dataSource?.dataModel.selectedArticle else { return }
+        LoggedInSummaryActionHandler.createCartCheckout(selectedArticle: selectedArticle,
                                                         addresses: addresses,
                                                         completion: completion)
     }
 
-    fileprivate static func createCartCheckout(selectedArticleUnit: SelectedArticleUnit,
+    fileprivate static func createCartCheckout(selectedArticle: SelectedArticle,
                                                addresses: CheckoutAddresses? = nil,
                                                completion: @escaping CreateCartCheckoutCompletion) {
 
-        AtlasUIClient.createCheckoutCart(forSKU: selectedArticleUnit.sku, addresses: addresses) { result in
+        AtlasUIClient.createCheckoutCart(forSelectedArticle: selectedArticle, addresses: addresses) { result in
             switch result {
             case .failure(let error, _):
                 guard case let AtlasAPIError.checkoutFailed(cart, _) = error else {
@@ -264,11 +279,11 @@ extension LoggedInSummaryActionHandler {
     }
 
     fileprivate func updateDataModel(with addresses: CheckoutAddresses?, in cartCheckout: CartCheckout? = nil) {
-        guard let selectedArticleUnit = dataSource?.dataModel.selectedArticleUnit else { return }
+        guard let selectedArticle = dataSource?.dataModel.selectedArticle else { return }
 
         let addressesChanged = self.addressesChanged(withNewAddresses: addresses)
 
-        let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, cartCheckout: cartCheckout, addresses: addresses)
+        let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, cartCheckout: cartCheckout, addresses: addresses)
         do {
             dataModelDisplayedError = nil
             try delegate?.updated(dataModel: dataModel)

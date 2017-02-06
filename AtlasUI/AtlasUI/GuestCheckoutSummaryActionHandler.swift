@@ -86,6 +86,17 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
         }
     }
 
+    func updated(selectedArticle: SelectedArticle) {
+        guard let email = actionHandler.emailAddress else { return }
+        clearCurrentState()
+
+        let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle,
+                                                 guestCheckout: guestCheckout,
+                                                 email: email,
+                                                 addresses: addresses)
+        try? delegate?.updated(dataModel: dataModel)
+    }
+
 }
 
 extension GuestCheckoutSummaryActionHandler {
@@ -118,14 +129,14 @@ extension GuestCheckoutSummaryActionHandler {
             let email = actionHandler.emailAddress
             else { return }
 
-        let selectedArticleUnit = dataSource.dataModel.selectedArticleUnit
-        let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit,
+        let selectedArticle = dataSource.dataModel.selectedArticle
+        let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle,
                                                  guestCheckout: guestCheckout,
                                                  email: email,
                                                  guestOrder: order)
-        delegate.updated(actionHandler: OrderPlacedSummaryActionHandler())
         try? delegate.updated(dataModel: dataModel)
         delegate.updated(layout: GuestOrderPlacedLayout())
+        delegate.updated(actionHandler: OrderPlacedSummaryActionHandler())
     }
 
     fileprivate func getPaymentURL(completion: @escaping (URL) -> Void) {
@@ -147,7 +158,8 @@ extension GuestCheckoutSummaryActionHandler {
         let shippingGuestAddress = GuestAddressRequest(address: shippingAddress)
         let billingGuestAddress = GuestAddressRequest(address: billingAddress)
         let customer = GuestCustomerRequest(guestEmail: email, subscribeNewsletter: false)
-        let cartItem = CartItemRequest(sku: dataSource.dataModel.selectedArticleUnit.sku, quantity: 1)
+        let cartItem = CartItemRequest(sku: dataSource.dataModel.selectedArticle.sku,
+                                       quantity: dataSource.dataModel.selectedArticle.quantity)
         let cart = GuestCartRequest(items: [cartItem])
         let request = GuestPaymentSelectionRequest(customer: customer,
                                                    shippingAddress: shippingGuestAddress,
@@ -162,11 +174,15 @@ extension GuestCheckoutSummaryActionHandler {
 
     fileprivate func validateAddressModification(newAddress: EquatableAddress, oldAddress: EquatableAddress?) {
         if let oldAddress = oldAddress, !(newAddress === oldAddress) {
-            paymentURL = nil
-            guestCheckout = nil
-            checkoutId = nil
-            token = nil
+            clearCurrentState()
         }
+    }
+
+    fileprivate func clearCurrentState() {
+        paymentURL = nil
+        guestCheckout = nil
+        checkoutId = nil
+        token = nil
     }
 
     fileprivate func getGuestCheckout(checkoutId: String, token: String) {
@@ -179,11 +195,11 @@ extension GuestCheckoutSummaryActionHandler {
     }
 
     fileprivate func updateDataModel(addresses: CheckoutAddresses?, guestCheckout: GuestCheckout?) {
-        guard let selectedUnit = dataSource?.dataModel.selectedArticleUnit,
+        guard let selectedUnit = dataSource?.dataModel.selectedArticle,
             let email = actionHandler.emailAddress
             else { return }
 
-        let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedUnit,
+        let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedUnit,
                                                  guestCheckout: guestCheckout,
                                                  email: email,
                                                  addresses: addresses)
