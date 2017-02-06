@@ -9,7 +9,7 @@ struct DataTaskResponse {
     let request: URLRequest
     let response: HTTPURLResponse?
     let data: Data?
-    let error: NSError?
+    let error: Error?
 
     fileprivate var logDebug: Bool {
         return ProcessInfo.processInfo.arguments.contains("PRINT_REQUEST_DESCRIPTION")
@@ -19,7 +19,7 @@ struct DataTaskResponse {
         self.request = request
         self.response = response as? HTTPURLResponse
         self.data = data
-        self.error = error as? NSError
+        self.error = error
 
         if logDebug {
             AtlasLogger.logDebug(self)

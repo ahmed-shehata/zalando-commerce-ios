@@ -54,7 +54,7 @@ extension Options: CustomStringConvertible {
             + "\n\tclientId = \(format(optional: clientId)) "
             + ", \n\tuseSandboxEnvironment = \(useSandboxEnvironment) "
             + ", \n\tsalesChannel = \(format(optional: salesChannel)) "
-            + ", \n\tinterfaceLanguage = \(interfaceLanguage) "
+            + ", \n\tinterfaceLanguage = \(format(optional: interfaceLanguage)) "
             + " } "
     }
 

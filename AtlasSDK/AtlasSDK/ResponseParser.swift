@@ -10,7 +10,9 @@ struct ResponseParser {
 
     func parse(completion: ResponseCompletion) {
         if let error = taskResponse.error {
-            let nsURLError = AtlasAPIError.nsURLError(code: error.code, details: error.localizedDescription)
+            let nsError = error as NSError
+            let nsURLError = AtlasAPIError.nsURLError(code: nsError.code,
+                                                      details: nsError.localizedDescription)
             return completion(.failure(nsURLError))
         }
 

@@ -23,8 +23,7 @@ struct RequestBuilder {
         buildAndExecuteSessionTask { result in
             switch result {
             case .failure(let error):
-                AtlasLogger.logError("FAILED CONNECTION:", type(of: endpoint),
-                                     "\nERROR:", error)
+                AtlasLogger.logError("FAILED CONNECTION:", type(of: endpoint), "\nERROR:", error)
                 completion(.failure(error))
 
             case .success(let response):
