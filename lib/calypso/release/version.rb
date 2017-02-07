@@ -19,8 +19,8 @@ module Calypso
                     desc: 'Don\'t quit on non-master branch'
     option :dirty, type: :boolean, default: false,
                    desc: 'Don\'t quit on uncommited changes'
-    option :force_version, type: :boolean, default: false,
-                           desc: 'Don\'t quit on no version change'
+    option :force, type: :boolean, default: false,
+                   desc: 'Don\'t quit on no version change'
     desc 'create', 'Creates new version: updates plist files, add a tag and push to the GitHub'
     def create(version = nil)
       log_abort 'Please create version only from master branch' unless !options[:master] || master_branch?
@@ -28,7 +28,7 @@ module Calypso
 
       new_version = ask_new_version(options, version)
 
-      update_versions(new_version)
+      # update_versions(new_version)
       git_new_version(new_version, options)
 
       new_version
@@ -44,7 +44,7 @@ module Calypso
       new_version = ATLAS_VERSION if new_version.empty?
 
       log_abort "No change in version (#{ATLAS_VERSION}), quitting" \
-        if new_version == ATLAS_VERSION && options[:force_version]
+        if new_version == ATLAS_VERSION && !options[:force]
 
       new_version
     end
@@ -95,8 +95,12 @@ module Calypso
 
     def commit_version(new_version)
       repo.commit "[auto] Updated version to #{new_version}"
-    rescue StandardError => e
-      log_abort e
+    rescue Git::GitExecuteError => e
+      error_lines = e.to_s.split("\n")
+      details = error_lines[0..-2]
+      last_message = error_lines.last
+      log_warn details
+      log_abort last_message
     end
 
     def dry_run(cmd, real_run: true)
