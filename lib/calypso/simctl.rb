@@ -67,10 +67,17 @@ module Calypso
     private
 
     def create_simulator(device_name, runtime_name, name = nil)
-      name ||= "Test #{device_name} / #{runtime_name} (#{(rand * 1_000_000).to_i.to_s(16).rjust(10, '0')})"
-      dev_id = find_device_type(device_name)
-      runtime_id = find_runtime(runtime_name)
-      udid = run_simctl('create', "'#{name}'", dev_id, runtime_id).strip
+      dev = find_latest_device(device_name)
+      dev_name = dev['name']
+      dev_id = dev['identifier']
+
+      rt = find_latest_runtime(runtime_name)
+      rt_name = rt['name']
+      rt_id = rt['identifier']
+
+      name ||= "Test #{dev_name} / #{rt_name} (#{(rand * 1_000_000).to_i.to_s(16).rjust(10, '0')})"
+
+      udid = run_simctl('create', "'#{name}'", dev_id, rt_id).strip
       log_debug "Simulator '#{name}' (#{udid}) created"
       disable_keyboard_magic(udid)
       udid
@@ -105,19 +112,31 @@ module Calypso
       run_simctl('shutdown', udid)
     end
 
-    def find_device_type(name)
-      simulators_list['devicetypes'].select do |dev|
-        dev['name'] == name
-      end.first['identifier']
+    def find_latest_device(name)
+      print "Finding device #{name}... "
+      selected_devices = simulators_list['devicetypes'].select do |dev|
+        dev['name'] =~ /#{name}/i
+      end
+      device = selected_devices.sort_by do |dev|
+        dev['identifier']
+      end.last
+      log_abort("Device #{name} not found") if device.nil?
+      puts device['name']
+      device
     end
 
-    def find_runtime(name)
+    def find_latest_runtime(name)
       print "Finding runtime #{name}... "
-      runtime = simulators_list['runtimes'].select do |dev|
-        dev['name'] == name
-      end.first
-      log_abort('Not found') if runtime.nil?
-      runtime['identifier']
+      selected_runtimes = simulators_list['runtimes'].select do |rt|
+        rt['name'] =~ /#{name}/
+      end
+      runtime = selected_runtimes.sort do |lhs, rhs|
+        lhs['version'].to_f <=> rhs['version'].to_f
+      end.last
+
+      log_abort("Runtime #{name} not found") if runtime.nil?
+      puts runtime['name']
+      runtime
     end
 
     def find_devices(name)
