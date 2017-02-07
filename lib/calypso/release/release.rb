@@ -11,8 +11,15 @@ module Calypso
 
   class Release < Thor
 
-    option :dirty, type: :boolean, default: false
     desc 'create', 'Create new release'
+    option :tag, type: :boolean, default: true,
+                 desc: 'Passed to "version create" command'
+    option :push, type: :boolean, default: true,
+                  desc: 'Passed to "version create" command'
+    option :master, type: :boolean, default: false,
+                    desc: 'Passed to "version create" command'
+    option :dirty, type: :boolean, default: false,
+                   desc: 'Passed to "version create" command'
     def create(version = nil)
       version ||= Version.new([], options).invoke(:create)
       release = github.create_release(tag: version, notes: release_notes)

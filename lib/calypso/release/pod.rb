@@ -7,11 +7,15 @@ module Calypso
 
     PODSPECS = ['AtlasSDK.podspec', 'AtlasUI.podspec'].freeze
 
-    option :local, type: :boolean
-    option :silent, type: :boolean
-    option :verbose, type: :boolean
-    option :quick, type: :boolean, default: false
     desc 'validate', 'Validates and builds pod'
+    option :local, type: :boolean, default: false,
+                   desc: 'true - runs "pod lib ..."; false - runs "pod spec ..."'
+    option :silent, type: :boolean, default: false,
+                    desc: 'Adds --silent to "pod" command, takes precedence over --verbose'
+    option :verbose, type: :boolean, default: false,
+                     desc: 'Adds --verbose to "pod" command, gives precedence to --silent'
+    option :quick, type: :boolean, default: false,
+                   desc: 'Adds --quick to "pod" command'
     def validate
       subcommand = if options[:local]
                      'lib'
@@ -23,9 +27,11 @@ module Calypso
       run_pod "#{subcommand} lint #{PODSPECS.join ' '}", args
     end
 
-    option :silent, type: :boolean
-    option :verbose, type: :boolean
     desc 'publish', 'Publish new version to CocoaPods'
+    option :silent, type: :boolean,
+                    desc: 'Adds --silent to "pod" command, takes precedence over --verbose'
+    option :verbose, type: :boolean,
+                     desc: 'Adds --verbose to "pod" command, gives precedence to --silent'
     def publish
       PODSPECS.each do |ps|
         run_pod "trunk push #{ps}", build_args(options)
