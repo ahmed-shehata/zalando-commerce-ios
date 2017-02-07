@@ -12,19 +12,9 @@ module Calypso
         log_abort('ERROR: No $GITHUB_REPO')
     end
 
-    def env_endpoint
-      ENV['GITHUB_ENDPOINT'] ||
-        log_abort('ERROR: No $GITHUB_ENDPOINT')
-    end
-
     def env_oauth_token
       ENV['GITHUB_OAUTH_TOKEN'] ||
         log_abort('ERROR: No $GITHUB_OAUTH_TOKEN')
-    end
-
-    def env_rev_sha
-      ENV['GIT_REVISION_SHA'] ||
-        log_abort('ERROR: No $GIT_REVISION_SHA')
     end
 
     def env_build_id
