@@ -18,6 +18,8 @@ module Calypso
                   desc: 'Passed to "version create" command'
     option :master, type: :boolean, default: false,
                     desc: 'Passed to "version create" command'
+    option :force_version, type: :boolean, default: false,
+                           desc: 'Passed to "version create" command'
     option :dirty, type: :boolean, default: false,
                    desc: 'Passed to "version create" command'
     def create(version = nil)
