@@ -106,3 +106,9 @@
 "paymentMethod.TRUSTLY" = "Trustly";
 "paymentMethod.UNKNOWN" = "Nieznany";
 "AtlasCheckoutError.message.missingPaymentMethod" = "Prosimy wybrać wpierw metodę płatności";
+"addressCheckView.title" = "Zweryfikuj adres";
+"addressCheckView.header.normalized" = "Znaleźliśmy inną wersję podanego adresu.\nKtóry chcesz użyć?";
+"addressCheckView.header.notCorrect" = "Podany adres wygląda na nieprawidłowy.\nNa pewno chcesz go użyć?";
+"addressCheckView.originalAddress" = "Podany adres";
+"addressCheckView.suggestedAddress" = "Proponowany adres";
+"button.general.submit" = "Zatwierdź";
