@@ -24,6 +24,8 @@ enum ViewAnchor {
 
 extension UIView {
 
+    static let onePixel = 1 / UIScreen.main.scale
+
     func removeAllSubviews() {
         subviews.forEach { $0.removeFromSuperview() }
     }

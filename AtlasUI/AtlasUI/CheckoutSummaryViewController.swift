@@ -11,19 +11,20 @@ class CheckoutSummaryViewController: UIViewController {
         didSet {
             actionHandler?.dataSource = self
             actionHandler?.delegate = self
+            configureEditArticleDelegate()
         }
     }
 
-    var viewModel: CheckoutSummaryViewModel {
+    fileprivate var viewModel: CheckoutSummaryViewModel {
         didSet {
             viewModelDidSet()
         }
     }
 
-    fileprivate let rootStackView: CheckoutSummaryRootStackView = {
+    fileprivate lazy var rootStackView: CheckoutSummaryRootStackView = {
         let stackView = CheckoutSummaryRootStackView()
         stackView.axis = .vertical
-        stackView.spacing = 5
+        stackView.productStackView.editArticleStackView.dataSource = self
         return stackView
     }()
 
@@ -41,11 +42,17 @@ class CheckoutSummaryViewController: UIViewController {
         super.viewDidLoad()
         buildView()
         setupActions()
+        rootStackView.productStackView.editArticleStackView.displayInitialSizes()
     }
 
-    fileprivate func viewModelDidSet() {
+    private func viewModelDidSet() {
         setupNavigationBar()
         rootStackView.configure(viewModel: viewModel)
+        configureEditArticleDelegate()
+    }
+
+    private func configureEditArticleDelegate() {
+        rootStackView.productStackView.editArticleStackView.delegate = actionHandler
     }
 
 }
@@ -53,8 +60,8 @@ class CheckoutSummaryViewController: UIViewController {
 extension CheckoutSummaryViewController: UIBuilder {
 
     func configureView() {
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationController?.navigationBar.accessibilityIdentifier = "checkout-summary-navigation-bar"
+        navigationController?.navigationBar.isTranslucent = false
 
         view.backgroundColor = .white
         view.addSubview(rootStackView)
@@ -70,23 +77,20 @@ extension CheckoutSummaryViewController {
 
     fileprivate func setupActions() {
         let submitButtonRecognizer = UITapGestureRecognizer(target: self, action: #selector(submitButtonTapped))
-        rootStackView.footerStackView.submitButton.addGestureRecognizer(submitButtonRecognizer)
+        rootStackView.checkoutContainer.footerStackView.submitButton.addGestureRecognizer(submitButtonRecognizer)
 
         let shippingAddressRecognizer = UITapGestureRecognizer(target: self, action: #selector(shippingAddressTapped))
-        rootStackView.mainStackView.shippingAddressStackView.addGestureRecognizer(shippingAddressRecognizer)
+        rootStackView.checkoutContainer.mainStackView.shippingAddressStackView.addGestureRecognizer(shippingAddressRecognizer)
 
         let billingAddressRecognizer = UITapGestureRecognizer(target: self, action: #selector(billingAddressTapped))
-        rootStackView.mainStackView.billingAddressStackView.addGestureRecognizer(billingAddressRecognizer)
+        rootStackView.checkoutContainer.mainStackView.billingAddressStackView.addGestureRecognizer(billingAddressRecognizer)
 
         let paymentRecognizer = UITapGestureRecognizer(target: self, action: #selector(paymentAddressTapped))
-        rootStackView.mainStackView.paymentStackView.addGestureRecognizer(paymentRecognizer)
+        rootStackView.checkoutContainer.mainStackView.paymentStackView.addGestureRecognizer(paymentRecognizer)
     }
 
     fileprivate func setupNavigationBar() {
         title = Localizer.format(string: viewModel.layout.navigationBarTitleLocalizedKey)
-
-        let hasSingleUnit = viewModel.dataModel.selectedArticleUnit.article.hasSingleUnit
-        navigationItem.setHidesBackButton(viewModel.layout.hideBackButton(hasSingleUnit: hasSingleUnit), animated: false)
 
         if viewModel.layout.showCancelButton {
             showCancelButton()
@@ -149,6 +153,18 @@ extension CheckoutSummaryViewController: CheckoutSummaryActionHandlerDelegate {
 
     func dismissView() {
         dismiss(animated: true, completion: nil)
+    }
+
+}
+
+extension CheckoutSummaryViewController: CheckoutSummaryEditProductDataSource {
+
+    var checkoutContainer: CheckoutContainerView {
+        return rootStackView.checkoutContainer
+    }
+
+    var selectedArticle: SelectedArticle {
+        return viewModel.dataModel.selectedArticle
     }
 
 }

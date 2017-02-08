@@ -5,13 +5,13 @@
 import Foundation
 import AtlasSDK
 
-protocol CheckoutSummaryActionHandlerDataSource: NSObjectProtocol {
+protocol CheckoutSummaryActionHandlerDataSource: class {
 
     var dataModel: CheckoutSummaryDataModel { get }
 
 }
 
-protocol CheckoutSummaryActionHandlerDelegate: NSObjectProtocol {
+protocol CheckoutSummaryActionHandlerDelegate: class {
 
     func updated(dataModel: CheckoutSummaryDataModel) throws
     func updated(layout: CheckoutSummaryLayout)
@@ -20,7 +20,7 @@ protocol CheckoutSummaryActionHandlerDelegate: NSObjectProtocol {
 
 }
 
-protocol CheckoutSummaryActionHandler {
+protocol CheckoutSummaryActionHandler: CheckoutSummaryEditProductDelegate {
 
     weak var dataSource: CheckoutSummaryActionHandlerDataSource? { get set }
     weak var delegate: CheckoutSummaryActionHandlerDelegate? { get set }

@@ -58,19 +58,19 @@ final class PaymentViewController: UIViewController, UIWebViewDelegate {
     }
 
     func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
-        if let error = error as NSError?, !error.isRequestCancelledError {
+        if !error.isRequestCancelledError {
             UserMessage.displayError(error: error)
         }
     }
 
 }
 
-private extension NSError {
+private extension Error {
 
     var isRequestCancelledError: Bool {
         // returning false from `shouldStartLoadWith` method results in error sent by the webview in `didFailLoadWithError` method
         // We could catch this error by cheking the error domain for `WebKitErrorDomain` and prevent this error from displying to the user
-        return self.domain == "WebKitErrorDomain"
+        return (self as NSError).domain == "WebKitErrorDomain"
     }
 
 }

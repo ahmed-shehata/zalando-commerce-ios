@@ -36,20 +36,19 @@ class BorderView: UIView {
         super.layoutSubviews()
         removeAllSubviews()
 
-        let onePixel = 1 / UIScreen.main.scale
         let totalMargin = leadingMargin + trailingMargin
 
         if topBorder {
-            addView(x: leadingMargin, y: 0, width: bounds.width - totalMargin, height: onePixel)
+            addView(x: leadingMargin, y: 0, width: bounds.width - totalMargin, height: UIView.onePixel)
         }
         if rightBorder {
-            addView(x: bounds.width - onePixel, y: leadingMargin, width: onePixel, height: bounds.height - totalMargin)
+            addView(x: bounds.width - UIView.onePixel, y: leadingMargin, width: UIView.onePixel, height: bounds.height - totalMargin)
         }
         if bottomBorder {
-            addView(x: leadingMargin, y: bounds.height - onePixel, width: bounds.width - totalMargin, height: onePixel)
+            addView(x: leadingMargin, y: bounds.height - UIView.onePixel, width: bounds.width - totalMargin, height: UIView.onePixel)
         }
         if leftBorder {
-            addView(x: 0, y: leadingMargin, width: onePixel, height: bounds.height - totalMargin)
+            addView(x: 0, y: leadingMargin, width: UIView.onePixel, height: bounds.height - totalMargin)
         }
     }
 

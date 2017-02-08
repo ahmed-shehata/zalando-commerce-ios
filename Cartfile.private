@@ -1,7 +1,6 @@
 # Tests
 
-# 6.0.0 has build error when switlint 0.16+ installed, switch to regular version on 6.0.1
-github "Quick/Nimble" "9bc6e293982764e81cb69dec9e9f54b13608c777"
+github "Quick/Nimble"
 
 # AtlasMockAPI
 

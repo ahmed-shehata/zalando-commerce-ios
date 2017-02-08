@@ -12,6 +12,7 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
 
     var mockedDataSourceDelegate: CheckoutSummaryActionHandlerDataSourceDelegateMock?
     var actionHandler: LoggedInSummaryActionHandler?
+    var article: Article?
 
     override func setUp() {
         super.setUp()
@@ -175,12 +176,14 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
         AtlasAPIClient.shared?.authorize(withToken: "TestTokenWithoutAddresses")
         actionHandler?.handleShippingAddressSelection()
         expect(UIApplication.topViewController() as? UIAlertController).toNotEventually(beNil())
+        UIApplication.topViewController()?.dismiss(animated: true, completion: nil)
     }
 
     func testBillingAddressWithNoAddresses() {
         AtlasAPIClient.shared?.authorize(withToken: "TestTokenWithoutAddresses")
         actionHandler?.handleBillingAddressSelection()
         expect(UIApplication.topViewController() as? UIAlertController).toNotEventually(beNil())
+        UIApplication.topViewController()?.dismiss(animated: true, completion: nil)
     }
 
 }
@@ -194,10 +197,11 @@ extension LoggedInSummaryActionHandlerTests {
                 guard let customer = result.process() else { return fail() }
                 AtlasUIClient.article(withSKU: self.sku) { result in
                     guard let article = result.process() else { return fail() }
-                    let selectedArticleUnit = SelectedArticleUnit(article: article, selectedUnitIndex: 0)
-                    LoggedInSummaryActionHandler.create(customer: customer, selectedArticleUnit: selectedArticleUnit) { result in
+                    self.article = article
+                    let selectedArticle = SelectedArticle(article: article, unitIndex: 0, quantity: 1)
+                    LoggedInSummaryActionHandler.create(customer: customer, selectedArticle: selectedArticle) { result in
                         guard let actionHandler = result.process() else { return fail() }
-                        let dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, totalPrice: selectedArticleUnit.unit.price)
+                        let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, totalPrice: selectedArticle.price)
                         let viewModel = CheckoutSummaryViewModel(dataModel: dataModel, layout: LoggedInLayout())
                         self.mockedDataSourceDelegate = CheckoutSummaryActionHandlerDataSourceDelegateMock(viewModel: viewModel)
                         self.mockedDataSourceDelegate?.actionHandler = actionHandler
@@ -211,9 +215,10 @@ extension LoggedInSummaryActionHandlerTests {
     }
 
     fileprivate func createCartCheckout() -> CartCheckout? {
+        guard let article = article else { return nil }
         var cartCheckout: CartCheckout?
         waitUntil(timeout: 10) { done in
-            AtlasUIClient.createCheckoutCart(forSKU: self.sku) { result in
+            AtlasUIClient.createCheckoutCart(forSelectedArticle: SelectedArticle(article: article, unitIndex: 0, quantity: 1)) { result in
                 guard let checkoutCart = result.process() else { return fail() }
                 cartCheckout = (cart: checkoutCart.cart, checkout: checkoutCart.checkout)
                 done()
@@ -251,8 +256,8 @@ extension LoggedInSummaryActionHandlerTests {
 extension LoggedInSummaryActionHandlerTests {
 
     fileprivate func createDataModel(withPaymentMethod paymentMethod: String?) -> CheckoutSummaryDataModel? {
-        guard let selectedArticleUnit = mockedDataSourceDelegate?.dataModel.selectedArticleUnit else { return nil }
-        return CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit,
+        guard let selectedArticle = mockedDataSourceDelegate?.dataModel.selectedArticle else { return nil }
+        return CheckoutSummaryDataModel(selectedArticle: selectedArticle,
                                         shippingAddress: nil,
                                         billingAddress: nil,
                                         paymentMethod: paymentMethod,
@@ -261,8 +266,8 @@ extension LoggedInSummaryActionHandlerTests {
     }
 
     fileprivate func createDataModel(fromCheckout checkout: Checkout?, totalPrice: Money) -> CheckoutSummaryDataModel? {
-        guard let selectedArticleUnit = mockedDataSourceDelegate?.dataModel.selectedArticleUnit else { return nil }
-        return CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit,
+        guard let selectedArticle = mockedDataSourceDelegate?.dataModel.selectedArticle else { return nil }
+        return CheckoutSummaryDataModel(selectedArticle: selectedArticle,
                                         shippingAddress: checkout?.shippingAddress,
                                         billingAddress: checkout?.billingAddress,
                                         paymentMethod: checkout?.payment.selected?.method?.localizedTitle,

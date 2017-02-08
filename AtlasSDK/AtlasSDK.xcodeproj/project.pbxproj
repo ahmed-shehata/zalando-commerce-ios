@@ -135,6 +135,7 @@
 		E6A17887BC6BA4C25B2D758C44514B80 /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D788B8AFA05BF3BB7559752D777933 /* Money.swift */; };
 		E7561BB0527C36A7FA74020C228AF322 /* JSONSubscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8804A49A711E3E291A3634007CA610A0 /* JSONSubscript.swift */; };
 		E87BA028C53FD040DB27878DCC189623 /* APICartTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E0CBDAE3A5B1288455C6E176B852B6 /* APICartTests.swift */; };
+		E9C74F4E1E426CCD00334658 /* SelectedArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C74F4D1E426CCD00334658 /* SelectedArticle.swift */; };
 		E9DA099EBE37855C4678BEE9D6A4B70C /* GuestCheckoutAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC31F798CEEA98A6B729B1C1176D7F45 /* GuestCheckoutAddress.swift */; };
 		EA88C1248E9EF27B25014C7A20389FB5 /* TestConsts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13C425956021FE1BA72AD165E0A678D /* TestConsts.swift */; };
 		ECE8DEFDB2A85FBCD15B77C89EA5EF4A /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69384BDB0D3D26DA7967C229EF6CF14A /* Keychain.swift */; };
@@ -315,6 +316,7 @@
 		E658D1F556D2BCD5A571D5E83504CB5C /* GetGuestCheckoutEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetGuestCheckoutEndpoint.swift; sourceTree = "<group>"; };
 		E8D64CF13F8B6EB096F17811FA204DA7 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		E9B412D145F5B4C92805CCECE14A2892 /* TestOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestOptions.swift; path = AtlasSDKTests/TestOptions.swift; sourceTree = SOURCE_ROOT; };
+		E9C74F4D1E426CCD00334658 /* SelectedArticle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedArticle.swift; sourceTree = "<group>"; };
 		EB948FE1748F1B81F513F0FF8312892C /* StringOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringOperators.swift; sourceTree = "<group>"; };
 		EF03E05680890285BF0E73AD57A3CC2C /* UpdateAddressEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateAddressEndpoint.swift; sourceTree = "<group>"; };
 		F3010BEF9FDD14A69B158A003FB4CEC7 /* APIClientErrorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = APIClientErrorsTests.swift; path = AtlasSDKTests/APIClientErrorsTests.swift; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -521,6 +523,7 @@
 				58DF23EF3479716C8A2453BD76EBD9BE /* RequestModels */,
 				FF907654557EB37F4DB0241F5B87C5C2 /* ResponseModels */,
 				02B3D0B088D148969180C104AE3AE50A /* Guest Checkout */,
+				E9C74F4D1E426CCD00334658 /* SelectedArticle.swift */,
 				5ADBF1E8B3FDBFAAE434240E7212C5FF /* Article.swift */,
 				C10B0A082BDFE901D0CEC90A2D969566 /* Cart.swift */,
 				F4F1412AECA75E38BDC3B618E86AF5A3 /* CartItem.swift */,
@@ -945,6 +948,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				845B231C48605B942325197FD4180F95 /* GuestCartRequest.swift in Sources */,
+				E9C74F4E1E426CCD00334658 /* SelectedArticle.swift in Sources */,
 				DC686314A72D004D8057657BAE386E00 /* PaymentMethodType.swift in Sources */,
 				7166B4FA2451DFD8B490B0EE30DE6083 /* HTTPURLResponse.swift in Sources */,
 				BAB73C59BFC027D27AC9A391007C967C /* APIAccessToken.swift in Sources */,
@@ -1149,7 +1153,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.1.4;
+				CURRENT_PROJECT_VERSION = 1.1.5;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1190,7 +1194,7 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1.1.4;
+				DYLIB_CURRENT_VERSION = 1.1.5;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = AtlasSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1240,7 +1244,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.1.4;
+				CURRENT_PROJECT_VERSION = 1.1.5;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1288,7 +1292,7 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1.1.4;
+				DYLIB_CURRENT_VERSION = 1.1.5;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = AtlasSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";

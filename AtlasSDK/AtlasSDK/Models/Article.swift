@@ -4,34 +4,6 @@
 
 import Foundation
 
-public struct SelectedArticleUnit {
-
-    public let article: Article
-    public let selectedUnitIndex: Int
-
-    public init(article: Article, selectedUnitIndex: Int) {
-        self.article = article
-        self.selectedUnitIndex = selectedUnitIndex
-    }
-
-    public var sku: String {
-        return unit.id
-    }
-
-    public var unit: Article.Unit {
-        return article.availableUnits[selectedUnitIndex]
-    }
-
-    public var price: Money {
-        return unit.price
-    }
-
-    public var priceAmount: MoneyAmount {
-        return unit.price.amount
-    }
-
-}
-
 public struct Article {
 
     public let id: String

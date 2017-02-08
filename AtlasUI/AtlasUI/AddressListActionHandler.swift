@@ -5,7 +5,7 @@
 import Foundation
 import AtlasSDK
 
-protocol AddressListActionHandlerDelegate: NSObjectProtocol {
+protocol AddressListActionHandlerDelegate: class {
 
     func created(address: EquatableAddress)
     func updated(address: EquatableAddress)

@@ -68,8 +68,8 @@ extension GuestSummaryActionHandlerTests {
         waitUntil(timeout: 10) { done in
             AtlasUIClient.article(withSKU: self.sku) { result in
                 guard let article = result.process() else { return fail() }
-                let selectedArticleUnit = SelectedArticleUnit(article: article, selectedUnitIndex: 0)
-                self.mockedDataSourceDelegate = GuestSummaryActionHandlerDataSourceDelegateMocked(selectedArticleUnit: selectedArticleUnit)
+                let selectedArticle = SelectedArticle(article: article, unitIndex: 0, quantity: 1)
+                self.mockedDataSourceDelegate = GuestSummaryActionHandlerDataSourceDelegateMocked(selectedArticle: selectedArticle)
                 guestActionHandler = GuestCheckoutSummaryActionHandler(email: "john.doe@zalando.de")
                 guestActionHandler?.dataSource = self.mockedDataSourceDelegate
                 guestActionHandler?.delegate = self.mockedDataSourceDelegate
@@ -93,7 +93,7 @@ extension GuestSummaryActionHandlerTests {
     }
 
     fileprivate func addAddress(toDataModel dataModel: CheckoutSummaryDataModel) -> CheckoutSummaryDataModel {
-        return CheckoutSummaryDataModel(selectedArticleUnit: dataModel.selectedArticleUnit,
+        return CheckoutSummaryDataModel(selectedArticle: dataModel.selectedArticle,
                                         shippingAddress: createAddress(),
                                         billingAddress: createAddress(),
                                         paymentMethod: dataModel.paymentMethod,
@@ -123,8 +123,8 @@ class GuestSummaryActionHandlerDataSourceDelegateMocked: NSObject, CheckoutSumma
     var dataModel: CheckoutSummaryDataModel
     var layout: CheckoutSummaryLayout?
 
-    init(selectedArticleUnit: SelectedArticleUnit) {
-        dataModel = CheckoutSummaryDataModel(selectedArticleUnit: selectedArticleUnit, totalPrice: Money.Zero)
+    init(selectedArticle: SelectedArticle) {
+        dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, totalPrice: Money.Zero)
     }
 
     func updated(dataModel: CheckoutSummaryDataModel) {

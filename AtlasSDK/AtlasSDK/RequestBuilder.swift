@@ -23,8 +23,7 @@ struct RequestBuilder {
         buildAndExecuteSessionTask { result in
             switch result {
             case .failure(let error):
-                AtlasLogger.logError("FAILED CONNECTION:", type(of: endpoint),
-                                     "\nERROR:", error)
+                AtlasLogger.logError("FAILED CONNECTION:", type(of: endpoint), "\nERROR:", error)
                 completion(.failure(error))
 
             case .success(let response):
@@ -44,9 +43,7 @@ struct RequestBuilder {
         self.urlSession.dataTask(with: request) { data, response, error in
             let taskResponse = DataTaskResponse(request: request, response: response, data: data, error: error)
             ResponseParser(taskResponse: taskResponse).parse(completion: completion)
-            }
-            .resume()
-
+        }.resume()
     }
 
     fileprivate func buildRequest() throws -> URLRequest {

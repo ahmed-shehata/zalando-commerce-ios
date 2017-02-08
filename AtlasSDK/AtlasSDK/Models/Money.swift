@@ -4,7 +4,7 @@
 
 import Foundation
 
-public typealias MoneyAmount = NSDecimalNumber
+public typealias MoneyAmount = Decimal
 
 public struct Money {
 
@@ -31,11 +31,11 @@ extension Money: Hashable {
 }
 
 public func == (lhs: Money, rhs: Money) -> Bool {
-    return lhs.amount.isEqual(rhs.amount) && lhs.currency == rhs.currency
+    return lhs.amount == rhs.amount && lhs.currency == rhs.currency
 }
 
 public func < (lhs: Money, rhs: Money) -> Bool {
-    return lhs.amount.compare(rhs.amount) == .orderedAscending
+    return lhs.amount < rhs.amount
 }
 
 extension Money: CustomStringConvertible {
@@ -58,7 +58,7 @@ extension Money: JSONInitializable {
             let currency = json[Keys.currency].string
             else { return nil }
 
-        self.init(amount: MoneyAmount(decimal: amount.decimalValue), currency: currency)
+        self.init(amount: amount.decimalValue, currency: currency)
     }
 
 }

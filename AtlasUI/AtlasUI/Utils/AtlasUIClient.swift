@@ -25,9 +25,11 @@ struct AtlasUIClient {
         }
     }
 
-    static func createCheckoutCart(forSKU sku: String, addresses: CheckoutAddresses? = nil, completion: @escaping CheckoutCartCompletion) {
+    static func createCheckoutCart(forSelectedArticle selectedArticle: SelectedArticle,
+                                   addresses: CheckoutAddresses? = nil,
+                                   completion: @escaping CheckoutCartCompletion) {
         UserMessage.displayLoader { hideLoader in
-            AtlasAPIClient.shared?.createCheckoutCart(forSKU: sku, addresses: addresses) { result in
+            AtlasAPIClient.shared?.createCheckoutCart(forSelectedArticle: selectedArticle, addresses: addresses) { result in
                 hideLoader()
                 completion(result)
             }

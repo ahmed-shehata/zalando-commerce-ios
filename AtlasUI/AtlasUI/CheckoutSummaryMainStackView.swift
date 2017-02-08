@@ -6,15 +6,6 @@ import UIKit
 
 class CheckoutSummaryMainStackView: UIStackView {
 
-    let productStackView: CheckoutSummaryProductStackView = {
-        let stackView = CheckoutSummaryProductStackView()
-        stackView.axis = .horizontal
-        stackView.spacing = 15
-        stackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
-        stackView.isLayoutMarginsRelativeArrangement = true
-        return stackView
-    }()
-
     let orderStackView: CheckoutSummaryOrderStackView = {
         let stackView = CheckoutSummaryOrderStackView()
         stackView.isHidden = true
@@ -22,13 +13,6 @@ class CheckoutSummaryMainStackView: UIStackView {
         stackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
-    }()
-
-    let productSeparatorView: BorderView = {
-        let view = BorderView()
-        view.bottomBorder = true
-        view.borderColor = UIColor(hex: 0xE5E5E5)
-        return view
     }()
 
     let shippingAddressStackView: CheckoutSummaryAddressStackView = {
@@ -117,9 +101,7 @@ class CheckoutSummaryMainStackView: UIStackView {
 extension CheckoutSummaryMainStackView: UIBuilder {
 
     func configureView() {
-        addArrangedSubview(productStackView)
         addArrangedSubview(orderStackView)
-        addArrangedSubview(productSeparatorView)
 
         addArrangedSubview(shippingAddressStackView)
         addArrangedSubview(shippingAddressSeparatorView)
@@ -142,7 +124,6 @@ extension CheckoutSummaryMainStackView: UIBuilder {
         paymentStackView.setHeight(equalToView: billingAddressStackView)
         paymentStackView.setHeight(equalToView: shippingAddressStackView)
 
-        productSeparatorView.setHeight(equalToConstant: 10)
         shippingAddressSeparatorView.setHeight(equalToConstant: 1)
         billingAddressSeparatorView.setHeight(equalToConstant: 1)
         paymentSeparatorView.setHeight(equalToConstant: 1)
@@ -155,7 +136,6 @@ extension CheckoutSummaryMainStackView: UIDataBuilder {
     typealias T = CheckoutSummaryViewModel
 
     func configure(viewModel: T) {
-        productStackView.configure(viewModel: viewModel.dataModel.selectedArticleUnit)
         orderStackView.configure(viewModel: viewModel.dataModel.orderNumber)
         priceStackView.configure(viewModel: viewModel.dataModel)
         deliveryStackView.configure(viewModel: viewModel.dataModel)

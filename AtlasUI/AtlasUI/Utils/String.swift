@@ -6,6 +6,10 @@ import Foundation
 
 extension String {
 
+    var attributed: NSAttributedString {
+        return NSAttributedString(string: self)
+    }
+
     func trimmed() -> String {
         return trimmingCharacters(in: .whitespacesAndNewlines)
     }

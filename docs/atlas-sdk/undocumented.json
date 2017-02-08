@@ -1,2994 +1,3050 @@
 {
   "warnings": [
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/APIRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/APIRequest.swift",
       "line": 7,
       "symbol": "APIRequest",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/APIRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/APIRequest.swift",
       "line": 19,
       "symbol": "APIRequest.execute(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Atlas.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Atlas.swift",
       "line": 11,
       "symbol": "NSNotification.AtlasAuthorized",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Atlas.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Atlas.swift",
       "line": 12,
       "symbol": "NSNotification.AtlasDeauthorized",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Atlas.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Atlas.swift",
       "line": 13,
       "symbol": "NSNotification.AtlasAuthorizationChanged",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Atlas.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Atlas.swift",
       "line": 17,
       "symbol": "Atlas",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Atlas.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Atlas.swift",
       "line": 19,
       "symbol": "Atlas.configure(options:completion:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient.swift",
       "line": null,
       "symbol": "AtlasAPIClient",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient.swift",
       "line": null,
       "symbol": "AtlasAPIClient",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient.swift",
       "line": 9,
       "symbol": "AtlasAPIClient",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient.swift",
       "line": 11,
       "symbol": "AtlasAPIClient.config",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient.swift",
       "line": 68,
       "symbol": "AtlasAPIClient.isAuthorized",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient.swift",
       "line": 72,
       "symbol": "AtlasAPIClient.authorize(withToken:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient.swift",
       "line": 80,
       "symbol": "AtlasAPIClient.deauthorize()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient.swift",
       "line": 85,
       "symbol": "AtlasAPIClient.deauthorizeAll()",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient_public.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient_public.swift",
       "line": 48,
       "symbol": "AtlasAPIClient.customer(completion:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient_public.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient_public.swift",
       "line": 53,
       "symbol": "AtlasAPIClient.createCart(withItems:completion:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient_public.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient_public.swift",
       "line": 59,
-      "symbol": "AtlasAPIClient.createCheckoutCart(forSKU:addresses:completion:)",
+      "symbol": "AtlasAPIClient.createCheckoutCart(forSelectedArticle:addresses:completion:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient_public.swift",
-      "line": 91,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient_public.swift",
+      "line": 94,
       "symbol": "AtlasAPIClient.createCheckout(fromCardId:addresses:completion:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient_public.swift",
-      "line": 97,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient_public.swift",
+      "line": 100,
       "symbol": "AtlasAPIClient.updateCheckout(withId:updateCheckoutRequest:completion:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient_public.swift",
-      "line": 104,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient_public.swift",
+      "line": 107,
       "symbol": "AtlasAPIClient.createOrder(fromCheckoutId:completion:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient_public.swift",
-      "line": 110,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient_public.swift",
+      "line": 113,
       "symbol": "AtlasAPIClient.createGuestOrder(request:completion:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient_public.swift",
-      "line": 115,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient_public.swift",
+      "line": 118,
       "symbol": "AtlasAPIClient.guestCheckoutPaymentSelectionURL(request:completion:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient_public.swift",
-      "line": 120,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient_public.swift",
+      "line": 123,
       "symbol": "AtlasAPIClient.guestCheckout(checkoutId:token:completion:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient_public.swift",
-      "line": 125,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient_public.swift",
+      "line": 128,
       "symbol": "AtlasAPIClient.article(withSKU:completion:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient_public.swift",
-      "line": 138,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient_public.swift",
+      "line": 141,
       "symbol": "AtlasAPIClient.addresses(completion:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient_public.swift",
-      "line": 143,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient_public.swift",
+      "line": 146,
       "symbol": "AtlasAPIClient.deleteAddress(withId:completion:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient_public.swift",
-      "line": 148,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient_public.swift",
+      "line": 151,
       "symbol": "AtlasAPIClient.createAddress(_:completion:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient_public.swift",
-      "line": 153,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient_public.swift",
+      "line": 156,
       "symbol": "AtlasAPIClient.updateAddress(withId:request:completion:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient_public.swift",
-      "line": 160,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient_public.swift",
+      "line": 163,
       "symbol": "AtlasAPIClient.checkAddress(_:completion:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
       "line": null,
       "symbol": "AtlasError",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
       "line": 7,
       "symbol": "AtlasError",
       "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
       "line": 9,
       "symbol": "AtlasError.localizedTitleKey",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
       "line": 10,
       "symbol": "AtlasError.localizedMessageKey",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
       "line": 16,
       "symbol": "AtlasError.localizedTitleKey",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
       "line": 17,
       "symbol": "AtlasError.localizedMessageKey",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
       "line": 21,
       "symbol": "AtlasConfigurationError",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
       "line": 23,
       "symbol": "AtlasConfigurationError.incorrectConfigServiceResponse",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
       "line": 24,
       "symbol": "AtlasConfigurationError.missingClientId",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
       "line": 25,
       "symbol": "AtlasConfigurationError.missingSalesChannel",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
       "line": 29,
       "symbol": "AtlasAPIError",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
       "line": 31,
       "symbol": "AtlasAPIError.noData",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
       "line": 32,
       "symbol": "AtlasAPIError.noInternet",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
       "line": 33,
       "symbol": "AtlasAPIError.invalidResponseFormat",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
       "line": 34,
       "symbol": "AtlasAPIError.unauthorized",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
       "line": 36,
       "symbol": "AtlasAPIError.nsURLError",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
       "line": 37,
       "symbol": "AtlasAPIError.http",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
       "line": 38,
       "symbol": "AtlasAPIError.backend",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
       "line": 40,
       "symbol": "AtlasAPIError.checkoutFailed",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
       "line": 44,
       "symbol": "AtlasCheckoutError",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
       "line": 46,
       "symbol": "AtlasCheckoutError.unclassified",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
       "line": 47,
       "symbol": "AtlasCheckoutError.outOfStock",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
       "line": 48,
       "symbol": "AtlasCheckoutError.missingAddress",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
       "line": 49,
-      "symbol": "AtlasCheckoutError.missingAddressAndPayment",
+      "symbol": "AtlasCheckoutError.missingPaymentMethod",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
       "line": 50,
       "symbol": "AtlasCheckoutError.unsupportedCountry",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
       "line": 51,
       "symbol": "AtlasCheckoutError.priceChanged",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
       "line": 52,
       "symbol": "AtlasCheckoutError.paymentMethodNotAvailable",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
       "line": 53,
       "symbol": "AtlasCheckoutError.checkoutFailure",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
       "line": 54,
       "symbol": "AtlasCheckoutError.addressInvalid",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
       "line": 55,
       "symbol": "AtlasCheckoutError.photosLibraryAccessNotAllowed",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
       "line": 7,
-      "symbol": "SelectedArticleUnit",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 9,
-      "symbol": "SelectedArticleUnit.article",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 10,
-      "symbol": "SelectedArticleUnit.selectedUnitIndex",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 12,
-      "symbol": "SelectedArticleUnit.init(article:selectedUnitIndex:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 17,
-      "symbol": "SelectedArticleUnit.sku",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 21,
-      "symbol": "SelectedArticleUnit.unit",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 25,
-      "symbol": "SelectedArticleUnit.price",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 29,
-      "symbol": "SelectedArticleUnit.priceAmount",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 35,
       "symbol": "Article",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 37,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
+      "line": 9,
       "symbol": "Article.id",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 38,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
+      "line": 10,
       "symbol": "Article.name",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 39,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
+      "line": 11,
       "symbol": "Article.color",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 40,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
+      "line": 12,
       "symbol": "Article.brand",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 41,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
+      "line": 13,
       "symbol": "Article.units",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 42,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
+      "line": 14,
       "symbol": "Article.availableUnits",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 43,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
+      "line": 15,
       "symbol": "Article.media",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 45,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
+      "line": 17,
       "symbol": "Article.hasSingleUnit",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 49,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
+      "line": 21,
       "symbol": "Article.hasAvailableUnits",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 53,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
+      "line": 25,
       "symbol": "Article.thumbnailURL",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 57,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
+      "line": 29,
       "symbol": "Article.Brand",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 58,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
+      "line": 30,
       "symbol": "Article.Brand.name",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 61,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
+      "line": 33,
       "symbol": "Article.Unit",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 62,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
+      "line": 34,
       "symbol": "Article.Unit.id",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 63,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
+      "line": 35,
       "symbol": "Article.Unit.size",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 64,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
+      "line": 36,
       "symbol": "Article.Unit.price",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 65,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
+      "line": 37,
       "symbol": "Article.Unit.originalPrice",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 66,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
+      "line": 38,
       "symbol": "Article.Unit.available",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 67,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
+      "line": 39,
       "symbol": "Article.Unit.stock",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 68,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
+      "line": 40,
       "symbol": "Article.Unit.partner",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 71,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
+      "line": 43,
       "symbol": "Article.Media",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 72,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
+      "line": 44,
       "symbol": "Article.Media.images",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 75,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
+      "line": 47,
       "symbol": "Article.Image",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 76,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
+      "line": 48,
       "symbol": "Article.Image.order",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 77,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
+      "line": 49,
       "symbol": "Article.Image.catalogURL",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 78,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
+      "line": 50,
       "symbol": "Article.Image.catalogHDURL",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 79,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
+      "line": 51,
       "symbol": "Article.Image.detailURL",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 80,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
+      "line": 52,
       "symbol": "Article.Image.detailHDURL",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 81,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
+      "line": 53,
       "symbol": "Article.Image.largeURL",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 82,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
+      "line": 54,
       "symbol": "Article.Image.largeHDURL",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 85,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
+      "line": 57,
       "symbol": "Article.Partner",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 86,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
+      "line": 58,
       "symbol": "Article.Partner.id",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 87,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
+      "line": 59,
       "symbol": "Article.Partner.name",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 88,
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
+      "line": 60,
       "symbol": "Article.Partner.detailsURL",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Cart.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Cart.swift",
       "line": null,
       "symbol": "Cart",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Cart.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Cart.swift",
       "line": 7,
       "symbol": "Cart",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Cart.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Cart.swift",
       "line": 8,
       "symbol": "Cart.id",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Cart.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Cart.swift",
       "line": 9,
       "symbol": "Cart.items",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Cart.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Cart.swift",
       "line": 10,
       "symbol": "Cart.itemsOutOfStock",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Cart.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Cart.swift",
       "line": 11,
       "symbol": "Cart.delivery",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Cart.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Cart.swift",
       "line": 12,
       "symbol": "Cart.grossTotal",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Cart.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Cart.swift",
       "line": 13,
       "symbol": "Cart.taxTotal",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Cart.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Cart.swift",
       "line": 22,
       "symbol": "==(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CartItem.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CartItem.swift",
       "line": 5,
       "symbol": "CartItem",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CartItem.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CartItem.swift",
       "line": 6,
       "symbol": "CartItem.sku",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CartItem.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CartItem.swift",
       "line": 7,
       "symbol": "CartItem.quantity",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CartItemRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CartItemRequest.swift",
       "line": 7,
       "symbol": "CartItemRequest",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CartItemRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CartItemRequest.swift",
       "line": 9,
       "symbol": "CartItemRequest.sku",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CartItemRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CartItemRequest.swift",
       "line": 10,
       "symbol": "CartItemRequest.quantity",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CartItemRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CartItemRequest.swift",
       "line": 12,
       "symbol": "CartItemRequest.init(sku:quantity:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CartRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CartRequest.swift",
       "line": 7,
       "symbol": "CartRequest",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CartRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CartRequest.swift",
       "line": 9,
       "symbol": "CartRequest.items",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CartRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CartRequest.swift",
       "line": 10,
       "symbol": "CartRequest.replaceItems",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CartRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CartRequest.swift",
       "line": 12,
       "symbol": "CartRequest.init(items:replaceItems:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Catalog.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Catalog.swift",
       "line": 7,
       "symbol": "Catalog",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Catalog.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Catalog.swift",
       "line": 9,
       "symbol": "Catalog.articles",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddress.swift",
       "line": 5,
-      "symbol": "CheckAddress",
+      "symbol": "AddressCheck",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddress.swift",
       "line": 6,
-      "symbol": "CheckAddress.street",
+      "symbol": "AddressCheck.street",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddress.swift",
       "line": 7,
-      "symbol": "CheckAddress.additional",
+      "symbol": "AddressCheck.additional",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddress.swift",
       "line": 8,
-      "symbol": "CheckAddress.zip",
+      "symbol": "AddressCheck.zip",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddress.swift",
       "line": 9,
-      "symbol": "CheckAddress.city",
+      "symbol": "AddressCheck.city",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddress.swift",
       "line": 10,
-      "symbol": "CheckAddress.countryCode",
+      "symbol": "AddressCheck.countryCode",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddress.swift",
+      "line": 56,
+      "symbol": "===(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddressRequest.swift",
       "line": 5,
       "symbol": "CheckAddressRequest",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddressRequest.swift",
       "line": 6,
       "symbol": "CheckAddressRequest.address",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddressRequest.swift",
       "line": 7,
       "symbol": "CheckAddressRequest.pickupPoint",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddressResponse.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddressResponse.swift",
       "line": 5,
       "symbol": "CheckAddressStatus",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddressResponse.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddressResponse.swift",
       "line": 6,
       "symbol": "CheckAddressStatus.correct",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddressResponse.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddressResponse.swift",
       "line": 7,
       "symbol": "CheckAddressStatus.normalized",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddressResponse.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddressResponse.swift",
       "line": 8,
       "symbol": "CheckAddressStatus.notCorrect",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddressResponse.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddressResponse.swift",
       "line": 11,
       "symbol": "CheckAddressResponse",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddressResponse.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddressResponse.swift",
       "line": 12,
       "symbol": "CheckAddressResponse.status",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddressResponse.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddressResponse.swift",
       "line": 13,
       "symbol": "CheckAddressResponse.normalizedAddress",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Checkout.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Checkout.swift",
       "line": null,
       "symbol": "Checkout",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Checkout.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Checkout.swift",
       "line": 7,
       "symbol": "Checkout",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Checkout.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Checkout.swift",
       "line": 9,
       "symbol": "Checkout.id",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Checkout.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Checkout.swift",
       "line": 10,
       "symbol": "Checkout.customerNumber",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Checkout.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Checkout.swift",
       "line": 11,
       "symbol": "Checkout.cartId",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Checkout.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Checkout.swift",
       "line": 13,
       "symbol": "Checkout.delivery",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Checkout.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Checkout.swift",
       "line": 14,
       "symbol": "Checkout.payment",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Checkout.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Checkout.swift",
       "line": 16,
       "symbol": "Checkout.billingAddress",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Checkout.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Checkout.swift",
       "line": 17,
       "symbol": "Checkout.shippingAddress",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Checkout.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Checkout.swift",
       "line": 29,
       "symbol": "==(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckoutAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckoutAddress.swift",
       "line": null,
       "symbol": "CheckoutAddress",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckoutAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckoutAddress.swift",
       "line": 7,
       "symbol": "CheckoutAddress",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckoutAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckoutAddress.swift",
       "line": 8,
       "symbol": "CheckoutAddress.id",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckoutAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckoutAddress.swift",
       "line": 9,
       "symbol": "CheckoutAddress.gender",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckoutAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckoutAddress.swift",
       "line": 10,
       "symbol": "CheckoutAddress.firstName",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckoutAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckoutAddress.swift",
       "line": 11,
       "symbol": "CheckoutAddress.lastName",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckoutAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckoutAddress.swift",
       "line": 12,
       "symbol": "CheckoutAddress.street",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckoutAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckoutAddress.swift",
       "line": 13,
       "symbol": "CheckoutAddress.additional",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckoutAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckoutAddress.swift",
       "line": 14,
       "symbol": "CheckoutAddress.zip",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckoutAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckoutAddress.swift",
       "line": 15,
       "symbol": "CheckoutAddress.city",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckoutAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckoutAddress.swift",
       "line": 16,
       "symbol": "CheckoutAddress.countryCode",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckoutAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckoutAddress.swift",
       "line": 18,
       "symbol": "CheckoutAddress.pickupPoint",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckoutAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckoutAddress.swift",
       "line": 61,
       "symbol": "CheckoutAddress.init(address:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckoutAddresses.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckoutAddresses.swift",
       "line": 10,
       "symbol": "CheckoutAddresses",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckoutAddresses.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckoutAddresses.swift",
       "line": 12,
       "symbol": "CheckoutAddresses.billingAddress",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckoutAddresses.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckoutAddresses.swift",
       "line": 13,
       "symbol": "CheckoutAddresses.shippingAddress",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckoutAddresses.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckoutAddresses.swift",
       "line": 15,
       "symbol": "CheckoutAddresses.init(shippingAddress:billingAddress:autoFill:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
       "line": null,
       "symbol": "Config",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
       "line": null,
       "symbol": "Config",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
       "line": null,
       "symbol": "Config",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
       "line": 7,
       "symbol": "Config",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
       "line": 9,
       "symbol": "Config.catalogURL",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
       "line": 10,
       "symbol": "Config.checkoutURL",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
       "line": 11,
       "symbol": "Config.checkoutGatewayURL",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
       "line": 12,
       "symbol": "Config.loginURL",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
       "line": 14,
       "symbol": "Config.clientId",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
       "line": 15,
       "symbol": "Config.useSandboxEnvironment",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
       "line": 16,
       "symbol": "Config.guestCheckoutEnabled",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
       "line": 18,
       "symbol": "Config.payment",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
       "line": 19,
       "symbol": "Config.salesChannel",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
       "line": 20,
       "symbol": "Config.availableSalesChannels",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
       "line": 22,
       "symbol": "Config.interfaceLocale",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
       "line": 24,
       "symbol": "Config.Payment",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
       "line": 25,
       "symbol": "Config.Payment.selectionCallbackURL",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
       "line": 26,
       "symbol": "Config.Payment.thirdPartyCallbackURL",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
       "line": 29,
       "symbol": "Config.SalesChannel",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
       "line": 30,
       "symbol": "Config.SalesChannel.identifier",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
       "line": 31,
       "symbol": "Config.SalesChannel.locale",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
       "line": 32,
       "symbol": "Config.SalesChannel.termsAndConditionsURL",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
       "line": 34,
       "symbol": "Config.SalesChannel.countryCode",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Config.swift",
       "line": 38,
       "symbol": "Config.SalesChannel.languageCode",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CreateAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CreateAddressRequest.swift",
       "line": 5,
       "symbol": "CreateAddressRequest",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CreateAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CreateAddressRequest.swift",
       "line": 6,
       "symbol": "CreateAddressRequest.gender",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CreateAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CreateAddressRequest.swift",
       "line": 7,
       "symbol": "CreateAddressRequest.firstName",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CreateAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CreateAddressRequest.swift",
       "line": 8,
       "symbol": "CreateAddressRequest.lastName",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CreateAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CreateAddressRequest.swift",
       "line": 9,
       "symbol": "CreateAddressRequest.street",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CreateAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CreateAddressRequest.swift",
       "line": 10,
       "symbol": "CreateAddressRequest.additional",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CreateAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CreateAddressRequest.swift",
       "line": 11,
       "symbol": "CreateAddressRequest.zip",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CreateAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CreateAddressRequest.swift",
       "line": 12,
       "symbol": "CreateAddressRequest.city",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CreateAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CreateAddressRequest.swift",
       "line": 13,
       "symbol": "CreateAddressRequest.countryCode",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CreateAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CreateAddressRequest.swift",
       "line": 14,
       "symbol": "CreateAddressRequest.pickupPoint",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CreateAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CreateAddressRequest.swift",
       "line": 15,
       "symbol": "CreateAddressRequest.defaultBilling",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CreateAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CreateAddressRequest.swift",
       "line": 16,
       "symbol": "CreateAddressRequest.defaultShipping",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CreateCheckoutRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CreateCheckoutRequest.swift",
       "line": 7,
       "symbol": "CreateCheckoutRequest",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CreateCheckoutRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CreateCheckoutRequest.swift",
       "line": 9,
       "symbol": "CreateCheckoutRequest.cartId",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CreateCheckoutRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CreateCheckoutRequest.swift",
       "line": 10,
       "symbol": "CreateCheckoutRequest.billingAddressId",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CreateCheckoutRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CreateCheckoutRequest.swift",
       "line": 11,
       "symbol": "CreateCheckoutRequest.shippingAddressId",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CreateCheckoutRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CreateCheckoutRequest.swift",
       "line": 13,
       "symbol": "CreateCheckoutRequest.init(cartId:addresses:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Customer.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Customer.swift",
       "line": null,
       "symbol": "Customer",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Customer.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Customer.swift",
       "line": 7,
       "symbol": "Customer",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Customer.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Customer.swift",
       "line": 9,
       "symbol": "Customer.customerNumber",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Customer.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Customer.swift",
       "line": 10,
       "symbol": "Customer.gender",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Customer.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Customer.swift",
       "line": 11,
       "symbol": "Customer.firstName",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Customer.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Customer.swift",
       "line": 12,
       "symbol": "Customer.lastName",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Customer.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Customer.swift",
       "line": 13,
       "symbol": "Customer.email",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Customer.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Customer.swift",
       "line": 15,
       "symbol": "Customer.Gender",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Customer.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Customer.swift",
       "line": 16,
       "symbol": "Customer.Gender.Female",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Customer.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Customer.swift",
       "line": 16,
       "symbol": "Customer.Gender.Male",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Delivery.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Delivery.swift",
       "line": 7,
       "symbol": "Delivery",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Delivery.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Delivery.swift",
       "line": 9,
       "symbol": "Delivery.earliest",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Delivery.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Delivery.swift",
       "line": 10,
       "symbol": "Delivery.latest",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/FormattableAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/FormattableAddress.swift",
       "line": 7,
       "symbol": "FormattableAddress",
       "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/FormattableAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/FormattableAddress.swift",
       "line": 9,
       "symbol": "FormattableAddress.gender",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/FormattableAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/FormattableAddress.swift",
       "line": 10,
       "symbol": "FormattableAddress.firstName",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/FormattableAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/FormattableAddress.swift",
       "line": 11,
       "symbol": "FormattableAddress.lastName",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/FormattableAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/FormattableAddress.swift",
       "line": 13,
       "symbol": "FormattableAddress.zip",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/FormattableAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/FormattableAddress.swift",
       "line": 14,
       "symbol": "FormattableAddress.city",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/FormattableAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/FormattableAddress.swift",
       "line": 15,
       "symbol": "FormattableAddress.countryCode",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/FormattableAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/FormattableAddress.swift",
       "line": 19,
       "symbol": "EquatableAddress",
       "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/FormattableAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/FormattableAddress.swift",
       "line": 21,
       "symbol": "EquatableAddress.id",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/FormattableAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/FormattableAddress.swift",
       "line": 25,
       "symbol": "==(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/FormattableAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/FormattableAddress.swift",
       "line": 29,
       "symbol": "===(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Gender.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/FormattableAddress.swift",
+      "line": 42,
+      "symbol": "===(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Gender.swift",
       "line": 5,
       "symbol": "Gender",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Gender.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Gender.swift",
       "line": 7,
       "symbol": "Gender.male",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Gender.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Gender.swift",
       "line": 8,
       "symbol": "Gender.female",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestAddressRequest.swift",
       "line": 5,
       "symbol": "GuestAddressRequest",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestAddressRequest.swift",
       "line": 7,
       "symbol": "GuestAddressRequest.gender",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestAddressRequest.swift",
       "line": 8,
       "symbol": "GuestAddressRequest.firstName",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestAddressRequest.swift",
       "line": 9,
       "symbol": "GuestAddressRequest.lastName",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestAddressRequest.swift",
       "line": 10,
       "symbol": "GuestAddressRequest.street",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestAddressRequest.swift",
       "line": 11,
       "symbol": "GuestAddressRequest.additional",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestAddressRequest.swift",
       "line": 12,
       "symbol": "GuestAddressRequest.zip",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestAddressRequest.swift",
       "line": 13,
       "symbol": "GuestAddressRequest.city",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestAddressRequest.swift",
       "line": 14,
       "symbol": "GuestAddressRequest.countryCode",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestAddressRequest.swift",
       "line": 15,
       "symbol": "GuestAddressRequest.pickupPoint",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestAddressRequest.swift",
       "line": 17,
       "symbol": "GuestAddressRequest.init(address:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCart.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCart.swift",
       "line": 7,
       "symbol": "GuestCart",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCart.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCart.swift",
       "line": 8,
       "symbol": "GuestCart.items",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCart.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCart.swift",
       "line": 9,
       "symbol": "GuestCart.itemsOutOfStock",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCart.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCart.swift",
       "line": 10,
       "symbol": "GuestCart.grossTotal",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCart.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCart.swift",
       "line": 11,
       "symbol": "GuestCart.taxTotal",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCartRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCartRequest.swift",
       "line": 5,
       "symbol": "GuestCartRequest",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCartRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCartRequest.swift",
       "line": 7,
       "symbol": "GuestCartRequest.items",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCartRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCartRequest.swift",
       "line": 9,
       "symbol": "GuestCartRequest.init(items:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCheckout.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCheckout.swift",
       "line": 7,
       "symbol": "GuestCheckout",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCheckout.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCheckout.swift",
       "line": 9,
       "symbol": "GuestCheckout.shippingAddress",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCheckout.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCheckout.swift",
       "line": 10,
       "symbol": "GuestCheckout.billingAddress",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCheckout.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCheckout.swift",
       "line": 11,
       "symbol": "GuestCheckout.cart",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCheckout.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCheckout.swift",
       "line": 12,
       "symbol": "GuestCheckout.payment",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCheckout.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCheckout.swift",
       "line": 13,
       "symbol": "GuestCheckout.delivery",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCheckoutAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCheckoutAddress.swift",
       "line": 7,
       "symbol": "GuestCheckoutAddress",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCheckoutAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCheckoutAddress.swift",
       "line": 9,
       "symbol": "GuestCheckoutAddress.id",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCheckoutAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCheckoutAddress.swift",
       "line": 10,
       "symbol": "GuestCheckoutAddress.gender",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCheckoutAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCheckoutAddress.swift",
       "line": 11,
       "symbol": "GuestCheckoutAddress.firstName",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCheckoutAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCheckoutAddress.swift",
       "line": 12,
       "symbol": "GuestCheckoutAddress.lastName",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCheckoutAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCheckoutAddress.swift",
       "line": 13,
       "symbol": "GuestCheckoutAddress.street",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCheckoutAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCheckoutAddress.swift",
       "line": 14,
       "symbol": "GuestCheckoutAddress.additional",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCheckoutAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCheckoutAddress.swift",
       "line": 15,
       "symbol": "GuestCheckoutAddress.zip",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCheckoutAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCheckoutAddress.swift",
       "line": 16,
       "symbol": "GuestCheckoutAddress.city",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCheckoutAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCheckoutAddress.swift",
       "line": 17,
       "symbol": "GuestCheckoutAddress.countryCode",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCheckoutAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCheckoutAddress.swift",
       "line": 18,
       "symbol": "GuestCheckoutAddress.pickupPoint",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCustomerRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCustomerRequest.swift",
       "line": null,
       "symbol": "GuestCustomerRequest",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCustomerRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCustomerRequest.swift",
       "line": 5,
       "symbol": "GuestCustomerRequest",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCustomerRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCustomerRequest.swift",
       "line": 7,
       "symbol": "GuestCustomerRequest.email",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCustomerRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCustomerRequest.swift",
       "line": 8,
       "symbol": "GuestCustomerRequest.subscribeNewsletter",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCustomerRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCustomerRequest.swift",
       "line": 19,
       "symbol": "GuestCustomerRequest.init(guestEmail:subscribeNewsletter:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestOrder.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestOrder.swift",
       "line": 7,
       "symbol": "GuestOrder",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestOrder.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestOrder.swift",
       "line": 9,
       "symbol": "GuestOrder.orderNumber",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestOrder.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestOrder.swift",
       "line": 10,
       "symbol": "GuestOrder.billingAddress",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestOrder.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestOrder.swift",
       "line": 11,
       "symbol": "GuestOrder.shippingAddress",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestOrder.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestOrder.swift",
       "line": 12,
       "symbol": "GuestOrder.grossTotal",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestOrder.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestOrder.swift",
       "line": 13,
       "symbol": "GuestOrder.taxTotal",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestOrder.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestOrder.swift",
       "line": 14,
       "symbol": "GuestOrder.created",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestOrder.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestOrder.swift",
       "line": 15,
       "symbol": "GuestOrder.externalPaymentURL",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestOrderRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestOrderRequest.swift",
       "line": 7,
       "symbol": "GuestOrderRequest",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestOrderRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestOrderRequest.swift",
       "line": 9,
       "symbol": "GuestOrderRequest.checkoutId",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestOrderRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestOrderRequest.swift",
       "line": 10,
       "symbol": "GuestOrderRequest.token",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestOrderRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestOrderRequest.swift",
       "line": 12,
       "symbol": "GuestOrderRequest.init(checkoutId:token:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestPaymentMethod.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestPaymentMethod.swift",
       "line": 5,
       "symbol": "GuestPaymentMethod",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestPaymentMethod.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestPaymentMethod.swift",
       "line": 7,
       "symbol": "GuestPaymentMethod.method",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestPaymentMethod.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestPaymentMethod.swift",
       "line": 8,
       "symbol": "GuestPaymentMethod.metadata",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestPaymentMethod.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestPaymentMethod.swift",
       "line": 9,
       "symbol": "GuestPaymentMethod.externalPayment",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestPaymentRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestPaymentRequest.swift",
       "line": null,
       "symbol": "GuestPaymentRequest",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestPaymentRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestPaymentRequest.swift",
       "line": 5,
       "symbol": "GuestPaymentRequest",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestPaymentRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestPaymentRequest.swift",
       "line": 7,
       "symbol": "GuestPaymentRequest.method",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestPaymentRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestPaymentRequest.swift",
       "line": 8,
       "symbol": "GuestPaymentRequest.metadata",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestPaymentRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestPaymentRequest.swift",
       "line": 10,
       "symbol": "GuestPaymentRequest.init(method:metadata:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestPaymentRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestPaymentRequest.swift",
       "line": 24,
       "symbol": "GuestPaymentRequest.toJSON()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestPaymentSelectionRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestPaymentSelectionRequest.swift",
       "line": 7,
       "symbol": "GuestPaymentSelectionRequest",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestPaymentSelectionRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestPaymentSelectionRequest.swift",
       "line": 9,
       "symbol": "GuestPaymentSelectionRequest.customer",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestPaymentSelectionRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestPaymentSelectionRequest.swift",
       "line": 10,
       "symbol": "GuestPaymentSelectionRequest.shippingAddress",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestPaymentSelectionRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestPaymentSelectionRequest.swift",
       "line": 11,
       "symbol": "GuestPaymentSelectionRequest.billingAddress",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestPaymentSelectionRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestPaymentSelectionRequest.swift",
       "line": 12,
       "symbol": "GuestPaymentSelectionRequest.cart",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestPaymentSelectionRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestPaymentSelectionRequest.swift",
       "line": 14,
       "symbol": "GuestPaymentSelectionRequest.init(customer:shippingAddress:billingAddress:cart:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Money.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Money.swift",
       "line": null,
       "symbol": "Money",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Money.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Money.swift",
       "line": null,
       "symbol": "Money",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Money.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Money.swift",
       "line": 9,
       "symbol": "Money",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Money.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Money.swift",
       "line": 11,
       "symbol": "Money.Zero",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Money.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Money.swift",
       "line": 13,
       "symbol": "Money.amount",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Money.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Money.swift",
       "line": 14,
       "symbol": "Money.currency",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Money.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Money.swift",
       "line": 16,
       "symbol": "Money.init(amount:currency:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Money.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Money.swift",
       "line": 33,
       "symbol": "==(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Money.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Money.swift",
       "line": 37,
       "symbol": "<(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Order.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Order.swift",
       "line": 7,
       "symbol": "Order",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Order.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Order.swift",
       "line": 9,
       "symbol": "Order.orderNumber",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Order.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Order.swift",
       "line": 10,
       "symbol": "Order.customerNumber",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Order.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Order.swift",
       "line": 11,
       "symbol": "Order.billingAddress",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Order.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Order.swift",
       "line": 12,
       "symbol": "Order.shippingAddress",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Order.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Order.swift",
       "line": 13,
       "symbol": "Order.grossTotal",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Order.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Order.swift",
       "line": 14,
       "symbol": "Order.taxTotal",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Order.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Order.swift",
       "line": 15,
       "symbol": "Order.created",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Order.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Order.swift",
       "line": 16,
       "symbol": "Order.detailURL",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Order.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Order.swift",
       "line": 17,
       "symbol": "Order.externalPaymentURL",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/OrderAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/OrderAddress.swift",
       "line": 7,
       "symbol": "OrderAddress",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/OrderAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/OrderAddress.swift",
       "line": 8,
       "symbol": "OrderAddress.gender",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/OrderAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/OrderAddress.swift",
       "line": 9,
       "symbol": "OrderAddress.firstName",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/OrderAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/OrderAddress.swift",
       "line": 10,
       "symbol": "OrderAddress.lastName",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/OrderAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/OrderAddress.swift",
       "line": 11,
       "symbol": "OrderAddress.street",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/OrderAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/OrderAddress.swift",
       "line": 12,
       "symbol": "OrderAddress.additional",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/OrderAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/OrderAddress.swift",
       "line": 13,
       "symbol": "OrderAddress.zip",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/OrderAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/OrderAddress.swift",
       "line": 14,
       "symbol": "OrderAddress.city",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/OrderAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/OrderAddress.swift",
       "line": 15,
       "symbol": "OrderAddress.countryCode",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/OrderAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/OrderAddress.swift",
       "line": 16,
       "symbol": "OrderAddress.pickupPoint",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/OrderRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/OrderRequest.swift",
       "line": 7,
       "symbol": "OrderRequest",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/OrderRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/OrderRequest.swift",
       "line": 9,
       "symbol": "OrderRequest.checkoutId",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/OrderRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/OrderRequest.swift",
       "line": 11,
       "symbol": "OrderRequest.init(checkoutId:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Payment.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Payment.swift",
       "line": 7,
       "symbol": "Payment",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Payment.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Payment.swift",
       "line": 9,
       "symbol": "Payment.selected",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Payment.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Payment.swift",
       "line": 10,
       "symbol": "Payment.isExternalPayment",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Payment.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Payment.swift",
       "line": 11,
       "symbol": "Payment.selectionPageURL",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethod.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethod.swift",
       "line": 7,
       "symbol": "PaymentMethod",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethod.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethod.swift",
       "line": 9,
       "symbol": "PaymentMethod.method",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethod.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethod.swift",
       "line": 10,
       "symbol": "PaymentMethod.metadata",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
       "line": 9,
       "symbol": "PaymentMethodType",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
       "line": 11,
       "symbol": "PaymentMethodType.applePay",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
       "line": 12,
       "symbol": "PaymentMethodType.cashOnDelivery",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
       "line": 13,
       "symbol": "PaymentMethodType.cheque",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
       "line": 14,
       "symbol": "PaymentMethodType.creditCard",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
       "line": 15,
       "symbol": "PaymentMethodType.directDebit",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
       "line": 16,
       "symbol": "PaymentMethodType.electronicPaymentStandard",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
       "line": 17,
       "symbol": "PaymentMethodType.free",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
       "line": 18,
       "symbol": "PaymentMethodType.ideal",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
       "line": 19,
       "symbol": "PaymentMethodType.invoice",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
       "line": 20,
       "symbol": "PaymentMethodType.maksuturva",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
       "line": 21,
       "symbol": "PaymentMethodType.payPal",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
       "line": 22,
       "symbol": "PaymentMethodType.postFinance",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
       "line": 23,
       "symbol": "PaymentMethodType.prepayment",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
       "line": 24,
       "symbol": "PaymentMethodType.przelewy24",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
       "line": 25,
       "symbol": "PaymentMethodType.trustly",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
       "line": 26,
       "symbol": "PaymentMethodType.unknown",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
       "line": 27,
       "symbol": "PaymentMethodType.unrecognized",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
       "line": 29,
       "symbol": "PaymentMethodType.init(rawValue:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
       "line": 51,
       "symbol": "PaymentMethodType.rawValue",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PickupPoint.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PickupPoint.swift",
       "line": null,
       "symbol": "PickupPoint",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PickupPoint.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PickupPoint.swift",
       "line": 5,
       "symbol": "PickupPoint",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PickupPoint.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PickupPoint.swift",
       "line": 7,
       "symbol": "PickupPoint.id",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PickupPoint.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PickupPoint.swift",
       "line": 8,
       "symbol": "PickupPoint.name",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PickupPoint.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PickupPoint.swift",
       "line": 9,
       "symbol": "PickupPoint.memberId",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PickupPoint.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PickupPoint.swift",
       "line": 21,
       "symbol": "==(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/StreetAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/SelectedArticle.swift",
+      "line": 7,
+      "symbol": "SelectedArticle",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/SelectedArticle.swift",
+      "line": 9,
+      "symbol": "SelectedArticle.article",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/SelectedArticle.swift",
+      "line": 10,
+      "symbol": "SelectedArticle.unitIndex",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/SelectedArticle.swift",
+      "line": 11,
+      "symbol": "SelectedArticle.quantity",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/SelectedArticle.swift",
+      "line": 13,
+      "symbol": "SelectedArticle.init(article:unitIndex:quantity:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/SelectedArticle.swift",
+      "line": 19,
+      "symbol": "SelectedArticle.sku",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/SelectedArticle.swift",
+      "line": 23,
+      "symbol": "SelectedArticle.unit",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/SelectedArticle.swift",
+      "line": 28,
+      "symbol": "SelectedArticle.price",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/SelectedArticle.swift",
+      "line": 32,
+      "symbol": "SelectedArticle.priceAmount",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/SelectedArticle.swift",
+      "line": 36,
+      "symbol": "SelectedArticle.totalPrice",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/SelectedArticle.swift",
+      "line": 40,
+      "symbol": "SelectedArticle.currency",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/SelectedArticle.swift",
+      "line": 44,
+      "symbol": "SelectedArticle.notSelected",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/SelectedArticle.swift",
+      "line": 50,
+      "symbol": "*(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/SelectedArticle.swift",
+      "line": 54,
+      "symbol": "==(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/SelectedArticle.swift",
+      "line": 58,
+      "symbol": "!=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/StreetAddress.swift",
       "line": null,
       "symbol": "StreetAddress",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/StreetAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/StreetAddress.swift",
       "line": 7,
       "symbol": "StreetAddress",
       "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/StreetAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/StreetAddress.swift",
       "line": 9,
       "symbol": "StreetAddress.street",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/StreetAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/StreetAddress.swift",
       "line": 10,
       "symbol": "StreetAddress.additional",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/StreetAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/StreetAddress.swift",
       "line": 11,
       "symbol": "StreetAddress.pickupPoint",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/StreetAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/StreetAddress.swift",
       "line": 17,
       "symbol": "StreetAddress.isPickupPoint",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UpdateAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UpdateAddressRequest.swift",
       "line": 5,
       "symbol": "UpdateAddressRequest",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UpdateAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UpdateAddressRequest.swift",
       "line": 6,
       "symbol": "UpdateAddressRequest.gender",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UpdateAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UpdateAddressRequest.swift",
       "line": 7,
       "symbol": "UpdateAddressRequest.firstName",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UpdateAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UpdateAddressRequest.swift",
       "line": 8,
       "symbol": "UpdateAddressRequest.lastName",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UpdateAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UpdateAddressRequest.swift",
       "line": 9,
       "symbol": "UpdateAddressRequest.street",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UpdateAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UpdateAddressRequest.swift",
       "line": 10,
       "symbol": "UpdateAddressRequest.additional",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UpdateAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UpdateAddressRequest.swift",
       "line": 11,
       "symbol": "UpdateAddressRequest.zip",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UpdateAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UpdateAddressRequest.swift",
       "line": 12,
       "symbol": "UpdateAddressRequest.city",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UpdateAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UpdateAddressRequest.swift",
       "line": 13,
       "symbol": "UpdateAddressRequest.countryCode",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UpdateAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UpdateAddressRequest.swift",
       "line": 14,
       "symbol": "UpdateAddressRequest.pickupPoint",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UpdateAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UpdateAddressRequest.swift",
       "line": 15,
       "symbol": "UpdateAddressRequest.defaultBilling",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UpdateAddressRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UpdateAddressRequest.swift",
       "line": 16,
       "symbol": "UpdateAddressRequest.defaultShipping",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UpdateCheckoutRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UpdateCheckoutRequest.swift",
       "line": 7,
       "symbol": "UpdateCheckoutRequest",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UpdateCheckoutRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UpdateCheckoutRequest.swift",
       "line": 8,
       "symbol": "UpdateCheckoutRequest.billingAddressId",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UpdateCheckoutRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UpdateCheckoutRequest.swift",
       "line": 9,
       "symbol": "UpdateCheckoutRequest.shippingAddressId",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UpdateCheckoutRequest.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UpdateCheckoutRequest.swift",
       "line": 11,
       "symbol": "UpdateCheckoutRequest.init(billingAddressId:shippingAddressId:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UserAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UserAddress.swift",
       "line": 7,
       "symbol": "UserAddress",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UserAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UserAddress.swift",
       "line": 9,
       "symbol": "UserAddress.id",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UserAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UserAddress.swift",
       "line": 10,
       "symbol": "UserAddress.customerNumber",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UserAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UserAddress.swift",
       "line": 11,
       "symbol": "UserAddress.gender",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UserAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UserAddress.swift",
       "line": 12,
       "symbol": "UserAddress.firstName",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UserAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UserAddress.swift",
       "line": 13,
       "symbol": "UserAddress.lastName",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UserAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UserAddress.swift",
       "line": 14,
       "symbol": "UserAddress.street",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UserAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UserAddress.swift",
       "line": 16,
       "symbol": "UserAddress.additional",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UserAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UserAddress.swift",
       "line": 17,
       "symbol": "UserAddress.zip",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UserAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UserAddress.swift",
       "line": 18,
       "symbol": "UserAddress.city",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UserAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UserAddress.swift",
       "line": 19,
       "symbol": "UserAddress.countryCode",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UserAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UserAddress.swift",
       "line": 21,
       "symbol": "UserAddress.pickupPoint",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UserAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UserAddress.swift",
       "line": 22,
       "symbol": "UserAddress.isDefaultBilling",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UserAddress.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UserAddress.swift",
       "line": 23,
       "symbol": "UserAddress.isDefaultShipping",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Options.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Options.swift",
       "line": null,
       "symbol": "Options",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Options.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Options.swift",
       "line": 7,
       "symbol": "Options",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Options.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Options.swift",
       "line": 9,
       "symbol": "Options.useSandboxEnvironment",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Options.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Options.swift",
       "line": 10,
       "symbol": "Options.clientId",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Options.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Options.swift",
       "line": 11,
       "symbol": "Options.salesChannel",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Options.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Options.swift",
       "line": 12,
       "symbol": "Options.interfaceLanguage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Options.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Options.swift",
       "line": 13,
       "symbol": "Options.configurationURL",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Options.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Options.swift",
       "line": 15,
       "symbol": "Options.init(clientId:salesChannel:useSandboxEnvironment:interfaceLanguage:configurationURL:infoBundle:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Options.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Options.swift",
       "line": 34,
       "symbol": "Options.validate()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Utils/AtlasAPIResult.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Utils/AtlasAPIResult.swift",
       "line": 5,
       "symbol": "AtlasAPIResult",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Utils/AtlasAPIResult.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Utils/AtlasAPIResult.swift",
       "line": 7,
       "symbol": "AtlasAPIResult.success",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Utils/AtlasAPIResult.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Utils/AtlasAPIResult.swift",
       "line": 8,
       "symbol": "AtlasAPIResult.failure",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Utils/AtlasLogger.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Utils/AtlasLogger.swift",
       "line": null,
       "symbol": "AtlasLogger",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Utils/AtlasLogger.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Utils/AtlasLogger.swift",
       "line": 7,
       "symbol": "AtlasLogger",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Utils/AtlasLogger.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Utils/AtlasLogger.swift",
       "line": 20,
       "symbol": "AtlasLogger.logMessage(_:verbose:function:filePath:fileLine:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Utils/AtlasLogger.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Utils/AtlasLogger.swift",
       "line": 25,
       "symbol": "AtlasLogger.logDebug(_:verbose:function:filePath:fileLine:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Utils/AtlasLogger.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Utils/AtlasLogger.swift",
       "line": 30,
       "symbol": "AtlasLogger.logError(_:verbose:function:filePath:fileLine:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Utils/AtlasResult.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Utils/AtlasResult.swift",
       "line": 5,
       "symbol": "AtlasResult",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Utils/AtlasResult.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Utils/AtlasResult.swift",
       "line": 7,
       "symbol": "AtlasResult.success",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Utils/AtlasResult.swift",
+      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Utils/AtlasResult.swift",
       "line": 8,
       "symbol": "AtlasResult.failure",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
-    },
-    {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Utils/SwiftyJSON/SwiftyJSON.swift",
-      "line": null,
-      "symbol": "JSON",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
     }
   ],
-  "source_directory": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK"
+  "source_directory": "/Coding/Zalando/Atlas/atlas-ios/AtlasSDK"
 }
