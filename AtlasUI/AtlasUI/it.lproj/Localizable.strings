@@ -1,4 +1,4 @@
-"AtlasAPIError.message.checkoutFailed" = "Errore";
+"AtlasAPIError.message.checkoutFailed" = "Errore durante l'acquisto";
 "AtlasAPIError.message.invalidResponseFormat" = "Formato risposta incorretto";
 "AtlasAPIError.message.noData" = "Risposta vuota";
 "AtlasAPIError.message.noInternet" = "Per piacere controlla la tua connessione ad internet";
@@ -28,6 +28,7 @@
 "addressFormView.additional" = "Informazioni aggiuntive";
 "addressFormView.city" = "Città";
 "addressFormView.country" = "Paese";
+"addressFormView.emailaddress" = "Indirizzo email";
 "addressFormView.firstname" = "Nome";
 "addressFormView.gender.female" = "Sig.ra";
 "addressFormView.gender.male" = "Sig.";
@@ -56,13 +57,24 @@
 "formValidation.pattern.name" = "Per piacere usa solo caratteri (A-z) in questo campo";
 "formValidation.pattern.street" = "Per piacere inserisci strada e numero di casa";
 "formValidation.required" = "Questo è un campo obbligatorio";
+"formValidation.vaildEmail" = "Inserisci un indirizzo email valido";
+
+/*should be Add new address?*/
+"guestSummaryView.address.add" = "Aggiungi un nuovo indirizzo";
+"guestSummaryView.address.create" = "Crea un nuovo indirizzo";
+"guestSummaryView.address.update" = "Aggiorna indirizzo";
 "loginView.loginWithZalando" = "Login con Zalando";
+"summaryView.button.saveOrderImage" = "Salva i dettagli dell'ordine come immagine";
 "summaryView.label.address.billing" = "Indirizzo di fatturazione";
 "summaryView.label.address.packstationAbbreviation" = "P.S.";
 "summaryView.label.address.shipping" = "Indirizzo di consegna";
 "summaryView.label.emptyAddress.billing" = "Indirizzo di fatturazione assente";
 "summaryView.label.emptyAddress.shipping" = "Indirizzo di consegna assente";
 "summaryView.label.estimatedDelivery" = "Consegna stimata";
+"summaryView.label.guestCheckout" = "Acquista senza creare un'account";
+"summaryView.label.orderHeader" = "Siamo contenti del tuo ordine\nGrazie mille!";
+"summaryView.label.orderImageSaved" = "✓ Immagine salvata con successo nella galleria delle foto";
+"summaryView.label.orderNumber" = "Numero ordine";
 "summaryView.label.payment" = "Pagamento";
 "summaryView.label.price.shipping" = "Spedizione";
 "summaryView.label.price.total" = "Totale";
@@ -71,15 +83,41 @@
 "summaryView.link.termsAndConditions" = "CGV";
 "summaryView.submitButton.backToShop" = "Ritorna allo shop";
 "summaryView.submitButton.checkoutWithZalando" = "Acquista con Zalando";
+"summaryView.submitButton.guestCheckout" = "Acquista come ospite";
+"summaryView.submitButton.payWithPayPal" = "Conferma e paga tramite PayPal";
 "summaryView.submitButton.placeOrder" = "Effettua ordine";
 "summaryView.title.orderPlaced" = "Ordine effettuato";
 "summaryView.title.summary" = "Riepilogo";
 "termsAndConditionsView.title" = "Termini e condizioni";
+"AtlasCheckoutError.message.unsupportedCountry" = "Questo paese non é supportato";
+"AtlasCheckoutError.message.photosLibraryAccessNotAllowed" = "Not é possibile accedere alla galleria delle foto";
 "paymentMethod.APPLE_PAY" = "Apple Pay";
+"paymentMethod.CASH_ON_DELIVERY" = "Pagamento alla consegna";
+"paymentMethod.CHEQUE" = "Assegno";
+"paymentMethod.CREDIT_CARD" = "Carta di credito";
+"paymentMethod.DIRECT_DEBIT" = "Carta di debito";
 "paymentMethod.ELECTRONIC_PAYMENT_STANDARD" = "Electronic Payment Standard";
+
+/*Do we really have a payment method where you get all for free??*/
+"paymentMethod.FREE" = "Gratuito";
 "paymentMethod.IDEAL" = "Ideal";
+"paymentMethod.INVOICE" = "Fattura";
 "paymentMethod.MAKSUTURVA" = "Maksuturva";
 "paymentMethod.PAYPAL" = "PayPal";
 "paymentMethod.POSTFINANCE" = "PostFinance";
+"paymentMethod.PREPAYMENT" = "Pagamento anticipato";
 "paymentMethod.PRZELEWY24" = "Przelewy24";
 "paymentMethod.TRUSTLY" = "Trustly";
+
+/*when happen to have unknown?*/
+"paymentMethod.UNKNOWN" = "Sconosciuto";
+"AtlasCheckoutError.message.missingPaymentMethod" = "Per piacere seleziona un metodo di pagamento prima di continuare";
+"addressCheckView.title" = "Contolla il tuo indirizzo";
+"addressCheckView.header.normalized" = "Abbiamo trovato un'altra versione del tuo indirizzo\nQuale versione vuoi utilizzare?";
+
+/*Are you sure you need to use it?
+maybe Are you sure you want to use it?*/
+"addressCheckView.header.notCorrect" = "Il tuo indirizzo sembra essere incorretto\nSei sicuro di volerlo utilizzare?";
+"addressCheckView.originalAddress" = "Il tuo indirizzo";
+"addressCheckView.suggestedAddress" = "Indirizzo suggerito";
+"button.general.submit" = "Conferma";
