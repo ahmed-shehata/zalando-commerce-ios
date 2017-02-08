@@ -9,8 +9,12 @@ module Calypso
   SCHEME_UNIT_TESTS = 'UnitTests'.freeze
   SCHEME_UI_UNIT_TESTS = 'UI+UnitTests'.freeze
 
-  TEST_DEVICE = 'iPhone.*[0-9]+\w?$'.freeze # finds potentially the newest device to run
-  TEST_RUNTIME = 'iOS'.freeze # finds newest iOS
+  # finds potentially the newest "normal" device to run
+  # like "iPhone 7" or "iPhone 6s", but not "iPhone SE" or "iPhone 6 Plus"
+  TEST_DEVICE = 'iPhone.*[0-9]+\w?$'.freeze
+
+  # finds newest iOS by using its version in float comparison
+  TEST_RUNTIME = 'iOS'.freeze
 
   PROJECT_DIRS = [BASE_DIR + 'AtlasSDK', BASE_DIR + 'AtlasUI'].freeze
 
