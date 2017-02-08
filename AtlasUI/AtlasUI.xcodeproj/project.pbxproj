@@ -255,6 +255,7 @@
 		808C394E80E745736133ADBD0E2938C8 /* AtlasUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AtlasUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80F13460B6B17606CC65E38CE6A4716C /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		8186B2A11E2F4F9F005B1A68 /* UIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
+		81A4F3251E433E7C001211B1 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		828CB7B3C433014C119561A964D809BC /* TextFieldInputViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldInputViewModel.swift; sourceTree = "<group>"; };
 		82D2ADD240889020E56AC601593CC418 /* FormValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValidator.swift; sourceTree = "<group>"; };
 		83316EC4886ACF067F2DE376AB807478 /* URLAuthorizationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLAuthorizationTests.swift; sourceTree = "<group>"; };
@@ -869,6 +870,7 @@
 				pl,
 				it,
 				fr,
+				nl,
 			);
 			mainGroup = 28416D88773780187E0A1F21A416ADD5;
 			productRefGroup = 58525F1A4F96F26E15272DC693E4FB44 /* Products */;
@@ -1107,6 +1109,7 @@
 				FDCC9A6FD5A5F450BAB7830FE7243CFB /* pl */,
 				8E587FF53F450FE59AA0F49C7397417F /* it */,
 				3EED5B6D9A0E1D00EFF09FD5A666B260 /* fr */,
+				81A4F3251E433E7C001211B1 /* nl */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
