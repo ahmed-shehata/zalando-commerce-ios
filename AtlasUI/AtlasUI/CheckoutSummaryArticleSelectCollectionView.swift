@@ -10,10 +10,13 @@ enum CheckoutSummaryArticleRefineType {
     case size
     case quantity
 
+    private static let minQuantityAllowed = 1
+    private static let maxQuantityAllowed = 10
+
     func count(selectedArticle: SelectedArticle) -> Int {
         switch self {
         case .size: return selectedArticle.article.availableUnits.count
-        case .quantity: return min(selectedArticle.unit?.stock ?? 1, 10)
+        case .quantity: return min(selectedArticle.unit?.stock ?? type(of: self).minQuantityAllowed, type(of: self).maxQuantityAllowed)
         }
     }
 
