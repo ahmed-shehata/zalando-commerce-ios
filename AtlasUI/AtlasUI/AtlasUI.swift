@@ -8,14 +8,21 @@ import AtlasSDK
 
 public typealias AtlasUICompletion = (AtlasResult<AtlasUI>) -> Void
 
+
+/// The main interface for Atlas UI framework
+/// Only on instance of AtlasUI with a specific configuration can be created as a time as it is a singleton class
 final public class AtlasUI {
 
+    /// Error that can re returned for AtlasUI Client
+    ///
+    /// - notInitialized: Indicate that the AtlasUI is not configured yet, make sure you call configure(options:completion:) first
     public enum Error: AtlasError {
 
         case notInitialized
 
     }
 
+    /// Reference for AtlasAPIClient object that is configured with the current SalesChannel
     public let client: AtlasAPIClient
 
     private static var _shared: AtlasUI?
@@ -32,6 +39,11 @@ final public class AtlasUI {
         self.register { localizer }
     }
 
+    /// Configure AtlasUI is used as the very starting point to use AtlasUI framework to configure it
+    ///
+    /// - Parameters:
+    ///   - options: Options object with the needed configuration to initialize AtlasUI framework
+    ///   - completion: Completion Block with AtlasResult as an input parameter having AtlasUI instance as the success value
     public static func configure(options: Options? = nil, completion: @escaping AtlasUICompletion) {
         Atlas.configure(options: options) { result in
             switch result {
@@ -52,6 +64,13 @@ final public class AtlasUI {
         }
     }
 
+    /// presentCheckout is used to present the AtlasUI over the given controller
+    /// It can be called only once at a time as it depends internally on Singleton objects
+    ///
+    /// - Parameters:
+    ///   - viewController: The controller in which AtlasUI will be presented over it
+    ///   - sku: The SKU for the item that the user want to buy
+    /// - Throws: notInitialized is thrown if this method is called before initializing AtlasUI be calling configure(options:completion:)
     public func presentCheckout(onViewController viewController: UIViewController, forSKU sku: String) throws {
         guard let _ = AtlasAPIClient.shared else {
             AtlasLogger.logError("AtlasUI is not initialized")
