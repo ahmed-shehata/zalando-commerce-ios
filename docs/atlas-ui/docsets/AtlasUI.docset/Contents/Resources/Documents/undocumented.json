@@ -37,44 +37,9 @@
     },
     {
       "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasUI/AtlasUI/AtlasUI.swift",
-      "line": 11,
-      "symbol": "AtlasUI",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasUI/AtlasUI/AtlasUI.swift",
-      "line": 13,
-      "symbol": "AtlasUI.Error",
-      "symbol_kind": "source.lang.swift.decl.enum",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasUI/AtlasUI/AtlasUI.swift",
-      "line": 15,
+      "line": 21,
       "symbol": "AtlasUI.Error.notInitialized",
       "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasUI/AtlasUI/AtlasUI.swift",
-      "line": 19,
-      "symbol": "AtlasUI.client",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasUI/AtlasUI/AtlasUI.swift",
-      "line": 35,
-      "symbol": "AtlasUI.configure(options:completion:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Coding/Zalando/Atlas/atlas-ios/AtlasUI/AtlasUI/AtlasUI.swift",
-      "line": 55,
-      "symbol": "AtlasUI.presentCheckout(onViewController:forSKU:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
