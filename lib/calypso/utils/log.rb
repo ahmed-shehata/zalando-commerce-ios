@@ -13,11 +13,11 @@ module Calypso
     end
 
     def log_warn(*args)
-      print_color_on_tty(STDOUT, '31', args)
+      print_color_on_tty(STDOUT, '36', args)
     end
 
     def log_exit(*args)
-      print_color_on_tty(STDOUT, '31', args)
+      print_color_on_tty(STDOUT, '35', args)
       exit(0)
     end
 

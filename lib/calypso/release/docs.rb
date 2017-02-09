@@ -17,8 +17,9 @@ module Calypso
       'AtlasUI' => 'atlas-ui'
     }.freeze
 
-    option :docs, type: :boolean, default: true
     desc 'publish', 'Regenerate docs and push them to the repository'
+    option :docs, type: :boolean, default: true,
+                  desc: 'Runs "generate" before. Turn it off if you want to publish only.'
     def publish
       invoke :generate if options[:docs]
       publish_docs
@@ -44,7 +45,7 @@ module Calypso
         'copyright' => '© 2016-2017 [Zalando SE](http://tech.zalando.com)'
       }
 
-      source_dir = SOURCE_FOLDER + src # --source-directory pick ups podspec
+      source_dir = SOURCE_FOLDER + src # can't use "--source-directory", as it picks up wrong podspec
       run "cd #{source_dir} && jazzy #{parse_args(args)}"
     end
 
