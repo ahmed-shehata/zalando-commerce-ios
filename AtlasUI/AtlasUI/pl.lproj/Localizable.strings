@@ -40,7 +40,6 @@
 "addressFormView.zipcode" = "Kod pocztowy";
 "addressListView.add.cellTitle" = "Dodaj nowy adres...";
 "addressListView.add.type.AddressBookImportDataModelCreationStrategy" = "Zaimportuj z książki adresowej";
-"addressListView.add.type.PickupPointAddressDataModelCreationStrategy" = "Punkt odbioru";
 "addressListView.add.type.StandardAddressDataModelCreationStrategy" = "Standardowy";
 "addressListView.add.type.title" = "Rodzaj adresu";
 "addressListView.prefix.memberID" = "Identyfikator klienta";

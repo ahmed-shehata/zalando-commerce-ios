@@ -40,7 +40,6 @@
 "addressFormView.zipcode" = "Code postal";
 "addressListView.add.cellTitle" = "Ajouter une nouvelle adresse";
 "addressListView.add.type.AddressBookImportDataModelCreationStrategy" = "Importer depuis le carnet d'adresse";
-"addressListView.add.type.PickupPointAddressDataModelCreationStrategy" = "Point d'enlèvement";
 "addressListView.add.type.StandardAddressDataModelCreationStrategy" = "Standard";
 "addressListView.add.type.title" = "Type d'adresse";
 "addressListView.prefix.memberID" = "ID Membre";

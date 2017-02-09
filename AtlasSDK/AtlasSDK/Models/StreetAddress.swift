@@ -14,8 +14,8 @@ public protocol StreetAddress {
 
 extension StreetAddress {
 
-    public var isPickupPoint: Bool {
-        return pickupPoint != nil
+    public var isBillingAllowed: Bool {
+        return pickupPoint == nil
     }
 
 }

@@ -21,4 +21,4 @@ class EmptyAddressDataModelCreationStrategy: AddressDataModelCreationStrategy {
 
 class StandardAddressDataModelCreationStrategy: EmptyAddressDataModelCreationStrategy {}
 
-class PickupPointAddressDataModelCreationStrategy: EmptyAddressDataModelCreationStrategy {}
+class PackstationAddressDataModelCreationStrategy: EmptyAddressDataModelCreationStrategy {}

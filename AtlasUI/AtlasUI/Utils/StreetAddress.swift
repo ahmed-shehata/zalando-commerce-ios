@@ -8,7 +8,7 @@ import AtlasSDK
 extension StreetAddress {
 
     var addressLine1: String {
-        return (isPickupPoint ? pickupPoint?.id : street) ?? ""
+        return (isBillingAllowed ? street : pickupPoint?.id) ?? ""
     }
 
     var addressLine2: String {
