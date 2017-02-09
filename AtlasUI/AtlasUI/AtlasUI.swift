@@ -8,16 +8,16 @@ import AtlasSDK
 
 public typealias AtlasUICompletion = (AtlasResult<AtlasUI>) -> Void
 
-
 /// The main interface for Atlas UI framework
 /// Only on instance of AtlasUI with a specific configuration can be created as a time as it is a singleton class
 final public class AtlasUI {
 
     /// Error that can re returned for AtlasUI Client
     ///
-    /// - notInitialized: Indicate that the AtlasUI is not configured yet, make sure you call configure(options:completion:) first
+    /// - notInitialized: Indicate that the AtlasUI is not configured yet
     public enum Error: AtlasError {
 
+        /// Indicate that the AtlasUI is not configured yet, make sure you call configure(options:completion:) first
         case notInitialized
 
     }

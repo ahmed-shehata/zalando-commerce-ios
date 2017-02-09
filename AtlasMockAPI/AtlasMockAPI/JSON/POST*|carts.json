@@ -15,6 +15,18 @@
                },
                {"sku": "AD541L009-G1100XS000",
                "quantity" : 1
+               },
+               {"sku": "AZ711M001-B110370000",
+               "quantity" : 1
+               },
+               {"sku": "AZ711M001-B110370000",
+               "quantity" : 1
+               },
+               {"sku": "AZ711M001-B110410000",
+               "quantity" : 2
+               },
+               {"sku": "AZ711M001-B110420000",
+               "quantity" : 1
                } ],
     "items_out_of_stock" : [ ],
     "delivery" : {

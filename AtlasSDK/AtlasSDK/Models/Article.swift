@@ -36,7 +36,7 @@ public struct Article {
         public let price: Money
         public let originalPrice: Money
         public let available: Bool
-        public let stock: Int
+        public let stock: Int?
         public let partner: Partner?
     }
 
@@ -90,17 +90,15 @@ extension Article.Unit: JSONInitializable {
             let size = json["size"].string,
             let price = Money(json: json["price"]),
             let originalPrice = Money(json: json["original_price"]),
-            let available = json["available"].bool,
-            let stock = json["stock"].int
+            let available = json["available"].bool
             else { return nil }
 
         self.id = id
         self.size = size
         self.price = price
         self.originalPrice = originalPrice
-        self.stock = stock
         self.available = available
-
+        self.stock = json["stock"].int
         self.partner = Article.Partner(json: json["partner"])
     }
 

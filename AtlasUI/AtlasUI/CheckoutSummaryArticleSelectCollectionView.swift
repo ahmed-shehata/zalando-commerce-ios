@@ -13,7 +13,7 @@ enum CheckoutSummaryArticleRefineType {
     func count(selectedArticle: SelectedArticle) -> Int {
         switch self {
         case .size: return selectedArticle.article.availableUnits.count
-        case .quantity: return selectedArticle.unit?.stock ?? 0
+        case .quantity: return min(selectedArticle.unit?.stock ?? 1, 10)
         }
     }
 
