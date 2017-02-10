@@ -96,7 +96,7 @@
 "paymentMethod.DIRECT_DEBIT" = "Karta debetowa";
 "paymentMethod.ELECTRONIC_PAYMENT_STANDARD" = "Electronic Payment Standard";
 "paymentMethod.FREE" = "Darmo";
-"paymentMethod.IDEAL" = "Ideal";
+"paymentMethod.IDEAL" = "iDEAL";
 "paymentMethod.INVOICE" = "Faktura";
 "paymentMethod.MAKSUTURVA" = "Maksuturva";
 "paymentMethod.PAYPAL" = "PayPal";
@@ -107,7 +107,7 @@
 "paymentMethod.UNKNOWN" = "Nieznany";
 "AtlasCheckoutError.message.missingPaymentMethod" = "Prosimy wybrać wpierw metodę płatności";
 "addressCheckView.title" = "Zweryfikuj adres";
-"addressCheckView.header.normalized" = "Znaleźliśmy inną wersję podanego adresu.\nKtóry chcesz użyć?";
+"addressCheckView.header.normalized" = "Znaleźliśmy inną wersję podanego adresu.\nKtórego chcesz użyć?";
 "addressCheckView.header.notCorrect" = "Podany adres wygląda na nieprawidłowy.\nNa pewno chcesz go użyć?";
 "addressCheckView.originalAddress" = "Podany adres";
 "addressCheckView.suggestedAddress" = "Proponowany adres";
