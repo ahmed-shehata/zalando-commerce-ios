@@ -113,7 +113,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
     func handleBillingAddressSelection() {
         AtlasUIClient.addresses { [weak self] result in
             guard let userAddresses = result.process() else { return }
-            let addresses: [EquatableAddress] = userAddresses.filter { $0.pickupPoint == nil } .map { $0 }
+            let addresses: [EquatableAddress] = userAddresses.filter { $0.isBillingAllowed } .map { $0 }
             if !addresses.isEmpty {
                 self?.showAddressListViewController(forBillingAddressWithAddresses: addresses)
             } else {

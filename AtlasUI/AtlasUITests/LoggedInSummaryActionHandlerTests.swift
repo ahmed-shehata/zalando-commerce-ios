@@ -232,7 +232,7 @@ extension LoggedInSummaryActionHandlerTests {
         waitUntil(timeout: 10) { done in
             AtlasUIClient.addresses { result in
                 guard let addresses = result.process() else { return fail() }
-                address = addresses.filter { !$0.isPickupPoint }.first
+                address = addresses.filter { $0.isBillingAllowed }.first
                 done()
             }
         }
@@ -244,7 +244,7 @@ extension LoggedInSummaryActionHandlerTests {
         waitUntil(timeout: 10) { done in
             AtlasUIClient.addresses { result in
                 guard let addresses = result.process() else { return fail() }
-                address = addresses.filter { $0.isPickupPoint }.first
+                address = addresses.filter { !$0.isBillingAllowed }.first
                 done()
             }
         }

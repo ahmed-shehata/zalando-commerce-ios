@@ -32,7 +32,7 @@ class GuestAddressActionHandler {
                                              email: emailAddress,
                                              countryCode: AtlasAPIClient.shared?.config.salesChannel.countryCode)
         let formLayout = UpdateAddressFormLayout()
-        let addressType: AddressFormType = address.pickupPoint == nil ? .guestStandardAddress : .guestPickupPoint
+        let addressType: AddressFormType = address.isBillingAllowed ? .guestStandardAddress : .guestPickupPoint
         let viewModel = AddressFormViewModel(dataModel: dataModel, layout: formLayout, type: addressType)
         let viewController = AddressFormViewController(viewModel: viewModel, actionHandler: actionHandler) { (address, email) in
             self.emailAddress = email

@@ -29,7 +29,7 @@ class LoggedInAddressListActionHandler: AddressListActionHandler {
         let dataModel = AddressFormDataModel(equatableAddress: address,
                                              countryCode: AtlasAPIClient.shared?.config.salesChannel.countryCode)
         let formLayout = UpdateAddressFormLayout()
-        let addressType: AddressFormType = address.pickupPoint == nil ? .standardAddress : .pickupPoint
+        let addressType: AddressFormType = address.isBillingAllowed ? .standardAddress : .pickupPoint
         let viewModel = AddressFormViewModel(dataModel: dataModel, layout: formLayout, type: addressType)
         let actionHandler = LoggedInUpdateAddressActionHandler()
         presentAddressViewController(with: viewModel, handler: actionHandler) { [weak self] address, _ in
