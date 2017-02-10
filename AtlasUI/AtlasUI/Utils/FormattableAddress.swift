@@ -26,7 +26,7 @@ extension FormattableAddress {
         postalAddress.postalCode = zip
         postalAddress.isoCountryCode = countryCode
 
-        let addressLines = [prefixedAddressLine1, prefixedAddressLine2]
+        let addressLines = [addressLine1, addressLine2]
         postalAddress.street = addressLines.filter { !$0.isEmpty }.joined(separator: "\n")
 
         return postalFormatter.string(from: postalAddress)
@@ -37,11 +37,15 @@ extension FormattableAddress {
         let firstLineAddress = CNMutablePostalAddress()
         let secondLineAddress = CNMutablePostalAddress()
 
-        firstLineAddress.street = prefixedShortAddressLine
-
-        secondLineAddress.city = city
-        secondLineAddress.postalCode = zip
-        secondLineAddress.isoCountryCode = countryCode
+        if isBillingAllowed {
+            firstLineAddress.street = shortAddressLine
+            secondLineAddress.city = city
+            secondLineAddress.postalCode = zip
+            secondLineAddress.isoCountryCode = countryCode
+        } else {
+            firstLineAddress.street = addressLine1
+            secondLineAddress.street = addressLine2
+        }
 
         return [postalFormatter.string(from: firstLineAddress), postalFormatter.string(from: secondLineAddress)]
     }

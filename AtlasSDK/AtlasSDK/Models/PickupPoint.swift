@@ -19,19 +19,16 @@ public enum PickupPointType {
         self = name == "PACKSTATION" ? .packstation : .pickupPoint(name: name)
     }
 
-    var localizedKey: String {
-        switch self {
-        case .packstation:
-        case .pickupPoint(let name):
-        }
-    }
-
 }
 
 extension PickupPoint: Hashable {
 
     public var hashValue: Int {
         return id.hashValue
+    }
+
+    public var type: PickupPointType {
+        return PickupPointType(name: name)
     }
 
 }
