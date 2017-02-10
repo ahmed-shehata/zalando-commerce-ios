@@ -40,7 +40,7 @@ class CheckoutContainerView: UIView {
     let overlayButton: UIButton = {
         let button = UIButton(type: .custom)
         button.isUserInteractionEnabled = true
-        button.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        button.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.4039758134)
         button.isHidden = true
         button.alpha = 0
         return button

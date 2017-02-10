@@ -18,7 +18,7 @@ final class CheckoutPresentationController: UIPresentationController {
         guard let containerView = self.containerView else { return nil }
         let dimmingView = UIView(frame: containerView.bounds)
         dimmingView.alpha = 0
-        dimmingView.backgroundColor = UIColor(white: 0, alpha: 0.4)
+        dimmingView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.4039758134)
         dimmingView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dimmingViewTapped)))
         dimmingView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         return dimmingView
@@ -36,7 +36,7 @@ final class CheckoutPresentationController: UIPresentationController {
         guard let containerView = containerView else { return }
         let dimmingView = UIView(frame: containerView.bounds)
 
-        dimmingView.backgroundColor = UIColor(white: 0, alpha: 0.4)
+        dimmingView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.4039758134)
         dimmingView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dimmingViewTapped)))
         containerView.insertSubview(dimmingView, at: 0)
 

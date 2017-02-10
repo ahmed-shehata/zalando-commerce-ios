@@ -26,13 +26,6 @@ disabled_rules:
 
 excluded:
   - Carthage
-    # Unfortunately swiftlint checks directory only in relation to the script run,
-    # so we need all the combinations of SwiftyJSON path here
-  - AtlasSDK/Utils/SwiftyJSON
-  - Utils/SwiftyJSON
-  - AtlasSDK/AtlasSDKTests/SwiftyJSON
-  - AtlasSDKTests/SwiftyJSON
-  - SwiftyJSON
   - AtlasSDKTests
   - AtlasMockAPITests
   - AtlasDemoUITests
@@ -56,3 +49,4 @@ opt_in_rules:
   - redundant_nil_coalescing
   - operator_usage_whitespace
   - explicit_init
+  - object_literal
