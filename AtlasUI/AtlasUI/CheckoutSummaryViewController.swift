@@ -145,6 +145,7 @@ extension CheckoutSummaryViewController: CheckoutSummaryActionHandlerDelegate {
 
     func updated(layout: CheckoutSummaryLayout) {
         self.viewModel.layout = layout
+        self.rootStackView.checkoutContainer.hideOverlay(animated: true)
     }
 
     func updated(actionHandler: CheckoutSummaryActionHandler) {
