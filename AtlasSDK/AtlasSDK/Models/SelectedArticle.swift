@@ -6,9 +6,9 @@ import Foundation
 
 extension Array {
 
-    subscript(safe index: Index) -> Element? {
+    subscript(safe index: Index?) -> Element? {
         get {
-            guard (0..<count).contains(index) else { return nil }
+            guard let index = index, (0..<count).contains(index) else { return nil }
             return self[index]
         }
     }
@@ -18,7 +18,7 @@ extension Array {
 public struct SelectedArticle {
 
     public let article: Article
-    public let unitIndex: Int
+    public let unitIndex: Int?
     public let quantity: Int
 
     public let maxQuantityAllowed: Int
@@ -26,7 +26,7 @@ public struct SelectedArticle {
     private static let minQuantityAllowed = 1
     private static let maxQuantityAllowed = 10
 
-    public init(article: Article, unitIndex: Int, desiredQuantity: Int) {
+    public init(article: Article, unitIndex: Int? = nil, desiredQuantity: Int) {
         self.article = article
         self.unitIndex = unitIndex
 
@@ -61,6 +61,10 @@ public struct SelectedArticle {
 
     public var currency: String {
         return unit?.price.currency ?? article.availableUnits[0].price.currency
+    }
+
+    public var isSelected: Bool {
+        return unitIndex != nil
     }
 
 }

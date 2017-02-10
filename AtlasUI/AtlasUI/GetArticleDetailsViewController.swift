@@ -33,7 +33,7 @@ class GetArticleDetailsViewController: UIViewController {
 
     private func showSummaryView(article: Article) {
         guard article.hasSingleUnit else {
-            let initialSelectedArticle = SelectedArticle(article: article, unitIndex: NSNotFound, desiredQuantity: 1)
+            let initialSelectedArticle = SelectedArticle(article: article, desiredQuantity: 1)
             let dataModel = CheckoutSummaryDataModel(selectedArticle: initialSelectedArticle, totalPrice: initialSelectedArticle.totalPrice)
             let viewModel = CheckoutSummaryViewModel(dataModel: dataModel, layout: ArticleNotSelectedLayout())
             showSummaryView(viewModel: viewModel, actionHandler: ArticleNotSelectedActionHandler())
