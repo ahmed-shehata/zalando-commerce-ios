@@ -17,7 +17,7 @@
       "currency" : "EUR"
     },
     "available" : true,
-    "stock" : 1
+    "stock" : 5
   }, {
     "id" : "AZ711M001-B110400000",
     "size" : "40",
@@ -95,7 +95,7 @@
       "currency" : "EUR"
     },
     "available" : true,
-    "stock" : 1
+    "stock" : 15
   }, {
     "id" : "AZ711M001-B110420000",
     "size" : "42",
@@ -107,8 +107,7 @@
       "amount" : 12.45,
       "currency" : "EUR"
     },
-    "available" : true,
-    "stock" : 1
+    "available" : true
   }, {
     "id" : "AZ711M001-B110380000",
     "size" : "38",
