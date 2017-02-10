@@ -359,8 +359,10 @@
 		02B3D0B088D148969180C104AE3AE50A /* Guest Checkout */ = {
 			isa = PBXGroup;
 			children = (
+				C90634E73F34837E02456A31F0AE3198 /* Requests */,
 				BFD0DD80C9475A24C46A54BDD042269C /* GuestCart.swift */,
 				439BC5F5E13583D27A6EC5B0EB9C41AB /* GuestCheckout.swift */,
+				CC31F798CEEA98A6B729B1C1176D7F45 /* GuestCheckoutAddress.swift */,
 				06F04274C9DF91FEABFDD5EE482E7553 /* GuestOrder.swift */,
 				88271BCC31E360BEF49D8115AE83264E /* GuestPaymentMethod.swift */,
 			);
@@ -458,22 +460,6 @@
 			name = Address;
 			sourceTree = "<group>";
 		};
-		58DF23EF3479716C8A2453BD76EBD9BE /* RequestModels */ = {
-			isa = PBXGroup;
-			children = (
-				C90634E73F34837E02456A31F0AE3198 /* Guest Checkout */,
-				8F9B4958BB21E71767900924A2B5E647 /* CartItemRequest.swift */,
-				5E70123AA88E32E3A5454B3A156431FB /* CartRequest.swift */,
-				7D215D90311A506D7D973B86210A3463 /* CheckAddressRequest.swift */,
-				5D063CD03066E9BF594B1DD44463AB3E /* CreateAddressRequest.swift */,
-				C852C6A585400D9BC901E8CDC1F80DF3 /* CreateCheckoutRequest.swift */,
-				145D219AEA3C99EECCE083FFD133AF3D /* OrderRequest.swift */,
-				911266F3F4D1BD9868BEE8C12D704CED /* UpdateAddressRequest.swift */,
-				B0E87FE110B03D1A9869412A189ED338 /* UpdateCheckoutRequest.swift */,
-			);
-			name = RequestModels;
-			sourceTree = "<group>";
-		};
 		5A9E7E143E07801F9491EB92A1331C22 /* Options */ = {
 			isa = PBXGroup;
 			children = (
@@ -520,25 +506,19 @@
 			isa = PBXGroup;
 			children = (
 				DFE4E09245E4C2D081775266DC9E3364 /* Addresses */,
-				58DF23EF3479716C8A2453BD76EBD9BE /* RequestModels */,
-				FF907654557EB37F4DB0241F5B87C5C2 /* ResponseModels */,
 				02B3D0B088D148969180C104AE3AE50A /* Guest Checkout */,
+				819195861E4DEA7F00DB7DCE /* Cart */,
+				819195871E4DEA9600DB7DCE /* Checkout */,
+				819195881E4DEAAC00DB7DCE /* Payment */,
+				819195891E4DEADA00DB7DCE /* Order */,
 				E9C74F4D1E426CCD00334658 /* SelectedArticle.swift */,
 				5ADBF1E8B3FDBFAAE434240E7212C5FF /* Article.swift */,
-				C10B0A082BDFE901D0CEC90A2D969566 /* Cart.swift */,
-				F4F1412AECA75E38BDC3B618E86AF5A3 /* CartItem.swift */,
 				5122324D4A85204EB38F54BF29FEB024 /* Catalog.swift */,
-				0B725CD87C6359705000C3DF5ADC2F36 /* Checkout.swift */,
 				F5F8397816D421255C10AE0737FAAA41 /* Config.swift */,
 				CA70871321348430C46B108ED24D0827 /* Customer.swift */,
 				D4C60BDB698E3B89D0450DE4DB2F3089 /* Delivery.swift */,
 				747A73447DC8ACA0F246CCD8C6D0B513 /* Gender.swift */,
 				15D788B8AFA05BF3BB7559752D777933 /* Money.swift */,
-				7CDE9B266DF0DAFAF1BB3ED0A00D2609 /* Order.swift */,
-				A04E7980997323086729450F65FEEF1D /* Payment.swift */,
-				F6CF52ED3F20B2F59D5E6096E498A18B /* PaymentMethod.swift */,
-				1F74E6F0CBCE6D7E27184F239E9438F9 /* PickupPoint.swift */,
-				76F8647251682173E489D77B55EB0097 /* PaymentMethodType.swift */,
 			);
 			name = Models;
 			path = AtlasSDK/Models;
@@ -573,6 +553,56 @@
 			name = JSON;
 			path = AtlasSDKTests/JSON;
 			sourceTree = SOURCE_ROOT;
+		};
+		819195851E4DEA1F00DB7DCE /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				7D215D90311A506D7D973B86210A3463 /* CheckAddressRequest.swift */,
+				5D063CD03066E9BF594B1DD44463AB3E /* CreateAddressRequest.swift */,
+				911266F3F4D1BD9868BEE8C12D704CED /* UpdateAddressRequest.swift */,
+			);
+			name = Requests;
+			sourceTree = "<group>";
+		};
+		819195861E4DEA7F00DB7DCE /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				8F9B4958BB21E71767900924A2B5E647 /* CartItemRequest.swift */,
+				5E70123AA88E32E3A5454B3A156431FB /* CartRequest.swift */,
+				C10B0A082BDFE901D0CEC90A2D969566 /* Cart.swift */,
+				F4F1412AECA75E38BDC3B618E86AF5A3 /* CartItem.swift */,
+			);
+			name = Cart;
+			sourceTree = "<group>";
+		};
+		819195871E4DEA9600DB7DCE /* Checkout */ = {
+			isa = PBXGroup;
+			children = (
+				0B725CD87C6359705000C3DF5ADC2F36 /* Checkout.swift */,
+				C852C6A585400D9BC901E8CDC1F80DF3 /* CreateCheckoutRequest.swift */,
+				B0E87FE110B03D1A9869412A189ED338 /* UpdateCheckoutRequest.swift */,
+			);
+			name = Checkout;
+			sourceTree = "<group>";
+		};
+		819195881E4DEAAC00DB7DCE /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				A04E7980997323086729450F65FEEF1D /* Payment.swift */,
+				F6CF52ED3F20B2F59D5E6096E498A18B /* PaymentMethod.swift */,
+				76F8647251682173E489D77B55EB0097 /* PaymentMethodType.swift */,
+			);
+			name = Payment;
+			sourceTree = "<group>";
+		};
+		819195891E4DEADA00DB7DCE /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				7CDE9B266DF0DAFAF1BB3ED0A00D2609 /* Order.swift */,
+				145D219AEA3C99EECCE083FFD133AF3D /* OrderRequest.swift */,
+			);
+			name = Order;
+			sourceTree = "<group>";
 		};
 		864F2AE731B222CF20825FFF5BF5E6DD /* AtlasSDKTestsHostApp */ = {
 			isa = PBXGroup;
@@ -649,7 +679,7 @@
 			);
 			sourceTree = "<group>";
 		};
-		C90634E73F34837E02456A31F0AE3198 /* Guest Checkout */ = {
+		C90634E73F34837E02456A31F0AE3198 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
 				200C54666A3A82A1A9B7AC6C41343E03 /* GuestAddressRequest.swift */,
@@ -659,7 +689,7 @@
 				FE9CAAB18D3B91C1080CD719C6165881 /* GuestPaymentRequest.swift */,
 				551F8DD0823070DA1C63CCBF15B3E39A /* GuestPaymentSelectionRequest.swift */,
 			);
-			name = "Guest Checkout";
+			name = Requests;
 			sourceTree = "<group>";
 		};
 		D4B1BA8DB7C3102EC22C0246D8DAACDB /* Other */ = {
@@ -688,14 +718,16 @@
 		DFE4E09245E4C2D081775266DC9E3364 /* Addresses */ = {
 			isa = PBXGroup;
 			children = (
+				819195851E4DEA1F00DB7DCE /* Requests */,
+				FF907654557EB37F4DB0241F5B87C5C2 /* Responses */,
 				550185D4F6E3EBAB878EAFC9701AC441 /* CheckAddress.swift */,
 				88C730D69D82840A7774CF4846D833BC /* CheckoutAddress.swift */,
 				34A2E3D95B370914C7B19A3B81E80190 /* FormattableAddress.swift */,
 				73A02961F55508B3B15CEC53112BFE4D /* OrderAddress.swift */,
 				402AD2052AB32129CFB12ED77B1D048C /* StreetAddress.swift */,
 				A0C240A1E0049D934FB15689BA1417E9 /* UserAddress.swift */,
-				CC31F798CEEA98A6B729B1C1176D7F45 /* GuestCheckoutAddress.swift */,
 				6CF4A6E890DD1042419DC11B39812630 /* CheckoutAddresses.swift */,
+				1F74E6F0CBCE6D7E27184F239E9438F9 /* PickupPoint.swift */,
 			);
 			name = Addresses;
 			sourceTree = "<group>";
@@ -764,12 +796,12 @@
 			path = AtlasSDK/AtlasSDKTests;
 			sourceTree = "<group>";
 		};
-		FF907654557EB37F4DB0241F5B87C5C2 /* ResponseModels */ = {
+		FF907654557EB37F4DB0241F5B87C5C2 /* Responses */ = {
 			isa = PBXGroup;
 			children = (
 				4975D92727F8C4CB91BBBEDAA7414A3B /* CheckAddressResponse.swift */,
 			);
-			name = ResponseModels;
+			name = Responses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

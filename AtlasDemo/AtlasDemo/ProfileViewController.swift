@@ -57,7 +57,7 @@ class ProfileViewController: UIViewController {
             let processedResult = result.processedResult()
             switch processedResult {
             case .success(let customer):
-                self.avatar.image = UIImage(named: "user")
+                self.avatar.image = #imageLiteral(resourceName: "user")
                 self.avatar.layer.cornerRadius = self.avatar.frame.size.width / 2
                 self.avatar.clipsToBounds = true
                 self.name.text = "\(customer.firstName) \(customer.lastName)"
