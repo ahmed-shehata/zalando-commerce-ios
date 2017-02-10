@@ -140,6 +140,7 @@
 		E97B1BE91E2E704800FC0195 /* AddressCheckStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B1BE81E2E704800FC0195 /* AddressCheckStackView.swift */; };
 		E98453581DF59FCF001F6C51 /* GuestCheckoutCreateAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A5CF928227B72DDBAB9949CA5ED28B /* GuestCheckoutCreateAddressActionHandler.swift */; };
 		E9A115391E2FAA8C001DC643 /* AddressCheckRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A115381E2FAA8C001DC643 /* AddressCheckRowView.swift */; };
+		E9C2D7381E4DB51B003D677B /* PickupPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2D7371E4DB51B003D677B /* PickupPoint.swift */; };
 		E9C74F4C1E421FAB00334658 /* ArticleNotSelectedActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C74F4B1E421FAB00334658 /* ArticleNotSelectedActionHandler.swift */; };
 		E9D273D41E313D47002F0007 /* AddressCheckRowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D273D31E313D47002F0007 /* AddressCheckRowButton.swift */; };
 		E9ECD6431E38BBB100305B87 /* GetArticleDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECD6421E38BBB100305B87 /* GetArticleDetailsViewController.swift */; };
@@ -325,6 +326,7 @@
 		E97B1BE51E2E6DDD00FC0195 /* AddressCheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckViewController.swift; sourceTree = "<group>"; };
 		E97B1BE81E2E704800FC0195 /* AddressCheckStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckStackView.swift; sourceTree = "<group>"; };
 		E9A115381E2FAA8C001DC643 /* AddressCheckRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckRowView.swift; sourceTree = "<group>"; };
+		E9C2D7371E4DB51B003D677B /* PickupPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickupPoint.swift; sourceTree = "<group>"; };
 		E9C74F4B1E421FAB00334658 /* ArticleNotSelectedActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleNotSelectedActionHandler.swift; sourceTree = "<group>"; };
 		E9D273D31E313D47002F0007 /* AddressCheckRowButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckRowButton.swift; sourceTree = "<group>"; };
 		E9ECD6421E38BBB100305B87 /* GetArticleDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetArticleDetailsViewController.swift; sourceTree = "<group>"; };
@@ -481,6 +483,7 @@
 				B5494239851A207094AA7E1F76EFB842 /* Injector.swift */,
 				A57EEEDE1D66FC2ED33D1A99DC35A792 /* Localizer.swift */,
 				E979A6EF1E43A2520052AFDC /* NSAttributedString.swift */,
+				E9C2D7371E4DB51B003D677B /* PickupPoint.swift */,
 				1D979FCCB7C4E538EBB7521909C35D17 /* Reachability.swift */,
 				4475607CB5E8B6F4DD5F143C36C4B5AA /* StreetAddress.swift */,
 				0B6F508180606FB22E1A4FCC91997E48 /* String.swift */,
@@ -1031,6 +1034,7 @@
 				3ED1FCFD38D86B0362C9C9F9E06B6027 /* AtlasReachability.swift in Sources */,
 				8186B2A21E2F4F9F005B1A68 /* UIDevice.swift in Sources */,
 				7629410B747CDC9D6FD8015EAE15F936 /* FullScreenErrorViewController.swift in Sources */,
+				E9C2D7381E4DB51B003D677B /* PickupPoint.swift in Sources */,
 				E97B1BE91E2E704800FC0195 /* AddressCheckStackView.swift in Sources */,
 				E98453581DF59FCF001F6C51 /* GuestCheckoutCreateAddressActionHandler.swift in Sources */,
 				0FBF5C603EAAC10495E96E1E79EC75A0 /* KeyboardScrollView.swift in Sources */,

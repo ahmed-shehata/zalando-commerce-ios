@@ -40,7 +40,7 @@
 "addressFormView.zipcode" = "Postleitzahl";
 "addressListView.add.cellTitle" = "Neue Adresse hinzufügen...";
 "addressListView.add.type.AddressBookImportDataModelCreationStrategy" = "Aus dem Adressbuch";
-"addressListView.add.type.PickupPointAddressDataModelCreationStrategy" = "Packstation";
+"addressListView.add.type.PackstationAddressDataModelCreationStrategy" = "Packstation";
 "addressListView.add.type.StandardAddressDataModelCreationStrategy" = "Wunschadresse";
 "addressListView.add.type.title" = "Lieferung an";
 "addressListView.prefix.memberID" = "PostNummer";

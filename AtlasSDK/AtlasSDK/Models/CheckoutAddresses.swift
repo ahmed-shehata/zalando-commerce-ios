@@ -14,7 +14,7 @@ public struct CheckoutAddresses {
 
     public init(shippingAddress: ShippingAddress?, billingAddress: BillingAddress?, autoFill: Bool = false) {
         if autoFill {
-            let standardShippingAddress = shippingAddress?.isPickupPoint == true ? nil : shippingAddress
+            let standardShippingAddress = shippingAddress?.isBillingAllowed == true ? shippingAddress : nil
             self.billingAddress = billingAddress ?? standardShippingAddress
             self.shippingAddress = shippingAddress ?? billingAddress
         } else {

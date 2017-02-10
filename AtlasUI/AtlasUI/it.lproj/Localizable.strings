@@ -40,7 +40,6 @@
 "addressFormView.zipcode" = "CAP";
 "addressListView.add.cellTitle" = "Aggiungi un nuovo indirizzo…";
 "addressListView.add.type.AddressBookImportDataModelCreationStrategy" = "Importa dalla rubrica";
-"addressListView.add.type.PickupPointAddressDataModelCreationStrategy" = "Punto di raccolta";
 "addressListView.add.type.StandardAddressDataModelCreationStrategy" = "Standard";
 "addressListView.add.type.title" = "Tipo di indirizzo";
 "addressListView.prefix.memberID" = "Membro ID";

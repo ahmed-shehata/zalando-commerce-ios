@@ -40,7 +40,7 @@
 "addressFormView.zipcode" = "Zipcode";
 "addressListView.add.cellTitle" = "Add new address...";
 "addressListView.add.type.AddressBookImportDataModelCreationStrategy" = "Import from Address Book";
-"addressListView.add.type.PickupPointAddressDataModelCreationStrategy" = "Pickup Point";
+"addressListView.add.type.PackstationAddressDataModelCreationStrategy" = "Packstation";
 "addressListView.add.type.StandardAddressDataModelCreationStrategy" = "Standard";
 "addressListView.add.type.title" = "Address Type";
 "addressListView.prefix.memberID" = "Member ID";

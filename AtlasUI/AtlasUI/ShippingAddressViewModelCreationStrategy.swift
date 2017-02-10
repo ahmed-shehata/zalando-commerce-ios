@@ -15,7 +15,7 @@ class ShippingAddressViewModelCreationStrategy: AddressViewModelCreationStrategy
             let viewModel = AddressFormViewModel(dataModel: dataModel, layout: CreateAddressFormLayout(), type: .standardAddress)
             self?.strategyCompletion?(viewModel)
         }
-        let pickupPointStrategy = PickupPointAddressDataModelCreationStrategy { [weak self] dataModel in
+        let pickupPointStrategy = PackstationAddressDataModelCreationStrategy { [weak self] dataModel in
             let viewModel = AddressFormViewModel(dataModel: dataModel, layout: CreateAddressFormLayout(), type: .pickupPoint)
             self?.strategyCompletion?(viewModel)
         }
