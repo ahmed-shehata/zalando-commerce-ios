@@ -96,15 +96,15 @@ class CheckoutSummaryOrderStackView: UIStackView {
 extension CheckoutSummaryOrderStackView {
 
     fileprivate dynamic func saveImageButtonPressed() {
-        guard let scrollView = superview?.superview as? UIScrollView else { return }
+        guard let rootStackView = superview?.superview?.superview?.superview?.superview as? CheckoutSummaryRootStackView else { return }
 
-        let (contentOffset, frame) = prepareViewForTakingImage(scrollView: scrollView)
-        guard let image = scrollView.takeScreenshot() else {
+        let (contentOffset, frame) = prepareViewForTakingImage(scrollView: rootStackView.checkoutContainer.scrollView)
+        guard let image = rootStackView.superview?.takeScreenshot() else {
             UserMessage.displayError(error: AtlasCheckoutError.unclassified)
-            cleanupViewAfterTakingImage(scrollView: scrollView, originalContentOffset: contentOffset, originalFrame: frame)
+            cleanupViewAfterTakingImage(scrollView: rootStackView.checkoutContainer.scrollView, originalContentOffset: contentOffset, originalFrame: frame)
             return
         }
-        cleanupViewAfterTakingImage(scrollView: scrollView, originalContentOffset: contentOffset, originalFrame: frame)
+        cleanupViewAfterTakingImage(scrollView: rootStackView.checkoutContainer.scrollView, originalContentOffset: contentOffset, originalFrame: frame)
         AtlasUIViewController.shared?.showLoader()
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(image:didFinishSavingWithError:contextInfo:)), nil)
     }
