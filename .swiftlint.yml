@@ -22,7 +22,7 @@ file_length:
   error: 350
 
 disabled_rules:
-  - missing_docs # it's broken currently: https://github.com/realm/SwiftLint/issues/728
+  # - missing_docs # it's broken currently: https://github.com/realm/SwiftLint/issues/728
 
 excluded:
   - Carthage
