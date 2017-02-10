@@ -66,13 +66,14 @@ class CheckoutSummaryEditProductStackView: UIStackView {
     }
 
     private func sizeSelected(at idx: Int, for selectedArticle: SelectedArticle) {
-        let quantity = min(selectedArticle.quantity, selectedArticle.article.availableUnits[idx].stock ?? 1)
-        let updatedArticle = SelectedArticle(article: selectedArticle.article, unitIndex: idx, quantity: quantity)
+        let updatedArticle = SelectedArticle(article: selectedArticle.article, unitIndex: idx, quantity: selectedArticle.quantity)
+        let quantity = min(selectedArticle.quantity, CheckoutSummaryArticleRefineType.quantity.count(selectedArticle: updatedArticle))
+        let fixedArticle = SelectedArticle(article: selectedArticle.article, unitIndex: idx, quantity: quantity)
 
         guard let currentSelectedArticle = dataSource?.selectedArticle,
-            dataSource?.checkoutContainer.collectionView.type == .size, updatedArticle != currentSelectedArticle else { return }
+            dataSource?.checkoutContainer.collectionView.type == .size, fixedArticle != currentSelectedArticle else { return }
 
-        delegate?.updated(selectedArticle: updatedArticle)
+        delegate?.updated(selectedArticle: fixedArticle)
     }
 
     private func quantitySelected(at idx: Int, for selectedArticle: SelectedArticle) {
