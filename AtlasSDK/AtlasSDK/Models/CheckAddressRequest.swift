@@ -2,9 +2,15 @@
 //  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
+// swiftlint:disable missing_docs
+
+import Foundation
+
 public struct CheckAddressRequest {
+
     public let address: AddressCheck
     public let pickupPoint: PickupPoint?
+    
 }
 
 extension CheckAddressRequest: JSONRepresentable {
