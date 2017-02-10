@@ -71,33 +71,43 @@ extension AtlasAPIClient {
 
     public func authorize(withToken tokenValue: String) {
         if let token = APIAccessToken.store(token: tokenValue, for: config) {
-            AtlasAPIClient.notify(isAuthorized: true, withToken: token)
+            notify(isAuthorized: true, withToken: token)
         } else {
-            AtlasAPIClient.notify(isAuthorized: false, withToken: nil)
+            notify(isAuthorized: false, withToken: nil)
         }
     }
 
     public func deauthorize() {
         let token = APIAccessToken.delete(for: config)
-        AtlasAPIClient.notify(isAuthorized: false, withToken: token)
+        notify(isAuthorized: false, withToken: token)
     }
 
     public static func deauthorizeAll() {
         APIAccessToken.wipe().forEach { token in
-            AtlasAPIClient.notify(isAuthorized: false, withToken: token)
+            AtlasAPIClient.notify(client: nil, isAuthorized: false, withToken: token)
         }
     }
 
-    private static func notify(isAuthorized: Bool, withToken token: APIAccessToken?) {
-        var userInfo: [AnyHashable: Any]?
-        if let token = token {
-            userInfo = [Options.InfoKey.useSandboxEnvironment: token.useSandboxEnvironment,
-                Options.InfoKey.clientId: token.clientId]
-        }
+    private func notify(isAuthorized: Bool, withToken token: APIAccessToken?) {
+        AtlasAPIClient.notify(client: self, isAuthorized: isAuthorized, withToken: token)
+    }
 
+    private static func notify(client: AtlasAPIClient?, isAuthorized: Bool, withToken token: APIAccessToken?) {
+        let userInfo = token?.notificationUserInfo
         let authNotification: NSNotification.Name = isAuthorized ? .AtlasAuthorized : .AtlasDeauthorized
-        NotificationCenter.default.post(name: authNotification, object: nil, userInfo: userInfo)
-        NotificationCenter.default.post(name: .AtlasAuthorizationChanged, object: nil, userInfo: userInfo)
+
+        NotificationCenter.default.post(name: authNotification, object: client, userInfo: userInfo)
+        NotificationCenter.default.post(name: .AtlasAuthorizationChanged, object: client, userInfo: userInfo)
     }
 
+}
+
+extension APIAccessToken {
+
+    var notificationUserInfo: [AnyHashable: Any] {
+        return [
+            Options.InfoKey.useSandboxEnvironment: self.useSandboxEnvironment,
+            Options.InfoKey.clientId: self.clientId
+        ]
+    }
 }
