@@ -10,10 +10,20 @@ public struct SelectedArticle {
     public let unitIndex: Int
     public let quantity: Int
 
-    public init(article: Article, unitIndex: Int, quantity: Int) {
+    private static let minQuantityAllowed = 1
+    private static let maxQuantityAllowed = 10
+
+    public init(article: Article, unitIndex: Int, desiredQuantity: Int) {
         self.article = article
         self.unitIndex = unitIndex
-        self.quantity = quantity
+
+        if unitIndex != NSNotFound && unitIndex < article.availableUnits.count {
+            let unit = article.availableUnits[unitIndex]
+            let maxQuantity = min(unit.stock ?? SelectedArticle.minQuantityAllowed, SelectedArticle.maxQuantityAllowed)
+            self.quantity = min(desiredQuantity, maxQuantity)
+        } else {
+            self.quantity = SelectedArticle.minQuantityAllowed
+        }
     }
 
     public var sku: String {
@@ -43,6 +53,10 @@ public struct SelectedArticle {
 
     public var notSelected: Bool {
         return unitIndex == NSNotFound
+    }
+
+    public var maxQuantityAllowed: Int {
+        return min(unit?.stock ?? SelectedArticle.minQuantityAllowed, SelectedArticle.maxQuantityAllowed)
     }
 
 }
