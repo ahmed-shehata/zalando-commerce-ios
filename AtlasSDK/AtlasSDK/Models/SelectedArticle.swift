@@ -4,11 +4,24 @@
 
 import Foundation
 
+extension Array {
+
+    subscript(safe index: Index) -> Element? {
+        get {
+            guard (0..<count).contains(index) else { return nil }
+            return self[index]
+        }
+    }
+
+}
+
 public struct SelectedArticle {
 
     public let article: Article
     public let unitIndex: Int
     public let quantity: Int
+
+    public let maxQuantityAllowed: Int
 
     private static let minQuantityAllowed = 1
     private static let maxQuantityAllowed = 10
@@ -17,12 +30,12 @@ public struct SelectedArticle {
         self.article = article
         self.unitIndex = unitIndex
 
-        if unitIndex != NSNotFound && unitIndex < article.availableUnits.count {
-            let unit = article.availableUnits[unitIndex]
-            let maxQuantity = min(unit.stock ?? SelectedArticle.minQuantityAllowed, SelectedArticle.maxQuantityAllowed)
-            self.quantity = min(desiredQuantity, maxQuantity)
+        if let unit = article.availableUnits[safe: unitIndex] {
+            self.maxQuantityAllowed = min(unit.stock ?? SelectedArticle.minQuantityAllowed, SelectedArticle.maxQuantityAllowed)
+            self.quantity = min(desiredQuantity, maxQuantityAllowed)
         } else {
-            self.quantity = SelectedArticle.minQuantityAllowed
+            self.maxQuantityAllowed = SelectedArticle.minQuantityAllowed
+            self.quantity = self.maxQuantityAllowed
         }
     }
 
@@ -31,8 +44,7 @@ public struct SelectedArticle {
     }
 
     public var unit: Article.Unit? {
-        guard !notSelected, unitIndex < article.availableUnits.count else { return nil }
-        return article.availableUnits[unitIndex]
+        return article.availableUnits[safe: unitIndex]
     }
 
     public var price: Money {
@@ -49,14 +61,6 @@ public struct SelectedArticle {
 
     public var currency: String {
         return unit?.price.currency ?? article.availableUnits[0].price.currency
-    }
-
-    public var notSelected: Bool {
-        return unitIndex == NSNotFound
-    }
-
-    public var maxQuantityAllowed: Int {
-        return min(unit?.stock ?? SelectedArticle.minQuantityAllowed, SelectedArticle.maxQuantityAllowed)
     }
 
 }
