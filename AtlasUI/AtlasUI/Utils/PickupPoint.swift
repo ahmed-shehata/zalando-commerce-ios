@@ -8,7 +8,7 @@ import AtlasSDK
 extension PickupPoint {
 
     var localizedTitle: String {
-        switch type {
+        switch kind {
         case .packstation: return Localizer.format(string: "addressListView.prefix.packstation") + ": " + id
         case .pickupPoint(let name): return name
         }

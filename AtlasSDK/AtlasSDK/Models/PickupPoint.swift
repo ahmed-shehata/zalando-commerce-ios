@@ -10,13 +10,21 @@ public struct PickupPoint {
 
 }
 
-public enum PickupPointType {
+public extension PickupPoint {
 
-    case packstation
-    case pickupPoint(name: String)
+    public enum Kind {
 
-    init(name: String) {
-        self = name == "PACKSTATION" ? .packstation : .pickupPoint(name: name)
+        case packstation
+        case pickupPoint(name: String)
+
+        init(name: String) {
+            self = name == "PACKSTATION" ? .packstation : .pickupPoint(name: name)
+        }
+
+    }
+
+    public var kind: Kind {
+        return Kind(name: name)
     }
 
 }
@@ -25,10 +33,6 @@ extension PickupPoint: Hashable {
 
     public var hashValue: Int {
         return id.hashValue
-    }
-
-    public var type: PickupPointType {
-        return PickupPointType(name: name)
     }
 
 }
