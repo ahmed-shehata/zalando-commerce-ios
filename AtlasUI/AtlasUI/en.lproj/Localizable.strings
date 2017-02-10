@@ -100,7 +100,7 @@
 "paymentMethod.DIRECT_DEBIT" = "Direct Debit";
 "paymentMethod.ELECTRONIC_PAYMENT_STANDARD" = "Electronic Payment Standard";
 "paymentMethod.FREE" = "Free";
-"paymentMethod.IDEAL" = "Ideal";
+"paymentMethod.IDEAL" = "iDEAL";
 "paymentMethod.INVOICE" = "Invoice";
 "paymentMethod.MAKSUTURVA" = "Maksuturva";
 "paymentMethod.PAYPAL" = "PayPal";

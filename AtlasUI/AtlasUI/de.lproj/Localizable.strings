@@ -96,7 +96,7 @@
 "paymentMethod.DIRECT_DEBIT" = "Bankeinzug";
 "paymentMethod.ELECTRONIC_PAYMENT_STANDARD" = "Electronic Payment Standard";
 "paymentMethod.FREE" = "Kostenlos";
-"paymentMethod.IDEAL" = "Ideal";
+"paymentMethod.IDEAL" = "iDEAL";
 "paymentMethod.INVOICE" = "Rechnung";
 "paymentMethod.MAKSUTURVA" = "Maksuturva";
 "paymentMethod.PAYPAL" = "PayPal";

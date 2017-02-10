@@ -100,7 +100,7 @@
 
 /*Do we really have a payment method where you get all for free??*/
 "paymentMethod.FREE" = "Gratuito";
-"paymentMethod.IDEAL" = "Ideal";
+"paymentMethod.IDEAL" = "iDEAL";
 "paymentMethod.INVOICE" = "Fattura";
 "paymentMethod.MAKSUTURVA" = "Maksuturva";
 "paymentMethod.PAYPAL" = "PayPal";
