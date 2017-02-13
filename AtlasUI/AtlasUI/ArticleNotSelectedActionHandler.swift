@@ -36,10 +36,10 @@ class ArticleNotSelectedActionHandler: CheckoutSummaryActionHandler {
         }
 
         AtlasUIClient.customer { [weak self] customerResult in
-            guard let customer = customerResult.process(forceFullScreenError: true) else { return }
+            guard let customer = customerResult.process(presentationMode: .fullScreen) else { return }
 
             LoggedInSummaryActionHandler.create(customer: customer, selectedArticle: selectedArticle) { actionHandlerResult in
-                guard let actionHandler = actionHandlerResult.process(forceFullScreenError: true) else { return }
+                guard let actionHandler = actionHandlerResult.process(presentationMode: .fullScreen) else { return }
 
                 let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, cartCheckout: actionHandler.cartCheckout)
                 try? self?.delegate?.updated(dataModel: dataModel)

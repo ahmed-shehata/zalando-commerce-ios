@@ -26,7 +26,7 @@ class GetArticleDetailsViewController: UIViewController {
 
     private func fetchArticle() {
         AtlasUIClient.article(withSKU: self.sku) { [weak self] result in
-            guard let article = result.process(forceFullScreenError: true) else { return }
+            guard let article = result.process(presentationMode: .fullScreen) else { return }
             self?.showSummaryView(article: article)
         }
     }
@@ -49,10 +49,10 @@ class GetArticleDetailsViewController: UIViewController {
         }
 
         AtlasUIClient.customer { [weak self] customerResult in
-            guard let customer = customerResult.process(forceFullScreenError: true) else { return }
+            guard let customer = customerResult.process(presentationMode: .fullScreen) else { return }
 
             LoggedInSummaryActionHandler.create(customer: customer, selectedArticle: selectedArticle) { actionHandlerResult in
-                guard let actionHandler = actionHandlerResult.process(forceFullScreenError: true) else { return }
+                guard let actionHandler = actionHandlerResult.process(presentationMode: .fullScreen) else { return }
 
                 let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, cartCheckout: actionHandler.cartCheckout)
                 let viewModel = CheckoutSummaryViewModel(dataModel: dataModel, layout: LoggedInLayout())

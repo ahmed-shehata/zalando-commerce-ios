@@ -138,7 +138,7 @@ extension CheckoutSummaryViewController: CheckoutSummaryActionHandlerDelegate {
         do {
             try dataModel.validate(against: oldModel)
         } catch let error {
-            UserMessage.displayError(error: error)
+            UserError.display(error: error)
             throw error
         }
     }
