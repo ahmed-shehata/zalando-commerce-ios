@@ -339,5 +339,8 @@ DEPENDENCIES
   travis
   xcpretty
 
+RUBY VERSION
+   ruby 2.2.6p396
+
 BUNDLED WITH
    1.14.4
