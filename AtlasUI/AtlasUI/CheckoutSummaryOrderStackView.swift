@@ -100,21 +100,23 @@ extension CheckoutSummaryOrderStackView {
         guard let checkoutSummaryViewController = rootViewController as? CheckoutSummaryViewController else { return }
 
         checkoutSummaryViewController.prepareViewForScreenShot()
-        let screenShot = checkoutSummaryViewController.navigationController?.view.takeScreenshot()
-        checkoutSummaryViewController.cleanupViewAfterScreenShot()
+        Async.delay(delay: 0.2) {
+            let screenShot = checkoutSummaryViewController.navigationController?.view.takeScreenshot()
+            checkoutSummaryViewController.cleanupViewAfterScreenShot()
 
-        guard let image = screenShot else {
-            UserMessage.displayError(error: AtlasCheckoutError.unclassified)
-            return
+            guard let image = screenShot else {
+                UserMessage.displayError(error: AtlasCheckoutError.unclassified)
+                return
+            }
+
+            checkoutSummaryViewController.rootStackView.alpha = 0
+            UIView.waitForUIState {
+                checkoutSummaryViewController.rootStackView.alpha = 1
+            }
+
+            AtlasUIViewController.shared?.showLoader()
+            UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(image:didFinishSavingWithError:contextInfo:)), nil)
         }
-
-        checkoutSummaryViewController.rootStackView.alpha = 0
-        UIView.waitForUIState {
-            checkoutSummaryViewController.rootStackView.alpha = 1
-        }
-
-        AtlasUIViewController.shared?.showLoader()
-        UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(image:didFinishSavingWithError:contextInfo:)), nil)
     }
 
     func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeMutableRawPointer) {

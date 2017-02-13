@@ -50,12 +50,8 @@ extension CheckoutSummaryRootStackView: UIScreenShotBuilder {
 
     func prepareForScreenShot() {
         checkoutContainer.containerStackView.removeArrangedSubview(checkoutContainer.footerStackView)
-        let atlasUIViewController = AtlasUIViewController.shared
-        print(atlasUIViewController?.mainNavigationController.view)
-        atlasUIViewController?.bottomConstraint?.constant = -100
-        atlasUIViewController?.view.setNeedsLayout()
-        atlasUIViewController?.view.setNeedsDisplay()
-        print(atlasUIViewController?.mainNavigationController.view)
+        AtlasUIViewController.shared?.bottomConstraint?.constant = 100
+        AtlasUIViewController.shared?.view.setNeedsLayout()
     }
 
     func cleanupAfterScreenShot() {
