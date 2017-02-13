@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-ruby 2.2
-
 group :calypso do
   gem 'awesome_print'
   gem 'cocoapods'
