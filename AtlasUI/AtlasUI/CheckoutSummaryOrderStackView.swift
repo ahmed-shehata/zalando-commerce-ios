@@ -96,41 +96,25 @@ class CheckoutSummaryOrderStackView: UIStackView {
 extension CheckoutSummaryOrderStackView {
 
     fileprivate dynamic func saveImageButtonPressed() {
-        guard let rootStackView = superview?.superview?.superview?.superview?.superview as? CheckoutSummaryRootStackView else { return }
+        let rootViewController = AtlasUIViewController.shared?.mainNavigationController.viewControllers.first
+        guard let checkoutSummaryViewController = rootViewController as? CheckoutSummaryViewController else { return }
 
-        let (contentOffset, frame) = prepareViewForTakingImage(scrollView: rootStackView.checkoutContainer.scrollView)
-        guard let image = rootStackView.superview?.takeScreenshot() else {
+        checkoutSummaryViewController.prepareViewForScreenShot()
+        let screenShot = checkoutSummaryViewController.navigationController?.view.takeScreenshot()
+        checkoutSummaryViewController.cleanupViewAfterScreenShot()
+
+        guard let image = screenShot else {
             UserMessage.displayError(error: AtlasCheckoutError.unclassified)
-            cleanupViewAfterTakingImage(scrollView: rootStackView.checkoutContainer.scrollView, originalContentOffset: contentOffset, originalFrame: frame)
             return
         }
-        cleanupViewAfterTakingImage(scrollView: rootStackView.checkoutContainer.scrollView, originalContentOffset: contentOffset, originalFrame: frame)
+
+        checkoutSummaryViewController.rootStackView.alpha = 0
+        UIView.waitForUIState {
+            checkoutSummaryViewController.rootStackView.alpha = 1
+        }
+
         AtlasUIViewController.shared?.showLoader()
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(image:didFinishSavingWithError:contextInfo:)), nil)
-    }
-
-    private func prepareViewForTakingImage(scrollView: UIScrollView) -> (originalContentOffset: CGPoint, originalFrame: CGRect) {
-        let savedContentOffset = scrollView.contentOffset
-        let savedFrame = scrollView.frame
-        let imageHeight = scrollView.contentSize.height - saveImageContainer.frame.height - bottomSeparator.frame.height
-        let imageSize = CGSize(width: scrollView.contentSize.width, height: imageHeight)
-        saveImageContainer.isHidden = true
-        bottomSeparator.isHidden = true
-        scrollView.contentOffset = .zero
-        scrollView.frame = CGRect(origin: CGPoint.zero, size: imageSize)
-        return (savedContentOffset, savedFrame)
-    }
-
-    private func cleanupViewAfterTakingImage(scrollView: UIScrollView, originalContentOffset: CGPoint, originalFrame: CGRect) {
-        saveImageContainer.isHidden = false
-        bottomSeparator.isHidden = false
-        scrollView.alpha = 0
-
-        UIView.waitForUIState {
-            scrollView.alpha = 1
-            scrollView.contentOffset = originalContentOffset
-            scrollView.frame = originalFrame
-        }
     }
 
     func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeMutableRawPointer) {
@@ -195,6 +179,20 @@ extension CheckoutSummaryOrderStackView: UIDataBuilder {
 
     func configure(viewModel: String?) {
         orderNumberValueLabel.text = viewModel
+    }
+
+}
+
+extension CheckoutSummaryOrderStackView: UIScreenShotBuilder {
+
+    func prepareForScreenShot() {
+        saveImageContainer.isHidden = true
+        bottomSeparator.isHidden = true
+    }
+
+    func cleanupAfterScreenShot() {
+        saveImageContainer.isHidden = false
+        bottomSeparator.isHidden = false
     }
 
 }

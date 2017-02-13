@@ -52,6 +52,16 @@ extension UIView {
         Async.delay(delay: 0.1, block: block)
     }
 
+    func configureSubviews<T>(subviewFoundHandler: (T) -> Void) {
+        self.subviews.forEach { subview in
+            if let neededSubview = subview as? T {
+                subviewFoundHandler(neededSubview)
+            } else {
+                subview.configureSubviews(subviewFoundHandler: subviewFoundHandler)
+            }
+        }
+    }
+
 }
 
 extension UIView {
@@ -67,10 +77,15 @@ extension UIView {
 
     func snap(toSuperview anchor: ViewAnchor, constant: CGFloat = 0) {
         guard let superview = superview else { return }
+        _ = snap(toView: superview, anchor: anchor, constant: constant)
+    }
+
+    func snap(toView view: UIView, anchor: ViewAnchor, constant: CGFloat = 0) -> NSLayoutConstraint? {
         translatesAutoresizingMaskIntoConstraints = false
-        let constraint = anchor.constraint(fromView: self, toView: superview)
+        let constraint = anchor.constraint(fromView: self, toView: view)
         constraint.constant = constant
         constraint.isActive = true
+        return constraint
     }
 
     func snap(toTopViewController viewController: UIViewController) {

@@ -12,6 +12,7 @@ class AtlasUIViewController: UIViewController {
     }
 
     let mainNavigationController: UINavigationController
+    var bottomConstraint: NSLayoutConstraint?
     fileprivate let loaderView = LoaderView()
     private let atlasReachability = AtlasReachability()
 
@@ -31,7 +32,10 @@ class AtlasUIViewController: UIViewController {
         UserMessage.loadBannerError()
         addChildViewController(mainNavigationController)
         view.addSubview(mainNavigationController.view)
-        mainNavigationController.view.fillInSuperview()
+        mainNavigationController.view.snap(toSuperview: .top)
+        mainNavigationController.view.snap(toSuperview: .right)
+        bottomConstraint = mainNavigationController.view.snap(toView: view, anchor: .bottom)
+        mainNavigationController.view.snap(toSuperview: .left)
         atlasReachability.setupReachability()
     }
 
