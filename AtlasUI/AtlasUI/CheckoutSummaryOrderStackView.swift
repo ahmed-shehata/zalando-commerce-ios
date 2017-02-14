@@ -7,6 +7,12 @@ import AtlasSDK
 
 class CheckoutSummaryOrderStackView: UIStackView {
 
+    let recommendationCollectionView: CheckoutSummaryRecommendationCollectionView = {
+        let collectionView = CheckoutSummaryRecommendationCollectionView()
+        collectionView.backgroundColor = .white
+        return collectionView
+    }()
+
     let orderHeaderLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: UIFontWeightLight)
@@ -158,6 +164,7 @@ extension CheckoutSummaryOrderStackView {
 extension CheckoutSummaryOrderStackView: UIBuilder {
 
     func configureView() {
+        addArrangedSubview(recommendationCollectionView)
         addArrangedSubview(orderHeaderLabel)
         addArrangedSubview(headerSeparator)
         addArrangedSubview(orderNumberStackView)
@@ -176,6 +183,7 @@ extension CheckoutSummaryOrderStackView: UIBuilder {
     }
 
     func configureConstraints() {
+        recommendationCollectionView.setHeight(equalToConstant: 100)
         orderNumberTitleLabel.setWidth(equalToView: orderNumberValueLabel)
         imageSavedLabel.fillInSuperview()
         saveImageButton.centerInSuperview()
@@ -196,9 +204,11 @@ extension CheckoutSummaryOrderStackView: UIDataBuilder {
     func configure(viewModel: T) {
         orderNumberValueLabel.text = viewModel.orderNumber
 
-        AtlasUIClient.articleRecommendation(withSKU: viewModel.selectedArticle.article.id) { result in
+        AtlasUIClient.articleRecommendation(withSKU: viewModel.selectedArticle.article.id) { [weak self] result in
             guard let recommendations = result.process() else { return }
-            
+            self?.recommendationCollectionView.configure(with: recommendations, completion: { recommendation in
+
+            })
         }
     }
 
