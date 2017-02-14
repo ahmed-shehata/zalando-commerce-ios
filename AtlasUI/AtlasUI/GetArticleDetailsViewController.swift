@@ -33,14 +33,14 @@ class GetArticleDetailsViewController: UIViewController {
 
     private func showSummaryView(article: Article) {
         guard article.hasSingleUnit else {
-            let initialSelectedArticle = SelectedArticle(article: article, unitIndex: NSNotFound, quantity: 1)
+            let initialSelectedArticle = SelectedArticle(article: article, desiredQuantity: 1)
             let dataModel = CheckoutSummaryDataModel(selectedArticle: initialSelectedArticle, totalPrice: initialSelectedArticle.totalPrice)
             let viewModel = CheckoutSummaryViewModel(dataModel: dataModel, layout: ArticleNotSelectedLayout())
             showSummaryView(viewModel: viewModel, actionHandler: ArticleNotSelectedActionHandler())
             return
         }
 
-        let selectedArticle = SelectedArticle(article: article, unitIndex: 0, quantity: 1)
+        let selectedArticle = SelectedArticle(article: article, unitIndex: 0, desiredQuantity: 1)
         guard AtlasAPIClient.shared?.isAuthorized == true else {
             let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, totalPrice: selectedArticle.totalPrice)
             let viewModel = CheckoutSummaryViewModel(dataModel: dataModel, layout: NotLoggedInLayout())

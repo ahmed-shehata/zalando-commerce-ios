@@ -4,16 +4,39 @@
 
 import Foundation
 
+extension Array {
+
+    subscript(safe index: Index?) -> Element? {
+        get {
+            guard let index = index, (0..<count).contains(index) else { return nil }
+            return self[index]
+        }
+    }
+
+}
+
 public struct SelectedArticle {
 
     public let article: Article
-    public let unitIndex: Int
+    public let unitIndex: Int?
     public let quantity: Int
 
-    public init(article: Article, unitIndex: Int, quantity: Int) {
+    public let maxQuantityAllowed: Int
+
+    private static let minQuantityAllowed = 1
+    private static let maxQuantityAllowed = 10
+
+    public init(article: Article, unitIndex: Int? = nil, desiredQuantity: Int) {
         self.article = article
         self.unitIndex = unitIndex
-        self.quantity = quantity
+
+        if let unit = article.availableUnits[safe: unitIndex] {
+            self.maxQuantityAllowed = min(unit.stock ?? SelectedArticle.minQuantityAllowed, SelectedArticle.maxQuantityAllowed)
+            self.quantity = min(desiredQuantity, maxQuantityAllowed)
+        } else {
+            self.maxQuantityAllowed = SelectedArticle.minQuantityAllowed
+            self.quantity = self.maxQuantityAllowed
+        }
     }
 
     public var sku: String {
@@ -21,8 +44,7 @@ public struct SelectedArticle {
     }
 
     public var unit: Article.Unit? {
-        guard !notSelected, unitIndex < article.availableUnits.count else { return nil }
-        return article.availableUnits[unitIndex]
+        return article.availableUnits[safe: unitIndex]
     }
 
     public var price: Money {
@@ -41,8 +63,8 @@ public struct SelectedArticle {
         return unit?.price.currency ?? article.availableUnits[0].price.currency
     }
 
-    public var notSelected: Bool {
-        return unitIndex == NSNotFound
+    public var isSelected: Bool {
+        return unitIndex != nil
     }
 
 }
