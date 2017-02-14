@@ -26,10 +26,6 @@ public struct Article {
         return media.images.first?.catalogURL
     }
 
-    public struct Brand {
-        public let name: String
-    }
-
     public struct Unit {
         public let id: String
         public let size: String
@@ -38,20 +34,6 @@ public struct Article {
         public let available: Bool
         public let stock: Int?
         public let partner: Partner?
-    }
-
-    public struct Media {
-        public let images: [Image]
-    }
-
-    public struct Image {
-        public let order: Int
-        public let catalogURL: URL
-        public let catalogHDURL: URL
-        public let detailURL: URL
-        public let detailHDURL: URL
-        public let largeURL: URL
-        public let largeHDURL: URL
     }
 
     public struct Partner {
@@ -104,44 +86,6 @@ extension Article.Unit: JSONInitializable {
 
     var isDiscounted: Bool {
         return price < originalPrice
-    }
-
-}
-
-extension Article.Brand: JSONInitializable {
-    init?(json: JSON) {
-        guard let name = json["name"].string else { return nil }
-
-        self.name = name
-    }
-}
-
-extension Article.Media: JSONInitializable {
-
-    init?(json: JSON) {
-        self.images = json["images"].jsons.flatMap { Article.Image(json: $0) }
-    }
-
-}
-
-extension Article.Image: JSONInitializable {
-
-    init?(json: JSON) {
-        guard let order = json["order"].int,
-            let catalogURL = json["catalog"].url,
-            let catalogHDURL = json["catalog_hd"].url,
-            let detailURL = json["detail"].url,
-            let detailHDURL = json["detail_hd"].url,
-            let largeURL = json["large"].url,
-            let largeHDURL = json["large_hd"].url
-            else { return nil }
-        self.order = order
-        self.catalogURL = catalogURL
-        self.catalogHDURL = catalogHDURL
-        self.detailURL = detailURL
-        self.detailHDURL = detailHDURL
-        self.largeURL = largeURL
-        self.largeHDURL = largeHDURL
     }
 
 }

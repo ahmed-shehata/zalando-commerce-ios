@@ -196,9 +196,9 @@ extension CheckoutSummaryOrderStackView: UIDataBuilder {
     func configure(viewModel: T) {
         orderNumberValueLabel.text = viewModel.orderNumber
 
-        AtlasUIClient.articleRecommendation(withSKU: viewModel.selectedArticle.sku) { result in
-            guard let recommendation = result.process() else { return }
-
+        AtlasUIClient.articleRecommendation(withSKU: viewModel.selectedArticle.article.id) { result in
+            guard let recommendations = result.process() else { return }
+            
         }
     }
 

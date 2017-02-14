@@ -136,6 +136,9 @@
 		E7561BB0527C36A7FA74020C228AF322 /* JSONSubscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8804A49A711E3E291A3634007CA610A0 /* JSONSubscript.swift */; };
 		E87BA028C53FD040DB27878DCC189623 /* APICartTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E0CBDAE3A5B1288455C6E176B852B6 /* APICartTests.swift */; };
 		E9496CD91E5334E40047BCFF /* GetArticleRecommendationsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9496CD81E5334E40047BCFF /* GetArticleRecommendationsEndpoint.swift */; };
+		E9496CDD1E534F020047BCFF /* Recommendation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9496CDC1E534F020047BCFF /* Recommendation.swift */; };
+		E9496CDF1E534FC40047BCFF /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9496CDE1E534FC40047BCFF /* Brand.swift */; };
+		E9496CE11E534FD70047BCFF /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9496CE01E534FD70047BCFF /* Media.swift */; };
 		E9C74F4E1E426CCD00334658 /* SelectedArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C74F4D1E426CCD00334658 /* SelectedArticle.swift */; };
 		E9DA099EBE37855C4678BEE9D6A4B70C /* GuestCheckoutAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC31F798CEEA98A6B729B1C1176D7F45 /* GuestCheckoutAddress.swift */; };
 		EA88C1248E9EF27B25014C7A20389FB5 /* TestConsts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13C425956021FE1BA72AD165E0A678D /* TestConsts.swift */; };
@@ -317,6 +320,9 @@
 		E658D1F556D2BCD5A571D5E83504CB5C /* GetGuestCheckoutEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetGuestCheckoutEndpoint.swift; sourceTree = "<group>"; };
 		E8D64CF13F8B6EB096F17811FA204DA7 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		E9496CD81E5334E40047BCFF /* GetArticleRecommendationsEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetArticleRecommendationsEndpoint.swift; sourceTree = "<group>"; };
+		E9496CDC1E534F020047BCFF /* Recommendation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recommendation.swift; sourceTree = "<group>"; };
+		E9496CDE1E534FC40047BCFF /* Brand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
+		E9496CE01E534FD70047BCFF /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		E9B412D145F5B4C92805CCECE14A2892 /* TestOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestOptions.swift; path = AtlasSDKTests/TestOptions.swift; sourceTree = SOURCE_ROOT; };
 		E9C74F4D1E426CCD00334658 /* SelectedArticle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedArticle.swift; sourceTree = "<group>"; };
 		EB948FE1748F1B81F513F0FF8312892C /* StringOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringOperators.swift; sourceTree = "<group>"; };
@@ -528,6 +534,7 @@
 				02B3D0B088D148969180C104AE3AE50A /* Guest Checkout */,
 				E9C74F4D1E426CCD00334658 /* SelectedArticle.swift */,
 				5ADBF1E8B3FDBFAAE434240E7212C5FF /* Article.swift */,
+				E9496CDE1E534FC40047BCFF /* Brand.swift */,
 				C10B0A082BDFE901D0CEC90A2D969566 /* Cart.swift */,
 				F4F1412AECA75E38BDC3B618E86AF5A3 /* CartItem.swift */,
 				5122324D4A85204EB38F54BF29FEB024 /* Catalog.swift */,
@@ -536,12 +543,14 @@
 				CA70871321348430C46B108ED24D0827 /* Customer.swift */,
 				D4C60BDB698E3B89D0450DE4DB2F3089 /* Delivery.swift */,
 				747A73447DC8ACA0F246CCD8C6D0B513 /* Gender.swift */,
+				E9496CE01E534FD70047BCFF /* Media.swift */,
 				15D788B8AFA05BF3BB7559752D777933 /* Money.swift */,
 				7CDE9B266DF0DAFAF1BB3ED0A00D2609 /* Order.swift */,
 				A04E7980997323086729450F65FEEF1D /* Payment.swift */,
 				F6CF52ED3F20B2F59D5E6096E498A18B /* PaymentMethod.swift */,
 				1F74E6F0CBCE6D7E27184F239E9438F9 /* PickupPoint.swift */,
 				76F8647251682173E489D77B55EB0097 /* PaymentMethodType.swift */,
+				E9496CDC1E534F020047BCFF /* Recommendation.swift */,
 			);
 			name = Models;
 			path = AtlasSDK/Models;
@@ -964,6 +973,7 @@
 				4B3B5CF184BCF3B77D6F7D955158FD9F /* AtlasLogger.swift in Sources */,
 				29B4ADC4DEE86B64B93A0035E4054C9B /* Cart.swift in Sources */,
 				C62B870ED76F90050574D53EAB217558 /* CartItem.swift in Sources */,
+				E9496CE11E534FD70047BCFF /* Media.swift in Sources */,
 				C3CAFD4032B12AAAF7119F5CE2F0183F /* CartItemRequest.swift in Sources */,
 				9E0DFE1AE47B68CCE8D483EAAE6814B6 /* GuestPaymentRequest.swift in Sources */,
 				0763078B7D29A78A3D8AD544D36983A7 /* CartRequest.swift in Sources */,
@@ -990,6 +1000,7 @@
 				949CAC958BD189DE9E3B893B7B74E914 /* Debug.swift in Sources */,
 				473101F235CAE2005C4D1FFECE303DE5 /* CreateCartEndpoint.swift in Sources */,
 				B33B756E36A1075A2EC6DCD9822DA9D1 /* JSONRepresentable.swift in Sources */,
+				E9496CDD1E534F020047BCFF /* Recommendation.swift in Sources */,
 				A3386829A2CFECBCB8CD57F1B2FEB3D2 /* CreateCheckoutEndpoint.swift in Sources */,
 				1125FA8E3B7B73CF65D82551F31B6B5E /* CreateCheckoutRequest.swift in Sources */,
 				21A2E05C31CD660C6EDEBEA1D092BB93 /* CreateOrderEndpoint.swift in Sources */,
@@ -1015,6 +1026,7 @@
 				1B681AF464D8AFCBBB91BCB098FB5E8A /* AtlasAPIResult.swift in Sources */,
 				ECE8DEFDB2A85FBCD15B77C89EA5EF4A /* Keychain.swift in Sources */,
 				9CAE3816C21EFD8FC7B9074737F89DCB /* Logger.swift in Sources */,
+				E9496CDF1E534FC40047BCFF /* Brand.swift in Sources */,
 				E6A17887BC6BA4C25B2D758C44514B80 /* Money.swift in Sources */,
 				261B28B342B4AB0AC459145308E87C48 /* GuestOrder.swift in Sources */,
 				50B7CAD88F4CB40657A1E293C5886CBE /* Data.swift in Sources */,

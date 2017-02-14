@@ -136,13 +136,13 @@ extension CheckoutSummaryMainStackView: UIDataBuilder {
     typealias T = CheckoutSummaryViewModel
 
     func configure(viewModel: T) {
-        orderStackView.configure(viewModel: viewModel.dataModel)
         priceStackView.configure(viewModel: viewModel.dataModel)
         deliveryStackView.configure(viewModel: viewModel.dataModel)
         guestStackView.configure(viewModel: viewModel.dataModel.email)
         guestStackView.isHidden = !viewModel.layout.showGuestStackView
 
         if viewModel.layout.showOrderStackView {
+            orderStackView.configure(viewModel: viewModel.dataModel)
             UIView.animate(duration: .normal) { [weak self] in
                 self?.orderStackView.isHidden = false
             }

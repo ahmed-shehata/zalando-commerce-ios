@@ -34,7 +34,10 @@ public typealias URLCompletion = (AtlasAPIResult<URL>) -> Void
 /// Completion closure with `Article` in `AtlasAPIResult.success` result
 public typealias ArticleCompletion = (AtlasAPIResult<Article>) -> Void
 
-/// Completion closure with `[UserAddress]` in `AtlasAPIResult.success` result
+/// Completion closure with array of `Recommendation` in `AtlasAPIResult.success` result
+public typealias RecommendationCompletion = (AtlasAPIResult<[Recommendation]>) -> Void
+
+/// Completion closure with array of `UserAddress` in `AtlasAPIResult.success` result
 public typealias AddressesCompletion = (AtlasAPIResult<[UserAddress]>) -> Void
 
 /// Completion closure with `UserAddress` in `AtlasAPIResult.success` result
@@ -138,7 +141,7 @@ extension AtlasAPIClient {
         fetch(from: endpoint, completion: fetchCompletion)
     }
 
-    public func articleRecommendation(withSKU sku: String, completion: @escaping ArticleCompletion) {
+    public func articleRecommendation(withSKU sku: String, completion: @escaping RecommendationCompletion) {
         let endpoint = GetArticleRecommendationsEndpoint(config: config, sku: sku)
         fetch(from: endpoint, completion: completion)
     }
