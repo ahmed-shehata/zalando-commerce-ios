@@ -138,6 +138,11 @@ extension AtlasAPIClient {
         fetch(from: endpoint, completion: fetchCompletion)
     }
 
+    public func articleRecommendation(withSKU sku: String, completion: @escaping ArticleCompletion) {
+        let endpoint = GetArticleRecommendationsEndpoint(config: config, sku: sku)
+        fetch(from: endpoint, completion: completion)
+    }
+
     public func addresses(completion: @escaping AddressesCompletion) {
         let endpoint = GetAddressesEndpoint(config: config)
         fetch(from: endpoint, completion: completion)

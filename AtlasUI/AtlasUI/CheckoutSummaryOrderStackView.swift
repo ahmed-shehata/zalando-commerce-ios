@@ -191,10 +191,15 @@ extension CheckoutSummaryOrderStackView: UIBuilder {
 
 extension CheckoutSummaryOrderStackView: UIDataBuilder {
 
-    typealias T = String?
+    typealias T = CheckoutSummaryDataModel
 
-    func configure(viewModel: String?) {
-        orderNumberValueLabel.text = viewModel
+    func configure(viewModel: T) {
+        orderNumberValueLabel.text = viewModel.orderNumber
+
+        AtlasUIClient.articleRecommendation(withSKU: viewModel.selectedArticle.sku) { result in
+            guard let recommendation = result.process() else { return }
+
+        }
     }
 
 }

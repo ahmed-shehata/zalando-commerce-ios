@@ -99,6 +99,15 @@ struct AtlasUIClient {
         }
     }
 
+    static func articleRecommendation(withSKU sku: String, completion: @escaping ArticleCompletion) {
+        UserMessage.displayLoader { hideLoader in
+            AtlasAPIClient.shared?.articleRecommendation(withSKU: sku) { result in
+                hideLoader()
+                completion(result)
+            }
+        }
+    }
+
     static func addresses(completion: @escaping AddressesCompletion) {
         UserMessage.displayLoader { hideLoader in
             AtlasAPIClient.shared?.addresses { result in

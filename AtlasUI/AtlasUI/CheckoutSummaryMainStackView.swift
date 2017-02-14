@@ -136,7 +136,7 @@ extension CheckoutSummaryMainStackView: UIDataBuilder {
     typealias T = CheckoutSummaryViewModel
 
     func configure(viewModel: T) {
-        orderStackView.configure(viewModel: viewModel.dataModel.orderNumber)
+        orderStackView.configure(viewModel: viewModel.dataModel)
         priceStackView.configure(viewModel: viewModel.dataModel)
         deliveryStackView.configure(viewModel: viewModel.dataModel)
         guestStackView.configure(viewModel: viewModel.dataModel.email)
