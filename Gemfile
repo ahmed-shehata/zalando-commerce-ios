@@ -1,6 +1,11 @@
 source 'https://rubygems.org'
 
-ruby 2.2
+def ruby_version
+  path = File.expand_path('../.ruby-version', __FILE__)
+  File.open(path).readlines.first
+end
+
+ruby ruby_version
 
 group :calypso do
   gem 'awesome_print'

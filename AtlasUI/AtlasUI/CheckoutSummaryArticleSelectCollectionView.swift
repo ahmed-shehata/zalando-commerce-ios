@@ -10,17 +10,14 @@ enum CheckoutSummaryArticleRefineType {
     case size
     case quantity
 
-    private static let minQuantityAllowed = 1
-    private static let maxQuantityAllowed = 10
-
     func count(selectedArticle: SelectedArticle) -> Int {
         switch self {
         case .size: return selectedArticle.article.availableUnits.count
-        case .quantity: return min(selectedArticle.unit?.stock ?? type(of: self).minQuantityAllowed, type(of: self).maxQuantityAllowed)
+        case .quantity: return selectedArticle.maxQuantityAllowed
         }
     }
 
-    func idx(selectedArticle: SelectedArticle) -> Int {
+    func idx(selectedArticle: SelectedArticle) -> Int? {
         switch self {
         case .size: return selectedArticle.unitIndex
         case .quantity: return selectedArticle.quantity - 1
@@ -59,12 +56,14 @@ class CheckoutSummaryArticleSelectCollectionView: UICollectionView {
     func configure(with selectedArticle: SelectedArticle, for type: CheckoutSummaryArticleRefineType, animated: Bool) {
         self.selectedArticle = selectedArticle
         self.type = type
-        guard animated else { return reload(andSelect: type.idx(selectedArticle: selectedArticle)) }
+        guard let idx = type.idx(selectedArticle: selectedArticle) else { return }
+
+        guard animated else { return reload(andSelect: idx) }
 
         UIView.animate(duration: .fast, animations: { [weak self] in
             self?.alpha = 0
         }, completion: { [weak self] _ in
-            self?.reload(andSelect: type.idx(selectedArticle: selectedArticle))
+            self?.reload(andSelect: idx)
             UIView.animate(duration: .fast) {
                 self?.alpha = 1
             }

@@ -61,6 +61,20 @@ class CheckoutSummaryEditProductStackViewTests: UITestCase {
         expect(self.checkoutSummaryViewController?.dataModel.selectedArticle.quantity).toEventually(equal(3))
     }
 
+    func testSelectSizeWithLessQuantity() {
+        registerAtlasUIViewController(forSKU: "AZ711M001-B11")
+        selectItemInCollectionView(idx: 1)
+        tapOnRefineButton(type: .quantity)
+        selectItemInCollectionView(idx: 6)
+        expect(self.checkoutSummaryViewController?.dataModel.selectedArticle.quantity).toEventually(equal(7))
+        tapOnRefineButton(type: .size)
+        selectItemInCollectionView(idx: 0)
+        expect(self.checkoutSummaryViewController?.dataModel.selectedArticle.quantity).toEventually(equal(5))
+        tapOnRefineButton(type: .size)
+        selectItemInCollectionView(idx: 2)
+        expect(self.checkoutSummaryViewController?.dataModel.selectedArticle.quantity).toEventually(equal(1))
+    }
+
 }
 
 extension CheckoutSummaryEditProductStackViewTests {
