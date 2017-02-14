@@ -44,18 +44,18 @@ protocol UIScreenShotBuilder {
 
 extension UIScreenShotBuilder {
 
-    func prepareViewForScreenShot() {
+    func prepareSubviewsForScreenShot() {
         prepareForScreenShot()
 
         let view = (self as? UIView) ?? (self as? UIViewController)?.view
-        view?.configureSubviews { (subview: UIScreenShotBuilder) in subview.prepareViewForScreenShot() }
+        view?.configureSubviews { (subview: UIScreenShotBuilder) in subview.prepareSubviewsForScreenShot() }
     }
 
-    func cleanupViewAfterScreenShot() {
+    func cleanupSubviewsAfterScreenShot() {
         cleanupAfterScreenShot()
 
         let view = (self as? UIView) ?? (self as? UIViewController)?.view
-        view?.configureSubviews { (subview: UIScreenShotBuilder) in subview.cleanupViewAfterScreenShot() }
+        view?.configureSubviews { (subview: UIScreenShotBuilder) in subview.cleanupSubviewsAfterScreenShot() }
     }
 
 }

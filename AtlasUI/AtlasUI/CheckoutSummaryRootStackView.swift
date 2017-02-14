@@ -45,17 +45,3 @@ extension CheckoutSummaryRootStackView: UIDataBuilder {
     }
 
 }
-
-extension CheckoutSummaryRootStackView: UIScreenShotBuilder {
-
-    func prepareForScreenShot() {
-        checkoutContainer.containerStackView.removeArrangedSubview(checkoutContainer.footerStackView)
-        AtlasUIViewController.shared?.bottomConstraint?.constant = 100
-        AtlasUIViewController.shared?.view.setNeedsLayout()
-    }
-
-    func cleanupAfterScreenShot() {
-        checkoutContainer.containerStackView.addArrangedSubview(checkoutContainer.footerStackView)
-    }
-
-}

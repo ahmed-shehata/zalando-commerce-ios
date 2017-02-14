@@ -21,7 +21,7 @@ class CheckoutSummaryViewController: UIViewController {
         }
     }
 
-    lazy var rootStackView: CheckoutSummaryRootStackView = {
+    fileprivate lazy var rootStackView: CheckoutSummaryRootStackView = {
         let stackView = CheckoutSummaryRootStackView()
         stackView.axis = .vertical
         stackView.productStackView.editArticleStackView.dataSource = self
@@ -166,13 +166,5 @@ extension CheckoutSummaryViewController: CheckoutSummaryEditProductDataSource {
     var selectedArticle: SelectedArticle {
         return viewModel.dataModel.selectedArticle
     }
-
-}
-
-extension CheckoutSummaryViewController: UIScreenShotBuilder {
-
-    func prepareForScreenShot() { }
-
-    func cleanupAfterScreenShot() { }
 
 }

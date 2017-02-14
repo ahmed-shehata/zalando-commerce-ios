@@ -12,7 +12,7 @@ class AtlasUIViewController: UIViewController {
     }
 
     let mainNavigationController: UINavigationController
-    var bottomConstraint: NSLayoutConstraint?
+    fileprivate var bottomConstraint: NSLayoutConstraint?
     fileprivate let loaderView = LoaderView()
     private let atlasReachability = AtlasReachability()
 
@@ -54,6 +54,19 @@ extension AtlasUIViewController {
     func hideLoader() {
         loaderView.hide()
         loaderView.removeFromSuperview()
+    }
+
+}
+
+extension AtlasUIViewController: UIScreenShotBuilder {
+
+    func prepareForScreenShot() {
+        guard let checkoutSummaryVC = mainNavigationController.viewControllers.first as? CheckoutSummaryViewController else { return }
+        bottomConstraint?.constant = checkoutSummaryVC.checkoutContainer.scrollViewDifference
+    }
+
+    func cleanupAfterScreenShot() {
+        bottomConstraint?.constant = 0
     }
 
 }
