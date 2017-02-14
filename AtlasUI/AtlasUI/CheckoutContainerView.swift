@@ -76,7 +76,7 @@ class CheckoutContainerView: UIView {
 
         collectionView.completion = { [weak self] result in
             completion(result)
-            guard !selectedArticle.notSelected else { return }
+            guard selectedArticle.isSelected else { return }
             self?.hideOverlay(animated: true)
         }
 
