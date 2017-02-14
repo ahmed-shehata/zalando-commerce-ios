@@ -95,12 +95,12 @@ extension CheckoutSummaryPriceStackView: UIDataBuilder {
         totalTitleLabel.text = Localizer.format(string: "summaryView.label.price.total")
         vatTitleLabel.text = Localizer.format(string: "summaryView.label.price.vat")
 
-        if viewModel.selectedArticle.notSelected {
-            shippingValueLabel.text = "-"
-            totalValueLabel.text = "-"
-        } else {
+        if viewModel.selectedArticle.isSelected {
             shippingValueLabel.text = Localizer.format(price: viewModel.shippingPrice)
             totalValueLabel.text = Localizer.format(price: viewModel.totalPrice)
+        } else {
+            shippingValueLabel.text = "-"
+            totalValueLabel.text = "-"
         }
     }
 

@@ -76,6 +76,7 @@ class CheckoutContainerView: UIView {
 
         collectionView.completion = { [weak self] result in
             completion(result)
+            guard selectedArticle.isSelected else { return }
             self?.hideOverlay(animated: true)
         }
 
@@ -109,7 +110,7 @@ class CheckoutContainerView: UIView {
         }
     }
 
-    private func hideOverlay(animated: Bool) {
+    func hideOverlay(animated: Bool) {
         guard animated else {
             overlayButton.isHidden = true
             overlayButton.alpha = 0
