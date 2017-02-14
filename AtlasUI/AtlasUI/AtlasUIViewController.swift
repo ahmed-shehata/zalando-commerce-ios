@@ -16,6 +16,12 @@ class AtlasUIViewController: UIViewController {
     fileprivate let loaderView = LoaderView()
     private let atlasReachability = AtlasReachability()
 
+    fileprivate let screenShotCoverView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        return view
+    }()
+
     init(forSKU sku: String) {
         let getArticleDetailsViewController = GetArticleDetailsViewController(sku: sku)
         mainNavigationController = UINavigationController(rootViewController: getArticleDetailsViewController)
@@ -61,12 +67,28 @@ extension AtlasUIViewController {
 extension AtlasUIViewController: UIScreenShotBuilder {
 
     func prepareForScreenShot() {
+        showScreenShotCover()
         guard let checkoutSummaryVC = mainNavigationController.viewControllers.first as? CheckoutSummaryViewController else { return }
         bottomConstraint?.constant = checkoutSummaryVC.checkoutContainer.scrollViewDifference
     }
 
     func cleanupAfterScreenShot() {
+        hideScreenShotCover()
         bottomConstraint?.constant = 0
+    }
+
+    private func showScreenShotCover() {
+        screenShotCoverView.alpha = 1
+        view.addSubview(screenShotCoverView)
+        screenShotCoverView.fillInSuperview()
+    }
+
+    private func hideScreenShotCover() {
+        UIView.animate(animations: { [weak self] in
+            self?.screenShotCoverView.alpha = 0
+        }, completion: { [weak self] _ in
+            self?.screenShotCoverView.removeFromSuperview()
+        })
     }
 
 }

@@ -106,11 +106,6 @@ extension CheckoutSummaryOrderStackView {
                 return
             }
 
-//            checkoutSummaryViewController.rootStackView.alpha = 0
-//            UIView.waitForUIState {
-//                checkoutSummaryViewController.rootStackView.alpha = 1
-//            }
-
             AtlasUIViewController.shared?.showLoader()
             UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(image:didFinishSavingWithError:contextInfo:)), nil)
         }
