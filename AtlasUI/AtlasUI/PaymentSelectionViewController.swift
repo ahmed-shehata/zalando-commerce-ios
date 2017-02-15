@@ -59,7 +59,7 @@ final class PaymentViewController: UIViewController, UIWebViewDelegate {
 
     func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
         if !error.isRequestCancelledError {
-            UserMessage.displayError(error: error)
+            UserError.display(error: error)
         }
     }
 

@@ -50,7 +50,7 @@ class UITestCase: XCTestCase {
     }
 
     func registerAtlasUIViewController(forSKU: String) {
-        UserMessage.resetBanners()
+        UserError.resetBanners()
         let atlasUIViewController = AtlasUIViewController(forSKU: forSKU)
         self.window.rootViewController = atlasUIViewController
         self.window.makeKeyAndVisible()

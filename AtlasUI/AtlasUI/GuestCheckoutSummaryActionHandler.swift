@@ -26,11 +26,11 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
 
     func handleSubmit() {
         guard hasAddresses else {
-            UserMessage.displayError(error: AtlasCheckoutError.missingAddress)
+            UserError.display(error: AtlasCheckoutError.missingAddress)
             return
         }
         guard let checkoutId = checkoutId, let token = token else {
-            UserMessage.displayError(error: AtlasCheckoutError.missingPaymentMethod)
+            UserError.display(error: AtlasCheckoutError.missingPaymentMethod)
             return
         }
 
@@ -43,7 +43,7 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
 
     func handlePaymentSelection() {
         guard let callbackURL = AtlasAPIClient.shared?.config.payment.selectionCallbackURL else {
-            UserMessage.displayError(error: AtlasCheckoutError.unclassified)
+            UserError.display(error: AtlasCheckoutError.unclassified)
             return
         }
 
@@ -60,7 +60,7 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
                 case .cancel:
                     break
                 case .error, .success:
-                    UserMessage.displayError(error: AtlasCheckoutError.unclassified)
+                    UserError.display(error: AtlasCheckoutError.unclassified)
                 }
             }
 
@@ -108,7 +108,7 @@ extension GuestCheckoutSummaryActionHandler {
         }
 
         guard let callbackURL = AtlasAPIClient.shared?.config.payment.thirdPartyCallbackURL else {
-            UserMessage.displayError(error: AtlasCheckoutError.unclassified)
+            UserError.display(error: AtlasCheckoutError.unclassified)
             return
         }
 
@@ -117,7 +117,7 @@ extension GuestCheckoutSummaryActionHandler {
             switch paymentStatus {
             case .success: self?.showConfirmationScreen(order: order)
             case .redirect, .cancel: break
-            case .error, .guestRedirect: UserMessage.displayError(error: AtlasCheckoutError.unclassified)
+            case .error, .guestRedirect: UserError.display(error: AtlasCheckoutError.unclassified)
             }
         }
         AtlasUIViewController.shared?.mainNavigationController.pushViewController(paymentViewController, animated: true)
@@ -151,7 +151,7 @@ extension GuestCheckoutSummaryActionHandler {
             let shippingAddress = shippingAddress,
             let billingAddress = billingAddress
             else {
-                UserMessage.displayError(error: AtlasCheckoutError.missingAddress)
+                UserError.display(error: AtlasCheckoutError.missingAddress)
                 return
         }
 
