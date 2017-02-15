@@ -42,7 +42,7 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
                                               totalPrice: Money(amount: 0.1, currency: "")) else { return fail() }
         mockedDataSourceDelegate?.updated(dataModel: dataModel)
         expect(self.errorDisplayed).toEventually(beTrue())
-        UserMessage.resetBanners()
+        UserError.resetBanners()
         actionHandler?.handleSubmit()
         expect(self.errorDisplayed).toEventually(beTrue())
     }

@@ -26,7 +26,7 @@ extension AtlasAPIResult {
                     switch result {
                     case .success(let accessToken):
                         AtlasAPIClient.shared?.authorize(withToken: accessToken)
-                        UserMessage.displayLoader { hideLoader in
+                        AtlasUIViewController.displayLoader { hideLoader in
                             apiRequest?.execute { _ in
                                 hideLoader()
                             }
@@ -43,17 +43,13 @@ extension AtlasAPIResult {
         }
     }
 
-    func process(forceFullScreenError fullScreen: Bool = false) -> T? {
+    func process(presentationMode: PresentationMode? = nil) -> T? {
         let processedResult = self.processedResult()
         switch processedResult {
         case .success(let data):
             return data
         case .error(let error, _, _):
-            if fullScreen {
-                UserMessage.displayErrorFullScreen(error: error)
-            } else {
-                UserMessage.displayError(error: error)
-            }
+            UserError.display(error: error, mode: presentationMode)
             return nil
         case .handledInternally:
             return nil
