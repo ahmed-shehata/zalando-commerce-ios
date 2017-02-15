@@ -24,6 +24,7 @@ class CheckoutSummaryRecommendationStackView: UIStackView {
         return label
     }()
 
+    let collectionViewContrainer = UIView()
     let recommendationCollectionView: CheckoutSummaryRecommendationCollectionView = {
         let collectionView = CheckoutSummaryRecommendationCollectionView()
         collectionView.backgroundColor = .white
@@ -37,12 +38,15 @@ extension CheckoutSummaryRecommendationStackView: UIBuilder {
     func configureView() {
         addArrangedSubview(recommendationSeparatorView)
         addArrangedSubview(recommendationTitleLabel)
-        addArrangedSubview(recommendationCollectionView)
+        addArrangedSubview(collectionViewContrainer)
+
+        collectionViewContrainer.addSubview(recommendationCollectionView)
     }
 
     func configureConstraints() {
         recommendationSeparatorView.setHeight(equalToConstant: 1)
         recommendationCollectionView.setHeight(equalToConstant: 70)
+        recommendationCollectionView.fillInSuperview()
     }
 
 }
@@ -52,7 +56,7 @@ extension CheckoutSummaryRecommendationStackView: UIDataBuilder {
     typealias T = Article
 
     func configure(viewModel: T) {
-        AtlasUIClient.articleRecommendation(withSKU: viewModel.id) { [weak self] result in
+        AtlasUIClient.articleRecommendation(onView: collectionViewContrainer, withSKU: viewModel.id) { [weak self] result in
             guard let recommendations = result.process() else { return }
             self?.recommendationCollectionView.configure(with: recommendations, completion: { recommendation in
 

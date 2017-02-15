@@ -39,9 +39,10 @@ class AtlasUIViewController: UIViewController {
 
 extension AtlasUIViewController {
 
-    func showLoader() {
+    func showLoader(onView view: UIView? = nil) {
+        let supportingView = view ?? UIApplication.topViewController()?.view
         loaderView.removeFromSuperview()
-        UIApplication.topViewController()?.view.addSubview(loaderView)
+        supportingView?.addSubview(loaderView)
         loaderView.fillInSuperview()
         loaderView.buildView()
         loaderView.show()
@@ -52,8 +53,8 @@ extension AtlasUIViewController {
         loaderView.removeFromSuperview()
     }
 
-    static func displayLoader(block: (@escaping () -> Void) -> Void) {
-        shared?.showLoader()
+    static func displayLoader(onView view: UIView? = nil, block: (@escaping () -> Void) -> Void) {
+        shared?.showLoader(onView: view)
         block {
             shared?.hideLoader()
         }

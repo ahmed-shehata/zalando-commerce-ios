@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import UIKit
 import AtlasSDK
 
 struct AtlasUIClient {
@@ -99,8 +100,8 @@ struct AtlasUIClient {
         }
     }
 
-    static func articleRecommendation(withSKU sku: String, completion: @escaping RecommendationCompletion) {
-        UserMessage.displayLoader { hideLoader in
+    static func articleRecommendation(onView view: UIView?, withSKU sku: String, completion: @escaping RecommendationCompletion) {
+        AtlasUIViewController.displayLoader(onView: view) { hideLoader in
             AtlasAPIClient.shared?.articleRecommendation(withSKU: sku) { result in
                 hideLoader()
                 completion(result)
