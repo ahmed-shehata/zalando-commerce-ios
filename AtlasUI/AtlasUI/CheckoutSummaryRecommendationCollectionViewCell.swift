@@ -26,13 +26,12 @@ class CheckoutSummaryRecommendationCollectionViewCell: UICollectionViewCell {
         label.font = .systemFont(ofSize: 10, weight: UIFontWeightLight)
         label.textColor = .black
         label.textAlignment = .center
-        label.numberOfLines = 2
         return label
     }()
 
     let priceLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 10, weight: UIFontWeightRegular)
+        label.font = .systemFont(ofSize: 12, weight: UIFontWeightRegular)
         label.textColor = .black
         label.textAlignment = .center
         return label
@@ -53,8 +52,7 @@ extension CheckoutSummaryRecommendationCollectionViewCell: UIBuilder {
     func configureConstraints() {
         stackView.fillInSuperview()
         articleImageView.setHeight(equalToConstant: 40)
-        articleNameLabel.setHeight(equalToConstant: 25)
-        priceLabel.setHeight(equalToConstant: 10)
+        articleNameLabel.setHeight(equalToView: priceLabel)
     }
 
 }

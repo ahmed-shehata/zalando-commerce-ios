@@ -139,10 +139,10 @@ extension CheckoutSummaryMainStackView: UIDataBuilder {
         priceStackView.configure(viewModel: viewModel.dataModel)
         deliveryStackView.configure(viewModel: viewModel.dataModel)
         guestStackView.configure(viewModel: viewModel.dataModel.email)
-        guestStackView.isHidden = !viewModel.layout.showGuestStackView
+        guestStackView.isHidden = !viewModel.layout.showsGuestStackView
 
-        if viewModel.layout.showOrderStackView {
-            orderStackView.configure(viewModel: viewModel.dataModel)
+        if viewModel.layout.showsOrderStackView {
+            orderStackView.configure(viewModel: viewModel.dataModel.orderNumber)
             UIView.animate(duration: .normal) { [weak self] in
                 self?.orderStackView.isHidden = false
             }
@@ -150,17 +150,17 @@ extension CheckoutSummaryMainStackView: UIDataBuilder {
 
         shippingAddressStackView.configure(viewModel: CheckoutSummaryAddressViewModel(
             addressLines: viewModel.dataModel.formattedShippingAddress,
-            showArrow: viewModel.layout.showDetailArrow)
+            showArrow: viewModel.layout.showsDetailArrow)
         )
 
         billingAddressStackView.configure(viewModel: CheckoutSummaryAddressViewModel(
             addressLines: viewModel.dataModel.formattedBillingAddress,
-            showArrow: viewModel.layout.showDetailArrow)
+            showArrow: viewModel.layout.showsDetailArrow)
         )
 
         paymentStackView.configure(viewModel: CheckoutSummaryPaymentViewModel(
             value: viewModel.dataModel.paymentMethod ?? "",
-            showArrow: viewModel.layout.showDetailArrow)
+            showArrow: viewModel.layout.showsDetailArrow)
         )
     }
 

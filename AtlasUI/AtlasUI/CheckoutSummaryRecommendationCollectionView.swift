@@ -16,8 +16,8 @@ class CheckoutSummaryRecommendationCollectionView: UICollectionView {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 5
         layout.minimumInteritemSpacing = 5
-        layout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-        layout.itemSize = CGSize(width: 80, height: 79)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+        layout.itemSize = CGSize(width: 90, height: 70)
         layout.scrollDirection = .horizontal
 
         super.init(frame: .zero, collectionViewLayout: layout)

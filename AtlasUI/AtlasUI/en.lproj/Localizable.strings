@@ -90,6 +90,7 @@
 "summaryView.title.orderPlaced" = "Order placed";
 "summaryView.title.summary" = "Summary";
 "summaryView.title.selectSize" = "Select size";
+"recommendation.title" = "You may also like";
 "termsAndConditionsView.title" = "Legal Notice";
 "AtlasCheckoutError.message.unsupportedCountry" = "This country is not supported";
 "AtlasCheckoutError.message.photosLibraryAccessNotAllowed" = "Can't access Photos Library";

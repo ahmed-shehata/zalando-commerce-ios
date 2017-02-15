@@ -145,6 +145,7 @@
 		E9C2D7381E4DB51B003D677B /* PickupPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2D7371E4DB51B003D677B /* PickupPoint.swift */; };
 		E9C74F4C1E421FAB00334658 /* ArticleNotSelectedActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C74F4B1E421FAB00334658 /* ArticleNotSelectedActionHandler.swift */; };
 		E9D273D41E313D47002F0007 /* AddressCheckRowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D273D31E313D47002F0007 /* AddressCheckRowButton.swift */; };
+		E9DF72151E545FAB006EF14F /* CheckoutSummaryRecommendationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DF72141E545FAB006EF14F /* CheckoutSummaryRecommendationStackView.swift */; };
 		E9ECD6431E38BBB100305B87 /* GetArticleDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ECD6421E38BBB100305B87 /* GetArticleDetailsViewController.swift */; };
 		E9FB54961E44963700770423 /* CheckoutSummaryEditProductStackViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FB54951E44963700770423 /* CheckoutSummaryEditProductStackViewTests.swift */; };
 		EBB0CE9B6F72CCBC101BCFD52F5E5993 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD2C09882EF82C93CC8615C9E0F59251 /* Default-568h@2x.png */; };
@@ -333,6 +334,7 @@
 		E9C2D7371E4DB51B003D677B /* PickupPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickupPoint.swift; sourceTree = "<group>"; };
 		E9C74F4B1E421FAB00334658 /* ArticleNotSelectedActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleNotSelectedActionHandler.swift; sourceTree = "<group>"; };
 		E9D273D31E313D47002F0007 /* AddressCheckRowButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckRowButton.swift; sourceTree = "<group>"; };
+		E9DF72141E545FAB006EF14F /* CheckoutSummaryRecommendationStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryRecommendationStackView.swift; sourceTree = "<group>"; };
 		E9ECD6421E38BBB100305B87 /* GetArticleDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetArticleDetailsViewController.swift; sourceTree = "<group>"; };
 		E9FB54951E44963700770423 /* CheckoutSummaryEditProductStackViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryEditProductStackViewTests.swift; sourceTree = "<group>"; };
 		EAB966A42D2CA88D9E7F3931C371C95B /* URLRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestTests.swift; sourceTree = "<group>"; };
@@ -595,6 +597,7 @@
 				FFAA3A40B92B64CE46E74B153ABE8C52 /* CheckoutSummaryFooterStackView.swift */,
 				E91FBC6A1E40D12D00057992 /* Product Stack View */,
 				E91FBC691E40D11500057992 /* Main Stack View */,
+				E9DF72131E545F6A006EF14F /* Recommendation Stack View */,
 			);
 			name = StackViews;
 			sourceTree = "<group>";
@@ -689,9 +692,9 @@
 		E91FBC691E40D11500057992 /* Main Stack View */ = {
 			isa = PBXGroup;
 			children = (
-				E9496CE41E535BD90047BCFF /* Order Stack View */,
 				AB41B71854AFBEEBCA15F25103CE4D15 /* RowStackView.swift */,
 				36AFFBC11C6E4345A2FD0225BC27DA6E /* CheckoutSummaryMainStackView.swift */,
+				399DFA4B1292136BEE7E6DBC3BB30B1B /* CheckoutSummaryOrderStackView.swift */,
 				F9494F7947C24BD2087FE22EBE20BFCD /* CheckoutSummaryAddressStackView.swift */,
 				87E590A91E14F2FED72589813043BEFD /* CheckoutSummaryPaymentStackView.swift */,
 				23F6B74C3A17265FB585434F8EF82EBF /* CheckoutSummaryGuestStackView.swift */,
@@ -713,16 +716,6 @@
 			name = "Product Stack View";
 			sourceTree = "<group>";
 		};
-		E9496CE41E535BD90047BCFF /* Order Stack View */ = {
-			isa = PBXGroup;
-			children = (
-				399DFA4B1292136BEE7E6DBC3BB30B1B /* CheckoutSummaryOrderStackView.swift */,
-				E9496CE51E535C020047BCFF /* CheckoutSummaryRecommendationCollectionView.swift */,
-				E9496CE71E535C0D0047BCFF /* CheckoutSummaryRecommendationCollectionViewCell.swift */,
-			);
-			name = "Order Stack View";
-			sourceTree = "<group>";
-		};
 		E97B1BE71E2E6DF700FC0195 /* Address Check */ = {
 			isa = PBXGroup;
 			children = (
@@ -732,6 +725,16 @@
 				E9D273D31E313D47002F0007 /* AddressCheckRowButton.swift */,
 			);
 			name = "Address Check";
+			sourceTree = "<group>";
+		};
+		E9DF72131E545F6A006EF14F /* Recommendation Stack View */ = {
+			isa = PBXGroup;
+			children = (
+				E9DF72141E545FAB006EF14F /* CheckoutSummaryRecommendationStackView.swift */,
+				E9496CE51E535C020047BCFF /* CheckoutSummaryRecommendationCollectionView.swift */,
+				E9496CE71E535C0D0047BCFF /* CheckoutSummaryRecommendationCollectionViewCell.swift */,
+			);
+			name = "Recommendation Stack View";
 			sourceTree = "<group>";
 		};
 		ECBC67CCC5E72798CEB556243DC767A4 /* Views */ = {
@@ -1094,6 +1097,7 @@
 				B9B0D18F7EAF3FABA983DA7D6A8450C0 /* PaymentStatus.swift in Sources */,
 				31F6115DC1B59DB5C857BE5E04EA567E /* Debug.swift in Sources */,
 				4434BCFA43868F4DBFCFF8980581F9AC /* UIImageView.swift in Sources */,
+				E9DF72151E545FAB006EF14F /* CheckoutSummaryRecommendationStackView.swift in Sources */,
 				E9496CE61E535C020047BCFF /* CheckoutSummaryRecommendationCollectionView.swift in Sources */,
 				F3F62025EFDB47B5637DC3C928D69264 /* UITableView.swift in Sources */,
 				E97B1BE61E2E6DDD00FC0195 /* AddressCheckViewController.swift in Sources */,

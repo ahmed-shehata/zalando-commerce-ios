@@ -166,7 +166,7 @@ extension CheckoutContainerView: UIDataBuilder {
         footerStackView.configure(viewModel: viewModel)
 
         overlayButton.removeTarget(self, action: nil, for: .touchUpInside)
-        if viewModel.layout.allowArticleRefine {
+        if viewModel.layout.allowsArticleRefine {
             overlayButton.addTarget(self, action: #selector(overlayButtonTapped), for: .touchUpInside)
         }
     }
