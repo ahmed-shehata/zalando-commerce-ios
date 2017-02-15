@@ -6,7 +6,7 @@ import UIKit
 import AtlasSDK
 import AtlasUI
 
-class CatalogViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class CatalogViewController: UIViewController {
 
     @IBOutlet fileprivate weak var productCollectionView: UICollectionView!
 
@@ -57,6 +57,10 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
     }
 
+}
+
+extension CatalogViewController: UICollectionViewDataSource {
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCollectionViewCell", for: indexPath)
         guard let productCell = cell as? ProductCollectionViewCell else {
@@ -72,6 +76,16 @@ class CatalogViewController: UIViewController, UICollectionViewDelegate, UIColle
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return articles.count
+    }
+
+}
+
+extension CatalogViewController: UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let pdpVC = self.storyboard?.instantiateViewController(withIdentifier: "PDP") as? PDPViewController else { return }
+        pdpVC.sku = articles[indexPath.row].id
+        navigationController?.pushViewController(pdpVC, animated: true)
     }
 
 }
