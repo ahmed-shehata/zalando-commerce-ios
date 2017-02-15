@@ -14,6 +14,15 @@ class CheckoutSummaryRecommendationStackView: UIStackView {
         return view
     }()
 
+    let loaderContrainer = UIView()
+
+    let innerStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 2
+        return stackView
+    }()
+
     let recommendationTitleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: UIFontWeightLight)
@@ -21,10 +30,10 @@ class CheckoutSummaryRecommendationStackView: UIStackView {
         label.textAlignment = .center
         label.text = Localizer.format(string: "recommendation.title")
         label.numberOfLines = 1
+        label.alpha = 0
         return label
     }()
 
-    let collectionViewContrainer = UIView()
     let recommendationCollectionView: CheckoutSummaryRecommendationCollectionView = {
         let collectionView = CheckoutSummaryRecommendationCollectionView()
         collectionView.backgroundColor = .white
@@ -37,16 +46,16 @@ extension CheckoutSummaryRecommendationStackView: UIBuilder {
 
     func configureView() {
         addArrangedSubview(recommendationSeparatorView)
-        addArrangedSubview(recommendationTitleLabel)
-        addArrangedSubview(collectionViewContrainer)
-
-        collectionViewContrainer.addSubview(recommendationCollectionView)
+        addArrangedSubview(loaderContrainer)
+        loaderContrainer.addSubview(innerStackView)
+        innerStackView.addArrangedSubview(recommendationTitleLabel)
+        innerStackView.addArrangedSubview(recommendationCollectionView)
     }
 
     func configureConstraints() {
         recommendationSeparatorView.setHeight(equalToConstant: 1)
         recommendationCollectionView.setHeight(equalToConstant: 70)
-        recommendationCollectionView.fillInSuperview()
+        innerStackView.fillInSuperview()
     }
 
 }
@@ -56,8 +65,9 @@ extension CheckoutSummaryRecommendationStackView: UIDataBuilder {
     typealias T = Article
 
     func configure(viewModel: T) {
-        AtlasUIClient.articleRecommendation(onView: collectionViewContrainer, withSKU: viewModel.id) { [weak self] result in
+        AtlasUIClient.articleRecommendation(onView: loaderContrainer, withSKU: viewModel.id) { [weak self] result in
             guard let recommendations = result.process() else { return }
+            self?.recommendationTitleLabel.alpha = 1
             self?.recommendationCollectionView.configure(with: recommendations, completion: { recommendation in
 
             })
