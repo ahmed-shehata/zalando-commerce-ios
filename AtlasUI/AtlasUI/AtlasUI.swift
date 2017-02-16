@@ -7,12 +7,13 @@ import UIKit
 import AtlasSDK
 
 public typealias AtlasUICompletion = (AtlasResult<AtlasUI>) -> Void
+public typealias AtlasUICheckoutResultCompletion = (AtlasUI.Result) -> Void
 
 /// The main interface for Atlas UI framework
 /// Only on instance of AtlasUI with a specific configuration can be created as a time as it is a singleton class
 final public class AtlasUI {
 
-    /// Error that can re returned for AtlasUI Client
+    /// Error that can thrown for AtlasUI Client
     ///
     /// - notInitialized: Indicate that the AtlasUI is not configured yet
     public enum Error: AtlasError {
@@ -22,9 +23,24 @@ final public class AtlasUI {
 
     }
 
+    /// Result that can returned after presenting the Checkout screen
+    ///
+    /// - orderPlaced: The customer successfully placed the order
+    /// - orderPlacedAndRecommendedItemChosen: The customer successfully placed the order and is interested to view this item 
+    ///                                        (Please open the product detail page for the given SKU)
+    /// - userCancelled: The user cancelled the checkout process
+    /// - errorDisplayed: Error displayed to the user
+    public enum Result {
+        case orderPlaced
+        case orderPlacedAndRecommendedItemChosen(sku: String)
+        case userCancelled
+        case errorDisplayed(error: AtlasError)
+    }
+
     /// Reference for AtlasAPIClient object that is configured with the current SalesChannel
     public let client: AtlasAPIClient
 
+    private var completion: AtlasUICheckoutResultCompletion?
     private static var _shared: AtlasUI?
 
     static func shared() throws -> AtlasUI {
@@ -71,12 +87,17 @@ final public class AtlasUI {
     ///   - viewController: The controller in which AtlasUI will be presented over it
     ///   - sku: The SKU for the item that the user want to buy
     /// - Throws: notInitialized is thrown if this method is called before initializing AtlasUI be calling configure(options:completion:)
-    public func presentCheckout(onViewController viewController: UIViewController, forSKU sku: String) throws {
+    public func presentCheckout(onViewController viewController: UIViewController,
+                                forSKU sku: String,
+                                completion: @escaping AtlasUICheckoutResultCompletion) throws {
+
         guard let _ = AtlasAPIClient.shared else {
             AtlasLogger.logError("AtlasUI is not initialized")
             throw AtlasUI.Error.notInitialized
         }
 
+        self.completion = completion
+        deregisterResult()
         let atlasUIViewController = AtlasUIViewController(forSKU: sku)
 
         let checkoutTransitioning = CheckoutTransitioningDelegate()
@@ -86,6 +107,15 @@ final public class AtlasUI {
         injector.register { atlasUIViewController }
 
         viewController.present(atlasUIViewController, animated: true, completion: nil)
+    }
+
+    func deregisterResult() {
+        injector.deregister(AtlasUI.Result.self)
+    }
+
+    func dismissAtlasCheckoutUI() throws {
+        completion?(try provide())
+        AtlasUIViewController.shared?.dismiss(animated: true, completion: nil)
     }
 
 }

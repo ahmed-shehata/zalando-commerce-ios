@@ -152,10 +152,6 @@ extension CheckoutSummaryViewController: CheckoutSummaryActionHandlerDelegate {
         self.actionHandler = actionHandler
     }
 
-    func dismissView() {
-        dismiss(animated: true, completion: nil)
-    }
-
 }
 
 extension CheckoutSummaryViewController: CheckoutSummaryEditProductDataSource {

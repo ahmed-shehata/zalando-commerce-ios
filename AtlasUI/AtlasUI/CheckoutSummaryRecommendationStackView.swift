@@ -69,7 +69,8 @@ extension CheckoutSummaryRecommendationStackView: UIDataBuilder {
             guard let recommendations = result.process() else { return }
             self?.recommendationTitleLabel.alpha = 1
             self?.recommendationCollectionView.configure(with: recommendations, completion: { recommendation in
-
+                try? AtlasUI.shared().register { AtlasUI.Result.orderPlacedAndRecommendedItemChosen(sku: recommendation.id) }
+                try? AtlasUI.shared().dismissAtlasCheckoutUI()
             })
         }
     }

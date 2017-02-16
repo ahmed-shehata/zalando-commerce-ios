@@ -81,6 +81,11 @@ final class CheckoutPresentationController: UIPresentationController {
 
     @objc
     fileprivate func dimmingViewTapped() {
-        presentingViewController.dismiss(animated: true, completion: nil)
+        let registeredResult = try? AtlasUI.shared().provide() as AtlasUI.Result
+        if registeredResult == nil {
+            try? AtlasUI.shared().register { AtlasUI.Result.userCancelled }
+        }
+        try? AtlasUI.shared().dismissAtlasCheckoutUI()
     }
+
 }

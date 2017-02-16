@@ -23,7 +23,7 @@ class FullScreenErrorViewController: UIViewController {
     }
 
     func cancelButtonPressed() {
-        AtlasUIViewController.shared?.dismiss(animated: true, completion: nil)
+        try? AtlasUI.shared().dismissAtlasCheckoutUI()
     }
 
 }
@@ -50,6 +50,7 @@ extension FullScreenErrorViewController: UIDataBuilder {
     typealias T = UserPresentableError
 
     func configure(viewModel: T) {
+        try? AtlasUI.shared().register { AtlasUI.Result.errorDisplayed(error: viewModel) }
         title = viewModel.displayedTitle
         messageLabel.text = viewModel.displayedMessage.uppercased()
     }

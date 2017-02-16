@@ -10,8 +10,12 @@ class OrderPlacedSummaryActionHandler: CheckoutSummaryActionHandler {
     weak var dataSource: CheckoutSummaryActionHandlerDataSource?
     weak var delegate: CheckoutSummaryActionHandlerDelegate?
 
+    init() {
+        try? AtlasUI.shared().register { AtlasUI.Result.orderPlaced }
+    }
+
     func handleSubmit() {
-        delegate?.dismissView()
+        try? AtlasUI.shared().dismissAtlasCheckoutUI()
     }
 
     func handlePaymentSelection() {
