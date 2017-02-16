@@ -25,10 +25,10 @@ extension AddressViewModelCreationStrategy {
             }
         }
 
-        let cancelAction = ButtonAction(text: Localizer.format(string: "button.general.cancel"), style: .cancel, handler: nil)
+        let cancelAction = ButtonAction(text: Localizer.format(string: "button.general.cancel"), style: .cancel)
         buttonActions.append(cancelAction)
 
-        UserMessage.presentSelection(title: messageTitle, actions: buttonActions)
+        UserMessage.display(title: messageTitle, actions: buttonActions)
     }
 
     private var messageTitle: String? {

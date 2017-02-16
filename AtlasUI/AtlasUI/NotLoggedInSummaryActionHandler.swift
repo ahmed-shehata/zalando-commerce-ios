@@ -31,7 +31,7 @@ class NotLoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
 
     func handlePaymentSelection() {
         guard isGuestCheckoutEnabled else { return handleSubmit() }
-        UserMessage.displayError(error: AtlasCheckoutError.missingAddress)
+        UserError.display(error: AtlasCheckoutError.missingAddress)
     }
 
     func handleShippingAddressSelection() {

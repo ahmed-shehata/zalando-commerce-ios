@@ -54,7 +54,7 @@ class GuestAddressActionHandler {
             self?.updateAddress(address: address, completion: completion)
         }
         let cancelAction = ButtonAction(text: Localizer.format(string: "button.general.cancel"), style: .cancel, handler: nil)
-        UserMessage.presentSelection(title: nil, actions: [createAction, updateAction, cancelAction])
+        UserMessage.display(actions: [createAction, updateAction, cancelAction])
     }
 
 }

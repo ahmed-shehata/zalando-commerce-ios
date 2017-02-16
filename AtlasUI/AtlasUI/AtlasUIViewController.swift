@@ -35,7 +35,7 @@ class AtlasUIViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        UserMessage.loadBannerError()
+        UserError.loadBannerError()
         addChildViewController(mainNavigationController)
         view.addSubview(mainNavigationController.view)
         mainNavigationController.view.snap(toSuperview: .top)
@@ -60,6 +60,13 @@ extension AtlasUIViewController {
     func hideLoader() {
         loaderView.hide()
         loaderView.removeFromSuperview()
+    }
+
+    static func displayLoader(block: (@escaping () -> Void) -> Void) {
+        shared?.showLoader()
+        block {
+            shared?.hideLoader()
+        }
     }
 
 }
