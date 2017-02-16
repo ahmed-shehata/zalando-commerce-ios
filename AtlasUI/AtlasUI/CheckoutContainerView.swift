@@ -173,17 +173,17 @@ extension CheckoutContainerView: UIDataBuilder {
 
 }
 
-extension CheckoutContainerView: UIScreenShotBuilder {
+extension CheckoutContainerView: UIScreenshotBuilder {
 
     var scrollViewDifference: CGFloat {
         return scrollView.contentSize.height - scrollView.frame.height - footerStackView.frame.height
     }
 
-    func prepareForScreenShot() {
+    func prepareForScreenshot() {
         containerStackView.removeArrangedSubview(footerStackView)
     }
 
-    func cleanupAfterScreenShot() {
+    func cleanupAfterScreenshot() {
         containerStackView.addArrangedSubview(footerStackView)
     }
 

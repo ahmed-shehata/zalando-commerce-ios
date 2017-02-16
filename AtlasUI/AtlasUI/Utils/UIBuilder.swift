@@ -35,27 +35,27 @@ protocol UIDataBuilder {
 
 }
 
-protocol UIScreenShotBuilder {
+protocol UIScreenshotBuilder {
 
-    func prepareForScreenShot()
-    func cleanupAfterScreenShot()
+    func prepareForScreenshot()
+    func cleanupAfterScreenshot()
 
 }
 
-extension UIScreenShotBuilder {
+extension UIScreenshotBuilder {
 
-    func prepareSubviewsForScreenShot() {
-        prepareForScreenShot()
+    func prepareSubviewsForScreenshot() {
+        prepareForScreenshot()
 
         let view = (self as? UIView) ?? (self as? UIViewController)?.view
-        view?.configureSubviews { (subview: UIScreenShotBuilder) in subview.prepareSubviewsForScreenShot() }
+        view?.configureSubviews { (subview: UIScreenshotBuilder) in subview.prepareSubviewsForScreenshot() }
     }
 
-    func cleanupSubviewsAfterScreenShot() {
-        cleanupAfterScreenShot()
+    func cleanupSubviewsAfterScreenshot() {
+        cleanupAfterScreenshot()
 
         let view = (self as? UIView) ?? (self as? UIViewController)?.view
-        view?.configureSubviews { (subview: UIScreenShotBuilder) in subview.cleanupSubviewsAfterScreenShot() }
+        view?.configureSubviews { (subview: UIScreenshotBuilder) in subview.cleanupSubviewsAfterScreenshot() }
     }
 
 }

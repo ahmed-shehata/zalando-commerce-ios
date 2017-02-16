@@ -96,13 +96,13 @@ class CheckoutSummaryOrderStackView: UIStackView {
 extension CheckoutSummaryOrderStackView {
 
     fileprivate dynamic func saveImageButtonPressed() {
-        AtlasUIViewController.shared?.prepareSubviewsForScreenShot()
+        AtlasUIViewController.shared?.prepareSubviewsForScreenshot()
         UIView.waitForUIState {
-            let screenShot = AtlasUIViewController.shared?.mainNavigationController.view.takeScreenshot()
-            AtlasUIViewController.shared?.cleanupSubviewsAfterScreenShot()
+            let screenshot = AtlasUIViewController.shared?.mainNavigationController.view.takeScreenshot()
+            AtlasUIViewController.shared?.cleanupSubviewsAfterScreenshot()
 
-            guard let image = screenShot else {
-                UserMessage.displayError(error: AtlasCheckoutError.unclassified)
+            guard let image = screenshot else {
+                UserError.display(error: AtlasCheckoutError.unclassified)
                 return
             }
 
@@ -177,14 +177,14 @@ extension CheckoutSummaryOrderStackView: UIDataBuilder {
 
 }
 
-extension CheckoutSummaryOrderStackView: UIScreenShotBuilder {
+extension CheckoutSummaryOrderStackView: UIScreenshotBuilder {
 
-    func prepareForScreenShot() {
+    func prepareForScreenshot() {
         saveImageContainer.isHidden = true
         bottomSeparator.isHidden = true
     }
 
-    func cleanupAfterScreenShot() {
+    func cleanupAfterScreenshot() {
         saveImageContainer.isHidden = false
         bottomSeparator.isHidden = false
     }
