@@ -9,7 +9,7 @@ import AtlasSDK
 public typealias AtlasUICompletion = (AtlasResult<AtlasUI>) -> Void
 
 /// The main interface for Atlas UI framework
-/// Only on instance of AtlasUI with a specific configuration can be created as a time as it is a singleton class
+/// Only one instance of AtlasUI with a specific configuration can be created as a time as it is a singleton class
 final public class AtlasUI {
 
     /// Error that can re returned for AtlasUI Client
@@ -64,7 +64,7 @@ final public class AtlasUI {
         }
     }
 
-    /// presentCheckout is used to present the AtlasUI over the given controller
+    /// `presentCheckout` is used to present the AtlasUI over the given controller
     /// It can be called only once at a time as it depends internally on Singleton objects
     ///
     /// - Parameters:

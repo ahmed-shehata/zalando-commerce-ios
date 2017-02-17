@@ -60,5 +60,5 @@ extension UpdateAddressRequest: JSONRepresentable {
         }
         return result
     }
-    
+
 }

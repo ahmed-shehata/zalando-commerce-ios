@@ -65,26 +65,39 @@ public struct AtlasAPIClient {
 
 extension AtlasAPIClient {
 
+    /// Determines if client is authorized with access token to call restricted endpoints.
     public var isAuthorized: Bool {
         return config.authorizationToken != nil
     }
 
-    public func authorize(withToken tokenValue: String) {
-        if let token = APIAccessToken.store(token: tokenValue, for: config) {
-            notify(isAuthorized: true, withToken: token)
-        } else {
-            notify(isAuthorized: false, withToken: nil)
-        }
+    /// Authorizes client with given access token required in restricted endpoints.
+    ///
+    /// - Postcondition:
+    ///   - If a client is authorized successfully `NSNotification.Name.AtlasAuthorized`
+    ///     is posted on `NotificationCenter.default`, otherwise it is `NSNotification.Name.AtlasDeauthorized`.
+    ///   - `NSNotification.Name.AtlasAuthorizationChanged` is always posted regadless the result.
+    ///
+    /// - Parameter withToken: access token retrieved from OAuth
+    ///
+    /// - Returns: `true` if token was correctly stored and client is authorized, otherwise `false`
+    @discardableResult
+    public func authorize(withToken tokenValue: String) -> Bool {
+        let token = APIAccessToken.store(token: tokenValue, for: config)
+        let isAuthorized = token != nil
+        notify(isAuthorized: isAuthorized, withToken: token)
+        return isAuthorized
     }
 
+    /// Deauthorizes a client from accessing restricted endpoints.
     public func deauthorize() {
         let token = APIAccessToken.delete(for: config)
         notify(isAuthorized: false, withToken: token)
     }
 
+    /// Deauthorizes all clients by removing all stored tokens.
     public static func deauthorizeAll() {
         APIAccessToken.wipe().forEach { token in
-            AtlasAPIClient.notify(client: nil, isAuthorized: false, withToken: token)
+            notify(client: nil, isAuthorized: false, withToken: token)
         }
     }
 

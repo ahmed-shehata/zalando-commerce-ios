@@ -31,9 +31,9 @@ excluded:
   - AtlasMockAPI
 
 opt_in_rules:
+  - missing_docs
   - force_unwrapping
   - empty_count
-  - missing_docs
   - attributes
   - closure_end_indentation
   - closure_spacing
