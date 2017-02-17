@@ -13,9 +13,16 @@ class AtlasUIViewController: UIViewController {
 
     let mainNavigationController: UINavigationController
     var dismissalReason: AtlasUI.CheckoutResult?
+    fileprivate var bottomConstraint: NSLayoutConstraint?
     fileprivate let loaderView = LoaderView()
     private let atlasReachability = AtlasReachability()
     private let completion: AtlasUICheckoutCompletion
+
+    fileprivate let screenshotCoverView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        return view
+    }()
 
     enum Error: AtlasError {
         case dismissalReasonNotSet
