@@ -14,13 +14,13 @@ class AtlasReachability {
 
         reachability.whenReachable = { _ in
             Async.main {
-                UserMessage.hideBannerError()
+                UserError.hideBannerError()
             }
         }
 
         reachability.whenUnreachable = { _ in
             Async.main {
-                UserMessage.displayError(error: AtlasAPIError.noInternet)
+                UserError.display(error: AtlasAPIError.noInternet)
             }
         }
 

@@ -76,6 +76,7 @@ class CheckoutContainerView: UIView {
 
         collectionView.completion = { [weak self] result in
             completion(result)
+            guard selectedArticle.isSelected else { return }
             self?.hideOverlay(animated: true)
         }
 
@@ -109,7 +110,7 @@ class CheckoutContainerView: UIView {
         }
     }
 
-    private func hideOverlay(animated: Bool) {
+    func hideOverlay(animated: Bool) {
         guard animated else {
             overlayButton.isHidden = true
             overlayButton.alpha = 0
@@ -168,6 +169,22 @@ extension CheckoutContainerView: UIDataBuilder {
         if viewModel.layout.allowArticleRefine {
             overlayButton.addTarget(self, action: #selector(overlayButtonTapped), for: .touchUpInside)
         }
+    }
+
+}
+
+extension CheckoutContainerView: UIScreenshotBuilder {
+
+    var scrollViewDifference: CGFloat {
+        return scrollView.contentSize.height - scrollView.frame.height - footerStackView.frame.height
+    }
+
+    func prepareForScreenshot() {
+        containerStackView.removeArrangedSubview(footerStackView)
+    }
+
+    func cleanupAfterScreenshot() {
+        containerStackView.addArrangedSubview(footerStackView)
     }
 
 }

@@ -138,13 +138,14 @@ extension CheckoutSummaryViewController: CheckoutSummaryActionHandlerDelegate {
         do {
             try dataModel.validate(against: oldModel)
         } catch let error {
-            UserMessage.displayError(error: error)
+            UserError.display(error: error)
             throw error
         }
     }
 
     func updated(layout: CheckoutSummaryLayout) {
         self.viewModel.layout = layout
+        self.rootStackView.checkoutContainer.hideOverlay(animated: true)
     }
 
     func updated(actionHandler: CheckoutSummaryActionHandler) {

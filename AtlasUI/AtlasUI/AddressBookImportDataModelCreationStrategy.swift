@@ -34,7 +34,7 @@ extension AddressBookImportDataModelCreationStrategy: CNContactPickerDelegate {
                                                          countryCode: AtlasAPIClient.shared?.config.salesChannel.countryCode)
                 self?.completion(dataModel)
             } catch let error {
-                UserMessage.displayError(error: error)
+                UserError.display(error: error)
             }
         }
     }

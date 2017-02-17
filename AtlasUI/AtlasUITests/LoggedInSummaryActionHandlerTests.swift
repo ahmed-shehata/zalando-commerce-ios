@@ -42,7 +42,7 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
                                               totalPrice: Money(amount: 0.1, currency: "")) else { return fail() }
         mockedDataSourceDelegate?.updated(dataModel: dataModel)
         expect(self.errorDisplayed).toEventually(beTrue())
-        UserMessage.resetBanners()
+        UserError.resetBanners()
         actionHandler?.handleSubmit()
         expect(self.errorDisplayed).toEventually(beTrue())
     }
@@ -198,7 +198,7 @@ extension LoggedInSummaryActionHandlerTests {
                 AtlasUIClient.article(withSKU: self.sku) { result in
                     guard let article = result.process() else { return fail() }
                     self.article = article
-                    let selectedArticle = SelectedArticle(article: article, unitIndex: 0, quantity: 1)
+                    let selectedArticle = SelectedArticle(article: article, unitIndex: 0, desiredQuantity: 1)
                     LoggedInSummaryActionHandler.create(customer: customer, selectedArticle: selectedArticle) { result in
                         guard let actionHandler = result.process() else { return fail() }
                         let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, totalPrice: selectedArticle.price)
@@ -218,7 +218,7 @@ extension LoggedInSummaryActionHandlerTests {
         guard let article = article else { return nil }
         var cartCheckout: CartCheckout?
         waitUntil(timeout: 10) { done in
-            AtlasUIClient.createCheckoutCart(forSelectedArticle: SelectedArticle(article: article, unitIndex: 0, quantity: 1)) { result in
+            AtlasUIClient.createCheckoutCart(forSelectedArticle: SelectedArticle(article: article, unitIndex: 0, desiredQuantity: 1)) { result in
                 guard let checkoutCart = result.process() else { return fail() }
                 cartCheckout = (cart: checkoutCart.cart, checkout: checkoutCart.checkout)
                 done()

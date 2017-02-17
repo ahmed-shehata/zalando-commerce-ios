@@ -11,7 +11,7 @@ class GuestCheckoutUpdateAddressActionHandler: AddressFormActionHandler {
 
     func submit(dataModel: AddressFormDataModel) {
         guard let address = GuestCheckoutAddress(fromDataModelForUpdateAddress: dataModel) else {
-            UserMessage.displayError(error: AtlasCheckoutError.unclassified)
+            UserError.display(error: AtlasCheckoutError.unclassified)
             delegate?.addressProcessingFinished()
             return
         }
