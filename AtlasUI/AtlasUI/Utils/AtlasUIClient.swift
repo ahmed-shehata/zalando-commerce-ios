@@ -100,9 +100,9 @@ struct AtlasUIClient {
         }
     }
 
-    static func articleRecommendation(onView view: UIView?, withSKU sku: String, completion: @escaping RecommendationCompletion) {
+    static func recommendations(forSKU sku: String, onView view: UIView?, completion: @escaping RecommendationCompletion) {
         AtlasUIViewController.displayLoader(onView: view) { hideLoader in
-            AtlasAPIClient.shared?.articleRecommendation(withSKU: sku) { result in
+            AtlasAPIClient.shared?.recommendations(forSKU: sku) { result in
                 hideLoader()
                 completion(result)
             }

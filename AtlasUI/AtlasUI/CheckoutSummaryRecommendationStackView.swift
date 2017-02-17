@@ -65,11 +65,11 @@ extension CheckoutSummaryRecommendationStackView: UIDataBuilder {
     typealias T = Article
 
     func configure(viewModel: T) {
-        AtlasUIClient.articleRecommendation(onView: loaderContrainer, withSKU: viewModel.id) { [weak self] result in
+        AtlasUIClient.recommendations(forSKU: viewModel.id, onView: loaderContrainer) { [weak self] result in
             guard let recommendations = result.process() else { return }
             self?.recommendationTitleLabel.alpha = 1
             self?.recommendationCollectionView.configure(with: recommendations, completion: { recommendation in
-                try? AtlasUI.shared().register { AtlasUI.Result.orderPlacedAndRecommendedItemChosen(sku: recommendation.id) }
+                try? AtlasUI.shared().register { AtlasUI.CheckoutResult.orderPlacedAndRecommendedItemChosen(sku: recommendation.id) }
                 try? AtlasUI.shared().dismissAtlasCheckoutUI()
             })
         }

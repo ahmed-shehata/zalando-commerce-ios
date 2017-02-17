@@ -20,7 +20,7 @@ extension UIViewController {
     }
 
     fileprivate dynamic func cancelCheckoutTapped() {
-        try? AtlasUI.shared().register { AtlasUI.Result.userCancelled }
+        try? AtlasUI.shared().register { AtlasUI.CheckoutResult.userCancelled }
         try? AtlasUI.shared().dismissAtlasCheckoutUI()
     }
 

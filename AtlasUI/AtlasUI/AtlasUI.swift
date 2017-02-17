@@ -7,7 +7,7 @@ import UIKit
 import AtlasSDK
 
 public typealias AtlasUICompletion = (AtlasResult<AtlasUI>) -> Void
-public typealias AtlasUICheckoutResultCompletion = (AtlasUI.Result) -> Void
+public typealias AtlasUICheckoutResultCompletion = (AtlasUI.CheckoutResult) -> Void
 
 /// The main interface for Atlas UI framework
 /// Only on instance of AtlasUI with a specific configuration can be created as a time as it is a singleton class
@@ -30,11 +30,11 @@ final public class AtlasUI {
     ///                                        (Please open the product detail page for the given SKU)
     /// - userCancelled: The user cancelled the checkout process
     /// - errorDisplayed: Error displayed to the user
-    public enum Result {
+    public enum CheckoutResult {
         case orderPlaced
         case orderPlacedAndRecommendedItemChosen(sku: String)
         case userCancelled
-        case errorDisplayed(error: AtlasError)
+        case finishedWithError(error: AtlasError)
     }
 
     /// Reference for AtlasAPIClient object that is configured with the current SalesChannel
@@ -110,11 +110,12 @@ final public class AtlasUI {
     }
 
     func deregisterResult() {
-        injector.deregister(AtlasUI.Result.self)
+        injector.deregister(CheckoutResult.self)
     }
 
     func dismissAtlasCheckoutUI() throws {
-        completion?(try provide())
+        let checkoutResult: CheckoutResult = try provide()
+        completion?(checkoutResult)
         AtlasUIViewController.shared?.dismiss(animated: true, completion: nil)
     }
 

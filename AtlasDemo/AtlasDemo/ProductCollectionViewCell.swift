@@ -36,7 +36,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
                 case .orderPlaced: print("AtlasUI Finished with: Order Placed")
                 case .orderPlacedAndRecommendedItemChosen(let sku): self?.displayRecommendedProduct(sku: sku)
                 case .userCancelled: print("AtlasUI Finished with: User Cancelled")
-                case .errorDisplayed(let error): print("AtlasUI Finished with: Error Displayed(\(error))")
+                case .finishedWithError(let error): print("AtlasUI Finished with: Error Displayed(\(error))")
                 }
             }
         } catch let error {

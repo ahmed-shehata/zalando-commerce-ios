@@ -50,7 +50,7 @@ extension FullScreenErrorViewController: UIDataBuilder {
     typealias T = UserPresentableError
 
     func configure(viewModel: T) {
-        try? AtlasUI.shared().register { AtlasUI.Result.errorDisplayed(error: viewModel) }
+        try? AtlasUI.shared().register { AtlasUI.CheckoutResult.finishedWithError(error: viewModel) }
         title = viewModel.displayedTitle
         messageLabel.text = viewModel.displayedMessage.uppercased()
     }
