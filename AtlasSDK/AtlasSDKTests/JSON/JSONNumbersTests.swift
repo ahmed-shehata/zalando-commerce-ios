@@ -28,11 +28,11 @@ class JSONNumbersTests: JSONTestCase {
     }
 
     func testBigInt() {
-        expect(5000000000).to(equalJson(rawObjectAtPath: "numbers", "bigInt"))
+        expect(2147483647).to(equalJson(rawObjectAtPath: "numbers", "bigInt"))
     }
 
     func testBigNegativeInt() {
-        expect(-5000000000).to(equalJson(rawObjectAtPath: "numbers", "bigNegativeInt"))
+        expect(-2147483648).to(equalJson(rawObjectAtPath: "numbers", "bigNegativeInt"))
     }
 
     func testFloat0() {

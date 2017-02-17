@@ -38,7 +38,10 @@ class AtlasUIViewController: UIViewController {
         UserError.loadBannerError()
         addChildViewController(mainNavigationController)
         view.addSubview(mainNavigationController.view)
-        mainNavigationController.view.fillInSuperview()
+        mainNavigationController.view.snap(toSuperview: .top)
+        mainNavigationController.view.snap(toSuperview: .right)
+        bottomConstraint = mainNavigationController.view.snap(toView: view, anchor: .bottom)
+        mainNavigationController.view.snap(toSuperview: .left)
         atlasReachability.setupReachability()
     }
 
@@ -73,6 +76,35 @@ extension AtlasUIViewController {
         block {
             shared?.hideLoader()
         }
+    }
+
+}
+
+extension AtlasUIViewController: UIScreenshotBuilder {
+
+    func prepareForScreenshot() {
+        showScreenshotCover()
+        guard let checkoutSummaryVC = mainNavigationController.viewControllers.first as? CheckoutSummaryViewController else { return }
+        bottomConstraint?.constant = checkoutSummaryVC.checkoutContainer.scrollViewDifference
+    }
+
+    func cleanupAfterScreenshot() {
+        hideScreenshotCover()
+        bottomConstraint?.constant = 0
+    }
+
+    private func showScreenshotCover() {
+        screenshotCoverView.alpha = 1
+        view.addSubview(screenshotCoverView)
+        screenshotCoverView.fillInSuperview()
+    }
+
+    private func hideScreenshotCover() {
+        UIView.animate(animations: { [weak self] in
+            self?.screenshotCoverView.alpha = 0
+        }, completion: { [weak self] _ in
+            self?.screenshotCoverView.removeFromSuperview()
+        })
     }
 
 }
