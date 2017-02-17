@@ -96,40 +96,18 @@ class CheckoutSummaryOrderStackView: UIStackView {
 extension CheckoutSummaryOrderStackView {
 
     fileprivate dynamic func saveImageButtonPressed() {
-        guard let scrollView = superview?.superview as? UIScrollView else { return }
-
-        let (contentOffset, frame) = prepareViewForTakingImage(scrollView: scrollView)
-        guard let image = scrollView.takeScreenshot() else {
-            UserError.display(error: AtlasCheckoutError.unclassified)
-            cleanupViewAfterTakingImage(scrollView: scrollView, originalContentOffset: contentOffset, originalFrame: frame)
-            return
-        }
-        cleanupViewAfterTakingImage(scrollView: scrollView, originalContentOffset: contentOffset, originalFrame: frame)
-        AtlasUIViewController.shared?.showLoader()
-        UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(image:didFinishSavingWithError:contextInfo:)), nil)
-    }
-
-    private func prepareViewForTakingImage(scrollView: UIScrollView) -> (originalContentOffset: CGPoint, originalFrame: CGRect) {
-        let savedContentOffset = scrollView.contentOffset
-        let savedFrame = scrollView.frame
-        let imageHeight = scrollView.contentSize.height - saveImageContainer.frame.height - bottomSeparator.frame.height
-        let imageSize = CGSize(width: scrollView.contentSize.width, height: imageHeight)
-        saveImageContainer.isHidden = true
-        bottomSeparator.isHidden = true
-        scrollView.contentOffset = .zero
-        scrollView.frame = CGRect(origin: CGPoint.zero, size: imageSize)
-        return (savedContentOffset, savedFrame)
-    }
-
-    private func cleanupViewAfterTakingImage(scrollView: UIScrollView, originalContentOffset: CGPoint, originalFrame: CGRect) {
-        saveImageContainer.isHidden = false
-        bottomSeparator.isHidden = false
-        scrollView.alpha = 0
-
+        AtlasUIViewController.shared?.prepareSubviewsForScreenshot()
         UIView.waitForUIState {
-            scrollView.alpha = 1
-            scrollView.contentOffset = originalContentOffset
-            scrollView.frame = originalFrame
+            let screenshot = AtlasUIViewController.shared?.mainNavigationController.view.takeScreenshot()
+            AtlasUIViewController.shared?.cleanupSubviewsAfterScreenshot()
+
+            guard let image = screenshot else {
+                UserError.display(error: AtlasCheckoutError.unclassified)
+                return
+            }
+
+            AtlasUIViewController.shared?.showLoader()
+            UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(image:didFinishSavingWithError:contextInfo:)), nil)
         }
     }
 
@@ -195,6 +173,20 @@ extension CheckoutSummaryOrderStackView: UIDataBuilder {
 
     func configure(viewModel: String?) {
         orderNumberValueLabel.text = viewModel
+    }
+
+}
+
+extension CheckoutSummaryOrderStackView: UIScreenshotBuilder {
+
+    func prepareForScreenshot() {
+        saveImageContainer.isHidden = true
+        bottomSeparator.isHidden = true
+    }
+
+    func cleanupAfterScreenshot() {
+        saveImageContainer.isHidden = false
+        bottomSeparator.isHidden = false
     }
 
 }

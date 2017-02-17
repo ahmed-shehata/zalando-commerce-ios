@@ -16,7 +16,7 @@ class UIViewTests: XCTestCase {
         window.makeKeyAndVisible()
     }
 
-    func testScreenShot() {
+    func testScreenshot() {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         let image = view.takeScreenshot()
         expect(image).toNot(beNil())

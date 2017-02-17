@@ -21,25 +21,8 @@ extension UIBuilder {
         configureView()
         configureConstraints()
 
-        if let view = self as? UIView {
-            view.buildSubviews()
-        } else if let viewController = self as? UIViewController {
-            viewController.view.buildSubviews()
-        }
-    }
-
-}
-
-private extension UIView {
-
-    func buildSubviews() {
-        self.subviews.forEach { subview in
-            if let builder = subview as? UIBuilder {
-                builder.buildView()
-            } else {
-                subview.buildSubviews()
-            }
-        }
+        let view = (self as? UIView) ?? (self as? UIViewController)?.view
+        view?.configureSubviews { (subview: UIBuilder) in subview.buildView() }
     }
 
 }
@@ -49,5 +32,30 @@ protocol UIDataBuilder {
     associatedtype T
 
     func configure(viewModel: T)
+
+}
+
+protocol UIScreenshotBuilder {
+
+    func prepareForScreenshot()
+    func cleanupAfterScreenshot()
+
+}
+
+extension UIScreenshotBuilder {
+
+    func prepareSubviewsForScreenshot() {
+        prepareForScreenshot()
+
+        let view = (self as? UIView) ?? (self as? UIViewController)?.view
+        view?.configureSubviews { (subview: UIScreenshotBuilder) in subview.prepareSubviewsForScreenshot() }
+    }
+
+    func cleanupSubviewsAfterScreenshot() {
+        cleanupAfterScreenshot()
+
+        let view = (self as? UIView) ?? (self as? UIViewController)?.view
+        view?.configureSubviews { (subview: UIScreenshotBuilder) in subview.cleanupSubviewsAfterScreenshot() }
+    }
 
 }

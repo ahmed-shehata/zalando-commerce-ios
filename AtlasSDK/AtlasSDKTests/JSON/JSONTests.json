@@ -2,8 +2,8 @@
   "numbers": {
     "int0": 0,
     "int1": 1,
-    "bigInt": 5000000000,
-    "bigNegativeInt": -5000000000,
+    "bigInt": 2147483647,
+    "bigNegativeInt": -2147483648,
     "float0": 0,
     "float1": 1.1,
     "bigFloat": 5000000000.500123,
