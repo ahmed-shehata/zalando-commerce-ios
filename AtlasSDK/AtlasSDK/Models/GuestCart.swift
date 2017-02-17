@@ -5,10 +5,12 @@
 import Foundation
 
 public struct GuestCart {
+
     public let items: [CartItem]
     public let itemsOutOfStock: [String]
     public let grossTotal: Money
     public let taxTotal: Money
+
 }
 
 extension GuestCart: JSONInitializable {

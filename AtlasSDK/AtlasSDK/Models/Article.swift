@@ -14,6 +14,10 @@ public struct Article {
     public let availableUnits: [Unit]
     public let media: Media
 
+}
+
+extension Article {
+
     public var hasSingleUnit: Bool {
         return units.count == 1
     }
@@ -25,6 +29,10 @@ public struct Article {
     public var thumbnailURL: URL? {
         return media.images.first?.catalogURL
     }
+
+}
+
+extension Article {
 
     public struct Unit {
         public let id: String

@@ -12,12 +12,19 @@ class AtlasUIViewController: UIViewController {
     }
 
     let mainNavigationController: UINavigationController
+    var dismissalReason: AtlasUI.CheckoutResult?
     fileprivate let loaderView = LoaderView()
     private let atlasReachability = AtlasReachability()
+    private let completion: AtlasUICheckoutCompletion
 
-    init(forSKU sku: String) {
+    enum Error: AtlasError {
+        case dismissalReasonNotSet
+    }
+
+    init(forSKU sku: String, completion: @escaping AtlasUICheckoutCompletion) {
         let getArticleDetailsViewController = GetArticleDetailsViewController(sku: sku)
         mainNavigationController = UINavigationController(rootViewController: getArticleDetailsViewController)
+        self.completion = completion
 
         super.init(nibName: nil, bundle: nil)
     }
@@ -33,6 +40,14 @@ class AtlasUIViewController: UIViewController {
         view.addSubview(mainNavigationController.view)
         mainNavigationController.view.fillInSuperview()
         atlasReachability.setupReachability()
+    }
+
+    func dismissAtlasCheckoutUI() throws {
+        guard let reason = dismissalReason else { throw Error.dismissalReasonNotSet }
+        let completion = self.completion
+        AtlasUIViewController.shared?.dismiss(animated: true) {
+            completion(reason)
+        }
     }
 
 }

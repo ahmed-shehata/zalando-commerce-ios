@@ -3,8 +3,10 @@
 //
 
 public struct CartItem {
+
     public let sku: String
     public let quantity: Int
+
 }
 
 extension CartItem: JSONInitializable {

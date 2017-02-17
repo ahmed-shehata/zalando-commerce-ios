@@ -220,6 +220,10 @@ extension LoggedInSummaryActionHandler {
         }
         delegate.updated(layout: OrderPlacedLayout())
         delegate.updated(actionHandler: OrderPlacedSummaryActionHandler())
+
+        let orderConfirmation = OrderConfirmation(order: order, selectedArticle: selectedArticle)
+        let result = AtlasUI.CheckoutResult.orderPlaced(orderConfirmation: orderConfirmation, customerRequestedArticle: nil)
+        AtlasUIViewController.shared?.dismissalReason = result
     }
 
 }

@@ -8,6 +8,10 @@ public struct Media {
 
     public let images: [Image]
 
+}
+
+extension Media {
+
     public struct Image {
         public let order: Int
         public let catalogURL: URL

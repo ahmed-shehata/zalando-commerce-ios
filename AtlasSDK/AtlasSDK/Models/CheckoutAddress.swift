@@ -5,6 +5,7 @@
 import Foundation
 
 public struct CheckoutAddress: EquatableAddress {
+
     public let id: String
     public let gender: Gender
     public let firstName: String
@@ -16,6 +17,7 @@ public struct CheckoutAddress: EquatableAddress {
     public let countryCode: String
 
     public let pickupPoint: PickupPoint?
+
 }
 
 extension CheckoutAddress: JSONInitializable {

@@ -21,6 +21,7 @@ public struct UserAddress: EquatableAddress {
     public let pickupPoint: PickupPoint?
     public let isDefaultBilling: Bool
     public let isDefaultShipping: Bool
+
 }
 
 extension UserAddress: JSONInitializable {

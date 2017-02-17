@@ -5,18 +5,22 @@
 import Foundation
 
 public struct Cart {
+
     public let id: String
     public let items: [CartItem]
     public let itemsOutOfStock: [String]
     public let delivery: Delivery
     public let grossTotal: Money
     public let taxTotal: Money
+
 }
 
 extension Cart: Hashable {
+
     public var hashValue: Int {
         return id.hashValue
     }
+
 }
 
 public func == (lhs: Cart, rhs: Cart) -> Bool {

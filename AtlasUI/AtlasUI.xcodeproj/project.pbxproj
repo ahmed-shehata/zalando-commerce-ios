@@ -137,6 +137,7 @@
 		E937CBC61E36795900D86846 /* AddressCheckViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E937CBC51E36795900D86846 /* AddressCheckViewControllerTests.swift */; };
 		E9496CE61E535C020047BCFF /* CheckoutSummaryRecommendationCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9496CE51E535C020047BCFF /* CheckoutSummaryRecommendationCollectionView.swift */; };
 		E9496CE81E535C0D0047BCFF /* CheckoutSummaryRecommendationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9496CE71E535C0D0047BCFF /* CheckoutSummaryRecommendationCollectionViewCell.swift */; };
+		E956C88C1E5754980065339F /* OrderConfirmation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E956C88B1E5754980065339F /* OrderConfirmation.swift */; };
 		E979A6F01E43A2520052AFDC /* NSAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E979A6EF1E43A2520052AFDC /* NSAttributedString.swift */; };
 		E97A33A7BE2D26CDE9B4C62EB5BD2661 /* CheckoutSummaryAddressStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9494F7947C24BD2087FE22EBE20BFCD /* CheckoutSummaryAddressStackView.swift */; };
 		E97B1BE61E2E6DDD00FC0195 /* AddressCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B1BE51E2E6DDD00FC0195 /* AddressCheckViewController.swift */; };
@@ -329,6 +330,7 @@
 		E937CBC51E36795900D86846 /* AddressCheckViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckViewControllerTests.swift; sourceTree = "<group>"; };
 		E9496CE51E535C020047BCFF /* CheckoutSummaryRecommendationCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryRecommendationCollectionView.swift; sourceTree = "<group>"; };
 		E9496CE71E535C0D0047BCFF /* CheckoutSummaryRecommendationCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryRecommendationCollectionViewCell.swift; sourceTree = "<group>"; };
+		E956C88B1E5754980065339F /* OrderConfirmation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmation.swift; sourceTree = "<group>"; };
 		E979A6EF1E43A2520052AFDC /* NSAttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSAttributedString.swift; sourceTree = "<group>"; };
 		E97B1BE51E2E6DDD00FC0195 /* AddressCheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckViewController.swift; sourceTree = "<group>"; };
 		E97B1BE81E2E704800FC0195 /* AddressCheckStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckStackView.swift; sourceTree = "<group>"; };
@@ -491,6 +493,7 @@
 				B5494239851A207094AA7E1F76EFB842 /* Injector.swift */,
 				A57EEEDE1D66FC2ED33D1A99DC35A792 /* Localizer.swift */,
 				E979A6EF1E43A2520052AFDC /* NSAttributedString.swift */,
+				E956C88B1E5754980065339F /* OrderConfirmation.swift */,
 				E9C2D7371E4DB51B003D677B /* PickupPoint.swift */,
 				1D979FCCB7C4E538EBB7521909C35D17 /* Reachability.swift */,
 				4475607CB5E8B6F4DD5F143C36C4B5AA /* StreetAddress.swift */,
@@ -1026,6 +1029,7 @@
 				1B42E623E7FF2AD785958BBDD8103B11 /* AtlasUIViewController.swift in Sources */,
 				869B7706B6456BBC7CF641AF7A8E4356 /* BannerErrorViewController.swift in Sources */,
 				936565C898CD719317957BA1ABCB9290 /* BorderView.swift in Sources */,
+				E956C88C1E5754980065339F /* OrderConfirmation.swift in Sources */,
 				454C8AFEC26D69294C3E7ABEB5E734BD /* GuestAddressActionHandler.swift in Sources */,
 				DB0CF7E26CC03119A5B25B7E21F41CF1 /* LegalController.swift in Sources */,
 				E9496CE81E535C0D0047BCFF /* CheckoutSummaryRecommendationCollectionViewCell.swift in Sources */,

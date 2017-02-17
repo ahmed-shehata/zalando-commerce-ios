@@ -32,11 +32,8 @@ class ProductCollectionViewCell: UICollectionViewCell {
         guard let rootController = UIApplication.shared.keyWindow?.rootViewController, let article = self.article else { return }
         do {
             try AppSetup.atlas?.presentCheckout(onViewController: rootController, forSKU: article.id) { [weak self] result in
-                switch result {
-                case .orderPlaced: print("AtlasUI Finished with: Order Placed")
-                case .orderPlacedAndRecommendedItemChosen(let sku): self?.displayRecommendedProduct(sku: sku)
-                case .userCancelled: print("AtlasUI Finished with: User Cancelled")
-                case .finishedWithError(let error): print("AtlasUI Finished with: Error Displayed(\(error))")
+                if case let .orderPlaced(_, recommendedProductSKU) = result, let sku = recommendedProductSKU {
+                    self?.displayRecommendedProduct(sku: sku)
                 }
             }
         } catch let error {
@@ -45,14 +42,12 @@ class ProductCollectionViewCell: UICollectionViewCell {
     }
 
     func displayRecommendedProduct(sku: String) {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
-            guard
-                let catalogVC = CatalogViewController.shared,
-                let pdpVC = catalogVC.storyboard?.instantiateViewController(withIdentifier: "PDP") as? PDPViewController else { return }
+        guard
+            let catalogVC = CatalogViewController.shared,
+            let pdpVC = catalogVC.storyboard?.instantiateViewController(withIdentifier: "PDP") as? PDPViewController else { return }
 
-            pdpVC.sku = sku
-            catalogVC.navigationController?.pushViewController(pdpVC, animated: true)
-        }
+        pdpVC.sku = sku
+        catalogVC.navigationController?.pushViewController(pdpVC, animated: true)
     }
 
 }
