@@ -10,7 +10,7 @@ class CheckoutSummaryRecommendationStackView: UIStackView {
     let recommendationSeparatorView: BorderView = {
         let view = BorderView()
         view.topBorder = true
-        view.borderColor = UIColor(hex: 0xE5E5E5)
+        view.borderColor = UIColor(hex: 0xB2B2B2)
         return view
     }()
 
