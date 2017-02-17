@@ -51,7 +51,7 @@ class UITestCase: XCTestCase {
 
     func registerAtlasUIViewController(forSKU: String) {
         UserError.resetBanners()
-        let atlasUIViewController = AtlasUIViewController(forSKU: forSKU)
+        let atlasUIViewController = AtlasUIViewController(forSKU: forSKU) { _ in }
         self.window.rootViewController = atlasUIViewController
         self.window.makeKeyAndVisible()
         try! AtlasUI.shared().register { atlasUIViewController }
