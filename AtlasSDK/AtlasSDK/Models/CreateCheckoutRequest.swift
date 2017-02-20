@@ -4,14 +4,11 @@
 
 import Foundation
 
-public typealias BillingAddressId = String
-public typealias ShippingAddressId = String
-
 public struct CreateCheckoutRequest: JSONRepresentable {
 
     public let cartId: CartId
-    public let billingAddressId: BillingAddressId?
-    public let shippingAddressId: ShippingAddressId?
+    public let billingAddressId: AddressId?
+    public let shippingAddressId: AddressId?
 
     public init(cartId: CartId, addresses: CheckoutAddresses? = nil) {
         self.cartId = cartId

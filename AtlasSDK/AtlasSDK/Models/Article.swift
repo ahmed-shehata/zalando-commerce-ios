@@ -4,8 +4,6 @@
 
 import Foundation
 
-public typealias SKU = String
-
 public struct Article {
 
     public let id: SKU

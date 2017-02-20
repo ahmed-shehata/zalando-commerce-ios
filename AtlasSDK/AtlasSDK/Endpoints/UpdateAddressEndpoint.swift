@@ -4,8 +4,6 @@
 
 import Foundation
 
-public typealias AddressId = String
-
 struct UpdateAddressEndpoint: CheckoutEndpoint {
 
     let config: Config

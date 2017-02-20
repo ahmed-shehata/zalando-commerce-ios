@@ -4,8 +4,6 @@
 
 import Foundation
 
-public typealias CartId = String
-
 public struct Cart {
     public let id: CartId
     public let items: [CartItem]

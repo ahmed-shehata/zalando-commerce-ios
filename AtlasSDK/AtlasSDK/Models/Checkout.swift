@@ -4,9 +4,6 @@
 
 import Foundation
 
-public typealias CheckoutId = String
-public typealias CustomerNumber = String
-
 public struct Checkout {
 
     public let id: CheckoutId

@@ -6,10 +6,10 @@ import Foundation
 
 public struct UpdateCheckoutRequest {
 
-    public let billingAddressId: BillingAddressId?
-    public let shippingAddressId: ShippingAddressId?
+    public let billingAddressId: AddressId?
+    public let shippingAddressId: AddressId?
 
-    public init(billingAddressId: BillingAddressId? = nil, shippingAddressId: ShippingAddressId? = nil) {
+    public init(billingAddressId: AddressId? = nil, shippingAddressId: AddressId? = nil) {
         self.shippingAddressId = shippingAddressId
         self.billingAddressId = billingAddressId
     }

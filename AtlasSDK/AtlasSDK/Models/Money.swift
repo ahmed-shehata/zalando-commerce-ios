@@ -4,9 +4,6 @@
 
 import Foundation
 
-public typealias MoneyAmount = Decimal
-public typealias Currency = String
-
 public struct Money {
 
     public static let Zero = Money(amount: 0, currency: "")
