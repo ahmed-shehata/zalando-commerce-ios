@@ -6,7 +6,7 @@ import Foundation
 
 public struct GuestCart {
     public let items: [CartItem]
-    public let itemsOutOfStock: [String]
+    public let itemsOutOfStock: [SKU]
     public let grossTotal: Money
     public let taxTotal: Money
 }

@@ -18,7 +18,7 @@ public protocol FormattableAddress: StreetAddress {
 
 public protocol EquatableAddress: FormattableAddress {
 
-    var id: String { get }
+    var id: AddressId { get }
 
 }
 

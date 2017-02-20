@@ -4,6 +4,8 @@
 
 import Foundation
 
+public typealias AddressId = String
+
 struct UpdateAddressEndpoint: CheckoutEndpoint {
 
     let config: Config
@@ -17,7 +19,7 @@ struct UpdateAddressEndpoint: CheckoutEndpoint {
         return updateAddressRequest.toJSON()
     }
 
-    let addressId: String
+    let addressId: AddressId
     let updateAddressRequest: UpdateAddressRequest
 
 }

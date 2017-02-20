@@ -21,12 +21,11 @@ extension GuestPaymentRequest: JSONRepresentable {
         static let metadata = "metadata"
     }
 
-    public func toJSON() -> [String : Any] {
-        var json: [String: Any] = [
-            Keys.method: self.method
+    public func toJSON() -> [String: Any] {
+        return [
+            Keys.method: self.method,
+            Keys.metadata: metadata as Any
         ]
-        json[Keys.metadata] = metadata
-        return json
     }
 
 }

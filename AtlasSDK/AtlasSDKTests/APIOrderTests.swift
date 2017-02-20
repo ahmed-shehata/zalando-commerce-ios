@@ -12,7 +12,7 @@ class APIOrderTests: AtlasAPIClientBaseTests {
 
     func testCreateOrder() {
         waitUntilAtlasAPIClientIsConfigured { done, client in
-            client.createOrder(fromCheckoutId: self.checkoutId) { result in
+            client.createOrder(from: self.checkoutId) { result in
                 switch result {
                 case .failure(let error):
                     fail(String(describing: error))

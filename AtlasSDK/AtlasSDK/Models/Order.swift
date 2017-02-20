@@ -7,7 +7,7 @@ import Foundation
 public struct Order {
 
     public let orderNumber: String
-    public let customerNumber: String
+    public let customerNumber: CustomerNumber
     public let billingAddress: OrderAddress
     public let shippingAddress: OrderAddress
     public let grossTotal: Money

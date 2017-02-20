@@ -11,7 +11,7 @@ import AtlasSDK
 
 class UITestCase: XCTestCase {
 
-    var sku: String = "AD541L009-G11"
+    var sku: SKU = "AD541L009-G11"
     var atlasUIViewController: AtlasUIViewController?
     var window: UIWindow = {
         let window = UIWindow()

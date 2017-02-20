@@ -4,11 +4,14 @@
 
 import Foundation
 
+public typealias CheckoutId = String
+public typealias CustomerNumber = String
+
 public struct Checkout {
 
-    public let id: String
-    public let customerNumber: String
-    public let cartId: String
+    public let id: CheckoutId
+    public let customerNumber: CustomerNumber
+    public let cartId: CartId
 
     public let delivery: Delivery
     public let payment: Payment

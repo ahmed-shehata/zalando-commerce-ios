@@ -3,7 +3,7 @@
 //
 
 public struct CartItem {
-    public let sku: String
+    public let sku: SKU
     public let quantity: Int
 }
 

@@ -4,9 +4,11 @@
 
 import Foundation
 
+public typealias SKU = String
+
 public struct Article {
 
-    public let id: String
+    public let id: SKU
     public let name: String
     public let color: String
     public let brand: Brand
@@ -31,7 +33,7 @@ public struct Article {
     }
 
     public struct Unit {
-        public let id: String
+        public let id: SKU
         public let size: String
         public let price: Money
         public let originalPrice: Money

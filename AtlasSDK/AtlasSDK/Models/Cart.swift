@@ -4,10 +4,12 @@
 
 import Foundation
 
+public typealias CartId = String
+
 public struct Cart {
-    public let id: String
+    public let id: CartId
     public let items: [CartItem]
-    public let itemsOutOfStock: [String]
+    public let itemsOutOfStock: [SKU]
     public let delivery: Delivery
     public let grossTotal: Money
     public let taxTotal: Money

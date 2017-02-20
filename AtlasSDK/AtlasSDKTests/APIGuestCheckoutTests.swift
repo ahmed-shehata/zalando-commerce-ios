@@ -12,7 +12,7 @@ class APIGuestCheckoutTests: AtlasAPIClientBaseTests {
 
     func testGetGuestCheckout() {
         waitUntilAtlasAPIClientIsConfigured { done, client in
-            client.guestCheckout(checkoutId: "CHECKOUT_ID", token: "TOKEN") { result in
+            client.guestCheckout(with: "CHECKOUT_ID", token: "TOKEN") { result in
                 switch result {
                 case .failure(let error):
                     fail(String(describing: error))

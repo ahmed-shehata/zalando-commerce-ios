@@ -4,13 +4,16 @@
 
 import Foundation
 
+public typealias BillingAddressId = String
+public typealias ShippingAddressId = String
+
 public struct CreateCheckoutRequest: JSONRepresentable {
 
-    public let cartId: String
-    public let billingAddressId: String?
-    public let shippingAddressId: String?
+    public let cartId: CartId
+    public let billingAddressId: BillingAddressId?
+    public let shippingAddressId: ShippingAddressId?
 
-    public init(cartId: String, addresses: CheckoutAddresses? = nil) {
+    public init(cartId: CartId, addresses: CheckoutAddresses? = nil) {
         self.cartId = cartId
         self.billingAddressId = addresses?.billingAddress?.id
         self.shippingAddressId = addresses?.shippingAddress?.id
@@ -19,12 +22,12 @@ public struct CreateCheckoutRequest: JSONRepresentable {
     func toJSON() -> JSONDictionary {
         var json: [String: Any] = ["cart_id": self.cartId]
 
-        if let billingId = self.billingAddressId {
-            json["billing_address_id"] = billingId
+        if let billingAddressId = self.billingAddressId {
+            json["billing_address_id"] = billingAddressId
         }
 
-        if let shippingId = self.shippingAddressId {
-            json["shipping_address_id"] = shippingId
+        if let shippingAddressId = self.shippingAddressId {
+            json["shipping_address_id"] = shippingAddressId
         }
 
         return json

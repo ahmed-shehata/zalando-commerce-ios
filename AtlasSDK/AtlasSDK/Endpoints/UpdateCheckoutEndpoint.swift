@@ -12,6 +12,6 @@ struct UpdateCheckoutEndpoint: CheckoutEndpoint {
     let acceptedContentType = "application/x.zalando.customer.checkout.update.response+json"
     let parameters: EndpointParameters?
 
-    let checkoutId: String
+    let checkoutId: CheckoutId
 
 }
