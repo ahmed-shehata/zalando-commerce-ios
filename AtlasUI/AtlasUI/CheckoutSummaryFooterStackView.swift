@@ -11,7 +11,6 @@ class CheckoutSummaryFooterStackView: UIStackView {
 
     let recommendationStackView: CheckoutSummaryRecommendationStackView = {
         let stackView = CheckoutSummaryRecommendationStackView()
-        stackView.isHidden = true
         stackView.axis = .vertical
         stackView.spacing = 2
         stackView.layoutMargins = UIEdgeInsets(top: 0, left: -20, bottom: 0, right: -20)
@@ -44,7 +43,6 @@ extension CheckoutSummaryFooterStackView: UIBuilder {
 
     func configureView() {
         termsButton.addTarget(self, action: #selector(CheckoutSummaryFooterStackView.tocPressed), for: .touchUpInside)
-        addArrangedSubview(recommendationStackView)
         addArrangedSubview(termsButton)
         addArrangedSubview(submitButton)
     }
@@ -67,9 +65,8 @@ extension CheckoutSummaryFooterStackView: UIDataBuilder {
 
         if viewModel.layout.showsRecommendationStackView {
             recommendationStackView.configure(viewModel: viewModel.dataModel.selectedArticle.article)
-            UIView.animate(duration: .normal) { [weak self] in
-                self?.recommendationStackView.isHidden = false
-            }
+            insertArrangedSubview(recommendationStackView, at: 0)
+            recommendationStackView.buildView()
         }
 
         setupTermsButton(viewModel: viewModel)
