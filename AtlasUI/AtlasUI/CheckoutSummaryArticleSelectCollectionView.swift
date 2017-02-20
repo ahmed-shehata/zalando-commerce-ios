@@ -39,7 +39,7 @@ class CheckoutSummaryArticleSelectCollectionView: UICollectionView {
         layout.minimumLineSpacing = 7
         layout.minimumInteritemSpacing = 7
         layout.sectionInset = UIEdgeInsets(top: 7, left: 7, bottom: 7, right: 7)
-        layout.itemSize = CGSize(width: 90, height: 36)
+        layout.itemSize = CGSize(width: 90, height: 35)
         layout.scrollDirection = .horizontal
 
         super.init(frame: .zero, collectionViewLayout: layout)
