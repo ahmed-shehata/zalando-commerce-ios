@@ -4,7 +4,9 @@
 
 import Foundation
 
-public typealias SKU = String
+public typealias ModelSKU = String // "XXYYYXYYX"
+public typealias ColorSKU = String // "XXYYYXYYX-YYY"
+public typealias VariantSKU = String // "XXYYYXYYX-YYYYYYYYYY"
 
 public typealias CartId = String
 public typealias CheckoutId = String

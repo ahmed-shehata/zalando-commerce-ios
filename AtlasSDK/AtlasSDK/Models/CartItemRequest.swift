@@ -6,10 +6,10 @@ import Foundation
 
 public struct CartItemRequest {
 
-    public let sku: SKU
+    public let sku: VariantSKU
     public let quantity: Int
 
-    public init(sku: SKU, quantity: Int) {
+    public init(sku: VariantSKU, quantity: Int) {
         self.sku = sku
         self.quantity = quantity
     }

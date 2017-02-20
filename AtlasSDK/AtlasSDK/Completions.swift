@@ -46,4 +46,3 @@ public typealias AddressChangeCompletion = (AtlasAPIResult<UserAddress>) -> Void
 
 /// Completion closure with `CheckAddressResponse` in `AtlasAPIResult.success` result
 public typealias AddressCheckCompletion = (AtlasAPIResult<CheckAddressResponse>) -> Void
-

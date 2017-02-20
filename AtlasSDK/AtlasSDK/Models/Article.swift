@@ -6,7 +6,7 @@ import Foundation
 
 public struct Article {
 
-    public let id: SKU
+    public let id: ColorSKU
     public let name: String
     public let color: String
     public let brand: Brand
@@ -31,7 +31,7 @@ public struct Article {
     }
 
     public struct Unit {
-        public let id: SKU
+        public let id: VariantSKU
         public let size: String
         public let price: Money
         public let originalPrice: Money

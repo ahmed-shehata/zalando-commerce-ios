@@ -31,7 +31,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
     @IBAction func buyNowButtonTapped(_ sender: AnyObject) {
         guard let rootController = UIApplication.shared.keyWindow?.rootViewController, let article = self.article else { return }
         do {
-            try AppSetup.atlas?.presentCheckout(onViewController: rootController, forSKU: article.id)
+            try AppSetup.atlas?.presentCheckout(onViewController: rootController, for: article.id)
         } catch let error {
             print("Cannot present checkout", error)
         }

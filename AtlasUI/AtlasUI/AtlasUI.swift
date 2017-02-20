@@ -71,13 +71,13 @@ final public class AtlasUI {
     ///   - viewController: The controller in which AtlasUI will be presented over it
     ///   - sku: The SKU for the item that the user want to buy
     /// - Throws: notInitialized is thrown if this method is called before initializing AtlasUI be calling configure(options:completion:)
-    public func presentCheckout(onViewController viewController: UIViewController, forSKU sku: String) throws {
+    public func presentCheckout(onViewController viewController: UIViewController, for sku: String) throws {
         guard let _ = AtlasAPIClient.shared else {
             AtlasLogger.logError("AtlasUI is not initialized")
             throw AtlasUI.Error.notInitialized
         }
 
-        let atlasUIViewController = AtlasUIViewController(forSKU: sku)
+        let atlasUIViewController = AtlasUIViewController(for: sku)
 
         let checkoutTransitioning = CheckoutTransitioningDelegate()
         atlasUIViewController.transitioningDelegate = checkoutTransitioning

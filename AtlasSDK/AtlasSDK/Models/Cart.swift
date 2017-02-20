@@ -7,7 +7,7 @@ import Foundation
 public struct Cart {
     public let id: CartId
     public let items: [CartItem]
-    public let itemsOutOfStock: [SKU]
+    public let itemsOutOfStock: [VariantSKU]
     public let delivery: Delivery
     public let grossTotal: Money
     public let taxTotal: Money

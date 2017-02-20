@@ -92,7 +92,7 @@ struct AtlasUIClient {
         }
     }
 
-    static func article(with sku: SKU, completion: @escaping ArticleCompletion) {
+    static func article(with sku: VariantSKU, completion: @escaping ArticleCompletion) {
         AtlasUIViewController.displayLoader { hideLoader in
             AtlasAPIClient.shared?.article(with: sku) { result in
                 hideLoader()

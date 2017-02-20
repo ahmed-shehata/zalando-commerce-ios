@@ -39,7 +39,7 @@ public struct SelectedArticle {
         }
     }
 
-    public var sku: SKU {
+    public var sku: VariantSKU {
         return unit?.id ?? ""
     }
 

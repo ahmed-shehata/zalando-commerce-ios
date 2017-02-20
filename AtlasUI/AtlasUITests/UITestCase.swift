@@ -11,7 +11,7 @@ import AtlasSDK
 
 class UITestCase: XCTestCase {
 
-    var sku: SKU = "AD541L009-G11"
+    var sku: ColorSKU = "AD541L009-G11"
     var atlasUIViewController: AtlasUIViewController?
     var window: UIWindow = {
         let window = UIWindow()
@@ -45,13 +45,13 @@ class UITestCase: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        registerAtlasUIViewController(forSKU: sku)
+        registerAtlasUIViewController(for: sku)
         waitForArticleFetch()
     }
 
-    func registerAtlasUIViewController(forSKU: String) {
+    func registerAtlasUIViewController(for sku: String) {
         UserError.resetBanners()
-        let atlasUIViewController = AtlasUIViewController(forSKU: forSKU)
+        let atlasUIViewController = AtlasUIViewController(for: sku)
         self.window.rootViewController = atlasUIViewController
         self.window.makeKeyAndVisible()
         try! AtlasUI.shared().register { atlasUIViewController }
