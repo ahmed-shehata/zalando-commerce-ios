@@ -42,10 +42,10 @@ struct DemoArticle {
     }
 
     struct Media {
-        let mediaItems: [MediaItem]
+        let images: [Image]
     }
 
-    struct MediaItem {
+    struct Image {
         let orderNumber: Int
         let type: String
         let thumbnailHDURL: URL
@@ -72,10 +72,10 @@ struct DemoArticle {
     let categoryKeys: [String]
     let attributes: [Attribute]
     let units: [Unit]
-    let media: Media?
+    let media: Media
 
     var imageThumbURL: URL? {
-        guard let img = self.media?.mediaItems.first else { return nil }
+        guard let img = self.media.images.first else { return nil }
         return img.mediumHDURL
     }
 
@@ -187,12 +187,12 @@ extension DemoArticle.Price: JSONDecodable {
 extension DemoArticle.Media: JSONDecodable {
 
     init(json: JSON) throws {
-        self.mediaItems = try json.getArray(at: "media_items").flatMap { DemoArticle.MediaItem(json: $0) }
+        self.images = try json.getArray(at: "images").flatMap { DemoArticle.Image(json: $0) }
     }
 
 }
 
-extension DemoArticle.MediaItem {
+extension DemoArticle.Image {
 
     init?(json: JSON) {
         guard let orderNumber = try? json.getInt(at: "orderNumber"),
@@ -219,18 +219,18 @@ extension DemoArticle.MediaItem {
 
 }
 
-extension DemoArticle.MediaItem: Equatable { }
+extension DemoArticle.Image: Equatable { }
 
-func == (lhs: DemoArticle.MediaItem, rhs: DemoArticle.MediaItem) -> Bool {
+func == (lhs: DemoArticle.Image, rhs: DemoArticle.Image) -> Bool {
     return lhs.type == rhs.type
 }
 
 extension DemoArticle {
 
     var imageURLs: [URL] {
-        return media?.mediaItems
+        return media.images
             .filter { $0.orderNumber >= 1 && $0.orderNumber <= 10 }
-            .flatMap { $0.largeURL } ?? []
+            .flatMap { $0.largeURL }
     }
 
     var availableSizes: [String] {
