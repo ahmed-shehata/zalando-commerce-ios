@@ -5,11 +5,14 @@
 import Foundation
 
 public protocol SKU: Equatable {
-    static var pattern: String { get }
 
+    static var pattern: SKUPattern { get }
     var value: String { get }
+
     init(value: String)
-    init?(string: String?)
+    init?(value: String?)
+    init<T: SKU>(from sku: T) throws
+
 }
 
 public func == <T: SKU>(lhs: T, rhs: T) -> Bool {
@@ -20,21 +23,51 @@ public func == <T: SKU>(lhs: T, rhs: String) -> Bool {
     return lhs.value == rhs
 }
 
+enum SKUError: Swift.Error {
+    case invalidPattern
+    case invalidConversion
+    case noValue
+}
+
+public enum SKUPattern: String {
+
+    case model = "[A-z0-9]{9}"
+    case config = "[A-z0-9]{9}-[A-z0-9]{3}"
+    case simple = "[A-z0-9]{9}-[A-z0-9]{3}[A-z0-9]{7}"
+
+    func isValid(string: String) -> Bool {
+        return string.range(of: "^\(self.rawValue)$", options: [.regularExpression]) != nil
+    }
+
+    func find(match: String) -> String? {
+        guard let range = match.range(of: "^\(self.rawValue)", options: [.regularExpression])
+            else { return nil }
+        return match[range]
+    }
+
+}
+
 extension SKU {
 
-    public init?(string: String?) {
-        guard let string = string, Self.isValid(string: string) else { return nil }
-        self.init(value: string)
-    }
-
     var isValid: Bool {
-        return Self.isValid(string: value)
+        return Self.pattern.isValid(string: value)
     }
 
-    static func isValid(string: String?) -> Bool {
-        guard let string = string else { return false }
-        return string.range(of: "^\(Self.pattern)$",
-            options: [.caseInsensitive, .regularExpression]) != nil
+    init(validate string: String?) throws {
+        guard let value = string else { throw SKUError.noValue }
+        guard Self.pattern.isValid(string: value) else { throw SKUError.invalidPattern }
+        self.init(value: value)
+    }
+
+    public init?(value: String?) {
+        guard let value = value else { return nil }
+        self.init(value: value)
+    }
+
+    public init<T: SKU>(from sku: T) throws {
+        guard let newValue = Self.pattern.find(match: sku.value)
+            else { throw SKUError.invalidConversion }
+        self.init(value: newValue)
     }
 
     static var empty: Self {
@@ -46,7 +79,7 @@ extension SKU {
 public struct ModelSKU: SKU {
 
     public let value: String
-    public static let pattern = "[A-z0-9]{9}"
+    public static let pattern: SKUPattern = .model
 
     public init(value: String) {
         self.value = value
@@ -57,7 +90,7 @@ public struct ModelSKU: SKU {
 public struct ColorSKU: SKU {
 
     public let value: String
-    public static let pattern = "\(ModelSKU.pattern)-[A-z0-9]{3}"
+    public static let pattern: SKUPattern = .config
 
     public init(value: String) {
         self.value = value
@@ -68,7 +101,7 @@ public struct ColorSKU: SKU {
 public struct VariantSKU: SKU {
 
     public let value: String
-    public static let pattern = "\(ColorSKU.pattern)[A-z0-9]{7}"
+    public static let pattern: SKUPattern = .simple
 
     public init(value: String) {
         self.value = value
