@@ -18,10 +18,6 @@ public func == <T: SKU>(lhs: T, rhs: T) -> Bool {
     return lhs.value == rhs.value
 }
 
-public func == <T: SKU>(lhs: T, rhs: String) -> Bool {
-    return lhs.value == rhs
-}
-
 enum SKUError: Swift.Error {
     case invalidPattern
     case invalidConversion
