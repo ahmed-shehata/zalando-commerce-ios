@@ -4,7 +4,7 @@
 
 public struct CartItem {
 
-    public let sku: VariantSKU
+    public let sku: SimpleSKU
     public let quantity: Int
 
 }
@@ -20,6 +20,6 @@ extension CartItem: JSONInitializable {
         guard let sku = json[Keys.sku].string,
             let quantity = json[Keys.quantity].int
             else { return nil }
-        self.init(sku: sku, quantity: quantity)
+        self.init(sku: SimpleSKU(value: sku), quantity: quantity)
     }
 }

@@ -80,7 +80,8 @@ extension APIGuestOrderTests {
     }
 
     fileprivate var cartRequest: GuestCartRequest {
-        let cartItemRequest = CartItemRequest(sku: "AD541L009-G11", quantity: 1)
+        let sku = SimpleSKU(value: "AD541L009-G11000S000")
+        let cartItemRequest = CartItemRequest(sku: sku, quantity: 1)
         return GuestCartRequest(items: [cartItemRequest])
     }
 

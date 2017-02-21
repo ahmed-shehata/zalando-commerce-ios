@@ -22,7 +22,7 @@ class AtlasUIViewController: UIViewController {
         return view
     }()
 
-    init(for sku: ColorSKU) {
+    init(for sku: ConfigSKU) {
         let getArticleDetailsViewController = GetArticleDetailsViewController(sku: sku)
         mainNavigationController = UINavigationController(rootViewController: getArticleDetailsViewController)
 

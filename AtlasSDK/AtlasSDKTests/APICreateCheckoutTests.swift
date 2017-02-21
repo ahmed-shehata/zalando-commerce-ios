@@ -14,7 +14,7 @@ class APICreateCheckoutTests: AtlasAPIClientBaseTests {
 
     func testCreateCheckoutFromArticle() {
         waitUntilAtlasAPIClientIsConfigured { done, client in
-            let sku = "AD541L009-G11"
+            let sku = ConfigSKU(value: "AD541L009-G11")
             client.article(with: sku) { result in
                 switch result {
                 case .failure(let error):
