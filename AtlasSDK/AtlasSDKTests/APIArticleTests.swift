@@ -27,8 +27,8 @@ class APIArticleTests: AtlasAPIClientBaseTests {
                     expect(article.availableUnits.first?.price.amount) == 10.45
 
                     let validURL = "https://i6.ztat.net/detail/AD/54/1L/00/9G/11/AD541L009-G11@14.jpg"
-                    expect(article.media.images.first?.detailURL) == URL(validURL: validURL)
-                    expect(article.media.images.first?.order) == 1
+                    expect(article.media?.mediaItems.first?.detailURL) == URL(validURL: validURL)
+                    expect(article.media?.mediaItems.first?.order) == 1
                 }
                 done()
             }
