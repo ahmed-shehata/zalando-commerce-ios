@@ -11,7 +11,7 @@ import AtlasSDK
 
 class UITestCase: XCTestCase {
 
-    var sku: ColorSKU = "AD541L009-G11"
+    var sku: ColorSKU = ColorSKU(value: "AD541L009-G11")
     var atlasUIViewController: AtlasUIViewController?
     var window: UIWindow = {
         let window = UIWindow()
@@ -49,7 +49,12 @@ class UITestCase: XCTestCase {
         waitForArticleFetch()
     }
 
-    func registerAtlasUIViewController(for sku: String) {
+    func registerAtlasUIViewController(forColorSKU sku: String) {
+        let colorSKU = ColorSKU(value: sku)
+        registerAtlasUIViewController(for: colorSKU)
+    }
+
+    func registerAtlasUIViewController(for sku: ColorSKU) {
         UserError.resetBanners()
         let atlasUIViewController = AtlasUIViewController(for: sku)
         self.window.rootViewController = atlasUIViewController

@@ -13,33 +13,33 @@ class CheckoutSummaryEditProductStackViewTests: UITestCase {
     var checkoutSummaryViewController: CheckoutSummaryViewController?
 
     func testSelectInitialSizeWhileNotLoggedIn() {
-        registerAtlasUIViewController(for: "GU121D08Z-Q11")
+        registerAtlasUIViewController(forColorSKU: "GU121D08Z-Q11")
         selectItemInCollectionView()
         expect(self.checkoutSummaryViewController?.actionHandler as? NotLoggedInSummaryActionHandler).toEventuallyNot(beNil())
     }
 
     func testSelectInitialSizeWhileLoggedIn() {
         AtlasAPIClient.shared?.authorize(withToken: "TestToken")
-        registerAtlasUIViewController(for: "GU121D08Z-Q11")
+        registerAtlasUIViewController(forColorSKU: "GU121D08Z-Q11")
         selectItemInCollectionView()
         expect(self.checkoutSummaryViewController?.actionHandler as? LoggedInSummaryActionHandler).toEventuallyNot(beNil())
         AtlasAPIClient.shared?.deauthorize()
     }
 
     func testOneSizeInitialSizeWhileNotLoggedIn() {
-        registerAtlasUIViewController(for: "MK151F00E-Q11")
+        registerAtlasUIViewController(forColorSKU: "MK151F00E-Q11")
         expect(self.checkoutSummaryViewController?.actionHandler as? NotLoggedInSummaryActionHandler).toEventuallyNot(beNil())
     }
 
     func testOneSizeInitialSizeWhileLoggedIn() {
         AtlasAPIClient.shared?.authorize(withToken: "TestToken")
-        registerAtlasUIViewController(for: "MK151F00E-Q11")
+        registerAtlasUIViewController(forColorSKU: "MK151F00E-Q11")
         expect(self.checkoutSummaryViewController?.actionHandler as? LoggedInSummaryActionHandler).toEventuallyNot(beNil())
         AtlasAPIClient.shared?.deauthorize()
     }
 
     func testSelectingQuantity() {
-        registerAtlasUIViewController(for: "GU121D08Z-Q11")
+        registerAtlasUIViewController(forColorSKU: "GU121D08Z-Q11")
         selectItemInCollectionView()
         tapOnRefineButton(type: .quantity)
         selectItemInCollectionView(idx: 2)
@@ -47,7 +47,7 @@ class CheckoutSummaryEditProductStackViewTests: UITestCase {
     }
 
     func testSelectingSize() {
-        registerAtlasUIViewController(for: "GU121D08Z-Q11")
+        registerAtlasUIViewController(forColorSKU: "GU121D08Z-Q11")
         selectItemInCollectionView()
         tapOnRefineButton(type: .size)
         selectItemInCollectionView(idx: 1)
@@ -55,14 +55,14 @@ class CheckoutSummaryEditProductStackViewTests: UITestCase {
     }
 
     func testOneSizeSelectQuantity() {
-        registerAtlasUIViewController(for: "MK151F00E-Q11")
+        registerAtlasUIViewController(forColorSKU: "MK151F00E-Q11")
         tapOnRefineButton(type: .quantity)
         selectItemInCollectionView(idx: 2)
         expect(self.checkoutSummaryViewController?.dataModel.selectedArticle.quantity).toEventually(equal(3))
     }
 
     func testSelectSizeWithLessQuantity() {
-        registerAtlasUIViewController(for: "AZ711M001-B11")
+        registerAtlasUIViewController(forColorSKU: "AZ711M001-B11")
         selectItemInCollectionView(idx: 1)
         tapOnRefineButton(type: .quantity)
         selectItemInCollectionView(idx: 6)
@@ -79,8 +79,8 @@ class CheckoutSummaryEditProductStackViewTests: UITestCase {
 
 extension CheckoutSummaryEditProductStackViewTests {
 
-    override func registerAtlasUIViewController(for sku: ColorSKU) {
-        super.registerAtlasUIViewController(for: sku)
+    override func registerAtlasUIViewController(forColorSKU sku: String) {
+        super.registerAtlasUIViewController(forColorSKU: sku)
         configureCheckoutSummaryViewController()
     }
 

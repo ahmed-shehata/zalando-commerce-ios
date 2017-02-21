@@ -31,7 +31,8 @@ class ProductCollectionViewCell: UICollectionViewCell {
     @IBAction func buyNowButtonTapped(_ sender: AnyObject) {
         guard let rootController = UIApplication.shared.keyWindow?.rootViewController, let article = self.article else { return }
         do {
-            try AppSetup.atlas?.presentCheckout(onViewController: rootController, for: article.id)
+            let colorSKU = ColorSKU(string: article.id)! // swiftlint:disable:this force_unwrapping
+            try AppSetup.atlas?.presentCheckout(onViewController: rootController, for: colorSKU)
         } catch let error {
             print("Cannot present checkout", error)
         }
