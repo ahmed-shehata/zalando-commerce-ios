@@ -8,7 +8,7 @@ struct GetArticleEndpoint: CatalogEndpoint {
 
     let config: Config
 
-    var path: String { return "articles/\(sku)" }
+    var path: String { return "articles/\(sku.value)" }
     let acceptedContentType = "application/x.zalando.article+json"
     var queryItems: [URLQueryItem]? {
         return URLQueryItem.build(from: [

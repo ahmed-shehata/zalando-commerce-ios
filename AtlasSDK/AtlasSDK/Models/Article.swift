@@ -72,7 +72,7 @@ extension Article: JSONInitializable {
             let media = Media(json: json["media"])
             else { return nil }
 
-        self.id = id
+        self.id = ColorSKU(value: id)
         self.name = name
         self.color = color
         self.media = media
@@ -93,7 +93,7 @@ extension Article.Unit: JSONInitializable {
             let available = json["available"].bool
             else { return nil }
 
-        self.id = id
+        self.id = VariantSKU(value: id)
         self.size = size
         self.price = price
         self.originalPrice = originalPrice

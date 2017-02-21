@@ -16,11 +16,20 @@ public struct CartItemRequest {
 
 }
 
+extension CartItemRequest {
+
+    init?(variantSKU: String, quantity: Int) {
+        guard let sku = VariantSKU(string: variantSKU) else { return nil }
+        self.init(sku: sku, quantity: quantity)
+    }
+
+}
+
 extension CartItemRequest: JSONRepresentable {
 
     func toJSON() -> JSONDictionary {
         return [
-            "sku": self.sku,
+            "sku": self.sku.value,
             "quantity": self.quantity
         ]
     }

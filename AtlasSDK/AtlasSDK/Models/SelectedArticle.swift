@@ -40,7 +40,7 @@ public struct SelectedArticle {
     }
 
     public var sku: VariantSKU {
-        return unit?.id ?? ""
+        return unit?.id ?? VariantSKU.empty
     }
 
     public var unit: Article.Unit? {

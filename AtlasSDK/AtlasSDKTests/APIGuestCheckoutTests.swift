@@ -17,7 +17,7 @@ class APIGuestCheckoutTests: AtlasAPIClientBaseTests {
                 case .failure(let error):
                     fail(String(describing: error))
                 case .success(let guestCheckout):
-                    expect(guestCheckout.cart.items[0].sku) == "AD541L009-G1100XS000"
+                    expect(guestCheckout.cart.items[0].sku.value) == "AD541L009-G1100XS000"
                     expect(guestCheckout.cart.items[0].quantity) == 1
                     expect(guestCheckout.cart.grossTotal.amount) == 10.45
                     expect(guestCheckout.cart.grossTotal.currency) == "EUR"

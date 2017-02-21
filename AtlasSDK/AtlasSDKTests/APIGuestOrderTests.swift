@@ -80,7 +80,7 @@ extension APIGuestOrderTests {
     }
 
     fileprivate var cartRequest: GuestCartRequest {
-        let cartItemRequest = CartItemRequest(sku: "AD541L009-G11", quantity: 1)
+        let cartItemRequest = CartItemRequest(variantSKU: "AD541L009-G11000S000", quantity: 1)!
         return GuestCartRequest(items: [cartItemRequest])
     }
 

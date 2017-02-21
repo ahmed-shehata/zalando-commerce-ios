@@ -42,7 +42,7 @@ extension Cart: JSONInitializable {
             else { return nil }
         self.init(id: id,
                   items: json[Keys.items].jsons.flatMap { CartItem(json: $0) },
-                  itemsOutOfStock: json[Keys.itemsOutOfStock].jsons.flatMap { $0.string },
+                  itemsOutOfStock: json[Keys.itemsOutOfStock].jsons.flatMap { VariantSKU(string: $0.string) },
                   delivery: delivery,
                   grossTotal: grossTotal,
                   taxTotal: taxTotal)
