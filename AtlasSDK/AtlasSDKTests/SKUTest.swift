@@ -39,19 +39,19 @@ class SKUTest: XCTestCase {
 
     func testValidValidationModelSKU() {
         expect {
-            try ModelSKU(validate: self.modelSKUValue)
+            try ModelSKU(valid: self.modelSKUValue)
         }.toNot(throwError())
     }
 
     func testInvalidPatternModelSKU() {
         expect {
-            try ModelSKU(validate: self.configSKUValue)
+            try ModelSKU(valid: self.configSKUValue)
         }.to(throwError(SKUError.invalidPattern))
     }
 
     func testNoValueModelSKU() {
         expect {
-            try ModelSKU(validate: nil)
+            try ModelSKU(valid: nil)
         }.to(throwError(SKUError.noValue))
     }
 
