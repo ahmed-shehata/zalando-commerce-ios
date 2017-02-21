@@ -10,7 +10,6 @@ public protocol SKU: Equatable {
     var value: String { get }
 
     init(value: String)
-    init?(value: String?)
     init<T: SKU>(from sku: T) throws
 
 }
@@ -39,10 +38,10 @@ public enum SKUPattern: String {
         return string.range(of: "^\(self.rawValue)$", options: [.regularExpression]) != nil
     }
 
-    func find(match: String) -> String? {
-        guard let range = match.range(of: "^\(self.rawValue)", options: [.regularExpression])
+    func find(in string: String) -> String? {
+        guard let range = string.range(of: "^\(self.rawValue)", options: [.regularExpression])
             else { return nil }
-        return match[range]
+        return string[range]
     }
 
 }
@@ -59,13 +58,8 @@ extension SKU {
         self.init(value: value)
     }
 
-    public init?(value: String?) {
-        guard let value = value else { return nil }
-        self.init(value: value)
-    }
-
     public init<T: SKU>(from sku: T) throws {
-        guard let newValue = Self.pattern.find(match: sku.value)
+        guard let newValue = Self.pattern.find(in: sku.value)
             else { throw SKUError.invalidConversion }
         self.init(value: newValue)
     }

@@ -25,7 +25,9 @@ extension GuestCart: JSONInitializable {
             let taxTotal = Money(json: json[Keys.taxTotal])
             else { return nil }
         self.init(items: json[Keys.items].jsons.flatMap { CartItem(json: $0) },
-                  itemsOutOfStock: json[Keys.itemsOutOfStock].jsons.flatMap { SimpleSKU(value: $0.string) },
+                  itemsOutOfStock: json[Keys.itemsOutOfStock].jsons
+                    .flatMap({ $0.string })
+                    .map { SimpleSKU(value: $0) },
                   grossTotal: grossTotal,
                   taxTotal: taxTotal)
     }
