@@ -12,7 +12,7 @@ public struct Article {
     public let brand: Brand
     public let units: [Unit]
     public let availableUnits: [Unit]
-    public let media: Media
+    public let media: Media?
 
     public var hasSingleUnit: Bool {
         return units.count == 1
@@ -23,7 +23,7 @@ public struct Article {
     }
 
     public var thumbnailURL: URL? {
-        return media.images.first?.catalogURL
+        return media?.mediaItems.first?.catalogURL
     }
 
     public struct Brand {
@@ -41,10 +41,10 @@ public struct Article {
     }
 
     public struct Media {
-        public let images: [Image]
+        public let mediaItems: [MediaItem]
     }
 
-    public struct Image {
+    public struct MediaItem {
         public let order: Int
         public let catalogURL: URL
         public let catalogHDURL: URL
@@ -119,12 +119,12 @@ extension Article.Brand: JSONInitializable {
 extension Article.Media: JSONInitializable {
 
     init?(json: JSON) {
-        self.images = json["images"].jsons.flatMap { Article.Image(json: $0) }
+        self.mediaItems = json["media_items"].jsons.flatMap { Article.MediaItem(json: $0) }
     }
 
 }
 
-extension Article.Image: JSONInitializable {
+extension Article.MediaItem: JSONInitializable {
 
     init?(json: JSON) {
         guard let order = json["order"].int,

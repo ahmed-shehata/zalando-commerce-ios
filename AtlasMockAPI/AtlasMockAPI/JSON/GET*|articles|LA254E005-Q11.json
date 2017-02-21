@@ -20,7 +20,7 @@
     "stock" : 3
   } ],
   "media" : {
-    "images" : [ {
+    "media_items" : [ {
       "order" : 1,
       "catalog" : "https://i2.ztat.net/catalog/LA/25/4E/00/5Q/11/LA254E005-Q11@7.jpg",
       "catalog_hd" : "https://i2.ztat.net/catalog_hd/LA/25/4E/00/5Q/11/LA254E005-Q11@7.jpg",
