@@ -6,7 +6,7 @@ import Foundation
 
 public struct GuestCart {
     public let items: [CartItem]
-    public let itemsOutOfStock: [VariantSKU]
+    public let itemsOutOfStock: [SimpleSKU]
     public let grossTotal: Money
     public let taxTotal: Money
 }
@@ -25,7 +25,7 @@ extension GuestCart: JSONInitializable {
             let taxTotal = Money(json: json[Keys.taxTotal])
             else { return nil }
         self.init(items: json[Keys.items].jsons.flatMap { CartItem(json: $0) },
-                  itemsOutOfStock: json[Keys.itemsOutOfStock].jsons.flatMap { VariantSKU(value: $0.string) },
+                  itemsOutOfStock: json[Keys.itemsOutOfStock].jsons.flatMap { SimpleSKU(value: $0.string) },
                   grossTotal: grossTotal,
                   taxTotal: taxTotal)
     }

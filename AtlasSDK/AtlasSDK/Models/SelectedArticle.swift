@@ -39,8 +39,8 @@ public struct SelectedArticle {
         }
     }
 
-    public var sku: VariantSKU {
-        return unit?.id ?? VariantSKU.empty
+    public var sku: SimpleSKU {
+        return unit?.id ?? SimpleSKU.empty
     }
 
     public var unit: Article.Unit? {

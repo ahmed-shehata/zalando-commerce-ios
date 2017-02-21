@@ -12,7 +12,7 @@ class APIArticleTests: AtlasAPIClientBaseTests {
 
     func testFetchArticle() {
         waitUntilAtlasAPIClientIsConfigured { done, client in
-            let sku = ColorSKU(value: "AD541L009-G11")
+            let sku = ConfigSKU(value: "AD541L009-G11")
             client.article(with: sku) { result in
                 switch result {
                 case .failure(let error):

@@ -7,9 +7,9 @@ import AtlasSDK
 
 class GetArticleDetailsViewController: UIViewController {
 
-    let sku: ColorSKU
+    let sku: ConfigSKU
 
-    init(sku: ColorSKU) {
+    init(sku: ConfigSKU) {
         self.sku = sku
         super.init(nibName: nil, bundle: nil)
     }

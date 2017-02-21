@@ -87,7 +87,7 @@ public struct ModelSKU: SKU {
 
 }
 
-public struct ColorSKU: SKU {
+public struct ConfigSKU: SKU {
 
     public let value: String
     public static let pattern: SKUPattern = .config
@@ -98,7 +98,7 @@ public struct ColorSKU: SKU {
 
 }
 
-public struct VariantSKU: SKU {
+public struct SimpleSKU: SKU {
 
     public let value: String
     public static let pattern: SKUPattern = .simple

@@ -86,7 +86,7 @@ extension AtlasAPIClient {
         fetch(from: endpoint, completion: completion)
     }
 
-    public func article(with sku: ColorSKU, completion: @escaping ArticleCompletion) {
+    public func article(with sku: ConfigSKU, completion: @escaping ArticleCompletion) {
         let endpoint = GetArticleEndpoint(config: config, sku: sku)
 
         let fetchCompletion: ArticleCompletion = { result in
