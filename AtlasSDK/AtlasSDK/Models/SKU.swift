@@ -48,7 +48,7 @@ extension SKU {
         return Self.pattern.isValid(string: value)
     }
 
-    init(validate string: String?) throws {
+    init(valid string: String?) throws {
         guard let value = string else { throw SKUError.noValue }
         guard Self.pattern.isValid(string: value) else { throw SKUError.invalidPattern }
         self.init(value: value)
