@@ -8,7 +8,7 @@ import Foundation
 
 public struct Customer {
 
-    public let customerNumber: String
+    public let customerNumber: CustomerNumber
     public let gender: Gender
     public let firstName: String
     public let lastName: String

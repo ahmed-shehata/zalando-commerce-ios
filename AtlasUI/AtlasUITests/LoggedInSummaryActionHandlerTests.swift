@@ -195,7 +195,7 @@ extension LoggedInSummaryActionHandlerTests {
         waitUntil(timeout: 10) { done in
             AtlasUIClient.customer { result in
                 guard let customer = result.process() else { return fail() }
-                AtlasUIClient.article(withSKU: self.sku) { result in
+                AtlasUIClient.article(with: self.sku) { result in
                     guard let article = result.process() else { return fail() }
                     self.article = article
                     let selectedArticle = SelectedArticle(article: article, unitIndex: 0, desiredQuantity: 1)

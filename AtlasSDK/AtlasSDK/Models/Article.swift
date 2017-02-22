@@ -8,13 +8,13 @@ import Foundation
 
 public struct Article {
 
-    public let id: String
+    public let id: ConfigSKU
     public let name: String
     public let color: String
     public let brand: Brand
     public let units: [Unit]
     public let availableUnits: [Unit]
-    public let media: Media
+    public let media: Media?
 
     public var hasSingleUnit: Bool {
         return units.count == 1
@@ -25,7 +25,7 @@ public struct Article {
     }
 
     public var thumbnailURL: URL? {
-        return media.images.first?.catalogURL
+        return media?.mediaItems.first?.catalogURL
     }
 
     public struct Brand {
@@ -33,7 +33,7 @@ public struct Article {
     }
 
     public struct Unit {
-        public let id: String
+        public let id: SimpleSKU
         public let size: String
         public let price: Money
         public let originalPrice: Money
@@ -43,10 +43,10 @@ public struct Article {
     }
 
     public struct Media {
-        public let images: [Image]
+        public let mediaItems: [MediaItem]
     }
 
-    public struct Image {
+    public struct MediaItem {
         public let order: Int
         public let catalogURL: URL
         public let catalogHDURL: URL
@@ -74,7 +74,7 @@ extension Article: JSONInitializable {
             let media = Media(json: json["media"])
             else { return nil }
 
-        self.id = id
+        self.id = ConfigSKU(value: id)
         self.name = name
         self.color = color
         self.media = media
@@ -95,7 +95,7 @@ extension Article.Unit: JSONInitializable {
             let available = json["available"].bool
             else { return nil }
 
-        self.id = id
+        self.id = SimpleSKU(value: id)
         self.size = size
         self.price = price
         self.originalPrice = originalPrice
@@ -121,12 +121,12 @@ extension Article.Brand: JSONInitializable {
 extension Article.Media: JSONInitializable {
 
     init?(json: JSON) {
-        self.images = json["images"].jsons.flatMap { Article.Image(json: $0) }
+        self.mediaItems = json["media_items"].jsons.flatMap { Article.MediaItem(json: $0) }
     }
 
 }
 
-extension Article.Image: JSONInitializable {
+extension Article.MediaItem: JSONInitializable {
 
     init?(json: JSON) {
         guard let order = json["order"].int,

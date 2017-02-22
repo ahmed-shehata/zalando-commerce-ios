@@ -41,8 +41,8 @@ public struct SelectedArticle {
         }
     }
 
-    public var sku: String {
-        return unit?.id ?? ""
+    public var sku: SimpleSKU {
+        return unit?.id ?? SimpleSKU.empty
     }
 
     public var unit: Article.Unit? {
@@ -61,7 +61,7 @@ public struct SelectedArticle {
         return Money(amount: priceAmount * quantity, currency: currency)
     }
 
-    public var currency: String {
+    public var currency: Currency {
         return unit?.price.currency ?? article.availableUnits[0].price.currency
     }
 

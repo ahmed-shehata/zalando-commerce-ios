@@ -36,27 +36,29 @@ struct AtlasUIClient {
         }
     }
 
-    static func createCheckout(cartId: String, addresses: CheckoutAddresses? = nil, completion: @escaping CheckoutCompletion) {
+    static func createCheckout(from cartId: CartId, addresses: CheckoutAddresses? = nil, completion: @escaping CheckoutCompletion) {
         AtlasUIViewController.displayLoader { hideLoader in
-            AtlasAPIClient.shared?.createCheckout(fromCardId: cartId, addresses: addresses) { result in
+            AtlasAPIClient.shared?.createCheckout(from: cartId, addresses: addresses) { result in
                 hideLoader()
                 completion(result)
             }
         }
     }
 
-    static func updateCheckout(checkoutId: String, updateCheckoutRequest: UpdateCheckoutRequest, completion: @escaping CheckoutCompletion) {
+    static func updateCheckout(with checkoutId: CheckoutId,
+                               updateCheckoutRequest: UpdateCheckoutRequest,
+                               completion: @escaping CheckoutCompletion) {
         AtlasUIViewController.displayLoader { hideLoader in
-            AtlasAPIClient.shared?.updateCheckout(withId: checkoutId, updateCheckoutRequest: updateCheckoutRequest) { result in
+            AtlasAPIClient.shared?.updateCheckout(with: checkoutId, updateCheckoutRequest: updateCheckoutRequest) { result in
                 hideLoader()
                 completion(result)
             }
         }
     }
 
-    static func createOrder(checkoutId: String, completion: @escaping OrderCompletion) {
+    static func createOrder(from checkoutId: CheckoutId, completion: @escaping OrderCompletion) {
         AtlasUIViewController.displayLoader { hideLoader in
-            AtlasAPIClient.shared?.createOrder(fromCheckoutId: checkoutId) { result in
+            AtlasAPIClient.shared?.createOrder(from: checkoutId) { result in
                 hideLoader()
                 completion(result)
             }
@@ -81,18 +83,18 @@ struct AtlasUIClient {
         }
     }
 
-    static func guestCheckout(checkoutId: String, token: String, completion: @escaping GuestCheckoutCompletion) {
+    static func guestCheckout(with checkoutId: CheckoutId, token: CheckoutToken, completion: @escaping GuestCheckoutCompletion) {
         AtlasUIViewController.displayLoader { hideLoader in
-            AtlasAPIClient.shared?.guestCheckout(checkoutId: checkoutId, token: token) { result in
+            AtlasAPIClient.shared?.guestCheckout(with: checkoutId, token: token) { result in
                 hideLoader()
                 completion(result)
             }
         }
     }
 
-    static func article(withSKU sku: String, completion: @escaping ArticleCompletion) {
+    static func article(with sku: ConfigSKU, completion: @escaping ArticleCompletion) {
         AtlasUIViewController.displayLoader { hideLoader in
-            AtlasAPIClient.shared?.article(withSKU: sku) { result in
+            AtlasAPIClient.shared?.article(with: sku) { result in
                 hideLoader()
                 completion(result)
             }
@@ -108,9 +110,9 @@ struct AtlasUIClient {
         }
     }
 
-    static func deleteAddress(withId addressId: String, completion: @escaping SuccessCompletion) {
+    static func deleteAddress(with addressId: AddressId, completion: @escaping SuccessCompletion) {
         AtlasUIViewController.displayLoader { hideLoader in
-            AtlasAPIClient.shared?.deleteAddress(withId: addressId) { result in
+            AtlasAPIClient.shared?.deleteAddress(with: addressId) { result in
                 hideLoader()
                 completion(result)
             }
@@ -126,9 +128,9 @@ struct AtlasUIClient {
         }
     }
 
-    static func updateAddress(addressId: String, request: UpdateAddressRequest, completion: @escaping AddressChangeCompletion) {
+    static func updateAddress(with addressId: AddressId, request: UpdateAddressRequest, completion: @escaping AddressChangeCompletion) {
         AtlasUIViewController.displayLoader { hideLoader in
-            AtlasAPIClient.shared?.updateAddress(withId: addressId, request: request) { result in
+            AtlasAPIClient.shared?.updateAddress(with: addressId, request: request) { result in
                 hideLoader()
                 completion(result)
             }

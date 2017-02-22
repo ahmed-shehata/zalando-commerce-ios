@@ -7,7 +7,7 @@
 import Foundation
 
 public struct CheckoutAddress: EquatableAddress {
-    public let id: String
+    public let id: AddressId
     public let gender: Gender
     public let firstName: String
     public let lastName: String
@@ -23,7 +23,6 @@ public struct CheckoutAddress: EquatableAddress {
 extension CheckoutAddress: JSONInitializable {
 
     fileprivate struct Keys {
-
         static let id = "id"
         static let gender = "gender"
         static let firstName = "first_name"
@@ -59,7 +58,9 @@ extension CheckoutAddress: JSONInitializable {
                   pickupPoint: PickupPoint(json: json[Keys.pickupPoint]))
     }
 }
+
 extension CheckoutAddress {
+
     public init?(address: FormattableAddress) {
         guard let address = address as? UserAddress
             else { return nil }
@@ -74,4 +75,5 @@ extension CheckoutAddress {
                   countryCode: address.countryCode,
                   pickupPoint: address.pickupPoint)
     }
+
 }

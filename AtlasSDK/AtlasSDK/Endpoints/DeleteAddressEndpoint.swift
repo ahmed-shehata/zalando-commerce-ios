@@ -15,6 +15,6 @@ struct DeleteAddressEndpoint: CheckoutEndpoint {
         return URLQueryItem.build(from: ["address_id": addressId])
     }
 
-    let addressId: String
+    let addressId: AddressId
 
 }

@@ -8,8 +8,8 @@ import Foundation
 
 public struct UserAddress: EquatableAddress {
 
-    public let id: String
-    public let customerNumber: String
+    public let id: AddressId
+    public let customerNumber: CustomerNumber
     public let gender: Gender
     public let firstName: String
     public let lastName: String

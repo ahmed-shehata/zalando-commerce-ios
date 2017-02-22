@@ -4,8 +4,6 @@
 
 import Foundation
 
-public typealias AtlasConfigCompletion = (AtlasAPIResult<Config>) -> Void
-
 protocol Configurator {
 
     func configure(completion: @escaping AtlasConfigCompletion)

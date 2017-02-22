@@ -37,7 +37,7 @@ class APIAddressesTests: AtlasAPIClientBaseTests {
 
     func testDeleteAddress() {
         waitUntilAtlasAPIClientIsConfigured { done, client in
-            client.deleteAddress(withId: "6702748") { result in
+            client.deleteAddress(with: "6702748") { result in
                 switch result {
                 case .failure(let error):
                     fail(String(describing: error))

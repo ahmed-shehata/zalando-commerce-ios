@@ -8,9 +8,9 @@ import Foundation
 
 public struct OrderRequest {
 
-    public let checkoutId: String
+    public let checkoutId: CheckoutId
 
-    public init(checkoutId: String) {
+    public init(checkoutId: CheckoutId) {
         self.checkoutId = checkoutId
     }
 

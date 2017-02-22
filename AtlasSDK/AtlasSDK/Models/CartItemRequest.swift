@@ -8,10 +8,10 @@ import Foundation
 
 public struct CartItemRequest {
 
-    public let sku: String
+    public let sku: SimpleSKU
     public let quantity: Int
 
-    public init(sku: String, quantity: Int) {
+    public init(sku: SimpleSKU, quantity: Int) {
         self.sku = sku
         self.quantity = quantity
     }
@@ -22,7 +22,7 @@ extension CartItemRequest: JSONRepresentable {
 
     func toJSON() -> JSONDictionary {
         return [
-            "sku": self.sku,
+            "sku": self.sku.value,
             "quantity": self.quantity
         ]
     }

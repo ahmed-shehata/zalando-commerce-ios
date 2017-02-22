@@ -4,45 +4,6 @@
 
 import Foundation
 
-/// Completion closure with `Bool` in `AtlasAPIResult.success` result
-public typealias SuccessCompletion = (AtlasAPIResult<Bool>) -> Void
-
-/// Completion closure with `Customer` in `AtlasAPIResult.success` result
-public typealias CustomerCompletion = (AtlasAPIResult<Customer>) -> Void
-
-/// Completion closure with `Cart` in `AtlasAPIResult.success` result
-public typealias CartCompletion = (AtlasAPIResult<Cart>) -> Void
-
-/// Completion closure with `Checkout` in `AtlasAPIResult.success` result
-public typealias CheckoutCompletion = (AtlasAPIResult<Checkout>) -> Void
-
-/// Completion closure with (`Checkout`, `Cart`) in `AtlasAPIResult.success` result
-public typealias CheckoutCartCompletion = (AtlasAPIResult<(checkout: Checkout, cart: Cart)>) -> Void
-
-/// Completion closure with `Order` in `AtlasAPIResult.success` result
-public typealias OrderCompletion = (AtlasAPIResult<Order>) -> Void
-
-/// Completion closure with `GuestCheckout` in `AtlasAPIResult.success` result
-public typealias GuestCheckoutCompletion = (AtlasAPIResult<GuestCheckout>) -> Void
-
-/// Completion closure with `GuestOrder` in `AtlasAPIResult.success` result
-public typealias GuestOrderCompletion = (AtlasAPIResult<GuestOrder>) -> Void
-
-/// Completion closure with `URL` in `AtlasAPIResult.success` result
-public typealias URLCompletion = (AtlasAPIResult<URL>) -> Void
-
-/// Completion closure with `Article` in `AtlasAPIResult.success` result
-public typealias ArticleCompletion = (AtlasAPIResult<Article>) -> Void
-
-/// Completion closure with `[UserAddress]` in `AtlasAPIResult.success` result
-public typealias AddressesCompletion = (AtlasAPIResult<[UserAddress]>) -> Void
-
-/// Completion closure with `UserAddress` in `AtlasAPIResult.success` result
-public typealias AddressChangeCompletion = (AtlasAPIResult<UserAddress>) -> Void
-
-/// Completion closure with `CheckAddressResponse` in `AtlasAPIResult.success` result
-public typealias AddressCheckCompletion = (AtlasAPIResult<CheckAddressResponse>) -> Void
-
 extension AtlasAPIClient {
 
     public func customer(completion: @escaping CustomerCompletion) {
@@ -74,7 +35,7 @@ extension AtlasAPIClient {
                     return
                 }
 
-                self.createCheckout(fromCardId: cart.id, addresses: addresses) { checkoutResult in
+                self.createCheckout(from: cart.id, addresses: addresses) { checkoutResult in
                     switch checkoutResult {
                     case .failure(let error, _):
                         if self.isCheckoutFailed(error: error) {
@@ -91,20 +52,20 @@ extension AtlasAPIClient {
         }
     }
 
-    public func createCheckout(fromCardId cartId: String, addresses: CheckoutAddresses? = nil, completion: @escaping CheckoutCompletion) {
+    public func createCheckout(from cartId: CartId, addresses: CheckoutAddresses? = nil, completion: @escaping CheckoutCompletion) {
         let parameters = CreateCheckoutRequest(cartId: cartId, addresses: addresses).toJSON()
         let endpoint = CreateCheckoutEndpoint(config: config, parameters: parameters)
         fetch(from: endpoint, completion: completion)
     }
 
-    public func updateCheckout(withId checkoutId: String,
+    public func updateCheckout(with checkoutId: CheckoutId,
                                updateCheckoutRequest: UpdateCheckoutRequest,
                                completion: @escaping CheckoutCompletion) {
         let endpoint = UpdateCheckoutEndpoint(config: config, parameters: updateCheckoutRequest.toJSON(), checkoutId: checkoutId)
         fetch(from: endpoint, completion: completion)
     }
 
-    public func createOrder(fromCheckoutId checkoutId: String, completion: @escaping OrderCompletion) {
+    public func createOrder(from checkoutId: CheckoutId, completion: @escaping OrderCompletion) {
         let parameters = OrderRequest(checkoutId: checkoutId).toJSON()
         let endpoint = CreateOrderEndpoint(config: config, parameters: parameters, checkoutId: checkoutId)
         fetch(from: endpoint, completion: completion)
@@ -120,12 +81,12 @@ extension AtlasAPIClient {
         fetchRedirectLocation(endpoint: endpoint, completion: completion)
     }
 
-    public func guestCheckout(checkoutId: String, token: String, completion: @escaping GuestCheckoutCompletion) {
+    public func guestCheckout(with checkoutId: CheckoutId, token: CheckoutToken, completion: @escaping GuestCheckoutCompletion) {
         let endpoint = GetGuestCheckoutEndpoint(config: config, checkoutId: checkoutId, token: token)
         fetch(from: endpoint, completion: completion)
     }
 
-    public func article(withSKU sku: String, completion: @escaping ArticleCompletion) {
+    public func article(with sku: ConfigSKU, completion: @escaping ArticleCompletion) {
         let endpoint = GetArticleEndpoint(config: config, sku: sku)
 
         let fetchCompletion: ArticleCompletion = { result in
@@ -143,7 +104,7 @@ extension AtlasAPIClient {
         fetch(from: endpoint, completion: completion)
     }
 
-    public func deleteAddress(withId addressId: String, completion: @escaping SuccessCompletion) {
+    public func deleteAddress(with addressId: AddressId, completion: @escaping SuccessCompletion) {
         let endpoint = DeleteAddressEndpoint(config: config, addressId: addressId)
         touch(endpoint: endpoint, completion: completion)
     }
@@ -153,7 +114,7 @@ extension AtlasAPIClient {
         fetch(from: endpoint, completion: completion)
     }
 
-    public func updateAddress(withId addressId: String,
+    public func updateAddress(with addressId: AddressId,
                               request: UpdateAddressRequest,
                               completion: @escaping AddressChangeCompletion) {
         let endpoint = UpdateAddressEndpoint(config: config, addressId: addressId, updateAddressRequest: request)
