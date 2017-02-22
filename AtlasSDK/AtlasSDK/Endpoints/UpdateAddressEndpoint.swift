@@ -17,7 +17,7 @@ struct UpdateAddressEndpoint: CheckoutEndpoint {
         return updateAddressRequest.toJSON()
     }
 
-    let addressId: String
+    let addressId: AddressId
     let updateAddressRequest: UpdateAddressRequest
 
 }

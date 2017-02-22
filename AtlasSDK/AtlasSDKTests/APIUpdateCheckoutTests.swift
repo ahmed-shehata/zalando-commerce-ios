@@ -15,7 +15,7 @@ class APIUpdateCheckoutTests: AtlasAPIClientBaseTests {
     func testUpdateBillingAddress() {
         waitUntilAtlasAPIClientIsConfigured { done, client in
             let updateRequest = UpdateCheckoutRequest(billingAddressId: self.addressId)
-            client.updateCheckout(withId: self.checkoutId, updateCheckoutRequest: updateRequest) { result in
+            client.updateCheckout(with: self.checkoutId, updateCheckoutRequest: updateRequest) { result in
                 switch result {
                 case .failure(let error):
                     fail(String(describing: error))
@@ -31,7 +31,7 @@ class APIUpdateCheckoutTests: AtlasAPIClientBaseTests {
     func testUpdateShippingAddress() {
         waitUntilAtlasAPIClientIsConfigured { done, client in
             let updateRequest = UpdateCheckoutRequest(shippingAddressId: self.addressId)
-            client.updateCheckout(withId: self.checkoutId, updateCheckoutRequest: updateRequest) { result in
+            client.updateCheckout(with: self.checkoutId, updateCheckoutRequest: updateRequest) { result in
                 switch result {
                 case .failure(let error):
                     fail(String(describing: error))
@@ -47,7 +47,7 @@ class APIUpdateCheckoutTests: AtlasAPIClientBaseTests {
     func testUpdateBillingAndShippingAddresses() {
         waitUntilAtlasAPIClientIsConfigured { done, client in
             let updateRequest = UpdateCheckoutRequest(billingAddressId: self.addressId, shippingAddressId: self.addressId)
-            client.updateCheckout(withId: self.checkoutId, updateCheckoutRequest: updateRequest) { result in
+            client.updateCheckout(with: self.checkoutId, updateCheckoutRequest: updateRequest) { result in
                 switch result {
                 case .failure(let error):
                     fail(String(describing: error))

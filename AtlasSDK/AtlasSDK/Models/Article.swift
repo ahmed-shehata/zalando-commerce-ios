@@ -6,7 +6,7 @@ import Foundation
 
 public struct Article {
 
-    public let id: String
+    public let id: ConfigSKU
     public let name: String
     public let color: String
     public let brand: Brand
@@ -31,7 +31,7 @@ public struct Article {
     }
 
     public struct Unit {
-        public let id: String
+        public let id: SimpleSKU
         public let size: String
         public let price: Money
         public let originalPrice: Money
@@ -72,7 +72,7 @@ extension Article: JSONInitializable {
             let media = Media(json: json["media"])
             else { return nil }
 
-        self.id = id
+        self.id = ConfigSKU(value: id)
         self.name = name
         self.color = color
         self.media = media
@@ -93,7 +93,7 @@ extension Article.Unit: JSONInitializable {
             let available = json["available"].bool
             else { return nil }
 
-        self.id = id
+        self.id = SimpleSKU(value: id)
         self.size = size
         self.price = price
         self.originalPrice = originalPrice

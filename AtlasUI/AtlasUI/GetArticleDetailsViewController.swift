@@ -7,9 +7,9 @@ import AtlasSDK
 
 class GetArticleDetailsViewController: UIViewController {
 
-    let sku: String
+    let sku: ConfigSKU
 
-    init(sku: String) {
+    init(sku: ConfigSKU) {
         self.sku = sku
         super.init(nibName: nil, bundle: nil)
     }
@@ -25,7 +25,7 @@ class GetArticleDetailsViewController: UIViewController {
     }
 
     private func fetchArticle() {
-        AtlasUIClient.article(withSKU: self.sku) { [weak self] result in
+        AtlasUIClient.article(with: self.sku) { [weak self] result in
             guard let article = result.process(presentationMode: .fullScreen) else { return }
             self?.showSummaryView(article: article)
         }

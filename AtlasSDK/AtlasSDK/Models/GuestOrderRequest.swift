@@ -6,8 +6,8 @@ import Foundation
 
 public struct GuestOrderRequest {
 
-    public let checkoutId: String
-    public let token: String
+    public let checkoutId: CheckoutId
+    public let token: CheckoutToken
 
     public init(checkoutId: String, token: String) {
         self.checkoutId = checkoutId

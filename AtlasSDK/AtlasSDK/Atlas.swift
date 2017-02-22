@@ -4,16 +4,6 @@
 
 import Foundation
 
-public typealias AtlasClientCompletion = (AtlasResult<AtlasAPIClient>) -> Void
-
-extension NSNotification.Name {
-
-    public static let AtlasAuthorized = NSNotification.Name(rawValue: "Atlas.NotificationAuthorized")
-    public static let AtlasDeauthorized = NSNotification.Name(rawValue: "Atlas.NotificationDeauthorized")
-    public static let AtlasAuthorizationChanged = NSNotification.Name(rawValue: "Atlas.NotificationAuthorizationChanged")
-
-}
-
 public struct Atlas {
 
     public static func configure(options: Options? = nil, completion: @escaping AtlasClientCompletion) {

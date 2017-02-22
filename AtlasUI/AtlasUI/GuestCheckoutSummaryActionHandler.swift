@@ -17,8 +17,8 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
             updateDataModel(addresses: addresses, guestCheckout: guestCheckout)
         }
     }
-    var checkoutId: String?
-    var token: String?
+    var checkoutId: CheckoutId?
+    var token: CheckoutToken?
 
     init(email: String) {
         self.actionHandler.emailAddress = email
@@ -185,8 +185,8 @@ extension GuestCheckoutSummaryActionHandler {
         token = nil
     }
 
-    fileprivate func getGuestCheckout(checkoutId: String, token: String) {
-        AtlasUIClient.guestCheckout(checkoutId: checkoutId, token: token) { [weak self] result in
+    fileprivate func getGuestCheckout(checkoutId: CheckoutId, token: CheckoutToken) {
+        AtlasUIClient.guestCheckout(with: checkoutId, token: token) { [weak self] result in
             guard let guestCheckout = result.process() else { return }
             self?.guestCheckout = guestCheckout
             self?.checkoutId = checkoutId
