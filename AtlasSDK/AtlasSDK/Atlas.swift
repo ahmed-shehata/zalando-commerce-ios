@@ -4,8 +4,17 @@
 
 import Foundation
 
+/// Main entry point for the framework
+///
+/// - Note: See [project structure](https://github.com/zalando-incubator/atlas-ios/wiki/Project-structure)
 public struct Atlas {
 
+    /// Configures and returns network client based on given options
+    ///
+    /// - Parameters:
+    ///   - options:
+    ///   - completion: Fired when network configuration call is finished. 
+    /// - SeeAlso: `Options`, `AtlasClientCompletion`
     public static func configure(options: Options? = nil, completion: @escaping AtlasClientCompletion) {
         let options = options ?? Options()
         do {
