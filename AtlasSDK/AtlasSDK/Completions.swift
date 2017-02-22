@@ -6,6 +6,7 @@ import Foundation
 
 public typealias AtlasConfigCompletion = (AtlasAPIResult<Config>) -> Void
 
+/// KABOOM!
 public typealias AtlasClientCompletion = (AtlasResult<AtlasAPIClient>) -> Void
 
 /// Completion closure with `Bool` in `AtlasAPIResult.success` result
