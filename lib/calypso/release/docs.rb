@@ -37,7 +37,8 @@ module Calypso
     def generate_docs(src, dst)
       args = {
         'output' => destination_path(dst),
-        'theme' => 'apple',
+        'theme' => 'fullwidth',
+        'readme' => SOURCE_FOLDER + 'README.md',
         'clean' => true, 'hide-documentation-coverage' => false, 'objc' => false,
         'module' => src, 'module-version' => ATLAS_VERSION,
         'author' => 'Zalando SE', 'author_url' => 'http://tech.zalando.com',
