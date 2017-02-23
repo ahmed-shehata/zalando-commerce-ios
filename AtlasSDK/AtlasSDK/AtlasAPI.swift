@@ -4,8 +4,7 @@
 
 import Foundation
 
-
-/// All functional API calls with additional business logic  
+/// All functional API calls with additional business logic
 public struct AtlasAPI {
 
     /// Configuration of a client handling API calls
@@ -25,12 +24,13 @@ public struct AtlasAPI {
 
 extension AtlasAPI {
 
-    public func customer(completion: @escaping CustomerCompletion) {
+    public func customer(completion: @escaping APIResultCompletion<Customer>) {
         let endpoint = GetCustomerEndpoint(config: config)
         client.fetch(from: endpoint, completion: completion)
     }
 
-    public func createCart(withItems cartItemRequests: [CartItemRequest], completion: @escaping CartCompletion) {
+    public func createCart(withItems cartItemRequests: [CartItemRequest],
+                           completion: @escaping APIResultCompletion<Cart>) {
         let parameters = CartRequest(items: cartItemRequests, replaceItems: true).toJSON()
         let endpoint = CreateCartEndpoint(config: config, parameters: parameters)
         client.fetch(from: endpoint, completion: completion)
@@ -38,7 +38,7 @@ extension AtlasAPI {
 
     public func createCheckoutCart(forSelectedArticle selectedArticle: SelectedArticle,
                                    addresses: CheckoutAddresses? = nil,
-                                   completion: @escaping CheckoutCartCompletion) {
+                                   completion: @escaping APIResultCompletion<(Checkout, Cart)>) {
         let cartItemRequest = CartItemRequest(sku: selectedArticle.sku, quantity: selectedArticle.quantity)
 
         createCart(withItems: [cartItemRequest]) { cartResult in
@@ -71,7 +71,9 @@ extension AtlasAPI {
         }
     }
 
-    public func createCheckout(from cartId: CartId, addresses: CheckoutAddresses? = nil, completion: @escaping CheckoutCompletion) {
+    public func createCheckout(from cartId: CartId,
+                               addresses: CheckoutAddresses? = nil,
+                               completion: @escaping APIResultCompletion<Checkout>) {
         let parameters = CreateCheckoutRequest(cartId: cartId, addresses: addresses).toJSON()
         let endpoint = CreateCheckoutEndpoint(config: config, parameters: parameters)
         client.fetch(from: endpoint, completion: completion)
@@ -79,36 +81,42 @@ extension AtlasAPI {
 
     public func updateCheckout(with checkoutId: CheckoutId,
                                updateCheckoutRequest: UpdateCheckoutRequest,
-                               completion: @escaping CheckoutCompletion) {
+                               completion: @escaping APIResultCompletion<Checkout>) {
         let endpoint = UpdateCheckoutEndpoint(config: config, parameters: updateCheckoutRequest.toJSON(), checkoutId: checkoutId)
         client.fetch(from: endpoint, completion: completion)
     }
 
-    public func createOrder(from checkoutId: CheckoutId, completion: @escaping OrderCompletion) {
+    public func createOrder(from checkoutId: CheckoutId,
+                            completion: @escaping APIResultCompletion<Order>) {
         let parameters = OrderRequest(checkoutId: checkoutId).toJSON()
         let endpoint = CreateOrderEndpoint(config: config, parameters: parameters, checkoutId: checkoutId)
         client.fetch(from: endpoint, completion: completion)
     }
 
-    public func createGuestOrder(request: GuestOrderRequest, completion: @escaping GuestOrderCompletion) {
+    public func createGuestOrder(request: GuestOrderRequest,
+                                 completion: @escaping APIResultCompletion<GuestOrder>) {
         let endpoint = CompleteGuestOrderEndpoint(config: config, parameters: request.toJSON())
         client.fetch(from: endpoint, completion: completion)
     }
 
-    public func guestCheckoutPaymentSelectionURL(request: GuestPaymentSelectionRequest, completion: @escaping URLCompletion) {
+    public func guestCheckoutPaymentSelectionURL(request: GuestPaymentSelectionRequest,
+                                                 completion: @escaping APIResultCompletion<URL>) {
         let endpoint = CreateGuestOrderEndpoint(config: config, parameters: request.toJSON())
-        client.fetchRedirectLocation(endpoint: endpoint, completion: completion)
+        client.redirect(endpoint: endpoint, completion: completion)
     }
 
-    public func guestCheckout(with checkoutId: CheckoutId, token: CheckoutToken, completion: @escaping GuestCheckoutCompletion) {
+    public func guestCheckout(with checkoutId: CheckoutId,
+                              token: CheckoutToken,
+                              completion: @escaping APIResultCompletion<GuestCheckout>) {
         let endpoint = GetGuestCheckoutEndpoint(config: config, checkoutId: checkoutId, token: token)
         client.fetch(from: endpoint, completion: completion)
     }
 
-    public func article(with sku: ConfigSKU, completion: @escaping ArticleCompletion) {
+    public func article(with sku: ConfigSKU,
+                        completion: @escaping APIResultCompletion<Article>) {
         let endpoint = GetArticleEndpoint(config: config, sku: sku)
 
-        let fetchCompletion: ArticleCompletion = { result in
+        let fetchCompletion: APIResultCompletion<Article> = { result in
             if case let .success(article) = result, !article.hasAvailableUnits {
                 completion(.failure(AtlasCheckoutError.outOfStock, nil))
             } else {
@@ -118,29 +126,32 @@ extension AtlasAPI {
         client.fetch(from: endpoint, completion: fetchCompletion)
     }
 
-    public func addresses(completion: @escaping AddressesCompletion) {
+    public func addresses(completion: @escaping APIResultCompletion<[UserAddress]>) {
         let endpoint = GetAddressesEndpoint(config: config)
         client.fetch(from: endpoint, completion: completion)
     }
 
-    public func deleteAddress(with addressId: AddressId, completion: @escaping SuccessCompletion) {
+    public func deleteAddress(with addressId: AddressId,
+                              completion: @escaping APIResultCompletion<Bool>) {
         let endpoint = DeleteAddressEndpoint(config: config, addressId: addressId)
         client.touch(endpoint: endpoint, completion: completion)
     }
 
-    public func createAddress(_ request: CreateAddressRequest, completion: @escaping AddressChangeCompletion) {
+    public func createAddress(_ request: CreateAddressRequest,
+                              completion: @escaping APIResultCompletion<UserAddress>) {
         let endpoint = CreateAddressEndpoint(config: config, createAddressRequest: request)
         client.fetch(from: endpoint, completion: completion)
     }
 
     public func updateAddress(with addressId: AddressId,
                               request: UpdateAddressRequest,
-                              completion: @escaping AddressChangeCompletion) {
+                              completion: @escaping APIResultCompletion<UserAddress>) {
         let endpoint = UpdateAddressEndpoint(config: config, addressId: addressId, updateAddressRequest: request)
         client.fetch(from: endpoint, completion: completion)
     }
 
-    public func checkAddress(_ request: CheckAddressRequest, completion: @escaping AddressCheckCompletion) {
+    public func checkAddress(_ request: CheckAddressRequest,
+                             completion: @escaping APIResultCompletion<CheckAddressResponse>) {
         let endpoint = CheckAddressEndpoint(config: config, checkAddressRequest: request)
         client.fetch(from: endpoint, completion: completion)
     }

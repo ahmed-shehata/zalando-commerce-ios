@@ -19,7 +19,7 @@ public struct Atlas {
     ///   - options: Options for API client to be created. When `nil`, `$INFOPLIST_FILE` file of the app is used as configuration.
     ///   - completion: Fired when network configuration call is finished.
     ///     Containts `AtlasResult.success` with `AtlasAPI` or `AtlasResult.failure` with `Error` reason.
-    public static func configure(options: Options? = nil, completion: @escaping AtlasClientCompletion) {
+    public static func configure(options: Options? = nil, completion: @escaping ResultCompletion<AtlasAPI>) {
         let options = options ?? Options()
         do {
             try options.validate()

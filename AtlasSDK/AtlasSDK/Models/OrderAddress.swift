@@ -52,5 +52,5 @@ extension OrderAddress: JSONInitializable {
                   countryCode: countryCode,
                   pickupPoint: PickupPoint(json: json[Keys.pickupPoint]))
     }
-    
+
 }

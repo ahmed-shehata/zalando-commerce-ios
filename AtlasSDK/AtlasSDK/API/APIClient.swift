@@ -4,8 +4,6 @@
 
 import Foundation
 
-typealias APIResultCompletion<Model> = (AtlasAPIResult<Model>) -> Void
-
 struct APIClient {
 
     let config: Config
@@ -16,35 +14,40 @@ struct APIClient {
         self.urlSession = session
     }
 
-    func touch(endpoint: Endpoint, successStatus: HTTPStatus = .noContent, completion: @escaping SuccessCompletion) {
+    func touch(endpoint: Endpoint,
+               successStatus: HTTPStatus = .noContent,
+               completion: @escaping APIResultCompletion<Bool>) {
         touch(endpoint: endpoint, completion: completion) { response in
             return response.statusCode == successStatus
         }
     }
 
     func touch(endpoint: Endpoint,
-               completion: @escaping SuccessCompletion,
+               completion: @escaping APIResultCompletion<Bool>,
                successCompletion: @escaping (JSONResponse) -> Bool) {
         call(endpoint: endpoint, completion: completion) { response in
             return successCompletion(response)
         }
     }
 
-    func fetch<Model: JSONInitializable>(from endpoint: Endpoint, completion: @escaping APIResultCompletion<Model>) {
+    func fetch<Model: JSONInitializable>(from endpoint: Endpoint,
+                                         completion: @escaping APIResultCompletion<Model>) {
         call(endpoint: endpoint, completion: completion) { response in
             guard let json = response.body else { return nil }
             return Model(json: json)
         }
     }
 
-    func fetch<Model: JSONInitializable>(from endpoint: Endpoint, completion: @escaping APIResultCompletion<[Model]>) {
+    func fetch<Model: JSONInitializable>(from endpoint: Endpoint,
+                                         completion: @escaping APIResultCompletion<[Model]>) {
         call(endpoint: endpoint, completion: completion) { response in
             guard let json = response.body else { return nil }
             return json.jsons.flatMap { Model(json: $0) }
         }
     }
 
-    func fetchRedirectLocation(endpoint: Endpoint, completion: @escaping URLCompletion) {
+    func redirect(endpoint: Endpoint,
+                               completion: @escaping APIResultCompletion<URL>) {
         call(endpoint: endpoint, completion: completion) { response in
             guard let urlString = response.httpHeaders?["Location"],
                 let url = URL(string: urlString), HTTPStatus(statusCode: response.statusCode).isSuccessful
