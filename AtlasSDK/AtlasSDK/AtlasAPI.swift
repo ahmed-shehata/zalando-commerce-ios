@@ -176,7 +176,7 @@ extension AtlasAPI {
     /// Deauthorizes all clients by removing all stored tokens.
     public static func deauthorizeAll() {
         APIAccessToken.wipe().forEach { token in
-            notify(client: nil, isAuthorized: false, withToken: token)
+            notify(api: nil, isAuthorized: false, withToken: token)
         }
     }
 
