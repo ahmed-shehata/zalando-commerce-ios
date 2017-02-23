@@ -55,7 +55,7 @@ struct Localizer {
             return try format(string: key, bundle: self.localizedStringsBundle, formatArguments: formatArguments)
         } catch let error {
             if case let Error.missingTranslation(missingKey, language) = error {
-                AtlasLogger.logError("Translation not found for '\(missingKey)' language: \(language)")
+                Logger.error("Translation not found for '\(missingKey)' language: \(language)")
                 if Debug.isEnabled {
                     return key
                 }

@@ -5,6 +5,8 @@
 import UIKit
 import AtlasSDK
 
+// TODO: Check: Remove "Atlas" from name
+
 class AtlasReachability {
 
     fileprivate var reachability: Reachability?
@@ -27,7 +29,7 @@ class AtlasReachability {
         do {
             try reachability.startNotifier()
         } catch let error {
-            AtlasLogger.logError(error)
+            Logger.error(error)
             return
         }
 

@@ -5,6 +5,8 @@
 import Foundation
 import AtlasSDK
 
+// TODO: Remove "Atlas" from name?
+
 struct AtlasUIClient {
 
     static func customer(completion: @escaping CustomerCompletion) {

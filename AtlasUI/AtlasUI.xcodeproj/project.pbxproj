@@ -16,7 +16,7 @@
 		0B7FB82906D53F680B364DDFD88D814C /* CNPostalAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079F5EB0A67A527798FFCC6CF49C699F /* CNPostalAddress.swift */; };
 		0FBF5C603EAAC10495E96E1E79EC75A0 /* KeyboardScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791A9187861AD7C9B3C28EC28337E85 /* KeyboardScrollView.swift */; };
 		11176237907B72C35C578104E778C8D2 /* AddressFormActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D294A8F5C9A6F3C32AD893047F37874F /* AddressFormActionHandler.swift */; };
-		125D65A740AA700245607C84A89DD052 /* AtlasAPIResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58904741B812272DD3C84E76C47A5D /* AtlasAPIResult.swift */; };
+		125D65A740AA700245607C84A89DD052 /* APIResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58904741B812272DD3C84E76C47A5D /* APIResult.swift */; };
 		16954EEE7CCDD0CE9815224EA8FF317E /* LoggedInCreateAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA619C0CB9CF11DA4959C594653024B5 /* LoggedInCreateAddressActionHandler.swift */; };
 		16B8008E2042BCE08F755D887DF018E7 /* CheckoutSummaryEditProductStackViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BDC6CE98A95B97CC118229EEFD00A0 /* CheckoutSummaryEditProductStackViewTests.swift */; };
 		170D032BE739B3A96834CDAF3CA1D22C /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417B9ADA720A948E8E1F8F875F349D62 /* UIImage.swift */; };
@@ -26,7 +26,7 @@
 		271C74EFD455C9953DB58ED7A2B107CE /* AddressRowViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDAB74F0608C1A0ABE505D7D3498B40 /* AddressRowViewCell.swift */; };
 		2891EC74FEE7071854C45792036AD058 /* AtlasMockAPI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = BB50EAB4D0B50A73E0673740617BEDE3 /* AtlasMockAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2E180846EEE06C1653F46C21EF591118 /* CheckoutSummaryMainStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6B6ED68841D292847DAC951B8AC23B /* CheckoutSummaryMainStackView.swift */; };
-		301347C3A95691A0DCE03305E725897C /* AtlasResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDCE5D7080248D2C8410C3760876C9A /* AtlasResult.swift */; };
+		301347C3A95691A0DCE03305E725897C /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDCE5D7080248D2C8410C3760876C9A /* Result.swift */; };
 		30788EA71B54F0C0BCC51AA46C0C6D09 /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F1679B8BB8A951B60D19AD947CD5BA /* CGRect.swift */; };
 		31C143E93BE11EC7482402E427829B55 /* AddressFormViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B553904D2ECD0E406028171B233ECEF /* AddressFormViewControllerTests.swift */; };
 		34160EED7155A39B7F8EBDE762263F17 /* PaymentSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A26AACC32143945E59B862CBDB3626 /* PaymentSelectionViewController.swift */; };
@@ -232,14 +232,14 @@
 		47CB4C81CA4C4D974A97FC44B63E490C /* RowStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RowStackView.swift; sourceTree = "<group>"; };
 		4A0B9F3975B377636E8FAA343F4B94D4 /* CheckoutSummaryGuestStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryGuestStackView.swift; sourceTree = "<group>"; };
 		4A8C9879EBFF2EF7FDC57EF9AEB85BEF /* PaymentStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentStatus.swift; sourceTree = "<group>"; };
-		4EDCE5D7080248D2C8410C3760876C9A /* AtlasResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasResult.swift; sourceTree = "<group>"; };
+		4EDCE5D7080248D2C8410C3760876C9A /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		4EED7D8EF8D5EB7448D7EF047681628A /* AtlasReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasReachability.swift; sourceTree = "<group>"; };
 		516FBBE5C6D50ED98656F3EDA7EB6C06 /* CheckoutTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutTransitioningDelegate.swift; sourceTree = "<group>"; };
 		51B1CD594BE0AFFDF8587372BC49280A /* PaymentViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewControllerTests.swift; sourceTree = "<group>"; };
 		52A26AACC32143945E59B862CBDB3626 /* PaymentSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentSelectionViewController.swift; sourceTree = "<group>"; };
 		5578174CA128912EF595E9E39A03396E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5791A9187861AD7C9B3C28EC28337E85 /* KeyboardScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardScrollView.swift; sourceTree = "<group>"; };
-		5A58904741B812272DD3C84E76C47A5D /* AtlasAPIResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasAPIResult.swift; sourceTree = "<group>"; };
+		5A58904741B812272DD3C84E76C47A5D /* APIResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIResult.swift; sourceTree = "<group>"; };
 		5A709BBC960C3FA3E161DC6DA92C2831 /* CheckoutSummaryRootStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryRootStackView.swift; sourceTree = "<group>"; };
 		5B553904D2ECD0E406028171B233ECEF /* AddressFormViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressFormViewControllerTests.swift; sourceTree = "<group>"; };
 		5BA3C34452FDEBE3580150200D217D64 /* EmptyAddressDataModelCreationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyAddressDataModelCreationStrategy.swift; sourceTree = "<group>"; };
@@ -474,9 +474,9 @@
 				32BBDA408EFAB221DD44CB3DCD7DDE53 /* Generic Views */,
 				B35DF21D6C80C8890DF784B76CEAEA63 /* AnimationDuration.swift */,
 				971465BF293DCFB809C2B0F1512B4CE3 /* Async.swift */,
-				5A58904741B812272DD3C84E76C47A5D /* AtlasAPIResult.swift */,
+				5A58904741B812272DD3C84E76C47A5D /* APIResult.swift */,
 				4EED7D8EF8D5EB7448D7EF047681628A /* AtlasReachability.swift */,
-				4EDCE5D7080248D2C8410C3760876C9A /* AtlasResult.swift */,
+				4EDCE5D7080248D2C8410C3760876C9A /* Result.swift */,
 				676B41DF9EC48A113436B2F194DB7AFE /* AtlasUIClient.swift */,
 				D4F1679B8BB8A951B60D19AD947CD5BA /* CGRect.swift */,
 				079F5EB0A67A527798FFCC6CF49C699F /* CNPostalAddress.swift */,
@@ -1000,7 +1000,7 @@
 				B4399FAB71827F9E8AE99CCADA530BCD /* LoggedInAddressListActionHandler.swift in Sources */,
 				5BCA7B1FB41F996AAE8072BC6ABC950A /* CheckoutSummaryProductInfoStackView.swift in Sources */,
 				C2CBD5F0A9B399A6FAC9311860D09B56 /* StreetAddress.swift in Sources */,
-				301347C3A95691A0DCE03305E725897C /* AtlasResult.swift in Sources */,
+				301347C3A95691A0DCE03305E725897C /* Result.swift in Sources */,
 				A31736F594D7934B7DDCDB98E78418EE /* CheckoutSummaryLayout.swift in Sources */,
 				8583B7276C6213867615703BA95BC77D /* CheckoutSummaryDataModel.swift in Sources */,
 				D335F80B78F8AD18EC8A079C138A41BF /* AtlasUIErrors.swift in Sources */,
@@ -1077,7 +1077,7 @@
 				C19D43FA93C3D0F15915B4CC9FF23E37 /* CheckoutSummaryArticleSelectCollectionViewCell.swift in Sources */,
 				3DA9EC5BB5FB16AB5C8D0D054D1B8538 /* CheckoutSummaryActionHandler.swift in Sources */,
 				5D4318C4269DBFE57664762C9940134D /* ShippingAddressViewModelCreationStrategy.swift in Sources */,
-				125D65A740AA700245607C84A89DD052 /* AtlasAPIResult.swift in Sources */,
+				125D65A740AA700245607C84A89DD052 /* APIResult.swift in Sources */,
 				79175AD49456E48DC6B393EB6F62053A /* UIColor.swift in Sources */,
 				170D032BE739B3A96834CDAF3CA1D22C /* UIImage.swift in Sources */,
 				B9B0D18F7EAF3FABA983DA7D6A8450C0 /* PaymentStatus.swift in Sources */,

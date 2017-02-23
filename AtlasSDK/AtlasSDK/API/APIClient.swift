@@ -47,7 +47,7 @@ struct APIClient {
     }
 
     func redirect(endpoint: Endpoint,
-                               completion: @escaping APIResultCompletion<URL>) {
+                  completion: @escaping APIResultCompletion<URL>) {
         call(endpoint: endpoint, completion: completion) { response in
             guard let urlString = response.httpHeaders?["Location"],
                 let url = URL(string: urlString), HTTPStatus(statusCode: response.statusCode).isSuccessful

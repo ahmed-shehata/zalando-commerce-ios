@@ -4,7 +4,7 @@
 
 import Foundation
 
-typealias ResponseCompletion = (AtlasResult<JSONResponse>) -> Void
+typealias ResponseCompletion = (Result<JSONResponse>) -> Void
 
 struct RequestBuilder {
 
@@ -23,7 +23,7 @@ struct RequestBuilder {
         buildAndExecuteSessionTask { result in
             switch result {
             case .failure(let error):
-                AtlasLogger.logError("FAILED CONNECTION:", type(of: endpoint), "\nERROR:", error)
+                Logger.error("FAILED CONNECTION:", type(of: endpoint), "\nERROR:", error)
                 completion(.failure(error))
 
             case .success(let response):
@@ -52,7 +52,7 @@ extension URLRequest {
 
     fileprivate func debugLog() -> URLRequest {
         if ProcessInfo.processInfo.arguments.contains("PRINT_REQUEST_DESCRIPTION") {
-            AtlasLogger.logDebug(curlCommandRepresentation())
+            Logger.debug(curlCommandRepresentation())
         }
         return self
     }

@@ -6,7 +6,7 @@ import UIKit
 import AtlasSDK
 
 typealias WebViewFinishedLoadCompletion = (UIWebView) -> Void
-typealias AuthorizationResult = AtlasResult<AuthorizationToken>
+typealias AuthorizationResult = Result<AuthorizationToken>
 
 final class OAuth2LoginViewController: UIViewController {
 

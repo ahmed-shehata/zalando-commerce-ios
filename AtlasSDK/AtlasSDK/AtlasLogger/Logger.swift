@@ -4,31 +4,34 @@
 
 import Foundation
 
-enum AppLogSeverity: Int {
+// TODO: document it, please...
 
-    case debug, message, error
+public struct Logger {
 
-}
-
-func >= (lhs: AppLogSeverity, rhs: AppLogSeverity) -> Bool {
-    return lhs.rawValue >= rhs.rawValue
-}
-
-protocol Logger {
-
-    var verbose: Bool { get }
-    var severity: AppLogSeverity { get set }
-    var outputStream: TextOutputStream { get set }
-
-    // swiftlint:disable:next function_parameter_count
-    func log(as severity: AppLogSeverity, verbose: Bool?, function: String, filePath: String, fileLine: Int, _ items: [Any])
+    static var output: LoggerOutput = LoggerPrintOutput()
+    static var severity: AppLogSeverity = Debug.isEnabled ? .debug : .message {
+        didSet {
+            output.severity = severity
+        }
+    }
 
 }
 
 extension Logger {
 
-    func formatMessage(_ items: [Any], verbose: Bool = false) -> String {
-        return items.map { "\($0)" }.joined(separator: " ")
+    public static func message(_ items: Any..., verbose: Bool? = nil,
+                               function: String = #function, filePath: String = #file, fileLine: Int = #line) {
+        Logger.output.log(as: .message, verbose: verbose, function: function, filePath: filePath, fileLine: fileLine, items)
+    }
+
+    public static func debug(_ items: Any..., verbose: Bool? = nil,
+                             function: String = #function, filePath: String = #file, fileLine: Int = #line) {
+        Logger.output.log(as: .debug, verbose: verbose, function: function, filePath: filePath, fileLine: fileLine, items)
+    }
+
+    public static func error(_ items: Any..., verbose: Bool? = nil,
+                             function: String = #function, filePath: String = #file, fileLine: Int = #line) {
+        Logger.output.log(as: .error, verbose: verbose, function: function, filePath: filePath, fileLine: fileLine, items)
     }
 
 }

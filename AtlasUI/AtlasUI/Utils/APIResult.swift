@@ -14,7 +14,7 @@ public enum ProcessedAtlasAPIResult<T> {
 
 }
 
-extension AtlasAPIResult {
+extension APIResult {
 
     public func processedResult() -> ProcessedAtlasAPIResult<T> {
         switch self {

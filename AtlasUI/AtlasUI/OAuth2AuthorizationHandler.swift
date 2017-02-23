@@ -7,7 +7,7 @@ import UIKit
 import AtlasSDK
 
 typealias AuthorizationToken = String
-typealias AuthorizationCompletion = (AtlasResult<AuthorizationToken>) -> Void
+typealias AuthorizationCompletion = (Result<AuthorizationToken>) -> Void
 
 struct OAuth2AuthorizationHandler {
 

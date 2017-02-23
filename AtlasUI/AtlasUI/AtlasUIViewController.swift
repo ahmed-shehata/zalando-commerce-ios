@@ -5,6 +5,8 @@
 import UIKit
 import AtlasSDK
 
+// TODO: Sure? Remove "Atlas" from name?
+
 class AtlasUIViewController: UIViewController {
 
     static var shared: AtlasUIViewController? {

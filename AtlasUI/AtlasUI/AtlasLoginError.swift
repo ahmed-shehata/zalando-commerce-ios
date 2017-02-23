@@ -5,6 +5,8 @@
 import Foundation
 import AtlasSDK
 
+// TODO: Remove "Atlas" from name
+
 enum AtlasLoginError: AtlasError {
 
     case accessDenied
