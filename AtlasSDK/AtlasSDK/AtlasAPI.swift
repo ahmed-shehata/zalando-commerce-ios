@@ -22,6 +22,8 @@ public struct AtlasAPI {
 
 // TODO: document it, please...
 
+public typealias CartCheckout = (cart: Cart?, checkout: Checkout?)
+
 extension AtlasAPI {
 
     public func customer(completion: @escaping APIResultCompletion<Customer>) {
@@ -38,7 +40,7 @@ extension AtlasAPI {
 
     public func createCheckoutCart(forSelectedArticle selectedArticle: SelectedArticle,
                                    addresses: CheckoutAddresses? = nil,
-                                   completion: @escaping APIResultCompletion<(Checkout, Cart)>) {
+                                   completion: @escaping APIResultCompletion<CartCheckout>) {
         let cartItemRequest = CartItemRequest(sku: selectedArticle.sku, quantity: selectedArticle.quantity)
 
         createCart(withItems: [cartItemRequest]) { cartResult in

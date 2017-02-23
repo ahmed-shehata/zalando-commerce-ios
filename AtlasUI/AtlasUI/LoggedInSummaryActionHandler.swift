@@ -6,7 +6,6 @@ import Foundation
 import AtlasSDK
 
 typealias LoggedInSummaryActionHandlerCompletion = (Result<LoggedInSummaryActionHandler>) -> Void
-typealias CartCheckout = (cart: Cart?, checkout: Checkout?)
 typealias CreateCartCheckoutCompletion = (Result<CartCheckout>) -> Void
 
 class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
