@@ -22,3 +22,23 @@ extension String {
     }
 
 }
+
+postfix operator ~?
+infix operator ~?
+
+postfix func ~?<T> (val: T?) -> String {
+    if let val = val {
+        return String(describing: val)
+    } else {
+        return ""
+    }
+}
+
+func ~?<T> (val: T?, fallback: String = "") -> String {
+    if let val = val {
+        return String(describing: val)
+    } else {
+        return fallback
+    }
+}
+
