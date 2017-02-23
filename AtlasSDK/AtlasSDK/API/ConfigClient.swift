@@ -24,7 +24,7 @@ struct ConfigClient: Configurator {
             guard let json = response.body, let config = Config(json: json, options: self.options) else { return nil }
             return config
         }
-        apiRequest.execute(completion)
+        apiRequest.execute(append: completion)
     }
 
 }

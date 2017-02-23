@@ -58,7 +58,7 @@ struct APIClient {
                              successHandler: @escaping (JSONResponse) -> T?) {
         let requestBuilder = RequestBuilder(forEndpoint: endpoint, urlSession: urlSession)
         var apiRequest = APIRequest(requestBuilder: requestBuilder, successHandler: successHandler)
-        apiRequest.execute(completion)
+        apiRequest.execute(append: completion)
     }
 
 }
