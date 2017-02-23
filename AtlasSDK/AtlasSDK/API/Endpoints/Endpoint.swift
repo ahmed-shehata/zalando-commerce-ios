@@ -55,11 +55,12 @@ extension Endpoint {
 
 extension URLRequest {
 
-    fileprivate init(endpoint: Endpoint) throws {
+    init(endpoint: Endpoint) throws {
         self.init(url: endpoint.url)
         self.setHeaders(from: endpoint)
         self.httpMethod = endpoint.method.rawValue
         self.httpBody = try Data(withJSONObject: endpoint.parameters)
+        self.authorize(withToken: endpoint.authorizationToken)
     }
 
     fileprivate mutating func setHeaders(from endpoint: Endpoint) {

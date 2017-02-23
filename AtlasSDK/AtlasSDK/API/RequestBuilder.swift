@@ -35,7 +35,7 @@ struct RequestBuilder {
     fileprivate func buildAndExecuteSessionTask(completion: @escaping ResponseCompletion) {
         let request: URLRequest
         do {
-            request = try buildRequest()
+            request = try URLRequest(endpoint: self.endpoint).debugLog()
         } catch let e {
             return completion(.failure(e))
         }
@@ -44,18 +44,6 @@ struct RequestBuilder {
             let taskResponse = DataTaskResponse(request: request, response: response, data: data, error: error)
             ResponseParser(taskResponse: taskResponse).parse(completion: completion)
         }.resume()
-    }
-
-    fileprivate func buildRequest() throws -> URLRequest {
-        let request: URLRequest = try {
-            var r = try URLRequest(endpoint: self.endpoint)
-            if let token = self.endpoint.authorizationToken {
-                r.authorize(withToken: token)
-            }
-            return r
-            }()
-
-        return request.debugLog()
     }
 
 }
