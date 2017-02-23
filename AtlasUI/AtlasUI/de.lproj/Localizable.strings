@@ -15,11 +15,11 @@
 "AtlasCheckoutError.title" = "Oops";
 "AtlasCheckoutError.title.missingAddress" = "Keine Adresse ausgwählt";
 "AtlasCheckoutError.title.priceChanged" = "Der Preis hat sich geändert";
-"AtlasConfigurationError.message.incorrectConfigServiceResponse" = "Server gab unbekannte Antwort zurück";
-"AtlasConfigurationError.message.missingClientId" = "Fehlender Client Identifier";
-"AtlasConfigurationError.message.missingInterfaceLanguage" = "Fehlende Anzeigensprache";
-"AtlasConfigurationError.message.missingSalesChannel" = "Sales Channel fehlt";
-"AtlasConfigurationError.title" = "Konfigurationsfehler";
+"ConfigurationError.message.incorrectConfigServiceResponse" = "Server gab unbekannte Antwort zurück";
+"ConfigurationError.message.missingClientId" = "Fehlender Client Identifier";
+"ConfigurationError.message.missingInterfaceLanguage" = "Fehlende Anzeigensprache";
+"ConfigurationError.message.missingSalesChannel" = "Sales Channel fehlt";
+"ConfigurationError.title" = "Konfigurationsfehler";
 "AtlasLoginError.message.accessDenied" = "Zugriff verweigert";
 "AtlasLoginError.message.missingURL" = "Fehlende Anmelde URL";
 "AtlasLoginError.message.missingViewControllerToShowLoginForm" = "Anmeldeformular kann nicht angezeigt werden";

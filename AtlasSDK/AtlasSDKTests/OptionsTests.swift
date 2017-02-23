@@ -36,12 +36,12 @@ class OptionsTests: XCTestCase {
 
     func testMissingClientID() {
         let opts = Options(clientId: nil, salesChannel: salesChannel, interfaceLanguage: interfaceLanguage, infoBundle: emptyBundle)
-        expect { try opts.validate() }.to(throwError(AtlasConfigurationError.missingClientId))
+        expect { try opts.validate() }.to(throwError(ConfigurationError.missingClientId))
     }
 
     func testMissingSalesChannel() {
         let opts = Options(clientId: clientId, salesChannel: nil, interfaceLanguage: interfaceLanguage, infoBundle: emptyBundle)
-        expect { try opts.validate() }.to(throwError(AtlasConfigurationError.missingSalesChannel))
+        expect { try opts.validate() }.to(throwError(ConfigurationError.missingSalesChannel))
     }
 
     func testLoadValuesFromInfoPlist() {

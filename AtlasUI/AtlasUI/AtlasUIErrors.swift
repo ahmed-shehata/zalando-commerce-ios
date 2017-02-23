@@ -99,4 +99,4 @@ extension AtlasCheckoutError: UserPresentableError {
 
 extension AtlasLoginError: UserPresentableError { }
 
-extension AtlasConfigurationError: UserPresentableError { }
+extension ConfigurationError: UserPresentableError { }

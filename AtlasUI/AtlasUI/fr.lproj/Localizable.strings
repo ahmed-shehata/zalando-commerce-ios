@@ -15,11 +15,11 @@
 "AtlasCheckoutError.title" = "Oups";
 "AtlasCheckoutError.title.missingAddress" = "Aucune adresse sélectionnée\n";
 "AtlasCheckoutError.title.priceChanged" = "Prix modifié";
-"AtlasConfigurationError.message.incorrectConfigServiceResponse" = "Le serveur a retourné une réponse inconnue";
-"AtlasConfigurationError.message.missingClientId" = "Identificateur de client manquant";
-"AtlasConfigurationError.message.missingInterfaceLanguage" = "Langue d'interface manquante";
-"AtlasConfigurationError.message.missingSalesChannel" = "Canal de vente manquant";
-"AtlasConfigurationError.title" = "Erreur de configuration";
+"ConfigurationError.message.incorrectConfigServiceResponse" = "Le serveur a retourné une réponse inconnue";
+"ConfigurationError.message.missingClientId" = "Identificateur de client manquant";
+"ConfigurationError.message.missingInterfaceLanguage" = "Langue d'interface manquante";
+"ConfigurationError.message.missingSalesChannel" = "Canal de vente manquant";
+"ConfigurationError.title" = "Erreur de configuration";
 "AtlasLoginError.message.accessDenied" = "Accès refusé";
 "AtlasLoginError.message.missingURL" = "URL de connexion manquante";
 "AtlasLoginError.message.missingViewControllerToShowLoginForm" = "Impossible d'afficher le formulaire de connexion";

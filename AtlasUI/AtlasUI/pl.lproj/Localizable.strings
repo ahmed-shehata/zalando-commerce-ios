@@ -15,11 +15,11 @@
 "AtlasCheckoutError.title" = "Ups";
 "AtlasCheckoutError.title.missingAddress" = "Adres nie został wybrany";
 "AtlasCheckoutError.title.priceChanged" = "Cena uległa zmianie";
-"AtlasConfigurationError.message.incorrectConfigServiceResponse" = "Nierozpoznana odpowiedź serwera";
-"AtlasConfigurationError.message.missingClientId" = "Brak idenfikatora klienta";
-"AtlasConfigurationError.message.missingInterfaceLanguage" = "Brak języka interfejsu";
-"AtlasConfigurationError.message.missingSalesChannel" = "Brak kanału sprzedaży";
-"AtlasConfigurationError.title" = "Błąd konfiguracji";
+"ConfigurationError.message.incorrectConfigServiceResponse" = "Nierozpoznana odpowiedź serwera";
+"ConfigurationError.message.missingClientId" = "Brak idenfikatora klienta";
+"ConfigurationError.message.missingInterfaceLanguage" = "Brak języka interfejsu";
+"ConfigurationError.message.missingSalesChannel" = "Brak kanału sprzedaży";
+"ConfigurationError.title" = "Błąd konfiguracji";
 "AtlasLoginError.message.accessDenied" = "Brak dostępu";
 "AtlasLoginError.message.missingURL" = "Brak adresu URL do logowania";
 "AtlasLoginError.message.missingViewControllerToShowLoginForm" = "Nie udało się zaprezentować formularza logowania";

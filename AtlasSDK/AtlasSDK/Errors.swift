@@ -20,7 +20,7 @@ public extension LocalizableError {
 
 }
 
-public enum AtlasConfigurationError: LocalizableError {
+public enum ConfigurationError: LocalizableError {
 
     case incorrectConfigServiceResponse
     case missingClientId

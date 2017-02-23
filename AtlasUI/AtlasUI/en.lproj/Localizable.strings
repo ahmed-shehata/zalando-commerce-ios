@@ -15,11 +15,11 @@
 "AtlasCheckoutError.title" = "Oops";
 "AtlasCheckoutError.title.missingAddress" = "No address selected";
 "AtlasCheckoutError.title.priceChanged" = "Price changed";
-"AtlasConfigurationError.message.incorrectConfigServiceResponse" = "Server returned unknown response";
-"AtlasConfigurationError.message.missingClientId" = "Missing client identifier";
-"AtlasConfigurationError.message.missingInterfaceLanguage" = "Missing interface language";
-"AtlasConfigurationError.message.missingSalesChannel" = "Missing sales channel";
-"AtlasConfigurationError.title" = "Configuration Error";
+"ConfigurationError.message.incorrectConfigServiceResponse" = "Server returned unknown response";
+"ConfigurationError.message.missingClientId" = "Missing client identifier";
+"ConfigurationError.message.missingInterfaceLanguage" = "Missing interface language";
+"ConfigurationError.message.missingSalesChannel" = "Missing sales channel";
+"ConfigurationError.title" = "Configuration Error";
 "AtlasLoginError.message.accessDenied" = "Access denied";
 "AtlasLoginError.message.missingURL" = "Missing login URL";
 "AtlasLoginError.message.missingViewControllerToShowLoginForm" = "Cannot show login form";

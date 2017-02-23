@@ -15,11 +15,11 @@
 "AtlasCheckoutError.title" = "Oops";
 "AtlasCheckoutError.title.missingAddress" = "Nessun indirizzo selezionato";
 "AtlasCheckoutError.title.priceChanged" = "Il prezzo è cambiato";
-"AtlasConfigurationError.message.incorrectConfigServiceResponse" = "Ops, si è verificato un errore tecnico. Ti preghiamo di riprovare più tardi.";
-"AtlasConfigurationError.message.missingClientId" = "Ops, si è verificato un errore tecnico. Ti preghiamo di riprovare più tardi.";
-"AtlasConfigurationError.message.missingInterfaceLanguage" = "Linguaggio interfaccia assente";
-"AtlasConfigurationError.message.missingSalesChannel" = "Sales channel assente";
-"AtlasConfigurationError.title" = "Configurazione errata";
+"ConfigurationError.message.incorrectConfigServiceResponse" = "Ops, si è verificato un errore tecnico. Ti preghiamo di riprovare più tardi.";
+"ConfigurationError.message.missingClientId" = "Ops, si è verificato un errore tecnico. Ti preghiamo di riprovare più tardi.";
+"ConfigurationError.message.missingInterfaceLanguage" = "Linguaggio interfaccia assente";
+"ConfigurationError.message.missingSalesChannel" = "Sales channel assente";
+"ConfigurationError.title" = "Configurazione errata";
 "AtlasLoginError.message.accessDenied" = "Accesso negato";
 "AtlasLoginError.message.missingURL" = "Login URL mancante";
 "AtlasLoginError.message.missingViewControllerToShowLoginForm" = "Non è possibile visualizzare il form per il login ";
