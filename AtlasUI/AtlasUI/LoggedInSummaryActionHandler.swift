@@ -240,7 +240,7 @@ extension LoggedInSummaryActionHandler {
         AtlasUIClient.createCheckoutCart(forSelectedArticle: selectedArticle, addresses: addresses) { result in
             switch result {
             case .failure(let error, _):
-                guard case let AtlasAPIError.checkoutFailed(cart, _) = error else {
+                guard case let APIError.checkoutFailed(cart, _) = error else {
                     completion(.failure(error))
                     return
                 }

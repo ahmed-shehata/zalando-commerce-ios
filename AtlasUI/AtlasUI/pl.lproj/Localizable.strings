@@ -1,10 +1,10 @@
-"AtlasAPIError.message.checkoutFailed" = "Nieznany błąd tworzenia zamówienia";
-"AtlasAPIError.message.invalidResponseFormat" = "Nieprawidłowy format odpowiedzi serwera";
-"AtlasAPIError.message.noData" = "Serwer przesłał pustą odpowiedź";
-"AtlasAPIError.message.noInternet" = "Prosimy sprawdzić połączenie z internetem";
-"AtlasAPIError.message.unauthorized" = "Brak dostępu";
-"AtlasAPIError.title" = "Błąd serwera";
-"AtlasAPIError.title.noInternet" = "Brak połączenia z internetem";
+"APIError.message.checkoutFailed" = "Nieznany błąd tworzenia zamówienia";
+"APIError.message.invalidResponseFormat" = "Nieprawidłowy format odpowiedzi serwera";
+"APIError.message.noData" = "Serwer przesłał pustą odpowiedź";
+"APIError.message.noInternet" = "Prosimy sprawdzić połączenie z internetem";
+"APIError.message.unauthorized" = "Brak dostępu";
+"APIError.title" = "Błąd serwera";
+"APIError.title.noInternet" = "Brak połączenia z internetem";
 "AtlasCheckoutError.message.addressInvalid" = "Wprowadzony adres jest nieprawidłowy";
 "AtlasCheckoutError.message.checkoutFailure" = "Wystąpił błąd przy tworzeniu zamówienia";
 "AtlasCheckoutError.message.missingAddress" = "Prosimy najpierw wybrać adres dostawy oraz adres do faktury";

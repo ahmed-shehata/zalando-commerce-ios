@@ -59,8 +59,8 @@ extension AtlasAPI {
                 self.createCheckout(from: cart.id, addresses: addresses) { checkoutResult in
                     switch checkoutResult {
                     case .failure(let error, _):
-                        if case let AtlasAPIError.backend(status, _, _, _) = error, status == HTTPStatus.conflict {
-                            let checkoutError = AtlasAPIError.checkoutFailed(cart: cart, error: error)
+                        if case let APIError.backend(status, _, _, _) = error, status == HTTPStatus.conflict {
+                            let checkoutError = APIError.checkoutFailed(cart: cart, error: error)
                             completion(.failure(checkoutError, nil))
                         } else {
                             completion(.failure(error, nil))

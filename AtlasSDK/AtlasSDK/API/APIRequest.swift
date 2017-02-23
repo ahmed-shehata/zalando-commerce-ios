@@ -42,7 +42,7 @@ public struct APIRequest<Model> {
                     }
                 } else {
                     DispatchQueue.main.async {
-                        completions.forEach { $0(.failure(AtlasAPIError.invalidResponseFormat, self)) }
+                        completions.forEach { $0(.failure(APIError.invalidResponseFormat, self)) }
                     }
                 }
             }

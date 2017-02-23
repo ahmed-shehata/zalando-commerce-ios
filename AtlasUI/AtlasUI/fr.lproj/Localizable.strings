@@ -1,10 +1,10 @@
-"AtlasAPIError.message.checkoutFailed" = "Erreur de paiement inconnue";
-"AtlasAPIError.message.invalidResponseFormat" = "Format de réponse incorrect";
-"AtlasAPIError.message.noData" = "Réponse vide";
-"AtlasAPIError.message.noInternet" = "Veuillez vérifier votre connexion Internet";
-"AtlasAPIError.message.unauthorized" = "Accès refusé";
-"AtlasAPIError.title" = "Erreur de serveur";
-"AtlasAPIError.title.noInternet" = "Pas de connexion Internet";
+"APIError.message.checkoutFailed" = "Erreur de paiement inconnue";
+"APIError.message.invalidResponseFormat" = "Format de réponse incorrect";
+"APIError.message.noData" = "Réponse vide";
+"APIError.message.noInternet" = "Veuillez vérifier votre connexion Internet";
+"APIError.message.unauthorized" = "Accès refusé";
+"APIError.title" = "Erreur de serveur";
+"APIError.title.noInternet" = "Pas de connexion Internet";
 "AtlasCheckoutError.message.addressInvalid" = "Adresse non valide, veuillez vérifier l'adresse";
 "AtlasCheckoutError.message.checkoutFailure" = "Erreur inconnue pendant la mise à jour du panier";
 "AtlasCheckoutError.message.missingAddress" = "Veuillez sélectionner d'abord les adresses de livraison et de facturation";

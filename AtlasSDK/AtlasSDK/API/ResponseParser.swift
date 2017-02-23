@@ -11,28 +11,28 @@ struct ResponseParser {
     func parse(completion: ResponseCompletion) {
         if let error = taskResponse.error {
             let nsError = error as NSError
-            let nsURLError = AtlasAPIError.nsURLError(code: nsError.code,
+            let nsURLError = APIError.nsURLError(code: nsError.code,
                                                       details: nsError.localizedDescription)
             return completion(.failure(nsURLError))
         }
 
         guard let httpResponse = taskResponse.response, let data = taskResponse.data else {
-            return completion(.failure(AtlasAPIError.noData))
+            return completion(.failure(APIError.noData))
         }
 
         let json = try? JSON(data: data)
 
         guard httpResponse.isSuccessful else {
-            let error: AtlasAPIError
+            let error: APIError
             if httpResponse.status == .unauthorized {
-                error = AtlasAPIError.unauthorized
+                error = APIError.unauthorized
             } else if let json = json {
-                error = AtlasAPIError.backend(status: json["status"].int,
+                error = APIError.backend(status: json["status"].int,
                                               type: json["type"].string,
                                               title: json["title"].string,
                                               details: json["detail"].string)
             } else {
-                error = AtlasAPIError.http(status: httpResponse.statusCode,
+                error = APIError.http(status: httpResponse.statusCode,
                                            details: HTTPURLResponse.localizedString(forStatusCode: httpResponse.statusCode))
             }
             return completion(.failure(error))

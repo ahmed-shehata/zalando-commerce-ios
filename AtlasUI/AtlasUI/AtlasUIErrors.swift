@@ -54,7 +54,7 @@ extension UserPresentableError {
 
 }
 
-extension AtlasAPIError: UserPresentableError {
+extension APIError: UserPresentableError {
 
     var shouldDisplayGeneralMessage: Bool {
         switch self {

@@ -1,10 +1,10 @@
-"AtlasAPIError.message.checkoutFailed" = "Errore durante l'acquisto";
-"AtlasAPIError.message.invalidResponseFormat" = "Formato risposta incorretto";
-"AtlasAPIError.message.noData" = "Risposta vuota";
-"AtlasAPIError.message.noInternet" = "Per piacere controlla la tua connessione ad internet";
-"AtlasAPIError.message.unauthorized" = "Accesso non autorizzato";
-"AtlasAPIError.title" = "Errore server";
-"AtlasAPIError.title.noInternet" = "Connessione ad internet assente";
+"APIError.message.checkoutFailed" = "Errore durante l'acquisto";
+"APIError.message.invalidResponseFormat" = "Formato risposta incorretto";
+"APIError.message.noData" = "Risposta vuota";
+"APIError.message.noInternet" = "Per piacere controlla la tua connessione ad internet";
+"APIError.message.unauthorized" = "Accesso non autorizzato";
+"APIError.title" = "Errore server";
+"APIError.title.noInternet" = "Connessione ad internet assente";
 "AtlasCheckoutError.message.addressInvalid" = "Indirizzo non valido, per piacere controlla l'indirizzo";
 "AtlasCheckoutError.message.checkoutFailure" = "Si è verificato un errore. Riprova più tardi oppure rivolgiti al nostro servizio clienti";
 "AtlasCheckoutError.message.missingAddress" = "Per piacere seleziona l'indirizzo di spedizione e fatturazione prima di continuare";

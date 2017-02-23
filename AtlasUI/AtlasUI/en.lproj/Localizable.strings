@@ -1,10 +1,10 @@
-"AtlasAPIError.message.checkoutFailed" = "Unknown checkout error";
-"AtlasAPIError.message.invalidResponseFormat" = "Incorrect response format";
-"AtlasAPIError.message.noData" = "Empty response";
-"AtlasAPIError.message.noInternet" = "Please check you internet connection";
-"AtlasAPIError.message.unauthorized" = "Access denied";
-"AtlasAPIError.title" = "Server Error";
-"AtlasAPIError.title.noInternet" = "No internet connection";
+"APIError.message.checkoutFailed" = "Unknown checkout error";
+"APIError.message.invalidResponseFormat" = "Incorrect response format";
+"APIError.message.noData" = "Empty response";
+"APIError.message.noInternet" = "Please check you internet connection";
+"APIError.message.unauthorized" = "Access denied";
+"APIError.title" = "Server Error";
+"APIError.title.noInternet" = "No internet connection";
 "AtlasCheckoutError.message.addressInvalid" = "Address not valid, please check the address";
 "AtlasCheckoutError.message.checkoutFailure" = "An error occurred during updating the checkout";
 "AtlasCheckoutError.message.missingAddress" = "Please select shipping and billing addresses first";

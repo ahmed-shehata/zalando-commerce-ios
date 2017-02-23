@@ -28,7 +28,7 @@ public enum ConfigurationError: LocalizableError {
 
 }
 
-public enum AtlasAPIError: LocalizableError {
+public enum APIError: LocalizableError {
 
     case noData
     case noInternet
