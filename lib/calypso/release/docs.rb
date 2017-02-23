@@ -37,9 +37,11 @@ module Calypso
     def generate_docs(src, dst)
       args = {
         'output' => destination_path(dst),
+        'sdk' => 'iphone',
         'theme' => 'fullwidth',
         'readme' => SOURCE_FOLDER + 'README.md',
         'clean' => true, 'hide-documentation-coverage' => false, 'objc' => false,
+        'skip-undocumented' => true,
         'module' => src, 'module-version' => ATLAS_VERSION,
         'author' => 'Zalando SE', 'author_url' => 'http://tech.zalando.com',
         'github_url' => 'https://github.com/zalando-incubator/atlas-ios',
