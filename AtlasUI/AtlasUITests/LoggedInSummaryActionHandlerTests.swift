@@ -16,13 +16,13 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
 
     override func setUp() {
         super.setUp()
-        AtlasAPIClient.shared?.authorize(withToken: "TestToken")
+        AtlasAPI.shared?.authorize(withToken: "TestToken")
         actionHandler = createActionHandler()
     }
 
     override func tearDown() {
         super.tearDown()
-        AtlasAPIClient.shared?.deauthorize()
+        AtlasAPI.shared?.deauthorize()
     }
 
     func testNoPaymentMethodSelected() {
@@ -173,14 +173,14 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
     }
 
     func testShippingAddressWithNoAddresses() {
-        AtlasAPIClient.shared?.authorize(withToken: "TestTokenWithoutAddresses")
+        AtlasAPI.shared?.authorize(withToken: "TestTokenWithoutAddresses")
         actionHandler?.handleShippingAddressSelection()
         expect(UIApplication.topViewController() as? UIAlertController).toNotEventually(beNil())
         UIApplication.topViewController()?.dismiss(animated: true, completion: nil)
     }
 
     func testBillingAddressWithNoAddresses() {
-        AtlasAPIClient.shared?.authorize(withToken: "TestTokenWithoutAddresses")
+        AtlasAPI.shared?.authorize(withToken: "TestTokenWithoutAddresses")
         actionHandler?.handleBillingAddressSelection()
         expect(UIApplication.topViewController() as? UIAlertController).toNotEventually(beNil())
         UIApplication.topViewController()?.dismiss(animated: true, completion: nil)

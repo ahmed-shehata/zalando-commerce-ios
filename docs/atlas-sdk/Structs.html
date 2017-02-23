@@ -4,413 +4,136 @@
     <title>Structs  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <script src="js/jquery.min.js" defer></script>
     <script src="js/jazzy.js" defer></script>
     
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
   </head>
   <body>
+
+
     <a title="Structs  Reference"></a>
-    <header>
-      <div class="content-wrapper">
-        <p><a href="index.html">AtlasSDK Docs</a> (5% documented)</p>
-        <p class="header-right"><a href="https://github.com/zalando-incubator/atlas-ios"><img src="img/gh.png"/>View on GitHub</a></p>
-      </div>
-    </header>
-    <div class="content-wrapper">
-      <p id="breadcrumbs">
-        <a href="index.html">AtlasSDK Reference</a>
-        <img id="carat" src="img/carat.png" />
-        Structs  Reference
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="index.html">
+          AtlasSDK Docs
+        </a>
+         (20% documented)
       </p>
-    </div>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/zalando-incubator/atlas-ios">
+            <img class="header-icon" src="img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="index.html">AtlasSDK Reference</a>
+      <img class="carat" src="img/carat.png" />
+      Structs  Reference
+    </p>
+
     <div class="content-wrapper">
-      <nav class="sidebar">
+      <nav class="navigation">
         <ul class="nav-groups">
           <li class="nav-group-name">
-            <a href="Enums.html">Enums</a>
+            <a class="nav-group-name-link" href="Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Enums/AtlasAPIError.html">AtlasAPIError</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Enums/AtlasAPIResult.html">AtlasAPIResult</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Enums/AtlasCheckoutError.html">AtlasCheckoutError</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Enums/AtlasConfigurationError.html">AtlasConfigurationError</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Enums/AtlasResult.html">AtlasResult</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Enums/CheckAddressStatus.html">CheckAddressStatus</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Enums/Gender.html">Gender</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Enums/PaymentMethodType.html">PaymentMethodType</a>
+                <a class="nav-group-task-link" href="Extensions.html#/c:objc(cs)NSNotification">NSNotification</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Extensions.html">Extensions</a>
+            <a class="nav-group-name-link" href="Structs.html">Structs</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Extensions/NSNotification.html">NSNotification</a>
+                <a class="nav-group-task-link" href="Structs/APIRequest.html">APIRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Atlas.html">Atlas</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/AtlasAPI.html">AtlasAPI</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Functions.html">Functions</a>
+            <a class="nav-group-name-link" href="Typealiases.html">Typealiases</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Functions.html#/s:F8AtlasSDKoi2neFTVS_15SelectedArticleS0__Sb">!=(_:_:)</a>
+                <a class="nav-group-task-link" href="Typealiases.html#/s:8AtlasSDK23AddressChangeCompletion">AddressChangeCompletion</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:F8AtlasSDKoi1mFTVSC7DecimalSi_S0_">*(_:_:)</a>
+                <a class="nav-group-task-link" href="Typealiases.html#/s:8AtlasSDK22AddressCheckCompletion">AddressCheckCompletion</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:F8AtlasSDKoi1lFTVS_5MoneyS0__Sb">&lt;(_:_:)</a>
+                <a class="nav-group-task-link" href="Typealiases.html#/s:8AtlasSDK19AddressesCompletion">AddressesCompletion</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:F8AtlasSDKoi2eeFTPS_16EquatableAddress_PS0___Sb">==(_:_:)</a>
+                <a class="nav-group-task-link" href="Typealiases.html#/s:8AtlasSDK17ArticleCompletion">ArticleCompletion</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:F8AtlasSDKoi2eeFTVS_11PickupPointS0__Sb">==(_:_:)</a>
+                <a class="nav-group-task-link" href="Typealiases.html#/s:8AtlasSDK14CartCompletion">CartCompletion</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:F8AtlasSDKoi2eeFTVS_15SelectedArticleS0__Sb">==(_:_:)</a>
+                <a class="nav-group-task-link" href="Typealiases.html#/s:8AtlasSDK6CartId">CartId</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:F8AtlasSDKoi2eeFTVS_4CartS0__Sb">==(_:_:)</a>
+                <a class="nav-group-task-link" href="Typealiases.html#/s:8AtlasSDK22CheckoutCartCompletion">CheckoutCartCompletion</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:F8AtlasSDKoi2eeFTVS_5MoneyS0__Sb">==(_:_:)</a>
+                <a class="nav-group-task-link" href="Typealiases.html#/s:8AtlasSDK18CheckoutCompletion">CheckoutCompletion</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:F8AtlasSDKoi2eeFTVS_8CheckoutS0__Sb">==(_:_:)</a>
+                <a class="nav-group-task-link" href="Typealiases.html#/s:8AtlasSDK18CustomerCompletion">CustomerCompletion</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:F8AtlasSDKoi3eeeFTGSqPS_16EquatableAddress__GSqPS0____Sb">===(_:_:)</a>
+                <a class="nav-group-task-link" href="Typealiases.html#/s:8AtlasSDK23GuestCheckoutCompletion">GuestCheckoutCompletion</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:F8AtlasSDKoi3eeeFTPS_16EquatableAddress_PS0___Sb">===(_:_:)</a>
+                <a class="nav-group-task-link" href="Typealiases.html#/s:8AtlasSDK20GuestOrderCompletion">GuestOrderCompletion</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:F8AtlasSDKoi3eeeFTVS_12AddressCheckS0__Sb">===(_:_:)</a>
+                <a class="nav-group-task-link" href="Typealiases.html#/s:8AtlasSDK15OrderCompletion">OrderCompletion</a>
               </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="Protocols.html">Protocols</a>
-            <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Protocols/AtlasError.html">AtlasError</a>
+                <a class="nav-group-task-link" href="Typealiases.html#/s:8AtlasSDK17SuccessCompletion">SuccessCompletion</a>
               </li>
               <li class="nav-group-task">
-                <a href="Protocols/EquatableAddress.html">EquatableAddress</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols/FormattableAddress.html">FormattableAddress</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols/StreetAddress.html">StreetAddress</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="Structs.html">Structs</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Structs/APIRequest.html">APIRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/AddressCheck.html">AddressCheck</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Article.html">Article</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Article/Brand.html">– Brand</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Article/Unit.html">– Unit</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Article/Media.html">– Media</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Article/Image.html">– Image</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Article/Partner.html">– Partner</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Atlas.html">Atlas</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/AtlasAPIClient.html">AtlasAPIClient</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/AtlasLogger.html">AtlasLogger</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Cart.html">Cart</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/CartItem.html">CartItem</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/CartItemRequest.html">CartItemRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/CartRequest.html">CartRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Catalog.html">Catalog</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/CheckAddressRequest.html">CheckAddressRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/CheckAddressResponse.html">CheckAddressResponse</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Checkout.html">Checkout</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/CheckoutAddress.html">CheckoutAddress</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/CheckoutAddresses.html">CheckoutAddresses</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Config.html">Config</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Config/Payment.html">– Payment</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Config/SalesChannel.html">– SalesChannel</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/CreateAddressRequest.html">CreateAddressRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/CreateCheckoutRequest.html">CreateCheckoutRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Customer.html">Customer</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Customer/Gender.html">– Gender</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Delivery.html">Delivery</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/GuestAddressRequest.html">GuestAddressRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/GuestCart.html">GuestCart</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/GuestCartRequest.html">GuestCartRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/GuestCheckout.html">GuestCheckout</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/GuestCheckoutAddress.html">GuestCheckoutAddress</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/GuestCustomerRequest.html">GuestCustomerRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/GuestOrder.html">GuestOrder</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/GuestOrderRequest.html">GuestOrderRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/GuestPaymentMethod.html">GuestPaymentMethod</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/GuestPaymentRequest.html">GuestPaymentRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/GuestPaymentSelectionRequest.html">GuestPaymentSelectionRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Money.html">Money</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Options.html">Options</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Order.html">Order</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/OrderAddress.html">OrderAddress</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/OrderRequest.html">OrderRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Payment.html">Payment</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/PaymentMethod.html">PaymentMethod</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/PickupPoint.html">PickupPoint</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/SelectedArticle.html">SelectedArticle</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/UpdateAddressRequest.html">UpdateAddressRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/UpdateCheckoutRequest.html">UpdateCheckoutRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/UserAddress.html">UserAddress</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="Typealiases.html">Typealiases</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Typealiases.html#/s:8AtlasSDK23AddressChangeCompletion">AddressChangeCompletion</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Typealiases.html#/s:8AtlasSDK22AddressCheckCompletion">AddressCheckCompletion</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Typealiases.html#/s:8AtlasSDK19AddressesCompletion">AddressesCompletion</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Typealiases.html#/s:8AtlasSDK17ArticleCompletion">ArticleCompletion</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Typealiases.html#/s:8AtlasSDK14CartCompletion">CartCompletion</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Typealiases.html#/s:8AtlasSDK22CheckoutCartCompletion">CheckoutCartCompletion</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Typealiases.html#/s:8AtlasSDK18CheckoutCompletion">CheckoutCompletion</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Typealiases.html#/s:8AtlasSDK18CustomerCompletion">CustomerCompletion</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Typealiases.html#/s:8AtlasSDK23GuestCheckoutCompletion">GuestCheckoutCompletion</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Typealiases.html#/s:8AtlasSDK20GuestOrderCompletion">GuestOrderCompletion</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Typealiases.html#/s:8AtlasSDK15OrderCompletion">OrderCompletion</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Typealiases.html#/s:8AtlasSDK17SuccessCompletion">SuccessCompletion</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Typealiases.html#/s:8AtlasSDK13URLCompletion">URLCompletion</a>
+                <a class="nav-group-task-link" href="Typealiases.html#/s:8AtlasSDK13URLCompletion">URLCompletion</a>
               </li>
             </ul>
           </li>
         </ul>
       </nav>
       <article class="main-content">
-        <section>
-          <section class="section">
+
+        <section class="section">
+          <div class="section-content">
             <h1>Structs</h1>
             <p>The following structs are available globally.</p>
 
-          </section>
-          <section class="section task-group-section">
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK16GuestCartRequest"></a>
-                    <a name="//apple_ref/swift/Struct/GuestCartRequest" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK16GuestCartRequest">GuestCartRequest</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
+          </div>
+        </section>
 
-                        <a href="Structs/GuestCartRequest.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
+        <section class="section">
+          <div class="section-content">
             <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK15SelectedArticle"></a>
-                    <a name="//apple_ref/swift/Struct/SelectedArticle" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK15SelectedArticle">SelectedArticle</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/SelectedArticle.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK7Article"></a>
-                    <a name="//apple_ref/swift/Struct/Article" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK7Article">Article</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/Article.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
+              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -424,33 +147,25 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Main entry point for the AtlasSDK framework</p>
+
+<p>Does not keep any state internally.</p>
+
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    See <a href="https://github.com/zalando-incubator/atlas-ios/wiki/Project-structure">project structure</a>
+
+</div>
 
                         <a href="Structs/Atlas.html" class="slightly-smaller">See more</a>
                       </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK20GuestCheckoutAddress"></a>
-                    <a name="//apple_ref/swift/Struct/GuestCheckoutAddress" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK20GuestCheckoutAddress">GuestCheckoutAddress</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Atlas</span></code></pre>
 
-                        <a href="Structs/GuestCheckoutAddress.html" class="slightly-smaller">See more</a>
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -458,703 +173,7 @@
               </ul>
             </div>
             <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK14AtlasAPIClient"></a>
-                    <a name="//apple_ref/swift/Struct/AtlasAPIClient" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK14AtlasAPIClient">AtlasAPIClient</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/AtlasAPIClient.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK11AtlasLogger"></a>
-                    <a name="//apple_ref/swift/Struct/AtlasLogger" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK11AtlasLogger">AtlasLogger</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/AtlasLogger.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK4Cart"></a>
-                    <a name="//apple_ref/swift/Struct/Cart" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK4Cart">Cart</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/Cart.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK8CartItem"></a>
-                    <a name="//apple_ref/swift/Struct/CartItem" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK8CartItem">CartItem</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/CartItem.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK15CartItemRequest"></a>
-                    <a name="//apple_ref/swift/Struct/CartItemRequest" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK15CartItemRequest">CartItemRequest</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/CartItemRequest.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK19GuestPaymentRequest"></a>
-                    <a name="//apple_ref/swift/Struct/GuestPaymentRequest" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK19GuestPaymentRequest">GuestPaymentRequest</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/GuestPaymentRequest.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK11CartRequest"></a>
-                    <a name="//apple_ref/swift/Struct/CartRequest" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK11CartRequest">CartRequest</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/CartRequest.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK7Catalog"></a>
-                    <a name="//apple_ref/swift/Struct/Catalog" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK7Catalog">Catalog</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/Catalog.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK12AddressCheck"></a>
-                    <a name="//apple_ref/swift/Struct/AddressCheck" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK12AddressCheck">AddressCheck</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/AddressCheck.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK19CheckAddressRequest"></a>
-                    <a name="//apple_ref/swift/Struct/CheckAddressRequest" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK19CheckAddressRequest">CheckAddressRequest</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/CheckAddressRequest.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK20CheckAddressResponse"></a>
-                    <a name="//apple_ref/swift/Struct/CheckAddressResponse" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK20CheckAddressResponse">CheckAddressResponse</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/CheckAddressResponse.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK8Checkout"></a>
-                    <a name="//apple_ref/swift/Struct/Checkout" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK8Checkout">Checkout</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/Checkout.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK15CheckoutAddress"></a>
-                    <a name="//apple_ref/swift/Struct/CheckoutAddress" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK15CheckoutAddress">CheckoutAddress</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/CheckoutAddress.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK6Config"></a>
-                    <a name="//apple_ref/swift/Struct/Config" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK6Config">Config</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/Config.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK18GuestPaymentMethod"></a>
-                    <a name="//apple_ref/swift/Struct/GuestPaymentMethod" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK18GuestPaymentMethod">GuestPaymentMethod</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/GuestPaymentMethod.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK20GuestCustomerRequest"></a>
-                    <a name="//apple_ref/swift/Struct/GuestCustomerRequest" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK20GuestCustomerRequest">GuestCustomerRequest</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/GuestCustomerRequest.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK17GuestOrderRequest"></a>
-                    <a name="//apple_ref/swift/Struct/GuestOrderRequest" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK17GuestOrderRequest">GuestOrderRequest</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/GuestOrderRequest.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK20CreateAddressRequest"></a>
-                    <a name="//apple_ref/swift/Struct/CreateAddressRequest" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK20CreateAddressRequest">CreateAddressRequest</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/CreateAddressRequest.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK21CreateCheckoutRequest"></a>
-                    <a name="//apple_ref/swift/Struct/CreateCheckoutRequest" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK21CreateCheckoutRequest">CreateCheckoutRequest</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/CreateCheckoutRequest.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK8Customer"></a>
-                    <a name="//apple_ref/swift/Struct/Customer" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK8Customer">Customer</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/Customer.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK17CheckoutAddresses"></a>
-                    <a name="//apple_ref/swift/Struct/CheckoutAddresses" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK17CheckoutAddresses">CheckoutAddresses</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/CheckoutAddresses.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK28GuestPaymentSelectionRequest"></a>
-                    <a name="//apple_ref/swift/Struct/GuestPaymentSelectionRequest" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK28GuestPaymentSelectionRequest">GuestPaymentSelectionRequest</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/GuestPaymentSelectionRequest.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK8Delivery"></a>
-                    <a name="//apple_ref/swift/Struct/Delivery" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK8Delivery">Delivery</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/Delivery.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK5Money"></a>
-                    <a name="//apple_ref/swift/Struct/Money" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK5Money">Money</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/Money.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK10GuestOrder"></a>
-                    <a name="//apple_ref/swift/Struct/GuestOrder" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK10GuestOrder">GuestOrder</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/GuestOrder.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK7Options"></a>
-                    <a name="//apple_ref/swift/Struct/Options" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK7Options">Options</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/Options.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK5Order"></a>
-                    <a name="//apple_ref/swift/Struct/Order" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK5Order">Order</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/Order.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK12OrderAddress"></a>
-                    <a name="//apple_ref/swift/Struct/OrderAddress" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK12OrderAddress">OrderAddress</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/OrderAddress.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK12OrderRequest"></a>
-                    <a name="//apple_ref/swift/Struct/OrderRequest" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK12OrderRequest">OrderRequest</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/OrderRequest.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
+              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -1168,33 +187,24 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>A bridge between API request call and a set of completions closures.
+Completions are run after the call is finished in the reversed order.</p>
+
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    Completions chain is used to provide authorization before real call.
+
+</div>
 
                         <a href="Structs/APIRequest.html" class="slightly-smaller">See more</a>
                       </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK7Payment"></a>
-                    <a name="//apple_ref/swift/Struct/Payment" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK7Payment">Payment</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">APIRequest</span><span class="o">&lt;</span><span class="kt">Model</span><span class="o">&gt;</span></code></pre>
 
-                        <a href="Structs/Payment.html" class="slightly-smaller">See more</a>
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -1202,13 +212,13 @@
               </ul>
             </div>
             <div class="task-group">
-              <ul>
+              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:V8AtlasSDK13PaymentMethod"></a>
-                    <a name="//apple_ref/swift/Struct/PaymentMethod" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK13PaymentMethod">PaymentMethod</a>
+                    <a name="/s:V8AtlasSDK8AtlasAPI"></a>
+                    <a name="//apple_ref/swift/Struct/AtlasAPI" class="dashAnchor"></a>
+                    <a class="token" href="#/s:V8AtlasSDK8AtlasAPI">AtlasAPI</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1216,191 +226,32 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>All functional API calls with additional business logic</p>
 
-                        <a href="Structs/PaymentMethod.html" class="slightly-smaller">See more</a>
+                        <a href="Structs/AtlasAPI.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">AtlasAPI</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
                 </li>
               </ul>
             </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK11PickupPoint"></a>
-                    <a name="//apple_ref/swift/Struct/PickupPoint" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK11PickupPoint">PickupPoint</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/PickupPoint.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK9GuestCart"></a>
-                    <a name="//apple_ref/swift/Struct/GuestCart" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK9GuestCart">GuestCart</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/GuestCart.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK20UpdateAddressRequest"></a>
-                    <a name="//apple_ref/swift/Struct/UpdateAddressRequest" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK20UpdateAddressRequest">UpdateAddressRequest</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/UpdateAddressRequest.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK21UpdateCheckoutRequest"></a>
-                    <a name="//apple_ref/swift/Struct/UpdateCheckoutRequest" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK21UpdateCheckoutRequest">UpdateCheckoutRequest</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/UpdateCheckoutRequest.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK11UserAddress"></a>
-                    <a name="//apple_ref/swift/Struct/UserAddress" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK11UserAddress">UserAddress</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/UserAddress.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK13GuestCheckout"></a>
-                    <a name="//apple_ref/swift/Struct/GuestCheckout" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK13GuestCheckout">GuestCheckout</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/GuestCheckout.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V8AtlasSDK19GuestAddressRequest"></a>
-                    <a name="//apple_ref/swift/Struct/GuestAddressRequest" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V8AtlasSDK19GuestAddressRequest">GuestAddressRequest</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/GuestAddressRequest.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </section>
+          </div>
         </section>
-        <section id="footer">
-          <p>© 2016-2017 <a class="link" href="http://tech.zalando.com" target="_blank" rel="external">Zalando SE</a></p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
-        </section>
+
       </article>
     </div>
+    <section class="footer">
+      <p>© 2016-2017 <a class="link" href="http://tech.zalando.com" target="_blank" rel="external">Zalando SE</a></p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
   </body>
 </div>
 </html>

@@ -4,9 +4,18 @@
 
 import Foundation
 
-public typealias AtlasConfigCompletion = (AtlasAPIResult<Config>) -> Void
+// TODO: document it, please...
 
-public typealias AtlasClientCompletion = (AtlasResult<AtlasAPIClient>) -> Void
+public enum AtlasAPIResult<T> {
+
+    case success(T)
+    case failure(Error, APIRequest<T>?)
+
+}
+
+public typealias AtlasClientCompletion = (AtlasResult<AtlasAPI>) -> Void
+
+public typealias AtlasConfigCompletion = (AtlasAPIResult<Config>) -> Void
 
 /// Completion closure with `Bool` in `AtlasAPIResult.success` result
 public typealias SuccessCompletion = (AtlasAPIResult<Bool>) -> Void

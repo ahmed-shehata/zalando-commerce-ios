@@ -5,8 +5,6 @@
 import Foundation
 import Swifter
 
-// swiftlint:disable missing_docs
-
 public final class AtlasMockAPI {
 
     public static let isEnabledFlag = "ATLAS_MOCK_API_ENABLED"

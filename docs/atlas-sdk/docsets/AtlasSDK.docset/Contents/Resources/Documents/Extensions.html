@@ -4,341 +4,143 @@
     <title>Extensions  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <script src="js/jquery.min.js" defer></script>
     <script src="js/jazzy.js" defer></script>
     
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
   </head>
   <body>
+
+
     <a title="Extensions  Reference"></a>
-    <header>
-      <div class="content-wrapper">
-        <p><a href="index.html">AtlasSDK Docs</a> (5% documented)</p>
-        <p class="header-right"><a href="https://github.com/zalando-incubator/atlas-ios"><img src="img/gh.png"/>View on GitHub</a></p>
-      </div>
-    </header>
-    <div class="content-wrapper">
-      <p id="breadcrumbs">
-        <a href="index.html">AtlasSDK Reference</a>
-        <img id="carat" src="img/carat.png" />
-        Extensions  Reference
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="index.html">
+          AtlasSDK Docs
+        </a>
+         (20% documented)
       </p>
-    </div>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/zalando-incubator/atlas-ios">
+            <img class="header-icon" src="img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="index.html">AtlasSDK Reference</a>
+      <img class="carat" src="img/carat.png" />
+      Extensions  Reference
+    </p>
+
     <div class="content-wrapper">
-      <nav class="sidebar">
+      <nav class="navigation">
         <ul class="nav-groups">
           <li class="nav-group-name">
-            <a href="Enums.html">Enums</a>
+            <a class="nav-group-name-link" href="Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Enums/AtlasAPIError.html">AtlasAPIError</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Enums/AtlasAPIResult.html">AtlasAPIResult</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Enums/AtlasCheckoutError.html">AtlasCheckoutError</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Enums/AtlasConfigurationError.html">AtlasConfigurationError</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Enums/AtlasResult.html">AtlasResult</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Enums/CheckAddressStatus.html">CheckAddressStatus</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Enums/Gender.html">Gender</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Enums/PaymentMethodType.html">PaymentMethodType</a>
+                <a class="nav-group-task-link" href="Extensions.html#/c:objc(cs)NSNotification">NSNotification</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Extensions.html">Extensions</a>
+            <a class="nav-group-name-link" href="Structs.html">Structs</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Extensions/NSNotification.html">NSNotification</a>
+                <a class="nav-group-task-link" href="Structs/APIRequest.html">APIRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Atlas.html">Atlas</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/AtlasAPI.html">AtlasAPI</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Functions.html">Functions</a>
+            <a class="nav-group-name-link" href="Typealiases.html">Typealiases</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Functions.html#/s:F8AtlasSDKoi2neFTVS_15SelectedArticleS0__Sb">!=(_:_:)</a>
+                <a class="nav-group-task-link" href="Typealiases.html#/s:8AtlasSDK23AddressChangeCompletion">AddressChangeCompletion</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:F8AtlasSDKoi1mFTVSC7DecimalSi_S0_">*(_:_:)</a>
+                <a class="nav-group-task-link" href="Typealiases.html#/s:8AtlasSDK22AddressCheckCompletion">AddressCheckCompletion</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:F8AtlasSDKoi1lFTVS_5MoneyS0__Sb">&lt;(_:_:)</a>
+                <a class="nav-group-task-link" href="Typealiases.html#/s:8AtlasSDK19AddressesCompletion">AddressesCompletion</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:F8AtlasSDKoi2eeFTPS_16EquatableAddress_PS0___Sb">==(_:_:)</a>
+                <a class="nav-group-task-link" href="Typealiases.html#/s:8AtlasSDK17ArticleCompletion">ArticleCompletion</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:F8AtlasSDKoi2eeFTVS_11PickupPointS0__Sb">==(_:_:)</a>
+                <a class="nav-group-task-link" href="Typealiases.html#/s:8AtlasSDK14CartCompletion">CartCompletion</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:F8AtlasSDKoi2eeFTVS_15SelectedArticleS0__Sb">==(_:_:)</a>
+                <a class="nav-group-task-link" href="Typealiases.html#/s:8AtlasSDK6CartId">CartId</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:F8AtlasSDKoi2eeFTVS_4CartS0__Sb">==(_:_:)</a>
+                <a class="nav-group-task-link" href="Typealiases.html#/s:8AtlasSDK22CheckoutCartCompletion">CheckoutCartCompletion</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:F8AtlasSDKoi2eeFTVS_5MoneyS0__Sb">==(_:_:)</a>
+                <a class="nav-group-task-link" href="Typealiases.html#/s:8AtlasSDK18CheckoutCompletion">CheckoutCompletion</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:F8AtlasSDKoi2eeFTVS_8CheckoutS0__Sb">==(_:_:)</a>
+                <a class="nav-group-task-link" href="Typealiases.html#/s:8AtlasSDK18CustomerCompletion">CustomerCompletion</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:F8AtlasSDKoi3eeeFTGSqPS_16EquatableAddress__GSqPS0____Sb">===(_:_:)</a>
+                <a class="nav-group-task-link" href="Typealiases.html#/s:8AtlasSDK23GuestCheckoutCompletion">GuestCheckoutCompletion</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:F8AtlasSDKoi3eeeFTPS_16EquatableAddress_PS0___Sb">===(_:_:)</a>
+                <a class="nav-group-task-link" href="Typealiases.html#/s:8AtlasSDK20GuestOrderCompletion">GuestOrderCompletion</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:F8AtlasSDKoi3eeeFTVS_12AddressCheckS0__Sb">===(_:_:)</a>
+                <a class="nav-group-task-link" href="Typealiases.html#/s:8AtlasSDK15OrderCompletion">OrderCompletion</a>
               </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="Protocols.html">Protocols</a>
-            <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Protocols/AtlasError.html">AtlasError</a>
+                <a class="nav-group-task-link" href="Typealiases.html#/s:8AtlasSDK17SuccessCompletion">SuccessCompletion</a>
               </li>
               <li class="nav-group-task">
-                <a href="Protocols/EquatableAddress.html">EquatableAddress</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols/FormattableAddress.html">FormattableAddress</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols/StreetAddress.html">StreetAddress</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="Structs.html">Structs</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Structs/APIRequest.html">APIRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/AddressCheck.html">AddressCheck</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Article.html">Article</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Article/Brand.html">– Brand</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Article/Unit.html">– Unit</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Article/Media.html">– Media</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Article/Image.html">– Image</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Article/Partner.html">– Partner</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Atlas.html">Atlas</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/AtlasAPIClient.html">AtlasAPIClient</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/AtlasLogger.html">AtlasLogger</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Cart.html">Cart</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/CartItem.html">CartItem</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/CartItemRequest.html">CartItemRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/CartRequest.html">CartRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Catalog.html">Catalog</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/CheckAddressRequest.html">CheckAddressRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/CheckAddressResponse.html">CheckAddressResponse</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Checkout.html">Checkout</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/CheckoutAddress.html">CheckoutAddress</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/CheckoutAddresses.html">CheckoutAddresses</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Config.html">Config</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Config/Payment.html">– Payment</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Config/SalesChannel.html">– SalesChannel</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/CreateAddressRequest.html">CreateAddressRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/CreateCheckoutRequest.html">CreateCheckoutRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Customer.html">Customer</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Customer/Gender.html">– Gender</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Delivery.html">Delivery</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/GuestAddressRequest.html">GuestAddressRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/GuestCart.html">GuestCart</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/GuestCartRequest.html">GuestCartRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/GuestCheckout.html">GuestCheckout</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/GuestCheckoutAddress.html">GuestCheckoutAddress</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/GuestCustomerRequest.html">GuestCustomerRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/GuestOrder.html">GuestOrder</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/GuestOrderRequest.html">GuestOrderRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/GuestPaymentMethod.html">GuestPaymentMethod</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/GuestPaymentRequest.html">GuestPaymentRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/GuestPaymentSelectionRequest.html">GuestPaymentSelectionRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Money.html">Money</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Options.html">Options</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Order.html">Order</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/OrderAddress.html">OrderAddress</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/OrderRequest.html">OrderRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Payment.html">Payment</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/PaymentMethod.html">PaymentMethod</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/PickupPoint.html">PickupPoint</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/SelectedArticle.html">SelectedArticle</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/UpdateAddressRequest.html">UpdateAddressRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/UpdateCheckoutRequest.html">UpdateCheckoutRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/UserAddress.html">UserAddress</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="Typealiases.html">Typealiases</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Typealiases.html#/s:8AtlasSDK23AddressChangeCompletion">AddressChangeCompletion</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Typealiases.html#/s:8AtlasSDK22AddressCheckCompletion">AddressCheckCompletion</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Typealiases.html#/s:8AtlasSDK19AddressesCompletion">AddressesCompletion</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Typealiases.html#/s:8AtlasSDK17ArticleCompletion">ArticleCompletion</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Typealiases.html#/s:8AtlasSDK14CartCompletion">CartCompletion</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Typealiases.html#/s:8AtlasSDK22CheckoutCartCompletion">CheckoutCartCompletion</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Typealiases.html#/s:8AtlasSDK18CheckoutCompletion">CheckoutCompletion</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Typealiases.html#/s:8AtlasSDK18CustomerCompletion">CustomerCompletion</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Typealiases.html#/s:8AtlasSDK23GuestCheckoutCompletion">GuestCheckoutCompletion</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Typealiases.html#/s:8AtlasSDK20GuestOrderCompletion">GuestOrderCompletion</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Typealiases.html#/s:8AtlasSDK15OrderCompletion">OrderCompletion</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Typealiases.html#/s:8AtlasSDK17SuccessCompletion">SuccessCompletion</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Typealiases.html#/s:8AtlasSDK13URLCompletion">URLCompletion</a>
+                <a class="nav-group-task-link" href="Typealiases.html#/s:8AtlasSDK13URLCompletion">URLCompletion</a>
               </li>
             </ul>
           </li>
         </ul>
       </nav>
       <article class="main-content">
-        <section>
-          <section class="section">
+
+        <section class="section">
+          <div class="section-content">
             <h1>Extensions</h1>
             <p>The following extensions are available globally.</p>
 
-          </section>
-          <section class="section task-group-section">
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
             <div class="task-group">
-              <ul>
+              <div class="task-name-container">
+                <a name="/TODO:%20document%20it,%20please..."></a>
+                <a name="//apple_ref/swift/Section/TODO: document it, please..." class="dashAnchor"></a>
+                <a href="#/TODO:%20document%20it,%20please...">
+                  <h3 class="section-name">TODO: document it, please...</h3>
+                </a>
+              </div>
+              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -353,7 +155,6 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         
-                        <a href="Extensions/NSNotification.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -368,14 +169,15 @@
                 </li>
               </ul>
             </div>
-          </section>
+          </div>
         </section>
-        <section id="footer">
-          <p>© 2016-2017 <a class="link" href="http://tech.zalando.com" target="_blank" rel="external">Zalando SE</a></p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
-        </section>
+
       </article>
     </div>
+    <section class="footer">
+      <p>© 2016-2017 <a class="link" href="http://tech.zalando.com" target="_blank" rel="external">Zalando SE</a></p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
   </body>
 </div>
 </html>

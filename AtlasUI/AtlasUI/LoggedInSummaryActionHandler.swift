@@ -72,7 +72,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
 
     func handlePaymentSelection() {
         guard let paymentURL = cartCheckout?.checkout?.payment.selectionPageURL,
-            let callbackURL = AtlasAPIClient.shared?.config.payment.selectionCallbackURL else {
+            let callbackURL = AtlasAPI.shared?.config.payment.selectionCallbackURL else {
                 let error = !hasAddresses ? AtlasCheckoutError.missingAddress : AtlasCheckoutError.unclassified
                 UserError.display(error: error)
                 return
@@ -190,7 +190,7 @@ extension LoggedInSummaryActionHandler {
             return
         }
 
-        guard let callbackURL = AtlasAPIClient.shared?.config.payment.thirdPartyCallbackURL else {
+        guard let callbackURL = AtlasAPI.shared?.config.payment.thirdPartyCallbackURL else {
             UserError.display(error: AtlasCheckoutError.unclassified)
             return
         }

@@ -5,6 +5,7 @@
 import Foundation
 
 public struct OrderAddress: FormattableAddress {
+
     public let gender: Gender
     public let firstName: String
     public let lastName: String
@@ -14,6 +15,7 @@ public struct OrderAddress: FormattableAddress {
     public let city: String
     public let countryCode: String
     public let pickupPoint: PickupPoint?
+
 }
 
 extension OrderAddress: JSONInitializable {
@@ -50,4 +52,5 @@ extension OrderAddress: JSONInitializable {
                   countryCode: countryCode,
                   pickupPoint: PickupPoint(json: json[Keys.pickupPoint]))
     }
+    
 }

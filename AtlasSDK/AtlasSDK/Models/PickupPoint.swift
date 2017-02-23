@@ -2,6 +2,8 @@
 //  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
+import Foundation
+
 public struct PickupPoint {
 
     public let id: String

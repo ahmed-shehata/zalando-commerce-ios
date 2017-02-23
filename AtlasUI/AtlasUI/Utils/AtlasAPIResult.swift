@@ -4,6 +4,8 @@
 
 import AtlasSDK
 
+// TODO: document it, please...
+
 public enum ProcessedAtlasAPIResult<T> {
 
     case success(T)
@@ -25,7 +27,7 @@ extension AtlasAPIResult {
                 authorizationHandler.authorize { result in
                     switch result {
                     case .success(let accessToken):
-                        AtlasAPIClient.shared?.authorize(withToken: accessToken)
+                        AtlasAPI.shared?.authorize(withToken: accessToken)
                         AtlasUIViewController.displayLoader { hideLoader in
                             apiRequest?.execute { _ in
                                 hideLoader()

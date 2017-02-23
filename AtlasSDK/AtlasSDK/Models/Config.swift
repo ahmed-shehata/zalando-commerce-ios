@@ -4,6 +4,8 @@
 
 import Foundation
 
+// TODO: document it, please...
+
 public struct Config {
 
     public let catalogURL: URL

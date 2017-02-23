@@ -4,7 +4,7 @@
 
 import Foundation
 import struct AtlasSDK.Options
-import struct AtlasSDK.AtlasAPIClient
+import struct AtlasSDK.AtlasAPI
 import AtlasUI
 import AtlasMockAPI
 
@@ -31,11 +31,11 @@ class AppSetup {
     }
 
     static func isAuthorized() -> Bool {
-        return atlas?.client.isAuthorized ?? false
+        return atlas?.api.isAuthorized ?? false
     }
 
     static func deauthorize() {
-        atlas?.client.deauthorize()
+        atlas?.api.deauthorize()
     }
 
     static func change(environmentToSandbox useSandbox: Bool) {
@@ -71,7 +71,7 @@ extension AppSetup {
 
     fileprivate static func prepareForTests() {
         if isInTestsEnvironment {
-            AtlasAPIClient.deauthorizeAll()
+            AtlasAPI.deauthorizeAll()
         }
     }
 

@@ -4,6 +4,8 @@
 
 import Foundation
 
+// TODO: document it, please...
+
 public protocol AtlasError: Error {
 
     var localizedTitleKey: String { get }

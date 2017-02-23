@@ -40,7 +40,7 @@ class CheckoutContainerView: UIView {
     let overlayButton: UIButton = {
         let button = UIButton(type: .custom)
         button.isUserInteractionEnabled = true
-        button.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        button.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.4)
         button.isHidden = true
         button.alpha = 0
         return button
@@ -122,8 +122,8 @@ class CheckoutContainerView: UIView {
             guard let strongSelf = self else { return }
             self?.overlayButton.alpha = 0
             self?.collectionViewContainerView.transform = CGAffineTransform(translationX: 0, y: -strongSelf.collectionViewContainerHeight)
-        }, completion: { [weak self] _ in
-            self?.overlayButton.isHidden = true
+            }, completion: { [weak self] _ in
+                self?.overlayButton.isHidden = true
         })
     }
 

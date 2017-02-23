@@ -2,7 +2,10 @@
 //  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
+import Foundation
+
 public struct UpdateAddressRequest {
+
     public let gender: Gender
     public let firstName: String
     public let lastName: String
@@ -14,6 +17,7 @@ public struct UpdateAddressRequest {
     public let pickupPoint: PickupPoint?
     public let defaultBilling: Bool
     public let defaultShipping: Bool
+
 }
 
 extension UpdateAddressRequest: JSONRepresentable {
@@ -54,4 +58,5 @@ extension UpdateAddressRequest: JSONRepresentable {
         }
         return result
     }
+
 }
