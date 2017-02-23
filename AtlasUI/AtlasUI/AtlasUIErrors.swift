@@ -12,7 +12,7 @@ enum PresentationMode {
 
 }
 
-protocol UserPresentableError: AtlasError {
+protocol UserPresentableError: LocalizableError {
 
     var customMessage: String? { get }
     var shouldDisplayGeneralMessage: Bool { get }

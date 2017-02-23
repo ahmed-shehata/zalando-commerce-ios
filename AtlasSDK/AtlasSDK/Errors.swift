@@ -6,21 +6,21 @@ import Foundation
 
 // TODO: document it, please...
 
-public protocol AtlasError: Error {
+public protocol LocalizableError: Error {
 
     var localizedTitleKey: String { get }
     var localizedMessageKey: String { get }
 
 }
 
-public extension AtlasError {
+public extension LocalizableError {
 
     var localizedTitleKey: String { return "\(type(of: self)).title.\(self)" }
     var localizedMessageKey: String { return "\(type(of: self)).message.\(self)" }
 
 }
 
-public enum AtlasConfigurationError: AtlasError {
+public enum AtlasConfigurationError: LocalizableError {
 
     case incorrectConfigServiceResponse
     case missingClientId
@@ -28,7 +28,7 @@ public enum AtlasConfigurationError: AtlasError {
 
 }
 
-public enum AtlasAPIError: AtlasError {
+public enum AtlasAPIError: LocalizableError {
 
     case noData
     case noInternet
@@ -43,7 +43,7 @@ public enum AtlasAPIError: AtlasError {
 
 }
 
-public enum AtlasCheckoutError: AtlasError {
+public enum AtlasCheckoutError: LocalizableError {
 
     case unclassified
     case outOfStock

@@ -12,7 +12,7 @@ public typealias AtlasUICompletion = (Result<AtlasUI>) -> Void
 
 final public class AtlasUI {
 
-    public enum Error: AtlasError {
+    public enum Error: LocalizableError {
 
         case notInitialized
 
