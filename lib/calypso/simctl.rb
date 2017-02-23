@@ -151,13 +151,18 @@ module Calypso
           delete_simulator device['udid']
         end
       end
-      
-      simulators = available_runtimes
-      if !name.nil?
-        simulators = simulators.select { |runtime| runtime['name'] == name }
-      end
 
-      simulators.each do |runtime|
+      selected_runtimes = unless name.nil?
+                            requested_runtimes = available_runtimes.select { |runtime| runtime['name'] == name }
+                            if requested_runtimes.length == 0
+                              log "No simulators created, \"#{name}\" not found"
+                            end
+                            requested_runtimes
+                          else
+                            available_runtimes
+                          end
+
+      selected_runtimes.each do |runtime|
         log "## Populating #{runtime['name']}"
         simulators_list['devicetypes'].each do |device_type|
           simulator_name = "#{device_type['name']} (#{runtime['name']})"
