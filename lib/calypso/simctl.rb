@@ -39,9 +39,9 @@ module Calypso
       create_simulator(device_type, runtime_name, name)
     end
 
-    desc 'repopulate', 'Deletes all simulators and creates new ones'
-    def repopulate
-      repopulate_all_simulators
+    desc 'repopulate [name]', 'Deletes all simulators and create all of them again if [name] is null or just create [name] if exists'
+    def repopulate(name = nil)
+      repopulate_all_simulators(name)
     end
 
     desc 'delete <udid>', 'Deletes simulator'
@@ -145,14 +145,19 @@ module Calypso
       runtime
     end
 
-    def repopulate_all_simulators
+    def repopulate_all_simulators(name = nil)
       simulators_list['devices'].each do |_, runtime_devices|
         runtime_devices.each do |device|
           delete_simulator device['udid']
         end
       end
+      
+      simulators = available_runtimes
+      if !name.nil?
+        simulators = simulators.select { |runtime| runtime['name'] == name }
+      end
 
-      available_runtimes.each do |runtime|
+      simulators.each do |runtime|
         log "## Populating #{runtime['name']}"
         simulators_list['devicetypes'].each do |device_type|
           simulator_name = "#{device_type['name']} (#{runtime['name']})"
