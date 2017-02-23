@@ -23,7 +23,7 @@
         <a class="header-link" href="../index.html">
           AtlasSDK Docs
         </a>
-         (3% documented)
+         (20% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -62,7 +62,60 @@
             <a class="nav-group-name-link" href="../Structs.html">Structs</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/APIRequest.html">APIRequest</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/Atlas.html">Atlas</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/AtlasAPI.html">AtlasAPI</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Typealiases.html">Typealiases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:8AtlasSDK23AddressChangeCompletion">AddressChangeCompletion</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:8AtlasSDK22AddressCheckCompletion">AddressCheckCompletion</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:8AtlasSDK19AddressesCompletion">AddressesCompletion</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:8AtlasSDK17ArticleCompletion">ArticleCompletion</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:8AtlasSDK14CartCompletion">CartCompletion</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:8AtlasSDK6CartId">CartId</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:8AtlasSDK22CheckoutCartCompletion">CheckoutCartCompletion</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:8AtlasSDK18CheckoutCompletion">CheckoutCompletion</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:8AtlasSDK18CustomerCompletion">CustomerCompletion</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:8AtlasSDK23GuestCheckoutCompletion">GuestCheckoutCompletion</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:8AtlasSDK20GuestOrderCompletion">GuestOrderCompletion</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:8AtlasSDK15OrderCompletion">OrderCompletion</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:8AtlasSDK17SuccessCompletion">SuccessCompletion</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:8AtlasSDK13URLCompletion">URLCompletion</a>
               </li>
             </ul>
           </li>
@@ -99,9 +152,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFV8AtlasSDK5Atlas9configureFT7optionsGSqVS_7Options_10completionFGOS_11AtlasResultVS_14AtlasAPIClient_T__T_"></a>
+                    <a name="/s:ZFV8AtlasSDK5Atlas9configureFT7optionsGSqVS_7Options_10completionFGOS_11AtlasResultVS_8AtlasAPI_T__T_"></a>
                     <a name="//apple_ref/swift/Method/configure(options:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFV8AtlasSDK5Atlas9configureFT7optionsGSqVS_7Options_10completionFGOS_11AtlasResultVS_14AtlasAPIClient_T__T_">configure(options:completion:)</a>
+                    <a class="token" href="#/s:ZFV8AtlasSDK5Atlas9configureFT7optionsGSqVS_7Options_10completionFGOS_11AtlasResultVS_8AtlasAPI_T__T_">configure(options:completion:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -109,7 +162,13 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Configures and returns network client based on given options</p>
+                        <p>Configures and returns API client based on given options</p>
+
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <p>See <a href="https://github.com/zalando-incubator/atlas-ios/wiki/Configuration">configuration</a></p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -132,7 +191,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>Options for the client to be created. When <code>nil</code>, <code>$INFOPLIST_FILE</code> file of the app is used as configuration. See </p>
+                                  <p>Options for API client to be created. When <code>nil</code>, <code>$INFOPLIST_FILE</code> file of the app is used as configuration.</p>
 
                                 </div>
                               </td>
@@ -145,7 +204,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>Fired when network configuration call is finished. Containts <code>AtlasResult.success</code> with <code>AtlasAPIClient</code> or <code>AtlasResult.failure</code> with <code>Error</code> reason.</p>
+                                  <p>Fired when network configuration call is finished. Containts <code>AtlasResult.success</code> with <code>AtlasAPI</code> or <code>AtlasResult.failure</code> with <code>Error</code> reason.</p>
 
                                 </div>
                               </td>

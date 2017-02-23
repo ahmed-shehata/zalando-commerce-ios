@@ -122,8 +122,8 @@ class CheckoutContainerView: UIView {
             guard let strongSelf = self else { return }
             self?.overlayButton.alpha = 0
             self?.collectionViewContainerView.transform = CGAffineTransform(translationX: 0, y: -strongSelf.collectionViewContainerHeight)
-        }, completion: { [weak self] _ in
-            self?.overlayButton.isHidden = true
+            }, completion: { [weak self] _ in
+                self?.overlayButton.isHidden = true
         })
     }
 

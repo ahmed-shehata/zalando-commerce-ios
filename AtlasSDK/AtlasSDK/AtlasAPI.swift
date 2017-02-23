@@ -4,19 +4,24 @@
 
 import Foundation
 
+
+/// All functional API calls with additional business logic  
 public struct AtlasAPI {
 
-    let client: APIClient
-
+    /// Configuration of a client handling API calls
     public var config: Config {
         return client.config
     }
+
+    let client: APIClient
 
     init(config: Config, session: URLSession = .shared) {
         self.client = APIClient(config: config, session: session)
     }
 
 }
+
+// TODO: document it, please...
 
 extension AtlasAPI {
 

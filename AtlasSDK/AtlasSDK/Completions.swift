@@ -4,6 +4,8 @@
 
 import Foundation
 
+// TODO: document it, please...
+
 public enum AtlasAPIResult<T> {
 
     case success(T)

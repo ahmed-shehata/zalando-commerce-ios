@@ -62,11 +62,11 @@ class CheckoutSummaryArticleSelectCollectionView: UICollectionView {
 
         UIView.animate(duration: .fast, animations: { [weak self] in
             self?.alpha = 0
-        }, completion: { [weak self] _ in
-            self?.reload(andSelect: idx)
-            UIView.animate(duration: .fast) {
-                self?.alpha = 1
-            }
+            }, completion: { [weak self] _ in
+                self?.reload(andSelect: idx)
+                UIView.animate(duration: .fast) {
+                    self?.alpha = 1
+                }
         })
     }
 

@@ -13,9 +13,10 @@ public struct Atlas {
 
     /// Configures and returns API client based on given options
     ///
+    /// - Note: See [configuration](https://github.com/zalando-incubator/atlas-ios/wiki/Configuration)
+    ///
     /// - Parameters:
     ///   - options: Options for API client to be created. When `nil`, `$INFOPLIST_FILE` file of the app is used as configuration.
-    ///     See [Configuration](https://github.com/zalando-incubator/atlas-ios/wiki/Configuration#via-infoplist)
     ///   - completion: Fired when network configuration call is finished.
     ///     Containts `AtlasResult.success` with `AtlasAPI` or `AtlasResult.failure` with `Error` reason.
     public static func configure(options: Options? = nil, completion: @escaping AtlasClientCompletion) {

@@ -2,7 +2,6 @@
 //  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
-
 import Foundation
 
 // swiftlint:disable cyclomatic_complexity

@@ -1,31 +1,129 @@
 {
   "warnings": [
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/APIRequest.swift",
-      "line": 7,
-      "symbol": "APIRequest",
-      "symbol_kind": "source.lang.swift.decl.struct",
+      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPI.swift",
+      "line": 28,
+      "symbol": "AtlasAPI.customer(completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient.swift",
+      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPI.swift",
+      "line": 33,
+      "symbol": "AtlasAPI.createCart(withItems:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPI.swift",
+      "line": 39,
+      "symbol": "AtlasAPI.createCheckoutCart(forSelectedArticle:addresses:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPI.swift",
+      "line": 74,
+      "symbol": "AtlasAPI.createCheckout(from:addresses:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPI.swift",
+      "line": 80,
+      "symbol": "AtlasAPI.updateCheckout(with:updateCheckoutRequest:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPI.swift",
+      "line": 87,
+      "symbol": "AtlasAPI.createOrder(from:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPI.swift",
+      "line": 93,
+      "symbol": "AtlasAPI.createGuestOrder(request:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPI.swift",
+      "line": 98,
+      "symbol": "AtlasAPI.guestCheckoutPaymentSelectionURL(request:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPI.swift",
+      "line": 103,
+      "symbol": "AtlasAPI.guestCheckout(with:token:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPI.swift",
+      "line": 108,
+      "symbol": "AtlasAPI.article(with:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPI.swift",
+      "line": 121,
+      "symbol": "AtlasAPI.addresses(completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPI.swift",
+      "line": 126,
+      "symbol": "AtlasAPI.deleteAddress(with:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPI.swift",
+      "line": 131,
+      "symbol": "AtlasAPI.createAddress(_:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPI.swift",
+      "line": 136,
+      "symbol": "AtlasAPI.updateAddress(with:request:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPI.swift",
+      "line": 143,
+      "symbol": "AtlasAPI.checkAddress(_:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasLogger/AtlasLogger.swift",
       "line": null,
-      "symbol": "AtlasAPIClient",
+      "symbol": "AtlasLogger",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient.swift",
-      "line": null,
-      "symbol": "AtlasAPIClient",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasAPIClient.swift",
+      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/AtlasLogger/AtlasLogger.swift",
       "line": 9,
-      "symbol": "AtlasAPIClient",
+      "symbol": "AtlasLogger",
       "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Completions.swift",
+      "line": 9,
+      "symbol": "AtlasAPIResult",
+      "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
@@ -37,35 +135,35 @@
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
-      "line": 7,
+      "line": 9,
       "symbol": "AtlasError",
       "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
-      "line": 21,
+      "line": 23,
       "symbol": "AtlasConfigurationError",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
-      "line": 29,
+      "line": 31,
       "symbol": "AtlasAPIError",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Errors.swift",
-      "line": 44,
+      "line": 46,
       "symbol": "AtlasCheckoutError",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Article.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "Article",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
@@ -79,77 +177,77 @@
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Cart.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "Cart",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Cart.swift",
-      "line": 24,
+      "line": 22,
       "symbol": "==(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CartItem.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "CartItem",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CartItemRequest.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "CartItemRequest",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CartRequest.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "CartRequest",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Catalog.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "Catalog",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddress.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "AddressCheck",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddress.swift",
-      "line": 60,
+      "line": 58,
       "symbol": "===(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddressRequest.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "CheckAddressRequest",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddressResponse.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "CheckAddressStatus",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckAddressResponse.swift",
-      "line": 17,
+      "line": 15,
       "symbol": "CheckAddressResponse",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
@@ -163,14 +261,14 @@
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Checkout.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "Checkout",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Checkout.swift",
-      "line": 31,
+      "line": 29,
       "symbol": "==(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"
@@ -184,14 +282,14 @@
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckoutAddress.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "CheckoutAddress",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CheckoutAddresses.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "CheckoutAddresses",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
@@ -226,14 +324,14 @@
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CreateAddressRequest.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "CreateAddressRequest",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/CreateCheckoutRequest.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "CreateCheckoutRequest",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
@@ -247,91 +345,91 @@
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Customer.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "Customer",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Delivery.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "Delivery",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/FormattableAddress.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "FormattableAddress",
       "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/FormattableAddress.swift",
-      "line": 21,
+      "line": 19,
       "symbol": "EquatableAddress",
       "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/FormattableAddress.swift",
-      "line": 27,
+      "line": 25,
       "symbol": "==(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/FormattableAddress.swift",
-      "line": 31,
+      "line": 29,
       "symbol": "===(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/FormattableAddress.swift",
-      "line": 44,
+      "line": 42,
       "symbol": "===(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Gender.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "Gender",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestAddressRequest.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "GuestAddressRequest",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCart.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "GuestCart",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCartRequest.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "GuestCartRequest",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCheckout.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "GuestCheckout",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCheckoutAddress.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "GuestCheckoutAddress",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
@@ -345,28 +443,28 @@
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestCustomerRequest.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "GuestCustomerRequest",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestOrder.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "GuestOrder",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestOrderRequest.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "GuestOrderRequest",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestPaymentMethod.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "GuestPaymentMethod",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
@@ -380,14 +478,14 @@
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestPaymentRequest.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "GuestPaymentRequest",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/GuestPaymentSelectionRequest.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "GuestPaymentSelectionRequest",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
@@ -408,63 +506,63 @@
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Money.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "Money",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Money.swift",
-      "line": 33,
+      "line": 31,
       "symbol": "==(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Money.swift",
-      "line": 37,
+      "line": 35,
       "symbol": "<(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Order.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "Order",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/OrderAddress.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "OrderAddress",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/OrderRequest.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "OrderRequest",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/Payment.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "Payment",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethod.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "PaymentMethod",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PaymentMethodType.swift",
-      "line": 11,
+      "line": 9,
       "symbol": "PaymentMethodType",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
@@ -485,14 +583,14 @@
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PickupPoint.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "PickupPoint",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/PickupPoint.swift",
-      "line": 44,
+      "line": 42,
       "symbol": "==(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"
@@ -506,70 +604,70 @@
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/SKU.swift",
-      "line": 7,
+      "line": 9,
       "symbol": "SKU",
       "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/SKU.swift",
-      "line": 17,
+      "line": 19,
       "symbol": "==(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/SKU.swift",
-      "line": 27,
+      "line": 29,
       "symbol": "SKUPattern",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/SKU.swift",
-      "line": 69,
+      "line": 71,
       "symbol": "ModelSKU",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/SKU.swift",
-      "line": 80,
+      "line": 82,
       "symbol": "ConfigSKU",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/SKU.swift",
-      "line": 91,
+      "line": 93,
       "symbol": "SimpleSKU",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/SelectedArticle.swift",
-      "line": 20,
+      "line": 7,
       "symbol": "SelectedArticle",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/SelectedArticle.swift",
-      "line": 74,
+      "line": 61,
       "symbol": "*(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/SelectedArticle.swift",
-      "line": 78,
+      "line": 65,
       "symbol": "==(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/SelectedArticle.swift",
-      "line": 82,
+      "line": 69,
       "symbol": "!=(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"
@@ -583,49 +681,49 @@
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/StreetAddress.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "StreetAddress",
       "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UpdateAddressRequest.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "UpdateAddressRequest",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UpdateCheckoutRequest.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "UpdateCheckoutRequest",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Models/UserAddress.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "UserAddress",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Notifications.swift",
-      "line": 9,
+      "line": 11,
       "symbol": "NSNotification.AtlasAuthorized",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Notifications.swift",
-      "line": 10,
+      "line": 12,
       "symbol": "NSNotification.AtlasDeauthorized",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Notifications.swift",
-      "line": 11,
+      "line": 13,
       "symbol": "NSNotification.AtlasAuthorizationChanged",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
@@ -639,35 +737,14 @@
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Options.swift",
-      "line": 7,
+      "line": 9,
       "symbol": "Options",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Utils/AtlasAPIResult.swift",
-      "line": 5,
-      "symbol": "AtlasAPIResult",
-      "symbol_kind": "source.lang.swift.decl.enum",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Utils/AtlasLogger.swift",
-      "line": null,
-      "symbol": "AtlasLogger",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Utils/AtlasLogger.swift",
-      "line": 7,
-      "symbol": "AtlasLogger",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/Utils/AtlasResult.swift",
-      "line": 5,
+      "line": 7,
       "symbol": "AtlasResult",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"

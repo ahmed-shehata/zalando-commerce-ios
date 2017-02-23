@@ -31,7 +31,6 @@ excluded:
   - AtlasMockAPI
 
 opt_in_rules:
-  - missing_docs
   - force_unwrapping
   - empty_count
   - attributes

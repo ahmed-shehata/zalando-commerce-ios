@@ -6,6 +6,8 @@ import Foundation
 import UIKit
 import AtlasSDK
 
+// TODO: document it, please...
+
 public typealias AtlasUICompletion = (AtlasResult<AtlasUI>) -> Void
 
 final public class AtlasUI {

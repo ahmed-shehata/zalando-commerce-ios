@@ -56,4 +56,3 @@ func ~?<T> (val: T?, fallback: String = "") -> String {
         return fallback
     }
 }
-

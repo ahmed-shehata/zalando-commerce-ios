@@ -1,6 +1,13 @@
 {
   "warnings": [
     {
+      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasUI/AtlasUI/AtlasUI.swift",
+      "line": 11,
+      "symbol": "AtlasUI",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasUI/AtlasUI/Utils/AtlasAPIResult.swift",
       "line": 7,
       "symbol": "ProcessedAtlasAPIResult",

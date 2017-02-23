@@ -4,6 +4,8 @@
 
 import AtlasSDK
 
+// TODO: document it, please...
+
 public enum ProcessedAtlasAPIResult<T> {
 
     case success(T)

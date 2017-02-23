@@ -6,7 +6,6 @@ import Foundation
 
 extension URLRequest {
 
-
     init(url: URL, language: String?) {
         guard let language = language else {
             self.init(url: url)
@@ -18,7 +17,7 @@ extension URLRequest {
         self.init(url: urlComponents.validURL)
         self.setValue(acceptedLanguages(add: language), forHTTPHeaderField: "Accept-Language")
     }
-    
+
     func curlCommandRepresentation() -> String {
         var curlComponents = ["curl -i"]
 

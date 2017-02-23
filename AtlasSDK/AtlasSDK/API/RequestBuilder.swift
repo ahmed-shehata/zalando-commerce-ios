@@ -40,10 +40,10 @@ struct RequestBuilder {
             return completion(.failure(e))
         }
 
-        self.urlSession.dataTask(with: request) { data, response, error in
+        self.urlSession.dataTask(with: request, completionHandler: { data, response, error in
             let taskResponse = DataTaskResponse(request: request, response: response, data: data, error: error)
             ResponseParser(taskResponse: taskResponse).parse(completion: completion)
-        }.resume()
+        }).resume()
     }
 
 }

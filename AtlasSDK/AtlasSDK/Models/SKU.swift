@@ -4,6 +4,8 @@
 
 import Foundation
 
+// TODO: document it, please...
+
 public protocol SKU: Equatable {
 
     static var pattern: SKUPattern { get }

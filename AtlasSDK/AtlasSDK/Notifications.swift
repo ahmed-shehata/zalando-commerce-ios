@@ -4,6 +4,8 @@
 
 import Foundation
 
+// TODO: document it, please...
+
 extension NSNotification.Name {
 
     public static let AtlasAuthorized = NSNotification.Name(rawValue: "Atlas.NotificationAuthorized")
