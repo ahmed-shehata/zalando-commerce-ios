@@ -19,7 +19,7 @@ struct UserError {
         bannerErrorViewController.view.alpha = 0
         UIApplication.shared.keyWindow?.insertSubview(bannerErrorViewController.view, at: 0)
         bannerErrorViewController.view.fillInSuperview()
-        bannerErrorViewController.configure(viewModel: AtlasCheckoutError.unclassified)
+        bannerErrorViewController.configure(viewModel: CheckoutError.unclassified)
         UIView.waitForUIState {
             bannerErrorViewController.view.removeFromSuperview()
         }
@@ -34,7 +34,7 @@ struct UserError {
 
     static func display(error: Error, mode: PresentationMode? = nil) {
         guard let userPresentable = error as? UserPresentableError else {
-            UserError.display(error: AtlasCheckoutError.unclassified)
+            UserError.display(error: CheckoutError.unclassified)
             return
         }
 

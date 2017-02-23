@@ -39,7 +39,7 @@ extension APIResult {
                 }
                 return .handledInternally
             default:
-                let userPresentable = error as? UserPresentableError ?? AtlasCheckoutError.unclassified
+                let userPresentable = error as? UserPresentableError ?? CheckoutError.unclassified
                 return .error(error: error, title: userPresentable.displayedTitle, message: userPresentable.displayedMessage)
             }
         }

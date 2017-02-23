@@ -52,7 +52,7 @@ extension AtlasAPI {
                 let sku = selectedArticle.sku
                 let itemExists = cart.items.contains { $0.sku == sku } && !cart.itemsOutOfStock.contains(sku)
                 guard itemExists else {
-                    completion(.failure(AtlasCheckoutError.outOfStock, nil))
+                    completion(.failure(CheckoutError.outOfStock, nil))
                     return
                 }
 
@@ -120,7 +120,7 @@ extension AtlasAPI {
 
         let fetchCompletion: APIResultCompletion<Article> = { result in
             if case let .success(article) = result, !article.hasAvailableUnits {
-                completion(.failure(AtlasCheckoutError.outOfStock, nil))
+                completion(.failure(CheckoutError.outOfStock, nil))
             } else {
                 completion(result)
             }

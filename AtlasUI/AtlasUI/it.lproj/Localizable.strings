@@ -5,16 +5,16 @@
 "APIError.message.unauthorized" = "Accesso non autorizzato";
 "APIError.title" = "Errore server";
 "APIError.title.noInternet" = "Connessione ad internet assente";
-"AtlasCheckoutError.message.addressInvalid" = "Indirizzo non valido, per piacere controlla l'indirizzo";
-"AtlasCheckoutError.message.checkoutFailure" = "Si è verificato un errore. Riprova più tardi oppure rivolgiti al nostro servizio clienti";
-"AtlasCheckoutError.message.missingAddress" = "Per piacere seleziona l'indirizzo di spedizione e fatturazione prima di continuare";
-"AtlasCheckoutError.message.outOfStock" = "Scusa l'articolo da te richiesto non è più disponibile";
-"AtlasCheckoutError.message.paymentMethodNotAvailable" = "Il metodo di pagamento non è più disponibile";
-"AtlasCheckoutError.message.priceChanged" = "Il prezzo è ora %@";
-"AtlasCheckoutError.message.unclassified" = "Qualcosa è andato storto.\nStiamo sistemando il problema.\nPer piacere riprova più tardi.";
-"AtlasCheckoutError.title" = "Oops";
-"AtlasCheckoutError.title.missingAddress" = "Nessun indirizzo selezionato";
-"AtlasCheckoutError.title.priceChanged" = "Il prezzo è cambiato";
+"CheckoutError.message.addressInvalid" = "Indirizzo non valido, per piacere controlla l'indirizzo";
+"CheckoutError.message.checkoutFailure" = "Si è verificato un errore. Riprova più tardi oppure rivolgiti al nostro servizio clienti";
+"CheckoutError.message.missingAddress" = "Per piacere seleziona l'indirizzo di spedizione e fatturazione prima di continuare";
+"CheckoutError.message.outOfStock" = "Scusa l'articolo da te richiesto non è più disponibile";
+"CheckoutError.message.paymentMethodNotAvailable" = "Il metodo di pagamento non è più disponibile";
+"CheckoutError.message.priceChanged" = "Il prezzo è ora %@";
+"CheckoutError.message.unclassified" = "Qualcosa è andato storto.\nStiamo sistemando il problema.\nPer piacere riprova più tardi.";
+"CheckoutError.title" = "Oops";
+"CheckoutError.title.missingAddress" = "Nessun indirizzo selezionato";
+"CheckoutError.title.priceChanged" = "Il prezzo è cambiato";
 "ConfigurationError.message.incorrectConfigServiceResponse" = "Ops, si è verificato un errore tecnico. Ti preghiamo di riprovare più tardi.";
 "ConfigurationError.message.missingClientId" = "Ops, si è verificato un errore tecnico. Ti preghiamo di riprovare più tardi.";
 "ConfigurationError.message.missingInterfaceLanguage" = "Linguaggio interfaccia assente";
@@ -88,8 +88,8 @@
 "summaryView.title.orderPlaced" = "Ordine effettuato";
 "summaryView.title.summary" = "Riepilogo";
 "termsAndConditionsView.title" = "Termini e condizioni";
-"AtlasCheckoutError.message.unsupportedCountry" = "Questo paese non é supportato";
-"AtlasCheckoutError.message.photosLibraryAccessNotAllowed" = "Not é possibile accedere alla galleria delle foto";
+"CheckoutError.message.unsupportedCountry" = "Questo paese non é supportato";
+"CheckoutError.message.photosLibraryAccessNotAllowed" = "Not é possibile accedere alla galleria delle foto";
 "paymentMethod.APPLE_PAY" = "Apple Pay";
 "paymentMethod.CASH_ON_DELIVERY" = "Pagamento alla consegna";
 "paymentMethod.CHEQUE" = "Assegno";
@@ -110,7 +110,7 @@
 
 /*when happen to have unknown?*/
 "paymentMethod.UNKNOWN" = "Sconosciuto";
-"AtlasCheckoutError.message.missingPaymentMethod" = "Per piacere seleziona un metodo di pagamento prima di continuare";
+"CheckoutError.message.missingPaymentMethod" = "Per piacere seleziona un metodo di pagamento prima di continuare";
 "addressCheckView.title" = "Contolla il tuo indirizzo";
 "addressCheckView.header.normalized" = "Abbiamo trovato un'altra versione del tuo indirizzo\nQuale versione vuoi utilizzare?";
 

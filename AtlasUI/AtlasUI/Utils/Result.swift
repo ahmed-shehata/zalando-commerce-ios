@@ -20,7 +20,7 @@ extension Result {
         case .success(let data):
             return .success(data)
         case .failure(let error):
-            let userPresentable = error as? UserPresentableError ?? AtlasCheckoutError.unclassified
+            let userPresentable = error as? UserPresentableError ?? CheckoutError.unclassified
             return .error(error: error, title: userPresentable.displayedTitle, message: userPresentable.displayedMessage)
         }
     }

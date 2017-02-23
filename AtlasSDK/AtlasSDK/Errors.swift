@@ -43,7 +43,7 @@ public enum APIError: LocalizableError {
 
 }
 
-public enum AtlasCheckoutError: LocalizableError {
+public enum CheckoutError: LocalizableError {
 
     case unclassified
     case outOfStock

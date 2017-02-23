@@ -44,18 +44,18 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
     func handleSubmit() {
         guard let dataSource = dataSource else { return }
         guard shippingAddress != nil, billingAddress != nil else {
-            UserError.display(error: AtlasCheckoutError.missingAddress)
+            UserError.display(error: CheckoutError.missingAddress)
             return
         }
         guard dataSource.dataModel.isPaymentSelected else {
-            UserError.display(error: AtlasCheckoutError.missingPaymentMethod)
+            UserError.display(error: CheckoutError.missingPaymentMethod)
             return
         }
 
         createCartCheckout { [weak self] result in
             guard let cartCheckout = result.process() else { return }
             guard let checkout = cartCheckout.checkout, cartCheckout.cart != nil else {
-                return UserError.display(error: AtlasCheckoutError.unclassified)
+                return UserError.display(error: CheckoutError.unclassified)
             }
 
             self?.cartCheckout = cartCheckout
@@ -72,7 +72,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
     func handlePaymentSelection() {
         guard let paymentURL = cartCheckout?.checkout?.payment.selectionPageURL,
             let callbackURL = AtlasAPI.shared?.config.payment.selectionCallbackURL else {
-                let error = !hasAddresses ? AtlasCheckoutError.missingAddress : AtlasCheckoutError.unclassified
+                let error = !hasAddresses ? CheckoutError.missingAddress : CheckoutError.unclassified
                 UserError.display(error: error)
                 return
         }
@@ -88,7 +88,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
             case .cancel:
                 break
             case .error, .guestRedirect:
-                UserError.display(error: AtlasCheckoutError.unclassified)
+                UserError.display(error: CheckoutError.unclassified)
             }
         }
 
@@ -190,7 +190,7 @@ extension LoggedInSummaryActionHandler {
         }
 
         guard let callbackURL = AtlasAPI.shared?.config.payment.thirdPartyCallbackURL else {
-            UserError.display(error: AtlasCheckoutError.unclassified)
+            UserError.display(error: CheckoutError.unclassified)
             return
         }
 
@@ -199,7 +199,7 @@ extension LoggedInSummaryActionHandler {
             switch paymentStatus {
             case .success: self?.presentConfirmationScreen(for: order)
             case .redirect, .cancel: break
-            case .error, .guestRedirect: UserError.display(error: AtlasCheckoutError.unclassified)
+            case .error, .guestRedirect: UserError.display(error: CheckoutError.unclassified)
             }
         }
         AtlasUIViewController.shared?.mainNavigationController.pushViewController(paymentViewController, animated: true)
@@ -247,7 +247,7 @@ extension LoggedInSummaryActionHandler {
 
                 completion(.success((cart: cart, checkout: nil)))
                 if addresses?.billingAddress != nil && addresses?.shippingAddress != nil {
-                    UserError.display(error: AtlasCheckoutError.checkoutFailure)
+                    UserError.display(error: CheckoutError.checkoutFailure)
                 }
             case .success(let checkoutCart):
                 completion(.success((cart: checkoutCart.cart, checkout: checkoutCart.checkout)))
