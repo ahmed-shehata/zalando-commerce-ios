@@ -8,8 +8,6 @@ import AtlasSDK
 
 // TODO: document it, please...
 
-public typealias AtlasUICompletion = (Result<AtlasUI>) -> Void
-
 final public class AtlasUI {
 
     public enum Error: LocalizableError {
@@ -34,7 +32,7 @@ final public class AtlasUI {
         self.register { localizer }
     }
 
-    public static func configure(options: Options? = nil, completion: @escaping AtlasUICompletion) {
+    public static func configure(options: Options? = nil, completion: @escaping Result<AtlasUI>) {
         Atlas.configure(options: options) { result in
             switch result {
             case .failure(let error):
