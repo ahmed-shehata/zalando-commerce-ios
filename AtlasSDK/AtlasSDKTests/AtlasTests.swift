@@ -11,7 +11,7 @@ import AtlasMockAPI
 
 class AtlasTests: XCTestCase {
 
-    var client: APIClient?
+    var client: AtlasAPI?
 
     override class func setUp() {
         super.setUp()
@@ -30,7 +30,7 @@ class AtlasTests: XCTestCase {
                 case .failure(let error):
                     fail(String(describing: error))
                 case .success(let api):
-                    self.client = api.client
+                    self.client = api
                 }
                 done()
             }
@@ -38,7 +38,7 @@ class AtlasTests: XCTestCase {
     }
 
     override func tearDown() {
-        APIClient.deauthorizeAll()
+        AtlasAPI.deauthorizeAll()
         self.client = nil
     }
 
@@ -54,7 +54,7 @@ class AtlasTests: XCTestCase {
                 case .failure(let error):
                     fail(String(describing: error))
                 case .success(let api):
-                    let secondClient = api.client
+                    let secondClient = api
                     secondClient.authorize(withToken: "ANOTHER_TOKEN")
                     expect(self.client?.isAuthorized) == false
                     expect(secondClient.isAuthorized) == true
@@ -72,7 +72,7 @@ class AtlasTests: XCTestCase {
 
     func testWipeTokens() {
         loginUser()
-        APIClient.deauthorizeAll()
+        AtlasAPI.deauthorizeAll()
         expect(self.client?.isAuthorized) == false
     }
 

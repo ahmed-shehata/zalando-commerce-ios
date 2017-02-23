@@ -14,8 +14,11 @@ public struct Atlas {
     /// Configures and returns network client based on given options
     ///
     /// - Parameters:
-    ///   - options: Options for the client to be created. When `nil`, `$INFOPLIST_FILE` file of the app is used as configuration. See [Configuration](https://github.com/zalando-incubator/atlas-ios/wiki/Configuration#via-infoplist)
-    ///   - completion: Fired when network configuration call is finished. Containts `AtlasResult.success` with `AtlasAPIClient` or `AtlasResult.failure` with `Error` reason.
+    ///   - options: Options for the client to be created.
+    ///     When `nil`, `$INFOPLIST_FILE` file of the app is used as configuration.
+    ///     See [Configuration](https://github.com/zalando-incubator/atlas-ios/wiki/Configuration#via-infoplist)
+    ///   - completion: Fired when network configuration call is finished.
+    ///     Containts `AtlasResult.success` with `AtlasAPIClient` or `AtlasResult.failure` with `Error` reason.
     public static func configure(options: Options? = nil, completion: @escaping AtlasClientCompletion) {
         let options = options ?? Options()
         do {
