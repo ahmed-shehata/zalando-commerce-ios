@@ -4,10 +4,11 @@
 
 import Foundation
 
-public typealias AtlasConfigCompletion = (AtlasAPIResult<Config>) -> Void
 
-/// KABOOM!
+
 public typealias AtlasClientCompletion = (AtlasResult<AtlasAPIClient>) -> Void
+
+public typealias AtlasConfigCompletion = (AtlasAPIResult<Config>) -> Void
 
 /// Completion closure with `Bool` in `AtlasAPIResult.success` result
 public typealias SuccessCompletion = (AtlasAPIResult<Bool>) -> Void
