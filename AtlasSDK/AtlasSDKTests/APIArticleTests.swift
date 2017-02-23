@@ -11,9 +11,9 @@ import Nimble
 class APIArticleTests: AtlasAPIClientBaseTests {
 
     func testFetchArticle() {
-        waitUntilAtlasAPIClientIsConfigured { done, client in
+        waitUntilAtlasAPIClientIsConfigured { done, api in
             let sku = ConfigSKU(value: "AD541L009-G11")
-            client.article(with: sku) { result in
+            api.article(with: sku) { result in
                 switch result {
                 case .failure(let error):
                     fail(String(describing: error))

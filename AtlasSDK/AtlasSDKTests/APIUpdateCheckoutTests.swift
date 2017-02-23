@@ -13,9 +13,9 @@ class APIUpdateCheckoutTests: AtlasAPIClientBaseTests {
     fileprivate let addressId = "6702759"
 
     func testUpdateBillingAddress() {
-        waitUntilAtlasAPIClientIsConfigured { done, client in
+        waitUntilAtlasAPIClientIsConfigured { done, api in
             let updateRequest = UpdateCheckoutRequest(billingAddressId: self.addressId)
-            client.updateCheckout(with: self.checkoutId, updateCheckoutRequest: updateRequest) { result in
+            api.updateCheckout(with: self.checkoutId, updateCheckoutRequest: updateRequest) { result in
                 switch result {
                 case .failure(let error):
                     fail(String(describing: error))
@@ -29,9 +29,9 @@ class APIUpdateCheckoutTests: AtlasAPIClientBaseTests {
     }
 
     func testUpdateShippingAddress() {
-        waitUntilAtlasAPIClientIsConfigured { done, client in
+        waitUntilAtlasAPIClientIsConfigured { done, api in
             let updateRequest = UpdateCheckoutRequest(shippingAddressId: self.addressId)
-            client.updateCheckout(with: self.checkoutId, updateCheckoutRequest: updateRequest) { result in
+            api.updateCheckout(with: self.checkoutId, updateCheckoutRequest: updateRequest) { result in
                 switch result {
                 case .failure(let error):
                     fail(String(describing: error))
@@ -45,9 +45,9 @@ class APIUpdateCheckoutTests: AtlasAPIClientBaseTests {
     }
 
     func testUpdateBillingAndShippingAddresses() {
-        waitUntilAtlasAPIClientIsConfigured { done, client in
+        waitUntilAtlasAPIClientIsConfigured { done, api in
             let updateRequest = UpdateCheckoutRequest(billingAddressId: self.addressId, shippingAddressId: self.addressId)
-            client.updateCheckout(with: self.checkoutId, updateCheckoutRequest: updateRequest) { result in
+            api.updateCheckout(with: self.checkoutId, updateCheckoutRequest: updateRequest) { result in
                 switch result {
                 case .failure(let error):
                     fail(String(describing: error))

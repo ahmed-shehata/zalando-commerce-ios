@@ -15,15 +15,15 @@ extension NSNotification.Name {
 extension AtlasAPI {
 
     func notify(isAuthorized: Bool, withToken token: APIAccessToken?) {
-        AtlasAPI.notify(client: self, isAuthorized: isAuthorized, withToken: token)
+        AtlasAPI.notify(api: self, isAuthorized: isAuthorized, withToken: token)
     }
 
-    static func notify(client: AtlasAPI?, isAuthorized: Bool, withToken token: APIAccessToken?) {
+    static func notify(api: AtlasAPI?, isAuthorized: Bool, withToken token: APIAccessToken?) {
         let userInfo = token?.notificationUserInfo
         let authNotification: NSNotification.Name = isAuthorized ? .AtlasAuthorized : .AtlasDeauthorized
 
-        NotificationCenter.default.post(name: authNotification, object: client, userInfo: userInfo)
-        NotificationCenter.default.post(name: .AtlasAuthorizationChanged, object: client, userInfo: userInfo)
+        NotificationCenter.default.post(name: authNotification, object: api, userInfo: userInfo)
+        NotificationCenter.default.post(name: .AtlasAuthorizationChanged, object: api, userInfo: userInfo)
     }
 
 }

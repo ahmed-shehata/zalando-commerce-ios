@@ -11,8 +11,8 @@ import Nimble
 class APIGuestCheckoutTests: AtlasAPIClientBaseTests {
 
     func testGetGuestCheckout() {
-        waitUntilAtlasAPIClientIsConfigured { done, client in
-            client.guestCheckout(with: "CHECKOUT_ID", token: "TOKEN") { result in
+        waitUntilAtlasAPIClientIsConfigured { done, api in
+            api.guestCheckout(with: "CHECKOUT_ID", token: "TOKEN") { result in
                 switch result {
                 case .failure(let error):
                     fail(String(describing: error))
