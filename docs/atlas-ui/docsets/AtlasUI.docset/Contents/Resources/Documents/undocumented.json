@@ -8,59 +8,10 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasUI/AtlasUI/Utils/AtlasAPIResult.swift",
-      "line": 9,
-      "symbol": "ProcessedAtlasAPIResult.success",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasUI/AtlasUI/Utils/AtlasAPIResult.swift",
-      "line": 10,
-      "symbol": "ProcessedAtlasAPIResult.error",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasUI/AtlasUI/Utils/AtlasAPIResult.swift",
-      "line": 11,
-      "symbol": "ProcessedAtlasAPIResult.handledInternally",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasUI/AtlasUI/Utils/AtlasAPIResult.swift",
-      "line": 17,
-      "symbol": "AtlasAPIResult.processedResult()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasUI/AtlasUI/Utils/AtlasResult.swift",
       "line": 7,
       "symbol": "ProcessedAtlasResult",
       "symbol_kind": "source.lang.swift.decl.enum",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasUI/AtlasUI/Utils/AtlasResult.swift",
-      "line": 9,
-      "symbol": "ProcessedAtlasResult.success",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasUI/AtlasUI/Utils/AtlasResult.swift",
-      "line": 10,
-      "symbol": "ProcessedAtlasResult.error",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasUI/AtlasUI/Utils/AtlasResult.swift",
-      "line": 16,
-      "symbol": "AtlasResult.processedResult()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     }
   ],
