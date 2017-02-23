@@ -42,7 +42,7 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
     }
 
     func handlePaymentSelection() {
-        guard let callbackURL = AtlasAPIClient.shared?.config.payment.selectionCallbackURL else {
+        guard let callbackURL = AtlasAPI.shared?.config.payment.selectionCallbackURL else {
             UserError.display(error: AtlasCheckoutError.unclassified)
             return
         }
@@ -107,7 +107,7 @@ extension GuestCheckoutSummaryActionHandler {
             return
         }
 
-        guard let callbackURL = AtlasAPIClient.shared?.config.payment.thirdPartyCallbackURL else {
+        guard let callbackURL = AtlasAPI.shared?.config.payment.thirdPartyCallbackURL else {
             UserError.display(error: AtlasCheckoutError.unclassified)
             return
         }

@@ -19,11 +19,11 @@ class CheckoutSummaryEditProductStackViewTests: UITestCase {
     }
 
     func testSelectInitialSizeWhileLoggedIn() {
-        AtlasAPIClient.shared?.authorize(withToken: "TestToken")
+        AtlasAPI.shared?.authorize(withToken: "TestToken")
         registerAtlasUIViewController(forConfigSKU: "GU121D08Z-Q11")
         selectItemInCollectionView()
         expect(self.checkoutSummaryViewController?.actionHandler as? LoggedInSummaryActionHandler).toEventuallyNot(beNil())
-        AtlasAPIClient.shared?.deauthorize()
+        AtlasAPI.shared?.deauthorize()
     }
 
     func testOneSizeInitialSizeWhileNotLoggedIn() {
@@ -32,10 +32,10 @@ class CheckoutSummaryEditProductStackViewTests: UITestCase {
     }
 
     func testOneSizeInitialSizeWhileLoggedIn() {
-        AtlasAPIClient.shared?.authorize(withToken: "TestToken")
+        AtlasAPI.shared?.authorize(withToken: "TestToken")
         registerAtlasUIViewController(forConfigSKU: "MK151F00E-Q11")
         expect(self.checkoutSummaryViewController?.actionHandler as? LoggedInSummaryActionHandler).toEventuallyNot(beNil())
-        AtlasAPIClient.shared?.deauthorize()
+        AtlasAPI.shared?.deauthorize()
     }
 
     func testSelectingQuantity() {

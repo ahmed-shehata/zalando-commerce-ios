@@ -41,9 +41,8 @@ class URLRequestTests: AtlasAPIClientBaseTests {
     func testSalesChannelLanguageHeader() {
         let clientURL = URL(validURL: "https://atlas-sdk.api/api/any_endpoint")
         let api = mockedAtlasAPI(forURL: clientURL, data: nil, status: .ok)
-        let request = URLRequest(url: URL(validURL: "http://zalando.de"), config: api.config)
-
         let language = api.config.salesChannel.languageCode
+        let request = URLRequest(url: URL(validURL: "http://zalando.de"), language: language)
 
         expect(request.allHTTPHeaderFields?["Accept-Language"]).to(contain("\(language);q=1.0"))
     }

@@ -23,7 +23,7 @@ final public class AtlasUI {
     }
 
     /// Reference for AtlasAPIClient object that is configured with the current SalesChannel
-    public let client: AtlasAPIClient
+    public let api: AtlasAPI
 
     private static var _shared: AtlasUI?
 
@@ -34,8 +34,8 @@ final public class AtlasUI {
 
     fileprivate let injector = Injector()
 
-    private init(client: AtlasAPIClient, localizer: Localizer) {
-        self.client = client
+    private init(api: AtlasAPI, localizer: Localizer) {
+        self.api = api
         self.register { localizer }
     }
 
@@ -54,7 +54,7 @@ final public class AtlasUI {
             case .success(let client):
                 do {
                     let localizer = try Localizer(localeIdentifier: client.config.interfaceLocale.identifier)
-                    let shared = AtlasUI(client: client, localizer: localizer)
+                    let shared = AtlasUI(api: client, localizer: localizer)
                     AtlasUI._shared = shared
                     completion(.success(shared))
                 } catch let error {
@@ -72,7 +72,7 @@ final public class AtlasUI {
     ///   - sku: The SKU for the item that the user want to buy
     /// - Throws: notInitialized is thrown if this method is called before initializing AtlasUI be calling configure(options:completion:)
     public func presentCheckout(onViewController viewController: UIViewController, for sku: ConfigSKU) throws {
-        guard let _ = AtlasAPIClient.shared else {
+        guard let _ = AtlasAPI.shared else {
             AtlasLogger.logError("AtlasUI is not initialized")
             throw AtlasUI.Error.notInitialized
         }
@@ -102,10 +102,10 @@ extension AtlasUI {
 
 }
 
-extension AtlasAPIClient {
+extension AtlasAPI {
 
-    static var shared: AtlasAPIClient? {
-        return try? AtlasUI.shared().client
+    static var shared: AtlasAPI? {
+        return try? AtlasUI.shared().api
     }
 
 }

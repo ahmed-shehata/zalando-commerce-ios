@@ -44,7 +44,8 @@ final class OAuth2LoginViewController: UIViewController {
         view.addSubview(webView)
         webView.fillInSuperview()
 
-        webView.loadRequest(URLRequest(url: loginURL, config: AtlasAPIClient.shared?.config))
+        let language = AtlasAPI.shared?.config.salesChannel.languageCode
+        webView.loadRequest(URLRequest(url: loginURL, language: language))
     }
 
     @discardableResult

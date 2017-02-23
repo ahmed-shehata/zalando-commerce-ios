@@ -6,9 +6,6 @@ import Foundation
 
 extension URLRequest {
 
-    init(url: URL, config: Config?) {
-        self.init(url: url, language: config?.salesChannel.languageCode)
-    }
 
     init(url: URL, language: String?) {
         guard let language = language else {
@@ -44,13 +41,6 @@ extension URLRequest {
         curlComponents.append("\"\(url.urlString)\"")
 
         return curlComponents.joined(separator: " \\\n\t")
-    }
-
-    func debugLog() -> URLRequest {
-        if ProcessInfo.processInfo.arguments.contains("PRINT_REQUEST_DESCRIPTION") {
-            AtlasLogger.logDebug(curlCommandRepresentation())
-        }
-        return self
     }
 
     @discardableResult
