@@ -7,7 +7,7 @@ import Nimble
 
 @testable import AtlasSDK
 
-class URLRequestTests: XCTestCase {
+class URLRequestTests: AtlasAPIClientBaseTests {
 
     func testUserAgentHeader() {
         let endpoint = GetConfigEndpoint(url: TestConsts.configURL)
@@ -21,6 +21,31 @@ class URLRequestTests: XCTestCase {
 
         let expectedVersion = [appId, sdkId, SystemInfo.platform].joined(separator: ", ")
         expect(request?.allHTTPHeaderFields?["User-Agent"]) == expectedVersion
+    }
+
+    func testLanguageHeader() {
+        let language = "fr"
+        let request = URLRequest(url: URL(validURL: "http://zalando.de"), language: language)
+
+        expect(request.allHTTPHeaderFields?["Accept-Language"]).to(contain("\(language);q=1.0"))
+    }
+
+    func testLanguageQueryString() {
+        let language = "fr"
+        let request = URLRequest(url: URL(validURL: "http://zalando.de"), language: language)
+
+        let urlComponents = URLComponents(validURL: request.url!)
+        expect(urlComponents.queryItems).to(contain(URLQueryItem(name: "lng", value: language)))
+    }
+
+    func testSalesChannelLanguageHeader() {
+        let clientURL = URL(validURL: "https://atlas-sdk.api/api/any_endpoint")
+        let api = mockedAtlasAPI(forURL: clientURL, data: nil, status: .ok)
+        let request = URLRequest(url: URL(validURL: "http://zalando.de"), config: api.config)
+
+        let language = api.config.salesChannel.languageCode
+
+        expect(request.allHTTPHeaderFields?["Accept-Language"]).to(contain("\(language);q=1.0"))
     }
 
 }

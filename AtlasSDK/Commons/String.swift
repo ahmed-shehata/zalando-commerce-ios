@@ -6,9 +6,8 @@ import Foundation
 
 extension String {
 
-    func whitespaceCompacted() -> String {
-        let string = components(separatedBy: CharacterSet.newlines).joined(separator: "")
-        return string.replacingOccurrences(of: "  ", with: "")
+    var attributed: NSAttributedString {
+        return NSAttributedString(string: self)
     }
 
     init?(withJSONObject json: [String: Any]?,
@@ -19,6 +18,32 @@ extension String {
             let jsonData = data
             else { return nil }
         self.init(data: jsonData, encoding: encoding)
+    }
+
+    func whitespaceCompacted() -> String {
+        let string = components(separatedBy: CharacterSet.newlines).joined(separator: "")
+        return string.replacingOccurrences(of: "  ", with: "")
+    }
+
+    func trimmed() -> String {
+        return trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
+    var length: Int {
+        return characters.count
+    }
+
+    func onelined() -> String {
+        return replacingOccurrences(of: "\n", with: " ")
+    }
+
+    func range() -> NSRange {
+        return NSRange(location: 0, length: (self as NSString).length)
+    }
+
+    func matches(pattern: String, options: NSRegularExpression.Options = .caseInsensitive) -> Bool {
+        let regex = try? NSRegularExpression(pattern: pattern, options: options)
+        return regex?.firstMatch(in: self, options: [], range: self.range()) != nil
     }
 
 }
