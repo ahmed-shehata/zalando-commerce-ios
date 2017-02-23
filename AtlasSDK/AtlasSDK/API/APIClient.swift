@@ -6,14 +6,15 @@ import Foundation
 
 typealias APIResultCompletion<Model> = (AtlasAPIResult<Model>) -> Void
 
-public struct AtlasAPIClient {
+struct APIClient {
 
     public let config: Config
 
-    var urlSession: URLSession = URLSession.shared
+    let urlSession: URLSession
 
-    init(config: Config) {
+    init(config: Config, session: URLSession = .shared) {
         self.config = config
+        self.urlSession = session
     }
 
     func touch(endpoint: Endpoint, successStatus: HTTPStatus = .noContent, completion: @escaping SuccessCompletion) {
@@ -63,7 +64,7 @@ public struct AtlasAPIClient {
 
 }
 
-extension AtlasAPIClient {
+extension APIClient {
 
     /// Determines if client is authorized with access token to call restricted endpoints.
     public var isAuthorized: Bool {
@@ -102,10 +103,10 @@ extension AtlasAPIClient {
     }
 
     private func notify(isAuthorized: Bool, withToken token: APIAccessToken?) {
-        AtlasAPIClient.notify(client: self, isAuthorized: isAuthorized, withToken: token)
+        APIClient.notify(client: self, isAuthorized: isAuthorized, withToken: token)
     }
 
-    private static func notify(client: AtlasAPIClient?, isAuthorized: Bool, withToken token: APIAccessToken?) {
+    private static func notify(client: APIClient?, isAuthorized: Bool, withToken token: APIAccessToken?) {
         let userInfo = token?.notificationUserInfo
         let authNotification: NSNotification.Name = isAuthorized ? .AtlasAuthorized : .AtlasDeauthorized
 

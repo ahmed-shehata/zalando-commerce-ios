@@ -31,7 +31,7 @@ public struct Atlas {
                 AtlasLogger.logError(error)
                 completion(.failure(error))
             case .success(let config):
-                let client = AtlasAPIClient(config: config)
+                let client = AtlasAPI(config: config)
                 completion(.success(client))
             }
         }
