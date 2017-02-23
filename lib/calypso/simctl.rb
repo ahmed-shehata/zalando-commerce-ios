@@ -1,5 +1,6 @@
 require 'json'
 require 'thor'
+require 'English'
 
 require_relative 'consts'
 require_relative 'utils/run'
@@ -34,8 +35,13 @@ module Calypso
     end
 
     desc 'create <device_type> <runtime_name> [name]', 'Creates simulator'
-    def create(device_name, runtime_name, name = nil)
-      create_simulator(device_name, runtime_name, name)
+    def create(device_type, runtime_name, name = nil)
+      create_simulator(device_type, runtime_name, name)
+    end
+
+    desc 'repopulate', 'Deletes all simulators and creates new ones'
+    def repopulate
+      repopulate_all_simulators
     end
 
     desc 'delete <udid>', 'Deletes simulator'
@@ -92,9 +98,9 @@ module Calypso
     def delete_simulator(udid)
       dev = find_device(udid)
       shutdown_simulator(udid) unless dev['state'] == 'Shutdown'
-      `killall -9 Simulator`
+      `killall -9 Simulator 2> /dev/null`
       run_simctl('delete', udid)
-      log_debug "Simulator #{udid} deleted"
+      log_debug "Simulator #{dev['name']} (#{udid}) deleted"
     end
 
     def boot_simulator(udid)
@@ -139,6 +145,24 @@ module Calypso
       runtime
     end
 
+    def repopulate_all_simulators
+      simulators_list['devices'].each do |_, runtime_devices|
+        runtime_devices.each do |device|
+          delete_simulator device['udid']
+        end
+      end
+
+      available_runtimes.each do |runtime|
+        log "## Populating #{runtime['name']}"
+        simulators_list['devicetypes'].each do |device_type|
+          simulator_name = "#{device_type['name']} (#{runtime['name']})"
+          args = ["'#{simulator_name}'", device_type['identifier'], runtime['identifier']]
+          `xcrun simctl create #{args.join ' '} 2> /dev/null`
+          log_debug "Created #{simulator_name}" if $CHILD_STATUS.success?
+        end
+      end
+    end
+
     def find_devices(name)
       devices_list.select do |dev|
         dev['name'] =~ name
@@ -157,6 +181,12 @@ module Calypso
 
     def device_types_list
       simulators_list['devices']
+    end
+
+    def available_runtimes
+      simulators_list['runtimes'].select do |runtime|
+        runtime['availability'] == '(available)'
+      end
     end
 
     def simulators_list
