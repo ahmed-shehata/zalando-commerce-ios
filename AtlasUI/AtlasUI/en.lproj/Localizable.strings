@@ -20,11 +20,11 @@
 "ConfigurationError.message.missingInterfaceLanguage" = "Missing interface language";
 "ConfigurationError.message.missingSalesChannel" = "Missing sales channel";
 "ConfigurationError.title" = "Configuration Error";
-"AtlasLoginError.message.accessDenied" = "Access denied";
-"AtlasLoginError.message.missingURL" = "Missing login URL";
-"AtlasLoginError.message.missingViewControllerToShowLoginForm" = "Cannot show login form";
-"AtlasLoginError.message.requestFailed" = "Request failed";
-"AtlasLoginError.title" = "Login Error";
+"LoginError.message.accessDenied" = "Access denied";
+"LoginError.message.missingURL" = "Missing login URL";
+"LoginError.message.missingViewControllerToShowLoginForm" = "Cannot show login form";
+"LoginError.message.requestFailed" = "Request failed";
+"LoginError.title" = "Login Error";
 "addressFormView.additional" = "Additional";
 "addressFormView.city" = "City";
 "addressFormView.country" = "Country";

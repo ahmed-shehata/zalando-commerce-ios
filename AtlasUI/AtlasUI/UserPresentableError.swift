@@ -97,6 +97,6 @@ extension CheckoutError: UserPresentableError {
 
 }
 
-extension AtlasLoginError: UserPresentableError { }
+extension LoginError: UserPresentableError { }
 
 extension ConfigurationError: UserPresentableError { }

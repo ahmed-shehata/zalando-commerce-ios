@@ -5,9 +5,7 @@
 import Foundation
 import AtlasSDK
 
-// TODO: Remove "Atlas" from name
-
-enum AtlasLoginError: LocalizableError {
+enum LoginError: LocalizableError {
 
     case accessDenied
     case requestFailed(error: Error?)

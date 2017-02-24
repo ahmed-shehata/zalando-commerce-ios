@@ -20,11 +20,11 @@
 "ConfigurationError.message.missingInterfaceLanguage" = "Langue d'interface manquante";
 "ConfigurationError.message.missingSalesChannel" = "Canal de vente manquant";
 "ConfigurationError.title" = "Erreur de configuration";
-"AtlasLoginError.message.accessDenied" = "Accès refusé";
-"AtlasLoginError.message.missingURL" = "URL de connexion manquante";
-"AtlasLoginError.message.missingViewControllerToShowLoginForm" = "Impossible d'afficher le formulaire de connexion";
-"AtlasLoginError.message.requestFailed" = "Requête échouée";
-"AtlasLoginError.title" = "Erreur de connexion";
+"LoginError.message.accessDenied" = "Accès refusé";
+"LoginError.message.missingURL" = "URL de connexion manquante";
+"LoginError.message.missingViewControllerToShowLoginForm" = "Impossible d'afficher le formulaire de connexion";
+"LoginError.message.requestFailed" = "Requête échouée";
+"LoginError.title" = "Erreur de connexion";
 "addressFormView.additional" = "Complément d’adresse";
 "addressFormView.city" = "Ville";
 "addressFormView.country" = "Pays";

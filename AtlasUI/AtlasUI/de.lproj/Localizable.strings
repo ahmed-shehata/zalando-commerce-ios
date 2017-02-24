@@ -20,11 +20,11 @@
 "ConfigurationError.message.missingInterfaceLanguage" = "Fehlende Anzeigensprache";
 "ConfigurationError.message.missingSalesChannel" = "Sales Channel fehlt";
 "ConfigurationError.title" = "Konfigurationsfehler";
-"AtlasLoginError.message.accessDenied" = "Zugriff verweigert";
-"AtlasLoginError.message.missingURL" = "Fehlende Anmelde URL";
-"AtlasLoginError.message.missingViewControllerToShowLoginForm" = "Anmeldeformular kann nicht angezeigt werden";
-"AtlasLoginError.message.requestFailed" = "Anfrage fehlgeschlagen";
-"AtlasLoginError.title" = "Anmeldung fehlgeschlagen";
+"LoginError.message.accessDenied" = "Zugriff verweigert";
+"LoginError.message.missingURL" = "Fehlende Anmelde URL";
+"LoginError.message.missingViewControllerToShowLoginForm" = "Anmeldeformular kann nicht angezeigt werden";
+"LoginError.message.requestFailed" = "Anfrage fehlgeschlagen";
+"LoginError.title" = "Anmeldung fehlgeschlagen";
 "addressFormView.additional" = "Adresszusatz / Firma / c/o";
 "addressFormView.city" = "Stadt";
 "addressFormView.country" = "Land";

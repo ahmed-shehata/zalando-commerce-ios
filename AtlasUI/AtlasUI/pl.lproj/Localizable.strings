@@ -20,11 +20,11 @@
 "ConfigurationError.message.missingInterfaceLanguage" = "Brak języka interfejsu";
 "ConfigurationError.message.missingSalesChannel" = "Brak kanału sprzedaży";
 "ConfigurationError.title" = "Błąd konfiguracji";
-"AtlasLoginError.message.accessDenied" = "Brak dostępu";
-"AtlasLoginError.message.missingURL" = "Brak adresu URL do logowania";
-"AtlasLoginError.message.missingViewControllerToShowLoginForm" = "Nie udało się zaprezentować formularza logowania";
-"AtlasLoginError.message.requestFailed" = "Połączenie nie powiodło się";
-"AtlasLoginError.title" = "Błąd logowania";
+"LoginError.message.accessDenied" = "Brak dostępu";
+"LoginError.message.missingURL" = "Brak adresu URL do logowania";
+"LoginError.message.missingViewControllerToShowLoginForm" = "Nie udało się zaprezentować formularza logowania";
+"LoginError.message.requestFailed" = "Połączenie nie powiodło się";
+"LoginError.title" = "Błąd logowania";
 "addressFormView.additional" = "Infomacje dodatkowe";
 "addressFormView.city" = "Miasto";
 "addressFormView.country" = "Kraj";
