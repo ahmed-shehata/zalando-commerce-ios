@@ -64,7 +64,7 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
                 }
             }
 
-            AtlasUIViewController.shared?.mainNavigationController.pushViewController(paymentViewController, animated: true)
+            AtlasUIViewController.presented?.mainNavigationController.pushViewController(paymentViewController, animated: true)
         }
     }
 
@@ -120,7 +120,7 @@ extension GuestCheckoutSummaryActionHandler {
             case .error, .guestRedirect: UserError.display(error: CheckoutError.unclassified)
             }
         }
-        AtlasUIViewController.shared?.mainNavigationController.pushViewController(paymentViewController, animated: true)
+        AtlasUIViewController.presented?.mainNavigationController.pushViewController(paymentViewController, animated: true)
     }
 
     fileprivate func showConfirmationScreen(order: GuestOrder) {

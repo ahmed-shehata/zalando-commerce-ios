@@ -65,7 +65,7 @@ extension AddressFormActionHandler {
         let viewController = AddressCheckViewController(dataModel: dataModel, completion: completion)
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.modalPresentationStyle = .overCurrentContext
-        AtlasUIViewController.shared?.show(navigationController, sender: nil)
+        AtlasUIViewController.presented?.show(navigationController, sender: nil)
     }
 
 }

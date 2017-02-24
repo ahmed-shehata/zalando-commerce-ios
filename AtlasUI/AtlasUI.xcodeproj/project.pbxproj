@@ -408,6 +408,7 @@
 		2256B0C1AAAE60580B37160C27B74A94 /* AtlasUI */ = {
 			isa = PBXGroup;
 			children = (
+				81319D451E5F02D400A39FE0 /* Commons */,
 				030AC42F0C3F5EF6C4EEE430622B1EAC /* Others */,
 				16528EE5F669261E669CCB1331591210 /* Resources */,
 				4C97964529F3E380DC0D91E7093919D9 /* Utils */,
@@ -423,7 +424,6 @@
 		28416D88773780187E0A1F21A416ADD5 = {
 			isa = PBXGroup;
 			children = (
-				81319D451E5F02D400A39FE0 /* Commons */,
 				2256B0C1AAAE60580B37160C27B74A94 /* AtlasUI */,
 				B0658A7A5FA9F75BCDF8341379EB0319 /* AtlasUITests */,
 				DA0E09C384D3DFC0EAFA538EC0BC5B71 /* AtlasUITestsHostsApp */,
@@ -583,7 +583,7 @@
 				81319D501E5F02D400A39FE0 /* URLStringConvertible.swift */,
 			);
 			name = Commons;
-			path = ../AtlasSDK/Commons;
+			path = ../../AtlasSDK/Commons;
 			sourceTree = "<group>";
 		};
 		8142CA9EFFA2460D64D3676DADC7BCA3 /* Authorization */ = {

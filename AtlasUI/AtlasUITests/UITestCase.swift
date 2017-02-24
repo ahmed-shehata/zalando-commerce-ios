@@ -13,11 +13,14 @@ class UITestCase: XCTestCase {
 
     var sku = ConfigSKU(value: "AD541L009-G11")
     var atlasUIViewController: AtlasUIViewController?
+    static var atlasUI: AtlasUI!
+
     var window: UIWindow = {
         let window = UIWindow()
         window.backgroundColor = .white
         return window
     }()
+
     var defaultNavigationController: UINavigationController? {
         return atlasUIViewController?.mainNavigationController
     }
@@ -30,8 +33,11 @@ class UITestCase: XCTestCase {
         waitUntil(timeout: 10) { done in
             let opts = Options.forTests(interfaceLanguage: "en")
             AtlasUI.configure(options: opts) { result in
-                if case let .failure(error) = result {
+                switch result {
+                case .failure(let error):
                     fail(String(describing: error))
+                case .success(let atlasUI):
+                    UITestCase.atlasUI = atlasUI
                 }
                 done()
             }
@@ -56,10 +62,9 @@ class UITestCase: XCTestCase {
 
     func registerAtlasUIViewController(for sku: ConfigSKU) {
         UserError.resetBanners()
-        let atlasUIViewController = AtlasUIViewController(for: sku)
+        let atlasUIViewController = AtlasUIViewController(for: sku, atlasUI: UITestCase.atlasUI)
         self.window.rootViewController = atlasUIViewController
         self.window.makeKeyAndVisible()
-        try! AtlasUI.shared().register { atlasUIViewController }
         _ = atlasUIViewController.view // load the view
         self.atlasUIViewController = atlasUIViewController
     }

@@ -7,13 +7,14 @@ import AtlasSDK
 
 class AtlasUIViewController: UIViewController {
 
-    static var shared: AtlasUIViewController? {
-        return try? AtlasUI.shared().provide()
-    }
+    static var presented: AtlasUIViewController?
 
     let mainNavigationController: UINavigationController
+    let atlasUI: AtlasUI
+
     fileprivate var bottomConstraint: NSLayoutConstraint?
     fileprivate let loaderView = LoaderView()
+
     private let reachabilityNotifier = ReachabilityNotifier()
 
     fileprivate let screenshotCoverView: UIView = {
@@ -22,11 +23,13 @@ class AtlasUIViewController: UIViewController {
         return view
     }()
 
-    init(for sku: ConfigSKU) {
+    init(for sku: ConfigSKU, atlasUI: AtlasUI) {
         let getArticleDetailsViewController = GetArticleDetailsViewController(sku: sku)
-        mainNavigationController = UINavigationController(rootViewController: getArticleDetailsViewController)
+        self.mainNavigationController = UINavigationController(rootViewController: getArticleDetailsViewController)
+        self.atlasUI = atlasUI
 
         super.init(nibName: nil, bundle: nil)
+        AtlasUIViewController.presented = self
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -35,6 +38,7 @@ class AtlasUIViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         UserError.loadBannerError()
         addChildViewController(mainNavigationController)
         view.addSubview(mainNavigationController.view)
@@ -43,6 +47,11 @@ class AtlasUIViewController: UIViewController {
         bottomConstraint = mainNavigationController.view.snap(toView: view, anchor: .bottom)
         mainNavigationController.view.snap(toSuperview: .left)
         reachabilityNotifier.start()
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        cleanPresented()
     }
 
 }
@@ -63,10 +72,28 @@ extension AtlasUIViewController {
     }
 
     static func displayLoader(block: (@escaping () -> Void) -> Void) {
-        shared?.showLoader()
+        presented?.showLoader()
         block {
-            shared?.hideLoader()
+            presented?.hideLoader()
         }
+    }
+
+}
+
+extension AtlasUIViewController {
+
+    // TODO: use it instead of direct mainNavigationController.pushViewController
+    static func push(_ viewController: UIViewController, animated: Bool = true) {
+        AtlasUIViewController.presented?.mainNavigationController.pushViewController(viewController, animated: animated)
+    }
+
+}
+
+extension AtlasUIViewController {
+
+    fileprivate func cleanPresented() {
+        guard parent == nil else { return }
+        AtlasUIViewController.presented = nil
     }
 
 }
@@ -93,8 +120,8 @@ extension AtlasUIViewController: UIScreenshotBuilder {
     private func hideScreenshotCover() {
         UIView.animate(animations: { [weak self] in
             self?.screenshotCoverView.alpha = 0
-            }, completion: { [weak self] _ in
-                self?.screenshotCoverView.removeFromSuperview()
+        }, completion: { [weak self] _ in
+            self?.screenshotCoverView.removeFromSuperview()
         })
     }
 
