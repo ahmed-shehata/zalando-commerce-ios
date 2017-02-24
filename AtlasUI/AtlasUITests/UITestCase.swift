@@ -13,7 +13,7 @@ class UITestCase: XCTestCase {
 
     var sku = ConfigSKU(value: "AD541L009-G11")
     var atlasUIViewController: AtlasUIViewController?
-    static var atlasUI: AtlasUI!
+    var atlasUI: AtlasUI!
 
     var window: UIWindow = {
         let window = UIWindow()
@@ -29,7 +29,9 @@ class UITestCase: XCTestCase {
         super.setUp()
         Nimble.AsyncDefaults.Timeout = 10
         try! AtlasMockAPI.startServer()
+    }
 
+    func registerAtlasUI() {
         waitUntil(timeout: 10) { done in
             let opts = Options.forTests(interfaceLanguage: "en")
             AtlasUI.configure(options: opts) { result in
@@ -37,7 +39,7 @@ class UITestCase: XCTestCase {
                 case .failure(let error):
                     fail(String(describing: error))
                 case .success(let atlasUI):
-                    UITestCase.atlasUI = atlasUI
+                    self.atlasUI = atlasUI
                 }
                 done()
             }
@@ -51,7 +53,8 @@ class UITestCase: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        registerAtlasUIViewController(for: sku)
+        registerAtlasUI()
+        registerAtlasUIViewController(for: self.sku)
         waitForArticleFetch()
     }
 
@@ -62,7 +65,7 @@ class UITestCase: XCTestCase {
 
     func registerAtlasUIViewController(for sku: ConfigSKU) {
         UserError.resetBanners()
-        let atlasUIViewController = AtlasUIViewController(for: sku, atlasUI: UITestCase.atlasUI)
+        let atlasUIViewController = AtlasUIViewController(for: sku, atlasUI: atlasUI)
         self.window.rootViewController = atlasUIViewController
         self.window.makeKeyAndVisible()
         _ = atlasUIViewController.view // load the view
