@@ -104,7 +104,7 @@ extension AtlasAPI {
     public func guestCheckoutPaymentSelectionURL(request: GuestPaymentSelectionRequest,
                                                  completion: @escaping APIResultCompletion<URL>) {
         let endpoint = CreateGuestOrderEndpoint(config: config, parameters: request.toJSON())
-        client.redirect(endpoint: endpoint, completion: completion)
+        client.fetchRedirection(endpoint: endpoint, completion: completion)
     }
 
     public func guestCheckout(with checkoutId: CheckoutId,
