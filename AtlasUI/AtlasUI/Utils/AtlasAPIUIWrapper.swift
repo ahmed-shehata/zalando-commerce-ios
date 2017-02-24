@@ -5,9 +5,7 @@
 import Foundation
 import AtlasSDK
 
-// TODO: Remove "Atlas" from name?
-
-struct AtlasUIClient {
+struct AtlasAPIUIWrapper {
 
     static func customer(completion: @escaping APIResultCompletion<Customer>) {
         AtlasUIViewController.displayLoader { hideLoader in

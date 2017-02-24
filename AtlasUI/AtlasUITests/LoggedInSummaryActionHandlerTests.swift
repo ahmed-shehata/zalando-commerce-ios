@@ -193,9 +193,9 @@ extension LoggedInSummaryActionHandlerTests {
     fileprivate func createActionHandler() -> LoggedInSummaryActionHandler? {
         var loggedInActionHandler: LoggedInSummaryActionHandler?
         waitUntil(timeout: 10) { done in
-            AtlasUIClient.customer { result in
+            AtlasAPIUIWrapper.customer { result in
                 guard let customer = result.process() else { return fail() }
-                AtlasUIClient.article(with: self.sku) { result in
+                AtlasAPIUIWrapper.article(with: self.sku) { result in
                     guard let article = result.process() else { return fail() }
                     self.article = article
                     let selectedArticle = SelectedArticle(article: article, unitIndex: 0, desiredQuantity: 1)
@@ -218,7 +218,7 @@ extension LoggedInSummaryActionHandlerTests {
         guard let article = article else { return nil }
         var cartCheckout: CartCheckout?
         waitUntil(timeout: 10) { done in
-            AtlasUIClient.createCheckoutCart(forSelectedArticle: SelectedArticle(article: article, unitIndex: 0, desiredQuantity: 1)) { result in
+            AtlasAPIUIWrapper.createCheckoutCart(forSelectedArticle: SelectedArticle(article: article, unitIndex: 0, desiredQuantity: 1)) { result in
                 guard let checkoutCart = result.process() else { return fail() }
                 cartCheckout = (cart: checkoutCart.cart, checkout: checkoutCart.checkout)
                 done()
@@ -230,7 +230,7 @@ extension LoggedInSummaryActionHandlerTests {
     fileprivate func getStandardAddress() -> EquatableAddress? {
         var address: EquatableAddress?
         waitUntil(timeout: 10) { done in
-            AtlasUIClient.addresses { result in
+            AtlasAPIUIWrapper.addresses { result in
                 guard let addresses = result.process() else { return fail() }
                 address = addresses.filter { $0.isBillingAllowed }.first
                 done()
@@ -242,7 +242,7 @@ extension LoggedInSummaryActionHandlerTests {
     fileprivate func getPickupPointAddress() -> EquatableAddress? {
         var address: EquatableAddress?
         waitUntil(timeout: 10) { done in
-            AtlasUIClient.addresses { result in
+            AtlasAPIUIWrapper.addresses { result in
                 guard let addresses = result.process() else { return fail() }
                 address = addresses.filter { !$0.isBillingAllowed }.first
                 done()

@@ -35,7 +35,7 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
         }
 
         let request = GuestOrderRequest(checkoutId: checkoutId, token: token)
-        AtlasUIClient.createGuestOrder(request: request) { [weak self] result in
+        AtlasAPIUIWrapper.createGuestOrder(request: request) { [weak self] result in
             guard let order = result.process() else { return }
             self?.handleOrderConfirmation(order: order)
         }
@@ -165,7 +165,7 @@ extension GuestCheckoutSummaryActionHandler {
                                                    shippingAddress: shippingGuestAddress,
                                                    billingAddress: billingGuestAddress,
                                                    cart: cart)
-        AtlasUIClient.guestCheckoutPaymentSelectionURL(request: request) { [weak self] result in
+        AtlasAPIUIWrapper.guestCheckoutPaymentSelectionURL(request: request) { [weak self] result in
             guard let paymentURL = result.process() else { return }
             self?.paymentURL = paymentURL
             completion(paymentURL)
@@ -186,7 +186,7 @@ extension GuestCheckoutSummaryActionHandler {
     }
 
     fileprivate func getGuestCheckout(checkoutId: CheckoutId, token: CheckoutToken) {
-        AtlasUIClient.guestCheckout(with: checkoutId, token: token) { [weak self] result in
+        AtlasAPIUIWrapper.guestCheckout(with: checkoutId, token: token) { [weak self] result in
             guard let guestCheckout = result.process() else { return }
             self?.guestCheckout = guestCheckout
             self?.checkoutId = checkoutId
