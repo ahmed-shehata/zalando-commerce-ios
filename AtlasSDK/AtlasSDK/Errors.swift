@@ -39,7 +39,7 @@ public enum APIError: LocalizableError {
     case http(status: Int, details: String?)
     case backend(status: Int?, type: String?, title: String?, details: String?)
 
-    case checkoutFailed(cart: Cart?, error: Error)
+    case checkoutFailed(cart: Cart, error: Error)
 
 }
 

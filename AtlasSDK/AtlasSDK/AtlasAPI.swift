@@ -22,7 +22,7 @@ public struct AtlasAPI {
 
 // TODO: document it, please...
 
-public typealias CartCheckout = (cart: Cart?, checkout: Checkout?)
+public typealias CartCheckout = (cart: Cart, checkout: Checkout?)
 
 extension AtlasAPI {
 

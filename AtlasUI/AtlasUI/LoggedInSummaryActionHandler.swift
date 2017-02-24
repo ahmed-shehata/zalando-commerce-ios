@@ -51,7 +51,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
 
         createCartCheckout { [weak self] result in
             guard let cartCheckout = result.process() else { return }
-            guard let checkout = cartCheckout.checkout, cartCheckout.cart != nil else {
+            guard let checkout = cartCheckout.checkout else {
                 return UserError.display(error: CheckoutError.unclassified)
             }
 
