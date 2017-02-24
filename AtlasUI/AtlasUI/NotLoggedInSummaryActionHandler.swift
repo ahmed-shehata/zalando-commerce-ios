@@ -14,12 +14,7 @@ class NotLoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
     func handleSubmit() {
         guard let dataSource = dataSource, let delegate = delegate else { return }
 
-        let api = AtlasAPI.shared!
-        api.withLoader(api.customer) { result in
-            print(result)
-        }
-
-        AtlasAPILoader.customer { result in
+        AtlasAPI.withLoader.customer { result in
             guard let customer = result.process() else { return }
 
             let selectedArticle = dataSource.dataModel.selectedArticle

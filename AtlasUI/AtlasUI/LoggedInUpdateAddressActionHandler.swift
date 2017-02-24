@@ -29,7 +29,7 @@ struct LoggedInUpdateAddressActionHandler: AddressFormActionHandler {
                     return
             }
 
-            AtlasAPILoader.updateAddress(with: addressId, request: request) { result in
+            AtlasAPI.withLoader.updateAddress(with: addressId, request: request) { result in
                 guard let address = result.process() else {
                     self.delegate?.addressProcessingFinished()
                     return

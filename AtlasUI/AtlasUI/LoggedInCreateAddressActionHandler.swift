@@ -28,7 +28,7 @@ struct LoggedInCreateAddressActionHandler: AddressFormActionHandler {
                 return
             }
 
-            AtlasAPILoader.createAddress(request) { result in
+            AtlasAPI.withLoader.createAddress(request) { result in
                 guard let address = result.process() else {
                     self.delegate?.addressProcessingFinished()
                     return

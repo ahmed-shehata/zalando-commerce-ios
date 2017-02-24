@@ -58,7 +58,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
             self?.cartCheckout = cartCheckout
 
             if dataSource.dataModel.isPaymentSelected && self?.dataModelDisplayedError == nil {
-                AtlasAPILoader.createOrder(from: checkout.id) { result in
+                AtlasAPI.withLoader.createOrder(from: checkout.id) { result in
                     guard let order = result.process() else { return }
                     self?.handleConfirmation(forOrder: order)
                 }
@@ -93,7 +93,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
     }
 
     func handleShippingAddressSelection() {
-        AtlasAPILoader.addresses { [weak self] result in
+        AtlasAPI.withLoader.addresses { [weak self] result in
             guard let userAddresses = result.process() else { return }
             let addresses: [EquatableAddress] = userAddresses.map { $0 }
             if !addresses.isEmpty {
@@ -107,7 +107,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
     }
 
     func handleBillingAddressSelection() {
-        AtlasAPILoader.addresses { [weak self] result in
+        AtlasAPI.withLoader.addresses { [weak self] result in
             guard let userAddresses = result.process() else { return }
             let addresses: [EquatableAddress] = userAddresses.filter { $0.isBillingAllowed } .map { $0 }
             if !addresses.isEmpty {
@@ -234,7 +234,7 @@ extension LoggedInSummaryActionHandler {
                                                addresses: CheckoutAddresses? = nil,
                                                completion: @escaping ResultCompletion<CartCheckout>) {
 
-        AtlasAPILoader.createCheckoutCart(forSelectedArticle: selectedArticle, addresses: addresses) { result in
+        AtlasAPI.withLoader.createCheckoutCart(forSelectedArticle: selectedArticle, addresses: addresses) { result in
             switch result {
             case .failure(let error, _):
                 guard case let APIError.checkoutFailed(cart, _) = error else {
