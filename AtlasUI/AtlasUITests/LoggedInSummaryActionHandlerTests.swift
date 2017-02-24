@@ -276,7 +276,7 @@ extension LoggedInSummaryActionHandlerTests {
     }
 
     fileprivate func createDataModel(fromCartCheckout cartCheckout: CartCheckout?) -> CheckoutSummaryDataModel? {
-        let totalPrice = cartCheckout?.cart?.grossTotal ?? Money.Zero
+        let totalPrice = cartCheckout?.cart.grossTotal ?? Money.Zero
         return createDataModel(fromCheckout: cartCheckout?.checkout, totalPrice: totalPrice)
     }
 
