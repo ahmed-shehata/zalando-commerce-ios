@@ -53,7 +53,7 @@ class AddressFormViewController: UIViewController {
             navigationController.modalPresentationStyle = .overCurrentContext
             AtlasUIViewController.presented?.show(navigationController, sender: nil)
         } else {
-            AtlasUIViewController.presented?.mainNavigationController.pushViewController(self, animated: true)
+            AtlasUIViewController.push(self)
         }
     }
 

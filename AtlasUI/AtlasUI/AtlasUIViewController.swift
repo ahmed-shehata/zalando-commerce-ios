@@ -7,7 +7,7 @@ import AtlasSDK
 
 class AtlasUIViewController: UIViewController {
 
-    static var presented: AtlasUIViewController?
+    fileprivate(set) static var presented: AtlasUIViewController?
 
     let mainNavigationController: UINavigationController
     let atlasUI: AtlasUI
@@ -29,7 +29,6 @@ class AtlasUIViewController: UIViewController {
         self.atlasUI = atlasUI
 
         super.init(nibName: nil, bundle: nil)
-        AtlasUIViewController.presented = self
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -39,6 +38,8 @@ class AtlasUIViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        storePresented()
+
         UserError.loadBannerError()
         addChildViewController(mainNavigationController)
         view.addSubview(mainNavigationController.view)
@@ -47,11 +48,6 @@ class AtlasUIViewController: UIViewController {
         bottomConstraint = mainNavigationController.view.snap(toView: view, anchor: .bottom)
         mainNavigationController.view.snap(toSuperview: .left)
         reachabilityNotifier.start()
-    }
-
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        cleanPresented()
     }
 
 }
@@ -82,7 +78,6 @@ extension AtlasUIViewController {
 
 extension AtlasUIViewController {
 
-    // TODO: use it instead of direct mainNavigationController.pushViewController
     static func push(_ viewController: UIViewController, animated: Bool = true) {
         AtlasUIViewController.presented?.mainNavigationController.pushViewController(viewController, animated: animated)
     }
@@ -91,9 +86,8 @@ extension AtlasUIViewController {
 
 extension AtlasUIViewController {
 
-    fileprivate func cleanPresented() {
-        guard parent == nil else { return }
-        AtlasUIViewController.presented = nil
+    func storePresented() {
+        AtlasUIViewController.presented = self
     }
 
 }

@@ -89,7 +89,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
             }
         }
 
-        AtlasUIViewController.presented?.mainNavigationController.pushViewController(paymentViewController, animated: true)
+        AtlasUIViewController.push(paymentViewController)
     }
 
     func handleShippingAddressSelection() {
@@ -148,7 +148,7 @@ extension LoggedInSummaryActionHandler {
         addressViewController.addressSelectedHandler = { [weak self] in self?.select(shippingAddress: $0) }
         addressViewController.actionHandler = LoggedInAddressListActionHandler(addressViewModelCreationStrategy: creationStrategy)
         addressViewController.title = Localizer.format(string: "addressListView.title.shipping")
-        AtlasUIViewController.presented?.mainNavigationController.pushViewController(addressViewController, animated: true)
+        AtlasUIViewController.push(addressViewController)
     }
 
     fileprivate func showAddressListViewController(forBillingAddressWithAddresses addresses: [EquatableAddress]) {
@@ -159,7 +159,7 @@ extension LoggedInSummaryActionHandler {
         addressViewController.addressSelectedHandler = { [weak self] in self?.select(billingAddress: $0) }
         addressViewController.actionHandler = LoggedInAddressListActionHandler(addressViewModelCreationStrategy: creationStrategy)
         addressViewController.title = Localizer.format(string: "addressListView.title.billing")
-        AtlasUIViewController.presented?.mainNavigationController.pushViewController(addressViewController, animated: true)
+        AtlasUIViewController.push(addressViewController)
     }
 
     fileprivate func showCreateAddressForm(strategy: AddressViewModelCreationStrategy, completion: @escaping (EquatableAddress) -> Void) {
@@ -199,7 +199,7 @@ extension LoggedInSummaryActionHandler {
             case .error, .guestRedirect: UserError.display(error: CheckoutError.unclassified)
             }
         }
-        AtlasUIViewController.presented?.mainNavigationController.pushViewController(paymentViewController, animated: true)
+        AtlasUIViewController.push(paymentViewController)
     }
 
     fileprivate func presentConfirmationScreen(for order: Order) {

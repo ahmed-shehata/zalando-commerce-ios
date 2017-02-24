@@ -99,7 +99,7 @@ extension Localizer {
     }
 
     private static var shared: Localizer {
-        return (try? AtlasUI.shared().localizer) ?? Localizer.fromFallbackLocale
+        return (try? AtlasUI.fromPresented().localizer) ?? Localizer.fromFallbackLocale
     }
 
     static func format(string: String, _ formatArguments: [CVarArg?]) -> String {

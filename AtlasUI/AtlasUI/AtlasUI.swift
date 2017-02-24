@@ -59,14 +59,14 @@ final public class AtlasUI {
 extension AtlasAPI {
 
     static var shared: AtlasAPI? {
-        return try? AtlasUI.shared().api
+        return try? AtlasUI.fromPresented().api
     }
 
 }
 
 extension AtlasUI {
 
-    static func shared() throws -> AtlasUI {
+    static func fromPresented() throws -> AtlasUI {
         guard let controller = AtlasUIViewController.presented else { throw Error.notPresented }
         return controller.atlasUI
     }
