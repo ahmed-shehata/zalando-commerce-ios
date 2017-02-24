@@ -32,7 +32,7 @@ final public class AtlasUI {
         self.register { localizer }
     }
 
-    public static func configure(options: Options? = nil, completion: @escaping Result<AtlasUI>) {
+    public static func configure(options: Options? = nil, completion: @escaping ResultCompletion<AtlasUI>) {
         Atlas.configure(options: options) { result in
             switch result {
             case .failure(let error):

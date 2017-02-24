@@ -36,7 +36,7 @@
 		3AC4DDA62D4BECDCE2166F9109EE75A2 /* AtlasSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2FC0AE7631C1F62076EA9FCAEEE5C9 /* AtlasSDK.framework */; };
 		3B764862C63DB1FAF1CDE72BDE37D661 /* FormattableAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCBCCBB4FB49BE6429AD9E29F595747 /* FormattableAddress.swift */; };
 		3DA9EC5BB5FB16AB5C8D0D054D1B8538 /* CheckoutSummaryActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF07350B5BD61F52DB61E240874FCAF4 /* CheckoutSummaryActionHandler.swift */; };
-		3ED1FCFD38D86B0362C9C9F9E06B6027 /* AtlasReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EED7D8EF8D5EB7448D7EF047681628A /* AtlasReachability.swift */; };
+		3ED1FCFD38D86B0362C9C9F9E06B6027 /* ReachabilityNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EED7D8EF8D5EB7448D7EF047681628A /* ReachabilityNotifier.swift */; };
 		4342464869E446FBC18FE72A79CC55B5 /* ActionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BDFF5745C6C2E352983C027B78A69C /* ActionTextField.swift */; };
 		4434BCFA43868F4DBFCFF8980581F9AC /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCAC0AB68C0265B9B9D4ECA7B7F2200 /* UIImageView.swift */; };
 		4442511A2AF02FD40FC40BC05C218390 /* RowStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CB4C81CA4C4D974A97FC44B63E490C /* RowStackView.swift */; };
@@ -69,6 +69,7 @@
 		78FC61A7719B1F7E9477B4BDE0F9B45A /* AtlasAPIUIWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676B41DF9EC48A113436B2F194DB7AFE /* AtlasAPIUIWrapper.swift */; };
 		79175AD49456E48DC6B393EB6F62053A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC182F5F2F24D9AF740830B9B50A9 /* UIColor.swift */; };
 		7EAC423199880152256E9D66A34235A6 /* URLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEA406BC5B7419EC0637024DDA9D15 /* URLTests.swift */; };
+		8103F2FE1E6048C700494D6F /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8103F2FD1E6048C700494D6F /* Typealiases.swift */; };
 		81319D511E5F02D400A39FE0 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81319D461E5F02D400A39FE0 /* Bundle.swift */; };
 		81319D531E5F02D400A39FE0 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81319D481E5F02D400A39FE0 /* Debug.swift */; };
 		81319D541E5F02D400A39FE0 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81319D491E5F02D400A39FE0 /* HTTP.swift */; };
@@ -233,7 +234,7 @@
 		4A0B9F3975B377636E8FAA343F4B94D4 /* CheckoutSummaryGuestStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryGuestStackView.swift; sourceTree = "<group>"; };
 		4A8C9879EBFF2EF7FDC57EF9AEB85BEF /* PaymentStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentStatus.swift; sourceTree = "<group>"; };
 		4EDCE5D7080248D2C8410C3760876C9A /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
-		4EED7D8EF8D5EB7448D7EF047681628A /* AtlasReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasReachability.swift; sourceTree = "<group>"; };
+		4EED7D8EF8D5EB7448D7EF047681628A /* ReachabilityNotifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityNotifier.swift; sourceTree = "<group>"; };
 		516FBBE5C6D50ED98656F3EDA7EB6C06 /* CheckoutTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutTransitioningDelegate.swift; sourceTree = "<group>"; };
 		51B1CD594BE0AFFDF8587372BC49280A /* PaymentViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewControllerTests.swift; sourceTree = "<group>"; };
 		52A26AACC32143945E59B862CBDB3626 /* PaymentSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentSelectionViewController.swift; sourceTree = "<group>"; };
@@ -257,6 +258,7 @@
 		7D413AA8D706466A7F6D5D54306F7CB5 /* UIViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewTests.swift; sourceTree = "<group>"; };
 		808C394E80E745736133ADBD0E2938C8 /* AtlasUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AtlasUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80F13460B6B17606CC65E38CE6A4716C /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		8103F2FD1E6048C700494D6F /* Typealiases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
 		81319D461E5F02D400A39FE0 /* Bundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		81319D481E5F02D400A39FE0 /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		81319D491E5F02D400A39FE0 /* HTTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
@@ -413,6 +415,7 @@
 				94F33C041120EF12B441AE2E84A48050 /* Assets.xcassets */,
 				B4336683D271015A0D953F7AE4D97E05 /* AtlasUI.swift */,
 				DBCD16D68816C1E45EC44175CDD43DA5 /* UserPresentableError.swift */,
+				8103F2FD1E6048C700494D6F /* Typealiases.swift */,
 			);
 			path = AtlasUI;
 			sourceTree = "<group>";
@@ -475,7 +478,7 @@
 				B35DF21D6C80C8890DF784B76CEAEA63 /* AnimationDuration.swift */,
 				971465BF293DCFB809C2B0F1512B4CE3 /* Async.swift */,
 				5A58904741B812272DD3C84E76C47A5D /* APIResult.swift */,
-				4EED7D8EF8D5EB7448D7EF047681628A /* AtlasReachability.swift */,
+				8103F2FF1E604AF300494D6F /* Reachability */,
 				4EDCE5D7080248D2C8410C3760876C9A /* Result.swift */,
 				676B41DF9EC48A113436B2F194DB7AFE /* AtlasAPIUIWrapper.swift */,
 				D4F1679B8BB8A951B60D19AD947CD5BA /* CGRect.swift */,
@@ -484,21 +487,11 @@
 				82D2ADD240889020E56AC601593CC418 /* FormValidator.swift */,
 				B5494239851A207094AA7E1F76EFB842 /* Injector.swift */,
 				A57EEEDE1D66FC2ED33D1A99DC35A792 /* Localizer.swift */,
-				E41B27C43618EA0DDB39A32A0DE9108F /* NSAttributedString.swift */,
 				E4A59A1AD107F8BD8B6165ADBA18AAC8 /* PickupPoint.swift */,
-				1D979FCCB7C4E538EBB7521909C35D17 /* Reachability.swift */,
 				4475607CB5E8B6F4DD5F143C36C4B5AA /* StreetAddress.swift */,
 				77FEB9F822022119C7EEC519A0FBC70F /* URL-QueryItem.swift */,
-				FCE97CB84083DD00DA5045AB38EA0038 /* UIApplication.swift */,
+				8103F3001E604B1100494D6F /* Extensions */,
 				640810DC34806DF7B0FBAEA4DB0123CD /* UIBuilder.swift */,
-				27ADC182F5F2F24D9AF740830B9B50A9 /* UIColor.swift */,
-				D75D08FA19584BED428A8A22AAAEC46A /* UIDevice.swift */,
-				417B9ADA720A948E8E1F8F875F349D62 /* UIImage.swift */,
-				5FCAC0AB68C0265B9B9D4ECA7B7F2200 /* UIImageView.swift */,
-				1ADD469E887E515E90E83A58BD2B418A /* UIScreen.swift */,
-				80F13460B6B17606CC65E38CE6A4716C /* UITableView.swift */,
-				0EA19C45C79A94472331D134BC9895CA /* UIView.swift */,
-				770C7E3629382BA8B0B01FB29599C2CC /* UIViewController.swift */,
 				764CDA794B49DC585B031C7C4F5776D5 /* UserMessage.swift */,
 				C8D02657EBF2B7CF82DA1A37CFD2CB81 /* UserError.swift */,
 			);
@@ -547,6 +540,32 @@
 				A66D969F2F12A9B65C02F88E68B0C1B9 /* AddressBookImportDataModelCreationStrategy.swift */,
 			);
 			name = "Address Data Model Creation Strategy";
+			sourceTree = "<group>";
+		};
+		8103F2FF1E604AF300494D6F /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				4EED7D8EF8D5EB7448D7EF047681628A /* ReachabilityNotifier.swift */,
+				1D979FCCB7C4E538EBB7521909C35D17 /* Reachability.swift */,
+			);
+			name = Reachability;
+			sourceTree = "<group>";
+		};
+		8103F3001E604B1100494D6F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E41B27C43618EA0DDB39A32A0DE9108F /* NSAttributedString.swift */,
+				FCE97CB84083DD00DA5045AB38EA0038 /* UIApplication.swift */,
+				27ADC182F5F2F24D9AF740830B9B50A9 /* UIColor.swift */,
+				D75D08FA19584BED428A8A22AAAEC46A /* UIDevice.swift */,
+				417B9ADA720A948E8E1F8F875F349D62 /* UIImage.swift */,
+				5FCAC0AB68C0265B9B9D4ECA7B7F2200 /* UIImageView.swift */,
+				1ADD469E887E515E90E83A58BD2B418A /* UIScreen.swift */,
+				80F13460B6B17606CC65E38CE6A4716C /* UITableView.swift */,
+				0EA19C45C79A94472331D134BC9895CA /* UIView.swift */,
+				770C7E3629382BA8B0B01FB29599C2CC /* UIViewController.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		81319D451E5F02D400A39FE0 /* Commons */ = {
@@ -1036,7 +1055,7 @@
 				5DED28D7802BD220B0257647BE4A6BA7 /* AddressListTableDelegate.swift in Sources */,
 				B3D569E6C1987E5B7E45D7A20894FBF6 /* NSAttributedString.swift in Sources */,
 				8D9714FE58E50B7BC699060466CEF934 /* FormValidator.swift in Sources */,
-				3ED1FCFD38D86B0362C9C9F9E06B6027 /* AtlasReachability.swift in Sources */,
+				3ED1FCFD38D86B0362C9C9F9E06B6027 /* ReachabilityNotifier.swift in Sources */,
 				DB1FF5AD63720617BBE6FAE4F492124A /* UIDevice.swift in Sources */,
 				7629410B747CDC9D6FD8015EAE15F936 /* FullScreenErrorViewController.swift in Sources */,
 				E7104162C24E090BB2577B307992B090 /* PickupPoint.swift in Sources */,
@@ -1060,6 +1079,7 @@
 				864F340AF805B09712DAB1A854B45608 /* LoggedInUpdateAddressActionHandler.swift in Sources */,
 				51168C95E883C1FB646A3EB2509FDCF9 /* AddressCheckRowButton.swift in Sources */,
 				ACA27CD89DD3C13E1FC00CAAF5849989 /* AddressListActionHandler.swift in Sources */,
+				8103F2FE1E6048C700494D6F /* Typealiases.swift in Sources */,
 				16954EEE7CCDD0CE9815224EA8FF317E /* LoggedInCreateAddressActionHandler.swift in Sources */,
 				81319D5A1E5F02D400A39FE0 /* URLRequest.swift in Sources */,
 				546BE9B7EEFAC9AF8CDA82D115AAB5E0 /* AddressDataModelCreationStrategy.swift in Sources */,

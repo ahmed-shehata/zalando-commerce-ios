@@ -26,8 +26,6 @@ enum CheckoutSummaryArticleRefineType {
 
 }
 
-typealias CheckoutSummaryArticleRefineCompletion = (Int) -> Void
-
 class CheckoutSummaryArticleSelectCollectionView: UICollectionView {
 
     var selectedArticle: SelectedArticle?

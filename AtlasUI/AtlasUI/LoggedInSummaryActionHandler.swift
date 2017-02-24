@@ -5,9 +5,6 @@
 import Foundation
 import AtlasSDK
 
-typealias LoggedInSummaryActionHandlerCompletion = (Result<LoggedInSummaryActionHandler>) -> Void
-typealias CreateCartCheckoutCompletion = (Result<CartCheckout>) -> Void
-
 class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
 
     let customer: Customer
@@ -24,7 +21,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
     fileprivate var addressCreationStrategy: AddressViewModelCreationStrategy?
 
     static func create(customer: Customer, selectedArticle: SelectedArticle,
-                       completion: @escaping LoggedInSummaryActionHandlerCompletion) {
+                       completion: @escaping ResultCompletion<LoggedInSummaryActionHandler>) {
         LoggedInSummaryActionHandler.createCartCheckout(selectedArticle: selectedArticle) { result in
             switch result {
             case .success(let cartCheckout):
@@ -226,7 +223,7 @@ extension LoggedInSummaryActionHandler {
 // MARK: – Create CartCheckout
 extension LoggedInSummaryActionHandler {
 
-    fileprivate func createCartCheckout(completion: @escaping CreateCartCheckoutCompletion) {
+    fileprivate func createCartCheckout(completion: @escaping ResultCompletion<CartCheckout>) {
         guard let selectedArticle = dataSource?.dataModel.selectedArticle else { return }
         LoggedInSummaryActionHandler.createCartCheckout(selectedArticle: selectedArticle,
                                                         addresses: addresses,
@@ -235,7 +232,7 @@ extension LoggedInSummaryActionHandler {
 
     fileprivate static func createCartCheckout(selectedArticle: SelectedArticle,
                                                addresses: CheckoutAddresses? = nil,
-                                               completion: @escaping CreateCartCheckoutCompletion) {
+                                               completion: @escaping ResultCompletion<CartCheckout>) {
 
         AtlasAPIUIWrapper.createCheckoutCart(forSelectedArticle: selectedArticle, addresses: addresses) { result in
             switch result {

@@ -8,6 +8,7 @@ import UIKit
 typealias TextFieldChangedHandler = (String?) -> Void
 
 struct TextFieldInputViewModel {
+
     let title: String
     let value: String?
     let accessibilityIdentifier: String
@@ -46,6 +47,7 @@ struct TextFieldInputViewModel {
         self.valueChangedHandler = valueChangedHandler
         self.keyboardType = keyboardType
     }
+
 }
 
 extension ActionTextField {

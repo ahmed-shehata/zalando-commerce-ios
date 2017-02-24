@@ -5,8 +5,6 @@
 import Foundation
 import AtlasSDK
 
-typealias AddressViewModelCreationStrategyCompletion = (_ addressViewModel: AddressFormViewModel) -> Void
-
 protocol AddressViewModelCreationStrategy {
 
     var strategyCompletion: AddressViewModelCreationStrategyCompletion? { get set }

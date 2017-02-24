@@ -5,15 +5,12 @@
 import UIKit
 import AtlasSDK
 
-typealias WebViewFinishedLoadCompletion = (UIWebView) -> Void
-typealias AuthorizationResult = Result<AuthorizationToken>
-
 final class OAuth2LoginViewController: UIViewController {
 
     fileprivate let loginURL: URL
 
-    fileprivate let loginCompletion: AuthorizationCompletion?
-    fileprivate var webViewFinishedLoadCompletion: WebViewFinishedLoadCompletion?
+    fileprivate let loginCompletion: ResultCompletion<AuthorizationToken>?
+    fileprivate var webViewFinishedLoadCompletion: Completion<UIWebView>?
     fileprivate var webViewDidFinishedLoad = false
 
     fileprivate lazy var webView: UIWebView = {
@@ -24,7 +21,7 @@ final class OAuth2LoginViewController: UIViewController {
         return webView
     }()
 
-    init(loginURL: URL, completion: AuthorizationCompletion? = nil) {
+    init(loginURL: URL, completion: ResultCompletion<AuthorizationToken>? = nil) {
         self.loginURL = loginURL
         self.loginCompletion = completion
         super.init(nibName: nil, bundle: nil)
@@ -49,11 +46,11 @@ final class OAuth2LoginViewController: UIViewController {
     }
 
     @discardableResult
-    fileprivate func dismissViewController(withFailure error: AtlasLoginError, animated: Bool = true) -> Bool {
+    fileprivate func dismissViewController(withFailure error: LoginError, animated: Bool = true) -> Bool {
         return dismissViewController(with: .failure(error), animated: animated)
     }
 
-    fileprivate func dismissViewController(with result: AuthorizationResult, animated: Bool = true) -> Bool {
+    fileprivate func dismissViewController(with result: Result<AuthorizationToken>, animated: Bool = true) -> Bool {
         dismiss(animated: animated) {
             self.loginCompletion?(result)
         }

@@ -11,6 +11,8 @@ public typealias CheckoutId = String
 public typealias CheckoutToken = String
 public typealias CustomerNumber = String
 
+public typealias AuthorizationToken = String
+
 public typealias AddressId = String
 public typealias BillingAddress = EquatableAddress
 public typealias ShippingAddress = EquatableAddress

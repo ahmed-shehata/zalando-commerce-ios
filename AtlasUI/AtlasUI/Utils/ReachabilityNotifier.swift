@@ -5,13 +5,11 @@
 import UIKit
 import AtlasSDK
 
-// TODO: Check: Remove "Atlas" from name
-
-class AtlasReachability {
+class ReachabilityNotifier {
 
     fileprivate var reachability: Reachability?
 
-    func setupReachability() {
+    func start() {
         guard let reachability = Reachability(), !UIApplication.unitTestsAreRunning else { return }
 
         reachability.whenReachable = { _ in
