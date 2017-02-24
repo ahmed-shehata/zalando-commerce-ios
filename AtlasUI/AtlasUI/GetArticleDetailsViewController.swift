@@ -25,7 +25,7 @@ class GetArticleDetailsViewController: UIViewController {
     }
 
     private func fetchArticle() {
-        AtlasAPIUIWrapper.article(with: self.sku) { [weak self] result in
+        AtlasAPILoader.article(with: self.sku) { [weak self] result in
             guard let article = result.process(presentationMode: .fullScreen) else { return }
             self?.showSummaryView(article: article)
         }
@@ -48,7 +48,7 @@ class GetArticleDetailsViewController: UIViewController {
             return
         }
 
-        AtlasAPIUIWrapper.customer { [weak self] customerResult in
+        AtlasAPILoader.customer { [weak self] customerResult in
             guard let customer = customerResult.process(presentationMode: .fullScreen) else { return }
 
             LoggedInSummaryActionHandler.create(customer: customer, selectedArticle: selectedArticle) { actionHandlerResult in

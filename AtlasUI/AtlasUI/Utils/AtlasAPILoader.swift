@@ -5,7 +5,7 @@
 import Foundation
 import AtlasSDK
 
-struct AtlasAPIUIWrapper {
+struct AtlasAPILoader {
 
     static func customer(completion: @escaping APIResultCompletion<Customer>) {
         AtlasUIViewController.displayLoader { hideLoader in

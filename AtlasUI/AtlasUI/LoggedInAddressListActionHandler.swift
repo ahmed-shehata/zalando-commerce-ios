@@ -38,7 +38,7 @@ class LoggedInAddressListActionHandler: AddressListActionHandler {
     }
 
     func delete(address: EquatableAddress) {
-        AtlasAPIUIWrapper.deleteAddress(with: address.id) { [weak self] result in
+        AtlasAPILoader.deleteAddress(with: address.id) { [weak self] result in
             guard let _ = result.process() else { return }
             self?.delegate?.deleted(address: address)
         }

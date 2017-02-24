@@ -66,7 +66,7 @@
 		741EC48BAB61E2D18DB9628A0AD4C28A /* AtlasMockAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB50EAB4D0B50A73E0673740617BEDE3 /* AtlasMockAPI.framework */; };
 		7629410B747CDC9D6FD8015EAE15F936 /* FullScreenErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B9AEFEA853EB9FD83162CF1D3F62CC /* FullScreenErrorViewController.swift */; };
 		762DC13A84D281643B2D3A49D326A581 /* TestOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2695B7C8FBB8417D675C4A32DB2013A2 /* TestOptions.swift */; };
-		78FC61A7719B1F7E9477B4BDE0F9B45A /* AtlasAPIUIWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676B41DF9EC48A113436B2F194DB7AFE /* AtlasAPIUIWrapper.swift */; };
+		78FC61A7719B1F7E9477B4BDE0F9B45A /* AtlasAPILoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676B41DF9EC48A113436B2F194DB7AFE /* AtlasAPILoader.swift */; };
 		79175AD49456E48DC6B393EB6F62053A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC182F5F2F24D9AF740830B9B50A9 /* UIColor.swift */; };
 		7EAC423199880152256E9D66A34235A6 /* URLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEA406BC5B7419EC0637024DDA9D15 /* URLTests.swift */; };
 		8103F2FE1E6048C700494D6F /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8103F2FD1E6048C700494D6F /* Typealiases.swift */; };
@@ -247,7 +247,7 @@
 		5E59C0CF4169C9E442317220C6EA5939 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5FCAC0AB68C0265B9B9D4ECA7B7F2200 /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		640810DC34806DF7B0FBAEA4DB0123CD /* UIBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBuilder.swift; sourceTree = "<group>"; };
-		676B41DF9EC48A113436B2F194DB7AFE /* AtlasAPIUIWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasAPIUIWrapper.swift; sourceTree = "<group>"; };
+		676B41DF9EC48A113436B2F194DB7AFE /* AtlasAPILoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasAPILoader.swift; sourceTree = "<group>"; };
 		71F92A2A6183E6040FA688CC26ACB3EE /* AtlasUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasUIViewController.swift; sourceTree = "<group>"; };
 		733421E924B47BF0FE5766446A269719 /* TextFieldInputStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldInputStackView.swift; sourceTree = "<group>"; };
 		764CDA794B49DC585B031C7C4F5776D5 /* UserMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMessage.swift; sourceTree = "<group>"; };
@@ -480,7 +480,7 @@
 				5A58904741B812272DD3C84E76C47A5D /* APIResult.swift */,
 				8103F2FF1E604AF300494D6F /* Reachability */,
 				4EDCE5D7080248D2C8410C3760876C9A /* Result.swift */,
-				676B41DF9EC48A113436B2F194DB7AFE /* AtlasAPIUIWrapper.swift */,
+				676B41DF9EC48A113436B2F194DB7AFE /* AtlasAPILoader.swift */,
 				D4F1679B8BB8A951B60D19AD947CD5BA /* CGRect.swift */,
 				079F5EB0A67A527798FFCC6CF49C699F /* CNPostalAddress.swift */,
 				EFCBCCBB4FB49BE6429AD9E29F595747 /* FormattableAddress.swift */,
@@ -1086,7 +1086,7 @@
 				5440F29601B89ECD4870C7BDC596ACD9 /* CheckoutSummaryOrderStackView.swift in Sources */,
 				50D0665E684FA0194A0933ECABB18F48 /* CheckoutSummaryGuestStackView.swift in Sources */,
 				4442511A2AF02FD40FC40BC05C218390 /* RowStackView.swift in Sources */,
-				78FC61A7719B1F7E9477B4BDE0F9B45A /* AtlasAPIUIWrapper.swift in Sources */,
+				78FC61A7719B1F7E9477B4BDE0F9B45A /* AtlasAPILoader.swift in Sources */,
 				D9CE3553FFE09F2A82794C7A9E45F4F1 /* TextFieldInputStackView.swift in Sources */,
 				D1597746177CEB8207EFB773413174DF /* TextFieldInputViewModel.swift in Sources */,
 				8D8609A7F30C9F7D15E5E4A905BE4529 /* ToCViewController.swift in Sources */,

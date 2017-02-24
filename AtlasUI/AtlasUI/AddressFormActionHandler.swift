@@ -32,7 +32,7 @@ extension AddressFormActionHandler {
                 return
         }
 
-        AtlasAPIUIWrapper.checkAddress(request) { result in
+        AtlasAPILoader.checkAddress(request) { result in
             guard let checkAddressResponse = result.process() else {
                 completion(.error)
                 return
