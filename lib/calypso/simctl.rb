@@ -154,9 +154,7 @@ module Calypso
 
       selected_runtimes = unless name.nil?
                             requested_runtimes = available_runtimes.select { |runtime| runtime['name'] == name }
-                            if requested_runtimes.length == 0
-                              log "No simulators created, \"#{name}\" not found"
-                            end
+                            log_abort "Error: No runtimes for \"#{name}\" found" if requested_runtimes.empty?
                             requested_runtimes
                           else
                             available_runtimes
