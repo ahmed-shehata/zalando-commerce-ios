@@ -26,7 +26,7 @@ class APICreateCheckoutTests: AtlasAPIClientBaseTests {
                         case .failure(let error):
                             fail(String(describing: error))
                         case .success(let result):
-                            expect(result.checkout.id) == self.checkoutId
+                            expect(result.checkout?.id) == self.checkoutId
                         }
                         done()
                     }

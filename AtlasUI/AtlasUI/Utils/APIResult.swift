@@ -14,7 +14,7 @@ public enum ProcessedAtlasAPIResult<T> {
 
 }
 
-extension AtlasAPIResult {
+extension APIResult {
 
     public func processedResult() -> ProcessedAtlasAPIResult<T> {
         switch self {
@@ -22,7 +22,7 @@ extension AtlasAPIResult {
             return .success(data)
         case .failure(let error, var apiRequest):
             switch error {
-            case AtlasAPIError.unauthorized:
+            case APIError.unauthorized:
                 let authorizationHandler = OAuth2AuthorizationHandler()
                 authorizationHandler.authorize { result in
                     switch result {
@@ -39,7 +39,7 @@ extension AtlasAPIResult {
                 }
                 return .handledInternally
             default:
-                let userPresentable = error as? UserPresentableError ?? AtlasCheckoutError.unclassified
+                let userPresentable = error as? UserPresentableError ?? CheckoutError.unclassified
                 return .error(error: error, title: userPresentable.displayedTitle, message: userPresentable.displayedMessage)
             }
         }

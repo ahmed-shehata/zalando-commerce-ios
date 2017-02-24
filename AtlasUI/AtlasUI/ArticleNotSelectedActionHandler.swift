@@ -35,7 +35,7 @@ class ArticleNotSelectedActionHandler: CheckoutSummaryActionHandler {
             return
         }
 
-        AtlasUIClient.customer { [weak self] customerResult in
+        AtlasAPI.withLoader.customer { [weak self] customerResult in
             guard let customer = customerResult.process() else { return }
 
             LoggedInSummaryActionHandler.create(customer: customer, selectedArticle: selectedArticle) { actionHandlerResult in

@@ -12,7 +12,7 @@ enum PresentationMode {
 
 }
 
-protocol UserPresentableError: AtlasError {
+protocol UserPresentableError: LocalizableError {
 
     var customMessage: String? { get }
     var shouldDisplayGeneralMessage: Bool { get }
@@ -35,11 +35,11 @@ extension UserPresentableError {
     }
 
     var displayedTitle: String {
-        return shouldDisplayGeneralMessage ? Localizer.format(string: "AtlasCheckoutError.title") : title()
+        return shouldDisplayGeneralMessage ? Localizer.format(string: "CheckoutError.title") : title()
     }
 
     var displayedMessage: String {
-        return shouldDisplayGeneralMessage ? Localizer.format(string: "AtlasCheckoutError.message.unclassified") : message()
+        return shouldDisplayGeneralMessage ? Localizer.format(string: "CheckoutError.message.unclassified") : message()
     }
 
     fileprivate func title() -> String {
@@ -54,7 +54,7 @@ extension UserPresentableError {
 
 }
 
-extension AtlasAPIError: UserPresentableError {
+extension APIError: UserPresentableError {
 
     var shouldDisplayGeneralMessage: Bool {
         switch self {
@@ -73,7 +73,7 @@ extension AtlasAPIError: UserPresentableError {
 
 }
 
-extension AtlasCheckoutError: UserPresentableError {
+extension CheckoutError: UserPresentableError {
 
     var shouldDisplayGeneralMessage: Bool {
         return false
@@ -90,13 +90,13 @@ extension AtlasCheckoutError: UserPresentableError {
         switch self {
         case .priceChanged(let newPrice):
             let price = Localizer.format(price: newPrice)
-            return Localizer.format(string: "AtlasCheckoutError.message.priceChanged", price)
+            return Localizer.format(string: "CheckoutError.message.priceChanged", price)
         default: return nil
         }
     }
 
 }
 
-extension AtlasLoginError: UserPresentableError { }
+extension LoginError: UserPresentableError { }
 
-extension AtlasConfigurationError: UserPresentableError { }
+extension ConfigurationError: UserPresentableError { }

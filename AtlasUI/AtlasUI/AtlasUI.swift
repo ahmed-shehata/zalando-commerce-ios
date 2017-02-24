@@ -8,11 +8,9 @@ import AtlasSDK
 
 // TODO: document it, please...
 
-public typealias AtlasUICompletion = (AtlasResult<AtlasUI>) -> Void
-
 final public class AtlasUI {
 
-    public enum Error: AtlasError {
+    public enum Error: LocalizableError {
 
         case notInitialized
 
@@ -34,11 +32,11 @@ final public class AtlasUI {
         self.register { localizer }
     }
 
-    public static func configure(options: Options? = nil, completion: @escaping AtlasUICompletion) {
+    public static func configure(options: Options? = nil, completion: @escaping ResultCompletion<AtlasUI>) {
         Atlas.configure(options: options) { result in
             switch result {
             case .failure(let error):
-                AtlasLogger.logError(error)
+                Logger.error(error)
                 completion(.failure(error))
 
             case .success(let api):
@@ -64,7 +62,7 @@ final public class AtlasUI {
     /// - Throws: `AtlasUI.Error.notInitialized` when `AtlasUI` is not finished `AtlasUI.configure(options:completion:)`
     public func presentCheckout(onViewController viewController: UIViewController, for sku: ConfigSKU) throws {
         guard let _ = AtlasAPI.shared else {
-            AtlasLogger.logError("AtlasUI is not initialized")
+            Logger.error("AtlasUI is not initialized")
             throw AtlasUI.Error.notInitialized
         }
 

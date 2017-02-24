@@ -4,13 +4,7 @@
 
 import Foundation
 
-protocol Configurator {
-
-    func configure(completion: @escaping AtlasConfigCompletion)
-
-}
-
-struct ConfigClient: Configurator {
+struct ConfigClient {
 
     fileprivate let options: Options
 
@@ -18,7 +12,7 @@ struct ConfigClient: Configurator {
         self.options = options
     }
 
-    func configure(completion: @escaping AtlasConfigCompletion) {
+    func configure(completion: @escaping APIResultCompletion<Config>) {
         let requestBuilder = RequestBuilder(forEndpoint: GetConfigEndpoint(url: options.configurationURL))
         var apiRequest = APIRequest<Config>(requestBuilder: requestBuilder) { response in
             guard let json = response.body, let config = Config(json: json, options: self.options) else { return nil }

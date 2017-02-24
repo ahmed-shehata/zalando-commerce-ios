@@ -12,8 +12,6 @@ enum AddressCheckResult {
     case error
 }
 
-typealias AddressCheckViewControllerCompletion = (AddressCheckResult) -> Void
-
 class AddressCheckViewController: UIViewController {
 
     let rootStackView: AddressCheckStackView = {

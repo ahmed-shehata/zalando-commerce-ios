@@ -66,7 +66,7 @@ extension GuestSummaryActionHandlerTests {
     fileprivate func createActionHandler() -> GuestCheckoutSummaryActionHandler? {
         var guestActionHandler: GuestCheckoutSummaryActionHandler?
         waitUntil(timeout: 10) { done in
-            AtlasUIClient.article(with: self.sku) { result in
+            AtlasAPI.withLoader.article(with: self.sku) { result in
                 guard let article = result.process() else { return fail() }
                 let selectedArticle = SelectedArticle(article: article, unitIndex: 0, desiredQuantity: 1)
                 self.mockedDataSourceDelegate = GuestSummaryActionHandlerDataSourceDelegateMocked(selectedArticle: selectedArticle)

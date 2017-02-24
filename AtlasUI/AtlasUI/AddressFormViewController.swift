@@ -5,8 +5,6 @@
 import UIKit
 import AtlasSDK
 
-typealias AddressFormCompletion = (_ address: EquatableAddress, _ email: String?) -> Void
-
 class AddressFormViewController: UIViewController {
 
     let scrollView: KeyboardScrollView = {

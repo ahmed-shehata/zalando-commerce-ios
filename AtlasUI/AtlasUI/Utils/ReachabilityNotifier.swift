@@ -5,11 +5,11 @@
 import UIKit
 import AtlasSDK
 
-class AtlasReachability {
+class ReachabilityNotifier {
 
     fileprivate var reachability: Reachability?
 
-    func setupReachability() {
+    func start() {
         guard let reachability = Reachability(), !UIApplication.unitTestsAreRunning else { return }
 
         reachability.whenReachable = { _ in
@@ -20,14 +20,14 @@ class AtlasReachability {
 
         reachability.whenUnreachable = { _ in
             Async.main {
-                UserError.display(error: AtlasAPIError.noInternet)
+                UserError.display(error: APIError.noInternet)
             }
         }
 
         do {
             try reachability.startNotifier()
         } catch let error {
-            AtlasLogger.logError(error)
+            Logger.error(error)
             return
         }
 

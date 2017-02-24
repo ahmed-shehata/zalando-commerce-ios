@@ -6,21 +6,21 @@ import AtlasSDK
 
 // TODO: document it, please...
 
-public enum ProcessedAtlasResult<T> {
+public enum ProcessedResult<T> {
 
     case success(T)
     case error(error: Error, title: String, message: String)
 
 }
 
-extension AtlasResult {
+extension Result {
 
-    public func processedResult() -> ProcessedAtlasResult<T> {
+    public func processedResult() -> ProcessedResult<T> {
         switch self {
         case .success(let data):
             return .success(data)
         case .failure(let error):
-            let userPresentable = error as? UserPresentableError ?? AtlasCheckoutError.unclassified
+            let userPresentable = error as? UserPresentableError ?? CheckoutError.unclassified
             return .error(error: error, title: userPresentable.displayedTitle, message: userPresentable.displayedMessage)
         }
     }

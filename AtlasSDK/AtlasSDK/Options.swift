@@ -35,10 +35,10 @@ public struct Options {
 
     public func validate() throws {
         if self.clientId.isEmpty {
-            throw AtlasConfigurationError.missingClientId
+            throw ConfigurationError.missingClientId
         }
         if self.salesChannel.isEmpty {
-            throw AtlasConfigurationError.missingSalesChannel
+            throw ConfigurationError.missingSalesChannel
         }
     }
 

@@ -11,7 +11,7 @@ struct DataTaskResponse {
     let data: Data?
     let error: Error?
 
-    fileprivate var logDebug: Bool {
+    fileprivate var printDebug: Bool {
         return ProcessInfo.processInfo.arguments.contains("PRINT_REQUEST_DESCRIPTION")
     }
 
@@ -21,8 +21,8 @@ struct DataTaskResponse {
         self.data = data
         self.error = error
 
-        if logDebug {
-            AtlasLogger.logDebug(self)
+        if printDebug {
+            Logger.debug(self)
         }
     }
 

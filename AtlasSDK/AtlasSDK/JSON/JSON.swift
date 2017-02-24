@@ -33,7 +33,7 @@ struct JSON {
             self.rawObject = try JSONSerialization.jsonObject(with: data, options: options)
             self.isBool = JSON.isBool(object: rawObject)
         } catch let e {
-            AtlasLogger.logError(e)
+            Logger.error(e)
             throw Error.parseError(error: e as NSError)
         }
     }

@@ -26,16 +26,16 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
 
     func handleSubmit() {
         guard hasAddresses else {
-            UserError.display(error: AtlasCheckoutError.missingAddress)
+            UserError.display(error: CheckoutError.missingAddress)
             return
         }
         guard let checkoutId = checkoutId, let token = token else {
-            UserError.display(error: AtlasCheckoutError.missingPaymentMethod)
+            UserError.display(error: CheckoutError.missingPaymentMethod)
             return
         }
 
         let request = GuestOrderRequest(checkoutId: checkoutId, token: token)
-        AtlasUIClient.createGuestOrder(request: request) { [weak self] result in
+        AtlasAPI.withLoader.createGuestOrder(request: request) { [weak self] result in
             guard let order = result.process() else { return }
             self?.handleOrderConfirmation(order: order)
         }
@@ -43,7 +43,7 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
 
     func handlePaymentSelection() {
         guard let callbackURL = AtlasAPI.shared?.config.payment.selectionCallbackURL else {
-            UserError.display(error: AtlasCheckoutError.unclassified)
+            UserError.display(error: CheckoutError.unclassified)
             return
         }
 
@@ -60,7 +60,7 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
                 case .cancel:
                     break
                 case .error, .success:
-                    UserError.display(error: AtlasCheckoutError.unclassified)
+                    UserError.display(error: CheckoutError.unclassified)
                 }
             }
 
@@ -108,7 +108,7 @@ extension GuestCheckoutSummaryActionHandler {
         }
 
         guard let callbackURL = AtlasAPI.shared?.config.payment.thirdPartyCallbackURL else {
-            UserError.display(error: AtlasCheckoutError.unclassified)
+            UserError.display(error: CheckoutError.unclassified)
             return
         }
 
@@ -117,7 +117,7 @@ extension GuestCheckoutSummaryActionHandler {
             switch paymentStatus {
             case .success: self?.showConfirmationScreen(order: order)
             case .redirect, .cancel: break
-            case .error, .guestRedirect: UserError.display(error: AtlasCheckoutError.unclassified)
+            case .error, .guestRedirect: UserError.display(error: CheckoutError.unclassified)
             }
         }
         AtlasUIViewController.shared?.mainNavigationController.pushViewController(paymentViewController, animated: true)
@@ -151,7 +151,7 @@ extension GuestCheckoutSummaryActionHandler {
             let shippingAddress = shippingAddress,
             let billingAddress = billingAddress
             else {
-                UserError.display(error: AtlasCheckoutError.missingAddress)
+                UserError.display(error: CheckoutError.missingAddress)
                 return
         }
 
@@ -165,7 +165,7 @@ extension GuestCheckoutSummaryActionHandler {
                                                    shippingAddress: shippingGuestAddress,
                                                    billingAddress: billingGuestAddress,
                                                    cart: cart)
-        AtlasUIClient.guestCheckoutPaymentSelectionURL(request: request) { [weak self] result in
+        AtlasAPI.withLoader.guestCheckoutPaymentSelectionURL(request: request) { [weak self] result in
             guard let paymentURL = result.process() else { return }
             self?.paymentURL = paymentURL
             completion(paymentURL)
@@ -186,7 +186,7 @@ extension GuestCheckoutSummaryActionHandler {
     }
 
     fileprivate func getGuestCheckout(checkoutId: CheckoutId, token: CheckoutToken) {
-        AtlasUIClient.guestCheckout(with: checkoutId, token: token) { [weak self] result in
+        AtlasAPI.withLoader.guestCheckout(with: checkoutId, token: token) { [weak self] result in
             guard let guestCheckout = result.process() else { return }
             self?.guestCheckout = guestCheckout
             self?.checkoutId = checkoutId

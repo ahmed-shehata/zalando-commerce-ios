@@ -4,8 +4,6 @@
 
 import Foundation
 
-typealias AddressDataModelCreationStrategyCompletion = (AddressFormDataModel) -> Void
-
 protocol AddressDataModelCreationStrategy {
 
     var localizedTitleKey: String { get }

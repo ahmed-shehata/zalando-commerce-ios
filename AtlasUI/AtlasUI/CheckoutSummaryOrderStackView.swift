@@ -102,7 +102,7 @@ extension CheckoutSummaryOrderStackView {
             AtlasUIViewController.shared?.cleanupSubviewsAfterScreenshot()
 
             guard let image = screenshot else {
-                UserError.display(error: AtlasCheckoutError.unclassified)
+                UserError.display(error: CheckoutError.unclassified)
                 return
             }
 
@@ -113,7 +113,7 @@ extension CheckoutSummaryOrderStackView {
 
     func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeMutableRawPointer) {
         AtlasUIViewController.shared?.hideLoader()
-        guard error == nil else { return UserError.display(error: AtlasCheckoutError.photosLibraryAccessNotAllowed) }
+        guard error == nil else { return UserError.display(error: CheckoutError.photosLibraryAccessNotAllowed) }
         showSavedLabel()
     }
 

@@ -12,7 +12,7 @@ public struct APIRequest<Model> {
 
     let requestBuilder: RequestBuilder
     let successHandler: (JSONResponse) -> Model?
-    private var completions: [(AtlasAPIResult<Model>) -> Void] = []
+    private var completions: [(APIResult<Model>) -> Void] = []
 
     init(requestBuilder: RequestBuilder, successHandler: @escaping (JSONResponse) -> Model?) {
         self.requestBuilder = requestBuilder
@@ -22,7 +22,7 @@ public struct APIRequest<Model> {
     /// Executes a request with all stored completions closures in reversed order
     ///
     /// - Parameter completion: closure appended to a completions set
-    public mutating func execute(append completion: @escaping (AtlasAPIResult<Model>) -> Void) {
+    public mutating func execute(append completion: @escaping (APIResult<Model>) -> Void) {
         self.completions.append(completion)
 
         let completions = self.completions.reversed()
@@ -42,7 +42,7 @@ public struct APIRequest<Model> {
                     }
                 } else {
                     DispatchQueue.main.async {
-                        completions.forEach { $0(.failure(AtlasAPIError.invalidResponseFormat, self)) }
+                        completions.forEach { $0(.failure(APIError.invalidResponseFormat, self)) }
                     }
                 }
             }

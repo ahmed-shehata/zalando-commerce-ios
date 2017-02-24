@@ -14,7 +14,7 @@ class AtlasUIViewController: UIViewController {
     let mainNavigationController: UINavigationController
     fileprivate var bottomConstraint: NSLayoutConstraint?
     fileprivate let loaderView = LoaderView()
-    private let atlasReachability = AtlasReachability()
+    private let reachabilityNotifier = ReachabilityNotifier()
 
     fileprivate let screenshotCoverView: UIView = {
         let view = UIView()
@@ -42,7 +42,7 @@ class AtlasUIViewController: UIViewController {
         mainNavigationController.view.snap(toSuperview: .right)
         bottomConstraint = mainNavigationController.view.snap(toView: view, anchor: .bottom)
         mainNavigationController.view.snap(toSuperview: .left)
-        atlasReachability.setupReachability()
+        reachabilityNotifier.start()
     }
 
 }

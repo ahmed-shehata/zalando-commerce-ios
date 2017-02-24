@@ -21,10 +21,10 @@ class AtlasAPIClientErrorsTests: AtlasAPIClientBaseTests {
             api.customer { result in
                 defer { done() }
                 guard case let .failure(error, _) = result else {
-                    return fail("Should emit \(AtlasAPIError.noData)")
+                    return fail("Should emit \(APIError.noData)")
                 }
 
-                expect("\(error)") == "\(AtlasAPIError.noData)"
+                expect("\(error)") == "\(APIError.noData)"
             }
         }
     }
@@ -45,7 +45,7 @@ class AtlasAPIClientErrorsTests: AtlasAPIClientBaseTests {
                 switch result {
                 case .failure(let error, _):
                     switch error {
-                    case AtlasAPIError.unauthorized: break
+                    case APIError.unauthorized: break
                     default: fail("\(error) should be unauthorized")
                     }
                 default: fail("\(result) should be failure")
@@ -66,8 +66,8 @@ class AtlasAPIClientErrorsTests: AtlasAPIClientBaseTests {
             api.customer { result in
                 defer { done() }
                 guard case let .failure(error, _) = result,
-                    case let AtlasAPIError.backend(errorStatus, type, title, details) = error else {
-                        return fail("Should emit AtlasAPIError.backend")
+                    case let APIError.backend(errorStatus, type, title, details) = error else {
+                        return fail("Should emit APIError.backend")
                 }
 
                 expect(errorStatus) == status.rawValue
@@ -88,8 +88,8 @@ class AtlasAPIClientErrorsTests: AtlasAPIClientBaseTests {
             api.customer { result in
                 defer { done() }
                 guard case let .failure(error, _) = result,
-                    case let AtlasAPIError.nsURLError(code, details) = error else {
-                        return fail("Should emit AtlasAPIError.nsURLError")
+                    case let APIError.nsURLError(code, details) = error else {
+                        return fail("Should emit APIError.nsURLError")
                 }
 
                 expect(code) == NSURLErrorBadURL
@@ -107,8 +107,8 @@ class AtlasAPIClientErrorsTests: AtlasAPIClientBaseTests {
             api.customer { result in
                 defer { done() }
                 guard case let .failure(error, _) = result,
-                    case let AtlasAPIError.http(status, _) = error else {
-                        return fail("Should emit AtlasAPIError.http")
+                    case let APIError.http(status, _) = error else {
+                        return fail("Should emit APIError.http")
                 }
 
                 expect(status) == errorStatus.rawValue

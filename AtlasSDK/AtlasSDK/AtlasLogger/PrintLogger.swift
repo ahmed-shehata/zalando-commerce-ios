@@ -4,6 +4,17 @@
 
 import Foundation
 
+protocol LoggerOutput {
+
+    var verbose: Bool { get }
+    var severity: AppLogSeverity { get set }
+    var outputStream: TextOutputStream { get set }
+
+    // swiftlint:disable:next function_parameter_count
+    func log(as severity: AppLogSeverity, verbose: Bool?, function: String, filePath: String, fileLine: Int, _ items: [Any])
+
+}
+
 private extension AppLogSeverity {
 
     func logMark() -> String {
@@ -16,13 +27,13 @@ private extension AppLogSeverity {
 
 }
 
-final class PrintLogger: Logger {
+final class LoggerPrintOutput: LoggerOutput {
 
     var verbose: Bool = false
     var severity: AppLogSeverity = Debug.isEnabled ? .debug : .message
     var outputStream: TextOutputStream = StdoutOutputStream()
 
-    fileprivate let dateFormatter: DateFormatter = {
+    private let dateFormatter: DateFormatter = {
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS"
         return df
@@ -34,13 +45,17 @@ final class PrintLogger: Logger {
         outputStream.print(severity.logMark(), meta, formatMessage(items))
     }
 
-    fileprivate func formatMeta(verbose: Bool, function: String, filePath: String, fileLine: Int) -> String {
+    private func formatMeta(verbose: Bool, function: String, filePath: String, fileLine: Int) -> String {
         guard verbose else {
             return ""
         }
 
         let filename = (filePath as NSString).pathComponents.last ?? "(unknown)"
         return "\(dateFormatter.string(from: Date())) [\(filename):\(fileLine) - \(function)]"
+    }
+
+    private func formatMessage(_ items: [Any], verbose: Bool = false) -> String {
+        return items.map { "\($0)" }.joined(separator: " ")
     }
 
 }
