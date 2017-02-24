@@ -11,7 +11,7 @@ class LoggerTests: XCTestCase {
 
     let loggedMessage = "Logged message"
     var loggerOutput: String? {
-        guard let output = Logger.logger.outputStream as? String else {
+        guard let output = Logger.output.outputStream as? String else {
             fail("No String in logger")
             return nil
         }
@@ -20,52 +20,52 @@ class LoggerTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        Logger.logger.outputStream = ""
+        Logger.output.outputStream = ""
     }
 
     override func tearDown() {
         super.tearDown()
-        Logger.logger.outputStream = StdoutOutputStream()
+        Logger.output.outputStream = StdoutOutputStream()
     }
 
     func testErrorForErrorSeverity() {
-        Logger.logger.severity = .error
+        Logger.output.severity = .error
         Logger.error(loggedMessage)
         expect(self.loggerOutput).to(contain(loggedMessage))
     }
 
     func testMessageForMessageSeverity() {
-        Logger.logger.severity = .message
+        Logger.output.severity = .message
         Logger.message(loggedMessage)
         expect(self.loggerOutput).to(contain(loggedMessage))
     }
 
     func testDebugForDebugSeverity() {
-        Logger.logger.severity = .debug
+        Logger.output.severity = .debug
         Logger.debug(loggedMessage)
         expect(self.loggerOutput).to(contain(loggedMessage))
     }
 
     func testMessageForErrorSeverity() {
-        Logger.logger.severity = .error
+        Logger.output.severity = .error
         Logger.message(loggedMessage)
         expect(self.loggerOutput).toNot(contain(loggedMessage))
     }
 
     func testDebugForErrorSeverity() {
-        Logger.logger.severity = .error
+        Logger.output.severity = .error
         Logger.debug(loggedMessage)
         expect(self.loggerOutput).toNot(contain(loggedMessage))
     }
 
     func testDebugForMessageSeverity() {
-        Logger.logger.severity = .message
+        Logger.output.severity = .message
         Logger.debug(loggedMessage)
         expect(self.loggerOutput).toNot(contain(loggedMessage))
     }
 
     func testFunctionNameAndFile() {
-        Logger.logger.severity = .debug
+        Logger.output.severity = .debug
         Logger.debug(loggedMessage, verbose: true)
 
         expect(self.loggerOutput).to(contain("testFunctionNameAndFile()"))
