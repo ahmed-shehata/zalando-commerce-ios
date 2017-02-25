@@ -66,9 +66,18 @@ extension AtlasAPI {
 
 extension AtlasUI {
 
-    static func fromPresented() throws -> AtlasUI {
+    static func fromPresented
+        () throws -> AtlasUI {
         guard let controller = AtlasUIViewController.presented else { throw Error.notPresented }
         return controller.atlasUI
+    }
+
+}
+
+extension Config {
+
+    static var shared: Config? {
+        return AtlasAPI.shared?.config
     }
 
 }

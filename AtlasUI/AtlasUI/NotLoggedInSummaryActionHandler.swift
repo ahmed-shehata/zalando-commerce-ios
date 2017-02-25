@@ -78,7 +78,7 @@ extension NotLoggedInSummaryActionHandler {
     }
 
     fileprivate var isGuestCheckoutEnabled: Bool {
-        return AtlasAPI.shared?.config.guestCheckoutEnabled ?? false
+        return Config.shared?.guestCheckoutEnabled ?? false
     }
 
 }
