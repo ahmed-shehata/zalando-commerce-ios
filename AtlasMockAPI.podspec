@@ -34,5 +34,5 @@ Pod::Spec.new do |spec|
   spec.ios.resources = ['AtlasMockAPI/AtlasMockAPI/**/*.json']
 
   spec.dependency 'Swifter'
-  spec.dependency 'SwiftyJSON'
+  spec.dependency 'Freddy'
 end
