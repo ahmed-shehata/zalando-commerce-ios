@@ -7,7 +7,7 @@ import AtlasSDK
 
 class AtlasUIViewController: UIViewController {
 
-    fileprivate(set) static var presented: AtlasUIViewController?
+    fileprivate(set) static weak var presented: AtlasUIViewController?
 
     let mainNavigationController: UINavigationController
     let atlasUI: AtlasUI

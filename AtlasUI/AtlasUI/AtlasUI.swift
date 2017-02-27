@@ -44,7 +44,7 @@ final public class AtlasUI {
         }
     }
 
-    public func presentCheckout(onViewController viewController: UIViewController, for sku: ConfigSKU) throws {
+    public func presentCheckout(onViewController viewController: UIViewController, for sku: ConfigSKU) {
         let atlasUIViewController = AtlasUIViewController(for: sku, atlasUI: self)
 
         let checkoutTransitioning = CheckoutTransitioningDelegate()
@@ -66,8 +66,7 @@ extension AtlasAPI {
 
 extension AtlasUI {
 
-    static func fromPresented
-        () throws -> AtlasUI {
+    static func fromPresented() throws -> AtlasUI {
         guard let controller = AtlasUIViewController.presented else { throw Error.notPresented }
         return controller.atlasUI
     }
