@@ -68,7 +68,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
 
     func handlePaymentSelection() {
         guard let paymentURL = cartCheckout?.checkout?.payment.selectionPageURL,
-            let callbackURL = AtlasAPI.shared?.config.payment.selectionCallbackURL else {
+            let callbackURL = Config.shared?.payment.selectionCallbackURL else {
                 let error = !hasAddresses ? CheckoutError.missingAddress : CheckoutError.unclassified
                 UserError.display(error: error)
                 return
@@ -89,7 +89,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
             }
         }
 
-        AtlasUIViewController.shared?.mainNavigationController.pushViewController(paymentViewController, animated: true)
+        AtlasUIViewController.push(paymentViewController)
     }
 
     func handleShippingAddressSelection() {
@@ -148,7 +148,7 @@ extension LoggedInSummaryActionHandler {
         addressViewController.addressSelectedHandler = { [weak self] in self?.select(shippingAddress: $0) }
         addressViewController.actionHandler = LoggedInAddressListActionHandler(addressViewModelCreationStrategy: creationStrategy)
         addressViewController.title = Localizer.format(string: "addressListView.title.shipping")
-        AtlasUIViewController.shared?.mainNavigationController.pushViewController(addressViewController, animated: true)
+        AtlasUIViewController.push(addressViewController)
     }
 
     fileprivate func showAddressListViewController(forBillingAddressWithAddresses addresses: [EquatableAddress]) {
@@ -159,7 +159,7 @@ extension LoggedInSummaryActionHandler {
         addressViewController.addressSelectedHandler = { [weak self] in self?.select(billingAddress: $0) }
         addressViewController.actionHandler = LoggedInAddressListActionHandler(addressViewModelCreationStrategy: creationStrategy)
         addressViewController.title = Localizer.format(string: "addressListView.title.billing")
-        AtlasUIViewController.shared?.mainNavigationController.pushViewController(addressViewController, animated: true)
+        AtlasUIViewController.push(addressViewController)
     }
 
     fileprivate func showCreateAddressForm(strategy: AddressViewModelCreationStrategy, completion: @escaping (EquatableAddress) -> Void) {
@@ -186,7 +186,7 @@ extension LoggedInSummaryActionHandler {
             return
         }
 
-        guard let callbackURL = AtlasAPI.shared?.config.payment.thirdPartyCallbackURL else {
+        guard let callbackURL = Config.shared?.payment.thirdPartyCallbackURL else {
             UserError.display(error: CheckoutError.unclassified)
             return
         }
@@ -199,7 +199,7 @@ extension LoggedInSummaryActionHandler {
             case .error, .guestRedirect: UserError.display(error: CheckoutError.unclassified)
             }
         }
-        AtlasUIViewController.shared?.mainNavigationController.pushViewController(paymentViewController, animated: true)
+        AtlasUIViewController.push(paymentViewController)
     }
 
     fileprivate func presentConfirmationScreen(for order: Order) {

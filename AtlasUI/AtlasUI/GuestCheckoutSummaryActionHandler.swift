@@ -42,7 +42,7 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
     }
 
     func handlePaymentSelection() {
-        guard let callbackURL = AtlasAPI.shared?.config.payment.selectionCallbackURL else {
+        guard let callbackURL = Config.shared?.payment.selectionCallbackURL else {
             UserError.display(error: CheckoutError.unclassified)
             return
         }
@@ -64,7 +64,7 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
                 }
             }
 
-            AtlasUIViewController.shared?.mainNavigationController.pushViewController(paymentViewController, animated: true)
+            AtlasUIViewController.push(paymentViewController)
         }
     }
 
@@ -107,7 +107,7 @@ extension GuestCheckoutSummaryActionHandler {
             return
         }
 
-        guard let callbackURL = AtlasAPI.shared?.config.payment.thirdPartyCallbackURL else {
+        guard let callbackURL = Config.shared?.payment.thirdPartyCallbackURL else {
             UserError.display(error: CheckoutError.unclassified)
             return
         }
@@ -120,7 +120,7 @@ extension GuestCheckoutSummaryActionHandler {
             case .error, .guestRedirect: UserError.display(error: CheckoutError.unclassified)
             }
         }
-        AtlasUIViewController.shared?.mainNavigationController.pushViewController(paymentViewController, animated: true)
+        AtlasUIViewController.push(paymentViewController)
     }
 
     fileprivate func showConfirmationScreen(order: GuestOrder) {

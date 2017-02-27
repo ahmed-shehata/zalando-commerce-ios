@@ -51,7 +51,7 @@ struct UserError {
 extension UserError {
 
     fileprivate static var errorPresenterViewController: UIViewController? {
-        guard let atlasUIViewController = AtlasUIViewController.shared else { return nil }
+        guard let atlasUIViewController = AtlasUIViewController.presented else { return nil }
         return atlasUIViewController.presentedViewController ?? atlasUIViewController
     }
 

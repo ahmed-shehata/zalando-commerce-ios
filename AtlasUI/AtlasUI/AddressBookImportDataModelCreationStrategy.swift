@@ -20,7 +20,7 @@ class AddressBookImportDataModelCreationStrategy: NSObject, AddressDataModelCrea
         contactPickerViewController.predicateForSelectionOfProperty = NSPredicate(format: "key == 'postalAddresses'")
         contactPickerViewController.delegate = self
         contactPickerViewController.modalPresentationStyle = .overCurrentContext
-        AtlasUIViewController.shared?.show(contactPickerViewController, sender: self)
+        AtlasUIViewController.presented?.show(contactPickerViewController, sender: self)
     }
 
 }
@@ -31,7 +31,7 @@ extension AddressBookImportDataModelCreationStrategy: CNContactPickerDelegate {
         picker.dismiss(animated: true) { [weak self] in
             do {
                 let dataModel = try AddressFormDataModel(contactProperty: contactProperty,
-                                                         countryCode: AtlasAPI.shared?.config.salesChannel.countryCode)
+                                                         countryCode: Config.shared?.salesChannel.countryCode)
                 self?.completion(dataModel)
             } catch let error {
                 UserError.display(error: error)
