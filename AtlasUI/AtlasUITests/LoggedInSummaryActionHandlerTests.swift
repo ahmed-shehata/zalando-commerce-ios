@@ -16,7 +16,7 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
 
     override func setUp() {
         super.setUp()
-        atlasUI.api.authorize(withToken: "TestToken")
+        atlasUI.api.authorize(with: "TestToken")
         actionHandler = createActionHandler()
     }
 
@@ -173,14 +173,14 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
     }
 
     func testShippingAddressWithNoAddresses() {
-        atlasUI.api.authorize(withToken: "TestTokenWithoutAddresses")
+        atlasUI.api.authorize(with: "TestTokenWithoutAddresses")
         actionHandler?.handleShippingAddressSelection()
         expect(UIApplication.topViewController() as? UIAlertController).toNotEventually(beNil())
         UIApplication.topViewController()?.dismiss(animated: true, completion: nil)
     }
 
     func testBillingAddressWithNoAddresses() {
-        atlasUI.api.authorize(withToken: "TestTokenWithoutAddresses")
+        atlasUI.api.authorize(with: "TestTokenWithoutAddresses")
         actionHandler?.handleBillingAddressSelection()
         expect(UIApplication.topViewController() as? UIAlertController).toNotEventually(beNil())
         UIApplication.topViewController()?.dismiss(animated: true, completion: nil)
@@ -198,7 +198,7 @@ extension LoggedInSummaryActionHandlerTests {
                 AtlasAPI.withLoader.article(with: self.sku) { result in
                     guard let article = result.process() else { return fail() }
                     self.article = article
-                    let selectedArticle = SelectedArticle(article: article, unitIndex: 0, desiredQuantity: 1)
+                    let selectedArticle = SelectedArticle(article: article, desiredQuantity: 1)
                     LoggedInSummaryActionHandler.create(customer: customer, selectedArticle: selectedArticle) { result in
                         guard let actionHandler = result.process() else { return fail() }
                         let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, totalPrice: selectedArticle.price)
@@ -218,7 +218,7 @@ extension LoggedInSummaryActionHandlerTests {
         guard let article = article else { return nil }
         var cartCheckout: CartCheckout?
         waitUntil(timeout: 10) { done in
-            AtlasAPI.withLoader.createCheckoutCart(forSelectedArticle: SelectedArticle(article: article, unitIndex: 0, desiredQuantity: 1)) { result in
+            AtlasAPI.withLoader.createCheckoutCart(for: SelectedArticle(article: article, desiredQuantity: 1)) { result in
                 guard let checkoutCart = result.process() else { return fail() }
                 cartCheckout = (cart: checkoutCart.cart, checkout: checkoutCart.checkout)
                 done()

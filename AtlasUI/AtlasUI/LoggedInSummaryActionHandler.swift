@@ -234,7 +234,7 @@ extension LoggedInSummaryActionHandler {
                                                addresses: CheckoutAddresses? = nil,
                                                completion: @escaping ResultCompletion<CartCheckout>) {
 
-        AtlasAPI.withLoader.createCheckoutCart(forSelectedArticle: selectedArticle, addresses: addresses) { result in
+        AtlasAPI.withLoader.createCheckoutCart(for: selectedArticle, addresses: addresses) { result in
             switch result {
             case .failure(let error, _):
                 guard case let APIError.checkoutFailed(cart, _) = error else {
@@ -309,11 +309,11 @@ extension LoggedInSummaryActionHandler {
     fileprivate func updated(address: EquatableAddress) {
         if let shippingAddress = shippingAddress, shippingAddress == address,
             let billingAddress = billingAddress, billingAddress == address {
-            update(billingAddress: address, shippingAddress: address)
+                update(billingAddress: address, shippingAddress: address)
         } else if let shippingAddress = shippingAddress, shippingAddress == address {
-            update(shippingAddress: address)
+                update(shippingAddress: address)
         } else if let billingAddress = billingAddress, billingAddress == address {
-            update(billingAddress: address)
+                update(billingAddress: address)
         }
     }
 

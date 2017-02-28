@@ -28,11 +28,11 @@ extension AtlasAPI {
             }
         }
 
-        static func createCheckoutCart(forSelectedArticle selectedArticle: SelectedArticle,
+        static func createCheckoutCart(for selectedArticle: SelectedArticle,
                                        addresses: CheckoutAddresses? = nil,
                                        completion: @escaping APIResultCompletion<CartCheckout>) {
             AtlasUIViewController.displayLoader { hideLoader in
-                AtlasAPI.shared?.createCheckoutCart(forSelectedArticle: selectedArticle, addresses: addresses) { result in
+                AtlasAPI.shared?.createCheckoutCart(for: selectedArticle, addresses: addresses) { result in
                     hideLoader()
                     completion(result)
                 }

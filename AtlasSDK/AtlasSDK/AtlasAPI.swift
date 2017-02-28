@@ -36,11 +36,11 @@ extension AtlasAPI {
         client.fetch(from: endpoint, completion: completion)
     }
 
-    /// <#Description#>
+    /// Creates `Cart` with given `CartItemRequest` items.
     ///
     /// - Parameters:
-    ///   - cartItemRequests: <#cartItemRequests description#>
-    ///   - completion: <#completion description#>
+    ///   - cartItemRequests: list articles SKUs with quantities to be added to cart
+    ///   - completion: `Result.success` with create `Cart` model.
     public func createCart(withItems cartItemRequests: [CartItemRequest],
                            completion: @escaping APIResultCompletion<Cart>) {
         let parameters = CartRequest(items: cartItemRequests, replaceItems: true).toJSON()
@@ -48,7 +48,7 @@ extension AtlasAPI {
         client.fetch(from: endpoint, completion: completion)
     }
 
-    public func createCheckoutCart(forSelectedArticle selectedArticle: SelectedArticle,
+    public func createCheckoutCart(for selectedArticle: SelectedArticle,
                                    addresses: CheckoutAddresses? = nil,
                                    completion: @escaping APIResultCompletion<CartCheckout>) {
         let cartItemRequest = CartItemRequest(sku: selectedArticle.sku, quantity: selectedArticle.quantity)

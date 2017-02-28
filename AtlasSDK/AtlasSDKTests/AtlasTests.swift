@@ -55,7 +55,7 @@ class AtlasTests: XCTestCase {
                     fail(String(describing: error))
                 case .success(let api):
                     let secondClient = api
-                    secondClient.authorize(withToken: "ANOTHER_TOKEN")
+                    secondClient.authorize(with: "ANOTHER_TOKEN")
                     expect(self.api?.isAuthorized) == false
                     expect(secondClient.isAuthorized) == true
                 }
@@ -88,7 +88,7 @@ class AtlasTests: XCTestCase {
 extension AtlasTests {
 
     fileprivate func loginUser(token: String = "TEST_TOKEN") {
-        self.api?.authorize(withToken: token)
+        self.api?.authorize(with: token)
     }
 
     fileprivate func logoutUser() {
