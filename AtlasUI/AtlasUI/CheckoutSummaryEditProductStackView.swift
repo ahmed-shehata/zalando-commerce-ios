@@ -66,7 +66,7 @@ class CheckoutSummaryEditProductStackView: UIStackView {
     }
 
     private func sizeSelected(at idx: Int, for selectedArticle: SelectedArticle) {
-        let updatedArticle = SelectedArticle(in: selectedArticle, changeSelectedIndex: idx)
+        let updatedArticle = SelectedArticle(changeSelectedIndex: idx, from: selectedArticle)
 
         guard let currentSelectedArticle = dataSource?.selectedArticle,
             dataSource?.checkoutContainer.collectionView.type == .size, updatedArticle != currentSelectedArticle else { return }
@@ -75,7 +75,7 @@ class CheckoutSummaryEditProductStackView: UIStackView {
     }
 
     private func quantitySelected(at idx: Int, for selectedArticle: SelectedArticle) {
-        let updatedArticle = SelectedArticle(in: selectedArticle, changeQuantity: idx + 1)
+        let updatedArticle = SelectedArticle(changeQuantity: idx + 1, from: selectedArticle)
 
         guard let currentSelectedArticle = dataSource?.selectedArticle,
             dataSource?.checkoutContainer.collectionView.type == .quantity, updatedArticle != currentSelectedArticle else { return }

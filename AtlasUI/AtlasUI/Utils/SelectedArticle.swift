@@ -16,13 +16,13 @@ struct SelectedArticle {
     private static let minQuantityAllowed = 1
     private static let maxQuantityAllowed = 10
 
-    init(in selectedArticle: SelectedArticle, changeQuantity newQuantity: Int) {
+    init(changeQuantity newQuantity: Int, from selectedArticle: SelectedArticle) {
         self.init(article: selectedArticle.article,
                   desiredQuantity: newQuantity,
                   selectedUnitIndex: selectedArticle.unitIndex)
     }
 
-    init(in selectedArticle: SelectedArticle, changeSelectedIndex newIndex: Int) {
+    init(changeSelectedIndex newIndex: Int, from selectedArticle: SelectedArticle) {
         self.init(article: selectedArticle.article,
                   desiredQuantity: selectedArticle.quantity,
                   selectedUnitIndex: newIndex)
