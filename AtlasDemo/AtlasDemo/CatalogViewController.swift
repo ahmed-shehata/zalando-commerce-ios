@@ -84,7 +84,7 @@ extension CatalogViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let pdpVC = self.storyboard?.instantiateViewController(withIdentifier: "PDP") as? PDPViewController else { return }
-        pdpVC.sku = articles[indexPath.row].id
+        pdpVC.sku = ConfigSKU(value: articles[indexPath.row].id)
         navigationController?.pushViewController(pdpVC, animated: true)
     }
 

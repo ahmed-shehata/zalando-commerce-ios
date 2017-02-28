@@ -9,7 +9,7 @@ import Nuke
 
 class PDPViewController: UIViewController {
 
-    var sku: String?
+    var sku: ConfigSKU?
 
     @IBOutlet private weak var brandLabel: UILabel!
     @IBOutlet private weak var nameLabel: UILabel!
@@ -25,7 +25,7 @@ class PDPViewController: UIViewController {
     func retrieveArticleDetails() {
         guard let sku = sku else { return }
 
-        AppSetup.atlas?.client.article(withSKU: sku) { [weak self] result in
+        AppSetup.atlas?.api.article(with: sku) { [weak self] result in
             let processedResult = result.processedResult()
             switch processedResult {
             case .success(let article):
@@ -33,7 +33,7 @@ class PDPViewController: UIViewController {
                 self?.nameLabel.text = article.name
                 self?.colorLabel.text = article.color
 
-                if let imageURL = article.media.images.first?.detailHDURL, let thumbImageView = self?.thumbImageView {
+                if let imageURL = article.media?.mediaItems.first?.detailHDURL, let thumbImageView = self?.thumbImageView {
                     Nuke.loadImage(with: imageURL, into: thumbImageView)
                 }
 

@@ -30,19 +30,15 @@ class ProductCollectionViewCell: UICollectionViewCell {
 
     @IBAction func buyNowButtonTapped(_ sender: AnyObject) {
         guard let rootController = UIApplication.shared.keyWindow?.rootViewController, let article = self.article else { return }
-        do {
-            let sku = ConfigSKU(value: article.id)
-            try AppSetup.atlas?.presentCheckout(onViewController: rootController, for: sku) { [weak self] result in
-                if case let .orderPlaced(_, recommendedProductSKU) = result, let sku = recommendedProductSKU {
-                    self?.displayRecommendedProduct(sku: sku)
-                }
+        let sku = ConfigSKU(value: article.id)
+        AppSetup.atlas?.presentCheckout(onViewController: rootController, for: sku) { [weak self] result in
+            if case let .orderPlaced(_, recommendedProductSKU) = result, let sku = recommendedProductSKU {
+                self?.displayRecommendedProduct(sku: sku)
             }
-        } catch let error {
-            print("Cannot present checkout", error)
         }
     }
 
-    func displayRecommendedProduct(sku: String) {
+    func displayRecommendedProduct(sku: ConfigSKU) {
         guard
             let catalogVC = CatalogViewController.shared,
             let pdpVC = catalogVC.storyboard?.instantiateViewController(withIdentifier: "PDP") as? PDPViewController else { return }
