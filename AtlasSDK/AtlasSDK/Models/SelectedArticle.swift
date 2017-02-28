@@ -4,10 +4,12 @@
 
 import Foundation
 
+// TODO: document it, please...
+
 public struct SelectedArticle {
 
     public let article: Article
-    public let unitIndex: Int?
+    public let unitIndex: Int
     public let quantity: Int
 
     public let maxQuantityAllowed: Int
@@ -15,16 +17,17 @@ public struct SelectedArticle {
     private static let minQuantityAllowed = 1
     private static let maxQuantityAllowed = 10
 
-    public init(article: Article, unitIndex: Int? = nil, desiredQuantity: Int) {
+    public init(article: Article, desiredQuantity: Int, unitIndex: Int = 0) {
         self.article = article
         self.unitIndex = unitIndex
 
         if let unit = article.availableUnits[safe: unitIndex] {
-            self.maxQuantityAllowed = min(unit.stock ?? SelectedArticle.minQuantityAllowed, SelectedArticle.maxQuantityAllowed)
+            let quantityAvailable = unit.stock ?? SelectedArticle.minQuantityAllowed
+            self.maxQuantityAllowed = min(quantityAvailable, SelectedArticle.maxQuantityAllowed)
             self.quantity = min(desiredQuantity, maxQuantityAllowed)
         } else {
             self.maxQuantityAllowed = SelectedArticle.minQuantityAllowed
-            self.quantity = self.maxQuantityAllowed
+            self.quantity = SelectedArticle.minQuantityAllowed
         }
     }
 

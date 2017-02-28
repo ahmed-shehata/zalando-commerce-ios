@@ -40,7 +40,7 @@ class GetArticleDetailsViewController: UIViewController {
             return
         }
 
-        let selectedArticle = SelectedArticle(article: article, unitIndex: 0, desiredQuantity: 1)
+        let selectedArticle = SelectedArticle(article: article, desiredQuantity: 1)
         guard AtlasAPI.shared?.isAuthorized == true else {
             let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, totalPrice: selectedArticle.totalPrice)
             let viewModel = CheckoutSummaryViewModel(dataModel: dataModel, layout: NotLoggedInLayout())
