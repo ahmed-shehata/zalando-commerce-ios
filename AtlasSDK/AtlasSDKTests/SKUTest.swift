@@ -75,10 +75,4 @@ class SKUTest: XCTestCase {
         expect(sku1) == sku2
     }
 
-    func testEmptySKU() {
-        let emptySKU = ModelSKU.empty
-        expect(emptySKU.isValid) == false
-        expect(emptySKU.value) == ""
-    }
-
 }

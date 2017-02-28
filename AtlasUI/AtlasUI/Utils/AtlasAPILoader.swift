@@ -32,7 +32,8 @@ extension AtlasAPI {
                                        addresses: CheckoutAddresses? = nil,
                                        completion: @escaping APIResultCompletion<CartCheckout>) {
             AtlasUIViewController.displayLoader { hideLoader in
-                AtlasAPI.shared?.createCheckoutCart(for: selectedArticle, addresses: addresses) { result in
+                let skuQuantity = SKUQuantity(selectedArticle.sku, quantity: selectedArticle.quantity)
+                AtlasAPI.shared?.createCheckoutCart(for: skuQuantity, addresses: addresses) { result in
                     hideLoader()
                     completion(result)
                 }
