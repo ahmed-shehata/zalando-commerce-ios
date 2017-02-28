@@ -21,3 +21,4 @@ public typealias MoneyAmount = Decimal
 public typealias Currency = String
 
 public typealias CartCheckout = (cart: Cart, checkout: Checkout?)
+public typealias SKUQuantity = (sku: SimpleSKU, quantity: Int)

@@ -64,10 +64,6 @@ extension SKU {
         self.init(value: newValue)
     }
 
-    static var empty: Self {
-        return Self(value: "")
-    }
-
 }
 
 public struct ModelSKU: SKU {

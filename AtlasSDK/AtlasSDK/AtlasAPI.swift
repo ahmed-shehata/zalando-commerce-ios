@@ -48,10 +48,10 @@ extension AtlasAPI {
         client.fetch(from: endpoint, completion: completion)
     }
 
-    public func createCheckoutCart(for selectedArticle: SelectedArticle,
+    public func createCheckoutCart(for skuQuantity: SKUQuantity,
                                    addresses: CheckoutAddresses? = nil,
                                    completion: @escaping APIResultCompletion<CartCheckout>) {
-        let cartItemRequest = CartItemRequest(sku: selectedArticle.sku, quantity: selectedArticle.quantity)
+        let cartItemRequest = CartItemRequest(sku: skuQuantity.sku, quantity: skuQuantity.quantity)
 
         createCart(withItems: [cartItemRequest]) { cartResult in
             switch cartResult {
@@ -59,7 +59,7 @@ extension AtlasAPI {
                 completion(.failure(error, nil))
 
             case .success(let cart):
-                guard cart.hasStock(of: selectedArticle.sku) else {
+                guard cart.hasStock(of: skuQuantity.sku) else {
                     return completion(.failure(CheckoutError.outOfStock, nil))
                 }
 
