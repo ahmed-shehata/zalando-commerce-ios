@@ -6,6 +6,7 @@ import Foundation
 
 // TODO: document it, please...
 
+
 public enum Result<T> {
 
     case success(T)
