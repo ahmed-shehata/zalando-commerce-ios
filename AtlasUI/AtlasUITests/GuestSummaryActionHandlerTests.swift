@@ -124,7 +124,7 @@ class GuestSummaryActionHandlerDataSourceDelegateMocked: NSObject, CheckoutSumma
     var layout: CheckoutSummaryLayout?
 
     init(selectedArticle: SelectedArticle) {
-        dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, totalPrice: Money.Zero)
+        dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, totalPrice: Money.zero)
     }
 
     func updated(dataModel: CheckoutSummaryDataModel) {

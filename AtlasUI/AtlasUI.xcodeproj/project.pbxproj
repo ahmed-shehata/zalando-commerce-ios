@@ -75,6 +75,8 @@
 		785BB77012B459FF3D0C9EB1585CC583 /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0C52BFE76B8AEE33B7D763AC57255 /* URLRequest.swift */; };
 		7CB10D38F036B91FB247FEA0076C06EE /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10BC4152B0945072305EE55BB7C0ED2 /* UIColor.swift */; };
 		7EAC423199880152256E9D66A34235A6 /* URLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEA406BC5B7419EC0637024DDA9D15 /* URLTests.swift */; };
+		8159D21E1E659DAF0096F321 /* SelectedArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8159D21D1E659DAF0096F321 /* SelectedArticle.swift */; };
+		8159D2201E659DF30096F321 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8159D21F1E659DF30096F321 /* Array.swift */; };
 		82FEDC4FA09CC55CE1D9224BCDED9062 /* FormValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E272DADD96290ADDD55009F293229EAD /* FormValidatorTests.swift */; };
 		8583B7276C6213867615703BA95BC77D /* CheckoutSummaryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24289A7D3F980C05C4FEF5B9AB500494 /* CheckoutSummaryDataModel.swift */; };
 		864F340AF805B09712DAB1A854B45608 /* LoggedInUpdateAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8575CDD854A7749A3B2E199B53264213 /* LoggedInUpdateAddressActionHandler.swift */; };
@@ -259,6 +261,8 @@
 		7B6B6ED68841D292847DAC951B8AC23B /* CheckoutSummaryMainStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryMainStackView.swift; sourceTree = "<group>"; };
 		7D413AA8D706466A7F6D5D54306F7CB5 /* UIViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewTests.swift; sourceTree = "<group>"; };
 		808C394E80E745736133ADBD0E2938C8 /* AtlasUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AtlasUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8159D21D1E659DAF0096F321 /* SelectedArticle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedArticle.swift; sourceTree = "<group>"; };
+		8159D21F1E659DF30096F321 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		81D382E2AE371C8F64A6E47D5344B522 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		828CB7B3C433014C119561A964D809BC /* TextFieldInputViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldInputViewModel.swift; sourceTree = "<group>"; };
 		82D2ADD240889020E56AC601593CC418 /* FormValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValidator.swift; sourceTree = "<group>"; };
@@ -492,6 +496,7 @@
 				C23BDCC4973FC078E005E01E358D2871 /* AtlasAPILoader.swift */,
 				82D2ADD240889020E56AC601593CC418 /* FormValidator.swift */,
 				91419F6A0FFF655DB307743547780BA0 /* ProcessedResult.swift */,
+				8159D21D1E659DAF0096F321 /* SelectedArticle.swift */,
 				B5494239851A207094AA7E1F76EFB842 /* Injector.swift */,
 				A57EEEDE1D66FC2ED33D1A99DC35A792 /* Localizer.swift */,
 				640810DC34806DF7B0FBAEA4DB0123CD /* UIBuilder.swift */,
@@ -581,6 +586,7 @@
 		976E75BCFB88602D342C36B3D814A0F0 /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				8159D21F1E659DF30096F321 /* Array.swift */,
 				216653066F8E63F16F0FE5AB5004136F /* Bundle.swift */,
 				F372C8536BAE61C74929CA5DFCFF7B55 /* Debug.swift */,
 				3405164B5E8DAF2A8CDFDFB8849C40C9 /* HTTP.swift */,
@@ -1024,6 +1030,7 @@
 				0B7FB82906D53F680B364DDFD88D814C /* CNPostalAddress.swift in Sources */,
 				57DA5426C46C91A76CDF9E83915560EE /* CheckoutSummaryArticleSelectCollectionView.swift in Sources */,
 				E8B9ED27AD36D32DCD40F061A102A387 /* URL-QueryItem.swift in Sources */,
+				8159D21E1E659DAF0096F321 /* SelectedArticle.swift in Sources */,
 				B4399FAB71827F9E8AE99CCADA530BCD /* LoggedInAddressListActionHandler.swift in Sources */,
 				5BCA7B1FB41F996AAE8072BC6ABC950A /* CheckoutSummaryProductInfoStackView.swift in Sources */,
 				C2CBD5F0A9B399A6FAC9311860D09B56 /* StreetAddress.swift in Sources */,
@@ -1037,6 +1044,7 @@
 				936565C898CD719317957BA1ABCB9290 /* BorderView.swift in Sources */,
 				454C8AFEC26D69294C3E7ABEB5E734BD /* GuestAddressActionHandler.swift in Sources */,
 				DB0CF7E26CC03119A5B25B7E21F41CF1 /* LegalController.swift in Sources */,
+				8159D2201E659DF30096F321 /* Array.swift in Sources */,
 				30788EA71B54F0C0BCC51AA46C0C6D09 /* CGRect.swift in Sources */,
 				536FFA0EF451B723E43BDE2C8B097700 /* CheckoutPresentationController.swift in Sources */,
 				FFD2E21522913435682A092C38891A22 /* Bundle.swift in Sources */,
@@ -1194,7 +1202,7 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1.1.5;
+				DYLIB_CURRENT_VERSION = 1.1.6;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = AtlasUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1228,7 +1236,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.1.5;
+				CURRENT_PROJECT_VERSION = 1.1.6;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1287,7 +1295,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.1.5;
+				CURRENT_PROJECT_VERSION = 1.1.6;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1324,7 +1332,7 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1.1.5;
+				DYLIB_CURRENT_VERSION = 1.1.6;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = AtlasUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";

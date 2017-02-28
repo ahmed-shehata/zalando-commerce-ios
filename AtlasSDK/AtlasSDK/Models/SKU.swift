@@ -30,6 +30,7 @@ enum SKUError: Swift.Error {
 
 public enum SKUPattern: String {
 
+    case empty = ""
     case model = "[A-z0-9]{9}"
     case config = "[A-z0-9]{9}-[A-z0-9]{3}"
     case simple = "[A-z0-9]{9}-[A-z0-9]{3}[A-z0-9]{7}"
@@ -62,10 +63,6 @@ extension SKU {
         guard let newValue = Self.pattern.find(in: sku.value)
             else { throw SKUError.invalidConversion }
         self.init(value: newValue)
-    }
-
-    static var empty: Self {
-        return Self(value: "")
     }
 
 }
@@ -101,4 +98,15 @@ public struct SimpleSKU: SKU {
         self.value = value
     }
 
+}
+
+public struct EmptySKU: SKU {
+
+    public let value: String
+    public static let pattern: SKUPattern = .empty
+
+    public init(value: String = "") {
+        self.value = ""
+    }
+    
 }
