@@ -11,7 +11,7 @@ class LoggerTests: XCTestCase {
 
     let loggedMessage = "Logged message"
     var loggerOutput: String? {
-        guard let output = AtlasLogger.logger.outputStream as? String else {
+        guard let output = Logger.output.outputStream as? String else {
             fail("No String in logger")
             return nil
         }
@@ -20,53 +20,53 @@ class LoggerTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        AtlasLogger.logger.outputStream = ""
+        Logger.output.outputStream = ""
     }
 
     override func tearDown() {
         super.tearDown()
-        AtlasLogger.logger.outputStream = StdoutOutputStream()
+        Logger.output.outputStream = StdoutOutputStream()
     }
 
     func testErrorForErrorSeverity() {
-        AtlasLogger.logger.severity = .error
-        AtlasLogger.logError(loggedMessage)
+        Logger.output.severity = .error
+        Logger.error(loggedMessage)
         expect(self.loggerOutput).to(contain(loggedMessage))
     }
 
     func testMessageForMessageSeverity() {
-        AtlasLogger.logger.severity = .message
-        AtlasLogger.logMessage(loggedMessage)
+        Logger.output.severity = .message
+        Logger.message(loggedMessage)
         expect(self.loggerOutput).to(contain(loggedMessage))
     }
 
     func testDebugForDebugSeverity() {
-        AtlasLogger.logger.severity = .debug
-        AtlasLogger.logDebug(loggedMessage)
+        Logger.output.severity = .debug
+        Logger.debug(loggedMessage)
         expect(self.loggerOutput).to(contain(loggedMessage))
     }
 
     func testMessageForErrorSeverity() {
-        AtlasLogger.logger.severity = .error
-        AtlasLogger.logMessage(loggedMessage)
+        Logger.output.severity = .error
+        Logger.message(loggedMessage)
         expect(self.loggerOutput).toNot(contain(loggedMessage))
     }
 
     func testDebugForErrorSeverity() {
-        AtlasLogger.logger.severity = .error
-        AtlasLogger.logDebug(loggedMessage)
+        Logger.output.severity = .error
+        Logger.debug(loggedMessage)
         expect(self.loggerOutput).toNot(contain(loggedMessage))
     }
 
     func testDebugForMessageSeverity() {
-        AtlasLogger.logger.severity = .message
-        AtlasLogger.logDebug(loggedMessage)
+        Logger.output.severity = .message
+        Logger.debug(loggedMessage)
         expect(self.loggerOutput).toNot(contain(loggedMessage))
     }
 
     func testFunctionNameAndFile() {
-        AtlasLogger.logger.severity = .debug
-        AtlasLogger.logDebug(loggedMessage, verbose: true)
+        Logger.output.severity = .debug
+        Logger.debug(loggedMessage, verbose: true)
 
         expect(self.loggerOutput).to(contain("testFunctionNameAndFile()"))
         expect(self.loggerOutput).to(contain("LoggerTests.swift"))

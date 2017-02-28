@@ -4,7 +4,7 @@ use_frameworks!
 
 target 'AtlasDemo' do
   pod 'SwiftHTTP'
-  pod 'SwiftyJSON'
+  pod 'Freddy'
   pod 'Nuke'
   pod 'AtlasUI', path: '..'
   pod 'AtlasMockAPI', path: '..'

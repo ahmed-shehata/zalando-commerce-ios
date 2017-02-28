@@ -6,7 +6,7 @@ import Foundation
 
 public struct GuestCheckoutAddress: EquatableAddress {
 
-    public let id: String
+    public let id: AddressId
     public let gender: Gender
     public let firstName: String
     public let lastName: String

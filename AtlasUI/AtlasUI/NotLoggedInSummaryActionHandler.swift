@@ -14,7 +14,7 @@ class NotLoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
     func handleSubmit() {
         guard let dataSource = dataSource, let delegate = delegate else { return }
 
-        AtlasUIClient.customer { result in
+        AtlasAPI.withLoader.customer { result in
             guard let customer = result.process() else { return }
 
             let selectedArticle = dataSource.dataModel.selectedArticle
@@ -31,7 +31,7 @@ class NotLoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
 
     func handlePaymentSelection() {
         guard isGuestCheckoutEnabled else { return handleSubmit() }
-        UserError.display(error: AtlasCheckoutError.missingAddress)
+        UserError.display(error: CheckoutError.missingAddress)
     }
 
     func handleShippingAddressSelection() {
@@ -78,7 +78,7 @@ extension NotLoggedInSummaryActionHandler {
     }
 
     fileprivate var isGuestCheckoutEnabled: Bool {
-        return AtlasAPIClient.shared?.config.guestCheckoutEnabled ?? false
+        return Config.shared?.guestCheckoutEnabled ?? false
     }
 
 }

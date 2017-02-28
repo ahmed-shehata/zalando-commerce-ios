@@ -19,10 +19,10 @@ class APICustomerTests: AtlasAPIClientBaseTests {
                                    "first_name": "John",
                                    "last_name": "Doe"]
         let customerResponse = data(withJSONObject: json)
-        let client = mockedAtlasAPIClient(forURL: customerURL, data: customerResponse, status: .ok)
+        let api = mockedAtlasAPI(forURL: customerURL, data: customerResponse, status: .ok)
 
         waitUntil(timeout: 60) { done in
-            client.customer { result in
+            api.customer { result in
                 defer { done() }
                 guard case let .success(customer) = result else {
                     return fail("Should return Customer")

@@ -72,7 +72,7 @@
     "stock" : 0
   } ],
   "media" : {
-    "images" : [ {
+    "media_items" : [ {
       "order" : 1,
       "catalog" : "https://i6.ztat.net/catalog/AD/54/1L/00/9G/11/AD541L009-G11@14.jpg",
       "catalog_hd" : "https://i6.ztat.net/catalog_hd/AD/54/1L/00/9G/11/AD541L009-G11@14.jpg",

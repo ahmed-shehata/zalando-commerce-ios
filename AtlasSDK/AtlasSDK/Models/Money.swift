@@ -4,16 +4,14 @@
 
 import Foundation
 
-public typealias MoneyAmount = Decimal
-
 public struct Money {
 
     public static let Zero = Money(amount: 0, currency: "")
 
     public let amount: MoneyAmount
-    public let currency: String
+    public let currency: Currency
 
-    public init(amount: MoneyAmount, currency: String) {
+    public init(amount: MoneyAmount, currency: Currency) {
         self.amount = amount
         self.currency = currency
     }

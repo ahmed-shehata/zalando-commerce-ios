@@ -12,11 +12,11 @@ public struct OrderConfirmation {
 
     /// SKU of the requested article by the host app
     /// The one passed to `presentCheckout(onViewController:forSKU:completion)` method
-    public let requestedSKU: String
+    public let requestedSKU: ConfigSKU
 
     /// SKU that is used to place the order
     /// This one is different than `requestedSKU` as it contains the size information
-    public let purchasedSKU: String
+    public let purchasedSKU: SimpleSKU
 
     /// The quantity of the items purchased for the given SKU
     public let quantity: Int
@@ -25,7 +25,7 @@ public struct OrderConfirmation {
     ///
     /// - Important: Customer number is a sensitive data
     /// - SeeAlso: [Sensitive data](https://github.com/zalando-incubator/atlas-ios/wiki/Sensitive-Data)
-    public let customerNumber: String?
+    public let customerNumber: CustomerNumber?
 
     /// Billing Address used by the user to place the order
     ///

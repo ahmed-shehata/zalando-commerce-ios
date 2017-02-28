@@ -5,13 +5,15 @@
 import Foundation
 
 public struct UpdateCheckoutRequest {
-    public let billingAddressId: String?
-    public let shippingAddressId: String?
 
-    public init(billingAddressId: String? = nil, shippingAddressId: String? = nil) {
+    public let billingAddressId: AddressId?
+    public let shippingAddressId: AddressId?
+
+    public init(billingAddressId: AddressId? = nil, shippingAddressId: AddressId? = nil) {
         self.shippingAddressId = shippingAddressId
         self.billingAddressId = billingAddressId
     }
+
 }
 
 extension UpdateCheckoutRequest: JSONRepresentable {

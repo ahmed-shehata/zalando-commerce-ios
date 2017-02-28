@@ -7,7 +7,9 @@ import AtlasSDK
 
 struct Localizer {
 
-    enum Error: AtlasError {
+    static fileprivate let fallbackLocaleIdentifier = "en_US"
+
+    enum Error: LocalizableError {
 
         case languageNotFound
         case localizedStringsNotFound
@@ -16,7 +18,7 @@ struct Localizer {
     }
 
     fileprivate let locale: Locale
-    fileprivate let fallbackLocale = Locale(identifier: "en_US")
+    fileprivate let fallbackLocale = Locale(identifier: Localizer.fallbackLocaleIdentifier)
 
     fileprivate let localizedStringsBundle: Bundle
     fileprivate let localizedStringsFallbackBundle: Bundle
@@ -55,7 +57,7 @@ struct Localizer {
             return try format(string: key, bundle: self.localizedStringsBundle, formatArguments: formatArguments)
         } catch let error {
             if case let Error.missingTranslation(missingKey, language) = error {
-                AtlasLogger.logError("Translation not found for '\(missingKey)' language: \(language)")
+                Logger.error("Translation not found for '\(missingKey)' language: \(language)")
                 if Debug.isEnabled {
                     return key
                 }
@@ -91,12 +93,13 @@ struct Localizer {
 
 extension Localizer {
 
-    private static var current: Localizer {
-        return try! Localizer(localeIdentifier: Locale.current.identifier) // swiftlint:disable:this force_try
+    private static var fromFallbackLocale: Localizer {
+        // swiftlint:disable:next force_try
+        return try! Localizer(localeIdentifier: Localizer.fallbackLocaleIdentifier)
     }
 
     private static var shared: Localizer {
-        return (try? AtlasUI.shared().provide()) ?? Localizer.current
+        return (try? AtlasUI.fromPresented().localizer) ?? Localizer.fromFallbackLocale
     }
 
     static func format(string: String, _ formatArguments: [CVarArg?]) -> String {

@@ -5,10 +5,6 @@
 import UIKit
 import AtlasSDK
 
-typealias AddressUpdatedHandler = (_ address: EquatableAddress) -> Void
-typealias AddressDeletedHandler = (_ address: EquatableAddress) -> Void
-typealias AddressSelectedHandler = (_ address: EquatableAddress) -> Void
-
 final class AddressListViewController: UIViewController {
 
     var addressUpdatedHandler: AddressUpdatedHandler?

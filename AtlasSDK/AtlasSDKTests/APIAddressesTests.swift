@@ -11,8 +11,8 @@ import Nimble
 class APIAddressesTests: AtlasAPIClientBaseTests {
 
     func testFetchAddressObject() {
-        waitUntilAtlasAPIClientIsConfigured { done, client in
-            client.addresses { result in
+        waitUntilAtlasAPIClientIsConfigured { done, api in
+            api.addresses { result in
                 switch result {
                 case .failure(let error):
                     fail(String(describing: error))
@@ -36,8 +36,8 @@ class APIAddressesTests: AtlasAPIClientBaseTests {
     }
 
     func testDeleteAddress() {
-        waitUntilAtlasAPIClientIsConfigured { done, client in
-            client.deleteAddress(withId: "6702748") { result in
+        waitUntilAtlasAPIClientIsConfigured { done, api in
+            api.deleteAddress(with: "6702748") { result in
                 switch result {
                 case .failure(let error):
                     fail(String(describing: error))

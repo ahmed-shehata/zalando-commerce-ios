@@ -13,20 +13,20 @@ class APICreateCheckoutTests: AtlasAPIClientBaseTests {
     fileprivate let addressId = "6702759"
 
     func testCreateCheckoutFromArticle() {
-        waitUntilAtlasAPIClientIsConfigured { done, client in
-            let sku = "AD541L009-G11"
-            client.article(withSKU: sku) { result in
+        waitUntilAtlasAPIClientIsConfigured { done, api in
+            let sku = ConfigSKU(value: "AD541L009-G11")
+            api.article(with: sku) { result in
                 switch result {
                 case .failure(let error):
                     fail(String(describing: error))
                 case .success(let article):
                     let selectedArticle = SelectedArticle(article: article, unitIndex: 0, desiredQuantity: 1)
-                    client.createCheckoutCart(forSelectedArticle: selectedArticle) { result in
+                    api.createCheckoutCart(forSelectedArticle: selectedArticle) { result in
                         switch result {
                         case .failure(let error):
                             fail(String(describing: error))
                         case .success(let result):
-                            expect(result.checkout.id) == self.checkoutId
+                            expect(result.checkout?.id) == self.checkoutId
                         }
                         done()
                     }
@@ -36,8 +36,8 @@ class APICreateCheckoutTests: AtlasAPIClientBaseTests {
     }
 
     func testCreateCheckoutFromCart() {
-        waitUntilAtlasAPIClientIsConfigured { done, client in
-            client.createCheckout(fromCardId: self.cartId) { result in
+        waitUntilAtlasAPIClientIsConfigured { done, api in
+            api.createCheckout(from: self.cartId) { result in
                 switch result {
                 case .failure(let error):
                     fail(String(describing: error))

@@ -11,9 +11,9 @@ import Nimble
 class APIGuestOrderTests: AtlasAPIClientBaseTests {
 
     func testCreateGuestOrder() {
-        waitUntilAtlasAPIClientIsConfigured { done, client in
+        waitUntilAtlasAPIClientIsConfigured { done, api in
             let request = GuestOrderRequest(checkoutId: "CHECKOUT_ID", token: "TOKEN")
-            client.createGuestOrder(request: request) { result in
+            api.createGuestOrder(request: request) { result in
                 switch result {
                 case .failure(let error):
                     fail(String(describing: error))
@@ -44,9 +44,9 @@ class APIGuestOrderTests: AtlasAPIClientBaseTests {
     }
 
     func testGuestChecoutPaymentSelectionURL() {
-        waitUntilAtlasAPIClientIsConfigured { done, client in
+        waitUntilAtlasAPIClientIsConfigured { done, api in
             let request = GuestPaymentSelectionRequest(customer: self.customerRequest, shippingAddress: self.addressRequest, billingAddress: self.addressRequest, cart: self.cartRequest)
-            client.guestCheckoutPaymentSelectionURL(request: request) { result in
+            api.guestCheckoutPaymentSelectionURL(request: request) { result in
                 switch result {
                 case .failure(let error):
                     fail(String(describing: error))
@@ -80,7 +80,8 @@ extension APIGuestOrderTests {
     }
 
     fileprivate var cartRequest: GuestCartRequest {
-        let cartItemRequest = CartItemRequest(sku: "AD541L009-G11", quantity: 1)
+        let sku = SimpleSKU(value: "AD541L009-G11000S000")
+        let cartItemRequest = CartItemRequest(sku: sku, quantity: 1)
         return GuestCartRequest(items: [cartItemRequest])
     }
 

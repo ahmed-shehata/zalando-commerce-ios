@@ -4,6 +4,8 @@
 
 import Foundation
 
+// TODO: document it, please...
+
 public struct Options {
 
     public let useSandboxEnvironment: Bool
@@ -33,10 +35,10 @@ public struct Options {
 
     public func validate() throws {
         if self.clientId.isEmpty {
-            throw AtlasConfigurationError.missingClientId
+            throw ConfigurationError.missingClientId
         }
         if self.salesChannel.isEmpty {
-            throw AtlasConfigurationError.missingSalesChannel
+            throw ConfigurationError.missingSalesChannel
         }
     }
 
@@ -82,6 +84,35 @@ extension Options {
         let URL = "https://atlas-config-api.dc.zalan.do"
         let path = "/api/config/\(clientId)-\(environment).\(format)"
         return URLComponents(validURL: URL, path: path).validURL
+    }
+
+}
+
+extension Options {
+
+    enum InfoKey: String {
+
+        case useSandboxEnvironment = "ATLASSDK_USE_SANDBOX"
+        case clientId = "ATLASSDK_CLIENT_ID"
+        case salesChannel = "ATLASSDK_SALES_CHANNEL"
+        case interfaceLanguage = "ATLASSDK_INTERFACE_LANGUAGE"
+
+    }
+
+}
+
+extension Bundle {
+
+    func string(for key: Options.InfoKey, defaultValue: String? = nil) -> String? {
+        return self.object(forInfoDictionaryKey: key) ?? defaultValue
+    }
+
+    func bool(for key: Options.InfoKey, defaultValue: Bool? = nil) -> Bool? {
+        return self.object(forInfoDictionaryKey: key) ?? defaultValue
+    }
+
+    fileprivate func object<T>(forInfoDictionaryKey key: Options.InfoKey) -> T? {
+        return self.object(forInfoDictionaryKey: key.rawValue)
     }
 
 }

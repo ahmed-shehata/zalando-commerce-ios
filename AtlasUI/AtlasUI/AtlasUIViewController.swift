@@ -7,15 +7,16 @@ import AtlasSDK
 
 class AtlasUIViewController: UIViewController {
 
-    static var shared: AtlasUIViewController? {
-        return try? AtlasUI.shared().provide()
-    }
+    fileprivate(set) static weak var presented: AtlasUIViewController?
 
     let mainNavigationController: UINavigationController
     var dismissalReason: AtlasUI.CheckoutResult?
+    let atlasUI: AtlasUI
+
     fileprivate var bottomConstraint: NSLayoutConstraint?
     fileprivate let loaderView = LoaderView()
-    private let atlasReachability = AtlasReachability()
+
+    private let reachabilityNotifier = ReachabilityNotifier()
     private let completion: AtlasUICheckoutCompletion
 
     fileprivate let screenshotCoverView: UIView = {
@@ -24,13 +25,14 @@ class AtlasUIViewController: UIViewController {
         return view
     }()
 
-    enum Error: AtlasError {
+    enum Error: LocalizableError {
         case dismissalReasonNotSet
     }
 
-    init(forSKU sku: String, completion: @escaping AtlasUICheckoutCompletion) {
+    init(forSKU sku: ConfigSKU, atlasUI: AtlasUI, completion: @escaping AtlasUICheckoutCompletion) {
         let getArticleDetailsViewController = GetArticleDetailsViewController(sku: sku)
-        mainNavigationController = UINavigationController(rootViewController: getArticleDetailsViewController)
+        self.mainNavigationController = UINavigationController(rootViewController: getArticleDetailsViewController)
+        self.atlasUI = atlasUI
         self.completion = completion
 
         super.init(nibName: nil, bundle: nil)
@@ -42,6 +44,9 @@ class AtlasUIViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        storePresented()
+
         UserError.loadBannerError()
         addChildViewController(mainNavigationController)
         view.addSubview(mainNavigationController.view)
@@ -49,13 +54,13 @@ class AtlasUIViewController: UIViewController {
         mainNavigationController.view.snap(toSuperview: .right)
         bottomConstraint = mainNavigationController.view.snap(toView: view, anchor: .bottom)
         mainNavigationController.view.snap(toSuperview: .left)
-        atlasReachability.setupReachability()
+        reachabilityNotifier.start()
     }
 
     func dismissAtlasCheckoutUI() throws {
         guard let reason = dismissalReason else { throw Error.dismissalReasonNotSet }
         let completion = self.completion
-        AtlasUIViewController.shared?.dismiss(animated: true) {
+        dismiss(animated: true) {
             completion(reason)
         }
     }
@@ -79,10 +84,26 @@ extension AtlasUIViewController {
     }
 
     static func displayLoader(onView view: UIView? = nil, block: (@escaping () -> Void) -> Void) {
-        shared?.showLoader(onView: view)
+        presented?.showLoader(onView: view)
         block {
-            shared?.hideLoader()
+            presented?.hideLoader()
         }
+    }
+
+}
+
+extension AtlasUIViewController {
+
+    static func push(_ viewController: UIViewController, animated: Bool = true) {
+        AtlasUIViewController.presented?.mainNavigationController.pushViewController(viewController, animated: animated)
+    }
+
+}
+
+extension AtlasUIViewController {
+
+    func storePresented() {
+        AtlasUIViewController.presented = self
     }
 
 }

@@ -111,7 +111,7 @@
     "stock" : 0
   } ],
   "media" : {
-    "images" : [ {
+    "media_items" : [ {
       "order" : 101,
       "catalog" : "https://i3.ztat.net/catalog/L2/71/1E/00/2Q/11/L2711E002-Q11@108.jpg",
       "catalog_hd" : "https://i3.ztat.net/catalog_hd/L2/71/1E/00/2Q/11/L2711E002-Q11@108.jpg",

@@ -27,7 +27,7 @@ class LoggedInAddressListActionHandler: AddressListActionHandler {
 
     func update(address: EquatableAddress) {
         let dataModel = AddressFormDataModel(equatableAddress: address,
-                                             countryCode: AtlasAPIClient.shared?.config.salesChannel.countryCode)
+                                             countryCode: Config.shared?.salesChannel.countryCode)
         let formLayout = UpdateAddressFormLayout()
         let addressType: AddressFormType = address.isBillingAllowed ? .standardAddress : .pickupPoint
         let viewModel = AddressFormViewModel(dataModel: dataModel, layout: formLayout, type: addressType)
@@ -38,7 +38,7 @@ class LoggedInAddressListActionHandler: AddressListActionHandler {
     }
 
     func delete(address: EquatableAddress) {
-        AtlasUIClient.deleteAddress(withId: address.id) { [weak self] result in
+        AtlasAPI.withLoader.deleteAddress(with: address.id) { [weak self] result in
             guard let _ = result.process() else { return }
             self?.delegate?.deleted(address: address)
         }

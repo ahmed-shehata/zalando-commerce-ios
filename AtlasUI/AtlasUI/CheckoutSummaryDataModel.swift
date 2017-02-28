@@ -63,7 +63,7 @@ extension CheckoutSummaryDataModel {
     }
 
     var termsAndConditionsURL: URL? {
-        return AtlasAPIClient.shared?.config.salesChannel.termsAndConditionsURL
+        return Config.shared?.salesChannel.termsAndConditionsURL
     }
 
 }
@@ -77,13 +77,13 @@ extension CheckoutSummaryDataModel {
 
     private func checkPriceChange(comparedTo otherDataModel: CheckoutSummaryDataModel) throws {
         if otherDataModel.totalPrice != totalPrice && selectedArticle == otherDataModel.selectedArticle {
-            throw AtlasCheckoutError.priceChanged(newPrice: totalPrice)
+            throw CheckoutError.priceChanged(newPrice: totalPrice)
         }
     }
 
     private func checkPaymentAvailable(comparedTo otherDataModel: CheckoutSummaryDataModel) throws {
         if otherDataModel.paymentMethod != nil && paymentMethod == nil && selectedArticle == otherDataModel.selectedArticle {
-            throw AtlasCheckoutError.paymentMethodNotAvailable
+            throw CheckoutError.paymentMethodNotAvailable
         }
     }
 
@@ -96,7 +96,7 @@ extension CheckoutSummaryDataModel {
         self.shippingAddress = addresses?.shippingAddress ?? cartCheckout?.checkout?.shippingAddress
         self.billingAddress = addresses?.billingAddress ?? cartCheckout?.checkout?.billingAddress
         self.paymentMethod = cartCheckout?.checkout?.payment.selected?.method?.localizedTitle
-        self.totalPrice = cartCheckout?.cart?.grossTotal ?? selectedArticle.totalPrice
+        self.totalPrice = cartCheckout?.cart.grossTotal ?? selectedArticle.totalPrice
         self.delivery = cartCheckout?.checkout?.delivery
         self.email = nil
         self.orderNumber = nil

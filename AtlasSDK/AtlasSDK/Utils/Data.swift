@@ -11,7 +11,7 @@ extension Data {
         do {
             self = try JSONSerialization.data(withJSONObject: json, options: options)
         } catch let e {
-            AtlasLogger.logError(e)
+            Logger.error(e)
             throw e
         }
     }

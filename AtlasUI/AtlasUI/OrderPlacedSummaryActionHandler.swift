@@ -11,7 +11,7 @@ class OrderPlacedSummaryActionHandler: CheckoutSummaryActionHandler {
     weak var delegate: CheckoutSummaryActionHandlerDelegate?
 
     func handleSubmit() {
-        try? AtlasUIViewController.shared?.dismissAtlasCheckoutUI()
+        try? AtlasUIViewController.presented?.dismissAtlasCheckoutUI()
     }
 
     func handlePaymentSelection() {

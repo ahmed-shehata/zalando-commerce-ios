@@ -5,14 +5,12 @@
 import Foundation
 import AtlasSDK
 
-typealias GuestAddressActionHandlerCompletion = (_ address: EquatableAddress) -> Void
-
 class GuestAddressActionHandler {
 
     var addressCreationStrategy: AddressViewModelCreationStrategy?
     var emailAddress: String?
 
-    func createAddress(completion: @escaping GuestAddressActionHandlerCompletion) {
+    func createAddress(completion: @escaping Completion<EquatableAddress>) {
         addressCreationStrategy?.titleKey = "guestSummaryView.address.add"
         addressCreationStrategy?.strategyCompletion = { viewModel in
             let guestViewModel = self.guestViewModel(fromViewModel: viewModel)
@@ -26,11 +24,11 @@ class GuestAddressActionHandler {
         addressCreationStrategy?.execute()
     }
 
-    func updateAddress(address: EquatableAddress, completion: @escaping GuestAddressActionHandlerCompletion) {
+    func updateAddress(address: EquatableAddress, completion: @escaping Completion<EquatableAddress>) {
         let actionHandler = GuestCheckoutUpdateAddressActionHandler()
         let dataModel = AddressFormDataModel(equatableAddress: address,
                                              email: emailAddress,
-                                             countryCode: AtlasAPIClient.shared?.config.salesChannel.countryCode)
+                                             countryCode: Config.shared?.salesChannel.countryCode)
         let formLayout = UpdateAddressFormLayout()
         let addressType: AddressFormType = address.isBillingAllowed ? .guestStandardAddress : .guestPickupPoint
         let viewModel = AddressFormViewModel(dataModel: dataModel, layout: formLayout, type: addressType)
@@ -41,7 +39,7 @@ class GuestAddressActionHandler {
         viewController.present()
     }
 
-    func handleAddressModification(address: EquatableAddress?, completion: @escaping GuestAddressActionHandlerCompletion) {
+    func handleAddressModification(address: EquatableAddress?, completion: @escaping Completion<EquatableAddress>) {
         guard let address = address else {
             createAddress(completion: completion)
             return

@@ -32,7 +32,7 @@ extension AddressFormActionHandler {
                 return
         }
 
-        AtlasUIClient.checkAddress(request) { result in
+        AtlasAPI.withLoader.checkAddress(request) { result in
             guard let checkAddressResponse = result.process() else {
                 completion(.error)
                 return
@@ -65,7 +65,7 @@ extension AddressFormActionHandler {
         let viewController = AddressCheckViewController(dataModel: dataModel, completion: completion)
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.modalPresentationStyle = .overCurrentContext
-        AtlasUIViewController.shared?.show(navigationController, sender: nil)
+        AtlasUIViewController.presented?.show(navigationController, sender: nil)
     }
 
 }

@@ -96,24 +96,24 @@ class CheckoutSummaryOrderStackView: UIStackView {
 extension CheckoutSummaryOrderStackView {
 
     fileprivate dynamic func saveImageButtonPressed() {
-        AtlasUIViewController.shared?.prepareSubviewsForScreenshot()
+        AtlasUIViewController.presented?.prepareSubviewsForScreenshot()
         UIView.waitForUIState {
-            let screenshot = AtlasUIViewController.shared?.mainNavigationController.view.takeScreenshot()
-            AtlasUIViewController.shared?.cleanupSubviewsAfterScreenshot()
+            let screenshot = AtlasUIViewController.presented?.mainNavigationController.view.takeScreenshot()
+            AtlasUIViewController.presented?.cleanupSubviewsAfterScreenshot()
 
             guard let image = screenshot else {
-                UserError.display(error: AtlasCheckoutError.unclassified)
+                UserError.display(error: CheckoutError.unclassified)
                 return
             }
 
-            AtlasUIViewController.shared?.showLoader()
+            AtlasUIViewController.presented?.showLoader()
             UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(image:didFinishSavingWithError:contextInfo:)), nil)
         }
     }
 
     func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeMutableRawPointer) {
-        AtlasUIViewController.shared?.hideLoader()
-        guard error == nil else { return UserError.display(error: AtlasCheckoutError.photosLibraryAccessNotAllowed) }
+        AtlasUIViewController.presented?.hideLoader()
+        guard error == nil else { return UserError.display(error: CheckoutError.photosLibraryAccessNotAllowed) }
         showSavedLabel()
     }
 

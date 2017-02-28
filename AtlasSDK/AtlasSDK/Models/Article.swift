@@ -6,13 +6,13 @@ import Foundation
 
 public struct Article {
 
-    public let id: String
+    public let id: ConfigSKU
     public let name: String
     public let color: String
     public let brand: Brand
     public let units: [Unit]
     public let availableUnits: [Unit]
-    public let media: Media
+    public let media: Media?
 
 }
 
@@ -27,7 +27,7 @@ extension Article {
     }
 
     public var thumbnailURL: URL? {
-        return media.images.first?.catalogURL
+        return media?.mediaItems.first?.catalogURL
     }
 
 }
@@ -35,7 +35,7 @@ extension Article {
 extension Article {
 
     public struct Unit {
-        public let id: String
+        public let id: SimpleSKU
         public let size: String
         public let price: Money
         public let originalPrice: Money
@@ -58,14 +58,13 @@ extension Article: JSONInitializable {
         guard let id = json["id"].string,
             let name = json["name"].string,
             let color = json["color"].string,
-            let brand = Brand(json: json["brand"]),
-            let media = Media(json: json["media"])
+            let brand = Brand(json: json["brand"])
             else { return nil }
 
-        self.id = id
+        self.id = ConfigSKU(value: id)
         self.name = name
         self.color = color
-        self.media = media
+        self.media = Media(json: json["media"])
         self.brand = brand
         self.units = json["units"].jsons.flatMap { Article.Unit(json: $0) }
         self.availableUnits = units.filter { $0.available }
@@ -83,7 +82,7 @@ extension Article.Unit: JSONInitializable {
             let available = json["available"].bool
             else { return nil }
 
-        self.id = id
+        self.id = SimpleSKU(value: id)
         self.size = size
         self.price = price
         self.originalPrice = originalPrice

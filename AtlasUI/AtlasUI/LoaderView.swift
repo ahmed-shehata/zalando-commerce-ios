@@ -16,7 +16,7 @@ class LoaderView: UIView {
     fileprivate let backgroundView: RoundedView = {
         let view = RoundedView()
         view.cornerRadius = 20
-        view.backgroundColor = UIColor(white: 0, alpha: 0.7)
+        view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.7)
         return view
     }()
 

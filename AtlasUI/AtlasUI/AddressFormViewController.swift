@@ -5,8 +5,6 @@
 import UIKit
 import AtlasSDK
 
-typealias AddressFormCompletion = (_ address: EquatableAddress, _ email: String?) -> Void
-
 class AddressFormViewController: UIViewController {
 
     let scrollView: KeyboardScrollView = {
@@ -53,9 +51,9 @@ class AddressFormViewController: UIViewController {
         if viewModel.layout.displayViewModally {
             let navigationController = UINavigationController(rootViewController: self)
             navigationController.modalPresentationStyle = .overCurrentContext
-            AtlasUIViewController.shared?.show(navigationController, sender: nil)
+            AtlasUIViewController.presented?.show(navigationController, sender: nil)
         } else {
-            AtlasUIViewController.shared?.mainNavigationController.pushViewController(self, animated: true)
+            AtlasUIViewController.push(self)
         }
     }
 

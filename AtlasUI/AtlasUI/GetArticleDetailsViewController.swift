@@ -7,9 +7,9 @@ import AtlasSDK
 
 class GetArticleDetailsViewController: UIViewController {
 
-    let sku: String
+    let sku: ConfigSKU
 
-    init(sku: String) {
+    init(sku: ConfigSKU) {
         self.sku = sku
         super.init(nibName: nil, bundle: nil)
     }
@@ -25,7 +25,7 @@ class GetArticleDetailsViewController: UIViewController {
     }
 
     private func fetchArticle() {
-        AtlasUIClient.article(withSKU: self.sku) { [weak self] result in
+        AtlasAPI.withLoader.article(with: self.sku) { [weak self] result in
             guard let article = result.process(presentationMode: .fullScreen) else { return }
             self?.showSummaryView(article: article)
         }
@@ -41,14 +41,14 @@ class GetArticleDetailsViewController: UIViewController {
         }
 
         let selectedArticle = SelectedArticle(article: article, unitIndex: 0, desiredQuantity: 1)
-        guard AtlasAPIClient.shared?.isAuthorized == true else {
+        guard AtlasAPI.shared?.isAuthorized == true else {
             let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, totalPrice: selectedArticle.totalPrice)
             let viewModel = CheckoutSummaryViewModel(dataModel: dataModel, layout: NotLoggedInLayout())
             showSummaryView(viewModel: viewModel, actionHandler: NotLoggedInSummaryActionHandler())
             return
         }
 
-        AtlasUIClient.customer { [weak self] customerResult in
+        AtlasAPI.withLoader.customer { [weak self] customerResult in
             guard let customer = customerResult.process(presentationMode: .fullScreen) else { return }
 
             LoggedInSummaryActionHandler.create(customer: customer, selectedArticle: selectedArticle) { actionHandlerResult in

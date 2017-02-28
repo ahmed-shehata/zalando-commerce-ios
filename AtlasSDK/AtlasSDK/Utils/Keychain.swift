@@ -16,7 +16,7 @@ struct Keychain {
         let status: OSStatus
         defer {
             if status != errSecSuccess {
-                AtlasLogger.logError("Error deleting in Keychain:", status.description)
+                Logger.error("Error deleting in Keychain:", status.description)
             }
         }
 
@@ -30,7 +30,7 @@ struct Keychain {
         var status = errSecSuccess
         defer {
             if status != errSecSuccess {
-                AtlasLogger.logError("Error saving in Keychain:", status.description)
+                Logger.error("Error saving in Keychain:", status.description)
             }
         }
 
@@ -86,7 +86,7 @@ struct Keychain {
         }
         let entries: [[AnyHashable: Any]] = results.flatMap { $0 as? [AnyHashable: Any] }
 
-        AtlasLogger.logError(entries)
+        Logger.error(entries)
         return entries
     }
 

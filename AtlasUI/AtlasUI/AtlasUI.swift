@@ -6,18 +6,14 @@ import Foundation
 import UIKit
 import AtlasSDK
 
-public typealias AtlasUIConfigureCompletion = (AtlasResult<AtlasUI>) -> Void
 public typealias AtlasUICheckoutCompletion = (AtlasUI.CheckoutResult) -> Void
 
-/// The main interface for Atlas UI framework
-/// Only on instance of AtlasUI with a specific configuration can be created as a time as it is a singleton class
+// TODO: document it, please...
+
 final public class AtlasUI {
 
-    /// Errors that can thrown for AtlasUI Client
-    ///
-    /// - notInitialized: Indicate that the AtlasUI is not configured yet, make sure you call `configure(options:completion:)` first
-    public enum Error: AtlasError {
-        case notInitialized
+    public enum Error: LocalizableError {
+        case notPresented
     }
 
     /// Result that can returned after presenting the Checkout screen
@@ -31,45 +27,31 @@ final public class AtlasUI {
     /// - finishedWithError: Error is displayed to the user
     ///                      - error: The displayed error
     public enum CheckoutResult {
-        case orderPlaced(orderConfirmation: OrderConfirmation, customerRequestedArticle: String?)
+        case orderPlaced(orderConfirmation: OrderConfirmation, customerRequestedArticle: ConfigSKU?)
         case userCancelled
-        case finishedWithError(error: AtlasError)
+        case finishedWithError(error: Swift.Error)
     }
 
-    /// Reference for AtlasAPIClient object that is configured with the current SalesChannel
-    public let client: AtlasAPIClient
+    public let api: AtlasAPI
+    let localizer: Localizer
 
-    private static var _shared: AtlasUI?
-
-    static func shared() throws -> AtlasUI {
-        guard let shared = _shared else { throw Error.notInitialized }
-        return shared
+    private init(api: AtlasAPI, localizer: Localizer) {
+        self.api = api
+        self.localizer = localizer
     }
 
-    fileprivate let injector = Injector()
-
-    private init(client: AtlasAPIClient, localizer: Localizer) {
-        self.client = client
-        self.register { localizer }
-    }
-
-    /// Configure AtlasUI is used as the very starting point to use AtlasUI framework to configure it
-    ///
-    /// - Parameters:
-    ///   - options: Options object with the needed configuration to initialize AtlasUI framework
-    ///   - completion: Completion Block with `AtlasResult` as an input parameter having AtlasUI instance as the success value
-    public static func configure(options: Options? = nil, completion: @escaping AtlasUIConfigureCompletion) {
+    public static func configure(options: Options? = nil, completion: @escaping ResultCompletion<AtlasUI>) {
         Atlas.configure(options: options) { result in
             switch result {
             case .failure(let error):
-                AtlasLogger.logError(error)
+                Logger.error(error)
                 completion(.failure(error))
 
-            case .success(let client):
+            case .success(let api):
                 do {
-                    let localizer = try Localizer(localeIdentifier: client.config.interfaceLocale.identifier)
-                    let shared = AtlasUI(client: client, localizer: localizer)
-                    AtlasUI._shared = shared
+                    let localeIdentifier = api.config.interfaceLocale.identifier
+                    let localizer = try Localizer(localeIdentifier: localeIdentifier)
+                    let shared = AtlasUI(api: api, localizer: localizer)
                     completion(.success(shared))
                 } catch let error {
                     completion(.failure(error))
@@ -78,52 +60,42 @@ final public class AtlasUI {
         }
     }
 
-    /// Present Checkout is used to present the AtlasUI over the given controller
-    /// It can be called only once at a time as it depends internally on Singleton objects
-    ///
-    /// - Parameters:
-    ///   - viewController: The controller in which AtlasUI will be presented over it
-    ///   - sku: The SKU for the item that the user want to buy
-    ///   - completion: Completion Block with `CheckoutResult` as an input parameter to indicate the result of the checkout process
-    /// - Throws: notInitialized is thrown if this method is called before initializing AtlasUI be calling configure(options:completion:)
     public func presentCheckout(onViewController viewController: UIViewController,
-                                forSKU sku: String,
-                                completion: @escaping AtlasUICheckoutCompletion) throws {
+                                for sku: ConfigSKU,
+                                completion: @escaping AtlasUICheckoutCompletion) {
 
-        guard let _ = AtlasAPIClient.shared else {
-            AtlasLogger.logError("AtlasUI is not initialized")
-            throw AtlasUI.Error.notInitialized
-        }
-
-        let atlasUIViewController = AtlasUIViewController(forSKU: sku, completion: completion)
+        let atlasUIViewController = AtlasUIViewController(forSKU: sku, atlasUI: self, completion: completion)
 
         let checkoutTransitioning = CheckoutTransitioningDelegate()
         atlasUIViewController.transitioningDelegate = checkoutTransitioning
         atlasUIViewController.modalPresentationStyle = .custom
-
-        injector.register { atlasUIViewController }
 
         viewController.present(atlasUIViewController, animated: true, completion: nil)
     }
 
 }
 
-extension AtlasUI {
+extension AtlasAPI {
 
-    func register<T>(factory: @escaping (Void) -> T) {
-        injector.register(factory)
-    }
-
-    func provide<T>() throws -> T {
-        return try injector.provide()
+    static var shared: AtlasAPI? {
+        return try? AtlasUI.fromPresented().api
     }
 
 }
 
-extension AtlasAPIClient {
+extension AtlasUI {
 
-    static var shared: AtlasAPIClient? {
-        return try? AtlasUI.shared().client
+    static func fromPresented() throws -> AtlasUI {
+        guard let controller = AtlasUIViewController.presented else { throw Error.notPresented }
+        return controller.atlasUI
+    }
+
+}
+
+extension Config {
+
+    static var shared: Config? {
+        return AtlasAPI.shared?.config
     }
 
 }

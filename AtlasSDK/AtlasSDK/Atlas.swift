@@ -4,35 +4,38 @@
 
 import Foundation
 
-public typealias AtlasClientCompletion = (AtlasResult<AtlasAPIClient>) -> Void
-
-extension NSNotification.Name {
-
-    public static let AtlasAuthorized = NSNotification.Name(rawValue: "Atlas.NotificationAuthorized")
-    public static let AtlasDeauthorized = NSNotification.Name(rawValue: "Atlas.NotificationDeauthorized")
-    public static let AtlasAuthorizationChanged = NSNotification.Name(rawValue: "Atlas.NotificationAuthorizationChanged")
-
-}
-
+/// Main entry point for the AtlasSDK framework
+///
+/// Does not keep any state internally.
+///
+/// - Note: See [project structure](https://github.com/zalando-incubator/atlas-ios/wiki/Project-structure)
 public struct Atlas {
 
-    public static func configure(options: Options? = nil, completion: @escaping AtlasClientCompletion) {
+    /// Configures and returns API client based on given options
+    ///
+    /// - Note: See [configuration](https://github.com/zalando-incubator/atlas-ios/wiki/Configuration)
+    ///
+    /// - Parameters:
+    ///   - options: Options for API client to be created. When `nil`, `$INFOPLIST_FILE` file of the app is used as configuration.
+    ///   - completion: Fired when network configuration call is finished.
+    ///     Containts `Result.success` with `AtlasAPI` or `Result.failure` with `Error` reason.
+    public static func configure(options: Options? = nil, completion: @escaping ResultCompletion<AtlasAPI>) {
         let options = options ?? Options()
         do {
             try options.validate()
         } catch let error {
-            AtlasLogger.logError(error)
+            Logger.error(error)
             return completion(.failure(error))
         }
 
         ConfigClient(options: options).configure { result in
             switch result {
             case .failure(let error, _):
-                AtlasLogger.logError(error)
+                Logger.error(error)
                 completion(.failure(error))
             case .success(let config):
-                let client = AtlasAPIClient(config: config)
-                completion(.success(client))
+                let api = AtlasAPI(config: config)
+                completion(.success(api))
             }
         }
     }

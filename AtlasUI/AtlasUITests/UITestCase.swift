@@ -11,13 +11,16 @@ import AtlasSDK
 
 class UITestCase: XCTestCase {
 
-    var sku: String = "AD541L009-G11"
+    var sku = ConfigSKU(value: "AD541L009-G11")
     var atlasUIViewController: AtlasUIViewController?
+    var atlasUI: AtlasUI!
+
     var window: UIWindow = {
         let window = UIWindow()
         window.backgroundColor = .white
         return window
     }()
+
     var defaultNavigationController: UINavigationController? {
         return atlasUIViewController?.mainNavigationController
     }
@@ -26,12 +29,17 @@ class UITestCase: XCTestCase {
         super.setUp()
         Nimble.AsyncDefaults.Timeout = 10
         try! AtlasMockAPI.startServer()
+    }
 
+    func registerAtlasUI() {
         waitUntil(timeout: 10) { done in
             let opts = Options.forTests(interfaceLanguage: "en")
             AtlasUI.configure(options: opts) { result in
-                if case let .failure(error) = result {
+                switch result {
+                case .failure(let error):
                     fail(String(describing: error))
+                case .success(let atlasUI):
+                    self.atlasUI = atlasUI
                 }
                 done()
             }
@@ -45,16 +53,21 @@ class UITestCase: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        registerAtlasUIViewController(forSKU: sku)
+        registerAtlasUI()
+        registerAtlasUIViewController(for: self.sku)
         waitForArticleFetch()
     }
 
-    func registerAtlasUIViewController(forSKU: String) {
+    func registerAtlasUIViewController(forConfigSKU sku: String) {
+        let sku = ConfigSKU(value: sku)
+        registerAtlasUIViewController(for: sku)
+    }
+
+    func registerAtlasUIViewController(for sku: ConfigSKU) {
         UserError.resetBanners()
-        let atlasUIViewController = AtlasUIViewController(forSKU: forSKU) { _ in }
+        let atlasUIViewController = AtlasUIViewController(for: sku, atlasUI: atlasUI) { _ in }
         self.window.rootViewController = atlasUIViewController
         self.window.makeKeyAndVisible()
-        try! AtlasUI.shared().register { atlasUIViewController }
         _ = atlasUIViewController.view // load the view
         self.atlasUIViewController = atlasUIViewController
     }

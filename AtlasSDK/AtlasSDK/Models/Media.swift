@@ -6,13 +6,13 @@ import Foundation
 
 public struct Media {
 
-    public let images: [Image]
+    public let mediaItems: [MediaItem]
 
 }
 
 extension Media {
 
-    public struct Image {
+    public struct MediaItem {
         public let order: Int
         public let catalogURL: URL
         public let catalogHDURL: URL
@@ -27,12 +27,12 @@ extension Media {
 extension Media: JSONInitializable {
 
     init?(json: JSON) {
-        self.images = json["images"].jsons.flatMap { Media.Image(json: $0) }
+        self.mediaItems = json["media_items"].jsons.flatMap { Media.MediaItem(json: $0) }
     }
 
 }
 
-extension Media.Image: JSONInitializable {
+extension Media.MediaItem: JSONInitializable {
 
     init?(json: JSON) {
         guard let order = json["order"].int,

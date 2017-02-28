@@ -20,8 +20,8 @@ extension UIViewController {
     }
 
     fileprivate dynamic func cancelCheckoutTapped() {
-        AtlasUIViewController.shared?.dismissalReason = AtlasUI.CheckoutResult.userCancelled
-        try? AtlasUIViewController.shared?.dismissAtlasCheckoutUI()
+        AtlasUIViewController.presented?.dismissalReason = AtlasUI.CheckoutResult.userCancelled
+        try? AtlasUIViewController.presented?.dismissAtlasCheckoutUI()
     }
 
 }

@@ -27,7 +27,7 @@ class ArticleNotSelectedActionHandler: CheckoutSummaryActionHandler {
     }
 
     func updated(selectedArticle: SelectedArticle) {
-        guard AtlasAPIClient.shared?.isAuthorized == true else {
+        guard AtlasAPI.shared?.isAuthorized == true else {
             let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, totalPrice: selectedArticle.totalPrice)
             try? delegate?.updated(dataModel: dataModel)
             delegate?.updated(layout: NotLoggedInLayout())
@@ -35,7 +35,7 @@ class ArticleNotSelectedActionHandler: CheckoutSummaryActionHandler {
             return
         }
 
-        AtlasUIClient.customer { [weak self] customerResult in
+        AtlasAPI.withLoader.customer { [weak self] customerResult in
             guard let customer = customerResult.process() else { return }
 
             LoggedInSummaryActionHandler.create(customer: customer, selectedArticle: selectedArticle) { actionHandlerResult in

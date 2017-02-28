@@ -17,8 +17,8 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
             updateDataModel(addresses: addresses, guestCheckout: guestCheckout)
         }
     }
-    var checkoutId: String?
-    var token: String?
+    var checkoutId: CheckoutId?
+    var token: CheckoutToken?
 
     init(email: String) {
         self.actionHandler.emailAddress = email
@@ -26,24 +26,24 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
 
     func handleSubmit() {
         guard hasAddresses else {
-            UserError.display(error: AtlasCheckoutError.missingAddress)
+            UserError.display(error: CheckoutError.missingAddress)
             return
         }
         guard let checkoutId = checkoutId, let token = token else {
-            UserError.display(error: AtlasCheckoutError.missingPaymentMethod)
+            UserError.display(error: CheckoutError.missingPaymentMethod)
             return
         }
 
         let request = GuestOrderRequest(checkoutId: checkoutId, token: token)
-        AtlasUIClient.createGuestOrder(request: request) { [weak self] result in
+        AtlasAPI.withLoader.createGuestOrder(request: request) { [weak self] result in
             guard let order = result.process() else { return }
             self?.handleOrderConfirmation(order: order)
         }
     }
 
     func handlePaymentSelection() {
-        guard let callbackURL = AtlasAPIClient.shared?.config.payment.selectionCallbackURL else {
-            UserError.display(error: AtlasCheckoutError.unclassified)
+        guard let callbackURL = Config.shared?.payment.selectionCallbackURL else {
+            UserError.display(error: CheckoutError.unclassified)
             return
         }
 
@@ -60,11 +60,11 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
                 case .cancel:
                     break
                 case .error, .success:
-                    UserError.display(error: AtlasCheckoutError.unclassified)
+                    UserError.display(error: CheckoutError.unclassified)
                 }
             }
 
-            AtlasUIViewController.shared?.mainNavigationController.pushViewController(paymentViewController, animated: true)
+            AtlasUIViewController.push(paymentViewController)
         }
     }
 
@@ -107,8 +107,8 @@ extension GuestCheckoutSummaryActionHandler {
             return
         }
 
-        guard let callbackURL = AtlasAPIClient.shared?.config.payment.thirdPartyCallbackURL else {
-            UserError.display(error: AtlasCheckoutError.unclassified)
+        guard let callbackURL = Config.shared?.payment.thirdPartyCallbackURL else {
+            UserError.display(error: CheckoutError.unclassified)
             return
         }
 
@@ -117,10 +117,10 @@ extension GuestCheckoutSummaryActionHandler {
             switch paymentStatus {
             case .success: self?.showConfirmationScreen(order: order)
             case .redirect, .cancel: break
-            case .error, .guestRedirect: UserError.display(error: AtlasCheckoutError.unclassified)
+            case .error, .guestRedirect: UserError.display(error: CheckoutError.unclassified)
             }
         }
-        AtlasUIViewController.shared?.mainNavigationController.pushViewController(paymentViewController, animated: true)
+        AtlasUIViewController.push(paymentViewController)
     }
 
     fileprivate func showConfirmationScreen(order: GuestOrder) {
@@ -140,7 +140,7 @@ extension GuestCheckoutSummaryActionHandler {
 
         let orderConfirmation = OrderConfirmation(guestOrder: order, selectedArticle: selectedArticle)
         let result = AtlasUI.CheckoutResult.orderPlaced(orderConfirmation: orderConfirmation, customerRequestedArticle: nil)
-        AtlasUIViewController.shared?.dismissalReason = result
+        AtlasUIViewController.presented?.dismissalReason = result
     }
 
     fileprivate func getPaymentURL(completion: @escaping (URL) -> Void) {
@@ -155,7 +155,7 @@ extension GuestCheckoutSummaryActionHandler {
             let shippingAddress = shippingAddress,
             let billingAddress = billingAddress
             else {
-                UserError.display(error: AtlasCheckoutError.missingAddress)
+                UserError.display(error: CheckoutError.missingAddress)
                 return
         }
 
@@ -169,7 +169,7 @@ extension GuestCheckoutSummaryActionHandler {
                                                    shippingAddress: shippingGuestAddress,
                                                    billingAddress: billingGuestAddress,
                                                    cart: cart)
-        AtlasUIClient.guestCheckoutPaymentSelectionURL(request: request) { [weak self] result in
+        AtlasAPI.withLoader.guestCheckoutPaymentSelectionURL(request: request) { [weak self] result in
             guard let paymentURL = result.process() else { return }
             self?.paymentURL = paymentURL
             completion(paymentURL)
@@ -189,8 +189,8 @@ extension GuestCheckoutSummaryActionHandler {
         token = nil
     }
 
-    fileprivate func getGuestCheckout(checkoutId: String, token: String) {
-        AtlasUIClient.guestCheckout(checkoutId: checkoutId, token: token) { [weak self] result in
+    fileprivate func getGuestCheckout(checkoutId: CheckoutId, token: CheckoutToken) {
+        AtlasAPI.withLoader.guestCheckout(with: checkoutId, token: token) { [weak self] result in
             guard let guestCheckout = result.process() else { return }
             self?.guestCheckout = guestCheckout
             self?.checkoutId = checkoutId

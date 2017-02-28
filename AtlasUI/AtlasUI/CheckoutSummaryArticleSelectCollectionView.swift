@@ -26,8 +26,6 @@ enum CheckoutSummaryArticleRefineType {
 
 }
 
-typealias CheckoutSummaryArticleRefineCompletion = (Int) -> Void
-
 class CheckoutSummaryArticleSelectCollectionView: UICollectionView {
 
     var selectedArticle: SelectedArticle?
@@ -39,7 +37,7 @@ class CheckoutSummaryArticleSelectCollectionView: UICollectionView {
         layout.minimumLineSpacing = 7
         layout.minimumInteritemSpacing = 7
         layout.sectionInset = UIEdgeInsets(top: 7, left: 7, bottom: 7, right: 7)
-        layout.itemSize = CGSize(width: 90, height: 36)
+        layout.itemSize = CGSize(width: 90, height: 35)
         layout.scrollDirection = .horizontal
 
         super.init(frame: .zero, collectionViewLayout: layout)
@@ -62,11 +60,11 @@ class CheckoutSummaryArticleSelectCollectionView: UICollectionView {
 
         UIView.animate(duration: .fast, animations: { [weak self] in
             self?.alpha = 0
-        }, completion: { [weak self] _ in
-            self?.reload(andSelect: idx)
-            UIView.animate(duration: .fast) {
-                self?.alpha = 1
-            }
+            }, completion: { [weak self] _ in
+                self?.reload(andSelect: idx)
+                UIView.animate(duration: .fast) {
+                    self?.alpha = 1
+                }
         })
     }
 

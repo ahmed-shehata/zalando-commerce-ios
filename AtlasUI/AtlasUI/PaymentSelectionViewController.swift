@@ -5,11 +5,9 @@
 import UIKit
 import AtlasSDK
 
-typealias PaymentCompletion = (PaymentStatus) -> Void
-
 final class PaymentViewController: UIViewController, UIWebViewDelegate {
 
-    var paymentCompletion: PaymentCompletion?
+    var paymentCompletion: Completion<PaymentStatus>?
     private let paymentURL: URL
     private let callbackURLComponents: URLComponents?
 

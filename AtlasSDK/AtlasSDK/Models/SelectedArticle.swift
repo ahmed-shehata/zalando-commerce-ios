@@ -4,17 +4,6 @@
 
 import Foundation
 
-extension Array {
-
-    subscript(safe index: Index?) -> Element? {
-        get {
-            guard let index = index, (0..<count).contains(index) else { return nil }
-            return self[index]
-        }
-    }
-
-}
-
 public struct SelectedArticle {
 
     public let article: Article
@@ -39,8 +28,8 @@ public struct SelectedArticle {
         }
     }
 
-    public var sku: String {
-        return unit?.id ?? ""
+    public var sku: SimpleSKU {
+        return unit?.id ?? SimpleSKU.empty
     }
 
     public var unit: Article.Unit? {
@@ -59,7 +48,7 @@ public struct SelectedArticle {
         return Money(amount: priceAmount * quantity, currency: currency)
     }
 
-    public var currency: String {
+    public var currency: Currency {
         return unit?.price.currency ?? article.availableUnits[0].price.currency
     }
 

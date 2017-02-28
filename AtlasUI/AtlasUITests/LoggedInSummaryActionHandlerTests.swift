@@ -16,13 +16,13 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
 
     override func setUp() {
         super.setUp()
-        AtlasAPIClient.shared?.authorize(withToken: "TestToken")
+        atlasUI.api.authorize(withToken: "TestToken")
         actionHandler = createActionHandler()
     }
 
     override func tearDown() {
         super.tearDown()
-        AtlasAPIClient.shared?.deauthorize()
+        atlasUI.api.deauthorize()
     }
 
     func testNoPaymentMethodSelected() {
@@ -173,14 +173,14 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
     }
 
     func testShippingAddressWithNoAddresses() {
-        AtlasAPIClient.shared?.authorize(withToken: "TestTokenWithoutAddresses")
+        atlasUI.api.authorize(withToken: "TestTokenWithoutAddresses")
         actionHandler?.handleShippingAddressSelection()
         expect(UIApplication.topViewController() as? UIAlertController).toNotEventually(beNil())
         UIApplication.topViewController()?.dismiss(animated: true, completion: nil)
     }
 
     func testBillingAddressWithNoAddresses() {
-        AtlasAPIClient.shared?.authorize(withToken: "TestTokenWithoutAddresses")
+        atlasUI.api.authorize(withToken: "TestTokenWithoutAddresses")
         actionHandler?.handleBillingAddressSelection()
         expect(UIApplication.topViewController() as? UIAlertController).toNotEventually(beNil())
         UIApplication.topViewController()?.dismiss(animated: true, completion: nil)
@@ -193,9 +193,9 @@ extension LoggedInSummaryActionHandlerTests {
     fileprivate func createActionHandler() -> LoggedInSummaryActionHandler? {
         var loggedInActionHandler: LoggedInSummaryActionHandler?
         waitUntil(timeout: 10) { done in
-            AtlasUIClient.customer { result in
+            AtlasAPI.withLoader.customer { result in
                 guard let customer = result.process() else { return fail() }
-                AtlasUIClient.article(withSKU: self.sku) { result in
+                AtlasAPI.withLoader.article(with: self.sku) { result in
                     guard let article = result.process() else { return fail() }
                     self.article = article
                     let selectedArticle = SelectedArticle(article: article, unitIndex: 0, desiredQuantity: 1)
@@ -218,7 +218,7 @@ extension LoggedInSummaryActionHandlerTests {
         guard let article = article else { return nil }
         var cartCheckout: CartCheckout?
         waitUntil(timeout: 10) { done in
-            AtlasUIClient.createCheckoutCart(forSelectedArticle: SelectedArticle(article: article, unitIndex: 0, desiredQuantity: 1)) { result in
+            AtlasAPI.withLoader.createCheckoutCart(forSelectedArticle: SelectedArticle(article: article, unitIndex: 0, desiredQuantity: 1)) { result in
                 guard let checkoutCart = result.process() else { return fail() }
                 cartCheckout = (cart: checkoutCart.cart, checkout: checkoutCart.checkout)
                 done()
@@ -230,7 +230,7 @@ extension LoggedInSummaryActionHandlerTests {
     fileprivate func getStandardAddress() -> EquatableAddress? {
         var address: EquatableAddress?
         waitUntil(timeout: 10) { done in
-            AtlasUIClient.addresses { result in
+            AtlasAPI.withLoader.addresses { result in
                 guard let addresses = result.process() else { return fail() }
                 address = addresses.filter { $0.isBillingAllowed }.first
                 done()
@@ -242,7 +242,7 @@ extension LoggedInSummaryActionHandlerTests {
     fileprivate func getPickupPointAddress() -> EquatableAddress? {
         var address: EquatableAddress?
         waitUntil(timeout: 10) { done in
-            AtlasUIClient.addresses { result in
+            AtlasAPI.withLoader.addresses { result in
                 guard let addresses = result.process() else { return fail() }
                 address = addresses.filter { !$0.isBillingAllowed }.first
                 done()
@@ -276,7 +276,7 @@ extension LoggedInSummaryActionHandlerTests {
     }
 
     fileprivate func createDataModel(fromCartCheckout cartCheckout: CartCheckout?) -> CheckoutSummaryDataModel? {
-        let totalPrice = cartCheckout?.cart?.grossTotal ?? Money.Zero
+        let totalPrice = cartCheckout?.cart.grossTotal ?? Money.Zero
         return createDataModel(fromCheckout: cartCheckout?.checkout, totalPrice: totalPrice)
     }
 
