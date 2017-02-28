@@ -61,9 +61,9 @@ module Calypso
       end
     end
 
-    def update_project(path, version)
+    def update_project(project, path, version)
       run_agvtool path, version
-      Dir["#{path}/#{VERSIONED_PROJECT_FILES}"].each do |file|
+      Dir["#{path}/#{project}*/#{VERSIONED_PROJECT_FILES}"].each do |file|
         repo.add file
       end
     end
