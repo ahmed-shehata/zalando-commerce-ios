@@ -12,42 +12,46 @@ struct SelectedArticle {
     let quantity: Int
 
     let maxQuantityAllowed: Int
-    let isSelected: Bool
-
-    var unitIndex: Int? {
-        return article.availableUnits.index(of: unit)
-    }
 
     private static let minQuantityAllowed = 1
     private static let maxQuantityAllowed = 10
 
-    init(from selectedArticle: SelectedArticle, changeQuantity newQuantity: Int) {
+    init(in selectedArticle: SelectedArticle, changeQuantity newQuantity: Int) {
         self.init(article: selectedArticle.article,
                   desiredQuantity: newQuantity,
                   selectedUnitIndex: selectedArticle.unitIndex)
     }
 
-    init(from selectedArticle: SelectedArticle, changeSelectedIndex newIndex: Int) {
+    init(in selectedArticle: SelectedArticle, changeSelectedIndex newIndex: Int) {
         self.init(article: selectedArticle.article,
                   desiredQuantity: selectedArticle.quantity,
                   selectedUnitIndex: newIndex)
     }
 
-    init(article: Article, desiredQuantity: Int, selectedUnitIndex unitIndex: Int? = 0) {
-        self.article = article
-
+    init(article: Article, desiredQuantity: Int = 1, selectedUnitIndex unitIndex: Int? = 0) {
         let unit = article.availableUnits[safe: unitIndex] ?? Article.Unit.empty
+        self.init(article: article, desiredQuantity: desiredQuantity, unit: unit)
+    }
+
+    init(article: Article, desiredQuantity: Int = 1, unit: Article.Unit) {
+        self.article = article
         self.unit = unit
 
         let quantityAvailable = unit.stock ?? SelectedArticle.minQuantityAllowed
         self.maxQuantityAllowed = min(quantityAvailable, SelectedArticle.maxQuantityAllowed)
         self.quantity = min(desiredQuantity, maxQuantityAllowed)
-
-        self.isSelected = article.availableUnits[safe: unitIndex] != nil
     }
 
     var sku: SimpleSKU {
         return unit.id
+    }
+
+    var isSelected: Bool {
+        return unitIndex != nil
+    }
+
+    var unitIndex: Int? {
+        return article.availableUnits.index(of: unit)
     }
 
     var totalPrice: Money {
@@ -58,6 +62,14 @@ struct SelectedArticle {
     var totalOriginalPrice: Money {
         let originalPrice = unit.price
         return Money(amount: originalPrice.amount * quantity, currency: originalPrice.currency)
+    }
+
+}
+
+extension SelectedArticle {
+
+    static func withoutUnit(article: Article) -> SelectedArticle {
+        return SelectedArticle(article: article, desiredQuantity: 1, unit: Article.Unit.empty)
     }
 
 }

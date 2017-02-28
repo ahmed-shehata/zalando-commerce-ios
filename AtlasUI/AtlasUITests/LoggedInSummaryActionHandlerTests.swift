@@ -198,7 +198,7 @@ extension LoggedInSummaryActionHandlerTests {
                 AtlasAPI.withLoader.article(with: self.sku) { result in
                     guard let article = result.process() else { return fail() }
                     self.article = article
-                    let selectedArticle = SelectedArticle(article: article, desiredQuantity: 1)
+                    let selectedArticle = SelectedArticle(article: article)
                     LoggedInSummaryActionHandler.create(customer: customer, selectedArticle: selectedArticle) { result in
                         guard let actionHandler = result.process() else { return fail() }
                         let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, totalPrice: selectedArticle.totalPrice)
@@ -218,7 +218,7 @@ extension LoggedInSummaryActionHandlerTests {
         guard let article = article else { return nil }
         var cartCheckout: CartCheckout?
         waitUntil(timeout: 10) { done in
-            AtlasAPI.withLoader.createCheckoutCart(for: SelectedArticle(article: article, desiredQuantity: 1)) { result in
+            AtlasAPI.withLoader.createCheckoutCart(for: SelectedArticle(article: article)) { result in
                 guard let checkoutCart = result.process() else { return fail() }
                 cartCheckout = (cart: checkoutCart.cart, checkout: checkoutCart.checkout)
                 done()
