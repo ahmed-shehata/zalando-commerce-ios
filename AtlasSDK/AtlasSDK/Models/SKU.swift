@@ -99,14 +99,3 @@ public struct SimpleSKU: SKU {
     }
 
 }
-
-public struct EmptySKU: SKU {
-
-    public let value: String
-    public static let pattern: SKUPattern = .empty
-
-    public init(value: String = "") {
-        self.value = ""
-    }
-    
-}
