@@ -57,7 +57,7 @@ module Calypso
     def update_projects(version)
       VERSIONABLE_PROJECTS.each do |project|
         full_path = File.expand_path("../../../../#{project}", __FILE__)
-        update_project(full_path, version)
+        update_project(project, full_path, version)
       end
     end
 
