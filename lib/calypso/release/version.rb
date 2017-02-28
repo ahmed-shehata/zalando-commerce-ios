@@ -28,7 +28,7 @@ module Calypso
 
       new_version = ask_new_version(options, version)
 
-      # update_versions(new_version)
+      update_versions(new_version)
       git_new_version(new_version, options)
 
       new_version
