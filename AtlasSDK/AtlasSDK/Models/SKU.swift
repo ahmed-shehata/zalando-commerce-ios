@@ -30,7 +30,6 @@ enum SKUError: Swift.Error {
 
 public enum SKUPattern: String {
 
-    case empty = ""
     case model = "[A-z0-9]{9}"
     case config = "[A-z0-9]{9}-[A-z0-9]{3}"
     case simple = "[A-z0-9]{9}-[A-z0-9]{3}[A-z0-9]{7}"
