@@ -43,10 +43,10 @@ class AtlasAPIClientBaseTests: XCTestCase {
     }
 
     func mockedAtlasAPI(forURL url: URL,
-                              options: Options? = nil,
-                              data: Data?,
-                              status: HTTPStatus,
-                              errorCode: Int? = nil) -> AtlasAPI {
+                        options: Options? = nil,
+                        data: Data?,
+                        status: HTTPStatus,
+                        errorCode: Int? = nil) -> AtlasAPI {
 
         let apiURL = AtlasMockAPI.endpointURL(forPath: "/")
         let loginURL = AtlasMockAPI.endpointURL(forPath: "/oauth2/authorize")

@@ -9,8 +9,8 @@ import Nimble
 
 class JSONParseTests: JSONTestCase {
 
-    func testParseCorrectString() {
-        let json = try! JSON(string: "{\"int\": 500}")
+    func testParseCorrectString() throws {
+        let json = try JSON(string: "{\"int\": 500}")
         expect(json["int"].int) == 500
     }
 

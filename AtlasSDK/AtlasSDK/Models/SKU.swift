@@ -21,9 +21,11 @@ public func == <T: SKU>(lhs: T, rhs: T) -> Bool {
 }
 
 enum SKUError: Swift.Error {
+
     case invalidPattern
     case invalidConversion
     case noValue
+
 }
 
 public enum SKUPattern: String {

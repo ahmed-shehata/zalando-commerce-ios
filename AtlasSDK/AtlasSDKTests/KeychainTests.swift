@@ -17,25 +17,25 @@ class KeychainTests: XCTestCase {
         Keychain.delete(key: testKey)
     }
 
-    func testWriteValue() {
+    func testWriteValue() throws {
         let value = "test_new_1"
-        try! Keychain.write(value: value, forKey: testKey)
+        try Keychain.write(value: value, forKey: testKey)
         expect(Keychain.read(key: self.testKey)) == value
     }
 
-    func testUpdateValue() {
+    func testUpdateValue() throws {
         var value = "test_new_2"
-        try! Keychain.write(value: value, forKey: testKey)
+        try Keychain.write(value: value, forKey: testKey)
         expect(Keychain.read(key: self.testKey)) == value
 
         value = "test_update_2"
-        try! Keychain.write(value: value, forKey: testKey)
+        try Keychain.write(value: value, forKey: testKey)
         expect(Keychain.read(key: self.testKey)) == value
     }
 
-    func testDeleteValue() {
+    func testDeleteValue() throws {
         let value = "test_delete_it"
-        try! Keychain.write(value: value, forKey: testKey)
+        try Keychain.write(value: value, forKey: testKey)
         expect(Keychain.read(key: self.testKey)) == value
 
         Keychain.delete(key: testKey)

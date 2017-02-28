@@ -4,6 +4,8 @@
 
 import Foundation
 
+// TODO: Check documentation
+
 /// A bridge between API request call and a set of completions closures.
 /// Completions are run after the call is finished in the reversed order.
 ///
@@ -19,9 +21,12 @@ public struct APIRequest<Model> {
         self.successHandler = successHandler
     }
 
-    /// Executes a request with all stored completions closures in reversed order
+    /// Executes a request and eventually calls all completions closures in reversed order on
+    /// a main thread.
     ///
-    /// - Parameter completion: closure appended to a completions set
+    /// - Parameter completion: closure appended to a completions set (and in the result called
+    ///   as the first one when request finishes). Can return `AtlasResult.failure` with
+    ///   `APIError.invalidResponseFormat` if `successHandler` is not able to parse a response.
     public mutating func execute(append completion: @escaping (APIResult<Model>) -> Void) {
         self.completions.append(completion)
 

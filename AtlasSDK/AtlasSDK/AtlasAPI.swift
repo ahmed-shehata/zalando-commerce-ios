@@ -4,7 +4,11 @@
 
 import Foundation
 
-/// All functional API calls with additional business logic
+/// Provides all functional API calls with their business logic.
+///
+/// - Note: If not specified otherwise – all API calls require user to be
+///   logged in and accepted a consent. Otherwise `Result.failure` with
+///   `APIError.unauthorized` is returned. 
 public struct AtlasAPI {
 
     /// Configuration of a client handling API calls
@@ -22,15 +26,21 @@ public struct AtlasAPI {
 
 // TODO: document it, please...
 
-public typealias CartCheckout = (cart: Cart, checkout: Checkout?)
-
 extension AtlasAPI {
 
+    /// Retrieves current logged user as `Customer`.
+    ///
+    /// - Parameter completion: `Result.success` with logged user as `Customer` is passed
     public func customer(completion: @escaping APIResultCompletion<Customer>) {
         let endpoint = GetCustomerEndpoint(config: config)
         client.fetch(from: endpoint, completion: completion)
     }
 
+    /// <#Description#>
+    ///
+    /// - Parameters:
+    ///   - cartItemRequests: <#cartItemRequests description#>
+    ///   - completion: <#completion description#>
     public func createCart(withItems cartItemRequests: [CartItemRequest],
                            completion: @escaping APIResultCompletion<Cart>) {
         let parameters = CartRequest(items: cartItemRequests, replaceItems: true).toJSON()
@@ -49,11 +59,8 @@ extension AtlasAPI {
                 completion(.failure(error, nil))
 
             case .success(let cart):
-                let sku = selectedArticle.sku
-                let itemExists = cart.items.contains { $0.sku == sku } && !cart.itemsOutOfStock.contains(sku)
-                guard itemExists else {
-                    completion(.failure(CheckoutError.outOfStock, nil))
-                    return
+                guard cart.hasStock(of: selectedArticle.sku) else {
+                    return completion(.failure(CheckoutError.outOfStock, nil))
                 }
 
                 self.createCheckout(from: cart.id, addresses: addresses) { checkoutResult in
@@ -162,24 +169,27 @@ extension AtlasAPI {
 
 extension AtlasAPI {
 
-    /// Determines if client is authorized with access token to call restricted endpoints.
+    /// Determines if a client is authorized with access token to call restricted endpoints.
     public var isAuthorized: Bool {
         return config.authorizationToken != nil
     }
 
-    /// Authorizes client with given access token required in restricted endpoints.
+    /// Authorizes a client with given access token required in restricted endpoints.
+    ///
+    /// - Note: Stores `token` securely and makes it globally available for all calls
+    ///   to restricted endpoints identified by same `Options.environment`
     ///
     /// - Postcondition:
     ///   - If a client is authorized successfully `NSNotification.Name.AtlasAuthorized`
     ///     is posted on `NotificationCenter.default`, otherwise it is `NSNotification.Name.AtlasDeauthorized`.
     ///   - `NSNotification.Name.AtlasAuthorizationChanged` is always posted regadless the result.
     ///
-    /// - Parameter withToken: access token retrieved from OAuth
+    /// - Parameter with: access token passed to all restricted endpoint calls
     ///
     /// - Returns: `true` if token was correctly stored and client is authorized, otherwise `false`
     @discardableResult
-    public func authorize(withToken tokenValue: String) -> Bool {
-        let token = APIAccessToken.store(token: tokenValue, for: config)
+    public func authorize(with token: AuthorizationToken) -> Bool {
+        let token = APIAccessToken.store(token: token, for: config)
         let isAuthorized = token != nil
         notify(isAuthorized: isAuthorized, withToken: token)
         return isAuthorized

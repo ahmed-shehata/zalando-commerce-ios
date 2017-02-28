@@ -10,6 +10,7 @@ import Nimble
 class JSONPathsTests: JSONTestCase {
 
     let indexedJson = try! JSON(string: "[[null, [null, null, \"value\", null]]]")
+
     func testFindIncorrectInIndexPath() {
         expect(self.indexedJson.find(at: 100, 200, 300)).to(beNil())
     }
@@ -42,6 +43,5 @@ class JSONPathsTests: JSONTestCase {
     func testSubscriptIncorrectMixedPath() {
         expect(self.json["paths", "stringPath", 100, 200, 300]) == JSON.null
     }
-
 
 }
