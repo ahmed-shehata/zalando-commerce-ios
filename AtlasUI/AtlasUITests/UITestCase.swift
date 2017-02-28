@@ -65,7 +65,7 @@ class UITestCase: XCTestCase {
 
     func registerAtlasUIViewController(for sku: ConfigSKU) {
         UserError.resetBanners()
-        let atlasUIViewController = AtlasUIViewController(for: sku, atlasUI: atlasUI) { _ in }
+        let atlasUIViewController = AtlasUIViewController(forSKU: sku, atlasUI: atlasUI) { _ in }
         self.window.rootViewController = atlasUIViewController
         self.window.makeKeyAndVisible()
         _ = atlasUIViewController.view // load the view
