@@ -4,6 +4,7 @@
 
 import Foundation
 import UIKit
+import AtlasSDK
 
 protocol CheckoutSummaryLayout {
 
@@ -79,7 +80,7 @@ struct OrderPlacedLayout: CheckoutSummaryLayout {
     let showsDetailArrow = false
     let showsGuestStackView = false
     let showsOrderStackView = true
-    let showsRecommendationStackView = AtlasUIViewController.displayRecommendations
+    let showsRecommendationStackView = Config.shared?.displayRecommendations ?? true
     let allowsArticleRefine = false
 
     func submitButtonBackgroundColor(readyToCheckout: Bool) -> UIColor { return UIColor(hex: 0x509614) }
@@ -111,18 +112,10 @@ struct GuestOrderPlacedLayout: CheckoutSummaryLayout {
     let showsDetailArrow = false
     let showsGuestStackView = true
     let showsOrderStackView = true
-    let showsRecommendationStackView = AtlasUIViewController.displayRecommendations
+    let showsRecommendationStackView = Config.shared?.displayRecommendations ?? true
     let allowsArticleRefine = false
 
     func submitButtonBackgroundColor(readyToCheckout: Bool) -> UIColor { return UIColor(hex: 0x509614) }
     func submitButtonTitle(isPaypal: Bool) -> String { return "summaryView.submitButton.backToShop" }
-
-}
-
-fileprivate extension AtlasUIViewController {
-
-    fileprivate static var displayRecommendations: Bool {
-        return AtlasUIViewController.presented?.atlasUI.api.config.displayRecommendations ?? true
-    }
 
 }
