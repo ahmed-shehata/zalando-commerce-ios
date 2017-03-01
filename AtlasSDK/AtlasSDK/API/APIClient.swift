@@ -6,11 +6,9 @@ import Foundation
 
 struct APIClient {
 
-    let config: Config
-    let urlSession: URLSession
+    private let urlSession: URLSession
 
     init(config: Config, session: URLSession = .shared) {
-        self.config = config
         self.urlSession = session
     }
 

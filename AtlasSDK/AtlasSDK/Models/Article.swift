@@ -184,11 +184,7 @@ public func == (lhs: Article.Partner, rhs: Article.Partner) -> Bool {
 extension Article.Unit {
 
     public static let empty = Article.Unit(id: SimpleSKU(value: ""),
-                                    size: "",
-                                    price: Money.zero,
-                                    originalPrice: Money.zero,
-                                    available: false,
-                                    stock: nil,
-                                    partner: nil)
-    
+                                           size: "", price: Money.zero, originalPrice: Money.zero,
+                                           available: false, stock: nil, partner: nil)
+
 }

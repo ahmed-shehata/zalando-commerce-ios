@@ -25,7 +25,7 @@ final public class AtlasUI {
     }
 
     public static func configure(options: Options? = nil, completion: @escaping ResultCompletion<AtlasUI>) {
-        Atlas.configure(options: options) { result in
+        AtlasAPI.configure(options: options) { result in
             switch result {
             case .failure(let error):
                 Logger.error(error)

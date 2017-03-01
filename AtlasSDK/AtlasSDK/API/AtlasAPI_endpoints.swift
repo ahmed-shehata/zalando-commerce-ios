@@ -1,52 +1,30 @@
 //
-//  Copyright © 2016-2017 Zalando SE. All rights reserved.
+//  Copyright © 2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
-
-/**
-Provides all functional API calls with their business logic.
-
-- Note: If not specified otherwise – all API calls require user to be
-  logged in and accepted a consent. Otherwise `Result.failure` with
-  `APIError.unauthorized` is returned.
-*/
-public struct AtlasAPI {
-
-    /// Configuration of a client handling API calls
-    public var config: Config {
-        return client.config
-    }
-
-    let client: APIClient
-
-    init(config: Config, session: URLSession = .shared) {
-        self.client = APIClient(config: config, session: session)
-    }
-
-}
 
 // TODO: document it, please...
 
 extension AtlasAPI {
 
     /**
-    Retrieves current logged user as `Customer`.
-    
-    - Parameter completion: `Result.success` with logged user as `Customer` is passed
-    */
+     Retrieves current logged user as `Customer`.
+
+     - Parameter completion: `Result.success` with logged user as `Customer` is passed
+     */
     public func customer(completion: @escaping APIResultCompletion<Customer>) {
         let endpoint = GetCustomerEndpoint(config: config)
         client.fetch(from: endpoint, completion: completion)
     }
 
     /**
-    Creates `Cart` with given `CartItemRequest` items.
-    
-    - Parameters:
-      - cartItemRequests: list articles SKUs with quantities to be added to cart
-      - completion: `Result.success` with create `Cart` model.
-    */
+     Creates `Cart` with given `CartItemRequest` items.
+
+     - Parameters:
+     - cartItemRequests: list articles SKUs with quantities to be added to cart
+     - completion: `Result.success` with create `Cart` model.
+     */
     public func createCart(withItems cartItemRequests: [CartItemRequest],
                            completion: @escaping APIResultCompletion<Cart>) {
         let parameters = CartRequest(items: cartItemRequests, replaceItems: true).toJSON()
@@ -170,50 +148,5 @@ extension AtlasAPI {
         let endpoint = CheckAddressEndpoint(config: config, checkAddressRequest: request)
         client.fetch(from: endpoint, completion: completion)
     }
-
-}
-
-extension AtlasAPI {
-
-    /// Determines if a client is authorized with access token to call restricted endpoints.
-    public var isAuthorized: Bool {
-        return config.authorizationToken != nil
-    }
-
-    /**
-    Authorizes a client with given access token required in restricted endpoints.
     
-    - Note: Stores `token` securely and makes it globally available for all calls
-      to restricted endpoints identified by same `Options.environment`
-    
-    - Postcondition:
-      - If a client is authorized successfully `NSNotification.Name.AtlasAuthorized`
-        is posted on `NotificationCenter.default`, otherwise it is `NSNotification.Name.AtlasDeauthorized`.
-      - `NSNotification.Name.AtlasAuthorizationChanged` is always posted regadless the result.
-    
-    - Parameter with: access token passed to all restricted endpoint calls
-    
-    - Returns: `true` if token was correctly stored and client is authorized, otherwise `false`
-    */
-    @discardableResult
-    public func authorize(with token: AuthorizationToken) -> Bool {
-        let token = APIAccessToken.store(token: token, for: config)
-        let isAuthorized = token != nil
-        notify(isAuthorized: isAuthorized, withToken: token)
-        return isAuthorized
-    }
-
-    /// Deauthorizes a client from accessing restricted endpoints.
-    public func deauthorize() {
-        let token = APIAccessToken.delete(for: config)
-        notify(isAuthorized: false, withToken: token)
-    }
-
-    /// Deauthorizes all clients by removing all stored tokens.
-    public static func deauthorizeAll() {
-        APIAccessToken.wipe().forEach { token in
-            notify(api: nil, isAuthorized: false, withToken: token)
-        }
-    }
-
 }
