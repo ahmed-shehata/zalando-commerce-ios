@@ -10,7 +10,7 @@
       "currency": "EUR"
     },
     "media": {
-      "images": [
+      "media_items": [
         {
           "order": 1,
           "catalog": "https://i3.ztat.net/catalog/DI/12/2G/06/PK/11/DI122G06P-K11@14.jpg",
@@ -88,7 +88,7 @@
       "currency": "EUR"
     },
     "media": {
-      "images": [
+      "media_items": [
         {
           "order": 1,
           "catalog": "https://i1.ztat.net/catalog/DI/12/2G/0C/DK/11/DI122G0CD-K11@12.jpg",
@@ -157,7 +157,7 @@
       "currency": "EUR"
     },
     "media": {
-      "images": [
+      "media_items": [
         {
           "order": 1,
           "catalog": "https://i2.ztat.net/catalog/DI/12/2G/0A/EK/11/DI122G0AE-K11@14.jpg",
@@ -235,7 +235,7 @@
       "currency": "EUR"
     },
     "media": {
-      "images": [
+      "media_items": [
         {
           "order": 1,
           "catalog": "https://i3.ztat.net/catalog/DI/12/2G/0A/DK/11/DI122G0AD-K11@14.jpg",
@@ -313,7 +313,7 @@
       "currency": "EUR"
     },
     "media": {
-      "images": [
+      "media_items": [
         {
           "order": 1,
           "catalog": "https://i2.ztat.net/catalog/DI/12/2G/0C/KC/11/DI122G0CK-C11@12.jpg",
@@ -382,7 +382,7 @@
       "currency": "EUR"
     },
     "media": {
-      "images": [
+      "media_items": [
         {
           "order": 1,
           "catalog": "https://i5.ztat.net/catalog/DI/12/2G/0A/NK/11/DI122G0AN-K11@14.jpg",
@@ -460,7 +460,7 @@
       "currency": "EUR"
     },
     "media": {
-      "images": [
+      "media_items": [
         {
           "order": 1,
           "catalog": "https://i2.ztat.net/catalog/DI/12/2G/0C/IK/11/DI122G0CI-K11@12.jpg",
@@ -529,7 +529,7 @@
       "currency": "EUR"
     },
     "media": {
-      "images": [
+      "media_items": [
         {
           "order": 1,
           "catalog": "https://i3.ztat.net/catalog/DI/12/2G/0B/HK/11/DI122G0BH-K11@12.jpg",
@@ -598,7 +598,7 @@
       "currency": "EUR"
     },
     "media": {
-      "images": [
+      "media_items": [
         {
           "order": 1,
           "catalog": "https://i2.ztat.net/catalog/DI/12/2G/0B/CK/11/DI122G0BC-K11@12.jpg",
@@ -667,7 +667,7 @@
       "currency": "EUR"
     },
     "media": {
-      "images": [
+      "media_items": [
         {
           "order": 1,
           "catalog": "https://i6.ztat.net/catalog/DI/12/2G/0A/MK/11/DI122G0AM-K11@14.jpg",
