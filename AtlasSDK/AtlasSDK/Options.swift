@@ -13,17 +13,20 @@ public struct Options {
     public let salesChannel: String
     public let interfaceLanguage: String?
     public let configurationURL: URL
+    public let displayRecommendations: Bool
 
     public init(clientId: String? = nil,
                 salesChannel: String? = nil,
                 useSandboxEnvironment: Bool? = nil,
                 interfaceLanguage: String? = nil,
                 configurationURL: URL? = nil,
+                displayRecommendations: Bool = true,
                 infoBundle bundle: Bundle = Bundle.main) {
         self.clientId = clientId ?? bundle.string(for: .clientId) ?? ""
         self.salesChannel = salesChannel ?? bundle.string(for: .salesChannel) ?? ""
         self.useSandboxEnvironment = useSandboxEnvironment ?? bundle.bool(for: .useSandboxEnvironment) ?? false
         self.interfaceLanguage = interfaceLanguage ?? bundle.string(for: .interfaceLanguage)
+        self.displayRecommendations = displayRecommendations
 
         if let url = configurationURL {
             self.configurationURL = url
@@ -57,6 +60,7 @@ extension Options: CustomStringConvertible {
             + ", \n\tuseSandboxEnvironment = \(useSandboxEnvironment) "
             + ", \n\tsalesChannel = \(format(optional: salesChannel)) "
             + ", \n\tinterfaceLanguage = \(format(optional: interfaceLanguage)) "
+            + ", \n\tdisplayRecommendations = \(displayRecommendations) "
             + " } "
     }
 

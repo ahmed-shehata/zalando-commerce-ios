@@ -16,6 +16,7 @@ public struct Config {
     public let clientId: String
     public let useSandboxEnvironment: Bool
     public let guestCheckoutEnabled: Bool
+    public let displayRecommendations: Bool
 
     public let payment: Payment
     public let salesChannel: SalesChannel
@@ -87,6 +88,7 @@ extension Config {
         self.clientId = options.clientId
         self.useSandboxEnvironment = options.useSandboxEnvironment
         self.guestCheckoutEnabled = json["atlas-guest-checkout-api", "enabled"].bool ?? false
+        self.displayRecommendations = options.displayRecommendations
     }
 
 }
@@ -103,6 +105,8 @@ extension Config: CustomStringConvertible {
             + ", payment: \(self.payment)"
             + ", interfaceLocale: \(self.interfaceLocale.identifier)"
             + ", useSandboxEnvironment: \(self.useSandboxEnvironment)"
+            + ", guestCheckoutEnabled: \(self.guestCheckoutEnabled)"
+            + ", displayRecommendations: \(self.displayRecommendations)"
             + " }"
     }
 
