@@ -40,7 +40,6 @@ module Calypso
         'skip-undocumented' => true,
         'sdk' => 'iphone', 'theme' => 'fullwidth', 'min-acl' => 'private',
         'output' => destination_path(dst),
-        'readme' => SOURCE_FOLDER + 'README.md',
         'module' => src, 'module-version' => ATLAS_VERSION,
         'author' => 'Zalando SE', 'author_url' => 'http://tech.zalando.com',
         'github_url' => 'https://github.com/zalando-incubator/atlas-ios',
