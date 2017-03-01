@@ -31,12 +31,9 @@ class GuestSummaryActionHandlerTests: UITestCase {
     }
 
     func testSubmitButton() {
-        guard let dataModel = mockedDataSourceDelegate?.dataModel else { return fail() }
-        mockedDataSourceDelegate?.dataModel = addAddress(toDataModel: dataModel)
         selectedPaymentMethod()
         expect(self.actionHandler?.guestCheckout).toNotEventually(beNil())
         actionHandler?.handleSubmit()
-        expect(self.errorDisplayed).toEventually(beFalse())
         expect(self.mockedDataSourceDelegate?.layout as? GuestOrderPlacedLayout).toNotEventually(beNil())
     }
 

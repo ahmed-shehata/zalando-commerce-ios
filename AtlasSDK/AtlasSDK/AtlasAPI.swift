@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import UIKit
 
 /// All functional API calls with additional business logic
 public struct AtlasAPI {
@@ -126,6 +127,11 @@ extension AtlasAPI {
             }
         }
         client.fetch(from: endpoint, completion: fetchCompletion)
+    }
+
+    public func recommendations(forSKU sku: ConfigSKU, completion: @escaping APIResultCompletion<[Recommendation]>) {
+        let endpoint = GetArticleRecommendationsEndpoint(config: config, sku: sku)
+        client.fetch(from: endpoint, completion: completion)
     }
 
     public func addresses(completion: @escaping APIResultCompletion<[UserAddress]>) {

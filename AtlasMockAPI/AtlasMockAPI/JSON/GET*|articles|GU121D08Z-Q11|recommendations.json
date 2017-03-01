@@ -1,0 +1,737 @@
+[
+  {
+    "id": "DI122G06P-K11",
+    "name": "TEPPHAR 0842H - Jeans Slim Fit - 0842h",
+    "brand": {
+      "name": "Diesel"
+    },
+    "lowest_price": {
+      "amount": 139.95,
+      "currency": "EUR"
+    },
+    "media": {
+      "media_items": [
+        {
+          "order": 1,
+          "catalog": "https://i3.ztat.net/catalog/DI/12/2G/06/PK/11/DI122G06P-K11@14.jpg",
+          "catalog_hd": "https://i3.ztat.net/catalog_hd/DI/12/2G/06/PK/11/DI122G06P-K11@14.jpg",
+          "detail": "https://i3.ztat.net/detail/DI/12/2G/06/PK/11/DI122G06P-K11@14.jpg",
+          "detail_hd": "https://i3.ztat.net/detail_hd/DI/12/2G/06/PK/11/DI122G06P-K11@14.jpg",
+          "large": "https://i3.ztat.net/large/DI/12/2G/06/PK/11/DI122G06P-K11@14.jpg",
+          "large_hd": "https://i3.ztat.net/large_hd/DI/12/2G/06/PK/11/DI122G06P-K11@14.jpg"
+        },
+        {
+          "order": 2,
+          "catalog": "https://i2.ztat.net/catalog/DI/12/2G/06/PK/11/DI122G06P-K11@13.jpg",
+          "catalog_hd": "https://i2.ztat.net/catalog_hd/DI/12/2G/06/PK/11/DI122G06P-K11@13.jpg",
+          "detail": "https://i2.ztat.net/detail/DI/12/2G/06/PK/11/DI122G06P-K11@13.jpg",
+          "detail_hd": "https://i2.ztat.net/detail_hd/DI/12/2G/06/PK/11/DI122G06P-K11@13.jpg",
+          "large": "https://i2.ztat.net/large/DI/12/2G/06/PK/11/DI122G06P-K11@13.jpg",
+          "large_hd": "https://i2.ztat.net/large_hd/DI/12/2G/06/PK/11/DI122G06P-K11@13.jpg"
+        },
+        {
+          "order": 3,
+          "catalog": "https://i1.ztat.net/catalog/DI/12/2G/06/PK/11/DI122G06P-K11@12.jpg",
+          "catalog_hd": "https://i1.ztat.net/catalog_hd/DI/12/2G/06/PK/11/DI122G06P-K11@12.jpg",
+          "detail": "https://i1.ztat.net/detail/DI/12/2G/06/PK/11/DI122G06P-K11@12.jpg",
+          "detail_hd": "https://i1.ztat.net/detail_hd/DI/12/2G/06/PK/11/DI122G06P-K11@12.jpg",
+          "large": "https://i1.ztat.net/large/DI/12/2G/06/PK/11/DI122G06P-K11@12.jpg",
+          "large_hd": "https://i1.ztat.net/large_hd/DI/12/2G/06/PK/11/DI122G06P-K11@12.jpg"
+        },
+        {
+          "order": 4,
+          "catalog": "https://i4.ztat.net/catalog/DI/12/2G/06/PK/11/DI122G06P-K11@11.jpg",
+          "catalog_hd": "https://i4.ztat.net/catalog_hd/DI/12/2G/06/PK/11/DI122G06P-K11@11.jpg",
+          "detail": "https://i4.ztat.net/detail/DI/12/2G/06/PK/11/DI122G06P-K11@11.jpg",
+          "detail_hd": "https://i4.ztat.net/detail_hd/DI/12/2G/06/PK/11/DI122G06P-K11@11.jpg",
+          "large": "https://i4.ztat.net/large/DI/12/2G/06/PK/11/DI122G06P-K11@11.jpg",
+          "large_hd": "https://i4.ztat.net/large_hd/DI/12/2G/06/PK/11/DI122G06P-K11@11.jpg"
+        },
+        {
+          "order": 5,
+          "catalog": "https://i3.ztat.net/catalog/DI/12/2G/06/PK/11/DI122G06P-K11@10.jpg",
+          "catalog_hd": "https://i3.ztat.net/catalog_hd/DI/12/2G/06/PK/11/DI122G06P-K11@10.jpg",
+          "detail": "https://i3.ztat.net/detail/DI/12/2G/06/PK/11/DI122G06P-K11@10.jpg",
+          "detail_hd": "https://i3.ztat.net/detail_hd/DI/12/2G/06/PK/11/DI122G06P-K11@10.jpg",
+          "large": "https://i3.ztat.net/large/DI/12/2G/06/PK/11/DI122G06P-K11@10.jpg",
+          "large_hd": "https://i3.ztat.net/large_hd/DI/12/2G/06/PK/11/DI122G06P-K11@10.jpg"
+        },
+        {
+          "order": 6,
+          "catalog": "https://i1.ztat.net/catalog/DI/12/2G/06/PK/11/DI122G06P-K11@9.jpg",
+          "catalog_hd": "https://i1.ztat.net/catalog_hd/DI/12/2G/06/PK/11/DI122G06P-K11@9.jpg",
+          "detail": "https://i1.ztat.net/detail/DI/12/2G/06/PK/11/DI122G06P-K11@9.jpg",
+          "detail_hd": "https://i1.ztat.net/detail_hd/DI/12/2G/06/PK/11/DI122G06P-K11@9.jpg",
+          "large": "https://i1.ztat.net/large/DI/12/2G/06/PK/11/DI122G06P-K11@9.jpg",
+          "large_hd": "https://i1.ztat.net/large_hd/DI/12/2G/06/PK/11/DI122G06P-K11@9.jpg"
+        },
+        {
+          "order": 7,
+          "catalog": "https://i4.ztat.net/catalog/DI/12/2G/06/PK/11/DI122G06P-K11@8.jpg",
+          "catalog_hd": "https://i4.ztat.net/catalog_hd/DI/12/2G/06/PK/11/DI122G06P-K11@8.jpg",
+          "detail": "https://i4.ztat.net/detail/DI/12/2G/06/PK/11/DI122G06P-K11@8.jpg",
+          "detail_hd": "https://i4.ztat.net/detail_hd/DI/12/2G/06/PK/11/DI122G06P-K11@8.jpg",
+          "large": "https://i4.ztat.net/large/DI/12/2G/06/PK/11/DI122G06P-K11@8.jpg",
+          "large_hd": "https://i4.ztat.net/large_hd/DI/12/2G/06/PK/11/DI122G06P-K11@8.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": "DI122G0CD-K11",
+    "name": "TEPPHAR- Jeans Slim Fit - 0859r",
+    "brand": {
+      "name": "Diesel"
+    },
+    "lowest_price": {
+      "amount": 149.95,
+      "currency": "EUR"
+    },
+    "media": {
+      "media_items": [
+        {
+          "order": 1,
+          "catalog": "https://i1.ztat.net/catalog/DI/12/2G/0C/DK/11/DI122G0CD-K11@12.jpg",
+          "catalog_hd": "https://i1.ztat.net/catalog_hd/DI/12/2G/0C/DK/11/DI122G0CD-K11@12.jpg",
+          "detail": "https://i1.ztat.net/detail/DI/12/2G/0C/DK/11/DI122G0CD-K11@12.jpg",
+          "detail_hd": "https://i1.ztat.net/detail_hd/DI/12/2G/0C/DK/11/DI122G0CD-K11@12.jpg",
+          "large": "https://i1.ztat.net/large/DI/12/2G/0C/DK/11/DI122G0CD-K11@12.jpg",
+          "large_hd": "https://i1.ztat.net/large_hd/DI/12/2G/0C/DK/11/DI122G0CD-K11@12.jpg"
+        },
+        {
+          "order": 2,
+          "catalog": "https://i4.ztat.net/catalog/DI/12/2G/0C/DK/11/DI122G0CD-K11@11.jpg",
+          "catalog_hd": "https://i4.ztat.net/catalog_hd/DI/12/2G/0C/DK/11/DI122G0CD-K11@11.jpg",
+          "detail": "https://i4.ztat.net/detail/DI/12/2G/0C/DK/11/DI122G0CD-K11@11.jpg",
+          "detail_hd": "https://i4.ztat.net/detail_hd/DI/12/2G/0C/DK/11/DI122G0CD-K11@11.jpg",
+          "large": "https://i4.ztat.net/large/DI/12/2G/0C/DK/11/DI122G0CD-K11@11.jpg",
+          "large_hd": "https://i4.ztat.net/large_hd/DI/12/2G/0C/DK/11/DI122G0CD-K11@11.jpg"
+        },
+        {
+          "order": 3,
+          "catalog": "https://i3.ztat.net/catalog/DI/12/2G/0C/DK/11/DI122G0CD-K11@10.jpg",
+          "catalog_hd": "https://i3.ztat.net/catalog_hd/DI/12/2G/0C/DK/11/DI122G0CD-K11@10.jpg",
+          "detail": "https://i3.ztat.net/detail/DI/12/2G/0C/DK/11/DI122G0CD-K11@10.jpg",
+          "detail_hd": "https://i3.ztat.net/detail_hd/DI/12/2G/0C/DK/11/DI122G0CD-K11@10.jpg",
+          "large": "https://i3.ztat.net/large/DI/12/2G/0C/DK/11/DI122G0CD-K11@10.jpg",
+          "large_hd": "https://i3.ztat.net/large_hd/DI/12/2G/0C/DK/11/DI122G0CD-K11@10.jpg"
+        },
+        {
+          "order": 4,
+          "catalog": "https://i6.ztat.net/catalog/DI/12/2G/0C/DK/11/DI122G0CD-K11@9.jpg",
+          "catalog_hd": "https://i6.ztat.net/catalog_hd/DI/12/2G/0C/DK/11/DI122G0CD-K11@9.jpg",
+          "detail": "https://i6.ztat.net/detail/DI/12/2G/0C/DK/11/DI122G0CD-K11@9.jpg",
+          "detail_hd": "https://i6.ztat.net/detail_hd/DI/12/2G/0C/DK/11/DI122G0CD-K11@9.jpg",
+          "large": "https://i6.ztat.net/large/DI/12/2G/0C/DK/11/DI122G0CD-K11@9.jpg",
+          "large_hd": "https://i6.ztat.net/large_hd/DI/12/2G/0C/DK/11/DI122G0CD-K11@9.jpg"
+        },
+        {
+          "order": 5,
+          "catalog": "https://i5.ztat.net/catalog/DI/12/2G/0C/DK/11/DI122G0CD-K11@8.jpg",
+          "catalog_hd": "https://i5.ztat.net/catalog_hd/DI/12/2G/0C/DK/11/DI122G0CD-K11@8.jpg",
+          "detail": "https://i5.ztat.net/detail/DI/12/2G/0C/DK/11/DI122G0CD-K11@8.jpg",
+          "detail_hd": "https://i5.ztat.net/detail_hd/DI/12/2G/0C/DK/11/DI122G0CD-K11@8.jpg",
+          "large": "https://i5.ztat.net/large/DI/12/2G/0C/DK/11/DI122G0CD-K11@8.jpg",
+          "large_hd": "https://i5.ztat.net/large_hd/DI/12/2G/0C/DK/11/DI122G0CD-K11@8.jpg"
+        },
+        {
+          "order": 6,
+          "catalog": "https://i4.ztat.net/catalog/DI/12/2G/0C/DK/11/DI122G0CD-K11@7.jpg",
+          "catalog_hd": "https://i4.ztat.net/catalog_hd/DI/12/2G/0C/DK/11/DI122G0CD-K11@7.jpg",
+          "detail": "https://i4.ztat.net/detail/DI/12/2G/0C/DK/11/DI122G0CD-K11@7.jpg",
+          "detail_hd": "https://i4.ztat.net/detail_hd/DI/12/2G/0C/DK/11/DI122G0CD-K11@7.jpg",
+          "large": "https://i4.ztat.net/large/DI/12/2G/0C/DK/11/DI122G0CD-K11@7.jpg",
+          "large_hd": "https://i4.ztat.net/large_hd/DI/12/2G/0C/DK/11/DI122G0CD-K11@7.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": "DI122G0AE-K11",
+    "name": "SLEENKER- Jeans Slim Fit - 0854e",
+    "brand": {
+      "name": "Diesel"
+    },
+    "lowest_price": {
+      "amount": 139.95,
+      "currency": "EUR"
+    },
+    "media": {
+      "media_items": [
+        {
+          "order": 1,
+          "catalog": "https://i2.ztat.net/catalog/DI/12/2G/0A/EK/11/DI122G0AE-K11@14.jpg",
+          "catalog_hd": "https://i2.ztat.net/catalog_hd/DI/12/2G/0A/EK/11/DI122G0AE-K11@14.jpg",
+          "detail": "https://i2.ztat.net/detail/DI/12/2G/0A/EK/11/DI122G0AE-K11@14.jpg",
+          "detail_hd": "https://i2.ztat.net/detail_hd/DI/12/2G/0A/EK/11/DI122G0AE-K11@14.jpg",
+          "large": "https://i2.ztat.net/large/DI/12/2G/0A/EK/11/DI122G0AE-K11@14.jpg",
+          "large_hd": "https://i2.ztat.net/large_hd/DI/12/2G/0A/EK/11/DI122G0AE-K11@14.jpg"
+        },
+        {
+          "order": 2,
+          "catalog": "https://i3.ztat.net/catalog/DI/12/2G/0A/EK/11/DI122G0AE-K11@13.jpg",
+          "catalog_hd": "https://i3.ztat.net/catalog_hd/DI/12/2G/0A/EK/11/DI122G0AE-K11@13.jpg",
+          "detail": "https://i3.ztat.net/detail/DI/12/2G/0A/EK/11/DI122G0AE-K11@13.jpg",
+          "detail_hd": "https://i3.ztat.net/detail_hd/DI/12/2G/0A/EK/11/DI122G0AE-K11@13.jpg",
+          "large": "https://i3.ztat.net/large/DI/12/2G/0A/EK/11/DI122G0AE-K11@13.jpg",
+          "large_hd": "https://i3.ztat.net/large_hd/DI/12/2G/0A/EK/11/DI122G0AE-K11@13.jpg"
+        },
+        {
+          "order": 3,
+          "catalog": "https://i6.ztat.net/catalog/DI/12/2G/0A/EK/11/DI122G0AE-K11@12.jpg",
+          "catalog_hd": "https://i6.ztat.net/catalog_hd/DI/12/2G/0A/EK/11/DI122G0AE-K11@12.jpg",
+          "detail": "https://i6.ztat.net/detail/DI/12/2G/0A/EK/11/DI122G0AE-K11@12.jpg",
+          "detail_hd": "https://i6.ztat.net/detail_hd/DI/12/2G/0A/EK/11/DI122G0AE-K11@12.jpg",
+          "large": "https://i6.ztat.net/large/DI/12/2G/0A/EK/11/DI122G0AE-K11@12.jpg",
+          "large_hd": "https://i6.ztat.net/large_hd/DI/12/2G/0A/EK/11/DI122G0AE-K11@12.jpg"
+        },
+        {
+          "order": 4,
+          "catalog": "https://i5.ztat.net/catalog/DI/12/2G/0A/EK/11/DI122G0AE-K11@11.jpg",
+          "catalog_hd": "https://i5.ztat.net/catalog_hd/DI/12/2G/0A/EK/11/DI122G0AE-K11@11.jpg",
+          "detail": "https://i5.ztat.net/detail/DI/12/2G/0A/EK/11/DI122G0AE-K11@11.jpg",
+          "detail_hd": "https://i5.ztat.net/detail_hd/DI/12/2G/0A/EK/11/DI122G0AE-K11@11.jpg",
+          "large": "https://i5.ztat.net/large/DI/12/2G/0A/EK/11/DI122G0AE-K11@11.jpg",
+          "large_hd": "https://i5.ztat.net/large_hd/DI/12/2G/0A/EK/11/DI122G0AE-K11@11.jpg"
+        },
+        {
+          "order": 5,
+          "catalog": "https://i4.ztat.net/catalog/DI/12/2G/0A/EK/11/DI122G0AE-K11@10.jpg",
+          "catalog_hd": "https://i4.ztat.net/catalog_hd/DI/12/2G/0A/EK/11/DI122G0AE-K11@10.jpg",
+          "detail": "https://i4.ztat.net/detail/DI/12/2G/0A/EK/11/DI122G0AE-K11@10.jpg",
+          "detail_hd": "https://i4.ztat.net/detail_hd/DI/12/2G/0A/EK/11/DI122G0AE-K11@10.jpg",
+          "large": "https://i4.ztat.net/large/DI/12/2G/0A/EK/11/DI122G0AE-K11@10.jpg",
+          "large_hd": "https://i4.ztat.net/large_hd/DI/12/2G/0A/EK/11/DI122G0AE-K11@10.jpg"
+        },
+        {
+          "order": 6,
+          "catalog": "https://i1.ztat.net/catalog/DI/12/2G/0A/EK/11/DI122G0AE-K11@9.jpg",
+          "catalog_hd": "https://i1.ztat.net/catalog_hd/DI/12/2G/0A/EK/11/DI122G0AE-K11@9.jpg",
+          "detail": "https://i1.ztat.net/detail/DI/12/2G/0A/EK/11/DI122G0AE-K11@9.jpg",
+          "detail_hd": "https://i1.ztat.net/detail_hd/DI/12/2G/0A/EK/11/DI122G0AE-K11@9.jpg",
+          "large": "https://i1.ztat.net/large/DI/12/2G/0A/EK/11/DI122G0AE-K11@9.jpg",
+          "large_hd": "https://i1.ztat.net/large_hd/DI/12/2G/0A/EK/11/DI122G0AE-K11@9.jpg"
+        },
+        {
+          "order": 7,
+          "catalog": "https://i4.ztat.net/catalog/DI/12/2G/0A/EK/11/DI122G0AE-K11@8.jpg",
+          "catalog_hd": "https://i4.ztat.net/catalog_hd/DI/12/2G/0A/EK/11/DI122G0AE-K11@8.jpg",
+          "detail": "https://i4.ztat.net/detail/DI/12/2G/0A/EK/11/DI122G0AE-K11@8.jpg",
+          "detail_hd": "https://i4.ztat.net/detail_hd/DI/12/2G/0A/EK/11/DI122G0AE-K11@8.jpg",
+          "large": "https://i4.ztat.net/large/DI/12/2G/0A/EK/11/DI122G0AE-K11@8.jpg",
+          "large_hd": "https://i4.ztat.net/large_hd/DI/12/2G/0A/EK/11/DI122G0AE-K11@8.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": "DI122G0AD-K11",
+    "name": "SLEENKER 0852V - Jeans Slim Fit - 0852v",
+    "brand": {
+      "name": "Diesel"
+    },
+    "lowest_price": {
+      "amount": 139.95,
+      "currency": "EUR"
+    },
+    "media": {
+      "media_items": [
+        {
+          "order": 1,
+          "catalog": "https://i3.ztat.net/catalog/DI/12/2G/0A/DK/11/DI122G0AD-K11@14.jpg",
+          "catalog_hd": "https://i3.ztat.net/catalog_hd/DI/12/2G/0A/DK/11/DI122G0AD-K11@14.jpg",
+          "detail": "https://i3.ztat.net/detail/DI/12/2G/0A/DK/11/DI122G0AD-K11@14.jpg",
+          "detail_hd": "https://i3.ztat.net/detail_hd/DI/12/2G/0A/DK/11/DI122G0AD-K11@14.jpg",
+          "large": "https://i3.ztat.net/large/DI/12/2G/0A/DK/11/DI122G0AD-K11@14.jpg",
+          "large_hd": "https://i3.ztat.net/large_hd/DI/12/2G/0A/DK/11/DI122G0AD-K11@14.jpg"
+        },
+        {
+          "order": 2,
+          "catalog": "https://i2.ztat.net/catalog/DI/12/2G/0A/DK/11/DI122G0AD-K11@13.jpg",
+          "catalog_hd": "https://i2.ztat.net/catalog_hd/DI/12/2G/0A/DK/11/DI122G0AD-K11@13.jpg",
+          "detail": "https://i2.ztat.net/detail/DI/12/2G/0A/DK/11/DI122G0AD-K11@13.jpg",
+          "detail_hd": "https://i2.ztat.net/detail_hd/DI/12/2G/0A/DK/11/DI122G0AD-K11@13.jpg",
+          "large": "https://i2.ztat.net/large/DI/12/2G/0A/DK/11/DI122G0AD-K11@13.jpg",
+          "large_hd": "https://i2.ztat.net/large_hd/DI/12/2G/0A/DK/11/DI122G0AD-K11@13.jpg"
+        },
+        {
+          "order": 3,
+          "catalog": "https://i1.ztat.net/catalog/DI/12/2G/0A/DK/11/DI122G0AD-K11@12.jpg",
+          "catalog_hd": "https://i1.ztat.net/catalog_hd/DI/12/2G/0A/DK/11/DI122G0AD-K11@12.jpg",
+          "detail": "https://i1.ztat.net/detail/DI/12/2G/0A/DK/11/DI122G0AD-K11@12.jpg",
+          "detail_hd": "https://i1.ztat.net/detail_hd/DI/12/2G/0A/DK/11/DI122G0AD-K11@12.jpg",
+          "large": "https://i1.ztat.net/large/DI/12/2G/0A/DK/11/DI122G0AD-K11@12.jpg",
+          "large_hd": "https://i1.ztat.net/large_hd/DI/12/2G/0A/DK/11/DI122G0AD-K11@12.jpg"
+        },
+        {
+          "order": 4,
+          "catalog": "https://i4.ztat.net/catalog/DI/12/2G/0A/DK/11/DI122G0AD-K11@11.jpg",
+          "catalog_hd": "https://i4.ztat.net/catalog_hd/DI/12/2G/0A/DK/11/DI122G0AD-K11@11.jpg",
+          "detail": "https://i4.ztat.net/detail/DI/12/2G/0A/DK/11/DI122G0AD-K11@11.jpg",
+          "detail_hd": "https://i4.ztat.net/detail_hd/DI/12/2G/0A/DK/11/DI122G0AD-K11@11.jpg",
+          "large": "https://i4.ztat.net/large/DI/12/2G/0A/DK/11/DI122G0AD-K11@11.jpg",
+          "large_hd": "https://i4.ztat.net/large_hd/DI/12/2G/0A/DK/11/DI122G0AD-K11@11.jpg"
+        },
+        {
+          "order": 5,
+          "catalog": "https://i3.ztat.net/catalog/DI/12/2G/0A/DK/11/DI122G0AD-K11@10.jpg",
+          "catalog_hd": "https://i3.ztat.net/catalog_hd/DI/12/2G/0A/DK/11/DI122G0AD-K11@10.jpg",
+          "detail": "https://i3.ztat.net/detail/DI/12/2G/0A/DK/11/DI122G0AD-K11@10.jpg",
+          "detail_hd": "https://i3.ztat.net/detail_hd/DI/12/2G/0A/DK/11/DI122G0AD-K11@10.jpg",
+          "large": "https://i3.ztat.net/large/DI/12/2G/0A/DK/11/DI122G0AD-K11@10.jpg",
+          "large_hd": "https://i3.ztat.net/large_hd/DI/12/2G/0A/DK/11/DI122G0AD-K11@10.jpg"
+        },
+        {
+          "order": 6,
+          "catalog": "https://i2.ztat.net/catalog/DI/12/2G/0A/DK/11/DI122G0AD-K11@9.jpg",
+          "catalog_hd": "https://i2.ztat.net/catalog_hd/DI/12/2G/0A/DK/11/DI122G0AD-K11@9.jpg",
+          "detail": "https://i2.ztat.net/detail/DI/12/2G/0A/DK/11/DI122G0AD-K11@9.jpg",
+          "detail_hd": "https://i2.ztat.net/detail_hd/DI/12/2G/0A/DK/11/DI122G0AD-K11@9.jpg",
+          "large": "https://i2.ztat.net/large/DI/12/2G/0A/DK/11/DI122G0AD-K11@9.jpg",
+          "large_hd": "https://i2.ztat.net/large_hd/DI/12/2G/0A/DK/11/DI122G0AD-K11@9.jpg"
+        },
+        {
+          "order": 7,
+          "catalog": "https://i3.ztat.net/catalog/DI/12/2G/0A/DK/11/DI122G0AD-K11@8.jpg",
+          "catalog_hd": "https://i3.ztat.net/catalog_hd/DI/12/2G/0A/DK/11/DI122G0AD-K11@8.jpg",
+          "detail": "https://i3.ztat.net/detail/DI/12/2G/0A/DK/11/DI122G0AD-K11@8.jpg",
+          "detail_hd": "https://i3.ztat.net/detail_hd/DI/12/2G/0A/DK/11/DI122G0AD-K11@8.jpg",
+          "large": "https://i3.ztat.net/large/DI/12/2G/0A/DK/11/DI122G0AD-K11@8.jpg",
+          "large_hd": "https://i3.ztat.net/large_hd/DI/12/2G/0A/DK/11/DI122G0AD-K11@8.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": "DI122G0CK-C11",
+    "name": "THAVAR 0860F - Jeans Straight Leg - 0860f",
+    "brand": {
+      "name": "Diesel"
+    },
+    "lowest_price": {
+      "amount": 199.95,
+      "currency": "EUR"
+    },
+    "media": {
+      "media_items": [
+        {
+          "order": 1,
+          "catalog": "https://i2.ztat.net/catalog/DI/12/2G/0C/KC/11/DI122G0CK-C11@12.jpg",
+          "catalog_hd": "https://i2.ztat.net/catalog_hd/DI/12/2G/0C/KC/11/DI122G0CK-C11@12.jpg",
+          "detail": "https://i2.ztat.net/detail/DI/12/2G/0C/KC/11/DI122G0CK-C11@12.jpg",
+          "detail_hd": "https://i2.ztat.net/detail_hd/DI/12/2G/0C/KC/11/DI122G0CK-C11@12.jpg",
+          "large": "https://i2.ztat.net/large/DI/12/2G/0C/KC/11/DI122G0CK-C11@12.jpg",
+          "large_hd": "https://i2.ztat.net/large_hd/DI/12/2G/0C/KC/11/DI122G0CK-C11@12.jpg"
+        },
+        {
+          "order": 2,
+          "catalog": "https://i3.ztat.net/catalog/DI/12/2G/0C/KC/11/DI122G0CK-C11@11.jpg",
+          "catalog_hd": "https://i3.ztat.net/catalog_hd/DI/12/2G/0C/KC/11/DI122G0CK-C11@11.jpg",
+          "detail": "https://i3.ztat.net/detail/DI/12/2G/0C/KC/11/DI122G0CK-C11@11.jpg",
+          "detail_hd": "https://i3.ztat.net/detail_hd/DI/12/2G/0C/KC/11/DI122G0CK-C11@11.jpg",
+          "large": "https://i3.ztat.net/large/DI/12/2G/0C/KC/11/DI122G0CK-C11@11.jpg",
+          "large_hd": "https://i3.ztat.net/large_hd/DI/12/2G/0C/KC/11/DI122G0CK-C11@11.jpg"
+        },
+        {
+          "order": 3,
+          "catalog": "https://i2.ztat.net/catalog/DI/12/2G/0C/KC/11/DI122G0CK-C11@10.jpg",
+          "catalog_hd": "https://i2.ztat.net/catalog_hd/DI/12/2G/0C/KC/11/DI122G0CK-C11@10.jpg",
+          "detail": "https://i2.ztat.net/detail/DI/12/2G/0C/KC/11/DI122G0CK-C11@10.jpg",
+          "detail_hd": "https://i2.ztat.net/detail_hd/DI/12/2G/0C/KC/11/DI122G0CK-C11@10.jpg",
+          "large": "https://i2.ztat.net/large/DI/12/2G/0C/KC/11/DI122G0CK-C11@10.jpg",
+          "large_hd": "https://i2.ztat.net/large_hd/DI/12/2G/0C/KC/11/DI122G0CK-C11@10.jpg"
+        },
+        {
+          "order": 4,
+          "catalog": "https://i1.ztat.net/catalog/DI/12/2G/0C/KC/11/DI122G0CK-C11@9.jpg",
+          "catalog_hd": "https://i1.ztat.net/catalog_hd/DI/12/2G/0C/KC/11/DI122G0CK-C11@9.jpg",
+          "detail": "https://i1.ztat.net/detail/DI/12/2G/0C/KC/11/DI122G0CK-C11@9.jpg",
+          "detail_hd": "https://i1.ztat.net/detail_hd/DI/12/2G/0C/KC/11/DI122G0CK-C11@9.jpg",
+          "large": "https://i1.ztat.net/large/DI/12/2G/0C/KC/11/DI122G0CK-C11@9.jpg",
+          "large_hd": "https://i1.ztat.net/large_hd/DI/12/2G/0C/KC/11/DI122G0CK-C11@9.jpg"
+        },
+        {
+          "order": 5,
+          "catalog": "https://i4.ztat.net/catalog/DI/12/2G/0C/KC/11/DI122G0CK-C11@8.jpg",
+          "catalog_hd": "https://i4.ztat.net/catalog_hd/DI/12/2G/0C/KC/11/DI122G0CK-C11@8.jpg",
+          "detail": "https://i4.ztat.net/detail/DI/12/2G/0C/KC/11/DI122G0CK-C11@8.jpg",
+          "detail_hd": "https://i4.ztat.net/detail_hd/DI/12/2G/0C/KC/11/DI122G0CK-C11@8.jpg",
+          "large": "https://i4.ztat.net/large/DI/12/2G/0C/KC/11/DI122G0CK-C11@8.jpg",
+          "large_hd": "https://i4.ztat.net/large_hd/DI/12/2G/0C/KC/11/DI122G0CK-C11@8.jpg"
+        },
+        {
+          "order": 6,
+          "catalog": "https://i5.ztat.net/catalog/DI/12/2G/0C/KC/11/DI122G0CK-C11@7.jpg",
+          "catalog_hd": "https://i5.ztat.net/catalog_hd/DI/12/2G/0C/KC/11/DI122G0CK-C11@7.jpg",
+          "detail": "https://i5.ztat.net/detail/DI/12/2G/0C/KC/11/DI122G0CK-C11@7.jpg",
+          "detail_hd": "https://i5.ztat.net/detail_hd/DI/12/2G/0C/KC/11/DI122G0CK-C11@7.jpg",
+          "large": "https://i5.ztat.net/large/DI/12/2G/0C/KC/11/DI122G0CK-C11@7.jpg",
+          "large_hd": "https://i5.ztat.net/large_hd/DI/12/2G/0C/KC/11/DI122G0CK-C11@7.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": "DI122G0AN-K11",
+    "name": "THAVAR 0855G - Jeans Slim Fit - 0855g",
+    "brand": {
+      "name": "Diesel"
+    },
+    "lowest_price": {
+      "amount": 89.95,
+      "currency": "EUR"
+    },
+    "media": {
+      "media_items": [
+        {
+          "order": 1,
+          "catalog": "https://i5.ztat.net/catalog/DI/12/2G/0A/NK/11/DI122G0AN-K11@14.jpg",
+          "catalog_hd": "https://i5.ztat.net/catalog_hd/DI/12/2G/0A/NK/11/DI122G0AN-K11@14.jpg",
+          "detail": "https://i5.ztat.net/detail/DI/12/2G/0A/NK/11/DI122G0AN-K11@14.jpg",
+          "detail_hd": "https://i5.ztat.net/detail_hd/DI/12/2G/0A/NK/11/DI122G0AN-K11@14.jpg",
+          "large": "https://i5.ztat.net/large/DI/12/2G/0A/NK/11/DI122G0AN-K11@14.jpg",
+          "large_hd": "https://i5.ztat.net/large_hd/DI/12/2G/0A/NK/11/DI122G0AN-K11@14.jpg"
+        },
+        {
+          "order": 2,
+          "catalog": "https://i6.ztat.net/catalog/DI/12/2G/0A/NK/11/DI122G0AN-K11@13.jpg",
+          "catalog_hd": "https://i6.ztat.net/catalog_hd/DI/12/2G/0A/NK/11/DI122G0AN-K11@13.jpg",
+          "detail": "https://i6.ztat.net/detail/DI/12/2G/0A/NK/11/DI122G0AN-K11@13.jpg",
+          "detail_hd": "https://i6.ztat.net/detail_hd/DI/12/2G/0A/NK/11/DI122G0AN-K11@13.jpg",
+          "large": "https://i6.ztat.net/large/DI/12/2G/0A/NK/11/DI122G0AN-K11@13.jpg",
+          "large_hd": "https://i6.ztat.net/large_hd/DI/12/2G/0A/NK/11/DI122G0AN-K11@13.jpg"
+        },
+        {
+          "order": 3,
+          "catalog": "https://i3.ztat.net/catalog/DI/12/2G/0A/NK/11/DI122G0AN-K11@12.jpg",
+          "catalog_hd": "https://i3.ztat.net/catalog_hd/DI/12/2G/0A/NK/11/DI122G0AN-K11@12.jpg",
+          "detail": "https://i3.ztat.net/detail/DI/12/2G/0A/NK/11/DI122G0AN-K11@12.jpg",
+          "detail_hd": "https://i3.ztat.net/detail_hd/DI/12/2G/0A/NK/11/DI122G0AN-K11@12.jpg",
+          "large": "https://i3.ztat.net/large/DI/12/2G/0A/NK/11/DI122G0AN-K11@12.jpg",
+          "large_hd": "https://i3.ztat.net/large_hd/DI/12/2G/0A/NK/11/DI122G0AN-K11@12.jpg"
+        },
+        {
+          "order": 4,
+          "catalog": "https://i2.ztat.net/catalog/DI/12/2G/0A/NK/11/DI122G0AN-K11@11.jpg",
+          "catalog_hd": "https://i2.ztat.net/catalog_hd/DI/12/2G/0A/NK/11/DI122G0AN-K11@11.jpg",
+          "detail": "https://i2.ztat.net/detail/DI/12/2G/0A/NK/11/DI122G0AN-K11@11.jpg",
+          "detail_hd": "https://i2.ztat.net/detail_hd/DI/12/2G/0A/NK/11/DI122G0AN-K11@11.jpg",
+          "large": "https://i2.ztat.net/large/DI/12/2G/0A/NK/11/DI122G0AN-K11@11.jpg",
+          "large_hd": "https://i2.ztat.net/large_hd/DI/12/2G/0A/NK/11/DI122G0AN-K11@11.jpg"
+        },
+        {
+          "order": 5,
+          "catalog": "https://i1.ztat.net/catalog/DI/12/2G/0A/NK/11/DI122G0AN-K11@10.jpg",
+          "catalog_hd": "https://i1.ztat.net/catalog_hd/DI/12/2G/0A/NK/11/DI122G0AN-K11@10.jpg",
+          "detail": "https://i1.ztat.net/detail/DI/12/2G/0A/NK/11/DI122G0AN-K11@10.jpg",
+          "detail_hd": "https://i1.ztat.net/detail_hd/DI/12/2G/0A/NK/11/DI122G0AN-K11@10.jpg",
+          "large": "https://i1.ztat.net/large/DI/12/2G/0A/NK/11/DI122G0AN-K11@10.jpg",
+          "large_hd": "https://i1.ztat.net/large_hd/DI/12/2G/0A/NK/11/DI122G0AN-K11@10.jpg"
+        },
+        {
+          "order": 6,
+          "catalog": "https://i4.ztat.net/catalog/DI/12/2G/0A/NK/11/DI122G0AN-K11@9.jpg",
+          "catalog_hd": "https://i4.ztat.net/catalog_hd/DI/12/2G/0A/NK/11/DI122G0AN-K11@9.jpg",
+          "detail": "https://i4.ztat.net/detail/DI/12/2G/0A/NK/11/DI122G0AN-K11@9.jpg",
+          "detail_hd": "https://i4.ztat.net/detail_hd/DI/12/2G/0A/NK/11/DI122G0AN-K11@9.jpg",
+          "large": "https://i4.ztat.net/large/DI/12/2G/0A/NK/11/DI122G0AN-K11@9.jpg",
+          "large_hd": "https://i4.ztat.net/large_hd/DI/12/2G/0A/NK/11/DI122G0AN-K11@9.jpg"
+        },
+        {
+          "order": 7,
+          "catalog": "https://i1.ztat.net/catalog/DI/12/2G/0A/NK/11/DI122G0AN-K11@8.jpg",
+          "catalog_hd": "https://i1.ztat.net/catalog_hd/DI/12/2G/0A/NK/11/DI122G0AN-K11@8.jpg",
+          "detail": "https://i1.ztat.net/detail/DI/12/2G/0A/NK/11/DI122G0AN-K11@8.jpg",
+          "detail_hd": "https://i1.ztat.net/detail_hd/DI/12/2G/0A/NK/11/DI122G0AN-K11@8.jpg",
+          "large": "https://i1.ztat.net/large/DI/12/2G/0A/NK/11/DI122G0AN-K11@8.jpg",
+          "large_hd": "https://i1.ztat.net/large_hd/DI/12/2G/0A/NK/11/DI122G0AN-K11@8.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": "DI122G0CI-K11",
+    "name": "THAVAR- Jeans Slim Fit - 0859w",
+    "brand": {
+      "name": "Diesel"
+    },
+    "lowest_price": {
+      "amount": 169.95,
+      "currency": "EUR"
+    },
+    "media": {
+      "media_items": [
+        {
+          "order": 1,
+          "catalog": "https://i2.ztat.net/catalog/DI/12/2G/0C/IK/11/DI122G0CI-K11@12.jpg",
+          "catalog_hd": "https://i2.ztat.net/catalog_hd/DI/12/2G/0C/IK/11/DI122G0CI-K11@12.jpg",
+          "detail": "https://i2.ztat.net/detail/DI/12/2G/0C/IK/11/DI122G0CI-K11@12.jpg",
+          "detail_hd": "https://i2.ztat.net/detail_hd/DI/12/2G/0C/IK/11/DI122G0CI-K11@12.jpg",
+          "large": "https://i2.ztat.net/large/DI/12/2G/0C/IK/11/DI122G0CI-K11@12.jpg",
+          "large_hd": "https://i2.ztat.net/large_hd/DI/12/2G/0C/IK/11/DI122G0CI-K11@12.jpg"
+        },
+        {
+          "order": 2,
+          "catalog": "https://i3.ztat.net/catalog/DI/12/2G/0C/IK/11/DI122G0CI-K11@11.jpg",
+          "catalog_hd": "https://i3.ztat.net/catalog_hd/DI/12/2G/0C/IK/11/DI122G0CI-K11@11.jpg",
+          "detail": "https://i3.ztat.net/detail/DI/12/2G/0C/IK/11/DI122G0CI-K11@11.jpg",
+          "detail_hd": "https://i3.ztat.net/detail_hd/DI/12/2G/0C/IK/11/DI122G0CI-K11@11.jpg",
+          "large": "https://i3.ztat.net/large/DI/12/2G/0C/IK/11/DI122G0CI-K11@11.jpg",
+          "large_hd": "https://i3.ztat.net/large_hd/DI/12/2G/0C/IK/11/DI122G0CI-K11@11.jpg"
+        },
+        {
+          "order": 3,
+          "catalog": "https://i2.ztat.net/catalog/DI/12/2G/0C/IK/11/DI122G0CI-K11@10.jpg",
+          "catalog_hd": "https://i2.ztat.net/catalog_hd/DI/12/2G/0C/IK/11/DI122G0CI-K11@10.jpg",
+          "detail": "https://i2.ztat.net/detail/DI/12/2G/0C/IK/11/DI122G0CI-K11@10.jpg",
+          "detail_hd": "https://i2.ztat.net/detail_hd/DI/12/2G/0C/IK/11/DI122G0CI-K11@10.jpg",
+          "large": "https://i2.ztat.net/large/DI/12/2G/0C/IK/11/DI122G0CI-K11@10.jpg",
+          "large_hd": "https://i2.ztat.net/large_hd/DI/12/2G/0C/IK/11/DI122G0CI-K11@10.jpg"
+        },
+        {
+          "order": 4,
+          "catalog": "https://i1.ztat.net/catalog/DI/12/2G/0C/IK/11/DI122G0CI-K11@9.jpg",
+          "catalog_hd": "https://i1.ztat.net/catalog_hd/DI/12/2G/0C/IK/11/DI122G0CI-K11@9.jpg",
+          "detail": "https://i1.ztat.net/detail/DI/12/2G/0C/IK/11/DI122G0CI-K11@9.jpg",
+          "detail_hd": "https://i1.ztat.net/detail_hd/DI/12/2G/0C/IK/11/DI122G0CI-K11@9.jpg",
+          "large": "https://i1.ztat.net/large/DI/12/2G/0C/IK/11/DI122G0CI-K11@9.jpg",
+          "large_hd": "https://i1.ztat.net/large_hd/DI/12/2G/0C/IK/11/DI122G0CI-K11@9.jpg"
+        },
+        {
+          "order": 5,
+          "catalog": "https://i4.ztat.net/catalog/DI/12/2G/0C/IK/11/DI122G0CI-K11@8.jpg",
+          "catalog_hd": "https://i4.ztat.net/catalog_hd/DI/12/2G/0C/IK/11/DI122G0CI-K11@8.jpg",
+          "detail": "https://i4.ztat.net/detail/DI/12/2G/0C/IK/11/DI122G0CI-K11@8.jpg",
+          "detail_hd": "https://i4.ztat.net/detail_hd/DI/12/2G/0C/IK/11/DI122G0CI-K11@8.jpg",
+          "large": "https://i4.ztat.net/large/DI/12/2G/0C/IK/11/DI122G0CI-K11@8.jpg",
+          "large_hd": "https://i4.ztat.net/large_hd/DI/12/2G/0C/IK/11/DI122G0CI-K11@8.jpg"
+        },
+        {
+          "order": 6,
+          "catalog": "https://i5.ztat.net/catalog/DI/12/2G/0C/IK/11/DI122G0CI-K11@7.jpg",
+          "catalog_hd": "https://i5.ztat.net/catalog_hd/DI/12/2G/0C/IK/11/DI122G0CI-K11@7.jpg",
+          "detail": "https://i5.ztat.net/detail/DI/12/2G/0C/IK/11/DI122G0CI-K11@7.jpg",
+          "detail_hd": "https://i5.ztat.net/detail_hd/DI/12/2G/0C/IK/11/DI122G0CI-K11@7.jpg",
+          "large": "https://i5.ztat.net/large/DI/12/2G/0C/IK/11/DI122G0CI-K11@7.jpg",
+          "large_hd": "https://i5.ztat.net/large_hd/DI/12/2G/0C/IK/11/DI122G0CI-K11@7.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": "DI122G0BH-K11",
+    "name": "TEPPHAR 0857L - Jeans Slim Fit - 0857l",
+    "brand": {
+      "name": "Diesel"
+    },
+    "lowest_price": {
+      "amount": 95.95,
+      "currency": "EUR"
+    },
+    "media": {
+      "media_items": [
+        {
+          "order": 1,
+          "catalog": "https://i3.ztat.net/catalog/DI/12/2G/0B/HK/11/DI122G0BH-K11@12.jpg",
+          "catalog_hd": "https://i3.ztat.net/catalog_hd/DI/12/2G/0B/HK/11/DI122G0BH-K11@12.jpg",
+          "detail": "https://i3.ztat.net/detail/DI/12/2G/0B/HK/11/DI122G0BH-K11@12.jpg",
+          "detail_hd": "https://i3.ztat.net/detail_hd/DI/12/2G/0B/HK/11/DI122G0BH-K11@12.jpg",
+          "large": "https://i3.ztat.net/large/DI/12/2G/0B/HK/11/DI122G0BH-K11@12.jpg",
+          "large_hd": "https://i3.ztat.net/large_hd/DI/12/2G/0B/HK/11/DI122G0BH-K11@12.jpg"
+        },
+        {
+          "order": 2,
+          "catalog": "https://i2.ztat.net/catalog/DI/12/2G/0B/HK/11/DI122G0BH-K11@11.jpg",
+          "catalog_hd": "https://i2.ztat.net/catalog_hd/DI/12/2G/0B/HK/11/DI122G0BH-K11@11.jpg",
+          "detail": "https://i2.ztat.net/detail/DI/12/2G/0B/HK/11/DI122G0BH-K11@11.jpg",
+          "detail_hd": "https://i2.ztat.net/detail_hd/DI/12/2G/0B/HK/11/DI122G0BH-K11@11.jpg",
+          "large": "https://i2.ztat.net/large/DI/12/2G/0B/HK/11/DI122G0BH-K11@11.jpg",
+          "large_hd": "https://i2.ztat.net/large_hd/DI/12/2G/0B/HK/11/DI122G0BH-K11@11.jpg"
+        },
+        {
+          "order": 3,
+          "catalog": "https://i1.ztat.net/catalog/DI/12/2G/0B/HK/11/DI122G0BH-K11@10.jpg",
+          "catalog_hd": "https://i1.ztat.net/catalog_hd/DI/12/2G/0B/HK/11/DI122G0BH-K11@10.jpg",
+          "detail": "https://i1.ztat.net/detail/DI/12/2G/0B/HK/11/DI122G0BH-K11@10.jpg",
+          "detail_hd": "https://i1.ztat.net/detail_hd/DI/12/2G/0B/HK/11/DI122G0BH-K11@10.jpg",
+          "large": "https://i1.ztat.net/large/DI/12/2G/0B/HK/11/DI122G0BH-K11@10.jpg",
+          "large_hd": "https://i1.ztat.net/large_hd/DI/12/2G/0B/HK/11/DI122G0BH-K11@10.jpg"
+        },
+        {
+          "order": 4,
+          "catalog": "https://i3.ztat.net/catalog/DI/12/2G/0B/HK/11/DI122G0BH-K11@9.jpg",
+          "catalog_hd": "https://i3.ztat.net/catalog_hd/DI/12/2G/0B/HK/11/DI122G0BH-K11@9.jpg",
+          "detail": "https://i3.ztat.net/detail/DI/12/2G/0B/HK/11/DI122G0BH-K11@9.jpg",
+          "detail_hd": "https://i3.ztat.net/detail_hd/DI/12/2G/0B/HK/11/DI122G0BH-K11@9.jpg",
+          "large": "https://i3.ztat.net/large/DI/12/2G/0B/HK/11/DI122G0BH-K11@9.jpg",
+          "large_hd": "https://i3.ztat.net/large_hd/DI/12/2G/0B/HK/11/DI122G0BH-K11@9.jpg"
+        },
+        {
+          "order": 5,
+          "catalog": "https://i2.ztat.net/catalog/DI/12/2G/0B/HK/11/DI122G0BH-K11@8.jpg",
+          "catalog_hd": "https://i2.ztat.net/catalog_hd/DI/12/2G/0B/HK/11/DI122G0BH-K11@8.jpg",
+          "detail": "https://i2.ztat.net/detail/DI/12/2G/0B/HK/11/DI122G0BH-K11@8.jpg",
+          "detail_hd": "https://i2.ztat.net/detail_hd/DI/12/2G/0B/HK/11/DI122G0BH-K11@8.jpg",
+          "large": "https://i2.ztat.net/large/DI/12/2G/0B/HK/11/DI122G0BH-K11@8.jpg",
+          "large_hd": "https://i2.ztat.net/large_hd/DI/12/2G/0B/HK/11/DI122G0BH-K11@8.jpg"
+        },
+        {
+          "order": 6,
+          "catalog": "https://i1.ztat.net/catalog/DI/12/2G/0B/HK/11/DI122G0BH-K11@7.jpg",
+          "catalog_hd": "https://i1.ztat.net/catalog_hd/DI/12/2G/0B/HK/11/DI122G0BH-K11@7.jpg",
+          "detail": "https://i1.ztat.net/detail/DI/12/2G/0B/HK/11/DI122G0BH-K11@7.jpg",
+          "detail_hd": "https://i1.ztat.net/detail_hd/DI/12/2G/0B/HK/11/DI122G0BH-K11@7.jpg",
+          "large": "https://i1.ztat.net/large/DI/12/2G/0B/HK/11/DI122G0BH-K11@7.jpg",
+          "large_hd": "https://i1.ztat.net/large_hd/DI/12/2G/0B/HK/11/DI122G0BH-K11@7.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": "DI122G0BC-K11",
+    "name": "SLEENKER 0857B - Jeans Slim Fit - 0857b",
+    "brand": {
+      "name": "Diesel"
+    },
+    "lowest_price": {
+      "amount": 125.95,
+      "currency": "EUR"
+    },
+    "media": {
+      "media_items": [
+        {
+          "order": 1,
+          "catalog": "https://i2.ztat.net/catalog/DI/12/2G/0B/CK/11/DI122G0BC-K11@12.jpg",
+          "catalog_hd": "https://i2.ztat.net/catalog_hd/DI/12/2G/0B/CK/11/DI122G0BC-K11@12.jpg",
+          "detail": "https://i2.ztat.net/detail/DI/12/2G/0B/CK/11/DI122G0BC-K11@12.jpg",
+          "detail_hd": "https://i2.ztat.net/detail_hd/DI/12/2G/0B/CK/11/DI122G0BC-K11@12.jpg",
+          "large": "https://i2.ztat.net/large/DI/12/2G/0B/CK/11/DI122G0BC-K11@12.jpg",
+          "large_hd": "https://i2.ztat.net/large_hd/DI/12/2G/0B/CK/11/DI122G0BC-K11@12.jpg"
+        },
+        {
+          "order": 2,
+          "catalog": "https://i3.ztat.net/catalog/DI/12/2G/0B/CK/11/DI122G0BC-K11@11.jpg",
+          "catalog_hd": "https://i3.ztat.net/catalog_hd/DI/12/2G/0B/CK/11/DI122G0BC-K11@11.jpg",
+          "detail": "https://i3.ztat.net/detail/DI/12/2G/0B/CK/11/DI122G0BC-K11@11.jpg",
+          "detail_hd": "https://i3.ztat.net/detail_hd/DI/12/2G/0B/CK/11/DI122G0BC-K11@11.jpg",
+          "large": "https://i3.ztat.net/large/DI/12/2G/0B/CK/11/DI122G0BC-K11@11.jpg",
+          "large_hd": "https://i3.ztat.net/large_hd/DI/12/2G/0B/CK/11/DI122G0BC-K11@11.jpg"
+        },
+        {
+          "order": 3,
+          "catalog": "https://i2.ztat.net/catalog/DI/12/2G/0B/CK/11/DI122G0BC-K11@10.jpg",
+          "catalog_hd": "https://i2.ztat.net/catalog_hd/DI/12/2G/0B/CK/11/DI122G0BC-K11@10.jpg",
+          "detail": "https://i2.ztat.net/detail/DI/12/2G/0B/CK/11/DI122G0BC-K11@10.jpg",
+          "detail_hd": "https://i2.ztat.net/detail_hd/DI/12/2G/0B/CK/11/DI122G0BC-K11@10.jpg",
+          "large": "https://i2.ztat.net/large/DI/12/2G/0B/CK/11/DI122G0BC-K11@10.jpg",
+          "large_hd": "https://i2.ztat.net/large_hd/DI/12/2G/0B/CK/11/DI122G0BC-K11@10.jpg"
+        },
+        {
+          "order": 4,
+          "catalog": "https://i2.ztat.net/catalog/DI/12/2G/0B/CK/11/DI122G0BC-K11@9.jpg",
+          "catalog_hd": "https://i2.ztat.net/catalog_hd/DI/12/2G/0B/CK/11/DI122G0BC-K11@9.jpg",
+          "detail": "https://i2.ztat.net/detail/DI/12/2G/0B/CK/11/DI122G0BC-K11@9.jpg",
+          "detail_hd": "https://i2.ztat.net/detail_hd/DI/12/2G/0B/CK/11/DI122G0BC-K11@9.jpg",
+          "large": "https://i2.ztat.net/large/DI/12/2G/0B/CK/11/DI122G0BC-K11@9.jpg",
+          "large_hd": "https://i2.ztat.net/large_hd/DI/12/2G/0B/CK/11/DI122G0BC-K11@9.jpg"
+        },
+        {
+          "order": 5,
+          "catalog": "https://i3.ztat.net/catalog/DI/12/2G/0B/CK/11/DI122G0BC-K11@8.jpg",
+          "catalog_hd": "https://i3.ztat.net/catalog_hd/DI/12/2G/0B/CK/11/DI122G0BC-K11@8.jpg",
+          "detail": "https://i3.ztat.net/detail/DI/12/2G/0B/CK/11/DI122G0BC-K11@8.jpg",
+          "detail_hd": "https://i3.ztat.net/detail_hd/DI/12/2G/0B/CK/11/DI122G0BC-K11@8.jpg",
+          "large": "https://i3.ztat.net/large/DI/12/2G/0B/CK/11/DI122G0BC-K11@8.jpg",
+          "large_hd": "https://i3.ztat.net/large_hd/DI/12/2G/0B/CK/11/DI122G0BC-K11@8.jpg"
+        },
+        {
+          "order": 6,
+          "catalog": "https://i6.ztat.net/catalog/DI/12/2G/0B/CK/11/DI122G0BC-K11@7.jpg",
+          "catalog_hd": "https://i6.ztat.net/catalog_hd/DI/12/2G/0B/CK/11/DI122G0BC-K11@7.jpg",
+          "detail": "https://i6.ztat.net/detail/DI/12/2G/0B/CK/11/DI122G0BC-K11@7.jpg",
+          "detail_hd": "https://i6.ztat.net/detail_hd/DI/12/2G/0B/CK/11/DI122G0BC-K11@7.jpg",
+          "large": "https://i6.ztat.net/large/DI/12/2G/0B/CK/11/DI122G0BC-K11@7.jpg",
+          "large_hd": "https://i6.ztat.net/large_hd/DI/12/2G/0B/CK/11/DI122G0BC-K11@7.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": "DI122G0AM-K11",
+    "name": "THAVAR- Jeans Slim Fit - 0855l",
+    "brand": {
+      "name": "Diesel"
+    },
+    "lowest_price": {
+      "amount": 90.95,
+      "currency": "EUR"
+    },
+    "media": {
+      "media_items": [
+        {
+          "order": 1,
+          "catalog": "https://i6.ztat.net/catalog/DI/12/2G/0A/MK/11/DI122G0AM-K11@14.jpg",
+          "catalog_hd": "https://i6.ztat.net/catalog_hd/DI/12/2G/0A/MK/11/DI122G0AM-K11@14.jpg",
+          "detail": "https://i6.ztat.net/detail/DI/12/2G/0A/MK/11/DI122G0AM-K11@14.jpg",
+          "detail_hd": "https://i6.ztat.net/detail_hd/DI/12/2G/0A/MK/11/DI122G0AM-K11@14.jpg",
+          "large": "https://i6.ztat.net/large/DI/12/2G/0A/MK/11/DI122G0AM-K11@14.jpg",
+          "large_hd": "https://i6.ztat.net/large_hd/DI/12/2G/0A/MK/11/DI122G0AM-K11@14.jpg"
+        },
+        {
+          "order": 2,
+          "catalog": "https://i5.ztat.net/catalog/DI/12/2G/0A/MK/11/DI122G0AM-K11@13.jpg",
+          "catalog_hd": "https://i5.ztat.net/catalog_hd/DI/12/2G/0A/MK/11/DI122G0AM-K11@13.jpg",
+          "detail": "https://i5.ztat.net/detail/DI/12/2G/0A/MK/11/DI122G0AM-K11@13.jpg",
+          "detail_hd": "https://i5.ztat.net/detail_hd/DI/12/2G/0A/MK/11/DI122G0AM-K11@13.jpg",
+          "large": "https://i5.ztat.net/large/DI/12/2G/0A/MK/11/DI122G0AM-K11@13.jpg",
+          "large_hd": "https://i5.ztat.net/large_hd/DI/12/2G/0A/MK/11/DI122G0AM-K11@13.jpg"
+        },
+        {
+          "order": 3,
+          "catalog": "https://i4.ztat.net/catalog/DI/12/2G/0A/MK/11/DI122G0AM-K11@12.jpg",
+          "catalog_hd": "https://i4.ztat.net/catalog_hd/DI/12/2G/0A/MK/11/DI122G0AM-K11@12.jpg",
+          "detail": "https://i4.ztat.net/detail/DI/12/2G/0A/MK/11/DI122G0AM-K11@12.jpg",
+          "detail_hd": "https://i4.ztat.net/detail_hd/DI/12/2G/0A/MK/11/DI122G0AM-K11@12.jpg",
+          "large": "https://i4.ztat.net/large/DI/12/2G/0A/MK/11/DI122G0AM-K11@12.jpg",
+          "large_hd": "https://i4.ztat.net/large_hd/DI/12/2G/0A/MK/11/DI122G0AM-K11@12.jpg"
+        },
+        {
+          "order": 4,
+          "catalog": "https://i1.ztat.net/catalog/DI/12/2G/0A/MK/11/DI122G0AM-K11@11.jpg",
+          "catalog_hd": "https://i1.ztat.net/catalog_hd/DI/12/2G/0A/MK/11/DI122G0AM-K11@11.jpg",
+          "detail": "https://i1.ztat.net/detail/DI/12/2G/0A/MK/11/DI122G0AM-K11@11.jpg",
+          "detail_hd": "https://i1.ztat.net/detail_hd/DI/12/2G/0A/MK/11/DI122G0AM-K11@11.jpg",
+          "large": "https://i1.ztat.net/large/DI/12/2G/0A/MK/11/DI122G0AM-K11@11.jpg",
+          "large_hd": "https://i1.ztat.net/large_hd/DI/12/2G/0A/MK/11/DI122G0AM-K11@11.jpg"
+        },
+        {
+          "order": 5,
+          "catalog": "https://i6.ztat.net/catalog/DI/12/2G/0A/MK/11/DI122G0AM-K11@10.jpg",
+          "catalog_hd": "https://i6.ztat.net/catalog_hd/DI/12/2G/0A/MK/11/DI122G0AM-K11@10.jpg",
+          "detail": "https://i6.ztat.net/detail/DI/12/2G/0A/MK/11/DI122G0AM-K11@10.jpg",
+          "detail_hd": "https://i6.ztat.net/detail_hd/DI/12/2G/0A/MK/11/DI122G0AM-K11@10.jpg",
+          "large": "https://i6.ztat.net/large/DI/12/2G/0A/MK/11/DI122G0AM-K11@10.jpg",
+          "large_hd": "https://i6.ztat.net/large_hd/DI/12/2G/0A/MK/11/DI122G0AM-K11@10.jpg"
+        },
+        {
+          "order": 6,
+          "catalog": "https://i5.ztat.net/catalog/DI/12/2G/0A/MK/11/DI122G0AM-K11@9.jpg",
+          "catalog_hd": "https://i5.ztat.net/catalog_hd/DI/12/2G/0A/MK/11/DI122G0AM-K11@9.jpg",
+          "detail": "https://i5.ztat.net/detail/DI/12/2G/0A/MK/11/DI122G0AM-K11@9.jpg",
+          "detail_hd": "https://i5.ztat.net/detail_hd/DI/12/2G/0A/MK/11/DI122G0AM-K11@9.jpg",
+          "large": "https://i5.ztat.net/large/DI/12/2G/0A/MK/11/DI122G0AM-K11@9.jpg",
+          "large_hd": "https://i5.ztat.net/large_hd/DI/12/2G/0A/MK/11/DI122G0AM-K11@9.jpg"
+        },
+        {
+          "order": 7,
+          "catalog": "https://i6.ztat.net/catalog/DI/12/2G/0A/MK/11/DI122G0AM-K11@8.jpg",
+          "catalog_hd": "https://i6.ztat.net/catalog_hd/DI/12/2G/0A/MK/11/DI122G0AM-K11@8.jpg",
+          "detail": "https://i6.ztat.net/detail/DI/12/2G/0A/MK/11/DI122G0AM-K11@8.jpg",
+          "detail_hd": "https://i6.ztat.net/detail_hd/DI/12/2G/0A/MK/11/DI122G0AM-K11@8.jpg",
+          "large": "https://i6.ztat.net/large/DI/12/2G/0A/MK/11/DI122G0AM-K11@8.jpg",
+          "large_hd": "https://i6.ztat.net/large_hd/DI/12/2G/0A/MK/11/DI122G0AM-K11@8.jpg"
+        }
+      ]
+    }
+  }
+]

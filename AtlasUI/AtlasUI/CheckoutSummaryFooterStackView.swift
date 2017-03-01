@@ -9,7 +9,16 @@ class CheckoutSummaryFooterStackView: UIStackView {
 
     fileprivate var legalController: LegalController?
 
-    let footerButton: UIButton = {
+    let recommendationStackView: CheckoutSummaryRecommendationStackView = {
+        let stackView = CheckoutSummaryRecommendationStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 2
+        stackView.layoutMargins = UIEdgeInsets(top: 0, left: -20, bottom: 0, right: -20)
+        stackView.isLayoutMarginsRelativeArrangement = true
+        return stackView
+    }()
+
+    let termsButton: UIButton = {
         let button = UIButton(type: .system)
         button.titleLabel?.font = .systemFont(ofSize: 12, weight: UIFontWeightLight)
         button.titleLabel?.adjustsFontSizeToFitWidth = true
@@ -33,8 +42,8 @@ class CheckoutSummaryFooterStackView: UIStackView {
 extension CheckoutSummaryFooterStackView: UIBuilder {
 
     func configureView() {
-        footerButton.addTarget(self, action: #selector(CheckoutSummaryFooterStackView.tocPressed), for: .touchUpInside)
-        addArrangedSubview(footerButton)
+        termsButton.addTarget(self, action: #selector(CheckoutSummaryFooterStackView.tocPressed), for: .touchUpInside)
+        addArrangedSubview(termsButton)
         addArrangedSubview(submitButton)
     }
 
@@ -54,13 +63,19 @@ extension CheckoutSummaryFooterStackView: UIDataBuilder {
             legalController = LegalController(tocURL: termsAndConditionsURL)
         }
 
-        setupFooterButton(viewModel: viewModel)
+        if viewModel.layout.showsRecommendationStackView {
+            recommendationStackView.configure(viewModel: viewModel.dataModel.selectedArticle.article)
+            insertArrangedSubview(recommendationStackView, at: 0)
+            recommendationStackView.buildView()
+        }
+
+        setupTermsButton(viewModel: viewModel)
         setupSubmitButton(viewModel: viewModel)
     }
 
-    private func setupFooterButton(viewModel: T) {
-        footerButton.setAttributedTitle(tocAttributedTitle(), for: .normal)
-        footerButton.isHidden = !viewModel.layout.showFooterLabel
+    private func setupTermsButton(viewModel: T) {
+        termsButton.setAttributedTitle(tocAttributedTitle(), for: .normal)
+        termsButton.isHidden = !viewModel.layout.showsFooterLabel
     }
 
     private func setupSubmitButton(viewModel: T) {

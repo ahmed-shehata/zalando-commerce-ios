@@ -5,11 +5,13 @@
 import Foundation
 
 public struct AddressCheck {
+
     public let street: String?
     public let additional: String?
     public let zip: String
     public let city: String
     public let countryCode: String
+
 }
 
 extension AddressCheck: JSONInitializable {
