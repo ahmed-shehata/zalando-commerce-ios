@@ -119,7 +119,7 @@ extension CheckoutSummaryEditProductStackView: UIDataBuilder {
 
         sizeButton.removeTarget(self, action: nil, for: .touchUpInside)
         quantityButton.removeTarget(self, action: nil, for: .touchUpInside)
-        if viewModel.layout.allowArticleRefine {
+        if viewModel.layout.allowsArticleRefine {
             sizeButton.addTarget(self, action: #selector(sizeButtonTapped), for: .touchUpInside)
             quantityButton.addTarget(self, action: #selector(quantityButtonTapped), for: .touchUpInside)
         }

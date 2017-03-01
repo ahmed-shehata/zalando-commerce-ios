@@ -92,7 +92,7 @@ extension CheckoutSummaryViewController {
     fileprivate func setupNavigationBar() {
         title = Localizer.format(string: viewModel.layout.navigationBarTitleLocalizedKey)
 
-        if viewModel.layout.showCancelButton {
+        if viewModel.layout.showsCancelButton {
             showCancelButton()
         } else {
             hideCancelButton()
@@ -150,10 +150,6 @@ extension CheckoutSummaryViewController: CheckoutSummaryActionHandlerDelegate {
 
     func updated(actionHandler: CheckoutSummaryActionHandler) {
         self.actionHandler = actionHandler
-    }
-
-    func dismissView() {
-        dismiss(animated: true, completion: nil)
     }
 
 }

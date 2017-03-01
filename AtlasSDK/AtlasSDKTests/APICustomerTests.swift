@@ -29,7 +29,7 @@ class APICustomerTests: AtlasAPIClientBaseTests {
                 }
 
                 expect(customer.customerNumber) == "12345678"
-                expect(customer.gender) == Customer.Gender.Male
+                expect(customer.gender) == Gender.male
                 expect(customer.email) == "aaa@a.a"
                 expect(customer.firstName) == "John"
                 expect(customer.lastName) == "Doe"

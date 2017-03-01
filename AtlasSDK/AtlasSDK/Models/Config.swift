@@ -23,6 +23,10 @@ public struct Config {
 
     public let interfaceLocale: Locale
 
+}
+
+extension Config {
+
     public struct Payment {
         public let selectionCallbackURL: URL
         public let thirdPartyCallbackURL: URL

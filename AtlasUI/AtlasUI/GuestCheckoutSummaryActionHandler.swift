@@ -137,6 +137,10 @@ extension GuestCheckoutSummaryActionHandler {
         try? delegate.updated(dataModel: dataModel)
         delegate.updated(layout: GuestOrderPlacedLayout())
         delegate.updated(actionHandler: OrderPlacedSummaryActionHandler())
+
+        let orderConfirmation = OrderConfirmation(guestOrder: order, selectedArticle: selectedArticle)
+        let result = AtlasUI.CheckoutResult.orderPlaced(orderConfirmation: orderConfirmation, customerRequestedArticle: nil)
+        AtlasUIViewController.presented?.dismissalReason = result
     }
 
     fileprivate func getPaymentURL(completion: @escaping (URL) -> Void) {

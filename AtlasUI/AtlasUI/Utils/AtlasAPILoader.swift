@@ -4,6 +4,7 @@
 
 import Foundation
 import AtlasSDK
+import UIKit
 
 extension AtlasAPI {
 
@@ -106,6 +107,16 @@ extension AtlasAPI {
                             completion: @escaping APIResultCompletion<Article>) {
             AtlasUIViewController.displayLoader { hideLoader in
                 AtlasAPI.shared?.article(with: sku) { result in
+                    hideLoader()
+                    completion(result)
+                }
+            }
+        }
+
+        static func recommendations(forSKU sku: ConfigSKU, onView view: UIView,
+                                    completion: @escaping APIResultCompletion<[Recommendation]>) {
+            AtlasUIViewController.displayLoader(onView: view) { hideLoader in
+                AtlasAPI.shared?.recommendations(forSKU: sku) { result in
                     hideLoader()
                     completion(result)
                 }

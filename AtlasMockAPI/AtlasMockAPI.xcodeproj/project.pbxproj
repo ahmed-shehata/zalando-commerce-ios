@@ -95,6 +95,11 @@
 		E3DF2A483DCFC5FBE593D471D91C694B /* guestOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7091397D4C701811265BF45A78BDE155 /* guestOrder.swift */; };
 		E5979D25A11A7A1BDA83D0FC1B63402F /* GET*|articles|L2711E002-Q11.json in Resources */ = {isa = PBXBuildFile; fileRef = 357236E33FB5593BDA0C34D7C3B85BD5 /* GET*|articles|L2711E002-Q11.json */; };
 		E5EA6B0AA33ED7FB2824EC819970B2ED /* DELETE*|addresses|6702759.json in Resources */ = {isa = PBXBuildFile; fileRef = CACE4447528604E65E39575522445766 /* DELETE*|addresses|6702759.json */; };
+		E9496CDB1E534DD70047BCFF /* GET*|articles|AZ711M001-B11|recommendations.json in Resources */ = {isa = PBXBuildFile; fileRef = E9496CDA1E534DD70047BCFF /* GET*|articles|AZ711M001-B11|recommendations.json */; };
+		E9B09D991E55EFC900F6A1F1 /* GET*|articles|GU121D08Z-Q11|recommendations.json in Resources */ = {isa = PBXBuildFile; fileRef = E9B09D981E55EFC900F6A1F1 /* GET*|articles|GU121D08Z-Q11|recommendations.json */; };
+		E9B09D9B1E55F38000F6A1F1 /* GET*|articles|AD541L009-G11|recommendations.json in Resources */ = {isa = PBXBuildFile; fileRef = E9B09D9A1E55F38000F6A1F1 /* GET*|articles|AD541L009-G11|recommendations.json */; };
+		E9B09D9D1E55F47100F6A1F1 /* GET*|articles|L2711E002-Q11|recommendations.json in Resources */ = {isa = PBXBuildFile; fileRef = E9B09D9C1E55F47100F6A1F1 /* GET*|articles|L2711E002-Q11|recommendations.json */; };
+		E9B09DA01E55F86E00F6A1F1 /* GET*|articles|MK151F00E-Q11|recommendations.json in Resources */ = {isa = PBXBuildFile; fileRef = E9B09D9F1E55F86E00F6A1F1 /* GET*|articles|MK151F00E-Q11|recommendations.json */; };
 		E9DAF9722397E88CA29D63AFC5105B59 /* !customer-not-auth.json in Resources */ = {isa = PBXBuildFile; fileRef = A2292C0F231C12E7007FBD34A78D6FE9 /* !customer-not-auth.json */; };
 		EEBAA120D060356FE30AB972CEDB3426 /* addresses.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBF6598D12A7254C30D318828E609D9 /* addresses.swift */; };
 		F250E16CBA2E2CEED4E3DE7EFF2D74A7 /* DELETE*|addresses|6616154.json in Resources */ = {isa = PBXBuildFile; fileRef = FD8102294BD62829FFA7EDF717C73963 /* DELETE*|addresses|6616154.json */; };
@@ -218,6 +223,11 @@
 		CA560C48D8E31572681D63D800308B84 /* static-jsons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "static-jsons.swift"; sourceTree = "<group>"; };
 		CACE4447528604E65E39575522445766 /* DELETE*|addresses|6702759.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "DELETE*|addresses|6702759.json"; sourceTree = "<group>"; };
 		E6A12FDAD29AC96D6E81A64E6D2BDFB5 /* root.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = root.swift; sourceTree = "<group>"; };
+		E9496CDA1E534DD70047BCFF /* GET*|articles|AZ711M001-B11|recommendations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles|AZ711M001-B11|recommendations.json"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.javascript; };
+		E9B09D981E55EFC900F6A1F1 /* GET*|articles|GU121D08Z-Q11|recommendations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles|GU121D08Z-Q11|recommendations.json"; sourceTree = "<group>"; };
+		E9B09D9A1E55F38000F6A1F1 /* GET*|articles|AD541L009-G11|recommendations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles|AD541L009-G11|recommendations.json"; sourceTree = "<group>"; };
+		E9B09D9C1E55F47100F6A1F1 /* GET*|articles|L2711E002-Q11|recommendations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles|L2711E002-Q11|recommendations.json"; sourceTree = "<group>"; };
+		E9B09D9F1E55F86E00F6A1F1 /* GET*|articles|MK151F00E-Q11|recommendations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles|MK151F00E-Q11|recommendations.json"; sourceTree = "<group>"; };
 		EE841A5E3AF50F26A2453D96398B0547 /* GET*|articles|MK151F00E-Q11.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles|MK151F00E-Q11.json"; sourceTree = "<group>"; };
 		F32701B0E244493C8FDB26A6DB3DF08A /* GET*|articles|AZ711M001-B11.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|articles|AZ711M001-B11.json"; sourceTree = "<group>"; };
 		FAC7C79D277014FC00CD35427E010B0D /* GET*|config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "GET*|config.json"; sourceTree = "<group>"; };
@@ -397,6 +407,18 @@
 			path = AtlasMockAPITests;
 			sourceTree = "<group>";
 		};
+		E9B09D9E1E55F7B800F6A1F1 /* Recommendations */ = {
+			isa = PBXGroup;
+			children = (
+				E9496CDA1E534DD70047BCFF /* GET*|articles|AZ711M001-B11|recommendations.json */,
+				E9B09D981E55EFC900F6A1F1 /* GET*|articles|GU121D08Z-Q11|recommendations.json */,
+				E9B09D9A1E55F38000F6A1F1 /* GET*|articles|AD541L009-G11|recommendations.json */,
+				E9B09D9C1E55F47100F6A1F1 /* GET*|articles|L2711E002-Q11|recommendations.json */,
+				E9B09D9F1E55F86E00F6A1F1 /* GET*|articles|MK151F00E-Q11|recommendations.json */,
+			);
+			name = Recommendations;
+			sourceTree = "<group>";
+		};
 		EAA321F578A454B4DEDA57566636FDA9 /* customer */ = {
 			isa = PBXGroup;
 			children = (
@@ -412,6 +434,7 @@
 				EAA321F578A454B4DEDA57566636FDA9 /* customer */,
 				412391EBEC3B473DDB47B1B3C3AC4976 /* addresses */,
 				0A1CBE50F363F556537814A86627215A /* articles */,
+				E9B09D9E1E55F7B800F6A1F1 /* Recommendations */,
 				292EF08474999FF81013D57FA1742381 /* checkouts */,
 				FC0D7AD5D5BC0FAF9B866BE0F25F775E /* guest-checkout */,
 				FAC7C79D277014FC00CD35427E010B0D /* GET*|config.json */,
@@ -636,6 +659,7 @@
 				79068FCC902009E12A3E43E7A2895902 /* !customer-auth.json in Resources */,
 				A59F076590A5B06814D2F6466416E978 /* !customer-not-auth.json in Resources */,
 				59745E9F9ECCC552BCF3CF15CEC868E6 /* DELETE*|addresses|6616154.json in Resources */,
+				E9B09DA01E55F86E00F6A1F1 /* GET*|articles|MK151F00E-Q11|recommendations.json in Resources */,
 				95E82407BC871E74D62BF55165FC985D /* DELETE*|addresses|6702748.json in Resources */,
 				64DA112F4AA804031B27C1D2A3842C49 /* DELETE*|addresses|6702759.json in Resources */,
 				5084C069E3991E8F1734682D8F31B4C5 /* !addresses.json in Resources */,
@@ -646,6 +670,7 @@
 				074786065ED0E1BE9BE67760F737DD34 /* GET*|articles|AZ711N008-G11.json in Resources */,
 				526E809C9051CEB72D9008F994152966 /* GET*|articles|AZ711N00B-Q11.json in Resources */,
 				AA70A196673623B812B5A0379184BA41 /* GET*|articles|EV451G023-Q11.json in Resources */,
+				E9B09D991E55EFC900F6A1F1 /* GET*|articles|GU121D08Z-Q11|recommendations.json in Resources */,
 				BF50E1DA5EA3750B9AFF46474B056A0F /* GET*|articles|GU121D08Z-Q11.json in Resources */,
 				AD45008504E2DF00E0A3A55E5D87C6EB /* GET*|articles|L2711E002-Q11.json in Resources */,
 				E2A7B55242AD7320ED0238122456560D /* GET*|articles|LA254E005-Q11.json in Resources */,
@@ -653,12 +678,15 @@
 				4F84E7DDA8C48A7CF85F05A598E20392 /* GET*|config.json in Resources */,
 				E3706147D5957DF65BA2DBE530B64D8C /* POST*|address-checks.json in Resources */,
 				0BD4E3785B8B1992529C13DEC8B1E0BF /* POST*|addresses.json in Resources */,
+				E9B09D9D1E55F47100F6A1F1 /* GET*|articles|L2711E002-Q11|recommendations.json in Resources */,
 				398F5BDE0F8504306DCD314FC9EE0E01 /* POST*|carts.json in Resources */,
 				89E334C4AD5ADBBA39AB8084DAF56777 /* POST*|checkouts.json in Resources */,
+				E9B09D9B1E55F38000F6A1F1 /* GET*|articles|AD541L009-G11|recommendations.json in Resources */,
 				E0DE531EED316FE416C6599BF0527D4D /* POST*|orders.json in Resources */,
 				0090F5BCBB4FCFD717D79AFBFDAD4CB8 /* GET*|guest-checkout|api|checkouts|CHECKOUT_ID|TOKEN.json in Resources */,
 				F567261BA44CE78FB4591C87F874918D /* PUT*|addresses|6616154.json in Resources */,
 				5FAEBA073DD6471F3C7E0A3F11DCD238 /* PUT*|addresses|6702748.json in Resources */,
+				E9496CDB1E534DD70047BCFF /* GET*|articles|AZ711M001-B11|recommendations.json in Resources */,
 				954FFC519C9EBAA5D1CB75962B52B28C /* PUT*|addresses|6702759.json in Resources */,
 				8720D2B0604EE9F3D556997AABD433D1 /* PUT*|checkouts|CHECKOUT_ID.json in Resources */,
 			);
