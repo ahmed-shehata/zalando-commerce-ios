@@ -39,6 +39,7 @@ API calls and provide you high-level business objects to deal with.
     tag: spec.version.to_s
   }
 
-  spec.source_files = 'AtlasSDK/AtlasSDK/**/*.{h,m,swift}'
+  spec.source_files = 'AtlasSDK/AtlasSDK/**/*.swift', \
+                      'AtlasSDK/Commons/*.swift'
   spec.ios.frameworks = 'Foundation'
 end
