@@ -28,7 +28,7 @@ module Calypso
 
       new_version = ask_new_version(options, version)
 
-      # update_versions(new_version)
+      update_versions(new_version)
       git_new_version(new_version, options)
 
       new_version
@@ -57,13 +57,13 @@ module Calypso
     def update_projects(version)
       VERSIONABLE_PROJECTS.each do |project|
         full_path = File.expand_path("../../../../#{project}", __FILE__)
-        update_project(full_path, version)
+        update_project(project, full_path, version)
       end
     end
 
-    def update_project(path, version)
+    def update_project(project, path, version)
       run_agvtool path, version
-      Dir["#{path}/#{VERSIONED_PROJECT_FILES}"].each do |file|
+      Dir["#{path}/#{project}*/#{VERSIONED_PROJECT_FILES}"].each do |file|
         repo.add file
       end
     end
