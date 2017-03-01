@@ -18,32 +18,38 @@ extension AtlasAPI {
         client.fetch(from: endpoint, completion: completion)
     }
 
-    /**
+    /*
      Creates `Cart` with given `CartItemRequest` items.
 
      - Parameters:
-     - cartItemRequests: list articles SKUs with quantities to be added to cart
-     - completion: `Result.success` with create `Cart` model.
-     */
-    public func createCart(withItems cartItemRequests: [CartItemRequest],
+         - cartItemRequests: list articles SKUs with quantities to be added to cart
+         - completion: `Result.success` with create `Cart` model.
+    */
+    public func createCart(with cartItemRequests: [CartItemRequest],
                            completion: @escaping APIResultCompletion<Cart>) {
         let parameters = CartRequest(items: cartItemRequests, replaceItems: true).toJSON()
         let endpoint = CreateCartEndpoint(config: config, parameters: parameters)
         client.fetch(from: endpoint, completion: completion)
     }
 
-    public func createCheckoutCart(for skuQuantity: SKUQuantity,
+    /*
+    <#Description#>
+    
+    - Parameters:
+      - cartItemRequest: <#cartItemRequest description#>
+      - addresses: <#addresses description#>
+      - completion: <#completion description#>
+    */
+    public func createCartCheckout(with cartItemRequest: CartItemRequest,
                                    addresses: CheckoutAddresses? = nil,
                                    completion: @escaping APIResultCompletion<CartCheckout>) {
-        let cartItemRequest = CartItemRequest(sku: skuQuantity.sku, quantity: skuQuantity.quantity)
-
-        createCart(withItems: [cartItemRequest]) { cartResult in
+        createCart(with: [cartItemRequest]) { cartResult in
             switch cartResult {
             case .failure(let error, _):
                 completion(.failure(error, nil))
 
             case .success(let cart):
-                guard cart.hasStock(of: skuQuantity.sku) else {
+                guard cart.hasStock(of: cartItemRequest.sku) else {
                     return completion(.failure(CheckoutError.outOfStock, nil))
                 }
 
@@ -130,7 +136,7 @@ extension AtlasAPI {
         client.touch(endpoint: endpoint, completion: completion)
     }
 
-    public func createAddress(_ request: CreateAddressRequest,
+    public func createAddress(with request: CreateAddressRequest,
                               completion: @escaping APIResultCompletion<UserAddress>) {
         let endpoint = CreateAddressEndpoint(config: config, createAddressRequest: request)
         client.fetch(from: endpoint, completion: completion)
@@ -143,10 +149,10 @@ extension AtlasAPI {
         client.fetch(from: endpoint, completion: completion)
     }
 
-    public func checkAddress(_ request: CheckAddressRequest,
+    public func checkAddress(with request: CheckAddressRequest,
                              completion: @escaping APIResultCompletion<CheckAddressResponse>) {
         let endpoint = CheckAddressEndpoint(config: config, checkAddressRequest: request)
         client.fetch(from: endpoint, completion: completion)
     }
-    
+
 }

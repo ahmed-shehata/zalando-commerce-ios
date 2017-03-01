@@ -4,10 +4,9 @@
 
 import Foundation
 
-// TODO: Check documentation
-
 /**
 A bridge between API request call and a set of completions closures.
+
 Completions are run after the call is finished in the reversed order.
 
 - Note: Completions chain is used to provide authorization before a real call.

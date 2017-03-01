@@ -218,7 +218,7 @@ extension LoggedInSummaryActionHandlerTests {
         guard let article = article else { return nil }
         var cartCheckout: CartCheckout?
         waitUntil(timeout: 10) { done in
-            AtlasAPI.withLoader.createCheckoutCart(for: SelectedArticle(article: article)) { result in
+            AtlasAPI.withLoader.createCartCheckout(for: SelectedArticle(article: article)) { result in
                 guard let checkoutCart = result.process() else { return fail() }
                 cartCheckout = (cart: checkoutCart.cart, checkout: checkoutCart.checkout)
                 done()

@@ -26,7 +26,7 @@ class AtlasAPIClientBaseTests: XCTestCase {
 
     func waitUntilAtlasAPIClientIsConfigured(actions: @escaping (_ done: @escaping () -> Void, _ api: AtlasAPI) -> Void) {
         waitUntil(timeout: 10) { done in
-            Atlas.configure(options: Options.forTests()) { result in
+            AtlasAPI.configure(options: Options.forTests()) { result in
                 switch result {
                 case .failure(let error):
                     fail(String(describing: error))

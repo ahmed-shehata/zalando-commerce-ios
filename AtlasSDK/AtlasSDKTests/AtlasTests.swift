@@ -25,7 +25,7 @@ class AtlasTests: XCTestCase {
 
     override func setUp() {
         waitUntil(timeout: 60) { done in
-            Atlas.configure(options: Options.forTests()) { result in
+            AtlasAPI.configure(options: Options.forTests()) { result in
                 switch result {
                 case .failure(let error):
                     fail(String(describing: error))
@@ -49,7 +49,7 @@ class AtlasTests: XCTestCase {
 
     func testAuthorizeAnotherClient() {
         waitUntil(timeout: 60) { done in
-            Atlas.configure(options: Options.forTests(useSandboxEnvironment: false)) { result in
+            AtlasAPI.configure(options: Options.forTests(useSandboxEnvironment: false)) { result in
                 switch result {
                 case .failure(let error):
                     fail(String(describing: error))

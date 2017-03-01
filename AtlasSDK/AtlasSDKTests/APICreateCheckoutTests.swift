@@ -21,8 +21,8 @@ class APICreateCheckoutTests: AtlasAPIClientBaseTests {
                     fail(String(describing: error))
                 case .success(let article):
                     let firstSimpleSKU = article.units.first!.id
-                    let skuQuantity = (sku: firstSimpleSKU, quantity: 1)
-                    api.createCheckoutCart(for: skuQuantity) { result in
+                    let cartItemRequest = CartItemRequest(sku: firstSimpleSKU, quantity: 1)
+                    api.createCartCheckout(with: cartItemRequest) { result in
                         switch result {
                         case .failure(let error):
                             fail(String(describing: error))
