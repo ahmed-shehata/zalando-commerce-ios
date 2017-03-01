@@ -3,7 +3,6 @@
 //
 
 import Foundation
-import UIKit
 
 // TODO: document it, please...
 
@@ -34,7 +33,7 @@ extension AtlasAPI {
     }
 
     /*
-    <#Description#>
+    Creates `Cart` and following it `Checkout` with handling specific cases
     
     - Parameters:
       - cartItemRequest: <#cartItemRequest description#>
@@ -124,11 +123,6 @@ extension AtlasAPI {
             }
         }
         client.fetch(from: endpoint, completion: fetchCompletion)
-    }
-
-    public func recommendations(forSKU sku: ConfigSKU, completion: @escaping APIResultCompletion<[Recommendation]>) {
-        let endpoint = GetArticleRecommendationsEndpoint(config: config, sku: sku)
-        client.fetch(from: endpoint, completion: completion)
     }
 
     public func addresses(completion: @escaping APIResultCompletion<[UserAddress]>) {
