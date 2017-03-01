@@ -111,6 +111,11 @@ extension AtlasAPI {
         client.fetch(from: endpoint, completion: completion)
     }
 
+    public func recommendations(forSKU sku: ConfigSKU, completion: @escaping APIResultCompletion<[Recommendation]>) {
+        let endpoint = GetArticleRecommendationsEndpoint(config: config, sku: sku)
+        client.fetch(from: endpoint, completion: completion)
+    }
+
     public func article(with sku: ConfigSKU,
                         completion: @escaping APIResultCompletion<Article>) {
         let endpoint = GetArticleEndpoint(config: config, sku: sku)

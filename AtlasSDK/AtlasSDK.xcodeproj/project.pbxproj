@@ -94,6 +94,7 @@
 		8159D24C1E67077E0096F321 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8159D24A1E67077E0096F321 /* Media.swift */; };
 		8159D24E1E6708020096F321 /* OrderConfirmation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8159D24D1E6708020096F321 /* OrderConfirmation.swift */; };
 		8159D2571E67088D0096F321 /* Recommendation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8159D2561E67088D0096F321 /* Recommendation.swift */; };
+		8159D25B1E67099A0096F321 /* GetArticleRecommendationsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8159D25A1E67099A0096F321 /* GetArticleRecommendationsEndpoint.swift */; };
 		8387789B675CAC41D88C59F7CD9A49D5 /* CartRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C37D256F81316476AD1BB1CFB1D350D /* CartRequest.swift */; };
 		871861043470F7B6A72F34B73CC67714 /* GuestPaymentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B69DF001037C24E6BD4E0B378BFC01 /* GuestPaymentRequest.swift */; };
 		89249A1EFD86FFC8B561A9F9DF7EC2F7 /* JSONDatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7861F68B638F59C599C7CF6F6C14DF37 /* JSONDatesTests.swift */; };
@@ -273,6 +274,7 @@
 		8159D24A1E67077E0096F321 /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		8159D24D1E6708020096F321 /* OrderConfirmation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmation.swift; sourceTree = "<group>"; };
 		8159D2561E67088D0096F321 /* Recommendation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recommendation.swift; sourceTree = "<group>"; };
+		8159D25A1E67099A0096F321 /* GetArticleRecommendationsEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetArticleRecommendationsEndpoint.swift; sourceTree = "<group>"; };
 		82119333485AE6ED25549E0A742C1190 /* APIAccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIAccessToken.swift; sourceTree = "<group>"; };
 		87E0CBDAE3A5B1288455C6E176B852B6 /* APICartTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APICartTests.swift; path = AtlasSDKTests/APICartTests.swift; sourceTree = SOURCE_ROOT; };
 		8804A49A711E3E291A3634007CA610A0 /* JSONSubscript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONSubscript.swift; sourceTree = "<group>"; };
@@ -449,6 +451,7 @@
 				26AB725F554DA56411A3B5D67010F273 /* CreateOrderEndpoint.swift */,
 				4925DB568F4726E5E5D37663419677B8 /* DeleteAddressEndpoint.swift */,
 				8159D2471E67074B0096F321 /* GetArticleEndpoint.swift */,
+				8159D25A1E67099A0096F321 /* GetArticleRecommendationsEndpoint.swift */,
 				4CC775974D2C7BEE823393C249A83E19 /* GetAddressesEndpoint.swift */,
 				01B7AA4A1026DDF24004CE7F0E355625 /* GetConfigEndpoint.swift */,
 				5DF2B069D3C5A9A37A7DE2D0527356AA /* GetCustomerEndpoint.swift */,
@@ -1004,6 +1007,7 @@
 				B55E11C43D7FE5324EFC07547FE440BF /* ConfigurableEndpoint.swift in Sources */,
 				240228124E25E1CCE455B8FD3E3F9A92 /* Order.swift in Sources */,
 				DD13DE18E8535DE1DE2F8C486CEC3486 /* CreateAddressEndpoint.swift in Sources */,
+				8159D25B1E67099A0096F321 /* GetArticleRecommendationsEndpoint.swift in Sources */,
 				A0EFD6474DCE215941273DBFE9FB064B /* OrderAddress.swift in Sources */,
 				B8419F217F076553054D230EEFF60341 /* OrderRequest.swift in Sources */,
 				63BD6D5AB647CD11815ABCDCD2724601 /* Payment.swift in Sources */,
