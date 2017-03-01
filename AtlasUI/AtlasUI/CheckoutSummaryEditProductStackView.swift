@@ -24,6 +24,7 @@ class CheckoutSummaryEditProductStackView: UIStackView {
         let button = UIButton(type: .custom)
         button.setTitleColor(UIColor(hex: 0x848484), for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 10, weight: UIFontWeightLight)
+        button.setImage(UIImage(named: "arrow_down", bundledWith: CheckoutSummaryEditProductStackView.self), for: .normal)
         return button
     }()
 
@@ -38,6 +39,7 @@ class CheckoutSummaryEditProductStackView: UIStackView {
         let button = UIButton(type: .custom)
         button.setTitleColor(UIColor(hex: 0x848484), for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 10, weight: UIFontWeightLight)
+        button.setImage(UIImage(named: "arrow_down", bundledWith: CheckoutSummaryEditProductStackView.self), for: .normal)
         return button
     }()
 
