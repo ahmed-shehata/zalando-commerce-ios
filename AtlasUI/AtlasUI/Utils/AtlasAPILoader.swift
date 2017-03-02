@@ -132,10 +132,10 @@ extension AtlasAPI {
             }
         }
 
-        static func deleteAddress(with addressId: AddressId,
-                                  completion: @escaping APIResultCompletion<Bool>) {
+        static func delete(_ address: EquatableAddress,
+                           completion: @escaping APIResultCompletion<Bool>) {
             AtlasUIViewController.displayLoader { hideLoader in
-                AtlasAPI.shared?.deleteAddress(with: addressId) { result in
+                AtlasAPI.shared?.delete(address) { result in
                     hideLoader()
                     completion(result)
                 }

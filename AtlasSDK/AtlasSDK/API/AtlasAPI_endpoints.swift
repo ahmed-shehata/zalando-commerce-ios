@@ -14,7 +14,6 @@ extension AtlasAPI {
      - Parameters:
        - sku: SKU of an article to fetch
        - completion: completes async with `APIResult.success` with `Article`
-    
      */
     public func article(with sku: ConfigSKU,
                         completion: @escaping APIResultCompletion<Article>) {
@@ -157,12 +156,14 @@ extension AtlasAPI {
     }
 
     /**
-     Retrieves `URL` containing web page handling payment process
+     Retrieves `URL` containing web page handling payment process.
+     
+     - Note: The result `URL` should be passed to a web view, and the response returned
+       should be parsed using `PaymentStatus`.
 
      - Parameters:
-       - request: <#request description#>
-       - completion: <#completion description#>
-    
+       - request: request containing all the data needed by Guest Checkout
+       - completion: completes async with `APIResult.success` with `URL`.
      */
     public func guestCheckoutPaymentSelectionURL(request: GuestPaymentSelectionRequest,
                                                  completion: @escaping APIResultCompletion<URL>) {
@@ -183,14 +184,27 @@ extension AtlasAPI {
         client.fetch(from: endpoint, completion: completion)
     }
 
+    /**
+     Fetches list of `UserAddress` containing all customer's addresses available for both
+     shipping and billing.
+    
+     - Parameter completion: completes async with `APIResult.success` with `[UserAddress]`
+     */
     public func addresses(completion: @escaping APIResultCompletion<[UserAddress]>) {
         let endpoint = GetAddressesEndpoint(config: config)
         client.fetch(from: endpoint, completion: completion)
     }
 
-    public func deleteAddress(with addressId: AddressId,
-                              completion: @escaping APIResultCompletion<Bool>) {
-        let endpoint = DeleteAddressEndpoint(config: config, addressId: addressId)
+    /**
+     Deletes given `EquatableAddress` from customer's address book.
+    
+     - Parameters:
+       - address: `EquatableAddress` to be removed.
+       - completion: completion: completes async with `APIResult.success` with success status.
+     */
+    public func delete(_ address: EquatableAddress,
+                       completion: @escaping APIResultCompletion<Bool>) {
+        let endpoint = DeleteAddressEndpoint(config: config, addressId: address.id)
         client.touch(endpoint: endpoint, completion: completion)
     }
 
@@ -213,7 +227,8 @@ extension AtlasAPI {
         client.fetch(from: endpoint, completion: completion)
     }
 
-    public func recommendations(forSKU sku: ConfigSKU, completion: @escaping APIResultCompletion<[Recommendation]>) {
+    public func recommendations(forSKU sku: ConfigSKU,
+                                completion: @escaping APIResultCompletion<[Recommendation]>) {
         let endpoint = GetArticleRecommendationsEndpoint(config: config, sku: sku)
         client.fetch(from: endpoint, completion: completion)
     }
