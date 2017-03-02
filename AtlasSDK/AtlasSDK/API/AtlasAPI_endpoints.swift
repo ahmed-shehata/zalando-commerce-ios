@@ -1,5 +1,5 @@
 //
-//  Copyright © 2017 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
@@ -22,9 +22,9 @@ extension AtlasAPI {
      Creates `Cart` with given `CartItemRequest` items.
 
      - Parameters:
-         - cartItemRequests: list articles SKUs with quantities to be added to cart
-         - completion: `Result.success` with create `Cart` model.
-    */
+     - cartItemRequests: list articles SKUs with quantities to be added to cart
+     - completion: `Result.success` with create `Cart` model.
+     */
     public func createCart(with cartItemRequests: [CartItemRequest],
                            completion: @escaping APIResultCompletion<Cart>) {
         let parameters = CartRequest(items: cartItemRequests, replaceItems: true).toJSON()
@@ -33,13 +33,13 @@ extension AtlasAPI {
     }
 
     /*
-    Creates `Cart` and following it `Checkout` with handling specific cases
-    
-    - Parameters:
-      - cartItemRequest: <#cartItemRequest description#>
-      - addresses: <#addresses description#>
-      - completion: <#completion description#>
-    */
+     Creates `Cart` and following it `Checkout` with handling specific cases
+
+     - Parameters:
+     - cartItemRequest: <#cartItemRequest description#>
+     - addresses: <#addresses description#>
+     - completion: <#completion description#>
+     */
     public func createCartCheckout(with cartItemRequest: CartItemRequest,
                                    addresses: CheckoutAddresses? = nil,
                                    completion: @escaping APIResultCompletion<CartCheckout>) {

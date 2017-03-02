@@ -29,7 +29,7 @@ struct APIClient {
     }
 
     func fetch<Model: JSONInitializable>(from endpoint: Endpoint,
-                                         completion: @escaping APIResultCompletion<Model>) {
+               completion: @escaping APIResultCompletion<Model>) {
         call(endpoint: endpoint, completion: completion) { response in
             guard let json = response.body else { return nil }
             return Model(json: json)
@@ -37,7 +37,7 @@ struct APIClient {
     }
 
     func fetch<Model: JSONInitializable>(from endpoint: Endpoint,
-                                         completion: @escaping APIResultCompletion<[Model]>) {
+               completion: @escaping APIResultCompletion<[Model]>) {
         call(endpoint: endpoint, completion: completion) { response in
             guard let json = response.body else { return nil }
             return json.jsons.flatMap { Model(json: $0) }
@@ -55,8 +55,8 @@ struct APIClient {
     }
 
     fileprivate func call<T>(endpoint: Endpoint,
-                             completion: @escaping APIResultCompletion<T>,
-                             successHandler: @escaping (JSONResponse) -> T?) {
+                          completion: @escaping APIResultCompletion<T>,
+                          successHandler: @escaping (JSONResponse) -> T?) {
         let requestBuilder = RequestBuilder(forEndpoint: endpoint, urlSession: urlSession)
         var apiRequest = APIRequest(requestBuilder: requestBuilder, successHandler: successHandler)
         apiRequest.execute(append: completion)

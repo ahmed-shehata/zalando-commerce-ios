@@ -313,11 +313,11 @@ extension LoggedInSummaryActionHandler {
     fileprivate func updated(address: EquatableAddress) {
         if let shippingAddress = shippingAddress, shippingAddress == address,
             let billingAddress = billingAddress, billingAddress == address {
-                update(billingAddress: address, shippingAddress: address)
+            update(billingAddress: address, shippingAddress: address)
         } else if let shippingAddress = shippingAddress, shippingAddress == address {
-                update(shippingAddress: address)
+            update(shippingAddress: address)
         } else if let billingAddress = billingAddress, billingAddress == address {
-                update(billingAddress: address)
+            update(billingAddress: address)
         }
     }
 
