@@ -147,8 +147,7 @@
 		E65505C3FCACDEC23CC634675587F5F1 /* LoggedInAddressListActionHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B8053E0362F7064F15C167BC228236 /* LoggedInAddressListActionHandlerTests.swift */; };
 		B8C9F2BA1D0618F5EEFFCBA29C8B2633 /* PickupPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF96498AABA41A96E7CE16F46A4AE6A /* PickupPoint.swift */; };
 		E726441E020342505E0A3E67AB6E20CB /* Nimble.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 8398317FEC21A1E65AB06E3EF9B29A2B /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E8B9ED27AD36D32DCD40F061A102A387 /* URL-QueryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FEB9F822022119C7EEC519A0FBC70F /* URL-QueryItem.swift */; };
-		E96319121E686FF000DA1531 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96319111E686FF000DA1531 /* Array.swift */; };
+		167D4225758E9482C856D714F01B7ED4 /* URL-QueryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655EEA1A69547139C0BA2959018CB440 /* URL-QueryItem.swift */; };
 		EAE70A17AF64516886A337ACDE311218 /* AtlasAPILoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23BDCC4973FC078E005E01E358D2871 /* AtlasAPILoader.swift */; };
 		EB75C02F168E5760793FB67D444F417F /* URLComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D43F4684C0AB8E056B3EE9CD1A820F6 /* URLComponents.swift */; };
 		EBB0CE9B6F72CCBC101BCFD52F5E5993 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD2C09882EF82C93CC8615C9E0F59251 /* Default-568h@2x.png */; };
@@ -344,8 +343,7 @@
 		E0BDC6CE98A95B97CC118229EEFD00A0 /* CheckoutSummaryEditProductStackViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryEditProductStackViewTests.swift; sourceTree = "<group>"; };
 		E2644DB2E806C8F07CECE81835A0326C /* OAuth2LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2LoginViewController.swift; sourceTree = "<group>"; };
 		E272DADD96290ADDD55009F293229EAD /* FormValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValidatorTests.swift; sourceTree = "<group>"; };
-		E4A59A1AD107F8BD8B6165ADBA18AAC8 /* PickupPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickupPoint.swift; sourceTree = "<group>"; };
-		E96319111E686FF000DA1531 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		6CF96498AABA41A96E7CE16F46A4AE6A /* PickupPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickupPoint.swift; sourceTree = "<group>"; };
 		EB063447B26DE3D42F7736012B8921AA /* AddressListActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressListActionHandler.swift; sourceTree = "<group>"; };
 		EF7070CA16B437506F689E06349701B2 /* ReachabilityNotifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityNotifier.swift; sourceTree = "<group>"; };
 		A1695A1F23CEA708732AF66C77170FFC /* FormattableAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormattableAddress.swift; sourceTree = "<group>"; };
@@ -607,7 +605,7 @@
 		976E75BCFB88602D342C36B3D814A0F0 /* Commons */ = {
 			isa = PBXGroup;
 			children = (
-				E96319111E686FF000DA1531 /* Array.swift */,
+				FAA658EC2C638F53702BF9773D3F85C3 /* Array.swift */,
 				216653066F8E63F16F0FE5AB5004136F /* Bundle.swift */,
 				F372C8536BAE61C74929CA5DFCFF7B55 /* Debug.swift */,
 				3405164B5E8DAF2A8CDFDFB8849C40C9 /* HTTP.swift */,
@@ -1124,7 +1122,6 @@
 				56A9EA0E6021AD3E325EB7A94CB0EAB4 /* Typealiases.swift in Sources */,
 				16954EEE7CCDD0CE9815224EA8FF317E /* LoggedInCreateAddressActionHandler.swift in Sources */,
 				785BB77012B459FF3D0C9EB1585CC583 /* URLRequest.swift in Sources */,
-				E96319121E686FF000DA1531 /* Array.swift in Sources */,
 				546BE9B7EEFAC9AF8CDA82D115AAB5E0 /* AddressDataModelCreationStrategy.swift in Sources */,
 				5440F29601B89ECD4870C7BDC596ACD9 /* CheckoutSummaryOrderStackView.swift in Sources */,
 				50D0665E684FA0194A0933ECABB18F48 /* CheckoutSummaryGuestStackView.swift in Sources */,

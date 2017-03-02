@@ -13,6 +13,8 @@ extension Array {
         }
     }
 
+}
+
 extension Array where Element: Equatable {
 
     mutating func remove(item: Element) {
