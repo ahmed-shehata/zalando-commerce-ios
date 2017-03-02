@@ -60,7 +60,7 @@ struct SelectedArticle {
     }
 
     var totalOriginalPrice: Money {
-        let originalPrice = unit.price
+        let originalPrice = unit.originalPrice
         return Money(amount: originalPrice.amount * quantity, currency: originalPrice.currency)
     }
 
