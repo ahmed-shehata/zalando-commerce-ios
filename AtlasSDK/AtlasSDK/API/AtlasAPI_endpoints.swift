@@ -224,7 +224,7 @@ extension AtlasAPI {
      
      - Parameters:
          - address: `EquatableAddress` to be removed.
-         - completion: completion: completes async with `APIResult.success` with success status.
+         - completion: completes async with `APIResult.success` with success status.
      */
     public func delete(_ address: EquatableAddress,
                        completion: @escaping APIResultCompletion<Bool>) {
@@ -232,12 +232,26 @@ extension AtlasAPI {
         client.touch(endpoint: endpoint, completion: completion)
     }
 
+    /**
+     Verifies correctness of a given address
+    
+     - Parameters:
+       - request: address data
+       - completion: completes async with `APIResult.success` with `CheckAddressResponse`
+     */
     public func checkAddress(with request: CheckAddressRequest,
                              completion: @escaping APIResultCompletion<CheckAddressResponse>) {
         let endpoint = CheckAddressEndpoint(config: config, checkAddressRequest: request)
         client.fetch(from: endpoint, completion: completion)
     }
 
+    /**
+     Fetches recommendations for given article's SKU
+    
+     - Parameters:
+       - sku: article's identifier to on which recommendations are based (`Article.sku`)
+       - completion: completes async with `APIResult.success` with `[Recommendation]`
+     */
     public func recommendations(for sku: ConfigSKU,
                                 completion: @escaping APIResultCompletion<[Recommendation]>) {
         let endpoint = GetArticleRecommendationsEndpoint(config: config, sku: sku)
