@@ -12,16 +12,15 @@ extension AtlasAPI {
      When neither `Options` are passed or correct, nor `$INFOPLIST_FILE` contains required
      keys and values – `completion` retuns `Result.failure` with error returned from
      `Options.validate()`
-     
+
      Main entry point for the AtlasSDK framework.
 
      - Note: See [configuration](https://github.com/zalando-incubator/atlas-ios/wiki/Configuration)
      and [project structure](https://github.com/zalando-incubator/atlas-ios/wiki/Project-structure)
 
      - Parameters:
-     - options: Options for API client to be created. When `nil`, `$INFOPLIST_FILE` file of the app is used as configuration.
-     - completion: Fired when network configuration call is finished.
-     Containts `Result.success` with `AtlasAPI` or `Result.failure` with `Error` reason.
+         - options: Options for API client to be created. When `nil`, `$INFOPLIST_FILE` file of the app is used as configuration.
+         - completion: Fired when network configuration call is finished. Containts `Result.success` with `AtlasAPI` or `Result.failure` with `Error` reason.
      */
     public static func configure(options: Options? = nil, completion: @escaping ResultCompletion<AtlasAPI>) {
         let options = options ?? Options()

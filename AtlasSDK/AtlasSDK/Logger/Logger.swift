@@ -34,11 +34,11 @@ extension Logger {
      Logs a message constructed of `items` if logging level is `Logger.Severity.debug` only.
 
      - Parameters:
-     - items: items to print out
-     - verbose: flag to show details detailed information about function, file and line, where log was called
-     - function: function name, where function was called (don't use it, relies on `#function`)
-     - filePath: file name, where function was called (don't use it, relies on `#file`)
-     - fileLine: file line number name, where function was called (don't use it, relies on `#line`)
+         - items: items to print out
+         - verbose: flag to show details detailed information about function, file and line, where log was called
+         - function: function name, where function was called (don't use it, relies on `#function`)
+         - filePath: file name, where function was called (don't use it, relies on `#file`)
+         - fileLine: file line number name, where function was called (don't use it, relies on `#line`)
      */
     public static func debug(_ items: Any..., verbose: Bool? = nil,
                              function: String = #function, filePath: String = #file, fileLine: Int = #line) {
@@ -49,11 +49,11 @@ extension Logger {
      Logs a message constructed of `items` if logging level is `Logger.Severity.message` or `Logger.Severity.error`.
 
      - Parameters:
-     - items: items to print out
-     - verbose: flag to show details detailed information about function, file and line, where log was called
-     - function: function name, where function was called (don't use it, relies on `#function`)
-     - filePath: file name, where function was called (don't use it, relies on `#file`)
-     - fileLine: file line number name, where function was called (don't use it, relies on `#line`)
+         - items: items to print out
+         - verbose: flag to show details detailed information about function, file and line, where log was called
+         - function: function name, where function was called (don't use it, relies on `#function`)
+         - filePath: file name, where function was called (don't use it, relies on `#file`)
+         - fileLine: file line number name, where function was called (don't use it, relies on `#line`)
      */
     public static func message(_ items: Any..., verbose: Bool? = nil,
                                function: String = #function, filePath: String = #file, fileLine: Int = #line) {
@@ -65,11 +65,11 @@ extension Logger {
      `Logger.Severity.message`, `Logger.Severity.error`.
 
      - Parameters:
-     - items: items to print out
-     - verbose: flag to show details detailed information about function, file and line, where log was called
-     - function: function name, where function was called (don't use it, relies on `#function`)
-     - filePath: file name, where function was called (don't use it, relies on `#file`)
-     - fileLine: file line number name, where function was called (don't use it, relies on `#line`)
+         - items: items to print out
+         - verbose: flag to show details detailed information about function, file and line, where log was called
+         - function: function name, where function was called (don't use it, relies on `#function`)
+         - filePath: file name, where function was called (don't use it, relies on `#file`)
+         - fileLine: file line number name, where function was called (don't use it, relies on `#line`)
      */
     public static func error(_ items: Any..., verbose: Bool? = nil,
                              function: String = #function, filePath: String = #file, fileLine: Int = #line) {
