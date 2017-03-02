@@ -4,10 +4,12 @@
 
 import Foundation
 
+// TODO: document it, please...
+
 public struct GuestOrderRequest {
 
     public let checkoutId: CheckoutId
-    public let token: CheckoutToken
+    public let token: GuestCheckoutToken
 
     public init(checkoutId: String, token: String) {
         self.checkoutId = checkoutId

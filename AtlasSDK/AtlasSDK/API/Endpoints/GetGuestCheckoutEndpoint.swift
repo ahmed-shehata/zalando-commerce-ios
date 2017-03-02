@@ -10,6 +10,6 @@ struct GetGuestCheckoutEndpoint: CheckoutGatewayEndpoint {
     let acceptedContentType = "application/x.zalando.guest-checkout+json"
 
     let checkoutId: CheckoutId
-    let token: CheckoutToken
+    let token: GuestCheckoutToken
 
 }

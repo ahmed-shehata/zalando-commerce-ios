@@ -93,7 +93,7 @@ extension AtlasAPI {
             }
         }
 
-        static func guestCheckout(with checkoutId: CheckoutId, token: CheckoutToken,
+        static func guestCheckout(with checkoutId: CheckoutId, token: GuestCheckoutToken,
                                   completion: @escaping APIResultCompletion<GuestCheckout>) {
             AtlasUIViewController.displayLoader { hideLoader in
                 AtlasAPI.shared?.guestCheckout(with: checkoutId, token: token) { result in

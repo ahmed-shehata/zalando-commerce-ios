@@ -18,7 +18,7 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
         }
     }
     var checkoutId: CheckoutId?
-    var token: CheckoutToken?
+    var token: GuestCheckoutToken?
 
     init(email: String) {
         self.actionHandler.emailAddress = email
@@ -52,10 +52,10 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
             paymentViewController.paymentCompletion = { [weak self] paymentStatus in
                 switch paymentStatus {
                 case .guestRedirect(let encryptedCheckoutId, let encryptedToken):
-                    self?.getGuestCheckout(checkoutId: encryptedCheckoutId, token: encryptedToken)
+                    self?.getGuestCheckout(with: encryptedCheckoutId, token: encryptedToken)
                 case .redirect:
                     if let checkoutId = self?.checkoutId, let token = self?.token {
-                        self?.getGuestCheckout(checkoutId: checkoutId, token: token)
+                        self?.getGuestCheckout(with: checkoutId, token: token)
                     }
                 case .cancel:
                     break
@@ -165,10 +165,10 @@ extension GuestCheckoutSummaryActionHandler {
         let selectedSKU = dataSource.dataModel.selectedArticle.sku
         let cartItem = CartItemRequest(sku: selectedSKU, quantity: dataSource.dataModel.selectedArticle.quantity)
         let cart = GuestCartRequest(items: [cartItem])
-        let request = GuestPaymentSelectionRequest(customer: customer,
+        let request = GuestPaymentSelectionRequest(cart: cart,
+                                                   customer: customer,
                                                    shippingAddress: shippingGuestAddress,
-                                                   billingAddress: billingGuestAddress,
-                                                   cart: cart)
+                                                   billingAddress: billingGuestAddress)
         AtlasAPI.withLoader.guestCheckoutPaymentSelectionURL(request: request) { [weak self] result in
             guard let paymentURL = result.process() else { return }
             self?.paymentURL = paymentURL
@@ -189,7 +189,7 @@ extension GuestCheckoutSummaryActionHandler {
         token = nil
     }
 
-    fileprivate func getGuestCheckout(checkoutId: CheckoutId, token: CheckoutToken) {
+    fileprivate func getGuestCheckout(with checkoutId: CheckoutId, token: GuestCheckoutToken) {
         AtlasAPI.withLoader.guestCheckout(with: checkoutId, token: token) { [weak self] result in
             guard let guestCheckout = result.process() else { return }
             self?.guestCheckout = guestCheckout
