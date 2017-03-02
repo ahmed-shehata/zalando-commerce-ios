@@ -6,6 +6,8 @@ import Foundation
 
 /**
  Provides all functional API calls with their business logic.
+ 
+ Main entry point for the AtlasSDK framework.
 
  - Note: If not specified otherwise – all API calls require user to be
  logged in and accepted a consent. Otherwise `Result.failure` with

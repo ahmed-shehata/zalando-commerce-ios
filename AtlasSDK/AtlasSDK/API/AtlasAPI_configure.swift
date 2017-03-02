@@ -13,8 +13,6 @@ extension AtlasAPI {
      keys and values – `completion` retuns `Result.failure` with error returned from
      `Options.validate()`
 
-     Main entry point for the AtlasSDK framework.
-
      - Note: See [configuration](https://github.com/zalando-incubator/atlas-ios/wiki/Configuration)
      and [project structure](https://github.com/zalando-incubator/atlas-ios/wiki/Project-structure)
 
