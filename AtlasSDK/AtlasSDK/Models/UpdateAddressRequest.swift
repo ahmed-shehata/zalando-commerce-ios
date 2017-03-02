@@ -6,6 +6,8 @@ import Foundation
 
 public struct UpdateAddressRequest {
 
+    public let addressId: AddressId
+    
     public let gender: Gender
     public let firstName: String
     public let lastName: String

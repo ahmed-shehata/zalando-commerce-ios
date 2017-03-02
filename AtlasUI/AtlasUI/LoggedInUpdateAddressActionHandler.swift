@@ -23,13 +23,12 @@ struct LoggedInUpdateAddressActionHandler: AddressFormActionHandler {
             dataModel.update(from: selectedAddress)
             self.delegate?.updateView(with: dataModel)
 
-            guard let addressId = dataModel.addressId,
-                let request = UpdateAddressRequest(dataModel: dataModel) else {
-                    self.delegate?.addressProcessingFinished()
-                    return
+            guard let request = UpdateAddressRequest(dataModel: dataModel) else {
+                self.delegate?.addressProcessingFinished()
+                return
             }
 
-            AtlasAPI.withLoader.updateAddress(with: addressId, request: request) { result in
+            AtlasAPI.withLoader.updateAddress(with: request) { result in
                 guard let address = result.process() else {
                     self.delegate?.addressProcessingFinished()
                     return
@@ -45,13 +44,16 @@ struct LoggedInUpdateAddressActionHandler: AddressFormActionHandler {
 extension UpdateAddressRequest {
 
     init?(dataModel: AddressFormDataModel) {
-        guard let gender = dataModel.gender,
+        guard let addressId = dataModel.addressId,
+            let gender = dataModel.gender,
             let firstName = dataModel.firstName,
             let lastName = dataModel.lastName,
             let zip = dataModel.zip,
             let city = dataModel.city,
             let countryCode = dataModel.countryCode
             else { return nil }
+
+        self.addressId = addressId
 
         self.gender = gender
         self.firstName = firstName

@@ -58,7 +58,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
             self?.cartCheckout = cartCheckout
 
             if dataSource.dataModel.isPaymentSelected && self?.dataModelDisplayedError == nil {
-                AtlasAPI.withLoader.createOrder(from: checkout.id) { result in
+                AtlasAPI.withLoader.createOrder(from: checkout) { result in
                     guard let order = result.process() else { return }
                     self?.handleConfirmation(forOrder: order)
                 }

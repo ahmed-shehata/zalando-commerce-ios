@@ -63,10 +63,10 @@ extension AtlasAPI {
             }
         }
 
-        static func createOrder(from checkoutId: CheckoutId,
+        static func createOrder(from checkout: Checkout,
                                 completion: @escaping APIResultCompletion<Order>) {
             AtlasUIViewController.displayLoader { hideLoader in
-                AtlasAPI.shared?.createOrder(from: checkoutId) { result in
+                AtlasAPI.shared?.createOrder(from: checkout) { result in
                     hideLoader()
                     completion(result)
                 }
@@ -142,7 +142,7 @@ extension AtlasAPI {
             }
         }
 
-        static func createAddress(_ request: CreateAddressRequest,
+        static func createAddress(with request: CreateAddressRequest,
                                   completion: @escaping APIResultCompletion<UserAddress>) {
             AtlasUIViewController.displayLoader { hideLoader in
                 AtlasAPI.shared?.createAddress(with: request) { result in
@@ -152,11 +152,10 @@ extension AtlasAPI {
             }
         }
 
-        static func updateAddress(with addressId: AddressId,
-                                  request: UpdateAddressRequest,
+        static func updateAddress(with request: UpdateAddressRequest,
                                   completion: @escaping APIResultCompletion<UserAddress>) {
             AtlasUIViewController.displayLoader { hideLoader in
-                AtlasAPI.shared?.updateAddress(with: addressId, request: request) { result in
+                AtlasAPI.shared?.updateAddress(with: request) { result in
                     hideLoader()
                     completion(result)
                 }

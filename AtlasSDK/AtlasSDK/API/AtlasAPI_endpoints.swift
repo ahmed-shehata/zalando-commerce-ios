@@ -133,10 +133,10 @@ extension AtlasAPI {
        - checkoutId: identifier of a checkout (`Checkout.id`)
        - completion: completes async with `APIResult.success` with `Order`.
      */
-    public func createOrder(from checkoutId: CheckoutId,
+    public func createOrder(from checkout: Checkout,
                             completion: @escaping APIResultCompletion<Order>) {
-        let parameters = OrderRequest(checkoutId: checkoutId).toJSON()
-        let endpoint = CreateOrderEndpoint(config: config, parameters: parameters, checkoutId: checkoutId)
+        let parameters = OrderRequest(checkout: checkout).toJSON()
+        let endpoint = CreateOrderEndpoint(config: config, parameters: parameters)
         client.fetch(from: endpoint, completion: completion)
     }
 
@@ -214,10 +214,11 @@ extension AtlasAPI {
         client.fetch(from: endpoint, completion: completion)
     }
 
-    public func updateAddress(with addressId: AddressId,
-                              request: UpdateAddressRequest,
+    public func updateAddress(with request: UpdateAddressRequest,
                               completion: @escaping APIResultCompletion<UserAddress>) {
-        let endpoint = UpdateAddressEndpoint(config: config, addressId: addressId, updateAddressRequest: request)
+        let endpoint = UpdateAddressEndpoint(config: config,
+                                             addressId: request.addressId,
+                                             updateAddressRequest: request)
         client.fetch(from: endpoint, completion: completion)
     }
 
