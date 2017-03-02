@@ -16,6 +16,7 @@ public struct Config {
     public let clientId: String
     public let useSandboxEnvironment: Bool
     public let guestCheckoutEnabled: Bool
+    public let displayRecommendations: Bool
 
     public let payment: Payment
     public let salesChannel: SalesChannel
@@ -80,14 +81,15 @@ extension Config {
         self.salesChannel = salesChannel
         self.guestCheckoutEnabled = json["atlas-guest-checkout-api", "enabled"].bool ?? false
 
-        self.clientId = options.clientId
-        self.useSandboxEnvironment = options.useSandboxEnvironment
         if let interfaceLanguage = options.interfaceLanguage {
             self.interfaceLocale = Locale(identifier: "\(interfaceLanguage)_\(salesChannel.countryCode)")
         } else {
             self.interfaceLocale = salesChannel.locale
         }
 
+        self.clientId = options.clientId
+        self.useSandboxEnvironment = options.useSandboxEnvironment
+        self.displayRecommendations = options.displayRecommendations
     }
 
 }
@@ -105,6 +107,7 @@ extension Config: CustomStringConvertible {
             + ", interfaceLocale: \(self.interfaceLocale.identifier)"
             + ", useSandboxEnvironment: \(self.useSandboxEnvironment)"
             + ", guestCheckoutEnabled: \(self.guestCheckoutEnabled)"
+            + ", displayRecommendations: \(self.displayRecommendations)"
             + " }"
     }
 
@@ -112,7 +115,7 @@ extension Config: CustomStringConvertible {
 
 extension Config.SalesChannel: JSONInitializable {
 
-    init?(json: JSON) {
+        init?(json: JSON) {
         guard let identifier = json["sales-channel"].string,
             let localeIdentifier = json["locale"].string,
             let tocURL = json["toc_url"].url
