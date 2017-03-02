@@ -1,5 +1,5 @@
 //
-//  Copyright © 2017 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import UIKit
@@ -118,10 +118,11 @@ extension CheckoutSummaryArticleSelectCollectionViewCell {
             valueLabel.text = unit.size
             priceLabel.attributedText = priceAttributedString(price: unit.price, originalPrice: unit.originalPrice, style: style)
         case .quantity:
-            let selectedQuantity = idx + 1
-            valueLabel.text = "\(selectedQuantity)"
-            priceLabel.attributedText = priceAttributedString(price: selectedArticle.totalPrice,
-                                                              originalPrice: selectedArticle.totalOriginalPrice,
+            let presentedQuantity = idx + 1
+            let presentedArticle = SelectedArticle(changeQuantity: presentedQuantity, from: selectedArticle)
+            valueLabel.text = "\(presentedQuantity)"
+            priceLabel.attributedText = priceAttributedString(price: presentedArticle.totalPrice,
+                                                              originalPrice: presentedArticle.totalOriginalPrice,
                                                               style: style)
         }
 

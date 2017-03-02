@@ -12,7 +12,7 @@ import Foundation
  - `Logger.Severity.debug` (default when compiled with`$DEBUG`)
  - `Logger.Severity.message`
  - `Logger.Severity.error` (default in _Release_ mode)
-*/
+ */
 public struct Logger {
 
     enum Severity: Int {

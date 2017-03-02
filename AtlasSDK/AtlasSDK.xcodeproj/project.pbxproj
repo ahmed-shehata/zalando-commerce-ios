@@ -81,19 +81,20 @@
 		7D9992E58F4E287BC6EE7AD30338862F /* FormattableAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A2E3D95B370914C7B19A3B81E80190 /* FormattableAddress.swift */; };
 		7FA480C61E43BF7DB2304C5358FED2D3 /* SKUTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC81C5B65FBB101428E48B21872C1121 /* SKUTest.swift */; };
 		811AA1F682BDEBB36FAA84B0921AEFBE /* GuestAddressRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0245341CC5B1CB0CF50BF8ACC958B65F /* GuestAddressRequest.swift */; };
-		8159D2371E66DFB40096F321 /* AtlasAPI_endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8159D2361E66DFB40096F321 /* AtlasAPI_endpoints.swift */; };
-		8159D23B1E66DFEF0096F321 /* AtlasAPI_authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8159D2381E66DFEF0096F321 /* AtlasAPI_authorization.swift */; };
-		8159D23C1E66DFEF0096F321 /* AtlasAPI_configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8159D2391E66DFEF0096F321 /* AtlasAPI_configure.swift */; };
-		8159D23D1E66DFEF0096F321 /* AtlasAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8159D23A1E66DFEF0096F321 /* AtlasAPI.swift */; };
-		8159D23F1E66E03C0096F321 /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8159D23E1E66E03C0096F321 /* Options.swift */; };
-		8159D2441E66E0C90096F321 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8159D2411E66E0C90096F321 /* Logger.swift */; };
-		8159D2451E66E0C90096F321 /* OutputStreams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8159D2421E66E0C90096F321 /* OutputStreams.swift */; };
-		8159D2461E66E0C90096F321 /* PrintLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8159D2431E66E0C90096F321 /* PrintLogger.swift */; };
-		8159D2481E67074B0096F321 /* GetArticleEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8159D2471E67074B0096F321 /* GetArticleEndpoint.swift */; };
-		8159D24B1E67077E0096F321 /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8159D2491E67077E0096F321 /* Brand.swift */; };
-		8159D24C1E67077E0096F321 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8159D24A1E67077E0096F321 /* Media.swift */; };
-		8159D24E1E6708020096F321 /* OrderConfirmation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8159D24D1E6708020096F321 /* OrderConfirmation.swift */; };
-		8159D2571E67088D0096F321 /* Recommendation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8159D2561E67088D0096F321 /* Recommendation.swift */; };
+		F00FD01496BD100C1D9E20FEC578093A /* AtlasAPI_endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C86509237C71A7A7E79806C0198C64 /* AtlasAPI_endpoints.swift */; };
+		2402ED0BDCFC110413E83DABDC776085 /* AtlasAPI_authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AB8E73CFCD434C03A56BE7811DEA65 /* AtlasAPI_authorization.swift */; };
+		FDA187EB948C3415A7642E5C162FAA5D /* AtlasAPI_configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5803AE41095D4407A50795CDF603FCC /* AtlasAPI_configure.swift */; };
+		00DDF79C5F2EA8A83349C1C45E2F5A67 /* AtlasAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA3C21AB550D6D2D184F0A4F90A9593 /* AtlasAPI.swift */; };
+		BDD29DDEE4163BE442BA0FED2229C7B9 /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0FDF5B6BFC312589E0F7F5D578B8AD /* Options.swift */; };
+		C97FDA428DD10A02B604098846CA1431 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702A2FD80899800D6B9E430BF468FC8B /* Logger.swift */; };
+		2355ED486BA2B486D32DEC1BE170D4F4 /* OutputStreams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676768CF421365F56E0325D156E2F301 /* OutputStreams.swift */; };
+		F70180EA1E7AC55161F0A0F5BC256BA1 /* PrintLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2EC7664BF1A5A912208A3602C7CB54 /* PrintLogger.swift */; };
+		319C8892EF75F743FB6BC5BAB278ECBA /* GetArticleEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60901C59AEE6F40EF54A35763F5E2CA0 /* GetArticleEndpoint.swift */; };
+		A0AD0F403E3AF7D1035336D0098FB5F9 /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = A075C77946E59051D3167374A5E7078C /* Brand.swift */; };
+		ACCD79D9C4D9FB3D5EE8109A07679A3C /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99B5523444D2EE8AC1B5397A54086A /* Media.swift */; };
+		3C945BDC8B10E80ECCEFC959EAEFD67C /* OrderConfirmation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D98B1E3339324EA4128B85796DB18C /* OrderConfirmation.swift */; };
+		8C98093B61671563577C255FDA452AEA /* Recommendation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7147DEA2A8A6D75965491B0D3F813B /* Recommendation.swift */; };
+		EC2F6D79BBBB87853DF7FC12A809D2A9 /* GetArticleRecommendationsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D923DA782F1BC91867B0595643E8F053 /* GetArticleRecommendationsEndpoint.swift */; };
 		8387789B675CAC41D88C59F7CD9A49D5 /* CartRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C37D256F81316476AD1BB1CFB1D350D /* CartRequest.swift */; };
 		871861043470F7B6A72F34B73CC67714 /* GuestPaymentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B69DF001037C24E6BD4E0B378BFC01 /* GuestPaymentRequest.swift */; };
 		89249A1EFD86FFC8B561A9F9DF7EC2F7 /* JSONDatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7861F68B638F59C599C7CF6F6C14DF37 /* JSONDatesTests.swift */; };
@@ -260,19 +261,20 @@
 		7F0BE803899C3D74C2D91BD1B5545B2F /* URLComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLComponents.swift; sourceTree = "<group>"; };
 		80A20F90F85243250BFBE7AB2A1E14CC /* APICreateCheckoutTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APICreateCheckoutTests.swift; path = AtlasSDKTests/APICreateCheckoutTests.swift; sourceTree = SOURCE_ROOT; };
 		80A87FB76A9759970AB11BB04A6CBDDD /* UpdateAddressEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateAddressEndpoint.swift; sourceTree = "<group>"; };
-		8159D2361E66DFB40096F321 /* AtlasAPI_endpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasAPI_endpoints.swift; sourceTree = "<group>"; };
-		8159D2381E66DFEF0096F321 /* AtlasAPI_authorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasAPI_authorization.swift; sourceTree = "<group>"; };
-		8159D2391E66DFEF0096F321 /* AtlasAPI_configure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasAPI_configure.swift; sourceTree = "<group>"; };
-		8159D23A1E66DFEF0096F321 /* AtlasAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasAPI.swift; sourceTree = "<group>"; };
-		8159D23E1E66E03C0096F321 /* Options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
-		8159D2411E66E0C90096F321 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		8159D2421E66E0C90096F321 /* OutputStreams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutputStreams.swift; sourceTree = "<group>"; };
-		8159D2431E66E0C90096F321 /* PrintLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintLogger.swift; sourceTree = "<group>"; };
-		8159D2471E67074B0096F321 /* GetArticleEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetArticleEndpoint.swift; sourceTree = "<group>"; };
-		8159D2491E67077E0096F321 /* Brand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
-		8159D24A1E67077E0096F321 /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
-		8159D24D1E6708020096F321 /* OrderConfirmation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmation.swift; sourceTree = "<group>"; };
-		8159D2561E67088D0096F321 /* Recommendation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recommendation.swift; sourceTree = "<group>"; };
+		C3C86509237C71A7A7E79806C0198C64 /* AtlasAPI_endpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasAPI_endpoints.swift; sourceTree = "<group>"; };
+		82AB8E73CFCD434C03A56BE7811DEA65 /* AtlasAPI_authorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasAPI_authorization.swift; sourceTree = "<group>"; };
+		E5803AE41095D4407A50795CDF603FCC /* AtlasAPI_configure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasAPI_configure.swift; sourceTree = "<group>"; };
+		4AA3C21AB550D6D2D184F0A4F90A9593 /* AtlasAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasAPI.swift; sourceTree = "<group>"; };
+		6F0FDF5B6BFC312589E0F7F5D578B8AD /* Options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
+		702A2FD80899800D6B9E430BF468FC8B /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		676768CF421365F56E0325D156E2F301 /* OutputStreams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutputStreams.swift; sourceTree = "<group>"; };
+		3D2EC7664BF1A5A912208A3602C7CB54 /* PrintLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintLogger.swift; sourceTree = "<group>"; };
+		60901C59AEE6F40EF54A35763F5E2CA0 /* GetArticleEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetArticleEndpoint.swift; sourceTree = "<group>"; };
+		A075C77946E59051D3167374A5E7078C /* Brand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
+		DA99B5523444D2EE8AC1B5397A54086A /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
+		98D98B1E3339324EA4128B85796DB18C /* OrderConfirmation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmation.swift; sourceTree = "<group>"; };
+		DA7147DEA2A8A6D75965491B0D3F813B /* Recommendation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recommendation.swift; sourceTree = "<group>"; };
+		D923DA782F1BC91867B0595643E8F053 /* GetArticleRecommendationsEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetArticleRecommendationsEndpoint.swift; sourceTree = "<group>"; };
 		82119333485AE6ED25549E0A742C1190 /* APIAccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIAccessToken.swift; sourceTree = "<group>"; };
 		87E0CBDAE3A5B1288455C6E176B852B6 /* APICartTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APICartTests.swift; path = AtlasSDKTests/APICartTests.swift; sourceTree = SOURCE_ROOT; };
 		8804A49A711E3E291A3634007CA610A0 /* JSONSubscript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONSubscript.swift; sourceTree = "<group>"; };
@@ -448,7 +450,8 @@
 				2CF7D5BE1946026F4EC6170B29C69347 /* CreateGuestOrderEndpoint.swift */,
 				26AB725F554DA56411A3B5D67010F273 /* CreateOrderEndpoint.swift */,
 				4925DB568F4726E5E5D37663419677B8 /* DeleteAddressEndpoint.swift */,
-				8159D2471E67074B0096F321 /* GetArticleEndpoint.swift */,
+				60901C59AEE6F40EF54A35763F5E2CA0 /* GetArticleEndpoint.swift */,
+				D923DA782F1BC91867B0595643E8F053 /* GetArticleRecommendationsEndpoint.swift */,
 				4CC775974D2C7BEE823393C249A83E19 /* GetAddressesEndpoint.swift */,
 				01B7AA4A1026DDF24004CE7F0E355625 /* GetConfigEndpoint.swift */,
 				5DF2B069D3C5A9A37A7DE2D0527356AA /* GetCustomerEndpoint.swift */,
@@ -471,7 +474,7 @@
 			isa = PBXGroup;
 			children = (
 				7B7EAD5A362AC36F1013606E9A87F75E /* Commons */,
-				8159D2401E66E0C90096F321 /* Logger */,
+				A419C43DE56B972457BCE3C26CD03FA0 /* Logger */,
 				7C6596B8FC8CC7FAB7F3E260BCD050AC /* API */,
 				4E2A11B7EBC8E4EEA0457E1D93E0A1F0 /* JSON */,
 				763A6645A072E811EFADC02074D72E7B /* Models */,
@@ -496,8 +499,8 @@
 				12B6E63D1A13BD44FBA93809D684A166 /* Payment */,
 				F52B1BDDBB0AAA8B723B78601817791D /* Order */,
 				5ADBF1E8B3FDBFAAE434240E7212C5FF /* Article.swift */,
-				8159D2491E67077E0096F321 /* Brand.swift */,
-				8159D24A1E67077E0096F321 /* Media.swift */,
+				A075C77946E59051D3167374A5E7078C /* Brand.swift */,
+				DA99B5523444D2EE8AC1B5397A54086A /* Media.swift */,
 				5122324D4A85204EB38F54BF29FEB024 /* Catalog.swift */,
 				F5F8397816D421255C10AE0737FAAA41 /* Config.swift */,
 				CA70871321348430C46B108ED24D0827 /* Customer.swift */,
@@ -505,12 +508,12 @@
 				747A73447DC8ACA0F246CCD8C6D0B513 /* Gender.swift */,
 				15D788B8AFA05BF3BB7559752D777933 /* Money.swift */,
 				7CDE9B266DF0DAFAF1BB3ED0A00D2609 /* Order.swift */,
-				8159D24D1E6708020096F321 /* OrderConfirmation.swift */,
+				98D98B1E3339324EA4128B85796DB18C /* OrderConfirmation.swift */,
 				A04E7980997323086729450F65FEEF1D /* Payment.swift */,
 				F6CF52ED3F20B2F59D5E6096E498A18B /* PaymentMethod.swift */,
 				1F74E6F0CBCE6D7E27184F239E9438F9 /* PickupPoint.swift */,
 				76F8647251682173E489D77B55EB0097 /* PaymentMethodType.swift */,
-				8159D2561E67088D0096F321 /* Recommendation.swift */,
+				DA7147DEA2A8A6D75965491B0D3F813B /* Recommendation.swift */,
 				9714951FDF30A6E73B76FEDF02064493 /* SKU.swift */,
 			);
 			name = Models;
@@ -538,7 +541,7 @@
 		7C6596B8FC8CC7FAB7F3E260BCD050AC /* API */ = {
 			isa = PBXGroup;
 			children = (
-				8159D2351E66DF4A0096F321 /* AtlasAPI */,
+				334FBF6A404062610EE6252383520AF5 /* AtlasAPI */,
 				5A910BBAE45243380D7B5D966809271F /* Endpoints */,
 				82119333485AE6ED25549E0A742C1190 /* APIAccessToken.swift */,
 				1DF97F26C9E21DF37C322657F1000F09 /* APIRequest.swift */,
@@ -552,24 +555,24 @@
 			path = AtlasSDK/API;
 			sourceTree = SOURCE_ROOT;
 		};
-		8159D2351E66DF4A0096F321 /* AtlasAPI */ = {
+		334FBF6A404062610EE6252383520AF5 /* AtlasAPI */ = {
 			isa = PBXGroup;
 			children = (
-				8159D23A1E66DFEF0096F321 /* AtlasAPI.swift */,
-				8159D2391E66DFEF0096F321 /* AtlasAPI_configure.swift */,
-				8159D2381E66DFEF0096F321 /* AtlasAPI_authorization.swift */,
-				8159D2361E66DFB40096F321 /* AtlasAPI_endpoints.swift */,
-				8159D23E1E66E03C0096F321 /* Options.swift */,
+				4AA3C21AB550D6D2D184F0A4F90A9593 /* AtlasAPI.swift */,
+				E5803AE41095D4407A50795CDF603FCC /* AtlasAPI_configure.swift */,
+				82AB8E73CFCD434C03A56BE7811DEA65 /* AtlasAPI_authorization.swift */,
+				C3C86509237C71A7A7E79806C0198C64 /* AtlasAPI_endpoints.swift */,
+				6F0FDF5B6BFC312589E0F7F5D578B8AD /* Options.swift */,
 			);
 			name = AtlasAPI;
 			sourceTree = "<group>";
 		};
-		8159D2401E66E0C90096F321 /* Logger */ = {
+		A419C43DE56B972457BCE3C26CD03FA0 /* Logger */ = {
 			isa = PBXGroup;
 			children = (
-				8159D2411E66E0C90096F321 /* Logger.swift */,
-				8159D2421E66E0C90096F321 /* OutputStreams.swift */,
-				8159D2431E66E0C90096F321 /* PrintLogger.swift */,
+				702A2FD80899800D6B9E430BF468FC8B /* Logger.swift */,
+				676768CF421365F56E0325D156E2F301 /* OutputStreams.swift */,
+				3D2EC7664BF1A5A912208A3602C7CB54 /* PrintLogger.swift */,
 			);
 			name = Logger;
 			path = AtlasSDK/Logger;
@@ -929,7 +932,7 @@
 				34D565D1422FDFE1F9B482005F88216B /* GuestCartRequest.swift in Sources */,
 				FF76AB15907BCACDEDF9DEB334EFE2C7 /* Bundle.swift in Sources */,
 				DC686314A72D004D8057657BAE386E00 /* PaymentMethodType.swift in Sources */,
-				8159D2481E67074B0096F321 /* GetArticleEndpoint.swift in Sources */,
+				319C8892EF75F743FB6BC5BAB278ECBA /* GetArticleEndpoint.swift in Sources */,
 				B760B0603070F9558115F9AF15FEF6B1 /* Article.swift in Sources */,
 				62C7EA7D66821EC79C278B60C3907983 /* GuestCheckoutAddress.swift in Sources */,
 				631E7EE031D5A6418FB7DD60074278A7 /* Cart.swift in Sources */,
@@ -938,21 +941,21 @@
 				871861043470F7B6A72F34B73CC67714 /* GuestPaymentRequest.swift in Sources */,
 				8387789B675CAC41D88C59F7CD9A49D5 /* CartRequest.swift in Sources */,
 				613D8FF85E470947466AB8AC54D4F3DD /* Catalog.swift in Sources */,
-				8159D2451E66E0C90096F321 /* OutputStreams.swift in Sources */,
+				2355ED486BA2B486D32DEC1BE170D4F4 /* OutputStreams.swift in Sources */,
 				24FFD22FC660CB12AA036D615B422072 /* CheckAddress.swift in Sources */,
 				4A34EFB4ADFE3B3932B5AB783A2C61D1 /* RequestBuilder.swift in Sources */,
 				74033CC4EE46D819DCF0D0CD145C705A /* APIClient.swift in Sources */,
 				06E5C0933C2D59ECB6AF221DC82004F3 /* CheckAddressRequest.swift in Sources */,
 				5845FED236186199C6625E11AB2CE7C5 /* GetConfigEndpoint.swift in Sources */,
-				8159D23C1E66DFEF0096F321 /* AtlasAPI_configure.swift in Sources */,
-				8159D24C1E67077E0096F321 /* Media.swift in Sources */,
+				FDA187EB948C3415A7642E5C162FAA5D /* AtlasAPI_configure.swift in Sources */,
+				ACCD79D9C4D9FB3D5EE8109A07679A3C /* Media.swift in Sources */,
 				228DA1EE31068C25FB7BA695A50E5DDD /* JSONResponse.swift in Sources */,
 				5B671E627B2005E550809F5EE69391E6 /* URLStringConvertible.swift in Sources */,
 				EB9B4F09CB500424A70A764FD1F9B959 /* Array.swift in Sources */,
 				D7D95B53EC353B847DEF517DC07B7A6F /* CheckAddressResponse.swift in Sources */,
 				3823DD4454949B70FF3FC6C6B81BACA1 /* Checkout.swift in Sources */,
 				AFA5480D32447A330ADEB69346021F8C /* CheckoutAddress.swift in Sources */,
-				8159D2371E66DFB40096F321 /* AtlasAPI_endpoints.swift in Sources */,
+				F00FD01496BD100C1D9E20FEC578093A /* AtlasAPI_endpoints.swift in Sources */,
 				5409022DECDE9C9FB50F7A0A51675377 /* GetAddressesEndpoint.swift in Sources */,
 				6506392A605FACF4557D0FCDD47ED7E6 /* Config.swift in Sources */,
 				FC8B4EB07DEBBA17ED31F8EEDD77023D /* UpdateAddressEndpoint.swift in Sources */,
@@ -985,17 +988,17 @@
 				BD4958A6838C84DC295CE30E7E28127D /* Results.swift in Sources */,
 				4B10BA7F4980C14CCFD91482E6A8B060 /* Gender.swift in Sources */,
 				2E8011474999A14E2B63489AC4C4E3BE /* DataTaskResponse.swift in Sources */,
-				8159D23F1E66E03C0096F321 /* Options.swift in Sources */,
+				BDD29DDEE4163BE442BA0FED2229C7B9 /* Options.swift in Sources */,
 				A617C549065FE3447ADCC97DFF9DDC69 /* JSON.swift in Sources */,
 				E527A75504B4F3AAF32F426105C37402 /* ResponseParser.swift in Sources */,
 				FD865B0234FE07B7A85955A0E1EECB9B /* CompleteGuestOrderEndpoint.swift in Sources */,
 				D1D7DB8FF192EFDF04D938CDA7629E2A /* URL.swift in Sources */,
 				02576D9B6427B3104CFB767A0924CA0F /* CreateOrderEndpoint.swift in Sources */,
 				42FE443682EE4DA2863C9C7772E77128 /* SKU.swift in Sources */,
-				8159D2461E66E0C90096F321 /* PrintLogger.swift in Sources */,
+				F70180EA1E7AC55161F0A0F5BC256BA1 /* PrintLogger.swift in Sources */,
 				E7561BB0527C36A7FA74020C228AF322 /* JSONSubscript.swift in Sources */,
 				ECE8DEFDB2A85FBCD15B77C89EA5EF4A /* Keychain.swift in Sources */,
-				8159D2441E66E0C90096F321 /* Logger.swift in Sources */,
+				C97FDA428DD10A02B604098846CA1431 /* Logger.swift in Sources */,
 				E6A17887BC6BA4C25B2D758C44514B80 /* Money.swift in Sources */,
 				261B28B342B4AB0AC459145308E87C48 /* GuestOrder.swift in Sources */,
 				50B7CAD88F4CB40657A1E293C5886CBE /* Data.swift in Sources */,
@@ -1004,24 +1007,25 @@
 				B55E11C43D7FE5324EFC07547FE440BF /* ConfigurableEndpoint.swift in Sources */,
 				240228124E25E1CCE455B8FD3E3F9A92 /* Order.swift in Sources */,
 				DD13DE18E8535DE1DE2F8C486CEC3486 /* CreateAddressEndpoint.swift in Sources */,
+				EC2F6D79BBBB87853DF7FC12A809D2A9 /* GetArticleRecommendationsEndpoint.swift in Sources */,
 				A0EFD6474DCE215941273DBFE9FB064B /* OrderAddress.swift in Sources */,
 				B8419F217F076553054D230EEFF60341 /* OrderRequest.swift in Sources */,
 				63BD6D5AB647CD11815ABCDCD2724601 /* Payment.swift in Sources */,
 				E0D665C2EC9F397884CDD291C9145EBB /* ConfigClient.swift in Sources */,
-				8159D23B1E66DFEF0096F321 /* AtlasAPI_authorization.swift in Sources */,
+				2402ED0BDCFC110413E83DABDC776085 /* AtlasAPI_authorization.swift in Sources */,
 				6314391419F5F35C66EBFC2ECE79303E /* SystemInfo.swift in Sources */,
-				8159D24E1E6708020096F321 /* OrderConfirmation.swift in Sources */,
+				3C945BDC8B10E80ECCEFC959EAEFD67C /* OrderConfirmation.swift in Sources */,
 				963AE70DD87A3C9A75FB0231D2130E7F /* PaymentMethod.swift in Sources */,
 				4721FC3613C4D4210054C2143D31A9CF /* JSONInitializable.swift in Sources */,
 				19052EC3C88FE3710B358C8A009122EF /* PickupPoint.swift in Sources */,
-				8159D2571E67088D0096F321 /* Recommendation.swift in Sources */,
+				8C98093B61671563577C255FDA452AEA /* Recommendation.swift in Sources */,
 				6504D8872E69CAF240F5CC4CD6BEF61A /* GuestCart.swift in Sources */,
 				9AD951739139ADAE7CE2B95E7E13DB75 /* HTTP.swift in Sources */,
 				727D825FC085BDA1D717C197FDABF439 /* StreetAddress.swift in Sources */,
-				8159D23D1E66DFEF0096F321 /* AtlasAPI.swift in Sources */,
+				00DDF79C5F2EA8A83349C1C45E2F5A67 /* AtlasAPI.swift in Sources */,
 				CAF49B6A3DAD4C68FF77D18AAB3B91A2 /* UpdateAddressRequest.swift in Sources */,
 				FC0655AC5517BC20F13B9DA9D181A142 /* UpdateCheckoutRequest.swift in Sources */,
-				8159D24B1E67077E0096F321 /* Brand.swift in Sources */,
+				A0AD0F403E3AF7D1035336D0098FB5F9 /* Brand.swift in Sources */,
 				DE75C7C9CBE1FEBD2BD8E4524B0220A5 /* CreateCheckoutEndpoint.swift in Sources */,
 				6EC34683E95FA934F7A29DCEE26FD134 /* Endpoint.swift in Sources */,
 				FC4DC88516E339E12FB7E0B70724A3C5 /* UserAddress.swift in Sources */,

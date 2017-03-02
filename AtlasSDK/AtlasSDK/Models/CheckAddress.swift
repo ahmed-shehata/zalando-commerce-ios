@@ -59,8 +59,8 @@ extension AddressCheck: JSONRepresentable {
 
 public func === (lhs: AddressCheck, rhs: AddressCheck) -> Bool {
     return lhs.street == rhs.street
-    && lhs.additional == rhs.additional
-    && lhs.zip == rhs.zip
-    && lhs.city == rhs.city
-    && lhs.countryCode == rhs.countryCode
+        && lhs.additional == rhs.additional
+        && lhs.zip == rhs.zip
+        && lhs.city == rhs.city
+        && lhs.countryCode == rhs.countryCode
 }

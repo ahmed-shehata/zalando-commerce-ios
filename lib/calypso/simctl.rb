@@ -152,12 +152,12 @@ module Calypso
         end
       end
 
-      selected_runtimes = unless name.nil?
+      selected_runtimes = if name.nil?
+                            available_runtimes
+                          else
                             requested_runtimes = available_runtimes.select { |runtime| runtime['name'] == name }
                             log_abort "Error: No runtimes for \"#{name}\" found" if requested_runtimes.empty?
                             requested_runtimes
-                          else
-                            available_runtimes
                           end
 
       selected_runtimes.each do |runtime|

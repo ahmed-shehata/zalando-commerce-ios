@@ -130,8 +130,8 @@ extension AtlasUIViewController: UIScreenshotBuilder {
     private func hideScreenshotCover() {
         UIView.animate(animations: { [weak self] in
             self?.screenshotCoverView.alpha = 0
-        }, completion: { [weak self] _ in
-            self?.screenshotCoverView.removeFromSuperview()
+            }, completion: { [weak self] _ in
+                self?.screenshotCoverView.removeFromSuperview()
         })
     }
 

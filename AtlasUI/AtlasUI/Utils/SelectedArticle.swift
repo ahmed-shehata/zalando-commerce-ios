@@ -1,5 +1,5 @@
 //
-//  Copyright © 2017 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
@@ -60,7 +60,7 @@ struct SelectedArticle {
     }
 
     var totalOriginalPrice: Money {
-        let originalPrice = unit.price
+        let originalPrice = unit.originalPrice
         return Money(amount: originalPrice.amount * quantity, currency: originalPrice.currency)
     }
 

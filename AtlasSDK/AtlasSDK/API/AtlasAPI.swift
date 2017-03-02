@@ -5,12 +5,14 @@
 import Foundation
 
 /**
-Provides all functional API calls with their business logic.
+ Provides all functional API calls with their business logic.
+ 
+ Main entry point for the AtlasSDK framework.
 
-- Note: If not specified otherwise – all API calls require user to be
-  logged in and accepted a consent. Otherwise `Result.failure` with
-  `APIError.unauthorized` is returned.
-*/
+ - Note: If not specified otherwise – all API calls require user to be
+ logged in and accepted a consent. Otherwise `Result.failure` with
+ `APIError.unauthorized` is returned.
+ */
 public struct AtlasAPI {
 
     /// Configuration of a client handling API calls
