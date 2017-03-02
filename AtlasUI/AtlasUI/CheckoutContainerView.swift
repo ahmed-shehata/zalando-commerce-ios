@@ -54,6 +54,7 @@ class CheckoutContainerView: UIView {
         return view
     }()
 
+    var collectionViewHiddenHandler: (() -> Void)?
     let collectionView: CheckoutSummaryArticleSelectCollectionView = {
         let collectionView = CheckoutSummaryArticleSelectCollectionView()
         collectionView.backgroundColor = .white
@@ -62,14 +63,18 @@ class CheckoutContainerView: UIView {
 
     func displaySizes(selectedArticle: SelectedArticle,
                       animated: Bool,
+                      hiddenHandler: @escaping () -> Void,
                       completion: @escaping CheckoutSummaryArticleRefineCompletion) -> CheckoutSummaryArticleRefineType? {
         guard !selectedArticle.article.hasSingleUnit else { return nil }
+        self.collectionViewHiddenHandler = hiddenHandler
         return configureArticleRefine(selectedArticle: selectedArticle, for: .size, animated: animated, completion: completion)
     }
 
     func displayQuantites(selectedArticle: SelectedArticle,
                           animated: Bool,
+                          hiddenHandler: @escaping () -> Void,
                           completion: @escaping CheckoutSummaryArticleRefineCompletion) -> CheckoutSummaryArticleRefineType? {
+        self.collectionViewHiddenHandler = hiddenHandler
         return configureArticleRefine(selectedArticle: selectedArticle, for: .quantity, animated: animated, completion: completion)
     }
 
@@ -118,6 +123,8 @@ class CheckoutContainerView: UIView {
     }
 
     func hideOverlay(animated: Bool) {
+        collectionViewHiddenHandler?()
+
         guard animated else {
             overlayButton.isHidden = true
             overlayButton.alpha = 0
@@ -129,8 +136,8 @@ class CheckoutContainerView: UIView {
             guard let strongSelf = self else { return }
             self?.overlayButton.alpha = 0
             self?.collectionViewContainerView.transform = CGAffineTransform(translationX: 0, y: -strongSelf.collectionViewContainerHeight)
-            }, completion: { [weak self] _ in
-                self?.overlayButton.isHidden = true
+        }, completion: { [weak self] _ in
+            self?.overlayButton.isHidden = true
         })
     }
 

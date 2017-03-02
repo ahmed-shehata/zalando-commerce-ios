@@ -47,26 +47,32 @@ class CheckoutSummaryEditProductStackView: UIStackView {
     weak var delegate: CheckoutSummaryEditProductDelegate?
 
     func displayInitialSizes() {
-        guard let selectedArticle = dataSource?.selectedArticle else { return }
-        let type = dataSource?.checkoutContainer.displaySizes(selectedArticle: selectedArticle, animated: false) { [weak self] idx in
+        guard let selectedArticle = dataSource?.selectedArticle, let checkoutContainer = dataSource?.checkoutContainer else { return }
+        let type = checkoutContainer.displaySizes(selectedArticle: selectedArticle, animated: false, hiddenHandler: { [weak self] in
+            self?.updateArrow(for: nil, animated: true)
+        }, completion: { [weak self] idx in
             self?.sizeSelected(at: idx, for: selectedArticle)
-        }
+        })
         updateArrow(for: type, animated: false)
     }
 
     dynamic fileprivate func sizeButtonTapped() {
-        guard let selectedArticle = dataSource?.selectedArticle else { return }
-        let type = dataSource?.checkoutContainer.displaySizes(selectedArticle: selectedArticle, animated: true) { [weak self] idx in
+        guard let selectedArticle = dataSource?.selectedArticle, let checkoutContainer = dataSource?.checkoutContainer else { return }
+        let type = checkoutContainer.displaySizes(selectedArticle: selectedArticle, animated: true, hiddenHandler: { [weak self] in
+            self?.updateArrow(for: nil, animated: true)
+        }, completion: { [weak self] idx in
             self?.sizeSelected(at: idx, for: selectedArticle)
-        }
+        })
         updateArrow(for: type, animated: true)
     }
 
     dynamic fileprivate func quantityButtonTapped() {
-        guard let selectedArticle = dataSource?.selectedArticle else { return }
-        let type = dataSource?.checkoutContainer.displayQuantites(selectedArticle: selectedArticle, animated: true) { [weak self] idx in
+        guard let selectedArticle = dataSource?.selectedArticle, let checkoutContainer = dataSource?.checkoutContainer else { return }
+        let type = checkoutContainer.displayQuantites(selectedArticle: selectedArticle, animated: true, hiddenHandler: { [weak self] in
+            self?.updateArrow(for: nil, animated: true)
+        }, completion: { [weak self] idx in
             self?.quantitySelected(at: idx, for: selectedArticle)
-        }
+        })
         updateArrow(for: type, animated: true)
     }
 
@@ -77,7 +83,6 @@ class CheckoutSummaryEditProductStackView: UIStackView {
             dataSource?.checkoutContainer.collectionView.type == .size, updatedArticle != currentSelectedArticle else { return }
 
         delegate?.updated(selectedArticle: updatedArticle)
-        updateArrow(for: nil, animated: true)
     }
 
     private func quantitySelected(at idx: Int, for selectedArticle: SelectedArticle) {
@@ -87,7 +92,6 @@ class CheckoutSummaryEditProductStackView: UIStackView {
             dataSource?.checkoutContainer.collectionView.type == .quantity, updatedArticle != currentSelectedArticle else { return }
 
         delegate?.updated(selectedArticle: updatedArticle)
-        updateArrow(for: nil, animated: true)
     }
 
     private func updateArrow(for displayedType: CheckoutSummaryArticleRefineType?, animated: Bool) {
