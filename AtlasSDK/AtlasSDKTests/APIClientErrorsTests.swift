@@ -19,12 +19,12 @@ class AtlasAPIClientErrorsTests: AtlasAPIClientBaseTests {
 
         waitUntil(timeout: 10) { done in
             api.customer { result in
-                defer { done() }
                 guard case let .failure(error, _) = result else {
                     return fail("Should emit \(APIError.noData)")
                 }
 
                 expect("\(error)") == "\(APIError.noData)"
+                done()
             }
         }
     }
@@ -32,24 +32,21 @@ class AtlasAPIClientErrorsTests: AtlasAPIClientBaseTests {
     func testUnauthenticatedRequest() {
         let status = HTTPStatus.unauthorized
         let json: [String: Any] = ["type": "http://httpstatus.es/401",
-                                   "title": "unauthorized",
-                                   "status": status.rawValue,
-                                   "detail": "Full authentication is required to access this resource"]
+            "title": "unauthorized",
+            "status": status.rawValue,
+            "detail": "Full authentication is required to access this resource"]
 
         let errorResponse = data(withJSONObject: json)
         let api = mockedAtlasAPI(forURL: clientURL, options: Options.forTests(), data: errorResponse, status: status)
 
         waitUntil(timeout: 10) { done in
             api.customer { result in
-                defer { done() }
-                switch result {
-                case .failure(let error, _):
-                    switch error {
-                    case APIError.unauthorized: break
-                    default: fail("\(error) should be unauthorized")
-                    }
-                default: fail("\(result) should be failure")
+                guard case let .failure(error, _) = result else {
+                    return fail("\(result) should be failure")
                 }
+
+                expect("\(error)") == "\(APIError.unauthorized)"
+                done()
             }
         }
     }
@@ -57,14 +54,13 @@ class AtlasAPIClientErrorsTests: AtlasAPIClientBaseTests {
     func testBackendError() {
         let status = HTTPStatus.forbidden
         let json: [String: Any] = ["type": "http://httpstatus.es/401", "title": "unauthorized",
-                                   "status": status.rawValue, "detail": ""]
+            "status": status.rawValue, "detail": ""]
 
         let errorResponse = data(withJSONObject: json)
         let api = mockedAtlasAPI(forURL: clientURL, data: errorResponse, status: status)
 
         waitUntil(timeout: 10) { done in
             api.customer { result in
-                defer { done() }
                 guard case let .failure(error, _) = result,
                     case let APIError.backend(errorStatus, type, title, details) = error else {
                         return fail("Should emit APIError.backend")
@@ -74,19 +70,19 @@ class AtlasAPIClientErrorsTests: AtlasAPIClientBaseTests {
                 expect(type) == json["type"] as? String
                 expect(title) == json["title"] as? String
                 expect(details) == json["detail"] as? String
+                done()
             }
         }
     }
 
     func testNSURLDomainError() {
         let api = mockedAtlasAPI(forURL: clientURL,
-                                          data: nil,
-                                          status: .unauthorized,
-                                          errorCode: NSURLErrorBadURL)
+                                 data: nil,
+                                 status: .unauthorized,
+                                 errorCode: NSURLErrorBadURL)
 
         waitUntil(timeout: 10) { done in
             api.customer { result in
-                defer { done() }
                 guard case let .failure(error, _) = result,
                     case let APIError.nsURLError(code, details) = error else {
                         return fail("Should emit APIError.nsURLError")
@@ -94,24 +90,25 @@ class AtlasAPIClientErrorsTests: AtlasAPIClientBaseTests {
 
                 expect(code) == NSURLErrorBadURL
                 expect(details).to(contain("The operation couldn’t be completed"))
+                done()
             }
         }
     }
 
     func testMangledJSON() {
         let errorStatus = HTTPStatus.serviceUnavailable
-        let errorResponse = "Some text error".data(using: String.Encoding.utf8)
+        let errorResponse = "Some text error".data(using: .utf8)
         let api = mockedAtlasAPI(forURL: clientURL, data: errorResponse, status: errorStatus)
 
         waitUntil(timeout: 10) { done in
             api.customer { result in
-                defer { done() }
                 guard case let .failure(error, _) = result,
                     case let APIError.http(status, _) = error else {
                         return fail("Should emit APIError.http")
                 }
 
                 expect(status) == errorStatus.rawValue
+                done()
             }
         }
     }

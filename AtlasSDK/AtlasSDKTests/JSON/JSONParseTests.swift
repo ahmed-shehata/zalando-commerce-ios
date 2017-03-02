@@ -1,5 +1,5 @@
 //
-//   Copyright © 2017 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import XCTest
@@ -9,8 +9,8 @@ import Nimble
 
 class JSONParseTests: JSONTestCase {
 
-    func testParseCorrectString() {
-        let json = try! JSON(string: "{\"int\": 500}")
+    func testParseCorrectString() throws {
+        let json = try JSON(string: "{\"int\": 500}")
         expect(json["int"].int) == 500
     }
 

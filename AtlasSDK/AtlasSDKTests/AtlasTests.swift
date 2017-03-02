@@ -25,7 +25,7 @@ class AtlasTests: XCTestCase {
 
     override func setUp() {
         waitUntil(timeout: 60) { done in
-            Atlas.configure(options: Options.forTests()) { result in
+            AtlasAPI.configure(options: Options.forTests()) { result in
                 switch result {
                 case .failure(let error):
                     fail(String(describing: error))
@@ -49,13 +49,13 @@ class AtlasTests: XCTestCase {
 
     func testAuthorizeAnotherClient() {
         waitUntil(timeout: 60) { done in
-            Atlas.configure(options: Options.forTests(useSandboxEnvironment: false)) { result in
+            AtlasAPI.configure(options: Options.forTests(useSandboxEnvironment: false)) { result in
                 switch result {
                 case .failure(let error):
                     fail(String(describing: error))
                 case .success(let api):
                     let secondClient = api
-                    secondClient.authorize(withToken: "ANOTHER_TOKEN")
+                    secondClient.authorize(with: "ANOTHER_TOKEN")
                     expect(self.api?.isAuthorized) == false
                     expect(secondClient.isAuthorized) == true
                 }
@@ -88,7 +88,7 @@ class AtlasTests: XCTestCase {
 extension AtlasTests {
 
     fileprivate func loginUser(token: String = "TEST_TOKEN") {
-        self.api?.authorize(withToken: token)
+        self.api?.authorize(with: token)
     }
 
     fileprivate func logoutUser() {

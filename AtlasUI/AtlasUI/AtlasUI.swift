@@ -20,7 +20,7 @@ final public class AtlasUI {
     ///
     /// - orderPlaced: The user successfully placed the order
     ///                - orderConfirmation: The order confirmation object with the needed properties
-    ///                - customerRequestedArticle: if not nil, then the customer is interested to view a specific product from the 
+    ///                - customerRequestedArticle: if not nil, then the customer is interested to view a specific product from the
     ///                                            recommended products displayed after purchasing
     ///                                            Please open the product detail page for the given SKU
     /// - userCancelled: The user cancelled the checkout process
@@ -41,7 +41,7 @@ final public class AtlasUI {
     }
 
     public static func configure(options: Options? = nil, completion: @escaping ResultCompletion<AtlasUI>) {
-        Atlas.configure(options: options) { result in
+        AtlasAPI.configure(options: options) { result in
             switch result {
             case .failure(let error):
                 Logger.error(error)

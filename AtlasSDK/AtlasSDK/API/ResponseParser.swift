@@ -12,7 +12,7 @@ struct ResponseParser {
         if let error = taskResponse.error {
             let nsError = error as NSError
             let nsURLError = APIError.nsURLError(code: nsError.code,
-                                                      details: nsError.localizedDescription)
+                                                 details: nsError.localizedDescription)
             return completion(.failure(nsURLError))
         }
 
@@ -28,12 +28,12 @@ struct ResponseParser {
                 error = APIError.unauthorized
             } else if let json = json {
                 error = APIError.backend(status: json["status"].int,
-                                              type: json["type"].string,
-                                              title: json["title"].string,
-                                              details: json["detail"].string)
+                                         type: json["type"].string,
+                                         title: json["title"].string,
+                                         details: json["detail"].string)
             } else {
                 error = APIError.http(status: httpResponse.statusCode,
-                                           details: HTTPURLResponse.localizedString(forStatusCode: httpResponse.statusCode))
+                                      details: HTTPURLResponse.localizedString(forStatusCode: httpResponse.statusCode))
             }
             return completion(.failure(error))
         }

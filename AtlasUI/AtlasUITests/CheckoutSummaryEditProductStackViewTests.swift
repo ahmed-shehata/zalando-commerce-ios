@@ -1,5 +1,5 @@
 //
-//  Copyright © 2017 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import XCTest
@@ -19,7 +19,7 @@ class CheckoutSummaryEditProductStackViewTests: UITestCase {
     }
 
     func testSelectInitialSizeWhileLoggedIn() {
-        atlasUI.api.authorize(withToken: "TestToken")
+        atlasUI.api.authorize(with: "TestToken")
         registerAtlasUIViewController(forConfigSKU: "GU121D08Z-Q11")
         selectItemInCollectionView()
         expect(self.checkoutSummaryViewController?.actionHandler as? LoggedInSummaryActionHandler).toEventuallyNot(beNil())
@@ -32,7 +32,7 @@ class CheckoutSummaryEditProductStackViewTests: UITestCase {
     }
 
     func testOneSizeInitialSizeWhileLoggedIn() {
-        atlasUI.api.authorize(withToken: "TestToken")
+        atlasUI.api.authorize(with: "TestToken")
         registerAtlasUIViewController(forConfigSKU: "MK151F00E-Q11")
         expect(self.checkoutSummaryViewController?.actionHandler as? LoggedInSummaryActionHandler).toEventuallyNot(beNil())
         atlasUI.api.deauthorize()

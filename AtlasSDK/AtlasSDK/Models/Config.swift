@@ -78,15 +78,16 @@ extension Config {
 
         self.payment = Payment(selectionCallbackURL: selectionCallbackURL, thirdPartyCallbackURL: thirdPartyCallbackURL)
         self.salesChannel = salesChannel
+        self.guestCheckoutEnabled = json["atlas-guest-checkout-api", "enabled"].bool ?? false
+
+        self.clientId = options.clientId
+        self.useSandboxEnvironment = options.useSandboxEnvironment
         if let interfaceLanguage = options.interfaceLanguage {
             self.interfaceLocale = Locale(identifier: "\(interfaceLanguage)_\(salesChannel.countryCode)")
         } else {
             self.interfaceLocale = salesChannel.locale
         }
 
-        self.clientId = options.clientId
-        self.useSandboxEnvironment = options.useSandboxEnvironment
-        self.guestCheckoutEnabled = json["atlas-guest-checkout-api", "enabled"].bool ?? false
     }
 
 }
@@ -103,6 +104,7 @@ extension Config: CustomStringConvertible {
             + ", payment: \(self.payment)"
             + ", interfaceLocale: \(self.interfaceLocale.identifier)"
             + ", useSandboxEnvironment: \(self.useSandboxEnvironment)"
+            + ", guestCheckoutEnabled: \(self.guestCheckoutEnabled)"
             + " }"
     }
 

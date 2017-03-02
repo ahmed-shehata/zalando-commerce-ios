@@ -40,7 +40,7 @@ extension AddressCheck: JSONInitializable {
 
 extension AddressCheck: JSONRepresentable {
 
-    func toJSON() -> [String : Any] {
+    func toJSON() -> [String: Any] {
         var result: [String: Any] = [
             Keys.zip: zip,
             Keys.city: city,
@@ -53,8 +53,8 @@ extension AddressCheck: JSONRepresentable {
             result[Keys.additional] = additional
         }
         return result
-    }
 
+    }
 }
 
 public func === (lhs: AddressCheck, rhs: AddressCheck) -> Bool {
