@@ -30,7 +30,7 @@ else
 fi
 
 if [ -z "$DEVICE_GROUP_NAME" ]; then
-  DEVICE_GROUP_NAME=larry-iOS-device-group
+  DEVICE_GROUP_NAME=4-iOSXCUITest-Device
 fi
 
 # Check that Device Group exists
