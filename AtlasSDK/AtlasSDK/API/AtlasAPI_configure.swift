@@ -7,9 +7,13 @@ import Foundation
 extension AtlasAPI {
 
     /**
-     Configures and returns API client based on given options
-
-     Main entry point for the AtlasSDK framework
+     Configures and returns API client based on given options.
+     
+     When neither `Options` are passed or correct, nor `$INFOPLIST_FILE` contains required
+     keys and values – `completion` retuns `Result.failure` with error returned from
+     `Options.validate()`
+     
+     Main entry point for the AtlasSDK framework.
 
      - Note: See [configuration](https://github.com/zalando-incubator/atlas-ios/wiki/Configuration)
      and [project structure](https://github.com/zalando-incubator/atlas-ios/wiki/Project-structure)
