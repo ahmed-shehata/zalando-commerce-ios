@@ -24,7 +24,7 @@ class CheckoutSummaryEditProductStackView: UIStackView {
         let button = UIButton(type: .custom)
         button.setTitleColor(UIColor(hex: 0x848484), for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 10, weight: UIFontWeightLight)
-        button.setImage(UIImage(named: "arrow_down", bundledWith: CheckoutSummaryEditProductStackView.self), for: .normal)
+        button.setImage(UIImage(named: "selection_arrow", bundledWith: CheckoutSummaryEditProductStackView.self), for: .normal)
         return button
     }()
 
@@ -39,7 +39,7 @@ class CheckoutSummaryEditProductStackView: UIStackView {
         let button = UIButton(type: .custom)
         button.setTitleColor(UIColor(hex: 0x848484), for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 10, weight: UIFontWeightLight)
-        button.setImage(UIImage(named: "arrow_down", bundledWith: CheckoutSummaryEditProductStackView.self), for: .normal)
+        button.setImage(UIImage(named: "selection_arrow", bundledWith: CheckoutSummaryEditProductStackView.self), for: .normal)
         return button
     }()
 
@@ -48,23 +48,26 @@ class CheckoutSummaryEditProductStackView: UIStackView {
 
     func displayInitialSizes() {
         guard let selectedArticle = dataSource?.selectedArticle else { return }
-        dataSource?.checkoutContainer.displaySizes(selectedArticle: selectedArticle, animated: false) { [weak self] idx in
+        let type = dataSource?.checkoutContainer.displaySizes(selectedArticle: selectedArticle, animated: false) { [weak self] idx in
             self?.sizeSelected(at: idx, for: selectedArticle)
         }
+        updateArrow(for: type, animated: false)
     }
 
     dynamic fileprivate func sizeButtonTapped() {
         guard let selectedArticle = dataSource?.selectedArticle else { return }
-        dataSource?.checkoutContainer.displaySizes(selectedArticle: selectedArticle, animated: true) { [weak self] idx in
+        let type = dataSource?.checkoutContainer.displaySizes(selectedArticle: selectedArticle, animated: true) { [weak self] idx in
             self?.sizeSelected(at: idx, for: selectedArticle)
         }
+        updateArrow(for: type, animated: true)
     }
 
     dynamic fileprivate func quantityButtonTapped() {
         guard let selectedArticle = dataSource?.selectedArticle else { return }
-        dataSource?.checkoutContainer.displayQuantites(selectedArticle: selectedArticle, animated: true) { [weak self] idx in
+        let type = dataSource?.checkoutContainer.displayQuantites(selectedArticle: selectedArticle, animated: true) { [weak self] idx in
             self?.quantitySelected(at: idx, for: selectedArticle)
         }
+        updateArrow(for: type, animated: true)
     }
 
     private func sizeSelected(at idx: Int, for selectedArticle: SelectedArticle) {
@@ -74,6 +77,7 @@ class CheckoutSummaryEditProductStackView: UIStackView {
             dataSource?.checkoutContainer.collectionView.type == .size, updatedArticle != currentSelectedArticle else { return }
 
         delegate?.updated(selectedArticle: updatedArticle)
+        updateArrow(for: nil, animated: true)
     }
 
     private func quantitySelected(at idx: Int, for selectedArticle: SelectedArticle) {
@@ -85,6 +89,37 @@ class CheckoutSummaryEditProductStackView: UIStackView {
             dataSource?.checkoutContainer.collectionView.type == .quantity, updatedArticle != currentSelectedArticle else { return }
 
         delegate?.updated(selectedArticle: updatedArticle)
+        updateArrow(for: nil, animated: true)
+    }
+
+    private func updateArrow(for displayedType: CheckoutSummaryArticleRefineType?, animated: Bool) {
+        var imageViewsToClose = [sizeButton.imageView, quantityButton.imageView].flatMap { $0 }
+        var imageViewToOpen: UIImageView?
+
+        if let type = displayedType {
+            switch type {
+            case .size: imageViewToOpen = sizeButton.imageView
+            case .quantity: imageViewToOpen = quantityButton.imageView
+            }
+        }
+
+        if let imageView = imageViewToOpen {
+            updateArrow(arrowImageView: imageView, opened: true, animated: animated)
+            imageViewsToClose.remove(item: imageView)
+        }
+
+        imageViewsToClose.forEach { updateArrow(arrowImageView: $0, opened: false, animated: animated) }
+    }
+
+    private func updateArrow(arrowImageView: UIImageView, opened: Bool, animated: Bool) {
+        let transform = opened ? CGAffineTransform(rotationAngle: CGFloat.pi) : CGAffineTransform.identity
+        if animated {
+            UIView.animate(duration: .fast) {
+                arrowImageView.transform = transform
+            }
+        } else {
+            arrowImageView.transform = transform
+        }
     }
 
 }

@@ -15,3 +15,11 @@ extension Array {
     
 }
 
+extension Array where Element: Equatable {
+
+    mutating func remove(item: Element) {
+        self = self.filter { $0 != item }
+    }
+
+}
+

@@ -60,19 +60,23 @@ class CheckoutContainerView: UIView {
         return collectionView
     }()
 
-    func displaySizes(selectedArticle: SelectedArticle, animated: Bool, completion: @escaping CheckoutSummaryArticleRefineCompletion) {
-        guard !selectedArticle.article.hasSingleUnit else { return }
-        configureCollectionView(selectedArticle: selectedArticle, for: .size, animated: animated, completion: completion)
+    func displaySizes(selectedArticle: SelectedArticle,
+                      animated: Bool,
+                      completion: @escaping CheckoutSummaryArticleRefineCompletion) -> CheckoutSummaryArticleRefineType? {
+        guard !selectedArticle.article.hasSingleUnit else { return nil }
+        return configureArticleRefine(selectedArticle: selectedArticle, for: .size, animated: animated, completion: completion)
     }
 
-    func displayQuantites(selectedArticle: SelectedArticle, animated: Bool, completion: @escaping CheckoutSummaryArticleRefineCompletion) {
-        configureCollectionView(selectedArticle: selectedArticle, for: .quantity, animated: animated, completion: completion)
+    func displayQuantites(selectedArticle: SelectedArticle,
+                          animated: Bool,
+                          completion: @escaping CheckoutSummaryArticleRefineCompletion) -> CheckoutSummaryArticleRefineType? {
+        return configureArticleRefine(selectedArticle: selectedArticle, for: .quantity, animated: animated, completion: completion)
     }
 
-    private func configureCollectionView(selectedArticle: SelectedArticle,
-                                         for type: CheckoutSummaryArticleRefineType,
-                                         animated: Bool,
-                                         completion: @escaping CheckoutSummaryArticleRefineCompletion) {
+    private func configureArticleRefine(selectedArticle: SelectedArticle,
+                                        for type: CheckoutSummaryArticleRefineType,
+                                        animated: Bool,
+                                        completion: @escaping CheckoutSummaryArticleRefineCompletion) -> CheckoutSummaryArticleRefineType? {
 
         collectionView.completion = { [weak self] result in
             completion(result)
@@ -83,10 +87,13 @@ class CheckoutContainerView: UIView {
         if overlayButton.isHidden {
             showOverlay(animated: animated)
             collectionView.configure(with: selectedArticle, for: type, animated: false)
+            return type
         } else if collectionView.type != type {
             collectionView.configure(with: selectedArticle, for: type, animated: true)
+            return type
         } else {
             hideOverlay(animated: animated)
+            return nil
         }
     }
 
