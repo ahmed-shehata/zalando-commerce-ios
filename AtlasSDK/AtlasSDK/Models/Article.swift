@@ -111,3 +111,31 @@ extension Article.Partner: JSONInitializable {
     }
 
 }
+
+extension Article.Unit: Equatable { }
+
+public func == (lhs: Article.Unit, rhs: Article.Unit) -> Bool {
+    return lhs.id == rhs.id
+        && lhs.size == rhs.size
+        && lhs.price == rhs.price
+        && lhs.originalPrice == rhs.originalPrice
+        && lhs.available == rhs.available
+        && lhs.stock == rhs.stock
+        && lhs.partner == rhs.partner
+}
+
+extension Article.Partner: Equatable { }
+
+public func == (lhs: Article.Partner, rhs: Article.Partner) -> Bool {
+    return lhs.id == rhs.id
+        && lhs.name == rhs.name
+        && lhs.detailsURL == rhs.detailsURL
+}
+
+extension Article.Unit {
+
+    public static let empty = Article.Unit(id: SimpleSKU(value: ""),
+                                           size: "", price: Money.zero, originalPrice: Money.zero,
+                                           available: false, stock: nil, partner: nil)
+
+}

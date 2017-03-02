@@ -4,6 +4,8 @@
 
 import Foundation
 
+// TODO: document it, please...
+
 public struct Cart {
 
     public let id: CartId
@@ -53,4 +55,13 @@ extension Cart: JSONInitializable {
                   grossTotal: grossTotal,
                   taxTotal: taxTotal)
     }
+
+}
+
+extension Cart {
+
+    func hasStock(of sku: SimpleSKU) -> Bool {
+        return items.contains { $0.sku == sku } && !itemsOutOfStock.contains(sku)
+    }
+
 }

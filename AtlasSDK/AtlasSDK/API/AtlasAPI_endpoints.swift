@@ -3,58 +3,54 @@
 //
 
 import Foundation
-import UIKit
-
-/// All functional API calls with additional business logic
-public struct AtlasAPI {
-
-    /// Configuration of a client handling API calls
-    public var config: Config {
-        return client.config
-    }
-
-    let client: APIClient
-
-    init(config: Config, session: URLSession = .shared) {
-        self.client = APIClient(config: config, session: session)
-    }
-
-}
 
 // TODO: document it, please...
 
-public typealias CartCheckout = (cart: Cart, checkout: Checkout?)
-
 extension AtlasAPI {
 
+    /**
+     Retrieves current logged user as `Customer`.
+
+     - Parameter completion: `Result.success` with logged user as `Customer` is passed
+     */
     public func customer(completion: @escaping APIResultCompletion<Customer>) {
         let endpoint = GetCustomerEndpoint(config: config)
         client.fetch(from: endpoint, completion: completion)
     }
 
-    public func createCart(withItems cartItemRequests: [CartItemRequest],
+    /*
+     Creates `Cart` with given `CartItemRequest` items.
+
+     - Parameters:
+     - cartItemRequests: list articles SKUs with quantities to be added to cart
+     - completion: `Result.success` with create `Cart` model.
+     */
+    public func createCart(with cartItemRequests: [CartItemRequest],
                            completion: @escaping APIResultCompletion<Cart>) {
         let parameters = CartRequest(items: cartItemRequests, replaceItems: true).toJSON()
         let endpoint = CreateCartEndpoint(config: config, parameters: parameters)
         client.fetch(from: endpoint, completion: completion)
     }
 
-    public func createCheckoutCart(forSelectedArticle selectedArticle: SelectedArticle,
+    /*
+     Creates `Cart` and following it `Checkout` with handling specific cases
+
+     - Parameters:
+     - cartItemRequest: <#cartItemRequest description#>
+     - addresses: <#addresses description#>
+     - completion: <#completion description#>
+     */
+    public func createCartCheckout(with cartItemRequest: CartItemRequest,
                                    addresses: CheckoutAddresses? = nil,
                                    completion: @escaping APIResultCompletion<CartCheckout>) {
-        let cartItemRequest = CartItemRequest(sku: selectedArticle.sku, quantity: selectedArticle.quantity)
-
-        createCart(withItems: [cartItemRequest]) { cartResult in
+        createCart(with: [cartItemRequest]) { cartResult in
             switch cartResult {
             case .failure(let error, _):
                 completion(.failure(error, nil))
 
             case .success(let cart):
-                let sku = selectedArticle.sku
-                let itemExists = cart.items.contains { $0.sku == sku } && !cart.itemsOutOfStock.contains(sku)
-                guard itemExists else {
-                    completion(.failure(CheckoutError.outOfStock, nil))
-                    return
+                guard cart.hasStock(of: cartItemRequest.sku) else {
+                    return completion(.failure(CheckoutError.outOfStock, nil))
                 }
 
                 self.createCheckout(from: cart.id, addresses: addresses) { checkoutResult in
@@ -115,6 +111,11 @@ extension AtlasAPI {
         client.fetch(from: endpoint, completion: completion)
     }
 
+    public func recommendations(forSKU sku: ConfigSKU, completion: @escaping APIResultCompletion<[Recommendation]>) {
+        let endpoint = GetArticleRecommendationsEndpoint(config: config, sku: sku)
+        client.fetch(from: endpoint, completion: completion)
+    }
+
     public func article(with sku: ConfigSKU,
                         completion: @escaping APIResultCompletion<Article>) {
         let endpoint = GetArticleEndpoint(config: config, sku: sku)
@@ -129,11 +130,6 @@ extension AtlasAPI {
         client.fetch(from: endpoint, completion: fetchCompletion)
     }
 
-    public func recommendations(forSKU sku: ConfigSKU, completion: @escaping APIResultCompletion<[Recommendation]>) {
-        let endpoint = GetArticleRecommendationsEndpoint(config: config, sku: sku)
-        client.fetch(from: endpoint, completion: completion)
-    }
-
     public func addresses(completion: @escaping APIResultCompletion<[UserAddress]>) {
         let endpoint = GetAddressesEndpoint(config: config)
         client.fetch(from: endpoint, completion: completion)
@@ -145,7 +141,7 @@ extension AtlasAPI {
         client.touch(endpoint: endpoint, completion: completion)
     }
 
-    public func createAddress(_ request: CreateAddressRequest,
+    public func createAddress(with request: CreateAddressRequest,
                               completion: @escaping APIResultCompletion<UserAddress>) {
         let endpoint = CreateAddressEndpoint(config: config, createAddressRequest: request)
         client.fetch(from: endpoint, completion: completion)
@@ -158,50 +154,10 @@ extension AtlasAPI {
         client.fetch(from: endpoint, completion: completion)
     }
 
-    public func checkAddress(_ request: CheckAddressRequest,
+    public func checkAddress(with request: CheckAddressRequest,
                              completion: @escaping APIResultCompletion<CheckAddressResponse>) {
         let endpoint = CheckAddressEndpoint(config: config, checkAddressRequest: request)
         client.fetch(from: endpoint, completion: completion)
-    }
-
-}
-
-extension AtlasAPI {
-
-    /// Determines if client is authorized with access token to call restricted endpoints.
-    public var isAuthorized: Bool {
-        return config.authorizationToken != nil
-    }
-
-    /// Authorizes client with given access token required in restricted endpoints.
-    ///
-    /// - Postcondition:
-    ///   - If a client is authorized successfully `NSNotification.Name.AtlasAuthorized`
-    ///     is posted on `NotificationCenter.default`, otherwise it is `NSNotification.Name.AtlasDeauthorized`.
-    ///   - `NSNotification.Name.AtlasAuthorizationChanged` is always posted regadless the result.
-    ///
-    /// - Parameter withToken: access token retrieved from OAuth
-    ///
-    /// - Returns: `true` if token was correctly stored and client is authorized, otherwise `false`
-    @discardableResult
-    public func authorize(withToken tokenValue: String) -> Bool {
-        let token = APIAccessToken.store(token: tokenValue, for: config)
-        let isAuthorized = token != nil
-        notify(isAuthorized: isAuthorized, withToken: token)
-        return isAuthorized
-    }
-
-    /// Deauthorizes a client from accessing restricted endpoints.
-    public func deauthorize() {
-        let token = APIAccessToken.delete(for: config)
-        notify(isAuthorized: false, withToken: token)
-    }
-
-    /// Deauthorizes all clients by removing all stored tokens.
-    public static func deauthorizeAll() {
-        APIAccessToken.wipe().forEach { token in
-            notify(api: nil, isAuthorized: false, withToken: token)
-        }
     }
 
 }

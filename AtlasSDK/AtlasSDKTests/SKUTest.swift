@@ -1,5 +1,5 @@
 //
-//   Copyright © 2017 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import XCTest
@@ -73,12 +73,6 @@ class SKUTest: XCTestCase {
         let sku1 = ModelSKU(value: modelSKUValue)
         let sku2 = ModelSKU(value: modelSKUValue)
         expect(sku1) == sku2
-    }
-
-    func testEmptySKU() {
-        let emptySKU = ModelSKU.empty
-        expect(emptySKU.isValid) == false
-        expect(emptySKU.value) == ""
     }
 
 }

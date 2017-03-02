@@ -22,18 +22,19 @@ extension AtlasAPI {
         static func createCart(cartItemRequests: [CartItemRequest],
                                completion: @escaping APIResultCompletion<Cart>) {
             AtlasUIViewController.displayLoader { hideLoader in
-                AtlasAPI.shared?.createCart(withItems: cartItemRequests) { result in
+                AtlasAPI.shared?.createCart(with: cartItemRequests) { result in
                     hideLoader()
                     completion(result)
                 }
             }
         }
 
-        static func createCheckoutCart(forSelectedArticle selectedArticle: SelectedArticle,
+        static func createCartCheckout(for selectedArticle: SelectedArticle,
                                        addresses: CheckoutAddresses? = nil,
                                        completion: @escaping APIResultCompletion<CartCheckout>) {
             AtlasUIViewController.displayLoader { hideLoader in
-                AtlasAPI.shared?.createCheckoutCart(forSelectedArticle: selectedArticle, addresses: addresses) { result in
+                let cartItemRequest = CartItemRequest(sku: selectedArticle.sku, quantity: selectedArticle.quantity)
+                AtlasAPI.shared?.createCartCheckout(with: cartItemRequest, addresses: addresses) { result in
                     hideLoader()
                     completion(result)
                 }
@@ -144,7 +145,7 @@ extension AtlasAPI {
         static func createAddress(_ request: CreateAddressRequest,
                                   completion: @escaping APIResultCompletion<UserAddress>) {
             AtlasUIViewController.displayLoader { hideLoader in
-                AtlasAPI.shared?.createAddress(request) { result in
+                AtlasAPI.shared?.createAddress(with: request) { result in
                     hideLoader()
                     completion(result)
                 }
@@ -165,7 +166,7 @@ extension AtlasAPI {
         static func checkAddress(_ request: CheckAddressRequest,
                                  completion: @escaping APIResultCompletion<CheckAddressResponse>) {
             AtlasUIViewController.displayLoader { hideLoader in
-                AtlasAPI.shared?.checkAddress(request) { result in
+                AtlasAPI.shared?.checkAddress(with: request) { result in
                     hideLoader()
                     completion(result)
                 }

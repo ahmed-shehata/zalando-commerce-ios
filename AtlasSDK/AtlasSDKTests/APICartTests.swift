@@ -14,7 +14,7 @@ class APICartTests: AtlasAPIClientBaseTests {
         waitUntilAtlasAPIClientIsConfigured { done, api in
             let sku = SimpleSKU(value: "EV451G023-Q110ONE000")
             let cartItemRequest = CartItemRequest(sku: sku, quantity: 1)
-            api.createCart(withItems: [cartItemRequest]) { result in
+            api.createCart(with: [cartItemRequest]) { result in
                 switch result {
                 case .failure(let error):
                     fail(String(describing: error))
