@@ -6,7 +6,7 @@ import Foundation
 import UIKit
 import AtlasSDK
 
-struct OAuth2AuthorizationHandler {
+public struct OAuth2AuthorizationHandler {
 
     func authorize(completion: @escaping ResultCompletion<AuthorizationToken>) {
         guard let loginURL = Config.shared?.loginURL else { return }

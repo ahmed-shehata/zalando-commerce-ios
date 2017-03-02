@@ -5,7 +5,7 @@
 import Foundation
 import AtlasSDK
 
-enum LoginError: LocalizableError {
+public enum LoginError: LocalizableError {
 
     case accessDenied
     case requestFailed(error: Error?)
