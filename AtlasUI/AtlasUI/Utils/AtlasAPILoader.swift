@@ -93,10 +93,10 @@ extension AtlasAPI {
             }
         }
 
-        static func guestCheckout(with checkoutId: CheckoutId, token: GuestCheckoutToken,
+        static func guestCheckout(with guestCheckoutId: GuestCheckoutId,
                                   completion: @escaping APIResultCompletion<GuestCheckout>) {
             AtlasUIViewController.displayLoader { hideLoader in
-                AtlasAPI.shared?.guestCheckout(with: checkoutId, token: token) { result in
+                AtlasAPI.shared?.guestCheckout(with: guestCheckoutId) { result in
                     hideLoader()
                     completion(result)
                 }
@@ -113,10 +113,10 @@ extension AtlasAPI {
             }
         }
 
-        static func recommendations(forSKU sku: ConfigSKU, onView view: UIView,
+        static func recommendations(for sku: ConfigSKU, onView view: UIView,
                                     completion: @escaping APIResultCompletion<[Recommendation]>) {
             AtlasUIViewController.displayLoader(onView: view) { hideLoader in
-                AtlasAPI.shared?.recommendations(forSKU: sku) { result in
+                AtlasAPI.shared?.recommendations(for: sku) { result in
                     hideLoader()
                     completion(result)
                 }

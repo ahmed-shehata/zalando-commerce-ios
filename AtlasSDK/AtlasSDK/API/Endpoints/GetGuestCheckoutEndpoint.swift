@@ -6,10 +6,9 @@ struct GetGuestCheckoutEndpoint: CheckoutGatewayEndpoint {
 
     let config: Config
 
-    var path: String { return "guest-checkout/api/checkouts/\(checkoutId)/\(token)" }
+    var path: String { return "guest-checkout/api/checkouts/\(guestCheckoutId.checkoutId)/\(guestCheckoutId.token)" }
     let acceptedContentType = "application/x.zalando.guest-checkout+json"
 
-    let checkoutId: CheckoutId
-    let token: GuestCheckoutToken
+    let guestCheckoutId: GuestCheckoutId
 
 }

@@ -8,12 +8,10 @@ import Foundation
 
 public struct GuestOrderRequest {
 
-    public let checkoutId: CheckoutId
-    public let token: GuestCheckoutToken
+    public let guestCheckoutId: GuestCheckoutId
 
-    public init(checkoutId: String, token: String) {
-        self.checkoutId = checkoutId
-        self.token = token
+    public init(guestCheckoutId: GuestCheckoutId) {
+        self.guestCheckoutId = guestCheckoutId
     }
 
 }
@@ -27,8 +25,8 @@ extension GuestOrderRequest: JSONRepresentable {
 
     func toJSON() -> JSONDictionary {
         return [
-            Keys.checkoutId: checkoutId,
-            Keys.token: token
+            Keys.checkoutId: guestCheckoutId.checkoutId,
+            Keys.token: guestCheckoutId.token
         ]
     }
 
