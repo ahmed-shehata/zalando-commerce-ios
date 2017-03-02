@@ -14,6 +14,10 @@ public struct Article {
     public let availableUnits: [Unit]
     public let media: Media?
 
+}
+
+extension Article {
+
     public var hasSingleUnit: Bool {
         return units.count == 1
     }
@@ -26,9 +30,9 @@ public struct Article {
         return media?.mediaItems.first?.catalogURL
     }
 
-    public struct Brand {
-        public let name: String
-    }
+}
+
+extension Article {
 
     public struct Unit {
         public let id: SimpleSKU
@@ -38,20 +42,6 @@ public struct Article {
         public let available: Bool
         public let stock: Int?
         public let partner: Partner?
-    }
-
-    public struct Media {
-        public let mediaItems: [MediaItem]
-    }
-
-    public struct MediaItem {
-        public let order: Int
-        public let catalogURL: URL
-        public let catalogHDURL: URL
-        public let detailURL: URL
-        public let detailHDURL: URL
-        public let largeURL: URL
-        public let largeHDURL: URL
     }
 
     public struct Partner {
@@ -68,14 +58,13 @@ extension Article: JSONInitializable {
         guard let id = json["id"].string,
             let name = json["name"].string,
             let color = json["color"].string,
-            let brand = Brand(json: json["brand"]),
-            let media = Media(json: json["media"])
+            let brand = Brand(json: json["brand"])
             else { return nil }
 
         self.id = ConfigSKU(value: id)
         self.name = name
         self.color = color
-        self.media = media
+        self.media = Media(json: json["media"])
         self.brand = brand
         self.units = json["units"].jsons.flatMap { Article.Unit(json: $0) }
         self.availableUnits = units.filter { $0.available }
@@ -108,44 +97,6 @@ extension Article.Unit: JSONInitializable {
 
 }
 
-extension Article.Brand: JSONInitializable {
-    init?(json: JSON) {
-        guard let name = json["name"].string else { return nil }
-
-        self.name = name
-    }
-}
-
-extension Article.Media: JSONInitializable {
-
-    init?(json: JSON) {
-        self.mediaItems = json["media_items"].jsons.flatMap { Article.MediaItem(json: $0) }
-    }
-
-}
-
-extension Article.MediaItem: JSONInitializable {
-
-    init?(json: JSON) {
-        guard let order = json["order"].int,
-            let catalogURL = json["catalog"].url,
-            let catalogHDURL = json["catalog_hd"].url,
-            let detailURL = json["detail"].url,
-            let detailHDURL = json["detail_hd"].url,
-            let largeURL = json["large"].url,
-            let largeHDURL = json["large_hd"].url
-            else { return nil }
-        self.order = order
-        self.catalogURL = catalogURL
-        self.catalogHDURL = catalogHDURL
-        self.detailURL = detailURL
-        self.detailHDURL = detailHDURL
-        self.largeURL = largeURL
-        self.largeHDURL = largeHDURL
-    }
-
-}
-
 extension Article.Partner: JSONInitializable {
 
     init?(json: JSON) {
@@ -158,5 +109,33 @@ extension Article.Partner: JSONInitializable {
         self.name = name
         self.detailsURL = detailsURL
     }
+
+}
+
+extension Article.Unit: Equatable { }
+
+public func == (lhs: Article.Unit, rhs: Article.Unit) -> Bool {
+    return lhs.id == rhs.id
+        && lhs.size == rhs.size
+        && lhs.price == rhs.price
+        && lhs.originalPrice == rhs.originalPrice
+        && lhs.available == rhs.available
+        && lhs.stock == rhs.stock
+        && lhs.partner == rhs.partner
+}
+
+extension Article.Partner: Equatable { }
+
+public func == (lhs: Article.Partner, rhs: Article.Partner) -> Bool {
+    return lhs.id == rhs.id
+        && lhs.name == rhs.name
+        && lhs.detailsURL == rhs.detailsURL
+}
+
+extension Article.Unit {
+
+    public static let empty = Article.Unit(id: SimpleSKU(value: ""),
+                                           size: "", price: Money.zero, originalPrice: Money.zero,
+                                           available: false, stock: nil, partner: nil)
 
 }

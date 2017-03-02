@@ -9,4 +9,8 @@ public enum Gender: String {
     case male = "MALE"
     case female = "FEMALE"
 
+    public var description: String {
+        return rawValue
+    }
+
 }

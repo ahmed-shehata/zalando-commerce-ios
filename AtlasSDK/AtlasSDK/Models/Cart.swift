@@ -4,19 +4,25 @@
 
 import Foundation
 
+// TODO: document it, please...
+
 public struct Cart {
+
     public let id: CartId
     public let items: [CartItem]
     public let itemsOutOfStock: [SimpleSKU]
     public let delivery: Delivery
     public let grossTotal: Money
     public let taxTotal: Money
+
 }
 
 extension Cart: Hashable {
+
     public var hashValue: Int {
         return id.hashValue
     }
+
 }
 
 public func == (lhs: Cart, rhs: Cart) -> Bool {
@@ -49,4 +55,13 @@ extension Cart: JSONInitializable {
                   grossTotal: grossTotal,
                   taxTotal: taxTotal)
     }
+
+}
+
+extension Cart {
+
+    func hasStock(of sku: SimpleSKU) -> Bool {
+        return items.contains { $0.sku == sku } && !itemsOutOfStock.contains(sku)
+    }
+
 }

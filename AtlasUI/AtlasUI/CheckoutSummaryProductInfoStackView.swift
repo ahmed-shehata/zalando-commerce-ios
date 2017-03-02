@@ -1,5 +1,5 @@
 //
-//  Copyright © 2017 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import UIKit
@@ -89,8 +89,8 @@ extension CheckoutSummaryProductInfoStackView: UIDataBuilder {
         brandNameLabel.text = viewModel.article.brand.name
         articleNameLabel.text = viewModel.article.name
         unitColorLabel.text = viewModel.article.color
-        if let price = viewModel.unit?.price {
-            unitPriceLabel.text = Localizer.format(price: price)
+        if viewModel.isSelected {
+            unitPriceLabel.text = Localizer.format(price: viewModel.unit.price)
         } else {
             unitPriceLabel.text = ""
         }

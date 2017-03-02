@@ -26,7 +26,7 @@ class AtlasAPIClientBaseTests: XCTestCase {
 
     func waitUntilAtlasAPIClientIsConfigured(actions: @escaping (_ done: @escaping () -> Void, _ api: AtlasAPI) -> Void) {
         waitUntil(timeout: 10) { done in
-            Atlas.configure(options: Options.forTests()) { result in
+            AtlasAPI.configure(options: Options.forTests()) { result in
                 switch result {
                 case .failure(let error):
                     fail(String(describing: error))
@@ -43,10 +43,10 @@ class AtlasAPIClientBaseTests: XCTestCase {
     }
 
     func mockedAtlasAPI(forURL url: URL,
-                              options: Options? = nil,
-                              data: Data?,
-                              status: HTTPStatus,
-                              errorCode: Int? = nil) -> AtlasAPI {
+                        options: Options? = nil,
+                        data: Data?,
+                        status: HTTPStatus,
+                        errorCode: Int? = nil) -> AtlasAPI {
 
         let apiURL = AtlasMockAPI.endpointURL(forPath: "/")
         let loginURL = AtlasMockAPI.endpointURL(forPath: "/oauth2/authorize")

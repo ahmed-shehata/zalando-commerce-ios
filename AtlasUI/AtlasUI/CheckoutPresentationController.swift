@@ -81,6 +81,10 @@ final class CheckoutPresentationController: UIPresentationController {
 
     @objc
     fileprivate func dimmingViewTapped() {
-        presentingViewController.dismiss(animated: true, completion: nil)
+        if AtlasUIViewController.presented?.dismissalReason == nil {
+            AtlasUIViewController.presented?.dismissalReason = AtlasUI.CheckoutResult.userCancelled
+        }
+        try? AtlasUIViewController.presented?.dismissAtlasCheckoutUI()
     }
+
 }

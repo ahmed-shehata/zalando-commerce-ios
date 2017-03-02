@@ -10,12 +10,14 @@ class AtlasUIViewController: UIViewController {
     fileprivate(set) static weak var presented: AtlasUIViewController?
 
     let mainNavigationController: UINavigationController
+    var dismissalReason: AtlasUI.CheckoutResult?
     let atlasUI: AtlasUI
 
     fileprivate var bottomConstraint: NSLayoutConstraint?
     fileprivate let loaderView = LoaderView()
 
     private let reachabilityNotifier = ReachabilityNotifier()
+    private let completion: AtlasUICheckoutCompletion
 
     fileprivate let screenshotCoverView: UIView = {
         let view = UIView()
@@ -23,10 +25,15 @@ class AtlasUIViewController: UIViewController {
         return view
     }()
 
-    init(for sku: ConfigSKU, atlasUI: AtlasUI) {
+    enum Error: LocalizableError {
+        case dismissalReasonNotSet
+    }
+
+    init(forSKU sku: ConfigSKU, atlasUI: AtlasUI, completion: @escaping AtlasUICheckoutCompletion) {
         let getArticleDetailsViewController = GetArticleDetailsViewController(sku: sku)
         self.mainNavigationController = UINavigationController(rootViewController: getArticleDetailsViewController)
         self.atlasUI = atlasUI
+        self.completion = completion
 
         super.init(nibName: nil, bundle: nil)
     }
@@ -51,13 +58,22 @@ class AtlasUIViewController: UIViewController {
         reachabilityNotifier.start()
     }
 
+    func dismissAtlasCheckoutUI() throws {
+        guard let reason = dismissalReason else { throw Error.dismissalReasonNotSet }
+        let completion = self.completion
+        dismiss(animated: true) {
+            completion(reason)
+        }
+    }
+
 }
 
 extension AtlasUIViewController {
 
-    func showLoader() {
+    func showLoader(onView view: UIView? = nil) {
+        let supportingView = view ?? UIApplication.topViewController()?.view
         loaderView.removeFromSuperview()
-        UIApplication.topViewController()?.view.addSubview(loaderView)
+        supportingView?.addSubview(loaderView)
         loaderView.fillInSuperview()
         loaderView.buildView()
         loaderView.show()
@@ -68,8 +84,8 @@ extension AtlasUIViewController {
         loaderView.removeFromSuperview()
     }
 
-    static func displayLoader(block: (@escaping () -> Void) -> Void) {
-        presented?.showLoader()
+    static func displayLoader(onView view: UIView? = nil, block: (@escaping () -> Void) -> Void) {
+        presented?.showLoader(onView: view)
         block {
             presented?.hideLoader()
         }
@@ -119,8 +135,8 @@ extension AtlasUIViewController: UIScreenshotBuilder {
     private func hideScreenshotCover() {
         UIView.animate(animations: { [weak self] in
             self?.screenshotCoverView.alpha = 0
-        }, completion: { [weak self] _ in
-            self?.screenshotCoverView.removeFromSuperview()
+            }, completion: { [weak self] _ in
+                self?.screenshotCoverView.removeFromSuperview()
         })
     }
 

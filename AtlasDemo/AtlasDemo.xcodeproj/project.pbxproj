@@ -56,6 +56,7 @@
 		E09393D6841BD5B02BAF1F879FA14420 /* Swifter.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 1D15645E9195207A25A4D56198499AE7 /* Swifter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E39AF4AF3A83F07266F020D5E6D3A55C /* Nuke.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 6F9BDB072FD0595FBC1302107487559C /* Nuke.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E9CFD6BFA89DE23D6DB0C5B8469D3CF3 /* AtlasMockAPI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 400508DFC64A49E6ECB6AC89CF040BEE /* AtlasMockAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		77F0BBA9E57C9368D10DEE6BF9361475 /* PDPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7595CA1E31CBC66143CE5B7428A7F846 /* PDPViewController.swift */; };
 		EE7374754508E203252E55A91A2A8167 /* Nuke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F9BDB072FD0595FBC1302107487559C /* Nuke.framework */; };
 /* End PBXBuildFile section */
 
@@ -145,6 +146,7 @@
 		DE6D68AFDCE06CE5A1A54A8B3C37EA3A /* Bridging-Header.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		E4F833A4CE21235444066F2613EFB09A /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		E68BC11A4A9FD71255E1A93A12587B3D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		7595CA1E31CBC66143CE5B7428A7F846 /* PDPViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDPViewController.swift; sourceTree = "<group>"; };
 		F71AFAF33E121C103808CE6C2F4B14B6 /* ArticlesClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticlesClient.swift; sourceTree = "<group>"; };
 		F726829F5154A9F85A931EAFC8D9E730 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F89FA499DC08F5C540C7FE44552F23A6 /* DemoCatalog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoCatalog.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 				F726829F5154A9F85A931EAFC8D9E730 /* AppDelegate.swift */,
 				D89AF6C44EE98EAB17A1E81EC252C5AD /* AppSetup.swift */,
 				29D25E49A4BA3C66C371430FFD7DC396 /* CatalogViewController.swift */,
+				7595CA1E31CBC66143CE5B7428A7F846 /* PDPViewController.swift */,
 				74F2F3D1790B7E063C3527BF921B7E1D /* ProductCollectionViewCell.swift */,
 				68D47F523CFD3049B145328DBAAD3BF6 /* ProfileViewController.swift */,
 				6127C86D49960AE55D91C99ECF4382F1 /* InterfaceLanguage.swift */,
@@ -467,6 +470,7 @@
 				00B6904C8A898ADF7F49357C4DE9E681 /* UIAlertController.swift in Sources */,
 				1862B91B111AAE37D4D8484B29B5AE6D /* CatalogViewController.swift in Sources */,
 				37390AB837A99ABB76439EB6FFF435DC /* DemoArticle.swift in Sources */,
+				77F0BBA9E57C9368D10DEE6BF9361475 /* PDPViewController.swift in Sources */,
 				A780FF331E667E4F680D3C330ED07DB8 /* DemoCatalog.swift in Sources */,
 				0FE6FE338EDD0304EC47F380FA6E7F0F /* ProductCollectionViewCell.swift in Sources */,
 				A12BA69E9882091D0E7458127925A441 /* ProfileViewController.swift in Sources */,

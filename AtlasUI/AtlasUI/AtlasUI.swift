@@ -6,14 +6,30 @@ import Foundation
 import UIKit
 import AtlasSDK
 
+public typealias AtlasUICheckoutCompletion = (AtlasUI.CheckoutResult) -> Void
+
 // TODO: document it, please...
 
 final public class AtlasUI {
 
     public enum Error: LocalizableError {
-
         case notPresented
+    }
 
+    /// Result that can returned after presenting the Checkout screen
+    ///
+    /// - orderPlaced: The user successfully placed the order
+    ///                - orderConfirmation: The order confirmation object with the needed properties
+    ///                - customerRequestedArticle: if not nil, then the customer is interested to view a specific product from the
+    ///                                            recommended products displayed after purchasing
+    ///                                            Please open the product detail page for the given SKU
+    /// - userCancelled: The user cancelled the checkout process
+    /// - finishedWithError: Error is displayed to the user
+    ///                      - error: The displayed error
+    public enum CheckoutResult {
+        case orderPlaced(orderConfirmation: OrderConfirmation, customerRequestedArticle: ConfigSKU?)
+        case userCancelled
+        case finishedWithError(error: Swift.Error)
     }
 
     public let api: AtlasAPI
@@ -25,7 +41,7 @@ final public class AtlasUI {
     }
 
     public static func configure(options: Options? = nil, completion: @escaping ResultCompletion<AtlasUI>) {
-        Atlas.configure(options: options) { result in
+        AtlasAPI.configure(options: options) { result in
             switch result {
             case .failure(let error):
                 Logger.error(error)
@@ -44,8 +60,11 @@ final public class AtlasUI {
         }
     }
 
-    public func presentCheckout(onViewController viewController: UIViewController, for sku: ConfigSKU) {
-        let atlasUIViewController = AtlasUIViewController(for: sku, atlasUI: self)
+    public func presentCheckout(onViewController viewController: UIViewController,
+                                for sku: ConfigSKU,
+                                completion: @escaping AtlasUICheckoutCompletion) {
+
+        let atlasUIViewController = AtlasUIViewController(forSKU: sku, atlasUI: self, completion: completion)
 
         let checkoutTransitioning = CheckoutTransitioningDelegate()
         atlasUIViewController.transitioningDelegate = checkoutTransitioning

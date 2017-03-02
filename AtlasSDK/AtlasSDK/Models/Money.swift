@@ -6,7 +6,7 @@ import Foundation
 
 public struct Money {
 
-    public static let Zero = Money(amount: 0, currency: "")
+    public static let zero = Money(amount: 0, currency: "")
 
     public let amount: MoneyAmount
     public let currency: Currency

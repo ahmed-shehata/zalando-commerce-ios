@@ -10,8 +10,6 @@ import Nimble
 
 class APICreateCheckoutTests: AtlasAPIClientBaseTests {
 
-    fileprivate let addressId = "6702759"
-
     func testCreateCheckoutFromArticle() {
         waitUntilAtlasAPIClientIsConfigured { done, api in
             let sku = ConfigSKU(value: "AD541L009-G11")
@@ -20,8 +18,9 @@ class APICreateCheckoutTests: AtlasAPIClientBaseTests {
                 case .failure(let error):
                     fail(String(describing: error))
                 case .success(let article):
-                    let selectedArticle = SelectedArticle(article: article, unitIndex: 0, desiredQuantity: 1)
-                    api.createCheckoutCart(forSelectedArticle: selectedArticle) { result in
+                    let unit = article.units.first { $0.available }!
+                    let cartItemRequest = CartItemRequest(sku: unit.id, quantity: 1)
+                    api.createCartCheckout(with: cartItemRequest) { result in
                         switch result {
                         case .failure(let error):
                             fail(String(describing: error))

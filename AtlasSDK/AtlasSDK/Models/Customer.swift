@@ -4,6 +4,8 @@
 
 import Foundation
 
+// TODO: document it, please...
+
 public struct Customer {
 
     public let customerNumber: CustomerNumber
@@ -11,14 +13,6 @@ public struct Customer {
     public let firstName: String
     public let lastName: String
     public let email: String
-
-    public enum Gender: String, CustomStringConvertible {
-        case Male = "MALE", Female = "FEMALE"
-
-        public var description: String {
-            return rawValue
-        }
-    }
 
 }
 
@@ -33,7 +27,7 @@ extension Customer: JSONInitializable {
             else { return nil }
 
         self.customerNumber = customerNumber
-        self.gender = Gender(rawValue: gender) ?? Gender.Female // default value in Zalando registration
+        self.gender = Gender(rawValue: gender) ?? Gender.female // default value in Zalando registration
         self.firstName = firstName
         self.lastName = lastName
         self.email = email

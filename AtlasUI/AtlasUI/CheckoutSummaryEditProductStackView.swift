@@ -1,5 +1,5 @@
 //
-//  Copyright © 2017 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import UIKit
@@ -71,7 +71,7 @@ class CheckoutSummaryEditProductStackView: UIStackView {
     }
 
     private func sizeSelected(at idx: Int, for selectedArticle: SelectedArticle) {
-        let updatedArticle = SelectedArticle(article: selectedArticle.article, unitIndex: idx, desiredQuantity: selectedArticle.quantity)
+        let updatedArticle = SelectedArticle(changeSelectedIndex: idx, from: selectedArticle)
 
         guard let currentSelectedArticle = dataSource?.selectedArticle,
             dataSource?.checkoutContainer.collectionView.type == .size, updatedArticle != currentSelectedArticle else { return }
@@ -81,9 +81,7 @@ class CheckoutSummaryEditProductStackView: UIStackView {
     }
 
     private func quantitySelected(at idx: Int, for selectedArticle: SelectedArticle) {
-        let updatedArticle = SelectedArticle(article: selectedArticle.article,
-                                             unitIndex: selectedArticle.unitIndex,
-                                             desiredQuantity: idx + 1)
+        let updatedArticle = SelectedArticle(changeQuantity: idx + 1, from: selectedArticle)
 
         guard let currentSelectedArticle = dataSource?.selectedArticle,
             dataSource?.checkoutContainer.collectionView.type == .quantity, updatedArticle != currentSelectedArticle else { return }
@@ -144,19 +142,21 @@ extension CheckoutSummaryEditProductStackView: UIDataBuilder {
     typealias T = CheckoutSummaryViewModel
 
     func configure(viewModel: T) {
-        if let size = viewModel.dataModel.selectedArticle.unit?.size {
+        let selectedArticle = viewModel.dataModel.selectedArticle
+        if selectedArticle.isSelected {
             let sizeLabel = Localizer.format(string: "summaryView.button.size")
+            let size = selectedArticle.unit.size
             sizeButton.setTitle("\(sizeLabel): \(size)", for: .normal)
         } else {
             sizeButton.setTitle(Localizer.format(string: "summaryView.title.selectSize"), for: .normal)
         }
 
         let quantityLabel = Localizer.format(string: "summaryView.button.quantity")
-        quantityButton.setTitle("\(quantityLabel): \(viewModel.dataModel.selectedArticle.quantity)", for: .normal)
+        quantityButton.setTitle("\(quantityLabel): \(selectedArticle.quantity)", for: .normal)
 
         sizeButton.removeTarget(self, action: nil, for: .touchUpInside)
         quantityButton.removeTarget(self, action: nil, for: .touchUpInside)
-        if viewModel.layout.allowArticleRefine {
+        if viewModel.layout.allowsArticleRefine {
             sizeButton.addTarget(self, action: #selector(sizeButtonTapped), for: .touchUpInside)
             quantityButton.addTarget(self, action: #selector(quantityButtonTapped), for: .touchUpInside)
         }

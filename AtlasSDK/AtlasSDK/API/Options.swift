@@ -57,6 +57,7 @@ extension Options: CustomStringConvertible {
             + ", \n\tuseSandboxEnvironment = \(useSandboxEnvironment) "
             + ", \n\tsalesChannel = \(format(optional: salesChannel)) "
             + ", \n\tinterfaceLanguage = \(format(optional: interfaceLanguage)) "
+            + ", \n\tconfigurationURL = \(configurationURL) "
             + " } "
     }
 

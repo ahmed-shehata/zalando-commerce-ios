@@ -216,6 +216,10 @@ extension LoggedInSummaryActionHandler {
         }
         delegate.updated(layout: OrderPlacedLayout())
         delegate.updated(actionHandler: OrderPlacedSummaryActionHandler())
+
+        let orderConfirmation = OrderConfirmation(order: order, selectedArticle: selectedArticle)
+        let result = AtlasUI.CheckoutResult.orderPlaced(orderConfirmation: orderConfirmation, customerRequestedArticle: nil)
+        AtlasUIViewController.presented?.dismissalReason = result
     }
 
 }
@@ -234,7 +238,7 @@ extension LoggedInSummaryActionHandler {
                                                addresses: CheckoutAddresses? = nil,
                                                completion: @escaping ResultCompletion<CartCheckout>) {
 
-        AtlasAPI.withLoader.createCheckoutCart(forSelectedArticle: selectedArticle, addresses: addresses) { result in
+        AtlasAPI.withLoader.createCartCheckout(for: selectedArticle, addresses: addresses) { result in
             switch result {
             case .failure(let error, _):
                 guard case let APIError.checkoutFailed(cart, _) = error else {

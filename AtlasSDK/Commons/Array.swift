@@ -1,5 +1,5 @@
 //
-//  Copyright © 2017 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
@@ -12,8 +12,6 @@ extension Array {
             return self[index]
         }
     }
-    
-}
 
 extension Array where Element: Equatable {
 

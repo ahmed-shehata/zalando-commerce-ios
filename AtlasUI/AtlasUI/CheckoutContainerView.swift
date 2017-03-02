@@ -1,5 +1,5 @@
 //
-//  Copyright © 2017 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import UIKit
@@ -173,7 +173,7 @@ extension CheckoutContainerView: UIDataBuilder {
         footerStackView.configure(viewModel: viewModel)
 
         overlayButton.removeTarget(self, action: nil, for: .touchUpInside)
-        if viewModel.layout.allowArticleRefine {
+        if viewModel.layout.allowsArticleRefine {
             overlayButton.addTarget(self, action: #selector(overlayButtonTapped), for: .touchUpInside)
         }
     }

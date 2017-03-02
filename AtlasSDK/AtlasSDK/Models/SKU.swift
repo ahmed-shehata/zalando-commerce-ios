@@ -1,5 +1,5 @@
 //
-//  Copyright © 2017 Zalando SE. All rights reserved.
+//  Copyright © 2016-2017 Zalando SE. All rights reserved.
 //
 
 import Foundation
@@ -21,9 +21,11 @@ public func == <T: SKU>(lhs: T, rhs: T) -> Bool {
 }
 
 enum SKUError: Swift.Error {
+
     case invalidPattern
     case invalidConversion
     case noValue
+
 }
 
 public enum SKUPattern: String {
@@ -60,10 +62,6 @@ extension SKU {
         guard let newValue = Self.pattern.find(in: sku.value)
             else { throw SKUError.invalidConversion }
         self.init(value: newValue)
-    }
-
-    static var empty: Self {
-        return Self(value: "")
     }
 
 }
