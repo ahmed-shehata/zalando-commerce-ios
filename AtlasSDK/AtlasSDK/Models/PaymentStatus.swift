@@ -6,7 +6,7 @@ import Foundation
 
 public enum PaymentStatus: Equatable {
 
-    case guestRedirect(encryptedCheckoutId: String, encryptedToken: String)
+    case guestRedirect(guestCheckoutId: GuestCheckoutId)
     case redirect
     case success
     case cancel
@@ -42,8 +42,9 @@ extension PaymentStatus {
         if let paymentStatus = PaymentStatus(from: requestURLComponents.paymentStatus) {
             self = paymentStatus
         } else if let guestRedirect = requestURLComponents.guestRedirect {
-            self = .guestRedirect(encryptedCheckoutId: guestRedirect.encryptedCheckoutId,
-                                  encryptedToken: guestRedirect.encryptedToken)
+            let guestCheckoutId = GuestCheckoutId(checkoutId: guestRedirect.encryptedCheckoutId,
+                                                  token: guestRedirect.encryptedToken)
+            self = .guestRedirect(guestCheckoutId: guestCheckoutId)
         } else {
             self = .redirect
         }
@@ -51,8 +52,9 @@ extension PaymentStatus {
 
     public static func == (lhs: PaymentStatus, rhs: PaymentStatus) -> Bool {
         switch (lhs, rhs) {
-        case (.guestRedirect(let lhsCheckoutId, let lhsToken), .guestRedirect(let rhsCheckoutId, let rhsToken)):
-            return lhsCheckoutId == rhsCheckoutId && lhsToken == rhsToken
+        case (.guestRedirect(let lhsGuestCheckoutId), .guestRedirect(let rhsGuestCheckoutId)):
+            return lhsGuestCheckoutId.checkoutId == lhsGuestCheckoutId.checkoutId
+                && lhsGuestCheckoutId.token == rhsGuestCheckoutId.token
         case (.redirect, .redirect): return true
         case (.success, .success): return true
         case (.cancel, .cancel): return true

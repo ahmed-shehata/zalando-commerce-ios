@@ -71,7 +71,7 @@ open class OAuth2LoginViewController: UIViewController {
 extension OAuth2LoginViewController: UIWebViewDelegate {
 
     public func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest,
-                 navigationType: UIWebViewNavigationType) -> Bool {
+                        navigationType: UIWebViewNavigationType) -> Bool {
         guard let url = request.url else {
             return dismissViewController(withFailure: .missingURL)
         }

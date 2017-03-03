@@ -4,8 +4,6 @@
 
 import Foundation
 
-// TODO: document it, please...
-
 extension AtlasAPI {
 
     /**
@@ -133,10 +131,10 @@ extension AtlasAPI {
        - checkoutId: identifier of a checkout (`Checkout.id`)
        - completion: completes async with `APIResult.success` with `Order`.
      */
-    public func createOrder(from checkoutId: CheckoutId,
+    public func createOrder(from checkout: Checkout,
                             completion: @escaping APIResultCompletion<Order>) {
-        let parameters = OrderRequest(checkoutId: checkoutId).toJSON()
-        let endpoint = CreateOrderEndpoint(config: config, parameters: parameters, checkoutId: checkoutId)
+        let parameters = OrderRequest(checkout: checkout).toJSON()
+        let endpoint = CreateOrderEndpoint(config: config, parameters: parameters)
         client.fetch(from: endpoint, completion: completion)
     }
 
@@ -144,14 +142,12 @@ extension AtlasAPI {
      Retrieves details of `GuestCheckout`.
 
      - Parameters:
-     - checkoutId: identifier of a guest checkout (`GuestCheckout.id`)
-     - completion: completes async with `APIResult.success` with `GuestCheckout`.
-
+         - checkoutId: identifier of a guest checkout (`GuestCheckout.id`)
+         - completion: completes async with `APIResult.success` with `GuestCheckout`.
      */
-    public func guestCheckout(with checkoutId: CheckoutId,
-                              token: GuestCheckoutToken,
+    public func guestCheckout(with guestCheckoutId: GuestCheckoutId,
                               completion: @escaping APIResultCompletion<GuestCheckout>) {
-        let endpoint = GetGuestCheckoutEndpoint(config: config, checkoutId: checkoutId, token: token)
+        let endpoint = GetGuestCheckoutEndpoint(config: config, guestCheckoutId: guestCheckoutId)
         client.fetch(from: endpoint, completion: completion)
     }
 
@@ -196,11 +192,37 @@ extension AtlasAPI {
     }
 
     /**
-     Deletes given `EquatableAddress` from customer's address book.
+     Creates new address in customer's address book.
     
      - Parameters:
-       - address: `EquatableAddress` to be removed.
-       - completion: completion: completes async with `APIResult.success` with success status.
+       - request: address details request
+       - completion: completes async with `APIResult.success` with created `UserAddress`.
+     */
+    public func createAddress(with request: CreateAddressRequest,
+                              completion: @escaping APIResultCompletion<UserAddress>) {
+        let endpoint = CreateAddressEndpoint(config: config, createAddressRequest: request)
+        client.fetch(from: endpoint, completion: completion)
+    }
+
+    /**
+     Updates customer's address.
+    
+     - Parameters:
+       - request: address details to be updated
+       - completion: completes async with `APIResult.success` with updated `UserAddress`.
+     */
+    public func updateAddress(with request: UpdateAddressRequest,
+                              completion: @escaping APIResultCompletion<UserAddress>) {
+        let endpoint = UpdateAddressEndpoint(config: config, updateAddressRequest: request)
+        client.fetch(from: endpoint, completion: completion)
+    }
+
+    /**
+     Deletes given `EquatableAddress` from customer's address book.
+     
+     - Parameters:
+         - address: `EquatableAddress` to be removed.
+         - completion: completes async with `APIResult.success` with success status.
      */
     public func delete(_ address: EquatableAddress,
                        completion: @escaping APIResultCompletion<Bool>) {
@@ -208,26 +230,27 @@ extension AtlasAPI {
         client.touch(endpoint: endpoint, completion: completion)
     }
 
-    public func createAddress(with request: CreateAddressRequest,
-                              completion: @escaping APIResultCompletion<UserAddress>) {
-        let endpoint = CreateAddressEndpoint(config: config, createAddressRequest: request)
-        client.fetch(from: endpoint, completion: completion)
-    }
-
-    public func updateAddress(with addressId: AddressId,
-                              request: UpdateAddressRequest,
-                              completion: @escaping APIResultCompletion<UserAddress>) {
-        let endpoint = UpdateAddressEndpoint(config: config, addressId: addressId, updateAddressRequest: request)
-        client.fetch(from: endpoint, completion: completion)
-    }
-
+    /**
+     Verifies correctness of a given address
+    
+     - Parameters:
+       - request: address data
+       - completion: completes async with `APIResult.success` with `CheckAddressResponse`
+     */
     public func checkAddress(with request: CheckAddressRequest,
                              completion: @escaping APIResultCompletion<CheckAddressResponse>) {
         let endpoint = CheckAddressEndpoint(config: config, checkAddressRequest: request)
         client.fetch(from: endpoint, completion: completion)
     }
 
-    public func recommendations(forSKU sku: ConfigSKU,
+    /**
+     Fetches recommendations for given article's SKU
+    
+     - Parameters:
+       - sku: article's identifier to on which recommendations are based (`Article.sku`)
+       - completion: completes async with `APIResult.success` with `[Recommendation]`
+     */
+    public func recommendations(for sku: ConfigSKU,
                                 completion: @escaping APIResultCompletion<[Recommendation]>) {
         let endpoint = GetArticleRecommendationsEndpoint(config: config, sku: sku)
         client.fetch(from: endpoint, completion: completion)

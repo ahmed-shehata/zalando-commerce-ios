@@ -109,7 +109,8 @@ extension GuestSummaryActionHandlerTests {
         guard let dataModel = mockedDataSourceDelegate?.dataModel else { return fail() }
         mockedDataSourceDelegate?.dataModel = addAddress(toDataModel: dataModel)
         guard let paymentViewController = showPaymentScreen() else { return fail() }
-        paymentViewController.paymentCompletion?(.guestRedirect(encryptedCheckoutId: "CHECKOUT_ID", encryptedToken: "TOKEN"))
+        let guestCheckoutId = GuestCheckoutId(checkoutId: "CHECKOUT_ID", token: "TOKEN")
+        paymentViewController.paymentCompletion?(.guestRedirect(guestCheckoutId: guestCheckoutId))
         _ = self.defaultNavigationController?.popViewController(animated: true)
     }
 

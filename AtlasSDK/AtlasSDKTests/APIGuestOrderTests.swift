@@ -12,7 +12,8 @@ class APIGuestOrderTests: AtlasAPIClientBaseTests {
 
     func testCreateGuestOrder() {
         waitUntilAtlasAPIClientIsConfigured { done, api in
-            let request = GuestOrderRequest(checkoutId: "CHECKOUT_ID", token: "TOKEN")
+            let guestCheckoutId = GuestCheckoutId(checkoutId: "CHECKOUT_ID", token: "TOKEN")
+            let request = GuestOrderRequest(guestCheckoutId: guestCheckoutId)
             api.createGuestOrder(request: request) { result in
                 switch result {
                 case .failure(let error):

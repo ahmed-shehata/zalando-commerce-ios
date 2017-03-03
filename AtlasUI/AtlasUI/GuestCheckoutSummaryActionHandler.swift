@@ -17,8 +17,7 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
             updateDataModel(addresses: addresses, guestCheckout: guestCheckout)
         }
     }
-    var checkoutId: CheckoutId?
-    var token: GuestCheckoutToken?
+    var guestCheckoutId: GuestCheckoutId?
 
     init(email: String) {
         self.actionHandler.emailAddress = email
@@ -29,12 +28,12 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
             UserError.display(error: CheckoutError.missingAddress)
             return
         }
-        guard let checkoutId = checkoutId, let token = token else {
+        guard let guestCheckoutId = guestCheckoutId else {
             UserError.display(error: CheckoutError.missingPaymentMethod)
             return
         }
 
-        let request = GuestOrderRequest(checkoutId: checkoutId, token: token)
+        let request = GuestOrderRequest(guestCheckoutId: guestCheckoutId)
         AtlasAPI.withLoader.createGuestOrder(request: request) { [weak self] result in
             guard let order = result.process() else { return }
             self?.handleOrderConfirmation(order: order)
@@ -51,11 +50,11 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
             let paymentViewController = PaymentViewController(paymentURL: paymentURL, callbackURL: callbackURL)
             paymentViewController.paymentCompletion = { [weak self] paymentStatus in
                 switch paymentStatus {
-                case .guestRedirect(let encryptedCheckoutId, let encryptedToken):
-                    self?.getGuestCheckout(with: encryptedCheckoutId, token: encryptedToken)
+                case .guestRedirect(let guestCheckoutId):
+                    self?.getGuestCheckout(with: guestCheckoutId)
                 case .redirect:
-                    if let checkoutId = self?.checkoutId, let token = self?.token {
-                        self?.getGuestCheckout(with: checkoutId, token: token)
+                    if let guestCheckoutId = self?.guestCheckoutId {
+                        self?.getGuestCheckout(with: guestCheckoutId)
                     }
                 case .cancel:
                     break
@@ -185,16 +184,14 @@ extension GuestCheckoutSummaryActionHandler {
     fileprivate func clearCurrentState() {
         paymentURL = nil
         guestCheckout = nil
-        checkoutId = nil
-        token = nil
+        guestCheckoutId = nil
     }
 
-    fileprivate func getGuestCheckout(with checkoutId: CheckoutId, token: GuestCheckoutToken) {
-        AtlasAPI.withLoader.guestCheckout(with: checkoutId, token: token) { [weak self] result in
+    fileprivate func getGuestCheckout(with guestCheckoutId: GuestCheckoutId) {
+        AtlasAPI.withLoader.guestCheckout(with: guestCheckoutId) { [weak self] result in
             guard let guestCheckout = result.process() else { return }
             self?.guestCheckout = guestCheckout
-            self?.checkoutId = checkoutId
-            self?.token = token
+            self?.guestCheckoutId = guestCheckoutId
         }
     }
 

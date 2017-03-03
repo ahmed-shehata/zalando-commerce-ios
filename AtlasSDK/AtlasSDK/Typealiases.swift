@@ -20,4 +20,4 @@ public typealias ShippingAddress = EquatableAddress
 public typealias MoneyAmount = Decimal
 public typealias Currency = String
 
-public typealias GuestCheckoutToken = String
+public typealias GuestCheckoutId = (checkoutId: CheckoutId, token: String)
