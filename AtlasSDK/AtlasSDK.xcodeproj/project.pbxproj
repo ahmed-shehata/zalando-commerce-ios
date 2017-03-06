@@ -11,7 +11,6 @@
 		00DDF79C5F2EA8A83349C1C45E2F5A67 /* AtlasAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA3C21AB550D6D2D184F0A4F90A9593 /* AtlasAPI.swift */; };
 		01F1C5695D20C27942DFECED1195107B /* Nimble.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 946A02D8E49A74EDBEBD78F9E7F24730 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		02576D9B6427B3104CFB767A0924CA0F /* CreateOrderEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AB725F554DA56411A3B5D67010F273 /* CreateOrderEndpoint.swift */; };
-		03DDF840DFFB1F8DF385C0AC572B5532 /* AtlasMockAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6772A4535AED1B118CFDB67D8CAF8A7 /* AtlasMockAPI.framework */; };
 		04F8BD9D88669AAD2D215A947CD3A3EA /* JSONJsonsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFDFB24147F9376858D374351D13716 /* JSONJsonsTests.swift */; };
 		067FC4466FFDF3D1F9A54EAAB43FA3B7 /* GuestPaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88271BCC31E360BEF49D8115AE83264E /* GuestPaymentMethod.swift */; };
 		06E5C0933C2D59ECB6AF221DC82004F3 /* CheckAddressRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FC4AE03906C5C3860F5055CDD3232B /* CheckAddressRequest.swift */; };
@@ -87,6 +86,7 @@
 		7FA480C61E43BF7DB2304C5358FED2D3 /* SKUTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC81C5B65FBB101428E48B21872C1121 /* SKUTest.swift */; };
 		811AA1F682BDEBB36FAA84B0921AEFBE /* GuestAddressRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0245341CC5B1CB0CF50BF8ACC958B65F /* GuestAddressRequest.swift */; };
 		81BAB3D31E685B29004F50A3 /* PaymentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BAB3D21E685B29004F50A3 /* PaymentStatus.swift */; };
+		81F13E2F1E6DA94000A1EBB6 /* MockAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F13E2E1E6DA94000A1EBB6 /* MockAPI.framework */; };
 		8387789B675CAC41D88C59F7CD9A49D5 /* CartRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C37D256F81316476AD1BB1CFB1D350D /* CartRequest.swift */; };
 		871861043470F7B6A72F34B73CC67714 /* GuestPaymentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B69DF001037C24E6BD4E0B378BFC01 /* GuestPaymentRequest.swift */; };
 		89249A1EFD86FFC8B561A9F9DF7EC2F7 /* JSONDatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7861F68B638F59C599C7CF6F6C14DF37 /* JSONDatesTests.swift */; };
@@ -269,6 +269,7 @@
 		80A20F90F85243250BFBE7AB2A1E14CC /* APICreateCheckoutTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APICreateCheckoutTests.swift; path = AtlasSDKTests/APICreateCheckoutTests.swift; sourceTree = SOURCE_ROOT; };
 		80A87FB76A9759970AB11BB04A6CBDDD /* UpdateAddressEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateAddressEndpoint.swift; sourceTree = "<group>"; };
 		81BAB3D21E685B29004F50A3 /* PaymentStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentStatus.swift; sourceTree = "<group>"; };
+		81F13E2E1E6DA94000A1EBB6 /* MockAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MockAPI.framework; path = "MockAPI.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		82119333485AE6ED25549E0A742C1190 /* APIAccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIAccessToken.swift; sourceTree = "<group>"; };
 		82AB8E73CFCD434C03A56BE7811DEA65 /* AtlasAPI_authorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasAPI_authorization.swift; sourceTree = "<group>"; };
 		87E0CBDAE3A5B1288455C6E176B852B6 /* APICartTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APICartTests.swift; path = AtlasSDKTests/APICartTests.swift; sourceTree = SOURCE_ROOT; };
@@ -336,7 +337,6 @@
 		F3010BEF9FDD14A69B158A003FB4CEC7 /* APIClientErrorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = APIClientErrorsTests.swift; path = AtlasSDKTests/APIClientErrorsTests.swift; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F46B45B4F9D975874090BEB8522D81C0 /* GuestCustomerRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCustomerRequest.swift; sourceTree = "<group>"; };
 		F5F8397816D421255C10AE0737FAAA41 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
-		F6772A4535AED1B118CFDB67D8CAF8A7 /* AtlasMockAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AtlasMockAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6CF52ED3F20B2F59D5E6096E498A18B /* PaymentMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
 		F6FFAFD36DBFADF2E51D872BAD526DF6 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Errors.swift; path = AtlasSDK/Errors.swift; sourceTree = SOURCE_ROOT; };
 		F7217CD1285081F7F82594BB8658EE76 /* GetGuestCheckoutEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetGuestCheckoutEndpoint.swift; sourceTree = "<group>"; };
@@ -349,9 +349,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81F13E2F1E6DA94000A1EBB6 /* MockAPI.framework in Frameworks */,
 				B66B644C530E41D683DBA1D5F907336F /* AtlasSDK.framework in Frameworks */,
 				DAB2BC46B777931E022DF54F2FE8937F /* Nimble.framework in Frameworks */,
-				03DDF840DFFB1F8DF385C0AC572B5532 /* AtlasMockAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,7 +412,7 @@
 		3D8FD04D7F66A80EE1FE5532406AE047 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F6772A4535AED1B118CFDB67D8CAF8A7 /* AtlasMockAPI.framework */,
+				81F13E2E1E6DA94000A1EBB6 /* MockAPI.framework */,
 				946A02D8E49A74EDBEBD78F9E7F24730 /* Nimble.framework */,
 			);
 			name = Frameworks;

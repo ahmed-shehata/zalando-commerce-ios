@@ -3,7 +3,7 @@
 //
 
 import Foundation
-import AtlasMockAPI
+import MockAPI
 
 struct TestConsts {
 
@@ -12,10 +12,10 @@ struct TestConsts {
     static let salesChannel: String = "82fe2e7f-8c4f-4aa1-9019-b6bde5594456"
     static let interfaceLanguage: String = "en"
 
-    static let configURL = AtlasMockAPI.endpointURL(forPath: "/config")
-    static let catalogURL = AtlasMockAPI.endpointURL(forPath: "/catalog")
-    static let checkoutURL = AtlasMockAPI.endpointURL(forPath: "/checkout")
-    static let loginURL = AtlasMockAPI.endpointURL(forPath: "/login")
+    static let configURL = MockAPI.endpointURL(forPath: "/config")
+    static let catalogURL = MockAPI.endpointURL(forPath: "/catalog")
+    static let checkoutURL = MockAPI.endpointURL(forPath: "/checkout")
+    static let loginURL = MockAPI.endpointURL(forPath: "/login")
 
     static let configLanguage = "de"
     static let configCountry = "DE"

@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:AtlasMockAPI/AtlasMockAPI.xcodeproj">
+      location = "group:MockAPI/MockAPI.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:AtlasSDK/AtlasSDK.xcodeproj">

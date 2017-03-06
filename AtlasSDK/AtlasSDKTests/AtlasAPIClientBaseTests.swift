@@ -5,7 +5,7 @@
 import XCTest
 import Foundation
 import Nimble
-import AtlasMockAPI
+import MockAPI
 
 @testable import AtlasSDK
 
@@ -16,12 +16,12 @@ class AtlasAPIClientBaseTests: XCTestCase {
 
     override class func setUp() {
         super.setUp()
-        try! AtlasMockAPI.startServer()
+        try! MockAPI.startServer()
     }
 
     override class func tearDown() {
         super.tearDown()
-        try! AtlasMockAPI.stopServer()
+        try! MockAPI.stopServer()
     }
 
     func waitUntilAtlasAPIClientIsConfigured(actions: @escaping (_ done: @escaping () -> Void, _ api: AtlasAPI) -> Void) {
@@ -48,8 +48,8 @@ class AtlasAPIClientBaseTests: XCTestCase {
                         status: HTTPStatus,
                         errorCode: Int? = nil) -> AtlasAPI {
 
-        let apiURL = AtlasMockAPI.endpointURL(forPath: "/")
-        let loginURL = AtlasMockAPI.endpointURL(forPath: "/oauth2/authorize")
+        let apiURL = MockAPI.endpointURL(forPath: "/")
+        let loginURL = MockAPI.endpointURL(forPath: "/oauth2/authorize")
         let callback = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect"
         let gateway = "http://localhost.charlesproxy.com:9080"
 
