@@ -4,6 +4,8 @@
 
 import Foundation
 
+// TODO: document it, please...
+
 public struct CheckAddressRequest {
 
     public let address: AddressCheck

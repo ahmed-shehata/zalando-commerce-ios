@@ -58,7 +58,7 @@ extension APIAccessToken {
     }
 
     @discardableResult
-    static func delete(for config: Config) -> APIAccessToken {
+    static func delete(for config: Config) -> APIAccessToken? {
         return Keychain.deleteToken(for: config)
     }
 
@@ -92,7 +92,7 @@ extension Keychain {
     }
 
     @discardableResult
-    fileprivate static func deleteToken(for config: Config) -> APIAccessToken {
+    fileprivate static func deleteToken(for config: Config) -> APIAccessToken? {
         let token = APIAccessToken(config: config)
         return Keychain.delete(token: token)
     }
@@ -104,9 +104,9 @@ extension Keychain {
     }
 
     @discardableResult
-    fileprivate static func delete(token: APIAccessToken) -> APIAccessToken {
-        Keychain.delete(key: token.key)
-        return token
+    fileprivate static func delete(token: APIAccessToken) -> APIAccessToken? {
+        let deleted = Keychain.delete(key: token.key)
+        return deleted ? token : nil
     }
 
 }

@@ -4,6 +4,8 @@
 
 import Foundation
 
+// TODO: document it, please...
+
 public enum PaymentStatus: Equatable {
 
     case guestRedirect(guestCheckoutId: GuestCheckoutId)

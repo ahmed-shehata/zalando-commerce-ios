@@ -4,6 +4,8 @@
 
 import Foundation
 
+// TODO: document it, please...
+
 public struct GuestCustomerRequest {
 
     public let email: String

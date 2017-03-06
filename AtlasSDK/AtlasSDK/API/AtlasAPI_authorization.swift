@@ -6,7 +6,8 @@ import Foundation
 
 extension AtlasAPI {
 
-    /// Determines if a client is authorized with access token to call restricted endpoints.
+    /// Determines if a client has an access token to call restricted endpoints.
+    /// Having token doesn't guarantee it's unexpired or invalidated.
     public var isAuthorized: Bool {
         return config.authorizationToken != nil
     }
@@ -18,29 +19,43 @@ extension AtlasAPI {
      to restricted endpoints identified by same `Options.environment`
 
      - Postcondition:
-     - If a client is authorized successfully `NSNotification.Name.AtlasAuthorized`
-     is posted on `NotificationCenter.default`, otherwise it is `NSNotification.Name.AtlasDeauthorized`.
-     - `NSNotification.Name.AtlasAuthorizationChanged` is always posted regadless the result.
+       - If a client is authorized successfully `NSNotification.Name.AtlasAuthorized`
+         `NSNotification.Name.AtlasAuthorizationChanged` are posted on `NotificationCenter.default`
+       - Both notifications contain `Options.clientId`, `Options.useSandboxEnvironment` in `userInfo`,
+         and `AtlasAPI` instance.
 
-     - Parameter with: access token passed to all restricted endpoint calls
+     - Parameter token: access token passed to all restricted endpoint calls
 
      - Returns: `true` if token was correctly stored and client is authorized, otherwise `false`
      */
     @discardableResult
     public func authorize(with token: AuthorizationToken) -> Bool {
-        let token = APIAccessToken.store(token: token, for: config)
-        let isAuthorized = token != nil
-        notify(isAuthorized: isAuthorized, withToken: token)
-        return isAuthorized
+        var authorized = false
+        if let token = APIAccessToken.store(token: token, for: config) {
+            authorized = true
+            notify(isAuthorized: authorized, withToken: token)
+        }
+        return authorized
     }
 
-    /// Deauthorizes a client from accessing restricted endpoints.
+    /**
+    Deauthorizes a client from accessing restricted endpoints.
+
+    - Postcondition:
+        - If a client is deauthorized successfully `NSNotification.Name.AtlasDeauthorized`
+          and `NSNotification.Name.AtlasAuthorizationChanged` are posted on `NotificationCenter.default`.
+        - Both notifications contain `Options.clientId`, `Options.useSandboxEnvironment` in `userInfo`,
+          and `AtlasAPI` instance as `object`.
+     */
     public func deauthorize() {
-        let token = APIAccessToken.delete(for: config)
+        guard let token = APIAccessToken.delete(for: config) else { return }
         notify(isAuthorized: false, withToken: token)
     }
 
-    /// Deauthorizes all clients by removing all stored tokens.
+    /**
+     Deauthorizes all clients by removing all stored tokens and notifying about it
+     - SeeAlso: `AtlasAPI.deauthorize(with:)`
+     */
     public static func deauthorizeAll() {
         APIAccessToken.wipe().forEach { token in
             notify(api: nil, isAuthorized: false, withToken: token)
