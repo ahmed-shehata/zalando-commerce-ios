@@ -248,11 +248,13 @@ extension AtlasAPI {
     
      - Parameters:
        - sku: article's identifier to on which recommendations are based (`Article.sku`)
+       - recommendationConfig: `RecommendationConfig`
        - completion: completes async with `APIResult.success` with `[Recommendation]`
      */
     public func recommendations(for sku: ConfigSKU,
+                                with recommendationConfig: RecommendationConfig,
                                 completion: @escaping APIResultCompletion<[Recommendation]>) {
-        let endpoint = GetArticleRecommendationsEndpoint(config: config, sku: sku)
+        let endpoint = GetArticleRecommendationsEndpoint(config: config, sku: sku, recommendationConfig: recommendationConfig)
         client.fetch(from: endpoint, completion: completion)
     }
 
