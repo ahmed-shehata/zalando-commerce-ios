@@ -47,6 +47,7 @@ class AtlasUIViewController: UIViewController {
 
         storePresented()
 
+        configureStyle()
         UserError.loadBannerError()
         addChildViewController(mainNavigationController)
         view.addSubview(mainNavigationController.view)
@@ -96,6 +97,10 @@ extension AtlasUIViewController {
 
     static func push(_ viewController: UIViewController, animated: Bool = true) {
         AtlasUIViewController.presented?.mainNavigationController.pushViewController(viewController, animated: animated)
+    }
+
+    fileprivate func configureStyle() {
+        UINavigationBar.appearance(whenContainedInInstancesOf: [AtlasUIViewController.self]).tintColor = .orange
     }
 
 }

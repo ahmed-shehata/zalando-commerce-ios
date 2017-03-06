@@ -151,10 +151,19 @@ extension UIView {
 extension UIView {
 
     static func animate(duration: AnimationDuration = .default, animations: @escaping () -> Void) {
+        guard duration != .noAnimation else {
+            animations()
+            return
+        }
         UIView.animate(withDuration: duration.rawValue, animations: animations)
     }
 
     static func animate(duration: AnimationDuration = .default, animations: @escaping () -> Void, completion: @escaping (Bool) -> Void) {
+        guard duration != .noAnimation else {
+            animations()
+            completion(true)
+            return
+        }
         UIView.animate(withDuration: duration.rawValue, animations: animations, completion: completion)
     }
 
