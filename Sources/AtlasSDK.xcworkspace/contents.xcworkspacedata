@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:MockAPI/MockAPI.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:ZalandoCommerceAPI/ZalandoCommerceAPI.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:AtlasUI/AtlasUI.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:AtlasDemo/AtlasDemo.xcodeproj">
+   </FileRef>
+</Workspace>
