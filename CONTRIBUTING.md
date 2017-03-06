@@ -45,7 +45,7 @@ Rationale behind is:
    reuse factor.
 
 
-They're totally allowed in satellite projects (_AtlasMockAPI_ or _AtlasDemo_), however the less we have them,
+They're totally allowed in satellite projects (_MockAPI_ or _AtlasDemo_), however the less we have them,
 the simpler maintanance and updating is.
 
 For this purpose we use Carthage. `calypso.rb` has an appropriate task for it:

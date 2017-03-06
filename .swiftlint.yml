@@ -20,11 +20,11 @@ type_name:
 excluded:
   - Carthage
   - AtlasSDKTests
-  - AtlasMockAPITests
+  - MockAPITests
   - AtlasDemoUITests
   - AtlasUITests
   - AtlasDemo
-  - AtlasMockAPI
+  - MockAPI
 
 opt_in_rules:
   - force_unwrapping
