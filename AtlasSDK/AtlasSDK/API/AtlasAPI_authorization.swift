@@ -21,8 +21,9 @@ extension AtlasAPI {
      - Postcondition:
        - If a client is authorized successfully `NSNotification.Name.AtlasAuthorized`
          `NSNotification.Name.AtlasAuthorizationChanged` are posted on `NotificationCenter.default`
-       - Both notifications contain `Options.clientId`, `Options.useSandboxEnvironment` in `userInfo`,
-         and `AtlasAPI` instance.
+       - Both notifications contain `AtlasAPI` instance as sending `object`,
+            and `userInfo` containing `ATLASSDK_CLIENT_ID` equal to `Options.clientId`,
+            and `ATLASSDK_USE_SANDBOX` equal to `Options.useSandboxEnvironment`.
 
      - Parameter token: access token passed to all restricted endpoint calls
 
@@ -42,10 +43,11 @@ extension AtlasAPI {
     Deauthorizes a client from accessing restricted endpoints.
 
     - Postcondition:
-        - If a client is deauthorized successfully `NSNotification.Name.AtlasDeauthorized`
+         - If a client is deauthorized successfully `NSNotification.Name.AtlasDeauthorized`
           and `NSNotification.Name.AtlasAuthorizationChanged` are posted on `NotificationCenter.default`.
-        - Both notifications contain `Options.clientId`, `Options.useSandboxEnvironment` in `userInfo`,
-          and `AtlasAPI` instance as `object`.
+         - Both notifications contain `AtlasAPI` instance as sending `object`,
+             and `userInfo` containing `ATLASSDK_CLIENT_ID` equal to `Options.clientId`,
+             and `ATLASSDK_USE_SANDBOX` equal to `Options.useSandboxEnvironment`.
      */
     public func deauthorize() {
         guard let token = APIAccessToken.delete(for: config) else { return }

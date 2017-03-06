@@ -296,42 +296,42 @@
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/API/Options.swift",
-      "line": 81,
+      "line": 83,
       "symbol": "Options.validate()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/API/Options.swift",
-      "line": 95,
+      "line": 97,
       "symbol": "Options.format(optional:defaultText:)",
       "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/API/Options.swift",
-      "line": 114,
+      "line": 116,
       "symbol": "Options.Environment",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/API/Options.swift",
-      "line": 124,
+      "line": 126,
       "symbol": "Options.ResponseFormat",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/API/Options.swift",
-      "line": 128,
+      "line": 130,
       "symbol": "Options.defaultConfigurationURL(clientId:useSandboxEnvironment:inFormat:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/dbauke/Documents/Atlas/atlas-ios/AtlasSDK/AtlasSDK/API/Options.swift",
-      "line": 140,
+      "line": 142,
       "symbol": "Options.InfoKey",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"

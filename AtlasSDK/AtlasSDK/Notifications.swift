@@ -20,7 +20,7 @@ extension NSNotification.Name {
 
     /**
      Posted on `AtlasAPI` authorization state change.
-     - SeeAlso: `AtlasAPI.authorize(with:)`
+     - SeeAlso: `AtlasAPI.authorize(with:)`, and `AtlasAPI.deauthorize(with:)`
      */
     public static let AtlasAuthorizationChanged = NSNotification.Name(rawValue: "Atlas.NotificationAuthorizationChanged")
 

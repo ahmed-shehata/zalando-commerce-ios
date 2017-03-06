@@ -1305,8 +1305,9 @@ to restricted endpoints identified by same <code>Options.environment</code></p>
 <ul>
 <li>If a client is authorized successfully <code>NSNotification.Name.AtlasAuthorized</code>
 <code>NSNotification.Name.AtlasAuthorizationChanged</code> are posted on <code>NotificationCenter.default</code></li>
-<li>Both notifications contain <code><a href="../Structs/Options.html#/s:vV8AtlasSDK7Options8clientIdSS">Options.clientId</a></code>, <code><a href="../Structs/Options.html#/s:vV8AtlasSDK7Options21useSandboxEnvironmentSb">Options.useSandboxEnvironment</a></code> in <code>userInfo</code>,
-and <code>AtlasAPI</code> instance.</li>
+<li>Both notifications contain <code>AtlasAPI</code> instance as sending <code>object</code>,
+and <code>userInfo</code> containing <code>ATLASSDK_CLIENT_ID</code> equal to <code><a href="../Structs/Options.html#/s:vV8AtlasSDK7Options8clientIdSS">Options.clientId</a></code>,
+and <code>ATLASSDK_USE_SANDBOX</code> equal to <code><a href="../Structs/Options.html#/s:vV8AtlasSDK7Options21useSandboxEnvironmentSb">Options.useSandboxEnvironment</a></code>.</li>
 </ul>
 
 </div>
@@ -1368,8 +1369,9 @@ and <code>AtlasAPI</code> instance.</li>
     <ul>
 <li>If a client is deauthorized successfully <code>NSNotification.Name.AtlasDeauthorized</code>
 and <code>NSNotification.Name.AtlasAuthorizationChanged</code> are posted on <code>NotificationCenter.default</code>.</li>
-<li>Both notifications contain <code><a href="../Structs/Options.html#/s:vV8AtlasSDK7Options8clientIdSS">Options.clientId</a></code>, <code><a href="../Structs/Options.html#/s:vV8AtlasSDK7Options21useSandboxEnvironmentSb">Options.useSandboxEnvironment</a></code> in <code>userInfo</code>,
-and <code>AtlasAPI</code> instance as <code>object</code>.</li>
+<li>Both notifications contain <code>AtlasAPI</code> instance as sending <code>object</code>,
+ and <code>userInfo</code> containing <code>ATLASSDK_CLIENT_ID</code> equal to <code><a href="../Structs/Options.html#/s:vV8AtlasSDK7Options8clientIdSS">Options.clientId</a></code>,
+ and <code>ATLASSDK_USE_SANDBOX</code> equal to <code><a href="../Structs/Options.html#/s:vV8AtlasSDK7Options21useSandboxEnvironmentSb">Options.useSandboxEnvironment</a></code>.</li>
 </ul>
 
 </div>
