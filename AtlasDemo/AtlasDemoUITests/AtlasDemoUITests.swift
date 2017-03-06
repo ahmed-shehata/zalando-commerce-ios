@@ -3,7 +3,7 @@
 //
 
 import XCTest
-import AtlasMockAPI
+import MockAPI
 
 class AtlasDemoUITests: XCTestCase {
 
@@ -11,19 +11,19 @@ class AtlasDemoUITests: XCTestCase {
 
     override class func setUp() {
         super.setUp()
-        try! AtlasMockAPI.startServer()
+        try! MockAPI.startServer()
     }
 
     override class func tearDown() {
         super.tearDown()
-        try! AtlasMockAPI.stopServer()
+        try! MockAPI.stopServer()
     }
 
     override func setUp() {
         super.setUp()
 
         continueAfterFailure = false
-        app.launchArguments = [AtlasMockAPI.isEnabledFlag, "UI_TESTS"]
+        app.launchArguments = [MockAPI.isEnabledFlag, "UI_TESTS"]
         app.launch()
     }
 

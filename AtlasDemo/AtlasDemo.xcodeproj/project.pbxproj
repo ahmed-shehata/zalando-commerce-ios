@@ -28,17 +28,18 @@
 		44EBCE2FE12DE8193EE4F38738F84B2E /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E9AC22E8436A9E4B159173A8D00CE86 /* ImageIO.framework */; };
 		4C1EEA896DC0FBA0112CE058A8A90348 /* SwiftHTTP.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD3778CF4B0F93EE5191DF4F8D3C518 /* SwiftHTTP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4C7F901DEBA1E479432682A6E43A6266 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5D445C1DAAC347B64D5AFED9B5B140B /* VideoToolbox.framework */; };
-		501C7BFF1ADC3D4CEDEF3448B1584B6D /* AtlasMockAPI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 400508DFC64A49E6ECB6AC89CF040BEE /* AtlasMockAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		519DFB7C62476E995A4EE56821FA31D4 /* AtlasUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1A7A0B5C279F22FC02C6B5E54125FD2 /* AtlasUI.framework */; };
 		5354EC81B56390B95BAA15D4F3965B41 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4F833A4CE21235444066F2613EFB09A /* CoreTelephony.framework */; };
 		5B75F0E38964DD09768A8A20A46F81A4 /* AtlasSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C17735AA3650A838A0716B1CA9222AF /* AtlasSDK.framework */; };
 		5C38BE2E6C30F953FDD8E2C0891B4EFF /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A09363B8394CF5F3F4FBFE3E3AB2F5B1 /* CoreAudio.framework */; };
 		6258EC13198C08F3C0C639D9281DA1FE /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34D105CA005E1E4B8E1C76FDC89894A2 /* Freddy.framework */; };
-		65A6DBFB34A8DD425710B6F3FDEB82E3 /* AtlasMockAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 400508DFC64A49E6ECB6AC89CF040BEE /* AtlasMockAPI.framework */; };
 		7449525A39F475B6C68F497A3A3CA7FA /* BuddyBuildSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37F1FE1DEBE7C2CDF69A44C574EB2CE7 /* BuddyBuildSDK.framework */; };
+		77F0BBA9E57C9368D10DEE6BF9361475 /* PDPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7595CA1E31CBC66143CE5B7428A7F846 /* PDPViewController.swift */; };
 		7B1C78AE089D3132077309EC6E12D4C4 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70D0DBF19E7CD929E402B3987A071587 /* AssetsLibrary.framework */; };
 		7DA4ECBA4E51223B37412C7BCA2917D0 /* Freddy.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34D105CA005E1E4B8E1C76FDC89894A2 /* Freddy.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		80EAF118A2EFF34CF406B0059F8B61E6 /* ArticlesClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71AFAF33E121C103808CE6C2F4B14B6 /* ArticlesClient.swift */; };
+		81F13E391E6DAB8500A1EBB6 /* MockAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F13E381E6DAB8500A1EBB6 /* MockAPI.framework */; };
+		81F13E3A1E6DAB8500A1EBB6 /* MockAPI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 81F13E381E6DAB8500A1EBB6 /* MockAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		865FBD178438F346C50223D31BCFE2BB /* AtlasUI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = A1A7A0B5C279F22FC02C6B5E54125FD2 /* AtlasUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8838F6A5652FC042A161FBC6A6961594 /* AppSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AF6C44EE98EAB17A1E81EC252C5AD /* AppSetup.swift */; };
 		8F1EB3AA8D794C560B3FDEE6F4988CA3 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA73BDC161923CD166B30F1051CBC88 /* MediaPlayer.framework */; };
@@ -55,8 +56,6 @@
 		DD1713AFBB45F179703F27E8F8C6F863 /* AtlasSDK.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 9C17735AA3650A838A0716B1CA9222AF /* AtlasSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E09393D6841BD5B02BAF1F879FA14420 /* Swifter.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 1D15645E9195207A25A4D56198499AE7 /* Swifter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E39AF4AF3A83F07266F020D5E6D3A55C /* Nuke.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 6F9BDB072FD0595FBC1302107487559C /* Nuke.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E9CFD6BFA89DE23D6DB0C5B8469D3CF3 /* AtlasMockAPI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 400508DFC64A49E6ECB6AC89CF040BEE /* AtlasMockAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		77F0BBA9E57C9368D10DEE6BF9361475 /* PDPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7595CA1E31CBC66143CE5B7428A7F846 /* PDPViewController.swift */; };
 		EE7374754508E203252E55A91A2A8167 /* Nuke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F9BDB072FD0595FBC1302107487559C /* Nuke.framework */; };
 /* End PBXBuildFile section */
 
@@ -77,7 +76,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E9CFD6BFA89DE23D6DB0C5B8469D3CF3 /* AtlasMockAPI.framework in Copy Frameworks */,
 				968AADD1A82227BDAD19F1456B498E21 /* AtlasSDK.framework in Copy Frameworks */,
 				865FBD178438F346C50223D31BCFE2BB /* AtlasUI.framework in Copy Frameworks */,
 			);
@@ -91,8 +89,8 @@
 			dstSubfolderSpec = 10;
 			files = (
 				4C1EEA896DC0FBA0112CE058A8A90348 /* SwiftHTTP.framework in Copy Frameworks */,
-				501C7BFF1ADC3D4CEDEF3448B1584B6D /* AtlasMockAPI.framework in Copy Frameworks */,
 				7DA4ECBA4E51223B37412C7BCA2917D0 /* Freddy.framework in Copy Frameworks */,
+				81F13E3A1E6DAB8500A1EBB6 /* MockAPI.framework in Copy Frameworks */,
 				E09393D6841BD5B02BAF1F879FA14420 /* Swifter.framework in Copy Frameworks */,
 				E39AF4AF3A83F07266F020D5E6D3A55C /* Nuke.framework in Copy Frameworks */,
 				DD1713AFBB45F179703F27E8F8C6F863 /* AtlasSDK.framework in Copy Frameworks */,
@@ -117,7 +115,6 @@
 		34D105CA005E1E4B8E1C76FDC89894A2 /* Freddy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Freddy.framework; path = ../Carthage/Build/iOS/Freddy.framework; sourceTree = "<group>"; };
 		37F1FE1DEBE7C2CDF69A44C574EB2CE7 /* BuddyBuildSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BuddyBuildSDK.framework; sourceTree = "<group>"; };
 		3D8E376ECF3335AA4B2E86DAAFAB2448 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		400508DFC64A49E6ECB6AC89CF040BEE /* AtlasMockAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AtlasMockAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		42CFF9379D10F9FC2F3FEAE9EB8AC172 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CD3778CF4B0F93EE5191DF4F8D3C518 /* SwiftHTTP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftHTTP.framework; path = ../Carthage/Build/iOS/SwiftHTTP.framework; sourceTree = "<group>"; };
 		544EDD646AB580836FDD4255D475BA85 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -129,6 +126,8 @@
 		70CB82D0A3803BF19FF55CBB985CB29A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		70D0DBF19E7CD929E402B3987A071587 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		74F2F3D1790B7E063C3527BF921B7E1D /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
+		7595CA1E31CBC66143CE5B7428A7F846 /* PDPViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDPViewController.swift; sourceTree = "<group>"; };
+		81F13E381E6DAB8500A1EBB6 /* MockAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MockAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F4B197D9F61B68006802BD626C9F76E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		94862D8C44368F2CED777738686848A0 /* XCUIElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCUIElement.swift; sourceTree = "<group>"; };
 		98660FB609B352D5A620AF07368F81EC /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -146,7 +145,6 @@
 		DE6D68AFDCE06CE5A1A54A8B3C37EA3A /* Bridging-Header.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		E4F833A4CE21235444066F2613EFB09A /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		E68BC11A4A9FD71255E1A93A12587B3D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		7595CA1E31CBC66143CE5B7428A7F846 /* PDPViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDPViewController.swift; sourceTree = "<group>"; };
 		F71AFAF33E121C103808CE6C2F4B14B6 /* ArticlesClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticlesClient.swift; sourceTree = "<group>"; };
 		F726829F5154A9F85A931EAFC8D9E730 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F89FA499DC08F5C540C7FE44552F23A6 /* DemoCatalog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoCatalog.swift; sourceTree = "<group>"; };
@@ -158,7 +156,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65A6DBFB34A8DD425710B6F3FDEB82E3 /* AtlasMockAPI.framework in Frameworks */,
 				5B75F0E38964DD09768A8A20A46F81A4 /* AtlasSDK.framework in Frameworks */,
 				519DFB7C62476E995A4EE56821FA31D4 /* AtlasUI.framework in Frameworks */,
 			);
@@ -175,6 +172,7 @@
 				7449525A39F475B6C68F497A3A3CA7FA /* BuddyBuildSDK.framework in Frameworks */,
 				5C38BE2E6C30F953FDD8E2C0891B4EFF /* CoreAudio.framework in Frameworks */,
 				3E95B0F18829DC20340771D2B8C7B937 /* CoreImage.framework in Frameworks */,
+				81F13E391E6DAB8500A1EBB6 /* MockAPI.framework in Frameworks */,
 				3A1B4EE420523595E5C70F864C3D8D2C /* CoreMedia.framework in Frameworks */,
 				5354EC81B56390B95BAA15D4F3965B41 /* CoreTelephony.framework in Frameworks */,
 				0FDDDFE532941228DC746DAEF6740637 /* CoreText.framework in Frameworks */,
@@ -237,7 +235,7 @@
 		40AD2A55265882FCC65FA2EF0FB2B6BC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				400508DFC64A49E6ECB6AC89CF040BEE /* AtlasMockAPI.framework */,
+				81F13E381E6DAB8500A1EBB6 /* MockAPI.framework */,
 				9C17735AA3650A838A0716B1CA9222AF /* AtlasSDK.framework */,
 				A1A7A0B5C279F22FC02C6B5E54125FD2 /* AtlasUI.framework */,
 				34D105CA005E1E4B8E1C76FDC89894A2 /* Freddy.framework */,
