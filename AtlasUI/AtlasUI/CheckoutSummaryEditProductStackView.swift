@@ -48,49 +48,41 @@ class CheckoutSummaryEditProductStackView: UIStackView {
 
     func displayInitialSizes() {
         guard let selectedArticle = dataSource?.selectedArticle, let checkoutContainer = dataSource?.checkoutContainer else { return }
-        let type = checkoutContainer.displaySizes(selectedArticle: selectedArticle, animated: false, hiddenHandler: { [weak self] in
-            self?.updateArrow(for: nil, animated: true)
-        }, completion: { [weak self] idx in
-            self?.sizeSelected(at: idx, for: selectedArticle)
-        })
-        updateArrow(for: type, animated: false)
+        checkoutContainer.displaySizes(selectedArticle: selectedArticle,
+                                       animated: false,
+                                       arrowHandler: updateArrow,
+                                       completion: sizeSelected)
     }
 
     dynamic fileprivate func sizeButtonTapped() {
         guard let selectedArticle = dataSource?.selectedArticle, let checkoutContainer = dataSource?.checkoutContainer else { return }
-        let type = checkoutContainer.displaySizes(selectedArticle: selectedArticle, animated: true, hiddenHandler: { [weak self] in
-            self?.updateArrow(for: nil, animated: true)
-        }, completion: { [weak self] idx in
-            self?.sizeSelected(at: idx, for: selectedArticle)
-        })
-        updateArrow(for: type, animated: true)
+        checkoutContainer.displaySizes(selectedArticle: selectedArticle,
+                                       animated: true,
+                                       arrowHandler: updateArrow,
+                                       completion: sizeSelected)
     }
 
     dynamic fileprivate func quantityButtonTapped() {
         guard let selectedArticle = dataSource?.selectedArticle, let checkoutContainer = dataSource?.checkoutContainer else { return }
-        let type = checkoutContainer.displayQuantites(selectedArticle: selectedArticle, animated: true, hiddenHandler: { [weak self] in
-            self?.updateArrow(for: nil, animated: true)
-        }, completion: { [weak self] idx in
-            self?.quantitySelected(at: idx, for: selectedArticle)
-        })
-        updateArrow(for: type, animated: true)
+        checkoutContainer.displayQuantites(selectedArticle: selectedArticle,
+                                           animated: true,
+                                           arrowHandler: updateArrow,
+                                           completion: quantitySelected)
     }
 
-    private func sizeSelected(at idx: Int, for selectedArticle: SelectedArticle) {
+    private func sizeSelected(at idx: Int) {
+        guard let selectedArticle = dataSource?.selectedArticle else { return }
         let updatedArticle = SelectedArticle(changeSelectedIndex: idx, from: selectedArticle)
 
-        guard let currentSelectedArticle = dataSource?.selectedArticle,
-            dataSource?.checkoutContainer.collectionView.type == .size, updatedArticle != currentSelectedArticle else { return }
-
+        guard dataSource?.checkoutContainer.collectionView.type == .size, updatedArticle != selectedArticle else { return }
         delegate?.updated(selectedArticle: updatedArticle)
     }
 
-    private func quantitySelected(at idx: Int, for selectedArticle: SelectedArticle) {
+    private func quantitySelected(at idx: Int) {
+        guard let selectedArticle = dataSource?.selectedArticle else { return }
         let updatedArticle = SelectedArticle(changeQuantity: idx + 1, from: selectedArticle)
 
-        guard let currentSelectedArticle = dataSource?.selectedArticle,
-            dataSource?.checkoutContainer.collectionView.type == .quantity, updatedArticle != currentSelectedArticle else { return }
-
+        guard dataSource?.checkoutContainer.collectionView.type == .quantity, updatedArticle != selectedArticle else { return }
         delegate?.updated(selectedArticle: updatedArticle)
     }
 
@@ -115,11 +107,7 @@ class CheckoutSummaryEditProductStackView: UIStackView {
 
     private func updateArrow(arrowImageView: UIImageView, opened: Bool, animated: Bool) {
         let transform = opened ? CGAffineTransform(rotationAngle: CGFloat.pi) : CGAffineTransform.identity
-        if animated {
-            UIView.animate(duration: .fast) {
-                arrowImageView.transform = transform
-            }
-        } else {
+        UIView.animate(duration: animated ? .fast : .noAnimation) {
             arrowImageView.transform = transform
         }
     }

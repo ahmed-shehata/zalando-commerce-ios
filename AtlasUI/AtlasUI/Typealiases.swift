@@ -21,3 +21,4 @@ typealias AddressViewModelCreationStrategyCompletion = (AddressFormViewModel) ->
 
 typealias SelectedIndex = Int
 typealias CheckoutSummaryArticleRefineCompletion = (SelectedIndex) -> Void
+typealias CheckoutSummaryArticleRefineArrowHandler = (CheckoutSummaryArticleRefineType?, _ animated: Bool) -> Void
