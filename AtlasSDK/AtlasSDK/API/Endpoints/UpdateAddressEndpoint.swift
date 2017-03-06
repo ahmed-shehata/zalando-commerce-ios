@@ -9,7 +9,7 @@ struct UpdateAddressEndpoint: CheckoutEndpoint {
     let config: Config
 
     let method: HTTPMethod = .PUT
-    var path: String { return "addresses/\(addressId)" }
+    var path: String { return "addresses/\(updateAddressRequest.addressId)" }
     let acceptedContentType = "application/x.zalando.customer.address.update.response+json"
     let contentType = "application/x.zalando.customer.address.update+json"
 
@@ -17,7 +17,6 @@ struct UpdateAddressEndpoint: CheckoutEndpoint {
         return updateAddressRequest.toJSON()
     }
 
-    let addressId: AddressId
     let updateAddressRequest: UpdateAddressRequest
 
 }

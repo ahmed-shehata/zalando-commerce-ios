@@ -18,7 +18,8 @@ extension AtlasAPI {
 
      - Parameters:
          - options: Options for API client to be created. When `nil`, `$INFOPLIST_FILE` file of the app is used as configuration.
-         - completion: Fired when network configuration call is finished. Containts `Result.success` with `AtlasAPI` or `Result.failure` with `Error` reason.
+         - completion: Fired when network configuration call is finished.
+            Contains `Result.success` with `AtlasAPI` or `Result.failure` with `Error` reason.
      */
     public static func configure(options: Options? = nil, completion: @escaping ResultCompletion<AtlasAPI>) {
         let options = options ?? Options()

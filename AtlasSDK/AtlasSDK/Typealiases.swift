@@ -8,8 +8,8 @@ import Foundation
 
 public typealias CartId = String
 public typealias CheckoutId = String
-public typealias CheckoutToken = String
 public typealias CustomerNumber = String
+public typealias CartCheckout = (cart: Cart, checkout: Checkout?)
 
 public typealias AuthorizationToken = String
 
@@ -20,4 +20,4 @@ public typealias ShippingAddress = EquatableAddress
 public typealias MoneyAmount = Decimal
 public typealias Currency = String
 
-public typealias CartCheckout = (cart: Cart, checkout: Checkout?)
+public typealias GuestCheckoutId = (checkoutId: CheckoutId, token: String)

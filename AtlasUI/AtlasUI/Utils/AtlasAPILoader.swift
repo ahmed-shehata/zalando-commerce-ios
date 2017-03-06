@@ -63,10 +63,10 @@ extension AtlasAPI {
             }
         }
 
-        static func createOrder(from checkoutId: CheckoutId,
+        static func createOrder(from checkout: Checkout,
                                 completion: @escaping APIResultCompletion<Order>) {
             AtlasUIViewController.displayLoader { hideLoader in
-                AtlasAPI.shared?.createOrder(from: checkoutId) { result in
+                AtlasAPI.shared?.createOrder(from: checkout) { result in
                     hideLoader()
                     completion(result)
                 }
@@ -93,10 +93,10 @@ extension AtlasAPI {
             }
         }
 
-        static func guestCheckout(with checkoutId: CheckoutId, token: CheckoutToken,
+        static func guestCheckout(with guestCheckoutId: GuestCheckoutId,
                                   completion: @escaping APIResultCompletion<GuestCheckout>) {
             AtlasUIViewController.displayLoader { hideLoader in
-                AtlasAPI.shared?.guestCheckout(with: checkoutId, token: token) { result in
+                AtlasAPI.shared?.guestCheckout(with: guestCheckoutId) { result in
                     hideLoader()
                     completion(result)
                 }
@@ -113,10 +113,10 @@ extension AtlasAPI {
             }
         }
 
-        static func recommendations(forSKU sku: ConfigSKU, onView view: UIView,
+        static func recommendations(for sku: ConfigSKU, onView view: UIView,
                                     completion: @escaping APIResultCompletion<[Recommendation]>) {
             AtlasUIViewController.displayLoader(onView: view) { hideLoader in
-                AtlasAPI.shared?.recommendations(forSKU: sku) { result in
+                AtlasAPI.shared?.recommendations(for: sku) { result in
                     hideLoader()
                     completion(result)
                 }
@@ -132,17 +132,17 @@ extension AtlasAPI {
             }
         }
 
-        static func deleteAddress(with addressId: AddressId,
-                                  completion: @escaping APIResultCompletion<Bool>) {
+        static func delete(_ address: EquatableAddress,
+                           completion: @escaping APIResultCompletion<Bool>) {
             AtlasUIViewController.displayLoader { hideLoader in
-                AtlasAPI.shared?.deleteAddress(with: addressId) { result in
+                AtlasAPI.shared?.delete(address) { result in
                     hideLoader()
                     completion(result)
                 }
             }
         }
 
-        static func createAddress(_ request: CreateAddressRequest,
+        static func createAddress(with request: CreateAddressRequest,
                                   completion: @escaping APIResultCompletion<UserAddress>) {
             AtlasUIViewController.displayLoader { hideLoader in
                 AtlasAPI.shared?.createAddress(with: request) { result in
@@ -152,11 +152,10 @@ extension AtlasAPI {
             }
         }
 
-        static func updateAddress(with addressId: AddressId,
-                                  request: UpdateAddressRequest,
+        static func updateAddress(with request: UpdateAddressRequest,
                                   completion: @escaping APIResultCompletion<UserAddress>) {
             AtlasUIViewController.displayLoader { hideLoader in
-                AtlasAPI.shared?.updateAddress(with: addressId, request: request) { result in
+                AtlasAPI.shared?.updateAddress(with: request) { result in
                     hideLoader()
                     completion(result)
                 }

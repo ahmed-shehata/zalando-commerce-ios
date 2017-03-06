@@ -4,6 +4,7 @@
 
 import Foundation
 import UIKit
+import AtlasSDK
 
 protocol CheckoutSummaryLayout {
 
@@ -79,7 +80,7 @@ struct OrderPlacedLayout: CheckoutSummaryLayout {
     let showsDetailArrow = false
     let showsGuestStackView = false
     let showsOrderStackView = true
-    let showsRecommendationStackView = true
+    let showsRecommendationStackView = Config.shared?.displayRecommendations ?? Options.Defaults.displayRecommendations
     let allowsArticleRefine = false
 
     func submitButtonBackgroundColor(readyToCheckout: Bool) -> UIColor { return UIColor(hex: 0x509614) }
@@ -111,7 +112,7 @@ struct GuestOrderPlacedLayout: CheckoutSummaryLayout {
     let showsDetailArrow = false
     let showsGuestStackView = true
     let showsOrderStackView = true
-    let showsRecommendationStackView = true
+    let showsRecommendationStackView = Config.shared?.displayRecommendations ?? Options.Defaults.displayRecommendations
     let allowsArticleRefine = false
 
     func submitButtonBackgroundColor(readyToCheckout: Bool) -> UIColor { return UIColor(hex: 0x509614) }

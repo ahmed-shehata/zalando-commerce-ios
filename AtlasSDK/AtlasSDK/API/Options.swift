@@ -8,21 +8,31 @@ import Foundation
 
 public struct Options {
 
-    public let useSandboxEnvironment: Bool
+    public struct Defaults {
+        public static let clientId = ""
+        public static let salesChannel = ""
+        public static let useSandboxEnvironment = false
+        public static let displayRecommendations = true
+    }
+
     public let clientId: String
     public let salesChannel: String
+    public let useSandboxEnvironment: Bool
     public let interfaceLanguage: String?
     public let configurationURL: URL
+    public let displayRecommendations: Bool
 
     public init(clientId: String? = nil,
                 salesChannel: String? = nil,
                 useSandboxEnvironment: Bool? = nil,
                 interfaceLanguage: String? = nil,
                 configurationURL: URL? = nil,
+                displayRecommendations: Bool? = nil,
                 infoBundle bundle: Bundle = Bundle.main) {
-        self.clientId = clientId ?? bundle.string(for: .clientId) ?? ""
-        self.salesChannel = salesChannel ?? bundle.string(for: .salesChannel) ?? ""
-        self.useSandboxEnvironment = useSandboxEnvironment ?? bundle.bool(for: .useSandboxEnvironment) ?? false
+        self.clientId = clientId ?? bundle.string(for: .clientId) ?? Defaults.clientId
+        self.salesChannel = salesChannel ?? bundle.string(for: .salesChannel) ?? Defaults.salesChannel
+        self.useSandboxEnvironment = useSandboxEnvironment ?? bundle.bool(for: .useSandboxEnvironment) ?? Defaults.useSandboxEnvironment
+        self.displayRecommendations = displayRecommendations ?? bundle.bool(for: .displayRecommendations) ?? Defaults.displayRecommendations
         self.interfaceLanguage = interfaceLanguage ?? bundle.string(for: .interfaceLanguage)
 
         if let url = configurationURL {
@@ -58,6 +68,7 @@ extension Options: CustomStringConvertible {
             + ", \n\tsalesChannel = \(format(optional: salesChannel)) "
             + ", \n\tinterfaceLanguage = \(format(optional: interfaceLanguage)) "
             + ", \n\tconfigurationURL = \(configurationURL) "
+            + ", \n\tdisplayRecommendations = \(displayRecommendations) "
             + " } "
     }
 
@@ -97,6 +108,7 @@ extension Options {
         case clientId = "ATLASSDK_CLIENT_ID"
         case salesChannel = "ATLASSDK_SALES_CHANNEL"
         case interfaceLanguage = "ATLASSDK_INTERFACE_LANGUAGE"
+        case displayRecommendations = "ATLASSDK_DISPLAY_RECOMMENDATIONS"
 
     }
 

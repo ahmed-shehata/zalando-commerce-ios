@@ -5,7 +5,7 @@
 import UIKit
 import AtlasSDK
 
-final class PaymentViewController: UIViewController, UIWebViewDelegate {
+open class PaymentViewController: UIViewController, UIWebViewDelegate {
 
     var paymentCompletion: Completion<PaymentStatus>?
     private let paymentURL: URL
@@ -26,11 +26,11 @@ final class PaymentViewController: UIViewController, UIWebViewDelegate {
         super.init(nibName: nil, bundle: nil)
     }
 
-    required init?(coder decoder: NSCoder) {
+    required public init?(coder decoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(webView)
@@ -39,23 +39,24 @@ final class PaymentViewController: UIViewController, UIWebViewDelegate {
         webView.loadRequest(URLRequest(url: paymentURL))
     }
 
-    func webView(_ webView: UIWebView,
-                 shouldStartLoadWith request: URLRequest,
-                 navigationType: UIWebViewNavigationType) -> Bool {
+    public func webView(_ webView: UIWebView,
+                        shouldStartLoadWith request: URLRequest,
+                        navigationType: UIWebViewNavigationType) -> Bool {
         guard let url = request.url,
             let callbackURLComponents = callbackURLComponents,
             let requestURLComponents = URLComponents(url: url, resolvingAgainstBaseURL: true)
             else { return true }
 
         guard let paymentStatus = PaymentStatus(callbackURLComponents: callbackURLComponents,
-                                                requestURLComponents: requestURLComponents) else { return true }
+                                                requestURLComponents: requestURLComponents)
+            else { return true }
 
         paymentCompletion?(paymentStatus)
         _ = navigationController?.popViewController(animated: true)
         return false
     }
 
-    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
+    public func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
         if !error.isRequestCancelledError {
             UserError.display(error: error)
         }

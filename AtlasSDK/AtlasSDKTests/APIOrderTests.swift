@@ -12,14 +12,20 @@ class APIOrderTests: AtlasAPIClientBaseTests {
 
     func testCreateOrder() {
         waitUntilAtlasAPIClientIsConfigured { done, api in
-            api.createOrder(from: self.checkoutId) { result in
-                switch result {
-                case .failure(let error):
-                    fail(String(describing: error))
-                case .success(let order):
-                    expect(order.orderNumber) == "ORDER_NUMBER"
+            api.createCheckout(from: self.cartId) { result in
+                guard case .success(let checkout) = result else {
+                    return fail("Checkout missing")
                 }
-                done()
+
+                api.createOrder(from: checkout) { result in
+                    switch result {
+                    case .failure(let error):
+                        fail(String(describing: error))
+                    case .success(let order):
+                        expect(order.orderNumber) == "ORDER_NUMBER"
+                    }
+                    done()
+                }
             }
         }
     }

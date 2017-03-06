@@ -4,6 +4,8 @@
 
 import Foundation
 
+// TODO: document it, please...
+
 public struct Checkout {
 
     public let id: CheckoutId

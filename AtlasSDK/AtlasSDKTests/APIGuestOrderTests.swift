@@ -12,7 +12,8 @@ class APIGuestOrderTests: AtlasAPIClientBaseTests {
 
     func testCreateGuestOrder() {
         waitUntilAtlasAPIClientIsConfigured { done, api in
-            let request = GuestOrderRequest(checkoutId: "CHECKOUT_ID", token: "TOKEN")
+            let guestCheckoutId = GuestCheckoutId(checkoutId: "CHECKOUT_ID", token: "TOKEN")
+            let request = GuestOrderRequest(guestCheckoutId: guestCheckoutId)
             api.createGuestOrder(request: request) { result in
                 switch result {
                 case .failure(let error):
@@ -43,9 +44,12 @@ class APIGuestOrderTests: AtlasAPIClientBaseTests {
         }
     }
 
-    func testGuestChecoutPaymentSelectionURL() {
+    func testGuestCheckoutPaymentSelectionURL() {
         waitUntilAtlasAPIClientIsConfigured { done, api in
-            let request = GuestPaymentSelectionRequest(customer: self.customerRequest, shippingAddress: self.addressRequest, billingAddress: self.addressRequest, cart: self.cartRequest)
+            let request = GuestPaymentSelectionRequest(cart: self.cartRequest,
+                                                       customer: self.customerRequest,
+                                                       shippingAddress: self.addressRequest,
+                                                       billingAddress: self.addressRequest)
             api.guestCheckoutPaymentSelectionURL(request: request) { result in
                 switch result {
                 case .failure(let error):

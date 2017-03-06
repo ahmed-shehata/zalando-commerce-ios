@@ -5,7 +5,7 @@
 import UIKit
 import AtlasSDK
 
-final class OAuth2LoginViewController: UIViewController {
+open class OAuth2LoginViewController: UIViewController {
 
     fileprivate let loginURL: URL
 
@@ -21,18 +21,18 @@ final class OAuth2LoginViewController: UIViewController {
         return webView
     }()
 
-    init(loginURL: URL, completion: ResultCompletion<AuthorizationToken>? = nil) {
+    public init(loginURL: URL, completion: ResultCompletion<AuthorizationToken>? = nil) {
         self.loginURL = loginURL
         self.loginCompletion = completion
         super.init(nibName: nil, bundle: nil)
         self.title = Localizer.format(string: "loginView.loginWithZalando")
     }
 
-    required init?(coder decoder: NSCoder) {
+    required public init?(coder decoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
                                                             target: self,
@@ -46,11 +46,11 @@ final class OAuth2LoginViewController: UIViewController {
     }
 
     @discardableResult
-    fileprivate func dismissViewController(withFailure error: LoginError, animated: Bool = true) -> Bool {
+    public func dismissViewController(withFailure error: LoginError, animated: Bool = true) -> Bool {
         return dismissViewController(with: .failure(error), animated: animated)
     }
 
-    fileprivate func dismissViewController(with result: Result<AuthorizationToken>, animated: Bool = true) -> Bool {
+    public func dismissViewController(with result: Result<AuthorizationToken>, animated: Bool = true) -> Bool {
         dismiss(animated: animated) {
             self.loginCompletion?(result)
         }
@@ -62,8 +62,7 @@ final class OAuth2LoginViewController: UIViewController {
         }
     }
 
-    @objc
-    fileprivate func cancelButtonTapped() {
+    public func cancelButtonTapped() {
         dismiss(animated: true, completion: nil)
     }
 
@@ -71,8 +70,8 @@ final class OAuth2LoginViewController: UIViewController {
 
 extension OAuth2LoginViewController: UIWebViewDelegate {
 
-    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest,
-                 navigationType: UIWebViewNavigationType) -> Bool {
+    public func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest,
+                        navigationType: UIWebViewNavigationType) -> Bool {
         guard let url = request.url else {
             return dismissViewController(withFailure: .missingURL)
         }
@@ -88,11 +87,11 @@ extension OAuth2LoginViewController: UIWebViewDelegate {
         return dismissViewController(with: .success(token))
     }
 
-    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
+    public func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
         self.dismissViewController(withFailure: .requestFailed(error: error))
     }
 
-    func webViewDidFinishLoad(_ webView: UIWebView) {
+    public func webViewDidFinishLoad(_ webView: UIWebView) {
         webViewFinishedLoadCompletion?(webView)
         webViewDidFinishedLoad = true
     }

@@ -28,5 +28,7 @@
 	<string>en</string>
 	<key>ATLASSDK_USE_SANDBOX</key>
 	<true/>
+	<key>ATLASSDK_DISPLAY_RECOMMENDATIONS</key>
+	<true/>
 </dict>
 </plist>
