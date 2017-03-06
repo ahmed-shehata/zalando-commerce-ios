@@ -4,6 +4,8 @@
 
 import Foundation
 
+// TODO: document it, please...
+
 public struct CreateCheckoutRequest: JSONRepresentable {
 
     public let cartId: CartId

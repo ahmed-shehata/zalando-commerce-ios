@@ -4,6 +4,8 @@
 
 import Foundation
 
+// TODO: document it, please...
+
 public struct UpdateAddressRequest {
 
     public let addressId: AddressId

@@ -385,13 +385,6 @@
 			name = "Guest Checkout";
 			sourceTree = "<group>";
 		};
-		12B6E63D1A13BD44FBA93809D684A166 /* Payment */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Payment;
-			sourceTree = "<group>";
-		};
 		17FBA9D0114360557F0730AB955A38C2 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -510,7 +503,6 @@
 				02B3D0B088D148969180C104AE3AE50A /* Guest Checkout */,
 				C5A74D07FB57566754688019A86DAB5D /* Cart */,
 				E9ECE5A2A329CEFB89C24E53DED3403D /* Checkout */,
-				12B6E63D1A13BD44FBA93809D684A166 /* Payment */,
 				F52B1BDDBB0AAA8B723B78601817791D /* Order */,
 				5ADBF1E8B3FDBFAAE434240E7212C5FF /* Article.swift */,
 				A075C77946E59051D3167374A5E7078C /* Brand.swift */,

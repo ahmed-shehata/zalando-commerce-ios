@@ -4,8 +4,6 @@
 
 import Foundation
 
-// TODO: document it, please...
-
 public typealias CartId = String
 public typealias CheckoutId = String
 public typealias CustomerNumber = String
