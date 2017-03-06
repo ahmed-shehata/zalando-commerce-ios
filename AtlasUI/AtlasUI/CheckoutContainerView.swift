@@ -54,25 +54,36 @@ class CheckoutContainerView: UIView {
         return view
     }()
 
+    var articleRefineArrowHandler: CheckoutSummaryArticleRefineArrowHandler?
     let collectionView: CheckoutSummaryArticleSelectCollectionView = {
         let collectionView = CheckoutSummaryArticleSelectCollectionView()
         collectionView.backgroundColor = .white
         return collectionView
     }()
 
-    func displaySizes(selectedArticle: SelectedArticle, animated: Bool, completion: @escaping CheckoutSummaryArticleRefineCompletion) {
+    func displaySizes(selectedArticle: SelectedArticle,
+                      animated: Bool,
+                      arrowHandler: @escaping CheckoutSummaryArticleRefineArrowHandler,
+                      completion: @escaping CheckoutSummaryArticleRefineCompletion) {
+
         guard !selectedArticle.article.hasSingleUnit else { return }
-        configureCollectionView(selectedArticle: selectedArticle, for: .size, animated: animated, completion: completion)
+        articleRefineArrowHandler = arrowHandler
+        configureArticleRefine(selectedArticle: selectedArticle, for: .size, animated: animated, completion: completion)
     }
 
-    func displayQuantites(selectedArticle: SelectedArticle, animated: Bool, completion: @escaping CheckoutSummaryArticleRefineCompletion) {
-        configureCollectionView(selectedArticle: selectedArticle, for: .quantity, animated: animated, completion: completion)
+    func displayQuantites(selectedArticle: SelectedArticle,
+                          animated: Bool,
+                          arrowHandler: @escaping CheckoutSummaryArticleRefineArrowHandler,
+                          completion: @escaping CheckoutSummaryArticleRefineCompletion) {
+
+        articleRefineArrowHandler = arrowHandler
+        configureArticleRefine(selectedArticle: selectedArticle, for: .quantity, animated: animated, completion: completion)
     }
 
-    private func configureCollectionView(selectedArticle: SelectedArticle,
-                                         for type: CheckoutSummaryArticleRefineType,
-                                         animated: Bool,
-                                         completion: @escaping CheckoutSummaryArticleRefineCompletion) {
+    private func configureArticleRefine(selectedArticle: SelectedArticle,
+                                        for type: CheckoutSummaryArticleRefineType,
+                                        animated: Bool,
+                                        completion: @escaping CheckoutSummaryArticleRefineCompletion) {
 
         collectionView.completion = { [weak self] result in
             completion(result)
@@ -83,8 +94,10 @@ class CheckoutContainerView: UIView {
         if overlayButton.isHidden {
             showOverlay(animated: animated)
             collectionView.configure(with: selectedArticle, for: type, animated: false)
+            articleRefineArrowHandler?(type, animated)
         } else if collectionView.type != type {
             collectionView.configure(with: selectedArticle, for: type, animated: true)
+            articleRefineArrowHandler?(type, animated)
         } else {
             hideOverlay(animated: animated)
         }
@@ -95,35 +108,24 @@ class CheckoutContainerView: UIView {
     }
 
     private func showOverlay(animated: Bool) {
-        guard animated else {
-            overlayButton.isHidden = false
-            overlayButton.alpha = 1
-            collectionViewContainerView.transform = .identity
-            return
-        }
-
         overlayButton.isHidden = false
         overlayButton.alpha = 0
-        UIView.animate(duration: .fast) { [weak self] in
+
+        UIView.animate(duration: animated ? .fast : .noAnimation) { [weak self] in
             self?.overlayButton.alpha = 1
             self?.collectionViewContainerView.transform = .identity
         }
     }
 
     func hideOverlay(animated: Bool) {
-        guard animated else {
-            overlayButton.isHidden = true
-            overlayButton.alpha = 0
-            collectionViewContainerView.transform = CGAffineTransform(translationX: 0, y: -collectionViewContainerHeight)
-            return
-        }
+        articleRefineArrowHandler?(nil, animated)
 
-        UIView.animate(duration: .fast, animations: { [weak self] in
+        UIView.animate(duration: animated ? .fast : .noAnimation, animations: { [weak self] in
             guard let strongSelf = self else { return }
             self?.overlayButton.alpha = 0
             self?.collectionViewContainerView.transform = CGAffineTransform(translationX: 0, y: -strongSelf.collectionViewContainerHeight)
-            }, completion: { [weak self] _ in
-                self?.overlayButton.isHidden = true
+        }, completion: { [weak self] _ in
+            self?.overlayButton.isHidden = true
         })
     }
 
