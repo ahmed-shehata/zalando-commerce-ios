@@ -8,7 +8,7 @@ import Swifter
 extension HttpServer {
 
     func addRootResponse() {
-        self.respond(forPath: "/", withText: "AtlasMockAPI server ready")
+        self.respond(forPath: "/", withText: "MockAPI server ready")
     }
 
 }

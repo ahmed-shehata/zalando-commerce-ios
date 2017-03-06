@@ -1,10 +1,10 @@
 require_relative './lib/version.rb'
 
 Pod::Spec.new do |spec|
-  spec.name = 'AtlasMockAPI'
+  spec.name = 'MockAPI'
   spec.platform = :ios, '9.0'
   spec.version = ATLAS_VERSION
-  spec.summary = 'Atlas SDK iOS Mock API server'
+  spec.summary = 'Zalando Commenrce SDK iOS Mock API server'
   spec.homepage = 'https://github.com/zalando-incubator/atlas-ios'
 
   spec.description = <<-DESC
@@ -29,9 +29,9 @@ Pod::Spec.new do |spec|
     tag: spec.version.to_s
   }
 
-  spec.source_files = 'AtlasMockAPI/AtlasMockAPI/**/*.swift'
+  spec.source_files = 'MockAPI/MockAPI/**/*.swift'
   spec.ios.frameworks = 'Foundation'
-  spec.ios.resources = ['AtlasMockAPI/AtlasMockAPI/**/*.json']
+  spec.ios.resources = ['MockAPI/MockAPI/**/*.json']
 
   spec.dependency 'Swifter'
   spec.dependency 'Freddy'

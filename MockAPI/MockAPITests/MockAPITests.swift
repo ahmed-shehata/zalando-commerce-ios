@@ -7,21 +7,21 @@ import SwiftHTTP
 import Freddy
 import Nimble
 
-@testable import AtlasMockAPI
+@testable import MockAPI
 
 private typealias JSONCompletion = (JSON) -> Void
 private typealias DataCompletion = (Data) -> Void
 
-class AtlasMockAPITests: XCTestCase {
+class MockAPITests: XCTestCase {
 
     override static func setUp() {
         super.setUp()
-        try! AtlasMockAPI.startServer()
+        try! MockAPI.startServer()
     }
 
     override static func tearDown() {
         super.tearDown()
-        try! AtlasMockAPI.stopServer()
+        try! MockAPI.stopServer()
     }
 
     func testRootEndpoint() {
@@ -60,7 +60,7 @@ class AtlasMockAPITests: XCTestCase {
 
     fileprivate func assertSuccessfulResponse(forEndpoint endpoint: String, completion: DataCompletion? = nil) {
         let expectation = self.expectation(description: "assertSuccessfulResponse \(endpoint)")
-        let url = AtlasMockAPI.endpointURL(forPath: endpoint).absoluteString
+        let url = MockAPI.endpointURL(forPath: endpoint).absoluteString
 
         if let operation = try? HTTP.GET(url) {
             operation.start { response in

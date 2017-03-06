@@ -12,7 +12,7 @@ enum HttpServerError: Error {
 
 extension HttpServer {
 
-    var serverBundle: Bundle { return Bundle(for: AtlasMockAPI.self) }
+    var serverBundle: Bundle { return Bundle(for: MockAPI.self) }
 
     func registerEndpoints() throws {
         addRootResponse()

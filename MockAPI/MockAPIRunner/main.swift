@@ -3,10 +3,10 @@
 //
 
 import Foundation
-import AtlasMockAPI_macOS
+import MockAPI_macOS
 
 do {
-    try AtlasMockAPI.startServer()
+    try MockAPI.startServer()
 } catch let error {
     print(error)
 }
