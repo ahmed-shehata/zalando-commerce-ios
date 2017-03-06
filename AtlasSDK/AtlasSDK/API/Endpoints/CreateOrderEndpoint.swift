@@ -12,6 +12,4 @@ struct CreateOrderEndpoint: CheckoutEndpoint {
     let acceptedContentType = "application/x.zalando.customer.order.create.response+json"
     let parameters: EndpointParameters?
 
-    let checkoutId: String
-
 }

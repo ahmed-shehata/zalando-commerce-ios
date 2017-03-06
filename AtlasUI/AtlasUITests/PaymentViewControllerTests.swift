@@ -12,10 +12,14 @@ import AtlasMockAPI
 class PaymentViewControllerTests: UITestCase {
 
     func testGuestRedirectStatus() {
-        guard let paymentViewController = self.paymentViewController(with: .guestRedirect(encryptedCheckoutId: "encryptedCheckoutId", encryptedToken: "encryptedToken")) else { return }
+        let guestCheckoutId = GuestCheckoutId(checkoutId: "CHECKOUT_ID", token: "TOKEN")
+
+        guard let paymentViewController = self.paymentViewController(with: .guestRedirect(guestCheckoutId: guestCheckoutId))
+            else { return }
+
         waitUntil(timeout: 10) { done in
             paymentViewController.paymentCompletion = { result in
-                expect(result) == PaymentStatus.guestRedirect(encryptedCheckoutId: "encryptedCheckoutId", encryptedToken: "encryptedToken")
+                expect(result) == PaymentStatus.guestRedirect(guestCheckoutId: guestCheckoutId)
                 done()
             }
             self.defaultNavigationController?.pushViewController(paymentViewController, animated: true)
@@ -74,9 +78,9 @@ extension PaymentViewControllerTests {
         let callbackURL: String
         let redirectURL: String
         switch status {
-        case .guestRedirect(let encryptedCheckoutId, let encryptedToken):
+        case .guestRedirect(let guestCheckoutId):
             callbackURL = "https://atlas-checkout-gateway.com/redirect"
-            redirectURL = "https://atlas-checkout-gateway.com/redirect/\(encryptedCheckoutId)/\(encryptedToken)"
+            redirectURL = "https://atlas-checkout-gateway.com/redirect/\(guestCheckoutId.checkoutId)/\(guestCheckoutId.token)"
         case .redirect:
             callbackURL = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect"
             redirectURL = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect"

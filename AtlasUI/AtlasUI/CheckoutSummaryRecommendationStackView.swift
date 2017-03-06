@@ -65,7 +65,7 @@ extension CheckoutSummaryRecommendationStackView: UIDataBuilder {
     typealias T = Article
 
     func configure(viewModel: T) {
-        AtlasAPI.withLoader.recommendations(forSKU: viewModel.id, onView: loaderContrainer) { [weak self] result in
+        AtlasAPI.withLoader.recommendations(for: viewModel.id, onView: loaderContrainer) { [weak self] result in
             guard let recommendations = result.process() else { return }
             self?.recommendationTitleLabel.alpha = 1
             self?.recommendationCollectionView.configure(with: recommendations, completion: { recommendation in

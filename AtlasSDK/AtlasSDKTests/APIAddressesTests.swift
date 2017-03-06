@@ -37,14 +37,21 @@ class APIAddressesTests: AtlasAPIClientBaseTests {
 
     func testDeleteAddress() {
         waitUntilAtlasAPIClientIsConfigured { done, api in
-            api.deleteAddress(with: "6702748") { result in
-                switch result {
-                case .failure(let error):
-                    fail(String(describing: error))
-                case .success(let emptyResponse):
-                    expect(emptyResponse).notTo(beNil())
+            api.addresses { result in
+                guard case .success(let addresses) = result,
+                    let address = addresses.first else {
+                        return fail("Address to delete required")
                 }
-                done()
+
+                api.delete(address) { result in
+                    switch result {
+                    case .failure(let error):
+                        fail(String(describing: error))
+                    case .success(let emptyResponse):
+                        expect(emptyResponse).notTo(beNil())
+                    }
+                    done()
+                }
             }
         }
     }

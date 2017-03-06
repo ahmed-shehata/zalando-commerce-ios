@@ -8,8 +8,8 @@ public struct OrderRequest {
 
     public let checkoutId: CheckoutId
 
-    public init(checkoutId: CheckoutId) {
-        self.checkoutId = checkoutId
+    public init(checkout: Checkout) {
+        self.checkoutId = checkout.id
     }
 
 }

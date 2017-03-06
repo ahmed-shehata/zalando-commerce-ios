@@ -4,9 +4,9 @@
 
 import Foundation
 
-enum PaymentStatus: Equatable {
+public enum PaymentStatus: Equatable {
 
-    case guestRedirect(encryptedCheckoutId: String, encryptedToken: String)
+    case guestRedirect(guestCheckoutId: GuestCheckoutId)
     case redirect
     case success
     case cancel
@@ -14,7 +14,7 @@ enum PaymentStatus: Equatable {
 
     static var statusKey = "payment_status"
 
-    init?(callbackURLComponents: URLComponents, requestURLComponents: URLComponents) {
+    public init?(callbackURLComponents: URLComponents, requestURLComponents: URLComponents) {
         guard let callbackHost = callbackURLComponents.host,
             let requestHost = requestURLComponents.host,
             callbackHost.lowercased() == requestHost.lowercased()
@@ -27,7 +27,7 @@ enum PaymentStatus: Equatable {
 
 extension PaymentStatus {
 
-    fileprivate init?(fromString string: String?) {
+    fileprivate init?(from string: String?) {
         guard let string = string else { return nil }
 
         switch string {
@@ -39,13 +39,27 @@ extension PaymentStatus {
     }
 
     fileprivate init(requestURLComponents: URLComponents) {
-        if let paymentStatus = PaymentStatus(fromString: requestURLComponents.paymentStatus) {
+        if let paymentStatus = PaymentStatus(from: requestURLComponents.paymentStatus) {
             self = paymentStatus
         } else if let guestRedirect = requestURLComponents.guestRedirect {
-            self = .guestRedirect(encryptedCheckoutId: guestRedirect.encryptedCheckoutId,
-                                  encryptedToken: guestRedirect.encryptedToken)
+            let guestCheckoutId = GuestCheckoutId(checkoutId: guestRedirect.encryptedCheckoutId,
+                                                  token: guestRedirect.encryptedToken)
+            self = .guestRedirect(guestCheckoutId: guestCheckoutId)
         } else {
             self = .redirect
+        }
+    }
+
+    public static func == (lhs: PaymentStatus, rhs: PaymentStatus) -> Bool {
+        switch (lhs, rhs) {
+        case (.guestRedirect(let lhsGuestCheckoutId), .guestRedirect(let rhsGuestCheckoutId)):
+            return lhsGuestCheckoutId.checkoutId == lhsGuestCheckoutId.checkoutId
+                && lhsGuestCheckoutId.token == rhsGuestCheckoutId.token
+        case (.redirect, .redirect): return true
+        case (.success, .success): return true
+        case (.cancel, .cancel): return true
+        case (.error, .error): return true
+        default: return false
         }
     }
 
@@ -71,16 +85,4 @@ extension URLComponents {
         return path.components(separatedBy: "/").filter({ !$0.isEmpty })
     }
 
-}
-
-func == (lhs: PaymentStatus, rhs: PaymentStatus) -> Bool {
-    switch (lhs, rhs) {
-    case (.guestRedirect(let lhsCheckoutId, let lhsToken), .guestRedirect(let rhsCheckoutId, let rhsToken)):
-        return lhsCheckoutId == rhsCheckoutId && lhsToken == rhsToken
-    case (.redirect, .redirect): return true
-    case (.success, .success): return true
-    case (.cancel, .cancel): return true
-    case (.error, .error): return true
-    default: return false
-    }
 }
