@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme
+   LastUpgradeVersion = "0820"
+   version = "1.7">
+   <BuildAction
+      parallelizeBuildables = "YES"
+      buildImplicitDependencies = "YES">
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2A09D0C5F782D7D824F5F39015890DE6"
+               BuildableName = "ZalandoCommerceDemoApp.app"
+               BlueprintName = "ZalandoCommerceDemoApp"
+               ReferencedContainer = "container:ZalandoCommerceDemoApp.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7A9DE536D7A7A1DEA013E619E317542B"
+               BuildableName = "MockAPITests.xctest"
+               BlueprintName = "MockAPITests"
+               ReferencedContainer = "container:../MockAPI/MockAPI.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
+   </BuildAction>
+   <TestAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
+      <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "67F9DDC7BA66504563712E65544C2F4E"
+               BuildableName = "ZalandoCommerceDemoApp.xctest"
+               BlueprintName = "ZalandoCommerceDemoAppUITests"
+               ReferencedContainer = "container:ZalandoCommerceDemoApp.xcodeproj">
+            </BuildableReference>
+            <LocationScenarioReference
+               identifier = "com.apple.dt.IDEFoundation.CurrentLocationScenarioIdentifier"
+               referenceType = "1">
+            </LocationScenarioReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4850138AFD7E1EECC8F7F5FD3D02713F"
+               BuildableName = "ZalandoCommerceAPITests.xctest"
+               BlueprintName = "ZalandoCommerceAPITests"
+               ReferencedContainer = "container:../ZalandoCommerceAPI/ZalandoCommerceAPI.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "05766597D649C37825AED617FB1045D0"
+               BuildableName = "ZalandoCommerceUITests.xctest"
+               BlueprintName = "ZalandoCommerceUITests"
+               ReferencedContainer = "container:../ZalandoCommerceUI/ZalandoCommerceUI.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7A9DE536D7A7A1DEA013E619E317542B"
+               BuildableName = "MockAPITests.xctest"
+               BlueprintName = "MockAPITests"
+               ReferencedContainer = "container:../MockAPI/MockAPI.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "2A09D0C5F782D7D824F5F39015890DE6"
+            BuildableName = "ZalandoCommerceDemoApp.app"
+            BlueprintName = "ZalandoCommerceDemoApp"
+            ReferencedContainer = "container:ZalandoCommerceDemoApp.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
+      <AdditionalOptions>
+      </AdditionalOptions>
+   </TestAction>
+   <LaunchAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      launchStyle = "0"
+      useCustomWorkingDirectory = "NO"
+      ignoresPersistentStateOnLaunch = "NO"
+      debugDocumentVersioning = "YES"
+      debugServiceExtension = "internal"
+      allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "2A09D0C5F782D7D824F5F39015890DE6"
+            BuildableName = "ZalandoCommerceDemoApp.app"
+            BlueprintName = "ZalandoCommerceDemoApp"
+            ReferencedContainer = "container:ZalandoCommerceDemoApp.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "PRINT_REQUEST_DESCRIPTION"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
+      <AdditionalOptions>
+      </AdditionalOptions>
+   </LaunchAction>
+   <ProfileAction
+      buildConfiguration = "Release"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      savedToolIdentifier = ""
+      useCustomWorkingDirectory = "NO"
+      debugDocumentVersioning = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "2A09D0C5F782D7D824F5F39015890DE6"
+            BuildableName = "ZalandoCommerceDemoApp.app"
+            BlueprintName = "ZalandoCommerceDemoApp"
+            ReferencedContainer = "container:ZalandoCommerceDemoApp.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+   </ProfileAction>
+   <AnalyzeAction
+      buildConfiguration = "Debug">
+   </AnalyzeAction>
+   <ArchiveAction
+      buildConfiguration = "Release"
+      revealArchiveInOrganizer = "YES">
+   </ArchiveAction>
+</Scheme>

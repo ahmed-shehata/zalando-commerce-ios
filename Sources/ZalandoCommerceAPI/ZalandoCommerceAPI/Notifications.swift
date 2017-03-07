@@ -7,37 +7,40 @@ import Foundation
 extension NSNotification.Name {
 
     /**
-     Posted on `AtlasAPI` authorization.
-     - SeeAlso: `AtlasAPI.authorize(with:)`
+     Posted on `ZalandoCommerceAPI` authorization.
+     - SeeAlso: `ZalandoCommerceAPI.authorize(with:)`
      */
-    public static let AtlasAuthorized = NSNotification.Name(rawValue: "Atlas.NotificationAuthorized")
+    public static let ZalandoCommerceAPIAuthorized =
+        NSNotification.Name(rawValue: "ZalandoCommerceAPI.Notification.Authorized")
 
     /**
-     Posted on `AtlasAPI` deauthorization.
-     - SeeAlso: `AtlasAPI.deauthorize(with:)`
+     Posted on `ZalandoCommerceAPI` deauthorization.
+     - SeeAlso: `ZalandoCommerceAPI.deauthorize(with:)`
      */
-    public static let AtlasDeauthorized = NSNotification.Name(rawValue: "Atlas.NotificationDeauthorized")
+    public static let ZalandoCommerceAPIDeauthorized =
+        NSNotification.Name(rawValue: "ZalandoCommerceAPI.Notification.Deauthorized")
 
     /**
-     Posted on `AtlasAPI` authorization state change.
-     - SeeAlso: `AtlasAPI.authorize(with:)`
+     Posted on `ZalandoCommerceAPI` authorization state change.
+     - SeeAlso: `ZalandoCommerceAPI.authorize(with:)`
      */
-    public static let AtlasAuthorizationChanged = NSNotification.Name(rawValue: "Atlas.NotificationAuthorizationChanged")
+    public static let ZalandoCommerceAPIAuthorizationChanged =
+        NSNotification.Name(rawValue: "ZalandoCommerceAPI.Notification.AuthorizationChanged")
 
 }
 
-extension AtlasAPI {
+extension ZalandoCommerceAPI {
 
     func notify(isAuthorized: Bool, withToken token: APIAccessToken) {
-        AtlasAPI.notify(api: self, isAuthorized: isAuthorized, withToken: token)
+        ZalandoCommerceAPI.notify(api: self, isAuthorized: isAuthorized, withToken: token)
     }
 
-    static func notify(api: AtlasAPI?, isAuthorized: Bool, withToken token: APIAccessToken) {
+    static func notify(api: ZalandoCommerceAPI?, isAuthorized: Bool, withToken token: APIAccessToken) {
         let userInfo = token.notificationUserInfo
-        let authNotification: NSNotification.Name = isAuthorized ? .AtlasAuthorized : .AtlasDeauthorized
+        let authNotification: NSNotification.Name = isAuthorized ? .ZalandoCommerceAPIAuthorized : .ZalandoCommerceAPIDeauthorized
 
         NotificationCenter.default.post(name: authNotification, object: api, userInfo: userInfo)
-        NotificationCenter.default.post(name: .AtlasAuthorizationChanged, object: api, userInfo: userInfo)
+        NotificationCenter.default.post(name: .ZalandoCommerceAPIAuthorizationChanged, object: api, userInfo: userInfo)
     }
 
 }

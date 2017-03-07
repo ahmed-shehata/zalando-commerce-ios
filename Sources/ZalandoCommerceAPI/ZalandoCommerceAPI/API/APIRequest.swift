@@ -27,7 +27,7 @@ public struct APIRequest<Model> {
      a main thread.
 
      - Parameter completion: closure appended to a completions set (and in the result called
-     as the first one when request finishes). Can return `AtlasResult.failure` with
+     as the first one when request finishes). Can return `APIResult.failure` with
      `APIError.invalidResponseFormat` if `successHandler` is not able to parse a response.
      */
     public mutating func execute(append completion: @escaping (APIResult<Model>) -> Void) {

@@ -7,7 +7,7 @@ import Swifter
 
 public final class MockAPI {
 
-    public static let isEnabledFlag = "ATLAS_MOCK_API_ENABLED"
+    public static let isEnabledFlag = "ZC_MOCK_API_ENABLED"
 
     fileprivate static var isStarted: Bool { return server.state == .starting || server.state == .running }
     fileprivate static let server = HttpServer()
@@ -16,12 +16,12 @@ public final class MockAPI {
     public static func startServer(wait timeout: TimeInterval = 15) throws {
         try server.registerEndpoints()
         try server.start(at: serverURL, forceIPv4: false, timeout: timeout)
-        print("MockAPI server started @ \(serverURL)")
+        print("Zalando Commerce MockAPI server started @ \(serverURL)")
     }
 
     public static func stopServer(wait timeout: TimeInterval = 15) throws {
         try server.stop(withGraceTimeout: timeout)
-        print("MockAPI server stopped")
+        print("Zalando Commerce MockAPI server stopped")
     }
 
     public static func endpointURL(forPath path: String, queryItems: [URLQueryItem] = []) -> URL {

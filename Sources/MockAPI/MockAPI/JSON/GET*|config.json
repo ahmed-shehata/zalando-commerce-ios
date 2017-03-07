@@ -87,12 +87,12 @@
   "atlas-checkout-api": {
     "url": "http://localhost.charlesproxy.com:9080",
     "payment": {
-      "selection-callback": "http://de.zalando.atlas.AtlasCheckoutDemo/redirect",
-      "third-party-callback": "http://de.zalando.atlas.AtlasCheckoutDemo/redirect"
+      "selection-callback": "http://com.zalando.commerce.checkout-demo/redirect",
+      "third-party-callback": "http://com.zalando.commerce.checkout-demo/redirect"
     }
   },
   "oauth2-provider": {
-    "url": "http://localhost.charlesproxy.com:9080/oauth2/authorize?realm=/customers&response_type=token&client_id=atlas_Y2M1MzA&redirect_uri=http://de.zalando.atlas.AtlasCheckoutDemo/redirect"
+    "url": "http://localhost.charlesproxy.com:9080/oauth2/authorize?realm=/customers&response_type=token&client_id=atlas_Y2M1MzA&redirect_uri=http://com.zalando.commerce.checkout-demo/redirect"
   },
   "atlas-checkout-gateway": {
     "url": "http://localhost.charlesproxy.com:9080"

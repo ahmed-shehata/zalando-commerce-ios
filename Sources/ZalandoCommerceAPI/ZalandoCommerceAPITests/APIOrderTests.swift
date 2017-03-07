@@ -8,10 +8,10 @@ import Nimble
 
 @testable import ZalandoCommerceAPI
 
-class APIOrderTests: AtlasAPIClientBaseTests {
+class APIOrderTests: APITestCase {
 
     func testCreateOrder() {
-        waitUntilAtlasAPIClientIsConfigured { done, api in
+        waitForAPIConfigured { done, api in
             api.createCheckout(from: self.cartId) { result in
                 guard case .success(let checkout) = result else {
                     return fail("Checkout missing")

@@ -8,10 +8,10 @@ import Nimble
 
 @testable import ZalandoCommerceAPI
 
-class APICreateCheckoutTests: AtlasAPIClientBaseTests {
+class APICreateCheckoutTests: APITestCase {
 
     func testCreateCheckoutFromArticle() {
-        waitUntilAtlasAPIClientIsConfigured { done, api in
+        waitForAPIConfigured { done, api in
             let sku = ConfigSKU(value: "AD541L009-G11")
             api.article(with: sku) { result in
                 switch result {
@@ -35,7 +35,7 @@ class APICreateCheckoutTests: AtlasAPIClientBaseTests {
     }
 
     func testCreateCheckoutFromCart() {
-        waitUntilAtlasAPIClientIsConfigured { done, api in
+        waitForAPIConfigured { done, api in
             api.createCheckout(from: self.cartId) { result in
                 switch result {
                 case .failure(let error):

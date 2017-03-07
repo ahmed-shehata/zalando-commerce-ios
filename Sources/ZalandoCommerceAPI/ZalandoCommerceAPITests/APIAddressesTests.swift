@@ -8,10 +8,10 @@ import Nimble
 
 @testable import ZalandoCommerceAPI
 
-class APIAddressesTests: AtlasAPIClientBaseTests {
+class APIAddressesTests: APITestCase {
 
     func testFetchAddressObject() {
-        waitUntilAtlasAPIClientIsConfigured { done, api in
+        waitForAPIConfigured { done, api in
             api.addresses { result in
                 switch result {
                 case .failure(let error):
@@ -36,7 +36,7 @@ class APIAddressesTests: AtlasAPIClientBaseTests {
     }
 
     func testDeleteAddress() {
-        waitUntilAtlasAPIClientIsConfigured { done, api in
+        waitForAPIConfigured { done, api in
             api.addresses { result in
                 guard case .success(let addresses) = result,
                     let address = addresses.first else {

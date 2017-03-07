@@ -8,10 +8,10 @@ import Nimble
 
 @testable import ZalandoCommerceAPI
 
-class APICartTests: AtlasAPIClientBaseTests {
+class APICartTests: APITestCase {
 
     func testCreateCart() {
-        waitUntilAtlasAPIClientIsConfigured { done, api in
+        waitForAPIConfigured { done, api in
             let sku = SimpleSKU(value: "EV451G023-Q110ONE000")
             let cartItemRequest = CartItemRequest(sku: sku, quantity: 1)
             api.createCart(with: [cartItemRequest]) { result in

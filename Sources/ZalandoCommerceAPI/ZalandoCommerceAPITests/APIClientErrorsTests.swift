@@ -9,13 +9,13 @@ import MockAPI
 
 @testable import ZalandoCommerceAPI
 
-class AtlasAPIClientErrorsTests: AtlasAPIClientBaseTests {
+class APIClientErrorsTests: APITestCase {
 
-    let clientURL = URL(validURL: "https://atlas-sdk.api/api/any_endpoint")
+    let clientURL = URL(validURL: "https://commerce.zalando.com/api/any_endpoint")
 
     func testNoDataResponse() {
         let status = HTTPStatus.ok
-        let api = mockedAtlasAPI(forURL: clientURL, data: nil, status: status)
+        let api = mockedAPI(forURL: clientURL, data: nil, status: status)
 
         waitUntil(timeout: 10) { done in
             api.customer { result in
@@ -37,7 +37,7 @@ class AtlasAPIClientErrorsTests: AtlasAPIClientBaseTests {
             "detail": "Full authentication is required to access this resource"]
 
         let errorResponse = data(withJSONObject: json)
-        let api = mockedAtlasAPI(forURL: clientURL, options: Options.forTests(), data: errorResponse, status: status)
+        let api = mockedAPI(forURL: clientURL, options: Options.forTests(), data: errorResponse, status: status)
 
         waitUntil(timeout: 10) { done in
             api.customer { result in
@@ -57,7 +57,7 @@ class AtlasAPIClientErrorsTests: AtlasAPIClientBaseTests {
             "status": status.rawValue, "detail": ""]
 
         let errorResponse = data(withJSONObject: json)
-        let api = mockedAtlasAPI(forURL: clientURL, data: errorResponse, status: status)
+        let api = mockedAPI(forURL: clientURL, data: errorResponse, status: status)
 
         waitUntil(timeout: 10) { done in
             api.customer { result in
@@ -76,10 +76,10 @@ class AtlasAPIClientErrorsTests: AtlasAPIClientBaseTests {
     }
 
     func testNSURLDomainError() {
-        let api = mockedAtlasAPI(forURL: clientURL,
-                                 data: nil,
-                                 status: .unauthorized,
-                                 errorCode: NSURLErrorBadURL)
+        let api = mockedAPI(forURL: clientURL,
+                            data: nil,
+                            status: .unauthorized,
+                            errorCode: NSURLErrorBadURL)
 
         waitUntil(timeout: 10) { done in
             api.customer { result in
@@ -98,7 +98,7 @@ class AtlasAPIClientErrorsTests: AtlasAPIClientBaseTests {
     func testMangledJSON() {
         let errorStatus = HTTPStatus.serviceUnavailable
         let errorResponse = "Some text error".data(using: .utf8)
-        let api = mockedAtlasAPI(forURL: clientURL, data: errorResponse, status: errorStatus)
+        let api = mockedAPI(forURL: clientURL, data: errorResponse, status: errorStatus)
 
         waitUntil(timeout: 10) { done in
             api.customer { result in

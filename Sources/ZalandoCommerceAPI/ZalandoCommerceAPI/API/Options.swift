@@ -5,7 +5,7 @@
 import Foundation
 
 /**
-Used to initate `AtlasAPI`.
+Used to initate `ZalandoCommerceAPI`.
 
 Note: can be fully or partially filled with data from `Info.plist` file.
     More [on wiki](https://github.com/zalando-incubator/atlas-ios/wiki/Configuration)
@@ -43,7 +43,7 @@ public struct Options {
     public let useRecommendations: Bool
 
     /**
-     Initializes options for `AtlasAPI`.
+     Initializes options for `ZalandoCommerceAPI`.
      
      - Note: Fallback flow:
         1. the value from init
@@ -141,11 +141,11 @@ extension Options {
 
     enum InfoKey: String {
 
-        case clientId = "ATLASSDK_CLIENT_ID"
-        case salesChannel = "ATLASSDK_SALES_CHANNEL"
-        case interfaceLanguage = "ATLASSDK_INTERFACE_LANGUAGE"
-        case useSandboxEnvironment = "ATLASSDK_USE_SANDBOX"
-        case useRecommendations = "ATLASSDK_USE_RECOMMENDATIONS"
+        case clientId = "ZALANDO_COMMERCE_CLIENT_ID"
+        case salesChannel = "ZALANDO_COMMERCE_SALES_CHANNEL"
+        case interfaceLanguage = "ZALANDO_COMMERCE_INTERFACE_LANGUAGE"
+        case useSandboxEnvironment = "ZALANDO_COMMERCE_USE_SANDBOX"
+        case useRecommendations = "ZALANDO_COMMERCE_USE_RECOMMENDATIONS"
 
     }
 
