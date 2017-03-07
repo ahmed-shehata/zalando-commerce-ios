@@ -62,7 +62,7 @@ extension LoggedInAddressListActionHandlerTests {
     }
 
     fileprivate func getSaveButton() -> UIBarButtonItem? {
-        guard let atlasUIViewController = self.atlasUIViewController else {
+        guard let commerceUIViewController = self.commerceUIViewController else {
             fail()
             return nil
         }
@@ -75,12 +75,12 @@ extension LoggedInAddressListActionHandlerTests {
         }
 
         var addressFormViewController: AddressFormViewController?
-        if atlasUIViewController.mainNavigationController.viewControllers.count > 1 {
-            expect(atlasUIViewController.mainNavigationController.viewControllers.last as? AddressFormViewController).toNotEventually(beNil())
-            addressFormViewController = atlasUIViewController.mainNavigationController.viewControllers.last as? AddressFormViewController
+        if commerceUIViewController.mainNavigationController.viewControllers.count > 1 {
+            expect(commerceUIViewController.mainNavigationController.viewControllers.last as? AddressFormViewController).toNotEventually(beNil())
+            addressFormViewController = commerceUIViewController.mainNavigationController.viewControllers.last as? AddressFormViewController
         } else {
-            expect(atlasUIViewController.presentedViewController as? UINavigationController).toNotEventually(beNil())
-            guard let viewController = (atlasUIViewController.presentedViewController as? UINavigationController)?.viewControllers.first as? AddressFormViewController else {
+            expect(commerceUIViewController.presentedViewController as? UINavigationController).toNotEventually(beNil())
+            guard let viewController = (commerceUIViewController.presentedViewController as? UINavigationController)?.viewControllers.first as? AddressFormViewController else {
                 fail()
                 return nil
             }

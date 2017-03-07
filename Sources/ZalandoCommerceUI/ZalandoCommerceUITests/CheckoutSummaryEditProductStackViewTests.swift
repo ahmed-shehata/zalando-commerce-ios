@@ -13,33 +13,33 @@ class CheckoutSummaryEditProductStackViewTests: UITestCase {
     var checkoutSummaryViewController: CheckoutSummaryViewController?
 
     func testSelectInitialSizeWhileNotLoggedIn() {
-        registerAtlasUIViewController(forConfigSKU: "GU121D08Z-Q11")
+        registerZalandoCommerceUIViewController(forConfigSKU: "GU121D08Z-Q11")
         selectItemInCollectionView()
         expect(self.checkoutSummaryViewController?.actionHandler as? NotLoggedInSummaryActionHandler).toEventuallyNot(beNil())
     }
 
     func testSelectInitialSizeWhileLoggedIn() {
-        atlasUI.api.authorize(with: "TestToken")
-        registerAtlasUIViewController(forConfigSKU: "GU121D08Z-Q11")
+        commerceUI.api.authorize(with: "TestToken")
+        registerZalandoCommerceUIViewController(forConfigSKU: "GU121D08Z-Q11")
         selectItemInCollectionView()
         expect(self.checkoutSummaryViewController?.actionHandler as? LoggedInSummaryActionHandler).toEventuallyNot(beNil())
-        atlasUI.api.deauthorize()
+        commerceUI.api.deauthorize()
     }
 
     func testOneSizeInitialSizeWhileNotLoggedIn() {
-        registerAtlasUIViewController(forConfigSKU: "MK151F00E-Q11")
+        registerZalandoCommerceUIViewController(forConfigSKU: "MK151F00E-Q11")
         expect(self.checkoutSummaryViewController?.actionHandler as? NotLoggedInSummaryActionHandler).toEventuallyNot(beNil())
     }
 
     func testOneSizeInitialSizeWhileLoggedIn() {
-        atlasUI.api.authorize(with: "TestToken")
-        registerAtlasUIViewController(forConfigSKU: "MK151F00E-Q11")
+        commerceUI.api.authorize(with: "TestToken")
+        registerZalandoCommerceUIViewController(forConfigSKU: "MK151F00E-Q11")
         expect(self.checkoutSummaryViewController?.actionHandler as? LoggedInSummaryActionHandler).toEventuallyNot(beNil())
-        atlasUI.api.deauthorize()
+        commerceUI.api.deauthorize()
     }
 
     func testSelectingQuantity() {
-        registerAtlasUIViewController(forConfigSKU: "GU121D08Z-Q11")
+        registerZalandoCommerceUIViewController(forConfigSKU: "GU121D08Z-Q11")
         selectItemInCollectionView()
         tapOnRefineButton(type: .quantity)
         selectItemInCollectionView(idx: 2)
@@ -47,7 +47,7 @@ class CheckoutSummaryEditProductStackViewTests: UITestCase {
     }
 
     func testSelectingSize() {
-        registerAtlasUIViewController(forConfigSKU: "GU121D08Z-Q11")
+        registerZalandoCommerceUIViewController(forConfigSKU: "GU121D08Z-Q11")
         selectItemInCollectionView()
         tapOnRefineButton(type: .size)
         selectItemInCollectionView(idx: 1)
@@ -55,14 +55,14 @@ class CheckoutSummaryEditProductStackViewTests: UITestCase {
     }
 
     func testOneSizeSelectQuantity() {
-        registerAtlasUIViewController(forConfigSKU: "MK151F00E-Q11")
+        registerZalandoCommerceUIViewController(forConfigSKU: "MK151F00E-Q11")
         tapOnRefineButton(type: .quantity)
         selectItemInCollectionView(idx: 2)
         expect(self.checkoutSummaryViewController?.dataModel.selectedArticle.quantity).toEventually(equal(3))
     }
 
     func testSelectSizeWithLessQuantity() {
-        registerAtlasUIViewController(forConfigSKU: "AZ711M001-B11")
+        registerZalandoCommerceUIViewController(forConfigSKU: "AZ711M001-B11")
         selectItemInCollectionView(idx: 1)
         tapOnRefineButton(type: .quantity)
         selectItemInCollectionView(idx: 6)
@@ -79,14 +79,14 @@ class CheckoutSummaryEditProductStackViewTests: UITestCase {
 
 extension CheckoutSummaryEditProductStackViewTests {
 
-    override func registerAtlasUIViewController(forConfigSKU sku: String) {
-        super.registerAtlasUIViewController(forConfigSKU: sku)
+    override func registerZalandoCommerceUIViewController(forConfigSKU sku: String) {
+        super.registerZalandoCommerceUIViewController(forConfigSKU: sku)
         configureCheckoutSummaryViewController()
     }
 
     fileprivate func configureCheckoutSummaryViewController() {
-        expect(self.atlasUIViewController?.mainNavigationController.viewControllers.last as? CheckoutSummaryViewController).toEventuallyNot(beNil())
-        guard let checkoutSummary = self.atlasUIViewController?.mainNavigationController.viewControllers.last as? CheckoutSummaryViewController else { return fail() }
+        expect(self.commerceUIViewController?.mainNavigationController.viewControllers.last as? CheckoutSummaryViewController).toEventuallyNot(beNil())
+        guard let checkoutSummary = self.commerceUIViewController?.mainNavigationController.viewControllers.last as? CheckoutSummaryViewController else { return fail() }
         self.checkoutSummaryViewController = checkoutSummary
     }
 

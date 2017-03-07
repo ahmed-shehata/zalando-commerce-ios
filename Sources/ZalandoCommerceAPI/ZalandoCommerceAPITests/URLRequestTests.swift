@@ -39,7 +39,7 @@ class URLRequestTests: APITestCase {
     }
 
     func testSalesChannelLanguageHeader() {
-        let clientURL = URL(validURL: "https://atlas-sdk.api/api/any_endpoint")
+        let clientURL = URL(validURL: "https://commerce.zalando.com/api/any_endpoint")
         let api = mockedAPI(forURL: clientURL, data: nil, status: .ok)
         let language = api.config.salesChannel.languageCode
         let request = URLRequest(url: URL(validURL: "http://zalando.de"), language: language)

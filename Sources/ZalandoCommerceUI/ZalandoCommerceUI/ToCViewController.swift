@@ -45,7 +45,7 @@ final class ToCViewController: UIViewController {
         url.removeCookies()
 
         var request = URLRequest(url: url)
-        request.setValue("AtlasSDK", forHTTPHeaderField: "X-Zalando-Mobile-App")
+        request.setValue("Zalando Commerce UI", forHTTPHeaderField: "X-Zalando-Mobile-App")
         return request
     }
 

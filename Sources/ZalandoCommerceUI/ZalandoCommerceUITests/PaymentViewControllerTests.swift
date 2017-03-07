@@ -79,20 +79,20 @@ extension PaymentViewControllerTests {
         let redirectURL: String
         switch status {
         case .guestRedirect(let guestCheckoutId):
-            callbackURL = "https://atlas-checkout-gateway.com/redirect"
-            redirectURL = "https://atlas-checkout-gateway.com/redirect/\(guestCheckoutId.checkoutId)/\(guestCheckoutId.token)"
+            callbackURL = "https://checkout-gateway.commerce.zalando.com/redirect"
+            redirectURL = "https://checkout-gateway.commerce.zalando.com/redirect/\(guestCheckoutId.checkoutId)/\(guestCheckoutId.token)"
         case .redirect:
-            callbackURL = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect"
-            redirectURL = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect"
+            callbackURL = "http://com.zalando.commerce.checkout-demo/redirect"
+            redirectURL = "http://com.zalando.commerce.checkout-demo/redirect"
         case .success:
-            callbackURL = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect"
-            redirectURL = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect%3F\(PaymentStatus.statusKey)%3Dsuccess"
+            callbackURL = "http://com.zalando.commerce.checkout-demo/redirect"
+            redirectURL = "http://com.zalando.commerce.checkout-demo/redirect%3F\(PaymentStatus.statusKey)%3Dsuccess"
         case .cancel:
-            callbackURL = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect"
-            redirectURL = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect%3F\(PaymentStatus.statusKey)%3Dcancel"
+            callbackURL = "http://com.zalando.commerce.checkout-demo/redirect"
+            redirectURL = "http://com.zalando.commerce.checkout-demo/redirect%3F\(PaymentStatus.statusKey)%3Dcancel"
         case .error:
-            callbackURL = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect"
-            redirectURL = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect%3F\(PaymentStatus.statusKey)%3Derror"
+            callbackURL = "http://com.zalando.commerce.checkout-demo/redirect"
+            redirectURL = "http://com.zalando.commerce.checkout-demo/redirect%3F\(PaymentStatus.statusKey)%3Derror"
         }
         let url = MockAPI.endpointURL(forPath: "/redirect", queryItems: [URLQueryItem(name: "url", value: redirectURL)])
         let callback = URL(string: callbackURL)!

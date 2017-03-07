@@ -53,7 +53,7 @@ class APITestCase: XCTestCase {
 
         let apiURL = MockAPI.endpointURL(forPath: "/")
         let loginURL = MockAPI.endpointURL(forPath: "/oauth2/authorize")
-        let callback = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect"
+        let callback = "http://com.zalando.commerce.checkout-demo/redirect"
         let gateway = "http://localhost.charlesproxy.com:9080"
 
         let json = JSON([

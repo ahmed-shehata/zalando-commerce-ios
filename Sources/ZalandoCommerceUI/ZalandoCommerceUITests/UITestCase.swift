@@ -12,8 +12,8 @@ import ZalandoCommerceAPI
 class UITestCase: XCTestCase {
 
     var sku = ConfigSKU(value: "AD541L009-G11")
-    var atlasUIViewController: ZalandoCommerceUIViewController?
-    var atlasUI: ZalandoCommerceUI!
+    var commerceUIViewController: ZalandoCommerceUIViewController?
+    var commerceUI: ZalandoCommerceUI!
 
     var window: UIWindow = {
         let window = UIWindow()
@@ -22,7 +22,7 @@ class UITestCase: XCTestCase {
     }()
 
     var defaultNavigationController: UINavigationController? {
-        return atlasUIViewController?.mainNavigationController
+        return commerceUIViewController?.mainNavigationController
     }
 
     override class func setUp() {
@@ -38,8 +38,8 @@ class UITestCase: XCTestCase {
                 switch result {
                 case .failure(let error):
                     fail(String(describing: error))
-                case .success(let atlasUI):
-                    self.atlasUI = atlasUI
+                case .success(let commerceUI):
+                    self.commerceUI = commerceUI
                 }
                 done()
             }
@@ -54,27 +54,27 @@ class UITestCase: XCTestCase {
     override func setUp() {
         super.setUp()
         registerAtlasUI()
-        registerAtlasUIViewController(for: self.sku)
+        registerZalandoCommerceUIViewController(for: self.sku)
         waitForArticleFetch()
     }
 
-    func registerAtlasUIViewController(forConfigSKU sku: String) {
+    func registerZalandoCommerceUIViewController(forConfigSKU sku: String) {
         let sku = ConfigSKU(value: sku)
-        registerAtlasUIViewController(for: sku)
+        registerZalandoCommerceUIViewController(for: sku)
     }
 
-    func registerAtlasUIViewController(for sku: ConfigSKU) {
+    func registerZalandoCommerceUIViewController(for sku: ConfigSKU) {
         UserError.resetBanners()
-        let atlasUIViewController = ZalandoCommerceUIViewController(forSKU: sku, uiInstance: atlasUI) { _ in }
-        self.window.rootViewController = atlasUIViewController
+        let commerceUIViewController = ZalandoCommerceUIViewController(forSKU: sku, uiInstance: commerceUI) { _ in }
+        self.window.rootViewController = commerceUIViewController
         self.window.makeKeyAndVisible()
-        _ = atlasUIViewController.view // load the view
-        self.atlasUIViewController = atlasUIViewController
+        _ = commerceUIViewController.view // load the view
+        self.commerceUIViewController = commerceUIViewController
     }
 
     private func waitForArticleFetch() {
-        expect(self.atlasUIViewController?.mainNavigationController.viewControllers.last as? CheckoutSummaryViewController).toEventuallyNot(beNil())
-        guard let checkoutSummary = self.atlasUIViewController?.mainNavigationController.viewControllers.last as? CheckoutSummaryViewController else { return fail() }
+        expect(self.commerceUIViewController?.mainNavigationController.viewControllers.last as? CheckoutSummaryViewController).toEventuallyNot(beNil())
+        guard let checkoutSummary = self.commerceUIViewController?.mainNavigationController.viewControllers.last as? CheckoutSummaryViewController else { return fail() }
         if checkoutSummary.checkoutContainer.collectionView.numberOfItems(inSection: 0) > 0 {
             checkoutSummary.checkoutContainer.collectionView.collectionView(checkoutSummary.checkoutContainer.collectionView, didSelectItemAt: IndexPath(row: 0, section: 0))
             expect(checkoutSummary.checkoutContainer.overlayButton.isHidden).toEventually(beTrue())
@@ -82,7 +82,7 @@ class UITestCase: XCTestCase {
     }
 
     var errorDisplayed: Bool {
-        guard let errorPresenterViewController = atlasUIViewController?.presentedViewController ?? atlasUIViewController else { return false }
+        guard let errorPresenterViewController = commerceUIViewController?.presentedViewController ?? commerceUIViewController else { return false }
         return errorPresenterViewController.childViewControllers.contains {
             $0 is BannerErrorViewController ||
             ($0 as? UINavigationController)?.viewControllers.first is FullScreenErrorViewController

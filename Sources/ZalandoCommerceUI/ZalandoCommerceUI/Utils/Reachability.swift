@@ -112,7 +112,7 @@ class Reachability {
     fileprivate var notifierRunning = false
     fileprivate var reachabilityRef: SCNetworkReachability?
 
-    fileprivate let reachabilitySerialQueue = DispatchQueue(label: "de.zalando.atlassdk.atlasui.reachability")
+    fileprivate let reachabilitySerialQueue = DispatchQueue(label: "com.zalando.commerce.ui.reachability")
 
     required init(reachabilityRef: SCNetworkReachability) {
         reachableOnWWAN = true

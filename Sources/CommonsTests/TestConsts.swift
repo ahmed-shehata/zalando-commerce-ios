@@ -20,7 +20,7 @@ struct TestConsts {
     static let configLanguage = "de"
     static let configCountry = "DE"
     static let tocURL = "https://www.zalando.de/agb/"
-    static let callback = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect"
+    static let callback = "http://com.zalando.commerce.checkout-demo/redirect"
 
     static let gateway = "http://localhost.charlesproxy.com:9080"
     static var configLocale: String { return "\(configLanguage)_\(configCountry)" }
