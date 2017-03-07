@@ -5,7 +5,7 @@
 import XCTest
 import MockAPI
 
-class AtlasDemoUITests: XCTestCase {
+class ZalandoCommerceDemoAppUITests: XCTestCase {
 
     let app = XCUIApplication()
 
@@ -149,7 +149,7 @@ class AtlasDemoUITests: XCTestCase {
 
 }
 
-extension AtlasDemoUITests {
+extension ZalandoCommerceDemoAppUITests {
 
     fileprivate func proceedToSummaryWithSizes() {
         let size = app.cells["size-cell-0"]

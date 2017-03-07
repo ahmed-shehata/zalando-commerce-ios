@@ -53,7 +53,7 @@ class ProfileViewController: UIViewController {
     }
 
     fileprivate func loadCustomerData() {
-        AppSetup.atlas?.api.customer { result in
+        AppSetup.zCommerceUI?.api.customer { result in
             let processedResult = result.processedResult()
             switch processedResult {
             case .success(let customer):

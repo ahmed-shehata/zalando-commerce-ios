@@ -25,7 +25,7 @@ class PDPViewController: UIViewController {
     func retrieveArticleDetails() {
         guard let sku = sku else { return }
 
-        AppSetup.atlas?.api.article(with: sku) { [weak self] result in
+        AppSetup.zCommerceUI?.api.article(with: sku) { [weak self] result in
             let processedResult = result.processedResult()
             switch processedResult {
             case .success(let article):

@@ -643,7 +643,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zalando.commerce.demo-app";
 				PRODUCT_NAME = ZalandoCommerceDemoApp;
 				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
-				TEST_TARGET_NAME = AtlasDemo;
+				TEST_TARGET_NAME = ZalandoCommerceDemoApp;
 			};
 			name = Release;
 		};
@@ -675,7 +675,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zalando.commerce.demo-app";
 				PRODUCT_NAME = ZalandoCommerceDemoApp;
-				TEST_TARGET_NAME = AtlasDemo;
+				TEST_TARGET_NAME = ZalandoCommerceDemoApp;
 			};
 			name = Debug;
 		};

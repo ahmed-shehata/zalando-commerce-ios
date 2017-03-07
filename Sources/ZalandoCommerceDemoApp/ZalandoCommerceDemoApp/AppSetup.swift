@@ -12,7 +12,7 @@ typealias AppSetupCompletion = (_ configured: Bool) -> Void
 
 class AppSetup {
 
-    fileprivate(set) static var atlas: ZalandoCommerceUI?
+    fileprivate(set) static var zCommerceUI: ZalandoCommerceUI?
     fileprivate(set) static var options: Options?
 
     struct Defaults {
@@ -22,7 +22,7 @@ class AppSetup {
     }
 
     static var isConfigured: Bool {
-        return atlas != nil && options != nil
+        return zCommerceUI != nil && options != nil
     }
 
     static func configure(completion: @escaping AppSetupCompletion) {
@@ -33,11 +33,11 @@ class AppSetup {
     }
 
     static func isAuthorized() -> Bool {
-        return atlas?.api.isAuthorized ?? false
+        return zCommerceUI?.api.isAuthorized ?? false
     }
 
     static func deauthorize() {
-        atlas?.api.deauthorize()
+        zCommerceUI?.api.deauthorize()
     }
 
     static func change(environmentToSandbox useSandbox: Bool) {
@@ -81,7 +81,7 @@ extension AppSetup {
         ZalandoCommerceUI.configure(options: options) { result in
             switch result {
             case .success(let atlas):
-                AppSetup.atlas = atlas
+                AppSetup.zCommerceUI = atlas
                 AppSetup.options = options
                 completion?(true)
             case .failure:
