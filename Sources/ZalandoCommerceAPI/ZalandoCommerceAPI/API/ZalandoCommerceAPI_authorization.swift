@@ -19,10 +19,11 @@ extension ZalandoCommerceAPI {
      to restricted endpoints identified by same `Options.environment`
 
      - Postcondition:
-       - If a client is authorized successfully `NSNotification.Name.ZalandoCommerceAPIAuthorized`
-         `NSNotification.Name.ZalandoCommerceAPIAuthorizationChanged` are posted on `NotificationCenter.default`
-       - Both notifications contain `Options.clientId`, `Options.useSandboxEnvironment` in `userInfo`,
-         and `ZalandoCommerceAPI` instance.
+       - If a client is authorized successfully `NSNotification.Name.AtlasAuthorized`
+         `NSNotification.Name.AtlasAuthorizationChanged` are posted on `NotificationCenter.default`
+       - Both notifications contain `AtlasAPI` instance as sending `object`,
+            and `userInfo` containing `ATLASSDK_CLIENT_ID` equal to `Options.clientId`,
+            and `ATLASSDK_USE_SANDBOX` equal to `Options.useSandboxEnvironment`.
 
      - Parameter token: access token passed to all restricted endpoint calls
 
@@ -42,10 +43,11 @@ extension ZalandoCommerceAPI {
     Deauthorizes a client from accessing restricted endpoints.
 
     - Postcondition:
-        - If a client is deauthorized successfully `NSNotification.Name.ZalandoCommerceAPIDeauthorized`
-          and `NSNotification.Name.ZalandoCommerceAPIAuthorizationChanged` are posted on `NotificationCenter.default`.
-        - Both notifications contain `Options.clientId`, `Options.useSandboxEnvironment` in `userInfo`,
-          and `ZalandoCommerceAPI` instance as `object`.
+         - If a client is deauthorized successfully `NSNotification.Name.AtlasDeauthorized`
+          and `NSNotification.Name.AtlasAuthorizationChanged` are posted on `NotificationCenter.default`.
+         - Both notifications contain `AtlasAPI` instance as sending `object`,
+             and `userInfo` containing `ATLASSDK_CLIENT_ID` equal to `Options.clientId`,
+             and `ATLASSDK_USE_SANDBOX` equal to `Options.useSandboxEnvironment`.
      */
     public func deauthorize() {
         guard let token = APIAccessToken.delete(for: config) else { return }
