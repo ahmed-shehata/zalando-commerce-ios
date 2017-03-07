@@ -16,7 +16,7 @@ layout: default
 Simplest way to see it in action:
 
 ```
-$ pod try AtlasUI
+$ pod try ZalandoCommerceUI
 ```
 
 More about [demo app](https://github.com/zalando-incubator/atlas-ios/wiki/Demo-App)
@@ -30,7 +30,9 @@ More about [demo app](https://github.com/zalando-incubator/atlas-ios/wiki/Demo-A
 
 ## Documentation
 
-* Code documentation: [AtlasSDK](atlas-sdk), [AtlasUI](atlas-ui)
+* Code documentation:
+    * [ZalandoCommerceAPI](zalando-commerce-sdk)
+    * [ZalandoCommerceUI](zalando-commerce-ui)
 * [Wiki](https://github.com/zalando-incubator/atlas-ios/wiki)
 * [Backend API](https://zalando-incubator.github.io/checkoutapi-docs/)
 
