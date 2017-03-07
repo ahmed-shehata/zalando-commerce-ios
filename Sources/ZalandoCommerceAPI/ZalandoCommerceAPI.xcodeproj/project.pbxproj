@@ -105,12 +105,12 @@
 		81D590D71E6DCABA00BC601F /* OptionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590B11E6DCABA00BC601F /* OptionsTests.swift */; };
 		81D590D81E6DCABA00BC601F /* SKUTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590B21E6DCABA00BC601F /* SKUTest.swift */; };
 		81D590D91E6DCABA00BC601F /* TestConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590B31E6DCABA00BC601F /* TestConfig.swift */; };
-		81D590DA1E6DCABA00BC601F /* TestConsts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590B41E6DCABA00BC601F /* TestConsts.swift */; };
-		81D590DB1E6DCABA00BC601F /* TestOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590B51E6DCABA00BC601F /* TestOptions.swift */; };
 		81D590DC1E6DCABA00BC601F /* URLRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590B61E6DCABA00BC601F /* URLRequestTests.swift */; };
 		81D590DD1E6DCABA00BC601F /* URLSessionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590B71E6DCABA00BC601F /* URLSessionMock.swift */; };
 		81D590E31E6DCB6C00BC601F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81D590DF1E6DCB6C00BC601F /* Default-568h@2x.png */; };
 		81D590E51E6DCB6C00BC601F /* TestsHostAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590E11E6DCB6C00BC601F /* TestsHostAppDelegate.swift */; };
+		81D590E91E6EA14000BC601F /* TestConsts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590E71E6EA14000BC601F /* TestConsts.swift */; };
+		81D590EA1E6EA14000BC601F /* TestOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590E81E6EA14000BC601F /* TestOptions.swift */; };
 		81F13E2F1E6DA94000A1EBB6 /* MockAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F13E2E1E6DA94000A1EBB6 /* MockAPI.framework */; };
 		8387789B675CAC41D88C59F7CD9A49D5 /* CartRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C37D256F81316476AD1BB1CFB1D350D /* CartRequest.swift */; };
 		871861043470F7B6A72F34B73CC67714 /* GuestPaymentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B69DF001037C24E6BD4E0B378BFC01 /* GuestPaymentRequest.swift */; };
@@ -287,14 +287,14 @@
 		81D590B11E6DCABA00BC601F /* OptionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsTests.swift; sourceTree = "<group>"; };
 		81D590B21E6DCABA00BC601F /* SKUTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKUTest.swift; sourceTree = "<group>"; };
 		81D590B31E6DCABA00BC601F /* TestConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestConfig.swift; sourceTree = "<group>"; };
-		81D590B41E6DCABA00BC601F /* TestConsts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestConsts.swift; sourceTree = "<group>"; };
-		81D590B51E6DCABA00BC601F /* TestOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestOptions.swift; sourceTree = "<group>"; };
 		81D590B61E6DCABA00BC601F /* URLRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestTests.swift; sourceTree = "<group>"; };
 		81D590B71E6DCABA00BC601F /* URLSessionMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionMock.swift; sourceTree = "<group>"; };
 		81D590DF1E6DCB6C00BC601F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		81D590E01E6DCB6C00BC601F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81D590E11E6DCB6C00BC601F /* TestsHostAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestsHostAppDelegate.swift; sourceTree = "<group>"; };
 		81D590E21E6DCB6C00BC601F /* ZalandoCommerceAPITestsHostApp.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = ZalandoCommerceAPITestsHostApp.entitlements; sourceTree = "<group>"; };
+		81D590E71E6EA14000BC601F /* TestConsts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestConsts.swift; sourceTree = "<group>"; };
+		81D590E81E6EA14000BC601F /* TestOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestOptions.swift; sourceTree = "<group>"; };
 		81F13E2E1E6DA94000A1EBB6 /* MockAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MockAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		82119333485AE6ED25549E0A742C1190 /* APIAccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIAccessToken.swift; sourceTree = "<group>"; };
 		82AB8E73CFCD434C03A56BE7811DEA65 /* AtlasAPI_authorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasAPI_authorization.swift; sourceTree = "<group>"; };
@@ -603,6 +603,16 @@
 			name = API;
 			sourceTree = "<group>";
 		};
+		81D590E61E6EA14000BC601F /* CommonsTests */ = {
+			isa = PBXGroup;
+			children = (
+				81D590E71E6EA14000BC601F /* TestConsts.swift */,
+				81D590E81E6EA14000BC601F /* TestOptions.swift */,
+			);
+			name = CommonsTests;
+			path = ../../CommonsTests;
+			sourceTree = "<group>";
+		};
 		864F2AE731B222CF20825FFF5BF5E6DD /* ZalandoCommerceAPITestsHostApp */ = {
 			isa = PBXGroup;
 			children = (
@@ -712,6 +722,7 @@
 		F963EFE65B6A40971D31F80FC766E5B8 /* ZalandoCommerceAPITests */ = {
 			isa = PBXGroup;
 			children = (
+				81D590E61E6EA14000BC601F /* CommonsTests */,
 				81D590DE1E6DCAC500BC601F /* API */,
 				81D590A11E6DCABA00BC601F /* JSON */,
 				81D5909E1E6DCABA00BC601F /* ConfigTests.swift */,
@@ -722,8 +733,6 @@
 				81D590B11E6DCABA00BC601F /* OptionsTests.swift */,
 				81D590B21E6DCABA00BC601F /* SKUTest.swift */,
 				81D590B31E6DCABA00BC601F /* TestConfig.swift */,
-				81D590B41E6DCABA00BC601F /* TestConsts.swift */,
-				81D590B51E6DCABA00BC601F /* TestOptions.swift */,
 				81D590B61E6DCABA00BC601F /* URLRequestTests.swift */,
 				81D590B71E6DCABA00BC601F /* URLSessionMock.swift */,
 			);
@@ -1038,13 +1047,13 @@
 				81D590C11E6DCABA00BC601F /* APIOrderTests.swift in Sources */,
 				81D590D41E6DCABA00BC601F /* JSONUrlsTests.swift in Sources */,
 				81D590C41E6DCABA00BC601F /* AtlasAPITests.swift in Sources */,
+				81D590EA1E6EA14000BC601F /* TestOptions.swift in Sources */,
 				81D590DD1E6DCABA00BC601F /* URLSessionMock.swift in Sources */,
-				81D590DB1E6DCABA00BC601F /* TestOptions.swift in Sources */,
 				81D590B81E6DCABA00BC601F /* APIAddressesTests.swift in Sources */,
 				81D590BF1E6DCABA00BC601F /* APIGuestCheckoutTests.swift in Sources */,
 				81D590C91E6DCABA00BC601F /* JSONCollectionsTests.swift in Sources */,
+				81D590E91E6EA14000BC601F /* TestConsts.swift in Sources */,
 				81D590D21E6DCABA00BC601F /* JSONTestCase.swift in Sources */,
-				81D590DA1E6DCABA00BC601F /* TestConsts.swift in Sources */,
 				81D590D71E6DCABA00BC601F /* OptionsTests.swift in Sources */,
 				81D590BA1E6DCABA00BC601F /* APICartTests.swift in Sources */,
 				81D590CD1E6DCABA00BC601F /* JSONNullsTests.swift in Sources */,

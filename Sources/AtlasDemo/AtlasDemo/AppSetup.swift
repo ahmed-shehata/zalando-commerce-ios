@@ -5,7 +5,7 @@
 import Foundation
 import struct AtlasSDK.Options
 import struct AtlasSDK.AtlasAPI
-import AtlasUI
+import ZalandoCommerceUI
 import MockAPI
 
 typealias AppSetupCompletion = (_ configured: Bool) -> Void

@@ -3,8 +3,8 @@
 //
 
 import UIKit
-import AtlasSDK
-import AtlasUI
+import ZalandoCommerceAPI
+import ZalandoCommerceUI
 
 class CatalogViewController: UIViewController {
 

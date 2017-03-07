@@ -3,7 +3,7 @@
 //
 
 import Foundation
-import AtlasSDK
+import ZalandoCommerceAPI
 import Freddy
 
 struct DemoArticle {

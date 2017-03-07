@@ -4,8 +4,8 @@
 
 import Foundation
 import UIKit
-import AtlasSDK
-import AtlasUI
+import ZalandoCommerceAPI
+import ZalandoCommerceUI
 import Nuke
 
 class ProductCollectionViewCell: UICollectionViewCell {

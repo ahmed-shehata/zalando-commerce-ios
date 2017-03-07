@@ -8,7 +8,7 @@
       location = "group:ZalandoCommerceAPI/ZalandoCommerceAPI.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:AtlasUI/AtlasUI.xcodeproj">
+      location = "group:ZalandoCommerceUI/ZalandoCommerceUI.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:AtlasDemo/AtlasDemo.xcodeproj">

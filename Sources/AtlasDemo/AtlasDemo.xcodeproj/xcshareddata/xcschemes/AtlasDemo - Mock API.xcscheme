@@ -58,9 +58,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "05766597D649C37825AED617FB1045D0"
-               BuildableName = "AtlasUITests.xctest"
-               BlueprintName = "AtlasUITests"
-               ReferencedContainer = "container:../AtlasUI/AtlasUI.xcodeproj">
+               BuildableName = "ZalandoCommerceUITests.xctest"
+               BlueprintName = "ZalandoCommerceUITests"
+               ReferencedContainer = "container:../AtlasUI/ZalandoCommerceUI.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
