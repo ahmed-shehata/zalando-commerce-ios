@@ -2,7 +2,7 @@
 
 github "Quick/Nimble"
 
-# AtlasMockAPI
+# MockAPI
 
 github "httpswift/swifter" "stable"
 
