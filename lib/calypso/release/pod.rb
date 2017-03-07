@@ -5,7 +5,7 @@ module Calypso
 
   class Pod < Thor
 
-    PODSPECS = ['AtlasSDK.podspec', 'AtlasUI.podspec'].freeze
+    PODSPECS = ['ZalandoCommerceAPI.podspec', 'ZalandoCommerceUI.podspec'].freeze
 
     desc 'validate', 'Validates and builds pod'
     option :local, type: :boolean, default: false,

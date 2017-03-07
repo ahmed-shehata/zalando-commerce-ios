@@ -9,12 +9,12 @@ module Calypso
 
   class Docs < Thor
 
-    SOURCE_FOLDER = Pathname.new File.expand_path('../../../..', __FILE__).freeze
+    SOURCE_FOLDER = Pathname.new File.expand_path('../../../../Sources', __FILE__).freeze
     DOCS_FOLDER = Pathname.new File.expand_path('../../../../docs', __FILE__).freeze
 
     MODULES = {
-      'AtlasSDK' => 'atlas-sdk',
-      'AtlasUI' => 'atlas-ui'
+      'ZalandoCommerceAPI' => 'zalando-commerce-api',
+      'ZalandoCommerceUI' => 'zalando-commerce-ui'
     }.freeze
 
     desc 'publish', 'Regenerate docs and push them to the repository'
@@ -40,7 +40,7 @@ module Calypso
         'skip-undocumented' => true,
         'sdk' => 'iphone', 'theme' => 'fullwidth', 'min-acl' => 'private',
         'output' => destination_path(dst),
-        'module' => src, 'module-version' => ATLAS_VERSION,
+        'module' => src, 'module-version' => ZC_VERSION,
         'author' => 'Zalando SE', 'author_url' => 'http://tech.zalando.com',
         'github_url' => 'https://github.com/zalando-incubator/atlas-ios',
         'copyright' => '© 2016-2017 [Zalando SE](http://tech.zalando.com)'

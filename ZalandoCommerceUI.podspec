@@ -13,8 +13,8 @@ The purpose of this project is to provide seamless experience of Zalando
 articles checkout integration to the 3rd party iOS apps.
 
 Our goal is to allow end developer integrate and run Zalando checkout in
-minutes using a few lines of code. There is an AtlasCheckout framework in place
-to have end-to-end solution including UI part for the checkout flow.
+minutes using a few lines of code. ZalandoCommerceUI framework provides
+end-to-end solution including UI part for the checkout flow.
 
 If you want to have a full control over the UI and manage checkout flow by
 yourself there is a low-level ZalandoCommerceAPI framework that covers all

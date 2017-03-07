@@ -4,7 +4,7 @@ module Calypso
 
   BASE_DIR = Pathname(File.dirname(__FILE__)) + '../..'
 
-  WORKSPACE = BASE_DIR + 'AtlasSDK.xcworkspace'
+  WORKSPACE = BASE_DIR + 'ZalandoCommerceSDK.xcworkspace'
 
   SCHEME_UNIT_TESTS = 'UnitTests'.freeze
   SCHEME_UI_UNIT_TESTS = 'UI+UnitTests'.freeze
@@ -16,13 +16,13 @@ module Calypso
   # finds newest iOS by using its version in float comparison
   TEST_RUNTIME = 'iOS'.freeze
 
-  PROJECT_DIRS = [BASE_DIR + 'AtlasSDK', BASE_DIR + 'AtlasUI'].freeze
+  PROJECT_DIRS = [BASE_DIR + 'ZalandoCommerceAPI', BASE_DIR + 'ZalandoCommerceUI'].freeze
 
   LINT_CFG = BASE_DIR + '.swiftlint.yml'
 
   CLEANABLE_GITHUB_PROJECT_COLUMNS = { 'Technical Debt' => ['Done'], 'Current Release' => ['Finished'] }.freeze
 
-  VERSIONABLE_PROJECTS = %w(AtlasSDK AtlasUI AtlasDemo).freeze
+  VERSIONABLE_PROJECTS = %w(ZalandoCommerceAPI ZalandoCommerceUI ZalandoCommerceDemoApp).freeze
   VERSIONED_PROJECT_FILES = '**/{Info.plist,project.pbxproj}'.freeze
 
 end
