@@ -20,15 +20,15 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1.1.6</string>
-	<key>ATLASSDK_CLIENT_ID</key>
+	<key>ZALANDO_COMMERCE_CLIENT_ID</key>
 	<string>CLIENT_ID_PLIST</string>
-	<key>ATLASSDK_SALES_CHANNEL</key>
+	<key>ZALANDO_COMMERCE_SALES_CHANNEL</key>
 	<string>SALES_CHANNEL_PLIST</string>
-	<key>ATLASSDK_INTERFACE_LANGUAGE</key>
+	<key>ZALANDO_COMMERCE_INTERFACE_LANGUAGE</key>
 	<string>en</string>
-	<key>ATLASSDK_USE_SANDBOX</key>
+	<key>ZALANDO_COMMERCE_USE_SANDBOX</key>
 	<true/>
-	<key>ATLASSDK_DISPLAY_RECOMMENDATIONS</key>
+	<key>ZALANDO_COMMERCE_DISPLAY_RECOMMENDATIONS</key>
 	<true/>
 </dict>
 </plist>

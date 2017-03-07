@@ -32,7 +32,7 @@ extension AddressFormActionHandler {
                 return
         }
 
-        AtlasAPI.withLoader.checkAddress(request) { result in
+        ZalandoCommerceAPI.withLoader.checkAddress(request) { result in
             guard let checkAddressResponse = result.process() else {
                 completion(.error)
                 return

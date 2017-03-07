@@ -32,16 +32,16 @@ final public class ZalandoCommerceUI {
         case finishedWithError(error: Swift.Error)
     }
 
-    public let api: AtlasAPI
+    public let api: ZalandoCommerceAPI
     let localizer: Localizer
 
-    private init(api: AtlasAPI, localizer: Localizer) {
+    private init(api: ZalandoCommerceAPI, localizer: Localizer) {
         self.api = api
         self.localizer = localizer
     }
 
     public static func configure(options: Options? = nil, completion: @escaping ResultCompletion<ZalandoCommerceUI>) {
-        AtlasAPI.configure(options: options) { result in
+        ZalandoCommerceAPI.configure(options: options) { result in
             switch result {
             case .failure(let error):
                 Logger.error(error)
@@ -75,9 +75,9 @@ final public class ZalandoCommerceUI {
 
 }
 
-extension AtlasAPI {
+extension ZalandoCommerceAPI {
 
-    static var shared: AtlasAPI? {
+    static var shared: ZalandoCommerceAPI? {
         return try? ZalandoCommerceUI.fromPresented().api
     }
 
@@ -95,7 +95,7 @@ extension ZalandoCommerceUI {
 extension Config {
 
     static var shared: Config? {
-        return AtlasAPI.shared?.config
+        return ZalandoCommerceAPI.shared?.config
     }
 
 }

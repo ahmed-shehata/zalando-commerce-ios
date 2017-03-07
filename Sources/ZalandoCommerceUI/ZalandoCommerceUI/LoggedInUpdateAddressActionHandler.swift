@@ -28,7 +28,7 @@ struct LoggedInUpdateAddressActionHandler: AddressFormActionHandler {
                 return
             }
 
-            AtlasAPI.withLoader.updateAddress(with: request) { result in
+            ZalandoCommerceAPI.withLoader.updateAddress(with: request) { result in
                 guard let address = result.process() else {
                     self.delegate?.addressProcessingFinished()
                     return

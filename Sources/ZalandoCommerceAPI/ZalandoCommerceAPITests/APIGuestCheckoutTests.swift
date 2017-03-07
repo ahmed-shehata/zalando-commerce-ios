@@ -8,10 +8,10 @@ import Nimble
 
 @testable import ZalandoCommerceAPI
 
-class APIGuestCheckoutTests: AtlasAPIClientBaseTests {
+class APIGuestCheckoutTests: APITestCase {
 
     func testGetGuestCheckout() {
-        waitUntilAtlasAPIClientIsConfigured { done, api in
+        waitForAPIConfigured { done, api in
             let guestCheckoutId = GuestCheckoutId(checkoutId: "CHECKOUT_ID", token: "TOKEN")
             api.guestCheckout(with: guestCheckoutId) { result in
                 switch result {

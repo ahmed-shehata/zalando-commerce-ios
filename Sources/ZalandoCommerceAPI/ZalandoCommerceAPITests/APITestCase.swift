@@ -9,7 +9,9 @@ import MockAPI
 
 @testable import ZalandoCommerceAPI
 
-class AtlasAPIClientBaseTests: XCTestCase {
+typealias APIConfiguredCompletion = (_ done: @escaping () -> Void, _ api: ZalandoCommerceAPI) -> Void
+
+class APITestCase: XCTestCase {
 
     let cartId = "CART_ID"
     let checkoutId = "CHECKOUT_ID"
@@ -24,9 +26,10 @@ class AtlasAPIClientBaseTests: XCTestCase {
         try! MockAPI.stopServer()
     }
 
-    func waitUntilAtlasAPIClientIsConfigured(actions: @escaping (_ done: @escaping () -> Void, _ api: AtlasAPI) -> Void) {
+    func waitForAPIConfigured(options: Options = Options.forTests(),
+                              actions: @escaping APIConfiguredCompletion) {
         waitUntil(timeout: 10) { done in
-            AtlasAPI.configure(options: Options.forTests()) { result in
+            ZalandoCommerceAPI.configure(options: options) { result in
                 switch result {
                 case .failure(let error):
                     fail(String(describing: error))
@@ -42,11 +45,11 @@ class AtlasAPIClientBaseTests: XCTestCase {
         return try! Data(withJSONObject: object)!
     }
 
-    func mockedAtlasAPI(forURL url: URL,
-                        options: Options? = nil,
-                        data: Data?,
-                        status: HTTPStatus,
-                        errorCode: Int? = nil) -> AtlasAPI {
+    func mockedAPI(forURL url: URL,
+                   options: Options? = nil,
+                   data: Data?,
+                   status: HTTPStatus,
+                   errorCode: Int? = nil) -> ZalandoCommerceAPI {
 
         let apiURL = MockAPI.endpointURL(forPath: "/")
         let loginURL = MockAPI.endpointURL(forPath: "/oauth2/authorize")
@@ -79,7 +82,7 @@ class AtlasAPIClientBaseTests: XCTestCase {
         let response = HTTPURLResponse(url: url, statusCode: status.rawValue)
         let mockURLSession: URLSession = URLSessionMock(data: data, response: response, error: error)
 
-        return AtlasAPI(config: config, session: mockURLSession)
+        return ZalandoCommerceAPI(config: config, session: mockURLSession)
     }
 
 }

@@ -58,7 +58,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
             self?.cartCheckout = cartCheckout
 
             if dataSource.dataModel.isPaymentSelected && self?.dataModelDisplayedError == nil {
-                AtlasAPI.withLoader.createOrder(from: checkout) { result in
+                ZalandoCommerceAPI.withLoader.createOrder(from: checkout) { result in
                     guard let order = result.process() else { return }
                     self?.handleConfirmation(forOrder: order)
                 }
@@ -93,7 +93,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
     }
 
     func handleShippingAddressSelection() {
-        AtlasAPI.withLoader.addresses { [weak self] result in
+        ZalandoCommerceAPI.withLoader.addresses { [weak self] result in
             guard let userAddresses = result.process() else { return }
             let addresses: [EquatableAddress] = userAddresses.map { $0 }
             if !addresses.isEmpty {
@@ -107,7 +107,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
     }
 
     func handleBillingAddressSelection() {
-        AtlasAPI.withLoader.addresses { [weak self] result in
+        ZalandoCommerceAPI.withLoader.addresses { [weak self] result in
             guard let userAddresses = result.process() else { return }
             let addresses: [EquatableAddress] = userAddresses.filter { $0.isBillingAllowed } .map { $0 }
             if !addresses.isEmpty {
@@ -238,7 +238,7 @@ extension LoggedInSummaryActionHandler {
                                                addresses: CheckoutAddresses? = nil,
                                                completion: @escaping ResultCompletion<CartCheckout>) {
 
-        AtlasAPI.withLoader.createCartCheckout(for: selectedArticle, addresses: addresses) { result in
+        ZalandoCommerceAPI.withLoader.createCartCheckout(for: selectedArticle, addresses: addresses) { result in
             switch result {
             case .failure(let error, _):
                 guard case let APIError.checkoutFailed(cart, _) = error else {

@@ -4,7 +4,7 @@
 
 import Foundation
 
-extension AtlasAPI {
+extension ZalandoCommerceAPI {
 
     /**
      Fetches `Article` with given SKU.

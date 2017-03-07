@@ -4,7 +4,7 @@
 
 import Foundation
 
-extension AtlasAPI {
+extension ZalandoCommerceAPI {
 
     /// Determines if a client has an access token to call restricted endpoints.
     /// Having token doesn't guarantee it's unexpired or invalidated.
@@ -19,10 +19,10 @@ extension AtlasAPI {
      to restricted endpoints identified by same `Options.environment`
 
      - Postcondition:
-       - If a client is authorized successfully `NSNotification.Name.AtlasAuthorized`
-         `NSNotification.Name.AtlasAuthorizationChanged` are posted on `NotificationCenter.default`
+       - If a client is authorized successfully `NSNotification.Name.ZalandoCommerceAPIAuthorized`
+         `NSNotification.Name.ZalandoCommerceAPIAuthorizationChanged` are posted on `NotificationCenter.default`
        - Both notifications contain `Options.clientId`, `Options.useSandboxEnvironment` in `userInfo`,
-         and `AtlasAPI` instance.
+         and `ZalandoCommerceAPI` instance.
 
      - Parameter token: access token passed to all restricted endpoint calls
 
@@ -42,10 +42,10 @@ extension AtlasAPI {
     Deauthorizes a client from accessing restricted endpoints.
 
     - Postcondition:
-        - If a client is deauthorized successfully `NSNotification.Name.AtlasDeauthorized`
-          and `NSNotification.Name.AtlasAuthorizationChanged` are posted on `NotificationCenter.default`.
+        - If a client is deauthorized successfully `NSNotification.Name.ZalandoCommerceAPIDeauthorized`
+          and `NSNotification.Name.ZalandoCommerceAPIAuthorizationChanged` are posted on `NotificationCenter.default`.
         - Both notifications contain `Options.clientId`, `Options.useSandboxEnvironment` in `userInfo`,
-          and `AtlasAPI` instance as `object`.
+          and `ZalandoCommerceAPI` instance as `object`.
      */
     public func deauthorize() {
         guard let token = APIAccessToken.delete(for: config) else { return }
@@ -54,7 +54,7 @@ extension AtlasAPI {
 
     /**
      Deauthorizes all clients by removing all stored tokens and notifying about it
-     - SeeAlso: `AtlasAPI.deauthorize(with:)`
+     - SeeAlso: `ZalandoCommerceAPI.deauthorize(with:)`
      */
     public static func deauthorizeAll() {
         APIAccessToken.wipe().forEach { token in

@@ -8,10 +8,10 @@ import Nimble
 
 @testable import ZalandoCommerceAPI
 
-class APIGuestOrderTests: AtlasAPIClientBaseTests {
+class APIGuestOrderTests: APITestCase {
 
     func testCreateGuestOrder() {
-        waitUntilAtlasAPIClientIsConfigured { done, api in
+        waitForAPIConfigured { done, api in
             let guestCheckoutId = GuestCheckoutId(checkoutId: "CHECKOUT_ID", token: "TOKEN")
             let request = GuestOrderRequest(guestCheckoutId: guestCheckoutId)
             api.createGuestOrder(request: request) { result in
@@ -45,7 +45,7 @@ class APIGuestOrderTests: AtlasAPIClientBaseTests {
     }
 
     func testGuestCheckoutPaymentSelectionURL() {
-        waitUntilAtlasAPIClientIsConfigured { done, api in
+        waitForAPIConfigured { done, api in
             let request = GuestPaymentSelectionRequest(cart: self.cartRequest,
                                                        customer: self.customerRequest,
                                                        shippingAddress: self.addressRequest,

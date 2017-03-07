@@ -34,7 +34,7 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
         }
 
         let request = GuestOrderRequest(guestCheckoutId: guestCheckoutId)
-        AtlasAPI.withLoader.createGuestOrder(request: request) { [weak self] result in
+        ZalandoCommerceAPI.withLoader.createGuestOrder(request: request) { [weak self] result in
             guard let order = result.process() else { return }
             self?.handleOrderConfirmation(order: order)
         }
@@ -168,7 +168,7 @@ extension GuestCheckoutSummaryActionHandler {
                                                    customer: customer,
                                                    shippingAddress: shippingGuestAddress,
                                                    billingAddress: billingGuestAddress)
-        AtlasAPI.withLoader.guestCheckoutPaymentSelectionURL(request: request) { [weak self] result in
+        ZalandoCommerceAPI.withLoader.guestCheckoutPaymentSelectionURL(request: request) { [weak self] result in
             guard let paymentURL = result.process() else { return }
             self?.paymentURL = paymentURL
             completion(paymentURL)
@@ -188,7 +188,7 @@ extension GuestCheckoutSummaryActionHandler {
     }
 
     fileprivate func getGuestCheckout(with guestCheckoutId: GuestCheckoutId) {
-        AtlasAPI.withLoader.guestCheckout(with: guestCheckoutId) { [weak self] result in
+        ZalandoCommerceAPI.withLoader.guestCheckout(with: guestCheckoutId) { [weak self] result in
             guard let guestCheckout = result.process() else { return }
             self?.guestCheckout = guestCheckout
             self?.guestCheckoutId = guestCheckoutId

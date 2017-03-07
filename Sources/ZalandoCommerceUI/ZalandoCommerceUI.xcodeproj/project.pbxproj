@@ -78,7 +78,6 @@
 		81D590EE1E6EA14A00BC601F /* TestConsts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590EC1E6EA14A00BC601F /* TestConsts.swift */; };
 		81D590EF1E6EA14A00BC601F /* TestOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590ED1E6EA14A00BC601F /* TestOptions.swift */; };
 		81D590F11E6EA46900BC601F /* ZalandoCommerceAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81D590F01E6EA46900BC601F /* ZalandoCommerceAPI.framework */; };
-		81D590F31E6EA53200BC601F /* ZalandoCommerceAPI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 81D590F21E6EA53200BC601F /* ZalandoCommerceAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		81F13E311E6DA98300A1EBB6 /* MockAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F13E301E6DA98300A1EBB6 /* MockAPI.framework */; };
 		81F13E341E6DA9E800A1EBB6 /* MockAPI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 81F13E301E6DA98300A1EBB6 /* MockAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		82FEDC4FA09CC55CE1D9224BCDED9062 /* FormValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E272DADD96290ADDD55009F293229EAD /* FormValidatorTests.swift */; };
@@ -185,7 +184,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				81D590F31E6EA53200BC601F /* ZalandoCommerceAPI.framework in Copy Frameworks */,
 				81F13E341E6DA9E800A1EBB6 /* MockAPI.framework in Copy Frameworks */,
 				E726441E020342505E0A3E67AB6E20CB /* Nimble.framework in Copy Frameworks */,
 			);
@@ -266,7 +264,6 @@
 		81D590EC1E6EA14A00BC601F /* TestConsts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestConsts.swift; sourceTree = "<group>"; };
 		81D590ED1E6EA14A00BC601F /* TestOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestOptions.swift; sourceTree = "<group>"; };
 		81D590F01E6EA46900BC601F /* ZalandoCommerceAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZalandoCommerceAPI.framework; path = "../../../../../../../../Volumes/RAMDrive/AtlasSDK-anbxdesevuzlziazzfhragfrnhyn/Build/Products/Debug-iphonesimulator/ZalandoCommerceAPI.framework"; sourceTree = "<group>"; };
-		81D590F21E6EA53200BC601F /* ZalandoCommerceAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ZalandoCommerceAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81F13E301E6DA98300A1EBB6 /* MockAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MockAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		828CB7B3C433014C119561A964D809BC /* TextFieldInputViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldInputViewModel.swift; sourceTree = "<group>"; };
 		82D2ADD240889020E56AC601593CC418 /* FormValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValidator.swift; sourceTree = "<group>"; };
@@ -314,7 +311,6 @@
 		B595E042C5241464EF76FF4A751502E3 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		BB11FA4FF95CCD5FF47F27EBD5F2DF20 /* GuestAddressActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = GuestAddressActionHandler.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		BD59AC983A58E31486BA78BB412FC8E6 /* Typealiases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
-		BE2FC0AE7631C1F62076EA9FCAEEE5C9 /* AtlasSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AtlasSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0D8D9EF484C33259D988A2D8565655F /* URLQueryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLQueryItem.swift; sourceTree = "<group>"; };
 		C1E4728D40DB91AAFB177DC453685F05 /* LoaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoaderView.swift; path = ../LoaderView.swift; sourceTree = "<group>"; };
 		C23BDCC4973FC078E005E01E358D2871 /* AtlasAPILoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasAPILoader.swift; sourceTree = "<group>"; };
@@ -438,7 +434,6 @@
 			children = (
 				81D590F01E6EA46900BC601F /* ZalandoCommerceAPI.framework */,
 				81F13E301E6DA98300A1EBB6 /* MockAPI.framework */,
-				BE2FC0AE7631C1F62076EA9FCAEEE5C9 /* AtlasSDK.framework */,
 				8398317FEC21A1E65AB06E3EF9B29A2B /* Nimble.framework */,
 			);
 			name = Frameworks;
@@ -464,7 +459,6 @@
 		28416D88773780187E0A1F21A416ADD5 = {
 			isa = PBXGroup;
 			children = (
-				81D590F21E6EA53200BC601F /* ZalandoCommerceAPI.framework */,
 				2256B0C1AAAE60580B37160C27B74A94 /* ZalandoCommerceUI */,
 				B0658A7A5FA9F75BCDF8341379EB0319 /* ZalandoCommerceUITests */,
 				DA0E09C384D3DFC0EAFA538EC0BC5B71 /* ZalandoCommerceUITestsHostsApp */,
@@ -1203,7 +1197,7 @@
 				INFOPLIST_FILE = ZalandoCommerceUITestsHostsApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zalando.commerce.ZalandoCommerceUITestsHostsApp;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zalando.commerce.ui-tests-host-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 			};
@@ -1220,7 +1214,7 @@
 				INFOPLIST_FILE = ZalandoCommerceUITestsHostsApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zalando.commerce.ZalandoCommerceUITestsHostsApp;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zalando.commerce.ui-tests-host-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -1238,7 +1232,7 @@
 				INFOPLIST_FILE = ZalandoCommerceUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zalando.commerce.ZalandoCommerceUI;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zalando.commerce.ui;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -1368,7 +1362,7 @@
 				INFOPLIST_FILE = ZalandoCommerceUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zalando.commerce.ZalandoCommerceUI;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zalando.commerce.ui;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -1380,7 +1374,7 @@
 				DEVELOPMENT_TEAM = J67E9B6234;
 				INFOPLIST_FILE = ZalandoCommerceUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zalando.commerce.ZalandoCommerceUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zalando.commerce.ui-tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZalandoCommerceUITestsHostsApp.app/ZalandoCommerceUITestsHostsApp";
 			};
@@ -1392,7 +1386,7 @@
 				DEVELOPMENT_TEAM = J67E9B6234;
 				INFOPLIST_FILE = ZalandoCommerceUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zalando.commerce.ZalandoCommerceUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zalando.commerce.ui-tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZalandoCommerceUITestsHostsApp.app/ZalandoCommerceUITestsHostsApp";
 			};

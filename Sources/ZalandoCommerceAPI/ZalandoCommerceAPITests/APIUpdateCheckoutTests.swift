@@ -8,12 +8,12 @@ import Nimble
 
 @testable import ZalandoCommerceAPI
 
-class APIUpdateCheckoutTests: AtlasAPIClientBaseTests {
+class APIUpdateCheckoutTests: APITestCase {
 
     fileprivate let addressId = "6702759"
 
     func testUpdateBillingAddress() {
-        waitUntilAtlasAPIClientIsConfigured { done, api in
+        waitForAPIConfigured { done, api in
             let updateRequest = UpdateCheckoutRequest(billingAddressId: self.addressId)
             api.updateCheckout(with: self.checkoutId, updateCheckoutRequest: updateRequest) { result in
                 switch result {
@@ -29,7 +29,7 @@ class APIUpdateCheckoutTests: AtlasAPIClientBaseTests {
     }
 
     func testUpdateShippingAddress() {
-        waitUntilAtlasAPIClientIsConfigured { done, api in
+        waitForAPIConfigured { done, api in
             let updateRequest = UpdateCheckoutRequest(shippingAddressId: self.addressId)
             api.updateCheckout(with: self.checkoutId, updateCheckoutRequest: updateRequest) { result in
                 switch result {
@@ -45,7 +45,7 @@ class APIUpdateCheckoutTests: AtlasAPIClientBaseTests {
     }
 
     func testUpdateBillingAndShippingAddresses() {
-        waitUntilAtlasAPIClientIsConfigured { done, api in
+        waitForAPIConfigured { done, api in
             let updateRequest = UpdateCheckoutRequest(billingAddressId: self.addressId, shippingAddressId: self.addressId)
             api.updateCheckout(with: self.checkoutId, updateCheckoutRequest: updateRequest) { result in
                 switch result {

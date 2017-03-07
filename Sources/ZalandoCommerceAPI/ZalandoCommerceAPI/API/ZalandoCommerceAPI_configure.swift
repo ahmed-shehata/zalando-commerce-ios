@@ -4,7 +4,7 @@
 
 import Foundation
 
-extension AtlasAPI {
+extension ZalandoCommerceAPI {
 
     /**
      Configures and returns API client based on given options.
@@ -19,9 +19,9 @@ extension AtlasAPI {
      - Parameters:
          - options: Options for API client to be created. When `nil`, `$INFOPLIST_FILE` file of the app is used as configuration.
          - completion: Fired when network configuration call is finished.
-            Contains `Result.success` with `AtlasAPI` or `Result.failure` with `Error` reason.
+            Contains `Result.success` with `ZalandoCommerceAPI` or `Result.failure` with `Error` reason.
      */
-    public static func configure(options: Options? = nil, completion: @escaping ResultCompletion<AtlasAPI>) {
+    public static func configure(options: Options? = nil, completion: @escaping ResultCompletion<ZalandoCommerceAPI>) {
         let options = options ?? Options()
         do {
             try options.validate()
@@ -36,7 +36,7 @@ extension AtlasAPI {
                 Logger.error(error)
                 completion(.failure(error))
             case .success(let config):
-                let api = AtlasAPI(config: config)
+                let api = ZalandoCommerceAPI(config: config)
                 completion(.success(api))
             }
         }

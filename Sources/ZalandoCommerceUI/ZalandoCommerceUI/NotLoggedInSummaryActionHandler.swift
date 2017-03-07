@@ -14,7 +14,7 @@ class NotLoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
     func handleSubmit() {
         guard let dataSource = dataSource, let delegate = delegate else { return }
 
-        AtlasAPI.withLoader.customer { result in
+        ZalandoCommerceAPI.withLoader.customer { result in
             guard let customer = result.process() else { return }
 
             let selectedArticle = dataSource.dataModel.selectedArticle

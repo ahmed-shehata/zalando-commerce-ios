@@ -38,7 +38,7 @@ class LoggedInAddressListActionHandler: AddressListActionHandler {
     }
 
     func delete(address: EquatableAddress) {
-        AtlasAPI.withLoader.delete(address) { [weak self] result in
+        ZalandoCommerceAPI.withLoader.delete(address) { [weak self] result in
             guard let _ = result.process() else { return }
             self?.delegate?.deleted(address: address)
         }

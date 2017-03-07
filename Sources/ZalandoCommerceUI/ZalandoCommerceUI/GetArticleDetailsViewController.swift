@@ -25,7 +25,7 @@ class GetArticleDetailsViewController: UIViewController {
     }
 
     private func fetchArticle() {
-        AtlasAPI.withLoader.article(with: self.sku) { [weak self] result in
+        ZalandoCommerceAPI.withLoader.article(with: self.sku) { [weak self] result in
             guard let article = result.process(presentationMode: .fullScreen) else { return }
             self?.showSummaryView(article: article)
         }
@@ -41,14 +41,14 @@ class GetArticleDetailsViewController: UIViewController {
         }
 
         let selectedArticle = SelectedArticle(article: article)
-        guard AtlasAPI.shared?.isAuthorized == true else {
+        guard ZalandoCommerceAPI.shared?.isAuthorized == true else {
             let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, totalPrice: selectedArticle.totalPrice)
             let viewModel = CheckoutSummaryViewModel(dataModel: dataModel, layout: NotLoggedInLayout())
             showSummaryView(viewModel: viewModel, actionHandler: NotLoggedInSummaryActionHandler())
             return
         }
 
-        AtlasAPI.withLoader.customer { [weak self] customerResult in
+        ZalandoCommerceAPI.withLoader.customer { [weak self] customerResult in
             guard let customer = customerResult.process(presentationMode: .fullScreen) else { return }
 
             LoggedInSummaryActionHandler.create(customer: customer, selectedArticle: selectedArticle) { actionHandlerResult in

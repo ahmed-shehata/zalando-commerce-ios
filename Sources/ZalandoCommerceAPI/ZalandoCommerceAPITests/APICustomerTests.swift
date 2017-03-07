@@ -8,9 +8,9 @@ import Nimble
 
 @testable import ZalandoCommerceAPI
 
-class APICustomerTests: AtlasAPIClientBaseTests {
+class APICustomerTests: APITestCase {
 
-    let customerURL = URL(validURL: "https://atlas-sdk.api/api/customer")
+    let customerURL = URL(validURL: "https://commerce.zalando.com/api/customer")
 
     func testCreateCustomer() {
         let json: [String: Any] = ["customer_number": "12345678",
@@ -19,7 +19,7 @@ class APICustomerTests: AtlasAPIClientBaseTests {
                                    "first_name": "John",
                                    "last_name": "Doe"]
         let customerResponse = data(withJSONObject: json)
-        let api = mockedAtlasAPI(forURL: customerURL, data: customerResponse, status: .ok)
+        let api = mockedAPI(forURL: customerURL, data: customerResponse, status: .ok)
 
         waitUntil(timeout: 60) { done in
             api.customer { result in

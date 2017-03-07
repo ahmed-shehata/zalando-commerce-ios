@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		009181DB2C30EA37DC459373993A2344 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FFAFD36DBFADF2E51D872BAD526DF6 /* Errors.swift */; };
-		00DDF79C5F2EA8A83349C1C45E2F5A67 /* AtlasAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA3C21AB550D6D2D184F0A4F90A9593 /* AtlasAPI.swift */; };
 		01F1C5695D20C27942DFECED1195107B /* Nimble.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 946A02D8E49A74EDBEBD78F9E7F24730 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		02576D9B6427B3104CFB767A0924CA0F /* CreateOrderEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AB725F554DA56411A3B5D67010F273 /* CreateOrderEndpoint.swift */; };
 		067FC4466FFDF3D1F9A54EAAB43FA3B7 /* GuestPaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88271BCC31E360BEF49D8115AE83264E /* GuestPaymentMethod.swift */; };
@@ -21,7 +20,6 @@
 		228DA1EE31068C25FB7BA695A50E5DDD /* JSONResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BD428C28C6631A27A6BCEB01F1A7AD /* JSONResponse.swift */; };
 		2355ED486BA2B486D32DEC1BE170D4F4 /* OutputStreams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676768CF421365F56E0325D156E2F301 /* OutputStreams.swift */; };
 		240228124E25E1CCE455B8FD3E3F9A92 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDE9B266DF0DAFAF1BB3ED0A00D2609 /* Order.swift */; };
-		2402ED0BDCFC110413E83DABDC776085 /* AtlasAPI_authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AB8E73CFCD434C03A56BE7811DEA65 /* AtlasAPI_authorization.swift */; };
 		24FFD22FC660CB12AA036D615B422072 /* CheckAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550185D4F6E3EBAB878EAFC9701AC441 /* CheckAddress.swift */; };
 		261B28B342B4AB0AC459145308E87C48 /* GuestOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F04274C9DF91FEABFDD5EE482E7553 /* GuestOrder.swift */; };
 		284C80B5A67DB71CFD3B3EFCAD987355 /* CreateGuestOrderEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF7D5BE1946026F4EC6170B29C69347 /* CreateGuestOrderEndpoint.swift */; };
@@ -61,17 +59,6 @@
 		7D9992E58F4E287BC6EE7AD30338862F /* FormattableAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A2E3D95B370914C7B19A3B81E80190 /* FormattableAddress.swift */; };
 		811AA1F682BDEBB36FAA84B0921AEFBE /* GuestAddressRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0245341CC5B1CB0CF50BF8ACC958B65F /* GuestAddressRequest.swift */; };
 		81BAB3D31E685B29004F50A3 /* PaymentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BAB3D21E685B29004F50A3 /* PaymentStatus.swift */; };
-		81D590301E6DBC4100BC601F /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590251E6DBC4100BC601F /* Array.swift */; };
-		81D590311E6DBC4100BC601F /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590261E6DBC4100BC601F /* Bundle.swift */; };
-		81D590321E6DBC4100BC601F /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590271E6DBC4100BC601F /* Debug.swift */; };
-		81D590331E6DBC4100BC601F /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590281E6DBC4100BC601F /* HTTP.swift */; };
-		81D590341E6DBC4100BC601F /* HTTPURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590291E6DBC4100BC601F /* HTTPURLResponse.swift */; };
-		81D590351E6DBC4100BC601F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D5902A1E6DBC4100BC601F /* String.swift */; };
-		81D590361E6DBC4100BC601F /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D5902B1E6DBC4100BC601F /* URL.swift */; };
-		81D590371E6DBC4100BC601F /* URLComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D5902C1E6DBC4100BC601F /* URLComponents.swift */; };
-		81D590381E6DBC4100BC601F /* URLQueryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D5902D1E6DBC4100BC601F /* URLQueryItem.swift */; };
-		81D590391E6DBC4100BC601F /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D5902E1E6DBC4100BC601F /* URLRequest.swift */; };
-		81D5903A1E6DBC4100BC601F /* URLStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D5902F1E6DBC4100BC601F /* URLStringConvertible.swift */; };
 		81D590B81E6DCABA00BC601F /* APIAddressesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590911E6DCABA00BC601F /* APIAddressesTests.swift */; };
 		81D590B91E6DCABA00BC601F /* APIArticleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590921E6DCABA00BC601F /* APIArticleTests.swift */; };
 		81D590BA1E6DCABA00BC601F /* APICartTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590931E6DCABA00BC601F /* APICartTests.swift */; };
@@ -83,8 +70,8 @@
 		81D590C01E6DCABA00BC601F /* APIGuestOrderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590991E6DCABA00BC601F /* APIGuestOrderTests.swift */; };
 		81D590C11E6DCABA00BC601F /* APIOrderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D5909A1E6DCABA00BC601F /* APIOrderTests.swift */; };
 		81D590C21E6DCABA00BC601F /* APIUpdateCheckoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D5909B1E6DCABA00BC601F /* APIUpdateCheckoutTests.swift */; };
-		81D590C31E6DCABA00BC601F /* AtlasAPIClientBaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D5909C1E6DCABA00BC601F /* AtlasAPIClientBaseTests.swift */; };
-		81D590C41E6DCABA00BC601F /* AtlasAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D5909D1E6DCABA00BC601F /* AtlasAPITests.swift */; };
+		81D590C31E6DCABA00BC601F /* APITestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D5909C1E6DCABA00BC601F /* APITestCase.swift */; };
+		81D590C41E6DCABA00BC601F /* APIAuthorizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D5909D1E6DCABA00BC601F /* APIAuthorizationTests.swift */; };
 		81D590C51E6DCABA00BC601F /* ConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D5909E1E6DCABA00BC601F /* ConfigTests.swift */; };
 		81D590C61E6DCABA00BC601F /* DatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D5909F1E6DCABA00BC601F /* DatesTests.swift */; };
 		81D590C81E6DCABA00BC601F /* JSONBoolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590A21E6DCABA00BC601F /* JSONBoolsTests.swift */; };
@@ -111,6 +98,22 @@
 		81D590E51E6DCB6C00BC601F /* TestsHostAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590E11E6DCB6C00BC601F /* TestsHostAppDelegate.swift */; };
 		81D590E91E6EA14000BC601F /* TestConsts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590E71E6EA14000BC601F /* TestConsts.swift */; };
 		81D590EA1E6EA14000BC601F /* TestOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590E81E6EA14000BC601F /* TestOptions.swift */; };
+		81D590F91E6EBD6800BC601F /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590F41E6EBD6800BC601F /* Options.swift */; };
+		81D590FA1E6EBD6800BC601F /* ZalandoCommerceAPI_authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590F51E6EBD6800BC601F /* ZalandoCommerceAPI_authorization.swift */; };
+		81D590FB1E6EBD6800BC601F /* ZalandoCommerceAPI_configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590F61E6EBD6800BC601F /* ZalandoCommerceAPI_configure.swift */; };
+		81D590FC1E6EBD6800BC601F /* ZalandoCommerceAPI_endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590F71E6EBD6800BC601F /* ZalandoCommerceAPI_endpoints.swift */; };
+		81D590FD1E6EBD6800BC601F /* ZalandoCommerceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590F81E6EBD6800BC601F /* ZalandoCommerceAPI.swift */; };
+		81D5910A1E6EBD8900BC601F /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590FF1E6EBD8900BC601F /* Array.swift */; };
+		81D5910B1E6EBD8900BC601F /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D591001E6EBD8900BC601F /* Bundle.swift */; };
+		81D5910C1E6EBD8900BC601F /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D591011E6EBD8900BC601F /* Debug.swift */; };
+		81D5910D1E6EBD8900BC601F /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D591021E6EBD8900BC601F /* HTTP.swift */; };
+		81D5910E1E6EBD8900BC601F /* HTTPURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D591031E6EBD8900BC601F /* HTTPURLResponse.swift */; };
+		81D5910F1E6EBD8900BC601F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D591041E6EBD8900BC601F /* String.swift */; };
+		81D591101E6EBD8900BC601F /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D591051E6EBD8900BC601F /* URL.swift */; };
+		81D591111E6EBD8900BC601F /* URLComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D591061E6EBD8900BC601F /* URLComponents.swift */; };
+		81D591121E6EBD8900BC601F /* URLQueryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D591071E6EBD8900BC601F /* URLQueryItem.swift */; };
+		81D591131E6EBD8900BC601F /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D591081E6EBD8900BC601F /* URLRequest.swift */; };
+		81D591141E6EBD8900BC601F /* URLStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D591091E6EBD8900BC601F /* URLStringConvertible.swift */; };
 		81F13E2F1E6DA94000A1EBB6 /* MockAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F13E2E1E6DA94000A1EBB6 /* MockAPI.framework */; };
 		8387789B675CAC41D88C59F7CD9A49D5 /* CartRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C37D256F81316476AD1BB1CFB1D350D /* CartRequest.swift */; };
 		871861043470F7B6A72F34B73CC67714 /* GuestPaymentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B69DF001037C24E6BD4E0B378BFC01 /* GuestPaymentRequest.swift */; };
@@ -129,7 +132,6 @@
 		B760B0603070F9558115F9AF15FEF6B1 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADBF1E8B3FDBFAAE434240E7212C5FF /* Article.swift */; };
 		B8419F217F076553054D230EEFF60341 /* OrderRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C8EE9549DB6BC3760D2AE2B30E6D48 /* OrderRequest.swift */; };
 		BD4958A6838C84DC295CE30E7E28127D /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = B135F402AFF895CCD6EC039A7E8B875E /* Results.swift */; };
-		BDD29DDEE4163BE442BA0FED2229C7B9 /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0FDF5B6BFC312589E0F7F5D578B8AD /* Options.swift */; };
 		C97FDA428DD10A02B604098846CA1431 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702A2FD80899800D6B9E430BF468FC8B /* Logger.swift */; };
 		CAF49B6A3DAD4C68FF77D18AAB3B91A2 /* UpdateAddressRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE577A4B9190386AD2FD21D7815E6FD /* UpdateAddressRequest.swift */; };
 		CC838A0C2D75384A93FC69ABFA66E574 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF97F26C9E21DF37C322657F1000F09 /* APIRequest.swift */; };
@@ -145,7 +147,6 @@
 		E8FE522BEFADC682C935905FFA0AC529 /* GuestPaymentSelectionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C60F07A8CC8109EF845A9860B79828 /* GuestPaymentSelectionRequest.swift */; };
 		EC2F6D79BBBB87853DF7FC12A809D2A9 /* GetArticleRecommendationsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D923DA782F1BC91867B0595643E8F053 /* GetArticleRecommendationsEndpoint.swift */; };
 		ECE8DEFDB2A85FBCD15B77C89EA5EF4A /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69384BDB0D3D26DA7967C229EF6CF14A /* Keychain.swift */; };
-		F00FD01496BD100C1D9E20FEC578093A /* AtlasAPI_endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C86509237C71A7A7E79806C0198C64 /* AtlasAPI_endpoints.swift */; };
 		F0FBE44409A85786DEFC3D7CD60EEFE9 /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C62414756DA20D0C2756D3C2891656 /* CartItem.swift */; };
 		F17DDBBF106C6A5D9C0A9FBDA9CCE3E3 /* GetCustomerEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF2B069D3C5A9A37A7DE2D0527356AA /* GetCustomerEndpoint.swift */; };
 		F70180EA1E7AC55161F0A0F5BC256BA1 /* PrintLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2EC7664BF1A5A912208A3602C7CB54 /* PrintLogger.swift */; };
@@ -154,7 +155,6 @@
 		FC4DC88516E339E12FB7E0B70724A3C5 /* UserAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C240A1E0049D934FB15689BA1417E9 /* UserAddress.swift */; };
 		FC8B4EB07DEBBA17ED31F8EEDD77023D /* UpdateAddressEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A87FB76A9759970AB11BB04A6CBDDD /* UpdateAddressEndpoint.swift */; };
 		FD865B0234FE07B7A85955A0E1EECB9B /* CompleteGuestOrderEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE84D917A996BF6E21032C025DEC1FB5 /* CompleteGuestOrderEndpoint.swift */; };
-		FDA187EB948C3415A7642E5C162FAA5D /* AtlasAPI_configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5803AE41095D4407A50795CDF603FCC /* AtlasAPI_configure.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -213,7 +213,6 @@
 		4684381074A4798A9C76F19A7002341C /* Cart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		4925DB568F4726E5E5D37663419677B8 /* DeleteAddressEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteAddressEndpoint.swift; sourceTree = "<group>"; };
 		4944BCDF87800B1F61B9A15A08C0FAC7 /* CreateAddressRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAddressRequest.swift; sourceTree = "<group>"; };
-		4AA3C21AB550D6D2D184F0A4F90A9593 /* AtlasAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasAPI.swift; sourceTree = "<group>"; };
 		4CC775974D2C7BEE823393C249A83E19 /* GetAddressesEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetAddressesEndpoint.swift; sourceTree = "<group>"; };
 		5122324D4A85204EB38F54BF29FEB024 /* Catalog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Catalog.swift; sourceTree = "<group>"; };
 		51B0CE819B745B123AB209C20DB0A0D6 /* CartItemRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartItemRequest.swift; sourceTree = "<group>"; };
@@ -230,7 +229,6 @@
 		69384BDB0D3D26DA7967C229EF6CF14A /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		6C37D256F81316476AD1BB1CFB1D350D /* CartRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartRequest.swift; sourceTree = "<group>"; };
 		6CF4A6E890DD1042419DC11B39812630 /* CheckoutAddresses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutAddresses.swift; sourceTree = "<group>"; };
-		6F0FDF5B6BFC312589E0F7F5D578B8AD /* Options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
 		702A2FD80899800D6B9E430BF468FC8B /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		73A02961F55508B3B15CEC53112BFE4D /* OrderAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderAddress.swift; sourceTree = "<group>"; };
 		74306941AF9B87B8F6BBAF13C752AD8A /* CheckAddressResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckAddressResponse.swift; sourceTree = "<group>"; };
@@ -242,17 +240,6 @@
 		7CDE9B266DF0DAFAF1BB3ED0A00D2609 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		80A87FB76A9759970AB11BB04A6CBDDD /* UpdateAddressEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateAddressEndpoint.swift; sourceTree = "<group>"; };
 		81BAB3D21E685B29004F50A3 /* PaymentStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentStatus.swift; sourceTree = "<group>"; };
-		81D590251E6DBC4100BC601F /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
-		81D590261E6DBC4100BC601F /* Bundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
-		81D590271E6DBC4100BC601F /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
-		81D590281E6DBC4100BC601F /* HTTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
-		81D590291E6DBC4100BC601F /* HTTPURLResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPURLResponse.swift; sourceTree = "<group>"; };
-		81D5902A1E6DBC4100BC601F /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		81D5902B1E6DBC4100BC601F /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
-		81D5902C1E6DBC4100BC601F /* URLComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLComponents.swift; sourceTree = "<group>"; };
-		81D5902D1E6DBC4100BC601F /* URLQueryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLQueryItem.swift; sourceTree = "<group>"; };
-		81D5902E1E6DBC4100BC601F /* URLRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequest.swift; sourceTree = "<group>"; };
-		81D5902F1E6DBC4100BC601F /* URLStringConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLStringConvertible.swift; sourceTree = "<group>"; };
 		81D590911E6DCABA00BC601F /* APIAddressesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIAddressesTests.swift; sourceTree = "<group>"; };
 		81D590921E6DCABA00BC601F /* APIArticleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIArticleTests.swift; sourceTree = "<group>"; };
 		81D590931E6DCABA00BC601F /* APICartTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APICartTests.swift; sourceTree = "<group>"; };
@@ -264,8 +251,8 @@
 		81D590991E6DCABA00BC601F /* APIGuestOrderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIGuestOrderTests.swift; sourceTree = "<group>"; };
 		81D5909A1E6DCABA00BC601F /* APIOrderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIOrderTests.swift; sourceTree = "<group>"; };
 		81D5909B1E6DCABA00BC601F /* APIUpdateCheckoutTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIUpdateCheckoutTests.swift; sourceTree = "<group>"; };
-		81D5909C1E6DCABA00BC601F /* AtlasAPIClientBaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasAPIClientBaseTests.swift; sourceTree = "<group>"; };
-		81D5909D1E6DCABA00BC601F /* AtlasAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasAPITests.swift; sourceTree = "<group>"; };
+		81D5909C1E6DCABA00BC601F /* APITestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITestCase.swift; sourceTree = "<group>"; };
+		81D5909D1E6DCABA00BC601F /* APIAuthorizationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIAuthorizationTests.swift; sourceTree = "<group>"; };
 		81D5909E1E6DCABA00BC601F /* ConfigTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigTests.swift; sourceTree = "<group>"; };
 		81D5909F1E6DCABA00BC601F /* DatesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatesTests.swift; sourceTree = "<group>"; };
 		81D590A01E6DCABA00BC601F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -295,9 +282,24 @@
 		81D590E21E6DCB6C00BC601F /* ZalandoCommerceAPITestsHostApp.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = ZalandoCommerceAPITestsHostApp.entitlements; sourceTree = "<group>"; };
 		81D590E71E6EA14000BC601F /* TestConsts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestConsts.swift; sourceTree = "<group>"; };
 		81D590E81E6EA14000BC601F /* TestOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestOptions.swift; sourceTree = "<group>"; };
+		81D590F41E6EBD6800BC601F /* Options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Options.swift; path = API/Options.swift; sourceTree = "<group>"; };
+		81D590F51E6EBD6800BC601F /* ZalandoCommerceAPI_authorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZalandoCommerceAPI_authorization.swift; path = API/ZalandoCommerceAPI_authorization.swift; sourceTree = "<group>"; };
+		81D590F61E6EBD6800BC601F /* ZalandoCommerceAPI_configure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZalandoCommerceAPI_configure.swift; path = API/ZalandoCommerceAPI_configure.swift; sourceTree = "<group>"; };
+		81D590F71E6EBD6800BC601F /* ZalandoCommerceAPI_endpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZalandoCommerceAPI_endpoints.swift; path = API/ZalandoCommerceAPI_endpoints.swift; sourceTree = "<group>"; };
+		81D590F81E6EBD6800BC601F /* ZalandoCommerceAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZalandoCommerceAPI.swift; path = API/ZalandoCommerceAPI.swift; sourceTree = "<group>"; };
+		81D590FF1E6EBD8900BC601F /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		81D591001E6EBD8900BC601F /* Bundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
+		81D591011E6EBD8900BC601F /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
+		81D591021E6EBD8900BC601F /* HTTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
+		81D591031E6EBD8900BC601F /* HTTPURLResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPURLResponse.swift; sourceTree = "<group>"; };
+		81D591041E6EBD8900BC601F /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		81D591051E6EBD8900BC601F /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		81D591061E6EBD8900BC601F /* URLComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLComponents.swift; sourceTree = "<group>"; };
+		81D591071E6EBD8900BC601F /* URLQueryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLQueryItem.swift; sourceTree = "<group>"; };
+		81D591081E6EBD8900BC601F /* URLRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequest.swift; sourceTree = "<group>"; };
+		81D591091E6EBD8900BC601F /* URLStringConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLStringConvertible.swift; sourceTree = "<group>"; };
 		81F13E2E1E6DA94000A1EBB6 /* MockAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MockAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		82119333485AE6ED25549E0A742C1190 /* APIAccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIAccessToken.swift; sourceTree = "<group>"; };
-		82AB8E73CFCD434C03A56BE7811DEA65 /* AtlasAPI_authorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasAPI_authorization.swift; sourceTree = "<group>"; };
 		8804A49A711E3E291A3634007CA610A0 /* JSONSubscript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONSubscript.swift; sourceTree = "<group>"; };
 		88271BCC31E360BEF49D8115AE83264E /* GuestPaymentMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestPaymentMethod.swift; sourceTree = "<group>"; };
 		88C730D69D82840A7774CF4846D833BC /* CheckoutAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutAddress.swift; sourceTree = "<group>"; };
@@ -320,7 +322,6 @@
 		BF2DD2D803D006BDEAB6C294E238C72D /* ZalandoCommerceAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ZalandoCommerceAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD0DD80C9475A24C46A54BDD042269C /* GuestCart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCart.swift; sourceTree = "<group>"; };
 		C0087275FE972E40F0FD28AA1FA1F838 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = ZalandoCommerceAPI/Notifications.swift; sourceTree = SOURCE_ROOT; };
-		C3C86509237C71A7A7E79806C0198C64 /* AtlasAPI_endpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasAPI_endpoints.swift; sourceTree = "<group>"; };
 		CA70871321348430C46B108ED24D0827 /* Customer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
 		CAEAF399BDB344C50E47DD70471E75EA /* CreateCartEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCartEndpoint.swift; sourceTree = "<group>"; };
 		CD8AC71F74ABB8BC7D76407B3A9FCF0D /* GuestOrderRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestOrderRequest.swift; sourceTree = "<group>"; };
@@ -335,7 +336,6 @@
 		DA7147DEA2A8A6D75965491B0D3F813B /* Recommendation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recommendation.swift; sourceTree = "<group>"; };
 		DA99B5523444D2EE8AC1B5397A54086A /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		E528A14D9CC64F177BA37FDBCF6268E2 /* SystemInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemInfo.swift; sourceTree = "<group>"; };
-		E5803AE41095D4407A50795CDF603FCC /* AtlasAPI_configure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasAPI_configure.swift; sourceTree = "<group>"; };
 		F46B45B4F9D975874090BEB8522D81C0 /* GuestCustomerRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCustomerRequest.swift; sourceTree = "<group>"; };
 		F5F8397816D421255C10AE0737FAAA41 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		F6CF52ED3F20B2F59D5E6096E498A18B /* PaymentMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
@@ -397,16 +397,16 @@
 			path = ZalandoCommerceAPI/Utils;
 			sourceTree = SOURCE_ROOT;
 		};
-		334FBF6A404062610EE6252383520AF5 /* AtlasAPI */ = {
+		334FBF6A404062610EE6252383520AF5 /* ZalandoCommerceAPI */ = {
 			isa = PBXGroup;
 			children = (
-				4AA3C21AB550D6D2D184F0A4F90A9593 /* AtlasAPI.swift */,
-				E5803AE41095D4407A50795CDF603FCC /* AtlasAPI_configure.swift */,
-				82AB8E73CFCD434C03A56BE7811DEA65 /* AtlasAPI_authorization.swift */,
-				C3C86509237C71A7A7E79806C0198C64 /* AtlasAPI_endpoints.swift */,
-				6F0FDF5B6BFC312589E0F7F5D578B8AD /* Options.swift */,
+				81D590F41E6EBD6800BC601F /* Options.swift */,
+				81D590F81E6EBD6800BC601F /* ZalandoCommerceAPI.swift */,
+				81D590F51E6EBD6800BC601F /* ZalandoCommerceAPI_authorization.swift */,
+				81D590F61E6EBD6800BC601F /* ZalandoCommerceAPI_configure.swift */,
+				81D590F71E6EBD6800BC601F /* ZalandoCommerceAPI_endpoints.swift */,
 			);
-			name = AtlasAPI;
+			name = ZalandoCommerceAPI;
 			sourceTree = "<group>";
 		};
 		3D8FD04D7F66A80EE1FE5532406AE047 /* Frameworks */ = {
@@ -480,7 +480,8 @@
 		75D3D341CD1A816A0E6B63CB55C81BF2 /* ZalandoCommerceAPI */ = {
 			isa = PBXGroup;
 			children = (
-				81D590241E6DBC4100BC601F /* Commons */,
+				81D590FE1E6EBD8900BC601F /* Commons */,
+				334FBF6A404062610EE6252383520AF5 /* ZalandoCommerceAPI */,
 				A419C43DE56B972457BCE3C26CD03FA0 /* Logger */,
 				7C6596B8FC8CC7FAB7F3E260BCD050AC /* API */,
 				4E2A11B7EBC8E4EEA0457E1D93E0A1F0 /* JSON */,
@@ -492,8 +493,7 @@
 				C0087275FE972E40F0FD28AA1FA1F838 /* Notifications.swift */,
 				B135F402AFF895CCD6EC039A7E8B875E /* Results.swift */,
 			);
-			name = ZalandoCommerceAPI;
-			path = ZalandoCommerceAPI/API;
+			path = ZalandoCommerceAPI;
 			sourceTree = "<group>";
 		};
 		763A6645A072E811EFADC02074D72E7B /* Models */ = {
@@ -530,7 +530,6 @@
 		7C6596B8FC8CC7FAB7F3E260BCD050AC /* API */ = {
 			isa = PBXGroup;
 			children = (
-				334FBF6A404062610EE6252383520AF5 /* AtlasAPI */,
 				5A910BBAE45243380D7B5D966809271F /* Endpoints */,
 				82119333485AE6ED25549E0A742C1190 /* APIAccessToken.swift */,
 				1DF97F26C9E21DF37C322657F1000F09 /* APIRequest.swift */,
@@ -543,25 +542,6 @@
 			name = API;
 			path = ZalandoCommerceAPI/API;
 			sourceTree = SOURCE_ROOT;
-		};
-		81D590241E6DBC4100BC601F /* Commons */ = {
-			isa = PBXGroup;
-			children = (
-				81D590251E6DBC4100BC601F /* Array.swift */,
-				81D590261E6DBC4100BC601F /* Bundle.swift */,
-				81D590271E6DBC4100BC601F /* Debug.swift */,
-				81D590281E6DBC4100BC601F /* HTTP.swift */,
-				81D590291E6DBC4100BC601F /* HTTPURLResponse.swift */,
-				81D5902A1E6DBC4100BC601F /* String.swift */,
-				81D5902B1E6DBC4100BC601F /* URL.swift */,
-				81D5902C1E6DBC4100BC601F /* URLComponents.swift */,
-				81D5902D1E6DBC4100BC601F /* URLQueryItem.swift */,
-				81D5902E1E6DBC4100BC601F /* URLRequest.swift */,
-				81D5902F1E6DBC4100BC601F /* URLStringConvertible.swift */,
-			);
-			name = Commons;
-			path = ../../../Commons;
-			sourceTree = "<group>";
 		};
 		81D590A11E6DCABA00BC601F /* JSON */ = {
 			isa = PBXGroup;
@@ -586,6 +566,8 @@
 		81D590DE1E6DCAC500BC601F /* API */ = {
 			isa = PBXGroup;
 			children = (
+				81D5909C1E6DCABA00BC601F /* APITestCase.swift */,
+				81D5909D1E6DCABA00BC601F /* APIAuthorizationTests.swift */,
 				81D590911E6DCABA00BC601F /* APIAddressesTests.swift */,
 				81D590921E6DCABA00BC601F /* APIArticleTests.swift */,
 				81D590931E6DCABA00BC601F /* APICartTests.swift */,
@@ -597,8 +579,6 @@
 				81D590991E6DCABA00BC601F /* APIGuestOrderTests.swift */,
 				81D5909A1E6DCABA00BC601F /* APIOrderTests.swift */,
 				81D5909B1E6DCABA00BC601F /* APIUpdateCheckoutTests.swift */,
-				81D5909C1E6DCABA00BC601F /* AtlasAPIClientBaseTests.swift */,
-				81D5909D1E6DCABA00BC601F /* AtlasAPITests.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -611,6 +591,25 @@
 			);
 			name = CommonsTests;
 			path = ../../CommonsTests;
+			sourceTree = "<group>";
+		};
+		81D590FE1E6EBD8900BC601F /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				81D590FF1E6EBD8900BC601F /* Array.swift */,
+				81D591001E6EBD8900BC601F /* Bundle.swift */,
+				81D591011E6EBD8900BC601F /* Debug.swift */,
+				81D591021E6EBD8900BC601F /* HTTP.swift */,
+				81D591031E6EBD8900BC601F /* HTTPURLResponse.swift */,
+				81D591041E6EBD8900BC601F /* String.swift */,
+				81D591051E6EBD8900BC601F /* URL.swift */,
+				81D591061E6EBD8900BC601F /* URLComponents.swift */,
+				81D591071E6EBD8900BC601F /* URLQueryItem.swift */,
+				81D591081E6EBD8900BC601F /* URLRequest.swift */,
+				81D591091E6EBD8900BC601F /* URLStringConvertible.swift */,
+			);
+			name = Commons;
+			path = ../../Commons;
 			sourceTree = "<group>";
 		};
 		864F2AE731B222CF20825FFF5BF5E6DD /* ZalandoCommerceAPITestsHostApp */ = {
@@ -916,14 +915,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				34D565D1422FDFE1F9B482005F88216B /* GuestCartRequest.swift in Sources */,
-				81D590311E6DBC4100BC601F /* Bundle.swift in Sources */,
+				81D5910B1E6EBD8900BC601F /* Bundle.swift in Sources */,
 				DC686314A72D004D8057657BAE386E00 /* PaymentMethodType.swift in Sources */,
 				319C8892EF75F743FB6BC5BAB278ECBA /* GetArticleEndpoint.swift in Sources */,
 				B760B0603070F9558115F9AF15FEF6B1 /* Article.swift in Sources */,
 				62C7EA7D66821EC79C278B60C3907983 /* GuestCheckoutAddress.swift in Sources */,
 				631E7EE031D5A6418FB7DD60074278A7 /* Cart.swift in Sources */,
 				F0FBE44409A85786DEFC3D7CD60EEFE9 /* CartItem.swift in Sources */,
-				81D590321E6DBC4100BC601F /* Debug.swift in Sources */,
+				81D5910C1E6EBD8900BC601F /* Debug.swift in Sources */,
 				A45694A465415724991904EBB4C5DC3D /* CartItemRequest.swift in Sources */,
 				871861043470F7B6A72F34B73CC67714 /* GuestPaymentRequest.swift in Sources */,
 				8387789B675CAC41D88C59F7CD9A49D5 /* CartRequest.swift in Sources */,
@@ -934,13 +933,11 @@
 				74033CC4EE46D819DCF0D0CD145C705A /* APIClient.swift in Sources */,
 				06E5C0933C2D59ECB6AF221DC82004F3 /* CheckAddressRequest.swift in Sources */,
 				5845FED236186199C6625E11AB2CE7C5 /* GetConfigEndpoint.swift in Sources */,
-				FDA187EB948C3415A7642E5C162FAA5D /* AtlasAPI_configure.swift in Sources */,
 				ACCD79D9C4D9FB3D5EE8109A07679A3C /* Media.swift in Sources */,
 				228DA1EE31068C25FB7BA695A50E5DDD /* JSONResponse.swift in Sources */,
 				D7D95B53EC353B847DEF517DC07B7A6F /* CheckAddressResponse.swift in Sources */,
 				3823DD4454949B70FF3FC6C6B81BACA1 /* Checkout.swift in Sources */,
 				AFA5480D32447A330ADEB69346021F8C /* CheckoutAddress.swift in Sources */,
-				F00FD01496BD100C1D9E20FEC578093A /* AtlasAPI_endpoints.swift in Sources */,
 				5409022DECDE9C9FB50F7A0A51675377 /* GetAddressesEndpoint.swift in Sources */,
 				6506392A605FACF4557D0FCDD47ED7E6 /* Config.swift in Sources */,
 				FC8B4EB07DEBBA17ED31F8EEDD77023D /* UpdateAddressEndpoint.swift in Sources */,
@@ -957,65 +954,67 @@
 				B33B756E36A1075A2EC6DCD9822DA9D1 /* JSONRepresentable.swift in Sources */,
 				330E18182E0C10228CC4E286B36052C3 /* Notifications.swift in Sources */,
 				71CA5C7010DC6C89C45532550D24F931 /* CreateCheckoutRequest.swift in Sources */,
-				81D590351E6DBC4100BC601F /* String.swift in Sources */,
 				1BA431B6801BAF1F601BBB3FBFDB2202 /* Typealiases.swift in Sources */,
 				61F07F9373EF70129617D9490C0A085B /* Customer.swift in Sources */,
+				81D5910F1E6EBD8900BC601F /* String.swift in Sources */,
 				092E874D448035208694241B6BA8C5F1 /* RFC3339DateFormatter.swift in Sources */,
 				620E4FDCAEF5EB433ECC27903529F2E1 /* CheckoutAddresses.swift in Sources */,
-				81D590391E6DBC4100BC601F /* URLRequest.swift in Sources */,
 				E8FE522BEFADC682C935905FFA0AC529 /* GuestPaymentSelectionRequest.swift in Sources */,
-				81D590361E6DBC4100BC601F /* URL.swift in Sources */,
 				3841A82752EA65F967C32AE54098426F /* Delivery.swift in Sources */,
+				81D591131E6EBD8900BC601F /* URLRequest.swift in Sources */,
 				009181DB2C30EA37DC459373993A2344 /* Errors.swift in Sources */,
+				81D591101E6EBD8900BC601F /* URL.swift in Sources */,
 				F99CAF715FB0D591A7F5EB79A7C54CE7 /* CreateCartEndpoint.swift in Sources */,
 				7D9992E58F4E287BC6EE7AD30338862F /* FormattableAddress.swift in Sources */,
 				BD4958A6838C84DC295CE30E7E28127D /* Results.swift in Sources */,
 				4B10BA7F4980C14CCFD91482E6A8B060 /* Gender.swift in Sources */,
 				2E8011474999A14E2B63489AC4C4E3BE /* DataTaskResponse.swift in Sources */,
-				BDD29DDEE4163BE442BA0FED2229C7B9 /* Options.swift in Sources */,
-				81D590381E6DBC4100BC601F /* URLQueryItem.swift in Sources */,
 				A617C549065FE3447ADCC97DFF9DDC69 /* JSON.swift in Sources */,
 				E527A75504B4F3AAF32F426105C37402 /* ResponseParser.swift in Sources */,
 				FD865B0234FE07B7A85955A0E1EECB9B /* CompleteGuestOrderEndpoint.swift in Sources */,
+				81D591121E6EBD8900BC601F /* URLQueryItem.swift in Sources */,
 				02576D9B6427B3104CFB767A0924CA0F /* CreateOrderEndpoint.swift in Sources */,
-				81D590341E6DBC4100BC601F /* HTTPURLResponse.swift in Sources */,
 				42FE443682EE4DA2863C9C7772E77128 /* SKU.swift in Sources */,
 				F70180EA1E7AC55161F0A0F5BC256BA1 /* PrintLogger.swift in Sources */,
 				E7561BB0527C36A7FA74020C228AF322 /* JSONSubscript.swift in Sources */,
+				81D5910E1E6EBD8900BC601F /* HTTPURLResponse.swift in Sources */,
 				ECE8DEFDB2A85FBCD15B77C89EA5EF4A /* Keychain.swift in Sources */,
+				81D590F91E6EBD6800BC601F /* Options.swift in Sources */,
 				C97FDA428DD10A02B604098846CA1431 /* Logger.swift in Sources */,
 				E6A17887BC6BA4C25B2D758C44514B80 /* Money.swift in Sources */,
-				81D5903A1E6DBC4100BC601F /* URLStringConvertible.swift in Sources */,
 				261B28B342B4AB0AC459145308E87C48 /* GuestOrder.swift in Sources */,
 				50B7CAD88F4CB40657A1E293C5886CBE /* Data.swift in Sources */,
+				81D591141E6EBD8900BC601F /* URLStringConvertible.swift in Sources */,
 				1E972AEE974F24099CF25DD0FA0F4C70 /* APIAccessToken.swift in Sources */,
-				81D590301E6DBC4100BC601F /* Array.swift in Sources */,
 				B55E11C43D7FE5324EFC07547FE440BF /* ConfigurableEndpoint.swift in Sources */,
 				240228124E25E1CCE455B8FD3E3F9A92 /* Order.swift in Sources */,
+				81D5910A1E6EBD8900BC601F /* Array.swift in Sources */,
 				81BAB3D31E685B29004F50A3 /* PaymentStatus.swift in Sources */,
 				DD13DE18E8535DE1DE2F8C486CEC3486 /* CreateAddressEndpoint.swift in Sources */,
 				EC2F6D79BBBB87853DF7FC12A809D2A9 /* GetArticleRecommendationsEndpoint.swift in Sources */,
+				81D590FC1E6EBD6800BC601F /* ZalandoCommerceAPI_endpoints.swift in Sources */,
 				A0EFD6474DCE215941273DBFE9FB064B /* OrderAddress.swift in Sources */,
 				B8419F217F076553054D230EEFF60341 /* OrderRequest.swift in Sources */,
+				81D590FD1E6EBD6800BC601F /* ZalandoCommerceAPI.swift in Sources */,
 				63BD6D5AB647CD11815ABCDCD2724601 /* Payment.swift in Sources */,
 				E0D665C2EC9F397884CDD291C9145EBB /* ConfigClient.swift in Sources */,
-				2402ED0BDCFC110413E83DABDC776085 /* AtlasAPI_authorization.swift in Sources */,
 				6314391419F5F35C66EBFC2ECE79303E /* SystemInfo.swift in Sources */,
+				81D590FB1E6EBD6800BC601F /* ZalandoCommerceAPI_configure.swift in Sources */,
 				3C945BDC8B10E80ECCEFC959EAEFD67C /* OrderConfirmation.swift in Sources */,
 				963AE70DD87A3C9A75FB0231D2130E7F /* PaymentMethod.swift in Sources */,
 				4721FC3613C4D4210054C2143D31A9CF /* JSONInitializable.swift in Sources */,
 				19052EC3C88FE3710B358C8A009122EF /* PickupPoint.swift in Sources */,
-				81D590371E6DBC4100BC601F /* URLComponents.swift in Sources */,
+				81D591111E6EBD8900BC601F /* URLComponents.swift in Sources */,
 				8C98093B61671563577C255FDA452AEA /* Recommendation.swift in Sources */,
 				6504D8872E69CAF240F5CC4CD6BEF61A /* GuestCart.swift in Sources */,
 				727D825FC085BDA1D717C197FDABF439 /* StreetAddress.swift in Sources */,
-				00DDF79C5F2EA8A83349C1C45E2F5A67 /* AtlasAPI.swift in Sources */,
+				81D590FA1E6EBD6800BC601F /* ZalandoCommerceAPI_authorization.swift in Sources */,
 				CAF49B6A3DAD4C68FF77D18AAB3B91A2 /* UpdateAddressRequest.swift in Sources */,
 				FC0655AC5517BC20F13B9DA9D181A142 /* UpdateCheckoutRequest.swift in Sources */,
 				A0AD0F403E3AF7D1035336D0098FB5F9 /* Brand.swift in Sources */,
 				DE75C7C9CBE1FEBD2BD8E4524B0220A5 /* CreateCheckoutEndpoint.swift in Sources */,
 				6EC34683E95FA934F7A29DCEE26FD134 /* Endpoint.swift in Sources */,
-				81D590331E6DBC4100BC601F /* HTTP.swift in Sources */,
+				81D5910D1E6EBD8900BC601F /* HTTP.swift in Sources */,
 				FC4DC88516E339E12FB7E0B70724A3C5 /* UserAddress.swift in Sources */,
 				3B09D828BF68AC19B8571D876CB1B2EC /* GetGuestCheckoutEndpoint.swift in Sources */,
 				3139D922EE3790EF2597975C5046EDA2 /* GuestCheckout.swift in Sources */,
@@ -1035,7 +1034,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81D590C31E6DCABA00BC601F /* AtlasAPIClientBaseTests.swift in Sources */,
+				81D590C31E6DCABA00BC601F /* APITestCase.swift in Sources */,
 				81D590D91E6DCABA00BC601F /* TestConfig.swift in Sources */,
 				81D590C21E6DCABA00BC601F /* APIUpdateCheckoutTests.swift in Sources */,
 				81D590CB1E6DCABA00BC601F /* JSONEquatableTests.swift in Sources */,
@@ -1046,7 +1045,7 @@
 				81D590D81E6DCABA00BC601F /* SKUTest.swift in Sources */,
 				81D590C11E6DCABA00BC601F /* APIOrderTests.swift in Sources */,
 				81D590D41E6DCABA00BC601F /* JSONUrlsTests.swift in Sources */,
-				81D590C41E6DCABA00BC601F /* AtlasAPITests.swift in Sources */,
+				81D590C41E6DCABA00BC601F /* APIAuthorizationTests.swift in Sources */,
 				81D590EA1E6EA14000BC601F /* TestOptions.swift in Sources */,
 				81D590DD1E6DCABA00BC601F /* URLSessionMock.swift in Sources */,
 				81D590B81E6DCABA00BC601F /* APIAddressesTests.swift in Sources */,
@@ -1102,7 +1101,7 @@
 				);
 				INFOPLIST_FILE = ZalandoCommerceAPITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zalando.commmerce.ZalandoCommerceAPITests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zalando.commmerce.api-tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZalandoCommerceAPITestsHostApp.app/ZalandoCommerceAPITestsHostApp";
@@ -1178,7 +1177,7 @@
 				INFOPLIST_FILE = ZalandoCommerceAPI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.zalando.atlas.API;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zalando.commerce.api;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -1196,7 +1195,7 @@
 				);
 				INFOPLIST_FILE = ZalandoCommerceAPITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zalando.commmerce.ZalandoCommerceAPITests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zalando.commmerce.api-tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1263,7 +1262,7 @@
 				INFOPLIST_FILE = ZalandoCommerceAPITestsHostApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zalando.commerce.ZalandoCommerceAPITestsHostApp;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zalando.commerce.api-tests-host-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1283,7 +1282,7 @@
 				INFOPLIST_FILE = ZalandoCommerceAPI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.zalando.atlas.API;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zalando.commerce.api;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -1300,7 +1299,7 @@
 				INFOPLIST_FILE = ZalandoCommerceAPITestsHostApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zalando.commerce.ZalandoCommerceAPITestsHostApp;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zalando.commerce.api-tests-host-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

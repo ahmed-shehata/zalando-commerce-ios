@@ -27,7 +27,7 @@ extension APIResult {
                 authorizationHandler.authorize { result in
                     switch result {
                     case .success(let accessToken):
-                        AtlasAPI.shared?.authorize(with: accessToken)
+                        ZalandoCommerceAPI.shared?.authorize(with: accessToken)
                         ZalandoCommerceUIViewController.displayLoader { hideLoader in
                             apiRequest?.execute { _ in
                                 hideLoader()

@@ -63,7 +63,7 @@ extension GuestSummaryActionHandlerTests {
     fileprivate func createActionHandler() -> GuestCheckoutSummaryActionHandler? {
         var guestActionHandler: GuestCheckoutSummaryActionHandler?
         waitUntil(timeout: 10) { done in
-            AtlasAPI.withLoader.article(with: self.sku) { result in
+            ZalandoCommerceAPI.withLoader.article(with: self.sku) { result in
                 guard let article = result.process() else { return fail() }
                 let selectedArticle = SelectedArticle(article: article)
                 self.mockedDataSourceDelegate = GuestSummaryActionHandlerDataSourceDelegateMocked(selectedArticle: selectedArticle)

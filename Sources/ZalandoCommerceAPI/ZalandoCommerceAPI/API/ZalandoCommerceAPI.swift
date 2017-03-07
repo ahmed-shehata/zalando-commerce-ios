@@ -12,7 +12,7 @@ import Foundation
      logged in and accepted a consent. Otherwise `Result.failure` with
      `APIError.unauthorized` is returned.
  */
-public struct AtlasAPI {
+public struct ZalandoCommerceAPI {
 
     /// Configuration of a client handling API calls
     public let config: Config

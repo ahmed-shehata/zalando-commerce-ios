@@ -8,10 +8,10 @@ import Nimble
 
 @testable import ZalandoCommerceAPI
 
-class APIArticleTests: AtlasAPIClientBaseTests {
+class APIArticleTests: APITestCase {
 
     func testFetchArticle() {
-        waitUntilAtlasAPIClientIsConfigured { done, api in
+        waitForAPIConfigured { done, api in
             let sku = ConfigSKU(value: "AD541L009-G11")
             api.article(with: sku) { result in
                 switch result {
