@@ -7,8 +7,7 @@ coverage:
   range: 50...80
 
   ignore:
-    - .*/SwiftyJSON.*
-    - AtlasUI/AtlasUI/Utils/Reachability.swift
+    - Sources/ZalandoCommerceUI/ZalandoCommerceUI/Utils/Reachability.swift
 
   status:
     project:

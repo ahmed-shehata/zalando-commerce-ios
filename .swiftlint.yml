@@ -19,12 +19,12 @@ type_name:
 
 excluded:
   - Carthage
-  - AtlasSDKTests
-  - MockAPITests
-  - AtlasDemoUITests
-  - AtlasUITests
-  - AtlasDemo
   - MockAPI
+  - MockAPITests
+  - ZalandoCommerceAPITests
+  - ZalandoCommerceUITests
+  - ZalandoCommerceDemoApp
+  - ZalandoCommerceDemoAppUITests
 
 opt_in_rules:
   - force_unwrapping
