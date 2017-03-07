@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0810"
+   LastUpgradeVersion = "0820"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,9 +15,23 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2A09D0C5F782D7D824F5F39015890DE6"
-               BuildableName = "AtlasDemo.app"
-               BlueprintName = "AtlasDemo"
-               ReferencedContainer = "container:AtlasDemo.xcodeproj">
+               BuildableName = "ZalandoCommerceDemoApp.app"
+               BlueprintName = "ZalandoCommerceDemoApp"
+               ReferencedContainer = "container:ZalandoCommerceDemoApp.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7A9DE536D7A7A1DEA013E619E317542B"
+               BuildableName = "MockAPITests.xctest"
+               BlueprintName = "MockAPITests"
+               ReferencedContainer = "container:../MockAPI/MockAPI.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,9 +48,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "67F9DDC7BA66504563712E65544C2F4E"
-               BuildableName = "AtlasDemo.xctest"
-               BlueprintName = "AtlasDemoUITests"
-               ReferencedContainer = "container:AtlasDemo.xcodeproj">
+               BuildableName = "ZalandoCommerceDemoApp.xctest"
+               BlueprintName = "ZalandoCommerceDemoAppUITests"
+               ReferencedContainer = "container:ZalandoCommerceDemoApp.xcodeproj">
             </BuildableReference>
             <LocationScenarioReference
                identifier = "com.apple.dt.IDEFoundation.CurrentLocationScenarioIdentifier"
@@ -50,7 +64,7 @@
                BlueprintIdentifier = "4850138AFD7E1EECC8F7F5FD3D02713F"
                BuildableName = "ZalandoCommerceAPITests.xctest"
                BlueprintName = "ZalandoCommerceAPITests"
-               ReferencedContainer = "container:../AtlasSDK/ZalandoCommerceAPI.xcodeproj">
+               ReferencedContainer = "container:../ZalandoCommerceAPI/ZalandoCommerceAPI.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -60,7 +74,7 @@
                BlueprintIdentifier = "05766597D649C37825AED617FB1045D0"
                BuildableName = "ZalandoCommerceUITests.xctest"
                BlueprintName = "ZalandoCommerceUITests"
-               ReferencedContainer = "container:../AtlasUI/ZalandoCommerceUI.xcodeproj">
+               ReferencedContainer = "container:../ZalandoCommerceUI/ZalandoCommerceUI.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -78,9 +92,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2A09D0C5F782D7D824F5F39015890DE6"
-            BuildableName = "AtlasDemo.app"
-            BlueprintName = "AtlasDemo"
-            ReferencedContainer = "container:AtlasDemo.xcodeproj">
+            BuildableName = "ZalandoCommerceDemoApp.app"
+            BlueprintName = "ZalandoCommerceDemoApp"
+            ReferencedContainer = "container:ZalandoCommerceDemoApp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -101,28 +115,17 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2A09D0C5F782D7D824F5F39015890DE6"
-            BuildableName = "AtlasDemo.app"
-            BlueprintName = "AtlasDemo"
-            ReferencedContainer = "container:AtlasDemo.xcodeproj">
+            BuildableName = "ZalandoCommerceDemoApp.app"
+            BlueprintName = "ZalandoCommerceDemoApp"
+            ReferencedContainer = "container:ZalandoCommerceDemoApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
-         <CommandLineArgument
-            argument = "USE_MOCK_API"
-            isEnabled = "YES">
-         </CommandLineArgument>
          <CommandLineArgument
             argument = "PRINT_REQUEST_DESCRIPTION"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "OS_ACTIVITY_MODE"
-            value = "disable"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -137,9 +140,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2A09D0C5F782D7D824F5F39015890DE6"
-            BuildableName = "AtlasDemo.app"
-            BlueprintName = "AtlasDemo"
-            ReferencedContainer = "container:AtlasDemo.xcodeproj">
+            BuildableName = "ZalandoCommerceDemoApp.app"
+            BlueprintName = "ZalandoCommerceDemoApp"
+            ReferencedContainer = "container:ZalandoCommerceDemoApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

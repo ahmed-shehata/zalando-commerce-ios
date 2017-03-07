@@ -33,7 +33,7 @@ class ProfileViewController: UIViewController {
 
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(updateProfileVisibility(fromNotification:)),
-                                               name: .AtlasAuthorizationChanged,
+                                               name: .ZalandoCommerceAPIAuthorizationChanged,
                                                object: nil)
     }
 

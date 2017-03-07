@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0810"
+   LastUpgradeVersion = "0820"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2A09D0C5F782D7D824F5F39015890DE6"
                BuildableName = "AtlasDemo.app"
-               BlueprintName = "AtlasDemo"
-               ReferencedContainer = "container:AtlasDemo/AtlasDemo.xcodeproj">
+               BlueprintName = "ZalandoCommerceDemoApp"
+               ReferencedContainer = "container:AtlasDemo/ZalandoCommerceDemoApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -65,8 +65,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "67F9DDC7BA66504563712E65544C2F4E"
                BuildableName = "AtlasDemo.xctest"
-               BlueprintName = "AtlasDemoUITests"
-               ReferencedContainer = "container:AtlasDemo/AtlasDemo.xcodeproj">
+               BlueprintName = "ZalandoCommerceDemoAppUITests"
+               ReferencedContainer = "container:AtlasDemo/ZalandoCommerceDemoApp.xcodeproj">
             </BuildableReference>
             <LocationScenarioReference
                identifier = "com.apple.dt.IDEFoundation.CurrentLocationScenarioIdentifier"
@@ -79,8 +79,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2A09D0C5F782D7D824F5F39015890DE6"
             BuildableName = "AtlasDemo.app"
-            BlueprintName = "AtlasDemo"
-            ReferencedContainer = "container:AtlasDemo/AtlasDemo.xcodeproj">
+            BlueprintName = "ZalandoCommerceDemoApp"
+            ReferencedContainer = "container:AtlasDemo/ZalandoCommerceDemoApp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -102,8 +102,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2A09D0C5F782D7D824F5F39015890DE6"
             BuildableName = "AtlasDemo.app"
-            BlueprintName = "AtlasDemo"
-            ReferencedContainer = "container:AtlasDemo/AtlasDemo.xcodeproj">
+            BlueprintName = "ZalandoCommerceDemoApp"
+            ReferencedContainer = "container:AtlasDemo/ZalandoCommerceDemoApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -121,8 +121,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2A09D0C5F782D7D824F5F39015890DE6"
             BuildableName = "AtlasDemo.app"
-            BlueprintName = "AtlasDemo"
-            ReferencedContainer = "container:AtlasDemo/AtlasDemo.xcodeproj">
+            BlueprintName = "ZalandoCommerceDemoApp"
+            ReferencedContainer = "container:AtlasDemo/ZalandoCommerceDemoApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

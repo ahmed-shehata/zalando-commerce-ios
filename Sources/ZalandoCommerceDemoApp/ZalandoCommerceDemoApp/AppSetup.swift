@@ -3,8 +3,8 @@
 //
 
 import Foundation
-import struct AtlasSDK.Options
-import struct AtlasSDK.AtlasAPI
+import struct ZalandoCommerceAPI.Options
+import struct ZalandoCommerceAPI.ZalandoCommerceAPI
 import ZalandoCommerceUI
 import MockAPI
 
@@ -12,12 +12,14 @@ typealias AppSetupCompletion = (_ configured: Bool) -> Void
 
 class AppSetup {
 
-    fileprivate(set) static var atlas: AtlasUI?
+    fileprivate(set) static var atlas: ZalandoCommerceUI?
     fileprivate(set) static var options: Options?
 
-    fileprivate static let defaultUseSandbox = true
-    fileprivate static let defaultInterfaceLanguage: InterfaceLanguage = .english
-    fileprivate static let defaultSalesChannel: SalesChannel = .germany
+    struct Defaults {
+        fileprivate static let useSandbox = true
+        fileprivate static let interfaceLanguage: InterfaceLanguage = .english
+        fileprivate static let salesChannel: SalesChannel = .germany
+    }
 
     static var isConfigured: Bool {
         return atlas != nil && options != nil
@@ -71,12 +73,12 @@ extension AppSetup {
 
     fileprivate static func prepareForTests() {
         if isInTestsEnvironment {
-            AtlasAPI.deauthorizeAll()
+            ZalandoCommerceAPI.deauthorizeAll()
         }
     }
 
     fileprivate static func set(appOptions options: Options, completion: AppSetupCompletion? = nil) {
-        AtlasUI.configure(options: options) { result in
+        ZalandoCommerceUI.configure(options: options) { result in
             switch result {
             case .success(let atlas):
                 AppSetup.atlas = atlas
@@ -92,9 +94,9 @@ extension AppSetup {
                                            interfaceLanguage: InterfaceLanguage? = nil,
                                            salesChannel: SalesChannel? = nil) -> Options {
         let configurationURL: URL? = MockAPI.hasMockedAPIStarted ? MockAPI.endpointURL(forPath: "/config") : nil
-        let sandbox = useSandbox ?? options?.useSandboxEnvironment ?? defaultUseSandbox
-        let language = interfaceLanguage?.rawValue ?? options?.interfaceLanguage ?? defaultInterfaceLanguage.rawValue
-        let salesChannel = salesChannel?.rawValue ?? options?.salesChannel ?? defaultSalesChannel.rawValue
+        let sandbox = useSandbox ?? options?.useSandboxEnvironment ?? Defaults.useSandbox
+        let language = interfaceLanguage?.rawValue ?? options?.interfaceLanguage ?? Defaults.interfaceLanguage.rawValue
+        let salesChannel = salesChannel?.rawValue ?? options?.salesChannel ?? Defaults.salesChannel.rawValue
 
         return Options(clientId: "atlas_Y2M1MzA",
                        salesChannel: salesChannel,

@@ -11,6 +11,6 @@
       location = "group:ZalandoCommerceUI/ZalandoCommerceUI.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:AtlasDemo/AtlasDemo.xcodeproj">
+      location = "group:ZalandoCommerceDemoApp/ZalandoCommerceDemoApp.xcodeproj">
    </FileRef>
 </Workspace>
