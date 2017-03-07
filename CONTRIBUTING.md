@@ -25,10 +25,12 @@ theirs approval (:+1:)
 
 ## External libraries
 
-Main frameworks (_AtlasSDK_ and _AtlasUI_) have strict rule to **do not depend
-on any external library**.  In exceptional cases it could be lifted, but still
-you should first consider taking source code from the external framework
-instead (and the best – not whole, but just needed part).
+Main frameworks (_ZalandoCommerceAPI_ and _ZalandoCommerceUI_) have strict
+rule to **do not depend on any external library**.
+
+In some exceptional cases it could be lifted, but you should always first
+consider copying source code from the external framework instead (and the best
+– not whole, but just needed part).
 
 Rationale behind is:
 
@@ -45,8 +47,8 @@ Rationale behind is:
    reuse factor.
 
 
-They're totally allowed in satellite projects (_MockAPI_ or _AtlasDemo_), however the less we have them,
-the simpler maintanance and updating is.
+They're totally allowed in satellite projects (_MockAPI_ or _ZalandoCommerceDemoApp_),
+however the less we have them, the simpler maintanance and updating is.
 
 For this purpose we use Carthage. `calypso.rb` has an appropriate task for it:
 

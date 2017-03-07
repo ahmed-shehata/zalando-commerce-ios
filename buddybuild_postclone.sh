@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-rm -rf AtlasDemo/Podfile
+rm -rf Sources/ZalandoCommerceDemoApp/Podfile
 rm -rf Cartfile.private

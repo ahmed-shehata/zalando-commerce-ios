@@ -2,9 +2,9 @@ require_relative './lib/version'
 
 # rubocop:disable Metrics/BlockLength
 Pod::Spec.new do |spec|
-  spec.name = 'AtlasUI'
+  spec.name = 'ZalandoCommerceUI'
   spec.platform = :ios, '9.0'
-  spec.version = ATLAS_VERSION
+  spec.version = ZC_VERSION
   spec.summary = 'Full UI for Zalando Checkout and Catalog APIs.'
   spec.homepage = 'https://github.com/zalando-incubator/atlas-ios'
 
@@ -17,8 +17,8 @@ minutes using a few lines of code. There is an AtlasCheckout framework in place
 to have end-to-end solution including UI part for the checkout flow.
 
 If you want to have a full control over the UI and manage checkout flow by
-yourself there is a low-level AtlasSDK framework that covers all Checkout API
-calls and provide you high-level business objects to deal with.
+yourself there is a low-level ZalandoCommerceAPI framework that covers all
+Checkout API calls and provide you high-level business objects to deal with.
   DESC
 
   spec.license = {
@@ -39,10 +39,11 @@ calls and provide you high-level business objects to deal with.
     tag: spec.version.to_s
   }
 
-  spec.source_files = 'AtlasUI/AtlasUI/**/*.swift', \
-                      'AtlasSDK/Commons/*.swift'
-  spec.ios.resources = ['AtlasUI/AtlasUI/**/*.xcassets', 'AtlasUI/AtlasUI/**/Localizable.strings']
+  spec.source_files = 'Sources/ZalandoCommerceUI/ZalandoCommerceUI/**/*.swift', \
+                      'Sources/Commons/*.swift'
+  spec.ios.resources = ['Sources/ZalandoCommerceUI/ZalandoCommerceUI/**/*.xcassets',
+                        'ZalandoCommerceUI/ZalandoCommerceUI/**/Localizable.strings']
   spec.ios.frameworks = 'Foundation', 'UIKit'
 
-  spec.dependency 'AtlasSDK', "= #{spec.version}"
+  spec.dependency 'ZalandoCommerceAPI', "= #{spec.version}"
 end
