@@ -10,7 +10,7 @@ module Calypso
     def build
       FileUtils.rm_rf Dir['ZalandoCommerce{API,UI}.framework.zip']
       run 'carthage build --no-skip-current --platform iOS'
-      run 'carthage archive ZalandoCommerceAPI ZalandoCommerceUI'
+      run 'carthage archive ZalandoCommerceAPI ZalandoCommerceUI --output ZalandoCommerceSDK'
     end
 
     include Run
