@@ -28,34 +28,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6EAF48CE510DEB8F61900BF8679179AD"
-               BuildableName = "AtlasMockAPI.framework"
-               BlueprintName = "AtlasMockAPI"
-               ReferencedContainer = "container:AtlasMockAPI/AtlasMockAPI.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7A9DE536D7A7A1DEA013E619E317542B"
-               BuildableName = "AtlasMockAPITests.xctest"
-               BlueprintName = "AtlasMockAPITests"
-               ReferencedContainer = "container:AtlasMockAPI/AtlasMockAPI.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "F27E7E2D17C97B961882815BCF0DE4ED"
                BuildableName = "AtlasUI.framework"
                BlueprintName = "AtlasUI"
@@ -110,9 +82,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7A9DE536D7A7A1DEA013E619E317542B"
-               BuildableName = "AtlasMockAPITests.xctest"
-               BlueprintName = "AtlasMockAPITests"
-               ReferencedContainer = "container:AtlasMockAPI/AtlasMockAPI.xcodeproj">
+               BuildableName = "MockAPITests.xctest"
+               BlueprintName = "MockAPITests"
+               ReferencedContainer = "container:MockAPI/MockAPI.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>

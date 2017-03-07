@@ -5,7 +5,7 @@
 import Foundation
 import Swifter
 
-public final class AtlasMockAPI {
+public final class MockAPI {
 
     public static let isEnabledFlag = "ATLAS_MOCK_API_ENABLED"
 
@@ -16,12 +16,12 @@ public final class AtlasMockAPI {
     public static func startServer(wait timeout: TimeInterval = 15) throws {
         try server.registerEndpoints()
         try server.start(at: serverURL, forceIPv4: false, timeout: timeout)
-        print("AtlasMockAPI server started @ \(serverURL)")
+        print("MockAPI server started @ \(serverURL)")
     }
 
     public static func stopServer(wait timeout: TimeInterval = 15) throws {
         try server.stop(withGraceTimeout: timeout)
-        print("AtlasMockAPI server stopped")
+        print("MockAPI server stopped")
     }
 
     public static func endpointURL(forPath path: String, queryItems: [URLQueryItem] = []) -> URL {
@@ -32,7 +32,7 @@ public final class AtlasMockAPI {
     }
 
     public static var hasMockedAPIStarted: Bool {
-        return isStarted || ProcessInfo.processInfo.arguments.contains(AtlasMockAPI.isEnabledFlag)
+        return isStarted || ProcessInfo.processInfo.arguments.contains(MockAPI.isEnabledFlag)
     }
 
 }

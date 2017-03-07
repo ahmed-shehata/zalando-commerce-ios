@@ -9,15 +9,29 @@
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6EAF48CE510DEB8F61900BF8679179AD"
-               BuildableName = "AtlasMockAPI.framework"
-               BlueprintName = "AtlasMockAPI"
-               ReferencedContainer = "container:AtlasMockAPI/AtlasMockAPI.xcodeproj">
+               BuildableName = "MockAPI.framework"
+               BlueprintName = "MockAPI"
+               ReferencedContainer = "container:MockAPI.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7A9DE536D7A7A1DEA013E619E317542B"
+               BuildableName = "MockAPITests.xctest"
+               BlueprintName = "MockAPITests"
+               ReferencedContainer = "container:MockAPI.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,9 +48,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7A9DE536D7A7A1DEA013E619E317542B"
-               BuildableName = "AtlasMockAPITests.xctest"
-               BlueprintName = "AtlasMockAPITests"
-               ReferencedContainer = "container:AtlasMockAPI/AtlasMockAPI.xcodeproj">
+               BuildableName = "MockAPITests.xctest"
+               BlueprintName = "MockAPITests"
+               ReferencedContainer = "container:MockAPI.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -44,9 +58,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6EAF48CE510DEB8F61900BF8679179AD"
-            BuildableName = "AtlasMockAPI.framework"
-            BlueprintName = "AtlasMockAPI"
-            ReferencedContainer = "container:AtlasMockAPI/AtlasMockAPI.xcodeproj">
+            BuildableName = "MockAPI.framework"
+            BlueprintName = "MockAPI"
+            ReferencedContainer = "container:MockAPI.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -66,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6EAF48CE510DEB8F61900BF8679179AD"
-            BuildableName = "AtlasMockAPI.framework"
-            BlueprintName = "AtlasMockAPI"
-            ReferencedContainer = "container:AtlasMockAPI/AtlasMockAPI.xcodeproj">
+            BuildableName = "MockAPI.framework"
+            BlueprintName = "MockAPI"
+            ReferencedContainer = "container:MockAPI.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -80,15 +94,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6EAF48CE510DEB8F61900BF8679179AD"
-            BuildableName = "AtlasMockAPI.framework"
-            BlueprintName = "AtlasMockAPI"
-            ReferencedContainer = "container:AtlasMockAPI/AtlasMockAPI.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

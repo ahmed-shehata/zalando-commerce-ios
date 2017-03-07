@@ -5,7 +5,7 @@
 import XCTest
 import Foundation
 import Nimble
-import AtlasMockAPI
+import MockAPI
 
 @testable import AtlasSDK
 
@@ -15,12 +15,12 @@ class AtlasTests: XCTestCase {
 
     override class func setUp() {
         super.setUp()
-        try! AtlasMockAPI.startServer()
+        try! MockAPI.startServer()
     }
 
     override class func tearDown() {
         super.tearDown()
-        try! AtlasMockAPI.stopServer()
+        try! MockAPI.stopServer()
     }
 
     override func setUp() {

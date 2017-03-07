@@ -7,11 +7,11 @@ target 'AtlasDemo' do
   pod 'Freddy'
   pod 'Nuke'
   pod 'AtlasUI', path: '..'
-  pod 'AtlasMockAPI', path: '..'
+  pod 'MockAPI', path: '..'
 end
 
 target 'AtlasDemoUITests' do
-  pod 'AtlasMockAPI', path: '..'
+  pod 'MockAPI', path: '..'
 end
 
 pre_install do |installer|

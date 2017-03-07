@@ -57,20 +57,20 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7A9DE536D7A7A1DEA013E619E317542B"
-               BuildableName = "AtlasMockAPITests.xctest"
-               BlueprintName = "AtlasMockAPITests"
-               ReferencedContainer = "container:AtlasMockAPI/AtlasMockAPI.xcodeproj">
+               BlueprintIdentifier = "05766597D649C37825AED617FB1045D0"
+               BuildableName = "AtlasUITests.xctest"
+               BlueprintName = "AtlasUITests"
+               ReferencedContainer = "container:AtlasUI/AtlasUI.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "05766597D649C37825AED617FB1045D0"
-               BuildableName = "AtlasUITests.xctest"
-               BlueprintName = "AtlasUITests"
-               ReferencedContainer = "container:AtlasUI/AtlasUI.xcodeproj">
+               BlueprintIdentifier = "7A9DE536D7A7A1DEA013E619E317542B"
+               BuildableName = "MockAPITests.xctest"
+               BlueprintName = "MockAPITests"
+               ReferencedContainer = "container:MockAPI/MockAPI.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>

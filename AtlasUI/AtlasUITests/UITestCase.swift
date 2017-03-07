@@ -4,7 +4,7 @@
 
 import XCTest
 import Nimble
-import AtlasMockAPI
+import MockAPI
 import AtlasSDK
 
 @testable import AtlasUI
@@ -28,7 +28,7 @@ class UITestCase: XCTestCase {
     override class func setUp() {
         super.setUp()
         Nimble.AsyncDefaults.Timeout = 10
-        try! AtlasMockAPI.startServer()
+        try! MockAPI.startServer()
     }
 
     func registerAtlasUI() {
@@ -48,7 +48,7 @@ class UITestCase: XCTestCase {
 
     override class func tearDown() {
         super.tearDown()
-        try! AtlasMockAPI.stopServer()
+        try! MockAPI.stopServer()
     }
 
     override func setUp() {

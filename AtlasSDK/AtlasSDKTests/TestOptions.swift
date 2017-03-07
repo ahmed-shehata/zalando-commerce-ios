@@ -5,7 +5,7 @@
 import Foundation
 
 import AtlasSDK
-import AtlasMockAPI
+import MockAPI
 
 extension Options {
 

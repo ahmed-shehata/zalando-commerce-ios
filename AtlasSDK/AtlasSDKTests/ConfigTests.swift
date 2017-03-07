@@ -5,7 +5,7 @@
 import XCTest
 import Foundation
 import Nimble
-import AtlasMockAPI
+import MockAPI
 
 @testable import AtlasSDK
 

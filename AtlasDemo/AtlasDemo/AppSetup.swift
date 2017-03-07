@@ -6,7 +6,7 @@ import Foundation
 import struct AtlasSDK.Options
 import struct AtlasSDK.AtlasAPI
 import AtlasUI
-import AtlasMockAPI
+import MockAPI
 
 typealias AppSetupCompletion = (_ configured: Bool) -> Void
 
@@ -64,8 +64,8 @@ extension AppSetup {
     }
 
     fileprivate static func prepareMockAPI() {
-        if alwaysUseMockAPI && !AtlasMockAPI.hasMockedAPIStarted {
-            try! AtlasMockAPI.startServer() // swiftlint:disable:this force_try
+        if alwaysUseMockAPI && !MockAPI.hasMockedAPIStarted {
+            try! MockAPI.startServer() // swiftlint:disable:this force_try
         }
     }
 
@@ -91,7 +91,7 @@ extension AppSetup {
     fileprivate static func prepareOptions(useSandbox: Bool? = nil,
                                            interfaceLanguage: InterfaceLanguage? = nil,
                                            salesChannel: SalesChannel? = nil) -> Options {
-        let configurationURL: URL? = AtlasMockAPI.hasMockedAPIStarted ? AtlasMockAPI.endpointURL(forPath: "/config") : nil
+        let configurationURL: URL? = MockAPI.hasMockedAPIStarted ? MockAPI.endpointURL(forPath: "/config") : nil
         let sandbox = useSandbox ?? options?.useSandboxEnvironment ?? defaultUseSandbox
         let language = interfaceLanguage?.rawValue ?? options?.interfaceLanguage ?? defaultInterfaceLanguage.rawValue
         let salesChannel = salesChannel?.rawValue ?? options?.salesChannel ?? defaultSalesChannel.rawValue

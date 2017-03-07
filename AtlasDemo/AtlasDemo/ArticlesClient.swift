@@ -3,7 +3,7 @@
 //
 
 import AtlasSDK
-import AtlasMockAPI
+import MockAPI
 import SwiftHTTP
 
 typealias ArticlesCompletion = (Result<[DemoArticle]>) -> Void
@@ -36,8 +36,8 @@ class ArticlesClient {
     }
 
     fileprivate func endpointURL(forSKUs skus: [String]) -> String {
-        if AtlasMockAPI.hasMockedAPIStarted {
-            return AtlasMockAPI.endpointURL(forPath: "/articles").absoluteString
+        if MockAPI.hasMockedAPIStarted {
+            return MockAPI.endpointURL(forPath: "/articles").absoluteString
         }
 
         var urlComponents = URLComponents(string: "https://api.zalando.com/articles")!

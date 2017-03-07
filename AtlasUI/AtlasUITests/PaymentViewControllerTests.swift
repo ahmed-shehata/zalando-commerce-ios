@@ -4,7 +4,7 @@
 
 import XCTest
 import Nimble
-import AtlasMockAPI
+import MockAPI
 
 @testable import AtlasUI
 @testable import AtlasSDK
@@ -94,7 +94,7 @@ extension PaymentViewControllerTests {
             callbackURL = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect"
             redirectURL = "http://de.zalando.atlas.AtlasCheckoutDemo/redirect%3F\(PaymentStatus.statusKey)%3Derror"
         }
-        let url = AtlasMockAPI.endpointURL(forPath: "/redirect", queryItems: [URLQueryItem(name: "url", value: redirectURL)])
+        let url = MockAPI.endpointURL(forPath: "/redirect", queryItems: [URLQueryItem(name: "url", value: redirectURL)])
         let callback = URL(string: callbackURL)!
         return PaymentViewController(paymentURL: url, callbackURL: callback)
     }

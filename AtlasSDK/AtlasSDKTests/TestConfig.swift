@@ -3,7 +3,7 @@
 //
 
 import Foundation
-import AtlasMockAPI
+import MockAPI
 
 @testable import AtlasSDK
 
