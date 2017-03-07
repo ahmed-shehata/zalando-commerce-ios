@@ -6,7 +6,7 @@ import ZalandoCommerceAPI
 
 // TODO: document it, please...
 
-public enum ProcessedAtlasAPIResult<T> {
+public enum ProcessedAPIResult<T> {
 
     case success(T)
     case error(error: Error, title: String, message: String)
@@ -16,7 +16,7 @@ public enum ProcessedAtlasAPIResult<T> {
 
 extension APIResult {
 
-    public func processedResult() -> ProcessedAtlasAPIResult<T> {
+    public func processedResult() -> ProcessedAPIResult<T> {
         switch self {
         case .success(let data):
             return .success(data)

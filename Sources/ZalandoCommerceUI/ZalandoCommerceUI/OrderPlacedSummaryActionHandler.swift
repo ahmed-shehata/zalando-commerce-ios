@@ -11,7 +11,7 @@ class OrderPlacedSummaryActionHandler: CheckoutSummaryActionHandler {
     weak var delegate: CheckoutSummaryActionHandlerDelegate?
 
     func handleSubmit() {
-        try? ZalandoCommerceUIViewController.presented?.dismissAtlasCheckoutUI()
+        try? ZalandoCommerceUIViewController.presented?.dismissCheckoutUI()
     }
 
     func handlePaymentSelection() {

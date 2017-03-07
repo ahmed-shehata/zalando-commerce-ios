@@ -51,8 +51,8 @@ struct UserError {
 extension UserError {
 
     fileprivate static var errorPresenterViewController: UIViewController? {
-        guard let commerceUIViewController = ZalandoCommerceUIViewController.presented else { return nil }
-        return commerceUIViewController.presentedViewController ?? commerceUIViewController
+        guard let zCommerceUIViewController = ZalandoCommerceUIViewController.presented else { return nil }
+        return zCommerceUIViewController.presentedViewController ?? zCommerceUIViewController
     }
 
     fileprivate static func displayBanner(error: UserPresentableError) {

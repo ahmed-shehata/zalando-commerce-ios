@@ -23,7 +23,7 @@ class FullScreenErrorViewController: UIViewController {
     }
 
     func cancelButtonPressed() {
-        try? ZalandoCommerceUIViewController.presented?.dismissAtlasCheckoutUI()
+        try? ZalandoCommerceUIViewController.presented?.dismissCheckoutUI()
     }
 
 }

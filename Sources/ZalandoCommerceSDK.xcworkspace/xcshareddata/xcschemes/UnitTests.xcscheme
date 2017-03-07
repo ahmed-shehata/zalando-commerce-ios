@@ -17,7 +17,7 @@
                BlueprintIdentifier = "05766597D649C37825AED617FB1045D0"
                BuildableName = "ZalandoCommerceUITests.xctest"
                BlueprintName = "ZalandoCommerceUITests"
-               ReferencedContainer = "container:AtlasUI/ZalandoCommerceUI.xcodeproj">
+               ReferencedContainer = "container:ZalandoCommerceUI/ZalandoCommerceUI.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,16 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       codeCoverageEnabled = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "05766597D649C37825AED617FB1045D0"
-               BuildableName = "ZalandoCommerceUITests.xctest"
-               BlueprintName = "ZalandoCommerceUITests"
-               ReferencedContainer = "container:AtlasUI/ZalandoCommerceUI.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference
@@ -59,7 +49,26 @@
                ReferencedContainer = "container:ZalandoCommerceAPI/ZalandoCommerceAPI.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "05766597D649C37825AED617FB1045D0"
+               BuildableName = "ZalandoCommerceUITests.xctest"
+               BlueprintName = "ZalandoCommerceUITests"
+               ReferencedContainer = "container:ZalandoCommerceUI/ZalandoCommerceUI.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "05766597D649C37825AED617FB1045D0"
+            BuildableName = "ZalandoCommerceUITests.xctest"
+            BlueprintName = "ZalandoCommerceUITests"
+            ReferencedContainer = "container:ZalandoCommerceUI/ZalandoCommerceUI.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>

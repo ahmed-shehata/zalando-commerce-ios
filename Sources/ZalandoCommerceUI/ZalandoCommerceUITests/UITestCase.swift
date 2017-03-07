@@ -12,8 +12,8 @@ import ZalandoCommerceAPI
 class UITestCase: XCTestCase {
 
     var sku = ConfigSKU(value: "AD541L009-G11")
-    var commerceUIViewController: ZalandoCommerceUIViewController?
-    var commerceUI: ZalandoCommerceUI!
+    var zCommerceUIViewController: ZalandoCommerceUIViewController?
+    var zCommerceUI: ZalandoCommerceUI!
 
     var window: UIWindow = {
         let window = UIWindow()
@@ -22,28 +22,13 @@ class UITestCase: XCTestCase {
     }()
 
     var defaultNavigationController: UINavigationController? {
-        return commerceUIViewController?.mainNavigationController
+        return zCommerceUIViewController?.mainNavigationController
     }
 
     override class func setUp() {
         super.setUp()
         Nimble.AsyncDefaults.Timeout = 10
         try! MockAPI.startServer()
-    }
-
-    func registerAtlasUI() {
-        waitUntil(timeout: 10) { done in
-            let opts = Options.forTests(interfaceLanguage: "en")
-            ZalandoCommerceUI.configure(options: opts) { result in
-                switch result {
-                case .failure(let error):
-                    fail(String(describing: error))
-                case .success(let commerceUI):
-                    self.commerceUI = commerceUI
-                }
-                done()
-            }
-        }
     }
 
     override class func tearDown() {
@@ -53,9 +38,24 @@ class UITestCase: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        registerAtlasUI()
+        registerZalandoCommerceUI()
         registerZalandoCommerceUIViewController(for: self.sku)
         waitForArticleFetch()
+    }
+    
+    func registerZalandoCommerceUI() {
+        waitUntil(timeout: 10) { done in
+            let opts = Options.forTests(interfaceLanguage: "en")
+            ZalandoCommerceUI.configure(options: opts) { result in
+                switch result {
+                case .failure(let error):
+                    fail(String(describing: error))
+                case .success(let zCommerceUI):
+                    self.zCommerceUI = zCommerceUI
+                }
+                done()
+            }
+        }
     }
 
     func registerZalandoCommerceUIViewController(forConfigSKU sku: String) {
@@ -65,16 +65,16 @@ class UITestCase: XCTestCase {
 
     func registerZalandoCommerceUIViewController(for sku: ConfigSKU) {
         UserError.resetBanners()
-        let commerceUIViewController = ZalandoCommerceUIViewController(forSKU: sku, uiInstance: commerceUI) { _ in }
-        self.window.rootViewController = commerceUIViewController
+        let zCommerceUIViewController = ZalandoCommerceUIViewController(forSKU: sku, uiInstance: zCommerceUI) { _ in }
+        self.window.rootViewController = zCommerceUIViewController
         self.window.makeKeyAndVisible()
-        _ = commerceUIViewController.view // load the view
-        self.commerceUIViewController = commerceUIViewController
+        _ = zCommerceUIViewController.view // load the view
+        self.zCommerceUIViewController = zCommerceUIViewController
     }
 
     private func waitForArticleFetch() {
-        expect(self.commerceUIViewController?.mainNavigationController.viewControllers.last as? CheckoutSummaryViewController).toEventuallyNot(beNil())
-        guard let checkoutSummary = self.commerceUIViewController?.mainNavigationController.viewControllers.last as? CheckoutSummaryViewController else { return fail() }
+        expect(self.zCommerceUIViewController?.mainNavigationController.viewControllers.last as? CheckoutSummaryViewController).toEventuallyNot(beNil())
+        guard let checkoutSummary = self.zCommerceUIViewController?.mainNavigationController.viewControllers.last as? CheckoutSummaryViewController else { return fail() }
         if checkoutSummary.checkoutContainer.collectionView.numberOfItems(inSection: 0) > 0 {
             checkoutSummary.checkoutContainer.collectionView.collectionView(checkoutSummary.checkoutContainer.collectionView, didSelectItemAt: IndexPath(row: 0, section: 0))
             expect(checkoutSummary.checkoutContainer.overlayButton.isHidden).toEventually(beTrue())
@@ -82,7 +82,7 @@ class UITestCase: XCTestCase {
     }
 
     var errorDisplayed: Bool {
-        guard let errorPresenterViewController = commerceUIViewController?.presentedViewController ?? commerceUIViewController else { return false }
+        guard let errorPresenterViewController = zCommerceUIViewController?.presentedViewController ?? zCommerceUIViewController else { return false }
         return errorPresenterViewController.childViewControllers.contains {
             $0 is BannerErrorViewController ||
             ($0 as? UINavigationController)?.viewControllers.first is FullScreenErrorViewController

@@ -80,8 +80,8 @@ extension AppSetup {
     fileprivate static func set(appOptions options: Options, completion: AppSetupCompletion? = nil) {
         ZalandoCommerceUI.configure(options: options) { result in
             switch result {
-            case .success(let atlas):
-                AppSetup.zCommerceUI = atlas
+            case .success(let zCommerceUI):
+                AppSetup.zCommerceUI = zCommerceUI
                 AppSetup.options = options
                 completion?(true)
             case .failure:

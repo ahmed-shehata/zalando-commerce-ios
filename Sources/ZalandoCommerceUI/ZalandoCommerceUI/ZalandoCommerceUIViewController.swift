@@ -58,7 +58,7 @@ class ZalandoCommerceUIViewController: UIViewController {
         reachabilityNotifier.start()
     }
 
-    func dismissAtlasCheckoutUI() throws {
+    func dismissCheckoutUI() throws {
         guard let reason = dismissalReason else { throw Error.dismissalReasonNotSet }
         let completion = self.completion
         dismiss(animated: true) {

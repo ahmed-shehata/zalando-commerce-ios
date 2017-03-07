@@ -2,15 +2,15 @@ require 'ap'
 
 use_frameworks!
 
-target 'AtlasDemo' do
+target 'ZalandoCommerceDemoApp' do
   pod 'SwiftHTTP'
   pod 'Freddy'
   pod 'Nuke'
-  pod 'AtlasUI', path: '..'
+  pod 'ZalandoCommerceUI', path: '..'
   pod 'MockAPI', path: '..'
 end
 
-target 'AtlasDemoUITests' do
+target 'ZalandoCommerceDemoAppUITests' do
   pod 'MockAPI', path: '..'
 end
 
@@ -28,7 +28,7 @@ end
 
 def remove_direct_reference(ref)
   return unless ref.is_a? Xcodeproj::Project::Object::PBXFileReference
-  return unless ref.source_tree == 'BUILT_PRODUCTS_DIR' || ref.path.start_with?('../Carthage/Build/')
+  return unless ref.source_tree == 'BUILT_PRODUCTS_DIR' || ref.path.start_with?('../../Carthage/Build/')
   return unless ref.last_known_file_type == 'wrapper.framework'
 
   puts "Removing direct #{ref.path} reference from the project"

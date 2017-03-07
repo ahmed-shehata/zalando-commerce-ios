@@ -74,7 +74,7 @@ extension CheckoutSummaryRecommendationStackView: UIDataBuilder {
                         let recommendationReason = ZalandoCommerceUI.CheckoutResult.orderPlaced(orderConfirmation: orderConfirmation,
                                                                                                 customerRequestedArticle: recommendation.id)
                         ZalandoCommerceUIViewController.presented?.dismissalReason = recommendationReason
-                        try? ZalandoCommerceUIViewController.presented?.dismissAtlasCheckoutUI()
+                        try? ZalandoCommerceUIViewController.presented?.dismissCheckoutUI()
                 }
             })
         }

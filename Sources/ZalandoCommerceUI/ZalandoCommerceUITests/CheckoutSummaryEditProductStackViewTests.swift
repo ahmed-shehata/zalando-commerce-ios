@@ -19,11 +19,11 @@ class CheckoutSummaryEditProductStackViewTests: UITestCase {
     }
 
     func testSelectInitialSizeWhileLoggedIn() {
-        commerceUI.api.authorize(with: "TestToken")
+        zCommerceUI.api.authorize(with: "TestToken")
         registerZalandoCommerceUIViewController(forConfigSKU: "GU121D08Z-Q11")
         selectItemInCollectionView()
         expect(self.checkoutSummaryViewController?.actionHandler as? LoggedInSummaryActionHandler).toEventuallyNot(beNil())
-        commerceUI.api.deauthorize()
+        zCommerceUI.api.deauthorize()
     }
 
     func testOneSizeInitialSizeWhileNotLoggedIn() {
@@ -32,10 +32,10 @@ class CheckoutSummaryEditProductStackViewTests: UITestCase {
     }
 
     func testOneSizeInitialSizeWhileLoggedIn() {
-        commerceUI.api.authorize(with: "TestToken")
+        zCommerceUI.api.authorize(with: "TestToken")
         registerZalandoCommerceUIViewController(forConfigSKU: "MK151F00E-Q11")
         expect(self.checkoutSummaryViewController?.actionHandler as? LoggedInSummaryActionHandler).toEventuallyNot(beNil())
-        commerceUI.api.deauthorize()
+        zCommerceUI.api.deauthorize()
     }
 
     func testSelectingQuantity() {
@@ -85,8 +85,8 @@ extension CheckoutSummaryEditProductStackViewTests {
     }
 
     fileprivate func configureCheckoutSummaryViewController() {
-        expect(self.commerceUIViewController?.mainNavigationController.viewControllers.last as? CheckoutSummaryViewController).toEventuallyNot(beNil())
-        guard let checkoutSummary = self.commerceUIViewController?.mainNavigationController.viewControllers.last as? CheckoutSummaryViewController else { return fail() }
+        expect(self.zCommerceUIViewController?.mainNavigationController.viewControllers.last as? CheckoutSummaryViewController).toEventuallyNot(beNil())
+        guard let checkoutSummary = self.zCommerceUIViewController?.mainNavigationController.viewControllers.last as? CheckoutSummaryViewController else { return fail() }
         self.checkoutSummaryViewController = checkoutSummary
     }
 

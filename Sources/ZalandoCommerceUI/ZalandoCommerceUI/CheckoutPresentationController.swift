@@ -84,7 +84,7 @@ final class CheckoutPresentationController: UIPresentationController {
         if ZalandoCommerceUIViewController.presented?.dismissalReason == nil {
             ZalandoCommerceUIViewController.presented?.dismissalReason = ZalandoCommerceUI.CheckoutResult.userCancelled
         }
-        try? ZalandoCommerceUIViewController.presented?.dismissAtlasCheckoutUI()
+        try? ZalandoCommerceUIViewController.presented?.dismissCheckoutUI()
     }
 
 }

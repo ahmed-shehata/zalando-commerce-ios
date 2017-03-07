@@ -21,7 +21,7 @@ extension UIViewController {
 
     fileprivate dynamic func cancelCheckoutTapped() {
         ZalandoCommerceUIViewController.presented?.dismissalReason = ZalandoCommerceUI.CheckoutResult.userCancelled
-        try? ZalandoCommerceUIViewController.presented?.dismissAtlasCheckoutUI()
+        try? ZalandoCommerceUIViewController.presented?.dismissCheckoutUI()
     }
 
 }

@@ -28,7 +28,6 @@ fi
 
 if [ -z "$DEVICE_GROUP_NAME" ]; then
   DEVICE_GROUP_NAME=iOS-tip-device1
-  #atlas-demo-ios-1
 fi
 
 #curl \

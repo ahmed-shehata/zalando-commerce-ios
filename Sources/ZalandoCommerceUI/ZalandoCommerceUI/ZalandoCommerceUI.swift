@@ -64,13 +64,13 @@ final public class ZalandoCommerceUI {
                                 for sku: ConfigSKU,
                                 completion: @escaping ZalandoCommerceUICheckoutCompletion) {
 
-        let commerceUIViewController = ZalandoCommerceUIViewController(forSKU: sku, uiInstance: self, completion: completion)
+        let zCommerceUIViewController = ZalandoCommerceUIViewController(forSKU: sku, uiInstance: self, completion: completion)
 
         let checkoutTransitioning = CheckoutTransitioningDelegate()
-        commerceUIViewController.transitioningDelegate = checkoutTransitioning
-        commerceUIViewController.modalPresentationStyle = .custom
+        zCommerceUIViewController.transitioningDelegate = checkoutTransitioning
+        zCommerceUIViewController.modalPresentationStyle = .custom
 
-        viewController.present(commerceUIViewController, animated: true, completion: nil)
+        viewController.present(zCommerceUIViewController, animated: true, completion: nil)
     }
 
 }

@@ -146,7 +146,7 @@
 		E46A53B02F1FA88EE09652B70A2FE340 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47541F028939CE9E7B5FA456BE50FA76 /* Reachability.swift */; };
 		E65505C3FCACDEC23CC634675587F5F1 /* LoggedInAddressListActionHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B8053E0362F7064F15C167BC228236 /* LoggedInAddressListActionHandlerTests.swift */; };
 		E726441E020342505E0A3E67AB6E20CB /* Nimble.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 8398317FEC21A1E65AB06E3EF9B29A2B /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		EAE70A17AF64516886A337ACDE311218 /* AtlasAPILoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23BDCC4973FC078E005E01E358D2871 /* AtlasAPILoader.swift */; };
+		EAE70A17AF64516886A337ACDE311218 /* ZalandoCommerceAPI_loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23BDCC4973FC078E005E01E358D2871 /* ZalandoCommerceAPI_loader.swift */; };
 		EB75C02F168E5760793FB67D444F417F /* URLComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D43F4684C0AB8E056B3EE9CD1A820F6 /* URLComponents.swift */; };
 		EBB0CE9B6F72CCBC101BCFD52F5E5993 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD2C09882EF82C93CC8615C9E0F59251 /* Default-568h@2x.png */; };
 		EF570993CFA4FDF0361679E931D55B8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94F33C041120EF12B441AE2E84A48050 /* Assets.xcassets */; };
@@ -166,14 +166,14 @@
 			containerPortal = CA460E1A7406188D0392155EA8A63A1A /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 5BC1E6A06770E7598B0CE1C578109BF4;
-			remoteInfo = AtlasUITestsHostsApp;
+			remoteInfo = ZalandoCommerceUITestsHostsApp;
 		};
 		A64B0588D2191874F0B71837BB27AB31 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CA460E1A7406188D0392155EA8A63A1A /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = F27E7E2D17C97B961882815BCF0DE4ED;
-			remoteInfo = AtlasUI;
+			remoteInfo = ZalandoCommerceUI;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -263,7 +263,7 @@
 		81D382E2AE371C8F64A6E47D5344B522 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		81D590EC1E6EA14A00BC601F /* TestConsts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestConsts.swift; sourceTree = "<group>"; };
 		81D590ED1E6EA14A00BC601F /* TestOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestOptions.swift; sourceTree = "<group>"; };
-		81D590F01E6EA46900BC601F /* ZalandoCommerceAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZalandoCommerceAPI.framework; path = "../../../../../../../../Volumes/RAMDrive/AtlasSDK-anbxdesevuzlziazzfhragfrnhyn/Build/Products/Debug-iphonesimulator/ZalandoCommerceAPI.framework"; sourceTree = "<group>"; };
+		81D590F01E6EA46900BC601F /* ZalandoCommerceAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZalandoCommerceAPI.framework; path = "ZalandoCommerceAPI.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81F13E301E6DA98300A1EBB6 /* MockAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MockAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		828CB7B3C433014C119561A964D809BC /* TextFieldInputViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldInputViewModel.swift; sourceTree = "<group>"; };
 		82D2ADD240889020E56AC601593CC418 /* FormValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValidator.swift; sourceTree = "<group>"; };
@@ -313,7 +313,7 @@
 		BD59AC983A58E31486BA78BB412FC8E6 /* Typealiases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
 		C0D8D9EF484C33259D988A2D8565655F /* URLQueryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLQueryItem.swift; sourceTree = "<group>"; };
 		C1E4728D40DB91AAFB177DC453685F05 /* LoaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoaderView.swift; path = ../LoaderView.swift; sourceTree = "<group>"; };
-		C23BDCC4973FC078E005E01E358D2871 /* AtlasAPILoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtlasAPILoader.swift; sourceTree = "<group>"; };
+		C23BDCC4973FC078E005E01E358D2871 /* ZalandoCommerceAPI_loader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZalandoCommerceAPI_loader.swift; sourceTree = "<group>"; };
 		C71205ADF1C3C36753FA064DFB54EC03 /* LoggedInSummaryActionHandlerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedInSummaryActionHandlerTests.swift; sourceTree = "<group>"; };
 		C7AE728E404BE0C4805F301575D7A500 /* AddressFormStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressFormStackView.swift; sourceTree = "<group>"; };
 		C7EEA970F03A677415B3AC4CB774D953 /* AddAddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAddressTableViewCell.swift; sourceTree = "<group>"; };
@@ -437,7 +437,6 @@
 				8398317FEC21A1E65AB06E3EF9B29A2B /* Nimble.framework */,
 			);
 			name = Frameworks;
-			path = AtlasUI;
 			sourceTree = "<group>";
 		};
 		2256B0C1AAAE60580B37160C27B74A94 /* ZalandoCommerceUI */ = {
@@ -506,7 +505,7 @@
 			name = "Address Form";
 			sourceTree = "<group>";
 		};
-		3C872929B9CC3BC300AFEBCE6CD3D74C /* AtlasSDK Extensions */ = {
+		3C872929B9CC3BC300AFEBCE6CD3D74C /* ZalandoCommerceAPI Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				E80E01109811744348D75345668F9F2B /* APIResult.swift */,
@@ -514,7 +513,7 @@
 				6CF96498AABA41A96E7CE16F46A4AE6A /* PickupPoint.swift */,
 				138E0FCE6D775AA6A8880BE8462942AE /* StreetAddress.swift */,
 			);
-			name = "AtlasSDK Extensions";
+			name = "ZalandoCommerceAPI Extensions";
 			sourceTree = "<group>";
 		};
 		4C97964529F3E380DC0D91E7093919D9 /* Utils */ = {
@@ -522,12 +521,12 @@
 			children = (
 				B287CDA3C764C16AC4E868CE17E87D5E /* OrderConfirmation.swift */,
 				32BBDA408EFAB221DD44CB3DCD7DDE53 /* Generic Views */,
-				3C872929B9CC3BC300AFEBCE6CD3D74C /* AtlasSDK Extensions */,
+				3C872929B9CC3BC300AFEBCE6CD3D74C /* ZalandoCommerceAPI Extensions */,
 				037962560FAC8651AAD7758AE29DAB28 /* Cocoa Extensions */,
 				01DB05820BA1695E0E8ED9116B00358B /* Reachability */,
 				B35DF21D6C80C8890DF784B76CEAEA63 /* AnimationDuration.swift */,
 				971465BF293DCFB809C2B0F1512B4CE3 /* Async.swift */,
-				C23BDCC4973FC078E005E01E358D2871 /* AtlasAPILoader.swift */,
+				C23BDCC4973FC078E005E01E358D2871 /* ZalandoCommerceAPI_loader.swift */,
 				82D2ADD240889020E56AC601593CC418 /* FormValidator.swift */,
 				9D4E7256ADD4851B668F143DC9176887 /* ProcessedResult.swift */,
 				244D32ED364C3E1E800508EB7025E609 /* SelectedArticle.swift */,
@@ -768,7 +767,7 @@
 		ECBC67CCC5E72798CEB556243DC767A4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F95BABF7CE37F95001E0F5AE904A3EAB /* Atlas UI View Controller */,
+				F95BABF7CE37F95001E0F5AE904A3EAB /* ZalandoCommerceUIViewController */,
 				76C39D0CB8D31C324232D17F5DDF4995 /* Checkout Summary */,
 				8142CA9EFFA2460D64D3676DADC7BCA3 /* Authorization */,
 				E7B8FD94F5B37D0CD471CC2CC01B2A93 /* Address Selection */,
@@ -802,13 +801,13 @@
 			name = Transitions;
 			sourceTree = "<group>";
 		};
-		F95BABF7CE37F95001E0F5AE904A3EAB /* Atlas UI View Controller */ = {
+		F95BABF7CE37F95001E0F5AE904A3EAB /* ZalandoCommerceUIViewController */ = {
 			isa = PBXGroup;
 			children = (
 				71F92A2A6183E6040FA688CC26ACB3EE /* ZalandoCommerceUIViewController.swift */,
 				98979D83CBD52B97B611B624ED3F6D36 /* GetArticleDetailsViewController.swift */,
 			);
-			name = "Atlas UI View Controller";
+			name = ZalandoCommerceUIViewController;
 			sourceTree = "<group>";
 		};
 		FE9498BE98F9F68594D83CB871C6D6A5 /* ToC */ = {
@@ -849,7 +848,7 @@
 				AEED3C79076F6FFAA1315D081A34DF39 /* PBXTargetDependency */,
 			);
 			name = ZalandoCommerceUITests;
-			productName = AtlasUITests;
+			productName = ZalandoCommerceUITests;
 			productReference = 3A844E81320BFEB7BA74F94C62ED69D2 /* ZalandoCommerceUITests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -866,7 +865,7 @@
 			dependencies = (
 			);
 			name = ZalandoCommerceUITestsHostsApp;
-			productName = AtlasUITestsHostsApp;
+			productName = ZalandoCommerceUITestsHostsApp;
 			productReference = 225B46D7F4C8203148F75F54E2B3CD4D /* ZalandoCommerceUITestsHostsApp.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -885,7 +884,7 @@
 			dependencies = (
 			);
 			name = ZalandoCommerceUI;
-			productName = AtlasUI;
+			productName = ZalandoCommerceUI;
 			productReference = 808C394E80E745736133ADBD0E2938C8 /* ZalandoCommerceUI.framework */;
 			productType = "com.apple.product-type.framework";
 		};
@@ -985,7 +984,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [[ -z \"$ATLAS_SKIP_SWIFT_LINT\" && -z \"$CARTHAGE_PATH\" && -z \"$PLATFORM_PRODUCT_BUILD_VERSION\" ]]; then\n  eval \"$(/usr/bin/which -s rbenv && rbenv init -)\"\n  ${PROJECT_DIR}/../../calypso.rb lint check ${PROJECT_DIR}/${TARGET_NAME}\nfi";
+			shellScript = "if [[ -z \"$ZC_SKIP_SWIFT_LINT\" && -z \"$CARTHAGE_PATH\" && -z \"$PLATFORM_PRODUCT_BUILD_VERSION\" ]]; then\n  eval \"$(/usr/bin/which -s rbenv && rbenv init -)\"\n  ${PROJECT_DIR}/../../calypso.rb lint check ${PROJECT_DIR}/${TARGET_NAME}\nfi";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1128,7 +1127,7 @@
 				5440F29601B89ECD4870C7BDC596ACD9 /* CheckoutSummaryOrderStackView.swift in Sources */,
 				50D0665E684FA0194A0933ECABB18F48 /* CheckoutSummaryGuestStackView.swift in Sources */,
 				4442511A2AF02FD40FC40BC05C218390 /* RowStackView.swift in Sources */,
-				EAE70A17AF64516886A337ACDE311218 /* AtlasAPILoader.swift in Sources */,
+				EAE70A17AF64516886A337ACDE311218 /* ZalandoCommerceAPI_loader.swift in Sources */,
 				D9CE3553FFE09F2A82794C7A9E45F4F1 /* TextFieldInputStackView.swift in Sources */,
 				D1597746177CEB8207EFB773413174DF /* TextFieldInputViewModel.swift in Sources */,
 				8D8609A7F30C9F7D15E5E4A905BE4529 /* ToCViewController.swift in Sources */,
