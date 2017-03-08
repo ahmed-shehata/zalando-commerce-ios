@@ -113,10 +113,10 @@ extension ZalandoCommerceAPI {
             }
         }
 
-        static func recommendations(for sku: ConfigSKU, onView view: UIView,
+        static func recommendations(for sku: ConfigSKU, with recommendationConfig: RecommendationConfig, onView view: UIView,
                                     completion: @escaping APIResultCompletion<[Recommendation]>) {
             ZalandoCommerceUIViewController.displayLoader(onView: view) { hideLoader in
-                ZalandoCommerceAPI.shared?.recommendations(for: sku) { result in
+                ZalandoCommerceAPI.shared?.recommendations(for: sku, with: recommendationConfig) { result in
                     hideLoader()
                     completion(result)
                 }
