@@ -34,7 +34,7 @@ struct Keychain {
             }
         }
 
-        guard let data = value.data(using: String.Encoding.utf8) else {
+        guard let data = value.data(using: .utf8) else {
             throw Error.incorrectValueData
         }
 
@@ -65,7 +65,7 @@ struct Keychain {
                 return nil
         }
 
-        return String(data: resultData, encoding: String.Encoding.utf8)
+        return String(data: resultData, encoding: .utf8)
     }
 
     static func allAccounts() -> [String] {

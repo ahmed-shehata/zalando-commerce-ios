@@ -38,7 +38,7 @@ extension DataTaskResponse: CustomStringConvertible {
         request.allHTTPHeaderFields?.forEach { key, val in
             desc += "\(key): \(val)\n"
         }
-        if let bodyData = request.httpBody, let body = String(data: bodyData, encoding: String.Encoding.utf8) {
+        if let bodyData = request.httpBody, let body = String(data: bodyData, encoding: .utf8) {
             desc += "⭕️ BODY: \(body.whitespaceCompacted())\n"
         }
 
@@ -47,7 +47,7 @@ extension DataTaskResponse: CustomStringConvertible {
             response.allHeaderFields.forEach { key, val in
                 desc += "\(key): \(val)\n"
             }
-            if let bodyData = data, let body = String(data: bodyData, encoding: String.Encoding.utf8) {
+            if let bodyData = data, let body = String(data: bodyData, encoding: .utf8) {
                 desc += "⭕️ BODY: \(body.whitespaceCompacted())\n"
             }
         } else {

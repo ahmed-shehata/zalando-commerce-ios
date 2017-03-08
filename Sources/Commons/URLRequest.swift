@@ -30,7 +30,7 @@ extension URLRequest {
         }
 
         if let HTTPBodyData = self.httpBody,
-            let body = String(data: HTTPBodyData, encoding: String.Encoding.utf8) {
+            let body = String(data: HTTPBodyData, encoding: .utf8) {
             var escapedBody = body.replacingOccurrences(of: "\\\"", with: "\\\\\"")
             escapedBody = escapedBody.replacingOccurrences(of: "\"", with: "\\\"")
 
