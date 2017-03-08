@@ -84,9 +84,7 @@ struct Keychain {
         guard let results = result as? [AnyObject], status == errSecSuccess else {
             return nil
         }
-        let entries: [[AnyHashable: Any]] = results.flatMap { $0 as? [AnyHashable: Any] }
-
-        return entries
+        return results.flatMap { $0 as? [AnyHashable: Any] }
     }
 
     private static func prepareItemQuery(forAccount accountName: String? = nil,
