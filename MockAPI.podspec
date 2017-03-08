@@ -29,7 +29,7 @@ Pod::Spec.new do |spec|
     tag: spec.version.to_s
   }
 
-  spec.source_files = 'MockAPI/MockAPI/**/*.swift'
+  spec.source_files = 'Sources/MockAPI/MockAPI/**/*.swift'
   spec.ios.frameworks = 'Foundation'
   spec.ios.resources = ['MockAPI/MockAPI/**/*.json']
 
