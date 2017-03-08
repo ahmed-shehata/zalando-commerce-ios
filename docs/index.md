@@ -31,7 +31,7 @@ More about [demo app](https://github.com/zalando-incubator/atlas-ios/wiki/Demo-A
 ## Documentation
 
 * Code documentation:
-    * [ZalandoCommerceAPI](zalando-commerce-sdk)
+    * [ZalandoCommerceAPI](zalando-commerce-api)
     * [ZalandoCommerceUI](zalando-commerce-ui)
 * [Wiki](https://github.com/zalando-incubator/atlas-ios/wiki)
 * [Backend API](https://zalando-incubator.github.io/checkoutapi-docs/)

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>APIRequest Struct Reference</title>
+    <title>RecommendationConfig Struct Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Struct/APIRequest" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Struct/RecommendationConfig" class="dashAnchor"></a>
 
-    <a title="APIRequest Struct Reference"></a>
+    <a title="RecommendationConfig Struct Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -44,7 +44,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">ZalandoCommerceAPI Reference</a>
       <img class="carat" src="../img/carat.png" />
-      APIRequest Struct Reference
+      RecommendationConfig Struct Reference
     </p>
 
     <div class="content-wrapper">
@@ -114,20 +114,18 @@
 
         <section class="section">
           <div class="section-content">
-            <h1>APIRequest</h1>
+            <h1>RecommendationConfig</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">APIRequest</span><span class="o">&lt;</span><span class="kt">Model</span><span class="o">&gt;</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">RecommendationConfig</span></code></pre>
 
                 </div>
               </div>
-            <p>A bridge between API request call and a set of completions closures.</p>
-
-<p>Completions are run after the call is finished in the reversed order.</p>
+            <p>Header Configuration needed to the get better recommendations</p>
 
 <div class="aside aside-note">
     <p class="aside-title">Note</p>
-    Completions chain is used to provide authorization before a real call.
+    Please contact us to figure out the best recommendations properties for you
 
 </div>
 
@@ -141,9 +139,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FV18ZalandoCommerceAPI10APIRequest7executeFT6appendFGOS_9APIResultx_T__T_"></a>
-                    <a name="//apple_ref/swift/Method/execute(append:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FV18ZalandoCommerceAPI10APIRequest7executeFT6appendFGOS_9APIResultx_T__T_">execute(append:)</a>
+                    <a name="/s:vV18ZalandoCommerceAPI20RecommendationConfig4typeSS"></a>
+                    <a name="//apple_ref/swift/Property/type" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV18ZalandoCommerceAPI20RecommendationConfig4typeSS">type</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -151,37 +149,70 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Executes a request and eventually calls all completions closures in reversed order on
-a main thread.</p>
+                        <p>Recommendation type like similar product or product from the same brand</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">execute</span><span class="p">(</span><span class="n">append</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">APIResult</span><span class="o">&lt;</span><span class="kt">Model</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">type</span><span class="p">:</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>completion</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>closure appended to a completions set (and in the result called as the first one when request finishes). Can return <code>APIResult.failure</code> with <code>APIError.invalidResponseFormat</code> if <code>successHandler</code> is not able to parse a response.</p>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV18ZalandoCommerceAPI20RecommendationConfig8locationSS"></a>
+                    <a name="//apple_ref/swift/Property/location" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV18ZalandoCommerceAPI20RecommendationConfig8locationSS">location</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Recommendation location as where it is disaplyed in the channel</p>
 
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">location</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV18ZalandoCommerceAPI20RecommendationConfig7channelSS"></a>
+                    <a name="//apple_ref/swift/Property/channel" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV18ZalandoCommerceAPI20RecommendationConfig7channelSS">channel</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Recommendation channel used to display the recommendation like web or mobile</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">channel</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
