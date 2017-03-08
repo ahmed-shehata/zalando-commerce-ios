@@ -38,7 +38,7 @@ class APIGuestCheckoutTests: APITestCase {
                     expect(guestCheckout.shippingAddress.zip) == "10178"
                     expect(guestCheckout.shippingAddress.city) == "Berlin"
                     expect(guestCheckout.shippingAddress.countryCode) == "DE"
-                    expect(guestCheckout.payment.method.rawValue) == PaymentMethodType.prepayment.rawValue
+                    expect(guestCheckout.payment.method?.rawValue) == PaymentMethodType.prepayment.rawValue
                 }
                 done()
             }

@@ -38,9 +38,7 @@
     },
     "payment": {
         "method": "PREPAYMENT",
-        "metadata": {
-            "DEPRECATED_cpm_id": "8255569"
-        }
+        "selection_page_url": "https://zalando.de/payment-method-selection"
     },
     "delivery": {
         "service": "STANDARD",
