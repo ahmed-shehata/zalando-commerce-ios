@@ -15,11 +15,11 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1.6</string>
+	<string>1.1.7</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.1.6</string>
+	<string>1.1.7</string>
 	<key>ZALANDO_COMMERCE_CLIENT_ID</key>
 	<string>CLIENT_ID_PLIST</string>
 	<key>ZALANDO_COMMERCE_SALES_CHANNEL</key>
