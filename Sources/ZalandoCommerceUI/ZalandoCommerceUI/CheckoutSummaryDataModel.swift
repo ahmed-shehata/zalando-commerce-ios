@@ -95,7 +95,7 @@ extension CheckoutSummaryDataModel {
         self.selectedArticle = selectedArticle
         self.shippingAddress = addresses?.shippingAddress ?? cartCheckout?.checkout?.shippingAddress
         self.billingAddress = addresses?.billingAddress ?? cartCheckout?.checkout?.billingAddress
-        self.paymentMethod = cartCheckout?.checkout?.payment.selected?.method?.localizedTitle
+        self.paymentMethod = cartCheckout?.checkout?.payment.selected?.localized
         self.totalPrice = cartCheckout?.cart.grossTotal ?? selectedArticle.totalPrice
         self.delivery = cartCheckout?.checkout?.delivery
         self.email = nil
@@ -106,7 +106,7 @@ extension CheckoutSummaryDataModel {
         self.selectedArticle = selectedArticle
         self.shippingAddress = order.shippingAddress
         self.billingAddress = order.billingAddress
-        self.paymentMethod = checkout?.payment.selected?.method?.localizedTitle
+        self.paymentMethod = checkout?.payment.selected?.localized
         self.totalPrice = order.grossTotal
         self.delivery = checkout?.delivery
         self.email = nil
@@ -117,7 +117,7 @@ extension CheckoutSummaryDataModel {
         self.selectedArticle = selectedArticle
         self.shippingAddress = addresses?.shippingAddress ?? guestCheckout?.shippingAddress
         self.billingAddress = addresses?.billingAddress ?? guestCheckout?.billingAddress
-        self.paymentMethod = guestCheckout?.payment.method.localizedTitle
+        self.paymentMethod = guestCheckout?.payment.method?.localized
         self.totalPrice = guestCheckout?.cart.grossTotal ?? selectedArticle.totalPrice
         self.delivery = guestCheckout?.delivery
         self.email = email
@@ -128,7 +128,7 @@ extension CheckoutSummaryDataModel {
         self.selectedArticle = selectedArticle
         self.shippingAddress = guestOrder.shippingAddress
         self.billingAddress = guestOrder.billingAddress
-        self.paymentMethod = guestCheckout?.payment.method.localizedTitle
+        self.paymentMethod = guestCheckout?.payment.method?.localized
         self.totalPrice = guestOrder.grossTotal
         self.delivery = guestCheckout?.delivery
         self.email = email
@@ -139,11 +139,27 @@ extension CheckoutSummaryDataModel {
 
 extension PaymentMethodType {
 
-    var localizedTitle: String {
+    var localized: String {
         switch self {
         case .unrecognized(let rawValue): return rawValue
         default: return Localizer.format(string: "paymentMethod.\(rawValue)")
         }
+    }
+
+}
+
+extension PaymentMethod {
+
+    var localized: String {
+        switch method {
+        case .creditCard: return method.localized + creditCardNumber
+        default: return method.localized
+        }
+    }
+
+    private var creditCardNumber: String {
+        guard let creditCardNumber = metadata?.creditCardNumber else { return "" }
+        return "\n" + creditCardNumber
     }
 
 }

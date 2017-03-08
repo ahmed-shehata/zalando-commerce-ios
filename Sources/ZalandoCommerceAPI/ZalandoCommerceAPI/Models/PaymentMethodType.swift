@@ -26,7 +26,8 @@ public enum PaymentMethodType {
     case unknown
     case unrecognized(rawValue: String)
 
-    public init(rawValue: String) {
+    public init?(rawValue: String?) {
+        guard let rawValue = rawValue else { return nil }
         switch rawValue {
         case "APPLE_PAY": self = .applePay
         case "CASH_ON_DELIVERY": self = .cashOnDelivery
