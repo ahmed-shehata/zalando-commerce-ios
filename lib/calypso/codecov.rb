@@ -6,7 +6,7 @@ module Calypso
 
   class Codecov < Thor
 
-    PACKAGES = %w(AtlasSDK AtlasUI).freeze
+    PACKAGES = %w(ZalandoCommerceAPI ZalandoCommerceUI).freeze
 
     desc 'upload', 'Upload reports to codecov.io'
     def upload

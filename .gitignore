@@ -34,8 +34,8 @@ playground.xcworkspace
 *.bcsymbolmap
 *.dSYM
 /Carthage/Checkouts
-/Carthage/Build/iOS/AtlasUI.framework
-/Carthage/Build/iOS/AtlasSDK.framework
+/Carthage/Build/iOS/ZalandoCommerceAPI.framework
+/Carthage/Build/iOS/ZalandoCommerceUI.framework
 
 # Temporary files
 .rake_tasks

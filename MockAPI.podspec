@@ -3,7 +3,7 @@ require_relative './lib/version.rb'
 Pod::Spec.new do |spec|
   spec.name = 'MockAPI'
   spec.platform = :ios, '9.0'
-  spec.version = ATLAS_VERSION
+  spec.version = ZC_VERSION
   spec.summary = 'Zalando Commenrce SDK iOS Mock API server'
   spec.homepage = 'https://github.com/zalando-incubator/atlas-ios'
 

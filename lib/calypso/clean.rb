@@ -16,8 +16,8 @@ EOT
     def all
       invoke :copyrights
       Lint.new.invoke(:fix)
-      invoke :ruby
       invoke :xunique
+      invoke :ruby
     end
 
     desc 'copyrights', 'Clean copyright headers'

@@ -40,11 +40,11 @@ module Calypso
     include GitCmd
 
     def ask_new_version(options, version = nil)
-      new_version = version || ask("Enter new version (current #{ATLAS_VERSION}):", :blue)
-      new_version = ATLAS_VERSION if new_version.empty?
+      new_version = version || ask("Enter new version (current #{ZC_VERSION}):", :blue)
+      new_version = ZC_VERSION if new_version.empty?
 
-      log_abort "No change in version (#{ATLAS_VERSION}), quitting" \
-        if new_version == ATLAS_VERSION && !options[:force]
+      log_abort "No change in version (#{ZC_VERSION}), quitting" \
+        if new_version == ZC_VERSION && !options[:force]
 
       new_version
     end
@@ -89,7 +89,7 @@ module Calypso
     end
 
     def update_version_file(new_version)
-      File.open(VERSION_FILE, 'w') { |file| file.puts("ATLAS_VERSION = '#{new_version}'") }
+      File.open(VERSION_FILE, 'w') { |file| file.puts("ZC_VERSION = '#{new_version}'") }
       repo.add VERSION_FILE
     end
 

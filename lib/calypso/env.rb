@@ -26,7 +26,7 @@ module Calypso
     end
 
     def env_skip_xcpretty?
-      ENV['ATLAS_SKIP_XCPRETTY'] == 'true'
+      ENV['ZC_SKIP_XCPRETTY'] == 'true'
     end
 
   end
