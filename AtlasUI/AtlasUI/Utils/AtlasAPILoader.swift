@@ -113,10 +113,10 @@ extension AtlasAPI {
             }
         }
 
-        static func recommendations(for sku: ConfigSKU, onView view: UIView,
+        static func recommendations(for sku: ConfigSKU, with recommendationConfig: RecommendationConfig, onView view: UIView,
                                     completion: @escaping APIResultCompletion<[Recommendation]>) {
             AtlasUIViewController.displayLoader(onView: view) { hideLoader in
-                AtlasAPI.shared?.recommendations(for: sku) { result in
+                AtlasAPI.shared?.recommendations(for: sku, with: recommendationConfig) { result in
                     hideLoader()
                     completion(result)
                 }
