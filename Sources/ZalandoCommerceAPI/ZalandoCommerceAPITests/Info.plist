@@ -28,7 +28,7 @@
 	<string>en</string>
 	<key>ZALANDO_COMMERCE_USE_SANDBOX</key>
 	<true/>
-	<key>ZALANDO_COMMERCE_DISPLAY_RECOMMENDATIONS</key>
+	<key>ZALANDO_COMMERCE_USE_RECOMMENDATIONS</key>
 	<true/>
 </dict>
 </plist>

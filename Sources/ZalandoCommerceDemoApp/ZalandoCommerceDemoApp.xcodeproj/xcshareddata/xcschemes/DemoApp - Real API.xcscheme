@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2A09D0C5F782D7D824F5F39015890DE6"
+               BlueprintIdentifier = "92DB90584A5CD763F30EFE889FE9C1D9"
                BuildableName = "ZalandoCommerceDemoApp.app"
                BlueprintName = "ZalandoCommerceDemoApp"
                ReferencedContainer = "container:ZalandoCommerceDemoApp.xcodeproj">
@@ -28,7 +28,7 @@
             buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7A9DE536D7A7A1DEA013E619E317542B"
+               BlueprintIdentifier = "BE431C236AB0C9782ADAD45EEBDCFCAF"
                BuildableName = "MockAPITests.xctest"
                BlueprintName = "MockAPITests"
                ReferencedContainer = "container:../MockAPI/MockAPI.xcodeproj">
@@ -47,7 +47,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "67F9DDC7BA66504563712E65544C2F4E"
+               BlueprintIdentifier = "FA262FD3D51C0AD9BF7B6EA7B48E486A"
                BuildableName = "ZalandoCommerceDemoApp.xctest"
                BlueprintName = "ZalandoCommerceDemoAppUITests"
                ReferencedContainer = "container:ZalandoCommerceDemoApp.xcodeproj">
@@ -61,7 +61,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4850138AFD7E1EECC8F7F5FD3D02713F"
+               BlueprintIdentifier = "DDBD47102555A55263FAE7C02F700F07"
                BuildableName = "ZalandoCommerceAPITests.xctest"
                BlueprintName = "ZalandoCommerceAPITests"
                ReferencedContainer = "container:../ZalandoCommerceAPI/ZalandoCommerceAPI.xcodeproj">
@@ -71,7 +71,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "05766597D649C37825AED617FB1045D0"
+               BlueprintIdentifier = "D81CF60E65A480EE083E531F999B16E7"
                BuildableName = "ZalandoCommerceUITests.xctest"
                BlueprintName = "ZalandoCommerceUITests"
                ReferencedContainer = "container:../ZalandoCommerceUI/ZalandoCommerceUI.xcodeproj">
@@ -81,7 +81,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7A9DE536D7A7A1DEA013E619E317542B"
+               BlueprintIdentifier = "BE431C236AB0C9782ADAD45EEBDCFCAF"
                BuildableName = "MockAPITests.xctest"
                BlueprintName = "MockAPITests"
                ReferencedContainer = "container:../MockAPI/MockAPI.xcodeproj">
@@ -91,7 +91,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2A09D0C5F782D7D824F5F39015890DE6"
+            BlueprintIdentifier = "92DB90584A5CD763F30EFE889FE9C1D9"
             BuildableName = "ZalandoCommerceDemoApp.app"
             BlueprintName = "ZalandoCommerceDemoApp"
             ReferencedContainer = "container:ZalandoCommerceDemoApp.xcodeproj">
@@ -114,7 +114,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2A09D0C5F782D7D824F5F39015890DE6"
+            BlueprintIdentifier = "92DB90584A5CD763F30EFE889FE9C1D9"
             BuildableName = "ZalandoCommerceDemoApp.app"
             BlueprintName = "ZalandoCommerceDemoApp"
             ReferencedContainer = "container:ZalandoCommerceDemoApp.xcodeproj">
@@ -139,7 +139,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2A09D0C5F782D7D824F5F39015890DE6"
+            BlueprintIdentifier = "92DB90584A5CD763F30EFE889FE9C1D9"
             BuildableName = "ZalandoCommerceDemoApp.app"
             BlueprintName = "ZalandoCommerceDemoApp"
             ReferencedContainer = "container:ZalandoCommerceDemoApp.xcodeproj">

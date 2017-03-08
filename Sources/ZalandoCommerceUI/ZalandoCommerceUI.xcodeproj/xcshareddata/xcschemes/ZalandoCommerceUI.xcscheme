@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F27E7E2D17C97B961882815BCF0DE4ED"
+               BlueprintIdentifier = "BCF1FD51CF2C9EEA704FD9C1F94BE84D"
                BuildableName = "ZalandoCommerceUI.framework"
                BlueprintName = "ZalandoCommerceUI"
                ReferencedContainer = "container:ZalandoCommerceUI.xcodeproj">
@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5BC1E6A06770E7598B0CE1C578109BF4"
+               BlueprintIdentifier = "AA879DC78BACBD118871C51700A71377"
                BuildableName = "ZalandoCommerceUITestsHostsApp.app"
                BlueprintName = "ZalandoCommerceUITestsHostsApp"
                ReferencedContainer = "container:ZalandoCommerceUI.xcodeproj">
@@ -47,7 +47,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "05766597D649C37825AED617FB1045D0"
+               BlueprintIdentifier = "D81CF60E65A480EE083E531F999B16E7"
                BuildableName = "ZalandoCommerceUITests.xctest"
                BlueprintName = "ZalandoCommerceUITests"
                ReferencedContainer = "container:ZalandoCommerceUI.xcodeproj">
@@ -57,7 +57,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F27E7E2D17C97B961882815BCF0DE4ED"
+            BlueprintIdentifier = "BCF1FD51CF2C9EEA704FD9C1F94BE84D"
             BuildableName = "ZalandoCommerceUI.framework"
             BlueprintName = "ZalandoCommerceUI"
             ReferencedContainer = "container:ZalandoCommerceUI.xcodeproj">
@@ -79,7 +79,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F27E7E2D17C97B961882815BCF0DE4ED"
+            BlueprintIdentifier = "BCF1FD51CF2C9EEA704FD9C1F94BE84D"
             BuildableName = "ZalandoCommerceUI.framework"
             BlueprintName = "ZalandoCommerceUI"
             ReferencedContainer = "container:ZalandoCommerceUI.xcodeproj">
@@ -97,7 +97,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F27E7E2D17C97B961882815BCF0DE4ED"
+            BlueprintIdentifier = "BCF1FD51CF2C9EEA704FD9C1F94BE84D"
             BuildableName = "ZalandoCommerceUI.framework"
             BlueprintName = "ZalandoCommerceUI"
             ReferencedContainer = "container:ZalandoCommerceUI.xcodeproj">
