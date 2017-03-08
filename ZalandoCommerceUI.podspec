@@ -42,7 +42,7 @@ Checkout API calls and provide you high-level business objects to deal with.
   spec.source_files = 'Sources/ZalandoCommerceUI/ZalandoCommerceUI/**/*.swift', \
                       'Sources/Commons/*.swift'
   spec.ios.resources = ['Sources/ZalandoCommerceUI/ZalandoCommerceUI/**/*.xcassets',
-                        'ZalandoCommerceUI/ZalandoCommerceUI/**/Localizable.strings']
+                        'Sources/ZalandoCommerceUI/ZalandoCommerceUI/**/Localizable.strings']
   spec.ios.frameworks = 'Foundation', 'UIKit'
 
   spec.dependency 'ZalandoCommerceAPI', "= #{spec.version}"
