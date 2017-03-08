@@ -31,7 +31,7 @@ Pod::Spec.new do |spec|
 
   spec.source_files = 'Sources/MockAPI/MockAPI/**/*.swift'
   spec.ios.frameworks = 'Foundation'
-  spec.ios.resources = ['MockAPI/MockAPI/**/*.json']
+  spec.ios.resources = ['Sources/MockAPI/MockAPI/**/*.json']
 
   spec.dependency 'Swifter'
   spec.dependency 'Freddy'
