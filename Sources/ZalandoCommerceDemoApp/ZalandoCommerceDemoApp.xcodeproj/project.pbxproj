@@ -7,56 +7,65 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		70FE81145A99C02618A6C1B2C32865E7 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4F2914965E2C99A4CFACAD1456B614 /* UIAlertController.swift */; };
-		0AB9DE995160892A4E63C4EA1492ADD5 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A97C2547A479683D2E9731451F355F3C /* MessageUI.framework */; };
-		A08C8D4BD9B290166CB77415F6882F7C /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5AB1355E7E28F3A7B1CDA13B0325AEC /* CoreText.framework */; };
-		F67599FC99895C320FE988A3B601B966 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC3EF8C6E3F19866D04DE869C1C334C /* ProductCollectionViewCell.swift */; };
-		B834AE6F87AE6721D3471569EEC5B531 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F6CD1810FD29ACFDD64F1D89A6BAB42 /* Main.storyboard */; };
-		EE9F453627AE70696888239BF9DF14FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 829264D551F7DB56FBEB6AB9739EEF05 /* LaunchScreen.storyboard */; };
-		3A3CBE368486D6156DB5C8F56E64E281 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232DE2E9A7582D94AD9C7786FA2DC7D5 /* CatalogViewController.swift */; };
-		F2DA58B5DE9D961ED50C5BBC7BEF9B8D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2002468FD7A58942580375A0726A9D7A /* AudioToolbox.framework */; };
-		E98C0D376AC731400E912B537FFE859E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01E634B99B6DA860BE32741537724989 /* AVFoundation.framework */; };
-		013999DDAC63C49E89D3DAA4E0C45D55 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7233A303AFFBD989095C4064E02F9A5E /* CoreVideo.framework */; };
-		8F75303245A020A023E4AED6B4C0D975 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 987DD1E56B166EF0A099D0349ACC3106 /* QuartzCore.framework */; };
-		2CAB142997A08BD21269C333F219F475 /* Pods_ZalandoCommerceDemoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFD569686236DB32AB98A264180AD4AC /* Pods_ZalandoCommerceDemoApp.framework */; };
-		F972F33E9CAA61C5274E3E2580884425 /* DemoArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C1B69ECB0143C36BFA77141E7B64ED /* DemoArticle.swift */; };
-		5760CE8A2B3F1351F12739D35B53C454 /* InterfaceLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B51829EF7F007615BFAB808688FD20 /* InterfaceLanguage.swift */; };
-		B7641F52CB646C0E422BA8B70515253B /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 954458436A0041ECEBD53333078BF486 /* CoreMedia.framework */; };
-		3C12453A69C2A02B8C9A4464BF26BE4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE90FB64829D7799A730F4B23FFE1B43 /* Assets.xcassets */; };
-		0BFCE5444751E68D408F7479FB268A82 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99344ADBD8BEE52BA1A10309975E4D30 /* CoreImage.framework */; };
-		F0D42708924591CFBD4FD375E39A16CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE901E48B59CF2F1A1E571CDDB6DBC0 /* AppDelegate.swift */; };
-		08DF2D9E2E17324C8CCA8B4E88BB7DD7 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95498444BA89F4175CD9FCED523284A8 /* ImageIO.framework */; };
-		CE8900AF7DBF89B2495CBDC0C8322B4B /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A4A736BC46D8F73302253F098F32AB2 /* VideoToolbox.framework */; };
-		77FCD8A1BB92A8033D0EBC08946297C8 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D5127628683D548C420BA70118B8CB7 /* CoreTelephony.framework */; };
-		5A4A42785D9064D72434CE8C75B52AE8 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 080EA0B14D4CA5E468FEE817ACA78093 /* CoreAudio.framework */; };
-		B785BF1BC5DF25A1105C4EAC99B730E3 /* BuddyBuildSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13769061BEE53BE12EB55C680971A357 /* BuddyBuildSDK.framework */; };
-		EE13E08450725B3AAB4A72693F961A82 /* PDPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54ACE8064960AF23907D6788A4C010 /* PDPViewController.swift */; };
-		B7DA77FFD9849C6CF905A84553D0F44A /* Pods_ZalandoCommerceDemoAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DAAB7BA6B2321A05BA4026E80896625 /* Pods_ZalandoCommerceDemoAppUITests.framework */; };
-		BEB5FF1B8ACD7750C0977E57AD26DFC8 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F71E2B7ED76B5BFC61B1418730530B /* AssetsLibrary.framework */; };
-		C259D5A99C097BDC5860413DE99BD355 /* ArticlesClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99535F3B2614B0CA38393E7B1EE638EE /* ArticlesClient.swift */; };
-		1F37581FDF38754806DCAC436D56380E /* AppSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC36B5AEAF89DEF27AC99433B6CC3652 /* AppSetup.swift */; };
-		4EC323D86CDFEE281545F5EA0C19DF41 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2123E0D738163B9CC2391F4FB5A623EE /* MediaPlayer.framework */; };
-		69DB2122AB6E2DE2410948831F0B7A75 /* XCUIElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0841B944A4CCCA34315A14758752AF /* XCUIElement.swift */; };
-		7F275114023109F39C5529D957F30705 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF838BC222F4D0D3C061FD359545075 /* ProfileViewController.swift */; };
-		7DD8F679F4EBF8E07ED0B7C47679B431 /* DemoCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C0873731A8EB6E3A7562FB97E5285A /* DemoCatalog.swift */; };
-		D57D79F6FA1F0E46F4690CEE047F3A48 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9EB530798440BA8AE51FA143ED30793 /* SystemConfiguration.framework */; };
-		A987F14E63CEE803A524524E146874DA /* ZalandoCommerceDemoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DEAB737303233AC194885143E6F440 /* ZalandoCommerceDemoAppUITests.swift */; };
-		A862E8834E3ED843242DC8B556178AC8 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA103F51D94C26E50F5EC1977344E33 /* MobileCoreServices.framework */; };
-		975FF7DEB43056E314B6F1FA4621BF87 /* XCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72CF79B779CA1C1BDC7B004FE97C841 /* XCTestCase.swift */; };
+		00B6904C8A898ADF7F49357C4DE9E681 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05184D73F957B8E0E501F6CD156851AE /* UIAlertController.swift */; };
+		00D6E40AB1C980587ADCF3D3A629707E /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98660FB609B352D5A620AF07368F81EC /* MessageUI.framework */; };
+		0FDDDFE532941228DC746DAEF6740637 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 544EDD646AB580836FDD4255D475BA85 /* CoreText.framework */; };
+		0FE6FE338EDD0304EC47F380FA6E7F0F /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F2F3D1790B7E063C3527BF921B7E1D /* ProductCollectionViewCell.swift */; };
+		14B2EC592F7C57B3B77134AF2195AB15 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 103765BAF91B718D0DCF2CEF31C1707D /* Main.storyboard */; };
+		17774FD279D9D9972B447A118C17A4E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 456A972426ABC4F144D50441540136C0 /* LaunchScreen.storyboard */; };
+		1862B91B111AAE37D4D8484B29B5AE6D /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D25E49A4BA3C66C371430FFD7DC396 /* CatalogViewController.swift */; };
+		1A9818D72E4B3DF8734FB7932CD98C59 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D8E376ECF3335AA4B2E86DAAFAB2448 /* AudioToolbox.framework */; };
+		1AA9D877EA35733BB8F2821C4FB61915 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ADDB3FCDE4853A744F1F180EC295459 /* AVFoundation.framework */; };
+		2192C7D1F6802A6157DE18C9B39A501A /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFE7F4402C577EAAD785596D4FB735D0 /* CoreVideo.framework */; };
+		28C9E4E66E9BB7F0E964EDD2416EC634 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3903D304D732D84FC3034810FB00B36 /* QuartzCore.framework */; };
+		37390AB837A99ABB76439EB6FFF435DC /* DemoArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99E638E08D50645694331A6F3A7708C /* DemoArticle.swift */; };
+		38B292015D6EB859824E22C09CB154F9 /* Swifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D15645E9195207A25A4D56198499AE7 /* Swifter.framework */; };
+		38E038EFCCE368062F2BFCF1876AA51B /* InterfaceLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6127C86D49960AE55D91C99ECF4382F1 /* InterfaceLanguage.swift */; };
+		3A1B4EE420523595E5C70F864C3D8D2C /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EDD3C116753E5606C881975DA7B6380 /* CoreMedia.framework */; };
+		3A8421486CA5811AB6CF8978F401EA83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F4B197D9F61B68006802BD626C9F76E /* Assets.xcassets */; };
+		3E95B0F18829DC20340771D2B8C7B937 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2289B47B6EECAB09AAE7A87EE5FD561 /* CoreImage.framework */; };
+		3EBB13C2ED4814BEE7F3E3D70940487E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F726829F5154A9F85A931EAFC8D9E730 /* AppDelegate.swift */; };
+		44EBCE2FE12DE8193EE4F38738F84B2E /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E9AC22E8436A9E4B159173A8D00CE86 /* ImageIO.framework */; };
+		4C1EEA896DC0FBA0112CE058A8A90348 /* SwiftHTTP.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD3778CF4B0F93EE5191DF4F8D3C518 /* SwiftHTTP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4C7F901DEBA1E479432682A6E43A6266 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5D445C1DAAC347B64D5AFED9B5B140B /* VideoToolbox.framework */; };
+		5354EC81B56390B95BAA15D4F3965B41 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4F833A4CE21235444066F2613EFB09A /* CoreTelephony.framework */; };
+		5C38BE2E6C30F953FDD8E2C0891B4EFF /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A09363B8394CF5F3F4FBFE3E3AB2F5B1 /* CoreAudio.framework */; };
+		6258EC13198C08F3C0C639D9281DA1FE /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34D105CA005E1E4B8E1C76FDC89894A2 /* Freddy.framework */; };
+		7449525A39F475B6C68F497A3A3CA7FA /* BuddyBuildSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37F1FE1DEBE7C2CDF69A44C574EB2CE7 /* BuddyBuildSDK.framework */; };
+		77F0BBA9E57C9368D10DEE6BF9361475 /* PDPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7595CA1E31CBC66143CE5B7428A7F846 /* PDPViewController.swift */; };
+		7B1C78AE089D3132077309EC6E12D4C4 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70D0DBF19E7CD929E402B3987A071587 /* AssetsLibrary.framework */; };
+		7DA4ECBA4E51223B37412C7BCA2917D0 /* Freddy.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34D105CA005E1E4B8E1C76FDC89894A2 /* Freddy.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		80EAF118A2EFF34CF406B0059F8B61E6 /* ArticlesClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71AFAF33E121C103808CE6C2F4B14B6 /* ArticlesClient.swift */; };
+		815FFD3A1E6EE3E5003295C3 /* MockAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815FFD371E6EE3E5003295C3 /* MockAPI.framework */; };
+		815FFD3B1E6EE3E5003295C3 /* ZalandoCommerceAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815FFD381E6EE3E5003295C3 /* ZalandoCommerceAPI.framework */; };
+		815FFD3C1E6EE3E5003295C3 /* ZalandoCommerceUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815FFD391E6EE3E5003295C3 /* ZalandoCommerceUI.framework */; };
+		8838F6A5652FC042A161FBC6A6961594 /* AppSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AF6C44EE98EAB17A1E81EC252C5AD /* AppSetup.swift */; };
+		8F1EB3AA8D794C560B3FDEE6F4988CA3 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA73BDC161923CD166B30F1051CBC88 /* MediaPlayer.framework */; };
+		946005C07CBE3751A66304711A6898AA /* XCUIElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94862D8C44368F2CED777738686848A0 /* XCUIElement.swift */; };
+		A12BA69E9882091D0E7458127925A441 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D47F523CFD3049B145328DBAAD3BF6 /* ProfileViewController.swift */; };
+		A780FF331E667E4F680D3C330ED07DB8 /* DemoCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89FA499DC08F5C540C7FE44552F23A6 /* DemoCatalog.swift */; };
+		ADB3F0B19117CD32B5795BAF37B3FB48 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E68BC11A4A9FD71255E1A93A12587B3D /* SystemConfiguration.framework */; };
+		BFD1D1499CD09ED4A74B6ECA27B2B81B /* ZalandoCommerceDemoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0000FBCF7CFA54DDC8399E4BABD42A15 /* ZalandoCommerceDemoAppUITests.swift */; };
+		C13958F3EB2139209B40A7C93BAAAE5A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE465EB2A4F6D8B31261A51664D603CD /* MobileCoreServices.framework */; };
+		C28B405D84A7E9B9F1879C6860E5E428 /* XCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B3919A2CEC66658921E58E02D888B5 /* XCTestCase.swift */; };
+		CFAD7A2119559691BF01E0E84EFD479A /* SwiftHTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD3778CF4B0F93EE5191DF4F8D3C518 /* SwiftHTTP.framework */; };
+		E09393D6841BD5B02BAF1F879FA14420 /* Swifter.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 1D15645E9195207A25A4D56198499AE7 /* Swifter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E39AF4AF3A83F07266F020D5E6D3A55C /* Nuke.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 6F9BDB072FD0595FBC1302107487559C /* Nuke.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EE7374754508E203252E55A91A2A8167 /* Nuke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F9BDB072FD0595FBC1302107487559C /* Nuke.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		7FF6B029DF88126D766EA72D33F8C1A6 /* PBXContainerItemProxy */ = {
+		D029C1D0455B19C726296C438DD0DFCC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = AA4A1E0725B11FAD537897461044619E /* Project object */;
+			containerPortal = 4230AB870D9F71D843EF6BB9E49CFA67 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 92DB90584A5CD763F30EFE889FE9C1D9;
+			remoteGlobalIDString = 2A09D0C5F782D7D824F5F39015890DE6;
 			remoteInfo = ZalandoCommerceDemoApp;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		9BAC9B4C5674D233A432F61518C98AB6 /* Copy Frameworks */ = {
+		064E623F6ADB77392B05B062FA1DDBD2 /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
@@ -66,12 +75,16 @@
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5ADC4A424625A09A8F4D09C2A00DBAC3 /* Copy Frameworks */ = {
+		709B8180EF992CCC4B4F50F79A676FEA /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				4C1EEA896DC0FBA0112CE058A8A90348 /* SwiftHTTP.framework in Copy Frameworks */,
+				7DA4ECBA4E51223B37412C7BCA2917D0 /* Freddy.framework in Copy Frameworks */,
+				E09393D6841BD5B02BAF1F879FA14420 /* Swifter.framework in Copy Frameworks */,
+				E39AF4AF3A83F07266F020D5E6D3A55C /* Nuke.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -79,211 +92,210 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		A6DEAB737303233AC194885143E6F440 /* ZalandoCommerceDemoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ZalandoCommerceDemoAppUITests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		AF4F2914965E2C99A4CFACAD1456B614 /* UIAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
-		7F6CD1810FD29ACFDD64F1D89A6BAB42 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		806BAE41D1A8996D34CFFE4A1F37FD3B /* ZalandoCommerceDemoApp.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZalandoCommerceDemoApp.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EFD569686236DB32AB98A264180AD4AC /* Pods_ZalandoCommerceDemoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZalandoCommerceDemoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		95498444BA89F4175CD9FCED523284A8 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
-		89842BED4ABCD87B286265B1353181B1 /* Pods-ZalandoCommerceDemoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZalandoCommerceDemoApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZalandoCommerceDemoApp/Pods-ZalandoCommerceDemoApp.debug.xcconfig"; sourceTree = "<group>"; };
-		232DE2E9A7582D94AD9C7786FA2DC7D5 /* CatalogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
-		01E634B99B6DA860BE32741537724989 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		CF1B7E385A0B2E2771344BF1B056EC1F /* ZalandoCommerceDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZalandoCommerceDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13769061BEE53BE12EB55C680971A357 /* BuddyBuildSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BuddyBuildSDK.framework; sourceTree = "<group>"; };
-		2002468FD7A58942580375A0726A9D7A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		2815C4C1CC6ED32AF995F08F4366DB9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D5AB1355E7E28F3A7B1CDA13B0325AEC /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		E796740BB519763B84AFA42967C5DA84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		CDA56A4C9170DF2A23C1DCCB7047E24B /* Pods-ZalandoCommerceDemoAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZalandoCommerceDemoAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZalandoCommerceDemoAppUITests/Pods-ZalandoCommerceDemoAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		41B51829EF7F007615BFAB808688FD20 /* InterfaceLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterfaceLanguage.swift; sourceTree = "<group>"; };
-		4EF838BC222F4D0D3C061FD359545075 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		2123E0D738163B9CC2391F4FB5A623EE /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		2DDD944176018FE23F587A39C0AFAF35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F5F71E2B7ED76B5BFC61B1418730530B /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
-		CBC3EF8C6E3F19866D04DE869C1C334C /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
-		EA54ACE8064960AF23907D6788A4C010 /* PDPViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDPViewController.swift; sourceTree = "<group>"; };
-		0DE5D8199C5DBE3B2C3B78F68F900F2E /* ZalandoCommerceDemoApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ZalandoCommerceDemoApp.entitlements; sourceTree = "<group>"; };
-		5DAAB7BA6B2321A05BA4026E80896625 /* Pods_ZalandoCommerceDemoAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZalandoCommerceDemoAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DE90FB64829D7799A730F4B23FFE1B43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		DE0841B944A4CCCA34315A14758752AF /* XCUIElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCUIElement.swift; sourceTree = "<group>"; };
-		A97C2547A479683D2E9731451F355F3C /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		954458436A0041ECEBD53333078BF486 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
-		080EA0B14D4CA5E468FEE817ACA78093 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
-		987DD1E56B166EF0A099D0349ACC3106 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		CDA103F51D94C26E50F5EC1977344E33 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		B83FB9B930400B0310E8B4E9DAA72594 /* Pods-ZalandoCommerceDemoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZalandoCommerceDemoApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZalandoCommerceDemoApp/Pods-ZalandoCommerceDemoApp.release.xcconfig"; sourceTree = "<group>"; };
-		F72CF79B779CA1C1BDC7B004FE97C841 /* XCTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = XCTestCase.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		3A4A736BC46D8F73302253F098F32AB2 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
-		7233A303AFFBD989095C4064E02F9A5E /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
-		99344ADBD8BEE52BA1A10309975E4D30 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
-		EC36B5AEAF89DEF27AC99433B6CC3652 /* AppSetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSetup.swift; sourceTree = "<group>"; };
-		C300B35C1CFCC6120D5B2F17A9926466 /* Bridging-Header.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
-		0D5127628683D548C420BA70118B8CB7 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
-		A9EB530798440BA8AE51FA143ED30793 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		211C44C0CB52433433EF4AB9081515FB /* Pods-ZalandoCommerceDemoAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZalandoCommerceDemoAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZalandoCommerceDemoAppUITests/Pods-ZalandoCommerceDemoAppUITests.release.xcconfig"; sourceTree = "<group>"; };
-		99535F3B2614B0CA38393E7B1EE638EE /* ArticlesClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticlesClient.swift; sourceTree = "<group>"; };
-		ABE901E48B59CF2F1A1E571CDDB6DBC0 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		19C0873731A8EB6E3A7562FB97E5285A /* DemoCatalog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoCatalog.swift; sourceTree = "<group>"; };
-		50C1B69ECB0143C36BFA77141E7B64ED /* DemoArticle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoArticle.swift; sourceTree = "<group>"; };
+		0000FBCF7CFA54DDC8399E4BABD42A15 /* ZalandoCommerceDemoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ZalandoCommerceDemoAppUITests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		05184D73F957B8E0E501F6CD156851AE /* UIAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
+		103765BAF91B718D0DCF2CEF31C1707D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		109BAEFBC7956B5B01FB907BBBF2FC87 /* ZalandoCommerceDemoApp.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZalandoCommerceDemoApp.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D15645E9195207A25A4D56198499AE7 /* Swifter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swifter.framework; path = ../../Carthage/Build/iOS/Swifter.framework; sourceTree = "<group>"; };
+		1E9AC22E8436A9E4B159173A8D00CE86 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		29D25E49A4BA3C66C371430FFD7DC396 /* CatalogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
+		2ADDB3FCDE4853A744F1F180EC295459 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		2F5B83286C89AB2EDC7C360410C90B60 /* ZalandoCommerceDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZalandoCommerceDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		34D105CA005E1E4B8E1C76FDC89894A2 /* Freddy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Freddy.framework; path = ../../Carthage/Build/iOS/Freddy.framework; sourceTree = "<group>"; };
+		37F1FE1DEBE7C2CDF69A44C574EB2CE7 /* BuddyBuildSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BuddyBuildSDK.framework; sourceTree = "<group>"; };
+		3D8E376ECF3335AA4B2E86DAAFAB2448 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		42CFF9379D10F9FC2F3FEAE9EB8AC172 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4CD3778CF4B0F93EE5191DF4F8D3C518 /* SwiftHTTP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftHTTP.framework; path = ../../Carthage/Build/iOS/SwiftHTTP.framework; sourceTree = "<group>"; };
+		544EDD646AB580836FDD4255D475BA85 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		589E4A9F8217071530B2FDE472AD2996 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6127C86D49960AE55D91C99ECF4382F1 /* InterfaceLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterfaceLanguage.swift; sourceTree = "<group>"; };
+		68D47F523CFD3049B145328DBAAD3BF6 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		6EA73BDC161923CD166B30F1051CBC88 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		6F9BDB072FD0595FBC1302107487559C /* Nuke.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nuke.framework; path = ../../Carthage/Build/iOS/Nuke.framework; sourceTree = "<group>"; };
+		70CB82D0A3803BF19FF55CBB985CB29A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		70D0DBF19E7CD929E402B3987A071587 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		74F2F3D1790B7E063C3527BF921B7E1D /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
+		7595CA1E31CBC66143CE5B7428A7F846 /* PDPViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDPViewController.swift; sourceTree = "<group>"; };
+		815FFD371E6EE3E5003295C3 /* MockAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MockAPI.framework; path = "MockAPI.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		815FFD381E6EE3E5003295C3 /* ZalandoCommerceAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZalandoCommerceAPI.framework; path = "ZalandoCommerceAPI.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		815FFD391E6EE3E5003295C3 /* ZalandoCommerceUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZalandoCommerceUI.framework; path = "ZalandoCommerceUI.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		81D591151E6EE07E00BC601F /* ZalandoCommerceDemoApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ZalandoCommerceDemoApp.entitlements; sourceTree = "<group>"; };
+		8F4B197D9F61B68006802BD626C9F76E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		94862D8C44368F2CED777738686848A0 /* XCUIElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCUIElement.swift; sourceTree = "<group>"; };
+		98660FB609B352D5A620AF07368F81EC /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		9EDD3C116753E5606C881975DA7B6380 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		A09363B8394CF5F3F4FBFE3E3AB2F5B1 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		A3903D304D732D84FC3034810FB00B36 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		AE465EB2A4F6D8B31261A51664D603CD /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		B5B3919A2CEC66658921E58E02D888B5 /* XCTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = XCTestCase.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		B5D445C1DAAC347B64D5AFED9B5B140B /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		CFE7F4402C577EAAD785596D4FB735D0 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		D2289B47B6EECAB09AAE7A87EE5FD561 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		D89AF6C44EE98EAB17A1E81EC252C5AD /* AppSetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSetup.swift; sourceTree = "<group>"; };
+		DE6D68AFDCE06CE5A1A54A8B3C37EA3A /* Bridging-Header.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		E4F833A4CE21235444066F2613EFB09A /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		E68BC11A4A9FD71255E1A93A12587B3D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		F71AFAF33E121C103808CE6C2F4B14B6 /* ArticlesClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticlesClient.swift; sourceTree = "<group>"; };
+		F726829F5154A9F85A931EAFC8D9E730 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F89FA499DC08F5C540C7FE44552F23A6 /* DemoCatalog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoCatalog.swift; sourceTree = "<group>"; };
+		F99E638E08D50645694331A6F3A7708C /* DemoArticle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoArticle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		30A57029541964810C8A1B5D843953A7 /* Frameworks */ = {
+		8DD4418F24780B87123A0D038C031431 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B7DA77FFD9849C6CF905A84553D0F44A /* Pods_ZalandoCommerceDemoAppUITests.framework in Frameworks */,
+				815FFD3A1E6EE3E5003295C3 /* MockAPI.framework in Frameworks */,
+				815FFD3B1E6EE3E5003295C3 /* ZalandoCommerceAPI.framework in Frameworks */,
+				815FFD3C1E6EE3E5003295C3 /* ZalandoCommerceUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ADB87DED40567F7FA40BD2A3F06A8DF0 /* Frameworks */ = {
+		B307BE12931466F5C44234C6B9C0A4AC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E98C0D376AC731400E912B537FFE859E /* AVFoundation.framework in Frameworks */,
-				BEB5FF1B8ACD7750C0977E57AD26DFC8 /* AssetsLibrary.framework in Frameworks */,
-				F2DA58B5DE9D961ED50C5BBC7BEF9B8D /* AudioToolbox.framework in Frameworks */,
-				B785BF1BC5DF25A1105C4EAC99B730E3 /* BuddyBuildSDK.framework in Frameworks */,
-				5A4A42785D9064D72434CE8C75B52AE8 /* CoreAudio.framework in Frameworks */,
-				0BFCE5444751E68D408F7479FB268A82 /* CoreImage.framework in Frameworks */,
-				B7641F52CB646C0E422BA8B70515253B /* CoreMedia.framework in Frameworks */,
-				77FCD8A1BB92A8033D0EBC08946297C8 /* CoreTelephony.framework in Frameworks */,
-				A08C8D4BD9B290166CB77415F6882F7C /* CoreText.framework in Frameworks */,
-				013999DDAC63C49E89D3DAA4E0C45D55 /* CoreVideo.framework in Frameworks */,
-				08DF2D9E2E17324C8CCA8B4E88BB7DD7 /* ImageIO.framework in Frameworks */,
-				4EC323D86CDFEE281545F5EA0C19DF41 /* MediaPlayer.framework in Frameworks */,
-				0AB9DE995160892A4E63C4EA1492ADD5 /* MessageUI.framework in Frameworks */,
-				A862E8834E3ED843242DC8B556178AC8 /* MobileCoreServices.framework in Frameworks */,
-				8F75303245A020A023E4AED6B4C0D975 /* QuartzCore.framework in Frameworks */,
-				D57D79F6FA1F0E46F4690CEE047F3A48 /* SystemConfiguration.framework in Frameworks */,
-				CE8900AF7DBF89B2495CBDC0C8322B4B /* VideoToolbox.framework in Frameworks */,
-				2CAB142997A08BD21269C333F219F475 /* Pods_ZalandoCommerceDemoApp.framework in Frameworks */,
+				1AA9D877EA35733BB8F2821C4FB61915 /* AVFoundation.framework in Frameworks */,
+				7B1C78AE089D3132077309EC6E12D4C4 /* AssetsLibrary.framework in Frameworks */,
+				CFAD7A2119559691BF01E0E84EFD479A /* SwiftHTTP.framework in Frameworks */,
+				1A9818D72E4B3DF8734FB7932CD98C59 /* AudioToolbox.framework in Frameworks */,
+				7449525A39F475B6C68F497A3A3CA7FA /* BuddyBuildSDK.framework in Frameworks */,
+				5C38BE2E6C30F953FDD8E2C0891B4EFF /* CoreAudio.framework in Frameworks */,
+				3E95B0F18829DC20340771D2B8C7B937 /* CoreImage.framework in Frameworks */,
+				3A1B4EE420523595E5C70F864C3D8D2C /* CoreMedia.framework in Frameworks */,
+				5354EC81B56390B95BAA15D4F3965B41 /* CoreTelephony.framework in Frameworks */,
+				0FDDDFE532941228DC746DAEF6740637 /* CoreText.framework in Frameworks */,
+				2192C7D1F6802A6157DE18C9B39A501A /* CoreVideo.framework in Frameworks */,
+				44EBCE2FE12DE8193EE4F38738F84B2E /* ImageIO.framework in Frameworks */,
+				8F1EB3AA8D794C560B3FDEE6F4988CA3 /* MediaPlayer.framework in Frameworks */,
+				00D6E40AB1C980587ADCF3D3A629707E /* MessageUI.framework in Frameworks */,
+				C13958F3EB2139209B40A7C93BAAAE5A /* MobileCoreServices.framework in Frameworks */,
+				28C9E4E66E9BB7F0E964EDD2416EC634 /* QuartzCore.framework in Frameworks */,
+				6258EC13198C08F3C0C639D9281DA1FE /* Freddy.framework in Frameworks */,
+				38B292015D6EB859824E22C09CB154F9 /* Swifter.framework in Frameworks */,
+				EE7374754508E203252E55A91A2A8167 /* Nuke.framework in Frameworks */,
+				ADB3F0B19117CD32B5795BAF37B3FB48 /* SystemConfiguration.framework in Frameworks */,
+				4C7F901DEBA1E479432682A6E43A6266 /* VideoToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A6C9408C7D6814EBDB417FB49D190AA6 /* Products */ = {
+		03EC04C4CFE2366837E069BEE7FBDC54 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CF1B7E385A0B2E2771344BF1B056EC1F /* ZalandoCommerceDemoApp.app */,
-				806BAE41D1A8996D34CFFE4A1F37FD3B /* ZalandoCommerceDemoApp.xctest */,
+				2F5B83286C89AB2EDC7C360410C90B60 /* ZalandoCommerceDemoApp.app */,
+				109BAEFBC7956B5B01FB907BBBF2FC87 /* ZalandoCommerceDemoApp.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		441051AD5BE2B8F85ED5DB40D516246B /* ZalandoCommerceDemoAppUITests */ = {
+		044E18ADF6506F1774B2CE7CAF61E8A2 /* ZalandoCommerceDemoAppUITests */ = {
 			isa = PBXGroup;
 			children = (
-				A6DEAB737303233AC194885143E6F440 /* ZalandoCommerceDemoAppUITests.swift */,
-				2815C4C1CC6ED32AF995F08F4366DB9D /* Info.plist */,
-				F72CF79B779CA1C1BDC7B004FE97C841 /* XCTestCase.swift */,
-				DE0841B944A4CCCA34315A14758752AF /* XCUIElement.swift */,
+				0000FBCF7CFA54DDC8399E4BABD42A15 /* ZalandoCommerceDemoAppUITests.swift */,
+				42CFF9379D10F9FC2F3FEAE9EB8AC172 /* Info.plist */,
+				B5B3919A2CEC66658921E58E02D888B5 /* XCTestCase.swift */,
+				94862D8C44368F2CED777738686848A0 /* XCUIElement.swift */,
 			);
 			path = ZalandoCommerceDemoAppUITests;
 			sourceTree = "<group>";
 		};
-		96CE662C0E31CEE6C8CF25FB9FC281CA = {
+		174870BA0EFBD849F084D828A2487596 = {
 			isa = PBXGroup;
 			children = (
-				6FE80D66AA830047CAC8177F5AFA7F20 /* ZalandoCommerceDemoApp */,
-				441051AD5BE2B8F85ED5DB40D516246B /* ZalandoCommerceDemoAppUITests */,
-				0325CD67EA94FE7B98CCE672DB7AB882 /* Frameworks */,
-				A6C9408C7D6814EBDB417FB49D190AA6 /* Products */,
-				C300B35C1CFCC6120D5B2F17A9926466 /* Bridging-Header.h */,
-				C7D220311F8A8D2A72891F0685643BFE /* Pods */,
+				633DDF356879505B3ACC77431326BBA3 /* ZalandoCommerceDemoApp */,
+				044E18ADF6506F1774B2CE7CAF61E8A2 /* ZalandoCommerceDemoAppUITests */,
+				40AD2A55265882FCC65FA2EF0FB2B6BC /* Frameworks */,
+				03EC04C4CFE2366837E069BEE7FBDC54 /* Products */,
+				DE6D68AFDCE06CE5A1A54A8B3C37EA3A /* Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
-		34607420E5ECCA630C5EA7DF8FC51B8D /* Others */ = {
+		2FFB18F07E6F25E025E0592A82B1FC01 /* Others */ = {
 			isa = PBXGroup;
 			children = (
-				2DDD944176018FE23F587A39C0AFAF35 /* Info.plist */,
+				70CB82D0A3803BF19FF55CBB985CB29A /* Info.plist */,
 			);
 			name = Others;
 			sourceTree = "<group>";
 		};
-		C7D220311F8A8D2A72891F0685643BFE /* Pods */ = {
+		40AD2A55265882FCC65FA2EF0FB2B6BC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				89842BED4ABCD87B286265B1353181B1 /* Pods-ZalandoCommerceDemoApp.debug.xcconfig */,
-				B83FB9B930400B0310E8B4E9DAA72594 /* Pods-ZalandoCommerceDemoApp.release.xcconfig */,
-				CDA56A4C9170DF2A23C1DCCB7047E24B /* Pods-ZalandoCommerceDemoAppUITests.debug.xcconfig */,
-				211C44C0CB52433433EF4AB9081515FB /* Pods-ZalandoCommerceDemoAppUITests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		0325CD67EA94FE7B98CCE672DB7AB882 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				01E634B99B6DA860BE32741537724989 /* AVFoundation.framework */,
-				F5F71E2B7ED76B5BFC61B1418730530B /* AssetsLibrary.framework */,
-				2002468FD7A58942580375A0726A9D7A /* AudioToolbox.framework */,
-				13769061BEE53BE12EB55C680971A357 /* BuddyBuildSDK.framework */,
-				080EA0B14D4CA5E468FEE817ACA78093 /* CoreAudio.framework */,
-				99344ADBD8BEE52BA1A10309975E4D30 /* CoreImage.framework */,
-				954458436A0041ECEBD53333078BF486 /* CoreMedia.framework */,
-				0D5127628683D548C420BA70118B8CB7 /* CoreTelephony.framework */,
-				D5AB1355E7E28F3A7B1CDA13B0325AEC /* CoreText.framework */,
-				7233A303AFFBD989095C4064E02F9A5E /* CoreVideo.framework */,
-				95498444BA89F4175CD9FCED523284A8 /* ImageIO.framework */,
-				2123E0D738163B9CC2391F4FB5A623EE /* MediaPlayer.framework */,
-				A97C2547A479683D2E9731451F355F3C /* MessageUI.framework */,
-				CDA103F51D94C26E50F5EC1977344E33 /* MobileCoreServices.framework */,
-				987DD1E56B166EF0A099D0349ACC3106 /* QuartzCore.framework */,
-				A9EB530798440BA8AE51FA143ED30793 /* SystemConfiguration.framework */,
-				3A4A736BC46D8F73302253F098F32AB2 /* VideoToolbox.framework */,
-				EFD569686236DB32AB98A264180AD4AC /* Pods_ZalandoCommerceDemoApp.framework */,
-				5DAAB7BA6B2321A05BA4026E80896625 /* Pods_ZalandoCommerceDemoAppUITests.framework */,
+				815FFD371E6EE3E5003295C3 /* MockAPI.framework */,
+				815FFD381E6EE3E5003295C3 /* ZalandoCommerceAPI.framework */,
+				815FFD391E6EE3E5003295C3 /* ZalandoCommerceUI.framework */,
+				34D105CA005E1E4B8E1C76FDC89894A2 /* Freddy.framework */,
+				1D15645E9195207A25A4D56198499AE7 /* Swifter.framework */,
+				4CD3778CF4B0F93EE5191DF4F8D3C518 /* SwiftHTTP.framework */,
+				6F9BDB072FD0595FBC1302107487559C /* Nuke.framework */,
+				2ADDB3FCDE4853A744F1F180EC295459 /* AVFoundation.framework */,
+				70D0DBF19E7CD929E402B3987A071587 /* AssetsLibrary.framework */,
+				3D8E376ECF3335AA4B2E86DAAFAB2448 /* AudioToolbox.framework */,
+				37F1FE1DEBE7C2CDF69A44C574EB2CE7 /* BuddyBuildSDK.framework */,
+				A09363B8394CF5F3F4FBFE3E3AB2F5B1 /* CoreAudio.framework */,
+				D2289B47B6EECAB09AAE7A87EE5FD561 /* CoreImage.framework */,
+				9EDD3C116753E5606C881975DA7B6380 /* CoreMedia.framework */,
+				E4F833A4CE21235444066F2613EFB09A /* CoreTelephony.framework */,
+				544EDD646AB580836FDD4255D475BA85 /* CoreText.framework */,
+				CFE7F4402C577EAAD785596D4FB735D0 /* CoreVideo.framework */,
+				1E9AC22E8436A9E4B159173A8D00CE86 /* ImageIO.framework */,
+				6EA73BDC161923CD166B30F1051CBC88 /* MediaPlayer.framework */,
+				98660FB609B352D5A620AF07368F81EC /* MessageUI.framework */,
+				AE465EB2A4F6D8B31261A51664D603CD /* MobileCoreServices.framework */,
+				A3903D304D732D84FC3034810FB00B36 /* QuartzCore.framework */,
+				E68BC11A4A9FD71255E1A93A12587B3D /* SystemConfiguration.framework */,
+				B5D445C1DAAC347B64D5AFED9B5B140B /* VideoToolbox.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		6FE80D66AA830047CAC8177F5AFA7F20 /* ZalandoCommerceDemoApp */ = {
+		633DDF356879505B3ACC77431326BBA3 /* ZalandoCommerceDemoApp */ = {
 			isa = PBXGroup;
 			children = (
-				0DE5D8199C5DBE3B2C3B78F68F900F2E /* ZalandoCommerceDemoApp.entitlements */,
-				A8EDB01B3623EC380007F87A95B19E11 /* API */,
-				34607420E5ECCA630C5EA7DF8FC51B8D /* Others */,
-				E3CDEB2D08027CC83680FA1AC2622FA4 /* Resources */,
-				A6228271300C430B1EDECFB1A2594995 /* Utils */,
-				ABE901E48B59CF2F1A1E571CDDB6DBC0 /* AppDelegate.swift */,
-				EC36B5AEAF89DEF27AC99433B6CC3652 /* AppSetup.swift */,
-				232DE2E9A7582D94AD9C7786FA2DC7D5 /* CatalogViewController.swift */,
-				EA54ACE8064960AF23907D6788A4C010 /* PDPViewController.swift */,
-				CBC3EF8C6E3F19866D04DE869C1C334C /* ProductCollectionViewCell.swift */,
-				4EF838BC222F4D0D3C061FD359545075 /* ProfileViewController.swift */,
-				41B51829EF7F007615BFAB808688FD20 /* InterfaceLanguage.swift */,
+				81D591151E6EE07E00BC601F /* ZalandoCommerceDemoApp.entitlements */,
+				8EEE55221857D825CB81EFEEF83BE303 /* API */,
+				2FFB18F07E6F25E025E0592A82B1FC01 /* Others */,
+				E42B0408C4EA92244389DE825756A220 /* Resources */,
+				8B62911B0415B9AE8A814155D7BC4E41 /* Utils */,
+				F726829F5154A9F85A931EAFC8D9E730 /* AppDelegate.swift */,
+				D89AF6C44EE98EAB17A1E81EC252C5AD /* AppSetup.swift */,
+				29D25E49A4BA3C66C371430FFD7DC396 /* CatalogViewController.swift */,
+				7595CA1E31CBC66143CE5B7428A7F846 /* PDPViewController.swift */,
+				74F2F3D1790B7E063C3527BF921B7E1D /* ProductCollectionViewCell.swift */,
+				68D47F523CFD3049B145328DBAAD3BF6 /* ProfileViewController.swift */,
+				6127C86D49960AE55D91C99ECF4382F1 /* InterfaceLanguage.swift */,
 			);
 			path = ZalandoCommerceDemoApp;
 			sourceTree = "<group>";
 		};
-		A6228271300C430B1EDECFB1A2594995 /* Utils */ = {
+		8B62911B0415B9AE8A814155D7BC4E41 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				AF4F2914965E2C99A4CFACAD1456B614 /* UIAlertController.swift */,
+				05184D73F957B8E0E501F6CD156851AE /* UIAlertController.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
 		};
-		A8EDB01B3623EC380007F87A95B19E11 /* API */ = {
+		8EEE55221857D825CB81EFEEF83BE303 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				99535F3B2614B0CA38393E7B1EE638EE /* ArticlesClient.swift */,
-				50C1B69ECB0143C36BFA77141E7B64ED /* DemoArticle.swift */,
-				19C0873731A8EB6E3A7562FB97E5285A /* DemoCatalog.swift */,
+				F71AFAF33E121C103808CE6C2F4B14B6 /* ArticlesClient.swift */,
+				F99E638E08D50645694331A6F3A7708C /* DemoArticle.swift */,
+				F89FA499DC08F5C540C7FE44552F23A6 /* DemoCatalog.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
 		};
-		E3CDEB2D08027CC83680FA1AC2622FA4 /* Resources */ = {
+		E42B0408C4EA92244389DE825756A220 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				DE90FB64829D7799A730F4B23FFE1B43 /* Assets.xcassets */,
-				829264D551F7DB56FBEB6AB9739EEF05 /* LaunchScreen.storyboard */,
-				7F6CD1810FD29ACFDD64F1D89A6BAB42 /* Main.storyboard */,
+				8F4B197D9F61B68006802BD626C9F76E /* Assets.xcassets */,
+				456A972426ABC4F144D50441540136C0 /* LaunchScreen.storyboard */,
+				103765BAF91B718D0DCF2CEF31C1707D /* Main.storyboard */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -291,7 +303,7 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		B907ABF1B005972C0873209A211DA971 /* Headers */ = {
+		B6D1C42DE9C9A401AACB795FDEFA1DF6 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -301,19 +313,16 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		92DB90584A5CD763F30EFE889FE9C1D9 /* ZalandoCommerceDemoApp */ = {
+		2A09D0C5F782D7D824F5F39015890DE6 /* ZalandoCommerceDemoApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ACEB7F7ACC2C220777842AE2D72E334D /* Build configuration list for PBXNativeTarget "ZalandoCommerceDemoApp" */;
+			buildConfigurationList = CCEA0606603BB620FE5A41ED38560189 /* Build configuration list for PBXNativeTarget "ZalandoCommerceDemoApp" */;
 			buildPhases = (
-				E1609E0194A319A4E49DFF07ECDB3D1A /* [CP] Check Pods Manifest.lock */,
-				7CE15CE9B8D5B15F9E935D61DFF0961F /* Swift Lint */,
-				6334CC0B6E52568ADA231D3AAC1FB0A0 /* Sources */,
-				5ADC4A424625A09A8F4D09C2A00DBAC3 /* Copy Frameworks */,
-				ADB87DED40567F7FA40BD2A3F06A8DF0 /* Frameworks */,
-				AFEAE65015E048FD3536B2B1E1591E11 /* Resources */,
-				B907ABF1B005972C0873209A211DA971 /* Headers */,
-				422273A205A388E4C1CD6AEB5BA5EB7D /* [CP] Embed Pods Frameworks */,
-				FAE27FD4F5878A4E055902959B3CA0A6 /* [CP] Copy Pods Resources */,
+				25B422AF1F28BED8507E16308FEE5FCF /* Swift Lint */,
+				8938AC41FD8F31015CD93E4A43C35120 /* Sources */,
+				709B8180EF992CCC4B4F50F79A676FEA /* Copy Frameworks */,
+				B307BE12931466F5C44234C6B9C0A4AC /* Frameworks */,
+				0DF7A2B2DE082CCF9AB3ACBCC3849324 /* Resources */,
+				B6D1C42DE9C9A401AACB795FDEFA1DF6 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -321,42 +330,39 @@
 			);
 			name = ZalandoCommerceDemoApp;
 			productName = ZalandoCommerceDemoApp;
-			productReference = CF1B7E385A0B2E2771344BF1B056EC1F /* ZalandoCommerceDemoApp.app */;
+			productReference = 2F5B83286C89AB2EDC7C360410C90B60 /* ZalandoCommerceDemoApp.app */;
 			productType = "com.apple.product-type.application";
 		};
-		FA262FD3D51C0AD9BF7B6EA7B48E486A /* ZalandoCommerceDemoAppUITests */ = {
+		67F9DDC7BA66504563712E65544C2F4E /* ZalandoCommerceDemoAppUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2769D435772B0CEA732FBCB2C3C7DF3D /* Build configuration list for PBXNativeTarget "ZalandoCommerceDemoAppUITests" */;
+			buildConfigurationList = 0F8A4CE6E3E2795D8FA159AD0A62D97E /* Build configuration list for PBXNativeTarget "ZalandoCommerceDemoAppUITests" */;
 			buildPhases = (
-				495D80A2772C7797BA3B0E630799FC21 /* [CP] Check Pods Manifest.lock */,
-				E56AB147F06247196021B711F689EA40 /* Sources */,
-				30A57029541964810C8A1B5D843953A7 /* Frameworks */,
-				3EE969A51DE1350D65C3D395C081341D /* Resources */,
-				9BAC9B4C5674D233A432F61518C98AB6 /* Copy Frameworks */,
-				6D9D5620F381542BBB362F6A22143897 /* [CP] Embed Pods Frameworks */,
-				0F672B1AC896EA49158F98BB37B146ED /* [CP] Copy Pods Resources */,
+				45247CAE1CB9F4C5E8B7EA72ECB4CA8F /* Sources */,
+				8DD4418F24780B87123A0D038C031431 /* Frameworks */,
+				3AB60BD07431A898C1254B15FA75039C /* Resources */,
+				064E623F6ADB77392B05B062FA1DDBD2 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				B11EA208A57208E323E2E0999254A0E0 /* PBXTargetDependency */,
+				0738B1C31C3F9788AC3EB5E243F98321 /* PBXTargetDependency */,
 			);
 			name = ZalandoCommerceDemoAppUITests;
 			productName = ZalandoCommerceDemoUITests;
-			productReference = 806BAE41D1A8996D34CFFE4A1F37FD3B /* ZalandoCommerceDemoApp.xctest */;
+			productReference = 109BAEFBC7956B5B01FB907BBBF2FC87 /* ZalandoCommerceDemoApp.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		AA4A1E0725B11FAD537897461044619E /* Project object */ = {
+		4230AB870D9F71D843EF6BB9E49CFA67 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Zalando SE";
 				TargetAttributes = {
-					92DB90584A5CD763F30EFE889FE9C1D9 = {
+					2A09D0C5F782D7D824F5F39015890DE6 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = J67E9B6234;
 						LastSwiftMigration = 0820;
@@ -367,14 +373,14 @@
 							};
 						};
 					};
-					FA262FD3D51C0AD9BF7B6EA7B48E486A = {
+					67F9DDC7BA66504563712E65544C2F4E = {
 						CreatedOnToolsVersion = 7.3.1;
 						LastSwiftMigration = 0820;
-						TestTargetID = 92DB90584A5CD763F30EFE889FE9C1D9;
+						TestTargetID = 2A09D0C5F782D7D824F5F39015890DE6;
 					};
 				};
 			};
-			buildConfigurationList = 77C1FC42F6AD54A32EDE91B4FE433BAA /* Build configuration list for PBXProject "ZalandoCommerceDemoApp" */;
+			buildConfigurationList = 1D53255AB1C7A7F576998459ED7B35B6 /* Build configuration list for PBXProject "ZalandoCommerceDemoApp" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -382,29 +388,29 @@
 				en,
 				Base,
 			);
-			mainGroup = 96CE662C0E31CEE6C8CF25FB9FC281CA;
-			productRefGroup = A6C9408C7D6814EBDB417FB49D190AA6 /* Products */;
+			mainGroup = 174870BA0EFBD849F084D828A2487596;
+			productRefGroup = 03EC04C4CFE2366837E069BEE7FBDC54 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				92DB90584A5CD763F30EFE889FE9C1D9 /* ZalandoCommerceDemoApp */,
-				FA262FD3D51C0AD9BF7B6EA7B48E486A /* ZalandoCommerceDemoAppUITests */,
+				2A09D0C5F782D7D824F5F39015890DE6 /* ZalandoCommerceDemoApp */,
+				67F9DDC7BA66504563712E65544C2F4E /* ZalandoCommerceDemoAppUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		AFEAE65015E048FD3536B2B1E1591E11 /* Resources */ = {
+		0DF7A2B2DE082CCF9AB3ACBCC3849324 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C12453A69C2A02B8C9A4464BF26BE4A /* Assets.xcassets in Resources */,
-				EE9F453627AE70696888239BF9DF14FD /* LaunchScreen.storyboard in Resources */,
-				B834AE6F87AE6721D3471569EEC5B531 /* Main.storyboard in Resources */,
+				3A8421486CA5811AB6CF8978F401EA83 /* Assets.xcassets in Resources */,
+				17774FD279D9D9972B447A118C17A4E4 /* LaunchScreen.storyboard in Resources */,
+				14B2EC592F7C57B3B77134AF2195AB15 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3EE969A51DE1350D65C3D395C081341D /* Resources */ = {
+		3AB60BD07431A898C1254B15FA75039C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -414,37 +420,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		495D80A2772C7797BA3B0E630799FC21 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		E1609E0194A319A4E49DFF07ECDB3D1A /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		7CE15CE9B8D5B15F9E935D61DFF0961F /* Swift Lint */ = {
+		25B422AF1F28BED8507E16308FEE5FCF /* Swift Lint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -459,112 +435,52 @@
 			shellScript = "if [[ -z \"$ZC_SKIP_SWIFT_LINT\" && -z \"$CARTHAGE_PATH\" && -z \"$PLATFORM_PRODUCT_BUILD_VERSION\" ]]; then\n  eval \"$(/usr/bin/which -s rbenv && rbenv init -)\"\n  ${PROJECT_DIR}/../../calypso.rb lint check ${PROJECT_DIR}/${TARGET_NAME}\nfi";
 			showEnvVarsInLog = 0;
 		};
-		422273A205A388E4C1CD6AEB5BA5EB7D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZalandoCommerceDemoApp/Pods-ZalandoCommerceDemoApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FAE27FD4F5878A4E055902959B3CA0A6 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZalandoCommerceDemoApp/Pods-ZalandoCommerceDemoApp-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		0F672B1AC896EA49158F98BB37B146ED /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZalandoCommerceDemoAppUITests/Pods-ZalandoCommerceDemoAppUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6D9D5620F381542BBB362F6A22143897 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZalandoCommerceDemoAppUITests/Pods-ZalandoCommerceDemoAppUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		E56AB147F06247196021B711F689EA40 /* Sources */ = {
+		45247CAE1CB9F4C5E8B7EA72ECB4CA8F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A987F14E63CEE803A524524E146874DA /* ZalandoCommerceDemoAppUITests.swift in Sources */,
-				975FF7DEB43056E314B6F1FA4621BF87 /* XCTestCase.swift in Sources */,
-				69DB2122AB6E2DE2410948831F0B7A75 /* XCUIElement.swift in Sources */,
+				BFD1D1499CD09ED4A74B6ECA27B2B81B /* ZalandoCommerceDemoAppUITests.swift in Sources */,
+				C28B405D84A7E9B9F1879C6860E5E428 /* XCTestCase.swift in Sources */,
+				946005C07CBE3751A66304711A6898AA /* XCUIElement.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6334CC0B6E52568ADA231D3AAC1FB0A0 /* Sources */ = {
+		8938AC41FD8F31015CD93E4A43C35120 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0D42708924591CFBD4FD375E39A16CA /* AppDelegate.swift in Sources */,
-				1F37581FDF38754806DCAC436D56380E /* AppSetup.swift in Sources */,
-				C259D5A99C097BDC5860413DE99BD355 /* ArticlesClient.swift in Sources */,
-				70FE81145A99C02618A6C1B2C32865E7 /* UIAlertController.swift in Sources */,
-				3A3CBE368486D6156DB5C8F56E64E281 /* CatalogViewController.swift in Sources */,
-				F972F33E9CAA61C5274E3E2580884425 /* DemoArticle.swift in Sources */,
-				EE13E08450725B3AAB4A72693F961A82 /* PDPViewController.swift in Sources */,
-				7DD8F679F4EBF8E07ED0B7C47679B431 /* DemoCatalog.swift in Sources */,
-				F67599FC99895C320FE988A3B601B966 /* ProductCollectionViewCell.swift in Sources */,
-				7F275114023109F39C5529D957F30705 /* ProfileViewController.swift in Sources */,
-				5760CE8A2B3F1351F12739D35B53C454 /* InterfaceLanguage.swift in Sources */,
+				3EBB13C2ED4814BEE7F3E3D70940487E /* AppDelegate.swift in Sources */,
+				8838F6A5652FC042A161FBC6A6961594 /* AppSetup.swift in Sources */,
+				80EAF118A2EFF34CF406B0059F8B61E6 /* ArticlesClient.swift in Sources */,
+				00B6904C8A898ADF7F49357C4DE9E681 /* UIAlertController.swift in Sources */,
+				1862B91B111AAE37D4D8484B29B5AE6D /* CatalogViewController.swift in Sources */,
+				37390AB837A99ABB76439EB6FFF435DC /* DemoArticle.swift in Sources */,
+				77F0BBA9E57C9368D10DEE6BF9361475 /* PDPViewController.swift in Sources */,
+				A780FF331E667E4F680D3C330ED07DB8 /* DemoCatalog.swift in Sources */,
+				0FE6FE338EDD0304EC47F380FA6E7F0F /* ProductCollectionViewCell.swift in Sources */,
+				A12BA69E9882091D0E7458127925A441 /* ProfileViewController.swift in Sources */,
+				38E038EFCCE368062F2BFCF1876AA51B /* InterfaceLanguage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B11EA208A57208E323E2E0999254A0E0 /* PBXTargetDependency */ = {
+		0738B1C31C3F9788AC3EB5E243F98321 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 92DB90584A5CD763F30EFE889FE9C1D9 /* ZalandoCommerceDemoApp */;
-			targetProxy = 7FF6B029DF88126D766EA72D33F8C1A6 /* PBXContainerItemProxy */;
+			target = 2A09D0C5F782D7D824F5F39015890DE6 /* ZalandoCommerceDemoApp */;
+			targetProxy = D029C1D0455B19C726296C438DD0DFCC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		829264D551F7DB56FBEB6AB9739EEF05 /* LaunchScreen.storyboard */ = {
+		456A972426ABC4F144D50441540136C0 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				E796740BB519763B84AFA42967C5DA84 /* Base */,
+				589E4A9F8217071530B2FDE472AD2996 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -572,7 +488,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		417C703EFFFD1DD8EA839B87A09ED77E /* Debug */ = {
+		2F0A85743914383325F86EC0F269DB15 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -627,9 +543,8 @@
 			};
 			name = Debug;
 		};
-		65AD043F2F33835630A9C22F92DE0E02 /* Debug */ = {
+		B04D6F8566144AF0DDC349CCB0E4246C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89842BED4ABCD87B286265B1353181B1 /* Pods-ZalandoCommerceDemoApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ZalandoCommerceDemoApp/ZalandoCommerceDemoApp.entitlements;
@@ -648,7 +563,7 @@
 			};
 			name = Debug;
 		};
-		256F0C5A486A2C8E4545C2E5E52CE6C0 /* Release */ = {
+		B7FEF44EBE9A2B80185B848A367E2047 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -696,9 +611,8 @@
 			};
 			name = Release;
 		};
-		5F30B911C39376BACE7BBFED34EF7A99 /* Release */ = {
+		C6C74CB5DD5F3B2EEA659B5A21C90D5D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 211C44C0CB52433433EF4AB9081515FB /* Pods-ZalandoCommerceDemoAppUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = ZalandoCommerceDemoAppUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -709,9 +623,8 @@
 			};
 			name = Release;
 		};
-		8B91C45782CE038D04B469BD4C70D49A /* Release */ = {
+		C8C5C66A8E717A9FFB6F78D725174E72 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B83FB9B930400B0310E8B4E9DAA72594 /* Pods-ZalandoCommerceDemoApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ZalandoCommerceDemoApp/ZalandoCommerceDemoApp.entitlements;
@@ -731,9 +644,8 @@
 			};
 			name = Release;
 		};
-		567EA1E44E6F462A7BAE9D2ACC1A6860 /* Debug */ = {
+		EC1AE5AA6A0A8A45A49DF83B01748894 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CDA56A4C9170DF2A23C1DCCB7047E24B /* Pods-ZalandoCommerceDemoAppUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = ZalandoCommerceDemoAppUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -746,34 +658,34 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2769D435772B0CEA732FBCB2C3C7DF3D /* Build configuration list for PBXNativeTarget "ZalandoCommerceDemoAppUITests" */ = {
+		0F8A4CE6E3E2795D8FA159AD0A62D97E /* Build configuration list for PBXNativeTarget "ZalandoCommerceDemoAppUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				567EA1E44E6F462A7BAE9D2ACC1A6860 /* Debug */,
-				5F30B911C39376BACE7BBFED34EF7A99 /* Release */,
+				EC1AE5AA6A0A8A45A49DF83B01748894 /* Debug */,
+				C6C74CB5DD5F3B2EEA659B5A21C90D5D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		77C1FC42F6AD54A32EDE91B4FE433BAA /* Build configuration list for PBXProject "ZalandoCommerceDemoApp" */ = {
+		1D53255AB1C7A7F576998459ED7B35B6 /* Build configuration list for PBXProject "ZalandoCommerceDemoApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				417C703EFFFD1DD8EA839B87A09ED77E /* Debug */,
-				256F0C5A486A2C8E4545C2E5E52CE6C0 /* Release */,
+				2F0A85743914383325F86EC0F269DB15 /* Debug */,
+				B7FEF44EBE9A2B80185B848A367E2047 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ACEB7F7ACC2C220777842AE2D72E334D /* Build configuration list for PBXNativeTarget "ZalandoCommerceDemoApp" */ = {
+		CCEA0606603BB620FE5A41ED38560189 /* Build configuration list for PBXNativeTarget "ZalandoCommerceDemoApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				65AD043F2F33835630A9C22F92DE0E02 /* Debug */,
-				8B91C45782CE038D04B469BD4C70D49A /* Release */,
+				B04D6F8566144AF0DDC349CCB0E4246C /* Debug */,
+				C8C5C66A8E717A9FFB6F78D725174E72 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = AA4A1E0725B11FAD537897461044619E /* Project object */;
+	rootObject = 4230AB870D9F71D843EF6BB9E49CFA67 /* Project object */;
 }

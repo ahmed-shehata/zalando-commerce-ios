@@ -115,7 +115,7 @@ extension Config: CustomStringConvertible {
 
 extension Config.SalesChannel: JSONInitializable {
 
-    init?(json: JSON) {
+        init?(json: JSON) {
         guard let identifier = json["sales-channel"].string,
             let localeIdentifier = json["locale"].string,
             let tocURL = json["toc_url"].url
