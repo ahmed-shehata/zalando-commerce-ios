@@ -86,7 +86,6 @@ struct Keychain {
         }
         let entries: [[AnyHashable: Any]] = results.flatMap { $0 as? [AnyHashable: Any] }
 
-        Logger.error(entries)
         return entries
     }
 
