@@ -3,8 +3,9 @@ require 'pathname'
 module Calypso
 
   BASE_DIR = Pathname(File.dirname(__FILE__)) + '../..'
+  SOURCES_DIR = BASE_DIR + 'Sources'
 
-  WORKSPACE = BASE_DIR + 'ZalandoCommerceSDK.xcworkspace'
+  WORKSPACE = SOURCES_DIR + 'ZalandoCommerceSDK.xcworkspace'
 
   SCHEME_UNIT_TESTS = 'UnitTests'.freeze
   SCHEME_UI_UNIT_TESTS = 'UI+UnitTests'.freeze
@@ -16,7 +17,7 @@ module Calypso
   # finds newest iOS by using its version in float comparison
   TEST_RUNTIME = 'iOS'.freeze
 
-  PROJECT_DIRS = [BASE_DIR + 'ZalandoCommerceAPI', BASE_DIR + 'ZalandoCommerceUI'].freeze
+  PROJECT_DIRS = [SOURCES_DIR + 'ZalandoCommerceAPI', SOURCES_DIR + 'ZalandoCommerceUI'].freeze
 
   LINT_CFG = BASE_DIR + '.swiftlint.yml'
 
