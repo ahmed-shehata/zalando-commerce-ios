@@ -5,7 +5,6 @@ require_relative 'utils/run'
 module Calypso
 
   CART_DIR = 'Carthage'.freeze
-  CART_RES = 'Cartfile.resolved'.freeze
 
   class Deps < Thor
 
@@ -19,7 +18,7 @@ module Calypso
       run_carthage 'build', options, deps: MAC_DEPS, platform: 'Mac'
     end
 
-    desc 'update [dep1, dep2, ..., dep3]', 'Update dependencies'
+    desc 'update [-d dep1, dep2, ..., dep3]', 'Update dependencies'
     option :quick, type: :boolean, default: true,
                    desc: 'true: uses \'--cache-builds\', false: uses \'--no-use-binaries\''
     option :dependencies, type: :array, aliases: 'd',
@@ -31,18 +30,14 @@ module Calypso
     end
 
     desc 'rebuild', 'Clean and build dependencies'
-    option :quick, type: :boolean, default: true,
-                   desc: 'true: uses \'--cache-builds\', false: uses \'--no-use-binaries\''
     def rebuild
-      deps = Deps.new([], options)
-      deps.invoke(:clean)
-      deps.invoke(:build)
+      invoke :clean
+      invoke :build
     end
 
     desc 'clean', 'Clean dependencies'
     def clean
       FileUtils.rm_rf CART_DIR
-      FileUtils.rm_rf CART_RES
     end
 
     include Run
