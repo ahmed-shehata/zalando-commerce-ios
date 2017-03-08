@@ -12,20 +12,31 @@ module Calypso
     MAC_DEPS = %w(swifter Freddy).freeze
 
     desc 'build', 'Build dependencies'
+    option :quick, type: :boolean, default: true,
+                   desc: 'true: uses \'--cache-builds\', false: uses \'--no-use-binaries\''
     def build
-      run 'carthage bootstrap --platform iOS --no-use-binaries'
-      run "carthage build --platform Mac #{MAC_DEPS.join ' '}"
+      run_carthage 'bootstrap', options
+      run_carthage 'build', options, deps: MAC_DEPS, platform: 'Mac'
     end
 
     desc 'update [dep1, dep2, ..., dep3]', 'Update dependencies'
-    def update(*args)
-      run "carthage update --platform iOS --no-use-binaries #{args.join ' '}"
-      if args.empty?
-        run "carthage update --platform Mac --no-use-binaries #{MAC_DEPS.join ' '}"
-      elsif !(args & MAC_DEPS).empty?
-        run "carthage update --platform Mac --no-use-binaries #{args.join ' '}"
-      end
+    option :quick, type: :boolean, default: true,
+                   desc: 'true: uses \'--cache-builds\', false: uses \'--no-use-binaries\''
+    option :dependencies, type: :array, aliases: 'd',
+                          desc: 'list of dependencies to build'
+    def update
+      run_carthage 'update', options, deps: options[:dependencies]
+      update_mac_deps options
       run 'open Carthage/Build/iOS'
+    end
+
+    desc 'rebuild', 'Clean and build dependencies'
+    option :quick, type: :boolean, default: true,
+                   desc: 'true: uses \'--cache-builds\', false: uses \'--no-use-binaries\''
+    def rebuild
+      deps = Deps.new([], options)
+      deps.invoke(:clean)
+      deps.invoke(:build)
     end
 
     desc 'clean', 'Clean dependencies'
@@ -34,13 +45,25 @@ module Calypso
       FileUtils.rm_rf CART_RES
     end
 
-    desc 'rebuild', 'Clean and build dependencies'
-    def rebuild
-      invoke :clean
-      invoke :build
+    include Run
+
+    private
+
+    def update_mac_deps(options)
+      deps = options[:dependencies]
+      if deps.nil?
+        run_carthage 'update', options, deps: MAC_DEPS, platform: 'Mac'
+      elsif !(deps & MAC_DEPS).empty?
+        run_carthage 'update', options, deps: deps, platform: 'Mac'
+      end
     end
 
-    include Run
+    def run_carthage(command, options, deps: nil, platform: 'iOS')
+      all_args = ['--platform', platform]
+      all_args << (options[:quick] ? '--cache-builds' : '--no-use-binaries')
+      all_args += deps unless deps.nil?
+      run "carthage #{command} #{all_args.join ' '}"
+    end
 
   end
 
