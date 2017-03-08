@@ -6,12 +6,12 @@ target 'ZalandoCommerceDemoApp' do
   pod 'SwiftHTTP'
   pod 'Freddy'
   pod 'Nuke'
-  pod 'ZalandoCommerceUI', path: '..'
-  pod 'MockAPI', path: '..'
+  pod 'ZalandoCommerceUI', path: '../..'
+  pod 'MockAPI', path: '../..'
 end
 
 target 'ZalandoCommerceDemoAppUITests' do
-  pod 'MockAPI', path: '..'
+  pod 'MockAPI', path: '../..'
 end
 
 pre_install do |installer|
