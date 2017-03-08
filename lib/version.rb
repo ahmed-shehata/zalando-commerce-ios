@@ -1,1 +1,1 @@
-ZC_VERSION = '1.1.7'
+ZC_VERSION = '1.1.6'
