@@ -7,181 +7,181 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		009181DB2C30EA37DC459373993A2344 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FFAFD36DBFADF2E51D872BAD526DF6 /* Errors.swift */; };
-		01F1C5695D20C27942DFECED1195107B /* Nimble.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 946A02D8E49A74EDBEBD78F9E7F24730 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		02576D9B6427B3104CFB767A0924CA0F /* CreateOrderEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AB725F554DA56411A3B5D67010F273 /* CreateOrderEndpoint.swift */; };
-		067FC4466FFDF3D1F9A54EAAB43FA3B7 /* GuestPaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88271BCC31E360BEF49D8115AE83264E /* GuestPaymentMethod.swift */; };
-		06E5C0933C2D59ECB6AF221DC82004F3 /* CheckAddressRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FC4AE03906C5C3860F5055CDD3232B /* CheckAddressRequest.swift */; };
-		092E874D448035208694241B6BA8C5F1 /* RFC3339DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E7B77923CA267431E29AFE17AE96EA /* RFC3339DateFormatter.swift */; };
-		19052EC3C88FE3710B358C8A009122EF /* PickupPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74E6F0CBCE6D7E27184F239E9438F9 /* PickupPoint.swift */; };
-		1BA431B6801BAF1F601BBB3FBFDB2202 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65AAED9C5DDB24C8819ED6838668A34 /* Typealiases.swift */; };
-		1E972AEE974F24099CF25DD0FA0F4C70 /* APIAccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82119333485AE6ED25549E0A742C1190 /* APIAccessToken.swift */; };
-		21FEA5797234BD3C78C547FD099F1A0A /* DeleteAddressEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4925DB568F4726E5E5D37663419677B8 /* DeleteAddressEndpoint.swift */; };
-		228DA1EE31068C25FB7BA695A50E5DDD /* JSONResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BD428C28C6631A27A6BCEB01F1A7AD /* JSONResponse.swift */; };
-		2355ED486BA2B486D32DEC1BE170D4F4 /* OutputStreams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676768CF421365F56E0325D156E2F301 /* OutputStreams.swift */; };
-		240228124E25E1CCE455B8FD3E3F9A92 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDE9B266DF0DAFAF1BB3ED0A00D2609 /* Order.swift */; };
-		24FFD22FC660CB12AA036D615B422072 /* CheckAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550185D4F6E3EBAB878EAFC9701AC441 /* CheckAddress.swift */; };
-		261B28B342B4AB0AC459145308E87C48 /* GuestOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F04274C9DF91FEABFDD5EE482E7553 /* GuestOrder.swift */; };
-		284C80B5A67DB71CFD3B3EFCAD987355 /* CreateGuestOrderEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF7D5BE1946026F4EC6170B29C69347 /* CreateGuestOrderEndpoint.swift */; };
-		2E8011474999A14E2B63489AC4C4E3BE /* DataTaskResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520EB901467782BBA1241928C1B83809 /* DataTaskResponse.swift */; };
-		3139D922EE3790EF2597975C5046EDA2 /* GuestCheckout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439BC5F5E13583D27A6EC5B0EB9C41AB /* GuestCheckout.swift */; };
-		319C8892EF75F743FB6BC5BAB278ECBA /* GetArticleEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60901C59AEE6F40EF54A35763F5E2CA0 /* GetArticleEndpoint.swift */; };
-		330E18182E0C10228CC4E286B36052C3 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0087275FE972E40F0FD28AA1FA1F838 /* Notifications.swift */; };
-		34D565D1422FDFE1F9B482005F88216B /* GuestCartRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E03081CC39663E90CE41C2416C19A80 /* GuestCartRequest.swift */; };
-		3823DD4454949B70FF3FC6C6B81BACA1 /* Checkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B140809815AB229E44B61389E3F9A /* Checkout.swift */; };
-		3841A82752EA65F967C32AE54098426F /* Delivery.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C60BDB698E3B89D0450DE4DB2F3089 /* Delivery.swift */; };
-		3B09D828BF68AC19B8571D876CB1B2EC /* GetGuestCheckoutEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7217CD1285081F7F82594BB8658EE76 /* GetGuestCheckoutEndpoint.swift */; };
-		3C945BDC8B10E80ECCEFC959EAEFD67C /* OrderConfirmation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D98B1E3339324EA4128B85796DB18C /* OrderConfirmation.swift */; };
-		42FE443682EE4DA2863C9C7772E77128 /* SKU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9714951FDF30A6E73B76FEDF02064493 /* SKU.swift */; };
-		4721FC3613C4D4210054C2143D31A9CF /* JSONInitializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01A373DFE9983DFFD566CB3529AB23D /* JSONInitializable.swift */; };
-		4A34EFB4ADFE3B3932B5AB783A2C61D1 /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43F1ABCDE5E35AFE498CCAE893B3EFB /* RequestBuilder.swift */; };
-		4B10BA7F4980C14CCFD91482E6A8B060 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747A73447DC8ACA0F246CCD8C6D0B513 /* Gender.swift */; };
-		50B7CAD88F4CB40657A1E293C5886CBE /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1144008D922BB81B068D385A27F28BEA /* Data.swift */; };
-		5409022DECDE9C9FB50F7A0A51675377 /* GetAddressesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC775974D2C7BEE823393C249A83E19 /* GetAddressesEndpoint.swift */; };
-		5845FED236186199C6625E11AB2CE7C5 /* GetConfigEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B7AA4A1026DDF24004CE7F0E355625 /* GetConfigEndpoint.swift */; };
-		589B9594AED6FCC5975BEF8AD019DA3B /* CheckAddressEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CB029B07E80005A71578AEA1A39284 /* CheckAddressEndpoint.swift */; };
-		59B8C60AAF47816AC013834D5807A81F /* GuestOrderRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8AC71F74ABB8BC7D76407B3A9FCF0D /* GuestOrderRequest.swift */; };
-		5D6A3370F54739B5DCF111D194514204 /* CreateAddressRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4944BCDF87800B1F61B9A15A08C0FAC7 /* CreateAddressRequest.swift */; };
-		613D8FF85E470947466AB8AC54D4F3DD /* Catalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5122324D4A85204EB38F54BF29FEB024 /* Catalog.swift */; };
-		61F07F9373EF70129617D9490C0A085B /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70871321348430C46B108ED24D0827 /* Customer.swift */; };
-		620E4FDCAEF5EB433ECC27903529F2E1 /* CheckoutAddresses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF4A6E890DD1042419DC11B39812630 /* CheckoutAddresses.swift */; };
-		62C7EA7D66821EC79C278B60C3907983 /* GuestCheckoutAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AB716AB81A1EB750046BA350B059AA /* GuestCheckoutAddress.swift */; };
-		6314391419F5F35C66EBFC2ECE79303E /* SystemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E528A14D9CC64F177BA37FDBCF6268E2 /* SystemInfo.swift */; };
-		631E7EE031D5A6418FB7DD60074278A7 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4684381074A4798A9C76F19A7002341C /* Cart.swift */; };
-		63BD6D5AB647CD11815ABCDCD2724601 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04E7980997323086729450F65FEEF1D /* Payment.swift */; };
-		6504D8872E69CAF240F5CC4CD6BEF61A /* GuestCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD0DD80C9475A24C46A54BDD042269C /* GuestCart.swift */; };
-		6506392A605FACF4557D0FCDD47ED7E6 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F8397816D421255C10AE0737FAAA41 /* Config.swift */; };
-		6EC34683E95FA934F7A29DCEE26FD134 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99C8ABE9B43A85D7188943C66729D07 /* Endpoint.swift */; };
-		71CA5C7010DC6C89C45532550D24F931 /* CreateCheckoutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50CA5CE843366FDF5FC08D7C381BBDC /* CreateCheckoutRequest.swift */; };
-		727D825FC085BDA1D717C197FDABF439 /* StreetAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402AD2052AB32129CFB12ED77B1D048C /* StreetAddress.swift */; };
-		74033CC4EE46D819DCF0D0CD145C705A /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524A17497C3AC5EDBB91BC82D0D33F1 /* APIClient.swift */; };
-		7C497E48E41E8F3AA43D7A53390C2793 /* GuestCustomerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B45B4F9D975874090BEB8522D81C0 /* GuestCustomerRequest.swift */; };
-		7D9992E58F4E287BC6EE7AD30338862F /* FormattableAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A2E3D95B370914C7B19A3B81E80190 /* FormattableAddress.swift */; };
-		811AA1F682BDEBB36FAA84B0921AEFBE /* GuestAddressRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0245341CC5B1CB0CF50BF8ACC958B65F /* GuestAddressRequest.swift */; };
-		81BAB3D31E685B29004F50A3 /* PaymentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BAB3D21E685B29004F50A3 /* PaymentStatus.swift */; };
-		81D590B81E6DCABA00BC601F /* APIAddressesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590911E6DCABA00BC601F /* APIAddressesTests.swift */; };
-		81D590B91E6DCABA00BC601F /* APIArticleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590921E6DCABA00BC601F /* APIArticleTests.swift */; };
-		81D590BA1E6DCABA00BC601F /* APICartTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590931E6DCABA00BC601F /* APICartTests.swift */; };
-		81D590BB1E6DCABA00BC601F /* APIClientErrorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590941E6DCABA00BC601F /* APIClientErrorsTests.swift */; };
-		81D590BC1E6DCABA00BC601F /* APICreateCheckoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590951E6DCABA00BC601F /* APICreateCheckoutTests.swift */; };
-		81D590BD1E6DCABA00BC601F /* APICustomerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590961E6DCABA00BC601F /* APICustomerTests.swift */; };
-		81D590BE1E6DCABA00BC601F /* APIGetAddressesEndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590971E6DCABA00BC601F /* APIGetAddressesEndpointTests.swift */; };
-		81D590BF1E6DCABA00BC601F /* APIGuestCheckoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590981E6DCABA00BC601F /* APIGuestCheckoutTests.swift */; };
-		81D590C01E6DCABA00BC601F /* APIGuestOrderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590991E6DCABA00BC601F /* APIGuestOrderTests.swift */; };
-		81D590C11E6DCABA00BC601F /* APIOrderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D5909A1E6DCABA00BC601F /* APIOrderTests.swift */; };
-		81D590C21E6DCABA00BC601F /* APIUpdateCheckoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D5909B1E6DCABA00BC601F /* APIUpdateCheckoutTests.swift */; };
-		81D590C31E6DCABA00BC601F /* APITestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D5909C1E6DCABA00BC601F /* APITestCase.swift */; };
-		81D590C41E6DCABA00BC601F /* APIAuthorizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D5909D1E6DCABA00BC601F /* APIAuthorizationTests.swift */; };
-		81D590C51E6DCABA00BC601F /* ConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D5909E1E6DCABA00BC601F /* ConfigTests.swift */; };
-		81D590C61E6DCABA00BC601F /* DatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D5909F1E6DCABA00BC601F /* DatesTests.swift */; };
-		81D590C81E6DCABA00BC601F /* JSONBoolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590A21E6DCABA00BC601F /* JSONBoolsTests.swift */; };
-		81D590C91E6DCABA00BC601F /* JSONCollectionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590A31E6DCABA00BC601F /* JSONCollectionsTests.swift */; };
-		81D590CA1E6DCABA00BC601F /* JSONDatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590A41E6DCABA00BC601F /* JSONDatesTests.swift */; };
-		81D590CB1E6DCABA00BC601F /* JSONEquatableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590A51E6DCABA00BC601F /* JSONEquatableTests.swift */; };
-		81D590CC1E6DCABA00BC601F /* JSONJsonsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590A61E6DCABA00BC601F /* JSONJsonsTests.swift */; };
-		81D590CD1E6DCABA00BC601F /* JSONNullsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590A71E6DCABA00BC601F /* JSONNullsTests.swift */; };
-		81D590CE1E6DCABA00BC601F /* JSONNumbersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590A81E6DCABA00BC601F /* JSONNumbersTests.swift */; };
-		81D590CF1E6DCABA00BC601F /* JSONParseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590A91E6DCABA00BC601F /* JSONParseTests.swift */; };
-		81D590D01E6DCABA00BC601F /* JSONPathsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590AA1E6DCABA00BC601F /* JSONPathsTests.swift */; };
-		81D590D11E6DCABA00BC601F /* JSONStringsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590AB1E6DCABA00BC601F /* JSONStringsTests.swift */; };
-		81D590D21E6DCABA00BC601F /* JSONTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590AC1E6DCABA00BC601F /* JSONTestCase.swift */; };
-		81D590D31E6DCABA00BC601F /* JSONTests.json in Resources */ = {isa = PBXBuildFile; fileRef = 81D590AD1E6DCABA00BC601F /* JSONTests.json */; };
-		81D590D41E6DCABA00BC601F /* JSONUrlsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590AE1E6DCABA00BC601F /* JSONUrlsTests.swift */; };
-		81D590D51E6DCABA00BC601F /* KeychainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590AF1E6DCABA00BC601F /* KeychainTests.swift */; };
-		81D590D61E6DCABA00BC601F /* LoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590B01E6DCABA00BC601F /* LoggerTests.swift */; };
-		81D590D71E6DCABA00BC601F /* OptionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590B11E6DCABA00BC601F /* OptionsTests.swift */; };
-		81D590D81E6DCABA00BC601F /* SKUTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590B21E6DCABA00BC601F /* SKUTest.swift */; };
-		81D590D91E6DCABA00BC601F /* TestConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590B31E6DCABA00BC601F /* TestConfig.swift */; };
-		81D590DC1E6DCABA00BC601F /* URLRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590B61E6DCABA00BC601F /* URLRequestTests.swift */; };
-		81D590DD1E6DCABA00BC601F /* URLSessionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590B71E6DCABA00BC601F /* URLSessionMock.swift */; };
-		81D590E31E6DCB6C00BC601F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81D590DF1E6DCB6C00BC601F /* Default-568h@2x.png */; };
-		81D590E51E6DCB6C00BC601F /* TestsHostAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590E11E6DCB6C00BC601F /* TestsHostAppDelegate.swift */; };
-		81D590E91E6EA14000BC601F /* TestConsts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590E71E6EA14000BC601F /* TestConsts.swift */; };
-		81D590EA1E6EA14000BC601F /* TestOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590E81E6EA14000BC601F /* TestOptions.swift */; };
-		81D590F91E6EBD6800BC601F /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590F41E6EBD6800BC601F /* Options.swift */; };
-		81D590FA1E6EBD6800BC601F /* ZalandoCommerceAPI_authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590F51E6EBD6800BC601F /* ZalandoCommerceAPI_authorization.swift */; };
-		81D590FB1E6EBD6800BC601F /* ZalandoCommerceAPI_configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590F61E6EBD6800BC601F /* ZalandoCommerceAPI_configure.swift */; };
-		81D590FC1E6EBD6800BC601F /* ZalandoCommerceAPI_endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590F71E6EBD6800BC601F /* ZalandoCommerceAPI_endpoints.swift */; };
-		81D590FD1E6EBD6800BC601F /* ZalandoCommerceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590F81E6EBD6800BC601F /* ZalandoCommerceAPI.swift */; };
-		81D5910A1E6EBD8900BC601F /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D590FF1E6EBD8900BC601F /* Array.swift */; };
-		81D5910B1E6EBD8900BC601F /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D591001E6EBD8900BC601F /* Bundle.swift */; };
-		81D5910C1E6EBD8900BC601F /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D591011E6EBD8900BC601F /* Debug.swift */; };
-		81D5910D1E6EBD8900BC601F /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D591021E6EBD8900BC601F /* HTTP.swift */; };
-		81D5910E1E6EBD8900BC601F /* HTTPURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D591031E6EBD8900BC601F /* HTTPURLResponse.swift */; };
-		81D5910F1E6EBD8900BC601F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D591041E6EBD8900BC601F /* String.swift */; };
-		81D591101E6EBD8900BC601F /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D591051E6EBD8900BC601F /* URL.swift */; };
-		81D591111E6EBD8900BC601F /* URLComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D591061E6EBD8900BC601F /* URLComponents.swift */; };
-		81D591121E6EBD8900BC601F /* URLQueryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D591071E6EBD8900BC601F /* URLQueryItem.swift */; };
-		81D591131E6EBD8900BC601F /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D591081E6EBD8900BC601F /* URLRequest.swift */; };
-		81D591141E6EBD8900BC601F /* URLStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D591091E6EBD8900BC601F /* URLStringConvertible.swift */; };
-		81F13E2F1E6DA94000A1EBB6 /* MockAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F13E2E1E6DA94000A1EBB6 /* MockAPI.framework */; };
-		8387789B675CAC41D88C59F7CD9A49D5 /* CartRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C37D256F81316476AD1BB1CFB1D350D /* CartRequest.swift */; };
-		871861043470F7B6A72F34B73CC67714 /* GuestPaymentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B69DF001037C24E6BD4E0B378BFC01 /* GuestPaymentRequest.swift */; };
-		8C98093B61671563577C255FDA452AEA /* Recommendation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7147DEA2A8A6D75965491B0D3F813B /* Recommendation.swift */; };
-		963AE70DD87A3C9A75FB0231D2130E7F /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CF52ED3F20B2F59D5E6096E498A18B /* PaymentMethod.swift */; };
-		A0AD0F403E3AF7D1035336D0098FB5F9 /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = A075C77946E59051D3167374A5E7078C /* Brand.swift */; };
-		A0EFD6474DCE215941273DBFE9FB064B /* OrderAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A02961F55508B3B15CEC53112BFE4D /* OrderAddress.swift */; };
-		A45694A465415724991904EBB4C5DC3D /* CartItemRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B0CE819B745B123AB209C20DB0A0D6 /* CartItemRequest.swift */; };
-		A4D9AB4F35D75A6024D7D76FE2BF2CA8 /* UpdateCheckoutEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D4EEE90044BF8B6BD6CEA95A20AA4B /* UpdateCheckoutEndpoint.swift */; };
-		A617C549065FE3447ADCC97DFF9DDC69 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241BF92EE4C5A69B1FCD9B77B4533EDB /* JSON.swift */; };
-		ACCD79D9C4D9FB3D5EE8109A07679A3C /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99B5523444D2EE8AC1B5397A54086A /* Media.swift */; };
-		AFA5480D32447A330ADEB69346021F8C /* CheckoutAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C730D69D82840A7774CF4846D833BC /* CheckoutAddress.swift */; };
-		B33B756E36A1075A2EC6DCD9822DA9D1 /* JSONRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA165667BA3C72987F13563E3CB874B7 /* JSONRepresentable.swift */; };
-		B55E11C43D7FE5324EFC07547FE440BF /* ConfigurableEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D533B552DCF576E51B723BC3A926548B /* ConfigurableEndpoint.swift */; };
-		B66B644C530E41D683DBA1D5F907336F /* ZalandoCommerceAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF2DD2D803D006BDEAB6C294E238C72D /* ZalandoCommerceAPI.framework */; };
-		B760B0603070F9558115F9AF15FEF6B1 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADBF1E8B3FDBFAAE434240E7212C5FF /* Article.swift */; };
-		B8419F217F076553054D230EEFF60341 /* OrderRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C8EE9549DB6BC3760D2AE2B30E6D48 /* OrderRequest.swift */; };
-		BD4958A6838C84DC295CE30E7E28127D /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = B135F402AFF895CCD6EC039A7E8B875E /* Results.swift */; };
-		C97FDA428DD10A02B604098846CA1431 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702A2FD80899800D6B9E430BF468FC8B /* Logger.swift */; };
-		CAF49B6A3DAD4C68FF77D18AAB3B91A2 /* UpdateAddressRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE577A4B9190386AD2FD21D7815E6FD /* UpdateAddressRequest.swift */; };
-		CC838A0C2D75384A93FC69ABFA66E574 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF97F26C9E21DF37C322657F1000F09 /* APIRequest.swift */; };
-		D7D95B53EC353B847DEF517DC07B7A6F /* CheckAddressResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74306941AF9B87B8F6BBAF13C752AD8A /* CheckAddressResponse.swift */; };
-		DAB2BC46B777931E022DF54F2FE8937F /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 946A02D8E49A74EDBEBD78F9E7F24730 /* Nimble.framework */; };
-		DC686314A72D004D8057657BAE386E00 /* PaymentMethodType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F8647251682173E489D77B55EB0097 /* PaymentMethodType.swift */; };
-		DD13DE18E8535DE1DE2F8C486CEC3486 /* CreateAddressEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87E2BB38F8E86D59F7AE5601422338E /* CreateAddressEndpoint.swift */; };
-		DE75C7C9CBE1FEBD2BD8E4524B0220A5 /* CreateCheckoutEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9861CD2EBACCD0179BADDDB379313449 /* CreateCheckoutEndpoint.swift */; };
-		E0D665C2EC9F397884CDD291C9145EBB /* ConfigClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582E710AD6147AC2D88CFB8E862F16F3 /* ConfigClient.swift */; };
-		E527A75504B4F3AAF32F426105C37402 /* ResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB54F36E851DAABC7FC70DB14EF02B42 /* ResponseParser.swift */; };
-		E6A17887BC6BA4C25B2D758C44514B80 /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D788B8AFA05BF3BB7559752D777933 /* Money.swift */; };
-		E7561BB0527C36A7FA74020C228AF322 /* JSONSubscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8804A49A711E3E291A3634007CA610A0 /* JSONSubscript.swift */; };
-		E8FE522BEFADC682C935905FFA0AC529 /* GuestPaymentSelectionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C60F07A8CC8109EF845A9860B79828 /* GuestPaymentSelectionRequest.swift */; };
-		EC2F6D79BBBB87853DF7FC12A809D2A9 /* GetArticleRecommendationsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D923DA782F1BC91867B0595643E8F053 /* GetArticleRecommendationsEndpoint.swift */; };
-		ECE8DEFDB2A85FBCD15B77C89EA5EF4A /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69384BDB0D3D26DA7967C229EF6CF14A /* Keychain.swift */; };
-		F0FBE44409A85786DEFC3D7CD60EEFE9 /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C62414756DA20D0C2756D3C2891656 /* CartItem.swift */; };
-		F17DDBBF106C6A5D9C0A9FBDA9CCE3E3 /* GetCustomerEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF2B069D3C5A9A37A7DE2D0527356AA /* GetCustomerEndpoint.swift */; };
-		F70180EA1E7AC55161F0A0F5BC256BA1 /* PrintLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2EC7664BF1A5A912208A3602C7CB54 /* PrintLogger.swift */; };
-		F99CAF715FB0D591A7F5EB79A7C54CE7 /* CreateCartEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAF399BDB344C50E47DD70471E75EA /* CreateCartEndpoint.swift */; };
-		FC0655AC5517BC20F13B9DA9D181A142 /* UpdateCheckoutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6900B5912E42BB6129BCDE39649CE361 /* UpdateCheckoutRequest.swift */; };
-		FC4DC88516E339E12FB7E0B70724A3C5 /* UserAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C240A1E0049D934FB15689BA1417E9 /* UserAddress.swift */; };
-		FC8B4EB07DEBBA17ED31F8EEDD77023D /* UpdateAddressEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A87FB76A9759970AB11BB04A6CBDDD /* UpdateAddressEndpoint.swift */; };
-		FD865B0234FE07B7A85955A0E1EECB9B /* CompleteGuestOrderEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE84D917A996BF6E21032C025DEC1FB5 /* CompleteGuestOrderEndpoint.swift */; };
+		8F902F006798129186B528CDC950E084 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9169CC4DFEB1044352AC4940AB8F26BE /* Errors.swift */; };
+		8AAEF1504EB719D42F120CC3A5C6F3B8 /* Nimble.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 1467D6CF0ADEB0F8E670FF70F8EDFF9A /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AF4CE80CBD2ADCF11F34F19266D3DAC4 /* CreateOrderEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79F2C91E685E3F5AED82B22C7D9496B /* CreateOrderEndpoint.swift */; };
+		35B820B1AB2109A935486DAAEA34215C /* GuestPaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1706D2CF24E3803FB90982C46DD5711 /* GuestPaymentMethod.swift */; };
+		8030F0D9467F93B09C2221FC9988E36B /* CheckAddressRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BE41A9DD5C74942FACB218E3E2C340 /* CheckAddressRequest.swift */; };
+		668C68333914D9CD3ADD8E224D71B653 /* RFC3339DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA8EA9EA91A7BD6503EB904A7A729B /* RFC3339DateFormatter.swift */; };
+		E46B1921D680E2F2BBCD9FC7BD3939A3 /* PickupPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232AEB30DFD5B136C2CEE2DBB8CF7AA3 /* PickupPoint.swift */; };
+		BD6B12896CF3A8A3930CF246739D5AD2 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07449F1E97ED317EB5B3B4037F62470 /* Typealiases.swift */; };
+		E53398E50FBFE0CA93D9CFED44F5919E /* APIAccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = D077EC82D80978D6EAAB1E1202544D2C /* APIAccessToken.swift */; };
+		98D37783BFDF9D111CA7B481BE24F927 /* DeleteAddressEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CED16779D03C437333FDA4EF06B7F1D /* DeleteAddressEndpoint.swift */; };
+		E5E8C4AEFCCC144CE98F7CCE752CD4BE /* JSONResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB4D461A16222641FBBFB00D5E89041 /* JSONResponse.swift */; };
+		0193C5C67C59CD27CC6C2AB1C241E9B9 /* OutputStreams.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0E11AB96ADF0A159E6C73DA8A874A0 /* OutputStreams.swift */; };
+		49B6D2B9D8E7D460FAE7C9B29CC600DC /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84A399FE99FC6C745A93348790EA0EA /* Order.swift */; };
+		8188EB6900C80A75E437446EF2803C51 /* CheckAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB527DAF057059B9C2F37552BF63DA6 /* CheckAddress.swift */; };
+		89029D3B05C1AAA1EDA9914106188193 /* GuestOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4308EFAE641588119F8BD25DA565A381 /* GuestOrder.swift */; };
+		B888759C4DE321C6DAD225664C39B1AB /* CreateGuestOrderEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1887A24207EA84C13DCFDA3FBE608938 /* CreateGuestOrderEndpoint.swift */; };
+		58C600EE0A39E1B3D1248F33EC0BE714 /* DataTaskResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EAF3E1AF592D010BCDD050D425D5F0 /* DataTaskResponse.swift */; };
+		D74D3C9E39F444F8F86D48B9E1377972 /* GuestCheckout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890AF85C9923FEDF20E7700D2D39BC81 /* GuestCheckout.swift */; };
+		C855914EEABF77B66C308FBC0B19A957 /* GetArticleEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DF386A4DA927076700489ECA45B3D1 /* GetArticleEndpoint.swift */; };
+		F54379AEFA3B30F14A949043284FD37B /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3B9CB4CDE9A416BF23BC357683DE60 /* Notifications.swift */; };
+		C481CED761CF7FDD23FC11FB484DE901 /* GuestCartRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507B2E11570DCB6B9E726D883AECAE9B /* GuestCartRequest.swift */; };
+		570A5F970308E1C4FA8AA7EA1EAEEA73 /* Checkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505A8DD4F1751BC4C86ED1073FB01E53 /* Checkout.swift */; };
+		014B55E654CCF745554628F4E44FF587 /* Delivery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763A685B834DE425837DA06C0C4EA8E2 /* Delivery.swift */; };
+		3DF899D27725DC1A64D0C36AED8D5D60 /* GetGuestCheckoutEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20076EFE7FEE4981AFA2D84911ACC7D2 /* GetGuestCheckoutEndpoint.swift */; };
+		EC351E9A222A45C183D94E102CD34AF4 /* OrderConfirmation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13633D5B3FD5F4BD8F5F3853483A7D0 /* OrderConfirmation.swift */; };
+		8AD2160B0B7580D07097C7D38B9729BC /* SKU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3FAE484E6EB0DD2EFF1DD75C861AED /* SKU.swift */; };
+		FA69629F4D22ECEDBCF4AB124BE6A46E /* JSONInitializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4E409EDDC78B0806BDB04D8C277DB1 /* JSONInitializable.swift */; };
+		8BA03C00B04C82FEBABDF7E9146B7247 /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06C314B241651A0E23F00C0105F0208 /* RequestBuilder.swift */; };
+		7C9AE386DDDED5D29F6FCC9B17F577EC /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98F611EAE844CCA802BB682B50CA0E /* Gender.swift */; };
+		6AE46C57BA78ACADB7DDEA63E1683EDC /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFAC6F31C177F79AF23609078B899B8 /* Data.swift */; };
+		D8A3BB86E0A20270245340DCC61DD836 /* GetAddressesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0F6E40EB9A634337FFA561273B1A4B /* GetAddressesEndpoint.swift */; };
+		F27D865734E0A61FCFBB7845F40EB7F1 /* GetConfigEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9009EA8140FFB892ACF9DE624A3D735 /* GetConfigEndpoint.swift */; };
+		D116DEFE8FCDCCA312FE63F6BA3F33D3 /* CheckAddressEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE6F42C817F305411D2DCDF4D1CC652 /* CheckAddressEndpoint.swift */; };
+		638AF95E79BC558A12A90BA74DF217D5 /* GuestOrderRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB38976788A1A7D2B3622F70B9A76313 /* GuestOrderRequest.swift */; };
+		25B900273BE0A1A2E4A5ECF536AACD56 /* CreateAddressRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81A2B9DE3362B1C7310525AE14B062F /* CreateAddressRequest.swift */; };
+		870CAAB32D287A356709AC38FBDAA4DD /* Catalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D61D89FE7A31D3C205F0166A083609 /* Catalog.swift */; };
+		780CD39B0F6A5B61F2D017A48CAD8F1F /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF43D57FAB8A5C3B4A694613C44D64A8 /* Customer.swift */; };
+		40553F8E6FE0CB8ECD5B91BEB24A6924 /* CheckoutAddresses.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E8B87EE4C37C6F3119A023A965E91F /* CheckoutAddresses.swift */; };
+		E3F720A8E7765CCEC96C33C052BBD367 /* GuestCheckoutAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AC745624F14E65918E8D2EF108F83C /* GuestCheckoutAddress.swift */; };
+		BFA5E5D6D6D85BA0BB0E317EDD1AAF7F /* SystemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E6EE084C929789E6446DE65D2D9517 /* SystemInfo.swift */; };
+		EEF93F894FF6EED519511FF94E0A4AAA /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771B98E9B348D4050C19DF588FD5C68E /* Cart.swift */; };
+		4D4F6F4BC3D862EC2A1F5EC078EC76C6 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30059CC20B5A52CFCF99F087DC2536C1 /* Payment.swift */; };
+		95FE614639CD920427281E543A38CC6A /* GuestCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2344418A0033F834DA98A3D7BC2C394 /* GuestCart.swift */; };
+		74DFF1875F32CB886EE3EDAF83E6674F /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EFAC34ECB3C4A13FC6E1619659927A /* Config.swift */; };
+		97BAB3DD150F019E5999FC3DEA86015C /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30174FED439A943DBB50E700F0C20096 /* Endpoint.swift */; };
+		51633FB482F6009B06FF1A6828DFE3F6 /* CreateCheckoutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065D2FE8FA9EFDFAEA6E39945726B30B /* CreateCheckoutRequest.swift */; };
+		2F2967E67E59BDA64C18C8CE206D5E9C /* StreetAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D39F2750ACA486E264A66411209A184 /* StreetAddress.swift */; };
+		C6DF712AD1E90735ED8B90B5A5BBD24F /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19E533AD52C39342D17007C8986700E /* APIClient.swift */; };
+		EBA82A6A1B4CBB0A4541461F723754C5 /* GuestCustomerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0281E8C620ED7D706F2CD7D40EC928 /* GuestCustomerRequest.swift */; };
+		FE15C17E689AA8C7EA8B67D0DE0B48BD /* FormattableAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CB276E242319A774DCCF98A4861D00 /* FormattableAddress.swift */; };
+		A751205EA193C74DA32BEFA2787A7D56 /* GuestAddressRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFE61A94E7A4BDFE638676B9E8E1DF /* GuestAddressRequest.swift */; };
+		FF2334104FB810600BE6562912FA1C9F /* PaymentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48CEA2A56DE027FEC99FC34642E4B44 /* PaymentStatus.swift */; };
+		054A79801AB9CE6FBE9C85F81B29267B /* APIAddressesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FD67EA3F1275D9DF5563A85D19269B /* APIAddressesTests.swift */; };
+		70008E4CBC431D47BC2A39AB767A4817 /* APIArticleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59B4950F535DAFEC8FAADC7888D54EA /* APIArticleTests.swift */; };
+		843E21DBEC0F73204F317885F58D0D4F /* APICartTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E4545ABE5ADC6AA7659F258221251A /* APICartTests.swift */; };
+		34F956F81B3EF933D14F384CE411C20F /* APIClientErrorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AD47BDEF689E811120B23A3954E7DF /* APIClientErrorsTests.swift */; };
+		11EFAF004DCBE834A2C56DE9DDBFCC81 /* APICreateCheckoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CAF6DDA4F4EA61A04A80366047F0B4 /* APICreateCheckoutTests.swift */; };
+		4C9925CC1943C852F30896CA68D60BCA /* APICustomerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A44C2E3F38275695381775D4713BDF /* APICustomerTests.swift */; };
+		9974DCAFDF42B15FBAFAAFD55437E9EA /* APIGetAddressesEndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D0D11BD0896960A480D20080E4BFA2 /* APIGetAddressesEndpointTests.swift */; };
+		E7428E46E9F406A21FBC31C8069350A2 /* APIGuestCheckoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A860F6038629AD41AD6842EE4C9FB5 /* APIGuestCheckoutTests.swift */; };
+		B6594F2BE39C7630093917F6147ADB5A /* APIGuestOrderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F01CD4E74D54B84EB602C1BD11F4A54 /* APIGuestOrderTests.swift */; };
+		E9B53F00FE6F5D98E978B24FD63A4CE3 /* APIOrderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F0ADD10E54B0A584C36C08B06DF491 /* APIOrderTests.swift */; };
+		420668524F960BBFE8DFD91580C74F7E /* APIUpdateCheckoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEF7E54D011C0F4F318C6A61CB5F334 /* APIUpdateCheckoutTests.swift */; };
+		E12B86C1D7F6C28494B0A2504BA719C0 /* APITestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56BEF02A32F3227190B86DC6D900B72 /* APITestCase.swift */; };
+		17D6CF758A56BB472661E8CE92C010E8 /* APIAuthorizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6BD5EC5A6B6342EFF4B2AC344017BB /* APIAuthorizationTests.swift */; };
+		DF521273BBED398ECAB64F93C9A9907E /* ConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953C9A2531EEE2E24166910F49BB140F /* ConfigTests.swift */; };
+		CABE31C7E1F4AE818AB4C07802EF00B1 /* DatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13B2002ABC3292A05FDCE16752BC088 /* DatesTests.swift */; };
+		C8BC2634AEC8A3E0A50D6AB3BAD12E22 /* JSONBoolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83D040EF5A70D12F3B2153E2E4AC50A /* JSONBoolsTests.swift */; };
+		8511FA5BEB2293B1FCAB81AC16FC74D0 /* JSONCollectionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E197AF213759E2361A69853143EDB00 /* JSONCollectionsTests.swift */; };
+		1F253216F70C236BAFBD45BF9E071DB7 /* JSONDatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0CAE9B10476E0C6574179518AFA2D2 /* JSONDatesTests.swift */; };
+		63297FD73E64C1215A4D042FF7B872B4 /* JSONEquatableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF7026C752ACB2E3307DCCF679595F8 /* JSONEquatableTests.swift */; };
+		E5EA8B7B564A616FF041010D6DF32180 /* JSONJsonsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550E7AD062DF62C12E3E0219C0E72EDC /* JSONJsonsTests.swift */; };
+		9457D8873344A1A8C1D31B5411081401 /* JSONNullsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D200023715EEA4CB2BFE438E8A0DABA /* JSONNullsTests.swift */; };
+		C3F7311751B74DCE3FA989947FC751D0 /* JSONNumbersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9580D1FB726AAAD1E1D9DC34401C506C /* JSONNumbersTests.swift */; };
+		D1FC7E22C48613BDD537212F2A7CC658 /* JSONParseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55C7ACF45D9435B76576EA0763D2705 /* JSONParseTests.swift */; };
+		944274838B9B22854DC048419A0D3028 /* JSONPathsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57C0D92966E463D98DE0F23913A47B1 /* JSONPathsTests.swift */; };
+		6DC23A9E0CD8B980064FAF2F93C9BB50 /* JSONStringsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB92A1B9B5D9056808DD136927CA2441 /* JSONStringsTests.swift */; };
+		79F1BF9199E88FABF87C71386E4B8E21 /* JSONTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BFC03A65B70F96D58A5CA09B30D402 /* JSONTestCase.swift */; };
+		16D8BD7311B7A0FD048E61A70403F090 /* JSONTests.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A469F86AA52C9081A3284FF853E8D5D /* JSONTests.json */; };
+		1C0CDCCF2651155BAEE9E2FB41F122AF /* JSONUrlsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFBA5CC8294FAA680792A6D5EA0D7E3 /* JSONUrlsTests.swift */; };
+		A90543458A76C13FC28111DCE4244489 /* KeychainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C729D184C487BF167E1A0B8D0E8E47A1 /* KeychainTests.swift */; };
+		C1CAF47B48A4EF526C8E673BCF8998D9 /* LoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601B284507EE034ED5698BE5A8A0AB45 /* LoggerTests.swift */; };
+		9AE2C8DEAFE2654EBDBE1E175FCEF59F /* OptionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFF140E6892815738A7986B628BFA88 /* OptionsTests.swift */; };
+		4DA4C69A9BE2C5FB642D787C78C5EAA7 /* SKUTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752E171462A6205B6CAC3CA65AE61032 /* SKUTest.swift */; };
+		93406F6155BA85651A7BF5B7125DC1C5 /* TestConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6751EB599BCA3DFD744D191A074E01 /* TestConfig.swift */; };
+		814FBCCCDD0B3E57D591724B8730176F /* URLRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C1DE67BF8F854330C1595821CDF4B1 /* URLRequestTests.swift */; };
+		8838357A8693E41BB7E734E1357B61FA /* URLSessionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806FB6A41BB727A8206A66C67EBE52EA /* URLSessionMock.swift */; };
+		0BF3D70C62169F6A6398F9AE7F09A268 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73BDFE43A87A048DC59FE819FAD225F8 /* Default-568h@2x.png */; };
+		074B721CAFDED0725356D978EE589D75 /* TestsHostAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5575D6049733B090759CEB82110CAB /* TestsHostAppDelegate.swift */; };
+		9C74327D50F47D82A68386DC3F6D473B /* TestConsts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92EC5843DED96B7C7CE0F9D96B7209A /* TestConsts.swift */; };
+		D4496A21284992EE767FB807FAD09D6F /* TestOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBA6958F7D734117FC2B0BD0E364A31 /* TestOptions.swift */; };
+		B3DC49A3352B1119BA4FCAEBD518B9CE /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E42D1D2D2141B4F3913815A94DFB6E /* Options.swift */; };
+		D724EDF296973B1FC69E76BA8AA65CE3 /* ZalandoCommerceAPI_authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8707D57998417CBBA2502770D996CA8 /* ZalandoCommerceAPI_authorization.swift */; };
+		D05957D12BDA047E6D88B260B2CF1254 /* ZalandoCommerceAPI_configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175DA5D020E0A28D5AE7165E6035BD53 /* ZalandoCommerceAPI_configure.swift */; };
+		8F92D8F4387487C5F85114A3871B3900 /* ZalandoCommerceAPI_endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C88FEF5ADFD67306D64A7FD84302B6 /* ZalandoCommerceAPI_endpoints.swift */; };
+		E900FF40745FE0BA77E87323DFFC429A /* ZalandoCommerceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81145D695774F43DBAD23686C09BE53F /* ZalandoCommerceAPI.swift */; };
+		F5A44AA344DA097388EA0F1B455D60A0 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5A35D29D23945F209AB3B256A7861B /* Array.swift */; };
+		DF0AFF5819C9C602F41D765FC6C25B18 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A41AA5053972DEE2E9CD2030DAD1AF /* Bundle.swift */; };
+		24879E6BB7B25125676D1767298083F5 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = D344552497D2FF0EAE97E0D4EBA902C1 /* Debug.swift */; };
+		CFC7C31ACB60A84D2E48B3DA68F92061 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2707F7F16AFCD8DECF5AA112E4557F7E /* HTTP.swift */; };
+		965979177037D1499DD85555B2C9904C /* HTTPURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A039B54624FA11736FDEA4D4F7C7C4E /* HTTPURLResponse.swift */; };
+		22E426734EDA2918C5AD5BA16A7A4F77 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEC308D5494AFFE5F61663CF35EC9D4 /* String.swift */; };
+		8618A0D7A50A8AEC0108827422CEBA79 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AC3795340A010EEBD24549445B2D07 /* URL.swift */; };
+		A1D3E2AB9B43355056F1616618DEDD6D /* URLComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F80292A489A2A5CB3E5B74BB03E4B0B /* URLComponents.swift */; };
+		CB20C35C7AB8BB8BFFFC094A428EF5EF /* URLQueryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1FD7FF637FFFED91700C7F10BE7D7D /* URLQueryItem.swift */; };
+		F43461C5157A958F84005BD55E261B3A /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF102FE02AA5D2BBBCB9FA1E8E02805 /* URLRequest.swift */; };
+		41E6D39CCFFB1FA27D5BAE4DA4D7962C /* URLStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593378FE72BC07B0558F581BCE3CBAD /* URLStringConvertible.swift */; };
+		CB607FF2B15C3C3CE54895E0FD3D591C /* MockAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B44C2C0A536E0A163E5230B4DD5C145A /* MockAPI.framework */; };
+		D4A7C8E3F8C41F9435F4F9E72A4734D9 /* CartRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136F36249C12EFA0A3C955C13183D28F /* CartRequest.swift */; };
+		62CEA3B1FD52AE017C76C6AF4735D278 /* GuestPaymentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3600B3C22ABD064A0E6DBE8A67D7CE /* GuestPaymentRequest.swift */; };
+		E484C6A025CE7392C4CB3462C16307FF /* Recommendation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656DAEBB527CA6451B7838234BC48C61 /* Recommendation.swift */; };
+		7C29D20AE7CF9E8792E1DAF8830227AF /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D7FD36FCD07E03925FE9676ED1AA9C /* PaymentMethod.swift */; };
+		386219427C4BFE01E7C7EC44488A4976 /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5286D23605086454916EC0D345EE2C95 /* Brand.swift */; };
+		FA1F1A5B1CF15A0ED5448BA5C9E6B4A4 /* OrderAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633280BC92207C3C19ADDF58B4C60B24 /* OrderAddress.swift */; };
+		8B80BA61E75DA35D42D1F9AD65BC4478 /* CartItemRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A0495316C1D2FB15914EB0034A8EE /* CartItemRequest.swift */; };
+		CC9958EF6AE39D836B7BD07DA0D4FD5F /* UpdateCheckoutEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71018C34BC86989DF4CE6FD0C0D868 /* UpdateCheckoutEndpoint.swift */; };
+		A2C86A8D301E107284C5754110539D48 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7930D1C1EE26AEBCB384D80F3768DB /* JSON.swift */; };
+		CD09C88EDB1B9C26026FFC8D191D766D /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E110FCD365662A9BD79D87E838A14F3 /* Media.swift */; };
+		D98D948B51EE93DCE1346902AAC7B379 /* CheckoutAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CCE1B446DAFB1D5E70BA51709E30C4 /* CheckoutAddress.swift */; };
+		27F82D91722427A9C814A6D0B315E4B1 /* JSONRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155DCB42E09774B5CCF2F023226D7E17 /* JSONRepresentable.swift */; };
+		42CF8175F095CB099070BEE41F1D9019 /* ConfigurableEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEFB2CA1A1A1844FC76BBBD0DFD3C9D /* ConfigurableEndpoint.swift */; };
+		F98DD02AB7A49EAF8B39F8A1BBC17D8B /* ZalandoCommerceAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9E10874B5B8C29BD790BDF5931EEE1B /* ZalandoCommerceAPI.framework */; };
+		A6F5FD65CA22E7ACA7E2B1EFB563DD6A /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9590E1CDEF09515D2C3899B5BBB8CCAA /* Article.swift */; };
+		822EDE66C0F480C1273B1F69A5B20BCE /* OrderRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16576333F5CDE655FDD847A4482011F5 /* OrderRequest.swift */; };
+		0322E9139517223BF0258E75CE477BD1 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5DD2B9DFF93E79E1805E8B6467C0EB /* Results.swift */; };
+		456DEB42947799544346E63C7162725B /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC257C848043A700A350D0ECE268FBBA /* Logger.swift */; };
+		1E3377B88EE31113043C0AE5AC8A1808 /* UpdateAddressRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D763C3A858FEA75BEF31CE1C229F28C /* UpdateAddressRequest.swift */; };
+		4ADC4BC4EB81A1390E23550EFBBC8689 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3576DB80F7A5DF4AAB26F726E8780CCE /* APIRequest.swift */; };
+		5FD3769AB9409066CDABF36E14EED58F /* CheckAddressResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709868318C350083B0842D8102CE3FB2 /* CheckAddressResponse.swift */; };
+		97BDBB1858CF42F3156104D297832D91 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1467D6CF0ADEB0F8E670FF70F8EDFF9A /* Nimble.framework */; };
+		522CB73B0180E77041A6EF4881A890E8 /* PaymentMethodType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A863E09F4A2F1E0C5E8EB4D3C9CF4DE5 /* PaymentMethodType.swift */; };
+		FF36445A5EB1056D35C3813CF6DDC778 /* CreateAddressEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A62AB06231E1EA4427E5A334EDC68C0 /* CreateAddressEndpoint.swift */; };
+		B8E61C2DFBBFC2B2C4E7FCC2FABCA8EA /* CreateCheckoutEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11A111B26B481F2248CEA7422E187AF /* CreateCheckoutEndpoint.swift */; };
+		023331E1323DFDA492CDCFEC3CCF3EB6 /* ConfigClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A759CE06B1D728D13008ABBDF8826BA4 /* ConfigClient.swift */; };
+		75B284406ECE6C0F17B1045F977690CD /* ResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC53D6D4763A7BC5EDF50D62A74ACD2 /* ResponseParser.swift */; };
+		B30B30197840C62F6E1400C159A0FA34 /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0EBCFB03B0ABB7A56568D18E540222 /* Money.swift */; };
+		8E697C3CD73BCE802406D900B5E1A178 /* JSONSubscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BA93EE4204E97102D1364AA3E980CE /* JSONSubscript.swift */; };
+		D33F60ED43BCB64F9F35F18EF3EEAFFC /* GuestPaymentSelectionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961220D2BE85EB3CEB10EAA441EA7FFF /* GuestPaymentSelectionRequest.swift */; };
+		295C4795209411313D716577BC037D26 /* GetArticleRecommendationsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BC4EC5B5D58AAD150827DB369C1847 /* GetArticleRecommendationsEndpoint.swift */; };
+		412CD802BFA2BDE9590E727D8E0BA0B6 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A38FF0B3CB514C8672B5FD311FFD9D5 /* Keychain.swift */; };
+		C94D5B44163A1977741C60F18FF0CB6F /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B78F111A934CE9A33D0A71306605FB /* CartItem.swift */; };
+		8185E45121D18D557B1144C4CFBFD139 /* GetCustomerEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA28AFBA68A3CC4A3F178751FC939BD /* GetCustomerEndpoint.swift */; };
+		11EBE5F865B477D2034E1C8FE967DE9D /* PrintLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BBFD750E621A6E505F87562E6AD4FA /* PrintLogger.swift */; };
+		1AB434C5EEFC4CEBA648B437E9F42ABE /* CreateCartEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFF67DD64252C69FF5CDAB369085354 /* CreateCartEndpoint.swift */; };
+		D1BA93D11B197ECF332355378A8D43D9 /* UpdateCheckoutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C2C192219E0EA8F0C71E8F14494F7B /* UpdateCheckoutRequest.swift */; };
+		5C87BFB83B32D99CD23DF2A62AD3FA76 /* UserAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C09E87D618085F7DF1D5EBD5CCECC3A /* UserAddress.swift */; };
+		3AB069545AB734694F768F495FFD44B3 /* UpdateAddressEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3643BC606E1A502111F8390121B1EDFA /* UpdateAddressEndpoint.swift */; };
+		66FD58D674AA9C708BDF54AB3FDFE016 /* CompleteGuestOrderEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043F3F717135722F7CAAD2EC74B2BC0F /* CompleteGuestOrderEndpoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		55BDBECCCFA2E13FED91A8C226F432E2 /* PBXContainerItemProxy */ = {
+		8A55841C314010700824F310FFD40C42 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = CF97571A7484C47635A53E809C53B7ED /* Project object */;
+			containerPortal = 895A2C0F99CF628E0D9B3264535E52F9 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = E59A11A5E0347028AC04CEEACDF57D88;
+			remoteGlobalIDString = 61BC2BBC9598A5C26E622297956E7A0D;
 			remoteInfo = API;
 		};
-		5674F4AACF3972C221FB06B1C5B3302F /* PBXContainerItemProxy */ = {
+		FC0586371F0DCB1FA2A64C6E79DCE0F1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = CF97571A7484C47635A53E809C53B7ED /* Project object */;
+			containerPortal = 895A2C0F99CF628E0D9B3264535E52F9 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 4C40501591B44F17B94996E914C5F583;
+			remoteGlobalIDString = 17DF64D1C5C8401ED753EBE1CADBC364;
 			remoteInfo = APITestsHostApp;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		B83C0648A94FC8E2D698170AFE23C106 /* Copy Frameworks */ = {
+		77110AB9365D72783308331161453C25 /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				01F1C5695D20C27942DFECED1195107B /* Nimble.framework in Copy Frameworks */,
+				8AAEF1504EB719D42F120CC3A5C6F3B8 /* Nimble.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -189,180 +189,180 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		01B7AA4A1026DDF24004CE7F0E355625 /* GetConfigEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetConfigEndpoint.swift; sourceTree = "<group>"; };
-		0245341CC5B1CB0CF50BF8ACC958B65F /* GuestAddressRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestAddressRequest.swift; sourceTree = "<group>"; };
-		06F04274C9DF91FEABFDD5EE482E7553 /* GuestOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestOrder.swift; sourceTree = "<group>"; };
-		0D89792D814554CD8DB67D0A0F6DC39F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ZalandoCommerceAPI/Info.plist; sourceTree = SOURCE_ROOT; };
-		1144008D922BB81B068D385A27F28BEA /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
-		15AB716AB81A1EB750046BA350B059AA /* GuestCheckoutAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCheckoutAddress.swift; sourceTree = "<group>"; };
-		15D788B8AFA05BF3BB7559752D777933 /* Money.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
-		15E7B77923CA267431E29AFE17AE96EA /* RFC3339DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RFC3339DateFormatter.swift; sourceTree = "<group>"; };
-		1DF97F26C9E21DF37C322657F1000F09 /* APIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
-		1E03081CC39663E90CE41C2416C19A80 /* GuestCartRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCartRequest.swift; sourceTree = "<group>"; };
-		1F74E6F0CBCE6D7E27184F239E9438F9 /* PickupPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickupPoint.swift; sourceTree = "<group>"; };
-		241BF92EE4C5A69B1FCD9B77B4533EDB /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
-		26AB725F554DA56411A3B5D67010F273 /* CreateOrderEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrderEndpoint.swift; sourceTree = "<group>"; };
-		27C60F07A8CC8109EF845A9860B79828 /* GuestPaymentSelectionRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestPaymentSelectionRequest.swift; sourceTree = "<group>"; };
-		2CF7D5BE1946026F4EC6170B29C69347 /* CreateGuestOrderEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGuestOrderEndpoint.swift; sourceTree = "<group>"; };
-		34A2E3D95B370914C7B19A3B81E80190 /* FormattableAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormattableAddress.swift; sourceTree = "<group>"; };
-		37B69DF001037C24E6BD4E0B378BFC01 /* GuestPaymentRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestPaymentRequest.swift; sourceTree = "<group>"; };
-		3D2EC7664BF1A5A912208A3602C7CB54 /* PrintLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintLogger.swift; sourceTree = "<group>"; };
-		3E05F60B2B93FBE0DCC2ADDCB25843AC /* ZalandoCommerceAPITestsHostApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZalandoCommerceAPITestsHostApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		402AD2052AB32129CFB12ED77B1D048C /* StreetAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreetAddress.swift; sourceTree = "<group>"; };
-		439BC5F5E13583D27A6EC5B0EB9C41AB /* GuestCheckout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCheckout.swift; sourceTree = "<group>"; };
-		4684381074A4798A9C76F19A7002341C /* Cart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
-		4925DB568F4726E5E5D37663419677B8 /* DeleteAddressEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteAddressEndpoint.swift; sourceTree = "<group>"; };
-		4944BCDF87800B1F61B9A15A08C0FAC7 /* CreateAddressRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAddressRequest.swift; sourceTree = "<group>"; };
-		4CC775974D2C7BEE823393C249A83E19 /* GetAddressesEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetAddressesEndpoint.swift; sourceTree = "<group>"; };
-		5122324D4A85204EB38F54BF29FEB024 /* Catalog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Catalog.swift; sourceTree = "<group>"; };
-		51B0CE819B745B123AB209C20DB0A0D6 /* CartItemRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartItemRequest.swift; sourceTree = "<group>"; };
-		51C62414756DA20D0C2756D3C2891656 /* CartItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
-		520EB901467782BBA1241928C1B83809 /* DataTaskResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataTaskResponse.swift; sourceTree = "<group>"; };
-		550185D4F6E3EBAB878EAFC9701AC441 /* CheckAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckAddress.swift; sourceTree = "<group>"; };
-		582E710AD6147AC2D88CFB8E862F16F3 /* ConfigClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigClient.swift; sourceTree = "<group>"; };
-		5ADBF1E8B3FDBFAAE434240E7212C5FF /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
-		5B5B140809815AB229E44B61389E3F9A /* Checkout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Checkout.swift; sourceTree = "<group>"; };
-		5DF2B069D3C5A9A37A7DE2D0527356AA /* GetCustomerEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCustomerEndpoint.swift; sourceTree = "<group>"; };
-		60901C59AEE6F40EF54A35763F5E2CA0 /* GetArticleEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetArticleEndpoint.swift; sourceTree = "<group>"; };
-		676768CF421365F56E0325D156E2F301 /* OutputStreams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutputStreams.swift; sourceTree = "<group>"; };
-		6900B5912E42BB6129BCDE39649CE361 /* UpdateCheckoutRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateCheckoutRequest.swift; sourceTree = "<group>"; };
-		69384BDB0D3D26DA7967C229EF6CF14A /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
-		6C37D256F81316476AD1BB1CFB1D350D /* CartRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartRequest.swift; sourceTree = "<group>"; };
-		6CF4A6E890DD1042419DC11B39812630 /* CheckoutAddresses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutAddresses.swift; sourceTree = "<group>"; };
-		702A2FD80899800D6B9E430BF468FC8B /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		73A02961F55508B3B15CEC53112BFE4D /* OrderAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderAddress.swift; sourceTree = "<group>"; };
-		74306941AF9B87B8F6BBAF13C752AD8A /* CheckAddressResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckAddressResponse.swift; sourceTree = "<group>"; };
-		747A73447DC8ACA0F246CCD8C6D0B513 /* Gender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
-		7524A17497C3AC5EDBB91BC82D0D33F1 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
-		76D8786A1A0E25F620A6FDC8EEB941AD /* ZalandoCommerceAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZalandoCommerceAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		76F8647251682173E489D77B55EB0097 /* PaymentMethodType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodType.swift; sourceTree = "<group>"; };
-		78BD428C28C6631A27A6BCEB01F1A7AD /* JSONResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONResponse.swift; sourceTree = "<group>"; };
-		7CDE9B266DF0DAFAF1BB3ED0A00D2609 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
-		80A87FB76A9759970AB11BB04A6CBDDD /* UpdateAddressEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateAddressEndpoint.swift; sourceTree = "<group>"; };
-		81BAB3D21E685B29004F50A3 /* PaymentStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentStatus.swift; sourceTree = "<group>"; };
-		81D590911E6DCABA00BC601F /* APIAddressesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIAddressesTests.swift; sourceTree = "<group>"; };
-		81D590921E6DCABA00BC601F /* APIArticleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIArticleTests.swift; sourceTree = "<group>"; };
-		81D590931E6DCABA00BC601F /* APICartTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APICartTests.swift; sourceTree = "<group>"; };
-		81D590941E6DCABA00BC601F /* APIClientErrorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClientErrorsTests.swift; sourceTree = "<group>"; };
-		81D590951E6DCABA00BC601F /* APICreateCheckoutTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APICreateCheckoutTests.swift; sourceTree = "<group>"; };
-		81D590961E6DCABA00BC601F /* APICustomerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APICustomerTests.swift; sourceTree = "<group>"; };
-		81D590971E6DCABA00BC601F /* APIGetAddressesEndpointTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIGetAddressesEndpointTests.swift; sourceTree = "<group>"; };
-		81D590981E6DCABA00BC601F /* APIGuestCheckoutTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIGuestCheckoutTests.swift; sourceTree = "<group>"; };
-		81D590991E6DCABA00BC601F /* APIGuestOrderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIGuestOrderTests.swift; sourceTree = "<group>"; };
-		81D5909A1E6DCABA00BC601F /* APIOrderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIOrderTests.swift; sourceTree = "<group>"; };
-		81D5909B1E6DCABA00BC601F /* APIUpdateCheckoutTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIUpdateCheckoutTests.swift; sourceTree = "<group>"; };
-		81D5909C1E6DCABA00BC601F /* APITestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITestCase.swift; sourceTree = "<group>"; };
-		81D5909D1E6DCABA00BC601F /* APIAuthorizationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIAuthorizationTests.swift; sourceTree = "<group>"; };
-		81D5909E1E6DCABA00BC601F /* ConfigTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigTests.swift; sourceTree = "<group>"; };
-		81D5909F1E6DCABA00BC601F /* DatesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatesTests.swift; sourceTree = "<group>"; };
-		81D590A01E6DCABA00BC601F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		81D590A21E6DCABA00BC601F /* JSONBoolsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONBoolsTests.swift; sourceTree = "<group>"; };
-		81D590A31E6DCABA00BC601F /* JSONCollectionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONCollectionsTests.swift; sourceTree = "<group>"; };
-		81D590A41E6DCABA00BC601F /* JSONDatesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDatesTests.swift; sourceTree = "<group>"; };
-		81D590A51E6DCABA00BC601F /* JSONEquatableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONEquatableTests.swift; sourceTree = "<group>"; };
-		81D590A61E6DCABA00BC601F /* JSONJsonsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONJsonsTests.swift; sourceTree = "<group>"; };
-		81D590A71E6DCABA00BC601F /* JSONNullsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONNullsTests.swift; sourceTree = "<group>"; };
-		81D590A81E6DCABA00BC601F /* JSONNumbersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONNumbersTests.swift; sourceTree = "<group>"; };
-		81D590A91E6DCABA00BC601F /* JSONParseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParseTests.swift; sourceTree = "<group>"; };
-		81D590AA1E6DCABA00BC601F /* JSONPathsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONPathsTests.swift; sourceTree = "<group>"; };
-		81D590AB1E6DCABA00BC601F /* JSONStringsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONStringsTests.swift; sourceTree = "<group>"; };
-		81D590AC1E6DCABA00BC601F /* JSONTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONTestCase.swift; sourceTree = "<group>"; };
-		81D590AD1E6DCABA00BC601F /* JSONTests.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = JSONTests.json; sourceTree = "<group>"; };
-		81D590AE1E6DCABA00BC601F /* JSONUrlsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONUrlsTests.swift; sourceTree = "<group>"; };
-		81D590AF1E6DCABA00BC601F /* KeychainTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainTests.swift; sourceTree = "<group>"; };
-		81D590B01E6DCABA00BC601F /* LoggerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggerTests.swift; sourceTree = "<group>"; };
-		81D590B11E6DCABA00BC601F /* OptionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsTests.swift; sourceTree = "<group>"; };
-		81D590B21E6DCABA00BC601F /* SKUTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKUTest.swift; sourceTree = "<group>"; };
-		81D590B31E6DCABA00BC601F /* TestConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestConfig.swift; sourceTree = "<group>"; };
-		81D590B61E6DCABA00BC601F /* URLRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestTests.swift; sourceTree = "<group>"; };
-		81D590B71E6DCABA00BC601F /* URLSessionMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionMock.swift; sourceTree = "<group>"; };
-		81D590DF1E6DCB6C00BC601F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		81D590E01E6DCB6C00BC601F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		81D590E11E6DCB6C00BC601F /* TestsHostAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestsHostAppDelegate.swift; sourceTree = "<group>"; };
-		81D590E21E6DCB6C00BC601F /* ZalandoCommerceAPITestsHostApp.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = ZalandoCommerceAPITestsHostApp.entitlements; sourceTree = "<group>"; };
-		81D590E71E6EA14000BC601F /* TestConsts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestConsts.swift; sourceTree = "<group>"; };
-		81D590E81E6EA14000BC601F /* TestOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestOptions.swift; sourceTree = "<group>"; };
-		81D590F41E6EBD6800BC601F /* Options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Options.swift; path = API/Options.swift; sourceTree = "<group>"; };
-		81D590F51E6EBD6800BC601F /* ZalandoCommerceAPI_authorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZalandoCommerceAPI_authorization.swift; path = API/ZalandoCommerceAPI_authorization.swift; sourceTree = "<group>"; };
-		81D590F61E6EBD6800BC601F /* ZalandoCommerceAPI_configure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZalandoCommerceAPI_configure.swift; path = API/ZalandoCommerceAPI_configure.swift; sourceTree = "<group>"; };
-		81D590F71E6EBD6800BC601F /* ZalandoCommerceAPI_endpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZalandoCommerceAPI_endpoints.swift; path = API/ZalandoCommerceAPI_endpoints.swift; sourceTree = "<group>"; };
-		81D590F81E6EBD6800BC601F /* ZalandoCommerceAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZalandoCommerceAPI.swift; path = API/ZalandoCommerceAPI.swift; sourceTree = "<group>"; };
-		81D590FF1E6EBD8900BC601F /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
-		81D591001E6EBD8900BC601F /* Bundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
-		81D591011E6EBD8900BC601F /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
-		81D591021E6EBD8900BC601F /* HTTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
-		81D591031E6EBD8900BC601F /* HTTPURLResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPURLResponse.swift; sourceTree = "<group>"; };
-		81D591041E6EBD8900BC601F /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		81D591051E6EBD8900BC601F /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
-		81D591061E6EBD8900BC601F /* URLComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLComponents.swift; sourceTree = "<group>"; };
-		81D591071E6EBD8900BC601F /* URLQueryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLQueryItem.swift; sourceTree = "<group>"; };
-		81D591081E6EBD8900BC601F /* URLRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequest.swift; sourceTree = "<group>"; };
-		81D591091E6EBD8900BC601F /* URLStringConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLStringConvertible.swift; sourceTree = "<group>"; };
-		81F13E2E1E6DA94000A1EBB6 /* MockAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MockAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		82119333485AE6ED25549E0A742C1190 /* APIAccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIAccessToken.swift; sourceTree = "<group>"; };
-		8804A49A711E3E291A3634007CA610A0 /* JSONSubscript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONSubscript.swift; sourceTree = "<group>"; };
-		88271BCC31E360BEF49D8115AE83264E /* GuestPaymentMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestPaymentMethod.swift; sourceTree = "<group>"; };
-		88C730D69D82840A7774CF4846D833BC /* CheckoutAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutAddress.swift; sourceTree = "<group>"; };
-		946A02D8E49A74EDBEBD78F9E7F24730 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = ../../Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
-		9714951FDF30A6E73B76FEDF02064493 /* SKU.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKU.swift; sourceTree = "<group>"; };
-		9861CD2EBACCD0179BADDDB379313449 /* CreateCheckoutEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCheckoutEndpoint.swift; sourceTree = "<group>"; };
-		98D98B1E3339324EA4128B85796DB18C /* OrderConfirmation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmation.swift; sourceTree = "<group>"; };
-		99C8EE9549DB6BC3760D2AE2B30E6D48 /* OrderRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderRequest.swift; sourceTree = "<group>"; };
-		A04E7980997323086729450F65FEEF1D /* Payment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
-		A075C77946E59051D3167374A5E7078C /* Brand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
-		A0C240A1E0049D934FB15689BA1417E9 /* UserAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAddress.swift; sourceTree = "<group>"; };
-		A4CB029B07E80005A71578AEA1A39284 /* CheckAddressEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckAddressEndpoint.swift; sourceTree = "<group>"; };
-		A50CA5CE843366FDF5FC08D7C381BBDC /* CreateCheckoutRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCheckoutRequest.swift; sourceTree = "<group>"; };
-		A8FC4AE03906C5C3860F5055CDD3232B /* CheckAddressRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckAddressRequest.swift; sourceTree = "<group>"; };
-		AB54F36E851DAABC7FC70DB14EF02B42 /* ResponseParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseParser.swift; sourceTree = "<group>"; };
-		B135F402AFF895CCD6EC039A7E8B875E /* Results.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Results.swift; path = ZalandoCommerceAPI/Results.swift; sourceTree = SOURCE_ROOT; };
-		B4D4EEE90044BF8B6BD6CEA95A20AA4B /* UpdateCheckoutEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateCheckoutEndpoint.swift; sourceTree = "<group>"; };
-		B65AAED9C5DDB24C8819ED6838668A34 /* Typealiases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Typealiases.swift; path = ZalandoCommerceAPI/Typealiases.swift; sourceTree = SOURCE_ROOT; };
-		BE84D917A996BF6E21032C025DEC1FB5 /* CompleteGuestOrderEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleteGuestOrderEndpoint.swift; sourceTree = "<group>"; };
-		BF2DD2D803D006BDEAB6C294E238C72D /* ZalandoCommerceAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ZalandoCommerceAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BFD0DD80C9475A24C46A54BDD042269C /* GuestCart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCart.swift; sourceTree = "<group>"; };
-		C0087275FE972E40F0FD28AA1FA1F838 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = ZalandoCommerceAPI/Notifications.swift; sourceTree = SOURCE_ROOT; };
-		CA70871321348430C46B108ED24D0827 /* Customer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
-		CAEAF399BDB344C50E47DD70471E75EA /* CreateCartEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCartEndpoint.swift; sourceTree = "<group>"; };
-		CD8AC71F74ABB8BC7D76407B3A9FCF0D /* GuestOrderRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestOrderRequest.swift; sourceTree = "<group>"; };
-		D01A373DFE9983DFFD566CB3529AB23D /* JSONInitializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONInitializable.swift; sourceTree = "<group>"; };
-		D43F1ABCDE5E35AFE498CCAE893B3EFB /* RequestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
-		D4C60BDB698E3B89D0450DE4DB2F3089 /* Delivery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Delivery.swift; sourceTree = "<group>"; };
-		D533B552DCF576E51B723BC3A926548B /* ConfigurableEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableEndpoint.swift; sourceTree = "<group>"; };
-		D87E2BB38F8E86D59F7AE5601422338E /* CreateAddressEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAddressEndpoint.swift; sourceTree = "<group>"; };
-		D923DA782F1BC91867B0595643E8F053 /* GetArticleRecommendationsEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetArticleRecommendationsEndpoint.swift; sourceTree = "<group>"; };
-		D99C8ABE9B43A85D7188943C66729D07 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
-		DA165667BA3C72987F13563E3CB874B7 /* JSONRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONRepresentable.swift; sourceTree = "<group>"; };
-		DA7147DEA2A8A6D75965491B0D3F813B /* Recommendation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recommendation.swift; sourceTree = "<group>"; };
-		DA99B5523444D2EE8AC1B5397A54086A /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
-		E528A14D9CC64F177BA37FDBCF6268E2 /* SystemInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemInfo.swift; sourceTree = "<group>"; };
-		F46B45B4F9D975874090BEB8522D81C0 /* GuestCustomerRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCustomerRequest.swift; sourceTree = "<group>"; };
-		F5F8397816D421255C10AE0737FAAA41 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
-		F6CF52ED3F20B2F59D5E6096E498A18B /* PaymentMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
-		F6FFAFD36DBFADF2E51D872BAD526DF6 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Errors.swift; path = ZalandoCommerceAPI/Errors.swift; sourceTree = SOURCE_ROOT; };
-		F7217CD1285081F7F82594BB8658EE76 /* GetGuestCheckoutEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetGuestCheckoutEndpoint.swift; sourceTree = "<group>"; };
-		FDE577A4B9190386AD2FD21D7815E6FD /* UpdateAddressRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateAddressRequest.swift; sourceTree = "<group>"; };
+		B9009EA8140FFB892ACF9DE624A3D735 /* GetConfigEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetConfigEndpoint.swift; sourceTree = "<group>"; };
+		D2DFE61A94E7A4BDFE638676B9E8E1DF /* GuestAddressRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestAddressRequest.swift; sourceTree = "<group>"; };
+		4308EFAE641588119F8BD25DA565A381 /* GuestOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestOrder.swift; sourceTree = "<group>"; };
+		E36CD0771BEAE73FFFE42B7FC4837335 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ZalandoCommerceAPI/Info.plist; sourceTree = SOURCE_ROOT; };
+		BAFAC6F31C177F79AF23609078B899B8 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		58AC745624F14E65918E8D2EF108F83C /* GuestCheckoutAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCheckoutAddress.swift; sourceTree = "<group>"; };
+		2E0EBCFB03B0ABB7A56568D18E540222 /* Money.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
+		84AA8EA9EA91A7BD6503EB904A7A729B /* RFC3339DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RFC3339DateFormatter.swift; sourceTree = "<group>"; };
+		3576DB80F7A5DF4AAB26F726E8780CCE /* APIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		507B2E11570DCB6B9E726D883AECAE9B /* GuestCartRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCartRequest.swift; sourceTree = "<group>"; };
+		232AEB30DFD5B136C2CEE2DBB8CF7AA3 /* PickupPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickupPoint.swift; sourceTree = "<group>"; };
+		2B7930D1C1EE26AEBCB384D80F3768DB /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
+		B79F2C91E685E3F5AED82B22C7D9496B /* CreateOrderEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrderEndpoint.swift; sourceTree = "<group>"; };
+		961220D2BE85EB3CEB10EAA441EA7FFF /* GuestPaymentSelectionRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestPaymentSelectionRequest.swift; sourceTree = "<group>"; };
+		1887A24207EA84C13DCFDA3FBE608938 /* CreateGuestOrderEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGuestOrderEndpoint.swift; sourceTree = "<group>"; };
+		F9CB276E242319A774DCCF98A4861D00 /* FormattableAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormattableAddress.swift; sourceTree = "<group>"; };
+		9D3600B3C22ABD064A0E6DBE8A67D7CE /* GuestPaymentRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestPaymentRequest.swift; sourceTree = "<group>"; };
+		D6BBFD750E621A6E505F87562E6AD4FA /* PrintLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintLogger.swift; sourceTree = "<group>"; };
+		FEE2813C50684E535AC47ABCCF2ECA94 /* ZalandoCommerceAPITestsHostApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZalandoCommerceAPITestsHostApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D39F2750ACA486E264A66411209A184 /* StreetAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreetAddress.swift; sourceTree = "<group>"; };
+		890AF85C9923FEDF20E7700D2D39BC81 /* GuestCheckout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCheckout.swift; sourceTree = "<group>"; };
+		771B98E9B348D4050C19DF588FD5C68E /* Cart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
+		7CED16779D03C437333FDA4EF06B7F1D /* DeleteAddressEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteAddressEndpoint.swift; sourceTree = "<group>"; };
+		A81A2B9DE3362B1C7310525AE14B062F /* CreateAddressRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAddressRequest.swift; sourceTree = "<group>"; };
+		BC0F6E40EB9A634337FFA561273B1A4B /* GetAddressesEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetAddressesEndpoint.swift; sourceTree = "<group>"; };
+		71D61D89FE7A31D3C205F0166A083609 /* Catalog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Catalog.swift; sourceTree = "<group>"; };
+		492A0495316C1D2FB15914EB0034A8EE /* CartItemRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartItemRequest.swift; sourceTree = "<group>"; };
+		18B78F111A934CE9A33D0A71306605FB /* CartItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
+		23EAF3E1AF592D010BCDD050D425D5F0 /* DataTaskResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataTaskResponse.swift; sourceTree = "<group>"; };
+		9FB527DAF057059B9C2F37552BF63DA6 /* CheckAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckAddress.swift; sourceTree = "<group>"; };
+		A759CE06B1D728D13008ABBDF8826BA4 /* ConfigClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigClient.swift; sourceTree = "<group>"; };
+		9590E1CDEF09515D2C3899B5BBB8CCAA /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		505A8DD4F1751BC4C86ED1073FB01E53 /* Checkout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Checkout.swift; sourceTree = "<group>"; };
+		CBA28AFBA68A3CC4A3F178751FC939BD /* GetCustomerEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCustomerEndpoint.swift; sourceTree = "<group>"; };
+		03DF386A4DA927076700489ECA45B3D1 /* GetArticleEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetArticleEndpoint.swift; sourceTree = "<group>"; };
+		CC0E11AB96ADF0A159E6C73DA8A874A0 /* OutputStreams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutputStreams.swift; sourceTree = "<group>"; };
+		84C2C192219E0EA8F0C71E8F14494F7B /* UpdateCheckoutRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateCheckoutRequest.swift; sourceTree = "<group>"; };
+		1A38FF0B3CB514C8672B5FD311FFD9D5 /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
+		136F36249C12EFA0A3C955C13183D28F /* CartRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartRequest.swift; sourceTree = "<group>"; };
+		F5E8B87EE4C37C6F3119A023A965E91F /* CheckoutAddresses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutAddresses.swift; sourceTree = "<group>"; };
+		DC257C848043A700A350D0ECE268FBBA /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		633280BC92207C3C19ADDF58B4C60B24 /* OrderAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderAddress.swift; sourceTree = "<group>"; };
+		709868318C350083B0842D8102CE3FB2 /* CheckAddressResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckAddressResponse.swift; sourceTree = "<group>"; };
+		BE98F611EAE844CCA802BB682B50CA0E /* Gender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
+		C19E533AD52C39342D17007C8986700E /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		ED632107F4F046757A6F43D1B9A62A42 /* ZalandoCommerceAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZalandoCommerceAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A863E09F4A2F1E0C5E8EB4D3C9CF4DE5 /* PaymentMethodType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodType.swift; sourceTree = "<group>"; };
+		DDB4D461A16222641FBBFB00D5E89041 /* JSONResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONResponse.swift; sourceTree = "<group>"; };
+		F84A399FE99FC6C745A93348790EA0EA /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		3643BC606E1A502111F8390121B1EDFA /* UpdateAddressEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateAddressEndpoint.swift; sourceTree = "<group>"; };
+		E48CEA2A56DE027FEC99FC34642E4B44 /* PaymentStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentStatus.swift; sourceTree = "<group>"; };
+		35FD67EA3F1275D9DF5563A85D19269B /* APIAddressesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIAddressesTests.swift; sourceTree = "<group>"; };
+		C59B4950F535DAFEC8FAADC7888D54EA /* APIArticleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIArticleTests.swift; sourceTree = "<group>"; };
+		56E4545ABE5ADC6AA7659F258221251A /* APICartTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APICartTests.swift; sourceTree = "<group>"; };
+		29AD47BDEF689E811120B23A3954E7DF /* APIClientErrorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClientErrorsTests.swift; sourceTree = "<group>"; };
+		65CAF6DDA4F4EA61A04A80366047F0B4 /* APICreateCheckoutTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APICreateCheckoutTests.swift; sourceTree = "<group>"; };
+		92A44C2E3F38275695381775D4713BDF /* APICustomerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APICustomerTests.swift; sourceTree = "<group>"; };
+		C2D0D11BD0896960A480D20080E4BFA2 /* APIGetAddressesEndpointTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIGetAddressesEndpointTests.swift; sourceTree = "<group>"; };
+		E8A860F6038629AD41AD6842EE4C9FB5 /* APIGuestCheckoutTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIGuestCheckoutTests.swift; sourceTree = "<group>"; };
+		2F01CD4E74D54B84EB602C1BD11F4A54 /* APIGuestOrderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIGuestOrderTests.swift; sourceTree = "<group>"; };
+		09F0ADD10E54B0A584C36C08B06DF491 /* APIOrderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIOrderTests.swift; sourceTree = "<group>"; };
+		9BEF7E54D011C0F4F318C6A61CB5F334 /* APIUpdateCheckoutTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIUpdateCheckoutTests.swift; sourceTree = "<group>"; };
+		F56BEF02A32F3227190B86DC6D900B72 /* APITestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITestCase.swift; sourceTree = "<group>"; };
+		9C6BD5EC5A6B6342EFF4B2AC344017BB /* APIAuthorizationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIAuthorizationTests.swift; sourceTree = "<group>"; };
+		953C9A2531EEE2E24166910F49BB140F /* ConfigTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigTests.swift; sourceTree = "<group>"; };
+		F13B2002ABC3292A05FDCE16752BC088 /* DatesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatesTests.swift; sourceTree = "<group>"; };
+		6B3BD16AE6DC3026A1A3FEE19B6F43CD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C83D040EF5A70D12F3B2153E2E4AC50A /* JSONBoolsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONBoolsTests.swift; sourceTree = "<group>"; };
+		2E197AF213759E2361A69853143EDB00 /* JSONCollectionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONCollectionsTests.swift; sourceTree = "<group>"; };
+		4B0CAE9B10476E0C6574179518AFA2D2 /* JSONDatesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDatesTests.swift; sourceTree = "<group>"; };
+		2BF7026C752ACB2E3307DCCF679595F8 /* JSONEquatableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONEquatableTests.swift; sourceTree = "<group>"; };
+		550E7AD062DF62C12E3E0219C0E72EDC /* JSONJsonsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONJsonsTests.swift; sourceTree = "<group>"; };
+		5D200023715EEA4CB2BFE438E8A0DABA /* JSONNullsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONNullsTests.swift; sourceTree = "<group>"; };
+		9580D1FB726AAAD1E1D9DC34401C506C /* JSONNumbersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONNumbersTests.swift; sourceTree = "<group>"; };
+		E55C7ACF45D9435B76576EA0763D2705 /* JSONParseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParseTests.swift; sourceTree = "<group>"; };
+		D57C0D92966E463D98DE0F23913A47B1 /* JSONPathsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONPathsTests.swift; sourceTree = "<group>"; };
+		BB92A1B9B5D9056808DD136927CA2441 /* JSONStringsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONStringsTests.swift; sourceTree = "<group>"; };
+		22BFC03A65B70F96D58A5CA09B30D402 /* JSONTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONTestCase.swift; sourceTree = "<group>"; };
+		4A469F86AA52C9081A3284FF853E8D5D /* JSONTests.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = JSONTests.json; sourceTree = "<group>"; };
+		DBFBA5CC8294FAA680792A6D5EA0D7E3 /* JSONUrlsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONUrlsTests.swift; sourceTree = "<group>"; };
+		C729D184C487BF167E1A0B8D0E8E47A1 /* KeychainTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainTests.swift; sourceTree = "<group>"; };
+		601B284507EE034ED5698BE5A8A0AB45 /* LoggerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggerTests.swift; sourceTree = "<group>"; };
+		0AFF140E6892815738A7986B628BFA88 /* OptionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsTests.swift; sourceTree = "<group>"; };
+		752E171462A6205B6CAC3CA65AE61032 /* SKUTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKUTest.swift; sourceTree = "<group>"; };
+		1D6751EB599BCA3DFD744D191A074E01 /* TestConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestConfig.swift; sourceTree = "<group>"; };
+		F2C1DE67BF8F854330C1595821CDF4B1 /* URLRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestTests.swift; sourceTree = "<group>"; };
+		806FB6A41BB727A8206A66C67EBE52EA /* URLSessionMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionMock.swift; sourceTree = "<group>"; };
+		73BDFE43A87A048DC59FE819FAD225F8 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		E04F3AE0C5CE84F1313BD8553E6A69A7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1D5575D6049733B090759CEB82110CAB /* TestsHostAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestsHostAppDelegate.swift; sourceTree = "<group>"; };
+		1B642A6225DA66F8C7F604A307B93B54 /* ZalandoCommerceAPITestsHostApp.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = ZalandoCommerceAPITestsHostApp.entitlements; sourceTree = "<group>"; };
+		B92EC5843DED96B7C7CE0F9D96B7209A /* TestConsts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestConsts.swift; sourceTree = "<group>"; };
+		5BBA6958F7D734117FC2B0BD0E364A31 /* TestOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestOptions.swift; sourceTree = "<group>"; };
+		E5E42D1D2D2141B4F3913815A94DFB6E /* Options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Options.swift; path = API/Options.swift; sourceTree = "<group>"; };
+		A8707D57998417CBBA2502770D996CA8 /* ZalandoCommerceAPI_authorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZalandoCommerceAPI_authorization.swift; path = API/ZalandoCommerceAPI_authorization.swift; sourceTree = "<group>"; };
+		175DA5D020E0A28D5AE7165E6035BD53 /* ZalandoCommerceAPI_configure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZalandoCommerceAPI_configure.swift; path = API/ZalandoCommerceAPI_configure.swift; sourceTree = "<group>"; };
+		A8C88FEF5ADFD67306D64A7FD84302B6 /* ZalandoCommerceAPI_endpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZalandoCommerceAPI_endpoints.swift; path = API/ZalandoCommerceAPI_endpoints.swift; sourceTree = "<group>"; };
+		81145D695774F43DBAD23686C09BE53F /* ZalandoCommerceAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZalandoCommerceAPI.swift; path = API/ZalandoCommerceAPI.swift; sourceTree = "<group>"; };
+		9D5A35D29D23945F209AB3B256A7861B /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		B0A41AA5053972DEE2E9CD2030DAD1AF /* Bundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
+		D344552497D2FF0EAE97E0D4EBA902C1 /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
+		2707F7F16AFCD8DECF5AA112E4557F7E /* HTTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
+		1A039B54624FA11736FDEA4D4F7C7C4E /* HTTPURLResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPURLResponse.swift; sourceTree = "<group>"; };
+		CBEC308D5494AFFE5F61663CF35EC9D4 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		33AC3795340A010EEBD24549445B2D07 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		7F80292A489A2A5CB3E5B74BB03E4B0B /* URLComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLComponents.swift; sourceTree = "<group>"; };
+		9E1FD7FF637FFFED91700C7F10BE7D7D /* URLQueryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLQueryItem.swift; sourceTree = "<group>"; };
+		8BF102FE02AA5D2BBBCB9FA1E8E02805 /* URLRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequest.swift; sourceTree = "<group>"; };
+		0593378FE72BC07B0558F581BCE3CBAD /* URLStringConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLStringConvertible.swift; sourceTree = "<group>"; };
+		B44C2C0A536E0A163E5230B4DD5C145A /* MockAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MockAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D077EC82D80978D6EAAB1E1202544D2C /* APIAccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIAccessToken.swift; sourceTree = "<group>"; };
+		99BA93EE4204E97102D1364AA3E980CE /* JSONSubscript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONSubscript.swift; sourceTree = "<group>"; };
+		F1706D2CF24E3803FB90982C46DD5711 /* GuestPaymentMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestPaymentMethod.swift; sourceTree = "<group>"; };
+		E7CCE1B446DAFB1D5E70BA51709E30C4 /* CheckoutAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutAddress.swift; sourceTree = "<group>"; };
+		1467D6CF0ADEB0F8E670FF70F8EDFF9A /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = ../../Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
+		6C3FAE484E6EB0DD2EFF1DD75C861AED /* SKU.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKU.swift; sourceTree = "<group>"; };
+		A11A111B26B481F2248CEA7422E187AF /* CreateCheckoutEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCheckoutEndpoint.swift; sourceTree = "<group>"; };
+		E13633D5B3FD5F4BD8F5F3853483A7D0 /* OrderConfirmation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmation.swift; sourceTree = "<group>"; };
+		16576333F5CDE655FDD847A4482011F5 /* OrderRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderRequest.swift; sourceTree = "<group>"; };
+		30059CC20B5A52CFCF99F087DC2536C1 /* Payment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
+		5286D23605086454916EC0D345EE2C95 /* Brand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
+		1C09E87D618085F7DF1D5EBD5CCECC3A /* UserAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAddress.swift; sourceTree = "<group>"; };
+		BBE6F42C817F305411D2DCDF4D1CC652 /* CheckAddressEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckAddressEndpoint.swift; sourceTree = "<group>"; };
+		065D2FE8FA9EFDFAEA6E39945726B30B /* CreateCheckoutRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCheckoutRequest.swift; sourceTree = "<group>"; };
+		09BE41A9DD5C74942FACB218E3E2C340 /* CheckAddressRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckAddressRequest.swift; sourceTree = "<group>"; };
+		ACC53D6D4763A7BC5EDF50D62A74ACD2 /* ResponseParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseParser.swift; sourceTree = "<group>"; };
+		3F5DD2B9DFF93E79E1805E8B6467C0EB /* Results.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Results.swift; path = ZalandoCommerceAPI/Results.swift; sourceTree = SOURCE_ROOT; };
+		FF71018C34BC86989DF4CE6FD0C0D868 /* UpdateCheckoutEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateCheckoutEndpoint.swift; sourceTree = "<group>"; };
+		A07449F1E97ED317EB5B3B4037F62470 /* Typealiases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Typealiases.swift; path = ZalandoCommerceAPI/Typealiases.swift; sourceTree = SOURCE_ROOT; };
+		043F3F717135722F7CAAD2EC74B2BC0F /* CompleteGuestOrderEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleteGuestOrderEndpoint.swift; sourceTree = "<group>"; };
+		F9E10874B5B8C29BD790BDF5931EEE1B /* ZalandoCommerceAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ZalandoCommerceAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2344418A0033F834DA98A3D7BC2C394 /* GuestCart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCart.swift; sourceTree = "<group>"; };
+		8E3B9CB4CDE9A416BF23BC357683DE60 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = ZalandoCommerceAPI/Notifications.swift; sourceTree = SOURCE_ROOT; };
+		CF43D57FAB8A5C3B4A694613C44D64A8 /* Customer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
+		8AFF67DD64252C69FF5CDAB369085354 /* CreateCartEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCartEndpoint.swift; sourceTree = "<group>"; };
+		AB38976788A1A7D2B3622F70B9A76313 /* GuestOrderRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestOrderRequest.swift; sourceTree = "<group>"; };
+		7A4E409EDDC78B0806BDB04D8C277DB1 /* JSONInitializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONInitializable.swift; sourceTree = "<group>"; };
+		F06C314B241651A0E23F00C0105F0208 /* RequestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
+		763A685B834DE425837DA06C0C4EA8E2 /* Delivery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Delivery.swift; sourceTree = "<group>"; };
+		9CEFB2CA1A1A1844FC76BBBD0DFD3C9D /* ConfigurableEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableEndpoint.swift; sourceTree = "<group>"; };
+		3A62AB06231E1EA4427E5A334EDC68C0 /* CreateAddressEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAddressEndpoint.swift; sourceTree = "<group>"; };
+		66BC4EC5B5D58AAD150827DB369C1847 /* GetArticleRecommendationsEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetArticleRecommendationsEndpoint.swift; sourceTree = "<group>"; };
+		30174FED439A943DBB50E700F0C20096 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		155DCB42E09774B5CCF2F023226D7E17 /* JSONRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONRepresentable.swift; sourceTree = "<group>"; };
+		656DAEBB527CA6451B7838234BC48C61 /* Recommendation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recommendation.swift; sourceTree = "<group>"; };
+		4E110FCD365662A9BD79D87E838A14F3 /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
+		78E6EE084C929789E6446DE65D2D9517 /* SystemInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemInfo.swift; sourceTree = "<group>"; };
+		AD0281E8C620ED7D706F2CD7D40EC928 /* GuestCustomerRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCustomerRequest.swift; sourceTree = "<group>"; };
+		E5EFAC34ECB3C4A13FC6E1619659927A /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		70D7FD36FCD07E03925FE9676ED1AA9C /* PaymentMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
+		9169CC4DFEB1044352AC4940AB8F26BE /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Errors.swift; path = ZalandoCommerceAPI/Errors.swift; sourceTree = SOURCE_ROOT; };
+		20076EFE7FEE4981AFA2D84911ACC7D2 /* GetGuestCheckoutEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetGuestCheckoutEndpoint.swift; sourceTree = "<group>"; };
+		6D763C3A858FEA75BEF31CE1C229F28C /* UpdateAddressRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateAddressRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		4DBC0D4EA8029555240C91D63A78636A /* Frameworks */ = {
+		789F9E179734A7472502255FF0AAB972 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81F13E2F1E6DA94000A1EBB6 /* MockAPI.framework in Frameworks */,
-				B66B644C530E41D683DBA1D5F907336F /* ZalandoCommerceAPI.framework in Frameworks */,
-				DAB2BC46B777931E022DF54F2FE8937F /* Nimble.framework in Frameworks */,
+				CB607FF2B15C3C3CE54895E0FD3D591C /* MockAPI.framework in Frameworks */,
+				F98DD02AB7A49EAF8B39F8A1BBC17D8B /* ZalandoCommerceAPI.framework in Frameworks */,
+				97BDBB1858CF42F3156104D297832D91 /* Nimble.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6DEA12AB4B50D4911E2395E6DF09F6A1 /* Frameworks */ = {
+		9CDC39310404E9B094AA509FC0103DBB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FF10D7295D4699053CC6722CEC202506 /* Frameworks */ = {
+		F60C15133F515B90CCC3E445ECF31798 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -372,368 +372,368 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		02B3D0B088D148969180C104AE3AE50A /* Guest Checkout */ = {
+		BDC48FF094B69F5B3D192357E176FDAF /* Guest Checkout */ = {
 			isa = PBXGroup;
 			children = (
-				410FB0239353429EAECD851641CA4556 /* Requests */,
-				BFD0DD80C9475A24C46A54BDD042269C /* GuestCart.swift */,
-				439BC5F5E13583D27A6EC5B0EB9C41AB /* GuestCheckout.swift */,
-				15AB716AB81A1EB750046BA350B059AA /* GuestCheckoutAddress.swift */,
-				06F04274C9DF91FEABFDD5EE482E7553 /* GuestOrder.swift */,
-				88271BCC31E360BEF49D8115AE83264E /* GuestPaymentMethod.swift */,
+				7CD1501C124577EDA0D70D9782A7D569 /* Requests */,
+				C2344418A0033F834DA98A3D7BC2C394 /* GuestCart.swift */,
+				890AF85C9923FEDF20E7700D2D39BC81 /* GuestCheckout.swift */,
+				58AC745624F14E65918E8D2EF108F83C /* GuestCheckoutAddress.swift */,
+				4308EFAE641588119F8BD25DA565A381 /* GuestOrder.swift */,
+				F1706D2CF24E3803FB90982C46DD5711 /* GuestPaymentMethod.swift */,
 			);
 			name = "Guest Checkout";
 			sourceTree = "<group>";
 		};
-		17FBA9D0114360557F0730AB955A38C2 /* Utils */ = {
+		63899DF6899785E2F1D390AF204398C6 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				1144008D922BB81B068D385A27F28BEA /* Data.swift */,
-				15E7B77923CA267431E29AFE17AE96EA /* RFC3339DateFormatter.swift */,
-				69384BDB0D3D26DA7967C229EF6CF14A /* Keychain.swift */,
-				E528A14D9CC64F177BA37FDBCF6268E2 /* SystemInfo.swift */,
+				BAFAC6F31C177F79AF23609078B899B8 /* Data.swift */,
+				84AA8EA9EA91A7BD6503EB904A7A729B /* RFC3339DateFormatter.swift */,
+				1A38FF0B3CB514C8672B5FD311FFD9D5 /* Keychain.swift */,
+				78E6EE084C929789E6446DE65D2D9517 /* SystemInfo.swift */,
 			);
 			name = Utils;
 			path = ZalandoCommerceAPI/Utils;
 			sourceTree = SOURCE_ROOT;
 		};
-		334FBF6A404062610EE6252383520AF5 /* ZalandoCommerceAPI */ = {
+		5A294F60E01F37475FB9243BCEB6B8AF /* ZalandoCommerceAPI */ = {
 			isa = PBXGroup;
 			children = (
-				81D590F41E6EBD6800BC601F /* Options.swift */,
-				81D590F81E6EBD6800BC601F /* ZalandoCommerceAPI.swift */,
-				81D590F51E6EBD6800BC601F /* ZalandoCommerceAPI_authorization.swift */,
-				81D590F61E6EBD6800BC601F /* ZalandoCommerceAPI_configure.swift */,
-				81D590F71E6EBD6800BC601F /* ZalandoCommerceAPI_endpoints.swift */,
+				E5E42D1D2D2141B4F3913815A94DFB6E /* Options.swift */,
+				81145D695774F43DBAD23686C09BE53F /* ZalandoCommerceAPI.swift */,
+				A8707D57998417CBBA2502770D996CA8 /* ZalandoCommerceAPI_authorization.swift */,
+				175DA5D020E0A28D5AE7165E6035BD53 /* ZalandoCommerceAPI_configure.swift */,
+				A8C88FEF5ADFD67306D64A7FD84302B6 /* ZalandoCommerceAPI_endpoints.swift */,
 			);
 			name = ZalandoCommerceAPI;
 			sourceTree = "<group>";
 		};
-		3D8FD04D7F66A80EE1FE5532406AE047 /* Frameworks */ = {
+		D85123DD145F720C15F50E9AD5F5ED64 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				81F13E2E1E6DA94000A1EBB6 /* MockAPI.framework */,
-				946A02D8E49A74EDBEBD78F9E7F24730 /* Nimble.framework */,
+				B44C2C0A536E0A163E5230B4DD5C145A /* MockAPI.framework */,
+				1467D6CF0ADEB0F8E670FF70F8EDFF9A /* Nimble.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		410FB0239353429EAECD851641CA4556 /* Requests */ = {
+		7CD1501C124577EDA0D70D9782A7D569 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
-				0245341CC5B1CB0CF50BF8ACC958B65F /* GuestAddressRequest.swift */,
-				1E03081CC39663E90CE41C2416C19A80 /* GuestCartRequest.swift */,
-				F46B45B4F9D975874090BEB8522D81C0 /* GuestCustomerRequest.swift */,
-				CD8AC71F74ABB8BC7D76407B3A9FCF0D /* GuestOrderRequest.swift */,
-				37B69DF001037C24E6BD4E0B378BFC01 /* GuestPaymentRequest.swift */,
-				27C60F07A8CC8109EF845A9860B79828 /* GuestPaymentSelectionRequest.swift */,
+				D2DFE61A94E7A4BDFE638676B9E8E1DF /* GuestAddressRequest.swift */,
+				507B2E11570DCB6B9E726D883AECAE9B /* GuestCartRequest.swift */,
+				AD0281E8C620ED7D706F2CD7D40EC928 /* GuestCustomerRequest.swift */,
+				AB38976788A1A7D2B3622F70B9A76313 /* GuestOrderRequest.swift */,
+				9D3600B3C22ABD064A0E6DBE8A67D7CE /* GuestPaymentRequest.swift */,
+				961220D2BE85EB3CEB10EAA441EA7FFF /* GuestPaymentSelectionRequest.swift */,
 			);
 			name = Requests;
 			sourceTree = "<group>";
 		};
-		4E2A11B7EBC8E4EEA0457E1D93E0A1F0 /* JSON */ = {
+		0C054F548C0455E59BF249AAC97D9AFB /* JSON */ = {
 			isa = PBXGroup;
 			children = (
-				241BF92EE4C5A69B1FCD9B77B4533EDB /* JSON.swift */,
-				8804A49A711E3E291A3634007CA610A0 /* JSONSubscript.swift */,
-				D01A373DFE9983DFFD566CB3529AB23D /* JSONInitializable.swift */,
-				DA165667BA3C72987F13563E3CB874B7 /* JSONRepresentable.swift */,
-				78BD428C28C6631A27A6BCEB01F1A7AD /* JSONResponse.swift */,
+				2B7930D1C1EE26AEBCB384D80F3768DB /* JSON.swift */,
+				99BA93EE4204E97102D1364AA3E980CE /* JSONSubscript.swift */,
+				7A4E409EDDC78B0806BDB04D8C277DB1 /* JSONInitializable.swift */,
+				155DCB42E09774B5CCF2F023226D7E17 /* JSONRepresentable.swift */,
+				DDB4D461A16222641FBBFB00D5E89041 /* JSONResponse.swift */,
 			);
 			name = JSON;
 			path = ZalandoCommerceAPI/JSON;
 			sourceTree = SOURCE_ROOT;
 		};
-		5A910BBAE45243380D7B5D966809271F /* Endpoints */ = {
+		ABB47C3CDA6D91B0A8D88DAC8C0CEB16 /* Endpoints */ = {
 			isa = PBXGroup;
 			children = (
-				D99C8ABE9B43A85D7188943C66729D07 /* Endpoint.swift */,
-				A4CB029B07E80005A71578AEA1A39284 /* CheckAddressEndpoint.swift */,
-				BE84D917A996BF6E21032C025DEC1FB5 /* CompleteGuestOrderEndpoint.swift */,
-				D533B552DCF576E51B723BC3A926548B /* ConfigurableEndpoint.swift */,
-				D87E2BB38F8E86D59F7AE5601422338E /* CreateAddressEndpoint.swift */,
-				CAEAF399BDB344C50E47DD70471E75EA /* CreateCartEndpoint.swift */,
-				9861CD2EBACCD0179BADDDB379313449 /* CreateCheckoutEndpoint.swift */,
-				2CF7D5BE1946026F4EC6170B29C69347 /* CreateGuestOrderEndpoint.swift */,
-				26AB725F554DA56411A3B5D67010F273 /* CreateOrderEndpoint.swift */,
-				4925DB568F4726E5E5D37663419677B8 /* DeleteAddressEndpoint.swift */,
-				60901C59AEE6F40EF54A35763F5E2CA0 /* GetArticleEndpoint.swift */,
-				D923DA782F1BC91867B0595643E8F053 /* GetArticleRecommendationsEndpoint.swift */,
-				4CC775974D2C7BEE823393C249A83E19 /* GetAddressesEndpoint.swift */,
-				01B7AA4A1026DDF24004CE7F0E355625 /* GetConfigEndpoint.swift */,
-				5DF2B069D3C5A9A37A7DE2D0527356AA /* GetCustomerEndpoint.swift */,
-				F7217CD1285081F7F82594BB8658EE76 /* GetGuestCheckoutEndpoint.swift */,
-				80A87FB76A9759970AB11BB04A6CBDDD /* UpdateAddressEndpoint.swift */,
-				B4D4EEE90044BF8B6BD6CEA95A20AA4B /* UpdateCheckoutEndpoint.swift */,
+				30174FED439A943DBB50E700F0C20096 /* Endpoint.swift */,
+				BBE6F42C817F305411D2DCDF4D1CC652 /* CheckAddressEndpoint.swift */,
+				043F3F717135722F7CAAD2EC74B2BC0F /* CompleteGuestOrderEndpoint.swift */,
+				9CEFB2CA1A1A1844FC76BBBD0DFD3C9D /* ConfigurableEndpoint.swift */,
+				3A62AB06231E1EA4427E5A334EDC68C0 /* CreateAddressEndpoint.swift */,
+				8AFF67DD64252C69FF5CDAB369085354 /* CreateCartEndpoint.swift */,
+				A11A111B26B481F2248CEA7422E187AF /* CreateCheckoutEndpoint.swift */,
+				1887A24207EA84C13DCFDA3FBE608938 /* CreateGuestOrderEndpoint.swift */,
+				B79F2C91E685E3F5AED82B22C7D9496B /* CreateOrderEndpoint.swift */,
+				7CED16779D03C437333FDA4EF06B7F1D /* DeleteAddressEndpoint.swift */,
+				03DF386A4DA927076700489ECA45B3D1 /* GetArticleEndpoint.swift */,
+				66BC4EC5B5D58AAD150827DB369C1847 /* GetArticleRecommendationsEndpoint.swift */,
+				BC0F6E40EB9A634337FFA561273B1A4B /* GetAddressesEndpoint.swift */,
+				B9009EA8140FFB892ACF9DE624A3D735 /* GetConfigEndpoint.swift */,
+				CBA28AFBA68A3CC4A3F178751FC939BD /* GetCustomerEndpoint.swift */,
+				20076EFE7FEE4981AFA2D84911ACC7D2 /* GetGuestCheckoutEndpoint.swift */,
+				3643BC606E1A502111F8390121B1EDFA /* UpdateAddressEndpoint.swift */,
+				FF71018C34BC86989DF4CE6FD0C0D868 /* UpdateCheckoutEndpoint.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
 		};
-		63075449FCB8DF8B5FB1DF58F073BE13 /* Responses */ = {
+		255E582270D75807AA6FDE9BCB50B0D8 /* Responses */ = {
 			isa = PBXGroup;
 			children = (
-				74306941AF9B87B8F6BBAF13C752AD8A /* CheckAddressResponse.swift */,
+				709868318C350083B0842D8102CE3FB2 /* CheckAddressResponse.swift */,
 			);
 			name = Responses;
 			sourceTree = "<group>";
 		};
-		75D3D341CD1A816A0E6B63CB55C81BF2 /* ZalandoCommerceAPI */ = {
+		28F981B6F2E73B9B81258911BF35717B /* ZalandoCommerceAPI */ = {
 			isa = PBXGroup;
 			children = (
-				81D590FE1E6EBD8900BC601F /* Commons */,
-				334FBF6A404062610EE6252383520AF5 /* ZalandoCommerceAPI */,
-				A419C43DE56B972457BCE3C26CD03FA0 /* Logger */,
-				7C6596B8FC8CC7FAB7F3E260BCD050AC /* API */,
-				4E2A11B7EBC8E4EEA0457E1D93E0A1F0 /* JSON */,
-				763A6645A072E811EFADC02074D72E7B /* Models */,
-				D4B1BA8DB7C3102EC22C0246D8DAACDB /* Other */,
-				17FBA9D0114360557F0730AB955A38C2 /* Utils */,
-				F6FFAFD36DBFADF2E51D872BAD526DF6 /* Errors.swift */,
-				B65AAED9C5DDB24C8819ED6838668A34 /* Typealiases.swift */,
-				C0087275FE972E40F0FD28AA1FA1F838 /* Notifications.swift */,
-				B135F402AFF895CCD6EC039A7E8B875E /* Results.swift */,
+				6C95A878656FF454009E2B0E732071DB /* Commons */,
+				5A294F60E01F37475FB9243BCEB6B8AF /* ZalandoCommerceAPI */,
+				314FCCCF697C3A6CB8F62351BC21F47E /* Logger */,
+				BC63A2F2E044889269D2B5D99921774F /* API */,
+				0C054F548C0455E59BF249AAC97D9AFB /* JSON */,
+				EEDA582F54BCE916DE2AD5EB9F8496DE /* Models */,
+				263EC9FB9695B0A525436FA3C12C671C /* Other */,
+				63899DF6899785E2F1D390AF204398C6 /* Utils */,
+				9169CC4DFEB1044352AC4940AB8F26BE /* Errors.swift */,
+				A07449F1E97ED317EB5B3B4037F62470 /* Typealiases.swift */,
+				8E3B9CB4CDE9A416BF23BC357683DE60 /* Notifications.swift */,
+				3F5DD2B9DFF93E79E1805E8B6467C0EB /* Results.swift */,
 			);
 			path = ZalandoCommerceAPI;
 			sourceTree = "<group>";
 		};
-		763A6645A072E811EFADC02074D72E7B /* Models */ = {
+		EEDA582F54BCE916DE2AD5EB9F8496DE /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				DFE4E09245E4C2D081775266DC9E3364 /* Addresses */,
-				02B3D0B088D148969180C104AE3AE50A /* Guest Checkout */,
-				C5A74D07FB57566754688019A86DAB5D /* Cart */,
-				E9ECE5A2A329CEFB89C24E53DED3403D /* Checkout */,
-				F52B1BDDBB0AAA8B723B78601817791D /* Order */,
-				5ADBF1E8B3FDBFAAE434240E7212C5FF /* Article.swift */,
-				A075C77946E59051D3167374A5E7078C /* Brand.swift */,
-				DA99B5523444D2EE8AC1B5397A54086A /* Media.swift */,
-				5122324D4A85204EB38F54BF29FEB024 /* Catalog.swift */,
-				F5F8397816D421255C10AE0737FAAA41 /* Config.swift */,
-				CA70871321348430C46B108ED24D0827 /* Customer.swift */,
-				D4C60BDB698E3B89D0450DE4DB2F3089 /* Delivery.swift */,
-				747A73447DC8ACA0F246CCD8C6D0B513 /* Gender.swift */,
-				15D788B8AFA05BF3BB7559752D777933 /* Money.swift */,
-				7CDE9B266DF0DAFAF1BB3ED0A00D2609 /* Order.swift */,
-				98D98B1E3339324EA4128B85796DB18C /* OrderConfirmation.swift */,
-				A04E7980997323086729450F65FEEF1D /* Payment.swift */,
-				F6CF52ED3F20B2F59D5E6096E498A18B /* PaymentMethod.swift */,
-				81BAB3D21E685B29004F50A3 /* PaymentStatus.swift */,
-				1F74E6F0CBCE6D7E27184F239E9438F9 /* PickupPoint.swift */,
-				76F8647251682173E489D77B55EB0097 /* PaymentMethodType.swift */,
-				DA7147DEA2A8A6D75965491B0D3F813B /* Recommendation.swift */,
-				9714951FDF30A6E73B76FEDF02064493 /* SKU.swift */,
+				5522F7B4A99C62A6767930B892004E86 /* Addresses */,
+				BDC48FF094B69F5B3D192357E176FDAF /* Guest Checkout */,
+				A4DADDBC60B39DB6EF9AFBF86198E5FA /* Cart */,
+				1875564C217B9B3F364A0A8F3184A4B2 /* Checkout */,
+				E86F98BDDE8A76066A0B78ACBF7E4C71 /* Order */,
+				9590E1CDEF09515D2C3899B5BBB8CCAA /* Article.swift */,
+				5286D23605086454916EC0D345EE2C95 /* Brand.swift */,
+				4E110FCD365662A9BD79D87E838A14F3 /* Media.swift */,
+				71D61D89FE7A31D3C205F0166A083609 /* Catalog.swift */,
+				E5EFAC34ECB3C4A13FC6E1619659927A /* Config.swift */,
+				CF43D57FAB8A5C3B4A694613C44D64A8 /* Customer.swift */,
+				763A685B834DE425837DA06C0C4EA8E2 /* Delivery.swift */,
+				BE98F611EAE844CCA802BB682B50CA0E /* Gender.swift */,
+				2E0EBCFB03B0ABB7A56568D18E540222 /* Money.swift */,
+				F84A399FE99FC6C745A93348790EA0EA /* Order.swift */,
+				E13633D5B3FD5F4BD8F5F3853483A7D0 /* OrderConfirmation.swift */,
+				30059CC20B5A52CFCF99F087DC2536C1 /* Payment.swift */,
+				70D7FD36FCD07E03925FE9676ED1AA9C /* PaymentMethod.swift */,
+				E48CEA2A56DE027FEC99FC34642E4B44 /* PaymentStatus.swift */,
+				232AEB30DFD5B136C2CEE2DBB8CF7AA3 /* PickupPoint.swift */,
+				A863E09F4A2F1E0C5E8EB4D3C9CF4DE5 /* PaymentMethodType.swift */,
+				656DAEBB527CA6451B7838234BC48C61 /* Recommendation.swift */,
+				6C3FAE484E6EB0DD2EFF1DD75C861AED /* SKU.swift */,
 			);
 			name = Models;
 			path = ZalandoCommerceAPI/Models;
 			sourceTree = SOURCE_ROOT;
 		};
-		7C6596B8FC8CC7FAB7F3E260BCD050AC /* API */ = {
+		BC63A2F2E044889269D2B5D99921774F /* API */ = {
 			isa = PBXGroup;
 			children = (
-				5A910BBAE45243380D7B5D966809271F /* Endpoints */,
-				82119333485AE6ED25549E0A742C1190 /* APIAccessToken.swift */,
-				1DF97F26C9E21DF37C322657F1000F09 /* APIRequest.swift */,
-				7524A17497C3AC5EDBB91BC82D0D33F1 /* APIClient.swift */,
-				582E710AD6147AC2D88CFB8E862F16F3 /* ConfigClient.swift */,
-				520EB901467782BBA1241928C1B83809 /* DataTaskResponse.swift */,
-				D43F1ABCDE5E35AFE498CCAE893B3EFB /* RequestBuilder.swift */,
-				AB54F36E851DAABC7FC70DB14EF02B42 /* ResponseParser.swift */,
+				ABB47C3CDA6D91B0A8D88DAC8C0CEB16 /* Endpoints */,
+				D077EC82D80978D6EAAB1E1202544D2C /* APIAccessToken.swift */,
+				3576DB80F7A5DF4AAB26F726E8780CCE /* APIRequest.swift */,
+				C19E533AD52C39342D17007C8986700E /* APIClient.swift */,
+				A759CE06B1D728D13008ABBDF8826BA4 /* ConfigClient.swift */,
+				23EAF3E1AF592D010BCDD050D425D5F0 /* DataTaskResponse.swift */,
+				F06C314B241651A0E23F00C0105F0208 /* RequestBuilder.swift */,
+				ACC53D6D4763A7BC5EDF50D62A74ACD2 /* ResponseParser.swift */,
 			);
 			name = API;
 			path = ZalandoCommerceAPI/API;
 			sourceTree = SOURCE_ROOT;
 		};
-		81D590A11E6DCABA00BC601F /* JSON */ = {
+		1D23E7958DE5A591FC4982FC1851978A /* JSON */ = {
 			isa = PBXGroup;
 			children = (
-				81D590A21E6DCABA00BC601F /* JSONBoolsTests.swift */,
-				81D590A31E6DCABA00BC601F /* JSONCollectionsTests.swift */,
-				81D590A41E6DCABA00BC601F /* JSONDatesTests.swift */,
-				81D590A51E6DCABA00BC601F /* JSONEquatableTests.swift */,
-				81D590A61E6DCABA00BC601F /* JSONJsonsTests.swift */,
-				81D590A71E6DCABA00BC601F /* JSONNullsTests.swift */,
-				81D590A81E6DCABA00BC601F /* JSONNumbersTests.swift */,
-				81D590A91E6DCABA00BC601F /* JSONParseTests.swift */,
-				81D590AA1E6DCABA00BC601F /* JSONPathsTests.swift */,
-				81D590AB1E6DCABA00BC601F /* JSONStringsTests.swift */,
-				81D590AC1E6DCABA00BC601F /* JSONTestCase.swift */,
-				81D590AD1E6DCABA00BC601F /* JSONTests.json */,
-				81D590AE1E6DCABA00BC601F /* JSONUrlsTests.swift */,
+				C83D040EF5A70D12F3B2153E2E4AC50A /* JSONBoolsTests.swift */,
+				2E197AF213759E2361A69853143EDB00 /* JSONCollectionsTests.swift */,
+				4B0CAE9B10476E0C6574179518AFA2D2 /* JSONDatesTests.swift */,
+				2BF7026C752ACB2E3307DCCF679595F8 /* JSONEquatableTests.swift */,
+				550E7AD062DF62C12E3E0219C0E72EDC /* JSONJsonsTests.swift */,
+				5D200023715EEA4CB2BFE438E8A0DABA /* JSONNullsTests.swift */,
+				9580D1FB726AAAD1E1D9DC34401C506C /* JSONNumbersTests.swift */,
+				E55C7ACF45D9435B76576EA0763D2705 /* JSONParseTests.swift */,
+				D57C0D92966E463D98DE0F23913A47B1 /* JSONPathsTests.swift */,
+				BB92A1B9B5D9056808DD136927CA2441 /* JSONStringsTests.swift */,
+				22BFC03A65B70F96D58A5CA09B30D402 /* JSONTestCase.swift */,
+				4A469F86AA52C9081A3284FF853E8D5D /* JSONTests.json */,
+				DBFBA5CC8294FAA680792A6D5EA0D7E3 /* JSONUrlsTests.swift */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
 		};
-		81D590DE1E6DCAC500BC601F /* API */ = {
+		40A6C26207961C9D81F36178EA4DF9D7 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				81D5909C1E6DCABA00BC601F /* APITestCase.swift */,
-				81D5909D1E6DCABA00BC601F /* APIAuthorizationTests.swift */,
-				81D590911E6DCABA00BC601F /* APIAddressesTests.swift */,
-				81D590921E6DCABA00BC601F /* APIArticleTests.swift */,
-				81D590931E6DCABA00BC601F /* APICartTests.swift */,
-				81D590941E6DCABA00BC601F /* APIClientErrorsTests.swift */,
-				81D590951E6DCABA00BC601F /* APICreateCheckoutTests.swift */,
-				81D590961E6DCABA00BC601F /* APICustomerTests.swift */,
-				81D590971E6DCABA00BC601F /* APIGetAddressesEndpointTests.swift */,
-				81D590981E6DCABA00BC601F /* APIGuestCheckoutTests.swift */,
-				81D590991E6DCABA00BC601F /* APIGuestOrderTests.swift */,
-				81D5909A1E6DCABA00BC601F /* APIOrderTests.swift */,
-				81D5909B1E6DCABA00BC601F /* APIUpdateCheckoutTests.swift */,
+				F56BEF02A32F3227190B86DC6D900B72 /* APITestCase.swift */,
+				9C6BD5EC5A6B6342EFF4B2AC344017BB /* APIAuthorizationTests.swift */,
+				35FD67EA3F1275D9DF5563A85D19269B /* APIAddressesTests.swift */,
+				C59B4950F535DAFEC8FAADC7888D54EA /* APIArticleTests.swift */,
+				56E4545ABE5ADC6AA7659F258221251A /* APICartTests.swift */,
+				29AD47BDEF689E811120B23A3954E7DF /* APIClientErrorsTests.swift */,
+				65CAF6DDA4F4EA61A04A80366047F0B4 /* APICreateCheckoutTests.swift */,
+				92A44C2E3F38275695381775D4713BDF /* APICustomerTests.swift */,
+				C2D0D11BD0896960A480D20080E4BFA2 /* APIGetAddressesEndpointTests.swift */,
+				E8A860F6038629AD41AD6842EE4C9FB5 /* APIGuestCheckoutTests.swift */,
+				2F01CD4E74D54B84EB602C1BD11F4A54 /* APIGuestOrderTests.swift */,
+				09F0ADD10E54B0A584C36C08B06DF491 /* APIOrderTests.swift */,
+				9BEF7E54D011C0F4F318C6A61CB5F334 /* APIUpdateCheckoutTests.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
 		};
-		81D590E61E6EA14000BC601F /* CommonsTests */ = {
+		26D5C685B26F8F8F366AC45B82A3C29C /* CommonsTests */ = {
 			isa = PBXGroup;
 			children = (
-				81D590E71E6EA14000BC601F /* TestConsts.swift */,
-				81D590E81E6EA14000BC601F /* TestOptions.swift */,
+				B92EC5843DED96B7C7CE0F9D96B7209A /* TestConsts.swift */,
+				5BBA6958F7D734117FC2B0BD0E364A31 /* TestOptions.swift */,
 			);
 			name = CommonsTests;
 			path = ../../CommonsTests;
 			sourceTree = "<group>";
 		};
-		81D590FE1E6EBD8900BC601F /* Commons */ = {
+		6C95A878656FF454009E2B0E732071DB /* Commons */ = {
 			isa = PBXGroup;
 			children = (
-				81D590FF1E6EBD8900BC601F /* Array.swift */,
-				81D591001E6EBD8900BC601F /* Bundle.swift */,
-				81D591011E6EBD8900BC601F /* Debug.swift */,
-				81D591021E6EBD8900BC601F /* HTTP.swift */,
-				81D591031E6EBD8900BC601F /* HTTPURLResponse.swift */,
-				81D591041E6EBD8900BC601F /* String.swift */,
-				81D591051E6EBD8900BC601F /* URL.swift */,
-				81D591061E6EBD8900BC601F /* URLComponents.swift */,
-				81D591071E6EBD8900BC601F /* URLQueryItem.swift */,
-				81D591081E6EBD8900BC601F /* URLRequest.swift */,
-				81D591091E6EBD8900BC601F /* URLStringConvertible.swift */,
+				9D5A35D29D23945F209AB3B256A7861B /* Array.swift */,
+				B0A41AA5053972DEE2E9CD2030DAD1AF /* Bundle.swift */,
+				D344552497D2FF0EAE97E0D4EBA902C1 /* Debug.swift */,
+				2707F7F16AFCD8DECF5AA112E4557F7E /* HTTP.swift */,
+				1A039B54624FA11736FDEA4D4F7C7C4E /* HTTPURLResponse.swift */,
+				CBEC308D5494AFFE5F61663CF35EC9D4 /* String.swift */,
+				33AC3795340A010EEBD24549445B2D07 /* URL.swift */,
+				7F80292A489A2A5CB3E5B74BB03E4B0B /* URLComponents.swift */,
+				9E1FD7FF637FFFED91700C7F10BE7D7D /* URLQueryItem.swift */,
+				8BF102FE02AA5D2BBBCB9FA1E8E02805 /* URLRequest.swift */,
+				0593378FE72BC07B0558F581BCE3CBAD /* URLStringConvertible.swift */,
 			);
 			name = Commons;
 			path = ../../Commons;
 			sourceTree = "<group>";
 		};
-		864F2AE731B222CF20825FFF5BF5E6DD /* ZalandoCommerceAPITestsHostApp */ = {
+		1AF8D3A022E7EFD64AEC4EFEEE6886BC /* ZalandoCommerceAPITestsHostApp */ = {
 			isa = PBXGroup;
 			children = (
-				81D590DF1E6DCB6C00BC601F /* Default-568h@2x.png */,
-				81D590E01E6DCB6C00BC601F /* Info.plist */,
-				81D590E11E6DCB6C00BC601F /* TestsHostAppDelegate.swift */,
-				81D590E21E6DCB6C00BC601F /* ZalandoCommerceAPITestsHostApp.entitlements */,
+				73BDFE43A87A048DC59FE819FAD225F8 /* Default-568h@2x.png */,
+				E04F3AE0C5CE84F1313BD8553E6A69A7 /* Info.plist */,
+				1D5575D6049733B090759CEB82110CAB /* TestsHostAppDelegate.swift */,
+				1B642A6225DA66F8C7F604A307B93B54 /* ZalandoCommerceAPITestsHostApp.entitlements */,
 			);
 			path = ZalandoCommerceAPITestsHostApp;
 			sourceTree = "<group>";
 		};
-		A419C43DE56B972457BCE3C26CD03FA0 /* Logger */ = {
+		314FCCCF697C3A6CB8F62351BC21F47E /* Logger */ = {
 			isa = PBXGroup;
 			children = (
-				702A2FD80899800D6B9E430BF468FC8B /* Logger.swift */,
-				676768CF421365F56E0325D156E2F301 /* OutputStreams.swift */,
-				3D2EC7664BF1A5A912208A3602C7CB54 /* PrintLogger.swift */,
+				DC257C848043A700A350D0ECE268FBBA /* Logger.swift */,
+				CC0E11AB96ADF0A159E6C73DA8A874A0 /* OutputStreams.swift */,
+				D6BBFD750E621A6E505F87562E6AD4FA /* PrintLogger.swift */,
 			);
 			name = Logger;
 			path = ZalandoCommerceAPI/Logger;
 			sourceTree = SOURCE_ROOT;
 		};
-		BB132929F2D8393B4645C583B58634C5 /* Requests */ = {
+		F5E4849ADA3EB3BE13AFB296D261C458 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
-				A8FC4AE03906C5C3860F5055CDD3232B /* CheckAddressRequest.swift */,
-				4944BCDF87800B1F61B9A15A08C0FAC7 /* CreateAddressRequest.swift */,
-				FDE577A4B9190386AD2FD21D7815E6FD /* UpdateAddressRequest.swift */,
+				09BE41A9DD5C74942FACB218E3E2C340 /* CheckAddressRequest.swift */,
+				A81A2B9DE3362B1C7310525AE14B062F /* CreateAddressRequest.swift */,
+				6D763C3A858FEA75BEF31CE1C229F28C /* UpdateAddressRequest.swift */,
 			);
 			name = Requests;
 			sourceTree = "<group>";
 		};
-		C2DE1761D061DCB09F87ABB9AFE9108C = {
+		D58D173AD0FB1073B0D4EE88CD393AD0 = {
 			isa = PBXGroup;
 			children = (
-				3D8FD04D7F66A80EE1FE5532406AE047 /* Frameworks */,
-				75D3D341CD1A816A0E6B63CB55C81BF2 /* ZalandoCommerceAPI */,
-				F963EFE65B6A40971D31F80FC766E5B8 /* ZalandoCommerceAPITests */,
-				864F2AE731B222CF20825FFF5BF5E6DD /* ZalandoCommerceAPITestsHostApp */,
-				F43D62FABF1E071CB5EDE91A6BC3D9A4 /* Products */,
+				D85123DD145F720C15F50E9AD5F5ED64 /* Frameworks */,
+				28F981B6F2E73B9B81258911BF35717B /* ZalandoCommerceAPI */,
+				1D31E271625D94FFD5B9FD0E1CD843E3 /* ZalandoCommerceAPITests */,
+				1AF8D3A022E7EFD64AEC4EFEEE6886BC /* ZalandoCommerceAPITestsHostApp */,
+				2F385C58DC0436C02884613DC64D41AE /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		C5A74D07FB57566754688019A86DAB5D /* Cart */ = {
+		A4DADDBC60B39DB6EF9AFBF86198E5FA /* Cart */ = {
 			isa = PBXGroup;
 			children = (
-				51B0CE819B745B123AB209C20DB0A0D6 /* CartItemRequest.swift */,
-				6C37D256F81316476AD1BB1CFB1D350D /* CartRequest.swift */,
-				4684381074A4798A9C76F19A7002341C /* Cart.swift */,
-				51C62414756DA20D0C2756D3C2891656 /* CartItem.swift */,
+				492A0495316C1D2FB15914EB0034A8EE /* CartItemRequest.swift */,
+				136F36249C12EFA0A3C955C13183D28F /* CartRequest.swift */,
+				771B98E9B348D4050C19DF588FD5C68E /* Cart.swift */,
+				18B78F111A934CE9A33D0A71306605FB /* CartItem.swift */,
 			);
 			name = Cart;
 			sourceTree = "<group>";
 		};
-		D4B1BA8DB7C3102EC22C0246D8DAACDB /* Other */ = {
+		263EC9FB9695B0A525436FA3C12C671C /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				0D89792D814554CD8DB67D0A0F6DC39F /* Info.plist */,
+				E36CD0771BEAE73FFFE42B7FC4837335 /* Info.plist */,
 			);
 			name = Other;
 			sourceTree = "<group>";
 		};
-		DFE4E09245E4C2D081775266DC9E3364 /* Addresses */ = {
+		5522F7B4A99C62A6767930B892004E86 /* Addresses */ = {
 			isa = PBXGroup;
 			children = (
-				BB132929F2D8393B4645C583B58634C5 /* Requests */,
-				63075449FCB8DF8B5FB1DF58F073BE13 /* Responses */,
-				550185D4F6E3EBAB878EAFC9701AC441 /* CheckAddress.swift */,
-				88C730D69D82840A7774CF4846D833BC /* CheckoutAddress.swift */,
-				34A2E3D95B370914C7B19A3B81E80190 /* FormattableAddress.swift */,
-				73A02961F55508B3B15CEC53112BFE4D /* OrderAddress.swift */,
-				402AD2052AB32129CFB12ED77B1D048C /* StreetAddress.swift */,
-				A0C240A1E0049D934FB15689BA1417E9 /* UserAddress.swift */,
-				6CF4A6E890DD1042419DC11B39812630 /* CheckoutAddresses.swift */,
+				F5E4849ADA3EB3BE13AFB296D261C458 /* Requests */,
+				255E582270D75807AA6FDE9BCB50B0D8 /* Responses */,
+				9FB527DAF057059B9C2F37552BF63DA6 /* CheckAddress.swift */,
+				E7CCE1B446DAFB1D5E70BA51709E30C4 /* CheckoutAddress.swift */,
+				F9CB276E242319A774DCCF98A4861D00 /* FormattableAddress.swift */,
+				633280BC92207C3C19ADDF58B4C60B24 /* OrderAddress.swift */,
+				8D39F2750ACA486E264A66411209A184 /* StreetAddress.swift */,
+				1C09E87D618085F7DF1D5EBD5CCECC3A /* UserAddress.swift */,
+				F5E8B87EE4C37C6F3119A023A965E91F /* CheckoutAddresses.swift */,
 			);
 			name = Addresses;
 			sourceTree = "<group>";
 		};
-		E9ECE5A2A329CEFB89C24E53DED3403D /* Checkout */ = {
+		1875564C217B9B3F364A0A8F3184A4B2 /* Checkout */ = {
 			isa = PBXGroup;
 			children = (
-				5B5B140809815AB229E44B61389E3F9A /* Checkout.swift */,
-				A50CA5CE843366FDF5FC08D7C381BBDC /* CreateCheckoutRequest.swift */,
-				6900B5912E42BB6129BCDE39649CE361 /* UpdateCheckoutRequest.swift */,
+				505A8DD4F1751BC4C86ED1073FB01E53 /* Checkout.swift */,
+				065D2FE8FA9EFDFAEA6E39945726B30B /* CreateCheckoutRequest.swift */,
+				84C2C192219E0EA8F0C71E8F14494F7B /* UpdateCheckoutRequest.swift */,
 			);
 			name = Checkout;
 			sourceTree = "<group>";
 		};
-		F43D62FABF1E071CB5EDE91A6BC3D9A4 /* Products */ = {
+		2F385C58DC0436C02884613DC64D41AE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BF2DD2D803D006BDEAB6C294E238C72D /* ZalandoCommerceAPI.framework */,
-				76D8786A1A0E25F620A6FDC8EEB941AD /* ZalandoCommerceAPITests.xctest */,
-				3E05F60B2B93FBE0DCC2ADDCB25843AC /* ZalandoCommerceAPITestsHostApp.app */,
+				F9E10874B5B8C29BD790BDF5931EEE1B /* ZalandoCommerceAPI.framework */,
+				ED632107F4F046757A6F43D1B9A62A42 /* ZalandoCommerceAPITests.xctest */,
+				FEE2813C50684E535AC47ABCCF2ECA94 /* ZalandoCommerceAPITestsHostApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F52B1BDDBB0AAA8B723B78601817791D /* Order */ = {
+		E86F98BDDE8A76066A0B78ACBF7E4C71 /* Order */ = {
 			isa = PBXGroup;
 			children = (
-				99C8EE9549DB6BC3760D2AE2B30E6D48 /* OrderRequest.swift */,
+				16576333F5CDE655FDD847A4482011F5 /* OrderRequest.swift */,
 			);
 			name = Order;
 			sourceTree = "<group>";
 		};
-		F963EFE65B6A40971D31F80FC766E5B8 /* ZalandoCommerceAPITests */ = {
+		1D31E271625D94FFD5B9FD0E1CD843E3 /* ZalandoCommerceAPITests */ = {
 			isa = PBXGroup;
 			children = (
-				81D590E61E6EA14000BC601F /* CommonsTests */,
-				81D590DE1E6DCAC500BC601F /* API */,
-				81D590A11E6DCABA00BC601F /* JSON */,
-				81D5909E1E6DCABA00BC601F /* ConfigTests.swift */,
-				81D5909F1E6DCABA00BC601F /* DatesTests.swift */,
-				81D590A01E6DCABA00BC601F /* Info.plist */,
-				81D590AF1E6DCABA00BC601F /* KeychainTests.swift */,
-				81D590B01E6DCABA00BC601F /* LoggerTests.swift */,
-				81D590B11E6DCABA00BC601F /* OptionsTests.swift */,
-				81D590B21E6DCABA00BC601F /* SKUTest.swift */,
-				81D590B31E6DCABA00BC601F /* TestConfig.swift */,
-				81D590B61E6DCABA00BC601F /* URLRequestTests.swift */,
-				81D590B71E6DCABA00BC601F /* URLSessionMock.swift */,
+				26D5C685B26F8F8F366AC45B82A3C29C /* CommonsTests */,
+				40A6C26207961C9D81F36178EA4DF9D7 /* API */,
+				1D23E7958DE5A591FC4982FC1851978A /* JSON */,
+				953C9A2531EEE2E24166910F49BB140F /* ConfigTests.swift */,
+				F13B2002ABC3292A05FDCE16752BC088 /* DatesTests.swift */,
+				6B3BD16AE6DC3026A1A3FEE19B6F43CD /* Info.plist */,
+				C729D184C487BF167E1A0B8D0E8E47A1 /* KeychainTests.swift */,
+				601B284507EE034ED5698BE5A8A0AB45 /* LoggerTests.swift */,
+				0AFF140E6892815738A7986B628BFA88 /* OptionsTests.swift */,
+				752E171462A6205B6CAC3CA65AE61032 /* SKUTest.swift */,
+				1D6751EB599BCA3DFD744D191A074E01 /* TestConfig.swift */,
+				F2C1DE67BF8F854330C1595821CDF4B1 /* URLRequestTests.swift */,
+				806FB6A41BB727A8206A66C67EBE52EA /* URLSessionMock.swift */,
 			);
 			path = ZalandoCommerceAPITests;
 			sourceTree = "<group>";
@@ -741,7 +741,7 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		A8FFC22BCB70DCAFBF47C9180AE05CE9 /* Headers */ = {
+		9B6BEC3E339AAB13BCB0906FEAB55EFE /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -751,33 +751,33 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		4850138AFD7E1EECC8F7F5FD3D02713F /* ZalandoCommerceAPITests */ = {
+		DDBD47102555A55263FAE7C02F700F07 /* ZalandoCommerceAPITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1CA8FB7B6BAE75CFB302EE27350203FE /* Build configuration list for PBXNativeTarget "ZalandoCommerceAPITests" */;
+			buildConfigurationList = 896FE4E61ADDAA90676A2BA05E53CCA1 /* Build configuration list for PBXNativeTarget "ZalandoCommerceAPITests" */;
 			buildPhases = (
-				B83C0648A94FC8E2D698170AFE23C106 /* Copy Frameworks */,
-				B37545D673CE521954A5224F45655F89 /* Sources */,
-				4DBC0D4EA8029555240C91D63A78636A /* Frameworks */,
-				688EA90A54C5C6DE1B9486F0B00704FC /* Resources */,
+				77110AB9365D72783308331161453C25 /* Copy Frameworks */,
+				7FB3387E92E7D33CD60349E5A9BD6A4B /* Sources */,
+				789F9E179734A7472502255FF0AAB972 /* Frameworks */,
+				3C05B5BE42A1B3EFCD3F30A854231684 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				106443A3317747D7605441288FEECEF6 /* PBXTargetDependency */,
-				B6EBC7D4316714C907F27097DA7447D9 /* PBXTargetDependency */,
+				6B7A9DC814B361417964C6DE77A566BE /* PBXTargetDependency */,
+				9897A04F94424C4EF786B4549462354B /* PBXTargetDependency */,
 			);
 			name = ZalandoCommerceAPITests;
 			productName = APITests;
-			productReference = 76D8786A1A0E25F620A6FDC8EEB941AD /* ZalandoCommerceAPITests.xctest */;
+			productReference = ED632107F4F046757A6F43D1B9A62A42 /* ZalandoCommerceAPITests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		4C40501591B44F17B94996E914C5F583 /* ZalandoCommerceAPITestsHostApp */ = {
+		17DF64D1C5C8401ED753EBE1CADBC364 /* ZalandoCommerceAPITestsHostApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CBBB166BB5792BD3CDFD400FED70CDC1 /* Build configuration list for PBXNativeTarget "ZalandoCommerceAPITestsHostApp" */;
+			buildConfigurationList = 11C52DA0145729747E4CF6BF29301D0A /* Build configuration list for PBXNativeTarget "ZalandoCommerceAPITestsHostApp" */;
 			buildPhases = (
-				3CF515C6DE1521B91F08903BA290372F /* Sources */,
-				FF10D7295D4699053CC6722CEC202506 /* Frameworks */,
-				7091D1D0CC48827DAB15DBEDF5424EAE /* Resources */,
+				74BA846A4B9084A38008B0FD67181628 /* Sources */,
+				F60C15133F515B90CCC3E445ECF31798 /* Frameworks */,
+				3884B25DF891C325DEFEFEFB23D97188 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -785,18 +785,18 @@
 			);
 			name = ZalandoCommerceAPITestsHostApp;
 			productName = APITestsHostApp;
-			productReference = 3E05F60B2B93FBE0DCC2ADDCB25843AC /* ZalandoCommerceAPITestsHostApp.app */;
+			productReference = FEE2813C50684E535AC47ABCCF2ECA94 /* ZalandoCommerceAPITestsHostApp.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E59A11A5E0347028AC04CEEACDF57D88 /* ZalandoCommerceAPI */ = {
+		61BC2BBC9598A5C26E622297956E7A0D /* ZalandoCommerceAPI */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D3F0B073081067B98ED27357101F429D /* Build configuration list for PBXNativeTarget "ZalandoCommerceAPI" */;
+			buildConfigurationList = 669269A91F316DB496B128FDBA01C3C2 /* Build configuration list for PBXNativeTarget "ZalandoCommerceAPI" */;
 			buildPhases = (
-				C178D4723BB2D4B0D4FE167F6577854B /* Swift Lint */,
-				0B1192CD1EB2549BD9FB11F5FCD0602B /* Sources */,
-				A8FFC22BCB70DCAFBF47C9180AE05CE9 /* Headers */,
-				A467BC90A9A6E2615A4DFBCAD996513E /* Resources */,
-				6DEA12AB4B50D4911E2395E6DF09F6A1 /* Frameworks */,
+				758DFFDB526DB18D81CE1776A755A925 /* Swift Lint */,
+				82EF835C286E49C8247360A68A7347AF /* Sources */,
+				9B6BEC3E339AAB13BCB0906FEAB55EFE /* Headers */,
+				26A99C959B3FC2BC877DFA18D908B881 /* Resources */,
+				9CDC39310404E9B094AA509FC0103DBB /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -804,28 +804,28 @@
 			);
 			name = ZalandoCommerceAPI;
 			productName = API;
-			productReference = BF2DD2D803D006BDEAB6C294E238C72D /* ZalandoCommerceAPI.framework */;
+			productReference = F9E10874B5B8C29BD790BDF5931EEE1B /* ZalandoCommerceAPI.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		CF97571A7484C47635A53E809C53B7ED /* Project object */ = {
+		895A2C0F99CF628E0D9B3264535E52F9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Zalando SE";
 				TargetAttributes = {
-					4850138AFD7E1EECC8F7F5FD3D02713F = {
+					DDBD47102555A55263FAE7C02F700F07 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = J67E9B6234;
 						DevelopmentTeamName = "Zalando AG";
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
-						TestTargetID = 4C40501591B44F17B94996E914C5F583;
+						TestTargetID = 17DF64D1C5C8401ED753EBE1CADBC364;
 					};
-					4C40501591B44F17B94996E914C5F583 = {
+					17DF64D1C5C8401ED753EBE1CADBC364 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = J67E9B6234;
 						LastSwiftMigration = 0820;
@@ -836,7 +836,7 @@
 							};
 						};
 					};
-					E59A11A5E0347028AC04CEEACDF57D88 = {
+					61BC2BBC9598A5C26E622297956E7A0D = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeamName = "Zalando AG";
 						LastSwiftMigration = 0810;
@@ -844,7 +844,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 226A10D9FCDA329C87C7F902D21EB4C0 /* Build configuration list for PBXProject "ZalandoCommerceAPI" */;
+			buildConfigurationList = CD1A24C881EEA4A98F3B0E093D617753 /* Build configuration list for PBXProject "ZalandoCommerceAPI" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -853,36 +853,36 @@
 				de,
 				Base,
 			);
-			mainGroup = C2DE1761D061DCB09F87ABB9AFE9108C;
-			productRefGroup = F43D62FABF1E071CB5EDE91A6BC3D9A4 /* Products */;
+			mainGroup = D58D173AD0FB1073B0D4EE88CD393AD0;
+			productRefGroup = 2F385C58DC0436C02884613DC64D41AE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E59A11A5E0347028AC04CEEACDF57D88 /* ZalandoCommerceAPI */,
-				4850138AFD7E1EECC8F7F5FD3D02713F /* ZalandoCommerceAPITests */,
-				4C40501591B44F17B94996E914C5F583 /* ZalandoCommerceAPITestsHostApp */,
+				61BC2BBC9598A5C26E622297956E7A0D /* ZalandoCommerceAPI */,
+				DDBD47102555A55263FAE7C02F700F07 /* ZalandoCommerceAPITests */,
+				17DF64D1C5C8401ED753EBE1CADBC364 /* ZalandoCommerceAPITestsHostApp */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		688EA90A54C5C6DE1B9486F0B00704FC /* Resources */ = {
+		3C05B5BE42A1B3EFCD3F30A854231684 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81D590D31E6DCABA00BC601F /* JSONTests.json in Resources */,
+				16D8BD7311B7A0FD048E61A70403F090 /* JSONTests.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7091D1D0CC48827DAB15DBEDF5424EAE /* Resources */ = {
+		3884B25DF891C325DEFEFEFB23D97188 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81D590E31E6DCB6C00BC601F /* Default-568h@2x.png in Resources */,
+				0BF3D70C62169F6A6398F9AE7F09A268 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A467BC90A9A6E2615A4DFBCAD996513E /* Resources */ = {
+		26A99C959B3FC2BC877DFA18D908B881 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -892,7 +892,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		C178D4723BB2D4B0D4FE167F6577854B /* Swift Lint */ = {
+		758DFFDB526DB18D81CE1776A755A925 /* Swift Lint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 12;
 			files = (
@@ -910,186 +910,186 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		0B1192CD1EB2549BD9FB11F5FCD0602B /* Sources */ = {
+		82EF835C286E49C8247360A68A7347AF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34D565D1422FDFE1F9B482005F88216B /* GuestCartRequest.swift in Sources */,
-				81D5910B1E6EBD8900BC601F /* Bundle.swift in Sources */,
-				DC686314A72D004D8057657BAE386E00 /* PaymentMethodType.swift in Sources */,
-				319C8892EF75F743FB6BC5BAB278ECBA /* GetArticleEndpoint.swift in Sources */,
-				B760B0603070F9558115F9AF15FEF6B1 /* Article.swift in Sources */,
-				62C7EA7D66821EC79C278B60C3907983 /* GuestCheckoutAddress.swift in Sources */,
-				631E7EE031D5A6418FB7DD60074278A7 /* Cart.swift in Sources */,
-				F0FBE44409A85786DEFC3D7CD60EEFE9 /* CartItem.swift in Sources */,
-				81D5910C1E6EBD8900BC601F /* Debug.swift in Sources */,
-				A45694A465415724991904EBB4C5DC3D /* CartItemRequest.swift in Sources */,
-				871861043470F7B6A72F34B73CC67714 /* GuestPaymentRequest.swift in Sources */,
-				8387789B675CAC41D88C59F7CD9A49D5 /* CartRequest.swift in Sources */,
-				613D8FF85E470947466AB8AC54D4F3DD /* Catalog.swift in Sources */,
-				2355ED486BA2B486D32DEC1BE170D4F4 /* OutputStreams.swift in Sources */,
-				24FFD22FC660CB12AA036D615B422072 /* CheckAddress.swift in Sources */,
-				4A34EFB4ADFE3B3932B5AB783A2C61D1 /* RequestBuilder.swift in Sources */,
-				74033CC4EE46D819DCF0D0CD145C705A /* APIClient.swift in Sources */,
-				06E5C0933C2D59ECB6AF221DC82004F3 /* CheckAddressRequest.swift in Sources */,
-				5845FED236186199C6625E11AB2CE7C5 /* GetConfigEndpoint.swift in Sources */,
-				ACCD79D9C4D9FB3D5EE8109A07679A3C /* Media.swift in Sources */,
-				228DA1EE31068C25FB7BA695A50E5DDD /* JSONResponse.swift in Sources */,
-				D7D95B53EC353B847DEF517DC07B7A6F /* CheckAddressResponse.swift in Sources */,
-				3823DD4454949B70FF3FC6C6B81BACA1 /* Checkout.swift in Sources */,
-				AFA5480D32447A330ADEB69346021F8C /* CheckoutAddress.swift in Sources */,
-				5409022DECDE9C9FB50F7A0A51675377 /* GetAddressesEndpoint.swift in Sources */,
-				6506392A605FACF4557D0FCDD47ED7E6 /* Config.swift in Sources */,
-				FC8B4EB07DEBBA17ED31F8EEDD77023D /* UpdateAddressEndpoint.swift in Sources */,
-				067FC4466FFDF3D1F9A54EAAB43FA3B7 /* GuestPaymentMethod.swift in Sources */,
-				284C80B5A67DB71CFD3B3EFCAD987355 /* CreateGuestOrderEndpoint.swift in Sources */,
-				21FEA5797234BD3C78C547FD099F1A0A /* DeleteAddressEndpoint.swift in Sources */,
-				589B9594AED6FCC5975BEF8AD019DA3B /* CheckAddressEndpoint.swift in Sources */,
-				7C497E48E41E8F3AA43D7A53390C2793 /* GuestCustomerRequest.swift in Sources */,
-				A4D9AB4F35D75A6024D7D76FE2BF2CA8 /* UpdateCheckoutEndpoint.swift in Sources */,
-				59B8C60AAF47816AC013834D5807A81F /* GuestOrderRequest.swift in Sources */,
-				CC838A0C2D75384A93FC69ABFA66E574 /* APIRequest.swift in Sources */,
-				5D6A3370F54739B5DCF111D194514204 /* CreateAddressRequest.swift in Sources */,
-				F17DDBBF106C6A5D9C0A9FBDA9CCE3E3 /* GetCustomerEndpoint.swift in Sources */,
-				B33B756E36A1075A2EC6DCD9822DA9D1 /* JSONRepresentable.swift in Sources */,
-				330E18182E0C10228CC4E286B36052C3 /* Notifications.swift in Sources */,
-				71CA5C7010DC6C89C45532550D24F931 /* CreateCheckoutRequest.swift in Sources */,
-				1BA431B6801BAF1F601BBB3FBFDB2202 /* Typealiases.swift in Sources */,
-				61F07F9373EF70129617D9490C0A085B /* Customer.swift in Sources */,
-				81D5910F1E6EBD8900BC601F /* String.swift in Sources */,
-				092E874D448035208694241B6BA8C5F1 /* RFC3339DateFormatter.swift in Sources */,
-				620E4FDCAEF5EB433ECC27903529F2E1 /* CheckoutAddresses.swift in Sources */,
-				E8FE522BEFADC682C935905FFA0AC529 /* GuestPaymentSelectionRequest.swift in Sources */,
-				3841A82752EA65F967C32AE54098426F /* Delivery.swift in Sources */,
-				81D591131E6EBD8900BC601F /* URLRequest.swift in Sources */,
-				009181DB2C30EA37DC459373993A2344 /* Errors.swift in Sources */,
-				81D591101E6EBD8900BC601F /* URL.swift in Sources */,
-				F99CAF715FB0D591A7F5EB79A7C54CE7 /* CreateCartEndpoint.swift in Sources */,
-				7D9992E58F4E287BC6EE7AD30338862F /* FormattableAddress.swift in Sources */,
-				BD4958A6838C84DC295CE30E7E28127D /* Results.swift in Sources */,
-				4B10BA7F4980C14CCFD91482E6A8B060 /* Gender.swift in Sources */,
-				2E8011474999A14E2B63489AC4C4E3BE /* DataTaskResponse.swift in Sources */,
-				A617C549065FE3447ADCC97DFF9DDC69 /* JSON.swift in Sources */,
-				E527A75504B4F3AAF32F426105C37402 /* ResponseParser.swift in Sources */,
-				FD865B0234FE07B7A85955A0E1EECB9B /* CompleteGuestOrderEndpoint.swift in Sources */,
-				81D591121E6EBD8900BC601F /* URLQueryItem.swift in Sources */,
-				02576D9B6427B3104CFB767A0924CA0F /* CreateOrderEndpoint.swift in Sources */,
-				42FE443682EE4DA2863C9C7772E77128 /* SKU.swift in Sources */,
-				F70180EA1E7AC55161F0A0F5BC256BA1 /* PrintLogger.swift in Sources */,
-				E7561BB0527C36A7FA74020C228AF322 /* JSONSubscript.swift in Sources */,
-				81D5910E1E6EBD8900BC601F /* HTTPURLResponse.swift in Sources */,
-				ECE8DEFDB2A85FBCD15B77C89EA5EF4A /* Keychain.swift in Sources */,
-				81D590F91E6EBD6800BC601F /* Options.swift in Sources */,
-				C97FDA428DD10A02B604098846CA1431 /* Logger.swift in Sources */,
-				E6A17887BC6BA4C25B2D758C44514B80 /* Money.swift in Sources */,
-				261B28B342B4AB0AC459145308E87C48 /* GuestOrder.swift in Sources */,
-				50B7CAD88F4CB40657A1E293C5886CBE /* Data.swift in Sources */,
-				81D591141E6EBD8900BC601F /* URLStringConvertible.swift in Sources */,
-				1E972AEE974F24099CF25DD0FA0F4C70 /* APIAccessToken.swift in Sources */,
-				B55E11C43D7FE5324EFC07547FE440BF /* ConfigurableEndpoint.swift in Sources */,
-				240228124E25E1CCE455B8FD3E3F9A92 /* Order.swift in Sources */,
-				81D5910A1E6EBD8900BC601F /* Array.swift in Sources */,
-				81BAB3D31E685B29004F50A3 /* PaymentStatus.swift in Sources */,
-				DD13DE18E8535DE1DE2F8C486CEC3486 /* CreateAddressEndpoint.swift in Sources */,
-				EC2F6D79BBBB87853DF7FC12A809D2A9 /* GetArticleRecommendationsEndpoint.swift in Sources */,
-				81D590FC1E6EBD6800BC601F /* ZalandoCommerceAPI_endpoints.swift in Sources */,
-				A0EFD6474DCE215941273DBFE9FB064B /* OrderAddress.swift in Sources */,
-				B8419F217F076553054D230EEFF60341 /* OrderRequest.swift in Sources */,
-				81D590FD1E6EBD6800BC601F /* ZalandoCommerceAPI.swift in Sources */,
-				63BD6D5AB647CD11815ABCDCD2724601 /* Payment.swift in Sources */,
-				E0D665C2EC9F397884CDD291C9145EBB /* ConfigClient.swift in Sources */,
-				6314391419F5F35C66EBFC2ECE79303E /* SystemInfo.swift in Sources */,
-				81D590FB1E6EBD6800BC601F /* ZalandoCommerceAPI_configure.swift in Sources */,
-				3C945BDC8B10E80ECCEFC959EAEFD67C /* OrderConfirmation.swift in Sources */,
-				963AE70DD87A3C9A75FB0231D2130E7F /* PaymentMethod.swift in Sources */,
-				4721FC3613C4D4210054C2143D31A9CF /* JSONInitializable.swift in Sources */,
-				19052EC3C88FE3710B358C8A009122EF /* PickupPoint.swift in Sources */,
-				81D591111E6EBD8900BC601F /* URLComponents.swift in Sources */,
-				8C98093B61671563577C255FDA452AEA /* Recommendation.swift in Sources */,
-				6504D8872E69CAF240F5CC4CD6BEF61A /* GuestCart.swift in Sources */,
-				727D825FC085BDA1D717C197FDABF439 /* StreetAddress.swift in Sources */,
-				81D590FA1E6EBD6800BC601F /* ZalandoCommerceAPI_authorization.swift in Sources */,
-				CAF49B6A3DAD4C68FF77D18AAB3B91A2 /* UpdateAddressRequest.swift in Sources */,
-				FC0655AC5517BC20F13B9DA9D181A142 /* UpdateCheckoutRequest.swift in Sources */,
-				A0AD0F403E3AF7D1035336D0098FB5F9 /* Brand.swift in Sources */,
-				DE75C7C9CBE1FEBD2BD8E4524B0220A5 /* CreateCheckoutEndpoint.swift in Sources */,
-				6EC34683E95FA934F7A29DCEE26FD134 /* Endpoint.swift in Sources */,
-				81D5910D1E6EBD8900BC601F /* HTTP.swift in Sources */,
-				FC4DC88516E339E12FB7E0B70724A3C5 /* UserAddress.swift in Sources */,
-				3B09D828BF68AC19B8571D876CB1B2EC /* GetGuestCheckoutEndpoint.swift in Sources */,
-				3139D922EE3790EF2597975C5046EDA2 /* GuestCheckout.swift in Sources */,
-				811AA1F682BDEBB36FAA84B0921AEFBE /* GuestAddressRequest.swift in Sources */,
+				C481CED761CF7FDD23FC11FB484DE901 /* GuestCartRequest.swift in Sources */,
+				DF0AFF5819C9C602F41D765FC6C25B18 /* Bundle.swift in Sources */,
+				522CB73B0180E77041A6EF4881A890E8 /* PaymentMethodType.swift in Sources */,
+				C855914EEABF77B66C308FBC0B19A957 /* GetArticleEndpoint.swift in Sources */,
+				A6F5FD65CA22E7ACA7E2B1EFB563DD6A /* Article.swift in Sources */,
+				E3F720A8E7765CCEC96C33C052BBD367 /* GuestCheckoutAddress.swift in Sources */,
+				EEF93F894FF6EED519511FF94E0A4AAA /* Cart.swift in Sources */,
+				C94D5B44163A1977741C60F18FF0CB6F /* CartItem.swift in Sources */,
+				24879E6BB7B25125676D1767298083F5 /* Debug.swift in Sources */,
+				8B80BA61E75DA35D42D1F9AD65BC4478 /* CartItemRequest.swift in Sources */,
+				62CEA3B1FD52AE017C76C6AF4735D278 /* GuestPaymentRequest.swift in Sources */,
+				D4A7C8E3F8C41F9435F4F9E72A4734D9 /* CartRequest.swift in Sources */,
+				870CAAB32D287A356709AC38FBDAA4DD /* Catalog.swift in Sources */,
+				0193C5C67C59CD27CC6C2AB1C241E9B9 /* OutputStreams.swift in Sources */,
+				8188EB6900C80A75E437446EF2803C51 /* CheckAddress.swift in Sources */,
+				8BA03C00B04C82FEBABDF7E9146B7247 /* RequestBuilder.swift in Sources */,
+				C6DF712AD1E90735ED8B90B5A5BBD24F /* APIClient.swift in Sources */,
+				8030F0D9467F93B09C2221FC9988E36B /* CheckAddressRequest.swift in Sources */,
+				F27D865734E0A61FCFBB7845F40EB7F1 /* GetConfigEndpoint.swift in Sources */,
+				CD09C88EDB1B9C26026FFC8D191D766D /* Media.swift in Sources */,
+				E5E8C4AEFCCC144CE98F7CCE752CD4BE /* JSONResponse.swift in Sources */,
+				5FD3769AB9409066CDABF36E14EED58F /* CheckAddressResponse.swift in Sources */,
+				570A5F970308E1C4FA8AA7EA1EAEEA73 /* Checkout.swift in Sources */,
+				D98D948B51EE93DCE1346902AAC7B379 /* CheckoutAddress.swift in Sources */,
+				D8A3BB86E0A20270245340DCC61DD836 /* GetAddressesEndpoint.swift in Sources */,
+				74DFF1875F32CB886EE3EDAF83E6674F /* Config.swift in Sources */,
+				3AB069545AB734694F768F495FFD44B3 /* UpdateAddressEndpoint.swift in Sources */,
+				35B820B1AB2109A935486DAAEA34215C /* GuestPaymentMethod.swift in Sources */,
+				B888759C4DE321C6DAD225664C39B1AB /* CreateGuestOrderEndpoint.swift in Sources */,
+				98D37783BFDF9D111CA7B481BE24F927 /* DeleteAddressEndpoint.swift in Sources */,
+				D116DEFE8FCDCCA312FE63F6BA3F33D3 /* CheckAddressEndpoint.swift in Sources */,
+				EBA82A6A1B4CBB0A4541461F723754C5 /* GuestCustomerRequest.swift in Sources */,
+				CC9958EF6AE39D836B7BD07DA0D4FD5F /* UpdateCheckoutEndpoint.swift in Sources */,
+				638AF95E79BC558A12A90BA74DF217D5 /* GuestOrderRequest.swift in Sources */,
+				4ADC4BC4EB81A1390E23550EFBBC8689 /* APIRequest.swift in Sources */,
+				25B900273BE0A1A2E4A5ECF536AACD56 /* CreateAddressRequest.swift in Sources */,
+				8185E45121D18D557B1144C4CFBFD139 /* GetCustomerEndpoint.swift in Sources */,
+				27F82D91722427A9C814A6D0B315E4B1 /* JSONRepresentable.swift in Sources */,
+				F54379AEFA3B30F14A949043284FD37B /* Notifications.swift in Sources */,
+				51633FB482F6009B06FF1A6828DFE3F6 /* CreateCheckoutRequest.swift in Sources */,
+				BD6B12896CF3A8A3930CF246739D5AD2 /* Typealiases.swift in Sources */,
+				780CD39B0F6A5B61F2D017A48CAD8F1F /* Customer.swift in Sources */,
+				22E426734EDA2918C5AD5BA16A7A4F77 /* String.swift in Sources */,
+				668C68333914D9CD3ADD8E224D71B653 /* RFC3339DateFormatter.swift in Sources */,
+				40553F8E6FE0CB8ECD5B91BEB24A6924 /* CheckoutAddresses.swift in Sources */,
+				D33F60ED43BCB64F9F35F18EF3EEAFFC /* GuestPaymentSelectionRequest.swift in Sources */,
+				014B55E654CCF745554628F4E44FF587 /* Delivery.swift in Sources */,
+				F43461C5157A958F84005BD55E261B3A /* URLRequest.swift in Sources */,
+				8F902F006798129186B528CDC950E084 /* Errors.swift in Sources */,
+				8618A0D7A50A8AEC0108827422CEBA79 /* URL.swift in Sources */,
+				1AB434C5EEFC4CEBA648B437E9F42ABE /* CreateCartEndpoint.swift in Sources */,
+				FE15C17E689AA8C7EA8B67D0DE0B48BD /* FormattableAddress.swift in Sources */,
+				0322E9139517223BF0258E75CE477BD1 /* Results.swift in Sources */,
+				7C9AE386DDDED5D29F6FCC9B17F577EC /* Gender.swift in Sources */,
+				58C600EE0A39E1B3D1248F33EC0BE714 /* DataTaskResponse.swift in Sources */,
+				A2C86A8D301E107284C5754110539D48 /* JSON.swift in Sources */,
+				75B284406ECE6C0F17B1045F977690CD /* ResponseParser.swift in Sources */,
+				66FD58D674AA9C708BDF54AB3FDFE016 /* CompleteGuestOrderEndpoint.swift in Sources */,
+				CB20C35C7AB8BB8BFFFC094A428EF5EF /* URLQueryItem.swift in Sources */,
+				AF4CE80CBD2ADCF11F34F19266D3DAC4 /* CreateOrderEndpoint.swift in Sources */,
+				8AD2160B0B7580D07097C7D38B9729BC /* SKU.swift in Sources */,
+				11EBE5F865B477D2034E1C8FE967DE9D /* PrintLogger.swift in Sources */,
+				8E697C3CD73BCE802406D900B5E1A178 /* JSONSubscript.swift in Sources */,
+				965979177037D1499DD85555B2C9904C /* HTTPURLResponse.swift in Sources */,
+				412CD802BFA2BDE9590E727D8E0BA0B6 /* Keychain.swift in Sources */,
+				B3DC49A3352B1119BA4FCAEBD518B9CE /* Options.swift in Sources */,
+				456DEB42947799544346E63C7162725B /* Logger.swift in Sources */,
+				B30B30197840C62F6E1400C159A0FA34 /* Money.swift in Sources */,
+				89029D3B05C1AAA1EDA9914106188193 /* GuestOrder.swift in Sources */,
+				6AE46C57BA78ACADB7DDEA63E1683EDC /* Data.swift in Sources */,
+				41E6D39CCFFB1FA27D5BAE4DA4D7962C /* URLStringConvertible.swift in Sources */,
+				E53398E50FBFE0CA93D9CFED44F5919E /* APIAccessToken.swift in Sources */,
+				42CF8175F095CB099070BEE41F1D9019 /* ConfigurableEndpoint.swift in Sources */,
+				49B6D2B9D8E7D460FAE7C9B29CC600DC /* Order.swift in Sources */,
+				F5A44AA344DA097388EA0F1B455D60A0 /* Array.swift in Sources */,
+				FF2334104FB810600BE6562912FA1C9F /* PaymentStatus.swift in Sources */,
+				FF36445A5EB1056D35C3813CF6DDC778 /* CreateAddressEndpoint.swift in Sources */,
+				295C4795209411313D716577BC037D26 /* GetArticleRecommendationsEndpoint.swift in Sources */,
+				8F92D8F4387487C5F85114A3871B3900 /* ZalandoCommerceAPI_endpoints.swift in Sources */,
+				FA1F1A5B1CF15A0ED5448BA5C9E6B4A4 /* OrderAddress.swift in Sources */,
+				822EDE66C0F480C1273B1F69A5B20BCE /* OrderRequest.swift in Sources */,
+				E900FF40745FE0BA77E87323DFFC429A /* ZalandoCommerceAPI.swift in Sources */,
+				4D4F6F4BC3D862EC2A1F5EC078EC76C6 /* Payment.swift in Sources */,
+				023331E1323DFDA492CDCFEC3CCF3EB6 /* ConfigClient.swift in Sources */,
+				BFA5E5D6D6D85BA0BB0E317EDD1AAF7F /* SystemInfo.swift in Sources */,
+				D05957D12BDA047E6D88B260B2CF1254 /* ZalandoCommerceAPI_configure.swift in Sources */,
+				EC351E9A222A45C183D94E102CD34AF4 /* OrderConfirmation.swift in Sources */,
+				7C29D20AE7CF9E8792E1DAF8830227AF /* PaymentMethod.swift in Sources */,
+				FA69629F4D22ECEDBCF4AB124BE6A46E /* JSONInitializable.swift in Sources */,
+				E46B1921D680E2F2BBCD9FC7BD3939A3 /* PickupPoint.swift in Sources */,
+				A1D3E2AB9B43355056F1616618DEDD6D /* URLComponents.swift in Sources */,
+				E484C6A025CE7392C4CB3462C16307FF /* Recommendation.swift in Sources */,
+				95FE614639CD920427281E543A38CC6A /* GuestCart.swift in Sources */,
+				2F2967E67E59BDA64C18C8CE206D5E9C /* StreetAddress.swift in Sources */,
+				D724EDF296973B1FC69E76BA8AA65CE3 /* ZalandoCommerceAPI_authorization.swift in Sources */,
+				1E3377B88EE31113043C0AE5AC8A1808 /* UpdateAddressRequest.swift in Sources */,
+				D1BA93D11B197ECF332355378A8D43D9 /* UpdateCheckoutRequest.swift in Sources */,
+				386219427C4BFE01E7C7EC44488A4976 /* Brand.swift in Sources */,
+				B8E61C2DFBBFC2B2C4E7FCC2FABCA8EA /* CreateCheckoutEndpoint.swift in Sources */,
+				97BAB3DD150F019E5999FC3DEA86015C /* Endpoint.swift in Sources */,
+				CFC7C31ACB60A84D2E48B3DA68F92061 /* HTTP.swift in Sources */,
+				5C87BFB83B32D99CD23DF2A62AD3FA76 /* UserAddress.swift in Sources */,
+				3DF899D27725DC1A64D0C36AED8D5D60 /* GetGuestCheckoutEndpoint.swift in Sources */,
+				D74D3C9E39F444F8F86D48B9E1377972 /* GuestCheckout.swift in Sources */,
+				A751205EA193C74DA32BEFA2787A7D56 /* GuestAddressRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3CF515C6DE1521B91F08903BA290372F /* Sources */ = {
+		74BA846A4B9084A38008B0FD67181628 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81D590E51E6DCB6C00BC601F /* TestsHostAppDelegate.swift in Sources */,
+				074B721CAFDED0725356D978EE589D75 /* TestsHostAppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B37545D673CE521954A5224F45655F89 /* Sources */ = {
+		7FB3387E92E7D33CD60349E5A9BD6A4B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81D590C31E6DCABA00BC601F /* APITestCase.swift in Sources */,
-				81D590D91E6DCABA00BC601F /* TestConfig.swift in Sources */,
-				81D590C21E6DCABA00BC601F /* APIUpdateCheckoutTests.swift in Sources */,
-				81D590CB1E6DCABA00BC601F /* JSONEquatableTests.swift in Sources */,
-				81D590C01E6DCABA00BC601F /* APIGuestOrderTests.swift in Sources */,
-				81D590CA1E6DCABA00BC601F /* JSONDatesTests.swift in Sources */,
-				81D590D51E6DCABA00BC601F /* KeychainTests.swift in Sources */,
-				81D590C61E6DCABA00BC601F /* DatesTests.swift in Sources */,
-				81D590D81E6DCABA00BC601F /* SKUTest.swift in Sources */,
-				81D590C11E6DCABA00BC601F /* APIOrderTests.swift in Sources */,
-				81D590D41E6DCABA00BC601F /* JSONUrlsTests.swift in Sources */,
-				81D590C41E6DCABA00BC601F /* APIAuthorizationTests.swift in Sources */,
-				81D590EA1E6EA14000BC601F /* TestOptions.swift in Sources */,
-				81D590DD1E6DCABA00BC601F /* URLSessionMock.swift in Sources */,
-				81D590B81E6DCABA00BC601F /* APIAddressesTests.swift in Sources */,
-				81D590BF1E6DCABA00BC601F /* APIGuestCheckoutTests.swift in Sources */,
-				81D590C91E6DCABA00BC601F /* JSONCollectionsTests.swift in Sources */,
-				81D590E91E6EA14000BC601F /* TestConsts.swift in Sources */,
-				81D590D21E6DCABA00BC601F /* JSONTestCase.swift in Sources */,
-				81D590D71E6DCABA00BC601F /* OptionsTests.swift in Sources */,
-				81D590BA1E6DCABA00BC601F /* APICartTests.swift in Sources */,
-				81D590CD1E6DCABA00BC601F /* JSONNullsTests.swift in Sources */,
-				81D590BB1E6DCABA00BC601F /* APIClientErrorsTests.swift in Sources */,
-				81D590CC1E6DCABA00BC601F /* JSONJsonsTests.swift in Sources */,
-				81D590C51E6DCABA00BC601F /* ConfigTests.swift in Sources */,
-				81D590D61E6DCABA00BC601F /* LoggerTests.swift in Sources */,
-				81D590CE1E6DCABA00BC601F /* JSONNumbersTests.swift in Sources */,
-				81D590CF1E6DCABA00BC601F /* JSONParseTests.swift in Sources */,
-				81D590C81E6DCABA00BC601F /* JSONBoolsTests.swift in Sources */,
-				81D590BC1E6DCABA00BC601F /* APICreateCheckoutTests.swift in Sources */,
-				81D590D01E6DCABA00BC601F /* JSONPathsTests.swift in Sources */,
-				81D590BE1E6DCABA00BC601F /* APIGetAddressesEndpointTests.swift in Sources */,
-				81D590D11E6DCABA00BC601F /* JSONStringsTests.swift in Sources */,
-				81D590BD1E6DCABA00BC601F /* APICustomerTests.swift in Sources */,
-				81D590B91E6DCABA00BC601F /* APIArticleTests.swift in Sources */,
-				81D590DC1E6DCABA00BC601F /* URLRequestTests.swift in Sources */,
+				E12B86C1D7F6C28494B0A2504BA719C0 /* APITestCase.swift in Sources */,
+				93406F6155BA85651A7BF5B7125DC1C5 /* TestConfig.swift in Sources */,
+				420668524F960BBFE8DFD91580C74F7E /* APIUpdateCheckoutTests.swift in Sources */,
+				63297FD73E64C1215A4D042FF7B872B4 /* JSONEquatableTests.swift in Sources */,
+				B6594F2BE39C7630093917F6147ADB5A /* APIGuestOrderTests.swift in Sources */,
+				1F253216F70C236BAFBD45BF9E071DB7 /* JSONDatesTests.swift in Sources */,
+				A90543458A76C13FC28111DCE4244489 /* KeychainTests.swift in Sources */,
+				CABE31C7E1F4AE818AB4C07802EF00B1 /* DatesTests.swift in Sources */,
+				4DA4C69A9BE2C5FB642D787C78C5EAA7 /* SKUTest.swift in Sources */,
+				E9B53F00FE6F5D98E978B24FD63A4CE3 /* APIOrderTests.swift in Sources */,
+				1C0CDCCF2651155BAEE9E2FB41F122AF /* JSONUrlsTests.swift in Sources */,
+				17D6CF758A56BB472661E8CE92C010E8 /* APIAuthorizationTests.swift in Sources */,
+				D4496A21284992EE767FB807FAD09D6F /* TestOptions.swift in Sources */,
+				8838357A8693E41BB7E734E1357B61FA /* URLSessionMock.swift in Sources */,
+				054A79801AB9CE6FBE9C85F81B29267B /* APIAddressesTests.swift in Sources */,
+				E7428E46E9F406A21FBC31C8069350A2 /* APIGuestCheckoutTests.swift in Sources */,
+				8511FA5BEB2293B1FCAB81AC16FC74D0 /* JSONCollectionsTests.swift in Sources */,
+				9C74327D50F47D82A68386DC3F6D473B /* TestConsts.swift in Sources */,
+				79F1BF9199E88FABF87C71386E4B8E21 /* JSONTestCase.swift in Sources */,
+				9AE2C8DEAFE2654EBDBE1E175FCEF59F /* OptionsTests.swift in Sources */,
+				843E21DBEC0F73204F317885F58D0D4F /* APICartTests.swift in Sources */,
+				9457D8873344A1A8C1D31B5411081401 /* JSONNullsTests.swift in Sources */,
+				34F956F81B3EF933D14F384CE411C20F /* APIClientErrorsTests.swift in Sources */,
+				E5EA8B7B564A616FF041010D6DF32180 /* JSONJsonsTests.swift in Sources */,
+				DF521273BBED398ECAB64F93C9A9907E /* ConfigTests.swift in Sources */,
+				C1CAF47B48A4EF526C8E673BCF8998D9 /* LoggerTests.swift in Sources */,
+				C3F7311751B74DCE3FA989947FC751D0 /* JSONNumbersTests.swift in Sources */,
+				D1FC7E22C48613BDD537212F2A7CC658 /* JSONParseTests.swift in Sources */,
+				C8BC2634AEC8A3E0A50D6AB3BAD12E22 /* JSONBoolsTests.swift in Sources */,
+				11EFAF004DCBE834A2C56DE9DDBFCC81 /* APICreateCheckoutTests.swift in Sources */,
+				944274838B9B22854DC048419A0D3028 /* JSONPathsTests.swift in Sources */,
+				9974DCAFDF42B15FBAFAAFD55437E9EA /* APIGetAddressesEndpointTests.swift in Sources */,
+				6DC23A9E0CD8B980064FAF2F93C9BB50 /* JSONStringsTests.swift in Sources */,
+				4C9925CC1943C852F30896CA68D60BCA /* APICustomerTests.swift in Sources */,
+				70008E4CBC431D47BC2A39AB767A4817 /* APIArticleTests.swift in Sources */,
+				814FBCCCDD0B3E57D591724B8730176F /* URLRequestTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		106443A3317747D7605441288FEECEF6 /* PBXTargetDependency */ = {
+		6B7A9DC814B361417964C6DE77A566BE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = E59A11A5E0347028AC04CEEACDF57D88 /* ZalandoCommerceAPI */;
-			targetProxy = 55BDBECCCFA2E13FED91A8C226F432E2 /* PBXContainerItemProxy */;
+			target = 61BC2BBC9598A5C26E622297956E7A0D /* ZalandoCommerceAPI */;
+			targetProxy = 8A55841C314010700824F310FFD40C42 /* PBXContainerItemProxy */;
 		};
-		B6EBC7D4316714C907F27097DA7447D9 /* PBXTargetDependency */ = {
+		9897A04F94424C4EF786B4549462354B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4C40501591B44F17B94996E914C5F583 /* ZalandoCommerceAPITestsHostApp */;
-			targetProxy = 5674F4AACF3972C221FB06B1C5B3302F /* PBXContainerItemProxy */;
+			target = 17DF64D1C5C8401ED753EBE1CADBC364 /* ZalandoCommerceAPITestsHostApp */;
+			targetProxy = FC0586371F0DCB1FA2A64C6E79DCE0F1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		366A30D8B0D05FEDCE76F5414E478ACC /* Release */ = {
+		82C21FC080E90162D9F1B93C0569EFAB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -1108,7 +1108,7 @@
 			};
 			name = Release;
 		};
-		3A69EC1774A618EEAA5DCEFA64FE7EF4 /* Debug */ = {
+		DAA9730F1456794FEE34BD39BC40CA3E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1164,7 +1164,7 @@
 			};
 			name = Debug;
 		};
-		3E89F095B2BA31C9F100216AE15904F5 /* Debug */ = {
+		E3FA23CD8487260A39C3D02B3AE2B749 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
@@ -1183,7 +1183,7 @@
 			};
 			name = Debug;
 		};
-		628FC980686C87D63097764874D19781 /* Debug */ = {
+		6CBD1F30733D2783939D740D2348F840 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -1203,7 +1203,7 @@
 			};
 			name = Debug;
 		};
-		7080CAF2E0F26E5CD3F01DC7DA23C03F /* Release */ = {
+		A5AC1E79E2936AAE1063B0AF5D02DCF9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1251,7 +1251,7 @@
 			};
 			name = Release;
 		};
-		DEAEE9C9B9B1E6F348DF4707CFD72FB2 /* Debug */ = {
+		A6C38339A39F055586846908C4E95856 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
@@ -1269,7 +1269,7 @@
 			};
 			name = Debug;
 		};
-		EAE1BC10C1C3FA1B8971510721EEE1CC /* Release */ = {
+		CC507E3ABA20CF55A1BF11B77707782A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
@@ -1288,7 +1288,7 @@
 			};
 			name = Release;
 		};
-		F36700104107C8AD8E08A1171B3EECE0 /* Release */ = {
+		8813440D3F64BCA029DCDE62CA952E25 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
@@ -1308,43 +1308,43 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1CA8FB7B6BAE75CFB302EE27350203FE /* Build configuration list for PBXNativeTarget "ZalandoCommerceAPITests" */ = {
+		896FE4E61ADDAA90676A2BA05E53CCA1 /* Build configuration list for PBXNativeTarget "ZalandoCommerceAPITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				628FC980686C87D63097764874D19781 /* Debug */,
-				366A30D8B0D05FEDCE76F5414E478ACC /* Release */,
+				6CBD1F30733D2783939D740D2348F840 /* Debug */,
+				82C21FC080E90162D9F1B93C0569EFAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		226A10D9FCDA329C87C7F902D21EB4C0 /* Build configuration list for PBXProject "ZalandoCommerceAPI" */ = {
+		CD1A24C881EEA4A98F3B0E093D617753 /* Build configuration list for PBXProject "ZalandoCommerceAPI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3A69EC1774A618EEAA5DCEFA64FE7EF4 /* Debug */,
-				7080CAF2E0F26E5CD3F01DC7DA23C03F /* Release */,
+				DAA9730F1456794FEE34BD39BC40CA3E /* Debug */,
+				A5AC1E79E2936AAE1063B0AF5D02DCF9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CBBB166BB5792BD3CDFD400FED70CDC1 /* Build configuration list for PBXNativeTarget "ZalandoCommerceAPITestsHostApp" */ = {
+		11C52DA0145729747E4CF6BF29301D0A /* Build configuration list for PBXNativeTarget "ZalandoCommerceAPITestsHostApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				DEAEE9C9B9B1E6F348DF4707CFD72FB2 /* Debug */,
-				F36700104107C8AD8E08A1171B3EECE0 /* Release */,
+				A6C38339A39F055586846908C4E95856 /* Debug */,
+				8813440D3F64BCA029DCDE62CA952E25 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D3F0B073081067B98ED27357101F429D /* Build configuration list for PBXNativeTarget "ZalandoCommerceAPI" */ = {
+		669269A91F316DB496B128FDBA01C3C2 /* Build configuration list for PBXNativeTarget "ZalandoCommerceAPI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3E89F095B2BA31C9F100216AE15904F5 /* Debug */,
-				EAE1BC10C1C3FA1B8971510721EEE1CC /* Release */,
+				E3FA23CD8487260A39C3D02B3AE2B749 /* Debug */,
+				CC507E3ABA20CF55A1BF11B77707782A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = CF97571A7484C47635A53E809C53B7ED /* Project object */;
+	rootObject = 895A2C0F99CF628E0D9B3264535E52F9 /* Project object */;
 }
