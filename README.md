@@ -23,6 +23,6 @@ Additionally, [Demo app](https://github.com/zalando-incubator/zalando-commerce-i
 
 1. Installation: [CocoaPods](https://github.com/zalando-incubator/zalando-commerce-ios/wiki/Installation#cocoapods), [Carthage](https://github.com/zalando-incubator/zalando-commerce-ios/wiki/Installation#carthage), or [manual](https://github.com/zalando-incubator/zalando-commerce-ios/wiki/Installation#manual)
 2. Configuration: [via code](https://github.com/zalando-incubator/zalando-commerce-ios/wiki/Configuration#via-code), or [via Info.plist](https://github.com/zalando-incubator/zalando-commerce-ios/wiki/Configuration#via-infoplist)
-3. Usage: [ZalandoCommerceUI](https://github.com/zalando-incubator/zalando-commerce-ios/wiki/AtlasUI-usage)
+3. Usage: [ZalandoCommerceUI](https://github.com/zalando-incubator/zalando-commerce-ios/wiki/Usage)
 
 More documentation on [wiki](https://github.com/zalando-incubator/zalando-commerce-ios/wiki).
