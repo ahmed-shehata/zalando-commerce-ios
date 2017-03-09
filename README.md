@@ -7,7 +7,7 @@
 [![Build Status](https://travis-ci.org/zalando-incubator/zalando-commerce-ios.svg?branch=master)](https://travis-ci.org/zalando-incubator/zalando-commerce-ios)
 [![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=58c125ce8fe03c010009b1a5&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/58c125ce8fe03c010009b1a5/build/latest?branch=master)
 [![codecov](https://codecov.io/gh/zalando-incubator/zalando-commerce-ios/branch/master/graph/badge.svg)](https://codecov.io/gh/zalando-incubator/zalando-commerce-ios)
-[![codebeat badge](https://codebeat.co/badges/6cba3b9f-22e3-479f-b579-f68d63b6a1ea)](https://codebeat.co/projects/github-com-zalando-incubator-zalando-commerce-ios-master)
+[![codebeat badge](https://codebeat.co/badges/4d91ed22-bb12-49ca-a0c8-ea91f6560622)](https://codebeat.co/projects/github-com-zalando-incubator-zalando-commerce-ios-master-30555a2c-4aa9-4523-9387-e3b9f5bdaf2e)
 # Zalando Commerce iOS SDK
 
 The purpose of this project is to provide effortless and seamless integration with Zalando Checkout in iOS apps.
