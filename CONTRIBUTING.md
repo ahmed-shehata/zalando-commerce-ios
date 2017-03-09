@@ -16,7 +16,7 @@ theirs approval (:+1:)
 
 ## Rules
 
-1. Every change needs a test (fortunately [codecov.io](https://codecov.io/gh/zalando-incubator/atlas-ios) keeps code coverage metric)
+1. Every change needs a test (fortunately [codecov.io](https://codecov.io/gh/zalando-incubator/zalando-commerce-ios) keeps code coverage metric)
 1. Keep the code style by resolving SwiftLint warnings
 1. Commit message must be in the following format:
 ```

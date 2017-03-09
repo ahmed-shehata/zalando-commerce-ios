@@ -6,7 +6,7 @@ Pod::Spec.new do |spec|
   spec.platform = :ios, '9.0'
   spec.version = ZC_VERSION
   spec.summary = 'Full UI for Zalando Checkout and Catalog APIs.'
-  spec.homepage = 'https://github.com/zalando-incubator/atlas-ios'
+  spec.homepage = 'https://github.com/zalando-incubator/zalando-commerce-ios'
 
   spec.description = <<-DESC
 The purpose of this project is to provide seamless experience of Zalando
@@ -35,7 +35,7 @@ Checkout API calls and provide you high-level business objects to deal with.
   }
 
   spec.source = {
-    git: 'https://github.com/zalando-incubator/atlas-ios.git',
+    git: 'https://github.com/zalando-incubator/zalando-commerce-ios.git',
     tag: spec.version.to_s
   }
 
