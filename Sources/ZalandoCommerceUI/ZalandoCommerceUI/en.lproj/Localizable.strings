@@ -77,6 +77,8 @@
 "summaryView.label.orderImageSaved" = "✓ Image saved to your photo library";
 "summaryView.label.orderNumber" = "Order number";
 "summaryView.label.payment" = "Payment";
+"summaryView.label.coupon.title" = "Coupon Code";
+"summaryView.label.coupon.placeholder" = "Enter the code";
 "summaryView.label.price.shipping" = "Shipping";
 "summaryView.label.price.total" = "Total";
 "summaryView.label.price.vat" = "(VAT Included)";

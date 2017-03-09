@@ -13,9 +13,10 @@ class CheckoutContainerView: UIView {
         return stackView
     }()
 
-    let scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
+    let scrollView: KeyboardScrollView = {
+        let scrollView = KeyboardScrollView()
         scrollView.backgroundColor = .white
+        scrollView.keyboardDismissMode = .interactive
         return scrollView
     }()
 
@@ -140,6 +141,7 @@ extension CheckoutContainerView: UIBuilder {
 
         containerStackView.addArrangedSubview(scrollView)
         containerStackView.addArrangedSubview(footerStackView)
+        scrollView.registerForKeyboardNotifications()
 
         scrollView.addSubview(mainStackView)
         collectionViewContainerView.addSubview(collectionView)

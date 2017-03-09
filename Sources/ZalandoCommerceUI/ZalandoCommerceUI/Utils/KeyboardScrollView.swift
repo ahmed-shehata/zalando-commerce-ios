@@ -26,7 +26,13 @@ class KeyboardScrollView: UIScrollView {
 
     func keyboardWillShow(fromNotification notification: Notification) {
         guard let infoValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] else { return }
-        let keyboardHeight = (infoValue as AnyObject).cgRectValue.height
+        var keyboardHeight = (infoValue as AnyObject).cgRectValue.height
+
+        if let window = UIApplication.shared.keyWindow {
+            let boundsToWindow = convert(bounds, to: window)
+            let bottomMargin = window.frame.height - boundsToWindow.height - boundsToWindow.origin.y
+            keyboardHeight -= bottomMargin
+        }
 
         UIView.animate {
             self.contentInset.bottom = keyboardHeight
@@ -46,7 +52,7 @@ class KeyboardScrollView: UIScrollView {
         guard let firstResponder = UIApplication.window?.findFirstResponder() else { return }
 
         let frame = firstResponder.convert(firstResponder.bounds, to: self)
-        let newOffset = frame.origin.y - (bounds.height - keyboardHeight) / 2.0
+        let newOffset = frame.origin.y - (bounds.height - keyboardHeight - firstResponder.bounds.height) / 2.0
         let maxOffset = contentSize.height + keyboardHeight - bounds.height
         contentOffset.y = max(-contentInset.top, min(newOffset, maxOffset))
     }

@@ -70,6 +70,22 @@ class CheckoutSummaryMainStackView: UIStackView {
         return view
     }()
 
+    let couponStackView: CheckoutSummaryCouponStackView = {
+        let stackView = CheckoutSummaryCouponStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = 5
+        stackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+        stackView.isLayoutMarginsRelativeArrangement = true
+        return stackView
+    }()
+
+    let couponSeparatorView: BorderView = {
+        let view = BorderView()
+        view.bottomBorder = true
+        view.borderColor = UIColor(hex: 0xE5E5E5)
+        return view
+    }()
+
     let guestStackView: CheckoutSummaryGuestStackView = {
         let stackView = CheckoutSummaryGuestStackView()
         stackView.axis = .horizontal
@@ -112,6 +128,9 @@ extension CheckoutSummaryMainStackView: UIBuilder {
         addArrangedSubview(paymentStackView)
         addArrangedSubview(paymentSeparatorView)
 
+        addArrangedSubview(couponStackView)
+        addArrangedSubview(couponSeparatorView)
+
         addArrangedSubview(guestStackView)
         addArrangedSubview(priceStackView)
         addArrangedSubview(deliveryStackView)
@@ -127,6 +146,7 @@ extension CheckoutSummaryMainStackView: UIBuilder {
         shippingAddressSeparatorView.setHeight(equalToConstant: 1)
         billingAddressSeparatorView.setHeight(equalToConstant: 1)
         paymentSeparatorView.setHeight(equalToConstant: 1)
+        couponSeparatorView.setHeight(equalToConstant: 1)
     }
 
 }
