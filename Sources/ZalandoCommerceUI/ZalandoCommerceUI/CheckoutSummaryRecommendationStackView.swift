@@ -65,8 +65,8 @@ extension CheckoutSummaryRecommendationStackView: UIDataBuilder {
     typealias T = Article
 
     func configure(viewModel: T) {
-        let recommendationConfig = RecommendationConfig(type: "cross_sell", location: "atlas_ios_order_confirmation", channel: "app")
-        ZalandoCommerceAPI.withLoader.recommendations(for: viewModel.id, with: recommendationConfig, onView: loaderContrainer) { [weak self] result in
+        let config = RecommendationConfig(type: "cross_sell", location: "atlas_ios_order_confirmation", channel: "app")
+        ZalandoCommerceAPI.withLoader.recommendations(for: viewModel.id, with: config, onView: loaderContrainer) { [weak self] result in
             guard let recommendations = result.process() else { return }
             self?.recommendationTitleLabel.alpha = 1
             self?.recommendationCollectionView.configure(with: recommendations, completion: { recommendation in

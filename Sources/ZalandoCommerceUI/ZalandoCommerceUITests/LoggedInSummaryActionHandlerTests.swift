@@ -57,14 +57,6 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
         expect(self.errorDisplayed).toEventually(beTrue())
     }
 
-    func testShowingPaymentSelectionScreenWithEmptyPayment() {
-        guard let checkout = actionHandler?.cartCheckout?.checkout else { return fail() }
-        actionHandler?.cartCheckout?.checkout = createCheckout(fromCheckout: checkout, payment: Payment(selected: nil, isExternalPayment: nil, selectionPageURL: nil))
-
-        actionHandler?.handlePaymentSelection()
-        expect(self.errorDisplayed).toEventually(beTrue())
-    }
-
     func testShowingPaymentSelectionScreenWithEmptyCartCheckout() {
         actionHandler?.cartCheckout = nil
         actionHandler?.handlePaymentSelection()
@@ -270,7 +262,7 @@ extension LoggedInSummaryActionHandlerTests {
         return CheckoutSummaryDataModel(selectedArticle: selectedArticle,
                                         shippingAddress: checkout?.shippingAddress,
                                         billingAddress: checkout?.billingAddress,
-                                        paymentMethod: checkout?.payment.selected?.method?.localizedTitle,
+                                        paymentMethod: checkout?.payment.selected?.method.localized,
                                         totalPrice: totalPrice,
                                         delivery: checkout?.delivery)
     }
