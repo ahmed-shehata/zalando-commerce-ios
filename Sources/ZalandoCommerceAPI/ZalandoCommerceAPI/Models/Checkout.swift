@@ -14,7 +14,7 @@ public struct Checkout {
 
     public let delivery: Delivery
     public let payment: Payment
-    public let coupon: Coupon?
+    public let coupons: [Coupon]
 
     public let billingAddress: CheckoutAddress
     public let shippingAddress: CheckoutAddress
@@ -61,7 +61,7 @@ extension Checkout: JSONInitializable {
                   cartId: cartId,
                   delivery: delivery,
                   payment: payment,
-                  coupon: Coupon(json: json[Keys.coupon]),
+                  coupons: json[Keys.coupon].jsons.flatMap { Coupon(json: $0) },
                   billingAddress: billingAddress,
                   shippingAddress: shippingAddress
         )

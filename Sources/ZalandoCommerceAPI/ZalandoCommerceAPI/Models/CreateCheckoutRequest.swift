@@ -6,30 +6,38 @@ import Foundation
 
 // TODO: document it, please...
 
-public struct CreateCheckoutRequest: JSONRepresentable {
+public struct CreateCheckoutRequest {
 
     public let cartId: CartId
     public let billingAddressId: AddressId?
     public let shippingAddressId: AddressId?
+    public let coupons: [String]
 
-    public init(cartId: CartId, addresses: CheckoutAddresses? = nil) {
+    public init(cartId: CartId, addresses: CheckoutAddresses? = nil, coupons: [String] = []) {
         self.cartId = cartId
         self.billingAddressId = addresses?.billingAddress?.id
         self.shippingAddressId = addresses?.shippingAddress?.id
+        self.coupons = coupons
+    }
+
+}
+
+extension CreateCheckoutRequest: JSONRepresentable {
+
+    private struct Keys {
+        static let cartId = "cart_id"
+        static let coupons = "coupons"
+        static let billingAddressId = "billing_address_id"
+        static let shippingAddressId = "shipping_address_id"
     }
 
     func toJSON() -> JSONDictionary {
-        var json: [String: Any] = ["cart_id": self.cartId]
-
-        if let billingAddressId = self.billingAddressId {
-            json["billing_address_id"] = billingAddressId
-        }
-
-        if let shippingAddressId = self.shippingAddressId {
-            json["shipping_address_id"] = shippingAddressId
-        }
-
-        return json
+        return [
+            Keys.cartId: self.cartId,
+            Keys.coupons: self.coupons,
+            Keys.billingAddressId: billingAddressId as Any,
+            Keys.shippingAddressId: shippingAddressId as Any
+        ]
     }
 
 }
