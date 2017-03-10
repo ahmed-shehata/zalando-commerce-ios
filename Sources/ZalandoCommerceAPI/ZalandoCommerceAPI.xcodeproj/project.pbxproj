@@ -142,6 +142,7 @@
 		E7428E46E9F406A21FBC31C8069350A2 /* APIGuestCheckoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A860F6038629AD41AD6842EE4C9FB5 /* APIGuestCheckoutTests.swift */; };
 		E900FF40745FE0BA77E87323DFFC429A /* ZalandoCommerceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81145D695774F43DBAD23686C09BE53F /* ZalandoCommerceAPI.swift */; };
 		E9B53F00FE6F5D98E978B24FD63A4CE3 /* APIOrderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F0ADD10E54B0A584C36C08B06DF491 /* APIOrderTests.swift */; };
+		E9D150AF1E72B76F00DB49EA /* Coupon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D150AE1E72B76F00DB49EA /* Coupon.swift */; };
 		E9D8A4B01E705EB1008B2B7A /* PaymentMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8A4AF1E705EB1008B2B7A /* PaymentMetadata.swift */; };
 		EBA82A6A1B4CBB0A4541461F723754C5 /* GuestCustomerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0281E8C620ED7D706F2CD7D40EC928 /* GuestCustomerRequest.swift */; };
 		EC351E9A222A45C183D94E102CD34AF4 /* OrderConfirmation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13633D5B3FD5F4BD8F5F3853483A7D0 /* OrderConfirmation.swift */; };
@@ -331,6 +332,7 @@
 		E5EFAC34ECB3C4A13FC6E1619659927A /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		E7CCE1B446DAFB1D5E70BA51709E30C4 /* CheckoutAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutAddress.swift; sourceTree = "<group>"; };
 		E8A860F6038629AD41AD6842EE4C9FB5 /* APIGuestCheckoutTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIGuestCheckoutTests.swift; sourceTree = "<group>"; };
+		E9D150AE1E72B76F00DB49EA /* Coupon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coupon.swift; sourceTree = "<group>"; };
 		E9D8A4AF1E705EB1008B2B7A /* PaymentMetadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMetadata.swift; sourceTree = "<group>"; };
 		ED632107F4F046757A6F43D1B9A62A42 /* ZalandoCommerceAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZalandoCommerceAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F06C314B241651A0E23F00C0105F0208 /* RequestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
@@ -712,6 +714,7 @@
 				4E110FCD365662A9BD79D87E838A14F3 /* Media.swift */,
 				71D61D89FE7A31D3C205F0166A083609 /* Catalog.swift */,
 				E5EFAC34ECB3C4A13FC6E1619659927A /* Config.swift */,
+				E9D150AE1E72B76F00DB49EA /* Coupon.swift */,
 				CF43D57FAB8A5C3B4A694613C44D64A8 /* Customer.swift */,
 				763A685B834DE425837DA06C0C4EA8E2 /* Delivery.swift */,
 				BE98F611EAE844CCA802BB682B50CA0E /* Gender.swift */,
@@ -1025,6 +1028,7 @@
 				58C600EE0A39E1B3D1248F33EC0BE714 /* DataTaskResponse.swift in Sources */,
 				A2C86A8D301E107284C5754110539D48 /* JSON.swift in Sources */,
 				75B284406ECE6C0F17B1045F977690CD /* ResponseParser.swift in Sources */,
+				E9D150AF1E72B76F00DB49EA /* Coupon.swift in Sources */,
 				66FD58D674AA9C708BDF54AB3FDFE016 /* CompleteGuestOrderEndpoint.swift in Sources */,
 				CB20C35C7AB8BB8BFFFC094A428EF5EF /* URLQueryItem.swift in Sources */,
 				AF4CE80CBD2ADCF11F34F19266D3DAC4 /* CreateOrderEndpoint.swift in Sources */,
