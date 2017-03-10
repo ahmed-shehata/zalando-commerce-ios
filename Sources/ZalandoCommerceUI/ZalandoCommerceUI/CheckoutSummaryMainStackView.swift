@@ -72,6 +72,7 @@ class CheckoutSummaryMainStackView: UIStackView {
 
     let couponStackView: CheckoutSummaryCouponStackView = {
         let stackView = CheckoutSummaryCouponStackView()
+        stackView.isHidden = true
         stackView.axis = .horizontal
         stackView.spacing = 5
         stackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
@@ -81,6 +82,7 @@ class CheckoutSummaryMainStackView: UIStackView {
 
     let couponSeparatorView: BorderView = {
         let view = BorderView()
+        view.isHidden = true
         view.bottomBorder = true
         view.borderColor = UIColor(hex: 0xE5E5E5)
         return view
@@ -160,6 +162,10 @@ extension CheckoutSummaryMainStackView: UIDataBuilder {
         deliveryStackView.configure(viewModel: viewModel.dataModel)
         guestStackView.configure(viewModel: viewModel.dataModel.email)
         guestStackView.isHidden = !viewModel.layout.showsGuestStackView
+
+        couponStackView.configure(viewModel: "Coupons!!")
+        couponStackView.isHidden = !viewModel.layout.showsCouponStackView
+        couponSeparatorView.isHidden = !viewModel.layout.showsCouponStackView
 
         if viewModel.layout.showsOrderStackView {
             orderStackView.configure(viewModel: viewModel.dataModel.orderNumber)
