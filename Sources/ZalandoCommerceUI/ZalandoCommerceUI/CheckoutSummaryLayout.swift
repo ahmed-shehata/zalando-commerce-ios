@@ -48,7 +48,7 @@ struct NotLoggedInLayout: CheckoutSummaryLayout {
     let showsDetailArrow = true
     let showsGuestStackView = false
     let showsOrderStackView = false
-    let showsCouponStackView = true
+    let showsCouponStackView = false
     let showsRecommendationStackView = false
     let allowsArticleRefine = true
 
@@ -101,7 +101,7 @@ struct GuestCheckoutLayout: CheckoutSummaryLayout {
     let showsDetailArrow = true
     let showsGuestStackView = true
     let showsOrderStackView = false
-    let showsCouponStackView = true
+    let showsCouponStackView = false
     let showsRecommendationStackView = false
     let allowsArticleRefine = true
 

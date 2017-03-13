@@ -12,6 +12,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
     weak var delegate: CheckoutSummaryActionHandlerDelegate?
     var dataModelDisplayedError: Error?
 
+    var coupon: String?
     var cartCheckout: CartCheckout? {
         didSet {
             updateCheckout()
@@ -22,7 +23,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
 
     static func create(customer: Customer, selectedArticle: SelectedArticle,
                        completion: @escaping ResultCompletion<LoggedInSummaryActionHandler>) {
-        LoggedInSummaryActionHandler.createCartCheckout(selectedArticle: selectedArticle) { result in
+        LoggedInSummaryActionHandler.createCartCheckout(selectedArticle: selectedArticle, coupon: nil) { result in
             switch result {
             case .success(let cartCheckout):
                 let actionHandler = LoggedInSummaryActionHandler(customer: customer)
@@ -121,7 +122,15 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
     }
 
     func handleCouponChanges(coupon: String?) {
-        // TODO: FIX ME!!
+        self.coupon = coupon
+        createCartCheckout { [weak self] result in
+            guard let cartCheckout = result.process() else {
+                self?.coupon = nil
+                return
+            }
+
+            self?.cartCheckout = cartCheckout
+        }
     }
 
     func updated(selectedArticle: SelectedArticle) {
@@ -232,17 +241,20 @@ extension LoggedInSummaryActionHandler {
 extension LoggedInSummaryActionHandler {
 
     fileprivate func createCartCheckout(completion: @escaping ResultCompletion<CartCheckout>) {
-        guard let selectedArticle = dataSource?.dataModel.selectedArticle else { return }
-        LoggedInSummaryActionHandler.createCartCheckout(selectedArticle: selectedArticle,
+        guard let dataModel = dataSource?.dataModel else { return }
+        LoggedInSummaryActionHandler.createCartCheckout(selectedArticle: dataModel.selectedArticle,
                                                         addresses: addresses,
+                                                        coupon: coupon,
                                                         completion: completion)
     }
 
     fileprivate static func createCartCheckout(selectedArticle: SelectedArticle,
                                                addresses: CheckoutAddresses? = nil,
+                                               coupon: String?,
                                                completion: @escaping ResultCompletion<CartCheckout>) {
 
-        ZalandoCommerceAPI.withLoader.createCartCheckout(for: selectedArticle, addresses: addresses) { result in
+        let coupons = [coupon].flatMap { $0 }
+        ZalandoCommerceAPI.withLoader.createCartCheckout(for: selectedArticle, addresses: addresses, coupons: coupons) { result in
             switch result {
             case .failure(let error, _):
                 guard case let APIError.checkoutFailed(cart, _) = error else {

@@ -56,15 +56,17 @@ extension ZalandoCommerceAPI {
      
      Handled cases:
         - when article has no stock available `completion` returns `Result.failure` with `CheckoutError.outOfStock`
-        - when checkout creation fails `completion` returns `Result.failure` with `APIError.checkoutFailed` and created `Cart`
+        - when checkout creation fails `completion` returns `Result.failure` with `APIError.checkoutFailed` and the created `Cart`
 
      - Parameters:
          - cartItemRequest: article SKU and quantity to be added to the cart
          - addresses: addresses to be passed to the checkout
+         - coupons: Coupons to be applied on the checkout
          - completion: completes async with `APIResult.success` with `CartCheckout`.
      */
     public func createCartCheckout(with cartItemRequest: CartItemRequest,
                                    addresses: CheckoutAddresses? = nil,
+                                   coupons: [String] = [],
                                    completion: @escaping APIResultCompletion<CartCheckout>) {
         createCart(with: [cartItemRequest]) { cartResult in
             switch cartResult {
@@ -76,7 +78,8 @@ extension ZalandoCommerceAPI {
                     return completion(.failure(CheckoutError.outOfStock, nil))
                 }
 
-                self.createCheckout(from: cart.id, addresses: addresses) { checkoutResult in
+                let request = CreateCheckoutRequest(cartId: cart.id, addresses: addresses, coupons: coupons)
+                self.createCheckout(request: request) { checkoutResult in
                     switch checkoutResult {
                     case .failure(let error, _):
                         if case let APIError.backend(status, _, _, _) = error, status == HTTPStatus.conflict {
@@ -97,15 +100,12 @@ extension ZalandoCommerceAPI {
      Creates `Checkout` based on `CartId`.
 
      - Parameters:
-       - cartId: identifier of a cart (`Cart.id`)
-       - addresses: set of billing and shipping addresses
+       - request: `CreateCheckoutRequest` object containing the cartId, addresses and coupons,
        - completion: completes async with `APIResult.success` with `Checkout`.
      */
-    public func createCheckout(from cartId: CartId,
-                               addresses: CheckoutAddresses? = nil,
+    public func createCheckout(request: CreateCheckoutRequest,
                                completion: @escaping APIResultCompletion<Checkout>) {
-        let parameters = CreateCheckoutRequest(cartId: cartId, addresses: addresses).toJSON()
-        let endpoint = CreateCheckoutEndpoint(config: config, parameters: parameters)
+        let endpoint = CreateCheckoutEndpoint(config: config, parameters: request.toJSON())
         client.fetch(from: endpoint, completion: completion)
     }
 

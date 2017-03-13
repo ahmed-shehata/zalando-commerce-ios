@@ -59,7 +59,7 @@ extension CheckoutSummaryCouponStackView: UIBuilder {
 
 extension CheckoutSummaryCouponStackView: UIDataBuilder {
 
-    typealias T = String
+    typealias T = String?
 
     func configure(viewModel: T) {
         textField.text = viewModel

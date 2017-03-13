@@ -86,7 +86,7 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
     }
 
     func handleCouponChanges(coupon: String?) {
-        // TODO: FIX ME
+        // Coupon should have no action if the user is not logged in
     }
 
     func updated(selectedArticle: SelectedArticle) {

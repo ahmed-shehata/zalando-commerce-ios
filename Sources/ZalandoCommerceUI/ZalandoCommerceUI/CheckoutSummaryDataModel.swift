@@ -101,7 +101,7 @@ extension CheckoutSummaryDataModel {
         self.paymentMethod = cartCheckout?.checkout?.payment.selected?.localized
         self.totalPrice = cartCheckout?.cart.grossTotal ?? selectedArticle.totalPrice
         self.delivery = cartCheckout?.checkout?.delivery
-        self.coupon = "" // TODO: FIX ME!
+        self.coupon = cartCheckout?.checkout?.coupons.first?.coupon
         self.email = nil
         self.orderNumber = nil
     }
@@ -113,7 +113,7 @@ extension CheckoutSummaryDataModel {
         self.paymentMethod = checkout?.payment.selected?.localized
         self.totalPrice = order.grossTotal
         self.delivery = checkout?.delivery
-        self.coupon = "" // TODO: FIX ME!
+        self.coupon = checkout?.coupons.first?.coupon
         self.email = nil
         self.orderNumber = order.orderNumber
     }
@@ -125,7 +125,7 @@ extension CheckoutSummaryDataModel {
         self.paymentMethod = guestCheckout?.payment.method?.localized
         self.totalPrice = guestCheckout?.cart.grossTotal ?? selectedArticle.totalPrice
         self.delivery = guestCheckout?.delivery
-        self.coupon = "" // TODO: FIX ME!
+        self.coupon = nil
         self.email = email
         self.orderNumber = nil
     }
@@ -137,7 +137,7 @@ extension CheckoutSummaryDataModel {
         self.paymentMethod = guestCheckout?.payment.method?.localized
         self.totalPrice = guestOrder.grossTotal
         self.delivery = guestCheckout?.delivery
-        self.coupon = "" // TODO: FIX ME!
+        self.coupon = nil
         self.email = email
         self.orderNumber = guestOrder.orderNumber
     }
