@@ -26,6 +26,10 @@ class OrderPlacedSummaryActionHandler: CheckoutSummaryActionHandler {
         // Show Billing Address screen should have no action in Order placed mode
     }
 
+    func handleCouponChanges(coupon: String?) {
+        // Coupon should have no action in Order placed mode
+    }
+
     func updated(selectedArticle: SelectedArticle) {
         // Selected Article should not be updated in Order placed mode
     }

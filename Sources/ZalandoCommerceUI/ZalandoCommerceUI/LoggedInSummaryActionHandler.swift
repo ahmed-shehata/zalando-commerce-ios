@@ -120,6 +120,10 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
         }
     }
 
+    func handleCouponChanges(coupon: String?) {
+        // TODO: FIX ME!!
+    }
+
     func updated(selectedArticle: SelectedArticle) {
         let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle,
                                                  shippingAddress: shippingAddress,

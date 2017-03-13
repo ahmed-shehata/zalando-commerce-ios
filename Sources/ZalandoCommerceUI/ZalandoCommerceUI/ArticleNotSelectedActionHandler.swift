@@ -26,6 +26,10 @@ class ArticleNotSelectedActionHandler: CheckoutSummaryActionHandler {
         // Show Billing Address screen should have no action if the article is not selected
     }
 
+    func handleCouponChanges(coupon: String?) {
+        // Coupon should have no action if the article is not selected
+    }
+
     func updated(selectedArticle: SelectedArticle) {
         guard ZalandoCommerceAPI.shared?.isAuthorized == true else {
             let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, totalPrice: selectedArticle.totalPrice)

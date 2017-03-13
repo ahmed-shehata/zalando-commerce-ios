@@ -14,7 +14,7 @@ class CheckoutSummaryCouponStackView: UIStackView {
         return label
     }()
 
-    let textField: UITextField = {
+    lazy var textField: UITextField = {
         let textField = UITextField()
         textField.placeholder = Localizer.format(string: "summaryView.label.coupon.placeholder")
         textField.font = .systemFont(ofSize: 14, weight: UIFontWeightLight)
@@ -23,14 +23,22 @@ class CheckoutSummaryCouponStackView: UIStackView {
         textField.autocapitalizationType = .allCharacters
         textField.spellCheckingType = .no
         textField.autocorrectionType = .no
+        textField.delegate = self
         return textField
     }()
 
     let clearButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(named: "tableClose", bundledWith: AddressCheckRowView.self), for: .normal)
+        button.addTarget(self, action: #selector(clearButtonTapped), for: .touchUpInside)
         return button
     }()
+
+    var couponUpdatedHandler: ((String?) -> Void)?
+
+    dynamic private func clearButtonTapped() {
+        couponUpdatedHandler?(nil)
+    }
 
 }
 
@@ -55,6 +63,16 @@ extension CheckoutSummaryCouponStackView: UIDataBuilder {
 
     func configure(viewModel: T) {
         textField.text = viewModel
+    }
+
+}
+
+extension CheckoutSummaryCouponStackView: UITextFieldDelegate {
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let isEmpty = textField.text?.trimmed().length == 0
+        couponUpdatedHandler?(isEmpty ? nil : textField.text)
+        return true
     }
 
 }

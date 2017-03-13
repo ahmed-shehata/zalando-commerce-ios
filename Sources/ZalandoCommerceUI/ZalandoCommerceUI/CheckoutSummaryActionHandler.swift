@@ -28,6 +28,7 @@ protocol CheckoutSummaryActionHandler: CheckoutSummaryEditProductDelegate {
     func handlePaymentSelection()
     func handleShippingAddressSelection()
     func handleBillingAddressSelection()
+    func handleCouponChanges(coupon: String?)
 
 }
 

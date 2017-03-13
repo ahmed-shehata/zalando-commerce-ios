@@ -164,8 +164,10 @@ extension CheckoutSummaryMainStackView: UIDataBuilder {
         guestStackView.isHidden = !viewModel.layout.showsGuestStackView
 
         couponStackView.configure(viewModel: "Coupons!!")
-        couponStackView.isHidden = !viewModel.layout.showsCouponStackView
-        couponSeparatorView.isHidden = !viewModel.layout.showsCouponStackView
+        UIView.animate(duration: .normal) { [weak self] in
+            self?.couponStackView.isHidden = !viewModel.layout.showsCouponStackView
+            self?.couponSeparatorView.isHidden = !viewModel.layout.showsCouponStackView
+        }
 
         if viewModel.layout.showsOrderStackView {
             orderStackView.configure(viewModel: viewModel.dataModel.orderNumber)

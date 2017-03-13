@@ -85,6 +85,10 @@ class GuestCheckoutSummaryActionHandler: CheckoutSummaryActionHandler {
         }
     }
 
+    func handleCouponChanges(coupon: String?) {
+        // TODO: FIX ME
+    }
+
     func updated(selectedArticle: SelectedArticle) {
         guard let email = actionHandler.emailAddress else { return }
         clearCurrentState()
