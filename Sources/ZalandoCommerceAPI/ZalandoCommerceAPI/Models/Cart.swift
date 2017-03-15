@@ -64,4 +64,8 @@ extension Cart {
         return items.contains { $0.sku == sku } && !itemsOutOfStock.contains(sku)
     }
 
+    func hasStocks(of skus: [SimpleSKU]) -> Bool {
+        return skus.filter { !hasStock(of: $0) }.isEmpty
+    }
+
 }

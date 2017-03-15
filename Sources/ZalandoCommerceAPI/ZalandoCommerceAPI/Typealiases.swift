@@ -7,7 +7,6 @@ import Foundation
 public typealias CartId = String
 public typealias CheckoutId = String
 public typealias CustomerNumber = String
-public typealias CartCheckout = (cart: Cart, checkout: Checkout?)
 
 public typealias AuthorizationToken = String
 

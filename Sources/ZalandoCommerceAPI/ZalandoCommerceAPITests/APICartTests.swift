@@ -12,8 +12,7 @@ class APICartTests: APITestCase {
 
     func testCreateCart() {
         waitForAPIConfigured { done, api in
-            let sku = SimpleSKU(value: "EV451G023-Q110ONE000")
-            let cartItemRequest = CartItemRequest(sku: sku, quantity: 1)
+            let cartItemRequest = CartItemRequest(sku: SimpleSKU(value: "GU121D08Z-Q1100XL000"), quantity: 1)
             api.createCart(with: [cartItemRequest]) { result in
                 switch result {
                 case .failure(let error):
@@ -22,6 +21,41 @@ class APICartTests: APITestCase {
                     expect(cart.id) == self.cartId
                 }
                 done()
+            }
+        }
+    }
+
+    func testCreateCartWithOutOfStock() {
+        waitForAPIConfigured { done, api in
+            let cartItemRequest = CartItemRequest(sku: SimpleSKU(value: "EV451G023-Q110ONE000"), quantity: 1)
+            api.createCart(with: [cartItemRequest]) { result in
+                switch result {
+                case .failure(let error, _):
+                    switch error {
+                    case CheckoutError.outOfStock: done()
+                    default: fail("Should be outOfStock error")
+                    }
+                case .success:
+                    fail("Should fail in creating cart with outOfStock Item")
+                }
+            }
+        }
+    }
+
+    func testCreateCartWithOutOfStockAndInStockItems() {
+        waitForAPIConfigured { done, api in
+            let cartItemRequest1 = CartItemRequest(sku: SimpleSKU(value: "GU121D08Z-Q1100XL000"), quantity: 1)
+            let cartItemRequest2 = CartItemRequest(sku: SimpleSKU(value: "EV451G023-Q110ONE000"), quantity: 1)
+            api.createCart(with: [cartItemRequest1, cartItemRequest2]) { result in
+                switch result {
+                case .failure(let error, _):
+                    switch error {
+                    case CheckoutError.outOfStock: done()
+                    default: fail("Should be outOfStock error")
+                    }
+                case .success:
+                    fail("Should fail in creating cart with outOfStock Item")
+                }
             }
         }
     }

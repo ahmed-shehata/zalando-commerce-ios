@@ -13,7 +13,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
     var dataModelDisplayedError: Error?
 
     var coupon: String?
-    var cartCheckout: CartCheckout? {
+    var cartCheckout: CartCheckout {
         didSet {
             updateCheckout()
         }
@@ -26,8 +26,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
         LoggedInSummaryActionHandler.createCartCheckout(selectedArticle: selectedArticle, coupon: nil) { result in
             switch result {
             case .success(let cartCheckout):
-                let actionHandler = LoggedInSummaryActionHandler(customer: customer)
-                actionHandler.cartCheckout = cartCheckout
+                let actionHandler = LoggedInSummaryActionHandler(customer: customer, cartCheckout: cartCheckout)
                 completion(.success(actionHandler))
             case .failure(let error):
                 completion(.failure(error))
@@ -35,8 +34,9 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
         }
     }
 
-    fileprivate init(customer: Customer) {
+    fileprivate init(customer: Customer, cartCheckout: CartCheckout) {
         self.customer = customer
+        self.cartCheckout = cartCheckout
     }
 
     func handleSubmit() {
@@ -68,7 +68,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
     }
 
     func handlePaymentSelection() {
-        guard let paymentURL = cartCheckout?.checkout?.payment.selectionPageURL,
+        guard let paymentURL = cartCheckout.checkout?.payment.selectionPageURL,
             let callbackURL = Config.shared?.payment.selectionCallbackURL else {
                 let error = !hasAddresses ? CheckoutError.missingAddress : CheckoutError.unclassified
                 UserError.display(error: error)
@@ -219,7 +219,7 @@ extension LoggedInSummaryActionHandler {
         guard let dataSource = dataSource, let delegate = delegate else { return }
         let selectedArticle = dataSource.dataModel.selectedArticle
         let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle,
-                                                 checkout: cartCheckout?.checkout,
+                                                 checkout: cartCheckout.checkout,
                                                  order: order)
         do {
             dataModelDisplayedError = nil
@@ -293,7 +293,7 @@ extension LoggedInSummaryActionHandler {
         let newAddresses = CheckoutAddresses(shippingAddress: deleteShipping ? nil : self.shippingAddress,
                                              billingAddress: deleteBilling ? nil : self.billingAddress)
         updateDataModel(with: newAddresses)
-        cartCheckout?.checkout = nil
+        cartCheckout.checkout = nil
     }
 
     fileprivate func updateDataModel(with addresses: CheckoutAddresses?, in cartCheckout: CartCheckout? = nil) {
