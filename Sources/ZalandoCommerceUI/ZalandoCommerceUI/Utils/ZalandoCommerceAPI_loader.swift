@@ -29,19 +29,6 @@ extension ZalandoCommerceAPI {
             }
         }
 
-        static func createCartCheckout(for selectedArticle: SelectedArticle,
-                                       addresses: CheckoutAddresses? = nil,
-                                       coupons: [String] = [],
-                                       completion: @escaping APIResultCompletion<CartCheckout>) {
-            ZalandoCommerceUIViewController.displayLoader { hideLoader in
-                let cartItemRequest = CartItemRequest(sku: selectedArticle.sku, quantity: selectedArticle.quantity)
-                ZalandoCommerceAPI.shared?.createCartCheckout(with: cartItemRequest, addresses: addresses, coupons: coupons) { result in
-                    hideLoader()
-                    completion(result)
-                }
-            }
-        }
-
         static func createCheckout(request: CreateCheckoutRequest,
                                    completion: @escaping APIResultCompletion<Checkout>) {
             ZalandoCommerceUIViewController.displayLoader { hideLoader in

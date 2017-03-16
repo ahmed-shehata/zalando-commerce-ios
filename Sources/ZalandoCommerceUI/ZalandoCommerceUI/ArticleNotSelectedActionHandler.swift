@@ -45,7 +45,9 @@ class ArticleNotSelectedActionHandler: CheckoutSummaryActionHandler {
             LoggedInSummaryActionHandler.create(customer: customer, selectedArticle: selectedArticle) { actionHandlerResult in
                 guard let actionHandler = actionHandlerResult.process() else { return }
 
-                let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, cartCheckout: actionHandler.cartCheckout)
+                let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle,
+                                                         cart: actionHandler.cart,
+                                                         checkout: actionHandler.checkout)
                 try? self?.delegate?.updated(dataModel: dataModel)
                 self?.delegate?.updated(layout: LoggedInLayout())
                 self?.delegate?.updated(actionHandler: actionHandler)

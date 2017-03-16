@@ -94,14 +94,14 @@ extension CheckoutSummaryDataModel {
 
 extension CheckoutSummaryDataModel {
 
-    init(selectedArticle: SelectedArticle, cartCheckout: CartCheckout?, addresses: CheckoutAddresses? = nil) {
+    init(selectedArticle: SelectedArticle, cart: Cart?, checkout: Checkout?, addresses: CheckoutAddresses? = nil) {
         self.selectedArticle = selectedArticle
-        self.shippingAddress = addresses?.shippingAddress ?? cartCheckout?.checkout?.shippingAddress
-        self.billingAddress = addresses?.billingAddress ?? cartCheckout?.checkout?.billingAddress
-        self.paymentMethod = cartCheckout?.checkout?.payment.selected?.localized
-        self.totalPrice = cartCheckout?.cart.grossTotal ?? selectedArticle.totalPrice
-        self.delivery = cartCheckout?.checkout?.delivery
-        self.coupon = cartCheckout?.checkout?.coupons.first?.coupon
+        self.shippingAddress = addresses?.shippingAddress ?? checkout?.shippingAddress
+        self.billingAddress = addresses?.billingAddress ?? checkout?.billingAddress
+        self.paymentMethod = checkout?.payment.selected?.localized
+        self.totalPrice = cart?.grossTotal ?? selectedArticle.totalPrice
+        self.delivery = checkout?.delivery
+        self.coupon = checkout?.coupons.first?.coupon
         self.email = nil
         self.orderNumber = nil
     }

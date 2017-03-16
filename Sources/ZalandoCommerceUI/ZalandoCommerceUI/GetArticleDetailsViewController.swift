@@ -54,7 +54,9 @@ class GetArticleDetailsViewController: UIViewController {
             LoggedInSummaryActionHandler.create(customer: customer, selectedArticle: selectedArticle) { actionHandlerResult in
                 guard let actionHandler = actionHandlerResult.process(presentationMode: .fullScreen) else { return }
 
-                let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, cartCheckout: actionHandler.cartCheckout)
+                let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle,
+                                                         cart: actionHandler.cart,
+                                                         checkout: actionHandler.checkout)
                 let viewModel = CheckoutSummaryViewModel(dataModel: dataModel, layout: LoggedInLayout())
                 self?.showSummaryView(viewModel: viewModel, actionHandler: actionHandler)
             }
