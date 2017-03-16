@@ -55,5 +55,6 @@ public enum CheckoutError: LocalizableError {
     case checkoutFailure
     case addressInvalid
     case photosLibraryAccessNotAllowed
+    case couponFailure(error: String)
 
 }

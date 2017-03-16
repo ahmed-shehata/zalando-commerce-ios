@@ -38,6 +38,7 @@ class CheckoutSummaryCouponStackView: UIStackView {
 
     dynamic private func clearButtonTapped() {
         couponUpdatedHandler?(nil)
+        textField.becomeFirstResponder()
     }
 
 }
@@ -57,21 +58,12 @@ extension CheckoutSummaryCouponStackView: UIBuilder {
 
 }
 
-extension CheckoutSummaryCouponStackView: UIDataBuilder {
-
-    typealias T = String?
-
-    func configure(viewModel: T) {
-        textField.text = viewModel
-    }
-
-}
-
 extension CheckoutSummaryCouponStackView: UITextFieldDelegate {
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let isEmpty = textField.text?.trimmed().length == 0
         couponUpdatedHandler?(isEmpty ? nil : textField.text)
+        textField.resignFirstResponder()
         return true
     }
 

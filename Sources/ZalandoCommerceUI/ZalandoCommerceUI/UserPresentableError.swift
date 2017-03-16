@@ -91,6 +91,8 @@ extension CheckoutError: UserPresentableError {
         case .priceChanged(let newPrice):
             let price = Localizer.format(price: newPrice)
             return Localizer.format(string: "CheckoutError.message.priceChanged", price)
+        case .couponFailure(let error):
+            return error
         default: return nil
         }
     }

@@ -14,9 +14,9 @@ struct CheckoutSummaryDataModel {
     var shippingPrice: Money {
         return Money(amount: 0, currency: totalPrice.currency)
     }
+    let discount: Cart.Discount?
     let totalPrice: Money
     let delivery: Delivery?
-    let coupon: String?
     let email: String?
     let orderNumber: String?
 
@@ -24,9 +24,9 @@ struct CheckoutSummaryDataModel {
          shippingAddress: FormattableAddress? = nil,
          billingAddress: FormattableAddress? = nil,
          paymentMethod: String? = nil,
+         discount: Cart.Discount? = nil,
          totalPrice: Money,
          delivery: Delivery? = nil,
-         coupon: String? = nil,
          email: String? = nil,
          orderNumber: String? = nil) {
 
@@ -34,9 +34,9 @@ struct CheckoutSummaryDataModel {
         self.shippingAddress = shippingAddress
         self.billingAddress = billingAddress
         self.paymentMethod = paymentMethod
+        self.discount = discount
         self.totalPrice = totalPrice
         self.delivery = delivery
-        self.coupon = coupon
         self.email = email
         self.orderNumber = orderNumber
     }
@@ -69,6 +69,10 @@ extension CheckoutSummaryDataModel {
         return Config.shared?.salesChannel.termsAndConditionsURL
     }
 
+    var subtotal: Money {
+        return Money(amount: totalPrice.amount + (discount?.grossTotal.amount ?? 0), currency: totalPrice.currency)
+    }
+
 }
 
 extension CheckoutSummaryDataModel {
@@ -79,7 +83,9 @@ extension CheckoutSummaryDataModel {
     }
 
     private func checkPriceChange(comparedTo otherDataModel: CheckoutSummaryDataModel) throws {
-        if otherDataModel.totalPrice != totalPrice && selectedArticle == otherDataModel.selectedArticle {
+        if otherDataModel.totalPrice != totalPrice
+            && selectedArticle == otherDataModel.selectedArticle
+            && discount == otherDataModel.discount {
             throw CheckoutError.priceChanged(newPrice: totalPrice)
         }
     }
@@ -99,9 +105,9 @@ extension CheckoutSummaryDataModel {
         self.shippingAddress = addresses?.shippingAddress ?? checkout?.shippingAddress
         self.billingAddress = addresses?.billingAddress ?? checkout?.billingAddress
         self.paymentMethod = checkout?.payment.selected?.localized
+        self.discount = cart?.totalDiscount
         self.totalPrice = cart?.grossTotal ?? selectedArticle.totalPrice
         self.delivery = checkout?.delivery
-        self.coupon = checkout?.coupons.first?.coupon
         self.email = nil
         self.orderNumber = nil
     }
@@ -111,9 +117,9 @@ extension CheckoutSummaryDataModel {
         self.shippingAddress = order.shippingAddress
         self.billingAddress = order.billingAddress
         self.paymentMethod = checkout?.payment.selected?.localized
+        self.discount = nil
         self.totalPrice = order.grossTotal
         self.delivery = checkout?.delivery
-        self.coupon = checkout?.coupons.first?.coupon
         self.email = nil
         self.orderNumber = order.orderNumber
     }
@@ -123,9 +129,9 @@ extension CheckoutSummaryDataModel {
         self.shippingAddress = addresses?.shippingAddress ?? guestCheckout?.shippingAddress
         self.billingAddress = addresses?.billingAddress ?? guestCheckout?.billingAddress
         self.paymentMethod = guestCheckout?.payment.method?.localized
+        self.discount = nil
         self.totalPrice = guestCheckout?.cart.grossTotal ?? selectedArticle.totalPrice
         self.delivery = guestCheckout?.delivery
-        self.coupon = nil
         self.email = email
         self.orderNumber = nil
     }
@@ -135,9 +141,9 @@ extension CheckoutSummaryDataModel {
         self.shippingAddress = guestOrder.shippingAddress
         self.billingAddress = guestOrder.billingAddress
         self.paymentMethod = guestCheckout?.payment.method?.localized
+        self.discount = nil
         self.totalPrice = guestOrder.grossTotal
         self.delivery = guestCheckout?.delivery
-        self.coupon = nil
         self.email = email
         self.orderNumber = guestOrder.orderNumber
     }

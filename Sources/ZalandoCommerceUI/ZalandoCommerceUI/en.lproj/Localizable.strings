@@ -80,6 +80,8 @@
 "summaryView.label.coupon.title" = "Coupon Code";
 "summaryView.label.coupon.placeholder" = "Enter the code";
 "summaryView.label.price.shipping" = "Shipping";
+"summaryView.label.price.subtotal" = "Subtotal";
+"summaryView.label.price.discount" = "Discount";
 "summaryView.label.price.total" = "Total";
 "summaryView.label.price.vat" = "(VAT Included)";
 "summaryView.label.unitSize" = "Size: %@";

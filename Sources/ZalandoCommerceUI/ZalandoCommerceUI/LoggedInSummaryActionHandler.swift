@@ -13,6 +13,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
 
     let customer: Customer
     var cart: Cart
+    var coupon: String?
     var checkout: Checkout? {
         didSet {
             updateCheckout()
@@ -29,7 +30,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
         ZalandoCommerceAPI.withLoader.createCart(cartItemRequests: [request]) { result in
             guard let cart = result.process() else { return }
 
-            LoggedInSummaryActionHandler.createCartCheckout(cart: cart, coupons: []) { result in
+            LoggedInSummaryActionHandler.createCartCheckout(cart: cart, coupon: nil) { result in
                 switch result {
                 case .success(let cartCheckout):
                     let actionHandler = LoggedInSummaryActionHandler(customer: customer, cart: cartCheckout.cart)
@@ -122,7 +123,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
     }
 
     func handleCouponChanges(coupon: String?) {
-        guard let model = dataSource?.dataModel, checkout != nil else {
+        guard checkout != nil else {
             if shippingAddress == nil || billingAddress == nil {
                 UserError.display(error: CheckoutError.missingAddress)
             } else if dataSource?.dataModel.isPaymentSelected != true {
@@ -133,13 +134,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
             return
         }
 
-        let dataModel = CheckoutSummaryDataModel(selectedArticle: model.selectedArticle,
-                                                 shippingAddress: model.shippingAddress,
-                                                 billingAddress: model.billingAddress,
-                                                 totalPrice: model.totalPrice,
-                                                 coupon: coupon)
-        try? delegate?.updated(dataModel: dataModel)
-
+        self.coupon = coupon
         createAndUpdateCartCheckout()
     }
 
@@ -263,18 +258,18 @@ extension LoggedInSummaryActionHandler {
     }
 
     fileprivate func createCartCheckout(completion: @escaping ResultCompletion<(cart: Cart, checkout: Checkout?)>) {
-        let coupons = [dataSource?.dataModel.coupon].flatMap { $0 }
         LoggedInSummaryActionHandler.createCartCheckout(cart: cart,
                                                         addresses: addresses,
-                                                        coupons: coupons,
+                                                        coupon: coupon,
                                                         completion: completion)
     }
 
     fileprivate static func createCartCheckout(cart: Cart,
                                                addresses: CheckoutAddresses? = nil,
-                                               coupons: [String],
+                                               coupon: String?,
                                                completion: @escaping ResultCompletion<(cart: Cart, checkout: Checkout?)>) {
 
+        let coupons = [coupon].flatMap { $0 }
         let checkoutRequest = CreateCheckoutRequest(cartId: cart.id, addresses: addresses, coupons: coupons)
         ZalandoCommerceAPI.withLoader.createCheckout(request: checkoutRequest) { result in
             let checkout: Checkout?
@@ -287,6 +282,10 @@ extension LoggedInSummaryActionHandler {
                 }
             case .success(let checkoutValue):
                 checkout = checkoutValue
+
+                if let couponError = checkoutValue.coupons.first?.error {
+                    UserError.display(error: CheckoutError.couponFailure(error: couponError))
+                }
             }
 
             let requests = cart.items.map { CartItemRequest(sku: $0.sku, quantity: $0.quantity) }
