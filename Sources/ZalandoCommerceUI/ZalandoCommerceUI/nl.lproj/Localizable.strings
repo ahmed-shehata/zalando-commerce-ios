@@ -1,0 +1,101 @@
+"addressFormView.additional" = "Aanvullend";
+"addressFormView.city" = "Stad";
+"addressFormView.country" = "Land";
+"addressFormView.emailaddress" = "Email adres";
+"addressFormView.firstname" = "Voornaam";
+"addressFormView.gender.female" = "Mvr";
+"addressFormView.gender.male" = "Mr";
+"addressFormView.lastname" = "Achternaam";
+"addressFormView.memberid" = "Gebruikers ID";
+"addressFormView.packstation" = "\nPackstation";
+"addressFormView.street" = "Straat";
+"addressFormView.title" = "Titel";
+"addressFormView.zipcode" = "Postcode";
+"addressListView.add.cellTitle" = "Nieuw adres toevoegen";
+"addressListView.add.type.AddressBookImportDataModelCreationStrategy" = "Importeren uit Adresboek";
+"addressListView.add.type.StandardAddressDataModelCreationStrategy" = "Standaard";
+"addressListView.add.type.title" = "Adres type";
+"addressListView.prefix.memberID" = "Gebruikers ID";
+"addressListView.prefix.packstation" = "Packstation";
+"addressListView.title.billing" = "Factuur adres";
+"addressListView.title.shipping" = "Verzend adres";
+"button.general.cancel" = "Annuleer";
+"button.general.save" = "Opslaan";
+"formValidation.exactLength" = "Vereiste lengte is %@";
+"formValidation.maxLength" = "Max lengte is %@";
+"formValidation.minLength" = "Minimale lengte %@";
+"formValidation.numbersOnly" = "Alleen cijfers zijn toegestaan";
+"formValidation.pattern.city" = "Gebruik alleen de letters (A-z) in dit veld";
+"formValidation.pattern.name" = "Gebruik alleen de letters (A-z) in dit veld";
+"formValidation.pattern.street" = "Vul aub uw straat en huisnummer in";
+"formValidation.required" = "Dit veld is verplicht";
+"formValidation.vaildEmail" = "Gelieve een geldig e-mailadres op te geven";
+"guestSummaryView.address.add" = "Maak een nieuw adres aan";
+"guestSummaryView.address.create" = "Maak een nieuw adres aan";
+"guestSummaryView.address.update" = "Adres bijwerken";
+"loginView.loginWithZalando" = "Login met Zalando";
+"summaryView.button.saveOrderImage" = "Bewaar orderdetails";
+"summaryView.label.address.billing" = "Factuur adres";
+
+/*It appears P.S. is an abbreviation for Packing Station.
+In Dutch there is already an abbreviation P.S. (Post Scriptum) so I suggest not using an abbreviation for PS.*/
+"summaryView.label.address.packstationAbbreviation" = "Packing Station";
+"summaryView.label.address.shipping" = "Verzend adres";
+"summaryView.label.emptyAddress.billing" = "Geen factuur adres";
+"summaryView.label.emptyAddress.shipping" = "Geen verzend adres";
+"summaryView.label.estimatedDelivery" = "Geschatte levertijd";
+"summaryView.label.guestCheckout" = "Check uit als gast";
+"summaryView.label.orderHeader" = "We zijn blij met uw bestelling\nHartelijk bedankt!";
+"summaryView.label.orderImageSaved" = "Afbeelding opgeslagen in photo library";
+"summaryView.label.orderNumber" = "Bestellings nummer";
+"summaryView.label.payment" = "Betaling";
+"summaryView.label.price.shipping" = "Verzending";
+"summaryView.label.price.total" = "Totaal";
+"summaryView.label.price.vat" = "(BTW inbegrepen)";
+
+/*Concerning Size we use:
+Grootte (for S, M, L, XL etc)
+Maat (for 32, 34, 36, etc)*/
+"summaryView.label.unitSize" = "Maat: %@";
+"summaryView.link.termsAndConditions" = "Zalando voorwaarden en annuleringsvoorwaarden zijn van toepassing op alle bestellingen";
+"summaryView.submitButton.backToShop" = "Terug naar winkel";
+"summaryView.submitButton.checkoutWithZalando" = "Checkout bij Zalando";
+"summaryView.submitButton.guestCheckout" = "Checkout als gast";
+
+/*PayPal is a very un-dutch payment mechanism. We mostly use "Ideal".*/
+"summaryView.submitButton.payWithPayPal" = "Bevestigen en betalen met PayPal";
+"summaryView.submitButton.placeOrder" = "Order plaatsen";
+"summaryView.title.orderPlaced" = "Order geplaatst";
+"summaryView.title.summary" = "Samenvatting";
+"termsAndConditionsView.title" = "Wettelijke mededeling ";
+"paymentMethod.APPLE_PAY" = "Apple Pay";
+"paymentMethod.CASH_ON_DELIVERY" = "Contant bij aflevering";
+"paymentMethod.CHEQUE" = "Betaalchecque";
+"paymentMethod.CREDIT_CARD" = "Credit Card";
+"paymentMethod.DIRECT_DEBIT" = "Debit Card";
+"paymentMethod.ELECTRONIC_PAYMENT_STANDARD" = "Electronic Payment Standard";
+"paymentMethod.FREE" = "Gratis";
+"paymentMethod.IDEAL" = "Ideal";
+"paymentMethod.INVOICE" = "Factuur";
+"paymentMethod.MAKSUTURVA" = "Makuturva";
+"paymentMethod.PAYPAL" = "PayPal";
+"paymentMethod.POSTFINANCE" = "PostFinance";
+"paymentMethod.PREPAYMENT" = "Prepayment";
+"paymentMethod.PRZELEWY24" = "\n Przelewy24";
+"paymentMethod.TRUSTLY" = "Trustly";
+"paymentMethod.UNKNOWN" = "Onbekend";
+"APIError.message.checkoutFailed" = "Onbekende fout bij uitchecken";
+"APIError.message.invalidResponseFormat" = "Onjuist antwoord format";
+"APIError.message.noData" = "Leeg antwoord";
+"APIError.message.noInternet" = "Controleer uw internet verbinding";
+"APIError.message.unauthorized" = "Toegang geweigerd";
+"APIError.title" = "Server Error";
+"APIError.title.noInternet" = "Geen internet verbinding";
+"CheckoutError.message.addressInvalid" = "Adres niet geldig, controleer het adres";
+"CheckoutError.message.checkoutFailure" = "Er is een fout opgetreden tijdens het bijwerken van de checkout";
+"CheckoutError.message.missingAddress" = "Selecteer eerst het verzend en het factuuradres";
+"CheckoutError.message.outOfStock" = "Excuus, dit item is niet op voorraad";
+"CheckoutError.message.paymentMethodNotAvailable" = "Betaalmethode is niet meer beschikbaar";
+"CheckoutError.message.priceChanged" = "De prijs is nu %@";
+"CheckoutError.message.unclassified" = "Er is iets misgegaan.\nWe werken aan een oplossing.\nKom alstublieft iets later terug.";
+"CheckoutError.title" = "Oops";

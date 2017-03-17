@@ -23,5 +23,5 @@ deploy:
     secure: TiPliENaifg0CCzDhwXGcZZBzCMGiwQ85ndNfoIRyzg+114KEf+guM0XwCtvGhfHhd3CFA1r/9p/ab7Vsxsuc3IiJ4mM4zWm1sorfwci9NlbDPq30L+jADsiwZDvASRxLy8bF1pUfpBXoR60+TKOxJB+SsQK+xmIq4OH+NWZ1sbnZuY+Y5S89C86ee3IX1GTLMGmmMtDs4XRlEYQ9hv7xa4NvjX9wC4EWLw+E/Srr5jWM/s4W20eLnzF4A9mdR9VOc7b0o6v6routMHXHT+YqnV2ogbKJ0uiQ0eWSMwJtMIrHyws2eiaKOZY51NG//7XCdjrh/kHCgPdEtfFnVCCZXh/gW6ZZPvZpTyFomuQft2NSFVzR7rT30Sqh7P1zLrkGUHBfBJmyGIX1SFN+Ozs3785tXTAcRwjtyZwwK8Zu4ROh0bVyazQyX0X6IJOwZUV/t8cDMXpc+7LgQs8O+dd2+ZvLIuwCjHivOTYB3aUH8pBya6tSRdCoJ84ovrnJu6Kes4pv/CRnUPqaIW/SfCjQyiAoRpGhT83Qur/dv1BbEriIzQzz19+cZ0KN0+6YaU32a+RYSC5VS1NgBZKQyyhOTdgQxFztbX0ZzJUd+JXlwi3CL4LgJMHS1u0qKVBo+bvqt7z7pOjSQTbUkoGURWIJddgwFkuwUvaKr0FuODGj1Y=
   file: ZalandoCommerceSDK.framework.zip
   on:
-    repo: zalando-incubator/atlas-ios
+    repo: zalando-incubator/zalando-commerce-ios
     tags: true

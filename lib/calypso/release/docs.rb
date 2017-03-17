@@ -42,7 +42,7 @@ module Calypso
         'output' => destination_path(dst),
         'module' => src, 'module-version' => ZC_VERSION,
         'author' => 'Zalando SE', 'author_url' => 'http://tech.zalando.com',
-        'github_url' => 'https://github.com/zalando-incubator/atlas-ios',
+        'github_url' => 'https://github.com/zalando-incubator/zalando-commerce-ios',
         'copyright' => '© 2016-2017 [Zalando SE](http://tech.zalando.com)'
       }
 

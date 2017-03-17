@@ -8,7 +8,7 @@ import Foundation
 Used to initate `ZalandoCommerceAPI`.
 
 Note: can be fully or partially filled with data from `Info.plist` file.
-    More [on wiki](https://github.com/zalando-incubator/atlas-ios/wiki/Configuration)
+    More [on wiki](https://github.com/zalando-incubator/zalando-commerce-ios/wiki/Configuration)
 */
 public struct Options {
 

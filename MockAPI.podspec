@@ -5,7 +5,7 @@ Pod::Spec.new do |spec|
   spec.platform = :ios, '9.0'
   spec.version = ZC_VERSION
   spec.summary = 'Zalando Commenrce SDK iOS Mock API server'
-  spec.homepage = 'https://github.com/zalando-incubator/atlas-ios'
+  spec.homepage = 'https://github.com/zalando-incubator/zalando-commerce-ios'
 
   spec.description = <<-DESC
   Internal podspec for mock service. Please don't publish.
@@ -25,7 +25,7 @@ Pod::Spec.new do |spec|
   }
 
   spec.source = {
-    git: 'https://github.com/zalando-incubator/atlas-ios.git',
+    git: 'https://github.com/zalando-incubator/zalando-commerce-ios.git',
     tag: spec.version.to_s
   }
 

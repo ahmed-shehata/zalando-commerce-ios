@@ -13,8 +13,8 @@ extension ZalandoCommerceAPI {
      keys and values – `completion` retuns `Result.failure` with error returned from
      `Options.validate()`
 
-     - Note: See [configuration](https://github.com/zalando-incubator/atlas-ios/wiki/Configuration)
-     and [project structure](https://github.com/zalando-incubator/atlas-ios/wiki/Project-structure)
+     - Note: See [configuration](https://github.com/zalando-incubator/zalando-commerce-ios/wiki/Configuration)
+     and [project structure](https://github.com/zalando-incubator/zalando-commerce-ios/wiki/Project-structure)
 
      - Parameters:
          - options: Options for API client to be created. When `nil`, `$INFOPLIST_FILE` file of the app is used as configuration.

@@ -24,19 +24,19 @@ public struct OrderConfirmation {
     /// The customer number, would be nil in case the user placed the order as guest
     ///
     /// - Important: Customer number is a sensitive data
-    /// - SeeAlso: [Sensitive data](https://github.com/zalando-incubator/atlas-ios/wiki/Sensitive-Data)
+    /// - SeeAlso: [Sensitive data](https://github.com/zalando-incubator/zalando-commerce-ios/wiki/Sensitive-Data)
     public let customerNumber: CustomerNumber?
 
     /// Billing Address used by the user to place the order
     ///
     /// - Important: Billing Address is a sensitive data
-    /// - SeeAlso: [Sensitive data](https://github.com/zalando-incubator/atlas-ios/wiki/Sensitive-Data)
+    /// - SeeAlso: [Sensitive data](https://github.com/zalando-incubator/zalando-commerce-ios/wiki/Sensitive-Data)
     public let billingAddress: OrderAddress
 
     /// Shipping Address used by the user to place the order
     ///
     /// - Important: Shipping Address is a sensitive data
-    /// - SeeAlso: [Sensitive data](https://github.com/zalando-incubator/atlas-ios/wiki/Sensitive-Data)
+    /// - SeeAlso: [Sensitive data](https://github.com/zalando-incubator/zalando-commerce-ios/wiki/Sensitive-Data)
     public let shippingAddress: OrderAddress
 
     /// Gross Total for the placed order
