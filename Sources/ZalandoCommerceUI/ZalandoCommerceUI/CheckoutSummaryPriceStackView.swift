@@ -39,7 +39,7 @@ class CheckoutSummaryPriceStackView: UIStackView {
 
     let subtotalTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 10)
+        label.font = .systemFont(ofSize: 10, weight: UIFontWeightLight)
         label.textColor = UIColor(hex: 0x7F7F7F)
         label.textAlignment = .left
         return label
@@ -47,7 +47,7 @@ class CheckoutSummaryPriceStackView: UIStackView {
 
     let subtotalValueLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 10)
+        label.font = .systemFont(ofSize: 10, weight: UIFontWeightLight)
         label.textColor = UIColor(hex: 0x7F7F7F)
         label.textAlignment = .right
         return label
@@ -159,12 +159,10 @@ extension CheckoutSummaryPriceStackView: UIDataBuilder {
         }
 
         let hideDiscount = viewModel.discount == nil
-        UIView.animate(duration: .normal) { [weak self] in
-            self?.shippingTitleLabel.font = .systemFont(ofSize: hideDiscount ? 14 : 10, weight: UIFontWeightLight)
-            self?.shippingValueLabel.font = .systemFont(ofSize: hideDiscount ? 14 : 10, weight: UIFontWeightLight)
-            self?.subtotalStackView.isHidden = hideDiscount
-            self?.discountStackView.isHidden = hideDiscount
-        }
+        shippingTitleLabel.font = .systemFont(ofSize: hideDiscount ? 14 : 10, weight: UIFontWeightLight)
+        shippingValueLabel.font = .systemFont(ofSize: hideDiscount ? 14 : 10, weight: UIFontWeightLight)
+        subtotalStackView.isHidden = hideDiscount
+        discountStackView.isHidden = hideDiscount
 
         if viewModel.selectedArticle.isSelected {
             shippingValueLabel.text = Localizer.format(price: viewModel.shippingPrice)

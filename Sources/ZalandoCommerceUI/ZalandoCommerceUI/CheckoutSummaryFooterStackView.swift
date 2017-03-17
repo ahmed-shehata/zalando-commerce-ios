@@ -64,9 +64,9 @@ extension CheckoutSummaryFooterStackView: UIDataBuilder {
         }
 
         if viewModel.layout.showsRecommendationStackView {
-            recommendationStackView.configure(viewModel: viewModel.dataModel.selectedArticle.article)
             insertArrangedSubview(recommendationStackView, at: 0)
             recommendationStackView.buildView()
+            recommendationStackView.configure(viewModel: viewModel.dataModel.selectedArticle.article)
         }
 
         setupTermsButton(viewModel: viewModel)

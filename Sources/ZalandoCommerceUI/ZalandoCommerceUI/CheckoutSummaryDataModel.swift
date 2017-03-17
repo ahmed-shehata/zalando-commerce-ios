@@ -70,7 +70,7 @@ extension CheckoutSummaryDataModel {
     }
 
     var subtotal: Money {
-        return Money(amount: totalPrice.amount + (discount?.grossTotal.amount ?? 0), currency: totalPrice.currency)
+        return Money(amount: totalPrice.amount - (discount?.grossTotal.amount ?? 0), currency: totalPrice.currency)
     }
 
 }

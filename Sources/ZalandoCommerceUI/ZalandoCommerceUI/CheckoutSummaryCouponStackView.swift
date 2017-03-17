@@ -37,8 +37,9 @@ class CheckoutSummaryCouponStackView: UIStackView {
     var couponUpdatedHandler: ((String?) -> Void)?
 
     dynamic private func clearButtonTapped() {
+        textField.text = ""
         couponUpdatedHandler?(nil)
-        textField.becomeFirstResponder()
+        textField.resignFirstResponder()
     }
 
 }

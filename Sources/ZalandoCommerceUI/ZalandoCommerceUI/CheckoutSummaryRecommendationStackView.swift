@@ -68,6 +68,12 @@ extension CheckoutSummaryRecommendationStackView: UIDataBuilder {
         let config = RecommendationConfig(type: "cross_sell", location: "atlas_ios_order_confirmation", channel: "app")
         ZalandoCommerceAPI.withLoader.recommendations(for: viewModel.id, with: config, onView: loaderContrainer) { [weak self] result in
             guard let recommendations = result.process() else { return }
+            guard !recommendations.isEmpty else {
+                guard let strongSelf = self else { return }
+                let superStackView = strongSelf.superview as? UIStackView
+                superStackView?.removeArrangedSubview(strongSelf)
+                return
+            }
             self?.recommendationTitleLabel.alpha = 1
             self?.recommendationCollectionView.configure(with: recommendations, completion: { recommendation in
                 if let reason = ZalandoCommerceUIViewController.presented?.dismissalReason,

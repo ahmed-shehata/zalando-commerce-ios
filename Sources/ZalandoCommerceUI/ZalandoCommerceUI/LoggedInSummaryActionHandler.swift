@@ -9,7 +9,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
 
     weak var dataSource: CheckoutSummaryActionHandlerDataSource?
     weak var delegate: CheckoutSummaryActionHandlerDelegate?
-    var dataModelDisplayedError: Error?
+    var displayedError: Error?
 
     let customer: Customer
     var cart: Cart
@@ -62,7 +62,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
                 return UserError.display(error: CheckoutError.unclassified)
             }
 
-            if dataSource.dataModel.isPaymentSelected && self?.dataModelDisplayedError == nil {
+            if dataSource.dataModel.isPaymentSelected && self?.displayedError == nil {
                 ZalandoCommerceAPI.withLoader.createOrder(from: checkout) { result in
                     guard let order = result.process() else { return }
                     self?.handleConfirmation(forOrder: order)
@@ -123,6 +123,7 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
     }
 
     func handleCouponChanges(coupon: String?) {
+        guard coupon != self.coupon else { return }
         guard checkout != nil else {
             if shippingAddress == nil || billingAddress == nil {
                 UserError.display(error: CheckoutError.missingAddress)
@@ -230,10 +231,10 @@ extension LoggedInSummaryActionHandler {
                                                  checkout: checkout,
                                                  order: order)
         do {
-            dataModelDisplayedError = nil
+            displayedError = nil
             try delegate.updated(dataModel: dataModel)
         } catch let error {
-            dataModelDisplayedError = error
+            displayedError = error
         }
         delegate.updated(layout: OrderPlacedLayout())
         delegate.updated(actionHandler: OrderPlacedSummaryActionHandler())
@@ -282,10 +283,6 @@ extension LoggedInSummaryActionHandler {
                 }
             case .success(let checkoutValue):
                 checkout = checkoutValue
-
-                if let couponError = checkoutValue.coupons.first?.error {
-                    UserError.display(error: CheckoutError.couponFailure(error: couponError))
-                }
             }
 
             let requests = cart.items.map { CartItemRequest(sku: $0.sku, quantity: $0.quantity) }
@@ -334,10 +331,18 @@ extension LoggedInSummaryActionHandler {
 
         let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, cart: cart, checkout: checkout, addresses: addresses)
         do {
-            dataModelDisplayedError = nil
+            displayedError = nil
             try delegate?.updated(dataModel: dataModel)
+
+            if let couponError = checkout?.coupons.first?.error {
+                let error = CheckoutError.couponFailure(error: couponError)
+                UserError.display(error: error)
+                displayedError = error
+                coupon = nil
+            }
+
         } catch let error {
-            dataModelDisplayedError = error
+            displayedError = error
         }
 
         if (checkout == nil || addressesChanged) && hasAddresses {

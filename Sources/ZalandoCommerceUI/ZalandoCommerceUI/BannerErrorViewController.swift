@@ -6,7 +6,7 @@ import UIKit
 
 class BannerErrorViewController: UIViewController {
 
-    fileprivate static let topMargin: CGFloat = UIScreen.isSmallScreen ? 25 : 10
+    fileprivate static let topMargin: CGFloat = 25 // UIScreen.isSmallScreen ? 25 : 10
 
     fileprivate let containerView: UIView = {
         let view = UIView()
