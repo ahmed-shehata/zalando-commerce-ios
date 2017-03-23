@@ -63,16 +63,16 @@ class CheckoutSummaryMainStackView: UIStackView {
         return stackView
     }()
 
-    let paymentSeparatorView: BorderView = {
+    let couponSeparatorView: BorderView = {
         let view = BorderView()
         view.bottomBorder = true
+        view.leadingMargin = 15
         view.borderColor = UIColor(hex: 0xE5E5E5)
         return view
     }()
 
     let couponStackView: CheckoutSummaryCouponStackView = {
         let stackView = CheckoutSummaryCouponStackView()
-        stackView.isHidden = true
         stackView.axis = .horizontal
         stackView.spacing = 5
         stackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
@@ -80,10 +80,9 @@ class CheckoutSummaryMainStackView: UIStackView {
         return stackView
     }()
 
-    let couponSeparatorView: BorderView = {
+    let fullSeparatorView: BorderView = {
         let view = BorderView()
-        view.alpha = 0
-        view.bottomBorder = true
+        view.topBorder = true
         view.borderColor = UIColor(hex: 0xE5E5E5)
         return view
     }()
@@ -114,6 +113,8 @@ class CheckoutSummaryMainStackView: UIStackView {
         return stackView
     }()
 
+    var couponHeightConstraint: NSLayoutConstraint?
+
 }
 
 extension CheckoutSummaryMainStackView: UIBuilder {
@@ -126,13 +127,9 @@ extension CheckoutSummaryMainStackView: UIBuilder {
 
         addArrangedSubview(billingAddressStackView)
         addArrangedSubview(billingAddressSeparatorView)
-
         addArrangedSubview(paymentStackView)
-        addArrangedSubview(paymentSeparatorView)
 
-        addArrangedSubview(couponStackView)
-        addArrangedSubview(couponSeparatorView)
-
+        addArrangedSubview(fullSeparatorView)
         addArrangedSubview(guestStackView)
         addArrangedSubview(priceStackView)
         addArrangedSubview(deliveryStackView)
@@ -147,8 +144,8 @@ extension CheckoutSummaryMainStackView: UIBuilder {
 
         shippingAddressSeparatorView.setHeight(equalToConstant: 1)
         billingAddressSeparatorView.setHeight(equalToConstant: 1)
-        paymentSeparatorView.setHeight(equalToConstant: 1)
         couponSeparatorView.setHeight(equalToConstant: 1)
+        fullSeparatorView.setHeight(equalToConstant: 3)
     }
 
 }
@@ -163,8 +160,16 @@ extension CheckoutSummaryMainStackView: UIDataBuilder {
         guestStackView.configure(viewModel: viewModel.dataModel.email)
         guestStackView.isHidden = !viewModel.layout.showsGuestStackView
 
-        couponStackView.isHidden = !viewModel.layout.showsCouponStackView
-        couponSeparatorView.alpha = viewModel.layout.showsCouponStackView ? 1.0 : 0
+        if viewModel.layout.showsCouponStackView {
+            insertArrangedSubview(couponSeparatorView, at: 6)
+            insertArrangedSubview(couponStackView, at: 7)
+            couponStackView.buildView()
+            couponHeightConstraint = paymentStackView.setHeight(equalToView: couponStackView)
+        } else if let constraint = couponHeightConstraint {
+            paymentStackView.removeConstraint(constraint)
+            removeArrangedSubview(couponStackView)
+            removeArrangedSubview(couponSeparatorView)
+        }
 
         if viewModel.layout.showsOrderStackView {
             orderStackView.configure(viewModel: viewModel.dataModel.orderNumber)
