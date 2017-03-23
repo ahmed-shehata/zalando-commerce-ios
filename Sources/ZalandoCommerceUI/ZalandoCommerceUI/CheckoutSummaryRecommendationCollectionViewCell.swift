@@ -62,7 +62,7 @@ extension CheckoutSummaryRecommendationCollectionViewCell: UIDataBuilder {
     typealias T = Recommendation
 
     func configure(viewModel: Recommendation) {
-        articleImageView.setImage(from: viewModel.media?.mediaItems.first?.catalogURL)
+        articleImageView.setImage(from: viewModel.media?.mediaItems.first { $0.itemType == .image }?.catalogURL)
         articleNameLabel.text = viewModel.name
         priceLabel.text = Localizer.format(price: viewModel.lowestPrice)
     }
