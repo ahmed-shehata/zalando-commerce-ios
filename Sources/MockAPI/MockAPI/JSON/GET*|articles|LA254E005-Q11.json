@@ -21,7 +21,7 @@
   } ],
   "media" : {
     "media_items" : [ {
-      "order" : 1,
+      "order": 1, "type": "IMAGE",
       "catalog" : "https://i2.ztat.net/catalog/LA/25/4E/00/5Q/11/LA254E005-Q11@7.jpg",
       "catalog_hd" : "https://i2.ztat.net/catalog_hd/LA/25/4E/00/5Q/11/LA254E005-Q11@7.jpg",
       "detail" : "https://i2.ztat.net/detail/LA/25/4E/00/5Q/11/LA254E005-Q11@7.jpg",
@@ -29,7 +29,7 @@
       "large" : "https://i2.ztat.net/large/LA/25/4E/00/5Q/11/LA254E005-Q11@7.jpg",
       "large_hd" : "https://i2.ztat.net/large_hd/LA/25/4E/00/5Q/11/LA254E005-Q11@7.jpg"
     }, {
-      "order" : 2,
+      "order": 2, "type": "IMAGE",
       "catalog" : "https://i4.ztat.net/catalog/LA/25/4E/00/5Q/11/LA254E005-Q11@3.jpg",
       "catalog_hd" : "https://i4.ztat.net/catalog_hd/LA/25/4E/00/5Q/11/LA254E005-Q11@3.jpg",
       "detail" : "https://i4.ztat.net/detail/LA/25/4E/00/5Q/11/LA254E005-Q11@3.jpg",
@@ -37,7 +37,7 @@
       "large" : "https://i4.ztat.net/large/LA/25/4E/00/5Q/11/LA254E005-Q11@3.jpg",
       "large_hd" : "https://i4.ztat.net/large_hd/LA/25/4E/00/5Q/11/LA254E005-Q11@3.jpg"
     }, {
-      "order" : 3,
+      "order": 3, "type": "IMAGE",
       "catalog" : "https://i1.ztat.net/catalog/LA/25/4E/00/5Q/11/LA254E005-Q11@8.jpg",
       "catalog_hd" : "https://i1.ztat.net/catalog_hd/LA/25/4E/00/5Q/11/LA254E005-Q11@8.jpg",
       "detail" : "https://i1.ztat.net/detail/LA/25/4E/00/5Q/11/LA254E005-Q11@8.jpg",
@@ -45,7 +45,7 @@
       "large" : "https://i1.ztat.net/large/LA/25/4E/00/5Q/11/LA254E005-Q11@8.jpg",
       "large_hd" : "https://i1.ztat.net/large_hd/LA/25/4E/00/5Q/11/LA254E005-Q11@8.jpg"
     }, {
-      "order" : 4,
+      "order": 4, "type": "IMAGE",
       "catalog" : "https://i2.ztat.net/catalog/LA/25/4E/00/5Q/11/LA254E005-Q11@5.jpg",
       "catalog_hd" : "https://i2.ztat.net/catalog_hd/LA/25/4E/00/5Q/11/LA254E005-Q11@5.jpg",
       "detail" : "https://i2.ztat.net/detail/LA/25/4E/00/5Q/11/LA254E005-Q11@5.jpg",
@@ -53,7 +53,7 @@
       "large" : "https://i2.ztat.net/large/LA/25/4E/00/5Q/11/LA254E005-Q11@5.jpg",
       "large_hd" : "https://i2.ztat.net/large_hd/LA/25/4E/00/5Q/11/LA254E005-Q11@5.jpg"
     }, {
-      "order" : 5,
+      "order": 5, "type": "IMAGE",
       "catalog" : "https://i3.ztat.net/catalog/LA/25/4E/00/5Q/11/LA254E005-Q11@6.jpg",
       "catalog_hd" : "https://i3.ztat.net/catalog_hd/LA/25/4E/00/5Q/11/LA254E005-Q11@6.jpg",
       "detail" : "https://i3.ztat.net/detail/LA/25/4E/00/5Q/11/LA254E005-Q11@6.jpg",

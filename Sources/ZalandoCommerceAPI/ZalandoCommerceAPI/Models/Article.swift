@@ -27,7 +27,7 @@ extension Article {
     }
 
     public var thumbnailURL: URL? {
-        return media?.mediaItems.first?.catalogURL
+        return media?.firstImage?.catalogURL
     }
 
 }

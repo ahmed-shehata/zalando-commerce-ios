@@ -33,7 +33,10 @@ class PDPViewController: UIViewController {
                 self?.nameLabel.text = article.name
                 self?.colorLabel.text = article.color
 
-                if let imageURL = article.media?.mediaItems.first?.detailHDURL, let thumbImageView = self?.thumbImageView {
+                if
+                    let imageURL = article.media?.firstImage?.detailHDURL,
+                    let thumbImageView = self?.thumbImageView {
+
                     Nuke.loadImage(with: imageURL, into: thumbImageView)
                 }
 

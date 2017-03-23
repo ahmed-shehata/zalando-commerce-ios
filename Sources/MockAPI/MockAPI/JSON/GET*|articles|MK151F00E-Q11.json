@@ -21,7 +21,7 @@
   } ],
   "media" : {
     "media_items" : [ {
-      "order" : 1,
+      "order": 1, "type": "IMAGE",
       "catalog" : "https://i3.ztat.net/catalog/MK/15/1F/00/EQ/11/MK151F00E-Q11@4.jpg",
       "catalog_hd" : "https://i3.ztat.net/catalog_hd/MK/15/1F/00/EQ/11/MK151F00E-Q11@4.jpg",
       "detail" : "https://i3.ztat.net/detail/MK/15/1F/00/EQ/11/MK151F00E-Q11@4.jpg",
@@ -29,7 +29,7 @@
       "large" : "https://i3.ztat.net/large/MK/15/1F/00/EQ/11/MK151F00E-Q11@4.jpg",
       "large_hd" : "https://i3.ztat.net/large_hd/MK/15/1F/00/EQ/11/MK151F00E-Q11@4.jpg"
     }, {
-      "order" : 2,
+      "order": 2, "type": "IMAGE",
       "catalog" : "https://i2.ztat.net/catalog/MK/15/1F/00/EQ/11/MK151F00E-Q11@3.jpg",
       "catalog_hd" : "https://i2.ztat.net/catalog_hd/MK/15/1F/00/EQ/11/MK151F00E-Q11@3.jpg",
       "detail" : "https://i2.ztat.net/detail/MK/15/1F/00/EQ/11/MK151F00E-Q11@3.jpg",
@@ -37,7 +37,7 @@
       "large" : "https://i2.ztat.net/large/MK/15/1F/00/EQ/11/MK151F00E-Q11@3.jpg",
       "large_hd" : "https://i2.ztat.net/large_hd/MK/15/1F/00/EQ/11/MK151F00E-Q11@3.jpg"
     }, {
-      "order" : 3,
+      "order": 3, "type": "IMAGE",
       "catalog" : "https://i1.ztat.net/catalog/MK/15/1F/00/EQ/11/MK151F00E-Q11@2.jpg",
       "catalog_hd" : "https://i1.ztat.net/catalog_hd/MK/15/1F/00/EQ/11/MK151F00E-Q11@2.jpg",
       "detail" : "https://i1.ztat.net/detail/MK/15/1F/00/EQ/11/MK151F00E-Q11@2.jpg",
@@ -45,7 +45,7 @@
       "large" : "https://i1.ztat.net/large/MK/15/1F/00/EQ/11/MK151F00E-Q11@2.jpg",
       "large_hd" : "https://i1.ztat.net/large_hd/MK/15/1F/00/EQ/11/MK151F00E-Q11@2.jpg"
     }, {
-      "order" : 4,
+      "order": 4, "type": "IMAGE",
       "catalog" : "https://i4.ztat.net/catalog/MK/15/1F/00/EQ/11/MK151F00E-Q11@1.jpg",
       "catalog_hd" : "https://i4.ztat.net/catalog_hd/MK/15/1F/00/EQ/11/MK151F00E-Q11@1.jpg",
       "detail" : "https://i4.ztat.net/detail/MK/15/1F/00/EQ/11/MK151F00E-Q11@1.jpg",

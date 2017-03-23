@@ -73,7 +73,7 @@
   } ],
   "media" : {
     "media_items" : [ {
-      "order" : 1,
+      "order": 1, "type": "IMAGE",
       "catalog" : "https://i1.ztat.net/catalog/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@16.jpg",
       "catalog_hd" : "https://i1.ztat.net/catalog_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@16.jpg",
       "detail" : "https://i1.ztat.net/detail/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@16.jpg",
@@ -81,7 +81,7 @@
       "large" : "https://i1.ztat.net/large/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@16.jpg",
       "large_hd" : "https://i1.ztat.net/large_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@16.jpg"
     }, {
-      "order" : 2,
+      "order": 2, "type": "IMAGE",
       "catalog" : "https://i4.ztat.net/catalog/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@15.jpg",
       "catalog_hd" : "https://i4.ztat.net/catalog_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@15.jpg",
       "detail" : "https://i4.ztat.net/detail/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@15.jpg",
@@ -89,7 +89,7 @@
       "large" : "https://i4.ztat.net/large/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@15.jpg",
       "large_hd" : "https://i4.ztat.net/large_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@15.jpg"
     }, {
-      "order" : 3,
+      "order": 3, "type": "IMAGE",
       "catalog" : "https://i5.ztat.net/catalog/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@14.jpg",
       "catalog_hd" : "https://i5.ztat.net/catalog_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@14.jpg",
       "detail" : "https://i5.ztat.net/detail/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@14.jpg",
@@ -97,7 +97,7 @@
       "large" : "https://i5.ztat.net/large/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@14.jpg",
       "large_hd" : "https://i5.ztat.net/large_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@14.jpg"
     }, {
-      "order" : 4,
+      "order": 4, "type": "IMAGE",
       "catalog" : "https://i6.ztat.net/catalog/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@13.jpg",
       "catalog_hd" : "https://i6.ztat.net/catalog_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@13.jpg",
       "detail" : "https://i6.ztat.net/detail/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@13.jpg",
@@ -105,7 +105,7 @@
       "large" : "https://i6.ztat.net/large/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@13.jpg",
       "large_hd" : "https://i6.ztat.net/large_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@13.jpg"
     }, {
-      "order" : 5,
+      "order": 5, "type": "IMAGE",
       "catalog" : "https://i3.ztat.net/catalog/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@12.jpg",
       "catalog_hd" : "https://i3.ztat.net/catalog_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@12.jpg",
       "detail" : "https://i3.ztat.net/detail/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@12.jpg",
@@ -113,7 +113,7 @@
       "large" : "https://i3.ztat.net/large/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@12.jpg",
       "large_hd" : "https://i3.ztat.net/large_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@12.jpg"
     }, {
-      "order" : 6,
+      "order": 6, "type": "IMAGE",
       "catalog" : "https://i2.ztat.net/catalog/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@11.jpg",
       "catalog_hd" : "https://i2.ztat.net/catalog_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@11.jpg",
       "detail" : "https://i2.ztat.net/detail/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@11.jpg",
@@ -121,7 +121,7 @@
       "large" : "https://i2.ztat.net/large/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@11.jpg",
       "large_hd" : "https://i2.ztat.net/large_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@11.jpg"
     }, {
-      "order" : 7,
+      "order": 7, "type": "IMAGE",
       "catalog" : "https://i1.ztat.net/catalog/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@10.jpg",
       "catalog_hd" : "https://i1.ztat.net/catalog_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@10.jpg",
       "detail" : "https://i1.ztat.net/detail/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@10.jpg",
@@ -129,7 +129,7 @@
       "large" : "https://i1.ztat.net/large/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@10.jpg",
       "large_hd" : "https://i1.ztat.net/large_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@10.jpg"
     }, {
-      "order" : 8,
+      "order": 8, "type": "IMAGE",
       "catalog" : "https://i1.ztat.net/catalog/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@9.jpg",
       "catalog_hd" : "https://i1.ztat.net/catalog_hd/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@9.jpg",
       "detail" : "https://i1.ztat.net/detail/GU/12/1D/08/ZQ/11/GU121D08Z-Q11@9.jpg",

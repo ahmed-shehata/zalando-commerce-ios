@@ -112,7 +112,7 @@
   } ],
   "media" : {
     "media_items" : [ {
-      "order" : 101,
+      "order": 101, "type": "IMAGE",
       "catalog" : "https://i3.ztat.net/catalog/L2/71/1E/00/2Q/11/L2711E002-Q11@108.jpg",
       "catalog_hd" : "https://i3.ztat.net/catalog_hd/L2/71/1E/00/2Q/11/L2711E002-Q11@108.jpg",
       "detail" : "https://i3.ztat.net/detail/L2/71/1E/00/2Q/11/L2711E002-Q11@108.jpg",
@@ -120,7 +120,7 @@
       "large" : "https://i3.ztat.net/large/L2/71/1E/00/2Q/11/L2711E002-Q11@108.jpg",
       "large_hd" : "https://i3.ztat.net/large_hd/L2/71/1E/00/2Q/11/L2711E002-Q11@108.jpg"
     }, {
-      "order" : 102,
+      "order": 102, "type": "IMAGE",
       "catalog" : "https://i4.ztat.net/catalog/L2/71/1E/00/2Q/11/L2711E002-Q11@109.jpg",
       "catalog_hd" : "https://i4.ztat.net/catalog_hd/L2/71/1E/00/2Q/11/L2711E002-Q11@109.jpg",
       "detail" : "https://i4.ztat.net/detail/L2/71/1E/00/2Q/11/L2711E002-Q11@109.jpg",
@@ -128,7 +128,7 @@
       "large" : "https://i4.ztat.net/large/L2/71/1E/00/2Q/11/L2711E002-Q11@109.jpg",
       "large_hd" : "https://i4.ztat.net/large_hd/L2/71/1E/00/2Q/11/L2711E002-Q11@109.jpg"
     }, {
-      "order" : 1,
+      "order": 1, "type": "IMAGE",
       "catalog" : "https://i1.ztat.net/catalog/L2/71/1E/00/2Q/11/L2711E002-Q11@12.jpg",
       "catalog_hd" : "https://i1.ztat.net/catalog_hd/L2/71/1E/00/2Q/11/L2711E002-Q11@12.jpg",
       "detail" : "https://i1.ztat.net/detail/L2/71/1E/00/2Q/11/L2711E002-Q11@12.jpg",
@@ -136,7 +136,7 @@
       "large" : "https://i1.ztat.net/large/L2/71/1E/00/2Q/11/L2711E002-Q11@12.jpg",
       "large_hd" : "https://i1.ztat.net/large_hd/L2/71/1E/00/2Q/11/L2711E002-Q11@12.jpg"
     }, {
-      "order" : 2,
+      "order": 2, "type": "IMAGE",
       "catalog" : "https://i4.ztat.net/catalog/L2/71/1E/00/2Q/11/L2711E002-Q11@11.jpg",
       "catalog_hd" : "https://i4.ztat.net/catalog_hd/L2/71/1E/00/2Q/11/L2711E002-Q11@11.jpg",
       "detail" : "https://i4.ztat.net/detail/L2/71/1E/00/2Q/11/L2711E002-Q11@11.jpg",
@@ -144,7 +144,7 @@
       "large" : "https://i4.ztat.net/large/L2/71/1E/00/2Q/11/L2711E002-Q11@11.jpg",
       "large_hd" : "https://i4.ztat.net/large_hd/L2/71/1E/00/2Q/11/L2711E002-Q11@11.jpg"
     }, {
-      "order" : 3,
+      "order": 3, "type": "IMAGE",
       "catalog" : "https://i3.ztat.net/catalog/L2/71/1E/00/2Q/11/L2711E002-Q11@10.jpg",
       "catalog_hd" : "https://i3.ztat.net/catalog_hd/L2/71/1E/00/2Q/11/L2711E002-Q11@10.jpg",
       "detail" : "https://i3.ztat.net/detail/L2/71/1E/00/2Q/11/L2711E002-Q11@10.jpg",
@@ -152,7 +152,7 @@
       "large" : "https://i3.ztat.net/large/L2/71/1E/00/2Q/11/L2711E002-Q11@10.jpg",
       "large_hd" : "https://i3.ztat.net/large_hd/L2/71/1E/00/2Q/11/L2711E002-Q11@10.jpg"
     }, {
-      "order" : 4,
+      "order": 4, "type": "IMAGE",
       "catalog" : "https://i1.ztat.net/catalog/L2/71/1E/00/2Q/11/L2711E002-Q11@9.jpg",
       "catalog_hd" : "https://i1.ztat.net/catalog_hd/L2/71/1E/00/2Q/11/L2711E002-Q11@9.jpg",
       "detail" : "https://i1.ztat.net/detail/L2/71/1E/00/2Q/11/L2711E002-Q11@9.jpg",
@@ -160,7 +160,7 @@
       "large" : "https://i1.ztat.net/large/L2/71/1E/00/2Q/11/L2711E002-Q11@9.jpg",
       "large_hd" : "https://i1.ztat.net/large_hd/L2/71/1E/00/2Q/11/L2711E002-Q11@9.jpg"
     }, {
-      "order" : 5,
+      "order": 5, "type": "IMAGE",
       "catalog" : "https://i4.ztat.net/catalog/L2/71/1E/00/2Q/11/L2711E002-Q11@8.jpg",
       "catalog_hd" : "https://i4.ztat.net/catalog_hd/L2/71/1E/00/2Q/11/L2711E002-Q11@8.jpg",
       "detail" : "https://i4.ztat.net/detail/L2/71/1E/00/2Q/11/L2711E002-Q11@8.jpg",
@@ -168,7 +168,7 @@
       "large" : "https://i4.ztat.net/large/L2/71/1E/00/2Q/11/L2711E002-Q11@8.jpg",
       "large_hd" : "https://i4.ztat.net/large_hd/L2/71/1E/00/2Q/11/L2711E002-Q11@8.jpg"
     }, {
-      "order" : 6,
+      "order": 6, "type": "IMAGE",
       "catalog" : "https://i5.ztat.net/catalog/L2/71/1E/00/2Q/11/L2711E002-Q11@7.jpg",
       "catalog_hd" : "https://i5.ztat.net/catalog_hd/L2/71/1E/00/2Q/11/L2711E002-Q11@7.jpg",
       "detail" : "https://i5.ztat.net/detail/L2/71/1E/00/2Q/11/L2711E002-Q11@7.jpg",
