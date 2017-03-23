@@ -160,9 +160,9 @@ extension CheckoutSummaryMainStackView: UIDataBuilder {
         guestStackView.configure(viewModel: viewModel.dataModel.email)
         guestStackView.isHidden = !viewModel.layout.showsGuestStackView
 
-        if viewModel.layout.showsCouponStackView {
-            insertArrangedSubview(couponSeparatorView, at: 6)
-            insertArrangedSubview(couponStackView, at: 7)
+        if let idx = arrangedSubviews.index(of: paymentStackView), viewModel.layout.showsCouponStackView {
+            insertArrangedSubview(couponSeparatorView, at: idx + 1)
+            insertArrangedSubview(couponStackView, at: idx + 2)
             couponStackView.buildView()
             couponHeightConstraint = paymentStackView.setHeight(equalToView: couponStackView)
         } else if let constraint = couponHeightConstraint {
