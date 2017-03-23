@@ -11,9 +11,9 @@ public struct CreateCheckoutRequest {
     public let cartId: CartId
     public let billingAddressId: AddressId?
     public let shippingAddressId: AddressId?
-    public let coupons: [String]
+    public let coupons: [String]?
 
-    public init(cartId: CartId, addresses: CheckoutAddresses? = nil, coupons: [String] = []) {
+    public init(cartId: CartId, addresses: CheckoutAddresses? = nil, coupons: [String]? = nil) {
         self.cartId = cartId
         self.billingAddressId = addresses?.billingAddress?.id
         self.shippingAddressId = addresses?.shippingAddress?.id
@@ -33,8 +33,8 @@ extension CreateCheckoutRequest: JSONRepresentable {
 
     func toJSON() -> JSONDictionary {
         return [
-            Keys.cartId: self.cartId,
-            Keys.coupons: self.coupons,
+            Keys.cartId: cartId,
+            Keys.coupons: coupons as Any,
             Keys.billingAddressId: billingAddressId as Any,
             Keys.shippingAddressId: shippingAddressId as Any
         ]

@@ -69,8 +69,12 @@ extension CheckoutSummaryDataModel {
         return Config.shared?.salesChannel.termsAndConditionsURL
     }
 
+    var discountAmount: MoneyAmount {
+        return discount?.grossTotal.amount ?? 0
+    }
+
     var subtotal: Money {
-        return Money(amount: totalPrice.amount - (discount?.grossTotal.amount ?? 0), currency: totalPrice.currency)
+        return Money(amount: totalPrice.amount - discountAmount, currency: totalPrice.currency)
     }
 
 }

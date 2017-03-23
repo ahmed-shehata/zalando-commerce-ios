@@ -40,7 +40,7 @@ public func == (lhs: Cart, rhs: Cart) -> Bool {
 }
 
 public func == (lhs: Cart.Discount?, rhs: Cart.Discount?) -> Bool {
-    return lhs?.grossTotal.amount == rhs?.grossTotal.amount
+    return lhs?.grossTotal.amount == rhs?.grossTotal.amount && lhs?.taxTotal.amount == rhs?.taxTotal.amount
 }
 
 extension Cart: JSONInitializable {
