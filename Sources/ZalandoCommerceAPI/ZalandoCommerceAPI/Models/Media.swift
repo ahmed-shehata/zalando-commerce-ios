@@ -8,6 +8,10 @@ public struct Media {
 
     public let mediaItems: [MediaItem]
 
+    public var firstImage: MediaItem? {
+        return mediaItems.first { $0.itemType == .image }
+    }
+
 }
 
 extension Media {
