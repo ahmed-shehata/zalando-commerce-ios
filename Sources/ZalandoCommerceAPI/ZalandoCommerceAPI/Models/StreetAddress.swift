@@ -4,6 +4,8 @@
 
 import Foundation
 
+// TODO: document it, please...
+
 public protocol StreetAddress {
 
     var street: String? { get }

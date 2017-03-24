@@ -4,8 +4,6 @@
 
 import Foundation
 
-// TODO: document it, please...
-
 public struct CartItemRequest {
 
     public let sku: SimpleSKU

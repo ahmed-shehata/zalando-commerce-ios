@@ -4,6 +4,8 @@
 
 import Foundation
 
+// TODO: document it, please...
+
 public protocol FormattableAddress: StreetAddress {
 
     var gender: Gender { get }

@@ -6,6 +6,8 @@ import Foundation
 import UIKit
 import ZalandoCommerceAPI
 
+// TODO: document it, please...
+
 public struct OAuth2AuthorizationHandler {
 
     func authorize(completion: @escaping ResultCompletion<AuthorizationToken>) {

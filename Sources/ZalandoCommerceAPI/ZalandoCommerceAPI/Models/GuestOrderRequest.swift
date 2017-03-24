@@ -4,8 +4,6 @@
 
 import Foundation
 
-// TODO: document it, please...
-
 public struct GuestOrderRequest {
 
     public let guestCheckoutId: GuestCheckoutId

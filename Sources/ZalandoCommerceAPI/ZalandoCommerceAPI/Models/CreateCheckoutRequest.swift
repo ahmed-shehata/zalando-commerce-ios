@@ -4,8 +4,6 @@
 
 import Foundation
 
-// TODO: document it, please...
-
 public struct CreateCheckoutRequest {
 
     public let cartId: CartId

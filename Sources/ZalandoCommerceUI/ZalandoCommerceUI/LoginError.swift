@@ -5,6 +5,8 @@
 import Foundation
 import ZalandoCommerceAPI
 
+// TODO: document it, please...
+
 public enum LoginError: LocalizableError {
 
     case accessDenied

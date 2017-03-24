@@ -5,6 +5,8 @@
 import UIKit
 import ZalandoCommerceAPI
 
+// TODO: document it, please...
+
 open class OAuth2LoginViewController: UIViewController {
 
     fileprivate let loginURL: URL

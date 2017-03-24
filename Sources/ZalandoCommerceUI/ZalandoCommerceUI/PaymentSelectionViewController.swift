@@ -5,6 +5,8 @@
 import UIKit
 import ZalandoCommerceAPI
 
+// TODO: document it, please...
+
 open class PaymentViewController: UIViewController, UIWebViewDelegate {
 
     var paymentCompletion: Completion<PaymentStatus>?
