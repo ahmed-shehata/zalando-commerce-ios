@@ -46,6 +46,8 @@
 "summaryView.label.orderImageSaved" = "✓ Bild in Ihrer Fotomediathek gespeichert";
 "summaryView.label.orderNumber" = "Bestellnummer";
 "summaryView.label.payment" = "Zahlungsart";
+"summaryView.label.coupon.title" = "Gutschein-Code";
+"summaryView.label.coupon.placeholder" = "Code eingeben";
 "summaryView.label.price.shipping" = "Versand";
 "summaryView.label.price.total" = "Gesamtsumme:";
 "summaryView.label.price.vat" = "(Incl. MwST)";

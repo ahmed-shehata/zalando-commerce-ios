@@ -27,8 +27,10 @@
                },
                {"sku": "AZ711M001-B110420000",
                "quantity" : 1
-               } ],
-    "items_out_of_stock" : [ ],
+               }],
+    "items_out_of_stock" : [ {"sku": "EV451G023-Q110ONE000",
+                            "quantity" : 1
+                            } ],
     "delivery" : {
         "earliest" : "2016-07-23T16:51:34.142Z",
         "latest" : "2016-07-25T16:51:34.142Z"

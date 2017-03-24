@@ -29,7 +29,55 @@ class CheckoutSummaryPriceStackView: UIStackView {
         return label
     }()
 
-    fileprivate let dummySeparatorLabel: UILabel = {
+    let subtotalStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.isHidden = true
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        return stackView
+    }()
+
+    let subtotalTitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 10, weight: UIFontWeightLight)
+        label.textColor = UIColor(hex: 0x7F7F7F)
+        label.textAlignment = .left
+        return label
+    }()
+
+    let subtotalValueLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 10, weight: UIFontWeightLight)
+        label.textColor = UIColor(hex: 0x7F7F7F)
+        label.textAlignment = .right
+        return label
+    }()
+
+    let discountStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.isHidden = true
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        return stackView
+    }()
+
+    let discountTitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 14)
+        label.textColor = .orange
+        label.textAlignment = .left
+        return label
+    }()
+
+    let discountValueLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 14)
+        label.textColor = .orange
+        label.textAlignment = .right
+        return label
+    }()
+
+    let dummySeparatorLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 4)
         label.text = " "
@@ -72,13 +120,21 @@ class CheckoutSummaryPriceStackView: UIStackView {
 extension CheckoutSummaryPriceStackView: UIBuilder {
 
     func configureView() {
+        addArrangedSubview(subtotalStackView)
         addArrangedSubview(shippingStackView)
+        addArrangedSubview(discountStackView)
         addArrangedSubview(dummySeparatorLabel)
         addArrangedSubview(totalStackView)
         addArrangedSubview(vatTitleLabel)
 
+        subtotalStackView.addArrangedSubview(subtotalTitleLabel)
+        subtotalStackView.addArrangedSubview(subtotalValueLabel)
+
         shippingStackView.addArrangedSubview(shippingTitleLabel)
         shippingStackView.addArrangedSubview(shippingValueLabel)
+
+        discountStackView.addArrangedSubview(discountTitleLabel)
+        discountStackView.addArrangedSubview(discountValueLabel)
 
         totalStackView.addArrangedSubview(totalTitleLabel)
         totalStackView.addArrangedSubview(totalValueLabel)
@@ -92,8 +148,21 @@ extension CheckoutSummaryPriceStackView: UIDataBuilder {
 
     func configure(viewModel: T) {
         shippingTitleLabel.text = Localizer.format(string: "summaryView.label.price.shipping")
+        subtotalTitleLabel.text = Localizer.format(string: "summaryView.label.price.subtotal")
+        discountTitleLabel.text = Localizer.format(string: "summaryView.label.price.discount")
         totalTitleLabel.text = Localizer.format(string: "summaryView.label.price.total")
         vatTitleLabel.text = Localizer.format(string: "summaryView.label.price.vat")
+
+        if let discount = viewModel.discount {
+            subtotalValueLabel.text = Localizer.format(price: viewModel.subtotal)
+            discountValueLabel.text = Localizer.format(price: discount.grossTotal)
+        }
+
+        let hideDiscount = viewModel.discount == nil
+        shippingTitleLabel.font = .systemFont(ofSize: hideDiscount ? 14 : 10, weight: UIFontWeightLight)
+        shippingValueLabel.font = .systemFont(ofSize: hideDiscount ? 14 : 10, weight: UIFontWeightLight)
+        subtotalStackView.isHidden = hideDiscount
+        discountStackView.isHidden = hideDiscount
 
         if viewModel.selectedArticle.isSelected {
             shippingValueLabel.text = Localizer.format(price: viewModel.shippingPrice)

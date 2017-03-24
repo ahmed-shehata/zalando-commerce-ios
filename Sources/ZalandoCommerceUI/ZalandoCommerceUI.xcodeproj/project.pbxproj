@@ -7,173 +7,174 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D982726F35BC58EEEC06364D17120D61 /* AddressViewModelCreationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A6EE7901E431366FB9BFFBCBBACE1F /* AddressViewModelCreationStrategy.swift */; };
-		4D3FFC9597DE12CBFAA2DF3FEF17B110 /* ArticleNotSelectedActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2ECB3EFBA30ECC93206084D7610A4D /* ArticleNotSelectedActionHandler.swift */; };
-		488BD2B75D8855549C92EF5E3659D727 /* AddressBookImportDataModelCreationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D72C653F20E541FD160F0456887713 /* AddressBookImportDataModelCreationStrategy.swift */; };
-		82543ABBF570B2B143A8F7EA9A648904 /* CheckoutSummaryRootStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25DF7F6963CCFF91DFD6AF4FE5007EE /* CheckoutSummaryRootStackView.swift */; };
-		1DA6CC84D925928285310A030BFDBCCA /* AddressFormStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561336232A25CF509F7AD10E2F0D82A6 /* AddressFormStackView.swift */; };
-		4E9CCA19257B26F73E0708FAC416E990 /* LoggedInSummaryActionHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0675EE8E38C0BC3B4979D5EF23DF22A4 /* LoggedInSummaryActionHandlerTests.swift */; };
-		19E072E645408228F9C3E67AA1104B08 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265D5D86204E52BAE2AFF1169D8AD121 /* UIDevice.swift */; };
-		7221D8A3754D88757600892F3571E558 /* KeyboardScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B25B8EBC252896EB59CC0F7BA29D2BA /* KeyboardScrollView.swift */; };
-		912ED274C06A01F58AF33A7BC0E35203 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F19145FBC357168C313E21ABAAD2FA /* UIView.swift */; };
-		59FB32FF17BB93EE0FE9635DBCF22A5A /* AddressFormActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9248CFE34118C4288696A499054C29F9 /* AddressFormActionHandler.swift */; };
-		F93ABF5EB88FD818C7E2A54FA4198504 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DDD69019EE322ADF9BA3570E3BDA87 /* URL.swift */; };
-		D2829790E551F6EE5378175671634BC6 /* URL-QueryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B7DDEB8C95AB222CE78737D5A1A303 /* URL-QueryItem.swift */; };
-		B8DA2F3B73E9080FE9D48006C2E5120A /* LoggedInCreateAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA53AFB38D4DF558CBE6EDE0F67D2FA2 /* LoggedInCreateAddressActionHandler.swift */; };
-		B2EEC09C7CC6649FF02932B25751BBB5 /* CheckoutSummaryEditProductStackViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A273337FEAC013345E5F535922D7372E /* CheckoutSummaryEditProductStackViewTests.swift */; };
-		6F21CE0CA18474D359CA688C9FFDB7F2 /* ZalandoCommerceUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31A9D970D4E8868524CD6E3EB3CD8EC /* ZalandoCommerceUIViewController.swift */; };
-		A9DB7B20D3496C851B0C55DAD89E0ED2 /* UIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893C8694A83D664097028336B95955BD /* UIViewTests.swift */; };
-		D67746288958F2C10F7E3E5ADF97B7F3 /* FormattableAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330A3AD6D4D5AFE123801791F6C66928 /* FormattableAddress.swift */; };
-		A4D75843DA1BDFE7267CADCC95F2E6FB /* InjectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367BEEDE2E6233F3E645DDC2C64D3455 /* InjectorTests.swift */; };
-		18636293FAE1F6ED4523B42B0420BE77 /* AddressRowViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576544D2ECDCCCC2D4CC370DF7E598B1 /* AddressRowViewCell.swift */; };
-		4A607EA957831C736004E65B190FF800 /* CheckoutSummaryMainStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E92DE872DC30A6CB093A23D218BBE0 /* CheckoutSummaryMainStackView.swift */; };
-		6F7B4EE78F8B09B8C2CCEE93A904C1EF /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FD2FCFE0E9110A3F1FC878C99D4CFA /* HTTP.swift */; };
-		B9D176CD777973B26DFF03F6220CD9BD /* AddressFormViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA525979BE4CB18BAE8FA79C18057D0 /* AddressFormViewControllerTests.swift */; };
-		171663112C36D2AB97B9D050F63E1470 /* PaymentSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520274DD2DBEC8F1708A0DDCD7D5A6B5 /* PaymentSelectionViewController.swift */; };
-		5D8520161E48076B671DF5CA07E1B303 /* Injector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA763EFE60701C0B31CF71933AB79CD9 /* Injector.swift */; };
-		E721812A6F7665C91F13D0943E7D63EE /* OrderConfirmation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CC1FF648AEAA6E7A2FE9D2B50AE7BA /* OrderConfirmation.swift */; };
-		F773F66A6A0782814843C5310CF1ED56 /* AddressCheckViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E129248E0E8BC189EDDAAB577C08EA /* AddressCheckViewControllerTests.swift */; };
-		85BCA872C58B053B162A0FC773EFF2E5 /* UserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AEF413F6CF0230E29CA73C3C0AA2ED /* UserError.swift */; };
-		73C760F3812EE7F85BFD7539E772BF8D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717114585547AD240FD55D14D07DD40B /* String.swift */; };
-		CBE75C3C385E790A1C6439143E919F50 /* CheckoutSummaryActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B759D64C6EABC479521B42EA8A9000E /* CheckoutSummaryActionHandler.swift */; };
-		56B611BECFA5B5F9633D1EBAABBD9ECC /* ActionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5B91199C6059B0D51808B1F95875E6 /* ActionTextField.swift */; };
-		724FDD2EBF32EBA9DEFCB871B878E935 /* RowStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1CD0C6691D0CF385D5726381080AAB /* RowStackView.swift */; };
-		F2FC672264AD3F09999E79FCAB0DACA6 /* GuestAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD032DF8A2E79977BF908AAB57EB36 /* GuestAddressActionHandler.swift */; };
-		664CAFD18724AA0ECE700A8FD460B093 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9544E6ABBF7C8B9F04317197E62B246 /* Debug.swift */; };
-		B0071010084BEC5990F74227510CFDDA /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D602B02501819BBF3226B998396A6E2 /* CGRect.swift */; };
-		0EBD98338BBC7268297F1B4996C1D76D /* AddressFormType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4277CBFC13EFD2FDBAF1DDA12F301727 /* AddressFormType.swift */; };
-		33810C9E3D48C9D21921320A068603D7 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4070A06FBFE864A37AD0F279BDACC4EC /* UIColor.swift */; };
-		15718CD424EC52A0383C0622E9AFB2A9 /* CheckoutSummaryGuestStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF2F948FDA83185BE68565C2AC4889C /* CheckoutSummaryGuestStackView.swift */; };
-		71EEC58BDDF9D845CF550ECD5F90343D /* AddressCheckRowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C0F2EF88DB405430A5ED1488441877 /* AddressCheckRowButton.swift */; };
-		4D5DF9EBCA8534CEE628964289F7C734 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40F7BF8A85D09D8D3338F2DFD476CAE /* UITableView.swift */; };
-		FFA797C81EC2C03E049895B9B2E7BA02 /* OAuth2AuthorizationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91C054644CB41C0F294CFF56163DCC4 /* OAuth2AuthorizationHandler.swift */; };
-		B1F41F75A588D332B3461886327FEA86 /* CheckoutPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0AE479E93B528CEBEBDE2248360FC8 /* CheckoutPresentationController.swift */; };
-		C0FBD1274694FF73A9BAE468DB279819 /* AddressFormLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D551CE2D4646B169BF753CD0D4CD9E /* AddressFormLayout.swift */; };
-		BB9783CDAA508015200ADAFC2DF30209 /* CheckoutSummaryOrderStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DDCB01156D32A87AE3AC3261806FCB /* CheckoutSummaryOrderStackView.swift */; };
-		19A654104182CC5DDDF3E2BACB8D2BF3 /* AddressDataModelCreationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1594D47385E0DD7D0DD419349D42D56 /* AddressDataModelCreationStrategy.swift */; };
-		7FE5B8173466DA7F854A07027D965A2E /* PickerKeyboardInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B80016844A9F7B3FE36DC76B12D0C69 /* PickerKeyboardInputView.swift */; };
-		B7625E5763BCB7B31668FF6B71B6B90F /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D19C936E6B03AC6FA08A1AE32E264D /* Typealiases.swift */; };
-		B747D9AB19016160178F0FA30558010D /* CheckoutSummaryArticleSelectCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970D499754E14B678BE6FBA88A8A716E /* CheckoutSummaryArticleSelectCollectionView.swift */; };
-		927606DCCD35E65966A005072E603FC4 /* ZalandoCommerceUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8290AA4352112963BC941DB8E9B68DC /* ZalandoCommerceUI.swift */; };
-		E8ACC473F115485CC98E1084F01F35B0 /* CheckoutSummaryProductStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED582FBA45192BE59C8C91EEA4900686 /* CheckoutSummaryProductStackView.swift */; };
-		3E4D3632134D518377A7A53006EC9556 /* CheckoutSummaryProductInfoStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520E809E41B4E5EBCFA147841A473C49 /* CheckoutSummaryProductInfoStackView.swift */; };
-		5B61341538809C28BEE73CFEB753159E /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FB05E05E747F6FA84BF4EE52D2C02A /* UIViewController.swift */; };
-		1D9361461A5BE5A2D21D26FDC9F4889D /* HTTPURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CA93C72D40AAE1AEF611A67091C780 /* HTTPURLResponse.swift */; };
-		C771F759D223065947D905B6350EC300 /* ShippingAddressViewModelCreationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D76EBC6C87DD61A71FBE5A9488E2C5 /* ShippingAddressViewModelCreationStrategy.swift */; };
-		2923FAA6D4CAE41694EDF3636EE28258 /* CheckoutSummaryRecommendationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F20D04DA990CA46AB18F3D675F37CA /* CheckoutSummaryRecommendationCollectionViewCell.swift */; };
-		F9F0763A49AC6FA2A014BE4EB2DDB080 /* AddressListTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9930509CC57806C7E6C197AC84C07211 /* AddressListTableDelegate.swift */; };
-		230778F94F663A48C1A2240EFC92C05C /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C000E5ACA7BDE8E5AA01F20F6B62991E /* UIImageView.swift */; };
-		341504C6BF7829154735C21D9379FB31 /* CheckoutTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7326F095DD6700D41139230E310BCEF /* CheckoutTransitioningDelegate.swift */; };
-		9BE55AA1A9A65940BA9540DF7909636C /* GuestCheckoutSummaryActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA47A184EA2B2B6DDAA810E89F02F093 /* GuestCheckoutSummaryActionHandler.swift */; };
-		245AE8DB35932C1631E314F75E7889E7 /* AddAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C3719538D33CCE90DC56A67223722C /* AddAddressTableViewCell.swift */; };
-		9AF4A7420530FD55F3270E18D4FC28F0 /* UITestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F61591414D2B2D3CF47619C0C81951 /* UITestCase.swift */; };
-		D4755A3F1863D54F158A47657A963B44 /* URLQueryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3416C9B8ADE8A177DBA92726729F3BC9 /* URLQueryItem.swift */; };
-		6DAB85D40B8E94003D5CF50C77E6BA4D /* SelectedArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F68093CAD4C8DDFECC2B5A20CC6433F /* SelectedArticle.swift */; };
-		844816C1B9F6FD8303565B692C36574D /* CNPostalAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461A2C0A666D09345832AC142E923961 /* CNPostalAddress.swift */; };
-		78650D5BDC851D303CD621B137072BA0 /* CheckoutSummaryRecommendationCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C59F0F1B4D224C35C930E444723667 /* CheckoutSummaryRecommendationCollectionView.swift */; };
-		8AE5DBF037AA9C33467A66BCC2010AE6 /* FullScreenErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E31AB351D7B3E76F4D28B5D943D5DA /* FullScreenErrorViewController.swift */; };
-		2B69A6168136DE9D6570BF20D6B84182 /* CheckoutSummaryRecommendationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F07A87E83E1DEBDB1865E2907CB728 /* CheckoutSummaryRecommendationStackView.swift */; };
-		DD6FAFEBA7D072B864B1B741A2032EB0 /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74539E3C7DDBC23A6326D2F223EFF887 /* URLRequest.swift */; };
-		5646463BD18407B1EC8F01BF1841FEC1 /* URLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CD6C7BD95C9E4BC64358C2E6B6D015 /* URLTests.swift */; };
-		4A1F51A740901EF4E0E69AEB70E12C74 /* TestConsts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9A3A5FD854911885F4AB63625A5A7D /* TestConsts.swift */; };
-		2433F73A7A884865D4F9C2DF679F57FF /* TestOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791E5F5A7024421EA0EEE98DC11D441 /* TestOptions.swift */; };
-		2DE1C2388EF264FE0550F85143C285EB /* ZalandoCommerceAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC46AFCD78F4A98A3EE32919AA5712E0 /* ZalandoCommerceAPI.framework */; };
-		BCCF88EEC06013533CFB9B5906F31555 /* MockAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 160F7698C06570189BB66957E346B19B /* MockAPI.framework */; };
-		C18E43533FF5E8E5027C69D2648B1EFD /* MockAPI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 160F7698C06570189BB66957E346B19B /* MockAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8953D0213A82994B484449E9F680ED72 /* FormValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A6CB247661FB09DC5B2DE60994961E /* FormValidatorTests.swift */; };
-		A889F169B089B3EC197583EE77B8D053 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4CE105713E71683BBCAAE89B2D5413 /* Array.swift */; };
-		EA0DAE9D848DC6F56B32ED8730F71AC8 /* CheckoutSummaryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526DAF8393FBA2F3838BBF3912C437AD /* CheckoutSummaryDataModel.swift */; };
-		6AE8E13F7827BCA2DE54B0ABED566116 /* LoggedInUpdateAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31DBF335C70EE8502C5F4E8486FF3E1 /* LoggedInUpdateAddressActionHandler.swift */; };
-		A9551EE72632D1511ACCE4641D0E23E3 /* BannerErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531A523CFB81467D39BCF5FB7C971091 /* BannerErrorViewController.swift */; };
-		717D710EE4D90F9421BFAC4D0E8337AE /* TestsHostAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00DFC159300CE3099D499B150C65638 /* TestsHostAppDelegate.swift */; };
-		60D0643E45D98EEE42E53567B717F75E /* EditAddressTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAFCE59349E0705BFD49024F04602A6 /* EditAddressTypeTests.swift */; };
-		9E14BC49B1EFF2683F19BC339EE4B73A /* CheckoutSummaryPaymentStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38F756747927D9EF943518DDCA7099A /* CheckoutSummaryPaymentStackView.swift */; };
-		2F0982520EAB0CB5973B7EEC157C721E /* ToCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CD846C118AA90A409CE0D20AFD2A54 /* ToCViewController.swift */; };
-		A7B1509D227B59E6857F1A7FBC9C9C2C /* FormValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7607427DE4841B9B9A13FEC912DAF827 /* FormValidator.swift */; };
-		F1D20CA958AF1862BDB6C97B131FE9F6 /* UserMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A46664CADA57405EB35F0F7DA9BFE /* UserMessage.swift */; };
-		D70B4CFDC53A02BC859ABD6853992535 /* LoggedInSummaryActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44D0ACECB75444CC6EE1D50A9D3C746 /* LoggedInSummaryActionHandler.swift */; };
-		2CD1233210F504533DDC751D197A828B /* RoundedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2760CED4938C91557438B23DD5A1B6 /* RoundedViews.swift */; };
-		BC6C275F2964A1C6FEF366AF05AEC3B5 /* CheckoutSummaryEditProductStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DC720533625244128E59DEEC73B88D /* CheckoutSummaryEditProductStackView.swift */; };
-		35F068D05920331E9656B68A873CB121 /* AddressFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724580FCE4E90AEF85DA81CC57B85469 /* AddressFormViewController.swift */; };
-		7FAC0FAF98E6D74344413CBE71A79C23 /* BorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E875C60E65DAA44E2358EE3F9F7442 /* BorderView.swift */; };
-		B60EE63D665D111C8E35BA4034B26628 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD12E191A974A297381A13A184C8E2FC /* UIApplication.swift */; };
-		BA112D378F9178635D8BA83C98C4022D /* Localizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2890E17573BC0EE00B74753E281E6870 /* Localizer.swift */; };
-		28CE30380DC93163EB406C04223305EA /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60F5410C6E7FAE48CB99E4DAA72793A /* LoaderView.swift */; };
-		EE1C431561D5390A148BE880BD896F5A /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E475CA430287C74FD9E1C46AE878C413 /* Nimble.framework */; };
-		83A474878DF8B057F25C6F021EE84F52 /* CheckoutSummaryPriceStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6C7693828B4CB789928DE3CAA329E1 /* CheckoutSummaryPriceStackView.swift */; };
-		D745254365F684E9B161DE00BEA823CA /* ZalandoCommerceUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 658EF98940E9CE9CF2AE7888FBFEE887 /* ZalandoCommerceUI.framework */; };
-		320565B0B874FF93739AED61BD4049BC /* PaymentViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285FFCCDB83CFD78592A91E6748242C /* PaymentViewControllerTests.swift */; };
-		310E96336B1BCEAA71408E79E2AA8159 /* URLStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADB47C3AE6E3CE44054E3948D0FF3D3 /* URLStringConvertible.swift */; };
-		42579408C4956D164141C803EE844C8E /* CheckoutSummaryLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE84378D34C25DF24CC3BEB49790C6F /* CheckoutSummaryLayout.swift */; };
-		BA12764AF47F7E45A6BC9845E4B7170A /* AddressCheckStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0923CB59EE393D308DAAB565429012 /* AddressCheckStackView.swift */; };
-		8ED6202D3C1CAE05E1A2B51218B71624 /* BillingAddressViewModelCreationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388A0D6BBEC489E99A83B1735B7EB3A9 /* BillingAddressViewModelCreationStrategy.swift */; };
-		4493E9329B0C85981A128F20386CE069 /* CheckoutSummaryDeliveryStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC31DA426BA96BCFCCF10DB747DB15A0 /* CheckoutSummaryDeliveryStackView.swift */; };
-		D96A11DD6533BA0758F1426CF59C8CF0 /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A3348351431FFF5B8C64926A98AA45 /* LoginError.swift */; };
-		771DC015297E8A40DB5D65BE3539E6F5 /* CheckoutSummaryFooterStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1CF6F7B5D78C9AE908B5BD057D1E7C /* CheckoutSummaryFooterStackView.swift */; };
-		8824CD3DC5846F0D012AA4C531655131 /* GetArticleDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2CFCC7712BF709A5F3F5DEBA7C7D12 /* GetArticleDetailsViewController.swift */; };
-		A81252EE5E63ED48470F9486D8F968DB /* CheckoutSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A67DB35E80C952A85FCF81AC9DD8C21 /* CheckoutSummaryViewModel.swift */; };
-		A5AC01F17D903DFD90685F28A78B0706 /* AddressListActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6EF83C6E54CCFC88E83213D23015BA /* AddressListActionHandler.swift */; };
-		C808982377242498DF651210F19A50FF /* AddressFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8349D2AA1D8A80CDF9A4745E055B1813 /* AddressFormViewModel.swift */; };
-		F9DD50B88D4565E2C514362E3230CFE6 /* GuestSummaryActionHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3095B1911C86600CA1811F85DFC1F269 /* GuestSummaryActionHandlerTests.swift */; };
-		965A8FCD83D468BB6A57E20A2E896EE5 /* AddressCheckRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10F1C28787C2C9E53D2712F347DF48A /* AddressCheckRowView.swift */; };
 		01548FDA3EBBD15801F1061AD5018EA9 /* CheckoutSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0082BB2A249BD07EAF4A2721FF1676D8 /* CheckoutSummaryViewController.swift */; };
-		9EBA891FE63CA5E2F7B4685962FD5479 /* LoggedInAddressListActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51238CD314BBAE65778217919A90E846 /* LoggedInAddressListActionHandler.swift */; };
-		1700BE3EE0DE73DA7F44EB179C019FC4 /* PickupPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DB548CD3B553F10C205A5AEB9F3248 /* PickupPoint.swift */; };
-		0A24D13C4DFC969A240D3B698D0600BD /* EmptyAddressDataModelCreationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE477913D6FC0E9827AA40DDDC3F343 /* EmptyAddressDataModelCreationStrategy.swift */; };
-		1EF2FDD34C05A127E6BEC647635597DC /* UIBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DD688241C51B34DBBF47CD37F68143 /* UIBuilder.swift */; };
-		C79C3D3BE6D1A5841DF2F6112AAA98ED /* AddressFormDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76341B6A1EDD8026FA2274D0282DB41E /* AddressFormDataModel.swift */; };
-		BD77AC4F972E3470FD14814C829F1637 /* AnimationDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6DA92EB7165FBBD064FCD0C1E4C052 /* AnimationDuration.swift */; };
-		E64BDDED84B1F3FB519163B21BDAE651 /* NotLoggedInSummaryActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B695ED9AE38DCEEEAD2A00D27011C293 /* NotLoggedInSummaryActionHandler.swift */; };
-		A55BCD2FA579D804D429E678839DDDFC /* CheckoutSummaryArticleSelectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F67ABC4B8E670A06EBEA76FF868B9A /* CheckoutSummaryArticleSelectCollectionViewCell.swift */; };
-		FE59244DE4D13D162EF9C1DC81B09A5B /* LocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6166ECC310744345AA18744CD7342A1D /* LocalizationTests.swift */; };
-		B58244FEEBEC5687EBEDA02858C0A7C9 /* AddressCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B5DD68552D8568008CE958D7B7EB42 /* AddressCheckViewController.swift */; };
-		C62FCF548A19E8FC1167ADF5781E01F0 /* AddressListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D2DB22E66C2D871FDAE8E0144F61B9 /* AddressListViewController.swift */; };
 		060AB61696C1DFA0FF1CDEA7C3F6C693 /* APIResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAEF8E7E0EB225739EA961329FED501 /* APIResult.swift */; };
+		0A24D13C4DFC969A240D3B698D0600BD /* EmptyAddressDataModelCreationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE477913D6FC0E9827AA40DDDC3F343 /* EmptyAddressDataModelCreationStrategy.swift */; };
 		0A2FDA4FE139ABA5AD9561064016E9B1 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B083D4FEC6F318DBD807A9902C46B70 /* Async.swift */; };
+		0EBD98338BBC7268297F1B4996C1D76D /* AddressFormType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4277CBFC13EFD2FDBAF1DDA12F301727 /* AddressFormType.swift */; };
 		129594E921421F74F0C69117E35DEF06 /* OrderPlacedSummaryActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6078D4A1AB625611AA45DB4E49AB5B4C /* OrderPlacedSummaryActionHandler.swift */; };
-		F938BDFA5B8DF4B154EEB03F3030DCE8 /* TextFieldInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC0EDCB0F36DD939E8771B818CB5CA4 /* TextFieldInputViewModel.swift */; };
-		7447321EB6065CEA85F8DCF16A7196D9 /* CheckoutSummaryAddressStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6DE17EBE0AC3CDC7F6298FD794956C /* CheckoutSummaryAddressStackView.swift */; };
-		D6FA9678908F5D7AAB45C312CBDAD56C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 36AF09674AB348569695D9648258D789 /* Localizable.strings */; };
-		6E28FA3DA3FB0016A22B6610F07B8711 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31374847154B5F6C373B9248CD322E9 /* UIImage.swift */; };
-		F62D5A7A7DFBF215ADEA04DA70643F89 /* StreetAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = A212C8E02D418D9F678D887E3B524891 /* StreetAddress.swift */; };
-		4053AF5428AAE746CA9699078BC518D0 /* ProcessedResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7CB2A26EA7B2385B51B10C10323BE9 /* ProcessedResult.swift */; };
-		930E47AF750604A23F3E1D57885B5F56 /* TextFieldInputStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D197440604C4360798CF55A504348F5 /* TextFieldInputStackView.swift */; };
-		58CC7FD92A00B9E333742DBF9B6A7012 /* LegalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C7B2D5D6D093DF7A55F90B92A24016 /* LegalController.swift */; };
-		7C13B06146D15EDAFA73D4548561371B /* GuestCheckoutUpdateAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D547D4EB8FEF55A315B1DFC80C38EDC3 /* GuestCheckoutUpdateAddressActionHandler.swift */; };
-		6231640BA790459490DC9D4BD3E0D439 /* AsyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251B64511CDEDBCA8A3F63D4EF0BA765 /* AsyncTests.swift */; };
-		2FDD22DC9FE38AA41AE3023AFB87476A /* ReachabilityNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BC6B77778897C1EBBEE53D6DEBF3E7 /* ReachabilityNotifier.swift */; };
-		2859AE996148F35C6921881DEA8F576C /* CheckoutContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0A95CD7D05074AB0A020AFDD05D820 /* CheckoutContainerView.swift */; };
-		FE2CD774CA4BABABB10F786C4E935652 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C089CF5D4F6A9700BCBB6E8B354DD7 /* Reachability.swift */; };
-		CAFA6AED9B949D3A2BED87DAE53F7A84 /* LoggedInAddressListActionHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F45EAB3B9C6F3E2F7CC1CF5E59549E3 /* LoggedInAddressListActionHandlerTests.swift */; };
-		3EA79972ABE974E6D337CFD347030E6B /* Nimble.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = E475CA430287C74FD9E1C46AE878C413 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		1D13C3AC16E77432D767FADAF7C445D0 /* ZalandoCommerceAPI_loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B06EB7FEDAA6A97C894AC776F4CD755 /* ZalandoCommerceAPI_loader.swift */; };
-		75D55C0C7725E8C7B5934C0A264DA722 /* URLComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E5BB9BB7FD1D817129B1E440BDCD18 /* URLComponents.swift */; };
-		31DEE7B8823564E1C1D12F24FF17A11E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E96FFD8E8B95910359A7FB7819FE9768 /* Default-568h@2x.png */; };
-		542671B12533C3CC0E8DDDBECC09352C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E5E93672DBC6CAD0C2795DF89497308 /* Assets.xcassets */; };
-		B9DFAE4DB47D9D260A259DF27B26AAED /* GuestAddressManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7688D1C5009826E61A2FF5C243DC507B /* GuestAddressManagerTests.swift */; };
-		6394DFAD99DA199D95DF836015232DFE /* OAuth2LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE46646C7185335E929FE37E4C43925E /* OAuth2LoginViewController.swift */; };
-		20A7F5FC72582D9D22C55323A1589F09 /* UserPresentableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B04095B6C2003F656A9F48635C03391 /* UserPresentableError.swift */; };
-		AB3407B00EEF433ABF9CB98EA6041C3E /* NSAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBC08A3B1BDA5E014B5088C39B3BECB /* NSAttributedString.swift */; };
-		96C61A0733E0A97EBC9032250B72EF43 /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AE9A8FEA3023C9CC4DCAD3E6F386A8 /* UIScreen.swift */; };
+		15718CD424EC52A0383C0622E9AFB2A9 /* CheckoutSummaryGuestStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF2F948FDA83185BE68565C2AC4889C /* CheckoutSummaryGuestStackView.swift */; };
+		1700BE3EE0DE73DA7F44EB179C019FC4 /* PickupPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DB548CD3B553F10C205A5AEB9F3248 /* PickupPoint.swift */; };
+		171663112C36D2AB97B9D050F63E1470 /* PaymentSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520274DD2DBEC8F1708A0DDCD7D5A6B5 /* PaymentSelectionViewController.swift */; };
+		18636293FAE1F6ED4523B42B0420BE77 /* AddressRowViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576544D2ECDCCCC2D4CC370DF7E598B1 /* AddressRowViewCell.swift */; };
+		19A654104182CC5DDDF3E2BACB8D2BF3 /* AddressDataModelCreationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1594D47385E0DD7D0DD419349D42D56 /* AddressDataModelCreationStrategy.swift */; };
+		19E072E645408228F9C3E67AA1104B08 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265D5D86204E52BAE2AFF1169D8AD121 /* UIDevice.swift */; };
 		1CD6EF24D7111A8644CFB541266B568E /* URLAuthorizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AF0B4DB247646DF2C9FBF55C101E33 /* URLAuthorizationTests.swift */; };
-		E32429077625D67E18AEE756CE622F55 /* GuestCheckoutCreateAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB13EC86240384022A83FD91B81C94 /* GuestCheckoutCreateAddressActionHandler.swift */; };
+		1D13C3AC16E77432D767FADAF7C445D0 /* ZalandoCommerceAPI_loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B06EB7FEDAA6A97C894AC776F4CD755 /* ZalandoCommerceAPI_loader.swift */; };
+		1D9361461A5BE5A2D21D26FDC9F4889D /* HTTPURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CA93C72D40AAE1AEF611A67091C780 /* HTTPURLResponse.swift */; };
+		1DA6CC84D925928285310A030BFDBCCA /* AddressFormStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561336232A25CF509F7AD10E2F0D82A6 /* AddressFormStackView.swift */; };
+		1EF2FDD34C05A127E6BEC647635597DC /* UIBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DD688241C51B34DBBF47CD37F68143 /* UIBuilder.swift */; };
+		20A7F5FC72582D9D22C55323A1589F09 /* UserPresentableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B04095B6C2003F656A9F48635C03391 /* UserPresentableError.swift */; };
+		230778F94F663A48C1A2240EFC92C05C /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C000E5ACA7BDE8E5AA01F20F6B62991E /* UIImageView.swift */; };
+		2433F73A7A884865D4F9C2DF679F57FF /* TestOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791E5F5A7024421EA0EEE98DC11D441 /* TestOptions.swift */; };
+		245AE8DB35932C1631E314F75E7889E7 /* AddAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C3719538D33CCE90DC56A67223722C /* AddAddressTableViewCell.swift */; };
+		2859AE996148F35C6921881DEA8F576C /* CheckoutContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0A95CD7D05074AB0A020AFDD05D820 /* CheckoutContainerView.swift */; };
+		28CE30380DC93163EB406C04223305EA /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60F5410C6E7FAE48CB99E4DAA72793A /* LoaderView.swift */; };
+		2923FAA6D4CAE41694EDF3636EE28258 /* CheckoutSummaryRecommendationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F20D04DA990CA46AB18F3D675F37CA /* CheckoutSummaryRecommendationCollectionViewCell.swift */; };
+		2B69A6168136DE9D6570BF20D6B84182 /* CheckoutSummaryRecommendationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F07A87E83E1DEBDB1865E2907CB728 /* CheckoutSummaryRecommendationStackView.swift */; };
+		2CD1233210F504533DDC751D197A828B /* RoundedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2760CED4938C91557438B23DD5A1B6 /* RoundedViews.swift */; };
+		2DE1C2388EF264FE0550F85143C285EB /* ZalandoCommerceAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC46AFCD78F4A98A3EE32919AA5712E0 /* ZalandoCommerceAPI.framework */; };
+		2F0982520EAB0CB5973B7EEC157C721E /* ToCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CD846C118AA90A409CE0D20AFD2A54 /* ToCViewController.swift */; };
+		2FDD22DC9FE38AA41AE3023AFB87476A /* ReachabilityNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BC6B77778897C1EBBEE53D6DEBF3E7 /* ReachabilityNotifier.swift */; };
+		310E96336B1BCEAA71408E79E2AA8159 /* URLStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADB47C3AE6E3CE44054E3948D0FF3D3 /* URLStringConvertible.swift */; };
+		31DEE7B8823564E1C1D12F24FF17A11E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E96FFD8E8B95910359A7FB7819FE9768 /* Default-568h@2x.png */; };
+		320565B0B874FF93739AED61BD4049BC /* PaymentViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285FFCCDB83CFD78592A91E6748242C /* PaymentViewControllerTests.swift */; };
+		33810C9E3D48C9D21921320A068603D7 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4070A06FBFE864A37AD0F279BDACC4EC /* UIColor.swift */; };
+		341504C6BF7829154735C21D9379FB31 /* CheckoutTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7326F095DD6700D41139230E310BCEF /* CheckoutTransitioningDelegate.swift */; };
+		35F068D05920331E9656B68A873CB121 /* AddressFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724580FCE4E90AEF85DA81CC57B85469 /* AddressFormViewController.swift */; };
+		3E4D3632134D518377A7A53006EC9556 /* CheckoutSummaryProductInfoStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520E809E41B4E5EBCFA147841A473C49 /* CheckoutSummaryProductInfoStackView.swift */; };
+		3EA79972ABE974E6D337CFD347030E6B /* Nimble.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = E475CA430287C74FD9E1C46AE878C413 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4053AF5428AAE746CA9699078BC518D0 /* ProcessedResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7CB2A26EA7B2385B51B10C10323BE9 /* ProcessedResult.swift */; };
+		42579408C4956D164141C803EE844C8E /* CheckoutSummaryLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE84378D34C25DF24CC3BEB49790C6F /* CheckoutSummaryLayout.swift */; };
+		4493E9329B0C85981A128F20386CE069 /* CheckoutSummaryDeliveryStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC31DA426BA96BCFCCF10DB747DB15A0 /* CheckoutSummaryDeliveryStackView.swift */; };
+		488BD2B75D8855549C92EF5E3659D727 /* AddressBookImportDataModelCreationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D72C653F20E541FD160F0456887713 /* AddressBookImportDataModelCreationStrategy.swift */; };
+		4A1F51A740901EF4E0E69AEB70E12C74 /* TestConsts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9A3A5FD854911885F4AB63625A5A7D /* TestConsts.swift */; };
+		4A607EA957831C736004E65B190FF800 /* CheckoutSummaryMainStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E92DE872DC30A6CB093A23D218BBE0 /* CheckoutSummaryMainStackView.swift */; };
+		4D3FFC9597DE12CBFAA2DF3FEF17B110 /* ArticleNotSelectedActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2ECB3EFBA30ECC93206084D7610A4D /* ArticleNotSelectedActionHandler.swift */; };
+		4D5DF9EBCA8534CEE628964289F7C734 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40F7BF8A85D09D8D3338F2DFD476CAE /* UITableView.swift */; };
 		4DDC363018FBE5C683E0F5A99CE38966 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D429CD452E703A4AD44577F3498E0B /* Bundle.swift */; };
+		4E9CCA19257B26F73E0708FAC416E990 /* LoggedInSummaryActionHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0675EE8E38C0BC3B4979D5EF23DF22A4 /* LoggedInSummaryActionHandlerTests.swift */; };
+		542671B12533C3CC0E8DDDBECC09352C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E5E93672DBC6CAD0C2795DF89497308 /* Assets.xcassets */; };
+		5646463BD18407B1EC8F01BF1841FEC1 /* URLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CD6C7BD95C9E4BC64358C2E6B6D015 /* URLTests.swift */; };
+		56B611BECFA5B5F9633D1EBAABBD9ECC /* ActionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5B91199C6059B0D51808B1F95875E6 /* ActionTextField.swift */; };
+		58CC7FD92A00B9E333742DBF9B6A7012 /* LegalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C7B2D5D6D093DF7A55F90B92A24016 /* LegalController.swift */; };
+		59FB32FF17BB93EE0FE9635DBCF22A5A /* AddressFormActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9248CFE34118C4288696A499054C29F9 /* AddressFormActionHandler.swift */; };
+		5B61341538809C28BEE73CFEB753159E /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FB05E05E747F6FA84BF4EE52D2C02A /* UIViewController.swift */; };
+		5D8520161E48076B671DF5CA07E1B303 /* Injector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA763EFE60701C0B31CF71933AB79CD9 /* Injector.swift */; };
+		60D0643E45D98EEE42E53567B717F75E /* EditAddressTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAFCE59349E0705BFD49024F04602A6 /* EditAddressTypeTests.swift */; };
+		6231640BA790459490DC9D4BD3E0D439 /* AsyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251B64511CDEDBCA8A3F63D4EF0BA765 /* AsyncTests.swift */; };
+		6394DFAD99DA199D95DF836015232DFE /* OAuth2LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE46646C7185335E929FE37E4C43925E /* OAuth2LoginViewController.swift */; };
+		664CAFD18724AA0ECE700A8FD460B093 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9544E6ABBF7C8B9F04317197E62B246 /* Debug.swift */; };
+		6AE8E13F7827BCA2DE54B0ABED566116 /* LoggedInUpdateAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31DBF335C70EE8502C5F4E8486FF3E1 /* LoggedInUpdateAddressActionHandler.swift */; };
+		6DAB85D40B8E94003D5CF50C77E6BA4D /* SelectedArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F68093CAD4C8DDFECC2B5A20CC6433F /* SelectedArticle.swift */; };
+		6E28FA3DA3FB0016A22B6610F07B8711 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31374847154B5F6C373B9248CD322E9 /* UIImage.swift */; };
+		6F21CE0CA18474D359CA688C9FFDB7F2 /* ZalandoCommerceUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31A9D970D4E8868524CD6E3EB3CD8EC /* ZalandoCommerceUIViewController.swift */; };
+		6F7B4EE78F8B09B8C2CCEE93A904C1EF /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FD2FCFE0E9110A3F1FC878C99D4CFA /* HTTP.swift */; };
+		717D710EE4D90F9421BFAC4D0E8337AE /* TestsHostAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00DFC159300CE3099D499B150C65638 /* TestsHostAppDelegate.swift */; };
+		71EEC58BDDF9D845CF550ECD5F90343D /* AddressCheckRowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C0F2EF88DB405430A5ED1488441877 /* AddressCheckRowButton.swift */; };
+		7221D8A3754D88757600892F3571E558 /* KeyboardScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B25B8EBC252896EB59CC0F7BA29D2BA /* KeyboardScrollView.swift */; };
+		724FDD2EBF32EBA9DEFCB871B878E935 /* RowStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1CD0C6691D0CF385D5726381080AAB /* RowStackView.swift */; };
+		73C760F3812EE7F85BFD7539E772BF8D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717114585547AD240FD55D14D07DD40B /* String.swift */; };
+		7447321EB6065CEA85F8DCF16A7196D9 /* CheckoutSummaryAddressStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6DE17EBE0AC3CDC7F6298FD794956C /* CheckoutSummaryAddressStackView.swift */; };
+		75D55C0C7725E8C7B5934C0A264DA722 /* URLComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E5BB9BB7FD1D817129B1E440BDCD18 /* URLComponents.swift */; };
+		771DC015297E8A40DB5D65BE3539E6F5 /* CheckoutSummaryFooterStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1CF6F7B5D78C9AE908B5BD057D1E7C /* CheckoutSummaryFooterStackView.swift */; };
+		78650D5BDC851D303CD621B137072BA0 /* CheckoutSummaryRecommendationCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C59F0F1B4D224C35C930E444723667 /* CheckoutSummaryRecommendationCollectionView.swift */; };
+		7C13B06146D15EDAFA73D4548561371B /* GuestCheckoutUpdateAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D547D4EB8FEF55A315B1DFC80C38EDC3 /* GuestCheckoutUpdateAddressActionHandler.swift */; };
+		7FAC0FAF98E6D74344413CBE71A79C23 /* BorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E875C60E65DAA44E2358EE3F9F7442 /* BorderView.swift */; };
+		7FE5B8173466DA7F854A07027D965A2E /* PickerKeyboardInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B80016844A9F7B3FE36DC76B12D0C69 /* PickerKeyboardInputView.swift */; };
+		82543ABBF570B2B143A8F7EA9A648904 /* CheckoutSummaryRootStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25DF7F6963CCFF91DFD6AF4FE5007EE /* CheckoutSummaryRootStackView.swift */; };
+		83A474878DF8B057F25C6F021EE84F52 /* CheckoutSummaryPriceStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6C7693828B4CB789928DE3CAA329E1 /* CheckoutSummaryPriceStackView.swift */; };
+		844816C1B9F6FD8303565B692C36574D /* CNPostalAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461A2C0A666D09345832AC142E923961 /* CNPostalAddress.swift */; };
+		85BCA872C58B053B162A0FC773EFF2E5 /* UserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AEF413F6CF0230E29CA73C3C0AA2ED /* UserError.swift */; };
+		8824CD3DC5846F0D012AA4C531655131 /* GetArticleDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2CFCC7712BF709A5F3F5DEBA7C7D12 /* GetArticleDetailsViewController.swift */; };
+		8953D0213A82994B484449E9F680ED72 /* FormValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A6CB247661FB09DC5B2DE60994961E /* FormValidatorTests.swift */; };
+		8AE5DBF037AA9C33467A66BCC2010AE6 /* FullScreenErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E31AB351D7B3E76F4D28B5D943D5DA /* FullScreenErrorViewController.swift */; };
+		8ED6202D3C1CAE05E1A2B51218B71624 /* BillingAddressViewModelCreationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388A0D6BBEC489E99A83B1735B7EB3A9 /* BillingAddressViewModelCreationStrategy.swift */; };
+		912ED274C06A01F58AF33A7BC0E35203 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F19145FBC357168C313E21ABAAD2FA /* UIView.swift */; };
+		927606DCCD35E65966A005072E603FC4 /* ZalandoCommerceUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8290AA4352112963BC941DB8E9B68DC /* ZalandoCommerceUI.swift */; };
+		930E47AF750604A23F3E1D57885B5F56 /* TextFieldInputStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D197440604C4360798CF55A504348F5 /* TextFieldInputStackView.swift */; };
+		965A8FCD83D468BB6A57E20A2E896EE5 /* AddressCheckRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10F1C28787C2C9E53D2712F347DF48A /* AddressCheckRowView.swift */; };
+		96C61A0733E0A97EBC9032250B72EF43 /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AE9A8FEA3023C9CC4DCAD3E6F386A8 /* UIScreen.swift */; };
+		9AF4A7420530FD55F3270E18D4FC28F0 /* UITestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F61591414D2B2D3CF47619C0C81951 /* UITestCase.swift */; };
+		9BE55AA1A9A65940BA9540DF7909636C /* GuestCheckoutSummaryActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA47A184EA2B2B6DDAA810E89F02F093 /* GuestCheckoutSummaryActionHandler.swift */; };
+		9E14BC49B1EFF2683F19BC339EE4B73A /* CheckoutSummaryPaymentStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38F756747927D9EF943518DDCA7099A /* CheckoutSummaryPaymentStackView.swift */; };
+		9EBA891FE63CA5E2F7B4685962FD5479 /* LoggedInAddressListActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51238CD314BBAE65778217919A90E846 /* LoggedInAddressListActionHandler.swift */; };
+		A4D75843DA1BDFE7267CADCC95F2E6FB /* InjectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367BEEDE2E6233F3E645DDC2C64D3455 /* InjectorTests.swift */; };
+		A55BCD2FA579D804D429E678839DDDFC /* CheckoutSummaryArticleSelectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F67ABC4B8E670A06EBEA76FF868B9A /* CheckoutSummaryArticleSelectCollectionViewCell.swift */; };
+		A5AC01F17D903DFD90685F28A78B0706 /* AddressListActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6EF83C6E54CCFC88E83213D23015BA /* AddressListActionHandler.swift */; };
+		A7B1509D227B59E6857F1A7FBC9C9C2C /* FormValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7607427DE4841B9B9A13FEC912DAF827 /* FormValidator.swift */; };
+		A81252EE5E63ED48470F9486D8F968DB /* CheckoutSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A67DB35E80C952A85FCF81AC9DD8C21 /* CheckoutSummaryViewModel.swift */; };
+		A889F169B089B3EC197583EE77B8D053 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4CE105713E71683BBCAAE89B2D5413 /* Array.swift */; };
+		A9551EE72632D1511ACCE4641D0E23E3 /* BannerErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531A523CFB81467D39BCF5FB7C971091 /* BannerErrorViewController.swift */; };
+		A9DB7B20D3496C851B0C55DAD89E0ED2 /* UIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893C8694A83D664097028336B95955BD /* UIViewTests.swift */; };
+		AB3407B00EEF433ABF9CB98EA6041C3E /* NSAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBC08A3B1BDA5E014B5088C39B3BECB /* NSAttributedString.swift */; };
+		B0071010084BEC5990F74227510CFDDA /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D602B02501819BBF3226B998396A6E2 /* CGRect.swift */; };
+		B1F41F75A588D332B3461886327FEA86 /* CheckoutPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0AE479E93B528CEBEBDE2248360FC8 /* CheckoutPresentationController.swift */; };
+		B2EEC09C7CC6649FF02932B25751BBB5 /* CheckoutSummaryEditProductStackViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A273337FEAC013345E5F535922D7372E /* CheckoutSummaryEditProductStackViewTests.swift */; };
+		B58244FEEBEC5687EBEDA02858C0A7C9 /* AddressCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B5DD68552D8568008CE958D7B7EB42 /* AddressCheckViewController.swift */; };
+		B60EE63D665D111C8E35BA4034B26628 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD12E191A974A297381A13A184C8E2FC /* UIApplication.swift */; };
+		B747D9AB19016160178F0FA30558010D /* CheckoutSummaryArticleSelectCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970D499754E14B678BE6FBA88A8A716E /* CheckoutSummaryArticleSelectCollectionView.swift */; };
+		B7625E5763BCB7B31668FF6B71B6B90F /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D19C936E6B03AC6FA08A1AE32E264D /* Typealiases.swift */; };
+		B8DA2F3B73E9080FE9D48006C2E5120A /* LoggedInCreateAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA53AFB38D4DF558CBE6EDE0F67D2FA2 /* LoggedInCreateAddressActionHandler.swift */; };
+		B9D176CD777973B26DFF03F6220CD9BD /* AddressFormViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA525979BE4CB18BAE8FA79C18057D0 /* AddressFormViewControllerTests.swift */; };
+		B9DFAE4DB47D9D260A259DF27B26AAED /* GuestAddressManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7688D1C5009826E61A2FF5C243DC507B /* GuestAddressManagerTests.swift */; };
+		BA112D378F9178635D8BA83C98C4022D /* Localizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2890E17573BC0EE00B74753E281E6870 /* Localizer.swift */; };
+		BA12764AF47F7E45A6BC9845E4B7170A /* AddressCheckStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0923CB59EE393D308DAAB565429012 /* AddressCheckStackView.swift */; };
+		BB9783CDAA508015200ADAFC2DF30209 /* CheckoutSummaryOrderStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DDCB01156D32A87AE3AC3261806FCB /* CheckoutSummaryOrderStackView.swift */; };
+		BC6C275F2964A1C6FEF366AF05AEC3B5 /* CheckoutSummaryEditProductStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DC720533625244128E59DEEC73B88D /* CheckoutSummaryEditProductStackView.swift */; };
+		BCCF88EEC06013533CFB9B5906F31555 /* MockAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 160F7698C06570189BB66957E346B19B /* MockAPI.framework */; };
+		BD77AC4F972E3470FD14814C829F1637 /* AnimationDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6DA92EB7165FBBD064FCD0C1E4C052 /* AnimationDuration.swift */; };
+		C0FBD1274694FF73A9BAE468DB279819 /* AddressFormLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D551CE2D4646B169BF753CD0D4CD9E /* AddressFormLayout.swift */; };
+		C18E43533FF5E8E5027C69D2648B1EFD /* MockAPI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 160F7698C06570189BB66957E346B19B /* MockAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C62FCF548A19E8FC1167ADF5781E01F0 /* AddressListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D2DB22E66C2D871FDAE8E0144F61B9 /* AddressListViewController.swift */; };
+		C771F759D223065947D905B6350EC300 /* ShippingAddressViewModelCreationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D76EBC6C87DD61A71FBE5A9488E2C5 /* ShippingAddressViewModelCreationStrategy.swift */; };
+		C79C3D3BE6D1A5841DF2F6112AAA98ED /* AddressFormDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76341B6A1EDD8026FA2274D0282DB41E /* AddressFormDataModel.swift */; };
+		C808982377242498DF651210F19A50FF /* AddressFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8349D2AA1D8A80CDF9A4745E055B1813 /* AddressFormViewModel.swift */; };
+		CAFA6AED9B949D3A2BED87DAE53F7A84 /* LoggedInAddressListActionHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F45EAB3B9C6F3E2F7CC1CF5E59549E3 /* LoggedInAddressListActionHandlerTests.swift */; };
+		CBE75C3C385E790A1C6439143E919F50 /* CheckoutSummaryActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B759D64C6EABC479521B42EA8A9000E /* CheckoutSummaryActionHandler.swift */; };
+		D2829790E551F6EE5378175671634BC6 /* URL-QueryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B7DDEB8C95AB222CE78737D5A1A303 /* URL-QueryItem.swift */; };
+		D4755A3F1863D54F158A47657A963B44 /* URLQueryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3416C9B8ADE8A177DBA92726729F3BC9 /* URLQueryItem.swift */; };
+		D67746288958F2C10F7E3E5ADF97B7F3 /* FormattableAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330A3AD6D4D5AFE123801791F6C66928 /* FormattableAddress.swift */; };
+		D6FA9678908F5D7AAB45C312CBDAD56C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 36AF09674AB348569695D9648258D789 /* Localizable.strings */; };
+		D70B4CFDC53A02BC859ABD6853992535 /* LoggedInSummaryActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44D0ACECB75444CC6EE1D50A9D3C746 /* LoggedInSummaryActionHandler.swift */; };
+		D745254365F684E9B161DE00BEA823CA /* ZalandoCommerceUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 658EF98940E9CE9CF2AE7888FBFEE887 /* ZalandoCommerceUI.framework */; };
+		D96A11DD6533BA0758F1426CF59C8CF0 /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A3348351431FFF5B8C64926A98AA45 /* LoginError.swift */; };
+		D982726F35BC58EEEC06364D17120D61 /* AddressViewModelCreationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A6EE7901E431366FB9BFFBCBBACE1F /* AddressViewModelCreationStrategy.swift */; };
+		DD6FAFEBA7D072B864B1B741A2032EB0 /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74539E3C7DDBC23A6326D2F223EFF887 /* URLRequest.swift */; };
+		E32429077625D67E18AEE756CE622F55 /* GuestCheckoutCreateAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB13EC86240384022A83FD91B81C94 /* GuestCheckoutCreateAddressActionHandler.swift */; };
+		E64BDDED84B1F3FB519163B21BDAE651 /* NotLoggedInSummaryActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B695ED9AE38DCEEEAD2A00D27011C293 /* NotLoggedInSummaryActionHandler.swift */; };
+		E721812A6F7665C91F13D0943E7D63EE /* OrderConfirmation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CC1FF648AEAA6E7A2FE9D2B50AE7BA /* OrderConfirmation.swift */; };
+		E8ACC473F115485CC98E1084F01F35B0 /* CheckoutSummaryProductStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED582FBA45192BE59C8C91EEA4900686 /* CheckoutSummaryProductStackView.swift */; };
+		E96E0EE81E71771500C6532F /* CheckoutSummaryCouponStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96E0EE71E71771500C6532F /* CheckoutSummaryCouponStackView.swift */; };
+		EA0DAE9D848DC6F56B32ED8730F71AC8 /* CheckoutSummaryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526DAF8393FBA2F3838BBF3912C437AD /* CheckoutSummaryDataModel.swift */; };
+		EE1C431561D5390A148BE880BD896F5A /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E475CA430287C74FD9E1C46AE878C413 /* Nimble.framework */; };
+		F1D20CA958AF1862BDB6C97B131FE9F6 /* UserMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A46664CADA57405EB35F0F7DA9BFE /* UserMessage.swift */; };
+		F2FC672264AD3F09999E79FCAB0DACA6 /* GuestAddressActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD032DF8A2E79977BF908AAB57EB36 /* GuestAddressActionHandler.swift */; };
+		F62D5A7A7DFBF215ADEA04DA70643F89 /* StreetAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = A212C8E02D418D9F678D887E3B524891 /* StreetAddress.swift */; };
+		F773F66A6A0782814843C5310CF1ED56 /* AddressCheckViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E129248E0E8BC189EDDAAB577C08EA /* AddressCheckViewControllerTests.swift */; };
+		F938BDFA5B8DF4B154EEB03F3030DCE8 /* TextFieldInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC0EDCB0F36DD939E8771B818CB5CA4 /* TextFieldInputViewModel.swift */; };
+		F93ABF5EB88FD818C7E2A54FA4198504 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DDD69019EE322ADF9BA3570E3BDA87 /* URL.swift */; };
+		F9DD50B88D4565E2C514362E3230CFE6 /* GuestSummaryActionHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3095B1911C86600CA1811F85DFC1F269 /* GuestSummaryActionHandlerTests.swift */; };
+		F9F0763A49AC6FA2A014BE4EB2DDB080 /* AddressListTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9930509CC57806C7E6C197AC84C07211 /* AddressListTableDelegate.swift */; };
+		FE2CD774CA4BABABB10F786C4E935652 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C089CF5D4F6A9700BCBB6E8B354DD7 /* Reachability.swift */; };
+		FE59244DE4D13D162EF9C1DC81B09A5B /* LocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6166ECC310744345AA18744CD7342A1D /* LocalizationTests.swift */; };
+		FFA797C81EC2C03E049895B9B2E7BA02 /* OAuth2AuthorizationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91C054644CB41C0F294CFF56163DCC4 /* OAuth2AuthorizationHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B02DCAAEB58108A69D813A23A9D315A5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 06585EA1677ACAE6F499C20EE0A8FC2E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AA879DC78BACBD118871C51700A71377;
-			remoteInfo = ZalandoCommerceUITestsHostsApp;
-		};
 		383B4B550E29C7CF931117011384BA60 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 06585EA1677ACAE6F499C20EE0A8FC2E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = BCF1FD51CF2C9EEA704FD9C1F94BE84D;
 			remoteInfo = ZalandoCommerceUI;
+		};
+		B02DCAAEB58108A69D813A23A9D315A5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06585EA1677ACAE6F499C20EE0A8FC2E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA879DC78BACBD118871C51700A71377;
+			remoteInfo = ZalandoCommerceUITestsHostsApp;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -193,179 +194,170 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D4E31AB351D7B3E76F4D28B5D943D5DA /* FullScreenErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullScreenErrorViewController.swift; sourceTree = "<group>"; };
-		61CD846C118AA90A409CE0D20AFD2A54 /* ToCViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToCViewController.swift; sourceTree = "<group>"; };
-		BCE84378D34C25DF24CC3BEB49790C6F /* CheckoutSummaryLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryLayout.swift; sourceTree = "<group>"; };
-		12F61591414D2B2D3CF47619C0C81951 /* UITestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITestCase.swift; sourceTree = "<group>"; };
-		D91C054644CB41C0F294CFF56163DCC4 /* OAuth2AuthorizationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2AuthorizationHandler.swift; sourceTree = "<group>"; };
-		A212C8E02D418D9F678D887E3B524891 /* StreetAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreetAddress.swift; sourceTree = "<group>"; };
-		C1594D47385E0DD7D0DD419349D42D56 /* AddressDataModelCreationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressDataModelCreationStrategy.swift; sourceTree = "<group>"; };
-		3F45EAB3B9C6F3E2F7CC1CF5E59549E3 /* LoggedInAddressListActionHandlerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedInAddressListActionHandlerTests.swift; sourceTree = "<group>"; };
-		724580FCE4E90AEF85DA81CC57B85469 /* AddressFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressFormViewController.swift; sourceTree = "<group>"; };
-		9930509CC57806C7E6C197AC84C07211 /* AddressListTableDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressListTableDelegate.swift; sourceTree = "<group>"; };
-		7688D1C5009826E61A2FF5C243DC507B /* GuestAddressManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestAddressManagerTests.swift; sourceTree = "<group>"; };
+		0082BB2A249BD07EAF4A2721FF1676D8 /* CheckoutSummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryViewController.swift; sourceTree = "<group>"; };
+		01D19C936E6B03AC6FA08A1AE32E264D /* Typealiases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
+		04A6CB247661FB09DC5B2DE60994961E /* FormValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValidatorTests.swift; sourceTree = "<group>"; };
+		0675EE8E38C0BC3B4979D5EF23DF22A4 /* LoggedInSummaryActionHandlerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedInSummaryActionHandlerTests.swift; sourceTree = "<group>"; };
+		0ADB47C3AE6E3CE44054E3948D0FF3D3 /* URLStringConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLStringConvertible.swift; sourceTree = "<group>"; };
+		0C520FA7364441FBBFC918D94FC8811B /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0C5B91199C6059B0D51808B1F95875E6 /* ActionTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionTextField.swift; sourceTree = "<group>"; };
-		CC2ECB3EFBA30ECC93206084D7610A4D /* ArticleNotSelectedActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleNotSelectedActionHandler.swift; sourceTree = "<group>"; };
-		74539E3C7DDBC23A6326D2F223EFF887 /* URLRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequest.swift; sourceTree = "<group>"; };
-		ED582FBA45192BE59C8C91EEA4900686 /* CheckoutSummaryProductStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryProductStackView.swift; sourceTree = "<group>"; };
-		76341B6A1EDD8026FA2274D0282DB41E /* AddressFormDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressFormDataModel.swift; sourceTree = "<group>"; };
-		4B80016844A9F7B3FE36DC76B12D0C69 /* PickerKeyboardInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerKeyboardInputView.swift; sourceTree = "<group>"; };
-		9C6DE17EBE0AC3CDC7F6298FD794956C /* CheckoutSummaryAddressStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryAddressStackView.swift; sourceTree = "<group>"; };
-		B3866E38E993534856188B7281D50ACE /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		C9D429CD452E703A4AD44577F3498E0B /* Bundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
-		48476C1825A26C5111045503FD033491 /* ZalandoCommerceUITestsHostsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZalandoCommerceUITestsHostsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		526DAF8393FBA2F3838BBF3912C437AD /* CheckoutSummaryDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryDataModel.swift; sourceTree = "<group>"; };
-		5F68093CAD4C8DDFECC2B5A20CC6433F /* SelectedArticle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedArticle.swift; sourceTree = "<group>"; };
-		BC0A95CD7D05074AB0A020AFDD05D820 /* CheckoutContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutContainerView.swift; sourceTree = "<group>"; };
-		520E809E41B4E5EBCFA147841A473C49 /* CheckoutSummaryProductInfoStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryProductInfoStackView.swift; sourceTree = "<group>"; };
-		94C6EE0673C475B8B29253E2B9DFFE64 /* ZalandoCommerceUITestsHostsApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ZalandoCommerceUITestsHostsApp.entitlements; sourceTree = "<group>"; };
-		57FD2FCFE0E9110A3F1FC878C99D4CFA /* HTTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
-		C7A6EE7901E431366FB9BFFBCBBACE1F /* AddressViewModelCreationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressViewModelCreationStrategy.swift; sourceTree = "<group>"; };
-		4A2760CED4938C91557438B23DD5A1B6 /* RoundedViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedViews.swift; sourceTree = "<group>"; };
-		D38F756747927D9EF943518DDCA7099A /* CheckoutSummaryPaymentStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryPaymentStackView.swift; sourceTree = "<group>"; };
-		5709C5C2F5DE2458AA84EAE0AE4353B0 /* ZalandoCommerceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZalandoCommerceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A9D76EBC6C87DD61A71FBE5A9488E2C5 /* ShippingAddressViewModelCreationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShippingAddressViewModelCreationStrategy.swift; sourceTree = "<group>"; };
-		A26E3456AEC1ACC0E805CFF43C4726B1 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		E7C7B2D5D6D093DF7A55F90B92A24016 /* LegalController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegalController.swift; sourceTree = "<group>"; };
-		461A2C0A666D09345832AC142E923961 /* CNPostalAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNPostalAddress.swift; sourceTree = "<group>"; };
-		C000E5ACA7BDE8E5AA01F20F6B62991E /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
-		B695ED9AE38DCEEEAD2A00D27011C293 /* NotLoggedInSummaryActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotLoggedInSummaryActionHandler.swift; sourceTree = "<group>"; };
-		A6C089CF5D4F6A9700BCBB6E8B354DD7 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
-		8C1CD0C6691D0CF385D5726381080AAB /* RowStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RowStackView.swift; sourceTree = "<group>"; };
-		BEF2F948FDA83185BE68565C2AC4889C /* CheckoutSummaryGuestStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryGuestStackView.swift; sourceTree = "<group>"; };
-		75E5BB9BB7FD1D817129B1E440BDCD18 /* URLComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLComponents.swift; sourceTree = "<group>"; };
-		B3F07A87E83E1DEBDB1865E2907CB728 /* CheckoutSummaryRecommendationStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryRecommendationStackView.swift; sourceTree = "<group>"; };
-		E7326F095DD6700D41139230E310BCEF /* CheckoutTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutTransitioningDelegate.swift; sourceTree = "<group>"; };
-		5285FFCCDB83CFD78592A91E6748242C /* PaymentViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewControllerTests.swift; sourceTree = "<group>"; };
-		520274DD2DBEC8F1708A0DDCD7D5A6B5 /* PaymentSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentSelectionViewController.swift; sourceTree = "<group>"; };
-		73AC89983819E956C01E2CB6A77B8F9F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		12F61591414D2B2D3CF47619C0C81951 /* UITestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITestCase.swift; sourceTree = "<group>"; };
+		160F7698C06570189BB66957E346B19B /* MockAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MockAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		18F20D04DA990CA46AB18F3D675F37CA /* CheckoutSummaryRecommendationCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryRecommendationCollectionViewCell.swift; sourceTree = "<group>"; };
+		1A67DB35E80C952A85FCF81AC9DD8C21 /* CheckoutSummaryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryViewModel.swift; sourceTree = "<group>"; };
 		1B25B8EBC252896EB59CC0F7BA29D2BA /* KeyboardScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardScrollView.swift; sourceTree = "<group>"; };
-		7DBC08A3B1BDA5E014B5088C39B3BECB /* NSAttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSAttributedString.swift; sourceTree = "<group>"; };
-		D25DF7F6963CCFF91DFD6AF4FE5007EE /* CheckoutSummaryRootStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryRootStackView.swift; sourceTree = "<group>"; };
-		BDA525979BE4CB18BAE8FA79C18057D0 /* AddressFormViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressFormViewControllerTests.swift; sourceTree = "<group>"; };
-		AFE477913D6FC0E9827AA40DDDC3F343 /* EmptyAddressDataModelCreationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyAddressDataModelCreationStrategy.swift; sourceTree = "<group>"; };
-		70CA93C72D40AAE1AEF611A67091C780 /* HTTPURLResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPURLResponse.swift; sourceTree = "<group>"; };
-		8D56F5D5AE85C8595DAAD50ACB5F15AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F40F7BF8A85D09D8D3338F2DFD476CAE /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
-		C3DD688241C51B34DBBF47CD37F68143 /* UIBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBuilder.swift; sourceTree = "<group>"; };
-		49B7DDEB8C95AB222CE78737D5A1A303 /* URL-QueryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL-QueryItem.swift"; sourceTree = "<group>"; };
-		B5DB548CD3B553F10C205A5AEB9F3248 /* PickupPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickupPoint.swift; sourceTree = "<group>"; };
-		F0C59F0F1B4D224C35C930E444723667 /* CheckoutSummaryRecommendationCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryRecommendationCollectionView.swift; sourceTree = "<group>"; };
-		A31A9D970D4E8868524CD6E3EB3CD8EC /* ZalandoCommerceUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZalandoCommerceUIViewController.swift; sourceTree = "<group>"; };
-		4D197440604C4360798CF55A504348F5 /* TextFieldInputStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldInputStackView.swift; sourceTree = "<group>"; };
+		1E5E93672DBC6CAD0C2795DF89497308 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		22CC1FF648AEAA6E7A2FE9D2B50AE7BA /* OrderConfirmation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmation.swift; sourceTree = "<group>"; };
+		251B64511CDEDBCA8A3F63D4EF0BA765 /* AsyncTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncTests.swift; sourceTree = "<group>"; };
+		265D5D86204E52BAE2AFF1169D8AD121 /* UIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
+		2890E17573BC0EE00B74753E281E6870 /* Localizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizer.swift; sourceTree = "<group>"; };
+		2B06EB7FEDAA6A97C894AC776F4CD755 /* ZalandoCommerceAPI_loader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZalandoCommerceAPI_loader.swift; sourceTree = "<group>"; };
 		2C3A46664CADA57405EB35F0F7DA9BFE /* UserMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMessage.swift; sourceTree = "<group>"; };
+		3095B1911C86600CA1811F85DFC1F269 /* GuestSummaryActionHandlerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestSummaryActionHandlerTests.swift; sourceTree = "<group>"; };
+		31AF0B4DB247646DF2C9FBF55C101E33 /* URLAuthorizationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLAuthorizationTests.swift; sourceTree = "<group>"; };
+		330A3AD6D4D5AFE123801791F6C66928 /* FormattableAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormattableAddress.swift; sourceTree = "<group>"; };
+		3416C9B8ADE8A177DBA92726729F3BC9 /* URLQueryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLQueryItem.swift; sourceTree = "<group>"; };
+		367BEEDE2E6233F3E645DDC2C64D3455 /* InjectorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InjectorTests.swift; sourceTree = "<group>"; };
+		388A0D6BBEC489E99A83B1735B7EB3A9 /* BillingAddressViewModelCreationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingAddressViewModelCreationStrategy.swift; sourceTree = "<group>"; };
+		3AF5D629115CF5DB09446CABBD061858 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3E0923CB59EE393D308DAAB565429012 /* AddressCheckStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckStackView.swift; sourceTree = "<group>"; };
+		3F45EAB3B9C6F3E2F7CC1CF5E59549E3 /* LoggedInAddressListActionHandlerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedInAddressListActionHandlerTests.swift; sourceTree = "<group>"; };
+		4070A06FBFE864A37AD0F279BDACC4EC /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		4277CBFC13EFD2FDBAF1DDA12F301727 /* AddressFormType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressFormType.swift; sourceTree = "<group>"; };
+		42B5DD68552D8568008CE958D7B7EB42 /* AddressCheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckViewController.swift; sourceTree = "<group>"; };
+		461A2C0A666D09345832AC142E923961 /* CNPostalAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNPostalAddress.swift; sourceTree = "<group>"; };
+		48476C1825A26C5111045503FD033491 /* ZalandoCommerceUITestsHostsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZalandoCommerceUITestsHostsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		49B7DDEB8C95AB222CE78737D5A1A303 /* URL-QueryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL-QueryItem.swift"; sourceTree = "<group>"; };
+		4A2760CED4938C91557438B23DD5A1B6 /* RoundedViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedViews.swift; sourceTree = "<group>"; };
+		4B04095B6C2003F656A9F48635C03391 /* UserPresentableError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPresentableError.swift; sourceTree = "<group>"; };
+		4B083D4FEC6F318DBD807A9902C46B70 /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
+		4B759D64C6EABC479521B42EA8A9000E /* CheckoutSummaryActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryActionHandler.swift; sourceTree = "<group>"; };
+		4B80016844A9F7B3FE36DC76B12D0C69 /* PickerKeyboardInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerKeyboardInputView.swift; sourceTree = "<group>"; };
+		4D197440604C4360798CF55A504348F5 /* TextFieldInputStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldInputStackView.swift; sourceTree = "<group>"; };
+		51238CD314BBAE65778217919A90E846 /* LoggedInAddressListActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LoggedInAddressListActionHandler.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		520274DD2DBEC8F1708A0DDCD7D5A6B5 /* PaymentSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentSelectionViewController.swift; sourceTree = "<group>"; };
+		520E809E41B4E5EBCFA147841A473C49 /* CheckoutSummaryProductInfoStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryProductInfoStackView.swift; sourceTree = "<group>"; };
+		526DAF8393FBA2F3838BBF3912C437AD /* CheckoutSummaryDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryDataModel.swift; sourceTree = "<group>"; };
+		5285FFCCDB83CFD78592A91E6748242C /* PaymentViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewControllerTests.swift; sourceTree = "<group>"; };
+		531A523CFB81467D39BCF5FB7C971091 /* BannerErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerErrorViewController.swift; sourceTree = "<group>"; };
+		54AE9A8FEA3023C9CC4DCAD3E6F386A8 /* UIScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
+		561336232A25CF509F7AD10E2F0D82A6 /* AddressFormStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressFormStackView.swift; sourceTree = "<group>"; };
+		56DDCB01156D32A87AE3AC3261806FCB /* CheckoutSummaryOrderStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryOrderStackView.swift; sourceTree = "<group>"; };
+		5709C5C2F5DE2458AA84EAE0AE4353B0 /* ZalandoCommerceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZalandoCommerceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		576544D2ECDCCCC2D4CC370DF7E598B1 /* AddressRowViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressRowViewCell.swift; sourceTree = "<group>"; };
+		57E92DE872DC30A6CB093A23D218BBE0 /* CheckoutSummaryMainStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryMainStackView.swift; sourceTree = "<group>"; };
+		57FD2FCFE0E9110A3F1FC878C99D4CFA /* HTTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
+		5B9A3A5FD854911885F4AB63625A5A7D /* TestConsts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestConsts.swift; sourceTree = "<group>"; };
+		5C7CB2A26EA7B2385B51B10C10323BE9 /* ProcessedResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessedResult.swift; sourceTree = "<group>"; };
+		5D602B02501819BBF3226B998396A6E2 /* CGRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
+		5F68093CAD4C8DDFECC2B5A20CC6433F /* SelectedArticle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedArticle.swift; sourceTree = "<group>"; };
+		6078D4A1AB625611AA45DB4E49AB5B4C /* OrderPlacedSummaryActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderPlacedSummaryActionHandler.swift; sourceTree = "<group>"; };
+		6166ECC310744345AA18744CD7342A1D /* LocalizationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizationTests.swift; sourceTree = "<group>"; };
+		61CD846C118AA90A409CE0D20AFD2A54 /* ToCViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToCViewController.swift; sourceTree = "<group>"; };
+		61D72C653F20E541FD160F0456887713 /* AddressBookImportDataModelCreationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AddressBookImportDataModelCreationStrategy.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		61F19145FBC357168C313E21ABAAD2FA /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		62D551CE2D4646B169BF753CD0D4CD9E /* AddressFormLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressFormLayout.swift; sourceTree = "<group>"; };
+		658EF98940E9CE9CF2AE7888FBFEE887 /* ZalandoCommerceUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ZalandoCommerceUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C4CE105713E71683BBCAAE89B2D5413 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		6F2CFCC7712BF709A5F3F5DEBA7C7D12 /* GetArticleDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetArticleDetailsViewController.swift; sourceTree = "<group>"; };
+		70CA93C72D40AAE1AEF611A67091C780 /* HTTPURLResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPURLResponse.swift; sourceTree = "<group>"; };
+		7106B98B896DE8E36BBD894567F30815 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		717114585547AD240FD55D14D07DD40B /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		724580FCE4E90AEF85DA81CC57B85469 /* AddressFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressFormViewController.swift; sourceTree = "<group>"; };
+		72D2DB22E66C2D871FDAE8E0144F61B9 /* AddressListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressListViewController.swift; sourceTree = "<group>"; };
+		73AC89983819E956C01E2CB6A77B8F9F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		74539E3C7DDBC23A6326D2F223EFF887 /* URLRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequest.swift; sourceTree = "<group>"; };
+		75E5BB9BB7FD1D817129B1E440BDCD18 /* URLComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLComponents.swift; sourceTree = "<group>"; };
+		7607427DE4841B9B9A13FEC912DAF827 /* FormValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValidator.swift; sourceTree = "<group>"; };
+		76341B6A1EDD8026FA2274D0282DB41E /* AddressFormDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressFormDataModel.swift; sourceTree = "<group>"; };
+		7688D1C5009826E61A2FF5C243DC507B /* GuestAddressManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestAddressManagerTests.swift; sourceTree = "<group>"; };
+		76AEF413F6CF0230E29CA73C3C0AA2ED /* UserError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserError.swift; sourceTree = "<group>"; };
+		7BC0EDCB0F36DD939E8771B818CB5CA4 /* TextFieldInputViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldInputViewModel.swift; sourceTree = "<group>"; };
+		7DBC08A3B1BDA5E014B5088C39B3BECB /* NSAttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSAttributedString.swift; sourceTree = "<group>"; };
+		80C8A48CDE6E8966042B612AED8F2D63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8349D2AA1D8A80CDF9A4745E055B1813 /* AddressFormViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressFormViewModel.swift; sourceTree = "<group>"; };
+		85BC6B77778897C1EBBEE53D6DEBF3E7 /* ReachabilityNotifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityNotifier.swift; sourceTree = "<group>"; };
+		8791E5F5A7024421EA0EEE98DC11D441 /* TestOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestOptions.swift; sourceTree = "<group>"; };
+		893C8694A83D664097028336B95955BD /* UIViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewTests.swift; sourceTree = "<group>"; };
+		8ACB13EC86240384022A83FD91B81C94 /* GuestCheckoutCreateAddressActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCheckoutCreateAddressActionHandler.swift; sourceTree = "<group>"; };
+		8C1CD0C6691D0CF385D5726381080AAB /* RowStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RowStackView.swift; sourceTree = "<group>"; };
+		8D56F5D5AE85C8595DAAD50ACB5F15AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		91E875C60E65DAA44E2358EE3F9F7442 /* BorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderView.swift; sourceTree = "<group>"; };
+		9248CFE34118C4288696A499054C29F9 /* AddressFormActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressFormActionHandler.swift; sourceTree = "<group>"; };
+		94C6EE0673C475B8B29253E2B9DFFE64 /* ZalandoCommerceUITestsHostsApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ZalandoCommerceUITestsHostsApp.entitlements; sourceTree = "<group>"; };
 		96A3348351431FFF5B8C64926A98AA45 /* LoginError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
 		970D499754E14B678BE6FBA88A8A716E /* CheckoutSummaryArticleSelectCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryArticleSelectCollectionView.swift; sourceTree = "<group>"; };
-		57E92DE872DC30A6CB093A23D218BBE0 /* CheckoutSummaryMainStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryMainStackView.swift; sourceTree = "<group>"; };
-		893C8694A83D664097028336B95955BD /* UIViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewTests.swift; sourceTree = "<group>"; };
-		658EF98940E9CE9CF2AE7888FBFEE887 /* ZalandoCommerceUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ZalandoCommerceUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C1FB05E05E747F6FA84BF4EE52D2C02A /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
-		C3DDD69019EE322ADF9BA3570E3BDA87 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
-		5B9A3A5FD854911885F4AB63625A5A7D /* TestConsts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestConsts.swift; sourceTree = "<group>"; };
-		8791E5F5A7024421EA0EEE98DC11D441 /* TestOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestOptions.swift; sourceTree = "<group>"; };
-		AC46AFCD78F4A98A3EE32919AA5712E0 /* ZalandoCommerceAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZalandoCommerceAPI.framework; path = "ZalandoCommerceAPI.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		160F7698C06570189BB66957E346B19B /* MockAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MockAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7BC0EDCB0F36DD939E8771B818CB5CA4 /* TextFieldInputViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldInputViewModel.swift; sourceTree = "<group>"; };
-		7607427DE4841B9B9A13FEC912DAF827 /* FormValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValidator.swift; sourceTree = "<group>"; };
-		31AF0B4DB247646DF2C9FBF55C101E33 /* URLAuthorizationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLAuthorizationTests.swift; sourceTree = "<group>"; };
-		E475CA430287C74FD9E1C46AE878C413 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = ../../Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
-		C31DBF335C70EE8502C5F4E8486FF3E1 /* LoggedInUpdateAddressActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedInUpdateAddressActionHandler.swift; sourceTree = "<group>"; };
-		388A0D6BBEC489E99A83B1735B7EB3A9 /* BillingAddressViewModelCreationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingAddressViewModelCreationStrategy.swift; sourceTree = "<group>"; };
-		6078D4A1AB625611AA45DB4E49AB5B4C /* OrderPlacedSummaryActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderPlacedSummaryActionHandler.swift; sourceTree = "<group>"; };
-		18F20D04DA990CA46AB18F3D675F37CA /* CheckoutSummaryRecommendationCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryRecommendationCollectionViewCell.swift; sourceTree = "<group>"; };
-		3AF5D629115CF5DB09446CABBD061858 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
-		56DDCB01156D32A87AE3AC3261806FCB /* CheckoutSummaryOrderStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryOrderStackView.swift; sourceTree = "<group>"; };
-		99C0F2EF88DB405430A5ED1488441877 /* AddressCheckRowButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckRowButton.swift; sourceTree = "<group>"; };
-		0C520FA7364441FBBFC918D94FC8811B /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
-		3095B1911C86600CA1811F85DFC1F269 /* GuestSummaryActionHandlerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestSummaryActionHandlerTests.swift; sourceTree = "<group>"; };
-		C4FF361DEC49FDBAE84D6255A9F08C79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D547D4EB8FEF55A315B1DFC80C38EDC3 /* GuestCheckoutUpdateAddressActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCheckoutUpdateAddressActionHandler.swift; sourceTree = "<group>"; };
-		42B5DD68552D8568008CE958D7B7EB42 /* AddressCheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckViewController.swift; sourceTree = "<group>"; };
-		0ADB47C3AE6E3CE44054E3948D0FF3D3 /* URLStringConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLStringConvertible.swift; sourceTree = "<group>"; };
-		1E5E93672DBC6CAD0C2795DF89497308 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E10F1C28787C2C9E53D2712F347DF48A /* AddressCheckRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckRowView.swift; sourceTree = "<group>"; };
-		4B083D4FEC6F318DBD807A9902C46B70 /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
-		6F2CFCC7712BF709A5F3F5DEBA7C7D12 /* GetArticleDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetArticleDetailsViewController.swift; sourceTree = "<group>"; };
-		1A67DB35E80C952A85FCF81AC9DD8C21 /* CheckoutSummaryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryViewModel.swift; sourceTree = "<group>"; };
-		5D602B02501819BBF3226B998396A6E2 /* CGRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
-		5C7CB2A26EA7B2385B51B10C10323BE9 /* ProcessedResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessedResult.swift; sourceTree = "<group>"; };
-		0082BB2A249BD07EAF4A2721FF1676D8 /* CheckoutSummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryViewController.swift; sourceTree = "<group>"; };
-		367BEEDE2E6233F3E645DDC2C64D3455 /* InjectorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InjectorTests.swift; sourceTree = "<group>"; };
-		4070A06FBFE864A37AD0F279BDACC4EC /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		330A3AD6D4D5AFE123801791F6C66928 /* FormattableAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormattableAddress.swift; sourceTree = "<group>"; };
-		F00DFC159300CE3099D499B150C65638 /* TestsHostAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsHostAppDelegate.swift; sourceTree = "<group>"; };
-		91E875C60E65DAA44E2358EE3F9F7442 /* BorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderView.swift; sourceTree = "<group>"; };
-		F44D0ACECB75444CC6EE1D50A9D3C746 /* LoggedInSummaryActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedInSummaryActionHandler.swift; sourceTree = "<group>"; };
-		2890E17573BC0EE00B74753E281E6870 /* Localizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizer.swift; sourceTree = "<group>"; };
-		61D72C653F20E541FD160F0456887713 /* AddressBookImportDataModelCreationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AddressBookImportDataModelCreationStrategy.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		F8DC720533625244128E59DEEC73B88D /* CheckoutSummaryEditProductStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryEditProductStackView.swift; sourceTree = "<group>"; };
-		80C8A48CDE6E8966042B612AED8F2D63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		251B64511CDEDBCA8A3F63D4EF0BA765 /* AsyncTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncTests.swift; sourceTree = "<group>"; };
-		4B759D64C6EABC479521B42EA8A9000E /* CheckoutSummaryActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryActionHandler.swift; sourceTree = "<group>"; };
-		4B04095B6C2003F656A9F48635C03391 /* UserPresentableError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPresentableError.swift; sourceTree = "<group>"; };
-		22CC1FF648AEAA6E7A2FE9D2B50AE7BA /* OrderConfirmation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmation.swift; sourceTree = "<group>"; };
-		CB6DA92EB7165FBBD064FCD0C1E4C052 /* AnimationDuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationDuration.swift; sourceTree = "<group>"; };
-		D8290AA4352112963BC941DB8E9B68DC /* ZalandoCommerceUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZalandoCommerceUI.swift; sourceTree = "<group>"; };
-		8ACB13EC86240384022A83FD91B81C94 /* GuestCheckoutCreateAddressActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCheckoutCreateAddressActionHandler.swift; sourceTree = "<group>"; };
-		BA763EFE60701C0B31CF71933AB79CD9 /* Injector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Injector.swift; sourceTree = "<group>"; };
-		717114585547AD240FD55D14D07DD40B /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		CFCD032DF8A2E79977BF908AAB57EB36 /* GuestAddressActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = GuestAddressActionHandler.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		01D19C936E6B03AC6FA08A1AE32E264D /* Typealiases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
-		3416C9B8ADE8A177DBA92726729F3BC9 /* URLQueryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLQueryItem.swift; sourceTree = "<group>"; };
-		A60F5410C6E7FAE48CB99E4DAA72793A /* LoaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoaderView.swift; path = ../LoaderView.swift; sourceTree = "<group>"; };
-		2B06EB7FEDAA6A97C894AC776F4CD755 /* ZalandoCommerceAPI_loader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZalandoCommerceAPI_loader.swift; sourceTree = "<group>"; };
-		0675EE8E38C0BC3B4979D5EF23DF22A4 /* LoggedInSummaryActionHandlerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedInSummaryActionHandlerTests.swift; sourceTree = "<group>"; };
-		561336232A25CF509F7AD10E2F0D82A6 /* AddressFormStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressFormStackView.swift; sourceTree = "<group>"; };
-		A5C3719538D33CCE90DC56A67223722C /* AddAddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAddressTableViewCell.swift; sourceTree = "<group>"; };
-		9E6C7693828B4CB789928DE3CAA329E1 /* CheckoutSummaryPriceStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryPriceStackView.swift; sourceTree = "<group>"; };
-		76AEF413F6CF0230E29CA73C3C0AA2ED /* UserError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserError.swift; sourceTree = "<group>"; };
-		FAAFCE59349E0705BFD49024F04602A6 /* EditAddressTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAddressTypeTests.swift; sourceTree = "<group>"; };
-		CA53AFB38D4DF558CBE6EDE0F67D2FA2 /* LoggedInCreateAddressActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedInCreateAddressActionHandler.swift; sourceTree = "<group>"; };
-		6166ECC310744345AA18744CD7342A1D /* LocalizationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizationTests.swift; sourceTree = "<group>"; };
-		62D551CE2D4646B169BF753CD0D4CD9E /* AddressFormLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressFormLayout.swift; sourceTree = "<group>"; };
-		9248CFE34118C4288696A499054C29F9 /* AddressFormActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressFormActionHandler.swift; sourceTree = "<group>"; };
-		8349D2AA1D8A80CDF9A4745E055B1813 /* AddressFormViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressFormViewModel.swift; sourceTree = "<group>"; };
-		D1CD6C7BD95C9E4BC64358C2E6B6D015 /* URLTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLTests.swift; sourceTree = "<group>"; };
-		EA47A184EA2B2B6DDAA810E89F02F093 /* GuestCheckoutSummaryActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCheckoutSummaryActionHandler.swift; sourceTree = "<group>"; };
-		4277CBFC13EFD2FDBAF1DDA12F301727 /* AddressFormType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressFormType.swift; sourceTree = "<group>"; };
-		FB0AE479E93B528CEBEBDE2248360FC8 /* CheckoutPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutPresentationController.swift; sourceTree = "<group>"; };
-		51238CD314BBAE65778217919A90E846 /* LoggedInAddressListActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LoggedInAddressListActionHandler.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		E96FFD8E8B95910359A7FB7819FE9768 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		CD12E191A974A297381A13A184C8E2FC /* UIApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
-		A4E129248E0E8BC189EDDAAB577C08EA /* AddressCheckViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckViewControllerTests.swift; sourceTree = "<group>"; };
-		265D5D86204E52BAE2AFF1169D8AD121 /* UIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
-		A273337FEAC013345E5F535922D7372E /* CheckoutSummaryEditProductStackViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryEditProductStackViewTests.swift; sourceTree = "<group>"; };
-		EE46646C7185335E929FE37E4C43925E /* OAuth2LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2LoginViewController.swift; sourceTree = "<group>"; };
-		04A6CB247661FB09DC5B2DE60994961E /* FormValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValidatorTests.swift; sourceTree = "<group>"; };
-		D31374847154B5F6C373B9248CD322E9 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
-		EFAEF8E7E0EB225739EA961329FED501 /* APIResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIResult.swift; sourceTree = "<group>"; };
-		EB6EF83C6E54CCFC88E83213D23015BA /* AddressListActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressListActionHandler.swift; sourceTree = "<group>"; };
-		54AE9A8FEA3023C9CC4DCAD3E6F386A8 /* UIScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
-		85BC6B77778897C1EBBEE53D6DEBF3E7 /* ReachabilityNotifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityNotifier.swift; sourceTree = "<group>"; };
-		A9544E6ABBF7C8B9F04317197E62B246 /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
-		531A523CFB81467D39BCF5FB7C971091 /* BannerErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerErrorViewController.swift; sourceTree = "<group>"; };
-		61F19145FBC357168C313E21ABAAD2FA /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		98F67ABC4B8E670A06EBEA76FF868B9A /* CheckoutSummaryArticleSelectCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryArticleSelectCollectionViewCell.swift; sourceTree = "<group>"; };
-		CC31DA426BA96BCFCCF10DB747DB15A0 /* CheckoutSummaryDeliveryStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryDeliveryStackView.swift; sourceTree = "<group>"; };
-		6C4CE105713E71683BBCAAE89B2D5413 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
-		3E0923CB59EE393D308DAAB565429012 /* AddressCheckStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckStackView.swift; sourceTree = "<group>"; };
-		576544D2ECDCCCC2D4CC370DF7E598B1 /* AddressRowViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressRowViewCell.swift; sourceTree = "<group>"; };
-		7106B98B896DE8E36BBD894567F30815 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
-		72D2DB22E66C2D871FDAE8E0144F61B9 /* AddressListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressListViewController.swift; sourceTree = "<group>"; };
+		9930509CC57806C7E6C197AC84C07211 /* AddressListTableDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressListTableDelegate.swift; sourceTree = "<group>"; };
+		99C0F2EF88DB405430A5ED1488441877 /* AddressCheckRowButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckRowButton.swift; sourceTree = "<group>"; };
+		9C6DE17EBE0AC3CDC7F6298FD794956C /* CheckoutSummaryAddressStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryAddressStackView.swift; sourceTree = "<group>"; };
+		9E6C7693828B4CB789928DE3CAA329E1 /* CheckoutSummaryPriceStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryPriceStackView.swift; sourceTree = "<group>"; };
+		A212C8E02D418D9F678D887E3B524891 /* StreetAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreetAddress.swift; sourceTree = "<group>"; };
+		A26E3456AEC1ACC0E805CFF43C4726B1 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A273337FEAC013345E5F535922D7372E /* CheckoutSummaryEditProductStackViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryEditProductStackViewTests.swift; sourceTree = "<group>"; };
+		A31A9D970D4E8868524CD6E3EB3CD8EC /* ZalandoCommerceUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZalandoCommerceUIViewController.swift; sourceTree = "<group>"; };
+		A4E129248E0E8BC189EDDAAB577C08EA /* AddressCheckViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckViewControllerTests.swift; sourceTree = "<group>"; };
+		A5C3719538D33CCE90DC56A67223722C /* AddAddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAddressTableViewCell.swift; sourceTree = "<group>"; };
+		A60F5410C6E7FAE48CB99E4DAA72793A /* LoaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoaderView.swift; path = ../LoaderView.swift; sourceTree = "<group>"; };
+		A6C089CF5D4F6A9700BCBB6E8B354DD7 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		A9544E6ABBF7C8B9F04317197E62B246 /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
+		A9D76EBC6C87DD61A71FBE5A9488E2C5 /* ShippingAddressViewModelCreationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShippingAddressViewModelCreationStrategy.swift; sourceTree = "<group>"; };
 		AA1CF6F7B5D78C9AE908B5BD057D1E7C /* CheckoutSummaryFooterStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryFooterStackView.swift; sourceTree = "<group>"; };
+		AC46AFCD78F4A98A3EE32919AA5712E0 /* ZalandoCommerceAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ZalandoCommerceAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFE477913D6FC0E9827AA40DDDC3F343 /* EmptyAddressDataModelCreationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyAddressDataModelCreationStrategy.swift; sourceTree = "<group>"; };
+		B3866E38E993534856188B7281D50ACE /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B3F07A87E83E1DEBDB1865E2907CB728 /* CheckoutSummaryRecommendationStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryRecommendationStackView.swift; sourceTree = "<group>"; };
+		B5DB548CD3B553F10C205A5AEB9F3248 /* PickupPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickupPoint.swift; sourceTree = "<group>"; };
+		B695ED9AE38DCEEEAD2A00D27011C293 /* NotLoggedInSummaryActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotLoggedInSummaryActionHandler.swift; sourceTree = "<group>"; };
+		BA763EFE60701C0B31CF71933AB79CD9 /* Injector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Injector.swift; sourceTree = "<group>"; };
+		BC0A95CD7D05074AB0A020AFDD05D820 /* CheckoutContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutContainerView.swift; sourceTree = "<group>"; };
+		BCE84378D34C25DF24CC3BEB49790C6F /* CheckoutSummaryLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryLayout.swift; sourceTree = "<group>"; };
+		BDA525979BE4CB18BAE8FA79C18057D0 /* AddressFormViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressFormViewControllerTests.swift; sourceTree = "<group>"; };
+		BEF2F948FDA83185BE68565C2AC4889C /* CheckoutSummaryGuestStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryGuestStackView.swift; sourceTree = "<group>"; };
+		C000E5ACA7BDE8E5AA01F20F6B62991E /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		C1594D47385E0DD7D0DD419349D42D56 /* AddressDataModelCreationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressDataModelCreationStrategy.swift; sourceTree = "<group>"; };
+		C1FB05E05E747F6FA84BF4EE52D2C02A /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		C31DBF335C70EE8502C5F4E8486FF3E1 /* LoggedInUpdateAddressActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedInUpdateAddressActionHandler.swift; sourceTree = "<group>"; };
+		C3DD688241C51B34DBBF47CD37F68143 /* UIBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBuilder.swift; sourceTree = "<group>"; };
+		C3DDD69019EE322ADF9BA3570E3BDA87 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		C4FF361DEC49FDBAE84D6255A9F08C79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C7A6EE7901E431366FB9BFFBCBBACE1F /* AddressViewModelCreationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressViewModelCreationStrategy.swift; sourceTree = "<group>"; };
+		C9D429CD452E703A4AD44577F3498E0B /* Bundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
+		CA53AFB38D4DF558CBE6EDE0F67D2FA2 /* LoggedInCreateAddressActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedInCreateAddressActionHandler.swift; sourceTree = "<group>"; };
+		CB6DA92EB7165FBBD064FCD0C1E4C052 /* AnimationDuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationDuration.swift; sourceTree = "<group>"; };
+		CC2ECB3EFBA30ECC93206084D7610A4D /* ArticleNotSelectedActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleNotSelectedActionHandler.swift; sourceTree = "<group>"; };
+		CC31DA426BA96BCFCCF10DB747DB15A0 /* CheckoutSummaryDeliveryStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryDeliveryStackView.swift; sourceTree = "<group>"; };
+		CD12E191A974A297381A13A184C8E2FC /* UIApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
+		CFCD032DF8A2E79977BF908AAB57EB36 /* GuestAddressActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = GuestAddressActionHandler.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		D1CD6C7BD95C9E4BC64358C2E6B6D015 /* URLTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLTests.swift; sourceTree = "<group>"; };
+		D25DF7F6963CCFF91DFD6AF4FE5007EE /* CheckoutSummaryRootStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryRootStackView.swift; sourceTree = "<group>"; };
+		D31374847154B5F6C373B9248CD322E9 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		D38F756747927D9EF943518DDCA7099A /* CheckoutSummaryPaymentStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryPaymentStackView.swift; sourceTree = "<group>"; };
+		D4E31AB351D7B3E76F4D28B5D943D5DA /* FullScreenErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullScreenErrorViewController.swift; sourceTree = "<group>"; };
+		D547D4EB8FEF55A315B1DFC80C38EDC3 /* GuestCheckoutUpdateAddressActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCheckoutUpdateAddressActionHandler.swift; sourceTree = "<group>"; };
+		D8290AA4352112963BC941DB8E9B68DC /* ZalandoCommerceUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZalandoCommerceUI.swift; sourceTree = "<group>"; };
+		D91C054644CB41C0F294CFF56163DCC4 /* OAuth2AuthorizationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2AuthorizationHandler.swift; sourceTree = "<group>"; };
+		E10F1C28787C2C9E53D2712F347DF48A /* AddressCheckRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCheckRowView.swift; sourceTree = "<group>"; };
+		E475CA430287C74FD9E1C46AE878C413 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = ../../Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
+		E7326F095DD6700D41139230E310BCEF /* CheckoutTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutTransitioningDelegate.swift; sourceTree = "<group>"; };
+		E7C7B2D5D6D093DF7A55F90B92A24016 /* LegalController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegalController.swift; sourceTree = "<group>"; };
+		E96E0EE71E71771500C6532F /* CheckoutSummaryCouponStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryCouponStackView.swift; sourceTree = "<group>"; };
+		E96FFD8E8B95910359A7FB7819FE9768 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		EA47A184EA2B2B6DDAA810E89F02F093 /* GuestCheckoutSummaryActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCheckoutSummaryActionHandler.swift; sourceTree = "<group>"; };
+		EB6EF83C6E54CCFC88E83213D23015BA /* AddressListActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressListActionHandler.swift; sourceTree = "<group>"; };
+		ED582FBA45192BE59C8C91EEA4900686 /* CheckoutSummaryProductStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryProductStackView.swift; sourceTree = "<group>"; };
+		EE46646C7185335E929FE37E4C43925E /* OAuth2LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2LoginViewController.swift; sourceTree = "<group>"; };
+		EFAEF8E7E0EB225739EA961329FED501 /* APIResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIResult.swift; sourceTree = "<group>"; };
+		F00DFC159300CE3099D499B150C65638 /* TestsHostAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsHostAppDelegate.swift; sourceTree = "<group>"; };
+		F0C59F0F1B4D224C35C930E444723667 /* CheckoutSummaryRecommendationCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryRecommendationCollectionView.swift; sourceTree = "<group>"; };
+		F40F7BF8A85D09D8D3338F2DFD476CAE /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		F44D0ACECB75444CC6EE1D50A9D3C746 /* LoggedInSummaryActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedInSummaryActionHandler.swift; sourceTree = "<group>"; };
+		F8DC720533625244128E59DEEC73B88D /* CheckoutSummaryEditProductStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryEditProductStackView.swift; sourceTree = "<group>"; };
+		FAAFCE59349E0705BFD49024F04602A6 /* EditAddressTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAddressTypeTests.swift; sourceTree = "<group>"; };
+		FB0AE479E93B528CEBEBDE2248360FC8 /* CheckoutPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutPresentationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		EB32529B088F6360D435857ACB2E46B4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BCCF88EEC06013533CFB9B5906F31555 /* MockAPI.framework in Frameworks */,
-				D745254365F684E9B161DE00BEA823CA /* ZalandoCommerceUI.framework in Frameworks */,
-				EE1C431561D5390A148BE880BD896F5A /* Nimble.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A7B4EBA5667F5CD98D5C307EA94E81BA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -381,16 +373,141 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EB32529B088F6360D435857ACB2E46B4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCCF88EEC06013533CFB9B5906F31555 /* MockAPI.framework in Frameworks */,
+				D745254365F684E9B161DE00BEA823CA /* ZalandoCommerceUI.framework in Frameworks */,
+				EE1C431561D5390A148BE880BD896F5A /* Nimble.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9565599685B8EA89DD62467A1EF188B5 /* Reachability */ = {
+		022ED5B728B6C304E3653089D64C5AD8 /* StackViews */ = {
 			isa = PBXGroup;
 			children = (
-				85BC6B77778897C1EBBEE53D6DEBF3E7 /* ReachabilityNotifier.swift */,
-				A6C089CF5D4F6A9700BCBB6E8B354DD7 /* Reachability.swift */,
+				D25DF7F6963CCFF91DFD6AF4FE5007EE /* CheckoutSummaryRootStackView.swift */,
+				BC0A95CD7D05074AB0A020AFDD05D820 /* CheckoutContainerView.swift */,
+				AA1CF6F7B5D78C9AE908B5BD057D1E7C /* CheckoutSummaryFooterStackView.swift */,
+				E282A9149AB9C4317DA16FC95992872E /* Product Stack View */,
+				093FA0BCEC5B602CFDE6F9FE5CC0E444 /* Main Stack View */,
 			);
-			name = Reachability;
+			name = StackViews;
+			sourceTree = "<group>";
+		};
+		093FA0BCEC5B602CFDE6F9FE5CC0E444 /* Main Stack View */ = {
+			isa = PBXGroup;
+			children = (
+				8C1CD0C6691D0CF385D5726381080AAB /* RowStackView.swift */,
+				57E92DE872DC30A6CB093A23D218BBE0 /* CheckoutSummaryMainStackView.swift */,
+				56DDCB01156D32A87AE3AC3261806FCB /* CheckoutSummaryOrderStackView.swift */,
+				9C6DE17EBE0AC3CDC7F6298FD794956C /* CheckoutSummaryAddressStackView.swift */,
+				D38F756747927D9EF943518DDCA7099A /* CheckoutSummaryPaymentStackView.swift */,
+				E96E0EE71E71771500C6532F /* CheckoutSummaryCouponStackView.swift */,
+				BEF2F948FDA83185BE68565C2AC4889C /* CheckoutSummaryGuestStackView.swift */,
+				9E6C7693828B4CB789928DE3CAA329E1 /* CheckoutSummaryPriceStackView.swift */,
+				CC31DA426BA96BCFCCF10DB747DB15A0 /* CheckoutSummaryDeliveryStackView.swift */,
+			);
+			name = "Main Stack View";
+			sourceTree = "<group>";
+		};
+		0D6C1784CEF342E5DADC48F7B389B340 /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				96A3348351431FFF5B8C64926A98AA45 /* LoginError.swift */,
+				D91C054644CB41C0F294CFF56163DCC4 /* OAuth2AuthorizationHandler.swift */,
+				EE46646C7185335E929FE37E4C43925E /* OAuth2LoginViewController.swift */,
+			);
+			name = Authorization;
+			sourceTree = "<group>";
+		};
+		3DCC9C8B24A02EF5C7AE657AD7A13E40 /* Payment Selection */ = {
+			isa = PBXGroup;
+			children = (
+				520274DD2DBEC8F1708A0DDCD7D5A6B5 /* PaymentSelectionViewController.swift */,
+			);
+			name = "Payment Selection";
+			sourceTree = "<group>";
+		};
+		401248BD895E299F9C9F16C10D1E8813 /* Address Check */ = {
+			isa = PBXGroup;
+			children = (
+				42B5DD68552D8568008CE958D7B7EB42 /* AddressCheckViewController.swift */,
+				3E0923CB59EE393D308DAAB565429012 /* AddressCheckStackView.swift */,
+				E10F1C28787C2C9E53D2712F347DF48A /* AddressCheckRowView.swift */,
+				99C0F2EF88DB405430A5ED1488441877 /* AddressCheckRowButton.swift */,
+			);
+			name = "Address Check";
+			sourceTree = "<group>";
+		};
+		4C94F8D635C92B299223F3AB1EBABFD4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				36AF09674AB348569695D9648258D789 /* Localizable.strings */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		56B6B67FB4309A752BEF307761674C0C /* ZalandoCommerceUIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A31A9D970D4E8868524CD6E3EB3CD8EC /* ZalandoCommerceUIViewController.swift */,
+				6F2CFCC7712BF709A5F3F5DEBA7C7D12 /* GetArticleDetailsViewController.swift */,
+			);
+			name = ZalandoCommerceUIViewController;
+			sourceTree = "<group>";
+		};
+		5B8E9C6ECFC76D8887CB079154643DED /* Checkout Summary */ = {
+			isa = PBXGroup;
+			children = (
+				0082BB2A249BD07EAF4A2721FF1676D8 /* CheckoutSummaryViewController.swift */,
+				1A67DB35E80C952A85FCF81AC9DD8C21 /* CheckoutSummaryViewModel.swift */,
+				526DAF8393FBA2F3838BBF3912C437AD /* CheckoutSummaryDataModel.swift */,
+				BCE84378D34C25DF24CC3BEB49790C6F /* CheckoutSummaryLayout.swift */,
+				E6D13C932902930881F6301B814CF749 /* Action Handler */,
+				022ED5B728B6C304E3653089D64C5AD8 /* StackViews */,
+			);
+			name = "Checkout Summary";
+			sourceTree = "<group>";
+		};
+		5D8A007C14A3F17202496F241110164C /* Generic Views */ = {
+			isa = PBXGroup;
+			children = (
+				0C5B91199C6059B0D51808B1F95875E6 /* ActionTextField.swift */,
+				91E875C60E65DAA44E2358EE3F9F7442 /* BorderView.swift */,
+				1B25B8EBC252896EB59CC0F7BA29D2BA /* KeyboardScrollView.swift */,
+				A60F5410C6E7FAE48CB99E4DAA72793A /* LoaderView.swift */,
+				4B80016844A9F7B3FE36DC76B12D0C69 /* PickerKeyboardInputView.swift */,
+				4A2760CED4938C91557438B23DD5A1B6 /* RoundedViews.swift */,
+				4D197440604C4360798CF55A504348F5 /* TextFieldInputStackView.swift */,
+				7BC0EDCB0F36DD939E8771B818CB5CA4 /* TextFieldInputViewModel.swift */,
+			);
+			name = "Generic Views";
+			sourceTree = "<group>";
+		};
+		609562DD9ADBC312C49177F9A5F1F09C /* Address View Model Creation Strategy */ = {
+			isa = PBXGroup;
+			children = (
+				C7A6EE7901E431366FB9BFFBCBBACE1F /* AddressViewModelCreationStrategy.swift */,
+				A9D76EBC6C87DD61A71FBE5A9488E2C5 /* ShippingAddressViewModelCreationStrategy.swift */,
+				388A0D6BBEC489E99A83B1735B7EB3A9 /* BillingAddressViewModelCreationStrategy.swift */,
+				CFDC6A343650E667ECC43DD5D9568E51 /* Address Data Model Creation Strategy */,
+			);
+			name = "Address View Model Creation Strategy";
+			sourceTree = "<group>";
+		};
+		61D6DD4F5DF8688FB5E76843136BC214 /* ZalandoCommerceAPI Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EFAEF8E7E0EB225739EA961329FED501 /* APIResult.swift */,
+				330A3AD6D4D5AFE123801791F6C66928 /* FormattableAddress.swift */,
+				B5DB548CD3B553F10C205A5AEB9F3248 /* PickupPoint.swift */,
+				A212C8E02D418D9F678D887E3B524891 /* StreetAddress.swift */,
+			);
+			name = "ZalandoCommerceAPI Extensions";
 			sourceTree = "<group>";
 		};
 		633A9CA66BF3D05BFE1067482FE57CBF /* Others */ = {
@@ -421,101 +538,6 @@
 			name = "Cocoa Extensions";
 			sourceTree = "<group>";
 		};
-		4C94F8D635C92B299223F3AB1EBABFD4 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				36AF09674AB348569695D9648258D789 /* Localizable.strings */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		B1688D9206F7E0AFBB0BDAF625A9B44A /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				AC46AFCD78F4A98A3EE32919AA5712E0 /* ZalandoCommerceAPI.framework */,
-				160F7698C06570189BB66957E346B19B /* MockAPI.framework */,
-				E475CA430287C74FD9E1C46AE878C413 /* Nimble.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D19A8A69C08EA2F31C8FF4DBF1CDAA47 /* ZalandoCommerceUI */ = {
-			isa = PBXGroup;
-			children = (
-				E8D20FBF9FB7F901D3723DE5A2B02EF7 /* Commons */,
-				633A9CA66BF3D05BFE1067482FE57CBF /* Others */,
-				4C94F8D635C92B299223F3AB1EBABFD4 /* Resources */,
-				7959DA6B73656F3693B2D90C962F609C /* Utils */,
-				7CDDFC87C2E5A7B9173A571836744645 /* Views */,
-				1E5E93672DBC6CAD0C2795DF89497308 /* Assets.xcassets */,
-				D8290AA4352112963BC941DB8E9B68DC /* ZalandoCommerceUI.swift */,
-				4B04095B6C2003F656A9F48635C03391 /* UserPresentableError.swift */,
-				01D19C936E6B03AC6FA08A1AE32E264D /* Typealiases.swift */,
-			);
-			path = ZalandoCommerceUI;
-			sourceTree = "<group>";
-		};
-		9C2A5ED9A6354F4999F87C15FE9BA523 = {
-			isa = PBXGroup;
-			children = (
-				D19A8A69C08EA2F31C8FF4DBF1CDAA47 /* ZalandoCommerceUI */,
-				8B98BDF8EC9B5CB0D09C89339CC215D9 /* ZalandoCommerceUITests */,
-				9A689930189A519ECA33F4BA4DEB7D8C /* ZalandoCommerceUITestsHostsApp */,
-				B1688D9206F7E0AFBB0BDAF625A9B44A /* Frameworks */,
-				A7966248EFAE5D106D8B1ABE757AEA9F /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		CAD1C4D4C319C46D5D03DCC6BCD02948 /* Action Handler */ = {
-			isa = PBXGroup;
-			children = (
-				EB6EF83C6E54CCFC88E83213D23015BA /* AddressListActionHandler.swift */,
-				51238CD314BBAE65778217919A90E846 /* LoggedInAddressListActionHandler.swift */,
-			);
-			name = "Action Handler";
-			sourceTree = "<group>";
-		};
-		5D8A007C14A3F17202496F241110164C /* Generic Views */ = {
-			isa = PBXGroup;
-			children = (
-				0C5B91199C6059B0D51808B1F95875E6 /* ActionTextField.swift */,
-				91E875C60E65DAA44E2358EE3F9F7442 /* BorderView.swift */,
-				1B25B8EBC252896EB59CC0F7BA29D2BA /* KeyboardScrollView.swift */,
-				A60F5410C6E7FAE48CB99E4DAA72793A /* LoaderView.swift */,
-				4B80016844A9F7B3FE36DC76B12D0C69 /* PickerKeyboardInputView.swift */,
-				4A2760CED4938C91557438B23DD5A1B6 /* RoundedViews.swift */,
-				4D197440604C4360798CF55A504348F5 /* TextFieldInputStackView.swift */,
-				7BC0EDCB0F36DD939E8771B818CB5CA4 /* TextFieldInputViewModel.swift */,
-			);
-			name = "Generic Views";
-			sourceTree = "<group>";
-		};
-		BE43FC34F30109A53AEA031E94FCCEB5 /* Address Form */ = {
-			isa = PBXGroup;
-			children = (
-				724580FCE4E90AEF85DA81CC57B85469 /* AddressFormViewController.swift */,
-				561336232A25CF509F7AD10E2F0D82A6 /* AddressFormStackView.swift */,
-				8349D2AA1D8A80CDF9A4745E055B1813 /* AddressFormViewModel.swift */,
-				76341B6A1EDD8026FA2274D0282DB41E /* AddressFormDataModel.swift */,
-				62D551CE2D4646B169BF753CD0D4CD9E /* AddressFormLayout.swift */,
-				4277CBFC13EFD2FDBAF1DDA12F301727 /* AddressFormType.swift */,
-				401248BD895E299F9C9F16C10D1E8813 /* Address Check */,
-				B10856FDBF23F41F33C99D388317A91D /* Action Handler */,
-			);
-			name = "Address Form";
-			sourceTree = "<group>";
-		};
-		61D6DD4F5DF8688FB5E76843136BC214 /* ZalandoCommerceAPI Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				EFAEF8E7E0EB225739EA961329FED501 /* APIResult.swift */,
-				330A3AD6D4D5AFE123801791F6C66928 /* FormattableAddress.swift */,
-				B5DB548CD3B553F10C205A5AEB9F3248 /* PickupPoint.swift */,
-				A212C8E02D418D9F678D887E3B524891 /* StreetAddress.swift */,
-			);
-			name = "ZalandoCommerceAPI Extensions";
-			sourceTree = "<group>";
-		};
 		7959DA6B73656F3693B2D90C962F609C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -539,130 +561,20 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		A7966248EFAE5D106D8B1ABE757AEA9F /* Products */ = {
+		7CDDFC87C2E5A7B9173A571836744645 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				658EF98940E9CE9CF2AE7888FBFEE887 /* ZalandoCommerceUI.framework */,
-				5709C5C2F5DE2458AA84EAE0AE4353B0 /* ZalandoCommerceUITests.xctest */,
-				48476C1825A26C5111045503FD033491 /* ZalandoCommerceUITestsHostsApp.app */,
+				56B6B67FB4309A752BEF307761674C0C /* ZalandoCommerceUIViewController */,
+				5B8E9C6ECFC76D8887CB079154643DED /* Checkout Summary */,
+				0D6C1784CEF342E5DADC48F7B389B340 /* Authorization */,
+				CE73915597D8CABDE5C86559D4EAB06E /* Address Selection */,
+				3DCC9C8B24A02EF5C7AE657AD7A13E40 /* Payment Selection */,
+				E691A28AA4CA02D997A31508A1D209CA /* Recommendations */,
+				C4D85706D482B10CDD44812A3868D4FA /* ToC */,
+				9C435D46A1D3FCDD01D0CF92C7151ACD /* Errors */,
+				9C6A66A5A556A45C5E026F4127B82ED3 /* Transitions */,
 			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		401248BD895E299F9C9F16C10D1E8813 /* Address Check */ = {
-			isa = PBXGroup;
-			children = (
-				42B5DD68552D8568008CE958D7B7EB42 /* AddressCheckViewController.swift */,
-				3E0923CB59EE393D308DAAB565429012 /* AddressCheckStackView.swift */,
-				E10F1C28787C2C9E53D2712F347DF48A /* AddressCheckRowView.swift */,
-				99C0F2EF88DB405430A5ED1488441877 /* AddressCheckRowButton.swift */,
-			);
-			name = "Address Check";
-			sourceTree = "<group>";
-		};
-		5B8E9C6ECFC76D8887CB079154643DED /* Checkout Summary */ = {
-			isa = PBXGroup;
-			children = (
-				0082BB2A249BD07EAF4A2721FF1676D8 /* CheckoutSummaryViewController.swift */,
-				1A67DB35E80C952A85FCF81AC9DD8C21 /* CheckoutSummaryViewModel.swift */,
-				526DAF8393FBA2F3838BBF3912C437AD /* CheckoutSummaryDataModel.swift */,
-				BCE84378D34C25DF24CC3BEB49790C6F /* CheckoutSummaryLayout.swift */,
-				E6D13C932902930881F6301B814CF749 /* Action Handler */,
-				022ED5B728B6C304E3653089D64C5AD8 /* StackViews */,
-			);
-			name = "Checkout Summary";
-			sourceTree = "<group>";
-		};
-		CFDC6A343650E667ECC43DD5D9568E51 /* Address Data Model Creation Strategy */ = {
-			isa = PBXGroup;
-			children = (
-				C1594D47385E0DD7D0DD419349D42D56 /* AddressDataModelCreationStrategy.swift */,
-				AFE477913D6FC0E9827AA40DDDC3F343 /* EmptyAddressDataModelCreationStrategy.swift */,
-				61D72C653F20E541FD160F0456887713 /* AddressBookImportDataModelCreationStrategy.swift */,
-			);
-			name = "Address Data Model Creation Strategy";
-			sourceTree = "<group>";
-		};
-		0D6C1784CEF342E5DADC48F7B389B340 /* Authorization */ = {
-			isa = PBXGroup;
-			children = (
-				96A3348351431FFF5B8C64926A98AA45 /* LoginError.swift */,
-				D91C054644CB41C0F294CFF56163DCC4 /* OAuth2AuthorizationHandler.swift */,
-				EE46646C7185335E929FE37E4C43925E /* OAuth2LoginViewController.swift */,
-			);
-			name = Authorization;
-			sourceTree = "<group>";
-		};
-		FF5257C02EAD6274B6D21E06D88A3386 /* CommonsTests */ = {
-			isa = PBXGroup;
-			children = (
-				5B9A3A5FD854911885F4AB63625A5A7D /* TestConsts.swift */,
-				8791E5F5A7024421EA0EEE98DC11D441 /* TestOptions.swift */,
-			);
-			name = CommonsTests;
-			path = ../../CommonsTests;
-			sourceTree = "<group>";
-		};
-		B10856FDBF23F41F33C99D388317A91D /* Action Handler */ = {
-			isa = PBXGroup;
-			children = (
-				9248CFE34118C4288696A499054C29F9 /* AddressFormActionHandler.swift */,
-				CA53AFB38D4DF558CBE6EDE0F67D2FA2 /* LoggedInCreateAddressActionHandler.swift */,
-				C31DBF335C70EE8502C5F4E8486FF3E1 /* LoggedInUpdateAddressActionHandler.swift */,
-				8ACB13EC86240384022A83FD91B81C94 /* GuestCheckoutCreateAddressActionHandler.swift */,
-				D547D4EB8FEF55A315B1DFC80C38EDC3 /* GuestCheckoutUpdateAddressActionHandler.swift */,
-			);
-			name = "Action Handler";
-			sourceTree = "<group>";
-		};
-		E8D20FBF9FB7F901D3723DE5A2B02EF7 /* Commons */ = {
-			isa = PBXGroup;
-			children = (
-				6C4CE105713E71683BBCAAE89B2D5413 /* Array.swift */,
-				C9D429CD452E703A4AD44577F3498E0B /* Bundle.swift */,
-				A9544E6ABBF7C8B9F04317197E62B246 /* Debug.swift */,
-				57FD2FCFE0E9110A3F1FC878C99D4CFA /* HTTP.swift */,
-				70CA93C72D40AAE1AEF611A67091C780 /* HTTPURLResponse.swift */,
-				717114585547AD240FD55D14D07DD40B /* String.swift */,
-				C3DDD69019EE322ADF9BA3570E3BDA87 /* URL.swift */,
-				75E5BB9BB7FD1D817129B1E440BDCD18 /* URLComponents.swift */,
-				3416C9B8ADE8A177DBA92726729F3BC9 /* URLQueryItem.swift */,
-				74539E3C7DDBC23A6326D2F223EFF887 /* URLRequest.swift */,
-				0ADB47C3AE6E3CE44054E3948D0FF3D3 /* URLStringConvertible.swift */,
-			);
-			name = Commons;
-			path = ../../Commons;
-			sourceTree = "<group>";
-		};
-		3DCC9C8B24A02EF5C7AE657AD7A13E40 /* Payment Selection */ = {
-			isa = PBXGroup;
-			children = (
-				520274DD2DBEC8F1708A0DDCD7D5A6B5 /* PaymentSelectionViewController.swift */,
-			);
-			name = "Payment Selection";
-			sourceTree = "<group>";
-		};
-		022ED5B728B6C304E3653089D64C5AD8 /* StackViews */ = {
-			isa = PBXGroup;
-			children = (
-				D25DF7F6963CCFF91DFD6AF4FE5007EE /* CheckoutSummaryRootStackView.swift */,
-				BC0A95CD7D05074AB0A020AFDD05D820 /* CheckoutContainerView.swift */,
-				AA1CF6F7B5D78C9AE908B5BD057D1E7C /* CheckoutSummaryFooterStackView.swift */,
-				E282A9149AB9C4317DA16FC95992872E /* Product Stack View */,
-				093FA0BCEC5B602CFDE6F9FE5CC0E444 /* Main Stack View */,
-			);
-			name = StackViews;
-			sourceTree = "<group>";
-		};
-		609562DD9ADBC312C49177F9A5F1F09C /* Address View Model Creation Strategy */ = {
-			isa = PBXGroup;
-			children = (
-				C7A6EE7901E431366FB9BFFBCBBACE1F /* AddressViewModelCreationStrategy.swift */,
-				A9D76EBC6C87DD61A71FBE5A9488E2C5 /* ShippingAddressViewModelCreationStrategy.swift */,
-				388A0D6BBEC489E99A83B1735B7EB3A9 /* BillingAddressViewModelCreationStrategy.swift */,
-				CFDC6A343650E667ECC43DD5D9568E51 /* Address Data Model Creation Strategy */,
-			);
-			name = "Address View Model Creation Strategy";
+			name = Views;
 			sourceTree = "<group>";
 		};
 		8B98BDF8EC9B5CB0D09C89339CC215D9 /* ZalandoCommerceUITests */ = {
@@ -691,28 +603,13 @@
 			path = ZalandoCommerceUITests;
 			sourceTree = "<group>";
 		};
-		093FA0BCEC5B602CFDE6F9FE5CC0E444 /* Main Stack View */ = {
+		9565599685B8EA89DD62467A1EF188B5 /* Reachability */ = {
 			isa = PBXGroup;
 			children = (
-				8C1CD0C6691D0CF385D5726381080AAB /* RowStackView.swift */,
-				57E92DE872DC30A6CB093A23D218BBE0 /* CheckoutSummaryMainStackView.swift */,
-				56DDCB01156D32A87AE3AC3261806FCB /* CheckoutSummaryOrderStackView.swift */,
-				9C6DE17EBE0AC3CDC7F6298FD794956C /* CheckoutSummaryAddressStackView.swift */,
-				D38F756747927D9EF943518DDCA7099A /* CheckoutSummaryPaymentStackView.swift */,
-				BEF2F948FDA83185BE68565C2AC4889C /* CheckoutSummaryGuestStackView.swift */,
-				9E6C7693828B4CB789928DE3CAA329E1 /* CheckoutSummaryPriceStackView.swift */,
-				CC31DA426BA96BCFCCF10DB747DB15A0 /* CheckoutSummaryDeliveryStackView.swift */,
+				85BC6B77778897C1EBBEE53D6DEBF3E7 /* ReachabilityNotifier.swift */,
+				A6C089CF5D4F6A9700BCBB6E8B354DD7 /* Reachability.swift */,
 			);
-			name = "Main Stack View";
-			sourceTree = "<group>";
-		};
-		9C435D46A1D3FCDD01D0CF92C7151ACD /* Errors */ = {
-			isa = PBXGroup;
-			children = (
-				531A523CFB81467D39BCF5FB7C971091 /* BannerErrorViewController.swift */,
-				D4E31AB351D7B3E76F4D28B5D943D5DA /* FullScreenErrorViewController.swift */,
-			);
-			name = Errors;
+			name = Reachability;
 			sourceTree = "<group>";
 		};
 		9A689930189A519ECA33F4BA4DEB7D8C /* ZalandoCommerceUITestsHostsApp */ = {
@@ -726,28 +623,98 @@
 			path = ZalandoCommerceUITestsHostsApp;
 			sourceTree = "<group>";
 		};
-		E6D13C932902930881F6301B814CF749 /* Action Handler */ = {
+		9C2A5ED9A6354F4999F87C15FE9BA523 = {
 			isa = PBXGroup;
 			children = (
-				4B759D64C6EABC479521B42EA8A9000E /* CheckoutSummaryActionHandler.swift */,
-				CC2ECB3EFBA30ECC93206084D7610A4D /* ArticleNotSelectedActionHandler.swift */,
-				B695ED9AE38DCEEEAD2A00D27011C293 /* NotLoggedInSummaryActionHandler.swift */,
-				F44D0ACECB75444CC6EE1D50A9D3C746 /* LoggedInSummaryActionHandler.swift */,
-				6078D4A1AB625611AA45DB4E49AB5B4C /* OrderPlacedSummaryActionHandler.swift */,
-				EA47A184EA2B2B6DDAA810E89F02F093 /* GuestCheckoutSummaryActionHandler.swift */,
-				CFCD032DF8A2E79977BF908AAB57EB36 /* GuestAddressActionHandler.swift */,
+				D19A8A69C08EA2F31C8FF4DBF1CDAA47 /* ZalandoCommerceUI */,
+				8B98BDF8EC9B5CB0D09C89339CC215D9 /* ZalandoCommerceUITests */,
+				9A689930189A519ECA33F4BA4DEB7D8C /* ZalandoCommerceUITestsHostsApp */,
+				B1688D9206F7E0AFBB0BDAF625A9B44A /* Frameworks */,
+				A7966248EFAE5D106D8B1ABE757AEA9F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9C435D46A1D3FCDD01D0CF92C7151ACD /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				531A523CFB81467D39BCF5FB7C971091 /* BannerErrorViewController.swift */,
+				D4E31AB351D7B3E76F4D28B5D943D5DA /* FullScreenErrorViewController.swift */,
+			);
+			name = Errors;
+			sourceTree = "<group>";
+		};
+		9C6A66A5A556A45C5E026F4127B82ED3 /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				FB0AE479E93B528CEBEBDE2248360FC8 /* CheckoutPresentationController.swift */,
+				E7326F095DD6700D41139230E310BCEF /* CheckoutTransitioningDelegate.swift */,
+			);
+			name = Transitions;
+			sourceTree = "<group>";
+		};
+		A7966248EFAE5D106D8B1ABE757AEA9F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				658EF98940E9CE9CF2AE7888FBFEE887 /* ZalandoCommerceUI.framework */,
+				5709C5C2F5DE2458AA84EAE0AE4353B0 /* ZalandoCommerceUITests.xctest */,
+				48476C1825A26C5111045503FD033491 /* ZalandoCommerceUITestsHostsApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B10856FDBF23F41F33C99D388317A91D /* Action Handler */ = {
+			isa = PBXGroup;
+			children = (
+				9248CFE34118C4288696A499054C29F9 /* AddressFormActionHandler.swift */,
+				CA53AFB38D4DF558CBE6EDE0F67D2FA2 /* LoggedInCreateAddressActionHandler.swift */,
+				C31DBF335C70EE8502C5F4E8486FF3E1 /* LoggedInUpdateAddressActionHandler.swift */,
+				8ACB13EC86240384022A83FD91B81C94 /* GuestCheckoutCreateAddressActionHandler.swift */,
+				D547D4EB8FEF55A315B1DFC80C38EDC3 /* GuestCheckoutUpdateAddressActionHandler.swift */,
 			);
 			name = "Action Handler";
 			sourceTree = "<group>";
 		};
-		E691A28AA4CA02D997A31508A1D209CA /* Recommendations */ = {
+		B1688D9206F7E0AFBB0BDAF625A9B44A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F0C59F0F1B4D224C35C930E444723667 /* CheckoutSummaryRecommendationCollectionView.swift */,
-				18F20D04DA990CA46AB18F3D675F37CA /* CheckoutSummaryRecommendationCollectionViewCell.swift */,
-				B3F07A87E83E1DEBDB1865E2907CB728 /* CheckoutSummaryRecommendationStackView.swift */,
+				AC46AFCD78F4A98A3EE32919AA5712E0 /* ZalandoCommerceAPI.framework */,
+				160F7698C06570189BB66957E346B19B /* MockAPI.framework */,
+				E475CA430287C74FD9E1C46AE878C413 /* Nimble.framework */,
 			);
-			name = Recommendations;
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BE43FC34F30109A53AEA031E94FCCEB5 /* Address Form */ = {
+			isa = PBXGroup;
+			children = (
+				724580FCE4E90AEF85DA81CC57B85469 /* AddressFormViewController.swift */,
+				561336232A25CF509F7AD10E2F0D82A6 /* AddressFormStackView.swift */,
+				8349D2AA1D8A80CDF9A4745E055B1813 /* AddressFormViewModel.swift */,
+				76341B6A1EDD8026FA2274D0282DB41E /* AddressFormDataModel.swift */,
+				62D551CE2D4646B169BF753CD0D4CD9E /* AddressFormLayout.swift */,
+				4277CBFC13EFD2FDBAF1DDA12F301727 /* AddressFormType.swift */,
+				401248BD895E299F9C9F16C10D1E8813 /* Address Check */,
+				B10856FDBF23F41F33C99D388317A91D /* Action Handler */,
+			);
+			name = "Address Form";
+			sourceTree = "<group>";
+		};
+		C4D85706D482B10CDD44812A3868D4FA /* ToC */ = {
+			isa = PBXGroup;
+			children = (
+				E7C7B2D5D6D093DF7A55F90B92A24016 /* LegalController.swift */,
+				61CD846C118AA90A409CE0D20AFD2A54 /* ToCViewController.swift */,
+			);
+			name = ToC;
+			sourceTree = "<group>";
+		};
+		CAD1C4D4C319C46D5D03DCC6BCD02948 /* Action Handler */ = {
+			isa = PBXGroup;
+			children = (
+				EB6EF83C6E54CCFC88E83213D23015BA /* AddressListActionHandler.swift */,
+				51238CD314BBAE65778217919A90E846 /* LoggedInAddressListActionHandler.swift */,
+			);
+			name = "Action Handler";
 			sourceTree = "<group>";
 		};
 		CE73915597D8CABDE5C86559D4EAB06E /* Address Selection */ = {
@@ -764,20 +731,30 @@
 			name = "Address Selection";
 			sourceTree = "<group>";
 		};
-		7CDDFC87C2E5A7B9173A571836744645 /* Views */ = {
+		CFDC6A343650E667ECC43DD5D9568E51 /* Address Data Model Creation Strategy */ = {
 			isa = PBXGroup;
 			children = (
-				56B6B67FB4309A752BEF307761674C0C /* ZalandoCommerceUIViewController */,
-				5B8E9C6ECFC76D8887CB079154643DED /* Checkout Summary */,
-				0D6C1784CEF342E5DADC48F7B389B340 /* Authorization */,
-				CE73915597D8CABDE5C86559D4EAB06E /* Address Selection */,
-				3DCC9C8B24A02EF5C7AE657AD7A13E40 /* Payment Selection */,
-				E691A28AA4CA02D997A31508A1D209CA /* Recommendations */,
-				C4D85706D482B10CDD44812A3868D4FA /* ToC */,
-				9C435D46A1D3FCDD01D0CF92C7151ACD /* Errors */,
-				9C6A66A5A556A45C5E026F4127B82ED3 /* Transitions */,
+				C1594D47385E0DD7D0DD419349D42D56 /* AddressDataModelCreationStrategy.swift */,
+				AFE477913D6FC0E9827AA40DDDC3F343 /* EmptyAddressDataModelCreationStrategy.swift */,
+				61D72C653F20E541FD160F0456887713 /* AddressBookImportDataModelCreationStrategy.swift */,
 			);
-			name = Views;
+			name = "Address Data Model Creation Strategy";
+			sourceTree = "<group>";
+		};
+		D19A8A69C08EA2F31C8FF4DBF1CDAA47 /* ZalandoCommerceUI */ = {
+			isa = PBXGroup;
+			children = (
+				E8D20FBF9FB7F901D3723DE5A2B02EF7 /* Commons */,
+				633A9CA66BF3D05BFE1067482FE57CBF /* Others */,
+				4C94F8D635C92B299223F3AB1EBABFD4 /* Resources */,
+				7959DA6B73656F3693B2D90C962F609C /* Utils */,
+				7CDDFC87C2E5A7B9173A571836744645 /* Views */,
+				1E5E93672DBC6CAD0C2795DF89497308 /* Assets.xcassets */,
+				D8290AA4352112963BC941DB8E9B68DC /* ZalandoCommerceUI.swift */,
+				4B04095B6C2003F656A9F48635C03391 /* UserPresentableError.swift */,
+				01D19C936E6B03AC6FA08A1AE32E264D /* Typealiases.swift */,
+			);
+			path = ZalandoCommerceUI;
 			sourceTree = "<group>";
 		};
 		E282A9149AB9C4317DA16FC95992872E /* Product Stack View */ = {
@@ -792,31 +769,57 @@
 			name = "Product Stack View";
 			sourceTree = "<group>";
 		};
-		9C6A66A5A556A45C5E026F4127B82ED3 /* Transitions */ = {
+		E691A28AA4CA02D997A31508A1D209CA /* Recommendations */ = {
 			isa = PBXGroup;
 			children = (
-				FB0AE479E93B528CEBEBDE2248360FC8 /* CheckoutPresentationController.swift */,
-				E7326F095DD6700D41139230E310BCEF /* CheckoutTransitioningDelegate.swift */,
+				F0C59F0F1B4D224C35C930E444723667 /* CheckoutSummaryRecommendationCollectionView.swift */,
+				18F20D04DA990CA46AB18F3D675F37CA /* CheckoutSummaryRecommendationCollectionViewCell.swift */,
+				B3F07A87E83E1DEBDB1865E2907CB728 /* CheckoutSummaryRecommendationStackView.swift */,
 			);
-			name = Transitions;
+			name = Recommendations;
 			sourceTree = "<group>";
 		};
-		56B6B67FB4309A752BEF307761674C0C /* ZalandoCommerceUIViewController */ = {
+		E6D13C932902930881F6301B814CF749 /* Action Handler */ = {
 			isa = PBXGroup;
 			children = (
-				A31A9D970D4E8868524CD6E3EB3CD8EC /* ZalandoCommerceUIViewController.swift */,
-				6F2CFCC7712BF709A5F3F5DEBA7C7D12 /* GetArticleDetailsViewController.swift */,
+				4B759D64C6EABC479521B42EA8A9000E /* CheckoutSummaryActionHandler.swift */,
+				CC2ECB3EFBA30ECC93206084D7610A4D /* ArticleNotSelectedActionHandler.swift */,
+				B695ED9AE38DCEEEAD2A00D27011C293 /* NotLoggedInSummaryActionHandler.swift */,
+				F44D0ACECB75444CC6EE1D50A9D3C746 /* LoggedInSummaryActionHandler.swift */,
+				6078D4A1AB625611AA45DB4E49AB5B4C /* OrderPlacedSummaryActionHandler.swift */,
+				EA47A184EA2B2B6DDAA810E89F02F093 /* GuestCheckoutSummaryActionHandler.swift */,
+				CFCD032DF8A2E79977BF908AAB57EB36 /* GuestAddressActionHandler.swift */,
 			);
-			name = ZalandoCommerceUIViewController;
+			name = "Action Handler";
 			sourceTree = "<group>";
 		};
-		C4D85706D482B10CDD44812A3868D4FA /* ToC */ = {
+		E8D20FBF9FB7F901D3723DE5A2B02EF7 /* Commons */ = {
 			isa = PBXGroup;
 			children = (
-				E7C7B2D5D6D093DF7A55F90B92A24016 /* LegalController.swift */,
-				61CD846C118AA90A409CE0D20AFD2A54 /* ToCViewController.swift */,
+				6C4CE105713E71683BBCAAE89B2D5413 /* Array.swift */,
+				C9D429CD452E703A4AD44577F3498E0B /* Bundle.swift */,
+				A9544E6ABBF7C8B9F04317197E62B246 /* Debug.swift */,
+				57FD2FCFE0E9110A3F1FC878C99D4CFA /* HTTP.swift */,
+				70CA93C72D40AAE1AEF611A67091C780 /* HTTPURLResponse.swift */,
+				717114585547AD240FD55D14D07DD40B /* String.swift */,
+				C3DDD69019EE322ADF9BA3570E3BDA87 /* URL.swift */,
+				75E5BB9BB7FD1D817129B1E440BDCD18 /* URLComponents.swift */,
+				3416C9B8ADE8A177DBA92726729F3BC9 /* URLQueryItem.swift */,
+				74539E3C7DDBC23A6326D2F223EFF887 /* URLRequest.swift */,
+				0ADB47C3AE6E3CE44054E3948D0FF3D3 /* URLStringConvertible.swift */,
 			);
-			name = ToC;
+			name = Commons;
+			path = ../../Commons;
+			sourceTree = "<group>";
+		};
+		FF5257C02EAD6274B6D21E06D88A3386 /* CommonsTests */ = {
+			isa = PBXGroup;
+			children = (
+				5B9A3A5FD854911885F4AB63625A5A7D /* TestConsts.swift */,
+				8791E5F5A7024421EA0EEE98DC11D441 /* TestOptions.swift */,
+			);
+			name = CommonsTests;
+			path = ../../CommonsTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -832,26 +835,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		D81CF60E65A480EE083E531F999B16E7 /* ZalandoCommerceUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BDA10044830C85D6155BB0F0ED5A1536 /* Build configuration list for PBXNativeTarget "ZalandoCommerceUITests" */;
-			buildPhases = (
-				7FE84DF6C9BA63F0A88BE0DD85207CDB /* Sources */,
-				7ECC195D3D12D9BAE2B3C2DFAA139258 /* Copy Frameworks */,
-				EB32529B088F6360D435857ACB2E46B4 /* Frameworks */,
-				BC2C92485B3FFE35D1AFC87FF353A93D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				8A14758A6D79CD7EAA60A7EA1CC869BF /* PBXTargetDependency */,
-				C43DC2BDBBE26F73F5F9B63409E5F2BB /* PBXTargetDependency */,
-			);
-			name = ZalandoCommerceUITests;
-			productName = ZalandoCommerceUITests;
-			productReference = 5709C5C2F5DE2458AA84EAE0AE4353B0 /* ZalandoCommerceUITests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		AA879DC78BACBD118871C51700A71377 /* ZalandoCommerceUITestsHostsApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6D9655964568F867081C510CC7F95AAB /* Build configuration list for PBXNativeTarget "ZalandoCommerceUITestsHostsApp" */;
@@ -888,6 +871,26 @@
 			productReference = 658EF98940E9CE9CF2AE7888FBFEE887 /* ZalandoCommerceUI.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		D81CF60E65A480EE083E531F999B16E7 /* ZalandoCommerceUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BDA10044830C85D6155BB0F0ED5A1536 /* Build configuration list for PBXNativeTarget "ZalandoCommerceUITests" */;
+			buildPhases = (
+				7FE84DF6C9BA63F0A88BE0DD85207CDB /* Sources */,
+				7ECC195D3D12D9BAE2B3C2DFAA139258 /* Copy Frameworks */,
+				EB32529B088F6360D435857ACB2E46B4 /* Frameworks */,
+				BC2C92485B3FFE35D1AFC87FF353A93D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8A14758A6D79CD7EAA60A7EA1CC869BF /* PBXTargetDependency */,
+				C43DC2BDBBE26F73F5F9B63409E5F2BB /* PBXTargetDependency */,
+			);
+			name = ZalandoCommerceUITests;
+			productName = ZalandoCommerceUITests;
+			productReference = 5709C5C2F5DE2458AA84EAE0AE4353B0 /* ZalandoCommerceUITests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -898,11 +901,6 @@
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Zalando SE";
 				TargetAttributes = {
-					D81CF60E65A480EE083E531F999B16E7 = {
-						CreatedOnToolsVersion = 7.3.1;
-						LastSwiftMigration = 0810;
-						TestTargetID = AA879DC78BACBD118871C51700A71377;
-					};
 					AA879DC78BACBD118871C51700A71377 = {
 						CreatedOnToolsVersion = 8.1;
 						LastSwiftMigration = 0810;
@@ -917,6 +915,11 @@
 						CreatedOnToolsVersion = 7.3.1;
 						LastSwiftMigration = 0810;
 						ProvisioningStyle = Manual;
+					};
+					D81CF60E65A480EE083E531F999B16E7 = {
+						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0810;
+						TestTargetID = AA879DC78BACBD118871C51700A71377;
 					};
 				};
 			};
@@ -945,6 +948,14 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		63DFA42A9A356DDF31EBC4024371803A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31DEE7B8823564E1C1D12F24FF17A11E /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BC2C92485B3FFE35D1AFC87FF353A93D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -958,14 +969,6 @@
 			files = (
 				542671B12533C3CC0E8DDDBECC09352C /* Assets.xcassets in Resources */,
 				D6FA9678908F5D7AAB45C312CBDAD56C /* Localizable.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		63DFA42A9A356DDF31EBC4024371803A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				31DEE7B8823564E1C1D12F24FF17A11E /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -990,40 +993,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		FA80D2C49A843C0B8D206BA087C013FE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				717D710EE4D90F9421BFAC4D0E8337AE /* TestsHostAppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7FE84DF6C9BA63F0A88BE0DD85207CDB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9AF4A7420530FD55F3270E18D4FC28F0 /* UITestCase.swift in Sources */,
-				4A1F51A740901EF4E0E69AEB70E12C74 /* TestConsts.swift in Sources */,
-				CAFA6AED9B949D3A2BED87DAE53F7A84 /* LoggedInAddressListActionHandlerTests.swift in Sources */,
-				6231640BA790459490DC9D4BD3E0D439 /* AsyncTests.swift in Sources */,
-				2433F73A7A884865D4F9C2DF679F57FF /* TestOptions.swift in Sources */,
-				B9D176CD777973B26DFF03F6220CD9BD /* AddressFormViewControllerTests.swift in Sources */,
-				A9DB7B20D3496C851B0C55DAD89E0ED2 /* UIViewTests.swift in Sources */,
-				B2EEC09C7CC6649FF02932B25751BBB5 /* CheckoutSummaryEditProductStackViewTests.swift in Sources */,
-				60D0643E45D98EEE42E53567B717F75E /* EditAddressTypeTests.swift in Sources */,
-				5646463BD18407B1EC8F01BF1841FEC1 /* URLTests.swift in Sources */,
-				B9DFAE4DB47D9D260A259DF27B26AAED /* GuestAddressManagerTests.swift in Sources */,
-				F773F66A6A0782814843C5310CF1ED56 /* AddressCheckViewControllerTests.swift in Sources */,
-				8953D0213A82994B484449E9F680ED72 /* FormValidatorTests.swift in Sources */,
-				320565B0B874FF93739AED61BD4049BC /* PaymentViewControllerTests.swift in Sources */,
-				A4D75843DA1BDFE7267CADCC95F2E6FB /* InjectorTests.swift in Sources */,
-				1CD6EF24D7111A8644CFB541266B568E /* URLAuthorizationTests.swift in Sources */,
-				4E9CCA19257B26F73E0708FAC416E990 /* LoggedInSummaryActionHandlerTests.swift in Sources */,
-				FE59244DE4D13D162EF9C1DC81B09A5B /* LocalizationTests.swift in Sources */,
-				F9DD50B88D4565E2C514362E3230CFE6 /* GuestSummaryActionHandlerTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		049B82B9CD9B91E3D50DF00874DB2FCC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1033,6 +1002,7 @@
 				59FB32FF17BB93EE0FE9635DBCF22A5A /* AddressFormActionHandler.swift in Sources */,
 				245AE8DB35932C1631E314F75E7889E7 /* AddAddressTableViewCell.swift in Sources */,
 				927606DCCD35E65966A005072E603FC4 /* ZalandoCommerceUI.swift in Sources */,
+				E96E0EE81E71771500C6532F /* CheckoutSummaryCouponStackView.swift in Sources */,
 				1DA6CC84D925928285310A030BFDBCCA /* AddressFormStackView.swift in Sources */,
 				5D8520161E48076B671DF5CA07E1B303 /* Injector.swift in Sources */,
 				0EBD98338BBC7268297F1B4996C1D76D /* AddressFormType.swift in Sources */,
@@ -1153,6 +1123,40 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7FE84DF6C9BA63F0A88BE0DD85207CDB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AF4A7420530FD55F3270E18D4FC28F0 /* UITestCase.swift in Sources */,
+				4A1F51A740901EF4E0E69AEB70E12C74 /* TestConsts.swift in Sources */,
+				CAFA6AED9B949D3A2BED87DAE53F7A84 /* LoggedInAddressListActionHandlerTests.swift in Sources */,
+				6231640BA790459490DC9D4BD3E0D439 /* AsyncTests.swift in Sources */,
+				2433F73A7A884865D4F9C2DF679F57FF /* TestOptions.swift in Sources */,
+				B9D176CD777973B26DFF03F6220CD9BD /* AddressFormViewControllerTests.swift in Sources */,
+				A9DB7B20D3496C851B0C55DAD89E0ED2 /* UIViewTests.swift in Sources */,
+				B2EEC09C7CC6649FF02932B25751BBB5 /* CheckoutSummaryEditProductStackViewTests.swift in Sources */,
+				60D0643E45D98EEE42E53567B717F75E /* EditAddressTypeTests.swift in Sources */,
+				5646463BD18407B1EC8F01BF1841FEC1 /* URLTests.swift in Sources */,
+				B9DFAE4DB47D9D260A259DF27B26AAED /* GuestAddressManagerTests.swift in Sources */,
+				F773F66A6A0782814843C5310CF1ED56 /* AddressCheckViewControllerTests.swift in Sources */,
+				8953D0213A82994B484449E9F680ED72 /* FormValidatorTests.swift in Sources */,
+				320565B0B874FF93739AED61BD4049BC /* PaymentViewControllerTests.swift in Sources */,
+				A4D75843DA1BDFE7267CADCC95F2E6FB /* InjectorTests.swift in Sources */,
+				1CD6EF24D7111A8644CFB541266B568E /* URLAuthorizationTests.swift in Sources */,
+				4E9CCA19257B26F73E0708FAC416E990 /* LoggedInSummaryActionHandlerTests.swift in Sources */,
+				FE59244DE4D13D162EF9C1DC81B09A5B /* LocalizationTests.swift in Sources */,
+				F9DD50B88D4565E2C514362E3230CFE6 /* GuestSummaryActionHandlerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA80D2C49A843C0B8D206BA087C013FE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				717D710EE4D90F9421BFAC4D0E8337AE /* TestsHostAppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1185,6 +1189,25 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		038F73D499651D132DD26477526F7D65 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1.1.7;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = ZalandoCommerceUI/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zalando.commerce.ui;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
 		0F230B3C6BA8D2659EAD467DD2551770 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1202,23 +1225,7 @@
 			};
 			name = Debug;
 		};
-		A2B8A7CF9CC011B69F497CA7D17C0654 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				CODE_SIGN_ENTITLEMENTS = ZalandoCommerceUITestsHostsApp/ZalandoCommerceUITestsHostsApp.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = J67E9B6234;
-				INFOPLIST_FILE = ZalandoCommerceUITestsHostsApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.zalando.commerce.ui-tests-host-app";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		038F73D499651D132DD26477526F7D65 /* Debug */ = {
+		15E94AB09CC74FCD21D2467CAF1BC4F1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1235,7 +1242,75 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
-			name = Debug;
+			name = Release;
+		};
+		5BCDC6E73D91B3E3710FBA4E4AEA323F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1.1.8;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../../Carthage/Build/iOS",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INSTALL_GROUP = everyone;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A2B8A7CF9CC011B69F497CA7D17C0654 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_ENTITLEMENTS = ZalandoCommerceUITestsHostsApp/ZalandoCommerceUITestsHostsApp.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = J67E9B6234;
+				INFOPLIST_FILE = ZalandoCommerceUITestsHostsApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zalando.commerce.ui-tests-host-app";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
 		};
 		B0B24A5DEA49A776BE3A0D5FCABF058A /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1296,76 +1371,17 @@
 			};
 			name = Debug;
 		};
-		5BCDC6E73D91B3E3710FBA4E4AEA323F /* Release */ = {
+		DE56603A3EB7017CA85C9B979518ADC4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.1.8;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/../../Carthage/Build/iOS",
-				);
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INSTALL_GROUP = everyone;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		15E94AB09CC74FCD21D2467CAF1BC4F1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1.1.8;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ZalandoCommerceUI/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				DEVELOPMENT_TEAM = J67E9B6234;
+				INFOPLIST_FILE = ZalandoCommerceUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zalando.commerce.ui;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zalando.commerce.ui-tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZalandoCommerceUITestsHostsApp.app/ZalandoCommerceUITestsHostsApp";
 			};
-			name = Release;
+			name = Debug;
 		};
 		F4FCE10F03713746D81A69209061D889 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1379,30 +1395,9 @@
 			};
 			name = Release;
 		};
-		DE56603A3EB7017CA85C9B979518ADC4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = J67E9B6234;
-				INFOPLIST_FILE = ZalandoCommerceUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.zalando.commerce.ui-tests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZalandoCommerceUITestsHostsApp.app/ZalandoCommerceUITestsHostsApp";
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BDA10044830C85D6155BB0F0ED5A1536 /* Build configuration list for PBXNativeTarget "ZalandoCommerceUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DE56603A3EB7017CA85C9B979518ADC4 /* Debug */,
-				F4FCE10F03713746D81A69209061D889 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		322FA3FD86BB7DD70F144E1952F1455C /* Build configuration list for PBXProject "ZalandoCommerceUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1417,6 +1412,15 @@
 			buildConfigurations = (
 				0F230B3C6BA8D2659EAD467DD2551770 /* Debug */,
 				A2B8A7CF9CC011B69F497CA7D17C0654 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BDA10044830C85D6155BB0F0ED5A1536 /* Build configuration list for PBXNativeTarget "ZalandoCommerceUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE56603A3EB7017CA85C9B979518ADC4 /* Debug */,
+				F4FCE10F03713746D81A69209061D889 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

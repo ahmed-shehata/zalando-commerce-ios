@@ -76,11 +76,18 @@ extension UIView {
         leftAnchor.constraint(equalTo: superview.leftAnchor).isActive = true
     }
 
-    func snap(toSuperview anchor: ViewAnchor, constant: CGFloat = 0) {
-        guard let superview = superview else { return }
-        _ = snap(toView: superview, anchor: anchor, constant: constant)
+    func centerInSuperview() {
+        centerHorizontallyInSuperview()
+        centerVerticallyInSuperview()
     }
 
+    @discardableResult
+    func snap(toSuperview anchor: ViewAnchor, constant: CGFloat = 0) -> NSLayoutConstraint? {
+        guard let superview = superview else { return nil }
+        return snap(toView: superview, anchor: anchor, constant: constant)
+    }
+
+    @discardableResult
     func snap(toView view: UIView, anchor: ViewAnchor, constant: CGFloat = 0) -> NSLayoutConstraint? {
         translatesAutoresizingMaskIntoConstraints = false
         let constraint = anchor.constraint(fromView: self, toView: view)
@@ -89,61 +96,80 @@ extension UIView {
         return constraint
     }
 
-    func snap(toTopViewController viewController: UIViewController) {
+    @discardableResult
+    func snap(toTopViewController viewController: UIViewController) -> NSLayoutConstraint? {
         translatesAutoresizingMaskIntoConstraints = false
-        topAnchor.constraint(equalTo: viewController.topLayoutGuide.bottomAnchor).isActive = true
+        let constraint = topAnchor.constraint(equalTo: viewController.topLayoutGuide.bottomAnchor)
+        constraint.isActive = true
+        return constraint
     }
 
-    func centerInSuperview() {
-        centerHorizontallyInSuperview()
-        centerVerticallyInSuperview()
+    @discardableResult
+    func centerHorizontallyInSuperview() -> NSLayoutConstraint? {
+        guard let superview = superview else { return nil }
+        translatesAutoresizingMaskIntoConstraints = false
+        let constraint = centerXAnchor.constraint(equalTo: superview.centerXAnchor)
+        constraint.isActive = true
+        return constraint
     }
 
-    func centerHorizontallyInSuperview() {
-        guard let superview = superview else { return }
+    @discardableResult
+    func centerVerticallyInSuperview() -> NSLayoutConstraint? {
+        guard let superview = superview else { return nil }
         translatesAutoresizingMaskIntoConstraints = false
-        centerXAnchor.constraint(equalTo: superview.centerXAnchor).isActive = true
+        let constraint = centerYAnchor.constraint(equalTo: superview.centerYAnchor)
+        constraint.isActive = true
+        return constraint
     }
 
-    func centerVerticallyInSuperview() {
-        guard let superview = superview else { return }
+    @discardableResult
+    func setSquareAspectRatio() -> NSLayoutConstraint? {
         translatesAutoresizingMaskIntoConstraints = false
-        centerYAnchor.constraint(equalTo: superview.centerYAnchor).isActive = true
-    }
-
-    func setSquareAspectRatio() {
-        translatesAutoresizingMaskIntoConstraints = false
-        widthAnchor.constraint(equalTo: heightAnchor, multiplier: 1).isActive = true
-    }
-
-}
-
-extension UIView {
-
-    func setWidth(equalToView view: UIView?, multiplier: CGFloat = 1) {
-        guard let view = view else { return }
-        translatesAutoresizingMaskIntoConstraints = false
-        widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: multiplier).isActive = true
-    }
-
-    func setWidth(equalToConstant width: CGFloat) {
-        translatesAutoresizingMaskIntoConstraints = false
-        widthAnchor.constraint(equalToConstant: width).isActive = true
+        let constraint = widthAnchor.constraint(equalTo: heightAnchor, multiplier: 1)
+        constraint.isActive = true
+        return constraint
     }
 
 }
 
 extension UIView {
 
-    func setHeight(equalToView view: UIView?, multiplier: CGFloat = 1) {
-        guard let view = view else { return }
+    @discardableResult
+    func setWidth(equalToView view: UIView?, multiplier: CGFloat = 1) -> NSLayoutConstraint? {
+        guard let view = view else { return nil }
         translatesAutoresizingMaskIntoConstraints = false
-        heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: multiplier).isActive = true
+        let constraint = widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: multiplier)
+        constraint.isActive = true
+        return constraint
     }
 
-    func setHeight(equalToConstant height: CGFloat) {
+    @discardableResult
+    func setWidth(equalToConstant width: CGFloat) -> NSLayoutConstraint? {
         translatesAutoresizingMaskIntoConstraints = false
-        heightAnchor.constraint(equalToConstant: height).isActive = true
+        let constraint = widthAnchor.constraint(equalToConstant: width)
+        constraint.isActive = true
+        return constraint
+    }
+
+}
+
+extension UIView {
+
+    @discardableResult
+    func setHeight(equalToView view: UIView?, multiplier: CGFloat = 1) -> NSLayoutConstraint? {
+        guard let view = view else { return nil }
+        translatesAutoresizingMaskIntoConstraints = false
+        let constraint = heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: multiplier)
+        constraint.isActive = true
+        return constraint
+    }
+
+    @discardableResult
+    func setHeight(equalToConstant height: CGFloat) -> NSLayoutConstraint? {
+        translatesAutoresizingMaskIntoConstraints = false
+        let constraint = heightAnchor.constraint(equalToConstant: height)
+        constraint.isActive = true
+        return constraint
     }
 
 }

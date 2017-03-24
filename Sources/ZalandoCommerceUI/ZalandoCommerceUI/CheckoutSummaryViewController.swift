@@ -87,6 +87,10 @@ extension CheckoutSummaryViewController {
 
         let paymentRecognizer = UITapGestureRecognizer(target: self, action: #selector(paymentAddressTapped))
         rootStackView.checkoutContainer.mainStackView.paymentStackView.addGestureRecognizer(paymentRecognizer)
+
+        rootStackView.checkoutContainer.mainStackView.couponStackView.couponUpdatedHandler = { [weak self] (coupon) in
+            self?.actionHandler?.handleCouponChanges(coupon: coupon)
+        }
     }
 
     fileprivate func setupNavigationBar() {

@@ -60,7 +60,7 @@ class APITestCase: XCTestCase {
                             "sales-channels": [
                                 [
                                     "locale": "de_DE",
-                                    "sales-channel": "82fe2e7f-8c4f-4aa1-9019-b6bde5594456",
+                                    "sales-channel": "01924c48-49bb-40c2-9c32-ab582e6db6f4",
                                     "toc_url": "https://www.zalando.de/agb/"
                                 ]
                             ],

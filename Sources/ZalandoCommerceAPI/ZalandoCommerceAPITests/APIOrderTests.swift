@@ -12,7 +12,8 @@ class APIOrderTests: APITestCase {
 
     func testCreateOrder() {
         waitForAPIConfigured { done, api in
-            api.createCheckout(from: self.cartId) { result in
+            let request = CreateCheckoutRequest(cartId: self.cartId)
+            api.createCheckout(request: request) { result in
                 guard case .success(let checkout) = result else {
                     return fail("Checkout missing")
                 }

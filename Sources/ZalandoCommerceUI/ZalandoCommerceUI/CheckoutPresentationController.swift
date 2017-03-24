@@ -7,7 +7,7 @@ import UIKit
 final class CheckoutPresentationController: UIPresentationController {
 
     fileprivate struct Constants {
-        static let defaultHeightRatio: CGFloat = UIScreen.isSmallScreen ? 1.0 : 0.75
+        static let defaultHeightRatio: CGFloat = 1.0 // UIScreen.isSmallScreen ? 1.0 : 0.75
     }
 
     fileprivate let heightRatio: CGFloat

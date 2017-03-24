@@ -7,12 +7,14 @@ import ZalandoCommerceAPI
 
 class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
 
-    let customer: Customer
     weak var dataSource: CheckoutSummaryActionHandlerDataSource?
     weak var delegate: CheckoutSummaryActionHandlerDelegate?
-    var dataModelDisplayedError: Error?
+    var displayedError: Error?
 
-    var cartCheckout: CartCheckout? {
+    let customer: Customer
+    var cart: Cart
+    var coupon: String?
+    var checkout: Checkout? {
         didSet {
             updateCheckout()
         }
@@ -20,68 +22,68 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
 
     fileprivate var addressCreationStrategy: AddressViewModelCreationStrategy?
 
-    static func create(customer: Customer, selectedArticle: SelectedArticle,
+    static func create(customer: Customer,
+                       selectedArticle: SelectedArticle,
                        completion: @escaping ResultCompletion<LoggedInSummaryActionHandler>) {
-        LoggedInSummaryActionHandler.createCartCheckout(selectedArticle: selectedArticle) { result in
-            switch result {
-            case .success(let cartCheckout):
-                let actionHandler = LoggedInSummaryActionHandler(customer: customer)
-                actionHandler.cartCheckout = cartCheckout
-                completion(.success(actionHandler))
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
-    }
 
-    fileprivate init(customer: Customer) {
-        self.customer = customer
-    }
+        let request = CartItemRequest(sku: selectedArticle.sku, quantity: selectedArticle.quantity)
+        ZalandoCommerceAPI.withLoader.createCart(cartItemRequests: [request]) { result in
+            guard let cart = result.process() else { return }
 
-    func handleSubmit() {
-        guard let dataSource = dataSource else { return }
-        guard shippingAddress != nil, billingAddress != nil else {
-            UserError.display(error: CheckoutError.missingAddress)
-            return
-        }
-        guard dataSource.dataModel.isPaymentSelected else {
-            UserError.display(error: CheckoutError.missingPaymentMethod)
-            return
-        }
-
-        createCartCheckout { [weak self] result in
-            guard let cartCheckout = result.process() else { return }
-            guard let checkout = cartCheckout.checkout else {
-                return UserError.display(error: CheckoutError.unclassified)
-            }
-
-            self?.cartCheckout = cartCheckout
-
-            if dataSource.dataModel.isPaymentSelected && self?.dataModelDisplayedError == nil {
-                ZalandoCommerceAPI.withLoader.createOrder(from: checkout) { result in
-                    guard let order = result.process() else { return }
-                    self?.handleConfirmation(forOrder: order)
+            LoggedInSummaryActionHandler.createCartCheckout(cart: cart, coupon: nil) { result in
+                switch result {
+                case .success(let cartCheckout):
+                    let actionHandler = LoggedInSummaryActionHandler(customer: customer, cart: cartCheckout.cart)
+                    actionHandler.checkout = cartCheckout.checkout
+                    completion(.success(actionHandler))
+                case .failure(let error):
+                    completion(.failure(error))
                 }
             }
         }
     }
 
+    fileprivate init(customer: Customer, cart: Cart) {
+        self.customer = customer
+        self.cart = cart
+    }
+
+    func handleSubmit() {
+        guard let dataSource = dataSource else { return }
+        guard shippingAddress != nil, billingAddress != nil else {
+            return UserError.display(error: CheckoutError.missingAddress)
+        }
+        guard dataSource.dataModel.isPaymentSelected else {
+            return UserError.display(error: CheckoutError.missingPaymentMethod)
+        }
+
+        createAndUpdateCartCheckout { [weak self] in
+            guard let checkout = self?.checkout else {
+                return UserError.display(error: CheckoutError.unclassified)
+            }
+
+            if dataSource.dataModel.isPaymentSelected && self?.displayedError == nil {
+                ZalandoCommerceAPI.withLoader.createOrder(from: checkout) { result in
+                    guard let order = result.process() else { return }
+                    self?.handleConfirmation(forOrder: order)
+                }
+            }
+
+        }
+    }
+
     func handlePaymentSelection() {
-        guard let paymentURL = cartCheckout?.checkout?.payment.selectionPageURL,
+        guard let paymentURL = checkout?.payment.selectionPageURL,
             let callbackURL = Config.shared?.payment.selectionCallbackURL else {
                 let error = !hasAddresses ? CheckoutError.missingAddress : CheckoutError.unclassified
-                UserError.display(error: error)
-                return
+                return UserError.display(error: error)
         }
 
         let paymentViewController = PaymentViewController(paymentURL: paymentURL, callbackURL: callbackURL)
         paymentViewController.paymentCompletion = { [weak self] paymentStatus in
             switch paymentStatus {
             case .redirect, .success:
-                self?.createCartCheckout { result in
-                    guard let cartCheckout = result.process() else { return }
-                    self?.cartCheckout = cartCheckout
-                }
+                self?.createAndUpdateCartCheckout()
             case .cancel:
                 break
             case .error, .guestRedirect:
@@ -120,6 +122,23 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
         }
     }
 
+    func handleCouponChanges(coupon: String?) {
+        guard coupon != self.coupon else { return }
+        guard checkout != nil else {
+            if shippingAddress == nil || billingAddress == nil {
+                UserError.display(error: CheckoutError.missingAddress)
+            } else if dataSource?.dataModel.isPaymentSelected != true {
+                UserError.display(error: CheckoutError.missingPaymentMethod)
+            } else {
+                UserError.display(error: CheckoutError.unclassified)
+            }
+            return
+        }
+
+        self.coupon = coupon
+        createAndUpdateCartCheckout()
+    }
+
     func updated(selectedArticle: SelectedArticle) {
         let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle,
                                                  shippingAddress: shippingAddress,
@@ -127,10 +146,13 @@ class LoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
                                                  totalPrice: selectedArticle.totalPrice)
         try? delegate?.updated(dataModel: dataModel)
 
-        if hasAddresses {
-            createCartCheckout { [weak self] result in
-                guard let cartCheckout = result.process() else { return }
-                self?.cartCheckout = cartCheckout
+        let request = CartItemRequest(sku: selectedArticle.sku, quantity: selectedArticle.quantity)
+        ZalandoCommerceAPI.withLoader.createCart(cartItemRequests: [request]) { [weak self] result in
+            guard let cart = result.process() else { return }
+            self?.cart = cart
+
+            if self?.hasAddresses == true {
+                self?.createAndUpdateCartCheckout()
             }
         }
     }
@@ -206,13 +228,13 @@ extension LoggedInSummaryActionHandler {
         guard let dataSource = dataSource, let delegate = delegate else { return }
         let selectedArticle = dataSource.dataModel.selectedArticle
         let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle,
-                                                 checkout: cartCheckout?.checkout,
+                                                 checkout: checkout,
                                                  order: order)
         do {
-            dataModelDisplayedError = nil
+            displayedError = nil
             try delegate.updated(dataModel: dataModel)
         } catch let error {
-            dataModelDisplayedError = error
+            displayedError = error
         }
         delegate.updated(layout: OrderPlacedLayout())
         delegate.updated(actionHandler: OrderPlacedSummaryActionHandler())
@@ -224,34 +246,56 @@ extension LoggedInSummaryActionHandler {
 
 }
 
-// MARK: – Create CartCheckout
+// MARK: – Create Cart & Checkout
 extension LoggedInSummaryActionHandler {
 
-    fileprivate func createCartCheckout(completion: @escaping ResultCompletion<CartCheckout>) {
-        guard let selectedArticle = dataSource?.dataModel.selectedArticle else { return }
-        LoggedInSummaryActionHandler.createCartCheckout(selectedArticle: selectedArticle,
+    fileprivate func createAndUpdateCartCheckout(completion: ((Void) -> Void)? = nil) {
+        createCartCheckout { [weak self] result in
+            guard let cartCheckout = result.process() else { return }
+            self?.cart = cartCheckout.cart
+            self?.checkout = cartCheckout.checkout
+            completion?()
+        }
+    }
+
+    fileprivate func createCartCheckout(completion: @escaping ResultCompletion<(cart: Cart, checkout: Checkout?)>) {
+        LoggedInSummaryActionHandler.createCartCheckout(cart: cart,
                                                         addresses: addresses,
+                                                        coupon: coupon,
                                                         completion: completion)
     }
 
-    fileprivate static func createCartCheckout(selectedArticle: SelectedArticle,
+    fileprivate static func createCartCheckout(cart: Cart,
                                                addresses: CheckoutAddresses? = nil,
-                                               completion: @escaping ResultCompletion<CartCheckout>) {
+                                               coupon: String?,
+                                               completion: @escaping ResultCompletion<(cart: Cart, checkout: Checkout?)>) {
 
-        ZalandoCommerceAPI.withLoader.createCartCheckout(for: selectedArticle, addresses: addresses) { result in
+        let coupons = [coupon].flatMap { $0 }
+        let checkoutRequest = CreateCheckoutRequest(cartId: cart.id, addresses: addresses, coupons: coupons)
+        ZalandoCommerceAPI.withLoader.createCheckout(request: checkoutRequest) { result in
+            let checkout: Checkout?
             switch result {
             case .failure(let error, _):
-                guard case let APIError.checkoutFailed(cart, _) = error else {
+                checkout = nil
+                guard case APIError.checkoutFailed(_) = error else {
                     completion(.failure(error))
                     return
                 }
+            case .success(let checkoutValue):
+                checkout = checkoutValue
+            }
 
-                completion(.success((cart: cart, checkout: nil)))
-                if addresses?.billingAddress != nil && addresses?.shippingAddress != nil {
-                    UserError.display(error: CheckoutError.checkoutFailure)
+            let requests = cart.items.map { CartItemRequest(sku: $0.sku, quantity: $0.quantity) }
+            ZalandoCommerceAPI.withLoader.createCart(cartItemRequests: requests) { result in
+                switch result {
+                case .failure(let error, _):
+                    completion(.failure(error))
+                case .success(let cart):
+                    completion(.success((cart: cart, checkout: checkout)))
+                    if checkout == nil && addresses?.billingAddress != nil && addresses?.shippingAddress != nil {
+                        UserError.display(error: CheckoutError.checkoutFailure)
+                    }
                 }
-            case .success(let checkoutCart):
-                completion(.success((cart: checkoutCart.cart, checkout: checkoutCart.checkout)))
             }
         }
     }
@@ -262,7 +306,7 @@ extension LoggedInSummaryActionHandler {
 extension LoggedInSummaryActionHandler {
 
     fileprivate func updateCheckout() {
-        updateDataModel(with: self.addresses, in: self.cartCheckout)
+        updateDataModel(with: self.addresses, in: self.checkout)
     }
 
     fileprivate func update(billingAddress newBillingAddress: BillingAddress? = nil,
@@ -270,34 +314,39 @@ extension LoggedInSummaryActionHandler {
         let newAddresses = CheckoutAddresses(shippingAddress: newShippingAddress ?? self.shippingAddress,
                                              billingAddress: newBillingAddress ?? self.billingAddress,
                                              autoFill: true)
-        updateDataModel(with: newAddresses, in: self.cartCheckout)
+        updateDataModel(with: newAddresses, in: self.checkout)
     }
 
     fileprivate func delete(billingAddress deleteBilling: Bool = false, shippingAddress deleteShipping: Bool = false) {
         let newAddresses = CheckoutAddresses(shippingAddress: deleteShipping ? nil : self.shippingAddress,
                                              billingAddress: deleteBilling ? nil : self.billingAddress)
         updateDataModel(with: newAddresses)
-        cartCheckout?.checkout = nil
+        checkout = nil
     }
 
-    fileprivate func updateDataModel(with addresses: CheckoutAddresses?, in cartCheckout: CartCheckout? = nil) {
+    fileprivate func updateDataModel(with addresses: CheckoutAddresses?, in checkout: Checkout? = nil) {
         guard let selectedArticle = dataSource?.dataModel.selectedArticle else { return }
 
         let addressesChanged = self.addressesChanged(withNewAddresses: addresses)
 
-        let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, cartCheckout: cartCheckout, addresses: addresses)
+        let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, cart: cart, checkout: checkout, addresses: addresses)
         do {
-            dataModelDisplayedError = nil
+            displayedError = nil
             try delegate?.updated(dataModel: dataModel)
+
+            if let couponError = checkout?.coupons.first?.error {
+                let error = CheckoutError.couponFailure(error: couponError)
+                UserError.display(error: error)
+                displayedError = error
+                coupon = nil
+            }
+
         } catch let error {
-            dataModelDisplayedError = error
+            displayedError = error
         }
 
-        if (cartCheckout?.checkout == nil || addressesChanged) && hasAddresses {
-            createCartCheckout { [weak self] result in
-                guard let cartCheckout = result.process() else { return }
-                self?.cartCheckout = cartCheckout
-            }
+        if (checkout == nil || addressesChanged) && hasAddresses {
+            createAndUpdateCartCheckout()
         }
     }
 

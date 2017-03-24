@@ -29,23 +29,10 @@ extension ZalandoCommerceAPI {
             }
         }
 
-        static func createCartCheckout(for selectedArticle: SelectedArticle,
-                                       addresses: CheckoutAddresses? = nil,
-                                       completion: @escaping APIResultCompletion<CartCheckout>) {
-            ZalandoCommerceUIViewController.displayLoader { hideLoader in
-                let cartItemRequest = CartItemRequest(sku: selectedArticle.sku, quantity: selectedArticle.quantity)
-                ZalandoCommerceAPI.shared?.createCartCheckout(with: cartItemRequest, addresses: addresses) { result in
-                    hideLoader()
-                    completion(result)
-                }
-            }
-        }
-
-        static func createCheckout(from cartId: CartId,
-                                   addresses: CheckoutAddresses? = nil,
+        static func createCheckout(request: CreateCheckoutRequest,
                                    completion: @escaping APIResultCompletion<Checkout>) {
             ZalandoCommerceUIViewController.displayLoader { hideLoader in
-                ZalandoCommerceAPI.shared?.createCheckout(from: cartId, addresses: addresses) { result in
+                ZalandoCommerceAPI.shared?.createCheckout(request: request) { result in
                     hideLoader()
                     completion(result)
                 }

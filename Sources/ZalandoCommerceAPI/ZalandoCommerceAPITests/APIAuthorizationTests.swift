@@ -56,7 +56,7 @@ class APIAuthorizationTests: APITestCase {
     }
 
     func testClientConfig() {
-        expect(self.api?.config.salesChannel.identifier) == "82fe2e7f-8c4f-4aa1-9019-b6bde5594456"
+        expect(self.api?.config.salesChannel.identifier) == "01924c48-49bb-40c2-9c32-ab582e6db6f4"
         expect(self.api?.config.clientId) == "atlas_Y2M1MzA"
         expect(self.api?.config.interfaceLocale.identifier) == "en_DE"
         expect(self.api?.config.availableSalesChannels.count) == 16

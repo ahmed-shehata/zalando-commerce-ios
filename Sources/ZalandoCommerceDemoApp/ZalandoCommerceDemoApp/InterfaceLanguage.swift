@@ -28,8 +28,8 @@ enum InterfaceLanguage: String {
 
 enum SalesChannel: String {
 
-    case germany = "82fe2e7f-8c4f-4aa1-9019-b6bde5594456"
-    case uk = "9c053041-b75d-4c4f-a3e2-4a484f70a809"
+    case germany = "01924c48-49bb-40c2-9c32-ab582e6db6f4"
+    case uk = "83c4e87f-6819-41bb-af61-46cddb8453f5"
 
     static let all: [SalesChannel] = [.germany, .uk]
 

@@ -58,7 +58,7 @@ class LoggedInSummaryActionHandlerTests: UITestCase {
     }
 
     func testShowingPaymentSelectionScreenWithEmptyCartCheckout() {
-        actionHandler?.cartCheckout = nil
+        actionHandler?.checkout = nil
         actionHandler?.handlePaymentSelection()
         expect(self.errorDisplayed).toEventually(beTrue())
     }
@@ -206,14 +206,28 @@ extension LoggedInSummaryActionHandlerTests {
         return loggedInActionHandler
     }
 
-    fileprivate func createCartCheckout() -> CartCheckout? {
-        guard let article = article else { return nil }
-        var cartCheckout: CartCheckout?
+    fileprivate func createCartCheckout() -> (cart: Cart, checkout: Checkout?)? {
+        guard let sku = article?.availableUnits.first?.id else { return nil }
+        var cartCheckout: (cart: Cart, checkout: Checkout?)?
         waitUntil(timeout: 10) { done in
-            ZalandoCommerceAPI.withLoader.createCartCheckout(for: SelectedArticle(article: article)) { result in
-                guard let checkoutCart = result.process() else { return fail() }
-                cartCheckout = (cart: checkoutCart.cart, checkout: checkoutCart.checkout)
-                done()
+
+            let cartItemRequest = CartItemRequest(sku: sku, quantity: 1)
+            ZalandoCommerceAPI.withLoader.createCart(cartItemRequests: [cartItemRequest]) { result in
+                guard let cart = result.process() else { return }
+
+                let checkoutRequest = CreateCheckoutRequest(cartId: cart.id)
+                ZalandoCommerceAPI.withLoader.createCheckout(request: checkoutRequest) { result in
+                    let checkout: Checkout?
+                    switch result {
+                    case .failure(let error, _):
+                        checkout = nil
+                        guard case APIError.checkoutFailed(_) = error else { return fail() }
+                    case .success(let checkoutValue):
+                        checkout = checkoutValue
+                    }
+                    cartCheckout = (cart: cart, checkout: checkout)
+                    done()
+                }
             }
         }
         return cartCheckout
@@ -267,7 +281,7 @@ extension LoggedInSummaryActionHandlerTests {
                                         delivery: checkout?.delivery)
     }
 
-    fileprivate func createDataModel(fromCartCheckout cartCheckout: CartCheckout?) -> CheckoutSummaryDataModel? {
+    fileprivate func createDataModel(fromCartCheckout cartCheckout: (cart: Cart, checkout: Checkout?)?) -> CheckoutSummaryDataModel? {
         let totalPrice = cartCheckout?.cart.grossTotal ?? Money.zero
         return createDataModel(fromCheckout: cartCheckout?.checkout, totalPrice: totalPrice)
     }
@@ -278,6 +292,7 @@ extension LoggedInSummaryActionHandlerTests {
                         cartId: checkout.cartId,
                         delivery: checkout.delivery,
                         payment: payment,
+                        coupons: checkout.coupons,
                         billingAddress: checkout.billingAddress,
                         shippingAddress: checkout.shippingAddress)
     }

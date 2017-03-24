@@ -14,6 +14,7 @@ protocol CheckoutSummaryLayout {
     var showsDetailArrow: Bool { get }
     var showsGuestStackView: Bool { get }
     var showsOrderStackView: Bool { get }
+    var showsCouponStackView: Bool { get }
     var showsRecommendationStackView: Bool { get }
     var allowsArticleRefine: Bool { get }
 
@@ -30,6 +31,7 @@ struct ArticleNotSelectedLayout: CheckoutSummaryLayout {
     let showsDetailArrow = true
     let showsGuestStackView = false
     let showsOrderStackView = false
+    let showsCouponStackView = false
     let showsRecommendationStackView = false
     let allowsArticleRefine = false
 
@@ -46,6 +48,7 @@ struct NotLoggedInLayout: CheckoutSummaryLayout {
     let showsDetailArrow = true
     let showsGuestStackView = false
     let showsOrderStackView = false
+    let showsCouponStackView = false
     let showsRecommendationStackView = false
     let allowsArticleRefine = true
 
@@ -62,6 +65,7 @@ struct LoggedInLayout: CheckoutSummaryLayout {
     let showsDetailArrow = true
     let showsGuestStackView = false
     let showsOrderStackView = false
+    let showsCouponStackView = true
     let showsRecommendationStackView = false
     let allowsArticleRefine = true
 
@@ -80,6 +84,7 @@ struct OrderPlacedLayout: CheckoutSummaryLayout {
     let showsDetailArrow = false
     let showsGuestStackView = false
     let showsOrderStackView = true
+    let showsCouponStackView = false
     let showsRecommendationStackView = Config.shared?.useRecommendations ?? Options.Defaults.useRecommendations
     let allowsArticleRefine = false
 
@@ -96,6 +101,7 @@ struct GuestCheckoutLayout: CheckoutSummaryLayout {
     let showsDetailArrow = true
     let showsGuestStackView = true
     let showsOrderStackView = false
+    let showsCouponStackView = false
     let showsRecommendationStackView = false
     let allowsArticleRefine = true
 
@@ -112,6 +118,7 @@ struct GuestOrderPlacedLayout: CheckoutSummaryLayout {
     let showsDetailArrow = false
     let showsGuestStackView = true
     let showsOrderStackView = true
+    let showsCouponStackView = false
     let showsRecommendationStackView = Config.shared?.useRecommendations ?? Options.Defaults.useRecommendations
     let allowsArticleRefine = false
 

@@ -14,6 +14,7 @@ struct CheckoutSummaryDataModel {
     var shippingPrice: Money {
         return Money(amount: 0, currency: totalPrice.currency)
     }
+    let discount: Cart.Discount?
     let totalPrice: Money
     let delivery: Delivery?
     let email: String?
@@ -23,6 +24,7 @@ struct CheckoutSummaryDataModel {
          shippingAddress: FormattableAddress? = nil,
          billingAddress: FormattableAddress? = nil,
          paymentMethod: String? = nil,
+         discount: Cart.Discount? = nil,
          totalPrice: Money,
          delivery: Delivery? = nil,
          email: String? = nil,
@@ -32,6 +34,7 @@ struct CheckoutSummaryDataModel {
         self.shippingAddress = shippingAddress
         self.billingAddress = billingAddress
         self.paymentMethod = paymentMethod
+        self.discount = discount
         self.totalPrice = totalPrice
         self.delivery = delivery
         self.email = email
@@ -66,6 +69,14 @@ extension CheckoutSummaryDataModel {
         return Config.shared?.salesChannel.termsAndConditionsURL
     }
 
+    var discountAmount: MoneyAmount {
+        return discount?.grossTotal.amount ?? 0
+    }
+
+    var subtotal: Money {
+        return Money(amount: totalPrice.amount - discountAmount, currency: totalPrice.currency)
+    }
+
 }
 
 extension CheckoutSummaryDataModel {
@@ -76,7 +87,9 @@ extension CheckoutSummaryDataModel {
     }
 
     private func checkPriceChange(comparedTo otherDataModel: CheckoutSummaryDataModel) throws {
-        if otherDataModel.totalPrice != totalPrice && selectedArticle == otherDataModel.selectedArticle {
+        if otherDataModel.totalPrice != totalPrice
+            && selectedArticle == otherDataModel.selectedArticle
+            && discount == otherDataModel.discount {
             throw CheckoutError.priceChanged(newPrice: totalPrice)
         }
     }
@@ -91,13 +104,14 @@ extension CheckoutSummaryDataModel {
 
 extension CheckoutSummaryDataModel {
 
-    init(selectedArticle: SelectedArticle, cartCheckout: CartCheckout?, addresses: CheckoutAddresses? = nil) {
+    init(selectedArticle: SelectedArticle, cart: Cart?, checkout: Checkout?, addresses: CheckoutAddresses? = nil) {
         self.selectedArticle = selectedArticle
-        self.shippingAddress = addresses?.shippingAddress ?? cartCheckout?.checkout?.shippingAddress
-        self.billingAddress = addresses?.billingAddress ?? cartCheckout?.checkout?.billingAddress
-        self.paymentMethod = cartCheckout?.checkout?.payment.selected?.localized
-        self.totalPrice = cartCheckout?.cart.grossTotal ?? selectedArticle.totalPrice
-        self.delivery = cartCheckout?.checkout?.delivery
+        self.shippingAddress = addresses?.shippingAddress ?? checkout?.shippingAddress
+        self.billingAddress = addresses?.billingAddress ?? checkout?.billingAddress
+        self.paymentMethod = checkout?.payment.selected?.localized
+        self.discount = cart?.totalDiscount
+        self.totalPrice = cart?.grossTotal ?? selectedArticle.totalPrice
+        self.delivery = checkout?.delivery
         self.email = nil
         self.orderNumber = nil
     }
@@ -107,6 +121,7 @@ extension CheckoutSummaryDataModel {
         self.shippingAddress = order.shippingAddress
         self.billingAddress = order.billingAddress
         self.paymentMethod = checkout?.payment.selected?.localized
+        self.discount = nil
         self.totalPrice = order.grossTotal
         self.delivery = checkout?.delivery
         self.email = nil
@@ -118,6 +133,7 @@ extension CheckoutSummaryDataModel {
         self.shippingAddress = addresses?.shippingAddress ?? guestCheckout?.shippingAddress
         self.billingAddress = addresses?.billingAddress ?? guestCheckout?.billingAddress
         self.paymentMethod = guestCheckout?.payment.method?.localized
+        self.discount = nil
         self.totalPrice = guestCheckout?.cart.grossTotal ?? selectedArticle.totalPrice
         self.delivery = guestCheckout?.delivery
         self.email = email
@@ -129,6 +145,7 @@ extension CheckoutSummaryDataModel {
         self.shippingAddress = guestOrder.shippingAddress
         self.billingAddress = guestOrder.billingAddress
         self.paymentMethod = guestCheckout?.payment.method?.localized
+        self.discount = nil
         self.totalPrice = guestOrder.grossTotal
         self.delivery = guestCheckout?.delivery
         self.email = email

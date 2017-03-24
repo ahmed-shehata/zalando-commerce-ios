@@ -21,7 +21,9 @@ class NotLoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
             LoggedInSummaryActionHandler.create(customer: customer, selectedArticle: selectedArticle) { result in
                 guard let actionHandler = result.process() else { return }
 
-                let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle, cartCheckout: actionHandler.cartCheckout)
+                let dataModel = CheckoutSummaryDataModel(selectedArticle: selectedArticle,
+                                                         cart: actionHandler.cart,
+                                                         checkout: actionHandler.checkout)
                 try? delegate.updated(dataModel: dataModel)
                 delegate.updated(layout: LoggedInLayout())
                 delegate.updated(actionHandler: actionHandler)
@@ -50,6 +52,10 @@ class NotLoggedInSummaryActionHandler: CheckoutSummaryActionHandler {
             let checkoutAddress = CheckoutAddresses(shippingAddress: nil, billingAddress: newAddress, autoFill: true)
             self?.switchToGuestCheckout(checkoutAddress: checkoutAddress)
         }
+    }
+
+    func handleCouponChanges(coupon: String?) {
+        // Coupon should have no action if the user is not logged in
     }
 
     func updated(selectedArticle: SelectedArticle) {

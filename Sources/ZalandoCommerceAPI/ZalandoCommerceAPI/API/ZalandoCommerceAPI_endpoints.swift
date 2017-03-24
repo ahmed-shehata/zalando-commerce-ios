@@ -40,6 +40,9 @@ extension ZalandoCommerceAPI {
     /**
      Creates `Cart` with given `CartItemRequest` items.
 
+     Handled cases:
+     - when article has no stock available `completion` returns `Result.failure` with `CheckoutError.outOfStock`
+
      - Parameters:
          - cartItemRequests: list articles SKUs with quantities to be added to cart
          - completion: completes async with `APIResult.success` with `Cart` model created.
@@ -48,47 +51,11 @@ extension ZalandoCommerceAPI {
                            completion: @escaping APIResultCompletion<Cart>) {
         let parameters = CartRequest(items: cartItemRequests, replaceItems: true).toJSON()
         let endpoint = CreateCartEndpoint(config: config, parameters: parameters)
-        client.fetch(from: endpoint, completion: completion)
-    }
-
-    /**
-     Creates `Cart`, and makes `Checkout` from it. Additionally handle specific corner cases.
-     
-     Handled cases:
-        - when article has no stock available `completion` returns `Result.failure` with `CheckoutError.outOfStock`
-        - when checkout creation fails `completion` returns `Result.failure` with `APIError.checkoutFailed` and created `Cart`
-
-     - Parameters:
-         - cartItemRequest: article SKU and quantity to be added to the cart
-         - addresses: addresses to be passed to the checkout
-         - completion: completes async with `APIResult.success` with `CartCheckout`.
-     */
-    public func createCartCheckout(with cartItemRequest: CartItemRequest,
-                                   addresses: CheckoutAddresses? = nil,
-                                   completion: @escaping APIResultCompletion<CartCheckout>) {
-        createCart(with: [cartItemRequest]) { cartResult in
-            switch cartResult {
-            case .failure(let error, _):
-                completion(.failure(error, nil))
-
-            case .success(let cart):
-                guard cart.hasStock(of: cartItemRequest.sku) else {
-                    return completion(.failure(CheckoutError.outOfStock, nil))
-                }
-
-                self.createCheckout(from: cart.id, addresses: addresses) { checkoutResult in
-                    switch checkoutResult {
-                    case .failure(let error, _):
-                        if case let APIError.backend(status, _, _, _) = error, status == HTTPStatus.conflict {
-                            let checkoutError = APIError.checkoutFailed(cart: cart, error: error)
-                            completion(.failure(checkoutError, nil))
-                        } else {
-                            completion(.failure(error, nil))
-                        }
-                    case .success(let checkout):
-                        completion(.success((checkout: checkout, cart: cart)))
-                    }
-                }
+        client.fetch(from: endpoint) { (result: APIResult<Cart>) in
+            if case .success(let cart) = result, !cart.hasStocks(of: cartItemRequests.map { $0.sku }) {
+                completion(.failure(CheckoutError.outOfStock, nil))
+            } else {
+                completion(result)
             }
         }
     }
@@ -96,17 +63,25 @@ extension ZalandoCommerceAPI {
     /**
      Creates `Checkout` based on `CartId`.
 
+     Handled cases:
+       - when checkout creation fails (probably missing addresses) `completion` returns `Result.failure` with `APIError.checkoutFailed`
+
      - Parameters:
-       - cartId: identifier of a cart (`Cart.id`)
-       - addresses: set of billing and shipping addresses
+       - request: `CreateCheckoutRequest` object containing the cartId, addresses and coupons,
        - completion: completes async with `APIResult.success` with `Checkout`.
      */
-    public func createCheckout(from cartId: CartId,
-                               addresses: CheckoutAddresses? = nil,
+    public func createCheckout(request: CreateCheckoutRequest,
                                completion: @escaping APIResultCompletion<Checkout>) {
-        let parameters = CreateCheckoutRequest(cartId: cartId, addresses: addresses).toJSON()
-        let endpoint = CreateCheckoutEndpoint(config: config, parameters: parameters)
-        client.fetch(from: endpoint, completion: completion)
+        let endpoint = CreateCheckoutEndpoint(config: config, parameters: request.toJSON())
+        client.fetch(from: endpoint) { (result: APIResult<Checkout>) in
+            if case .failure(let error, _) = result {
+                if case APIError.backend(let status, _, _, _) = error, status == HTTPStatus.conflict {
+                    return completion(.failure(APIError.checkoutFailed(error: error), nil))
+                }
+            }
+
+            completion(result)
+        }
     }
 
     /**
