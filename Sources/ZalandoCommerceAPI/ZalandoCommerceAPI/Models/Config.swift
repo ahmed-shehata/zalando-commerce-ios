@@ -4,44 +4,92 @@
 
 import Foundation
 
-// TODO: document it, please...
-
+/**
+ The Configuration struct used to configure the app
+ Most properties are returned from the config Endpoint
+ */
 public struct Config {
 
+    /// The base URL that should be used when calling any Catalog endpoint
     public let catalogURL: URL
+
+    /// The base URL that should be used when calling any Checkout endpoint
     public let checkoutURL: URL
+
+    /// The base URL that should be used when calling any Checkout Gateway endpoint
     public let checkoutGatewayURL: URL
+
+    /// The login URL that should be used in a webview to allow the user to login with his Zalando account
     public let loginURL: URL
 
+
+    /// The partner's client ID
     public let clientId: String
+
+    /// Boolean flag indicates whether the Sandbox or live environment are turned on
     public let useSandboxEnvironment: Bool
+
+    /// Boolean flag indicates whether the current partner is allowed to checkout as guest checkout or not
     public let guestCheckoutEnabled: Bool
+
+    /** 
+     Boolean flag that is taken from the Options that is used to configure the SDK
+     
+     - SeeAlso: `ZalandoCommerceAPI.Options`
+    */
     public let useRecommendations: Bool
 
+
+    /// Payment redirect URLs Stuct
     public let payment: Payment
+
+    /// The current sales channel
     public let salesChannel: SalesChannel
+
+    /// All the available sales channels for the given client ID
     public let availableSalesChannels: [SalesChannel]
 
+
+    /** 
+     Locale contains the current country and language information, It is fetched from the Options that is used to configure the SDK 
+     and also from the Saleschannel used
+     
+     - SeeAlso: `ZalandoCommerceAPI.Options`
+     */
     public let interfaceLocale: Locale
 
 }
 
 extension Config {
 
+    /// Payment redirect URLs Stuct
     public struct Payment {
+
+        /// The URL that the webview will be redirected to after the payment selection is done
         public let selectionCallbackURL: URL
+
+        /// The URL that the webview will be redirected to after the user finish with the 3rd party payments (ex: paypal)
         public let thirdPartyCallbackURL: URL
     }
 
+    /// Sales Channel Struct
     public struct SalesChannel {
+
+        /// Sales Channel ID
         public let identifier: String
+
+        /// Sales Channel Locale containing the supporting country and langauge
         public let locale: Locale
+
+        /// The URL for the Terms and Condition page
         public let termsAndConditionsURL: URL
 
+        /// Country code fetched from `SalesChannel.locale`
         public var countryCode: String {
             return locale.regionCode~?
         }
 
+        /// Language code fetched from `SalesChannel.locale`
         public var languageCode: String {
             return locale.languageCode~?
         }
