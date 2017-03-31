@@ -8,9 +8,6 @@
     <script src="../js/jquery.min.js" defer></script>
     <script src="../js/jazzy.js" defer></script>
     
-    <script src="../js/lunr.min.js" defer></script>
-    <script src="../js/typeahead.jquery.js" defer></script>
-    <script src="../js/jazzy.search.js" defer></script>
   </head>
   <body>
 
@@ -23,13 +20,7 @@
         <a class="header-link" href="../index.html">
           ZalandoCommerceAPI Docs
         </a>
-         (26% documented)
-      </p>
-    
-      <p class="header-col--secondary">
-        <form role="search" action="../search.json">
-          <input type="text" placeholder="Search documentation" data-typeahead>
-        </form>
+         (25% documented)
       </p>
     
         <p class="header-col header-col--secondary">
@@ -185,6 +176,15 @@ logged in and accepted a consent. Otherwise <code>Result.failure</code> with
                       <div class="abstract">
                         <p>Fetches <code>Article</code> with given SKU.</p>
 
+<ul>
+<li>Parameters:
+
+<ul>
+<li>sku: SKU of an article to fetch</li>
+<li>completion: completes async with <code>APIResult.success</code> with <code>Article</code></li>
+</ul></li>
+</ul>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -246,6 +246,12 @@ logged in and accepted a consent. Otherwise <code>Result.failure</code> with
                       <div class="abstract">
                         <p>Fetches current logged user as <code>Customer</code>.</p>
 
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter completion: completes async with <code>APIResult.success</code> with logged user as <code>Customer</code>
+
+</div>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -292,6 +298,18 @@ logged in and accepted a consent. Otherwise <code>Result.failure</code> with
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Creates <code>Cart</code> with given <code>CartItemRequest</code> items.</p>
+
+<p>Handled cases:
+- when article has no stock available <code>completion</code> returns <code>Result.failure</code> with <code>CheckoutError.outOfStock</code></p>
+
+<ul>
+<li>Parameters:
+
+<ul>
+<li>cartItemRequests: list articles SKUs with quantities to be added to cart</li>
+<li>completion: completes async with <code>APIResult.success</code> with <code>Cart</code> model created.</li>
+</ul></li>
+</ul>
 
                       </div>
                       <div class="declaration">
@@ -342,88 +360,9 @@ logged in and accepted a consent. Otherwise <code>Result.failure</code> with
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FV18ZalandoCommerceAPI18ZalandoCommerceAPI18createCartCheckoutFT4withVS_15CartItemRequest9addressesGSqVS_17CheckoutAddresses_10completionFGOS_9APIResultT4cartVS_4Cart8checkoutGSqVS_8Checkout___T__T_"></a>
-                    <a name="//apple_ref/swift/Method/createCartCheckout(with:addresses:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FV18ZalandoCommerceAPI18ZalandoCommerceAPI18createCartCheckoutFT4withVS_15CartItemRequest9addressesGSqVS_17CheckoutAddresses_10completionFGOS_9APIResultT4cartVS_4Cart8checkoutGSqVS_8Checkout___T__T_">createCartCheckout(with:addresses:completion:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Creates <code>Cart</code>, and makes <code>Checkout</code> from it. Additionally handle specific corner cases.</p>
-
-<p>Handled cases:
-   - when article has no stock available <code>completion</code> returns <code>Result.failure</code> with <code>CheckoutError.outOfStock</code>
-   - when checkout creation fails <code>completion</code> returns <code>Result.failure</code> with <code>APIError.checkoutFailed</code> and created <code>Cart</code></p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">createCartCheckout</span><span class="p">(</span><span class="n">with</span> <span class="nv">cartItemRequest</span><span class="p">:</span> <span class="kt">CartItemRequest</span><span class="p">,</span>
-                                   <span class="nv">addresses</span><span class="p">:</span> <span class="kt">CheckoutAddresses</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
-                                   <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt">APIResultCompletion</span><span class="o">&lt;</span><span class="kt">CartCheckout</span><span class="o">&gt;</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>cartItemRequest</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>article SKU and quantity to be added to the cart</p>
-
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>addresses</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>addresses to be passed to the checkout</p>
-
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>completion</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>completes async with <code>APIResult.success</code> with <code>CartCheckout</code>.</p>
-
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:FV18ZalandoCommerceAPI18ZalandoCommerceAPI14createCheckoutFT4fromSS9addressesGSqVS_17CheckoutAddresses_10completionFGOS_9APIResultVS_8Checkout_T__T_"></a>
-                    <a name="//apple_ref/swift/Method/createCheckout(from:addresses:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FV18ZalandoCommerceAPI18ZalandoCommerceAPI14createCheckoutFT4fromSS9addressesGSqVS_17CheckoutAddresses_10completionFGOS_9APIResultVS_8Checkout_T__T_">createCheckout(from:addresses:completion:)</a>
+                    <a name="/s:FV18ZalandoCommerceAPI18ZalandoCommerceAPI14createCheckoutFT7requestVS_21CreateCheckoutRequest10completionFGOS_9APIResultVS_8Checkout_T__T_"></a>
+                    <a name="//apple_ref/swift/Method/createCheckout(request:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV18ZalandoCommerceAPI18ZalandoCommerceAPI14createCheckoutFT7requestVS_21CreateCheckoutRequest10completionFGOS_9APIResultVS_8Checkout_T__T_">createCheckout(request:completion:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -433,13 +372,24 @@ logged in and accepted a consent. Otherwise <code>Result.failure</code> with
                       <div class="abstract">
                         <p>Creates <code>Checkout</code> based on <code>CartId</code>.</p>
 
+<p>Handled cases:
+  - when checkout creation fails (probably missing addresses) <code>completion</code> returns <code>Result.failure</code> with <code>APIError.checkoutFailed</code></p>
+
+<ul>
+<li>Parameters:
+
+<ul>
+<li>request: <code>CreateCheckoutRequest</code> object containing the cartId, addresses and coupons,</li>
+<li>completion: completes async with <code>APIResult.success</code> with <code>Checkout</code>.</li>
+</ul></li>
+</ul>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">createCheckout</span><span class="p">(</span><span class="n">from</span> <span class="nv">cartId</span><span class="p">:</span> <span class="kt">CartId</span><span class="p">,</span>
-                               <span class="nv">addresses</span><span class="p">:</span> <span class="kt">CheckoutAddresses</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">createCheckout</span><span class="p">(</span><span class="nv">request</span><span class="p">:</span> <span class="kt">CreateCheckoutRequest</span><span class="p">,</span>
                                <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt">APIResultCompletion</span><span class="o">&lt;</span><span class="kt">Checkout</span><span class="o">&gt;</span><span class="p">)</span></code></pre>
 
                         </div>
@@ -451,25 +401,12 @@ logged in and accepted a consent. Otherwise <code>Result.failure</code> with
                             <tr>
                               <td>
                                 <code>
-                                <em>cartId</em>
+                                <em>request</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>identifier of a cart (<code>Cart.id</code>)</p>
-
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>addresses</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>set of billing and shipping addresses</p>
+                                  <p><code>CreateCheckoutRequest</code> object containing the cartId, addresses and coupons,</p>
 
                                 </div>
                               </td>
@@ -507,6 +444,16 @@ logged in and accepted a consent. Otherwise <code>Result.failure</code> with
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Updates <code>Checkout</code> shipping and/or billing addresses.</p>
+
+<ul>
+<li>Parameters:
+
+<ul>
+<li>checkoutId: identifier of a checkout (<code>Checkout.id</code>)</li>
+<li>updateCheckoutRequest: new shipping and/or billing address</li>
+<li>completion: completes async with <code>APIResult.success</code> with <code>Checkout</code>.</li>
+</ul></li>
+</ul>
 
                       </div>
                       <div class="declaration">
@@ -583,6 +530,15 @@ logged in and accepted a consent. Otherwise <code>Result.failure</code> with
                       <div class="abstract">
                         <p>Places order based on formerly created checkout.</p>
 
+<ul>
+<li>Parameters:
+
+<ul>
+<li>checkoutId: identifier of a checkout (<code>Checkout.id</code>)</li>
+<li>completion: completes async with <code>APIResult.success</code> with <code>Order</code>.</li>
+</ul></li>
+</ul>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -643,6 +599,15 @@ logged in and accepted a consent. Otherwise <code>Result.failure</code> with
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Retrieves details of <code>GuestCheckout</code>.</p>
+
+<ul>
+<li>Parameters:
+
+<ul>
+<li>checkoutId: identifier of a guest checkout (<code>GuestCheckout.id</code>)</li>
+<li>completion: completes async with <code>APIResult.success</code> with <code>GuestCheckout</code>.</li>
+</ul></li>
+</ul>
 
                       </div>
                       <div class="declaration">
@@ -712,6 +677,13 @@ should be parsed using <code>PaymentStatus</code>.</p>
 
 </div>
 
+<p><li><p>Parameters:</p></p>
+
+<p><ul>
+<li>request: request containing all the data needed by Guest Checkout</li>
+<li>completion: completes async with <code>APIResult.success</code> with <code>URL</code>.</li>
+</ul></li></p>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -772,6 +744,15 @@ should be parsed using <code>PaymentStatus</code>.</p>
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Creates order from a checkout in Guest Checkout mode.</p>
+
+<ul>
+<li>Parameters:
+
+<ul>
+<li>request: guest checkout with token</li>
+<li>completion: completes async with <code>APIResult.success</code> with <code>GuestOrder</code>.</li>
+</ul></li>
+</ul>
 
                       </div>
                       <div class="declaration">
@@ -835,6 +816,12 @@ should be parsed using <code>PaymentStatus</code>.</p>
                         <p>Fetches list of <code>UserAddress</code> containing all customer&rsquo;s addresses available for both
 shipping and billing.</p>
 
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter completion: completes async with <code>APIResult.success</code> with <code>[UserAddress]</code>
+
+</div>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -881,6 +868,15 @@ shipping and billing.</p>
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Creates new address in customer&rsquo;s address book.</p>
+
+<ul>
+<li>Parameters:
+
+<ul>
+<li>request: address details request</li>
+<li>completion: completes async with <code>APIResult.success</code> with created <code>UserAddress</code>.</li>
+</ul></li>
+</ul>
 
                       </div>
                       <div class="declaration">
@@ -943,6 +939,15 @@ shipping and billing.</p>
                       <div class="abstract">
                         <p>Updates customer&rsquo;s address.</p>
 
+<ul>
+<li>Parameters:
+
+<ul>
+<li>request: address details to be updated</li>
+<li>completion: completes async with <code>APIResult.success</code> with updated <code>UserAddress</code>.</li>
+</ul></li>
+</ul>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -1003,6 +1008,15 @@ shipping and billing.</p>
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Deletes given <code>EquatableAddress</code> from customer&rsquo;s address book.</p>
+
+<ul>
+<li>Parameters:
+
+<ul>
+<li>address: <code>EquatableAddress</code> to be removed.</li>
+<li>completion: completes async with <code>APIResult.success</code> with success status.</li>
+</ul></li>
+</ul>
 
                       </div>
                       <div class="declaration">
@@ -1065,6 +1079,15 @@ shipping and billing.</p>
                       <div class="abstract">
                         <p>Verifies correctness of a given address</p>
 
+<ul>
+<li>Parameters:
+
+<ul>
+<li>request: address data</li>
+<li>completion: completes async with <code>APIResult.success</code> with <code>CheckAddressResponse</code></li>
+</ul></li>
+</ul>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -1125,6 +1148,16 @@ shipping and billing.</p>
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Fetches recommendations for given article&rsquo;s SKU</p>
+
+<ul>
+<li>Parameters:
+
+<ul>
+<li>sku: article&rsquo;s identifier to on which recommendations are based (<code>Article.sku</code>)</li>
+<li>recommendationConfig: <code><a href="../Structs/RecommendationConfig.html">RecommendationConfig</a></code></li>
+<li>completion: completes async with <code>APIResult.success</code> with <code>[Recommendation]</code></li>
+</ul></li>
+</ul>
 
                       </div>
                       <div class="declaration">
@@ -1215,6 +1248,14 @@ keys and values – <code>completion</code> retuns <code>Result.failure</code> w
 and <a href="https://github.com/zalando-incubator/zalando-commerce-ios/wiki/Project-structure">project structure</a></p>
 
 </div>
+
+<p><li><p>Parameters:</p></p>
+
+<p><ul>
+<li>options: Options for API client to be created. When <code>nil</code>, <code>$INFOPLIST_FILE</code> file of the app is used as configuration.</li>
+<li>completion: Fired when network configuration call is finished.
+Contains <code>Result.success</code> with <code>ZalandoCommerceAPI</code> or <code>Result.failure</code> with <code>Error</code> reason.</li>
+</ul></li></p>
 
                       </div>
                       <div class="declaration">
@@ -1326,6 +1367,18 @@ to restricted endpoints identified by same <code>Options.environment</code></p>
 and <code>userInfo</code> containing <code>ZALANDO_COMMERCE_CLIENT_ID</code> equal to <code><a href="../Structs/Options.html#/s:vV18ZalandoCommerceAPI7Options8clientIdSS">Options.clientId</a></code>,
 and <code>ZALANDO_COMMERCE_USE_SANDBOX</code> equal to <code><a href="../Structs/Options.html#/s:vV18ZalandoCommerceAPI7Options21useSandboxEnvironmentSb">Options.useSandboxEnvironment</a></code>.</li>
 </ul>
+
+</div>
+
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    <p>Parameter token: access token passed to all restricted endpoint calls</p>
+
+</div>
+
+<div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    <p><code>true</code> if token was correctly stored and client is authorized, otherwise <code>false</code></p>
 
 </div>
 
@@ -1442,7 +1495,7 @@ and <code>NSNotification.Name.ZalandoCommerceAPIAuthorizationChanged</code> are 
     </div>
     <section class="footer">
       <p>© 2016-2017 <a class="link" href="http://tech.zalando.com" target="_blank" rel="external">Zalando SE</a></p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>
